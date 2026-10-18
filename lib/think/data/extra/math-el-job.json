@@ -3,87 +3,87 @@
   "id": "x-m-el-job-01",
   "subject": "math",
   "grade": "EL-job",
-  "topic": "단위 환산과 어림",
+  "topic": "\ub2e8\uc704 \ud658\uc0b0\uacfc \uc5b4\ub9bc",
   "level": 3,
-  "levelLabel": "고등",
-  "title": "수조 용량 풀이에서 틀린 줄 찾고 어림으로 검산하기",
+  "levelLabel": "\uace0\ub4f1",
+  "title": "\uc218\uc870 \uc6a9\ub7c9 \ud480\uc774\uc5d0\uc11c \ud2c0\ub9b0 \uc904 \ucc3e\uace0 \uc5b4\ub9bc\uc73c\ub85c \uac80\uc0b0\ud558\uae30",
   "uiLang": "ko",
   "format": "find-error-fix",
   "generative": false,
-  "goal": "길이 단위를 바꿀 때와 부피 단위를 바꿀 때의 관계가 다름을 알고, 어림으로 계산 결과의 타당성을 점검한다.",
+  "goal": "\uae38\uc774 \ub2e8\uc704\ub97c \ubc14\uafc0 \ub54c\uc640 \ubd80\ud53c \ub2e8\uc704\ub97c \ubc14\uafc0 \ub54c\uc758 \uad00\uacc4\uac00 \ub2e4\ub984\uc744 \uc54c\uace0, \uc5b4\ub9bc\uc73c\ub85c \uacc4\uc0b0 \uacb0\uacfc\uc758 \ud0c0\ub2f9\uc131\uc744 \uc810\uac80\ud55c\ub2e4.",
   "thinking": [
-   "풀이에서 오류가 있는 줄 찾기",
-   "어림으로 결과가 말이 되는지 검산하기",
-   "단위 사이의 관계 바로잡기"
+   "\ud480\uc774\uc5d0\uc11c \uc624\ub958\uac00 \uc788\ub294 \uc904 \ucc3e\uae30",
+   "\uc5b4\ub9bc\uc73c\ub85c \uacb0\uacfc\uac00 \ub9d0\uc774 \ub418\ub294\uc9c0 \uac80\uc0b0\ud558\uae30",
+   "\ub2e8\uc704 \uc0ac\uc774\uc758 \uad00\uacc4 \ubc14\ub85c\uc7a1\uae30"
   ],
-  "differsFromPlain": "단순 연습은 주어진 단위 환산을 계산한다. 여기서는 이미 계산된 풀이를 읽고 어디서 어긋났는지 찾고, 계산을 다시 하는 대신 어림으로 '말이 되는 값인가'를 따져 본다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uc8fc\uc5b4\uc9c4 \ub2e8\uc704 \ud658\uc0b0\uc744 \uacc4\uc0b0\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \uc774\ubbf8 \uacc4\uc0b0\ub41c \ud480\uc774\ub97c \uc77d\uace0 \uc5b4\ub514\uc11c \uc5b4\uae0b\ub0ac\ub294\uc9c0 \ucc3e\uace0, \uacc4\uc0b0\uc744 \ub2e4\uc2dc \ud558\ub294 \ub300\uc2e0 \uc5b4\ub9bc\uc73c\ub85c '\ub9d0\uc774 \ub418\ub294 \uac12\uc778\uac00'\ub97c \ub530\uc838 \ubcf8\ub2e4.",
   "prerequisites": [
-   "1 m = 100 cm 같은 길이 단위 관계",
-   "직육면체 부피 구하기(중학교 1학년 수준)",
-   "L와 mL의 관계"
+   "1 m = 100 cm \uac19\uc740 \uae38\uc774 \ub2e8\uc704 \uad00\uacc4",
+   "\uc9c1\uc721\uba74\uccb4 \ubd80\ud53c \uad6c\ud558\uae30(\uc911\ud559\uad50 1\ud559\ub144 \uc218\uc900)",
+   "L\uc640 mL\uc758 \uad00\uacc4"
   ],
   "minutes": 10,
   "curriculum": null,
-  "material": "인테리어 업체 직원이 가로 2 m, 세로 50 cm, 높이 40 cm인 직육면체 모양 수조에 물을 가득 채울 때의 물의 양을 계산했다. 아래는 그 직원의 풀이다.",
+  "material": "\uc778\ud14c\ub9ac\uc5b4 \uc5c5\uccb4 \uc9c1\uc6d0\uc774 \uac00\ub85c 2 m, \uc138\ub85c 50 cm, \ub192\uc774 40 cm\uc778 \uc9c1\uc721\uba74\uccb4 \ubaa8\uc591 \uc218\uc870\uc5d0 \ubb3c\uc744 \uac00\ub4dd \ucc44\uc6b8 \ub54c\uc758 \ubb3c\uc758 \uc591\uc744 \uacc4\uc0b0\ud588\ub2e4. \uc544\ub798\ub294 \uadf8 \uc9c1\uc6d0\uc758 \ud480\uc774\ub2e4.",
   "steps": [
    {
     "id": "s1",
     "kind": "pickLine",
-    "prompt": "직원의 풀이에서 처음으로 어긋난 줄을 골라 보세요.",
+    "prompt": "\uc9c1\uc6d0\uc758 \ud480\uc774\uc5d0\uc11c \ucc98\uc74c\uc73c\ub85c \uc5b4\uae0b\ub09c \uc904\uc744 \uace8\ub77c \ubcf4\uc138\uc694.",
     "lines": [
-     "단위를 m로 통일한다: 가로 2 m, 세로 0.5 m, 높이 0.4 m.",
-     "부피 = 2 × 0.5 × 0.4 = 0.4 세제곱미터(m³).",
-     "1 세제곱미터는 100 L이므로 0.4 × 100 = 40 L.",
-     "따라서 수조에는 물이 40 L 들어간다."
+     "\ub2e8\uc704\ub97c m\ub85c \ud1b5\uc77c\ud55c\ub2e4: \uac00\ub85c 2 m, \uc138\ub85c 0.5 m, \ub192\uc774 0.4 m.",
+     "\ubd80\ud53c = 2 \u00d7 0.5 \u00d7 0.4 = 0.4 \uc138\uc81c\uacf1\ubbf8\ud130(m\u00b3).",
+     "1 \uc138\uc81c\uacf1\ubbf8\ud130\ub294 100 L\uc774\ubbc0\ub85c 0.4 \u00d7 100 = 40 L.",
+     "\ub530\ub77c\uc11c \uc218\uc870\uc5d0\ub294 \ubb3c\uc774 40 L \ub4e4\uc5b4\uac04\ub2e4."
     ],
     "wrong": [
      2
     ],
-    "explain": "3번째 줄이 어긋났다. 1 m가 100 cm라고 해서 1 세제곱미터가 100 L인 것은 아니다. 길이를 세 번 곱하는 부피에서는 환산 비율도 세 번 곱해진다.",
+    "explain": "3\ubc88\uc9f8 \uc904\uc774 \uc5b4\uae0b\ub0ac\ub2e4. 1 m\uac00 100 cm\ub77c\uace0 \ud574\uc11c 1 \uc138\uc81c\uacf1\ubbf8\ud130\uac00 100 L\uc778 \uac83\uc740 \uc544\ub2c8\ub2e4. \uae38\uc774\ub97c \uc138 \ubc88 \uacf1\ud558\ub294 \ubd80\ud53c\uc5d0\uc11c\ub294 \ud658\uc0b0 \ube44\uc728\ub3c4 \uc138 \ubc88 \uacf1\ud574\uc9c4\ub2e4.",
     "hints": [
-     "줄마다 앞 줄의 결과를 그대로 받아 쓰는지, 새로 가져온 사실이 무엇인지 표시해 보세요.",
-     "새로 가져온 사실(환산 관계) 하나하나를 1 m = 100 cm에서 직접 만들어 보세요."
+     "\uc904\ub9c8\ub2e4 \uc55e \uc904\uc758 \uacb0\uacfc\ub97c \uadf8\ub300\ub85c \ubc1b\uc544 \uc4f0\ub294\uc9c0, \uc0c8\ub85c \uac00\uc838\uc628 \uc0ac\uc2e4\uc774 \ubb34\uc5c7\uc778\uc9c0 \ud45c\uc2dc\ud574 \ubcf4\uc138\uc694.",
+     "\uc0c8\ub85c \uac00\uc838\uc628 \uc0ac\uc2e4(\ud658\uc0b0 \uad00\uacc4) \ud558\ub098\ud558\ub098\ub97c 1 m = 100 cm\uc5d0\uc11c \uc9c1\uc811 \ub9cc\ub4e4\uc5b4 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "choose",
-    "prompt": "40 L라는 결과가 이상하다는 것을 알아채는 데 가장 믿을 만한 확인은 무엇일까요?",
+    "prompt": "40 L\ub77c\ub294 \uacb0\uacfc\uac00 \uc774\uc0c1\ud558\ub2e4\ub294 \uac83\uc744 \uc54c\uc544\ucc44\ub294 \ub370 \uac00\uc7a5 \ubbff\uc744 \ub9cc\ud55c \ud655\uc778\uc740 \ubb34\uc5c7\uc77c\uae4c\uc694?",
     "options": [
      {
       "id": "a",
-      "text": "같은 식을 순서만 바꿔서 한 번 더 계산해 보고 같은 값이 나오는지 확인한다",
-      "reveals": "같은 환산 관계를 다시 쓰면 같은 값이 나올 뿐이라, 오류가 있는 가정은 드러나지 않아요."
+      "text": "\uac19\uc740 \uc2dd\uc744 \uc21c\uc11c\ub9cc \ubc14\uafd4\uc11c \ud55c \ubc88 \ub354 \uacc4\uc0b0\ud574 \ubcf4\uace0 \uac19\uc740 \uac12\uc774 \ub098\uc624\ub294\uc9c0 \ud655\uc778\ud55c\ub2e4",
+      "reveals": "\uac19\uc740 \ud658\uc0b0 \uad00\uacc4\ub97c \ub2e4\uc2dc \uc4f0\uba74 \uac19\uc740 \uac12\uc774 \ub098\uc62c \ubfd0\uc774\ub77c, \uc624\ub958\uac00 \uc788\ub294 \uac00\uc815\uc740 \ub4dc\ub7ec\ub098\uc9c0 \uc54a\uc544\uc694."
      },
      {
       "id": "b",
-      "text": "수조 바닥 넓이를 이용해 40 L를 부었을 때 물 높이를 어림하고 수조 높이와 견준다"
+      "text": "\uc218\uc870 \ubc14\ub2e5 \ub113\uc774\ub97c \uc774\uc6a9\ud574 40 L\ub97c \ubd80\uc5c8\uc744 \ub54c \ubb3c \ub192\uc774\ub97c \uc5b4\ub9bc\ud558\uace0 \uc218\uc870 \ub192\uc774\uc640 \uacac\uc900\ub2e4"
      },
      {
       "id": "c",
-      "text": "답이 소수 없이 깔끔한 자연수로 떨어지는지 보고, 그러면 맞는 것으로 판단한다",
-      "reveals": "깔끔한 수와 맞는 수는 다릅니다. 틀린 가정에서도 깔끔한 수가 나올 수 있어요."
+      "text": "\ub2f5\uc774 \uc18c\uc218 \uc5c6\uc774 \uae54\ub054\ud55c \uc790\uc5f0\uc218\ub85c \ub5a8\uc5b4\uc9c0\ub294\uc9c0 \ubcf4\uace0, \uadf8\ub7ec\uba74 \ub9de\ub294 \uac83\uc73c\ub85c \ud310\ub2e8\ud55c\ub2e4",
+      "reveals": "\uae54\ub054\ud55c \uc218\uc640 \ub9de\ub294 \uc218\ub294 \ub2e4\ub985\ub2c8\ub2e4. \ud2c0\ub9b0 \uac00\uc815\uc5d0\uc11c\ub3c4 \uae54\ub054\ud55c \uc218\uac00 \ub098\uc62c \uc218 \uc788\uc5b4\uc694."
      }
     ],
     "correct": [
      "b"
     ],
-    "explain": "바닥은 2 m × 0.5 m이므로 1 제곱미터(= 10,000 제곱센티미터)다. 40 L = 40,000 세제곱센티미터를 부으면 물 높이는 약 4 cm밖에 안 되는데 수조 높이는 40 cm다. 풀이 밖의 다른 경로로 크기를 가늠하면 환산 오류가 드러난다.",
+    "explain": "\ubc14\ub2e5\uc740 2 m \u00d7 0.5 m\uc774\ubbc0\ub85c 1 \uc81c\uacf1\ubbf8\ud130(= 10,000 \uc81c\uacf1\uc13c\ud2f0\ubbf8\ud130)\ub2e4. 40 L = 40,000 \uc138\uc81c\uacf1\uc13c\ud2f0\ubbf8\ud130\ub97c \ubd80\uc73c\uba74 \ubb3c \ub192\uc774\ub294 \uc57d 4 cm\ubc16\uc5d0 \uc548 \ub418\ub294\ub370 \uc218\uc870 \ub192\uc774\ub294 40 cm\ub2e4. \ud480\uc774 \ubc16\uc758 \ub2e4\ub978 \uacbd\ub85c\ub85c \ud06c\uae30\ub97c \uac00\ub2a0\ud558\uba74 \ud658\uc0b0 \uc624\ub958\uac00 \ub4dc\ub7ec\ub09c\ub2e4.",
     "hints": [
-     "계산 과정을 반복하는 것과, 계산과 다른 방법으로 크기를 가늠하는 것은 다릅니다.",
-     "물이 바닥에 넓게 퍼지면 높이가 얼마나 될지 생각해 보세요."
+     "\uacc4\uc0b0 \uacfc\uc815\uc744 \ubc18\ubcf5\ud558\ub294 \uac83\uacfc, \uacc4\uc0b0\uacfc \ub2e4\ub978 \ubc29\ubc95\uc73c\ub85c \ud06c\uae30\ub97c \uac00\ub2a0\ud558\ub294 \uac83\uc740 \ub2e4\ub985\ub2c8\ub2e4.",
+     "\ubb3c\uc774 \ubc14\ub2e5\uc5d0 \ub113\uac8c \ud37c\uc9c0\uba74 \ub192\uc774\uac00 \uc5bc\ub9c8\ub098 \ub420\uc9c0 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s3",
     "kind": "write",
-    "prompt": "올바른 물의 양은 얼마일까요? 어디를 어떻게 고쳐야 하는지, 단위 사이의 관계를 근거로 쓰세요.",
-    "placeholder": "예: 1 세제곱미터는 ...",
+    "prompt": "\uc62c\ubc14\ub978 \ubb3c\uc758 \uc591\uc740 \uc5bc\ub9c8\uc77c\uae4c\uc694? \uc5b4\ub514\ub97c \uc5b4\ub5bb\uac8c \uace0\uccd0\uc57c \ud558\ub294\uc9c0, \ub2e8\uc704 \uc0ac\uc774\uc758 \uad00\uacc4\ub97c \uadfc\uac70\ub85c \uc4f0\uc138\uc694.",
+    "placeholder": "\uc608: 1 \uc138\uc81c\uacf1\ubbf8\ud130\ub294 ...",
     "minChars": 20,
     "checks": [
      {
       "id": "w1",
-      "label": "고친 값(400 L)을 말했다",
+      "label": "\uace0\uce5c \uac12(400 L)\uc744 \ub9d0\ud588\ub2e4",
       "mode": "any",
       "patterns": [
        "(?<![\\d.])400(?![\\d])"
@@ -91,168 +91,169 @@
      },
      {
       "id": "w2",
-      "label": "1 세제곱미터와 1000 L의 관계를 말했다",
+      "label": "1 \uc138\uc81c\uacf1\ubbf8\ud130\uc640 1000 L\uc758 \uad00\uacc4\ub97c \ub9d0\ud588\ub2e4",
       "mode": "any",
       "patterns": [
        "1\\s*,?\\s*000",
-       "천\\s*(리터|L|엘)"
+       "\ucc9c\\s*(\ub9ac\ud130|L|\uc5d8)"
       ]
      }
     ],
     "selfAssess": [
-     "고친 환산 관계(1 세제곱미터 = 1000 L)가 길이 환산(1 m = 100 cm)에서 어떻게 나오는지 설명했나요?",
-     "40 L가 틀렸다는 근거를 환산 규칙 외에 크기 어림으로도 댔나요?"
+     "\uace0\uce5c \ud658\uc0b0 \uad00\uacc4(1 \uc138\uc81c\uacf1\ubbf8\ud130 = 1000 L)\uac00 \uae38\uc774 \ud658\uc0b0(1 m = 100 cm)\uc5d0\uc11c \uc5b4\ub5bb\uac8c \ub098\uc624\ub294\uc9c0 \uc124\uba85\ud588\ub098\uc694?",
+     "40 L\uac00 \ud2c0\ub838\ub2e4\ub294 \uadfc\uac70\ub97c \ud658\uc0b0 \uaddc\uce59 \uc678\uc5d0 \ud06c\uae30 \uc5b4\ub9bc\uc73c\ub85c\ub3c4 \ub314\ub098\uc694?"
     ],
     "modelAnswers": [
      {
-      "text": "1 세제곱미터는 1000 L야. 그래서 0.4 세제곱미터는 400 L고, 40 L라면 바닥(2 m × 0.5 m)에 물 높이가 4 cm밖에 안 차니까 말이 안 돼."
+      "text": "1 \uc138\uc81c\uacf1\ubbf8\ud130\ub294 1000 L\uc57c. \uadf8\ub798\uc11c 0.4 \uc138\uc81c\uacf1\ubbf8\ud130\ub294 400 L\uace0, 40 L\ub77c\uba74 \ubc14\ub2e5(2 m \u00d7 0.5 m)\uc5d0 \ubb3c \ub192\uc774\uac00 4 cm\ubc16\uc5d0 \uc548 \ucc28\ub2c8\uae4c \ub9d0\uc774 \uc548 \ub3fc."
      },
      {
-      "text": "1 m는 100 cm라서 1 세제곱미터는 100×100×100 = 1,000,000 세제곱센티미터이고, 1 L는 1000 세제곱센티미터니까 1 세제곱미터 = 1000 L. 그래서 0.4 × 1000 = 400 L야.",
-      "note": "환산 관계를 길이 단위에서 직접 유도했다."
+      "text": "1 m\ub294 100 cm\ub77c\uc11c 1 \uc138\uc81c\uacf1\ubbf8\ud130\ub294 100\u00d7100\u00d7100 = 1,000,000 \uc138\uc81c\uacf1\uc13c\ud2f0\ubbf8\ud130\uc774\uace0, 1 L\ub294 1000 \uc138\uc81c\uacf1\uc13c\ud2f0\ubbf8\ud130\ub2c8\uae4c 1 \uc138\uc81c\uacf1\ubbf8\ud130 = 1000 L. \uadf8\ub798\uc11c 0.4 \u00d7 1000 = 400 L\uc57c.",
+      "note": "\ud658\uc0b0 \uad00\uacc4\ub97c \uae38\uc774 \ub2e8\uc704\uc5d0\uc11c \uc9c1\uc811 \uc720\ub3c4\ud588\ub2e4."
      }
     ],
     "badAnswers": [
      {
-      "text": "100 L로 바꾸는 게 아니라 10 L로 해야 해. 4 L야.",
-      "why": "근거 없이 숫자만 바꿨고 값도 틀렸다."
+      "text": "100 L\ub85c \ubc14\uafb8\ub294 \uac8c \uc544\ub2c8\ub77c 10 L\ub85c \ud574\uc57c \ud574. 4 L\uc57c.",
+      "why": "\uadfc\uac70 \uc5c6\uc774 \uc22b\uc790\ub9cc \ubc14\uafe8\uace0 \uac12\ub3c4 \ud2c0\ub838\ub2e4."
      },
      {
-      "text": "40 L가 맞아.",
-      "why": "오류를 찾지 못했다."
+      "text": "40 L\uac00 \ub9de\uc544.",
+      "why": "\uc624\ub958\ub97c \ucc3e\uc9c0 \ubabb\ud588\ub2e4."
      }
     ],
-    "humanReview": "환산 관계를 길이 단위에서 이끌어 냈는지, 아니면 외운 값을 말했는지는 사람이 읽어야 구분된다.",
+    "humanReview": "\ud658\uc0b0 \uad00\uacc4\ub97c \uae38\uc774 \ub2e8\uc704\uc5d0\uc11c \uc774\ub04c\uc5b4 \ub0c8\ub294\uc9c0, \uc544\ub2c8\uba74 \uc678\uc6b4 \uac12\uc744 \ub9d0\ud588\ub294\uc9c0\ub294 \uc0ac\ub78c\uc774 \uc77d\uc5b4\uc57c \uad6c\ubd84\ub41c\ub2e4.",
     "hints": [
-     "길이가 100배가 되면 부피(세 방향)는 몇 배가 될지 생각해 보세요.",
-     "세제곱센티미터와 L의 관계를 하나 알고 있다면 그것부터 연결해 보세요."
+     "\uae38\uc774\uac00 100\ubc30\uac00 \ub418\uba74 \ubd80\ud53c(\uc138 \ubc29\ud5a5)\ub294 \uba87 \ubc30\uac00 \ub420\uc9c0 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694.",
+     "\uc138\uc81c\uacf1\uc13c\ud2f0\ubbf8\ud130\uc640 L\uc758 \uad00\uacc4\ub97c \ud558\ub098 \uc54c\uace0 \uc788\ub2e4\uba74 \uadf8\uac83\ubd80\ud130 \uc5f0\uacb0\ud574 \ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "오류 위치와 원인",
-    "full": "부피 단위 환산을 길이 환산처럼 처리한 점을 짚음",
-    "partial": "줄은 맞게 골랐으나 이유를 말하지 못함",
-    "none": "다른 줄을 고르거나 오류를 못 찾음"
+    "criterion": "\uc624\ub958 \uc704\uce58\uc640 \uc6d0\uc778",
+    "full": "\ubd80\ud53c \ub2e8\uc704 \ud658\uc0b0\uc744 \uae38\uc774 \ud658\uc0b0\ucc98\ub7fc \ucc98\ub9ac\ud55c \uc810\uc744 \uc9da\uc74c",
+    "partial": "\uc904\uc740 \ub9de\uac8c \uace8\ub790\uc73c\ub098 \uc774\uc720\ub97c \ub9d0\ud558\uc9c0 \ubabb\ud568",
+    "none": "\ub2e4\ub978 \uc904\uc744 \uace0\ub974\uac70\ub098 \uc624\ub958\ub97c \ubabb \ucc3e\uc74c"
    },
    {
-    "criterion": "어림을 통한 타당성 점검",
-    "full": "계산과 다른 경로(물 높이 등)로 40 L가 부적절함을 보임",
-    "partial": "'너무 작아 보인다'만 말함",
-    "none": "계산을 되풀이할 뿐임"
+    "criterion": "\uc5b4\ub9bc\uc744 \ud1b5\ud55c \ud0c0\ub2f9\uc131 \uc810\uac80",
+    "full": "\uacc4\uc0b0\uacfc \ub2e4\ub978 \uacbd\ub85c(\ubb3c \ub192\uc774 \ub4f1)\ub85c 40 L\uac00 \ubd80\uc801\uc808\ud568\uc744 \ubcf4\uc784",
+    "partial": "'\ub108\ubb34 \uc791\uc544 \ubcf4\uc778\ub2e4'\ub9cc \ub9d0\ud568",
+    "none": "\uacc4\uc0b0\uc744 \ub418\ud480\uc774\ud560 \ubfd0\uc784"
    }
   ],
   "alternatives": [
-   "cm 단위로 통일해 200×50×40 = 400,000 세제곱센티미터를 L로 바꿔도 같은 결과(400 L)가 나온다.",
-   "1 세제곱미터 = 1000 L을 외워서 말해도 되지만, 근거(100³ cm³)를 함께 쓰면 더 좋다."
+   "cm \ub2e8\uc704\ub85c \ud1b5\uc77c\ud574 200\u00d750\u00d740 = 400,000 \uc138\uc81c\uacf1\uc13c\ud2f0\ubbf8\ud130\ub97c L\ub85c \ubc14\uafd4\ub3c4 \uac19\uc740 \uacb0\uacfc(400 L)\uac00 \ub098\uc628\ub2e4.",
+   "1 \uc138\uc81c\uacf1\ubbf8\ud130 = 1000 L\uc744 \uc678\uc6cc\uc11c \ub9d0\ud574\ub3c4 \ub418\uc9c0\ub9cc, \uadfc\uac70(100\u00b3 cm\u00b3)\ub97c \ud568\uaed8 \uc4f0\uba74 \ub354 \uc88b\ub2e4."
   ],
   "hardCases": [
-   "수조 안쪽 두께를 고려해 실제 들어가는 양이 400 L보다 적다고 답한 경우: 문제의 가정과 다르지만 현실 감각이므로 인정 여부는 사람이 판단한다."
+   "\uc218\uc870 \uc548\ucabd \ub450\uaed8\ub97c \uace0\ub824\ud574 \uc2e4\uc81c \ub4e4\uc5b4\uac00\ub294 \uc591\uc774 400 L\ubcf4\ub2e4 \uc801\ub2e4\uace0 \ub2f5\ud55c \uacbd\uc6b0: \ubb38\uc81c\uc758 \uac00\uc815\uacfc \ub2e4\ub974\uc9c0\ub9cc \ud604\uc2e4 \uac10\uac01\uc774\ubbc0\ub85c \uc778\uc815 \uc5ec\ubd80\ub294 \uc0ac\ub78c\uc774 \ud310\ub2e8\ud55c\ub2e4."
   ],
   "cautions": {
-   "language": "m³는 '세제곱미터', cm³는 '세제곱센티미터'로 읽는다. 화면 낭독기가 위첨자를 놓칠 수 있어 글자로 풀어 썼다.",
-   "culture": "수조·인테리어 업체 상황은 특정 문화에 의존하지 않는다.",
-   "accessibility": "그림 없이 치수를 글로 줬고, 바닥·높이 관계를 말로 설명했다."
+   "language": "m\u00b3\ub294 '\uc138\uc81c\uacf1\ubbf8\ud130', cm\u00b3\ub294 '\uc138\uc81c\uacf1\uc13c\ud2f0\ubbf8\ud130'\ub85c \uc77d\ub294\ub2e4. \ud654\uba74 \ub0ad\ub3c5\uae30\uac00 \uc704\ucca8\uc790\ub97c \ub193\uce60 \uc218 \uc788\uc5b4 \uae00\uc790\ub85c \ud480\uc5b4 \uc37c\ub2e4.",
+   "culture": "\uc218\uc870\u00b7\uc778\ud14c\ub9ac\uc5b4 \uc5c5\uccb4 \uc0c1\ud669\uc740 \ud2b9\uc815 \ubb38\ud654\uc5d0 \uc758\uc874\ud558\uc9c0 \uc54a\ub294\ub2e4.",
+   "accessibility": "\uadf8\ub9bc \uc5c6\uc774 \uce58\uc218\ub97c \uae00\ub85c \uc92c\uace0, \ubc14\ub2e5\u00b7\ub192\uc774 \uad00\uacc4\ub97c \ub9d0\ub85c \uc124\uba85\ud588\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "오류 줄 위치",
-    "고친 값 400이 들어 있는지와 1 세제곱미터-1000 L 관계 언급 여부"
+    "\uc624\ub958 \uc904 \uc704\uce58",
+    "\uace0\uce5c \uac12 400\uc774 \ub4e4\uc5b4 \uc788\ub294\uc9c0\uc640 1 \uc138\uc81c\uacf1\ubbf8\ud130-1000 L \uad00\uacc4 \uc5b8\uae09 \uc5ec\ubd80"
    ],
    "human": [
-    "환산 근거와 어림의 타당성"
+    "\ud658\uc0b0 \uadfc\uac70\uc640 \uc5b4\ub9bc\uc758 \ud0c0\ub2f9\uc131"
    ]
-  }
+  },
+  "status": "reviewed-ai"
  },
  {
   "id": "x-m-el-job-02",
   "subject": "math",
   "grade": "EL-job",
-  "topic": "단위 환산과 어림",
+  "topic": "\ub2e8\uc704 \ud658\uc0b0\uacfc \uc5b4\ub9bc",
   "level": 3,
-  "levelLabel": "고등",
-  "title": "같은 속력을 두 가지 단위로 말하기",
+  "levelLabel": "\uace0\ub4f1",
+  "title": "\uac19\uc740 \uc18d\ub825\uc744 \ub450 \uac00\uc9c0 \ub2e8\uc704\ub85c \ub9d0\ud558\uae30",
   "uiLang": "ko",
   "format": "make-your-own",
   "generative": true,
-  "goal": "분속(m)과 시속(km)의 환산을 이용해 두 값이 모두 자연수가 되는 조건을 스스로 찾아내고 이유를 설명한다.",
+  "goal": "\ubd84\uc18d(m)\uacfc \uc2dc\uc18d(km)\uc758 \ud658\uc0b0\uc744 \uc774\uc6a9\ud574 \ub450 \uac12\uc774 \ubaa8\ub450 \uc790\uc5f0\uc218\uac00 \ub418\ub294 \uc870\uac74\uc744 \uc2a4\uc2a4\ub85c \ucc3e\uc544\ub0b4\uace0 \uc774\uc720\ub97c \uc124\uba85\ud55c\ub2e4.",
   "thinking": [
-   "단위 환산 관계 이용하기",
-   "조건을 만족하는 여러 예 만들기",
-   "자연수가 되는 조건 일반화하기"
+   "\ub2e8\uc704 \ud658\uc0b0 \uad00\uacc4 \uc774\uc6a9\ud558\uae30",
+   "\uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294 \uc5ec\ub7ec \uc608 \ub9cc\ub4e4\uae30",
+   "\uc790\uc5f0\uc218\uac00 \ub418\ub294 \uc870\uac74 \uc77c\ubc18\ud654\ud558\uae30"
   ],
-  "differsFromPlain": "단순 연습은 시속을 분속으로 한 번 바꾼다. 여기서는 환산 결과가 양쪽 모두 자연수가 되는 속력을 학생이 여러 개 만들고, 그 규칙의 이유를 설명한다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uc2dc\uc18d\uc744 \ubd84\uc18d\uc73c\ub85c \ud55c \ubc88 \ubc14\uafbc\ub2e4. \uc5ec\uae30\uc11c\ub294 \ud658\uc0b0 \uacb0\uacfc\uac00 \uc591\ucabd \ubaa8\ub450 \uc790\uc5f0\uc218\uac00 \ub418\ub294 \uc18d\ub825\uc744 \ud559\uc0dd\uc774 \uc5ec\ub7ec \uac1c \ub9cc\ub4e4\uace0, \uadf8 \uaddc\uce59\uc758 \uc774\uc720\ub97c \uc124\uba85\ud55c\ub2e4.",
   "prerequisites": [
-   "1 km = 1000 m, 1시간 = 60분",
-   "속력은 같은 시간에 간 거리로 나타낸다는 것(중학교 수준)"
+   "1 km = 1000 m, 1\uc2dc\uac04 = 60\ubd84",
+   "\uc18d\ub825\uc740 \uac19\uc740 \uc2dc\uac04\uc5d0 \uac04 \uac70\ub9ac\ub85c \ub098\ud0c0\ub0b8\ub2e4\ub294 \uac83(\uc911\ud559\uad50 \uc218\uc900)"
   ],
   "minutes": 12,
   "curriculum": null,
-  "material": "달리기 동아리의 두 사람이 같은 속력을 서로 다른 단위로 말했다. 한 사람은 '분속 x m'(1분에 가는 거리), 다른 사람은 '시속 y km'(1시간에 가는 거리)라고 한다. 두 사람은 숫자를 소수나 분수 없이 자연수로만 말하고 싶어 한다.",
+  "material": "\ub2ec\ub9ac\uae30 \ub3d9\uc544\ub9ac\uc758 \ub450 \uc0ac\ub78c\uc774 \uac19\uc740 \uc18d\ub825\uc744 \uc11c\ub85c \ub2e4\ub978 \ub2e8\uc704\ub85c \ub9d0\ud588\ub2e4. \ud55c \uc0ac\ub78c\uc740 '\ubd84\uc18d x m'(1\ubd84\uc5d0 \uac00\ub294 \uac70\ub9ac), \ub2e4\ub978 \uc0ac\ub78c\uc740 '\uc2dc\uc18d y km'(1\uc2dc\uac04\uc5d0 \uac00\ub294 \uac70\ub9ac)\ub77c\uace0 \ud55c\ub2e4. \ub450 \uc0ac\ub78c\uc740 \uc22b\uc790\ub97c \uc18c\uc218\ub098 \ubd84\uc218 \uc5c6\uc774 \uc790\uc5f0\uc218\ub85c\ub9cc \ub9d0\ud558\uace0 \uc2f6\uc5b4 \ud55c\ub2e4.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
     "scaffold": true,
-    "prompt": "시속 6 km로 달리는 사람의 분속은 대략 몇 m일까요? 먼저 크기를 어림해 보세요.",
+    "prompt": "\uc2dc\uc18d 6 km\ub85c \ub2ec\ub9ac\ub294 \uc0ac\ub78c\uc758 \ubd84\uc18d\uc740 \ub300\ub7b5 \uba87 m\uc77c\uae4c\uc694? \uba3c\uc800 \ud06c\uae30\ub97c \uc5b4\ub9bc\ud574 \ubcf4\uc138\uc694.",
     "options": [
      {
       "id": "a",
-      "text": "약 10 m",
-      "reveals": "1 km를 가는 데 걸리는 시간이 10분쯤인지 따져 보세요. 단위를 바꾸는 방향을 확인해 보세요."
+      "text": "\uc57d 10 m",
+      "reveals": "1 km\ub97c \uac00\ub294 \ub370 \uac78\ub9ac\ub294 \uc2dc\uac04\uc774 10\ubd84\ucbe4\uc778\uc9c0 \ub530\uc838 \ubcf4\uc138\uc694. \ub2e8\uc704\ub97c \ubc14\uafb8\ub294 \ubc29\ud5a5\uc744 \ud655\uc778\ud574 \ubcf4\uc138\uc694."
      },
      {
       "id": "b",
-      "text": "약 100 m"
+      "text": "\uc57d 100 m"
      },
      {
       "id": "c",
-      "text": "약 1000 m",
-      "reveals": "1000 m는 시속 60 km에 해당해요. 1분과 1시간의 비를 확인해 보세요."
+      "text": "\uc57d 1000 m",
+      "reveals": "1000 m\ub294 \uc2dc\uc18d 60 km\uc5d0 \ud574\ub2f9\ud574\uc694. 1\ubd84\uacfc 1\uc2dc\uac04\uc758 \ube44\ub97c \ud655\uc778\ud574 \ubcf4\uc138\uc694."
      }
     ],
     "correct": [
      "b"
     ],
-    "explain": "시속 6 km는 1시간에 6000 m이고, 1시간은 60분이므로 1분에 100 m 정도다.",
+    "explain": "\uc2dc\uc18d 6 km\ub294 1\uc2dc\uac04\uc5d0 6000 m\uc774\uace0, 1\uc2dc\uac04\uc740 60\ubd84\uc774\ubbc0\ub85c 1\ubd84\uc5d0 100 m \uc815\ub3c4\ub2e4.",
     "hints": [
-     "1시간에 간 거리를 m로 먼저 바꿔 보세요.",
-     "그 거리를 60분으로 나누어 1분에 간 거리를 어림하세요."
+     "1\uc2dc\uac04\uc5d0 \uac04 \uac70\ub9ac\ub97c m\ub85c \uba3c\uc800 \ubc14\uafd4 \ubcf4\uc138\uc694.",
+     "\uadf8 \uac70\ub9ac\ub97c 60\ubd84\uc73c\ub85c \ub098\ub204\uc5b4 1\ubd84\uc5d0 \uac04 \uac70\ub9ac\ub97c \uc5b4\ub9bc\ud558\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "build",
-    "prompt": "같은 속력이 되도록 분속 x(m)와 시속 y(km)의 자연수 쌍을 서로 다른 3개 만드세요. 시속은 6 이상 20 이하(사람이 달릴 수 있는 범위)로 합니다.",
+    "prompt": "\uac19\uc740 \uc18d\ub825\uc774 \ub418\ub3c4\ub85d \ubd84\uc18d x(m)\uc640 \uc2dc\uc18d y(km)\uc758 \uc790\uc5f0\uc218 \uc30d\uc744 \uc11c\ub85c \ub2e4\ub978 3\uac1c \ub9cc\ub4dc\uc138\uc694. \uc2dc\uc18d\uc740 6 \uc774\uc0c1 20 \uc774\ud558(\uc0ac\ub78c\uc774 \ub2ec\ub9b4 \uc218 \uc788\ub294 \ubc94\uc704)\ub85c \ud569\ub2c8\ub2e4.",
     "vars": [
      {
       "name": "x",
-      "label": "분속 x (m)"
+      "label": "\ubd84\uc18d x (m)"
      },
      {
       "name": "y",
-      "label": "시속 y (km)"
+      "label": "\uc2dc\uc18d y (km)"
      }
     ],
     "constraints": [
      {
       "id": "c1",
       "expr": "x==floor(x) && y==floor(y) && x>0",
-      "ok": "둘 다 자연수예요.",
-      "fail": "x와 y는 자연수여야 해요."
+      "ok": "\ub458 \ub2e4 \uc790\uc5f0\uc218\uc608\uc694.",
+      "fail": "x\uc640 y\ub294 \uc790\uc5f0\uc218\uc5ec\uc57c \ud574\uc694."
      },
      {
       "id": "c2",
       "expr": "6*x==100*y",
-      "ok": "두 값이 같은 속력이에요.",
-      "fail": "분속 x m와 시속 y km는 같은 속력이 아니에요. 1시간 동안 간 거리를 같은 단위로 비교해 보세요."
+      "ok": "\ub450 \uac12\uc774 \uac19\uc740 \uc18d\ub825\uc774\uc5d0\uc694.",
+      "fail": "\ubd84\uc18d x m\uc640 \uc2dc\uc18d y km\ub294 \uac19\uc740 \uc18d\ub825\uc774 \uc544\ub2c8\uc5d0\uc694. 1\uc2dc\uac04 \ub3d9\uc548 \uac04 \uac70\ub9ac\ub97c \uac19\uc740 \ub2e8\uc704\ub85c \ube44\uad50\ud574 \ubcf4\uc138\uc694."
      },
      {
       "id": "c3",
       "expr": "y>=6 && y<=20",
-      "ok": "시속이 범위 안이에요.",
-      "fail": "시속은 6 이상 20 이하여야 해요."
+      "ok": "\uc2dc\uc18d\uc774 \ubc94\uc704 \uc548\uc774\uc5d0\uc694.",
+      "fail": "\uc2dc\uc18d\uc740 6 \uc774\uc0c1 20 \uc774\ud558\uc5ec\uc57c \ud574\uc694."
      }
     ],
     "need": 3,
@@ -281,31 +282,31 @@
       "y": 3
      }
     ],
-    "explain": "분속 100 m는 1시간에 6000 m이므로 시속 6 km다. 분속이 50 m씩 늘 때마다 시속은 3 km씩 늘어난다. 그래서 100/6, 150/9, 200/12, 250/15, 300/18이 가능한 쌍이다.",
+    "explain": "\ubd84\uc18d 100 m\ub294 1\uc2dc\uac04\uc5d0 6000 m\uc774\ubbc0\ub85c \uc2dc\uc18d 6 km\ub2e4. \ubd84\uc18d\uc774 50 m\uc529 \ub298 \ub54c\ub9c8\ub2e4 \uc2dc\uc18d\uc740 3 km\uc529 \ub298\uc5b4\ub09c\ub2e4. \uadf8\ub798\uc11c 100/6, 150/9, 200/12, 250/15, 300/18\uc774 \uac00\ub2a5\ud55c \uc30d\uc774\ub2e4.",
     "hints": [
-     "분속 x m로 1시간 동안 가는 거리를 km로 나타내 보세요.",
-     "시속을 하나 정해 놓고 분속이 자연수가 되는지 확인해 보세요.",
-     "자연수가 되지 않는 시속이 있으면, 그 시속들의 공통점을 찾아보세요."
+     "\ubd84\uc18d x m\ub85c 1\uc2dc\uac04 \ub3d9\uc548 \uac00\ub294 \uac70\ub9ac\ub97c km\ub85c \ub098\ud0c0\ub0b4 \ubcf4\uc138\uc694.",
+     "\uc2dc\uc18d\uc744 \ud558\ub098 \uc815\ud574 \ub193\uace0 \ubd84\uc18d\uc774 \uc790\uc5f0\uc218\uac00 \ub418\ub294\uc9c0 \ud655\uc778\ud574 \ubcf4\uc138\uc694.",
+     "\uc790\uc5f0\uc218\uac00 \ub418\uc9c0 \uc54a\ub294 \uc2dc\uc18d\uc774 \uc788\uc73c\uba74, \uadf8 \uc2dc\uc18d\ub4e4\uc758 \uacf5\ud1b5\uc810\uc744 \ucc3e\uc544\ubcf4\uc138\uc694."
     ],
     "because": {
      "id": "s2b",
      "kind": "write",
-     "prompt": "시속 7 km나 8 km는 안 되고 6, 9, 12 km는 되는 이유를 설명해 보세요.",
-     "placeholder": "예: 분속은 시속을 ...로 바꾸면 ...",
+     "prompt": "\uc2dc\uc18d 7 km\ub098 8 km\ub294 \uc548 \ub418\uace0 6, 9, 12 km\ub294 \ub418\ub294 \uc774\uc720\ub97c \uc124\uba85\ud574 \ubcf4\uc138\uc694.",
+     "placeholder": "\uc608: \ubd84\uc18d\uc740 \uc2dc\uc18d\uc744 ...\ub85c \ubc14\uafb8\uba74 ...",
      "minChars": 15,
      "checks": [
       {
        "id": "w1",
-       "label": "시속(또는 분속)이 어떤 수의 배수여야 하는지 말했다",
+       "label": "\uc2dc\uc18d(\ub610\ub294 \ubd84\uc18d)\uc774 \uc5b4\ub5a4 \uc218\uc758 \ubc30\uc218\uc5ec\uc57c \ud558\ub294\uc9c0 \ub9d0\ud588\ub2e4",
        "mode": "any",
        "patterns": [
-        "3\\s*의\\s*배수",
-        "50\\s*의\\s*배수",
-        "3\\s*씩",
-        "50\\s*씩",
-        "(3|50)\\s*(으로\\s*)?나누",
-        "나누어\\s*떨어",
-        "(3|50)\\s*의?\\s*배수",
+        "3\\s*\uc758\\s*\ubc30\uc218",
+        "50\\s*\uc758\\s*\ubc30\uc218",
+        "3\\s*\uc529",
+        "50\\s*\uc529",
+        "(3|50)\\s*(\uc73c\ub85c\\s*)?\ub098\ub204",
+        "\ub098\ub204\uc5b4\\s*\ub5a8\uc5b4",
+        "(3|50)\\s*\uc758?\\s*\ubc30\uc218",
         "50\\s*y\\s*/\\s*3",
         "x\\s*=\\s*50",
         "6\\s*x\\s*=\\s*100"
@@ -313,7 +314,7 @@
       },
       {
        "id": "w2",
-       "label": "단위 환산 근거(60, 1000 등)를 말했다",
+       "label": "\ub2e8\uc704 \ud658\uc0b0 \uadfc\uac70(60, 1000 \ub4f1)\ub97c \ub9d0\ud588\ub2e4",
        "mode": "any",
        "patterns": [
         "60",
@@ -323,560 +324,561 @@
         "50\\s*/\\s*3",
         "100\\s*y",
         "6\\s*x",
-        "1000\\s*[×x*]",
-        "60\\s*분"
+        "1000\\s*[\u00d7x*]",
+        "60\\s*\ubd84"
        ]
       }
      ],
      "selfAssess": [
-      "내가 만든 쌍들이 같은 규칙을 따르는지 확인했나요?",
-      "규칙의 이유를 '왜 하필 3(또는 50)인가'로 설명했나요?"
+      "\ub0b4\uac00 \ub9cc\ub4e0 \uc30d\ub4e4\uc774 \uac19\uc740 \uaddc\uce59\uc744 \ub530\ub974\ub294\uc9c0 \ud655\uc778\ud588\ub098\uc694?",
+      "\uaddc\uce59\uc758 \uc774\uc720\ub97c '\uc65c \ud558\ud544 3(\ub610\ub294 50)\uc778\uac00'\ub85c \uc124\uba85\ud588\ub098\uc694?"
      ],
      "modelAnswers": [
       {
-       "text": "시속 y km는 분속으로 1000×y÷60 = 50y/3 m야. 이게 자연수이려면 y가 3의 배수여야 해서 6, 9, 12는 되고 7, 8은 안 돼."
+       "text": "\uc2dc\uc18d y km\ub294 \ubd84\uc18d\uc73c\ub85c 1000\u00d7y\u00f760 = 50y/3 m\uc57c. \uc774\uac8c \uc790\uc5f0\uc218\uc774\ub824\uba74 y\uac00 3\uc758 \ubc30\uc218\uc5ec\uc57c \ud574\uc11c 6, 9, 12\ub294 \ub418\uace0 7, 8\uc740 \uc548 \ub3fc."
       },
       {
-       "text": "분속 x m는 1시간에 60x m = 0.06x km야. 둘 다 정수이려면 x가 50의 배수여야 하고, 그때 시속은 3씩 늘어나."
+       "text": "\ubd84\uc18d x m\ub294 1\uc2dc\uac04\uc5d0 60x m = 0.06x km\uc57c. \ub458 \ub2e4 \uc815\uc218\uc774\ub824\uba74 x\uac00 50\uc758 \ubc30\uc218\uc5ec\uc57c \ud558\uace0, \uadf8\ub54c \uc2dc\uc18d\uc740 3\uc529 \ub298\uc5b4\ub098."
       },
       {
-       "text": "시속 y를 분속으로 바꾸면 50y/3이므로 y가 3으로 나누어떨어져야 자연수다. 6, 9, 12는 되고 7, 8은 안 된다."
+       "text": "\uc2dc\uc18d y\ub97c \ubd84\uc18d\uc73c\ub85c \ubc14\uafb8\uba74 50y/3\uc774\ubbc0\ub85c y\uac00 3\uc73c\ub85c \ub098\ub204\uc5b4\ub5a8\uc5b4\uc838\uc57c \uc790\uc5f0\uc218\ub2e4. 6, 9, 12\ub294 \ub418\uace0 7, 8\uc740 \uc548 \ub41c\ub2e4."
       }
      ],
      "badAnswers": [
       {
-       "text": "그냥 맞춰 봤더니 그렇게 됐어.",
-       "why": "규칙도 근거도 없다."
+       "text": "\uadf8\ub0e5 \ub9de\ucdb0 \ubd24\ub354\ub2c8 \uadf8\ub807\uac8c \ub410\uc5b4.",
+       "why": "\uaddc\uce59\ub3c4 \uadfc\uac70\ub3c4 \uc5c6\ub2e4."
       },
       {
-       "text": "시속이 클수록 분속도 크기 때문이야.",
-       "why": "관계는 맞지만 7과 8이 안 되는 이유를 설명하지 못한다."
+       "text": "\uc2dc\uc18d\uc774 \ud074\uc218\ub85d \ubd84\uc18d\ub3c4 \ud06c\uae30 \ub54c\ubb38\uc774\uc57c.",
+       "why": "\uad00\uacc4\ub294 \ub9de\uc9c0\ub9cc 7\uacfc 8\uc774 \uc548 \ub418\ub294 \uc774\uc720\ub97c \uc124\uba85\ud558\uc9c0 \ubabb\ud55c\ub2e4."
       }
      ],
-     "humanReview": "배수 조건이 환산식에서 이끌어졌는지, 몇 개의 예에서 우연히 발견한 규칙인지는 사람이 구분해야 한다.",
+     "humanReview": "\ubc30\uc218 \uc870\uac74\uc774 \ud658\uc0b0\uc2dd\uc5d0\uc11c \uc774\ub04c\uc5b4\uc84c\ub294\uc9c0, \uba87 \uac1c\uc758 \uc608\uc5d0\uc11c \uc6b0\uc5f0\ud788 \ubc1c\uacac\ud55c \uaddc\uce59\uc778\uc9c0\ub294 \uc0ac\ub78c\uc774 \uad6c\ubd84\ud574\uc57c \ud55c\ub2e4.",
      "hints": [
-      "시속 y km를 분속으로 바꾸면 분수 모양이 됩니다. 분모가 나누어떨어지려면 y가 어때야 하는지 보세요.",
-      "7과 8로 직접 분속을 계산해 보고 소수가 되는 이유를 찾아보세요."
+      "\uc2dc\uc18d y km\ub97c \ubd84\uc18d\uc73c\ub85c \ubc14\uafb8\uba74 \ubd84\uc218 \ubaa8\uc591\uc774 \ub429\ub2c8\ub2e4. \ubd84\ubaa8\uac00 \ub098\ub204\uc5b4\ub5a8\uc5b4\uc9c0\ub824\uba74 y\uac00 \uc5b4\ub54c\uc57c \ud558\ub294\uc9c0 \ubcf4\uc138\uc694.",
+      "7\uacfc 8\ub85c \uc9c1\uc811 \ubd84\uc18d\uc744 \uacc4\uc0b0\ud574 \ubcf4\uace0 \uc18c\uc218\uac00 \ub418\ub294 \uc774\uc720\ub97c \ucc3e\uc544\ubcf4\uc138\uc694."
      ]
     }
    }
   ],
   "rubric": [
    {
-    "criterion": "단위 환산의 정확성",
-    "full": "세 쌍 모두 같은 속력이고 조건을 만족함",
-    "partial": "일부만 만족함",
-    "none": "환산 관계를 잘못 사용함"
+    "criterion": "\ub2e8\uc704 \ud658\uc0b0\uc758 \uc815\ud655\uc131",
+    "full": "\uc138 \uc30d \ubaa8\ub450 \uac19\uc740 \uc18d\ub825\uc774\uace0 \uc870\uac74\uc744 \ub9cc\uc871\ud568",
+    "partial": "\uc77c\ubd80\ub9cc \ub9cc\uc871\ud568",
+    "none": "\ud658\uc0b0 \uad00\uacc4\ub97c \uc798\ubabb \uc0ac\uc6a9\ud568"
    },
    {
-    "criterion": "규칙의 일반화와 이유",
-    "full": "시속이 3의 배수(또는 분속이 50의 배수)여야 하는 이유를 환산식에서 설명함",
-    "partial": "규칙은 말했으나 이유가 없음",
-    "none": "규칙을 말하지 못함"
+    "criterion": "\uaddc\uce59\uc758 \uc77c\ubc18\ud654\uc640 \uc774\uc720",
+    "full": "\uc2dc\uc18d\uc774 3\uc758 \ubc30\uc218(\ub610\ub294 \ubd84\uc18d\uc774 50\uc758 \ubc30\uc218)\uc5ec\uc57c \ud558\ub294 \uc774\uc720\ub97c \ud658\uc0b0\uc2dd\uc5d0\uc11c \uc124\uba85\ud568",
+    "partial": "\uaddc\uce59\uc740 \ub9d0\ud588\uc73c\ub098 \uc774\uc720\uac00 \uc5c6\uc74c",
+    "none": "\uaddc\uce59\uc744 \ub9d0\ud558\uc9c0 \ubabb\ud568"
    }
   ],
   "alternatives": [
-   "(250, 15), (300, 18)도 정답이다. 범위가 다르면 (50, 3), (350, 21) 등도 만들 수 있다.",
-   "분속이 50의 배수라는 관점과 시속이 3의 배수라는 관점은 같은 규칙의 두 표현이다."
+   "(250, 15), (300, 18)\ub3c4 \uc815\ub2f5\uc774\ub2e4. \ubc94\uc704\uac00 \ub2e4\ub974\uba74 (50, 3), (350, 21) \ub4f1\ub3c4 \ub9cc\ub4e4 \uc218 \uc788\ub2e4.",
+   "\ubd84\uc18d\uc774 50\uc758 \ubc30\uc218\ub77c\ub294 \uad00\uc810\uacfc \uc2dc\uc18d\uc774 3\uc758 \ubc30\uc218\ub77c\ub294 \uad00\uc810\uc740 \uac19\uc740 \uaddc\uce59\uc758 \ub450 \ud45c\ud604\uc774\ub2e4."
   ],
   "hardCases": [
-   "소수를 허용하면 모든 시속이 가능해 문제의 의미가 달라진다. '자연수만'이라는 조건을 학생이 놓친 경우 조건 확인부터 안내한다."
+   "\uc18c\uc218\ub97c \ud5c8\uc6a9\ud558\uba74 \ubaa8\ub4e0 \uc2dc\uc18d\uc774 \uac00\ub2a5\ud574 \ubb38\uc81c\uc758 \uc758\ubbf8\uac00 \ub2ec\ub77c\uc9c4\ub2e4. '\uc790\uc5f0\uc218\ub9cc'\uc774\ub77c\ub294 \uc870\uac74\uc744 \ud559\uc0dd\uc774 \ub193\uce5c \uacbd\uc6b0 \uc870\uac74 \ud655\uc778\ubd80\ud130 \uc548\ub0b4\ud55c\ub2e4."
   ],
   "cautions": {
-   "language": "'분속'(1분 동안 가는 거리), '시속'(1시간 동안 가는 거리)은 낯선 학생이 있어 자료에 뜻을 풀었다. km는 '킬로미터', m은 '미터'로 읽는다.",
-   "culture": "달리기 동아리 소재는 보편적이다.",
-   "accessibility": "표나 그림 없이 숫자와 문장만 사용했다."
+   "language": "'\ubd84\uc18d'(1\ubd84 \ub3d9\uc548 \uac00\ub294 \uac70\ub9ac), '\uc2dc\uc18d'(1\uc2dc\uac04 \ub3d9\uc548 \uac00\ub294 \uac70\ub9ac)\uc740 \ub0af\uc120 \ud559\uc0dd\uc774 \uc788\uc5b4 \uc790\ub8cc\uc5d0 \ub73b\uc744 \ud480\uc5c8\ub2e4. km\ub294 '\ud0ac\ub85c\ubbf8\ud130', m\uc740 '\ubbf8\ud130'\ub85c \uc77d\ub294\ub2e4.",
+   "culture": "\ub2ec\ub9ac\uae30 \ub3d9\uc544\ub9ac \uc18c\uc7ac\ub294 \ubcf4\ud3b8\uc801\uc774\ub2e4.",
+   "accessibility": "\ud45c\ub098 \uadf8\ub9bc \uc5c6\uc774 \uc22b\uc790\uc640 \ubb38\uc7a5\ub9cc \uc0ac\uc6a9\ud588\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "만든 쌍이 같은 속력이고 자연수·범위 조건을 만족하는지",
-    "서술에 배수 조건과 환산 근거가 들어 있는지"
+    "\ub9cc\ub4e0 \uc30d\uc774 \uac19\uc740 \uc18d\ub825\uc774\uace0 \uc790\uc5f0\uc218\u00b7\ubc94\uc704 \uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294\uc9c0",
+    "\uc11c\uc220\uc5d0 \ubc30\uc218 \uc870\uac74\uacfc \ud658\uc0b0 \uadfc\uac70\uac00 \ub4e4\uc5b4 \uc788\ub294\uc9c0"
    ],
    "human": [
-    "규칙의 이유가 논리적인지"
+    "\uaddc\uce59\uc758 \uc774\uc720\uac00 \ub17c\ub9ac\uc801\uc778\uc9c0"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "x-m-el-job-03",
   "subject": "math",
   "grade": "EL-job",
-  "topic": "도면·비와 넓이",
+  "topic": "\ub3c4\uba74\u00b7\ube44\uc640 \ub113\uc774",
   "level": 3,
-  "levelLabel": "고등",
-  "title": "축척 도면에서 실제 방 넓이 판단하기",
+  "levelLabel": "\uace0\ub4f1",
+  "title": "\ucd95\ucc99 \ub3c4\uba74\uc5d0\uc11c \uc2e4\uc81c \ubc29 \ub113\uc774 \ud310\ub2e8\ud558\uae30",
   "uiLang": "ko",
   "format": "judge-evidence-explain",
   "generative": false,
-  "goal": "길이의 축척과 넓이의 축척이 다름을 알고, 서로 다른 어림을 평가하여 타당한 것을 가려낸다.",
+  "goal": "\uae38\uc774\uc758 \ucd95\ucc99\uacfc \ub113\uc774\uc758 \ucd95\ucc99\uc774 \ub2e4\ub984\uc744 \uc54c\uace0, \uc11c\ub85c \ub2e4\ub978 \uc5b4\ub9bc\uc744 \ud3c9\uac00\ud558\uc5ec \ud0c0\ub2f9\ud55c \uac83\uc744 \uac00\ub824\ub0b8\ub2e4.",
   "thinking": [
-   "여러 주장의 타당성 비교·평가",
-   "길이의 비와 넓이의 비 구별",
-   "오개념을 반박하는 설명 쓰기"
+   "\uc5ec\ub7ec \uc8fc\uc7a5\uc758 \ud0c0\ub2f9\uc131 \ube44\uad50\u00b7\ud3c9\uac00",
+   "\uae38\uc774\uc758 \ube44\uc640 \ub113\uc774\uc758 \ube44 \uad6c\ubcc4",
+   "\uc624\uac1c\ub150\uc744 \ubc18\ubc15\ud558\ub294 \uc124\uba85 \uc4f0\uae30"
   ],
-  "differsFromPlain": "단순 연습은 축척으로 길이를 환산한다. 여기서는 이미 나온 네 가지 계산을 비교해 어느 것이 타당한지 가려내고, 한 학생의 오개념을 어떻게 반박할지 쓴다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \ucd95\ucc99\uc73c\ub85c \uae38\uc774\ub97c \ud658\uc0b0\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \uc774\ubbf8 \ub098\uc628 \ub124 \uac00\uc9c0 \uacc4\uc0b0\uc744 \ube44\uad50\ud574 \uc5b4\ub290 \uac83\uc774 \ud0c0\ub2f9\ud55c\uc9c0 \uac00\ub824\ub0b4\uace0, \ud55c \ud559\uc0dd\uc758 \uc624\uac1c\ub150\uc744 \uc5b4\ub5bb\uac8c \ubc18\ubc15\ud560\uc9c0 \uc4f4\ub2e4.",
   "prerequisites": [
-   "축척 1:200의 뜻(도면 1 cm가 실제 몇 cm인지 나타내는 비)",
-   "1 m = 100 cm, 직사각형 넓이"
+   "\ucd95\ucc99 1:200\uc758 \ub73b(\ub3c4\uba74 1 cm\uac00 \uc2e4\uc81c \uba87 cm\uc778\uc9c0 \ub098\ud0c0\ub0b4\ub294 \ube44)",
+   "1 m = 100 cm, \uc9c1\uc0ac\uac01\ud615 \ub113\uc774"
   ],
   "minutes": 10,
   "curriculum": null,
-  "material": "축척이 1:200인 평면도에서 한 방은 가로 5 cm, 세로 4 cm인 직사각형이다. 이 방의 실제 넓이를 네 학생이 각자 계산했다.\n가: 도면의 넓이 20 제곱센티미터에 200을 곱해 4000 제곱센티미터, 곧 0.4 제곱미터.\n나: 실제 가로 10 m, 세로 8 m라서 80 제곱미터.\n다: 도면의 넓이 20 제곱센티미터에 200×200을 곱해 800,000 제곱센티미터, 곧 80 제곱미터.\n라: 실제 가로 1000 cm, 세로 800 cm라서 800,000 제곱센티미터이고, 1 제곱미터가 100 제곱센티미터이므로 8000 제곱미터.",
+  "material": "\ucd95\ucc99\uc774 1:200\uc778 \ud3c9\uba74\ub3c4\uc5d0\uc11c \ud55c \ubc29\uc740 \uac00\ub85c 5 cm, \uc138\ub85c 4 cm\uc778 \uc9c1\uc0ac\uac01\ud615\uc774\ub2e4. \uc774 \ubc29\uc758 \uc2e4\uc81c \ub113\uc774\ub97c \ub124 \ud559\uc0dd\uc774 \uac01\uc790 \uacc4\uc0b0\ud588\ub2e4.\n\uac00: \ub3c4\uba74\uc758 \ub113\uc774 20 \uc81c\uacf1\uc13c\ud2f0\ubbf8\ud130\uc5d0 200\uc744 \uacf1\ud574 4000 \uc81c\uacf1\uc13c\ud2f0\ubbf8\ud130, \uace7 0.4 \uc81c\uacf1\ubbf8\ud130.\n\ub098: \uc2e4\uc81c \uac00\ub85c 10 m, \uc138\ub85c 8 m\ub77c\uc11c 80 \uc81c\uacf1\ubbf8\ud130.\n\ub2e4: \ub3c4\uba74\uc758 \ub113\uc774 20 \uc81c\uacf1\uc13c\ud2f0\ubbf8\ud130\uc5d0 200\u00d7200\uc744 \uacf1\ud574 800,000 \uc81c\uacf1\uc13c\ud2f0\ubbf8\ud130, \uace7 80 \uc81c\uacf1\ubbf8\ud130.\n\ub77c: \uc2e4\uc81c \uac00\ub85c 1000 cm, \uc138\ub85c 800 cm\ub77c\uc11c 800,000 \uc81c\uacf1\uc13c\ud2f0\ubbf8\ud130\uc774\uace0, 1 \uc81c\uacf1\ubbf8\ud130\uac00 100 \uc81c\uacf1\uc13c\ud2f0\ubbf8\ud130\uc774\ubbc0\ub85c 8000 \uc81c\uacf1\ubbf8\ud130.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
     "multi": true,
-    "prompt": "네 학생의 계산 중 실제 넓이를 타당하게 구한 것을 모두 고르세요. (보기의 가~라는 위 자료의 학생 이름이에요.)",
+    "prompt": "\ub124 \ud559\uc0dd\uc758 \uacc4\uc0b0 \uc911 \uc2e4\uc81c \ub113\uc774\ub97c \ud0c0\ub2f9\ud558\uac8c \uad6c\ud55c \uac83\uc744 \ubaa8\ub450 \uace0\ub974\uc138\uc694. (\ubcf4\uae30\uc758 \uac00~\ub77c\ub294 \uc704 \uc790\ub8cc\uc758 \ud559\uc0dd \uc774\ub984\uc774\uc5d0\uc694.)",
     "options": [
      {
       "id": "a",
-      "text": "가: 도면의 넓이에 200을 곱해 4000 제곱센티미터, 곧 0.4 제곱미터",
-      "reveals": "넓이도 길이처럼 200배만 하면 된다고 본 생각이에요. 가로와 세로가 각각 커진다는 점을 놓쳤어요."
+      "text": "\uac00: \ub3c4\uba74\uc758 \ub113\uc774\uc5d0 200\uc744 \uacf1\ud574 4000 \uc81c\uacf1\uc13c\ud2f0\ubbf8\ud130, \uace7 0.4 \uc81c\uacf1\ubbf8\ud130",
+      "reveals": "\ub113\uc774\ub3c4 \uae38\uc774\ucc98\ub7fc 200\ubc30\ub9cc \ud558\uba74 \ub41c\ub2e4\uace0 \ubcf8 \uc0dd\uac01\uc774\uc5d0\uc694. \uac00\ub85c\uc640 \uc138\ub85c\uac00 \uac01\uac01 \ucee4\uc9c4\ub2e4\ub294 \uc810\uc744 \ub193\ucce4\uc5b4\uc694."
      },
      {
       "id": "b",
-      "text": "나: 실제 가로 10 m, 세로 8 m라서 80 제곱미터"
+      "text": "\ub098: \uc2e4\uc81c \uac00\ub85c 10 m, \uc138\ub85c 8 m\ub77c\uc11c 80 \uc81c\uacf1\ubbf8\ud130"
      },
      {
       "id": "c",
-      "text": "다: 도면의 넓이에 200×200을 곱해 800,000 제곱센티미터, 곧 80 제곱미터"
+      "text": "\ub2e4: \ub3c4\uba74\uc758 \ub113\uc774\uc5d0 200\u00d7200\uc744 \uacf1\ud574 800,000 \uc81c\uacf1\uc13c\ud2f0\ubbf8\ud130, \uace7 80 \uc81c\uacf1\ubbf8\ud130"
      },
      {
       "id": "d",
-      "text": "라: 800,000 제곱센티미터이고 1 제곱미터가 100 제곱센티미터라서 8000 제곱미터",
-      "reveals": "길이 단위의 관계(100배)를 넓이 단위에 그대로 쓴 생각이에요. 가로·세로 둘 다 100배가 되는 경우를 따져 보세요."
+      "text": "\ub77c: 800,000 \uc81c\uacf1\uc13c\ud2f0\ubbf8\ud130\uc774\uace0 1 \uc81c\uacf1\ubbf8\ud130\uac00 100 \uc81c\uacf1\uc13c\ud2f0\ubbf8\ud130\ub77c\uc11c 8000 \uc81c\uacf1\ubbf8\ud130",
+      "reveals": "\uae38\uc774 \ub2e8\uc704\uc758 \uad00\uacc4(100\ubc30)\ub97c \ub113\uc774 \ub2e8\uc704\uc5d0 \uadf8\ub300\ub85c \uc4f4 \uc0dd\uac01\uc774\uc5d0\uc694. \uac00\ub85c\u00b7\uc138\ub85c \ub458 \ub2e4 100\ubc30\uac00 \ub418\ub294 \uacbd\uc6b0\ub97c \ub530\uc838 \ubcf4\uc138\uc694."
      }
     ],
     "correct": [
      "b",
      "c"
     ],
-    "explain": "실제 가로 10 m, 세로 8 m이므로 넓이는 80 제곱미터(나). 도면 넓이에 200×200 = 40,000배를 곱해도 같은 값(다)이다. 가는 넓이를 200배만 했고, 라는 제곱미터-제곱센티미터 환산을 100배로 잘못 썼다(1 제곱미터 = 10,000 제곱센티미터).",
+    "explain": "\uc2e4\uc81c \uac00\ub85c 10 m, \uc138\ub85c 8 m\uc774\ubbc0\ub85c \ub113\uc774\ub294 80 \uc81c\uacf1\ubbf8\ud130(\ub098). \ub3c4\uba74 \ub113\uc774\uc5d0 200\u00d7200 = 40,000\ubc30\ub97c \uacf1\ud574\ub3c4 \uac19\uc740 \uac12(\ub2e4)\uc774\ub2e4. \uac00\ub294 \ub113\uc774\ub97c 200\ubc30\ub9cc \ud588\uace0, \ub77c\ub294 \uc81c\uacf1\ubbf8\ud130-\uc81c\uacf1\uc13c\ud2f0\ubbf8\ud130 \ud658\uc0b0\uc744 100\ubc30\ub85c \uc798\ubabb \uc37c\ub2e4(1 \uc81c\uacf1\ubbf8\ud130 = 10,000 \uc81c\uacf1\uc13c\ud2f0\ubbf8\ud130).",
     "hints": [
-     "각 계산의 실제 가로·세로를 직접 구해 보고 넓이를 구한 값과 견주어 보세요.",
-     "서로 다른 결과가 나온 계산에서 어느 단계가 다른지 표시해 보세요."
+     "\uac01 \uacc4\uc0b0\uc758 \uc2e4\uc81c \uac00\ub85c\u00b7\uc138\ub85c\ub97c \uc9c1\uc811 \uad6c\ud574 \ubcf4\uace0 \ub113\uc774\ub97c \uad6c\ud55c \uac12\uacfc \uacac\uc8fc\uc5b4 \ubcf4\uc138\uc694.",
+     "\uc11c\ub85c \ub2e4\ub978 \uacb0\uacfc\uac00 \ub098\uc628 \uacc4\uc0b0\uc5d0\uc11c \uc5b4\ub290 \ub2e8\uacc4\uac00 \ub2e4\ub978\uc9c0 \ud45c\uc2dc\ud574 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "가 학생에게 '넓이는 200배가 아닌 이유'를 설명해 주세요. 도면의 방과 실제 방을 비교해서 쓰세요.",
-    "placeholder": "예: 길이가 200배면 가로와 세로가 ...",
+    "prompt": "\uac00 \ud559\uc0dd\uc5d0\uac8c '\ub113\uc774\ub294 200\ubc30\uac00 \uc544\ub2cc \uc774\uc720'\ub97c \uc124\uba85\ud574 \uc8fc\uc138\uc694. \ub3c4\uba74\uc758 \ubc29\uacfc \uc2e4\uc81c \ubc29\uc744 \ube44\uad50\ud574\uc11c \uc4f0\uc138\uc694.",
+    "placeholder": "\uc608: \uae38\uc774\uac00 200\ubc30\uba74 \uac00\ub85c\uc640 \uc138\ub85c\uac00 ...",
     "minChars": 20,
     "checks": [
      {
       "id": "w1",
-      "label": "넓이가 200×200배(또는 길이 비의 제곱)가 된다고 말했다",
+      "label": "\ub113\uc774\uac00 200\u00d7200\ubc30(\ub610\ub294 \uae38\uc774 \ube44\uc758 \uc81c\uacf1)\uac00 \ub41c\ub2e4\uace0 \ub9d0\ud588\ub2e4",
       "mode": "any",
       "patterns": [
-       "제곱",
-       "200\\s*[×x*]\\s*200",
+       "\uc81c\uacf1",
+       "200\\s*[\u00d7x*]\\s*200",
        "40\\s*,?\\s*000",
-       "4\\s*만"
+       "4\\s*\ub9cc"
       ]
      },
      {
       "id": "w2",
-      "label": "가로와 세로 둘 다 커진다는 점을 말했다",
+      "label": "\uac00\ub85c\uc640 \uc138\ub85c \ub458 \ub2e4 \ucee4\uc9c4\ub2e4\ub294 \uc810\uc744 \ub9d0\ud588\ub2e4",
       "mode": "any",
       "patterns": [
-       "가로.*세로",
-       "세로.*가로",
-       "두\\s*(방향|번)",
-       "양쪽",
-       "각각",
-       "한\\s*(방향|쪽|변)",
-       "길이.{0,12}200\\s*배.{0,25}(제곱|200\\s*[×x*]\\s*200)",
-       "(가로|세로|길이)\\S{0,3}\\s*(도|가|를)?\\s*200\\s*배.{0,20}(가로|세로)"
+       "\uac00\ub85c.*\uc138\ub85c",
+       "\uc138\ub85c.*\uac00\ub85c",
+       "\ub450\\s*(\ubc29\ud5a5|\ubc88)",
+       "\uc591\ucabd",
+       "\uac01\uac01",
+       "\ud55c\\s*(\ubc29\ud5a5|\ucabd|\ubcc0)",
+       "\uae38\uc774.{0,12}200\\s*\ubc30.{0,25}(\uc81c\uacf1|200\\s*[\u00d7x*]\\s*200)",
+       "(\uac00\ub85c|\uc138\ub85c|\uae38\uc774)\\S{0,3}\\s*(\ub3c4|\uac00|\ub97c)?\\s*200\\s*\ubc30.{0,20}(\uac00\ub85c|\uc138\ub85c)"
       ]
      }
     ],
     "selfAssess": [
-     "가로·세로가 각각 200배가 되는 과정을 말로 풀었나요?",
-     "내 설명을 80 제곱미터라는 값과 연결해 확인했나요?"
+     "\uac00\ub85c\u00b7\uc138\ub85c\uac00 \uac01\uac01 200\ubc30\uac00 \ub418\ub294 \uacfc\uc815\uc744 \ub9d0\ub85c \ud480\uc5c8\ub098\uc694?",
+     "\ub0b4 \uc124\uba85\uc744 80 \uc81c\uacf1\ubbf8\ud130\ub77c\ub294 \uac12\uacfc \uc5f0\uacb0\ud574 \ud655\uc778\ud588\ub098\uc694?"
     ],
     "modelAnswers": [
      {
-      "text": "넓이는 가로와 세로가 모두 200배가 되니까 200배가 아니라 200×200 = 40000배가 돼. 그래서 20 제곱센티미터의 40000배인 800,000 제곱센티미터, 곧 80 제곱미터야."
+      "text": "\ub113\uc774\ub294 \uac00\ub85c\uc640 \uc138\ub85c\uac00 \ubaa8\ub450 200\ubc30\uac00 \ub418\ub2c8\uae4c 200\ubc30\uac00 \uc544\ub2c8\ub77c 200\u00d7200 = 40000\ubc30\uac00 \ub3fc. \uadf8\ub798\uc11c 20 \uc81c\uacf1\uc13c\ud2f0\ubbf8\ud130\uc758 40000\ubc30\uc778 800,000 \uc81c\uacf1\uc13c\ud2f0\ubbf8\ud130, \uace7 80 \uc81c\uacf1\ubbf8\ud130\uc57c."
      },
      {
-      "text": "길이의 비가 1:200이면 넓이의 비는 그 제곱이야. 가로도 세로도 200배씩 커지므로 넓이는 40,000배가 돼."
+      "text": "\uae38\uc774\uc758 \ube44\uac00 1:200\uc774\uba74 \ub113\uc774\uc758 \ube44\ub294 \uadf8 \uc81c\uacf1\uc774\uc57c. \uac00\ub85c\ub3c4 \uc138\ub85c\ub3c4 200\ubc30\uc529 \ucee4\uc9c0\ubbc0\ub85c \ub113\uc774\ub294 40,000\ubc30\uac00 \ub3fc."
      },
      {
-      "text": "길이를 200배 하면 넓이는 200의 제곱배이다. 가 학생은 한 방향만 200배 한 넓이를 구했다."
+      "text": "\uae38\uc774\ub97c 200\ubc30 \ud558\uba74 \ub113\uc774\ub294 200\uc758 \uc81c\uacf1\ubc30\uc774\ub2e4. \uac00 \ud559\uc0dd\uc740 \ud55c \ubc29\ud5a5\ub9cc 200\ubc30 \ud55c \ub113\uc774\ub97c \uad6c\ud588\ub2e4."
      }
     ],
     "badAnswers": [
      {
-      "text": "가는 틀렸어. 200배가 아니야.",
-      "why": "이유 없이 결론만 말했다."
+      "text": "\uac00\ub294 \ud2c0\ub838\uc5b4. 200\ubc30\uac00 \uc544\ub2c8\uc57c.",
+      "why": "\uc774\uc720 \uc5c6\uc774 \uacb0\ub860\ub9cc \ub9d0\ud588\ub2e4."
      },
      {
-      "text": "넓이는 200배 맞아.",
-      "why": "오개념을 그대로 받아들였다."
+      "text": "\ub113\uc774\ub294 200\ubc30 \ub9de\uc544.",
+      "why": "\uc624\uac1c\ub150\uc744 \uadf8\ub300\ub85c \ubc1b\uc544\ub4e4\uc600\ub2e4."
      }
     ],
-    "humanReview": "제곱 관계를 도면의 방(5 cm, 4 cm)과 실제 방(10 m, 8 m)에 연결해 설명했는지는 사람이 확인해야 한다.",
+    "humanReview": "\uc81c\uacf1 \uad00\uacc4\ub97c \ub3c4\uba74\uc758 \ubc29(5 cm, 4 cm)\uacfc \uc2e4\uc81c \ubc29(10 m, 8 m)\uc5d0 \uc5f0\uacb0\ud574 \uc124\uba85\ud588\ub294\uc9c0\ub294 \uc0ac\ub78c\uc774 \ud655\uc778\ud574\uc57c \ud55c\ub2e4.",
     "hints": [
-     "도면에서 가로가 5 cm일 때 실제는 몇 cm인지, 세로는 몇 cm인지 각각 적어 보세요.",
-     "가로만 200배 한 직사각형의 넓이와 가로·세로 모두 200배 한 직사각형의 넓이를 비교해 보세요."
+     "\ub3c4\uba74\uc5d0\uc11c \uac00\ub85c\uac00 5 cm\uc77c \ub54c \uc2e4\uc81c\ub294 \uba87 cm\uc778\uc9c0, \uc138\ub85c\ub294 \uba87 cm\uc778\uc9c0 \uac01\uac01 \uc801\uc5b4 \ubcf4\uc138\uc694.",
+     "\uac00\ub85c\ub9cc 200\ubc30 \ud55c \uc9c1\uc0ac\uac01\ud615\uc758 \ub113\uc774\uc640 \uac00\ub85c\u00b7\uc138\ub85c \ubaa8\ub450 200\ubc30 \ud55c \uc9c1\uc0ac\uac01\ud615\uc758 \ub113\uc774\ub97c \ube44\uad50\ud574 \ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "계산 평가",
-    "full": "타당한 계산(나, 다)과 두 가지 오류(가, 라)를 모두 가려냄",
-    "partial": "하나만 가려냄",
-    "none": "근거 없이 고름"
+    "criterion": "\uacc4\uc0b0 \ud3c9\uac00",
+    "full": "\ud0c0\ub2f9\ud55c \uacc4\uc0b0(\ub098, \ub2e4)\uacfc \ub450 \uac00\uc9c0 \uc624\ub958(\uac00, \ub77c)\ub97c \ubaa8\ub450 \uac00\ub824\ub0c4",
+    "partial": "\ud558\ub098\ub9cc \uac00\ub824\ub0c4",
+    "none": "\uadfc\uac70 \uc5c6\uc774 \uace0\ub984"
    },
    {
-    "criterion": "오개념 반박 설명",
-    "full": "가로·세로 둘 다 커짐 → 길이 비의 제곱으로 넓이 비가 됨을 설명",
-    "partial": "제곱이라고만 말함",
-    "none": "설명 없음"
+    "criterion": "\uc624\uac1c\ub150 \ubc18\ubc15 \uc124\uba85",
+    "full": "\uac00\ub85c\u00b7\uc138\ub85c \ub458 \ub2e4 \ucee4\uc9d0 \u2192 \uae38\uc774 \ube44\uc758 \uc81c\uacf1\uc73c\ub85c \ub113\uc774 \ube44\uac00 \ub428\uc744 \uc124\uba85",
+    "partial": "\uc81c\uacf1\uc774\ub77c\uace0\ub9cc \ub9d0\ud568",
+    "none": "\uc124\uba85 \uc5c6\uc74c"
    }
   ],
   "alternatives": [
-   "도면 길이를 먼저 실제 길이로 바꾼 뒤 넓이를 구하는 방법(나)과, 넓이에 비의 제곱을 곱하는 방법(다)이 모두 인정된다."
+   "\ub3c4\uba74 \uae38\uc774\ub97c \uba3c\uc800 \uc2e4\uc81c \uae38\uc774\ub85c \ubc14\uafbc \ub4a4 \ub113\uc774\ub97c \uad6c\ud558\ub294 \ubc29\ubc95(\ub098)\uacfc, \ub113\uc774\uc5d0 \ube44\uc758 \uc81c\uacf1\uc744 \uacf1\ud558\ub294 \ubc29\ubc95(\ub2e4)\uc774 \ubaa8\ub450 \uc778\uc815\ub41c\ub2e4."
   ],
   "hardCases": [
-   "제곱센티미터와 제곱미터 단위 환산 실수는 있으나 비의 제곱 개념은 맞게 설명한 경우, 개념 이해와 계산 실수를 구분해 평가한다."
+   "\uc81c\uacf1\uc13c\ud2f0\ubbf8\ud130\uc640 \uc81c\uacf1\ubbf8\ud130 \ub2e8\uc704 \ud658\uc0b0 \uc2e4\uc218\ub294 \uc788\uc73c\ub098 \ube44\uc758 \uc81c\uacf1 \uac1c\ub150\uc740 \ub9de\uac8c \uc124\uba85\ud55c \uacbd\uc6b0, \uac1c\ub150 \uc774\ud574\uc640 \uacc4\uc0b0 \uc2e4\uc218\ub97c \uad6c\ubd84\ud574 \ud3c9\uac00\ud55c\ub2e4."
   ],
   "cautions": {
-   "language": "제곱미터·제곱센티미터는 글자로 풀어 써서 화면 낭독기가 단위를 놓치지 않게 했다. '축척 1:200'은 '일 대 이백'으로 읽는다.",
-   "culture": "평면도 읽기는 주거 문화와 관련되지만 특정 지역에 의존하지 않는다.",
-   "accessibility": "도면 그림 없이 가로·세로 값을 글로 제시했다."
+   "language": "\uc81c\uacf1\ubbf8\ud130\u00b7\uc81c\uacf1\uc13c\ud2f0\ubbf8\ud130\ub294 \uae00\uc790\ub85c \ud480\uc5b4 \uc368\uc11c \ud654\uba74 \ub0ad\ub3c5\uae30\uac00 \ub2e8\uc704\ub97c \ub193\uce58\uc9c0 \uc54a\uac8c \ud588\ub2e4. '\ucd95\ucc99 1:200'\uc740 '\uc77c \ub300 \uc774\ubc31'\uc73c\ub85c \uc77d\ub294\ub2e4.",
+   "culture": "\ud3c9\uba74\ub3c4 \uc77d\uae30\ub294 \uc8fc\uac70 \ubb38\ud654\uc640 \uad00\ub828\ub418\uc9c0\ub9cc \ud2b9\uc815 \uc9c0\uc5ed\uc5d0 \uc758\uc874\ud558\uc9c0 \uc54a\ub294\ub2e4.",
+   "accessibility": "\ub3c4\uba74 \uadf8\ub9bc \uc5c6\uc774 \uac00\ub85c\u00b7\uc138\ub85c \uac12\uc744 \uae00\ub85c \uc81c\uc2dc\ud588\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "타당한 계산(나, 다) 선택 여부",
-    "서술에 제곱 관계와 가로·세로 언급이 있는지"
+    "\ud0c0\ub2f9\ud55c \uacc4\uc0b0(\ub098, \ub2e4) \uc120\ud0dd \uc5ec\ubd80",
+    "\uc11c\uc220\uc5d0 \uc81c\uacf1 \uad00\uacc4\uc640 \uac00\ub85c\u00b7\uc138\ub85c \uc5b8\uae09\uc774 \uc788\ub294\uc9c0"
    ],
    "human": [
-    "설명이 도면과 실제 값을 연결했는지"
+    "\uc124\uba85\uc774 \ub3c4\uba74\uacfc \uc2e4\uc81c \uac12\uc744 \uc5f0\uacb0\ud588\ub294\uc9c0"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "x-m-el-job-04",
   "subject": "math",
   "grade": "EL-job",
-  "topic": "도면·비와 넓이",
+  "topic": "\ub3c4\uba74\u00b7\ube44\uc640 \ub113\uc774",
   "level": 3,
-  "levelLabel": "고등",
-  "title": "복사된 도면, 축척을 그대로 믿어도 될까",
+  "levelLabel": "\uace0\ub4f1",
+  "title": "\ubcf5\uc0ac\ub41c \ub3c4\uba74, \ucd95\ucc99\uc744 \uadf8\ub300\ub85c \ubbff\uc5b4\ub3c4 \ub420\uae4c",
   "uiLang": "ko",
   "format": "reveal-and-revise",
   "generative": false,
-  "goal": "도면의 축척 표기가 복사·축소로 달라질 수 있음을 알고, 새 정보가 들어올 때 판단을 고쳐 가는 방법을 익힌다.",
+  "goal": "\ub3c4\uba74\uc758 \ucd95\ucc99 \ud45c\uae30\uac00 \ubcf5\uc0ac\u00b7\ucd95\uc18c\ub85c \ub2ec\ub77c\uc9c8 \uc218 \uc788\uc74c\uc744 \uc54c\uace0, \uc0c8 \uc815\ubcf4\uac00 \ub4e4\uc5b4\uc62c \ub54c \ud310\ub2e8\uc744 \uace0\uccd0 \uac00\ub294 \ubc29\ubc95\uc744 \uc775\ud78c\ub2e4.",
   "thinking": [
-   "새 정보에 따라 판단 수정하기",
-   "축척 표기와 실제 도면의 크기 구별하기",
-   "길이 막대로 비 확인하기"
+   "\uc0c8 \uc815\ubcf4\uc5d0 \ub530\ub77c \ud310\ub2e8 \uc218\uc815\ud558\uae30",
+   "\ucd95\ucc99 \ud45c\uae30\uc640 \uc2e4\uc81c \ub3c4\uba74\uc758 \ud06c\uae30 \uad6c\ubcc4\ud558\uae30",
+   "\uae38\uc774 \ub9c9\ub300\ub85c \ube44 \ud655\uc778\ud558\uae30"
   ],
-  "differsFromPlain": "단순 연습은 '축척 1:100'을 그대로 믿고 길이를 환산한다. 여기서는 도면이 복사되었다는 정보와 길이 막대가 차례로 드러나며, 학생이 그때마다 판단을 고친다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 '\ucd95\ucc99 1:100'\uc744 \uadf8\ub300\ub85c \ubbff\uace0 \uae38\uc774\ub97c \ud658\uc0b0\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \ub3c4\uba74\uc774 \ubcf5\uc0ac\ub418\uc5c8\ub2e4\ub294 \uc815\ubcf4\uc640 \uae38\uc774 \ub9c9\ub300\uac00 \ucc28\ub840\ub85c \ub4dc\ub7ec\ub098\uba70, \ud559\uc0dd\uc774 \uadf8\ub54c\ub9c8\ub2e4 \ud310\ub2e8\uc744 \uace0\uce5c\ub2e4.",
   "prerequisites": [
-   "축척의 뜻(도면 길이와 실제 길이의 비)",
-   "비례식 풀이(중학교 수준)"
+   "\ucd95\ucc99\uc758 \ub73b(\ub3c4\uba74 \uae38\uc774\uc640 \uc2e4\uc81c \uae38\uc774\uc758 \ube44)",
+   "\ube44\ub840\uc2dd \ud480\uc774(\uc911\ud559\uad50 \uc218\uc900)"
   ],
   "minutes": 10,
   "curriculum": null,
-  "material": "분양 안내문에 실린 아파트 평면도를 보고 거실 가로 길이를 알아보려 한다. 평면도에서 거실의 가로는 6 cm다.",
+  "material": "\ubd84\uc591 \uc548\ub0b4\ubb38\uc5d0 \uc2e4\ub9b0 \uc544\ud30c\ud2b8 \ud3c9\uba74\ub3c4\ub97c \ubcf4\uace0 \uac70\uc2e4 \uac00\ub85c \uae38\uc774\ub97c \uc54c\uc544\ubcf4\ub824 \ud55c\ub2e4. \ud3c9\uba74\ub3c4\uc5d0\uc11c \uac70\uc2e4\uc758 \uac00\ub85c\ub294 6 cm\ub2e4.",
   "steps": [
    {
     "id": "s1",
     "kind": "reveal",
-    "prompt": "정보가 하나씩 드러납니다. 매번 그때까지의 정보로 판단하세요.",
+    "prompt": "\uc815\ubcf4\uac00 \ud558\ub098\uc529 \ub4dc\ub7ec\ub0a9\ub2c8\ub2e4. \ub9e4\ubc88 \uadf8\ub54c\uae4c\uc9c0\uc758 \uc815\ubcf4\ub85c \ud310\ub2e8\ud558\uc138\uc694.",
     "stages": [
      {
-      "info": "평면도 위쪽에 '축척 1:100'이라고 적혀 있다. 거실의 도면상 가로는 6 cm다.",
-      "ask": "지금 정보로 거실 가로를 어떻게 판단하겠습니까?",
+      "info": "\ud3c9\uba74\ub3c4 \uc704\ucabd\uc5d0 '\ucd95\ucc99 1:100'\uc774\ub77c\uace0 \uc801\ud600 \uc788\ub2e4. \uac70\uc2e4\uc758 \ub3c4\uba74\uc0c1 \uac00\ub85c\ub294 6 cm\ub2e4.",
+      "ask": "\uc9c0\uae08 \uc815\ubcf4\ub85c \uac70\uc2e4 \uac00\ub85c\ub97c \uc5b4\ub5bb\uac8c \ud310\ub2e8\ud558\uaca0\uc2b5\ub2c8\uae4c?",
       "options": [
        {
         "id": "a",
-        "text": "6 m로 확정하고 가구 배치를 시작한다",
-        "reveals": "표기를 확인한 것은 좋지만, 표기가 도면의 현재 크기와 맞는지는 아직 확인하지 않았어요."
+        "text": "6 m\ub85c \ud655\uc815\ud558\uace0 \uac00\uad6c \ubc30\uce58\ub97c \uc2dc\uc791\ud55c\ub2e4",
+        "reveals": "\ud45c\uae30\ub97c \ud655\uc778\ud55c \uac83\uc740 \uc88b\uc9c0\ub9cc, \ud45c\uae30\uac00 \ub3c4\uba74\uc758 \ud604\uc7ac \ud06c\uae30\uc640 \ub9de\ub294\uc9c0\ub294 \uc544\uc9c1 \ud655\uc778\ud558\uc9c0 \uc54a\uc558\uc5b4\uc694."
        },
        {
         "id": "b",
-        "text": "약 6 m로 보되, 도면이 원본 크기인지 확인하고 싶다"
+        "text": "\uc57d 6 m\ub85c \ubcf4\ub418, \ub3c4\uba74\uc774 \uc6d0\ubcf8 \ud06c\uae30\uc778\uc9c0 \ud655\uc778\ud558\uace0 \uc2f6\ub2e4"
        },
        {
         "id": "c",
-        "text": "길이가 적혀 있지 않으므로 알 수 없다",
-        "reveals": "도면 길이와 축척이 있으면 어림은 할 수 있어요."
+        "text": "\uae38\uc774\uac00 \uc801\ud600 \uc788\uc9c0 \uc54a\uc73c\ubbc0\ub85c \uc54c \uc218 \uc5c6\ub2e4",
+        "reveals": "\ub3c4\uba74 \uae38\uc774\uc640 \ucd95\ucc99\uc774 \uc788\uc73c\uba74 \uc5b4\ub9bc\uc740 \ud560 \uc218 \uc788\uc5b4\uc694."
        }
       ],
       "reasonable": [
        "a",
        "b"
       ],
-      "after": "축척 1:100이면 6 cm는 600 cm = 6 m다. 지금은 이 정도 판단이 합리적이다."
+      "after": "\ucd95\ucc99 1:100\uc774\uba74 6 cm\ub294 600 cm = 6 m\ub2e4. \uc9c0\uae08\uc740 \uc774 \uc815\ub3c4 \ud310\ub2e8\uc774 \ud569\ub9ac\uc801\uc774\ub2e4."
      },
      {
-      "info": "안내문 구석에 작은 글씨가 있다: '이 평면도는 A3 원본을 A4에 70% 크기로 줄여 복사한 것입니다.'",
-      "ask": "이 정보로 거실의 실제 가로는 6 m보다 어떻게 되겠습니까?",
+      "info": "\uc548\ub0b4\ubb38 \uad6c\uc11d\uc5d0 \uc791\uc740 \uae00\uc528\uac00 \uc788\ub2e4: '\uc774 \ud3c9\uba74\ub3c4\ub294 A3 \uc6d0\ubcf8\uc744 A4\uc5d0 70% \ud06c\uae30\ub85c \uc904\uc5ec \ubcf5\uc0ac\ud55c \uac83\uc785\ub2c8\ub2e4.'",
+      "ask": "\uc774 \uc815\ubcf4\ub85c \uac70\uc2e4\uc758 \uc2e4\uc81c \uac00\ub85c\ub294 6 m\ubcf4\ub2e4 \uc5b4\ub5bb\uac8c \ub418\uaca0\uc2b5\ub2c8\uae4c?",
       "options": [
        {
         "id": "a",
-        "text": "6 m보다 짧을 것이다",
-        "reveals": "도면이 줄어든 방향과 실제가 커지는 방향을 거꾸로 생각했을 수 있어요."
+        "text": "6 m\ubcf4\ub2e4 \uc9e7\uc744 \uac83\uc774\ub2e4",
+        "reveals": "\ub3c4\uba74\uc774 \uc904\uc5b4\ub4e0 \ubc29\ud5a5\uacfc \uc2e4\uc81c\uac00 \ucee4\uc9c0\ub294 \ubc29\ud5a5\uc744 \uac70\uafb8\ub85c \uc0dd\uac01\ud588\uc744 \uc218 \uc788\uc5b4\uc694."
        },
        {
         "id": "b",
-        "text": "6 m보다 길 것이다"
+        "text": "6 m\ubcf4\ub2e4 \uae38 \uac83\uc774\ub2e4"
        },
        {
         "id": "c",
-        "text": "여전히 6 m다. 복사해도 적힌 축척은 그대로니까",
-        "reveals": "인쇄된 숫자는 복사해도 그대로지만 도면의 길이는 줄어요. 숫자와 길이 중 무엇이 변했는지 구별해 보세요."
+        "text": "\uc5ec\uc804\ud788 6 m\ub2e4. \ubcf5\uc0ac\ud574\ub3c4 \uc801\ud78c \ucd95\ucc99\uc740 \uadf8\ub300\ub85c\ub2c8\uae4c",
+        "reveals": "\uc778\uc1c4\ub41c \uc22b\uc790\ub294 \ubcf5\uc0ac\ud574\ub3c4 \uadf8\ub300\ub85c\uc9c0\ub9cc \ub3c4\uba74\uc758 \uae38\uc774\ub294 \uc904\uc5b4\uc694. \uc22b\uc790\uc640 \uae38\uc774 \uc911 \ubb34\uc5c7\uc774 \ubcc0\ud588\ub294\uc9c0 \uad6c\ubcc4\ud574 \ubcf4\uc138\uc694."
        }
       ],
       "reasonable": [
        "b"
       ],
-      "after": "도면이 70%로 줄었으므로 원본에서는 6 ÷ 0.7 ≈ 8.57 cm였다. 그래서 실제는 약 8.6 m로, 6 m보다 길다."
+      "after": "\ub3c4\uba74\uc774 70%\ub85c \uc904\uc5c8\uc73c\ubbc0\ub85c \uc6d0\ubcf8\uc5d0\uc11c\ub294 6 \u00f7 0.7 \u2248 8.57 cm\uc600\ub2e4. \uadf8\ub798\uc11c \uc2e4\uc81c\ub294 \uc57d 8.6 m\ub85c, 6 m\ubcf4\ub2e4 \uae38\ub2e4."
      },
      {
-      "info": "평면도 아래에 길이 막대(실제 5 m를 나타내는 선분)가 있다. 자로 재어 보니 그 선분의 길이는 3.5 cm다.",
-      "ask": "거실의 실제 가로는 약 얼마입니까?",
+      "info": "\ud3c9\uba74\ub3c4 \uc544\ub798\uc5d0 \uae38\uc774 \ub9c9\ub300(\uc2e4\uc81c 5 m\ub97c \ub098\ud0c0\ub0b4\ub294 \uc120\ubd84)\uac00 \uc788\ub2e4. \uc790\ub85c \uc7ac\uc5b4 \ubcf4\ub2c8 \uadf8 \uc120\ubd84\uc758 \uae38\uc774\ub294 3.5 cm\ub2e4.",
+      "ask": "\uac70\uc2e4\uc758 \uc2e4\uc81c \uac00\ub85c\ub294 \uc57d \uc5bc\ub9c8\uc785\ub2c8\uae4c?",
       "options": [
        {
         "id": "a",
-        "text": "약 4.2 m",
-        "reveals": "비를 거꾸로 곱한 값일 수 있어요. 1 cm가 몇 m인지 먼저 구해 보세요."
+        "text": "\uc57d 4.2 m",
+        "reveals": "\ube44\ub97c \uac70\uafb8\ub85c \uacf1\ud55c \uac12\uc77c \uc218 \uc788\uc5b4\uc694. 1 cm\uac00 \uba87 m\uc778\uc9c0 \uba3c\uc800 \uad6c\ud574 \ubcf4\uc138\uc694."
        },
        {
         "id": "b",
-        "text": "약 6 m",
-        "reveals": "축척 표기를 그대로 쓴 값이에요. 길이 막대와 견주어 보세요."
+        "text": "\uc57d 6 m",
+        "reveals": "\ucd95\ucc99 \ud45c\uae30\ub97c \uadf8\ub300\ub85c \uc4f4 \uac12\uc774\uc5d0\uc694. \uae38\uc774 \ub9c9\ub300\uc640 \uacac\uc8fc\uc5b4 \ubcf4\uc138\uc694."
        },
        {
         "id": "c",
-        "text": "약 8.6 m"
+        "text": "\uc57d 8.6 m"
        }
       ],
       "reasonable": [
        "c"
       ],
-      "after": "3.5 cm가 5 m이므로 1 cm는 약 1.43 m, 6 cm는 약 8.57 m다. 두 번째 단계의 계산과 같다. 길이 막대는 도면이 줄어들 때 함께 줄어들어서 안전한 기준이 된다."
+      "after": "3.5 cm\uac00 5 m\uc774\ubbc0\ub85c 1 cm\ub294 \uc57d 1.43 m, 6 cm\ub294 \uc57d 8.57 m\ub2e4. \ub450 \ubc88\uc9f8 \ub2e8\uacc4\uc758 \uacc4\uc0b0\uacfc \uac19\ub2e4. \uae38\uc774 \ub9c9\ub300\ub294 \ub3c4\uba74\uc774 \uc904\uc5b4\ub4e4 \ub54c \ud568\uaed8 \uc904\uc5b4\ub4e4\uc5b4\uc11c \uc548\uc804\ud55c \uae30\uc900\uc774 \ub41c\ub2e4."
      }
     ],
-    "reflect": "처음에는 축척 표기만으로 판단했다. 복사 정보가 들어오자 표기와 실제 도면의 크기가 다를 수 있음을 알았고, 길이 막대로 이를 확인했다. 새 정보가 나왔을 때 이전 판단의 어느 가정이 깨지는지 살펴보세요.",
+    "reflect": "\ucc98\uc74c\uc5d0\ub294 \ucd95\ucc99 \ud45c\uae30\ub9cc\uc73c\ub85c \ud310\ub2e8\ud588\ub2e4. \ubcf5\uc0ac \uc815\ubcf4\uac00 \ub4e4\uc5b4\uc624\uc790 \ud45c\uae30\uc640 \uc2e4\uc81c \ub3c4\uba74\uc758 \ud06c\uae30\uac00 \ub2e4\ub97c \uc218 \uc788\uc74c\uc744 \uc54c\uc558\uace0, \uae38\uc774 \ub9c9\ub300\ub85c \uc774\ub97c \ud655\uc778\ud588\ub2e4. \uc0c8 \uc815\ubcf4\uac00 \ub098\uc654\uc744 \ub54c \uc774\uc804 \ud310\ub2e8\uc758 \uc5b4\ub290 \uac00\uc815\uc774 \uae68\uc9c0\ub294\uc9c0 \uc0b4\ud3b4\ubcf4\uc138\uc694.",
     "hints": [
-     "각 단계에서 '무엇이 바뀌었는가'를 한 줄로 적어 보세요.",
-     "축척 표기와 길이 막대 중 복사할 때 함께 바뀌는 것이 무엇인지 생각해 보세요."
+     "\uac01 \ub2e8\uacc4\uc5d0\uc11c '\ubb34\uc5c7\uc774 \ubc14\ub00c\uc5c8\ub294\uac00'\ub97c \ud55c \uc904\ub85c \uc801\uc5b4 \ubcf4\uc138\uc694.",
+     "\ucd95\ucc99 \ud45c\uae30\uc640 \uae38\uc774 \ub9c9\ub300 \uc911 \ubcf5\uc0ac\ud560 \ub54c \ud568\uaed8 \ubc14\ub00c\ub294 \uac83\uc774 \ubb34\uc5c7\uc778\uc9c0 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "안내문이나 도면의 길이를 믿고 가구를 사기 전에 반드시 확인할 것 한 가지와 그 이유를 쓰세요.",
-    "placeholder": "예: 길이 막대로 ...",
+    "prompt": "\uc548\ub0b4\ubb38\uc774\ub098 \ub3c4\uba74\uc758 \uae38\uc774\ub97c \ubbff\uace0 \uac00\uad6c\ub97c \uc0ac\uae30 \uc804\uc5d0 \ubc18\ub4dc\uc2dc \ud655\uc778\ud560 \uac83 \ud55c \uac00\uc9c0\uc640 \uadf8 \uc774\uc720\ub97c \uc4f0\uc138\uc694.",
+    "placeholder": "\uc608: \uae38\uc774 \ub9c9\ub300\ub85c ...",
     "minChars": 15,
     "checks": [
      {
       "id": "w1",
-      "label": "확인 방법을 말했다(길이 막대, 직접 재기 등)",
+      "label": "\ud655\uc778 \ubc29\ubc95\uc744 \ub9d0\ud588\ub2e4(\uae38\uc774 \ub9c9\ub300, \uc9c1\uc811 \uc7ac\uae30 \ub4f1)",
       "mode": "any",
       "patterns": [
-       "막대",
-       "눈금",
-       "직접\\s*(재|쟀|측정)",
-       "확인"
+       "\ub9c9\ub300",
+       "\ub208\uae08",
+       "\uc9c1\uc811\\s*(\uc7ac|\uc7c0|\uce21\uc815)",
+       "\ud655\uc778"
       ]
      },
      {
       "id": "w2",
-      "label": "축소·확대·복사 등 크기 변화를 이유로 들었다",
+      "label": "\ucd95\uc18c\u00b7\ud655\ub300\u00b7\ubcf5\uc0ac \ub4f1 \ud06c\uae30 \ubcc0\ud654\ub97c \uc774\uc720\ub85c \ub4e4\uc5c8\ub2e4",
       "mode": "any",
       "patterns": [
-       "축소",
-       "확대",
-       "복사",
-       "인쇄",
-       "줄어",
-       "커졌"
+       "\ucd95\uc18c",
+       "\ud655\ub300",
+       "\ubcf5\uc0ac",
+       "\uc778\uc1c4",
+       "\uc904\uc5b4",
+       "\ucee4\uc84c"
       ]
      }
     ],
     "selfAssess": [
-     "확인한 것이 축척 숫자인지 실제 도면 위의 길이인지 구분해서 썼나요?",
-     "내가 든 이유가 이 문제의 정보(70% 복사)와 연결되나요?"
+     "\ud655\uc778\ud55c \uac83\uc774 \ucd95\ucc99 \uc22b\uc790\uc778\uc9c0 \uc2e4\uc81c \ub3c4\uba74 \uc704\uc758 \uae38\uc774\uc778\uc9c0 \uad6c\ubd84\ud574\uc11c \uc37c\ub098\uc694?",
+     "\ub0b4\uac00 \ub4e0 \uc774\uc720\uac00 \uc774 \ubb38\uc81c\uc758 \uc815\ubcf4(70% \ubcf5\uc0ac)\uc640 \uc5f0\uacb0\ub418\ub098\uc694?"
     ],
     "modelAnswers": [
      {
-      "text": "축척 숫자만 믿지 말고 도면에 있는 길이 막대로 직접 재어 확인해야 해. 복사하면서 크기가 바뀌면 숫자는 그대로여도 틀려지니까."
+      "text": "\ucd95\ucc99 \uc22b\uc790\ub9cc \ubbff\uc9c0 \ub9d0\uace0 \ub3c4\uba74\uc5d0 \uc788\ub294 \uae38\uc774 \ub9c9\ub300\ub85c \uc9c1\uc811 \uc7ac\uc5b4 \ud655\uc778\ud574\uc57c \ud574. \ubcf5\uc0ac\ud558\uba74\uc11c \ud06c\uae30\uac00 \ubc14\ub00c\uba74 \uc22b\uc790\ub294 \uadf8\ub300\ub85c\uc5ec\ub3c4 \ud2c0\ub824\uc9c0\ub2c8\uae4c."
      },
      {
-      "text": "도면이 원본 크기로 인쇄됐는지 확인해야 해. 축소·확대 인쇄되면 1:100이라는 숫자가 맞지 않아서 실제 길이를 잘못 알 수 있어."
+      "text": "\ub3c4\uba74\uc774 \uc6d0\ubcf8 \ud06c\uae30\ub85c \uc778\uc1c4\ub410\ub294\uc9c0 \ud655\uc778\ud574\uc57c \ud574. \ucd95\uc18c\u00b7\ud655\ub300 \uc778\uc1c4\ub418\uba74 1:100\uc774\ub77c\ub294 \uc22b\uc790\uac00 \ub9de\uc9c0 \uc54a\uc544\uc11c \uc2e4\uc81c \uae38\uc774\ub97c \uc798\ubabb \uc54c \uc218 \uc788\uc5b4."
      }
     ],
     "badAnswers": [
      {
-      "text": "도면은 믿으면 안 돼.",
-      "why": "무엇을 어떻게 확인할지도, 이유도 없다."
+      "text": "\ub3c4\uba74\uc740 \ubbff\uc73c\uba74 \uc548 \ub3fc.",
+      "why": "\ubb34\uc5c7\uc744 \uc5b4\ub5bb\uac8c \ud655\uc778\ud560\uc9c0\ub3c4, \uc774\uc720\ub3c4 \uc5c6\ub2e4."
      },
      {
-      "text": "6 cm에 100을 곱하면 돼.",
-      "why": "복사 정보를 반영하지 않았다."
+      "text": "6 cm\uc5d0 100\uc744 \uacf1\ud558\uba74 \ub3fc.",
+      "why": "\ubcf5\uc0ac \uc815\ubcf4\ub97c \ubc18\uc601\ud558\uc9c0 \uc54a\uc558\ub2e4."
      }
     ],
-    "humanReview": "확인 방법이 구체적(막대 길이 측정 등)인지, 막연히 '조심한다'인지는 사람이 구분해야 한다.",
+    "humanReview": "\ud655\uc778 \ubc29\ubc95\uc774 \uad6c\uccb4\uc801(\ub9c9\ub300 \uae38\uc774 \uce21\uc815 \ub4f1)\uc778\uc9c0, \ub9c9\uc5f0\ud788 '\uc870\uc2ec\ud55c\ub2e4'\uc778\uc9c0\ub294 \uc0ac\ub78c\uc774 \uad6c\ubd84\ud574\uc57c \ud55c\ub2e4.",
     "hints": [
-     "도면이 복사되어도 그대로인 것과 같이 줄어드는 것을 나눠 보세요.",
-     "길이 막대를 쓰면 어떤 가정 없이도 비를 알 수 있는지 생각해 보세요."
+     "\ub3c4\uba74\uc774 \ubcf5\uc0ac\ub418\uc5b4\ub3c4 \uadf8\ub300\ub85c\uc778 \uac83\uacfc \uac19\uc774 \uc904\uc5b4\ub4dc\ub294 \uac83\uc744 \ub098\ub220 \ubcf4\uc138\uc694.",
+     "\uae38\uc774 \ub9c9\ub300\ub97c \uc4f0\uba74 \uc5b4\ub5a4 \uac00\uc815 \uc5c6\uc774\ub3c4 \ube44\ub97c \uc54c \uc218 \uc788\ub294\uc9c0 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "판단의 수정",
-    "full": "복사 정보 후 실제 길이가 더 길다고 고치고, 길이 막대로 값을 확정함",
-    "partial": "일부 단계에서만 고침",
-    "none": "처음 판단을 유지함"
+    "criterion": "\ud310\ub2e8\uc758 \uc218\uc815",
+    "full": "\ubcf5\uc0ac \uc815\ubcf4 \ud6c4 \uc2e4\uc81c \uae38\uc774\uac00 \ub354 \uae38\ub2e4\uace0 \uace0\uce58\uace0, \uae38\uc774 \ub9c9\ub300\ub85c \uac12\uc744 \ud655\uc815\ud568",
+    "partial": "\uc77c\ubd80 \ub2e8\uacc4\uc5d0\uc11c\ub9cc \uace0\uce68",
+    "none": "\ucc98\uc74c \ud310\ub2e8\uc744 \uc720\uc9c0\ud568"
    },
    {
-    "criterion": "확인 방법과 이유",
-    "full": "길이 막대 등으로 직접 확인한다고 쓰고 복사·축소와 연결함",
-    "partial": "확인한다고만 씀",
-    "none": "방법이 없음"
+    "criterion": "\ud655\uc778 \ubc29\ubc95\uacfc \uc774\uc720",
+    "full": "\uae38\uc774 \ub9c9\ub300 \ub4f1\uc73c\ub85c \uc9c1\uc811 \ud655\uc778\ud55c\ub2e4\uace0 \uc4f0\uace0 \ubcf5\uc0ac\u00b7\ucd95\uc18c\uc640 \uc5f0\uacb0\ud568",
+    "partial": "\ud655\uc778\ud55c\ub2e4\uace0\ub9cc \uc500",
+    "none": "\ubc29\ubc95\uc774 \uc5c6\uc74c"
    }
   ],
   "alternatives": [
-   "1단계에서 '확인하고 싶다'(b)와 '6 m로 확정'(a)은 모두 그 시점에서는 합리적이다.",
-   "2단계 결과를 70% 비로 구하든(6÷0.7×100 cm) 길이 막대로 구하든 약 8.6 m로 같다."
+   "1\ub2e8\uacc4\uc5d0\uc11c '\ud655\uc778\ud558\uace0 \uc2f6\ub2e4'(b)\uc640 '6 m\ub85c \ud655\uc815'(a)\uc740 \ubaa8\ub450 \uadf8 \uc2dc\uc810\uc5d0\uc11c\ub294 \ud569\ub9ac\uc801\uc774\ub2e4.",
+   "2\ub2e8\uacc4 \uacb0\uacfc\ub97c 70% \ube44\ub85c \uad6c\ud558\ub4e0(6\u00f70.7\u00d7100 cm) \uae38\uc774 \ub9c9\ub300\ub85c \uad6c\ud558\ub4e0 \uc57d 8.6 m\ub85c \uac19\ub2e4."
   ],
   "hardCases": [
-   "복사 배율이 정확히 70%가 아닌 경우(인쇄 오차)에는 길이 막대로 재는 방법이 더 믿을 만하다고 판단할 수 있다."
+   "\ubcf5\uc0ac \ubc30\uc728\uc774 \uc815\ud655\ud788 70%\uac00 \uc544\ub2cc \uacbd\uc6b0(\uc778\uc1c4 \uc624\ucc28)\uc5d0\ub294 \uae38\uc774 \ub9c9\ub300\ub85c \uc7ac\ub294 \ubc29\ubc95\uc774 \ub354 \ubbff\uc744 \ub9cc\ud558\ub2e4\uace0 \ud310\ub2e8\ud560 \uc218 \uc788\ub2e4."
   ],
   "cautions": {
-   "language": "'축척', '길이 막대(스케일 바)'는 낯설 수 있어 뜻을 글에 풀었다. '일 대 백'으로 읽는다.",
-   "culture": "아파트 분양 안내문은 국내 맥락이지만 평면도의 축척 개념은 보편적이다.",
-   "accessibility": "그림 없이 길이 막대를 '5 m를 나타내는 선분'이라고 글로 설명했다."
+   "language": "'\ucd95\ucc99', '\uae38\uc774 \ub9c9\ub300(\uc2a4\ucf00\uc77c \ubc14)'\ub294 \ub0af\uc124 \uc218 \uc788\uc5b4 \ub73b\uc744 \uae00\uc5d0 \ud480\uc5c8\ub2e4. '\uc77c \ub300 \ubc31'\uc73c\ub85c \uc77d\ub294\ub2e4.",
+   "culture": "\uc544\ud30c\ud2b8 \ubd84\uc591 \uc548\ub0b4\ubb38\uc740 \uad6d\ub0b4 \ub9e5\ub77d\uc774\uc9c0\ub9cc \ud3c9\uba74\ub3c4\uc758 \ucd95\ucc99 \uac1c\ub150\uc740 \ubcf4\ud3b8\uc801\uc774\ub2e4.",
+   "accessibility": "\uadf8\ub9bc \uc5c6\uc774 \uae38\uc774 \ub9c9\ub300\ub97c '5 m\ub97c \ub098\ud0c0\ub0b4\ub294 \uc120\ubd84'\uc774\ub77c\uace0 \uae00\ub85c \uc124\uba85\ud588\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "단계별 선택이 합리적 범위인지",
-    "서술에 확인 방법과 크기 변화 이유가 있는지"
+    "\ub2e8\uacc4\ubcc4 \uc120\ud0dd\uc774 \ud569\ub9ac\uc801 \ubc94\uc704\uc778\uc9c0",
+    "\uc11c\uc220\uc5d0 \ud655\uc778 \ubc29\ubc95\uacfc \ud06c\uae30 \ubcc0\ud654 \uc774\uc720\uac00 \uc788\ub294\uc9c0"
    ],
    "human": [
-    "확인 방법이 구체적이고 이유가 문제 정보와 연결되는지"
+    "\ud655\uc778 \ubc29\ubc95\uc774 \uad6c\uccb4\uc801\uc774\uace0 \uc774\uc720\uac00 \ubb38\uc81c \uc815\ubcf4\uc640 \uc5f0\uacb0\ub418\ub294\uc9c0"
    ]
-  }
+  },
+  "status": "reviewed-ai"
  },
  {
   "id": "x-m-el-job-05",
   "subject": "math",
   "grade": "EL-job",
-  "topic": "경우의 수와 일정 짜기",
+  "topic": "\uacbd\uc6b0\uc758 \uc218\uc640 \uc77c\uc815 \uc9dc\uae30",
   "level": 3,
-  "levelLabel": "고등",
-  "title": "발표 순서 조건 맞추기",
+  "levelLabel": "\uace0\ub4f1",
+  "title": "\ubc1c\ud45c \uc21c\uc11c \uc870\uac74 \ub9de\ucd94\uae30",
   "uiLang": "ko",
   "format": "build-many-verify",
   "generative": true,
-  "goal": "여러 조건을 모두 만족하는 발표 순서를 만들고, 가능한 순서의 총 개수를 빠짐없이 센 방법을 설명한다.",
+  "goal": "\uc5ec\ub7ec \uc870\uac74\uc744 \ubaa8\ub450 \ub9cc\uc871\ud558\ub294 \ubc1c\ud45c \uc21c\uc11c\ub97c \ub9cc\ub4e4\uace0, \uac00\ub2a5\ud55c \uc21c\uc11c\uc758 \ucd1d \uac1c\uc218\ub97c \ube60\uc9d0\uc5c6\uc774 \uc13c \ubc29\ubc95\uc744 \uc124\uba85\ud55c\ub2e4.",
   "thinking": [
-   "제약 조건 아래서 여러 해법 만들기",
-   "조건을 나누어 빠짐없이 세기",
-   "개수를 어떻게 확신했는지 설명하기"
+   "\uc81c\uc57d \uc870\uac74 \uc544\ub798\uc11c \uc5ec\ub7ec \ud574\ubc95 \ub9cc\ub4e4\uae30",
+   "\uc870\uac74\uc744 \ub098\ub204\uc5b4 \ube60\uc9d0\uc5c6\uc774 \uc138\uae30",
+   "\uac1c\uc218\ub97c \uc5b4\ub5bb\uac8c \ud655\uc2e0\ud588\ub294\uc9c0 \uc124\uba85\ud558\uae30"
   ],
-  "differsFromPlain": "단순 연습은 순열 공식에 넣어 총 가짓수를 구한다. 여기서는 조건을 지키는 순서를 직접 짜 보고, 가능한 순서가 모두 몇 가지인지 빠뜨림 없이 센 방법을 설명한다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uc21c\uc5f4 \uacf5\uc2dd\uc5d0 \ub123\uc5b4 \ucd1d \uac00\uc9d3\uc218\ub97c \uad6c\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \uc870\uac74\uc744 \uc9c0\ud0a4\ub294 \uc21c\uc11c\ub97c \uc9c1\uc811 \uc9dc \ubcf4\uace0, \uac00\ub2a5\ud55c \uc21c\uc11c\uac00 \ubaa8\ub450 \uba87 \uac00\uc9c0\uc778\uc9c0 \ube60\ub728\ub9bc \uc5c6\uc774 \uc13c \ubc29\ubc95\uc744 \uc124\uba85\ud55c\ub2e4.",
   "prerequisites": [
-   "4개를 일렬로 세울 때 순서가 서로 다른 배열이 생긴다는 경험",
-   "수를 나누어 세는 기초(합의 법칙 수준)"
+   "4\uac1c\ub97c \uc77c\ub82c\ub85c \uc138\uc6b8 \ub54c \uc21c\uc11c\uac00 \uc11c\ub85c \ub2e4\ub978 \ubc30\uc5f4\uc774 \uc0dd\uae34\ub2e4\ub294 \uacbd\ud5d8",
+   "\uc218\ub97c \ub098\ub204\uc5b4 \uc138\ub294 \uae30\ucd08(\ud569\uc758 \ubc95\uce59 \uc218\uc900)"
   ],
   "minutes": 15,
   "curriculum": null,
-  "material": "축제 무대에서 동아리 A, B, C, D가 한 번씩 순서대로 발표한다. 조건은 다음과 같다.\n① A는 장비 설치 때문에 첫 번째 순서가 될 수 없다.\n② D는 다른 일정 때문에 마지막 순서가 될 수 없다.\n③ B의 영상이 C 발표의 배경이 되므로 B는 C보다 먼저 발표해야 한다.\n순서 번호 1은 첫 번째, 4는 마지막이다.",
+  "material": "\ucd95\uc81c \ubb34\ub300\uc5d0\uc11c \ub3d9\uc544\ub9ac A, B, C, D\uac00 \ud55c \ubc88\uc529 \uc21c\uc11c\ub300\ub85c \ubc1c\ud45c\ud55c\ub2e4. \uc870\uac74\uc740 \ub2e4\uc74c\uacfc \uac19\ub2e4.\n\u2460 A\ub294 \uc7a5\ube44 \uc124\uce58 \ub54c\ubb38\uc5d0 \uccab \ubc88\uc9f8 \uc21c\uc11c\uac00 \ub420 \uc218 \uc5c6\ub2e4.\n\u2461 D\ub294 \ub2e4\ub978 \uc77c\uc815 \ub54c\ubb38\uc5d0 \ub9c8\uc9c0\ub9c9 \uc21c\uc11c\uac00 \ub420 \uc218 \uc5c6\ub2e4.\n\u2462 B\uc758 \uc601\uc0c1\uc774 C \ubc1c\ud45c\uc758 \ubc30\uacbd\uc774 \ub418\ubbc0\ub85c B\ub294 C\ubcf4\ub2e4 \uba3c\uc800 \ubc1c\ud45c\ud574\uc57c \ud55c\ub2e4.\n\uc21c\uc11c \ubc88\ud638 1\uc740 \uccab \ubc88\uc9f8, 4\ub294 \ub9c8\uc9c0\ub9c9\uc774\ub2e4.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
     "scaffold": true,
-    "prompt": "조건 ③(B가 C보다 먼저)만 지키면 4팀의 발표 순서는 모두 몇 가지일까요?",
+    "prompt": "\uc870\uac74 \u2462(B\uac00 C\ubcf4\ub2e4 \uba3c\uc800)\ub9cc \uc9c0\ud0a4\uba74 4\ud300\uc758 \ubc1c\ud45c \uc21c\uc11c\ub294 \ubaa8\ub450 \uba87 \uac00\uc9c0\uc77c\uae4c\uc694?",
     "options": [
      {
       "id": "a",
-      "text": "24가지",
-      "reveals": "조건 ③이 순서를 제한한다는 점이 계산에 반영되지 않았어요."
+      "text": "24\uac00\uc9c0",
+      "reveals": "\uc870\uac74 \u2462\uc774 \uc21c\uc11c\ub97c \uc81c\ud55c\ud55c\ub2e4\ub294 \uc810\uc774 \uacc4\uc0b0\uc5d0 \ubc18\uc601\ub418\uc9c0 \uc54a\uc558\uc5b4\uc694."
      },
      {
       "id": "b",
-      "text": "16가지",
-      "reveals": "B와 C의 앞뒤 관계가 둘 중 하나로 정해지는 것을 어떻게 셌는지 되돌아보세요."
+      "text": "16\uac00\uc9c0",
+      "reveals": "B\uc640 C\uc758 \uc55e\ub4a4 \uad00\uacc4\uac00 \ub458 \uc911 \ud558\ub098\ub85c \uc815\ud574\uc9c0\ub294 \uac83\uc744 \uc5b4\ub5bb\uac8c \uc14c\ub294\uc9c0 \ub418\ub3cc\uc544\ubcf4\uc138\uc694."
      },
      {
       "id": "c",
-      "text": "12가지"
+      "text": "12\uac00\uc9c0"
      }
     ],
     "correct": [
      "c"
     ],
-    "explain": "4팀의 전체 순서는 24가지이고, 그중 B와 C의 앞뒤를 바꾸면 서로 짝이 된다. 조건 ③을 만족하는 것은 정확히 절반인 12가지다.",
+    "explain": "4\ud300\uc758 \uc804\uccb4 \uc21c\uc11c\ub294 24\uac00\uc9c0\uc774\uace0, \uadf8\uc911 B\uc640 C\uc758 \uc55e\ub4a4\ub97c \ubc14\uafb8\uba74 \uc11c\ub85c \uc9dd\uc774 \ub41c\ub2e4. \uc870\uac74 \u2462\uc744 \ub9cc\uc871\ud558\ub294 \uac83\uc740 \uc815\ud655\ud788 \uc808\ubc18\uc778 12\uac00\uc9c0\ub2e4.",
     "hints": [
-     "조건 없이 모든 순서를 세면 몇 가지인지부터 떠올려 보세요.",
-     "한 순서에서 B와 C의 자리를 맞바꾸면 어떻게 되는지 보세요."
+     "\uc870\uac74 \uc5c6\uc774 \ubaa8\ub4e0 \uc21c\uc11c\ub97c \uc138\uba74 \uba87 \uac00\uc9c0\uc778\uc9c0\ubd80\ud130 \ub5a0\uc62c\ub824 \ubcf4\uc138\uc694.",
+     "\ud55c \uc21c\uc11c\uc5d0\uc11c B\uc640 C\uc758 \uc790\ub9ac\ub97c \ub9de\ubc14\uafb8\uba74 \uc5b4\ub5bb\uac8c \ub418\ub294\uc9c0 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "build",
-    "prompt": "세 조건을 모두 만족하는 서로 다른 발표 순서 3개를 만드세요. a, b, c, d는 각각 A, B, C, D의 발표 순서 번호(1~4)입니다. 네 팀의 번호는 서로 달라야 합니다.",
+    "prompt": "\uc138 \uc870\uac74\uc744 \ubaa8\ub450 \ub9cc\uc871\ud558\ub294 \uc11c\ub85c \ub2e4\ub978 \ubc1c\ud45c \uc21c\uc11c 3\uac1c\ub97c \ub9cc\ub4dc\uc138\uc694. a, b, c, d\ub294 \uac01\uac01 A, B, C, D\uc758 \ubc1c\ud45c \uc21c\uc11c \ubc88\ud638(1~4)\uc785\ub2c8\ub2e4. \ub124 \ud300\uc758 \ubc88\ud638\ub294 \uc11c\ub85c \ub2ec\ub77c\uc57c \ud569\ub2c8\ub2e4.",
     "vars": [
      {
       "name": "a",
-      "label": "A의 순서"
+      "label": "A\uc758 \uc21c\uc11c"
      },
      {
       "name": "b",
-      "label": "B의 순서"
+      "label": "B\uc758 \uc21c\uc11c"
      },
      {
       "name": "c",
-      "label": "C의 순서"
+      "label": "C\uc758 \uc21c\uc11c"
      },
      {
       "name": "d",
-      "label": "D의 순서"
+      "label": "D\uc758 \uc21c\uc11c"
      }
     ],
     "constraints": [
      {
       "id": "c1",
       "expr": "min(a,b,c,d)>=1 && max(a,b,c,d)<=4 && a==floor(a) && b==floor(b) && c==floor(c) && d==floor(d)",
-      "ok": "모두 1~4 사이의 자연수예요.",
-      "fail": "순서 번호는 1~4 사이의 자연수여야 해요."
+      "ok": "\ubaa8\ub450 1~4 \uc0ac\uc774\uc758 \uc790\uc5f0\uc218\uc608\uc694.",
+      "fail": "\uc21c\uc11c \ubc88\ud638\ub294 1~4 \uc0ac\uc774\uc758 \uc790\uc5f0\uc218\uc5ec\uc57c \ud574\uc694."
      },
      {
       "id": "c2",
       "expr": "a!=b && a!=c && a!=d && b!=c && b!=d && c!=d",
-      "ok": "순서가 겹치지 않아요.",
-      "fail": "두 팀이 같은 순서를 쓸 수 없어요."
+      "ok": "\uc21c\uc11c\uac00 \uacb9\uce58\uc9c0 \uc54a\uc544\uc694.",
+      "fail": "\ub450 \ud300\uc774 \uac19\uc740 \uc21c\uc11c\ub97c \uc4f8 \uc218 \uc5c6\uc5b4\uc694."
      },
      {
       "id": "c3",
       "expr": "a!=1",
-      "ok": "A가 첫 번째가 아니에요.",
-      "fail": "A는 첫 번째 순서가 될 수 없어요(조건 ①)."
+      "ok": "A\uac00 \uccab \ubc88\uc9f8\uac00 \uc544\ub2c8\uc5d0\uc694.",
+      "fail": "A\ub294 \uccab \ubc88\uc9f8 \uc21c\uc11c\uac00 \ub420 \uc218 \uc5c6\uc5b4\uc694(\uc870\uac74 \u2460)."
      },
      {
       "id": "c4",
       "expr": "d!=4",
-      "ok": "D가 마지막이 아니에요.",
-      "fail": "D는 마지막 순서가 될 수 없어요(조건 ②)."
+      "ok": "D\uac00 \ub9c8\uc9c0\ub9c9\uc774 \uc544\ub2c8\uc5d0\uc694.",
+      "fail": "D\ub294 \ub9c8\uc9c0\ub9c9 \uc21c\uc11c\uac00 \ub420 \uc218 \uc5c6\uc5b4\uc694(\uc870\uac74 \u2461)."
      },
      {
       "id": "c5",
       "expr": "b<c",
-      "ok": "B가 C보다 먼저예요.",
-      "fail": "B는 C보다 먼저 발표해야 해요(조건 ③)."
+      "ok": "B\uac00 C\ubcf4\ub2e4 \uba3c\uc800\uc608\uc694.",
+      "fail": "B\ub294 C\ubcf4\ub2e4 \uba3c\uc800 \ubc1c\ud45c\ud574\uc57c \ud574\uc694(\uc870\uac74 \u2462)."
      }
     ],
     "need": 3,
@@ -914,173 +916,173 @@
       "d": 1
      }
     ],
-    "explain": "조건을 만족하는 순서는 모두 7가지다. 순서로 쓰면 BADC, BCDA, BDAC, BDCA, DABC, DBAC, DBCA다. 예) BADC는 A=2, B=1, C=4, D=3이다.",
+    "explain": "\uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294 \uc21c\uc11c\ub294 \ubaa8\ub450 7\uac00\uc9c0\ub2e4. \uc21c\uc11c\ub85c \uc4f0\uba74 BADC, BCDA, BDAC, BDCA, DABC, DBAC, DBCA\ub2e4. \uc608) BADC\ub294 A=2, B=1, C=4, D=3\uc774\ub2e4.",
     "hints": [
-     "가장 제한이 많은 팀부터 자리를 정해 보세요.",
-     "B를 1번에 놓으면 나머지 자리는 어떻게 되는지 따져 보세요.",
-     "만든 뒤 조건 ①②③을 하나씩 대조해 보세요."
+     "\uac00\uc7a5 \uc81c\ud55c\uc774 \ub9ce\uc740 \ud300\ubd80\ud130 \uc790\ub9ac\ub97c \uc815\ud574 \ubcf4\uc138\uc694.",
+     "B\ub97c 1\ubc88\uc5d0 \ub193\uc73c\uba74 \ub098\uba38\uc9c0 \uc790\ub9ac\ub294 \uc5b4\ub5bb\uac8c \ub418\ub294\uc9c0 \ub530\uc838 \ubcf4\uc138\uc694.",
+     "\ub9cc\ub4e0 \ub4a4 \uc870\uac74 \u2460\u2461\u2462\uc744 \ud558\ub098\uc529 \ub300\uc870\ud574 \ubcf4\uc138\uc694."
     ],
     "because": {
      "id": "s2b",
      "kind": "write",
-     "prompt": "가능한 순서가 모두 몇 가지인지 알아내고, 빠뜨린 것이 없다고 확신한 방법을 쓰세요.",
-     "placeholder": "예: B가 첫 번째일 때 ...",
+     "prompt": "\uac00\ub2a5\ud55c \uc21c\uc11c\uac00 \ubaa8\ub450 \uba87 \uac00\uc9c0\uc778\uc9c0 \uc54c\uc544\ub0b4\uace0, \ube60\ub728\ub9b0 \uac83\uc774 \uc5c6\ub2e4\uace0 \ud655\uc2e0\ud55c \ubc29\ubc95\uc744 \uc4f0\uc138\uc694.",
+     "placeholder": "\uc608: B\uac00 \uccab \ubc88\uc9f8\uc77c \ub54c ...",
      "minChars": 20,
      "checks": [
       {
        "id": "w1",
-       "label": "총 가짓수(7)를 말했다",
+       "label": "\ucd1d \uac00\uc9d3\uc218(7)\ub97c \ub9d0\ud588\ub2e4",
        "mode": "any",
        "patterns": [
-        "(?<![\\d])7\\s*(가지|개|경우|종)",
-        "일곱"
+        "(?<![\\d])7\\s*(\uac00\uc9c0|\uac1c|\uacbd\uc6b0|\uc885)",
+        "\uc77c\uacf1"
        ]
       },
       {
        "id": "w2",
-       "label": "경우를 나누거나 빼서 세는 방법을 말했다",
+       "label": "\uacbd\uc6b0\ub97c \ub098\ub204\uac70\ub098 \ube7c\uc11c \uc138\ub294 \ubc29\ubc95\uc744 \ub9d0\ud588\ub2e4",
        "mode": "any",
        "patterns": [
-        "나누",
-        "나눈",
-        "나눠",
-        "나눔",
-        "분류",
-        "빼",
-        "제외",
-        "하나씩",
-        "빠짐없이",
-        "중복",
-        "경우",
-        "기준으로"
+        "\ub098\ub204",
+        "\ub098\ub208",
+        "\ub098\ub220",
+        "\ub098\ub214",
+        "\ubd84\ub958",
+        "\ube7c",
+        "\uc81c\uc678",
+        "\ud558\ub098\uc529",
+        "\ube60\uc9d0\uc5c6\uc774",
+        "\uc911\ubcf5",
+        "\uacbd\uc6b0",
+        "\uae30\uc900\uc73c\ub85c"
        ]
       }
      ],
      "selfAssess": [
-      "내가 센 방법으로 같은 순서를 두 번 세지 않았는지 점검했나요?",
-      "내가 만든 3개 순서가 세어 낸 7가지 안에 들어 있나요?"
+      "\ub0b4\uac00 \uc13c \ubc29\ubc95\uc73c\ub85c \uac19\uc740 \uc21c\uc11c\ub97c \ub450 \ubc88 \uc138\uc9c0 \uc54a\uc558\ub294\uc9c0 \uc810\uac80\ud588\ub098\uc694?",
+      "\ub0b4\uac00 \ub9cc\ub4e0 3\uac1c \uc21c\uc11c\uac00 \uc138\uc5b4 \ub0b8 7\uac00\uc9c0 \uc548\uc5d0 \ub4e4\uc5b4 \uc788\ub098\uc694?"
      ],
      "modelAnswers": [
       {
-       "text": "B가 첫 번째인 경우 4가지, D가 첫 번째인 경우 3가지로 나누어 세면 모두 7가지야."
+       "text": "B\uac00 \uccab \ubc88\uc9f8\uc778 \uacbd\uc6b0 4\uac00\uc9c0, D\uac00 \uccab \ubc88\uc9f8\uc778 \uacbd\uc6b0 3\uac00\uc9c0\ub85c \ub098\ub204\uc5b4 \uc138\uba74 \ubaa8\ub450 7\uac00\uc9c0\uc57c."
       },
       {
-       "text": "B가 C보다 먼저인 12가지 중에서 A가 첫째인 3가지를 빼고, D가 마지막인 경우 2가지를 더 빼면 7가지가 남아."
+       "text": "B\uac00 C\ubcf4\ub2e4 \uba3c\uc800\uc778 12\uac00\uc9c0 \uc911\uc5d0\uc11c A\uac00 \uccab\uc9f8\uc778 3\uac00\uc9c0\ub97c \ube7c\uace0, D\uac00 \ub9c8\uc9c0\ub9c9\uc778 \uacbd\uc6b0 2\uac00\uc9c0\ub97c \ub354 \ube7c\uba74 7\uac00\uc9c0\uac00 \ub0a8\uc544."
       },
       {
-       "text": "첫 번째에 올 수 있는 팀을 기준으로 나눈다. B가 첫째이면 4가지, D가 첫째이면 3가지로 모두 7가지이다."
+       "text": "\uccab \ubc88\uc9f8\uc5d0 \uc62c \uc218 \uc788\ub294 \ud300\uc744 \uae30\uc900\uc73c\ub85c \ub098\ub208\ub2e4. B\uac00 \uccab\uc9f8\uc774\uba74 4\uac00\uc9c0, D\uac00 \uccab\uc9f8\uc774\uba74 3\uac00\uc9c0\ub85c \ubaa8\ub450 7\uac00\uc9c0\uc774\ub2e4."
       }
      ],
      "badAnswers": [
       {
-       "text": "그냥 해 봤더니 7가지였어.",
-       "why": "빠짐없이 세었는지 확인한 방법이 없다."
+       "text": "\uadf8\ub0e5 \ud574 \ubd24\ub354\ub2c8 7\uac00\uc9c0\uc600\uc5b4.",
+       "why": "\ube60\uc9d0\uc5c6\uc774 \uc138\uc5c8\ub294\uc9c0 \ud655\uc778\ud55c \ubc29\ubc95\uc774 \uc5c6\ub2e4."
       },
       {
-       "text": "많은 것 같아.",
-       "why": "개수도 방법도 없다."
+       "text": "\ub9ce\uc740 \uac83 \uac19\uc544.",
+       "why": "\uac1c\uc218\ub3c4 \ubc29\ubc95\ub3c4 \uc5c6\ub2e4."
       }
      ],
-     "humanReview": "센 방법이 실제로 중복·누락이 없는지는 사람이 읽고 확인해야 한다. 총 개수가 맞아도 방법이 막연하면 부분 점수다.",
+     "humanReview": "\uc13c \ubc29\ubc95\uc774 \uc2e4\uc81c\ub85c \uc911\ubcf5\u00b7\ub204\ub77d\uc774 \uc5c6\ub294\uc9c0\ub294 \uc0ac\ub78c\uc774 \uc77d\uace0 \ud655\uc778\ud574\uc57c \ud55c\ub2e4. \ucd1d \uac1c\uc218\uac00 \ub9de\uc544\ub3c4 \ubc29\ubc95\uc774 \ub9c9\uc5f0\ud558\uba74 \ubd80\ubd84 \uc810\uc218\ub2e4.",
      "hints": [
-      "첫 번째 자리에 올 수 있는 팀을 기준으로 나누면 몇 경우가 되는지 보세요.",
-      "각 경우에서 나머지 세 팀을 조건에 맞게 놓는 방법을 하나씩 적어 보세요."
+      "\uccab \ubc88\uc9f8 \uc790\ub9ac\uc5d0 \uc62c \uc218 \uc788\ub294 \ud300\uc744 \uae30\uc900\uc73c\ub85c \ub098\ub204\uba74 \uba87 \uacbd\uc6b0\uac00 \ub418\ub294\uc9c0 \ubcf4\uc138\uc694.",
+      "\uac01 \uacbd\uc6b0\uc5d0\uc11c \ub098\uba38\uc9c0 \uc138 \ud300\uc744 \uc870\uac74\uc5d0 \ub9de\uac8c \ub193\ub294 \ubc29\ubc95\uc744 \ud558\ub098\uc529 \uc801\uc5b4 \ubcf4\uc138\uc694."
      ]
     }
    }
   ],
   "rubric": [
    {
-    "criterion": "조건 충족",
-    "full": "세 순서 모두 ①②③을 만족하고 서로 다름",
-    "partial": "한두 개만 만족",
-    "none": "조건을 지키지 않음"
+    "criterion": "\uc870\uac74 \ucda9\uc871",
+    "full": "\uc138 \uc21c\uc11c \ubaa8\ub450 \u2460\u2461\u2462\uc744 \ub9cc\uc871\ud558\uace0 \uc11c\ub85c \ub2e4\ub984",
+    "partial": "\ud55c\ub450 \uac1c\ub9cc \ub9cc\uc871",
+    "none": "\uc870\uac74\uc744 \uc9c0\ud0a4\uc9c0 \uc54a\uc74c"
    },
    {
-    "criterion": "빠짐없이 세는 방법",
-    "full": "경우를 나누거나 제외하여 7가지를 중복·누락 없이 셈",
-    "partial": "개수는 맞으나 방법이 막연함",
-    "none": "개수도 방법도 없음"
+    "criterion": "\ube60\uc9d0\uc5c6\uc774 \uc138\ub294 \ubc29\ubc95",
+    "full": "\uacbd\uc6b0\ub97c \ub098\ub204\uac70\ub098 \uc81c\uc678\ud558\uc5ec 7\uac00\uc9c0\ub97c \uc911\ubcf5\u00b7\ub204\ub77d \uc5c6\uc774 \uc148",
+    "partial": "\uac1c\uc218\ub294 \ub9de\uc73c\ub098 \ubc29\ubc95\uc774 \ub9c9\uc5f0\ud568",
+    "none": "\uac1c\uc218\ub3c4 \ubc29\ubc95\ub3c4 \uc5c6\uc74c"
    }
   ],
   "alternatives": [
-   "첫 번째 자리를 기준으로 나누어 세어도, 전체에서 조건 위반을 빼도 모두 7가지다.",
-   "A, B, C, D의 순서를 글자 나열(BADC)로 적고 표로 바꿔 입력해도 된다."
+   "\uccab \ubc88\uc9f8 \uc790\ub9ac\ub97c \uae30\uc900\uc73c\ub85c \ub098\ub204\uc5b4 \uc138\uc5b4\ub3c4, \uc804\uccb4\uc5d0\uc11c \uc870\uac74 \uc704\ubc18\uc744 \ube7c\ub3c4 \ubaa8\ub450 7\uac00\uc9c0\ub2e4.",
+   "A, B, C, D\uc758 \uc21c\uc11c\ub97c \uae00\uc790 \ub098\uc5f4(BADC)\ub85c \uc801\uace0 \ud45c\ub85c \ubc14\uafd4 \uc785\ub825\ud574\ub3c4 \ub41c\ub2e4."
   ],
   "hardCases": [
-   "조건 ③의 '먼저'를 '바로 앞'으로 해석한 학생은 답이 달라진다. 문제의 '먼저'는 바로 앞일 필요가 없다고 확인해 주어야 한다."
+   "\uc870\uac74 \u2462\uc758 '\uba3c\uc800'\ub97c '\ubc14\ub85c \uc55e'\uc73c\ub85c \ud574\uc11d\ud55c \ud559\uc0dd\uc740 \ub2f5\uc774 \ub2ec\ub77c\uc9c4\ub2e4. \ubb38\uc81c\uc758 '\uba3c\uc800'\ub294 \ubc14\ub85c \uc55e\uc77c \ud544\uc694\uac00 \uc5c6\ub2e4\uace0 \ud655\uc778\ud574 \uc8fc\uc5b4\uc57c \ud55c\ub2e4."
   ],
   "cautions": {
-   "language": "'순서 번호 1은 첫 번째, 4는 마지막'이라고 먼저 밝혀 숫자의 의미를 오해하지 않게 했다.",
-   "culture": "동아리 축제 발표는 학교 맥락이다.",
-   "accessibility": "표나 그림 없이 문장과 숫자만으로 푼다."
+   "language": "'\uc21c\uc11c \ubc88\ud638 1\uc740 \uccab \ubc88\uc9f8, 4\ub294 \ub9c8\uc9c0\ub9c9'\uc774\ub77c\uace0 \uba3c\uc800 \ubc1d\ud600 \uc22b\uc790\uc758 \uc758\ubbf8\ub97c \uc624\ud574\ud558\uc9c0 \uc54a\uac8c \ud588\ub2e4.",
+   "culture": "\ub3d9\uc544\ub9ac \ucd95\uc81c \ubc1c\ud45c\ub294 \ud559\uad50 \ub9e5\ub77d\uc774\ub2e4.",
+   "accessibility": "\ud45c\ub098 \uadf8\ub9bc \uc5c6\uc774 \ubb38\uc7a5\uacfc \uc22b\uc790\ub9cc\uc73c\ub85c \ud47c\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "만든 순서가 세 조건과 서로 다름 조건을 만족하는지",
-    "서술에 총 가짓수 7과 세는 방법의 표지가 있는지"
+    "\ub9cc\ub4e0 \uc21c\uc11c\uac00 \uc138 \uc870\uac74\uacfc \uc11c\ub85c \ub2e4\ub984 \uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294\uc9c0",
+    "\uc11c\uc220\uc5d0 \ucd1d \uac00\uc9d3\uc218 7\uacfc \uc138\ub294 \ubc29\ubc95\uc758 \ud45c\uc9c0\uac00 \uc788\ub294\uc9c0"
    ],
    "human": [
-    "세는 방법이 중복·누락 없이 논리적인지"
+    "\uc138\ub294 \ubc29\ubc95\uc774 \uc911\ubcf5\u00b7\ub204\ub77d \uc5c6\uc774 \ub17c\ub9ac\uc801\uc778\uc9c0"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "x-m-el-job-06",
   "subject": "math",
   "grade": "EL-job",
-  "topic": "경우의 수와 일정 짜기",
+  "topic": "\uacbd\uc6b0\uc758 \uc218\uc640 \uc77c\uc815 \uc9dc\uae30",
   "level": 3,
-  "levelLabel": "고등",
-  "title": "체험 일정 경우의 수 풀이 고치기",
+  "levelLabel": "\uace0\ub4f1",
+  "title": "\uccb4\ud5d8 \uc77c\uc815 \uacbd\uc6b0\uc758 \uc218 \ud480\uc774 \uace0\uce58\uae30",
   "uiLang": "ko",
   "format": "find-error-fix",
   "generative": true,
-  "goal": "순서가 있는 경우와 없는 경우를 구별하여 일정 배정의 경우의 수 풀이에서 오류를 찾아 고치고 다른 방법으로 검산한다.",
+  "goal": "\uc21c\uc11c\uac00 \uc788\ub294 \uacbd\uc6b0\uc640 \uc5c6\ub294 \uacbd\uc6b0\ub97c \uad6c\ubcc4\ud558\uc5ec \uc77c\uc815 \ubc30\uc815\uc758 \uacbd\uc6b0\uc758 \uc218 \ud480\uc774\uc5d0\uc11c \uc624\ub958\ub97c \ucc3e\uc544 \uace0\uce58\uace0 \ub2e4\ub978 \ubc29\ubc95\uc73c\ub85c \uac80\uc0b0\ud55c\ub2e4.",
   "thinking": [
-   "풀이에서 오류 찾기",
-   "순서의 유무를 구별해 고치기",
-   "다른 방법으로 검산하기"
+   "\ud480\uc774\uc5d0\uc11c \uc624\ub958 \ucc3e\uae30",
+   "\uc21c\uc11c\uc758 \uc720\ubb34\ub97c \uad6c\ubcc4\ud574 \uace0\uce58\uae30",
+   "\ub2e4\ub978 \ubc29\ubc95\uc73c\ub85c \uac80\uc0b0\ud558\uae30"
   ],
-  "differsFromPlain": "단순 연습은 순열이나 조합 값을 계산한다. 여기서는 이미 쓰인 풀이에서 순서 고려의 오류를 찾아 고치고, 다른 방법으로 같은 답이 나오는지 확인한다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uc21c\uc5f4\uc774\ub098 \uc870\ud569 \uac12\uc744 \uacc4\uc0b0\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \uc774\ubbf8 \uc4f0\uc778 \ud480\uc774\uc5d0\uc11c \uc21c\uc11c \uace0\ub824\uc758 \uc624\ub958\ub97c \ucc3e\uc544 \uace0\uce58\uace0, \ub2e4\ub978 \ubc29\ubc95\uc73c\ub85c \uac19\uc740 \ub2f5\uc774 \ub098\uc624\ub294\uc9c0 \ud655\uc778\ud55c\ub2e4.",
   "prerequisites": [
-   "곱의 법칙(여러 단계의 선택을 곱해 세기)",
-   "서로 다른 n개 중에서 일부를 고르는 방법의 수 기초"
+   "\uacf1\uc758 \ubc95\uce59(\uc5ec\ub7ec \ub2e8\uacc4\uc758 \uc120\ud0dd\uc744 \uacf1\ud574 \uc138\uae30)",
+   "\uc11c\ub85c \ub2e4\ub978 n\uac1c \uc911\uc5d0\uc11c \uc77c\ubd80\ub97c \uace0\ub974\ub294 \ubc29\ubc95\uc758 \uc218 \uae30\ucd08"
   ],
   "minutes": 12,
   "curriculum": null,
-  "material": "체험학습 날, 체험 활동 5개(A, B, C, D, E) 중 3개를 골라 오전, 오후, 저녁 시간대에 하나씩 배정한다. 활동 A는 야외 활동이라 저녁에는 할 수 없다. 이때 가능한 배정은 모두 몇 가지인지 한 학생이 풀었다.",
+  "material": "\uccb4\ud5d8\ud559\uc2b5 \ub0a0, \uccb4\ud5d8 \ud65c\ub3d9 5\uac1c(A, B, C, D, E) \uc911 3\uac1c\ub97c \uace8\ub77c \uc624\uc804, \uc624\ud6c4, \uc800\ub141 \uc2dc\uac04\ub300\uc5d0 \ud558\ub098\uc529 \ubc30\uc815\ud55c\ub2e4. \ud65c\ub3d9 A\ub294 \uc57c\uc678 \ud65c\ub3d9\uc774\ub77c \uc800\ub141\uc5d0\ub294 \ud560 \uc218 \uc5c6\ub2e4. \uc774\ub54c \uac00\ub2a5\ud55c \ubc30\uc815\uc740 \ubaa8\ub450 \uba87 \uac00\uc9c0\uc778\uc9c0 \ud55c \ud559\uc0dd\uc774 \ud480\uc5c8\ub2e4.",
   "steps": [
    {
     "id": "s1",
     "kind": "pickLine",
-    "prompt": "학생의 풀이에서 처음으로 어긋난 줄을 골라 보세요.",
+    "prompt": "\ud559\uc0dd\uc758 \ud480\uc774\uc5d0\uc11c \ucc98\uc74c\uc73c\ub85c \uc5b4\uae0b\ub09c \uc904\uc744 \uace8\ub77c \ubcf4\uc138\uc694.",
     "lines": [
-     "5개 중 3개를 골라 오전, 오후, 저녁에 배정하므로 5×4×3 = 60가지이다.",
-     "A가 저녁에 배정되는 경우를 센다. 오전과 오후에 들어갈 활동 2개를 나머지 4개 중에서 고르는 방법은 (4×3)÷2 = 6가지이다.",
-     "따라서 A가 저녁에 배정되지 않는 경우는 60 − 6 = 54가지이다.",
-     "답: 54가지."
+     "5\uac1c \uc911 3\uac1c\ub97c \uace8\ub77c \uc624\uc804, \uc624\ud6c4, \uc800\ub141\uc5d0 \ubc30\uc815\ud558\ubbc0\ub85c 5\u00d74\u00d73 = 60\uac00\uc9c0\uc774\ub2e4.",
+     "A\uac00 \uc800\ub141\uc5d0 \ubc30\uc815\ub418\ub294 \uacbd\uc6b0\ub97c \uc13c\ub2e4. \uc624\uc804\uacfc \uc624\ud6c4\uc5d0 \ub4e4\uc5b4\uac08 \ud65c\ub3d9 2\uac1c\ub97c \ub098\uba38\uc9c0 4\uac1c \uc911\uc5d0\uc11c \uace0\ub974\ub294 \ubc29\ubc95\uc740 (4\u00d73)\u00f72 = 6\uac00\uc9c0\uc774\ub2e4.",
+     "\ub530\ub77c\uc11c A\uac00 \uc800\ub141\uc5d0 \ubc30\uc815\ub418\uc9c0 \uc54a\ub294 \uacbd\uc6b0\ub294 60 \u2212 6 = 54\uac00\uc9c0\uc774\ub2e4.",
+     "\ub2f5: 54\uac00\uc9c0."
     ],
     "wrong": [
      1
     ],
-    "explain": "2번째 줄이 어긋났다. 오전과 오후는 시간대가 달라 같은 두 활동도 어느 쪽이 오전이냐에 따라 다른 일정이다. 그런데 이 줄은 (4×3)을 2로 나누어 순서를 구별하지 않고 세었기 때문에 값이 절반으로 줄었다.",
+    "explain": "2\ubc88\uc9f8 \uc904\uc774 \uc5b4\uae0b\ub0ac\ub2e4. \uc624\uc804\uacfc \uc624\ud6c4\ub294 \uc2dc\uac04\ub300\uac00 \ub2ec\ub77c \uac19\uc740 \ub450 \ud65c\ub3d9\ub3c4 \uc5b4\ub290 \ucabd\uc774 \uc624\uc804\uc774\ub0d0\uc5d0 \ub530\ub77c \ub2e4\ub978 \uc77c\uc815\uc774\ub2e4. \uadf8\ub7f0\ub370 \uc774 \uc904\uc740 (4\u00d73)\uc744 2\ub85c \ub098\ub204\uc5b4 \uc21c\uc11c\ub97c \uad6c\ubcc4\ud558\uc9c0 \uc54a\uace0 \uc138\uc5c8\uae30 \ub54c\ubb38\uc5d0 \uac12\uc774 \uc808\ubc18\uc73c\ub85c \uc904\uc5c8\ub2e4.",
     "hints": [
-     "오전에 활동 X, 오후에 활동 Y로 정한 일정과 오전 Y, 오후 X로 정한 일정이 같은 일정인지 먼저 따져 보세요.",
-     "그 기준이 풀이의 줄마다 똑같이 지켜졌는지 줄 순서대로 비교해 보세요."
+     "\uc624\uc804\uc5d0 \ud65c\ub3d9 X, \uc624\ud6c4\uc5d0 \ud65c\ub3d9 Y\ub85c \uc815\ud55c \uc77c\uc815\uacfc \uc624\uc804 Y, \uc624\ud6c4 X\ub85c \uc815\ud55c \uc77c\uc815\uc774 \uac19\uc740 \uc77c\uc815\uc778\uc9c0 \uba3c\uc800 \ub530\uc838 \ubcf4\uc138\uc694.",
+     "\uadf8 \uae30\uc900\uc774 \ud480\uc774\uc758 \uc904\ub9c8\ub2e4 \ub611\uac19\uc774 \uc9c0\ucf1c\uc84c\ub294\uc9c0 \uc904 \uc21c\uc11c\ub300\ub85c \ube44\uad50\ud574 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "올바른 가짓수를 구하고, 다른 방법(저녁 시간대부터 정하는 방법 등)으로도 같은 값이 나오는지 보여 주세요.",
-    "placeholder": "예: 오전과 오후는 순서가 있으니까 ...",
+    "prompt": "\uc62c\ubc14\ub978 \uac00\uc9d3\uc218\ub97c \uad6c\ud558\uace0, \ub2e4\ub978 \ubc29\ubc95(\uc800\ub141 \uc2dc\uac04\ub300\ubd80\ud130 \uc815\ud558\ub294 \ubc29\ubc95 \ub4f1)\uc73c\ub85c\ub3c4 \uac19\uc740 \uac12\uc774 \ub098\uc624\ub294\uc9c0 \ubcf4\uc5ec \uc8fc\uc138\uc694.",
+    "placeholder": "\uc608: \uc624\uc804\uacfc \uc624\ud6c4\ub294 \uc21c\uc11c\uac00 \uc788\uc73c\ub2c8\uae4c ...",
     "minChars": 20,
     "checks": [
      {
       "id": "w1",
-      "label": "고친 가짓수(48)를 말했다",
+      "label": "\uace0\uce5c \uac00\uc9d3\uc218(48)\ub97c \ub9d0\ud588\ub2e4",
       "mode": "any",
       "patterns": [
        "(?<![\\d])48(?![\\d])"
@@ -1088,167 +1090,167 @@
      },
      {
       "id": "w2",
-      "label": "순서를 구별하는 이유나 곱셈식을 말했다",
+      "label": "\uc21c\uc11c\ub97c \uad6c\ubcc4\ud558\ub294 \uc774\uc720\ub098 \uacf1\uc148\uc2dd\uc744 \ub9d0\ud588\ub2e4",
       "mode": "any",
       "patterns": [
-       "순서",
-       "구별",
-       "구분",
-       "4\\s*[×x*]\\s*3",
+       "\uc21c\uc11c",
+       "\uad6c\ubcc4",
+       "\uad6c\ubd84",
+       "4\\s*[\u00d7x*]\\s*3",
        "4\\s*P\\s*2"
       ]
      }
     ],
     "selfAssess": [
-     "다른 방법으로 계산한 값이 48과 같은지 확인했나요?",
-     "오전과 오후를 구별하는 이유를 일정 상황으로 설명했나요?"
+     "\ub2e4\ub978 \ubc29\ubc95\uc73c\ub85c \uacc4\uc0b0\ud55c \uac12\uc774 48\uacfc \uac19\uc740\uc9c0 \ud655\uc778\ud588\ub098\uc694?",
+     "\uc624\uc804\uacfc \uc624\ud6c4\ub97c \uad6c\ubcc4\ud558\ub294 \uc774\uc720\ub97c \uc77c\uc815 \uc0c1\ud669\uc73c\ub85c \uc124\uba85\ud588\ub098\uc694?"
     ],
     "modelAnswers": [
      {
-      "text": "오전과 오후는 순서가 있으니 2로 나누면 안 되고 4×3 = 12가지야. 그래서 60 − 12 = 48가지."
+      "text": "\uc624\uc804\uacfc \uc624\ud6c4\ub294 \uc21c\uc11c\uac00 \uc788\uc73c\ub2c8 2\ub85c \ub098\ub204\uba74 \uc548 \ub418\uace0 4\u00d73 = 12\uac00\uc9c0\uc57c. \uadf8\ub798\uc11c 60 \u2212 12 = 48\uac00\uc9c0."
      },
      {
-      "text": "저녁에는 A를 뺀 4개 중 하나를 고르니 4가지, 남은 4개에서 오전·오후를 정하는 방법이 4×3이므로 4×4×3 = 48가지야.",
-      "note": "다른 방법으로 검산했다."
+      "text": "\uc800\ub141\uc5d0\ub294 A\ub97c \ube80 4\uac1c \uc911 \ud558\ub098\ub97c \uace0\ub974\ub2c8 4\uac00\uc9c0, \ub0a8\uc740 4\uac1c\uc5d0\uc11c \uc624\uc804\u00b7\uc624\ud6c4\ub97c \uc815\ud558\ub294 \ubc29\ubc95\uc774 4\u00d73\uc774\ubbc0\ub85c 4\u00d74\u00d73 = 48\uac00\uc9c0\uc57c.",
+      "note": "\ub2e4\ub978 \ubc29\ubc95\uc73c\ub85c \uac80\uc0b0\ud588\ub2e4."
      }
     ],
     "badAnswers": [
      {
-      "text": "54가지가 맞아. 풀이에 틀린 곳이 없어.",
-      "why": "오류를 찾지 못했다."
+      "text": "54\uac00\uc9c0\uac00 \ub9de\uc544. \ud480\uc774\uc5d0 \ud2c0\ub9b0 \uacf3\uc774 \uc5c6\uc5b4.",
+      "why": "\uc624\ub958\ub97c \ucc3e\uc9c0 \ubabb\ud588\ub2e4."
      },
      {
-      "text": "48가지",
-      "why": "값만 있고 이유가 없다."
+      "text": "48\uac00\uc9c0",
+      "why": "\uac12\ub9cc \uc788\uace0 \uc774\uc720\uac00 \uc5c6\ub2e4."
      }
     ],
-    "humanReview": "검산 방법이 첫 풀이와 실제로 다른 경로인지는 사람이 확인해야 한다.",
+    "humanReview": "\uac80\uc0b0 \ubc29\ubc95\uc774 \uccab \ud480\uc774\uc640 \uc2e4\uc81c\ub85c \ub2e4\ub978 \uacbd\ub85c\uc778\uc9c0\ub294 \uc0ac\ub78c\uc774 \ud655\uc778\ud574\uc57c \ud55c\ub2e4.",
     "hints": [
-     "A가 저녁에 오는 경우에서 오전·오후 자리를 하나씩 채우는 방법을 곱셈으로 세어 보세요.",
-     "저녁 시간대를 먼저 정한 뒤 나머지를 채우면 어떻게 되는지 해 보세요."
+     "A\uac00 \uc800\ub141\uc5d0 \uc624\ub294 \uacbd\uc6b0\uc5d0\uc11c \uc624\uc804\u00b7\uc624\ud6c4 \uc790\ub9ac\ub97c \ud558\ub098\uc529 \ucc44\uc6b0\ub294 \ubc29\ubc95\uc744 \uacf1\uc148\uc73c\ub85c \uc138\uc5b4 \ubcf4\uc138\uc694.",
+     "\uc800\ub141 \uc2dc\uac04\ub300\ub97c \uba3c\uc800 \uc815\ud55c \ub4a4 \ub098\uba38\uc9c0\ub97c \ucc44\uc6b0\uba74 \uc5b4\ub5bb\uac8c \ub418\ub294\uc9c0 \ud574 \ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "오류 진단",
-    "full": "시간대가 다르면 순서를 구별해야 한다는 점으로 오류를 설명함",
-    "partial": "줄은 찾았으나 이유가 막연함",
-    "none": "다른 줄을 고름"
+    "criterion": "\uc624\ub958 \uc9c4\ub2e8",
+    "full": "\uc2dc\uac04\ub300\uac00 \ub2e4\ub974\uba74 \uc21c\uc11c\ub97c \uad6c\ubcc4\ud574\uc57c \ud55c\ub2e4\ub294 \uc810\uc73c\ub85c \uc624\ub958\ub97c \uc124\uba85\ud568",
+    "partial": "\uc904\uc740 \ucc3e\uc558\uc73c\ub098 \uc774\uc720\uac00 \ub9c9\uc5f0\ud568",
+    "none": "\ub2e4\ub978 \uc904\uc744 \uace0\ub984"
    },
    {
-    "criterion": "수정과 검산",
-    "full": "48을 구하고 다른 경로(저녁부터 정하기)로 확인함",
-    "partial": "48만 구함",
-    "none": "수정하지 못함"
+    "criterion": "\uc218\uc815\uacfc \uac80\uc0b0",
+    "full": "48\uc744 \uad6c\ud558\uace0 \ub2e4\ub978 \uacbd\ub85c(\uc800\ub141\ubd80\ud130 \uc815\ud558\uae30)\ub85c \ud655\uc778\ud568",
+    "partial": "48\ub9cc \uad6c\ud568",
+    "none": "\uc218\uc815\ud558\uc9c0 \ubabb\ud568"
    }
   ],
   "alternatives": [
-   "4×3 = 12로 쓴 풀이, 4P2 = 12로 쓴 풀이 모두 같다.",
-   "전체에서 빼는 방법과 직접 세는 방법(4×4×3) 모두 인정된다."
+   "4\u00d73 = 12\ub85c \uc4f4 \ud480\uc774, 4P2 = 12\ub85c \uc4f4 \ud480\uc774 \ubaa8\ub450 \uac19\ub2e4.",
+   "\uc804\uccb4\uc5d0\uc11c \ube7c\ub294 \ubc29\ubc95\uacfc \uc9c1\uc811 \uc138\ub294 \ubc29\ubc95(4\u00d74\u00d73) \ubaa8\ub450 \uc778\uc815\ub41c\ub2e4."
   ],
   "hardCases": [
-   "'5개 중 3개를 고르는' 부분과 '배정하는' 부분을 나누어 센 풀이는 곱의 법칙을 정확히 쓰면 같은 값이 나오므로 맞다."
+   "'5\uac1c \uc911 3\uac1c\ub97c \uace0\ub974\ub294' \ubd80\ubd84\uacfc '\ubc30\uc815\ud558\ub294' \ubd80\ubd84\uc744 \ub098\ub204\uc5b4 \uc13c \ud480\uc774\ub294 \uacf1\uc758 \ubc95\uce59\uc744 \uc815\ud655\ud788 \uc4f0\uba74 \uac19\uc740 \uac12\uc774 \ub098\uc624\ubbc0\ub85c \ub9de\ub2e4."
   ],
   "cautions": {
-   "language": "곱셈식 4×3으로 써도 된다. 4P2 같은 기호를 아는 학생은 써도 되며 '사 피 이'로 읽는다.",
-   "culture": "체험학습 일정은 학교 맥락이다.",
-   "accessibility": "그림 없이 풀이를 줄 단위 문장으로 제시했다."
+   "language": "\uacf1\uc148\uc2dd 4\u00d73\uc73c\ub85c \uc368\ub3c4 \ub41c\ub2e4. 4P2 \uac19\uc740 \uae30\ud638\ub97c \uc544\ub294 \ud559\uc0dd\uc740 \uc368\ub3c4 \ub418\uba70 '\uc0ac \ud53c \uc774'\ub85c \uc77d\ub294\ub2e4.",
+   "culture": "\uccb4\ud5d8\ud559\uc2b5 \uc77c\uc815\uc740 \ud559\uad50 \ub9e5\ub77d\uc774\ub2e4.",
+   "accessibility": "\uadf8\ub9bc \uc5c6\uc774 \ud480\uc774\ub97c \uc904 \ub2e8\uc704 \ubb38\uc7a5\uc73c\ub85c \uc81c\uc2dc\ud588\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "오류 줄 위치",
-    "서술에 48과 순서 구별(또는 곱셈식)이 들어 있는지"
+    "\uc624\ub958 \uc904 \uc704\uce58",
+    "\uc11c\uc220\uc5d0 48\uacfc \uc21c\uc11c \uad6c\ubcc4(\ub610\ub294 \uacf1\uc148\uc2dd)\uc774 \ub4e4\uc5b4 \uc788\ub294\uc9c0"
    ],
    "human": [
-    "검산 방법이 첫 풀이와 다른 경로인지"
+    "\uac80\uc0b0 \ubc29\ubc95\uc774 \uccab \ud480\uc774\uc640 \ub2e4\ub978 \uacbd\ub85c\uc778\uc9c0"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "x-m-el-job-07",
   "subject": "math",
   "grade": "EL-job",
-  "topic": "비용·재료 계산의 타당성",
+  "topic": "\ube44\uc6a9\u00b7\uc7ac\ub8cc \uacc4\uc0b0\uc758 \ud0c0\ub2f9\uc131",
   "level": 3,
-  "levelLabel": "고등",
-  "title": "페인트 필요량 견적 비교하기",
+  "levelLabel": "\uace0\ub4f1",
+  "title": "\ud398\uc778\ud2b8 \ud544\uc694\ub7c9 \uacac\uc801 \ube44\uad50\ud558\uae30",
   "uiLang": "ko",
   "format": "judge-evidence-explain",
   "generative": true,
-  "goal": "서로 다른 방식의 어림이 같은 결론을 내는 이유를 보고, 어림이 안전한 조건과 결론이 달라지는 조건을 직접 찾는다.",
+  "goal": "\uc11c\ub85c \ub2e4\ub978 \ubc29\uc2dd\uc758 \uc5b4\ub9bc\uc774 \uac19\uc740 \uacb0\ub860\uc744 \ub0b4\ub294 \uc774\uc720\ub97c \ubcf4\uace0, \uc5b4\ub9bc\uc774 \uc548\uc804\ud55c \uc870\uac74\uacfc \uacb0\ub860\uc774 \ub2ec\ub77c\uc9c0\ub294 \uc870\uac74\uc744 \uc9c1\uc811 \ucc3e\ub294\ub2e4.",
   "thinking": [
-   "여러 견적 방식의 타당성 평가",
-   "근사와 정확한 값의 차이가 결론에 미치는 영향",
-   "결론이 달라지는 경우 만들기"
+   "\uc5ec\ub7ec \uacac\uc801 \ubc29\uc2dd\uc758 \ud0c0\ub2f9\uc131 \ud3c9\uac00",
+   "\uadfc\uc0ac\uc640 \uc815\ud655\ud55c \uac12\uc758 \ucc28\uc774\uac00 \uacb0\ub860\uc5d0 \ubbf8\uce58\ub294 \uc601\ud5a5",
+   "\uacb0\ub860\uc774 \ub2ec\ub77c\uc9c0\ub294 \uacbd\uc6b0 \ub9cc\ub4e4\uae30"
   ],
-  "differsFromPlain": "단순 연습은 넓이를 구해 페인트 양을 계산한다. 여기서는 서로 다른 견적 방식을 비교하여 어느 결론이 타당한지 가리고, 어림이 틀리게 되는 상황을 학생이 직접 만든다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \ub113\uc774\ub97c \uad6c\ud574 \ud398\uc778\ud2b8 \uc591\uc744 \uacc4\uc0b0\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \uc11c\ub85c \ub2e4\ub978 \uacac\uc801 \ubc29\uc2dd\uc744 \ube44\uad50\ud558\uc5ec \uc5b4\ub290 \uacb0\ub860\uc774 \ud0c0\ub2f9\ud55c\uc9c0 \uac00\ub9ac\uace0, \uc5b4\ub9bc\uc774 \ud2c0\ub9ac\uac8c \ub418\ub294 \uc0c1\ud669\uc744 \ud559\uc0dd\uc774 \uc9c1\uc811 \ub9cc\ub4e0\ub2e4.",
   "prerequisites": [
-   "직육면체 방의 벽 넓이(옆면 넓이) 구하기",
-   "소수 곱셈과 나눗셈, 올림해서 개수 정하기"
+   "\uc9c1\uc721\uba74\uccb4 \ubc29\uc758 \ubcbd \ub113\uc774(\uc606\uba74 \ub113\uc774) \uad6c\ud558\uae30",
+   "\uc18c\uc218 \uacf1\uc148\uacfc \ub098\ub217\uc148, \uc62c\ub9bc\ud574\uc11c \uac1c\uc218 \uc815\ud558\uae30"
   ],
   "minutes": 12,
   "curriculum": null,
-  "material": "가로 4 m, 세로 3 m, 높이 2.5 m인 방의 네 벽만 두 번(2회) 칠하려 한다. 창문과 문의 넓이는 합쳐서 3.2 제곱미터이고 칠하지 않는다. 페인트 1 L로 한 번 칠할 수 있는 넓이는 10 제곱미터이며, 4 L들이 통으로만 판다. 네 사람이 필요한 통 수를 다르게 어림했다.\n가: 바닥이 4×3 = 12 제곱미터이니 12 제곱미터를 두 번 칠한다고 보면 24 제곱미터, 2.4 L라서 1통.\n나: 벽 넓이 35 제곱미터에서 3.2를 빼 31.8, 두 번 칠하면 63.6 제곱미터, 6.36 L라서 2통.\n다: 창문·문은 무시하고 35 제곱미터를 두 번 칠하면 70 제곱미터, 7 L라서 2통.\n라: 31.8 제곱미터를 한 번만 칠한다고 보면 3.18 L라서 1통.",
+  "material": "\uac00\ub85c 4 m, \uc138\ub85c 3 m, \ub192\uc774 2.5 m\uc778 \ubc29\uc758 \ub124 \ubcbd\ub9cc \ub450 \ubc88(2\ud68c) \uce60\ud558\ub824 \ud55c\ub2e4. \ucc3d\ubb38\uacfc \ubb38\uc758 \ub113\uc774\ub294 \ud569\uccd0\uc11c 3.2 \uc81c\uacf1\ubbf8\ud130\uc774\uace0 \uce60\ud558\uc9c0 \uc54a\ub294\ub2e4. \ud398\uc778\ud2b8 1 L\ub85c \ud55c \ubc88 \uce60\ud560 \uc218 \uc788\ub294 \ub113\uc774\ub294 10 \uc81c\uacf1\ubbf8\ud130\uc774\uba70, 4 L\ub4e4\uc774 \ud1b5\uc73c\ub85c\ub9cc \ud310\ub2e4. \ub124 \uc0ac\ub78c\uc774 \ud544\uc694\ud55c \ud1b5 \uc218\ub97c \ub2e4\ub974\uac8c \uc5b4\ub9bc\ud588\ub2e4.\n\uac00: \ubc14\ub2e5\uc774 4\u00d73 = 12 \uc81c\uacf1\ubbf8\ud130\uc774\ub2c8 12 \uc81c\uacf1\ubbf8\ud130\ub97c \ub450 \ubc88 \uce60\ud55c\ub2e4\uace0 \ubcf4\uba74 24 \uc81c\uacf1\ubbf8\ud130, 2.4 L\ub77c\uc11c 1\ud1b5.\n\ub098: \ubcbd \ub113\uc774 35 \uc81c\uacf1\ubbf8\ud130\uc5d0\uc11c 3.2\ub97c \ube7c 31.8, \ub450 \ubc88 \uce60\ud558\uba74 63.6 \uc81c\uacf1\ubbf8\ud130, 6.36 L\ub77c\uc11c 2\ud1b5.\n\ub2e4: \ucc3d\ubb38\u00b7\ubb38\uc740 \ubb34\uc2dc\ud558\uace0 35 \uc81c\uacf1\ubbf8\ud130\ub97c \ub450 \ubc88 \uce60\ud558\uba74 70 \uc81c\uacf1\ubbf8\ud130, 7 L\ub77c\uc11c 2\ud1b5.\n\ub77c: 31.8 \uc81c\uacf1\ubbf8\ud130\ub97c \ud55c \ubc88\ub9cc \uce60\ud55c\ub2e4\uace0 \ubcf4\uba74 3.18 L\ub77c\uc11c 1\ud1b5.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
     "multi": true,
-    "prompt": "필요한 통 수에 대한 결론이 타당한 의견을 모두 고르세요.",
+    "prompt": "\uc2e4\uc81c\ub85c \ud544\uc694\ud55c \ud1b5 \uc218(\ubb38\uc81c\uc758 \uc870\uac74\uc744 \ubaa8\ub450 \ub530\uc9c4 \uac12)\uc640 \uacb0\ub860\uc774 \uac19\uc740 \uc758\uacac\uc744 \ubaa8\ub450 \uace0\ub974\uc138\uc694.",
     "options": [
      {
       "id": "a",
-      "text": "라: 31.8 제곱미터를 한 번만 칠하면 3.18 L라서 1통",
-      "reveals": "문제의 조건(2회 칠하기)을 빠뜨리면 필요량이 절반으로 줄어요. 조건을 하나씩 대조해 보세요."
+      "text": "\ub77c: 31.8 \uc81c\uacf1\ubbf8\ud130\ub97c \ud55c \ubc88\ub9cc \uce60\ud558\uba74 3.18 L\ub77c\uc11c 1\ud1b5",
+      "reveals": "\ubb38\uc81c\uc758 \uc870\uac74(2\ud68c \uce60\ud558\uae30)\uc744 \ube60\ub728\ub9ac\uba74 \ud544\uc694\ub7c9\uc774 \uc808\ubc18\uc73c\ub85c \uc904\uc5b4\uc694. \uc870\uac74\uc744 \ud558\ub098\uc529 \ub300\uc870\ud574 \ubcf4\uc138\uc694."
      },
      {
       "id": "b",
-      "text": "나: 벽 31.8 제곱미터를 두 번 칠하면 6.36 L라서 2통"
+      "text": "\ub098: \ubcbd 31.8 \uc81c\uacf1\ubbf8\ud130\ub97c \ub450 \ubc88 \uce60\ud558\uba74 6.36 L\ub77c\uc11c 2\ud1b5"
      },
      {
       "id": "c",
-      "text": "가: 바닥 12 제곱미터를 두 번 칠하면 2.4 L라서 1통",
-      "reveals": "칠하는 곳은 벽이에요. 어떤 면의 넓이를 쓰는지 확인해 보세요."
+      "text": "\uac00: \ubc14\ub2e5 12 \uc81c\uacf1\ubbf8\ud130\ub97c \ub450 \ubc88 \uce60\ud558\uba74 2.4 L\ub77c\uc11c 1\ud1b5",
+      "reveals": "\uce60\ud558\ub294 \uacf3\uc740 \ubcbd\uc774\uc5d0\uc694. \uc5b4\ub5a4 \uba74\uc758 \ub113\uc774\ub97c \uc4f0\ub294\uc9c0 \ud655\uc778\ud574 \ubcf4\uc138\uc694."
      },
      {
       "id": "d",
-      "text": "다: 창문·문을 안 빼고 35 제곱미터를 두 번 칠해 7 L, 2통"
+      "text": "\ub2e4: \ucc3d\ubb38\u00b7\ubb38\uc744 \uc548 \ube7c\uace0 35 \uc81c\uacf1\ubbf8\ud130\ub97c \ub450 \ubc88 \uce60\ud574 7 L, 2\ud1b5"
      }
     ],
     "correct": [
      "b",
      "d"
     ],
-    "explain": "칠할 곳은 네 벽이고 2회 칠한다. 나는 정확히 따졌고 6.36 L는 4 L통 2개(8 L)가 필요하다. 다는 창문·문을 무시해 7 L가 나왔지만 통 수는 같은 2통이다. 가는 바닥을, 라는 2회 조건을 빠뜨렸다.",
+    "explain": "\uce60\ud560 \uacf3\uc740 \ub124 \ubcbd\uc774\uace0 2\ud68c \uce60\ud55c\ub2e4. \ub098\ub294 \uc815\ud655\ud788 \ub530\uc84c\uace0 6.36 L\ub294 4 L\ud1b5 2\uac1c(8 L)\uac00 \ud544\uc694\ud558\ub2e4. \ub2e4\ub294 \ucc3d\ubb38\u00b7\ubb38\uc744 \ubb34\uc2dc\ud574 7 L\uac00 \ub098\uc654\uc9c0\ub9cc \ud1b5 \uc218\ub294 \uac19\uc740 2\ud1b5\uc774\ub2e4. \uac00\ub294 \ubc14\ub2e5\uc744, \ub77c\ub294 2\ud68c \uc870\uac74\uc744 \ube60\ub728\ub838\ub2e4.",
     "hints": [
-     "각 의견이 문제의 조건(칠하는 곳, 횟수, 제외할 부분)을 모두 반영했는지 표시해 보세요.",
-     "필요한 L를 구한 뒤 통(4 L) 단위로 몇 개를 사야 하는지까지 비교하세요."
+     "\ubb38\uc81c\uc758 \uc870\uac74(\uce60\ud558\ub294 \uacf3, \ud69f\uc218, \uc81c\uc678\ud560 \ubd80\ubd84)\uc744 \ubaa8\ub450 \uc801\uc6a9\ud574 \ud544\uc694\ud55c \ud1b5 \uc218\ub97c \uba3c\uc800 \uc9c1\uc811 \uad6c\ud558\uace0, \uac01 \uc758\uacac\uc774 \ub0b8 \ud1b5 \uc218\uc640 \ud558\ub098\uc529 \ube44\uad50\ud574 \ubcf4\uc138\uc694.",
+     "\ud544\uc694\ud55c L\ub97c \uad6c\ud55c \ub4a4 \ud1b5(4 L) \ub2e8\uc704\ub85c \uba87 \uac1c\ub97c \uc0ac\uc57c \ud558\ub294\uc9c0\uae4c\uc9c0 \ube44\uad50\ud558\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "build",
-    "prompt": "다처럼 창문·문을 무시하면 2통이지만, 실제로는 1통이면 충분한 경우를 만들어 보세요. 창문·문 넓이의 합 w(제곱미터)를 15 이상 30 이하의 값으로 정해 서로 다른 2개 입력하세요. 통유리 창이 벽의 큰 부분을 차지하는 방을 상상해 보세요. (벽 넓이는 35 제곱미터, 2회 칠하기, 1 L에 10 제곱미터, 4 L통)",
+    "prompt": "\ub2e4\ucc98\ub7fc \ucc3d\ubb38\u00b7\ubb38\uc744 \ubb34\uc2dc\ud558\uba74 2\ud1b5\uc774\uc9c0\ub9cc, \uc2e4\uc81c\ub85c\ub294 1\ud1b5\uc774\uba74 \ucda9\ubd84\ud55c \uacbd\uc6b0\ub97c \ub9cc\ub4e4\uc5b4 \ubcf4\uc138\uc694. \ucc3d\ubb38\u00b7\ubb38 \ub113\uc774\uc758 \ud569 w(\uc81c\uacf1\ubbf8\ud130)\ub97c 10 \uc774\uc0c1 30 \uc774\ud558\uc758 \uac12\uc73c\ub85c \uc815\ud574 \uc11c\ub85c \ub2e4\ub978 2\uac1c \uc785\ub825\ud558\uc138\uc694. \ud1b5\uc720\ub9ac \ucc3d\uc774 \ubcbd\uc758 \ud070 \ubd80\ubd84\uc744 \ucc28\uc9c0\ud558\ub294 \ubc29\uc744 \uc0c1\uc0c1\ud574 \ubcf4\uc138\uc694. (\ubcbd \ub113\uc774\ub294 35 \uc81c\uacf1\ubbf8\ud130, 2\ud68c \uce60\ud558\uae30, 1 L\uc5d0 10 \uc81c\uacf1\ubbf8\ud130, 4 L\ud1b5)",
     "vars": [
      {
       "name": "w",
-      "label": "창문·문 넓이 합 w (제곱미터)"
+      "label": "\ucc3d\ubb38\u00b7\ubb38 \ub113\uc774 \ud569 w (\uc81c\uacf1\ubbf8\ud130)"
      }
     ],
     "constraints": [
      {
       "id": "c1",
-      "expr": "w>=0 && w<=30",
-      "ok": "w가 범위 안이에요.",
-      "fail": "w는 0 이상 30 이하여야 해요."
+      "expr": "w>=10 && w<=30",
+      "ok": "w\uac00 \ubc94\uc704 \uc548\uc774\uc5d0\uc694.",
+      "fail": "w\ub294 10 \uc774\uc0c1 30 \uc774\ud558\uc5ec\uc57c \ud574\uc694."
      },
      {
       "id": "c2",
       "expr": "ceil((35-w)*2/10/4)==1",
-      "ok": "실제로는 1통이면 충분해요.",
-      "fail": "이 w에서는 1통으로 부족해요. 칠할 넓이를 두 번 곱해 필요한 L를 따져 보세요."
+      "ok": "\uc2e4\uc81c\ub85c\ub294 1\ud1b5\uc774\uba74 \ucda9\ubd84\ud574\uc694.",
+      "fail": "\uc774 w\uc5d0\uc11c\ub294 1\ud1b5\uc73c\ub85c \ubd80\uc871\ud574\uc694. \uce60\ud560 \ub113\uc774\ub97c \ub450 \ubc88 \uacf1\ud574 \ud544\uc694\ud55c L\ub97c \ub530\uc838 \ubcf4\uc138\uc694."
      }
     ],
     "need": 2,
@@ -1267,120 +1269,130 @@
      },
      {
       "w": 10
+     },
+     {
+      "w": 14
      }
     ],
-    "explain": "칠할 벽 넓이가 35−w 제곱미터이고 2회이므로 필요한 L는 (35−w)×2÷10이다. 이것이 4 L 이하이려면 w가 15 이상이어야 한다. 방 하나의 벽 35 제곱미터에서 창문·문이 15 이상이면 벽의 거의 절반이 창이다.",
+    "explain": "\uce60\ud560 \ubcbd \ub113\uc774\uac00 35\u2212w \uc81c\uacf1\ubbf8\ud130\uc774\uace0 2\ud68c\uc774\ubbc0\ub85c \ud544\uc694\ud55c L\ub294 (35\u2212w)\u00d72\u00f710\uc774\ub2e4. \uc774\uac83\uc774 4 L \uc774\ud558\uc774\ub824\uba74 w\uac00 15 \uc774\uc0c1\uc774\uc5b4\uc57c \ud55c\ub2e4. \ubc29 \ud558\ub098\uc758 \ubcbd 35 \uc81c\uacf1\ubbf8\ud130\uc5d0\uc11c \ucc3d\ubb38\u00b7\ubb38\uc774 15 \uc774\uc0c1\uc774\uba74 \ubcbd\uc758 \uac70\uc758 \uc808\ubc18\uc774 \ucc3d\uc774\ub2e4.",
     "hints": [
-     "칠할 벽 넓이를 w로 쓰고, 두 번 칠할 때 필요한 L를 w의 식으로 나타내 보세요.",
-     "필요한 L가 4 이하일 때만 통이 1개로 충분해요. 경계가 되는 w를 찾아보세요."
+     "\uce60\ud560 \ubcbd \ub113\uc774\ub97c w\ub85c \uc4f0\uace0, \ub450 \ubc88 \uce60\ud560 \ub54c \ud544\uc694\ud55c L\ub97c w\uc758 \uc2dd\uc73c\ub85c \ub098\ud0c0\ub0b4 \ubcf4\uc138\uc694.",
+     "w\ub97c \ud558\ub098 \uace8\ub77c \ud544\uc694\ud55c L\ub97c \uacc4\uc0b0\ud558\uace0 \uba87 \ud1b5\uc774 \ud544\uc694\ud55c\uc9c0 \uad6c\ud574 \ubcf4\uc138\uc694. 2\ud1b5\uc774 \ub098\uc624\uba74 w\ub97c \ubc14\uafd4 \ub2e4\uc2dc \ud655\uc778\ud574 \ubcf4\uc138\uc694."
     ],
     "because": {
      "id": "s2b",
      "kind": "write",
-     "prompt": "다처럼 창문·문을 빼지 않고 어림하는 방법이 '안전한 어림'인 이유와 그 한계를 설명하세요.",
-     "placeholder": "예: 창문을 빼지 않으면 ...",
+     "prompt": "\ub2e4\ucc98\ub7fc \ucc3d\ubb38\u00b7\ubb38\uc744 \ube7c\uc9c0 \uc54a\uace0 \uc5b4\ub9bc\ud558\ub294 \ubc29\ubc95\uc774 '\uc548\uc804\ud55c \uc5b4\ub9bc'\uc778 \uc774\uc720\uc640 \uadf8 \ud55c\uacc4\ub97c \uc124\uba85\ud558\uc138\uc694.",
+     "placeholder": "\uc608: \ucc3d\ubb38\uc744 \ube7c\uc9c0 \uc54a\uc73c\uba74 ...",
      "minChars": 20,
      "checks": [
       {
        "id": "w1",
-       "label": "안전한 이유(실제보다 넉넉하게 어림)를 말했다",
+       "label": "\uc548\uc804\ud55c \uc774\uc720(\uc2e4\uc81c\ubcf4\ub2e4 \ub109\ub109\ud558\uac8c \uc5b4\ub9bc)\ub97c \ub9d0\ud588\ub2e4",
        "mode": "any",
        "patterns": [
-        "여유",
-        "넉넉",
-        "안전",
-        "부족하지",
-        "더\\s*많",
-        "넓게",
-        "크게",
-        "모자라",
-        "부족",
-        "많이\\s*(나오|어림|잡)",
-        "과대",
-        "실제보다"
+        "\uc5ec\uc720",
+        "\ub109\ub109",
+        "\uc548\uc804",
+        "\ubd80\uc871\ud558\uc9c0",
+        "\ubaa8\uc790\ub77c\uc9c0",
+        "\ubaa8\uc790\ub784\\s*\uc77c",
+        "\uc2e4\uc81c\ubcf4\ub2e4\\s*(\ub354\\s*)?(\ub113|\ud06c|\ub9ce)",
+        "\ub113\uac8c\\s*(\uc5b4\ub9bc|\uc7a1|\uacc4\uc0b0|\ub098\uc624)",
+        "(\ub113\uc774|\ud544\uc694\ub7c9)[^.!?\\n]{0,10}(\ub354\\s*)?(\ud06c|\ub9ce|\ub113)\uac8c",
+        "\uacfc\ub300"
        ]
       },
       {
        "id": "w2",
-       "label": "한계(통이 남거나 더 사게 됨)를 말했다",
+       "label": "\ud55c\uacc4(\ud1b5\uc774 \ub0a8\uac70\ub098 \ub354 \uc0ac\uac8c \ub428)\ub97c \ub9d0\ud588\ub2e4",
        "mode": "any",
        "patterns": [
-        "낭비",
-        "더\\s*사",
-        "남",
-        "1\\s*통",
-        "한\\s*통",
-        "달라"
+        "\ub0ad\ube44",
+        "\ub354\\s*\uc0ac",
+        "\ub0a8",
+        "1\\s*\ud1b5",
+        "\ud55c\\s*\ud1b5",
+        "\ub2ec\ub77c"
+       ]
+      },
+      {
+       "id": "w3",
+       "label": "\ucc3d\ubb38\uc744 \ubb34\uc2dc\ud558\uba74 \uc2e4\uc81c\ubcf4\ub2e4 \uc791\uac8c \uc5b4\ub9bc\ud55c\ub2e4\uace0 \uac70\uafb8\ub85c \ub9d0\ud558\uc9c0 \uc54a\uc558\ub2e4",
+       "mode": "none",
+       "patterns": [
+        "\uc2e4\uc81c\ubcf4\ub2e4\\s*(\ub354\\s*)?(\uc791|\uc801|\uc881)",
+        "(\uc791\uc544|\uc801\uc5b4|\uc904\uc5b4)[^.!?\\n]{0,10}\ubd80\uc871(\ud558|\ud574)"
        ]
       }
      ],
      "selfAssess": [
-      "어림이 '넉넉한 쪽'으로 틀리는지 '부족한 쪽'으로 틀리는지 구분해서 썼나요?",
-      "한계가 생기는 조건을 숫자(w의 값)로 말했나요?"
+      "\uc5b4\ub9bc\uc774 '\ub109\ub109\ud55c \ucabd'\uc73c\ub85c \ud2c0\ub9ac\ub294\uc9c0 '\ubd80\uc871\ud55c \ucabd'\uc73c\ub85c \ud2c0\ub9ac\ub294\uc9c0 \uad6c\ubd84\ud574\uc11c \uc37c\ub098\uc694?",
+      "\ud55c\uacc4\uac00 \uc0dd\uae30\ub294 \uc870\uac74\uc744 \uc22b\uc790(w\uc758 \uac12)\ub85c \ub9d0\ud588\ub098\uc694?"
      ],
      "modelAnswers": [
       {
-       "text": "창문을 빼지 않으면 실제보다 넓게 어림하니 부족할 일은 없어서 안전하지만, 창문이 아주 크면 통이 하나 남아서 낭비일 수 있어."
+       "text": "\ucc3d\ubb38\uc744 \ube7c\uc9c0 \uc54a\uc73c\uba74 \uc2e4\uc81c\ubcf4\ub2e4 \ub113\uac8c \uc5b4\ub9bc\ud558\ub2c8 \ubd80\uc871\ud560 \uc77c\uc740 \uc5c6\uc5b4\uc11c \uc548\uc804\ud558\uc9c0\ub9cc, \ucc3d\ubb38\uc774 \uc544\uc8fc \ud06c\uba74 \ud1b5\uc774 \ud558\ub098 \ub0a8\uc544\uc11c \ub0ad\ube44\uc77c \uc218 \uc788\uc5b4."
       },
       {
-       "text": "창문·문 넓이를 빼지 않으면 필요량이 더 많게 나와 여유가 있어. 대신 창이 15 제곱미터 이상이면 실제로는 1통이면 되는데 2통을 사게 돼."
+       "text": "\ucc3d\ubb38\u00b7\ubb38 \ub113\uc774\ub97c \ube7c\uc9c0 \uc54a\uc73c\uba74 \ud544\uc694\ub7c9\uc774 \ub354 \ub9ce\uac8c \ub098\uc640 \uc5ec\uc720\uac00 \uc788\uc5b4. \ub300\uc2e0 \ucc3d\uc774 15 \uc81c\uacf1\ubbf8\ud130 \uc774\uc0c1\uc774\uba74 \uc2e4\uc81c\ub85c\ub294 1\ud1b5\uc774\uba74 \ub418\ub294\ub370 2\ud1b5\uc744 \uc0ac\uac8c \ub3fc."
       },
       {
-       "text": "실제보다 넓게 계산하니 모자랄 일이 없다. 한계는 창문이 아주 크면 통 수가 한 통 더 늘어 돈을 낭비할 수 있다는 점이다."
+       "text": "\uc2e4\uc81c\ubcf4\ub2e4 \ub113\uac8c \uacc4\uc0b0\ud558\ub2c8 \ubaa8\uc790\ub784 \uc77c\uc774 \uc5c6\ub2e4. \ud55c\uacc4\ub294 \ucc3d\ubb38\uc774 \uc544\uc8fc \ud06c\uba74 \ud1b5 \uc218\uac00 \ud55c \ud1b5 \ub354 \ub298\uc5b4 \ub3c8\uc744 \ub0ad\ube44\ud560 \uc218 \uc788\ub2e4\ub294 \uc810\uc774\ub2e4."
       }
      ],
      "badAnswers": [
       {
-       "text": "창문은 상관없어.",
-       "why": "이유와 한계가 없다."
+       "text": "\ucc3d\ubb38\uc740 \uc0c1\uad00\uc5c6\uc5b4.",
+       "why": "\uc774\uc720\uc640 \ud55c\uacc4\uac00 \uc5c6\ub2e4."
       },
       {
-       "text": "그냥 2통이면 돼.",
-       "why": "결론만 있고 조건이 없다."
+       "text": "\uadf8\ub0e5 2\ud1b5\uc774\uba74 \ub3fc.",
+       "why": "\uacb0\ub860\ub9cc \uc788\uace0 \uc870\uac74\uc774 \uc5c6\ub2e4."
       }
      ],
-     "humanReview": "어림이 한쪽으로만 틀린다는 점(과대 어림)을 이해했는지는 사람이 읽어야 한다.",
+     "humanReview": "\uc5b4\ub9bc\uc774 \ud55c\ucabd\uc73c\ub85c\ub9cc \ud2c0\ub9b0\ub2e4\ub294 \uc810(\uacfc\ub300 \uc5b4\ub9bc)\uc744 \uc774\ud574\ud588\ub294\uc9c0\ub294 \uc0ac\ub78c\uc774 \uc77d\uc5b4\uc57c \ud55c\ub2e4.",
      "hints": [
-      "창문을 무시하면 칠할 넓이가 실제보다 커지는지 작아지는지 생각해 보세요.",
-      "방의 크기나 창문의 크기가 달라지면 어떻게 되는지 상상해 보세요."
+      "\ucc3d\ubb38\uc744 \ubb34\uc2dc\ud558\uba74 \uce60\ud560 \ub113\uc774\uac00 \uc2e4\uc81c\ubcf4\ub2e4 \ucee4\uc9c0\ub294\uc9c0 \uc791\uc544\uc9c0\ub294\uc9c0 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694.",
+      "\ubc29\uc758 \ud06c\uae30\ub098 \ucc3d\ubb38\uc758 \ud06c\uae30\uac00 \ub2ec\ub77c\uc9c0\uba74 \uc5b4\ub5bb\uac8c \ub418\ub294\uc9c0 \uc0c1\uc0c1\ud574 \ubcf4\uc138\uc694."
      ]
     }
    }
   ],
   "rubric": [
    {
-    "criterion": "견적 평가",
-    "full": "나와 다를 타당한 것으로 고르고 가·라의 조건 누락을 짚음",
-    "partial": "하나만 고름",
-    "none": "근거 없이 고름"
+    "criterion": "\uacac\uc801 \ud3c9\uac00",
+    "full": "\ub098\uc640 \ub2e4\ub97c \ud0c0\ub2f9\ud55c \uac83\uc73c\ub85c \uace0\ub974\uace0 \uac00\u00b7\ub77c\uc758 \uc870\uac74 \ub204\ub77d\uc744 \uc9da\uc74c",
+    "partial": "\ud558\ub098\ub9cc \uace0\ub984",
+    "none": "\uadfc\uac70 \uc5c6\uc774 \uace0\ub984"
    },
    {
-    "criterion": "어림의 안전성과 한계",
-    "full": "과대 어림이라 부족하지 않지만 w가 15 이상이면 낭비임을 설명",
-    "partial": "안전하다고만 말함",
-    "none": "설명 없음"
+    "criterion": "\uc5b4\ub9bc\uc758 \uc548\uc804\uc131\uacfc \ud55c\uacc4",
+    "full": "\uacfc\ub300 \uc5b4\ub9bc\uc774\ub77c \ubd80\uc871\ud558\uc9c0 \uc54a\uc9c0\ub9cc w\uac00 15 \uc774\uc0c1\uc774\uba74 \ub0ad\ube44\uc784\uc744 \uc124\uba85",
+    "partial": "\uc548\uc804\ud558\ub2e4\uace0\ub9cc \ub9d0\ud568",
+    "none": "\uc124\uba85 \uc5c6\uc74c"
    }
   ],
   "alternatives": [
-   "창문·문 넓이를 무시하는 어림(다)과 정확한 계산(나)은 결론이 같으면 둘 다 합리적이다.",
-   "현장에서는 여유분을 더하기도 하지만, 이 문제는 주어진 조건만 쓴다."
+   "\ucc3d\ubb38\u00b7\ubb38 \ub113\uc774\ub97c \ubb34\uc2dc\ud558\ub294 \uc5b4\ub9bc(\ub2e4)\uacfc \uc815\ud655\ud55c \uacc4\uc0b0(\ub098)\uc740 \uacb0\ub860\uc774 \uac19\uc73c\uba74 \ub458 \ub2e4 \ud569\ub9ac\uc801\uc774\ub2e4.",
+   "\ud604\uc7a5\uc5d0\uc11c\ub294 \uc5ec\uc720\ubd84\uc744 \ub354\ud558\uae30\ub3c4 \ud558\uc9c0\ub9cc, \uc774 \ubb38\uc81c\ub294 \uc8fc\uc5b4\uc9c4 \uc870\uac74\ub9cc \uc4f4\ub2e4."
   ],
   "hardCases": [
-   "벽 모서리나 천장까지 칠하는 경우는 문제의 조건과 다르다. 조건을 벗어난 질문은 자료를 다시 읽도록 안내한다."
+   "\ubcbd \ubaa8\uc11c\ub9ac\ub098 \ucc9c\uc7a5\uae4c\uc9c0 \uce60\ud558\ub294 \uacbd\uc6b0\ub294 \ubb38\uc81c\uc758 \uc870\uac74\uacfc \ub2e4\ub974\ub2e4. \uc870\uac74\uc744 \ubc97\uc5b4\ub09c \uc9c8\ubb38\uc740 \uc790\ub8cc\ub97c \ub2e4\uc2dc \uc77d\ub3c4\ub85d \uc548\ub0b4\ud55c\ub2e4."
   ],
   "cautions": {
-   "language": "제곱미터는 글자로 풀어 썼고 L는 '리터'로 읽는다.",
-   "culture": "방 도색은 보편적 상황이다.",
-   "accessibility": "그림 없이 방의 치수와 제외 면적을 글로 제시했다."
+   "language": "\uc81c\uacf1\ubbf8\ud130\ub294 \uae00\uc790\ub85c \ud480\uc5b4 \uc37c\uace0 L\ub294 '\ub9ac\ud130'\ub85c \uc77d\ub294\ub2e4.",
+   "culture": "\ubc29 \ub3c4\uc0c9\uc740 \ubcf4\ud3b8\uc801 \uc0c1\ud669\uc774\ub2e4.",
+   "accessibility": "\uadf8\ub9bc \uc5c6\uc774 \ubc29\uc758 \uce58\uc218\uc640 \uc81c\uc678 \uba74\uc801\uc744 \uae00\ub85c \uc81c\uc2dc\ud588\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "타당한 의견 선택 여부",
-    "만든 w가 1통 조건을 만족하는지",
-    "서술에 안전 이유와 한계 표현이 있는지"
+    "\ud0c0\ub2f9\ud55c \uc758\uacac \uc120\ud0dd \uc5ec\ubd80",
+    "\ub9cc\ub4e0 w\uac00 1\ud1b5 \uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294\uc9c0",
+    "\uc11c\uc220\uc5d0 \uc548\uc804 \uc774\uc720\uc640 \ud55c\uacc4 \ud45c\ud604\uc774 \uc788\ub294\uc9c0"
    ],
    "human": [
-    "어림의 방향(과대/과소) 이해"
+    "\uc5b4\ub9bc\uc758 \ubc29\ud5a5(\uacfc\ub300/\uacfc\uc18c) \uc774\ud574"
    ]
   },
   "status": "draft"
@@ -1389,70 +1401,70 @@
   "id": "x-m-el-job-08",
   "subject": "math",
   "grade": "EL-job",
-  "topic": "비용·재료 계산의 타당성",
+  "topic": "\ube44\uc6a9\u00b7\uc7ac\ub8cc \uacc4\uc0b0\uc758 \ud0c0\ub2f9\uc131",
   "level": 3,
-  "levelLabel": "고등",
-  "title": "타일 견적서의 반올림 오류",
+  "levelLabel": "\uace0\ub4f1",
+  "title": "\ud0c0\uc77c \uacac\uc801\uc11c\uc758 \ubc18\uc62c\ub9bc \uc624\ub958",
   "uiLang": "ko",
   "format": "find-error-fix",
   "generative": true,
-  "goal": "개수로만 살 수 있는 재료에서 올림이 필요한 이유를 알고, 반올림이 부족을 만드는 경우를 직접 찾는다.",
+  "goal": "\uac1c\uc218\ub85c\ub9cc \uc0b4 \uc218 \uc788\ub294 \uc7ac\ub8cc\uc5d0\uc11c \uc62c\ub9bc\uc774 \ud544\uc694\ud55c \uc774\uc720\ub97c \uc54c\uace0, \ubc18\uc62c\ub9bc\uc774 \ubd80\uc871\uc744 \ub9cc\ub4dc\ub294 \uacbd\uc6b0\ub97c \uc9c1\uc811 \ucc3e\ub294\ub2e4.",
   "thinking": [
-   "견적서 풀이에서 오류 찾기",
-   "수학적 처리가 현실 제약과 맞는지 점검",
-   "오류가 생기는 조건 찾기"
+   "\uacac\uc801\uc11c \ud480\uc774\uc5d0\uc11c \uc624\ub958 \ucc3e\uae30",
+   "\uc218\ud559\uc801 \ucc98\ub9ac\uac00 \ud604\uc2e4 \uc81c\uc57d\uacfc \ub9de\ub294\uc9c0 \uc810\uac80",
+   "\uc624\ub958\uac00 \uc0dd\uae30\ub294 \uc870\uac74 \ucc3e\uae30"
   ],
-  "differsFromPlain": "단순 연습은 나눗셈을 정확히 계산한다. 여기서는 계산은 맞아도 '상자 단위로만 판다'는 현실 조건에 맞지 않는 처리를 찾고, 그것이 문제 되는 경우를 학생이 만든다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \ub098\ub217\uc148\uc744 \uc815\ud655\ud788 \uacc4\uc0b0\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \uacc4\uc0b0\uc740 \ub9de\uc544\ub3c4 '\uc0c1\uc790 \ub2e8\uc704\ub85c\ub9cc \ud310\ub2e4'\ub294 \ud604\uc2e4 \uc870\uac74\uc5d0 \ub9de\uc9c0 \uc54a\ub294 \ucc98\ub9ac\ub97c \ucc3e\uace0, \uadf8\uac83\uc774 \ubb38\uc81c \ub418\ub294 \uacbd\uc6b0\ub97c \ud559\uc0dd\uc774 \ub9cc\ub4e0\ub2e4.",
   "prerequisites": [
-   "제곱센티미터와 제곱미터의 관계",
-   "반올림·올림·내림의 뜻"
+   "\uc81c\uacf1\uc13c\ud2f0\ubbf8\ud130\uc640 \uc81c\uacf1\ubbf8\ud130\uc758 \uad00\uacc4",
+   "\ubc18\uc62c\ub9bc\u00b7\uc62c\ub9bc\u00b7\ub0b4\ub9bc\uc758 \ub73b"
   ],
   "minutes": 12,
   "curriculum": null,
-  "material": "가로 3.6 m, 세로 4.1 m인 방 바닥에 한 변이 30 cm인 정사각형 타일을 깐다. 타일은 10장들이 상자로만 판매하고 한 상자는 18,000원이다. 타일은 모두 온전한 한 장으로 쓰며 자르는 손실은 생각하지 않는다. 아래는 한 학생이 쓴 견적서 풀이다.",
+  "material": "\uac00\ub85c 3.6 m, \uc138\ub85c 4.1 m\uc778 \ubc29 \ubc14\ub2e5\uc5d0 \ud55c \ubcc0\uc774 30 cm\uc778 \uc815\uc0ac\uac01\ud615 \ud0c0\uc77c\uc744 \uae50\ub2e4. \ud0c0\uc77c\uc740 10\uc7a5\ub4e4\uc774 \uc0c1\uc790\ub85c\ub9cc \ud310\ub9e4\ud558\uace0 \ud55c \uc0c1\uc790\ub294 18,000\uc6d0\uc774\ub2e4. \ud0c0\uc77c\uc740 \ubaa8\ub450 \uc628\uc804\ud55c \ud55c \uc7a5\uc73c\ub85c \uc4f0\uba70 \uc790\ub974\ub294 \uc190\uc2e4\uc740 \uc0dd\uac01\ud558\uc9c0 \uc54a\ub294\ub2e4. \uc544\ub798\ub294 \ud55c \ud559\uc0dd\uc774 \uc4f4 \uacac\uc801\uc11c \ud480\uc774\ub2e4.",
   "steps": [
    {
     "id": "s1",
     "kind": "pickLine",
-    "prompt": "견적서 풀이에서 처음으로 문제가 있는 줄을 골라 보세요.",
+    "prompt": "\uacac\uc801\uc11c \ud480\uc774\uc5d0\uc11c \ucc98\uc74c\uc73c\ub85c \ubb38\uc81c\uac00 \uc788\ub294 \uc904\uc744 \uace8\ub77c \ubcf4\uc138\uc694.",
     "lines": [
-     "방 넓이는 3.6 × 4.1 = 14.76 제곱미터이다.",
-     "타일 한 장은 30 cm × 30 cm = 900 제곱센티미터 = 0.09 제곱미터이다.",
-     "필요한 타일은 14.76 ÷ 0.09 = 164장이다.",
-     "한 상자에 10장이므로 164 ÷ 10 = 16.4이고, 반올림하여 16상자를 산다.",
-     "비용은 16 × 18,000 = 288,000원이다."
+     "\ubc29 \ub113\uc774\ub294 3.6 \u00d7 4.1 = 14.76 \uc81c\uacf1\ubbf8\ud130\uc774\ub2e4.",
+     "\ud0c0\uc77c \ud55c \uc7a5\uc740 30 cm \u00d7 30 cm = 900 \uc81c\uacf1\uc13c\ud2f0\ubbf8\ud130 = 0.09 \uc81c\uacf1\ubbf8\ud130\uc774\ub2e4.",
+     "\ud544\uc694\ud55c \ud0c0\uc77c\uc740 14.76 \u00f7 0.09 = 164\uc7a5\uc774\ub2e4.",
+     "\ud55c \uc0c1\uc790\uc5d0 10\uc7a5\uc774\ubbc0\ub85c 164 \u00f7 10 = 16.4\uc774\uace0, \ubc18\uc62c\ub9bc\ud558\uc5ec 16\uc0c1\uc790\ub97c \uc0b0\ub2e4.",
+     "\ube44\uc6a9\uc740 16 \u00d7 18,000 = 288,000\uc6d0\uc774\ub2e4."
     ],
     "wrong": [
      3
     ],
-    "explain": "4번째 줄이 문제다. 16상자는 160장이라 4장이 부족하다. 상자 단위로만 파는 재료는 모자라지 않도록 올림해야 한다. 그러면 17상자, 비용은 17 × 18,000 = 306,000원이다.",
+    "explain": "4\ubc88\uc9f8 \uc904\uc774 \ubb38\uc81c\ub2e4. 16\uc0c1\uc790\ub294 160\uc7a5\uc774\ub77c 4\uc7a5\uc774 \ubd80\uc871\ud558\ub2e4. \uc0c1\uc790 \ub2e8\uc704\ub85c\ub9cc \ud30c\ub294 \uc7ac\ub8cc\ub294 \ubaa8\uc790\ub77c\uc9c0 \uc54a\ub3c4\ub85d \uc62c\ub9bc\ud574\uc57c \ud55c\ub2e4. \uadf8\ub7ec\uba74 17\uc0c1\uc790, \ube44\uc6a9\uc740 17 \u00d7 18,000 = 306,000\uc6d0\uc774\ub2e4.",
     "hints": [
-     "각 줄의 계산이 맞는지와, 그 처리가 '상자로만 판다'는 조건과 맞는지를 나눠서 보세요.",
-     "16상자로 실제 몇 장을 깔 수 있는지 계산해 보세요."
+     "\uac01 \uc904\uc758 \uacc4\uc0b0\uc774 \ub9de\ub294\uc9c0\uc640, \uadf8 \ucc98\ub9ac\uac00 '\uc0c1\uc790\ub85c\ub9cc \ud310\ub2e4'\ub294 \uc870\uac74\uacfc \ub9de\ub294\uc9c0\ub97c \ub098\ub220\uc11c \ubcf4\uc138\uc694.",
+     "16\uc0c1\uc790\ub85c \uc2e4\uc81c \uba87 \uc7a5\uc744 \uae54 \uc218 \uc788\ub294\uc9c0 \uacc4\uc0b0\ud574 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "build",
-    "prompt": "필요한 타일이 n장이라 하자. 상자 수를 반올림하면 타일이 부족해지는 n을 서로 다른 3개 만드세요. (n은 100 이상 300 이하의 자연수)",
+    "prompt": "\ud544\uc694\ud55c \ud0c0\uc77c\uc774 n\uc7a5\uc774\ub77c \ud558\uc790. \uc0c1\uc790 \uc218\ub97c \ubc18\uc62c\ub9bc\ud558\uba74 \ud0c0\uc77c\uc774 \ubd80\uc871\ud574\uc9c0\ub294 n\uc744 \uc11c\ub85c \ub2e4\ub978 3\uac1c \ub9cc\ub4dc\uc138\uc694. (n\uc740 100 \uc774\uc0c1 300 \uc774\ud558\uc758 \uc790\uc5f0\uc218)",
     "vars": [
      {
       "name": "n",
-      "label": "필요한 타일 수 n (장)"
+      "label": "\ud544\uc694\ud55c \ud0c0\uc77c \uc218 n (\uc7a5)"
      }
     ],
     "constraints": [
      {
       "id": "c1",
       "expr": "n==floor(n) && n>=100 && n<=300",
-      "ok": "범위 안의 자연수예요.",
-      "fail": "n은 100 이상 300 이하의 자연수여야 해요."
+      "ok": "\ubc94\uc704 \uc548\uc758 \uc790\uc5f0\uc218\uc608\uc694.",
+      "fail": "n\uc740 100 \uc774\uc0c1 300 \uc774\ud558\uc758 \uc790\uc5f0\uc218\uc5ec\uc57c \ud574\uc694."
      },
      {
       "id": "c2",
       "expr": "n%10>=1 && n%10<=4",
-      "ok": "반올림하면 상자가 부족해져요.",
-      "fail": "이 n에서는 반올림해도 부족하지 않아요. 나눈 값에서 소수 부분이 반올림할 때 어떻게 되는지 보세요."
+      "ok": "\ubc18\uc62c\ub9bc\ud558\uba74 \uc0c1\uc790\uac00 \ubd80\uc871\ud574\uc838\uc694.",
+      "fail": "\uc774 n\uc5d0\uc11c\ub294 \ubc18\uc62c\ub9bc\ud574\ub3c4 \ubd80\uc871\ud558\uc9c0 \uc54a\uc544\uc694. \ub098\ub208 \uac12\uc5d0\uc11c \uc18c\uc218 \ubd80\ubd84\uc774 \ubc18\uc62c\ub9bc\ud560 \ub54c \uc5b4\ub5bb\uac8c \ub418\ub294\uc9c0 \ubcf4\uc138\uc694."
      }
     ],
     "need": 3,
@@ -1476,157 +1488,158 @@
       "n": 167
      }
     ],
-    "explain": "n을 10으로 나눈 소수 부분이 0.1~0.4이면 반올림으로 내려가 상자가 모자란다. 일의 자리가 1~4인 n이 그 경우다. 일의 자리가 5~9이면 반올림해도 올림과 같고, 0이면 정확히 맞는다.",
+    "explain": "n\uc744 10\uc73c\ub85c \ub098\ub208 \uc18c\uc218 \ubd80\ubd84\uc774 0.1~0.4\uc774\uba74 \ubc18\uc62c\ub9bc\uc73c\ub85c \ub0b4\ub824\uac00 \uc0c1\uc790\uac00 \ubaa8\uc790\ub780\ub2e4. \uc77c\uc758 \uc790\ub9ac\uac00 1~4\uc778 n\uc774 \uadf8 \uacbd\uc6b0\ub2e4. \uc77c\uc758 \uc790\ub9ac\uac00 5~9\uc774\uba74 \ubc18\uc62c\ub9bc\ud574\ub3c4 \uc62c\ub9bc\uacfc \uac19\uace0, 0\uc774\uba74 \uc815\ud655\ud788 \ub9de\ub294\ub2e4.",
     "hints": [
-     "n=164, 160, 167일 때 n÷10을 구해 반올림한 상자 수로 몇 장이 되는지 비교해 보세요.",
-     "부족해지는 n들의 일의 자리에서 공통점을 찾아보세요."
+     "n=164, 160, 167\uc77c \ub54c n\u00f710\uc744 \uad6c\ud574 \ubc18\uc62c\ub9bc\ud55c \uc0c1\uc790 \uc218\ub85c \uba87 \uc7a5\uc774 \ub418\ub294\uc9c0 \ube44\uad50\ud574 \ubcf4\uc138\uc694.",
+     "\ubd80\uc871\ud574\uc9c0\ub294 n\ub4e4\uc758 \uc77c\uc758 \uc790\ub9ac\uc5d0\uc11c \uacf5\ud1b5\uc810\uc744 \ucc3e\uc544\ubcf4\uc138\uc694."
     ],
     "because": {
      "id": "s2b",
      "kind": "write",
-     "prompt": "상자 수를 구할 때 왜 반올림이 아니라 올림을 써야 하는지 설명하세요.",
-     "placeholder": "예: 상자는 낱개로 살 수 없으니까 ...",
+     "prompt": "\uc0c1\uc790 \uc218\ub97c \uad6c\ud560 \ub54c \uc65c \ubc18\uc62c\ub9bc\uc774 \uc544\ub2c8\ub77c \uc62c\ub9bc\uc744 \uc368\uc57c \ud558\ub294\uc9c0 \uc124\uba85\ud558\uc138\uc694.",
+     "placeholder": "\uc608: \uc0c1\uc790\ub294 \ub0b1\uac1c\ub85c \uc0b4 \uc218 \uc5c6\uc73c\ub2c8\uae4c ...",
      "minChars": 15,
      "checks": [
       {
        "id": "w1",
-       "label": "올림을 써야 한다(또는 더 사야 한다)고 말했다",
+       "label": "\uc62c\ub9bc\uc744 \uc368\uc57c \ud55c\ub2e4(\ub610\ub294 \ub354 \uc0ac\uc57c \ud55c\ub2e4)\uace0 \ub9d0\ud588\ub2e4",
        "mode": "any",
        "patterns": [
-        "(?<!반)올림",
-        "올려",
-        "더\\s*사",
-        "한\\s*상자"
+        "(?<!\ubc18)\uc62c\ub9bc",
+        "\uc62c\ub824",
+        "\ub354\\s*\uc0ac",
+        "\ud55c\\s*\uc0c1\uc790"
        ]
       },
       {
        "id": "w2",
-       "label": "부족·모자람 등 구체적 이유를 말했다",
+       "label": "\ubd80\uc871\u00b7\ubaa8\uc790\ub78c \ub4f1 \uad6c\uccb4\uc801 \uc774\uc720\ub97c \ub9d0\ud588\ub2e4",
        "mode": "any",
        "patterns": [
-        "부족",
-        "모자",
-        "일의\\s*자리",
-        "나머지"
+        "\ubd80\uc871",
+        "\ubaa8\uc790",
+        "\uc77c\uc758\\s*\uc790\ub9ac",
+        "\ub098\uba38\uc9c0"
        ]
       }
      ],
      "selfAssess": [
-      "내가 만든 n의 일의 자리 규칙과 이유가 연결되나요?",
-      "올림하면 남는 타일이 생기는데도 올림을 쓰는 이유를 썼나요?"
+      "\ub0b4\uac00 \ub9cc\ub4e0 n\uc758 \uc77c\uc758 \uc790\ub9ac \uaddc\uce59\uacfc \uc774\uc720\uac00 \uc5f0\uacb0\ub418\ub098\uc694?",
+      "\uc62c\ub9bc\ud558\uba74 \ub0a8\ub294 \ud0c0\uc77c\uc774 \uc0dd\uae30\ub294\ub370\ub3c4 \uc62c\ub9bc\uc744 \uc4f0\ub294 \uc774\uc720\ub97c \uc37c\ub098\uc694?"
      ],
      "modelAnswers": [
       {
-       "text": "반올림하면 일의 자리가 1~4일 때 상자가 모자라. 남는 타일이 있어도 한 상자를 더 사야 하니까 올림해야 해."
+       "text": "\ubc18\uc62c\ub9bc\ud558\uba74 \uc77c\uc758 \uc790\ub9ac\uac00 1~4\uc77c \ub54c \uc0c1\uc790\uac00 \ubaa8\uc790\ub77c. \ub0a8\ub294 \ud0c0\uc77c\uc774 \uc788\uc5b4\ub3c4 \ud55c \uc0c1\uc790\ub97c \ub354 \uc0ac\uc57c \ud558\ub2c8\uae4c \uc62c\ub9bc\ud574\uc57c \ud574."
       },
       {
-       "text": "상자는 낱개로 못 사니까 164장이면 16상자(160장)로는 4장이 부족해. 그래서 항상 올림을 써야 해."
+       "text": "\uc0c1\uc790\ub294 \ub0b1\uac1c\ub85c \ubabb \uc0ac\ub2c8\uae4c 164\uc7a5\uc774\uba74 16\uc0c1\uc790(160\uc7a5)\ub85c\ub294 4\uc7a5\uc774 \ubd80\uc871\ud574. \uadf8\ub798\uc11c \ud56d\uc0c1 \uc62c\ub9bc\uc744 \uc368\uc57c \ud574."
       }
      ],
      "badAnswers": [
       {
-       "text": "반올림해도 돼.",
-       "why": "오류를 받아들였다."
+       "text": "\ubc18\uc62c\ub9bc\ud574\ub3c4 \ub3fc.",
+       "why": "\uc624\ub958\ub97c \ubc1b\uc544\ub4e4\uc600\ub2e4."
       },
       {
-       "text": "계산이 틀렸어.",
-       "why": "무엇이 어떻게 틀렸는지 없다."
+       "text": "\uacc4\uc0b0\uc774 \ud2c0\ub838\uc5b4.",
+       "why": "\ubb34\uc5c7\uc774 \uc5b4\ub5bb\uac8c \ud2c0\ub838\ub294\uc9c0 \uc5c6\ub2e4."
       }
      ],
-     "humanReview": "'남는 것은 괜찮고 모자라는 것은 안 된다'는 현실 조건을 이해했는지는 사람이 읽어야 한다.",
+     "humanReview": "'\ub0a8\ub294 \uac83\uc740 \uad1c\ucc2e\uace0 \ubaa8\uc790\ub77c\ub294 \uac83\uc740 \uc548 \ub41c\ub2e4'\ub294 \ud604\uc2e4 \uc870\uac74\uc744 \uc774\ud574\ud588\ub294\uc9c0\ub294 \uc0ac\ub78c\uc774 \uc77d\uc5b4\uc57c \ud55c\ub2e4.",
      "hints": [
-      "상자 수가 모자랄 때와 남을 때 각각 어떤 문제가 생기는지 비교해 보세요.",
-      "164장 예시로 16상자와 17상자를 비교해 보세요."
+      "\uc0c1\uc790 \uc218\uac00 \ubaa8\uc790\ub784 \ub54c\uc640 \ub0a8\uc744 \ub54c \uac01\uac01 \uc5b4\ub5a4 \ubb38\uc81c\uac00 \uc0dd\uae30\ub294\uc9c0 \ube44\uad50\ud574 \ubcf4\uc138\uc694.",
+      "164\uc7a5 \uc608\uc2dc\ub85c 16\uc0c1\uc790\uc640 17\uc0c1\uc790\ub97c \ube44\uad50\ud574 \ubcf4\uc138\uc694."
      ]
     }
    }
   ],
   "rubric": [
    {
-    "criterion": "오류 진단",
-    "full": "반올림으로 상자가 모자라게 됨을 짚고 올림으로 고침",
-    "partial": "줄만 찾음",
-    "none": "계산 줄을 고름"
+    "criterion": "\uc624\ub958 \uc9c4\ub2e8",
+    "full": "\ubc18\uc62c\ub9bc\uc73c\ub85c \uc0c1\uc790\uac00 \ubaa8\uc790\ub77c\uac8c \ub428\uc744 \uc9da\uace0 \uc62c\ub9bc\uc73c\ub85c \uace0\uce68",
+    "partial": "\uc904\ub9cc \ucc3e\uc74c",
+    "none": "\uacc4\uc0b0 \uc904\uc744 \uace0\ub984"
    },
    {
-    "criterion": "조건 일반화",
-    "full": "나머지가 1~4인 n을 모두 만들고 이유를 설명",
-    "partial": "일부만 만듦",
-    "none": "만들지 못함"
+    "criterion": "\uc870\uac74 \uc77c\ubc18\ud654",
+    "full": "\ub098\uba38\uc9c0\uac00 1~4\uc778 n\uc744 \ubaa8\ub450 \ub9cc\ub4e4\uace0 \uc774\uc720\ub97c \uc124\uba85",
+    "partial": "\uc77c\ubd80\ub9cc \ub9cc\ub4e6",
+    "none": "\ub9cc\ub4e4\uc9c0 \ubabb\ud568"
    }
   ],
   "alternatives": [
-   "일의 자리가 5~9인 n에서는 반올림과 올림이 같아 결과가 맞다.",
-   "실제 시공에서는 절단 손실 때문에 여유분을 더 사기도 하나, 이 문제는 손실을 생각하지 않는다."
+   "\uc77c\uc758 \uc790\ub9ac\uac00 5~9\uc778 n\uc5d0\uc11c\ub294 \ubc18\uc62c\ub9bc\uacfc \uc62c\ub9bc\uc774 \uac19\uc544 \uacb0\uacfc\uac00 \ub9de\ub2e4.",
+   "\uc2e4\uc81c \uc2dc\uacf5\uc5d0\uc11c\ub294 \uc808\ub2e8 \uc190\uc2e4 \ub54c\ubb38\uc5d0 \uc5ec\uc720\ubd84\uc744 \ub354 \uc0ac\uae30\ub3c4 \ud558\ub098, \uc774 \ubb38\uc81c\ub294 \uc190\uc2e4\uc744 \uc0dd\uac01\ud558\uc9c0 \uc54a\ub294\ub2e4."
   ],
   "hardCases": [
-   "n이 10의 배수(예: 160)인 경우는 정확히 맞아서 올림과 반올림 모두 같다. 이 경우를 오류 예로 낸 학생에게 반례를 확인시킨다."
+   "n\uc774 10\uc758 \ubc30\uc218(\uc608: 160)\uc778 \uacbd\uc6b0\ub294 \uc815\ud655\ud788 \ub9de\uc544\uc11c \uc62c\ub9bc\uacfc \ubc18\uc62c\ub9bc \ubaa8\ub450 \uac19\ub2e4. \uc774 \uacbd\uc6b0\ub97c \uc624\ub958 \uc608\ub85c \ub0b8 \ud559\uc0dd\uc5d0\uac8c \ubc18\ub840\ub97c \ud655\uc778\uc2dc\ud0a8\ub2e4."
   ],
   "cautions": {
-   "language": "'올림'과 '반올림'을 혼동하는 학생이 있어 hint에서 비교하게 했다.",
-   "culture": "타일 시공 소재는 보편적이다.",
-   "accessibility": "그림 없이 치수와 가격을 글로 제시했다."
+   "language": "'\uc62c\ub9bc'\uacfc '\ubc18\uc62c\ub9bc'\uc744 \ud63c\ub3d9\ud558\ub294 \ud559\uc0dd\uc774 \uc788\uc5b4 hint\uc5d0\uc11c \ube44\uad50\ud558\uac8c \ud588\ub2e4.",
+   "culture": "\ud0c0\uc77c \uc2dc\uacf5 \uc18c\uc7ac\ub294 \ubcf4\ud3b8\uc801\uc774\ub2e4.",
+   "accessibility": "\uadf8\ub9bc \uc5c6\uc774 \uce58\uc218\uc640 \uac00\uaca9\uc744 \uae00\ub85c \uc81c\uc2dc\ud588\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "오류 줄 위치",
-    "만든 n이 조건(일의 자리 1~4)을 만족하는지",
-    "서술에 올림과 부족 표현이 있는지"
+    "\uc624\ub958 \uc904 \uc704\uce58",
+    "\ub9cc\ub4e0 n\uc774 \uc870\uac74(\uc77c\uc758 \uc790\ub9ac 1~4)\uc744 \ub9cc\uc871\ud558\ub294\uc9c0",
+    "\uc11c\uc220\uc5d0 \uc62c\ub9bc\uacfc \ubd80\uc871 \ud45c\ud604\uc774 \uc788\ub294\uc9c0"
    ],
    "human": [
-    "올림이 필요한 현실적 이유의 이해"
+    "\uc62c\ub9bc\uc774 \ud544\uc694\ud55c \ud604\uc2e4\uc801 \uc774\uc720\uc758 \uc774\ud574"
    ]
-  }
+  },
+  "status": "reviewed-ai"
  },
  {
   "id": "x-m-el-job-09",
   "subject": "math",
   "grade": "EL-job",
-  "topic": "정보가 충분한지 판단",
+  "topic": "\uc815\ubcf4\uac00 \ucda9\ubd84\ud55c\uc9c0 \ud310\ub2e8",
   "level": 3,
-  "levelLabel": "고등",
-  "title": "쿠키 판매, 무엇을 더 알아야 계산할까",
+  "levelLabel": "\uace0\ub4f1",
+  "title": "\ucfe0\ud0a4 \ud310\ub9e4, \ubb34\uc5c7\uc744 \ub354 \uc54c\uc544\uc57c \uacc4\uc0b0\ud560\uae4c",
   "uiLang": "ko",
   "format": "choose-needed-info",
   "generative": false,
-  "goal": "문제에 주어진 정보만으로 계산할 수 있는지 판단하고, 부족한 정보가 무엇인지 골라 새 정보로 결론을 구한다.",
+  "goal": "\ubb38\uc81c\uc5d0 \uc8fc\uc5b4\uc9c4 \uc815\ubcf4\ub9cc\uc73c\ub85c \uacc4\uc0b0\ud560 \uc218 \uc788\ub294\uc9c0 \ud310\ub2e8\ud558\uace0, \ubd80\uc871\ud55c \uc815\ubcf4\uac00 \ubb34\uc5c7\uc778\uc9c0 \uace8\ub77c \uc0c8 \uc815\ubcf4\ub85c \uacb0\ub860\uc744 \uad6c\ud55c\ub2e4.",
   "thinking": [
-   "정보의 충분성 판단",
-   "필요한 정보와 불필요한 정보 구별",
-   "손익분기 조건을 수 이해로 판단"
+   "\uc815\ubcf4\uc758 \ucda9\ubd84\uc131 \ud310\ub2e8",
+   "\ud544\uc694\ud55c \uc815\ubcf4\uc640 \ubd88\ud544\uc694\ud55c \uc815\ubcf4 \uad6c\ubcc4",
+   "\uc190\uc775\ubd84\uae30 \uc870\uac74\uc744 \uc218 \uc774\ud574\ub85c \ud310\ub2e8"
   ],
-  "differsFromPlain": "단순 연습은 주어진 수로 곧바로 계산한다. 여기서는 계산하기 전에 무엇이 빠졌는지 먼저 가려내고, 새로 알게 된 정보로 결론이 어떻게 달라지는지 따진다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uc8fc\uc5b4\uc9c4 \uc218\ub85c \uace7\ubc14\ub85c \uacc4\uc0b0\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \uacc4\uc0b0\ud558\uae30 \uc804\uc5d0 \ubb34\uc5c7\uc774 \ube60\uc84c\ub294\uc9c0 \uba3c\uc800 \uac00\ub824\ub0b4\uace0, \uc0c8\ub85c \uc54c\uac8c \ub41c \uc815\ubcf4\ub85c \uacb0\ub860\uc774 \uc5b4\ub5bb\uac8c \ub2ec\ub77c\uc9c0\ub294\uc9c0 \ub530\uc9c4\ub2e4.",
   "prerequisites": [
-   "수입·지출·이익의 뜻",
-   "일차식과 부등식의 기초"
+   "\uc218\uc785\u00b7\uc9c0\ucd9c\u00b7\uc774\uc775\uc758 \ub73b",
+   "\uc77c\ucc28\uc2dd\uacfc \ubd80\ub4f1\uc2dd\uc758 \uae30\ucd08"
   ],
   "minutes": 10,
   "curriculum": null,
-  "material": "동아리가 축제에서 수제 쿠키를 모두 개당 1,500원에 팔려고 한다. 재료비로 이미 36,000원을 썼다. 회장이 '몇 개를 팔아야 손해를 보지 않는지 계산해 줘'라고 부탁했다.",
+  "material": "\ub3d9\uc544\ub9ac\uac00 \ucd95\uc81c\uc5d0\uc11c \uc218\uc81c \ucfe0\ud0a4\ub97c \ubaa8\ub450 \uac1c\ub2f9 1,500\uc6d0\uc5d0 \ud314\ub824\uace0 \ud55c\ub2e4. \uc7ac\ub8cc\ube44\ub85c \uc774\ubbf8 36,000\uc6d0\uc744 \uc37c\ub2e4. \ud68c\uc7a5\uc774 '\uba87 \uac1c\ub97c \ud314\uc544\uc57c \uc190\ud574\ub97c \ubcf4\uc9c0 \uc54a\ub294\uc9c0 \uacc4\uc0b0\ud574 \uc918'\ub77c\uace0 \ubd80\ud0c1\ud588\ub2e4.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
     "multi": true,
-    "prompt": "계산하려면 아직 알아야 하는 것을 모두 고르세요.",
+    "prompt": "\uacc4\uc0b0\ud558\ub824\uba74 \uc544\uc9c1 \uc54c\uc544\uc57c \ud558\ub294 \uac83\uc744 \ubaa8\ub450 \uace0\ub974\uc138\uc694.",
     "options": [
      {
       "id": "a",
-      "text": "재료비 말고 부스 이용료 같은 다른 고정 지출이 있는지"
+      "text": "\uc7ac\ub8cc\ube44 \ub9d0\uace0 \ubd80\uc2a4 \uc774\uc6a9\ub8cc \uac19\uc740 \ub2e4\ub978 \uace0\uc815 \uc9c0\ucd9c\uc774 \uc788\ub294\uc9c0"
      },
      {
       "id": "b",
-      "text": "쿠키를 몇 종류로 나누어 만들었는지",
-      "reveals": "모든 쿠키가 같은 가격이면 종류 수는 손익에 영향이 없어요. 어떤 정보가 손익을 바꾸는지 따져 보세요."
+      "text": "\ucfe0\ud0a4\ub97c \uba87 \uc885\ub958\ub85c \ub098\ub204\uc5b4 \ub9cc\ub4e4\uc5c8\ub294\uc9c0",
+      "reveals": "\ubaa8\ub4e0 \ucfe0\ud0a4\uac00 \uac19\uc740 \uac00\uaca9\uc774\uba74 \uc885\ub958 \uc218\ub294 \uc190\uc775\uc5d0 \uc601\ud5a5\uc774 \uc5c6\uc5b4\uc694. \uc5b4\ub5a4 \uc815\ubcf4\uac00 \uc190\uc775\uc744 \ubc14\uafb8\ub294\uc9c0 \ub530\uc838 \ubcf4\uc138\uc694."
      },
      {
       "id": "c",
-      "text": "쿠키 한 개를 팔 때마다 따로 드는 포장비가 있는지"
+      "text": "\ucfe0\ud0a4 \ud55c \uac1c\ub97c \ud314 \ub54c\ub9c8\ub2e4 \ub530\ub85c \ub4dc\ub294 \ud3ec\uc7a5\ube44\uac00 \uc788\ub294\uc9c0"
      },
      {
       "id": "d",
-      "text": "준비한 쿠키가 모두 몇 개인지",
-      "reveals": "준비한 개수는 '그 안에서 가능한지'를 볼 때 필요해요. 손해를 보지 않는 최소 개수를 구할 때 꼭 필요한지는 따져 보세요."
+      "text": "\uc900\ube44\ud55c \ucfe0\ud0a4\uac00 \ubaa8\ub450 \uba87 \uac1c\uc778\uc9c0",
+      "reveals": "\uc900\ube44\ud55c \uac1c\uc218\ub294 '\uadf8 \uc548\uc5d0\uc11c \uac00\ub2a5\ud55c\uc9c0'\ub97c \ubcfc \ub54c \ud544\uc694\ud574\uc694. \uc190\ud574\ub97c \ubcf4\uc9c0 \uc54a\ub294 \ucd5c\uc18c \uac1c\uc218\ub97c \uad6c\ud560 \ub54c \uaf2d \ud544\uc694\ud55c\uc9c0\ub294 \ub530\uc838 \ubcf4\uc138\uc694."
      }
     ],
     "correct": [
@@ -1640,25 +1653,25 @@
        "c",
        "d"
       ],
-      "reason": "준비한 쿠키 수는 최소 판매 개수를 구하는 데는 필요 없지만, 그 목표가 현실적으로 가능한지 판단하려면 필요하다."
+      "reason": "\uc900\ube44\ud55c \ucfe0\ud0a4 \uc218\ub294 \ucd5c\uc18c \ud310\ub9e4 \uac1c\uc218\ub97c \uad6c\ud558\ub294 \ub370\ub294 \ud544\uc694 \uc5c6\uc9c0\ub9cc, \uadf8 \ubaa9\ud45c\uac00 \ud604\uc2e4\uc801\uc73c\ub85c \uac00\ub2a5\ud55c\uc9c0 \ud310\ub2e8\ud558\ub824\uba74 \ud544\uc694\ud558\ub2e4."
      }
     ],
-    "explain": "손해를 보지 않으려면 (개당 판매가 − 개당 추가 비용)에 판매 개수를 곱한 값이 전체 고정 지출 이상이어야 한다. 그래서 고정 지출(부스 이용료 등)과 개당 추가 비용(포장비)을 알아야 한다. 종류 수는 가격이 같으면 영향이 없고, 준비한 개수는 가능 여부를 볼 때 쓴다.",
+    "explain": "\uc190\ud574\ub97c \ubcf4\uc9c0 \uc54a\uc73c\ub824\uba74 (\uac1c\ub2f9 \ud310\ub9e4\uac00 \u2212 \uac1c\ub2f9 \ucd94\uac00 \ube44\uc6a9)\uc5d0 \ud310\ub9e4 \uac1c\uc218\ub97c \uacf1\ud55c \uac12\uc774 \uc804\uccb4 \uace0\uc815 \uc9c0\ucd9c \uc774\uc0c1\uc774\uc5b4\uc57c \ud55c\ub2e4. \uadf8\ub798\uc11c \uace0\uc815 \uc9c0\ucd9c(\ubd80\uc2a4 \uc774\uc6a9\ub8cc \ub4f1)\uacfc \uac1c\ub2f9 \ucd94\uac00 \ube44\uc6a9(\ud3ec\uc7a5\ube44)\uc744 \uc54c\uc544\uc57c \ud55c\ub2e4. \uc885\ub958 \uc218\ub294 \uac00\uaca9\uc774 \uac19\uc73c\uba74 \uc601\ud5a5\uc774 \uc5c6\uace0, \uc900\ube44\ud55c \uac1c\uc218\ub294 \uac00\ub2a5 \uc5ec\ubd80\ub97c \ubcfc \ub54c \uc4f4\ub2e4.",
     "hints": [
-     "이익이 어떤 항목에서 생기고 어떤 항목이 빠지는지 식으로 써 보세요.",
-     "각 보기의 정보가 있을 때와 없을 때 식이 달라지는지 확인해 보세요."
+     "\uc774\uc775\uc774 \uc5b4\ub5a4 \ud56d\ubaa9\uc5d0\uc11c \uc0dd\uae30\uace0 \uc5b4\ub5a4 \ud56d\ubaa9\uc774 \ube60\uc9c0\ub294\uc9c0 \uc2dd\uc73c\ub85c \uc368 \ubcf4\uc138\uc694.",
+     "\uac01 \ubcf4\uae30\uc758 \uc815\ubcf4\uac00 \uc788\uc744 \ub54c\uc640 \uc5c6\uc744 \ub54c \uc2dd\uc774 \ub2ec\ub77c\uc9c0\ub294\uc9c0 \ud655\uc778\ud574 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "알아보니 부스 이용료는 4,000원, 포장비는 쿠키 한 개당 300원, 준비한 쿠키는 60개였다. 손해를 보지 않으려면 최소 몇 개를 팔아야 하는지, 60개를 다 팔면 이익이 얼마인지 쓰세요.",
-    "placeholder": "예: 개당 남는 돈은 ...",
+    "prompt": "\uc54c\uc544\ubcf4\ub2c8 \ubd80\uc2a4 \uc774\uc6a9\ub8cc\ub294 4,000\uc6d0, \ud3ec\uc7a5\ube44\ub294 \ucfe0\ud0a4 \ud55c \uac1c\ub2f9 300\uc6d0, \uc900\ube44\ud55c \ucfe0\ud0a4\ub294 60\uac1c\uc600\ub2e4. \uc190\ud574\ub97c \ubcf4\uc9c0 \uc54a\uc73c\ub824\uba74 \ucd5c\uc18c \uba87 \uac1c\ub97c \ud314\uc544\uc57c \ud558\ub294\uc9c0, 60\uac1c\ub97c \ub2e4 \ud314\uba74 \uc774\uc775\uc774 \uc5bc\ub9c8\uc778\uc9c0 \uc4f0\uc138\uc694.",
+    "placeholder": "\uc608: \uac1c\ub2f9 \ub0a8\ub294 \ub3c8\uc740 ...",
     "minChars": 20,
     "checks": [
      {
       "id": "w1",
-      "label": "최소 판매 개수(34)를 말했다",
+      "label": "\ucd5c\uc18c \ud310\ub9e4 \uac1c\uc218(34)\ub97c \ub9d0\ud588\ub2e4",
       "mode": "any",
       "patterns": [
        "(?<![\\d.])34(?![\\d])"
@@ -1666,7 +1679,7 @@
      },
      {
       "id": "w2",
-      "label": "60개를 다 팔았을 때 이익 32,000원을 말했다",
+      "label": "60\uac1c\ub97c \ub2e4 \ud314\uc558\uc744 \ub54c \uc774\uc775 32,000\uc6d0\uc744 \ub9d0\ud588\ub2e4",
       "mode": "any",
       "patterns": [
        "32\\s*,?\\s*000"
@@ -1674,202 +1687,203 @@
      }
     ],
     "selfAssess": [
-     "개당 남는 돈과 고정 지출을 따로 구해서 썼나요?",
-     "33개가 안 되는 이유(몫 33.3…을 어떻게 처리했는지)를 설명했나요?"
+     "\uac1c\ub2f9 \ub0a8\ub294 \ub3c8\uacfc \uace0\uc815 \uc9c0\ucd9c\uc744 \ub530\ub85c \uad6c\ud574\uc11c \uc37c\ub098\uc694?",
+     "33\uac1c\uac00 \uc548 \ub418\ub294 \uc774\uc720(\ubaab 33.3\u2026\uc744 \uc5b4\ub5bb\uac8c \ucc98\ub9ac\ud588\ub294\uc9c0)\ub97c \uc124\uba85\ud588\ub098\uc694?"
     ],
     "modelAnswers": [
      {
-      "text": "개당 1,500−300 = 1,200원이 남고 고정 지출이 36,000+4,000 = 40,000원이니까 40,000÷1,200 = 33.3…, 그래서 34개 이상 팔아야 해. 60개를 다 팔면 72,000−40,000 = 32,000원 이익이야."
+      "text": "\uac1c\ub2f9 1,500\u2212300 = 1,200\uc6d0\uc774 \ub0a8\uace0 \uace0\uc815 \uc9c0\ucd9c\uc774 36,000+4,000 = 40,000\uc6d0\uc774\ub2c8\uae4c 40,000\u00f71,200 = 33.3\u2026, \uadf8\ub798\uc11c 34\uac1c \uc774\uc0c1 \ud314\uc544\uc57c \ud574. 60\uac1c\ub97c \ub2e4 \ud314\uba74 72,000\u221240,000 = 32,000\uc6d0 \uc774\uc775\uc774\uc57c."
      },
      {
-      "text": "개당 남는 돈 1,200원, 지출 합계 40,000원. 33개면 39,600원이라 모자라고 34개부터 손해가 없어. 60개를 모두 팔면 32,000원 남아."
+      "text": "\uac1c\ub2f9 \ub0a8\ub294 \ub3c8 1,200\uc6d0, \uc9c0\ucd9c \ud569\uacc4 40,000\uc6d0. 33\uac1c\uba74 39,600\uc6d0\uc774\ub77c \ubaa8\uc790\ub77c\uace0 34\uac1c\ubd80\ud130 \uc190\ud574\uac00 \uc5c6\uc5b4. 60\uac1c\ub97c \ubaa8\ub450 \ud314\uba74 32,000\uc6d0 \ub0a8\uc544."
      }
     ],
     "badAnswers": [
      {
-      "text": "40,000÷1,500 = 26.7이니까 27개 팔면 돼.",
-      "why": "포장비를 빼지 않고 계산했다."
+      "text": "40,000\u00f71,500 = 26.7\uc774\ub2c8\uae4c 27\uac1c \ud314\uba74 \ub3fc.",
+      "why": "\ud3ec\uc7a5\ube44\ub97c \ube7c\uc9c0 \uc54a\uace0 \uacc4\uc0b0\ud588\ub2e4."
      },
      {
-      "text": "60개 다 팔면 이익이야.",
-      "why": "구체적인 개수와 금액이 없다."
+      "text": "60\uac1c \ub2e4 \ud314\uba74 \uc774\uc775\uc774\uc57c.",
+      "why": "\uad6c\uccb4\uc801\uc778 \uac1c\uc218\uc640 \uae08\uc561\uc774 \uc5c6\ub2e4."
      }
     ],
-    "humanReview": "개당 남는 돈과 고정 지출을 구분해 식을 세웠는지, 33.3…을 올림으로 처리한 이유를 이해했는지는 사람이 읽어야 한다.",
+    "humanReview": "\uac1c\ub2f9 \ub0a8\ub294 \ub3c8\uacfc \uace0\uc815 \uc9c0\ucd9c\uc744 \uad6c\ubd84\ud574 \uc2dd\uc744 \uc138\uc6e0\ub294\uc9c0, 33.3\u2026\uc744 \uc62c\ub9bc\uc73c\ub85c \ucc98\ub9ac\ud55c \uc774\uc720\ub97c \uc774\ud574\ud588\ub294\uc9c0\ub294 \uc0ac\ub78c\uc774 \uc77d\uc5b4\uc57c \ud55c\ub2e4.",
     "hints": [
-     "판매가에서 개당 드는 비용을 뺀 값을 먼저 구해 보세요.",
-     "고정 지출을 그 값으로 나눈 몫을 어떻게 처리해야 '손해 없음'이 되는지 따져 보세요."
+     "\ud310\ub9e4\uac00\uc5d0\uc11c \uac1c\ub2f9 \ub4dc\ub294 \ube44\uc6a9\uc744 \ube80 \uac12\uc744 \uba3c\uc800 \uad6c\ud574 \ubcf4\uc138\uc694.",
+     "\uace0\uc815 \uc9c0\ucd9c\uc744 \uadf8 \uac12\uc73c\ub85c \ub098\ub208 \ubaab\uc744 \uc5b4\ub5bb\uac8c \ucc98\ub9ac\ud574\uc57c '\uc190\ud574 \uc5c6\uc74c'\uc774 \ub418\ub294\uc9c0 \ub530\uc838 \ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "필요한 정보 판단",
-    "full": "고정 지출과 개당 추가 비용을 고르고 이유를 이해함",
-    "partial": "하나만 고름",
-    "none": "근거 없이 고름"
+    "criterion": "\ud544\uc694\ud55c \uc815\ubcf4 \ud310\ub2e8",
+    "full": "\uace0\uc815 \uc9c0\ucd9c\uacfc \uac1c\ub2f9 \ucd94\uac00 \ube44\uc6a9\uc744 \uace0\ub974\uace0 \uc774\uc720\ub97c \uc774\ud574\ud568",
+    "partial": "\ud558\ub098\ub9cc \uace0\ub984",
+    "none": "\uadfc\uac70 \uc5c6\uc774 \uace0\ub984"
    },
    {
-    "criterion": "새 정보로 결론 내기",
-    "full": "34개와 이익 32,000원을 올바른 식으로 구함",
-    "partial": "한 값만 맞음",
-    "none": "포장비나 이용료를 빼먹음"
+    "criterion": "\uc0c8 \uc815\ubcf4\ub85c \uacb0\ub860 \ub0b4\uae30",
+    "full": "34\uac1c\uc640 \uc774\uc775 32,000\uc6d0\uc744 \uc62c\ubc14\ub978 \uc2dd\uc73c\ub85c \uad6c\ud568",
+    "partial": "\ud55c \uac12\ub9cc \ub9de\uc74c",
+    "none": "\ud3ec\uc7a5\ube44\ub098 \uc774\uc6a9\ub8cc\ub97c \ube7c\uba39\uc74c"
    }
   ],
   "alternatives": [
-   "준비한 개수까지 고른 선택(a, c, d)도 합리적이다.",
-   "34개를 부등식 1200n ≥ 40000으로 구해도 된다."
+   "\uc900\ube44\ud55c \uac1c\uc218\uae4c\uc9c0 \uace0\ub978 \uc120\ud0dd(a, c, d)\ub3c4 \ud569\ub9ac\uc801\uc774\ub2e4.",
+   "34\uac1c\ub97c \ubd80\ub4f1\uc2dd 1200n \u2265 40000\uc73c\ub85c \uad6c\ud574\ub3c4 \ub41c\ub2e4."
   ],
   "hardCases": [
-   "이미 쓴 재료비 36,000원을 '매몰 비용'으로 보고 계산에서 빼는 학생이 있다면, 이 문제의 질문은 '재료비를 회수하는지'를 묻는 것이므로 포함해야 함을 안내한다."
+   "\uc774\ubbf8 \uc4f4 \uc7ac\ub8cc\ube44 36,000\uc6d0\uc744 '\ub9e4\ubab0 \ube44\uc6a9'\uc73c\ub85c \ubcf4\uace0 \uacc4\uc0b0\uc5d0\uc11c \ube7c\ub294 \ud559\uc0dd\uc774 \uc788\ub2e4\uba74, \uc774 \ubb38\uc81c\uc758 \uc9c8\ubb38\uc740 '\uc7ac\ub8cc\ube44\ub97c \ud68c\uc218\ud558\ub294\uc9c0'\ub97c \ubb3b\ub294 \uac83\uc774\ubbc0\ub85c \ud3ec\ud568\ud574\uc57c \ud568\uc744 \uc548\ub0b4\ud55c\ub2e4."
   ],
   "cautions": {
-   "language": "'고정 지출', '손익'은 낯설 수 있어 자료에 '이미 쓴 재료비'로 풀어 썼다.",
-   "culture": "축제 쿠키 판매 소재는 학교 맥락이다.",
-   "accessibility": "표 없이 문장으로 숫자를 줬다."
+   "language": "'\uace0\uc815 \uc9c0\ucd9c', '\uc190\uc775'\uc740 \ub0af\uc124 \uc218 \uc788\uc5b4 \uc790\ub8cc\uc5d0 '\uc774\ubbf8 \uc4f4 \uc7ac\ub8cc\ube44'\ub85c \ud480\uc5b4 \uc37c\ub2e4.",
+   "culture": "\ucd95\uc81c \ucfe0\ud0a4 \ud310\ub9e4 \uc18c\uc7ac\ub294 \ud559\uad50 \ub9e5\ub77d\uc774\ub2e4.",
+   "accessibility": "\ud45c \uc5c6\uc774 \ubb38\uc7a5\uc73c\ub85c \uc22b\uc790\ub97c \uc92c\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "필요한 정보 선택(허용 조합 포함)",
-    "서술에 34와 32,000이 있는지"
+    "\ud544\uc694\ud55c \uc815\ubcf4 \uc120\ud0dd(\ud5c8\uc6a9 \uc870\ud569 \ud3ec\ud568)",
+    "\uc11c\uc220\uc5d0 34\uc640 32,000\uc774 \uc788\ub294\uc9c0"
    ],
    "human": [
-    "식 세우기와 올림 처리의 이유"
+    "\uc2dd \uc138\uc6b0\uae30\uc640 \uc62c\ub9bc \ucc98\ub9ac\uc758 \uc774\uc720"
    ]
-  }
+  },
+  "status": "reviewed-ai"
  },
  {
   "id": "x-m-el-job-10",
   "subject": "math",
   "grade": "EL-job",
-  "topic": "정보가 충분한지 판단",
+  "topic": "\uc815\ubcf4\uac00 \ucda9\ubd84\ud55c\uc9c0 \ud310\ub2e8",
   "level": 3,
-  "levelLabel": "고등",
-  "title": "요금제 선택, 한 달치 정보로 충분할까",
+  "levelLabel": "\uace0\ub4f1",
+  "title": "\uc694\uae08\uc81c \uc120\ud0dd, \ud55c \ub2ec\uce58 \uc815\ubcf4\ub85c \ucda9\ubd84\ud560\uae4c",
   "uiLang": "ko",
   "format": "reveal-and-revise",
   "generative": true,
-  "goal": "한두 달의 자료로는 요금제를 정하기 어렵고, 사용량이 달라지면 유리한 요금제가 바뀜을 알고 그 경계를 찾는다.",
+  "goal": "\ud55c\ub450 \ub2ec\uc758 \uc790\ub8cc\ub85c\ub294 \uc694\uae08\uc81c\ub97c \uc815\ud558\uae30 \uc5b4\ub835\uace0, \uc0ac\uc6a9\ub7c9\uc774 \ub2ec\ub77c\uc9c0\uba74 \uc720\ub9ac\ud55c \uc694\uae08\uc81c\uac00 \ubc14\ub01c\uc744 \uc54c\uace0 \uadf8 \uacbd\uacc4\ub97c \ucc3e\ub294\ub2e4.",
   "thinking": [
-   "정보가 늘 때 판단 수정하기",
-   "경계 조건(어디서 역전되는가) 찾기",
-   "표본의 충분성 판단"
+   "\uc815\ubcf4\uac00 \ub298 \ub54c \ud310\ub2e8 \uc218\uc815\ud558\uae30",
+   "\uacbd\uacc4 \uc870\uac74(\uc5b4\ub514\uc11c \uc5ed\uc804\ub418\ub294\uac00) \ucc3e\uae30",
+   "\ud45c\ubcf8\uc758 \ucda9\ubd84\uc131 \ud310\ub2e8"
   ],
-  "differsFromPlain": "단순 연습은 주어진 사용량으로 두 요금을 계산해 비교한다. 여기서는 정보가 더 들어올 때마다 판단을 고치고, 판단이 뒤집히는 사용량을 학생이 만든다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uc8fc\uc5b4\uc9c4 \uc0ac\uc6a9\ub7c9\uc73c\ub85c \ub450 \uc694\uae08\uc744 \uacc4\uc0b0\ud574 \ube44\uad50\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \uc815\ubcf4\uac00 \ub354 \ub4e4\uc5b4\uc62c \ub54c\ub9c8\ub2e4 \ud310\ub2e8\uc744 \uace0\uce58\uace0, \ud310\ub2e8\uc774 \ub4a4\uc9d1\ud788\ub294 \uc0ac\uc6a9\ub7c9\uc744 \ud559\uc0dd\uc774 \ub9cc\ub4e0\ub2e4.",
   "prerequisites": [
-   "일차식으로 요금 나타내기(중학교 수준)",
-   "합계와 평균의 뜻"
+   "\uc77c\ucc28\uc2dd\uc73c\ub85c \uc694\uae08 \ub098\ud0c0\ub0b4\uae30(\uc911\ud559\uad50 \uc218\uc900)",
+   "\ud569\uacc4\uc640 \ud3c9\uade0\uc758 \ub73b"
   ],
   "minutes": 12,
   "curriculum": null,
-  "material": "휴대전화 요금제 두 가지 중 하나를 앞으로 쓰려고 한다. 요금제 A는 월 30,000원이고 데이터 10 GB까지 포함이며 초과분은 1 GB당 5,000원이다. 요금제 B는 월 42,000원이고 데이터가 무제한이다. 사용량은 정수 GB로만 계산한다.",
+  "material": "\ud734\ub300\uc804\ud654 \uc694\uae08\uc81c \ub450 \uac00\uc9c0 \uc911 \ud558\ub098\ub97c \uc55e\uc73c\ub85c \uc4f0\ub824\uace0 \ud55c\ub2e4. \uc694\uae08\uc81c A\ub294 \uc6d4 30,000\uc6d0\uc774\uace0 \ub370\uc774\ud130 10 GB\uae4c\uc9c0 \ud3ec\ud568\uc774\uba70 \ucd08\uacfc\ubd84\uc740 1 GB\ub2f9 5,000\uc6d0\uc774\ub2e4. \uc694\uae08\uc81c B\ub294 \uc6d4 42,000\uc6d0\uc774\uace0 \ub370\uc774\ud130\uac00 \ubb34\uc81c\ud55c\uc774\ub2e4. \uc0ac\uc6a9\ub7c9\uc740 \uc815\uc218 GB\ub85c\ub9cc \uacc4\uc0b0\ud55c\ub2e4.",
   "steps": [
    {
     "id": "s1",
     "kind": "reveal",
-    "prompt": "정보가 하나씩 드러납니다. 매번 그때까지의 정보로 판단하세요.",
+    "prompt": "\uc815\ubcf4\uac00 \ud558\ub098\uc529 \ub4dc\ub7ec\ub0a9\ub2c8\ub2e4. \ub9e4\ubc88 \uadf8\ub54c\uae4c\uc9c0\uc758 \uc815\ubcf4\ub85c \ud310\ub2e8\ud558\uc138\uc694.",
     "stages": [
      {
-      "info": "지난달 데이터 사용량은 9 GB였다.",
-      "ask": "앞으로 쓸 요금제를 지금 고른다면 어떻게 판단하겠습니까?",
+      "info": "\uc9c0\ub09c\ub2ec \ub370\uc774\ud130 \uc0ac\uc6a9\ub7c9\uc740 9 GB\uc600\ub2e4.",
+      "ask": "\uc55e\uc73c\ub85c \uc4f8 \uc694\uae08\uc81c\ub97c \uc9c0\uae08 \uace0\ub978\ub2e4\uba74 \uc5b4\ub5bb\uac8c \ud310\ub2e8\ud558\uaca0\uc2b5\ub2c8\uae4c?",
       "options": [
        {
         "id": "a",
-        "text": "B: 무제한이라 마음 편하다",
-        "reveals": "마음 편한 것과 비용이 적은 것은 달라요. 지난달 요금을 두 요금제로 계산해 보세요."
+        "text": "B: \ubb34\uc81c\ud55c\uc774\ub77c \ub9c8\uc74c \ud3b8\ud558\ub2e4",
+        "reveals": "\ub9c8\uc74c \ud3b8\ud55c \uac83\uacfc \ube44\uc6a9\uc774 \uc801\uc740 \uac83\uc740 \ub2ec\ub77c\uc694. \uc9c0\ub09c\ub2ec \uc694\uae08\uc744 \ub450 \uc694\uae08\uc81c\ub85c \uacc4\uc0b0\ud574 \ubcf4\uc138\uc694."
        },
        {
         "id": "b",
-        "text": "A: 지난달 기준으로는 더 싸다"
+        "text": "A: \uc9c0\ub09c\ub2ec \uae30\uc900\uc73c\ub85c\ub294 \ub354 \uc2f8\ub2e4"
        },
        {
         "id": "c",
-        "text": "한 달 자료뿐이라 아직 정하기 어렵다"
+        "text": "\ud55c \ub2ec \uc790\ub8cc\ubfd0\uc774\ub77c \uc544\uc9c1 \uc815\ud558\uae30 \uc5b4\ub835\ub2e4"
        }
       ],
       "reasonable": [
        "b",
        "c"
       ],
-      "after": "지난달 9 GB라면 A는 30,000원, B는 42,000원이라 A가 더 싸다. 다만 이것은 한 달치 자료다."
+      "after": "\uc9c0\ub09c\ub2ec 9 GB\ub77c\uba74 A\ub294 30,000\uc6d0, B\ub294 42,000\uc6d0\uc774\ub77c A\uac00 \ub354 \uc2f8\ub2e4. \ub2e4\ub9cc \uc774\uac83\uc740 \ud55c \ub2ec\uce58 \uc790\ub8cc\ub2e4."
      },
      {
-      "info": "이번 달에는 영상을 많이 봐서 12 GB를 썼다.",
-      "ask": "이 두 달의 정보로 판단을 어떻게 고치겠습니까?",
+      "info": "\uc774\ubc88 \ub2ec\uc5d0\ub294 \uc601\uc0c1\uc744 \ub9ce\uc774 \ubd10\uc11c 12 GB\ub97c \uc37c\ub2e4.",
+      "ask": "\uc774 \ub450 \ub2ec\uc758 \uc815\ubcf4\ub85c \ud310\ub2e8\uc744 \uc5b4\ub5bb\uac8c \uace0\uce58\uaca0\uc2b5\ub2c8\uae4c?",
       "options": [
        {
         "id": "a",
-        "text": "A를 유지한다: 이번 달에도 A가 더 쌌다"
+        "text": "A\ub97c \uc720\uc9c0\ud55c\ub2e4: \uc774\ubc88 \ub2ec\uc5d0\ub3c4 A\uac00 \ub354 \uc30c\ub2e4"
        },
        {
         "id": "b",
-        "text": "B로 바꾼다: 10 GB를 넘었으니 이제 B가 유리하다",
-        "reveals": "10 GB를 넘으면 곧바로 B가 유리해지는 것은 아니에요. 초과분 요금을 계산해 보세요."
+        "text": "B\ub85c \ubc14\uafbc\ub2e4: 10 GB\ub97c \ub118\uc5c8\uc73c\ub2c8 \uc774\uc81c B\uac00 \uc720\ub9ac\ud558\ub2e4",
+        "reveals": "10 GB\ub97c \ub118\uc73c\uba74 \uace7\ubc14\ub85c B\uac00 \uc720\ub9ac\ud574\uc9c0\ub294 \uac83\uc740 \uc544\ub2c8\uc5d0\uc694. \ucd08\uacfc\ubd84 \uc694\uae08\uc744 \uacc4\uc0b0\ud574 \ubcf4\uc138\uc694."
        },
        {
         "id": "c",
-        "text": "두 달 자료로는 아직 이르다"
+        "text": "\ub450 \ub2ec \uc790\ub8cc\ub85c\ub294 \uc544\uc9c1 \uc774\ub974\ub2e4"
        }
       ],
       "reasonable": [
        "a",
        "c"
       ],
-      "after": "12 GB이면 A는 30,000 + 2×5,000 = 40,000원으로 B(42,000원)보다 아직 싸다. 초과해도 B가 곧바로 유리해지지는 않는다."
+      "after": "12 GB\uc774\uba74 A\ub294 30,000 + 2\u00d75,000 = 40,000\uc6d0\uc73c\ub85c B(42,000\uc6d0)\ubcf4\ub2e4 \uc544\uc9c1 \uc2f8\ub2e4. \ucd08\uacfc\ud574\ub3c4 B\uac00 \uace7\ubc14\ub85c \uc720\ub9ac\ud574\uc9c0\uc9c0\ub294 \uc54a\ub294\ub2e4."
      },
      {
-      "info": "앞으로 4개월의 예상 사용량은 8 GB, 13 GB, 14 GB, 15 GB이다.",
-      "ask": "이 4개월 동안 총요금이 더 싼 요금제는 무엇입니까?",
+      "info": "\uc55e\uc73c\ub85c 4\uac1c\uc6d4\uc758 \uc608\uc0c1 \uc0ac\uc6a9\ub7c9\uc740 8 GB, 13 GB, 14 GB, 15 GB\uc774\ub2e4.",
+      "ask": "\uc774 4\uac1c\uc6d4 \ub3d9\uc548 \ucd1d\uc694\uae08\uc774 \ub354 \uc2fc \uc694\uae08\uc81c\ub294 \ubb34\uc5c7\uc785\ub2c8\uae4c?",
       "options": [
        {
         "id": "a",
-        "text": "A가 더 싸다",
-        "reveals": "A가 싼 달이 있다고 합계도 싼 것은 아니에요. 달마다 A의 요금을 계산해 더해 보세요."
+        "text": "A\uac00 \ub354 \uc2f8\ub2e4",
+        "reveals": "A\uac00 \uc2fc \ub2ec\uc774 \uc788\ub2e4\uace0 \ud569\uacc4\ub3c4 \uc2fc \uac83\uc740 \uc544\ub2c8\uc5d0\uc694. \ub2ec\ub9c8\ub2e4 A\uc758 \uc694\uae08\uc744 \uacc4\uc0b0\ud574 \ub354\ud574 \ubcf4\uc138\uc694."
        },
        {
         "id": "b",
-        "text": "두 요금제가 같다",
-        "reveals": "합계를 구하기 전에 같다고 정하면 근거가 부족해요."
+        "text": "\ub450 \uc694\uae08\uc81c\uac00 \uac19\ub2e4",
+        "reveals": "\ud569\uacc4\ub97c \uad6c\ud558\uae30 \uc804\uc5d0 \uac19\ub2e4\uace0 \uc815\ud558\uba74 \uadfc\uac70\uac00 \ubd80\uc871\ud574\uc694."
        },
        {
         "id": "c",
-        "text": "B가 더 싸다"
+        "text": "B\uac00 \ub354 \uc2f8\ub2e4"
        }
       ],
       "reasonable": [
        "c"
       ],
-      "after": "A는 30,000 + 45,000 + 50,000 + 55,000 = 180,000원, B는 42,000×4 = 168,000원이다. 앞의 두 달에는 A가 싸 보였으나 사용량이 늘어나는 달이 섞이면 B가 더 싸다."
+      "after": "A\ub294 30,000 + 45,000 + 50,000 + 55,000 = 180,000\uc6d0, B\ub294 42,000\u00d74 = 168,000\uc6d0\uc774\ub2e4. \uc55e\uc758 \ub450 \ub2ec\uc5d0\ub294 A\uac00 \uc2f8 \ubcf4\uc600\uc73c\ub098 \uc0ac\uc6a9\ub7c9\uc774 \ub298\uc5b4\ub098\ub294 \ub2ec\uc774 \uc11e\uc774\uba74 B\uac00 \ub354 \uc2f8\ub2e4."
      }
     ],
-    "reflect": "한 달, 두 달의 자료로는 A가 유리해 보였지만 앞으로의 사용량 분포를 보자 판단이 바뀌었다. 판단을 고정하기 전에 어떤 정보가 더 있어야 하는지, 어느 사용량에서 유리한 요금제가 바뀌는지 생각해 보세요.",
+    "reflect": "\ud55c \ub2ec, \ub450 \ub2ec\uc758 \uc790\ub8cc\ub85c\ub294 A\uac00 \uc720\ub9ac\ud574 \ubcf4\uc600\uc9c0\ub9cc \uc55e\uc73c\ub85c\uc758 \uc0ac\uc6a9\ub7c9 \ubd84\ud3ec\ub97c \ubcf4\uc790 \ud310\ub2e8\uc774 \ubc14\ub00c\uc5c8\ub2e4. \ud310\ub2e8\uc744 \uace0\uc815\ud558\uae30 \uc804\uc5d0 \uc5b4\ub5a4 \uc815\ubcf4\uac00 \ub354 \uc788\uc5b4\uc57c \ud558\ub294\uc9c0, \uc5b4\ub290 \uc0ac\uc6a9\ub7c9\uc5d0\uc11c \uc720\ub9ac\ud55c \uc694\uae08\uc81c\uac00 \ubc14\ub00c\ub294\uc9c0 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694.",
     "hints": [
-     "달마다 두 요금제의 요금을 적어 합을 비교해 보세요.",
-     "A와 B의 요금이 같아지는 사용량이 어디쯤인지 어림해 보세요."
+     "\ub2ec\ub9c8\ub2e4 \ub450 \uc694\uae08\uc81c\uc758 \uc694\uae08\uc744 \uc801\uc5b4 \ud569\uc744 \ube44\uad50\ud574 \ubcf4\uc138\uc694.",
+     "A\uc640 B\uc758 \uc694\uae08\uc774 \uac19\uc544\uc9c0\ub294 \uc0ac\uc6a9\ub7c9\uc774 \uc5b4\ub514\ucbe4\uc778\uc9c0 \uc5b4\ub9bc\ud574 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "build",
-    "prompt": "한 달 사용량 x GB에서 요금제 B가 A보다 싸지는 경우를 서로 다른 2개 만드세요. (x는 0 이상 40 이하의 정수)",
+    "prompt": "\ud55c \ub2ec \uc0ac\uc6a9\ub7c9 x GB\uc5d0\uc11c \uc694\uae08\uc81c B\uac00 A\ubcf4\ub2e4 \uc2f8\uc9c0\ub294 \uacbd\uc6b0\ub97c \uc11c\ub85c \ub2e4\ub978 2\uac1c \ub9cc\ub4dc\uc138\uc694. (x\ub294 0 \uc774\uc0c1 40 \uc774\ud558\uc758 \uc815\uc218)",
     "vars": [
      {
       "name": "x",
-      "label": "한 달 사용량 x (GB)"
+      "label": "\ud55c \ub2ec \uc0ac\uc6a9\ub7c9 x (GB)"
      }
     ],
     "constraints": [
      {
       "id": "c1",
       "expr": "x==floor(x) && x>=0 && x<=40",
-      "ok": "범위 안의 정수예요.",
-      "fail": "x는 0 이상 40 이하의 정수여야 해요."
+      "ok": "\ubc94\uc704 \uc548\uc758 \uc815\uc218\uc608\uc694.",
+      "fail": "x\ub294 0 \uc774\uc0c1 40 \uc774\ud558\uc758 \uc815\uc218\uc5ec\uc57c \ud574\uc694."
      },
      {
       "id": "c2",
       "expr": "30000+5000*max(0,x-10)>42000",
-      "ok": "A의 요금이 B보다 비싸요.",
-      "fail": "이 사용량에서는 A가 B보다 싸거나 같아요. 초과분 요금까지 더해 보세요."
+      "ok": "A\uc758 \uc694\uae08\uc774 B\ubcf4\ub2e4 \ube44\uc2f8\uc694.",
+      "fail": "\uc774 \uc0ac\uc6a9\ub7c9\uc5d0\uc11c\ub294 A\uac00 B\ubcf4\ub2e4 \uc2f8\uac70\ub098 \uac19\uc544\uc694. \ucd08\uacfc\ubd84 \uc694\uae08\uae4c\uc9c0 \ub354\ud574 \ubcf4\uc138\uc694."
      }
     ],
     "need": 2,
@@ -1893,47 +1907,48 @@
       "x": 9
      }
     ],
-    "explain": "A의 요금은 30,000 + 5,000×(x−10)이다. 이것이 42,000원을 넘는 것은 x가 13 이상일 때다. x=12이면 40,000원으로 A가 아직 싸고, 13이면 45,000원으로 B가 싸진다.",
+    "explain": "A\uc758 \uc694\uae08\uc740 30,000 + 5,000\u00d7(x\u221210)\uc774\ub2e4. \uc774\uac83\uc774 42,000\uc6d0\uc744 \ub118\ub294 \uac83\uc740 x\uac00 13 \uc774\uc0c1\uc77c \ub54c\ub2e4. x=12\uc774\uba74 40,000\uc6d0\uc73c\ub85c A\uac00 \uc544\uc9c1 \uc2f8\uace0, 13\uc774\uba74 45,000\uc6d0\uc73c\ub85c B\uac00 \uc2f8\uc9c4\ub2e4.",
     "hints": [
-     "x=10, 11, 12, 13에서 A의 요금을 차례로 계산해 보세요.",
-     "A의 요금이 42,000원을 처음 넘는 x가 어디인지 찾아보세요."
+     "x=10, 11, 12, 13\uc5d0\uc11c A\uc758 \uc694\uae08\uc744 \ucc28\ub840\ub85c \uacc4\uc0b0\ud574 \ubcf4\uc138\uc694.",
+     "A\uc758 \uc694\uae08\uc774 42,000\uc6d0\uc744 \ucc98\uc74c \ub118\ub294 x\uac00 \uc5b4\ub514\uc778\uc9c0 \ucc3e\uc544\ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "판단의 수정",
-    "full": "정보가 늘 때마다 근거(요금 계산)와 함께 판단을 고침",
-    "partial": "일부 단계에서만 근거를 댐",
-    "none": "처음 판단을 고집함"
+    "criterion": "\ud310\ub2e8\uc758 \uc218\uc815",
+    "full": "\uc815\ubcf4\uac00 \ub298 \ub54c\ub9c8\ub2e4 \uadfc\uac70(\uc694\uae08 \uacc4\uc0b0)\uc640 \ud568\uaed8 \ud310\ub2e8\uc744 \uace0\uce68",
+    "partial": "\uc77c\ubd80 \ub2e8\uacc4\uc5d0\uc11c\ub9cc \uadfc\uac70\ub97c \ub310",
+    "none": "\ucc98\uc74c \ud310\ub2e8\uc744 \uace0\uc9d1\ud568"
    },
    {
-    "criterion": "경계 조건 발견",
-    "full": "x가 13 이상이면 B가 싸지는 사실을 사례로 만듦",
-    "partial": "하나만 만들거나 경계 근처 오류",
-    "none": "조건을 만들지 못함"
+    "criterion": "\uacbd\uacc4 \uc870\uac74 \ubc1c\uacac",
+    "full": "x\uac00 13 \uc774\uc0c1\uc774\uba74 B\uac00 \uc2f8\uc9c0\ub294 \uc0ac\uc2e4\uc744 \uc0ac\ub840\ub85c \ub9cc\ub4e6",
+    "partial": "\ud558\ub098\ub9cc \ub9cc\ub4e4\uac70\ub098 \uacbd\uacc4 \uadfc\ucc98 \uc624\ub958",
+    "none": "\uc870\uac74\uc744 \ub9cc\ub4e4\uc9c0 \ubabb\ud568"
    }
   ],
   "alternatives": [
-   "1~2단계에서 '아직 정하기 이르다'를 고른 판단도 합리적이다.",
-   "소수 GB를 허용하면 경계가 12.4 GB가 된다. 문제는 정수 GB만 쓴다."
+   "1~2\ub2e8\uacc4\uc5d0\uc11c '\uc544\uc9c1 \uc815\ud558\uae30 \uc774\ub974\ub2e4'\ub97c \uace0\ub978 \ud310\ub2e8\ub3c4 \ud569\ub9ac\uc801\uc774\ub2e4.",
+   "\uc18c\uc218 GB\ub97c \ud5c8\uc6a9\ud558\uba74 \uacbd\uacc4\uac00 12.4 GB\uac00 \ub41c\ub2e4. \ubb38\uc81c\ub294 \uc815\uc218 GB\ub9cc \uc4f4\ub2e4."
   ],
   "hardCases": [
-   "평균 사용량만 보고 판단하는 경우: 평균 12.5 GB로 A가 싸다고 볼 수 있으나 달마다 요금이 비선형(초과 요금)이라 합계가 다를 수 있다."
+   "\ud3c9\uade0 \uc0ac\uc6a9\ub7c9\ub9cc \ubcf4\uace0 \ud310\ub2e8\ud558\ub294 \uacbd\uc6b0: \ud3c9\uade0 12.5 GB\ub85c A\uac00 \uc2f8\ub2e4\uace0 \ubcfc \uc218 \uc788\uc73c\ub098 \ub2ec\ub9c8\ub2e4 \uc694\uae08\uc774 \ube44\uc120\ud615(\ucd08\uacfc \uc694\uae08)\uc774\ub77c \ud569\uacc4\uac00 \ub2e4\ub97c \uc218 \uc788\ub2e4."
   ],
   "cautions": {
-   "language": "GB는 '기가바이트'로 읽는다. '초과분'의 뜻은 자료에 풀어 썼다.",
-   "culture": "요금제 소재는 일상적이지만 실제 요금이 아니라 가상의 값이다.",
-   "accessibility": "표 없이 문장으로 숫자를 줬다."
+   "language": "GB\ub294 '\uae30\uac00\ubc14\uc774\ud2b8'\ub85c \uc77d\ub294\ub2e4. '\ucd08\uacfc\ubd84'\uc758 \ub73b\uc740 \uc790\ub8cc\uc5d0 \ud480\uc5b4 \uc37c\ub2e4.",
+   "culture": "\uc694\uae08\uc81c \uc18c\uc7ac\ub294 \uc77c\uc0c1\uc801\uc774\uc9c0\ub9cc \uc2e4\uc81c \uc694\uae08\uc774 \uc544\ub2c8\ub77c \uac00\uc0c1\uc758 \uac12\uc774\ub2e4.",
+   "accessibility": "\ud45c \uc5c6\uc774 \ubb38\uc7a5\uc73c\ub85c \uc22b\uc790\ub97c \uc92c\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "단계별 판단이 합리적 범위인지",
-    "만든 x가 B가 더 싼 조건을 만족하는지"
+    "\ub2e8\uacc4\ubcc4 \ud310\ub2e8\uc774 \ud569\ub9ac\uc801 \ubc94\uc704\uc778\uc9c0",
+    "\ub9cc\ub4e0 x\uac00 B\uac00 \ub354 \uc2fc \uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294\uc9c0"
    ],
    "human": [
-    "판단이 바뀐 이유를 자기 말로 설명할 수 있는지"
+    "\ud310\ub2e8\uc774 \ubc14\ub010 \uc774\uc720\ub97c \uc790\uae30 \ub9d0\ub85c \uc124\uba85\ud560 \uc218 \uc788\ub294\uc9c0"
    ]
-  }
+  },
+  "status": "reviewed-ai"
  }
 ]

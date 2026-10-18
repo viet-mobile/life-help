@@ -3,62 +3,60 @@
   "id": "x-e-e2-01",
   "subject": "english",
   "grade": "E2",
-  "topic": "짧은 대화와 표지판",
+  "topic": "\uc9e7\uc740 \ub300\ud654\uc640 \ud45c\uc9c0\ud310",
   "level": 1,
-  "levelLabel": "초등",
-  "title": "공원 안내판과 Tom의 계획 맞춰 보기",
+  "levelLabel": "\ucd08\ub4f1",
+  "title": "\uacf5\uc6d0 \uc548\ub0b4\ud310\uacfc Tom\uc758 \uacc4\ud68d \ub9de\ucdb0 \ubcf4\uae30",
   "uiLang": "ko",
   "format": "judge-evidence-explain",
   "generative": false,
-  "goal": "안내판의 여러 줄을 Tom의 계획과 하나씩 비교해, 맞지 않는 부분을 찾고 영어로 알려 준다.",
+  "goal": "\uc548\ub0b4\ud310\uc758 \uc5ec\ub7ec \uc904\uc744 Tom\uc758 \uacc4\ud68d\uacfc \ud558\ub098\uc529 \ube44\uad50\ud574, \ub9de\uc9c0 \uc54a\ub294 \ubd80\ubd84\uc744 \ucc3e\uace0 \uc601\uc5b4\ub85c \uc54c\ub824 \uc900\ub2e4.",
   "thinking": [
-   "안내판의 줄마다 계획의 한 부분과 비교하기",
-   "a.m./p.m. 시각을 근거로 판단하기",
-   "문제가 되는 것과 괜찮은 것을 구분하기"
+   "\uc548\ub0b4\ud310\uc758 \uc904\ub9c8\ub2e4 \uacc4\ud68d\uc758 \ud55c \ubd80\ubd84\uacfc \ube44\uad50\ud558\uae30",
+   "a.m./p.m. \uc2dc\uac01\uc744 \uadfc\uac70\ub85c \ud310\ub2e8\ud558\uae30",
+   "\ubb38\uc81c\uac00 \ub418\ub294 \uac83\uacfc \uad1c\ucc2e\uc740 \uac83\uc744 \uad6c\ubd84\ud558\uae30"
   ],
-  "differsFromPlain": "단순 연습은 안내판의 낱말 뜻이나 시각 읽기를 묻는다. 여기서는 Tom의 계획 세 가지(개, 자전거, 시각)를 안내판의 서로 다른 줄과 각각 맞춰 보고, 괜찮은 부분은 남기고 문제인 부분만 영어로 알려 준다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uc548\ub0b4\ud310\uc758 \ub0b1\ub9d0 \ub73b\uc774\ub098 \uc2dc\uac01 \uc77d\uae30\ub97c \ubb3b\ub294\ub2e4. \uc5ec\uae30\uc11c\ub294 Tom\uc758 \uacc4\ud68d \uc138 \uac00\uc9c0(\uac1c, \uc790\uc804\uac70, \uc2dc\uac01)\ub97c \uc548\ub0b4\ud310\uc758 \uc11c\ub85c \ub2e4\ub978 \uc904\uacfc \uac01\uac01 \ub9de\ucdb0 \ubcf4\uace0, \uad1c\ucc2e\uc740 \ubd80\ubd84\uc740 \ub0a8\uae30\uace0 \ubb38\uc81c\uc778 \ubd80\ubd84\ub9cc \uc601\uc5b4\ub85c \uc54c\ub824 \uc900\ub2e4.",
   "prerequisites": [
-   "a.m.(오전) / p.m.(오후) 의 뜻",
-   "open, bike, dog 같은 쉬운 낱말"
+   "a.m.(\uc624\uc804) / p.m.(\uc624\ud6c4) \uc758 \ub73b",
+   "open, bike, dog \uac19\uc740 \uc26c\uc6b4 \ub0b1\ub9d0"
   ],
   "minutes": 6,
   "curriculum": null,
-  "material": "공원 입구 안내판(그림 없이 글로만 적었어요):\n\nSun Park\nOpen: 7 a.m. - 6 p.m.\nNo bikes.\nDogs OK.\n\n친구 Tom이 말했어요. \"I will go to Sun Park with my dog and my bike at 7 p.m.!\"",
+  "material": "\uacf5\uc6d0 \uc785\uad6c \uc548\ub0b4\ud310(\uadf8\ub9bc \uc5c6\uc774 \uae00\ub85c\ub9cc \uc801\uc5c8\uc5b4\uc694):\n\nSun Park\nOpen: 7 a.m. - 6 p.m.\nNo bikes.\nDogs OK.\n\n\uce5c\uad6c Tom\uc774 \ub9d0\ud588\uc5b4\uc694. \"I will go to Sun Park with my dog and my bike at 7 p.m.!\"",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
-    "prompt": "Tom의 계획에서 안내판과 맞지 않는 부분을 모두 고르세요.",
+    "prompt": "Tom\uc758 \uacc4\ud68d\uc5d0\uc11c \uc548\ub0b4\ud310\uacfc \ub9de\ub294 \ubd80\ubd84\uc744 \ubaa8\ub450 \uace0\ub974\uc138\uc694.",
     "options": [
      {
       "id": "a",
-      "text": "with my dog",
-      "reveals": "'Dogs OK.' 줄이 개에 대해 무엇이라고 하는지 다시 읽어 보세요."
+      "text": "with my dog"
      },
      {
       "id": "b",
       "text": "with my bike",
-      "reveals": "'No bikes.' 줄과 Tom의 계획을 나란히 놓고 비교해 보세요. 이 부분은 안내판과 어긋나요."
+      "reveals": "'No bikes.' \uc904\uacfc Tom\uc758 \uacc4\ud68d\uc744 \ub098\ub780\ud788 \ub193\uace0 \ube44\uad50\ud574 \ubcf4\uc138\uc694. \uc774 \ubd80\ubd84\uc740 \uc548\ub0b4\ud310\uacfc \uc5b4\uae0b\ub098\uc11c \ub9de\ub294 \ubd80\ubd84\uc774 \uc544\ub2c8\uc5d0\uc694."
      },
      {
       "id": "c",
       "text": "at 7 p.m.",
-      "reveals": "Open 줄의 숫자 옆 a.m./p.m. 를 Tom의 시각과 비교해 보세요. 이 부분도 어긋나요."
+      "reveals": "Open \uc904\uc758 \uc22b\uc790 \uc606 a.m./p.m. \ub97c Tom\uc758 \uc2dc\uac01\uacfc \ube44\uad50\ud574 \ubcf4\uc138\uc694. \uc774 \ubd80\ubd84\ub3c4 \uc5b4\uae0b\ub098\uc11c \ub9de\ub294 \ubd80\ubd84\uc774 \uc544\ub2c8\uc5d0\uc694."
      },
      {
       "id": "d",
-      "text": "to Sun Park",
-      "reveals": "공원 이름은 안내판 맨 윗줄과 같아요."
+      "text": "to Sun Park"
      }
     ],
     "correct": [
-     "b",
-     "c"
+     "a",
+     "d"
     ],
-    "explain": "안내판은 자전거 금지(No bikes)이고 문은 오후 6시에 닫아요. Tom은 자전거를 가져가고 오후 7시에 간다고 했으니 두 부분이 맞지 않아요. 개는 OK이고 공원 이름도 같아요.",
+    "explain": "\uac1c\ub294 OK(Dogs OK)\uc774\uace0 \uacf5\uc6d0 \uc774\ub984(Sun Park)\ub3c4 \uc548\ub0b4\ud310\uacfc \uac19\uc544\uc11c \uc774 \ub450 \ubd80\ubd84\uc740 \ub9de\uc544\uc694. \ubc18\ub300\ub85c \uc548\ub0b4\ud310\uc740 \uc790\uc804\uac70 \uae08\uc9c0(No bikes)\uc774\uace0 \ubb38\uc740 \uc624\ud6c4 6\uc2dc\uc5d0 \ub2eb\ub294\ub370, Tom\uc740 \uc790\uc804\uac70\ub97c \uac00\uc838\uac00\uace0 \uc624\ud6c4 7\uc2dc\uc5d0 \uac04\ub2e4\uace0 \ud588\uc73c\ub2c8 \uadf8 \ub450 \ubd80\ubd84\uc740 \ub9de\uc9c0 \uc54a\uc544\uc694.",
     "hints": [
-     "Tom의 계획을 '개', '자전거', '시각', '장소' 네 조각으로 나눠 안내판의 줄과 하나씩 맞춰 보세요.",
-     "'Open' 줄의 a.m. 와 p.m. 가 어느 쪽에 붙어 있는지 보세요."
+     "Tom\uc758 \uacc4\ud68d\uc744 '\uac1c', '\uc790\uc804\uac70', '\uc2dc\uac01', '\uc7a5\uc18c' \ub124 \uc870\uac01\uc73c\ub85c \ub098\ub220 \uc548\ub0b4\ud310\uc758 \uc904\uacfc \ud558\ub098\uc529 \ub9de\ucdb0 \ubcf4\uc138\uc694.",
+     "'Open' \uc904\uc758 a.m. \uc640 p.m. \uac00 \uc5b4\ub290 \ucabd\uc5d0 \ubd99\uc5b4 \uc788\ub294\uc9c0 \ubcf4\uc138\uc694."
     ],
     "multi": true,
     "scaffold": true
@@ -66,112 +64,104 @@
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "Tom에게 영어로 한두 문장으로 답해 주세요. 계획에서 안 되는 점을 두 가지 알려 주세요.",
-    "placeholder": "예: Tom, ...",
+    "prompt": "Tom\uc5d0\uac8c \uc601\uc5b4\ub85c \ud55c\ub450 \ubb38\uc7a5\uc73c\ub85c \ub2f5\ud574 \uc8fc\uc138\uc694. \uacc4\ud68d\uc5d0\uc11c \uc548 \ub418\ub294 \uc810\uc744 \ub450 \uac00\uc9c0 \uc54c\ub824 \uc8fc\uc138\uc694.",
+    "placeholder": "\uc608: Tom, ...",
     "minChars": 20,
     "checks": [
      {
       "id": "w1",
-      "label": "자전거 문제를 말했다",
+      "label": "\uc790\uc804\uac70\uac00 \uc548 \ub41c\ub2e4\uace0 \ub9d0\ud588\ub2e4",
       "mode": "any",
       "patterns": [
-       "\\bbikes?\\b",
-       "\\bbicycles?\\b"
+       "\\b(?:no|not|never|can['\u2019]?t|cannot|don['\u2019]?t|isn['\u2019]?t|aren['\u2019]?t|without)\\b(?:(?!\\b(?:dogs?|ok|okay|but|allowed|fine|good)\\b)[^.!?\\n,;]){0,30}\\b(?:bikes?|bicycles?)\\b",
+       "\\b(?:bikes?|bicycles?)\\b(?:(?!\\b(?:dogs?|ok|okay|but|allowed|fine|good)\\b)[^.!?\\n,;]){0,30}\\b(?:not|no|never|isn['\u2019]?t|aren['\u2019]?t|forbidden|banned|prohibited|can['\u2019]?t|cannot|don['\u2019]?t)\\b",
+       "\\bleave\\s+(?:your|the)\\s+bike"
       ]
      },
      {
       "id": "w2",
-      "label": "시각 문제를 말했다(닫는 시각, 늦음 등)",
+      "label": "\uc2dc\uac01 \ubb38\uc81c\ub97c \ub9d0\ud588\ub2e4(\ub2eb\ub294 \uc2dc\uac01, \ub2a6\uc74c \ub4f1)",
       "mode": "any",
       "patterns": [
-       "\\bclos(?:e|es|ed|ing)\\b",
-       "\\b6\\b",
-       "\\bsix\\b",
+       "\\bclos(?:e|es|ed|ing)\\b[^.!?\\n]{0,30}\\b(?:6|six)\\b",
+       "\\b(?:6|six)\\b[^.!?\\n]{0,30}\\bclos(?:e|es|ed|ing)\\b",
+       "\\b(?:until|till|before|after|by|to)\\s+(?:6|six)\\b",
+       "\\b(?:6|six)\\s*(?:p\\.?m|o['\u2019]?clock)",
        "\\blate\\b",
-       "\\bafter\\s+(?:6|six)\\b"
-      ]
-     },
-     {
-      "id": "w3",
-      "label": "Tom의 계획에 그대로 찬성하는 답이 아니다",
-      "mode": "none",
-      "patterns": [
-       "^\\s*yes\\b",
-       "^\\s*great\\b",
-       "^\\s*ok(?:ay)?[,!. ]+let['’]?s"
+       "\\bnot\\s+open\\b[^.!?\\n]{0,20}\\b7\\b"
       ]
      }
     ],
     "selfAssess": [
-     "자전거 문제와 시각 문제를 각각 말했나요?",
-     "내 이유가 안내판의 어느 줄에서 왔는지 말할 수 있나요?",
-     "개는 괜찮다는 것을 헷갈리지 않았나요? (선택)"
+     "\uc790\uc804\uac70 \ubb38\uc81c\uc640 \uc2dc\uac01 \ubb38\uc81c\ub97c \uac01\uac01 \ub9d0\ud588\ub098\uc694?",
+     "\ub0b4 \uc774\uc720\uac00 \uc548\ub0b4\ud310\uc758 \uc5b4\ub290 \uc904\uc5d0\uc11c \uc654\ub294\uc9c0 \ub9d0\ud560 \uc218 \uc788\ub098\uc694?",
+     "\uac1c\ub294 \uad1c\ucc2e\ub2e4\ub294 \uac83\uc744 \ud5f7\uac08\ub9ac\uc9c0 \uc54a\uc558\ub098\uc694? (\uc120\ud0dd)"
     ],
     "modelAnswers": [
      {
       "text": "Tom, bikes are not OK in Sun Park. And the park closes at 6 p.m., so 7 p.m. is too late."
      },
      {
-      "text": "Sorry, no bikes in the park. Also, it is closed at 7 p.m. Go at 5 p.m. with your dog!",
-      "note": "대안 시각까지 제안한 좋은 답."
+      "text": "Sorry, no bikes in the park. Also, it closes at 6 p.m. Go at 5 p.m. with your dog!",
+      "note": "\ub300\uc548 \uc2dc\uac01\uae4c\uc9c0 \uc81c\uc548\ud55c \uc88b\uc740 \ub2f5."
      }
     ],
     "badAnswers": [
      {
       "text": "Great, let's go to the park!",
-      "why": "두 문제를 모두 놓치고 찬성했다."
+      "why": "\ub450 \ubb38\uc81c\ub97c \ubaa8\ub450 \ub193\uce58\uace0 \ucc2c\uc131\ud588\ub2e4."
      },
      {
       "text": "No bikes in the park.",
-      "why": "시각 문제가 빠졌다."
+      "why": "\uc2dc\uac01 \ubb38\uc81c\uac00 \ube60\uc84c\ub2e4."
      },
      {
       "text": "Dogs are OK, but bikes are not. The park is open.",
-      "why": "시각이 왜 문제인지(6시에 닫음) 말하지 않았다."
+      "why": "\uc2dc\uac01\uc774 \uc65c \ubb38\uc81c\uc778\uc9c0(6\uc2dc\uc5d0 \ub2eb\uc74c) \ub9d0\ud558\uc9c0 \uc54a\uc558\ub2e4."
      }
     ],
-    "humanReview": "근거가 안내판과 일치하는지, 영어가 자연스러운지는 사람이 본다. 자동 점검은 자전거와 시각 낱말의 유무만 본다.",
+    "humanReview": "\uadfc\uac70\uac00 \uc548\ub0b4\ud310\uacfc \uc77c\uce58\ud558\ub294\uc9c0, \uc601\uc5b4\uac00 \uc790\uc5f0\uc2a4\ub7ec\uc6b4\uc9c0\ub294 \uc0ac\ub78c\uc774 \ubcf8\ub2e4. \uc790\ub3d9 \uc810\uac80\uc740 \uc790\uc804\uac70\uc640 \uc2dc\uac01 \ub0b1\ub9d0\uc758 \uc720\ubb34\ub9cc \ubcf8\ub2e4.",
     "hints": [
-     "먼저 문제가 되는 것 하나를 한 문장으로 쓰세요.",
-     "두 번째 문장에 다른 문제를 쓰고, 안내판의 시각이나 낱말을 넣어 보세요."
+     "\uba3c\uc800 \ubb38\uc81c\uac00 \ub418\ub294 \uac83 \ud558\ub098\ub97c \ud55c \ubb38\uc7a5\uc73c\ub85c \uc4f0\uc138\uc694.",
+     "\ub450 \ubc88\uc9f8 \ubb38\uc7a5\uc5d0 \ub2e4\ub978 \ubb38\uc81c\ub97c \uc4f0\uace0, \uc548\ub0b4\ud310\uc758 \uc2dc\uac01\uc774\ub098 \ub0b1\ub9d0\uc744 \ub123\uc5b4 \ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "안내판 근거 찾기",
-    "full": "자전거 금지와 닫는 시각 두 가지를 모두 안내판 줄에 연결함",
-    "partial": "한 가지만 찾음",
-    "none": "근거 없이 받아들이거나 개를 문제로 봄"
+    "criterion": "\uc548\ub0b4\ud310 \uadfc\uac70 \ucc3e\uae30",
+    "full": "\uc790\uc804\uac70 \uae08\uc9c0\uc640 \ub2eb\ub294 \uc2dc\uac01 \ub450 \uac00\uc9c0\ub97c \ubaa8\ub450 \uc548\ub0b4\ud310 \uc904\uc5d0 \uc5f0\uacb0\ud568",
+    "partial": "\ud55c \uac00\uc9c0\ub9cc \ucc3e\uc74c",
+    "none": "\uadfc\uac70 \uc5c6\uc774 \ubc1b\uc544\ub4e4\uc774\uac70\ub098 \uac1c\ub97c \ubb38\uc81c\ub85c \ubd04"
    },
    {
-    "criterion": "영어로 알려 주기",
-    "full": "두 문제를 한두 문장으로 전달함",
-    "partial": "한 문제만 전달하거나 이유가 없음",
-    "none": "내용이 안내판과 맞지 않음"
+    "criterion": "\uc601\uc5b4\ub85c \uc54c\ub824 \uc8fc\uae30",
+    "full": "\ub450 \ubb38\uc81c\ub97c \ud55c\ub450 \ubb38\uc7a5\uc73c\ub85c \uc804\ub2ec\ud568",
+    "partial": "\ud55c \ubb38\uc81c\ub9cc \uc804\ub2ec\ud558\uac70\ub098 \uc774\uc720\uac00 \uc5c6\uc74c",
+    "none": "\ub0b4\uc6a9\uc774 \uc548\ub0b4\ud310\uacfc \ub9de\uc9c0 \uc54a\uc74c"
    }
   ],
   "alternatives": [
-   "대안 시각(예: 5 p.m.)이나 개만 데려가자는 제안도 좋은 답이다.",
-   "'The park is closed at seven.'처럼 닫는 시각을 7시로 잘못 말하면 사람이 확인한다."
+   "\ub300\uc548 \uc2dc\uac01(\uc608: 5 p.m.)\uc774\ub098 \uac1c\ub9cc \ub370\ub824\uac00\uc790\ub294 \uc81c\uc548\ub3c4 \uc88b\uc740 \ub2f5\uc774\ub2e4.",
+   "'The park is closed at seven.'\ucc98\ub7fc \ub2eb\ub294 \uc2dc\uac01\uc744 7\uc2dc\ub85c \uc798\ubabb \ub9d0\ud558\uba74 \uc0ac\ub78c\uc774 \ud655\uc778\ud55c\ub2e4."
   ],
   "hardCases": [
-   "'It's late.'만 쓴 답은 시각 문제를 말했지만 근거가 약하다. 사람이 판단한다.",
-   "'bikes are not allowed'처럼 안내판에 없는 낱말을 쓴 답도 뜻이 같으면 인정한다."
+   "'It's late.'\ub9cc \uc4f4 \ub2f5\uc740 \uc2dc\uac01 \ubb38\uc81c\ub97c \ub9d0\ud588\uc9c0\ub9cc \uadfc\uac70\uac00 \uc57d\ud558\ub2e4. \uc0ac\ub78c\uc774 \ud310\ub2e8\ud55c\ub2e4.",
+   "'bikes are not allowed'\ucc98\ub7fc \uc548\ub0b4\ud310\uc5d0 \uc5c6\ub294 \ub0b1\ub9d0\uc744 \uc4f4 \ub2f5\ub3c4 \ub73b\uc774 \uac19\uc73c\uba74 \uc778\uc815\ud55c\ub2e4."
   ],
   "cautions": {
-   "language": "a.m./p.m., open, bike처럼 고빈도 낱말만 썼다. 'close'는 닫다(동사)와 닫힌(closed)을 구분해 보지 않아도 되게 썼다.",
-   "culture": "공원 안내판과 반려견 산책은 한국에서도 흔하다. 개를 무서워하는 학생을 위해 개는 문제가 되지 않는 요소로만 썼다.",
-   "accessibility": "그림 없이 글로만 안내판을 적었고 색 단서가 없다. 시각은 '7 a.m.'처럼 소리 내어 '세븐 에이엠'으로 읽을 수 있다."
+   "language": "a.m./p.m., open, bike\ucc98\ub7fc \uace0\ube48\ub3c4 \ub0b1\ub9d0\ub9cc \uc37c\ub2e4. 'close'\ub294 \ub2eb\ub2e4(\ub3d9\uc0ac)\uc640 \ub2eb\ud78c(closed)\uc744 \uad6c\ubd84\ud574 \ubcf4\uc9c0 \uc54a\uc544\ub3c4 \ub418\uac8c \uc37c\ub2e4.",
+   "culture": "\uacf5\uc6d0 \uc548\ub0b4\ud310\uacfc \ubc18\ub824\uacac \uc0b0\ucc45\uc740 \ud55c\uad6d\uc5d0\uc11c\ub3c4 \ud754\ud558\ub2e4. \uac1c\ub97c \ubb34\uc11c\uc6cc\ud558\ub294 \ud559\uc0dd\uc744 \uc704\ud574 \uac1c\ub294 \ubb38\uc81c\uac00 \ub418\uc9c0 \uc54a\ub294 \uc694\uc18c\ub85c\ub9cc \uc37c\ub2e4.",
+   "accessibility": "\uadf8\ub9bc \uc5c6\uc774 \uae00\ub85c\ub9cc \uc548\ub0b4\ud310\uc744 \uc801\uc5c8\uace0 \uc0c9 \ub2e8\uc11c\uac00 \uc5c6\ub2e4. \uc2dc\uac01\uc740 '7 a.m.'\ucc98\ub7fc \uc18c\ub9ac \ub0b4\uc5b4 '\uc138\ube10 \uc5d0\uc774\uc5e0'\uc73c\ub85c \uc77d\uc744 \uc218 \uc788\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "복수 선택 정답(자전거, 시각)",
-    "자전거·시각 낱말의 유무"
+    "\ubcf5\uc218 \uc120\ud0dd \uc815\ub2f5(\uc790\uc804\uac70, \uc2dc\uac01)",
+    "\uc790\uc804\uac70\u00b7\uc2dc\uac01 \ub0b1\ub9d0\uc758 \uc720\ubb34"
    ],
    "human": [
-    "영어 문장의 자연스러움",
-    "근거가 안내판과 맞는지"
+    "\uc601\uc5b4 \ubb38\uc7a5\uc758 \uc790\uc5f0\uc2a4\ub7ec\uc6c0",
+    "\uadfc\uac70\uac00 \uc548\ub0b4\ud310\uacfc \ub9de\ub294\uc9c0"
    ]
   },
   "status": "draft"
@@ -180,32 +170,32 @@
   "id": "x-e-e2-02",
   "subject": "english",
   "grade": "E2",
-  "topic": "짧은 대화와 표지판",
+  "topic": "\uc9e7\uc740 \ub300\ud654\uc640 \ud45c\uc9c0\ud310",
   "level": 1,
-  "levelLabel": "초등",
-  "title": "만나는 시각이 맞지 않는 줄 찾아 고치기",
+  "levelLabel": "\ucd08\ub4f1",
+  "title": "\ub9cc\ub098\ub294 \uc2dc\uac01\uc774 \ub9de\uc9c0 \uc54a\ub294 \uc904 \ucc3e\uc544 \uace0\uce58\uae30",
   "uiLang": "ko",
   "format": "find-error-fix",
   "generative": true,
-  "goal": "대화의 앞뒤 줄을 비교해 시각이 맞지 않는 줄을 찾고, 영어로 고쳐 쓴다.",
+  "goal": "\ub300\ud654\uc758 \uc55e\ub4a4 \uc904\uc744 \ube44\uad50\ud574 \uc2dc\uac01\uc774 \ub9de\uc9c0 \uc54a\ub294 \uc904\uc744 \ucc3e\uace0, \uc601\uc5b4\ub85c \uace0\uccd0 \uc4f4\ub2e4.",
   "thinking": [
-   "앞 줄의 정보와 뒤 줄을 비교하기",
-   "오류가 처음 생긴 줄 찾기",
-   "조건에 맞게 고쳐 쓰기"
+   "\uc55e \uc904\uc758 \uc815\ubcf4\uc640 \ub4a4 \uc904\uc744 \ube44\uad50\ud558\uae30",
+   "\uc624\ub958\uac00 \ucc98\uc74c \uc0dd\uae34 \uc904 \ucc3e\uae30",
+   "\uc870\uac74\uc5d0 \ub9de\uac8c \uace0\uccd0 \uc4f0\uae30"
   ],
-  "differsFromPlain": "단순 연습은 대화를 읽고 시각을 고르는 문제를 낸다. 여기서는 4줄 중 앞 줄의 조건(피아노 수업이 끝나는 시각)과 어긋나는 줄을 직접 찾아 조건에 맞는 시각으로 고쳐 쓴다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \ub300\ud654\ub97c \uc77d\uace0 \uc2dc\uac01\uc744 \uace0\ub974\ub294 \ubb38\uc81c\ub97c \ub0b8\ub2e4. \uc5ec\uae30\uc11c\ub294 4\uc904 \uc911 \uc55e \uc904\uc758 \uc870\uac74(\ud53c\uc544\ub178 \uc218\uc5c5\uc774 \ub05d\ub098\ub294 \uc2dc\uac01)\uacfc \uc5b4\uae0b\ub098\ub294 \uc904\uc744 \uc9c1\uc811 \ucc3e\uc544 \uc870\uac74\uc5d0 \ub9de\ub294 \uc2dc\uac01\uc73c\ub85c \uace0\uccd0 \uc4f4\ub2e4.",
   "prerequisites": [
-   "시각 읽기(4:15, 4:30처럼)",
-   "until(~까지)의 뜻"
+   "\uc2dc\uac01 \uc77d\uae30(4:15, 4:30\ucc98\ub7fc)",
+   "until(~\uae4c\uc9c0)\uc758 \ub73b"
   ],
   "minutes": 7,
   "curriculum": null,
-  "material": "Jen과 Sam이 문자로 이야기해요.",
+  "material": "Jen\uacfc Sam\uc774 \ubb38\uc790\ub85c \uc774\uc57c\uae30\ud574\uc694.",
   "steps": [
    {
     "id": "s1",
     "kind": "pickLine",
-    "prompt": "대화에서 앞 줄의 내용과 맞지 않는, 처음 잘못된 줄을 고르세요.",
+    "prompt": "\ub300\ud654\uc5d0\uc11c \uc55e \uc904\uc758 \ub0b4\uc6a9\uacfc \ub9de\uc9c0 \uc54a\ub294, \ucc98\uc74c \uc798\ubabb\ub41c \uc904\uc744 \uace0\ub974\uc138\uc694.",
     "lines": [
      "Jen: Let's play at the park at 4:00.",
      "Sam: Sorry, I have a piano lesson until 4:30.",
@@ -215,22 +205,22 @@
     "wrong": [
      2
     ],
-    "explain": "2번째 줄에서 Sam은 피아노 수업이 4:30까지라고 했어요. 3번째 줄의 4:15는 수업이 끝나기 전이라 맞지 않아요. 4번째 줄은 3번째 줄을 따라 한 말이라 오류가 처음 생긴 곳은 3번째 줄이에요.",
+    "explain": "2\ubc88\uc9f8 \uc904\uc5d0\uc11c Sam\uc740 \ud53c\uc544\ub178 \uc218\uc5c5\uc774 4:30\uae4c\uc9c0\ub77c\uace0 \ud588\uc5b4\uc694. 3\ubc88\uc9f8 \uc904\uc758 4:15\ub294 \uc218\uc5c5\uc774 \ub05d\ub098\uae30 \uc804\uc774\ub77c \ub9de\uc9c0 \uc54a\uc544\uc694. 4\ubc88\uc9f8 \uc904\uc740 3\ubc88\uc9f8 \uc904\uc744 \ub530\ub77c \ud55c \ub9d0\uc774\ub77c \uc624\ub958\uac00 \ucc98\uc74c \uc0dd\uae34 \uacf3\uc740 3\ubc88\uc9f8 \uc904\uc774\uc5d0\uc694.",
     "hints": [
-     "Sam이 할 수 없는 시간이 언제까지인지 2번째 줄에서 찾아보세요.",
-     "각 줄의 시각을 그 시간과 하나씩 비교해 보세요."
+     "Sam\uc774 \ud560 \uc218 \uc5c6\ub294 \uc2dc\uac04\uc774 \uc5b8\uc81c\uae4c\uc9c0\uc778\uc9c0 2\ubc88\uc9f8 \uc904\uc5d0\uc11c \ucc3e\uc544\ubcf4\uc138\uc694.",
+     "\uac01 \uc904\uc758 \uc2dc\uac01\uc744 \uadf8 \uc2dc\uac04\uacfc \ud558\ub098\uc529 \ube44\uad50\ud574 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "방금 찾은 줄을 Sam이 올 수 있는 시각으로 고쳐서 영어로 새로 써 보세요.",
-    "placeholder": "예: OK. Let's meet at ...",
+    "prompt": "\ubc29\uae08 \ucc3e\uc740 \uc904\uc744 Sam\uc774 \uc62c \uc218 \uc788\ub294 \uc2dc\uac01\uc73c\ub85c \uace0\uccd0\uc11c \uc601\uc5b4\ub85c \uc0c8\ub85c \uc368 \ubcf4\uc138\uc694.",
+    "placeholder": "\uc608: OK. Let's meet at ...",
     "minChars": 10,
     "checks": [
      {
       "id": "w1",
-      "label": "수업이 끝난 뒤의 시각을 말했다(4:30 이후)",
+      "label": "\uc218\uc5c5\uc774 \ub05d\ub09c \ub4a4\uc758 \uc2dc\uac01\uc744 \ub9d0\ud588\ub2e4(4:30 \uc774\ud6c4)",
       "mode": "any",
       "patterns": [
        "\\b4\\s*[:.]\\s*[3-5]\\d\\b",
@@ -243,18 +233,18 @@
      },
      {
       "id": "w2",
-      "label": "수업 중이거나 그 전의 시각(4:29 이전)을 쓴 답이 아니다",
+      "label": "\uc218\uc5c5 \uc911\uc774\uac70\ub098 \uadf8 \uc804\uc758 \uc2dc\uac01(4:29 \uc774\uc804)\uc744 \uc4f4 \ub2f5\uc774 \uc544\ub2c8\ub2e4",
       "mode": "none",
       "patterns": [
        "\\b4\\s*[:.]\\s*(?:[0-1]\\d|2\\d)\\b",
-       "\\b4\\s*o['’]?clock\\b",
+       "\\b4\\s*o['\u2019]?clock\\b",
        "\\b[1-3](?:\\s*[:.]\\s*\\d\\d)?\\b"
       ]
      }
     ],
     "selfAssess": [
-     "내가 쓴 시각이 4:30보다 뒤인가요?",
-     "Sam이 수업을 마치고 공원까지 올 시간을 생각했나요? (선택)"
+     "\ub0b4\uac00 \uc4f4 \uc2dc\uac01\uc774 4:30\ubcf4\ub2e4 \ub4a4\uc778\uac00\uc694?",
+     "Sam\uc774 \uc218\uc5c5\uc744 \ub9c8\uce58\uace0 \uacf5\uc6d0\uae4c\uc9c0 \uc62c \uc2dc\uac04\uc744 \uc0dd\uac01\ud588\ub098\uc694? (\uc120\ud0dd)"
     ],
     "modelAnswers": [
      {
@@ -262,7 +252,7 @@
      },
      {
       "text": "OK. Let's meet after your lesson, at 5:00.",
-      "note": "수업 뒤에 이동 시간까지 생각한 답."
+      "note": "\uc218\uc5c5 \ub4a4\uc5d0 \uc774\ub3d9 \uc2dc\uac04\uae4c\uc9c0 \uc0dd\uac01\ud55c \ub2f5."
      },
      {
       "text": "OK. Let's meet at 6:00."
@@ -271,191 +261,191 @@
     "badAnswers": [
      {
       "text": "OK. Let's meet at 4:15.",
-      "why": "원래 틀린 시각 그대로다."
+      "why": "\uc6d0\ub798 \ud2c0\ub9b0 \uc2dc\uac01 \uadf8\ub300\ub85c\ub2e4."
      },
      {
       "text": "OK. Let's meet at 4:00.",
-      "why": "수업 중인 시각이다."
+      "why": "\uc218\uc5c5 \uc911\uc778 \uc2dc\uac01\uc774\ub2e4."
      },
      {
       "text": "OK. Let's meet after 3.",
-      "why": "수업이 끝나기 전의 시각이다."
+      "why": "\uc218\uc5c5\uc774 \ub05d\ub098\uae30 \uc804\uc758 \uc2dc\uac01\uc774\ub2e4."
      },
      {
       "text": "OK. Let's meet at 3:45, after school.",
-      "why": "수업이 끝나기 전의 시각이다."
+      "why": "\uc218\uc5c5\uc774 \ub05d\ub098\uae30 \uc804\uc758 \uc2dc\uac01\uc774\ub2e4."
      }
     ],
-    "humanReview": "영어의 자연스러움과, 4:30처럼 수업이 끝나자마자인 시각이 현실적인지는 사람이 본다.",
+    "humanReview": "\uc601\uc5b4\uc758 \uc790\uc5f0\uc2a4\ub7ec\uc6c0\uacfc, 4:30\ucc98\ub7fc \uc218\uc5c5\uc774 \ub05d\ub098\uc790\ub9c8\uc790\uc778 \uc2dc\uac01\uc774 \ud604\uc2e4\uc801\uc778\uc9c0\ub294 \uc0ac\ub78c\uc774 \ubcf8\ub2e4.",
     "hints": [
-     "Sam의 수업이 끝나는 시각보다 뒤의 시각을 정해 보세요.",
-     "'OK. Let's meet at ...' 뒤에 시각만 바꿔 써도 돼요."
+     "Sam\uc758 \uc218\uc5c5\uc774 \ub05d\ub098\ub294 \uc2dc\uac01\ubcf4\ub2e4 \ub4a4\uc758 \uc2dc\uac01\uc744 \uc815\ud574 \ubcf4\uc138\uc694.",
+     "'OK. Let's meet at ...' \ub4a4\uc5d0 \uc2dc\uac01\ub9cc \ubc14\uafd4 \uc368\ub3c4 \ub3fc\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "오류 찾기",
-    "full": "처음 잘못된 3번째 줄을 고르고 이유(수업 4:30까지)를 앞 줄에서 찾음",
-    "partial": "잘못된 줄은 찾았으나 이유가 없음",
-    "none": "4번째 줄이나 다른 줄을 고름"
+    "criterion": "\uc624\ub958 \ucc3e\uae30",
+    "full": "\ucc98\uc74c \uc798\ubabb\ub41c 3\ubc88\uc9f8 \uc904\uc744 \uace0\ub974\uace0 \uc774\uc720(\uc218\uc5c5 4:30\uae4c\uc9c0)\ub97c \uc55e \uc904\uc5d0\uc11c \ucc3e\uc74c",
+    "partial": "\uc798\ubabb\ub41c \uc904\uc740 \ucc3e\uc558\uc73c\ub098 \uc774\uc720\uac00 \uc5c6\uc74c",
+    "none": "4\ubc88\uc9f8 \uc904\uc774\ub098 \ub2e4\ub978 \uc904\uc744 \uace0\ub984"
    },
    {
-    "criterion": "고쳐 쓰기",
-    "full": "4:30 이후의 시각으로 자연스러운 영어 문장을 씀",
-    "partial": "시각은 맞지만 문장이 어색함",
-    "none": "여전히 수업 시간 안의 시각"
+    "criterion": "\uace0\uccd0 \uc4f0\uae30",
+    "full": "4:30 \uc774\ud6c4\uc758 \uc2dc\uac01\uc73c\ub85c \uc790\uc5f0\uc2a4\ub7ec\uc6b4 \uc601\uc5b4 \ubb38\uc7a5\uc744 \uc500",
+    "partial": "\uc2dc\uac01\uc740 \ub9de\uc9c0\ub9cc \ubb38\uc7a5\uc774 \uc5b4\uc0c9\ud568",
+    "none": "\uc5ec\uc804\ud788 \uc218\uc5c5 \uc2dc\uac04 \uc548\uc758 \uc2dc\uac01"
    }
   ],
   "alternatives": [
-   "4번째 줄까지 함께 고쳐 쓰는 학생도 있다. 3번째 줄을 먼저 고쳤다면 인정한다.",
-   "수업 후 이동 시간을 생각해 4:45나 5:00으로 쓴 답이 더 현실적이다."
+   "4\ubc88\uc9f8 \uc904\uae4c\uc9c0 \ud568\uaed8 \uace0\uccd0 \uc4f0\ub294 \ud559\uc0dd\ub3c4 \uc788\ub2e4. 3\ubc88\uc9f8 \uc904\uc744 \uba3c\uc800 \uace0\ucce4\ub2e4\uba74 \uc778\uc815\ud55c\ub2e4.",
+   "\uc218\uc5c5 \ud6c4 \uc774\ub3d9 \uc2dc\uac04\uc744 \uc0dd\uac01\ud574 4:45\ub098 5:00\uc73c\ub85c \uc4f4 \ub2f5\uc774 \ub354 \ud604\uc2e4\uc801\uc774\ub2e4."
   ],
   "hardCases": [
-   "4:30에 만나자는 답은 정규식은 통과하지만 Sam이 수업 직후 공원에 도착해야 해서 사람이 판단한다.",
-   "'after your lesson'처럼 시각 숫자 없이 쓴 답도 뜻이 맞으면 인정한다."
+   "4:30\uc5d0 \ub9cc\ub098\uc790\ub294 \ub2f5\uc740 \uc815\uaddc\uc2dd\uc740 \ud1b5\uacfc\ud558\uc9c0\ub9cc Sam\uc774 \uc218\uc5c5 \uc9c1\ud6c4 \uacf5\uc6d0\uc5d0 \ub3c4\ucc29\ud574\uc57c \ud574\uc11c \uc0ac\ub78c\uc774 \ud310\ub2e8\ud55c\ub2e4.",
+   "'after your lesson'\ucc98\ub7fc \uc2dc\uac01 \uc22b\uc790 \uc5c6\uc774 \uc4f4 \ub2f5\ub3c4 \ub73b\uc774 \ub9de\uc73c\uba74 \uc778\uc815\ud55c\ub2e4."
   ],
   "cautions": {
-   "language": "until, lesson처럼 쉬운 낱말만 썼다. 시각은 숫자로 보여 준다.",
-   "culture": "피아노 수업은 한국 초등학생에게 익숙하지만 모든 학생이 배우는 것은 아니다.",
-   "accessibility": "시각을 숫자로 썼고 소리 내어 '포 서티'로 읽을 수 있다. 색 단서가 없다."
+   "language": "until, lesson\ucc98\ub7fc \uc26c\uc6b4 \ub0b1\ub9d0\ub9cc \uc37c\ub2e4. \uc2dc\uac01\uc740 \uc22b\uc790\ub85c \ubcf4\uc5ec \uc900\ub2e4.",
+   "culture": "\ud53c\uc544\ub178 \uc218\uc5c5\uc740 \ud55c\uad6d \ucd08\ub4f1\ud559\uc0dd\uc5d0\uac8c \uc775\uc219\ud558\uc9c0\ub9cc \ubaa8\ub4e0 \ud559\uc0dd\uc774 \ubc30\uc6b0\ub294 \uac83\uc740 \uc544\ub2c8\ub2e4.",
+   "accessibility": "\uc2dc\uac01\uc744 \uc22b\uc790\ub85c \uc37c\uace0 \uc18c\ub9ac \ub0b4\uc5b4 '\ud3ec \uc11c\ud2f0'\ub85c \uc77d\uc744 \uc218 \uc788\ub2e4. \uc0c9 \ub2e8\uc11c\uac00 \uc5c6\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "잘못된 줄의 위치",
-    "4:30 이후 시각의 유무"
+    "\uc798\ubabb\ub41c \uc904\uc758 \uc704\uce58",
+    "4:30 \uc774\ud6c4 \uc2dc\uac01\uc758 \uc720\ubb34"
    ],
    "human": [
-    "고친 문장의 자연스러움과 현실성"
+    "\uace0\uce5c \ubb38\uc7a5\uc758 \uc790\uc5f0\uc2a4\ub7ec\uc6c0\uacfc \ud604\uc2e4\uc131"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "x-e-e2-03",
   "subject": "english",
   "grade": "E2",
-  "topic": "때·장소·사람 단서",
+  "topic": "\ub54c\u00b7\uc7a5\uc18c\u00b7\uc0ac\ub78c \ub2e8\uc11c",
   "level": 1,
-  "levelLabel": "초등",
-  "title": "Max는 누구일까? 단서가 늘어날 때 생각 바꾸기",
+  "levelLabel": "\ucd08\ub4f1",
+  "title": "Max\ub294 \ub204\uad6c\uc77c\uae4c? \ub2e8\uc11c\uac00 \ub298\uc5b4\ub0a0 \ub54c \uc0dd\uac01 \ubc14\uafb8\uae30",
   "uiLang": "ko",
   "format": "reveal-and-revise",
   "generative": true,
-  "goal": "대화를 한 줄씩 더 읽으면서 'Max가 누구인지'에 대한 짐작을 바꾸고, 새 단서를 직접 만들어 쓴다.",
+  "goal": "\ub300\ud654\ub97c \ud55c \uc904\uc529 \ub354 \uc77d\uc73c\uba74\uc11c 'Max\uac00 \ub204\uad6c\uc778\uc9c0'\uc5d0 \ub300\ud55c \uc9d0\uc791\uc744 \ubc14\uafb8\uace0, \uc0c8 \ub2e8\uc11c\ub97c \uc9c1\uc811 \ub9cc\ub4e4\uc5b4 \uc4f4\ub2e4.",
   "thinking": [
-   "새 단서가 나올 때마다 판단을 다시 하기",
-   "처음 짐작이 틀릴 수 있음을 받아들이기",
-   "단서가 되는 말을 직접 만들기"
+   "\uc0c8 \ub2e8\uc11c\uac00 \ub098\uc62c \ub54c\ub9c8\ub2e4 \ud310\ub2e8\uc744 \ub2e4\uc2dc \ud558\uae30",
+   "\ucc98\uc74c \uc9d0\uc791\uc774 \ud2c0\ub9b4 \uc218 \uc788\uc74c\uc744 \ubc1b\uc544\ub4e4\uc774\uae30",
+   "\ub2e8\uc11c\uac00 \ub418\ub294 \ub9d0\uc744 \uc9c1\uc811 \ub9cc\ub4e4\uae30"
   ],
-  "differsFromPlain": "단순 연습은 한 문장을 읽고 사람의 직업이나 장소를 고른다. 여기서는 같은 대화에 단서가 하나씩 더해질 때 처음 짐작을 유지할지 바꿀지 판단하고, 마지막에는 Max가 개라는 것이 드러나는 단서를 직접 만든다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \ud55c \ubb38\uc7a5\uc744 \uc77d\uace0 \uc0ac\ub78c\uc758 \uc9c1\uc5c5\uc774\ub098 \uc7a5\uc18c\ub97c \uace0\ub978\ub2e4. \uc5ec\uae30\uc11c\ub294 \uac19\uc740 \ub300\ud654\uc5d0 \ub2e8\uc11c\uac00 \ud558\ub098\uc529 \ub354\ud574\uc9c8 \ub54c \ucc98\uc74c \uc9d0\uc791\uc744 \uc720\uc9c0\ud560\uc9c0 \ubc14\uafc0\uc9c0 \ud310\ub2e8\ud558\uace0, \ub9c8\uc9c0\ub9c9\uc5d0\ub294 Max\uac00 \uac1c\ub77c\ub294 \uac83\uc774 \ub4dc\ub7ec\ub098\ub294 \ub2e8\uc11c\ub97c \uc9c1\uc811 \ub9cc\ub4e0\ub2e4.",
   "prerequisites": [
-   "Come here, Sit, Thank you 같은 쉬운 말",
-   "dog, child 같은 낱말"
+   "Come here, Sit, Thank you \uac19\uc740 \uc26c\uc6b4 \ub9d0",
+   "dog, child \uac19\uc740 \ub0b1\ub9d0"
   ],
   "minutes": 8,
   "curriculum": null,
-  "material": "공원에서 들은 말을 한 줄씩 공개해요. 이야기에 나오는 Max가 누구인지 생각하세요.",
+  "material": "\uacf5\uc6d0\uc5d0\uc11c \ub4e4\uc740 \ub9d0\uc744 \ud55c \uc904\uc529 \uacf5\uac1c\ud574\uc694. \uc774\uc57c\uae30\uc5d0 \ub098\uc624\ub294 Max\uac00 \ub204\uad6c\uc778\uc9c0 \uc0dd\uac01\ud558\uc138\uc694.",
   "steps": [
    {
     "id": "s1",
     "kind": "reveal",
-    "prompt": "한 줄씩 읽고 'Max가 누구일까?' 하는 자기 생각을 정하세요. 단서가 늘면 생각이 바뀔 수 있어요.",
+    "prompt": "\ud55c \uc904\uc529 \uc77d\uace0 'Max\uac00 \ub204\uad6c\uc77c\uae4c?' \ud558\ub294 \uc790\uae30 \uc0dd\uac01\uc744 \uc815\ud558\uc138\uc694. \ub2e8\uc11c\uac00 \ub298\uba74 \uc0dd\uac01\uc774 \ubc14\ub014 \uc218 \uc788\uc5b4\uc694.",
     "hints": [
-     "지금까지의 모든 줄에 맞는 짐작인지 확인하세요.",
-     "새 줄이 이전 짐작과 맞는지 먼저 비교해 보세요."
+     "\uc9c0\uae08\uae4c\uc9c0\uc758 \ubaa8\ub4e0 \uc904\uc5d0 \ub9de\ub294 \uc9d0\uc791\uc778\uc9c0 \ud655\uc778\ud558\uc138\uc694.",
+     "\uc0c8 \uc904\uc774 \uc774\uc804 \uc9d0\uc791\uacfc \ub9de\ub294\uc9c0 \uba3c\uc800 \ube44\uad50\ud574 \ubcf4\uc138\uc694."
     ],
     "stages": [
      {
-      "info": "첫 줄: \"Come here, Max! Good boy!\"",
-      "ask": "지금 단서로 충분히 그럴듯한 짐작을 하나 고르세요. (그럴듯한 답이 둘일 수도 있어요)",
+      "info": "\uccab \uc904: \"Come here, Max! Good boy!\"",
+      "ask": "\uc9c0\uae08 \ub2e8\uc11c\ub85c \ucda9\ubd84\ud788 \uadf8\ub7f4\ub4ef\ud55c \uc9d0\uc791\uc744 \ud558\ub098 \uace0\ub974\uc138\uc694. (\uadf8\ub7f4\ub4ef\ud55c \ub2f5\uc774 \ub458\uc77c \uc218\ub3c4 \uc788\uc5b4\uc694)",
       "options": [
        {
         "id": "a",
         "text": "a dog",
-        "reveals": "'Good boy'는 개나 아이 모두에게 말할 수 있어요. 한 줄만으로는 하나로 정할 수 없지만 개는 합리적인 짐작이에요."
+        "reveals": "'Good boy'\ub294 \uac1c\ub098 \uc544\uc774 \ubaa8\ub450\uc5d0\uac8c \ub9d0\ud560 \uc218 \uc788\uc5b4\uc694. \ud55c \uc904\ub9cc\uc73c\ub85c\ub294 \ud558\ub098\ub85c \uc815\ud560 \uc218 \uc5c6\uc9c0\ub9cc \uac1c\ub294 \ud569\ub9ac\uc801\uc778 \uc9d0\uc791\uc774\uc5d0\uc694."
        },
        {
         "id": "b",
         "text": "a little child",
-        "reveals": "아이에게도 쓰는 말이에요. 한 줄만으로는 개와 구별되지 않아요."
+        "reveals": "\uc544\uc774\uc5d0\uac8c\ub3c4 \uc4f0\ub294 \ub9d0\uc774\uc5d0\uc694. \ud55c \uc904\ub9cc\uc73c\ub85c\ub294 \uac1c\uc640 \uad6c\ubcc4\ub418\uc9c0 \uc54a\uc544\uc694."
        },
        {
         "id": "c",
         "text": "a grown-up",
-        "reveals": "'Good boy'는 보통 어른에게 하는 말이 아니에요. 어린 아이나 동물에게 해요."
+        "reveals": "'Good boy'\ub294 \ubcf4\ud1b5 \uc5b4\ub978\uc5d0\uac8c \ud558\ub294 \ub9d0\uc774 \uc544\ub2c8\uc5d0\uc694. \uc5b4\ub9b0 \uc544\uc774\ub098 \ub3d9\ubb3c\uc5d0\uac8c \ud574\uc694."
        }
       ],
       "reasonable": [
        "a",
        "b"
       ],
-      "after": "한 줄만으로는 개도 아이도 가능해요. 하나로 단정하기엔 단서가 부족해요."
+      "after": "\ud55c \uc904\ub9cc\uc73c\ub85c\ub294 \uac1c\ub3c4 \uc544\uc774\ub3c4 \uac00\ub2a5\ud574\uc694. \ud558\ub098\ub85c \ub2e8\uc815\ud558\uae30\uc5d4 \ub2e8\uc11c\uac00 \ubd80\uc871\ud574\uc694."
      },
      {
-      "info": "둘째 줄: \"Sit! Take the ball, Max! Run!\"",
-      "ask": "지금 단서로 충분히 그럴듯한 짐작을 하나 고르세요. (그럴듯한 답이 둘일 수도 있어요)",
+      "info": "\ub458\uc9f8 \uc904: \"Sit! Take the ball, Max! Run!\"",
+      "ask": "\uc9c0\uae08 \ub2e8\uc11c\ub85c \ucda9\ubd84\ud788 \uadf8\ub7f4\ub4ef\ud55c \uc9d0\uc791\uc744 \ud558\ub098 \uace0\ub974\uc138\uc694. (\uadf8\ub7f4\ub4ef\ud55c \ub2f5\uc774 \ub458\uc77c \uc218\ub3c4 \uc788\uc5b4\uc694)",
       "options": [
        {
         "id": "a",
         "text": "a little child",
-        "reveals": "놀이에서 아이도 공을 받을 수 있어요. 가능하지만 'Sit!'과 함께 보면 개 쪽이 더 자연스러워요."
+        "reveals": "\ub180\uc774\uc5d0\uc11c \uc544\uc774\ub3c4 \uacf5\uc744 \ubc1b\uc744 \uc218 \uc788\uc5b4\uc694. \uac00\ub2a5\ud558\uc9c0\ub9cc 'Sit!'\uacfc \ud568\uaed8 \ubcf4\uba74 \uac1c \ucabd\uc774 \ub354 \uc790\uc5f0\uc2a4\ub7ec\uc6cc\uc694."
        },
        {
         "id": "b",
         "text": "a grown-up",
-        "reveals": "'Sit!'과 공 받기는 보통 어른에게 시키는 말이 아니에요."
+        "reveals": "'Sit!'\uacfc \uacf5 \ubc1b\uae30\ub294 \ubcf4\ud1b5 \uc5b4\ub978\uc5d0\uac8c \uc2dc\ud0a4\ub294 \ub9d0\uc774 \uc544\ub2c8\uc5d0\uc694."
        },
        {
         "id": "c",
         "text": "a dog",
-        "reveals": "'Sit!'과 공 던지기는 개와 자주 하는 놀이예요."
+        "reveals": "'Sit!'\uacfc \uacf5 \ub358\uc9c0\uae30\ub294 \uac1c\uc640 \uc790\uc8fc \ud558\ub294 \ub180\uc774\uc608\uc694."
        }
       ],
       "reasonable": [
        "a",
        "c"
       ],
-      "after": "'Sit!'과 공 놀이 때문에 개 쪽이 더 그럴듯해졌어요. 아이일 가능성도 아주 없어지진 않았어요."
+      "after": "'Sit!'\uacfc \uacf5 \ub180\uc774 \ub54c\ubb38\uc5d0 \uac1c \ucabd\uc774 \ub354 \uadf8\ub7f4\ub4ef\ud574\uc84c\uc5b4\uc694. \uc544\uc774\uc77c \uac00\ub2a5\uc131\ub3c4 \uc544\uc8fc \uc5c6\uc5b4\uc9c0\uc9c4 \uc54a\uc558\uc5b4\uc694."
      },
      {
-      "info": "셋째 줄: Max가 말해요. \"Thank you, Dad! I like this game.\"",
-      "ask": "이 줄까지 읽고 Max는 누구일 가능성이 높을까요?",
+      "info": "\uc14b\uc9f8 \uc904: Max\uac00 \ub9d0\ud574\uc694. \"Thank you, Dad! I like this game.\"",
+      "ask": "\uc774 \uc904\uae4c\uc9c0 \uc77d\uace0 Max\ub294 \ub204\uad6c\uc77c \uac00\ub2a5\uc131\uc774 \ub192\uc744\uae4c\uc694?",
       "options": [
        {
         "id": "a",
         "text": "a dog",
-        "reveals": "개는 'Thank you, Dad!'라고 말하지 못해요. 이 줄은 앞의 짐작과 맞지 않아요."
+        "reveals": "\uac1c\ub294 'Thank you, Dad!'\ub77c\uace0 \ub9d0\ud558\uc9c0 \ubabb\ud574\uc694. \uc774 \uc904\uc740 \uc55e\uc758 \uc9d0\uc791\uacfc \ub9de\uc9c0 \uc54a\uc544\uc694."
        },
        {
         "id": "b",
         "text": "a grown-up",
-        "reveals": "Dad에게 말하는 Max가 어른이라는 단서는 없어요. 'Good boy'와 놀이 장면으로 볼 때 어른보다 아이가 자연스러워요."
+        "reveals": "Dad\uc5d0\uac8c \ub9d0\ud558\ub294 Max\uac00 \uc5b4\ub978\uc774\ub77c\ub294 \ub2e8\uc11c\ub294 \uc5c6\uc5b4\uc694. 'Good boy'\uc640 \ub180\uc774 \uc7a5\uba74\uc73c\ub85c \ubcfc \ub54c \uc5b4\ub978\ubcf4\ub2e4 \uc544\uc774\uac00 \uc790\uc5f0\uc2a4\ub7ec\uc6cc\uc694."
        },
        {
         "id": "c",
         "text": "a little child",
-        "reveals": "Dad에게 말하며 놀이를 좋아한다고 하니, 앞의 놀이 장면도 설명돼요."
+        "reveals": "Dad\uc5d0\uac8c \ub9d0\ud558\uba70 \ub180\uc774\ub97c \uc88b\uc544\ud55c\ub2e4\uace0 \ud558\ub2c8, \uc55e\uc758 \ub180\uc774 \uc7a5\uba74\ub3c4 \uc124\uba85\ub3fc\uc694."
        }
       ],
       "reasonable": [
        "c"
       ],
-      "after": "말을 하는 Max가 Dad에게 고마워하니 Max는 아이예요. 앞의 'Sit!' 놀이는 아이와 하는 놀이였다고 볼 수 있어요."
+      "after": "\ub9d0\uc744 \ud558\ub294 Max\uac00 Dad\uc5d0\uac8c \uace0\ub9c8\uc6cc\ud558\ub2c8 Max\ub294 \uc544\uc774\uc608\uc694. \uc55e\uc758 'Sit!' \ub180\uc774\ub294 \uc544\uc774\uc640 \ud558\ub294 \ub180\uc774\uc600\ub2e4\uace0 \ubcfc \uc218 \uc788\uc5b4\uc694."
      }
     ],
-    "reflect": "처음에 개라고 짐작했어도 새 단서(Max가 말함)에 따라 생각을 바꾸는 것이 합리적이에요. 한 줄만으로 단정한 짐작은 새 단서 앞에서 바뀔 수 있어요."
+    "reflect": "\ucc98\uc74c\uc5d0 \uac1c\ub77c\uace0 \uc9d0\uc791\ud588\uc5b4\ub3c4 \uc0c8 \ub2e8\uc11c(Max\uac00 \ub9d0\ud568)\uc5d0 \ub530\ub77c \uc0dd\uac01\uc744 \ubc14\uafb8\ub294 \uac83\uc774 \ud569\ub9ac\uc801\uc774\uc5d0\uc694. \ud55c \uc904\ub9cc\uc73c\ub85c \ub2e8\uc815\ud55c \uc9d0\uc791\uc740 \uc0c8 \ub2e8\uc11c \uc55e\uc5d0\uc11c \ubc14\ub014 \uc218 \uc788\uc5b4\uc694."
    },
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "새로운 대화에서는 Max가 '개'라는 것이 분명하게 드러나게 하려고 해요. Max가 나오는 영어 한 줄을 써 보세요.",
-    "placeholder": "예: Come here, Max! ...",
+    "prompt": "\uc0c8\ub85c\uc6b4 \ub300\ud654\uc5d0\uc11c\ub294 Max\uac00 '\uac1c'\ub77c\ub294 \uac83\uc774 \ubd84\uba85\ud558\uac8c \ub4dc\ub7ec\ub098\uac8c \ud558\ub824\uace0 \ud574\uc694. Max\uac00 \ub098\uc624\ub294 \uc601\uc5b4 \ud55c \uc904\uc744 \uc368 \ubcf4\uc138\uc694.",
+    "placeholder": "\uc608: Come here, Max! ...",
     "minChars": 10,
     "checks": [
      {
       "id": "w1",
-      "label": "Max를 불렀거나 Max가 나온다",
+      "label": "Max\ub97c \ubd88\ub800\uac70\ub098 Max\uac00 \ub098\uc628\ub2e4",
       "mode": "any",
       "patterns": [
        "\\bmax\\b"
@@ -463,7 +453,7 @@
      },
      {
       "id": "w2",
-      "label": "개임을 보여 주는 낱말이나 소리가 들어 있다",
+      "label": "\uac1c\uc784\uc744 \ubcf4\uc5ec \uc8fc\ub294 \ub0b1\ub9d0\uc774\ub098 \uc18c\ub9ac\uac00 \ub4e4\uc5b4 \uc788\ub2e4",
       "mode": "any",
       "patterns": [
        "\\b(?:woof|bark|barks|barked|barking|tail|bone|paws?|puppy|fetch|leash|kennel)\\b",
@@ -473,17 +463,17 @@
      },
      {
       "id": "w3",
-      "label": "'개가 아니다'라고 쓰지 않았다",
+      "label": "'\uac1c\uac00 \uc544\ub2c8\ub2e4'\ub77c\uace0 \uc4f0\uc9c0 \uc54a\uc558\ub2e4",
       "mode": "none",
       "patterns": [
        "\\bnot (?:a )?dog\\b",
-       "\\bisn['’]?t (?:a )?dog\\b"
+       "\\bisn['\u2019]?t (?:a )?dog\\b"
       ]
      }
     ],
     "selfAssess": [
-     "내 한 줄에서 개임을 알려 주는 낱말은 무엇인가요?",
-     "그 낱말은 아이에게도 쓸 수 있는 말은 아닌가요?"
+     "\ub0b4 \ud55c \uc904\uc5d0\uc11c \uac1c\uc784\uc744 \uc54c\ub824 \uc8fc\ub294 \ub0b1\ub9d0\uc740 \ubb34\uc5c7\uc778\uac00\uc694?",
+     "\uadf8 \ub0b1\ub9d0\uc740 \uc544\uc774\uc5d0\uac8c\ub3c4 \uc4f8 \uc218 \uc788\ub294 \ub9d0\uc740 \uc544\ub2cc\uac00\uc694?"
     ],
     "modelAnswers": [
      {
@@ -491,162 +481,162 @@
      },
      {
       "text": "Come here, Max! Here is your bone.",
-      "note": "뼈다귀는 개의 단서."
+      "note": "\ubf08\ub2e4\uadc0\ub294 \uac1c\uc758 \ub2e8\uc11c."
      }
     ],
     "badAnswers": [
      {
       "text": "Max is nice.",
-      "why": "개라는 단서가 없다."
+      "why": "\uac1c\ub77c\ub294 \ub2e8\uc11c\uac00 \uc5c6\ub2e4."
      },
      {
       "text": "Max, hello! Good morning!",
-      "why": "아이나 사람에게도 쓰는 말이라 개가 드러나지 않는다."
+      "why": "\uc544\uc774\ub098 \uc0ac\ub78c\uc5d0\uac8c\ub3c4 \uc4f0\ub294 \ub9d0\uc774\ub77c \uac1c\uac00 \ub4dc\ub7ec\ub098\uc9c0 \uc54a\ub294\ub2e4."
      },
      {
       "text": "Max is a dog.",
-      "why": "개라고 말만 했을 뿐 단서를 보여 주지 않았다."
+      "why": "\uac1c\ub77c\uace0 \ub9d0\ub9cc \ud588\uc744 \ubfd0 \ub2e8\uc11c\ub97c \ubcf4\uc5ec \uc8fc\uc9c0 \uc54a\uc558\ub2e4."
      },
      {
       "text": "Max is not a dog, he has a bone.",
-      "why": "개가 아니라고 썼다."
+      "why": "\uac1c\uac00 \uc544\ub2c8\ub77c\uace0 \uc37c\ub2e4."
      }
     ],
-    "humanReview": "단서가 개를 분명히 가리키는지, 영어가 자연스러운지는 사람이 본다. 자동 점검은 Max와 단서 낱말의 유무만 본다.",
+    "humanReview": "\ub2e8\uc11c\uac00 \uac1c\ub97c \ubd84\uba85\ud788 \uac00\ub9ac\ud0a4\ub294\uc9c0, \uc601\uc5b4\uac00 \uc790\uc5f0\uc2a4\ub7ec\uc6b4\uc9c0\ub294 \uc0ac\ub78c\uc774 \ubcf8\ub2e4. \uc790\ub3d9 \uc810\uac80\uc740 Max\uc640 \ub2e8\uc11c \ub0b1\ub9d0\uc758 \uc720\ubb34\ub9cc \ubcf8\ub2e4.",
     "hints": [
-     "개와 하는 일이나 개가 내는 소리를 떠올려 보세요.",
-     "Max 이름과 그 단서를 한 문장에 함께 넣어 보세요."
+     "\uac1c\uc640 \ud558\ub294 \uc77c\uc774\ub098 \uac1c\uac00 \ub0b4\ub294 \uc18c\ub9ac\ub97c \ub5a0\uc62c\ub824 \ubcf4\uc138\uc694.",
+     "Max \uc774\ub984\uacfc \uadf8 \ub2e8\uc11c\ub97c \ud55c \ubb38\uc7a5\uc5d0 \ud568\uaed8 \ub123\uc5b4 \ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "판단 바꾸기",
-    "full": "새 단서가 나올 때마다 이전 짐작과 비교해 바꾸거나 유지하고 이유를 알고 있음",
-    "partial": "단서를 보고도 처음 짐작을 고집함",
-    "none": "단서와 상관없이 고름"
+    "criterion": "\ud310\ub2e8 \ubc14\uafb8\uae30",
+    "full": "\uc0c8 \ub2e8\uc11c\uac00 \ub098\uc62c \ub54c\ub9c8\ub2e4 \uc774\uc804 \uc9d0\uc791\uacfc \ube44\uad50\ud574 \ubc14\uafb8\uac70\ub098 \uc720\uc9c0\ud558\uace0 \uc774\uc720\ub97c \uc54c\uace0 \uc788\uc74c",
+    "partial": "\ub2e8\uc11c\ub97c \ubcf4\uace0\ub3c4 \ucc98\uc74c \uc9d0\uc791\uc744 \uace0\uc9d1\ud568",
+    "none": "\ub2e8\uc11c\uc640 \uc0c1\uad00\uc5c6\uc774 \uace0\ub984"
    },
    {
-    "criterion": "단서 만들기",
-    "full": "개임이 분명한 낱말이나 소리를 넣은 영어 문장을 씀",
-    "partial": "Max는 나오지만 개라는 단서가 약함",
-    "none": "Max도 단서도 없음"
+    "criterion": "\ub2e8\uc11c \ub9cc\ub4e4\uae30",
+    "full": "\uac1c\uc784\uc774 \ubd84\uba85\ud55c \ub0b1\ub9d0\uc774\ub098 \uc18c\ub9ac\ub97c \ub123\uc740 \uc601\uc5b4 \ubb38\uc7a5\uc744 \uc500",
+    "partial": "Max\ub294 \ub098\uc624\uc9c0\ub9cc \uac1c\ub77c\ub294 \ub2e8\uc11c\uac00 \uc57d\ud568",
+    "none": "Max\ub3c4 \ub2e8\uc11c\ub3c4 \uc5c6\uc74c"
    }
   ],
   "alternatives": [
-   "둘째 단계에서 아이를 고른 학생도 합리적이다(reasonable에 둘 다 포함).",
-   "마지막 줄에 'dog'라는 낱말을 그대로 써도 인정하지만 더 나은 단서(소리, 행동)를 권한다."
+   "\ub458\uc9f8 \ub2e8\uacc4\uc5d0\uc11c \uc544\uc774\ub97c \uace0\ub978 \ud559\uc0dd\ub3c4 \ud569\ub9ac\uc801\uc774\ub2e4(reasonable\uc5d0 \ub458 \ub2e4 \ud3ec\ud568).",
+   "\ub9c8\uc9c0\ub9c9 \uc904\uc5d0 'dog'\ub77c\ub294 \ub0b1\ub9d0\uc744 \uadf8\ub300\ub85c \uc368\ub3c4 \uc778\uc815\ud558\uc9c0\ub9cc \ub354 \ub098\uc740 \ub2e8\uc11c(\uc18c\ub9ac, \ud589\ub3d9)\ub97c \uad8c\ud55c\ub2e4."
   ],
   "hardCases": [
-   "Max를 'a robot toy' 등 다른 존재로 보는 학생은 이야기가 다를 수 있어 사람이 판단한다.",
-   "'Sit!'을 개에게 쓰는 말이라고만 알고 있으면 아이 놀이 가능성을 놓칠 수 있다."
+   "Max\ub97c 'a robot toy' \ub4f1 \ub2e4\ub978 \uc874\uc7ac\ub85c \ubcf4\ub294 \ud559\uc0dd\uc740 \uc774\uc57c\uae30\uac00 \ub2e4\ub97c \uc218 \uc788\uc5b4 \uc0ac\ub78c\uc774 \ud310\ub2e8\ud55c\ub2e4.",
+   "'Sit!'\uc744 \uac1c\uc5d0\uac8c \uc4f0\ub294 \ub9d0\uc774\ub77c\uace0\ub9cc \uc54c\uace0 \uc788\uc73c\uba74 \uc544\uc774 \ub180\uc774 \uac00\ub2a5\uc131\uc744 \ub193\uce60 \uc218 \uc788\ub2e4."
   ],
   "cautions": {
-   "language": "쉬운 명령문과 감사 표현만 썼다. 'Good boy'는 뜻이 둘 이상이라는 점을 그대로 활용했다.",
-   "culture": "미국식 'Good boy'는 개에게 하는 말로 흔하지만 한국어로 직역하면 낯설 수 있다. 반려동물 문화가 낯선 학생을 위해 단서를 여러 개 줬다.",
-   "accessibility": "그림 없이 글만 쓰고, 소리는 'Woof'처럼 글자로 적었다. 색 단서가 없다."
+   "language": "\uc26c\uc6b4 \uba85\ub839\ubb38\uacfc \uac10\uc0ac \ud45c\ud604\ub9cc \uc37c\ub2e4. 'Good boy'\ub294 \ub73b\uc774 \ub458 \uc774\uc0c1\uc774\ub77c\ub294 \uc810\uc744 \uadf8\ub300\ub85c \ud65c\uc6a9\ud588\ub2e4.",
+   "culture": "\ubbf8\uad6d\uc2dd 'Good boy'\ub294 \uac1c\uc5d0\uac8c \ud558\ub294 \ub9d0\ub85c \ud754\ud558\uc9c0\ub9cc \ud55c\uad6d\uc5b4\ub85c \uc9c1\uc5ed\ud558\uba74 \ub0af\uc124 \uc218 \uc788\ub2e4. \ubc18\ub824\ub3d9\ubb3c \ubb38\ud654\uac00 \ub0af\uc120 \ud559\uc0dd\uc744 \uc704\ud574 \ub2e8\uc11c\ub97c \uc5ec\ub7ec \uac1c \uc92c\ub2e4.",
+   "accessibility": "\uadf8\ub9bc \uc5c6\uc774 \uae00\ub9cc \uc4f0\uace0, \uc18c\ub9ac\ub294 'Woof'\ucc98\ub7fc \uae00\uc790\ub85c \uc801\uc5c8\ub2e4. \uc0c9 \ub2e8\uc11c\uac00 \uc5c6\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "단계별로 합리적인 선택지 확인",
-    "Max와 단서 낱말의 유무"
+    "\ub2e8\uacc4\ubcc4\ub85c \ud569\ub9ac\uc801\uc778 \uc120\ud0dd\uc9c0 \ud655\uc778",
+    "Max\uc640 \ub2e8\uc11c \ub0b1\ub9d0\uc758 \uc720\ubb34"
    ],
    "human": [
-    "개를 분명하게 가리키는지",
-    "영어의 자연스러움"
+    "\uac1c\ub97c \ubd84\uba85\ud558\uac8c \uac00\ub9ac\ud0a4\ub294\uc9c0",
+    "\uc601\uc5b4\uc758 \uc790\uc5f0\uc2a4\ub7ec\uc6c0"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "x-e-e2-04",
   "subject": "english",
   "grade": "E2",
-  "topic": "때·장소·사람 단서",
+  "topic": "\ub54c\u00b7\uc7a5\uc18c\u00b7\uc0ac\ub78c \ub2e8\uc11c",
   "level": 1,
-  "levelLabel": "초등",
-  "title": "수영장 안내판으로 30분 수영 시작 시각 찾기",
+  "levelLabel": "\ucd08\ub4f1",
+  "title": "\uc218\uc601\uc7a5 \uc548\ub0b4\ud310\uc73c\ub85c 30\ubd84 \uc218\uc601 \uc2dc\uc791 \uc2dc\uac01 \ucc3e\uae30",
   "uiLang": "ko",
   "format": "build-many-verify",
   "generative": true,
-  "goal": "개장 시각과 청소 시간이 있는 안내판에서, 30분 수영이 모두 가능한 시작 시각을 여러 개 찾는다.",
+  "goal": "\uac1c\uc7a5 \uc2dc\uac01\uacfc \uccad\uc18c \uc2dc\uac04\uc774 \uc788\ub294 \uc548\ub0b4\ud310\uc5d0\uc11c, 30\ubd84 \uc218\uc601\uc774 \ubaa8\ub450 \uac00\ub2a5\ud55c \uc2dc\uc791 \uc2dc\uac01\uc744 \uc5ec\ub7ec \uac1c \ucc3e\ub294\ub2e4.",
   "thinking": [
-   "여러 시간 조건을 동시에 만족하는 시각 찾기",
-   "끝나는 시각까지 생각하기",
-   "서로 다른 해답 만들기"
+   "\uc5ec\ub7ec \uc2dc\uac04 \uc870\uac74\uc744 \ub3d9\uc2dc\uc5d0 \ub9cc\uc871\ud558\ub294 \uc2dc\uac01 \ucc3e\uae30",
+   "\ub05d\ub098\ub294 \uc2dc\uac01\uae4c\uc9c0 \uc0dd\uac01\ud558\uae30",
+   "\uc11c\ub85c \ub2e4\ub978 \ud574\ub2f5 \ub9cc\ub4e4\uae30"
   ],
-  "differsFromPlain": "단순 연습은 안내판에서 열고 닫는 시각을 읽는다. 여기서는 30분 동안 쉬지 않고 수영해야 한다는 조건과 청소 시간을 함께 고려해, 가능한 시작 시각을 직접 여러 개 만든다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uc548\ub0b4\ud310\uc5d0\uc11c \uc5f4\uace0 \ub2eb\ub294 \uc2dc\uac01\uc744 \uc77d\ub294\ub2e4. \uc5ec\uae30\uc11c\ub294 30\ubd84 \ub3d9\uc548 \uc26c\uc9c0 \uc54a\uace0 \uc218\uc601\ud574\uc57c \ud55c\ub2e4\ub294 \uc870\uac74\uacfc \uccad\uc18c \uc2dc\uac04\uc744 \ud568\uaed8 \uace0\ub824\ud574, \uac00\ub2a5\ud55c \uc2dc\uc791 \uc2dc\uac01\uc744 \uc9c1\uc811 \uc5ec\ub7ec \uac1c \ub9cc\ub4e0\ub2e4.",
   "prerequisites": [
-   "시각과 분 읽기(2:30, 3:00)",
-   "open, closed의 뜻"
+   "\uc2dc\uac01\uacfc \ubd84 \uc77d\uae30(2:30, 3:00)",
+   "open, closed\uc758 \ub73b"
   ],
   "minutes": 8,
   "curriculum": null,
-  "material": "수영장 안내판(그림 없이 글로만 적었어요):\n\nCity Pool\nOpen: 2:00 p.m. - 5:00 p.m.\nClosed for cleaning: 3:00 - 3:30 p.m.\nOne swim: 30 minutes\n\n친구와 오후에 한 번 30분 동안 쉬지 않고 수영하고 싶어요. 수영이 끝나기 전에 수영장이 닫으면 안 돼요.",
+  "material": "\uc218\uc601\uc7a5 \uc548\ub0b4\ud310(\uadf8\ub9bc \uc5c6\uc774 \uae00\ub85c\ub9cc \uc801\uc5c8\uc5b4\uc694):\n\nCity Pool\nOpen: 2:00 p.m. - 5:00 p.m.\nClosed for cleaning: 3:00 - 3:30 p.m.\nOne swim: 30 minutes\n\n\uce5c\uad6c\uc640 \uc624\ud6c4\uc5d0 \ud55c \ubc88 30\ubd84 \ub3d9\uc548 \uc26c\uc9c0 \uc54a\uace0 \uc218\uc601\ud558\uace0 \uc2f6\uc5b4\uc694. \uc218\uc601\uc774 \ub05d\ub098\uae30 \uc804\uc5d0 \uc218\uc601\uc7a5\uc774 \ub2eb\uc73c\uba74 \uc548 \ub3fc\uc694.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
-    "prompt": "수영을 2:45에 시작하면 어떨까요?",
+    "prompt": "\uc218\uc601\uc744 2:45\uc5d0 \uc2dc\uc791\ud558\uba74 \uc5b4\ub5a8\uae4c\uc694?",
     "options": [
      {
       "id": "a",
-      "text": "불가능하다. 3:15에도 수영 중인데 청소 시간이다",
-      "reveals": "30분 동안 쉬는 시간이 없다는 조건과 청소 시간을 함께 본 판단이에요."
+      "text": "\ubd88\uac00\ub2a5\ud558\ub2e4. 3:15\uc5d0\ub3c4 \uc218\uc601 \uc911\uc778\ub370 \uccad\uc18c \uc2dc\uac04\uc774\ub2e4",
+      "reveals": "30\ubd84 \ub3d9\uc548 \uc26c\ub294 \uc2dc\uac04\uc774 \uc5c6\ub2e4\ub294 \uc870\uac74\uacfc \uccad\uc18c \uc2dc\uac04\uc744 \ud568\uaed8 \ubcf8 \ud310\ub2e8\uc774\uc5d0\uc694."
      },
      {
       "id": "b",
-      "text": "가능하다. 청소가 시작되는 3:00 전에 들어가니까",
-      "reveals": "시작 시각만 봤어요. 30분이 지나면 몇 시인지도 확인해야 해요."
+      "text": "\uac00\ub2a5\ud558\ub2e4. \uccad\uc18c\uac00 \uc2dc\uc791\ub418\ub294 3:00 \uc804\uc5d0 \ub4e4\uc5b4\uac00\ub2c8\uae4c",
+      "reveals": "\uc2dc\uc791 \uc2dc\uac01\ub9cc \ubd24\uc5b4\uc694. 30\ubd84\uc774 \uc9c0\ub098\uba74 \uba87 \uc2dc\uc778\uc9c0\ub3c4 \ud655\uc778\ud574\uc57c \ud574\uc694."
      },
      {
       "id": "c",
-      "text": "불가능하다. 문을 여는 2:00보다 일러서",
-      "reveals": "2:45는 2:00보다 늦어서 열린 뒤예요. 열린 시각과 닫는 시각을 다시 비교해 보세요."
+      "text": "\ubd88\uac00\ub2a5\ud558\ub2e4. \ubb38\uc744 \uc5ec\ub294 2:00\ubcf4\ub2e4 \uc77c\ub7ec\uc11c",
+      "reveals": "2:45\ub294 2:00\ubcf4\ub2e4 \ub2a6\uc5b4\uc11c \uc5f4\ub9b0 \ub4a4\uc608\uc694. \uc5f4\ub9b0 \uc2dc\uac01\uacfc \ub2eb\ub294 \uc2dc\uac01\uc744 \ub2e4\uc2dc \ube44\uad50\ud574 \ubcf4\uc138\uc694."
      }
     ],
     "correct": [
      "a"
     ],
-    "explain": "2:45에 시작하면 3:15에 끝나요. 3:00~3:30은 청소 시간이라 수영 중에 닫혀 버려서 불가능해요.",
+    "explain": "2:45\uc5d0 \uc2dc\uc791\ud558\uba74 3:15\uc5d0 \ub05d\ub098\uc694. 3:00~3:30\uc740 \uccad\uc18c \uc2dc\uac04\uc774\ub77c \uc218\uc601 \uc911\uc5d0 \ub2eb\ud600 \ubc84\ub824\uc11c \ubd88\uac00\ub2a5\ud574\uc694.",
     "hints": [
-     "수영이 끝나는 시각을 먼저 계산해 보세요.",
-     "끝나는 시각이 청소 시간(3:00-3:30) 안에 들어가는지 확인해 보세요."
+     "\uc218\uc601\uc774 \ub05d\ub098\ub294 \uc2dc\uac01\uc744 \uba3c\uc800 \uacc4\uc0b0\ud574 \ubcf4\uc138\uc694.",
+     "\ub05d\ub098\ub294 \uc2dc\uac01\uc774 \uccad\uc18c \uc2dc\uac04(3:00-3:30) \uc548\uc5d0 \ub4e4\uc5b4\uac00\ub294\uc9c0 \ud655\uc778\ud574 \ubcf4\uc138\uc694."
     ],
     "scaffold": true
    },
    {
     "id": "s2",
     "kind": "build",
-    "prompt": "30분 수영을 시작할 수 있는 시각을 서로 다른 두 개 만들어 보세요. (오후 h시 m분)",
+    "prompt": "30\ubd84 \uc218\uc601\uc744 \uc2dc\uc791\ud560 \uc218 \uc788\ub294 \uc2dc\uac01\uc744 \uc11c\ub85c \ub2e4\ub978 \ub450 \uac1c \ub9cc\ub4e4\uc5b4 \ubcf4\uc138\uc694. (\uc624\ud6c4 h\uc2dc m\ubd84)",
     "vars": [
      {
       "name": "h",
-      "label": "시(오후 h시, 1~5)"
+      "label": "\uc2dc(\uc624\ud6c4 h\uc2dc, 1~5)"
      },
      {
       "name": "m",
-      "label": "분(0~59)"
+      "label": "\ubd84(0~59)"
      }
     ],
     "constraints": [
      {
       "id": "c1",
       "expr": "h==floor(h) && m==floor(m) && h>=1 && h<=5 && m>=0 && m<60",
-      "ok": "시각 모양이 맞아요.",
-      "fail": "시는 1~5, 분은 0~59의 정수로 쓰세요."
+      "ok": "\uc2dc\uac01 \ubaa8\uc591\uc774 \ub9de\uc544\uc694.",
+      "fail": "\uc2dc\ub294 1~5, \ubd84\uc740 0~59\uc758 \uc815\uc218\ub85c \uc4f0\uc138\uc694."
      },
      {
       "id": "c2",
       "expr": "h*60+m>=120 && h*60+m+30<=300",
-      "ok": "열려 있는 동안 수영이 끝나요.",
-      "fail": "2:00보다 일찍 시작하거나, 5:00 이후까지 수영하게 돼요."
+      "ok": "\uc5f4\ub824 \uc788\ub294 \ub3d9\uc548 \uc218\uc601\uc774 \ub05d\ub098\uc694.",
+      "fail": "2:00\ubcf4\ub2e4 \uc77c\ucc0d \uc2dc\uc791\ud558\uac70\ub098, 5:00 \uc774\ud6c4\uae4c\uc9c0 \uc218\uc601\ud558\uac8c \ub3fc\uc694."
      },
      {
       "id": "c3",
       "expr": "h*60+m+30<=180 || h*60+m>=210",
-      "ok": "청소 시간과 겹치지 않아요.",
-      "fail": "수영 시간이 청소 시간(3:00-3:30)과 겹쳐요."
+      "ok": "\uccad\uc18c \uc2dc\uac04\uacfc \uacb9\uce58\uc9c0 \uc54a\uc544\uc694.",
+      "fail": "\uc218\uc601 \uc2dc\uac04\uc774 \uccad\uc18c \uc2dc\uac04(3:00-3:30)\uacfc \uacb9\uccd0\uc694."
      }
     ],
     "need": 2,
@@ -671,217 +661,219 @@
       "m": 45
      }
     ],
-    "explain": "가능한 시작은 2:00~2:30(3:00에 끝남)과 3:30~4:30(5:00에 끝남)이에요. 예를 들어 2:00, 4:00은 되고, 3:00은 청소 시간과, 4:45는 5:00을 넘겨서 안 돼요.",
+    "explain": "\uac00\ub2a5\ud55c \uc2dc\uc791\uc740 2:00~2:30(3:00\uc5d0 \ub05d\ub0a8)\uacfc 3:30~4:30(5:00\uc5d0 \ub05d\ub0a8)\uc774\uc5d0\uc694. \uc608\ub97c \ub4e4\uc5b4 2:00, 4:00\uc740 \ub418\uace0, 3:00\uc740 \uccad\uc18c \uc2dc\uac04\uacfc, 4:45\ub294 5:00\uc744 \ub118\uaca8\uc11c \uc548 \ub3fc\uc694.",
     "hints": [
-     "시작 시각에 30분을 더한 끝나는 시각도 같이 확인하세요.",
-     "청소 시간 전에 끝내거나 청소가 끝난 뒤에 시작하는 두 가지 방법이 있어요."
+     "\uc2dc\uc791 \uc2dc\uac01\uc5d0 30\ubd84\uc744 \ub354\ud55c \ub05d\ub098\ub294 \uc2dc\uac01\ub3c4 \uac19\uc774 \ud655\uc778\ud558\uc138\uc694.",
+     "\uccad\uc18c \uc2dc\uac04 \uc804\uc5d0 \ub05d\ub0b4\uac70\ub098 \uccad\uc18c\uac00 \ub05d\ub09c \ub4a4\uc5d0 \uc2dc\uc791\ud558\ub294 \ub450 \uac00\uc9c0 \ubc29\ubc95\uc774 \uc788\uc5b4\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "모든 조건 함께 보기",
-    "full": "열린 시간, 30분, 청소 시간을 모두 확인해 시작 시각을 만듦",
-    "partial": "한두 조건만 확인함",
-    "none": "조건을 보지 않고 시각을 씀"
+    "criterion": "\ubaa8\ub4e0 \uc870\uac74 \ud568\uaed8 \ubcf4\uae30",
+    "full": "\uc5f4\ub9b0 \uc2dc\uac04, 30\ubd84, \uccad\uc18c \uc2dc\uac04\uc744 \ubaa8\ub450 \ud655\uc778\ud574 \uc2dc\uc791 \uc2dc\uac01\uc744 \ub9cc\ub4e6",
+    "partial": "\ud55c\ub450 \uc870\uac74\ub9cc \ud655\uc778\ud568",
+    "none": "\uc870\uac74\uc744 \ubcf4\uc9c0 \uc54a\uace0 \uc2dc\uac01\uc744 \uc500"
    },
    {
-    "criterion": "서로 다른 해답",
-    "full": "청소 전과 청소 후 두 시간대의 해답을 만들 수 있음",
-    "partial": "같은 시간대에서만 만듦",
-    "none": "해답이 하나뿐이거나 틀림"
+    "criterion": "\uc11c\ub85c \ub2e4\ub978 \ud574\ub2f5",
+    "full": "\uccad\uc18c \uc804\uacfc \uccad\uc18c \ud6c4 \ub450 \uc2dc\uac04\ub300\uc758 \ud574\ub2f5\uc744 \ub9cc\ub4e4 \uc218 \uc788\uc74c",
+    "partial": "\uac19\uc740 \uc2dc\uac04\ub300\uc5d0\uc11c\ub9cc \ub9cc\ub4e6",
+    "none": "\ud574\ub2f5\uc774 \ud558\ub098\ubfd0\uc774\uac70\ub098 \ud2c0\ub9bc"
    }
   ],
   "alternatives": [
-   "2:00~2:30, 3:30~4:30 사이의 어떤 시각도 정답이다(예 2:15, 3:30, 4:30).",
-   "청소 전과 후에서 하나씩 고르는 것이 이 과제의 핵심 구조이다."
+   "2:00~2:30, 3:30~4:30 \uc0ac\uc774\uc758 \uc5b4\ub5a4 \uc2dc\uac01\ub3c4 \uc815\ub2f5\uc774\ub2e4(\uc608 2:15, 3:30, 4:30).",
+   "\uccad\uc18c \uc804\uacfc \ud6c4\uc5d0\uc11c \ud558\ub098\uc529 \uace0\ub974\ub294 \uac83\uc774 \uc774 \uacfc\uc81c\uc758 \ud575\uc2ec \uad6c\uc870\uc774\ub2e4."
   ],
   "hardCases": [
-   "4:30은 정확히 5:00에 끝나서 경계값이다. 닫는 시각에 끝나는 것을 허용하는지 사람이 안내해 준다.",
-   "3:30에 시작하는 것은 청소가 끝나는 순간이라 경계값이다. 이 과제는 허용한다."
+   "4:30\uc740 \uc815\ud655\ud788 5:00\uc5d0 \ub05d\ub098\uc11c \uacbd\uacc4\uac12\uc774\ub2e4. \ub2eb\ub294 \uc2dc\uac01\uc5d0 \ub05d\ub098\ub294 \uac83\uc744 \ud5c8\uc6a9\ud558\ub294\uc9c0 \uc0ac\ub78c\uc774 \uc548\ub0b4\ud574 \uc900\ub2e4.",
+   "3:30\uc5d0 \uc2dc\uc791\ud558\ub294 \uac83\uc740 \uccad\uc18c\uac00 \ub05d\ub098\ub294 \uc21c\uac04\uc774\ub77c \uacbd\uacc4\uac12\uc774\ub2e4. \uc774 \uacfc\uc81c\ub294 \ud5c8\uc6a9\ud55c\ub2e4."
   ],
   "cautions": {
-   "language": "시각을 숫자와 'p.m.'로만 썼다. 'closed for cleaning'은 청소 때문에 닫는다는 뜻이다.",
-   "culture": "수영장 이용 시간 안내는 한국에서도 흔하지만, 청소 시간이 중간에 있는 곳은 학생에 따라 낯설 수 있다.",
-   "accessibility": "안내판을 글로만 적었고 시각은 숫자로 읽을 수 있다. 색 단서가 없다."
+   "language": "\uc2dc\uac01\uc744 \uc22b\uc790\uc640 'p.m.'\ub85c\ub9cc \uc37c\ub2e4. 'closed for cleaning'\uc740 \uccad\uc18c \ub54c\ubb38\uc5d0 \ub2eb\ub294\ub2e4\ub294 \ub73b\uc774\ub2e4.",
+   "culture": "\uc218\uc601\uc7a5 \uc774\uc6a9 \uc2dc\uac04 \uc548\ub0b4\ub294 \ud55c\uad6d\uc5d0\uc11c\ub3c4 \ud754\ud558\uc9c0\ub9cc, \uccad\uc18c \uc2dc\uac04\uc774 \uc911\uac04\uc5d0 \uc788\ub294 \uacf3\uc740 \ud559\uc0dd\uc5d0 \ub530\ub77c \ub0af\uc124 \uc218 \uc788\ub2e4.",
+   "accessibility": "\uc548\ub0b4\ud310\uc744 \uae00\ub85c\ub9cc \uc801\uc5c8\uace0 \uc2dc\uac01\uc740 \uc22b\uc790\ub85c \uc77d\uc744 \uc218 \uc788\ub2e4. \uc0c9 \ub2e8\uc11c\uac00 \uc5c6\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "시각이 모든 조건을 만족하는지",
-    "서로 다른 시각 개수"
+    "\uc2dc\uac01\uc774 \ubaa8\ub4e0 \uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294\uc9c0",
+    "\uc11c\ub85c \ub2e4\ub978 \uc2dc\uac01 \uac1c\uc218"
    ],
    "human": [
-    "학생이 왜 그 시각을 골랐는지 설명하는 부분(선택)"
+    "\ud559\uc0dd\uc774 \uc65c \uadf8 \uc2dc\uac01\uc744 \uace8\ub790\ub294\uc9c0 \uc124\uba85\ud558\ub294 \ubd80\ubd84(\uc120\ud0dd)"
    ]
-  }
+  },
+  "status": "reviewed-ai"
  },
  {
   "id": "x-e-e2-05",
   "subject": "english",
   "grade": "E2",
-  "topic": "때·장소·사람 단서",
+  "topic": "\ub54c\u00b7\uc7a5\uc18c\u00b7\uc0ac\ub78c \ub2e8\uc11c",
   "level": 1,
-  "levelLabel": "초등",
-  "title": "'Two tickets, please.' 어디일까? 정보가 충분한지 판단하기",
+  "levelLabel": "\ucd08\ub4f1",
+  "title": "'Two tickets, please.' \uc5b4\ub514\uc77c\uae4c? \uc815\ubcf4\uac00 \ucda9\ubd84\ud55c\uc9c0 \ud310\ub2e8\ud558\uae30",
   "uiLang": "ko",
   "format": "choose-needed-info",
   "generative": false,
-  "goal": "엿들은 두 줄만으로 장소를 정할 수 있는지 판단하고, 장소를 가려 주는 추가 단서를 고른다.",
+  "goal": "\uc5ff\ub4e4\uc740 \ub450 \uc904\ub9cc\uc73c\ub85c \uc7a5\uc18c\ub97c \uc815\ud560 \uc218 \uc788\ub294\uc9c0 \ud310\ub2e8\ud558\uace0, \uc7a5\uc18c\ub97c \uac00\ub824 \uc8fc\ub294 \ucd94\uac00 \ub2e8\uc11c\ub97c \uace0\ub978\ub2e4.",
   "thinking": [
-   "정보가 충분한지 판단하기",
-   "여러 장소 후보를 비교하기",
-   "후보를 가려 주는 단서 고르기"
+   "\uc815\ubcf4\uac00 \ucda9\ubd84\ud55c\uc9c0 \ud310\ub2e8\ud558\uae30",
+   "\uc5ec\ub7ec \uc7a5\uc18c \ud6c4\ubcf4\ub97c \ube44\uad50\ud558\uae30",
+   "\ud6c4\ubcf4\ub97c \uac00\ub824 \uc8fc\ub294 \ub2e8\uc11c \uace0\ub974\uae30"
   ],
-  "differsFromPlain": "단순 연습은 대화를 읽고 장소 이름을 고른다. 여기서는 먼저 정보가 충분한지 판단하고, 영화관과 공연장 두 후보에 모두 해당하는 말과 둘을 가려 주는 말을 구별해서 고른다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \ub300\ud654\ub97c \uc77d\uace0 \uc7a5\uc18c \uc774\ub984\uc744 \uace0\ub978\ub2e4. \uc5ec\uae30\uc11c\ub294 \uba3c\uc800 \uc815\ubcf4\uac00 \ucda9\ubd84\ud55c\uc9c0 \ud310\ub2e8\ud558\uace0, \uc601\ud654\uad00\uacfc \uacf5\uc5f0\uc7a5 \ub450 \ud6c4\ubcf4\uc5d0 \ubaa8\ub450 \ud574\ub2f9\ud558\ub294 \ub9d0\uacfc \ub458\uc744 \uac00\ub824 \uc8fc\ub294 \ub9d0\uc744 \uad6c\ubcc4\ud574\uc11c \uace0\ub978\ub2e4.",
   "prerequisites": [
-   "ticket, show, movie, popcorn 같은 쉬운 낱말"
+   "ticket, show, movie, popcorn \uac19\uc740 \uc26c\uc6b4 \ub0b1\ub9d0"
   ],
   "minutes": 7,
   "curriculum": null,
-  "material": "한 남자와 매표소 직원이 하는 말을 엿들었어요. 어디인지는 말하지 않았어요.\n\nMan: Two tickets, please.\nClerk: Here you are. The show starts at 7:00.",
+  "material": "\ud55c \ub0a8\uc790\uc640 \ub9e4\ud45c\uc18c \uc9c1\uc6d0\uc774 \ud558\ub294 \ub9d0\uc744 \uc5ff\ub4e4\uc5c8\uc5b4\uc694. \uc5b4\ub514\uc778\uc9c0\ub294 \ub9d0\ud558\uc9c0 \uc54a\uc558\uc5b4\uc694.\n\nMan: Two tickets, please.\nClerk: Here you are. The show starts at 7:00.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
-    "prompt": "이 두 줄만으로 장소를 하나로 정할 수 있을까요?",
+    "prompt": "\uc774 \ub450 \uc904\ub9cc\uc73c\ub85c \uc7a5\uc18c\ub97c \ud558\ub098\ub85c \uc815\ud560 \uc218 \uc788\uc744\uae4c\uc694?",
     "options": [
      {
       "id": "a",
-      "text": "정할 수 없다. 영화관, 공연장 등 여러 곳이 가능하다",
-      "reveals": "'show'와 ticket은 여러 장소에서 쓸 수 있어요."
+      "text": "\uc815\ud560 \uc218 \uc5c6\ub2e4. \uc601\ud654\uad00, \uacf5\uc5f0\uc7a5 \ub4f1 \uc5ec\ub7ec \uacf3\uc774 \uac00\ub2a5\ud558\ub2e4",
+      "reveals": "'show'\uc640 ticket\uc740 \uc5ec\ub7ec \uc7a5\uc18c\uc5d0\uc11c \uc4f8 \uc218 \uc788\uc5b4\uc694."
      },
      {
       "id": "b",
-      "text": "영화관이다. ticket이 나왔으니까",
-      "reveals": "ticket은 영화관 말고도 공연장, 동물원, 기차역 등에도 나와요."
+      "text": "\uc601\ud654\uad00\uc774\ub2e4. ticket\uc774 \ub098\uc654\uc73c\ub2c8\uae4c",
+      "reveals": "ticket\uc740 \uc601\ud654\uad00 \ub9d0\uace0\ub3c4 \uacf5\uc5f0\uc7a5, \ub3d9\ubb3c\uc6d0, \uae30\ucc28\uc5ed \ub4f1\uc5d0\ub3c4 \ub098\uc640\uc694."
      },
      {
       "id": "c",
-      "text": "기차역이다. 7:00에 출발하니까",
-      "reveals": "기차는 보통 'show'가 아니라 'train'이라고 말해요. 근거가 약해요."
+      "text": "\uae30\ucc28\uc5ed\uc774\ub2e4. 7:00\uc5d0 \ucd9c\ubc1c\ud558\ub2c8\uae4c",
+      "reveals": "\uae30\ucc28\ub294 \ubcf4\ud1b5 'show'\uac00 \uc544\ub2c8\ub77c 'train'\uc774\ub77c\uace0 \ub9d0\ud574\uc694. \uadfc\uac70\uac00 \uc57d\ud574\uc694."
      }
     ],
     "correct": [
      "a"
     ],
-    "explain": "ticket과 show는 영화관, 공연장 같은 여러 곳에서 모두 쓰는 말이에요. 두 줄만으로는 하나로 정하기 어려워요.",
+    "explain": "ticket\uacfc show\ub294 \uc601\ud654\uad00, \uacf5\uc5f0\uc7a5 \uac19\uc740 \uc5ec\ub7ec \uacf3\uc5d0\uc11c \ubaa8\ub450 \uc4f0\ub294 \ub9d0\uc774\uc5d0\uc694. \ub450 \uc904\ub9cc\uc73c\ub85c\ub294 \ud558\ub098\ub85c \uc815\ud558\uae30 \uc5b4\ub824\uc6cc\uc694.",
     "hints": [
-     "이 두 줄을 말할 수 있는 장소를 두세 곳 떠올려 보세요.",
-     "각 선택지가 말하는 장소가 그 두 줄과 모두 맞는지 따져 보세요."
+     "\uc774 \ub450 \uc904\uc744 \ub9d0\ud560 \uc218 \uc788\ub294 \uc7a5\uc18c\ub97c \ub450\uc138 \uacf3 \ub5a0\uc62c\ub824 \ubcf4\uc138\uc694.",
+     "\uac01 \uc120\ud0dd\uc9c0\uac00 \ub9d0\ud558\ub294 \uc7a5\uc18c\uac00 \uadf8 \ub450 \uc904\uacfc \ubaa8\ub450 \ub9de\ub294\uc9c0 \ub530\uc838 \ubcf4\uc138\uc694."
     ],
     "scaffold": true
    },
    {
     "id": "s2",
     "kind": "choose",
-    "prompt": "장소가 '영화관'인지 '공연장'인지 가려 주는 추가 줄을 모두 고르세요.",
+    "prompt": "\uc7a5\uc18c\uac00 '\uc601\ud654\uad00'\uc778\uc9c0 '\uacf5\uc5f0\uc7a5'\uc778\uc9c0 \uac00\ub824 \uc8fc\ub294 \ucd94\uac00 \uc904\uc744 \ubaa8\ub450 \uace0\ub974\uc138\uc694.",
     "options": [
      {
       "id": "a",
       "text": "Do you want popcorn?",
-      "reveals": "팝콘은 영화관에서 흔히 사는 먹을거리예요. 공연장과 구별되는 단서가 될 수 있어요."
+      "reveals": "\ud31d\ucf58\uc740 \uc601\ud654\uad00\uc5d0\uc11c \ud754\ud788 \uc0ac\ub294 \uba39\uc744\uac70\ub9ac\uc608\uc694. \uacf5\uc5f0\uc7a5\uacfc \uad6c\ubcc4\ub418\ub294 \ub2e8\uc11c\uac00 \ub420 \uc218 \uc788\uc5b4\uc694."
      },
      {
       "id": "b",
       "text": "The seats are in row F.",
-      "reveals": "영화관도 공연장도 좌석 줄이 있어요. 둘을 가려 주지 않는 말이에요."
+      "reveals": "\uc601\ud654\uad00\ub3c4 \uacf5\uc5f0\uc7a5\ub3c4 \uc88c\uc11d \uc904\uc774 \uc788\uc5b4\uc694. \ub458\uc744 \uac00\ub824 \uc8fc\uc9c0 \uc54a\ub294 \ub9d0\uc774\uc5d0\uc694."
      },
      {
       "id": "c",
       "text": "Is the screen big?",
-      "reveals": "screen(화면)은 공연장보다 영화관에서 중요한 말이에요. 둘을 가르는 단서가 될 수 있어요."
+      "reveals": "screen(\ud654\uba74)\uc740 \uacf5\uc5f0\uc7a5\ubcf4\ub2e4 \uc601\ud654\uad00\uc5d0\uc11c \uc911\uc694\ud55c \ub9d0\uc774\uc5d0\uc694. \ub458\uc744 \uac00\ub974\ub294 \ub2e8\uc11c\uac00 \ub420 \uc218 \uc788\uc5b4\uc694."
      },
      {
       "id": "d",
       "text": "Please be quiet.",
-      "reveals": "조용히 하라는 말은 두 곳 모두에서 들을 수 있어요."
+      "reveals": "\uc870\uc6a9\ud788 \ud558\ub77c\ub294 \ub9d0\uc740 \ub450 \uacf3 \ubaa8\ub450\uc5d0\uc11c \ub4e4\uc744 \uc218 \uc788\uc5b4\uc694."
      }
     ],
     "correct": [
      "a",
      "c"
     ],
-    "explain": "두 후보 모두에 맞는 말(좌석 줄, 조용히)은 장소를 가려 주지 못해요. 팝콘과 screen은 영화관 쪽에 더 가까운 단서예요. 다만 한 줄만으로 완전히 확정하기는 어려울 수 있어요.",
+    "explain": "\ub450 \ud6c4\ubcf4 \ubaa8\ub450\uc5d0 \ub9de\ub294 \ub9d0(\uc88c\uc11d \uc904, \uc870\uc6a9\ud788)\uc740 \uc7a5\uc18c\ub97c \uac00\ub824 \uc8fc\uc9c0 \ubabb\ud574\uc694. \ud31d\ucf58\uacfc screen\uc740 \uc601\ud654\uad00 \ucabd\uc5d0 \ub354 \uac00\uae4c\uc6b4 \ub2e8\uc11c\uc608\uc694. \ub2e4\ub9cc \ud55c \uc904\ub9cc\uc73c\ub85c \uc644\uc804\ud788 \ud655\uc815\ud558\uae30\ub294 \uc5b4\ub824\uc6b8 \uc218 \uc788\uc5b4\uc694.",
     "hints": [
-     "각 줄을 영화관과 공연장 둘 다에 넣어 보고, 둘 다 어울리는 줄은 지우세요.",
-     "남은 줄이 한쪽에만 더 잘 어울리는지 확인하세요."
+     "\uac01 \uc904\uc744 \uc601\ud654\uad00\uacfc \uacf5\uc5f0\uc7a5 \ub458 \ub2e4\uc5d0 \ub123\uc5b4 \ubcf4\uace0, \ub458 \ub2e4 \uc5b4\uc6b8\ub9ac\ub294 \uc904\uc740 \uc9c0\uc6b0\uc138\uc694.",
+     "\ub0a8\uc740 \uc904\uc774 \ud55c\ucabd\uc5d0\ub9cc \ub354 \uc798 \uc5b4\uc6b8\ub9ac\ub294\uc9c0 \ud655\uc778\ud558\uc138\uc694."
     ],
     "multi": true
    }
   ],
   "rubric": [
    {
-    "criterion": "정보 충분성 판단",
-    "full": "두 줄만으로 하나로 정할 수 없음을 이유와 함께 판단함",
-    "partial": "정할 수 없다고 했지만 이유가 없음",
-    "none": "ticket만 보고 정함"
+    "criterion": "\uc815\ubcf4 \ucda9\ubd84\uc131 \ud310\ub2e8",
+    "full": "\ub450 \uc904\ub9cc\uc73c\ub85c \ud558\ub098\ub85c \uc815\ud560 \uc218 \uc5c6\uc74c\uc744 \uc774\uc720\uc640 \ud568\uaed8 \ud310\ub2e8\ud568",
+    "partial": "\uc815\ud560 \uc218 \uc5c6\ub2e4\uace0 \ud588\uc9c0\ub9cc \uc774\uc720\uac00 \uc5c6\uc74c",
+    "none": "ticket\ub9cc \ubcf4\uace0 \uc815\ud568"
    },
    {
-    "criterion": "가려 주는 단서",
-    "full": "두 후보를 가려 주는 줄만 고르고 공통인 줄은 제외함",
-    "partial": "하나만 고름",
-    "none": "공통인 줄을 고름"
+    "criterion": "\uac00\ub824 \uc8fc\ub294 \ub2e8\uc11c",
+    "full": "\ub450 \ud6c4\ubcf4\ub97c \uac00\ub824 \uc8fc\ub294 \uc904\ub9cc \uace0\ub974\uace0 \uacf5\ud1b5\uc778 \uc904\uc740 \uc81c\uc678\ud568",
+    "partial": "\ud558\ub098\ub9cc \uace0\ub984",
+    "none": "\uacf5\ud1b5\uc778 \uc904\uc744 \uace0\ub984"
    }
   ],
   "alternatives": [
-   "팝콘이나 screen 외에 'Is the movie long?'도 영화관 쪽 단서로 쓸 수 있다.",
-   "동물원의 'show'를 떠올려 b를 정답으로 판단하는 것도 합리적이다."
+   "\ud31d\ucf58\uc774\ub098 screen \uc678\uc5d0 'Is the movie long?'\ub3c4 \uc601\ud654\uad00 \ucabd \ub2e8\uc11c\ub85c \uc4f8 \uc218 \uc788\ub2e4.",
+   "\ub3d9\ubb3c\uc6d0\uc758 'show'\ub97c \ub5a0\uc62c\ub824 b\ub97c \uc815\ub2f5\uc73c\ub85c \ud310\ub2e8\ud558\ub294 \uac83\ub3c4 \ud569\ub9ac\uc801\uc774\ub2e4."
   ],
   "hardCases": [
-   "극장에서 팝콘이 없는 곳이나 공연장의 큰 화면도 있어, 단서는 가능성을 높일 뿐 확정하지는 않는다.",
-   "'show'를 동물원이나 서커스의 공연으로 읽는 학생의 해석도 가능하다."
+   "\uadf9\uc7a5\uc5d0\uc11c \ud31d\ucf58\uc774 \uc5c6\ub294 \uacf3\uc774\ub098 \uacf5\uc5f0\uc7a5\uc758 \ud070 \ud654\uba74\ub3c4 \uc788\uc5b4, \ub2e8\uc11c\ub294 \uac00\ub2a5\uc131\uc744 \ub192\uc77c \ubfd0 \ud655\uc815\ud558\uc9c0\ub294 \uc54a\ub294\ub2e4.",
+   "'show'\ub97c \ub3d9\ubb3c\uc6d0\uc774\ub098 \uc11c\ucee4\uc2a4\uc758 \uacf5\uc5f0\uc73c\ub85c \uc77d\ub294 \ud559\uc0dd\uc758 \ud574\uc11d\ub3c4 \uac00\ub2a5\ud558\ub2e4."
   ],
   "cautions": {
-   "language": "ticket, show, popcorn처럼 고빈도 낱말만 썼다.",
-   "culture": "한국에서는 영화관 팝콘이 흔하지만 문화에 따라 다를 수 있다.",
-   "accessibility": "그림 없이 글로만 썼고 시각 '7:00'은 '세븐 오 클락'으로 읽을 수 있다."
+   "language": "ticket, show, popcorn\ucc98\ub7fc \uace0\ube48\ub3c4 \ub0b1\ub9d0\ub9cc \uc37c\ub2e4.",
+   "culture": "\ud55c\uad6d\uc5d0\uc11c\ub294 \uc601\ud654\uad00 \ud31d\ucf58\uc774 \ud754\ud558\uc9c0\ub9cc \ubb38\ud654\uc5d0 \ub530\ub77c \ub2e4\ub97c \uc218 \uc788\ub2e4.",
+   "accessibility": "\uadf8\ub9bc \uc5c6\uc774 \uae00\ub85c\ub9cc \uc37c\uace0 \uc2dc\uac01 '7:00'\uc740 '\uc138\ube10 \uc624 \ud074\ub77d'\uc73c\ub85c \uc77d\uc744 \uc218 \uc788\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "선택 결과",
-    "정답 세트 비교"
+    "\uc120\ud0dd \uacb0\uacfc",
+    "\uc815\ub2f5 \uc138\ud2b8 \ube44\uad50"
    ],
    "human": [
-    "선택 이유를 설명하는 대화(선택)"
+    "\uc120\ud0dd \uc774\uc720\ub97c \uc124\uba85\ud558\ub294 \ub300\ud654(\uc120\ud0dd)"
    ]
-  }
+  },
+  "status": "reviewed-ai"
  },
  {
   "id": "x-e-e2-06",
   "subject": "english",
   "grade": "E2",
-  "topic": "공손한 말과 친근한 말",
+  "topic": "\uacf5\uc190\ud55c \ub9d0\uacfc \uce5c\uadfc\ud55c \ub9d0",
   "level": 1,
-  "levelLabel": "초등",
-  "title": "'Give me your pen.' 선생님께, 친구에게 다르게 말하기",
+  "levelLabel": "\ucd08\ub4f1",
+  "title": "'Give me your pen.' \uc120\uc0dd\ub2d8\uaed8, \uce5c\uad6c\uc5d0\uac8c \ub2e4\ub974\uac8c \ub9d0\ud558\uae30",
   "uiLang": "ko",
   "format": "rewrite-for-audience",
   "generative": true,
-  "goal": "같은 부탁을 듣는 사람(선생님/친구)에 맞게 두 가지 영어 문장으로 고쳐 쓴다.",
+  "goal": "\uac19\uc740 \ubd80\ud0c1\uc744 \ub4e3\ub294 \uc0ac\ub78c(\uc120\uc0dd\ub2d8/\uce5c\uad6c)\uc5d0 \ub9de\uac8c \ub450 \uac00\uc9c0 \uc601\uc5b4 \ubb38\uc7a5\uc73c\ub85c \uace0\uccd0 \uc4f4\ub2e4.",
   "thinking": [
-   "듣는 사람에 따라 말투 고르기",
-   "공손한 표현과 친근한 표현 구별하기",
-   "같은 뜻을 두 가지로 말하기"
+   "\ub4e3\ub294 \uc0ac\ub78c\uc5d0 \ub530\ub77c \ub9d0\ud22c \uace0\ub974\uae30",
+   "\uacf5\uc190\ud55c \ud45c\ud604\uacfc \uce5c\uadfc\ud55c \ud45c\ud604 \uad6c\ubcc4\ud558\uae30",
+   "\uac19\uc740 \ub73b\uc744 \ub450 \uac00\uc9c0\ub85c \ub9d0\ud558\uae30"
   ],
-  "differsFromPlain": "단순 연습은 please를 넣는 문장 만들기를 한다. 여기서는 같은 부탁을 선생님과 친한 친구 두 사람에게 다르게 말해 보며, 말투가 상대에 따라 어떻게 달라지는지 직접 선택한다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 please\ub97c \ub123\ub294 \ubb38\uc7a5 \ub9cc\ub4e4\uae30\ub97c \ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \uac19\uc740 \ubd80\ud0c1\uc744 \uc120\uc0dd\ub2d8\uacfc \uce5c\ud55c \uce5c\uad6c \ub450 \uc0ac\ub78c\uc5d0\uac8c \ub2e4\ub974\uac8c \ub9d0\ud574 \ubcf4\uba70, \ub9d0\ud22c\uac00 \uc0c1\ub300\uc5d0 \ub530\ub77c \uc5b4\ub5bb\uac8c \ub2ec\ub77c\uc9c0\ub294\uc9c0 \uc9c1\uc811 \uc120\ud0dd\ud55c\ub2e4.",
   "prerequisites": [
-   "please, Can I ~?, Could I ~? 같은 쉬운 부탁 표현",
+   "please, Can I ~?, Could I ~? \uac19\uc740 \uc26c\uc6b4 \ubd80\ud0c1 \ud45c\ud604",
    "pen, pencil, borrow"
   ],
   "minutes": 8,
   "curriculum": null,
-  "material": "펜이 필요한 상황이에요. 원래 문장은 \"Give me your pen.\" 이에요. 이 말은 듣는 사람이 선생님이면 너무 짧고 거칠게 들릴 수 있어요. 선생님께, 그리고 친한 친구에게 맞게 두 번 고쳐 써 보세요.",
+  "material": "\ud39c\uc774 \ud544\uc694\ud55c \uc0c1\ud669\uc774\uc5d0\uc694. \uc6d0\ub798 \ubb38\uc7a5\uc740 \"Give me your pen.\" \uc774\uc5d0\uc694. \uc774 \ub9d0\uc740 \ub4e3\ub294 \uc0ac\ub78c\uc774 \uc120\uc0dd\ub2d8\uc774\uba74 \ub108\ubb34 \uc9e7\uace0 \uac70\uce60\uac8c \ub4e4\ub9b4 \uc218 \uc788\uc5b4\uc694. \uc120\uc0dd\ub2d8\uaed8, \uadf8\ub9ac\uace0 \uce5c\ud55c \uce5c\uad6c\uc5d0\uac8c \ub9de\uac8c \ub450 \ubc88 \uace0\uccd0 \uc368 \ubcf4\uc138\uc694.",
   "steps": [
    {
     "id": "s1",
     "kind": "write",
-    "prompt": "선생님께 펜을 빌려 달라고 정중하게 말해 보세요. (영어 한 문장)",
-    "placeholder": "예: Excuse me, ...",
+    "prompt": "\uc120\uc0dd\ub2d8\uaed8 \ud39c\uc744 \ube4c\ub824 \ub2ec\ub77c\uace0 \uc815\uc911\ud558\uac8c \ub9d0\ud574 \ubcf4\uc138\uc694. (\uc601\uc5b4 \ud55c \ubb38\uc7a5)",
+    "placeholder": "\uc608: Excuse me, ...",
     "minChars": 12,
     "checks": [
      {
       "id": "w1",
-      "label": "펜(또는 연필)을 말했다",
+      "label": "\ud39c(\ub610\ub294 \uc5f0\ud544)\uc744 \ub9d0\ud588\ub2e4",
       "mode": "any",
       "patterns": [
        "\\bpens?\\b",
@@ -890,7 +882,7 @@
      },
      {
       "id": "w2",
-      "label": "공손한 부탁 표현이 있다(please, Could I, May I, Would, Excuse me 등)",
+      "label": "\uacf5\uc190\ud55c \ubd80\ud0c1 \ud45c\ud604\uc774 \uc788\ub2e4(please, Could I, May I, Would, Excuse me \ub4f1)",
       "mode": "any",
       "patterns": [
        "\\bplease\\b",
@@ -902,7 +894,7 @@
      },
      {
       "id": "w3",
-      "label": "명령문 'Give me'로 시작하지 않고 반말투도 아니다",
+      "label": "\uba85\ub839\ubb38 'Give me'\ub85c \uc2dc\uc791\ud558\uc9c0 \uc54a\uace0 \ubc18\ub9d0\ud22c\ub3c4 \uc544\ub2c8\ub2e4",
       "mode": "none",
       "patterns": [
        "^\\s*give me\\b",
@@ -913,8 +905,8 @@
      }
     ],
     "selfAssess": [
-     "선생님이 듣고 기분 좋을 말투인가요?",
-     "부탁을 하는 말(Could I, May I, please)이 들어 있나요?"
+     "\uc120\uc0dd\ub2d8\uc774 \ub4e3\uace0 \uae30\ubd84 \uc88b\uc744 \ub9d0\ud22c\uc778\uac00\uc694?",
+     "\ubd80\ud0c1\uc744 \ud558\ub294 \ub9d0(Could I, May I, please)\uc774 \ub4e4\uc5b4 \uc788\ub098\uc694?"
     ],
     "modelAnswers": [
      {
@@ -922,35 +914,35 @@
      },
      {
       "text": "May I use your pen, please?",
-      "note": "May I는 공손한 표현."
+      "note": "May I\ub294 \uacf5\uc190\ud55c \ud45c\ud604."
      }
     ],
     "badAnswers": [
      {
       "text": "Give me your pen.",
-      "why": "원래 문장 그대로, 공손한 표현이 없다."
+      "why": "\uc6d0\ub798 \ubb38\uc7a5 \uadf8\ub300\ub85c, \uacf5\uc190\ud55c \ud45c\ud604\uc774 \uc5c6\ub2e4."
      },
      {
       "text": "Hey, give me your pen, teacher.",
-      "why": "호칭만 붙였을 뿐 말투가 그대로다."
+      "why": "\ud638\uce6d\ub9cc \ubd99\uc600\uc744 \ubfd0 \ub9d0\ud22c\uac00 \uadf8\ub300\ub85c\ub2e4."
      }
     ],
-    "humanReview": "듣는 사람(선생님)에게 어울리는 정중함인지, 영어가 자연스러운지는 사람이 본다. 자동 점검은 낱말의 유무만 본다.",
+    "humanReview": "\ub4e3\ub294 \uc0ac\ub78c(\uc120\uc0dd\ub2d8)\uc5d0\uac8c \uc5b4\uc6b8\ub9ac\ub294 \uc815\uc911\ud568\uc778\uc9c0, \uc601\uc5b4\uac00 \uc790\uc5f0\uc2a4\ub7ec\uc6b4\uc9c0\ub294 \uc0ac\ub78c\uc774 \ubcf8\ub2e4. \uc790\ub3d9 \uc810\uac80\uc740 \ub0b1\ub9d0\uc758 \uc720\ubb34\ub9cc \ubcf8\ub2e4.",
     "hints": [
-     "부탁을 할 때 쓰는 'Could I ~?' 같은 표현을 떠올려 보세요.",
-     "Excuse me나 please를 넣으면 말투가 어떻게 달라질까요?"
+     "\ubd80\ud0c1\uc744 \ud560 \ub54c \uc4f0\ub294 'Could I ~?' \uac19\uc740 \ud45c\ud604\uc744 \ub5a0\uc62c\ub824 \ubcf4\uc138\uc694.",
+     "Excuse me\ub098 please\ub97c \ub123\uc73c\uba74 \ub9d0\ud22c\uac00 \uc5b4\ub5bb\uac8c \ub2ec\ub77c\uc9c8\uae4c\uc694?"
     ]
    },
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "이번에는 같은 반 친한 친구에게 펜을 빌려 달라고 편하게 말해 보세요. (영어 한 문장)",
-    "placeholder": "예: Hey, can you ...",
+    "prompt": "\uc774\ubc88\uc5d0\ub294 \uac19\uc740 \ubc18 \uce5c\ud55c \uce5c\uad6c\uc5d0\uac8c \ud39c\uc744 \ube4c\ub824 \ub2ec\ub77c\uace0 \ud3b8\ud558\uac8c \ub9d0\ud574 \ubcf4\uc138\uc694. (\uc601\uc5b4 \ud55c \ubb38\uc7a5)",
+    "placeholder": "\uc608: Hey, can you ...",
     "minChars": 10,
     "checks": [
      {
       "id": "w1",
-      "label": "펜(또는 연필)을 말했다",
+      "label": "\ud39c(\ub610\ub294 \uc5f0\ud544)\uc744 \ub9d0\ud588\ub2e4",
       "mode": "any",
       "patterns": [
        "\\bpens?\\b",
@@ -959,7 +951,7 @@
      },
      {
       "id": "w2",
-      "label": "편한 말투의 표현이 들어 있다(hey, hi, can you, can I, thanks 등)",
+      "label": "\ud3b8\ud55c \ub9d0\ud22c\uc758 \ud45c\ud604\uc774 \ub4e4\uc5b4 \uc788\ub2e4(hey, hi, can you, can I, thanks \ub4f1)",
       "mode": "any",
       "patterns": [
        "\\bhey\\b",
@@ -972,7 +964,7 @@
      },
      {
       "id": "w3",
-      "label": "선생님께 하는 것처럼 지나치게 격식 있는 표현이 아니다",
+      "label": "\uc120\uc0dd\ub2d8\uaed8 \ud558\ub294 \uac83\ucc98\ub7fc \uc9c0\ub098\uce58\uac8c \uaca9\uc2dd \uc788\ub294 \ud45c\ud604\uc774 \uc544\ub2c8\ub2e4",
       "mode": "none",
       "patterns": [
        "\\bwould you\\b",
@@ -980,7 +972,7 @@
        "\\bcould (?:you|i)\\b",
        "\\bmay i\\b",
        "\\bsir\\b",
-       "\\bma['’]?am\\b",
+       "\\bma['\u2019]?am\\b",
        "\\bi would like\\b",
        "\\bms\\b",
        "\\bmr\\b",
@@ -989,8 +981,8 @@
      }
     ],
     "selfAssess": [
-     "친구가 들으면 편안하게 느낄 말투인가요?",
-     "선생님께 쓴 문장과 어떤 점이 다른가요?"
+     "\uce5c\uad6c\uac00 \ub4e4\uc73c\uba74 \ud3b8\uc548\ud558\uac8c \ub290\ub084 \ub9d0\ud22c\uc778\uac00\uc694?",
+     "\uc120\uc0dd\ub2d8\uaed8 \uc4f4 \ubb38\uc7a5\uacfc \uc5b4\ub5a4 \uc810\uc774 \ub2e4\ub978\uac00\uc694?"
     ],
     "modelAnswers": [
      {
@@ -998,128 +990,128 @@
      },
      {
       "text": "Can you lend me your pen? Thanks!",
-      "note": "thanks로 친근함을 표현."
+      "note": "thanks\ub85c \uce5c\uadfc\ud568\uc744 \ud45c\ud604."
      }
     ],
     "badAnswers": [
      {
       "text": "May I borrow your pen, sir?",
-      "why": "친구에게 쓰기엔 너무 격식 있는 표현이다."
+      "why": "\uce5c\uad6c\uc5d0\uac8c \uc4f0\uae30\uc5d4 \ub108\ubb34 \uaca9\uc2dd \uc788\ub294 \ud45c\ud604\uc774\ub2e4."
      },
      {
       "text": "My pen is blue.",
-      "why": "부탁하는 말이 아니다."
+      "why": "\ubd80\ud0c1\ud558\ub294 \ub9d0\uc774 \uc544\ub2c8\ub2e4."
      },
      {
       "text": "Would you please lend me your pen? Thank you.",
-      "why": "친구에게는 너무 격식 있는 표현이다(선생님께 쓰는 말투)."
+      "why": "\uce5c\uad6c\uc5d0\uac8c\ub294 \ub108\ubb34 \uaca9\uc2dd \uc788\ub294 \ud45c\ud604\uc774\ub2e4(\uc120\uc0dd\ub2d8\uaed8 \uc4f0\ub294 \ub9d0\ud22c)."
      }
     ],
-    "humanReview": "친구 사이에서 자연스러운지, 말투가 너무 무례하지 않은지는 사람이 본다.",
+    "humanReview": "\uce5c\uad6c \uc0ac\uc774\uc5d0\uc11c \uc790\uc5f0\uc2a4\ub7ec\uc6b4\uc9c0, \ub9d0\ud22c\uac00 \ub108\ubb34 \ubb34\ub840\ud558\uc9c0 \uc54a\uc740\uc9c0\ub294 \uc0ac\ub78c\uc774 \ubcf8\ub2e4.",
     "hints": [
-     "선생님께 쓴 표현 중 친구에게는 너무 딱딱한 것을 하나 빼 보세요.",
-     "친구가 편하게 쓰는 짧은 인사말이나 부탁 표현을 넣어 보세요."
+     "\uc120\uc0dd\ub2d8\uaed8 \uc4f4 \ud45c\ud604 \uc911 \uce5c\uad6c\uc5d0\uac8c\ub294 \ub108\ubb34 \ub531\ub531\ud55c \uac83\uc744 \ud558\ub098 \ube7c \ubcf4\uc138\uc694.",
+     "\uce5c\uad6c\uac00 \ud3b8\ud558\uac8c \uc4f0\ub294 \uc9e7\uc740 \uc778\uc0ac\ub9d0\uc774\ub098 \ubd80\ud0c1 \ud45c\ud604\uc744 \ub123\uc5b4 \ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "듣는 사람에 맞춘 말투",
-    "full": "선생님께는 정중하게, 친구에게는 편하게 두 문장이 서로 다름",
-    "partial": "한 문장만 맞거나 두 문장이 거의 같음",
-    "none": "말투를 바꾸지 않음"
+    "criterion": "\ub4e3\ub294 \uc0ac\ub78c\uc5d0 \ub9de\ucd98 \ub9d0\ud22c",
+    "full": "\uc120\uc0dd\ub2d8\uaed8\ub294 \uc815\uc911\ud558\uac8c, \uce5c\uad6c\uc5d0\uac8c\ub294 \ud3b8\ud558\uac8c \ub450 \ubb38\uc7a5\uc774 \uc11c\ub85c \ub2e4\ub984",
+    "partial": "\ud55c \ubb38\uc7a5\ub9cc \ub9de\uac70\ub098 \ub450 \ubb38\uc7a5\uc774 \uac70\uc758 \uac19\uc74c",
+    "none": "\ub9d0\ud22c\ub97c \ubc14\uafb8\uc9c0 \uc54a\uc74c"
    },
    {
-    "criterion": "부탁의 뜻 전달",
-    "full": "두 문장 모두 펜을 빌려 달라는 뜻이 분명함",
-    "partial": "한 문장만 분명함",
-    "none": "뜻이 달라지거나 불분명함"
+    "criterion": "\ubd80\ud0c1\uc758 \ub73b \uc804\ub2ec",
+    "full": "\ub450 \ubb38\uc7a5 \ubaa8\ub450 \ud39c\uc744 \ube4c\ub824 \ub2ec\ub77c\ub294 \ub73b\uc774 \ubd84\uba85\ud568",
+    "partial": "\ud55c \ubb38\uc7a5\ub9cc \ubd84\uba85\ud568",
+    "none": "\ub73b\uc774 \ub2ec\ub77c\uc9c0\uac70\ub098 \ubd88\ubd84\uba85\ud568"
    }
   ],
   "alternatives": [
-   "선생님께 'Could I borrow your pen, please?'와 'May I use your pen?'은 모두 좋다.",
-   "친구에게 'Give me your pen, please.'처럼 짧게 말하는 것도 가능한 경우가 있어 사람이 본다."
+   "\uc120\uc0dd\ub2d8\uaed8 'Could I borrow your pen, please?'\uc640 'May I use your pen?'\uc740 \ubaa8\ub450 \uc88b\ub2e4.",
+   "\uce5c\uad6c\uc5d0\uac8c 'Give me your pen, please.'\ucc98\ub7fc \uc9e7\uac8c \ub9d0\ud558\ub294 \uac83\ub3c4 \uac00\ub2a5\ud55c \uacbd\uc6b0\uac00 \uc788\uc5b4 \uc0ac\ub78c\uc774 \ubcf8\ub2e4."
   ],
   "hardCases": [
-   "친한 친구 사이라도 'Give me'로 시작하면 무례하게 들릴 수 있다. 어디까지가 친근함인지는 학생에 따라 다르다.",
-   "'Can I'는 선생님께도 흔히 쓰지만 'May I'가 더 정중하다. 둘 다 인정한다."
+   "\uce5c\ud55c \uce5c\uad6c \uc0ac\uc774\ub77c\ub3c4 'Give me'\ub85c \uc2dc\uc791\ud558\uba74 \ubb34\ub840\ud558\uac8c \ub4e4\ub9b4 \uc218 \uc788\ub2e4. \uc5b4\ub514\uae4c\uc9c0\uac00 \uce5c\uadfc\ud568\uc778\uc9c0\ub294 \ud559\uc0dd\uc5d0 \ub530\ub77c \ub2e4\ub974\ub2e4.",
+   "'Can I'\ub294 \uc120\uc0dd\ub2d8\uaed8\ub3c4 \ud754\ud788 \uc4f0\uc9c0\ub9cc 'May I'\uac00 \ub354 \uc815\uc911\ud558\ub2e4. \ub458 \ub2e4 \uc778\uc815\ud55c\ub2e4."
   ],
   "cautions": {
-   "language": "Could I, May I, Can I를 익히는 과정이므로 모두 인정했다. 'sir/ma'am' 같은 호칭은 격식 단서로 썼다.",
-   "culture": "한국어의 높임말과 영어의 정중한 표현은 방식이 다르다. 영어는 낱말(please, could)과 어조로 표현한다고 안내한다.",
-   "accessibility": "그림이 필요 없다. 호칭 'Ms.'는 '미즈'로 읽는다고 알려 줄 수 있다."
+   "language": "Could I, May I, Can I\ub97c \uc775\ud788\ub294 \uacfc\uc815\uc774\ubbc0\ub85c \ubaa8\ub450 \uc778\uc815\ud588\ub2e4. 'sir/ma'am' \uac19\uc740 \ud638\uce6d\uc740 \uaca9\uc2dd \ub2e8\uc11c\ub85c \uc37c\ub2e4.",
+   "culture": "\ud55c\uad6d\uc5b4\uc758 \ub192\uc784\ub9d0\uacfc \uc601\uc5b4\uc758 \uc815\uc911\ud55c \ud45c\ud604\uc740 \ubc29\uc2dd\uc774 \ub2e4\ub974\ub2e4. \uc601\uc5b4\ub294 \ub0b1\ub9d0(please, could)\uacfc \uc5b4\uc870\ub85c \ud45c\ud604\ud55c\ub2e4\uace0 \uc548\ub0b4\ud55c\ub2e4.",
+   "accessibility": "\uadf8\ub9bc\uc774 \ud544\uc694 \uc5c6\ub2e4. \ud638\uce6d 'Ms.'\ub294 '\ubbf8\uc988'\ub85c \uc77d\ub294\ub2e4\uace0 \uc54c\ub824 \uc904 \uc218 \uc788\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "공손한 낱말 유무",
-    "격식 표현 포함 여부"
+    "\uacf5\uc190\ud55c \ub0b1\ub9d0 \uc720\ubb34",
+    "\uaca9\uc2dd \ud45c\ud604 \ud3ec\ud568 \uc5ec\ubd80"
    ],
    "human": [
-    "듣는 사람에게 어울리는 정도",
-    "영어의 자연스러움"
+    "\ub4e3\ub294 \uc0ac\ub78c\uc5d0\uac8c \uc5b4\uc6b8\ub9ac\ub294 \uc815\ub3c4",
+    "\uc601\uc5b4\uc758 \uc790\uc5f0\uc2a4\ub7ec\uc6c0"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "x-e-e2-07",
   "subject": "english",
   "grade": "E2",
-  "topic": "공손한 말과 친근한 말",
+  "topic": "\uacf5\uc190\ud55c \ub9d0\uacfc \uce5c\uadfc\ud55c \ub9d0",
   "level": 1,
-  "levelLabel": "초등",
-  "title": "선생님의 인사에 어떤 대답이 어울릴까? 공손함의 한계 생각하기",
+  "levelLabel": "\ucd08\ub4f1",
+  "title": "\uc120\uc0dd\ub2d8\uc758 \uc778\uc0ac\uc5d0 \uc5b4\ub5a4 \ub300\ub2f5\uc774 \uc5b4\uc6b8\ub9b4\uae4c? \uacf5\uc190\ud568\uc758 \ud55c\uacc4 \uc0dd\uac01\ud558\uae30",
   "uiLang": "ko",
   "format": "judge-evidence-explain",
   "generative": false,
-  "goal": "선생님의 인사에 어울리는 대답을 고르고, '공손한 말이 항상 더 좋은가'라는 주장이 성립하지 않는 경우를 말한다.",
+  "goal": "\uc120\uc0dd\ub2d8\uc758 \uc778\uc0ac\uc5d0 \uc5b4\uc6b8\ub9ac\ub294 \ub300\ub2f5\uc744 \uace0\ub974\uace0, '\uacf5\uc190\ud55c \ub9d0\uc774 \ud56d\uc0c1 \ub354 \uc88b\uc740\uac00'\ub77c\ub294 \uc8fc\uc7a5\uc774 \uc131\ub9bd\ud558\uc9c0 \uc54a\ub294 \uacbd\uc6b0\ub97c \ub9d0\ud55c\ub2e4.",
   "thinking": [
-   "상대에 따라 대답 고르기",
-   "주장이 성립하지 않는 경우(반례) 찾기",
-   "이유를 설명하기"
+   "\uc0c1\ub300\uc5d0 \ub530\ub77c \ub300\ub2f5 \uace0\ub974\uae30",
+   "\uc8fc\uc7a5\uc774 \uc131\ub9bd\ud558\uc9c0 \uc54a\ub294 \uacbd\uc6b0(\ubc18\ub840) \ucc3e\uae30",
+   "\uc774\uc720\ub97c \uc124\uba85\ud558\uae30"
   ],
-  "differsFromPlain": "단순 연습은 인사말과 대답을 연결한다. 여기서는 어울리는 대답을 고른 뒤, '공손한 말이 항상 더 좋다'는 주장이 언제 성립하지 않는지 반례를 직접 생각해 쓴다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uc778\uc0ac\ub9d0\uacfc \ub300\ub2f5\uc744 \uc5f0\uacb0\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \uc5b4\uc6b8\ub9ac\ub294 \ub300\ub2f5\uc744 \uace0\ub978 \ub4a4, '\uacf5\uc190\ud55c \ub9d0\uc774 \ud56d\uc0c1 \ub354 \uc88b\ub2e4'\ub294 \uc8fc\uc7a5\uc774 \uc5b8\uc81c \uc131\ub9bd\ud558\uc9c0 \uc54a\ub294\uc9c0 \ubc18\ub840\ub97c \uc9c1\uc811 \uc0dd\uac01\ud574 \uc4f4\ub2e4.",
   "prerequisites": [
-   "How are you? 와 I'm fine. 같은 기본 인사"
+   "How are you? \uc640 I'm fine. \uac19\uc740 \uae30\ubcf8 \uc778\uc0ac"
   ],
   "minutes": 7,
   "curriculum": null,
-  "material": "선생님이 아침에 말해요. \"How are you today, Mina?\"\n\n친구 Jin은 이렇게 말했어요. \"영어는 공손하게 말하는 게 항상 더 좋아. 누구에게나 그렇게 말하면 돼.\"",
+  "material": "\uc120\uc0dd\ub2d8\uc774 \uc544\uce68\uc5d0 \ub9d0\ud574\uc694. \"How are you today, Mina?\"\n\n\uce5c\uad6c Jin\uc740 \uc774\ub807\uac8c \ub9d0\ud588\uc5b4\uc694. \"\uc601\uc5b4\ub294 \uacf5\uc190\ud558\uac8c \ub9d0\ud558\ub294 \uac8c \ud56d\uc0c1 \ub354 \uc88b\uc544. \ub204\uad6c\uc5d0\uac8c\ub098 \uadf8\ub807\uac8c \ub9d0\ud558\uba74 \ub3fc.\"",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
-    "prompt": "선생님의 질문에 어울리는 대답을 모두 고르세요.",
+    "prompt": "\uc120\uc0dd\ub2d8\uc758 \uc9c8\ubb38\uc5d0 \uc5b4\uc6b8\ub9ac\ub294 \ub300\ub2f5\uc744 \ubaa8\ub450 \uace0\ub974\uc138\uc694.",
     "options": [
      {
       "id": "a",
       "text": "Yo, what's up, Ms. Lee?",
-      "reveals": "친구끼리 쓰는 아주 편한 말투예요. 선생님께는 어울리지 않아요."
+      "reveals": "\uce5c\uad6c\ub07c\ub9ac \uc4f0\ub294 \uc544\uc8fc \ud3b8\ud55c \ub9d0\ud22c\uc608\uc694. \uc120\uc0dd\ub2d8\uaed8\ub294 \uc5b4\uc6b8\ub9ac\uc9c0 \uc54a\uc544\uc694."
      },
      {
       "id": "b",
       "text": "I'm fine, thank you. And you?",
-      "reveals": "thank you와 And you?로 공손하게 답했어요."
+      "reveals": "thank you\uc640 And you?\ub85c \uacf5\uc190\ud558\uac8c \ub2f5\ud588\uc5b4\uc694."
      },
      {
       "id": "c",
       "text": "Fine. Why do you ask?",
-      "reveals": "대답은 했지만 쌀쌀하게 들려서 선생님의 인사에 어울리지 않아요."
+      "reveals": "\ub300\ub2f5\uc740 \ud588\uc9c0\ub9cc \uc300\uc300\ud558\uac8c \ub4e4\ub824\uc11c \uc120\uc0dd\ub2d8\uc758 \uc778\uc0ac\uc5d0 \uc5b4\uc6b8\ub9ac\uc9c0 \uc54a\uc544\uc694."
      },
      {
       "id": "d",
       "text": "I'm good, thanks. And you?",
-      "reveals": "편하지만 thanks와 And you?가 있어 선생님께도 괜찮은 답이에요."
+      "reveals": "\ud3b8\ud558\uc9c0\ub9cc thanks\uc640 And you?\uac00 \uc788\uc5b4 \uc120\uc0dd\ub2d8\uaed8\ub3c4 \uad1c\ucc2e\uc740 \ub2f5\uc774\uc5d0\uc694."
      }
     ],
     "correct": [
      "b",
      "d"
     ],
-    "explain": "b와 d는 인사에 답하고 상대에게도 되묻는 말이라 선생님께 어울려요. a는 너무 편하고 c는 무례하게 들려요.",
+    "explain": "b\uc640 d\ub294 \uc778\uc0ac\uc5d0 \ub2f5\ud558\uace0 \uc0c1\ub300\uc5d0\uac8c\ub3c4 \ub418\ubb3b\ub294 \ub9d0\uc774\ub77c \uc120\uc0dd\ub2d8\uaed8 \uc5b4\uc6b8\ub824\uc694. a\ub294 \ub108\ubb34 \ud3b8\ud558\uace0 c\ub294 \ubb34\ub840\ud558\uac8c \ub4e4\ub824\uc694.",
     "hints": [
-     "대답이 질문에 맞는지, 그리고 선생님께 어울리는지 따로 확인해 보세요.",
-     "같은 뜻의 대답이라도 말투가 편한 것과 공손한 것을 구별해 보세요."
+     "\ub300\ub2f5\uc774 \uc9c8\ubb38\uc5d0 \ub9de\ub294\uc9c0, \uadf8\ub9ac\uace0 \uc120\uc0dd\ub2d8\uaed8 \uc5b4\uc6b8\ub9ac\ub294\uc9c0 \ub530\ub85c \ud655\uc778\ud574 \ubcf4\uc138\uc694.",
+     "\uac19\uc740 \ub73b\uc758 \ub300\ub2f5\uc774\ub77c\ub3c4 \ub9d0\ud22c\uac00 \ud3b8\ud55c \uac83\uacfc \uacf5\uc190\ud55c \uac83\uc744 \uad6c\ubcc4\ud574 \ubcf4\uc138\uc694."
     ],
     "multi": true,
     "scaffold": true
@@ -1127,27 +1119,27 @@
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "Jin의 말 \"공손하게 말하는 게 항상 더 좋아\"가 맞지 않는 경우를 예를 들어 써 보세요. (영어나 한국어 모두 괜찮아요)",
-    "placeholder": "예: ...",
+    "prompt": "Jin\uc758 \ub9d0 \"\uacf5\uc190\ud558\uac8c \ub9d0\ud558\ub294 \uac8c \ud56d\uc0c1 \ub354 \uc88b\uc544\"\uac00 \ub9de\uc9c0 \uc54a\ub294 \uacbd\uc6b0\ub97c \uc608\ub97c \ub4e4\uc5b4 \uc368 \ubcf4\uc138\uc694. (\uc601\uc5b4\ub098 \ud55c\uad6d\uc5b4 \ubaa8\ub450 \uad1c\ucc2e\uc544\uc694)",
+    "placeholder": "\uc608: ...",
     "minChars": 10,
     "checks": [
      {
       "id": "w1",
-      "label": "어떤 사람/상황인지 말했다(친구, 가족, 동물, 위급한 때 등)",
+      "label": "\uc5b4\ub5a4 \uc0ac\ub78c/\uc0c1\ud669\uc778\uc9c0 \ub9d0\ud588\ub2e4(\uce5c\uad6c, \uac00\uc871, \ub3d9\ubb3c, \uc704\uae09\ud55c \ub54c \ub4f1)",
       "mode": "any",
       "patterns": [
-       "친구",
-       "동생",
-       "가족",
-       "형|누나|언니|오빠",
-       "친한",
-       "강아지",
-       "고양이",
-       "아기",
-       "위급",
-       "불이",
-       "시끄",
-       "급할",
+       "\uce5c\uad6c",
+       "\ub3d9\uc0dd",
+       "\uac00\uc871",
+       "\ud615|\ub204\ub098|\uc5b8\ub2c8|\uc624\ube60",
+       "\uce5c\ud55c",
+       "\uac15\uc544\uc9c0",
+       "\uace0\uc591\uc774",
+       "\uc544\uae30",
+       "\uc704\uae09",
+       "\ubd88\uc774",
+       "\uc2dc\ub044",
+       "\uae09\ud560",
        "\\bfriends?\\b",
        "\\bbrother\\b",
        "\\bsister\\b",
@@ -1164,18 +1156,18 @@
      },
      {
       "id": "w2",
-      "label": "공손한 말이 어색하거나 안 맞는 이유를 말했다",
+      "label": "\uacf5\uc190\ud55c \ub9d0\uc774 \uc5b4\uc0c9\ud558\uac70\ub098 \uc548 \ub9de\ub294 \uc774\uc720\ub97c \ub9d0\ud588\ub2e4",
       "mode": "any",
       "patterns": [
-       "어색",
-       "딱딱",
-       "이상",
-       "거리",
-       "웃",
-       "부담",
-       "급",
-       "빨리",
-       "시간",
+       "\uc5b4\uc0c9",
+       "\ub531\ub531",
+       "\uc774\uc0c1",
+       "\uac70\ub9ac",
+       "\uc6c3",
+       "\ubd80\ub2f4",
+       "\uae09",
+       "\ube68\ub9ac",
+       "\uc2dc\uac04",
        "\\btoo formal\\b",
        "\\bstrange\\b",
        "\\bfunny\\b",
@@ -1195,109 +1187,109 @@
      }
     ],
     "selfAssess": [
-     "내가 쓴 예에서 공손한 말이 왜 맞지 않는지 말했나요?",
-     "'항상'이라는 주장을 깨는 예가 하나라도 있나요?"
+     "\ub0b4\uac00 \uc4f4 \uc608\uc5d0\uc11c \uacf5\uc190\ud55c \ub9d0\uc774 \uc65c \ub9de\uc9c0 \uc54a\ub294\uc9c0 \ub9d0\ud588\ub098\uc694?",
+     "'\ud56d\uc0c1'\uc774\ub77c\ub294 \uc8fc\uc7a5\uc744 \uae68\ub294 \uc608\uac00 \ud558\ub098\ub77c\ub3c4 \uc788\ub098\uc694?"
     ],
     "modelAnswers": [
      {
-      "text": "친한 친구에게 \"I would be delighted to\"처럼 말하면 너무 딱딱하고 어색해요."
+      "text": "\uce5c\ud55c \uce5c\uad6c\uc5d0\uac8c \"I would be delighted to\"\ucc98\ub7fc \ub9d0\ud558\uba74 \ub108\ubb34 \ub531\ub531\ud558\uace0 \uc5b4\uc0c9\ud574\uc694."
      },
      {
       "text": "With my best friend, \"Would you mind opening the window?\" sounds too formal and funny. Friends say \"Can you open it?\"",
-      "note": "친구에게 쓰는 말투를 예로 듦."
+      "note": "\uce5c\uad6c\uc5d0\uac8c \uc4f0\ub294 \ub9d0\ud22c\ub97c \uc608\ub85c \ub4e6."
      },
      {
       "text": "In a fire you shout \"Help!\" not \"Excuse me, could you please help?\" There is no time."
      },
      {
-      "text": "강아지에게 존댓말을 쓰면 이상해요."
+      "text": "\uac15\uc544\uc9c0\uc5d0\uac8c \uc874\ub313\ub9d0\uc744 \uc4f0\uba74 \uc774\uc0c1\ud574\uc694."
      }
     ],
     "badAnswers": [
      {
-      "text": "공손한 말이 항상 좋아요.",
-      "why": "주장을 그대로 받아들였다."
+      "text": "\uacf5\uc190\ud55c \ub9d0\uc774 \ud56d\uc0c1 \uc88b\uc544\uc694.",
+      "why": "\uc8fc\uc7a5\uc744 \uadf8\ub300\ub85c \ubc1b\uc544\ub4e4\uc600\ub2e4."
      },
      {
-      "text": "친구는 좋아요.",
-      "why": "이유가 없다."
+      "text": "\uce5c\uad6c\ub294 \uc88b\uc544\uc694.",
+      "why": "\uc774\uc720\uac00 \uc5c6\ub2e4."
      }
     ],
-    "humanReview": "예가 실제로 주장을 깨는지, 이유가 적절한지는 사람이 본다. 자동 점검은 사람/상황과 이유 낱말의 유무만 본다.",
+    "humanReview": "\uc608\uac00 \uc2e4\uc81c\ub85c \uc8fc\uc7a5\uc744 \uae68\ub294\uc9c0, \uc774\uc720\uac00 \uc801\uc808\ud55c\uc9c0\ub294 \uc0ac\ub78c\uc774 \ubcf8\ub2e4. \uc790\ub3d9 \uc810\uac80\uc740 \uc0ac\ub78c/\uc0c1\ud669\uacfc \uc774\uc720 \ub0b1\ub9d0\uc758 \uc720\ubb34\ub9cc \ubcf8\ub2e4.",
     "hints": [
-     "공손한 말을 쓰면 어색해지는 상대나 상황을 하나 떠올려 보세요.",
-     "그 상대에게 공손한 말을 쓰면 어떤 느낌이 들지 써 보세요."
+     "\uacf5\uc190\ud55c \ub9d0\uc744 \uc4f0\uba74 \uc5b4\uc0c9\ud574\uc9c0\ub294 \uc0c1\ub300\ub098 \uc0c1\ud669\uc744 \ud558\ub098 \ub5a0\uc62c\ub824 \ubcf4\uc138\uc694.",
+     "\uadf8 \uc0c1\ub300\uc5d0\uac8c \uacf5\uc190\ud55c \ub9d0\uc744 \uc4f0\uba74 \uc5b4\ub5a4 \ub290\ub08c\uc774 \ub4e4\uc9c0 \uc368 \ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "상대에 맞는 대답",
-    "full": "선생님께 어울리는 대답(b, d)을 고르고 너무 편한 a와 무례한 c를 거름",
-    "partial": "하나만 고름",
-    "none": "부적절한 대답을 고름"
+    "criterion": "\uc0c1\ub300\uc5d0 \ub9de\ub294 \ub300\ub2f5",
+    "full": "\uc120\uc0dd\ub2d8\uaed8 \uc5b4\uc6b8\ub9ac\ub294 \ub300\ub2f5(b, d)\uc744 \uace0\ub974\uace0 \ub108\ubb34 \ud3b8\ud55c a\uc640 \ubb34\ub840\ud55c c\ub97c \uac70\ub984",
+    "partial": "\ud558\ub098\ub9cc \uace0\ub984",
+    "none": "\ubd80\uc801\uc808\ud55c \ub300\ub2f5\uc744 \uace0\ub984"
    },
    {
-    "criterion": "주장 검토",
-    "full": "친한 사람 등 구체적 예와 어색한 이유로 '항상'을 깸",
-    "partial": "예는 있으나 이유가 없음",
-    "none": "주장을 받아들임"
+    "criterion": "\uc8fc\uc7a5 \uac80\ud1a0",
+    "full": "\uce5c\ud55c \uc0ac\ub78c \ub4f1 \uad6c\uccb4\uc801 \uc608\uc640 \uc5b4\uc0c9\ud55c \uc774\uc720\ub85c '\ud56d\uc0c1'\uc744 \uae78",
+    "partial": "\uc608\ub294 \uc788\uc73c\ub098 \uc774\uc720\uac00 \uc5c6\uc74c",
+    "none": "\uc8fc\uc7a5\uc744 \ubc1b\uc544\ub4e4\uc784"
    }
   ],
   "alternatives": [
-   "가족이나 동생에게 지나치게 공손한 말을 쓰면 낯설다는 답도 좋다.",
-   "친구에게도 처음 만난 사이라면 공손한 말이 어울린다는 보충도 좋다."
+   "\uac00\uc871\uc774\ub098 \ub3d9\uc0dd\uc5d0\uac8c \uc9c0\ub098\uce58\uac8c \uacf5\uc190\ud55c \ub9d0\uc744 \uc4f0\uba74 \ub0af\uc124\ub2e4\ub294 \ub2f5\ub3c4 \uc88b\ub2e4.",
+   "\uce5c\uad6c\uc5d0\uac8c\ub3c4 \ucc98\uc74c \ub9cc\ub09c \uc0ac\uc774\ub77c\uba74 \uacf5\uc190\ud55c \ub9d0\uc774 \uc5b4\uc6b8\ub9b0\ub2e4\ub294 \ubcf4\ucda9\ub3c4 \uc88b\ub2e4."
   ],
   "hardCases": [
-   "'thanks'가 선생님께 편하게 들릴 수 있다는 의견이 있어, d는 정답으로 인정하되 b가 더 정중하다고 안내한다.",
-   "한국어 높임말에 익숙한 학생이 영어에도 같은 틀을 적용해 오답을 낼 수 있다."
+   "'thanks'\uac00 \uc120\uc0dd\ub2d8\uaed8 \ud3b8\ud558\uac8c \ub4e4\ub9b4 \uc218 \uc788\ub2e4\ub294 \uc758\uacac\uc774 \uc788\uc5b4, d\ub294 \uc815\ub2f5\uc73c\ub85c \uc778\uc815\ud558\ub418 b\uac00 \ub354 \uc815\uc911\ud558\ub2e4\uace0 \uc548\ub0b4\ud55c\ub2e4.",
+   "\ud55c\uad6d\uc5b4 \ub192\uc784\ub9d0\uc5d0 \uc775\uc219\ud55c \ud559\uc0dd\uc774 \uc601\uc5b4\uc5d0\ub3c4 \uac19\uc740 \ud2c0\uc744 \uc801\uc6a9\ud574 \uc624\ub2f5\uc744 \ub0bc \uc218 \uc788\ub2e4."
   ],
   "cautions": {
-   "language": "Yo, what's up은 비속어에 가까운 인사라서 선생님께는 어울리지 않는다는 점을 설명해 준다.",
-   "culture": "한국에서는 선생님께 높임말을 쓰므로, 영어의 두 가지 말투를 높임말·반말에 대응해 설명하면 이해하기 쉽다.",
-   "accessibility": "그림이 필요 없다. 'Ms.'는 '미즈'로 읽는다고 안내한다."
+   "language": "Yo, what's up\uc740 \ube44\uc18d\uc5b4\uc5d0 \uac00\uae4c\uc6b4 \uc778\uc0ac\ub77c\uc11c \uc120\uc0dd\ub2d8\uaed8\ub294 \uc5b4\uc6b8\ub9ac\uc9c0 \uc54a\ub294\ub2e4\ub294 \uc810\uc744 \uc124\uba85\ud574 \uc900\ub2e4.",
+   "culture": "\ud55c\uad6d\uc5d0\uc11c\ub294 \uc120\uc0dd\ub2d8\uaed8 \ub192\uc784\ub9d0\uc744 \uc4f0\ubbc0\ub85c, \uc601\uc5b4\uc758 \ub450 \uac00\uc9c0 \ub9d0\ud22c\ub97c \ub192\uc784\ub9d0\u00b7\ubc18\ub9d0\uc5d0 \ub300\uc751\ud574 \uc124\uba85\ud558\uba74 \uc774\ud574\ud558\uae30 \uc27d\ub2e4.",
+   "accessibility": "\uadf8\ub9bc\uc774 \ud544\uc694 \uc5c6\ub2e4. 'Ms.'\ub294 '\ubbf8\uc988'\ub85c \uc77d\ub294\ub2e4\uace0 \uc548\ub0b4\ud55c\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "복수 선택 정답",
-    "낱말 유무"
+    "\ubcf5\uc218 \uc120\ud0dd \uc815\ub2f5",
+    "\ub0b1\ub9d0 \uc720\ubb34"
    ],
    "human": [
-    "반례가 주장을 깨는지",
-    "이유의 적절성"
+    "\ubc18\ub840\uac00 \uc8fc\uc7a5\uc744 \uae68\ub294\uc9c0",
+    "\uc774\uc720\uc758 \uc801\uc808\uc131"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "x-e-e2-08",
   "subject": "english",
   "grade": "E2",
-  "topic": "어울리지 않는 문장",
+  "topic": "\uc5b4\uc6b8\ub9ac\uc9c0 \uc54a\ub294 \ubb38\uc7a5",
   "level": 1,
-  "levelLabel": "초등",
-  "title": "Coco 이야기에서 어울리지 않는 문장 찾아 고치기",
+  "levelLabel": "\ucd08\ub4f1",
+  "title": "Coco \uc774\uc57c\uae30\uc5d0\uc11c \uc5b4\uc6b8\ub9ac\uc9c0 \uc54a\ub294 \ubb38\uc7a5 \ucc3e\uc544 \uace0\uce58\uae30",
   "uiLang": "ko",
   "format": "find-error-fix",
   "generative": true,
-  "goal": "다섯 문장 중 앞뒤 근거와 모순되는 한 문장을 찾고, 이야기에 어울리는 문장으로 고쳐 쓴다.",
+  "goal": "\ub2e4\uc12f \ubb38\uc7a5 \uc911 \uc55e\ub4a4 \uadfc\uac70\uc640 \ubaa8\uc21c\ub418\ub294 \ud55c \ubb38\uc7a5\uc744 \ucc3e\uace0, \uc774\uc57c\uae30\uc5d0 \uc5b4\uc6b8\ub9ac\ub294 \ubb38\uc7a5\uc73c\ub85c \uace0\uccd0 \uc4f4\ub2e4.",
   "thinking": [
-   "문장들끼리 비교해 모순 찾기",
-   "근거가 많은 쪽을 따르기",
-   "어울리는 문장 만들기"
+   "\ubb38\uc7a5\ub4e4\ub07c\ub9ac \ube44\uad50\ud574 \ubaa8\uc21c \ucc3e\uae30",
+   "\uadfc\uac70\uac00 \ub9ce\uc740 \ucabd\uc744 \ub530\ub974\uae30",
+   "\uc5b4\uc6b8\ub9ac\ub294 \ubb38\uc7a5 \ub9cc\ub4e4\uae30"
   ],
-  "differsFromPlain": "단순 연습은 주제와 다른 문장을 고른다. 여기서는 주제는 같지만 다른 문장들과 부딪치는 문장을 찾아야 하므로, 여러 문장을 비교해 어느 문장이 틀렸는지 근거를 따져 본다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uc8fc\uc81c\uc640 \ub2e4\ub978 \ubb38\uc7a5\uc744 \uace0\ub978\ub2e4. \uc5ec\uae30\uc11c\ub294 \uc8fc\uc81c\ub294 \uac19\uc9c0\ub9cc \ub2e4\ub978 \ubb38\uc7a5\ub4e4\uacfc \ubd80\ub52a\uce58\ub294 \ubb38\uc7a5\uc744 \ucc3e\uc544\uc57c \ud558\ubbc0\ub85c, \uc5ec\ub7ec \ubb38\uc7a5\uc744 \ube44\uad50\ud574 \uc5b4\ub290 \ubb38\uc7a5\uc774 \ud2c0\ub838\ub294\uc9c0 \uadfc\uac70\ub97c \ub530\uc838 \ubcf8\ub2e4.",
   "prerequisites": [
-   "big, small, brown, white 같은 쉬운 형용사"
+   "big, small, brown, white \uac19\uc740 \uc26c\uc6b4 \ud615\uc6a9\uc0ac"
   ],
   "minutes": 7,
   "curriculum": null,
-  "material": "아래는 반려견 Coco를 소개하는 짧은 글이에요. 한 문장이 글의 다른 문장들과 어울리지 않아요.",
+  "material": "\uc544\ub798\ub294 \ubc18\ub824\uacac Coco\ub97c \uc18c\uac1c\ud558\ub294 \uc9e7\uc740 \uae00\uc774\uc5d0\uc694. \ud55c \ubb38\uc7a5\uc774 \uae00\uc758 \ub2e4\ub978 \ubb38\uc7a5\ub4e4\uacfc \uc5b4\uc6b8\ub9ac\uc9c0 \uc54a\uc544\uc694.",
   "steps": [
    {
     "id": "s1",
     "kind": "pickLine",
-    "prompt": "글의 다른 문장들과 어울리지 않는 문장을 고르세요.",
+    "prompt": "\uae00\uc758 \ub2e4\ub978 \ubb38\uc7a5\ub4e4\uacfc \uc5b4\uc6b8\ub9ac\uc9c0 \uc54a\ub294 \ubb38\uc7a5\uc744 \uace0\ub974\uc138\uc694.",
     "lines": [
      "I have a dog named Coco.",
      "She is white and very small.",
@@ -1308,22 +1300,22 @@
     "wrong": [
      3
     ],
-    "explain": "2번째 줄과 3번째 줄은 Coco가 아주 작다고 말해요. 4번째 줄은 Coco가 크고 갈색이라고 해서 두 줄과 부딪쳐요. 1번째와 5번째 줄은 Coco의 이야기와 맞아요.",
+    "explain": "2\ubc88\uc9f8 \uc904\uacfc 3\ubc88\uc9f8 \uc904\uc740 Coco\uac00 \uc544\uc8fc \uc791\ub2e4\uace0 \ub9d0\ud574\uc694. 4\ubc88\uc9f8 \uc904\uc740 Coco\uac00 \ud06c\uace0 \uac08\uc0c9\uc774\ub77c\uace0 \ud574\uc11c \ub450 \uc904\uacfc \ubd80\ub52a\uccd0\uc694. 1\ubc88\uc9f8\uc640 5\ubc88\uc9f8 \uc904\uc740 Coco\uc758 \uc774\uc57c\uae30\uc640 \ub9de\uc544\uc694.",
     "hints": [
-     "Coco의 생김새를 말하는 줄만 따로 모아 비교해 보세요.",
-     "서로 부딪치는 줄이 있으면, 그 말을 뒷받침하는 줄이 더 많은 쪽을 믿어 보세요."
+     "Coco\uc758 \uc0dd\uae40\uc0c8\ub97c \ub9d0\ud558\ub294 \uc904\ub9cc \ub530\ub85c \ubaa8\uc544 \ube44\uad50\ud574 \ubcf4\uc138\uc694.",
+     "\uc11c\ub85c \ubd80\ub52a\uce58\ub294 \uc904\uc774 \uc788\uc73c\uba74, \uadf8 \ub9d0\uc744 \ub4b7\ubc1b\uce68\ud558\ub294 \uc904\uc774 \ub354 \ub9ce\uc740 \ucabd\uc744 \ubbff\uc5b4 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "그 문장을 Coco 이야기에 어울리게 영어로 새로 써 보세요.",
-    "placeholder": "예: Coco likes ...",
+    "prompt": "\uadf8 \ubb38\uc7a5\uc744 Coco \uc774\uc57c\uae30\uc5d0 \uc5b4\uc6b8\ub9ac\uac8c \uc601\uc5b4\ub85c \uc0c8\ub85c \uc368 \ubcf4\uc138\uc694.",
+    "placeholder": "\uc608: Coco likes ...",
     "minChars": 10,
     "checks": [
      {
       "id": "w1",
-      "label": "Coco 또는 she/her를 말한다",
+      "label": "Coco \ub610\ub294 she/her\ub97c \ub9d0\ud55c\ub2e4",
       "mode": "any",
       "patterns": [
        "\\bcoco\\b",
@@ -1334,16 +1326,16 @@
      },
      {
       "id": "w2",
-      "label": "'크다/갈색'이라고 말하는 문장이 아니다",
+      "label": "'\ud06c\ub2e4/\uac08\uc0c9'\uc774\ub77c\uace0 \ub9d0\ud558\ub294 \ubb38\uc7a5\uc774 \uc544\ub2c8\ub2e4",
       "mode": "none",
       "patterns": [
-       "(?<!not\\s)(?<!n['’]t\\s)\\b(?:big|large|brown)\\b"
+       "(?<!not\\s)(?<!n['\u2019]t\\s)\\b(?:big|large|brown)\\b"
       ]
      }
     ],
     "selfAssess": [
-     "새 문장이 앞의 문장들과 부딪치지 않는지 확인했나요?",
-     "Coco에 대한 새 정보가 들어 있나요?"
+     "\uc0c8 \ubb38\uc7a5\uc774 \uc55e\uc758 \ubb38\uc7a5\ub4e4\uacfc \ubd80\ub52a\uce58\uc9c0 \uc54a\ub294\uc9c0 \ud655\uc778\ud588\ub098\uc694?",
+     "Coco\uc5d0 \ub300\ud55c \uc0c8 \uc815\ubcf4\uac00 \ub4e4\uc5b4 \uc788\ub098\uc694?"
     ],
     "modelAnswers": [
      {
@@ -1351,129 +1343,130 @@
      },
      {
       "text": "She likes bones and sleeps on my bed.",
-      "note": "Coco에 대한 새 정보를 줌."
+      "note": "Coco\uc5d0 \ub300\ud55c \uc0c8 \uc815\ubcf4\ub97c \uc90c."
      }
     ],
     "badAnswers": [
      {
       "text": "Coco is big and brown.",
-      "why": "원래 틀린 문장 그대로다."
+      "why": "\uc6d0\ub798 \ud2c0\ub9b0 \ubb38\uc7a5 \uadf8\ub300\ub85c\ub2e4."
      },
      {
       "text": "I like pizza.",
-      "why": "Coco 이야기와 상관없다."
+      "why": "Coco \uc774\uc57c\uae30\uc640 \uc0c1\uad00\uc5c6\ub2e4."
      }
     ],
-    "humanReview": "고쳐 쓴 문장이 앞뒤와 자연스럽게 이어지는지, 영어의 자연스러움은 사람이 본다.",
+    "humanReview": "\uace0\uccd0 \uc4f4 \ubb38\uc7a5\uc774 \uc55e\ub4a4\uc640 \uc790\uc5f0\uc2a4\ub7fd\uac8c \uc774\uc5b4\uc9c0\ub294\uc9c0, \uc601\uc5b4\uc758 \uc790\uc5f0\uc2a4\ub7ec\uc6c0\uc740 \uc0ac\ub78c\uc774 \ubcf8\ub2e4.",
     "hints": [
-     "Coco에 대해 앞에서 말하지 않은 사실을 하나 떠올려 보세요.",
-     "She나 Coco로 시작하는 짧은 문장을 써 보세요."
+     "Coco\uc5d0 \ub300\ud574 \uc55e\uc5d0\uc11c \ub9d0\ud558\uc9c0 \uc54a\uc740 \uc0ac\uc2e4\uc744 \ud558\ub098 \ub5a0\uc62c\ub824 \ubcf4\uc138\uc694.",
+     "She\ub098 Coco\ub85c \uc2dc\uc791\ud558\ub294 \uc9e7\uc740 \ubb38\uc7a5\uc744 \uc368 \ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "어울리지 않는 문장 찾기",
-    "full": "모순되는 4번째 문장을 찾고 2·3번째 줄을 근거로 듦",
-    "partial": "찾았지만 근거가 없음",
-    "none": "다른 줄을 고름"
+    "criterion": "\uc5b4\uc6b8\ub9ac\uc9c0 \uc54a\ub294 \ubb38\uc7a5 \ucc3e\uae30",
+    "full": "\ubaa8\uc21c\ub418\ub294 4\ubc88\uc9f8 \ubb38\uc7a5\uc744 \ucc3e\uace0 2\u00b73\ubc88\uc9f8 \uc904\uc744 \uadfc\uac70\ub85c \ub4e6",
+    "partial": "\ucc3e\uc558\uc9c0\ub9cc \uadfc\uac70\uac00 \uc5c6\uc74c",
+    "none": "\ub2e4\ub978 \uc904\uc744 \uace0\ub984"
    },
    {
-    "criterion": "고쳐 쓰기",
-    "full": "Coco에게 어울리는 새 정보를 담은 영어 문장을 씀",
-    "partial": "어울리지만 영어가 어색함",
-    "none": "여전히 부딪치거나 상관없음"
+    "criterion": "\uace0\uccd0 \uc4f0\uae30",
+    "full": "Coco\uc5d0\uac8c \uc5b4\uc6b8\ub9ac\ub294 \uc0c8 \uc815\ubcf4\ub97c \ub2f4\uc740 \uc601\uc5b4 \ubb38\uc7a5\uc744 \uc500",
+    "partial": "\uc5b4\uc6b8\ub9ac\uc9c0\ub9cc \uc601\uc5b4\uac00 \uc5b4\uc0c9\ud568",
+    "none": "\uc5ec\uc804\ud788 \ubd80\ub52a\uce58\uac70\ub098 \uc0c1\uad00\uc5c6\uc74c"
    }
   ],
   "alternatives": [
-   "'Coco is small and white.'처럼 다른 줄을 되풀이하는 답도 어울리지만 새 정보가 없어 사람이 판단한다.",
-   "1번째 줄은 'a dog named Coco'로 소개 문장이라 어울린다."
+   "'Coco is small and white.'\ucc98\ub7fc \ub2e4\ub978 \uc904\uc744 \ub418\ud480\uc774\ud558\ub294 \ub2f5\ub3c4 \uc5b4\uc6b8\ub9ac\uc9c0\ub9cc \uc0c8 \uc815\ubcf4\uac00 \uc5c6\uc5b4 \uc0ac\ub78c\uc774 \ud310\ub2e8\ud55c\ub2e4.",
+   "1\ubc88\uc9f8 \uc904\uc740 'a dog named Coco'\ub85c \uc18c\uac1c \ubb38\uc7a5\uc774\ub77c \uc5b4\uc6b8\ub9b0\ub2e4."
   ],
   "hardCases": [
-   "첫 문장이 소개 문장이라 고르는 학생이 있다. 해설에서 이유를 안내한다.",
-   "'She is not big.'처럼 뜻이 맞는 부정문은 인정한다."
+   "\uccab \ubb38\uc7a5\uc774 \uc18c\uac1c \ubb38\uc7a5\uc774\ub77c \uace0\ub974\ub294 \ud559\uc0dd\uc774 \uc788\ub2e4. \ud574\uc124\uc5d0\uc11c \uc774\uc720\ub97c \uc548\ub0b4\ud55c\ub2e4.",
+   "'She is not big.'\ucc98\ub7fc \ub73b\uc774 \ub9de\ub294 \ubd80\uc815\ubb38\uc740 \uc778\uc815\ud55c\ub2e4."
   ],
   "cautions": {
-   "language": "big, small, brown처럼 쉬운 낱말만 썼다. 'smallest'는 2번째 줄과 함께 보면 뜻을 추측할 수 있다.",
-   "culture": "반려견 이야기는 흔하지만 개를 키우지 않거나 무서워하는 학생이 있을 수 있다.",
-   "accessibility": "그림 없이 글로만 썼고 색 단서가 없다."
+   "language": "big, small, brown\ucc98\ub7fc \uc26c\uc6b4 \ub0b1\ub9d0\ub9cc \uc37c\ub2e4. 'smallest'\ub294 2\ubc88\uc9f8 \uc904\uacfc \ud568\uaed8 \ubcf4\uba74 \ub73b\uc744 \ucd94\uce21\ud560 \uc218 \uc788\ub2e4.",
+   "culture": "\ubc18\ub824\uacac \uc774\uc57c\uae30\ub294 \ud754\ud558\uc9c0\ub9cc \uac1c\ub97c \ud0a4\uc6b0\uc9c0 \uc54a\uac70\ub098 \ubb34\uc11c\uc6cc\ud558\ub294 \ud559\uc0dd\uc774 \uc788\uc744 \uc218 \uc788\ub2e4.",
+   "accessibility": "\uadf8\ub9bc \uc5c6\uc774 \uae00\ub85c\ub9cc \uc37c\uace0 \uc0c9 \ub2e8\uc11c\uac00 \uc5c6\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "오류 줄의 위치",
-    "모순 낱말 유무"
+    "\uc624\ub958 \uc904\uc758 \uc704\uce58",
+    "\ubaa8\uc21c \ub0b1\ub9d0 \uc720\ubb34"
    ],
    "human": [
-    "고친 문장의 자연스러움"
+    "\uace0\uce5c \ubb38\uc7a5\uc758 \uc790\uc5f0\uc2a4\ub7ec\uc6c0"
    ]
-  }
+  },
+  "status": "reviewed-ai"
  },
  {
   "id": "x-e-e2-09",
   "subject": "english",
   "grade": "E2",
-  "topic": "어울리지 않는 문장",
+  "topic": "\uc5b4\uc6b8\ub9ac\uc9c0 \uc54a\ub294 \ubb38\uc7a5",
   "level": 1,
-  "levelLabel": "초등",
-  "title": "과일 이야기에서 어울리지 않는 문장 만들어 친구에게 내기",
+  "levelLabel": "\ucd08\ub4f1",
+  "title": "\uacfc\uc77c \uc774\uc57c\uae30\uc5d0\uc11c \uc5b4\uc6b8\ub9ac\uc9c0 \uc54a\ub294 \ubb38\uc7a5 \ub9cc\ub4e4\uc5b4 \uce5c\uad6c\uc5d0\uac8c \ub0b4\uae30",
   "uiLang": "ko",
   "format": "make-your-own",
   "generative": true,
-  "goal": "어울리지 않는 문장은 주제에 따라 정해진다는 것을 이해하고, 직접 주제 하나와 어울리지 않는 문장 하나를 만든다.",
+  "goal": "\uc5b4\uc6b8\ub9ac\uc9c0 \uc54a\ub294 \ubb38\uc7a5\uc740 \uc8fc\uc81c\uc5d0 \ub530\ub77c \uc815\ud574\uc9c4\ub2e4\ub294 \uac83\uc744 \uc774\ud574\ud558\uace0, \uc9c1\uc811 \uc8fc\uc81c \ud558\ub098\uc640 \uc5b4\uc6b8\ub9ac\uc9c0 \uc54a\ub294 \ubb38\uc7a5 \ud558\ub098\ub97c \ub9cc\ub4e0\ub2e4.",
   "thinking": [
-   "주제를 기준으로 문장 고르기",
-   "어울리지 않는 문장 만들기",
-   "자기가 만든 문제의 답을 밝히기"
+   "\uc8fc\uc81c\ub97c \uae30\uc900\uc73c\ub85c \ubb38\uc7a5 \uace0\ub974\uae30",
+   "\uc5b4\uc6b8\ub9ac\uc9c0 \uc54a\ub294 \ubb38\uc7a5 \ub9cc\ub4e4\uae30",
+   "\uc790\uae30\uac00 \ub9cc\ub4e0 \ubb38\uc81c\uc758 \ub2f5\uc744 \ubc1d\ud788\uae30"
   ],
-  "differsFromPlain": "단순 연습은 정해진 글에서 어울리지 않는 문장을 고른다. 여기서는 어울리지 않는 문장이 '주제를 무엇으로 정하느냐'에 달려 있음을 알고, 직접 네 문장과 답을 만들어 친구가 풀 수 있게 한다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uc815\ud574\uc9c4 \uae00\uc5d0\uc11c \uc5b4\uc6b8\ub9ac\uc9c0 \uc54a\ub294 \ubb38\uc7a5\uc744 \uace0\ub978\ub2e4. \uc5ec\uae30\uc11c\ub294 \uc5b4\uc6b8\ub9ac\uc9c0 \uc54a\ub294 \ubb38\uc7a5\uc774 '\uc8fc\uc81c\ub97c \ubb34\uc5c7\uc73c\ub85c \uc815\ud558\ub290\ub0d0'\uc5d0 \ub2ec\ub824 \uc788\uc74c\uc744 \uc54c\uace0, \uc9c1\uc811 \ub124 \ubb38\uc7a5\uacfc \ub2f5\uc744 \ub9cc\ub4e4\uc5b4 \uce5c\uad6c\uac00 \ud480 \uc218 \uc788\uac8c \ud55c\ub2e4.",
   "prerequisites": [
-   "I like ~. 와 ~ is/are ... 같은 쉬운 문장"
+   "I like ~. \uc640 ~ is/are ... \uac19\uc740 \uc26c\uc6b4 \ubb38\uc7a5"
   ],
   "minutes": 9,
   "curriculum": null,
-  "material": "친구에게 낼 '어울리지 않는 문장 찾기' 문제를 만들어 볼 거예요. 먼저 예를 하나 볼게요.\n\nI like apples. I like bananas. Grapes are sweet. ?",
+  "material": "\uce5c\uad6c\uc5d0\uac8c \ub0bc '\uc5b4\uc6b8\ub9ac\uc9c0 \uc54a\ub294 \ubb38\uc7a5 \ucc3e\uae30' \ubb38\uc81c\ub97c \ub9cc\ub4e4\uc5b4 \ubcfc \uac70\uc608\uc694. \uba3c\uc800 \uc608\ub97c \ud558\ub098 \ubcfc\uac8c\uc694.\n\nI like apples. I like bananas. Grapes are sweet. ?",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
-    "prompt": "네 번째 문장으로 어울리지 않는 것은 무엇일까요? (주제: 과일)",
+    "prompt": "\ub124 \ubc88\uc9f8 \ubb38\uc7a5\uc73c\ub85c \uc5b4\uc6b8\ub9ac\uc9c0 \uc54a\ub294 \uac83\uc740 \ubb34\uc5c7\uc77c\uae4c\uc694? (\uc8fc\uc81c: \uacfc\uc77c)",
     "options": [
      {
       "id": "a",
       "text": "Peaches are my favorite.",
-      "reveals": "복숭아는 과일이라 주제와 맞아요."
+      "reveals": "\ubcf5\uc22d\uc544\ub294 \uacfc\uc77c\uc774\ub77c \uc8fc\uc81c\uc640 \ub9de\uc544\uc694."
      },
      {
       "id": "b",
       "text": "I like oranges.",
-      "reveals": "오렌지도 과일이라 맞아요."
+      "reveals": "\uc624\ub80c\uc9c0\ub3c4 \uacfc\uc77c\uc774\ub77c \ub9de\uc544\uc694."
      },
      {
       "id": "c",
       "text": "I like carrots.",
-      "reveals": "당근은 과일이 아니에요. 주제를 '과일'로 볼 때 어울리지 않아요."
+      "reveals": "\ub2f9\uadfc\uc740 \uacfc\uc77c\uc774 \uc544\ub2c8\uc5d0\uc694. \uc8fc\uc81c\ub97c '\uacfc\uc77c'\ub85c \ubcfc \ub54c \uc5b4\uc6b8\ub9ac\uc9c0 \uc54a\uc544\uc694."
      }
     ],
     "correct": [
      "c"
     ],
-    "explain": "앞 세 문장은 모두 과일(apples, bananas, grapes)에 대해 말해요. 당근은 채소라 주제와 맞지 않아요. 주제를 '음식'으로 넓히면 당근도 어울릴 수 있어요. 어울리는지는 주제를 무엇으로 정하느냐에 달려 있어요.",
+    "explain": "\uc55e \uc138 \ubb38\uc7a5\uc740 \ubaa8\ub450 \uacfc\uc77c(apples, bananas, grapes)\uc5d0 \ub300\ud574 \ub9d0\ud574\uc694. \ub2f9\uadfc\uc740 \ucc44\uc18c\ub77c \uc8fc\uc81c\uc640 \ub9de\uc9c0 \uc54a\uc544\uc694. \uc8fc\uc81c\ub97c '\uc74c\uc2dd'\uc73c\ub85c \ub113\ud788\uba74 \ub2f9\uadfc\ub3c4 \uc5b4\uc6b8\ub9b4 \uc218 \uc788\uc5b4\uc694. \uc5b4\uc6b8\ub9ac\ub294\uc9c0\ub294 \uc8fc\uc81c\ub97c \ubb34\uc5c7\uc73c\ub85c \uc815\ud558\ub290\ub0d0\uc5d0 \ub2ec\ub824 \uc788\uc5b4\uc694.",
     "hints": [
-     "앞 세 문장의 공통 주제를 한 낱말로 말해 보세요.",
-     "그 주제에 들어가지 않는 문장이 있는지 확인해 보세요."
+     "\uc55e \uc138 \ubb38\uc7a5\uc758 \uacf5\ud1b5 \uc8fc\uc81c\ub97c \ud55c \ub0b1\ub9d0\ub85c \ub9d0\ud574 \ubcf4\uc138\uc694.",
+     "\uadf8 \uc8fc\uc81c\uc5d0 \ub4e4\uc5b4\uac00\uc9c0 \uc54a\ub294 \ubb38\uc7a5\uc774 \uc788\ub294\uc9c0 \ud655\uc778\ud574 \ubcf4\uc138\uc694."
     ],
     "scaffold": true
    },
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "친구에게 낼 문제를 만들어 보세요. ① 한 가지 주제에 어울리는 영어 문장 3개, ② 어울리지 않는 문장 1개(네 번째), ③ 마지막에 \"Odd one: 4.\"처럼 답을 써 주세요.",
-    "placeholder": "예: I have a cat. ...",
+    "prompt": "\uce5c\uad6c\uc5d0\uac8c \ub0bc \ubb38\uc81c\ub97c \ub9cc\ub4e4\uc5b4 \ubcf4\uc138\uc694. \u2460 \ud55c \uac00\uc9c0 \uc8fc\uc81c\uc5d0 \uc5b4\uc6b8\ub9ac\ub294 \uc601\uc5b4 \ubb38\uc7a5 3\uac1c, \u2461 \uc5b4\uc6b8\ub9ac\uc9c0 \uc54a\ub294 \ubb38\uc7a5 1\uac1c(\ub124 \ubc88\uc9f8), \u2462 \ub9c8\uc9c0\ub9c9\uc5d0 \"Odd one: 4.\"\ucc98\ub7fc \ub2f5\uc744 \uc368 \uc8fc\uc138\uc694.",
+    "placeholder": "\uc608: I have a cat. ...",
     "minChars": 40,
     "checks": [
      {
       "id": "w1",
-      "label": "문장이 4개 이상이다(마침표/물음표/느낌표 4개 이상)",
+      "label": "\ubb38\uc7a5\uc774 4\uac1c \uc774\uc0c1\uc774\ub2e4(\ub9c8\uce68\ud45c/\ubb3c\uc74c\ud45c/\ub290\ub08c\ud45c 4\uac1c \uc774\uc0c1)",
       "mode": "any",
       "patterns": [
        "(?:[^.!?]*[.!?]){4,}"
@@ -1481,7 +1474,7 @@
      },
      {
       "id": "w2",
-      "label": "답으로 어울리지 않는 문장의 번호(1~4)를 밝혔다",
+      "label": "\ub2f5\uc73c\ub85c \uc5b4\uc6b8\ub9ac\uc9c0 \uc54a\ub294 \ubb38\uc7a5\uc758 \ubc88\ud638(1~4)\ub97c \ubc1d\ud614\ub2e4",
       "mode": "any",
       "patterns": [
        "odd[^\\d]{0,25}\\b[1-4]\\b",
@@ -1490,146 +1483,147 @@
      }
     ],
     "selfAssess": [
-     "처음 세 문장의 주제가 하나로 분명한가요?",
-     "네 번째 문장은 다른 주제인데 형식은 비슷한가요?",
-     "친구가 풀면 어떤 단서로 답을 찾을까요?"
+     "\ucc98\uc74c \uc138 \ubb38\uc7a5\uc758 \uc8fc\uc81c\uac00 \ud558\ub098\ub85c \ubd84\uba85\ud55c\uac00\uc694?",
+     "\ub124 \ubc88\uc9f8 \ubb38\uc7a5\uc740 \ub2e4\ub978 \uc8fc\uc81c\uc778\ub370 \ud615\uc2dd\uc740 \ube44\uc2b7\ud55c\uac00\uc694?",
+     "\uce5c\uad6c\uac00 \ud480\uba74 \uc5b4\ub5a4 \ub2e8\uc11c\ub85c \ub2f5\uc744 \ucc3e\uc744\uae4c\uc694?"
     ],
     "modelAnswers": [
      {
       "text": "I have a cat. Her name is Nini. She likes milk. I like pizza. Odd one: 4.",
-      "note": "고양이 이야기에 음식 이야기가 섞였다."
+      "note": "\uace0\uc591\uc774 \uc774\uc57c\uae30\uc5d0 \uc74c\uc2dd \uc774\uc57c\uae30\uac00 \uc11e\uc600\ub2e4."
      },
      {
       "text": "It is Monday. I go to school. I read a book. Tigers are fast. Odd one: 4.",
-      "note": "학교 이야기에 호랑이 문장이 섞였다."
+      "note": "\ud559\uad50 \uc774\uc57c\uae30\uc5d0 \ud638\ub791\uc774 \ubb38\uc7a5\uc774 \uc11e\uc600\ub2e4."
      }
     ],
     "badAnswers": [
      {
       "text": "I have a cat.",
-      "why": "문장이 하나뿐이고 답이 없다."
+      "why": "\ubb38\uc7a5\uc774 \ud558\ub098\ubfd0\uc774\uace0 \ub2f5\uc774 \uc5c6\ub2e4."
      },
      {
       "text": "I have a cat. Her name is Nini. She likes milk. I like pizza.",
-      "why": "답(Odd one)이 없어 친구가 확인할 수 없다."
+      "why": "\ub2f5(Odd one)\uc774 \uc5c6\uc5b4 \uce5c\uad6c\uac00 \ud655\uc778\ud560 \uc218 \uc5c6\ub2e4."
      }
     ],
-    "humanReview": "처음 세 문장이 한 주제인지, 네 번째가 정말 어울리지 않는지, 문장이 자연스러운지는 사람이 본다. 자동 점검은 문장 수와 답 번호의 유무만 본다.",
+    "humanReview": "\ucc98\uc74c \uc138 \ubb38\uc7a5\uc774 \ud55c \uc8fc\uc81c\uc778\uc9c0, \ub124 \ubc88\uc9f8\uac00 \uc815\ub9d0 \uc5b4\uc6b8\ub9ac\uc9c0 \uc54a\ub294\uc9c0, \ubb38\uc7a5\uc774 \uc790\uc5f0\uc2a4\ub7ec\uc6b4\uc9c0\ub294 \uc0ac\ub78c\uc774 \ubcf8\ub2e4. \uc790\ub3d9 \uc810\uac80\uc740 \ubb38\uc7a5 \uc218\uc640 \ub2f5 \ubc88\ud638\uc758 \uc720\ubb34\ub9cc \ubcf8\ub2e4.",
     "hints": [
-     "하나의 주제(동물, 학교, 음식 등)를 정하고 그 주제 문장을 먼저 세 개 쓰세요.",
-     "네 번째에 다른 주제 문장을 쓰고 'Odd one: 4.'를 붙이세요."
+     "\ud558\ub098\uc758 \uc8fc\uc81c(\ub3d9\ubb3c, \ud559\uad50, \uc74c\uc2dd \ub4f1)\ub97c \uc815\ud558\uace0 \uadf8 \uc8fc\uc81c \ubb38\uc7a5\uc744 \uba3c\uc800 \uc138 \uac1c \uc4f0\uc138\uc694.",
+     "\ub124 \ubc88\uc9f8\uc5d0 \ub2e4\ub978 \uc8fc\uc81c \ubb38\uc7a5\uc744 \uc4f0\uace0 'Odd one: 4.'\ub97c \ubd99\uc774\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "주제의 일관성",
-    "full": "세 문장이 한 주제이고 네 번째가 분명히 어울리지 않음",
-    "partial": "주제가 흐릿하거나 네 번째도 어울림",
-    "none": "주제가 없음"
+    "criterion": "\uc8fc\uc81c\uc758 \uc77c\uad00\uc131",
+    "full": "\uc138 \ubb38\uc7a5\uc774 \ud55c \uc8fc\uc81c\uc774\uace0 \ub124 \ubc88\uc9f8\uac00 \ubd84\uba85\ud788 \uc5b4\uc6b8\ub9ac\uc9c0 \uc54a\uc74c",
+    "partial": "\uc8fc\uc81c\uac00 \ud750\ub9bf\ud558\uac70\ub098 \ub124 \ubc88\uc9f8\ub3c4 \uc5b4\uc6b8\ub9bc",
+    "none": "\uc8fc\uc81c\uac00 \uc5c6\uc74c"
    },
    {
-    "criterion": "문제의 완성",
-    "full": "네 문장과 답 번호가 모두 있어 친구가 풀 수 있음",
-    "partial": "답이나 문장 일부가 빠짐",
-    "none": "문제 형태가 아님"
+    "criterion": "\ubb38\uc81c\uc758 \uc644\uc131",
+    "full": "\ub124 \ubb38\uc7a5\uacfc \ub2f5 \ubc88\ud638\uac00 \ubaa8\ub450 \uc788\uc5b4 \uce5c\uad6c\uac00 \ud480 \uc218 \uc788\uc74c",
+    "partial": "\ub2f5\uc774\ub098 \ubb38\uc7a5 \uc77c\ubd80\uac00 \ube60\uc9d0",
+    "none": "\ubb38\uc81c \ud615\ud0dc\uac00 \uc544\ub2d8"
    }
   ],
   "alternatives": [
-   "다른 주제, 다른 순서(예: 2번째가 어울리지 않음)도 인정한다.",
-   "'Odd one: 3'처럼 번호만 써도 인정한다."
+   "\ub2e4\ub978 \uc8fc\uc81c, \ub2e4\ub978 \uc21c\uc11c(\uc608: 2\ubc88\uc9f8\uac00 \uc5b4\uc6b8\ub9ac\uc9c0 \uc54a\uc74c)\ub3c4 \uc778\uc815\ud55c\ub2e4.",
+   "'Odd one: 3'\ucc98\ub7fc \ubc88\ud638\ub9cc \uc368\ub3c4 \uc778\uc815\ud55c\ub2e4."
   ],
   "hardCases": [
-   "주제를 '음식'처럼 넓게 잡으면 어울리지 않는 문장을 정하기 어렵다. 그런 경우 사람이 주제를 줄여 보라고 안내한다.",
-   "네 번째가 겉보기엔 어울리지만 의미가 어긋나는 문제도 훌륭하지만 자동으로 가릴 수 없다."
+   "\uc8fc\uc81c\ub97c '\uc74c\uc2dd'\ucc98\ub7fc \ub113\uac8c \uc7a1\uc73c\uba74 \uc5b4\uc6b8\ub9ac\uc9c0 \uc54a\ub294 \ubb38\uc7a5\uc744 \uc815\ud558\uae30 \uc5b4\ub835\ub2e4. \uadf8\ub7f0 \uacbd\uc6b0 \uc0ac\ub78c\uc774 \uc8fc\uc81c\ub97c \uc904\uc5ec \ubcf4\ub77c\uace0 \uc548\ub0b4\ud55c\ub2e4.",
+   "\ub124 \ubc88\uc9f8\uac00 \uac89\ubcf4\uae30\uc5d4 \uc5b4\uc6b8\ub9ac\uc9c0\ub9cc \uc758\ubbf8\uac00 \uc5b4\uae0b\ub098\ub294 \ubb38\uc81c\ub3c4 \ud6cc\ub96d\ud558\uc9c0\ub9cc \uc790\ub3d9\uc73c\ub85c \uac00\ub9b4 \uc218 \uc5c6\ub2e4."
   ],
   "cautions": {
-   "language": "문장 수와 'Odd one'이라는 낱말만 점검해 학생이 다양한 문장을 쓸 수 있게 했다.",
-   "culture": "과일이나 반려동물처럼 문화 부담이 적은 주제를 예로 들었다. 학생이 다른 문화의 소재를 써도 인정한다.",
-   "accessibility": "그림 없이 글로만 썼고 색 단서가 없다."
+   "language": "\ubb38\uc7a5 \uc218\uc640 'Odd one'\uc774\ub77c\ub294 \ub0b1\ub9d0\ub9cc \uc810\uac80\ud574 \ud559\uc0dd\uc774 \ub2e4\uc591\ud55c \ubb38\uc7a5\uc744 \uc4f8 \uc218 \uc788\uac8c \ud588\ub2e4.",
+   "culture": "\uacfc\uc77c\uc774\ub098 \ubc18\ub824\ub3d9\ubb3c\ucc98\ub7fc \ubb38\ud654 \ubd80\ub2f4\uc774 \uc801\uc740 \uc8fc\uc81c\ub97c \uc608\ub85c \ub4e4\uc5c8\ub2e4. \ud559\uc0dd\uc774 \ub2e4\ub978 \ubb38\ud654\uc758 \uc18c\uc7ac\ub97c \uc368\ub3c4 \uc778\uc815\ud55c\ub2e4.",
+   "accessibility": "\uadf8\ub9bc \uc5c6\uc774 \uae00\ub85c\ub9cc \uc37c\uace0 \uc0c9 \ub2e8\uc11c\uac00 \uc5c6\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "문장 수와 번호 유무"
+    "\ubb38\uc7a5 \uc218\uc640 \ubc88\ud638 \uc720\ubb34"
    ],
    "human": [
-    "주제와 어울림의 판단",
-    "영어 자연스러움"
+    "\uc8fc\uc81c\uc640 \uc5b4\uc6b8\ub9bc\uc758 \ud310\ub2e8",
+    "\uc601\uc5b4 \uc790\uc5f0\uc2a4\ub7ec\uc6c0"
    ]
-  }
+  },
+  "status": "reviewed-ai"
  },
  {
   "id": "x-e-e2-10",
   "subject": "english",
   "grade": "E2",
-  "topic": "유용한 질문 하나 하기",
+  "topic": "\uc720\uc6a9\ud55c \uc9c8\ubb38 \ud558\ub098 \ud558\uae30",
   "level": 1,
-  "levelLabel": "초등",
-  "title": "문자 메시지에서 빠진 정보를 알아내는 질문 하나 만들기",
+  "levelLabel": "\ucd08\ub4f1",
+  "title": "\ubb38\uc790 \uba54\uc2dc\uc9c0\uc5d0\uc11c \ube60\uc9c4 \uc815\ubcf4\ub97c \uc54c\uc544\ub0b4\ub294 \uc9c8\ubb38 \ud558\ub098 \ub9cc\ub4e4\uae30",
   "uiLang": "ko",
   "format": "choose-needed-info",
   "generative": true,
-  "goal": "메시지에 없는 정보가 무엇인지 찾아, 가장 쓸모 있는 질문 하나를 고르고 새 상황에서 직접 질문을 만든다.",
+  "goal": "\uba54\uc2dc\uc9c0\uc5d0 \uc5c6\ub294 \uc815\ubcf4\uac00 \ubb34\uc5c7\uc778\uc9c0 \ucc3e\uc544, \uac00\uc7a5 \uc4f8\ubaa8 \uc788\ub294 \uc9c8\ubb38 \ud558\ub098\ub97c \uace0\ub974\uace0 \uc0c8 \uc0c1\ud669\uc5d0\uc11c \uc9c1\uc811 \uc9c8\ubb38\uc744 \ub9cc\ub4e0\ub2e4.",
   "thinking": [
-   "빠진 정보 찾기",
-   "질문의 쓸모 비교하기",
-   "질문 하나로 필요한 정보 얻기"
+   "\ube60\uc9c4 \uc815\ubcf4 \ucc3e\uae30",
+   "\uc9c8\ubb38\uc758 \uc4f8\ubaa8 \ube44\uad50\ud558\uae30",
+   "\uc9c8\ubb38 \ud558\ub098\ub85c \ud544\uc694\ud55c \uc815\ubcf4 \uc5bb\uae30"
   ],
-  "differsFromPlain": "단순 연습은 What, Where로 시작하는 질문을 만든다. 여기서는 메시지에서 이미 있는 정보와 빠진 정보를 먼저 가려 낸 뒤, 빠진 정보를 한 번에 알아낼 수 있는 질문 하나를 직접 만든다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 What, Where\ub85c \uc2dc\uc791\ud558\ub294 \uc9c8\ubb38\uc744 \ub9cc\ub4e0\ub2e4. \uc5ec\uae30\uc11c\ub294 \uba54\uc2dc\uc9c0\uc5d0\uc11c \uc774\ubbf8 \uc788\ub294 \uc815\ubcf4\uc640 \ube60\uc9c4 \uc815\ubcf4\ub97c \uba3c\uc800 \uac00\ub824 \ub0b8 \ub4a4, \ube60\uc9c4 \uc815\ubcf4\ub97c \ud55c \ubc88\uc5d0 \uc54c\uc544\ub0bc \uc218 \uc788\ub294 \uc9c8\ubb38 \ud558\ub098\ub97c \uc9c1\uc811 \ub9cc\ub4e0\ub2e4.",
   "prerequisites": [
-   "When, Where, What time 같은 의문사",
-   "질문에 ?를 쓰는 것"
+   "When, Where, What time \uac19\uc740 \uc758\ubb38\uc0ac",
+   "\uc9c8\ubb38\uc5d0 ?\ub97c \uc4f0\ub294 \uac83"
   ],
   "minutes": 8,
   "curriculum": null,
-  "material": "친구 Sora가 문자를 보냈어요.\n\n\"Let's play tomorrow! Bring a ball.\"\n\n나는 가고 싶지만 몇 가지를 알 수 없어요.",
+  "material": "\uce5c\uad6c Sora\uac00 \ubb38\uc790\ub97c \ubcf4\ub0c8\uc5b4\uc694.\n\n\"Let's play tomorrow! Bring a ball.\"\n\n\ub098\ub294 \uac00\uace0 \uc2f6\uc9c0\ub9cc \uba87 \uac00\uc9c0\ub97c \uc54c \uc218 \uc5c6\uc5b4\uc694.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
-    "prompt": "Sora에게 물어볼 질문 하나로 가장 쓸모 있는 것을 고르세요.",
+    "prompt": "Sora\uc5d0\uac8c \ubb3c\uc5b4\ubcfc \uc9c8\ubb38 \ud558\ub098\ub85c \uac00\uc7a5 \uc4f8\ubaa8 \uc788\ub294 \uac83\uc744 \uace0\ub974\uc138\uc694.",
     "options": [
      {
       "id": "a",
       "text": "Where and when do we meet?",
-      "reveals": "장소와 시각, 만나기 위해 꼭 필요한 정보 두 가지를 한 번에 묻는 질문이에요."
+      "reveals": "\uc7a5\uc18c\uc640 \uc2dc\uac01, \ub9cc\ub098\uae30 \uc704\ud574 \uaf2d \ud544\uc694\ud55c \uc815\ubcf4 \ub450 \uac00\uc9c0\ub97c \ud55c \ubc88\uc5d0 \ubb3b\ub294 \uc9c8\ubb38\uc774\uc5d0\uc694."
      },
      {
       "id": "b",
       "text": "What kind of ball should I bring?",
-      "reveals": "공을 가져오라는 말은 이미 있어요. 공의 종류는 있으면 좋지만 나머지 필요한 정보를 알려 주지는 않아요."
+      "reveals": "\uacf5\uc744 \uac00\uc838\uc624\ub77c\ub294 \ub9d0\uc740 \uc774\ubbf8 \uc788\uc5b4\uc694. \uacf5\uc758 \uc885\ub958\ub294 \uc788\uc73c\uba74 \uc88b\uc9c0\ub9cc \ub098\uba38\uc9c0 \ud544\uc694\ud55c \uc815\ubcf4\ub97c \uc54c\ub824 \uc8fc\uc9c0\ub294 \uc54a\uc544\uc694."
      },
      {
       "id": "c",
       "text": "Where do we play tomorrow?",
-      "reveals": "장소는 알 수 있지만 시각은 여전히 몰라요. 한 가지만 해결돼요."
+      "reveals": "\uc7a5\uc18c\ub294 \uc54c \uc218 \uc788\uc9c0\ub9cc \uc2dc\uac01\uc740 \uc5ec\uc804\ud788 \ubab0\ub77c\uc694. \ud55c \uac00\uc9c0\ub9cc \ud574\uacb0\ub3fc\uc694."
      },
      {
       "id": "d",
       "text": "Do you like to play with balls?",
-      "reveals": "Sora가 공을 좋아하는지는 만나는 데 필요한 정보가 아니에요."
+      "reveals": "Sora\uac00 \uacf5\uc744 \uc88b\uc544\ud558\ub294\uc9c0\ub294 \ub9cc\ub098\ub294 \ub370 \ud544\uc694\ud55c \uc815\ubcf4\uac00 \uc544\ub2c8\uc5d0\uc694."
      }
     ],
     "correct": [
      "a"
     ],
-    "explain": "메시지에는 '내일', '공을 가져오라'만 있고 장소와 시각이 없어요. 한 번에 두 정보를 묻는 질문이 가장 쓸모 있어요. 장소만 묻는 질문은 시각을 모르는 채로 남고, 공의 종류나 Sora의 취향을 묻는 질문은 만나는 데 꼭 필요한 정보가 아니에요.",
+    "explain": "\uba54\uc2dc\uc9c0\uc5d0\ub294 '\ub0b4\uc77c', '\uacf5\uc744 \uac00\uc838\uc624\ub77c'\ub9cc \uc788\uace0 \uc7a5\uc18c\uc640 \uc2dc\uac01\uc774 \uc5c6\uc5b4\uc694. \ud55c \ubc88\uc5d0 \ub450 \uc815\ubcf4\ub97c \ubb3b\ub294 \uc9c8\ubb38\uc774 \uac00\uc7a5 \uc4f8\ubaa8 \uc788\uc5b4\uc694. \uc7a5\uc18c\ub9cc \ubb3b\ub294 \uc9c8\ubb38\uc740 \uc2dc\uac01\uc744 \ubaa8\ub974\ub294 \ucc44\ub85c \ub0a8\uace0, \uacf5\uc758 \uc885\ub958\ub098 Sora\uc758 \ucde8\ud5a5\uc744 \ubb3b\ub294 \uc9c8\ubb38\uc740 \ub9cc\ub098\ub294 \ub370 \uaf2d \ud544\uc694\ud55c \uc815\ubcf4\uac00 \uc544\ub2c8\uc5d0\uc694.",
     "hints": [
-     "메시지에서 이미 알려 준 것과 아직 모르는 것을 두 칸으로 나눠 보세요.",
-     "만나려면 꼭 알아야 하는 것이 무엇인지 생각하세요."
+     "\uba54\uc2dc\uc9c0\uc5d0\uc11c \uc774\ubbf8 \uc54c\ub824 \uc900 \uac83\uacfc \uc544\uc9c1 \ubaa8\ub974\ub294 \uac83\uc744 \ub450 \uce78\uc73c\ub85c \ub098\ub220 \ubcf4\uc138\uc694.",
+     "\ub9cc\ub098\ub824\uba74 \uaf2d \uc54c\uc544\uc57c \ud558\ub294 \uac83\uc774 \ubb34\uc5c7\uc778\uc9c0 \uc0dd\uac01\ud558\uc138\uc694."
     ],
     "scaffold": true
    },
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "새 상황이에요. 아빠가 말했어요: \"We'll go on a trip on Saturday.\" 가장 중요한 빠진 정보를 알아낼 영어 질문 하나를 써 보세요. (물음표는 한 번만)",
-    "placeholder": "예: ...?",
+    "prompt": "\uc0c8 \uc0c1\ud669\uc774\uc5d0\uc694. \uc544\ube60\uac00 \ub9d0\ud588\uc5b4\uc694: \"We'll go on a trip on Saturday.\" \uac00\uc7a5 \uc911\uc694\ud55c \ube60\uc9c4 \uc815\ubcf4\ub97c \uc54c\uc544\ub0bc \uc601\uc5b4 \uc9c8\ubb38 \ud558\ub098\ub97c \uc368 \ubcf4\uc138\uc694. (\ubb3c\uc74c\ud45c\ub294 \ud55c \ubc88\ub9cc)",
+    "placeholder": "\uc608: ...?",
     "minChars": 10,
     "checks": [
      {
       "id": "w1",
-      "label": "질문이다(물음표가 있다)",
+      "label": "\uc9c8\ubb38\uc774\ub2e4(\ubb3c\uc74c\ud45c\uac00 \uc788\ub2e4)",
       "mode": "any",
       "patterns": [
        "\\?"
@@ -1637,7 +1631,7 @@
      },
      {
       "id": "w2",
-      "label": "빠진 정보(어디, 몇 시, 얼마나 오래 등)를 묻는다",
+      "label": "\ube60\uc9c4 \uc815\ubcf4(\uc5b4\ub514, \uba87 \uc2dc, \uc5bc\ub9c8\ub098 \uc624\ub798 \ub4f1)\ub97c \ubb3b\ub294\ub2e4",
       "mode": "any",
       "patterns": [
        "\\bwhere\\b",
@@ -1651,7 +1645,7 @@
      },
      {
       "id": "w3",
-      "label": "질문이 하나뿐이다(물음표가 한 개)",
+      "label": "\uc9c8\ubb38\uc774 \ud558\ub098\ubfd0\uc774\ub2e4(\ubb3c\uc74c\ud45c\uac00 \ud55c \uac1c)",
       "mode": "none",
       "patterns": [
        "\\?[^?]*\\?"
@@ -1659,8 +1653,8 @@
      }
     ],
     "selfAssess": [
-     "내 질문은 아빠 말에 없는 정보를 묻고 있나요?",
-     "그 질문의 대답을 들으면 여행 준비에 도움이 될까요?"
+     "\ub0b4 \uc9c8\ubb38\uc740 \uc544\ube60 \ub9d0\uc5d0 \uc5c6\ub294 \uc815\ubcf4\ub97c \ubb3b\uace0 \uc788\ub098\uc694?",
+     "\uadf8 \uc9c8\ubb38\uc758 \ub300\ub2f5\uc744 \ub4e4\uc73c\uba74 \uc5ec\ud589 \uc900\ube44\uc5d0 \ub3c4\uc6c0\uc774 \ub420\uae4c\uc694?"
     ],
     "modelAnswers": [
      {
@@ -1668,7 +1662,7 @@
      },
      {
       "text": "What time do we leave on Saturday?",
-      "note": "시각을 묻는 것도 좋다."
+      "note": "\uc2dc\uac01\uc744 \ubb3b\ub294 \uac83\ub3c4 \uc88b\ub2e4."
      },
      {
       "text": "Which place will we go?"
@@ -1677,61 +1671,61 @@
     "badAnswers": [
      {
       "text": "Do you like trips?",
-      "why": "아빠의 감정을 묻는 질문이라 빠진 정보를 알려 주지 않는다."
+      "why": "\uc544\ube60\uc758 \uac10\uc815\uc744 \ubb3b\ub294 \uc9c8\ubb38\uc774\ub77c \ube60\uc9c4 \uc815\ubcf4\ub97c \uc54c\ub824 \uc8fc\uc9c0 \uc54a\ub294\ub2e4."
      },
      {
       "text": "Where? When? Who?",
-      "why": "질문이 여러 개이고 문장이 아니다."
+      "why": "\uc9c8\ubb38\uc774 \uc5ec\ub7ec \uac1c\uc774\uace0 \ubb38\uc7a5\uc774 \uc544\ub2c8\ub2e4."
      },
      {
       "text": "What should I bring?",
-      "why": "어디로 가는지, 몇 시인지 같은 빠진 핵심 정보를 묻지 않는다."
+      "why": "\uc5b4\ub514\ub85c \uac00\ub294\uc9c0, \uba87 \uc2dc\uc778\uc9c0 \uac19\uc740 \ube60\uc9c4 \ud575\uc2ec \uc815\ubcf4\ub97c \ubb3b\uc9c0 \uc54a\ub294\ub2e4."
      }
     ],
-    "humanReview": "질문이 정말 가장 중요한 빠진 정보를 묻는지, 영어가 자연스러운지는 사람이 본다. 자동 점검은 물음표와 의문사의 유무만 본다.",
+    "humanReview": "\uc9c8\ubb38\uc774 \uc815\ub9d0 \uac00\uc7a5 \uc911\uc694\ud55c \ube60\uc9c4 \uc815\ubcf4\ub97c \ubb3b\ub294\uc9c0, \uc601\uc5b4\uac00 \uc790\uc5f0\uc2a4\ub7ec\uc6b4\uc9c0\ub294 \uc0ac\ub78c\uc774 \ubcf8\ub2e4. \uc790\ub3d9 \uc810\uac80\uc740 \ubb3c\uc74c\ud45c\uc640 \uc758\ubb38\uc0ac\uc758 \uc720\ubb34\ub9cc \ubcf8\ub2e4.",
     "hints": [
-     "아빠 말에서 이미 아는 것(Saturday, trip)과 모르는 것을 나눠 보세요.",
-     "모르는 것 중 하나를 골라 Where나 What time으로 시작하는 질문을 만들어 보세요."
+     "\uc544\ube60 \ub9d0\uc5d0\uc11c \uc774\ubbf8 \uc544\ub294 \uac83(Saturday, trip)\uacfc \ubaa8\ub974\ub294 \uac83\uc744 \ub098\ub220 \ubcf4\uc138\uc694.",
+     "\ubaa8\ub974\ub294 \uac83 \uc911 \ud558\ub098\ub97c \uace8\ub77c Where\ub098 What time\uc73c\ub85c \uc2dc\uc791\ud558\ub294 \uc9c8\ubb38\uc744 \ub9cc\ub4e4\uc5b4 \ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "빠진 정보 찾기",
-    "full": "이미 있는 정보와 빠진 정보를 구별해 질문의 목표를 정함",
-    "partial": "빠진 정보를 일부만 찾음",
-    "none": "이미 있는 정보를 다시 물음"
+    "criterion": "\ube60\uc9c4 \uc815\ubcf4 \ucc3e\uae30",
+    "full": "\uc774\ubbf8 \uc788\ub294 \uc815\ubcf4\uc640 \ube60\uc9c4 \uc815\ubcf4\ub97c \uad6c\ubcc4\ud574 \uc9c8\ubb38\uc758 \ubaa9\ud45c\ub97c \uc815\ud568",
+    "partial": "\ube60\uc9c4 \uc815\ubcf4\ub97c \uc77c\ubd80\ub9cc \ucc3e\uc74c",
+    "none": "\uc774\ubbf8 \uc788\ub294 \uc815\ubcf4\ub97c \ub2e4\uc2dc \ubb3c\uc74c"
    },
    {
-    "criterion": "질문 만들기",
-    "full": "빠진 정보를 묻는 영어 질문 하나를 씀",
-    "partial": "질문은 있지만 쓸모가 약함",
-    "none": "질문이 아니거나 관계가 없음"
+    "criterion": "\uc9c8\ubb38 \ub9cc\ub4e4\uae30",
+    "full": "\ube60\uc9c4 \uc815\ubcf4\ub97c \ubb3b\ub294 \uc601\uc5b4 \uc9c8\ubb38 \ud558\ub098\ub97c \uc500",
+    "partial": "\uc9c8\ubb38\uc740 \uc788\uc9c0\ub9cc \uc4f8\ubaa8\uac00 \uc57d\ud568",
+    "none": "\uc9c8\ubb38\uc774 \uc544\ub2c8\uac70\ub098 \uad00\uacc4\uac00 \uc5c6\uc74c"
    }
   ],
   "alternatives": [
-   "'What should I bring?'처럼 준비물을 묻는 것도 좋은 질문이다.",
-   "'Where and when ...?' 하나로 두 정보를 묻는 것도 좋다."
+   "'What should I bring?'\ucc98\ub7fc \uc900\ube44\ubb3c\uc744 \ubb3b\ub294 \uac83\ub3c4 \uc88b\uc740 \uc9c8\ubb38\uc774\ub2e4.",
+   "'Where and when ...?' \ud558\ub098\ub85c \ub450 \uc815\ubcf4\ub97c \ubb3b\ub294 \uac83\ub3c4 \uc88b\ub2e4."
   ],
   "hardCases": [
-   "s1에서 c(장소만)가 충분하다고 생각하는 학생이 있다. 시각이 남는다는 점을 안내한다.",
-   "'Where are we going and when?'처럼 한 질문 안에 두 정보를 묻는 문장은 인정한다."
+   "s1\uc5d0\uc11c c(\uc7a5\uc18c\ub9cc)\uac00 \ucda9\ubd84\ud558\ub2e4\uace0 \uc0dd\uac01\ud558\ub294 \ud559\uc0dd\uc774 \uc788\ub2e4. \uc2dc\uac01\uc774 \ub0a8\ub294\ub2e4\ub294 \uc810\uc744 \uc548\ub0b4\ud55c\ub2e4.",
+   "'Where are we going and when?'\ucc98\ub7fc \ud55c \uc9c8\ubb38 \uc548\uc5d0 \ub450 \uc815\ubcf4\ub97c \ubb3b\ub294 \ubb38\uc7a5\uc740 \uc778\uc815\ud55c\ub2e4."
   ],
   "cautions": {
-   "language": "의문사(Where, When, What time)와 간단한 질문 구조만 썼다.",
-   "culture": "문자 메시지로 약속을 잡는 상황은 흔하지만, 일부 학생은 휴대전화 사용에 익숙하지 않을 수 있다.",
-   "accessibility": "그림 없이 글로만 썼다. '?'는 '물음표'로 읽는다고 안내한다."
+   "language": "\uc758\ubb38\uc0ac(Where, When, What time)\uc640 \uac04\ub2e8\ud55c \uc9c8\ubb38 \uad6c\uc870\ub9cc \uc37c\ub2e4.",
+   "culture": "\ubb38\uc790 \uba54\uc2dc\uc9c0\ub85c \uc57d\uc18d\uc744 \uc7a1\ub294 \uc0c1\ud669\uc740 \ud754\ud558\uc9c0\ub9cc, \uc77c\ubd80 \ud559\uc0dd\uc740 \ud734\ub300\uc804\ud654 \uc0ac\uc6a9\uc5d0 \uc775\uc219\ud558\uc9c0 \uc54a\uc744 \uc218 \uc788\ub2e4.",
+   "accessibility": "\uadf8\ub9bc \uc5c6\uc774 \uae00\ub85c\ub9cc \uc37c\ub2e4. '?'\ub294 '\ubb3c\uc74c\ud45c'\ub85c \uc77d\ub294\ub2e4\uace0 \uc548\ub0b4\ud55c\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "선택 결과",
-    "물음표와 의문사의 유무"
+    "\uc120\ud0dd \uacb0\uacfc",
+    "\ubb3c\uc74c\ud45c\uc640 \uc758\ubb38\uc0ac\uc758 \uc720\ubb34"
    ],
    "human": [
-    "질문의 쓸모",
-    "영어의 자연스러움"
+    "\uc9c8\ubb38\uc758 \uc4f8\ubaa8",
+    "\uc601\uc5b4\uc758 \uc790\uc5f0\uc2a4\ub7ec\uc6c0"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  }
 ]

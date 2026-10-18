@@ -4,112 +4,112 @@
   "subject": "math",
   "grade": "H1",
   "cell": "math|H1|matrix",
-  "topic": "행렬의 곱셈과 교환 가능성: AB=BA를 만족하는 행렬 찾기",
+  "topic": "\ud589\ub82c\uc758 \uacf1\uc148\uacfc \uad50\ud658 \uac00\ub2a5\uc131: AB=BA\ub97c \ub9cc\uc871\ud558\ub294 \ud589\ub82c \ucc3e\uae30",
   "level": 3,
-  "levelLabel": "고등",
-  "title": "지우의 짐작: 순서를 바꿔 곱해도 같은 행렬은 E의 배수뿐일까?",
+  "levelLabel": "\uace0\ub4f1",
+  "title": "\uc9c0\uc6b0\uc758 \uc9d0\uc791: \uc21c\uc11c\ub97c \ubc14\uafd4 \uacf1\ud574\ub3c4 \uac19\uc740 \ud589\ub82c\uc740 E\uc758 \ubc30\uc218\ubfd0\uc77c\uae4c?",
   "uiLang": "ko",
   "format": "build-many-verify",
   "generative": true,
-  "goal": "AB=BA를 만족하는 B를 성분 사이의 관계로 찾아 '단위행렬의 배수뿐'이라는 짐작을 반례로 고치고, 성분이 만족해야 할 조건을 자기 말로 정리한다.",
+  "goal": "AB=BA\ub97c \ub9cc\uc871\ud558\ub294 B\ub97c \uc131\ubd84 \uc0ac\uc774\uc758 \uad00\uacc4\ub85c \ucc3e\uc544 '\ub2e8\uc704\ud589\ub82c\uc758 \ubc30\uc218\ubfd0'\uc774\ub77c\ub294 \uc9d0\uc791\uc744 \ubc18\ub840\ub85c \uace0\uce58\uace0, \uc131\ubd84\uc774 \ub9cc\uc871\ud574\uc57c \ud560 \uc870\uac74\uc744 \uc790\uae30 \ub9d0\ub85c \uc815\ub9ac\ud55c\ub2e4.",
   "thinking": [
-   "짐작을 몇 가지 후보로 시험하기",
-   "성분을 문자로 놓고 조건을 찾아 여러 해 만들기",
-   "반례로 짐작을 고치고 조건 말하기"
+   "\uc9d0\uc791\uc744 \uba87 \uac00\uc9c0 \ud6c4\ubcf4\ub85c \uc2dc\ud5d8\ud558\uae30",
+   "\uc131\ubd84\uc744 \ubb38\uc790\ub85c \ub193\uace0 \uc870\uac74\uc744 \ucc3e\uc544 \uc5ec\ub7ec \ud574 \ub9cc\ub4e4\uae30",
+   "\ubc18\ub840\ub85c \uc9d0\uc791\uc744 \uace0\uce58\uace0 \uc870\uac74 \ub9d0\ud558\uae30"
   ],
-  "differsFromPlain": "단순 연습은 주어진 두 행렬의 AB와 BA를 계산해 같은지 묻는다. 여기서는 'E의 배수뿐일 것'이라는 짐작을 시험하고, 조건을 만족하는 B를 학생이 여러 개 직접 만들며 그 성분 사이의 관계를 설명한다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uc8fc\uc5b4\uc9c4 \ub450 \ud589\ub82c\uc758 AB\uc640 BA\ub97c \uacc4\uc0b0\ud574 \uac19\uc740\uc9c0 \ubb3b\ub294\ub2e4. \uc5ec\uae30\uc11c\ub294 'E\uc758 \ubc30\uc218\ubfd0\uc77c \uac83'\uc774\ub77c\ub294 \uc9d0\uc791\uc744 \uc2dc\ud5d8\ud558\uace0, \uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294 B\ub97c \ud559\uc0dd\uc774 \uc5ec\ub7ec \uac1c \uc9c1\uc811 \ub9cc\ub4e4\uba70 \uadf8 \uc131\ubd84 \uc0ac\uc774\uc758 \uad00\uacc4\ub97c \uc124\uba85\ud55c\ub2e4.",
   "prerequisites": [
-   "2×2 행렬의 곱셈과 단위행렬 E의 뜻",
-   "두 행렬이 같다는 것은 같은 자리 성분이 모두 같다는 뜻임",
-   "[난이도 구분] 이 과제의 H1은 이 제작 배정의 난이도·지원 수준이며, 교육과정이 이 내용을 고1에 배정한다는 뜻이 아니다. 행렬 단원의 기본 계산(2×2 행렬의 합·곱·단위행렬·역행렬)을 이미 배운 학생을 가정한다."
+   "2\u00d72 \ud589\ub82c\uc758 \uacf1\uc148\uacfc \ub2e8\uc704\ud589\ub82c E\uc758 \ub73b",
+   "\ub450 \ud589\ub82c\uc774 \uac19\ub2e4\ub294 \uac83\uc740 \uac19\uc740 \uc790\ub9ac \uc131\ubd84\uc774 \ubaa8\ub450 \uac19\ub2e4\ub294 \ub73b\uc784",
+   "[\ub09c\uc774\ub3c4 \uad6c\ubd84] \uc774 \uacfc\uc81c\uc758 H1\uc740 \uc774 \uc81c\uc791 \ubc30\uc815\uc758 \ub09c\uc774\ub3c4\u00b7\uc9c0\uc6d0 \uc218\uc900\uc774\uba70, \uad50\uc721\uacfc\uc815\uc774 \uc774 \ub0b4\uc6a9\uc744 \uace01\uc5d0 \ubc30\uc815\ud55c\ub2e4\ub294 \ub73b\uc774 \uc544\ub2c8\ub2e4. \ud589\ub82c \ub2e8\uc6d0\uc758 \uae30\ubcf8 \uacc4\uc0b0(2\u00d72 \ud589\ub82c\uc758 \ud569\u00b7\uacf1\u00b7\ub2e8\uc704\ud589\ub82c\u00b7\uc5ed\ud589\ub82c)\uc744 \uc774\ubbf8 \ubc30\uc6b4 \ud559\uc0dd\uc744 \uac00\uc815\ud55c\ub2e4."
   ],
   "minutes": 14,
   "curriculum": null,
-  "material": "수학 동아리에서 '행렬의 곱은 순서를 바꾸면 보통 달라진다'고 배웠다. 그러자 지우가 말했다. \"그럼 AB=BA가 되는 B는 E의 배수(3E, -2E처럼 대각선에 같은 수가 있고 나머지는 0인 행렬)뿐일 것 같아.\" 아래에서는 2×2 행렬만 다루고 성분은 모두 실수이다. 행렬은 (1행 ; 2행) 꼴로 적는다. 예를 들어 A = (1 1 ; 0 1)은 1행이 1 1, 2행이 0 1인 행렬이다. 이 과제에서 A는 계속 A = (1 1 ; 0 1)이다.",
+  "material": "\uc218\ud559 \ub3d9\uc544\ub9ac\uc5d0\uc11c '\ud589\ub82c\uc758 \uacf1\uc740 \uc21c\uc11c\ub97c \ubc14\uafb8\uba74 \ubcf4\ud1b5 \ub2ec\ub77c\uc9c4\ub2e4'\uace0 \ubc30\uc6e0\ub2e4. \uadf8\ub7ec\uc790 \uc9c0\uc6b0\uac00 \ub9d0\ud588\ub2e4. \"\uadf8\ub7fc AB=BA\uac00 \ub418\ub294 B\ub294 E\uc758 \ubc30\uc218(3E, -2E\ucc98\ub7fc \ub300\uac01\uc120\uc5d0 \uac19\uc740 \uc218\uac00 \uc788\uace0 \ub098\uba38\uc9c0\ub294 0\uc778 \ud589\ub82c)\ubfd0\uc77c \uac83 \uac19\uc544.\" \uc544\ub798\uc5d0\uc11c\ub294 2\u00d72 \ud589\ub82c\ub9cc \ub2e4\ub8e8\uace0 \uc131\ubd84\uc740 \ubaa8\ub450 \uc2e4\uc218\uc774\ub2e4. \ud589\ub82c\uc740 (1\ud589 ; 2\ud589) \uaf34\ub85c \uc801\ub294\ub2e4. \uc608\ub97c \ub4e4\uc5b4 A = (1 1 ; 0 1)\uc740 1\ud589\uc774 1 1, 2\ud589\uc774 0 1\uc778 \ud589\ub82c\uc774\ub2e4. \uc774 \uacfc\uc81c\uc5d0\uc11c A\ub294 \uacc4\uc18d A = (1 1 ; 0 1)\uc774\ub2e4.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
     "multi": true,
-    "prompt": "A = (1 1 ; 0 1)에 대해, AB=BA가 되는 B를 모두 고르세요.",
+    "prompt": "A = (1 1 ; 0 1)\uc5d0 \ub300\ud574, AB=BA\uac00 \ub418\ub294 B\ub97c \ubaa8\ub450 \uace0\ub974\uc138\uc694.",
     "options": [
      {
       "id": "a",
       "text": "B = (3 0 ; 0 3)",
-      "reveals": "E의 배수는 어떤 행렬과도 순서를 바꿔 곱해도 같다는 점을 떠올렸어요. 다만 이것만이 답일지는 다른 후보로 시험해 보아야 해요."
+      "reveals": "E\uc758 \ubc30\uc218\ub294 \uc5b4\ub5a4 \ud589\ub82c\uacfc\ub3c4 \uc21c\uc11c\ub97c \ubc14\uafd4 \uacf1\ud574\ub3c4 \uac19\ub2e4\ub294 \uc810\uc744 \ub5a0\uc62c\ub838\uc5b4\uc694. \ub2e4\ub9cc \uc774\uac83\ub9cc\uc774 \ub2f5\uc77c\uc9c0\ub294 \ub2e4\ub978 \ud6c4\ubcf4\ub85c \uc2dc\ud5d8\ud574 \ubcf4\uc544\uc57c \ud574\uc694."
      },
      {
       "id": "b",
       "text": "B = (1 0 ; 1 1)",
-      "reveals": "A와 모양이 비슷하다는 느낌으로 골랐을 수 있어요. AB의 1행 1열과 BA의 1행 1열을 먼저 비교해 보세요."
+      "reveals": "A\uc640 \ubaa8\uc591\uc774 \ube44\uc2b7\ud558\ub2e4\ub294 \ub290\ub08c\uc73c\ub85c \uace8\ub790\uc744 \uc218 \uc788\uc5b4\uc694. AB\uc758 1\ud589 1\uc5f4\uacfc BA\uc758 1\ud589 1\uc5f4\uc744 \uba3c\uc800 \ube44\uad50\ud574 \ubcf4\uc138\uc694."
      },
      {
       "id": "c",
       "text": "B = (2 1 ; 0 2)",
-      "reveals": "E의 배수가 아닌 후보도 순서를 바꿔 곱해도 같을 수 있음을 알아챘어요. 이 후보를 놓치면 '배수뿐'이라는 짐작이 그대로 남아요."
+      "reveals": "E\uc758 \ubc30\uc218\uac00 \uc544\ub2cc \ud6c4\ubcf4\ub3c4 \uc21c\uc11c\ub97c \ubc14\uafd4 \uacf1\ud574\ub3c4 \uac19\uc744 \uc218 \uc788\uc74c\uc744 \uc54c\uc544\ucc58\uc5b4\uc694. \uc774 \ud6c4\ubcf4\ub97c \ub193\uce58\uba74 '\ubc30\uc218\ubfd0'\uc774\ub77c\ub294 \uc9d0\uc791\uc774 \uadf8\ub300\ub85c \ub0a8\uc544\uc694."
      },
      {
       "id": "d",
       "text": "B = (2 1 ; 0 3)",
-      "reveals": "A와 비슷하게 위쪽에만 수가 있는 모양이라 골랐을 수 있어요. 모양이 비슷한 것과 곱의 순서를 바꿔도 같은 것은 별개예요. 두 곱을 끝까지 계산해 같은 자리끼리 비교해 보세요."
+      "reveals": "A\uc640 \ube44\uc2b7\ud558\uac8c \uc704\ucabd\uc5d0\ub9cc \uc218\uac00 \uc788\ub294 \ubaa8\uc591\uc774\ub77c \uace8\ub790\uc744 \uc218 \uc788\uc5b4\uc694. \ubaa8\uc591\uc774 \ube44\uc2b7\ud55c \uac83\uacfc \uacf1\uc758 \uc21c\uc11c\ub97c \ubc14\uafd4\ub3c4 \uac19\uc740 \uac83\uc740 \ubcc4\uac1c\uc608\uc694. \ub450 \uacf1\uc744 \ub05d\uae4c\uc9c0 \uacc4\uc0b0\ud574 \uac19\uc740 \uc790\ub9ac\ub07c\ub9ac \ube44\uad50\ud574 \ubcf4\uc138\uc694."
      }
     ],
     "correct": [
      "a",
      "c"
     ],
-    "explain": "AB=BA인 것은 (3 0 ; 0 3)과 (2 1 ; 0 2)이다. (1 0 ; 1 1)은 AB=(2 1 ; 1 1), BA=(1 1 ; 1 2)이고, (2 1 ; 0 3)은 AB=(2 4 ; 0 3), BA=(2 3 ; 0 3)이라 서로 다르다. 그리고 (2 1 ; 0 2)는 E의 배수가 아니므로, 지우의 짐작이 이미 흔들린다.",
+    "explain": "AB=BA\uc778 \uac83\uc740 (3 0 ; 0 3)\uacfc (2 1 ; 0 2)\uc774\ub2e4. (1 0 ; 1 1)\uc740 AB=(2 1 ; 1 1), BA=(1 1 ; 1 2)\uc774\uace0, (2 1 ; 0 3)\uc740 AB=(2 4 ; 0 3), BA=(2 3 ; 0 3)\uc774\ub77c \uc11c\ub85c \ub2e4\ub974\ub2e4. \uadf8\ub9ac\uace0 (2 1 ; 0 2)\ub294 E\uc758 \ubc30\uc218\uac00 \uc544\ub2c8\ubbc0\ub85c, \uc9c0\uc6b0\uc758 \uc9d0\uc791\uc774 \uc774\ubbf8 \ud754\ub4e4\ub9b0\ub2e4.",
     "hints": [
-     "후보 하나를 골라 AB와 BA를 각각 끝까지 계산해 나란히 적어 보세요.",
-     "두 결과를 같은 자리끼리 비교해, 처음으로 달라지는 자리가 있는지 찾아 보세요."
+     "\ud6c4\ubcf4 \ud558\ub098\ub97c \uace8\ub77c AB\uc640 BA\ub97c \uac01\uac01 \ub05d\uae4c\uc9c0 \uacc4\uc0b0\ud574 \ub098\ub780\ud788 \uc801\uc5b4 \ubcf4\uc138\uc694.",
+     "\ub450 \uacb0\uacfc\ub97c \uac19\uc740 \uc790\ub9ac\ub07c\ub9ac \ube44\uad50\ud574, \ucc98\uc74c\uc73c\ub85c \ub2ec\ub77c\uc9c0\ub294 \uc790\ub9ac\uac00 \uc788\ub294\uc9c0 \ucc3e\uc544 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "build",
-    "prompt": "E의 배수가 아니면서 AB=BA를 만족하는 B = (p q ; r s)를 서로 다르게 3개 만들어 보세요.",
+    "prompt": "E\uc758 \ubc30\uc218\uac00 \uc544\ub2c8\uba74\uc11c AB=BA\ub97c \ub9cc\uc871\ud558\ub294 B = (p q ; r s)\ub97c \uc11c\ub85c \ub2e4\ub974\uac8c 3\uac1c \ub9cc\ub4e4\uc5b4 \ubcf4\uc138\uc694.",
     "vars": [
      {
       "name": "p",
-      "label": "p (1행 1열)"
+      "label": "p (1\ud589 1\uc5f4)"
      },
      {
       "name": "q",
-      "label": "q (1행 2열)"
+      "label": "q (1\ud589 2\uc5f4)"
      },
      {
       "name": "r",
-      "label": "r (2행 1열)"
+      "label": "r (2\ud589 1\uc5f4)"
      },
      {
       "name": "s",
-      "label": "s (2행 2열)"
+      "label": "s (2\ud589 2\uc5f4)"
      }
     ],
     "constraints": [
      {
       "id": "c1",
       "expr": "p+r==p",
-      "ok": "AB와 BA의 1행 1열 성분이 같아요.",
-      "fail": "AB와 BA의 1행 1열 성분이 서로 달라요. 두 성분을 p, q, r, s로 적어 비교해 보세요."
+      "ok": "AB\uc640 BA\uc758 1\ud589 1\uc5f4 \uc131\ubd84\uc774 \uac19\uc544\uc694.",
+      "fail": "AB\uc640 BA\uc758 1\ud589 1\uc5f4 \uc131\ubd84\uc774 \uc11c\ub85c \ub2ec\ub77c\uc694. \ub450 \uc131\ubd84\uc744 p, q, r, s\ub85c \uc801\uc5b4 \ube44\uad50\ud574 \ubcf4\uc138\uc694."
      },
      {
       "id": "c2",
       "expr": "q+s==p+q",
-      "ok": "AB와 BA의 1행 2열 성분이 같아요.",
-      "fail": "AB와 BA의 1행 2열 성분이 서로 달라요."
+      "ok": "AB\uc640 BA\uc758 1\ud589 2\uc5f4 \uc131\ubd84\uc774 \uac19\uc544\uc694.",
+      "fail": "AB\uc640 BA\uc758 1\ud589 2\uc5f4 \uc131\ubd84\uc774 \uc11c\ub85c \ub2ec\ub77c\uc694."
      },
      {
       "id": "c3",
       "expr": "s==r+s",
-      "ok": "AB와 BA의 2행 2열 성분이 같아요.",
-      "fail": "AB와 BA의 2행 2열 성분이 서로 달라요."
+      "ok": "AB\uc640 BA\uc758 2\ud589 2\uc5f4 \uc131\ubd84\uc774 \uac19\uc544\uc694.",
+      "fail": "AB\uc640 BA\uc758 2\ud589 2\uc5f4 \uc131\ubd84\uc774 \uc11c\ub85c \ub2ec\ub77c\uc694."
      },
      {
       "id": "c4",
       "expr": "q!=0",
-      "ok": "E의 배수가 아니에요.",
-      "fail": "이 B는 E의 배수(대각선에 같은 수, 나머지는 0) 꼴이 될 수 있어요. 지우의 짐작을 깨는 예가 필요해요."
+      "ok": "E\uc758 \ubc30\uc218\uac00 \uc544\ub2c8\uc5d0\uc694.",
+      "fail": "\uc774 B\ub294 E\uc758 \ubc30\uc218(\ub300\uac01\uc120\uc5d0 \uac19\uc740 \uc218, \ub098\uba38\uc9c0\ub294 0) \uaf34\uc774 \ub420 \uc218 \uc788\uc5b4\uc694. \uc9c0\uc6b0\uc758 \uc9d0\uc791\uc744 \uae68\ub294 \uc608\uac00 \ud544\uc694\ud574\uc694."
      }
     ],
     "need": 3,
@@ -153,254 +153,254 @@
       "s": 0
      }
     ],
-    "explain": "AB=(p+r q+s ; r s), BA=(p p+q ; r r+s)이다. 같은 자리 성분을 비교하면 r=0이고 s=p가 되어야 하고, q는 아무 수여도 된다(2행 1열 성분은 항상 같다). q가 0이 아니면 E의 배수가 아닌 해가 된다.",
+    "explain": "AB=(p+r q+s ; r s), BA=(p p+q ; r r+s)\uc774\ub2e4. \uac19\uc740 \uc790\ub9ac \uc131\ubd84\uc744 \ube44\uad50\ud558\uba74 r=0\uc774\uace0 s=p\uac00 \ub418\uc5b4\uc57c \ud558\uace0, q\ub294 \uc544\ubb34 \uc218\uc5ec\ub3c4 \ub41c\ub2e4(2\ud589 1\uc5f4 \uc131\ubd84\uc740 \ud56d\uc0c1 \uac19\ub2e4). q\uac00 0\uc774 \uc544\ub2c8\uba74 E\uc758 \ubc30\uc218\uac00 \uc544\ub2cc \ud574\uac00 \ub41c\ub2e4.",
     "hints": [
-     "B의 성분을 p, q, r, s로 두고 AB와 BA의 네 성분을 각각 p, q, r, s로 적어 보세요.",
-     "같은 자리 성분끼리 '같다'고 놓았을 때 어떤 문자들 사이에 관계가 생기는지 살펴보고, 그 관계를 지키는 숫자를 골라 직접 AB, BA를 계산해 확인해 보세요."
+     "B\uc758 \uc131\ubd84\uc744 p, q, r, s\ub85c \ub450\uace0 AB\uc640 BA\uc758 \ub124 \uc131\ubd84\uc744 \uac01\uac01 p, q, r, s\ub85c \uc801\uc5b4 \ubcf4\uc138\uc694.",
+     "\uac19\uc740 \uc790\ub9ac \uc131\ubd84\ub07c\ub9ac '\uac19\ub2e4'\uace0 \ub193\uc558\uc744 \ub54c \uc5b4\ub5a4 \ubb38\uc790\ub4e4 \uc0ac\uc774\uc5d0 \uad00\uacc4\uac00 \uc0dd\uae30\ub294\uc9c0 \uc0b4\ud3b4\ubcf4\uace0, \uadf8 \uad00\uacc4\ub97c \uc9c0\ud0a4\ub294 \uc22b\uc790\ub97c \uace8\ub77c \uc9c1\uc811 AB, BA\ub97c \uacc4\uc0b0\ud574 \ud655\uc778\ud574 \ubcf4\uc138\uc694."
     ],
     "because": {
      "id": "s2b",
      "kind": "write",
-     "prompt": "내가 만든 B들을 나란히 놓고 보세요. B의 네 성분 사이에 어떤 관계가 있어야 AB=BA가 되었는지 자기 말로 쓰세요.",
-     "placeholder": "예: 왼쪽 아래 성분은 ... 이고 ...",
+     "prompt": "\ub0b4\uac00 \ub9cc\ub4e0 B\ub4e4\uc744 \ub098\ub780\ud788 \ub193\uace0 \ubcf4\uc138\uc694. B\uc758 \ub124 \uc131\ubd84 \uc0ac\uc774\uc5d0 \uc5b4\ub5a4 \uad00\uacc4\uac00 \uc788\uc5b4\uc57c AB=BA\uac00 \ub418\uc5c8\ub294\uc9c0 \uc790\uae30 \ub9d0\ub85c \uc4f0\uc138\uc694.",
+     "placeholder": "\uc608: \uc67c\ucabd \uc544\ub798 \uc131\ubd84\uc740 ... \uc774\uace0 ...",
      "minChars": 15,
      "checks": [
       {
        "id": "w1",
-       "label": "0이어야 하는 자리(왼쪽 아래, 2행 1열)를 짚었다",
+       "label": "0\uc774\uc5b4\uc57c \ud558\ub294 \uc790\ub9ac(\uc67c\ucabd \uc544\ub798, 2\ud589 1\uc5f4)\ub97c \uc9da\uc5c8\ub2e4",
        "mode": "any",
        "patterns": [
-        "(왼쪽\\s*아래|아래\\s*왼쪽|2\\s*행\\s*1\\s*열|1\\s*열\\s*2\\s*행|r\\s*=\\s*0)",
-        "r\\s*(은|는|이|가)\\s*0",
-        "r\\s*(은|는|이|가)?\\s*항상\\s*0"
+        "(\uc67c\ucabd\\s*\uc544\ub798|\uc544\ub798\\s*\uc67c\ucabd|2\\s*\ud589\\s*1\\s*\uc5f4|1\\s*\uc5f4\\s*2\\s*\ud589|r\\s*=\\s*0)",
+        "r\\s*(\uc740|\ub294|\uc774|\uac00)\\s*0",
+        "r\\s*(\uc740|\ub294|\uc774|\uac00)?\\s*\ud56d\uc0c1\\s*0"
        ]
       },
       {
        "id": "w2",
-       "label": "두 대각 성분이 같다는 것을 말했다",
+       "label": "\ub450 \ub300\uac01 \uc131\ubd84\uc774 \uac19\ub2e4\ub294 \uac83\uc744 \ub9d0\ud588\ub2e4",
        "mode": "any",
        "patterns": [
-        "대각.{0,15}같",
-        "같.{0,10}대각",
-        "(왼쪽\\s*위|1\\s*행\\s*1\\s*열).{0,25}(오른쪽\\s*아래|2\\s*행\\s*2\\s*열).{0,15}같",
+        "\ub300\uac01.{0,15}\uac19",
+        "\uac19.{0,10}\ub300\uac01",
+        "(\uc67c\ucabd\\s*\uc704|1\\s*\ud589\\s*1\\s*\uc5f4).{0,25}(\uc624\ub978\ucabd\\s*\uc544\ub798|2\\s*\ud589\\s*2\\s*\uc5f4).{0,15}\uac19",
         "p\\s*=\\s*s",
         "s\\s*=\\s*p",
-        "s\\s*(은|는|이|가)\\s*p",
-        "p\\s*(와|과|는|은|이|가)\\s*s"
+        "s\\s*(\uc740|\ub294|\uc774|\uac00)\\s*p",
+        "p\\s*(\uc640|\uacfc|\ub294|\uc740|\uc774|\uac00)\\s*s"
        ]
       }
      ],
      "selfAssess": [
-      "내가 쓴 관계가 내가 만든 세 개의 B 모두에 들어맞는가?",
-      "어느 성분은 아무 수여도 되는지(자유로운 자리)도 말했는가?",
-      "E의 배수가 아닌 B가 있다는 것이 지우의 짐작에 무엇을 뜻하는지 생각했는가?"
+      "\ub0b4\uac00 \uc4f4 \uad00\uacc4\uac00 \ub0b4\uac00 \ub9cc\ub4e0 \uc138 \uac1c\uc758 B \ubaa8\ub450\uc5d0 \ub4e4\uc5b4\ub9de\ub294\uac00?",
+      "\uc5b4\ub290 \uc131\ubd84\uc740 \uc544\ubb34 \uc218\uc5ec\ub3c4 \ub418\ub294\uc9c0(\uc790\uc720\ub85c\uc6b4 \uc790\ub9ac)\ub3c4 \ub9d0\ud588\ub294\uac00?",
+      "E\uc758 \ubc30\uc218\uac00 \uc544\ub2cc B\uac00 \uc788\ub2e4\ub294 \uac83\uc774 \uc9c0\uc6b0\uc758 \uc9d0\uc791\uc5d0 \ubb34\uc5c7\uc744 \ub73b\ud558\ub294\uc9c0 \uc0dd\uac01\ud588\ub294\uac00?"
      ],
      "modelAnswers": [
       {
-       "text": "왼쪽 아래 성분(2행 1열)은 0이어야 하고, 대각선에 있는 두 수(1행 1열과 2행 2열)는 같아야 해. 오른쪽 위 성분은 아무 수나 괜찮아서, 0이 아니면 E의 배수가 아닌 B가 돼."
+       "text": "\uc67c\ucabd \uc544\ub798 \uc131\ubd84(2\ud589 1\uc5f4)\uc740 0\uc774\uc5b4\uc57c \ud558\uace0, \ub300\uac01\uc120\uc5d0 \uc788\ub294 \ub450 \uc218(1\ud589 1\uc5f4\uacfc 2\ud589 2\uc5f4)\ub294 \uac19\uc544\uc57c \ud574. \uc624\ub978\ucabd \uc704 \uc131\ubd84\uc740 \uc544\ubb34 \uc218\ub098 \uad1c\ucc2e\uc544\uc11c, 0\uc774 \uc544\ub2c8\uba74 E\uc758 \ubc30\uc218\uac00 \uc544\ub2cc B\uac00 \ub3fc."
       },
       {
-       "text": "내가 찾은 B는 모두 왼쪽 아래가 0이었고 왼쪽 위와 오른쪽 아래가 같았어. 오른쪽 위는 0이든 아니든 상관없었어.",
-       "note": "오른쪽 위가 자유롭다는 점을 '상관없었다'로만 말해도 괜찮다."
+       "text": "\ub0b4\uac00 \ucc3e\uc740 B\ub294 \ubaa8\ub450 \uc67c\ucabd \uc544\ub798\uac00 0\uc774\uc5c8\uace0 \uc67c\ucabd \uc704\uc640 \uc624\ub978\ucabd \uc544\ub798\uac00 \uac19\uc558\uc5b4. \uc624\ub978\ucabd \uc704\ub294 0\uc774\ub4e0 \uc544\ub2c8\ub4e0 \uc0c1\uad00\uc5c6\uc5c8\uc5b4.",
+       "note": "\uc624\ub978\ucabd \uc704\uac00 \uc790\uc720\ub86d\ub2e4\ub294 \uc810\uc744 '\uc0c1\uad00\uc5c6\uc5c8\ub2e4'\ub85c\ub9cc \ub9d0\ud574\ub3c4 \uad1c\ucc2e\ub2e4."
       },
       {
-       "text": "r은 0이어야 하고 s는 p와 같아야 하며 q는 마음대로 바꿀 수 있다."
+       "text": "r\uc740 0\uc774\uc5b4\uc57c \ud558\uace0 s\ub294 p\uc640 \uac19\uc544\uc57c \ud558\uba70 q\ub294 \ub9c8\uc74c\ub300\ub85c \ubc14\uafc0 \uc218 \uc788\ub2e4."
       }
      ],
      "badAnswers": [
       {
-       "text": "아무 수나 넣어도 두 값이 같게 나왔어요.",
-       "why": "성분 사이의 관계가 없고, 틀린 B가 있었다는 사실과도 맞지 않는다."
+       "text": "\uc544\ubb34 \uc218\ub098 \ub123\uc5b4\ub3c4 \ub450 \uac12\uc774 \uac19\uac8c \ub098\uc654\uc5b4\uc694.",
+       "why": "\uc131\ubd84 \uc0ac\uc774\uc758 \uad00\uacc4\uac00 \uc5c6\uace0, \ud2c0\ub9b0 B\uac00 \uc788\uc5c8\ub2e4\ub294 \uc0ac\uc2e4\uacfc\ub3c4 \ub9de\uc9c0 \uc54a\ub294\ub2e4."
       },
       {
-       "text": "대각선은 같고 나머지는 잘 모르겠어요.",
-       "why": "0이어야 하는 자리를 짚지 못했다."
+       "text": "\ub300\uac01\uc120\uc740 \uac19\uace0 \ub098\uba38\uc9c0\ub294 \uc798 \ubaa8\ub974\uaca0\uc5b4\uc694.",
+       "why": "0\uc774\uc5b4\uc57c \ud558\ub294 \uc790\ub9ac\ub97c \uc9da\uc9c0 \ubabb\ud588\ub2e4."
       }
      ],
-     "humanReview": "짚은 자리가 실제로 AB, BA를 계산해서 나온 것인지, 그리고 '자유로운 자리'를 이해했는지는 사람이 읽고 확인한다.",
+     "humanReview": "\uc9da\uc740 \uc790\ub9ac\uac00 \uc2e4\uc81c\ub85c AB, BA\ub97c \uacc4\uc0b0\ud574\uc11c \ub098\uc628 \uac83\uc778\uc9c0, \uadf8\ub9ac\uace0 '\uc790\uc720\ub85c\uc6b4 \uc790\ub9ac'\ub97c \uc774\ud574\ud588\ub294\uc9c0\ub294 \uc0ac\ub78c\uc774 \uc77d\uace0 \ud655\uc778\ud55c\ub2e4.",
      "hints": [
-      "내 B들의 네 성분을 표로 나란히 적고, 항상 0인 자리가 있는지 찾아 보세요.",
-      "항상 같은 값이 되는 두 자리가 있는지, 마음대로 바뀌는 자리가 있는지 비교해 보세요."
+      "\ub0b4 B\ub4e4\uc758 \ub124 \uc131\ubd84\uc744 \ud45c\ub85c \ub098\ub780\ud788 \uc801\uace0, \ud56d\uc0c1 0\uc778 \uc790\ub9ac\uac00 \uc788\ub294\uc9c0 \ucc3e\uc544 \ubcf4\uc138\uc694.",
+      "\ud56d\uc0c1 \uac19\uc740 \uac12\uc774 \ub418\ub294 \ub450 \uc790\ub9ac\uac00 \uc788\ub294\uc9c0, \ub9c8\uc74c\ub300\ub85c \ubc14\ub00c\ub294 \uc790\ub9ac\uac00 \uc788\ub294\uc9c0 \ube44\uad50\ud574 \ubcf4\uc138\uc694."
      ]
     }
    }
   ],
   "rubric": [
    {
-    "criterion": "후보 시험",
-    "full": "후보마다 AB와 BA를 계산해 같은 자리 성분을 비교하고, E의 배수가 아닌 해도 있음을 알아챔",
-    "partial": "일부만 계산했거나 같은 자리 성분 비교를 빠뜨림",
-    "none": "계산 없이 모양이 비슷한 것을 고름"
+    "criterion": "\ud6c4\ubcf4 \uc2dc\ud5d8",
+    "full": "\ud6c4\ubcf4\ub9c8\ub2e4 AB\uc640 BA\ub97c \uacc4\uc0b0\ud574 \uac19\uc740 \uc790\ub9ac \uc131\ubd84\uc744 \ube44\uad50\ud558\uace0, E\uc758 \ubc30\uc218\uac00 \uc544\ub2cc \ud574\ub3c4 \uc788\uc74c\uc744 \uc54c\uc544\ucc54",
+    "partial": "\uc77c\ubd80\ub9cc \uacc4\uc0b0\ud588\uac70\ub098 \uac19\uc740 \uc790\ub9ac \uc131\ubd84 \ube44\uad50\ub97c \ube60\ub728\ub9bc",
+    "none": "\uacc4\uc0b0 \uc5c6\uc774 \ubaa8\uc591\uc774 \ube44\uc2b7\ud55c \uac83\uc744 \uace0\ub984"
    },
    {
-    "criterion": "여러 해 만들기",
-    "full": "조건을 성분 관계로 정리하고 E의 배수가 아닌 서로 다른 B를 만듦",
-    "partial": "해는 만들었지만 E의 배수만 만들거나 관계는 말하지 못함",
-    "none": "조건을 만족하는 해가 없음"
+    "criterion": "\uc5ec\ub7ec \ud574 \ub9cc\ub4e4\uae30",
+    "full": "\uc870\uac74\uc744 \uc131\ubd84 \uad00\uacc4\ub85c \uc815\ub9ac\ud558\uace0 E\uc758 \ubc30\uc218\uac00 \uc544\ub2cc \uc11c\ub85c \ub2e4\ub978 B\ub97c \ub9cc\ub4e6",
+    "partial": "\ud574\ub294 \ub9cc\ub4e4\uc5c8\uc9c0\ub9cc E\uc758 \ubc30\uc218\ub9cc \ub9cc\ub4e4\uac70\ub098 \uad00\uacc4\ub294 \ub9d0\ud558\uc9c0 \ubabb\ud568",
+    "none": "\uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294 \ud574\uac00 \uc5c6\uc74c"
    },
    {
-    "criterion": "짐작의 수정",
-    "full": "지우의 '배수뿐' 짐작이 성립하지 않음을 자기 예로 말함",
-    "partial": "틀렸다고만 말함",
-    "none": "짐작을 그대로 받아들임"
+    "criterion": "\uc9d0\uc791\uc758 \uc218\uc815",
+    "full": "\uc9c0\uc6b0\uc758 '\ubc30\uc218\ubfd0' \uc9d0\uc791\uc774 \uc131\ub9bd\ud558\uc9c0 \uc54a\uc74c\uc744 \uc790\uae30 \uc608\ub85c \ub9d0\ud568",
+    "partial": "\ud2c0\ub838\ub2e4\uace0\ub9cc \ub9d0\ud568",
+    "none": "\uc9d0\uc791\uc744 \uadf8\ub300\ub85c \ubc1b\uc544\ub4e4\uc784"
    }
   ],
   "alternatives": [
-   "B = pE + qA 꼴로 보아도 된다. (p q ; 0 p)는 (p-q)E + qA이므로 'A의 일차식'이라고 설명해도 같은 답이다.",
-   "A, A², E, 0이 아닌 수를 곱한 A처럼 A와 관련된 행렬을 먼저 시험하는 방법도 좋다."
+   "B = pE + qA \uaf34\ub85c \ubcf4\uc544\ub3c4 \ub41c\ub2e4. (p q ; 0 p)\ub294 (p-q)E + qA\uc774\ubbc0\ub85c 'A\uc758 \uc77c\ucc28\uc2dd'\uc774\ub77c\uace0 \uc124\uba85\ud574\ub3c4 \uac19\uc740 \ub2f5\uc774\ub2e4.",
+   "A, A\u00b2, E, 0\uc774 \uc544\ub2cc \uc218\ub97c \uacf1\ud55c A\ucc98\ub7fc A\uc640 \uad00\ub828\ub41c \ud589\ub82c\uc744 \uba3c\uc800 \uc2dc\ud5d8\ud558\ub294 \ubc29\ubc95\ub3c4 \uc88b\ub2e4."
   ],
   "hardCases": [
-   "성분이 정수가 아닌 값(0.5, 분수)이면 계산 실수가 쉬우므로 사람이 확인한다.",
-   "q=0인 해는 E의 배수라서 이 과제에서는 인정하지 않지만, 조건 자체는 맞다.",
-   "다른 A를 쓰면 조건이 달라진다. 이 결론은 A = (1 1 ; 0 1)에 대한 것이다."
+   "\uc131\ubd84\uc774 \uc815\uc218\uac00 \uc544\ub2cc \uac12(0.5, \ubd84\uc218)\uc774\uba74 \uacc4\uc0b0 \uc2e4\uc218\uac00 \uc26c\uc6b0\ubbc0\ub85c \uc0ac\ub78c\uc774 \ud655\uc778\ud55c\ub2e4.",
+   "q=0\uc778 \ud574\ub294 E\uc758 \ubc30\uc218\ub77c\uc11c \uc774 \uacfc\uc81c\uc5d0\uc11c\ub294 \uc778\uc815\ud558\uc9c0 \uc54a\uc9c0\ub9cc, \uc870\uac74 \uc790\uccb4\ub294 \ub9de\ub2e4.",
+   "\ub2e4\ub978 A\ub97c \uc4f0\uba74 \uc870\uac74\uc774 \ub2ec\ub77c\uc9c4\ub2e4. \uc774 \uacb0\ub860\uc740 A = (1 1 ; 0 1)\uc5d0 \ub300\ud55c \uac83\uc774\ub2e4."
   ],
   "cautions": {
-   "language": "'교환'이라는 용어를 쓰지 않고 'AB와 BA가 같다'로 풀어 썼다. 'E의 배수'는 괄호로 뜻을 적었다.",
-   "culture": "동아리 대화는 보편적인 학교 상황이다.",
-   "accessibility": "그림 없이 문장과 숫자만으로 풀 수 있게 했다. 행렬은 (1행 ; 2행) 꼴의 글로 적고, 처음에 읽는 법을 알려 준다. 예: (1 1 ; 0 1)은 '1행은 1 1, 2행은 0 1'로 읽는다. 위 첨자 -1(역행렬)은 'A 인버스'라고 읽는다. 색에 의존하지 않는다."
+   "language": "'\uad50\ud658'\uc774\ub77c\ub294 \uc6a9\uc5b4\ub97c \uc4f0\uc9c0 \uc54a\uace0 'AB\uc640 BA\uac00 \uac19\ub2e4'\ub85c \ud480\uc5b4 \uc37c\ub2e4. 'E\uc758 \ubc30\uc218'\ub294 \uad04\ud638\ub85c \ub73b\uc744 \uc801\uc5c8\ub2e4.",
+   "culture": "\ub3d9\uc544\ub9ac \ub300\ud654\ub294 \ubcf4\ud3b8\uc801\uc778 \ud559\uad50 \uc0c1\ud669\uc774\ub2e4.",
+   "accessibility": "\uadf8\ub9bc \uc5c6\uc774 \ubb38\uc7a5\uacfc \uc22b\uc790\ub9cc\uc73c\ub85c \ud480 \uc218 \uc788\uac8c \ud588\ub2e4. \ud589\ub82c\uc740 (1\ud589 ; 2\ud589) \uaf34\uc758 \uae00\ub85c \uc801\uace0, \ucc98\uc74c\uc5d0 \uc77d\ub294 \ubc95\uc744 \uc54c\ub824 \uc900\ub2e4. \uc608: (1 1 ; 0 1)\uc740 '1\ud589\uc740 1 1, 2\ud589\uc740 0 1'\ub85c \uc77d\ub294\ub2e4. \uc704 \ucca8\uc790 -1(\uc5ed\ud589\ub82c)\uc740 'A \uc778\ubc84\uc2a4'\ub77c\uace0 \uc77d\ub294\ub2e4. \uc0c9\uc5d0 \uc758\uc874\ud558\uc9c0 \uc54a\ub294\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "고른 후보 B의 정오",
-    "만든 B가 AB=BA이고 E의 배수가 아닌지",
-    "서로 다른 B 3개인지"
+    "\uace0\ub978 \ud6c4\ubcf4 B\uc758 \uc815\uc624",
+    "\ub9cc\ub4e0 B\uac00 AB=BA\uc774\uace0 E\uc758 \ubc30\uc218\uac00 \uc544\ub2cc\uc9c0",
+    "\uc11c\ub85c \ub2e4\ub978 B 3\uac1c\uc778\uc9c0"
    ],
    "human": [
-    "성분 사이 관계를 설명한 글의 정확성과 자유로운 자리에 대한 이해"
+    "\uc131\ubd84 \uc0ac\uc774 \uad00\uacc4\ub97c \uc124\uba85\ud55c \uae00\uc758 \uc815\ud655\uc131\uacfc \uc790\uc720\ub85c\uc6b4 \uc790\ub9ac\uc5d0 \ub300\ud55c \uc774\ud574"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "z-m-29-02",
   "subject": "math",
   "grade": "H1",
   "cell": "math|H1|matrix",
-  "topic": "2×2 행렬의 역행렬 존재 조건: 역행렬이 없는 두 행렬의 합",
+  "topic": "2\u00d72 \ud589\ub82c\uc758 \uc5ed\ud589\ub82c \uc874\uc7ac \uc870\uac74: \uc5ed\ud589\ub82c\uc774 \uc5c6\ub294 \ub450 \ud589\ub82c\uc758 \ud569",
   "level": 3,
-  "levelLabel": "고등",
-  "title": "'둘 다 역행렬이 없으니 합도 없다'는 주장 시험하기",
+  "levelLabel": "\uace0\ub4f1",
+  "title": "'\ub458 \ub2e4 \uc5ed\ud589\ub82c\uc774 \uc5c6\uc73c\ub2c8 \ud569\ub3c4 \uc5c6\ub2e4'\ub294 \uc8fc\uc7a5 \uc2dc\ud5d8\ud558\uae30",
   "uiLang": "ko",
   "format": "judge-evidence-explain",
   "generative": true,
-  "goal": "역행렬이 없는 두 행렬을 더하면 어떻게 되는지 직접 만든 반례로 판단하고, 그 예에서 ad-bc의 값을 근거로 주장의 오류를 설명한다.",
+  "goal": "\uc5ed\ud589\ub82c\uc774 \uc5c6\ub294 \ub450 \ud589\ub82c\uc744 \ub354\ud558\uba74 \uc5b4\ub5bb\uac8c \ub418\ub294\uc9c0 \uc9c1\uc811 \ub9cc\ub4e0 \ubc18\ub840\ub85c \ud310\ub2e8\ud558\uace0, \uadf8 \uc608\uc5d0\uc11c ad-bc\uc758 \uac12\uc744 \uadfc\uac70\ub85c \uc8fc\uc7a5\uc758 \uc624\ub958\ub97c \uc124\uba85\ud55c\ub2e4.",
   "thinking": [
-   "일반화 주장의 참거짓 판단하기",
-   "조건을 만족하는 반례를 직접 만들기",
-   "근거(ad-bc의 값)로 설명하기"
+   "\uc77c\ubc18\ud654 \uc8fc\uc7a5\uc758 \ucc38\uac70\uc9d3 \ud310\ub2e8\ud558\uae30",
+   "\uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294 \ubc18\ub840\ub97c \uc9c1\uc811 \ub9cc\ub4e4\uae30",
+   "\uadfc\uac70(ad-bc\uc758 \uac12)\ub85c \uc124\uba85\ud558\uae30"
   ],
-  "differsFromPlain": "단순 연습은 주어진 행렬의 역행렬이 있는지 ad-bc를 계산해 판정한다. 여기서는 '둘 다 없으면 합도 없다'는 주장을 판단하고, 그 주장을 깨는 두 행렬을 학생이 만들어 보인다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uc8fc\uc5b4\uc9c4 \ud589\ub82c\uc758 \uc5ed\ud589\ub82c\uc774 \uc788\ub294\uc9c0 ad-bc\ub97c \uacc4\uc0b0\ud574 \ud310\uc815\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 '\ub458 \ub2e4 \uc5c6\uc73c\uba74 \ud569\ub3c4 \uc5c6\ub2e4'\ub294 \uc8fc\uc7a5\uc744 \ud310\ub2e8\ud558\uace0, \uadf8 \uc8fc\uc7a5\uc744 \uae68\ub294 \ub450 \ud589\ub82c\uc744 \ud559\uc0dd\uc774 \ub9cc\ub4e4\uc5b4 \ubcf4\uc778\ub2e4.",
   "prerequisites": [
-   "2×2 행렬 (a b ; c d)가 역행렬을 가질 조건: ad-bc가 0이 아님",
-   "행렬의 합",
-   "[난이도 구분] H1은 이 제작 배정의 난이도 수준이며 교육과정의 학년 배정이 아니다. 행렬 단원의 역행렬 단원을 배운 학생을 가정한다."
+   "2\u00d72 \ud589\ub82c (a b ; c d)\uac00 \uc5ed\ud589\ub82c\uc744 \uac00\uc9c8 \uc870\uac74: ad-bc\uac00 0\uc774 \uc544\ub2d8",
+   "\ud589\ub82c\uc758 \ud569",
+   "[\ub09c\uc774\ub3c4 \uad6c\ubd84] H1\uc740 \uc774 \uc81c\uc791 \ubc30\uc815\uc758 \ub09c\uc774\ub3c4 \uc218\uc900\uc774\uba70 \uad50\uc721\uacfc\uc815\uc758 \ud559\ub144 \ubc30\uc815\uc774 \uc544\ub2c8\ub2e4. \ud589\ub82c \ub2e8\uc6d0\uc758 \uc5ed\ud589\ub82c \ub2e8\uc6d0\uc744 \ubc30\uc6b4 \ud559\uc0dd\uc744 \uac00\uc815\ud55c\ub2e4."
   ],
   "minutes": 14,
   "curriculum": null,
-  "material": "아래의 행렬은 모두 성분이 실수인 2×2 행렬이다. (a b ; c d)는 1행이 a b, 2행이 c d인 행렬이고, 이것이 역행렬을 갖는 것은 ad-bc가 0이 아닐 때이다. 지아가 말했다. \"A에도 B에도 역행렬이 없으면, A+B에도 역행렬이 없어. 없는 것끼리 더하면 여전히 없는 거지.\" 지아의 말을 믿을 수 있는지 살펴보자.",
+  "material": "\uc544\ub798\uc758 \ud589\ub82c\uc740 \ubaa8\ub450 \uc131\ubd84\uc774 \uc2e4\uc218\uc778 2\u00d72 \ud589\ub82c\uc774\ub2e4. (a b ; c d)\ub294 1\ud589\uc774 a b, 2\ud589\uc774 c d\uc778 \ud589\ub82c\uc774\uace0, \uc774\uac83\uc774 \uc5ed\ud589\ub82c\uc744 \uac16\ub294 \uac83\uc740 ad-bc\uac00 0\uc774 \uc544\ub2d0 \ub54c\uc774\ub2e4. \uc9c0\uc544\uac00 \ub9d0\ud588\ub2e4. \"A\uc5d0\ub3c4 B\uc5d0\ub3c4 \uc5ed\ud589\ub82c\uc774 \uc5c6\uc73c\uba74, A+B\uc5d0\ub3c4 \uc5ed\ud589\ub82c\uc774 \uc5c6\uc5b4. \uc5c6\ub294 \uac83\ub07c\ub9ac \ub354\ud558\uba74 \uc5ec\uc804\ud788 \uc5c6\ub294 \uac70\uc9c0.\" \uc9c0\uc544\uc758 \ub9d0\uc744 \ubbff\uc744 \uc218 \uc788\ub294\uc9c0 \uc0b4\ud3b4\ubcf4\uc790.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
-    "prompt": "A와 B에 모두 역행렬이 없다고 할 때, 다음 중 옳은 것은 무엇일까요?",
+    "prompt": "A\uc640 B\uc5d0 \ubaa8\ub450 \uc5ed\ud589\ub82c\uc774 \uc5c6\ub2e4\uace0 \ud560 \ub54c, \ub2e4\uc74c \uc911 \uc633\uc740 \uac83\uc740 \ubb34\uc5c7\uc77c\uae4c\uc694?",
     "options": [
      {
       "id": "a",
-      "text": "A+B에는 반드시 역행렬이 없다",
-      "reveals": "'없는 것끼리 더하면 없다'는 말의 느낌으로 판단했어요. 실제로 두 행렬을 더하면 성분이 섞이니, ad-bc를 직접 구해 보세요."
+      "text": "A+B\uc5d0\ub294 \ubc18\ub4dc\uc2dc \uc5ed\ud589\ub82c\uc774 \uc5c6\ub2e4",
+      "reveals": "'\uc5c6\ub294 \uac83\ub07c\ub9ac \ub354\ud558\uba74 \uc5c6\ub2e4'\ub294 \ub9d0\uc758 \ub290\ub08c\uc73c\ub85c \ud310\ub2e8\ud588\uc5b4\uc694. \uc2e4\uc81c\ub85c \ub450 \ud589\ub82c\uc744 \ub354\ud558\uba74 \uc131\ubd84\uc774 \uc11e\uc774\ub2c8, ad-bc\ub97c \uc9c1\uc811 \uad6c\ud574 \ubcf4\uc138\uc694."
      },
      {
       "id": "b",
-      "text": "A+B에 역행렬이 있게 되는 A, B가 있다"
+      "text": "A+B\uc5d0 \uc5ed\ud589\ub82c\uc774 \uc788\uac8c \ub418\ub294 A, B\uac00 \uc788\ub2e4"
      },
      {
       "id": "c",
-      "text": "A+B에는 반드시 역행렬이 있다",
-      "reveals": "'부족한 것끼리 채운다'는 느낌으로 판단했어요. 하지만 A=B인 경우 A+B=2A이니 이 판단이 항상 맞는지 시험해 보세요."
+      "text": "A+B\uc5d0\ub294 \ubc18\ub4dc\uc2dc \uc5ed\ud589\ub82c\uc774 \uc788\ub2e4",
+      "reveals": "'\ubd80\uc871\ud55c \uac83\ub07c\ub9ac \ucc44\uc6b4\ub2e4'\ub294 \ub290\ub08c\uc73c\ub85c \ud310\ub2e8\ud588\uc5b4\uc694. \ud558\uc9c0\ub9cc A=B\uc778 \uacbd\uc6b0 A+B=2A\uc774\ub2c8 \uc774 \ud310\ub2e8\uc774 \ud56d\uc0c1 \ub9de\ub294\uc9c0 \uc2dc\ud5d8\ud574 \ubcf4\uc138\uc694."
      },
      {
       "id": "d",
-      "text": "A와 B의 성분을 모르면 A+B에 대해 아무 말도 할 수 없다",
-      "reveals": "특정한 값을 몰라도 '이런 예가 있다/없다'는 말은 할 수 있어요. 예 하나로 확인할 수 있는 판단이 있는지 생각해 보세요."
+      "text": "A\uc640 B\uc758 \uc131\ubd84\uc744 \ubaa8\ub974\uba74 A+B\uc5d0 \ub300\ud574 \uc544\ubb34 \ub9d0\ub3c4 \ud560 \uc218 \uc5c6\ub2e4",
+      "reveals": "\ud2b9\uc815\ud55c \uac12\uc744 \ubab0\ub77c\ub3c4 '\uc774\ub7f0 \uc608\uac00 \uc788\ub2e4/\uc5c6\ub2e4'\ub294 \ub9d0\uc740 \ud560 \uc218 \uc788\uc5b4\uc694. \uc608 \ud558\ub098\ub85c \ud655\uc778\ud560 \uc218 \uc788\ub294 \ud310\ub2e8\uc774 \uc788\ub294\uc9c0 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694."
      }
     ],
     "correct": [
      "b"
     ],
-    "explain": "A=(1 0 ; 0 0), B=(0 0 ; 0 1)은 ad-bc가 모두 0이어서 역행렬이 없지만, A+B는 단위행렬이라 ad-bc=1이다. 이런 예가 하나라도 있으면 '반드시 없다'는 거짓이다. 한편 A=B이면 A+B=2A도 역행렬이 없으므로 '반드시 있다'도 거짓이다.",
+    "explain": "A=(1 0 ; 0 0), B=(0 0 ; 0 1)\uc740 ad-bc\uac00 \ubaa8\ub450 0\uc774\uc5b4\uc11c \uc5ed\ud589\ub82c\uc774 \uc5c6\uc9c0\ub9cc, A+B\ub294 \ub2e8\uc704\ud589\ub82c\uc774\ub77c ad-bc=1\uc774\ub2e4. \uc774\ub7f0 \uc608\uac00 \ud558\ub098\ub77c\ub3c4 \uc788\uc73c\uba74 '\ubc18\ub4dc\uc2dc \uc5c6\ub2e4'\ub294 \uac70\uc9d3\uc774\ub2e4. \ud55c\ud3b8 A=B\uc774\uba74 A+B=2A\ub3c4 \uc5ed\ud589\ub82c\uc774 \uc5c6\uc73c\ubbc0\ub85c '\ubc18\ub4dc\uc2dc \uc788\ub2e4'\ub3c4 \uac70\uc9d3\uc774\ub2e4.",
     "hints": [
-     "지금 판단이 맞는지 가늠하려면, 역행렬이 없는 행렬(ad-bc=0) 한두 개를 직접 만들어 더해 보세요.",
-     "더한 행렬의 ad-bc를 구해 0인지 아닌지 확인해 보세요."
+     "\uc9c0\uae08 \ud310\ub2e8\uc774 \ub9de\ub294\uc9c0 \uac00\ub2a0\ud558\ub824\uba74, \uc5ed\ud589\ub82c\uc774 \uc5c6\ub294 \ud589\ub82c(ad-bc=0) \ud55c\ub450 \uac1c\ub97c \uc9c1\uc811 \ub9cc\ub4e4\uc5b4 \ub354\ud574 \ubcf4\uc138\uc694.",
+     "\ub354\ud55c \ud589\ub82c\uc758 ad-bc\ub97c \uad6c\ud574 0\uc778\uc9c0 \uc544\ub2cc\uc9c0 \ud655\uc778\ud574 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "build",
-    "prompt": "A = (a b ; c d), B = (p q ; r s)에서 A와 B에는 역행렬이 없지만 A+B에는 역행렬이 있는 서로 다른 예를 2개 만들어 보세요. 성분은 절댓값이 9 이하인 정수로 하세요.",
+    "prompt": "A = (a b ; c d), B = (p q ; r s)\uc5d0\uc11c A\uc640 B\uc5d0\ub294 \uc5ed\ud589\ub82c\uc774 \uc5c6\uc9c0\ub9cc A+B\uc5d0\ub294 \uc5ed\ud589\ub82c\uc774 \uc788\ub294 \uc11c\ub85c \ub2e4\ub978 \uc608\ub97c 2\uac1c \ub9cc\ub4e4\uc5b4 \ubcf4\uc138\uc694. \uc131\ubd84\uc740 \uc808\ub313\uac12\uc774 9 \uc774\ud558\uc778 \uc815\uc218\ub85c \ud558\uc138\uc694.",
     "vars": [
      {
       "name": "a",
-      "label": "a (A의 1행 1열)"
+      "label": "a (A\uc758 1\ud589 1\uc5f4)"
      },
      {
       "name": "b",
-      "label": "b (A의 1행 2열)"
+      "label": "b (A\uc758 1\ud589 2\uc5f4)"
      },
      {
       "name": "c",
-      "label": "c (A의 2행 1열)"
+      "label": "c (A\uc758 2\ud589 1\uc5f4)"
      },
      {
       "name": "d",
-      "label": "d (A의 2행 2열)"
+      "label": "d (A\uc758 2\ud589 2\uc5f4)"
      },
      {
       "name": "p",
-      "label": "p (B의 1행 1열)"
+      "label": "p (B\uc758 1\ud589 1\uc5f4)"
      },
      {
       "name": "q",
-      "label": "q (B의 1행 2열)"
+      "label": "q (B\uc758 1\ud589 2\uc5f4)"
      },
      {
       "name": "r",
-      "label": "r (B의 2행 1열)"
+      "label": "r (B\uc758 2\ud589 1\uc5f4)"
      },
      {
       "name": "s",
-      "label": "s (B의 2행 2열)"
+      "label": "s (B\uc758 2\ud589 2\uc5f4)"
      }
     ],
     "constraints": [
      {
       "id": "c1",
       "expr": "a*d-b*c==0",
-      "ok": "A에는 역행렬이 없어요.",
-      "fail": "A의 ad-bc가 0이 아니에요. 이러면 A에는 역행렬이 있어요."
+      "ok": "A\uc5d0\ub294 \uc5ed\ud589\ub82c\uc774 \uc5c6\uc5b4\uc694.",
+      "fail": "A\uc758 ad-bc\uac00 0\uc774 \uc544\ub2c8\uc5d0\uc694. \uc774\ub7ec\uba74 A\uc5d0\ub294 \uc5ed\ud589\ub82c\uc774 \uc788\uc5b4\uc694."
      },
      {
       "id": "c2",
       "expr": "p*s-q*r==0",
-      "ok": "B에는 역행렬이 없어요.",
-      "fail": "B의 ad-bc에 해당하는 값(ps-qr)이 0이 아니에요."
+      "ok": "B\uc5d0\ub294 \uc5ed\ud589\ub82c\uc774 \uc5c6\uc5b4\uc694.",
+      "fail": "B\uc758 ad-bc\uc5d0 \ud574\ub2f9\ud558\ub294 \uac12(ps-qr)\uc774 0\uc774 \uc544\ub2c8\uc5d0\uc694."
      },
      {
       "id": "c3",
       "expr": "(a+p)*(d+s)-(b+q)*(c+r)!=0",
-      "ok": "A+B에는 역행렬이 있어요.",
-      "fail": "A+B의 ad-bc에 해당하는 값이 0이에요. 합에도 역행렬이 없어요."
+      "ok": "A+B\uc5d0\ub294 \uc5ed\ud589\ub82c\uc774 \uc788\uc5b4\uc694.",
+      "fail": "A+B\uc758 ad-bc\uc5d0 \ud574\ub2f9\ud558\ub294 \uac12\uc774 0\uc774\uc5d0\uc694. \ud569\uc5d0\ub3c4 \uc5ed\ud589\ub82c\uc774 \uc5c6\uc5b4\uc694."
      },
      {
       "id": "c4",
       "expr": "abs(a)<=9 && abs(b)<=9 && abs(c)<=9 && abs(d)<=9 && abs(p)<=9 && abs(q)<=9 && abs(r)<=9 && abs(s)<=9",
-      "ok": "성분의 절댓값이 9 이하예요.",
-      "fail": "성분의 절댓값이 9보다 커요."
+      "ok": "\uc131\ubd84\uc758 \uc808\ub313\uac12\uc774 9 \uc774\ud558\uc608\uc694.",
+      "fail": "\uc131\ubd84\uc758 \uc808\ub313\uac12\uc774 9\ubcf4\ub2e4 \ucee4\uc694."
      },
      {
       "id": "c5",
       "expr": "a==floor(a) && b==floor(b) && c==floor(c) && d==floor(d) && p==floor(p) && q==floor(q) && r==floor(r) && s==floor(s)",
-      "ok": "성분이 모두 정수예요.",
-      "fail": "성분은 모두 정수여야 해요."
+      "ok": "\uc131\ubd84\uc774 \ubaa8\ub450 \uc815\uc218\uc608\uc694.",
+      "fail": "\uc131\ubd84\uc740 \ubaa8\ub450 \uc815\uc218\uc5ec\uc57c \ud574\uc694."
      }
     ],
     "need": 2,
@@ -449,22 +449,22 @@
       "s": 0
      }
     ],
-    "explain": "예: A=(1 0 ; 0 0), B=(0 0 ; 0 1)이면 A+B=(1 0 ; 0 1). 또는 A=(1 2 ; 2 4), B=(1 1 ; 1 1)이면 ad-bc가 각각 0, 0인데 A+B=(2 3 ; 3 5)는 10-9=1이다. A와 B를 서로 바꾼 것은 같은 예로 센다.",
+    "explain": "\uc608: A=(1 0 ; 0 0), B=(0 0 ; 0 1)\uc774\uba74 A+B=(1 0 ; 0 1). \ub610\ub294 A=(1 2 ; 2 4), B=(1 1 ; 1 1)\uc774\uba74 ad-bc\uac00 \uac01\uac01 0, 0\uc778\ub370 A+B=(2 3 ; 3 5)\ub294 10-9=1\uc774\ub2e4. A\uc640 B\ub97c \uc11c\ub85c \ubc14\uafbc \uac83\uc740 \uac19\uc740 \uc608\ub85c \uc13c\ub2e4.",
     "hints": [
-     "먼저 역행렬이 없는 행렬(ad-bc=0)을 두 개 만들고, 합의 네 성분을 적어 보세요.",
-     "합의 ad-bc가 0이 되지 않으려면 어떤 성분이 어떻게 달라져야 할지 생각하며 두 행렬의 성분 몇 개를 바꿔 보세요."
+     "\uba3c\uc800 \uc5ed\ud589\ub82c\uc774 \uc5c6\ub294 \ud589\ub82c(ad-bc=0)\uc744 \ub450 \uac1c \ub9cc\ub4e4\uace0, \ud569\uc758 \ub124 \uc131\ubd84\uc744 \uc801\uc5b4 \ubcf4\uc138\uc694.",
+     "\ud569\uc758 ad-bc\uac00 0\uc774 \ub418\uc9c0 \uc54a\uc73c\ub824\uba74 \uc5b4\ub5a4 \uc131\ubd84\uc774 \uc5b4\ub5bb\uac8c \ub2ec\ub77c\uc838\uc57c \ud560\uc9c0 \uc0dd\uac01\ud558\uba70 \ub450 \ud589\ub82c\uc758 \uc131\ubd84 \uba87 \uac1c\ub97c \ubc14\uafd4 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s3",
     "kind": "write",
-    "prompt": "지아에게 어떻게 말해 줄래요? 내가 만든 예 하나로 A, B, A+B 각각의 ad-bc 값을 쓰고, 지아의 말이 어디서 틀렸는지 설명하세요.",
-    "placeholder": "예: A=(...), B=(...)로 해 보면 ...",
+    "prompt": "\uc9c0\uc544\uc5d0\uac8c \uc5b4\ub5bb\uac8c \ub9d0\ud574 \uc904\ub798\uc694? \ub0b4\uac00 \ub9cc\ub4e0 \uc608 \ud558\ub098\ub85c A, B, A+B \uac01\uac01\uc758 ad-bc \uac12\uc744 \uc4f0\uace0, \uc9c0\uc544\uc758 \ub9d0\uc774 \uc5b4\ub514\uc11c \ud2c0\ub838\ub294\uc9c0 \uc124\uba85\ud558\uc138\uc694.",
+    "placeholder": "\uc608: A=(...), B=(...)\ub85c \ud574 \ubcf4\uba74 ...",
     "minChars": 25,
     "checks": [
      {
       "id": "w1",
-      "label": "구체적인 숫자 예를 들었다",
+      "label": "\uad6c\uccb4\uc801\uc778 \uc22b\uc790 \uc608\ub97c \ub4e4\uc5c8\ub2e4",
       "mode": "any",
       "patterns": [
        "\\d"
@@ -472,688 +472,689 @@
      },
      {
       "id": "w2",
-      "label": "역행렬이 있는지의 근거로 ad-bc(행렬식)를 썼다",
+      "label": "\uc5ed\ud589\ub82c\uc774 \uc788\ub294\uc9c0\uc758 \uadfc\uac70\ub85c ad-bc(\ud589\ub82c\uc2dd)\ub97c \uc37c\ub2e4",
       "mode": "any",
       "patterns": [
-       "ad\\s*[-−–]\\s*bc",
-       "행렬식",
-       "0이\\s*아니",
-       "≠\\s*0",
+       "ad\\s*[-\u2212\u2013]\\s*bc",
+       "\ud589\ub82c\uc2dd",
+       "0\uc774\\s*\uc544\ub2c8",
+       "\u2260\\s*0",
        "!=\\s*0"
       ]
      },
      {
       "id": "w3",
-      "label": "'합에는 역행렬이 있을 수 있다/주장이 틀렸다'는 결론을 말했다",
+      "label": "'\ud569\uc5d0\ub294 \uc5ed\ud589\ub82c\uc774 \uc788\uc744 \uc218 \uc788\ub2e4/\uc8fc\uc7a5\uc774 \ud2c0\ub838\ub2e4'\ub294 \uacb0\ub860\uc744 \ub9d0\ud588\ub2e4",
       "mode": "any",
       "patterns": [
-       "틀렸",
-       "틀려",
-       "틀린",
-       "반례",
-       "아니(다|야|에요|예요|라)",
-       "있을\\s*수",
-       "않(을|는)\\s*수",
-       "아닐\\s*수"
+       "\ud2c0\ub838",
+       "\ud2c0\ub824",
+       "\ud2c0\ub9b0",
+       "\ubc18\ub840",
+       "\uc544\ub2c8(\ub2e4|\uc57c|\uc5d0\uc694|\uc608\uc694|\ub77c)",
+       "\uc788\uc744\\s*\uc218",
+       "\uc54a(\uc744|\ub294)\\s*\uc218",
+       "\uc544\ub2d0\\s*\uc218"
       ]
      }
     ],
     "selfAssess": [
-     "내가 든 예에서 A와 B 각각의 값이 0이고 A+B의 값이 0이 아닌지 숫자로 보였는가?",
-     "'예 하나면 반드시/항상이라는 말을 깨기에 충분하다'는 것을 알고 썼는가?",
-     "지아의 말이 어떤 느낌(없는 것끼리 더하면 없다)에 기대었는지 짚었는가?"
+     "\ub0b4\uac00 \ub4e0 \uc608\uc5d0\uc11c A\uc640 B \uac01\uac01\uc758 \uac12\uc774 0\uc774\uace0 A+B\uc758 \uac12\uc774 0\uc774 \uc544\ub2cc\uc9c0 \uc22b\uc790\ub85c \ubcf4\uc600\ub294\uac00?",
+     "'\uc608 \ud558\ub098\uba74 \ubc18\ub4dc\uc2dc/\ud56d\uc0c1\uc774\ub77c\ub294 \ub9d0\uc744 \uae68\uae30\uc5d0 \ucda9\ubd84\ud558\ub2e4'\ub294 \uac83\uc744 \uc54c\uace0 \uc37c\ub294\uac00?",
+     "\uc9c0\uc544\uc758 \ub9d0\uc774 \uc5b4\ub5a4 \ub290\ub08c(\uc5c6\ub294 \uac83\ub07c\ub9ac \ub354\ud558\uba74 \uc5c6\ub2e4)\uc5d0 \uae30\ub300\uc5c8\ub294\uc9c0 \uc9da\uc5c8\ub294\uac00?"
     ],
     "modelAnswers": [
      {
-      "text": "예를 들어 A=(1 0 ; 0 0), B=(0 0 ; 0 1)이면 A도 B도 ad-bc가 0이라 역행렬이 없어. 그런데 A+B는 단위행렬이라 ad-bc가 1이니까 역행렬이 있어. 그래서 지아의 말은 틀렸어."
+      "text": "\uc608\ub97c \ub4e4\uc5b4 A=(1 0 ; 0 0), B=(0 0 ; 0 1)\uc774\uba74 A\ub3c4 B\ub3c4 ad-bc\uac00 0\uc774\ub77c \uc5ed\ud589\ub82c\uc774 \uc5c6\uc5b4. \uadf8\ub7f0\ub370 A+B\ub294 \ub2e8\uc704\ud589\ub82c\uc774\ub77c ad-bc\uac00 1\uc774\ub2c8\uae4c \uc5ed\ud589\ub82c\uc774 \uc788\uc5b4. \uadf8\ub798\uc11c \uc9c0\uc544\uc758 \ub9d0\uc740 \ud2c0\ub838\uc5b4."
      },
      {
-      "text": "A=(1 2 ; 2 4), B=(1 1 ; 1 1)이면 둘 다 ad-bc가 0이야. 합은 (2 3 ; 3 5)이고 10-9=1이라서 역행렬이 있어. 둘 다 없다고 합도 없는 건 아니야.",
-      "note": "행렬식을 쓰는 방식이 달라도(ad-bc, 10-9 등) 근거가 분명하면 좋다."
+      "text": "A=(1 2 ; 2 4), B=(1 1 ; 1 1)\uc774\uba74 \ub458 \ub2e4 ad-bc\uac00 0\uc774\uc57c. \ud569\uc740 (2 3 ; 3 5)\uc774\uace0 10-9=1\uc774\ub77c\uc11c \uc5ed\ud589\ub82c\uc774 \uc788\uc5b4. \ub458 \ub2e4 \uc5c6\ub2e4\uace0 \ud569\ub3c4 \uc5c6\ub294 \uac74 \uc544\ub2c8\uc57c.",
+      "note": "\ud589\ub82c\uc2dd\uc744 \uc4f0\ub294 \ubc29\uc2dd\uc774 \ub2ec\ub77c\ub3c4(ad-bc, 10-9 \ub4f1) \uadfc\uac70\uac00 \ubd84\uba85\ud558\uba74 \uc88b\ub2e4."
      }
     ],
     "badAnswers": [
      {
-      "text": "지아가 맞아요. 둘 다 없으니 합도 없어요.",
-      "why": "주장을 받아들였고 예도 근거도 없다."
+      "text": "\uc9c0\uc544\uac00 \ub9de\uc544\uc694. \ub458 \ub2e4 \uc5c6\uc73c\ub2c8 \ud569\ub3c4 \uc5c6\uc5b4\uc694.",
+      "why": "\uc8fc\uc7a5\uc744 \ubc1b\uc544\ub4e4\uc600\uace0 \uc608\ub3c4 \uadfc\uac70\ub3c4 \uc5c6\ub2e4."
      },
      {
-      "text": "지아가 틀렸어. 3이랑 4를 더해 봤더니 달라.",
-      "why": "숫자는 있지만 어떤 행렬인지, 역행렬 유무를 어떻게 확인했는지 없다."
+      "text": "\uc9c0\uc544\uac00 \ud2c0\ub838\uc5b4. 3\uc774\ub791 4\ub97c \ub354\ud574 \ubd24\ub354\ub2c8 \ub2ec\ub77c.",
+      "why": "\uc22b\uc790\ub294 \uc788\uc9c0\ub9cc \uc5b4\ub5a4 \ud589\ub82c\uc778\uc9c0, \uc5ed\ud589\ub82c \uc720\ubb34\ub97c \uc5b4\ub5bb\uac8c \ud655\uc778\ud588\ub294\uc9c0 \uc5c6\ub2e4."
      }
     ],
-    "humanReview": "들은 예가 실제로 조건(A, B 모두 ad-bc=0, 합은 0이 아님)을 만족하는지, 설명이 지아의 오해(느낌)를 짚었는지는 사람이 읽어 확인한다.",
+    "humanReview": "\ub4e4\uc740 \uc608\uac00 \uc2e4\uc81c\ub85c \uc870\uac74(A, B \ubaa8\ub450 ad-bc=0, \ud569\uc740 0\uc774 \uc544\ub2d8)\uc744 \ub9cc\uc871\ud558\ub294\uc9c0, \uc124\uba85\uc774 \uc9c0\uc544\uc758 \uc624\ud574(\ub290\ub08c)\ub97c \uc9da\uc5c8\ub294\uc9c0\ub294 \uc0ac\ub78c\uc774 \uc77d\uc5b4 \ud655\uc778\ud55c\ub2e4.",
     "hints": [
-     "내가 만든 A, B, A+B 세 행렬의 ad-bc를 각각 계산해 한 줄씩 적어 보세요.",
-     "그 세 값을 지아의 말과 나란히 놓고, 어느 부분이 어긋나는지 문장으로 적어 보세요."
+     "\ub0b4\uac00 \ub9cc\ub4e0 A, B, A+B \uc138 \ud589\ub82c\uc758 ad-bc\ub97c \uac01\uac01 \uacc4\uc0b0\ud574 \ud55c \uc904\uc529 \uc801\uc5b4 \ubcf4\uc138\uc694.",
+     "\uadf8 \uc138 \uac12\uc744 \uc9c0\uc544\uc758 \ub9d0\uacfc \ub098\ub780\ud788 \ub193\uace0, \uc5b4\ub290 \ubd80\ubd84\uc774 \uc5b4\uae0b\ub098\ub294\uc9c0 \ubb38\uc7a5\uc73c\ub85c \uc801\uc5b4 \ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "판단",
-    "full": "'반드시 없다'도 '반드시 있다'도 아님을 알고 예로 확인함",
-    "partial": "결론은 맞지만 이유가 느낌에 그침",
-    "none": "지아의 말을 받아들임"
+    "criterion": "\ud310\ub2e8",
+    "full": "'\ubc18\ub4dc\uc2dc \uc5c6\ub2e4'\ub3c4 '\ubc18\ub4dc\uc2dc \uc788\ub2e4'\ub3c4 \uc544\ub2d8\uc744 \uc54c\uace0 \uc608\ub85c \ud655\uc778\ud568",
+    "partial": "\uacb0\ub860\uc740 \ub9de\uc9c0\ub9cc \uc774\uc720\uac00 \ub290\ub08c\uc5d0 \uadf8\uce68",
+    "none": "\uc9c0\uc544\uc758 \ub9d0\uc744 \ubc1b\uc544\ub4e4\uc784"
    },
    {
-    "criterion": "반례 만들기",
-    "full": "A, B의 ad-bc가 0이고 합의 값이 0이 아닌 예를 정확히 제시",
-    "partial": "예를 들었지만 어느 한 조건이 확인되지 않음",
-    "none": "예가 없음"
+    "criterion": "\ubc18\ub840 \ub9cc\ub4e4\uae30",
+    "full": "A, B\uc758 ad-bc\uac00 0\uc774\uace0 \ud569\uc758 \uac12\uc774 0\uc774 \uc544\ub2cc \uc608\ub97c \uc815\ud655\ud788 \uc81c\uc2dc",
+    "partial": "\uc608\ub97c \ub4e4\uc5c8\uc9c0\ub9cc \uc5b4\ub290 \ud55c \uc870\uac74\uc774 \ud655\uc778\ub418\uc9c0 \uc54a\uc74c",
+    "none": "\uc608\uac00 \uc5c6\uc74c"
    },
    {
-    "criterion": "근거 설명",
-    "full": "세 행렬의 ad-bc 값을 비교해 주장이 틀린 곳을 설명",
-    "partial": "틀렸다고만 말함",
-    "none": "설명이 없음"
+    "criterion": "\uadfc\uac70 \uc124\uba85",
+    "full": "\uc138 \ud589\ub82c\uc758 ad-bc \uac12\uc744 \ube44\uad50\ud574 \uc8fc\uc7a5\uc774 \ud2c0\ub9b0 \uacf3\uc744 \uc124\uba85",
+    "partial": "\ud2c0\ub838\ub2e4\uace0\ub9cc \ub9d0\ud568",
+    "none": "\uc124\uba85\uc774 \uc5c6\uc74c"
    }
   ],
   "alternatives": [
-   "영행렬이 아닌 A와 B를 쓰는 예(1 2 ; 2 4)와 (1 1 ; 1 1)도, 대각 성분만 있는 (1 0 ; 0 0)과 (0 0 ; 0 1)도 모두 유효한 반례이다.",
-   "A-B나 A와 B의 곱에 대해서도 같은 질문을 해 볼 수 있다(곱은 이 과제에서 다루지 않는다)."
+   "\uc601\ud589\ub82c\uc774 \uc544\ub2cc A\uc640 B\ub97c \uc4f0\ub294 \uc608(1 2 ; 2 4)\uc640 (1 1 ; 1 1)\ub3c4, \ub300\uac01 \uc131\ubd84\ub9cc \uc788\ub294 (1 0 ; 0 0)\uacfc (0 0 ; 0 1)\ub3c4 \ubaa8\ub450 \uc720\ud6a8\ud55c \ubc18\ub840\uc774\ub2e4.",
+   "A-B\ub098 A\uc640 B\uc758 \uacf1\uc5d0 \ub300\ud574\uc11c\ub3c4 \uac19\uc740 \uc9c8\ubb38\uc744 \ud574 \ubcfc \uc218 \uc788\ub2e4(\uacf1\uc740 \uc774 \uacfc\uc81c\uc5d0\uc11c \ub2e4\ub8e8\uc9c0 \uc54a\ub294\ub2e4)."
   ],
   "hardCases": [
-   "A가 영행렬인 경우 A+B=B라 역행렬이 없으므로 반례가 되지 못한다. 학생이 영행렬을 쓰려 하면 합을 직접 확인하게 한다.",
-   "성분이 분수인 반례는 유효하지만 계산 실수 가능성이 커서 사람이 확인한다."
+   "A\uac00 \uc601\ud589\ub82c\uc778 \uacbd\uc6b0 A+B=B\ub77c \uc5ed\ud589\ub82c\uc774 \uc5c6\uc73c\ubbc0\ub85c \ubc18\ub840\uac00 \ub418\uc9c0 \ubabb\ud55c\ub2e4. \ud559\uc0dd\uc774 \uc601\ud589\ub82c\uc744 \uc4f0\ub824 \ud558\uba74 \ud569\uc744 \uc9c1\uc811 \ud655\uc778\ud558\uac8c \ud55c\ub2e4.",
+   "\uc131\ubd84\uc774 \ubd84\uc218\uc778 \ubc18\ub840\ub294 \uc720\ud6a8\ud558\uc9c0\ub9cc \uacc4\uc0b0 \uc2e4\uc218 \uac00\ub2a5\uc131\uc774 \ucee4\uc11c \uc0ac\ub78c\uc774 \ud655\uc778\ud55c\ub2e4."
   ],
   "cautions": {
-   "language": "'반드시'와 '있을 수 있다'의 차이가 핵심 어휘이므로 첫 단계의 선택지에서 한 번씩 대비시켰다.",
-   "culture": "친구의 말을 검증하는 상황은 보편적이다.",
-   "accessibility": "그림 없이 문장과 숫자만으로 풀 수 있게 했다. 행렬은 (1행 ; 2행) 꼴의 글로 적고, 처음에 읽는 법을 알려 준다. 예: (1 1 ; 0 1)은 '1행은 1 1, 2행은 0 1'로 읽는다. 위 첨자 -1(역행렬)은 'A 인버스'라고 읽는다. 색에 의존하지 않는다."
+   "language": "'\ubc18\ub4dc\uc2dc'\uc640 '\uc788\uc744 \uc218 \uc788\ub2e4'\uc758 \ucc28\uc774\uac00 \ud575\uc2ec \uc5b4\ud718\uc774\ubbc0\ub85c \uccab \ub2e8\uacc4\uc758 \uc120\ud0dd\uc9c0\uc5d0\uc11c \ud55c \ubc88\uc529 \ub300\ube44\uc2dc\ucf30\ub2e4.",
+   "culture": "\uce5c\uad6c\uc758 \ub9d0\uc744 \uac80\uc99d\ud558\ub294 \uc0c1\ud669\uc740 \ubcf4\ud3b8\uc801\uc774\ub2e4.",
+   "accessibility": "\uadf8\ub9bc \uc5c6\uc774 \ubb38\uc7a5\uacfc \uc22b\uc790\ub9cc\uc73c\ub85c \ud480 \uc218 \uc788\uac8c \ud588\ub2e4. \ud589\ub82c\uc740 (1\ud589 ; 2\ud589) \uaf34\uc758 \uae00\ub85c \uc801\uace0, \ucc98\uc74c\uc5d0 \uc77d\ub294 \ubc95\uc744 \uc54c\ub824 \uc900\ub2e4. \uc608: (1 1 ; 0 1)\uc740 '1\ud589\uc740 1 1, 2\ud589\uc740 0 1'\ub85c \uc77d\ub294\ub2e4. \uc704 \ucca8\uc790 -1(\uc5ed\ud589\ub82c)\uc740 'A \uc778\ubc84\uc2a4'\ub77c\uace0 \uc77d\ub294\ub2e4. \uc0c9\uc5d0 \uc758\uc874\ud558\uc9c0 \uc54a\ub294\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "선택지 정오",
-    "만든 A, B, A+B가 조건을 만족하는지",
-    "서로 다른 예인지(A, B를 바꾼 것은 같은 예)"
+    "\uc120\ud0dd\uc9c0 \uc815\uc624",
+    "\ub9cc\ub4e0 A, B, A+B\uac00 \uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294\uc9c0",
+    "\uc11c\ub85c \ub2e4\ub978 \uc608\uc778\uc9c0(A, B\ub97c \ubc14\uafbc \uac83\uc740 \uac19\uc740 \uc608)"
    ],
    "human": [
-    "설명이 근거(ad-bc의 값)를 제대로 연결했는지"
+    "\uc124\uba85\uc774 \uadfc\uac70(ad-bc\uc758 \uac12)\ub97c \uc81c\ub300\ub85c \uc5f0\uacb0\ud588\ub294\uc9c0"
    ]
-  }
+  },
+  "status": "reviewed-ai"
  },
  {
   "id": "z-m-29-03",
   "subject": "math",
   "grade": "H1",
   "cell": "math|H1|matrix",
-  "topic": "행렬의 거듭제곱 A²과 A, E 사이의 관계 발견(케일리-해밀턴 식 탐구)",
+  "topic": "\ud589\ub82c\uc758 \uac70\ub4ed\uc81c\uacf1 A\u00b2\uacfc A, E \uc0ac\uc774\uc758 \uad00\uacc4 \ubc1c\uacac(\ucf00\uc77c\ub9ac-\ud574\ubc00\ud134 \uc2dd \ud0d0\uad6c)",
   "level": 3,
-  "levelLabel": "고등",
-  "title": "A의 제곱과 A, E 사이의 숨은 관계를 예로 짐작하기",
+  "levelLabel": "\uace0\ub4f1",
+  "title": "A\uc758 \uc81c\uacf1\uacfc A, E \uc0ac\uc774\uc758 \uc228\uc740 \uad00\uacc4\ub97c \uc608\ub85c \uc9d0\uc791\ud558\uae30",
   "uiLang": "ko",
   "format": "reveal-and-revise",
   "generative": false,
-  "goal": "예가 하나씩 늘 때마다 A²을 A와 E로 나타내는 짐작을 고치고, 예 몇 개로는 '모든 행렬'을 확신할 수 없다는 점을 말한다.",
+  "goal": "\uc608\uac00 \ud558\ub098\uc529 \ub298 \ub54c\ub9c8\ub2e4 A\u00b2\uc744 A\uc640 E\ub85c \ub098\ud0c0\ub0b4\ub294 \uc9d0\uc791\uc744 \uace0\uce58\uace0, \uc608 \uba87 \uac1c\ub85c\ub294 '\ubaa8\ub4e0 \ud589\ub82c'\uc744 \ud655\uc2e0\ud560 \uc218 \uc5c6\ub2e4\ub294 \uc810\uc744 \ub9d0\ud55c\ub2e4.",
   "thinking": [
-   "첫 예로 세운 짐작의 한계 알기",
-   "새 예로 짐작을 고치기",
-   "예의 수와 확신의 정도 연결하기"
+   "\uccab \uc608\ub85c \uc138\uc6b4 \uc9d0\uc791\uc758 \ud55c\uacc4 \uc54c\uae30",
+   "\uc0c8 \uc608\ub85c \uc9d0\uc791\uc744 \uace0\uce58\uae30",
+   "\uc608\uc758 \uc218\uc640 \ud655\uc2e0\uc758 \uc815\ub3c4 \uc5f0\uacb0\ud558\uae30"
   ],
-  "differsFromPlain": "단순 연습은 주어진 행렬의 제곱을 계산한다. 여기서는 제곱 결과를 A와 E의 일차식으로 쓰려는 짐작을 예가 늘 때마다 고쳐 가며, 짐작이 맞을 때와 맞다고 증명된 것이 다름을 구분한다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uc8fc\uc5b4\uc9c4 \ud589\ub82c\uc758 \uc81c\uacf1\uc744 \uacc4\uc0b0\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \uc81c\uacf1 \uacb0\uacfc\ub97c A\uc640 E\uc758 \uc77c\ucc28\uc2dd\uc73c\ub85c \uc4f0\ub824\ub294 \uc9d0\uc791\uc744 \uc608\uac00 \ub298 \ub54c\ub9c8\ub2e4 \uace0\uccd0 \uac00\uba70, \uc9d0\uc791\uc774 \ub9de\uc744 \ub54c\uc640 \ub9de\ub2e4\uace0 \uc99d\uba85\ub41c \uac83\uc774 \ub2e4\ub984\uc744 \uad6c\ubd84\ud55c\ub2e4.",
   "prerequisites": [
-   "2×2 행렬의 곱셈, 실수배, 합과 단위행렬 E",
-   "행렬이 같다는 것은 같은 자리 성분이 모두 같다는 뜻임",
-   "[난이도 구분] H1은 이 제작 배정의 난이도 수준이며 교육과정 학년 배정이 아니다. 이 과제는 증명하지 않고 예로 짐작하는 탐구이다."
+   "2\u00d72 \ud589\ub82c\uc758 \uacf1\uc148, \uc2e4\uc218\ubc30, \ud569\uacfc \ub2e8\uc704\ud589\ub82c E",
+   "\ud589\ub82c\uc774 \uac19\ub2e4\ub294 \uac83\uc740 \uac19\uc740 \uc790\ub9ac \uc131\ubd84\uc774 \ubaa8\ub450 \uac19\ub2e4\ub294 \ub73b\uc784",
+   "[\ub09c\uc774\ub3c4 \uad6c\ubd84] H1\uc740 \uc774 \uc81c\uc791 \ubc30\uc815\uc758 \ub09c\uc774\ub3c4 \uc218\uc900\uc774\uba70 \uad50\uc721\uacfc\uc815 \ud559\ub144 \ubc30\uc815\uc774 \uc544\ub2c8\ub2e4. \uc774 \uacfc\uc81c\ub294 \uc99d\uba85\ud558\uc9c0 \uc54a\uace0 \uc608\ub85c \uc9d0\uc791\ud558\ub294 \ud0d0\uad6c\uc774\ub2e4."
   ],
   "minutes": 15,
   "curriculum": null,
-  "material": "어떤 학생이 2×2 행렬 A의 제곱 A²을 'A의 몇 배와 E의 몇 배의 합'으로 쓸 수 있는지 궁금해했다. 즉 A² = xA + yE 꼴이 되는 실수 x, y가 있는지이다. 행렬은 (1행 ; 2행) 꼴로 적는다. 예를 들어 (2 0 ; 0 3)은 1행이 2 0, 2행이 0 3인 행렬이다. E는 (1 0 ; 0 1)이다. 아래에서 예가 하나씩 공개된다.",
+  "material": "\uc5b4\ub5a4 \ud559\uc0dd\uc774 2\u00d72 \ud589\ub82c A\uc758 \uc81c\uacf1 A\u00b2\uc744 'A\uc758 \uba87 \ubc30\uc640 E\uc758 \uba87 \ubc30\uc758 \ud569'\uc73c\ub85c \uc4f8 \uc218 \uc788\ub294\uc9c0 \uad81\uae08\ud574\ud588\ub2e4. \uc989 A\u00b2 = xA + yE \uaf34\uc774 \ub418\ub294 \uc2e4\uc218 x, y\uac00 \uc788\ub294\uc9c0\uc774\ub2e4. \ud589\ub82c\uc740 (1\ud589 ; 2\ud589) \uaf34\ub85c \uc801\ub294\ub2e4. \uc608\ub97c \ub4e4\uc5b4 (2 0 ; 0 3)\uc740 1\ud589\uc774 2 0, 2\ud589\uc774 0 3\uc778 \ud589\ub82c\uc774\ub2e4. E\ub294 (1 0 ; 0 1)\uc774\ub2e4. \uc544\ub798\uc5d0\uc11c \uc608\uac00 \ud558\ub098\uc529 \uacf5\uac1c\ub41c\ub2e4.",
   "steps": [
    {
     "id": "s1",
     "kind": "reveal",
-    "prompt": "예를 하나씩 보면서 A² = xA + yE 꼴에 대한 생각이 어떻게 달라지는지 고르세요.",
+    "prompt": "\uc608\ub97c \ud558\ub098\uc529 \ubcf4\uba74\uc11c A\u00b2 = xA + yE \uaf34\uc5d0 \ub300\ud55c \uc0dd\uac01\uc774 \uc5b4\ub5bb\uac8c \ub2ec\ub77c\uc9c0\ub294\uc9c0 \uace0\ub974\uc138\uc694.",
     "stages": [
      {
-      "info": "A = (2 0 ; 0 3)이다. A² = (4 0 ; 0 9)이고, 이것은 5A - 6E = (10-6 0 ; 0 15-6) = (4 0 ; 0 9)와 같다.",
-      "ask": "이 한 가지 예에서 짐작할 수 있는 것은?",
+      "info": "A = (2 0 ; 0 3)\uc774\ub2e4. A\u00b2 = (4 0 ; 0 9)\uc774\uace0, \uc774\uac83\uc740 5A - 6E = (10-6 0 ; 0 15-6) = (4 0 ; 0 9)\uc640 \uac19\ub2e4.",
+      "ask": "\uc774 \ud55c \uac00\uc9c0 \uc608\uc5d0\uc11c \uc9d0\uc791\ud560 \uc218 \uc788\ub294 \uac83\uc740?",
       "options": [
        {
         "id": "a",
-        "text": "모든 2×2 행렬 A에 대해 A² = 5A - 6E이다",
-        "reveals": "예 하나로 '모든'이라고 했어요. 5와 -6이 이 행렬에서만 나온 수일 수도 있어요."
+        "text": "\ubaa8\ub4e0 2\u00d72 \ud589\ub82c A\uc5d0 \ub300\ud574 A\u00b2 = 5A - 6E\uc774\ub2e4",
+        "reveals": "\uc608 \ud558\ub098\ub85c '\ubaa8\ub4e0'\uc774\ub77c\uace0 \ud588\uc5b4\uc694. 5\uc640 -6\uc774 \uc774 \ud589\ub82c\uc5d0\uc11c\ub9cc \ub098\uc628 \uc218\uc77c \uc218\ub3c4 \uc788\uc5b4\uc694."
        },
        {
         "id": "b",
-        "text": "A²은 성분마다 제곱한 것이라 이런 식이 나오는 것은 당연하다",
-        "reveals": "이 행렬은 대각선 밖이 모두 0이라서 성분마다 제곱한 것과 행렬의 제곱이 우연히 같아 보여요. 다른 모양의 행렬에서는 그렇지 않을 수 있어요."
+        "text": "A\u00b2\uc740 \uc131\ubd84\ub9c8\ub2e4 \uc81c\uacf1\ud55c \uac83\uc774\ub77c \uc774\ub7f0 \uc2dd\uc774 \ub098\uc624\ub294 \uac83\uc740 \ub2f9\uc5f0\ud558\ub2e4",
+        "reveals": "\uc774 \ud589\ub82c\uc740 \ub300\uac01\uc120 \ubc16\uc774 \ubaa8\ub450 0\uc774\ub77c\uc11c \uc131\ubd84\ub9c8\ub2e4 \uc81c\uacf1\ud55c \uac83\uacfc \ud589\ub82c\uc758 \uc81c\uacf1\uc774 \uc6b0\uc5f0\ud788 \uac19\uc544 \ubcf4\uc5ec\uc694. \ub2e4\ub978 \ubaa8\uc591\uc758 \ud589\ub82c\uc5d0\uc11c\ub294 \uadf8\ub807\uc9c0 \uc54a\uc744 \uc218 \uc788\uc5b4\uc694."
        },
        {
         "id": "c",
-        "text": "이 행렬에서는 맞고, 다른 행렬에서도 같은 수일지는 모른다",
-        "reveals": "예 하나가 말해 주는 범위(이 행렬)와 아직 모르는 범위(다른 행렬)를 나눠서 생각했어요."
+        "text": "\uc774 \ud589\ub82c\uc5d0\uc11c\ub294 \ub9de\uace0, \ub2e4\ub978 \ud589\ub82c\uc5d0\uc11c\ub3c4 \uac19\uc740 \uc218\uc77c\uc9c0\ub294 \ubaa8\ub978\ub2e4",
+        "reveals": "\uc608 \ud558\ub098\uac00 \ub9d0\ud574 \uc8fc\ub294 \ubc94\uc704(\uc774 \ud589\ub82c)\uc640 \uc544\uc9c1 \ubaa8\ub974\ub294 \ubc94\uc704(\ub2e4\ub978 \ud589\ub82c)\ub97c \ub098\ub220\uc11c \uc0dd\uac01\ud588\uc5b4\uc694."
        },
        {
         "id": "d",
-        "text": "이 식은 우연이므로 의미가 없다",
-        "reveals": "하나의 예가 맞았다는 것도 단서예요. 의미 없다고 버리기보다 다른 예로 시험해 볼 수 있어요."
+        "text": "\uc774 \uc2dd\uc740 \uc6b0\uc5f0\uc774\ubbc0\ub85c \uc758\ubbf8\uac00 \uc5c6\ub2e4",
+        "reveals": "\ud558\ub098\uc758 \uc608\uac00 \ub9de\uc558\ub2e4\ub294 \uac83\ub3c4 \ub2e8\uc11c\uc608\uc694. \uc758\ubbf8 \uc5c6\ub2e4\uace0 \ubc84\ub9ac\uae30\ubcf4\ub2e4 \ub2e4\ub978 \uc608\ub85c \uc2dc\ud5d8\ud574 \ubcfc \uc218 \uc788\uc5b4\uc694."
        }
       ],
       "reasonable": [
        "c"
       ],
-      "after": "예 하나로 알 수 있는 것은 '이 행렬에서 5A-6E가 성립한다'는 것까지예요. 다른 행렬에서도 같은 수가 될지는 따로 시험해야 해요."
+      "after": "\uc608 \ud558\ub098\ub85c \uc54c \uc218 \uc788\ub294 \uac83\uc740 '\uc774 \ud589\ub82c\uc5d0\uc11c 5A-6E\uac00 \uc131\ub9bd\ud55c\ub2e4'\ub294 \uac83\uae4c\uc9c0\uc608\uc694. \ub2e4\ub978 \ud589\ub82c\uc5d0\uc11c\ub3c4 \uac19\uc740 \uc218\uac00 \ub420\uc9c0\ub294 \ub530\ub85c \uc2dc\ud5d8\ud574\uc57c \ud574\uc694."
      },
      {
-      "info": "A = (1 2 ; 3 4)이다. A² = (7 10 ; 15 22)이다. 한편 5A - 6E = (-1 10 ; 15 14)로, A²과 다르다.",
-      "ask": "이제 생각을 어떻게 고치겠습니까?",
+      "info": "A = (1 2 ; 3 4)\uc774\ub2e4. A\u00b2 = (7 10 ; 15 22)\uc774\ub2e4. \ud55c\ud3b8 5A - 6E = (-1 10 ; 15 14)\ub85c, A\u00b2\uacfc \ub2e4\ub974\ub2e4.",
+      "ask": "\uc774\uc81c \uc0dd\uac01\uc744 \uc5b4\ub5bb\uac8c \uace0\uce58\uaca0\uc2b5\ub2c8\uae4c?",
       "options": [
        {
         "id": "a",
-        "text": "A² = xA + yE 꼴이라는 짐작은 틀렸다",
-        "reveals": "5와 -6이 맞지 않는 것은 확인했지만, 다른 두 수로도 안 되는지는 아직 시험하지 않았어요."
+        "text": "A\u00b2 = xA + yE \uaf34\uc774\ub77c\ub294 \uc9d0\uc791\uc740 \ud2c0\ub838\ub2e4",
+        "reveals": "5\uc640 -6\uc774 \ub9de\uc9c0 \uc54a\ub294 \uac83\uc740 \ud655\uc778\ud588\uc9c0\ub9cc, \ub2e4\ub978 \ub450 \uc218\ub85c\ub3c4 \uc548 \ub418\ub294\uc9c0\ub294 \uc544\uc9c1 \uc2dc\ud5d8\ud558\uc9c0 \uc54a\uc558\uc5b4\uc694."
        },
        {
         "id": "b",
-        "text": "5와 -6은 틀렸다. 다른 x, y로 되는지 시험한다",
-        "reveals": "실패한 부분(5, -6)과 아직 열린 부분(다른 x, y)을 나눴어요."
+        "text": "5\uc640 -6\uc740 \ud2c0\ub838\ub2e4. \ub2e4\ub978 x, y\ub85c \ub418\ub294\uc9c0 \uc2dc\ud5d8\ud55c\ub2e4",
+        "reveals": "\uc2e4\ud328\ud55c \ubd80\ubd84(5, -6)\uacfc \uc544\uc9c1 \uc5f4\ub9b0 \ubd80\ubd84(\ub2e4\ub978 x, y)\uc744 \ub098\ub234\uc5b4\uc694."
        },
        {
         "id": "c",
-        "text": "계산 실수일 테니 A² = 5A - 6E를 계속 믿는 것이 좋다",
-        "reveals": "(-1 10 ; 15 14)와 (7 10 ; 15 22)의 1행 1열만 비교해도 다르다는 것을 알 수 있어요. 계산을 다시 해도 같은 결과예요."
+        "text": "\uacc4\uc0b0 \uc2e4\uc218\uc77c \ud14c\ub2c8 A\u00b2 = 5A - 6E\ub97c \uacc4\uc18d \ubbff\ub294 \uac83\uc774 \uc88b\ub2e4",
+        "reveals": "(-1 10 ; 15 14)\uc640 (7 10 ; 15 22)\uc758 1\ud589 1\uc5f4\ub9cc \ube44\uad50\ud574\ub3c4 \ub2e4\ub974\ub2e4\ub294 \uac83\uc744 \uc54c \uc218 \uc788\uc5b4\uc694. \uacc4\uc0b0\uc744 \ub2e4\uc2dc \ud574\ub3c4 \uac19\uc740 \uacb0\uacfc\uc608\uc694."
        },
        {
         "id": "d",
-        "text": "성분이 모두 달라서 A²을 A와 E로 나타낼 방법이 없다",
-        "reveals": "성분이 서로 다르다는 이유만으로 불가능하다고 하는 것은 근거가 약해요. 7 = x + y, 10 = 2x처럼 성분끼리 비교하면 x, y를 구할 수 있는지 알 수 있어요."
+        "text": "\uc131\ubd84\uc774 \ubaa8\ub450 \ub2ec\ub77c\uc11c A\u00b2\uc744 A\uc640 E\ub85c \ub098\ud0c0\ub0bc \ubc29\ubc95\uc774 \uc5c6\ub2e4",
+        "reveals": "\uc131\ubd84\uc774 \uc11c\ub85c \ub2e4\ub974\ub2e4\ub294 \uc774\uc720\ub9cc\uc73c\ub85c \ubd88\uac00\ub2a5\ud558\ub2e4\uace0 \ud558\ub294 \uac83\uc740 \uadfc\uac70\uac00 \uc57d\ud574\uc694. 7 = x + y, 10 = 2x\ucc98\ub7fc \uc131\ubd84\ub07c\ub9ac \ube44\uad50\ud558\uba74 x, y\ub97c \uad6c\ud560 \uc218 \uc788\ub294\uc9c0 \uc54c \uc218 \uc788\uc5b4\uc694."
        }
       ],
       "reasonable": [
        "b"
       ],
-      "after": "5와 -6은 이 행렬에서 틀렸어요. 하지만 x, y가 이 행렬에 맞게 따로 정해지는지는 아직 몰라요. (7 10 ; 15 22) = x(1 2 ; 3 4) + y(1 0 ; 0 1)의 성분을 비교하면 x=5, y=2가 나오고, 다른 성분도 모두 맞아요. '짐작이 틀렸다'는 말은 5와 -6에 대해서만 맞아요."
+      "after": "5\uc640 -6\uc740 \uc774 \ud589\ub82c\uc5d0\uc11c \ud2c0\ub838\uc5b4\uc694. \ud558\uc9c0\ub9cc x, y\uac00 \uc774 \ud589\ub82c\uc5d0 \ub9de\uac8c \ub530\ub85c \uc815\ud574\uc9c0\ub294\uc9c0\ub294 \uc544\uc9c1 \ubab0\ub77c\uc694. (7 10 ; 15 22) = x(1 2 ; 3 4) + y(1 0 ; 0 1)\uc758 \uc131\ubd84\uc744 \ube44\uad50\ud558\uba74 x=5, y=2\uac00 \ub098\uc624\uace0, \ub2e4\ub978 \uc131\ubd84\ub3c4 \ubaa8\ub450 \ub9de\uc544\uc694. '\uc9d0\uc791\uc774 \ud2c0\ub838\ub2e4'\ub294 \ub9d0\uc740 5\uc640 -6\uc5d0 \ub300\ud574\uc11c\ub9cc \ub9de\uc544\uc694."
      },
      {
-      "info": "앞의 두 예를 정리하면 (2 0 ; 0 3)에서는 x=5, y=-6이고, (1 2 ; 3 4)에서는 x=5, y=2이다. 두 행렬의 '대각선 성분의 합'은 각각 2+3=5, 1+4=5이고, ad-bc는 각각 6, -2이다.",
-      "ask": "x와 y에 대해 어떤 짐작을 세우겠습니까?",
+      "info": "\uc55e\uc758 \ub450 \uc608\ub97c \uc815\ub9ac\ud558\uba74 (2 0 ; 0 3)\uc5d0\uc11c\ub294 x=5, y=-6\uc774\uace0, (1 2 ; 3 4)\uc5d0\uc11c\ub294 x=5, y=2\uc774\ub2e4. \ub450 \ud589\ub82c\uc758 '\ub300\uac01\uc120 \uc131\ubd84\uc758 \ud569'\uc740 \uac01\uac01 2+3=5, 1+4=5\uc774\uace0, ad-bc\ub294 \uac01\uac01 6, -2\uc774\ub2e4.",
+      "ask": "x\uc640 y\uc5d0 \ub300\ud574 \uc5b4\ub5a4 \uc9d0\uc791\uc744 \uc138\uc6b0\uaca0\uc2b5\ub2c8\uae4c?",
       "options": [
        {
         "id": "a",
-        "text": "x는 대각선 합, y는 -(ad-bc)로 보인다. 다른 행렬로 시험한다",
-        "reveals": "두 예의 x와 y가 모두 이 식으로 설명되는 것을 알아챘어요. 이 짐작도 다른 행렬로 시험해 볼 필요가 있어요."
+        "text": "x\ub294 \ub300\uac01\uc120 \ud569, y\ub294 -(ad-bc)\ub85c \ubcf4\uc778\ub2e4. \ub2e4\ub978 \ud589\ub82c\ub85c \uc2dc\ud5d8\ud55c\ub2e4",
+        "reveals": "\ub450 \uc608\uc758 x\uc640 y\uac00 \ubaa8\ub450 \uc774 \uc2dd\uc73c\ub85c \uc124\uba85\ub418\ub294 \uac83\uc744 \uc54c\uc544\ucc58\uc5b4\uc694. \uc774 \uc9d0\uc791\ub3c4 \ub2e4\ub978 \ud589\ub82c\ub85c \uc2dc\ud5d8\ud574 \ubcfc \ud544\uc694\uac00 \uc788\uc5b4\uc694."
        },
        {
         "id": "b",
-        "text": "x는 항상 5이고 y만 행렬마다 다르다",
-        "reveals": "두 예에서 x가 모두 5라서 가능한 짐작이에요. 그런데 두 행렬의 대각선 합이 모두 5였기 때문일 수도 있어요. 합이 5가 아닌 행렬로 시험해 보면 구별돼요."
+        "text": "x\ub294 \ud56d\uc0c1 5\uc774\uace0 y\ub9cc \ud589\ub82c\ub9c8\ub2e4 \ub2e4\ub974\ub2e4",
+        "reveals": "\ub450 \uc608\uc5d0\uc11c x\uac00 \ubaa8\ub450 5\ub77c\uc11c \uac00\ub2a5\ud55c \uc9d0\uc791\uc774\uc5d0\uc694. \uadf8\ub7f0\ub370 \ub450 \ud589\ub82c\uc758 \ub300\uac01\uc120 \ud569\uc774 \ubaa8\ub450 5\uc600\uae30 \ub54c\ubb38\uc77c \uc218\ub3c4 \uc788\uc5b4\uc694. \ud569\uc774 5\uac00 \uc544\ub2cc \ud589\ub82c\ub85c \uc2dc\ud5d8\ud574 \ubcf4\uba74 \uad6c\ubcc4\ub3fc\uc694."
        },
        {
         "id": "c",
-        "text": "x와 y는 A와 관계가 없는 수이다",
-        "reveals": "두 예에서 x, y가 A에 따라 정해지고 있어요(y는 -6에서 2로 바뀜). 관계가 없다고 보기는 어려워요."
+        "text": "x\uc640 y\ub294 A\uc640 \uad00\uacc4\uac00 \uc5c6\ub294 \uc218\uc774\ub2e4",
+        "reveals": "\ub450 \uc608\uc5d0\uc11c x, y\uac00 A\uc5d0 \ub530\ub77c \uc815\ud574\uc9c0\uace0 \uc788\uc5b4\uc694(y\ub294 -6\uc5d0\uc11c 2\ub85c \ubc14\ub01c). \uad00\uacc4\uac00 \uc5c6\ub2e4\uace0 \ubcf4\uae30\ub294 \uc5b4\ub824\uc6cc\uc694."
        },
        {
         "id": "d",
-        "text": "두 예로 'x는 대각선 합, y는 -(ad-bc)'임이 증명되었다",
-        "reveals": "두 예가 맞는 것과 모든 행렬에서 맞다고 증명된 것은 달라요. 증명은 일반적인 a, b, c, d로 해야 해요."
+        "text": "\ub450 \uc608\ub85c 'x\ub294 \ub300\uac01\uc120 \ud569, y\ub294 -(ad-bc)'\uc784\uc774 \uc99d\uba85\ub418\uc5c8\ub2e4",
+        "reveals": "\ub450 \uc608\uac00 \ub9de\ub294 \uac83\uacfc \ubaa8\ub4e0 \ud589\ub82c\uc5d0\uc11c \ub9de\ub2e4\uace0 \uc99d\uba85\ub41c \uac83\uc740 \ub2ec\ub77c\uc694. \uc99d\uba85\uc740 \uc77c\ubc18\uc801\uc778 a, b, c, d\ub85c \ud574\uc57c \ud574\uc694."
        }
       ],
       "reasonable": [
        "a",
        "b"
       ],
-      "after": "두 예로 세울 수 있는 것은 짐작까지예요. 'x는 대각선 합, y는 -(ad-bc)'가 두 예를 모두 설명하지만, 'x는 항상 5'도 아직 배제되지 않아요. 두 가설을 가를 새 행렬(대각선 합이 5가 아닌 것)이 필요해요."
+      "after": "\ub450 \uc608\ub85c \uc138\uc6b8 \uc218 \uc788\ub294 \uac83\uc740 \uc9d0\uc791\uae4c\uc9c0\uc608\uc694. 'x\ub294 \ub300\uac01\uc120 \ud569, y\ub294 -(ad-bc)'\uac00 \ub450 \uc608\ub97c \ubaa8\ub450 \uc124\uba85\ud558\uc9c0\ub9cc, 'x\ub294 \ud56d\uc0c1 5'\ub3c4 \uc544\uc9c1 \ubc30\uc81c\ub418\uc9c0 \uc54a\uc544\uc694. \ub450 \uac00\uc124\uc744 \uac00\ub97c \uc0c8 \ud589\ub82c(\ub300\uac01\uc120 \ud569\uc774 5\uac00 \uc544\ub2cc \uac83)\uc774 \ud544\uc694\ud574\uc694."
      }
     ],
-    "reflect": "처음 예 하나, 둘째 예, 두 예를 합친 상황에서 내 판단은 어떻게 달라졌나요? 예가 늘 때마다 '모든 행렬에서 성립한다'는 확신은 얼마나 커져야 할까요, 그리고 무엇이 있어야 확신이 아니라 '알게 된 것'이 될까요?",
+    "reflect": "\ucc98\uc74c \uc608 \ud558\ub098, \ub458\uc9f8 \uc608, \ub450 \uc608\ub97c \ud569\uce5c \uc0c1\ud669\uc5d0\uc11c \ub0b4 \ud310\ub2e8\uc740 \uc5b4\ub5bb\uac8c \ub2ec\ub77c\uc84c\ub098\uc694? \uc608\uac00 \ub298 \ub54c\ub9c8\ub2e4 '\ubaa8\ub4e0 \ud589\ub82c\uc5d0\uc11c \uc131\ub9bd\ud55c\ub2e4'\ub294 \ud655\uc2e0\uc740 \uc5bc\ub9c8\ub098 \ucee4\uc838\uc57c \ud560\uae4c\uc694, \uadf8\ub9ac\uace0 \ubb34\uc5c7\uc774 \uc788\uc5b4\uc57c \ud655\uc2e0\uc774 \uc544\ub2c8\ub77c '\uc54c\uac8c \ub41c \uac83'\uc774 \ub420\uae4c\uc694?",
     "hints": [
-     "각 단계에서 A²과 제시된 식의 결과를 같은 자리 성분끼리 하나씩 비교해 보세요.",
-     "성분 비교로 얻은 x, y를 두 번째 예와 세 번째 정보의 숫자와 나란히 놓고 규칙을 찾아 보세요."
+     "\uac01 \ub2e8\uacc4\uc5d0\uc11c A\u00b2\uacfc \uc81c\uc2dc\ub41c \uc2dd\uc758 \uacb0\uacfc\ub97c \uac19\uc740 \uc790\ub9ac \uc131\ubd84\ub07c\ub9ac \ud558\ub098\uc529 \ube44\uad50\ud574 \ubcf4\uc138\uc694.",
+     "\uc131\ubd84 \ube44\uad50\ub85c \uc5bb\uc740 x, y\ub97c \ub450 \ubc88\uc9f8 \uc608\uc640 \uc138 \ubc88\uc9f8 \uc815\ubcf4\uc758 \uc22b\uc790\uc640 \ub098\ub780\ud788 \ub193\uace0 \uaddc\uce59\uc744 \ucc3e\uc544 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "앞의 짐작(x는 대각선 성분의 합, y는 -(ad-bc))을 새 행렬 A = (1 1 ; 0 1)로 시험해 보세요. A²을 계산하고 짐작과 맞는지 쓴 뒤, 이것으로 '모든 2×2 행렬에서 성립한다'고 말해도 되는지 이유와 함께 쓰세요.",
-    "placeholder": "예: A²은 ... 이고 짐작에 따르면 ...",
+    "prompt": "\uc55e\uc758 \uc9d0\uc791(x\ub294 \ub300\uac01\uc120 \uc131\ubd84\uc758 \ud569, y\ub294 -(ad-bc))\uc744 \uc0c8 \ud589\ub82c A = (1 1 ; 0 1)\ub85c \uc2dc\ud5d8\ud574 \ubcf4\uc138\uc694. A\u00b2\uc744 \uacc4\uc0b0\ud558\uace0 \uc9d0\uc791\uacfc \ub9de\ub294\uc9c0 \uc4f4 \ub4a4, \uc774\uac83\uc73c\ub85c '\ubaa8\ub4e0 2\u00d72 \ud589\ub82c\uc5d0\uc11c \uc131\ub9bd\ud55c\ub2e4'\uace0 \ub9d0\ud574\ub3c4 \ub418\ub294\uc9c0 \uc774\uc720\uc640 \ud568\uaed8 \uc4f0\uc138\uc694.",
+    "placeholder": "\uc608: A\u00b2\uc740 ... \uc774\uace0 \uc9d0\uc791\uc5d0 \ub530\ub974\uba74 ...",
     "minChars": 30,
     "checks": [
      {
       "id": "w1",
-      "label": "A²의 계산 결과(1 2 ; 0 1)나 2A-E 같은 값을 적었다",
+      "label": "A\u00b2\uc758 \uacc4\uc0b0 \uacb0\uacfc(1 2 ; 0 1)\ub098 2A-E \uac19\uc740 \uac12\uc744 \uc801\uc5c8\ub2e4",
       "mode": "any",
       "patterns": [
        "1\\D{1,4}2\\D{1,6}0\\D{1,4}1",
-       "2\\s*A\\s*[-−–]\\s*E"
+       "2\\s*A\\s*[-\u2212\u2013]\\s*E"
       ]
      },
      {
       "id": "w2",
-      "label": "예 몇 개로는 모든 행렬에 대해 확신할 수 없다고 했다",
+      "label": "\uc608 \uba87 \uac1c\ub85c\ub294 \ubaa8\ub4e0 \ud589\ub82c\uc5d0 \ub300\ud574 \ud655\uc2e0\ud560 \uc218 \uc5c6\ub2e4\uace0 \ud588\ub2e4",
       "mode": "any",
       "patterns": [
-       "예(를|가)?\\s*(몇|한|두|세)\\s*개",
-       "(몇|세|두|일부)\\s*(개)?의?\\s*(행렬|예|경우)",
-       "더\\s*(많은|다른)?\\s*(예|행렬)",
-       "아직",
-       "더\\s*시험",
-       "증명(한|된)\\s*(건|것)(은)?\\s*아니",
-       "증명(이|은|을)?\\s*(안|못|되지|하지|필요)",
-       "확신(할|하기|하긴|하지)?\\s*(는\\s*)?(수\\s*)?(없|어렵|이르|못)"
+       "\uc608(\ub97c|\uac00)?\\s*(\uba87|\ud55c|\ub450|\uc138)\\s*\uac1c",
+       "(\uba87|\uc138|\ub450|\uc77c\ubd80)\\s*(\uac1c)?\uc758?\\s*(\ud589\ub82c|\uc608|\uacbd\uc6b0)",
+       "\ub354\\s*(\ub9ce\uc740|\ub2e4\ub978)?\\s*(\uc608|\ud589\ub82c)",
+       "\uc544\uc9c1",
+       "\ub354\\s*\uc2dc\ud5d8",
+       "\uc99d\uba85(\ud55c|\ub41c)\\s*(\uac74|\uac83)(\uc740)?\\s*\uc544\ub2c8",
+       "\uc99d\uba85(\uc774|\uc740|\uc744)?\\s*(\uc548|\ubabb|\ub418\uc9c0|\ud558\uc9c0|\ud544\uc694)",
+       "\ud655\uc2e0(\ud560|\ud558\uae30|\ud558\uae34|\ud558\uc9c0)?\\s*(\ub294\\s*)?(\uc218\\s*)?(\uc5c6|\uc5b4\ub835|\uc774\ub974|\ubabb)"
       ]
      },
      {
       "id": "w3",
-      "label": "예를 더 확인하면 증명이 된다거나 모든 행렬에서 성립한다고 단정하지 않았다",
+      "label": "\uc608\ub97c \ub354 \ud655\uc778\ud558\uba74 \uc99d\uba85\uc774 \ub41c\ub2e4\uac70\ub098 \ubaa8\ub4e0 \ud589\ub82c\uc5d0\uc11c \uc131\ub9bd\ud55c\ub2e4\uace0 \ub2e8\uc815\ud558\uc9c0 \uc54a\uc558\ub2e4",
       "mode": "none",
       "patterns": [
-       "증명(이|은)?\\s*(된다|돼|되는\\s*거|되겠|될\\s*거)",
-       "모든[^.。]{0,12}성립(해(?![도야])|한다(?![고는])|합니다)",
-       "항상\\s*성립(해(?![도야])|한다(?![고는])|합니다)"
+       "\uc99d\uba85(\uc774|\uc740)?\\s*(\ub41c\ub2e4|\ub3fc|\ub418\ub294\\s*\uac70|\ub418\uaca0|\ub420\\s*\uac70)",
+       "\ubaa8\ub4e0[^.\u3002]{0,12}\uc131\ub9bd(\ud574(?![\ub3c4\uc57c])|\ud55c\ub2e4(?![\uace0\ub294])|\ud569\ub2c8\ub2e4)",
+       "\ud56d\uc0c1\\s*\uc131\ub9bd(\ud574(?![\ub3c4\uc57c])|\ud55c\ub2e4(?![\uace0\ub294])|\ud569\ub2c8\ub2e4)"
       ]
      }
     ],
     "selfAssess": [
-     "내가 계산한 A²의 네 성분을 짐작이 말하는 xA + yE의 네 성분과 하나씩 비교했는가?",
-     "'맞는 예가 여러 개'와 '모든 행렬에서 증명됨'을 구분해서 썼는가?",
-     "내가 다음에 시험하고 싶은 행렬(대각선 합이 다른 것 등)을 떠올렸는가?"
+     "\ub0b4\uac00 \uacc4\uc0b0\ud55c A\u00b2\uc758 \ub124 \uc131\ubd84\uc744 \uc9d0\uc791\uc774 \ub9d0\ud558\ub294 xA + yE\uc758 \ub124 \uc131\ubd84\uacfc \ud558\ub098\uc529 \ube44\uad50\ud588\ub294\uac00?",
+     "'\ub9de\ub294 \uc608\uac00 \uc5ec\ub7ec \uac1c'\uc640 '\ubaa8\ub4e0 \ud589\ub82c\uc5d0\uc11c \uc99d\uba85\ub428'\uc744 \uad6c\ubd84\ud574\uc11c \uc37c\ub294\uac00?",
+     "\ub0b4\uac00 \ub2e4\uc74c\uc5d0 \uc2dc\ud5d8\ud558\uace0 \uc2f6\uc740 \ud589\ub82c(\ub300\uac01\uc120 \ud569\uc774 \ub2e4\ub978 \uac83 \ub4f1)\uc744 \ub5a0\uc62c\ub838\ub294\uac00?"
     ],
     "modelAnswers": [
      {
-      "text": "A²=(1 2 ; 0 1)이고, 대각선 합 2, ad-bc=1이니 2A-E=(2 2 ; 0 2)-(1 0 ; 0 1)=(1 2 ; 0 1)이라 짐작과 같아. 하지만 예를 몇 개 더 확인한 것뿐이라 모든 2×2 행렬에서 성립한다고 확신하기에는 아직 일러."
+      "text": "A\u00b2=(1 2 ; 0 1)\uc774\uace0, \ub300\uac01\uc120 \ud569 2, ad-bc=1\uc774\ub2c8 2A-E=(2 2 ; 0 2)-(1 0 ; 0 1)=(1 2 ; 0 1)\uc774\ub77c \uc9d0\uc791\uacfc \uac19\uc544. \ud558\uc9c0\ub9cc \uc608\ub97c \uba87 \uac1c \ub354 \ud655\uc778\ud55c \uac83\ubfd0\uc774\ub77c \ubaa8\ub4e0 2\u00d72 \ud589\ub82c\uc5d0\uc11c \uc131\ub9bd\ud55c\ub2e4\uace0 \ud655\uc2e0\ud558\uae30\uc5d0\ub294 \uc544\uc9c1 \uc77c\ub7ec."
      },
      {
-      "text": "A의 제곱은 [[1,2],[0,1]]이고, 2A-E도 똑같이 나와. 일치하긴 하지만 예가 3개뿐이라서 증명된 건 아니고 아직 확신할 수는 없어. a, b, c, d로 일반적으로 계산해 봐야 해.",
-      "note": "일반적인 문자로 확인하자고 제안한 점이 좋다."
+      "text": "A\uc758 \uc81c\uacf1\uc740 [[1,2],[0,1]]\uc774\uace0, 2A-E\ub3c4 \ub611\uac19\uc774 \ub098\uc640. \uc77c\uce58\ud558\uae34 \ud558\uc9c0\ub9cc \uc608\uac00 3\uac1c\ubfd0\uc774\ub77c\uc11c \uc99d\uba85\ub41c \uac74 \uc544\ub2c8\uace0 \uc544\uc9c1 \ud655\uc2e0\ud560 \uc218\ub294 \uc5c6\uc5b4. a, b, c, d\ub85c \uc77c\ubc18\uc801\uc73c\ub85c \uacc4\uc0b0\ud574 \ubd10\uc57c \ud574.",
+      "note": "\uc77c\ubc18\uc801\uc778 \ubb38\uc790\ub85c \ud655\uc778\ud558\uc790\uace0 \uc81c\uc548\ud55c \uc810\uc774 \uc88b\ub2e4."
      },
      {
-      "text": "A제곱은 (1 2 ; 0 1)이고 2A-E와 같아서 짐작이 맞는다. 다만 세 개의 행렬에서만 확인했으므로 전체에 대해 확신하긴 어렵고, 일반적인 a, b, c, d로 따져 봐야 한다."
+      "text": "A\uc81c\uacf1\uc740 (1 2 ; 0 1)\uc774\uace0 2A-E\uc640 \uac19\uc544\uc11c \uc9d0\uc791\uc774 \ub9de\ub294\ub2e4. \ub2e4\ub9cc \uc138 \uac1c\uc758 \ud589\ub82c\uc5d0\uc11c\ub9cc \ud655\uc778\ud588\uc73c\ubbc0\ub85c \uc804\uccb4\uc5d0 \ub300\ud574 \ud655\uc2e0\ud558\uae34 \uc5b4\ub835\uace0, \uc77c\ubc18\uc801\uc778 a, b, c, d\ub85c \ub530\uc838 \ubd10\uc57c \ud55c\ub2e4."
      }
     ],
     "badAnswers": [
      {
-      "text": "맞아요. 모든 행렬에서 성립해요.",
-      "why": "계산 결과도 없고 예 몇 개로 일반화했다."
+      "text": "\ub9de\uc544\uc694. \ubaa8\ub4e0 \ud589\ub82c\uc5d0\uc11c \uc131\ub9bd\ud574\uc694.",
+      "why": "\uacc4\uc0b0 \uacb0\uacfc\ub3c4 \uc5c6\uace0 \uc608 \uba87 \uac1c\ub85c \uc77c\ubc18\ud654\ud588\ub2e4."
      },
      {
-      "text": "A²=(1 2 ; 0 1)이 나왔으니까 짐작이 맞고 항상 성립해.",
-      "why": "계산은 했지만 예 몇 개로 '항상'이라고 단정했다."
+      "text": "A\u00b2=(1 2 ; 0 1)\uc774 \ub098\uc654\uc73c\ub2c8\uae4c \uc9d0\uc791\uc774 \ub9de\uace0 \ud56d\uc0c1 \uc131\ub9bd\ud574.",
+      "why": "\uacc4\uc0b0\uc740 \ud588\uc9c0\ub9cc \uc608 \uba87 \uac1c\ub85c '\ud56d\uc0c1'\uc774\ub77c\uace0 \ub2e8\uc815\ud588\ub2e4."
      },
      {
-      "text": "A² = (1 2 ; 0 1) 이므로 짐작이 맞고, 예를 몇 개 더 확인하면 증명이 되는 거야.",
-      "why": "예를 더 모으면 증명이 된다고 잘못 말했다."
+      "text": "A\u00b2 = (1 2 ; 0 1) \uc774\ubbc0\ub85c \uc9d0\uc791\uc774 \ub9de\uace0, \uc608\ub97c \uba87 \uac1c \ub354 \ud655\uc778\ud558\uba74 \uc99d\uba85\uc774 \ub418\ub294 \uac70\uc57c.",
+      "why": "\uc608\ub97c \ub354 \ubaa8\uc73c\uba74 \uc99d\uba85\uc774 \ub41c\ub2e4\uace0 \uc798\ubabb \ub9d0\ud588\ub2e4."
      }
     ],
-    "humanReview": "계산이 실제로 맞는지, 그리고 '아직 확신할 수 없다'는 말이 단순한 말버릇인지 근거(예의 수, 증명이 아님)를 이해하고 쓴 것인지는 사람이 읽어 확인한다.",
+    "humanReview": "\uacc4\uc0b0\uc774 \uc2e4\uc81c\ub85c \ub9de\ub294\uc9c0, \uadf8\ub9ac\uace0 '\uc544\uc9c1 \ud655\uc2e0\ud560 \uc218 \uc5c6\ub2e4'\ub294 \ub9d0\uc774 \ub2e8\uc21c\ud55c \ub9d0\ubc84\ub987\uc778\uc9c0 \uadfc\uac70(\uc608\uc758 \uc218, \uc99d\uba85\uc774 \uc544\ub2d8)\ub97c \uc774\ud574\ud558\uace0 \uc4f4 \uac83\uc778\uc9c0\ub294 \uc0ac\ub78c\uc774 \uc77d\uc5b4 \ud655\uc778\ud55c\ub2e4.",
     "hints": [
-     "A에 A를 곱한 결과를 네 성분으로 계산하고, 짐작이 말하는 xA + yE의 네 성분을 따로 계산해 보세요.",
-     "두 결과가 같다고 해서 무엇이 증명된 것인지, 아직 시험하지 않은 행렬은 어떤 모양인지 한 줄씩 적어 보세요."
+     "A\uc5d0 A\ub97c \uacf1\ud55c \uacb0\uacfc\ub97c \ub124 \uc131\ubd84\uc73c\ub85c \uacc4\uc0b0\ud558\uace0, \uc9d0\uc791\uc774 \ub9d0\ud558\ub294 xA + yE\uc758 \ub124 \uc131\ubd84\uc744 \ub530\ub85c \uacc4\uc0b0\ud574 \ubcf4\uc138\uc694.",
+     "\ub450 \uacb0\uacfc\uac00 \uac19\ub2e4\uace0 \ud574\uc11c \ubb34\uc5c7\uc774 \uc99d\uba85\ub41c \uac83\uc778\uc9c0, \uc544\uc9c1 \uc2dc\ud5d8\ud558\uc9c0 \uc54a\uc740 \ud589\ub82c\uc740 \uc5b4\ub5a4 \ubaa8\uc591\uc778\uc9c0 \ud55c \uc904\uc529 \uc801\uc5b4 \ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "짐작의 수정",
-    "full": "예가 늘 때마다 무엇이 확인되었고 무엇이 아직 열려 있는지 나눠서 판단함",
-    "partial": "새 예에 따라 결론은 바꾸었지만 이유는 말하지 못함",
-    "none": "처음 짐작을 그대로 두거나 예 하나로 단정함"
+    "criterion": "\uc9d0\uc791\uc758 \uc218\uc815",
+    "full": "\uc608\uac00 \ub298 \ub54c\ub9c8\ub2e4 \ubb34\uc5c7\uc774 \ud655\uc778\ub418\uc5c8\uace0 \ubb34\uc5c7\uc774 \uc544\uc9c1 \uc5f4\ub824 \uc788\ub294\uc9c0 \ub098\ub220\uc11c \ud310\ub2e8\ud568",
+    "partial": "\uc0c8 \uc608\uc5d0 \ub530\ub77c \uacb0\ub860\uc740 \ubc14\uafb8\uc5c8\uc9c0\ub9cc \uc774\uc720\ub294 \ub9d0\ud558\uc9c0 \ubabb\ud568",
+    "none": "\ucc98\uc74c \uc9d0\uc791\uc744 \uadf8\ub300\ub85c \ub450\uac70\ub098 \uc608 \ud558\ub098\ub85c \ub2e8\uc815\ud568"
    },
    {
-    "criterion": "시험하기",
-    "full": "새 행렬로 A²을 계산해 짐작과 성분 단위로 비교함",
-    "partial": "계산은 했지만 비교가 일부임",
-    "none": "계산하지 않음"
+    "criterion": "\uc2dc\ud5d8\ud558\uae30",
+    "full": "\uc0c8 \ud589\ub82c\ub85c A\u00b2\uc744 \uacc4\uc0b0\ud574 \uc9d0\uc791\uacfc \uc131\ubd84 \ub2e8\uc704\ub85c \ube44\uad50\ud568",
+    "partial": "\uacc4\uc0b0\uc740 \ud588\uc9c0\ub9cc \ube44\uad50\uac00 \uc77c\ubd80\uc784",
+    "none": "\uacc4\uc0b0\ud558\uc9c0 \uc54a\uc74c"
    },
    {
-    "criterion": "확신의 정도",
-    "full": "예 몇 개로는 모든 행렬을 확신할 수 없음을 근거와 함께 말함",
-    "partial": "'아직 모른다'만 말함",
-    "none": "예 몇 개로 단정함"
+    "criterion": "\ud655\uc2e0\uc758 \uc815\ub3c4",
+    "full": "\uc608 \uba87 \uac1c\ub85c\ub294 \ubaa8\ub4e0 \ud589\ub82c\uc744 \ud655\uc2e0\ud560 \uc218 \uc5c6\uc74c\uc744 \uadfc\uac70\uc640 \ud568\uaed8 \ub9d0\ud568",
+    "partial": "'\uc544\uc9c1 \ubaa8\ub978\ub2e4'\ub9cc \ub9d0\ud568",
+    "none": "\uc608 \uba87 \uac1c\ub85c \ub2e8\uc815\ud568"
    }
   ],
   "alternatives": [
-   "두 번째 정보에서 'x, y가 행렬마다 정해진다'와 '다른 행렬로 더 시험한다' 중 어느 쪽을 고르든 타당하다.",
-   "세 번째 정보에서 'x는 항상 5'라는 가설을 유지하는 것도 두 예만 보면 배제되지 않는다. 새 행렬(예: A = (1 1 ; 0 1), 대각선 합 2)로 가르는 것이 좋은 다음 행동이다."
+   "\ub450 \ubc88\uc9f8 \uc815\ubcf4\uc5d0\uc11c 'x, y\uac00 \ud589\ub82c\ub9c8\ub2e4 \uc815\ud574\uc9c4\ub2e4'\uc640 '\ub2e4\ub978 \ud589\ub82c\ub85c \ub354 \uc2dc\ud5d8\ud55c\ub2e4' \uc911 \uc5b4\ub290 \ucabd\uc744 \uace0\ub974\ub4e0 \ud0c0\ub2f9\ud558\ub2e4.",
+   "\uc138 \ubc88\uc9f8 \uc815\ubcf4\uc5d0\uc11c 'x\ub294 \ud56d\uc0c1 5'\ub77c\ub294 \uac00\uc124\uc744 \uc720\uc9c0\ud558\ub294 \uac83\ub3c4 \ub450 \uc608\ub9cc \ubcf4\uba74 \ubc30\uc81c\ub418\uc9c0 \uc54a\ub294\ub2e4. \uc0c8 \ud589\ub82c(\uc608: A = (1 1 ; 0 1), \ub300\uac01\uc120 \ud569 2)\ub85c \uac00\ub974\ub294 \uac83\uc774 \uc88b\uc740 \ub2e4\uc74c \ud589\ub3d9\uc774\ub2e4."
   ],
   "hardCases": [
-   "A = (0 0 ; 0 0)이나 E처럼 특별한 행렬은 어떤 x, y로도 식이 성립할 수 있어 짐작을 가르지 못한다.",
-   "학생이 '대각선 합'을 모르는 경우 '1행 1열과 2행 2열의 합'이라고 풀어 쓴 설명을 허용한다."
+   "A = (0 0 ; 0 0)\uc774\ub098 E\ucc98\ub7fc \ud2b9\ubcc4\ud55c \ud589\ub82c\uc740 \uc5b4\ub5a4 x, y\ub85c\ub3c4 \uc2dd\uc774 \uc131\ub9bd\ud560 \uc218 \uc788\uc5b4 \uc9d0\uc791\uc744 \uac00\ub974\uc9c0 \ubabb\ud55c\ub2e4.",
+   "\ud559\uc0dd\uc774 '\ub300\uac01\uc120 \ud569'\uc744 \ubaa8\ub974\ub294 \uacbd\uc6b0 '1\ud589 1\uc5f4\uacfc 2\ud589 2\uc5f4\uc758 \ud569'\uc774\ub77c\uace0 \ud480\uc5b4 \uc4f4 \uc124\uba85\uc744 \ud5c8\uc6a9\ud55c\ub2e4."
   ],
   "cautions": {
-   "language": "'대각선 성분의 합'은 1행 1열과 2행 2열의 합이라고 한 번 풀어 썼다. '증명'과 '짐작'의 차이를 이 과제가 직접 묻는다.",
-   "culture": "특정 문화에 의존하지 않는다.",
-   "accessibility": "그림 없이 문장과 숫자만으로 풀 수 있게 했다. 행렬은 (1행 ; 2행) 꼴의 글로 적고, 처음에 읽는 법을 알려 준다. 예: (1 1 ; 0 1)은 '1행은 1 1, 2행은 0 1'로 읽는다. 위 첨자 -1(역행렬)은 'A 인버스'라고 읽는다. 색에 의존하지 않는다. 곱셈 결과는 모두 글로 적어 두어 성분을 하나씩 읽을 수 있다."
+   "language": "'\ub300\uac01\uc120 \uc131\ubd84\uc758 \ud569'\uc740 1\ud589 1\uc5f4\uacfc 2\ud589 2\uc5f4\uc758 \ud569\uc774\ub77c\uace0 \ud55c \ubc88 \ud480\uc5b4 \uc37c\ub2e4. '\uc99d\uba85'\uacfc '\uc9d0\uc791'\uc758 \ucc28\uc774\ub97c \uc774 \uacfc\uc81c\uac00 \uc9c1\uc811 \ubb3b\ub294\ub2e4.",
+   "culture": "\ud2b9\uc815 \ubb38\ud654\uc5d0 \uc758\uc874\ud558\uc9c0 \uc54a\ub294\ub2e4.",
+   "accessibility": "\uadf8\ub9bc \uc5c6\uc774 \ubb38\uc7a5\uacfc \uc22b\uc790\ub9cc\uc73c\ub85c \ud480 \uc218 \uc788\uac8c \ud588\ub2e4. \ud589\ub82c\uc740 (1\ud589 ; 2\ud589) \uaf34\uc758 \uae00\ub85c \uc801\uace0, \ucc98\uc74c\uc5d0 \uc77d\ub294 \ubc95\uc744 \uc54c\ub824 \uc900\ub2e4. \uc608: (1 1 ; 0 1)\uc740 '1\ud589\uc740 1 1, 2\ud589\uc740 0 1'\ub85c \uc77d\ub294\ub2e4. \uc704 \ucca8\uc790 -1(\uc5ed\ud589\ub82c)\uc740 'A \uc778\ubc84\uc2a4'\ub77c\uace0 \uc77d\ub294\ub2e4. \uc0c9\uc5d0 \uc758\uc874\ud558\uc9c0 \uc54a\ub294\ub2e4. \uacf1\uc148 \uacb0\uacfc\ub294 \ubaa8\ub450 \uae00\ub85c \uc801\uc5b4 \ub450\uc5b4 \uc131\ubd84\uc744 \ud558\ub098\uc529 \uc77d\uc744 \uc218 \uc788\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "각 단계 선택(여러 개 허용)",
-    "쓰기의 표면 특징: 계산 결과 언급, 확신의 한계 언급"
+    "\uac01 \ub2e8\uacc4 \uc120\ud0dd(\uc5ec\ub7ec \uac1c \ud5c8\uc6a9)",
+    "\uc4f0\uae30\uc758 \ud45c\uba74 \ud2b9\uc9d5: \uacc4\uc0b0 \uacb0\uacfc \uc5b8\uae09, \ud655\uc2e0\uc758 \ud55c\uacc4 \uc5b8\uae09"
    ],
    "human": [
-    "계산의 정확성과 '예 몇 개 vs 증명' 구분의 이해"
+    "\uacc4\uc0b0\uc758 \uc815\ud655\uc131\uacfc '\uc608 \uba87 \uac1c vs \uc99d\uba85' \uad6c\ubd84\uc758 \uc774\ud574"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "z-m-29-04",
   "subject": "math",
   "grade": "H1",
   "cell": "math|H1|matrix",
-  "topic": "행렬 방정식 AX=B에서 역행렬을 곱하는 쪽",
+  "topic": "\ud589\ub82c \ubc29\uc815\uc2dd AX=B\uc5d0\uc11c \uc5ed\ud589\ub82c\uc744 \uacf1\ud558\ub294 \ucabd",
   "level": 3,
-  "levelLabel": "고등",
-  "title": "도윤이 푼 행렬 방정식, 몇 번째 줄에서 어긋났을까?",
+  "levelLabel": "\uace0\ub4f1",
+  "title": "\ub3c4\uc724\uc774 \ud47c \ud589\ub82c \ubc29\uc815\uc2dd, \uba87 \ubc88\uc9f8 \uc904\uc5d0\uc11c \uc5b4\uae0b\ub0ac\uc744\uae4c?",
   "uiLang": "ko",
   "format": "find-error-fix",
   "generative": false,
-  "goal": "AX=B를 푼 풀이에서 곱하는 쪽이 어긋난 줄을 찾고, 검산으로 확인하며, XA=B일 때는 어느 쪽에 곱해야 하는지 이유와 함께 말한다.",
+  "goal": "AX=B\ub97c \ud47c \ud480\uc774\uc5d0\uc11c \uacf1\ud558\ub294 \ucabd\uc774 \uc5b4\uae0b\ub09c \uc904\uc744 \ucc3e\uace0, \uac80\uc0b0\uc73c\ub85c \ud655\uc778\ud558\uba70, XA=B\uc77c \ub54c\ub294 \uc5b4\ub290 \ucabd\uc5d0 \uacf1\ud574\uc57c \ud558\ub294\uc9c0 \uc774\uc720\uc640 \ud568\uaed8 \ub9d0\ud55c\ub2e4.",
   "thinking": [
-   "풀이의 오류 위치 찾기",
-   "검산 방법 비교·평가하기",
-   "조건이 바뀔 때의 방법 판단하기"
+   "\ud480\uc774\uc758 \uc624\ub958 \uc704\uce58 \ucc3e\uae30",
+   "\uac80\uc0b0 \ubc29\ubc95 \ube44\uad50\u00b7\ud3c9\uac00\ud558\uae30",
+   "\uc870\uac74\uc774 \ubc14\ub014 \ub54c\uc758 \ubc29\ubc95 \ud310\ub2e8\ud558\uae30"
   ],
-  "differsFromPlain": "단순 연습은 행렬 방정식을 직접 풀어 X를 구한다. 여기서는 계산은 맞는데 풀이의 한 단계가 어긋난 풀이를 점검하고, 어떤 검산이 오류를 드러내는지 고르며, 문제가 바뀌면 방법이 어떻게 바뀌는지 말한다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \ud589\ub82c \ubc29\uc815\uc2dd\uc744 \uc9c1\uc811 \ud480\uc5b4 X\ub97c \uad6c\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \uacc4\uc0b0\uc740 \ub9de\ub294\ub370 \ud480\uc774\uc758 \ud55c \ub2e8\uacc4\uac00 \uc5b4\uae0b\ub09c \ud480\uc774\ub97c \uc810\uac80\ud558\uace0, \uc5b4\ub5a4 \uac80\uc0b0\uc774 \uc624\ub958\ub97c \ub4dc\ub7ec\ub0b4\ub294\uc9c0 \uace0\ub974\uba70, \ubb38\uc81c\uac00 \ubc14\ub00c\uba74 \ubc29\ubc95\uc774 \uc5b4\ub5bb\uac8c \ubc14\ub00c\ub294\uc9c0 \ub9d0\ud55c\ub2e4.",
   "prerequisites": [
-   "2×2 행렬의 곱셈과 역행렬 (a b ; c d)의 역행렬 공식",
-   "행렬의 곱은 순서를 바꾸면 달라질 수 있음",
-   "[난이도 구분] H1은 이 제작 배정의 난이도 수준이며 교육과정 학년 배정이 아니다."
+   "2\u00d72 \ud589\ub82c\uc758 \uacf1\uc148\uacfc \uc5ed\ud589\ub82c (a b ; c d)\uc758 \uc5ed\ud589\ub82c \uacf5\uc2dd",
+   "\ud589\ub82c\uc758 \uacf1\uc740 \uc21c\uc11c\ub97c \ubc14\uafb8\uba74 \ub2ec\ub77c\uc9c8 \uc218 \uc788\uc74c",
+   "[\ub09c\uc774\ub3c4 \uad6c\ubd84] H1\uc740 \uc774 \uc81c\uc791 \ubc30\uc815\uc758 \ub09c\uc774\ub3c4 \uc218\uc900\uc774\uba70 \uad50\uc721\uacfc\uc815 \ud559\ub144 \ubc30\uc815\uc774 \uc544\ub2c8\ub2e4."
   ],
   "minutes": 14,
   "curriculum": null,
-  "material": "A = (2 1 ; 1 1), B = (3 1 ; 2 0)이다. 행렬은 (1행 ; 2행) 꼴로 적는다. 2×2 행렬 X가 AX = B를 만족한다고 한다. 도윤이 이렇게 풀었다. (아래 줄 번호는 화면에 보이는 번호이다.)",
+  "material": "A = (2 1 ; 1 1), B = (3 1 ; 2 0)\uc774\ub2e4. \ud589\ub82c\uc740 (1\ud589 ; 2\ud589) \uaf34\ub85c \uc801\ub294\ub2e4. 2\u00d72 \ud589\ub82c X\uac00 AX = B\ub97c \ub9cc\uc871\ud55c\ub2e4\uace0 \ud55c\ub2e4. \ub3c4\uc724\uc774 \uc774\ub807\uac8c \ud480\uc5c8\ub2e4. (\uc544\ub798 \uc904 \ubc88\ud638\ub294 \ud654\uba74\uc5d0 \ubcf4\uc774\ub294 \ubc88\ud638\uc774\ub2e4.)",
   "steps": [
    {
     "id": "s1",
     "kind": "pickLine",
-    "prompt": "도윤의 풀이에서 처음으로 어긋난 줄을 고르세요.",
+    "prompt": "\ub3c4\uc724\uc758 \ud480\uc774\uc5d0\uc11c \ucc98\uc74c\uc73c\ub85c \uc5b4\uae0b\ub09c \uc904\uc744 \uace0\ub974\uc138\uc694.",
     "lines": [
-     "ad-bc = 2·1 - 1·1 = 1이므로 A의 역행렬은 (1 -1 ; -1 2)이다.",
-     "AX = B이므로 양변에 A의 역행렬을 곱해 X를 혼자 남긴다.",
-     "X = B × (A의 역행렬) = (3 1 ; 2 0)(1 -1 ; -1 2)이다.",
-     "계산하면 (3·1+1·(-1), 3·(-1)+1·2 ; 2·1+0·(-1), 2·(-1)+0·2) = (2 -1 ; 2 -2)이다.",
-     "따라서 X = (2 -1 ; 2 -2)이다."
+     "ad-bc = 2\u00b71 - 1\u00b71 = 1\uc774\ubbc0\ub85c A\uc758 \uc5ed\ud589\ub82c\uc740 (1 -1 ; -1 2)\uc774\ub2e4.",
+     "AX = B\uc774\ubbc0\ub85c \uc591\ubcc0\uc5d0 A\uc758 \uc5ed\ud589\ub82c\uc744 \uacf1\ud574 X\ub97c \ud63c\uc790 \ub0a8\uae34\ub2e4.",
+     "X = B \u00d7 (A\uc758 \uc5ed\ud589\ub82c) = (3 1 ; 2 0)(1 -1 ; -1 2)\uc774\ub2e4.",
+     "\uacc4\uc0b0\ud558\uba74 (3\u00b71+1\u00b7(-1), 3\u00b7(-1)+1\u00b72 ; 2\u00b71+0\u00b7(-1), 2\u00b7(-1)+0\u00b72) = (2 -1 ; 2 -2)\uc774\ub2e4.",
+     "\ub530\ub77c\uc11c X = (2 -1 ; 2 -2)\uc774\ub2e4."
     ],
     "wrong": [
      2
     ],
-    "explain": "3번째 줄이 어긋났다. 1번 줄의 역행렬과 4번 줄의 곱셈 계산은 맞다. 하지만 AX=B에서 X 앞에 A가 있으므로, 양변의 왼쪽에 A의 역행렬을 곱해야 한다. 그러면 X = (A의 역행렬)B = (1 1 ; 1 -1)이다. 도윤은 B 뒤(오른쪽)에 곱해 순서가 바뀌었다.",
+    "explain": "3\ubc88\uc9f8 \uc904\uc774 \uc5b4\uae0b\ub0ac\ub2e4. 1\ubc88 \uc904\uc758 \uc5ed\ud589\ub82c\uacfc 4\ubc88 \uc904\uc758 \uacf1\uc148 \uacc4\uc0b0\uc740 \ub9de\ub2e4. \ud558\uc9c0\ub9cc AX=B\uc5d0\uc11c X \uc55e\uc5d0 A\uac00 \uc788\uc73c\ubbc0\ub85c, \uc591\ubcc0\uc758 \uc67c\ucabd\uc5d0 A\uc758 \uc5ed\ud589\ub82c\uc744 \uacf1\ud574\uc57c \ud55c\ub2e4. \uadf8\ub7ec\uba74 X = (A\uc758 \uc5ed\ud589\ub82c)B = (1 1 ; 1 -1)\uc774\ub2e4. \ub3c4\uc724\uc740 B \ub4a4(\uc624\ub978\ucabd)\uc5d0 \uacf1\ud574 \uc21c\uc11c\uac00 \ubc14\ub00c\uc5c8\ub2e4.",
     "hints": [
-     "각 줄에서 계산이 맞는지 하나씩 확인하고, 처음으로 규칙을 따르지 않은 줄을 찾으세요.",
-     "각 줄이 바로 앞 줄에서 어떻게 나왔는지, 곱하는 순서가 달라진 곳은 없는지 줄마다 대조해 보세요."
+     "\uac01 \uc904\uc5d0\uc11c \uacc4\uc0b0\uc774 \ub9de\ub294\uc9c0 \ud558\ub098\uc529 \ud655\uc778\ud558\uace0, \ucc98\uc74c\uc73c\ub85c \uaddc\uce59\uc744 \ub530\ub974\uc9c0 \uc54a\uc740 \uc904\uc744 \ucc3e\uc73c\uc138\uc694.",
+     "\uac01 \uc904\uc774 \ubc14\ub85c \uc55e \uc904\uc5d0\uc11c \uc5b4\ub5bb\uac8c \ub098\uc654\ub294\uc9c0, \uacf1\ud558\ub294 \uc21c\uc11c\uac00 \ub2ec\ub77c\uc9c4 \uacf3\uc740 \uc5c6\ub294\uc9c0 \uc904\ub9c8\ub2e4 \ub300\uc870\ud574 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "choose",
-    "prompt": "도윤의 X = (2 -1 ; 2 -2)가 AX = B를 만족하는지 확인하려고 한다. 가장 직접적이고 틀린 풀이를 걸러낼 수 있는 방법은 무엇일까요?",
+    "prompt": "\ub3c4\uc724\uc758 X = (2 -1 ; 2 -2)\uac00 AX = B\ub97c \ub9cc\uc871\ud558\ub294\uc9c0 \ud655\uc778\ud558\ub824\uace0 \ud55c\ub2e4. \uac00\uc7a5 \uc9c1\uc811\uc801\uc774\uace0 \ud2c0\ub9b0 \ud480\uc774\ub97c \uac78\ub7ec\ub0bc \uc218 \uc788\ub294 \ubc29\ubc95\uc740 \ubb34\uc5c7\uc77c\uae4c\uc694?",
     "options": [
      {
       "id": "a",
-      "text": "XA를 계산해 B와 같은지 본다",
-      "reveals": "이 X는 XA=B를 만족해서 '맞다'고 나와요. 그런데 문제는 AX=B였어요. 문제의 식 그대로 대입해야 해요."
+      "text": "XA\ub97c \uacc4\uc0b0\ud574 B\uc640 \uac19\uc740\uc9c0 \ubcf8\ub2e4",
+      "reveals": "\uc774 X\ub294 XA=B\ub97c \ub9cc\uc871\ud574\uc11c '\ub9de\ub2e4'\uace0 \ub098\uc640\uc694. \uadf8\ub7f0\ub370 \ubb38\uc81c\ub294 AX=B\uc600\uc5b4\uc694. \ubb38\uc81c\uc758 \uc2dd \uadf8\ub300\ub85c \ub300\uc785\ud574\uc57c \ud574\uc694."
      },
      {
       "id": "b",
-      "text": "X의 역행렬이 있는지 본다",
-      "reveals": "역행렬이 있는지는 AX=B를 만족하는지와 관계가 없어요."
+      "text": "X\uc758 \uc5ed\ud589\ub82c\uc774 \uc788\ub294\uc9c0 \ubcf8\ub2e4",
+      "reveals": "\uc5ed\ud589\ub82c\uc774 \uc788\ub294\uc9c0\ub294 AX=B\ub97c \ub9cc\uc871\ud558\ub294\uc9c0\uc640 \uad00\uacc4\uac00 \uc5c6\uc5b4\uc694."
      },
      {
       "id": "c",
-      "text": "AX를 계산해 B와 비교한다"
+      "text": "AX\ub97c \uacc4\uc0b0\ud574 B\uc640 \ube44\uad50\ud55c\ub2e4"
      },
      {
       "id": "d",
-      "text": "XB를 계산해 A와 같은지 본다",
-      "reveals": "XB=A는 문제에 있는 식이 아니에요. 문제의 식을 그대로 확인해야 해요."
+      "text": "XB\ub97c \uacc4\uc0b0\ud574 A\uc640 \uac19\uc740\uc9c0 \ubcf8\ub2e4",
+      "reveals": "XB=A\ub294 \ubb38\uc81c\uc5d0 \uc788\ub294 \uc2dd\uc774 \uc544\ub2c8\uc5d0\uc694. \ubb38\uc81c\uc758 \uc2dd\uc744 \uadf8\ub300\ub85c \ud655\uc778\ud574\uc57c \ud574\uc694."
      }
     ],
     "correct": [
      "c"
     ],
-    "explain": "문제의 식이 AX=B이므로 AX를 계산해 B와 비교한다. A(도윤의 X)=(6 -4 ; 4 -3)으로 B와 다르다. 반면 XA를 계산하면 (3 1 ; 2 0)=B가 되어 틀린 X도 맞아 보이게 하므로, 곱하는 순서까지 문제 그대로 검산해야 한다.",
+    "explain": "\ubb38\uc81c\uc758 \uc2dd\uc774 AX=B\uc774\ubbc0\ub85c AX\ub97c \uacc4\uc0b0\ud574 B\uc640 \ube44\uad50\ud55c\ub2e4. A(\ub3c4\uc724\uc758 X)=(6 -4 ; 4 -3)\uc73c\ub85c B\uc640 \ub2e4\ub974\ub2e4. \ubc18\uba74 XA\ub97c \uacc4\uc0b0\ud558\uba74 (3 1 ; 2 0)=B\uac00 \ub418\uc5b4 \ud2c0\ub9b0 X\ub3c4 \ub9de\uc544 \ubcf4\uc774\uac8c \ud558\ubbc0\ub85c, \uacf1\ud558\ub294 \uc21c\uc11c\uae4c\uc9c0 \ubb38\uc81c \uadf8\ub300\ub85c \uac80\uc0b0\ud574\uc57c \ud55c\ub2e4.",
     "hints": [
-     "네 가지 방법마다 어떤 곱을 계산해서 무엇과 비교하는지 한 줄씩 적어 보세요.",
-     "후보 X로 각 방법을 실제로 계산해 보고, 틀린 X가 맞아 보이는 방법이 있는지 찾아 보세요."
+     "\ub124 \uac00\uc9c0 \ubc29\ubc95\ub9c8\ub2e4 \uc5b4\ub5a4 \uacf1\uc744 \uacc4\uc0b0\ud574\uc11c \ubb34\uc5c7\uacfc \ube44\uad50\ud558\ub294\uc9c0 \ud55c \uc904\uc529 \uc801\uc5b4 \ubcf4\uc138\uc694.",
+     "\ud6c4\ubcf4 X\ub85c \uac01 \ubc29\ubc95\uc744 \uc2e4\uc81c\ub85c \uacc4\uc0b0\ud574 \ubcf4\uace0, \ud2c0\ub9b0 X\uac00 \ub9de\uc544 \ubcf4\uc774\ub294 \ubc29\ubc95\uc774 \uc788\ub294\uc9c0 \ucc3e\uc544 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s3",
     "kind": "write",
-    "prompt": "이번에는 문제가 XA = B였다면 A의 역행렬을 양변의 어느 쪽에 곱해야 할까요? 이유와 함께 쓰세요.",
-    "placeholder": "예: XA=B이면 ... 쪽에 곱한다. 왜냐하면 ...",
+    "prompt": "\uc774\ubc88\uc5d0\ub294 \ubb38\uc81c\uac00 XA = B\uc600\ub2e4\uba74 A\uc758 \uc5ed\ud589\ub82c\uc744 \uc591\ubcc0\uc758 \uc5b4\ub290 \ucabd\uc5d0 \uacf1\ud574\uc57c \ud560\uae4c\uc694? \uc774\uc720\uc640 \ud568\uaed8 \uc4f0\uc138\uc694.",
+    "placeholder": "\uc608: XA=B\uc774\uba74 ... \ucabd\uc5d0 \uacf1\ud55c\ub2e4. \uc65c\ub0d0\ud558\uba74 ...",
     "minChars": 20,
     "checks": [
      {
       "id": "w1",
-      "label": "곱하는 쪽(오른쪽)을 정했다",
+      "label": "\uacf1\ud558\ub294 \ucabd(\uc624\ub978\ucabd)\uc744 \uc815\ud588\ub2e4",
       "mode": "any",
       "patterns": [
-       "오른쪽",
-       "오른",
-       "우측",
-       "뒤쪽?에"
+       "\uc624\ub978\ucabd",
+       "\uc624\ub978",
+       "\uc6b0\uce21",
+       "\ub4a4\ucabd?\uc5d0"
       ]
      },
      {
       "id": "w2",
-      "label": "그 쪽이어야 하는 이유(A가 X 바로 옆, 단위행렬이 됨, 순서 등)를 말했다",
+      "label": "\uadf8 \ucabd\uc774\uc5b4\uc57c \ud558\ub294 \uc774\uc720(A\uac00 X \ubc14\ub85c \uc606, \ub2e8\uc704\ud589\ub82c\uc774 \ub428, \uc21c\uc11c \ub4f1)\ub97c \ub9d0\ud588\ub2e4",
       "mode": "any",
       "patterns": [
-       "단위행렬",
-       "A\\s*A\\s*(⁻¹|\\^\\s*\\(?[-−]\\s*1\\)?)",
+       "\ub2e8\uc704\ud589\ub82c",
+       "A\\s*A\\s*(\u207b\u00b9|\\^\\s*\\(?[-\u2212]\\s*1\\)?)",
        "\\bE\\b",
-       "순서",
-       "바로\\s*(옆|붙)",
-       "붙어",
-       "교환",
-       "(뒤|오른쪽)에\\s*(있|붙|놓)",
-       "A\\s*(가|는)\\s*X\\s*(의|보다)?\\s*(뒤|오른쪽)",
-       "맞닿|맞붙|마주",
-       "X\\s*(만|가)\\s*남"
+       "\uc21c\uc11c",
+       "\ubc14\ub85c\\s*(\uc606|\ubd99)",
+       "\ubd99\uc5b4",
+       "\uad50\ud658",
+       "(\ub4a4|\uc624\ub978\ucabd)\uc5d0\\s*(\uc788|\ubd99|\ub193)",
+       "A\\s*(\uac00|\ub294)\\s*X\\s*(\uc758|\ubcf4\ub2e4)?\\s*(\ub4a4|\uc624\ub978\ucabd)",
+       "\ub9de\ub2ff|\ub9de\ubd99|\ub9c8\uc8fc",
+       "X\\s*(\ub9cc|\uac00)\\s*\ub0a8"
       ]
      },
      {
       "id": "w3",
-      "label": "왼쪽에 곱해야 한다고 말하지 않았다",
+      "label": "\uc67c\ucabd\uc5d0 \uacf1\ud574\uc57c \ud55c\ub2e4\uace0 \ub9d0\ud558\uc9c0 \uc54a\uc558\ub2e4",
       "mode": "none",
       "patterns": [
-       "오른쪽(이|은)?\\s*아니",
-       "오른쪽(에|으로)?\\s*곱(하면|해서)?\\s*안",
-       "(왼쪽|좌측)\\s*(에서|에|으로)?\\s*곱(해야|해|한다|하면|하는|합니다)(?![^.]{0,12}(안\\s*(돼|된|되)|아니|틀|못|말))"
+       "\uc624\ub978\ucabd(\uc774|\uc740)?\\s*\uc544\ub2c8",
+       "\uc624\ub978\ucabd(\uc5d0|\uc73c\ub85c)?\\s*\uacf1(\ud558\uba74|\ud574\uc11c)?\\s*\uc548",
+       "(\uc67c\ucabd|\uc88c\uce21)\\s*(\uc5d0\uc11c|\uc5d0|\uc73c\ub85c)?\\s*\uacf1(\ud574\uc57c|\ud574|\ud55c\ub2e4|\ud558\uba74|\ud558\ub294|\ud569\ub2c8\ub2e4)(?![^.]{0,12}(\uc548\\s*(\ub3fc|\ub41c|\ub418)|\uc544\ub2c8|\ud2c0|\ubabb|\ub9d0))"
       ]
      }
     ],
     "selfAssess": [
-     "XA=B에서 A가 X의 어느 쪽에 붙어 있는지 짚고 썼는가?",
-     "역행렬을 곱했을 때 X 옆에 무엇이 남는지(단위행렬) 말했는가?",
-     "양변에 같은 쪽으로 곱해야 한다는 점을 말했는가?"
+     "XA=B\uc5d0\uc11c A\uac00 X\uc758 \uc5b4\ub290 \ucabd\uc5d0 \ubd99\uc5b4 \uc788\ub294\uc9c0 \uc9da\uace0 \uc37c\ub294\uac00?",
+     "\uc5ed\ud589\ub82c\uc744 \uacf1\ud588\uc744 \ub54c X \uc606\uc5d0 \ubb34\uc5c7\uc774 \ub0a8\ub294\uc9c0(\ub2e8\uc704\ud589\ub82c) \ub9d0\ud588\ub294\uac00?",
+     "\uc591\ubcc0\uc5d0 \uac19\uc740 \ucabd\uc73c\ub85c \uacf1\ud574\uc57c \ud55c\ub2e4\ub294 \uc810\uc744 \ub9d0\ud588\ub294\uac00?"
     ],
     "modelAnswers": [
      {
-      "text": "XA=B이면 양변의 오른쪽에 A의 역행렬을 곱해야 해. XA가 X 오른쪽에 A가 붙은 모양이라 A의 역행렬을 오른쪽에서 곱해야 AA의 역행렬이 단위행렬이 되어 X만 남아. 양변 모두 오른쪽에 곱해야 해."
+      "text": "XA=B\uc774\uba74 \uc591\ubcc0\uc758 \uc624\ub978\ucabd\uc5d0 A\uc758 \uc5ed\ud589\ub82c\uc744 \uacf1\ud574\uc57c \ud574. XA\uac00 X \uc624\ub978\ucabd\uc5d0 A\uac00 \ubd99\uc740 \ubaa8\uc591\uc774\ub77c A\uc758 \uc5ed\ud589\ub82c\uc744 \uc624\ub978\ucabd\uc5d0\uc11c \uacf1\ud574\uc57c AA\uc758 \uc5ed\ud589\ub82c\uc774 \ub2e8\uc704\ud589\ub82c\uc774 \ub418\uc5b4 X\ub9cc \ub0a8\uc544. \uc591\ubcc0 \ubaa8\ub450 \uc624\ub978\ucabd\uc5d0 \uacf1\ud574\uc57c \ud574."
      },
      {
-      "text": "오른쪽에 곱해. 행렬은 곱하는 순서를 바꾸면 달라지니까, A가 X 바로 오른쪽에 있으니 역행렬도 오른쪽으로 곱해야 서로 붙어서 E가 돼. 그래서 X=B(A의 역행렬)이야.",
-      "note": "X=B(A의 역행렬)이라고 결과까지 쓴 점이 좋다."
+      "text": "\uc624\ub978\ucabd\uc5d0 \uacf1\ud574. \ud589\ub82c\uc740 \uacf1\ud558\ub294 \uc21c\uc11c\ub97c \ubc14\uafb8\uba74 \ub2ec\ub77c\uc9c0\ub2c8\uae4c, A\uac00 X \ubc14\ub85c \uc624\ub978\ucabd\uc5d0 \uc788\uc73c\ub2c8 \uc5ed\ud589\ub82c\ub3c4 \uc624\ub978\ucabd\uc73c\ub85c \uacf1\ud574\uc57c \uc11c\ub85c \ubd99\uc5b4\uc11c E\uac00 \ub3fc. \uadf8\ub798\uc11c X=B(A\uc758 \uc5ed\ud589\ub82c)\uc774\uc57c.",
+      "note": "X=B(A\uc758 \uc5ed\ud589\ub82c)\uc774\ub77c\uace0 \uacb0\uacfc\uae4c\uc9c0 \uc4f4 \uc810\uc774 \uc88b\ub2e4."
      },
      {
-      "text": "XA=B에서는 A가 X의 뒤에 있으니까 양변의 오른쪽에 A의 역행렬을 곱해야 해. 그러면 X가 남아."
+      "text": "XA=B\uc5d0\uc11c\ub294 A\uac00 X\uc758 \ub4a4\uc5d0 \uc788\uc73c\ub2c8\uae4c \uc591\ubcc0\uc758 \uc624\ub978\ucabd\uc5d0 A\uc758 \uc5ed\ud589\ub82c\uc744 \uacf1\ud574\uc57c \ud574. \uadf8\ub7ec\uba74 X\uac00 \ub0a8\uc544."
      }
     ],
     "badAnswers": [
      {
-      "text": "A의 역행렬을 곱하면 돼요.",
-      "why": "어느 쪽에 곱하는지 정하지 않았다."
+      "text": "A\uc758 \uc5ed\ud589\ub82c\uc744 \uacf1\ud558\uba74 \ub3fc\uc694.",
+      "why": "\uc5b4\ub290 \ucabd\uc5d0 \uacf1\ud558\ub294\uc9c0 \uc815\ud558\uc9c0 \uc54a\uc558\ub2e4."
      },
      {
-      "text": "오른쪽에 곱해요.",
-      "why": "쪽만 말하고 이유가 없다."
+      "text": "\uc624\ub978\ucabd\uc5d0 \uacf1\ud574\uc694.",
+      "why": "\ucabd\ub9cc \ub9d0\ud558\uace0 \uc774\uc720\uac00 \uc5c6\ub2e4."
      },
      {
-      "text": "왼쪽에 곱해야 해. 오른쪽이 아니라 왼쪽이야. 순서가 중요하니까.",
-      "why": "곱하는 쪽을 반대로 말했다."
+      "text": "\uc67c\ucabd\uc5d0 \uacf1\ud574\uc57c \ud574. \uc624\ub978\ucabd\uc774 \uc544\ub2c8\ub77c \uc67c\ucabd\uc774\uc57c. \uc21c\uc11c\uac00 \uc911\uc694\ud558\ub2c8\uae4c.",
+      "why": "\uacf1\ud558\ub294 \ucabd\uc744 \ubc18\ub300\ub85c \ub9d0\ud588\ub2e4."
      }
     ],
-    "humanReview": "학생이 쓴 이유가 '순서가 중요하다'를 이해한 것인지, 쪽이 우연히 맞은 것인지는 사람이 읽고 판단한다. '왼쪽'과 '오른쪽'을 섞어 쓴 글도 사람이 확인한다.",
+    "humanReview": "\ud559\uc0dd\uc774 \uc4f4 \uc774\uc720\uac00 '\uc21c\uc11c\uac00 \uc911\uc694\ud558\ub2e4'\ub97c \uc774\ud574\ud55c \uac83\uc778\uc9c0, \ucabd\uc774 \uc6b0\uc5f0\ud788 \ub9de\uc740 \uac83\uc778\uc9c0\ub294 \uc0ac\ub78c\uc774 \uc77d\uace0 \ud310\ub2e8\ud55c\ub2e4. '\uc67c\ucabd'\uacfc '\uc624\ub978\ucabd'\uc744 \uc11e\uc5b4 \uc4f4 \uae00\ub3c4 \uc0ac\ub78c\uc774 \ud655\uc778\ud55c\ub2e4.",
     "hints": [
-     "XA=B에서 A가 X의 왼쪽/오른쪽 중 어디에 있는지 적고, 역행렬을 곱했을 때 A와 역행렬이 맞닿게 되는 쪽을 찾으세요.",
-     "양변에 같은 쪽으로 곱한 뒤 좌변에 무엇이 남는지 적어 보세요."
+     "XA=B\uc5d0\uc11c A\uac00 X\uc758 \uc67c\ucabd/\uc624\ub978\ucabd \uc911 \uc5b4\ub514\uc5d0 \uc788\ub294\uc9c0 \uc801\uace0, \uc5ed\ud589\ub82c\uc744 \uacf1\ud588\uc744 \ub54c A\uc640 \uc5ed\ud589\ub82c\uc774 \ub9de\ub2ff\uac8c \ub418\ub294 \ucabd\uc744 \ucc3e\uc73c\uc138\uc694.",
+     "\uc591\ubcc0\uc5d0 \uac19\uc740 \ucabd\uc73c\ub85c \uacf1\ud55c \ub4a4 \uc88c\ubcc0\uc5d0 \ubb34\uc5c7\uc774 \ub0a8\ub294\uc9c0 \uc801\uc5b4 \ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "오류 위치",
-    "full": "3번째 줄을 짚고 '곱하는 쪽'이 문제임을 설명함",
-    "partial": "오류 줄은 찾았으나 이유를 말하지 못함",
-    "none": "계산이 틀린 줄을 고름"
+    "criterion": "\uc624\ub958 \uc704\uce58",
+    "full": "3\ubc88\uc9f8 \uc904\uc744 \uc9da\uace0 '\uacf1\ud558\ub294 \ucabd'\uc774 \ubb38\uc81c\uc784\uc744 \uc124\uba85\ud568",
+    "partial": "\uc624\ub958 \uc904\uc740 \ucc3e\uc558\uc73c\ub098 \uc774\uc720\ub97c \ub9d0\ud558\uc9c0 \ubabb\ud568",
+    "none": "\uacc4\uc0b0\uc774 \ud2c0\ub9b0 \uc904\uc744 \uace0\ub984"
    },
    {
-    "criterion": "검산 방법",
-    "full": "문제의 식 그대로 대입하고, 다른 순서의 곱이 틀린 X를 놓칠 수 있음을 앎",
-    "partial": "올바른 방법을 골랐지만 다른 방법이 왜 안 되는지는 모름",
-    "none": "문제의 식과 관계없는 확인을 고름"
+    "criterion": "\uac80\uc0b0 \ubc29\ubc95",
+    "full": "\ubb38\uc81c\uc758 \uc2dd \uadf8\ub300\ub85c \ub300\uc785\ud558\uace0, \ub2e4\ub978 \uc21c\uc11c\uc758 \uacf1\uc774 \ud2c0\ub9b0 X\ub97c \ub193\uce60 \uc218 \uc788\uc74c\uc744 \uc54e",
+    "partial": "\uc62c\ubc14\ub978 \ubc29\ubc95\uc744 \uace8\ub790\uc9c0\ub9cc \ub2e4\ub978 \ubc29\ubc95\uc774 \uc65c \uc548 \ub418\ub294\uc9c0\ub294 \ubaa8\ub984",
+    "none": "\ubb38\uc81c\uc758 \uc2dd\uacfc \uad00\uacc4\uc5c6\ub294 \ud655\uc778\uc744 \uace0\ub984"
    },
    {
-    "criterion": "조건 바뀜 판단",
-    "full": "XA=B에서 오른쪽에 곱해야 함을 이유와 함께 말함",
-    "partial": "쪽은 맞으나 이유가 없음",
-    "none": "쪽을 틀리거나 정하지 못함"
+    "criterion": "\uc870\uac74 \ubc14\ub01c \ud310\ub2e8",
+    "full": "XA=B\uc5d0\uc11c \uc624\ub978\ucabd\uc5d0 \uacf1\ud574\uc57c \ud568\uc744 \uc774\uc720\uc640 \ud568\uaed8 \ub9d0\ud568",
+    "partial": "\ucabd\uc740 \ub9de\uc73c\ub098 \uc774\uc720\uac00 \uc5c6\uc74c",
+    "none": "\ucabd\uc744 \ud2c0\ub9ac\uac70\ub098 \uc815\ud558\uc9c0 \ubabb\ud568"
    }
   ],
   "alternatives": [
-   "오류를 '곱하는 쪽이 왼쪽이어야 하는데 오른쪽이었다' 또는 'AX=B에서 A⁻¹를 B 앞에 써야 한다' 어느 쪽으로 설명해도 같은 지적이다.",
-   "검산은 A(올바른 X)=B의 네 성분을 직접 비교하는 것과, 도윤의 X로 AX를 계산해 B와 다름을 보이는 것 모두 좋다."
+   "\uc624\ub958\ub97c '\uacf1\ud558\ub294 \ucabd\uc774 \uc67c\ucabd\uc774\uc5b4\uc57c \ud558\ub294\ub370 \uc624\ub978\ucabd\uc774\uc5c8\ub2e4' \ub610\ub294 'AX=B\uc5d0\uc11c A\u207b\u00b9\ub97c B \uc55e\uc5d0 \uc368\uc57c \ud55c\ub2e4' \uc5b4\ub290 \ucabd\uc73c\ub85c \uc124\uba85\ud574\ub3c4 \uac19\uc740 \uc9c0\uc801\uc774\ub2e4.",
+   "\uac80\uc0b0\uc740 A(\uc62c\ubc14\ub978 X)=B\uc758 \ub124 \uc131\ubd84\uc744 \uc9c1\uc811 \ube44\uad50\ud558\ub294 \uac83\uacfc, \ub3c4\uc724\uc758 X\ub85c AX\ub97c \uacc4\uc0b0\ud574 B\uc640 \ub2e4\ub984\uc744 \ubcf4\uc774\ub294 \uac83 \ubaa8\ub450 \uc88b\ub2e4."
   ],
   "hardCases": [
-   "A와 B가 우연히 순서를 바꿔도 같은 경우(예: B가 A의 거듭제곱)에는 도윤의 순서도 맞는 답이 나온다. 이 문제의 A, B는 그런 경우가 아니다.",
-   "학생이 2번째 줄을 지목하면, 곱하는 쪽을 쓰지 않은 모호함을 인정하되 3번째 줄에서 구체적으로 오른쪽에 곱했다는 점을 짚게 한다."
+   "A\uc640 B\uac00 \uc6b0\uc5f0\ud788 \uc21c\uc11c\ub97c \ubc14\uafd4\ub3c4 \uac19\uc740 \uacbd\uc6b0(\uc608: B\uac00 A\uc758 \uac70\ub4ed\uc81c\uacf1)\uc5d0\ub294 \ub3c4\uc724\uc758 \uc21c\uc11c\ub3c4 \ub9de\ub294 \ub2f5\uc774 \ub098\uc628\ub2e4. \uc774 \ubb38\uc81c\uc758 A, B\ub294 \uadf8\ub7f0 \uacbd\uc6b0\uac00 \uc544\ub2c8\ub2e4.",
+   "\ud559\uc0dd\uc774 2\ubc88\uc9f8 \uc904\uc744 \uc9c0\ubaa9\ud558\uba74, \uacf1\ud558\ub294 \ucabd\uc744 \uc4f0\uc9c0 \uc54a\uc740 \ubaa8\ud638\ud568\uc744 \uc778\uc815\ud558\ub418 3\ubc88\uc9f8 \uc904\uc5d0\uc11c \uad6c\uccb4\uc801\uc73c\ub85c \uc624\ub978\ucabd\uc5d0 \uacf1\ud588\ub2e4\ub294 \uc810\uc744 \uc9da\uac8c \ud55c\ub2e4."
   ],
   "cautions": {
-   "language": "'양변에 곱하다'라는 표현에서 양변에 '같은 쪽'으로 곱한다는 점을 명시하게 했다. 'A의 역행렬'은 글로 풀어 쓰고 필요할 때 A⁻¹(A 인버스)도 함께 썼다.",
-   "culture": "특정 문화에 의존하지 않는다. 풀이 속 학생 이름은 임의이다.",
-   "accessibility": "그림 없이 문장과 숫자만으로 풀 수 있게 했다. 행렬은 (1행 ; 2행) 꼴의 글로 적고, 처음에 읽는 법을 알려 준다. 예: (1 1 ; 0 1)은 '1행은 1 1, 2행은 0 1'로 읽는다. 위 첨자 -1(역행렬)은 'A 인버스'라고 읽는다. 색에 의존하지 않는다."
+   "language": "'\uc591\ubcc0\uc5d0 \uacf1\ud558\ub2e4'\ub77c\ub294 \ud45c\ud604\uc5d0\uc11c \uc591\ubcc0\uc5d0 '\uac19\uc740 \ucabd'\uc73c\ub85c \uacf1\ud55c\ub2e4\ub294 \uc810\uc744 \uba85\uc2dc\ud558\uac8c \ud588\ub2e4. 'A\uc758 \uc5ed\ud589\ub82c'\uc740 \uae00\ub85c \ud480\uc5b4 \uc4f0\uace0 \ud544\uc694\ud560 \ub54c A\u207b\u00b9(A \uc778\ubc84\uc2a4)\ub3c4 \ud568\uaed8 \uc37c\ub2e4.",
+   "culture": "\ud2b9\uc815 \ubb38\ud654\uc5d0 \uc758\uc874\ud558\uc9c0 \uc54a\ub294\ub2e4. \ud480\uc774 \uc18d \ud559\uc0dd \uc774\ub984\uc740 \uc784\uc758\uc774\ub2e4.",
+   "accessibility": "\uadf8\ub9bc \uc5c6\uc774 \ubb38\uc7a5\uacfc \uc22b\uc790\ub9cc\uc73c\ub85c \ud480 \uc218 \uc788\uac8c \ud588\ub2e4. \ud589\ub82c\uc740 (1\ud589 ; 2\ud589) \uaf34\uc758 \uae00\ub85c \uc801\uace0, \ucc98\uc74c\uc5d0 \uc77d\ub294 \ubc95\uc744 \uc54c\ub824 \uc900\ub2e4. \uc608: (1 1 ; 0 1)\uc740 '1\ud589\uc740 1 1, 2\ud589\uc740 0 1'\ub85c \uc77d\ub294\ub2e4. \uc704 \ucca8\uc790 -1(\uc5ed\ud589\ub82c)\uc740 'A \uc778\ubc84\uc2a4'\ub77c\uace0 \uc77d\ub294\ub2e4. \uc0c9\uc5d0 \uc758\uc874\ud558\uc9c0 \uc54a\ub294\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "오류 줄 선택",
-    "검산 방법 선택",
-    "쓰기의 표면 특징: 오른쪽이라는 쪽 언급과 이유 단어"
+    "\uc624\ub958 \uc904 \uc120\ud0dd",
+    "\uac80\uc0b0 \ubc29\ubc95 \uc120\ud0dd",
+    "\uc4f0\uae30\uc758 \ud45c\uba74 \ud2b9\uc9d5: \uc624\ub978\ucabd\uc774\ub77c\ub294 \ucabd \uc5b8\uae09\uacfc \uc774\uc720 \ub2e8\uc5b4"
    ],
    "human": [
-    "쓰기 설명이 순서의 의미를 이해한 것인지"
+    "\uc4f0\uae30 \uc124\uba85\uc774 \uc21c\uc11c\uc758 \uc758\ubbf8\ub97c \uc774\ud574\ud55c \uac83\uc778\uc9c0"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "z-m-29-05",
   "subject": "math",
   "grade": "H1",
   "cell": "math|H1|matrix",
-  "topic": "역행렬의 성분과 ad-bc: 정수 성분 역행렬을 갖는 정수 행렬 설계",
+  "topic": "\uc5ed\ud589\ub82c\uc758 \uc131\ubd84\uacfc ad-bc: \uc815\uc218 \uc131\ubd84 \uc5ed\ud589\ub82c\uc744 \uac16\ub294 \uc815\uc218 \ud589\ub82c \uc124\uacc4",
   "level": 3,
-  "levelLabel": "고등",
-  "title": "역행렬의 성분도 모두 정수인 행렬을 설계하기",
+  "levelLabel": "\uace0\ub4f1",
+  "title": "\uc5ed\ud589\ub82c\uc758 \uc131\ubd84\ub3c4 \ubaa8\ub450 \uc815\uc218\uc778 \ud589\ub82c\uc744 \uc124\uacc4\ud558\uae30",
   "uiLang": "ko",
   "format": "make-your-own",
   "generative": true,
-  "goal": "정수 성분 행렬의 역행렬이 항상 정수 성분이 되는지 판단하고, 조건을 만족하는 행렬을 여러 개 설계해 그 공통점(ad-bc의 값)과 필요한 이유를 설명한다.",
+  "goal": "\uc815\uc218 \uc131\ubd84 \ud589\ub82c\uc758 \uc5ed\ud589\ub82c\uc774 \ud56d\uc0c1 \uc815\uc218 \uc131\ubd84\uc774 \ub418\ub294\uc9c0 \ud310\ub2e8\ud558\uace0, \uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294 \ud589\ub82c\uc744 \uc5ec\ub7ec \uac1c \uc124\uacc4\ud574 \uadf8 \uacf5\ud1b5\uc810(ad-bc\uc758 \uac12)\uacfc \ud544\uc694\ud55c \uc774\uc720\ub97c \uc124\uba85\ud55c\ub2e4.",
   "thinking": [
-   "일반화 주장의 참거짓을 판단하기",
-   "제약 속에서 여러 해법 만들기",
-   "해들의 공통 조건 찾아 필요성 시험하기"
+   "\uc77c\ubc18\ud654 \uc8fc\uc7a5\uc758 \ucc38\uac70\uc9d3\uc744 \ud310\ub2e8\ud558\uae30",
+   "\uc81c\uc57d \uc18d\uc5d0\uc11c \uc5ec\ub7ec \ud574\ubc95 \ub9cc\ub4e4\uae30",
+   "\ud574\ub4e4\uc758 \uacf5\ud1b5 \uc870\uac74 \ucc3e\uc544 \ud544\uc694\uc131 \uc2dc\ud5d8\ud558\uae30"
   ],
-  "differsFromPlain": "단순 연습은 주어진 행렬의 역행렬을 공식으로 구한다. 여기서는 '정수 성분이면 역행렬도 정수'라는 주장을 판단하고, 역행렬 성분이 모두 정수가 되는 행렬을 학생이 직접 설계하며, 만든 행렬들의 공통 조건을 찾는다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uc8fc\uc5b4\uc9c4 \ud589\ub82c\uc758 \uc5ed\ud589\ub82c\uc744 \uacf5\uc2dd\uc73c\ub85c \uad6c\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 '\uc815\uc218 \uc131\ubd84\uc774\uba74 \uc5ed\ud589\ub82c\ub3c4 \uc815\uc218'\ub77c\ub294 \uc8fc\uc7a5\uc744 \ud310\ub2e8\ud558\uace0, \uc5ed\ud589\ub82c \uc131\ubd84\uc774 \ubaa8\ub450 \uc815\uc218\uac00 \ub418\ub294 \ud589\ub82c\uc744 \ud559\uc0dd\uc774 \uc9c1\uc811 \uc124\uacc4\ud558\uba70, \ub9cc\ub4e0 \ud589\ub82c\ub4e4\uc758 \uacf5\ud1b5 \uc870\uac74\uc744 \ucc3e\ub294\ub2e4.",
   "prerequisites": [
-   "2×2 행렬 (a b ; c d)의 역행렬이 (1/(ad-bc))(d -b ; -c a)임",
-   "정수의 나눗셈과 나누어떨어짐",
-   "[난이도 구분] H1은 이 제작 배정의 난이도 수준이며 교육과정 학년 배정이 아니다. 역행렬 공식을 이미 배운 학생을 가정한다."
+   "2\u00d72 \ud589\ub82c (a b ; c d)\uc758 \uc5ed\ud589\ub82c\uc774 (1/(ad-bc))(d -b ; -c a)\uc784",
+   "\uc815\uc218\uc758 \ub098\ub217\uc148\uacfc \ub098\ub204\uc5b4\ub5a8\uc5b4\uc9d0",
+   "[\ub09c\uc774\ub3c4 \uad6c\ubd84] H1\uc740 \uc774 \uc81c\uc791 \ubc30\uc815\uc758 \ub09c\uc774\ub3c4 \uc218\uc900\uc774\uba70 \uad50\uc721\uacfc\uc815 \ud559\ub144 \ubc30\uc815\uc774 \uc544\ub2c8\ub2e4. \uc5ed\ud589\ub82c \uacf5\uc2dd\uc744 \uc774\ubbf8 \ubc30\uc6b4 \ud559\uc0dd\uc744 \uac00\uc815\ud55c\ub2e4."
   ],
   "minutes": 15,
   "curriculum": null,
-  "material": "행렬은 (1행 ; 2행) 꼴로 적는다. 2×2 행렬 A = (a b ; c d)에서 ad-bc가 0이 아니면 역행렬이 있고, 그 역행렬은 (d -b ; -c a)의 모든 성분에 1/(ad-bc)를 곱한 것이다. 시윤은 정수 암호표를 만들고 있다. 암호표 A는 성분이 모두 정수인 2×2 행렬이고, 풀 때 쓰는 열쇠표는 A의 역행렬이다. 시윤은 열쇠표에도 분수가 나오지 않았으면 한다.",
+  "material": "\ud589\ub82c\uc740 (1\ud589 ; 2\ud589) \uaf34\ub85c \uc801\ub294\ub2e4. 2\u00d72 \ud589\ub82c A = (a b ; c d)\uc5d0\uc11c ad-bc\uac00 0\uc774 \uc544\ub2c8\uba74 \uc5ed\ud589\ub82c\uc774 \uc788\uace0, \uadf8 \uc5ed\ud589\ub82c\uc740 (d -b ; -c a)\uc758 \ubaa8\ub4e0 \uc131\ubd84\uc5d0 1/(ad-bc)\ub97c \uacf1\ud55c \uac83\uc774\ub2e4. \uc2dc\uc724\uc740 \uc815\uc218 \uc554\ud638\ud45c\ub97c \ub9cc\ub4e4\uace0 \uc788\ub2e4. \uc554\ud638\ud45c A\ub294 \uc131\ubd84\uc774 \ubaa8\ub450 \uc815\uc218\uc778 2\u00d72 \ud589\ub82c\uc774\uace0, \ud480 \ub54c \uc4f0\ub294 \uc5f4\uc1e0\ud45c\ub294 A\uc758 \uc5ed\ud589\ub82c\uc774\ub2e4. \uc2dc\uc724\uc740 \uc5f4\uc1e0\ud45c\uc5d0\ub3c4 \ubd84\uc218\uac00 \ub098\uc624\uc9c0 \uc54a\uc558\uc73c\uba74 \ud55c\ub2e4.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
-    "prompt": "A의 성분이 모두 정수이고 역행렬이 있을 때, 역행렬의 성분은 어떨까요?",
+    "prompt": "A\uc758 \uc131\ubd84\uc774 \ubaa8\ub450 \uc815\uc218\uc774\uace0 \uc5ed\ud589\ub82c\uc774 \uc788\uc744 \ub54c, \uc5ed\ud589\ub82c\uc758 \uc131\ubd84\uc740 \uc5b4\ub5a8\uae4c\uc694?",
     "options": [
      {
       "id": "a",
-      "text": "항상 모두 정수이다. 정수끼리만 계산하기 때문이다",
-      "reveals": "역행렬 공식에는 1/(ad-bc)를 곱하는 부분이 있어요. ad-bc가 2나 3이면 어떻게 되는지 시험해 보세요."
+      "text": "\ud56d\uc0c1 \ubaa8\ub450 \uc815\uc218\uc774\ub2e4. \uc815\uc218\ub07c\ub9ac\ub9cc \uacc4\uc0b0\ud558\uae30 \ub54c\ubb38\uc774\ub2e4",
+      "reveals": "\uc5ed\ud589\ub82c \uacf5\uc2dd\uc5d0\ub294 1/(ad-bc)\ub97c \uacf1\ud558\ub294 \ubd80\ubd84\uc774 \uc788\uc5b4\uc694. ad-bc\uac00 2\ub098 3\uc774\uba74 \uc5b4\ub5bb\uac8c \ub418\ub294\uc9c0 \uc2dc\ud5d8\ud574 \ubcf4\uc138\uc694."
      },
      {
       "id": "b",
-      "text": "항상 정수가 아니다. 역행렬에는 분수가 나오기 때문이다",
-      "reveals": "역행렬에 분수가 나오는 예만 떠올렸을 수 있어요. 분수가 나오지 않는 정수 행렬이 있는지 (1 0 ; 0 1)이 아닌 예로 시험해 보세요."
+      "text": "\ud56d\uc0c1 \uc815\uc218\uac00 \uc544\ub2c8\ub2e4. \uc5ed\ud589\ub82c\uc5d0\ub294 \ubd84\uc218\uac00 \ub098\uc624\uae30 \ub54c\ubb38\uc774\ub2e4",
+      "reveals": "\uc5ed\ud589\ub82c\uc5d0 \ubd84\uc218\uac00 \ub098\uc624\ub294 \uc608\ub9cc \ub5a0\uc62c\ub838\uc744 \uc218 \uc788\uc5b4\uc694. \ubd84\uc218\uac00 \ub098\uc624\uc9c0 \uc54a\ub294 \uc815\uc218 \ud589\ub82c\uc774 \uc788\ub294\uc9c0 (1 0 ; 0 1)\uc774 \uc544\ub2cc \uc608\ub85c \uc2dc\ud5d8\ud574 \ubcf4\uc138\uc694."
      },
      {
       "id": "c",
-      "text": "성분이 모두 양수일 때만 정수이다",
-      "reveals": "부호가 아니라 ad-bc의 값이 어떻게 되는지가 열쇠일 수 있어요. 음수가 섞인 예로 시험해 보세요."
+      "text": "\uc131\ubd84\uc774 \ubaa8\ub450 \uc591\uc218\uc77c \ub54c\ub9cc \uc815\uc218\uc774\ub2e4",
+      "reveals": "\ubd80\ud638\uac00 \uc544\ub2c8\ub77c ad-bc\uc758 \uac12\uc774 \uc5b4\ub5bb\uac8c \ub418\ub294\uc9c0\uac00 \uc5f4\uc1e0\uc77c \uc218 \uc788\uc5b4\uc694. \uc74c\uc218\uac00 \uc11e\uc778 \uc608\ub85c \uc2dc\ud5d8\ud574 \ubcf4\uc138\uc694."
      },
      {
       "id": "d",
-      "text": "정수인 경우와 정수가 아닌 경우가 모두 있다"
+      "text": "\uc815\uc218\uc778 \uacbd\uc6b0\uc640 \uc815\uc218\uac00 \uc544\ub2cc \uacbd\uc6b0\uac00 \ubaa8\ub450 \uc788\ub2e4"
      }
     ],
     "correct": [
      "d"
     ],
-    "explain": "A = (1 1 ; 1 3)은 ad-bc=2이고 역행렬 (3/2 -1/2 ; -1/2 1/2)에 분수가 나온다. 반면 A = (2 1 ; 1 1)은 ad-bc=1이고 역행렬 (1 -1 ; -1 2)는 모두 정수이다. 두 가지 경우가 모두 있다.",
+    "explain": "A = (1 1 ; 1 3)\uc740 ad-bc=2\uc774\uace0 \uc5ed\ud589\ub82c (3/2 -1/2 ; -1/2 1/2)\uc5d0 \ubd84\uc218\uac00 \ub098\uc628\ub2e4. \ubc18\uba74 A = (2 1 ; 1 1)\uc740 ad-bc=1\uc774\uace0 \uc5ed\ud589\ub82c (1 -1 ; -1 2)\ub294 \ubaa8\ub450 \uc815\uc218\uc774\ub2e4. \ub450 \uac00\uc9c0 \uacbd\uc6b0\uac00 \ubaa8\ub450 \uc788\ub2e4.",
     "hints": [
-     "성분이 정수인 행렬 두 개를 직접 정해 각각의 ad-bc를 구해 보세요.",
-     "각각의 역행렬을 공식으로 구해, 성분이 정수로 나오는지 비교해 보세요."
+     "\uc131\ubd84\uc774 \uc815\uc218\uc778 \ud589\ub82c \ub450 \uac1c\ub97c \uc9c1\uc811 \uc815\ud574 \uac01\uac01\uc758 ad-bc\ub97c \uad6c\ud574 \ubcf4\uc138\uc694.",
+     "\uac01\uac01\uc758 \uc5ed\ud589\ub82c\uc744 \uacf5\uc2dd\uc73c\ub85c \uad6c\ud574, \uc131\ubd84\uc774 \uc815\uc218\ub85c \ub098\uc624\ub294\uc9c0 \ube44\uad50\ud574 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "build",
-    "prompt": "열쇠표(A의 역행렬)의 성분이 모두 정수가 되는 암호표 A = (a b ; c d)를 서로 다르게 3개 설계해 보세요. 단, 성분은 모두 0이 아니고 절댓값 9 이하의 정수로 하세요.",
+    "prompt": "\uc5f4\uc1e0\ud45c(A\uc758 \uc5ed\ud589\ub82c)\uc758 \uc131\ubd84\uc774 \ubaa8\ub450 \uc815\uc218\uac00 \ub418\ub294 \uc554\ud638\ud45c A = (a b ; c d)\ub97c \uc11c\ub85c \ub2e4\ub974\uac8c 3\uac1c \uc124\uacc4\ud574 \ubcf4\uc138\uc694. \ub2e8, \uc131\ubd84\uc740 \ubaa8\ub450 0\uc774 \uc544\ub2c8\uace0 \uc808\ub313\uac12 9 \uc774\ud558\uc758 \uc815\uc218\ub85c \ud558\uc138\uc694.",
     "vars": [
      {
       "name": "a",
-      "label": "a (1행 1열)"
+      "label": "a (1\ud589 1\uc5f4)"
      },
      {
       "name": "b",
-      "label": "b (1행 2열)"
+      "label": "b (1\ud589 2\uc5f4)"
      },
      {
       "name": "c",
-      "label": "c (2행 1열)"
+      "label": "c (2\ud589 1\uc5f4)"
      },
      {
       "name": "d",
-      "label": "d (2행 2열)"
+      "label": "d (2\ud589 2\uc5f4)"
      }
     ],
     "constraints": [
      {
       "id": "c1",
       "expr": "a*d-b*c!=0",
-      "ok": "역행렬이 있어요.",
-      "fail": "ad-bc가 0이어서 역행렬이 없어요."
+      "ok": "\uc5ed\ud589\ub82c\uc774 \uc788\uc5b4\uc694.",
+      "fail": "ad-bc\uac00 0\uc774\uc5b4\uc11c \uc5ed\ud589\ub82c\uc774 \uc5c6\uc5b4\uc694."
      },
      {
       "id": "c2",
       "expr": "a%(a*d-b*c)==0 && b%(a*d-b*c)==0 && c%(a*d-b*c)==0 && d%(a*d-b*c)==0",
-      "ok": "역행렬의 네 성분 (d, -b, -c, a)를 ad-bc로 나눈 값이 모두 정수예요.",
-      "fail": "역행렬의 성분 중 분수가 되는 것이 있어요. 역행렬의 성분은 각각 d, -b, -c, a를 ad-bc로 나눈 값이에요."
+      "ok": "\uc5ed\ud589\ub82c\uc758 \ub124 \uc131\ubd84 (d, -b, -c, a)\ub97c ad-bc\ub85c \ub098\ub208 \uac12\uc774 \ubaa8\ub450 \uc815\uc218\uc608\uc694.",
+      "fail": "\uc5ed\ud589\ub82c\uc758 \uc131\ubd84 \uc911 \ubd84\uc218\uac00 \ub418\ub294 \uac83\uc774 \uc788\uc5b4\uc694. \uc5ed\ud589\ub82c\uc758 \uc131\ubd84\uc740 \uac01\uac01 d, -b, -c, a\ub97c ad-bc\ub85c \ub098\ub208 \uac12\uc774\uc5d0\uc694."
      },
      {
       "id": "c3",
       "expr": "a!=0 && b!=0 && c!=0 && d!=0",
-      "ok": "성분이 모두 0이 아니에요.",
-      "fail": "성분 중 0이 있어요. 모두 0이 아니어야 해요."
+      "ok": "\uc131\ubd84\uc774 \ubaa8\ub450 0\uc774 \uc544\ub2c8\uc5d0\uc694.",
+      "fail": "\uc131\ubd84 \uc911 0\uc774 \uc788\uc5b4\uc694. \ubaa8\ub450 0\uc774 \uc544\ub2c8\uc5b4\uc57c \ud574\uc694."
      },
      {
       "id": "c4",
       "expr": "abs(a)<=9 && abs(b)<=9 && abs(c)<=9 && abs(d)<=9",
-      "ok": "절댓값이 9 이하예요.",
-      "fail": "절댓값이 9보다 큰 성분이 있어요."
+      "ok": "\uc808\ub313\uac12\uc774 9 \uc774\ud558\uc608\uc694.",
+      "fail": "\uc808\ub313\uac12\uc774 9\ubcf4\ub2e4 \ud070 \uc131\ubd84\uc774 \uc788\uc5b4\uc694."
      },
      {
       "id": "c5",
       "expr": "a==floor(a) && b==floor(b) && c==floor(c) && d==floor(d)",
-      "ok": "성분이 모두 정수예요.",
-      "fail": "성분은 모두 정수여야 해요."
+      "ok": "\uc131\ubd84\uc774 \ubaa8\ub450 \uc815\uc218\uc608\uc694.",
+      "fail": "\uc131\ubd84\uc740 \ubaa8\ub450 \uc815\uc218\uc5ec\uc57c \ud574\uc694."
      }
     ],
     "need": 3,
@@ -1197,275 +1198,276 @@
       "d": 1
      }
     ],
-    "explain": "예: (2 1 ; 1 1), (3 2 ; 1 1), (1 2 ; 1 3), (-1 2 ; 1 -1) 등. 모두 ad-bc가 1 또는 -1이다. 그러면 역행렬은 (d -b ; -c a)에 1 또는 -1을 곱한 것이라 분수가 생기지 않는다.",
+    "explain": "\uc608: (2 1 ; 1 1), (3 2 ; 1 1), (1 2 ; 1 3), (-1 2 ; 1 -1) \ub4f1. \ubaa8\ub450 ad-bc\uac00 1 \ub610\ub294 -1\uc774\ub2e4. \uadf8\ub7ec\uba74 \uc5ed\ud589\ub82c\uc740 (d -b ; -c a)\uc5d0 1 \ub610\ub294 -1\uc744 \uacf1\ud55c \uac83\uc774\ub77c \ubd84\uc218\uac00 \uc0dd\uae30\uc9c0 \uc54a\ub294\ub2e4.",
     "hints": [
-     "성분을 몇 개 먼저 정한 뒤, 나머지 성분을 골라 ad-bc를 구해 보세요.",
-     "역행렬은 (d -b ; -c a)를 ad-bc로 나눈 것이니, ad-bc가 어떤 값일 때 항상 나누어떨어지는지 살펴보세요."
+     "\uc131\ubd84\uc744 \uba87 \uac1c \uba3c\uc800 \uc815\ud55c \ub4a4, \ub098\uba38\uc9c0 \uc131\ubd84\uc744 \uace8\ub77c ad-bc\ub97c \uad6c\ud574 \ubcf4\uc138\uc694.",
+     "\uc5ed\ud589\ub82c\uc740 (d -b ; -c a)\ub97c ad-bc\ub85c \ub098\ub208 \uac83\uc774\ub2c8, ad-bc\uac00 \uc5b4\ub5a4 \uac12\uc77c \ub54c \ud56d\uc0c1 \ub098\ub204\uc5b4\ub5a8\uc5b4\uc9c0\ub294\uc9c0 \uc0b4\ud3b4\ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s3",
     "kind": "write",
-    "prompt": "내가 만든 행렬들의 ad-bc 값을 비교해 보세요. 열쇠표가 모두 정수가 되는 조건을 짐작해 쓰고, ad-bc가 2나 3인 행렬로 그 조건이 정말 필요한지 시험한 결과도 쓰세요.",
-    "placeholder": "예: 내가 만든 행렬은 모두 ad-bc가 ...",
+    "prompt": "\ub0b4\uac00 \ub9cc\ub4e0 \ud589\ub82c\ub4e4\uc758 ad-bc \uac12\uc744 \ube44\uad50\ud574 \ubcf4\uc138\uc694. \uc5f4\uc1e0\ud45c\uac00 \ubaa8\ub450 \uc815\uc218\uac00 \ub418\ub294 \uc870\uac74\uc744 \uc9d0\uc791\ud574 \uc4f0\uace0, ad-bc\uac00 2\ub098 3\uc778 \ud589\ub82c\ub85c \uadf8 \uc870\uac74\uc774 \uc815\ub9d0 \ud544\uc694\ud55c\uc9c0 \uc2dc\ud5d8\ud55c \uacb0\uacfc\ub3c4 \uc4f0\uc138\uc694.",
+    "placeholder": "\uc608: \ub0b4\uac00 \ub9cc\ub4e0 \ud589\ub82c\uc740 \ubaa8\ub450 ad-bc\uac00 ...",
     "minChars": 30,
     "checks": [
      {
       "id": "w1",
-      "label": "ad-bc 값이 1 또는 -1이라는 조건을 말했다",
+      "label": "ad-bc \uac12\uc774 1 \ub610\ub294 -1\uc774\ub77c\ub294 \uc870\uac74\uc744 \ub9d0\ud588\ub2e4",
       "mode": "any",
       "patterns": [
-       "±\\s*1",
-       "1\\s*(또는|이나|혹은|,|과|와)\\s*[-−–]\\s*1",
-       "[-−–]\\s*1\\s*(또는|이나|혹은|,|과|와)\\s*1"
+       "\u00b1\\s*1",
+       "1\\s*(\ub610\ub294|\uc774\ub098|\ud639\uc740|,|\uacfc|\uc640)\\s*[-\u2212\u2013]\\s*1",
+       "[-\u2212\u2013]\\s*1\\s*(\ub610\ub294|\uc774\ub098|\ud639\uc740|,|\uacfc|\uc640)\\s*1"
       ]
      },
      {
       "id": "w2",
-      "label": "왜 그런지(분수, 나눗셈 등)를 연결했다",
+      "label": "\uc65c \uadf8\ub7f0\uc9c0(\ubd84\uc218, \ub098\ub217\uc148 \ub4f1)\ub97c \uc5f0\uacb0\ud588\ub2e4",
       "mode": "any",
       "patterns": [
-       "분수",
-       "나누",
-       "역수",
+       "\ubd84\uc218",
+       "\ub098\ub204",
+       "\uc5ed\uc218",
        "1\\s*/\\s*\\(?\\s*ad"
       ]
      }
     ],
     "selfAssess": [
-     "내가 만든 모든 행렬에서 ad-bc가 같은 값(1 또는 -1)인지 확인했는가?",
-     "ad-bc가 2나 3일 때 어떤 성분이 정수가 아니게 되는지 실제 행렬로 시험했는가?",
-     "'1 또는 -1이면 항상 된다'와 '1 또는 -1이어야만 된다'를 구분했는가?"
+     "\ub0b4\uac00 \ub9cc\ub4e0 \ubaa8\ub4e0 \ud589\ub82c\uc5d0\uc11c ad-bc\uac00 \uac19\uc740 \uac12(1 \ub610\ub294 -1)\uc778\uc9c0 \ud655\uc778\ud588\ub294\uac00?",
+     "ad-bc\uac00 2\ub098 3\uc77c \ub54c \uc5b4\ub5a4 \uc131\ubd84\uc774 \uc815\uc218\uac00 \uc544\ub2c8\uac8c \ub418\ub294\uc9c0 \uc2e4\uc81c \ud589\ub82c\ub85c \uc2dc\ud5d8\ud588\ub294\uac00?",
+     "'1 \ub610\ub294 -1\uc774\uba74 \ud56d\uc0c1 \ub41c\ub2e4'\uc640 '1 \ub610\ub294 -1\uc774\uc5b4\uc57c\ub9cc \ub41c\ub2e4'\ub97c \uad6c\ubd84\ud588\ub294\uac00?"
     ],
     "modelAnswers": [
      {
-      "text": "내가 만든 행렬은 모두 ad-bc가 1이나 -1이었어. ad-bc가 1 또는 -1이면 역행렬은 (d -b ; -c a)에 ±1을 곱한 것이라 분수가 안 생겨. ad-bc가 2인 (1 1 ; 1 3)을 시험하니 역행렬에 1/2이 곱해져 분수가 나왔어."
+      "text": "\ub0b4\uac00 \ub9cc\ub4e0 \ud589\ub82c\uc740 \ubaa8\ub450 ad-bc\uac00 1\uc774\ub098 -1\uc774\uc5c8\uc5b4. ad-bc\uac00 1 \ub610\ub294 -1\uc774\uba74 \uc5ed\ud589\ub82c\uc740 (d -b ; -c a)\uc5d0 \u00b11\uc744 \uacf1\ud55c \uac83\uc774\ub77c \ubd84\uc218\uac00 \uc548 \uc0dd\uaca8. ad-bc\uac00 2\uc778 (1 1 ; 1 3)\uc744 \uc2dc\ud5d8\ud558\ub2c8 \uc5ed\ud589\ub82c\uc5d0 1/2\uc774 \uacf1\ud574\uc838 \ubd84\uc218\uac00 \ub098\uc654\uc5b4."
      },
      {
-      "text": "ad-bc가 ±1일 때만 되는 것 같아. 정수 성분 행렬이면 역행렬 성분은 (정수)÷(ad-bc)인데, ad-bc가 2나 3 같은 수면 나누어떨어지지 않는 성분이 생겨서 분수가 되기 때문이야. 2인 (2 1 ; 1 1)... 아니 (1 1 ; 1 3)으로 해 보니 3/2가 나왔어.",
-      "note": "자기 정정이 섞여도 시험한 결과가 분명하면 좋다."
+      "text": "ad-bc\uac00 \u00b11\uc77c \ub54c\ub9cc \ub418\ub294 \uac83 \uac19\uc544. \uc815\uc218 \uc131\ubd84 \ud589\ub82c\uc774\uba74 \uc5ed\ud589\ub82c \uc131\ubd84\uc740 (\uc815\uc218)\u00f7(ad-bc)\uc778\ub370, ad-bc\uac00 2\ub098 3 \uac19\uc740 \uc218\uba74 \ub098\ub204\uc5b4\ub5a8\uc5b4\uc9c0\uc9c0 \uc54a\ub294 \uc131\ubd84\uc774 \uc0dd\uaca8\uc11c \ubd84\uc218\uac00 \ub418\uae30 \ub54c\ubb38\uc774\uc57c. 2\uc778 (2 1 ; 1 1)... \uc544\ub2c8 (1 1 ; 1 3)\uc73c\ub85c \ud574 \ubcf4\ub2c8 3/2\uac00 \ub098\uc654\uc5b4.",
+      "note": "\uc790\uae30 \uc815\uc815\uc774 \uc11e\uc5ec\ub3c4 \uc2dc\ud5d8\ud55c \uacb0\uacfc\uac00 \ubd84\uba85\ud558\uba74 \uc88b\ub2e4."
      }
     ],
     "badAnswers": [
      {
-      "text": "아무 정수나 넣으면 돼요.",
-      "why": "조건이 없고 만든 행렬들의 공통점을 말하지 않았다."
+      "text": "\uc544\ubb34 \uc815\uc218\ub098 \ub123\uc73c\uba74 \ub3fc\uc694.",
+      "why": "\uc870\uac74\uc774 \uc5c6\uace0 \ub9cc\ub4e0 \ud589\ub82c\ub4e4\uc758 \uacf5\ud1b5\uc810\uc744 \ub9d0\ud558\uc9c0 \uc54a\uc558\ub2e4."
      },
      {
-      "text": "ad-bc가 1이니까 됐어요.",
-      "why": "1이라는 값은 말했지만 왜 정수가 되는지, 2나 3일 때는 어떤지 없다."
+      "text": "ad-bc\uac00 1\uc774\ub2c8\uae4c \ub410\uc5b4\uc694.",
+      "why": "1\uc774\ub77c\ub294 \uac12\uc740 \ub9d0\ud588\uc9c0\ub9cc \uc65c \uc815\uc218\uac00 \ub418\ub294\uc9c0, 2\ub098 3\uc77c \ub54c\ub294 \uc5b4\ub5a4\uc9c0 \uc5c6\ub2e4."
      }
     ],
-    "humanReview": "'±1이면 충분하다'와 '±1이어야 한다'를 구분했는지, 시험한 행렬의 계산이 맞는지는 사람이 읽고 확인한다.",
+    "humanReview": "'\u00b11\uc774\uba74 \ucda9\ubd84\ud558\ub2e4'\uc640 '\u00b11\uc774\uc5b4\uc57c \ud55c\ub2e4'\ub97c \uad6c\ubd84\ud588\ub294\uc9c0, \uc2dc\ud5d8\ud55c \ud589\ub82c\uc758 \uacc4\uc0b0\uc774 \ub9de\ub294\uc9c0\ub294 \uc0ac\ub78c\uc774 \uc77d\uace0 \ud655\uc778\ud55c\ub2e4.",
     "hints": [
-     "내가 만든 행렬마다 ad-bc를 계산해 표로 적고 공통된 값이 있는지 찾아 보세요.",
-     "ad-bc가 2 또는 3이 되도록 정수 행렬을 만들어 역행렬의 성분을 구하고, 분수가 나오는 성분을 찾아 보세요."
+     "\ub0b4\uac00 \ub9cc\ub4e0 \ud589\ub82c\ub9c8\ub2e4 ad-bc\ub97c \uacc4\uc0b0\ud574 \ud45c\ub85c \uc801\uace0 \uacf5\ud1b5\ub41c \uac12\uc774 \uc788\ub294\uc9c0 \ucc3e\uc544 \ubcf4\uc138\uc694.",
+     "ad-bc\uac00 2 \ub610\ub294 3\uc774 \ub418\ub3c4\ub85d \uc815\uc218 \ud589\ub82c\uc744 \ub9cc\ub4e4\uc5b4 \uc5ed\ud589\ub82c\uc758 \uc131\ubd84\uc744 \uad6c\ud558\uace0, \ubd84\uc218\uac00 \ub098\uc624\ub294 \uc131\ubd84\uc744 \ucc3e\uc544 \ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "주장 판단",
-    "full": "정수인 경우와 아닌 경우가 모두 있음을 예로 확인함",
-    "partial": "결론은 맞지만 예를 확인하지 않음",
-    "none": "항상 정수 또는 항상 분수라고 단정함"
+    "criterion": "\uc8fc\uc7a5 \ud310\ub2e8",
+    "full": "\uc815\uc218\uc778 \uacbd\uc6b0\uc640 \uc544\ub2cc \uacbd\uc6b0\uac00 \ubaa8\ub450 \uc788\uc74c\uc744 \uc608\ub85c \ud655\uc778\ud568",
+    "partial": "\uacb0\ub860\uc740 \ub9de\uc9c0\ub9cc \uc608\ub97c \ud655\uc778\ud558\uc9c0 \uc54a\uc74c",
+    "none": "\ud56d\uc0c1 \uc815\uc218 \ub610\ub294 \ud56d\uc0c1 \ubd84\uc218\ub77c\uace0 \ub2e8\uc815\ud568"
    },
    {
-    "criterion": "설계",
-    "full": "조건을 만족하는 서로 다른 행렬을 3개 설계함",
-    "partial": "1~2개만 설계했거나 일부가 조건을 어김",
-    "none": "조건을 만족하는 행렬이 없음"
+    "criterion": "\uc124\uacc4",
+    "full": "\uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294 \uc11c\ub85c \ub2e4\ub978 \ud589\ub82c\uc744 3\uac1c \uc124\uacc4\ud568",
+    "partial": "1~2\uac1c\ub9cc \uc124\uacc4\ud588\uac70\ub098 \uc77c\ubd80\uac00 \uc870\uac74\uc744 \uc5b4\uae40",
+    "none": "\uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294 \ud589\ub82c\uc774 \uc5c6\uc74c"
    },
    {
-    "criterion": "조건 찾기",
-    "full": "ad-bc가 ±1이라는 공통점을 말하고, 2나 3인 행렬로 필요성을 시험함",
-    "partial": "공통점만 말하고 시험하지 않음",
-    "none": "공통점을 말하지 못함"
+    "criterion": "\uc870\uac74 \ucc3e\uae30",
+    "full": "ad-bc\uac00 \u00b11\uc774\ub77c\ub294 \uacf5\ud1b5\uc810\uc744 \ub9d0\ud558\uace0, 2\ub098 3\uc778 \ud589\ub82c\ub85c \ud544\uc694\uc131\uc744 \uc2dc\ud5d8\ud568",
+    "partial": "\uacf5\ud1b5\uc810\ub9cc \ub9d0\ud558\uace0 \uc2dc\ud5d8\ud558\uc9c0 \uc54a\uc74c",
+    "none": "\uacf5\ud1b5\uc810\uc744 \ub9d0\ud558\uc9c0 \ubabb\ud568"
    }
   ],
   "alternatives": [
-   "(d -b ; -c a) 모양을 먼저 정하고 ad-bc=±1이 되도록 성분을 맞추는 설계도, 임의로 정한 뒤 확인하는 시행착오도 모두 타당하다.",
-   "성분에 음수를 허용하면 (-1 2 ; 1 -1)처럼 ad-bc=-1인 행렬도 만들 수 있다."
+   "(d -b ; -c a) \ubaa8\uc591\uc744 \uba3c\uc800 \uc815\ud558\uace0 ad-bc=\u00b11\uc774 \ub418\ub3c4\ub85d \uc131\ubd84\uc744 \ub9de\ucd94\ub294 \uc124\uacc4\ub3c4, \uc784\uc758\ub85c \uc815\ud55c \ub4a4 \ud655\uc778\ud558\ub294 \uc2dc\ud589\ucc29\uc624\ub3c4 \ubaa8\ub450 \ud0c0\ub2f9\ud558\ub2e4.",
+   "\uc131\ubd84\uc5d0 \uc74c\uc218\ub97c \ud5c8\uc6a9\ud558\uba74 (-1 2 ; 1 -1)\ucc98\ub7fc ad-bc=-1\uc778 \ud589\ub82c\ub3c4 \ub9cc\ub4e4 \uc218 \uc788\ub2e4."
   ],
   "hardCases": [
-   "성분이 정수가 아닌 행렬(예: (1/2 0 ; 0 2))은 ad-bc=1이어도 역행렬 (2 0 ; 0 1/2)이 정수가 아니다. 이 과제는 성분이 정수일 때만 다룬다.",
-   "'성분이 모두 0이 아님' 조건을 빼면 단위행렬 같은 자명한 답이 허용된다."
+   "\uc131\ubd84\uc774 \uc815\uc218\uac00 \uc544\ub2cc \ud589\ub82c(\uc608: (1/2 0 ; 0 2))\uc740 ad-bc=1\uc774\uc5b4\ub3c4 \uc5ed\ud589\ub82c (2 0 ; 0 1/2)\uc774 \uc815\uc218\uac00 \uc544\ub2c8\ub2e4. \uc774 \uacfc\uc81c\ub294 \uc131\ubd84\uc774 \uc815\uc218\uc77c \ub54c\ub9cc \ub2e4\ub8ec\ub2e4.",
+   "'\uc131\ubd84\uc774 \ubaa8\ub450 0\uc774 \uc544\ub2d8' \uc870\uac74\uc744 \ube7c\uba74 \ub2e8\uc704\ud589\ub82c \uac19\uc740 \uc790\uba85\ud55c \ub2f5\uc774 \ud5c8\uc6a9\ub41c\ub2e4."
   ],
   "cautions": {
-   "language": "'암호표/열쇠표'는 비유이며 실제 암호 이론을 다루지 않는다. '나누어떨어진다'가 낯선 학생을 위해 힌트에 '분수가 되는지'로 풀어 두었다.",
-   "culture": "특정 문화에 의존하지 않는다.",
-   "accessibility": "그림 없이 문장과 숫자만으로 풀 수 있게 했다. 행렬은 (1행 ; 2행) 꼴의 글로 적고, 처음에 읽는 법을 알려 준다. 예: (1 1 ; 0 1)은 '1행은 1 1, 2행은 0 1'로 읽는다. 위 첨자 -1(역행렬)은 'A 인버스'라고 읽는다. 색에 의존하지 않는다."
+   "language": "'\uc554\ud638\ud45c/\uc5f4\uc1e0\ud45c'\ub294 \ube44\uc720\uc774\uba70 \uc2e4\uc81c \uc554\ud638 \uc774\ub860\uc744 \ub2e4\ub8e8\uc9c0 \uc54a\ub294\ub2e4. '\ub098\ub204\uc5b4\ub5a8\uc5b4\uc9c4\ub2e4'\uac00 \ub0af\uc120 \ud559\uc0dd\uc744 \uc704\ud574 \ud78c\ud2b8\uc5d0 '\ubd84\uc218\uac00 \ub418\ub294\uc9c0'\ub85c \ud480\uc5b4 \ub450\uc5c8\ub2e4.",
+   "culture": "\ud2b9\uc815 \ubb38\ud654\uc5d0 \uc758\uc874\ud558\uc9c0 \uc54a\ub294\ub2e4.",
+   "accessibility": "\uadf8\ub9bc \uc5c6\uc774 \ubb38\uc7a5\uacfc \uc22b\uc790\ub9cc\uc73c\ub85c \ud480 \uc218 \uc788\uac8c \ud588\ub2e4. \ud589\ub82c\uc740 (1\ud589 ; 2\ud589) \uaf34\uc758 \uae00\ub85c \uc801\uace0, \ucc98\uc74c\uc5d0 \uc77d\ub294 \ubc95\uc744 \uc54c\ub824 \uc900\ub2e4. \uc608: (1 1 ; 0 1)\uc740 '1\ud589\uc740 1 1, 2\ud589\uc740 0 1'\ub85c \uc77d\ub294\ub2e4. \uc704 \ucca8\uc790 -1(\uc5ed\ud589\ub82c)\uc740 'A \uc778\ubc84\uc2a4'\ub77c\uace0 \uc77d\ub294\ub2e4. \uc0c9\uc5d0 \uc758\uc874\ud558\uc9c0 \uc54a\ub294\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "선택 문항",
-    "만든 행렬이 모든 제약(정수, 0이 아님, 역행렬 성분이 정수)을 만족하는지",
-    "서로 다른 행렬 3개인지"
+    "\uc120\ud0dd \ubb38\ud56d",
+    "\ub9cc\ub4e0 \ud589\ub82c\uc774 \ubaa8\ub4e0 \uc81c\uc57d(\uc815\uc218, 0\uc774 \uc544\ub2d8, \uc5ed\ud589\ub82c \uc131\ubd84\uc774 \uc815\uc218)\uc744 \ub9cc\uc871\ud558\ub294\uc9c0",
+    "\uc11c\ub85c \ub2e4\ub978 \ud589\ub82c 3\uac1c\uc778\uc9c0"
    ],
    "human": [
-    "공통 조건의 설명, 필요성 시험의 정확성"
+    "\uacf5\ud1b5 \uc870\uac74\uc758 \uc124\uba85, \ud544\uc694\uc131 \uc2dc\ud5d8\uc758 \uc815\ud655\uc131"
    ]
-  }
+  },
+  "status": "reviewed-ai"
  },
  {
   "id": "z-m-29-06",
   "subject": "math",
   "grade": "H1",
   "cell": "math|H1|matrix",
-  "topic": "역행렬의 정의: AB=E만으로 BA=E라고 할 수 있는가(행렬의 크기 조건)",
+  "topic": "\uc5ed\ud589\ub82c\uc758 \uc815\uc758: AB=E\ub9cc\uc73c\ub85c BA=E\ub77c\uace0 \ud560 \uc218 \uc788\ub294\uac00(\ud589\ub82c\uc758 \ud06c\uae30 \uc870\uac74)",
   "level": 3,
-  "levelLabel": "고등",
-  "title": "AB가 단위행렬이면 BA도 단위행렬일까?",
+  "levelLabel": "\uace0\ub4f1",
+  "title": "AB\uac00 \ub2e8\uc704\ud589\ub82c\uc774\uba74 BA\ub3c4 \ub2e8\uc704\ud589\ub82c\uc77c\uae4c?",
   "uiLang": "ko",
   "format": "choose-needed-info",
   "generative": false,
-  "goal": "AB=E라는 정보만으로 BA=E를 말할 수 있는지 예와 반례로 판단하고, 역행렬이라고 쓰기 전에 필요한 정보(행렬의 크기, BA의 확인)를 말한다.",
+  "goal": "AB=E\ub77c\ub294 \uc815\ubcf4\ub9cc\uc73c\ub85c BA=E\ub97c \ub9d0\ud560 \uc218 \uc788\ub294\uc9c0 \uc608\uc640 \ubc18\ub840\ub85c \ud310\ub2e8\ud558\uace0, \uc5ed\ud589\ub82c\uc774\ub77c\uace0 \uc4f0\uae30 \uc804\uc5d0 \ud544\uc694\ud55c \uc815\ubcf4(\ud589\ub82c\uc758 \ud06c\uae30, BA\uc758 \ud655\uc778)\ub97c \ub9d0\ud55c\ub2e4.",
   "thinking": [
-   "예 하나의 증거력 판단하기",
-   "크기가 다른 반례로 주장 고치기",
-   "결론에 필요한 정보 고르기"
+   "\uc608 \ud558\ub098\uc758 \uc99d\uac70\ub825 \ud310\ub2e8\ud558\uae30",
+   "\ud06c\uae30\uac00 \ub2e4\ub978 \ubc18\ub840\ub85c \uc8fc\uc7a5 \uace0\uce58\uae30",
+   "\uacb0\ub860\uc5d0 \ud544\uc694\ud55c \uc815\ubcf4 \uace0\ub974\uae30"
   ],
-  "differsFromPlain": "단순 연습은 AB=BA=E임을 확인해 역행렬임을 보인다. 여기서는 AB=E만 확인했을 때 어떤 정보가 더 필요한지를 예와 반례를 보며 판단하고, 판단을 바꾸거나 조건을 붙인다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 AB=BA=E\uc784\uc744 \ud655\uc778\ud574 \uc5ed\ud589\ub82c\uc784\uc744 \ubcf4\uc778\ub2e4. \uc5ec\uae30\uc11c\ub294 AB=E\ub9cc \ud655\uc778\ud588\uc744 \ub54c \uc5b4\ub5a4 \uc815\ubcf4\uac00 \ub354 \ud544\uc694\ud55c\uc9c0\ub97c \uc608\uc640 \ubc18\ub840\ub97c \ubcf4\uba70 \ud310\ub2e8\ud558\uace0, \ud310\ub2e8\uc744 \ubc14\uafb8\uac70\ub098 \uc870\uac74\uc744 \ubd99\uc778\ub2e4.",
   "prerequisites": [
-   "행렬의 곱셈이 가능한 조건(앞 행렬의 열 수 = 뒤 행렬의 행 수)과 결과 행렬의 크기",
-   "단위행렬 E의 뜻",
-   "[난이도 구분] H1은 이 제작 배정의 난이도 수준이며 교육과정 학년 배정이 아니다. 정사각행렬이 아닌 행렬의 곱을 한 번 접해 본 학생을 가정한다."
+   "\ud589\ub82c\uc758 \uacf1\uc148\uc774 \uac00\ub2a5\ud55c \uc870\uac74(\uc55e \ud589\ub82c\uc758 \uc5f4 \uc218 = \ub4a4 \ud589\ub82c\uc758 \ud589 \uc218)\uacfc \uacb0\uacfc \ud589\ub82c\uc758 \ud06c\uae30",
+   "\ub2e8\uc704\ud589\ub82c E\uc758 \ub73b",
+   "[\ub09c\uc774\ub3c4 \uad6c\ubd84] H1\uc740 \uc774 \uc81c\uc791 \ubc30\uc815\uc758 \ub09c\uc774\ub3c4 \uc218\uc900\uc774\uba70 \uad50\uc721\uacfc\uc815 \ud559\ub144 \ubc30\uc815\uc774 \uc544\ub2c8\ub2e4. \uc815\uc0ac\uac01\ud589\ub82c\uc774 \uc544\ub2cc \ud589\ub82c\uc758 \uacf1\uc744 \ud55c \ubc88 \uc811\ud574 \ubcf8 \ud559\uc0dd\uc744 \uac00\uc815\ud55c\ub2e4."
   ],
   "minutes": 15,
   "curriculum": null,
-  "material": "민서가 행렬 A, B의 곱 AB를 계산했더니 단위행렬 E가 나왔다. 민서는 '그러니까 BA도 E야. 그래서 B는 A의 역행렬이야'라고 쓰려고 한다. 민서는 A, B의 크기(몇 행 몇 열)를 따로 말하지 않았다. 행렬은 (1행 ; 2행 ; ...) 꼴로 적는다. 예를 들어 (1 0 ; 0 1)은 2×2 단위행렬이다. 표기: '2×3'은 2행 3열을 뜻한다. 아래 정보가 하나씩 공개된다.",
+  "material": "\ubbfc\uc11c\uac00 \ud589\ub82c A, B\uc758 \uacf1 AB\ub97c \uacc4\uc0b0\ud588\ub354\ub2c8 \ub2e8\uc704\ud589\ub82c E\uac00 \ub098\uc654\ub2e4. \ubbfc\uc11c\ub294 '\uadf8\ub7ec\ub2c8\uae4c BA\ub3c4 E\uc57c. \uadf8\ub798\uc11c B\ub294 A\uc758 \uc5ed\ud589\ub82c\uc774\uc57c'\ub77c\uace0 \uc4f0\ub824\uace0 \ud55c\ub2e4. \ubbfc\uc11c\ub294 A, B\uc758 \ud06c\uae30(\uba87 \ud589 \uba87 \uc5f4)\ub97c \ub530\ub85c \ub9d0\ud558\uc9c0 \uc54a\uc558\ub2e4. \ud589\ub82c\uc740 (1\ud589 ; 2\ud589 ; ...) \uaf34\ub85c \uc801\ub294\ub2e4. \uc608\ub97c \ub4e4\uc5b4 (1 0 ; 0 1)\uc740 2\u00d72 \ub2e8\uc704\ud589\ub82c\uc774\ub2e4. \ud45c\uae30: '2\u00d73'\uc740 2\ud589 3\uc5f4\uc744 \ub73b\ud55c\ub2e4. \uc544\ub798 \uc815\ubcf4\uac00 \ud558\ub098\uc529 \uacf5\uac1c\ub41c\ub2e4.",
   "steps": [
    {
     "id": "s1",
     "kind": "reveal",
-    "prompt": "정보가 하나씩 공개될 때마다 '민서의 주장(AB=E이면 BA=E)'에 대한 생각을 고르세요.",
+    "prompt": "\uc815\ubcf4\uac00 \ud558\ub098\uc529 \uacf5\uac1c\ub420 \ub54c\ub9c8\ub2e4 '\ubbfc\uc11c\uc758 \uc8fc\uc7a5(AB=E\uc774\uba74 BA=E)'\uc5d0 \ub300\ud55c \uc0dd\uac01\uc744 \uace0\ub974\uc138\uc694.",
     "stages": [
      {
-      "info": "A = (2 1 ; 5 3), B = (3 -1 ; -5 2)이다. 계산하면 AB = (1 0 ; 0 1)이고, BA = (1 0 ; 0 1)도 나왔다.",
-      "ask": "이 예를 보고 민서의 주장에 대해 어떻게 생각하나요?",
+      "info": "A = (2 1 ; 5 3), B = (3 -1 ; -5 2)\uc774\ub2e4. \uacc4\uc0b0\ud558\uba74 AB = (1 0 ; 0 1)\uc774\uace0, BA = (1 0 ; 0 1)\ub3c4 \ub098\uc654\ub2e4.",
+      "ask": "\uc774 \uc608\ub97c \ubcf4\uace0 \ubbfc\uc11c\uc758 \uc8fc\uc7a5\uc5d0 \ub300\ud574 \uc5b4\ub5bb\uac8c \uc0dd\uac01\ud558\ub098\uc694?",
       "options": [
        {
         "id": "a",
-        "text": "곱은 순서에 따라 달라지니 BA는 E가 아닐 것이라고 본다",
-        "reveals": "곱의 순서를 바꾸면 보통 달라지지만, 이 예에서는 직접 계산해 보니 같았어요. 계산 결과를 근거로 삼아야 해요."
+        "text": "\uacf1\uc740 \uc21c\uc11c\uc5d0 \ub530\ub77c \ub2ec\ub77c\uc9c0\ub2c8 BA\ub294 E\uac00 \uc544\ub2d0 \uac83\uc774\ub77c\uace0 \ubcf8\ub2e4",
+        "reveals": "\uacf1\uc758 \uc21c\uc11c\ub97c \ubc14\uafb8\uba74 \ubcf4\ud1b5 \ub2ec\ub77c\uc9c0\uc9c0\ub9cc, \uc774 \uc608\uc5d0\uc11c\ub294 \uc9c1\uc811 \uacc4\uc0b0\ud574 \ubcf4\ub2c8 \uac19\uc558\uc5b4\uc694. \uacc4\uc0b0 \uacb0\uacfc\ub97c \uadfc\uac70\ub85c \uc0bc\uc544\uc57c \ud574\uc694."
        },
        {
         "id": "b",
-        "text": "예가 맞았으니 항상 성립한다고 믿어도 된다",
-        "reveals": "예가 맞은 것은 단서예요. 하지만 예 하나로 '항상'을 확정할 수는 없어요."
+        "text": "\uc608\uac00 \ub9de\uc558\uc73c\ub2c8 \ud56d\uc0c1 \uc131\ub9bd\ud55c\ub2e4\uace0 \ubbff\uc5b4\ub3c4 \ub41c\ub2e4",
+        "reveals": "\uc608\uac00 \ub9de\uc740 \uac83\uc740 \ub2e8\uc11c\uc608\uc694. \ud558\uc9c0\ub9cc \uc608 \ud558\ub098\ub85c '\ud56d\uc0c1'\uc744 \ud655\uc815\ud560 \uc218\ub294 \uc5c6\uc5b4\uc694."
        },
        {
         "id": "c",
-        "text": "가능성은 높아졌지만 확정하기는 이르다",
-        "reveals": "증거가 주는 것(가능성이 높아짐)과 주지 못하는 것(항상임)을 나눠서 생각했어요."
+        "text": "\uac00\ub2a5\uc131\uc740 \ub192\uc544\uc84c\uc9c0\ub9cc \ud655\uc815\ud558\uae30\ub294 \uc774\ub974\ub2e4",
+        "reveals": "\uc99d\uac70\uac00 \uc8fc\ub294 \uac83(\uac00\ub2a5\uc131\uc774 \ub192\uc544\uc9d0)\uacfc \uc8fc\uc9c0 \ubabb\ud558\ub294 \uac83(\ud56d\uc0c1\uc784)\uc744 \ub098\ub220\uc11c \uc0dd\uac01\ud588\uc5b4\uc694."
        },
        {
         "id": "d",
-        "text": "이 결과는 우연이라 의미가 없다고 본다",
-        "reveals": "계산이 맞은 것은 의미 있는 정보예요. 다만 얼마나 강한 정보인지가 문제예요."
+        "text": "\uc774 \uacb0\uacfc\ub294 \uc6b0\uc5f0\uc774\ub77c \uc758\ubbf8\uac00 \uc5c6\ub2e4\uace0 \ubcf8\ub2e4",
+        "reveals": "\uacc4\uc0b0\uc774 \ub9de\uc740 \uac83\uc740 \uc758\ubbf8 \uc788\ub294 \uc815\ubcf4\uc608\uc694. \ub2e4\ub9cc \uc5bc\ub9c8\ub098 \uac15\ud55c \uc815\ubcf4\uc778\uc9c0\uac00 \ubb38\uc81c\uc608\uc694."
        }
       ],
       "reasonable": [
        "c"
       ],
-      "after": "BA=E가 나온 것은 주장과 맞는 단서예요. 하지만 예 하나이고, A와 B가 어떤 크기일 때든 성립하는지는 아직 몰라요."
+      "after": "BA=E\uac00 \ub098\uc628 \uac83\uc740 \uc8fc\uc7a5\uacfc \ub9de\ub294 \ub2e8\uc11c\uc608\uc694. \ud558\uc9c0\ub9cc \uc608 \ud558\ub098\uc774\uace0, A\uc640 B\uac00 \uc5b4\ub5a4 \ud06c\uae30\uc77c \ub54c\ub4e0 \uc131\ub9bd\ud558\ub294\uc9c0\ub294 \uc544\uc9c1 \ubab0\ub77c\uc694."
      },
      {
-      "info": "A = (1 0 0 ; 0 1 0)은 2×3 행렬, B = (1 0 ; 0 1 ; 0 0)은 3×2 행렬이다. AB = (1 0 ; 0 1) = 2×2 단위행렬이다. 그런데 BA = (1 0 0 ; 0 1 0 ; 0 0 0)으로 3×3 행렬이고, 3×3 단위행렬이 아니다.",
-      "ask": "이 정보를 보고 민서의 주장에 대한 판단을 어떻게 고치겠습니까?",
+      "info": "A = (1 0 0 ; 0 1 0)\uc740 2\u00d73 \ud589\ub82c, B = (1 0 ; 0 1 ; 0 0)\uc740 3\u00d72 \ud589\ub82c\uc774\ub2e4. AB = (1 0 ; 0 1) = 2\u00d72 \ub2e8\uc704\ud589\ub82c\uc774\ub2e4. \uadf8\ub7f0\ub370 BA = (1 0 0 ; 0 1 0 ; 0 0 0)\uc73c\ub85c 3\u00d73 \ud589\ub82c\uc774\uace0, 3\u00d73 \ub2e8\uc704\ud589\ub82c\uc774 \uc544\ub2c8\ub2e4.",
+      "ask": "\uc774 \uc815\ubcf4\ub97c \ubcf4\uace0 \ubbfc\uc11c\uc758 \uc8fc\uc7a5\uc5d0 \ub300\ud55c \ud310\ub2e8\uc744 \uc5b4\ub5bb\uac8c \uace0\uce58\uaca0\uc2b5\ub2c8\uae4c?",
       "options": [
        {
         "id": "a",
-        "text": "크기 조건이 없는 주장은 깨졌다. 정사각행렬만 두면 아직 모른다",
-        "reveals": "반례로 무엇이 깨졌는지와 아직 열려 있는 범위를 나눠 말했어요."
+        "text": "\ud06c\uae30 \uc870\uac74\uc774 \uc5c6\ub294 \uc8fc\uc7a5\uc740 \uae68\uc84c\ub2e4. \uc815\uc0ac\uac01\ud589\ub82c\ub9cc \ub450\uba74 \uc544\uc9c1 \ubaa8\ub978\ub2e4",
+        "reveals": "\ubc18\ub840\ub85c \ubb34\uc5c7\uc774 \uae68\uc84c\ub294\uc9c0\uc640 \uc544\uc9c1 \uc5f4\ub824 \uc788\ub294 \ubc94\uc704\ub97c \ub098\ub220 \ub9d0\ud588\uc5b4\uc694."
        },
        {
         "id": "b",
-        "text": "계산이 틀렸다. AB=E이면 BA=E여야 한다",
-        "reveals": "BA는 3행 3열 행렬이라 2×2 단위행렬과 크기부터 달라요. 계산 대신 크기를 먼저 비교해 보세요."
+        "text": "\uacc4\uc0b0\uc774 \ud2c0\ub838\ub2e4. AB=E\uc774\uba74 BA=E\uc5ec\uc57c \ud55c\ub2e4",
+        "reveals": "BA\ub294 3\ud589 3\uc5f4 \ud589\ub82c\uc774\ub77c 2\u00d72 \ub2e8\uc704\ud589\ub82c\uacfc \ud06c\uae30\ubd80\ud130 \ub2ec\ub77c\uc694. \uacc4\uc0b0 \ub300\uc2e0 \ud06c\uae30\ub97c \uba3c\uc800 \ube44\uad50\ud574 \ubcf4\uc138\uc694."
        },
        {
         "id": "c",
-        "text": "이 예는 정사각행렬이 아니므로 주장과 상관이 없고 달라질 게 없다",
-        "reveals": "민서는 A, B의 크기를 따로 말하지 않았어요. 조건이 없는 주장이라면 이런 예도 주장을 시험하는 예가 돼요."
+        "text": "\uc774 \uc608\ub294 \uc815\uc0ac\uac01\ud589\ub82c\uc774 \uc544\ub2c8\ubbc0\ub85c \uc8fc\uc7a5\uacfc \uc0c1\uad00\uc774 \uc5c6\uace0 \ub2ec\ub77c\uc9c8 \uac8c \uc5c6\ub2e4",
+        "reveals": "\ubbfc\uc11c\ub294 A, B\uc758 \ud06c\uae30\ub97c \ub530\ub85c \ub9d0\ud558\uc9c0 \uc54a\uc558\uc5b4\uc694. \uc870\uac74\uc774 \uc5c6\ub294 \uc8fc\uc7a5\uc774\ub77c\uba74 \uc774\ub7f0 \uc608\ub3c4 \uc8fc\uc7a5\uc744 \uc2dc\ud5d8\ud558\ub294 \uc608\uac00 \ub3fc\uc694."
        },
        {
         "id": "d",
-        "text": "BA가 E가 아닌 것은 순서 때문이므로 AB=E를 의심해야 한다",
-        "reveals": "AB=E는 직접 계산해서 확인한 사실이에요. 의심할 것은 'AB=E이면 BA=E'라는 일반화예요."
+        "text": "BA\uac00 E\uac00 \uc544\ub2cc \uac83\uc740 \uc21c\uc11c \ub54c\ubb38\uc774\ubbc0\ub85c AB=E\ub97c \uc758\uc2ec\ud574\uc57c \ud55c\ub2e4",
+        "reveals": "AB=E\ub294 \uc9c1\uc811 \uacc4\uc0b0\ud574\uc11c \ud655\uc778\ud55c \uc0ac\uc2e4\uc774\uc5d0\uc694. \uc758\uc2ec\ud560 \uac83\uc740 'AB=E\uc774\uba74 BA=E'\ub77c\ub294 \uc77c\ubc18\ud654\uc608\uc694."
        }
       ],
       "reasonable": [
        "a"
       ],
-      "after": "크기에 제한이 없다면 'AB=E이면 BA=E'는 성립하지 않아요. 이 반례는 정사각행렬이 아니라는 점이 열쇠예요. 크기가 같은 정사각행렬만 보면 어떨지는 따로 확인해야 해요."
+      "after": "\ud06c\uae30\uc5d0 \uc81c\ud55c\uc774 \uc5c6\ub2e4\uba74 'AB=E\uc774\uba74 BA=E'\ub294 \uc131\ub9bd\ud558\uc9c0 \uc54a\uc544\uc694. \uc774 \ubc18\ub840\ub294 \uc815\uc0ac\uac01\ud589\ub82c\uc774 \uc544\ub2c8\ub77c\ub294 \uc810\uc774 \uc5f4\uc1e0\uc608\uc694. \ud06c\uae30\uac00 \uac19\uc740 \uc815\uc0ac\uac01\ud589\ub82c\ub9cc \ubcf4\uba74 \uc5b4\ub5a8\uc9c0\ub294 \ub530\ub85c \ud655\uc778\ud574\uc57c \ud574\uc694."
      },
      {
-      "info": "같은 크기의 정사각행렬 세 쌍을 더 시험했다. ((1 1 ; 0 1), (1 -1 ; 0 1)), ((0 1 ; 1 0), (0 1 ; 1 0)), ((2 1 ; 1 1), (1 -1 ; -1 2)). 세 쌍 모두 AB=E이고, 직접 계산해 보니 BA=E도 나왔다.",
-      "ask": "이제 어떤 말이 가장 알맞을까요? (알맞은 것은 여러 개일 수 있어요)",
+      "info": "\uac19\uc740 \ud06c\uae30\uc758 \uc815\uc0ac\uac01\ud589\ub82c \uc138 \uc30d\uc744 \ub354 \uc2dc\ud5d8\ud588\ub2e4. ((1 1 ; 0 1), (1 -1 ; 0 1)), ((0 1 ; 1 0), (0 1 ; 1 0)), ((2 1 ; 1 1), (1 -1 ; -1 2)). \uc138 \uc30d \ubaa8\ub450 AB=E\uc774\uace0, \uc9c1\uc811 \uacc4\uc0b0\ud574 \ubcf4\ub2c8 BA=E\ub3c4 \ub098\uc654\ub2e4.",
+      "ask": "\uc774\uc81c \uc5b4\ub5a4 \ub9d0\uc774 \uac00\uc7a5 \uc54c\ub9de\uc744\uae4c\uc694? (\uc54c\ub9de\uc740 \uac83\uc740 \uc5ec\ub7ec \uac1c\uc77c \uc218 \uc788\uc5b4\uc694)",
       "options": [
        {
         "id": "a",
-        "text": "크기가 같은 정사각행렬에서는 예가 모두 맞았다. 항상이라고 확정하려면 이유가 더 필요하다",
-        "reveals": "예로 얻은 확신과 증명으로 얻을 확신을 구분했어요."
+        "text": "\ud06c\uae30\uac00 \uac19\uc740 \uc815\uc0ac\uac01\ud589\ub82c\uc5d0\uc11c\ub294 \uc608\uac00 \ubaa8\ub450 \ub9de\uc558\ub2e4. \ud56d\uc0c1\uc774\ub77c\uace0 \ud655\uc815\ud558\ub824\uba74 \uc774\uc720\uac00 \ub354 \ud544\uc694\ud558\ub2e4",
+        "reveals": "\uc608\ub85c \uc5bb\uc740 \ud655\uc2e0\uacfc \uc99d\uba85\uc73c\ub85c \uc5bb\uc744 \ud655\uc2e0\uc744 \uad6c\ubd84\ud588\uc5b4\uc694."
        },
        {
         "id": "b",
-        "text": "정사각행렬이면 예가 네 개나 맞았으니, 이유 없이도 AB=E만 보이면 충분하다고 단정해도 된다",
-        "reveals": "예가 몇 개 맞았다는 것만으로 확정한 판단이에요. 이유가 아니라 예의 수에 기댔어요."
+        "text": "\uc815\uc0ac\uac01\ud589\ub82c\uc774\uba74 \uc608\uac00 \ub124 \uac1c\ub098 \ub9de\uc558\uc73c\ub2c8, \uc774\uc720 \uc5c6\uc774\ub3c4 AB=E\ub9cc \ubcf4\uc774\uba74 \ucda9\ubd84\ud558\ub2e4\uace0 \ub2e8\uc815\ud574\ub3c4 \ub41c\ub2e4",
+        "reveals": "\uc608\uac00 \uba87 \uac1c \ub9de\uc558\ub2e4\ub294 \uac83\ub9cc\uc73c\ub85c \ud655\uc815\ud55c \ud310\ub2e8\uc774\uc5d0\uc694. \uc774\uc720\uac00 \uc544\ub2c8\ub77c \uc608\uc758 \uc218\uc5d0 \uae30\ub314\uc5b4\uc694."
        },
        {
         "id": "c",
-        "text": "크기가 달랐던 반례 때문에 정사각행렬의 경우도 믿을 수 없다",
-        "reveals": "반례는 정사각행렬이 아닌 경우에서 나왔어요. 조건이 다른 경우까지 버릴 근거는 반례만으로는 부족해요."
+        "text": "\ud06c\uae30\uac00 \ub2ec\ub790\ub358 \ubc18\ub840 \ub54c\ubb38\uc5d0 \uc815\uc0ac\uac01\ud589\ub82c\uc758 \uacbd\uc6b0\ub3c4 \ubbff\uc744 \uc218 \uc5c6\ub2e4",
+        "reveals": "\ubc18\ub840\ub294 \uc815\uc0ac\uac01\ud589\ub82c\uc774 \uc544\ub2cc \uacbd\uc6b0\uc5d0\uc11c \ub098\uc654\uc5b4\uc694. \uc870\uac74\uc774 \ub2e4\ub978 \uacbd\uc6b0\uae4c\uc9c0 \ubc84\ub9b4 \uadfc\uac70\ub294 \ubc18\ub840\ub9cc\uc73c\ub85c\ub294 \ubd80\uc871\ud574\uc694."
        },
        {
         "id": "d",
-        "text": "역행렬이라고 쓰기 전에 크기를 밝히고 AB=E와 BA=E를 둘 다 확인한다",
-        "reveals": "정의대로 두 쪽을 모두 확인하고 크기를 밝히는 안전한 방법을 골랐어요."
+        "text": "\uc5ed\ud589\ub82c\uc774\ub77c\uace0 \uc4f0\uae30 \uc804\uc5d0 \ud06c\uae30\ub97c \ubc1d\ud788\uace0 AB=E\uc640 BA=E\ub97c \ub458 \ub2e4 \ud655\uc778\ud55c\ub2e4",
+        "reveals": "\uc815\uc758\ub300\ub85c \ub450 \ucabd\uc744 \ubaa8\ub450 \ud655\uc778\ud558\uace0 \ud06c\uae30\ub97c \ubc1d\ud788\ub294 \uc548\uc804\ud55c \ubc29\ubc95\uc744 \uace8\ub790\uc5b4\uc694."
        }
       ],
       "reasonable": [
        "a",
        "d"
       ],
-      "after": "정사각행렬에서는 예가 모두 맞았고, 실제로 같은 크기의 정사각행렬이면 AB=E에서 BA=E가 나온다고 알려져 있어요. 하지만 이 과제에서는 예로만 확인했으므로, 안전한 쓰기는 크기를 밝히고 AB=E, BA=E를 모두 보이는 것이에요."
+      "after": "\uc815\uc0ac\uac01\ud589\ub82c\uc5d0\uc11c\ub294 \uc608\uac00 \ubaa8\ub450 \ub9de\uc558\uace0, \uc2e4\uc81c\ub85c \uac19\uc740 \ud06c\uae30\uc758 \uc815\uc0ac\uac01\ud589\ub82c\uc774\uba74 AB=E\uc5d0\uc11c BA=E\uac00 \ub098\uc628\ub2e4\uace0 \uc54c\ub824\uc838 \uc788\uc5b4\uc694. \ud558\uc9c0\ub9cc \uc774 \uacfc\uc81c\uc5d0\uc11c\ub294 \uc608\ub85c\ub9cc \ud655\uc778\ud588\uc73c\ubbc0\ub85c, \uc548\uc804\ud55c \uc4f0\uae30\ub294 \ud06c\uae30\ub97c \ubc1d\ud788\uace0 AB=E, BA=E\ub97c \ubaa8\ub450 \ubcf4\uc774\ub294 \uac83\uc774\uc5d0\uc694."
      }
     ],
-    "reflect": "첫 예, 크기가 다른 반례, 정사각행렬 예 세 쌍을 보면서 민서의 주장에 대한 내 판단은 어떻게 달라졌나요? 어느 정보가 '확신의 정도'를, 어느 정보가 '주장의 조건'을 바꾸었나요?",
+    "reflect": "\uccab \uc608, \ud06c\uae30\uac00 \ub2e4\ub978 \ubc18\ub840, \uc815\uc0ac\uac01\ud589\ub82c \uc608 \uc138 \uc30d\uc744 \ubcf4\uba74\uc11c \ubbfc\uc11c\uc758 \uc8fc\uc7a5\uc5d0 \ub300\ud55c \ub0b4 \ud310\ub2e8\uc740 \uc5b4\ub5bb\uac8c \ub2ec\ub77c\uc84c\ub098\uc694? \uc5b4\ub290 \uc815\ubcf4\uac00 '\ud655\uc2e0\uc758 \uc815\ub3c4'\ub97c, \uc5b4\ub290 \uc815\ubcf4\uac00 '\uc8fc\uc7a5\uc758 \uc870\uac74'\uc744 \ubc14\uafb8\uc5c8\ub098\uc694?",
     "hints": [
-     "각 단계에서 AB와 BA의 크기(몇 행 몇 열)를 먼저 적어 단위행렬과 크기가 같은지 비교해 보세요.",
-     "새 정보가 나올 때마다 '예가 늘었다'와 '조건이 바뀌었다' 중 무엇이 일어났는지 한 줄로 적어 보세요."
+     "\uac01 \ub2e8\uacc4\uc5d0\uc11c AB\uc640 BA\uc758 \ud06c\uae30(\uba87 \ud589 \uba87 \uc5f4)\ub97c \uba3c\uc800 \uc801\uc5b4 \ub2e8\uc704\ud589\ub82c\uacfc \ud06c\uae30\uac00 \uac19\uc740\uc9c0 \ube44\uad50\ud574 \ubcf4\uc138\uc694.",
+     "\uc0c8 \uc815\ubcf4\uac00 \ub098\uc62c \ub54c\ub9c8\ub2e4 '\uc608\uac00 \ub298\uc5c8\ub2e4'\uc640 '\uc870\uac74\uc774 \ubc14\ub00c\uc5c8\ub2e4' \uc911 \ubb34\uc5c7\uc774 \uc77c\uc5b4\ub0ac\ub294\uc9c0 \ud55c \uc904\ub85c \uc801\uc5b4 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "choose",
-    "prompt": "민서가 'B는 A의 역행렬이다'라고 쓰기 전에, 채점하는 사람이 가장 먼저 물어야 할 정보는 무엇일까요?",
+    "prompt": "\ubbfc\uc11c\uac00 'B\ub294 A\uc758 \uc5ed\ud589\ub82c\uc774\ub2e4'\ub77c\uace0 \uc4f0\uae30 \uc804\uc5d0, \ucc44\uc810\ud558\ub294 \uc0ac\ub78c\uc774 \uac00\uc7a5 \uba3c\uc800 \ubb3c\uc5b4\uc57c \ud560 \uc815\ubcf4\ub294 \ubb34\uc5c7\uc77c\uae4c\uc694?",
     "options": [
      {
       "id": "a",
-      "text": "A의 성분 중에 0이 있나요?",
-      "reveals": "0이 있는지는 AB=E가 역행렬을 뜻하는지와 직접 관계가 없어요."
+      "text": "A\uc758 \uc131\ubd84 \uc911\uc5d0 0\uc774 \uc788\ub098\uc694?",
+      "reveals": "0\uc774 \uc788\ub294\uc9c0\ub294 AB=E\uac00 \uc5ed\ud589\ub82c\uc744 \ub73b\ud558\ub294\uc9c0\uc640 \uc9c1\uc811 \uad00\uacc4\uac00 \uc5c6\uc5b4\uc694."
      },
      {
       "id": "b",
-      "text": "A와 B의 크기는 어떻게 되나요?"
+      "text": "A\uc640 B\uc758 \ud06c\uae30\ub294 \uc5b4\ub5bb\uac8c \ub418\ub098\uc694?"
      },
      {
       "id": "c",
-      "text": "B의 성분은 모두 정수인가요?",
-      "reveals": "성분이 정수인지는 AB=E에서 BA=E가 나오는지를 가르지 않아요."
+      "text": "B\uc758 \uc131\ubd84\uc740 \ubaa8\ub450 \uc815\uc218\uc778\uac00\uc694?",
+      "reveals": "\uc131\ubd84\uc774 \uc815\uc218\uc778\uc9c0\ub294 AB=E\uc5d0\uc11c BA=E\uac00 \ub098\uc624\ub294\uc9c0\ub97c \uac00\ub974\uc9c0 \uc54a\uc544\uc694."
      },
      {
       "id": "d",
-      "text": "BA도 직접 계산해 보았나요?",
-      "reveals": "정의대로 BA도 단위행렬인지 확인하려는 좋은 질문이에요. 다만 크기가 어떤지부터 보면 BA의 크기와 결과를 예상하는 데 도움이 돼요."
+      "text": "BA\ub3c4 \uc9c1\uc811 \uacc4\uc0b0\ud574 \ubcf4\uc558\ub098\uc694?",
+      "reveals": "\uc815\uc758\ub300\ub85c BA\ub3c4 \ub2e8\uc704\ud589\ub82c\uc778\uc9c0 \ud655\uc778\ud558\ub824\ub294 \uc88b\uc740 \uc9c8\ubb38\uc774\uc5d0\uc694. \ub2e4\ub9cc \ud06c\uae30\uac00 \uc5b4\ub5a4\uc9c0\ubd80\ud130 \ubcf4\uba74 BA\uc758 \ud06c\uae30\uc640 \uacb0\uacfc\ub97c \uc608\uc0c1\ud558\ub294 \ub370 \ub3c4\uc6c0\uc774 \ub3fc\uc694."
      },
      {
       "id": "e",
-      "text": "AB를 계산할 때 어느 쪽부터 계산했나요?",
-      "reveals": "곱의 계산 순서(성분을 구하는 순서)는 결과에 영향이 없어요. 문제는 A와 B의 곱의 순서와 크기예요."
+      "text": "AB\ub97c \uacc4\uc0b0\ud560 \ub54c \uc5b4\ub290 \ucabd\ubd80\ud130 \uacc4\uc0b0\ud588\ub098\uc694?",
+      "reveals": "\uacf1\uc758 \uacc4\uc0b0 \uc21c\uc11c(\uc131\ubd84\uc744 \uad6c\ud558\ub294 \uc21c\uc11c)\ub294 \uacb0\uacfc\uc5d0 \uc601\ud5a5\uc774 \uc5c6\uc5b4\uc694. \ubb38\uc81c\ub294 A\uc640 B\uc758 \uacf1\uc758 \uc21c\uc11c\uc640 \ud06c\uae30\uc608\uc694."
      }
     ],
     "correct": [
@@ -1476,52 +1478,52 @@
       "ids": [
        "d"
       ],
-      "reason": "BA도 단위행렬임을 직접 확인하면 정의(AB=BA=E)를 그대로 보인 것이므로 크기와 상관없이 판정할 수 있다. 이 역시 좋은 질문이다."
+      "reason": "BA\ub3c4 \ub2e8\uc704\ud589\ub82c\uc784\uc744 \uc9c1\uc811 \ud655\uc778\ud558\uba74 \uc815\uc758(AB=BA=E)\ub97c \uadf8\ub300\ub85c \ubcf4\uc778 \uac83\uc774\ubbc0\ub85c \ud06c\uae30\uc640 \uc0c1\uad00\uc5c6\uc774 \ud310\uc815\ud560 \uc218 \uc788\ub2e4. \uc774 \uc5ed\uc2dc \uc88b\uc740 \uc9c8\ubb38\uc774\ub2e4."
      }
     ],
-    "explain": "2×3과 3×2처럼 정사각행렬이 아니면 AB=E여도 BA=E가 아닐 수 있으므로 크기가 핵심 정보이다. 또는 정의대로 BA도 E인지 직접 확인하게 하는 질문도 타당하다.",
+    "explain": "2\u00d73\uacfc 3\u00d72\ucc98\ub7fc \uc815\uc0ac\uac01\ud589\ub82c\uc774 \uc544\ub2c8\uba74 AB=E\uc5ec\ub3c4 BA=E\uac00 \uc544\ub2d0 \uc218 \uc788\uc73c\ubbc0\ub85c \ud06c\uae30\uac00 \ud575\uc2ec \uc815\ubcf4\uc774\ub2e4. \ub610\ub294 \uc815\uc758\ub300\ub85c BA\ub3c4 E\uc778\uc9c0 \uc9c1\uc811 \ud655\uc778\ud558\uac8c \ud558\ub294 \uc9c8\ubb38\ub3c4 \ud0c0\ub2f9\ud558\ub2e4.",
     "hints": [
-     "앞 단계의 예에서 AB와 BA가 각각 몇 행 몇 열인지 적어 보세요.",
-     "각 질문에 대해 '이것을 알면 민서의 문장을 받아들일지 결정할 수 있는가'를 따져 보세요."
+     "\uc55e \ub2e8\uacc4\uc758 \uc608\uc5d0\uc11c AB\uc640 BA\uac00 \uac01\uac01 \uba87 \ud589 \uba87 \uc5f4\uc778\uc9c0 \uc801\uc5b4 \ubcf4\uc138\uc694.",
+     "\uac01 \uc9c8\ubb38\uc5d0 \ub300\ud574 '\uc774\uac83\uc744 \uc54c\uba74 \ubbfc\uc11c\uc758 \ubb38\uc7a5\uc744 \ubc1b\uc544\ub4e4\uc77c\uc9c0 \uacb0\uc815\ud560 \uc218 \uc788\ub294\uac00'\ub97c \ub530\uc838 \ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "증거의 힘 판단",
-    "full": "예 하나, 반례, 여러 예가 각각 주는 것과 못 주는 것을 구분함",
-    "partial": "결론은 맞지만 증거의 힘을 구분하지 못함",
-    "none": "예 하나로 단정하거나 모든 예를 버림"
+    "criterion": "\uc99d\uac70\uc758 \ud798 \ud310\ub2e8",
+    "full": "\uc608 \ud558\ub098, \ubc18\ub840, \uc5ec\ub7ec \uc608\uac00 \uac01\uac01 \uc8fc\ub294 \uac83\uacfc \ubabb \uc8fc\ub294 \uac83\uc744 \uad6c\ubd84\ud568",
+    "partial": "\uacb0\ub860\uc740 \ub9de\uc9c0\ub9cc \uc99d\uac70\uc758 \ud798\uc744 \uad6c\ubd84\ud558\uc9c0 \ubabb\ud568",
+    "none": "\uc608 \ud558\ub098\ub85c \ub2e8\uc815\ud558\uac70\ub098 \ubaa8\ub4e0 \uc608\ub97c \ubc84\ub9bc"
    },
    {
-    "criterion": "조건 찾기",
-    "full": "크기(정사각 여부)나 BA의 확인이 필요한 정보임을 고름",
-    "partial": "필요한 정보를 하나만 말함",
-    "none": "관련 없는 정보를 고름"
+    "criterion": "\uc870\uac74 \ucc3e\uae30",
+    "full": "\ud06c\uae30(\uc815\uc0ac\uac01 \uc5ec\ubd80)\ub098 BA\uc758 \ud655\uc778\uc774 \ud544\uc694\ud55c \uc815\ubcf4\uc784\uc744 \uace0\ub984",
+    "partial": "\ud544\uc694\ud55c \uc815\ubcf4\ub97c \ud558\ub098\ub9cc \ub9d0\ud568",
+    "none": "\uad00\ub828 \uc5c6\ub294 \uc815\ubcf4\ub97c \uace0\ub984"
    }
   ],
   "alternatives": [
-   "마지막 단계에서 'a'(증명이 더 필요하다)와 'd'(안전하게 두 쪽 모두 확인한다)를 모두 고르는 것이 가장 좋지만, 하나만 골라도 합리적이다.",
-   "질문 단계에서 'BA도 계산했나요?'와 '크기가 어떻게 되나요?' 둘 다 좋은 질문이다."
+   "\ub9c8\uc9c0\ub9c9 \ub2e8\uacc4\uc5d0\uc11c 'a'(\uc99d\uba85\uc774 \ub354 \ud544\uc694\ud558\ub2e4)\uc640 'd'(\uc548\uc804\ud558\uac8c \ub450 \ucabd \ubaa8\ub450 \ud655\uc778\ud55c\ub2e4)\ub97c \ubaa8\ub450 \uace0\ub974\ub294 \uac83\uc774 \uac00\uc7a5 \uc88b\uc9c0\ub9cc, \ud558\ub098\ub9cc \uace8\ub77c\ub3c4 \ud569\ub9ac\uc801\uc774\ub2e4.",
+   "\uc9c8\ubb38 \ub2e8\uacc4\uc5d0\uc11c 'BA\ub3c4 \uacc4\uc0b0\ud588\ub098\uc694?'\uc640 '\ud06c\uae30\uac00 \uc5b4\ub5bb\uac8c \ub418\ub098\uc694?' \ub458 \ub2e4 \uc88b\uc740 \uc9c8\ubb38\uc774\ub2e4."
   ],
   "hardCases": [
-   "학생이 '정사각행렬이면 AB=E만으로 BA=E'임을 이미 알고 있다고 말하면, 그 근거(증명이나 정리)가 무엇인지 사람이 확인한다.",
-   "3×3 이상의 정사각행렬에서도 같은지는 이 과제의 예로는 확인하지 않았다."
+   "\ud559\uc0dd\uc774 '\uc815\uc0ac\uac01\ud589\ub82c\uc774\uba74 AB=E\ub9cc\uc73c\ub85c BA=E'\uc784\uc744 \uc774\ubbf8 \uc54c\uace0 \uc788\ub2e4\uace0 \ub9d0\ud558\uba74, \uadf8 \uadfc\uac70(\uc99d\uba85\uc774\ub098 \uc815\ub9ac)\uac00 \ubb34\uc5c7\uc778\uc9c0 \uc0ac\ub78c\uc774 \ud655\uc778\ud55c\ub2e4.",
+   "3\u00d73 \uc774\uc0c1\uc758 \uc815\uc0ac\uac01\ud589\ub82c\uc5d0\uc11c\ub3c4 \uac19\uc740\uc9c0\ub294 \uc774 \uacfc\uc81c\uc758 \uc608\ub85c\ub294 \ud655\uc778\ud558\uc9c0 \uc54a\uc558\ub2e4."
   ],
   "cautions": {
-   "language": "'2×3'은 '2행 3열'로 풀어 읽는다. '반례'는 주장이 틀림을 보이는 예라고 한 번 설명했다.",
-   "culture": "특정 문화에 의존하지 않는다.",
-   "accessibility": "그림 없이 문장과 숫자만으로 풀 수 있게 했다. 행렬은 (1행 ; 2행) 꼴의 글로 적고, 처음에 읽는 법을 알려 준다. 예: (1 1 ; 0 1)은 '1행은 1 1, 2행은 0 1'로 읽는다. 위 첨자 -1(역행렬)은 'A 인버스'라고 읽는다. 색에 의존하지 않는다. 3행짜리 행렬은 세미콜론으로 행을 나누어 적고, 행의 수를 먼저 말해 준다."
+   "language": "'2\u00d73'\uc740 '2\ud589 3\uc5f4'\ub85c \ud480\uc5b4 \uc77d\ub294\ub2e4. '\ubc18\ub840'\ub294 \uc8fc\uc7a5\uc774 \ud2c0\ub9bc\uc744 \ubcf4\uc774\ub294 \uc608\ub77c\uace0 \ud55c \ubc88 \uc124\uba85\ud588\ub2e4.",
+   "culture": "\ud2b9\uc815 \ubb38\ud654\uc5d0 \uc758\uc874\ud558\uc9c0 \uc54a\ub294\ub2e4.",
+   "accessibility": "\uadf8\ub9bc \uc5c6\uc774 \ubb38\uc7a5\uacfc \uc22b\uc790\ub9cc\uc73c\ub85c \ud480 \uc218 \uc788\uac8c \ud588\ub2e4. \ud589\ub82c\uc740 (1\ud589 ; 2\ud589) \uaf34\uc758 \uae00\ub85c \uc801\uace0, \ucc98\uc74c\uc5d0 \uc77d\ub294 \ubc95\uc744 \uc54c\ub824 \uc900\ub2e4. \uc608: (1 1 ; 0 1)\uc740 '1\ud589\uc740 1 1, 2\ud589\uc740 0 1'\ub85c \uc77d\ub294\ub2e4. \uc704 \ucca8\uc790 -1(\uc5ed\ud589\ub82c)\uc740 'A \uc778\ubc84\uc2a4'\ub77c\uace0 \uc77d\ub294\ub2e4. \uc0c9\uc5d0 \uc758\uc874\ud558\uc9c0 \uc54a\ub294\ub2e4. 3\ud589\uc9dc\ub9ac \ud589\ub82c\uc740 \uc138\ubbf8\ucf5c\ub860\uc73c\ub85c \ud589\uc744 \ub098\ub204\uc5b4 \uc801\uace0, \ud589\uc758 \uc218\ub97c \uba3c\uc800 \ub9d0\ud574 \uc900\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "각 단계 선택(여러 개 허용)",
-    "질문 선택의 정오(acceptable 포함)"
+    "\uac01 \ub2e8\uacc4 \uc120\ud0dd(\uc5ec\ub7ec \uac1c \ud5c8\uc6a9)",
+    "\uc9c8\ubb38 \uc120\ud0dd\uc758 \uc815\uc624(acceptable \ud3ec\ud568)"
    ],
    "human": [
-    "반성(reflect)에서 학생이 자기 판단 변화를 어떻게 설명했는지"
+    "\ubc18\uc131(reflect)\uc5d0\uc11c \ud559\uc0dd\uc774 \uc790\uae30 \ud310\ub2e8 \ubcc0\ud654\ub97c \uc5b4\ub5bb\uac8c \uc124\uba85\ud588\ub294\uc9c0"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  }
 ]

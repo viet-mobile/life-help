@@ -19,23 +19,23 @@
   "differsFromPlain": "Plain practice asks you to match request phrases to meanings. Here you decide what you must ask before you can start, and what you should not bother a superior with.",
   "prerequisites": [
    "Can read short workplace messages in Korean",
-   "Knows the polite endings -ㅂ니다/-습니다 and -(으)세요",
-   "Knows 팀장님 as a way to address a team leader"
+   "Knows the polite endings -\u3142\ub2c8\ub2e4/-\uc2b5\ub2c8\ub2e4 and -(\uc73c)\uc138\uc694",
+   "Knows \ud300\uc7a5\ub2d8 as a way to address a team leader"
   ],
   "minutes": 12,
   "curriculum": null,
-  "material": "You are 박 사원, a junior employee. At 6:40 p.m. your 팀장 (team leader) sends you this message:\n\n\"박 사원님, 내일 오전 회의에서 쓸 자료 좀 정리해 주세요. 지난번처럼 부탁해요.\"\n\nWhat you know:\n- Last month you made two kinds of material for 팀장: a 월간 실적 요약 (monthly results summary) and a 신제품 일정표 (new-product schedule). Both were made in the same layout.\n- The message does not say what time the meeting starts.\n- You can send only ONE reply message before you start.",
+  "material": "You are \ubc15 \uc0ac\uc6d0, a junior employee. At 6:40 p.m. your \ud300\uc7a5 (team leader) sends you this message:\n\n\"\ubc15 \uc0ac\uc6d0\ub2d8, \ub0b4\uc77c \uc624\uc804 \ud68c\uc758\uc5d0\uc11c \uc4f8 \uc790\ub8cc \uc880 \uc815\ub9ac\ud574 \uc8fc\uc138\uc694. \uc9c0\ub09c\ubc88\ucc98\ub7fc \ubd80\ud0c1\ud574\uc694.\"\n\nWhat you know:\n- Last month you made two kinds of material for \ud300\uc7a5: a \uc6d4\uac04 \uc2e4\uc801 \uc694\uc57d (monthly results summary) and a \uc2e0\uc81c\ud488 \uc77c\uc815\ud45c (new-product schedule). Both were made in the same layout.\n- The message does not say what time the meeting starts.\n- You can send only ONE reply message before you start.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
     "multi": true,
-    "prompt": "Which pieces of information do you really need from 팀장 before you can do the job properly? Select all that apply.",
+    "prompt": "Which pieces of information do you really need from \ud300\uc7a5 before you can do the job properly? Select all that apply.",
     "options": [
      {
       "id": "a",
       "text": "Whether the layout should be the same as last time",
-      "reveals": "지난번처럼 already says this, so asking again shows the message was not read closely."
+      "reveals": "\uc9c0\ub09c\ubc88\ucc98\ub7fc already says this, so asking again shows the message was not read closely."
      },
      {
       "id": "b",
@@ -44,25 +44,25 @@
      },
      {
       "id": "c",
-      "text": "Which of the two kinds of material 지난번처럼 refers to",
-      "reveals": "Noticing that 지난번 could point to either of two things shows you read the message against what you know."
+      "text": "Which of the two kinds of material \uc9c0\ub09c\ubc88\ucc98\ub7fc refers to",
+      "reveals": "Noticing that \uc9c0\ub09c\ubc88 could point to either of two things shows you read the message against what you know."
      },
      {
       "id": "d",
-      "text": "Whether 팀장 liked last month's material",
+      "text": "Whether \ud300\uc7a5 liked last month's material",
       "reveals": "Opinions about the past do not change what you must make tomorrow."
      },
      {
       "id": "e",
-      "text": "By what time 팀장 needs it, given when the meeting starts",
-      "reveals": "Seeing that 내일 오전 gives no clock time shows you checked the message for a missing deadline."
+      "text": "By what time \ud300\uc7a5 needs it, given when the meeting starts",
+      "reveals": "Seeing that \ub0b4\uc77c \uc624\uc804 gives no clock time shows you checked the message for a missing deadline."
      }
     ],
     "correct": [
      "c",
      "e"
     ],
-    "explain": "Two things are open: 지난번처럼 can mean either of two documents, and 내일 오전 gives no deadline. The layout is already answered by 지난번처럼 (both documents share one layout), and the room or 팀장's opinion does not affect your work.",
+    "explain": "Two things are open: \uc9c0\ub09c\ubc88\ucc98\ub7fc can mean either of two documents, and \ub0b4\uc77c \uc624\uc804 gives no deadline. The layout is already answered by \uc9c0\ub09c\ubc88\ucc98\ub7fc (both documents share one layout), and the room or \ud300\uc7a5's opinion does not affect your work.",
     "hints": [
      "Underline each part of the message that points to something. For each, ask whether you could point to exactly one thing.",
      "Compare what the message says with the list under 'What you know'. Which words fit more than one item, and which fact is simply absent?"
@@ -71,8 +71,8 @@
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "Write the one message you send back to 팀장 in Korean. Ask both things you chose, politely enough for a superior.",
-    "placeholder": "예: ...",
+    "prompt": "Write the one message you send back to \ud300\uc7a5 in Korean. Ask both things you chose, politely enough for a superior.",
+    "placeholder": "\uc608: ...",
     "minChars": 30,
     "checks": [
      {
@@ -80,15 +80,15 @@
       "label": "uses a polite or formal ending",
       "mode": "any",
       "patterns": [
-       "니다|니까|세요|까요|십시오|어요|아요|해요|예요"
+       "\ub2c8\ub2e4|\ub2c8\uae4c|\uc138\uc694|\uae4c\uc694|\uc2ed\uc2dc\uc624|\uc5b4\uc694|\uc544\uc694|\ud574\uc694|\uc608\uc694"
       ]
      },
      {
       "id": "w2",
-      "label": "addresses the leader respectfully (팀장님)",
+      "label": "addresses the leader respectfully (\ud300\uc7a5\ub2d8)",
       "mode": "any",
       "patterns": [
-       "팀장님"
+       "\ud300\uc7a5\ub2d8"
       ]
      },
      {
@@ -96,7 +96,7 @@
       "label": "asks which material, as a question or request",
       "mode": "any",
       "patterns": [
-       "(어느|어떤|무슨|무엇|뭘|월간|신제품|실적|일정표)[^.?!]*(까요|나요|인지|는지|주시|부탁|여쭤|여쭙|가요|\\?)"
+       "(\uc5b4\ub290|\uc5b4\ub5a4|\ubb34\uc2a8|\ubb34\uc5c7|\ubb58|\uc6d4\uac04|\uc2e0\uc81c\ud488|\uc2e4\uc801|\uc77c\uc815\ud45c)[^.?!]*(\uae4c\uc694|\ub098\uc694|\uc778\uc9c0|\ub294\uc9c0|\uc8fc\uc2dc|\ubd80\ud0c1|\uc5ec\ucb64|\uc5ec\ucb59|\uac00\uc694|\\?)"
       ]
      },
      {
@@ -104,45 +104,45 @@
       "label": "asks about the time or deadline, as a question or request",
       "mode": "any",
       "patterns": [
-       "(몇\\s*시|언제|까지|시각|시간|시에)[^.?!]*(까요|나요|인지|는지|주시|부탁|여쭤|여쭙|가요|\\?)"
+       "(\uba87\\s*\uc2dc|\uc5b8\uc81c|\uae4c\uc9c0|\uc2dc\uac01|\uc2dc\uac04|\uc2dc\uc5d0)[^.?!]*(\uae4c\uc694|\ub098\uc694|\uc778\uc9c0|\ub294\uc9c0|\uc8fc\uc2dc|\ubd80\ud0c1|\uc5ec\ucb64|\uc5ec\ucb59|\uac00\uc694|\\?)"
       ]
      }
     ],
     "selfAssess": [
      "Do I ask two separate things rather than one vague 'what should I do'?",
-     "Would 팀장 be able to answer in one short reply?",
+     "Would \ud300\uc7a5 be able to answer in one short reply?",
      "Does my wording sound respectful rather than demanding?"
     ],
     "modelAnswers": [
      {
-      "text": "팀장님, 지난번 자료가 월간 실적 요약인지 신제품 일정표인지 확인 부탁드립니다. 그리고 회의가 몇 시이고 자료는 언제까지 드리면 될까요?"
+      "text": "\ud300\uc7a5\ub2d8, \uc9c0\ub09c\ubc88 \uc790\ub8cc\uac00 \uc6d4\uac04 \uc2e4\uc801 \uc694\uc57d\uc778\uc9c0 \uc2e0\uc81c\ud488 \uc77c\uc815\ud45c\uc778\uc9c0 \ud655\uc778 \ubd80\ud0c1\ub4dc\ub9bd\ub2c8\ub2e4. \uadf8\ub9ac\uace0 \ud68c\uc758\uac00 \uba87 \uc2dc\uc774\uace0 \uc790\ub8cc\ub294 \uc5b8\uc81c\uae4c\uc9c0 \ub4dc\ub9ac\uba74 \ub420\uae4c\uc694?"
      },
      {
-      "text": "팀장님, 어떤 자료를 말씀하시는지 여쭤봐도 될까요? 회의 전에 몇 시까지 보내 드리면 되는지도 알려 주시면 감사하겠습니다.",
+      "text": "\ud300\uc7a5\ub2d8, \uc5b4\ub5a4 \uc790\ub8cc\ub97c \ub9d0\uc500\ud558\uc2dc\ub294\uc9c0 \uc5ec\ucb64\ubd10\ub3c4 \ub420\uae4c\uc694? \ud68c\uc758 \uc804\uc5d0 \uba87 \uc2dc\uae4c\uc9c0 \ubcf4\ub0b4 \ub4dc\ub9ac\uba74 \ub418\ub294\uc9c0\ub3c4 \uc54c\ub824 \uc8fc\uc2dc\uba74 \uac10\uc0ac\ud558\uaca0\uc2b5\ub2c8\ub2e4.",
       "note": "Shorter, and both questions are still clearly separate."
      },
      {
-      "text": "팀장님, 무엇을 정리할지, 회의 시작 시각은 언제인지 여쭙습니다."
+      "text": "\ud300\uc7a5\ub2d8, \ubb34\uc5c7\uc744 \uc815\ub9ac\ud560\uc9c0, \ud68c\uc758 \uc2dc\uc791 \uc2dc\uac01\uc740 \uc5b8\uc81c\uc778\uc9c0 \uc5ec\ucb59\uc2b5\ub2c8\ub2e4."
      }
     ],
     "badAnswers": [
      {
-      "text": "지난번 거 뭐예요? 몇 시까지요?",
+      "text": "\uc9c0\ub09c\ubc88 \uac70 \ubb50\uc608\uc694? \uba87 \uc2dc\uae4c\uc9c0\uc694?",
       "why": "No address, and the tone is too casual for a superior."
      },
      {
-      "text": "알겠습니다. 내일까지 하겠습니다.",
+      "text": "\uc54c\uaca0\uc2b5\ub2c8\ub2e4. \ub0b4\uc77c\uae4c\uc9c0 \ud558\uaca0\uc2b5\ub2c8\ub2e4.",
       "why": "Accepts without asking anything, so the two open points stay open."
      },
      {
-      "text": "팀장님, 알겠습니다. 월간 실적 요약을 내일 오전까지 하겠습니다.",
+      "text": "\ud300\uc7a5\ub2d8, \uc54c\uaca0\uc2b5\ub2c8\ub2e4. \uc6d4\uac04 \uc2e4\uc801 \uc694\uc57d\uc744 \ub0b4\uc77c \uc624\uc804\uae4c\uc9c0 \ud558\uaca0\uc2b5\ub2c8\ub2e4.",
       "why": "Names a document and a time, but only as a statement; nothing is asked."
      }
     ],
     "humanReview": "Whether the tone really suits the speaker's workplace, and whether the two questions are phrased clearly, needs a person.",
     "hints": [
      "Start by naming who you are writing to, then put one question in each sentence.",
-     "A polite question to a superior often ends in -ㄹ까요 or asks for a favour with 알려 주시면 감사하겠습니다."
+     "A polite question to a superior often ends in -\u3139\uae4c\uc694 or asks for a favour with \uc54c\ub824 \uc8fc\uc2dc\uba74 \uac10\uc0ac\ud558\uaca0\uc2b5\ub2c8\ub2e4."
     ]
    }
   ],
@@ -161,14 +161,14 @@
    }
   ],
   "alternatives": [
-   "Asking about the number of printed copies is also reasonable if the student explains that 팀장 may want to print, but it was not needed to start.",
+   "Asking about the number of printed copies is also reasonable if the student explains that \ud300\uc7a5 may want to print, but it was not needed to start.",
    "A reply that offers two options ('Shall I prepare both?') is valid if it also asks for the time."
   ],
   "hardCases": [
-   "Whether 팀장 might want a printed copy is a real unknown; the task treats the layout as settled by 지난번처럼, but a learner could argue the format of delivery is open."
+   "Whether \ud300\uc7a5 might want a printed copy is a real unknown; the task treats the layout as settled by \uc9c0\ub09c\ubc88\ucc98\ub7fc, but a learner could argue the format of delivery is open."
   ],
   "cautions": {
-   "language": "Uses 부탁해요 (a casual-polite request) from a superior; students should note that a junior replies in a more formal register than the superior used.",
+   "language": "Uses \ubd80\ud0c1\ud574\uc694 (a casual-polite request) from a superior; students should note that a junior replies in a more formal register than the superior used.",
    "culture": "In many Korean workplaces a superior gives short, high-context requests and the junior is expected to clarify politely; this is described, not recommended as the only norm.",
    "accessibility": "All content is text; no images or colour cues."
   },
@@ -182,7 +182,7 @@
     "Whether the questions are phrased naturally"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "x-k-k9-02",
@@ -203,46 +203,46 @@
   ],
   "differsFromPlain": "Plain practice asks for the honorific form of a verb. Here most sentences are right, and you must decide which one is wrong and why before fixing it.",
   "prerequisites": [
-   "Knows the subject honorific -(으)시- and the formal ending -ㅂ니다/-습니다",
-   "Has seen 말씀드리다 and 드리다 as humble forms"
+   "Knows the subject honorific -(\uc73c)\uc2dc- and the formal ending -\u3142\ub2c8\ub2e4/-\uc2b5\ub2c8\ub2e4",
+   "Has seen \ub9d0\uc500\ub4dc\ub9ac\ub2e4 and \ub4dc\ub9ac\ub2e4 as humble forms"
   ],
   "minutes": 12,
   "curriculum": null,
-  "material": "인턴 최민준 sends a first email to 영업팀 부장님 with a sales report attached. Five lines of the email are shown below. Exactly one of them contains a mistake in honorific use.",
+  "material": "\uc778\ud134 \ucd5c\ubbfc\uc900 sends a first email to \uc601\uc5c5\ud300 \ubd80\uc7a5\ub2d8 with a sales report attached. Five lines of the email are shown below. Exactly one of them contains a mistake in honorific use.",
   "steps": [
    {
     "id": "s1",
     "kind": "pickLine",
     "prompt": "Which line contains the honorific mistake?",
     "lines": [
-     "부장님, 안녕하세요. 영업팀 최민준입니다.",
-     "요청하신 3분기 매출 자료를 첨부해 드립니다.",
-     "그래프는 둘째 장에 있으십니다.",
-     "수정할 부분이 있으면 말씀해 주십시오.",
-     "바쁘신 중에 확인해 주셔서 감사합니다."
+     "\ubd80\uc7a5\ub2d8, \uc548\ub155\ud558\uc138\uc694. \uc601\uc5c5\ud300 \ucd5c\ubbfc\uc900\uc785\ub2c8\ub2e4.",
+     "\uc694\uccad\ud558\uc2e0 3\ubd84\uae30 \ub9e4\ucd9c \uc790\ub8cc\ub97c \ucca8\ubd80\ud574 \ub4dc\ub9bd\ub2c8\ub2e4.",
+     "\uadf8\ub798\ud504\ub294 \ub458\uc9f8 \uc7a5\uc5d0 \uc788\uc73c\uc2ed\ub2c8\ub2e4.",
+     "\uc218\uc815\ud560 \ubd80\ubd84\uc774 \uc788\uc73c\uba74 \ub9d0\uc500\ud574 \uc8fc\uc2ed\uc2dc\uc624.",
+     "\ubc14\uc058\uc2e0 \uc911\uc5d0 \ud655\uc778\ud574 \uc8fc\uc154\uc11c \uac10\uc0ac\ud569\ub2c8\ub2e4."
     ],
     "wrong": [
      2
     ],
-    "explain": "Line 3 is wrong. The -(으)시- ending honors the person who does the action, here 부장님. 그래프 is a thing, so 있으십니다 cannot be used for it. In lines 2, 4 and 5, 요청하신, 말씀해, and 바쁘신 refer to or serve 부장님, so they are correct.",
+    "explain": "Line 3 is wrong. The -(\uc73c)\uc2dc- ending honors the person who does the action, here \ubd80\uc7a5\ub2d8. \uadf8\ub798\ud504 is a thing, so \uc788\uc73c\uc2ed\ub2c8\ub2e4 cannot be used for it. In lines 2, 4 and 5, \uc694\uccad\ud558\uc2e0, \ub9d0\uc500\ud574, and \ubc14\uc058\uc2e0 refer to or serve \ubd80\uc7a5\ub2d8, so they are correct.",
     "hints": [
      "For each line, ask who or what the grammatical subject is.",
-     "Check every -(으)시- in the email. Does it honor a person who would receive honor, or something else?"
+     "Check every -(\uc73c)\uc2dc- in the email. Does it honor a person who would receive honor, or something else?"
     ]
    },
    {
     "id": "s2",
     "kind": "write",
     "prompt": "Rewrite line 3 so that it is correct and still formal. Keep the meaning: the graph is on the second page.",
-    "placeholder": "예: ...",
+    "placeholder": "\uc608: ...",
     "minChars": 10,
     "checks": [
      {
       "id": "w1",
-      "label": "no honorific -(으)시- on the graph",
+      "label": "no honorific -(\uc73c)\uc2dc- on the graph",
       "mode": "none",
       "patterns": [
-       "있으[시세십]|계[시세십]|있으셔"
+       "\uc788\uc73c[\uc2dc\uc138\uc2ed]|\uacc4[\uc2dc\uc138\uc2ed]|\uc788\uc73c\uc154"
       ]
      },
      {
@@ -250,15 +250,15 @@
       "label": "keeps a formal or polite ending",
       "mode": "any",
       "patterns": [
-       "니다|니까|세요|까요|십시오|어요|아요"
+       "\ub2c8\ub2e4|\ub2c8\uae4c|\uc138\uc694|\uae4c\uc694|\uc2ed\uc2dc\uc624|\uc5b4\uc694|\uc544\uc694"
       ]
      },
      {
       "id": "w3",
-      "label": "still talks about the graph (그래프)",
+      "label": "still talks about the graph (\uadf8\ub798\ud504)",
       "mode": "any",
       "patterns": [
-       "그래프|도표|차트"
+       "\uadf8\ub798\ud504|\ub3c4\ud45c|\ucc28\ud2b8"
       ]
      },
      {
@@ -266,37 +266,37 @@
       "label": "places it on the second page",
       "mode": "any",
       "patterns": [
-       "둘째|두\\s*번째|2\\s*(쪽|페이지|장)|이\\s*쪽"
+       "\ub458\uc9f8|\ub450\\s*\ubc88\uc9f8|2\\s*(\ucabd|\ud398\uc774\uc9c0|\uc7a5)|\uc774\\s*\ucabd"
       ]
      }
     ],
     "selfAssess": [
-     "Is the honorific now only on actions of 부장님, not on the graph?",
+     "Is the honorific now only on actions of \ubd80\uc7a5\ub2d8, not on the graph?",
      "Does it still read as a formal email sentence?"
     ],
     "modelAnswers": [
      {
-      "text": "그래프는 둘째 장에 있습니다."
+      "text": "\uadf8\ub798\ud504\ub294 \ub458\uc9f8 \uc7a5\uc5d0 \uc788\uc2b5\ub2c8\ub2e4."
      },
      {
-      "text": "그래프는 두 번째 장에 실려 있으니 확인 부탁드립니다.",
+      "text": "\uadf8\ub798\ud504\ub294 \ub450 \ubc88\uc9f8 \uc7a5\uc5d0 \uc2e4\ub824 \uc788\uc73c\ub2c8 \ud655\uc778 \ubd80\ud0c1\ub4dc\ub9bd\ub2c8\ub2e4.",
       "note": "Adds respect through the request instead of the verb."
      }
     ],
     "badAnswers": [
      {
-      "text": "그래프는 둘째 장에 있으십니다.",
+      "text": "\uadf8\ub798\ud504\ub294 \ub458\uc9f8 \uc7a5\uc5d0 \uc788\uc73c\uc2ed\ub2c8\ub2e4.",
       "why": "The same mistake: honorific on a thing."
      },
      {
-      "text": "그래프 둘째 장에 있다.",
+      "text": "\uadf8\ub798\ud504 \ub458\uc9f8 \uc7a5\uc5d0 \uc788\ub2e4.",
       "why": "Drops the formal ending."
      }
     ],
     "humanReview": "Whether a rewritten sentence sounds natural in a formal email needs a fluent reader.",
     "hints": [
      "First decide which verb ending should stay and which one must go.",
-     "To show respect without honoring the graph, you can add something toward 부장님 (like a phrase for 'please see') or simply state where it is."
+     "To show respect without honoring the graph, you can add something toward \ubd80\uc7a5\ub2d8 (like a phrase for 'please see') or simply state where it is."
     ]
    }
   ],
@@ -315,25 +315,26 @@
    }
   ],
   "alternatives": [
-   "Writing '그래프는 둘째 장에 첨부되어 있습니다' or '둘째 장을 보시면 됩니다' is valid (the second is honorific toward 부장님)."
+   "Writing '\uadf8\ub798\ud504\ub294 \ub458\uc9f8 \uc7a5\uc5d0 \ucca8\ubd80\ub418\uc5b4 \uc788\uc2b5\ub2c8\ub2e4' or '\ub458\uc9f8 \uc7a5\uc744 \ubcf4\uc2dc\uba74 \ub429\ub2c8\ub2e4' is valid (the second is honorific toward \ubd80\uc7a5\ub2d8)."
   ],
   "hardCases": [
-   "In everyday speech some speakers say '있으세요' for things (as in shops); formal writing to a superior avoids it."
+   "In everyday speech some speakers say '\uc788\uc73c\uc138\uc694' for things (as in shops); formal writing to a superior avoids it."
   ],
   "cautions": {
-   "language": "Honorific-on-things (사물 존대) is common in customer service; here it is treated as a mistake because it appears in a formal email.",
+   "language": "Honorific-on-things (\uc0ac\ubb3c \uc874\ub300) is common in customer service; here it is treated as a mistake because it appears in a formal email.",
    "culture": "The email uses a typical intern-to-director frame; the task describes this style and does not claim all workplaces follow it.",
    "accessibility": "All content is plain text; no figures are needed."
   },
   "autoVsHuman": {
    "auto": [
     "Which line is picked",
-    "Absence of -(으)시- on the graph and presence of a formal ending"
+    "Absence of -(\uc73c)\uc2dc- on the graph and presence of a formal ending"
    ],
    "human": [
     "Naturalness of the rewrite"
    ]
-  }
+  },
+  "status": "reviewed-ai"
  },
  {
   "id": "x-k-k9-03",
@@ -355,7 +356,7 @@
   "differsFromPlain": "Plain practice asks the literal meaning of a phrase. Here the literal meaning is positive in most replies, and you must judge what they really signal.",
   "prerequisites": [
    "Can read short polite Korean business replies",
-   "Knows 검토하다 (to review) and 예산 (budget)"
+   "Knows \uac80\ud1a0\ud558\ub2e4 (to review) and \uc608\uc0b0 (budget)"
   ],
   "minutes": 12,
   "curriculum": null,
@@ -369,27 +370,27 @@
     "options": [
      {
       "id": "a",
-      "text": "다음 분기 예산을 짤 때 다시 말씀해 주시면 적극 검토하겠습니다.",
-      "reveals": "Noticing that the offer is moved to a later date shows you read what is deferred."
+      "text": "\uc774\ubc88 \uacc4\uc57d \uc870\uac74\uc740 \uadf8\ub300\ub85c \uac00\uace0, \ub2e4\uc74c \ubd84\uae30 \uc608\uc0b0\uc744 \uc9e4 \ub54c \ub2e4\uc2dc \ub9d0\uc500\ud574 \uc8fc\uc2dc\uba74 \uc801\uadf9 \uac80\ud1a0\ud558\uaca0\uc2b5\ub2c8\ub2e4.",
+      "reveals": "Noticing that the current round stays as it is and the offer is only moved to a later date shows you read what is deferred."
      },
      {
       "id": "b",
-      "text": "좋은 제안 감사합니다. 한번 생각해 보겠습니다.",
+      "text": "\uc88b\uc740 \uc81c\uc548 \uac10\uc0ac\ud569\ub2c8\ub2e4. \ud55c\ubc88 \uc0dd\uac01\ud574 \ubcf4\uaca0\uc2b5\ub2c8\ub2e4.",
       "reveals": "Treating thanks plus 'I will think' as unclear shows you separate politeness from commitment."
      },
      {
       "id": "c",
-      "text": "글쎄요, 이번에는 어려울 것 같습니다. 양해 부탁드립니다.",
-      "reveals": "Hearing 어려울 것 같다 plus a request for understanding as a refusal shows you read hedges as evidence."
+      "text": "\uae00\uc384\uc694, \uc774\ubc88\uc5d0\ub294 \uc5b4\ub824\uc6b8 \uac83 \uac19\uc2b5\ub2c8\ub2e4. \uc591\ud574 \ubd80\ud0c1\ub4dc\ub9bd\ub2c8\ub2e4.",
+      "reveals": "Hearing \uc5b4\ub824\uc6b8 \uac83 \uac19\ub2e4 plus a request for understanding as a refusal shows you read hedges as evidence."
      },
      {
       "id": "d",
-      "text": "네, 그렇게 진행하시죠. 다음 주 월요일 오전에 세부 조건을 협의하겠습니다.",
+      "text": "\ub124, \uadf8\ub807\uac8c \uc9c4\ud589\ud558\uc2dc\uc8e0. \ub2e4\uc74c \uc8fc \uc6d4\uc694\uc77c \uc624\uc804\uc5d0 \uc138\ubd80 \uc870\uac74\uc744 \ud611\uc758\ud558\uaca0\uc2b5\ub2c8\ub2e4.",
       "reveals": "A concrete next step with a date shows you read the reply as an agreement to go on."
      },
      {
       "id": "e",
-      "text": "내부적으로 검토해 보겠습니다. 다만 이번 분기 예산은 이미 확정되어서요.",
+      "text": "\ub0b4\ubd80\uc801\uc73c\ub85c \uac80\ud1a0\ud574 \ubcf4\uaca0\uc2b5\ub2c8\ub2e4. \ub2e4\ub9cc \uc774\ubc88 \ubd84\uae30 \uc608\uc0b0\uc740 \uc774\ubbf8 \ud655\uc815\ub418\uc5b4\uc11c\uc694.",
       "reveals": "Weighing the 'however' sentence more than the first sentence shows attention to where the real message sits."
      }
     ],
@@ -406,13 +407,13 @@
        "c",
        "e"
       ],
-      "reason": "한번 생각해 보겠습니다 with no reason, date or next step is often a soft no as well, so counting it is a reasonable reading, though it is less certain than the others."
+      "reason": "\ud55c\ubc88 \uc0dd\uac01\ud574 \ubcf4\uaca0\uc2b5\ub2c8\ub2e4 with no reason, date or next step is often a soft no as well, so counting it is a reasonable reading, though it is less certain than the others."
      }
     ],
     "explain": "The reply that names a next meeting is an agreement. The replies with a closed budget, a later quarter, and 'it seems difficult' each point away from a yes. The thanks-plus-'I will think' reply has no date or step, which is genuinely unclear and often a soft no.",
     "hints": [
-     "For each reply, look for a concrete next step (a date, a meeting, a decision). Which replies have none?",
-     "Which replies leave the original request open, and which close it? Look at what each reply takes away or postpones."
+     "For each reply, ask what it does with your request now: accept it, move it to later, close it, or only acknowledge it.",
+     "Which replies leave the request open for this contract, and which close it or push it away? Look at what each reply takes away or postpones."
     ]
    },
    {
@@ -427,7 +428,7 @@
       "label": "quotes a Korean phrase",
       "mode": "any",
       "patterns": [
-       "[가-힣]{2,}"
+       "[\uac00-\ud7a3]{2,}"
       ]
      },
      {
@@ -435,7 +436,7 @@
       "label": "gives a reason",
       "mode": "any",
       "patterns": [
-       "because|since|suggests|signals|implies|indicates|shows|which means|means that"
+       "because|since|suggests|signals|implies|indicates|shows|which means|means that|points? (to|toward)|reads? as|hints?|sounds? like|leans?"
       ]
      },
      {
@@ -462,11 +463,14 @@
     ],
     "modelAnswers": [
      {
-      "text": "I picked 한번 생각해 보겠습니다. It is unclear because it neither accepts nor gives a date or reason, so it can be a soft no. I would follow up and ask whether next quarter's budget is possible."
+      "text": "I picked \ud55c\ubc88 \uc0dd\uac01\ud574 \ubcf4\uaca0\uc2b5\ub2c8\ub2e4. It is unclear because it neither accepts nor gives a date or reason, so it can be a soft no. I would follow up and ask whether next quarter's budget is possible."
      },
      {
-      "text": "In 이번 분기 예산은 이미 확정되어서요 the word 이미 ('already') shows the budget is closed, which suggests a polite refusal for now. I would confirm if we can ask again next quarter.",
+      "text": "In \uc774\ubc88 \ubd84\uae30 \uc608\uc0b0\uc740 \uc774\ubbf8 \ud655\uc815\ub418\uc5b4\uc11c\uc694 the word \uc774\ubbf8 ('already') shows the budget is closed, which suggests a polite refusal for now. I would confirm if we can ask again next quarter.",
       "note": "Strong evidence from one word, with a next step."
+     },
+     {
+      "text": "The phrase \ub2e4\uc74c \ubd84\uae30 \uc608\uc0b0\uc744 \uc9e4 \ub54c points to no for this quarter, because the offer is only postponed. I would ask whether next quarter's budget meeting is the right time and confirm a date."
      }
     ],
     "badAnswers": [
@@ -475,7 +479,7 @@
       "why": "No Korean quoted, no reason, no next step."
      },
      {
-      "text": "한번 생각해 보겠습니다 is a no.",
+      "text": "\ud55c\ubc88 \uc0dd\uac01\ud574 \ubcf4\uaca0\uc2b5\ub2c8\ub2e4 is a no.",
       "why": "Gives a verdict but no reason and no next action."
      }
     ],
@@ -505,10 +509,10 @@
    "Reading the later-quarter reply as hopeful ('ask again later') is valid if the student also sees it gives nothing for this year."
   ],
   "hardCases": [
-   "The 'it seems difficult' reply is softened by 글쎄요 and 양해 부탁드립니다; some may read it as a request for understanding only, but the wording leaves little hope for the discount."
+   "The 'it seems difficult' reply is softened by \uae00\uc384\uc694 and \uc591\ud574 \ubd80\ud0c1\ub4dc\ub9bd\ub2c8\ub2e4; some may read it as a request for understanding only, but the wording leaves little hope for the discount."
   ],
   "cautions": {
-   "language": "한번 생각해 보겠습니다 and 어려울 것 같다 are softeners; learners should treat them as signals, not as dictionary meanings.",
+   "language": "\ud55c\ubc88 \uc0dd\uac01\ud574 \ubcf4\uaca0\uc2b5\ub2c8\ub2e4 and \uc5b4\ub824\uc6b8 \uac83 \uac19\ub2e4 are softeners; learners should treat them as signals, not as dictionary meanings.",
    "culture": "Indirect refusal is a common business habit in many cultures; the task describes a typical pattern and does not say every speaker uses it.",
    "accessibility": "Korean text is read left to right as plain text; the options are not distinguished by colour."
   },
@@ -521,7 +525,7 @@
     "Whether the reasoning in step 2 fits the quoted phrase"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "x-k-k9-04",
@@ -542,48 +546,48 @@
   ],
   "differsFromPlain": "Plain practice asks the meaning of date expressions. Here several rules interact and more than one schedule works, so you must test each rule against each plan.",
   "prerequisites": [
-   "Can read Korean dates written like 12일 and phrases like 이틀 이상 and 다음 날",
-   "Knows 초안 (draft), 검토 (review) and 출장 (business trip)"
+   "Can read Korean dates written like 12\uc77c and phrases like \uc774\ud2c0 \uc774\uc0c1 and \ub2e4\uc74c \ub0a0",
+   "Knows \ucd08\uc548 (draft), \uac80\ud1a0 (review) and \ucd9c\uc7a5 (business trip)"
   ],
   "minutes": 15,
   "curriculum": null,
-  "material": "Your 팀장 sends you this message on the 10th of the month:\n\n\"이번 보고서 일정을 짜 주세요. ① 자료를 12일 아침에 받으니까 초안은 12일부터 쓸 수 있어요. ② 팀원 검토에는 이틀이 걸리니까, 검토가 끝나는 날은 초안이 끝난 날보다 이틀 이상 뒤여야 합니다. ③ 부장님 확인은 팀원 검토가 끝난 다음 날 이후에 받을 수 있는데, 부장님이 20일에 출장을 가시니까 19일까지는 받아야 해요.\"\n\nUse the day of the month as a whole number. d = the day the draft is finished, r = the day the team review ends, b = the day 부장님 checks it.",
+  "material": "Your \ud300\uc7a5 sends you this message on the 10th of the month:\n\n\"\uc774\ubc88 \ubcf4\uace0\uc11c \uc77c\uc815\uc744 \uc9dc \uc8fc\uc138\uc694. \u2460 \uc790\ub8cc\ub97c 12\uc77c \uc544\uce68\uc5d0 \ubc1b\uc73c\ub2c8\uae4c \ucd08\uc548\uc740 12\uc77c\ubd80\ud130 \uc4f8 \uc218 \uc788\uc5b4\uc694. \u2461 \ud300\uc6d0 \uac80\ud1a0\uc5d0\ub294 \uc774\ud2c0\uc774 \uac78\ub9ac\ub2c8\uae4c, \uac80\ud1a0\uac00 \ub05d\ub098\ub294 \ub0a0\uc740 \ucd08\uc548\uc774 \ub05d\ub09c \ub0a0\ubcf4\ub2e4 \uc774\ud2c0 \uc774\uc0c1 \ub4a4\uc5ec\uc57c \ud569\ub2c8\ub2e4. \u2462 \ubd80\uc7a5\ub2d8 \ud655\uc778\uc740 \ud300\uc6d0 \uac80\ud1a0\uac00 \ub05d\ub09c \ub2e4\uc74c \ub0a0 \uc774\ud6c4\uc5d0 \ubc1b\uc744 \uc218 \uc788\ub294\ub370, \ubd80\uc7a5\ub2d8\uc774 20\uc77c\uc5d0 \ucd9c\uc7a5\uc744 \uac00\uc2dc\ub2c8\uae4c 19\uc77c\uae4c\uc9c0\ub294 \ubc1b\uc544\uc57c \ud574\uc694.\"\n\nUse the day of the month as a whole number. d = the day the draft is finished, r = the day the team review ends, b = the day \ubd80\uc7a5\ub2d8 checks it.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
     "scaffold": true,
-    "prompt": "If the draft is finished on the 13th, what is the earliest day the team review can end, according to ②?",
+    "prompt": "If the draft is finished on the 13th, what is the earliest day the team review can end, according to \u2461?",
     "options": [
      {
       "id": "a",
-      "text": "16일",
-      "reveals": "Adding one extra day shows 이상 ('or more') was taken as 'more than'."
+      "text": "16\uc77c",
+      "reveals": "Adding one extra day shows \uc774\uc0c1 ('or more') was taken as 'more than'."
      },
      {
       "id": "b",
-      "text": "14일",
-      "reveals": "Reading 이틀 이상 뒤 as just the next day shows the 'two days' part was not counted."
+      "text": "14\uc77c",
+      "reveals": "Reading \uc774\ud2c0 \uc774\uc0c1 \ub4a4 as just the next day shows the 'two days' part was not counted."
      },
      {
       "id": "c",
-      "text": "15일",
-      "reveals": "Counting two full days after the 13th shows 이틀 이상 뒤 was read as written."
+      "text": "15\uc77c",
+      "reveals": "Counting two full days after the 13th shows \uc774\ud2c0 \uc774\uc0c1 \ub4a4 was read as written."
      }
     ],
     "correct": [
      "c"
     ],
-    "explain": "이틀 이상 뒤 means two or more days later: 13 + 2 = 15. So the earliest is the 15th.",
+    "explain": "\uc774\ud2c0 \uc774\uc0c1 \ub4a4 means two or more days later: 13 + 2 = 15. So the earliest is the 15th.",
     "hints": [
-     "Find the part of sentence ② that says how much later the review ends.",
-     "Check your answer by counting the days between the 13th and your day: does the gap fit '이틀 이상'?"
+     "Find the part of sentence \u2461 that says how much later the review ends.",
+     "Check your answer by counting the days between the 13th and your day: does the gap fit '\uc774\ud2c0 \uc774\uc0c1'?"
     ]
    },
    {
     "id": "s2",
     "kind": "build",
-    "prompt": "Find 3 different schedules (d, r, b) that follow all of ①, ② and ③.",
+    "prompt": "Find 3 different schedules (d, r, b) that follow all of \u2460, \u2461 and \u2462.",
     "vars": [
      {
       "name": "d",
@@ -595,7 +599,7 @@
      },
      {
       "name": "b",
-      "label": "부장님 check (day)"
+      "label": "\ubd80\uc7a5\ub2d8 check (day)"
      }
     ],
     "constraints": [
@@ -608,26 +612,26 @@
      {
       "id": "c1",
       "expr": "d>=12",
-      "ok": "Draft is not before the material arrives (rule ①).",
-      "fail": "The materials arrive on the 12th (rule ①)."
+      "ok": "Draft is not before the material arrives (rule \u2460).",
+      "fail": "The materials arrive on the 12th (rule \u2460)."
      },
      {
       "id": "c2",
       "expr": "r>=d+2",
-      "ok": "Review ends at least two days after the draft (rule ②).",
-      "fail": "Rule ②: the review must end at least two days after the draft."
+      "ok": "Review ends at least two days after the draft (rule \u2461).",
+      "fail": "Rule \u2461: the review must end at least two days after the draft."
      },
      {
       "id": "c3",
       "expr": "b>=r+1",
-      "ok": "부장님 check is after the review (rule ③).",
-      "fail": "Rule ③: 부장님 check is from the day after the review ends."
+      "ok": "\ubd80\uc7a5\ub2d8 check is after the review (rule \u2462).",
+      "fail": "Rule \u2462: \ubd80\uc7a5\ub2d8 check is from the day after the review ends."
      },
      {
       "id": "c4",
       "expr": "b<=19",
-      "ok": "Done before the 20th trip (rule ③).",
-      "fail": "Rule ③: 부장님 leaves on the 20th, so it must be by the 19th."
+      "ok": "Done before the 20th trip (rule \u2462).",
+      "fail": "Rule \u2462: \ubd80\uc7a5\ub2d8 leaves on the 20th, so it must be by the 19th."
      }
     ],
     "need": 3,
@@ -668,19 +672,19 @@
     "explain": "Many schedules work, for example 12 / 14 / 15 or 14 / 18 / 19. Next, look at the extreme case: how late can the draft day move?",
     "hints": [
      "Write each rule as one comparison between two numbers before you try any values.",
-     "Fix the draft day first, then choose the review day, and only then the 부장님 day.",
+     "Fix the draft day first, then choose the review day, and only then the \ubd80\uc7a5\ub2d8 day.",
      "If a schedule fails, check which rule it breaks by testing the three rules one at a time."
     ],
     "because": {
      "id": "s2b",
      "kind": "write",
-     "prompt": "What is the latest day the draft (d) can be finished so that all three rules can still be kept? Give the day, and show how you know by naming the review day (r) and the 부장님 day (b) it leads to. You may write in English or Korean.",
+     "prompt": "What is the latest day the draft (d) can be finished so that all three rules can still be kept? Give the day, and show how you know by naming the review day (r) and the \ubd80\uc7a5\ub2d8 day (b) it leads to. You may write in English or Korean.",
      "hints": [
-      "Work backwards: begin with the last rule (the 부장님 deadline) and move to the day before it, then back through the next rule.",
+      "Work backwards: begin with the last rule (the \ubd80\uc7a5\ub2d8 deadline) and move to the day before it, then back through the next rule.",
       "Name every day on the way (b, then r, then d) and say which rule you used for each step."
      ],
      "placeholder": "Write your answer and your reasoning.",
-     "minChars": 30,
+     "minChars": 15,
      "checks": [
       {
        "id": "w1",
@@ -702,7 +706,7 @@
       },
       {
        "id": "w3",
-       "label": "gives the 부장님 day it leads to",
+       "label": "gives the \ubd80\uc7a5\ub2d8 day it leads to",
        "mode": "any",
        "patterns": [
         "(?<!\\d)19(?!\\d)",
@@ -711,67 +715,57 @@
       },
       {
        "id": "w4",
-       "label": "gives a reason (because / so / after ...)",
+       "label": "shows the three days in a chain (for example 19 -> 18 -> 16, or d=16, r=18, b=19)",
        "mode": "any",
        "patterns": [
-        "because",
-        "since",
-        "\\bso\\b",
-        "therefore",
-        "\\bthen\\b",
-        "\\bafter\\b",
-        "\\bbefore\\b",
-        "plus",
-        "\\+",
-        "->",
-        "→",
-        "라서",
-        "므로",
-        "니까",
-        "때문",
-        "그러므로",
-        "그래서",
-        "이틀",
-        "하루"
+        "(?<!\\d)16(?!\\d)[\\s\\S]{0,140}(?<!\\d)18(?!\\d)[\\s\\S]{0,140}(?<!\\d)19(?!\\d)",
+        "(?<!\\d)19(?!\\d)[\\s\\S]{0,140}(?<!\\d)18(?!\\d)[\\s\\S]{0,140}(?<!\\d)16(?!\\d)"
        ]
       }
      ],
      "selfAssess": [
-      "Did I go backwards from 부장님's deadline instead of guessing?",
+      "Did I go backwards from \ubd80\uc7a5\ub2d8's deadline instead of guessing?",
       "Can I say which rule justifies each step from b to r to d?"
      ],
      "modelAnswers": [
       {
-       "text": "The draft can be finished on the 16th at the latest. 부장님 must check by the 19th, so the review must end by the 18th (the day before), and the review ends two days after the draft, so the draft is done on the 16th."
+       "text": "The draft can be finished on the 16th at the latest. \ubd80\uc7a5\ub2d8 must check by the 19th, so the review must end by the 18th (the day before), and the review ends two days after the draft, so the draft is done on the 16th."
       },
       {
-       "text": "초안은 16일이 마지막입니다. 부장님 확인이 19일까지라서 검토는 18일에 끝나야 하고, 검토는 초안보다 이틀 뒤에 끝나므로 초안은 16일입니다."
+       "text": "\ucd08\uc548\uc740 16\uc77c\uc774 \ub9c8\uc9c0\ub9c9\uc785\ub2c8\ub2e4. \ubd80\uc7a5\ub2d8 \ud655\uc778\uc774 19\uc77c\uae4c\uc9c0\ub77c\uc11c \uac80\ud1a0\ub294 18\uc77c\uc5d0 \ub05d\ub098\uc57c \ud558\uace0, \uac80\ud1a0\ub294 \ucd08\uc548\ubcf4\ub2e4 \uc774\ud2c0 \ub4a4\uc5d0 \ub05d\ub098\ubbc0\ub85c \ucd08\uc548\uc740 16\uc77c\uc785\ub2c8\ub2e4."
+      },
+      {
+       "text": "d=16, r=18, b=19"
       }
      ],
      "badAnswers": [
       {
        "text": "The 19th, because that is the last day before the trip.",
-       "why": "Gives the 부장님 deadline, not the latest draft day."
+       "why": "Gives the \ubd80\uc7a5\ub2d8 deadline, not the latest draft day."
       },
       {
        "text": "I think the draft can be finished on the 16th.",
        "why": "Right number but no days worked backwards and no reason."
+      },
+      {
+       "text": "I think 16 because 19 and 18 are the end of the schedule so it is wrong",
+       "why": "Names the numbers but not as a chain from b to r to d, and gives no working."
       }
      ],
-     "humanReview": "A person has to judge whether the backward reasoning is correct and clearly stated; the checks only look for the three days and a reason word."
+     "humanReview": "A person has to judge whether the backward reasoning is correct and clearly stated; the checks only look for the three days in a chain."
     }
    }
   ],
   "rubric": [
    {
     "criterion": "Using all rules together",
-    "full": "Schedules satisfy ①, ② and ③ and are different from each other.",
+    "full": "Schedules satisfy \u2460, \u2461 and \u2462 and are different from each other.",
     "partial": "Satisfies two rules but breaks one.",
     "none": "Dates unrelated to the rules."
    },
    {
     "criterion": "Finding the extreme case",
-    "full": "States the latest draft day and works back through ③ and ② to reach it.",
+    "full": "States the latest draft day and works back through \u2462 and \u2461 to reach it.",
     "partial": "States the day without the reasoning.",
     "none": "Gives no day, or a day that breaks a rule."
    }
@@ -780,10 +774,10 @@
    "Any triple with d>=12, r>=d+2, b>=r+1 and b<=19 is valid; the 'tightest' schedule d=12, r=14, b=15 and a 'latest' one d=15, r=17, b=19 are both fine."
   ],
   "hardCases": [
-   "Some may read 이틀 이상 뒤 as 'two days or more after counting the draft day itself'; the task states it as two or more days after, i.e. r >= d + 2."
+   "Some may read \uc774\ud2c0 \uc774\uc0c1 \ub4a4 as 'two days or more after counting the draft day itself'; the task states it as two or more days after, i.e. r >= d + 2."
   ],
   "cautions": {
-   "language": "이상 means 'this or more' and includes the number; 이후 and 다음 날 are also used for time order.",
+   "language": "\uc774\uc0c1 means 'this or more' and includes the number; \uc774\ud6c4 and \ub2e4\uc74c \ub0a0 are also used for time order.",
    "culture": "The 20th business trip and the director's check are a typical Korean office sequence of approvals; no claim is made that every company works this way.",
    "accessibility": "All information is text; numbers can be read aloud by a screen reader."
   },
@@ -796,7 +790,7 @@
     "Whether the backward reasoning is correct and clear"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "x-k-k9-05",
@@ -815,14 +809,14 @@
    "Weighing second-hand information",
    "Revising a judgement and confirming it"
   ],
-  "differsFromPlain": "Plain practice asks what 되면 좋겠다 means. Here you decide how strongly to act on it, then change your mind when new information arrives.",
+  "differsFromPlain": "Plain practice asks what \ub418\uba74 \uc88b\uaca0\ub2e4 means. Here you decide how strongly to act on it, then change your mind when new information arrives.",
   "prerequisites": [
    "Can read short Korean workplace messages",
-   "Knows 되면 좋겠네요 as 'it would be nice if it can be done'"
+   "Knows \ub418\uba74 \uc88b\uaca0\ub124\uc694 as 'it would be nice if it can be done'"
   ],
   "minutes": 14,
   "curriculum": null,
-  "material": "You are 박 대리 at a small company. Information about a report for a client arrives in three pieces. After each piece, choose what is most reasonable to believe or do.",
+  "material": "You are \ubc15 \ub300\ub9ac at a small company. Information about a report for a client arrives in three pieces. After each piece, choose what is most reasonable to believe or do.",
   "steps": [
    {
     "id": "s1",
@@ -830,17 +824,17 @@
     "prompt": "Judge how firm the deadline is after each new piece of information.",
     "stages": [
      {
-      "info": "부장님 says in the corridor: \"박 대리, 거래처 보고서는 이번 주 안에 되면 좋겠네요.\"",
+      "info": "\ubd80\uc7a5\ub2d8 says in the corridor: \"\ubc15 \ub300\ub9ac, \uac70\ub798\ucc98 \ubcf4\uace0\uc11c\ub294 \uc774\ubc88 \uc8fc \uc548\uc5d0 \ub418\uba74 \uc88b\uaca0\ub124\uc694.\"",
       "ask": "Based on this message alone, how firm is the deadline?",
       "options": [
        {
         "id": "a",
-        "text": "There is no deadline; 부장님 only said what would be nice.",
-        "reveals": "Reading 되면 좋겠네요 as having no force ignores that 이번 주 안에 still names a time frame."
+        "text": "It is only a wish, so it can wait until next week if I am busy.",
+        "reveals": "Reading \ub418\uba74 \uc88b\uaca0\ub124\uc694 as having no force ignores that \uc774\ubc88 \uc8fc \uc548\uc5d0 still names a time frame."
        },
        {
         "id": "b",
-        "text": "It is a strict order: the report must be on 부장님's desk by Friday midnight.",
+        "text": "It is a strict order: the report must be on \ubd80\uc7a5\ub2d8's desk by Friday midnight.",
         "reveals": "Treating the soft wording as a strict order adds details the message does not give."
        },
        {
@@ -855,12 +849,12 @@
       "after": "The wording is soft, but a time frame is named. Without more evidence the firmness is uncertain, so asking or looking for more information is sensible."
      },
      {
-      "info": "A senior colleague, 정 과장, tells you quietly: \"부장님이 '되면 좋겠네요' 하시면 보통은 '그때까지 꼭 보고 싶다'는 뜻이에요. 금요일 아침 회의 전에 보실 거예요.\"",
-      "ask": "This is a colleague's experience, not 부장님's own words. How should it change your view?",
+      "info": "A senior colleague, \uc815 \uacfc\uc7a5, tells you quietly: \"\ubd80\uc7a5\ub2d8\uc774 '\ub418\uba74 \uc88b\uaca0\ub124\uc694' \ud558\uc2dc\uba74 \ubcf4\ud1b5\uc740 '\uadf8\ub54c\uae4c\uc9c0 \uaf2d \ubcf4\uace0 \uc2f6\ub2e4'\ub294 \ub73b\uc774\uc5d0\uc694. \uae08\uc694\uc77c \uc544\uce68 \ud68c\uc758 \uc804\uc5d0 \ubcf4\uc2e4 \uac70\uc608\uc694.\"",
+      "ask": "How should this change your view of the deadline?",
       "options": [
        {
         "id": "a",
-        "text": "Ignore it, because only 부장님's own words count.",
+        "text": "Keep your view: only \ubd80\uc7a5\ub2d8's own words can change a judgement.",
         "reveals": "Throwing out relevant experience shows you wait for a perfect source."
        },
        {
@@ -870,17 +864,17 @@
        },
        {
         "id": "c",
-        "text": "Treat it as proven: the deadline is exactly Friday 9 a.m.",
-        "reveals": "Accepting hearsay as proven shows you add detail beyond what was said."
+        "text": "Treat the deadline as firm and plan around Friday 9 a.m. without checking.",
+        "reveals": "Accepting a colleague's account as proven adds detail beyond what \ubd80\uc7a5\ub2d8 said."
        }
       ],
       "reasonable": [
        "b"
       ],
-      "after": "정 과장 knows 부장님's habits, so the deadline is more likely firm; but the details (Friday morning) come from her, not from 부장님, so it is wise to verify."
+      "after": "\uc815 \uacfc\uc7a5 knows \ubd80\uc7a5\ub2d8's habits, so the deadline is more likely firm; but the details (Friday morning) come from her, not from \ubd80\uc7a5\ub2d8, so it is wise to verify."
      },
      {
-      "info": "The shared calendar shows: 금요일 오전 9시 임원 회의, with 부장님's note \"8:30부터 자료 검토\". You message: \"목요일 퇴근 전까지 보내 드려도 될까요?\" 부장님 replies: \"그래 주면 고맙지요.\"",
+      "info": "The shared calendar shows: \uae08\uc694\uc77c \uc624\uc804 9\uc2dc \uc784\uc6d0 \ud68c\uc758, with \ubd80\uc7a5\ub2d8's note \"8:30\ubd80\ud130 \uc790\ub8cc \uac80\ud1a0\". You message: \"\ubaa9\uc694\uc77c \ud1f4\uadfc \uc804\uae4c\uc9c0 \ubcf4\ub0b4 \ub4dc\ub824\ub3c4 \ub420\uae4c\uc694?\" \ubd80\uc7a5\ub2d8 replies: \"\uadf8\ub798 \uc8fc\uba74 \uace0\ub9d9\uc9c0\uc694.\"",
       "ask": "What is the most reasonable plan now?",
       "options": [
        {
@@ -891,31 +885,31 @@
        {
         "id": "b",
         "text": "Send it on Friday at 8 a.m., just before the meeting.",
-        "reveals": "This ignores that 부장님 starts reviewing at 8:30 and may want time to read."
+        "reveals": "This ignores that \ubd80\uc7a5\ub2d8 starts reviewing at 8:30 and may want time to read."
        },
        {
         "id": "c",
-        "text": "Do nothing yet: 그래 주면 고맙지요 sounds like mere politeness, not a decision.",
-        "reveals": "Treating 그래 주면 고맙지요 as only polite shows hesitation about indirect agreement; here it answers your Thursday proposal."
+        "text": "Do nothing yet: \uadf8\ub798 \uc8fc\uba74 \uace0\ub9d9\uc9c0\uc694 sounds like mere politeness, not a decision.",
+        "reveals": "Treating \uadf8\ub798 \uc8fc\uba74 \uace0\ub9d9\uc9c0\uc694 as only polite shows hesitation about indirect agreement; here it answers your Thursday proposal."
        }
       ],
       "reasonable": [
        "a"
       ],
-      "after": "The calendar shows when 부장님 reads it, and 그래 주면 고맙지요 is an agreement. Thursday before leaving is safe, and a short confirmation closes the loop."
+      "after": "The calendar shows when \ubd80\uc7a5\ub2d8 reads it, and \uadf8\ub798 \uc8fc\uba74 \uace0\ub9d9\uc9c0\uc694 is an agreement. Thursday before leaving is safe, and a short confirmation closes the loop."
      }
     ],
     "reflect": "Notice how your view moved: from 'soft wish' to 'probably firm' to a concrete plan, each time because of new evidence. Which piece changed your mind most, and was any of it only second-hand?",
     "hints": [
      "After each piece, ask: which words are soft, and which words fix a time or a person?",
-     "Separate what 부장님 said himself from what someone else says about him."
+     "For each source, ask how it could know what it says, and whether it adds a new fact or only repeats an old one."
     ]
    },
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "Write a short formal message to 부장님 in Korean confirming when you will send the report.",
-    "placeholder": "예: ...",
+    "prompt": "Write a short formal message to \ubd80\uc7a5\ub2d8 in Korean confirming when you will send the report.",
+    "placeholder": "\uc608: ...",
     "minChars": 15,
     "checks": [
      {
@@ -923,7 +917,7 @@
       "label": "formal ending",
       "mode": "any",
       "patterns": [
-       "니다|니까|세요|까요|십시오"
+       "\ub2c8\ub2e4|\ub2c8\uae4c|\uc138\uc694|\uae4c\uc694|\uc2ed\uc2dc\uc624"
       ]
      },
      {
@@ -931,8 +925,8 @@
       "label": "names Thursday (or earlier) as the sending day",
       "mode": "any",
       "patterns": [
-       "목요일",
-       "수요일"
+       "\ubaa9\uc694\uc77c",
+       "\uc218\uc694\uc77c"
       ]
      },
      {
@@ -940,55 +934,68 @@
       "label": "says it will be sent",
       "mode": "any",
       "patterns": [
-       "보내",
-       "드리겠",
-       "드릴",
-       "송부",
-       "발송",
-       "전송",
-       "올리",
-       "제출",
-       "전달",
-       "공유",
-       "메일"
+       "\ubcf4\ub0b4",
+       "\ub4dc\ub9ac\uaca0",
+       "\ub4dc\ub9b4",
+       "\uc1a1\ubd80",
+       "\ubc1c\uc1a1",
+       "\uc804\uc1a1",
+       "\uc62c\ub9ac",
+       "\uc81c\ucd9c",
+       "\uc804\ub2ec",
+       "\uacf5\uc720",
+       "\uba54\uc77c"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "does not push the sending day to Friday or say 'not Thursday'",
+      "mode": "none",
+      "patterns": [
+       "\ub9d0\uace0",
+       "\uae08\uc694\uc77c[^.?!]{0,8}(\ubcf4\ub0b4|\uc1a1\ubd80|\uc804\ub2ec|\uc81c\ucd9c|\ub4dc\ub9ac\uaca0|\ub4dc\ub9b4)"
       ]
      }
     ],
     "selfAssess": [
-     "Is the promise specific enough that 부장님 could plan around it?",
+     "Is the promise specific enough that \ubd80\uc7a5\ub2d8 could plan around it?",
      "Does the ending sound like a firm commitment to a superior?"
     ],
     "modelAnswers": [
      {
-      "text": "부장님, 말씀하신 보고서는 목요일 퇴근 전까지 보내 드리겠습니다."
+      "text": "\ubd80\uc7a5\ub2d8, \ub9d0\uc500\ud558\uc2e0 \ubcf4\uace0\uc11c\ub294 \ubaa9\uc694\uc77c \ud1f4\uadfc \uc804\uae4c\uc9c0 \ubcf4\ub0b4 \ub4dc\ub9ac\uaca0\uc2b5\ub2c8\ub2e4."
      },
      {
-      "text": "부장님, 목요일 오후 6시 전에 거래처 보고서를 전달드리겠습니다. 확인 부탁드립니다.",
+      "text": "\ubd80\uc7a5\ub2d8, \ubaa9\uc694\uc77c \uc624\ud6c4 6\uc2dc \uc804\uc5d0 \uac70\ub798\ucc98 \ubcf4\uace0\uc11c\ub97c \uc804\ub2ec\ub4dc\ub9ac\uaca0\uc2b5\ub2c8\ub2e4. \ud655\uc778 \ubd80\ud0c1\ub4dc\ub9bd\ub2c8\ub2e4.",
       "note": "Gives a clock time and asks for review."
      },
      {
-      "text": "부장님, 목요일 퇴근 전에 메일로 송부하겠습니다.",
+      "text": "\ubd80\uc7a5\ub2d8, \ubaa9\uc694\uc77c \ud1f4\uadfc \uc804\uc5d0 \uba54\uc77c\ub85c \uc1a1\ubd80\ud558\uaca0\uc2b5\ub2c8\ub2e4.",
       "note": "Other verbs for sending are fine."
      }
     ],
     "badAnswers": [
      {
-      "text": "목요일에 보낼게요.",
+      "text": "\ubaa9\uc694\uc77c\uc5d0 \ubcf4\ub0bc\uac8c\uc694.",
       "why": "Casual ending for a superior."
      },
      {
-      "text": "알겠습니다.",
+      "text": "\uc54c\uaca0\uc2b5\ub2c8\ub2e4.",
       "why": "Does not say when it will be sent."
      },
      {
-      "text": "부장님, 금요일 오전 8시에 보내 드리겠습니다.",
-      "why": "Too late: 부장님 starts reading at 8:30 on Friday, so the plan ignores the calendar."
+      "text": "\ubd80\uc7a5\ub2d8, \uae08\uc694\uc77c \uc624\uc804 8\uc2dc\uc5d0 \ubcf4\ub0b4 \ub4dc\ub9ac\uaca0\uc2b5\ub2c8\ub2e4.",
+      "why": "Too late: \ubd80\uc7a5\ub2d8 starts reading at 8:30 on Friday, so the plan ignores the calendar."
+     },
+     {
+      "text": "\ubd80\uc7a5\ub2d8, \ubaa9\uc694\uc77c \ub9d0\uace0 \uae08\uc694\uc77c 8\uc2dc\uc5d0 \ubcf4\ub0b4 \ub4dc\ub9ac\uaca0\uc2b5\ub2c8\ub2e4.",
+      "why": "Names Thursday only to reject it and promises Friday 8 a.m., which is too late."
      }
     ],
     "humanReview": "Whether the chosen time is realistic and the register natural needs a person.",
     "hints": [
      "Name the day and the moment (for example, before you leave) in the message.",
-     "Use a formal ending such as -겠습니다 for a promise to a superior."
+     "Use a formal ending such as -\uaca0\uc2b5\ub2c8\ub2e4 for a promise to a superior."
     ]
    }
   ],
@@ -1007,14 +1014,14 @@
    }
   ],
   "alternatives": [
-   "In stage 2, 'check with 부장님 directly' and 'treat as probably firm' are the same decision in practice.",
+   "In stage 2, 'check with \ubd80\uc7a5\ub2d8 directly' and 'treat as probably firm' are the same decision in practice.",
    "In stage 3, sending even earlier than Thursday is also reasonable."
   ],
   "hardCases": [
    "Some will think 'Thursday before leaving' is too late if reading takes long; the calendar shows 8:30 review on Friday, so Thursday is acceptable."
   ],
   "cautions": {
-   "language": "되면 좋겠네요 is a soft wish used for real requests, and 그래 주면 고맙지요 is a plain agreement.",
+   "language": "\ub418\uba74 \uc88b\uaca0\ub124\uc694 is a soft wish used for real requests, and \uadf8\ub798 \uc8fc\uba74 \uace0\ub9d9\uc9c0\uc694 is a plain agreement.",
    "culture": "Reading hints of deadlines from superiors is a skill many learners meet in Korean offices; the task does not claim it is universal.",
    "accessibility": "All pieces of information are text; none depend on colour or sound."
   },
@@ -1027,7 +1034,7 @@
     "Whether the reflection and message fit the evidence"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "x-k-k9-06",
@@ -1036,7 +1043,7 @@
   "topic": "Requests to superiors (rewrite for audience)",
   "level": 3,
   "levelLabel": "Advanced",
-  "title": "From a chat to a request for 부장님",
+  "title": "From a chat to a request for \ubd80\uc7a5\ub2d8",
   "uiLang": "en",
   "format": "rewrite-for-audience",
   "generative": true,
@@ -1048,23 +1055,23 @@
   ],
   "differsFromPlain": "Plain practice changes endings. Here you decide what changes (the speech act, the forms, the names) and what must stay (reason and handover).",
   "prerequisites": [
-   "Knows the difference between 반말 and -ㅂ니다/-습니다 style",
-   "Knows 반차 (half-day leave)"
+   "Knows the difference between \ubc18\ub9d0 and -\u3142\ub2c8\ub2e4/-\uc2b5\ub2c8\ub2e4 style",
+   "Knows \ubc18\ucc28 (half-day leave)"
   ],
   "minutes": 12,
   "curriculum": null,
-  "material": "Draft you wrote for a close coworker:\n\n\"나 내일 병원 예약 있어서 반차 쓸게. 급한 건 민수한테 물어봐.\"\n\nNow you must send the same information to your 부장님 (director). 민수 is a colleague who can cover urgent matters.",
+  "material": "Draft you wrote for a close coworker:\n\n\"\ub098 \ub0b4\uc77c \ubcd1\uc6d0 \uc608\uc57d \uc788\uc5b4\uc11c \ubc18\ucc28 \uc4f8\uac8c. \uae09\ud55c \uac74 \ubbfc\uc218\ud55c\ud14c \ubb3c\uc5b4\ubd10.\"\n\nNow you must send the same information to your \ubd80\uc7a5\ub2d8 (director), who approves everyone's leave. \ubbfc\uc218 is a colleague who can cover urgent matters.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
     "multi": true,
-    "prompt": "For 부장님, which changes are needed? Select all that apply.",
+    "prompt": "For \ubd80\uc7a5\ub2d8, which changes are needed? Select all that apply.",
     "options": [
      {
       "id": "a",
-      "text": "Switch the pronoun, the endings and the bare name 민수 to polite forms",
-      "reveals": "Spotting the pronoun, endings and name together shows you checked the whole sentence."
+      "text": "Only add \uc694 to the endings (\uc4f8\uac8c\uc694, \ubb3c\uc5b4\ubd10\uc694) and keep everything else",
+      "reveals": "Adding \uc694 softens the chat message, but \ub098 and the bare name \ubbfc\uc218 stay casual, \ubb3c\uc5b4\ubd10\uc694 still sounds like an order, and \uc4f8\uac8c\uc694 still announces the leave."
      },
      {
       "id": "b",
@@ -1073,35 +1080,35 @@
      },
      {
       "id": "c",
-      "text": "Say it as a request for approval instead of announcing the decision",
-      "reveals": "Seeing that 쓸게 announces something that needs approval shows you compared the act, not only the endings."
+      "text": "Ask whether \ubd80\uc7a5\ub2d8 approves the leave instead of announcing the decision",
+      "reveals": "Seeing that \uc4f8\uac8c announces something that needs approval shows you compared the act, not only the endings."
      },
      {
       "id": "d",
-      "text": "Send it to 민수 and let him pass it on, since he covers the work",
-      "reveals": "Redirecting the message shows a mix-up between who approves and who covers."
+      "text": "Keep telling \ubd80\uc7a5\ub2d8 the decision, only in polite form (\ubc18\ucc28\ub97c \uc4f0\uaca0\uc2b5\ub2c8\ub2e4), without asking",
+      "reveals": "Polite endings fix the register but not the act: \ubd80\uc7a5\ub2d8 approves leave, so an announcement still leaves no chance to approve."
      },
      {
       "id": "e",
-      "text": "Add several sentences of apology so that it sounds serious enough",
-      "reveals": "Piling on apology treats length as respect, which makes the message harder to read."
+      "text": "Switch the pronoun, the endings and the bare name \ubbfc\uc218 to polite forms",
+      "reveals": "Spotting the pronoun, endings and name together shows you checked the whole sentence."
      }
     ],
     "correct": [
-     "a",
-     "c"
+     "c",
+     "e"
     ],
-    "explain": "Two things change: the act (an announcement becomes a request for approval) and the forms (나, 쓸게, 물어봐 and the bare name 민수 are casual). The reason and the handover should stay: they help 부장님 decide.",
+    "explain": "Two things change: the act (an announcement becomes a request for approval) and the forms (\ub098, \uc4f8\uac8c, \ubb3c\uc5b4\ubd10 and the bare name \ubbfc\uc218 are casual). The reason and the handover should stay: they help \ubd80\uc7a5\ub2d8 decide.",
     "hints": [
-     "List what the draft does: it informs, asks, or orders. Which of those does 부장님 expect for leave?",
-     "Underline every word in the draft that you would not say to a director."
+     "List what the draft does: it informs, asks, or orders. Which of those does \ubd80\uc7a5\ub2d8 expect for leave?",
+     "Underline every word in the draft that you would not say to a director, then decide whether the polite version still fits an announcement."
     ]
    },
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "Rewrite the message for 부장님 in Korean. Keep the reason, the half-day leave and the handover to 민수.",
-    "placeholder": "예: ...",
+    "prompt": "Rewrite the message for \ubd80\uc7a5\ub2d8 in Korean. Keep the reason, the half-day leave and the handover to \ubbfc\uc218.",
+    "placeholder": "\uc608: ...",
     "minChars": 25,
     "checks": [
      {
@@ -1109,7 +1116,7 @@
       "label": "polite or formal ending",
       "mode": "any",
       "patterns": [
-       "니다|니까|세요|까요|십시오|어요|아요"
+       "\ub2c8\ub2e4|\ub2c8\uae4c|\uc138\uc694|\uae4c\uc694|\uc2ed\uc2dc\uc624|\uc5b4\uc694|\uc544\uc694"
       ]
      },
      {
@@ -1117,15 +1124,24 @@
       "label": "asks for approval or politely states the wish",
       "mode": "any",
       "patterns": [
-       "될까요|괜찮을까요|가능할까요|해도\\s*되|써도|부탁드|허락|양해|여쭙|어떠실까요|승인|쓰고 싶|사용하고자|쓰려고"
+       "\ub420\uae4c\uc694|\uad1c\ucc2e\uc744\uae4c\uc694|\uac00\ub2a5\ud560\uae4c\uc694|\ud574\ub3c4\\s*\ub418|\uc368\ub3c4|\ubd80\ud0c1\ub4dc|\ud5c8\ub77d|\uc591\ud574|\uc5ec\ucb59|\uc5b4\ub5a0\uc2e4\uae4c\uc694|\uc2b9\uc778|\uc4f0\uace0 \uc2f6|\uc0ac\uc6a9\ud558\uace0\uc790|\uc4f0\ub824\uace0",
+       "\ub0b4\uace0 \uc2f6",
+       "\ub0b4\ub3c4",
+       "\ub0bc \uc218",
+       "\uc2e0\uccad",
+       "\uc4f0\uace0\uc790",
+       "\uc0ac\uc6a9\ud558\uace0 \uc2f6",
+       "\uc0ac\uc6a9\ud574\ub3c4",
+       "\ub4dc\ub9ac\uace0\uc790",
+       "\ub0b4\uace0\uc790"
       ]
      },
      {
       "id": "w3",
-      "label": "mentions half-day leave (반차)",
+      "label": "mentions half-day leave (\ubc18\ucc28)",
       "mode": "any",
       "patterns": [
-       "반차|휴가|연차"
+       "\ubc18\ucc28|\ud734\uac00|\uc5f0\ucc28"
       ]
      },
      {
@@ -1133,65 +1149,72 @@
       "label": "keeps the reason (appointment / hospital)",
       "mode": "any",
       "patterns": [
-       "병원|예약|진료|검진|치료"
+       "\ubcd1\uc6d0|\uc608\uc57d|\uc9c4\ub8cc|\uac80\uc9c4|\uce58\ub8cc"
       ]
      },
      {
       "id": "w5",
-      "label": "names 민수 with 씨 or 님",
+      "label": "names \ubbfc\uc218 with \uc528 or \ub2d8",
       "mode": "any",
       "patterns": [
-       "민수\\s*(씨|님)"
+       "\ubbfc\uc218\\s*(\uc528|\ub2d8)"
       ]
      },
      {
       "id": "w6",
-      "label": "no casual 한테 and no command to a superior",
+      "label": "no casual \ud55c\ud14c and no command to a superior",
       "mode": "none",
       "patterns": [
-       "물어봐",
-       "물어보세요",
-       "민수한테",
-       "민수 씨한테",
-       "민수에게 물어"
+       "\ubb3c\uc5b4\ubd10",
+       "\ubb3c\uc5b4\ubcf4\uc138\uc694",
+       "\ubbfc\uc218\ud55c\ud14c",
+       "\ubbfc\uc218 \uc528\ud55c\ud14c",
+       "\ubbfc\uc218\uc5d0\uac8c \ubb3c\uc5b4"
       ]
      }
     ],
     "selfAssess": [
      "Is it clearly a request, not a decision?",
      "Is every casual word replaced?",
-     "Can 부장님 decide from the message alone?"
+     "Can \ubd80\uc7a5\ub2d8 decide from the message alone?"
     ],
     "modelAnswers": [
      {
-      "text": "부장님, 내일 병원 예약이 있어서 오후 반차를 써도 될까요? 급한 일은 민수 씨가 대신 확인할 수 있도록 미리 말해 두겠습니다."
+      "text": "\ubd80\uc7a5\ub2d8, \ub0b4\uc77c \ubcd1\uc6d0 \uc608\uc57d\uc774 \uc788\uc5b4\uc11c \uc624\ud6c4 \ubc18\ucc28\ub97c \uc368\ub3c4 \ub420\uae4c\uc694? \uae09\ud55c \uc77c\uc740 \ubbfc\uc218 \uc528\uac00 \ub300\uc2e0 \ud655\uc778\ud560 \uc218 \uc788\ub3c4\ub85d \ubbf8\ub9ac \ub9d0\ud574 \ub450\uaca0\uc2b5\ub2c8\ub2e4."
      },
      {
-      "text": "부장님, 내일 병원 예약이 있어 반차를 사용하고자 합니다. 허락해 주시면 감사하겠습니다. 급한 업무는 민수 씨에게 물어보시면 됩니다.",
+      "text": "\ubd80\uc7a5\ub2d8, \ub0b4\uc77c \ubcd1\uc6d0 \uc608\uc57d\uc774 \uc788\uc5b4 \ubc18\ucc28\ub97c \uc0ac\uc6a9\ud558\uace0\uc790 \ud569\ub2c8\ub2e4. \ud5c8\ub77d\ud574 \uc8fc\uc2dc\uba74 \uac10\uc0ac\ud558\uaca0\uc2b5\ub2c8\ub2e4. \uae09\ud55c \uc5c5\ubb34\ub294 \ubbfc\uc218 \uc528\uc5d0\uac8c \ubb3c\uc5b4\ubcf4\uc2dc\uba74 \ub429\ub2c8\ub2e4.",
       "note": "More formal, same elements."
      },
      {
-      "text": "부장님, 내일 병원 예약이 있어서 반차를 쓰고 싶습니다. 급한 일은 민수 씨께 여쭤보시면 됩니다."
+      "text": "\ubd80\uc7a5\ub2d8, \ub0b4\uc77c \ubcd1\uc6d0 \uc608\uc57d\uc774 \uc788\uc5b4\uc11c \ubc18\ucc28\ub97c \uc4f0\uace0 \uc2f6\uc2b5\ub2c8\ub2e4. \uae09\ud55c \uc77c\uc740 \ubbfc\uc218 \uc528\uaed8 \uc5ec\ucb64\ubcf4\uc2dc\uba74 \ub429\ub2c8\ub2e4."
+     },
+     {
+      "text": "\ubd80\uc7a5\ub2d8, \ub0b4\uc77c \ubcd1\uc6d0 \uc608\uc57d\uc774 \uc788\uc5b4\uc11c \ubc18\ucc28\ub97c \uc2e0\uccad\ub4dc\ub9bd\ub2c8\ub2e4. \uae09\ud55c \uc77c\uc740 \ubbfc\uc218 \uc528\uaed8 \uc5ec\ucb64\ubcf4\uc2dc\uba74 \ub429\ub2c8\ub2e4.",
+      "note": "A formal request form (\uc2e0\uccad\ub4dc\ub9bd\ub2c8\ub2e4) is also fine."
+     },
+     {
+      "text": "\ubd80\uc7a5\ub2d8, \ub0b4\uc77c \ubcd1\uc6d0 \uc608\uc57d\uc774 \uc788\uc5b4\uc11c \ubc18\ucc28\ub97c \uc4f0\uace0\uc790 \ud569\ub2c8\ub2e4. \uae09\ud55c \uc77c\uc740 \ubbfc\uc218 \uc528\uaed8 \uc5ec\ucb64\ubcf4\uc2dc\uba74 \ub429\ub2c8\ub2e4."
      }
     ],
     "badAnswers": [
      {
-      "text": "나 내일 병원 가서 반차 쓸게.",
+      "text": "\ub098 \ub0b4\uc77c \ubcd1\uc6d0 \uac00\uc11c \ubc18\ucc28 \uc4f8\uac8c.",
       "why": "No change in register; still an announcement."
      },
      {
-      "text": "부장님, 내일 반차를 쓰겠습니다.",
+      "text": "\ubd80\uc7a5\ub2d8, \ub0b4\uc77c \ubc18\ucc28\ub97c \uc4f0\uaca0\uc2b5\ub2c8\ub2e4.",
       "why": "Polite but still an announcement, and the reason and handover are lost."
      },
      {
-      "text": "부장님, 내일 반차 써도 될까요? 급한 건 민수한테 물어보세요.",
-      "why": "Asks politely but drops the reason, uses the casual 한테 and gives a command to a director."
+      "text": "\ubd80\uc7a5\ub2d8, \ub0b4\uc77c \ubc18\ucc28 \uc368\ub3c4 \ub420\uae4c\uc694? \uae09\ud55c \uac74 \ubbfc\uc218\ud55c\ud14c \ubb3c\uc5b4\ubcf4\uc138\uc694.",
+      "why": "Asks politely but drops the reason, uses the casual \ud55c\ud14c and gives a command to a director."
      }
     ],
     "humanReview": "Whether the request sounds natural and appropriately humble needs a fluent reader.",
     "hints": [
-     "Choose one request form (for example -(으)ㄹ까요? or 허락해 주시면 감사하겠습니다) and keep the rest in a formal ending.",
-     "Add 씨 or a title to 민수 and change 물어봐 into a form suitable for a superior."
+     "Choose one request form (for example -(\uc73c)\u3139\uae4c\uc694? or \ud5c8\ub77d\ud574 \uc8fc\uc2dc\uba74 \uac10\uc0ac\ud558\uaca0\uc2b5\ub2c8\ub2e4) and keep the rest in a formal ending.",
+     "Add \uc528 or a title to \ubbfc\uc218, and choose wording for the handover that does not give \ubd80\uc7a5\ub2d8 an order."
     ]
    }
   ],
@@ -1204,27 +1227,27 @@
    },
    {
     "criterion": "Rewriting",
-    "full": "Request with a formal ending, reason, 반차 and handover.",
+    "full": "Request with a formal ending, reason, \ubc18\ucc28 and handover.",
     "partial": "Formal but loses the reason or handover.",
     "none": "Casual or announcing."
    }
   ],
   "alternatives": [
-   "Both 써도 될까요 and 사용하고자 합니다 with a request sentence are acceptable.",
+   "Both \uc368\ub3c4 \ub420\uae4c\uc694 and \uc0ac\uc6a9\ud558\uace0\uc790 \ud569\ub2c8\ub2e4 with a request sentence are acceptable.",
    "Putting the reason first or last is fine."
   ],
   "hardCases": [
-   "Some workplaces accept 해요체 with 부장님; the task treats the formal register as the safer choice."
+   "Some workplaces accept \ud574\uc694\uccb4 with \ubd80\uc7a5\ub2d8; the task treats the formal register as the safer choice."
   ],
   "cautions": {
-   "language": "쓸게 is a casual promise form; requests to a superior usually avoid it.",
+   "language": "\uc4f8\uac8c is a casual promise form; requests to a superior usually avoid it.",
    "culture": "Giving a short reason for leave is common in many Korean offices, but customs vary.",
    "accessibility": "Plain text; no images or audio."
   },
   "autoVsHuman": {
    "auto": [
     "Which options are chosen",
-    "Presence of a polite ending, a request, 반차 and the handover in the rewrite"
+    "Presence of a polite ending, a request, \ubc18\ucc28 and the handover in the rewrite"
    ],
    "human": [
     "Naturalness of the rewrite"
@@ -1251,37 +1274,37 @@
   ],
   "differsFromPlain": "Plain practice translates 'I can't'. Here you judge a draft and compose a refusal that offers something else in a suitable register.",
   "prerequisites": [
-   "Knows -ㅂ니다/-습니다 style and -(으)ㄹ 것 같습니다",
-   "Knows 죄송합니다 and 대신"
+   "Knows -\u3142\ub2c8\ub2e4/-\uc2b5\ub2c8\ub2e4 style and -(\uc73c)\u3139 \uac83 \uac19\uc2b5\ub2c8\ub2e4",
+   "Knows \uc8c4\uc1a1\ud569\ub2c8\ub2e4 and \ub300\uc2e0"
   ],
   "minutes": 14,
   "curriculum": null,
-  "material": "부장님 sends you this message on a Wednesday:\n\n\"박 대리, 이번 주말에 잠깐 나와서 전시 자료 정리 좀 도와줄 수 있어요?\"\n\nYou already have a family event on both Saturday and Sunday and cannot come in. You can stay late on Friday until 8 p.m., or come in early on Monday.\n\nA classmate wrote this draft refusal:",
+  "material": "\ubd80\uc7a5\ub2d8 sends you this message on a Wednesday:\n\n\"\ubc15 \ub300\ub9ac, \uc774\ubc88 \uc8fc\ub9d0\uc5d0 \uc7a0\uae50 \ub098\uc640\uc11c \uc804\uc2dc \uc790\ub8cc \uc815\ub9ac \uc880 \ub3c4\uc640\uc904 \uc218 \uc788\uc5b4\uc694?\"\n\nYou already have a family event on both Saturday and Sunday and cannot come in. You can stay late on Friday until 8 p.m., or come in early on Monday.\n\nA classmate wrote this draft refusal:",
   "steps": [
    {
     "id": "s1",
     "kind": "pickLine",
     "prompt": "Which line of the classmate's draft makes the refusal sound too blunt?",
     "lines": [
-     "부장님, 말씀 주셔서 감사합니다.",
-     "이번 주말은 가족 행사가 있어서 어려울 것 같습니다.",
-     "그래서 주말에는 절대 나갈 수 없습니다.",
-     "대신 금요일 퇴근 후 8시까지 남아서 먼저 정리해 두겠습니다."
+     "\ubd80\uc7a5\ub2d8, \ub9d0\uc500 \uc8fc\uc154\uc11c \uac10\uc0ac\ud569\ub2c8\ub2e4.",
+     "\uc774\ubc88 \uc8fc\ub9d0\uc740 \uac00\uc871 \ud589\uc0ac\uac00 \uc788\uc5b4\uc11c \uc5b4\ub824\uc6b8 \uac83 \uac19\uc2b5\ub2c8\ub2e4.",
+     "\uadf8\ub798\uc11c \uc8fc\ub9d0\uc5d0\ub294 \uc808\ub300 \ub098\uac08 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.",
+     "\ub300\uc2e0 \uae08\uc694\uc77c \ud1f4\uadfc \ud6c4 8\uc2dc\uae4c\uc9c0 \ub0a8\uc544\uc11c \uba3c\uc800 \uc815\ub9ac\ud574 \ub450\uaca0\uc2b5\ub2c8\ub2e4."
     ],
     "wrong": [
      2
     ],
-    "explain": "Line 3 is the blunt one: 절대 ... 수 없습니다 is an absolute 'cannot' that leaves 부장님 no room to answer, even though the ending is formal. Line 2 already refuses softly with 어려울 것 같습니다 and a reason, line 1 thanks, and line 4 offers an alternative.",
+    "explain": "Line 3 is the blunt one: \uc808\ub300 ... \uc218 \uc5c6\uc2b5\ub2c8\ub2e4 is an absolute 'cannot' that leaves \ubd80\uc7a5\ub2d8 no room to answer, even though the ending is formal. Line 2 already refuses softly with \uc5b4\ub824\uc6b8 \uac83 \uac19\uc2b5\ub2c8\ub2e4 and a reason, line 1 thanks, and line 4 offers an alternative.",
     "hints": [
      "Mark which lines refuse and which lines thank or offer.",
-     "Compare how much room each refusing line leaves for 부장님 to answer."
+     "Compare how much room each refusing line leaves for \ubd80\uc7a5\ub2d8 to answer."
     ]
    },
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "Now write your own reply to 부장님 in Korean. Thank, decline softly with a short reason, and offer an alternative.",
-    "placeholder": "예: ...",
+    "prompt": "Now write your own reply to \ubd80\uc7a5\ub2d8 in Korean. Thank, decline softly with a short reason, and offer an alternative.",
+    "placeholder": "\uc608: ...",
     "minChars": 35,
     "checks": [
      {
@@ -1289,15 +1312,15 @@
       "label": "formal ending",
       "mode": "any",
       "patterns": [
-       "니다|니까|세요|까요|십시오"
+       "\ub2c8\ub2e4|\ub2c8\uae4c|\uc138\uc694|\uae4c\uc694|\uc2ed\uc2dc\uc624|\uc694(?![\uac00-\ud7a3])"
       ]
      },
      {
       "id": "w2",
-      "label": "softens the refusal (apology, regret or 어렵다)",
+      "label": "softens the refusal (apology, regret or \uc5b4\ub835\ub2e4)",
       "mode": "any",
       "patterns": [
-       "죄송|아쉽|송구|안타깝|어렵|어려[우울워운]|힘들|힘든"
+       "\uc8c4\uc1a1|\uc544\uc27d|\uc1a1\uad6c|\uc548\ud0c0\uae5d|\uc5b4\ub835|\uc5b4\ub824[\uc6b0\uc6b8\uc6cc\uc6b4]|\ud798\ub4e4|\ud798\ub4e0"
       ]
      },
      {
@@ -1305,8 +1328,8 @@
       "label": "offers an alternative",
       "mode": "any",
       "patterns": [
-       "대신",
-       "(금요일|월요일|평일|미리|먼저)[^.?!]*(하겠|해 두|해두|정리|드리겠|드릴|나오겠|출근)"
+       "\ub300\uc2e0",
+       "(\uae08\uc694\uc77c|\uc6d4\uc694\uc77c|\ud3c9\uc77c|\ubbf8\ub9ac|\uba3c\uc800)[^.?!]*(\ud558\uaca0|\ud574 \ub450|\ud574\ub450|\uc815\ub9ac|\ub4dc\ub9ac\uaca0|\ub4dc\ub9b4|\ub098\uc624\uaca0|\ucd9c\uadfc)"
       ]
      },
      {
@@ -1314,7 +1337,7 @@
       "label": "gives a short reason",
       "mode": "any",
       "patterns": [
-       "행사|일정|약속|가족|선약|결혼|모임|사정|일이 있"
+       "\ud589\uc0ac|\uc77c\uc815|\uc57d\uc18d|\uac00\uc871|\uc120\uc57d|\uacb0\ud63c|\ubaa8\uc784|\uc0ac\uc815|\uc77c\uc774 \uc788|\uc0dd\uc2e0|\ubd80\ubaa8|\uc9d1\uc548|\ub3cc\uc794\uce58|\uc81c\uc0ac|\uce5c\ucc99|\uc794\uce58|\uc608\uc2dd"
       ]
      },
      {
@@ -1322,45 +1345,71 @@
       "label": "no blunt refusal",
       "mode": "none",
       "patterns": [
-       "안\\s*됩니다|안\\s*돼요|싫|못\\s*하겠|안\\s*갑니다|안\\s*갈|안\\s*가요|절대"
+       "\uc548\\s*\ub429\ub2c8\ub2e4|\uc548\\s*\ub3fc\uc694|\uc2eb|\ubabb\\s*\ud558\uaca0|\uc548\\s*\uac11\ub2c8\ub2e4|\uc548\\s*\uac08|\uc548\\s*\uac00\uc694|\uc808\ub300"
+      ]
+     },
+     {
+      "id": "w6",
+      "label": "thanks \ubd80\uc7a5\ub2d8",
+      "mode": "any",
+      "patterns": [
+       "\uac10\uc0ac",
+       "\uace0\ub9d9"
+      ]
+     },
+     {
+      "id": "w7",
+      "label": "does not agree to come on the weekend",
+      "mode": "none",
+      "patterns": [
+       "\ub300\uc2e0\\s*(\uc774\ubc88\\s*)?\uc8fc\ub9d0[^.?!]{0,10}(\ub098\uc624|\ub098\uac00|\ucd9c\uadfc|\ub098\uc62c)",
+       "\uc8fc\ub9d0(\uc5d0|\uc5d0\ub294|\uc5d4)?\\s*(\uc81c\uac00\\s*)?(\ub098\uc624\uaca0|\ub098\uac00\uaca0|\ucd9c\uadfc\ud558\uaca0|\ub098\uc62c\uac8c|\ub098\uac00\uaca0)"
       ]
      }
     ],
     "selfAssess": [
-     "Does my reply say no clearly enough that 부장님 will not expect me?",
+     "Does my reply say no clearly enough that \ubd80\uc7a5\ub2d8 will not expect me?",
      "Is the alternative something I can really do?",
      "Is the refusal softened without being vague?"
     ],
     "modelAnswers": [
      {
-      "text": "부장님, 말씀 주셔서 감사합니다. 죄송하지만 이번 주말에는 선약이 있어서 나가기가 어려울 것 같습니다. 대신 월요일 오전 9시까지 제가 먼저 자료를 정리해 두겠습니다."
+      "text": "\ubd80\uc7a5\ub2d8, \ub9d0\uc500 \uc8fc\uc154\uc11c \uac10\uc0ac\ud569\ub2c8\ub2e4. \uc8c4\uc1a1\ud558\uc9c0\ub9cc \uc774\ubc88 \uc8fc\ub9d0\uc5d0\ub294 \uc120\uc57d\uc774 \uc788\uc5b4\uc11c \ub098\uac00\uae30\uac00 \uc5b4\ub824\uc6b8 \uac83 \uac19\uc2b5\ub2c8\ub2e4. \ub300\uc2e0 \uc6d4\uc694\uc77c \uc624\uc804 9\uc2dc\uae4c\uc9c0 \uc81c\uac00 \uba3c\uc800 \uc790\ub8cc\ub97c \uc815\ub9ac\ud574 \ub450\uaca0\uc2b5\ub2c8\ub2e4."
      },
      {
-      "text": "부장님, 도움이 필요하시다니 말씀 주셔서 감사합니다. 아쉽게도 주말에는 가족 행사가 있어서 어렵습니다. 금요일 퇴근 전까지 가능한 부분을 정리해 드려도 될까요?",
+      "text": "\ubd80\uc7a5\ub2d8, \ub3c4\uc6c0\uc774 \ud544\uc694\ud558\uc2dc\ub2e4\ub2c8 \ub9d0\uc500 \uc8fc\uc154\uc11c \uac10\uc0ac\ud569\ub2c8\ub2e4. \uc544\uc27d\uac8c\ub3c4 \uc8fc\ub9d0\uc5d0\ub294 \uac00\uc871 \ud589\uc0ac\uac00 \uc788\uc5b4\uc11c \uc5b4\ub835\uc2b5\ub2c8\ub2e4. \uae08\uc694\uc77c \ud1f4\uadfc \uc804\uae4c\uc9c0 \uac00\ub2a5\ud55c \ubd80\ubd84\uc744 \uc815\ub9ac\ud574 \ub4dc\ub824\ub3c4 \ub420\uae4c\uc694?",
       "note": "Asks permission for the alternative."
      },
      {
-      "text": "부장님, 말씀 주셔서 감사합니다. 이번 주말에는 가족 행사가 있어서 나오기 어려울 것 같습니다. 대신 금요일 퇴근 후에 남아서 먼저 정리해 두겠습니다."
+      "text": "\ubd80\uc7a5\ub2d8, \ub9d0\uc500 \uc8fc\uc154\uc11c \uac10\uc0ac\ud569\ub2c8\ub2e4. \uc774\ubc88 \uc8fc\ub9d0\uc5d0\ub294 \uac00\uc871 \ud589\uc0ac\uac00 \uc788\uc5b4\uc11c \ub098\uc624\uae30 \uc5b4\ub824\uc6b8 \uac83 \uac19\uc2b5\ub2c8\ub2e4. \ub300\uc2e0 \uae08\uc694\uc77c \ud1f4\uadfc \ud6c4\uc5d0 \ub0a8\uc544\uc11c \uba3c\uc800 \uc815\ub9ac\ud574 \ub450\uaca0\uc2b5\ub2c8\ub2e4."
+     },
+     {
+      "text": "\ubd80\uc7a5\ub2d8, \ub9d0\uc500 \uc8fc\uc154\uc11c \uac10\uc0ac\ud569\ub2c8\ub2e4. \uc8c4\uc1a1\ud558\uc9c0\ub9cc \uc774\ubc88 \uc8fc\ub9d0\uc5d0\ub294 \ubd80\ubaa8\ub2d8 \uc0dd\uc2e0\uc774\ub77c \uc5b4\ub835\uc2b5\ub2c8\ub2e4. \ub300\uc2e0 \uae08\uc694\uc77c\uc5d0 8\uc2dc\uae4c\uc9c0 \ub0a8\uc544\uc11c \uc815\ub9ac\ud574 \ub450\uaca0\uc2b5\ub2c8\ub2e4.",
+      "note": "Another reason and a Friday alternative."
      }
     ],
     "badAnswers": [
      {
-      "text": "주말에는 안 됩니다.",
+      "text": "\uc8fc\ub9d0\uc5d0\ub294 \uc548 \ub429\ub2c8\ub2e4.",
       "why": "Blunt, no thanks, no alternative."
      },
      {
-      "text": "네, 알겠습니다. 주말에 나가겠습니다.",
+      "text": "\ub124, \uc54c\uaca0\uc2b5\ub2c8\ub2e4. \uc8fc\ub9d0\uc5d0 \ub098\uac00\uaca0\uc2b5\ub2c8\ub2e4.",
       "why": "Accepts, so it is not a refusal."
      },
      {
-      "text": "죄송합니다. 금요일은 어렵습니다.",
+      "text": "\uc8c4\uc1a1\ud569\ub2c8\ub2e4. \uae08\uc694\uc77c\uc740 \uc5b4\ub835\uc2b5\ub2c8\ub2e4.",
       "why": "Softens the refusal, but gives no reason and offers nothing (it even names the alternative day as unavailable)."
+     },
+     {
+      "text": "\uac00\uc871 \ud589\uc0ac\uac00 \uc788\uc5b4\uc11c \uc5b4\ub835\uc2b5\ub2c8\ub2e4. \ub300\uc2e0 \uc8fc\ub9d0\uc5d0 \ub098\uc624\uaca0\uc2b5\ub2c8\ub2e4.",
+      "why": "No thanks, and the 'alternative' is to come on the weekend, which contradicts the refusal."
      }
     ],
     "humanReview": "Whether the refusal is clear but not rude, and the reason is acceptable, needs a person.",
     "hints": [
      "Plan three parts: thanks, soft refusal with a reason, and an alternative.",
-     "Use words like 어렵습니다 or 힘들 것 같습니다 for the refusal, and 대신 for the alternative."
+     "Use words like \uc5b4\ub835\uc2b5\ub2c8\ub2e4 or \ud798\ub4e4 \uac83 \uac19\uc2b5\ub2c8\ub2e4 for the refusal, and \ub300\uc2e0 for the alternative."
     ]
    }
   ],
@@ -1380,13 +1429,13 @@
   ],
   "alternatives": [
    "Offering the Monday morning option or the Friday evening option are both valid.",
-   "Keeping the reason short ('선약이 있어서') is as good as naming the family event."
+   "Keeping the reason short ('\uc120\uc57d\uc774 \uc788\uc5b4\uc11c') is as good as naming the family event."
   ],
   "hardCases": [
-   "A reply that is so soft that 부장님 cannot tell whether the answer is no is weak; the model answers state the refusal explicitly with 어렵다."
+   "A reply that is so soft that \ubd80\uc7a5\ub2d8 cannot tell whether the answer is no is weak; the model answers state the refusal explicitly with \uc5b4\ub835\ub2e4."
   ],
   "cautions": {
-   "language": "어렵습니다 and 힘들 것 같습니다 are standard softeners for refusals.",
+   "language": "\uc5b4\ub835\uc2b5\ub2c8\ub2e4 and \ud798\ub4e4 \uac83 \uac19\uc2b5\ub2c8\ub2e4 are standard softeners for refusals.",
    "culture": "Being asked to work on weekends is treated as normal in some offices and as a problem in others; the task shows a polite response, not an opinion on the practice.",
    "accessibility": "Plain text; no images."
   },
@@ -1399,7 +1448,7 @@
     "Clarity and tone of the refusal"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "x-k-k9-08",
@@ -1421,11 +1470,11 @@
   "differsFromPlain": "Plain practice asks you to read notes for facts. Here you decide whether each item is complete enough to act on, and what you would ask.",
   "prerequisites": [
    "Can read short Korean meeting notes",
-   "Knows 담당 (person in charge) and 기한 (due date)"
+   "Knows \ub2f4\ub2f9 (person in charge) and \uae30\ud55c (due date)"
   ],
   "minutes": 14,
   "curriculum": null,
-  "material": "Meeting notes were written on 10월 20일 after the weekly team meeting (참석: 팀장, 이 과장, 박 대리, 최 사원). Five action items were recorded; they appear as the options of step 1.",
+  "material": "Meeting notes were written on 10\uc6d4 20\uc77c after the weekly team meeting (\ucc38\uc11d: \ud300\uc7a5, \uc774 \uacfc\uc7a5, \ubc15 \ub300\ub9ac, \ucd5c \uc0ac\uc6d0). Five action items were recorded; they appear as the options of step 1.",
   "steps": [
    {
     "id": "s1",
@@ -1435,27 +1484,27 @@
     "options": [
      {
       "id": "a",
-      "text": "다음 회의 전에 예산안을 공유한다.",
+      "text": "\ub2e4\uc74c \ud68c\uc758 \uc804\uc5d0 \uc608\uc0b0\uc548\uc744 \uacf5\uc720\ud55c\ub2e4.",
       "reveals": "Counting this as ready shows a vague 'before the next meeting' was treated as a date."
      },
      {
       "id": "b",
-      "text": "이 과장이 21일 오전까지 B관 예약 가능 여부를 확인한다.",
+      "text": "\uc774 \uacfc\uc7a5\uc774 21\uc77c \uc624\uc804\uae4c\uc9c0 B\uad00 \uc608\uc57d \uac00\ub2a5 \uc5ec\ubd80\ub97c \ud655\uc778\ud55c\ub2e4.",
       "reveals": "Seeing a person, a task and a time together shows you check for all three parts of an action item."
      },
      {
       "id": "c",
-      "text": "행사 장소는 A관과 B관 중에서 더 넓은 쪽으로 정한다.",
+      "text": "\ud589\uc0ac \uc7a5\uc18c\ub294 A\uad00\uacfc B\uad00 \uc911\uc5d0\uc11c \ub354 \ub113\uc740 \ucabd\uc73c\ub85c \uc815\ud55c\ub2e4.",
       "reveals": "Counting this as ready shows the missing owner and date were not noticed."
      },
      {
       "id": "d",
-      "text": "박 대리가 22일까지 설문지 초안을 만든다.",
+      "text": "\ubc15 \ub300\ub9ac\uac00 22\uc77c\uae4c\uc9c0 \uc124\ubb38\uc9c0 \ucd08\uc548\uc744 \ub9cc\ub4e0\ub2e4.",
       "reveals": "Checking person, task and date in one sentence shows you test each item the same way."
      },
      {
       "id": "e",
-      "text": "최 사원이 지난달 행사에 참석한 고객 명단을 다시 정리한다.",
+      "text": "\ucd5c \uc0ac\uc6d0\uc774 \uc9c0\ub09c\ub2ec \ud589\uc0ac\uc5d0 \ucc38\uc11d\ud55c \uace0\uac1d \uba85\ub2e8\uc744 \ub2e4\uc2dc \uc815\ub9ac\ud55c\ub2e4.",
       "reveals": "A named person is not enough; the missing due date and unclear scope are what keep this from being ready."
      }
     ],
@@ -1463,7 +1512,7 @@
      "b",
      "d"
     ],
-    "explain": "The items with a named person, a clear task and a due date can be planned and started at once: 이 과장's check (by the morning of the 21st) and 박 대리's questionnaire draft (by the 22nd). The venue item has no owner and no date, the budget item has no owner and only 'before the next meeting' (not a date), and the customer-list item has an owner but no due date.",
+    "explain": "The items with a named person, a clear task and a due date can be planned and started at once: \uc774 \uacfc\uc7a5's check (by the morning of the 21st) and \ubc15 \ub300\ub9ac's questionnaire draft (by the 22nd). The venue item has no owner and no date, the budget item has no owner and only 'before the next meeting' (not a date), and the customer-list item has an owner but no due date.",
     "hints": [
      "Read each item as the person who has to act on it. Write down the first question you would ask.",
      "Compare the five items: which ones leave no question for the person who has to act?"
@@ -1473,15 +1522,15 @@
     "id": "s2",
     "kind": "write",
     "prompt": "Choose ONE incomplete item and write a short question to the team in Korean asking for the missing information. Be polite and name the item.",
-    "placeholder": "예: ...",
-    "minChars": 20,
+    "placeholder": "\uc608: ...",
+    "minChars": 12,
     "checks": [
      {
       "id": "w1",
       "label": "polite question ending",
       "mode": "any",
       "patterns": [
-       "까요|니까|나요|는지|을지|ㄹ지|십시오|주세요|주시면|여쭤|시겠어요|인가요|가요|ㅂ니까|주실 수|인지요"
+       "\uae4c\uc694|\ub2c8\uae4c|\ub098\uc694|\ub294\uc9c0|\uc744\uc9c0|\u3139\uc9c0|\uc2ed\uc2dc\uc624|\uc8fc\uc138\uc694|\uc8fc\uc2dc\uba74|\uc5ec\ucb64|\uc2dc\uaca0\uc5b4\uc694|\uc778\uac00\uc694|\uac00\uc694|\u3142\ub2c8\uae4c|\uc8fc\uc2e4 \uc218|\uc778\uc9c0\uc694"
       ]
      },
      {
@@ -1489,15 +1538,26 @@
       "label": "asks who or when",
       "mode": "any",
       "patterns": [
-       "누가|누구|언제|까지|담당|기한|날짜"
+       "\ub204\uac00|\ub204\uad6c|\uc5b8\uc81c|\uae4c\uc9c0|\ub2f4\ub2f9|\uae30\ud55c|\ub0a0\uc9dc"
       ]
      },
      {
       "id": "w3",
-      "label": "names an incomplete item",
+      "label": "names an incomplete item and asks for something that item lacks (owner or date for the venue and budget items, a date or scope for the customer list)",
       "mode": "any",
       "patterns": [
-       "장소|예산|명단|고객"
+       "^(?=[\\s\\S]*(\uc608\uc0b0))(?=[\\s\\S]*(\ub204\uac00|\ub204\uad6c|\ub2f4\ub2f9|\uc5b8\uc81c|\uae4c\uc9c0|\uae30\ud55c|\ub0a0\uc9dc|\uba70\uce60))",
+       "^(?=[\\s\\S]*(\uc7a5\uc18c|\ud589\uc0ac\uc7a5))(?=[\\s\\S]*(\ub204\uac00|\ub204\uad6c|\ub2f4\ub2f9|\uc5b8\uc81c|\uae4c\uc9c0|\uae30\ud55c|\ub0a0\uc9dc|\uba70\uce60))",
+       "^(?=[\\s\\S]*(\uba85\ub2e8|\uace0\uac1d))(?=[\\s\\S]*(\uc5b8\uc81c|\uae4c\uc9c0|\uae30\ud55c|\ub0a0\uc9dc|\uba70\uce60|\ubc94\uc704|\uc5b4\ub514\uae4c\uc9c0|\uc5b4\ub5a4|\uc5b4\ub290))"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "does not ask about an item that is already complete (B\uad00 reservation, questionnaire)",
+      "mode": "none",
+      "patterns": [
+       "\uc608\uc57d",
+       "\uc124\ubb38"
       ]
      }
     ],
@@ -1507,37 +1567,52 @@
     ],
     "modelAnswers": [
      {
-      "text": "팀장님, 행사 장소를 정하는 일은 누가 맡고 언제까지 결정하면 되는지 여쭤봐도 될까요?"
+      "text": "\ud300\uc7a5\ub2d8, \ud589\uc0ac \uc7a5\uc18c\ub97c \uc815\ud558\ub294 \uc77c\uc740 \ub204\uac00 \ub9e1\uace0 \uc5b8\uc81c\uae4c\uc9c0 \uacb0\uc815\ud558\uba74 \ub418\ub294\uc9c0 \uc5ec\ucb64\ubd10\ub3c4 \ub420\uae4c\uc694?"
      },
      {
-      "text": "회의록 확인했습니다. 예산안은 누가 공유하고, 다음 회의가 언제인지 알려 주시면 감사하겠습니다.",
+      "text": "\ud68c\uc758\ub85d \ud655\uc778\ud588\uc2b5\ub2c8\ub2e4. \uc608\uc0b0\uc548\uc740 \ub204\uac00 \uacf5\uc720\ud558\uace0, \ub2e4\uc74c \ud68c\uc758\uac00 \uc5b8\uc81c\uc778\uc9c0 \uc54c\ub824 \uc8fc\uc2dc\uba74 \uac10\uc0ac\ud558\uaca0\uc2b5\ub2c8\ub2e4.",
       "note": "Asks for two missing facts about the budget item."
      },
      {
-      "text": "예산안은 누가 담당이고 기한은 언제인가요?"
+      "text": "\uc608\uc0b0\uc548\uc740 \ub204\uac00 \ub2f4\ub2f9\uc774\uace0 \uae30\ud55c\uc740 \uc5b8\uc81c\uc778\uac00\uc694?"
      },
      {
-      "text": "예산안은 담당자가 누구인지 알려 주시겠어요?"
+      "text": "\uc608\uc0b0\uc548\uc740 \ub2f4\ub2f9\uc790\uac00 \ub204\uad6c\uc778\uc9c0 \uc54c\ub824 \uc8fc\uc2dc\uaca0\uc5b4\uc694?"
+     },
+     {
+      "text": "\ud589\uc0ac\uc7a5\uc740 \uc5b8\uc81c\uae4c\uc9c0 \uc815\ud558\uba74 \ub420\uae4c\uc694?"
+     },
+     {
+      "text": "\uace0\uac1d \uba85\ub2e8\uc740 \uc5b8\uc81c\uae4c\uc9c0 \uc815\ub9ac\ud558\uba74 \ub420\uae4c\uc694?",
+      "note": "This item already has an owner, so only the date is asked."
      }
     ],
     "badAnswers": [
      {
-      "text": "장소 누가 해요?",
+      "text": "\uc7a5\uc18c \ub204\uac00 \ud574\uc694?",
       "why": "Too short and casual, no polite question form."
      },
      {
-      "text": "알겠습니다.",
+      "text": "\uc54c\uaca0\uc2b5\ub2c8\ub2e4.",
       "why": "Does not ask anything."
      },
      {
-      "text": "B관 예약은 언제까지 확인하면 될까요?",
+      "text": "B\uad00 \uc608\uc57d\uc740 \uc5b8\uc81c\uae4c\uc9c0 \ud655\uc778\ud558\uba74 \ub420\uae4c\uc694?",
       "why": "A polite question, but about an item that is already complete."
+     },
+     {
+      "text": "B\uad00 \uc7a5\uc18c \uc608\uc57d\uc740 \ub204\uac00 \ud655\uc778\ud558\ub098\uc694?",
+      "why": "Asks about the B\uad00 reservation, an item that already has an owner and a date."
+     },
+     {
+      "text": "\uace0\uac1d \uba85\ub2e8\uc740 \ub204\uac00 \uc815\ub9ac\ud558\ub098\uc694?",
+      "why": "The customer-list item already names \ucd5c \uc0ac\uc6d0; the missing part is the date."
      }
     ],
     "humanReview": "Whether the question is precise and polite and addresses the right person needs a person.",
     "hints": [
-     "Name the item (for example 행사 장소 or 예산안) and ask only for what is missing.",
-     "A polite question can end in -ㄹ까요? or -는지 여쭤봐도 될까요?"
+     "Name the item you choose and ask only for what that item still lacks.",
+     "A polite question can end in -\u3139\uae4c\uc694? or -\ub294\uc9c0 \uc5ec\ucb64\ubd10\ub3c4 \ub420\uae4c\uc694?"
     ]
    }
   ],
@@ -1559,10 +1634,10 @@
    "Asking for the date of the next meeting for the budget item is as valid as asking who will share the budget."
   ],
   "hardCases": [
-   "The customer-list item has an owner and a clear verb; some will say it is ready. The task treats the missing due date and the unclear scope ('다시') as enough to ask."
+   "The customer-list item has an owner and a clear verb; some will say it is ready. The task treats the missing due date and the unclear scope ('\ub2e4\uc2dc') as enough to ask."
   ],
   "cautions": {
-   "language": "Action items in Korean notes often end in -한다 / -함; the task uses plain form like real minutes.",
+   "language": "Action items in Korean notes often end in -\ud55c\ub2e4 / -\ud568; the task uses plain form like real minutes.",
    "culture": "Notes that leave out owners and dates are a common problem in workplaces everywhere.",
    "accessibility": "Plain text; options are not distinguished by colour."
   },
@@ -1575,7 +1650,7 @@
     "Precision of the question"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "x-k-k9-09",
@@ -1597,26 +1672,26 @@
   "differsFromPlain": "Plain practice asks a detail from a text. Here the date is never said directly, so you work it out from what was said before you decide which line is wrong.",
   "prerequisites": [
    "Can read days of the week in Korean",
-   "Knows that minutes often use a short noun style (~까지, ~함)"
+   "Knows that minutes often use a short noun style (~\uae4c\uc9c0, ~\ud568)"
   ],
   "minutes": 14,
   "curriculum": null,
-  "material": "Part of what was said in the meeting:\n\n팀장: \"시안은 이번 주 금요일까지 받겠습니다. 수정에는 보통 하루가 걸리니까 다음 주 화요일까지 끝내 주세요. 최종 보고는 수정이 끝난 다음 날 오전에 하겠습니다.\"\n이 대리: \"시안은 제가 맡겠습니다. 수정은 최 사원이 해 주면 좋겠는데요.\"\n최 사원: \"네, 그렇게 하겠습니다. 월요일은 제가 연차라서, 화요일에 바로 하겠습니다.\"\n\nThe minutes written afterwards:",
+  "material": "Part of what was said in the meeting:\n\n\ud300\uc7a5: \"\uc2dc\uc548\uc740 \uc774\ubc88 \uc8fc \uae08\uc694\uc77c\uae4c\uc9c0 \ubc1b\uaca0\uc2b5\ub2c8\ub2e4. \uc218\uc815\uc5d0\ub294 \ubcf4\ud1b5 \ud558\ub8e8\uac00 \uac78\ub9ac\ub2c8\uae4c \ub2e4\uc74c \uc8fc \ud654\uc694\uc77c\uae4c\uc9c0 \ub05d\ub0b4 \uc8fc\uc138\uc694. \ucd5c\uc885 \ubcf4\uace0\ub294 \uc218\uc815\uc774 \ub05d\ub09c \ub2e4\uc74c \ub0a0 \uc624\uc804\uc5d0 \ud558\uaca0\uc2b5\ub2c8\ub2e4.\"\n\uc774 \ub300\ub9ac: \"\uc2dc\uc548\uc740 \uc81c\uac00 \ub9e1\uaca0\uc2b5\ub2c8\ub2e4. \uc218\uc815\uc740 \ucd5c \uc0ac\uc6d0\uc774 \ud574 \uc8fc\uba74 \uc88b\uaca0\ub294\ub370\uc694.\"\n\ucd5c \uc0ac\uc6d0: \"\ub124, \uadf8\ub807\uac8c \ud558\uaca0\uc2b5\ub2c8\ub2e4. \uc6d4\uc694\uc77c\uc740 \uc81c\uac00 \uc5f0\ucc28\ub77c\uc11c, \ud654\uc694\uc77c\uc5d0 \ubc14\ub85c \ud558\uaca0\uc2b5\ub2c8\ub2e4.\"\n\nThe minutes written afterwards:",
   "steps": [
    {
     "id": "s1",
     "kind": "pickLine",
     "prompt": "Which line of the minutes does not agree with what was said?",
     "lines": [
-     "시안 제출: 이번 주 금요일까지 (담당: 이 대리)",
-     "수정 완료: 다음 주 화요일까지 (담당: 최 사원)",
-     "최종 보고: 다음 주 목요일 오전",
-     "최 사원 월요일 연차 → 수정은 화요일에 진행"
+     "\uc2dc\uc548 \uc81c\ucd9c: \uc774\ubc88 \uc8fc \uae08\uc694\uc77c\uae4c\uc9c0 (\ub2f4\ub2f9: \uc774 \ub300\ub9ac)",
+     "\uc218\uc815 \uc644\ub8cc: \ub2e4\uc74c \uc8fc \ud654\uc694\uc77c\uae4c\uc9c0 (\ub2f4\ub2f9: \ucd5c \uc0ac\uc6d0)",
+     "\ucd5c\uc885 \ubcf4\uace0: \ub2e4\uc74c \uc8fc \ubaa9\uc694\uc77c \uc624\uc804",
+     "\ucd5c \uc0ac\uc6d0 \uc6d4\uc694\uc77c \uc5f0\ucc28 \u2192 \uc218\uc815\uc740 \ud654\uc694\uc77c\uc5d0 \uc9c4\ud589"
     ],
     "wrong": [
      2
     ],
-    "explain": "Line 3 is wrong. 팀장 said the final report is the morning after the revision ends, and the revision ends on Tuesday, so the report is Wednesday morning, not Thursday. Lines 1, 2 and 4 match what was said.",
+    "explain": "Line 3 is wrong. \ud300\uc7a5 said the final report is the morning after the revision ends, and the revision ends on Tuesday, so the report is Wednesday morning, not Thursday. Lines 1, 2 and 4 match what was said.",
     "hints": [
      "For each minutes line, find the sentence in the dialogue that supports it.",
      "One date is never said as a weekday. Work it out from 'the day after' and check it against the line."
@@ -1626,15 +1701,15 @@
     "id": "s2",
     "kind": "write",
     "prompt": "Rewrite line 3 as a corrected line of minutes in Korean (short noun style, like the other lines).",
-    "placeholder": "예: ...",
+    "placeholder": "\uc608: ...",
     "minChars": 10,
     "checks": [
      {
       "id": "w1",
-      "label": "gives the corrected weekday (수요일)",
+      "label": "gives the corrected weekday (\uc218\uc694\uc77c)",
       "mode": "any",
       "patterns": [
-       "수요일"
+       "\uc218\uc694\uc77c"
       ]
      },
      {
@@ -1642,7 +1717,7 @@
       "label": "mentions the morning",
       "mode": "any",
       "patterns": [
-       "오전|아침"
+       "\uc624\uc804|\uc544\uce68"
       ]
      },
      {
@@ -1650,37 +1725,37 @@
       "label": "mentions the final report",
       "mode": "any",
       "patterns": [
-       "최종|보고"
+       "\ucd5c\uc885|\ubcf4\uace0"
       ]
      }
     ],
     "selfAssess": [
-     "Does my line give a date that agrees with 팀장's rule?",
+     "Does my line give a date that agrees with \ud300\uc7a5's rule?",
      "Does it look like the other minutes lines?"
     ],
     "modelAnswers": [
      {
-      "text": "최종 보고: 다음 주 수요일 오전"
+      "text": "\ucd5c\uc885 \ubcf4\uace0: \ub2e4\uc74c \uc8fc \uc218\uc694\uc77c \uc624\uc804"
      },
      {
-      "text": "최종 보고는 다음 주 수요일 오전에 진행 (수정 완료 다음 날)",
+      "text": "\ucd5c\uc885 \ubcf4\uace0\ub294 \ub2e4\uc74c \uc8fc \uc218\uc694\uc77c \uc624\uc804\uc5d0 \uc9c4\ud589 (\uc218\uc815 \uc644\ub8cc \ub2e4\uc74c \ub0a0)",
       "note": "Adds the reason for the date."
      }
     ],
     "badAnswers": [
      {
-      "text": "최종 보고: 다음 주 목요일 오전",
+      "text": "\ucd5c\uc885 \ubcf4\uace0: \ub2e4\uc74c \uc8fc \ubaa9\uc694\uc77c \uc624\uc804",
       "why": "Repeats the error."
      },
      {
-      "text": "최종 보고: 다음 주 수요일",
+      "text": "\ucd5c\uc885 \ubcf4\uace0: \ub2e4\uc74c \uc8fc \uc218\uc694\uc77c",
       "why": "Does not say the morning."
      }
     ],
     "humanReview": "Whether the line follows the style of the minutes needs a person.",
     "hints": [
      "Copy the form of the other lines: a label, a colon, and the date or time.",
-     "Use the weekday and the part of the day that follow from 팀장's words."
+     "Use the weekday and the part of the day that follow from \ud300\uc7a5's words."
     ]
    }
   ],
@@ -1699,7 +1774,7 @@
    }
   ],
   "alternatives": [
-   "A line like '최종 보고: 수요일 오전 중' is equally correct."
+   "A line like '\ucd5c\uc885 \ubcf4\uace0: \uc218\uc694\uc77c \uc624\uc804 \uc911' is equally correct."
   ],
   "hardCases": [
    "The minutes could be written correctly with 'the day after the revision' instead of a weekday; the task asks for the weekday for clarity."
@@ -1712,12 +1787,13 @@
   "autoVsHuman": {
    "auto": [
     "Which line is picked",
-    "Presence of 수요일, 오전/아침 and the report in the rewrite"
+    "Presence of \uc218\uc694\uc77c, \uc624\uc804/\uc544\uce68 and the report in the rewrite"
    ],
    "human": [
     "Style of the rewritten line"
    ]
-  }
+  },
+  "status": "reviewed-ai"
  },
  {
   "id": "x-k-k9-10",
@@ -1738,41 +1814,41 @@
   ],
   "differsFromPlain": "Plain practice asks a single time or day from a note. Here several people's limits combine and many answers work, so you must check each one.",
   "prerequisites": [
-   "Can read times such as 오전 9시 and 오후 2시",
-   "Knows 출장 (business trip) and 외근 (outside work)"
+   "Can read times such as \uc624\uc804 9\uc2dc and \uc624\ud6c4 2\uc2dc",
+   "Knows \ucd9c\uc7a5 (business trip) and \uc678\uadfc (outside work)"
   ],
   "minutes": 16,
   "curriculum": null,
-  "material": "일정 메모: 다음 주에 1시간짜리 팀 회의를 잡아야 합니다. 요일은 월=1, 화=2, 수=3, 목=4, 금=5로 쓰고, 시작 시각은 24시간제 시(예: 오후 1시 = 13)로 씁니다.\n- 부장님은 화요일과 목요일에 하루 종일 출장입니다.\n- 회의는 오전 9시부터 시작할 수 있고, 오후 6시(18시)까지는 끝나야 합니다.\n- 점심시간(12시~13시)에는 회의를 시작하지 않습니다.\n- 박 대리는 수요일 오후(12시 이후)에 시작하는 회의에는 참석할 수 없습니다.\n- 최 사원은 금요일 오후 2시(14시)부터 외근이라서, 금요일 회의는 14시까지는 끝나야 합니다.\n- 팀장님은 월요일 오전에는 참석할 수 없습니다.",
+  "material": "\uc77c\uc815 \uba54\ubaa8: \ub2e4\uc74c \uc8fc\uc5d0 1\uc2dc\uac04\uc9dc\ub9ac \ud300 \ud68c\uc758\ub97c \uc7a1\uc544\uc57c \ud569\ub2c8\ub2e4. \uc694\uc77c\uc740 \uc6d4=1, \ud654=2, \uc218=3, \ubaa9=4, \uae08=5\ub85c \uc4f0\uace0, \uc2dc\uc791 \uc2dc\uac01\uc740 24\uc2dc\uac04\uc81c \uc2dc(\uc608: \uc624\ud6c4 1\uc2dc = 13)\ub85c \uc501\ub2c8\ub2e4.\n- \ubd80\uc7a5\ub2d8\uc740 \ud654\uc694\uc77c\uacfc \ubaa9\uc694\uc77c\uc5d0 \ud558\ub8e8 \uc885\uc77c \ucd9c\uc7a5\uc785\ub2c8\ub2e4.\n- \ud68c\uc758\ub294 \uc624\uc804 9\uc2dc\ubd80\ud130 \uc2dc\uc791\ud560 \uc218 \uc788\uace0, \uc624\ud6c4 6\uc2dc(18\uc2dc)\uae4c\uc9c0\ub294 \ub05d\ub098\uc57c \ud569\ub2c8\ub2e4.\n- \uc810\uc2ec\uc2dc\uac04(12\uc2dc~13\uc2dc)\uc5d0\ub294 \ud68c\uc758\ub97c \uc2dc\uc791\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.\n- \ubc15 \ub300\ub9ac\ub294 \uc218\uc694\uc77c \uc624\ud6c4(12\uc2dc \uc774\ud6c4)\uc5d0 \uc2dc\uc791\ud558\ub294 \ud68c\uc758\uc5d0\ub294 \ucc38\uc11d\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.\n- \ucd5c \uc0ac\uc6d0\uc740 \uae08\uc694\uc77c \uc624\ud6c4 2\uc2dc(14\uc2dc)\ubd80\ud130 \uc678\uadfc\uc774\ub77c\uc11c, \uae08\uc694\uc77c \ud68c\uc758\ub294 14\uc2dc\uae4c\uc9c0\ub294 \ub05d\ub098\uc57c \ud569\ub2c8\ub2e4.\n- \ud300\uc7a5\ub2d8\uc740 \uc6d4\uc694\uc77c \uc624\uc804\uc5d0\ub294 \ucc38\uc11d\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
     "scaffold": true,
-    "prompt": "A Friday meeting lasts 1 hour and must be over by 14시 because of 최 사원. What is the latest start time (24-hour)?",
+    "prompt": "A Friday meeting lasts 1 hour and must be over by 14\uc2dc because of \ucd5c \uc0ac\uc6d0. What is the latest start time (24-hour)?",
     "options": [
      {
       "id": "a",
-      "text": "13시",
-      "reveals": "Subtracting the 1-hour length from the end time shows the duration was used."
+      "text": "14\uc2dc",
+      "reveals": "Starting at 14\uc2dc mixes up the time the meeting must end with the time it starts."
      },
      {
       "id": "b",
-      "text": "14시",
-      "reveals": "Starting at 14시 mixes up the time the meeting must end with the time it starts."
+      "text": "13\uc2dc",
+      "reveals": "Subtracting the 1-hour length from the end time shows the duration was used."
      },
      {
       "id": "c",
-      "text": "15시",
-      "reveals": "This is after 최 사원 leaves, so the end limit was not applied."
+      "text": "15\uc2dc",
+      "reveals": "This is after \ucd5c \uc0ac\uc6d0 leaves, so the end limit was not applied."
      }
     ],
     "correct": [
-     "a"
+     "b"
     ],
-    "explain": "The meeting is 1 hour long and must end by 14시, so it must start by 13시.",
+    "explain": "The meeting is 1 hour long and must end by 14\uc2dc, so it must start by 13\uc2dc.",
     "hints": [
-     "Find the sentence about Friday and the time 14시.",
+     "Find the sentence about Friday and the time 14\uc2dc.",
      "Test the options: for each start time, when would a 1-hour meeting be over?"
     ]
    },
@@ -1783,7 +1859,7 @@
     "vars": [
      {
       "name": "d",
-      "label": "day (월=1 ... 금=5)"
+      "label": "day (\uc6d4=1 ... \uae08=5)"
      },
      {
       "name": "h",
@@ -1801,43 +1877,43 @@
       "id": "c1",
       "expr": "d>=1 && d<=5",
       "ok": "A weekday from Monday to Friday.",
-      "fail": "The day must be 1 to 5 (월 to 금)."
+      "fail": "The day must be 1 to 5 (\uc6d4 to \uae08)."
      },
      {
       "id": "c2",
       "expr": "h>=9 && h+1<=18",
-      "ok": "Within 9시 to 18시.",
-      "fail": "The meeting must start from 9시 and end by 18시."
+      "ok": "Within 9\uc2dc to 18\uc2dc.",
+      "fail": "The meeting must start from 9\uc2dc and end by 18\uc2dc."
      },
      {
       "id": "c3",
       "expr": "d!=2 && d!=4",
-      "ok": "부장님 is in the office.",
-      "fail": "부장님 is away on 화 and 목."
+      "ok": "\ubd80\uc7a5\ub2d8 is in the office.",
+      "fail": "\ubd80\uc7a5\ub2d8 is away on \ud654 and \ubaa9."
      },
      {
       "id": "c4",
       "expr": "h!=12",
       "ok": "Not starting in the lunch hour.",
-      "fail": "No meeting starts during 12시~13시."
+      "fail": "No meeting starts during 12\uc2dc~13\uc2dc."
      },
      {
       "id": "c5",
       "expr": "!(d==3 && h>=12)",
-      "ok": "박 대리 can attend.",
-      "fail": "박 대리 cannot attend a Wednesday meeting starting from 12시."
+      "ok": "\ubc15 \ub300\ub9ac can attend.",
+      "fail": "\ubc15 \ub300\ub9ac cannot attend a Wednesday meeting starting from 12\uc2dc."
      },
      {
       "id": "c6",
       "expr": "!(d==5 && h+1>14)",
-      "ok": "Ends before 최 사원 leaves.",
-      "fail": "On Friday the meeting must end by 14시."
+      "ok": "Ends before \ucd5c \uc0ac\uc6d0 leaves.",
+      "fail": "On Friday the meeting must end by 14\uc2dc."
      },
      {
       "id": "c7",
       "expr": "!(d==1 && h<12)",
-      "ok": "팀장님 can attend.",
-      "fail": "팀장님 cannot attend Monday mornings."
+      "ok": "\ud300\uc7a5\ub2d8 can attend.",
+      "fail": "\ud300\uc7a5\ub2d8 cannot attend Monday mornings."
      }
     ],
     "need": 3,
@@ -1873,7 +1949,7 @@
       "h": 14
      }
     ],
-    "explain": "Valid slots include 월 13시 to 17시, 수 9시 to 11시, and 금 9시, 10시, 11시 or 13시. Tuesday and Thursday are out because of 부장님, Monday mornings because of 팀장님, Wednesday afternoons because of 박 대리, and Friday after 13시 start because of 최 사원.",
+    "explain": "Valid slots include \uc6d4 13\uc2dc to 17\uc2dc, \uc218 9\uc2dc to 11\uc2dc, and \uae08 9\uc2dc, 10\uc2dc, 11\uc2dc or 13\uc2dc. Tuesday and Thursday are out because of \ubd80\uc7a5\ub2d8, Monday mornings because of \ud300\uc7a5\ub2d8, Wednesday afternoons because of \ubc15 \ub300\ub9ac, and Friday after 13\uc2dc start because of \ucd5c \uc0ac\uc6d0.",
     "hints": [
      "Cross out whole days first, then hours within the days that remain.",
      "For each remaining day, list the allowed start hours before choosing.",
@@ -1882,8 +1958,8 @@
     "because": {
      "id": "s2b",
      "kind": "write",
-     "prompt": "Write a message to 팀장님 in Korean proposing ONE of your slots politely and asking whether it works.",
-     "placeholder": "예: ...",
+     "prompt": "Write a message to \ud300\uc7a5\ub2d8 in Korean proposing ONE of your slots politely and asking whether it works.",
+     "placeholder": "\uc608: ...",
      "minChars": 25,
      "checks": [
       {
@@ -1891,7 +1967,7 @@
        "label": "formal or polite ending",
        "mode": "any",
        "patterns": [
-        "니다|니까|세요|까요|십시오|가요|지요"
+        "\ub2c8\ub2e4|\ub2c8\uae4c|\uc138\uc694|\uae4c\uc694|\uc2ed\uc2dc\uc624|\uac00\uc694|\uc9c0\uc694"
        ]
       },
       {
@@ -1899,7 +1975,7 @@
        "label": "asks or proposes politely",
        "mode": "any",
        "patterns": [
-        "가능|괜찮|어떠|어떨|어떻|부탁드|제안|여쭙|될까요"
+        "\uac00\ub2a5|\uad1c\ucc2e|\uc5b4\ub5a0|\uc5b4\ub5a8|\uc5b4\ub5bb|\ubd80\ud0c1\ub4dc|\uc81c\uc548|\uc5ec\ucb59|\ub420\uae4c\uc694"
        ]
       },
       {
@@ -1907,7 +1983,7 @@
        "label": "names a weekday",
        "mode": "any",
        "patterns": [
-        "(월|화|수|목|금)요일"
+        "(\uc6d4|\ud654|\uc218|\ubaa9|\uae08)\uc694\uc77c"
        ]
       },
       {
@@ -1915,7 +1991,7 @@
        "label": "names a time",
        "mode": "any",
        "patterns": [
-        "\\d+\\s*시|오전|오후"
+        "\\d+\\s*\uc2dc|\uc624\uc804|\uc624\ud6c4"
        ]
       },
       {
@@ -1923,47 +1999,54 @@
        "label": "does not name a slot the memo rules out",
        "mode": "none",
        "patterns": [
-        "(화|목)요일",
-        "월요일\\s*(오전|9\\s*시|10\\s*시|11\\s*시)",
-        "수요일\\s*(오후|1[2-8]\\s*시)",
-        "금요일\\s*(오후\\s*(12|2|3|4|5|6)\\s*시|1[24-8]\\s*시)"
+        "(\ud654|\ubaa9)\uc694\uc77c\\s*(\uc5d0|\uc740|\ub294|\uc5d4)?\\s*(\uc624\uc804|\uc624\ud6c4|\\d+\\s*\uc2dc)",
+        "\uc6d4\uc694\uc77c\\s*(\uc624\uc804|9\\s*\uc2dc|10\\s*\uc2dc|11\\s*\uc2dc|12\\s*\uc2dc|\uc624\ud6c4\\s*12)",
+        "\uc218\uc694\uc77c\\s*(\uc624\ud6c4|1[2-8]\\s*\uc2dc)",
+        "\uae08\uc694\uc77c\\s*(\uc624\ud6c4\\s*(12|2|3|4|5|6)\\s*\uc2dc|1[24-8]\\s*\uc2dc)"
        ]
       }
      ],
      "selfAssess": [
       "Is the slot I name one that works for everyone?",
-      "Does the closing invite 팀장님 to answer?"
+      "Does the closing invite \ud300\uc7a5\ub2d8 to answer?"
      ],
      "modelAnswers": [
       {
-       "text": "팀장님, 다음 주 수요일 오전 9시에 팀 회의를 하면 어떨까요? 가능하신지 말씀 부탁드립니다."
+       "text": "\ud300\uc7a5\ub2d8, \ub2e4\uc74c \uc8fc \uc218\uc694\uc77c \uc624\uc804 9\uc2dc\uc5d0 \ud300 \ud68c\uc758\ub97c \ud558\uba74 \uc5b4\ub5a8\uae4c\uc694? \uac00\ub2a5\ud558\uc2e0\uc9c0 \ub9d0\uc500 \ubd80\ud0c1\ub4dc\ub9bd\ub2c8\ub2e4."
       },
       {
-       "text": "팀장님, 금요일 오전 10시에 회의를 제안드립니다. 괜찮으신지 확인 부탁드립니다.",
+       "text": "\ud300\uc7a5\ub2d8, \uae08\uc694\uc77c \uc624\uc804 10\uc2dc\uc5d0 \ud68c\uc758\ub97c \uc81c\uc548\ub4dc\ub9bd\ub2c8\ub2e4. \uad1c\ucc2e\uc73c\uc2e0\uc9c0 \ud655\uc778 \ubd80\ud0c1\ub4dc\ub9bd\ub2c8\ub2e4.",
        "note": "Different slot, formal proposal."
       },
       {
-       "text": "팀장님, 수요일 오전 10시에 회의가 가능하신가요?"
+       "text": "\ud300\uc7a5\ub2d8, \uc218\uc694\uc77c \uc624\uc804 10\uc2dc\uc5d0 \ud68c\uc758\uac00 \uac00\ub2a5\ud558\uc2e0\uac00\uc694?"
+      },
+      {
+       "text": "\ud300\uc7a5\ub2d8, \ud654\uc694\uc77c\uacfc \ubaa9\uc694\uc77c\uc740 \ubd80\uc7a5\ub2d8 \ucd9c\uc7a5\uc774\ub77c \ud53c\ud574\uc11c \uc218\uc694\uc77c \uc624\uc804 9\uc2dc\uc5d0 \ud68c\uc758\ub97c \ud558\uba74 \uc5b4\ub5a8\uae4c\uc694?"
       }
      ],
      "badAnswers": [
       {
-       "text": "수요일 9시 회의 합니다.",
+       "text": "\uc218\uc694\uc77c 9\uc2dc \ud68c\uc758 \ud569\ub2c8\ub2e4.",
        "why": "Announces instead of proposing, and the ending is not polite."
       },
       {
-       "text": "팀장님, 회의 시간을 정하고 싶습니다. 가능하신 때 알려 주세요.",
+       "text": "\ud300\uc7a5\ub2d8, \ud68c\uc758 \uc2dc\uac04\uc744 \uc815\ud558\uace0 \uc2f6\uc2b5\ub2c8\ub2e4. \uac00\ub2a5\ud558\uc2e0 \ub54c \uc54c\ub824 \uc8fc\uc138\uc694.",
        "why": "Does not propose a day or time."
       },
       {
-       "text": "팀장님, 화요일 오전 10시에 회의가 가능하신가요?",
-       "why": "Polite, but 부장님 is away on Tuesday."
+       "text": "\ud300\uc7a5\ub2d8, \ud654\uc694\uc77c \uc624\uc804 10\uc2dc\uc5d0 \ud68c\uc758\uac00 \uac00\ub2a5\ud558\uc2e0\uac00\uc694?",
+       "why": "Polite, but \ubd80\uc7a5\ub2d8 is away on Tuesday."
+      },
+      {
+       "text": "\ud300\uc7a5\ub2d8, \uc6d4\uc694\uc77c 12\uc2dc\uc5d0 \ud68c\uc758\ub97c \ud558\uba74 \uc5b4\ub5a8\uae4c\uc694? \uac00\ub2a5\ud558\uc2e0\uc9c0 \ub9d0\uc500 \ubd80\ud0c1\ub4dc\ub9bd\ub2c8\ub2e4.",
+       "why": "12\uc2dc is the lunch hour, when no meeting may start."
       }
      ],
      "humanReview": "Whether the proposed slot really works for everyone and the tone is right needs a person.",
      "hints": [
       "Give the day and time in the same sentence as the proposal.",
-      "Close with a polite request, such as 가능하신지 말씀 부탁드립니다."
+      "Close with a polite request, such as \uac00\ub2a5\ud558\uc2e0\uc9c0 \ub9d0\uc500 \ubd80\ud0c1\ub4dc\ub9bd\ub2c8\ub2e4."
      ]
     }
    }
@@ -1983,14 +2066,14 @@
    }
   ],
   "alternatives": [
-   "Any slot in the list of valid slots is correct; for example 월 14시, 수 11시 and 금 13시.",
-   "A student may propose the slot with a different phrasing (오후 1시 instead of 13시); both are fine."
+   "Any slot in the list of valid slots is correct; for example \uc6d4 14\uc2dc, \uc218 11\uc2dc and \uae08 13\uc2dc.",
+   "A student may propose the slot with a different phrasing (\uc624\ud6c4 1\uc2dc instead of 13\uc2dc); both are fine."
   ],
   "hardCases": [
-   "A 11시 start ends at 12시, which does not touch the lunch hour; some will avoid it to be safe, which is also acceptable."
+   "A 11\uc2dc start ends at 12\uc2dc, which does not touch the lunch hour; some will avoid it to be safe, which is also acceptable."
   ],
   "cautions": {
-   "language": "24-hour time is used in the memo; learners should map 13시 to 오후 1시.",
+   "language": "24-hour time is used in the memo; learners should map 13\uc2dc to \uc624\ud6c4 1\uc2dc.",
    "culture": "Lunch break and director trips are typical office constraints; no claim about any particular company is made.",
    "accessibility": "The memo is a bullet list of text, easy for a screen reader; weekdays are also given as numbers."
   },
@@ -2003,6 +2086,6 @@
     "Whether the message is natural and the slot sensible"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  }
 ]

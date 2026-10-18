@@ -17,34 +17,34 @@
    "Finding where a mistake starts and what it passes on",
    "Producing several different orders that meet the same limits"
   ],
-  "differsFromPlain": "Plain practice asks you to read prices aloud or repeat '주세요' sentences. Here you audit what the clerk says against the menu, notice that one wrong amount makes the next amount wrong too, and design orders yourself.",
+  "differsFromPlain": "Plain practice asks you to read prices aloud or repeat '\uc8fc\uc138\uc694' sentences. Here you audit what the clerk says against the menu, notice that one wrong amount makes the next amount wrong too, and design orders yourself.",
   "prerequisites": [
    "Can read Hangul",
-   "Knows the counting words 한, 두, 세, 다섯 ... with 개 and 잔",
-   "Can read prices written like 3,000원"
+   "Knows the counting words \ud55c, \ub450, \uc138, \ub2e4\uc12f ... with \uac1c and \uc794",
+   "Can read prices written like 3,000\uc6d0"
   ],
   "minutes": 10,
   "curriculum": null,
-  "material": "A small cafe has this menu (원 = won, the Korean money).\n커피 한 잔: 3,000원\n빵 한 개: 2,000원\n\n손님 = customer, 직원 = clerk. Read the dialogue.\n\n손님: 커피 두 잔 주세요.\n직원: 네. 커피 두 잔, 6,000원이에요.\n손님: 그리고 빵 세 개 주세요.\n직원: 네. 빵 세 개, 5,000원이에요.\n직원: 모두 11,000원이에요.",
+  "material": "A small cafe has this menu (\uc6d0 = won, the Korean money).\n\ucee4\ud53c \ud55c \uc794: 3,000\uc6d0\n\ube75 \ud55c \uac1c: 2,000\uc6d0\n\n\uc190\ub2d8 = customer, \uc9c1\uc6d0 = clerk. Read the dialogue.\n\n\uc190\ub2d8: \ucee4\ud53c \ub450 \uc794 \uc8fc\uc138\uc694.\n\uc9c1\uc6d0: \ub124. \ucee4\ud53c \ub450 \uc794, 6,000\uc6d0\uc774\uc5d0\uc694.\n\uc190\ub2d8: \uadf8\ub9ac\uace0 \ube75 \uc138 \uac1c \uc8fc\uc138\uc694.\n\uc9c1\uc6d0: \ub124. \ube75 \uc138 \uac1c, 5,000\uc6d0\uc774\uc5d0\uc694.\n\uc9c1\uc6d0: \ubaa8\ub450 11,000\uc6d0\uc774\uc5d0\uc694.",
   "steps": [
    {
     "id": "s1",
     "kind": "pickLine",
     "prompt": "Which line is the FIRST one whose amount does not match the menu?",
     "lines": [
-     "손님: 커피 두 잔 주세요.",
-     "직원: 네. 커피 두 잔, 6,000원이에요.",
-     "손님: 그리고 빵 세 개 주세요.",
-     "직원: 네. 빵 세 개, 5,000원이에요.",
-     "직원: 모두 11,000원이에요."
+     "\uc190\ub2d8: \ucee4\ud53c \ub450 \uc794 \uc8fc\uc138\uc694.",
+     "\uc9c1\uc6d0: \ub124. \ucee4\ud53c \ub450 \uc794, 6,000\uc6d0\uc774\uc5d0\uc694.",
+     "\uc190\ub2d8: \uadf8\ub9ac\uace0 \ube75 \uc138 \uac1c \uc8fc\uc138\uc694.",
+     "\uc9c1\uc6d0: \ub124. \ube75 \uc138 \uac1c, 5,000\uc6d0\uc774\uc5d0\uc694.",
+     "\uc9c1\uc6d0: \ubaa8\ub450 11,000\uc6d0\uc774\uc5d0\uc694."
     ],
     "wrong": [
      3
     ],
-    "explain": "Line 4 is the first mistake: 빵 is 2,000원 each, so three breads are 6,000원, not 5,000원. Line 2 is fine (two coffees at 3,000원). Line 5 adds line 2 and line 4 correctly, but it starts from the wrong bread amount, so it is wrong too; it is not a separate mistake.",
+    "explain": "Line 4 is the first mistake: \ube75 is 2,000\uc6d0 each, so three breads are 6,000\uc6d0, not 5,000\uc6d0. Line 2 is fine (two coffees at 3,000\uc6d0). Line 5 adds line 2 and line 4 correctly, but it starts from the wrong bread amount, so it is wrong too; it is not a separate mistake.",
     "hints": [
      "Take one item at a time: find its price on the menu, then compare it with the amount the clerk says.",
-     "Check the 커피 line first to see what a correct line looks like, then check the 빵 line in the same way."
+     "Check the \ucee4\ud53c line first to see what a correct line looks like, then check the \ube75 line in the same way."
     ]
    },
    {
@@ -54,41 +54,41 @@
     "options": [
      {
       "id": "a",
-      "text": "10,000원",
-      "reveals": "You may have read 세 개 as 두 개. Compare the number the customer said with the number you used."
+      "text": "10,000\uc6d0",
+      "reveals": "You may have read \uc138 \uac1c as \ub450 \uac1c. Compare the number the customer said with the number you used."
      },
      {
       "id": "b",
-      "text": "11,000원",
+      "text": "11,000\uc6d0",
       "reveals": "This repeats the clerk's own amounts. The sum is fine, but one of the amounts it is built from is not."
      },
      {
       "id": "c",
-      "text": "12,000원",
+      "text": "12,000\uc6d0",
       "reveals": "This comes from checking each item against the menu first and only then putting the amounts together."
      }
     ],
     "correct": [
      "c"
     ],
-    "explain": "Coffee 2 x 3,000 = 6,000 and bread 3 x 2,000 = 6,000, so the total is 12,000원. The clerk's 11,000원 is a correct sum of a wrong bread amount.",
+    "explain": "Coffee 2 x 3,000 = 6,000 and bread 3 x 2,000 = 6,000, so the total is 12,000\uc6d0. The clerk's 11,000\uc6d0 is a correct sum of a wrong bread amount.",
     "hints": [
      "Work out the right amount for each item separately.",
-     "Then compare the whole with the 11,000원 on the bill."
+     "Then compare the whole with the 11,000\uc6d0 on the bill."
     ]
    },
    {
     "id": "s3",
     "kind": "build",
-    "prompt": "You have exactly 13,000원 and want to spend all of it on 커피 (c cups) and 빵 (b pieces). Order at least one of each and at most 6 items in all. Find two different orders.",
+    "prompt": "You have exactly 13,000\uc6d0 and want to spend all of it on \ucee4\ud53c (c cups) and \ube75 (b pieces). Order at least one of each and at most 6 items in all. Find two different orders.",
     "vars": [
      {
       "name": "c",
-      "label": "Cups of 커피"
+      "label": "Cups of \ucee4\ud53c"
      },
      {
       "name": "b",
-      "label": "Pieces of 빵"
+      "label": "Pieces of \ube75"
      }
     ],
     "constraints": [
@@ -107,8 +107,8 @@
      {
       "id": "c3",
       "expr": "3000*c+2000*b==13000",
-      "ok": "The bill is exactly 13,000원.",
-      "fail": "The bill is not 13,000원 (커피 3,000원 each, 빵 2,000원 each)."
+      "ok": "The bill is exactly 13,000\uc6d0.",
+      "fail": "The bill is not 13,000\uc6d0 (\ucee4\ud53c 3,000\uc6d0 each, \ube75 2,000\uc6d0 each)."
      }
     ],
     "need": 2,
@@ -132,7 +132,7 @@
       "b": 4
      }
     ],
-    "explain": "Two orders work: 커피 1 + 빵 5 (3,000 + 10,000) and 커피 3 + 빵 2 (9,000 + 4,000). With 커피 2 the bill is 12,000원, and 커피 5 already costs more than 13,000원 together with one bread.",
+    "explain": "Two orders work: \ucee4\ud53c 1 + \ube75 5 (3,000 + 10,000) and \ucee4\ud53c 3 + \ube75 2 (9,000 + 4,000). With \ucee4\ud53c 2 the bill is 12,000\uc6d0, and \ucee4\ud53c 5 already costs more than 13,000\uc6d0 together with one bread.",
     "hints": [
      "Choose how many coffees first, then see how much money is left for bread.",
      "If the money left is not a multiple of 2,000, change the number of coffees."
@@ -141,132 +141,132 @@
    {
     "id": "s4",
     "kind": "write",
-    "prompt": "Say one of your orders to the clerk, in Korean. Use both items, their counting words, and 주세요.",
-    "placeholder": "예: ...",
+    "prompt": "Say one of your orders to the clerk, in Korean. Use both items, their counting words, and \uc8fc\uc138\uc694.",
+    "placeholder": "\uc608: ...",
     "minChars": 8,
     "checks": [
      {
       "id": "w1",
-      "label": "ends with 주세요",
+      "label": "ends with \uc8fc\uc138\uc694",
       "mode": "any",
       "patterns": [
-       "주세요|줄래요"
+       "\uc8fc\uc138\uc694|\uc904\ub798\uc694"
       ]
      },
      {
       "id": "w2",
-      "label": "names 커피 with 잔 (커피 한 잔 ...)",
+      "label": "names \ucee4\ud53c with \uc794 (\ucee4\ud53c \ud55c \uc794 ...)",
       "mode": "any",
       "patterns": [
-       "커피\\s*(한|두|세|네|다섯|여섯|[1-9])\\s*잔"
+       "\ucee4\ud53c\\s*(\ud55c|\ub450|\uc138|\ub124|\ub2e4\uc12f|\uc5ec\uc12f|[1-9])\\s*\uc794"
       ]
      },
      {
       "id": "w3",
-      "label": "names 빵 with 개 (빵 두 개 ...)",
+      "label": "names \ube75 with \uac1c (\ube75 \ub450 \uac1c ...)",
       "mode": "any",
       "patterns": [
-       "빵\\s*(한|두|세|네|다섯|여섯|[1-9])\\s*개"
+       "\ube75\\s*(\ud55c|\ub450|\uc138|\ub124|\ub2e4\uc12f|\uc5ec\uc12f|[1-9])\\s*\uac1c"
       ]
      },
      {
       "id": "w4",
-      "label": "the amounts are one of the two orders that cost exactly 13,000원",
+      "label": "the amounts are one of the two orders that cost exactly 13,000\uc6d0",
       "mode": "any",
       "patterns": [
-       "커피\\s*(한|1)\\s*잔[\\s\\S]*빵\\s*(다섯|5)\\s*개",
-       "빵\\s*(다섯|5)\\s*개[\\s\\S]*커피\\s*(한|1)\\s*잔",
-       "커피\\s*(세|3)\\s*잔[\\s\\S]*빵\\s*(두|2)\\s*개",
-       "빵\\s*(두|2)\\s*개[\\s\\S]*커피\\s*(세|3)\\s*잔"
+       "\ucee4\ud53c\\s*(\ud55c|1)\\s*\uc794[\\s\\S]*\ube75\\s*(\ub2e4\uc12f|5)\\s*\uac1c",
+       "\ube75\\s*(\ub2e4\uc12f|5)\\s*\uac1c[\\s\\S]*\ucee4\ud53c\\s*(\ud55c|1)\\s*\uc794",
+       "\ucee4\ud53c\\s*(\uc138|3)\\s*\uc794[\\s\\S]*\ube75\\s*(\ub450|2)\\s*\uac1c",
+       "\ube75\\s*(\ub450|2)\\s*\uac1c[\\s\\S]*\ucee4\ud53c\\s*(\uc138|3)\\s*\uc794"
       ]
      }
     ],
     "selfAssess": [
      "Does my order use the numbers of one of my two orders from the previous step?",
-     "Does 커피 go with 잔 and 빵 with 개?",
+     "Does \ucee4\ud53c go with \uc794 and \ube75 with \uac1c?",
      "Would the clerk know exactly what to bring?"
     ],
     "modelAnswers": [
      {
-      "text": "커피 한 잔, 빵 다섯 개 주세요.",
-      "note": "Plain list with 주세요."
+      "text": "\ucee4\ud53c \ud55c \uc794, \ube75 \ub2e4\uc12f \uac1c \uc8fc\uc138\uc694.",
+      "note": "Plain list with \uc8fc\uc138\uc694."
      },
      {
-      "text": "커피 세 잔하고 빵 두 개 주세요.",
-      "note": "Uses 하고 to join the two items."
+      "text": "\ucee4\ud53c \uc138 \uc794\ud558\uace0 \ube75 \ub450 \uac1c \uc8fc\uc138\uc694.",
+      "note": "Uses \ud558\uace0 to join the two items."
      }
     ],
     "badAnswers": [
      {
-      "text": "커피 주세요.",
-      "why": "No amount and no 빵."
+      "text": "\ucee4\ud53c \uc8fc\uc138\uc694.",
+      "why": "No amount and no \ube75."
      },
      {
-      "text": "커피 세 잔, 빵 두 개.",
-      "why": "Names the items and amounts but is missing 주세요."
+      "text": "\ucee4\ud53c \uc138 \uc794, \ube75 \ub450 \uac1c.",
+      "why": "Names the items and amounts but is missing \uc8fc\uc138\uc694."
      },
      {
-      "text": "커피 두 개 빵 세 잔 주세요.",
-      "why": "The counting words are swapped (잔 is for drinks, 개 for the bread)."
+      "text": "\ucee4\ud53c \ub450 \uac1c \ube75 \uc138 \uc794 \uc8fc\uc138\uc694.",
+      "why": "The counting words are swapped (\uc794 is for drinks, \uac1c for the bread)."
      },
      {
-      "text": "커피 두 잔, 빵 세 개 주세요.",
-      "why": "Uses the right counting words, but this order costs 12,000원, not 13,000원."
+      "text": "\ucee4\ud53c \ub450 \uc794, \ube75 \uc138 \uac1c \uc8fc\uc138\uc694.",
+      "why": "Uses the right counting words, but this order costs 12,000\uc6d0, not 13,000\uc6d0."
      }
     ],
-    "humanReview": "Whether the amounts in the sentence match an order that really costs 13,000원, and whether the counting words are natural.",
+    "humanReview": "Whether the amounts in the sentence match an order that really costs 13,000\uc6d0, and whether the counting words are natural.",
     "hints": [
-     "Say the coffee part first, then the bread part, then finish with 주세요.",
-     "Count coffee with 잔 and bread with 개."
+     "Say the coffee part first, then the bread part, then finish with \uc8fc\uc138\uc694.",
+     "Count coffee with \uc794 and bread with \uac1c."
     ]
    }
   ],
   "rubric": [
    {
     "criterion": "Locating the first wrong amount",
-    "full": "Names line 4 and says 3 breads at 2,000원 are 6,000원, not 5,000원",
+    "full": "Names line 4 and says 3 breads at 2,000\uc6d0 are 6,000\uc6d0, not 5,000\uc6d0",
     "partial": "Names the final total only, without tracing it back to line 4",
     "none": "Names no line or a line whose amount is right"
    },
    {
     "criterion": "Own orders",
-    "full": "Both orders cost exactly 13,000원 and obey the item limit",
+    "full": "Both orders cost exactly 13,000\uc6d0 and obey the item limit",
     "partial": "One order fits",
     "none": "Neither order fits"
    }
   ],
   "alternatives": [
-   "Naming line 5 is understandable because it also differs from the right total (12,000원). The stronger answer sees that it repeats the wrong bread amount from line 4.",
-   "A student may guess the clerk misheard 세 as 두. That could explain the mistake, but the amount is still wrong for what the customer said."
+   "Naming line 5 is understandable because it also differs from the right total (12,000\uc6d0). The stronger answer sees that it repeats the wrong bread amount from line 4.",
+   "A student may guess the clerk misheard \uc138 as \ub450. That could explain the mistake, but the amount is still wrong for what the customer said."
   ],
   "hardCases": [
-   "If the bread price were different today, 5,000원 could be right. The task fixes the menu as printed.",
+   "If the bread price were different today, 5,000\uc6d0 could be right. The task fixes the menu as printed.",
    "The line alone cannot show whether the clerk got the price or the count wrong, only that the amount does not fit."
   ],
   "cautions": {
-   "language": "Counting words (한 잔, 세 개) are native Korean numbers; the prices are written in digits and need no Sino-Korean reading.",
+   "language": "Counting words (\ud55c \uc794, \uc138 \uac1c) are native Korean numbers; the prices are written in digits and need no Sino-Korean reading.",
    "culture": "Ordering at the counter and saying the total aloud is common in cafes. The menu and prices are invented.",
-   "accessibility": "No images. Prices are digits; they are read aloud as 삼천 원 (3,000), 이천 원 (2,000), 육천 원 (6,000), 만이천 원 (12,000)."
+   "accessibility": "No images. Prices are digits; they are read aloud as \uc0bc\ucc9c \uc6d0 (3,000), \uc774\ucc9c \uc6d0 (2,000), \uc721\ucc9c \uc6d0 (6,000), \ub9cc\uc774\ucc9c \uc6d0 (12,000)."
   },
   "autoVsHuman": {
    "auto": [
     "Which line is picked (s1)",
     "The total chosen (s2)",
-    "The two orders and the 13,000원 / 6-item limits (s3)",
+    "The two orders and the 13,000\uc6d0 / 6-item limits (s3)",
     "Surface features of the spoken order (s4)"
    ],
    "human": [
     "Whether the spoken order is natural and matches one of the student's own orders"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "z-k-01-02",
   "subject": "korean",
   "grade": "K1",
   "cell": "korean|L1|communication",
-  "topic": "Introductions: who is who (이에요 / 아니에요)",
+  "topic": "Introductions: who is who (\uc774\uc5d0\uc694 / \uc544\ub2c8\uc5d0\uc694)",
   "level": 1,
   "levelLabel": "Beginner",
   "title": "Who is the teacher in this class?",
@@ -279,15 +279,15 @@
    "Revising a conclusion when new information arrives",
    "Handling clues that cannot all be true"
   ],
-  "differsFromPlain": "Plain practice asks you to fill in 이에요 or 아니에요. Here you use the sentences as clues, change your answer when a clue arrives, and decide what to do when a clue contradicts the others.",
+  "differsFromPlain": "Plain practice asks you to fill in \uc774\uc5d0\uc694 or \uc544\ub2c8\uc5d0\uc694. Here you use the sentences as clues, change your answer when a clue arrives, and decide what to do when a clue contradicts the others.",
   "prerequisites": [
    "Can read Hangul",
-   "Knows 저는 ~이에요 and ~이/가 아니에요",
-   "Knows the words 학생, 선생님, 한국 사람, 미국 사람"
+   "Knows \uc800\ub294 ~\uc774\uc5d0\uc694 and ~\uc774/\uac00 \uc544\ub2c8\uc5d0\uc694",
+   "Knows the words \ud559\uc0dd, \uc120\uc0dd\ub2d8, \ud55c\uad6d \uc0ac\ub78c, \ubbf8\uad6d \uc0ac\ub78c"
   ],
   "minutes": 6,
   "curriculum": null,
-  "material": "Three people are in a Korean class: 민호, 에밀리 and 켄. One of them is the teacher; the other two are students. Each person has only one nationality (한국 사람 = Korean, 미국 사람 = American). Everybody tells the truth in the first two clues. The clues arrive one by one.",
+  "material": "Three people are in a Korean class: \ubbfc\ud638, \uc5d0\ubc00\ub9ac and \ucf04. One of them is the teacher; the other two are students. Each person has only one nationality (\ud55c\uad6d \uc0ac\ub78c = Korean, \ubbf8\uad6d \uc0ac\ub78c = American). Everybody tells the truth in the first two clues. The clues arrive one by one.",
   "steps": [
    {
     "id": "s1",
@@ -295,62 +295,62 @@
     "prompt": "After each clue, choose the most reasonable thought.",
     "stages": [
      {
-      "info": "에밀리: 저는 선생님이 아니에요.",
+      "info": "\uc5d0\ubc00\ub9ac: \uc800\ub294 \uc120\uc0dd\ub2d8\uc774 \uc544\ub2c8\uc5d0\uc694.",
       "ask": "Who could be the teacher?",
       "options": [
        {
         "id": "a",
-        "text": "It is either 민호 or 켄.",
+        "text": "It is either \ubbfc\ud638 or \ucf04.",
         "reveals": "Sees that one 'is not' removes one person and keeps the others open."
        },
        {
         "id": "b",
-        "text": "It is 켄; 민호 did not speak.",
-        "reveals": "Treats 'not 에밀리' as 'must be 켄' although nothing is said about 민호."
+        "text": "It is \ucf04; \ubbfc\ud638 did not speak.",
+        "reveals": "Treats 'not \uc5d0\ubc00\ub9ac' as 'must be \ucf04' although nothing is said about \ubbfc\ud638."
        },
        {
         "id": "c",
-        "text": "It is 에밀리; she spoke first.",
-        "reveals": "Misses 아니에요, which means 'is not'."
+        "text": "It is \uc5d0\ubc00\ub9ac; she spoke first.",
+        "reveals": "Misses \uc544\ub2c8\uc5d0\uc694, which means 'is not'."
        }
       ],
       "reasonable": [
        "a"
       ],
-      "after": "아니에요 removes 에밀리 only. Both 민호 and 켄 are still possible."
+      "after": "\uc544\ub2c8\uc5d0\uc694 removes \uc5d0\ubc00\ub9ac only. Both \ubbfc\ud638 and \ucf04 are still possible."
      },
      {
-      "info": "켄: 저는 미국 사람이에요. 선생님은 한국 사람이에요.",
+      "info": "\ucf04: \uc800\ub294 \ubbf8\uad6d \uc0ac\ub78c\uc774\uc5d0\uc694. \uc120\uc0dd\ub2d8\uc740 \ud55c\uad6d \uc0ac\ub78c\uc774\uc5d0\uc694.",
       "ask": "Now who is the teacher?",
       "options": [
        {
         "id": "a",
-        "text": "켄",
-        "reveals": "Overlooks that 켄 says the teacher is Korean while he is American."
+        "text": "\ucf04",
+        "reveals": "Overlooks that \ucf04 says the teacher is Korean while he is American."
        },
        {
         "id": "b",
-        "text": "에밀리",
+        "text": "\uc5d0\ubc00\ub9ac",
         "reveals": "Goes against the first clue."
        },
        {
         "id": "c",
-        "text": "민호",
-        "reveals": "Puts clue 1 (not 에밀리) together with clue 2 (the teacher is Korean, 켄 is American)."
+        "text": "\ubbfc\ud638",
+        "reveals": "Puts clue 1 (not \uc5d0\ubc00\ub9ac) together with clue 2 (the teacher is Korean, \ucf04 is American)."
        }
       ],
       "reasonable": [
        "c"
       ],
-      "after": "The teacher is Korean, 켄 is American and 에밀리 said she is not the teacher, so 민호 is left."
+      "after": "The teacher is Korean, \ucf04 is American and \uc5d0\ubc00\ub9ac said she is not the teacher, so \ubbfc\ud638 is left."
      },
      {
-      "info": "민호: 저는 한국 사람이에요. 저는 학생이에요.",
+      "info": "\ubbfc\ud638: \uc800\ub294 \ud55c\uad6d \uc0ac\ub78c\uc774\uc5d0\uc694. \uc800\ub294 \ud559\uc0dd\uc774\uc5d0\uc694.",
       "ask": "What is the most reasonable thing to do now?",
       "options": [
        {
         "id": "a",
-        "text": "Keep 민호 as my best guess, but ask him again.",
+        "text": "Keep \ubbfc\ud638 as my best guess, but ask him again.",
         "reveals": "Keeps the best-supported answer but lowers confidence and checks the source."
        },
        {
@@ -360,7 +360,7 @@
        },
        {
         "id": "c",
-        "text": "켄 is the teacher after all. His nationality does not matter.",
+        "text": "\ucf04 is the teacher after all. His nationality does not matter.",
         "reveals": "Throws away a clue because it is in the way."
        }
       ],
@@ -368,7 +368,7 @@
        "a",
        "b"
       ],
-      "after": "If everybody is truthful, nobody can be the teacher: 에밀리 is not, 켄 is not Korean, and 민호 says he is a student. So a sentence is wrong or was misunderstood. Asking again, or keeping 민호 with less confidence, are both fair; ignoring a clue is not."
+      "after": "If everybody is truthful, nobody can be the teacher: \uc5d0\ubc00\ub9ac is not, \ucf04 is not Korean, and \ubbfc\ud638 says he is a student. So a sentence is wrong or was misunderstood. Asking again, or keeping \ubbfc\ud638 with less confidence, are both fair; ignoring a clue is not."
      }
     ],
     "reflect": "The first clue removed one person, the second chose one, and the third contradicted the choice. A clash between clues is also information: it tells you to check the sentences instead of picking the answer you like.",
@@ -380,16 +380,16 @@
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "Write one Korean sentence that 민호 could say instead of '저는 학생이에요', so that all the clues agree and he is the teacher.",
-    "placeholder": "예: ...",
+    "prompt": "Write one Korean sentence that \ubbfc\ud638 could say instead of '\uc800\ub294 \ud559\uc0dd\uc774\uc5d0\uc694', so that all the clues agree and he is the teacher.",
+    "placeholder": "\uc608: ...",
     "minChars": 5,
     "checks": [
      {
       "id": "w1",
-      "label": "says 선생님이에요 / 선생님입니다",
+      "label": "says \uc120\uc0dd\ub2d8\uc774\uc5d0\uc694 / \uc120\uc0dd\ub2d8\uc785\ub2c8\ub2e4",
       "mode": "any",
       "patterns": [
-       "선생님\\s*(이에요|입니다|이야|이라고)"
+       "\uc120\uc0dd\ub2d8\\s*(\uc774\uc5d0\uc694|\uc785\ub2c8\ub2e4|\uc774\uc57c|\uc774\ub77c\uace0)"
       ]
      },
      {
@@ -397,39 +397,39 @@
       "label": "does not deny being the teacher or say he is a student",
       "mode": "none",
       "patterns": [
-       "선생님\\s*이?\\s*아[니닙]",
-       "학생\\s*(이에요|입니다|이야)"
+       "\uc120\uc0dd\ub2d8\\s*\uc774?\\s*\uc544[\ub2c8\ub2d9]",
+       "\ud559\uc0dd\\s*(\uc774\uc5d0\uc694|\uc785\ub2c8\ub2e4|\uc774\uc57c)"
       ]
      }
     ],
     "selfAssess": [
-     "Does my sentence make 민호 the teacher?",
-     "Does it still agree with 민호 being Korean and with the other clues?"
+     "Does my sentence make \ubbfc\ud638 the teacher?",
+     "Does it still agree with \ubbfc\ud638 being Korean and with the other clues?"
     ],
     "modelAnswers": [
      {
-      "text": "저는 선생님이에요.",
+      "text": "\uc800\ub294 \uc120\uc0dd\ub2d8\uc774\uc5d0\uc694.",
       "note": "The shortest repair."
      },
      {
-      "text": "저는 한국 사람이에요. 선생님이에요.",
+      "text": "\uc800\ub294 \ud55c\uad6d \uc0ac\ub78c\uc774\uc5d0\uc694. \uc120\uc0dd\ub2d8\uc774\uc5d0\uc694.",
       "note": "Repeats his nationality, then the new fact."
      }
     ],
     "badAnswers": [
      {
-      "text": "저는 학생이에요.",
+      "text": "\uc800\ub294 \ud559\uc0dd\uc774\uc5d0\uc694.",
       "why": "The same sentence that caused the clash."
      },
      {
-      "text": "저는 선생님이 아니에요.",
+      "text": "\uc800\ub294 \uc120\uc0dd\ub2d8\uc774 \uc544\ub2c8\uc5d0\uc694.",
       "why": "Says the opposite of what is needed."
      }
     ],
-    "humanReview": "Whether the sentence is natural; short answers like 저는 선생님이에요 are fully acceptable.",
+    "humanReview": "Whether the sentence is natural; short answers like \uc800\ub294 \uc120\uc0dd\ub2d8\uc774\uc5d0\uc694 are fully acceptable.",
     "hints": [
-     "Which word in 민호's last sentence clashes with the other clues?",
-     "Replace only that word and keep the ending 이에요."
+     "Which word in \ubbfc\ud638's last sentence clashes with the other clues?",
+     "Replace only that word and keep the ending \uc774\uc5d0\uc694."
     ]
    }
   ],
@@ -442,66 +442,67 @@
    },
    {
     "criterion": "Handling the clash",
-    "full": "Says the clues cannot all be true and what to check, or keeps 민호 with lower confidence",
+    "full": "Says the clues cannot all be true and what to check, or keeps \ubbfc\ud638 with lower confidence",
     "partial": "Notices something is odd but does not say what to do",
-    "none": "Ignores 민호's last sentence"
+    "none": "Ignores \ubbfc\ud638's last sentence"
    }
   ],
   "alternatives": [
-   "In stage 3, both 'ask 민호 again' and 'recheck every sentence' are good moves. In stage 2 a student may note 에밀리's nationality is unknown; it does not matter because she is already ruled out.",
-   "The repair sentence could also change 켄's or 에밀리's line; the task asks about 민호 only."
+   "In stage 3, both 'ask \ubbfc\ud638 again' and 'recheck every sentence' are good moves. In stage 2 a student may note \uc5d0\ubc00\ub9ac's nationality is unknown; it does not matter because she is already ruled out.",
+   "The repair sentence could also change \ucf04's or \uc5d0\ubc00\ub9ac's line; the task asks about \ubbfc\ud638 only."
   ],
   "hardCases": [
    "A person could have two nationalities in real life. The task says each person has only one.",
    "If a speaker is allowed to lie, no answer can be proved. The task states that the first two clues are truthful."
   ],
   "cautions": {
-   "language": "이에요 and 아니에요 are spelled and pronounced with a final 에요; the negative has the subject marker 이/가 (선생님이 아니에요).",
+   "language": "\uc774\uc5d0\uc694 and \uc544\ub2c8\uc5d0\uc694 are spelled and pronounced with a final \uc5d0\uc694; the negative has the subject marker \uc774/\uac00 (\uc120\uc0dd\ub2d8\uc774 \uc544\ub2c8\uc5d0\uc694).",
    "culture": "Names are common Korean/English names; 'American' and 'Korean' are only used as simple labels.",
    "accessibility": "No images. All clues are plain text sentences with the speaker's name first."
   },
   "autoVsHuman": {
    "auto": [
     "Choices in the three stages",
-    "Surface check that the sentence says 선생님이에요 and avoids 아니/학생"
+    "Surface check that the sentence says \uc120\uc0dd\ub2d8\uc774\uc5d0\uc694 and avoids \uc544\ub2c8/\ud559\uc0dd"
    ],
    "human": [
     "Whether the reasoning about the clash is sensible"
    ]
-  }
+  },
+  "status": "reviewed-ai"
  },
  {
   "id": "z-k-01-03",
   "subject": "korean",
   "grade": "K3",
   "cell": "korean|L2|communication",
-  "topic": "Giving reasons with -아서/어서 and clock times",
+  "topic": "Giving reasons with -\uc544\uc11c/\uc5b4\uc11c and clock times",
   "level": 1,
   "levelLabel": "Beginner",
   "title": "Is one reason enough?",
   "uiLang": "en",
   "format": "judge-evidence-explain",
   "generative": true,
-  "goal": "Test a stated reason (-아서/어서) against clock times, revise your view when a second fact appears, and write the full set of reasons in Korean.",
+  "goal": "Test a stated reason (-\uc544\uc11c/\uc5b4\uc11c) against clock times, revise your view when a second fact appears, and write the full set of reasons in Korean.",
   "thinking": [
    "Testing a reason against times",
    "Asking what would have happened without the reason",
    "Revising a judgement when a new fact appears"
   ],
-  "differsFromPlain": "Plain practice asks you to join two sentences with -아서/어서. Here you decide whether a reason really explains what happened, and what changes when another reason appears.",
+  "differsFromPlain": "Plain practice asks you to join two sentences with -\uc544\uc11c/\uc5b4\uc11c. Here you decide whether a reason really explains what happened, and what changes when another reason appears.",
   "prerequisites": [
-   "Knows clock times (6시 10분) and past tense -았/었어요",
-   "Knows 기다렸어요, 걸려요, 늦었어요",
-   "Has seen -아서/어서 for reasons"
+   "Knows clock times (6\uc2dc 10\ubd84) and past tense -\uc558/\uc5c8\uc5b4\uc694",
+   "Knows \uae30\ub2e4\ub838\uc5b4\uc694, \uac78\ub824\uc694, \ub2a6\uc5c8\uc5b4\uc694",
+   "Has seen -\uc544\uc11c/\uc5b4\uc11c for reasons"
   ],
   "minutes": 9,
   "curriculum": null,
-  "material": "서연 went to see a film. 영화는 7시에 시작했어요 (the film began at 7:00). 서연이 친구에게 말했어요: “지하철이 안 와서 늦었어요.”\n\n서연의 이야기:\n- 6시 10분에 집에서 나갔어요. 역은 집 바로 앞이에요.\n- 역에서 지하철을 20분 기다렸어요.\n- 지하철은 보통 40분 걸려요.\n- 극장은 지하철역 바로 앞이에요.",
+  "material": "\uc11c\uc5f0 went to see a film. \uc601\ud654\ub294 7\uc2dc\uc5d0 \uc2dc\uc791\ud588\uc5b4\uc694 (the film began at 7:00). \uc11c\uc5f0\uc774 \uce5c\uad6c\uc5d0\uac8c \ub9d0\ud588\uc5b4\uc694: \u201c\uc9c0\ud558\ucca0\uc774 \uc548 \uc640\uc11c \ub2a6\uc5c8\uc5b4\uc694.\u201d\n\n\uc11c\uc5f0\uc758 \uc774\uc57c\uae30:\n- 6\uc2dc 10\ubd84\uc5d0 \uc9d1\uc5d0\uc11c \ub098\uac14\uc5b4\uc694. \uc5ed\uc740 \uc9d1 \ubc14\ub85c \uc55e\uc774\uc5d0\uc694.\n- \uc5ed\uc5d0\uc11c \uc9c0\ud558\ucca0\uc744 20\ubd84 \uae30\ub2e4\ub838\uc5b4\uc694.\n- \uc9c0\ud558\ucca0\uc740 \ubcf4\ud1b5 40\ubd84 \uac78\ub824\uc694.\n- \uadf9\uc7a5\uc740 \uc9c0\ud558\ucca0\uc5ed \ubc14\ub85c \uc55e\uc774\uc5d0\uc694.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
-    "prompt": "Using only these facts, how good is the reason “지하철이 안 와서 늦었어요”?",
+    "prompt": "Using only these facts, how good is the reason \u201c\uc9c0\ud558\ucca0\uc774 \uc548 \uc640\uc11c \ub2a6\uc5c8\uc5b4\uc694\u201d?",
     "options": [
      {
       "id": "a",
@@ -516,7 +517,7 @@
      {
       "id": "c",
       "text": "Cannot say: the facts do not tell how long the ride takes.",
-      "reveals": "Overlooks that '보통 40분 걸려요' gives the usual ride time."
+      "reveals": "Overlooks that '\ubcf4\ud1b5 40\ubd84 \uac78\ub824\uc694' gives the usual ride time."
      }
     ],
     "correct": [
@@ -531,7 +532,7 @@
    {
     "id": "s2",
     "kind": "choose",
-    "prompt": "New information: 그날 지하철은 사고 때문에 천천히 가서 55분 걸렸어요. 서연은 7시 25분에 도착했어요. Now how good is the reason “지하철이 안 와서 늦었어요”?",
+    "prompt": "New information: \uadf8\ub0a0 \uc9c0\ud558\ucca0\uc740 \uc0ac\uace0 \ub54c\ubb38\uc5d0 \ucc9c\ucc9c\ud788 \uac00\uc11c 55\ubd84 \uac78\ub838\uc5b4\uc694. \uc11c\uc5f0\uc740 7\uc2dc 25\ubd84\uc5d0 \ub3c4\ucc29\ud588\uc5b4\uc694. Now how good is the reason \u201c\uc9c0\ud558\ucca0\uc774 \uc548 \uc640\uc11c \ub2a6\uc5c8\uc5b4\uc694\u201d?",
     "options": [
      {
       "id": "a",
@@ -561,55 +562,55 @@
    {
     "id": "s3",
     "kind": "write",
-    "prompt": "Write in Korean what 서연 should have told her friend so that both reasons are included. Use -아서/어서 (or -고, -니까).",
-    "placeholder": "예: ...",
+    "prompt": "Write in Korean what \uc11c\uc5f0 should have told her friend so that both reasons are included. Use -\uc544\uc11c/\uc5b4\uc11c (or -\uace0, -\ub2c8\uae4c).",
+    "placeholder": "\uc608: ...",
     "minChars": 15,
     "checks": [
      {
       "id": "w1",
-      "label": "gives a reason with -아서/어서/-고/-니까",
+      "label": "gives a reason with -\uc544\uc11c/\uc5b4\uc11c/-\uace0/-\ub2c8\uae4c",
       "mode": "any",
       "patterns": [
-       "(?<!에)서(?![가-힣])",
-       "그래서",
-       "니까",
-       "때문에",
-       "[가-힣]고 "
+       "(?<!\uc5d0)\uc11c(?![\uac00-\ud7a3])",
+       "\uadf8\ub798\uc11c",
+       "\ub2c8\uae4c",
+       "\ub54c\ubb38\uc5d0",
+       "[\uac00-\ud7a3]\uace0 "
       ]
      },
      {
       "id": "w2",
-      "label": "says she was late (늦)",
+      "label": "says she was late (\ub2a6)",
       "mode": "any",
       "patterns": [
-       "늦"
+       "\ub2a6"
       ]
      },
      {
       "id": "w3",
-      "label": "mentions the waiting (기다 / 안 와)",
+      "label": "mentions the waiting (\uae30\ub2e4 / \uc548 \uc640)",
       "mode": "any",
       "patterns": [
-       "기다",
-       "안 와",
-       "안 왔",
-       "오지 않"
+       "\uae30\ub2e4",
+       "\uc548 \uc640",
+       "\uc548 \uc654",
+       "\uc624\uc9c0 \uc54a"
       ]
      },
      {
       "id": "w4",
-      "label": "mentions the slow ride (천천히 / 사고 / 느렸 / 오래 걸 / 시간이 걸)",
+      "label": "mentions the slow ride (\ucc9c\ucc9c\ud788 / \uc0ac\uace0 / \ub290\ub838 / \uc624\ub798 \uac78 / \uc2dc\uac04\uc774 \uac78)",
       "mode": "any",
       "patterns": [
-       "천천히",
-       "느려",
-       "느리",
-       "느렸",
-       "사고",
-       "오래 걸",
-       "많이 걸",
-       "시간이 걸",
-       "시간이 더 걸",
+       "\ucc9c\ucc9c\ud788",
+       "\ub290\ub824",
+       "\ub290\ub9ac",
+       "\ub290\ub838",
+       "\uc0ac\uace0",
+       "\uc624\ub798 \uac78",
+       "\ub9ce\uc774 \uac78",
+       "\uc2dc\uac04\uc774 \uac78",
+       "\uc2dc\uac04\uc774 \ub354 \uac78",
        "55"
       ]
      }
@@ -621,36 +622,36 @@
     ],
     "modelAnswers": [
      {
-      "text": "지하철을 20분 기다려서 늦었어요. 그리고 사고 때문에 지하철이 천천히 가서 오래 걸렸어요.",
+      "text": "\uc9c0\ud558\ucca0\uc744 20\ubd84 \uae30\ub2e4\ub824\uc11c \ub2a6\uc5c8\uc5b4\uc694. \uadf8\ub9ac\uace0 \uc0ac\uace0 \ub54c\ubb38\uc5d0 \uc9c0\ud558\ucca0\uc774 \ucc9c\ucc9c\ud788 \uac00\uc11c \uc624\ub798 \uac78\ub838\uc5b4\uc694.",
       "note": "Two reasons in two sentences."
      },
      {
-      "text": "지하철이 안 와서 20분 기다렸어요. 또 지하철이 천천히 가서 늦었어요.",
-      "note": "Uses -아서/어서 twice."
+      "text": "\uc9c0\ud558\ucca0\uc774 \uc548 \uc640\uc11c 20\ubd84 \uae30\ub2e4\ub838\uc5b4\uc694. \ub610 \uc9c0\ud558\ucca0\uc774 \ucc9c\ucc9c\ud788 \uac00\uc11c \ub2a6\uc5c8\uc5b4\uc694.",
+      "note": "Uses -\uc544\uc11c/\uc5b4\uc11c twice."
      },
      {
-      "text": "지하철을 20분 기다렸고 속도도 느렸어서 늦었어요.",
+      "text": "\uc9c0\ud558\ucca0\uc744 20\ubd84 \uae30\ub2e4\ub838\uace0 \uc18d\ub3c4\ub3c4 \ub290\ub838\uc5b4\uc11c \ub2a6\uc5c8\uc5b4\uc694.",
       "note": "Both reasons in one sentence."
      },
      {
-      "text": "지하철을 20분 기다려서 늦었어요. 그리고 시간이 많이 걸려서 늦었어요.",
+      "text": "\uc9c0\ud558\ucca0\uc744 20\ubd84 \uae30\ub2e4\ub824\uc11c \ub2a6\uc5c8\uc5b4\uc694. \uadf8\ub9ac\uace0 \uc2dc\uac04\uc774 \ub9ce\uc774 \uac78\ub824\uc11c \ub2a6\uc5c8\uc5b4\uc694.",
       "note": "The slow ride described as taking more time."
      }
     ],
     "badAnswers": [
      {
-      "text": "지하철이 안 와서 늦었어요.",
+      "text": "\uc9c0\ud558\ucca0\uc774 \uc548 \uc640\uc11c \ub2a6\uc5c8\uc5b4\uc694.",
       "why": "Gives only the first reason."
      },
      {
-      "text": "사고 때문에 천천히 가서 늦었어요.",
+      "text": "\uc0ac\uace0 \ub54c\ubb38\uc5d0 \ucc9c\ucc9c\ud788 \uac00\uc11c \ub2a6\uc5c8\uc5b4\uc694.",
       "why": "Gives only the second reason and leaves out the wait."
      }
     ],
     "humanReview": "Whether the two reasons are linked to the lateness in natural Korean, and whether the connector fits the meaning.",
     "hints": [
      "Write one sentence for the waiting and one for the slow ride.",
-     "End at least one of them with 늦었어요."
+     "End at least one of them with \ub2a6\uc5c8\uc5b4\uc694."
     ]
    }
   ],
@@ -677,9 +678,9 @@
    "If the cinema is not exactly at the station, the times change. The task fixes it as right in front of the station."
   ],
   "cautions": {
-   "language": "-아서/어서 gives a reason, but it cannot be followed by -ㅂ시다 or -(으)세요; the task only asks for statements.",
+   "language": "-\uc544\uc11c/\uc5b4\uc11c gives a reason, but it cannot be followed by -\u3142\uc2dc\ub2e4 or -(\uc73c)\uc138\uc694; the task only asks for statements.",
    "culture": "Arriving after a film has started is a minor problem in many places; no cultural knowledge is needed beyond that.",
-   "accessibility": "No images. Times are written in words and digits (6시 10분 = 6:10)."
+   "accessibility": "No images. Times are written in words and digits (6\uc2dc 10\ubd84 = 6:10)."
   },
   "autoVsHuman": {
    "auto": [
@@ -690,7 +691,7 @@
     "Whether the written reasons are natural and complete"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "z-k-01-04",
@@ -712,13 +713,13 @@
   ],
   "differsFromPlain": "Plain practice asks you to follow a clear route. Here the route is incomplete: you find what is missing and ask for exactly that.",
   "prerequisites": [
-   "Knows 타세요 / 내리세요 and 세 번째",
-   "Knows 쪽 (direction) and 앞 (in front of)",
+   "Knows \ud0c0\uc138\uc694 / \ub0b4\ub9ac\uc138\uc694 and \uc138 \ubc88\uc9f8",
+   "Knows \ucabd (direction) and \uc55e (in front of)",
    "Can read a list of stations in order"
   ],
   "minutes": 8,
   "curriculum": null,
-  "material": "민아 is going to 지우's school by subway. Line 2 stops in this order, from left to right:\n가역 - 나역 - 다역 - 라역 - 마역 - 바역 - 사역\n민아's home is next to 라역, so she gets on at 라역. 지우 sends two messages. They arrive one by one.",
+  "material": "\ubbfc\uc544 is going to \uc9c0\uc6b0's school by subway. Line 2 stops in this order, from left to right:\n\uac00\uc5ed - \ub098\uc5ed - \ub2e4\uc5ed - \ub77c\uc5ed - \ub9c8\uc5ed - \ubc14\uc5ed - \uc0ac\uc5ed\n\ubbfc\uc544's home is next to \ub77c\uc5ed, so she gets on at \ub77c\uc5ed. \uc9c0\uc6b0 sends two messages. They arrive one by one.",
   "steps": [
    {
     "id": "s1",
@@ -726,8 +727,8 @@
     "prompt": "After each message, choose the most reasonable thought.",
     "stages": [
      {
-      "info": "지우: 2호선을 타세요. 세 번째 역에서 내리세요.",
-      "ask": "Can 민아 be sure where to get off?",
+      "info": "\uc9c0\uc6b0: 2\ud638\uc120\uc744 \ud0c0\uc138\uc694. \uc138 \ubc88\uc9f8 \uc5ed\uc5d0\uc11c \ub0b4\ub9ac\uc138\uc694.",
+      "ask": "Can \ubbfc\uc544 be sure where to get off?",
       "options": [
        {
         "id": "a",
@@ -748,25 +749,25 @@
       "reasonable": [
        "b"
       ],
-      "after": "If 라역 itself is not counted, the third station is 가역 on the left and 사역 on the right. The direction is missing."
+      "after": "If \ub77c\uc5ed itself is not counted, the third station is \uac00\uc5ed on the left and \uc0ac\uc5ed on the right. The direction is missing."
      },
      {
-      "info": "지우: 사역 쪽으로 가는 지하철을 타세요.",
-      "ask": "Which station is 'the third station' for 민아, who gets on at 라역?",
+      "info": "\uc9c0\uc6b0: \uc0ac\uc5ed \ucabd\uc73c\ub85c \uac00\ub294 \uc9c0\ud558\ucca0\uc744 \ud0c0\uc138\uc694.",
+      "ask": "Which station is 'the third station' for \ubbfc\uc544, who gets on at \ub77c\uc5ed?",
       "options": [
        {
         "id": "a",
-        "text": "사역: 마역 (1), 바역 (2), 사역 (3).",
+        "text": "\uc0ac\uc5ed: \ub9c8\uc5ed (1), \ubc14\uc5ed (2), \uc0ac\uc5ed (3).",
         "reveals": "Starts counting with the next station after the one she boards."
        },
        {
         "id": "b",
-        "text": "바역: 라역 (1), 마역 (2), 바역 (3).",
+        "text": "\ubc14\uc5ed: \ub77c\uc5ed (1), \ub9c8\uc5ed (2), \ubc14\uc5ed (3).",
         "reveals": "Counts the boarding station as the first."
        },
        {
         "id": "c",
-        "text": "I cannot be sure: it depends on whether 라역 itself is counted.",
+        "text": "I cannot be sure: it depends on whether \ub77c\uc5ed itself is counted.",
         "reveals": "Sees that there are two ways to count and neither is stated."
        }
       ],
@@ -774,16 +775,16 @@
        "a",
        "c"
       ],
-      "after": "Many speakers do not count the station where you get on, which gives 사역; some do count it, which gives 바역. Choosing 사역 is a good guess, and being unsure is also reasonable. The safest move is to ask."
+      "after": "Many speakers do not count the station where you get on, which gives \uc0ac\uc5ed; some do count it, which gives \ubc14\uc5ed. Choosing \uc0ac\uc5ed is a good guess, and being unsure is also reasonable. The safest move is to ask."
      },
      {
-      "info": "지우: 학교는 사역 앞에 있어요.",
-      "ask": "What does this tell you about how 지우 counted?",
+      "info": "\uc9c0\uc6b0: \ud559\uad50\ub294 \uc0ac\uc5ed \uc55e\uc5d0 \uc788\uc5b4\uc694.",
+      "ask": "What does this tell you about how \uc9c0\uc6b0 counted?",
       "options": [
        {
         "id": "a",
-        "text": "지우 counted 라역 as the first station.",
-        "reveals": "If that were so, the third station would be 바역, not the school's station."
+        "text": "\uc9c0\uc6b0 counted \ub77c\uc5ed as the first station.",
+        "reveals": "If that were so, the third station would be \ubc14\uc5ed, not the school's station."
        },
        {
         "id": "b",
@@ -792,109 +793,109 @@
        },
        {
         "id": "c",
-        "text": "지우 did not count 라역, the station where you get on.",
+        "text": "\uc9c0\uc6b0 did not count \ub77c\uc5ed, the station where you get on.",
         "reveals": "Uses the school's station to decide between the two ways of counting."
        }
       ],
       "reasonable": [
        "c"
       ],
-      "after": "The school is at 사역. Only counting 마역 (1), 바역 (2), 사역 (3) reaches it, so 지우 did not count the boarding station."
+      "after": "The school is at \uc0ac\uc5ed. Only counting \ub9c8\uc5ed (1), \ubc14\uc5ed (2), \uc0ac\uc5ed (3) reaches it, so \uc9c0\uc6b0 did not count the boarding station."
      }
     ],
     "reflect": "The first message left the direction open, the second left the counting open, and the third settled the counting. Notice that each answer was safe only as long as you said what you did not yet know.",
     "hints": [
-     "Write the stations on a line and mark 라역. Count to the third station on each side.",
-     "Before choosing, ask yourself what 지우 would have to add to make only one station possible."
+     "Write the stations on a line and mark \ub77c\uc5ed. Count to the third station on each side.",
+     "Before choosing, ask yourself what \uc9c0\uc6b0 would have to add to make only one station possible."
     ]
    },
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "At the start, 민아 had only the first message. Write the Korean question(s) she could send so that she gets both missing facts.",
-    "placeholder": "예: ...",
+    "prompt": "At the start, \ubbfc\uc544 had only the first message. Write the Korean question(s) she could send so that she gets both missing facts.",
+    "placeholder": "\uc608: ...",
     "minChars": 8,
     "checks": [
      {
       "id": "w1",
-      "label": "is a question (?, 까요, 나요)",
+      "label": "is a question (?, \uae4c\uc694, \ub098\uc694)",
       "mode": "any",
       "patterns": [
        "\\?",
-       "[가-힣]까요",
-       "나요",
-       "[가-힣]어요\\s*$",
-       "[가-힣]아요\\s*$"
+       "[\uac00-\ud7a3]\uae4c\uc694",
+       "\ub098\uc694",
+       "[\uac00-\ud7a3]\uc5b4\uc694\\s*$",
+       "[\uac00-\ud7a3]\uc544\uc694\\s*$"
       ]
      },
      {
       "id": "w2",
-      "label": "asks about the direction (쪽 / 방향 / 어느)",
+      "label": "asks about the direction (\ucabd / \ubc29\ud5a5 / \uc5b4\ub290)",
       "mode": "any",
       "patterns": [
-       "쪽",
-       "방향",
-       "어느",
-       "어디로"
+       "\ucabd",
+       "\ubc29\ud5a5",
+       "\uc5b4\ub290",
+       "\uc5b4\ub514\ub85c"
       ]
      },
      {
       "id": "w3",
-      "label": "asks about the counting or about which station (번째 / 정거장 / 몇 역 / 어느 역)",
+      "label": "asks about the counting or about which station (\ubc88\uc9f8 / \uc815\uac70\uc7a5 / \uba87 \uc5ed / \uc5b4\ub290 \uc5ed)",
       "mode": "any",
       "patterns": [
-       "번째",
-       "포함",
-       "세어",
-       "세는",
-       "세나요",
-       "세면",
-       "첫",
-       "정거장",
-       "몇 역",
-       "어느 역",
-       "근처",
-       "내려야"
+       "\ubc88\uc9f8",
+       "\ud3ec\ud568",
+       "\uc138\uc5b4",
+       "\uc138\ub294",
+       "\uc138\ub098\uc694",
+       "\uc138\uba74",
+       "\uccab",
+       "\uc815\uac70\uc7a5",
+       "\uba87 \uc5ed",
+       "\uc5b4\ub290 \uc5ed",
+       "\uadfc\ucc98",
+       "\ub0b4\ub824\uc57c"
       ]
      }
     ],
     "selfAssess": [
      "Do my questions get the direction?",
      "Do they get how the stations are counted?",
-     "Could 지우 answer each one with a short reply?"
+     "Could \uc9c0\uc6b0 answer each one with a short reply?"
     ],
     "modelAnswers": [
      {
-      "text": "어느 쪽으로 가는 지하철을 타요? 라역도 세어요?",
+      "text": "\uc5b4\ub290 \ucabd\uc73c\ub85c \uac00\ub294 \uc9c0\ud558\ucca0\uc744 \ud0c0\uc694? \ub77c\uc5ed\ub3c4 \uc138\uc5b4\uc694?",
       "note": "Two short questions."
      },
      {
-      "text": "사역 쪽으로 가요? 세 번째 역은 라역부터 세는 거예요?",
+      "text": "\uc0ac\uc5ed \ucabd\uc73c\ub85c \uac00\uc694? \uc138 \ubc88\uc9f8 \uc5ed\uc740 \ub77c\uc5ed\ubd80\ud130 \uc138\ub294 \uac70\uc608\uc694?",
       "note": "Names a direction guess, then the counting."
      },
      {
-      "text": "어느 쪽으로 가야 해요? 라역에서 몇 정거장이에요?",
+      "text": "\uc5b4\ub290 \ucabd\uc73c\ub85c \uac00\uc57c \ud574\uc694? \ub77c\uc5ed\uc5d0\uc11c \uba87 \uc815\uac70\uc7a5\uc774\uc5d0\uc694?",
       "note": "Direction first, then the number of stops."
      },
      {
-      "text": "학교가 어느 역 근처예요?",
+      "text": "\ud559\uad50\uac00 \uc5b4\ub290 \uc5ed \uadfc\ucc98\uc608\uc694?",
       "note": "Asks for the destination, which settles both facts."
      }
     ],
     "badAnswers": [
      {
-      "text": "사역 쪽으로 가요?",
+      "text": "\uc0ac\uc5ed \ucabd\uc73c\ub85c \uac00\uc694?",
       "why": "Asks only about the direction."
      },
      {
-      "text": "몇 번째 역이에요?",
+      "text": "\uba87 \ubc88\uc9f8 \uc5ed\uc774\uc5d0\uc694?",
       "why": "Asks about the number but not the direction."
      }
     ],
     "humanReview": "Whether the questions are polite and natural enough to send to a friend.",
     "hints": [
      "Write one question for each missing fact.",
-     "Think about how 지우 could answer each question with a short reply."
+     "Think about how \uc9c0\uc6b0 could answer each question with a short reply."
     ]
    }
   ],
@@ -913,16 +914,16 @@
    }
   ],
   "alternatives": [
-   "In stage 2, 'cannot be sure' is as good as '사역'. A student who picks 바역 only has counted the boarding station; the stage text points out why that is the less common count.",
+   "In stage 2, 'cannot be sure' is as good as '\uc0ac\uc5ed'. A student who picks \ubc14\uc5ed only has counted the boarding station; the stage text points out why that is the less common count.",
    "The question in step 2 may be asked in two messages or in one."
   ],
   "hardCases": [
-   "Some speakers really do count the boarding station. That is why stage 2 does not say 'only 사역'.",
+   "Some speakers really do count the boarding station. That is why stage 2 does not say 'only \uc0ac\uc5ed'.",
    "In real cities the direction is named by the last station or the line colour, not only by a station on the line."
   ],
   "cautions": {
-   "language": "쪽 means 'side/direction'; 번째 turns a number into 'the nth'. Both are usually taught with the counting words in the same unit.",
-   "culture": "In Korean subways, directions are given by the end station of a direction (like 사역 방면), which is why 지우 says 사역 쪽. The station names here are invented.",
+   "language": "\ucabd means 'side/direction'; \ubc88\uc9f8 turns a number into 'the nth'. Both are usually taught with the counting words in the same unit.",
+   "culture": "In Korean subways, directions are given by the end station of a direction (like \uc0ac\uc5ed \ubc29\uba74), which is why \uc9c0\uc6b0 says \uc0ac\uc5ed \ucabd. The station names here are invented.",
    "accessibility": "No images. The line is given as a text list from left to right, and the task never needs the picture."
   },
   "autoVsHuman": {
@@ -934,14 +935,14 @@
     "Whether the questions are natural, polite and clear"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "z-k-01-05",
   "subject": "korean",
   "grade": "K5",
   "cell": "korean|L3|communication",
-  "topic": "Ordering events with -기 전에 / -(으)ㄴ 후에",
+  "topic": "Ordering events with -\uae30 \uc804\uc5d0 / -(\uc73c)\u3134 \ud6c4\uc5d0",
   "level": 2,
   "levelLabel": "Intermediate",
   "title": "Make three sentences true at once",
@@ -954,40 +955,40 @@
    "Finding several answers under constraints",
    "Explaining what is fixed and what is free"
   ],
-  "differsFromPlain": "Plain practice asks you to fill in 전에 or 후에. Here you work out what the sentences do and do not fix, and you build the orders yourself.",
+  "differsFromPlain": "Plain practice asks you to fill in \uc804\uc5d0 or \ud6c4\uc5d0. Here you work out what the sentences do and do not fix, and you build the orders yourself.",
   "prerequisites": [
-   "Knows -기 전에 and -(으)ㄴ 후에 (before / after)",
+   "Knows -\uae30 \uc804\uc5d0 and -(\uc73c)\u3134 \ud6c4\uc5d0 (before / after)",
    "Can read short sentences about daily routines"
   ],
   "minutes": 10,
   "curriculum": null,
-  "material": "하준 describes his weekday morning. He does four things, each once, one after another: 운동 (exercise), 샤워 (shower), 아침 (breakfast), 출근 (leaving for work). He says three things:\n① 샤워하기 전에 운동해요.\n② 아침을 먹은 후에 출근해요.\n③ 운동을 한 후에 아침을 먹어요.",
+  "material": "\ud558\uc900 describes his weekday morning. He does four things, each once, one after another: \uc6b4\ub3d9 (exercise), \uc0e4\uc6cc (shower), \uc544\uce68 (breakfast), \ucd9c\uadfc (leaving for work). He says three things:\n\u2460 \uc0e4\uc6cc\ud558\uae30 \uc804\uc5d0 \uc6b4\ub3d9\ud574\uc694.\n\u2461 \uc544\uce68\uc744 \uba39\uc740 \ud6c4\uc5d0 \ucd9c\uadfc\ud574\uc694.\n\u2462 \uc6b4\ub3d9\uc744 \ud55c \ud6c4\uc5d0 \uc544\uce68\uc744 \uba39\uc5b4\uc694.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
-    "prompt": "Use only ① and ②. Is it certain that 운동 comes before 출근?",
+    "prompt": "Use only \u2460 and \u2461. Is it certain that \uc6b4\ub3d9 comes before \ucd9c\uadfc?",
     "options": [
      {
       "id": "a",
-      "text": "No: ① and ② are separate pairs; nothing links them.",
+      "text": "No: \u2460 and \u2461 are separate pairs; nothing links them.",
       "reveals": "Checks which events each sentence actually connects."
      },
      {
       "id": "b",
-      "text": "Yes: 운동 is mentioned first, so it happens first.",
+      "text": "Yes: \uc6b4\ub3d9 is mentioned first, so it happens first.",
       "reveals": "Takes the order of the words in the story for the order of the events."
      },
      {
       "id": "c",
-      "text": "Yes: people shower before work, so 운동 is earlier too.",
+      "text": "Yes: people shower before work, so \uc6b4\ub3d9 is earlier too.",
       "reveals": "Brings in an everyday habit instead of using only the sentences."
      }
     ],
     "correct": [
      "a"
     ],
-    "explain": "① only says 운동 is before 샤워, and ② only says 아침 is before 출근. Neither sentence connects the two pairs, so 운동 could even come after 출근 in the sentences alone. ③ will connect them.",
+    "explain": "\u2460 only says \uc6b4\ub3d9 is before \uc0e4\uc6cc, and \u2461 only says \uc544\uce68 is before \ucd9c\uadfc. Neither sentence connects the two pairs, so \uc6b4\ub3d9 could even come after \ucd9c\uadfc in the sentences alone. \u2462 will connect them.",
     "hints": [
      "Draw each sentence as two boxes with an arrow from the earlier event to the later one.",
      "Check whether any box appears in both drawings."
@@ -996,23 +997,23 @@
    {
     "id": "s2",
     "kind": "build",
-    "prompt": "Now use ①, ② and ③. Give the position of each activity (1 = first, 4 = last) in an order that makes all three sentences true. Find two different orders.",
+    "prompt": "Now use \u2460, \u2461 and \u2462. Give the position of each activity (1 = first, 4 = last) in an order that makes all three sentences true. Find two different orders.",
     "vars": [
      {
       "name": "e",
-      "label": "Position of 운동"
+      "label": "Position of \uc6b4\ub3d9"
      },
      {
       "name": "s",
-      "label": "Position of 샤워"
+      "label": "Position of \uc0e4\uc6cc"
      },
      {
       "name": "b",
-      "label": "Position of 아침"
+      "label": "Position of \uc544\uce68"
      },
      {
       "name": "l",
-      "label": "Position of 출근"
+      "label": "Position of \ucd9c\uadfc"
      }
     ],
     "constraints": [
@@ -1031,20 +1032,20 @@
      {
       "id": "c3",
       "expr": "e<s",
-      "ok": "① 샤워하기 전에 운동해요 is true.",
-      "fail": "① is not true: 운동 must be before 샤워."
+      "ok": "\u2460 \uc0e4\uc6cc\ud558\uae30 \uc804\uc5d0 \uc6b4\ub3d9\ud574\uc694 is true.",
+      "fail": "\u2460 is not true: \uc6b4\ub3d9 must be before \uc0e4\uc6cc."
      },
      {
       "id": "c4",
       "expr": "b<l",
-      "ok": "② 아침을 먹은 후에 출근해요 is true.",
-      "fail": "② is not true: 아침 must be before 출근."
+      "ok": "\u2461 \uc544\uce68\uc744 \uba39\uc740 \ud6c4\uc5d0 \ucd9c\uadfc\ud574\uc694 is true.",
+      "fail": "\u2461 is not true: \uc544\uce68 must be before \ucd9c\uadfc."
      },
      {
       "id": "c5",
       "expr": "e<b",
-      "ok": "③ 운동을 한 후에 아침을 먹어요 is true.",
-      "fail": "③ is not true: 운동 must be before 아침."
+      "ok": "\u2462 \uc6b4\ub3d9\uc744 \ud55c \ud6c4\uc5d0 \uc544\uce68\uc744 \uba39\uc5b4\uc694 is true.",
+      "fail": "\u2462 is not true: \uc6b4\ub3d9 must be before \uc544\uce68."
      }
     ],
     "need": 2,
@@ -1076,35 +1077,35 @@
       "l": 3
      }
     ],
-    "explain": "Three orders work: 운동-샤워-아침-출근, 운동-아침-샤워-출근 and 운동-아침-출근-샤워. In all of them 운동 is first. Only the place of 샤워 is free, as long as it is after 운동.",
+    "explain": "Three orders work: \uc6b4\ub3d9-\uc0e4\uc6cc-\uc544\uce68-\ucd9c\uadfc, \uc6b4\ub3d9-\uc544\uce68-\uc0e4\uc6cc-\ucd9c\uadfc and \uc6b4\ub3d9-\uc544\uce68-\ucd9c\uadfc-\uc0e4\uc6cc. In all of them \uc6b4\ub3d9 is first. Only the place of \uc0e4\uc6cc is free, as long as it is after \uc6b4\ub3d9.",
     "hints": [
      "Start with the activity that has to be before both of the others it is linked to.",
-     "Place 샤워 last and see whether the other three sentences still hold."
+     "Place \uc0e4\uc6cc last and see whether the other three sentences still hold."
     ]
    },
    {
     "id": "s3",
     "kind": "write",
-    "prompt": "In one or two sentences (English or Korean): what do ①, ② and ③ settle for certain, and what do they leave open?",
-    "placeholder": "예: ...",
+    "prompt": "In one or two sentences (English or Korean): what do \u2460, \u2461 and \u2462 settle for certain, and what do they leave open?",
+    "placeholder": "\uc608: ...",
     "minChars": 15,
     "checks": [
      {
       "id": "w1",
-      "label": "talks about 운동 / exercise",
+      "label": "talks about \uc6b4\ub3d9 / exercise",
       "mode": "any",
       "patterns": [
-       "운동",
+       "\uc6b4\ub3d9",
        "exercise",
        "workout"
       ]
      },
      {
       "id": "w2",
-      "label": "talks about 샤워 / shower",
+      "label": "talks about \uc0e4\uc6cc / shower",
       "mode": "any",
       "patterns": [
-       "샤워",
+       "\uc0e4\uc6cc",
        "shower"
       ]
      },
@@ -1113,26 +1114,26 @@
       "label": "says what is fixed or open (first, any place, possible ...)",
       "mode": "any",
       "patterns": [
-       "먼저",
-       "처음",
-       "첫",
+       "\uba3c\uc800",
+       "\ucc98\uc74c",
+       "\uccab",
        "first",
        "before",
-       "항상",
-       "확실",
+       "\ud56d\uc0c1",
+       "\ud655\uc2e4",
        "certain",
        "sure",
-       "어디",
-       "자유",
+       "\uc5b4\ub514",
+       "\uc790\uc720",
        "any",
        "either",
        "open",
-       "여러",
-       "가능",
+       "\uc5ec\ub7ec",
+       "\uac00\ub2a5",
        "possible",
        "can ",
        "could",
-       "정해"
+       "\uc815\ud574"
       ]
      }
     ],
@@ -1143,7 +1144,7 @@
     ],
     "modelAnswers": [
      {
-      "text": "운동은 항상 첫 번째예요. 샤워는 운동 후라면 두 번째, 세 번째, 네 번째 어디든 가능해요."
+      "text": "\uc6b4\ub3d9\uc740 \ud56d\uc0c1 \uccab \ubc88\uc9f8\uc608\uc694. \uc0e4\uc6cc\ub294 \uc6b4\ub3d9 \ud6c4\ub77c\uba74 \ub450 \ubc88\uc9f8, \uc138 \ubc88\uc9f8, \ub124 \ubc88\uc9f8 \uc5b4\ub514\ub4e0 \uac00\ub2a5\ud574\uc694."
      },
      {
       "text": "Exercise must be first because it is before both the shower and breakfast. The shower can be second, third or last."
@@ -1155,11 +1156,11 @@
       "why": "No event named."
      },
      {
-      "text": "운동 샤워 아침 출근",
+      "text": "\uc6b4\ub3d9 \uc0e4\uc6cc \uc544\uce68 \ucd9c\uadfc",
       "why": "Lists the events but says nothing about what is fixed or open."
      }
     ],
-    "humanReview": "Whether the reason given for 'exercise is first' and 'the shower is free' really follows from ①, ② and ③.",
+    "humanReview": "Whether the reason given for 'exercise is first' and 'the shower is free' really follows from \u2460, \u2461 and \u2462.",
     "hints": [
      "Look at your orders: which activity is in the same place every time?",
      "Which activity changes place?"
@@ -1169,7 +1170,7 @@
   "rubric": [
    {
     "criterion": "Sufficiency",
-    "full": "Says ① and ② do not link the two pairs",
+    "full": "Says \u2460 and \u2461 do not link the two pairs",
     "partial": "Reaches 'no' without saying why",
     "none": "Says yes"
    },
@@ -1181,21 +1182,21 @@
    },
    {
     "criterion": "Explaining",
-    "full": "Says 운동 is always first and 샤워 is free after it, with a reason",
+    "full": "Says \uc6b4\ub3d9 is always first and \uc0e4\uc6cc is free after it, with a reason",
     "partial": "Names one of the two",
     "none": "No reason"
    }
   ],
   "alternatives": [
    "All three valid orders count; a student may find only two.",
-   "The explanation may be given in a table or arrows in words (운동 → 샤워) instead of full sentences."
+   "The explanation may be given in a table or arrows in words (\uc6b4\ub3d9 \u2192 \uc0e4\uc6cc) instead of full sentences."
   ],
   "hardCases": [
    "The story says each activity happens once, one after another. If two could happen at the same time (e.g., eating while exercising), the task would have more answers.",
-   "'-고 나서' or '-는 동안' would change the meaning; the task uses only 전에 and 후에."
+   "'-\uace0 \ub098\uc11c' or '-\ub294 \ub3d9\uc548' would change the meaning; the task uses only \uc804\uc5d0 and \ud6c4\uc5d0."
   ],
   "cautions": {
-   "language": "-기 전에 attaches to the LATER event's verb stem (샤워하기 전에 = before showering), while -(으)ㄴ 후에 attaches to the EARLIER event (먹은 후에). This often confuses learners.",
+   "language": "-\uae30 \uc804\uc5d0 attaches to the LATER event's verb stem (\uc0e4\uc6cc\ud558\uae30 \uc804\uc5d0 = before showering), while -(\uc73c)\u3134 \ud6c4\uc5d0 attaches to the EARLIER event (\uba39\uc740 \ud6c4\uc5d0). This often confuses learners.",
    "culture": "A morning routine with exercise and breakfast is a common topic; the routine is invented.",
    "accessibility": "No images. Positions 1-4 are numbers; the order can be said aloud as 'first, second, third, fourth'."
   },
@@ -1208,7 +1209,8 @@
    "human": [
     "Whether the final explanation is correct and based on the sentences"
    ]
-  }
+  },
+  "status": "reviewed-ai"
  },
  {
   "id": "z-k-01-06",
@@ -1230,29 +1232,29 @@
   ],
   "differsFromPlain": "Plain practice asks you to put a verb into the past or future. Here you check an existing text against a calendar, repair it in more than one way, and write your own.",
   "prerequisites": [
-   "Knows past -았/었어요 and future -(으)ㄹ 거예요",
-   "Knows 어제, 오늘, 내일, 모레, 지난, 이번, 다음",
+   "Knows past -\uc558/\uc5c8\uc5b4\uc694 and future -(\uc73c)\u3139 \uac70\uc608\uc694",
+   "Knows \uc5b4\uc81c, \uc624\ub298, \ub0b4\uc77c, \ubaa8\ub808, \uc9c0\ub09c, \uc774\ubc88, \ub2e4\uc74c",
    "Knows the weekdays"
   ],
   "minutes": 10,
   "curriculum": null,
-  "material": "Today is 수요일 (Wednesday), 9 p.m. 마리 writes in her diary. This week: 월요일 (Mon), 화요일 (Tue), 수요일 (Wed, today), 목요일 (Thu), 금요일 (Fri).\n\n1. 어제는 화요일이어서 학원에 갔어요.\n2. 오늘은 수요일인데 아침부터 비가 오고 있어요.\n3. 내일은 목요일이라서 친구를 만날 거예요.\n4. 지난 금요일에는 친구와 영화를 볼 거예요.\n5. 모레 금요일에는 일찍 잘 거예요.",
+  "material": "Today is \uc218\uc694\uc77c (Wednesday), 9 p.m. \ub9c8\ub9ac writes in her diary. This week: \uc6d4\uc694\uc77c (Mon), \ud654\uc694\uc77c (Tue), \uc218\uc694\uc77c (Wed, today), \ubaa9\uc694\uc77c (Thu), \uae08\uc694\uc77c (Fri).\n\n1. \uc5b4\uc81c\ub294 \ud654\uc694\uc77c\uc774\uc5b4\uc11c \ud559\uc6d0\uc5d0 \uac14\uc5b4\uc694.\n2. \uc624\ub298\uc740 \uc218\uc694\uc77c\uc778\ub370 \uc544\uce68\ubd80\ud130 \ube44\uac00 \uc624\uace0 \uc788\uc5b4\uc694.\n3. \ub0b4\uc77c\uc740 \ubaa9\uc694\uc77c\uc774\ub77c\uc11c \uce5c\uad6c\ub97c \ub9cc\ub0a0 \uac70\uc608\uc694.\n4. \uc9c0\ub09c \uae08\uc694\uc77c\uc5d0\ub294 \uce5c\uad6c\uc640 \uc601\ud654\ub97c \ubcfc \uac70\uc608\uc694.\n5. \ubaa8\ub808 \uae08\uc694\uc77c\uc5d0\ub294 \uc77c\ucc0d \uc798 \uac70\uc608\uc694.",
   "steps": [
    {
     "id": "s1",
     "kind": "pickLine",
     "prompt": "Which line has a time word and a verb ending that do not fit each other?",
     "lines": [
-     "어제는 화요일이어서 학원에 갔어요.",
-     "오늘은 수요일인데 아침부터 비가 오고 있어요.",
-     "내일은 목요일이라서 친구를 만날 거예요.",
-     "지난 금요일에는 친구와 영화를 볼 거예요.",
-     "모레 금요일에는 일찍 잘 거예요."
+     "\uc5b4\uc81c\ub294 \ud654\uc694\uc77c\uc774\uc5b4\uc11c \ud559\uc6d0\uc5d0 \uac14\uc5b4\uc694.",
+     "\uc624\ub298\uc740 \uc218\uc694\uc77c\uc778\ub370 \uc544\uce68\ubd80\ud130 \ube44\uac00 \uc624\uace0 \uc788\uc5b4\uc694.",
+     "\ub0b4\uc77c\uc740 \ubaa9\uc694\uc77c\uc774\ub77c\uc11c \uce5c\uad6c\ub97c \ub9cc\ub0a0 \uac70\uc608\uc694.",
+     "\uc9c0\ub09c \uae08\uc694\uc77c\uc5d0\ub294 \uce5c\uad6c\uc640 \uc601\ud654\ub97c \ubcfc \uac70\uc608\uc694.",
+     "\ubaa8\ub808 \uae08\uc694\uc77c\uc5d0\ub294 \uc77c\ucc0d \uc798 \uac70\uc608\uc694."
     ],
     "wrong": [
      3
     ],
-    "explain": "Line 4 has 지난 금요일 ('last Friday', already past) with 볼 거예요 (future). Line 1: 어제 = Tuesday, past ending. Line 2: today, in progress. Line 3: 내일 = Thursday, future. Line 5: 모레 = the day after tomorrow = Friday, future.",
+    "explain": "Line 4 has \uc9c0\ub09c \uae08\uc694\uc77c ('last Friday', already past) with \ubcfc \uac70\uc608\uc694 (future). Line 1: \uc5b4\uc81c = Tuesday, past ending. Line 2: today, in progress. Line 3: \ub0b4\uc77c = Thursday, future. Line 5: \ubaa8\ub808 = the day after tomorrow = Friday, future.",
     "hints": [
      "For each line, find the time word and say whether it is before, during or after Wednesday evening.",
      "Then look at the verb ending of each line and compare."
@@ -1265,23 +1267,23 @@
     "options": [
      {
       "id": "a",
-      "text": "지난 금요일에는 친구와 영화를 봤어요.",
+      "text": "\uc9c0\ub09c \uae08\uc694\uc77c\uc5d0\ub294 \uce5c\uad6c\uc640 \uc601\ud654\ub97c \ubd24\uc5b4\uc694.",
       "reveals": "Keeps the time word 'last Friday' and changes the ending to the past."
      },
      {
       "id": "b",
-      "text": "지난 금요일에는 친구와 영화를 보고 싶어요.",
+      "text": "\uc9c0\ub09c \uae08\uc694\uc77c\uc5d0\ub294 \uce5c\uad6c\uc640 \uc601\ud654\ub97c \ubcf4\uace0 \uc2f6\uc5b4\uc694.",
       "reveals": "Changes the ending to a wish, but a wish does not fit a day that is over."
      },
      {
       "id": "c",
-      "text": "이번 금요일에는 친구와 영화를 볼 거예요.",
+      "text": "\uc774\ubc88 \uae08\uc694\uc77c\uc5d0\ub294 \uce5c\uad6c\uc640 \uc601\ud654\ub97c \ubcfc \uac70\uc608\uc694.",
       "reveals": "Keeps the future ending and changes the time word to the coming Friday."
      },
      {
       "id": "d",
-      "text": "어제 금요일에는 친구와 영화를 봤어요.",
-      "reveals": "Fixes the ending but 어제 is Tuesday, not Friday."
+      "text": "\uc5b4\uc81c \uae08\uc694\uc77c\uc5d0\ub294 \uce5c\uad6c\uc640 \uc601\ud654\ub97c \ubd24\uc5b4\uc694.",
+      "reveals": "Fixes the ending but \uc5b4\uc81c is Tuesday, not Friday."
      }
     ],
     "correct": [
@@ -1312,57 +1314,57 @@
    {
     "id": "s3",
     "kind": "write",
-    "prompt": "Write three short Korean sentences about your own days: one about yesterday (어제), one about today (오늘) and one about tomorrow (내일). Match each verb ending to its day.",
-    "placeholder": "예: ...",
+    "prompt": "Write three short Korean sentences about your own days: one about yesterday (\uc5b4\uc81c), one about today (\uc624\ub298) and one about tomorrow (\ub0b4\uc77c). Match each verb ending to its day.",
+    "placeholder": "\uc608: ...",
     "minChars": 20,
     "checks": [
      {
       "id": "w1",
-      "label": "uses 어제",
+      "label": "uses \uc5b4\uc81c",
       "mode": "any",
       "patterns": [
-       "어제"
+       "\uc5b4\uc81c"
       ]
      },
      {
       "id": "w2",
-      "label": "uses 오늘",
+      "label": "uses \uc624\ub298",
       "mode": "any",
       "patterns": [
-       "오늘"
+       "\uc624\ub298"
       ]
      },
      {
       "id": "w3",
-      "label": "uses 내일",
+      "label": "uses \ub0b4\uc77c",
       "mode": "any",
       "patterns": [
-       "내일"
+       "\ub0b4\uc77c"
       ]
      },
      {
       "id": "w4",
-      "label": "the 어제 sentence has a past ending (-았/었/했)",
+      "label": "the \uc5b4\uc81c sentence has a past ending (-\uc558/\uc5c8/\ud588)",
       "mode": "any",
       "patterns": [
-       "어제[^.!?。\\n]*[갔갰걌걨겄겼곘곴괐괬굈굤궀궜궸귔귰긌긨깄깠깼꺘꺴껐껬꼈꼤꽀꽜꽸꾔꾰꿌꿨뀄뀠뀼끘끴낐났냈냤넀넜넸녔녰놌놨뇄뇠뇼눘눴뉐뉬늈늤닀닜닸댔댰덌덨뎄뎠뎼돘돴됐됬둈둤뒀뒜뒸듔듰딌딨땄땠땼떘떴뗐뗬똈똤뙀뙜뙸뚔뚰뛌뛨뜄뜠뜼띘띴랐랬럈럤렀렜렸롔롰뢌뢨룄룠룼뤘뤴륐륬릈릤맀맜맸먔먰멌멨몄몠몼뫘뫴묐묬뭈뭤뮀뮜뮸믔믰밌밨뱄뱠뱼벘벴볐볬봈봤뵀뵜뵸붔붰뷌뷨븄븠븼빘빴뺐뺬뻈뻤뼀뼜뼸뽔뽰뾌뾨뿄뿠뿼쀘쀴쁐쁬삈삤샀샜샸섔섰셌셨솄솠솼쇘쇴숐숬쉈쉤슀슜슸싔싰쌌쌨썄썠썼쎘쎴쏐쏬쐈쐤쑀쑜쑸쒔쒰쓌쓨씄씠씼았앴얐얬었엤였옜옸왔왰욌욨웄웠웼윘윴읐읬잤쟀쟜쟸젔젰졌졨좄좠좼죘죴줐줬쥈쥤즀즜즸짔짰쨌쨨쩄쩠쩼쪘쪴쫐쫬쬈쬤쭀쭜쭸쮔쮰쯌쯨찄찠찼챘챴첐첬쳈쳤촀촜촸쵔쵰춌춨췄췠췼츘츴칐칬캈캤컀컜컸켔켰콌콨쾄쾠쾼쿘쿴퀐퀬큈큤킀킜킸탔탰턌턨텄텠텼톘톴퇐퇬툈툤퉀퉜퉸튔튰틌틨팄팠팼퍘퍴펐펬폈폤퐀퐜퐸푔푰풌풨퓄퓠퓼픘픴핐핬했햤헀헜헸혔혰홌홨횄횠횼훘훴휐휬흈흤힀힜]"
+       "\uc5b4\uc81c[^.!?\u3002\\n]*[\uac14\uac30\uac4c\uac68\uac84\uacbc\uacd8\uacf4\uad10\uad2c\uad48\uad64\uad80\uad9c\uadb8\uadd4\uadf0\uae0c\uae28\uae44\uae60\uae7c\uae98\uaeb4\uaed0\uaeec\uaf08\uaf24\uaf40\uaf5c\uaf78\uaf94\uafb0\uafcc\uafe8\ub004\ub020\ub03c\ub058\ub074\ub090\ub0ac\ub0c8\ub0e4\ub100\ub11c\ub138\ub154\ub170\ub18c\ub1a8\ub1c4\ub1e0\ub1fc\ub218\ub234\ub250\ub26c\ub288\ub2a4\ub2c0\ub2dc\ub2f8\ub314\ub330\ub34c\ub368\ub384\ub3a0\ub3bc\ub3d8\ub3f4\ub410\ub42c\ub448\ub464\ub480\ub49c\ub4b8\ub4d4\ub4f0\ub50c\ub528\ub544\ub560\ub57c\ub598\ub5b4\ub5d0\ub5ec\ub608\ub624\ub640\ub65c\ub678\ub694\ub6b0\ub6cc\ub6e8\ub704\ub720\ub73c\ub758\ub774\ub790\ub7ac\ub7c8\ub7e4\ub800\ub81c\ub838\ub854\ub870\ub88c\ub8a8\ub8c4\ub8e0\ub8fc\ub918\ub934\ub950\ub96c\ub988\ub9a4\ub9c0\ub9dc\ub9f8\uba14\uba30\uba4c\uba68\uba84\ubaa0\ubabc\ubad8\ubaf4\ubb10\ubb2c\ubb48\ubb64\ubb80\ubb9c\ubbb8\ubbd4\ubbf0\ubc0c\ubc28\ubc44\ubc60\ubc7c\ubc98\ubcb4\ubcd0\ubcec\ubd08\ubd24\ubd40\ubd5c\ubd78\ubd94\ubdb0\ubdcc\ubde8\ube04\ube20\ube3c\ube58\ube74\ube90\ubeac\ubec8\ubee4\ubf00\ubf1c\ubf38\ubf54\ubf70\ubf8c\ubfa8\ubfc4\ubfe0\ubffc\uc018\uc034\uc050\uc06c\uc088\uc0a4\uc0c0\uc0dc\uc0f8\uc114\uc130\uc14c\uc168\uc184\uc1a0\uc1bc\uc1d8\uc1f4\uc210\uc22c\uc248\uc264\uc280\uc29c\uc2b8\uc2d4\uc2f0\uc30c\uc328\uc344\uc360\uc37c\uc398\uc3b4\uc3d0\uc3ec\uc408\uc424\uc440\uc45c\uc478\uc494\uc4b0\uc4cc\uc4e8\uc504\uc520\uc53c\uc558\uc574\uc590\uc5ac\uc5c8\uc5e4\uc600\uc61c\uc638\uc654\uc670\uc68c\uc6a8\uc6c4\uc6e0\uc6fc\uc718\uc734\uc750\uc76c\uc7a4\uc7c0\uc7dc\uc7f8\uc814\uc830\uc84c\uc868\uc884\uc8a0\uc8bc\uc8d8\uc8f4\uc910\uc92c\uc948\uc964\uc980\uc99c\uc9b8\uc9d4\uc9f0\uca0c\uca28\uca44\uca60\uca7c\uca98\ucab4\ucad0\ucaec\ucb08\ucb24\ucb40\ucb5c\ucb78\ucb94\ucbb0\ucbcc\ucbe8\ucc04\ucc20\ucc3c\ucc58\ucc74\ucc90\uccac\uccc8\ucce4\ucd00\ucd1c\ucd38\ucd54\ucd70\ucd8c\ucda8\ucdc4\ucde0\ucdfc\uce18\uce34\uce50\uce6c\uce88\ucea4\ucec0\ucedc\ucef8\ucf14\ucf30\ucf4c\ucf68\ucf84\ucfa0\ucfbc\ucfd8\ucff4\ud010\ud02c\ud048\ud064\ud080\ud09c\ud0b8\ud0d4\ud0f0\ud10c\ud128\ud144\ud160\ud17c\ud198\ud1b4\ud1d0\ud1ec\ud208\ud224\ud240\ud25c\ud278\ud294\ud2b0\ud2cc\ud2e8\ud304\ud320\ud33c\ud358\ud374\ud390\ud3ac\ud3c8\ud3e4\ud400\ud41c\ud438\ud454\ud470\ud48c\ud4a8\ud4c4\ud4e0\ud4fc\ud518\ud534\ud550\ud56c\ud588\ud5a4\ud5c0\ud5dc\ud5f8\ud614\ud630\ud64c\ud668\ud684\ud6a0\ud6bc\ud6d8\ud6f4\ud710\ud72c\ud748\ud764\ud780\ud79c]"
       ]
      },
      {
       "id": "w5",
-      "label": "the 어제 sentence has no future ending (-ㄹ 거예요 / -겠)",
+      "label": "the \uc5b4\uc81c sentence has no future ending (-\u3139 \uac70\uc608\uc694 / -\uaca0)",
       "mode": "none",
       "patterns": [
-       "어제[^.!?。\\n]*[갈갤걀걜걸겔결곌골괄괠괼굘굴궐궬귈귤글긜길깔깰꺌꺨껄껠껼꼘꼴꽐꽬꾈꾤꿀꿜꿸뀔뀰끌끨낄날낼냘냴널넬녈녤놀놜놸뇔뇰눌눨뉄뉠뉼늘늴닐달댈댤덀덜델뎔뎰돌돨됄될됼둘둴뒐뒬듈들딀딜딸땔땰떌떨뗄뗠뗼똘똴뙐뙬뚈뚤뛀뛜뛸뜔뜰띌띨랄랠랼럘럴렐렬롈롤뢀뢜뢸룔룰뤌뤨륄률를릘릴말맬먈먤멀멜멸몔몰뫌뫨묄묠물뭘뭴뮐뮬믈믤밀발밸뱔뱰벌벨별볠볼봘봴뵐뵬불붤뷀뷜뷸블븰빌빨뺄뺠뺼뻘뻴뼐뼬뽈뽤뾀뾜뾸뿔뿰쀌쀨쁄쁠쁼삘살샐샬섈설셀셜셸솔솰쇌쇨숄술숼쉘쉴슐슬싈실쌀쌜쌸썔썰쎌쎨쏄쏠쏼쐘쐴쑐쑬쒈쒤쓀쓜쓸씔씰알앨얄얠얼엘열옐올왈왤욀욜울월웰윌율을읠일잘잴쟐쟬절젤졀졜졸좔좰죌죨줄줠줼쥘쥴즐즬질짤쨀쨜쨸쩔쩰쪌쪨쫄쫠쫼쬘쬴쭐쭬쮈쮤쯀쯜쯸찔찰챌챨첄철첼쳘쳴촐촬쵈쵤춀출춸췔췰츌츨칄칠칼캘캴컐컬켈켤콀콜콸쾔쾰쿌쿨퀄퀠퀼큘클킐킬탈탤턀턜털텔텰톌톨퇄퇠퇼툘툴퉐퉬튈튤틀틜틸팔팰퍌퍨펄펠펼폘폴퐐퐬푈푤풀풜풸퓔퓰플픨필할핼햘햴헐헬혈혤홀활홸횔횰훌훨휄휠휼흘흴힐]\\s?거(예요|에요|야|다|입니다)",
-       "어제[^.!?。\\n]*겠"
+       "\uc5b4\uc81c[^.!?\u3002\\n]*[\uac08\uac24\uac40\uac5c\uac78\uac94\uacb0\uaccc\uace8\uad04\uad20\uad3c\uad58\uad74\uad90\uadac\uadc8\uade4\uae00\uae1c\uae38\uae54\uae70\uae8c\uaea8\uaec4\uaee0\uaefc\uaf18\uaf34\uaf50\uaf6c\uaf88\uafa4\uafc0\uafdc\uaff8\ub014\ub030\ub04c\ub068\ub084\ub0a0\ub0bc\ub0d8\ub0f4\ub110\ub12c\ub148\ub164\ub180\ub19c\ub1b8\ub1d4\ub1f0\ub20c\ub228\ub244\ub260\ub27c\ub298\ub2b4\ub2d0\ub2ec\ub308\ub324\ub340\ub35c\ub378\ub394\ub3b0\ub3cc\ub3e8\ub404\ub420\ub43c\ub458\ub474\ub490\ub4ac\ub4c8\ub4e4\ub500\ub51c\ub538\ub554\ub570\ub58c\ub5a8\ub5c4\ub5e0\ub5fc\ub618\ub634\ub650\ub66c\ub688\ub6a4\ub6c0\ub6dc\ub6f8\ub714\ub730\ub74c\ub768\ub784\ub7a0\ub7bc\ub7d8\ub7f4\ub810\ub82c\ub848\ub864\ub880\ub89c\ub8b8\ub8d4\ub8f0\ub90c\ub928\ub944\ub960\ub97c\ub998\ub9b4\ub9d0\ub9ec\uba08\uba24\uba40\uba5c\uba78\uba94\ubab0\ubacc\ubae8\ubb04\ubb20\ubb3c\ubb58\ubb74\ubb90\ubbac\ubbc8\ubbe4\ubc00\ubc1c\ubc38\ubc54\ubc70\ubc8c\ubca8\ubcc4\ubce0\ubcfc\ubd18\ubd34\ubd50\ubd6c\ubd88\ubda4\ubdc0\ubddc\ubdf8\ube14\ube30\ube4c\ube68\ube84\ubea0\ubebc\ubed8\ubef4\ubf10\ubf2c\ubf48\ubf64\ubf80\ubf9c\ubfb8\ubfd4\ubff0\uc00c\uc028\uc044\uc060\uc07c\uc098\uc0b4\uc0d0\uc0ec\uc108\uc124\uc140\uc15c\uc178\uc194\uc1b0\uc1cc\uc1e8\uc204\uc220\uc23c\uc258\uc274\uc290\uc2ac\uc2c8\uc2e4\uc300\uc31c\uc338\uc354\uc370\uc38c\uc3a8\uc3c4\uc3e0\uc3fc\uc418\uc434\uc450\uc46c\uc488\uc4a4\uc4c0\uc4dc\uc4f8\uc514\uc530\uc54c\uc568\uc584\uc5a0\uc5bc\uc5d8\uc5f4\uc610\uc62c\uc648\uc664\uc680\uc69c\uc6b8\uc6d4\uc6f0\uc70c\uc728\uc744\uc760\uc77c\uc798\uc7b4\uc7d0\uc7ec\uc808\uc824\uc840\uc85c\uc878\uc894\uc8b0\uc8cc\uc8e8\uc904\uc920\uc93c\uc958\uc974\uc990\uc9ac\uc9c8\uc9e4\uca00\uca1c\uca38\uca54\uca70\uca8c\ucaa8\ucac4\ucae0\ucafc\ucb18\ucb34\ucb50\ucb6c\ucb88\ucba4\ucbc0\ucbdc\ucbf8\ucc14\ucc30\ucc4c\ucc68\ucc84\ucca0\uccbc\uccd8\uccf4\ucd10\ucd2c\ucd48\ucd64\ucd80\ucd9c\ucdb8\ucdd4\ucdf0\uce0c\uce28\uce44\uce60\uce7c\uce98\uceb4\uced0\uceec\ucf08\ucf24\ucf40\ucf5c\ucf78\ucf94\ucfb0\ucfcc\ucfe8\ud004\ud020\ud03c\ud058\ud074\ud090\ud0ac\ud0c8\ud0e4\ud100\ud11c\ud138\ud154\ud170\ud18c\ud1a8\ud1c4\ud1e0\ud1fc\ud218\ud234\ud250\ud26c\ud288\ud2a4\ud2c0\ud2dc\ud2f8\ud314\ud330\ud34c\ud368\ud384\ud3a0\ud3bc\ud3d8\ud3f4\ud410\ud42c\ud448\ud464\ud480\ud49c\ud4b8\ud4d4\ud4f0\ud50c\ud528\ud544\ud560\ud57c\ud598\ud5b4\ud5d0\ud5ec\ud608\ud624\ud640\ud65c\ud678\ud694\ud6b0\ud6cc\ud6e8\ud704\ud720\ud73c\ud758\ud774\ud790]\\s?\uac70(\uc608\uc694|\uc5d0\uc694|\uc57c|\ub2e4|\uc785\ub2c8\ub2e4)",
+       "\uc5b4\uc81c[^.!?\u3002\\n]*\uaca0"
       ]
      },
      {
       "id": "w6",
-      "label": "the 내일 sentence has no past ending",
+      "label": "the \ub0b4\uc77c sentence has no past ending",
       "mode": "none",
       "patterns": [
-       "내일[^.!?。\\n]*[갔갰걌걨겄겼곘곴괐괬굈굤궀궜궸귔귰긌긨깄깠깼꺘꺴껐껬꼈꼤꽀꽜꽸꾔꾰꿌꿨뀄뀠뀼끘끴낐났냈냤넀넜넸녔녰놌놨뇄뇠뇼눘눴뉐뉬늈늤닀닜닸댔댰덌덨뎄뎠뎼돘돴됐됬둈둤뒀뒜뒸듔듰딌딨땄땠땼떘떴뗐뗬똈똤뙀뙜뙸뚔뚰뛌뛨뜄뜠뜼띘띴랐랬럈럤렀렜렸롔롰뢌뢨룄룠룼뤘뤴륐륬릈릤맀맜맸먔먰멌멨몄몠몼뫘뫴묐묬뭈뭤뮀뮜뮸믔믰밌밨뱄뱠뱼벘벴볐볬봈봤뵀뵜뵸붔붰뷌뷨븄븠븼빘빴뺐뺬뻈뻤뼀뼜뼸뽔뽰뾌뾨뿄뿠뿼쀘쀴쁐쁬삈삤샀샜샸섔섰셌셨솄솠솼쇘쇴숐숬쉈쉤슀슜슸싔싰쌌쌨썄썠썼쎘쎴쏐쏬쐈쐤쑀쑜쑸쒔쒰쓌쓨씄씠씼았앴얐얬었엤였옜옸왔왰욌욨웄웠웼윘윴읐읬잤쟀쟜쟸젔젰졌졨좄좠좼죘죴줐줬쥈쥤즀즜즸짔짰쨌쨨쩄쩠쩼쪘쪴쫐쫬쬈쬤쭀쭜쭸쮔쮰쯌쯨찄찠찼챘챴첐첬쳈쳤촀촜촸쵔쵰춌춨췄췠췼츘츴칐칬캈캤컀컜컸켔켰콌콨쾄쾠쾼쿘쿴퀐퀬큈큤킀킜킸탔탰턌턨텄텠텼톘톴퇐퇬툈툤퉀퉜퉸튔튰틌틨팄팠팼퍘퍴펐펬폈폤퐀퐜퐸푔푰풌풨퓄퓠퓼픘픴핐핬했햤헀헜헸혔혰홌홨횄횠횼훘훴휐휬흈흤힀힜]"
+       "\ub0b4\uc77c[^.!?\u3002\\n]*[\uac14\uac30\uac4c\uac68\uac84\uacbc\uacd8\uacf4\uad10\uad2c\uad48\uad64\uad80\uad9c\uadb8\uadd4\uadf0\uae0c\uae28\uae44\uae60\uae7c\uae98\uaeb4\uaed0\uaeec\uaf08\uaf24\uaf40\uaf5c\uaf78\uaf94\uafb0\uafcc\uafe8\ub004\ub020\ub03c\ub058\ub074\ub090\ub0ac\ub0c8\ub0e4\ub100\ub11c\ub138\ub154\ub170\ub18c\ub1a8\ub1c4\ub1e0\ub1fc\ub218\ub234\ub250\ub26c\ub288\ub2a4\ub2c0\ub2dc\ub2f8\ub314\ub330\ub34c\ub368\ub384\ub3a0\ub3bc\ub3d8\ub3f4\ub410\ub42c\ub448\ub464\ub480\ub49c\ub4b8\ub4d4\ub4f0\ub50c\ub528\ub544\ub560\ub57c\ub598\ub5b4\ub5d0\ub5ec\ub608\ub624\ub640\ub65c\ub678\ub694\ub6b0\ub6cc\ub6e8\ub704\ub720\ub73c\ub758\ub774\ub790\ub7ac\ub7c8\ub7e4\ub800\ub81c\ub838\ub854\ub870\ub88c\ub8a8\ub8c4\ub8e0\ub8fc\ub918\ub934\ub950\ub96c\ub988\ub9a4\ub9c0\ub9dc\ub9f8\uba14\uba30\uba4c\uba68\uba84\ubaa0\ubabc\ubad8\ubaf4\ubb10\ubb2c\ubb48\ubb64\ubb80\ubb9c\ubbb8\ubbd4\ubbf0\ubc0c\ubc28\ubc44\ubc60\ubc7c\ubc98\ubcb4\ubcd0\ubcec\ubd08\ubd24\ubd40\ubd5c\ubd78\ubd94\ubdb0\ubdcc\ubde8\ube04\ube20\ube3c\ube58\ube74\ube90\ubeac\ubec8\ubee4\ubf00\ubf1c\ubf38\ubf54\ubf70\ubf8c\ubfa8\ubfc4\ubfe0\ubffc\uc018\uc034\uc050\uc06c\uc088\uc0a4\uc0c0\uc0dc\uc0f8\uc114\uc130\uc14c\uc168\uc184\uc1a0\uc1bc\uc1d8\uc1f4\uc210\uc22c\uc248\uc264\uc280\uc29c\uc2b8\uc2d4\uc2f0\uc30c\uc328\uc344\uc360\uc37c\uc398\uc3b4\uc3d0\uc3ec\uc408\uc424\uc440\uc45c\uc478\uc494\uc4b0\uc4cc\uc4e8\uc504\uc520\uc53c\uc558\uc574\uc590\uc5ac\uc5c8\uc5e4\uc600\uc61c\uc638\uc654\uc670\uc68c\uc6a8\uc6c4\uc6e0\uc6fc\uc718\uc734\uc750\uc76c\uc7a4\uc7c0\uc7dc\uc7f8\uc814\uc830\uc84c\uc868\uc884\uc8a0\uc8bc\uc8d8\uc8f4\uc910\uc92c\uc948\uc964\uc980\uc99c\uc9b8\uc9d4\uc9f0\uca0c\uca28\uca44\uca60\uca7c\uca98\ucab4\ucad0\ucaec\ucb08\ucb24\ucb40\ucb5c\ucb78\ucb94\ucbb0\ucbcc\ucbe8\ucc04\ucc20\ucc3c\ucc58\ucc74\ucc90\uccac\uccc8\ucce4\ucd00\ucd1c\ucd38\ucd54\ucd70\ucd8c\ucda8\ucdc4\ucde0\ucdfc\uce18\uce34\uce50\uce6c\uce88\ucea4\ucec0\ucedc\ucef8\ucf14\ucf30\ucf4c\ucf68\ucf84\ucfa0\ucfbc\ucfd8\ucff4\ud010\ud02c\ud048\ud064\ud080\ud09c\ud0b8\ud0d4\ud0f0\ud10c\ud128\ud144\ud160\ud17c\ud198\ud1b4\ud1d0\ud1ec\ud208\ud224\ud240\ud25c\ud278\ud294\ud2b0\ud2cc\ud2e8\ud304\ud320\ud33c\ud358\ud374\ud390\ud3ac\ud3c8\ud3e4\ud400\ud41c\ud438\ud454\ud470\ud48c\ud4a8\ud4c4\ud4e0\ud4fc\ud518\ud534\ud550\ud56c\ud588\ud5a4\ud5c0\ud5dc\ud5f8\ud614\ud630\ud64c\ud668\ud684\ud6a0\ud6bc\ud6d8\ud6f4\ud710\ud72c\ud748\ud764\ud780\ud79c]"
       ]
      }
     ],
@@ -1373,31 +1375,31 @@
     ],
     "modelAnswers": [
      {
-      "text": "어제는 친구를 만났어요. 오늘은 학교에 가요. 내일은 일찍 일어날 거예요."
+      "text": "\uc5b4\uc81c\ub294 \uce5c\uad6c\ub97c \ub9cc\ub0ac\uc5b4\uc694. \uc624\ub298\uc740 \ud559\uad50\uc5d0 \uac00\uc694. \ub0b4\uc77c\uc740 \uc77c\ucc0d \uc77c\uc5b4\ub0a0 \uac70\uc608\uc694."
      },
      {
-      "text": "어제 영화를 봤어요. 오늘은 집에서 쉬어요. 내일 운동할 거예요."
+      "text": "\uc5b4\uc81c \uc601\ud654\ub97c \ubd24\uc5b4\uc694. \uc624\ub298\uc740 \uc9d1\uc5d0\uc11c \uc26c\uc5b4\uc694. \ub0b4\uc77c \uc6b4\ub3d9\ud560 \uac70\uc608\uc694."
      },
      {
-      "text": "어제는 학교에 갔어요. 오늘은 한국어를 공부해요. 내일은 친구를 만나요.",
+      "text": "\uc5b4\uc81c\ub294 \ud559\uad50\uc5d0 \uac14\uc5b4\uc694. \uc624\ub298\uc740 \ud55c\uad6d\uc5b4\ub97c \uacf5\ubd80\ud574\uc694. \ub0b4\uc77c\uc740 \uce5c\uad6c\ub97c \ub9cc\ub098\uc694.",
       "note": "Present tense for a planned near future is natural Korean, so it is accepted."
      }
     ],
     "badAnswers": [
      {
-      "text": "어제 영화를 볼 거예요. 오늘 쉬어요. 내일 갈 거예요.",
-      "why": "The first sentence has 어제 with a future ending."
+      "text": "\uc5b4\uc81c \uc601\ud654\ub97c \ubcfc \uac70\uc608\uc694. \uc624\ub298 \uc26c\uc5b4\uc694. \ub0b4\uc77c \uac08 \uac70\uc608\uc694.",
+      "why": "The first sentence has \uc5b4\uc81c with a future ending."
      },
      {
-      "text": "어제 영화를 볼 거예요. 오늘 갔어요. 내일 갈 거예요.",
-      "why": "The endings are on the wrong days: 어제 has a future ending and 오늘 has a past one."
+      "text": "\uc5b4\uc81c \uc601\ud654\ub97c \ubcfc \uac70\uc608\uc694. \uc624\ub298 \uac14\uc5b4\uc694. \ub0b4\uc77c \uac08 \uac70\uc608\uc694.",
+      "why": "The endings are on the wrong days: \uc5b4\uc81c has a future ending and \uc624\ub298 has a past one."
      },
      {
-      "text": "어제 친구를 만났어요. 오늘 쉬어요. 내일 갔어요.",
-      "why": "내일 has a past ending."
+      "text": "\uc5b4\uc81c \uce5c\uad6c\ub97c \ub9cc\ub0ac\uc5b4\uc694. \uc624\ub298 \uc26c\uc5b4\uc694. \ub0b4\uc77c \uac14\uc5b4\uc694.",
+      "why": "\ub0b4\uc77c has a past ending."
      }
     ],
-    "humanReview": "Whether each ending really matches its time word and sounds natural. The surface checks look inside each sentence for a past ending after 어제 and for no past ending after 내일, but cannot judge the whole sentence.",
+    "humanReview": "Whether each ending really matches its time word and sounds natural. The surface checks look inside each sentence for a past ending after \uc5b4\uc81c and for no past ending after \ub0b4\uc77c, but cannot judge the whole sentence.",
     "hints": [
      "Write the time word first, then pick the ending that fits it.",
      "Read each sentence once more and ask: has this already happened?"
@@ -1426,14 +1428,14 @@
   ],
   "alternatives": [
    "Naming line 4 as 'the time word is wrong' or 'the verb is wrong' are both fine; it is the pair that clashes.",
-   "Line 2 uses -고 있어요 for something that is going on in the evening; this is correct, not an error."
+   "Line 2 uses -\uace0 \uc788\uc5b4\uc694 for something that is going on in the evening; this is correct, not an error."
   ],
   "hardCases": [
-   "지난 금요일 could mean 'Friday of last week', and 이번 금요일 'Friday of this week'. Some speakers use 지난 for the latest Friday that has passed. The task relies on the calendar above (today is Wednesday).",
-   "A sentence like 내일 만났어요 would be wrong in plain statements, but 내일 is fine with a story told in the past, such as in a novel."
+   "\uc9c0\ub09c \uae08\uc694\uc77c could mean 'Friday of last week', and \uc774\ubc88 \uae08\uc694\uc77c 'Friday of this week'. Some speakers use \uc9c0\ub09c for the latest Friday that has passed. The task relies on the calendar above (today is Wednesday).",
+   "A sentence like \ub0b4\uc77c \ub9cc\ub0ac\uc5b4\uc694 would be wrong in plain statements, but \ub0b4\uc77c is fine with a story told in the past, such as in a novel."
   ],
   "cautions": {
-   "language": "Dates and tense are linked, but Korean has no 'will'; the future form -(으)ㄹ 거예요 shows plan or guess.",
+   "language": "Dates and tense are linked, but Korean has no 'will'; the future form -(\uc73c)\u3139 \uac70\uc608\uc694 shows plan or guess.",
    "culture": "Writing a diary at the end of a day is a common school habit in Korea; the diary is invented.",
    "accessibility": "No images. The week is given as a list of five days in words."
   },
@@ -1447,14 +1449,14 @@
     "Whether each sentence's ending fits its time word and sounds natural"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "z-k-01-07",
   "subject": "korean",
   "grade": "K7",
   "cell": "korean|L4|communication",
-  "topic": "Passing on someone's words (-대요 / -래요 / -다고 해요)",
+  "topic": "Passing on someone's words (-\ub300\uc694 / -\ub798\uc694 / -\ub2e4\uace0 \ud574\uc694)",
   "level": 2,
   "levelLabel": "Intermediate",
   "title": "Passing on the leader's message",
@@ -1467,67 +1469,67 @@
    "Telling a changed form from a changed meaning",
    "Producing a faithful retelling"
   ],
-  "differsFromPlain": "Plain practice asks you to turn quoted speech into -대요 or -래요. Here you check a ready-made retelling against the original, find what changed, and relay a new message.",
+  "differsFromPlain": "Plain practice asks you to turn quoted speech into -\ub300\uc694 or -\ub798\uc694. Here you check a ready-made retelling against the original, find what changed, and relay a new message.",
   "prerequisites": [
-   "Knows reported-speech endings -(느)ㄴ대요, -(이)래요, -(으)래요",
-   "Knows -지 않아도 되다 (no need to) and -지 마세요",
+   "Knows reported-speech endings -(\ub290)\u3134\ub300\uc694, -(\uc774)\ub798\uc694, -(\uc73c)\ub798\uc694",
+   "Knows -\uc9c0 \uc54a\uc544\ub3c4 \ub418\ub2e4 (no need to) and -\uc9c0 \ub9c8\uc138\uc694",
    "Reads short workplace messages"
   ],
   "minutes": 10,
   "curriculum": null,
-  "material": "팀장님 (the team leader) told 민수 four things in the hallway:\n“내일 회의는 오후 3시예요. 장소는 5층 회의실이에요. 자료는 오늘까지 보내 주세요. 점심은 먹지 않아도 돼요.”\n민수 now passes the four things on to 수아, who was not there.\n\n민수: 내일 회의는 오후 3시래요.\n민수: 장소는 5층 회의실이래요.\n민수: 자료는 오늘까지 보냈대요.\n민수: 점심은 먹지 말래요.",
+  "material": "\ud300\uc7a5\ub2d8 (the team leader) told \ubbfc\uc218 four things in the hallway:\n\u201c\ub0b4\uc77c \ud68c\uc758\ub294 \uc624\ud6c4 3\uc2dc\uc608\uc694. \uc7a5\uc18c\ub294 5\uce35 \ud68c\uc758\uc2e4\uc774\uc5d0\uc694. \uc790\ub8cc\ub294 \uc624\ub298\uae4c\uc9c0 \ubcf4\ub0b4 \uc8fc\uc138\uc694. \uc810\uc2ec\uc740 \uba39\uc9c0 \uc54a\uc544\ub3c4 \ub3fc\uc694.\u201d\n\ubbfc\uc218 now passes the four things on to \uc218\uc544, who was not there.\n\n\ubbfc\uc218: \ub0b4\uc77c \ud68c\uc758\ub294 \uc624\ud6c4 3\uc2dc\ub798\uc694.\n\ubbfc\uc218: \uc7a5\uc18c\ub294 5\uce35 \ud68c\uc758\uc2e4\uc774\ub798\uc694.\n\ubbfc\uc218: \uc790\ub8cc\ub294 \uc624\ub298\uae4c\uc9c0 \ubcf4\ub0c8\ub300\uc694.\n\ubbfc\uc218: \uc810\uc2ec\uc740 \uba39\uc9c0 \ub9d0\ub798\uc694.",
   "steps": [
    {
     "id": "s1",
     "kind": "pickLine",
-    "prompt": "Which of 민수's lines do NOT report what 팀장님 said? Pick one of them.",
+    "prompt": "Which of \ubbfc\uc218's lines do NOT report what \ud300\uc7a5\ub2d8 said? Pick one of them.",
     "lines": [
-     "내일 회의는 오후 3시래요.",
-     "장소는 5층 회의실이래요.",
-     "자료는 오늘까지 보냈대요.",
-     "점심은 먹지 말래요."
+     "\ub0b4\uc77c \ud68c\uc758\ub294 \uc624\ud6c4 3\uc2dc\ub798\uc694.",
+     "\uc7a5\uc18c\ub294 5\uce35 \ud68c\uc758\uc2e4\uc774\ub798\uc694.",
+     "\uc790\ub8cc\ub294 \uc624\ub298\uae4c\uc9c0 \ubcf4\ub0c8\ub300\uc694.",
+     "\uc810\uc2ec\uc740 \uba39\uc9c0 \ub9d0\ub798\uc694."
     ],
     "wrong": [
      2,
      3
     ],
-    "explain": "Lines 3 and 4 both change the message. Line 3: 보냈대요 says the materials were already sent, but 팀장님 asked for them to be sent (보내래요). Line 4: 먹지 말래요 says 'told us not to eat', but 팀장님 only said eating is not necessary (안 먹어도 된대요). Lines 1 and 2 are faithful.",
+    "explain": "Lines 3 and 4 both change the message. Line 3: \ubcf4\ub0c8\ub300\uc694 says the materials were already sent, but \ud300\uc7a5\ub2d8 asked for them to be sent (\ubcf4\ub0b4\ub798\uc694). Line 4: \uba39\uc9c0 \ub9d0\ub798\uc694 says 'told us not to eat', but \ud300\uc7a5\ub2d8 only said eating is not necessary (\uc548 \uba39\uc5b4\ub3c4 \ub41c\ub300\uc694). Lines 1 and 2 are faithful.",
     "hints": [
-     "For each original sentence, decide: is 팀장님 stating a fact, or asking someone to do something?",
+     "For each original sentence, decide: is \ud300\uc7a5\ub2d8 stating a fact, or asking someone to do something?",
      "Then check whether the ending of the retold line is a statement ending or a request ending."
     ]
    },
    {
     "id": "s2",
     "kind": "choose",
-    "prompt": "Which are faithful ways to pass on the fourth sentence, 점심은 먹지 않아도 돼요? Choose all that apply.",
+    "prompt": "Which are faithful ways to pass on the fourth sentence, \uc810\uc2ec\uc740 \uba39\uc9c0 \uc54a\uc544\ub3c4 \ub3fc\uc694? Choose all that apply.",
     "options": [
      {
       "id": "a",
-      "text": "점심은 먹지 말래요.",
+      "text": "\uc810\uc2ec\uc740 \uba39\uc9c0 \ub9d0\ub798\uc694.",
       "reveals": "Turns 'no need to eat' into 'told us not to eat', which is a different message."
      },
      {
       "id": "b",
-      "text": "점심은 안 먹어도 된대요.",
+      "text": "\uc810\uc2ec\uc740 \uc548 \uba39\uc5b4\ub3c4 \ub41c\ub300\uc694.",
       "reveals": "Keeps 'no need' and marks the words as someone else's."
      },
      {
       "id": "c",
-      "text": "점심은 안 먹어도 돼요.",
-      "reveals": "Drops the sign that these are 팀장님's words, so it sounds like your own permission."
+      "text": "\uc810\uc2ec\uc740 \uc548 \uba39\uc5b4\ub3c4 \ub3fc\uc694.",
+      "reveals": "Drops the sign that these are \ud300\uc7a5\ub2d8's words, so it sounds like your own permission."
      },
      {
       "id": "d",
-      "text": "점심은 먹지 않아도 된다고 해요.",
-      "reveals": "Keeps the meaning and marks it as reported with -다고 해요."
+      "text": "\uc810\uc2ec\uc740 \uba39\uc9c0 \uc54a\uc544\ub3c4 \ub41c\ub2e4\uace0 \ud574\uc694.",
+      "reveals": "Keeps the meaning and marks it as reported with -\ub2e4\uace0 \ud574\uc694."
      }
     ],
     "correct": [
      "b",
      "d"
     ],
-    "explain": "-대요 is the short form of -다고 해요, so b and d say the same thing. a changes the meaning, and c leaves out who said it.",
+    "explain": "-\ub300\uc694 is the short form of -\ub2e4\uace0 \ud574\uc694, so b and d say the same thing. a changes the meaning, and c leaves out who said it.",
     "hints": [
      "Say the original meaning in English first: 'it is not necessary' or 'it is forbidden'?",
      "Look for the version that keeps that meaning AND shows that someone else said it."
@@ -1538,78 +1540,78 @@
       "ids": [
        "b"
       ],
-      "reason": "Valid. The long form -다고 해요 in d is equally faithful."
+      "reason": "Valid. The long form -\ub2e4\uace0 \ud574\uc694 in d is equally faithful."
      },
      {
       "ids": [
        "d"
       ],
-      "reason": "Valid. The short form -대요 in b is equally faithful."
+      "reason": "Valid. The short form -\ub300\uc694 in b is equally faithful."
      }
     ]
    },
    {
     "id": "s3",
     "kind": "write",
-    "prompt": "팀장님 sends one more message: “회의가 4시로 바뀌었어요. 늦지 마세요.” Write what you would say to 수아 to pass it on, in Korean.",
-    "placeholder": "예: ...",
+    "prompt": "\ud300\uc7a5\ub2d8 sends one more message: \u201c\ud68c\uc758\uac00 4\uc2dc\ub85c \ubc14\ub00c\uc5c8\uc5b4\uc694. \ub2a6\uc9c0 \ub9c8\uc138\uc694.\u201d Write what you would say to \uc218\uc544 to pass it on, in Korean.",
+    "placeholder": "\uc608: ...",
     "minChars": 10,
     "checks": [
      {
       "id": "w1",
-      "label": "marks the words as reported (-대요, -래요, -다고 해요 ...)",
+      "label": "marks the words as reported (-\ub300\uc694, -\ub798\uc694, -\ub2e4\uace0 \ud574\uc694 ...)",
       "mode": "any",
       "patterns": [
-       "[가-힣](대요|래요)",
-       "다고\\s?(해|했|하|말)",
-       "라고\\s?(해|했|하|말)",
-       "[가-힣](대|래)[.!?\\s]*$"
+       "[\uac00-\ud7a3](\ub300\uc694|\ub798\uc694)",
+       "\ub2e4\uace0\\s?(\ud574|\ud588|\ud558|\ub9d0)",
+       "\ub77c\uace0\\s?(\ud574|\ud588|\ud558|\ub9d0)",
+       "[\uac00-\ud7a3](\ub300|\ub798)[.!?\\s]*$"
       ]
      },
      {
       "id": "w2",
-      "label": "mentions 4시",
+      "label": "mentions 4\uc2dc",
       "mode": "any",
       "patterns": [
-       "4\\s*시",
-       "네\\s*시"
+       "4\\s*\uc2dc",
+       "\ub124\\s*\uc2dc"
       ]
      },
      {
       "id": "w3",
-      "label": "passes on the request about 늦",
+      "label": "passes on the request about \ub2a6",
       "mode": "any",
       "patterns": [
-       "늦"
+       "\ub2a6"
       ]
      }
     ],
     "selfAssess": [
      "Did I keep both parts: the new time and the request?",
-     "Did I change the request ending (-세요) into a reported ending?",
+     "Did I change the request ending (-\uc138\uc694) into a reported ending?",
      "Does it sound like I am passing it on, not giving my own order?"
     ],
     "modelAnswers": [
      {
-      "text": "회의가 4시로 바뀌었대요. 늦지 말래요.",
+      "text": "\ud68c\uc758\uac00 4\uc2dc\ub85c \ubc14\ub00c\uc5c8\ub300\uc694. \ub2a6\uc9c0 \ub9d0\ub798\uc694.",
       "note": "Short forms."
      },
      {
-      "text": "팀장님이 회의가 4시로 바뀌었다고 해요. 그리고 늦지 말라고 하셨어요.",
+      "text": "\ud300\uc7a5\ub2d8\uc774 \ud68c\uc758\uac00 4\uc2dc\ub85c \ubc14\ub00c\uc5c8\ub2e4\uace0 \ud574\uc694. \uadf8\ub9ac\uace0 \ub2a6\uc9c0 \ub9d0\ub77c\uace0 \ud558\uc168\uc5b4\uc694.",
       "note": "Long forms and the leader named."
      }
     ],
     "badAnswers": [
      {
-      "text": "회의가 4시로 바뀌었어요. 늦지 마세요.",
+      "text": "\ud68c\uc758\uac00 4\uc2dc\ub85c \ubc14\ub00c\uc5c8\uc5b4\uc694. \ub2a6\uc9c0 \ub9c8\uc138\uc694.",
       "why": "Copies the leader's words; nothing marks them as reported."
      },
      {
-      "text": "회의가 4시로 바뀌었대요.",
+      "text": "\ud68c\uc758\uac00 4\uc2dc\ub85c \ubc14\ub00c\uc5c8\ub300\uc694.",
       "why": "Reports the time but leaves out the request."
      }
     ],
-    "humanReview": "Whether the reported forms are used correctly (statement vs request) and whether the tone to 수아 is natural.",
+    "humanReview": "Whether the reported forms are used correctly (statement vs request) and whether the tone to \uc218\uc544 is natural.",
     "hints": [
      "Split the message into a statement and a request.",
      "Choose a reported ending for each one."
@@ -1638,14 +1640,14 @@
   ],
   "alternatives": [
    "In s2, choosing only b or only d is acceptable: the two forms are equal.",
-   "A student may relay the time as 4시로 바뀌었다는 거예요; this is also fine."
+   "A student may relay the time as 4\uc2dc\ub85c \ubc14\ub00c\uc5c8\ub2e4\ub294 \uac70\uc608\uc694; this is also fine."
   ],
   "hardCases": [
-   "보냈대요 can be correct if 팀장님 had said 자료를 보냈어요. The task relies on the original sentence 보내 주세요.",
-   "Some speakers use 먹지 말래요 for 'it is better not to eat'. The task's original says only 'not necessary'."
+   "\ubcf4\ub0c8\ub300\uc694 can be correct if \ud300\uc7a5\ub2d8 had said \uc790\ub8cc\ub97c \ubcf4\ub0c8\uc5b4\uc694. The task relies on the original sentence \ubcf4\ub0b4 \uc8fc\uc138\uc694.",
+   "Some speakers use \uba39\uc9c0 \ub9d0\ub798\uc694 for 'it is better not to eat'. The task's original says only 'not necessary'."
   ],
   "cautions": {
-   "language": "-대요 / -래요 / -재요 are contractions of -다고 해요 / -라고 해요 / -자고 해요 and are mostly spoken. For a request the ending is -(으)래요; for a statement it is -(느)ㄴ대요 or -(이)래요.",
+   "language": "-\ub300\uc694 / -\ub798\uc694 / -\uc7ac\uc694 are contractions of -\ub2e4\uace0 \ud574\uc694 / -\ub77c\uace0 \ud574\uc694 / -\uc790\uace0 \ud574\uc694 and are mostly spoken. For a request the ending is -(\uc73c)\ub798\uc694; for a statement it is -(\ub290)\u3134\ub300\uc694 or -(\uc774)\ub798\uc694.",
    "culture": "Relaying messages from a superior to a colleague is everyday workplace talk; the names are invented.",
    "accessibility": "No images. All four relays are plain text and are numbered 1-4 by the line picker."
   },
@@ -1653,19 +1655,20 @@
    "auto": [
     "Which line is picked (s1)",
     "The faithful forms (s2)",
-    "Surface check for reported endings, 4시 and 늦 (s3)"
+    "Surface check for reported endings, 4\uc2dc and \ub2a6 (s3)"
    ],
    "human": [
     "Whether the relayed message keeps the meaning and sounds natural"
    ]
-  }
+  },
+  "status": "reviewed-ai"
  },
  {
   "id": "z-k-01-08",
   "subject": "korean",
   "grade": "K7",
   "cell": "korean|L4|communication",
-  "topic": "Did it happen? (-ㄹ 뻔했다, -는 바람에, -ㄹ까 봐, -ㄹ 줄 알았는데)",
+  "topic": "Did it happen? (-\u3139 \ubed4\ud588\ub2e4, -\ub294 \ubc14\ub78c\uc5d0, -\u3139\uae4c \ubd10, -\u3139 \uc904 \uc54c\uc558\ub294\ub370)",
   "level": 2,
   "levelLabel": "Intermediate",
   "title": "Who failed the test?",
@@ -1680,13 +1683,13 @@
   ],
   "differsFromPlain": "Plain practice gives the meaning of each ending. Here you use the endings as evidence about what happened and say what a sentence leaves open.",
   "prerequisites": [
-   "Knows -ㄹ 뻔했다 (almost), -는 바람에 (because of, with a bad result)",
-   "Knows -ㄹ까 봐 (for fear that) and -ㄹ 줄 알았는데 (thought that ... but)",
-   "Knows 붙다 (pass) and 떨어지다 (fail) for exams"
+   "Knows -\u3139 \ubed4\ud588\ub2e4 (almost), -\ub294 \ubc14\ub78c\uc5d0 (because of, with a bad result)",
+   "Knows -\u3139\uae4c \ubd10 (for fear that) and -\u3139 \uc904 \uc54c\uc558\ub294\ub370 (thought that ... but)",
+   "Knows \ubd99\ub2e4 (pass) and \ub5a8\uc5b4\uc9c0\ub2e4 (fail) for exams"
   ],
   "minutes": 9,
   "curriculum": null,
-  "material": "Four people talk about their driver's-licence test (운전면허 시험). 붙다 = to pass, 떨어지다 = to fail an exam.\n\n지민: 긴장하는 바람에 운전면허 시험에 떨어졌어요.\n서준: 운전면허 시험에 떨어질 뻔했는데 겨우 붙었어요.\n도현: 붙을 줄 알았는데 떨어졌어요.\n하은: 운전면허 시험에 떨어질까 봐 열심히 연습했어요.",
+  "material": "Four people talk about their driver's-licence test (\uc6b4\uc804\uba74\ud5c8 \uc2dc\ud5d8). \ubd99\ub2e4 = to pass, \ub5a8\uc5b4\uc9c0\ub2e4 = to fail an exam.\n\n\uc9c0\ubbfc: \uae34\uc7a5\ud558\ub294 \ubc14\ub78c\uc5d0 \uc6b4\uc804\uba74\ud5c8 \uc2dc\ud5d8\uc5d0 \ub5a8\uc5b4\uc84c\uc5b4\uc694.\n\uc11c\uc900: \uc6b4\uc804\uba74\ud5c8 \uc2dc\ud5d8\uc5d0 \ub5a8\uc5b4\uc9c8 \ubed4\ud588\ub294\ub370 \uaca8\uc6b0 \ubd99\uc5c8\uc5b4\uc694.\n\ub3c4\ud604: \ubd99\uc744 \uc904 \uc54c\uc558\ub294\ub370 \ub5a8\uc5b4\uc84c\uc5b4\uc694.\n\ud558\uc740: \uc6b4\uc804\uba74\ud5c8 \uc2dc\ud5d8\uc5d0 \ub5a8\uc5b4\uc9c8\uae4c \ubd10 \uc5f4\uc2ec\ud788 \uc5f0\uc2b5\ud588\uc5b4\uc694.",
   "steps": [
    {
     "id": "s1",
@@ -1695,30 +1698,30 @@
     "options": [
      {
       "id": "a",
-      "text": "지민",
-      "reveals": "Reads -는 바람에 as a bad result that really happened."
+      "text": "\uc9c0\ubbfc",
+      "reveals": "Reads -\ub294 \ubc14\ub78c\uc5d0 as a bad result that really happened."
      },
      {
       "id": "b",
-      "text": "하은",
-      "reveals": "Takes a worry (떨어질까 봐) for a result."
+      "text": "\ud558\uc740",
+      "reveals": "Takes a worry (\ub5a8\uc5b4\uc9c8\uae4c \ubd10) for a result."
      },
      {
       "id": "c",
-      "text": "서준",
-      "reveals": "Reads 떨어질 뻔했다 as 'failed', but 뻔했다 means it nearly happened and did not."
+      "text": "\uc11c\uc900",
+      "reveals": "Reads \ub5a8\uc5b4\uc9c8 \ubed4\ud588\ub2e4 as 'failed', but \ubed4\ud588\ub2e4 means it nearly happened and did not."
      },
      {
       "id": "d",
-      "text": "도현",
-      "reveals": "Reads 붙을 줄 알았는데 as an expectation that turned out wrong."
+      "text": "\ub3c4\ud604",
+      "reveals": "Reads \ubd99\uc744 \uc904 \uc54c\uc558\ub294\ub370 as an expectation that turned out wrong."
      }
     ],
     "correct": [
      "a",
      "d"
     ],
-    "explain": "지민 failed (떨어졌어요). 도현 expected to pass but failed (떨어졌어요). 서준 only almost failed and then passed (겨우 붙었어요). 하은 says what she feared, not what happened.",
+    "explain": "\uc9c0\ubbfc failed (\ub5a8\uc5b4\uc84c\uc5b4\uc694). \ub3c4\ud604 expected to pass but failed (\ub5a8\uc5b4\uc84c\uc5b4\uc694). \uc11c\uc900 only almost failed and then passed (\uaca8\uc6b0 \ubd99\uc5c8\uc5b4\uc694). \ud558\uc740 says what she feared, not what happened.",
     "hints": [
      "For each person, find the verb that says whether they passed or failed.",
      "Check if the verb is about the result, or about a worry or an almost."
@@ -1729,80 +1732,80 @@
       "ids": [
        "a"
       ],
-      "reason": "지민 is a definite failure; 도현 also failed, so add them for the full set."
+      "reason": "\uc9c0\ubbfc is a definite failure; \ub3c4\ud604 also failed, so add them for the full set."
      },
      {
       "ids": [
        "d"
       ],
-      "reason": "도현 is a definite failure; 지민 also failed, so add them for the full set."
+      "reason": "\ub3c4\ud604 is a definite failure; \uc9c0\ubbfc also failed, so add them for the full set."
      }
     ]
    },
    {
     "id": "s2",
     "kind": "choose",
-    "prompt": "You want to know whether 하은 passed. Which question would settle it?",
+    "prompt": "You want to know whether \ud558\uc740 passed. Which question would settle it?",
     "options": [
      {
       "id": "a",
-      "text": "연습은 매일 했어요? 몇 시간 했어요?",
+      "text": "\uc5f0\uc2b5\uc740 \ub9e4\uc77c \ud588\uc5b4\uc694? \uba87 \uc2dc\uac04 \ud588\uc5b4\uc694?",
       "reveals": "Asks about something already said in the sentence."
      },
      {
       "id": "b",
-      "text": "시험은 봤어요? 결과는 어때요?",
+      "text": "\uc2dc\ud5d8\uc740 \ubd24\uc5b4\uc694? \uacb0\uacfc\ub294 \uc5b4\ub54c\uc694?",
       "reveals": "Sees that her sentence may be from before the test."
      },
      {
       "id": "c",
-      "text": "시험이 많이 어려웠어요?",
+      "text": "\uc2dc\ud5d8\uc774 \ub9ce\uc774 \uc5b4\ub824\uc6e0\uc5b4\uc694?",
       "reveals": "Takes it for granted that she has taken the test."
      }
     ],
     "correct": [
      "b"
     ],
-    "explain": "하은's sentence shows a worry and her practice. It does not say whether she took the test yet, or what the result was, so the question has to ask for both.",
+    "explain": "\ud558\uc740's sentence shows a worry and her practice. It does not say whether she took the test yet, or what the result was, so the question has to ask for both.",
     "hints": [
-     "Read 하은's sentence again: does it say that the test is over?",
+     "Read \ud558\uc740's sentence again: does it say that the test is over?",
      "Which question would give you the result, even if the test is still ahead?"
     ]
    },
    {
     "id": "s3",
     "kind": "write",
-    "prompt": "Write two Korean sentences about driving tests, one where someone failed because of something unwanted (-는 바람에 or 떨어졌어요), and one where someone almost failed but passed (-ㄹ 뻔했다).",
-    "placeholder": "예: ...",
+    "prompt": "Write two Korean sentences about driving tests, one where someone failed because of something unwanted (-\ub294 \ubc14\ub78c\uc5d0 or \ub5a8\uc5b4\uc84c\uc5b4\uc694), and one where someone almost failed but passed (-\u3139 \ubed4\ud588\ub2e4).",
+    "placeholder": "\uc608: ...",
     "minChars": 15,
     "checks": [
      {
       "id": "w1",
-      "label": "a failure sentence (바람에 / 떨어졌 / 불합격 / 못 붙)",
+      "label": "a failure sentence (\ubc14\ub78c\uc5d0 / \ub5a8\uc5b4\uc84c / \ubd88\ud569\uaca9 / \ubabb \ubd99)",
       "mode": "any",
       "patterns": [
-       "바람에",
-       "떨어졌",
-       "불합격",
-       "못 붙"
+       "\ubc14\ub78c\uc5d0",
+       "\ub5a8\uc5b4\uc84c",
+       "\ubd88\ud569\uaca9",
+       "\ubabb \ubd99"
       ]
      },
      {
       "id": "w2",
-      "label": "a near-miss sentence (-ㄹ 뻔)",
+      "label": "a near-miss sentence (-\u3139 \ubed4)",
       "mode": "any",
       "patterns": [
-       "뻔"
+       "\ubed4"
       ]
      },
      {
       "id": "w3",
-      "label": "mentions the test or passing (시험 / 붙 / 합격)",
+      "label": "mentions the test or passing (\uc2dc\ud5d8 / \ubd99 / \ud569\uaca9)",
       "mode": "any",
       "patterns": [
-       "시험",
-       "붙",
-       "합격"
+       "\uc2dc\ud5d8",
+       "\ubd99",
+       "\ud569\uaca9"
       ]
      }
     ],
@@ -1813,35 +1816,35 @@
     ],
     "modelAnswers": [
      {
-      "text": "너무 긴장하는 바람에 시험에 떨어졌어요. 이번에는 떨어질 뻔했는데 겨우 붙었어요."
+      "text": "\ub108\ubb34 \uae34\uc7a5\ud558\ub294 \ubc14\ub78c\uc5d0 \uc2dc\ud5d8\uc5d0 \ub5a8\uc5b4\uc84c\uc5b4\uc694. \uc774\ubc88\uc5d0\ub294 \ub5a8\uc5b4\uc9c8 \ubed4\ud588\ub294\ub370 \uaca8\uc6b0 \ubd99\uc5c8\uc5b4\uc694."
      },
      {
-      "text": "시험에 떨어졌어요. 하지만 지난번에는 떨어질 뻔했는데 붙었어요."
+      "text": "\uc2dc\ud5d8\uc5d0 \ub5a8\uc5b4\uc84c\uc5b4\uc694. \ud558\uc9c0\ub9cc \uc9c0\ub09c\ubc88\uc5d0\ub294 \ub5a8\uc5b4\uc9c8 \ubed4\ud588\ub294\ub370 \ubd99\uc5c8\uc5b4\uc694."
      }
     ],
     "badAnswers": [
      {
-      "text": "시험에 떨어질 뻔했어요.",
+      "text": "\uc2dc\ud5d8\uc5d0 \ub5a8\uc5b4\uc9c8 \ubed4\ud588\uc5b4\uc694.",
       "why": "Only the near-miss; there is no sentence where the person really failed."
      },
      {
-      "text": "긴장하는 바람에 시험에 떨어졌어요.",
+      "text": "\uae34\uc7a5\ud558\ub294 \ubc14\ub78c\uc5d0 \uc2dc\ud5d8\uc5d0 \ub5a8\uc5b4\uc84c\uc5b4\uc694.",
       "why": "Only the failure; there is no near-miss sentence."
      }
     ],
     "humanReview": "Whether the near-miss sentence really means 'almost but did not', and whether the failure sentence is natural.",
     "hints": [
      "Write the failure sentence first and end it with a past verb.",
-     "For the near miss, use the verb stem + -ㄹ 뻔했는데 and say what happened in the end."
+     "For the near miss, use the verb stem + -\u3139 \ubed4\ud588\ub294\ub370 and say what happened in the end."
     ]
    }
   ],
   "rubric": [
    {
     "criterion": "Reading the endings",
-    "full": "Picks 지민 and 도현 and says why 서준 and 하은 are not definite failures",
+    "full": "Picks \uc9c0\ubbfc and \ub3c4\ud604 and says why \uc11c\uc900 and \ud558\uc740 are not definite failures",
     "partial": "Picks one of the two",
-    "none": "Includes 서준 or 하은"
+    "none": "Includes \uc11c\uc900 or \ud558\uc740"
    },
    {
     "criterion": "What else is needed",
@@ -1857,15 +1860,15 @@
    }
   ],
   "alternatives": [
-   "In s1, choosing only 지민 or only 도현 is valid but incomplete.",
-   "In s2 a student may ask 시험 결과가 나왔어요? alone; this is also a good question."
+   "In s1, choosing only \uc9c0\ubbfc or only \ub3c4\ud604 is valid but incomplete.",
+   "In s2 a student may ask \uc2dc\ud5d8 \uacb0\uacfc\uac00 \ub098\uc654\uc5b4\uc694? alone; this is also a good question."
   ],
   "hardCases": [
-   "도현's sentence does not say what he did next. Failing is the natural reading of 붙을 줄 알았는데 떨어졌어요, which says 'failed' directly.",
-   "하은 could have passed or failed; the task treats her sentence as not settling it."
+   "\ub3c4\ud604's sentence does not say what he did next. Failing is the natural reading of \ubd99\uc744 \uc904 \uc54c\uc558\ub294\ub370 \ub5a8\uc5b4\uc84c\uc5b4\uc694, which says 'failed' directly.",
+   "\ud558\uc740 could have passed or failed; the task treats her sentence as not settling it."
   ],
   "cautions": {
-   "language": "-ㄹ 뻔했다 always means 'it did not happen'. Learners often read it as 'it happened'.",
+   "language": "-\u3139 \ubed4\ud588\ub2e4 always means 'it did not happen'. Learners often read it as 'it happened'.",
    "culture": "A licence test with a written and a road part is common; no cultural knowledge is needed.",
    "accessibility": "No images. The four people are shown as four lines in text."
   },
@@ -1877,50 +1880,51 @@
    "human": [
     "Whether the sentences are natural and use the endings correctly"
    ]
-  }
+  },
+  "status": "reviewed-ai"
  },
  {
   "id": "z-k-01-09",
   "subject": "korean",
   "grade": "K9",
   "cell": "korean|L5|communication",
-  "topic": "Summarising amounts with -(으)ㄴ/는 셈이다",
+  "topic": "Summarising amounts with -(\uc73c)\u3134/\ub294 \uc148\uc774\ub2e4",
   "level": 3,
   "levelLabel": "Advanced",
   "title": "Is the summary fair?",
   "uiLang": "en",
   "format": "find-error-fix",
   "generative": true,
-  "goal": "Check whether a '-(으)ㄴ/는 셈이다' summary really follows from the numbers before it, decide which summaries of one case are fair, and write your own.",
+  "goal": "Check whether a '-(\uc73c)\u3134/\ub294 \uc148\uc774\ub2e4' summary really follows from the numbers before it, decide which summaries of one case are fair, and write your own.",
   "thinking": [
    "Checking a summary against numbers",
    "Judging which approximations are fair",
    "Producing a summary that follows from given facts"
   ],
-  "differsFromPlain": "Plain practice asks you to fill in -(으)ㄴ/는 셈이다 with its meaning. Here you test whether the summary is justified by the figures and which ways of rounding are fair.",
+  "differsFromPlain": "Plain practice asks you to fill in -(\uc73c)\u3134/\ub294 \uc148\uc774\ub2e4 with its meaning. Here you test whether the summary is justified by the figures and which ways of rounding are fair.",
   "prerequisites": [
-   "Knows -(으)ㄴ/는 셈이다 ('it amounts to')",
-   "Can use -씩 for 'each'",
-   "Knows 1시간 = 60분"
+   "Knows -(\uc73c)\u3134/\ub294 \uc148\uc774\ub2e4 ('it amounts to')",
+   "Can use -\uc529 for 'each'",
+   "Knows 1\uc2dc\uac04 = 60\ubd84"
   ],
   "minutes": 10,
   "curriculum": null,
-  "material": "Four people summarise their practice with -(으)ㄴ/는 셈이다 ('it comes to ...'). Each summary should follow from the numbers before it. (1시간 = 60분)\n\n1. 매일 30분씩 일주일 동안 걸었으니까 모두 세 시간 반을 걸은 셈이에요.\n2. 하루에 20분씩 6일 연습했으니까 한 시간 연습한 셈이에요.\n3. 일주일에 세 번, 한 번에 40분씩 수영하니까 한 주에 두 시간 수영하는 셈이에요.\n4. 하루에 두 시간씩 5일 공부했으니까 열 시간 공부한 셈이에요.",
+  "material": "Four people summarise their practice with -(\uc73c)\u3134/\ub294 \uc148\uc774\ub2e4 ('it comes to ...'). Each summary should follow from the numbers before it. (1\uc2dc\uac04 = 60\ubd84)\n\n1. \ub9e4\uc77c 30\ubd84\uc529 \uc77c\uc8fc\uc77c \ub3d9\uc548 \uac78\uc5c8\uc73c\ub2c8\uae4c \ubaa8\ub450 \uc138 \uc2dc\uac04 \ubc18\uc744 \uac78\uc740 \uc148\uc774\uc5d0\uc694.\n2. \ud558\ub8e8\uc5d0 20\ubd84\uc529 6\uc77c \uc5f0\uc2b5\ud588\uc73c\ub2c8\uae4c \ud55c \uc2dc\uac04 \uc5f0\uc2b5\ud55c \uc148\uc774\uc5d0\uc694.\n3. \uc77c\uc8fc\uc77c\uc5d0 \uc138 \ubc88, \ud55c \ubc88\uc5d0 40\ubd84\uc529 \uc218\uc601\ud558\ub2c8\uae4c \ud55c \uc8fc\uc5d0 \ub450 \uc2dc\uac04 \uc218\uc601\ud558\ub294 \uc148\uc774\uc5d0\uc694.\n4. \ud558\ub8e8\uc5d0 \ub450 \uc2dc\uac04\uc529 5\uc77c \uacf5\ubd80\ud588\uc73c\ub2c8\uae4c \uc5f4 \uc2dc\uac04 \uacf5\ubd80\ud55c \uc148\uc774\uc5d0\uc694.",
   "steps": [
    {
     "id": "s1",
     "kind": "pickLine",
     "prompt": "Which summary does NOT follow from its numbers?",
     "lines": [
-     "매일 30분씩 일주일 동안 걸었으니까 모두 세 시간 반을 걸은 셈이에요.",
-     "하루에 20분씩 6일 연습했으니까 한 시간 연습한 셈이에요.",
-     "일주일에 세 번, 한 번에 40분씩 수영하니까 한 주에 두 시간 수영하는 셈이에요.",
-     "하루에 두 시간씩 5일 공부했으니까 열 시간 공부한 셈이에요."
+     "\ub9e4\uc77c 30\ubd84\uc529 \uc77c\uc8fc\uc77c \ub3d9\uc548 \uac78\uc5c8\uc73c\ub2c8\uae4c \ubaa8\ub450 \uc138 \uc2dc\uac04 \ubc18\uc744 \uac78\uc740 \uc148\uc774\uc5d0\uc694.",
+     "\ud558\ub8e8\uc5d0 20\ubd84\uc529 6\uc77c \uc5f0\uc2b5\ud588\uc73c\ub2c8\uae4c \ud55c \uc2dc\uac04 \uc5f0\uc2b5\ud55c \uc148\uc774\uc5d0\uc694.",
+     "\uc77c\uc8fc\uc77c\uc5d0 \uc138 \ubc88, \ud55c \ubc88\uc5d0 40\ubd84\uc529 \uc218\uc601\ud558\ub2c8\uae4c \ud55c \uc8fc\uc5d0 \ub450 \uc2dc\uac04 \uc218\uc601\ud558\ub294 \uc148\uc774\uc5d0\uc694.",
+     "\ud558\ub8e8\uc5d0 \ub450 \uc2dc\uac04\uc529 5\uc77c \uacf5\ubd80\ud588\uc73c\ub2c8\uae4c \uc5f4 \uc2dc\uac04 \uacf5\ubd80\ud55c \uc148\uc774\uc5d0\uc694."
     ],
     "wrong": [
      1
     ],
-    "explain": "Line 2: 20분 x 6일 = 120분 = 2시간, not 한 시간. Line 1: 30분 x 7 = 210분 = 3시간 반 (correct). Line 3: 40분 x 3 = 120분 = 2시간 (correct). Line 4: 2시간 x 5 = 10시간 (correct).",
+    "explain": "Line 2: 20\ubd84 x 6\uc77c = 120\ubd84 = 2\uc2dc\uac04, not \ud55c \uc2dc\uac04. Line 1: 30\ubd84 x 7 = 210\ubd84 = 3\uc2dc\uac04 \ubc18 (correct). Line 3: 40\ubd84 x 3 = 120\ubd84 = 2\uc2dc\uac04 (correct). Line 4: 2\uc2dc\uac04 x 5 = 10\uc2dc\uac04 (correct).",
     "hints": [
      "Take one line at a time and test whether its total really follows from its own numbers.",
      "Use the same unit for the numbers and for the total before you compare."
@@ -1929,37 +1933,37 @@
    {
     "id": "s2",
     "kind": "choose",
-    "prompt": "Someone exercises 일주일에 네 번, 한 번에 50분씩. Which summaries are fair? (남짓 means 'a little over'.) Choose all that apply.",
+    "prompt": "Someone exercises \uc77c\uc8fc\uc77c\uc5d0 \ub124 \ubc88, \ud55c \ubc88\uc5d0 50\ubd84\uc529. Which summaries are fair? (\ub0a8\uc9d3 means 'a little over'.) Choose all that apply.",
     "options": [
      {
       "id": "a",
-      "text": "일주일에 두 시간 반 운동하는 셈이에요.",
+      "text": "\uc77c\uc8fc\uc77c\uc5d0 \ub450 \uc2dc\uac04 \ubc18 \uc6b4\ub3d9\ud558\ub294 \uc148\uc774\uc5d0\uc694.",
       "reveals": "Takes off 50 minutes; 2.5 hours is 150 minutes."
      },
      {
       "id": "b",
-      "text": "일주일에 네 시간 남짓 운동하는 셈이에요.",
-      "reveals": "남짓 means a little over the figure named, so 네 시간 남짓 is over 240 minutes, more than the 200 minutes here."
+      "text": "\uc77c\uc8fc\uc77c\uc5d0 \ub124 \uc2dc\uac04 \ub0a8\uc9d3 \uc6b4\ub3d9\ud558\ub294 \uc148\uc774\uc5d0\uc694.",
+      "reveals": "\ub0a8\uc9d3 means a little over the figure named, so \ub124 \uc2dc\uac04 \ub0a8\uc9d3 is over 240 minutes, more than the 200 minutes here."
      },
      {
       "id": "c",
-      "text": "일주일에 세 시간 남짓 운동하는 셈이에요."
+      "text": "\uc77c\uc8fc\uc77c\uc5d0 \uc138 \uc2dc\uac04 \ub0a8\uc9d3 \uc6b4\ub3d9\ud558\ub294 \uc148\uc774\uc5d0\uc694."
      },
      {
       "id": "d",
-      "text": "일주일에 거의 다섯 시간 운동하는 셈이에요.",
-      "reveals": "Rounds 3 hours 20 minutes far up; '거의 다섯 시간' is about 4 h 40 min or more."
+      "text": "\uc77c\uc8fc\uc77c\uc5d0 \uac70\uc758 \ub2e4\uc12f \uc2dc\uac04 \uc6b4\ub3d9\ud558\ub294 \uc148\uc774\uc5d0\uc694.",
+      "reveals": "Rounds 3 hours 20 minutes far up; '\uac70\uc758 \ub2e4\uc12f \uc2dc\uac04' is about 4 h 40 min or more."
      },
      {
       "id": "e",
-      "text": "일주일에 200분, 그러니까 세 시간 20분쯤 운동하는 셈이에요."
+      "text": "\uc77c\uc8fc\uc77c\uc5d0 \uc138 \uc2dc\uac04 \ubc18 \uac00\uae4c\uc774 \uc6b4\ub3d9\ud558\ub294 \uc148\uc774\uc5d0\uc694."
      }
     ],
     "correct": [
      "c",
      "e"
     ],
-    "explain": "4 x 50 = 200분 = 3시간 20분, which is a little over 3 hours (세 시간 남짓) and can also be said exactly (200분, 세 시간 20분쯤). 거의 다섯 시간 (300분), 두 시간 반 (150분) and 네 시간 남짓 (over 240분) are all far off.",
+    "explain": "4 x 50 = 200\ubd84 = 3\uc2dc\uac04 20\ubd84, which is a little over 3 hours (\uc138 \uc2dc\uac04 \ub0a8\uc9d3) and just under \uc138 \uc2dc\uac04 \ubc18 (210\ubd84). \uac70\uc758 \ub2e4\uc12f \uc2dc\uac04 (300\ubd84), \ub450 \uc2dc\uac04 \ubc18 (150\ubd84) and \ub124 \uc2dc\uac04 \ub0a8\uc9d3 (over 240\ubd84) are all far off.",
     "hints": [
      "Express the weekly time in one unit first.",
      "Then ask of each option: is the figure it names close to that time?"
@@ -1969,27 +1973,27 @@
    {
     "id": "s3",
     "kind": "write",
-    "prompt": "Write your own summary with -(으)ㄴ/는 셈이에요: give a rate with -씩 or 한 번에 ..., a number of days or times, and the total that follows.",
-    "placeholder": "예: ...",
+    "prompt": "Write your own summary with -(\uc73c)\u3134/\ub294 \uc148\uc774\uc5d0\uc694 about \ud558\ub8e8\uc5d0 30\ubd84\uc529 for 2, 4, 6 or 8 days: say the rate with -\uc529, the number of days, and the total that follows.",
+    "placeholder": "\uc608: \ud558\ub8e8\uc5d0 30\ubd84\uc529 ...\uc77c ...",
     "minChars": 15,
     "checks": [
      {
       "id": "w1",
-      "label": "uses 셈이 / 셈입니다",
+      "label": "uses \uc148\uc774 / \uc148\uc785\ub2c8\ub2e4",
       "mode": "any",
       "patterns": [
-       "셈(이|입|인)"
+       "\uc148(\uc774|\uc785|\uc778)"
       ]
      },
      {
       "id": "w2",
-      "label": "gives a rate (-씩 / 마다 / 한 번에)",
+      "label": "gives a rate (-\uc529 / \ub9c8\ub2e4 / \ud55c \ubc88\uc5d0)",
       "mode": "any",
       "patterns": [
-       "씩",
-       "마다",
-       "한 번에",
-       "에 (한|두|세|네|\\d+)\\s?번"
+       "\uc529",
+       "\ub9c8\ub2e4",
+       "\ud55c \ubc88\uc5d0",
+       "\uc5d0 (\ud55c|\ub450|\uc138|\ub124|\\d+)\\s?\ubc88"
       ]
      },
      {
@@ -1998,52 +2002,71 @@
       "mode": "any",
       "patterns": [
        "\\d",
-       "(한|두|세|네|다섯|여섯|일곱|여덟|아홉|열)\\s?(시간|번|주|일|분|개|권|명|달)"
+       "(\ud55c|\ub450|\uc138|\ub124|\ub2e4\uc12f|\uc5ec\uc12f|\uc77c\uacf1|\uc5ec\ub35f|\uc544\ud649|\uc5f4)\\s?(\uc2dc\uac04|\ubc88|\uc8fc|\uc77c|\ubd84|\uac1c|\uad8c|\uba85|\ub2ec)"
       ]
      },
      {
       "id": "w4",
-      "label": "states a total after a connector, before 셈이",
+      "label": "states a total after a connector, before \uc148\uc774",
       "mode": "any",
       "patterns": [
-       "(니까|어서|아서|면)[^.]*(\\d|한|두|세|네|다섯|여섯|일곱|여덟|아홉|열|스물)[^.]*셈"
+       "(\ub2c8\uae4c|\ub2c8|\uc5b4\uc11c|\uc544\uc11c|\uba74|\ub294\ub370|\u3134\ub370|\uace0)[\\s\\S]*(\\d|\ud55c|\ub450|\uc138|\ub124|\ub2e4\uc12f|\uc5ec\uc12f|\uc77c\uacf1|\uc5ec\ub35f|\uc544\ud649|\uc5f4|\uc2a4\ubb3c)[\\s\\S]*\uc148"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "the total matches the number of days (2 days = 1 hour, 4 = 2 hours, 6 = 3 hours, 8 = 4 hours)",
+      "mode": "any",
+      "patterns": [
+       "((?<![\\d.])2\\s?\uc77c|\uc774\ud2c0|(?<![\\d])\uc774\\s?\uc77c)[\\s\\S]*((?<![\uc5f4\uc2a4])(\ud55c\\s?\uc2dc\uac04|1\\s?\uc2dc\uac04|60\\s?\ubd84))",
+       "((?<![\\d.])4\\s?\uc77c|\ub098\ud758)[\\s\\S]*((?<![\uc5f4\uc2a4])(\ub450\\s?\uc2dc\uac04|2\\s?\uc2dc\uac04|120\\s?\ubd84))",
+       "((?<![\\d.])6\\s?\uc77c|\uc5ff\uc0c8)[\\s\\S]*((?<![\uc5f4\uc2a4])(\uc138\\s?\uc2dc\uac04|3\\s?\uc2dc\uac04|180\\s?\ubd84))",
+       "((?<![\\d.])8\\s?\uc77c|\uc5ec\ub4dc\ub808)[\\s\\S]*((?<![\uc5f4\uc2a4])(\ub124\\s?\uc2dc\uac04|4\\s?\uc2dc\uac04|240\\s?\ubd84))"
       ]
      }
     ],
     "selfAssess": [
      "Does the total in my summary follow from my own numbers?",
      "Did I check the calculation before writing the total?",
-     "Is 셈이에요 the right ending for 'it amounts to', not just 'I did it'?"
+     "Is \uc148\uc774\uc5d0\uc694 the right ending for 'it amounts to', not just 'I did it'?"
     ],
     "modelAnswers": [
      {
-      "text": "하루에 30분씩 4일 걸었으니까 모두 두 시간 걸은 셈이에요."
+      "text": "\ud558\ub8e8\uc5d0 30\ubd84\uc529 4\uc77c \uac78\uc5c8\uc73c\ub2c8\uae4c \ubaa8\ub450 \ub450 \uc2dc\uac04 \uac78\uc740 \uc148\uc774\uc5d0\uc694."
      },
      {
-      "text": "일주일에 두 번, 한 번에 45분씩 수영하니까 한 주에 한 시간 반 수영하는 셈이에요."
+      "text": "\ud558\ub8e8\uc5d0 30\ubd84\uc529 6\uc77c \uc5f0\uc2b5\ud588\uc73c\ub2c8\uae4c \uc138 \uc2dc\uac04 \uc5f0\uc2b5\ud55c \uc148\uc774\uc5d0\uc694."
+     },
+     {
+      "text": "\ud558\ub8e8\uc5d0 30\ubd84\uc529 8\uc77c \uc6b4\ub3d9\ud558\ub2c8\uae4c \ub124 \uc2dc\uac04 \uc6b4\ub3d9\ud558\ub294 \uc148\uc774\uc5d0\uc694.",
+      "note": "8 x 30 = 240\ubd84 = 4\uc2dc\uac04."
      }
     ],
     "badAnswers": [
      {
-      "text": "열심히 운동한 셈이에요.",
+      "text": "\uc5f4\uc2ec\ud788 \uc6b4\ub3d9\ud55c \uc148\uc774\uc5d0\uc694.",
       "why": "No rate and no numbers; it does not say what it amounts to."
      },
      {
-      "text": "하루에 30분씩 4일 걸었어요.",
-      "why": "Has the numbers but no 셈이에요 and no total."
+      "text": "\ud558\ub8e8\uc5d0 30\ubd84\uc529 4\uc77c \uac78\uc5c8\uc5b4\uc694.",
+      "why": "Has the numbers but no \uc148\uc774\uc5d0\uc694 and no total."
+     },
+     {
+      "text": "\ud558\ub8e8\uc5d0 30\ubd84\uc529 4\uc77c \uac78\uc5c8\uc73c\ub2c8\uae4c \ubaa8\ub450 \ud55c \uc2dc\uac04 \uac78\uc740 \uc148\uc774\uc5d0\uc694.",
+      "why": "The total does not follow: 30\ubd84 x 4 = 120\ubd84 = \ub450 \uc2dc\uac04, not \ud55c \uc2dc\uac04."
      }
     ],
-    "humanReview": "Whether the calculation behind the written total is correct. The surface checks cannot do arithmetic, so the student must check it (see the self-check list).",
+    "humanReview": "Whether the written total really follows from the numbers is now checked for the allowed day counts only; a person should still read the naturalness of the sentence.",
     "hints": [
-     "Pick simple numbers first, such as 30분 x 4일.",
-     "Do the calculation on the side, then write the sentence with the total."
+     "Choose one of the day counts (2, 4, 6 or 8) and work out the minutes first.",
+     "Convert the minutes to hours, then write the sentence with that total."
     ]
    }
   ],
   "rubric": [
    {
     "criterion": "Checking the summaries",
-    "full": "Finds line 2 and gives the right total (2시간)",
+    "full": "Finds line 2 and gives the right total (2\uc2dc\uac04)",
     "partial": "Finds line 2 without a total",
     "none": "Picks another line"
    },
@@ -2057,19 +2080,19 @@
     "criterion": "Own summary",
     "full": "The total follows from the numbers",
     "partial": "The sentence is well formed but the total is wrong",
-    "none": "Not a 셈이다 sentence"
+    "none": "Not a \uc148\uc774\ub2e4 sentence"
    }
   ],
   "alternatives": [
    "In s2, 'a little over three hours' or 'about 3 hours 20 minutes' are both fair summaries.",
-   "A student may point out that line 4 is exact, so 셈이다 is not needed; the task treats it as correct."
+   "A student may point out that line 4 is exact, so \uc148\uc774\ub2e4 is not needed; the task treats it as correct."
   ],
   "hardCases": [
-   "'거의 네 시간' for 3시간 20분 is borderline: it is 40 minutes short. The task does not use it as an option.",
-   "셈이다 is sometimes used when the amounts are exactly equal. Both uses are fine here."
+   "'\uac70\uc758 \ub124 \uc2dc\uac04' for 3\uc2dc\uac04 20\ubd84 is borderline: it is 40 minutes short. The task does not use it as an option.",
+   "\uc148\uc774\ub2e4 is sometimes used when the amounts are exactly equal. Both uses are fine here."
   ],
   "cautions": {
-   "language": "-(으)ㄴ/는 셈이다 means 'it amounts to'; it is not the same as -(으)ㄹ 셈이다 ('I intend to'). The task uses only the 'amounts to' meaning.",
+   "language": "-(\uc73c)\u3134/\ub294 \uc148\uc774\ub2e4 means 'it amounts to'; it is not the same as -(\uc73c)\u3139 \uc148\uc774\ub2e4 ('I intend to'). The task uses only the 'amounts to' meaning.",
    "culture": "Walking, swimming and studying with the number of days are everyday topics; no cultural knowledge is needed.",
    "accessibility": "No images. All numbers are written in digits and in Korean number words; the calculation can be done with the numbers read aloud."
   },
@@ -2077,41 +2100,41 @@
    "auto": [
     "Which line is picked (s1)",
     "The fair summaries (s2)",
-    "Surface checks of s3 (셈이, a rate, numbers)"
+    "Surface checks of s3 (\uc148\uc774, a rate, numbers)"
    ],
    "human": [
     "Whether the total in the student's sentence is correct and the sentence is natural"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "z-k-01-10",
   "subject": "korean",
   "grade": "K9",
   "cell": "korean|L5|communication",
-  "topic": "Testing a general claim with -(으)ㄹ수록",
+  "topic": "Testing a general claim with -(\uc73c)\u3139\uc218\ub85d",
   "level": 3,
   "levelLabel": "Advanced",
   "title": "Is pricier always better?",
   "uiLang": "en",
   "format": "build-many-verify",
   "generative": true,
-  "goal": "Judge how well a '-(으)ㄹ수록' claim fits a table, build counterexample pairs from the table, and reword the claim so that it fits the data.",
+  "goal": "Judge how well a '-(\uc73c)\u3139\uc218\ub85d' claim fits a table, build counterexample pairs from the table, and reword the claim so that it fits the data.",
   "thinking": [
    "Testing a general claim against data",
    "Building counterexamples that meet exact conditions",
    "Rewording a claim to the strength the data supports"
   ],
-  "differsFromPlain": "Plain practice asks you to complete '-(으)ㄹ수록 ... -아/어지다'. Here the sentence is a general claim: you test it on data, find the cases that break it, and rewrite it.",
+  "differsFromPlain": "Plain practice asks you to complete '-(\uc73c)\u3139\uc218\ub85d ... -\uc544/\uc5b4\uc9c0\ub2e4'. Here the sentence is a general claim: you test it on data, find the cases that break it, and rewrite it.",
   "prerequisites": [
-   "Knows -(으)ㄹ수록 ('the more ... the more ...')",
-   "Knows 대체로, 항상, 꼭 and negative endings",
+   "Knows -(\uc73c)\u3139\uc218\ub85d ('the more ... the more ...')",
+   "Knows \ub300\uccb4\ub85c, \ud56d\uc0c1, \uaf2d and negative endings",
    "Can compare two numbers in a table"
   ],
   "minutes": 12,
   "curriculum": null,
-  "material": "A blogger writes: “커피는 값이 비쌀수록 만족도가 높다.” (-(으)ㄹ수록 = the more ..., the more ...). A survey of six cafes gave this table. 만족도 = satisfaction score out of 10. The cafes are numbered from the cheapest (1) to the most expensive (6).\n\n번호 1: 3,000원, 만족도 6점\n번호 2: 4,000원, 만족도 8점\n번호 3: 5,000원, 만족도 7점\n번호 4: 6,500원, 만족도 9점\n번호 5: 8,000원, 만족도 6점\n번호 6: 9,000원, 만족도 8점",
+  "material": "A blogger writes: \u201c\ucee4\ud53c\ub294 \uac12\uc774 \ube44\uc300\uc218\ub85d \ub9cc\uc871\ub3c4\uac00 \ub192\ub2e4.\u201d (-(\uc73c)\u3139\uc218\ub85d = the more ..., the more ...). A survey of six cafes gave this table. \ub9cc\uc871\ub3c4 = satisfaction score out of 10. The cafes are numbered from the cheapest (1) to the most expensive (6).\n\n\ubc88\ud638 1: 3,000\uc6d0, \ub9cc\uc871\ub3c4 6\uc810\n\ubc88\ud638 2: 4,000\uc6d0, \ub9cc\uc871\ub3c4 8\uc810\n\ubc88\ud638 3: 5,000\uc6d0, \ub9cc\uc871\ub3c4 7\uc810\n\ubc88\ud638 4: 6,500\uc6d0, \ub9cc\uc871\ub3c4 9\uc810\n\ubc88\ud638 5: 8,000\uc6d0, \ub9cc\uc871\ub3c4 6\uc810\n\ubc88\ud638 6: 9,000\uc6d0, \ub9cc\uc871\ub3c4 8\uc810",
   "steps": [
    {
     "id": "s1",
@@ -2120,27 +2143,27 @@
     "options": [
      {
       "id": "a",
-      "text": "It fits every pair: the dearer cafe always scores higher.",
-      "reveals": "Looks at the general direction of the table only and skips the individual pairs."
+      "text": "It fits all but one cafe: only \ubc88\ud638 5 breaks the pattern.",
+      "reveals": "Blames one odd cafe and misses other pairs that break it, such as \ubc88\ud638 2 and 3."
      },
      {
       "id": "b",
-      "text": "It is reversed: the cheaper cafe always scores higher.",
-      "reveals": "Notices a few cheaper-and-better pairs and turns them into a rule."
-     },
-     {
-      "id": "c",
-      "text": "Not for every pair, but the dearer cafes score a little higher on average.",
+      "text": "Not every pair agrees, but the dearer cafes score a little higher on average.",
       "reveals": "Compares pairs and the overall pattern separately."
      },
      {
+      "id": "c",
+      "text": "It fits almost every pair; only a few ties go against it.",
+      "reveals": "Five pairs have a dearer cafe with a LOWER score, not just ties."
+     },
+     {
       "id": "d",
-      "text": "It fits all but one cafe: only 번호 5 breaks the pattern.",
-      "reveals": "Blames one odd cafe and misses other pairs that break it, such as 번호 2 and 3."
+      "text": "It is reversed: on average the dearer cafes score lower.",
+      "reveals": "The three dearer cafes average about 7.7 points and the three cheaper ones 7.0, so the average does not go the other way."
      }
     ],
     "correct": [
-     "c"
+     "b"
     ],
     "explain": "Some pairs agree with the claim (1 and 2), some break it (2 and 3, 4 and 5). The three dearer cafes average about 7.7 points and the three cheaper ones 7.0, so a weak trend exists, but the claim does not hold for every pair.",
     "hints": [
@@ -2203,7 +2226,7 @@
       "b": 2
      }
     ],
-    "explain": "Five pairs break the claim: (2,3), (2,5), (3,5), (4,5), (4,6). For example, 번호 2 costs 4,000원 and scores 8, but the dearer 번호 3 (5,000원) scores only 7. Pairs with equal scores (such as 2 and 6) are not 'higher' either, but they are not listed here.",
+    "explain": "Five pairs break the claim: (2,3), (2,5), (3,5), (4,5), (4,6). For example, \ubc88\ud638 2 costs 4,000\uc6d0 and scores 8, but the dearer \ubc88\ud638 3 (5,000\uc6d0) scores only 7. Pairs with equal scores (such as 2 and 6) are not 'higher' either, but they are not listed here.",
     "hints": [
      "Choose a cafe with a high score and look at the dearer cafes after it.",
      "Is there a dearer cafe with a lower score?"
@@ -2214,43 +2237,54 @@
     "id": "s3",
     "kind": "write",
     "prompt": "Rewrite the blogger's sentence in Korean so that it fits the table better.",
-    "placeholder": "예: ...",
+    "placeholder": "\uc608: ...",
     "minChars": 12,
     "checks": [
      {
       "id": "w1",
-      "label": "weakens or limits the claim (대체로, 항상 ... 아니다, 편이, 예외 ...)",
+      "label": "limits the claim (not always, a tendency, exceptions exist)",
       "mode": "any",
       "patterns": [
-       "(항상|꼭|반드시|늘|무조건)[^.]{0,15}(아니|아닙|않|없)",
-       "대체로",
-       "편이",
-       "경향",
-       "예외",
-       "경우가",
-       "수도 있",
-       "그렇지는 않",
-       "그런 것은 아니",
-       "아닐 수"
+       "(\ud56d\uc0c1|\uaf2d|\ubc18\ub4dc\uc2dc|\ub298|\ubb34\uc870\uac74|\uc5b8\uc81c\ub098|\ubaa8\ub450|\ubaa8\ub4e0)[^.]{0,15}(\uc544\ub2c8|\uc544\ub2d9|\uc54a|\uc5c6)",
+       "\ub192(\uc740|\uc9c0\ub294|\ub2e4\uace0\\s*\ud560)[^.]{0,8}(\uc544\ub2c8|\uc544\ub2d9|\uc54a|\uc5c6)",
+       "\ub300\uccb4\ub85c",
+       "\ud3b8\uc774",
+       "\uacbd\ud5a5",
+       "\uc608\uc678(\ub3c4|\uac00)\\s*(\uc788|\ub9ce)",
+       "\uadf8\ub807\uc9c0\ub294 \uc54a",
+       "\uadf8\ub7f0 \uac83\uc740 \uc544\ub2c8",
+       "\uc544\ub2d0 \uc218",
+       "\uc218\ub3c4 \uc788"
       ]
      },
      {
       "id": "w2",
-      "label": "is about price (비싸 / 값 / 가격)",
+      "label": "is about price (\ube44\uc2f8 / \uac12 / \uac00\uaca9)",
       "mode": "any",
       "patterns": [
-       "비싸",
-       "비쌀",
-       "값",
-       "가격"
+       "\ube44\uc2f8",
+       "\ube44\uc300",
+       "\uac12",
+       "\uac00\uaca9"
       ]
      },
      {
       "id": "w3",
-      "label": "is about satisfaction (만족)",
+      "label": "is about satisfaction (\ub9cc\uc871)",
       "mode": "any",
       "patterns": [
-       "만족"
+       "\ub9cc\uc871"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "does not say there are no exceptions or that dearer means lower",
+      "mode": "none",
+      "patterns": [
+       "\uc608\uc678\\s*\uc5c6",
+       "\uc5c6\uc774",
+       "\ube44\uc300\uc218\ub85d[^.]{0,12}\ub0ae",
+       "\ube44\uc2f8\uc9c8\uc218\ub85d[^.]{0,12}\ub0ae"
       ]
      }
     ],
@@ -2261,31 +2295,39 @@
     ],
     "modelAnswers": [
      {
-      "text": "비싸다고 해서 항상 만족도가 높은 것은 아니에요.",
+      "text": "\ube44\uc2f8\ub2e4\uace0 \ud574\uc11c \ud56d\uc0c1 \ub9cc\uc871\ub3c4\uac00 \ub192\uc740 \uac83\uc740 \uc544\ub2c8\uc5d0\uc694.",
       "note": "Says the opposite of 'always'."
      },
      {
-      "text": "대체로 비쌀수록 만족도가 높은 편이지만 예외도 있어요.",
+      "text": "\ub300\uccb4\ub85c \ube44\uc300\uc218\ub85d \ub9cc\uc871\ub3c4\uac00 \ub192\uc740 \ud3b8\uc774\uc9c0\ub9cc \uc608\uc678\ub3c4 \uc788\uc5b4\uc694.",
       "note": "Keeps the trend and admits the exceptions."
+     },
+     {
+      "text": "\ube44\uc2f8\ub2e4\uace0 \ud574\uc11c \ub9cc\uc871\ub3c4\uac00 \ub192\uc740 \uac83\uc740 \uc544\ub2c8\ub2e4.",
+      "note": "A plain negation of 'always'."
      }
     ],
     "badAnswers": [
      {
-      "text": "커피는 값이 비쌀수록 만족도가 높다.",
+      "text": "\ucee4\ud53c\ub294 \uac12\uc774 \ube44\uc300\uc218\ub85d \ub9cc\uc871\ub3c4\uac00 \ub192\ub2e4.",
       "why": "The same claim, unchanged."
      },
      {
-      "text": "만족도가 높아요.",
+      "text": "\ub9cc\uc871\ub3c4\uac00 \ub192\uc544\uc694.",
       "why": "No limit and nothing about price."
      },
      {
-      "text": "대부분 비쌀수록 만족도가 높아요.",
-      "why": "Overclaims: the table does not show that most pairs follow the claim."
+      "text": "\ucee4\ud53c\ub294 \uac12\uc774 \ube44\uc300\uc218\ub85d \uc608\uc678 \uc5c6\uc774 \ub9cc\uc871\ub3c4\uac00 \ub192\ub2e4.",
+      "why": "Claims no exceptions, but pairs such as \ubc88\ud638 2 and 3 are exceptions."
+     },
+     {
+      "text": "\ucee4\ud53c\ub294 \uac12\uc774 \ube44\uc300\uc218\ub85d \ub9cc\uc871\ub3c4\uac00 \ub0ae\uc544\uc9c0\ub294 \uacbd\ud5a5\uc774 \uc788\ub2e4.",
+      "why": "Reverses the trend: the dearer cafes score slightly higher on average."
      }
     ],
     "humanReview": "Whether the new sentence is as strong as the table supports, no more and no less.",
     "hints": [
-     "Add a word that shows the claim is not true for every pair.",
+     "Decide how strong a claim the pairs from step 2 allow, and choose wording of that strength.",
      "Compare what your new sentence says with the pairs you found in step 2: could one of them contradict it?"
     ]
    }
@@ -2319,7 +2361,7 @@
    "Six cafes are a small sample; any trend is weak evidence."
   ],
   "cautions": {
-   "language": "-(으)ㄹ수록 describes a trend ('the more ... the more'), and the blogger uses it as if it were true of every pair.",
+   "language": "-(\uc73c)\u3139\uc218\ub85d describes a trend ('the more ... the more'), and the blogger uses it as if it were true of every pair.",
    "culture": "Prices are invented; blogging about cafes is common in Korea but needs no background.",
    "accessibility": "No images. The table is given as six lines of text."
   },
@@ -2333,14 +2375,14 @@
     "Whether the reworded claim is neither too strong nor too weak"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "z-k-01-11",
   "subject": "korean",
   "grade": "K10",
   "cell": "korean|L6|communication",
-  "topic": "Scope of negation with 모두 ... -지 않다",
+  "topic": "Scope of negation with \ubaa8\ub450 ... -\uc9c0 \uc54a\ub2e4",
   "level": 3,
   "levelLabel": "Advanced",
   "title": "The notice with two readings",
@@ -2353,15 +2395,15 @@
    "Keeping the safe conclusion and narrowing it with facts",
    "Rewriting to remove an ambiguity"
   ],
-  "differsFromPlain": "Plain practice translates a sentence with 모두 and -지 않다. Here the sentence has two readings; you decide what both readings share, what each new fact rules out, and how to write each reading clearly.",
+  "differsFromPlain": "Plain practice translates a sentence with \ubaa8\ub450 and -\uc9c0 \uc54a\ub2e4. Here the sentence has two readings; you decide what both readings share, what each new fact rules out, and how to write each reading clearly.",
   "prerequisites": [
-   "Knows 모두 (all) and 아무도 / 한 명도 (nobody)",
-   "Knows negative -지 않다 and the formal -습니다 style",
+   "Knows \ubaa8\ub450 (all) and \uc544\ubb34\ub3c4 / \ud55c \uba85\ub3c4 (nobody)",
+   "Knows negative -\uc9c0 \uc54a\ub2e4 and the formal -\uc2b5\ub2c8\ub2e4 style",
    "Can read a short notice"
   ],
   "minutes": 12,
   "curriculum": null,
-  "material": "A club has 10 members (the club president 회장 is one of the 10 members). The club rule (in English): a meeting can be held only if at least 6 of the 10 members come. A notice was posted after the meeting day:\n“오늘 회의에는 회원이 모두 참석하지 않았습니다.”\nThe sentence can be read in two ways. Reading A: no member came. Reading B: not every member came (some came, some did not). Facts arrive one by one.",
+  "material": "A club has 10 members (the club president \ud68c\uc7a5 is one of the 10 members). The club rule (in English): a meeting can be held only if at least 6 of the 10 members come. A notice was posted after the meeting day:\n\u201c\uc624\ub298 \ud68c\uc758\uc5d0\ub294 \ud68c\uc6d0\uc774 \ubaa8\ub450 \ucc38\uc11d\ud558\uc9c0 \uc54a\uc558\uc2b5\ub2c8\ub2e4.\u201d\nThe sentence can be read in two ways. Reading A: no member came. Reading B: not every member came (some came, some did not). Facts arrive one by one.",
   "steps": [
    {
     "id": "s1",
@@ -2394,7 +2436,7 @@
       "after": "Under A everyone was absent and under B some were absent, so 'at least one member was absent' is true in both. Nothing else is certain yet."
      },
      {
-      "info": "Everybody agrees that the club president (회장) was at the meeting.",
+      "info": "Everybody agrees that the club president (\ud68c\uc7a5) was at the meeting.",
       "ask": "Which reading is now ruled out?",
       "options": [
        {
@@ -2419,7 +2461,7 @@
       "after": "If the president came, 'no member came' is false. Reading B, 'some came, some did not', remains."
      },
      {
-      "info": "회의는 열리지 못했습니다. (The meeting could not be held.)",
+      "info": "\ud68c\uc758\ub294 \uc5f4\ub9ac\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4. (The meeting could not be held.)",
       "ask": "How many members came, using the club rule?",
       "options": [
        {
@@ -2521,40 +2563,40 @@
     "id": "s3",
     "kind": "write",
     "prompt": "Rewrite the notice in Korean twice: one sentence that can mean only 'no member came', and one that can mean only 'not every member came'.",
-    "placeholder": "예: ...",
+    "placeholder": "\uc608: ...",
     "minChars": 15,
     "checks": [
      {
       "id": "w1",
-      "label": "a version that means nobody came (한 명도 / 아무도 ...)",
+      "label": "a version that means nobody came (\ud55c \uba85\ub3c4 / \uc544\ubb34\ub3c4 ...)",
       "mode": "any",
       "patterns": [
-       "한\\s*명도",
-       "아무도",
-       "한\\s*사람도",
-       "누구도",
-       "전원\\s*(이|가)?\\s*불참",
-       "전부\\s*불참",
-       "참석한\\s*(회원|사람)이\\s*없",
-       "참석자가\\s*없"
+       "\ud55c\\s*\uba85\ub3c4",
+       "\uc544\ubb34\ub3c4",
+       "\ud55c\\s*\uc0ac\ub78c\ub3c4",
+       "\ub204\uad6c\ub3c4",
+       "\uc804\uc6d0\\s*(\uc774|\uac00)?\\s*\ubd88\ucc38",
+       "\uc804\ubd80\\s*\ubd88\ucc38",
+       "\ucc38\uc11d\ud55c\\s*(\ud68c\uc6d0|\uc0ac\ub78c)\uc774\\s*\uc5c6",
+       "\ucc38\uc11d\uc790\uac00\\s*\uc5c6"
       ]
      },
      {
       "id": "w2",
-      "label": "a version that means not everybody came (모두 ... 것은 아니 / 일부 ...)",
+      "label": "a version that means not everybody came (\ubaa8\ub450 ... \uac83\uc740 \uc544\ub2c8 / \uc77c\ubd80 ...)",
       "mode": "any",
       "patterns": [
-       "모두\\s*(가\\s*)?참석한\\s*(것|건)은?\\s*아[니닙]",
-       "모두\\s*참석(하)?지는",
-       "전원\\s*참석한\\s*(것|건)은?\\s*아[니닙]",
-       "일부",
-       "몇몇",
-       "몇\\s*명",
-       "불참한\\s*회원이\\s*있",
-       "빠진\\s*회원",
-       "모든\\s*회원이?\\s*참석한\\s*(것|건)은?\\s*아[니닙]",
-       "모두가?\\s*참석(하)?지는",
-       "전원이?\\s*참석(하)?지는"
+       "\ubaa8\ub450\\s*(\uac00\\s*)?\ucc38\uc11d\ud55c\\s*(\uac83|\uac74)\uc740?\\s*\uc544[\ub2c8\ub2d9]",
+       "\ubaa8\ub450\\s*\ucc38\uc11d(\ud558)?\uc9c0\ub294",
+       "\uc804\uc6d0\\s*\ucc38\uc11d\ud55c\\s*(\uac83|\uac74)\uc740?\\s*\uc544[\ub2c8\ub2d9]",
+       "\uc77c\ubd80",
+       "\uba87\uba87",
+       "\uba87\\s*\uba85",
+       "\ubd88\ucc38\ud55c\\s*\ud68c\uc6d0\uc774\\s*\uc788",
+       "\ube60\uc9c4\\s*\ud68c\uc6d0",
+       "\ubaa8\ub4e0\\s*\ud68c\uc6d0\uc774?\\s*\ucc38\uc11d\ud55c\\s*(\uac83|\uac74)\uc740?\\s*\uc544[\ub2c8\ub2d9]",
+       "\ubaa8\ub450\uac00?\\s*\ucc38\uc11d(\ud558)?\uc9c0\ub294",
+       "\uc804\uc6d0\uc774?\\s*\ucc38\uc11d(\ud558)?\uc9c0\ub294"
       ]
      }
     ],
@@ -2565,25 +2607,25 @@
     ],
     "modelAnswers": [
      {
-      "text": "회원이 한 명도 참석하지 않았습니다. 회원이 모두 참석한 것은 아닙니다."
+      "text": "\ud68c\uc6d0\uc774 \ud55c \uba85\ub3c4 \ucc38\uc11d\ud558\uc9c0 \uc54a\uc558\uc2b5\ub2c8\ub2e4. \ud68c\uc6d0\uc774 \ubaa8\ub450 \ucc38\uc11d\ud55c \uac83\uc740 \uc544\ub2d9\ub2c8\ub2e4."
      },
      {
-      "text": "아무도 참석하지 않았습니다. 일부 회원만 참석했습니다."
+      "text": "\uc544\ubb34\ub3c4 \ucc38\uc11d\ud558\uc9c0 \uc54a\uc558\uc2b5\ub2c8\ub2e4. \uc77c\ubd80 \ud68c\uc6d0\ub9cc \ucc38\uc11d\ud588\uc2b5\ub2c8\ub2e4."
      },
      {
-      "text": "오늘 회의에는 아무도 오지 않았습니다. 모든 회원이 참석한 것은 아닙니다."
+      "text": "\uc624\ub298 \ud68c\uc758\uc5d0\ub294 \uc544\ubb34\ub3c4 \uc624\uc9c0 \uc54a\uc558\uc2b5\ub2c8\ub2e4. \ubaa8\ub4e0 \ud68c\uc6d0\uc774 \ucc38\uc11d\ud55c \uac83\uc740 \uc544\ub2d9\ub2c8\ub2e4."
      },
      {
-      "text": "회원이 한 명도 참석하지 않았습니다. 모두가 참석하지는 않았습니다."
+      "text": "\ud68c\uc6d0\uc774 \ud55c \uba85\ub3c4 \ucc38\uc11d\ud558\uc9c0 \uc54a\uc558\uc2b5\ub2c8\ub2e4. \ubaa8\ub450\uac00 \ucc38\uc11d\ud558\uc9c0\ub294 \uc54a\uc558\uc2b5\ub2c8\ub2e4."
      }
     ],
     "badAnswers": [
      {
-      "text": "회원이 모두 참석하지 않았습니다.",
+      "text": "\ud68c\uc6d0\uc774 \ubaa8\ub450 \ucc38\uc11d\ud558\uc9c0 \uc54a\uc558\uc2b5\ub2c8\ub2e4.",
       "why": "The original notice, still ambiguous."
      },
      {
-      "text": "회원이 한 명도 참석하지 않았습니다.",
+      "text": "\ud68c\uc6d0\uc774 \ud55c \uba85\ub3c4 \ucc38\uc11d\ud558\uc9c0 \uc54a\uc558\uc2b5\ub2c8\ub2e4.",
       "why": "Gives only one of the two versions."
      }
     ],
@@ -2616,14 +2658,14 @@
   ],
   "alternatives": [
    "In stage 1, a student may say 'both readings are possible, so I can only say someone was absent'. This is the same idea as option b.",
-   "Other clear versions are 전원이 불참했습니다 (nobody came) and 일부 회원이 불참했습니다 (some did not come)."
+   "Other clear versions are \uc804\uc6d0\uc774 \ubd88\ucc38\ud588\uc2b5\ub2c8\ub2e4 (nobody came) and \uc77c\ubd80 \ud68c\uc6d0\uc774 \ubd88\ucc38\ud588\uc2b5\ub2c8\ub2e4 (some did not come)."
   ],
   "hardCases": [
-   "Many readers hear 모두 ... -지 않았습니다 as reading B. Stress and context can make it reading A, and writing does not show stress.",
-   "모두 참석하지는 않았습니다 (with 는) leans to reading B but is not completely safe."
+   "Many readers hear \ubaa8\ub450 ... -\uc9c0 \uc54a\uc558\uc2b5\ub2c8\ub2e4 as reading B. Stress and context can make it reading A, and writing does not show stress.",
+   "\ubaa8\ub450 \ucc38\uc11d\ud558\uc9c0\ub294 \uc54a\uc558\uc2b5\ub2c8\ub2e4 (with \ub294) leans to reading B but is not completely safe."
   ],
   "cautions": {
-   "language": "The negation can cover 'all' (not all came) or the verb (all did not come). With 모두 in front, Korean often leaves both open; stress and context decide.",
+   "language": "The negation can cover 'all' (not all came) or the verb (all did not come). With \ubaa8\ub450 in front, Korean often leaves both open; stress and context decide.",
    "culture": "Club notices after a meeting are everyday; the club and the rule are invented.",
    "accessibility": "No images. The two readings are named in words (A and B) in the material."
   },
@@ -2637,7 +2679,7 @@
     "Whether each rewritten sentence has exactly one reading"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "z-k-01-12",
@@ -2657,63 +2699,63 @@
    "Choosing among connectors with different strength",
    "Producing a connected pair of sentences"
   ],
-  "differsFromPlain": "Plain practice asks you to choose 그래서 or 하지만 for a gap. Here the connector has to be supported by the report: you check what each one claims and what the facts allow.",
+  "differsFromPlain": "Plain practice asks you to choose \uadf8\ub798\uc11c or \ud558\uc9c0\ub9cc for a gap. Here the connector has to be supported by the report: you check what each one claims and what the facts allow.",
   "prerequisites": [
-   "Knows 그래서, 따라서, 그러므로, 하지만, 그럼에도",
+   "Knows \uadf8\ub798\uc11c, \ub530\ub77c\uc11c, \uadf8\ub7ec\ubbc0\ub85c, \ud558\uc9c0\ub9cc, \uadf8\ub7fc\uc5d0\ub3c4",
    "Can read short news-style sentences with numbers and percentages",
-   "Knows -았/었지만"
+   "Knows -\uc558/\uc5c8\uc9c0\ub9cc"
   ],
   "minutes": 11,
   "curriculum": null,
-  "material": "A news report gives these facts (all true):\n① 학교가 급식 시간을 20분에서 30분으로 늘렸다.\n② 줄 서는 시간이 평균 12분에서 7분으로 줄었다. 보도는 급식 시간 연장이 그 이유라고 밝혔다 (the report says the longer lunch time is the reason).\n③ 학생 만족도는 62%에서 55%로 낮아졌다. 보도는 그 이유를 밝히지 않았다 (the report gives no reason for this).\n\nA student summarises the report:\n1. 학교는 급식 시간을 20분에서 30분으로 늘렸다.\n2. 그래서 줄 서는 시간이 평균 12분에서 7분으로 줄었다.\n3. 그래서 학생 만족도는 62%에서 55%로 낮아졌다.\n4. 이처럼 급식 시간을 늘렸지만 학생 만족도는 오르지 않았다.",
+  "material": "A news report gives these facts (all true):\n\u2460 \ud559\uad50\uac00 \uae09\uc2dd \uc2dc\uac04\uc744 20\ubd84\uc5d0\uc11c 30\ubd84\uc73c\ub85c \ub298\ub838\ub2e4.\n\u2461 \uc904 \uc11c\ub294 \uc2dc\uac04\uc774 \ud3c9\uade0 12\ubd84\uc5d0\uc11c 7\ubd84\uc73c\ub85c \uc904\uc5c8\ub2e4. \ubcf4\ub3c4\ub294 \uae09\uc2dd \uc2dc\uac04 \uc5f0\uc7a5\uc774 \uadf8 \uc774\uc720\ub77c\uace0 \ubc1d\ud614\ub2e4 (the report says the longer lunch time is the reason).\n\u2462 \ud559\uc0dd \ub9cc\uc871\ub3c4\ub294 62%\uc5d0\uc11c 55%\ub85c \ub0ae\uc544\uc84c\ub2e4. \ubcf4\ub3c4\ub294 \uadf8 \uc774\uc720\ub97c \ubc1d\ud788\uc9c0 \uc54a\uc558\ub2e4 (the report gives no reason for this).\n\nA student summarises the report:\n1. \ud559\uad50\ub294 \uae09\uc2dd \uc2dc\uac04\uc744 20\ubd84\uc5d0\uc11c 30\ubd84\uc73c\ub85c \ub298\ub838\ub2e4.\n2. \uadf8\ub798\uc11c \uc904 \uc11c\ub294 \uc2dc\uac04\uc774 \ud3c9\uade0 12\ubd84\uc5d0\uc11c 7\ubd84\uc73c\ub85c \uc904\uc5c8\ub2e4.\n3. \uadf8\ub798\uc11c \ud559\uc0dd \ub9cc\uc871\ub3c4\ub294 62%\uc5d0\uc11c 55%\ub85c \ub0ae\uc544\uc84c\ub2e4.\n4. \uc774\ucc98\ub7fc \uae09\uc2dd \uc2dc\uac04\uc744 \ub298\ub838\uc9c0\ub9cc \ud559\uc0dd \ub9cc\uc871\ub3c4\ub294 \uc624\ub974\uc9c0 \uc54a\uc558\ub2e4.",
   "steps": [
    {
     "id": "s1",
     "kind": "pickLine",
     "prompt": "Which sentence uses a connector that claims more than the report says?",
     "lines": [
-     "학교는 급식 시간을 20분에서 30분으로 늘렸다.",
-     "그래서 줄 서는 시간이 평균 12분에서 7분으로 줄었다.",
-     "그래서 학생 만족도는 62%에서 55%로 낮아졌다.",
-     "이처럼 급식 시간을 늘렸지만 학생 만족도는 오르지 않았다."
+     "\ud559\uad50\ub294 \uae09\uc2dd \uc2dc\uac04\uc744 20\ubd84\uc5d0\uc11c 30\ubd84\uc73c\ub85c \ub298\ub838\ub2e4.",
+     "\uadf8\ub798\uc11c \uc904 \uc11c\ub294 \uc2dc\uac04\uc774 \ud3c9\uade0 12\ubd84\uc5d0\uc11c 7\ubd84\uc73c\ub85c \uc904\uc5c8\ub2e4.",
+     "\uadf8\ub798\uc11c \ud559\uc0dd \ub9cc\uc871\ub3c4\ub294 62%\uc5d0\uc11c 55%\ub85c \ub0ae\uc544\uc84c\ub2e4.",
+     "\uc774\ucc98\ub7fc \uae09\uc2dd \uc2dc\uac04\uc744 \ub298\ub838\uc9c0\ub9cc \ud559\uc0dd \ub9cc\uc871\ub3c4\ub294 \uc624\ub974\uc9c0 \uc54a\uc558\ub2e4."
     ],
     "wrong": [
      2
     ],
-    "explain": "Line 3 uses 그래서, which says the drop in satisfaction is a result of what came before. The report gives no reason for the drop, and a shorter queue is not an obvious cause of lower satisfaction. Line 2 is supported: the report says the longer lunch time is the reason for the shorter queue. Line 4 uses 지만 for contrast, which fits the facts.",
+    "explain": "Line 3 uses \uadf8\ub798\uc11c, which says the drop in satisfaction is a result of what came before. The report gives no reason for the drop, and a shorter queue is not an obvious cause of lower satisfaction. Line 2 is supported: the report says the longer lunch time is the reason for the shorter queue. Line 4 uses \uc9c0\ub9cc for contrast, which fits the facts.",
     "hints": [
-     "For each 그래서, ask: does the report say that the first fact is the reason for the second?",
-     "For each of the two 그래서 lines, go back to the facts and note what the report itself says about the reason."
+     "For each \uadf8\ub798\uc11c, ask: does the report say that the first fact is the reason for the second?",
+     "For each of the two \uadf8\ub798\uc11c lines, go back to the facts and note what the report itself says about the reason."
     ]
    },
    {
     "id": "s2",
     "kind": "choose",
-    "prompt": "Which connectors could replace 그래서 in line 3 without claiming more than the report says? Choose all that apply.",
+    "prompt": "Which connectors could replace \uadf8\ub798\uc11c in line 3 without claiming more than the report says? Choose all that apply.",
     "options": [
      {
       "id": "a",
-      "text": "따라서 학생 만족도는 62%에서 55%로 낮아졌다.",
+      "text": "\ub530\ub77c\uc11c \ud559\uc0dd \ub9cc\uc871\ub3c4\ub294 62%\uc5d0\uc11c 55%\ub85c \ub0ae\uc544\uc84c\ub2e4.",
       "reveals": "Marks the drop as a conclusion that follows from the line before."
      },
      {
       "id": "b",
-      "text": "그럼에도 학생 만족도는 62%에서 55%로 낮아졌다.",
+      "text": "\uadf8\ub7fc\uc5d0\ub3c4 \ud559\uc0dd \ub9cc\uc871\ub3c4\ub294 62%\uc5d0\uc11c 55%\ub85c \ub0ae\uc544\uc84c\ub2e4.",
       "reveals": "Contrasts the drop with the improvement before."
      },
      {
       "id": "c",
-      "text": "그러므로 학생 만족도는 62%에서 55%로 낮아졌다.",
-      "reveals": "Makes the drop a result, like 그래서."
+      "text": "\uadf8\ub7ec\ubbc0\ub85c \ud559\uc0dd \ub9cc\uc871\ub3c4\ub294 62%\uc5d0\uc11c 55%\ub85c \ub0ae\uc544\uc84c\ub2e4.",
+      "reveals": "Makes the drop a result, like \uadf8\ub798\uc11c."
      },
      {
       "id": "d",
-      "text": "하지만 학생 만족도는 62%에서 55%로 낮아졌다.",
+      "text": "\ud558\uc9c0\ub9cc \ud559\uc0dd \ub9cc\uc871\ub3c4\ub294 62%\uc5d0\uc11c 55%\ub85c \ub0ae\uc544\uc84c\ub2e4.",
       "reveals": "Contrasts the drop with the improvement before."
      },
      {
       "id": "e",
-      "text": "그런데도 학생 만족도는 62%에서 55%로 낮아졌다.",
+      "text": "\uadf8\ub7f0\ub370\ub3c4 \ud559\uc0dd \ub9cc\uc871\ub3c4\ub294 62%\uc5d0\uc11c 55%\ub85c \ub0ae\uc544\uc84c\ub2e4.",
       "reveals": "Says the drop happened despite the improvement."
      }
     ],
@@ -2722,7 +2764,7 @@
      "d",
      "e"
     ],
-    "explain": "그럼에도, 하지만 and 그런데도 show contrast without claiming a cause. 따라서 and 그러므로 claim a result, like 그래서, which the report does not support.",
+    "explain": "\uadf8\ub7fc\uc5d0\ub3c4, \ud558\uc9c0\ub9cc and \uadf8\ub7f0\ub370\ub3c4 show contrast without claiming a cause. \ub530\ub77c\uc11c and \uadf8\ub7ec\ubbc0\ub85c claim a result, like \uadf8\ub798\uc11c, which the report does not support.",
     "hints": [
      "Sort the connectors into those that say 'as a result' and those that say 'in spite of'.",
      "Keep the ones that make no claim about the reason."
@@ -2734,68 +2776,68 @@
        "b",
        "d"
       ],
-      "reason": "Valid but incomplete: 그런데도 also works."
+      "reason": "Valid but incomplete: \uadf8\ub7f0\ub370\ub3c4 also works."
      },
      {
       "ids": [
        "b",
        "e"
       ],
-      "reason": "Valid but incomplete: 하지만 also works."
+      "reason": "Valid but incomplete: \ud558\uc9c0\ub9cc also works."
      },
      {
       "ids": [
        "d",
        "e"
       ],
-      "reason": "Valid but incomplete: 그럼에도 also works."
+      "reason": "Valid but incomplete: \uadf8\ub7fc\uc5d0\ub3c4 also works."
      }
     ]
    },
    {
     "id": "s3",
     "kind": "write",
-    "prompt": "Here is a different report: 버스 요금을 1,500원에서 1,200원으로 내렸다. 하루 이용객은 8,000명으로 그대로였다. Write these two facts in Korean as two connected sentences, with a connector that does not claim a cause.",
-    "placeholder": "예: ...",
+    "prompt": "Here is a different report: \ubc84\uc2a4 \uc694\uae08\uc744 1,500\uc6d0\uc5d0\uc11c 1,200\uc6d0\uc73c\ub85c \ub0b4\ub838\ub2e4. \ud558\ub8e8 \uc774\uc6a9\uac1d\uc740 8,000\uba85\uc73c\ub85c \uadf8\ub300\ub85c\uc600\ub2e4. Write these two facts in Korean as two connected sentences, with a connector that does not claim a cause.",
+    "placeholder": "\uc608: ...",
     "minChars": 20,
     "checks": [
      {
       "id": "w1",
-      "label": "has a contrast connector (그럼에도, 그런데도, 하지만, -지만 ...)",
+      "label": "has a contrast connector (\uadf8\ub7fc\uc5d0\ub3c4, \uadf8\ub7f0\ub370\ub3c4, \ud558\uc9c0\ub9cc, -\uc9c0\ub9cc ...)",
       "mode": "any",
       "patterns": [
-       "그럼에도",
-       "그런데도",
-       "그렇지만",
-       "그러나",
-       "하지만",
-       "[가-힣]지만",
-       "는데도",
-       "은데도",
-       "반면(에)?",
-       "에도\\s*불구",
-       "불구하고",
-       "그런데"
+       "\uadf8\ub7fc\uc5d0\ub3c4",
+       "\uadf8\ub7f0\ub370\ub3c4",
+       "\uadf8\ub807\uc9c0\ub9cc",
+       "\uadf8\ub7ec\ub098",
+       "\ud558\uc9c0\ub9cc",
+       "[\uac00-\ud7a3]\uc9c0\ub9cc",
+       "\ub294\ub370\ub3c4",
+       "\uc740\ub370\ub3c4",
+       "\ubc18\uba74(\uc5d0)?",
+       "\uc5d0\ub3c4\\s*\ubd88\uad6c",
+       "\ubd88\uad6c\ud558\uace0",
+       "\uadf8\ub7f0\ub370"
       ]
      },
      {
       "id": "w2",
-      "label": "mentions the fare (요금)",
+      "label": "mentions the fare (\uc694\uae08)",
       "mode": "any",
       "patterns": [
-       "요금"
+       "\uc694\uae08"
       ]
      },
      {
       "id": "w3",
-      "label": "mentions the riders (이용객 / 승객 ...)",
+      "label": "mentions the riders (\uc774\uc6a9\uac1d / \uc2b9\uac1d ...)",
       "mode": "any",
       "patterns": [
-       "이용객",
-       "이용자",
-       "승객",
-       "손님",
-       "탑승"
+       "\uc774\uc6a9\uac1d",
+       "\uc774\uc6a9\uc790",
+       "\uc2b9\uac1d",
+       "\uc190\ub2d8",
+       "\ud0d1\uc2b9"
       ]
      },
      {
@@ -2803,10 +2845,10 @@
       "label": "does not use a result connector",
       "mode": "none",
       "patterns": [
-       "그래서",
-       "따라서",
-       "그러므로",
-       "이 때문에"
+       "\uadf8\ub798\uc11c",
+       "\ub530\ub77c\uc11c",
+       "\uadf8\ub7ec\ubbc0\ub85c",
+       "\uc774 \ub54c\ubb38\uc5d0"
       ]
      },
      {
@@ -2815,7 +2857,7 @@
       "mode": "any",
       "patterns": [
        "1,?200",
-       "천이백"
+       "\ucc9c\uc774\ubc31"
       ]
      },
      {
@@ -2824,8 +2866,8 @@
       "mode": "any",
       "patterns": [
        "8,?000",
-       "8천",
-       "팔천"
+       "8\ucc9c",
+       "\ud314\ucc9c"
       ]
      }
     ],
@@ -2836,26 +2878,26 @@
     ],
     "modelAnswers": [
      {
-      "text": "버스 요금을 1,500원에서 1,200원으로 내렸다. 그럼에도 하루 이용객은 8,000명으로 그대로였다."
+      "text": "\ubc84\uc2a4 \uc694\uae08\uc744 1,500\uc6d0\uc5d0\uc11c 1,200\uc6d0\uc73c\ub85c \ub0b4\ub838\ub2e4. \uadf8\ub7fc\uc5d0\ub3c4 \ud558\ub8e8 \uc774\uc6a9\uac1d\uc740 8,000\uba85\uc73c\ub85c \uadf8\ub300\ub85c\uc600\ub2e4."
      },
      {
-      "text": "버스 요금을 1,500원에서 1,200원으로 내렸지만 하루 이용객은 8,000명으로 그대로였다."
+      "text": "\ubc84\uc2a4 \uc694\uae08\uc744 1,500\uc6d0\uc5d0\uc11c 1,200\uc6d0\uc73c\ub85c \ub0b4\ub838\uc9c0\ub9cc \ud558\ub8e8 \uc774\uc6a9\uac1d\uc740 8,000\uba85\uc73c\ub85c \uadf8\ub300\ub85c\uc600\ub2e4."
      },
      {
-      "text": "버스 요금을 1,500원에서 1,200원으로 내렸다. 반면 하루 이용객은 8,000명으로 그대로였다."
+      "text": "\ubc84\uc2a4 \uc694\uae08\uc744 1,500\uc6d0\uc5d0\uc11c 1,200\uc6d0\uc73c\ub85c \ub0b4\ub838\ub2e4. \ubc18\uba74 \ud558\ub8e8 \uc774\uc6a9\uac1d\uc740 8,000\uba85\uc73c\ub85c \uadf8\ub300\ub85c\uc600\ub2e4."
      }
     ],
     "badAnswers": [
      {
-      "text": "버스 요금을 내렸다. 그래서 이용객이 그대로였다.",
+      "text": "\ubc84\uc2a4 \uc694\uae08\uc744 \ub0b4\ub838\ub2e4. \uadf8\ub798\uc11c \uc774\uc6a9\uac1d\uc774 \uadf8\ub300\ub85c\uc600\ub2e4.",
       "why": "A result connector, which claims a cause the report does not give."
      },
      {
-      "text": "버스 요금을 내렸다.",
+      "text": "\ubc84\uc2a4 \uc694\uae08\uc744 \ub0b4\ub838\ub2e4.",
       "why": "Only one of the two facts and no connector."
      },
      {
-      "text": "버스 요금을 내렸지만 이용객이 줄었다.",
+      "text": "\ubc84\uc2a4 \uc694\uae08\uc744 \ub0b4\ub838\uc9c0\ub9cc \uc774\uc6a9\uac1d\uc774 \uc904\uc5c8\ub2e4.",
       "why": "A contrast connector, but it changes the facts: no numbers, and the riders did not fall."
      }
     ],
@@ -2887,7 +2929,7 @@
    }
   ],
   "alternatives": [
-   "Plain additions such as 그리고 are also faithful, but they lose the contrast the facts suggest.",
+   "Plain additions such as \uadf8\ub9ac\uace0 are also faithful, but they lose the contrast the facts suggest.",
    "In s2, a student who chooses only two of the contrast connectors is valid but incomplete."
   ],
   "hardCases": [
@@ -2895,9 +2937,9 @@
    "'Despite' connectors also imply an expectation. Here the expectation is that an improvement would raise satisfaction."
   ],
   "cautions": {
-   "language": "그래서, 따라서 and 그러므로 mark a result (the last two are more formal); 그럼에도 and 그런데도 mean 'in spite of that'; 하지만 only contrasts. Learners often treat them as interchangeable.",
+   "language": "\uadf8\ub798\uc11c, \ub530\ub77c\uc11c and \uadf8\ub7ec\ubbc0\ub85c mark a result (the last two are more formal); \uadf8\ub7fc\uc5d0\ub3c4 and \uadf8\ub7f0\ub370\ub3c4 mean 'in spite of that'; \ud558\uc9c0\ub9cc only contrasts. Learners often treat them as interchangeable.",
    "culture": "A school lunch report is a common news topic; the school and the figures are invented.",
-   "accessibility": "No images. Percentages are read aloud as 육십이 퍼센트 (62%) and 오십오 퍼센트 (55%)."
+   "accessibility": "No images. Percentages are read aloud as \uc721\uc2ed\uc774 \ud37c\uc13c\ud2b8 (62%) and \uc624\uc2ed\uc624 \ud37c\uc13c\ud2b8 (55%)."
   },
   "autoVsHuman": {
    "auto": [
@@ -2909,6 +2951,6 @@
     "Whether the connector and the sentences are natural and faithful to the facts"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  }
 ]

@@ -3,279 +3,279 @@
   "id": "x-m-h3-01",
   "subject": "math",
   "grade": "H3",
-  "topic": "적분의 의미",
+  "topic": "\uc801\ubd84\uc758 \uc758\ubbf8",
   "level": 3,
-  "levelLabel": "고등",
-  "title": "정적분이 0인데 넓이도 0일까",
+  "levelLabel": "\uace0\ub4f1",
+  "title": "\uc815\uc801\ubd84\uc774 0\uc778\ub370 \ub113\uc774\ub3c4 0\uc77c\uae4c",
   "uiLang": "ko",
   "format": "find-error-fix",
   "generative": false,
-  "goal": "정적분 값과 도형의 넓이가 다를 수 있음을 알고, 풀이에서 문제가 시작된 줄을 찾아 고친 방법을 고른다.",
+  "goal": "\uc815\uc801\ubd84 \uac12\uacfc \ub3c4\ud615\uc758 \ub113\uc774\uac00 \ub2e4\ub97c \uc218 \uc788\uc74c\uc744 \uc54c\uace0, \ud480\uc774\uc5d0\uc11c \ubb38\uc81c\uac00 \uc2dc\uc791\ub41c \uc904\uc744 \ucc3e\uc544 \uace0\uce5c \ubc29\ubc95\uc744 \uace0\ub978\ub2e4.",
   "thinking": [
-   "풀이의 각 줄이 앞 줄에서 나오는지, 설정 자체가 목적에 맞는지 구별하기",
-   "정적분의 부호가 가진 뜻으로 오류의 원인 설명하기",
-   "오류를 고친 방법을 비교·평가하기"
+   "\ud480\uc774\uc758 \uac01 \uc904\uc774 \uc55e \uc904\uc5d0\uc11c \ub098\uc624\ub294\uc9c0, \uc124\uc815 \uc790\uccb4\uac00 \ubaa9\uc801\uc5d0 \ub9de\ub294\uc9c0 \uad6c\ubcc4\ud558\uae30",
+   "\uc815\uc801\ubd84\uc758 \ubd80\ud638\uac00 \uac00\uc9c4 \ub73b\uc73c\ub85c \uc624\ub958\uc758 \uc6d0\uc778 \uc124\uba85\ud558\uae30",
+   "\uc624\ub958\ub97c \uace0\uce5c \ubc29\ubc95\uc744 \ube44\uad50\u00b7\ud3c9\uac00\ud558\uae30"
   ],
-  "differsFromPlain": "단순 연습은 정적분을 계산해 값을 구한다. 여기서는 계산이 맞아도 '구하려는 것'과 '계산한 것'이 같은지 따지고, 틀린 풀이를 고치는 방법을 평가한다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uc815\uc801\ubd84\uc744 \uacc4\uc0b0\ud574 \uac12\uc744 \uad6c\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \uacc4\uc0b0\uc774 \ub9de\uc544\ub3c4 '\uad6c\ud558\ub824\ub294 \uac83'\uacfc '\uacc4\uc0b0\ud55c \uac83'\uc774 \uac19\uc740\uc9c0 \ub530\uc9c0\uace0, \ud2c0\ub9b0 \ud480\uc774\ub97c \uace0\uce58\ub294 \ubc29\ubc95\uc744 \ud3c9\uac00\ud55c\ub2e4.",
   "prerequisites": [
-   "다항함수의 정적분을 계산해 본 경험",
-   "정적분과 곡선 아래 넓이의 관계를 한 번 배운 경험"
+   "\ub2e4\ud56d\ud568\uc218\uc758 \uc815\uc801\ubd84\uc744 \uacc4\uc0b0\ud574 \ubcf8 \uacbd\ud5d8",
+   "\uc815\uc801\ubd84\uacfc \uace1\uc120 \uc544\ub798 \ub113\uc774\uc758 \uad00\uacc4\ub97c \ud55c \ubc88 \ubc30\uc6b4 \uacbd\ud5d8"
   ],
   "minutes": 10,
   "curriculum": null,
-  "material": "곡선 y = x² − 4x + 3 과 x축, 그리고 두 직선 x = 0, x = 3 으로 둘러싸인 부분의 넓이를 한 학생이 아래처럼 구했습니다. (그림 대신 말로: 이 곡선은 x = 1 과 x = 3 에서 x축과 만나고, x가 0과 1 사이일 때는 x축 위쪽에, 1과 3 사이일 때는 x축 아래쪽에 있습니다.)",
+  "material": "\uace1\uc120 y = x\u00b2 \u2212 4x + 3 \uacfc x\ucd95, \uadf8\ub9ac\uace0 \ub450 \uc9c1\uc120 x = 0, x = 3 \uc73c\ub85c \ub458\ub7ec\uc2f8\uc778 \ubd80\ubd84\uc758 \ub113\uc774\ub97c \ud55c \ud559\uc0dd\uc774 \uc544\ub798\ucc98\ub7fc \uad6c\ud588\uc2b5\ub2c8\ub2e4. (\uadf8\ub9bc \ub300\uc2e0 \ub9d0\ub85c: \uc774 \uace1\uc120\uc740 x = 1 \uacfc x = 3 \uc5d0\uc11c x\ucd95\uacfc \ub9cc\ub098\uace0, x\uac00 0\uacfc 1 \uc0ac\uc774\uc77c \ub54c\ub294 x\ucd95 \uc704\ucabd\uc5d0, 1\uacfc 3 \uc0ac\uc774\uc77c \ub54c\ub294 x\ucd95 \uc544\ub798\ucabd\uc5d0 \uc788\uc2b5\ub2c8\ub2e4.)",
   "steps": [
    {
     "id": "s1",
     "kind": "pickLine",
-    "prompt": "학생의 풀이에서 처음으로 문제가 생긴 줄을 하나 고르세요. (계산이 맞는 줄도 있습니다.)",
+    "prompt": "\ud559\uc0dd\uc758 \ud480\uc774\uc5d0\uc11c \ucc98\uc74c\uc73c\ub85c \ubb38\uc81c\uac00 \uc0dd\uae34 \uc904\uc744 \ud558\ub098 \uace0\ub974\uc138\uc694. (\uacc4\uc0b0\uc774 \ub9de\ub294 \uc904\ub3c4 \uc788\uc2b5\ub2c8\ub2e4.)",
     "lines": [
-     "f(x) = x² − 4x + 3 이라 하고, 구간 [0, 3]에서 곡선과 x축 사이의 넓이를 S라 한다.",
-     "S = ∫₀³ f(x) dx 로 놓는다. (0부터 3까지 f(x)의 정적분)",
-     "F(x) = x³/3 − 2x² + 3x 는 f(x)의 한 부정적분이다.",
-     "∫₀³ f(x) dx = F(3) − F(0) = (9 − 18 + 9) − 0 = 0",
-     "따라서 S = 0 이다. 곡선과 x축 사이에 분명히 부분이 있는데도 넓이가 0이 되었다."
+     "f(x) = x\u00b2 \u2212 4x + 3 \uc774\ub77c \ud558\uace0, \uad6c\uac04 [0, 3]\uc5d0\uc11c \uace1\uc120\uacfc x\ucd95 \uc0ac\uc774\uc758 \ub113\uc774\ub97c S\ub77c \ud55c\ub2e4.",
+     "S = \u222b\u2080\u00b3 f(x) dx \ub85c \ub193\ub294\ub2e4. (0\ubd80\ud130 3\uae4c\uc9c0 f(x)\uc758 \uc815\uc801\ubd84)",
+     "F(x) = x\u00b3/3 \u2212 2x\u00b2 + 3x \ub294 f(x)\uc758 \ud55c \ubd80\uc815\uc801\ubd84\uc774\ub2e4.",
+     "\u222b\u2080\u00b3 f(x) dx = F(3) \u2212 F(0) = (9 \u2212 18 + 9) \u2212 0 = 0",
+     "\ub530\ub77c\uc11c S = 0 \uc774\ub2e4. \uace1\uc120\uacfc x\ucd95 \uc0ac\uc774\uc5d0 \ubd84\uba85\ud788 \ubd80\ubd84\uc774 \uc788\ub294\ub370\ub3c4 \ub113\uc774\uac00 0\uc774 \ub418\uc5c8\ub2e4."
     ],
     "wrong": [
      1
     ],
-    "explain": "계산(3, 4번 줄)은 맞아요. 문제는 2번 줄의 설정이에요. 정적분은 x축 위쪽 부분은 +, 아래쪽 부분은 −로 센 값이라 [0,1]의 4/3 과 [1,3]의 −4/3 이 서로 상쇄되어 0이 됐어요. 넓이는 부호를 보지 않으므로 5번 줄의 결론도 그 설정에서 나온 오류예요.",
+    "explain": "\uacc4\uc0b0(3, 4\ubc88 \uc904)\uc740 \ub9de\uc544\uc694. \ubb38\uc81c\ub294 2\ubc88 \uc904\uc758 \uc124\uc815\uc774\uc5d0\uc694. \uc815\uc801\ubd84\uc740 x\ucd95 \uc704\ucabd \ubd80\ubd84\uc740 +, \uc544\ub798\ucabd \ubd80\ubd84\uc740 \u2212\ub85c \uc13c \uac12\uc774\ub77c [0,1]\uc758 4/3 \uacfc [1,3]\uc758 \u22124/3 \uc774 \uc11c\ub85c \uc0c1\uc1c4\ub418\uc5b4 0\uc774 \ub410\uc5b4\uc694. \ub113\uc774\ub294 \ubd80\ud638\ub97c \ubcf4\uc9c0 \uc54a\uc73c\ubbc0\ub85c 5\ubc88 \uc904\uc758 \uacb0\ub860\ub3c4 \uadf8 \uc124\uc815\uc5d0\uc11c \ub098\uc628 \uc624\ub958\uc608\uc694.",
     "hints": [
-     "각 줄을 읽으며 '앞 줄에서 바로 나오는가'를 확인해 보세요.",
-     "계산이 맞더라도 그 계산이 구하려던 것인지 따져 보세요. 4번 줄의 값이 곡선과 x축 사이의 어느 부분을 어떤 부호로 센 값인지 구간별로 떠올려 보세요."
+     "\uac01 \uc904\uc744 \uc77d\uc73c\uba70 '\uc55e \uc904\uc5d0\uc11c \ubc14\ub85c \ub098\uc624\ub294\uac00'\ub97c \ud655\uc778\ud574 \ubcf4\uc138\uc694.",
+     "\uacc4\uc0b0\uc774 \ub9de\ub354\ub77c\ub3c4 \uadf8 \uacc4\uc0b0\uc774 \uad6c\ud558\ub824\ub358 \uac83\uc778\uc9c0 \ub530\uc838 \ubcf4\uc138\uc694. 4\ubc88 \uc904\uc758 \uac12\uc774 \uace1\uc120\uacfc x\ucd95 \uc0ac\uc774\uc758 \uc5b4\ub290 \ubd80\ubd84\uc744 \uc5b4\ub5a4 \ubd80\ud638\ub85c \uc13c \uac12\uc778\uc9c0 \uad6c\uac04\ubcc4\ub85c \ub5a0\uc62c\ub824 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "choose",
-    "prompt": "올바른 넓이를 구하는 방법으로 알맞은 것을 고르세요.",
+    "prompt": "\uc62c\ubc14\ub978 \ub113\uc774\ub97c \uad6c\ud558\ub294 \ubc29\ubc95\uc73c\ub85c \uc54c\ub9de\uc740 \uac83\uc744 \uace0\ub974\uc138\uc694.",
     "options": [
      {
       "id": "a",
-      "text": "[0, 3] 전체에서 정적분을 구한 뒤, 그 값에 절댓값을 취하여 넓이로 삼는다",
-      "reveals": "합이 0이 된 것은 위쪽과 아래쪽이 서로 지워졌기 때문이에요. 지워진 뒤에 절댓값을 취해도 두 부분의 넓이는 돌아오지 않아요."
+      "text": "[0, 3] \uc804\uccb4\uc5d0\uc11c \uc815\uc801\ubd84\uc744 \uad6c\ud55c \ub4a4, \uadf8 \uac12\uc5d0 \uc808\ub313\uac12\uc744 \ucde8\ud558\uc5ec \ub113\uc774\ub85c \uc0bc\ub294\ub2e4",
+      "reveals": "\ud569\uc774 0\uc774 \ub41c \uac83\uc740 \uc704\ucabd\uacfc \uc544\ub798\ucabd\uc774 \uc11c\ub85c \uc9c0\uc6cc\uc84c\uae30 \ub54c\ubb38\uc774\uc5d0\uc694. \uc9c0\uc6cc\uc9c4 \ub4a4\uc5d0 \uc808\ub313\uac12\uc744 \ucde8\ud574\ub3c4 \ub450 \ubd80\ubd84\uc758 \ub113\uc774\ub294 \ub3cc\uc544\uc624\uc9c0 \uc54a\uc544\uc694."
      },
      {
       "id": "b",
-      "text": "곡선이 x축 아래에 있는 구간은 넓이에 넣지 않고, 위에 있는 구간만 정적분하여 구한다",
-      "reveals": "x축 아래 부분도 곡선과 x축이 둘러싼 부분이에요. 부호만 −일 뿐 그 부분의 넓이는 양수예요."
+      "text": "\uace1\uc120\uc774 x\ucd95 \uc544\ub798\uc5d0 \uc788\ub294 \uad6c\uac04\uc740 \ub113\uc774\uc5d0 \ub123\uc9c0 \uc54a\uace0, \uc704\uc5d0 \uc788\ub294 \uad6c\uac04\ub9cc \uc815\uc801\ubd84\ud558\uc5ec \uad6c\ud55c\ub2e4",
+      "reveals": "x\ucd95 \uc544\ub798 \ubd80\ubd84\ub3c4 \uace1\uc120\uacfc x\ucd95\uc774 \ub458\ub7ec\uc2fc \ubd80\ubd84\uc774\uc5d0\uc694. \ubd80\ud638\ub9cc \u2212\uc77c \ubfd0 \uadf8 \ubd80\ubd84\uc758 \ub113\uc774\ub294 \uc591\uc218\uc608\uc694."
      },
      {
       "id": "c",
-      "text": "부호가 바뀌는 x = 1 에서 구간을 나눠, 각 구간의 정적분에 절댓값을 취해 더한다",
-      "reveals": "부호가 바뀌는 곳에서 구간을 나눠 위쪽과 아래쪽을 따로 센 방법이에요."
+      "text": "\ubd80\ud638\uac00 \ubc14\ub00c\ub294 x = 1 \uc5d0\uc11c \uad6c\uac04\uc744 \ub098\ub220, \uac01 \uad6c\uac04\uc758 \uc815\uc801\ubd84\uc5d0 \uc808\ub313\uac12\uc744 \ucde8\ud574 \ub354\ud55c\ub2e4",
+      "reveals": "\ubd80\ud638\uac00 \ubc14\ub00c\ub294 \uacf3\uc5d0\uc11c \uad6c\uac04\uc744 \ub098\ub220 \uc704\ucabd\uacfc \uc544\ub798\ucabd\uc744 \ub530\ub85c \uc13c \ubc29\ubc95\uc774\uc5d0\uc694."
      },
      {
       "id": "d",
-      "text": "양 끝에서의 f(0)과 f(3)의 평균을 구한 뒤, 구간의 길이 3을 곱해 넓이로 삼는다",
-      "reveals": "곡선은 직선이 아니어서 양 끝값의 평균이 곡선 전체를 대신하지 못해요."
+      "text": "\uc591 \ub05d\uc5d0\uc11c\uc758 f(0)\uacfc f(3)\uc758 \ud3c9\uade0\uc744 \uad6c\ud55c \ub4a4, \uad6c\uac04\uc758 \uae38\uc774 3\uc744 \uacf1\ud574 \ub113\uc774\ub85c \uc0bc\ub294\ub2e4",
+      "reveals": "\uace1\uc120\uc740 \uc9c1\uc120\uc774 \uc544\ub2c8\uc5b4\uc11c \uc591 \ub05d\uac12\uc758 \ud3c9\uade0\uc774 \uace1\uc120 \uc804\uccb4\ub97c \ub300\uc2e0\ud558\uc9c0 \ubabb\ud574\uc694."
      }
     ],
     "correct": [
      "c"
     ],
-    "explain": "x = 1 에서 나누면 ∫₀¹ f = 4/3, ∫₁³ f = −4/3 이고, 넓이는 4/3 + |−4/3| = 8/3 이에요.",
+    "explain": "x = 1 \uc5d0\uc11c \ub098\ub204\uba74 \u222b\u2080\u00b9 f = 4/3, \u222b\u2081\u00b3 f = \u22124/3 \uc774\uace0, \ub113\uc774\ub294 4/3 + |\u22124/3| = 8/3 \uc774\uc5d0\uc694.",
     "hints": [
-     "정적분이 0이 된 이유를 위쪽·아래쪽 부분으로 나눠 생각해 보세요.",
-     "각 방법이 x축 위쪽 부분과 아래쪽 부분을 모두 양의 넓이로 세는지 하나씩 비교해 보세요."
+     "\uc815\uc801\ubd84\uc774 0\uc774 \ub41c \uc774\uc720\ub97c \uc704\ucabd\u00b7\uc544\ub798\ucabd \ubd80\ubd84\uc73c\ub85c \ub098\ub220 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694.",
+     "\uac01 \ubc29\ubc95\uc774 x\ucd95 \uc704\ucabd \ubd80\ubd84\uacfc \uc544\ub798\ucabd \ubd80\ubd84\uc744 \ubaa8\ub450 \uc591\uc758 \ub113\uc774\ub85c \uc138\ub294\uc9c0 \ud558\ub098\uc529 \ube44\uad50\ud574 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s3",
     "kind": "write",
-    "prompt": "이 풀이를 쓴 친구에게, '정적분 값'과 '넓이'가 이 문제에서 어떻게 달라졌는지, 올바른 넓이는 얼마인지 알려 주는 말을 써 보세요.",
+    "prompt": "\uc774 \ud480\uc774\ub97c \uc4f4 \uce5c\uad6c\uc5d0\uac8c, '\uc815\uc801\ubd84 \uac12'\uacfc '\ub113\uc774'\uac00 \uc774 \ubb38\uc81c\uc5d0\uc11c \uc5b4\ub5bb\uac8c \ub2ec\ub77c\uc84c\ub294\uc9c0, \uc62c\ubc14\ub978 \ub113\uc774\ub294 \uc5bc\ub9c8\uc778\uc9c0 \uc54c\ub824 \uc8fc\ub294 \ub9d0\uc744 \uc368 \ubcf4\uc138\uc694.",
     "minChars": 15,
     "checks": [
      {
       "id": "w1",
-      "label": "부호(위·아래 부분이 상쇄됨) 때문에 달라졌음을 말했다",
+      "label": "\ubd80\ud638(\uc704\u00b7\uc544\ub798 \ubd80\ubd84\uc774 \uc0c1\uc1c4\ub428) \ub54c\ubb38\uc5d0 \ub2ec\ub77c\uc84c\uc74c\uc744 \ub9d0\ud588\ub2e4",
       "mode": "any",
       "patterns": [
-       "부호",
-       "음수",
-       "마이너스",
-       "상쇄",
-       "서로\\s*(지워|없어|빼)",
-       "절댓값",
-       "절대값",
-       "아래"
+       "\ubd80\ud638",
+       "\uc74c\uc218",
+       "\ub9c8\uc774\ub108\uc2a4",
+       "\uc0c1\uc1c4",
+       "\uc11c\ub85c\\s*(\uc9c0\uc6cc|\uc5c6\uc5b4|\ube7c)",
+       "\uc808\ub313\uac12",
+       "\uc808\ub300\uac12",
+       "\uc544\ub798"
       ]
      },
      {
       "id": "w2",
-      "label": "올바른 넓이 8/3을 말했다",
+      "label": "\uc62c\ubc14\ub978 \ub113\uc774 8/3\uc744 \ub9d0\ud588\ub2e4",
       "mode": "any",
       "patterns": [
        "8\\s*/\\s*3",
-       "3\\s*분의\\s*8",
+       "3\\s*\ubd84\uc758\\s*8",
        "2\\.6[67]"
       ]
      }
     ],
     "selfAssess": [
-     "내가 쓴 설명에서 정적분이 0이 된 이유가 위쪽·아래쪽 부분과 연결되어 있나요?",
-     "올바른 넓이를 어떻게 구했는지, 숫자를 넣어 말했나요?"
+     "\ub0b4\uac00 \uc4f4 \uc124\uba85\uc5d0\uc11c \uc815\uc801\ubd84\uc774 0\uc774 \ub41c \uc774\uc720\uac00 \uc704\ucabd\u00b7\uc544\ub798\ucabd \ubd80\ubd84\uacfc \uc5f0\uacb0\ub418\uc5b4 \uc788\ub098\uc694?",
+     "\uc62c\ubc14\ub978 \ub113\uc774\ub97c \uc5b4\ub5bb\uac8c \uad6c\ud588\ub294\uc9c0, \uc22b\uc790\ub97c \ub123\uc5b4 \ub9d0\ud588\ub098\uc694?"
     ],
     "modelAnswers": [
      {
-      "text": "정적분은 x축 아래 부분을 음수로 세서 위쪽 4/3 과 아래쪽 −4/3 이 상쇄되어 0이 된 거야. 넓이는 x = 1 에서 구간을 나눠 각각 절댓값을 더하면 8/3 이야."
+      "text": "\uc815\uc801\ubd84\uc740 x\ucd95 \uc544\ub798 \ubd80\ubd84\uc744 \uc74c\uc218\ub85c \uc138\uc11c \uc704\ucabd 4/3 \uacfc \uc544\ub798\ucabd \u22124/3 \uc774 \uc0c1\uc1c4\ub418\uc5b4 0\uc774 \ub41c \uac70\uc57c. \ub113\uc774\ub294 x = 1 \uc5d0\uc11c \uad6c\uac04\uc744 \ub098\ub220 \uac01\uac01 \uc808\ub313\uac12\uc744 \ub354\ud558\uba74 8/3 \uc774\uc57c."
      },
      {
-      "text": "∫는 위쪽은 +, 아래쪽은 −로 세는 값이라 0이 나왔어. 넓이는 [0,1]에서 4/3, [1,3]에서 아래쪽 4/3 이니까 합해서 8/3 이야."
+      "text": "\u222b\ub294 \uc704\ucabd\uc740 +, \uc544\ub798\ucabd\uc740 \u2212\ub85c \uc138\ub294 \uac12\uc774\ub77c 0\uc774 \ub098\uc654\uc5b4. \ub113\uc774\ub294 [0,1]\uc5d0\uc11c 4/3, [1,3]\uc5d0\uc11c \uc544\ub798\ucabd 4/3 \uc774\ub2c8\uae4c \ud569\ud574\uc11c 8/3 \uc774\uc57c."
      }
     ],
     "badAnswers": [
      {
-      "text": "계산을 다시 해 보면 0이 아닐 거야. 다시 풀어 봐.",
-      "why": "원인을 짚지 않고 계산 실수라고만 말했다."
+      "text": "\uacc4\uc0b0\uc744 \ub2e4\uc2dc \ud574 \ubcf4\uba74 0\uc774 \uc544\ub2d0 \uac70\uc57c. \ub2e4\uc2dc \ud480\uc5b4 \ubd10.",
+      "why": "\uc6d0\uc778\uc744 \uc9da\uc9c0 \uc54a\uace0 \uacc4\uc0b0 \uc2e4\uc218\ub77c\uace0\ub9cc \ub9d0\ud588\ub2e4."
      },
      {
-      "text": "정적분이 0이니까 넓이도 0이 맞아.",
-      "why": "오류를 받아들였고 근거도 없다."
+      "text": "\uc815\uc801\ubd84\uc774 0\uc774\ub2c8\uae4c \ub113\uc774\ub3c4 0\uc774 \ub9de\uc544.",
+      "why": "\uc624\ub958\ub97c \ubc1b\uc544\ub4e4\uc600\uace0 \uadfc\uac70\ub3c4 \uc5c6\ub2e4."
      },
      {
-      "text": "x=1에서 나누어 아래 부분은 음수라서 위쪽만 넓이로 하면 4/3이 넓이다.",
-      "why": "아래 부분을 넓이에서 빼 버려 올바른 넓이 8/3이 아니라 4/3을 답했다."
+      "text": "x=1\uc5d0\uc11c \ub098\ub204\uc5b4 \uc544\ub798 \ubd80\ubd84\uc740 \uc74c\uc218\ub77c\uc11c \uc704\ucabd\ub9cc \ub113\uc774\ub85c \ud558\uba74 4/3\uc774 \ub113\uc774\ub2e4.",
+      "why": "\uc544\ub798 \ubd80\ubd84\uc744 \ub113\uc774\uc5d0\uc11c \ube7c \ubc84\ub824 \uc62c\ubc14\ub978 \ub113\uc774 8/3\uc774 \uc544\ub2c8\ub77c 4/3\uc744 \ub2f5\ud588\ub2e4."
      }
     ],
-    "humanReview": "친구에게 하는 말로서 설득력이 있는지, 부호와 넓이의 차이를 정확히 이해하고 썼는지는 사람이 읽어야 한다.",
+    "humanReview": "\uce5c\uad6c\uc5d0\uac8c \ud558\ub294 \ub9d0\ub85c\uc11c \uc124\ub4dd\ub825\uc774 \uc788\ub294\uc9c0, \ubd80\ud638\uc640 \ub113\uc774\uc758 \ucc28\uc774\ub97c \uc815\ud655\ud788 \uc774\ud574\ud558\uace0 \uc37c\ub294\uc9c0\ub294 \uc0ac\ub78c\uc774 \uc77d\uc5b4\uc57c \ud55c\ub2e4.",
     "hints": [
-     "위쪽 부분과 아래쪽 부분을 각각 말로 써 보세요.",
-     "마지막에 올바른 넓이를 숫자로 적어 보세요."
+     "\uc704\ucabd \ubd80\ubd84\uacfc \uc544\ub798\ucabd \ubd80\ubd84\uc744 \uac01\uac01 \ub9d0\ub85c \uc368 \ubcf4\uc138\uc694.",
+     "\ub9c8\uc9c0\ub9c9\uc5d0 \uc62c\ubc14\ub978 \ub113\uc774\ub97c \uc22b\uc790\ub85c \uc801\uc5b4 \ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "오류의 위치",
-    "full": "설정(2번 줄)에서 오류가 시작됨을 짚음",
-    "partial": "계산은 맞다고 보고 결론(5번 줄)만 지적함",
-    "none": "계산 줄을 틀렸다고 함"
+    "criterion": "\uc624\ub958\uc758 \uc704\uce58",
+    "full": "\uc124\uc815(2\ubc88 \uc904)\uc5d0\uc11c \uc624\ub958\uac00 \uc2dc\uc791\ub428\uc744 \uc9da\uc74c",
+    "partial": "\uacc4\uc0b0\uc740 \ub9de\ub2e4\uace0 \ubcf4\uace0 \uacb0\ub860(5\ubc88 \uc904)\ub9cc \uc9c0\uc801\ud568",
+    "none": "\uacc4\uc0b0 \uc904\uc744 \ud2c0\ub838\ub2e4\uace0 \ud568"
    },
    {
-    "criterion": "부호와 넓이의 구별",
-    "full": "상쇄와 구간 나누기로 올바른 넓이 8/3을 설명함",
-    "partial": "부호 때문이라고만 말함",
-    "none": "원인을 말하지 못함"
+    "criterion": "\ubd80\ud638\uc640 \ub113\uc774\uc758 \uad6c\ubcc4",
+    "full": "\uc0c1\uc1c4\uc640 \uad6c\uac04 \ub098\ub204\uae30\ub85c \uc62c\ubc14\ub978 \ub113\uc774 8/3\uc744 \uc124\uba85\ud568",
+    "partial": "\ubd80\ud638 \ub54c\ubb38\uc774\ub77c\uace0\ub9cc \ub9d0\ud568",
+    "none": "\uc6d0\uc778\uc744 \ub9d0\ud558\uc9c0 \ubabb\ud568"
    }
   ],
   "alternatives": [
-   "5번 줄은 2번 줄의 설정에서 이어진 결과이므로 2번 줄을 처음 문제가 생긴 줄로 고른다. 5번 줄을 골랐더라도 원인을 2번 줄의 설정(정적분을 넓이로 놓음)으로 설명하면 풀이는 인정하되, '처음'은 2번 줄임을 사람이 짚어 준다.",
-   "절댓값을 쓰는 대신 [1,3]에서 −∫ 로 쓴 설명도 같은 방법이다."
+   "5\ubc88 \uc904\uc740 2\ubc88 \uc904\uc758 \uc124\uc815\uc5d0\uc11c \uc774\uc5b4\uc9c4 \uacb0\uacfc\uc774\ubbc0\ub85c 2\ubc88 \uc904\uc744 \ucc98\uc74c \ubb38\uc81c\uac00 \uc0dd\uae34 \uc904\ub85c \uace0\ub978\ub2e4. 5\ubc88 \uc904\uc744 \uace8\ub790\ub354\ub77c\ub3c4 \uc6d0\uc778\uc744 2\ubc88 \uc904\uc758 \uc124\uc815(\uc815\uc801\ubd84\uc744 \ub113\uc774\ub85c \ub193\uc74c)\uc73c\ub85c \uc124\uba85\ud558\uba74 \ud480\uc774\ub294 \uc778\uc815\ud558\ub418, '\ucc98\uc74c'\uc740 2\ubc88 \uc904\uc784\uc744 \uc0ac\ub78c\uc774 \uc9da\uc5b4 \uc900\ub2e4.",
+   "\uc808\ub313\uac12\uc744 \uc4f0\ub294 \ub300\uc2e0 [1,3]\uc5d0\uc11c \u2212\u222b \ub85c \uc4f4 \uc124\uba85\ub3c4 \uac19\uc740 \ubc29\ubc95\uc774\ub2e4."
   ],
   "hardCases": [
-   "'정적분이 넓이를 뜻할 때'(함수가 0 이상인 구간)와 '값'일 때를 모두 알고 설명하는 학생의 서술은 길어질 수 있어, 핵심 단어가 없어도 사람이 인정해야 한다."
+   "'\uc815\uc801\ubd84\uc774 \ub113\uc774\ub97c \ub73b\ud560 \ub54c'(\ud568\uc218\uac00 0 \uc774\uc0c1\uc778 \uad6c\uac04)\uc640 '\uac12'\uc77c \ub54c\ub97c \ubaa8\ub450 \uc54c\uace0 \uc124\uba85\ud558\ub294 \ud559\uc0dd\uc758 \uc11c\uc220\uc740 \uae38\uc5b4\uc9c8 \uc218 \uc788\uc5b4, \ud575\uc2ec \ub2e8\uc5b4\uac00 \uc5c6\uc5b4\ub3c4 \uc0ac\ub78c\uc774 \uc778\uc815\ud574\uc57c \ud55c\ub2e4."
   ],
   "cautions": {
-   "language": "'정적분', '부정적분', '상쇄'를 처음 보는 학생이 있을 수 있어 줄마다 괄호로 읽는 법을 덧붙였다. ∫₀³ 는 '0부터 3까지 f(x)의 정적분'으로 읽는다고 적었다.",
-   "culture": "수학적 맥락만 있어 문화 의존이 거의 없다.",
-   "accessibility": "그림이 없어 곡선이 x축과 만나는 위치와 위·아래 구간을 글로 설명했다. 위첨자·아래첨자 기호는 화면 낭독기가 잘못 읽을 수 있으니 '0부터 3까지'라고 함께 썼다."
+   "language": "'\uc815\uc801\ubd84', '\ubd80\uc815\uc801\ubd84', '\uc0c1\uc1c4'\ub97c \ucc98\uc74c \ubcf4\ub294 \ud559\uc0dd\uc774 \uc788\uc744 \uc218 \uc788\uc5b4 \uc904\ub9c8\ub2e4 \uad04\ud638\ub85c \uc77d\ub294 \ubc95\uc744 \ub367\ubd99\uc600\ub2e4. \u222b\u2080\u00b3 \ub294 '0\ubd80\ud130 3\uae4c\uc9c0 f(x)\uc758 \uc815\uc801\ubd84'\uc73c\ub85c \uc77d\ub294\ub2e4\uace0 \uc801\uc5c8\ub2e4.",
+   "culture": "\uc218\ud559\uc801 \ub9e5\ub77d\ub9cc \uc788\uc5b4 \ubb38\ud654 \uc758\uc874\uc774 \uac70\uc758 \uc5c6\ub2e4.",
+   "accessibility": "\uadf8\ub9bc\uc774 \uc5c6\uc5b4 \uace1\uc120\uc774 x\ucd95\uacfc \ub9cc\ub098\ub294 \uc704\uce58\uc640 \uc704\u00b7\uc544\ub798 \uad6c\uac04\uc744 \uae00\ub85c \uc124\uba85\ud588\ub2e4. \uc704\ucca8\uc790\u00b7\uc544\ub798\ucca8\uc790 \uae30\ud638\ub294 \ud654\uba74 \ub0ad\ub3c5\uae30\uac00 \uc798\ubabb \uc77d\uc744 \uc218 \uc788\uc73c\ub2c8 '0\ubd80\ud130 3\uae4c\uc9c0'\ub77c\uace0 \ud568\uaed8 \uc37c\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "선택 단계의 정답, 오류 줄의 위치",
-    "서술에 부호·넓이 값에 해당하는 표현이 있는지"
+    "\uc120\ud0dd \ub2e8\uacc4\uc758 \uc815\ub2f5, \uc624\ub958 \uc904\uc758 \uc704\uce58",
+    "\uc11c\uc220\uc5d0 \ubd80\ud638\u00b7\ub113\uc774 \uac12\uc5d0 \ud574\ub2f9\ud558\ub294 \ud45c\ud604\uc774 \uc788\ub294\uc9c0"
    ],
    "human": [
-    "서술의 설득력과 이해 수준"
+    "\uc11c\uc220\uc758 \uc124\ub4dd\ub825\uacfc \uc774\ud574 \uc218\uc900"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "x-m-h3-02",
   "subject": "math",
   "grade": "H3",
-  "topic": "적분의 의미",
+  "topic": "\uc801\ubd84\uc758 \uc758\ubbf8",
   "level": 3,
-  "levelLabel": "고등",
-  "title": "위치는 제자리인데 많이 움직였다",
+  "levelLabel": "\uace0\ub4f1",
+  "title": "\uc704\uce58\ub294 \uc81c\uc790\ub9ac\uc778\ub370 \ub9ce\uc774 \uc6c0\uc9c1\uc600\ub2e4",
   "uiLang": "ko",
   "format": "build-many-verify",
   "generative": true,
-  "goal": "위치 변화량이 0이어도 움직인 거리는 0보다 클 수 있음을, 조건을 만족하는 여러 경우를 직접 만들며 확인한다.",
+  "goal": "\uc704\uce58 \ubcc0\ud654\ub7c9\uc774 0\uc774\uc5b4\ub3c4 \uc6c0\uc9c1\uc778 \uac70\ub9ac\ub294 0\ubcf4\ub2e4 \ud074 \uc218 \uc788\uc74c\uc744, \uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294 \uc5ec\ub7ec \uacbd\uc6b0\ub97c \uc9c1\uc811 \ub9cc\ub4e4\uba70 \ud655\uc778\ud55c\ub2e4.",
   "thinking": [
-   "위치 변화량과 움직인 거리를 구별하기",
-   "조건을 만족하는 서로 다른 예를 제약 속에서 만들기",
-   "만든 예로 이유를 설명하기"
+   "\uc704\uce58 \ubcc0\ud654\ub7c9\uacfc \uc6c0\uc9c1\uc778 \uac70\ub9ac\ub97c \uad6c\ubcc4\ud558\uae30",
+   "\uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294 \uc11c\ub85c \ub2e4\ub978 \uc608\ub97c \uc81c\uc57d \uc18d\uc5d0\uc11c \ub9cc\ub4e4\uae30",
+   "\ub9cc\ub4e0 \uc608\ub85c \uc774\uc720\ub97c \uc124\uba85\ud558\uae30"
   ],
-  "differsFromPlain": "단순 연습은 주어진 속도 함수를 적분해 위치 변화량을 구한다. 여기서는 '위치 변화량 0, 움직인 거리 9 이상'이라는 조건에 맞는 경우를 학생이 직접 찾는다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uc8fc\uc5b4\uc9c4 \uc18d\ub3c4 \ud568\uc218\ub97c \uc801\ubd84\ud574 \uc704\uce58 \ubcc0\ud654\ub7c9\uc744 \uad6c\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 '\uc704\uce58 \ubcc0\ud654\ub7c9 0, \uc6c0\uc9c1\uc778 \uac70\ub9ac 9 \uc774\uc0c1'\uc774\ub77c\ub294 \uc870\uac74\uc5d0 \ub9de\ub294 \uacbd\uc6b0\ub97c \ud559\uc0dd\uc774 \uc9c1\uc811 \ucc3e\ub294\ub2e4.",
   "prerequisites": [
-   "수직선 위를 움직이는 점의 속도와 위치의 관계를 배운 경험",
-   "정적분이 뜻하는 것을 한 번 배운 경험"
+   "\uc218\uc9c1\uc120 \uc704\ub97c \uc6c0\uc9c1\uc774\ub294 \uc810\uc758 \uc18d\ub3c4\uc640 \uc704\uce58\uc758 \uad00\uacc4\ub97c \ubc30\uc6b4 \uacbd\ud5d8",
+   "\uc815\uc801\ubd84\uc774 \ub73b\ud558\ub294 \uac83\uc744 \ud55c \ubc88 \ubc30\uc6b4 \uacbd\ud5d8"
   ],
   "minutes": 12,
   "curriculum": null,
-  "material": "수직선 위의 점 P가 시각 t = 0 에서 원점을 출발합니다. 시각 t 에서의 속도는 v(t) = t − c (c는 양수)입니다. 즉 t가 c보다 작은 동안에는 음의 방향(왼쪽)으로, c보다 큰 동안에는 양의 방향(오른쪽)으로 움직입니다. 점 P는 t = 0 부터 t = b 까지 움직이고, b는 c보다 큽니다.",
+  "material": "\uc218\uc9c1\uc120 \uc704\uc758 \uc810 P\uac00 \uc2dc\uac01 t = 0 \uc5d0\uc11c \uc6d0\uc810\uc744 \ucd9c\ubc1c\ud569\ub2c8\ub2e4. \uc2dc\uac01 t \uc5d0\uc11c\uc758 \uc18d\ub3c4\ub294 v(t) = t \u2212 c (c\ub294 \uc591\uc218)\uc785\ub2c8\ub2e4. \uc989 t\uac00 c\ubcf4\ub2e4 \uc791\uc740 \ub3d9\uc548\uc5d0\ub294 \uc74c\uc758 \ubc29\ud5a5(\uc67c\ucabd)\uc73c\ub85c, c\ubcf4\ub2e4 \ud070 \ub3d9\uc548\uc5d0\ub294 \uc591\uc758 \ubc29\ud5a5(\uc624\ub978\ucabd)\uc73c\ub85c \uc6c0\uc9c1\uc785\ub2c8\ub2e4. \uc810 P\ub294 t = 0 \ubd80\ud130 t = b \uae4c\uc9c0 \uc6c0\uc9c1\uc774\uace0, b\ub294 c\ubcf4\ub2e4 \ud07d\ub2c8\ub2e4.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
-    "prompt": "시각 b에 점 P가 원점으로 돌아와 있다면, 0에서 b까지 P가 움직인 거리에 대해 알맞은 것을 고르세요.",
+    "prompt": "\uc2dc\uac01 b\uc5d0 \uc810 P\uac00 \uc6d0\uc810\uc73c\ub85c \ub3cc\uc544\uc640 \uc788\ub2e4\uba74, 0\uc5d0\uc11c b\uae4c\uc9c0 P\uac00 \uc6c0\uc9c1\uc778 \uac70\ub9ac\uc5d0 \ub300\ud574 \uc54c\ub9de\uc740 \uac83\uc744 \uace0\ub974\uc138\uc694.",
     "options": [
      {
       "id": "a",
-      "text": "움직인 거리도 0이다. 출발점과 같은 자리에 있기 때문이다",
-      "reveals": "위치가 같다는 것은 출발점과 도착점이 같다는 뜻이지 중간에 움직이지 않았다는 뜻이 아니에요."
+      "text": "\uc6c0\uc9c1\uc778 \uac70\ub9ac\ub3c4 0\uc774\ub2e4. \ucd9c\ubc1c\uc810\uacfc \uac19\uc740 \uc790\ub9ac\uc5d0 \uc788\uae30 \ub54c\ubb38\uc774\ub2e4",
+      "reveals": "\uc704\uce58\uac00 \uac19\ub2e4\ub294 \uac83\uc740 \ucd9c\ubc1c\uc810\uacfc \ub3c4\ucc29\uc810\uc774 \uac19\ub2e4\ub294 \ub73b\uc774\uc9c0 \uc911\uac04\uc5d0 \uc6c0\uc9c1\uc774\uc9c0 \uc54a\uc558\ub2e4\ub294 \ub73b\uc774 \uc544\ub2c8\uc5d0\uc694."
      },
      {
       "id": "b",
-      "text": "속도의 부호가 한 번도 바뀌지 않았다는 뜻이다. 한쪽으로만 갔다",
-      "reveals": "한쪽으로만 계속 움직였다면 출발점으로 돌아올 수 없어요. 속도의 부호가 어떻게 바뀌었는지 생각해 보세요."
+      "text": "\uc18d\ub3c4\uc758 \ubd80\ud638\uac00 \ud55c \ubc88\ub3c4 \ubc14\ub00c\uc9c0 \uc54a\uc558\ub2e4\ub294 \ub73b\uc774\ub2e4. \ud55c\ucabd\uc73c\ub85c\ub9cc \uac14\ub2e4",
+      "reveals": "\ud55c\ucabd\uc73c\ub85c\ub9cc \uacc4\uc18d \uc6c0\uc9c1\uc600\ub2e4\uba74 \ucd9c\ubc1c\uc810\uc73c\ub85c \ub3cc\uc544\uc62c \uc218 \uc5c6\uc5b4\uc694. \uc18d\ub3c4\uc758 \ubd80\ud638\uac00 \uc5b4\ub5bb\uac8c \ubc14\ub00c\uc5c8\ub294\uc9c0 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694."
      },
      {
       "id": "c",
-      "text": "움직였을 수 있다. 되돌아왔다면 거리는 0보다 크다",
-      "reveals": "도착점과 출발점이 같아도 중간의 움직임은 따로 따져야 한다는 점을 짚었어요."
+      "text": "\uc6c0\uc9c1\uc600\uc744 \uc218 \uc788\ub2e4. \ub418\ub3cc\uc544\uc654\ub2e4\uba74 \uac70\ub9ac\ub294 0\ubcf4\ub2e4 \ud06c\ub2e4",
+      "reveals": "\ub3c4\ucc29\uc810\uacfc \ucd9c\ubc1c\uc810\uc774 \uac19\uc544\ub3c4 \uc911\uac04\uc758 \uc6c0\uc9c1\uc784\uc740 \ub530\ub85c \ub530\uc838\uc57c \ud55c\ub2e4\ub294 \uc810\uc744 \uc9da\uc5c8\uc5b4\uc694."
      },
      {
       "id": "d",
-      "text": "움직인 거리는 위치 변화량의 절댓값과 항상 같으므로 0이다",
-      "reveals": "위치 변화량은 왼쪽·오른쪽 움직임이 상쇄된 값이에요. 그 절댓값은 거리를 알려 주지 못해요."
+      "text": "\uc6c0\uc9c1\uc778 \uac70\ub9ac\ub294 \uc704\uce58 \ubcc0\ud654\ub7c9\uc758 \uc808\ub313\uac12\uacfc \ud56d\uc0c1 \uac19\uc73c\ubbc0\ub85c 0\uc774\ub2e4",
+      "reveals": "\uc704\uce58 \ubcc0\ud654\ub7c9\uc740 \uc67c\ucabd\u00b7\uc624\ub978\ucabd \uc6c0\uc9c1\uc784\uc774 \uc0c1\uc1c4\ub41c \uac12\uc774\uc5d0\uc694. \uadf8 \uc808\ub313\uac12\uc740 \uac70\ub9ac\ub97c \uc54c\ub824 \uc8fc\uc9c0 \ubabb\ud574\uc694."
      }
     ],
     "correct": [
      "c"
     ],
-    "explain": "위치 변화량은 방향에 부호를 주어 더한 값이라 갔다 온 만큼이 상쇄되고, 움직인 거리는 방향과 상관없이 모두 더한 값이에요. 그래서 위치 변화량이 0이어도 거리는 0보다 클 수 있어요.",
+    "explain": "\uc704\uce58 \ubcc0\ud654\ub7c9\uc740 \ubc29\ud5a5\uc5d0 \ubd80\ud638\ub97c \uc8fc\uc5b4 \ub354\ud55c \uac12\uc774\ub77c \uac14\ub2e4 \uc628 \ub9cc\ud07c\uc774 \uc0c1\uc1c4\ub418\uace0, \uc6c0\uc9c1\uc778 \uac70\ub9ac\ub294 \ubc29\ud5a5\uacfc \uc0c1\uad00\uc5c6\uc774 \ubaa8\ub450 \ub354\ud55c \uac12\uc774\uc5d0\uc694. \uadf8\ub798\uc11c \uc704\uce58 \ubcc0\ud654\ub7c9\uc774 0\uc774\uc5b4\ub3c4 \uac70\ub9ac\ub294 0\ubcf4\ub2e4 \ud074 \uc218 \uc788\uc5b4\uc694.",
     "hints": [
-     "출발점과 도착점이 같은 경우를 일상의 예(예: 학교에 갔다 오기)로 떠올려 보세요.",
-     "속도의 부호가 바뀌면 점이 어떻게 움직이는지 생각해 보세요."
+     "\ucd9c\ubc1c\uc810\uacfc \ub3c4\ucc29\uc810\uc774 \uac19\uc740 \uacbd\uc6b0\ub97c \uc77c\uc0c1\uc758 \uc608(\uc608: \ud559\uad50\uc5d0 \uac14\ub2e4 \uc624\uae30)\ub85c \ub5a0\uc62c\ub824 \ubcf4\uc138\uc694.",
+     "\uc18d\ub3c4\uc758 \ubd80\ud638\uac00 \ubc14\ub00c\uba74 \uc810\uc774 \uc5b4\ub5bb\uac8c \uc6c0\uc9c1\uc774\ub294\uc9c0 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694."
     ],
     "scaffold": true
    },
    {
     "id": "s2",
     "kind": "build",
-    "prompt": "속도가 v(t) = t − c 일 때, 0부터 b까지 위치 변화량이 0이면서 움직인 거리가 9 이상이 되는 (c, b) 를 서로 다른 c 로 2개 만들어 보세요.",
+    "prompt": "\uc18d\ub3c4\uac00 v(t) = t \u2212 c \uc77c \ub54c, 0\ubd80\ud130 b\uae4c\uc9c0 \uc704\uce58 \ubcc0\ud654\ub7c9\uc774 0\uc774\uba74\uc11c \uc6c0\uc9c1\uc778 \uac70\ub9ac\uac00 9 \uc774\uc0c1\uc774 \ub418\ub294 (c, b) \ub97c \uc11c\ub85c \ub2e4\ub978 c \ub85c 2\uac1c \ub9cc\ub4e4\uc5b4 \ubcf4\uc138\uc694.",
     "vars": [
      {
       "name": "c",
-      "label": "속도가 0이 되는 시각 c"
+      "label": "\uc18d\ub3c4\uac00 0\uc774 \ub418\ub294 \uc2dc\uac01 c"
      },
      {
       "name": "b",
-      "label": "끝나는 시각 b"
+      "label": "\ub05d\ub098\ub294 \uc2dc\uac01 b"
      }
     ],
     "constraints": [
      {
       "id": "c1",
       "expr": "c>0 && b>c",
-      "ok": "c가 양수이고 b가 c보다 커요.",
-      "fail": "c는 양수이고 b는 c보다 커야 해요."
+      "ok": "c\uac00 \uc591\uc218\uc774\uace0 b\uac00 c\ubcf4\ub2e4 \ucee4\uc694.",
+      "fail": "c\ub294 \uc591\uc218\uc774\uace0 b\ub294 c\ubcf4\ub2e4 \ucee4\uc57c \ud574\uc694."
      },
      {
       "id": "c2",
       "expr": "b*b/2 - c*b == 0",
-      "ok": "0부터 b까지 위치 변화량이 0이에요.",
-      "fail": "0부터 b까지 위치 변화량(= b²/2 − c·b)이 0이 아니에요."
+      "ok": "0\ubd80\ud130 b\uae4c\uc9c0 \uc704\uce58 \ubcc0\ud654\ub7c9\uc774 0\uc774\uc5d0\uc694.",
+      "fail": "0\ubd80\ud130 b\uae4c\uc9c0 \uc704\uce58 \ubcc0\ud654\ub7c9(= b\u00b2/2 \u2212 c\u00b7b)\uc774 0\uc774 \uc544\ub2c8\uc5d0\uc694."
      },
      {
       "id": "c3",
       "expr": "c*c/2 + (b-c)*(b-c)/2 >= 9",
-      "ok": "움직인 거리가 9 이상이에요.",
-      "fail": "움직인 거리(= c²/2 + (b−c)²/2)가 9보다 작아요."
+      "ok": "\uc6c0\uc9c1\uc778 \uac70\ub9ac\uac00 9 \uc774\uc0c1\uc774\uc5d0\uc694.",
+      "fail": "\uc6c0\uc9c1\uc778 \uac70\ub9ac(= c\u00b2/2 + (b\u2212c)\u00b2/2)\uac00 9\ubcf4\ub2e4 \uc791\uc544\uc694."
      }
     ],
     "need": 2,
@@ -303,36 +303,36 @@
       "b": 4
      }
     ],
-    "explain": "위치 변화량이 0이면 b = 2c 이고, 이때 움직인 거리는 c² 이에요. 그래서 c ≥ 3 이면 거리가 9 이상이에요. 예를 들어 c = 3, b = 6 이면 왼쪽으로 4.5, 오른쪽으로 4.5 움직여 거리 9가 돼요.",
+    "explain": "\uc704\uce58 \ubcc0\ud654\ub7c9\uc774 0\uc774\uba74 b = 2c \uc774\uace0, \uc774\ub54c \uc6c0\uc9c1\uc778 \uac70\ub9ac\ub294 c\u00b2 \uc774\uc5d0\uc694. \uadf8\ub798\uc11c c \u2265 3 \uc774\uba74 \uac70\ub9ac\uac00 9 \uc774\uc0c1\uc774\uc5d0\uc694. \uc608\ub97c \ub4e4\uc5b4 c = 3, b = 6 \uc774\uba74 \uc67c\ucabd\uc73c\ub85c 4.5, \uc624\ub978\ucabd\uc73c\ub85c 4.5 \uc6c0\uc9c1\uc5ec \uac70\ub9ac 9\uac00 \ub3fc\uc694.",
     "hints": [
-     "위치 변화량이 0이 되려면 v(t)의 그래프와 t축 사이에서 위쪽 넓이와 아래쪽 넓이가 어떤 관계여야 할까요?",
-     "t = c 앞뒤로 나눠 각각의 넓이를 생각해 보세요. 움직인 거리는 두 넓이를 더한 값이에요."
+     "\uc704\uce58 \ubcc0\ud654\ub7c9\uc774 0\uc774 \ub418\ub824\uba74 v(t)\uc758 \uadf8\ub798\ud504\uc640 t\ucd95 \uc0ac\uc774\uc5d0\uc11c \uc704\ucabd \ub113\uc774\uc640 \uc544\ub798\ucabd \ub113\uc774\uac00 \uc5b4\ub5a4 \uad00\uacc4\uc5ec\uc57c \ud560\uae4c\uc694?",
+     "t = c \uc55e\ub4a4\ub85c \ub098\ub220 \uac01\uac01\uc758 \ub113\uc774\ub97c \uc0dd\uac01\ud574 \ubcf4\uc138\uc694. \uc6c0\uc9c1\uc778 \uac70\ub9ac\ub294 \ub450 \ub113\uc774\ub97c \ub354\ud55c \uac12\uc774\uc5d0\uc694."
     ],
     "distinctBy": "c",
     "because": {
      "id": "s2b",
      "kind": "write",
-     "prompt": "만든 예 하나를 골라, 위치 변화량은 0인데 움직인 거리는 왜 0이 아닌지 숫자를 넣어 설명해 보세요.",
+     "prompt": "\ub9cc\ub4e0 \uc608 \ud558\ub098\ub97c \uace8\ub77c, \uc704\uce58 \ubcc0\ud654\ub7c9\uc740 0\uc778\ub370 \uc6c0\uc9c1\uc778 \uac70\ub9ac\ub294 \uc65c 0\uc774 \uc544\ub2cc\uc9c0 \uc22b\uc790\ub97c \ub123\uc5b4 \uc124\uba85\ud574 \ubcf4\uc138\uc694.",
      "minChars": 15,
      "checks": [
       {
        "id": "w1",
-       "label": "왼쪽·오른쪽(또는 음·양) 움직임이 상쇄/되돌아옴을 말했다",
+       "label": "\uc67c\ucabd\u00b7\uc624\ub978\ucabd(\ub610\ub294 \uc74c\u00b7\uc591) \uc6c0\uc9c1\uc784\uc774 \uc0c1\uc1c4/\ub418\ub3cc\uc544\uc634\uc744 \ub9d0\ud588\ub2e4",
        "mode": "any",
        "patterns": [
-        "상쇄",
-        "서로\\s*(지워|없어|같)",
-        "(양|음)(의)?\\s*방향",
-        "왼쪽.{0,30}오른쪽|오른쪽.{0,30}왼쪽",
-        "되돌아",
-        "돌아",
-        "부호",
-        "반대"
+        "\uc0c1\uc1c4",
+        "\uc11c\ub85c\\s*(\uc9c0\uc6cc|\uc5c6\uc5b4|\uac19)",
+        "(\uc591|\uc74c)(\uc758)?\\s*\ubc29\ud5a5",
+        "\uc67c\ucabd.{0,30}\uc624\ub978\ucabd|\uc624\ub978\ucabd.{0,30}\uc67c\ucabd",
+        "\ub418\ub3cc\uc544",
+        "\ub3cc\uc544",
+        "\ubd80\ud638",
+        "\ubc18\ub300"
        ]
       },
       {
        "id": "w2",
-       "label": "구체적인 숫자를 넣었다",
+       "label": "\uad6c\uccb4\uc801\uc778 \uc22b\uc790\ub97c \ub123\uc5c8\ub2e4",
        "mode": "any",
        "patterns": [
         "\\d"
@@ -340,336 +340,338 @@
       }
      ],
      "selfAssess": [
-      "내 설명에서 '갔다 온 만큼'이 위치 변화량에서는 지워지고 거리에는 더해진다는 점이 드러나나요?",
-      "내가 고른 c, b의 숫자로 계산한 값이 맞나요?"
+      "\ub0b4 \uc124\uba85\uc5d0\uc11c '\uac14\ub2e4 \uc628 \ub9cc\ud07c'\uc774 \uc704\uce58 \ubcc0\ud654\ub7c9\uc5d0\uc11c\ub294 \uc9c0\uc6cc\uc9c0\uace0 \uac70\ub9ac\uc5d0\ub294 \ub354\ud574\uc9c4\ub2e4\ub294 \uc810\uc774 \ub4dc\ub7ec\ub098\ub098\uc694?",
+      "\ub0b4\uac00 \uace0\ub978 c, b\uc758 \uc22b\uc790\ub85c \uacc4\uc0b0\ud55c \uac12\uc774 \ub9de\ub098\uc694?"
      ],
      "modelAnswers": [
       {
-       "text": "c = 3, b = 6 이면 0~3 에서는 왼쪽으로 4.5, 3~6 에서는 오른쪽으로 4.5 만큼 가서 되돌아오니까 위치 변화량은 0이지만, 움직인 거리는 4.5 + 4.5 = 9 야."
+       "text": "c = 3, b = 6 \uc774\uba74 0~3 \uc5d0\uc11c\ub294 \uc67c\ucabd\uc73c\ub85c 4.5, 3~6 \uc5d0\uc11c\ub294 \uc624\ub978\ucabd\uc73c\ub85c 4.5 \ub9cc\ud07c \uac00\uc11c \ub418\ub3cc\uc544\uc624\ub2c8\uae4c \uc704\uce58 \ubcc0\ud654\ub7c9\uc740 0\uc774\uc9c0\ub9cc, \uc6c0\uc9c1\uc778 \uac70\ub9ac\ub294 4.5 + 4.5 = 9 \uc57c."
       },
       {
-       "text": "c = 4, b = 8 이면 앞 절반은 음의 방향으로 8, 뒤 절반은 양의 방향으로 8 이라서 서로 상쇄되어 위치 변화량이 0이 되고, 움직인 거리는 8 + 8 = 16 이야."
+       "text": "c = 4, b = 8 \uc774\uba74 \uc55e \uc808\ubc18\uc740 \uc74c\uc758 \ubc29\ud5a5\uc73c\ub85c 8, \ub4a4 \uc808\ubc18\uc740 \uc591\uc758 \ubc29\ud5a5\uc73c\ub85c 8 \uc774\ub77c\uc11c \uc11c\ub85c \uc0c1\uc1c4\ub418\uc5b4 \uc704\uce58 \ubcc0\ud654\ub7c9\uc774 0\uc774 \ub418\uace0, \uc6c0\uc9c1\uc778 \uac70\ub9ac\ub294 8 + 8 = 16 \uc774\uc57c."
       }
      ],
      "badAnswers": [
       {
-       "text": "위치 변화량이 0이면 거리도 0이야.",
-       "why": "숫자도 근거도 없고 틀린 결론이다."
+       "text": "\uc704\uce58 \ubcc0\ud654\ub7c9\uc774 0\uc774\uba74 \uac70\ub9ac\ub3c4 0\uc774\uc57c.",
+       "why": "\uc22b\uc790\ub3c4 \uadfc\uac70\ub3c4 \uc5c6\uace0 \ud2c0\ub9b0 \uacb0\ub860\uc774\ub2e4."
       },
       {
-       "text": "c = 3, b = 6 이면 되니까 그냥 그래.",
-       "why": "숫자만 있고 왜 그런지 설명이 없다."
+       "text": "c = 3, b = 6 \uc774\uba74 \ub418\ub2c8\uae4c \uadf8\ub0e5 \uadf8\ub798.",
+       "why": "\uc22b\uc790\ub9cc \uc788\uace0 \uc65c \uadf8\ub7f0\uc9c0 \uc124\uba85\uc774 \uc5c6\ub2e4."
       }
      ],
-     "humanReview": "설명이 거리와 위치 변화량을 올바르게 구별하는지는 사람이 읽어야 한다.",
+     "humanReview": "\uc124\uba85\uc774 \uac70\ub9ac\uc640 \uc704\uce58 \ubcc0\ud654\ub7c9\uc744 \uc62c\ubc14\ub974\uac8c \uad6c\ubcc4\ud558\ub294\uc9c0\ub294 \uc0ac\ub78c\uc774 \uc77d\uc5b4\uc57c \ud55c\ub2e4.",
      "hints": [
-      "왼쪽으로 간 양과 오른쪽으로 간 양을 각각 숫자로 써 보세요.",
-      "위치 변화량에서는 두 양이 어떻게 되는지 써 보세요."
+      "\uc67c\ucabd\uc73c\ub85c \uac04 \uc591\uacfc \uc624\ub978\ucabd\uc73c\ub85c \uac04 \uc591\uc744 \uac01\uac01 \uc22b\uc790\ub85c \uc368 \ubcf4\uc138\uc694.",
+      "\uc704\uce58 \ubcc0\ud654\ub7c9\uc5d0\uc11c\ub294 \ub450 \uc591\uc774 \uc5b4\ub5bb\uac8c \ub418\ub294\uc9c0 \uc368 \ubcf4\uc138\uc694."
      ]
     }
    }
   ],
   "rubric": [
    {
-    "criterion": "조건에 맞는 예 만들기",
-    "full": "서로 다른 c로 조건(변화량 0, 거리 9 이상)을 모두 만족하는 예 2개를 제시",
-    "partial": "예는 만들었으나 하나의 조건만 만족",
-    "none": "예를 만들지 못함"
+    "criterion": "\uc870\uac74\uc5d0 \ub9de\ub294 \uc608 \ub9cc\ub4e4\uae30",
+    "full": "\uc11c\ub85c \ub2e4\ub978 c\ub85c \uc870\uac74(\ubcc0\ud654\ub7c9 0, \uac70\ub9ac 9 \uc774\uc0c1)\uc744 \ubaa8\ub450 \ub9cc\uc871\ud558\ub294 \uc608 2\uac1c\ub97c \uc81c\uc2dc",
+    "partial": "\uc608\ub294 \ub9cc\ub4e4\uc5c8\uc73c\ub098 \ud558\ub098\uc758 \uc870\uac74\ub9cc \ub9cc\uc871",
+    "none": "\uc608\ub97c \ub9cc\ub4e4\uc9c0 \ubabb\ud568"
    },
    {
-    "criterion": "이유 설명",
-    "full": "상쇄(위치)와 합산(거리)의 차이를 숫자로 설명",
-    "partial": "차이를 말했으나 숫자가 없음",
-    "none": "두 개념을 구별하지 못함"
+    "criterion": "\uc774\uc720 \uc124\uba85",
+    "full": "\uc0c1\uc1c4(\uc704\uce58)\uc640 \ud569\uc0b0(\uac70\ub9ac)\uc758 \ucc28\uc774\ub97c \uc22b\uc790\ub85c \uc124\uba85",
+    "partial": "\ucc28\uc774\ub97c \ub9d0\ud588\uc73c\ub098 \uc22b\uc790\uac00 \uc5c6\uc74c",
+    "none": "\ub450 \uac1c\ub150\uc744 \uad6c\ubcc4\ud558\uc9c0 \ubabb\ud568"
    }
   ],
   "alternatives": [
-   "c가 3.5, b가 7 같은 소수 값도 조건을 만족하면 인정한다.",
-   "t = c 앞뒤를 삼각형 넓이로 계산해도, 적분 식을 써도 같은 결과이다."
+   "c\uac00 3.5, b\uac00 7 \uac19\uc740 \uc18c\uc218 \uac12\ub3c4 \uc870\uac74\uc744 \ub9cc\uc871\ud558\uba74 \uc778\uc815\ud55c\ub2e4.",
+   "t = c \uc55e\ub4a4\ub97c \uc0bc\uac01\ud615 \ub113\uc774\ub85c \uacc4\uc0b0\ud574\ub3c4, \uc801\ubd84 \uc2dd\uc744 \uc368\ub3c4 \uac19\uc740 \uacb0\uacfc\uc774\ub2e4."
   ],
   "hardCases": [
-   "c가 3보다 작아서 거리가 9보다 작은 경우를 '거의 맞다'고 생각하는 학생에게는, 거리가 c²임을 확인하게 하는 사람의 안내가 필요하다."
+   "c\uac00 3\ubcf4\ub2e4 \uc791\uc544\uc11c \uac70\ub9ac\uac00 9\ubcf4\ub2e4 \uc791\uc740 \uacbd\uc6b0\ub97c '\uac70\uc758 \ub9de\ub2e4'\uace0 \uc0dd\uac01\ud558\ub294 \ud559\uc0dd\uc5d0\uac8c\ub294, \uac70\ub9ac\uac00 c\u00b2\uc784\uc744 \ud655\uc778\ud558\uac8c \ud558\ub294 \uc0ac\ub78c\uc758 \uc548\ub0b4\uac00 \ud544\uc694\ud558\ub2e4."
   ],
   "cautions": {
-   "language": "'위치 변화량'과 '움직인 거리'를 처음 구별하는 학생이 있어 첫 단계에서 일상의 예를 힌트로 둔다.",
-   "culture": "수직선 위의 점만 다뤄 문화 의존이 없다.",
-   "accessibility": "그림 없이 '왼쪽/오른쪽, 음/양의 방향'으로 설명했다. 수식은 b²/2 처럼 문자와 숫자로 풀어 써서 화면 낭독기가 읽을 수 있게 했다."
+   "language": "'\uc704\uce58 \ubcc0\ud654\ub7c9'\uacfc '\uc6c0\uc9c1\uc778 \uac70\ub9ac'\ub97c \ucc98\uc74c \uad6c\ubcc4\ud558\ub294 \ud559\uc0dd\uc774 \uc788\uc5b4 \uccab \ub2e8\uacc4\uc5d0\uc11c \uc77c\uc0c1\uc758 \uc608\ub97c \ud78c\ud2b8\ub85c \ub454\ub2e4.",
+   "culture": "\uc218\uc9c1\uc120 \uc704\uc758 \uc810\ub9cc \ub2e4\ub904 \ubb38\ud654 \uc758\uc874\uc774 \uc5c6\ub2e4.",
+   "accessibility": "\uadf8\ub9bc \uc5c6\uc774 '\uc67c\ucabd/\uc624\ub978\ucabd, \uc74c/\uc591\uc758 \ubc29\ud5a5'\uc73c\ub85c \uc124\uba85\ud588\ub2e4. \uc218\uc2dd\uc740 b\u00b2/2 \ucc98\ub7fc \ubb38\uc790\uc640 \uc22b\uc790\ub85c \ud480\uc5b4 \uc368\uc11c \ud654\uba74 \ub0ad\ub3c5\uae30\uac00 \uc77d\uc744 \uc218 \uc788\uac8c \ud588\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "만든 (c, b)가 세 조건을 만족하는지, 서로 다른 c인지"
+    "\ub9cc\ub4e0 (c, b)\uac00 \uc138 \uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294\uc9c0, \uc11c\ub85c \ub2e4\ub978 c\uc778\uc9c0"
    ],
    "human": [
-    "서술의 논리"
+    "\uc11c\uc220\uc758 \ub17c\ub9ac"
    ]
-  }
+  },
+  "status": "reviewed-ai"
  },
  {
   "id": "x-m-h3-03",
   "subject": "math",
   "grade": "H3",
-  "topic": "급수와 수열의 극한",
+  "topic": "\uae09\uc218\uc640 \uc218\uc5f4\uc758 \uadf9\ud55c",
   "level": 3,
-  "levelLabel": "고등",
-  "title": "항이 0에 가까워지면 합도 멈출까",
+  "levelLabel": "\uace0\ub4f1",
+  "title": "\ud56d\uc774 0\uc5d0 \uac00\uae4c\uc6cc\uc9c0\uba74 \ud569\ub3c4 \uba48\ucd9c\uae4c",
   "uiLang": "ko",
   "format": "reveal-and-revise",
   "generative": false,
-  "goal": "자료가 쌓일수록 '항이 0에 가까워지면 합도 수렴한다'는 짐작을 고치고, 그 짐작이 왜 틀릴 수 있는지 설명하는 명제를 고른다.",
+  "goal": "\uc790\ub8cc\uac00 \uc313\uc77c\uc218\ub85d '\ud56d\uc774 0\uc5d0 \uac00\uae4c\uc6cc\uc9c0\uba74 \ud569\ub3c4 \uc218\ub834\ud55c\ub2e4'\ub294 \uc9d0\uc791\uc744 \uace0\uce58\uace0, \uadf8 \uc9d0\uc791\uc774 \uc65c \ud2c0\ub9b4 \uc218 \uc788\ub294\uc9c0 \uc124\uba85\ud558\ub294 \uba85\uc81c\ub97c \uace0\ub978\ub2e4.",
   "thinking": [
-   "부분합 자료로 짐작하고, 새 자료로 짐작을 수정하기",
-   "묶어서 비교하는 아이디어 평가하기",
-   "수렴 조건의 필요와 충분 구별하기"
+   "\ubd80\ubd84\ud569 \uc790\ub8cc\ub85c \uc9d0\uc791\ud558\uace0, \uc0c8 \uc790\ub8cc\ub85c \uc9d0\uc791\uc744 \uc218\uc815\ud558\uae30",
+   "\ubb36\uc5b4\uc11c \ube44\uad50\ud558\ub294 \uc544\uc774\ub514\uc5b4 \ud3c9\uac00\ud558\uae30",
+   "\uc218\ub834 \uc870\uac74\uc758 \ud544\uc694\uc640 \ucda9\ubd84 \uad6c\ubcc4\ud558\uae30"
   ],
-  "differsFromPlain": "단순 연습은 주어진 급수의 합을 구한다. 여기서는 '항이 작아지니 합도 멈춘다'는 직관을 자료로 시험하고, 증거가 쌓이는 대로 판단을 고친다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uc8fc\uc5b4\uc9c4 \uae09\uc218\uc758 \ud569\uc744 \uad6c\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 '\ud56d\uc774 \uc791\uc544\uc9c0\ub2c8 \ud569\ub3c4 \uba48\ucd98\ub2e4'\ub294 \uc9c1\uad00\uc744 \uc790\ub8cc\ub85c \uc2dc\ud5d8\ud558\uace0, \uc99d\uac70\uac00 \uc313\uc774\ub294 \ub300\ub85c \ud310\ub2e8\uc744 \uace0\uce5c\ub2e4.",
   "prerequisites": [
-   "수열의 극한과 급수의 부분합이 무엇인지 아는 것",
-   "부등식을 이용해 크기를 비교해 본 경험"
+   "\uc218\uc5f4\uc758 \uadf9\ud55c\uacfc \uae09\uc218\uc758 \ubd80\ubd84\ud569\uc774 \ubb34\uc5c7\uc778\uc9c0 \uc544\ub294 \uac83",
+   "\ubd80\ub4f1\uc2dd\uc744 \uc774\uc6a9\ud574 \ud06c\uae30\ub97c \ube44\uad50\ud574 \ubcf8 \uacbd\ud5d8"
   ],
   "minutes": 12,
   "curriculum": null,
-  "material": "수열 aₙ = 1/n 은 n이 커질수록 0에 가까워집니다. 한 학생이 말했습니다. \"항이 0에 가까워지니까, 계속 더한 합 1 + 1/2 + 1/3 + 1/4 + … 도 어떤 수에 가까워질 거야.\" 앞에서 n개까지 더한 값을 Sₙ(부분합)이라 합니다. 자료가 단계적으로 공개됩니다.",
+  "material": "\uc218\uc5f4 a\u2099 = 1/n \uc740 n\uc774 \ucee4\uc9c8\uc218\ub85d 0\uc5d0 \uac00\uae4c\uc6cc\uc9d1\ub2c8\ub2e4. \ud55c \ud559\uc0dd\uc774 \ub9d0\ud588\uc2b5\ub2c8\ub2e4. \"\ud56d\uc774 0\uc5d0 \uac00\uae4c\uc6cc\uc9c0\ub2c8\uae4c, \uacc4\uc18d \ub354\ud55c \ud569 1 + 1/2 + 1/3 + 1/4 + \u2026 \ub3c4 \uc5b4\ub5a4 \uc218\uc5d0 \uac00\uae4c\uc6cc\uc9c8 \uac70\uc57c.\" \uc55e\uc5d0\uc11c n\uac1c\uae4c\uc9c0 \ub354\ud55c \uac12\uc744 S\u2099(\ubd80\ubd84\ud569)\uc774\ub77c \ud569\ub2c8\ub2e4. \uc790\ub8cc\uac00 \ub2e8\uacc4\uc801\uc73c\ub85c \uacf5\uac1c\ub429\ub2c8\ub2e4.",
   "steps": [
    {
     "id": "s1",
     "kind": "reveal",
-    "prompt": "자료가 하나씩 공개됩니다. 그때마다 가장 합리적인 판단을 고르세요.",
+    "prompt": "\uc790\ub8cc\uac00 \ud558\ub098\uc529 \uacf5\uac1c\ub429\ub2c8\ub2e4. \uadf8\ub54c\ub9c8\ub2e4 \uac00\uc7a5 \ud569\ub9ac\uc801\uc778 \ud310\ub2e8\uc744 \uace0\ub974\uc138\uc694.",
     "stages": [
      {
-      "info": "S₁ = 1, S₂ = 1.5, S₃ ≈ 1.83, S₄ ≈ 2.08, S₈ ≈ 2.72, S₁₆ ≈ 3.38 입니다. 새로 더해지는 항은 점점 작아지고 있습니다.",
-      "ask": "지금 자료로 가장 합리적인 판단은?",
+      "info": "S\u2081 = 1, S\u2082 = 1.5, S\u2083 \u2248 1.83, S\u2084 \u2248 2.08, S\u2088 \u2248 2.72, S\u2081\u2086 \u2248 3.38 \uc785\ub2c8\ub2e4. \uc0c8\ub85c \ub354\ud574\uc9c0\ub294 \ud56d\uc740 \uc810\uc810 \uc791\uc544\uc9c0\uace0 \uc788\uc2b5\ub2c8\ub2e4.",
+      "ask": "\uc9c0\uae08 \uc790\ub8cc\ub85c \uac00\uc7a5 \ud569\ub9ac\uc801\uc778 \ud310\ub2e8\uc740?",
       "options": [
        {
         "id": "a",
-        "text": "항이 0에 가까워지니 Sₙ도 곧 어떤 값에서 멈추게 될 것이라고 본다",
-        "reveals": "항이 작아지는 것과 합이 멈추는 것은 달라요. 작은 양이라도 끝없이 더하면 쌓일 수 있어요."
+        "text": "\ud56d\uc774 0\uc5d0 \uac00\uae4c\uc6cc\uc9c0\ub2c8 S\u2099\ub3c4 \uace7 \uc5b4\ub5a4 \uac12\uc5d0\uc11c \uba48\ucd94\uac8c \ub420 \uac83\uc774\ub77c\uace0 \ubcf8\ub2e4",
+        "reveals": "\ud56d\uc774 \uc791\uc544\uc9c0\ub294 \uac83\uacfc \ud569\uc774 \uba48\ucd94\ub294 \uac83\uc740 \ub2ec\ub77c\uc694. \uc791\uc740 \uc591\uc774\ub77c\ub3c4 \ub05d\uc5c6\uc774 \ub354\ud558\uba74 \uc313\uc77c \uc218 \uc788\uc5b4\uc694."
        },
        {
         "id": "b",
-        "text": "Sₙ은 커지지만, 멈출지는 자료가 더 있어야 안다",
-        "reveals": "자료가 가리키는 만큼만 말하고, 더 필요한 것을 생각했어요."
+        "text": "S\u2099\uc740 \ucee4\uc9c0\uc9c0\ub9cc, \uba48\ucd9c\uc9c0\ub294 \uc790\ub8cc\uac00 \ub354 \uc788\uc5b4\uc57c \uc548\ub2e4",
+        "reveals": "\uc790\ub8cc\uac00 \uac00\ub9ac\ud0a4\ub294 \ub9cc\ud07c\ub9cc \ub9d0\ud558\uace0, \ub354 \ud544\uc694\ud55c \uac83\uc744 \uc0dd\uac01\ud588\uc5b4\uc694."
        },
        {
         "id": "c",
-        "text": "S₁₆이 약 3.38이니 합은 3.38 근처에서 멈춘다고 단정한다",
-        "reveals": "16개까지 본 값을 끝이라고 단정했어요. 이후에도 항은 끝없이 더해져요."
+        "text": "S\u2081\u2086\uc774 \uc57d 3.38\uc774\ub2c8 \ud569\uc740 3.38 \uadfc\ucc98\uc5d0\uc11c \uba48\ucd98\ub2e4\uace0 \ub2e8\uc815\ud55c\ub2e4",
+        "reveals": "16\uac1c\uae4c\uc9c0 \ubcf8 \uac12\uc744 \ub05d\uc774\ub77c\uace0 \ub2e8\uc815\ud588\uc5b4\uc694. \uc774\ud6c4\uc5d0\ub3c4 \ud56d\uc740 \ub05d\uc5c6\uc774 \ub354\ud574\uc838\uc694."
        },
        {
         "id": "d",
-        "text": "Sₙ이 계속 늘어나니 합은 한없이 커진다고 확신한다",
-        "reveals": "늘어난다고 해서 한없이 커지는 것은 아니에요. 1/2 + 1/4 + 1/8 + … 도 늘어나지만 1에 가까워져요."
+        "text": "S\u2099\uc774 \uacc4\uc18d \ub298\uc5b4\ub098\ub2c8 \ud569\uc740 \ud55c\uc5c6\uc774 \ucee4\uc9c4\ub2e4\uace0 \ud655\uc2e0\ud55c\ub2e4",
+        "reveals": "\ub298\uc5b4\ub09c\ub2e4\uace0 \ud574\uc11c \ud55c\uc5c6\uc774 \ucee4\uc9c0\ub294 \uac83\uc740 \uc544\ub2c8\uc5d0\uc694. 1/2 + 1/4 + 1/8 + \u2026 \ub3c4 \ub298\uc5b4\ub098\uc9c0\ub9cc 1\uc5d0 \uac00\uae4c\uc6cc\uc838\uc694."
        }
       ],
       "reasonable": [
        "b"
       ],
-      "after": "항이 모두 양수라 Sₙ은 늘어나기만 해요. 늘어나는 수열은 어떤 수에 가까워지거나 한없이 커지거나 둘 중 하나인데, 이 자료만으로는 어느 쪽인지 정하기 어려워요."
+      "after": "\ud56d\uc774 \ubaa8\ub450 \uc591\uc218\ub77c S\u2099\uc740 \ub298\uc5b4\ub098\uae30\ub9cc \ud574\uc694. \ub298\uc5b4\ub098\ub294 \uc218\uc5f4\uc740 \uc5b4\ub5a4 \uc218\uc5d0 \uac00\uae4c\uc6cc\uc9c0\uac70\ub098 \ud55c\uc5c6\uc774 \ucee4\uc9c0\uac70\ub098 \ub458 \uc911 \ud558\ub098\uc778\ub370, \uc774 \uc790\ub8cc\ub9cc\uc73c\ub85c\ub294 \uc5b4\ub290 \ucabd\uc778\uc9c0 \uc815\ud558\uae30 \uc5b4\ub824\uc6cc\uc694."
      },
      {
-      "info": "항의 개수를 2배로 늘릴 때마다 합이 늘어난 양을 보니 S₂ − S₁ = 0.5, S₄ − S₂ ≈ 0.58, S₈ − S₄ ≈ 0.63, S₁₆ − S₈ ≈ 0.66 입니다.",
-      "ask": "이 자료는 판단을 어떻게 바꾸게 하나요?",
+      "info": "\ud56d\uc758 \uac1c\uc218\ub97c 2\ubc30\ub85c \ub298\ub9b4 \ub54c\ub9c8\ub2e4 \ud569\uc774 \ub298\uc5b4\ub09c \uc591\uc744 \ubcf4\ub2c8 S\u2082 \u2212 S\u2081 = 0.5, S\u2084 \u2212 S\u2082 \u2248 0.58, S\u2088 \u2212 S\u2084 \u2248 0.63, S\u2081\u2086 \u2212 S\u2088 \u2248 0.66 \uc785\ub2c8\ub2e4.",
+      "ask": "\uc774 \uc790\ub8cc\ub294 \ud310\ub2e8\uc744 \uc5b4\ub5bb\uac8c \ubc14\uafb8\uac8c \ud558\ub098\uc694?",
       "options": [
        {
         "id": "a",
-        "text": "늘어난 양이 0.66쯤에서 안정되니, 그만큼씩만 늘다가 곧 멈출 것이다",
-        "reveals": "매번 약 0.6씩 늘어난다면 그 양이 계속 쌓여요. 늘어난 양이 0에 가까워지는지가 중요해요."
+        "text": "\ub298\uc5b4\ub09c \uc591\uc774 0.66\ucbe4\uc5d0\uc11c \uc548\uc815\ub418\ub2c8, \uadf8\ub9cc\ud07c\uc529\ub9cc \ub298\ub2e4\uac00 \uace7 \uba48\ucd9c \uac83\uc774\ub2e4",
+        "reveals": "\ub9e4\ubc88 \uc57d 0.6\uc529 \ub298\uc5b4\ub09c\ub2e4\uba74 \uadf8 \uc591\uc774 \uacc4\uc18d \uc313\uc5ec\uc694. \ub298\uc5b4\ub09c \uc591\uc774 0\uc5d0 \uac00\uae4c\uc6cc\uc9c0\ub294\uc9c0\uac00 \uc911\uc694\ud574\uc694."
        },
        {
         "id": "b",
-        "text": "처음 판단대로, 항이 0에 가까워지므로 합도 멈출 것이다",
-        "reveals": "새로 나온 자료를 반영하지 않았어요. 늘어난 양이 줄어들지 않는다는 것이 새 단서예요."
+        "text": "\ucc98\uc74c \ud310\ub2e8\ub300\ub85c, \ud56d\uc774 0\uc5d0 \uac00\uae4c\uc6cc\uc9c0\ubbc0\ub85c \ud569\ub3c4 \uba48\ucd9c \uac83\uc774\ub2e4",
+        "reveals": "\uc0c8\ub85c \ub098\uc628 \uc790\ub8cc\ub97c \ubc18\uc601\ud558\uc9c0 \uc54a\uc558\uc5b4\uc694. \ub298\uc5b4\ub09c \uc591\uc774 \uc904\uc5b4\ub4e4\uc9c0 \uc54a\ub294\ub2e4\ub294 \uac83\uc774 \uc0c8 \ub2e8\uc11c\uc608\uc694."
        },
        {
         "id": "c",
-        "text": "늘어난 양이 0.5 밑으로 줄지 않으니 합이 멈출 가능성이 낮아 보인다",
-        "reveals": "새 자료로 처음 짐작을 고쳤어요. 아직 증명은 아니라는 점도 잊지 않으면 좋아요."
+        "text": "\ub298\uc5b4\ub09c \uc591\uc774 0.5 \ubc11\uc73c\ub85c \uc904\uc9c0 \uc54a\uc73c\ub2c8 \ud569\uc774 \uba48\ucd9c \uac00\ub2a5\uc131\uc774 \ub0ae\uc544 \ubcf4\uc778\ub2e4",
+        "reveals": "\uc0c8 \uc790\ub8cc\ub85c \ucc98\uc74c \uc9d0\uc791\uc744 \uace0\ucce4\uc5b4\uc694. \uc544\uc9c1 \uc99d\uba85\uc740 \uc544\ub2c8\ub77c\ub294 \uc810\ub3c4 \uc78a\uc9c0 \uc54a\uc73c\uba74 \uc88b\uc544\uc694."
        }
       ],
       "reasonable": [
        "c"
       ],
-      "after": "항의 개수를 2배로 할 때마다 0.5 이상씩 늘어난다면 계속 쌓여 한없이 커질 수 있다는 의심이 생겨요. 다만 16개까지만 본 것이라 아직 증명은 아니에요."
+      "after": "\ud56d\uc758 \uac1c\uc218\ub97c 2\ubc30\ub85c \ud560 \ub54c\ub9c8\ub2e4 0.5 \uc774\uc0c1\uc529 \ub298\uc5b4\ub09c\ub2e4\uba74 \uacc4\uc18d \uc313\uc5ec \ud55c\uc5c6\uc774 \ucee4\uc9c8 \uc218 \uc788\ub2e4\ub294 \uc758\uc2ec\uc774 \uc0dd\uaca8\uc694. \ub2e4\ub9cc 16\uac1c\uae4c\uc9c0\ub9cc \ubcf8 \uac83\uc774\ub77c \uc544\uc9c1 \uc99d\uba85\uc740 \uc544\ub2c8\uc5d0\uc694."
      },
      {
-      "info": "묶어서 비교해 보았습니다. 1/3 + 1/4 > 1/4 + 1/4 = 1/2, 1/5 + 1/6 + 1/7 + 1/8 > 4 × (1/8) = 1/2, 1/9 + … + 1/16 > 8 × (1/16) = 1/2 이고, 이런 묶음을 끝없이 계속 만들 수 있습니다.",
-      "ask": "이제 어떻게 판단하나요?",
+      "info": "\ubb36\uc5b4\uc11c \ube44\uad50\ud574 \ubcf4\uc558\uc2b5\ub2c8\ub2e4. 1/3 + 1/4 > 1/4 + 1/4 = 1/2, 1/5 + 1/6 + 1/7 + 1/8 > 4 \u00d7 (1/8) = 1/2, 1/9 + \u2026 + 1/16 > 8 \u00d7 (1/16) = 1/2 \uc774\uace0, \uc774\ub7f0 \ubb36\uc74c\uc744 \ub05d\uc5c6\uc774 \uacc4\uc18d \ub9cc\ub4e4 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
+      "ask": "\uc774\uc81c \uc5b4\ub5bb\uac8c \ud310\ub2e8\ud558\ub098\uc694?",
       "options": [
        {
         "id": "a",
-        "text": "여전히 알 수 없다. 더 큰 n까지 계산해 보아야 판단할 수 있다",
-        "reveals": "계산을 계속해도 끝이 없다는 문제가 남아요. 묶음 비교는 끝없이 계산하지 않고도 말할 수 있게 해 줘요."
+        "text": "\uc5ec\uc804\ud788 \uc54c \uc218 \uc5c6\ub2e4. \ub354 \ud070 n\uae4c\uc9c0 \uacc4\uc0b0\ud574 \ubcf4\uc544\uc57c \ud310\ub2e8\ud560 \uc218 \uc788\ub2e4",
+        "reveals": "\uacc4\uc0b0\uc744 \uacc4\uc18d\ud574\ub3c4 \ub05d\uc774 \uc5c6\ub2e4\ub294 \ubb38\uc81c\uac00 \ub0a8\uc544\uc694. \ubb36\uc74c \ube44\uad50\ub294 \ub05d\uc5c6\uc774 \uacc4\uc0b0\ud558\uc9c0 \uc54a\uace0\ub3c4 \ub9d0\ud560 \uc218 \uc788\uac8c \ud574 \uc918\uc694."
        },
        {
         "id": "b",
-        "text": "각 묶음이 1/2보다 크고 끝없이 이어지니 합은 한없이 커진다",
-        "reveals": "묶음마다 1/2 이상이 쌓이는 것이 끝없이 이어진다는 점으로 판단했어요."
+        "text": "\uac01 \ubb36\uc74c\uc774 1/2\ubcf4\ub2e4 \ud06c\uace0 \ub05d\uc5c6\uc774 \uc774\uc5b4\uc9c0\ub2c8 \ud569\uc740 \ud55c\uc5c6\uc774 \ucee4\uc9c4\ub2e4",
+        "reveals": "\ubb36\uc74c\ub9c8\ub2e4 1/2 \uc774\uc0c1\uc774 \uc313\uc774\ub294 \uac83\uc774 \ub05d\uc5c6\uc774 \uc774\uc5b4\uc9c4\ub2e4\ub294 \uc810\uc73c\ub85c \ud310\ub2e8\ud588\uc5b4\uc694."
        },
        {
         "id": "c",
-        "text": "묶음 하나하나가 1/2쯤이니 합도 1/2 정도에 가까워진다",
-        "reveals": "묶음이 하나만 있는 것이 아니라 계속 이어져요. 1/2 이상씩 끝없이 더하면 어떻게 될까요?"
+        "text": "\ubb36\uc74c \ud558\ub098\ud558\ub098\uac00 1/2\ucbe4\uc774\ub2c8 \ud569\ub3c4 1/2 \uc815\ub3c4\uc5d0 \uac00\uae4c\uc6cc\uc9c4\ub2e4",
+        "reveals": "\ubb36\uc74c\uc774 \ud558\ub098\ub9cc \uc788\ub294 \uac83\uc774 \uc544\ub2c8\ub77c \uacc4\uc18d \uc774\uc5b4\uc838\uc694. 1/2 \uc774\uc0c1\uc529 \ub05d\uc5c6\uc774 \ub354\ud558\uba74 \uc5b4\ub5bb\uac8c \ub420\uae4c\uc694?"
        },
        {
         "id": "d",
-        "text": "묶음 안의 항이 점점 작아지니 결국 어떤 수에 가까워진다",
-        "reveals": "항이 작아져도 묶음의 합은 1/2보다 작아지지 않아요."
+        "text": "\ubb36\uc74c \uc548\uc758 \ud56d\uc774 \uc810\uc810 \uc791\uc544\uc9c0\ub2c8 \uacb0\uad6d \uc5b4\ub5a4 \uc218\uc5d0 \uac00\uae4c\uc6cc\uc9c4\ub2e4",
+        "reveals": "\ud56d\uc774 \uc791\uc544\uc838\ub3c4 \ubb36\uc74c\uc758 \ud569\uc740 1/2\ubcf4\ub2e4 \uc791\uc544\uc9c0\uc9c0 \uc54a\uc544\uc694."
        }
       ],
       "reasonable": [
        "b"
       ],
-      "after": "1 + 1/2 + (1/3 + 1/4) + (1/5 + … + 1/8) + … 에서 묶음마다 1/2보다 큰 양이 끝없이 더해지니 부분합은 한없이 커져요. 항이 0에 가까워져도 합은 수렴하지 않을 수 있어요."
+      "after": "1 + 1/2 + (1/3 + 1/4) + (1/5 + \u2026 + 1/8) + \u2026 \uc5d0\uc11c \ubb36\uc74c\ub9c8\ub2e4 1/2\ubcf4\ub2e4 \ud070 \uc591\uc774 \ub05d\uc5c6\uc774 \ub354\ud574\uc9c0\ub2c8 \ubd80\ubd84\ud569\uc740 \ud55c\uc5c6\uc774 \ucee4\uc838\uc694. \ud56d\uc774 0\uc5d0 \uac00\uae4c\uc6cc\uc838\ub3c4 \ud569\uc740 \uc218\ub834\ud558\uc9c0 \uc54a\uc744 \uc218 \uc788\uc5b4\uc694."
      }
     ],
-    "reflect": "처음에 '항이 0에 가까워지니 합도 멈춘다'고 생각했다면, 어떤 자료가 그 생각을 바꾸게 했나요? 항이 0에 가까워지는 것은 합이 멈추기 위한 필요한 조건인가요, 충분한 조건인가요?",
+    "reflect": "\ucc98\uc74c\uc5d0 '\ud56d\uc774 0\uc5d0 \uac00\uae4c\uc6cc\uc9c0\ub2c8 \ud569\ub3c4 \uba48\ucd98\ub2e4'\uace0 \uc0dd\uac01\ud588\ub2e4\uba74, \uc5b4\ub5a4 \uc790\ub8cc\uac00 \uadf8 \uc0dd\uac01\uc744 \ubc14\uafb8\uac8c \ud588\ub098\uc694? \ud56d\uc774 0\uc5d0 \uac00\uae4c\uc6cc\uc9c0\ub294 \uac83\uc740 \ud569\uc774 \uba48\ucd94\uae30 \uc704\ud55c \ud544\uc694\ud55c \uc870\uac74\uc778\uac00\uc694, \ucda9\ubd84\ud55c \uc870\uac74\uc778\uac00\uc694?",
     "hints": [
-     "각 단계에서 새로 나온 자료가 이전 짐작과 어디에서 어긋나는지 비교해 보세요.",
-     "'늘어난 양'이 어떻게 변하는지에 주목해 보세요."
+     "\uac01 \ub2e8\uacc4\uc5d0\uc11c \uc0c8\ub85c \ub098\uc628 \uc790\ub8cc\uac00 \uc774\uc804 \uc9d0\uc791\uacfc \uc5b4\ub514\uc5d0\uc11c \uc5b4\uae0b\ub098\ub294\uc9c0 \ube44\uad50\ud574 \ubcf4\uc138\uc694.",
+     "'\ub298\uc5b4\ub09c \uc591'\uc774 \uc5b4\ub5bb\uac8c \ubcc0\ud558\ub294\uc9c0\uc5d0 \uc8fc\ubaa9\ud574 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "choose",
-    "prompt": "위의 결과를 바탕으로, 항 aₙ과 급수 Σaₙ의 관계에 대해 옳은 문장을 고르세요.",
+    "prompt": "\uc704\uc758 \uacb0\uacfc\ub97c \ubc14\ud0d5\uc73c\ub85c, \ud56d a\u2099\uacfc \uae09\uc218 \u03a3a\u2099\uc758 \uad00\uacc4\uc5d0 \ub300\ud574 \uc633\uc740 \ubb38\uc7a5\uc744 \uace0\ub974\uc138\uc694.",
     "options": [
      {
       "id": "a",
-      "text": "Σaₙ이 수렴하면 aₙ은 0에 가까워진다",
-      "reveals": "급수가 수렴한다는 것이 항에 어떤 제약을 주는지 살펴본 판단이에요."
+      "text": "\u03a3a\u2099\uc774 \uc218\ub834\ud558\uba74 a\u2099\uc740 0\uc5d0 \uac00\uae4c\uc6cc\uc9c4\ub2e4",
+      "reveals": "\uae09\uc218\uac00 \uc218\ub834\ud55c\ub2e4\ub294 \uac83\uc774 \ud56d\uc5d0 \uc5b4\ub5a4 \uc81c\uc57d\uc744 \uc8fc\ub294\uc9c0 \uc0b4\ud3b4\ubcf8 \ud310\ub2e8\uc774\uc5d0\uc694."
      },
      {
       "id": "b",
-      "text": "aₙ이 0에 가까워지면 Σaₙ은 반드시 수렴한다",
-      "reveals": "1/n 의 예가 이 문장의 반례예요. 항이 작아지는 것만으로는 합이 멈추는 것을 보장하지 못해요."
+      "text": "a\u2099\uc774 0\uc5d0 \uac00\uae4c\uc6cc\uc9c0\uba74 \u03a3a\u2099\uc740 \ubc18\ub4dc\uc2dc \uc218\ub834\ud55c\ub2e4",
+      "reveals": "1/n \uc758 \uc608\uac00 \uc774 \ubb38\uc7a5\uc758 \ubc18\ub840\uc608\uc694. \ud56d\uc774 \uc791\uc544\uc9c0\ub294 \uac83\ub9cc\uc73c\ub85c\ub294 \ud569\uc774 \uba48\ucd94\ub294 \uac83\uc744 \ubcf4\uc7a5\ud558\uc9c0 \ubabb\ud574\uc694."
      },
      {
       "id": "c",
-      "text": "Σaₙ이 발산하면 aₙ은 0에 가까워지지 않는다",
-      "reveals": "1 + 1/2 + 1/3 + … 은 발산하지만 항은 0에 가까워져요."
+      "text": "\u03a3a\u2099\uc774 \ubc1c\uc0b0\ud558\uba74 a\u2099\uc740 0\uc5d0 \uac00\uae4c\uc6cc\uc9c0\uc9c0 \uc54a\ub294\ub2e4",
+      "reveals": "1 + 1/2 + 1/3 + \u2026 \uc740 \ubc1c\uc0b0\ud558\uc9c0\ub9cc \ud56d\uc740 0\uc5d0 \uac00\uae4c\uc6cc\uc838\uc694."
      },
      {
       "id": "d",
-      "text": "aₙ이 0에 가까워지지 않아도 Σaₙ이 수렴할 수 있다",
-      "reveals": "항이 0에 가까워지지 않으면 부분합의 증가분이 계속 남아 수렴할 수 없어요."
+      "text": "a\u2099\uc774 0\uc5d0 \uac00\uae4c\uc6cc\uc9c0\uc9c0 \uc54a\uc544\ub3c4 \u03a3a\u2099\uc774 \uc218\ub834\ud560 \uc218 \uc788\ub2e4",
+      "reveals": "\ud56d\uc774 0\uc5d0 \uac00\uae4c\uc6cc\uc9c0\uc9c0 \uc54a\uc73c\uba74 \ubd80\ubd84\ud569\uc758 \uc99d\uac00\ubd84\uc774 \uacc4\uc18d \ub0a8\uc544 \uc218\ub834\ud560 \uc218 \uc5c6\uc5b4\uc694."
      }
     ],
     "correct": [
      "a"
     ],
-    "explain": "Σaₙ이 수렴하면 부분합의 증가분 aₙ = Sₙ − Sₙ₋₁ 은 0에 가까워져요. 하지만 그 역은 성립하지 않아요. 1/n 이 반례예요.",
+    "explain": "\u03a3a\u2099\uc774 \uc218\ub834\ud558\uba74 \ubd80\ubd84\ud569\uc758 \uc99d\uac00\ubd84 a\u2099 = S\u2099 \u2212 S\u2099\u208b\u2081 \uc740 0\uc5d0 \uac00\uae4c\uc6cc\uc838\uc694. \ud558\uc9c0\ub9cc \uadf8 \uc5ed\uc740 \uc131\ub9bd\ud558\uc9c0 \uc54a\uc544\uc694. 1/n \uc774 \ubc18\ub840\uc608\uc694.",
     "hints": [
-     "부분합 Sₙ과 항 aₙ 사이의 관계(aₙ = Sₙ − Sₙ₋₁)를 떠올려 보세요.",
-     "각 문장에 위에서 본 1/n 의 예가 들어맞는지 시험해 보세요."
+     "\ubd80\ubd84\ud569 S\u2099\uacfc \ud56d a\u2099 \uc0ac\uc774\uc758 \uad00\uacc4(a\u2099 = S\u2099 \u2212 S\u2099\u208b\u2081)\ub97c \ub5a0\uc62c\ub824 \ubcf4\uc138\uc694.",
+     "\uac01 \ubb38\uc7a5\uc5d0 \uc704\uc5d0\uc11c \ubcf8 1/n \uc758 \uc608\uac00 \ub4e4\uc5b4\ub9de\ub294\uc9c0 \uc2dc\ud5d8\ud574 \ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "자료로 판단 수정하기",
-    "full": "새 자료가 나올 때마다 이전 판단과 비교해 고침",
-    "partial": "자료를 보되 이전 판단을 유지함",
-    "none": "자료와 상관없이 처음 판단을 고집함"
+    "criterion": "\uc790\ub8cc\ub85c \ud310\ub2e8 \uc218\uc815\ud558\uae30",
+    "full": "\uc0c8 \uc790\ub8cc\uac00 \ub098\uc62c \ub54c\ub9c8\ub2e4 \uc774\uc804 \ud310\ub2e8\uacfc \ube44\uad50\ud574 \uace0\uce68",
+    "partial": "\uc790\ub8cc\ub97c \ubcf4\ub418 \uc774\uc804 \ud310\ub2e8\uc744 \uc720\uc9c0\ud568",
+    "none": "\uc790\ub8cc\uc640 \uc0c1\uad00\uc5c6\uc774 \ucc98\uc74c \ud310\ub2e8\uc744 \uace0\uc9d1\ud568"
    },
    {
-    "criterion": "필요조건과 충분조건 구별",
-    "full": "aₙ→0 이 수렴의 필요조건일 뿐 충분조건이 아님을 구별",
-    "partial": "한 방향만 알고 있음",
-    "none": "두 방향을 혼동함"
+    "criterion": "\ud544\uc694\uc870\uac74\uacfc \ucda9\ubd84\uc870\uac74 \uad6c\ubcc4",
+    "full": "a\u2099\u21920 \uc774 \uc218\ub834\uc758 \ud544\uc694\uc870\uac74\uc77c \ubfd0 \ucda9\ubd84\uc870\uac74\uc774 \uc544\ub2d8\uc744 \uad6c\ubcc4",
+    "partial": "\ud55c \ubc29\ud5a5\ub9cc \uc54c\uace0 \uc788\uc74c",
+    "none": "\ub450 \ubc29\ud5a5\uc744 \ud63c\ub3d9\ud568"
    }
   ],
   "alternatives": [
-   "2단계에서 'b'를 고르고 증명은 아직 아니라고 말하는 학생도 있다. 이 경우 3단계로 이어지는 점을 안내한다.",
-   "묶음 비교 대신 적분과의 비교로 발산을 설명하는 방법도 있으나 이 학년에는 어렵다."
+   "2\ub2e8\uacc4\uc5d0\uc11c 'b'\ub97c \uace0\ub974\uace0 \uc99d\uba85\uc740 \uc544\uc9c1 \uc544\ub2c8\ub77c\uace0 \ub9d0\ud558\ub294 \ud559\uc0dd\ub3c4 \uc788\ub2e4. \uc774 \uacbd\uc6b0 3\ub2e8\uacc4\ub85c \uc774\uc5b4\uc9c0\ub294 \uc810\uc744 \uc548\ub0b4\ud55c\ub2e4.",
+   "\ubb36\uc74c \ube44\uad50 \ub300\uc2e0 \uc801\ubd84\uacfc\uc758 \ube44\uad50\ub85c \ubc1c\uc0b0\uc744 \uc124\uba85\ud558\ub294 \ubc29\ubc95\ub3c4 \uc788\uc73c\ub098 \uc774 \ud559\ub144\uc5d0\ub294 \uc5b4\ub835\ub2e4."
   ],
   "hardCases": [
-   "부분합 자료의 어림값(소수 둘째 자리)이 학생의 계산과 약간 다를 수 있다."
+   "\ubd80\ubd84\ud569 \uc790\ub8cc\uc758 \uc5b4\ub9bc\uac12(\uc18c\uc218 \ub458\uc9f8 \uc790\ub9ac)\uc774 \ud559\uc0dd\uc758 \uacc4\uc0b0\uacfc \uc57d\uac04 \ub2e4\ub97c \uc218 \uc788\ub2e4."
   ],
   "cautions": {
-   "language": "'부분합', '수렴', '발산'을 문장 안에서 풀어 썼다. Sₙ 은 '에스 엔'으로 읽으며 아래첨자가 낭독기에서 빠질 수 있다.",
-   "culture": "수학적 맥락만 있어 문화 의존이 없다.",
-   "accessibility": "그림이나 표 없이 문장으로만 자료를 보였다. 아래첨자 기호는 S 1, S 2 처럼 읽을 수 있다고 안내하면 좋다."
+   "language": "'\ubd80\ubd84\ud569', '\uc218\ub834', '\ubc1c\uc0b0'\uc744 \ubb38\uc7a5 \uc548\uc5d0\uc11c \ud480\uc5b4 \uc37c\ub2e4. S\u2099 \uc740 '\uc5d0\uc2a4 \uc5d4'\uc73c\ub85c \uc77d\uc73c\uba70 \uc544\ub798\ucca8\uc790\uac00 \ub0ad\ub3c5\uae30\uc5d0\uc11c \ube60\uc9c8 \uc218 \uc788\ub2e4.",
+   "culture": "\uc218\ud559\uc801 \ub9e5\ub77d\ub9cc \uc788\uc5b4 \ubb38\ud654 \uc758\uc874\uc774 \uc5c6\ub2e4.",
+   "accessibility": "\uadf8\ub9bc\uc774\ub098 \ud45c \uc5c6\uc774 \ubb38\uc7a5\uc73c\ub85c\ub9cc \uc790\ub8cc\ub97c \ubcf4\uc600\ub2e4. \uc544\ub798\ucca8\uc790 \uae30\ud638\ub294 S 1, S 2 \ucc98\ub7fc \uc77d\uc744 \uc218 \uc788\ub2e4\uace0 \uc548\ub0b4\ud558\uba74 \uc88b\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "각 단계의 합리적 판단, 마지막 명제 선택"
+    "\uac01 \ub2e8\uacc4\uc758 \ud569\ub9ac\uc801 \ud310\ub2e8, \ub9c8\uc9c0\ub9c9 \uba85\uc81c \uc120\ud0dd"
    ],
    "human": [
-    "자료를 바탕으로 판단이 바뀌었는지에 대한 성찰"
+    "\uc790\ub8cc\ub97c \ubc14\ud0d5\uc73c\ub85c \ud310\ub2e8\uc774 \ubc14\ub00c\uc5c8\ub294\uc9c0\uc5d0 \ub300\ud55c \uc131\ucc30"
    ]
-  }
+  },
+  "status": "reviewed-ai"
  },
  {
   "id": "x-m-h3-04",
   "subject": "math",
   "grade": "H3",
-  "topic": "급수와 수열의 극한",
+  "topic": "\uae09\uc218\uc640 \uc218\uc5f4\uc758 \uadf9\ud55c",
   "level": 3,
-  "levelLabel": "고등",
-  "title": "양수만 더했는데 합이 −1이라고?",
+  "levelLabel": "\uace0\ub4f1",
+  "title": "\uc591\uc218\ub9cc \ub354\ud588\ub294\ub370 \ud569\uc774 \u22121\uc774\ub77c\uace0?",
   "uiLang": "ko",
   "format": "find-error-fix",
   "generative": true,
-  "goal": "무한급수의 합을 하나의 수로 가정할 수 있는 조건을 이해하고, 조건을 만족하는 등비급수를 직접 만든다.",
+  "goal": "\ubb34\ud55c\uae09\uc218\uc758 \ud569\uc744 \ud558\ub098\uc758 \uc218\ub85c \uac00\uc815\ud560 \uc218 \uc788\ub294 \uc870\uac74\uc744 \uc774\ud574\ud558\uace0, \uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294 \ub4f1\ube44\uae09\uc218\ub97c \uc9c1\uc811 \ub9cc\ub4e0\ub2e4.",
   "thinking": [
-   "오류의 출발점이 가정에 있음을 찾기",
-   "무한등비급수의 합이 존재할 조건을 조건 속에서 적용하기",
-   "조건을 만족하는 서로 다른 예 만들기"
+   "\uc624\ub958\uc758 \ucd9c\ubc1c\uc810\uc774 \uac00\uc815\uc5d0 \uc788\uc74c\uc744 \ucc3e\uae30",
+   "\ubb34\ud55c\ub4f1\ube44\uae09\uc218\uc758 \ud569\uc774 \uc874\uc7ac\ud560 \uc870\uac74\uc744 \uc870\uac74 \uc18d\uc5d0\uc11c \uc801\uc6a9\ud558\uae30",
+   "\uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294 \uc11c\ub85c \ub2e4\ub978 \uc608 \ub9cc\ub4e4\uae30"
   ],
-  "differsFromPlain": "단순 연습은 무한등비급수의 합 공식에 대입한다. 여기서는 공식이 적용되지 않는 경우의 풀이에서 오류를 찾고, 합이 5가 되는 급수를 학생이 직접 만든다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \ubb34\ud55c\ub4f1\ube44\uae09\uc218\uc758 \ud569 \uacf5\uc2dd\uc5d0 \ub300\uc785\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \uacf5\uc2dd\uc774 \uc801\uc6a9\ub418\uc9c0 \uc54a\ub294 \uacbd\uc6b0\uc758 \ud480\uc774\uc5d0\uc11c \uc624\ub958\ub97c \ucc3e\uace0, \ud569\uc774 5\uac00 \ub418\ub294 \uae09\uc218\ub97c \ud559\uc0dd\uc774 \uc9c1\uc811 \ub9cc\ub4e0\ub2e4.",
   "prerequisites": [
-   "수열의 극한과 무한급수의 합을 한 번 배운 경험",
-   "등비수열의 항을 나열해 본 경험"
+   "\uc218\uc5f4\uc758 \uadf9\ud55c\uacfc \ubb34\ud55c\uae09\uc218\uc758 \ud569\uc744 \ud55c \ubc88 \ubc30\uc6b4 \uacbd\ud5d8",
+   "\ub4f1\ube44\uc218\uc5f4\uc758 \ud56d\uc744 \ub098\uc5f4\ud574 \ubcf8 \uacbd\ud5d8"
   ],
   "minutes": 10,
   "curriculum": null,
-  "material": "한 학생이 '1 + 2 + 4 + 8 + …' 의 합을 다음처럼 구했습니다. 모든 항이 양수인데 합이 음수가 되었습니다.",
+  "material": "\ud55c \ud559\uc0dd\uc774 '1 + 2 + 4 + 8 + \u2026' \uc758 \ud569\uc744 \ub2e4\uc74c\ucc98\ub7fc \uad6c\ud588\uc2b5\ub2c8\ub2e4. \ubaa8\ub4e0 \ud56d\uc774 \uc591\uc218\uc778\ub370 \ud569\uc774 \uc74c\uc218\uac00 \ub418\uc5c8\uc2b5\ub2c8\ub2e4.",
   "steps": [
    {
     "id": "s1",
     "kind": "pickLine",
-    "prompt": "학생의 풀이에서 처음 문제가 생긴 줄을 하나 고르세요.",
+    "prompt": "\ud559\uc0dd\uc758 \ud480\uc774\uc5d0\uc11c \ucc98\uc74c \ubb38\uc81c\uac00 \uc0dd\uae34 \uc904\uc744 \ud558\ub098 \uace0\ub974\uc138\uc694.",
     "lines": [
-     "무한히 더한 합 S = 1 + 2 + 4 + 8 + … 이 어떤 실수로 정해진다고 하자.",
-     "양변에 2를 곱하면 2S = 2 + 4 + 8 + 16 + … 이다.",
-     "오른쪽은 S에서 첫 항 1을 뺀 것과 같으므로 2S = S − 1 이다.",
-     "따라서 S = −1 이다.",
-     "양수만 계속 더했는데 합이 −1 이 되었다."
+     "\ubb34\ud55c\ud788 \ub354\ud55c \ud569 S = 1 + 2 + 4 + 8 + \u2026 \uc774 \uc5b4\ub5a4 \uc2e4\uc218\ub85c \uc815\ud574\uc9c4\ub2e4\uace0 \ud558\uc790.",
+     "\uc591\ubcc0\uc5d0 2\ub97c \uacf1\ud558\uba74 2S = 2 + 4 + 8 + 16 + \u2026 \uc774\ub2e4.",
+     "\uc624\ub978\ucabd\uc740 S\uc5d0\uc11c \uccab \ud56d 1\uc744 \ube80 \uac83\uacfc \uac19\uc73c\ubbc0\ub85c 2S = S \u2212 1 \uc774\ub2e4.",
+     "\ub530\ub77c\uc11c S = \u22121 \uc774\ub2e4.",
+     "\uc591\uc218\ub9cc \uacc4\uc18d \ub354\ud588\ub294\ub370 \ud569\uc774 \u22121 \uc774 \ub418\uc5c8\ub2e4."
     ],
     "wrong": [
      0
     ],
-    "explain": "S를 실수라고 가정한 1번 줄이 출발점이에요. 이 급수의 부분합은 1, 3, 7, 15, … 로 한없이 커져서 합이 정해지는 수가 없어요. 없는 수를 있다고 놓고 식을 변형하면 4번 줄 같은 엉뚱한 값이 나올 수 있어요.",
+    "explain": "S\ub97c \uc2e4\uc218\ub77c\uace0 \uac00\uc815\ud55c 1\ubc88 \uc904\uc774 \ucd9c\ubc1c\uc810\uc774\uc5d0\uc694. \uc774 \uae09\uc218\uc758 \ubd80\ubd84\ud569\uc740 1, 3, 7, 15, \u2026 \ub85c \ud55c\uc5c6\uc774 \ucee4\uc838\uc11c \ud569\uc774 \uc815\ud574\uc9c0\ub294 \uc218\uac00 \uc5c6\uc5b4\uc694. \uc5c6\ub294 \uc218\ub97c \uc788\ub2e4\uace0 \ub193\uace0 \uc2dd\uc744 \ubcc0\ud615\ud558\uba74 4\ubc88 \uc904 \uac19\uc740 \uc5c9\ub6b1\ud55c \uac12\uc774 \ub098\uc62c \uc218 \uc788\uc5b4\uc694.",
     "hints": [
-     "줄마다 '이 줄이 옳으려면 먼저 무엇이 성립해야 하는가'를 적어 보고, 그것이 정말 성립하는지 따져 보세요.",
-     "부분합 S₁, S₂, S₃, S₄ 를 직접 써 보고 어떻게 변하는지 보세요."
+     "\uc904\ub9c8\ub2e4 '\uc774 \uc904\uc774 \uc633\uc73c\ub824\uba74 \uba3c\uc800 \ubb34\uc5c7\uc774 \uc131\ub9bd\ud574\uc57c \ud558\ub294\uac00'\ub97c \uc801\uc5b4 \ubcf4\uace0, \uadf8\uac83\uc774 \uc815\ub9d0 \uc131\ub9bd\ud558\ub294\uc9c0 \ub530\uc838 \ubcf4\uc138\uc694.",
+     "\ubd80\ubd84\ud569 S\u2081, S\u2082, S\u2083, S\u2084 \ub97c \uc9c1\uc811 \uc368 \ubcf4\uace0 \uc5b4\ub5bb\uac8c \ubcc0\ud558\ub294\uc9c0 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "build",
-    "prompt": "첫째항이 a, 공비가 r 인 무한등비급수의 합이 5 가 되도록 하는 (a, r) 을 서로 다른 r 로 2개 만들어 보세요. (소수 사용 가능, r ≠ 0)",
+    "prompt": "\uccab\uc9f8\ud56d\uc774 a, \uacf5\ube44\uac00 r \uc778 \ubb34\ud55c\ub4f1\ube44\uae09\uc218\uc758 \ud569\uc774 5 \uac00 \ub418\ub3c4\ub85d \ud558\ub294 (a, r) \uc744 \uc11c\ub85c \ub2e4\ub978 r \ub85c 2\uac1c \ub9cc\ub4e4\uc5b4 \ubcf4\uc138\uc694. (\uc18c\uc218 \uc0ac\uc6a9 \uac00\ub2a5, r \u2260 0)",
     "vars": [
      {
       "name": "a",
-      "label": "첫째항 a"
+      "label": "\uccab\uc9f8\ud56d a"
      },
      {
       "name": "r",
-      "label": "공비 r"
+      "label": "\uacf5\ube44 r"
      }
     ],
     "constraints": [
      {
       "id": "c1",
       "expr": "r!=0 && abs(r)<1",
-      "ok": "공비의 절댓값이 1보다 작아 합이 존재해요.",
-      "fail": "공비 r 이 0이거나 절댓값이 1 이상이면 합이 수로 정해지지 않아요."
+      "ok": "\uacf5\ube44\uc758 \uc808\ub313\uac12\uc774 1\ubcf4\ub2e4 \uc791\uc544 \ud569\uc774 \uc874\uc7ac\ud574\uc694.",
+      "fail": "\uacf5\ube44 r \uc774 0\uc774\uac70\ub098 \uc808\ub313\uac12\uc774 1 \uc774\uc0c1\uc774\uba74 \ud569\uc774 \uc218\ub85c \uc815\ud574\uc9c0\uc9c0 \uc54a\uc544\uc694."
      },
      {
       "id": "c2",
       "expr": "abs(a-5*(1-r))<0.000001",
-      "ok": "합이 5예요.",
-      "fail": "합이 5가 아니에요."
+      "ok": "\ud569\uc774 5\uc608\uc694.",
+      "fail": "\ud569\uc774 5\uac00 \uc544\ub2c8\uc5d0\uc694."
      }
     ],
     "need": 2,
@@ -697,143 +699,143 @@
       "r": 0.5
      }
     ],
-    "explain": "합이 존재하려면 |r| < 1 이어야 하고, 이때 합이 5면 a = 5(1 − r) 예요. 예를 들어 r = 0.4 이면 a = 3, r = −0.2 이면 a = 6 이에요. a = −5, r = 2 는 식 a = 5(1 − r) 만 맞춘 것이라 합이 존재하지 않아요.",
+    "explain": "\ud569\uc774 \uc874\uc7ac\ud558\ub824\uba74 |r| < 1 \uc774\uc5b4\uc57c \ud558\uace0, \uc774\ub54c \ud569\uc774 5\uba74 a = 5(1 \u2212 r) \uc608\uc694. \uc608\ub97c \ub4e4\uc5b4 r = 0.4 \uc774\uba74 a = 3, r = \u22120.2 \uc774\uba74 a = 6 \uc774\uc5d0\uc694. a = \u22125, r = 2 \ub294 \uc2dd a = 5(1 \u2212 r) \ub9cc \ub9de\ucd98 \uac83\uc774\ub77c \ud569\uc774 \uc874\uc7ac\ud558\uc9c0 \uc54a\uc544\uc694.",
     "hints": [
-     "합이 존재하려면 공비가 어떤 범위에 있어야 하는지 먼저 떠올려 보세요.",
-     "r 을 먼저 정한 뒤, 합이 5가 되도록 a 를 맞춰 보세요."
+     "\ud569\uc774 \uc874\uc7ac\ud558\ub824\uba74 \uacf5\ube44\uac00 \uc5b4\ub5a4 \ubc94\uc704\uc5d0 \uc788\uc5b4\uc57c \ud558\ub294\uc9c0 \uba3c\uc800 \ub5a0\uc62c\ub824 \ubcf4\uc138\uc694.",
+     "r \uc744 \uba3c\uc800 \uc815\ud55c \ub4a4, \ud569\uc774 5\uac00 \ub418\ub3c4\ub85d a \ub97c \ub9de\ucdb0 \ubcf4\uc138\uc694."
     ],
     "distinctBy": "r"
    }
   ],
   "rubric": [
    {
-    "criterion": "오류 위치 찾기",
-    "full": "합이 수로 정해진다는 가정(1번 줄)을 지적",
-    "partial": "결론 줄만 지적",
-    "none": "계산 줄이 틀렸다고 함"
+    "criterion": "\uc624\ub958 \uc704\uce58 \ucc3e\uae30",
+    "full": "\ud569\uc774 \uc218\ub85c \uc815\ud574\uc9c4\ub2e4\ub294 \uac00\uc815(1\ubc88 \uc904)\uc744 \uc9c0\uc801",
+    "partial": "\uacb0\ub860 \uc904\ub9cc \uc9c0\uc801",
+    "none": "\uacc4\uc0b0 \uc904\uc774 \ud2c0\ub838\ub2e4\uace0 \ud568"
    },
    {
-    "criterion": "조건 있는 예 만들기",
-    "full": "합이 5이면서 공비 조건을 만족하는 예 2개",
-    "partial": "식만 맞추고 조건을 놓침",
-    "none": "예를 만들지 못함"
+    "criterion": "\uc870\uac74 \uc788\ub294 \uc608 \ub9cc\ub4e4\uae30",
+    "full": "\ud569\uc774 5\uc774\uba74\uc11c \uacf5\ube44 \uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294 \uc608 2\uac1c",
+    "partial": "\uc2dd\ub9cc \ub9de\ucd94\uace0 \uc870\uac74\uc744 \ub193\uce68",
+    "none": "\uc608\ub97c \ub9cc\ub4e4\uc9c0 \ubabb\ud568"
    }
   ],
   "alternatives": [
-   "3번 줄이나 4번 줄을 지적하더라도, 그 오류가 1번 줄에서 S를 실수로 가정한 데서 이어졌음을 설명하면 풀이는 인정한다. 단 '처음' 문제가 생긴 줄은 1번 줄이다.",
-   "r 이 음수인 급수도 유효한 답이다."
+   "3\ubc88 \uc904\uc774\ub098 4\ubc88 \uc904\uc744 \uc9c0\uc801\ud558\ub354\ub77c\ub3c4, \uadf8 \uc624\ub958\uac00 1\ubc88 \uc904\uc5d0\uc11c S\ub97c \uc2e4\uc218\ub85c \uac00\uc815\ud55c \ub370\uc11c \uc774\uc5b4\uc84c\uc74c\uc744 \uc124\uba85\ud558\uba74 \ud480\uc774\ub294 \uc778\uc815\ud55c\ub2e4. \ub2e8 '\ucc98\uc74c' \ubb38\uc81c\uac00 \uc0dd\uae34 \uc904\uc740 1\ubc88 \uc904\uc774\ub2e4.",
+   "r \uc774 \uc74c\uc218\uc778 \uae09\uc218\ub3c4 \uc720\ud6a8\ud55c \ub2f5\uc774\ub2e4."
   ],
   "hardCases": [
-   "r = 1 이나 −1 은 부분합이 일정하지 않아 합이 존재하지 않는다. 학생이 r = −1 을 쓰면 조건 c1이 걸러낸다."
+   "r = 1 \uc774\ub098 \u22121 \uc740 \ubd80\ubd84\ud569\uc774 \uc77c\uc815\ud558\uc9c0 \uc54a\uc544 \ud569\uc774 \uc874\uc7ac\ud558\uc9c0 \uc54a\ub294\ub2e4. \ud559\uc0dd\uc774 r = \u22121 \uc744 \uc4f0\uba74 \uc870\uac74 c1\uc774 \uac78\ub7ec\ub0b8\ub2e4."
   ],
   "cautions": {
-   "language": "'무한급수의 합', '공비'를 처음 쓰는 학생이 있어 힌트에서 풀어 썼다.",
-   "culture": "수학적 맥락만 있어 문화 의존이 없다.",
-   "accessibility": "기호를 '이 점 점 점'으로 읽는 낭독기가 있어, 줄임표 앞에 항을 4개 이상 썼다. 그림은 없다."
+   "language": "'\ubb34\ud55c\uae09\uc218\uc758 \ud569', '\uacf5\ube44'\ub97c \ucc98\uc74c \uc4f0\ub294 \ud559\uc0dd\uc774 \uc788\uc5b4 \ud78c\ud2b8\uc5d0\uc11c \ud480\uc5b4 \uc37c\ub2e4.",
+   "culture": "\uc218\ud559\uc801 \ub9e5\ub77d\ub9cc \uc788\uc5b4 \ubb38\ud654 \uc758\uc874\uc774 \uc5c6\ub2e4.",
+   "accessibility": "\uae30\ud638\ub97c '\uc774 \uc810 \uc810 \uc810'\uc73c\ub85c \uc77d\ub294 \ub0ad\ub3c5\uae30\uac00 \uc788\uc5b4, \uc904\uc784\ud45c \uc55e\uc5d0 \ud56d\uc744 4\uac1c \uc774\uc0c1 \uc37c\ub2e4. \uadf8\ub9bc\uc740 \uc5c6\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "오류 줄의 위치, 만든 (a, r)이 두 조건을 만족하는지"
+    "\uc624\ub958 \uc904\uc758 \uc704\uce58, \ub9cc\ub4e0 (a, r)\uc774 \ub450 \uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294\uc9c0"
    ],
    "human": [
-    "오류의 원인을 학생이 어떻게 설명하는지(수업 중 구두로)"
+    "\uc624\ub958\uc758 \uc6d0\uc778\uc744 \ud559\uc0dd\uc774 \uc5b4\ub5bb\uac8c \uc124\uba85\ud558\ub294\uc9c0(\uc218\uc5c5 \uc911 \uad6c\ub450\ub85c)"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "x-m-h3-05",
   "subject": "math",
   "grade": "H3",
-  "topic": "확률분포",
+  "topic": "\ud655\ub960\ubd84\ud3ec",
   "level": 3,
-  "levelLabel": "고등",
-  "title": "축제 부스의 두 게임, 어느 쪽을 할까",
+  "levelLabel": "\uace0\ub4f1",
+  "title": "\ucd95\uc81c \ubd80\uc2a4\uc758 \ub450 \uac8c\uc784, \uc5b4\ub290 \ucabd\uc744 \ud560\uae4c",
   "uiLang": "ko",
   "format": "make-your-own",
   "generative": true,
-  "goal": "두 게임을 비교할 때 기댓값만으로 충분한지 따져 보고, 조건에 맞는 새 게임을 직접 만들어 선택의 기준을 설명한다.",
+  "goal": "\ub450 \uac8c\uc784\uc744 \ube44\uad50\ud560 \ub54c \uae30\ub313\uac12\ub9cc\uc73c\ub85c \ucda9\ubd84\ud55c\uc9c0 \ub530\uc838 \ubcf4\uace0, \uc870\uac74\uc5d0 \ub9de\ub294 \uc0c8 \uac8c\uc784\uc744 \uc9c1\uc811 \ub9cc\ub4e4\uc5b4 \uc120\ud0dd\uc758 \uae30\uc900\uc744 \uc124\uba85\ud55c\ub2e4.",
   "thinking": [
-   "기댓값만으로 충분한지 평가하기",
-   "조건을 만족하는 게임(확률·상금)을 직접 설계하기",
-   "자기 선택의 이유를 근거와 함께 말하기"
+   "\uae30\ub313\uac12\ub9cc\uc73c\ub85c \ucda9\ubd84\ud55c\uc9c0 \ud3c9\uac00\ud558\uae30",
+   "\uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294 \uac8c\uc784(\ud655\ub960\u00b7\uc0c1\uae08)\uc744 \uc9c1\uc811 \uc124\uacc4\ud558\uae30",
+   "\uc790\uae30 \uc120\ud0dd\uc758 \uc774\uc720\ub97c \uadfc\uac70\uc640 \ud568\uaed8 \ub9d0\ud558\uae30"
   ],
-  "differsFromPlain": "단순 연습은 확률변수의 기댓값을 구한다. 여기서는 기댓값이 같은 게임을 학생이 직접 만들고, 기댓값 외에 무엇을 보고 고를지 판단한다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \ud655\ub960\ubcc0\uc218\uc758 \uae30\ub313\uac12\uc744 \uad6c\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \uae30\ub313\uac12\uc774 \uac19\uc740 \uac8c\uc784\uc744 \ud559\uc0dd\uc774 \uc9c1\uc811 \ub9cc\ub4e4\uace0, \uae30\ub313\uac12 \uc678\uc5d0 \ubb34\uc5c7\uc744 \ubcf4\uace0 \uace0\ub97c\uc9c0 \ud310\ub2e8\ud55c\ub2e4.",
   "prerequisites": [
-   "이산확률변수의 확률질량함수를 표로 나타내 본 경험",
-   "확률변수의 평균이 무엇을 나타내는지에 대한 이해"
+   "\uc774\uc0b0\ud655\ub960\ubcc0\uc218\uc758 \ud655\ub960\uc9c8\ub7c9\ud568\uc218\ub97c \ud45c\ub85c \ub098\ud0c0\ub0b4 \ubcf8 \uacbd\ud5d8",
+   "\ud655\ub960\ubcc0\uc218\uc758 \ud3c9\uade0\uc774 \ubb34\uc5c7\uc744 \ub098\ud0c0\ub0b4\ub294\uc9c0\uc5d0 \ub300\ud55c \uc774\ud574"
   ],
   "minutes": 12,
   "curriculum": null,
-  "material": "축제 부스에 두 게임이 있습니다. 게임 A: 동전을 던져 앞면이 나오면 상금 100원, 뒷면이면 0원. 게임 B: 상자에서 공 하나를 뽑아 당첨(확률 1/10)이면 상금 500원, 아니면 0원. 두 게임 모두 참가비는 없고, 상금을 확률변수 X라 합니다.",
+  "material": "\ucd95\uc81c \ubd80\uc2a4\uc5d0 \ub450 \uac8c\uc784\uc774 \uc788\uc2b5\ub2c8\ub2e4. \uac8c\uc784 A: \ub3d9\uc804\uc744 \ub358\uc838 \uc55e\uba74\uc774 \ub098\uc624\uba74 \uc0c1\uae08 100\uc6d0, \ub4b7\uba74\uc774\uba74 0\uc6d0. \uac8c\uc784 B: \uc0c1\uc790\uc5d0\uc11c \uacf5 \ud558\ub098\ub97c \ubf51\uc544 \ub2f9\ucca8(\ud655\ub960 1/10)\uc774\uba74 \uc0c1\uae08 500\uc6d0, \uc544\ub2c8\uba74 0\uc6d0. \ub450 \uac8c\uc784 \ubaa8\ub450 \ucc38\uac00\ube44\ub294 \uc5c6\uace0, \uc0c1\uae08\uc744 \ud655\ub960\ubcc0\uc218 X\ub77c \ud569\ub2c8\ub2e4.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
-    "prompt": "두 게임을 비교한 설명으로 알맞은 것을 고르세요.",
+    "prompt": "\ub450 \uac8c\uc784\uc744 \ube44\uad50\ud55c \uc124\uba85\uc73c\ub85c \uc54c\ub9de\uc740 \uac83\uc744 \uace0\ub974\uc138\uc694.",
     "options": [
      {
       "id": "a",
-      "text": "A의 기댓값이 더 크다. 당첨될 확률이 더 높기 때문이다",
-      "reveals": "확률만 보고 상금의 크기를 함께 따지지 않았어요."
+      "text": "A\uc758 \uae30\ub313\uac12\uc774 \ub354 \ud06c\ub2e4. \ub2f9\ucca8\ub420 \ud655\ub960\uc774 \ub354 \ub192\uae30 \ub54c\ubb38\uc774\ub2e4",
+      "reveals": "\ud655\ub960\ub9cc \ubcf4\uace0 \uc0c1\uae08\uc758 \ud06c\uae30\ub97c \ud568\uaed8 \ub530\uc9c0\uc9c0 \uc54a\uc558\uc5b4\uc694."
      },
      {
       "id": "b",
-      "text": "B의 기댓값이 더 크다. 상금이 5배나 크기 때문이다",
-      "reveals": "상금만 보고 당첨될 확률을 함께 따지지 않았어요."
+      "text": "B\uc758 \uae30\ub313\uac12\uc774 \ub354 \ud06c\ub2e4. \uc0c1\uae08\uc774 5\ubc30\ub098 \ud06c\uae30 \ub54c\ubb38\uc774\ub2e4",
+      "reveals": "\uc0c1\uae08\ub9cc \ubcf4\uace0 \ub2f9\ucca8\ub420 \ud655\ub960\uc744 \ud568\uaed8 \ub530\uc9c0\uc9c0 \uc54a\uc558\uc5b4\uc694."
      },
      {
       "id": "c",
-      "text": "기댓값은 같지만 상금이 흩어진 정도는 서로 다르다",
-      "reveals": "기댓값이 같아도 분포의 모양은 다를 수 있다는 점을 짚었어요."
+      "text": "\uae30\ub313\uac12\uc740 \uac19\uc9c0\ub9cc \uc0c1\uae08\uc774 \ud769\uc5b4\uc9c4 \uc815\ub3c4\ub294 \uc11c\ub85c \ub2e4\ub974\ub2e4",
+      "reveals": "\uae30\ub313\uac12\uc774 \uac19\uc544\ub3c4 \ubd84\ud3ec\uc758 \ubaa8\uc591\uc740 \ub2e4\ub97c \uc218 \uc788\ub2e4\ub294 \uc810\uc744 \uc9da\uc5c8\uc5b4\uc694."
      },
      {
       "id": "d",
-      "text": "기댓값이 같으니 어느 게임을 해도 결과가 똑같다",
-      "reveals": "기댓값은 '여러 번 했을 때의 평균'일 뿐 한 번의 결과나 흩어진 정도는 알려 주지 않아요."
+      "text": "\uae30\ub313\uac12\uc774 \uac19\uc73c\ub2c8 \uc5b4\ub290 \uac8c\uc784\uc744 \ud574\ub3c4 \uacb0\uacfc\uac00 \ub611\uac19\ub2e4",
+      "reveals": "\uae30\ub313\uac12\uc740 '\uc5ec\ub7ec \ubc88 \ud588\uc744 \ub54c\uc758 \ud3c9\uade0'\uc77c \ubfd0 \ud55c \ubc88\uc758 \uacb0\uacfc\ub098 \ud769\uc5b4\uc9c4 \uc815\ub3c4\ub294 \uc54c\ub824 \uc8fc\uc9c0 \uc54a\uc544\uc694."
      }
     ],
     "correct": [
      "c"
     ],
-    "explain": "E(A) = 100 × 1/2 = 50, E(B) = 500 × 1/10 = 50 이라 같아요. 그러나 A는 0원 또는 100원, B는 0원 또는 500원이라 B 쪽이 훨씬 더 흩어져 있어요.",
+    "explain": "E(A) = 100 \u00d7 1/2 = 50, E(B) = 500 \u00d7 1/10 = 50 \uc774\ub77c \uac19\uc544\uc694. \uadf8\ub7ec\ub098 A\ub294 0\uc6d0 \ub610\ub294 100\uc6d0, B\ub294 0\uc6d0 \ub610\ub294 500\uc6d0\uc774\ub77c B \ucabd\uc774 \ud6e8\uc52c \ub354 \ud769\uc5b4\uc838 \uc788\uc5b4\uc694.",
     "hints": [
-     "각 게임의 기댓값을 (상금 × 확률)로 직접 구해 비교해 보세요.",
-     "나올 수 있는 상금이 각각 무엇인지 적어 보세요."
+     "\uac01 \uac8c\uc784\uc758 \uae30\ub313\uac12\uc744 (\uc0c1\uae08 \u00d7 \ud655\ub960)\ub85c \uc9c1\uc811 \uad6c\ud574 \ube44\uad50\ud574 \ubcf4\uc138\uc694.",
+     "\ub098\uc62c \uc218 \uc788\ub294 \uc0c1\uae08\uc774 \uac01\uac01 \ubb34\uc5c7\uc778\uc9c0 \uc801\uc5b4 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "build",
-    "prompt": "기댓값이 50원이면서 상금이 400원 이상인 새 게임을, 서로 다른 당첨 확률로 2개 만들어 보세요. (당첨되면 상금 m원, 아니면 0원)",
+    "prompt": "\uae30\ub313\uac12\uc774 50\uc6d0\uc774\uba74\uc11c \uc0c1\uae08\uc774 400\uc6d0 \uc774\uc0c1\uc778 \uc0c8 \uac8c\uc784\uc744, \uc11c\ub85c \ub2e4\ub978 \ub2f9\ucca8 \ud655\ub960\ub85c 2\uac1c \ub9cc\ub4e4\uc5b4 \ubcf4\uc138\uc694. (\ub2f9\ucca8\ub418\uba74 \uc0c1\uae08 m\uc6d0, \uc544\ub2c8\uba74 0\uc6d0)",
     "vars": [
      {
       "name": "p",
-      "label": "당첨 확률 p (0과 1 사이)"
+      "label": "\ub2f9\ucca8 \ud655\ub960 p (0\uacfc 1 \uc0ac\uc774)"
      },
      {
       "name": "m",
-      "label": "상금 m (원)"
+      "label": "\uc0c1\uae08 m (\uc6d0)"
      }
     ],
     "constraints": [
      {
       "id": "c1",
       "expr": "p>0 && p<1",
-      "ok": "확률이 0과 1 사이예요.",
-      "fail": "확률은 0보다 크고 1보다 작아야 해요."
+      "ok": "\ud655\ub960\uc774 0\uacfc 1 \uc0ac\uc774\uc608\uc694.",
+      "fail": "\ud655\ub960\uc740 0\ubcf4\ub2e4 \ud06c\uace0 1\ubcf4\ub2e4 \uc791\uc544\uc57c \ud574\uc694."
      },
      {
       "id": "c2",
       "expr": "p*m==50",
-      "ok": "기댓값이 50원이에요.",
-      "fail": "기댓값(p × m)이 50원이 아니에요."
+      "ok": "\uae30\ub313\uac12\uc774 50\uc6d0\uc774\uc5d0\uc694.",
+      "fail": "\uae30\ub313\uac12(p \u00d7 m)\uc774 50\uc6d0\uc774 \uc544\ub2c8\uc5d0\uc694."
      },
      {
       "id": "c3",
       "expr": "m>=400",
-      "ok": "상금이 400원 이상이에요.",
-      "fail": "상금이 400원보다 작아요."
+      "ok": "\uc0c1\uae08\uc774 400\uc6d0 \uc774\uc0c1\uc774\uc5d0\uc694.",
+      "fail": "\uc0c1\uae08\uc774 400\uc6d0\ubcf4\ub2e4 \uc791\uc544\uc694."
      }
     ],
     "need": 2,
@@ -865,260 +867,260 @@
       "m": 400
      }
     ],
-    "explain": "p × m = 50 이므로 m = 400 이면 p = 0.125, m = 1000 이면 p = 0.05 처럼 상금이 클수록 당첨 확률이 작아져요.",
+    "explain": "p \u00d7 m = 50 \uc774\ubbc0\ub85c m = 400 \uc774\uba74 p = 0.125, m = 1000 \uc774\uba74 p = 0.05 \ucc98\ub7fc \uc0c1\uae08\uc774 \ud074\uc218\ub85d \ub2f9\ucca8 \ud655\ub960\uc774 \uc791\uc544\uc838\uc694.",
     "hints": [
-     "기댓값 50 이라는 조건으로 p 와 m 의 관계를 식으로 써 보세요.",
-     "m 을 먼저 정하고 p 를 맞춰 보세요."
+     "\uae30\ub313\uac12 50 \uc774\ub77c\ub294 \uc870\uac74\uc73c\ub85c p \uc640 m \uc758 \uad00\uacc4\ub97c \uc2dd\uc73c\ub85c \uc368 \ubcf4\uc138\uc694.",
+     "m \uc744 \uba3c\uc800 \uc815\ud558\uace0 p \ub97c \ub9de\ucdb0 \ubcf4\uc138\uc694."
     ],
     "distinctBy": "p",
     "because": {
      "id": "s2b",
      "kind": "write",
-     "prompt": "만든 게임 하나를 게임 A와 비교하여, 기댓값을 짚으면서 어느 쪽을 더 하고 싶은지 이유를 써 보세요. 정답은 하나가 아니에요.",
+     "prompt": "\ub9cc\ub4e0 \uac8c\uc784 \ud558\ub098\ub97c \uac8c\uc784 A\uc640 \ube44\uad50\ud558\uc5ec, \uae30\ub313\uac12\uc744 \uc9da\uc73c\uba74\uc11c \uc5b4\ub290 \ucabd\uc744 \ub354 \ud558\uace0 \uc2f6\uc740\uc9c0 \uc774\uc720\ub97c \uc368 \ubcf4\uc138\uc694. \uc815\ub2f5\uc740 \ud558\ub098\uac00 \uc544\ub2c8\uc5d0\uc694.",
      "minChars": 15,
      "checks": [
       {
        "id": "w1",
-       "label": "기댓값(평균)이 같다는 점을 짚었다",
+       "label": "\uae30\ub313\uac12(\ud3c9\uade0)\uc774 \uac19\ub2e4\ub294 \uc810\uc744 \uc9da\uc5c8\ub2e4",
        "mode": "any",
        "patterns": [
-        "기댓값",
-        "평균"
+        "\uae30\ub313\uac12",
+        "\ud3c9\uade0"
        ]
       },
       {
        "id": "w2",
-       "label": "확률·상금·위험 등 선택의 기준을 말했다",
+       "label": "\ud655\ub960\u00b7\uc0c1\uae08\u00b7\uc704\ud5d8 \ub4f1 \uc120\ud0dd\uc758 \uae30\uc900\uc744 \ub9d0\ud588\ub2e4",
        "mode": "any",
        "patterns": [
-        "분산",
-        "흩어",
-        "변동",
-        "위험",
-        "안정",
-        "모험",
-        "큰\\s*상금",
-        "한\\s*번에",
-        "들쭉날쭉",
-        "편차",
-        "운이|운에|행운",
-        "자주\\s*(받|당첨)",
-        "꾸준",
-        "안전",
-        "조금씩",
-        "작은\\s*상금",
-        "확률이\\s*(높|낮)",
-        "도전",
-        "큰\\s*돈",
-        "복권",
-        "기회",
-        "자주",
-        "잘\\s*(받|당첨)",
-        "한\\s*방"
+        "\ubd84\uc0b0",
+        "\ud769\uc5b4",
+        "\ubcc0\ub3d9",
+        "\uc704\ud5d8",
+        "\uc548\uc815",
+        "\ubaa8\ud5d8",
+        "\ud070\\s*\uc0c1\uae08",
+        "\ud55c\\s*\ubc88\uc5d0",
+        "\ub4e4\ucb49\ub0a0\ucb49",
+        "\ud3b8\ucc28",
+        "\uc6b4\uc774|\uc6b4\uc5d0|\ud589\uc6b4",
+        "\uc790\uc8fc\\s*(\ubc1b|\ub2f9\ucca8)",
+        "\uafb8\uc900",
+        "\uc548\uc804",
+        "\uc870\uae08\uc529",
+        "\uc791\uc740\\s*\uc0c1\uae08",
+        "\ud655\ub960\uc774\\s*(\ub192|\ub0ae)",
+        "\ub3c4\uc804",
+        "\ud070\\s*\ub3c8",
+        "\ubcf5\uad8c",
+        "\uae30\ud68c",
+        "\uc790\uc8fc",
+        "\uc798\\s*(\ubc1b|\ub2f9\ucca8)",
+        "\ud55c\\s*\ubc29"
        ]
       },
       {
        "id": "w3",
-       "label": "'위험이 없다'처럼 사실과 어긋나는 말을 하지 않았다",
+       "label": "'\uc704\ud5d8\uc774 \uc5c6\ub2e4'\ucc98\ub7fc \uc0ac\uc2e4\uacfc \uc5b4\uae0b\ub098\ub294 \ub9d0\uc744 \ud558\uc9c0 \uc54a\uc558\ub2e4",
        "mode": "none",
        "patterns": [
-        "(위험|손해)(이|은|도|가)?\\s*(전혀\\s*)?(없|안\\s*생)"
+        "(\uc704\ud5d8|\uc190\ud574)(\uc774|\uc740|\ub3c4|\uac00)?\\s*(\uc804\ud600\\s*)?(\uc5c6|\uc548\\s*\uc0dd)"
        ]
       }
      ],
      "selfAssess": [
-      "기댓값이 같다는 점을 먼저 인정하고, 그 위에서 내 기준을 말했나요?",
-      "내 선택이 '위험을 좋아하는지/싫어하는지' 같은 기준과 연결되어 있나요?"
+      "\uae30\ub313\uac12\uc774 \uac19\ub2e4\ub294 \uc810\uc744 \uba3c\uc800 \uc778\uc815\ud558\uace0, \uadf8 \uc704\uc5d0\uc11c \ub0b4 \uae30\uc900\uc744 \ub9d0\ud588\ub098\uc694?",
+      "\ub0b4 \uc120\ud0dd\uc774 '\uc704\ud5d8\uc744 \uc88b\uc544\ud558\ub294\uc9c0/\uc2eb\uc5b4\ud558\ub294\uc9c0' \uac19\uc740 \uae30\uc900\uacfc \uc5f0\uacb0\ub418\uc5b4 \uc788\ub098\uc694?"
      ],
      "modelAnswers": [
       {
-       "text": "기댓값이 둘 다 50원이라 평균은 같아. 나는 안정적으로 자주 받고 싶어서 당첨 확률이 큰 A를 하겠어. 확률이 작은 게임은 분산이 커서 한 번도 못 받을 수도 있어."
+       "text": "\uae30\ub313\uac12\uc774 \ub458 \ub2e4 50\uc6d0\uc774\ub77c \ud3c9\uade0\uc740 \uac19\uc544. \ub098\ub294 \uc548\uc815\uc801\uc73c\ub85c \uc790\uc8fc \ubc1b\uace0 \uc2f6\uc5b4\uc11c \ub2f9\ucca8 \ud655\ub960\uc774 \ud070 A\ub97c \ud558\uaca0\uc5b4. \ud655\ub960\uc774 \uc791\uc740 \uac8c\uc784\uc740 \ubd84\uc0b0\uc774 \ucee4\uc11c \ud55c \ubc88\ub3c4 \ubabb \ubc1b\uc744 \uc218\ub3c4 \uc788\uc5b4."
       },
       {
-       "text": "기댓값이 같아도 나는 위험을 감수하고 큰 상금을 노리는 게 좋아서 상금 500원인 게임을 고르겠어. 당첨 확률은 낮아도 한 번에 큰 상금이 나올 수 있잖아."
+       "text": "\uae30\ub313\uac12\uc774 \uac19\uc544\ub3c4 \ub098\ub294 \uc704\ud5d8\uc744 \uac10\uc218\ud558\uace0 \ud070 \uc0c1\uae08\uc744 \ub178\ub9ac\ub294 \uac8c \uc88b\uc544\uc11c \uc0c1\uae08 500\uc6d0\uc778 \uac8c\uc784\uc744 \uace0\ub974\uaca0\uc5b4. \ub2f9\ucca8 \ud655\ub960\uc740 \ub0ae\uc544\ub3c4 \ud55c \ubc88\uc5d0 \ud070 \uc0c1\uae08\uc774 \ub098\uc62c \uc218 \uc788\uc796\uc544."
       },
       {
-       "text": "기댓값이 50원으로 같아도 나는 안전하게 조금씩 받는 편이라서 게임 A를 더 하고 싶다. 확률이 작은 게임은 한 번도 못 받을 수 있다."
+       "text": "\uae30\ub313\uac12\uc774 50\uc6d0\uc73c\ub85c \uac19\uc544\ub3c4 \ub098\ub294 \uc548\uc804\ud558\uac8c \uc870\uae08\uc529 \ubc1b\ub294 \ud3b8\uc774\ub77c\uc11c \uac8c\uc784 A\ub97c \ub354 \ud558\uace0 \uc2f6\ub2e4. \ud655\ub960\uc774 \uc791\uc740 \uac8c\uc784\uc740 \ud55c \ubc88\ub3c4 \ubabb \ubc1b\uc744 \uc218 \uc788\ub2e4."
       }
      ],
      "badAnswers": [
       {
-       "text": "상금이 더 커서 B가 무조건 이득이야.",
-       "why": "기댓값을 비교하지 않았고 이유가 단정적이다."
+       "text": "\uc0c1\uae08\uc774 \ub354 \ucee4\uc11c B\uac00 \ubb34\uc870\uac74 \uc774\ub4dd\uc774\uc57c.",
+       "why": "\uae30\ub313\uac12\uc744 \ube44\uad50\ud558\uc9c0 \uc54a\uc558\uace0 \uc774\uc720\uac00 \ub2e8\uc815\uc801\uc774\ub2e4."
       },
       {
-       "text": "기댓값이 같으니까 아무거나 해도 똑같아.",
-       "why": "기댓값 외의 기준을 말하지 않았다."
+       "text": "\uae30\ub313\uac12\uc774 \uac19\uc73c\ub2c8\uae4c \uc544\ubb34\uac70\ub098 \ud574\ub3c4 \ub611\uac19\uc544.",
+       "why": "\uae30\ub313\uac12 \uc678\uc758 \uae30\uc900\uc744 \ub9d0\ud558\uc9c0 \uc54a\uc558\ub2e4."
       },
       {
-       "text": "기댓값이 같으니까 위험이 없는 새 게임이 더 좋다.",
-       "why": "새 게임도 당첨 확률이 작아 아무것도 못 받을 위험이 있는데 '위험이 없다'고 단정했다."
+       "text": "\uae30\ub313\uac12\uc774 \uac19\uc73c\ub2c8\uae4c \uc704\ud5d8\uc774 \uc5c6\ub294 \uc0c8 \uac8c\uc784\uc774 \ub354 \uc88b\ub2e4.",
+       "why": "\uc0c8 \uac8c\uc784\ub3c4 \ub2f9\ucca8 \ud655\ub960\uc774 \uc791\uc544 \uc544\ubb34\uac83\ub3c4 \ubabb \ubc1b\uc744 \uc704\ud5d8\uc774 \uc788\ub294\ub370 '\uc704\ud5d8\uc774 \uc5c6\ub2e4'\uace0 \ub2e8\uc815\ud588\ub2e4."
       }
      ],
-     "humanReview": "선택 이유가 타당한지, '정답이 없다'는 것을 존중하되 근거 없는 주장은 없는지 사람이 읽어야 한다.",
+     "humanReview": "\uc120\ud0dd \uc774\uc720\uac00 \ud0c0\ub2f9\ud55c\uc9c0, '\uc815\ub2f5\uc774 \uc5c6\ub2e4'\ub294 \uac83\uc744 \uc874\uc911\ud558\ub418 \uadfc\uac70 \uc5c6\ub294 \uc8fc\uc7a5\uc740 \uc5c6\ub294\uc9c0 \uc0ac\ub78c\uc774 \uc77d\uc5b4\uc57c \ud55c\ub2e4.",
      "hints": [
-      "기댓값이 같다는 점을 문장 앞에 써 보세요.",
-      "'나는 ~한 편이라서'처럼 내 기준을 한 가지 써 보세요."
+      "\uae30\ub313\uac12\uc774 \uac19\ub2e4\ub294 \uc810\uc744 \ubb38\uc7a5 \uc55e\uc5d0 \uc368 \ubcf4\uc138\uc694.",
+      "'\ub098\ub294 ~\ud55c \ud3b8\uc774\ub77c\uc11c'\ucc98\ub7fc \ub0b4 \uae30\uc900\uc744 \ud55c \uac00\uc9c0 \uc368 \ubcf4\uc138\uc694."
      ]
     }
    }
   ],
   "rubric": [
    {
-    "criterion": "조건에 맞는 게임 설계",
-    "full": "기댓값 50, 상금 400원 이상의 서로 다른 게임 2개",
-    "partial": "한 조건만 만족",
-    "none": "게임을 만들지 못함"
+    "criterion": "\uc870\uac74\uc5d0 \ub9de\ub294 \uac8c\uc784 \uc124\uacc4",
+    "full": "\uae30\ub313\uac12 50, \uc0c1\uae08 400\uc6d0 \uc774\uc0c1\uc758 \uc11c\ub85c \ub2e4\ub978 \uac8c\uc784 2\uac1c",
+    "partial": "\ud55c \uc870\uac74\ub9cc \ub9cc\uc871",
+    "none": "\uac8c\uc784\uc744 \ub9cc\ub4e4\uc9c0 \ubabb\ud568"
    },
    {
-    "criterion": "선택의 기준",
-    "full": "기댓값이 같음을 인정하고 흩어진 정도·위험에 대한 자기 기준으로 선택",
-    "partial": "선택은 했으나 기준이 모호함",
-    "none": "기댓값만으로 결론을 내리거나 이유가 없음"
+    "criterion": "\uc120\ud0dd\uc758 \uae30\uc900",
+    "full": "\uae30\ub313\uac12\uc774 \uac19\uc74c\uc744 \uc778\uc815\ud558\uace0 \ud769\uc5b4\uc9c4 \uc815\ub3c4\u00b7\uc704\ud5d8\uc5d0 \ub300\ud55c \uc790\uae30 \uae30\uc900\uc73c\ub85c \uc120\ud0dd",
+    "partial": "\uc120\ud0dd\uc740 \ud588\uc73c\ub098 \uae30\uc900\uc774 \ubaa8\ud638\ud568",
+    "none": "\uae30\ub313\uac12\ub9cc\uc73c\ub85c \uacb0\ub860\uc744 \ub0b4\ub9ac\uac70\ub098 \uc774\uc720\uac00 \uc5c6\uc74c"
    }
   ],
   "alternatives": [
-   "위험을 피하려는 선택(A)도, 큰 상금을 노리는 선택(B류)도 모두 타당하다.",
-   "기댓값이 같아도 '여러 번 반복하는지, 한 번만 하는지'에 따라 선택이 달라진다는 설명도 좋다."
+   "\uc704\ud5d8\uc744 \ud53c\ud558\ub824\ub294 \uc120\ud0dd(A)\ub3c4, \ud070 \uc0c1\uae08\uc744 \ub178\ub9ac\ub294 \uc120\ud0dd(B\ub958)\ub3c4 \ubaa8\ub450 \ud0c0\ub2f9\ud558\ub2e4.",
+   "\uae30\ub313\uac12\uc774 \uac19\uc544\ub3c4 '\uc5ec\ub7ec \ubc88 \ubc18\ubcf5\ud558\ub294\uc9c0, \ud55c \ubc88\ub9cc \ud558\ub294\uc9c0'\uc5d0 \ub530\ub77c \uc120\ud0dd\uc774 \ub2ec\ub77c\uc9c4\ub2e4\ub294 \uc124\uba85\ub3c4 \uc88b\ub2e4."
   ],
   "hardCases": [
-   "학생이 '분산'이라는 말을 쓰지 않아도 '들쭉날쭉하다'로 같은 뜻을 쓸 수 있어 사람이 판단해야 한다."
+   "\ud559\uc0dd\uc774 '\ubd84\uc0b0'\uc774\ub77c\ub294 \ub9d0\uc744 \uc4f0\uc9c0 \uc54a\uc544\ub3c4 '\ub4e4\ucb49\ub0a0\ucb49\ud558\ub2e4'\ub85c \uac19\uc740 \ub73b\uc744 \uc4f8 \uc218 \uc788\uc5b4 \uc0ac\ub78c\uc774 \ud310\ub2e8\ud574\uc57c \ud55c\ub2e4."
   ],
   "cautions": {
-   "language": "'기댓값', '분산'이 낯선 학생을 위해 '평균' 또는 '흩어진 정도'라는 풀이 표현을 보기에 같이 썼다.",
-   "culture": "축제 게임이라는 소재는 도박을 권하는 것이 아니라 확률 이해를 위한 가상 상황임을 안내한다. 상금과 참가비는 가상이다.",
-   "accessibility": "그림 없이 숫자로만 제시했다. 분수 1/10을 '10분의 1'로 읽을 수 있다."
+   "language": "'\uae30\ub313\uac12', '\ubd84\uc0b0'\uc774 \ub0af\uc120 \ud559\uc0dd\uc744 \uc704\ud574 '\ud3c9\uade0' \ub610\ub294 '\ud769\uc5b4\uc9c4 \uc815\ub3c4'\ub77c\ub294 \ud480\uc774 \ud45c\ud604\uc744 \ubcf4\uae30\uc5d0 \uac19\uc774 \uc37c\ub2e4.",
+   "culture": "\ucd95\uc81c \uac8c\uc784\uc774\ub77c\ub294 \uc18c\uc7ac\ub294 \ub3c4\ubc15\uc744 \uad8c\ud558\ub294 \uac83\uc774 \uc544\ub2c8\ub77c \ud655\ub960 \uc774\ud574\ub97c \uc704\ud55c \uac00\uc0c1 \uc0c1\ud669\uc784\uc744 \uc548\ub0b4\ud55c\ub2e4. \uc0c1\uae08\uacfc \ucc38\uac00\ube44\ub294 \uac00\uc0c1\uc774\ub2e4.",
+   "accessibility": "\uadf8\ub9bc \uc5c6\uc774 \uc22b\uc790\ub85c\ub9cc \uc81c\uc2dc\ud588\ub2e4. \ubd84\uc218 1/10\uc744 '10\ubd84\uc758 1'\ub85c \uc77d\uc744 \uc218 \uc788\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "만든 게임이 세 조건을 만족하는지, 서로 다른 당첨 확률인지",
-    "서술에 기댓값과 기준 표현이 있는지"
+    "\ub9cc\ub4e0 \uac8c\uc784\uc774 \uc138 \uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294\uc9c0, \uc11c\ub85c \ub2e4\ub978 \ub2f9\ucca8 \ud655\ub960\uc778\uc9c0",
+    "\uc11c\uc220\uc5d0 \uae30\ub313\uac12\uacfc \uae30\uc900 \ud45c\ud604\uc774 \uc788\ub294\uc9c0"
    ],
    "human": [
-    "선택 이유의 타당성"
+    "\uc120\ud0dd \uc774\uc720\uc758 \ud0c0\ub2f9\uc131"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "x-m-h3-06",
   "subject": "math",
   "grade": "H3",
-  "topic": "확률분포",
+  "topic": "\ud655\ub960\ubd84\ud3ec",
   "level": 3,
-  "levelLabel": "고등",
-  "title": "85점은 상위 몇 퍼센트일까",
+  "levelLabel": "\uace0\ub4f1",
+  "title": "85\uc810\uc740 \uc0c1\uc704 \uba87 \ud37c\uc13c\ud2b8\uc77c\uae4c",
   "uiLang": "ko",
   "format": "choose-needed-info",
   "generative": true,
-  "goal": "정규분포에서 위치를 말하려면 평균 외에 퍼진 정도가 필요함을 알고, 조건에 맞는 값을 직접 정해 본다.",
+  "goal": "\uc815\uaddc\ubd84\ud3ec\uc5d0\uc11c \uc704\uce58\ub97c \ub9d0\ud558\ub824\uba74 \ud3c9\uade0 \uc678\uc5d0 \ud37c\uc9c4 \uc815\ub3c4\uac00 \ud544\uc694\ud568\uc744 \uc54c\uace0, \uc870\uac74\uc5d0 \ub9de\ub294 \uac12\uc744 \uc9c1\uc811 \uc815\ud574 \ubcf8\ub2e4.",
   "thinking": [
-   "정보가 충분한지 판단하기",
-   "서로 다른 분포의 점수를 비교하기",
-   "조건을 만족하는 값을 여럿 만들기"
+   "\uc815\ubcf4\uac00 \ucda9\ubd84\ud55c\uc9c0 \ud310\ub2e8\ud558\uae30",
+   "\uc11c\ub85c \ub2e4\ub978 \ubd84\ud3ec\uc758 \uc810\uc218\ub97c \ube44\uad50\ud558\uae30",
+   "\uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294 \uac12\uc744 \uc5ec\ub7ff \ub9cc\ub4e4\uae30"
   ],
-  "differsFromPlain": "단순 연습은 주어진 평균과 표준편차로 확률을 구한다. 여기서는 어떤 정보가 빠졌는지 판단하고, 같은 점수차가 분포에 따라 다른 뜻을 가짐을 비교한다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uc8fc\uc5b4\uc9c4 \ud3c9\uade0\uacfc \ud45c\uc900\ud3b8\ucc28\ub85c \ud655\ub960\uc744 \uad6c\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \uc5b4\ub5a4 \uc815\ubcf4\uac00 \ube60\uc84c\ub294\uc9c0 \ud310\ub2e8\ud558\uace0, \uac19\uc740 \uc810\uc218\ucc28\uac00 \ubd84\ud3ec\uc5d0 \ub530\ub77c \ub2e4\ub978 \ub73b\uc744 \uac00\uc9d0\uc744 \ube44\uad50\ud55c\ub2e4.",
   "prerequisites": [
-   "정규분포 곡선의 모양(평균 중심, 좌우 대칭)",
-   "표준정규분포표를 읽는 방법"
+   "\uc815\uaddc\ubd84\ud3ec \uace1\uc120\uc758 \ubaa8\uc591(\ud3c9\uade0 \uc911\uc2ec, \uc88c\uc6b0 \ub300\uce6d)",
+   "\ud45c\uc900\uc815\uaddc\ubd84\ud3ec\ud45c\ub97c \uc77d\ub294 \ubc29\ubc95"
   ],
   "minutes": 12,
   "curriculum": null,
-  "material": "어느 학교의 수학 시험 점수는 정규분포를 따른다고 합니다. 평균은 70점입니다. 민지는 85점을 받았고 상위 몇 퍼센트인지 알고 싶어요. 표준정규분포표는 사용할 수 있습니다. (참고: 표준정규분포에서 Z가 2 이상일 확률은 약 0.0228 입니다.)",
+  "material": "\uc5b4\ub290 \ud559\uad50\uc758 \uc218\ud559 \uc2dc\ud5d8 \uc810\uc218\ub294 \uc815\uaddc\ubd84\ud3ec\ub97c \ub530\ub978\ub2e4\uace0 \ud569\ub2c8\ub2e4. \ud3c9\uade0\uc740 70\uc810\uc785\ub2c8\ub2e4. \ubbfc\uc9c0\ub294 85\uc810\uc744 \ubc1b\uc558\uace0 \uc0c1\uc704 \uba87 \ud37c\uc13c\ud2b8\uc778\uc9c0 \uc54c\uace0 \uc2f6\uc5b4\uc694. \ud45c\uc900\uc815\uaddc\ubd84\ud3ec\ud45c\ub294 \uc0ac\uc6a9\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4. (\ucc38\uace0: \ud45c\uc900\uc815\uaddc\ubd84\ud3ec\uc5d0\uc11c Z\uac00 2 \uc774\uc0c1\uc77c \ud655\ub960\uc740 \uc57d 0.0228 \uc785\ub2c8\ub2e4.)",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
-    "prompt": "지금 알려진 정보(평균 70점, 민지 85점)만으로 상위 몇 퍼센트인지 정할 수 있을까요?",
+    "prompt": "\uc9c0\uae08 \uc54c\ub824\uc9c4 \uc815\ubcf4(\ud3c9\uade0 70\uc810, \ubbfc\uc9c0 85\uc810)\ub9cc\uc73c\ub85c \uc0c1\uc704 \uba87 \ud37c\uc13c\ud2b8\uc778\uc9c0 \uc815\ud560 \uc218 \uc788\uc744\uae4c\uc694?",
     "options": [
      {
       "id": "a",
-      "text": "있다. 평균보다 15점 높으니 상위 15% 안에 든다",
-      "reveals": "점수 차이를 곧바로 퍼센트로 읽었어요. 점수가 얼마나 퍼져 있는지에 따라 같은 15점의 뜻이 달라져요."
+      "text": "\uc788\ub2e4. \ud3c9\uade0\ubcf4\ub2e4 15\uc810 \ub192\uc73c\ub2c8 \uc0c1\uc704 15% \uc548\uc5d0 \ub4e0\ub2e4",
+      "reveals": "\uc810\uc218 \ucc28\uc774\ub97c \uace7\ubc14\ub85c \ud37c\uc13c\ud2b8\ub85c \uc77d\uc5c8\uc5b4\uc694. \uc810\uc218\uac00 \uc5bc\ub9c8\ub098 \ud37c\uc838 \uc788\ub294\uc9c0\uc5d0 \ub530\ub77c \uac19\uc740 15\uc810\uc758 \ub73b\uc774 \ub2ec\ub77c\uc838\uc694."
      },
      {
       "id": "b",
-      "text": "없다. 시험을 본 학생 수가 몇 명인지를 알아야 한다",
-      "reveals": "비율은 분포의 모양으로 정해져요. 학생 수는 비율에 필요하지 않아요."
+      "text": "\uc5c6\ub2e4. \uc2dc\ud5d8\uc744 \ubcf8 \ud559\uc0dd \uc218\uac00 \uba87 \uba85\uc778\uc9c0\ub97c \uc54c\uc544\uc57c \ud55c\ub2e4",
+      "reveals": "\ube44\uc728\uc740 \ubd84\ud3ec\uc758 \ubaa8\uc591\uc73c\ub85c \uc815\ud574\uc838\uc694. \ud559\uc0dd \uc218\ub294 \ube44\uc728\uc5d0 \ud544\uc694\ud558\uc9c0 \uc54a\uc544\uc694."
      },
      {
       "id": "c",
-      "text": "있다. 정규분포에서 평균보다 15점 높으면 상위 16%이다",
-      "reveals": "상위 16%는 평균에서 표준편차 1배만큼 높을 때예요. 표준편차를 모르면 15점이 그만큼인지 알 수 없어요."
+      "text": "\uc788\ub2e4. \uc815\uaddc\ubd84\ud3ec\uc5d0\uc11c \ud3c9\uade0\ubcf4\ub2e4 15\uc810 \ub192\uc73c\uba74 \uc0c1\uc704 16%\uc774\ub2e4",
+      "reveals": "\uc0c1\uc704 16%\ub294 \ud3c9\uade0\uc5d0\uc11c \ud45c\uc900\ud3b8\ucc28 1\ubc30\ub9cc\ud07c \ub192\uc744 \ub54c\uc608\uc694. \ud45c\uc900\ud3b8\ucc28\ub97c \ubaa8\ub974\uba74 15\uc810\uc774 \uadf8\ub9cc\ud07c\uc778\uc9c0 \uc54c \uc218 \uc5c6\uc5b4\uc694."
      },
      {
       "id": "d",
-      "text": "없다. 점수가 흩어진 정도를 알려 주는 값이 더 필요하다",
-      "reveals": "평균 외에 퍼진 정도를 알아야 한다는 점을 짚었어요."
+      "text": "\uc5c6\ub2e4. \uc810\uc218\uac00 \ud769\uc5b4\uc9c4 \uc815\ub3c4\ub97c \uc54c\ub824 \uc8fc\ub294 \uac12\uc774 \ub354 \ud544\uc694\ud558\ub2e4",
+      "reveals": "\ud3c9\uade0 \uc678\uc5d0 \ud37c\uc9c4 \uc815\ub3c4\ub97c \uc54c\uc544\uc57c \ud55c\ub2e4\ub294 \uc810\uc744 \uc9da\uc5c8\uc5b4\uc694."
      }
     ],
     "correct": [
      "d"
     ],
-    "explain": "85점이 평균에서 표준편차의 몇 배만큼 떨어져 있는지가 위치를 정해요. 그러려면 표준편차가 필요해요.",
+    "explain": "85\uc810\uc774 \ud3c9\uade0\uc5d0\uc11c \ud45c\uc900\ud3b8\ucc28\uc758 \uba87 \ubc30\ub9cc\ud07c \ub5a8\uc5b4\uc838 \uc788\ub294\uc9c0\uac00 \uc704\uce58\ub97c \uc815\ud574\uc694. \uadf8\ub7ec\ub824\uba74 \ud45c\uc900\ud3b8\ucc28\uac00 \ud544\uc694\ud574\uc694.",
     "hints": [
-     "평균이 같아도 점수가 모여 있는 분포와 퍼진 분포에서 85점의 위치가 어떻게 다른지 떠올려 보세요.",
-     "비율을 정하는 데 꼭 필요한 값이 무엇인지 하나씩 지워 보며 생각해 보세요."
+     "\ud3c9\uade0\uc774 \uac19\uc544\ub3c4 \uc810\uc218\uac00 \ubaa8\uc5ec \uc788\ub294 \ubd84\ud3ec\uc640 \ud37c\uc9c4 \ubd84\ud3ec\uc5d0\uc11c 85\uc810\uc758 \uc704\uce58\uac00 \uc5b4\ub5bb\uac8c \ub2e4\ub978\uc9c0 \ub5a0\uc62c\ub824 \ubcf4\uc138\uc694.",
+     "\ube44\uc728\uc744 \uc815\ud558\ub294 \ub370 \uaf2d \ud544\uc694\ud55c \uac12\uc774 \ubb34\uc5c7\uc778\uc9c0 \ud558\ub098\uc529 \uc9c0\uc6cc \ubcf4\uba70 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694."
     ],
     "scaffold": true
    },
    {
     "id": "s2",
     "kind": "choose",
-    "prompt": "서로 다른 학교의 두 학생을 비교합니다. 가 학교(평균 70점, 표준편차 10점)의 학생은 85점, 나 학교(평균 60점, 표준편차 5점)의 학생은 75점을 받았습니다. 각자 학교 안에서 상대적으로 더 높은 위치에 있는 학생은?",
+    "prompt": "\uc11c\ub85c \ub2e4\ub978 \ud559\uad50\uc758 \ub450 \ud559\uc0dd\uc744 \ube44\uad50\ud569\ub2c8\ub2e4. \uac00 \ud559\uad50(\ud3c9\uade0 70\uc810, \ud45c\uc900\ud3b8\ucc28 10\uc810)\uc758 \ud559\uc0dd\uc740 85\uc810, \ub098 \ud559\uad50(\ud3c9\uade0 60\uc810, \ud45c\uc900\ud3b8\ucc28 5\uc810)\uc758 \ud559\uc0dd\uc740 75\uc810\uc744 \ubc1b\uc558\uc2b5\ub2c8\ub2e4. \uac01\uc790 \ud559\uad50 \uc548\uc5d0\uc11c \uc0c1\ub300\uc801\uc73c\ub85c \ub354 \ub192\uc740 \uc704\uce58\uc5d0 \uc788\ub294 \ud559\uc0dd\uc740?",
     "options": [
      {
       "id": "a",
-      "text": "가 학교 학생. 점수가 더 높기 때문에 위치도 더 높다",
-      "reveals": "점수 자체를 비교했어요. 학교마다 평균과 퍼진 정도가 달라요."
+      "text": "\uac00 \ud559\uad50 \ud559\uc0dd. \uc810\uc218\uac00 \ub354 \ub192\uae30 \ub54c\ubb38\uc5d0 \uc704\uce58\ub3c4 \ub354 \ub192\ub2e4",
+      "reveals": "\uc810\uc218 \uc790\uccb4\ub97c \ube44\uad50\ud588\uc5b4\uc694. \ud559\uad50\ub9c8\ub2e4 \ud3c9\uade0\uacfc \ud37c\uc9c4 \uc815\ub3c4\uac00 \ub2ec\ub77c\uc694."
      },
      {
       "id": "b",
-      "text": "나 학교 학생. 표준편차의 몇 배인지 보면 더 높다",
-      "reveals": "표준편차를 단위로 평균에서 얼마나 떨어졌는지로 비교했어요."
+      "text": "\ub098 \ud559\uad50 \ud559\uc0dd. \ud45c\uc900\ud3b8\ucc28\uc758 \uba87 \ubc30\uc778\uc9c0 \ubcf4\uba74 \ub354 \ub192\ub2e4",
+      "reveals": "\ud45c\uc900\ud3b8\ucc28\ub97c \ub2e8\uc704\ub85c \ud3c9\uade0\uc5d0\uc11c \uc5bc\ub9c8\ub098 \ub5a8\uc5b4\uc84c\ub294\uc9c0\ub85c \ube44\uad50\ud588\uc5b4\uc694."
      },
      {
       "id": "c",
-      "text": "두 학생이 같다. 둘 다 평균보다 15점 높기 때문이다",
-      "reveals": "점수 차이가 같아도 표준편차가 다르면 그 차이의 뜻이 달라요."
+      "text": "\ub450 \ud559\uc0dd\uc774 \uac19\ub2e4. \ub458 \ub2e4 \ud3c9\uade0\ubcf4\ub2e4 15\uc810 \ub192\uae30 \ub54c\ubb38\uc774\ub2e4",
+      "reveals": "\uc810\uc218 \ucc28\uc774\uac00 \uac19\uc544\ub3c4 \ud45c\uc900\ud3b8\ucc28\uac00 \ub2e4\ub974\uba74 \uadf8 \ucc28\uc774\uc758 \ub73b\uc774 \ub2ec\ub77c\uc694."
      },
      {
       "id": "d",
-      "text": "알 수 없다. 두 학교의 응시자 수를 모르기 때문이다",
-      "reveals": "위치 비교에는 응시자 수가 필요하지 않아요."
+      "text": "\uc54c \uc218 \uc5c6\ub2e4. \ub450 \ud559\uad50\uc758 \uc751\uc2dc\uc790 \uc218\ub97c \ubaa8\ub974\uae30 \ub54c\ubb38\uc774\ub2e4",
+      "reveals": "\uc704\uce58 \ube44\uad50\uc5d0\ub294 \uc751\uc2dc\uc790 \uc218\uac00 \ud544\uc694\ud558\uc9c0 \uc54a\uc544\uc694."
      }
     ],
     "correct": [
      "b"
     ],
-    "explain": "가 학교 학생은 평균보다 표준편차의 1.5배, 나 학교 학생은 3배 높아요. 그래서 학교 안에서의 위치는 나 학교 학생이 더 높아요.",
+    "explain": "\uac00 \ud559\uad50 \ud559\uc0dd\uc740 \ud3c9\uade0\ubcf4\ub2e4 \ud45c\uc900\ud3b8\ucc28\uc758 1.5\ubc30, \ub098 \ud559\uad50 \ud559\uc0dd\uc740 3\ubc30 \ub192\uc544\uc694. \uadf8\ub798\uc11c \ud559\uad50 \uc548\uc5d0\uc11c\uc758 \uc704\uce58\ub294 \ub098 \ud559\uad50 \ud559\uc0dd\uc774 \ub354 \ub192\uc544\uc694.",
     "hints": [
-     "각 학생이 평균보다 얼마나 높은지를 해당 학교의 표준편차로 나눠 보세요.",
-     "점수 차이가 같을 때 표준편차가 작은 쪽은 어떻게 다른가요?"
+     "\uac01 \ud559\uc0dd\uc774 \ud3c9\uade0\ubcf4\ub2e4 \uc5bc\ub9c8\ub098 \ub192\uc740\uc9c0\ub97c \ud574\ub2f9 \ud559\uad50\uc758 \ud45c\uc900\ud3b8\ucc28\ub85c \ub098\ub220 \ubcf4\uc138\uc694.",
+     "\uc810\uc218 \ucc28\uc774\uac00 \uac19\uc744 \ub54c \ud45c\uc900\ud3b8\ucc28\uac00 \uc791\uc740 \ucabd\uc740 \uc5b4\ub5bb\uac8c \ub2e4\ub978\uac00\uc694?"
     ]
    },
    {
     "id": "s3",
     "kind": "build",
-    "prompt": "민지의 학교 점수의 표준편차 σ 를 정수로 정해서, 85점이 상위 약 2.3% 안에 들도록(평균에서 σ의 2배 이상 높도록) 하는 σ 를 서로 다르게 3개 만들어 보세요.",
+    "prompt": "\ubbfc\uc9c0\uc758 \ud559\uad50 \uc810\uc218\uc758 \ud45c\uc900\ud3b8\ucc28 \u03c3 \ub97c \uc815\uc218\ub85c \uc815\ud574\uc11c, 85\uc810\uc774 \uc0c1\uc704 \uc57d 2.3% \uc548\uc5d0 \ub4e4\ub3c4\ub85d(\ud3c9\uade0\uc5d0\uc11c \u03c3\uc758 2\ubc30 \uc774\uc0c1 \ub192\ub3c4\ub85d) \ud558\ub294 \u03c3 \ub97c \uc11c\ub85c \ub2e4\ub974\uac8c 3\uac1c \ub9cc\ub4e4\uc5b4 \ubcf4\uc138\uc694.",
     "vars": [
      {
       "name": "s",
-      "label": "표준편차 σ (점)"
+      "label": "\ud45c\uc900\ud3b8\ucc28 \u03c3 (\uc810)"
      }
     ],
     "constraints": [
      {
       "id": "c1",
       "expr": "s>0 && s==floor(s)",
-      "ok": "σ는 양의 정수예요.",
-      "fail": "σ는 0보다 큰 정수여야 해요."
+      "ok": "\u03c3\ub294 \uc591\uc758 \uc815\uc218\uc608\uc694.",
+      "fail": "\u03c3\ub294 0\ubcf4\ub2e4 \ud070 \uc815\uc218\uc5ec\uc57c \ud574\uc694."
      },
      {
       "id": "c2",
       "expr": "15/s>=2",
-      "ok": "85점이 평균에서 σ의 2배 이상 높아요.",
-      "fail": "85점이 평균에서 σ의 2배보다 낮게 떨어져 있어요."
+      "ok": "85\uc810\uc774 \ud3c9\uade0\uc5d0\uc11c \u03c3\uc758 2\ubc30 \uc774\uc0c1 \ub192\uc544\uc694.",
+      "fail": "85\uc810\uc774 \ud3c9\uade0\uc5d0\uc11c \u03c3\uc758 2\ubc30\ubcf4\ub2e4 \ub0ae\uac8c \ub5a8\uc5b4\uc838 \uc788\uc5b4\uc694."
      }
     ],
     "need": 3,
@@ -1144,168 +1146,169 @@
       "s": 0
      }
     ],
-    "explain": "평균에서 15점 떨어진 것이 σ의 2배 이상이려면 σ ≤ 7.5 이어야 해요. 정수 σ는 1~7이에요. Z ≥ 2 인 비율이 약 2.3% 이므로 상위 2.3% 안에 들어요.",
+    "explain": "\ud3c9\uade0\uc5d0\uc11c 15\uc810 \ub5a8\uc5b4\uc9c4 \uac83\uc774 \u03c3\uc758 2\ubc30 \uc774\uc0c1\uc774\ub824\uba74 \u03c3 \u2264 7.5 \uc774\uc5b4\uc57c \ud574\uc694. \uc815\uc218 \u03c3\ub294 1~7\uc774\uc5d0\uc694. Z \u2265 2 \uc778 \ube44\uc728\uc774 \uc57d 2.3% \uc774\ubbc0\ub85c \uc0c1\uc704 2.3% \uc548\uc5d0 \ub4e4\uc5b4\uc694.",
     "hints": [
-     "85점이 평균 70점보다 표준편차의 몇 배 높은지를 σ를 써서 식으로 써 보세요.",
-     "경계가 되는 σ 바로 옆 정수도 넣어 확인해 보세요."
+     "85\uc810\uc774 \ud3c9\uade0 70\uc810\ubcf4\ub2e4 \ud45c\uc900\ud3b8\ucc28\uc758 \uba87 \ubc30 \ub192\uc740\uc9c0\ub97c \u03c3\ub97c \uc368\uc11c \uc2dd\uc73c\ub85c \uc368 \ubcf4\uc138\uc694.",
+     "\uacbd\uacc4\uac00 \ub418\ub294 \u03c3 \ubc14\ub85c \uc606 \uc815\uc218\ub3c4 \ub123\uc5b4 \ud655\uc778\ud574 \ubcf4\uc138\uc694."
     ],
     "distinctBy": "s"
    }
   ],
   "rubric": [
    {
-    "criterion": "정보 충분성 판단",
-    "full": "표준편차가 빠졌음을 짚고 이유(위치 단위)를 설명",
-    "partial": "빠졌음은 알지만 이유를 말하지 못함",
-    "none": "정보가 충분하다고 봄"
+    "criterion": "\uc815\ubcf4 \ucda9\ubd84\uc131 \ud310\ub2e8",
+    "full": "\ud45c\uc900\ud3b8\ucc28\uac00 \ube60\uc84c\uc74c\uc744 \uc9da\uace0 \uc774\uc720(\uc704\uce58 \ub2e8\uc704)\ub97c \uc124\uba85",
+    "partial": "\ube60\uc84c\uc74c\uc740 \uc54c\uc9c0\ub9cc \uc774\uc720\ub97c \ub9d0\ud558\uc9c0 \ubabb\ud568",
+    "none": "\uc815\ubcf4\uac00 \ucda9\ubd84\ud558\ub2e4\uace0 \ubd04"
    },
    {
-    "criterion": "조건 있는 값 만들기",
-    "full": "경계 7.5를 고려해 정수 σ 3개를 제시",
-    "partial": "3개를 만들었으나 경계 값을 어김",
-    "none": "값을 만들지 못함"
+    "criterion": "\uc870\uac74 \uc788\ub294 \uac12 \ub9cc\ub4e4\uae30",
+    "full": "\uacbd\uacc4 7.5\ub97c \uace0\ub824\ud574 \uc815\uc218 \u03c3 3\uac1c\ub97c \uc81c\uc2dc",
+    "partial": "3\uac1c\ub97c \ub9cc\ub4e4\uc5c8\uc73c\ub098 \uacbd\uacc4 \uac12\uc744 \uc5b4\uae40",
+    "none": "\uac12\uc744 \ub9cc\ub4e4\uc9c0 \ubabb\ud568"
    }
   ],
   "alternatives": [
-   "2단계에서 '표준편차가 작을수록 같은 점수차가 더 큰 뜻'이라고 설명해도 같은 판단이다.",
-   "3단계에서 σ=1처럼 매우 작은 값도 조건을 만족하지만 현실성은 낮다는 점을 사람이 짚을 수 있다."
+   "2\ub2e8\uacc4\uc5d0\uc11c '\ud45c\uc900\ud3b8\ucc28\uac00 \uc791\uc744\uc218\ub85d \uac19\uc740 \uc810\uc218\ucc28\uac00 \ub354 \ud070 \ub73b'\uc774\ub77c\uace0 \uc124\uba85\ud574\ub3c4 \uac19\uc740 \ud310\ub2e8\uc774\ub2e4.",
+   "3\ub2e8\uacc4\uc5d0\uc11c \u03c3=1\ucc98\ub7fc \ub9e4\uc6b0 \uc791\uc740 \uac12\ub3c4 \uc870\uac74\uc744 \ub9cc\uc871\ud558\uc9c0\ub9cc \ud604\uc2e4\uc131\uc740 \ub0ae\ub2e4\ub294 \uc810\uc744 \uc0ac\ub78c\uc774 \uc9da\uc744 \uc218 \uc788\ub2e4."
   ],
   "hardCases": [
-   "정규분포에서 상위 비율이 Z≥2인 값으로 정확히 2.28%임을 학생이 표에서 확인하지 않고 2.3%로 반올림한 점은 허용한다."
+   "\uc815\uaddc\ubd84\ud3ec\uc5d0\uc11c \uc0c1\uc704 \ube44\uc728\uc774 Z\u22652\uc778 \uac12\uc73c\ub85c \uc815\ud655\ud788 2.28%\uc784\uc744 \ud559\uc0dd\uc774 \ud45c\uc5d0\uc11c \ud655\uc778\ud558\uc9c0 \uc54a\uace0 2.3%\ub85c \ubc18\uc62c\ub9bc\ud55c \uc810\uc740 \ud5c8\uc6a9\ud55c\ub2e4."
   ],
   "cautions": {
-   "language": "'표준편차', '상위 퍼센트'가 낯선 학생을 위해 '흩어진 정도', '위에서 몇 퍼센트'로 풀어 썼다.",
-   "culture": "시험 점수를 소재로 하며 점수에 따른 서열 의식을 부추기지 않도록 특정 학생을 평가하는 표현을 쓰지 않았다.",
-   "accessibility": "표나 그림 없이 문장으로만 제시했다. 표준정규분포표가 필요한 경우 글로 된 표를 따로 제공한다."
+   "language": "'\ud45c\uc900\ud3b8\ucc28', '\uc0c1\uc704 \ud37c\uc13c\ud2b8'\uac00 \ub0af\uc120 \ud559\uc0dd\uc744 \uc704\ud574 '\ud769\uc5b4\uc9c4 \uc815\ub3c4', '\uc704\uc5d0\uc11c \uba87 \ud37c\uc13c\ud2b8'\ub85c \ud480\uc5b4 \uc37c\ub2e4.",
+   "culture": "\uc2dc\ud5d8 \uc810\uc218\ub97c \uc18c\uc7ac\ub85c \ud558\uba70 \uc810\uc218\uc5d0 \ub530\ub978 \uc11c\uc5f4 \uc758\uc2dd\uc744 \ubd80\ucd94\uae30\uc9c0 \uc54a\ub3c4\ub85d \ud2b9\uc815 \ud559\uc0dd\uc744 \ud3c9\uac00\ud558\ub294 \ud45c\ud604\uc744 \uc4f0\uc9c0 \uc54a\uc558\ub2e4.",
+   "accessibility": "\ud45c\ub098 \uadf8\ub9bc \uc5c6\uc774 \ubb38\uc7a5\uc73c\ub85c\ub9cc \uc81c\uc2dc\ud588\ub2e4. \ud45c\uc900\uc815\uaddc\ubd84\ud3ec\ud45c\uac00 \ud544\uc694\ud55c \uacbd\uc6b0 \uae00\ub85c \ub41c \ud45c\ub97c \ub530\ub85c \uc81c\uacf5\ud55c\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "충분성 선택, 비교 선택, 만든 σ 값이 조건을 만족하는지"
+    "\ucda9\ubd84\uc131 \uc120\ud0dd, \ube44\uad50 \uc120\ud0dd, \ub9cc\ub4e0 \u03c3 \uac12\uc774 \uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294\uc9c0"
    ],
    "human": [
-    "왜 그 정보가 필요한지에 대한 설명(수업 중)"
+    "\uc65c \uadf8 \uc815\ubcf4\uac00 \ud544\uc694\ud55c\uc9c0\uc5d0 \ub300\ud55c \uc124\uba85(\uc218\uc5c5 \uc911)"
    ]
-  }
+  },
+  "status": "reviewed-ai"
  },
  {
   "id": "x-m-h3-07",
   "subject": "math",
   "grade": "H3",
-  "topic": "통계적 추정",
+  "topic": "\ud1b5\uacc4\uc801 \ucd94\uc815",
   "level": 3,
-  "levelLabel": "고등",
-  "title": "95% 신뢰구간은 무엇을 말해 줄까",
+  "levelLabel": "\uace0\ub4f1",
+  "title": "95% \uc2e0\ub8b0\uad6c\uac04\uc740 \ubb34\uc5c7\uc744 \ub9d0\ud574 \uc904\uae4c",
   "uiLang": "ko",
   "format": "judge-evidence-explain",
   "generative": true,
-  "goal": "신뢰구간의 뜻을 바르게 해석하는 진술을 가려내고, 구간의 길이를 조건에 맞추려면 표본 크기가 얼마나 필요한지 직접 찾는다.",
+  "goal": "\uc2e0\ub8b0\uad6c\uac04\uc758 \ub73b\uc744 \ubc14\ub974\uac8c \ud574\uc11d\ud558\ub294 \uc9c4\uc220\uc744 \uac00\ub824\ub0b4\uace0, \uad6c\uac04\uc758 \uae38\uc774\ub97c \uc870\uac74\uc5d0 \ub9de\ucd94\ub824\uba74 \ud45c\ubcf8 \ud06c\uae30\uac00 \uc5bc\ub9c8\ub098 \ud544\uc694\ud55c\uc9c0 \uc9c1\uc811 \ucc3e\ub294\ub2e4.",
   "thinking": [
-   "해석의 옳고 그름을 근거로 판단하기",
-   "표본 크기와 구간 길이의 관계 추론하기",
-   "경계값을 직접 확인하며 조건에 맞는 값을 만들기"
+   "\ud574\uc11d\uc758 \uc633\uace0 \uadf8\ub984\uc744 \uadfc\uac70\ub85c \ud310\ub2e8\ud558\uae30",
+   "\ud45c\ubcf8 \ud06c\uae30\uc640 \uad6c\uac04 \uae38\uc774\uc758 \uad00\uacc4 \ucd94\ub860\ud558\uae30",
+   "\uacbd\uacc4\uac12\uc744 \uc9c1\uc811 \ud655\uc778\ud558\uba70 \uc870\uac74\uc5d0 \ub9de\ub294 \uac12\uc744 \ub9cc\ub4e4\uae30"
   ],
-  "differsFromPlain": "단순 연습은 신뢰구간 식에 값을 넣어 구간을 구한다. 여기서는 구간의 뜻을 올바르게 해석하는 말을 고르고, 구간 길이 조건을 만족하는 표본 크기를 학생이 찾는다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uc2e0\ub8b0\uad6c\uac04 \uc2dd\uc5d0 \uac12\uc744 \ub123\uc5b4 \uad6c\uac04\uc744 \uad6c\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \uad6c\uac04\uc758 \ub73b\uc744 \uc62c\ubc14\ub974\uac8c \ud574\uc11d\ud558\ub294 \ub9d0\uc744 \uace0\ub974\uace0, \uad6c\uac04 \uae38\uc774 \uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294 \ud45c\ubcf8 \ud06c\uae30\ub97c \ud559\uc0dd\uc774 \ucc3e\ub294\ub2e4.",
   "prerequisites": [
-   "모집단과 표본, 표본평균의 분포를 배운 경험",
-   "정규분포의 표준화를 이용한 신뢰구간의 모양을 본 경험"
+   "\ubaa8\uc9d1\ub2e8\uacfc \ud45c\ubcf8, \ud45c\ubcf8\ud3c9\uade0\uc758 \ubd84\ud3ec\ub97c \ubc30\uc6b4 \uacbd\ud5d8",
+   "\uc815\uaddc\ubd84\ud3ec\uc758 \ud45c\uc900\ud654\ub97c \uc774\uc6a9\ud55c \uc2e0\ub8b0\uad6c\uac04\uc758 \ubaa8\uc591\uc744 \ubcf8 \uacbd\ud5d8"
   ],
   "minutes": 14,
   "curriculum": null,
-  "material": "어느 도시 고등학생의 하루 수면 시간은 모표준편차가 1시간인 정규분포를 따른다고 합니다. 학생 100명을 임의추출했더니 표본평균이 6.8시간이었습니다. 모평균의 신뢰도 95% 신뢰구간은 6.8 ± 1.96 × (1/√100) 이므로 [6.604, 6.996] 입니다. (신뢰도 95%일 때 계수는 1.96으로 합니다.)",
+  "material": "\uc5b4\ub290 \ub3c4\uc2dc \uace0\ub4f1\ud559\uc0dd\uc758 \ud558\ub8e8 \uc218\uba74 \uc2dc\uac04\uc740 \ubaa8\ud45c\uc900\ud3b8\ucc28\uac00 1\uc2dc\uac04\uc778 \uc815\uaddc\ubd84\ud3ec\ub97c \ub530\ub978\ub2e4\uace0 \ud569\ub2c8\ub2e4. \ud559\uc0dd 100\uba85\uc744 \uc784\uc758\ucd94\ucd9c\ud588\ub354\ub2c8 \ud45c\ubcf8\ud3c9\uade0\uc774 6.8\uc2dc\uac04\uc774\uc5c8\uc2b5\ub2c8\ub2e4. \ubaa8\ud3c9\uade0\uc758 \uc2e0\ub8b0\ub3c4 95% \uc2e0\ub8b0\uad6c\uac04\uc740 6.8 \u00b1 1.96 \u00d7 (1/\u221a100) \uc774\ubbc0\ub85c [6.604, 6.996] \uc785\ub2c8\ub2e4. (\uc2e0\ub8b0\ub3c4 95%\uc77c \ub54c \uacc4\uc218\ub294 1.96\uc73c\ub85c \ud569\ub2c8\ub2e4.)",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
-    "prompt": "이 신뢰구간의 뜻을 바르게 설명한 것을 고르세요.",
+    "prompt": "\uc774 \uc2e0\ub8b0\uad6c\uac04\uc758 \ub73b\uc744 \ubc14\ub974\uac8c \uc124\uba85\ud55c \uac83\uc744 \uace0\ub974\uc138\uc694.",
     "options": [
      {
       "id": "a",
-      "text": "이 도시 학생의 95%가 6.604시간 이상 6.996시간 이하로 잔다",
-      "reveals": "구간은 개별 학생이 아니라 모평균에 대한 것이에요. 학생 개개인의 수면 시간은 이 구간보다 훨씬 넓게 퍼져 있어요."
+      "text": "\uc774 \ub3c4\uc2dc \ud559\uc0dd\uc758 95%\uac00 6.604\uc2dc\uac04 \uc774\uc0c1 6.996\uc2dc\uac04 \uc774\ud558\ub85c \uc794\ub2e4",
+      "reveals": "\uad6c\uac04\uc740 \uac1c\ubcc4 \ud559\uc0dd\uc774 \uc544\ub2c8\ub77c \ubaa8\ud3c9\uade0\uc5d0 \ub300\ud55c \uac83\uc774\uc5d0\uc694. \ud559\uc0dd \uac1c\uac1c\uc778\uc758 \uc218\uba74 \uc2dc\uac04\uc740 \uc774 \uad6c\uac04\ubcf4\ub2e4 \ud6e8\uc52c \ub113\uac8c \ud37c\uc838 \uc788\uc5b4\uc694."
      },
      {
       "id": "b",
-      "text": "새로 뽑은 표본의 평균이 이 구간에 들어갈 확률이 95%이다",
-      "reveals": "이 구간은 새 표본평균의 범위가 아니라 모평균을 잡으려는 구간이에요. 새 표본평균은 이 구간에 들어갈 확률이 더 낮아요."
+      "text": "\uc0c8\ub85c \ubf51\uc740 \ud45c\ubcf8\uc758 \ud3c9\uade0\uc774 \uc774 \uad6c\uac04\uc5d0 \ub4e4\uc5b4\uac08 \ud655\ub960\uc774 95%\uc774\ub2e4",
+      "reveals": "\uc774 \uad6c\uac04\uc740 \uc0c8 \ud45c\ubcf8\ud3c9\uade0\uc758 \ubc94\uc704\uac00 \uc544\ub2c8\ub77c \ubaa8\ud3c9\uade0\uc744 \uc7a1\uc73c\ub824\ub294 \uad6c\uac04\uc774\uc5d0\uc694. \uc0c8 \ud45c\ubcf8\ud3c9\uade0\uc740 \uc774 \uad6c\uac04\uc5d0 \ub4e4\uc5b4\uac08 \ud655\ub960\uc774 \ub354 \ub0ae\uc544\uc694."
      },
      {
       "id": "c",
-      "text": "표본을 거듭 뽑아 구간을 만들면 약 95%가 모평균을 포함한다",
-      "reveals": "신뢰도가 같은 방법을 여러 번 쓸 때의 성공 비율이라는 뜻을 짚었어요."
+      "text": "\ud45c\ubcf8\uc744 \uac70\ub4ed \ubf51\uc544 \uad6c\uac04\uc744 \ub9cc\ub4e4\uba74 \uc57d 95%\uac00 \ubaa8\ud3c9\uade0\uc744 \ud3ec\ud568\ud55c\ub2e4",
+      "reveals": "\uc2e0\ub8b0\ub3c4\uac00 \uac19\uc740 \ubc29\ubc95\uc744 \uc5ec\ub7ec \ubc88 \uc4f8 \ub54c\uc758 \uc131\uacf5 \ube44\uc728\uc774\ub77c\ub294 \ub73b\uc744 \uc9da\uc5c8\uc5b4\uc694."
      },
      {
       "id": "d",
-      "text": "표본 100명 중 95명이 이 구간 안의 시간만큼 잔다",
-      "reveals": "표본 개개인의 값이 아니라 모평균에 대한 구간이에요."
+      "text": "\ud45c\ubcf8 100\uba85 \uc911 95\uba85\uc774 \uc774 \uad6c\uac04 \uc548\uc758 \uc2dc\uac04\ub9cc\ud07c \uc794\ub2e4",
+      "reveals": "\ud45c\ubcf8 \uac1c\uac1c\uc778\uc758 \uac12\uc774 \uc544\ub2c8\ub77c \ubaa8\ud3c9\uade0\uc5d0 \ub300\ud55c \uad6c\uac04\uc774\uc5d0\uc694."
      }
     ],
     "correct": [
      "c"
     ],
-    "explain": "신뢰도 95%는 '같은 방법으로 표본을 거듭 뽑아 구간을 만들면 그중 약 95%가 모평균을 포함한다'는 방법의 신뢰도를 말해요. 학생 개개인이나 새 표본평균에 대한 말이 아니에요.",
+    "explain": "\uc2e0\ub8b0\ub3c4 95%\ub294 '\uac19\uc740 \ubc29\ubc95\uc73c\ub85c \ud45c\ubcf8\uc744 \uac70\ub4ed \ubf51\uc544 \uad6c\uac04\uc744 \ub9cc\ub4e4\uba74 \uadf8\uc911 \uc57d 95%\uac00 \ubaa8\ud3c9\uade0\uc744 \ud3ec\ud568\ud55c\ub2e4'\ub294 \ubc29\ubc95\uc758 \uc2e0\ub8b0\ub3c4\ub97c \ub9d0\ud574\uc694. \ud559\uc0dd \uac1c\uac1c\uc778\uc774\ub098 \uc0c8 \ud45c\ubcf8\ud3c9\uade0\uc5d0 \ub300\ud55c \ub9d0\uc774 \uc544\ub2c8\uc5d0\uc694.",
     "hints": [
-     "구간이 무엇에 대한 구간인지(개별 값인지, 모평균인지) 먼저 짚어 보세요.",
-     "'확률 95%'가 무엇을 반복했을 때의 비율인지 생각해 보세요."
+     "\uad6c\uac04\uc774 \ubb34\uc5c7\uc5d0 \ub300\ud55c \uad6c\uac04\uc778\uc9c0(\uac1c\ubcc4 \uac12\uc778\uc9c0, \ubaa8\ud3c9\uade0\uc778\uc9c0) \uba3c\uc800 \uc9da\uc5b4 \ubcf4\uc138\uc694.",
+     "'\ud655\ub960 95%'\uac00 \ubb34\uc5c7\uc744 \ubc18\ubcf5\ud588\uc744 \ub54c\uc758 \ube44\uc728\uc778\uc9c0 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694."
     ],
     "scaffold": true
    },
    {
     "id": "s2",
     "kind": "choose",
-    "prompt": "같은 신뢰도 95%, 같은 모표준편차에서 구간의 길이를 지금의 절반으로 줄이려면 표본 크기는 얼마로 해야 할까요?",
+    "prompt": "\uac19\uc740 \uc2e0\ub8b0\ub3c4 95%, \uac19\uc740 \ubaa8\ud45c\uc900\ud3b8\ucc28\uc5d0\uc11c \uad6c\uac04\uc758 \uae38\uc774\ub97c \uc9c0\uae08\uc758 \uc808\ubc18\uc73c\ub85c \uc904\uc774\ub824\uba74 \ud45c\ubcf8 \ud06c\uae30\ub294 \uc5bc\ub9c8\ub85c \ud574\uc57c \ud560\uae4c\uc694?",
     "options": [
      {
       "id": "a",
-      "text": "400명 (4배)",
-      "reveals": "길이가 표본 크기의 제곱근에 반비례함을 이용했어요."
+      "text": "400\uba85 (4\ubc30)",
+      "reveals": "\uae38\uc774\uac00 \ud45c\ubcf8 \ud06c\uae30\uc758 \uc81c\uacf1\uadfc\uc5d0 \ubc18\ube44\ub840\ud568\uc744 \uc774\uc6a9\ud588\uc5b4\uc694."
      },
      {
       "id": "b",
-      "text": "200명 (2배)",
-      "reveals": "구간의 길이가 표본 크기의 제곱근에 반비례한다는 점을 놓쳤어요."
+      "text": "200\uba85 (2\ubc30)",
+      "reveals": "\uad6c\uac04\uc758 \uae38\uc774\uac00 \ud45c\ubcf8 \ud06c\uae30\uc758 \uc81c\uacf1\uadfc\uc5d0 \ubc18\ube44\ub840\ud55c\ub2e4\ub294 \uc810\uc744 \ub193\ucce4\uc5b4\uc694."
      },
      {
       "id": "c",
-      "text": "300명 (3배)",
-      "reveals": "표본 크기를 늘릴수록 구간이 줄어든다는 방향은 맞지만, 비례 관계를 확인하지 않았어요."
+      "text": "300\uba85 (3\ubc30)",
+      "reveals": "\ud45c\ubcf8 \ud06c\uae30\ub97c \ub298\ub9b4\uc218\ub85d \uad6c\uac04\uc774 \uc904\uc5b4\ub4e0\ub2e4\ub294 \ubc29\ud5a5\uc740 \ub9de\uc9c0\ub9cc, \ube44\ub840 \uad00\uacc4\ub97c \ud655\uc778\ud558\uc9c0 \uc54a\uc558\uc5b4\uc694."
      },
      {
       "id": "d",
-      "text": "800명 (8배)",
-      "reveals": "필요한 것보다 훨씬 많이 잡았어요. 길이가 어떻게 변하는지 식으로 확인해 보세요."
+      "text": "800\uba85 (8\ubc30)",
+      "reveals": "\ud544\uc694\ud55c \uac83\ubcf4\ub2e4 \ud6e8\uc52c \ub9ce\uc774 \uc7a1\uc558\uc5b4\uc694. \uae38\uc774\uac00 \uc5b4\ub5bb\uac8c \ubcc0\ud558\ub294\uc9c0 \uc2dd\uc73c\ub85c \ud655\uc778\ud574 \ubcf4\uc138\uc694."
      }
     ],
     "correct": [
      "a"
     ],
-    "explain": "구간의 길이는 2 × 1.96 × σ/√n 이므로 길이를 절반으로 하려면 √n이 2배가 되어야 하고, 따라서 n은 4배(400명)예요.",
+    "explain": "\uad6c\uac04\uc758 \uae38\uc774\ub294 2 \u00d7 1.96 \u00d7 \u03c3/\u221an \uc774\ubbc0\ub85c \uae38\uc774\ub97c \uc808\ubc18\uc73c\ub85c \ud558\ub824\uba74 \u221an\uc774 2\ubc30\uac00 \ub418\uc5b4\uc57c \ud558\uace0, \ub530\ub77c\uc11c n\uc740 4\ubc30(400\uba85)\uc608\uc694.",
     "hints": [
-     "구간의 길이를 n을 써서 식으로 나타내 보세요.",
-     "n을 2배, 4배로 바꿨을 때 길이가 몇 배가 되는지 비교해 보세요."
+     "\uad6c\uac04\uc758 \uae38\uc774\ub97c n\uc744 \uc368\uc11c \uc2dd\uc73c\ub85c \ub098\ud0c0\ub0b4 \ubcf4\uc138\uc694.",
+     "n\uc744 2\ubc30, 4\ubc30\ub85c \ubc14\uafe8\uc744 \ub54c \uae38\uc774\uac00 \uba87 \ubc30\uac00 \ub418\ub294\uc9c0 \ube44\uad50\ud574 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s3",
     "kind": "build",
-    "prompt": "구간의 길이를 0.3시간 이하로 만들 수 있는 표본 크기 n 을 서로 다르게 3개 만들어 보세요. (신뢰도 95%, 모표준편차 1시간, n 은 정수)",
+    "prompt": "\uad6c\uac04\uc758 \uae38\uc774\ub97c 0.3\uc2dc\uac04 \uc774\ud558\ub85c \ub9cc\ub4e4 \uc218 \uc788\ub294 \ud45c\ubcf8 \ud06c\uae30 n \uc744 \uc11c\ub85c \ub2e4\ub974\uac8c 3\uac1c \ub9cc\ub4e4\uc5b4 \ubcf4\uc138\uc694. (\uc2e0\ub8b0\ub3c4 95%, \ubaa8\ud45c\uc900\ud3b8\ucc28 1\uc2dc\uac04, n \uc740 \uc815\uc218)",
     "vars": [
      {
       "name": "n",
-      "label": "표본 크기 n (명)"
+      "label": "\ud45c\ubcf8 \ud06c\uae30 n (\uba85)"
      }
     ],
     "constraints": [
      {
       "id": "c1",
       "expr": "n>0 && n==floor(n)",
-      "ok": "n은 양의 정수예요.",
-      "fail": "n은 0보다 큰 정수여야 해요."
+      "ok": "n\uc740 \uc591\uc758 \uc815\uc218\uc608\uc694.",
+      "fail": "n\uc740 0\ubcf4\ub2e4 \ud070 \uc815\uc218\uc5ec\uc57c \ud574\uc694."
      },
      {
       "id": "c2",
       "expr": "2*1.96/sqrt(n)<=0.3",
-      "ok": "구간의 길이가 0.3시간 이하예요.",
-      "fail": "구간의 길이가 0.3시간보다 길어요."
+      "ok": "\uad6c\uac04\uc758 \uae38\uc774\uac00 0.3\uc2dc\uac04 \uc774\ud558\uc608\uc694.",
+      "fail": "\uad6c\uac04\uc758 \uae38\uc774\uac00 0.3\uc2dc\uac04\ubcf4\ub2e4 \uae38\uc5b4\uc694."
      }
     ],
     "need": 3,
@@ -1331,104 +1334,105 @@
       "n": 100
      }
     ],
-    "explain": "길이 2 × 1.96/√n ≤ 0.3 에서 √n ≥ 13.07, 따라서 n ≥ 170.7 이고 n은 정수이므로 171 이상이에요. n = 170 이면 길이가 약 0.3007 로 조건을 넘어요.",
+    "explain": "\uae38\uc774 2 \u00d7 1.96/\u221an \u2264 0.3 \uc5d0\uc11c \u221an \u2265 13.07, \ub530\ub77c\uc11c n \u2265 170.7 \uc774\uace0 n\uc740 \uc815\uc218\uc774\ubbc0\ub85c 171 \uc774\uc0c1\uc774\uc5d0\uc694. n = 170 \uc774\uba74 \uae38\uc774\uac00 \uc57d 0.3007 \ub85c \uc870\uac74\uc744 \ub118\uc5b4\uc694.",
     "hints": [
-     "구간의 길이를 n 으로 나타내고 0.3 이하가 되는 조건을 부등식으로 써 보세요.",
-     "경계 근처의 정수 값도 직접 넣어 확인해 보세요."
+     "\uad6c\uac04\uc758 \uae38\uc774\ub97c n \uc73c\ub85c \ub098\ud0c0\ub0b4\uace0 0.3 \uc774\ud558\uac00 \ub418\ub294 \uc870\uac74\uc744 \ubd80\ub4f1\uc2dd\uc73c\ub85c \uc368 \ubcf4\uc138\uc694.",
+     "\uacbd\uacc4 \uadfc\ucc98\uc758 \uc815\uc218 \uac12\ub3c4 \uc9c1\uc811 \ub123\uc5b4 \ud655\uc778\ud574 \ubcf4\uc138\uc694."
     ],
     "distinctBy": "n"
    }
   ],
   "rubric": [
    {
-    "criterion": "해석의 판단",
-    "full": "방법의 신뢰도라는 뜻과 오개념 3가지의 어긋남을 구별",
-    "partial": "올바른 진술은 골랐으나 이유가 부족",
-    "none": "오개념을 고름"
+    "criterion": "\ud574\uc11d\uc758 \ud310\ub2e8",
+    "full": "\ubc29\ubc95\uc758 \uc2e0\ub8b0\ub3c4\ub77c\ub294 \ub73b\uacfc \uc624\uac1c\ub150 3\uac00\uc9c0\uc758 \uc5b4\uae0b\ub0a8\uc744 \uad6c\ubcc4",
+    "partial": "\uc62c\ubc14\ub978 \uc9c4\uc220\uc740 \uace8\ub790\uc73c\ub098 \uc774\uc720\uac00 \ubd80\uc871",
+    "none": "\uc624\uac1c\ub150\uc744 \uace0\ub984"
    },
    {
-    "criterion": "조건에 맞는 n 찾기",
-    "full": "경계(171)를 확인하며 서로 다른 n 3개를 제시",
-    "partial": "n은 만들었으나 경계 값에서 틀림",
-    "none": "n을 만들지 못함"
+    "criterion": "\uc870\uac74\uc5d0 \ub9de\ub294 n \ucc3e\uae30",
+    "full": "\uacbd\uacc4(171)\ub97c \ud655\uc778\ud558\uba70 \uc11c\ub85c \ub2e4\ub978 n 3\uac1c\ub97c \uc81c\uc2dc",
+    "partial": "n\uc740 \ub9cc\ub4e4\uc5c8\uc73c\ub098 \uacbd\uacc4 \uac12\uc5d0\uc11c \ud2c0\ub9bc",
+    "none": "n\uc744 \ub9cc\ub4e4\uc9c0 \ubabb\ud568"
    }
   ],
   "alternatives": [
-   "'이미 구한 구간에 모평균이 있을 확률이 95%이다'는 서술은 교과서에 따라 쓰이기도 하나, 이 과제에서는 '반복했을 때의 비율'로 해석하는 것을 기준으로 한다.",
-   "3단계에서 n=171을 쓰지 못하고 200, 400을 쓴 학생도 조건을 만족하므로 인정한다."
+   "'\uc774\ubbf8 \uad6c\ud55c \uad6c\uac04\uc5d0 \ubaa8\ud3c9\uade0\uc774 \uc788\uc744 \ud655\ub960\uc774 95%\uc774\ub2e4'\ub294 \uc11c\uc220\uc740 \uad50\uacfc\uc11c\uc5d0 \ub530\ub77c \uc4f0\uc774\uae30\ub3c4 \ud558\ub098, \uc774 \uacfc\uc81c\uc5d0\uc11c\ub294 '\ubc18\ubcf5\ud588\uc744 \ub54c\uc758 \ube44\uc728'\ub85c \ud574\uc11d\ud558\ub294 \uac83\uc744 \uae30\uc900\uc73c\ub85c \ud55c\ub2e4.",
+   "3\ub2e8\uacc4\uc5d0\uc11c n=171\uc744 \uc4f0\uc9c0 \ubabb\ud558\uace0 200, 400\uc744 \uc4f4 \ud559\uc0dd\ub3c4 \uc870\uac74\uc744 \ub9cc\uc871\ud558\ubbc0\ub85c \uc778\uc815\ud55c\ub2e4."
   ],
   "hardCases": [
-   "학생이 '0.3 이하'를 '0.3 미만'으로 읽고 n=171을 제외하는 경우가 있다. 두 경우 모두 정수 n은 171 이상이 나오므로 문제가 되지 않는다."
+   "\ud559\uc0dd\uc774 '0.3 \uc774\ud558'\ub97c '0.3 \ubbf8\ub9cc'\uc73c\ub85c \uc77d\uace0 n=171\uc744 \uc81c\uc678\ud558\ub294 \uacbd\uc6b0\uac00 \uc788\ub2e4. \ub450 \uacbd\uc6b0 \ubaa8\ub450 \uc815\uc218 n\uc740 171 \uc774\uc0c1\uc774 \ub098\uc624\ubbc0\ub85c \ubb38\uc81c\uac00 \ub418\uc9c0 \uc54a\ub294\ub2e4."
   ],
   "cautions": {
-   "language": "'신뢰구간', '모평균', '표본평균'을 낯설게 느끼는 학생이 있어 보기에서 '모평균을 잡으려는 구간'으로 풀어 썼다.",
-   "culture": "수면 시간은 개인 정보가 아닌 가상의 통계 자료이다.",
-   "accessibility": "그림 없이 수치로만 제시했다. √100은 '루트 100'으로, 1.96은 '일 점 구 육'으로 읽는다."
+   "language": "'\uc2e0\ub8b0\uad6c\uac04', '\ubaa8\ud3c9\uade0', '\ud45c\ubcf8\ud3c9\uade0'\uc744 \ub0af\uc124\uac8c \ub290\ub07c\ub294 \ud559\uc0dd\uc774 \uc788\uc5b4 \ubcf4\uae30\uc5d0\uc11c '\ubaa8\ud3c9\uade0\uc744 \uc7a1\uc73c\ub824\ub294 \uad6c\uac04'\uc73c\ub85c \ud480\uc5b4 \uc37c\ub2e4.",
+   "culture": "\uc218\uba74 \uc2dc\uac04\uc740 \uac1c\uc778 \uc815\ubcf4\uac00 \uc544\ub2cc \uac00\uc0c1\uc758 \ud1b5\uacc4 \uc790\ub8cc\uc774\ub2e4.",
+   "accessibility": "\uadf8\ub9bc \uc5c6\uc774 \uc218\uce58\ub85c\ub9cc \uc81c\uc2dc\ud588\ub2e4. \u221a100\uc740 '\ub8e8\ud2b8 100'\uc73c\ub85c, 1.96\uc740 '\uc77c \uc810 \uad6c \uc721'\uc73c\ub85c \uc77d\ub294\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "해석 선택, n 선택, 만든 n이 조건을 만족하는지"
+    "\ud574\uc11d \uc120\ud0dd, n \uc120\ud0dd, \ub9cc\ub4e0 n\uc774 \uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294\uc9c0"
    ],
    "human": [
-    "왜 신뢰구간이 모평균에 대한 구간인지의 이해(구두로)"
+    "\uc65c \uc2e0\ub8b0\uad6c\uac04\uc774 \ubaa8\ud3c9\uade0\uc5d0 \ub300\ud55c \uad6c\uac04\uc778\uc9c0\uc758 \uc774\ud574(\uad6c\ub450\ub85c)"
    ]
-  }
+  },
+  "status": "reviewed-ai"
  },
  {
   "id": "x-m-h3-08",
   "subject": "math",
   "grade": "H3",
-  "topic": "조건부확률",
+  "topic": "\uc870\uac74\ubd80\ud655\ub960",
   "level": 3,
-  "levelLabel": "고등",
-  "title": "양성이라는데 정말 환자일까",
+  "levelLabel": "\uace0\ub4f1",
+  "title": "\uc591\uc131\uc774\ub77c\ub294\ub370 \uc815\ub9d0 \ud658\uc790\uc77c\uae4c",
   "uiLang": "ko",
   "format": "choose-needed-info",
   "generative": false,
-  "goal": "조건부확률을 구하는 데 필요한 정보를 가려내고, 검사의 정확도와 '양성일 때 환자일 확률'이 다른 이유를 수치로 설명한다.",
+  "goal": "\uc870\uac74\ubd80\ud655\ub960\uc744 \uad6c\ud558\ub294 \ub370 \ud544\uc694\ud55c \uc815\ubcf4\ub97c \uac00\ub824\ub0b4\uace0, \uac80\uc0ac\uc758 \uc815\ud655\ub3c4\uc640 '\uc591\uc131\uc77c \ub54c \ud658\uc790\uc77c \ud655\ub960'\uc774 \ub2e4\ub978 \uc774\uc720\ub97c \uc218\uce58\ub85c \uc124\uba85\ud55c\ub2e4.",
   "thinking": [
-   "필요한 정보와 불필요한 정보 구별하기",
-   "두 조건부확률 P(양성|환자)와 P(환자|양성)을 혼동하지 않기",
-   "구체적인 수(인원)로 설명하기"
+   "\ud544\uc694\ud55c \uc815\ubcf4\uc640 \ubd88\ud544\uc694\ud55c \uc815\ubcf4 \uad6c\ubcc4\ud558\uae30",
+   "\ub450 \uc870\uac74\ubd80\ud655\ub960 P(\uc591\uc131|\ud658\uc790)\uc640 P(\ud658\uc790|\uc591\uc131)\uc744 \ud63c\ub3d9\ud558\uc9c0 \uc54a\uae30",
+   "\uad6c\uccb4\uc801\uc778 \uc218(\uc778\uc6d0)\ub85c \uc124\uba85\ud558\uae30"
   ],
-  "differsFromPlain": "단순 연습은 주어진 확률을 공식에 대입한다. 여기서는 확률을 구하기 전에 어떤 정보가 필요한지 판단하고, 뒤바뀐 조건을 구별하여 설명한다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uc8fc\uc5b4\uc9c4 \ud655\ub960\uc744 \uacf5\uc2dd\uc5d0 \ub300\uc785\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \ud655\ub960\uc744 \uad6c\ud558\uae30 \uc804\uc5d0 \uc5b4\ub5a4 \uc815\ubcf4\uac00 \ud544\uc694\ud55c\uc9c0 \ud310\ub2e8\ud558\uace0, \ub4a4\ubc14\ub010 \uc870\uac74\uc744 \uad6c\ubcc4\ud558\uc5ec \uc124\uba85\ud55c\ub2e4.",
   "prerequisites": [
-   "확률의 곱셈정리와 조건부확률의 뜻을 배운 경험",
-   "비율을 인원수로 바꾸어 생각해 본 경험"
+   "\ud655\ub960\uc758 \uacf1\uc148\uc815\ub9ac\uc640 \uc870\uac74\ubd80\ud655\ub960\uc758 \ub73b\uc744 \ubc30\uc6b4 \uacbd\ud5d8",
+   "\ube44\uc728\uc744 \uc778\uc6d0\uc218\ub85c \ubc14\uafb8\uc5b4 \uc0dd\uac01\ud574 \ubcf8 \uacbd\ud5d8"
   ],
   "minutes": 14,
   "curriculum": null,
-  "material": "어떤 질병 검사에서 '양성'이 나왔습니다. 양성 판정을 받은 사람이 실제로 그 질병에 걸렸을 확률을 알고 싶습니다. 이 확률을 정하려면 어떤 정보가 필요한지 판단해 봅니다.",
+  "material": "\uc5b4\ub5a4 \uc9c8\ubcd1 \uac80\uc0ac\uc5d0\uc11c '\uc591\uc131'\uc774 \ub098\uc654\uc2b5\ub2c8\ub2e4. \uc591\uc131 \ud310\uc815\uc744 \ubc1b\uc740 \uc0ac\ub78c\uc774 \uc2e4\uc81c\ub85c \uadf8 \uc9c8\ubcd1\uc5d0 \uac78\ub838\uc744 \ud655\ub960\uc744 \uc54c\uace0 \uc2f6\uc2b5\ub2c8\ub2e4. \uc774 \ud655\ub960\uc744 \uc815\ud558\ub824\uba74 \uc5b4\ub5a4 \uc815\ubcf4\uac00 \ud544\uc694\ud55c\uc9c0 \ud310\ub2e8\ud574 \ubd05\ub2c8\ub2e4.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
-    "prompt": "양성 판정을 받은 사람이 실제로 환자일 확률을 구하는 데 꼭 필요한 정보를 모두 고르세요.",
+    "prompt": "\uc591\uc131 \ud310\uc815\uc744 \ubc1b\uc740 \uc0ac\ub78c\uc774 \uc2e4\uc81c\ub85c \ud658\uc790\uc77c \ud655\ub960\uc744 \uad6c\ud558\ub294 \ub370 \uaf2d \ud544\uc694\ud55c \uc815\ubcf4\ub97c \ubaa8\ub450 \uace0\ub974\uc138\uc694.",
     "options": [
      {
       "id": "a",
-      "text": "환자 중 남자의 비율",
-      "reveals": "성별 비율은 환자의 인원이나 양성이 될 확률을 정하는 재료가 아니에요. 인원수를 어떻게 나누는지 생각해 보세요."
+      "text": "\ud658\uc790 \uc911 \ub0a8\uc790\uc758 \ube44\uc728",
+      "reveals": "\uc131\ubcc4 \ube44\uc728\uc740 \ud658\uc790\uc758 \uc778\uc6d0\uc774\ub098 \uc591\uc131\uc774 \ub420 \ud655\ub960\uc744 \uc815\ud558\ub294 \uc7ac\ub8cc\uac00 \uc544\ub2c8\uc5d0\uc694. \uc778\uc6d0\uc218\ub97c \uc5b4\ub5bb\uac8c \ub098\ub204\ub294\uc9c0 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694."
      },
      {
       "id": "b",
-      "text": "전체 사람 중 그 질병에 걸린 사람의 비율",
-      "reveals": "전체에서 환자가 얼마나 흔한지를 짚었어요. 흔하지 않은 병이면 양성자 중에도 환자가 적을 수 있어요."
+      "text": "\uc804\uccb4 \uc0ac\ub78c \uc911 \uadf8 \uc9c8\ubcd1\uc5d0 \uac78\ub9b0 \uc0ac\ub78c\uc758 \ube44\uc728",
+      "reveals": "\uc804\uccb4\uc5d0\uc11c \ud658\uc790\uac00 \uc5bc\ub9c8\ub098 \ud754\ud55c\uc9c0\ub97c \uc9da\uc5c8\uc5b4\uc694. \ud754\ud558\uc9c0 \uc54a\uc740 \ubcd1\uc774\uba74 \uc591\uc131\uc790 \uc911\uc5d0\ub3c4 \ud658\uc790\uac00 \uc801\uc744 \uc218 \uc788\uc5b4\uc694."
      },
      {
       "id": "c",
-      "text": "환자가 검사에서 양성이 나올 확률",
-      "reveals": "검사가 환자를 얼마나 잘 찾아내는지를 짚었어요."
+      "text": "\ud658\uc790\uac00 \uac80\uc0ac\uc5d0\uc11c \uc591\uc131\uc774 \ub098\uc62c \ud655\ub960",
+      "reveals": "\uac80\uc0ac\uac00 \ud658\uc790\ub97c \uc5bc\ub9c8\ub098 \uc798 \ucc3e\uc544\ub0b4\ub294\uc9c0\ub97c \uc9da\uc5c8\uc5b4\uc694."
      },
      {
       "id": "d",
-      "text": "그 질병의 평균 치료 기간",
-      "reveals": "치료 기간은 양성자 중 환자의 비율을 정하는 재료가 아니에요. 확률의 재료가 되는 비율이 무엇인지 생각해 보세요."
+      "text": "\uadf8 \uc9c8\ubcd1\uc758 \ud3c9\uade0 \uce58\ub8cc \uae30\uac04",
+      "reveals": "\uce58\ub8cc \uae30\uac04\uc740 \uc591\uc131\uc790 \uc911 \ud658\uc790\uc758 \ube44\uc728\uc744 \uc815\ud558\ub294 \uc7ac\ub8cc\uac00 \uc544\ub2c8\uc5d0\uc694. \ud655\ub960\uc758 \uc7ac\ub8cc\uac00 \ub418\ub294 \ube44\uc728\uc774 \ubb34\uc5c7\uc778\uc9c0 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694."
      },
      {
       "id": "e",
-      "text": "병이 없는 사람이 검사에서 양성이 나올 확률",
-      "reveals": "건강한 사람이 잘못 양성이 되는 정도를 짚었어요. 건강한 사람이 훨씬 많다면 이 정도가 중요해요."
+      "text": "\ubcd1\uc774 \uc5c6\ub294 \uc0ac\ub78c\uc774 \uac80\uc0ac\uc5d0\uc11c \uc591\uc131\uc774 \ub098\uc62c \ud655\ub960",
+      "reveals": "\uac74\uac15\ud55c \uc0ac\ub78c\uc774 \uc798\ubabb \uc591\uc131\uc774 \ub418\ub294 \uc815\ub3c4\ub97c \uc9da\uc5c8\uc5b4\uc694. \uac74\uac15\ud55c \uc0ac\ub78c\uc774 \ud6e8\uc52c \ub9ce\ub2e4\uba74 \uc774 \uc815\ub3c4\uac00 \uc911\uc694\ud574\uc694."
      }
     ],
     "correct": [
@@ -1436,434 +1440,434 @@
      "c",
      "e"
     ],
-    "explain": "양성자는 '환자 중 양성'과 '건강한 사람 중 양성'으로 이루어져요. 그래서 환자 비율, 환자가 양성이 될 확률, 건강한 사람이 양성이 될 확률이 모두 필요해요.",
+    "explain": "\uc591\uc131\uc790\ub294 '\ud658\uc790 \uc911 \uc591\uc131'\uacfc '\uac74\uac15\ud55c \uc0ac\ub78c \uc911 \uc591\uc131'\uc73c\ub85c \uc774\ub8e8\uc5b4\uc838\uc694. \uadf8\ub798\uc11c \ud658\uc790 \ube44\uc728, \ud658\uc790\uac00 \uc591\uc131\uc774 \ub420 \ud655\ub960, \uac74\uac15\ud55c \uc0ac\ub78c\uc774 \uc591\uc131\uc774 \ub420 \ud655\ub960\uc774 \ubaa8\ub450 \ud544\uc694\ud574\uc694.",
     "hints": [
-     "양성이 나온 사람들을 어떤 두 집단으로 나눌 수 있는지 떠올려 보세요.",
-     "각 집단의 크기를 알려면 어떤 비율이 필요한지 생각해 보세요."
+     "\uc591\uc131\uc774 \ub098\uc628 \uc0ac\ub78c\ub4e4\uc744 \uc5b4\ub5a4 \ub450 \uc9d1\ub2e8\uc73c\ub85c \ub098\ub20c \uc218 \uc788\ub294\uc9c0 \ub5a0\uc62c\ub824 \ubcf4\uc138\uc694.",
+     "\uac01 \uc9d1\ub2e8\uc758 \ud06c\uae30\ub97c \uc54c\ub824\uba74 \uc5b4\ub5a4 \ube44\uc728\uc774 \ud544\uc694\ud55c\uc9c0 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694."
     ],
     "multi": true
    },
    {
     "id": "s2",
     "kind": "choose",
-    "prompt": "1000명이 검사를 받았다고 합시다. 전체의 2%가 환자이고, 환자의 90%가 양성, 환자가 아닌 사람의 5%가 양성입니다. 양성 판정을 받은 사람 중 환자의 비율은 대략 얼마일까요?",
+    "prompt": "1000\uba85\uc774 \uac80\uc0ac\ub97c \ubc1b\uc558\ub2e4\uace0 \ud569\uc2dc\ub2e4. \uc804\uccb4\uc758 2%\uac00 \ud658\uc790\uc774\uace0, \ud658\uc790\uc758 90%\uac00 \uc591\uc131, \ud658\uc790\uac00 \uc544\ub2cc \uc0ac\ub78c\uc758 5%\uac00 \uc591\uc131\uc785\ub2c8\ub2e4. \uc591\uc131 \ud310\uc815\uc744 \ubc1b\uc740 \uc0ac\ub78c \uc911 \ud658\uc790\uc758 \ube44\uc728\uc740 \ub300\ub7b5 \uc5bc\ub9c8\uc77c\uae4c\uc694?",
     "options": [
      {
       "id": "a",
-      "text": "약 90%",
-      "reveals": "환자가 양성일 확률 90%를 '양성일 때 환자일 확률'과 같다고 보았어요. 조건이 뒤바뀌었어요."
+      "text": "\uc57d 90%",
+      "reveals": "\ud658\uc790\uac00 \uc591\uc131\uc77c \ud655\ub960 90%\ub97c '\uc591\uc131\uc77c \ub54c \ud658\uc790\uc77c \ud655\ub960'\uacfc \uac19\ub2e4\uace0 \ubcf4\uc558\uc5b4\uc694. \uc870\uac74\uc774 \ub4a4\ubc14\ub00c\uc5c8\uc5b4\uc694."
      },
      {
       "id": "b",
-      "text": "약 27%",
-      "reveals": "양성자 중 환자와 건강한 사람의 인원을 세어 비교했어요."
+      "text": "\uc57d 27%",
+      "reveals": "\uc591\uc131\uc790 \uc911 \ud658\uc790\uc640 \uac74\uac15\ud55c \uc0ac\ub78c\uc758 \uc778\uc6d0\uc744 \uc138\uc5b4 \ube44\uad50\ud588\uc5b4\uc694."
      },
      {
       "id": "c",
-      "text": "약 2%",
-      "reveals": "양성이라는 정보가 비율을 바꾸지 않는다고 보았어요. 양성이 나오면 처음 비율보다는 높아져요."
+      "text": "\uc57d 2%",
+      "reveals": "\uc591\uc131\uc774\ub77c\ub294 \uc815\ubcf4\uac00 \ube44\uc728\uc744 \ubc14\uafb8\uc9c0 \uc54a\ub294\ub2e4\uace0 \ubcf4\uc558\uc5b4\uc694. \uc591\uc131\uc774 \ub098\uc624\uba74 \ucc98\uc74c \ube44\uc728\ubcf4\ub2e4\ub294 \ub192\uc544\uc838\uc694."
      },
      {
       "id": "d",
-      "text": "약 50%",
-      "reveals": "양성이면 환자와 건강한 사람이 반반이라고 어림했어요. 두 집단의 인원이 매우 다르다는 점이 빠졌어요."
+      "text": "\uc57d 50%",
+      "reveals": "\uc591\uc131\uc774\uba74 \ud658\uc790\uc640 \uac74\uac15\ud55c \uc0ac\ub78c\uc774 \ubc18\ubc18\uc774\ub77c\uace0 \uc5b4\ub9bc\ud588\uc5b4\uc694. \ub450 \uc9d1\ub2e8\uc758 \uc778\uc6d0\uc774 \ub9e4\uc6b0 \ub2e4\ub974\ub2e4\ub294 \uc810\uc774 \ube60\uc84c\uc5b4\uc694."
      }
     ],
     "correct": [
      "b"
     ],
-    "explain": "1000명 중 환자 20명, 건강한 사람 980명이에요. 양성은 환자 18명(20의 90%), 건강한 사람 49명(980의 5%)이라 양성 약 67명 중 환자는 18명 정도, 약 27%예요.",
+    "explain": "1000\uba85 \uc911 \ud658\uc790 20\uba85, \uac74\uac15\ud55c \uc0ac\ub78c 980\uba85\uc774\uc5d0\uc694. \uc591\uc131\uc740 \ud658\uc790 18\uba85(20\uc758 90%), \uac74\uac15\ud55c \uc0ac\ub78c 49\uba85(980\uc758 5%)\uc774\ub77c \uc591\uc131 \uc57d 67\uba85 \uc911 \ud658\uc790\ub294 18\uba85 \uc815\ub3c4, \uc57d 27%\uc608\uc694.",
     "hints": [
-     "1000명을 환자와 건강한 사람으로 나누어 각각 몇 명인지 적어 보세요.",
-     "각 집단에서 양성이 나오는 인원을 구해 합치고, 그중 환자 인원을 비교해 보세요."
+     "1000\uba85\uc744 \ud658\uc790\uc640 \uac74\uac15\ud55c \uc0ac\ub78c\uc73c\ub85c \ub098\ub204\uc5b4 \uac01\uac01 \uba87 \uba85\uc778\uc9c0 \uc801\uc5b4 \ubcf4\uc138\uc694.",
+     "\uac01 \uc9d1\ub2e8\uc5d0\uc11c \uc591\uc131\uc774 \ub098\uc624\ub294 \uc778\uc6d0\uc744 \uad6c\ud574 \ud569\uce58\uace0, \uadf8\uc911 \ud658\uc790 \uc778\uc6d0\uc744 \ube44\uad50\ud574 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s3",
     "kind": "write",
-    "prompt": "환자의 90%가 양성이 되는 검사인데도, 양성을 받은 사람이 환자일 확률은 90%보다 훨씬 작은 이유를 1000명 같은 구체적인 수를 써서 설명해 보세요.",
+    "prompt": "\ud658\uc790\uc758 90%\uac00 \uc591\uc131\uc774 \ub418\ub294 \uac80\uc0ac\uc778\ub370\ub3c4, \uc591\uc131\uc744 \ubc1b\uc740 \uc0ac\ub78c\uc774 \ud658\uc790\uc77c \ud655\ub960\uc740 90%\ubcf4\ub2e4 \ud6e8\uc52c \uc791\uc740 \uc774\uc720\ub97c 1000\uba85 \uac19\uc740 \uad6c\uccb4\uc801\uc778 \uc218\ub97c \uc368\uc11c \uc124\uba85\ud574 \ubcf4\uc138\uc694.",
     "minChars": 15,
     "checks": [
      {
       "id": "w1",
-      "label": "인원수(몇 명)를 넣어 설명했다",
+      "label": "\uc778\uc6d0\uc218(\uba87 \uba85)\ub97c \ub123\uc5b4 \uc124\uba85\ud588\ub2e4",
       "mode": "any",
       "patterns": [
-       "\\d+\\s*명"
+       "\\d+\\s*\uba85"
       ]
      },
      {
       "id": "w2",
-      "label": "건강한 사람 쪽 양성이 많다거나, 양성자 중 환자 인원이 적다는 점을 말했다",
+      "label": "\uac74\uac15\ud55c \uc0ac\ub78c \ucabd \uc591\uc131\uc774 \ub9ce\ub2e4\uac70\ub098, \uc591\uc131\uc790 \uc911 \ud658\uc790 \uc778\uc6d0\uc774 \uc801\ub2e4\ub294 \uc810\uc744 \ub9d0\ud588\ub2e4",
       "mode": "any",
       "patterns": [
-       "(건강|병이\\s*없|환자가\\s*아닌|정상|걸리지\\s*않)[^.]*(많|훨씬|압도|더\\s*커|더\\s*큰)",
-       "환자[^.]{0,15}\\d+\\s*명\\s*(뿐|밖에|만|정도)",
-       "양성[^.]{0,20}\\d+\\s*명[^.]*환자[^.]{0,15}\\d+\\s*명"
+       "(\uac74\uac15|\ubcd1\uc774\\s*\uc5c6|\ud658\uc790\uac00\\s*\uc544\ub2cc|\uc815\uc0c1|\uac78\ub9ac\uc9c0\\s*\uc54a)[^.]*(\ub9ce|\ud6e8\uc52c|\uc555\ub3c4|\ub354\\s*\ucee4|\ub354\\s*\ud070)",
+       "\ud658\uc790[^.]{0,15}\\d+\\s*\uba85\\s*(\ubfd0|\ubc16\uc5d0|\ub9cc|\uc815\ub3c4)",
+       "\uc591\uc131[^.]{0,20}\\d+\\s*\uba85[^.]*\ud658\uc790[^.]{0,15}\\d+\\s*\uba85"
       ]
      }
     ],
     "selfAssess": [
-     "내 설명에서 양성이 된 사람들이 어떤 두 집단으로 이루어져 있는지 보이나요?",
-     "숫자로 '환자 중 양성'과 '건강한 사람 중 양성'을 비교했나요?"
+     "\ub0b4 \uc124\uba85\uc5d0\uc11c \uc591\uc131\uc774 \ub41c \uc0ac\ub78c\ub4e4\uc774 \uc5b4\ub5a4 \ub450 \uc9d1\ub2e8\uc73c\ub85c \uc774\ub8e8\uc5b4\uc838 \uc788\ub294\uc9c0 \ubcf4\uc774\ub098\uc694?",
+     "\uc22b\uc790\ub85c '\ud658\uc790 \uc911 \uc591\uc131'\uacfc '\uac74\uac15\ud55c \uc0ac\ub78c \uc911 \uc591\uc131'\uc744 \ube44\uad50\ud588\ub098\uc694?"
     ],
     "modelAnswers": [
      {
-      "text": "1000명 중 20명이 환자이고 그중 18명이 양성이야. 병이 없는 980명 중에서도 5%인 약 49명이 양성이야. 그래서 양성 약 67명 중 환자는 18명 정도라서 90%보다 훨씬 작아."
+      "text": "1000\uba85 \uc911 20\uba85\uc774 \ud658\uc790\uc774\uace0 \uadf8\uc911 18\uba85\uc774 \uc591\uc131\uc774\uc57c. \ubcd1\uc774 \uc5c6\ub294 980\uba85 \uc911\uc5d0\uc11c\ub3c4 5%\uc778 \uc57d 49\uba85\uc774 \uc591\uc131\uc774\uc57c. \uadf8\ub798\uc11c \uc591\uc131 \uc57d 67\uba85 \uc911 \ud658\uc790\ub294 18\uba85 \uc815\ub3c4\ub77c\uc11c 90%\ubcf4\ub2e4 \ud6e8\uc52c \uc791\uc544."
      },
      {
-      "text": "환자가 2%뿐이라 건강한 사람이 압도적으로 많아. 1000명이면 환자 20명, 건강한 980명이야. 건강한 사람의 5%만 양성이어도 약 49명이라 환자 양성 18명보다 더 많아."
+      "text": "\ud658\uc790\uac00 2%\ubfd0\uc774\ub77c \uac74\uac15\ud55c \uc0ac\ub78c\uc774 \uc555\ub3c4\uc801\uc73c\ub85c \ub9ce\uc544. 1000\uba85\uc774\uba74 \ud658\uc790 20\uba85, \uac74\uac15\ud55c 980\uba85\uc774\uc57c. \uac74\uac15\ud55c \uc0ac\ub78c\uc758 5%\ub9cc \uc591\uc131\uc774\uc5b4\ub3c4 \uc57d 49\uba85\uc774\ub77c \ud658\uc790 \uc591\uc131 18\uba85\ubcf4\ub2e4 \ub354 \ub9ce\uc544."
      },
      {
-      "text": "1000명 중 환자는 20명이고 그중 18명이 양성이야. 병이 없는 사람도 49명이 양성이라, 양성 67명 중 환자는 18명뿐이라서 약 27%밖에 안 돼."
+      "text": "1000\uba85 \uc911 \ud658\uc790\ub294 20\uba85\uc774\uace0 \uadf8\uc911 18\uba85\uc774 \uc591\uc131\uc774\uc57c. \ubcd1\uc774 \uc5c6\ub294 \uc0ac\ub78c\ub3c4 49\uba85\uc774 \uc591\uc131\uc774\ub77c, \uc591\uc131 67\uba85 \uc911 \ud658\uc790\ub294 18\uba85\ubfd0\uc774\ub77c\uc11c \uc57d 27%\ubc16\uc5d0 \uc548 \ub3fc."
      }
     ],
     "badAnswers": [
      {
-      "text": "검사가 정확하지 않아서 그래.",
-      "why": "수나 두 집단의 비교가 없다."
+      "text": "\uac80\uc0ac\uac00 \uc815\ud655\ud558\uc9c0 \uc54a\uc544\uc11c \uadf8\ub798.",
+      "why": "\uc218\ub098 \ub450 \uc9d1\ub2e8\uc758 \ube44\uad50\uac00 \uc5c6\ub2e4."
      },
      {
-      "text": "1000명 중 90%니까 900명이 양성이야.",
-      "why": "환자와 건강한 사람을 나누지 않고 전체에 90%를 적용했다."
+      "text": "1000\uba85 \uc911 90%\ub2c8\uae4c 900\uba85\uc774 \uc591\uc131\uc774\uc57c.",
+      "why": "\ud658\uc790\uc640 \uac74\uac15\ud55c \uc0ac\ub78c\uc744 \ub098\ub204\uc9c0 \uc54a\uace0 \uc804\uccb4\uc5d0 90%\ub97c \uc801\uc6a9\ud588\ub2e4."
      }
     ],
-    "humanReview": "인원수가 올바른지, 두 집단의 양성자를 비교하는 논리가 명확한지는 사람이 읽어야 한다.",
+    "humanReview": "\uc778\uc6d0\uc218\uac00 \uc62c\ubc14\ub978\uc9c0, \ub450 \uc9d1\ub2e8\uc758 \uc591\uc131\uc790\ub97c \ube44\uad50\ud558\ub294 \ub17c\ub9ac\uac00 \uba85\ud655\ud55c\uc9c0\ub294 \uc0ac\ub78c\uc774 \uc77d\uc5b4\uc57c \ud55c\ub2e4.",
     "hints": [
-     "1000명을 두 집단으로 나눈 인원을 먼저 써 보세요.",
-     "양성인 사람이 각 집단에서 몇 명인지 써서 비교해 보세요."
+     "1000\uba85\uc744 \ub450 \uc9d1\ub2e8\uc73c\ub85c \ub098\ub208 \uc778\uc6d0\uc744 \uba3c\uc800 \uc368 \ubcf4\uc138\uc694.",
+     "\uc591\uc131\uc778 \uc0ac\ub78c\uc774 \uac01 \uc9d1\ub2e8\uc5d0\uc11c \uba87 \uba85\uc778\uc9c0 \uc368\uc11c \ube44\uad50\ud574 \ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "필요 정보 가려내기",
-    "full": "세 가지 정보를 모두 고르고 무관한 정보를 제외",
-    "partial": "일부만 고름",
-    "none": "무관한 정보를 포함"
+    "criterion": "\ud544\uc694 \uc815\ubcf4 \uac00\ub824\ub0b4\uae30",
+    "full": "\uc138 \uac00\uc9c0 \uc815\ubcf4\ub97c \ubaa8\ub450 \uace0\ub974\uace0 \ubb34\uad00\ud55c \uc815\ubcf4\ub97c \uc81c\uc678",
+    "partial": "\uc77c\ubd80\ub9cc \uace0\ub984",
+    "none": "\ubb34\uad00\ud55c \uc815\ubcf4\ub97c \ud3ec\ud568"
    },
    {
-    "criterion": "조건의 구별과 설명",
-    "full": "두 조건부확률의 차이를 인원수로 설명",
-    "partial": "차이는 말했으나 수가 없음",
-    "none": "두 확률을 혼동함"
+    "criterion": "\uc870\uac74\uc758 \uad6c\ubcc4\uacfc \uc124\uba85",
+    "full": "\ub450 \uc870\uac74\ubd80\ud655\ub960\uc758 \ucc28\uc774\ub97c \uc778\uc6d0\uc218\ub85c \uc124\uba85",
+    "partial": "\ucc28\uc774\ub294 \ub9d0\ud588\uc73c\ub098 \uc218\uac00 \uc5c6\uc74c",
+    "none": "\ub450 \ud655\ub960\uc744 \ud63c\ub3d9\ud568"
    }
   ],
   "alternatives": [
-   "병이 없는 사람이 음성이 될 확률(특이도)을 알려 주는 방식도 같은 정보이다.",
-   "인원 대신 확률 나무그림으로 설명해도 인정한다."
+   "\ubcd1\uc774 \uc5c6\ub294 \uc0ac\ub78c\uc774 \uc74c\uc131\uc774 \ub420 \ud655\ub960(\ud2b9\uc774\ub3c4)\uc744 \uc54c\ub824 \uc8fc\ub294 \ubc29\uc2dd\ub3c4 \uac19\uc740 \uc815\ubcf4\uc774\ub2e4.",
+   "\uc778\uc6d0 \ub300\uc2e0 \ud655\ub960 \ub098\ubb34\uadf8\ub9bc\uc73c\ub85c \uc124\uba85\ud574\ub3c4 \uc778\uc815\ud55c\ub2e4."
   ],
   "hardCases": [
-   "양성자 수를 67이 아닌 66이나 70으로 어림한 서술도, 환자 비율이 약 25~27%이면 인정할 수 있다."
+   "\uc591\uc131\uc790 \uc218\ub97c 67\uc774 \uc544\ub2cc 66\uc774\ub098 70\uc73c\ub85c \uc5b4\ub9bc\ud55c \uc11c\uc220\ub3c4, \ud658\uc790 \ube44\uc728\uc774 \uc57d 25~27%\uc774\uba74 \uc778\uc815\ud560 \uc218 \uc788\ub2e4."
   ],
   "cautions": {
-   "language": "'양성', '민감도' 같은 용어를 일상어로 풀어 썼다.",
-   "culture": "질병 이름을 쓰지 않고 가상의 질병으로 두어 특정 질병에 대한 낙인을 피했다. 검사 결과가 두려운 학생이 있을 수 있어 가상 상황임을 안내한다.",
-   "accessibility": "그림 없이 인원수로 풀 수 있게 했다. 1%, 90%, 9%는 '일 퍼센트' 등으로 읽는다."
+   "language": "'\uc591\uc131', '\ubbfc\uac10\ub3c4' \uac19\uc740 \uc6a9\uc5b4\ub97c \uc77c\uc0c1\uc5b4\ub85c \ud480\uc5b4 \uc37c\ub2e4.",
+   "culture": "\uc9c8\ubcd1 \uc774\ub984\uc744 \uc4f0\uc9c0 \uc54a\uace0 \uac00\uc0c1\uc758 \uc9c8\ubcd1\uc73c\ub85c \ub450\uc5b4 \ud2b9\uc815 \uc9c8\ubcd1\uc5d0 \ub300\ud55c \ub099\uc778\uc744 \ud53c\ud588\ub2e4. \uac80\uc0ac \uacb0\uacfc\uac00 \ub450\ub824\uc6b4 \ud559\uc0dd\uc774 \uc788\uc744 \uc218 \uc788\uc5b4 \uac00\uc0c1 \uc0c1\ud669\uc784\uc744 \uc548\ub0b4\ud55c\ub2e4.",
+   "accessibility": "\uadf8\ub9bc \uc5c6\uc774 \uc778\uc6d0\uc218\ub85c \ud480 \uc218 \uc788\uac8c \ud588\ub2e4. 1%, 90%, 9%\ub294 '\uc77c \ud37c\uc13c\ud2b8' \ub4f1\uc73c\ub85c \uc77d\ub294\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "필요 정보 선택, 계산 선택, 서술에 인원수와 비교 표현이 있는지"
+    "\ud544\uc694 \uc815\ubcf4 \uc120\ud0dd, \uacc4\uc0b0 \uc120\ud0dd, \uc11c\uc220\uc5d0 \uc778\uc6d0\uc218\uc640 \ube44\uad50 \ud45c\ud604\uc774 \uc788\ub294\uc9c0"
    ],
    "human": [
-    "서술의 논리와 인원수의 정확성"
+    "\uc11c\uc220\uc758 \ub17c\ub9ac\uc640 \uc778\uc6d0\uc218\uc758 \uc815\ud655\uc131"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "x-m-h3-09",
   "subject": "math",
   "grade": "H3",
-  "topic": "조건부확률",
+  "topic": "\uc870\uac74\ubd80\ud655\ub960",
   "level": 3,
-  "levelLabel": "고등",
-  "title": "빨간 면이 보였다면 뒷면은?",
+  "levelLabel": "\uace0\ub4f1",
+  "title": "\ube68\uac04 \uba74\uc774 \ubcf4\uc600\ub2e4\uba74 \ub4b7\uba74\uc740?",
   "uiLang": "ko",
   "format": "reveal-and-revise",
   "generative": false,
-  "goal": "처음 짐작(1/2)을 자료와 분석으로 고치고, 짐작의 어느 줄이 틀렸는지 찾아 조건부확률을 바르게 해석한다.",
+  "goal": "\ucc98\uc74c \uc9d0\uc791(1/2)\uc744 \uc790\ub8cc\uc640 \ubd84\uc11d\uc73c\ub85c \uace0\uce58\uace0, \uc9d0\uc791\uc758 \uc5b4\ub290 \uc904\uc774 \ud2c0\ub838\ub294\uc9c0 \ucc3e\uc544 \uc870\uac74\ubd80\ud655\ub960\uc744 \ubc14\ub974\uac8c \ud574\uc11d\ud55c\ub2e4.",
   "thinking": [
-   "표본공간의 사건들이 같은 정도로 가능한지 따지기",
-   "자료와 이론 계산을 비교해 판단 수정하기",
-   "틀린 논증에서 잘못된 줄 찾기"
+   "\ud45c\ubcf8\uacf5\uac04\uc758 \uc0ac\uac74\ub4e4\uc774 \uac19\uc740 \uc815\ub3c4\ub85c \uac00\ub2a5\ud55c\uc9c0 \ub530\uc9c0\uae30",
+   "\uc790\ub8cc\uc640 \uc774\ub860 \uacc4\uc0b0\uc744 \ube44\uad50\ud574 \ud310\ub2e8 \uc218\uc815\ud558\uae30",
+   "\ud2c0\ub9b0 \ub17c\uc99d\uc5d0\uc11c \uc798\ubabb\ub41c \uc904 \ucc3e\uae30"
   ],
-  "differsFromPlain": "단순 연습은 조건부확률 공식에 값을 넣는다. 여기서는 처음 짐작이 왜 틀릴 수 있는지를 자료와 구분으로 확인하고, 틀린 줄을 가려낸다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uc870\uac74\ubd80\ud655\ub960 \uacf5\uc2dd\uc5d0 \uac12\uc744 \ub123\ub294\ub2e4. \uc5ec\uae30\uc11c\ub294 \ucc98\uc74c \uc9d0\uc791\uc774 \uc65c \ud2c0\ub9b4 \uc218 \uc788\ub294\uc9c0\ub97c \uc790\ub8cc\uc640 \uad6c\ubd84\uc73c\ub85c \ud655\uc778\ud558\uace0, \ud2c0\ub9b0 \uc904\uc744 \uac00\ub824\ub0b8\ub2e4.",
   "prerequisites": [
-   "확률이 같은 사건과 같지 않은 사건을 구별해 본 경험",
-   "사건의 개수와 확률의 크기를 구별해 본 경험"
+   "\ud655\ub960\uc774 \uac19\uc740 \uc0ac\uac74\uacfc \uac19\uc9c0 \uc54a\uc740 \uc0ac\uac74\uc744 \uad6c\ubcc4\ud574 \ubcf8 \uacbd\ud5d8",
+   "\uc0ac\uac74\uc758 \uac1c\uc218\uc640 \ud655\ub960\uc758 \ud06c\uae30\ub97c \uad6c\ubcc4\ud574 \ubcf8 \uacbd\ud5d8"
   ],
   "minutes": 12,
   "curriculum": null,
-  "material": "상자에 카드 세 장이 있습니다. 한 장은 양면이 모두 빨강(빨강빨강 카드), 한 장은 한 면은 빨강이고 다른 면은 파랑(빨강파랑 카드), 한 장은 양면이 모두 파랑(파랑파랑 카드)입니다. 한 장을 무작위로 뽑아 한쪽 면을 책상 위에 올려놓았더니 빨강이 보입니다. 뒷면도 빨강일 확률을 생각해 봅니다.",
+  "material": "\uc0c1\uc790\uc5d0 \uce74\ub4dc \uc138 \uc7a5\uc774 \uc788\uc2b5\ub2c8\ub2e4. \ud55c \uc7a5\uc740 \uc591\uba74\uc774 \ubaa8\ub450 \ube68\uac15(\ube68\uac15\ube68\uac15 \uce74\ub4dc), \ud55c \uc7a5\uc740 \ud55c \uba74\uc740 \ube68\uac15\uc774\uace0 \ub2e4\ub978 \uba74\uc740 \ud30c\ub791(\ube68\uac15\ud30c\ub791 \uce74\ub4dc), \ud55c \uc7a5\uc740 \uc591\uba74\uc774 \ubaa8\ub450 \ud30c\ub791(\ud30c\ub791\ud30c\ub791 \uce74\ub4dc)\uc785\ub2c8\ub2e4. \ud55c \uc7a5\uc744 \ubb34\uc791\uc704\ub85c \ubf51\uc544 \ud55c\ucabd \uba74\uc744 \ucc45\uc0c1 \uc704\uc5d0 \uc62c\ub824\ub193\uc558\ub354\ub2c8 \ube68\uac15\uc774 \ubcf4\uc785\ub2c8\ub2e4. \ub4b7\uba74\ub3c4 \ube68\uac15\uc77c \ud655\ub960\uc744 \uc0dd\uac01\ud574 \ubd05\ub2c8\ub2e4.",
   "steps": [
    {
     "id": "s1",
     "kind": "reveal",
-    "prompt": "자료가 하나씩 공개됩니다. 그때마다 가장 합리적인 판단을 고르세요.",
+    "prompt": "\uc790\ub8cc\uac00 \ud558\ub098\uc529 \uacf5\uac1c\ub429\ub2c8\ub2e4. \uadf8\ub54c\ub9c8\ub2e4 \uac00\uc7a5 \ud569\ub9ac\uc801\uc778 \ud310\ub2e8\uc744 \uace0\ub974\uc138\uc694.",
     "stages": [
      {
-      "info": "뽑은 카드의 보이는 면이 빨강입니다.",
-      "ask": "뒷면도 빨강일 확률에 대해 지금 가장 그럴듯한 짐작은?",
+      "info": "\ubf51\uc740 \uce74\ub4dc\uc758 \ubcf4\uc774\ub294 \uba74\uc774 \ube68\uac15\uc785\ub2c8\ub2e4.",
+      "ask": "\ub4b7\uba74\ub3c4 \ube68\uac15\uc77c \ud655\ub960\uc5d0 \ub300\ud574 \uc9c0\uae08 \uac00\uc7a5 \uadf8\ub7f4\ub4ef\ud55c \uc9d0\uc791\uc740?",
       "options": [
        {
         "id": "a",
-        "text": "1/2. 남은 후보는 빨강빨강 카드와 빨강파랑 카드 두 장이고 둘은 같은 정도로 가능하다",
-        "reveals": "후보를 두 장으로 좁힌 것은 좋아요. 다만 두 후보가 같은 정도로 가능한지는 확인이 필요해요."
+        "text": "1/2. \ub0a8\uc740 \ud6c4\ubcf4\ub294 \ube68\uac15\ube68\uac15 \uce74\ub4dc\uc640 \ube68\uac15\ud30c\ub791 \uce74\ub4dc \ub450 \uc7a5\uc774\uace0 \ub458\uc740 \uac19\uc740 \uc815\ub3c4\ub85c \uac00\ub2a5\ud558\ub2e4",
+        "reveals": "\ud6c4\ubcf4\ub97c \ub450 \uc7a5\uc73c\ub85c \uc881\ud78c \uac83\uc740 \uc88b\uc544\uc694. \ub2e4\ub9cc \ub450 \ud6c4\ubcf4\uac00 \uac19\uc740 \uc815\ub3c4\ub85c \uac00\ub2a5\ud55c\uc9c0\ub294 \ud655\uc778\uc774 \ud544\uc694\ud574\uc694."
        },
        {
         "id": "b",
-        "text": "1/3. 카드가 세 장이고 빨강빨강 카드는 그중 한 장뿐이므로 세 장 중 한 장이다",
-        "reveals": "빨강이 보인 사실을 반영하지 않고 처음 세 장으로 되돌아갔어요."
+        "text": "1/3. \uce74\ub4dc\uac00 \uc138 \uc7a5\uc774\uace0 \ube68\uac15\ube68\uac15 \uce74\ub4dc\ub294 \uadf8\uc911 \ud55c \uc7a5\ubfd0\uc774\ubbc0\ub85c \uc138 \uc7a5 \uc911 \ud55c \uc7a5\uc774\ub2e4",
+        "reveals": "\ube68\uac15\uc774 \ubcf4\uc778 \uc0ac\uc2e4\uc744 \ubc18\uc601\ud558\uc9c0 \uc54a\uace0 \ucc98\uc74c \uc138 \uc7a5\uc73c\ub85c \ub418\ub3cc\uc544\uac14\uc5b4\uc694."
        },
        {
         "id": "c",
-        "text": "1/2쯤으로 보이지만, 두 후보가 같은 정도인지 확인해 봐야 한다",
-        "reveals": "첫 짐작을 말하면서도 확인할 지점을 짚었어요."
+        "text": "1/2\ucbe4\uc73c\ub85c \ubcf4\uc774\uc9c0\ub9cc, \ub450 \ud6c4\ubcf4\uac00 \uac19\uc740 \uc815\ub3c4\uc778\uc9c0 \ud655\uc778\ud574 \ubd10\uc57c \ud55c\ub2e4",
+        "reveals": "\uccab \uc9d0\uc791\uc744 \ub9d0\ud558\uba74\uc11c\ub3c4 \ud655\uc778\ud560 \uc9c0\uc810\uc744 \uc9da\uc5c8\uc5b4\uc694."
        },
        {
         "id": "d",
-        "text": "뒷면은 이미 정해져 있으므로 확률을 말할 수 없다",
-        "reveals": "뒷면은 정해져 있어도 우리가 모르는 상태에서의 믿음의 정도를 확률로 말할 수 있어요."
+        "text": "\ub4b7\uba74\uc740 \uc774\ubbf8 \uc815\ud574\uc838 \uc788\uc73c\ubbc0\ub85c \ud655\ub960\uc744 \ub9d0\ud560 \uc218 \uc5c6\ub2e4",
+        "reveals": "\ub4b7\uba74\uc740 \uc815\ud574\uc838 \uc788\uc5b4\ub3c4 \uc6b0\ub9ac\uac00 \ubaa8\ub974\ub294 \uc0c1\ud0dc\uc5d0\uc11c\uc758 \ubbff\uc74c\uc758 \uc815\ub3c4\ub97c \ud655\ub960\ub85c \ub9d0\ud560 \uc218 \uc788\uc5b4\uc694."
        }
       ],
       "reasonable": [
        "a",
        "c"
       ],
-      "after": "1/2는 많은 사람이 처음 떠올리는 짐작이에요. 좋은 습관은 '두 후보가 정말 같은 정도로 가능한가'를 따져 보는 거예요."
+      "after": "1/2\ub294 \ub9ce\uc740 \uc0ac\ub78c\uc774 \ucc98\uc74c \ub5a0\uc62c\ub9ac\ub294 \uc9d0\uc791\uc774\uc5d0\uc694. \uc88b\uc740 \uc2b5\uad00\uc740 '\ub450 \ud6c4\ubcf4\uac00 \uc815\ub9d0 \uac19\uc740 \uc815\ub3c4\ub85c \uac00\ub2a5\ud55c\uac00'\ub97c \ub530\uc838 \ubcf4\ub294 \uac70\uc608\uc694."
      },
      {
-      "info": "카드의 면을 하나씩 구분해 보니, 빨강 면은 모두 3개입니다. 빨강빨강 카드의 한 면, 그 카드의 다른 면, 그리고 빨강파랑 카드의 빨강 면입니다. 이 세 면은 책상 위에 보이게 될 가능성이 모두 같습니다.",
-      "ask": "이 자료로 짐작을 어떻게 고치겠나요?",
+      "info": "\uce74\ub4dc\uc758 \uba74\uc744 \ud558\ub098\uc529 \uad6c\ubd84\ud574 \ubcf4\ub2c8, \ube68\uac15 \uba74\uc740 \ubaa8\ub450 3\uac1c\uc785\ub2c8\ub2e4. \ube68\uac15\ube68\uac15 \uce74\ub4dc\uc758 \ud55c \uba74, \uadf8 \uce74\ub4dc\uc758 \ub2e4\ub978 \uba74, \uadf8\ub9ac\uace0 \ube68\uac15\ud30c\ub791 \uce74\ub4dc\uc758 \ube68\uac15 \uba74\uc785\ub2c8\ub2e4. \uc774 \uc138 \uba74\uc740 \ucc45\uc0c1 \uc704\uc5d0 \ubcf4\uc774\uac8c \ub420 \uac00\ub2a5\uc131\uc774 \ubaa8\ub450 \uac19\uc2b5\ub2c8\ub2e4.",
+      "ask": "\uc774 \uc790\ub8cc\ub85c \uc9d0\uc791\uc744 \uc5b4\ub5bb\uac8c \uace0\uce58\uaca0\ub098\uc694?",
       "options": [
        {
         "id": "a",
-        "text": "그대로 1/2. 면이 3개라도 카드는 두 장이니 후보는 두 가지이다",
-        "reveals": "카드 수로만 세었어요. 카드마다 빨강 면의 수가 다르다는 점이 빠졌어요."
+        "text": "\uadf8\ub300\ub85c 1/2. \uba74\uc774 3\uac1c\ub77c\ub3c4 \uce74\ub4dc\ub294 \ub450 \uc7a5\uc774\ub2c8 \ud6c4\ubcf4\ub294 \ub450 \uac00\uc9c0\uc774\ub2e4",
+        "reveals": "\uce74\ub4dc \uc218\ub85c\ub9cc \uc138\uc5c8\uc5b4\uc694. \uce74\ub4dc\ub9c8\ub2e4 \ube68\uac15 \uba74\uc758 \uc218\uac00 \ub2e4\ub974\ub2e4\ub294 \uc810\uc774 \ube60\uc84c\uc5b4\uc694."
        },
        {
         "id": "b",
-        "text": "1/3. 빨강 면 세 개 중 하나만 뒷면도 빨강일 수 있다고 본다",
-        "reveals": "빨강빨강 카드의 두 면이 모두 빨강인 점을 놓쳤어요. 보이는 면이 그 카드의 어느 쪽이든 뒷면은 빨강이에요."
+        "text": "1/3. \ube68\uac15 \uba74 \uc138 \uac1c \uc911 \ud558\ub098\ub9cc \ub4b7\uba74\ub3c4 \ube68\uac15\uc77c \uc218 \uc788\ub2e4\uace0 \ubcf8\ub2e4",
+        "reveals": "\ube68\uac15\ube68\uac15 \uce74\ub4dc\uc758 \ub450 \uba74\uc774 \ubaa8\ub450 \ube68\uac15\uc778 \uc810\uc744 \ub193\ucce4\uc5b4\uc694. \ubcf4\uc774\ub294 \uba74\uc774 \uadf8 \uce74\ub4dc\uc758 \uc5b4\ub290 \ucabd\uc774\ub4e0 \ub4b7\uba74\uc740 \ube68\uac15\uc774\uc5d0\uc694."
        },
        {
         "id": "c",
-        "text": "2/3. 빨강 면 세 개 중 두 개는 뒷면도 빨강인 카드의 면이다",
-        "reveals": "빨강 면 세 개를 같은 가능성의 경우로 세어 셌어요."
+        "text": "2/3. \ube68\uac15 \uba74 \uc138 \uac1c \uc911 \ub450 \uac1c\ub294 \ub4b7\uba74\ub3c4 \ube68\uac15\uc778 \uce74\ub4dc\uc758 \uba74\uc774\ub2e4",
+        "reveals": "\ube68\uac15 \uba74 \uc138 \uac1c\ub97c \uac19\uc740 \uac00\ub2a5\uc131\uc758 \uacbd\uc6b0\ub85c \uc138\uc5b4 \uc14c\uc5b4\uc694."
        },
        {
         "id": "d",
-        "text": "1/2과 2/3 사이라서 지금은 하나로 정할 수 없다",
-        "reveals": "같은 정도로 가능한 경우를 세면 하나의 값이 정해져요."
+        "text": "1/2\uacfc 2/3 \uc0ac\uc774\ub77c\uc11c \uc9c0\uae08\uc740 \ud558\ub098\ub85c \uc815\ud560 \uc218 \uc5c6\ub2e4",
+        "reveals": "\uac19\uc740 \uc815\ub3c4\ub85c \uac00\ub2a5\ud55c \uacbd\uc6b0\ub97c \uc138\uba74 \ud558\ub098\uc758 \uac12\uc774 \uc815\ud574\uc838\uc694."
        }
       ],
       "reasonable": [
        "c"
       ],
-      "after": "보이는 면이 될 수 있는 빨강 면은 3개이고, 그중 2개는 빨강빨강 카드의 면이에요. 따라서 뒷면도 빨강일 확률은 2/3이에요."
+      "after": "\ubcf4\uc774\ub294 \uba74\uc774 \ub420 \uc218 \uc788\ub294 \ube68\uac15 \uba74\uc740 3\uac1c\uc774\uace0, \uadf8\uc911 2\uac1c\ub294 \ube68\uac15\ube68\uac15 \uce74\ub4dc\uc758 \uba74\uc774\uc5d0\uc694. \ub530\ub77c\uc11c \ub4b7\uba74\ub3c4 \ube68\uac15\uc77c \ud655\ub960\uc740 2/3\uc774\uc5d0\uc694."
      },
      {
-      "info": "직접 실험해 보았습니다. 카드를 600번 뽑아 한 면을 올려놓았더니 빨강이 보인 경우가 301번이었고, 그중 뒷면도 빨강인 경우가 203번이었습니다.",
-      "ask": "이 결과는 두 짐작과 어떻게 맞나요?",
+      "info": "\uc9c1\uc811 \uc2e4\ud5d8\ud574 \ubcf4\uc558\uc2b5\ub2c8\ub2e4. \uce74\ub4dc\ub97c 600\ubc88 \ubf51\uc544 \ud55c \uba74\uc744 \uc62c\ub824\ub193\uc558\ub354\ub2c8 \ube68\uac15\uc774 \ubcf4\uc778 \uacbd\uc6b0\uac00 301\ubc88\uc774\uc5c8\uace0, \uadf8\uc911 \ub4b7\uba74\ub3c4 \ube68\uac15\uc778 \uacbd\uc6b0\uac00 203\ubc88\uc774\uc5c8\uc2b5\ub2c8\ub2e4.",
+      "ask": "\uc774 \uacb0\uacfc\ub294 \ub450 \uc9d0\uc791\uacfc \uc5b4\ub5bb\uac8c \ub9de\ub098\uc694?",
       "options": [
        {
         "id": "a",
-        "text": "203/301은 약 0.67이므로 2/3에 가깝다",
-        "reveals": "빨강이 보인 경우만 대상으로 비율을 구해 이론 계산과 맞춰 보았어요."
+        "text": "203/301\uc740 \uc57d 0.67\uc774\ubbc0\ub85c 2/3\uc5d0 \uac00\uae5d\ub2e4",
+        "reveals": "\ube68\uac15\uc774 \ubcf4\uc778 \uacbd\uc6b0\ub9cc \ub300\uc0c1\uc73c\ub85c \ube44\uc728\uc744 \uad6c\ud574 \uc774\ub860 \uacc4\uc0b0\uacfc \ub9de\ucdb0 \ubcf4\uc558\uc5b4\uc694."
        },
        {
         "id": "b",
-        "text": "203/301은 약 0.67이지만 실험에는 오차가 있으니 1/2로 본다",
-        "reveals": "0.67은 0.5와 꽤 떨어져 있어요. 2/3과 비교해 보세요."
+        "text": "203/301\uc740 \uc57d 0.67\uc774\uc9c0\ub9cc \uc2e4\ud5d8\uc5d0\ub294 \uc624\ucc28\uac00 \uc788\uc73c\ub2c8 1/2\ub85c \ubcf8\ub2e4",
+        "reveals": "0.67\uc740 0.5\uc640 \uaf64 \ub5a8\uc5b4\uc838 \uc788\uc5b4\uc694. 2/3\uacfc \ube44\uad50\ud574 \ubcf4\uc138\uc694."
        },
        {
         "id": "c",
-        "text": "600번 중 203번이니 약 1/3이다",
-        "reveals": "분모를 600번 전체로 잡았어요. 빨강이 보인 경우만을 대상으로 해야 해요."
+        "text": "600\ubc88 \uc911 203\ubc88\uc774\ub2c8 \uc57d 1/3\uc774\ub2e4",
+        "reveals": "\ubd84\ubaa8\ub97c 600\ubc88 \uc804\uccb4\ub85c \uc7a1\uc558\uc5b4\uc694. \ube68\uac15\uc774 \ubcf4\uc778 \uacbd\uc6b0\ub9cc\uc744 \ub300\uc0c1\uc73c\ub85c \ud574\uc57c \ud574\uc694."
        },
        {
         "id": "d",
-        "text": "실험에는 우연이 섞이므로 이론 계산과 상관이 없다",
-        "reveals": "실험이 이론과 정확히 같을 필요는 없지만, 가까운지 비교하는 것은 중요해요."
+        "text": "\uc2e4\ud5d8\uc5d0\ub294 \uc6b0\uc5f0\uc774 \uc11e\uc774\ubbc0\ub85c \uc774\ub860 \uacc4\uc0b0\uacfc \uc0c1\uad00\uc774 \uc5c6\ub2e4",
+        "reveals": "\uc2e4\ud5d8\uc774 \uc774\ub860\uacfc \uc815\ud655\ud788 \uac19\uc744 \ud544\uc694\ub294 \uc5c6\uc9c0\ub9cc, \uac00\uae4c\uc6b4\uc9c0 \ube44\uad50\ud558\ub294 \uac83\uc740 \uc911\uc694\ud574\uc694."
        }
       ],
       "reasonable": [
        "a"
       ],
-      "after": "203/301 ≈ 0.674 로 2/3 ≈ 0.667 에 가깝고 1/2 와는 차이가 커요. 조건(빨강이 보임)을 만족하는 경우만 대상으로 해야 한다는 점도 확인돼요."
+      "after": "203/301 \u2248 0.674 \ub85c 2/3 \u2248 0.667 \uc5d0 \uac00\uae5d\uace0 1/2 \uc640\ub294 \ucc28\uc774\uac00 \ucee4\uc694. \uc870\uac74(\ube68\uac15\uc774 \ubcf4\uc784)\uc744 \ub9cc\uc871\ud558\ub294 \uacbd\uc6b0\ub9cc \ub300\uc0c1\uc73c\ub85c \ud574\uc57c \ud55c\ub2e4\ub294 \uc810\ub3c4 \ud655\uc778\ub3fc\uc694."
      }
     ],
-    "reflect": "처음의 1/2 짐작은 어떤 가정에서 나왔고, 어떤 자료가 그 가정을 바꾸게 했나요? '후보가 두 가지'라는 것과 '두 후보가 같은 정도로 가능하다'는 것은 어떻게 다른가요?",
+    "reflect": "\ucc98\uc74c\uc758 1/2 \uc9d0\uc791\uc740 \uc5b4\ub5a4 \uac00\uc815\uc5d0\uc11c \ub098\uc654\uace0, \uc5b4\ub5a4 \uc790\ub8cc\uac00 \uadf8 \uac00\uc815\uc744 \ubc14\uafb8\uac8c \ud588\ub098\uc694? '\ud6c4\ubcf4\uac00 \ub450 \uac00\uc9c0'\ub77c\ub294 \uac83\uacfc '\ub450 \ud6c4\ubcf4\uac00 \uac19\uc740 \uc815\ub3c4\ub85c \uac00\ub2a5\ud558\ub2e4'\ub294 \uac83\uc740 \uc5b4\ub5bb\uac8c \ub2e4\ub978\uac00\uc694?",
     "hints": [
-     "각 단계에서 어떤 경우를 세고 있는지 적어 보세요.",
-     "각 단계에서 센 경우들이 정말 같은 정도로 일어나는지, 경우를 하나씩 적어 확인해 보세요."
+     "\uac01 \ub2e8\uacc4\uc5d0\uc11c \uc5b4\ub5a4 \uacbd\uc6b0\ub97c \uc138\uace0 \uc788\ub294\uc9c0 \uc801\uc5b4 \ubcf4\uc138\uc694.",
+     "\uac01 \ub2e8\uacc4\uc5d0\uc11c \uc13c \uacbd\uc6b0\ub4e4\uc774 \uc815\ub9d0 \uac19\uc740 \uc815\ub3c4\ub85c \uc77c\uc5b4\ub098\ub294\uc9c0, \uacbd\uc6b0\ub97c \ud558\ub098\uc529 \uc801\uc5b4 \ud655\uc778\ud574 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "pickLine",
-    "prompt": "어떤 학생이 1/2 라고 한 풀이입니다. 처음 문제가 생긴 줄을 하나 고르세요.",
+    "prompt": "\uc5b4\ub5a4 \ud559\uc0dd\uc774 1/2 \ub77c\uace0 \ud55c \ud480\uc774\uc785\ub2c8\ub2e4. \ucc98\uc74c \ubb38\uc81c\uac00 \uc0dd\uae34 \uc904\uc744 \ud558\ub098 \uace0\ub974\uc138\uc694.",
     "lines": [
-     "보이는 면이 빨강이므로 파랑파랑 카드는 아니다.",
-     "남은 후보는 빨강빨강 카드와 빨강파랑 카드이고, 두 카드는 같은 정도로 가능하다.",
-     "따라서 뒷면이 빨강일 확률은 두 장 중 한 장이므로 1/2 이다."
+     "\ubcf4\uc774\ub294 \uba74\uc774 \ube68\uac15\uc774\ubbc0\ub85c \ud30c\ub791\ud30c\ub791 \uce74\ub4dc\ub294 \uc544\ub2c8\ub2e4.",
+     "\ub0a8\uc740 \ud6c4\ubcf4\ub294 \ube68\uac15\ube68\uac15 \uce74\ub4dc\uc640 \ube68\uac15\ud30c\ub791 \uce74\ub4dc\uc774\uace0, \ub450 \uce74\ub4dc\ub294 \uac19\uc740 \uc815\ub3c4\ub85c \uac00\ub2a5\ud558\ub2e4.",
+     "\ub530\ub77c\uc11c \ub4b7\uba74\uc774 \ube68\uac15\uc77c \ud655\ub960\uc740 \ub450 \uc7a5 \uc911 \ud55c \uc7a5\uc774\ubbc0\ub85c 1/2 \uc774\ub2e4."
     ],
     "wrong": [
      1
     ],
-    "explain": "2번 줄이 문제예요. 빨강이 보였다는 조건 아래에서 빨강빨강 카드는 빨강 면이 두 개라 빨강이 보이는 경우가 두 가지이고, 빨강파랑 카드는 한 가지예요. 그래서 두 카드는 같은 정도가 아니고 3번 줄의 결론도 달라져요.",
+    "explain": "2\ubc88 \uc904\uc774 \ubb38\uc81c\uc608\uc694. \ube68\uac15\uc774 \ubcf4\uc600\ub2e4\ub294 \uc870\uac74 \uc544\ub798\uc5d0\uc11c \ube68\uac15\ube68\uac15 \uce74\ub4dc\ub294 \ube68\uac15 \uba74\uc774 \ub450 \uac1c\ub77c \ube68\uac15\uc774 \ubcf4\uc774\ub294 \uacbd\uc6b0\uac00 \ub450 \uac00\uc9c0\uc774\uace0, \ube68\uac15\ud30c\ub791 \uce74\ub4dc\ub294 \ud55c \uac00\uc9c0\uc608\uc694. \uadf8\ub798\uc11c \ub450 \uce74\ub4dc\ub294 \uac19\uc740 \uc815\ub3c4\uac00 \uc544\ub2c8\uace0 3\ubc88 \uc904\uc758 \uacb0\ub860\ub3c4 \ub2ec\ub77c\uc838\uc694.",
     "hints": [
-     "줄마다, 앞 줄에서 곧바로 나오는 말인지 아니면 따로 확인이 필요한 새 주장을 넣은 말인지 구분해 보세요.",
-     "각 카드가 책상에 빨강 면을 보이게 되는 방법이 몇 가지인지 세어 보세요."
+     "\uc904\ub9c8\ub2e4, \uc55e \uc904\uc5d0\uc11c \uace7\ubc14\ub85c \ub098\uc624\ub294 \ub9d0\uc778\uc9c0 \uc544\ub2c8\uba74 \ub530\ub85c \ud655\uc778\uc774 \ud544\uc694\ud55c \uc0c8 \uc8fc\uc7a5\uc744 \ub123\uc740 \ub9d0\uc778\uc9c0 \uad6c\ubd84\ud574 \ubcf4\uc138\uc694.",
+     "\uac01 \uce74\ub4dc\uac00 \ucc45\uc0c1\uc5d0 \ube68\uac15 \uba74\uc744 \ubcf4\uc774\uac8c \ub418\ub294 \ubc29\ubc95\uc774 \uba87 \uac00\uc9c0\uc778\uc9c0 \uc138\uc5b4 \ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "가정 점검",
-    "full": "두 후보가 같은 정도라는 가정을 의심하고 확인함",
-    "partial": "1/2에서 멈춤",
-    "none": "확인하지 않음"
+    "criterion": "\uac00\uc815 \uc810\uac80",
+    "full": "\ub450 \ud6c4\ubcf4\uac00 \uac19\uc740 \uc815\ub3c4\ub77c\ub294 \uac00\uc815\uc744 \uc758\uc2ec\ud558\uace0 \ud655\uc778\ud568",
+    "partial": "1/2\uc5d0\uc11c \uba48\ucda4",
+    "none": "\ud655\uc778\ud558\uc9c0 \uc54a\uc74c"
    },
    {
-    "criterion": "자료로 판단 수정",
-    "full": "실험 비율과 이론 계산을 비교해 2/3로 수정함",
-    "partial": "수정했으나 이유가 모호함",
-    "none": "수정하지 않음"
+    "criterion": "\uc790\ub8cc\ub85c \ud310\ub2e8 \uc218\uc815",
+    "full": "\uc2e4\ud5d8 \ube44\uc728\uacfc \uc774\ub860 \uacc4\uc0b0\uc744 \ube44\uad50\ud574 2/3\ub85c \uc218\uc815\ud568",
+    "partial": "\uc218\uc815\ud588\uc73c\ub098 \uc774\uc720\uac00 \ubaa8\ud638\ud568",
+    "none": "\uc218\uc815\ud558\uc9c0 \uc54a\uc74c"
    }
   ],
   "alternatives": [
-   "'빨강 면 3개 중 2개'로 세는 방법과 '조건부확률 = 빨강빨강 카드일 확률 ÷ 빨강이 보일 확률'로 계산하는 방법은 같은 결과(1/3 ÷ 1/2 = 2/3)를 준다."
+   "'\ube68\uac15 \uba74 3\uac1c \uc911 2\uac1c'\ub85c \uc138\ub294 \ubc29\ubc95\uacfc '\uc870\uac74\ubd80\ud655\ub960 = \ube68\uac15\ube68\uac15 \uce74\ub4dc\uc77c \ud655\ub960 \u00f7 \ube68\uac15\uc774 \ubcf4\uc77c \ud655\ub960'\ub85c \uacc4\uc0b0\ud558\ub294 \ubc29\ubc95\uc740 \uac19\uc740 \uacb0\uacfc(1/3 \u00f7 1/2 = 2/3)\ub97c \uc900\ub2e4."
   ],
   "hardCases": [
-   "301번 중 203번은 실제 시행의 결과가 아니라 가상의 값이다. 학생이 이 값을 사실로 오해하지 않도록 안내한다."
+   "301\ubc88 \uc911 203\ubc88\uc740 \uc2e4\uc81c \uc2dc\ud589\uc758 \uacb0\uacfc\uac00 \uc544\ub2c8\ub77c \uac00\uc0c1\uc758 \uac12\uc774\ub2e4. \ud559\uc0dd\uc774 \uc774 \uac12\uc744 \uc0ac\uc2e4\ub85c \uc624\ud574\ud558\uc9c0 \uc54a\ub3c4\ub85d \uc548\ub0b4\ud55c\ub2e4."
   ],
   "cautions": {
-   "language": "카드 이름을 기호가 아닌 '빨강빨강 카드'처럼 글로 써서 낭독기가 읽기 쉽다.",
-   "culture": "카드와 색깔만 쓰는 상황이라 문화 의존이 없다. 확률이 도박으로 이어지지 않도록 가상의 카드 게임임을 안내한다.",
-   "accessibility": "빨강과 파랑을 색에만 의존하지 않고 글로 구별했다. 색을 구별하기 어려운 학생도 풀 수 있다."
+   "language": "\uce74\ub4dc \uc774\ub984\uc744 \uae30\ud638\uac00 \uc544\ub2cc '\ube68\uac15\ube68\uac15 \uce74\ub4dc'\ucc98\ub7fc \uae00\ub85c \uc368\uc11c \ub0ad\ub3c5\uae30\uac00 \uc77d\uae30 \uc27d\ub2e4.",
+   "culture": "\uce74\ub4dc\uc640 \uc0c9\uae54\ub9cc \uc4f0\ub294 \uc0c1\ud669\uc774\ub77c \ubb38\ud654 \uc758\uc874\uc774 \uc5c6\ub2e4. \ud655\ub960\uc774 \ub3c4\ubc15\uc73c\ub85c \uc774\uc5b4\uc9c0\uc9c0 \uc54a\ub3c4\ub85d \uac00\uc0c1\uc758 \uce74\ub4dc \uac8c\uc784\uc784\uc744 \uc548\ub0b4\ud55c\ub2e4.",
+   "accessibility": "\ube68\uac15\uacfc \ud30c\ub791\uc744 \uc0c9\uc5d0\ub9cc \uc758\uc874\ud558\uc9c0 \uc54a\uace0 \uae00\ub85c \uad6c\ubcc4\ud588\ub2e4. \uc0c9\uc744 \uad6c\ubcc4\ud558\uae30 \uc5b4\ub824\uc6b4 \ud559\uc0dd\ub3c4 \ud480 \uc218 \uc788\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "각 단계의 합리적 선택, 오류 줄의 위치"
+    "\uac01 \ub2e8\uacc4\uc758 \ud569\ub9ac\uc801 \uc120\ud0dd, \uc624\ub958 \uc904\uc758 \uc704\uce58"
    ],
    "human": [
-    "성찰 답의 질"
+    "\uc131\ucc30 \ub2f5\uc758 \uc9c8"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "x-m-h3-10",
   "subject": "math",
   "grade": "H3",
-  "topic": "벡터나 공간도형의 직관",
+  "topic": "\ubca1\ud130\ub098 \uacf5\uac04\ub3c4\ud615\uc758 \uc9c1\uad00",
   "level": 3,
-  "levelLabel": "고등",
-  "title": "수직인 두 직선은 평행할까",
+  "levelLabel": "\uace0\ub4f1",
+  "title": "\uc218\uc9c1\uc778 \ub450 \uc9c1\uc120\uc740 \ud3c9\ud589\ud560\uae4c",
   "uiLang": "ko",
   "format": "make-your-own",
   "generative": true,
-  "goal": "평면에서 성립하는 주장이 공간에서는 성립하지 않을 수 있음을, 좌표로 반례를 직접 만들어 확인한다.",
+  "goal": "\ud3c9\uba74\uc5d0\uc11c \uc131\ub9bd\ud558\ub294 \uc8fc\uc7a5\uc774 \uacf5\uac04\uc5d0\uc11c\ub294 \uc131\ub9bd\ud558\uc9c0 \uc54a\uc744 \uc218 \uc788\uc74c\uc744, \uc88c\ud45c\ub85c \ubc18\ub840\ub97c \uc9c1\uc811 \ub9cc\ub4e4\uc5b4 \ud655\uc778\ud55c\ub2e4.",
   "thinking": [
-   "평면과 공간의 차이 추론하기",
-   "조건(수직, 평행 아님)을 만족하는 벡터 쌍 만들기",
-   "반례의 이유 설명하기"
+   "\ud3c9\uba74\uacfc \uacf5\uac04\uc758 \ucc28\uc774 \ucd94\ub860\ud558\uae30",
+   "\uc870\uac74(\uc218\uc9c1, \ud3c9\ud589 \uc544\ub2d8)\uc744 \ub9cc\uc871\ud558\ub294 \ubca1\ud130 \uc30d \ub9cc\ub4e4\uae30",
+   "\ubc18\ub840\uc758 \uc774\uc720 \uc124\uba85\ud558\uae30"
   ],
-  "differsFromPlain": "단순 연습은 두 벡터의 내적을 계산해 수직 여부를 확인한다. 여기서는 '수직인 두 직선은 평행하다'라는 주장이 어디에서 성립하고 어디에서 깨지는지 학생이 반례를 만들며 확인한다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \ub450 \ubca1\ud130\uc758 \ub0b4\uc801\uc744 \uacc4\uc0b0\ud574 \uc218\uc9c1 \uc5ec\ubd80\ub97c \ud655\uc778\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 '\uc218\uc9c1\uc778 \ub450 \uc9c1\uc120\uc740 \ud3c9\ud589\ud558\ub2e4'\ub77c\ub294 \uc8fc\uc7a5\uc774 \uc5b4\ub514\uc5d0\uc11c \uc131\ub9bd\ud558\uace0 \uc5b4\ub514\uc5d0\uc11c \uae68\uc9c0\ub294\uc9c0 \ud559\uc0dd\uc774 \ubc18\ub840\ub97c \ub9cc\ub4e4\uba70 \ud655\uc778\ud55c\ub2e4.",
   "prerequisites": [
-   "공간좌표에서 벡터를 성분으로 나타내 본 경험",
-   "두 벡터가 이루는 각과 수직을 벡터로 나타내 본 경험"
+   "\uacf5\uac04\uc88c\ud45c\uc5d0\uc11c \ubca1\ud130\ub97c \uc131\ubd84\uc73c\ub85c \ub098\ud0c0\ub0b4 \ubcf8 \uacbd\ud5d8",
+   "\ub450 \ubca1\ud130\uac00 \uc774\ub8e8\ub294 \uac01\uacfc \uc218\uc9c1\uc744 \ubca1\ud130\ub85c \ub098\ud0c0\ub0b4 \ubcf8 \uacbd\ud5d8"
   ],
   "minutes": 14,
   "curriculum": null,
-  "material": "평면에서는 '한 직선에 수직인 두 직선은 서로 평행하다'가 성립합니다. 이 말이 공간에서도 성립하는지 좌표로 확인해 봅니다. 공간에서 직선 n의 방향벡터가 n = (1, 2, 2) (성분은 일, 이, 이) 입니다. 직선 l, m의 방향벡터를 각각 u = (u1, u2, u3), v = (v1, v2, v3) 라고 하고, 모두 n과 수직인 직선이라 생각합니다.",
+  "material": "\ud3c9\uba74\uc5d0\uc11c\ub294 '\ud55c \uc9c1\uc120\uc5d0 \uc218\uc9c1\uc778 \ub450 \uc9c1\uc120\uc740 \uc11c\ub85c \ud3c9\ud589\ud558\ub2e4'\uac00 \uc131\ub9bd\ud569\ub2c8\ub2e4. \uc774 \ub9d0\uc774 \uacf5\uac04\uc5d0\uc11c\ub3c4 \uc131\ub9bd\ud558\ub294\uc9c0 \uc88c\ud45c\ub85c \ud655\uc778\ud574 \ubd05\ub2c8\ub2e4. \uacf5\uac04\uc5d0\uc11c \uc9c1\uc120 n\uc758 \ubc29\ud5a5\ubca1\ud130\uac00 n = (1, 2, 2) (\uc131\ubd84\uc740 \uc77c, \uc774, \uc774) \uc785\ub2c8\ub2e4. \uc9c1\uc120 l, m\uc758 \ubc29\ud5a5\ubca1\ud130\ub97c \uac01\uac01 u = (u1, u2, u3), v = (v1, v2, v3) \ub77c\uace0 \ud558\uace0, \ubaa8\ub450 n\uacfc \uc218\uc9c1\uc778 \uc9c1\uc120\uc774\ub77c \uc0dd\uac01\ud569\ub2c8\ub2e4.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
-    "prompt": "'한 직선에 수직인 두 직선은 서로 평행하다'는 주장에 대해 알맞은 것을 고르세요.",
+    "prompt": "'\ud55c \uc9c1\uc120\uc5d0 \uc218\uc9c1\uc778 \ub450 \uc9c1\uc120\uc740 \uc11c\ub85c \ud3c9\ud589\ud558\ub2e4'\ub294 \uc8fc\uc7a5\uc5d0 \ub300\ud574 \uc54c\ub9de\uc740 \uac83\uc744 \uace0\ub974\uc138\uc694.",
     "options": [
      {
       "id": "a",
-      "text": "평면에서도 공간에서도 항상 성립한다",
-      "reveals": "평면에서의 경험을 공간에 그대로 옮겼어요. 공간에서는 수직인 방향이 하나가 아닐 수 있어요."
+      "text": "\ud3c9\uba74\uc5d0\uc11c\ub3c4 \uacf5\uac04\uc5d0\uc11c\ub3c4 \ud56d\uc0c1 \uc131\ub9bd\ud55c\ub2e4",
+      "reveals": "\ud3c9\uba74\uc5d0\uc11c\uc758 \uacbd\ud5d8\uc744 \uacf5\uac04\uc5d0 \uadf8\ub300\ub85c \uc62e\uacbc\uc5b4\uc694. \uacf5\uac04\uc5d0\uc11c\ub294 \uc218\uc9c1\uc778 \ubc29\ud5a5\uc774 \ud558\ub098\uac00 \uc544\ub2d0 \uc218 \uc788\uc5b4\uc694."
      },
      {
       "id": "b",
-      "text": "공간에서는 성립하지만 평면에서는 반례가 있다",
-      "reveals": "평면에서 한 직선에 수직인 방향이 몇 개인지 생각해 보세요."
+      "text": "\uacf5\uac04\uc5d0\uc11c\ub294 \uc131\ub9bd\ud558\uc9c0\ub9cc \ud3c9\uba74\uc5d0\uc11c\ub294 \ubc18\ub840\uac00 \uc788\ub2e4",
+      "reveals": "\ud3c9\uba74\uc5d0\uc11c \ud55c \uc9c1\uc120\uc5d0 \uc218\uc9c1\uc778 \ubc29\ud5a5\uc774 \uba87 \uac1c\uc778\uc9c0 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694."
      },
      {
       "id": "c",
-      "text": "평면에서는 성립하고 공간에서는 반례가 있다",
-      "reveals": "평면과 공간의 차이를 구별했어요."
+      "text": "\ud3c9\uba74\uc5d0\uc11c\ub294 \uc131\ub9bd\ud558\uace0 \uacf5\uac04\uc5d0\uc11c\ub294 \ubc18\ub840\uac00 \uc788\ub2e4",
+      "reveals": "\ud3c9\uba74\uacfc \uacf5\uac04\uc758 \ucc28\uc774\ub97c \uad6c\ubcc4\ud588\uc5b4\uc694."
      },
      {
       "id": "d",
-      "text": "평면에서도 공간에서도 반례가 있다",
-      "reveals": "평면에서 한 직선에 수직인 방향이 하나뿐인지 확인해 보세요."
+      "text": "\ud3c9\uba74\uc5d0\uc11c\ub3c4 \uacf5\uac04\uc5d0\uc11c\ub3c4 \ubc18\ub840\uac00 \uc788\ub2e4",
+      "reveals": "\ud3c9\uba74\uc5d0\uc11c \ud55c \uc9c1\uc120\uc5d0 \uc218\uc9c1\uc778 \ubc29\ud5a5\uc774 \ud558\ub098\ubfd0\uc778\uc9c0 \ud655\uc778\ud574 \ubcf4\uc138\uc694."
      }
     ],
     "correct": [
      "c"
     ],
-    "explain": "평면에서는 한 직선에 수직인 방향이 하나뿐이라 수직인 두 직선은 평행해요. 공간에서는 수직인 방향이 한 평면 위에서 여러 개가 가능하므로 평행이 아닌 경우가 있어요.",
+    "explain": "\ud3c9\uba74\uc5d0\uc11c\ub294 \ud55c \uc9c1\uc120\uc5d0 \uc218\uc9c1\uc778 \ubc29\ud5a5\uc774 \ud558\ub098\ubfd0\uc774\ub77c \uc218\uc9c1\uc778 \ub450 \uc9c1\uc120\uc740 \ud3c9\ud589\ud574\uc694. \uacf5\uac04\uc5d0\uc11c\ub294 \uc218\uc9c1\uc778 \ubc29\ud5a5\uc774 \ud55c \ud3c9\uba74 \uc704\uc5d0\uc11c \uc5ec\ub7ec \uac1c\uac00 \uac00\ub2a5\ud558\ubbc0\ub85c \ud3c9\ud589\uc774 \uc544\ub2cc \uacbd\uc6b0\uac00 \uc788\uc5b4\uc694.",
     "hints": [
-     "평면에서 한 직선에 수직인 방향이 몇 가지인지 그려 보세요.",
-     "공간에서 한 직선에 수직인 방향이 몇 가지가 될지 상상해 보세요. (예: 세워 둔 연필에 수직인 방향)"
+     "\ud3c9\uba74\uc5d0\uc11c \ud55c \uc9c1\uc120\uc5d0 \uc218\uc9c1\uc778 \ubc29\ud5a5\uc774 \uba87 \uac00\uc9c0\uc778\uc9c0 \uadf8\ub824 \ubcf4\uc138\uc694.",
+     "\uacf5\uac04\uc5d0\uc11c \ud55c \uc9c1\uc120\uc5d0 \uc218\uc9c1\uc778 \ubc29\ud5a5\uc774 \uba87 \uac00\uc9c0\uac00 \ub420\uc9c0 \uc0c1\uc0c1\ud574 \ubcf4\uc138\uc694. (\uc608: \uc138\uc6cc \ub454 \uc5f0\ud544\uc5d0 \uc218\uc9c1\uc778 \ubc29\ud5a5)"
     ],
     "scaffold": true
    },
    {
     "id": "s2",
     "kind": "build",
-    "prompt": "n = (1, 2, 2) 와 각각 수직이면서 서로 평행하지 않은 u, v 를 정수 성분으로 정해, 서로 다른 쌍을 2개 만들어 보세요. (u와 v의 순서를 바꾼 쌍은 같은 쌍으로 셉니다.)",
+    "prompt": "n = (1, 2, 2) \uc640 \uac01\uac01 \uc218\uc9c1\uc774\uba74\uc11c \uc11c\ub85c \ud3c9\ud589\ud558\uc9c0 \uc54a\uc740 u, v \ub97c \uc815\uc218 \uc131\ubd84\uc73c\ub85c \uc815\ud574, \uc11c\ub85c \ub2e4\ub978 \uc30d\uc744 2\uac1c \ub9cc\ub4e4\uc5b4 \ubcf4\uc138\uc694. (u\uc640 v\uc758 \uc21c\uc11c\ub97c \ubc14\uafbc \uc30d\uc740 \uac19\uc740 \uc30d\uc73c\ub85c \uc149\ub2c8\ub2e4.)",
     "vars": [
      {
       "name": "u1",
-      "label": "u의 첫째 성분"
+      "label": "u\uc758 \uccab\uc9f8 \uc131\ubd84"
      },
      {
       "name": "u2",
-      "label": "u의 둘째 성분"
+      "label": "u\uc758 \ub458\uc9f8 \uc131\ubd84"
      },
      {
       "name": "u3",
-      "label": "u의 셋째 성분"
+      "label": "u\uc758 \uc14b\uc9f8 \uc131\ubd84"
      },
      {
       "name": "v1",
-      "label": "v의 첫째 성분"
+      "label": "v\uc758 \uccab\uc9f8 \uc131\ubd84"
      },
      {
       "name": "v2",
-      "label": "v의 둘째 성분"
+      "label": "v\uc758 \ub458\uc9f8 \uc131\ubd84"
      },
      {
       "name": "v3",
-      "label": "v의 셋째 성분"
+      "label": "v\uc758 \uc14b\uc9f8 \uc131\ubd84"
      }
     ],
     "constraints": [
      {
       "id": "c1",
       "expr": "u1+2*u2+2*u3==0",
-      "ok": "u가 n과 수직이에요.",
-      "fail": "u가 n과 수직이 아니에요."
+      "ok": "u\uac00 n\uacfc \uc218\uc9c1\uc774\uc5d0\uc694.",
+      "fail": "u\uac00 n\uacfc \uc218\uc9c1\uc774 \uc544\ub2c8\uc5d0\uc694."
      },
      {
       "id": "c2",
       "expr": "v1+2*v2+2*v3==0",
-      "ok": "v가 n과 수직이에요.",
-      "fail": "v가 n과 수직이 아니에요."
+      "ok": "v\uac00 n\uacfc \uc218\uc9c1\uc774\uc5d0\uc694.",
+      "fail": "v\uac00 n\uacfc \uc218\uc9c1\uc774 \uc544\ub2c8\uc5d0\uc694."
      },
      {
       "id": "c3",
       "expr": "(u2*v3-u3*v2)!=0 || (u3*v1-u1*v3)!=0 || (u1*v2-u2*v1)!=0",
-      "ok": "u와 v가 평행하지 않아요(영벡터도 아니에요).",
-      "fail": "u와 v가 평행하거나 영벡터예요."
+      "ok": "u\uc640 v\uac00 \ud3c9\ud589\ud558\uc9c0 \uc54a\uc544\uc694(\uc601\ubca1\ud130\ub3c4 \uc544\ub2c8\uc5d0\uc694).",
+      "fail": "u\uc640 v\uac00 \ud3c9\ud589\ud558\uac70\ub098 \uc601\ubca1\ud130\uc608\uc694."
      }
     ],
     "need": 2,
@@ -1911,105 +1915,106 @@
       "v3": 0
      }
     ],
-    "explain": "u = (2, −1, 0) 과 v = (0, 1, −1) 은 둘 다 n 과 수직이고 한 벡터가 다른 벡터의 상수배가 아니에요. n에 수직인 벡터는 한 평면 위의 여러 방향이라서 평행하지 않은 쌍이 얼마든지 있어요.",
+    "explain": "u = (2, \u22121, 0) \uacfc v = (0, 1, \u22121) \uc740 \ub458 \ub2e4 n \uacfc \uc218\uc9c1\uc774\uace0 \ud55c \ubca1\ud130\uac00 \ub2e4\ub978 \ubca1\ud130\uc758 \uc0c1\uc218\ubc30\uac00 \uc544\ub2c8\uc5d0\uc694. n\uc5d0 \uc218\uc9c1\uc778 \ubca1\ud130\ub294 \ud55c \ud3c9\uba74 \uc704\uc758 \uc5ec\ub7ec \ubc29\ud5a5\uc774\ub77c\uc11c \ud3c9\ud589\ud558\uc9c0 \uc54a\uc740 \uc30d\uc774 \uc5bc\ub9c8\ub4e0\uc9c0 \uc788\uc5b4\uc694.",
     "hints": [
-     "u가 n과 수직이 되는 조건을 성분으로 식으로 써 보세요. 그 식을 만족하는 정수 벡터를 하나 찾아보세요.",
-     "찾은 u와 상수배가 되지 않는 v를 찾아 보세요. 성분 하나를 0으로 두면 찾기 쉬워요."
+     "u\uac00 n\uacfc \uc218\uc9c1\uc774 \ub418\ub294 \uc870\uac74\uc744 \uc131\ubd84\uc73c\ub85c \uc2dd\uc73c\ub85c \uc368 \ubcf4\uc138\uc694. \uadf8 \uc2dd\uc744 \ub9cc\uc871\ud558\ub294 \uc815\uc218 \ubca1\ud130\ub97c \ud558\ub098 \ucc3e\uc544\ubcf4\uc138\uc694.",
+     "\ucc3e\uc740 u\uc640 \uc0c1\uc218\ubc30\uac00 \ub418\uc9c0 \uc54a\ub294 v\ub97c \ucc3e\uc544 \ubcf4\uc138\uc694. \uc131\ubd84 \ud558\ub098\ub97c 0\uc73c\ub85c \ub450\uba74 \ucc3e\uae30 \uc26c\uc6cc\uc694."
     ],
     "distinctBy": "(u1+v1)*10000+(u2+v2)*100+(u3+v3)",
     "because": {
      "id": "s2b",
      "kind": "write",
-     "prompt": "만든 한 쌍을 보고, 평면에서는 평행이 되던 것이 공간에서는 왜 깨지는지 한두 문장으로 설명해 보세요.",
+     "prompt": "\ub9cc\ub4e0 \ud55c \uc30d\uc744 \ubcf4\uace0, \ud3c9\uba74\uc5d0\uc11c\ub294 \ud3c9\ud589\uc774 \ub418\ub358 \uac83\uc774 \uacf5\uac04\uc5d0\uc11c\ub294 \uc65c \uae68\uc9c0\ub294\uc9c0 \ud55c\ub450 \ubb38\uc7a5\uc73c\ub85c \uc124\uba85\ud574 \ubcf4\uc138\uc694.",
      "minChars": 15,
      "checks": [
       {
        "id": "w1",
-       "label": "수직인 방향이 하나로 정해지지 않고 여러 개(또는 한 평면 위)임을 말했다",
+       "label": "\uc218\uc9c1\uc778 \ubc29\ud5a5\uc774 \ud558\ub098\ub85c \uc815\ud574\uc9c0\uc9c0 \uc54a\uace0 \uc5ec\ub7ec \uac1c(\ub610\ub294 \ud55c \ud3c9\uba74 \uc704)\uc784\uc744 \ub9d0\ud588\ub2e4",
        "mode": "any",
        "patterns": [
-        "여러\\s*(개|방향|직선)",
-        "무수히",
-        "무한(히|한)",
-        "셀\\s*수\\s*없",
-        "(수직인|수직한).{0,15}평면",
-        "평면.{0,15}(수직|위에)",
-        "다양한\\s*방향",
-        "방향이\\s*많"
+        "\uc5ec\ub7ec\\s*(\uac1c|\ubc29\ud5a5|\uc9c1\uc120)",
+        "\ubb34\uc218\ud788",
+        "\ubb34\ud55c(\ud788|\ud55c)",
+        "\uc140\\s*\uc218\\s*\uc5c6",
+        "(\uc218\uc9c1\uc778|\uc218\uc9c1\ud55c).{0,15}\ud3c9\uba74",
+        "\ud3c9\uba74.{0,15}(\uc218\uc9c1|\uc704\uc5d0)",
+        "\ub2e4\uc591\ud55c\\s*\ubc29\ud5a5",
+        "\ubc29\ud5a5\uc774\\s*\ub9ce"
        ]
       },
       {
        "id": "w2",
-       "label": "내가 만든 벡터의 성분을 예로 들었다",
+       "label": "\ub0b4\uac00 \ub9cc\ub4e0 \ubca1\ud130\uc758 \uc131\ubd84\uc744 \uc608\ub85c \ub4e4\uc5c8\ub2e4",
        "mode": "any",
        "patterns": [
-        "\\(\\s*[-−]?\\d+\\s*,\\s*[-−]?\\d+\\s*,\\s*[-−]?\\d+\\s*\\)"
+        "\\(\\s*[-\u2212]?\\d+\\s*,\\s*[-\u2212]?\\d+\\s*,\\s*[-\u2212]?\\d+\\s*\\)"
        ]
       }
      ],
      "selfAssess": [
-      "내 설명에서 '수직인 방향이 하나가 아니라 여럿'이라는 점이 드러나나요?",
-      "내가 만든 u, v의 성분을 직접 넣어 설명했나요?"
+      "\ub0b4 \uc124\uba85\uc5d0\uc11c '\uc218\uc9c1\uc778 \ubc29\ud5a5\uc774 \ud558\ub098\uac00 \uc544\ub2c8\ub77c \uc5ec\ub7ff'\uc774\ub77c\ub294 \uc810\uc774 \ub4dc\ub7ec\ub098\ub098\uc694?",
+      "\ub0b4\uac00 \ub9cc\ub4e0 u, v\uc758 \uc131\ubd84\uc744 \uc9c1\uc811 \ub123\uc5b4 \uc124\uba85\ud588\ub098\uc694?"
      ],
      "modelAnswers": [
       {
-       "text": "n에 수직인 벡터는 u = (2, −1, 0) 처럼 한 방향만이 아니라 무수히 많아서, v = (0, 1, −1) 도 수직이지만 u와 평행하지 않아. 수직인 방향이 한 평면 위에 퍼져 있기 때문이야."
+       "text": "n\uc5d0 \uc218\uc9c1\uc778 \ubca1\ud130\ub294 u = (2, \u22121, 0) \ucc98\ub7fc \ud55c \ubc29\ud5a5\ub9cc\uc774 \uc544\ub2c8\ub77c \ubb34\uc218\ud788 \ub9ce\uc544\uc11c, v = (0, 1, \u22121) \ub3c4 \uc218\uc9c1\uc774\uc9c0\ub9cc u\uc640 \ud3c9\ud589\ud558\uc9c0 \uc54a\uc544. \uc218\uc9c1\uc778 \ubc29\ud5a5\uc774 \ud55c \ud3c9\uba74 \uc704\uc5d0 \ud37c\uc838 \uc788\uae30 \ub54c\ubb38\uc774\uc57c."
       },
       {
-       "text": "(2, −1, 0) 과 (2, 0, −1) 은 둘 다 n = (1, 2, 2) 에 수직이지만 서로 다른 방향이야. 평면에서는 수직인 방향이 하나뿐이었는데 공간에서는 n에 수직인 방향이 여러 개라서 평행이 깨져."
+       "text": "(2, \u22121, 0) \uacfc (2, 0, \u22121) \uc740 \ub458 \ub2e4 n = (1, 2, 2) \uc5d0 \uc218\uc9c1\uc774\uc9c0\ub9cc \uc11c\ub85c \ub2e4\ub978 \ubc29\ud5a5\uc774\uc57c. \ud3c9\uba74\uc5d0\uc11c\ub294 \uc218\uc9c1\uc778 \ubc29\ud5a5\uc774 \ud558\ub098\ubfd0\uc774\uc5c8\ub294\ub370 \uacf5\uac04\uc5d0\uc11c\ub294 n\uc5d0 \uc218\uc9c1\uc778 \ubc29\ud5a5\uc774 \uc5ec\ub7ec \uac1c\ub77c\uc11c \ud3c9\ud589\uc774 \uae68\uc838."
       }
      ],
      "badAnswers": [
       {
-       "text": "공간에서는 그냥 달라서 평행이 아니야.",
-       "why": "이유와 구체적인 벡터가 없다."
+       "text": "\uacf5\uac04\uc5d0\uc11c\ub294 \uadf8\ub0e5 \ub2ec\ub77c\uc11c \ud3c9\ud589\uc774 \uc544\ub2c8\uc57c.",
+       "why": "\uc774\uc720\uc640 \uad6c\uccb4\uc801\uc778 \ubca1\ud130\uac00 \uc5c6\ub2e4."
       },
       {
-       "text": "(2, -1, 0) 과 (0, 1, -1) 을 골랐어.",
-       "why": "벡터만 쓰고 왜 평행이 깨지는지 설명이 없다."
+       "text": "(2, -1, 0) \uacfc (0, 1, -1) \uc744 \uace8\ub790\uc5b4.",
+       "why": "\ubca1\ud130\ub9cc \uc4f0\uace0 \uc65c \ud3c9\ud589\uc774 \uae68\uc9c0\ub294\uc9c0 \uc124\uba85\uc774 \uc5c6\ub2e4."
       }
      ],
-     "humanReview": "설명이 '평면 위의 여러 방향'이라는 직관을 담았는지, 정확한 용어를 쓰는지는 사람이 읽어야 한다.",
+     "humanReview": "\uc124\uba85\uc774 '\ud3c9\uba74 \uc704\uc758 \uc5ec\ub7ec \ubc29\ud5a5'\uc774\ub77c\ub294 \uc9c1\uad00\uc744 \ub2f4\uc558\ub294\uc9c0, \uc815\ud655\ud55c \uc6a9\uc5b4\ub97c \uc4f0\ub294\uc9c0\ub294 \uc0ac\ub78c\uc774 \uc77d\uc5b4\uc57c \ud55c\ub2e4.",
      "hints": [
-      "평면에서 수직인 방향이 몇 개인지와 공간에서 몇 개인지를 비교해 써 보세요.",
-      "내가 고른 u, v의 성분을 문장에 넣어 보세요."
+      "\ud3c9\uba74\uc5d0\uc11c \uc218\uc9c1\uc778 \ubc29\ud5a5\uc774 \uba87 \uac1c\uc778\uc9c0\uc640 \uacf5\uac04\uc5d0\uc11c \uba87 \uac1c\uc778\uc9c0\ub97c \ube44\uad50\ud574 \uc368 \ubcf4\uc138\uc694.",
+      "\ub0b4\uac00 \uace0\ub978 u, v\uc758 \uc131\ubd84\uc744 \ubb38\uc7a5\uc5d0 \ub123\uc5b4 \ubcf4\uc138\uc694."
      ]
     }
    }
   ],
   "rubric": [
    {
-    "criterion": "반례 만들기",
-    "full": "n과 수직이고 서로 평행하지 않은 서로 다른 쌍 2개",
-    "partial": "한 조건만 만족",
-    "none": "쌍을 만들지 못함"
+    "criterion": "\ubc18\ub840 \ub9cc\ub4e4\uae30",
+    "full": "n\uacfc \uc218\uc9c1\uc774\uace0 \uc11c\ub85c \ud3c9\ud589\ud558\uc9c0 \uc54a\uc740 \uc11c\ub85c \ub2e4\ub978 \uc30d 2\uac1c",
+    "partial": "\ud55c \uc870\uac74\ub9cc \ub9cc\uc871",
+    "none": "\uc30d\uc744 \ub9cc\ub4e4\uc9c0 \ubabb\ud568"
    },
    {
-    "criterion": "이유 설명",
-    "full": "평면에서는 수직인 방향이 하나지만 공간에서는 여럿임을 설명",
-    "partial": "차이는 말했으나 벡터 예가 없음",
-    "none": "이유를 말하지 못함"
+    "criterion": "\uc774\uc720 \uc124\uba85",
+    "full": "\ud3c9\uba74\uc5d0\uc11c\ub294 \uc218\uc9c1\uc778 \ubc29\ud5a5\uc774 \ud558\ub098\uc9c0\ub9cc \uacf5\uac04\uc5d0\uc11c\ub294 \uc5ec\ub7ff\uc784\uc744 \uc124\uba85",
+    "partial": "\ucc28\uc774\ub294 \ub9d0\ud588\uc73c\ub098 \ubca1\ud130 \uc608\uac00 \uc5c6\uc74c",
+    "none": "\uc774\uc720\ub97c \ub9d0\ud558\uc9c0 \ubabb\ud568"
    }
   ],
   "alternatives": [
-   "u와 v 중 하나가 n 자신과 수직이 아닌 벡터를 쓰는 경우는 c1, c2가 걸러낸다.",
-   "같은 쌍에서 u, v 순서만 바꾼 것은 한 쌍으로 센다."
+   "u\uc640 v \uc911 \ud558\ub098\uac00 n \uc790\uc2e0\uacfc \uc218\uc9c1\uc774 \uc544\ub2cc \ubca1\ud130\ub97c \uc4f0\ub294 \uacbd\uc6b0\ub294 c1, c2\uac00 \uac78\ub7ec\ub0b8\ub2e4.",
+   "\uac19\uc740 \uc30d\uc5d0\uc11c u, v \uc21c\uc11c\ub9cc \ubc14\uafbc \uac83\uc740 \ud55c \uc30d\uc73c\ub85c \uc13c\ub2e4."
   ],
   "hardCases": [
-   "성분에 분수나 소수를 쓰면 정수 조건은 없으므로 식을 만족하면 인정한다. 계산 실수가 있는지는 사람이 확인한다."
+   "\uc131\ubd84\uc5d0 \ubd84\uc218\ub098 \uc18c\uc218\ub97c \uc4f0\uba74 \uc815\uc218 \uc870\uac74\uc740 \uc5c6\uc73c\ubbc0\ub85c \uc2dd\uc744 \ub9cc\uc871\ud558\uba74 \uc778\uc815\ud55c\ub2e4. \uacc4\uc0b0 \uc2e4\uc218\uac00 \uc788\ub294\uc9c0\ub294 \uc0ac\ub78c\uc774 \ud655\uc778\ud55c\ub2e4."
   ],
   "cautions": {
-   "language": "'방향벡터', '수직', '평행'의 뜻을 문장 안에서 풀어 썼다.",
-   "culture": "수학적 맥락만 있어 문화 의존이 없다.",
-   "accessibility": "그림 없이 연필 같은 일상 물건과 좌표로 설명했다. 순서쌍 (1, 2, 2)는 '일 이 이'로 읽도록 안내했다."
+   "language": "'\ubc29\ud5a5\ubca1\ud130', '\uc218\uc9c1', '\ud3c9\ud589'\uc758 \ub73b\uc744 \ubb38\uc7a5 \uc548\uc5d0\uc11c \ud480\uc5b4 \uc37c\ub2e4.",
+   "culture": "\uc218\ud559\uc801 \ub9e5\ub77d\ub9cc \uc788\uc5b4 \ubb38\ud654 \uc758\uc874\uc774 \uc5c6\ub2e4.",
+   "accessibility": "\uadf8\ub9bc \uc5c6\uc774 \uc5f0\ud544 \uac19\uc740 \uc77c\uc0c1 \ubb3c\uac74\uacfc \uc88c\ud45c\ub85c \uc124\uba85\ud588\ub2e4. \uc21c\uc11c\uc30d (1, 2, 2)\ub294 '\uc77c \uc774 \uc774'\ub85c \uc77d\ub3c4\ub85d \uc548\ub0b4\ud588\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "만든 쌍이 세 조건을 만족하는지, 서로 다른 쌍인지"
+    "\ub9cc\ub4e0 \uc30d\uc774 \uc138 \uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294\uc9c0, \uc11c\ub85c \ub2e4\ub978 \uc30d\uc778\uc9c0"
    ],
    "human": [
-    "설명의 직관과 용어 사용"
+    "\uc124\uba85\uc758 \uc9c1\uad00\uacfc \uc6a9\uc5b4 \uc0ac\uc6a9"
    ]
-  }
+  },
+  "status": "reviewed-ai"
  }
 ]

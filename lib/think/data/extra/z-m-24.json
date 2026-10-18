@@ -1,607 +1,609 @@
 [
-  {
-    "id": "z-m-24-01",
-    "subject": "math",
-    "grade": "H2",
-    "cell": "math|H2|equations",
-    "topic": "방정식의 양변을 같은 식으로 나눌 때 사라지는 해",
-    "level": 3,
-    "levelLabel": "고등",
-    "title": "풀이 한 줄이 해 하나를 지웠다",
-    "uiLang": "ko",
-    "format": "find-error-fix",
-    "generative": true,
-    "goal": "풀이의 어느 줄에서 해가 사라졌는지 찾고, 그런 일이 생기는 방정식의 조건을 일반화하며, 해를 잃는 방정식을 스스로 만들어 이유를 설명한다.",
-    "thinking": [
-      "풀이에서 오류의 위치 찾기",
-      "식의 변형이 해의 집합을 바꾸는 조건 판단하기",
-      "반례(해를 잃는 방정식) 직접 만들기"
+ {
+  "id": "z-m-24-01",
+  "subject": "math",
+  "grade": "H2",
+  "cell": "math|H2|equations",
+  "topic": "\ubc29\uc815\uc2dd\uc758 \uc591\ubcc0\uc744 \uac19\uc740 \uc2dd\uc73c\ub85c \ub098\ub20c \ub54c \uc0ac\ub77c\uc9c0\ub294 \ud574",
+  "level": 3,
+  "levelLabel": "\uace0\ub4f1",
+  "title": "\ud480\uc774 \ud55c \uc904\uc774 \ud574 \ud558\ub098\ub97c \uc9c0\uc6e0\ub2e4",
+  "uiLang": "ko",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "\ud480\uc774\uc758 \uc5b4\ub290 \uc904\uc5d0\uc11c \ud574\uac00 \uc0ac\ub77c\uc84c\ub294\uc9c0 \ucc3e\uace0, \uadf8\ub7f0 \uc77c\uc774 \uc0dd\uae30\ub294 \ubc29\uc815\uc2dd\uc758 \uc870\uac74\uc744 \uc77c\ubc18\ud654\ud558\uba70, \ud574\ub97c \uc783\ub294 \ubc29\uc815\uc2dd\uc744 \uc2a4\uc2a4\ub85c \ub9cc\ub4e4\uc5b4 \uc774\uc720\ub97c \uc124\uba85\ud55c\ub2e4.",
+  "thinking": [
+   "\ud480\uc774\uc5d0\uc11c \uc624\ub958\uc758 \uc704\uce58 \ucc3e\uae30",
+   "\uc2dd\uc758 \ubcc0\ud615\uc774 \ud574\uc758 \uc9d1\ud569\uc744 \ubc14\uafb8\ub294 \uc870\uac74 \ud310\ub2e8\ud558\uae30",
+   "\ubc18\ub840(\ud574\ub97c \uc783\ub294 \ubc29\uc815\uc2dd) \uc9c1\uc811 \ub9cc\ub4e4\uae30"
+  ],
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \ubc29\uc815\uc2dd\uc744 \ud480\uc5b4 \ud574\ub97c \uad6c\ud558\ub294 \uac83\uc73c\ub85c \ub05d\ub09c\ub2e4. \uc5ec\uae30\uc11c\ub294 \uc774\ubbf8 \ub098\uc628 \ud480\uc774\uac00 '\ud574\ub97c \ub2e4 \uad6c\ud588\ub294\uac00'\ub97c \ub530\uc838 \uc624\ub958 \uc904\uc744 \ucc3e\uace0, \uac19\uc740 \uc624\ub958\uac00 \uc0dd\uae30\ub294 \ubc29\uc815\uc2dd\uc744 \ud559\uc0dd\uc774 \uc9c1\uc811 \ub9cc\ub4e0\ub2e4.",
+  "prerequisites": [
+   "\uc774 \ubc30\uce58\uc758 H2\ub294 \ub09c\uc774\ub3c4\u00b7\uc9c0\uc6d0 \uc218\uc900 \uad6c\ubd84\uc774\uba70 \ud559\uad50\uc5d0\uc11c \ubc30\uc6b0\ub294 \ud559\ub144\uc744 \ub73b\ud558\uc9c0 \uc54a\ub294\ub2e4. \ud559\uad50 \uc21c\uc11c \uac00\uc815: \uc911\ud559\uad50\uc5d0\uc11c \uc778\uc218\ubd84\ud574\ub85c \uc774\ucc28\ubc29\uc815\uc2dd\uc744 \ud478\ub294 \uac83\uc744 \ubc30\uc6e0\uace0, \uacf5\ud1b5\uc218\ud559\uc5d0\uc11c \uc0bc\ucc28\uc2dd \uc778\uc218\ubd84\ud574\ub97c \uc811\ud588\ub2e4.",
+   "\ubc29\uc815\uc2dd\uc5d0 \uc5b4\ub5a4 \uac12\uc744 \ub300\uc785\ud574 \uc591\ubcc0\uc774 \uac19\uc740\uc9c0 \ud655\uc778\ud558\ub294 \ubc29\ubc95",
+   "\uc774 \uacfc\uc81c\uc758 x\ub294 \ubaa8\ub450 \uc2e4\uc218\uc774\ub2e4."
+  ],
+  "minutes": 12,
+  "curriculum": null,
+  "material": "\uc9c0\uc544\uac00 \ubc29\uc815\uc2dd x\u00b3 = 4x \ub97c \ud480\uc5b4 '\ud574\ub294 2\uc640 \u22122, \ub450 \uac1c'\ub77c\uace0 \uc801\uc5c8\ub2e4. \ub3c4\uc724\uc774\uac00 \uc9c0\uc544\uc758 \ud480\uc774\ub97c \ubcf4\uace0 \uc790\uae30 \ub2f5\uacfc \ub2e4\ub974\ub2e4\uace0\ub9cc \ud558\uace0 \uc774\uc720\ub294 \ub9d0\ud558\uc9c0 \uc54a\uc558\ub2e4. \uc774 \uacfc\uc81c\uc5d0\uc11c x\ub294 \ubaa8\ub450 \uc2e4\uc218\uc774\ub2e4. (x\u00b3 \uc740 '\uc5d1\uc2a4 \uc138\uc81c\uacf1', x\u00b2 \uc740 '\uc5d1\uc2a4 \uc81c\uacf1'\uc774\ub77c\uace0 \uc77d\ub294\ub2e4.)",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "\uc9c0\uc544\uc758 \ud480\uc774\uc774\ub2e4. \ud574\ub97c \uc798\ubabb \uad6c\ud558\uac8c \ub9cc\ub4e0 \uc904, \ub610\ub294 \uadf8 \uc798\ubabb\uc774 \uadf8\ub300\ub85c \ub4dc\ub7ec\ub09c \uc904\uc744 \uace0\ub974\uc138\uc694.",
+    "lines": [
+     "x\u00b3 = 4x \ub97c \ud47c\ub2e4. (x\ub294 \uc2e4\uc218)",
+     "\uc591\ubcc0\uc744 x\ub85c \ub098\ub204\uba74 x\u00b2 = 4 \uc774\ub2e4.",
+     "x\u00b2 \u2212 4 = 0 \uc774\ubbc0\ub85c (x \u2212 2)(x + 2) = 0 \uc774\ub2e4.",
+     "\ub530\ub77c\uc11c x = 2 \ub610\ub294 x = \u22122 \uc774\ub2e4.",
+     "\uadf8\ub7ec\ubbc0\ub85c \uc774 \ubc29\uc815\uc2dd\uc758 \ud574\ub294 2\uc640 \u22122, \ub450 \uac1c\uc774\ub2e4."
     ],
-    "differsFromPlain": "단순 연습은 방정식을 풀어 해를 구하는 것으로 끝난다. 여기서는 이미 나온 풀이가 '해를 다 구했는가'를 따져 오류 줄을 찾고, 같은 오류가 생기는 방정식을 학생이 직접 만든다.",
-    "prerequisites": [
-      "이 배치의 H2는 난이도·지원 수준 구분이며 학교에서 배우는 학년을 뜻하지 않는다. 학교 순서 가정: 중학교에서 인수분해로 이차방정식을 푸는 것을 배웠고, 공통수학에서 삼차식 인수분해를 접했다.",
-      "방정식에 어떤 값을 대입해 양변이 같은지 확인하는 방법",
-      "이 과제의 x는 모두 실수이다."
+    "wrong": [
+     1,
+     4
     ],
-    "minutes": 12,
-    "curriculum": null,
-    "material": "지아가 방정식 x³ = 4x 를 풀어 '해는 2와 −2, 두 개'라고 적었다. 도윤이가 지아의 풀이를 보고 자기 답과 다르다고만 하고 이유는 말하지 않았다. 이 과제에서 x는 모두 실수이다. (x³ 은 '엑스 세제곱', x² 은 '엑스 제곱'이라고 읽는다.)",
-    "steps": [
+    "explain": "2\ubc88 \uc904\uc5d0\uc11c x\ub85c \ub098\ub204\uc5c8\ub294\ub370, \ucc98\uc74c \uc2dd\uc5d0 x = 0 \uc744 \ub123\uc73c\uba74 \uc591\ubcc0\uc774 \ubaa8\ub450 0\uc774\ub77c \uc131\ub9bd\ud574\uc694. x = 0 \uc778 \uacbd\uc6b0\ub97c \ub530\ub85c \uc0b4\ud53c\uc9c0 \uc54a\uc544 \ud574 0\uc774 \ube60\uc84c\uace0, \uadf8 \uacb0\uacfc\uac00 5\ubc88 \uc904\uc758 '\ub450 \uac1c'\ub85c \uc774\uc5b4\uc84c\uc5b4\uc694. 3\ubc88\uacfc 4\ubc88 \uc904\uc740 \ub098\ub208 \ub4a4\uc758 \uc2dd\uc744 \ubc14\ub974\uac8c \ud47c \uac83\uc774\uc5d0\uc694. \ucc98\uc74c \uc2dd\uc758 \uc2e4\uc218 \ud574\ub294 \u22122, 0, 2 \uc138 \uac1c\uc608\uc694.",
+    "hints": [
+     "\uc904\ub9c8\ub2e4 '\ubc14\ub85c \uc55e \uc904\uacfc \ud574\uac00 \uac19\uc740 \uc2dd\uc778\uac00'\ub97c \ud558\ub098\uc529 \ub530\uc838 \ubcf4\uc138\uc694.",
+     "x\uc5d0 0, 2, \u22122\ub97c \ucc28\ub840\ub85c \ub123\uc5b4 \ucc98\uc74c \uc2dd x\u00b3 = 4x \uac00 \uc131\ub9bd\ud558\ub294\uc9c0 \ud655\uc778\ud574 \ubcf4\uc138\uc694."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "\uc544\ub798 \ubc29\uc815\uc2dd\uc740 \ubaa8\ub450 \uc2e4\uc218 \ubc94\uc704\uc5d0\uc11c \ud47c\ub2e4. \uad04\ud638\ub098 \uc124\uba85\uc5d0 \uc801\ud78c \uc2dd\uc73c\ub85c \uc591\ubcc0\uc744 \ub098\ub204\uace0 \ub0a8\uc740 \uc2dd\ub9cc \ud480\uc5b4\ub3c4, \ucc98\uc74c \ubc29\uc815\uc2dd\uc758 \ud574\ub97c \ud558\ub098\ub3c4 \uc783\uc9c0 \uc54a\ub294 \uac83\uc740 \uc5b4\ub290 \uac83\uc77c\uae4c\uc694?",
+    "options": [
+     {
+      "id": "a",
+      "text": "(x \u2212 2)(x + 1) = 5(x \u2212 2) \ub97c x \u2212 2 \ub85c \ub098\ub208\ub2e4",
+      "reveals": "x \u2212 2 \uac00 0\uc774 \ub418\ub294 \uac12\uc744 \ucc98\uc74c \uc2dd\uc5d0 \ub123\uc5b4 \ubcf4\uba74 \uc591\ubcc0\uc774 \uc5b4\ub5bb\uac8c \ub418\ub294\uc9c0 \ud655\uc778\ud558\uc9c0 \uc54a\uc740 \uc120\ud0dd\uc774\uc5d0\uc694."
+     },
+     {
+      "id": "b",
+      "text": "x\u00b2 = 2x \ub97c x \ub85c \ub098\ub208\ub2e4",
+      "reveals": "\ub098\ub204\ub294 \uc2dd\uc774 0\uc774 \ub418\ub294 \uac12\uc774 \ucc98\uc74c \uc2dd\uc758 \ud574\uc77c \uc218 \uc788\ub2e4\ub294 \uc810\uc744 \ub193\ucce4\uc5b4\uc694. x = 0 \uc744 \ub123\uc5b4 \ubcf4\uc138\uc694."
+     },
+     {
+      "id": "c",
+      "text": "x(x\u00b2 + 3) = 4(x\u00b2 + 3) \ub97c x\u00b2 + 3 \uc73c\ub85c \ub098\ub208\ub2e4",
+      "reveals": "\ub098\ub204\ub294 \uc2dd\uc774 0\uc774 \ub418\ub294 \uc2e4\uc218\uac00 \uc788\ub294\uc9c0\ub97c \uae30\uc900\uc73c\ub85c \uc0bc\uc544 \ub530\uc838 \ubcf8 \uc120\ud0dd\uc774\uc5d0\uc694."
+     },
+     {
+      "id": "d",
+      "text": "(x \u2212 1)\u00b2(x + 2) = (x \u2212 1)(x + 2) \ub97c x \u2212 1 \ub85c \ub098\ub208\ub2e4",
+      "reveals": "\uc81c\uacf1\uc774 \ub4e4\uc5b4 \uc788\uc5b4\ub3c4 x \u2212 1 \uc774 0\uc774 \ub418\ub294 \uac12\uc5d0\uc11c\ub294 \uc591\ubcc0\uc774 \ubaa8\ub450 0\uc774 \ub3fc\uc694. \uadf8 \uac12\uc774 \ud574\uc778\uc9c0 \ud655\uc778\ud574 \ubcf4\uc138\uc694."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "\uc591\ubcc0\uc774 f\u00b7g = f\u00b7h \uaf34\uc774\uba74 f \uac00 0\uc774 \ub418\ub294 \uac12\uc740 \ud56d\uc0c1 \ud574\uc608\uc694. \uadf8\ub798\uc11c f \uac00 0\uc774 \ub418\ub294 \uc2e4\uc218\uac00 \uc788\uc73c\uba74 \ub098\ub204\uae30 \uc804\uc5d0 \uadf8 \uac12\uc744 \ub530\ub85c \ucc59\uaca8\uc57c \ud574\uc694. x\u00b2 + 3 \uc740 \uc5b4\ub5a4 \uc2e4\uc218\uc5d0\uc11c\ub3c4 3 \uc774\uc0c1\uc774\ub77c 0\uc774 \ub418\uc9c0 \uc54a\uc73c\ub2c8, c\uc5d0\uc11c\ub294 \ub098\ub204\uc5b4\ub3c4 \ud574(x = 4)\ub97c \uc783\uc9c0 \uc54a\uc544\uc694. \ubcf5\uc18c\uc218\uae4c\uc9c0 \ubc94\uc704\ub97c \ub113\ud788\uba74 x\u00b2 + 3 = 0 \uc758 \ud574\ub3c4 \ub530\uc838\uc57c \ud558\ubbc0\ub85c \uc0ac\uc815\uc774 \ub2ec\ub77c\uc838\uc694.",
+    "hints": [
+     "\uac01 \ubc29\uc815\uc2dd\uc5d0\uc11c \ub098\ub204\ub824\ub294 \uc2dd\uc774 0\uc774 \ub418\ub294 x\uc758 \uac12\uc774 \uc788\ub294\uc9c0 \ucc3e\uc544 \ubcf4\uc138\uc694.",
+     "\ucc3e\uc740 \uac12\uc744 \ucc98\uc74c \ubc29\uc815\uc2dd \uc591\ubcc0\uc5d0 \ub123\uc5b4 \ubcf4\uace0, \uadf8\ub7f0 \uc2e4\uc218\uac00 \uc544\uc608 \uc5c6\ub294 \ubc29\uc815\uc2dd\uc774 \uc788\ub294\uc9c0\ub3c4 \uc0b4\ud3b4\ubcf4\uc138\uc694."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "build",
+    "prompt": "(x \u2212 a)(x \u2212 b) = c(x \u2212 a) \uaf34\uc758 \ubc29\uc815\uc2dd\uc744 \uc11c\ub85c \ub2e4\ub978 3\uac1c \ub9cc\ub4e4\uc5b4 \ubcf4\uc138\uc694. a, b, c\ub294 \u22129 \uc774\uc0c1 9 \uc774\ud558\uc758 \uc815\uc218\uc774\uace0 c \u2260 0 \uc774\uc5b4\uc57c \ud574\uc694. \uc591\ubcc0\uc744 x \u2212 a \ub85c \ub098\ub208 \ud480\uc774\uac00 \ud574 \ud558\ub098\ub97c \uc783\ub3c4\ub85d, \uc783\uac8c \ub418\ub294 \ud574 a \ub294 \uc74c\uc218, \ub098\ub208 \ub4a4 \uc5bb\uac8c \ub418\ub294 \ud574 b + c \ub294 \uc591\uc218\uac00 \ub418\uac8c \ud558\uc138\uc694.",
+    "vars": [
+     {
+      "name": "a",
+      "label": "a (\uc783\uac8c \ub418\ub294 \ud574)"
+     },
+     {
+      "name": "b",
+      "label": "b"
+     },
+     {
+      "name": "c",
+      "label": "c"
+     }
+    ],
+    "constraints": [
+     {
+      "id": "c1",
+      "expr": "a==floor(a) && b==floor(b) && c==floor(c)",
+      "ok": "a, b, c\uac00 \ubaa8\ub450 \uc815\uc218\uc608\uc694.",
+      "fail": "a, b, c\ub294 \uc815\uc218\uc5ec\uc57c \ud574\uc694."
+     },
+     {
+      "id": "c2",
+      "expr": "abs(a)<=9 && abs(b)<=9 && abs(c)<=9",
+      "ok": "\uc138 \uc218\uac00 \u22129 \uc774\uc0c1 9 \uc774\ud558\uc608\uc694.",
+      "fail": "a, b, c\ub294 \u22129 \uc774\uc0c1 9 \uc774\ud558\uc5ec\uc57c \ud574\uc694."
+     },
+     {
+      "id": "c3",
+      "expr": "c!=0",
+      "ok": "c\uac00 0\uc774 \uc544\ub2c8\uc5d0\uc694.",
+      "fail": "c\ub294 0\uc774 \uc544\ub2c8\uc5b4\uc57c \ud574\uc694."
+     },
+     {
+      "id": "c4",
+      "expr": "a<0",
+      "ok": "\uc783\uac8c \ub418\ub294 \ud574 a\uac00 \uc74c\uc218\uc608\uc694.",
+      "fail": "a\uac00 \uc74c\uc218\uac00 \uc544\ub2c8\uc5d0\uc694."
+     },
+     {
+      "id": "c5",
+      "expr": "b+c>0",
+      "ok": "\ub098\ub208 \ub4a4 \uc5bb\ub294 \ud574 b + c \uac00 \uc591\uc218\uc608\uc694.",
+      "fail": "b + c \uac00 \uc591\uc218\uac00 \uc544\ub2c8\uc5d0\uc694."
+     }
+    ],
+    "need": 3,
+    "distinctBy": "a*100+b+c",
+    "modelRows": [
+     {
+      "a": -3,
+      "b": 1,
+      "c": 2
+     },
+     {
+      "a": -1,
+      "b": 4,
+      "c": -1
+     },
+     {
+      "a": -5,
+      "b": 2,
+      "c": 3
+     }
+    ],
+    "badRows": [
+     {
+      "a": 3,
+      "b": 1,
+      "c": 2
+     },
+     {
+      "a": -3,
+      "b": 1,
+      "c": -5
+     },
+     {
+      "a": -3,
+      "b": 1,
+      "c": 0
+     },
+     {
+      "a": -2,
+      "b": 1.5,
+      "c": 2
+     }
+    ],
+    "explain": "\uc608\ub97c \ub4e4\uc5b4 a = \u22123, b = 1, c = 2 \uc774\uba74 (x + 3)(x \u2212 1) = 2(x + 3) \uc774\uc5d0\uc694. x + 3 \uc73c\ub85c \ub098\ub204\uba74 x = 3 \ud558\ub098\ub9cc \uc5bb\uc9c0\ub9cc, x = \u22123 \ub3c4 \uc591\ubcc0\uc744 0\uc73c\ub85c \ub9cc\ub4e4\uc5b4 \ud574\uc608\uc694. \ud55c\ucabd\uc73c\ub85c \ubaa8\uc544 \uc815\ub9ac\ud558\uba74 (x + 3)(x \u2212 3) = 0 \uc774\ub77c \ud574\uac00 \u22123, 3 \ub450 \uac1c\uc608\uc694. \ud574 a \uc640 \ub098\ub208 \ub4a4 \uc5bb\ub294 \ud574 b + c \uac00 \uac19\uc740 \ubc29\uc815\uc2dd\uc740 \ud558\ub098\ub85c \uc138\ubbc0\ub85c, \uc774 \ub458\uc774 \ub2e4\ub974\uba74 \ub2e4\ub978 \ubc29\uc815\uc2dd\uc774\uc5d0\uc694.",
+    "hints": [
+     "\uba3c\uc800 a\ub97c \uc74c\uc218\ub85c \uc815\ud558\uace0, b + c \uac00 \uc591\uc218\uac00 \ub418\ub3c4\ub85d b\uc640 c\ub97c \ubc14\uafd4 \uac00\uba70 \uc0b4\ud3b4\ubcf4\uc138\uc694.",
+     "\ub9cc\ub4e0 \ubc29\uc815\uc2dd\uc758 \uc591\ubcc0\uc5d0 x = a \ub97c \ub123\uc5b4 \ubcf4\uba74 \uc5b4\ub5bb\uac8c \ub418\ub294\uc9c0 \ud655\uc778\ud574 \ubcf4\uc138\uc694."
+    ],
+    "because": {
+     "id": "s3b",
+     "kind": "write",
+     "prompt": "\ub9cc\ub4e0 \ubc29\uc815\uc2dd \ud558\ub098\ub97c \uace8\ub77c, \uc591\ubcc0\uc744 x \u2212 a \ub85c \ub098\ub204\uba74 \uc5b4\ub5a4 \ud574\uac00 \uc0ac\ub77c\uc9c0\ub294\uc9c0(\uc22b\uc790\ub85c)\uc640 \uadf8 \uc774\uc720\ub97c \uc4f0\uc138\uc694.",
+     "placeholder": "\uc608: \ub0b4\uac00 \ub9cc\ub4e0 \uc2dd\uc740 ...",
+     "minChars": 25,
+     "checks": [
       {
-        "id": "s1",
-        "kind": "pickLine",
-        "prompt": "지아의 풀이이다. 해를 잘못 구하게 만든 줄, 또는 그 잘못이 그대로 드러난 줄을 고르세요.",
-        "lines": [
-          "x³ = 4x 를 푼다. (x는 실수)",
-          "양변을 x로 나누면 x² = 4 이다.",
-          "x² − 4 = 0 이므로 (x − 2)(x + 2) = 0 이다.",
-          "따라서 x = 2 또는 x = −2 이다.",
-          "그러므로 이 방정식의 해는 2와 −2, 두 개이다."
-        ],
-        "wrong": [
-          1,
-          4
-        ],
-        "explain": "2번 줄에서 x로 나누었는데, 처음 식에 x = 0 을 넣으면 양변이 모두 0이라 성립해요. x = 0 인 경우를 따로 살피지 않아 해 0이 빠졌고, 그 결과가 5번 줄의 '두 개'로 이어졌어요. 3번과 4번 줄은 나눈 뒤의 식을 바르게 푼 것이에요. 처음 식의 실수 해는 −2, 0, 2 세 개예요.",
-        "hints": [
-          "줄마다 '바로 앞 줄과 해가 같은 식인가'를 하나씩 따져 보세요.",
-          "x에 0, 2, −2를 차례로 넣어 처음 식 x³ = 4x 가 성립하는지 확인해 보세요."
-        ]
+       "id": "w1",
+       "label": "\uc0ac\ub77c\uc9c0\ub294 \ud574\ub97c \uad6c\uccb4\uc801\uc778 \uc22b\uc790\ub85c \ub9d0\ud588\ub2e4",
+       "mode": "all",
+       "patterns": [
+        "\\d",
+        "\ud574|\uadfc"
+       ]
       },
       {
-        "id": "s2",
-        "kind": "choose",
-        "prompt": "아래 방정식은 모두 실수 범위에서 푼다. 괄호나 설명에 적힌 식으로 양변을 나누고 남은 식만 풀어도, 처음 방정식의 해를 하나도 잃지 않는 것은 어느 것일까요?",
-        "options": [
-          {
-            "id": "a",
-            "text": "(x − 2)(x + 1) = 5(x − 2) 를 x − 2 로 나눈다",
-            "reveals": "x − 2 가 0이 되는 값을 처음 식에 넣어 보면 양변이 어떻게 되는지 확인하지 않은 선택이에요."
-          },
-          {
-            "id": "b",
-            "text": "x² = 2x 를 x 로 나눈다",
-            "reveals": "나누는 식이 0이 되는 값이 처음 식의 해일 수 있다는 점을 놓쳤어요. x = 0 을 넣어 보세요."
-          },
-          {
-            "id": "c",
-            "text": "x(x² + 3) = 4(x² + 3) 를 x² + 3 으로 나눈다",
-            "reveals": "나누는 식이 0이 되는 실수가 있는지를 기준으로 삼아 따져 본 선택이에요."
-          },
-          {
-            "id": "d",
-            "text": "(x − 1)²(x + 2) = (x − 1)(x + 2) 를 x − 1 로 나눈다",
-            "reveals": "제곱이 들어 있어도 x − 1 이 0이 되는 값에서는 양변이 모두 0이 돼요. 그 값이 해인지 확인해 보세요."
-          }
-        ],
-        "correct": [
-          "c"
-        ],
-        "explain": "양변이 f·g = f·h 꼴이면 f 가 0이 되는 값은 항상 해예요. 그래서 f 가 0이 되는 실수가 있으면 나누기 전에 그 값을 따로 챙겨야 해요. x² + 3 은 어떤 실수에서도 3 이상이라 0이 되지 않으니, c에서는 나누어도 해(x = 4)를 잃지 않아요. 복소수까지 범위를 넓히면 x² + 3 = 0 의 해도 따져야 하므로 사정이 달라져요.",
-        "hints": [
-          "각 방정식에서 나누려는 식이 0이 되는 x의 값이 있는지 찾아 보세요.",
-          "찾은 값을 처음 방정식 양변에 넣어 보고, 그런 실수가 아예 없는 방정식이 있는지도 살펴보세요."
-        ]
-      },
-      {
-        "id": "s3",
-        "kind": "build",
-        "prompt": "(x − a)(x − b) = c(x − a) 꼴의 방정식을 서로 다른 3개 만들어 보세요. a, b, c는 −9 이상 9 이하의 정수이고 c ≠ 0 이어야 해요. 양변을 x − a 로 나눈 풀이가 해 하나를 잃도록, 잃게 되는 해 a 는 음수, 나눈 뒤 얻게 되는 해 b + c 는 양수가 되게 하세요.",
-        "vars": [
-          {
-            "name": "a",
-            "label": "a (잃게 되는 해)"
-          },
-          {
-            "name": "b",
-            "label": "b"
-          },
-          {
-            "name": "c",
-            "label": "c"
-          }
-        ],
-        "constraints": [
-          {
-            "id": "c1",
-            "expr": "a==floor(a) && b==floor(b) && c==floor(c)",
-            "ok": "a, b, c가 모두 정수예요.",
-            "fail": "a, b, c는 정수여야 해요."
-          },
-          {
-            "id": "c2",
-            "expr": "abs(a)<=9 && abs(b)<=9 && abs(c)<=9",
-            "ok": "세 수가 −9 이상 9 이하예요.",
-            "fail": "a, b, c는 −9 이상 9 이하여야 해요."
-          },
-          {
-            "id": "c3",
-            "expr": "c!=0",
-            "ok": "c가 0이 아니에요.",
-            "fail": "c는 0이 아니어야 해요."
-          },
-          {
-            "id": "c4",
-            "expr": "a<0",
-            "ok": "잃게 되는 해 a가 음수예요.",
-            "fail": "a가 음수가 아니에요."
-          },
-          {
-            "id": "c5",
-            "expr": "b+c>0",
-            "ok": "나눈 뒤 얻는 해 b + c 가 양수예요.",
-            "fail": "b + c 가 양수가 아니에요."
-          }
-        ],
-        "need": 3,
-        "distinctBy": "a*100+b+c",
-        "modelRows": [
-          {
-            "a": -3,
-            "b": 1,
-            "c": 2
-          },
-          {
-            "a": -1,
-            "b": 4,
-            "c": -1
-          },
-          {
-            "a": -5,
-            "b": 2,
-            "c": 3
-          }
-        ],
-        "badRows": [
-          {
-            "a": 3,
-            "b": 1,
-            "c": 2
-          },
-          {
-            "a": -3,
-            "b": 1,
-            "c": -5
-          },
-          {
-            "a": -3,
-            "b": 1,
-            "c": 0
-          },
-          {
-            "a": -2,
-            "b": 1.5,
-            "c": 2
-          }
-        ],
-        "explain": "예를 들어 a = −3, b = 1, c = 2 이면 (x + 3)(x − 1) = 2(x + 3) 이에요. x + 3 으로 나누면 x = 3 하나만 얻지만, x = −3 도 양변을 0으로 만들어 해예요. 한쪽으로 모아 정리하면 (x + 3)(x − 3) = 0 이라 해가 −3, 3 두 개예요. 해 a 와 나눈 뒤 얻는 해 b + c 가 같은 방정식은 하나로 세므로, 이 둘이 다르면 다른 방정식이에요.",
-        "hints": [
-          "먼저 a를 음수로 정하고, b + c 가 양수가 되도록 b와 c를 바꿔 가며 살펴보세요.",
-          "만든 방정식의 양변에 x = a 를 넣어 보면 어떻게 되는지 확인해 보세요."
-        ],
-        "because": {
-          "id": "s3b",
-          "kind": "write",
-          "prompt": "만든 방정식 하나를 골라, 양변을 x − a 로 나누면 어떤 해가 사라지는지(숫자로)와 그 이유를 쓰세요.",
-          "placeholder": "예: 내가 만든 식은 ...",
-          "minChars": 25,
-          "checks": [
-            {
-              "id": "w1",
-              "label": "사라지는 해를 구체적인 숫자로 말했다",
-              "mode": "all",
-              "patterns": [
-                "\\d",
-                "해|근"
-              ]
-            },
-            {
-              "id": "w2",
-              "label": "나누는 식이 0이 되는 경우(0으로 나눈 셈)가 이유라고 말했다",
-              "mode": "any",
-              "patterns": [
-                "(^|[^\\d])0\\s*(이|으로|가|일|인|되|됨|됩)",
-                "나눌\\s*수\\s*없",
-                "영\\s*(이|으로)"
-              ]
-            }
-          ],
-          "selfAssess": [
-            "사라지는 해를 처음 방정식에 넣으면 양변이 같아진다는 것을 내 예의 숫자로 확인했나요?",
-            "'나누는 식이 0이 되는 값'이라는 이유를 내 말로 썼나요?",
-            "나누지 않고도 해를 모두 구하는 길(예: 한쪽으로 모아 곱의 꼴로 만들기)을 하나라도 생각했나요?"
-          ],
-          "modelAnswers": [
-            {
-              "text": "내가 만든 식은 (x+3)(x−1)=2(x+3)이다. x+3으로 나누면 x=3만 남지만, x=−3을 넣으면 양변이 모두 0이라서 −3도 해이다. 나누는 식이 0이 되는 값이라서 해를 잃는다."
-            },
-            {
-              "text": "(x+1)(x−4)=−1(x+1)에서 x+1로 나누면 x−4=−1, 즉 x=3뿐이다. 하지만 x=−1이면 x+1이 0이 되어 양변이 같아지므로 −1도 해이고, 0으로 나눈 것과 마찬가지라 이 해가 사라진다.",
-              "note": "나눈 뒤 얻은 해를 먼저 말하고 사라진 해를 나중에 말한 순서도 좋다."
-            }
-          ],
-          "badAnswers": [
-            {
-              "text": "나누면 해가 사라질 때도 있대요. 조심해야 해요.",
-              "why": "어떤 해가 사라지는지 숫자도, 이유도 없다."
-            },
-            {
-              "text": "내 식의 답은 3이고 해는 한 개이다. 계산은 맞다.",
-              "why": "나눈 뒤의 답만 말하고 사라진 해와 그 이유가 없다."
-            }
-          ],
-          "humanReview": "사라진 해의 값이 실제로 내가 만든 방정식의 해인지, 이유가 '0이 되는 식으로 나누었다'는 데에 닿아 있는지는 사람이 읽어야 안다. 표면 검사는 숫자와 '0이 된다'는 표현만 본다.",
-          "hints": [
-            "내가 만든 방정식에 x = a 를 넣으면 양변이 각각 얼마가 되는지 계산해 보세요.",
-            "나눈 뒤의 식으로 얻은 해와 한쪽으로 모아 정리해 얻은 해를 나란히 비교해 보세요."
-          ]
-        }
+       "id": "w2",
+       "label": "\ub098\ub204\ub294 \uc2dd\uc774 0\uc774 \ub418\ub294 \uacbd\uc6b0(0\uc73c\ub85c \ub098\ub208 \uc148)\uac00 \uc774\uc720\ub77c\uace0 \ub9d0\ud588\ub2e4",
+       "mode": "any",
+       "patterns": [
+        "(^|[^\\d])0\\s*(\uc774|\uc73c\ub85c|\uac00|\uc77c|\uc778|\ub418|\ub428|\ub429)",
+        "\ub098\ub20c\\s*\uc218\\s*\uc5c6",
+        "\uc601\\s*(\uc774|\uc73c\ub85c)"
+       ]
       }
-    ],
-    "rubric": [
+     ],
+     "selfAssess": [
+      "\uc0ac\ub77c\uc9c0\ub294 \ud574\ub97c \ucc98\uc74c \ubc29\uc815\uc2dd\uc5d0 \ub123\uc73c\uba74 \uc591\ubcc0\uc774 \uac19\uc544\uc9c4\ub2e4\ub294 \uac83\uc744 \ub0b4 \uc608\uc758 \uc22b\uc790\ub85c \ud655\uc778\ud588\ub098\uc694?",
+      "'\ub098\ub204\ub294 \uc2dd\uc774 0\uc774 \ub418\ub294 \uac12'\uc774\ub77c\ub294 \uc774\uc720\ub97c \ub0b4 \ub9d0\ub85c \uc37c\ub098\uc694?",
+      "\ub098\ub204\uc9c0 \uc54a\uace0\ub3c4 \ud574\ub97c \ubaa8\ub450 \uad6c\ud558\ub294 \uae38(\uc608: \ud55c\ucabd\uc73c\ub85c \ubaa8\uc544 \uacf1\uc758 \uaf34\ub85c \ub9cc\ub4e4\uae30)\uc744 \ud558\ub098\ub77c\ub3c4 \uc0dd\uac01\ud588\ub098\uc694?"
+     ],
+     "modelAnswers": [
       {
-        "criterion": "오류 위치와 원인",
-        "full": "2번 줄(또는 결과인 5번 줄)을 고르고, x = 0 에서 양변이 0이라 해임을 말함",
-        "partial": "오류 줄은 찾았으나 이유를 설명하지 못함",
-        "none": "3·4번 줄처럼 올바른 줄을 오류로 지목함"
+       "text": "\ub0b4\uac00 \ub9cc\ub4e0 \uc2dd\uc740 (x+3)(x\u22121)=2(x+3)\uc774\ub2e4. x+3\uc73c\ub85c \ub098\ub204\uba74 x=3\ub9cc \ub0a8\uc9c0\ub9cc, x=\u22123\uc744 \ub123\uc73c\uba74 \uc591\ubcc0\uc774 \ubaa8\ub450 0\uc774\ub77c\uc11c \u22123\ub3c4 \ud574\uc774\ub2e4. \ub098\ub204\ub294 \uc2dd\uc774 0\uc774 \ub418\ub294 \uac12\uc774\ub77c\uc11c \ud574\ub97c \uc783\ub294\ub2e4."
       },
       {
-        "criterion": "일반화(조건 판단)",
-        "full": "나누는 식이 0이 되는 실수가 있으면 해를 따로 챙겨야 하고, 없으면 나눠도 됨을 구분",
-        "partial": "'나누면 안 된다'로만 일반화함",
-        "none": "나누는 식과 무관하게 판단함"
-      },
-      {
-        "criterion": "직접 만든 예",
-        "full": "조건을 모두 만족하는 서로 다른 방정식 3개와, 사라지는 해의 이유를 숫자로 설명",
-        "partial": "방정식은 맞게 만들었으나 이유가 없음",
-        "none": "조건을 만족하는 예가 없음"
+       "text": "(x+1)(x\u22124)=\u22121(x+1)\uc5d0\uc11c x+1\ub85c \ub098\ub204\uba74 x\u22124=\u22121, \uc989 x=3\ubfd0\uc774\ub2e4. \ud558\uc9c0\ub9cc x=\u22121\uc774\uba74 x+1\uc774 0\uc774 \ub418\uc5b4 \uc591\ubcc0\uc774 \uac19\uc544\uc9c0\ubbc0\ub85c \u22121\ub3c4 \ud574\uc774\uace0, 0\uc73c\ub85c \ub098\ub208 \uac83\uacfc \ub9c8\ucc2c\uac00\uc9c0\ub77c \uc774 \ud574\uac00 \uc0ac\ub77c\uc9c4\ub2e4.",
+       "note": "\ub098\ub208 \ub4a4 \uc5bb\uc740 \ud574\ub97c \uba3c\uc800 \ub9d0\ud558\uace0 \uc0ac\ub77c\uc9c4 \ud574\ub97c \ub098\uc911\uc5d0 \ub9d0\ud55c \uc21c\uc11c\ub3c4 \uc88b\ub2e4."
       }
-    ],
-    "alternatives": [
-      "x³ = 4x 를 한쪽으로 모아 x(x − 2)(x + 2) = 0 으로 푸는 길은 나누지 않으므로 해 세 개를 한 번에 얻는다.",
-      "x 로 나누되 '먼저 x = 0 을 대입해 해인지 확인하고, x ≠ 0 인 경우에만 나눈다'로 경우를 나누는 풀이도 올바르다."
-    ],
-    "hardCases": [
-      "'x = 0 은 해가 아니다'라고 믿는 학생: 0을 대입하는 확인을 직접 하게 한다. 대입하지 않고 느낌으로 말하면 이유 칸이 부족하다.",
-      "범위를 복소수까지 넓히면 x² + 3 으로 나누는 선택지 c에서도 허근 ±√3 i 를 잃는다. 이 과제는 실수 범위로 못 박았으므로 정답은 c이지만, 범위를 바꾸면 달라진다는 학생의 지적은 타당하다."
-    ],
-    "cautions": {
-      "language": "'해를 잃는다', '나누는 식'이 처음 나오는 학생을 위해 단계 안에서 'f가 0이 되는 값'으로 풀어 썼다.",
-      "culture": "지아, 도윤은 흔한 이름이며 특정 인물이 아니다. 문화에 의존하는 소재는 없다.",
-      "accessibility": "그림 없이 식만 쓴다. x³ 은 '엑스 세제곱', x² 은 '엑스 제곱', x² + 3 은 '엑스 제곱 더하기 3', (x − 2)(x + 1) 은 '괄호 엑스 빼기 2 괄호 엑스 더하기 1', ≠ 는 '같지 않다'로 읽는다. 색에 의존하지 않는다."
-    },
-    "autoVsHuman": {
-      "auto": [
-        "오류 줄 선택(2번, 5번 줄)",
-        "나누기 조건에 대한 선택지",
-        "만든 a, b, c가 모든 조건을 만족하는지와 서로 다른 방정식 3개인지"
-      ],
-      "human": [
-        "사라진 해에 대한 설명이 만든 방정식과 맞는지",
-        "나누는 식이 0이 되는 경우를 자기 말로 설명했는지"
-      ]
+     ],
+     "badAnswers": [
+      {
+       "text": "\ub098\ub204\uba74 \ud574\uac00 \uc0ac\ub77c\uc9c8 \ub54c\ub3c4 \uc788\ub300\uc694. \uc870\uc2ec\ud574\uc57c \ud574\uc694.",
+       "why": "\uc5b4\ub5a4 \ud574\uac00 \uc0ac\ub77c\uc9c0\ub294\uc9c0 \uc22b\uc790\ub3c4, \uc774\uc720\ub3c4 \uc5c6\ub2e4."
+      },
+      {
+       "text": "\ub0b4 \uc2dd\uc758 \ub2f5\uc740 3\uc774\uace0 \ud574\ub294 \ud55c \uac1c\uc774\ub2e4. \uacc4\uc0b0\uc740 \ub9de\ub2e4.",
+       "why": "\ub098\ub208 \ub4a4\uc758 \ub2f5\ub9cc \ub9d0\ud558\uace0 \uc0ac\ub77c\uc9c4 \ud574\uc640 \uadf8 \uc774\uc720\uac00 \uc5c6\ub2e4."
+      }
+     ],
+     "humanReview": "\uc0ac\ub77c\uc9c4 \ud574\uc758 \uac12\uc774 \uc2e4\uc81c\ub85c \ub0b4\uac00 \ub9cc\ub4e0 \ubc29\uc815\uc2dd\uc758 \ud574\uc778\uc9c0, \uc774\uc720\uac00 '0\uc774 \ub418\ub294 \uc2dd\uc73c\ub85c \ub098\ub204\uc5c8\ub2e4'\ub294 \ub370\uc5d0 \ub2ff\uc544 \uc788\ub294\uc9c0\ub294 \uc0ac\ub78c\uc774 \uc77d\uc5b4\uc57c \uc548\ub2e4. \ud45c\uba74 \uac80\uc0ac\ub294 \uc22b\uc790\uc640 '0\uc774 \ub41c\ub2e4'\ub294 \ud45c\ud604\ub9cc \ubcf8\ub2e4.",
+     "hints": [
+      "\ub0b4\uac00 \ub9cc\ub4e0 \ubc29\uc815\uc2dd\uc5d0 x = a \ub97c \ub123\uc73c\uba74 \uc591\ubcc0\uc774 \uac01\uac01 \uc5bc\ub9c8\uac00 \ub418\ub294\uc9c0 \uacc4\uc0b0\ud574 \ubcf4\uc138\uc694.",
+      "\ub098\ub208 \ub4a4\uc758 \uc2dd\uc73c\ub85c \uc5bb\uc740 \ud574\uc640 \ud55c\ucabd\uc73c\ub85c \ubaa8\uc544 \uc815\ub9ac\ud574 \uc5bb\uc740 \ud574\ub97c \ub098\ub780\ud788 \ube44\uad50\ud574 \ubcf4\uc138\uc694."
+     ]
     }
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "\uc624\ub958 \uc704\uce58\uc640 \uc6d0\uc778",
+    "full": "2\ubc88 \uc904(\ub610\ub294 \uacb0\uacfc\uc778 5\ubc88 \uc904)\uc744 \uace0\ub974\uace0, x = 0 \uc5d0\uc11c \uc591\ubcc0\uc774 0\uc774\ub77c \ud574\uc784\uc744 \ub9d0\ud568",
+    "partial": "\uc624\ub958 \uc904\uc740 \ucc3e\uc558\uc73c\ub098 \uc774\uc720\ub97c \uc124\uba85\ud558\uc9c0 \ubabb\ud568",
+    "none": "3\u00b74\ubc88 \uc904\ucc98\ub7fc \uc62c\ubc14\ub978 \uc904\uc744 \uc624\ub958\ub85c \uc9c0\ubaa9\ud568"
+   },
+   {
+    "criterion": "\uc77c\ubc18\ud654(\uc870\uac74 \ud310\ub2e8)",
+    "full": "\ub098\ub204\ub294 \uc2dd\uc774 0\uc774 \ub418\ub294 \uc2e4\uc218\uac00 \uc788\uc73c\uba74 \ud574\ub97c \ub530\ub85c \ucc59\uaca8\uc57c \ud558\uace0, \uc5c6\uc73c\uba74 \ub098\ub220\ub3c4 \ub428\uc744 \uad6c\ubd84",
+    "partial": "'\ub098\ub204\uba74 \uc548 \ub41c\ub2e4'\ub85c\ub9cc \uc77c\ubc18\ud654\ud568",
+    "none": "\ub098\ub204\ub294 \uc2dd\uacfc \ubb34\uad00\ud558\uac8c \ud310\ub2e8\ud568"
+   },
+   {
+    "criterion": "\uc9c1\uc811 \ub9cc\ub4e0 \uc608",
+    "full": "\uc870\uac74\uc744 \ubaa8\ub450 \ub9cc\uc871\ud558\ub294 \uc11c\ub85c \ub2e4\ub978 \ubc29\uc815\uc2dd 3\uac1c\uc640, \uc0ac\ub77c\uc9c0\ub294 \ud574\uc758 \uc774\uc720\ub97c \uc22b\uc790\ub85c \uc124\uba85",
+    "partial": "\ubc29\uc815\uc2dd\uc740 \ub9de\uac8c \ub9cc\ub4e4\uc5c8\uc73c\ub098 \uc774\uc720\uac00 \uc5c6\uc74c",
+    "none": "\uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294 \uc608\uac00 \uc5c6\uc74c"
+   }
+  ],
+  "alternatives": [
+   "x\u00b3 = 4x \ub97c \ud55c\ucabd\uc73c\ub85c \ubaa8\uc544 x(x \u2212 2)(x + 2) = 0 \uc73c\ub85c \ud478\ub294 \uae38\uc740 \ub098\ub204\uc9c0 \uc54a\uc73c\ubbc0\ub85c \ud574 \uc138 \uac1c\ub97c \ud55c \ubc88\uc5d0 \uc5bb\ub294\ub2e4.",
+   "x \ub85c \ub098\ub204\ub418 '\uba3c\uc800 x = 0 \uc744 \ub300\uc785\ud574 \ud574\uc778\uc9c0 \ud655\uc778\ud558\uace0, x \u2260 0 \uc778 \uacbd\uc6b0\uc5d0\ub9cc \ub098\ub208\ub2e4'\ub85c \uacbd\uc6b0\ub97c \ub098\ub204\ub294 \ud480\uc774\ub3c4 \uc62c\ubc14\ub974\ub2e4."
+  ],
+  "hardCases": [
+   "'x = 0 \uc740 \ud574\uac00 \uc544\ub2c8\ub2e4'\ub77c\uace0 \ubbff\ub294 \ud559\uc0dd: 0\uc744 \ub300\uc785\ud558\ub294 \ud655\uc778\uc744 \uc9c1\uc811 \ud558\uac8c \ud55c\ub2e4. \ub300\uc785\ud558\uc9c0 \uc54a\uace0 \ub290\ub08c\uc73c\ub85c \ub9d0\ud558\uba74 \uc774\uc720 \uce78\uc774 \ubd80\uc871\ud558\ub2e4.",
+   "\ubc94\uc704\ub97c \ubcf5\uc18c\uc218\uae4c\uc9c0 \ub113\ud788\uba74 x\u00b2 + 3 \uc73c\ub85c \ub098\ub204\ub294 \uc120\ud0dd\uc9c0 c\uc5d0\uc11c\ub3c4 \ud5c8\uadfc \u00b1\u221a3 i \ub97c \uc783\ub294\ub2e4. \uc774 \uacfc\uc81c\ub294 \uc2e4\uc218 \ubc94\uc704\ub85c \ubabb \ubc15\uc558\uc73c\ubbc0\ub85c \uc815\ub2f5\uc740 c\uc774\uc9c0\ub9cc, \ubc94\uc704\ub97c \ubc14\uafb8\uba74 \ub2ec\ub77c\uc9c4\ub2e4\ub294 \ud559\uc0dd\uc758 \uc9c0\uc801\uc740 \ud0c0\ub2f9\ud558\ub2e4."
+  ],
+  "cautions": {
+   "language": "'\ud574\ub97c \uc783\ub294\ub2e4', '\ub098\ub204\ub294 \uc2dd'\uc774 \ucc98\uc74c \ub098\uc624\ub294 \ud559\uc0dd\uc744 \uc704\ud574 \ub2e8\uacc4 \uc548\uc5d0\uc11c 'f\uac00 0\uc774 \ub418\ub294 \uac12'\uc73c\ub85c \ud480\uc5b4 \uc37c\ub2e4.",
+   "culture": "\uc9c0\uc544, \ub3c4\uc724\uc740 \ud754\ud55c \uc774\ub984\uc774\uba70 \ud2b9\uc815 \uc778\ubb3c\uc774 \uc544\ub2c8\ub2e4. \ubb38\ud654\uc5d0 \uc758\uc874\ud558\ub294 \uc18c\uc7ac\ub294 \uc5c6\ub2e4.",
+   "accessibility": "\uadf8\ub9bc \uc5c6\uc774 \uc2dd\ub9cc \uc4f4\ub2e4. x\u00b3 \uc740 '\uc5d1\uc2a4 \uc138\uc81c\uacf1', x\u00b2 \uc740 '\uc5d1\uc2a4 \uc81c\uacf1', x\u00b2 + 3 \uc740 '\uc5d1\uc2a4 \uc81c\uacf1 \ub354\ud558\uae30 3', (x \u2212 2)(x + 1) \uc740 '\uad04\ud638 \uc5d1\uc2a4 \ube7c\uae30 2 \uad04\ud638 \uc5d1\uc2a4 \ub354\ud558\uae30 1', \u2260 \ub294 '\uac19\uc9c0 \uc54a\ub2e4'\ub85c \uc77d\ub294\ub2e4. \uc0c9\uc5d0 \uc758\uc874\ud558\uc9c0 \uc54a\ub294\ub2e4."
   },
-  {
-    "id": "z-m-24-02",
-    "subject": "math",
-    "grade": "H2",
-    "cell": "math|H2|equations",
-    "topic": "삼차방정식 x³ = 1 의 해의 개수와 수의 범위",
-    "level": 3,
-    "levelLabel": "고등",
-    "title": "범위가 없는 문제의 해는 몇 개일까",
-    "uiLang": "ko",
-    "format": "reveal-and-revise",
-    "generative": true,
-    "goal": "풀이가 어떤 수의 범위를 전제하는지 따지고, 새 정보가 들어올 때마다 해의 개수에 대한 판단을 유지·수정하며, 범위에 따른 조건부 답과 직접 찾은 해로 확인한다.",
-    "thinking": [
-      "논증이 성립하는 범위(조건) 밝히기",
-      "새 정보로 판단 수정·유지하기",
-      "범위에 따른 조건부 답 쓰기",
-      "여러 해를 직접 찾아 검증하기"
-    ],
-    "differsFromPlain": "단순 연습은 x³ = 1 을 인수분해해 해를 구하는 것으로 끝난다. 여기서는 '해는 하나'라는 논증이 어떤 범위에서 옳은지부터 따지고, 정보가 늘 때마다 판단을 고치거나 지키며, 복소수 해를 직접 찾아 확인한다.",
-    "prerequisites": [
-      "이 배치의 H2는 난이도·지원 수준 구분이며 학교에서 배우는 학년을 뜻하지 않는다. 학교 순서 가정: 공통수학에서 복소수의 뜻(허수단위 i, i² = −1)과 곱셈, 이차방정식의 판별식, 삼차식의 인수분해를 이미 배웠다.",
-      "두 복소수가 같을 조건: 실수 부분끼리, 허수 부분끼리 같다."
-    ],
-    "minutes": 16,
-    "curriculum": null,
-    "material": "방정식 x³ = 1 의 해를 구하는 문제가 있다. 문제에는 x의 범위가 적혀 있지 않다. 민수는 크기를 비교하는 풀이를 썼고, 풀이를 본 서윤이는 '범위부터 정해야 하지 않을까?'라고 물었다. 자료가 하나씩 공개되니, 그때마다 자신의 판단을 정해 보자. (x³ 은 '엑스 세제곱'으로 읽는다.)",
-    "steps": [
-      {
-        "id": "s1",
-        "kind": "reveal",
-        "prompt": "자료가 하나씩 공개돼요. 그때마다 판단을 고르고, 새 정보가 판단을 바꾸는지 유지하는지 살펴보세요.",
-        "stages": [
-          {
-            "info": "방정식 x³ = 1 을 푸는 문제이다. 문제에는 x의 범위가 적혀 있지 않다. 민수의 풀이: 'x = 1 은 해이다. x > 1 이면 x³ > 1 이고 x < 1 이면 x³ < 1 이므로, 해는 x = 1 하나뿐이다.' ('>'는 '보다 크다', '<'는 '보다 작다'로 읽는다.)",
-            "ask": "민수의 풀이를 어떻게 판단하겠습니까?",
-            "options": [
-              {
-                "id": "a",
-                "text": "수는 모두 크기를 비교할 수 있으니 민수의 풀이는 옳고, 해는 1 하나뿐이다",
-                "reveals": "모든 수가 크고 작음으로 줄 세워지는지는 따져 보지 않았어요. 어떤 수에서 크기 비교가 가능한지 생각해 보세요."
-              },
-              {
-                "id": "b",
-                "text": "x가 실수일 때는 풀이가 옳다. 다만 범위가 없으니 더 확인이 필요하다",
-                "reveals": "풀이가 어떤 수를 전제하는지 읽고, 범위가 빠진 점까지 판단에 넣었어요."
-              },
-              {
-                "id": "c",
-                "text": "삼차방정식은 해가 반드시 세 개이므로 해가 하나라는 풀이는 틀렸다",
-                "reveals": "차수만 보고 해의 개수를 단정했어요. 서로 다른 해가 몇 개인지는 식과 범위를 보고 확인해야 해요."
-              },
-              {
-                "id": "d",
-                "text": "x = 1 하나만 넣어 본 것이라서 이 풀이로는 아무것도 알 수 없다",
-                "reveals": "풀이에는 1보다 큰 경우와 작은 경우를 따진 부분도 있어요. 그 부분이 무엇을 보장하는지 읽어 보세요."
-              }
-            ],
-            "reasonable": [
-              "b"
-            ],
-            "after": "x가 실수라면 민수의 논증은 옳아요(1보다 크면 x³ > 1, 작으면 x³ < 1). 하지만 범위가 적혀 있지 않아서, 실수만 생각해도 충분한지는 아직 알 수 없어요."
-          },
-          {
-            "info": "새로운 정보 두 가지가 나왔다. (1) x³ − 1 = (x − 1)(x² + x + 1) 이고, 이차방정식 x² + x + 1 = 0 의 판별식은 1 − 4 = −3 이다. (2) 이 문제집의 앞부분 설명에는 '이 단원에서는 복소수 범위에서 방정식을 푼다'고 적혀 있지만, 이 문제 자체에는 여전히 범위가 없다.",
-            "ask": "이제 '서로 다른 해가 몇 개인가'에 어떻게 답하겠습니까?",
-            "options": [
-              {
-                "id": "a",
-                "text": "범위가 문제에 없으니 실수만 생각하고, 해는 1 하나라고만 답한다",
-                "reveals": "실수 범위의 답으로는 맞지만, 판별식 계산과 단원 설명이라는 새 정보를 판단에 쓰지 않았어요."
-              },
-              {
-                "id": "b",
-                "text": "판별식이 −3 으로 음수이므로 이 방정식에는 어떤 수 범위에서도 해가 없다",
-                "reveals": "판별식은 x² + x + 1 이라는 한 인수에 대한 정보예요. x − 1 이라는 다른 인수가 있다는 점을 잊었어요."
-              },
-              {
-                "id": "c",
-                "text": "실수라면 해가 1개, 복소수라면 3개라고 범위를 나누어 답한다",
-                "reveals": "범위가 확정되지 않은 사정을 그대로 답에 담았어요. 조건에 따라 답이 달라짐을 보여 주는 판단이에요."
-              },
-              {
-                "id": "d",
-                "text": "단원 설명에 따라 복소수로 보고 3개라고 쓰되 가정을 적는다",
-                "reveals": "단원 설명이라는 단서를 쓰고 가정을 밝혔어요. 근거와 한계를 함께 적은 판단이에요."
-              }
-            ],
-            "reasonable": [
-              "c",
-              "d"
-            ],
-            "after": "x − 1 = 0 에서 실수 해 1이 나오고, x² + x + 1 = 0 은 판별식이 음수이므로 실수 해가 없고 서로 다른 허근 두 개가 있어요. 실수라면 1개, 복소수라면 3개예요. 범위가 확정되지 않았으니 범위별로 답하거나, 단원 설명을 근거로 가정을 적고 3개라고 답하는 것 둘 다 합리적이에요. 민수의 판단 '실수에서는 해가 하나'는 그대로 유지돼요."
-          },
-          {
-            "info": "허근 하나를 ω = (−1 + √3 i)/2 라 한다. (i는 허수단위로 i² = −1 이고, 식은 '마이너스 1 더하기 루트 3 아이, 나누기 2'라고 읽는다.) ω 가 x² + x + 1 = 0 의 근이라는 것은 알고 있다. 이 ω 가 정말 x³ = 1 도 만족하는지 직접 확인하려 한다.",
-            "ask": "타당한 확인 방법은 어느 것일까요? (방법이 여러 가지일 수 있어요.)",
-            "options": [
-              {
-                "id": "a",
-                "text": "ω² = −ω − 1 을 이용해 ω³ = ω·ω² = −ω² − ω = 1 로 계산한다",
-                "reveals": "이미 아는 식을 이용해 ω³ 을 ω 의 일차식으로 낮추는 길을 골랐어요."
-              },
-              {
-                "id": "b",
-                "text": "ω 를 −0.5 + 0.87i 로 놓고 여러 번 곱해 1에 가까우면 확인한 것으로 본다",
-                "reveals": "어림값의 계산은 점검에는 도움이 되지만, 정확히 1인지 확인한 것은 아니에요."
-              },
-              {
-                "id": "c",
-                "text": "ω² 을 구하고 ω 를 곱해 (−1+√3 i)(−1−√3 i)/4 = 1 로 확인한다",
-                "reveals": "직접 곱해서 확인하는 길을 골랐어요. 허수 부분이 어떻게 없어지는지가 핵심이에요."
-              },
-              {
-                "id": "d",
-                "text": "ω 가 어떤 방정식의 근이니 ω³ = 1 도 이미 성립한다고 보고 그대로 쓴다",
-                "reveals": "확인하려는 결론을 이미 참이라고 가정했어요. ω 가 근인 방정식은 x³ = 1 이 아니라 x² + x + 1 = 0 이에요."
-              }
-            ],
-            "reasonable": [
-              "a",
-              "c"
-            ],
-            "after": "두 방법 모두 정확한 확인이에요. a는 ω² + ω + 1 = 0 만 쓰고, c는 ω² 을 직접 구해 곱해요. 어림값(b)은 계산 실수를 잡는 점검일 뿐 확인은 아니고, d는 결론을 미리 가정한 것이에요. 이렇게 허근도 x³ = 1 을 만족하므로 복소수 범위에서는 해가 3개라는 앞의 판단이 뒷받침돼요."
-          }
-        ],
-        "reflect": "처음에 '해는 1 하나'라고 보았다면, 어떤 정보가 그 판단을 '실수에서는 맞다'로 좁혔나요? 크기를 비교하는 논증이 허수에는 왜 쓰일 수 없을까요?",
-        "hints": [
-          "새 정보가 나올 때마다 앞에서 고른 선택을 다시 읽고, 무엇이 달라졌는지 한 줄로 적어 보세요.",
-          "선택지를 고르기 전에 그 선택이 '어떤 범위의 수'를 전제하는지 먼저 살펴보세요."
-        ]
-      },
-      {
-        "id": "s2",
-        "kind": "build",
-        "prompt": "복소수 z = a + bi (a, b는 실수)가 z³ = 1 을 만족한다고 하자. (a + bi)³ = (a³ − 3ab²) + (3a²b − b³)i 이므로, 실수 부분 a³ − 3ab² 이 1이고 허수 부분 3a²b − b³ 이 0 이어야 한다. 서로 다른 해 3개를 (a, b)로 입력하세요. 무리수는 소수 둘째 자리까지 반올림해 쓰면 되고, 오차 0.02 이내까지 인정해요.",
-        "vars": [
-          {
-            "name": "a",
-            "label": "a (실수 부분)"
-          },
-          {
-            "name": "b",
-            "label": "b (i 앞의 수)"
-          }
-        ],
-        "constraints": [
-          {
-            "id": "c1",
-            "expr": "abs(a^3-3*a*b^2-1)<0.02",
-            "ok": "실수 부분이 1에 (오차 0.02 안에서) 맞아요.",
-            "fail": "(a + bi)³ 의 실수 부분 a³ − 3ab² 이 1이 아니에요."
-          },
-          {
-            "id": "c2",
-            "expr": "abs(3*a^2*b-b^3)<0.02",
-            "ok": "허수 부분이 0에 (오차 0.02 안에서) 맞아요.",
-            "fail": "(a + bi)³ 의 허수 부분 3a²b − b³ 이 0이 아니에요."
-          }
-        ],
-        "need": 3,
-        "distinctBy": "round(a*10)*100+round(b*10)",
-        "modelRows": [
-          {
-            "a": 1,
-            "b": 0
-          },
-          {
-            "a": -0.5,
-            "b": 0.87
-          },
-          {
-            "a": -0.5,
-            "b": -0.87
-          }
-        ],
-        "badRows": [
-          {
-            "a": -1,
-            "b": 0
-          },
-          {
-            "a": 0.5,
-            "b": 0.87
-          },
-          {
-            "a": 0,
-            "b": 1
-          },
-          {
-            "a": -0.5,
-            "b": 0.9
-          }
-        ],
-        "explain": "해는 z = 1, z = (−1 + √3 i)/2, z = (−1 − √3 i)/2 의 세 개예요. 소수로는 (1, 0), (−0.5, 0.87), (−0.5, −0.87) 정도예요. 같은 해를 소수점 아래 자리만 달리 적은 것은 서로 다른 해로 세지 않아요. 허수 부분이 0 인 해는 1뿐이고, 크기 비교만으로는 나머지 두 해를 찾을 수 없어요.",
-        "hints": [
-          "z = 1 을 넣으면 x³ − 1 이 어떻게 되는지 확인하고, 남는 이차식 x² + x + 1 의 근을 찾아 보세요.",
-          "찾은 근의 실수 부분을 a에, i 앞의 수를 b에 넣고, 그 두 식이 각각 1과 0에 가까운지 계산해 보세요."
-        ],
-        "because": {
-          "id": "s2b",
-          "kind": "write",
-          "prompt": "민수의 '1보다 크면 x³ > 1, 작으면 x³ < 1' 논증이 허근을 찾지 못하는 이유와, 실수 범위·복소수 범위에서 서로 다른 해가 각각 몇 개인지 쓰세요.",
-          "placeholder": "예: 민수의 논증은 ...",
-          "minChars": 30,
-          "checks": [
-            {
-              "id": "w1",
-              "label": "실수와 복소수(허수) 범위를 구분해서 말했다",
-              "mode": "all",
-              "patterns": [
-                "실수",
-                "복소수|허수|허근"
-              ]
-            },
-            {
-              "id": "w2",
-              "label": "범위별 해의 개수를 말했다",
-              "mode": "any",
-              "patterns": [
-                "[13]\\s*개",
-                "하나",
-                "한\\s*개",
-                "세\\s*개",
-                "세개"
-              ]
-            },
-            {
-              "id": "w3",
-              "label": "크기를 비교하는 논증이 쓰이는 조건에 대해 말했다",
-              "mode": "any",
-              "patterns": [
-                "크기",
-                "대소",
-                "비교",
-                "크고\\s*작",
-                "순서",
-                "부등호",
-                "크다",
-                "작다"
-              ]
-            }
-          ],
-          "selfAssess": [
-            "민수의 논증이 '어떤 수끼리만 크기를 비교할 수 있는가'에 기대고 있음을 내 말로 썼나요?",
-            "실수 범위의 해의 개수와 복소수 범위의 해의 개수를 둘 다 썼나요?",
-            "허근을 위에서 직접 찾은 값(실수 부분 −0.5 등)과 연결해 생각했나요?"
-          ],
-          "modelAnswers": [
-            {
-              "text": "민수의 풀이는 x가 실수일 때만 맞다. 크기 비교는 실수끼리만 할 수 있고, 허수는 대소를 정할 수 없어서 허근은 이 방법으로 찾을 수 없다. 실수 범위에서는 해가 1개, 복소수 범위에서는 3개이다."
-            },
-            {
-              "text": "복소수 범위이면 민수 논증은 못 써. 허수에는 크고 작음이 없어서 부등호로 따질 수 없거든. 실수라면 하나(1), 복소수라면 1과 허근 두 개로 세 개야.",
-              "note": "'부등호로 따질 수 없다'는 표현으로 크기 비교의 조건을 말했다."
-            }
-          ],
-          "badAnswers": [
-            {
-              "text": "민수가 틀렸다. 해가 더 있다.",
-              "why": "어떤 범위인지, 왜 더 있는지, 몇 개인지 없다."
-            },
-            {
-              "text": "실수는 1개고 복소수는 3개이다.",
-              "why": "개수는 맞게 썼지만 논증이 허근을 못 찾는 이유가 없다."
-            }
-          ],
-          "humanReview": "크기 비교가 쓰이는 조건에 대한 설명이 논리적인지, 범위별 개수를 앞 단계에서 찾은 해와 연결했는지는 사람이 읽어야 안다. 표면 검사는 범위 단어, 개수 표현, 크기 비교 관련 단어만 본다.",
-          "hints": [
-            "민수의 논증에서 'x > 1' 이나 'x < 1' 이 쓰인 곳이 어떤 수를 전제하는지 짚어 보세요.",
-            "실수 범위와 복소수 범위로 나누어 앞에서 찾은 해를 각각 세어 보세요."
-          ]
-        }
-      }
-    ],
-    "rubric": [
-      {
-        "criterion": "논증이 성립하는 범위 파악",
-        "full": "크기 비교는 실수에서만 가능하다는 점을 들어 민수의 풀이가 실수 범위에서만 완결됨을 설명",
-        "partial": "민수가 틀렸다고만 하거나 범위를 언급하나 이유가 없음",
-        "none": "모든 범위에서 해가 1개라고 봄"
-      },
-      {
-        "criterion": "새 정보에 따른 판단 조정",
-        "full": "범위가 확정되지 않았음을 반영해 조건부로 답하거나, 가정을 밝히고 3개라고 답함",
-        "partial": "범위를 확인하지 않은 채 하나의 개수만 답함",
-        "none": "새 정보를 판단에 반영하지 않음"
-      },
-      {
-        "criterion": "해의 직접 구성",
-        "full": "서로 다른 해 3개를 조건을 만족하게 입력",
-        "partial": "해 1과 허근 하나만 찾음",
-        "none": "조건을 만족하는 해가 없음"
-      }
-    ],
-    "alternatives": [
-      "민수의 풀이는 실수 범위에서는 완결된 올바른 논증이다. 이를 '맞다'고 유지하면서 범위를 확인해야 한다고 쓴 답이 가장 좋은 답 중 하나이다.",
-      "x³ = 1 의 해는 x³ − 1 = (x − 1)(x² + x + 1) = 0 으로 구해도 되고, 단위원 위 점의 극형식으로 구해도 된다. 방법은 하나가 아니다.",
-      "단원 설명을 근거로 복소수 범위를 가정하고 3개라고 답하는 것도, 범위별로 나누어 답하는 것도 합리적이다."
-    ],
-    "hardCases": [
-      "'범위가 없으면 실수로 본다'고 답한 학생: 일상 관례일 수 있으나 이 문제집의 단원 설명과 맞지 않는다. 이유를 묻고 가정을 쓰게 하면 인정할 수 있다.",
-      "허근의 소수 표현을 (−0.5, 0.866…)과 (−0.5, 0.87)로 달리 쓴 경우: 같은 해이므로 한 개로 센다. 학생이 '서로 다른 해'로 오해할 수 있다."
-    ],
-    "cautions": {
-      "language": "'허근', '범위', '허수단위'가 처음 나오는 학생을 위해 자료 안에서 뜻을 풀어 썼다.",
-      "culture": "민수, 서윤은 흔한 이름이며 특정 인물이 아니다. 문화에 의존하는 소재는 없다.",
-      "accessibility": "그림이 없다. x³ 은 '엑스 세제곱', ω 는 '오메가', i 는 '아이', (−1 + √3 i)/2 는 '마이너스 1 더하기 루트 3 아이, 나누기 2', 부등호 > 는 '보다 크다', < 는 '보다 작다'로 읽는다. 색에 의존하지 않는다."
-    },
-    "autoVsHuman": {
-      "auto": [
-        "각 단계의 선택(여러 합리적 판단 허용)",
-        "입력한 (a, b)가 z³ = 1 을 오차 0.02 안에서 만족하는지와 서로 다른 해 3개인지",
-        "서술의 범위 단어·개수 표현·크기 비교 단어 포함 여부"
+  "autoVsHuman": {
+   "auto": [
+    "\uc624\ub958 \uc904 \uc120\ud0dd(2\ubc88, 5\ubc88 \uc904)",
+    "\ub098\ub204\uae30 \uc870\uac74\uc5d0 \ub300\ud55c \uc120\ud0dd\uc9c0",
+    "\ub9cc\ub4e0 a, b, c\uac00 \ubaa8\ub4e0 \uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294\uc9c0\uc640 \uc11c\ub85c \ub2e4\ub978 \ubc29\uc815\uc2dd 3\uac1c\uc778\uc9c0"
+   ],
+   "human": [
+    "\uc0ac\ub77c\uc9c4 \ud574\uc5d0 \ub300\ud55c \uc124\uba85\uc774 \ub9cc\ub4e0 \ubc29\uc815\uc2dd\uacfc \ub9de\ub294\uc9c0",
+    "\ub098\ub204\ub294 \uc2dd\uc774 0\uc774 \ub418\ub294 \uacbd\uc6b0\ub97c \uc790\uae30 \ub9d0\ub85c \uc124\uba85\ud588\ub294\uc9c0"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "z-m-24-02",
+  "subject": "math",
+  "grade": "H2",
+  "cell": "math|H2|equations",
+  "topic": "\uc0bc\ucc28\ubc29\uc815\uc2dd x\u00b3 = 1 \uc758 \ud574\uc758 \uac1c\uc218\uc640 \uc218\uc758 \ubc94\uc704",
+  "level": 3,
+  "levelLabel": "\uace0\ub4f1",
+  "title": "\ubc94\uc704\uac00 \uc5c6\ub294 \ubb38\uc81c\uc758 \ud574\ub294 \uba87 \uac1c\uc77c\uae4c",
+  "uiLang": "ko",
+  "format": "reveal-and-revise",
+  "generative": true,
+  "goal": "\ud480\uc774\uac00 \uc5b4\ub5a4 \uc218\uc758 \ubc94\uc704\ub97c \uc804\uc81c\ud558\ub294\uc9c0 \ub530\uc9c0\uace0, \uc0c8 \uc815\ubcf4\uac00 \ub4e4\uc5b4\uc62c \ub54c\ub9c8\ub2e4 \ud574\uc758 \uac1c\uc218\uc5d0 \ub300\ud55c \ud310\ub2e8\uc744 \uc720\uc9c0\u00b7\uc218\uc815\ud558\uba70, \ubc94\uc704\uc5d0 \ub530\ub978 \uc870\uac74\ubd80 \ub2f5\uacfc \uc9c1\uc811 \ucc3e\uc740 \ud574\ub85c \ud655\uc778\ud55c\ub2e4.",
+  "thinking": [
+   "\ub17c\uc99d\uc774 \uc131\ub9bd\ud558\ub294 \ubc94\uc704(\uc870\uac74) \ubc1d\ud788\uae30",
+   "\uc0c8 \uc815\ubcf4\ub85c \ud310\ub2e8 \uc218\uc815\u00b7\uc720\uc9c0\ud558\uae30",
+   "\ubc94\uc704\uc5d0 \ub530\ub978 \uc870\uac74\ubd80 \ub2f5 \uc4f0\uae30",
+   "\uc5ec\ub7ec \ud574\ub97c \uc9c1\uc811 \ucc3e\uc544 \uac80\uc99d\ud558\uae30"
+  ],
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 x\u00b3 = 1 \uc744 \uc778\uc218\ubd84\ud574\ud574 \ud574\ub97c \uad6c\ud558\ub294 \uac83\uc73c\ub85c \ub05d\ub09c\ub2e4. \uc5ec\uae30\uc11c\ub294 '\ud574\ub294 \ud558\ub098'\ub77c\ub294 \ub17c\uc99d\uc774 \uc5b4\ub5a4 \ubc94\uc704\uc5d0\uc11c \uc633\uc740\uc9c0\ubd80\ud130 \ub530\uc9c0\uace0, \uc815\ubcf4\uac00 \ub298 \ub54c\ub9c8\ub2e4 \ud310\ub2e8\uc744 \uace0\uce58\uac70\ub098 \uc9c0\ud0a4\uba70, \ubcf5\uc18c\uc218 \ud574\ub97c \uc9c1\uc811 \ucc3e\uc544 \ud655\uc778\ud55c\ub2e4.",
+  "prerequisites": [
+   "\uc774 \ubc30\uce58\uc758 H2\ub294 \ub09c\uc774\ub3c4\u00b7\uc9c0\uc6d0 \uc218\uc900 \uad6c\ubd84\uc774\uba70 \ud559\uad50\uc5d0\uc11c \ubc30\uc6b0\ub294 \ud559\ub144\uc744 \ub73b\ud558\uc9c0 \uc54a\ub294\ub2e4. \ud559\uad50 \uc21c\uc11c \uac00\uc815: \uacf5\ud1b5\uc218\ud559\uc5d0\uc11c \ubcf5\uc18c\uc218\uc758 \ub73b(\ud5c8\uc218\ub2e8\uc704 i, i\u00b2 = \u22121)\uacfc \uacf1\uc148, \uc774\ucc28\ubc29\uc815\uc2dd\uc758 \ud310\ubcc4\uc2dd, \uc0bc\ucc28\uc2dd\uc758 \uc778\uc218\ubd84\ud574\ub97c \uc774\ubbf8 \ubc30\uc6e0\ub2e4.",
+   "\ub450 \ubcf5\uc18c\uc218\uac00 \uac19\uc744 \uc870\uac74: \uc2e4\uc218 \ubd80\ubd84\ub07c\ub9ac, \ud5c8\uc218 \ubd80\ubd84\ub07c\ub9ac \uac19\ub2e4."
+  ],
+  "minutes": 16,
+  "curriculum": null,
+  "material": "\ubc29\uc815\uc2dd x\u00b3 = 1 \uc758 \ud574\ub97c \uad6c\ud558\ub294 \ubb38\uc81c\uac00 \uc788\ub2e4. \ubb38\uc81c\uc5d0\ub294 x\uc758 \ubc94\uc704\uac00 \uc801\ud600 \uc788\uc9c0 \uc54a\ub2e4. \ubbfc\uc218\ub294 \ud06c\uae30\ub97c \ube44\uad50\ud558\ub294 \ud480\uc774\ub97c \uc37c\uace0, \ud480\uc774\ub97c \ubcf8 \uc11c\uc724\uc774\ub294 '\ubc94\uc704\ubd80\ud130 \uc815\ud574\uc57c \ud558\uc9c0 \uc54a\uc744\uae4c?'\ub77c\uace0 \ubb3c\uc5c8\ub2e4. \uc790\ub8cc\uac00 \ud558\ub098\uc529 \uacf5\uac1c\ub418\ub2c8, \uadf8\ub54c\ub9c8\ub2e4 \uc790\uc2e0\uc758 \ud310\ub2e8\uc744 \uc815\ud574 \ubcf4\uc790. (x\u00b3 \uc740 '\uc5d1\uc2a4 \uc138\uc81c\uacf1'\uc73c\ub85c \uc77d\ub294\ub2e4.)",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "\uc790\ub8cc\uac00 \ud558\ub098\uc529 \uacf5\uac1c\ub3fc\uc694. \uadf8\ub54c\ub9c8\ub2e4 \ud310\ub2e8\uc744 \uace0\ub974\uace0, \uc0c8 \uc815\ubcf4\uac00 \ud310\ub2e8\uc744 \ubc14\uafb8\ub294\uc9c0 \uc720\uc9c0\ud558\ub294\uc9c0 \uc0b4\ud3b4\ubcf4\uc138\uc694.",
+    "stages": [
+     {
+      "info": "\ubc29\uc815\uc2dd x\u00b3 = 1 \uc744 \ud478\ub294 \ubb38\uc81c\uc774\ub2e4. \ubb38\uc81c\uc5d0\ub294 x\uc758 \ubc94\uc704\uac00 \uc801\ud600 \uc788\uc9c0 \uc54a\ub2e4. \ubbfc\uc218\uc758 \ud480\uc774: 'x = 1 \uc740 \ud574\uc774\ub2e4. x > 1 \uc774\uba74 x\u00b3 > 1 \uc774\uace0 x < 1 \uc774\uba74 x\u00b3 < 1 \uc774\ubbc0\ub85c, \ud574\ub294 x = 1 \ud558\ub098\ubfd0\uc774\ub2e4.' ('>'\ub294 '\ubcf4\ub2e4 \ud06c\ub2e4', '<'\ub294 '\ubcf4\ub2e4 \uc791\ub2e4'\ub85c \uc77d\ub294\ub2e4.)",
+      "ask": "\ubbfc\uc218\uc758 \ud480\uc774\ub97c \uc5b4\ub5bb\uac8c \ud310\ub2e8\ud558\uaca0\uc2b5\ub2c8\uae4c?",
+      "options": [
+       {
+        "id": "a",
+        "text": "\uc218\ub294 \ubaa8\ub450 \ud06c\uae30\ub97c \ube44\uad50\ud560 \uc218 \uc788\uc73c\ub2c8 \ubbfc\uc218\uc758 \ud480\uc774\ub294 \uc633\uace0, \ud574\ub294 1 \ud558\ub098\ubfd0\uc774\ub2e4",
+        "reveals": "\ubaa8\ub4e0 \uc218\uac00 \ud06c\uace0 \uc791\uc74c\uc73c\ub85c \uc904 \uc138\uc6cc\uc9c0\ub294\uc9c0\ub294 \ub530\uc838 \ubcf4\uc9c0 \uc54a\uc558\uc5b4\uc694. \uc5b4\ub5a4 \uc218\uc5d0\uc11c \ud06c\uae30 \ube44\uad50\uac00 \uac00\ub2a5\ud55c\uc9c0 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694."
+       },
+       {
+        "id": "b",
+        "text": "x\uac00 \uc2e4\uc218\uc77c \ub54c\ub294 \ud480\uc774\uac00 \uc633\ub2e4. \ub2e4\ub9cc \ubc94\uc704\uac00 \uc5c6\uc73c\ub2c8 \ub354 \ud655\uc778\uc774 \ud544\uc694\ud558\ub2e4",
+        "reveals": "\ud480\uc774\uac00 \uc5b4\ub5a4 \uc218\ub97c \uc804\uc81c\ud558\ub294\uc9c0 \uc77d\uace0, \ubc94\uc704\uac00 \ube60\uc9c4 \uc810\uae4c\uc9c0 \ud310\ub2e8\uc5d0 \ub123\uc5c8\uc5b4\uc694."
+       },
+       {
+        "id": "c",
+        "text": "\uc0bc\ucc28\ubc29\uc815\uc2dd\uc740 \ud574\uac00 \ubc18\ub4dc\uc2dc \uc138 \uac1c\uc774\ubbc0\ub85c \ud574\uac00 \ud558\ub098\ub77c\ub294 \ud480\uc774\ub294 \ud2c0\ub838\ub2e4",
+        "reveals": "\ucc28\uc218\ub9cc \ubcf4\uace0 \ud574\uc758 \uac1c\uc218\ub97c \ub2e8\uc815\ud588\uc5b4\uc694. \uc11c\ub85c \ub2e4\ub978 \ud574\uac00 \uba87 \uac1c\uc778\uc9c0\ub294 \uc2dd\uacfc \ubc94\uc704\ub97c \ubcf4\uace0 \ud655\uc778\ud574\uc57c \ud574\uc694."
+       },
+       {
+        "id": "d",
+        "text": "x = 1 \ud558\ub098\ub9cc \ub123\uc5b4 \ubcf8 \uac83\uc774\ub77c\uc11c \uc774 \ud480\uc774\ub85c\ub294 \uc544\ubb34\uac83\ub3c4 \uc54c \uc218 \uc5c6\ub2e4",
+        "reveals": "\ud480\uc774\uc5d0\ub294 1\ubcf4\ub2e4 \ud070 \uacbd\uc6b0\uc640 \uc791\uc740 \uacbd\uc6b0\ub97c \ub530\uc9c4 \ubd80\ubd84\ub3c4 \uc788\uc5b4\uc694. \uadf8 \ubd80\ubd84\uc774 \ubb34\uc5c7\uc744 \ubcf4\uc7a5\ud558\ub294\uc9c0 \uc77d\uc5b4 \ubcf4\uc138\uc694."
+       }
       ],
-      "human": [
-        "크기 비교가 쓰이는 조건에 대한 설명의 논리",
-        "판단을 바꾸거나 유지한 이유의 질"
-      ]
+      "reasonable": [
+       "b"
+      ],
+      "after": "x\uac00 \uc2e4\uc218\ub77c\uba74 \ubbfc\uc218\uc758 \ub17c\uc99d\uc740 \uc633\uc544\uc694(1\ubcf4\ub2e4 \ud06c\uba74 x\u00b3 > 1, \uc791\uc73c\uba74 x\u00b3 < 1). \ud558\uc9c0\ub9cc \ubc94\uc704\uac00 \uc801\ud600 \uc788\uc9c0 \uc54a\uc544\uc11c, \uc2e4\uc218\ub9cc \uc0dd\uac01\ud574\ub3c4 \ucda9\ubd84\ud55c\uc9c0\ub294 \uc544\uc9c1 \uc54c \uc218 \uc5c6\uc5b4\uc694."
+     },
+     {
+      "info": "\uc0c8\ub85c\uc6b4 \uc815\ubcf4 \ub450 \uac00\uc9c0\uac00 \ub098\uc654\ub2e4. (1) x\u00b3 \u2212 1 = (x \u2212 1)(x\u00b2 + x + 1) \uc774\uace0, \uc774\ucc28\ubc29\uc815\uc2dd x\u00b2 + x + 1 = 0 \uc758 \ud310\ubcc4\uc2dd\uc740 1 \u2212 4 = \u22123 \uc774\ub2e4. (2) \uc774 \ubb38\uc81c\uc9d1\uc758 \uc55e\ubd80\ubd84 \uc124\uba85\uc5d0\ub294 '\uc774 \ub2e8\uc6d0\uc5d0\uc11c\ub294 \ubcf5\uc18c\uc218 \ubc94\uc704\uc5d0\uc11c \ubc29\uc815\uc2dd\uc744 \ud47c\ub2e4'\uace0 \uc801\ud600 \uc788\uc9c0\ub9cc, \uc774 \ubb38\uc81c \uc790\uccb4\uc5d0\ub294 \uc5ec\uc804\ud788 \ubc94\uc704\uac00 \uc5c6\ub2e4.",
+      "ask": "\uc774\uc81c '\uc11c\ub85c \ub2e4\ub978 \ud574\uac00 \uba87 \uac1c\uc778\uac00'\uc5d0 \uc5b4\ub5bb\uac8c \ub2f5\ud558\uaca0\uc2b5\ub2c8\uae4c?",
+      "options": [
+       {
+        "id": "a",
+        "text": "\ubc94\uc704\uac00 \ubb38\uc81c\uc5d0 \uc5c6\uc73c\ub2c8 \uc2e4\uc218\ub9cc \uc0dd\uac01\ud558\uace0, \ud574\ub294 1 \ud558\ub098\ub77c\uace0\ub9cc \ub2f5\ud55c\ub2e4",
+        "reveals": "\uc2e4\uc218 \ubc94\uc704\uc758 \ub2f5\uc73c\ub85c\ub294 \ub9de\uc9c0\ub9cc, \ud310\ubcc4\uc2dd \uacc4\uc0b0\uacfc \ub2e8\uc6d0 \uc124\uba85\uc774\ub77c\ub294 \uc0c8 \uc815\ubcf4\ub97c \ud310\ub2e8\uc5d0 \uc4f0\uc9c0 \uc54a\uc558\uc5b4\uc694."
+       },
+       {
+        "id": "b",
+        "text": "\ud310\ubcc4\uc2dd\uc774 \u22123 \uc73c\ub85c \uc74c\uc218\uc774\ubbc0\ub85c \uc774 \ubc29\uc815\uc2dd\uc5d0\ub294 \uc5b4\ub5a4 \uc218 \ubc94\uc704\uc5d0\uc11c\ub3c4 \ud574\uac00 \uc5c6\ub2e4",
+        "reveals": "\ud310\ubcc4\uc2dd\uc740 x\u00b2 + x + 1 \uc774\ub77c\ub294 \ud55c \uc778\uc218\uc5d0 \ub300\ud55c \uc815\ubcf4\uc608\uc694. x \u2212 1 \uc774\ub77c\ub294 \ub2e4\ub978 \uc778\uc218\uac00 \uc788\ub2e4\ub294 \uc810\uc744 \uc78a\uc5c8\uc5b4\uc694."
+       },
+       {
+        "id": "c",
+        "text": "\uc2e4\uc218\ub77c\uba74 \ud574\uac00 1\uac1c, \ubcf5\uc18c\uc218\ub77c\uba74 3\uac1c\ub77c\uace0 \ubc94\uc704\ub97c \ub098\ub204\uc5b4 \ub2f5\ud55c\ub2e4",
+        "reveals": "\ubc94\uc704\uac00 \ud655\uc815\ub418\uc9c0 \uc54a\uc740 \uc0ac\uc815\uc744 \uadf8\ub300\ub85c \ub2f5\uc5d0 \ub2f4\uc558\uc5b4\uc694. \uc870\uac74\uc5d0 \ub530\ub77c \ub2f5\uc774 \ub2ec\ub77c\uc9d0\uc744 \ubcf4\uc5ec \uc8fc\ub294 \ud310\ub2e8\uc774\uc5d0\uc694."
+       },
+       {
+        "id": "d",
+        "text": "\ub2e8\uc6d0 \uc124\uba85\uc5d0 \ub530\ub77c \ubcf5\uc18c\uc218\ub85c \ubcf4\uace0 3\uac1c\ub77c\uace0 \uc4f0\ub418 \uac00\uc815\uc744 \uc801\ub294\ub2e4",
+        "reveals": "\ub2e8\uc6d0 \uc124\uba85\uc774\ub77c\ub294 \ub2e8\uc11c\ub97c \uc4f0\uace0 \uac00\uc815\uc744 \ubc1d\ud614\uc5b4\uc694. \uadfc\uac70\uc640 \ud55c\uacc4\ub97c \ud568\uaed8 \uc801\uc740 \ud310\ub2e8\uc774\uc5d0\uc694."
+       }
+      ],
+      "reasonable": [
+       "c",
+       "d"
+      ],
+      "after": "x \u2212 1 = 0 \uc5d0\uc11c \uc2e4\uc218 \ud574 1\uc774 \ub098\uc624\uace0, x\u00b2 + x + 1 = 0 \uc740 \ud310\ubcc4\uc2dd\uc774 \uc74c\uc218\uc774\ubbc0\ub85c \uc2e4\uc218 \ud574\uac00 \uc5c6\uace0 \uc11c\ub85c \ub2e4\ub978 \ud5c8\uadfc \ub450 \uac1c\uac00 \uc788\uc5b4\uc694. \uc2e4\uc218\ub77c\uba74 1\uac1c, \ubcf5\uc18c\uc218\ub77c\uba74 3\uac1c\uc608\uc694. \ubc94\uc704\uac00 \ud655\uc815\ub418\uc9c0 \uc54a\uc558\uc73c\ub2c8 \ubc94\uc704\ubcc4\ub85c \ub2f5\ud558\uac70\ub098, \ub2e8\uc6d0 \uc124\uba85\uc744 \uadfc\uac70\ub85c \uac00\uc815\uc744 \uc801\uace0 3\uac1c\ub77c\uace0 \ub2f5\ud558\ub294 \uac83 \ub458 \ub2e4 \ud569\ub9ac\uc801\uc774\uc5d0\uc694. \ubbfc\uc218\uc758 \ud310\ub2e8 '\uc2e4\uc218\uc5d0\uc11c\ub294 \ud574\uac00 \ud558\ub098'\ub294 \uadf8\ub300\ub85c \uc720\uc9c0\ub3fc\uc694."
+     },
+     {
+      "info": "\ud5c8\uadfc \ud558\ub098\ub97c \u03c9 = (\u22121 + \u221a3 i)/2 \ub77c \ud55c\ub2e4. (i\ub294 \ud5c8\uc218\ub2e8\uc704\ub85c i\u00b2 = \u22121 \uc774\uace0, \uc2dd\uc740 '\ub9c8\uc774\ub108\uc2a4 1 \ub354\ud558\uae30 \ub8e8\ud2b8 3 \uc544\uc774, \ub098\ub204\uae30 2'\ub77c\uace0 \uc77d\ub294\ub2e4.) \u03c9 \uac00 x\u00b2 + x + 1 = 0 \uc758 \uadfc\uc774\ub77c\ub294 \uac83\uc740 \uc54c\uace0 \uc788\ub2e4. \uc774 \u03c9 \uac00 \uc815\ub9d0 x\u00b3 = 1 \ub3c4 \ub9cc\uc871\ud558\ub294\uc9c0 \uc9c1\uc811 \ud655\uc778\ud558\ub824 \ud55c\ub2e4.",
+      "ask": "\ud0c0\ub2f9\ud55c \ud655\uc778 \ubc29\ubc95\uc740 \uc5b4\ub290 \uac83\uc77c\uae4c\uc694? (\ubc29\ubc95\uc774 \uc5ec\ub7ec \uac00\uc9c0\uc77c \uc218 \uc788\uc5b4\uc694.)",
+      "options": [
+       {
+        "id": "a",
+        "text": "\u03c9\u00b2 = \u2212\u03c9 \u2212 1 \uc744 \uc774\uc6a9\ud574 \u03c9\u00b3 = \u03c9\u00b7\u03c9\u00b2 = \u2212\u03c9\u00b2 \u2212 \u03c9 = 1 \ub85c \uacc4\uc0b0\ud55c\ub2e4",
+        "reveals": "\uc774\ubbf8 \uc544\ub294 \uc2dd\uc744 \uc774\uc6a9\ud574 \u03c9\u00b3 \uc744 \u03c9 \uc758 \uc77c\ucc28\uc2dd\uc73c\ub85c \ub0ae\ucd94\ub294 \uae38\uc744 \uace8\ub790\uc5b4\uc694."
+       },
+       {
+        "id": "b",
+        "text": "\u03c9 \ub97c \u22120.5 + 0.87i \ub85c \ub193\uace0 \uc5ec\ub7ec \ubc88 \uacf1\ud574 1\uc5d0 \uac00\uae4c\uc6b0\uba74 \ud655\uc778\ud55c \uac83\uc73c\ub85c \ubcf8\ub2e4",
+        "reveals": "\uc5b4\ub9bc\uac12\uc758 \uacc4\uc0b0\uc740 \uc810\uac80\uc5d0\ub294 \ub3c4\uc6c0\uc774 \ub418\uc9c0\ub9cc, \uc815\ud655\ud788 1\uc778\uc9c0 \ud655\uc778\ud55c \uac83\uc740 \uc544\ub2c8\uc5d0\uc694."
+       },
+       {
+        "id": "c",
+        "text": "\u03c9\u00b2 \uc744 \uad6c\ud558\uace0 \u03c9 \ub97c \uacf1\ud574 (\u22121+\u221a3 i)(\u22121\u2212\u221a3 i)/4 = 1 \ub85c \ud655\uc778\ud55c\ub2e4",
+        "reveals": "\uc9c1\uc811 \uacf1\ud574\uc11c \ud655\uc778\ud558\ub294 \uae38\uc744 \uace8\ub790\uc5b4\uc694. \ud5c8\uc218 \ubd80\ubd84\uc774 \uc5b4\ub5bb\uac8c \uc5c6\uc5b4\uc9c0\ub294\uc9c0\uac00 \ud575\uc2ec\uc774\uc5d0\uc694."
+       },
+       {
+        "id": "d",
+        "text": "\u03c9 \uac00 \uc5b4\ub5a4 \ubc29\uc815\uc2dd\uc758 \uadfc\uc774\ub2c8 \u03c9\u00b3 = 1 \ub3c4 \uc774\ubbf8 \uc131\ub9bd\ud55c\ub2e4\uace0 \ubcf4\uace0 \uadf8\ub300\ub85c \uc4f4\ub2e4",
+        "reveals": "\ud655\uc778\ud558\ub824\ub294 \uacb0\ub860\uc744 \uc774\ubbf8 \ucc38\uc774\ub77c\uace0 \uac00\uc815\ud588\uc5b4\uc694. \u03c9 \uac00 \uadfc\uc778 \ubc29\uc815\uc2dd\uc740 x\u00b3 = 1 \uc774 \uc544\ub2c8\ub77c x\u00b2 + x + 1 = 0 \uc774\uc5d0\uc694."
+       }
+      ],
+      "reasonable": [
+       "a",
+       "c"
+      ],
+      "after": "\ub450 \ubc29\ubc95 \ubaa8\ub450 \uc815\ud655\ud55c \ud655\uc778\uc774\uc5d0\uc694. a\ub294 \u03c9\u00b2 + \u03c9 + 1 = 0 \ub9cc \uc4f0\uace0, c\ub294 \u03c9\u00b2 \uc744 \uc9c1\uc811 \uad6c\ud574 \uacf1\ud574\uc694. \uc5b4\ub9bc\uac12(b)\uc740 \uacc4\uc0b0 \uc2e4\uc218\ub97c \uc7a1\ub294 \uc810\uac80\uc77c \ubfd0 \ud655\uc778\uc740 \uc544\ub2c8\uace0, d\ub294 \uacb0\ub860\uc744 \ubbf8\ub9ac \uac00\uc815\ud55c \uac83\uc774\uc5d0\uc694. \uc774\ub807\uac8c \ud5c8\uadfc\ub3c4 x\u00b3 = 1 \uc744 \ub9cc\uc871\ud558\ubbc0\ub85c \ubcf5\uc18c\uc218 \ubc94\uc704\uc5d0\uc11c\ub294 \ud574\uac00 3\uac1c\ub77c\ub294 \uc55e\uc758 \ud310\ub2e8\uc774 \ub4b7\ubc1b\uce68\ub3fc\uc694."
+     }
+    ],
+    "reflect": "\ucc98\uc74c\uc5d0 '\ud574\ub294 1 \ud558\ub098'\ub77c\uace0 \ubcf4\uc558\ub2e4\uba74, \uc5b4\ub5a4 \uc815\ubcf4\uac00 \uadf8 \ud310\ub2e8\uc744 '\uc2e4\uc218\uc5d0\uc11c\ub294 \ub9de\ub2e4'\ub85c \uc881\ud614\ub098\uc694? \ud06c\uae30\ub97c \ube44\uad50\ud558\ub294 \ub17c\uc99d\uc774 \ud5c8\uc218\uc5d0\ub294 \uc65c \uc4f0\uc77c \uc218 \uc5c6\uc744\uae4c\uc694?",
+    "hints": [
+     "\uc0c8 \uc815\ubcf4\uac00 \ub098\uc62c \ub54c\ub9c8\ub2e4 \uc55e\uc5d0\uc11c \uace0\ub978 \uc120\ud0dd\uc744 \ub2e4\uc2dc \uc77d\uace0, \ubb34\uc5c7\uc774 \ub2ec\ub77c\uc84c\ub294\uc9c0 \ud55c \uc904\ub85c \uc801\uc5b4 \ubcf4\uc138\uc694.",
+     "\uc120\ud0dd\uc9c0\ub97c \uace0\ub974\uae30 \uc804\uc5d0 \uadf8 \uc120\ud0dd\uc774 '\uc5b4\ub5a4 \ubc94\uc704\uc758 \uc218'\ub97c \uc804\uc81c\ud558\ub294\uc9c0 \uba3c\uc800 \uc0b4\ud3b4\ubcf4\uc138\uc694."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "build",
+    "prompt": "\ubcf5\uc18c\uc218 z = a + bi (a, b\ub294 \uc2e4\uc218)\uac00 z\u00b3 = 1 \uc744 \ub9cc\uc871\ud55c\ub2e4\uace0 \ud558\uc790. (a + bi)\u00b3 = (a\u00b3 \u2212 3ab\u00b2) + (3a\u00b2b \u2212 b\u00b3)i \uc774\ubbc0\ub85c, \uc2e4\uc218 \ubd80\ubd84 a\u00b3 \u2212 3ab\u00b2 \uc774 1\uc774\uace0 \ud5c8\uc218 \ubd80\ubd84 3a\u00b2b \u2212 b\u00b3 \uc774 0 \uc774\uc5b4\uc57c \ud55c\ub2e4. \uc11c\ub85c \ub2e4\ub978 \ud574 3\uac1c\ub97c (a, b)\ub85c \uc785\ub825\ud558\uc138\uc694. \ubb34\ub9ac\uc218\ub294 \uc18c\uc218 \ub458\uc9f8 \uc790\ub9ac\uae4c\uc9c0 \ubc18\uc62c\ub9bc\ud574 \uc4f0\uba74 \ub418\uace0, \uc624\ucc28 0.02 \uc774\ub0b4\uae4c\uc9c0 \uc778\uc815\ud574\uc694.",
+    "vars": [
+     {
+      "name": "a",
+      "label": "a (\uc2e4\uc218 \ubd80\ubd84)"
+     },
+     {
+      "name": "b",
+      "label": "b (i \uc55e\uc758 \uc218)"
+     }
+    ],
+    "constraints": [
+     {
+      "id": "c1",
+      "expr": "abs(a^3-3*a*b^2-1)<0.02",
+      "ok": "\uc2e4\uc218 \ubd80\ubd84\uc774 1\uc5d0 (\uc624\ucc28 0.02 \uc548\uc5d0\uc11c) \ub9de\uc544\uc694.",
+      "fail": "(a + bi)\u00b3 \uc758 \uc2e4\uc218 \ubd80\ubd84 a\u00b3 \u2212 3ab\u00b2 \uc774 1\uc774 \uc544\ub2c8\uc5d0\uc694."
+     },
+     {
+      "id": "c2",
+      "expr": "abs(3*a^2*b-b^3)<0.02",
+      "ok": "\ud5c8\uc218 \ubd80\ubd84\uc774 0\uc5d0 (\uc624\ucc28 0.02 \uc548\uc5d0\uc11c) \ub9de\uc544\uc694.",
+      "fail": "(a + bi)\u00b3 \uc758 \ud5c8\uc218 \ubd80\ubd84 3a\u00b2b \u2212 b\u00b3 \uc774 0\uc774 \uc544\ub2c8\uc5d0\uc694."
+     }
+    ],
+    "need": 3,
+    "distinctBy": "round(a*10)*100+round(b*10)",
+    "modelRows": [
+     {
+      "a": 1,
+      "b": 0
+     },
+     {
+      "a": -0.5,
+      "b": 0.87
+     },
+     {
+      "a": -0.5,
+      "b": -0.87
+     }
+    ],
+    "badRows": [
+     {
+      "a": -1,
+      "b": 0
+     },
+     {
+      "a": 0.5,
+      "b": 0.87
+     },
+     {
+      "a": 0,
+      "b": 1
+     },
+     {
+      "a": -0.5,
+      "b": 0.9
+     }
+    ],
+    "explain": "\ud574\ub294 z = 1, z = (\u22121 + \u221a3 i)/2, z = (\u22121 \u2212 \u221a3 i)/2 \uc758 \uc138 \uac1c\uc608\uc694. \uc18c\uc218\ub85c\ub294 (1, 0), (\u22120.5, 0.87), (\u22120.5, \u22120.87) \uc815\ub3c4\uc608\uc694. \uac19\uc740 \ud574\ub97c \uc18c\uc218\uc810 \uc544\ub798 \uc790\ub9ac\ub9cc \ub2ec\ub9ac \uc801\uc740 \uac83\uc740 \uc11c\ub85c \ub2e4\ub978 \ud574\ub85c \uc138\uc9c0 \uc54a\uc544\uc694. \ud5c8\uc218 \ubd80\ubd84\uc774 0 \uc778 \ud574\ub294 1\ubfd0\uc774\uace0, \ud06c\uae30 \ube44\uad50\ub9cc\uc73c\ub85c\ub294 \ub098\uba38\uc9c0 \ub450 \ud574\ub97c \ucc3e\uc744 \uc218 \uc5c6\uc5b4\uc694.",
+    "hints": [
+     "z = 1 \uc744 \ub123\uc73c\uba74 x\u00b3 \u2212 1 \uc774 \uc5b4\ub5bb\uac8c \ub418\ub294\uc9c0 \ud655\uc778\ud558\uace0, \ub0a8\ub294 \uc774\ucc28\uc2dd x\u00b2 + x + 1 \uc758 \uadfc\uc744 \ucc3e\uc544 \ubcf4\uc138\uc694.",
+     "\ucc3e\uc740 \uadfc\uc758 \uc2e4\uc218 \ubd80\ubd84\uc744 a\uc5d0, i \uc55e\uc758 \uc218\ub97c b\uc5d0 \ub123\uace0, \uadf8 \ub450 \uc2dd\uc774 \uac01\uac01 1\uacfc 0\uc5d0 \uac00\uae4c\uc6b4\uc9c0 \uacc4\uc0b0\ud574 \ubcf4\uc138\uc694."
+    ],
+    "because": {
+     "id": "s2b",
+     "kind": "write",
+     "prompt": "\ubbfc\uc218\uc758 '1\ubcf4\ub2e4 \ud06c\uba74 x\u00b3 > 1, \uc791\uc73c\uba74 x\u00b3 < 1' \ub17c\uc99d\uc774 \ud5c8\uadfc\uc744 \ucc3e\uc9c0 \ubabb\ud558\ub294 \uc774\uc720\uc640, \uc2e4\uc218 \ubc94\uc704\u00b7\ubcf5\uc18c\uc218 \ubc94\uc704\uc5d0\uc11c \uc11c\ub85c \ub2e4\ub978 \ud574\uac00 \uac01\uac01 \uba87 \uac1c\uc778\uc9c0 \uc4f0\uc138\uc694.",
+     "placeholder": "\uc608: \ubbfc\uc218\uc758 \ub17c\uc99d\uc740 ...",
+     "minChars": 30,
+     "checks": [
+      {
+       "id": "w1",
+       "label": "\uc2e4\uc218\uc640 \ubcf5\uc18c\uc218(\ud5c8\uc218) \ubc94\uc704\ub97c \uad6c\ubd84\ud574\uc11c \ub9d0\ud588\ub2e4",
+       "mode": "all",
+       "patterns": [
+        "\uc2e4\uc218",
+        "\ubcf5\uc18c\uc218|\ud5c8\uc218|\ud5c8\uadfc"
+       ]
+      },
+      {
+       "id": "w2",
+       "label": "\ubc94\uc704\ubcc4 \ud574\uc758 \uac1c\uc218\ub97c \ub9d0\ud588\ub2e4",
+       "mode": "any",
+       "patterns": [
+        "[13]\\s*\uac1c",
+        "\ud558\ub098",
+        "\ud55c\\s*\uac1c",
+        "\uc138\\s*\uac1c",
+        "\uc138\uac1c"
+       ]
+      },
+      {
+       "id": "w3",
+       "label": "\ud06c\uae30\ub97c \ube44\uad50\ud558\ub294 \ub17c\uc99d\uc774 \uc4f0\uc774\ub294 \uc870\uac74\uc5d0 \ub300\ud574 \ub9d0\ud588\ub2e4",
+       "mode": "any",
+       "patterns": [
+        "\ud06c\uae30",
+        "\ub300\uc18c",
+        "\ube44\uad50",
+        "\ud06c\uace0\\s*\uc791",
+        "\uc21c\uc11c",
+        "\ubd80\ub4f1\ud638",
+        "\ud06c\ub2e4",
+        "\uc791\ub2e4"
+       ]
+      }
+     ],
+     "selfAssess": [
+      "\ubbfc\uc218\uc758 \ub17c\uc99d\uc774 '\uc5b4\ub5a4 \uc218\ub07c\ub9ac\ub9cc \ud06c\uae30\ub97c \ube44\uad50\ud560 \uc218 \uc788\ub294\uac00'\uc5d0 \uae30\ub300\uace0 \uc788\uc74c\uc744 \ub0b4 \ub9d0\ub85c \uc37c\ub098\uc694?",
+      "\uc2e4\uc218 \ubc94\uc704\uc758 \ud574\uc758 \uac1c\uc218\uc640 \ubcf5\uc18c\uc218 \ubc94\uc704\uc758 \ud574\uc758 \uac1c\uc218\ub97c \ub458 \ub2e4 \uc37c\ub098\uc694?",
+      "\ud5c8\uadfc\uc744 \uc704\uc5d0\uc11c \uc9c1\uc811 \ucc3e\uc740 \uac12(\uc2e4\uc218 \ubd80\ubd84 \u22120.5 \ub4f1)\uacfc \uc5f0\uacb0\ud574 \uc0dd\uac01\ud588\ub098\uc694?"
+     ],
+     "modelAnswers": [
+      {
+       "text": "\ubbfc\uc218\uc758 \ud480\uc774\ub294 x\uac00 \uc2e4\uc218\uc77c \ub54c\ub9cc \ub9de\ub2e4. \ud06c\uae30 \ube44\uad50\ub294 \uc2e4\uc218\ub07c\ub9ac\ub9cc \ud560 \uc218 \uc788\uace0, \ud5c8\uc218\ub294 \ub300\uc18c\ub97c \uc815\ud560 \uc218 \uc5c6\uc5b4\uc11c \ud5c8\uadfc\uc740 \uc774 \ubc29\ubc95\uc73c\ub85c \ucc3e\uc744 \uc218 \uc5c6\ub2e4. \uc2e4\uc218 \ubc94\uc704\uc5d0\uc11c\ub294 \ud574\uac00 1\uac1c, \ubcf5\uc18c\uc218 \ubc94\uc704\uc5d0\uc11c\ub294 3\uac1c\uc774\ub2e4."
+      },
+      {
+       "text": "\ubcf5\uc18c\uc218 \ubc94\uc704\uc774\uba74 \ubbfc\uc218 \ub17c\uc99d\uc740 \ubabb \uc368. \ud5c8\uc218\uc5d0\ub294 \ud06c\uace0 \uc791\uc74c\uc774 \uc5c6\uc5b4\uc11c \ubd80\ub4f1\ud638\ub85c \ub530\uc9c8 \uc218 \uc5c6\uac70\ub4e0. \uc2e4\uc218\ub77c\uba74 \ud558\ub098(1), \ubcf5\uc18c\uc218\ub77c\uba74 1\uacfc \ud5c8\uadfc \ub450 \uac1c\ub85c \uc138 \uac1c\uc57c.",
+       "note": "'\ubd80\ub4f1\ud638\ub85c \ub530\uc9c8 \uc218 \uc5c6\ub2e4'\ub294 \ud45c\ud604\uc73c\ub85c \ud06c\uae30 \ube44\uad50\uc758 \uc870\uac74\uc744 \ub9d0\ud588\ub2e4."
+      }
+     ],
+     "badAnswers": [
+      {
+       "text": "\ubbfc\uc218\uac00 \ud2c0\ub838\ub2e4. \ud574\uac00 \ub354 \uc788\ub2e4.",
+       "why": "\uc5b4\ub5a4 \ubc94\uc704\uc778\uc9c0, \uc65c \ub354 \uc788\ub294\uc9c0, \uba87 \uac1c\uc778\uc9c0 \uc5c6\ub2e4."
+      },
+      {
+       "text": "\uc2e4\uc218\ub294 1\uac1c\uace0 \ubcf5\uc18c\uc218\ub294 3\uac1c\uc774\ub2e4.",
+       "why": "\uac1c\uc218\ub294 \ub9de\uac8c \uc37c\uc9c0\ub9cc \ub17c\uc99d\uc774 \ud5c8\uadfc\uc744 \ubabb \ucc3e\ub294 \uc774\uc720\uac00 \uc5c6\ub2e4."
+      }
+     ],
+     "humanReview": "\ud06c\uae30 \ube44\uad50\uac00 \uc4f0\uc774\ub294 \uc870\uac74\uc5d0 \ub300\ud55c \uc124\uba85\uc774 \ub17c\ub9ac\uc801\uc778\uc9c0, \ubc94\uc704\ubcc4 \uac1c\uc218\ub97c \uc55e \ub2e8\uacc4\uc5d0\uc11c \ucc3e\uc740 \ud574\uc640 \uc5f0\uacb0\ud588\ub294\uc9c0\ub294 \uc0ac\ub78c\uc774 \uc77d\uc5b4\uc57c \uc548\ub2e4. \ud45c\uba74 \uac80\uc0ac\ub294 \ubc94\uc704 \ub2e8\uc5b4, \uac1c\uc218 \ud45c\ud604, \ud06c\uae30 \ube44\uad50 \uad00\ub828 \ub2e8\uc5b4\ub9cc \ubcf8\ub2e4.",
+     "hints": [
+      "\ubbfc\uc218\uc758 \ub17c\uc99d\uc5d0\uc11c 'x > 1' \uc774\ub098 'x < 1' \uc774 \uc4f0\uc778 \uacf3\uc774 \uc5b4\ub5a4 \uc218\ub97c \uc804\uc81c\ud558\ub294\uc9c0 \uc9da\uc5b4 \ubcf4\uc138\uc694.",
+      "\uc2e4\uc218 \ubc94\uc704\uc640 \ubcf5\uc18c\uc218 \ubc94\uc704\ub85c \ub098\ub204\uc5b4 \uc55e\uc5d0\uc11c \ucc3e\uc740 \ud574\ub97c \uac01\uac01 \uc138\uc5b4 \ubcf4\uc138\uc694."
+     ]
     }
-  }
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "\ub17c\uc99d\uc774 \uc131\ub9bd\ud558\ub294 \ubc94\uc704 \ud30c\uc545",
+    "full": "\ud06c\uae30 \ube44\uad50\ub294 \uc2e4\uc218\uc5d0\uc11c\ub9cc \uac00\ub2a5\ud558\ub2e4\ub294 \uc810\uc744 \ub4e4\uc5b4 \ubbfc\uc218\uc758 \ud480\uc774\uac00 \uc2e4\uc218 \ubc94\uc704\uc5d0\uc11c\ub9cc \uc644\uacb0\ub428\uc744 \uc124\uba85",
+    "partial": "\ubbfc\uc218\uac00 \ud2c0\ub838\ub2e4\uace0\ub9cc \ud558\uac70\ub098 \ubc94\uc704\ub97c \uc5b8\uae09\ud558\ub098 \uc774\uc720\uac00 \uc5c6\uc74c",
+    "none": "\ubaa8\ub4e0 \ubc94\uc704\uc5d0\uc11c \ud574\uac00 1\uac1c\ub77c\uace0 \ubd04"
+   },
+   {
+    "criterion": "\uc0c8 \uc815\ubcf4\uc5d0 \ub530\ub978 \ud310\ub2e8 \uc870\uc815",
+    "full": "\ubc94\uc704\uac00 \ud655\uc815\ub418\uc9c0 \uc54a\uc558\uc74c\uc744 \ubc18\uc601\ud574 \uc870\uac74\ubd80\ub85c \ub2f5\ud558\uac70\ub098, \uac00\uc815\uc744 \ubc1d\ud788\uace0 3\uac1c\ub77c\uace0 \ub2f5\ud568",
+    "partial": "\ubc94\uc704\ub97c \ud655\uc778\ud558\uc9c0 \uc54a\uc740 \ucc44 \ud558\ub098\uc758 \uac1c\uc218\ub9cc \ub2f5\ud568",
+    "none": "\uc0c8 \uc815\ubcf4\ub97c \ud310\ub2e8\uc5d0 \ubc18\uc601\ud558\uc9c0 \uc54a\uc74c"
+   },
+   {
+    "criterion": "\ud574\uc758 \uc9c1\uc811 \uad6c\uc131",
+    "full": "\uc11c\ub85c \ub2e4\ub978 \ud574 3\uac1c\ub97c \uc870\uac74\uc744 \ub9cc\uc871\ud558\uac8c \uc785\ub825",
+    "partial": "\ud574 1\uacfc \ud5c8\uadfc \ud558\ub098\ub9cc \ucc3e\uc74c",
+    "none": "\uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294 \ud574\uac00 \uc5c6\uc74c"
+   }
+  ],
+  "alternatives": [
+   "\ubbfc\uc218\uc758 \ud480\uc774\ub294 \uc2e4\uc218 \ubc94\uc704\uc5d0\uc11c\ub294 \uc644\uacb0\ub41c \uc62c\ubc14\ub978 \ub17c\uc99d\uc774\ub2e4. \uc774\ub97c '\ub9de\ub2e4'\uace0 \uc720\uc9c0\ud558\uba74\uc11c \ubc94\uc704\ub97c \ud655\uc778\ud574\uc57c \ud55c\ub2e4\uace0 \uc4f4 \ub2f5\uc774 \uac00\uc7a5 \uc88b\uc740 \ub2f5 \uc911 \ud558\ub098\uc774\ub2e4.",
+   "x\u00b3 = 1 \uc758 \ud574\ub294 x\u00b3 \u2212 1 = (x \u2212 1)(x\u00b2 + x + 1) = 0 \uc73c\ub85c \uad6c\ud574\ub3c4 \ub418\uace0, \ub2e8\uc704\uc6d0 \uc704 \uc810\uc758 \uadf9\ud615\uc2dd\uc73c\ub85c \uad6c\ud574\ub3c4 \ub41c\ub2e4. \ubc29\ubc95\uc740 \ud558\ub098\uac00 \uc544\ub2c8\ub2e4.",
+   "\ub2e8\uc6d0 \uc124\uba85\uc744 \uadfc\uac70\ub85c \ubcf5\uc18c\uc218 \ubc94\uc704\ub97c \uac00\uc815\ud558\uace0 3\uac1c\ub77c\uace0 \ub2f5\ud558\ub294 \uac83\ub3c4, \ubc94\uc704\ubcc4\ub85c \ub098\ub204\uc5b4 \ub2f5\ud558\ub294 \uac83\ub3c4 \ud569\ub9ac\uc801\uc774\ub2e4."
+  ],
+  "hardCases": [
+   "'\ubc94\uc704\uac00 \uc5c6\uc73c\uba74 \uc2e4\uc218\ub85c \ubcf8\ub2e4'\uace0 \ub2f5\ud55c \ud559\uc0dd: \uc77c\uc0c1 \uad00\ub840\uc77c \uc218 \uc788\uc73c\ub098 \uc774 \ubb38\uc81c\uc9d1\uc758 \ub2e8\uc6d0 \uc124\uba85\uacfc \ub9de\uc9c0 \uc54a\ub294\ub2e4. \uc774\uc720\ub97c \ubb3b\uace0 \uac00\uc815\uc744 \uc4f0\uac8c \ud558\uba74 \uc778\uc815\ud560 \uc218 \uc788\ub2e4.",
+   "\ud5c8\uadfc\uc758 \uc18c\uc218 \ud45c\ud604\uc744 (\u22120.5, 0.866\u2026)\uacfc (\u22120.5, 0.87)\ub85c \ub2ec\ub9ac \uc4f4 \uacbd\uc6b0: \uac19\uc740 \ud574\uc774\ubbc0\ub85c \ud55c \uac1c\ub85c \uc13c\ub2e4. \ud559\uc0dd\uc774 '\uc11c\ub85c \ub2e4\ub978 \ud574'\ub85c \uc624\ud574\ud560 \uc218 \uc788\ub2e4."
+  ],
+  "cautions": {
+   "language": "'\ud5c8\uadfc', '\ubc94\uc704', '\ud5c8\uc218\ub2e8\uc704'\uac00 \ucc98\uc74c \ub098\uc624\ub294 \ud559\uc0dd\uc744 \uc704\ud574 \uc790\ub8cc \uc548\uc5d0\uc11c \ub73b\uc744 \ud480\uc5b4 \uc37c\ub2e4.",
+   "culture": "\ubbfc\uc218, \uc11c\uc724\uc740 \ud754\ud55c \uc774\ub984\uc774\uba70 \ud2b9\uc815 \uc778\ubb3c\uc774 \uc544\ub2c8\ub2e4. \ubb38\ud654\uc5d0 \uc758\uc874\ud558\ub294 \uc18c\uc7ac\ub294 \uc5c6\ub2e4.",
+   "accessibility": "\uadf8\ub9bc\uc774 \uc5c6\ub2e4. x\u00b3 \uc740 '\uc5d1\uc2a4 \uc138\uc81c\uacf1', \u03c9 \ub294 '\uc624\uba54\uac00', i \ub294 '\uc544\uc774', (\u22121 + \u221a3 i)/2 \ub294 '\ub9c8\uc774\ub108\uc2a4 1 \ub354\ud558\uae30 \ub8e8\ud2b8 3 \uc544\uc774, \ub098\ub204\uae30 2', \ubd80\ub4f1\ud638 > \ub294 '\ubcf4\ub2e4 \ud06c\ub2e4', < \ub294 '\ubcf4\ub2e4 \uc791\ub2e4'\ub85c \uc77d\ub294\ub2e4. \uc0c9\uc5d0 \uc758\uc874\ud558\uc9c0 \uc54a\ub294\ub2e4."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "\uac01 \ub2e8\uacc4\uc758 \uc120\ud0dd(\uc5ec\ub7ec \ud569\ub9ac\uc801 \ud310\ub2e8 \ud5c8\uc6a9)",
+    "\uc785\ub825\ud55c (a, b)\uac00 z\u00b3 = 1 \uc744 \uc624\ucc28 0.02 \uc548\uc5d0\uc11c \ub9cc\uc871\ud558\ub294\uc9c0\uc640 \uc11c\ub85c \ub2e4\ub978 \ud574 3\uac1c\uc778\uc9c0",
+    "\uc11c\uc220\uc758 \ubc94\uc704 \ub2e8\uc5b4\u00b7\uac1c\uc218 \ud45c\ud604\u00b7\ud06c\uae30 \ube44\uad50 \ub2e8\uc5b4 \ud3ec\ud568 \uc5ec\ubd80"
+   ],
+   "human": [
+    "\ud06c\uae30 \ube44\uad50\uac00 \uc4f0\uc774\ub294 \uc870\uac74\uc5d0 \ub300\ud55c \uc124\uba85\uc758 \ub17c\ub9ac",
+    "\ud310\ub2e8\uc744 \ubc14\uafb8\uac70\ub098 \uc720\uc9c0\ud55c \uc774\uc720\uc758 \uc9c8"
+   ]
+  },
+  "status": "reviewed-ai"
+ }
 ]

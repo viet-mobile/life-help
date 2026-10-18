@@ -18,17 +18,17 @@
   ],
   "differsFromPlain": "Plain practice reads one clock time or says when a class starts. Here a rule inside the notice (what happens after the start) changes the answer, and you must find it and tell the friend the real deadline.",
   "prerequisites": [
-   "Can read Hangul and clock times written with 시 and 분",
-   "Knows 오후, weekday names and basic -아요/어요 endings"
+   "Can read Hangul and clock times written with \uc2dc and \ubd84",
+   "Knows \uc624\ud6c4, weekday names and basic -\uc544\uc694/\uc5b4\uc694 endings"
   ],
   "minutes": 9,
   "curriculum": null,
-  "material": "A notice is on the door of the swimming pool, and your friend 민지 sends you a message.\n\n[수영 수업 안내]\n- 수업: 화요일, 목요일 오후 4시 30분 ~ 5시 30분\n- 수업 시작 10분 전까지 수영장 앞으로 오세요.\n- 수업이 시작되면 문을 닫아요. 늦으면 들어갈 수 없어요.\n\n민지: 목요일 수영 수업, 4시 40분까지 가면 돼요?",
+  "material": "A notice is on the door of the swimming pool, and your friend \ubbfc\uc9c0 sends you a message.\n\n[\uc218\uc601 \uc218\uc5c5 \uc548\ub0b4]\n- \uc218\uc5c5: \ud654\uc694\uc77c, \ubaa9\uc694\uc77c \uc624\ud6c4 4\uc2dc 30\ubd84 ~ 5\uc2dc 30\ubd84\n- \uc218\uc5c5 \uc2dc\uc791 10\ubd84 \uc804\uae4c\uc9c0 \uc218\uc601\uc7a5 \uc55e\uc73c\ub85c \uc624\uc138\uc694.\n- \uc218\uc5c5\uc774 \uc2dc\uc791\ub418\uba74 \ubb38\uc744 \ub2eb\uc544\uc694. \ub2a6\uc73c\uba74 \ub4e4\uc5b4\uac08 \uc218 \uc5c6\uc5b4\uc694.\n\n\ubbfc\uc9c0: \ubaa9\uc694\uc77c \uc218\uc601 \uc218\uc5c5, 4\uc2dc 40\ubd84\uae4c\uc9c0 \uac00\uba74 \ub3fc\uc694?",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
-    "prompt": "Can 민지 go at 4시 40분 on Thursday? Decide using the notice.",
+    "prompt": "Can \ubbfc\uc9c0 go at 4\uc2dc 40\ubd84 on Thursday? Decide using the notice.",
     "options": [
      {
       "id": "a",
@@ -43,7 +43,7 @@
      {
       "id": "c",
       "text": "Cannot tell: the notice does not say what time the pool opens.",
-      "reveals": "The opening time of the pool does not decide it: the notice gives the start of the 목요일 class and says what happens once it has started."
+      "reveals": "The opening time of the pool does not decide it: the notice gives the start of the \ubaa9\uc694\uc77c class and says what happens once it has started."
      },
      {
       "id": "d",
@@ -54,16 +54,16 @@
     "correct": [
      "d"
     ],
-    "explain": "On 목요일 there is a class at 4:30. The door closes when it starts, and the notice asks people to come 10 minutes earlier (4:20). 4:40 is after both times.",
+    "explain": "On \ubaa9\uc694\uc77c there is a class at 4:30. The door closes when it starts, and the notice asks people to come 10 minutes earlier (4:20). 4:40 is after both times.",
     "hints": [
-     "Find 목요일 in the notice and read the start time of the class.",
-     "Put 4시 40분 next to the start time and next to the line about the door."
+     "Find \ubaa9\uc694\uc77c in the notice and read the start time of the class.",
+     "Put 4\uc2dc 40\ubd84 next to the start time and next to the line about the door."
     ]
    },
    {
     "id": "s2",
     "kind": "choose",
-    "prompt": "Which facts from the notice prove that 4시 40분 is too late? Choose all that you need.",
+    "prompt": "Which facts from the notice prove that 4\uc2dc 40\ubd84 is too late? Choose all that you need.",
     "options": [
      {
       "id": "a",
@@ -82,7 +82,7 @@
      },
      {
       "id": "d",
-      "text": "There are classes on 화요일 and 목요일.",
+      "text": "There are classes on \ud654\uc694\uc77c and \ubaa9\uc694\uc77c.",
       "reveals": "This shows that a class exists on that day, but not whether 4:40 is late."
      },
      {
@@ -115,8 +115,8 @@
    {
     "id": "s3",
     "kind": "write",
-    "prompt": "Reply to 민지 in Korean (polite -요). Tell her by what time she must be there and give the reason from the notice.",
-    "placeholder": "예: ...",
+    "prompt": "Reply to \ubbfc\uc9c0 in Korean (polite -\uc694). Tell her by what time she must be there and give the reason from the notice.",
+    "placeholder": "\uc608: ...",
     "minChars": 6,
     "checks": [
      {
@@ -124,20 +124,20 @@
       "label": "polite ending",
       "mode": "any",
       "patterns": [
-       "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
+       "[\uac00-\ud7a3]\uc694(?![\uac00-\ud7a3])|\uc2b5\ub2c8\ub2e4|[\uac11\ub0a9\ub78d\ub9bd\ubc09\uc2ed\uc785\uc7a1\ud569\ub429\uc635\ubd05\ub2d9\uc501]\ub2c8\ub2e4"
       ]
      },
      {
       "id": "w2",
-      "label": "names an arrival limit (4시 20분 / 4시 30분 / 시작 전 / 10분 전)",
+      "label": "names an arrival limit (4\uc2dc 20\ubd84 / 4\uc2dc 30\ubd84 / \uc2dc\uc791 \uc804 / 10\ubd84 \uc804)",
       "mode": "any",
       "patterns": [
-       "4\\s*시\\s*(20|30|15|10)\\s*분",
-       "4\\s*시\\s*반",
-       "10\\s*분\\s*전",
-       "시작(하기)?\\s*전",
-       "네\\s*시\\s*(이십|삼십|십오|십)\\s*분",
-       "네\\s*시\\s*반",
+       "4\\s*\uc2dc\\s*(20|30|15|10)\\s*\ubd84",
+       "4\\s*\uc2dc\\s*\ubc18",
+       "10\\s*\ubd84\\s*\uc804",
+       "\uc2dc\uc791(\ud558\uae30)?\\s*\uc804",
+       "\ub124\\s*\uc2dc\\s*(\uc774\uc2ed|\uc0bc\uc2ed|\uc2ed\uc624|\uc2ed)\\s*\ubd84",
+       "\ub124\\s*\uc2dc\\s*\ubc18",
        "4:(20|30)"
       ]
      },
@@ -146,47 +146,47 @@
       "label": "gives a reason (late / door closed / start)",
       "mode": "any",
       "patterns": [
-       "늦",
-       "못 들어",
-       "문을 닫",
-       "들어갈 수 없",
-       "시작"
+       "\ub2a6",
+       "\ubabb \ub4e4\uc5b4",
+       "\ubb38\uc744 \ub2eb",
+       "\ub4e4\uc5b4\uac08 \uc218 \uc5c6",
+       "\uc2dc\uc791"
       ]
      }
     ],
     "selfAssess": [
-     "Does my reply tell 민지 one clear time?",
+     "Does my reply tell \ubbfc\uc9c0 one clear time?",
      "Does my reason come from the notice (door closes, start time)?",
-     "Would 민지 know what to do on Thursday?"
+     "Would \ubbfc\uc9c0 know what to do on Thursday?"
     ],
     "modelAnswers": [
      {
-      "text": "아니요, 4시 20분까지 가야 해요. 4시 40분은 늦어서 들어갈 수 없어요.",
+      "text": "\uc544\ub2c8\uc694, 4\uc2dc 20\ubd84\uae4c\uc9c0 \uac00\uc57c \ud574\uc694. 4\uc2dc 40\ubd84\uc740 \ub2a6\uc5b4\uc11c \ub4e4\uc5b4\uac08 \uc218 \uc5c6\uc5b4\uc694.",
       "note": "Says no, gives the limit and the reason."
      },
      {
-      "text": "수업 10분 전인 4시 20분까지 오세요. 수업이 시작되면 문을 닫아요.",
+      "text": "\uc218\uc5c5 10\ubd84 \uc804\uc778 4\uc2dc 20\ubd84\uae4c\uc9c0 \uc624\uc138\uc694. \uc218\uc5c5\uc774 \uc2dc\uc791\ub418\uba74 \ubb38\uc744 \ub2eb\uc544\uc694.",
       "note": "Gives the limit by explaining the notice."
      },
      {
-      "text": "4시 30분 전에 와야 해요. 수업이 시작되면 들어갈 수 없어요.",
+      "text": "4\uc2dc 30\ubd84 \uc804\uc5d0 \uc640\uc57c \ud574\uc694. \uc218\uc5c5\uc774 \uc2dc\uc791\ub418\uba74 \ub4e4\uc5b4\uac08 \uc218 \uc5c6\uc5b4\uc694.",
       "note": "Gives the hard limit (the start) instead of the 10-minute request."
      }
     ],
     "badAnswers": [
      {
-      "text": "네, 4시 40분까지 오세요.",
+      "text": "\ub124, 4\uc2dc 40\ubd84\uae4c\uc9c0 \uc624\uc138\uc694.",
       "why": "Accepts the wrong time and gives no reason."
      },
      {
-      "text": "늦으면 안 돼요.",
+      "text": "\ub2a6\uc73c\uba74 \uc548 \ub3fc\uc694.",
       "why": "Gives a vague reason but no time."
      }
     ],
     "humanReview": "Whether the Korean is natural and whether the limit and the reason really match the notice.",
     "hints": [
-     "Start with 아니요 or 안 돼요, because the plan does not work.",
-     "Write the time with 시 and 분, then add a short reason with 서 or 니까."
+     "Start with \uc544\ub2c8\uc694 or \uc548 \ub3fc\uc694, because the plan does not work.",
+     "Write the time with \uc2dc and \ubd84, then add a short reason with \uc11c or \ub2c8\uae4c."
     ]
    }
   ],
@@ -205,16 +205,16 @@
    }
   ],
   "alternatives": [
-   "Telling 민지 to arrive 'by 4시 15분' or 'around 4시' is also fine, as long as it is before the class starts at 4:30.",
+   "Telling \ubbfc\uc9c0 to arrive 'by 4\uc2dc 15\ubd84' or 'around 4\uc2dc' is also fine, as long as it is before the class starts at 4:30.",
    "A student may say 'no' only because 4:40 is after 4:30; that is already correct, the 10-minute line is extra."
   ],
   "hardCases": [
-   "A reply that names 4시 30분 (the start) instead of 4시 20분 is not wrong against the door rule but is looser than the notice's 10-minute request; a teacher decides."
+   "A reply that names 4\uc2dc 30\ubd84 (the start) instead of 4\uc2dc 20\ubd84 is not wrong against the door rule but is looser than the notice's 10-minute request; a teacher decides."
   ],
   "cautions": {
-   "language": "시 (o'clock) and 시간 (length of time) are easy to mix up; the checks only accept digits or spoken forms followed by 시/분. 'Late' is 늦다: 늦으면 = if (she is) late.",
+   "language": "\uc2dc (o'clock) and \uc2dc\uac04 (length of time) are easy to mix up; the checks only accept digits or spoken forms followed by \uc2dc/\ubd84. 'Late' is \ub2a6\ub2e4: \ub2a6\uc73c\uba74 = if (she is) late.",
    "culture": "Community pools and centers in Korea often close the door at the start of a class; this notice states the rule, so no cultural knowledge is assumed.",
-   "accessibility": "All times are written out with 시 and 분 (not 4:30), so screen readers read them in Korean. The notice is a plain text list; no images or colors carry meaning."
+   "accessibility": "All times are written out with \uc2dc and \ubd84 (not 4:30), so screen readers read them in Korean. The notice is a plain text list; no images or colors carry meaning."
   },
   "autoVsHuman": {
    "auto": [
@@ -225,7 +225,7 @@
     "Quality and naturalness of the reply"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "x-k-k4-02",
@@ -246,27 +246,27 @@
   ],
   "differsFromPlain": "Plain practice asks which floor a place is on. Here the guide is right, a friend's message mixes in one wrong detail, and you must notice it and fix the sentence.",
   "prerequisites": [
-   "Can read Hangul and floor numbers written like 3층",
-   "Knows that casual speech to a younger sibling can drop 요"
+   "Can read Hangul and floor numbers written like 3\uce35",
+   "Knows that casual speech to a younger sibling can drop \uc694"
   ],
   "minutes": 8,
   "curriculum": null,
-  "material": "Your classmate 지우 is explaining to her younger brother 하나 how to find the library. First read the floor guide on the library door, then check 지우's text message.\n\n[도서관 안내]\n1층: 안내 데스크, 카페\n2층: 어린이 책방\n3층: 열람실 (조용히 공부하는 곳)\n4층: 강당 (행사가 있을 때만 열어요)\n엘리베이터: 1층 입구 왼쪽",
+  "material": "Your classmate \uc9c0\uc6b0 is explaining to her younger brother \ud558\ub098 how to find the library. First read the floor guide on the library door, then check \uc9c0\uc6b0's text message.\n\n[\ub3c4\uc11c\uad00 \uc548\ub0b4]\n1\uce35: \uc548\ub0b4 \ub370\uc2a4\ud06c, \uce74\ud398\n2\uce35: \uc5b4\ub9b0\uc774 \ucc45\ubc29\n3\uce35: \uc5f4\ub78c\uc2e4 (\uc870\uc6a9\ud788 \uacf5\ubd80\ud558\ub294 \uacf3)\n4\uce35: \uac15\ub2f9 (\ud589\uc0ac\uac00 \uc788\uc744 \ub54c\ub9cc \uc5f4\uc5b4\uc694)\n\uc5d8\ub9ac\ubca0\uc774\ud130: 1\uce35 \uc785\uad6c \uc67c\ucabd",
   "steps": [
    {
     "id": "s1",
     "kind": "pickLine",
-    "prompt": "One line of 지우's text would send 하나 to the wrong place. Which line is it?",
+    "prompt": "One line of \uc9c0\uc6b0's text would send \ud558\ub098 to the wrong place. Which line is it?",
     "lines": [
-     "하나야, 내일 도서관에서 같이 공부하자.",
-     "도서관에 가면 먼저 1층 안내 데스크로 와.",
-     "공부하는 열람실은 2층에 있어.",
-     "엘리베이터는 입구 왼쪽에 있어."
+     "\ud558\ub098\uc57c, \ub0b4\uc77c \ub3c4\uc11c\uad00\uc5d0\uc11c \uac19\uc774 \uacf5\ubd80\ud558\uc790.",
+     "\ub3c4\uc11c\uad00\uc5d0 \uac00\uba74 \uba3c\uc800 1\uce35 \uc548\ub0b4 \ub370\uc2a4\ud06c\ub85c \uc640.",
+     "\uacf5\ubd80\ud558\ub294 \uc5f4\ub78c\uc2e4\uc740 2\uce35\uc5d0 \uc788\uc5b4.",
+     "\uc5d8\ub9ac\ubca0\uc774\ud130\ub294 \uc785\uad6c \uc67c\ucabd\uc5d0 \uc788\uc5b4."
     ],
     "wrong": [
      2
     ],
-    "explain": "Line 3 is wrong: in the guide the 열람실 is on the 3층, while the 2층 is the children's bookroom. The other lines match the guide (안내 데스크 on 1층, elevator at the left of the entrance).",
+    "explain": "Line 3 is wrong: in the guide the \uc5f4\ub78c\uc2e4 is on the 3\uce35, while the 2\uce35 is the children's bookroom. The other lines match the guide (\uc548\ub0b4 \ub370\uc2a4\ud06c on 1\uce35, elevator at the left of the entrance).",
     "hints": [
      "Compare the lines one at a time with the matching entry in the guide.",
      "Check the floor number and what the guide says is on that floor."
@@ -275,77 +275,77 @@
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "Rewrite line 3 so that 하나 goes to the right floor. Keep casual speech (반말) like 지우's other lines.",
-    "placeholder": "예: ...",
+    "prompt": "Rewrite line 3 so that \ud558\ub098 goes to the right floor. Keep casual speech (\ubc18\ub9d0) like \uc9c0\uc6b0's other lines.",
+    "placeholder": "\uc608: ...",
     "minChars": 6,
     "checks": [
      {
       "id": "w1",
-      "label": "names the 열람실",
+      "label": "names the \uc5f4\ub78c\uc2e4",
       "mode": "any",
       "patterns": [
-       "열람실"
+       "\uc5f4\ub78c\uc2e4"
       ]
      },
      {
       "id": "w2",
-      "label": "gives the right floor (3층)",
+      "label": "gives the right floor (3\uce35)",
       "mode": "any",
       "patterns": [
-       "3\\s*층",
-       "삼\\s*층"
+       "3\\s*\uce35",
+       "\uc0bc\\s*\uce35"
       ]
      },
      {
       "id": "w3",
-      "label": "no polite -요 and no stiff notice-style ending (-ㅂ니다)",
+      "label": "no polite -\uc694 and no stiff notice-style ending (-\u3142\ub2c8\ub2e4)",
       "mode": "none",
       "patterns": [
-       "니다(?![가-힣])|십시오|요(?![가-힣])"
+       "\ub2c8\ub2e4(?![\uac00-\ud7a3])|\uc2ed\uc2dc\uc624|\uc694(?![\uac00-\ud7a3])"
       ]
      },
      {
       "id": "w4",
-      "label": "ends with a casual ending (어 / 야 / 아 / 지 / 와 ...)",
+      "label": "ends with a casual ending (\uc5b4 / \uc57c / \uc544 / \uc9c0 / \uc640 ...)",
       "mode": "any",
       "patterns": [
-       "(어|야|아|지|자|라|와|해|네|거든|잖아)\\s*[.!?？~]*\\s*$"
+       "(\uc5b4|\uc57c|\uc544|\uc9c0|\uc790|\ub77c|\uc640|\ud574|\ub124|\uac70\ub4e0|\uc796\uc544)\\s*[.!?\uff1f~]*\\s*$"
       ]
      }
     ],
     "selfAssess": [
-     "Does my sentence say the correct floor for the 열람실?",
+     "Does my sentence say the correct floor for the \uc5f4\ub78c\uc2e4?",
      "Does it still sound like talking to a younger brother?",
      "Is it a complete sentence?"
     ],
     "modelAnswers": [
      {
-      "text": "공부하는 열람실은 3층에 있어.",
+      "text": "\uacf5\ubd80\ud558\ub294 \uc5f4\ub78c\uc2e4\uc740 3\uce35\uc5d0 \uc788\uc5b4.",
       "note": "Direct fix of the wrong number."
      },
      {
-      "text": "열람실은 3층이야. 엘리베이터 타고 올라와.",
+      "text": "\uc5f4\ub78c\uc2e4\uc740 3\uce35\uc774\uc57c. \uc5d8\ub9ac\ubca0\uc774\ud130 \ud0c0\uace0 \uc62c\ub77c\uc640.",
       "note": "Fixes the floor and adds a helpful action."
      }
     ],
     "badAnswers": [
      {
-      "text": "공부하는 열람실은 2층에 있어.",
+      "text": "\uacf5\ubd80\ud558\ub294 \uc5f4\ub78c\uc2e4\uc740 2\uce35\uc5d0 \uc788\uc5b4.",
       "why": "Repeats the wrong floor."
      },
      {
-      "text": "열람실은 3층에 있습니다.",
+      "text": "\uc5f4\ub78c\uc2e4\uc740 3\uce35\uc5d0 \uc788\uc2b5\ub2c8\ub2e4.",
       "why": "Right floor, but the stiff ending does not fit a message to a little brother."
      },
      {
-      "text": "열람실은 3층에 있어요.",
-      "why": "Right floor, but polite -요 instead of casual speech to a younger brother."
+      "text": "\uc5f4\ub78c\uc2e4\uc740 3\uce35\uc5d0 \uc788\uc5b4\uc694.",
+      "why": "Right floor, but polite -\uc694 instead of casual speech to a younger brother."
      }
     ],
     "humanReview": "Whether the casual register is natural and the sentence is complete.",
     "hints": [
-     "Find 열람실 in the guide and read its floor.",
-     "Keep the ending like 있어 or 이야, not 있습니다 or 있어요."
+     "Find \uc5f4\ub78c\uc2e4 in the guide and read its floor.",
+     "Keep the ending like \uc788\uc5b4 or \uc774\uc57c, not \uc788\uc2b5\ub2c8\ub2e4 or \uc788\uc5b4\uc694."
     ]
    }
   ],
@@ -358,32 +358,32 @@
    },
    {
     "criterion": "Repair",
-    "full": "Right floor, 열람실 named, casual ending kept",
+    "full": "Right floor, \uc5f4\ub78c\uc2e4 named, casual ending kept",
     "partial": "Right floor but the register or the place name is lost",
     "none": "Floor still wrong"
    }
   ],
   "alternatives": [
-   "Writing 3층 as 삼층 or '세 번째 층' is acceptable.",
+   "Writing 3\uce35 as \uc0bc\uce35 or '\uc138 \ubc88\uc9f8 \uce35' is acceptable.",
    "A fix that also mentions the elevator is fine."
   ],
   "hardCases": [
    "A student may think line 4 is wrong because the elevator is not mentioned by floor; the guide only gives its position, so it is correct."
   ],
   "cautions": {
-   "language": "Floor numbers use Sino-Korean numbers + 층 (3층 is 삼층, said 'sam-cheung'); the casual endings -어 / -이야 are for close friends or younger people.",
+   "language": "Floor numbers use Sino-Korean numbers + \uce35 (3\uce35 is \uc0bc\uce35, said 'sam-cheung'); the casual endings -\uc5b4 / -\uc774\uc57c are for close friends or younger people.",
    "culture": "Libraries in Korea often put a children's room on a lower floor and a quiet study room higher up; the guide states this, so no knowledge is assumed.",
-   "accessibility": "The guide is a plain text list. Floor numbers are written as digits + 층 so a screen reader reads them in Korean."
+   "accessibility": "The guide is a plain text list. Floor numbers are written as digits + \uce35 so a screen reader reads them in Korean."
   },
   "autoVsHuman": {
    "auto": [
-    "Which line is picked; presence of 열람실, 3층 and the casual ending"
+    "Which line is picked; presence of \uc5f4\ub78c\uc2e4, 3\uce35 and the casual ending"
    ],
    "human": [
     "Naturalness of the fixed sentence"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "x-k-k4-03",
@@ -404,41 +404,41 @@
   ],
   "differsFromPlain": "Plain practice answers an invitation with yes or no. Here you cannot answer yet; you decide which unknowns matter for your own schedule and ask only those.",
   "prerequisites": [
-   "Can read Hangul and times written with 시",
-   "Knows polite -아요/어요 endings and question forms like 몇 시에 ...?"
+   "Can read Hangul and times written with \uc2dc",
+   "Knows polite -\uc544\uc694/\uc5b4\uc694 endings and question forms like \uba87 \uc2dc\uc5d0 ...?"
   ],
   "minutes": 9,
   "curriculum": null,
-  "material": "Today is Friday. This is your plan for Sunday, and then a message from your friend 수아. 할머니 댁 is far from where you live, and you do not know the cinema, so you do not know how long it takes to get from the cinema to 할머니 댁.\n\n[내 일요일 계획]\n- 오전 10시 ~ 11시: 가족 산책\n- 오후 6시: 할머니 댁에서 가족 저녁 식사\n\n수아: 일요일 오후에 영화 볼래요? 영화관 앞에서 만나요.",
+  "material": "Today is Friday. This is your plan for Sunday, and then a message from your friend \uc218\uc544. \ud560\uba38\ub2c8 \ub301 is far from where you live, and you do not know the cinema, so you do not know how long it takes to get from the cinema to \ud560\uba38\ub2c8 \ub301.\n\n[\ub0b4 \uc77c\uc694\uc77c \uacc4\ud68d]\n- \uc624\uc804 10\uc2dc ~ 11\uc2dc: \uac00\uc871 \uc0b0\ucc45\n- \uc624\ud6c4 6\uc2dc: \ud560\uba38\ub2c8 \ub301\uc5d0\uc11c \uac00\uc871 \uc800\ub141 \uc2dd\uc0ac\n\n\uc218\uc544: \uc77c\uc694\uc77c \uc624\ud6c4\uc5d0 \uc601\ud654 \ubcfc\ub798\uc694? \uc601\ud654\uad00 \uc55e\uc5d0\uc11c \ub9cc\ub098\uc694.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
-    "prompt": "You want to say yes if you can still be on time for dinner. Which questions do you NEED to ask 수아 first? Choose all that apply.",
+    "prompt": "You want to say yes if you can still be on time for dinner. Which questions do you NEED to ask \uc218\uc544 first? Choose all that apply.",
     "options": [
      {
       "id": "a",
-      "text": "영화가 오후 몇 시에 시작해요?",
+      "text": "\uc601\ud654\uac00 \uc624\ud6c4 \uba87 \uc2dc\uc5d0 \uc2dc\uc791\ud574\uc694?",
       "reveals": "A start time is handy for planning, but your only fixed event is dinner at 6, so the end of the film matters more."
      },
      {
       "id": "b",
-      "text": "그 영화의 주인공이 누구예요?",
+      "text": "\uadf8 \uc601\ud654\uc758 \uc8fc\uc778\uacf5\uc774 \ub204\uad6c\uc608\uc694?",
       "reveals": "This is about the film, not about your time."
      },
      {
       "id": "c",
-      "text": "영화가 몇 시에 끝나요?",
+      "text": "\uc601\ud654\uac00 \uba87 \uc2dc\uc5d0 \ub05d\ub098\uc694?",
       "reveals": "You looked for the moment you are free again."
      },
      {
       "id": "d",
-      "text": "영화관이 어디에 있어요?",
+      "text": "\uc601\ud654\uad00\uc774 \uc5b4\ub514\uc5d0 \uc788\uc5b4\uc694?",
       "reveals": "You thought about getting from the cinema to the dinner, which takes time you do not know yet."
      },
      {
       "id": "e",
-      "text": "영화표는 한 장에 얼마예요?",
+      "text": "\uc601\ud654\ud45c\ub294 \ud55c \uc7a5\uc5d0 \uc5bc\ub9c8\uc608\uc694?",
       "reveals": "Price is a different kind of question from time."
      }
     ],
@@ -446,7 +446,7 @@
      "c",
      "d"
     ],
-    "explain": "Your only fixed event in the afternoon is dinner at 6 at 할머니 댁. To decide, you need the time the film ends and where the cinema is, because the trip from there to 할머니 댁 takes time you do not know yet. The film's cast or the price do not change your time.",
+    "explain": "Your only fixed event in the afternoon is dinner at 6 at \ud560\uba38\ub2c8 \ub301. To decide, you need the time the film ends and where the cinema is, because the trip from there to \ud560\uba38\ub2c8 \ub301 takes time you do not know yet. The film's cast or the price do not change your time.",
     "hints": [
      "List what you already know about Sunday afternoon, then list what is still unknown.",
      "Ask of each question: could its answer make me late for 6 o'clock?"
@@ -466,8 +466,8 @@
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "Write a short polite reply (-요) to 수아: say that you want to go, mention what you have in the evening, and ask for the information you need.",
-    "placeholder": "예: ...",
+    "prompt": "Write a short polite reply (-\uc694) to \uc218\uc544: say that you want to go, mention what you have in the evening, and ask for the information you need.",
+    "placeholder": "\uc608: ...",
     "minChars": 6,
     "checks": [
      {
@@ -475,7 +475,7 @@
       "label": "polite ending",
       "mode": "any",
       "patterns": [
-       "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
+       "[\uac00-\ud7a3]\uc694(?![\uac00-\ud7a3])|\uc2b5\ub2c8\ub2e4|[\uac11\ub0a9\ub78d\ub9bd\ubc09\uc2ed\uc785\uc7a1\ud569\ub429\uc635\ubd05\ub2d9\uc501]\ub2c8\ub2e4"
       ]
      },
      {
@@ -483,13 +483,13 @@
       "label": "mentions the dinner / family plan",
       "mode": "any",
       "patterns": [
-       "저녁",
-       "가족",
-       "할머니",
-       "6\\s*시",
-       "여섯\\s*시",
-       "약속",
-       "일정"
+       "\uc800\ub141",
+       "\uac00\uc871",
+       "\ud560\uba38\ub2c8",
+       "6\\s*\uc2dc",
+       "\uc5ec\uc12f\\s*\uc2dc",
+       "\uc57d\uc18d",
+       "\uc77c\uc815"
       ]
      },
      {
@@ -497,13 +497,13 @@
       "label": "asks for the end time or the place",
       "mode": "any",
       "patterns": [
-       "끝",
-       "마치",
-       "어디",
-       "위치",
-       "멀",
-       "걸려",
-       "몇 시에 끝"
+       "\ub05d",
+       "\ub9c8\uce58",
+       "\uc5b4\ub514",
+       "\uc704\uce58",
+       "\uba40",
+       "\uac78\ub824",
+       "\uba87 \uc2dc\uc5d0 \ub05d"
       ]
      },
      {
@@ -512,9 +512,9 @@
       "mode": "any",
       "patterns": [
        "\\?",
-       "？",
-       "까요",
-       "나요"
+       "\uff1f",
+       "\uae4c\uc694",
+       "\ub098\uc694"
       ]
      }
     ],
@@ -525,28 +525,28 @@
     ],
     "modelAnswers": [
      {
-      "text": "가고 싶어요! 그런데 6시에 가족 저녁이 있어요. 영화가 몇 시에 끝나요?",
+      "text": "\uac00\uace0 \uc2f6\uc5b4\uc694! \uadf8\ub7f0\ub370 6\uc2dc\uc5d0 \uac00\uc871 \uc800\ub141\uc774 \uc788\uc5b4\uc694. \uc601\ud654\uac00 \uba87 \uc2dc\uc5d0 \ub05d\ub098\uc694?",
       "note": "Wants to go, names the limit, asks for the end time."
      },
      {
-      "text": "좋아요. 저녁에 할머니 댁에 가야 해서요. 영화관이 어디에 있어요?",
+      "text": "\uc88b\uc544\uc694. \uc800\ub141\uc5d0 \ud560\uba38\ub2c8 \ub301\uc5d0 \uac00\uc57c \ud574\uc11c\uc694. \uc601\ud654\uad00\uc774 \uc5b4\ub514\uc5d0 \uc788\uc5b4\uc694?",
       "note": "Gives the reason and asks for the place."
      }
     ],
     "badAnswers": [
      {
-      "text": "좋아요! 같이 봐요!",
+      "text": "\uc88b\uc544\uc694! \uac19\uc774 \ubd10\uc694!",
       "why": "Says yes without checking the dinner and asks nothing."
      },
      {
-      "text": "영화가 몇 시에 시작해요?",
+      "text": "\uc601\ud654\uac00 \uba87 \uc2dc\uc5d0 \uc2dc\uc791\ud574\uc694?",
       "why": "Asks a question, but not about what limits the evening, and gives no reason."
      }
     ],
     "humanReview": "Whether the questions are natural and really tied to the evening plan.",
     "hints": [
      "Start with a short yes-wish, then say what you have at 6.",
-     "End with one question that uses 끝나요 or 어디에 있어요."
+     "End with one question that uses \ub05d\ub098\uc694 or \uc5b4\ub514\uc5d0 \uc788\uc5b4\uc694."
     ]
    }
   ],
@@ -565,16 +565,16 @@
    }
   ],
   "alternatives": [
-   "Asking how far the cinema is from 할머니 댁 instead of where it is works too.",
-   "A student may ask 'how long is the film?' (영화가 몇 시간이에요?); this is also a good question."
+   "Asking how far the cinema is from \ud560\uba38\ub2c8 \ub301 instead of where it is works too.",
+   "A student may ask 'how long is the film?' (\uc601\ud654\uac00 \uba87 \uc2dc\uac04\uc774\uc5d0\uc694?); this is also a good question."
   ],
   "hardCases": [
    "Whether the start time is 'needed': if the start time is unknown the end cannot be guessed, so a student who asks for it is not wrong."
   ],
   "cautions": {
-   "language": "몇 시에 = at what time; 끝나요 = it ends. -ㄹ래요 and -ㄹ까요 are both used to invite; here -ㄹ래요 is the friend's invitation.",
+   "language": "\uba87 \uc2dc\uc5d0 = at what time; \ub05d\ub098\uc694 = it ends. -\u3139\ub798\uc694 and -\u3139\uae4c\uc694 are both used to invite; here -\u3139\ub798\uc694 is the friend's invitation.",
    "culture": "Sunday family meals at a grandparent's home are common in Korea but not universal; the plan only sets a time limit and does not depend on the custom.",
-   "accessibility": "Times are written with 시, no calendar table or image. The questions are full Korean sentences, so a screen reader reads them as text."
+   "accessibility": "Times are written with \uc2dc, no calendar table or image. The questions are full Korean sentences, so a screen reader reads them as text."
   },
   "autoVsHuman": {
    "auto": [
@@ -584,7 +584,7 @@
     "Whether the questions are natural and relevant"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "x-k-k4-04",
@@ -605,17 +605,17 @@
   ],
   "differsFromPlain": "Plain practice asks for one time from a timetable. Here several rules and a teammate's limit apply together, many plans work, and you must find three different ones.",
   "prerequisites": [
-   "Can read hour times written with 시 and the words 부터 and 까지",
+   "Can read hour times written with \uc2dc and the words \ubd80\ud130 and \uae4c\uc9c0",
    "Can compare clock hours"
   ],
   "minutes": 12,
   "curriculum": null,
-  "material": "Your team wants to use the after-school room. Read the notice and the message from your teammate 서준.\n\n[방과 후 교실 이용 안내]\n- 이용 시간: 오후 1시 ~ 6시\n- 한 번에 1시간이나 2시간 쓸 수 있어요.\n- 오후 3시 ~ 4시는 청소 시간이라 쓸 수 없어요.\n\n서준: 저는 수업이 2시에 끝나서 2시 전에는 갈 수 없어요. 시작 시간은 정각으로 해 주세요.",
+  "material": "Your team wants to use the after-school room. Read the notice and the message from your teammate \uc11c\uc900.\n\n[\ubc29\uacfc \ud6c4 \uad50\uc2e4 \uc774\uc6a9 \uc548\ub0b4]\n- \uc774\uc6a9 \uc2dc\uac04: \uc624\ud6c4 1\uc2dc ~ 6\uc2dc\n- \ud55c \ubc88\uc5d0 1\uc2dc\uac04\uc774\ub098 2\uc2dc\uac04 \uc4f8 \uc218 \uc788\uc5b4\uc694.\n- \uc624\ud6c4 3\uc2dc ~ 4\uc2dc\ub294 \uccad\uc18c \uc2dc\uac04\uc774\ub77c \uc4f8 \uc218 \uc5c6\uc5b4\uc694.\n\n\uc11c\uc900: \uc800\ub294 \uc218\uc5c5\uc774 2\uc2dc\uc5d0 \ub05d\ub098\uc11c 2\uc2dc \uc804\uc5d0\ub294 \uac08 \uc218 \uc5c6\uc5b4\uc694. \uc2dc\uc791 \uc2dc\uac04\uc740 \uc815\uac01\uc73c\ub85c \ud574 \uc8fc\uc138\uc694.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
-    "prompt": "Warm-up: 서준 suggests using the room from 오후 2시 to 4시. Why does this plan fail?",
+    "prompt": "Warm-up: \uc11c\uc900 suggests using the room from \uc624\ud6c4 2\uc2dc to 4\uc2dc. Why does this plan fail?",
     "options": [
      {
       "id": "a",
@@ -624,8 +624,8 @@
      },
      {
       "id": "b",
-      "text": "It starts before 서준 is free.",
-      "reveals": "서준 is free from 2 o'clock, so check the start against his message again."
+      "text": "It starts before \uc11c\uc900 is free.",
+      "reveals": "\uc11c\uc900 is free from 2 o'clock, so check the start against his message again."
      },
      {
       "id": "c",
@@ -641,7 +641,7 @@
     "correct": [
      "a"
     ],
-    "explain": "2시 ~ 4시 includes 3시 ~ 4시, when the room is being cleaned. Every plan must be checked for its whole time span, not just for its start.",
+    "explain": "2\uc2dc ~ 4\uc2dc includes 3\uc2dc ~ 4\uc2dc, when the room is being cleaned. Every plan must be checked for its whole time span, not just for its start.",
     "hints": [
      "Write the start hour and the end hour of the plan.",
      "Compare the plan's hours with each line of the notice."
@@ -651,11 +651,11 @@
    {
     "id": "s2",
     "kind": "build",
-    "prompt": "Find 3 different booking plans that follow the notice and 서준's message. s = start (오후 s시), h = hours you use the room.",
+    "prompt": "Find 3 different booking plans that follow the notice and \uc11c\uc900's message. s = start (\uc624\ud6c4 s\uc2dc), h = hours you use the room.",
     "vars": [
      {
       "name": "s",
-      "label": "start hour (오후 s시)"
+      "label": "start hour (\uc624\ud6c4 s\uc2dc)"
      },
      {
       "name": "h",
@@ -679,7 +679,7 @@
       "id": "c2",
       "expr": "s>=2",
       "ok": "Not before 2 o'clock.",
-      "fail": "서준 cannot come before 2 o'clock (and the room opens at 1)."
+      "fail": "\uc11c\uc900 cannot come before 2 o'clock (and the room opens at 1)."
      },
      {
       "id": "c3",
@@ -691,7 +691,7 @@
       "id": "c4",
       "expr": "s+h<=3 || s>=4",
       "ok": "Does not touch the cleaning time.",
-      "fail": "Your plan overlaps the cleaning time (3시 ~ 4시)."
+      "fail": "Your plan overlaps the cleaning time (3\uc2dc ~ 4\uc2dc)."
      }
     ],
     "need": 3,
@@ -732,7 +732,7 @@
       "h": 2
      }
     ],
-    "explain": "Four plans work: 오후 2시~3시, 4시~5시, 4시~6시 and 5시~6시. A plan fails if it starts before 2, runs past 6, uses 3 hours, or touches 3시~4시.",
+    "explain": "Four plans work: \uc624\ud6c4 2\uc2dc~3\uc2dc, 4\uc2dc~5\uc2dc, 4\uc2dc~6\uc2dc and 5\uc2dc~6\uc2dc. A plan fails if it starts before 2, runs past 6, uses 3 hours, or touches 3\uc2dc~4\uc2dc.",
     "hints": [
      "Write each rule as a limit on the start hour or on the end hour.",
      "Try a start hour, add 1 or 2 hours, and check the end hour against the cleaning time.",
@@ -741,8 +741,8 @@
     "because": {
      "id": "s2b",
      "kind": "write",
-     "prompt": "Pick ONE of your plans and send 서준 a short message in Korean saying when you will use the room.",
-     "placeholder": "예: ...",
+     "prompt": "Pick ONE of your plans and send \uc11c\uc900 a short message in Korean saying when you will use the room.",
+     "placeholder": "\uc608: ...",
      "minChars": 6,
      "checks": [
       {
@@ -750,7 +750,7 @@
        "label": "polite ending",
        "mode": "any",
        "patterns": [
-        "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
+        "[\uac00-\ud7a3]\uc694(?![\uac00-\ud7a3])|\uc2b5\ub2c8\ub2e4|[\uac11\ub0a9\ub78d\ub9bd\ubc09\uc2ed\uc785\uc7a1\ud569\ub429\uc635\ubd05\ub2d9\uc501]\ub2c8\ub2e4"
        ]
       },
       {
@@ -758,10 +758,10 @@
        "label": "gives a clock time",
        "mode": "any",
        "patterns": [
-        "\\d\\s*시(?!간)",
-        "[한두세네]\\s*시",
-        "다섯\\s*시",
-        "여섯\\s*시"
+        "\\d\\s*\uc2dc(?!\uac04)",
+        "[\ud55c\ub450\uc138\ub124]\\s*\uc2dc",
+        "\ub2e4\uc12f\\s*\uc2dc",
+        "\uc5ec\uc12f\\s*\uc2dc"
        ]
       },
       {
@@ -769,41 +769,41 @@
        "label": "says from when / until when or how long",
        "mode": "any",
        "patterns": [
-        "부터",
-        "까지",
-        "시간",
-        "에서"
+        "\ubd80\ud130",
+        "\uae4c\uc9c0",
+        "\uc2dc\uac04",
+        "\uc5d0\uc11c"
        ]
       }
      ],
      "selfAssess": [
       "Do the times in my message match one plan that works?",
-      "Does my plan avoid 3시 ~ 4시?"
+      "Does my plan avoid 3\uc2dc ~ 4\uc2dc?"
      ],
      "modelAnswers": [
       {
-       "text": "4시부터 6시까지 방과 후 교실을 써요.",
+       "text": "4\uc2dc\ubd80\ud130 6\uc2dc\uae4c\uc9c0 \ubc29\uacfc \ud6c4 \uad50\uc2e4\uc744 \uc368\uc694.",
        "note": "A two-hour plan after the cleaning."
       },
       {
-       "text": "2시부터 3시까지 한 시간 쓰는 건 어때요?",
+       "text": "2\uc2dc\ubd80\ud130 3\uc2dc\uae4c\uc9c0 \ud55c \uc2dc\uac04 \uc4f0\ub294 \uac74 \uc5b4\ub54c\uc694?",
        "note": "A one-hour plan before the cleaning; asks politely."
       }
      ],
      "badAnswers": [
       {
-       "text": "좋아요.",
+       "text": "\uc88b\uc544\uc694.",
        "why": "Agrees but names no time."
       },
       {
-       "text": "1시간 쓰자.",
+       "text": "1\uc2dc\uac04 \uc4f0\uc790.",
        "why": "Only a length, no clock time and no polite ending."
       }
      ],
      "humanReview": "Whether the times in the message really match a valid plan (the check only finds that a clock time is present).",
      "hints": [
       "Use one start time and one end time from your list.",
-      "Use ~부터 ~까지 to say from when until when."
+      "Use ~\ubd80\ud130 ~\uae4c\uc9c0 to say from when until when."
      ]
     }
    }
@@ -824,13 +824,13 @@
   ],
   "alternatives": [
    "Any three of the four valid plans are fine.",
-   "A student may give the plan as '2시 ~ 3시' in Korean words only; the message check allows that."
+   "A student may give the plan as '2\uc2dc ~ 3\uc2dc' in Korean words only; the message check allows that."
   ],
   "hardCases": [
-   "A plan that ends exactly at 3시 or starts exactly at 4시 may look like it touches the cleaning time; it does not."
+   "A plan that ends exactly at 3\uc2dc or starts exactly at 4\uc2dc may look like it touches the cleaning time; it does not."
   ],
   "cautions": {
-   "language": "~부터 ~까지 = from ... until ...; 정각 = exactly on the hour; 'hour' as a point is 시 and as a length is 시간.",
+   "language": "~\ubd80\ud130 ~\uae4c\uc9c0 = from ... until ...; \uc815\uac01 = exactly on the hour; 'hour' as a point is \uc2dc and as a length is \uc2dc\uac04.",
    "culture": "After-school rooms and sign-up rules are typical for Korean schools but the notice explains all rules.",
    "accessibility": "All conditions are given as text with hour numbers; the build step uses two number fields and no image."
   },
@@ -841,7 +841,8 @@
    "human": [
     "Naturalness of the message and its match with the chosen plan"
    ]
-  }
+  },
+  "status": "reviewed-ai"
  },
  {
   "id": "x-k-k4-05",
@@ -850,7 +851,7 @@
   "topic": "places",
   "level": 1,
   "levelLabel": "Beginner",
-  "title": "Where is 유나?",
+  "title": "Where is \uc720\ub098?",
   "uiLang": "en",
   "format": "reveal-and-revise",
   "generative": false,
@@ -862,45 +863,45 @@
   ],
   "differsFromPlain": "Plain practice asks where a shop is on a map. Here the clues come one by one, and a later notice changes what an earlier clue proves.",
   "prerequisites": [
-   "Can read place words such as 정문, 후문, 편의점, 은행, 꽃집",
+   "Can read place words such as \uc815\ubb38, \ud6c4\ubb38, \ud3b8\uc758\uc810, \uc740\ud589, \uaf43\uc9d1",
    "Knows how to read a short text message"
   ],
   "minutes": 10,
   "curriculum": null,
-  "material": "You are going to meet your friend 유나 near school, but you cannot see her. This is the map on the school notice board, and then 유나 sends messages one by one.\n\n[학교 주변 안내]\n정문 앞: 편의점, 은행\n후문 앞: 편의점, 꽃집\n공원 앞: 카페",
+  "material": "You are going to meet your friend \uc720\ub098 near school, but you cannot see her. This is the map on the school notice board, and then \uc720\ub098 sends messages one by one.\n\n[\ud559\uad50 \uc8fc\ubcc0 \uc548\ub0b4]\n\uc815\ubb38 \uc55e: \ud3b8\uc758\uc810, \uc740\ud589\n\ud6c4\ubb38 \uc55e: \ud3b8\uc758\uc810, \uaf43\uc9d1\n\uacf5\uc6d0 \uc55e: \uce74\ud398",
   "steps": [
    {
     "id": "s1",
     "kind": "reveal",
-    "prompt": "Decide where 유나 is after each new clue.",
+    "prompt": "Decide where \uc720\ub098 is after each new clue.",
     "hints": [
      "Compare each clue with the shops on the map.",
      "Ask whether the clue appears at only one place."
     ],
     "stages": [
      {
-      "info": "유나: 도착했어요. 편의점 앞이에요.",
-      "ask": "Where do you think 유나 is?",
+      "info": "\uc720\ub098: \ub3c4\ucc29\ud588\uc5b4\uc694. \ud3b8\uc758\uc810 \uc55e\uc774\uc5d0\uc694.",
+      "ask": "Where do you think \uc720\ub098 is?",
       "options": [
        {
         "id": "a",
-        "text": "정문 앞",
+        "text": "\uc815\ubb38 \uc55e",
         "reveals": "A guess that rests on one shop which also exists at the other gate."
        },
        {
         "id": "b",
-        "text": "후문 앞",
+        "text": "\ud6c4\ubb38 \uc55e",
         "reveals": "A guess that rests on one shop which also exists at the other gate."
        },
        {
         "id": "c",
-        "text": "I need one more clue before I can say.",
+        "text": "\uc544\uc9c1 \uc54c \uc218 \uc5c6\uc5b4\uc694. \ub2e8\uc11c\uac00 \ub354 \ud544\uc694\ud574\uc694.",
         "reveals": "You noticed that the clue fits two places."
        },
        {
         "id": "d",
-        "text": "공원 앞",
-        "reveals": "The park has only a 카페 on the map, no 편의점."
+        "text": "\uacf5\uc6d0 \uc55e",
+        "reveals": "The park has only a \uce74\ud398 on the map, no \ud3b8\uc758\uc810."
        }
       ],
       "reasonable": [
@@ -908,66 +909,66 @@
        "b",
        "c"
       ],
-      "after": "Both gates have a 편의점, so this clue fits two places. Any of these answers is reasonable if you stay ready to change it."
+      "after": "Both gates have a \ud3b8\uc758\uc810, so this clue fits two places. Any of these answers is reasonable if you stay ready to change it."
      },
      {
-      "info": "유나: 앞에 은행이 보여요.",
-      "ask": "Where do you think 유나 is now?",
+      "info": "\uc720\ub098: \uc55e\uc5d0 \uc740\ud589\uc774 \ubcf4\uc5ec\uc694.",
+      "ask": "Where do you think \uc720\ub098 is now?",
       "options": [
        {
         "id": "a",
-        "text": "후문 앞",
-        "reveals": "On the map, the 후문 has a 꽃집 but no 은행."
+        "text": "\ud6c4\ubb38 \uc55e",
+        "reveals": "On the map, the \ud6c4\ubb38 has a \uaf43\uc9d1 but no \uc740\ud589."
        },
        {
         "id": "b",
-        "text": "공원 앞",
-        "reveals": "On the map, the park has only a 카페."
+        "text": "\uacf5\uc6d0 \uc55e",
+        "reveals": "On the map, the park has only a \uce74\ud398."
        },
        {
         "id": "c",
-        "text": "정문 앞",
-        "reveals": "You used the clue that only one place has both a 편의점 and a 은행."
+        "text": "\uc815\ubb38 \uc55e",
+        "reveals": "You used the clue that only one place has both a \ud3b8\uc758\uc810 and a \uc740\ud589."
        }
       ],
       "reasonable": [
        "c"
       ],
-      "after": "On the map, only the 정문 has both a 편의점 and a 은행, so 정문 is the best answer so far."
+      "after": "On the map, only the \uc815\ubb38 has both a \ud3b8\uc758\uc810 and a \uc740\ud589, so \uc815\ubb38 is the best answer so far."
      },
      {
-      "info": "[학교 알림] 지난달에 후문 앞에도 은행이 새로 생겼어요.\n유나: 은행 옆에 꽃집도 보여요.",
-      "ask": "Now where do you think 유나 is?",
+      "info": "[\ud559\uad50 \uc54c\ub9bc] \uc9c0\ub09c\ub2ec\uc5d0 \ud6c4\ubb38 \uc55e\uc5d0\ub3c4 \uc740\ud589\uc774 \uc0c8\ub85c \uc0dd\uacbc\uc5b4\uc694.\n\uc720\ub098: \uc740\ud589 \uc606\uc5d0 \uaf43\uc9d1\ub3c4 \ubcf4\uc5ec\uc694.",
+      "ask": "Now where do you think \uc720\ub098 is?",
       "options": [
        {
         "id": "a",
-        "text": "후문 앞",
-        "reveals": "You noticed that the new notice means 은행 no longer separates the gates and that 꽃집 does."
+        "text": "\ud6c4\ubb38 \uc55e",
+        "reveals": "You noticed that the new notice means \uc740\ud589 no longer separates the gates and that \uaf43\uc9d1 does."
        },
        {
         "id": "b",
-        "text": "정문 앞",
-        "reveals": "You kept your earlier answer. Check whether the 은행 clue is still unique after the new notice."
+        "text": "\uc815\ubb38 \uc55e",
+        "reveals": "You kept your earlier answer. Check whether the \uc740\ud589 clue is still unique after the new notice."
        },
        {
         "id": "c",
-        "text": "공원 앞",
-        "reveals": "The park has only a 카페, and 유나 sees neither a 은행 nor a 카페."
+        "text": "\uacf5\uc6d0 \uc55e",
+        "reveals": "The park has only a \uce74\ud398, and \uc720\ub098 sees neither a \uc740\ud589 nor a \uce74\ud398."
        }
       ],
       "reasonable": [
        "a"
       ],
-      "after": "The new bank means 은행 is at both gates now. The 꽃집 is still only at the 후문, so 유나 is at the 후문."
+      "after": "The new bank means \uc740\ud589 is at both gates now. The \uaf43\uc9d1 is still only at the \ud6c4\ubb38, so \uc720\ub098 is at the \ud6c4\ubb38."
      }
     ],
-    "reflect": "The 은행 clue was strong until a notice changed the facts; the 꽃집 clue stayed unique. A good guess depends on which clues still point to only one place."
+    "reflect": "The \uc740\ud589 clue was strong until a notice changed the facts; the \uaf43\uc9d1 clue stayed unique. A good guess depends on which clues still point to only one place."
    },
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "You are at the 정문 and 유나 is at the 후문. Write a short Korean message to 유나: say where you are and what you will do (or ask her to do).",
-    "placeholder": "예: ...",
+    "prompt": "You are at the \uc815\ubb38 and \uc720\ub098 is at the \ud6c4\ubb38. Write a short Korean message to \uc720\ub098 in polite style (-\uc694): say where you are and what you will do (or ask her to do).",
+    "placeholder": "\uc608: ...",
     "minChars": 6,
     "checks": [
      {
@@ -975,7 +976,7 @@
       "label": "polite ending",
       "mode": "any",
       "patterns": [
-       "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
+       "[\uac00-\ud7a3]\uc694(?![\uac00-\ud7a3])|\uc2b5\ub2c8\ub2e4|[\uac11\ub0a9\ub78d\ub9bd\ubc09\uc2ed\uc785\uc7a1\ud569\ub429\uc635\ubd05\ub2d9\uc501]\ub2c8\ub2e4"
       ]
      },
      {
@@ -983,8 +984,8 @@
       "label": "names a gate",
       "mode": "any",
       "patterns": [
-       "정문",
-       "후문"
+       "\uc815\ubb38",
+       "\ud6c4\ubb38"
       ]
      },
      {
@@ -992,63 +993,63 @@
       "label": "says what to do (go / come / wait)",
       "mode": "any",
       "patterns": [
-       "가요",
-       "갈게",
-       "올게",
-       "올래",
-       "오세요",
-       "기다려",
-       "걸어",
-       "이동",
-       "갈까요",
-       "와요",
-       "갈 거",
-       "올 거",
-       "갈 건",
-       "올 건",
-       "와 주",
-       "가 줄",
-       "도착",
-       "기다릴",
-       "만나요"
+       "\uac00\uc694",
+       "\uac08\uac8c",
+       "\uc62c\uac8c",
+       "\uc62c\ub798",
+       "\uc624\uc138\uc694",
+       "\uae30\ub2e4\ub824",
+       "\uac78\uc5b4",
+       "\uc774\ub3d9",
+       "\uac08\uae4c\uc694",
+       "\uc640\uc694",
+       "\uac08 \uac70",
+       "\uc62c \uac70",
+       "\uac08 \uac74",
+       "\uc62c \uac74",
+       "\uc640 \uc8fc",
+       "\uac00 \uc904",
+       "\ub3c4\ucc29",
+       "\uae30\ub2e4\ub9b4",
+       "\ub9cc\ub098\uc694"
       ]
      }
     ],
     "selfAssess": [
-     "Does 유나 know where I am?",
+     "Does \uc720\ub098 know where I am?",
      "Does she know who moves?",
      "Is the message short and clear?"
     ],
     "modelAnswers": [
      {
-      "text": "저는 정문 앞에 있어요. 지금 후문으로 갈게요.",
+      "text": "\uc800\ub294 \uc815\ubb38 \uc55e\uc5d0 \uc788\uc5b4\uc694. \uc9c0\uae08 \ud6c4\ubb38\uc73c\ub85c \uac08\uac8c\uc694.",
       "note": "Says where you are and that you will move."
      },
      {
-      "text": "후문 앞에서 기다려 주세요. 제가 걸어서 갈게요!",
+      "text": "\ud6c4\ubb38 \uc55e\uc5d0\uc11c \uae30\ub2e4\ub824 \uc8fc\uc138\uc694. \uc81c\uac00 \uac78\uc5b4\uc11c \uac08\uac8c\uc694!",
       "note": "Asks her to wait and says you will come."
      },
      {
-      "text": "정문에 있어요. 제가 후문으로 갈 거예요."
+      "text": "\uc815\ubb38\uc5d0 \uc788\uc5b4\uc694. \uc81c\uac00 \ud6c4\ubb38\uc73c\ub85c \uac08 \uac70\uc608\uc694."
      },
      {
-      "text": "저는 정문이에요. 유나 씨가 정문으로 와 주세요."
+      "text": "\uc800\ub294 \uc815\ubb38\uc774\uc5d0\uc694. \uc720\ub098 \uc528\uac00 \uc815\ubb38\uc73c\ub85c \uc640 \uc8fc\uc138\uc694."
      }
     ],
     "badAnswers": [
      {
-      "text": "어디예요?",
+      "text": "\uc5b4\ub514\uc608\uc694?",
       "why": "A question only; it neither says where you are nor what to do."
      },
      {
-      "text": "빨리 와.",
+      "text": "\ube68\ub9ac \uc640.",
       "why": "Casual, no gate named, no polite ending."
      }
     ],
     "humanReview": "Whether the plan is clear (who moves where) and the Korean is natural.",
     "hints": [
      "Name the gate where you stand.",
-     "Add one verb that says who moves: for example 갈게요 (I will go), 기다려 주세요 (please wait) or 와 주세요 (please come)."
+     "Add one verb that says who moves: for example \uac08\uac8c\uc694 (I will go), \uae30\ub2e4\ub824 \uc8fc\uc138\uc694 (please wait) or \uc640 \uc8fc\uc138\uc694 (please come)."
     ]
    }
   ],
@@ -1067,13 +1068,13 @@
    }
   ],
   "alternatives": [
-   "At the first stage, guessing 정문 or 후문 is reasonable if the student knows it is only a guess."
+   "At the first stage, guessing \uc815\ubb38 or \ud6c4\ubb38 is reasonable if the student knows it is only a guess."
   ],
   "hardCases": [
-   "A student may say the new 은행 at the 후문 could mean the old 정문 clue was a mistake; it was not, it was true at that time."
+   "A student may say the new \uc740\ud589 at the \ud6c4\ubb38 could mean the old \uc815\ubb38 clue was a mistake; it was not, it was true at that time."
   ],
   "cautions": {
-   "language": "정문 = front gate, 후문 = back gate; 앞 here means 'in front of'; -에서 기다려 주세요 = please wait at ...",
+   "language": "\uc815\ubb38 = front gate, \ud6c4\ubb38 = back gate; \uc55e here means 'in front of'; -\uc5d0\uc11c \uae30\ub2e4\ub824 \uc8fc\uc138\uc694 = please wait at ...",
    "culture": "Korean schools commonly have a front gate and a back gate with shops outside; the map states the facts so no local knowledge is needed.",
    "accessibility": "The map is a text list instead of an image; each stage is read as plain text."
   },
@@ -1085,7 +1086,7 @@
     "Clarity and naturalness of the message"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "x-k-k4-06",
@@ -1107,40 +1108,40 @@
   "differsFromPlain": "Plain practice translates or copies a notice. Here you choose what the reader needs and rewrite it in a different register for a close classmate.",
   "prerequisites": [
    "Can read Hangul and a short school notice",
-   "Knows that casual speech (반말) is used with close friends"
+   "Knows that casual speech (\ubc18\ub9d0) is used with close friends"
   ],
   "minutes": 9,
   "curriculum": null,
-  "material": "Your classmate 하준 was absent today. You want to send him a text about this notice from your teacher.\n\n[알림] 내일은 비가 온다고 합니다. 3교시 체육 수업은 운동장이 아니라 강당에서 합니다. 실내화를 가져오세요.",
+  "material": "Your classmate \ud558\uc900 was absent today. You want to send him a text about this notice from your teacher.\n\n[\uc54c\ub9bc] \ub0b4\uc77c\uc740 \ube44\uac00 \uc628\ub2e4\uace0 \ud569\ub2c8\ub2e4. 3\uad50\uc2dc \uccb4\uc721 \uc218\uc5c5\uc740 \uc6b4\ub3d9\uc7a5\uc774 \uc544\ub2c8\ub77c \uac15\ub2f9\uc5d0\uc11c \ud569\ub2c8\ub2e4. \uc2e4\ub0b4\ud654\ub97c \uac00\uc838\uc624\uc138\uc694.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
-    "prompt": "Which things MUST stay in your text to 하준? Choose all that apply.",
+    "prompt": "Which things MUST stay in your text to \ud558\uc900? Choose all that apply.",
     "options": [
      {
       "id": "a",
-      "text": "The heading [알림]",
+      "text": "The heading [\uc54c\ub9bc]",
       "reveals": "A heading belongs to the notice's form, not to what the reader needs to do."
      },
      {
       "id": "b",
-      "text": "The place of the class (강당, not the field)",
+      "text": "The place of the class (\uac15\ub2f9, not the field)",
       "reveals": "You kept the fact that changes where he has to go."
      },
      {
       "id": "c",
-      "text": "The stiff endings such as -ㅂ니다",
+      "text": "The stiff endings such as -\u3142\ub2c8\ub2e4",
       "reveals": "The ending belongs to the notice's style; a friend does not need it."
      },
      {
       "id": "d",
-      "text": "The class period (3교시)",
+      "text": "The class period (3\uad50\uc2dc)",
       "reveals": "You kept the fact that tells him when the change matters."
      },
      {
       "id": "e",
-      "text": "What to bring (실내화)",
+      "text": "What to bring (\uc2e4\ub0b4\ud654)",
       "reveals": "You kept the fact that tells him what to do."
      }
     ],
@@ -1149,10 +1150,10 @@
      "d",
      "e"
     ],
-    "explain": "하준 needs the place (강당), the period (3교시) and what to bring (실내화). The heading and the stiff endings belong to the form of the notice.",
+    "explain": "\ud558\uc900 needs the place (\uac15\ub2f9), the period (3\uad50\uc2dc) and what to bring (\uc2e4\ub0b4\ud654). The heading and the stiff endings belong to the form of the notice.",
     "hints": [
-     "Imagine 하준 tomorrow morning: what does he need to know to be in the right place with the right things?",
-     "Ask of each option: would 하준 miss something he needs to do if it were left out?"
+     "Imagine \ud558\uc900 tomorrow morning: what does he need to know to be in the right place with the right things?",
+     "Ask of each option: would \ud558\uc900 miss something he needs to do if it were left out?"
     ],
     "multi": true,
     "acceptable": [
@@ -1169,51 +1170,51 @@
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "Write a text to 하준 in casual speech (반말) that keeps those facts. You may add the reason (it will rain).",
-    "placeholder": "예: ...",
+    "prompt": "Write a text to \ud558\uc900 in casual speech (\ubc18\ub9d0) that keeps those facts. You may add the reason (it will rain).",
+    "placeholder": "\uc608: ...",
     "minChars": 6,
     "checks": [
      {
       "id": "w1",
-      "label": "names the place (강당)",
+      "label": "names the place (\uac15\ub2f9)",
       "mode": "any",
       "patterns": [
-       "강당"
+       "\uac15\ub2f9"
       ]
      },
      {
       "id": "w2",
-      "label": "names what to bring (실내화)",
+      "label": "names what to bring (\uc2e4\ub0b4\ud654)",
       "mode": "any",
       "patterns": [
-       "실내화"
+       "\uc2e4\ub0b4\ud654"
       ]
      },
      {
       "id": "w3",
-      "label": "names the period (3교시)",
+      "label": "names the period (3\uad50\uc2dc)",
       "mode": "any",
       "patterns": [
-       "3\\s*교시",
-       "삼\\s*교시",
-       "세\\s*번째\\s*수업"
+       "3\\s*\uad50\uc2dc",
+       "\uc0bc\\s*\uad50\uc2dc",
+       "\uc138\\s*\ubc88\uc9f8\\s*\uc218\uc5c5"
       ]
      },
      {
       "id": "w4",
-      "label": "no polite -요 and no stiff notice-style ending",
+      "label": "no polite -\uc694 and no stiff notice-style ending",
       "mode": "none",
       "patterns": [
-       "니다(?![가-힣])|십시오|요(?![가-힣])"
+       "\ub2c8\ub2e4(?![\uac00-\ud7a3])|\uc2ed\uc2dc\uc624|\uc694(?![\uac00-\ud7a3])"
       ]
      },
      {
       "id": "w5",
-      "label": "says when (내일)",
+      "label": "says when (\ub0b4\uc77c)",
       "mode": "any",
       "patterns": [
-       "내일",
-       "낼"
+       "\ub0b4\uc77c",
+       "\ub0bc"
       ]
      }
     ],
@@ -1224,32 +1225,32 @@
     ],
     "modelAnswers": [
      {
-      "text": "내일 비 온대. 3교시 체육은 강당에서 해! 실내화 챙겨 와.",
+      "text": "\ub0b4\uc77c \ube44 \uc628\ub300. 3\uad50\uc2dc \uccb4\uc721\uc740 \uac15\ub2f9\uc5d0\uc11c \ud574! \uc2e4\ub0b4\ud654 \ucc59\uaca8 \uc640.",
       "note": "Keeps all facts and adds the reason."
      },
      {
-      "text": "하준아, 내일 3교시 체육 강당에서 한대. 실내화 가져와야 돼!",
+      "text": "\ud558\uc900\uc544, \ub0b4\uc77c 3\uad50\uc2dc \uccb4\uc721 \uac15\ub2f9\uc5d0\uc11c \ud55c\ub300. \uc2e4\ub0b4\ud654 \uac00\uc838\uc640\uc57c \ub3fc!",
       "note": "Friendly, casual, all facts present."
      }
     ],
     "badAnswers": [
      {
-      "text": "내일 3교시 체육은 강당에서 합니다. 실내화를 가져오세요.",
+      "text": "\ub0b4\uc77c 3\uad50\uc2dc \uccb4\uc721\uc740 \uac15\ub2f9\uc5d0\uc11c \ud569\ub2c8\ub2e4. \uc2e4\ub0b4\ud654\ub97c \uac00\uc838\uc624\uc138\uc694.",
       "why": "All facts, but copies the stiff notice style."
      },
      {
-      "text": "내일 체육 있어.",
+      "text": "\ub0b4\uc77c \uccb4\uc721 \uc788\uc5b4.",
       "why": "Casual but loses the place, period and what to bring."
      },
      {
-      "text": "하준아, 내일 비 와서 3교시 체육을 강당에서 해요. 실내화 가져오세요.",
-      "why": "All facts, but polite -요 instead of casual speech."
+      "text": "\ud558\uc900\uc544, \ub0b4\uc77c \ube44 \uc640\uc11c 3\uad50\uc2dc \uccb4\uc721\uc744 \uac15\ub2f9\uc5d0\uc11c \ud574\uc694. \uc2e4\ub0b4\ud654 \uac00\uc838\uc624\uc138\uc694.",
+      "why": "All facts, but polite -\uc694 instead of casual speech."
      }
     ],
     "humanReview": "Whether the casual register is natural and no fact is changed.",
     "hints": [
      "Write the three facts as three short pieces: when, where, what to bring.",
-     "End each piece with -어/아 or -대 instead of -ㅂ니다."
+     "End each piece with -\uc5b4/\uc544 or -\ub300 instead of -\u3142\ub2c8\ub2e4."
     ]
    }
   ],
@@ -1269,25 +1270,25 @@
   ],
   "alternatives": [
    "Adding the reason (it will rain) is allowed and good.",
-   "A polite -요 ending could suit a classmate you do not know well, but this task asks for 반말, so the checks reject -요 and -ㅂ니다."
+   "A polite -\uc694 ending could suit a classmate you do not know well, but this task asks for \ubc18\ub9d0, so the checks reject -\uc694 and -\u3142\ub2c8\ub2e4."
   ],
   "hardCases": [
-   "Whether 'bring 실내화 instead of 운동화' counts as an extra fact; it is not in the notice, so do not require it."
+   "Whether 'bring \uc2e4\ub0b4\ud654 instead of \uc6b4\ub3d9\ud654' counts as an extra fact; it is not in the notice, so do not require it."
   ],
   "cautions": {
-   "language": "-대 / -ㄴ대 reports what someone said (비 온대 = they say it will rain); 반말 = casual speech, -어/아 endings without 요.",
-   "culture": "Korean students switch from -ㅂ니다 style notices to casual speech with classmates; some groups of students use -요 even among friends.",
-   "accessibility": "The notice is plain text, with no image or color. 3교시 is written with digits + 교시 so screen readers read it in Korean."
+   "language": "-\ub300 / -\u3134\ub300 reports what someone said (\ube44 \uc628\ub300 = they say it will rain); \ubc18\ub9d0 = casual speech, -\uc5b4/\uc544 endings without \uc694.",
+   "culture": "Korean students switch from -\u3142\ub2c8\ub2e4 style notices to casual speech with classmates; some groups of students use -\uc694 even among friends.",
+   "accessibility": "The notice is plain text, with no image or color. 3\uad50\uc2dc is written with digits + \uad50\uc2dc so screen readers read it in Korean."
   },
   "autoVsHuman": {
    "auto": [
-    "Which facts are chosen; presence of 강당, 실내화, 3교시 and absence of -ㅂ니다 endings"
+    "Which facts are chosen; presence of \uac15\ub2f9, \uc2e4\ub0b4\ud654, 3\uad50\uc2dc and absence of -\u3142\ub2c8\ub2e4 endings"
    ],
    "human": [
     "Naturalness of the casual register, whether it fits the writer's relationship"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "x-k-k4-07",
@@ -1308,38 +1309,38 @@
   ],
   "differsFromPlain": "Plain practice asks for the time of one class. Here you must find a plan that satisfies a timetable and a wish together, and then write your own plan, deciding what to do in the free time.",
   "prerequisites": [
-   "Can read times written with 시 and 분",
-   "Knows to suggest an activity with -자 or -ㄹ까"
+   "Can read times written with \uc2dc and \ubd84",
+   "Knows to suggest an activity with -\uc790 or -\u3139\uae4c"
   ],
   "minutes": 12,
   "curriculum": null,
-  "material": "You and your friend 하은 want to spend Saturday at the neighborhood culture center. Read the center's notice and the message.\n\n[문화센터 토요일 안내]\n- 그림 교실: 오전 10시 ~ 11시 30분\n- 문화센터 식당: 낮 12시 ~ 1시 (점심만)\n- 요리 교실: 오후 2시 ~ 4시\n\n하은: 토요일에 문화센터에서 같이 놀자! 나는 그림 교실이랑 요리 교실 둘 다 하고 싶어. 점심도 꼭 먹고 싶어.",
+  "material": "You and your friend \ud558\uc740 want to spend Saturday at the neighborhood culture center. Read the center's notice and the message.\n\n[\ubb38\ud654\uc13c\ud130 \ud1a0\uc694\uc77c \uc548\ub0b4]\n- \uadf8\ub9bc \uad50\uc2e4: \uc624\uc804 10\uc2dc ~ 11\uc2dc 30\ubd84\n- \ubb38\ud654\uc13c\ud130 \uc2dd\ub2f9: \ub0ae 12\uc2dc ~ 1\uc2dc (\uc810\uc2ec\ub9cc)\n- \uc694\ub9ac \uad50\uc2e4: \uc624\ud6c4 2\uc2dc ~ 4\uc2dc\n\n\ud558\uc740: \ud1a0\uc694\uc77c\uc5d0 \ubb38\ud654\uc13c\ud130\uc5d0\uc11c \uac19\uc774 \ub180\uc790! \ub098\ub294 \uadf8\ub9bc \uad50\uc2e4\uc774\ub791 \uc694\ub9ac \uad50\uc2e4 \ub458 \ub2e4 \ud558\uace0 \uc2f6\uc5b4. \uc810\uc2ec\ub3c4 \uaf2d \uba39\uace0 \uc2f6\uc5b4.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
-    "prompt": "Which plan satisfies the notice AND what 하은 wants?",
+    "prompt": "Which plan satisfies the notice AND what \ud558\uc740 wants?",
     "options": [
      {
       "id": "a",
-      "text": "그림 교실 10시 → 요리 교실 2시 → 점심 4시",
-      "reveals": "Lunch at 4시 does not fit the times of the center's restaurant."
+      "text": "\uadf8\ub9bc \uad50\uc2e4 10\uc2dc \u2192 \uc694\ub9ac \uad50\uc2e4 2\uc2dc \u2192 \uc810\uc2ec 4\uc2dc",
+      "reveals": "Lunch at 4\uc2dc does not fit the times of the center's restaurant."
      },
      {
       "id": "b",
-      "text": "그림 교실 10시 → 점심 12시 → 요리 교실 2시",
+      "text": "\uadf8\ub9bc \uad50\uc2e4 10\uc2dc \u2192 \uc810\uc2ec 12\uc2dc \u2192 \uc694\ub9ac \uad50\uc2e4 2\uc2dc",
       "reveals": "You matched each activity to its time on the notice."
      },
      {
       "id": "c",
-      "text": "점심 12시 → 그림 교실 1시 → 요리 교실 2시",
-      "reveals": "The 그림 교실 is not open at 1시; check when it runs."
+      "text": "\uc810\uc2ec 12\uc2dc \u2192 \uadf8\ub9bc \uad50\uc2e4 1\uc2dc \u2192 \uc694\ub9ac \uad50\uc2e4 2\uc2dc",
+      "reveals": "The \uadf8\ub9bc \uad50\uc2e4 is not open at 1\uc2dc; check when it runs."
      }
     ],
     "correct": [
      "b"
     ],
-    "explain": "Only plan b follows the notice: 그림 교실 10시 ~ 11시 30분, 점심 12시 ~ 1시 and 요리 교실 2시 ~ 4시.",
+    "explain": "Only plan b follows the notice: \uadf8\ub9bc \uad50\uc2e4 10\uc2dc ~ 11\uc2dc 30\ubd84, \uc810\uc2ec 12\uc2dc ~ 1\uc2dc and \uc694\ub9ac \uad50\uc2e4 2\uc2dc ~ 4\uc2dc.",
     "hints": [
      "Put the three activities in order of their times on the notice.",
      "Check each activity of a plan against its own line in the notice."
@@ -1348,17 +1349,17 @@
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "Now write YOUR plan to 하은 in Korean. Use the order of the day, give at least three clock times, and add one thing of your own in a free gap (for example where to meet or what to do between the classes).",
-    "placeholder": "예: ...",
+    "prompt": "Now write YOUR plan to \ud558\uc740 in Korean. Use the order of the day, give at least three clock times, and add one thing of your own in a free gap (for example where to meet or what to do between the classes).",
+    "placeholder": "\uc608: ...",
     "minChars": 20,
     "checks": [
      {
       "id": "w1",
-      "label": "mentions both 그림 교실 and 요리 교실",
+      "label": "mentions both \uadf8\ub9bc \uad50\uc2e4 and \uc694\ub9ac \uad50\uc2e4",
       "mode": "all",
       "patterns": [
-       "그림",
-       "요리"
+       "\uadf8\ub9bc",
+       "\uc694\ub9ac"
       ]
      },
      {
@@ -1366,8 +1367,8 @@
       "label": "mentions lunch",
       "mode": "any",
       "patterns": [
-       "점심",
-       "식당"
+       "\uc810\uc2ec",
+       "\uc2dd\ub2f9"
       ]
      },
      {
@@ -1375,80 +1376,80 @@
       "label": "gives at least three clock times",
       "mode": "any",
       "patterns": [
-       "((\\d+|열두|열한|열|한|두|세|네|다섯|여섯|일곱|여덟|아홉)\\s*시(?!간)[\\s\\S]*){3}"
+       "((\\d+|\uc5f4\ub450|\uc5f4\ud55c|\uc5f4|\ud55c|\ub450|\uc138|\ub124|\ub2e4\uc12f|\uc5ec\uc12f|\uc77c\uacf1|\uc5ec\ub35f|\uc544\ud649)\\s*\uc2dc(?!\uac04)[\\s\\S]*){3}"
       ]
      },
      {
       "id": "w4",
-      "label": "puts 그림 교실 at 10시",
+      "label": "puts \uadf8\ub9bc \uad50\uc2e4 at 10\uc2dc",
       "mode": "any",
       "patterns": [
-       "그림[^.!?,고]*((?<![0-9])10\\s*시|열\\s*시)",
-       "((?<![0-9])10\\s*시|열\\s*시)[^.!?,고]*그림"
+       "\uadf8\ub9bc[^.!?,\uace0]*((?<![0-9])10\\s*\uc2dc|\uc5f4\\s*\uc2dc)",
+       "((?<![0-9])10\\s*\uc2dc|\uc5f4\\s*\uc2dc)[^.!?,\uace0]*\uadf8\ub9bc"
       ]
      },
      {
       "id": "w5",
-      "label": "puts 요리 교실 at 2시",
+      "label": "puts \uc694\ub9ac \uad50\uc2e4 at 2\uc2dc",
       "mode": "any",
       "patterns": [
-       "요리[^.!?,고]*((?<![0-9])(2|14)\\s*시|두\\s*시)",
-       "((?<![0-9])(2|14)\\s*시|두\\s*시)[^.!?,고]*요리"
+       "\uc694\ub9ac[^.!?,\uace0]*((?<![0-9])(2|14)\\s*\uc2dc|\ub450\\s*\uc2dc)",
+       "((?<![0-9])(2|14)\\s*\uc2dc|\ub450\\s*\uc2dc)[^.!?,\uace0]*\uc694\ub9ac"
       ]
      },
      {
       "id": "w6",
-      "label": "puts lunch at 12시",
+      "label": "puts lunch at 12\uc2dc",
       "mode": "any",
       "patterns": [
-       "(점심|식당)[^.!?,고]*((?<![0-9])12\\s*시|열두\\s*시|낮\\s*12)",
-       "((?<![0-9])12\\s*시|열두\\s*시)[^.!?,고]*(점심|식당)"
+       "(\uc810\uc2ec|\uc2dd\ub2f9)[^.!?,\uace0]*((?<![0-9])12\\s*\uc2dc|\uc5f4\ub450\\s*\uc2dc|\ub0ae\\s*12)",
+       "((?<![0-9])12\\s*\uc2dc|\uc5f4\ub450\\s*\uc2dc)[^.!?,\uace0]*(\uc810\uc2ec|\uc2dd\ub2f9)"
       ]
      }
     ],
     "selfAssess": [
      "Does my order follow the notice?",
      "Did I add something of my own in a free gap?",
-     "Would 하은 know where to go and when?"
+     "Would \ud558\uc740 know where to go and when?"
     ],
     "modelAnswers": [
      {
-      "text": "10시에 그림 교실에 가자. 11시 30분에 끝나면 12시에 식당에서 점심 먹자. 2시에 요리 교실 가자!",
+      "text": "10\uc2dc\uc5d0 \uadf8\ub9bc \uad50\uc2e4\uc5d0 \uac00\uc790. 11\uc2dc 30\ubd84\uc5d0 \ub05d\ub098\uba74 12\uc2dc\uc5d0 \uc2dd\ub2f9\uc5d0\uc11c \uc810\uc2ec \uba39\uc790. 2\uc2dc\uc5d0 \uc694\ub9ac \uad50\uc2e4 \uac00\uc790!",
       "note": "Follows the notice; uses the gap before lunch."
      },
      {
-      "text": "9시 50분에 문화센터 앞에서 만나자. 10시 그림 교실, 12시 점심, 2시 요리 교실 순서로 하자. 1시에는 공원에서 쉬자.",
+      "text": "9\uc2dc 50\ubd84\uc5d0 \ubb38\ud654\uc13c\ud130 \uc55e\uc5d0\uc11c \ub9cc\ub098\uc790. 10\uc2dc \uadf8\ub9bc \uad50\uc2e4, 12\uc2dc \uc810\uc2ec, 2\uc2dc \uc694\ub9ac \uad50\uc2e4 \uc21c\uc11c\ub85c \ud558\uc790. 1\uc2dc\uc5d0\ub294 \uacf5\uc6d0\uc5d0\uc11c \uc26c\uc790.",
       "note": "Adds a meeting time and a rest in the gap."
      },
      {
-      "text": "요리 교실은 2시에, 그림 교실은 10시에 가자. 12시에 점심 먹자."
+      "text": "\uc694\ub9ac \uad50\uc2e4\uc740 2\uc2dc\uc5d0, \uadf8\ub9bc \uad50\uc2e4\uc740 10\uc2dc\uc5d0 \uac00\uc790. 12\uc2dc\uc5d0 \uc810\uc2ec \uba39\uc790."
      },
      {
-      "text": "열 시에 그림 교실 가자. 열두 시에 점심 먹자. 두 시에 요리 교실 가자."
+      "text": "\uc5f4 \uc2dc\uc5d0 \uadf8\ub9bc \uad50\uc2e4 \uac00\uc790. \uc5f4\ub450 \uc2dc\uc5d0 \uc810\uc2ec \uba39\uc790. \ub450 \uc2dc\uc5d0 \uc694\ub9ac \uad50\uc2e4 \uac00\uc790."
      }
     ],
     "badAnswers": [
      {
-      "text": "그림 교실이랑 요리 교실 가자.",
+      "text": "\uadf8\ub9bc \uad50\uc2e4\uc774\ub791 \uc694\ub9ac \uad50\uc2e4 \uac00\uc790.",
       "why": "No times and no lunch."
      },
      {
-      "text": "2시에 요리 교실, 3시에 그림 교실, 4시에 점심 먹자.",
+      "text": "2\uc2dc\uc5d0 \uc694\ub9ac \uad50\uc2e4, 3\uc2dc\uc5d0 \uadf8\ub9bc \uad50\uc2e4, 4\uc2dc\uc5d0 \uc810\uc2ec \uba39\uc790.",
       "why": "Order and times do not follow the notice."
      },
      {
-      "text": "10시에 그림 교실 가고 4시에 점심 먹고 2시에 요리 교실 가자.",
-      "why": "Lunch at 4시 does not fit the restaurant's hours (12시 ~ 1시)."
+      "text": "10\uc2dc\uc5d0 \uadf8\ub9bc \uad50\uc2e4 \uac00\uace0 4\uc2dc\uc5d0 \uc810\uc2ec \uba39\uace0 2\uc2dc\uc5d0 \uc694\ub9ac \uad50\uc2e4 \uac00\uc790.",
+      "why": "Lunch at 4\uc2dc does not fit the restaurant's hours (12\uc2dc ~ 1\uc2dc)."
      },
      {
-      "text": "10시에 요리 교실 가고 2시에 그림 교실 가고 12시에 점심 먹자.",
+      "text": "10\uc2dc\uc5d0 \uc694\ub9ac \uad50\uc2e4 \uac00\uace0 2\uc2dc\uc5d0 \uadf8\ub9bc \uad50\uc2e4 \uac00\uace0 12\uc2dc\uc5d0 \uc810\uc2ec \uba39\uc790.",
       "why": "The two classes are at each other's times."
      }
     ],
     "humanReview": "Whether the plan is realistic (the free gaps are used sensibly) and the Korean is natural.",
     "hints": [
      "Write the day in order, from morning to afternoon, with a clock time for each part.",
-     "Look for the free time between 11시 30분 and 12시, and between 1시 and 2시."
+     "Look for the free time between 11\uc2dc 30\ubd84 and 12\uc2dc, and between 1\uc2dc and 2\uc2dc."
     ]
    }
   ],
@@ -1467,16 +1468,16 @@
    }
   ],
   "alternatives": [
-   "Moving lunch to 12시 30분 is valid because the restaurant is open from 12시 to 1시.",
+   "Moving lunch to 12\uc2dc 30\ubd84 is valid because the restaurant is open from 12\uc2dc to 1\uc2dc.",
    "A plan that skips the gap activity but is correct otherwise still passes the main checks."
   ],
   "hardCases": [
-   "Meeting at 9시 50분 is not in the notice but is a reasonable own addition; a teacher decides whether it fits the friends' routine."
+   "Meeting at 9\uc2dc 50\ubd84 is not in the notice but is a reasonable own addition; a teacher decides whether it fits the friends' routine."
   ],
   "cautions": {
-   "language": "Suggestions to a friend use -자 (let's) or -ㄹ까?; ~에 means 'at (a time)'. 점심 = lunch, 식당 = restaurant.",
+   "language": "Suggestions to a friend use -\uc790 (let's) or -\u3139\uae4c?; ~\uc5d0 means 'at (a time)'. \uc810\uc2ec = lunch, \uc2dd\ub2f9 = restaurant.",
    "culture": "Neighborhood culture centers with art and cooking classes are common in Korea but the notice states all the facts.",
-   "accessibility": "The timetable is a text list, with no table or color. Times are written with 시 and 분."
+   "accessibility": "The timetable is a text list, with no table or color. Times are written with \uc2dc and \ubd84."
   },
   "autoVsHuman": {
    "auto": [
@@ -1486,183 +1487,7 @@
     "Whether the own addition is sensible and the Korean natural"
    ]
   },
-  "status": "draft"
- },
- {
-  "id": "x-k-k4-08",
-  "subject": "korean",
-  "grade": "K4",
-  "topic": "notice and message together",
-  "level": 1,
-  "levelLabel": "Beginner",
-  "title": "A reply that contradicts the notice",
-  "uiLang": "en",
-  "format": "find-error-fix",
-  "generative": true,
-  "goal": "Check a draft reply against a notice, find the line that contradicts it, and fix the sentence.",
-  "thinking": [
-   "Verifying each statement against a notice",
-   "Finding the conflicting detail",
-   "Repairing a sentence to fit the facts"
-  ],
-  "differsFromPlain": "Plain practice asks what a notice says. Here you check someone's own message against it and repair what does not fit.",
-  "prerequisites": [
-   "Can read a short notice and a message in Korean",
-   "Knows -아요/어요 and -ㄹ게요 endings"
-  ],
-  "minutes": 9,
-  "curriculum": null,
-  "material": "You are helping your younger cousin 소민 send a reply to her teacher. Read the notice and the draft.\n\n[방학 과학 교실]\n- 날짜: 7월 21일(월), 23일(수), 25일(금)\n- 시간: 오전 9시 ~ 11시 30분\n- 준비물: 물병, 필기도구 (실험 도구는 학교에서 준비해요)\n- 점심 식사는 없어요.\n\n선생님: 과학 교실에 오고 싶은 학생은 7월 18일까지 답장해 주세요.",
-  "steps": [
-   {
-    "id": "s1",
-    "kind": "pickLine",
-    "prompt": "One line of the draft reply does not fit the notice. Which line is it?",
-    "lines": [
-     "안녕하세요, 선생님. 저는 과학 교실에 가고 싶어요.",
-     "월요일, 수요일, 금요일 오전 9시에 시작하지요?",
-     "11시 30분에 끝나니까 점심은 학교 급식으로 먹을게요.",
-     "물병이랑 필기도구를 가져갈게요."
-    ],
-    "wrong": [
-     2
-    ],
-    "explain": "Line 3 is wrong: the notice says 점심 식사는 없어요, so there is no school lunch. The other lines match the notice (days, start time and things to bring).",
-    "hints": [
-     "Read the notice and mark one detail for each line of the draft.",
-     "For each line, ask: does the notice confirm it, or does it say something different?"
-    ]
-   },
-   {
-    "id": "s2",
-    "kind": "write",
-    "prompt": "Rewrite line 3 so that it fits the notice. Keep polite speech (-요) like the other lines.",
-    "placeholder": "예: ...",
-    "minChars": 6,
-    "checks": [
-     {
-      "id": "w1",
-      "label": "polite ending",
-      "mode": "any",
-      "patterns": [
-       "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
-      ]
-     },
-     {
-      "id": "w2",
-      "label": "talks about lunch (점심 / 먹)",
-      "mode": "any",
-      "patterns": [
-       "점심",
-       "먹",
-       "도시락",
-       "식사"
-      ]
-     },
-     {
-      "id": "w3",
-      "label": "says lunch is eaten at home, bought or brought (not school lunch)",
-      "mode": "any",
-      "patterns": [
-       "집에",
-       "집에서",
-       "도시락",
-       "싸 ?(서|가|올|갈|주)",
-       "가져",
-       "먹고 (올|와)",
-       "밖에서",
-       "식당",
-       "사 ?먹",
-       "편의점",
-       "준비",
-       "음식"
-      ]
-     },
-     {
-      "id": "w4",
-      "label": "does not count on a school lunch (급식)",
-      "mode": "none",
-      "patterns": [
-       "급식"
-      ]
-     }
-    ],
-    "selfAssess": [
-     "Does my sentence agree with the notice (no school lunch)?",
-     "Did I say what I will do about lunch?",
-     "Is the Korean polite and natural?"
-    ],
-    "modelAnswers": [
-     {
-      "text": "점심은 집에서 먹고 올게요.",
-      "note": "Fixes the plan by eating before coming."
-     },
-     {
-      "text": "수업이 11시 30분에 끝나요. 점심은 도시락을 싸 갈게요.",
-      "note": "Keeps the time fact and brings a packed lunch."
-     },
-     {
-      "text": "11시 30분에 끝나니까 집에 가서 먹을게요."
-     },
-     {
-      "text": "점심은 식당에서 사 먹을게요."
-     },
-     {
-      "text": "11시 30분에 끝나니까 점심은 엄마가 싸 주신 걸 먹을게요."
-     }
-    ],
-    "badAnswers": [
-     {
-      "text": "점심은 학교 급식으로 먹을게요.",
-      "why": "Repeats the contradiction."
-     },
-     {
-      "text": "점심은 맛있어요.",
-      "why": "Mentions lunch but gives no plan."
-     }
-    ],
-    "humanReview": "Whether the fixed sentence is natural and consistent with the notice (for example, 11시 30분 end time).",
-    "hints": [
-     "Find what the notice says about 점심.",
-     "Say what you will do instead: eat somewhere else or bring something."
-    ]
-   }
-  ],
-  "rubric": [
-   {
-    "criterion": "Finding the conflict",
-    "full": "Picks the line that contradicts the notice",
-    "partial": "Picks a line that matches",
-    "none": "No selection"
-   },
-   {
-    "criterion": "Fix",
-    "full": "Lunch plan that fits the notice, polite and natural",
-    "partial": "Fits the notice but is not polite or is unclear",
-    "none": "Still contradicts the notice"
-   }
-  ],
-  "alternatives": [
-   "Going home for lunch or bringing a packed lunch are both acceptable fixes.",
-   "Leaving 11시 30분 in the fixed sentence is fine."
-  ],
-  "hardCases": [
-   "Line 2 uses the ending -지요, which asks for confirmation; it matches the notice and is not an error."
-  ],
-  "cautions": {
-   "language": "-지요? asks for agreement ('right?'); 급식 = school meals (not in this notice); 도시락 = packed lunch.",
-   "culture": "Korean schools often serve lunch (급식), so a student might expect one; here the notice says there is none.",
-   "accessibility": "The notice is a plain list. Dates are written as digits + 월/일 and weekdays in brackets."
-  },
-  "autoVsHuman": {
-   "auto": [
-    "Which line is picked; polite ending, 점심 and a plan for lunch in the fix"
-   ],
-   "human": [
-    "Naturalness and consistency of the fixed line"
-   ]
-  },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "x-k-k4-10",
@@ -1683,96 +1508,96 @@
   ],
   "differsFromPlain": "Plain practice calculates one arrival time. Here the facts change twice, the second change cancels the first, and your judgement must follow the latest facts.",
   "prerequisites": [
-   "Can read clock times written with 시 and 분",
+   "Can read clock times written with \uc2dc and \ubd84",
    "Can read a short message about a schedule"
   ],
   "minutes": 11,
   "curriculum": null,
-  "material": "하린 goes to English class on Wednesday and then walks 10 minutes to her friend 소미's birthday party at 4시. 하린 wants to know when she will arrive.",
+  "material": "\ud558\ub9b0 goes to English class on Wednesday and then walks 10 minutes to her friend \uc18c\ubbf8's birthday party at 4\uc2dc. \ud558\ub9b0 wants to know when she will arrive.",
   "steps": [
    {
     "id": "s1",
     "kind": "reveal",
-    "prompt": "Decide when 하린 will probably arrive after each new message.",
+    "prompt": "Decide when \ud558\ub9b0 will probably arrive after each new message.",
     "hints": [
      "Find the time class ends in the latest message, then add the walk.",
      "Check whether a newer message replaces an older one."
     ],
     "stages": [
      {
-      "info": "벽 시간표: 수요일 영어 학원 3시 ~ 4시.",
-      "ask": "When will 하린 probably arrive at 소미's house?",
+      "info": "\ubcbd \uc2dc\uac04\ud45c: \uc218\uc694\uc77c \uc601\uc5b4 \ud559\uc6d0 3\uc2dc ~ 4\uc2dc.",
+      "ask": "When will \ud558\ub9b0 probably arrive at \uc18c\ubbf8's house?",
       "options": [
        {
         "id": "a",
-        "text": "3시 40분쯤",
-        "reveals": "That would be right if the class ended at 3시 30분."
+        "text": "3\uc2dc 40\ubd84\ucbe4",
+        "reveals": "That would be right if the class ended at 3\uc2dc 30\ubd84."
        },
        {
         "id": "b",
-        "text": "4시 10분쯤",
+        "text": "4\uc2dc 10\ubd84\ucbe4",
         "reveals": "You added the 10-minute walk to the end of the class."
        },
        {
         "id": "c",
-        "text": "4시 30분쯤",
+        "text": "4\uc2dc 30\ubd84\ucbe4",
         "reveals": "That is longer than class end plus the walk."
        }
       ],
       "reasonable": [
        "b"
       ],
-      "after": "Class ends at 4시, and the walk takes 10 minutes, so about 4시 10분. She will be 10 minutes late."
+      "after": "Class ends at 4\uc2dc, and the walk takes 10 minutes, so about 4\uc2dc 10\ubd84. She will be 10 minutes late."
      },
      {
-      "info": "학원 문자: 이번 주 수요일은 시험이라 수업이 3시 30분에 끝나요.",
-      "ask": "When will 하린 probably arrive now?",
+      "info": "\ud559\uc6d0 \ubb38\uc790: \uc774\ubc88 \uc8fc \uc218\uc694\uc77c\uc740 \uc2dc\ud5d8\uc774\ub77c \uc218\uc5c5\uc774 3\uc2dc 30\ubd84\uc5d0 \ub05d\ub098\uc694.",
+      "ask": "When will \ud558\ub9b0 probably arrive now?",
       "options": [
        {
         "id": "a",
-        "text": "4시 10분쯤",
+        "text": "4\uc2dc 10\ubd84\ucbe4",
         "reveals": "You kept the first answer. Check the new end time of the class."
        },
        {
         "id": "b",
-        "text": "4시 30분쯤",
+        "text": "4\uc2dc 30\ubd84\ucbe4",
         "reveals": "That is later than both the old and the new class end plus the walk."
        },
        {
         "id": "c",
-        "text": "3시 40분쯤",
-        "reveals": "You used the new end time (3시 30분) and added the walk."
+        "text": "3\uc2dc 40\ubd84\ucbe4",
+        "reveals": "You used the new end time (3\uc2dc 30\ubd84) and added the walk."
        }
       ],
       "reasonable": [
        "c"
       ],
-      "after": "The newest message says class ends at 3시 30분, so 하린 arrives about 3시 40분, before the party."
+      "after": "The newest message says class ends at 3\uc2dc 30\ubd84, so \ud558\ub9b0 arrives about 3\uc2dc 40\ubd84, before the party."
      },
      {
-      "info": "학원 문자: 죄송합니다. 앞의 문자를 잘못 보냈어요. 시험은 다음 주예요. 이번 주는 평소와 같아요.",
-      "ask": "When will 하린 probably arrive now?",
+      "info": "\ud559\uc6d0 \ubb38\uc790: \uc8c4\uc1a1\ud569\ub2c8\ub2e4. \uc55e\uc758 \ubb38\uc790\ub97c \uc798\ubabb \ubcf4\ub0c8\uc5b4\uc694. \uc2dc\ud5d8\uc740 \ub2e4\uc74c \uc8fc\uc608\uc694. \uc774\ubc88 \uc8fc\ub294 \ud3c9\uc18c\uc640 \uac19\uc544\uc694.",
+      "ask": "When will \ud558\ub9b0 probably arrive now?",
       "options": [
        {
         "id": "a",
-        "text": "4시 10분쯤",
+        "text": "4\uc2dc 10\ubd84\ucbe4",
         "reveals": "You noticed that the correction cancels the exam message and the normal timetable applies."
        },
        {
         "id": "b",
-        "text": "3시 40분쯤",
+        "text": "3\uc2dc 40\ubd84\ucbe4",
         "reveals": "You kept the exam message. Check what the correction says about this week."
        },
        {
         "id": "c",
-        "text": "4시 40분쯤",
+        "text": "4\uc2dc 40\ubd84\ucbe4",
         "reveals": "That is too late even for the normal class plus the walk."
        }
       ],
       "reasonable": [
        "a"
       ],
-      "after": "The correction cancels the exam message, so the normal class (to 4시) applies and 하린 arrives about 4시 10분."
+      "after": "The correction cancels the exam message, so the normal class (to 4\uc2dc) applies and \ud558\ub9b0 arrives about 4\uc2dc 10\ubd84."
      }
     ],
     "reflect": "Your answer moved away from the first message and then came back. The latest message about the same thing is the one to trust, and a correction can cancel an earlier change."
@@ -1780,50 +1605,50 @@
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "Write a short message from 하린 to 소미 in Korean: say that she will be a little late and when she will arrive.",
-    "placeholder": "예: ...",
+    "prompt": "Write a short message from \ud558\ub9b0 to \uc18c\ubbf8 in Korean: say that she will be a little late and when she will arrive.",
+    "placeholder": "\uc608: ...",
     "minChars": 6,
     "checks": [
      {
       "id": "w1",
-      "label": "says she will be late (늦)",
+      "label": "says she will be late (\ub2a6)",
       "mode": "any",
       "patterns": [
-       "늦"
+       "\ub2a6"
       ]
      },
      {
       "id": "w2",
-      "label": "gives the final arrival time (about 4시 10분) or 10분 late",
+      "label": "gives the final arrival time (about 4\uc2dc 10\ubd84) or 10\ubd84 late",
       "mode": "any",
       "patterns": [
-       "(?<![0-9])4\\s*시(?!\\s*[2-5][0-9]\\s*분)",
-       "네\\s*시(?!\\s*(이십|삼십|사십|오십))",
-       "(?<![0-9])10\\s*분\\s*(쯤|정도)?\\s*(늦|뒤|후)",
-       "십\\s*분\\s*(쯤|정도)?\\s*(늦|뒤|후)"
+       "(?<![0-9])4\\s*\uc2dc(?!\\s*[2-5][0-9]\\s*\ubd84)",
+       "\ub124\\s*\uc2dc(?!\\s*(\uc774\uc2ed|\uc0bc\uc2ed|\uc0ac\uc2ed|\uc624\uc2ed))",
+       "(?<![0-9])10\\s*\ubd84\\s*(\ucbe4|\uc815\ub3c4)?\\s*(\ub2a6|\ub4a4|\ud6c4)",
+       "\uc2ed\\s*\ubd84\\s*(\ucbe4|\uc815\ub3c4)?\\s*(\ub2a6|\ub4a4|\ud6c4)"
       ]
      },
      {
       "id": "w3",
-      "label": "apologises or softens (미안/죄송/조금/좀)",
+      "label": "apologises or softens (\ubbf8\uc548/\uc8c4\uc1a1/\uc870\uae08/\uc880)",
       "mode": "any",
       "patterns": [
-       "미안",
-       "죄송",
-       "조금",
-       "좀",
-       "약간"
+       "\ubbf8\uc548",
+       "\uc8c4\uc1a1",
+       "\uc870\uae08",
+       "\uc880",
+       "\uc57d\uac04"
       ]
      },
      {
       "id": "w4",
-      "label": "does not give a wrong time (3시 30분 / 3시 40분 / 4시 20분 or later)",
+      "label": "does not give a wrong time (3\uc2dc 30\ubd84 / 3\uc2dc 40\ubd84 / 4\uc2dc 20\ubd84 or later)",
       "mode": "none",
       "patterns": [
-       "(?<![0-9])3\\s*시\\s*(30|40|45|50)\\s*분",
-       "(?<![0-9])3\\s*시\\s*반",
-       "(?<![0-9])4\\s*시\\s*[2-5][0-9]\\s*분",
-       "세\\s*시"
+       "(?<![0-9])3\\s*\uc2dc\\s*(30|40|45|50)\\s*\ubd84",
+       "(?<![0-9])3\\s*\uc2dc\\s*\ubc18",
+       "(?<![0-9])4\\s*\uc2dc\\s*[2-5][0-9]\\s*\ubd84",
+       "\uc138\\s*\uc2dc"
       ]
      }
     ],
@@ -1834,36 +1659,36 @@
     ],
     "modelAnswers": [
      {
-      "text": "소미야, 미안해! 학원이 4시에 끝나서 10분쯤 늦을 것 같아.",
+      "text": "\uc18c\ubbf8\uc57c, \ubbf8\uc548\ud574! \ud559\uc6d0\uc774 4\uc2dc\uc5d0 \ub05d\ub098\uc11c 10\ubd84\ucbe4 \ub2a6\uc744 \uac83 \uac19\uc544.",
       "note": "Gives the reason and the delay."
      },
      {
-      "text": "조금 늦어요. 4시 10분쯤 도착해요.",
+      "text": "\uc870\uae08 \ub2a6\uc5b4\uc694. 4\uc2dc 10\ubd84\ucbe4 \ub3c4\ucc29\ud574\uc694.",
       "note": "Short and polite; gives the time."
      }
     ],
     "badAnswers": [
      {
-      "text": "금방 갈게.",
+      "text": "\uae08\ubc29 \uac08\uac8c.",
       "why": "No lateness and no time."
      },
      {
-      "text": "파티 재미있겠다.",
+      "text": "\ud30c\ud2f0 \uc7ac\ubbf8\uc788\uaca0\ub2e4.",
       "why": "Does not answer the question."
      },
      {
-      "text": "조금 늦을 것 같아. 3시 40분에 도착해.",
+      "text": "\uc870\uae08 \ub2a6\uc744 \uac83 \uac19\uc544. 3\uc2dc 40\ubd84\uc5d0 \ub3c4\ucc29\ud574.",
       "why": "Says late, but gives the arrival time of the cancelled exam message."
      },
      {
-      "text": "미안해, 조금 늦어. 4시 40분쯤 도착할 거야.",
-      "why": "The time is too late; the final facts give about 4시 10분."
+      "text": "\ubbf8\uc548\ud574, \uc870\uae08 \ub2a6\uc5b4. 4\uc2dc 40\ubd84\ucbe4 \ub3c4\ucc29\ud560 \uac70\uc57c.",
+      "why": "The time is too late; the final facts give about 4\uc2dc 10\ubd84."
      }
     ],
-    "humanReview": "Whether the time matches the final message (about 4시 10분).",
+    "humanReview": "Whether the time matches the final message (about 4\uc2dc 10\ubd84).",
     "hints": [
      "Say you will be late, then add the time or the number of minutes.",
-     "Add 미안해 or 조금 to make it friendly."
+     "Add \ubbf8\uc548\ud574 or \uc870\uae08 to make it friendly."
     ]
    }
   ],
@@ -1882,15 +1707,15 @@
    }
   ],
   "alternatives": [
-   "At stage 3 an answer such as '4시 10분쯤' is the only one that follows the correction; at stages 1 and 2 only one answer is reasonable."
+   "At stage 3 an answer such as '4\uc2dc 10\ubd84\ucbe4' is the only one that follows the correction; at stages 1 and 2 only one answer is reasonable."
   ],
   "hardCases": [
    "A student who reads the walk as 10 minutes before the party may compute a different time; the material says the walk is after class."
   ],
   "cautions": {
-   "language": "늦다 = to be late (늦을 것 같아 = I think I will be late); 앞의 문자 = the earlier message; 평소와 같아요 = it is as usual.",
-   "culture": "Birthday parties after cram school (학원) are common; no special knowledge is required.",
-   "accessibility": "All times are written with 시 and 분, and the stages are plain text."
+   "language": "\ub2a6\ub2e4 = to be late (\ub2a6\uc744 \uac83 \uac19\uc544 = I think I will be late); \uc55e\uc758 \ubb38\uc790 = the earlier message; \ud3c9\uc18c\uc640 \uac19\uc544\uc694 = it is as usual.",
+   "culture": "Birthday parties after cram school (\ud559\uc6d0) are common; no special knowledge is required.",
+   "accessibility": "All times are written with \uc2dc and \ubd84, and the stages are plain text."
   },
   "autoVsHuman": {
    "auto": [
@@ -1900,6 +1725,6 @@
     "Naturalness of the message"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  }
 ]

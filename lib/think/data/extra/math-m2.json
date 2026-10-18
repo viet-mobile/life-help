@@ -3,104 +3,104 @@
   "subject": "math",
   "grade": "M2",
   "level": 2,
-  "levelLabel": "중등",
+  "levelLabel": "\uc911\ub4f1",
   "uiLang": "ko",
   "curriculum": null,
   "id": "x-m-m2-01",
-  "topic": "유리수와 순환소수",
-  "title": "분모에 3이 있어도 유한소수가 되는 분수 만들기",
+  "topic": "\uc720\ub9ac\uc218\uc640 \uc21c\ud658\uc18c\uc218",
+  "title": "\ubd84\ubaa8\uc5d0 3\uc774 \uc788\uc5b4\ub3c4 \uc720\ud55c\uc18c\uc218\uac00 \ub418\ub294 \ubd84\uc218 \ub9cc\ub4e4\uae30",
   "format": "make-your-own",
   "generative": true,
   "minutes": 12,
-  "goal": "‘분모에 3이 있으면 항상 무한소수’라는 주장이 성립하지 않음을 반례로 보이고, 반례가 생기는 까닭을 설명한다.",
+  "goal": "\u2018\ubd84\ubaa8\uc5d0 3\uc774 \uc788\uc73c\uba74 \ud56d\uc0c1 \ubb34\ud55c\uc18c\uc218\u2019\ub77c\ub294 \uc8fc\uc7a5\uc774 \uc131\ub9bd\ud558\uc9c0 \uc54a\uc74c\uc744 \ubc18\ub840\ub85c \ubcf4\uc774\uace0, \ubc18\ub840\uac00 \uc0dd\uae30\ub294 \uae4c\ub2ed\uc744 \uc124\uba85\ud55c\ub2e4.",
   "thinking": [
-   "일반화의 반례 찾기",
-   "조건을 만족하는 예를 직접 만들기",
-   "성립 조건 추론하기"
+   "\uc77c\ubc18\ud654\uc758 \ubc18\ub840 \ucc3e\uae30",
+   "\uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294 \uc608\ub97c \uc9c1\uc811 \ub9cc\ub4e4\uae30",
+   "\uc131\ub9bd \uc870\uac74 \ucd94\ub860\ud558\uae30"
   ],
-  "differsFromPlain": "단순 연습은 주어진 분수를 유한소수인지 무한소수인지 구분한다. 여기서는 주장을 시험하고, 조건에 맞는 분수를 스스로 만들고, 왜 그런 분수가 생기는지 설명한다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uc8fc\uc5b4\uc9c4 \ubd84\uc218\ub97c \uc720\ud55c\uc18c\uc218\uc778\uc9c0 \ubb34\ud55c\uc18c\uc218\uc778\uc9c0 \uad6c\ubd84\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \uc8fc\uc7a5\uc744 \uc2dc\ud5d8\ud558\uace0, \uc870\uac74\uc5d0 \ub9de\ub294 \ubd84\uc218\ub97c \uc2a4\uc2a4\ub85c \ub9cc\ub4e4\uace0, \uc65c \uadf8\ub7f0 \ubd84\uc218\uac00 \uc0dd\uae30\ub294\uc9c0 \uc124\uba85\ud55c\ub2e4.",
   "prerequisites": [
-   "분수를 소수로 나타내는 방법(나눗셈)",
-   "유한소수와 무한소수의 뜻",
-   "자연수의 약수와 배수"
+   "\ubd84\uc218\ub97c \uc18c\uc218\ub85c \ub098\ud0c0\ub0b4\ub294 \ubc29\ubc95(\ub098\ub217\uc148)",
+   "\uc720\ud55c\uc18c\uc218\uc640 \ubb34\ud55c\uc18c\uc218\uc758 \ub73b",
+   "\uc790\uc5f0\uc218\uc758 \uc57d\uc218\uc640 \ubc30\uc218"
   ],
-  "material": "지호가 말했어요. ‘분모에 3이 들어 있는 분수는 항상 무한소수로 나타나.’ 분수 읽는 법: ‘12분의 9’는 9/12(분자 9, 분모 12)를 뜻해요. 아래 분수는 모두 약분하지 않은 상태로 적혀 있어요.",
+  "material": "\uc9c0\ud638\uac00 \ub9d0\ud588\uc5b4\uc694. \u2018\ubd84\ubaa8\uc5d0 3\uc774 \ub4e4\uc5b4 \uc788\ub294 \ubd84\uc218\ub294 \ud56d\uc0c1 \ubb34\ud55c\uc18c\uc218\ub85c \ub098\ud0c0\ub098.\u2019 \ubd84\uc218 \uc77d\ub294 \ubc95: \u201812\ubd84\uc758 9\u2019\ub294 9/12(\ubd84\uc790 9, \ubd84\ubaa8 12)\ub97c \ub73b\ud574\uc694. \uc544\ub798 \ubd84\uc218\ub294 \ubaa8\ub450 \uc57d\ubd84\ud558\uc9c0 \uc54a\uc740 \uc0c1\ud0dc\ub85c \uc801\ud600 \uc788\uc5b4\uc694.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
     "multi": true,
     "scaffold": true,
-    "prompt": "지호의 주장을 깨는 분수(반례)를 모두 고르세요. 반례란 ‘분모에 3이 있는데도 유한소수가 되는 분수’예요.",
+    "prompt": "\uc9c0\ud638\uc758 \uc8fc\uc7a5\uc744 \uae68\ub294 \ubd84\uc218(\ubc18\ub840)\ub97c \ubaa8\ub450 \uace0\ub974\uc138\uc694. \ubc18\ub840\ub780 \u2018\ubd84\ubaa8\uc5d0 3\uc774 \uc788\ub294\ub370\ub3c4 \uc720\ud55c\uc18c\uc218\uac00 \ub418\ub294 \ubd84\uc218\u2019\uc608\uc694.",
     "options": [
      {
       "id": "a",
-      "text": "12분의 9 (9/12)",
-      "reveals": "분모에 3이 있어도 분자와 함께 간단히 만들면 분모가 달라질 수 있다는 점을 포착한 선택이에요."
+      "text": "12\ubd84\uc758 9 (9/12)",
+      "reveals": "\ubd84\ubaa8\uc5d0 3\uc774 \uc788\uc5b4\ub3c4 \ubd84\uc790\uc640 \ud568\uaed8 \uac04\ub2e8\ud788 \ub9cc\ub4e4\uba74 \ubd84\ubaa8\uac00 \ub2ec\ub77c\uc9c8 \uc218 \uc788\ub2e4\ub294 \uc810\uc744 \ud3ec\ucc29\ud55c \uc120\ud0dd\uc774\uc5d0\uc694."
      },
      {
       "id": "b",
-      "text": "12분의 5 (5/12)",
-      "reveals": "분모에 3이 있다는 사실만 보았는지, 분자 5와 분모 12가 더 간단해지는지 확인했는지 돌아보세요."
+      "text": "12\ubd84\uc758 5 (5/12)",
+      "reveals": "\ubd84\ubaa8\uc5d0 3\uc774 \uc788\ub2e4\ub294 \uc0ac\uc2e4\ub9cc \ubcf4\uc558\ub294\uc9c0, \ubd84\uc790 5\uc640 \ubd84\ubaa8 12\uac00 \ub354 \uac04\ub2e8\ud574\uc9c0\ub294\uc9c0 \ud655\uc778\ud588\ub294\uc9c0 \ub3cc\uc544\ubcf4\uc138\uc694."
      },
      {
       "id": "c",
-      "text": "18분의 12 (12/18)",
-      "reveals": "12/18을 가장 간단한 꼴로 고친 뒤 그 분수를 직접 나눠 소수로 써 보았는지 확인해 보세요."
+      "text": "18\ubd84\uc758 12 (12/18)",
+      "reveals": "12/18\uc744 \uac00\uc7a5 \uac04\ub2e8\ud55c \uaf34\ub85c \uace0\uce5c \ub4a4 \uadf8 \ubd84\uc218\ub97c \uc9c1\uc811 \ub098\ub220 \uc18c\uc218\ub85c \uc368 \ubcf4\uc558\ub294\uc9c0 \ud655\uc778\ud574 \ubcf4\uc138\uc694."
      },
      {
       "id": "d",
-      "text": "30분의 15 (15/30)",
-      "reveals": "분모 30에는 3이 있지만 분자와 함께 간단히 하면 분모에서 3이 사라지는 경우를 찾아낸 선택이에요."
+      "text": "30\ubd84\uc758 15 (15/30)",
+      "reveals": "\ubd84\ubaa8 30\uc5d0\ub294 3\uc774 \uc788\uc9c0\ub9cc \ubd84\uc790\uc640 \ud568\uaed8 \uac04\ub2e8\ud788 \ud558\uba74 \ubd84\ubaa8\uc5d0\uc11c 3\uc774 \uc0ac\ub77c\uc9c0\ub294 \uacbd\uc6b0\ub97c \ucc3e\uc544\ub0b8 \uc120\ud0dd\uc774\uc5d0\uc694."
      },
      {
       "id": "e",
-      "text": "15분의 8 (8/15)",
-      "reveals": "분모 15에서 5가 있어 유한소수일 것 같다고 느꼈는지, 3은 어떻게 되는지 살펴보세요."
+      "text": "15\ubd84\uc758 8 (8/15)",
+      "reveals": "\ubd84\ubaa8 15\uc5d0\uc11c 5\uac00 \uc788\uc5b4 \uc720\ud55c\uc18c\uc218\uc77c \uac83 \uac19\ub2e4\uace0 \ub290\uaf08\ub294\uc9c0, 3\uc740 \uc5b4\ub5bb\uac8c \ub418\ub294\uc9c0 \uc0b4\ud3b4\ubcf4\uc138\uc694."
      }
     ],
     "correct": [
      "a",
      "d"
     ],
-    "explain": "9/12 = 3/4 = 0.75, 15/30 = 1/2 = 0.5는 분모에 3이 있었지만 약분하면 3이 사라져 유한소수가 돼요. 12/18 = 2/3 = 0.666…, 5/12 = 0.41666…, 8/15 = 0.5333…은 약분한 뒤에도 분모에 3이 남아 있어 무한소수예요.",
+    "explain": "9/12 = 3/4 = 0.75, 15/30 = 1/2 = 0.5\ub294 \ubd84\ubaa8\uc5d0 3\uc774 \uc788\uc5c8\uc9c0\ub9cc \uc57d\ubd84\ud558\uba74 3\uc774 \uc0ac\ub77c\uc838 \uc720\ud55c\uc18c\uc218\uac00 \ub3fc\uc694. 12/18 = 2/3 = 0.666\u2026, 5/12 = 0.41666\u2026, 8/15 = 0.5333\u2026\uc740 \uc57d\ubd84\ud55c \ub4a4\uc5d0\ub3c4 \ubd84\ubaa8\uc5d0 3\uc774 \ub0a8\uc544 \uc788\uc5b4 \ubb34\ud55c\uc18c\uc218\uc608\uc694.",
     "hints": [
-     "반례를 찾으려면 ‘분모에 3이 있는데 유한소수’인 분수가 필요해요. 각 분수를 나눗셈으로 소수로 나타내 보면 어떻게 되나요?",
-     "분수를 가장 간단한 꼴로 고쳤을 때 분모가 어떻게 달라지는지 서로 비교해 보세요."
+     "\ubc18\ub840\ub97c \ucc3e\uc73c\ub824\uba74 \u2018\ubd84\ubaa8\uc5d0 3\uc774 \uc788\ub294\ub370 \uc720\ud55c\uc18c\uc218\u2019\uc778 \ubd84\uc218\uac00 \ud544\uc694\ud574\uc694. \uac01 \ubd84\uc218\ub97c \ub098\ub217\uc148\uc73c\ub85c \uc18c\uc218\ub85c \ub098\ud0c0\ub0b4 \ubcf4\uba74 \uc5b4\ub5bb\uac8c \ub418\ub098\uc694?",
+     "\ubd84\uc218\ub97c \uac00\uc7a5 \uac04\ub2e8\ud55c \uaf34\ub85c \uace0\ucce4\uc744 \ub54c \ubd84\ubaa8\uac00 \uc5b4\ub5bb\uac8c \ub2ec\ub77c\uc9c0\ub294\uc9c0 \uc11c\ub85c \ube44\uad50\ud574 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "build",
-    "prompt": "이제 직접 반례를 만들어 보세요. 분모 b는 3의 배수이고 60 이하, 분자 a는 1 이상이고 b보다 작은 자연수예요. 유한소수가 되는 분수 a/b를, 값이 서로 다른 것으로 3개 만드세요. (값이 같은 분수는 한 번만 인정해요.)",
+    "prompt": "\uc774\uc81c \uc9c1\uc811 \ubc18\ub840\ub97c \ub9cc\ub4e4\uc5b4 \ubcf4\uc138\uc694. \ubd84\ubaa8 b\ub294 3\uc758 \ubc30\uc218\uc774\uace0 60 \uc774\ud558, \ubd84\uc790 a\ub294 1 \uc774\uc0c1\uc774\uace0 b\ubcf4\ub2e4 \uc791\uc740 \uc790\uc5f0\uc218\uc608\uc694. \uc720\ud55c\uc18c\uc218\uac00 \ub418\ub294 \ubd84\uc218 a/b\ub97c, \uac12\uc774 \uc11c\ub85c \ub2e4\ub978 \uac83\uc73c\ub85c 3\uac1c \ub9cc\ub4dc\uc138\uc694. (\uac12\uc774 \uac19\uc740 \ubd84\uc218\ub294 \ud55c \ubc88\ub9cc \uc778\uc815\ud574\uc694.)",
     "vars": [
      {
       "name": "a",
-      "label": "분자 a"
+      "label": "\ubd84\uc790 a"
      },
      {
       "name": "b",
-      "label": "분모 b"
+      "label": "\ubd84\ubaa8 b"
      }
     ],
     "constraints": [
      {
       "id": "c1",
       "expr": "a>=1 && a<b && a==floor(a) && b==floor(b)",
-      "ok": "분자는 1 이상이고 분모보다 작은 자연수예요.",
-      "fail": "분자는 1 이상이고 분모보다 작은 자연수여야 해요."
+      "ok": "\ubd84\uc790\ub294 1 \uc774\uc0c1\uc774\uace0 \ubd84\ubaa8\ubcf4\ub2e4 \uc791\uc740 \uc790\uc5f0\uc218\uc608\uc694.",
+      "fail": "\ubd84\uc790\ub294 1 \uc774\uc0c1\uc774\uace0 \ubd84\ubaa8\ubcf4\ub2e4 \uc791\uc740 \uc790\uc5f0\uc218\uc5ec\uc57c \ud574\uc694."
      },
      {
       "id": "c2",
       "expr": "b%3==0 && b<=60",
-      "ok": "분모가 3의 배수이고 60 이하예요.",
-      "fail": "분모는 3의 배수이면서 60 이하여야 해요."
+      "ok": "\ubd84\ubaa8\uac00 3\uc758 \ubc30\uc218\uc774\uace0 60 \uc774\ud558\uc608\uc694.",
+      "fail": "\ubd84\ubaa8\ub294 3\uc758 \ubc30\uc218\uc774\uba74\uc11c 60 \uc774\ud558\uc5ec\uc57c \ud574\uc694."
      },
      {
       "id": "c3",
       "expr": "1000000%(b/gcd(a,b))==0",
-      "ok": "유한소수로 나타나는 분수예요.",
-      "fail": "이 분수는 유한소수가 아니에요(소수로 나타내면 끝없이 이어져요)."
+      "ok": "\uc720\ud55c\uc18c\uc218\ub85c \ub098\ud0c0\ub098\ub294 \ubd84\uc218\uc608\uc694.",
+      "fail": "\uc774 \ubd84\uc218\ub294 \uc720\ud55c\uc18c\uc218\uac00 \uc544\ub2c8\uc5d0\uc694(\uc18c\uc218\ub85c \ub098\ud0c0\ub0b4\uba74 \ub05d\uc5c6\uc774 \uc774\uc5b4\uc838\uc694)."
      }
     ],
     "need": 3,
@@ -137,404 +137,404 @@
       "b": 10
      }
     ],
-    "explain": "예: 9/12 = 0.75, 15/30 = 0.5, 21/30 = 0.7, 12/15 = 0.8은 모두 분모가 3의 배수인데 유한소수예요. 5/12나 7/15는 약분되지 않아 분모에 3이 남아서 무한소수예요.",
+    "explain": "\uc608: 9/12 = 0.75, 15/30 = 0.5, 21/30 = 0.7, 12/15 = 0.8\uc740 \ubaa8\ub450 \ubd84\ubaa8\uac00 3\uc758 \ubc30\uc218\uc778\ub370 \uc720\ud55c\uc18c\uc218\uc608\uc694. 5/12\ub098 7/15\ub294 \uc57d\ubd84\ub418\uc9c0 \uc54a\uc544 \ubd84\ubaa8\uc5d0 3\uc774 \ub0a8\uc544\uc11c \ubb34\ud55c\uc18c\uc218\uc608\uc694.",
     "hints": [
-     "분모를 먼저 3의 배수로 하나 정한 뒤, 분자를 바꿔 가며 소수로 나눠 보세요.",
-     "분자가 어떤 수일 때 분수를 간단히 하면 분모에서 3이 없어질까요? 분모 12나 30으로 시험해 보세요."
+     "\ubd84\ubaa8\ub97c \uba3c\uc800 3\uc758 \ubc30\uc218\ub85c \ud558\ub098 \uc815\ud55c \ub4a4, \ubd84\uc790\ub97c \ubc14\uafd4 \uac00\uba70 \uc18c\uc218\ub85c \ub098\ub220 \ubcf4\uc138\uc694.",
+     "\ubd84\uc790\uac00 \uc5b4\ub5a4 \uc218\uc77c \ub54c \ubd84\uc218\ub97c \uac04\ub2e8\ud788 \ud558\uba74 \ubd84\ubaa8\uc5d0\uc11c 3\uc774 \uc5c6\uc5b4\uc9c8\uae4c\uc694? \ubd84\ubaa8 12\ub098 30\uc73c\ub85c \uc2dc\ud5d8\ud574 \ubcf4\uc138\uc694."
     ],
     "because": {
      "kind": "write",
      "minChars": 20,
      "id": "s2b",
-     "prompt": "만든 분수 중 하나를 골라, 분모에 3이 있는데도 유한소수가 되는 이유를 설명해 보세요.",
+     "prompt": "\ub9cc\ub4e0 \ubd84\uc218 \uc911 \ud558\ub098\ub97c \uace8\ub77c, \ubd84\ubaa8\uc5d0 3\uc774 \uc788\ub294\ub370\ub3c4 \uc720\ud55c\uc18c\uc218\uac00 \ub418\ub294 \uc774\uc720\ub97c \uc124\uba85\ud574 \ubcf4\uc138\uc694.",
      "hints": [
-      "고른 분수를 가장 간단한 꼴로 고쳐 쓰고, 분모를 원래 분모와 비교해 보세요.",
-      "고친 분수의 분모가 어떤 수들의 곱으로 이루어졌는지 살펴보세요."
+      "\uace0\ub978 \ubd84\uc218\ub97c \uac00\uc7a5 \uac04\ub2e8\ud55c \uaf34\ub85c \uace0\uccd0 \uc4f0\uace0, \ubd84\ubaa8\ub97c \uc6d0\ub798 \ubd84\ubaa8\uc640 \ube44\uad50\ud574 \ubcf4\uc138\uc694.",
+      "\uace0\uce5c \ubd84\uc218\uc758 \ubd84\ubaa8\uac00 \uc5b4\ub5a4 \uc218\ub4e4\uc758 \uacf1\uc73c\ub85c \uc774\ub8e8\uc5b4\uc84c\ub294\uc9c0 \uc0b4\ud3b4\ubcf4\uc138\uc694."
      ],
-     "placeholder": "예: 9/12는 ...",
+     "placeholder": "\uc608: 9/12\ub294 ...",
      "checks": [
       {
        "id": "k1",
-       "label": "약분(가장 간단한 꼴)을 언급했다",
+       "label": "\uc57d\ubd84(\uac00\uc7a5 \uac04\ub2e8\ud55c \uaf34)\uc744 \uc5b8\uae09\ud588\ub2e4",
        "mode": "any",
        "patterns": [
-        "약분",
-        "기약",
-        "간단(한|히)",
-        "줄여"
+        "\uc57d\ubd84",
+        "\uae30\uc57d",
+        "\uac04\ub2e8(\ud55c|\ud788)",
+        "\uc904\uc5ec"
        ]
       },
       {
        "id": "k2",
-       "label": "분모의 3이 없어졌다 / 분모가 2와 5뿐이라고 말했다",
+       "label": "\ubd84\ubaa8\uc758 3\uc774 \uc5c6\uc5b4\uc84c\ub2e4 / \ubd84\ubaa8\uac00 2\uc640 5\ubfd0\uc774\ub77c\uace0 \ub9d0\ud588\ub2e4",
        "mode": "any",
        "patterns": [
-        "3.{0,20}(사라|없어|없는|없다|남지|안\\s*남|빠지|지워|약분되)",
-        "(2|5)\\s*(와|과|랑|,|×|x)?\\s*(5|2)?.{0,10}(만|뿐)",
-        "소인수",
-        "(2|5)\\s*[×x*]\\s*(2|5)",
-        "2\\s*(와|과)\\s*5",
-        "분모(가|는)?\\s*\\d+\\s*(이|가)?\\s*(돼|되|된|됩|바뀌)"
+        "3.{0,20}(\uc0ac\ub77c|\uc5c6\uc5b4|\uc5c6\ub294|\uc5c6\ub2e4|\ub0a8\uc9c0|\uc548\\s*\ub0a8|\ube60\uc9c0|\uc9c0\uc6cc|\uc57d\ubd84\ub418)",
+        "(2|5)\\s*(\uc640|\uacfc|\ub791|,|\u00d7|x)?\\s*(5|2)?.{0,10}(\ub9cc|\ubfd0)",
+        "\uc18c\uc778\uc218",
+        "(2|5)\\s*[\u00d7x*]\\s*(2|5)",
+        "2\\s*(\uc640|\uacfc)\\s*5",
+        "\ubd84\ubaa8(\uac00|\ub294)?\\s*\\d+\\s*(\uc774|\uac00)?\\s*(\ub3fc|\ub418|\ub41c|\ub429|\ubc14\ub00c)"
        ]
       }
      ],
      "selfAssess": [
-      "내가 고른 분수를 간단히 한 꼴을 실제로 적어 보았나요?",
-      "‘3이 어디로 갔는지’를 분자와 연결해서 설명했나요?",
-      "유한소수가 되려면 간단히 한 분수의 분모가 어때야 하는지 말했나요?"
+      "\ub0b4\uac00 \uace0\ub978 \ubd84\uc218\ub97c \uac04\ub2e8\ud788 \ud55c \uaf34\uc744 \uc2e4\uc81c\ub85c \uc801\uc5b4 \ubcf4\uc558\ub098\uc694?",
+      "\u20183\uc774 \uc5b4\ub514\ub85c \uac14\ub294\uc9c0\u2019\ub97c \ubd84\uc790\uc640 \uc5f0\uacb0\ud574\uc11c \uc124\uba85\ud588\ub098\uc694?",
+      "\uc720\ud55c\uc18c\uc218\uac00 \ub418\ub824\uba74 \uac04\ub2e8\ud788 \ud55c \ubd84\uc218\uc758 \ubd84\ubaa8\uac00 \uc5b4\ub54c\uc57c \ud558\ub294\uc9c0 \ub9d0\ud588\ub098\uc694?"
      ],
      "modelAnswers": [
       {
-       "text": "9/12를 약분하면 3/4가 된다. 분모의 3이 분자 9와 함께 약분되어 사라지고 분모에는 2×2만 남아서 0.75로 딱 떨어진다."
+       "text": "9/12\ub97c \uc57d\ubd84\ud558\uba74 3/4\uac00 \ub41c\ub2e4. \ubd84\ubaa8\uc758 3\uc774 \ubd84\uc790 9\uc640 \ud568\uaed8 \uc57d\ubd84\ub418\uc5b4 \uc0ac\ub77c\uc9c0\uace0 \ubd84\ubaa8\uc5d0\ub294 2\u00d72\ub9cc \ub0a8\uc544\uc11c 0.75\ub85c \ub531 \ub5a8\uc5b4\uc9c4\ub2e4."
       },
       {
-       "text": "21/30은 기약분수로 고치면 7/10인데, 분모 10은 2와 5로만 이루어져 있어서 유한소수 0.7이 된다. 처음 분모의 3은 분자 21의 3과 약분됐다.",
-       "note": "‘2와 5로만’이라는 조건을 직접 말한 답"
+       "text": "21/30\uc740 \uae30\uc57d\ubd84\uc218\ub85c \uace0\uce58\uba74 7/10\uc778\ub370, \ubd84\ubaa8 10\uc740 2\uc640 5\ub85c\ub9cc \uc774\ub8e8\uc5b4\uc838 \uc788\uc5b4\uc11c \uc720\ud55c\uc18c\uc218 0.7\uc774 \ub41c\ub2e4. \ucc98\uc74c \ubd84\ubaa8\uc758 3\uc740 \ubd84\uc790 21\uc758 3\uacfc \uc57d\ubd84\ub410\ub2e4.",
+       "note": "\u20182\uc640 5\ub85c\ub9cc\u2019\uc774\ub77c\ub294 \uc870\uac74\uc744 \uc9c1\uc811 \ub9d0\ud55c \ub2f5"
       }
      ],
      "badAnswers": [
       {
-       "text": "그냥 나눠 보면 나누어떨어지니까 유한소수예요. 계산기로 하면 알 수 있어요.",
-       "why": "약분이나 분모의 구성을 설명하지 않고 계산 결과만 말했다."
+       "text": "\uadf8\ub0e5 \ub098\ub220 \ubcf4\uba74 \ub098\ub204\uc5b4\ub5a8\uc5b4\uc9c0\ub2c8\uae4c \uc720\ud55c\uc18c\uc218\uc608\uc694. \uacc4\uc0b0\uae30\ub85c \ud558\uba74 \uc54c \uc218 \uc788\uc5b4\uc694.",
+       "why": "\uc57d\ubd84\uc774\ub098 \ubd84\ubaa8\uc758 \uad6c\uc131\uc744 \uc124\uba85\ud558\uc9c0 \uc54a\uace0 \uacc4\uc0b0 \uacb0\uacfc\ub9cc \ub9d0\ud588\ub2e4."
       }
      ],
-     "humanReview": "‘분모의 소인수가 2와 5뿐’이라는 일반 조건까지 연결했는지, 단지 예 하나를 약분한 설명인지 사람이 읽어 판단한다."
+     "humanReview": "\u2018\ubd84\ubaa8\uc758 \uc18c\uc778\uc218\uac00 2\uc640 5\ubfd0\u2019\uc774\ub77c\ub294 \uc77c\ubc18 \uc870\uac74\uae4c\uc9c0 \uc5f0\uacb0\ud588\ub294\uc9c0, \ub2e8\uc9c0 \uc608 \ud558\ub098\ub97c \uc57d\ubd84\ud55c \uc124\uba85\uc778\uc9c0 \uc0ac\ub78c\uc774 \uc77d\uc5b4 \ud310\ub2e8\ud55c\ub2e4."
     }
    }
   ],
   "rubric": [
    {
-    "criterion": "반례의 타당성",
-    "full": "분모가 3의 배수이고 유한소수인 서로 다른 값의 분수를 정확히 제시",
-    "partial": "예가 있으나 값이 같은 분수를 반복하거나 한 개뿐",
-    "none": "반례가 없거나 무한소수 분수를 제시"
+    "criterion": "\ubc18\ub840\uc758 \ud0c0\ub2f9\uc131",
+    "full": "\ubd84\ubaa8\uac00 3\uc758 \ubc30\uc218\uc774\uace0 \uc720\ud55c\uc18c\uc218\uc778 \uc11c\ub85c \ub2e4\ub978 \uac12\uc758 \ubd84\uc218\ub97c \uc815\ud655\ud788 \uc81c\uc2dc",
+    "partial": "\uc608\uac00 \uc788\uc73c\ub098 \uac12\uc774 \uac19\uc740 \ubd84\uc218\ub97c \ubc18\ubcf5\ud558\uac70\ub098 \ud55c \uac1c\ubfd0",
+    "none": "\ubc18\ub840\uac00 \uc5c6\uac70\ub098 \ubb34\ud55c\uc18c\uc218 \ubd84\uc218\ub97c \uc81c\uc2dc"
    },
    {
-    "criterion": "까닭 설명",
-    "full": "약분 후 분모에서 3이 사라지고 2·5만 남는다는 것을 설명",
-    "partial": "약분만 언급하고 분모의 변화는 말하지 않음",
-    "none": "계산 결과만 말함"
+    "criterion": "\uae4c\ub2ed \uc124\uba85",
+    "full": "\uc57d\ubd84 \ud6c4 \ubd84\ubaa8\uc5d0\uc11c 3\uc774 \uc0ac\ub77c\uc9c0\uace0 2\u00b75\ub9cc \ub0a8\ub294\ub2e4\ub294 \uac83\uc744 \uc124\uba85",
+    "partial": "\uc57d\ubd84\ub9cc \uc5b8\uae09\ud558\uace0 \ubd84\ubaa8\uc758 \ubcc0\ud654\ub294 \ub9d0\ud558\uc9c0 \uc54a\uc74c",
+    "none": "\uacc4\uc0b0 \uacb0\uacfc\ub9cc \ub9d0\ud568"
    }
   ],
   "alternatives": [
-   "분모가 3의 배수가 아닌 다른 조건으로 다른 반례를 만들어도 좋지만 이 과제의 조건은 b가 3의 배수예요.",
-   "분자가 분모와 같은 소인수를 공유한다는 설명도, 기약분수의 분모 조건으로 설명하는 것도 모두 타당하다."
+   "\ubd84\ubaa8\uac00 3\uc758 \ubc30\uc218\uac00 \uc544\ub2cc \ub2e4\ub978 \uc870\uac74\uc73c\ub85c \ub2e4\ub978 \ubc18\ub840\ub97c \ub9cc\ub4e4\uc5b4\ub3c4 \uc88b\uc9c0\ub9cc \uc774 \uacfc\uc81c\uc758 \uc870\uac74\uc740 b\uac00 3\uc758 \ubc30\uc218\uc608\uc694.",
+   "\ubd84\uc790\uac00 \ubd84\ubaa8\uc640 \uac19\uc740 \uc18c\uc778\uc218\ub97c \uacf5\uc720\ud55c\ub2e4\ub294 \uc124\uba85\ub3c4, \uae30\uc57d\ubd84\uc218\uc758 \ubd84\ubaa8 \uc870\uac74\uc73c\ub85c \uc124\uba85\ud558\ub294 \uac83\ub3c4 \ubaa8\ub450 \ud0c0\ub2f9\ud558\ub2e4."
   ],
   "hardCases": [
-   "a/b가 정수가 되는 경우는 a<b 조건으로 제외했다.",
-   "학생이 1/3=0.333…의 0.3 근삿값으로 ‘유한소수’라고 오해할 수 있어 사람이 확인해야 한다."
+   "a/b\uac00 \uc815\uc218\uac00 \ub418\ub294 \uacbd\uc6b0\ub294 a<b \uc870\uac74\uc73c\ub85c \uc81c\uc678\ud588\ub2e4.",
+   "\ud559\uc0dd\uc774 1/3=0.333\u2026\uc758 0.3 \uadfc\uc0bf\uac12\uc73c\ub85c \u2018\uc720\ud55c\uc18c\uc218\u2019\ub77c\uace0 \uc624\ud574\ud560 \uc218 \uc788\uc5b4 \uc0ac\ub78c\uc774 \ud655\uc778\ud574\uc57c \ud55c\ub2e4."
   ],
   "cautions": {
-   "language": "‘12분의 9’처럼 분모를 먼저 읽는 한국어 읽기를 병기해 화면낭독기가 9/12를 ‘9월 12일’처럼 읽는 것을 막았다. ‘약분’, ‘유한소수’ 같은 용어는 중1~중2 수업에서 이미 접한 말이다.",
-   "culture": "수학 용어 외에 문화 의존 소재가 없다.",
-   "accessibility": "그림이 없고 모든 분수에 말로 읽는 법을 붙였다. 색에 의존하지 않는다."
+   "language": "\u201812\ubd84\uc758 9\u2019\ucc98\ub7fc \ubd84\ubaa8\ub97c \uba3c\uc800 \uc77d\ub294 \ud55c\uad6d\uc5b4 \uc77d\uae30\ub97c \ubcd1\uae30\ud574 \ud654\uba74\ub0ad\ub3c5\uae30\uac00 9/12\ub97c \u20189\uc6d4 12\uc77c\u2019\ucc98\ub7fc \uc77d\ub294 \uac83\uc744 \ub9c9\uc558\ub2e4. \u2018\uc57d\ubd84\u2019, \u2018\uc720\ud55c\uc18c\uc218\u2019 \uac19\uc740 \uc6a9\uc5b4\ub294 \uc9111~\uc9112 \uc218\uc5c5\uc5d0\uc11c \uc774\ubbf8 \uc811\ud55c \ub9d0\uc774\ub2e4.",
+   "culture": "\uc218\ud559 \uc6a9\uc5b4 \uc678\uc5d0 \ubb38\ud654 \uc758\uc874 \uc18c\uc7ac\uac00 \uc5c6\ub2e4.",
+   "accessibility": "\uadf8\ub9bc\uc774 \uc5c6\uace0 \ubaa8\ub4e0 \ubd84\uc218\uc5d0 \ub9d0\ub85c \uc77d\ub294 \ubc95\uc744 \ubd99\uc600\ub2e4. \uc0c9\uc5d0 \uc758\uc874\ud558\uc9c0 \uc54a\ub294\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "선택한 반례가 키와 일치하는지",
-    "만든 분수가 모든 조건을 만족하고 값이 서로 다른지"
+    "\uc120\ud0dd\ud55c \ubc18\ub840\uac00 \ud0a4\uc640 \uc77c\uce58\ud558\ub294\uc9c0",
+    "\ub9cc\ub4e0 \ubd84\uc218\uac00 \ubaa8\ub4e0 \uc870\uac74\uc744 \ub9cc\uc871\ud558\uace0 \uac12\uc774 \uc11c\ub85c \ub2e4\ub978\uc9c0"
    ],
    "human": [
-    "까닭 설명이 일반 조건(분모의 소인수)까지 이르는지"
+    "\uae4c\ub2ed \uc124\uba85\uc774 \uc77c\ubc18 \uc870\uac74(\ubd84\ubaa8\uc758 \uc18c\uc778\uc218)\uae4c\uc9c0 \uc774\ub974\ub294\uc9c0"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "subject": "math",
   "grade": "M2",
   "level": 2,
-  "levelLabel": "중등",
+  "levelLabel": "\uc911\ub4f1",
   "uiLang": "ko",
   "curriculum": null,
   "id": "x-m-m2-02",
-  "topic": "유리수와 순환소수",
-  "title": "0.999…는 1보다 작을까?",
+  "topic": "\uc720\ub9ac\uc218\uc640 \uc21c\ud658\uc18c\uc218",
+  "title": "0.999\u2026\ub294 1\ubcf4\ub2e4 \uc791\uc744\uae4c?",
   "format": "reveal-and-revise",
   "generative": false,
   "minutes": 12,
-  "goal": "순환소수 0.999…와 1의 관계에 대한 처음 판단을, 서로 다른 두 증거를 보며 근거에 따라 고친다.",
+  "goal": "\uc21c\ud658\uc18c\uc218 0.999\u2026\uc640 1\uc758 \uad00\uacc4\uc5d0 \ub300\ud55c \ucc98\uc74c \ud310\ub2e8\uc744, \uc11c\ub85c \ub2e4\ub978 \ub450 \uc99d\uac70\ub97c \ubcf4\uba70 \uadfc\uac70\uc5d0 \ub530\ub77c \uace0\uce5c\ub2e4.",
   "thinking": [
-   "증거에 따라 판단 수정하기",
-   "서로 다른 방법의 결론 비교하기",
-   "직관과 논증 구분하기"
+   "\uc99d\uac70\uc5d0 \ub530\ub77c \ud310\ub2e8 \uc218\uc815\ud558\uae30",
+   "\uc11c\ub85c \ub2e4\ub978 \ubc29\ubc95\uc758 \uacb0\ub860 \ube44\uad50\ud558\uae30",
+   "\uc9c1\uad00\uacfc \ub17c\uc99d \uad6c\ubd84\ud558\uae30"
   ],
-  "differsFromPlain": "단순 연습은 순환소수를 분수로 바꾸는 방법을 반복한다. 여기서는 ‘1보다 작다’는 직관을 먼저 밝히고, 증거가 늘 때 판단이 왜 바뀌는지 따져 본다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uc21c\ud658\uc18c\uc218\ub97c \ubd84\uc218\ub85c \ubc14\uafb8\ub294 \ubc29\ubc95\uc744 \ubc18\ubcf5\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \u20181\ubcf4\ub2e4 \uc791\ub2e4\u2019\ub294 \uc9c1\uad00\uc744 \uba3c\uc800 \ubc1d\ud788\uace0, \uc99d\uac70\uac00 \ub298 \ub54c \ud310\ub2e8\uc774 \uc65c \ubc14\ub00c\ub294\uc9c0 \ub530\uc838 \ubcf8\ub2e4.",
   "prerequisites": [
-   "순환소수의 뜻과 표기",
-   "분수를 소수로 나타내는 나눗셈",
-   "일차방정식의 풀이(중1)"
+   "\uc21c\ud658\uc18c\uc218\uc758 \ub73b\uacfc \ud45c\uae30",
+   "\ubd84\uc218\ub97c \uc18c\uc218\ub85c \ub098\ud0c0\ub0b4\ub294 \ub098\ub217\uc148",
+   "\uc77c\ucc28\ubc29\uc815\uc2dd\uc758 \ud480\uc774(\uc9111)"
   ],
-  "material": "0.999…는 소수점 아래에 9가 끝없이 이어지는 수예요(순환소수 0.9̇, 읽는 법: ‘영 점 구 순환’). 이 수가 1과 어떤 관계인지 증거를 하나씩 보면서 내 생각이 어떻게 바뀌는지 살펴봐요.",
+  "material": "0.999\u2026\ub294 \uc18c\uc218\uc810 \uc544\ub798\uc5d0 9\uac00 \ub05d\uc5c6\uc774 \uc774\uc5b4\uc9c0\ub294 \uc218\uc608\uc694(\uc21c\ud658\uc18c\uc218 0.9\u0307, \uc77d\ub294 \ubc95: \u2018\uc601 \uc810 \uad6c \uc21c\ud658\u2019). \uc774 \uc218\uac00 1\uacfc \uc5b4\ub5a4 \uad00\uacc4\uc778\uc9c0 \uc99d\uac70\ub97c \ud558\ub098\uc529 \ubcf4\uba74\uc11c \ub0b4 \uc0dd\uac01\uc774 \uc5b4\ub5bb\uac8c \ubc14\ub00c\ub294\uc9c0 \uc0b4\ud3b4\ubd10\uc694.",
   "steps": [
    {
     "id": "s1",
     "kind": "reveal",
-    "prompt": "단계마다 증거가 하나씩 더 공개돼요. 지금까지의 증거로 말할 수 있는 판단을 고르세요.",
+    "prompt": "\ub2e8\uacc4\ub9c8\ub2e4 \uc99d\uac70\uac00 \ud558\ub098\uc529 \ub354 \uacf5\uac1c\ub3fc\uc694. \uc9c0\uae08\uae4c\uc9c0\uc758 \uc99d\uac70\ub85c \ub9d0\ud560 \uc218 \uc788\ub294 \ud310\ub2e8\uc744 \uace0\ub974\uc138\uc694.",
     "hints": [
-     "‘지금 보이는 증거만으로’ 어떤 판단이 가능한지 먼저 생각해 보세요.",
-     "이전 단계의 내 선택이 새 증거와 어긋나는지 비교해 보세요."
+     "\u2018\uc9c0\uae08 \ubcf4\uc774\ub294 \uc99d\uac70\ub9cc\uc73c\ub85c\u2019 \uc5b4\ub5a4 \ud310\ub2e8\uc774 \uac00\ub2a5\ud55c\uc9c0 \uba3c\uc800 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694.",
+     "\uc774\uc804 \ub2e8\uacc4\uc758 \ub0b4 \uc120\ud0dd\uc774 \uc0c8 \uc99d\uac70\uc640 \uc5b4\uae0b\ub098\ub294\uc9c0 \ube44\uad50\ud574 \ubcf4\uc138\uc694."
     ],
     "stages": [
      {
-      "info": "아직 계산은 하지 않았어요. 0.9, 0.99, 0.999처럼 9를 하나씩 더 붙일수록 1에 가까워져요. 이 과정을 끝없이 계속한 수가 0.999…예요.",
-      "ask": "0.999…와 1의 관계에 대해 지금 가장 그럴듯한 예상은?",
+      "info": "\uc544\uc9c1 \uacc4\uc0b0\uc740 \ud558\uc9c0 \uc54a\uc558\uc5b4\uc694. 0.9, 0.99, 0.999\ucc98\ub7fc 9\ub97c \ud558\ub098\uc529 \ub354 \ubd99\uc77c\uc218\ub85d 1\uc5d0 \uac00\uae4c\uc6cc\uc838\uc694. \uc774 \uacfc\uc815\uc744 \ub05d\uc5c6\uc774 \uacc4\uc18d\ud55c \uc218\uac00 0.999\u2026\uc608\uc694.",
+      "ask": "0.999\u2026\uc640 1\uc758 \uad00\uacc4\uc5d0 \ub300\ud574 \uc9c0\uae08 \uac00\uc7a5 \uadf8\ub7f4\ub4ef\ud55c \uc608\uc0c1\uc740?",
       "options": [
        {
         "id": "a",
-        "text": "1보다 아주 조금 작다. 9를 아무리 많이 붙여도 1에는 못 미친다",
-        "reveals": "0.9, 0.99, 0.999는 실제로 모두 1보다 작아요. 다만 ‘끝없이 이어진 수’까지 똑같이 보아도 되는지는 아직 시험하지 않았어요."
+        "text": "1\ubcf4\ub2e4 \uc544\uc8fc \uc870\uae08 \uc791\ub2e4. 9\ub97c \uc544\ubb34\ub9ac \ub9ce\uc774 \ubd99\uc5ec\ub3c4 1\uc5d0\ub294 \ubabb \ubbf8\uce5c\ub2e4",
+        "reveals": "0.9, 0.99, 0.999\ub294 \uc2e4\uc81c\ub85c \ubaa8\ub450 1\ubcf4\ub2e4 \uc791\uc544\uc694. \ub2e4\ub9cc \u2018\ub05d\uc5c6\uc774 \uc774\uc5b4\uc9c4 \uc218\u2019\uae4c\uc9c0 \ub611\uac19\uc774 \ubcf4\uc544\ub3c4 \ub418\ub294\uc9c0\ub294 \uc544\uc9c1 \uc2dc\ud5d8\ud558\uc9c0 \uc54a\uc558\uc5b4\uc694."
        },
        {
         "id": "b",
-        "text": "1과 같다",
-        "reveals": "처음부터 같다고 예상할 수도 있어요. 지금은 근거가 약하니 다음 증거로 시험해 봐야 해요."
+        "text": "1\uacfc \uac19\ub2e4",
+        "reveals": "\ucc98\uc74c\ubd80\ud130 \uac19\ub2e4\uace0 \uc608\uc0c1\ud560 \uc218\ub3c4 \uc788\uc5b4\uc694. \uc9c0\uae08\uc740 \uadfc\uac70\uac00 \uc57d\ud558\ub2c8 \ub2e4\uc74c \uc99d\uac70\ub85c \uc2dc\ud5d8\ud574 \ubd10\uc57c \ud574\uc694."
        },
        {
         "id": "c",
-        "text": "1보다 크다. 9가 끝없이 많이 이어지니까 결국 1을 넘을 것이다",
-        "reveals": "소수점 아래 자리만 계속 늘어난다는 점을 생각해 보세요. 정수 부분은 계속 0이에요."
+        "text": "1\ubcf4\ub2e4 \ud06c\ub2e4. 9\uac00 \ub05d\uc5c6\uc774 \ub9ce\uc774 \uc774\uc5b4\uc9c0\ub2c8\uae4c \uacb0\uad6d 1\uc744 \ub118\uc744 \uac83\uc774\ub2e4",
+        "reveals": "\uc18c\uc218\uc810 \uc544\ub798 \uc790\ub9ac\ub9cc \uacc4\uc18d \ub298\uc5b4\ub09c\ub2e4\ub294 \uc810\uc744 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694. \uc815\uc218 \ubd80\ubd84\uc740 \uacc4\uc18d 0\uc774\uc5d0\uc694."
        },
        {
         "id": "d",
-        "text": "수가 아니라서 비교할 수 없다",
-        "reveals": "끝이 없어서 낯설지만 1/3 = 0.333…처럼 끝없는 소수도 하나의 수예요."
+        "text": "\uc218\uac00 \uc544\ub2c8\ub77c\uc11c \ube44\uad50\ud560 \uc218 \uc5c6\ub2e4",
+        "reveals": "\ub05d\uc774 \uc5c6\uc5b4\uc11c \ub0af\uc124\uc9c0\ub9cc 1/3 = 0.333\u2026\ucc98\ub7fc \ub05d\uc5c6\ub294 \uc18c\uc218\ub3c4 \ud558\ub098\uc758 \uc218\uc608\uc694."
        }
       ],
       "reasonable": [
        "a",
        "b"
       ],
-      "after": "예상은 증거가 생기면 바꿀 수 있어요. 이미 아는 분수 하나로 시험해 봐요."
+      "after": "\uc608\uc0c1\uc740 \uc99d\uac70\uac00 \uc0dd\uae30\uba74 \ubc14\uafc0 \uc218 \uc788\uc5b4\uc694. \uc774\ubbf8 \uc544\ub294 \ubd84\uc218 \ud558\ub098\ub85c \uc2dc\ud5d8\ud574 \ubd10\uc694."
      },
      {
-      "info": "1/3을 나눗셈으로 계산하면 0.333…이에요. 그런데 1/3을 3배 하면 1이에요. 0.333…의 각 자리를 3배 하면 0.999…가 돼요.",
-      "ask": "이 증거는 처음 예상을 어떻게 바꾸게 하나요?",
+      "info": "1/3\uc744 \ub098\ub217\uc148\uc73c\ub85c \uacc4\uc0b0\ud558\uba74 0.333\u2026\uc774\uc5d0\uc694. \uadf8\ub7f0\ub370 1/3\uc744 3\ubc30 \ud558\uba74 1\uc774\uc5d0\uc694. 0.333\u2026\uc758 \uac01 \uc790\ub9ac\ub97c 3\ubc30 \ud558\uba74 0.999\u2026\uac00 \ub3fc\uc694.",
+      "ask": "\uc774 \uc99d\uac70\ub294 \ucc98\uc74c \uc608\uc0c1\uc744 \uc5b4\ub5bb\uac8c \ubc14\uafb8\uac8c \ud558\ub098\uc694?",
       "options": [
        {
         "id": "a",
-        "text": "1과 같다는 쪽으로 기운다. 1/3×3=1이기 때문이다",
-        "reveals": "서로 다른 방법으로 얻은 두 값(1과 0.999…)이 같은 수에서 나왔음을 근거로 삼았어요."
+        "text": "1\uacfc \uac19\ub2e4\ub294 \ucabd\uc73c\ub85c \uae30\uc6b4\ub2e4. 1/3\u00d73=1\uc774\uae30 \ub54c\ubb38\uc774\ub2e4",
+        "reveals": "\uc11c\ub85c \ub2e4\ub978 \ubc29\ubc95\uc73c\ub85c \uc5bb\uc740 \ub450 \uac12(1\uacfc 0.999\u2026)\uc774 \uac19\uc740 \uc218\uc5d0\uc11c \ub098\uc654\uc74c\uc744 \uadfc\uac70\ub85c \uc0bc\uc558\uc5b4\uc694."
        },
        {
         "id": "b",
-        "text": "여전히 1보다 작다. 0.333…는 1/3의 근삿값이라서 3배 하면 1보다 조금 모자라게 된다",
-        "reveals": "0.333…를 ‘근삿값’으로 본 선택이에요. 1/3을 나눗셈한 결과가 0.333…라면 둘은 같은 수를 다르게 쓴 것인지 다시 따져 보세요."
+        "text": "\uc5ec\uc804\ud788 1\ubcf4\ub2e4 \uc791\ub2e4. 0.333\u2026\ub294 1/3\uc758 \uadfc\uc0bf\uac12\uc774\ub77c\uc11c 3\ubc30 \ud558\uba74 1\ubcf4\ub2e4 \uc870\uae08 \ubaa8\uc790\ub77c\uac8c \ub41c\ub2e4",
+        "reveals": "0.333\u2026\ub97c \u2018\uadfc\uc0bf\uac12\u2019\uc73c\ub85c \ubcf8 \uc120\ud0dd\uc774\uc5d0\uc694. 1/3\uc744 \ub098\ub217\uc148\ud55c \uacb0\uacfc\uac00 0.333\u2026\ub77c\uba74 \ub458\uc740 \uac19\uc740 \uc218\ub97c \ub2e4\ub974\uac8c \uc4f4 \uac83\uc778\uc9c0 \ub2e4\uc2dc \ub530\uc838 \ubcf4\uc138\uc694."
        },
        {
         "id": "c",
-        "text": "아직 모르겠다. 다른 방법으로도 확인하고 싶다",
-        "reveals": "증거 하나에만 기대지 않으려는 신중한 태도예요."
+        "text": "\uc544\uc9c1 \ubaa8\ub974\uaca0\ub2e4. \ub2e4\ub978 \ubc29\ubc95\uc73c\ub85c\ub3c4 \ud655\uc778\ud558\uace0 \uc2f6\ub2e4",
+        "reveals": "\uc99d\uac70 \ud558\ub098\uc5d0\ub9cc \uae30\ub300\uc9c0 \uc54a\uc73c\ub824\ub294 \uc2e0\uc911\ud55c \ud0dc\ub3c4\uc608\uc694."
        },
        {
         "id": "d",
-        "text": "1/3과 0.333…는 서로 다른 수라서 이 증거는 쓸 수 없다",
-        "reveals": "1/3의 값을 나눗셈으로 구한 것이 0.333…이므로 둘이 왜 다른 수인지 근거를 찾아보세요."
+        "text": "1/3\uacfc 0.333\u2026\ub294 \uc11c\ub85c \ub2e4\ub978 \uc218\ub77c\uc11c \uc774 \uc99d\uac70\ub294 \uc4f8 \uc218 \uc5c6\ub2e4",
+        "reveals": "1/3\uc758 \uac12\uc744 \ub098\ub217\uc148\uc73c\ub85c \uad6c\ud55c \uac83\uc774 0.333\u2026\uc774\ubbc0\ub85c \ub458\uc774 \uc65c \ub2e4\ub978 \uc218\uc778\uc9c0 \uadfc\uac70\ub97c \ucc3e\uc544\ubcf4\uc138\uc694."
        }
       ],
       "reasonable": [
        "a",
        "c"
       ],
-      "after": "이 방법은 1/3이라는 한 사례에 기대고 있어요. 전혀 다른 방법으로도 같은 결론이 나오는지 볼까요?"
+      "after": "\uc774 \ubc29\ubc95\uc740 1/3\uc774\ub77c\ub294 \ud55c \uc0ac\ub840\uc5d0 \uae30\ub300\uace0 \uc788\uc5b4\uc694. \uc804\ud600 \ub2e4\ub978 \ubc29\ubc95\uc73c\ub85c\ub3c4 \uac19\uc740 \uacb0\ub860\uc774 \ub098\uc624\ub294\uc9c0 \ubcfc\uae4c\uc694?"
      },
      {
-      "info": "x = 0.999…라 하면 10x = 9.999…예요. 10x에서 x를 빼면 9.999… − 0.999… = 9 이므로 9x = 9, x = 1이 돼요. (9가 끝없이 이어져 두 수의 소수 부분이 완전히 같기 때문에, 빼면 소수 부분이 모두 0이 돼요.)",
-      "ask": "두 가지 방법을 모두 본 지금, 처음 예상을 어떻게 고치겠어요?",
+      "info": "x = 0.999\u2026\ub77c \ud558\uba74 10x = 9.999\u2026\uc608\uc694. 10x\uc5d0\uc11c x\ub97c \ube7c\uba74 9.999\u2026 \u2212 0.999\u2026 = 9 \uc774\ubbc0\ub85c 9x = 9, x = 1\uc774 \ub3fc\uc694. (9\uac00 \ub05d\uc5c6\uc774 \uc774\uc5b4\uc838 \ub450 \uc218\uc758 \uc18c\uc218 \ubd80\ubd84\uc774 \uc644\uc804\ud788 \uac19\uae30 \ub54c\ubb38\uc5d0, \ube7c\uba74 \uc18c\uc218 \ubd80\ubd84\uc774 \ubaa8\ub450 0\uc774 \ub3fc\uc694.)",
+      "ask": "\ub450 \uac00\uc9c0 \ubc29\ubc95\uc744 \ubaa8\ub450 \ubcf8 \uc9c0\uae08, \ucc98\uc74c \uc608\uc0c1\uc744 \uc5b4\ub5bb\uac8c \uace0\uce58\uaca0\uc5b4\uc694?",
       "options": [
        {
         "id": "a",
-        "text": "여전히 1보다 작다. 9를 아무리 많이 붙여도 1에는 도달하지 못한다",
-        "reveals": "0.9, 0.99, …가 1보다 작다는 사실을 ‘끝없이 이어진 하나의 수’에도 그대로 적용했어요. 두 증거가 가리키는 값과 비교해 보세요."
+        "text": "\uc5ec\uc804\ud788 1\ubcf4\ub2e4 \uc791\ub2e4. 9\ub97c \uc544\ubb34\ub9ac \ub9ce\uc774 \ubd99\uc5ec\ub3c4 1\uc5d0\ub294 \ub3c4\ub2ec\ud558\uc9c0 \ubabb\ud55c\ub2e4",
+        "reveals": "0.9, 0.99, \u2026\uac00 1\ubcf4\ub2e4 \uc791\ub2e4\ub294 \uc0ac\uc2e4\uc744 \u2018\ub05d\uc5c6\uc774 \uc774\uc5b4\uc9c4 \ud558\ub098\uc758 \uc218\u2019\uc5d0\ub3c4 \uadf8\ub300\ub85c \uc801\uc6a9\ud588\uc5b4\uc694. \ub450 \uc99d\uac70\uac00 \uac00\ub9ac\ud0a4\ub294 \uac12\uacfc \ube44\uad50\ud574 \ubcf4\uc138\uc694."
        },
        {
         "id": "b",
-        "text": "같다. 서로 다른 두 방법이 같은 결론이어서 믿을 만하다",
-        "reveals": "독립적인 두 증거의 일치를 근거로 판단을 바꾼 선택이에요."
+        "text": "\uac19\ub2e4. \uc11c\ub85c \ub2e4\ub978 \ub450 \ubc29\ubc95\uc774 \uac19\uc740 \uacb0\ub860\uc774\uc5b4\uc11c \ubbff\uc744 \ub9cc\ud558\ub2e4",
+        "reveals": "\ub3c5\ub9bd\uc801\uc778 \ub450 \uc99d\uac70\uc758 \uc77c\uce58\ub97c \uadfc\uac70\ub85c \ud310\ub2e8\uc744 \ubc14\uafbc \uc120\ud0dd\uc774\uc5d0\uc694."
        },
        {
         "id": "c",
-        "text": "같다. 0.999…는 끝없이 이어진 하나의 수로 봐야 한다",
-        "reveals": "‘과정’이 아니라 ‘이미 정해진 하나의 수’로 보는 관점으로 판단을 바꾼 선택이에요."
+        "text": "\uac19\ub2e4. 0.999\u2026\ub294 \ub05d\uc5c6\uc774 \uc774\uc5b4\uc9c4 \ud558\ub098\uc758 \uc218\ub85c \ubd10\uc57c \ud55c\ub2e4",
+        "reveals": "\u2018\uacfc\uc815\u2019\uc774 \uc544\ub2c8\ub77c \u2018\uc774\ubbf8 \uc815\ud574\uc9c4 \ud558\ub098\uc758 \uc218\u2019\ub85c \ubcf4\ub294 \uad00\uc810\uc73c\ub85c \ud310\ub2e8\uc744 \ubc14\uafbc \uc120\ud0dd\uc774\uc5d0\uc694."
        },
        {
         "id": "d",
-        "text": "1보다 크다. 10x에서 x를 빼 9가 나왔으니 x가 더 크다",
-        "reveals": "10x − x = 9에서 9x = 9로 이어지는 과정을 다시 읽고, x의 값이 어떻게 구해졌는지 확인해 보세요."
+        "text": "1\ubcf4\ub2e4 \ud06c\ub2e4. 10x\uc5d0\uc11c x\ub97c \ube7c 9\uac00 \ub098\uc654\uc73c\ub2c8 x\uac00 \ub354 \ud06c\ub2e4",
+        "reveals": "10x \u2212 x = 9\uc5d0\uc11c 9x = 9\ub85c \uc774\uc5b4\uc9c0\ub294 \uacfc\uc815\uc744 \ub2e4\uc2dc \uc77d\uace0, x\uc758 \uac12\uc774 \uc5b4\ub5bb\uac8c \uad6c\ud574\uc84c\ub294\uc9c0 \ud655\uc778\ud574 \ubcf4\uc138\uc694."
        }
       ],
       "reasonable": [
        "b",
        "c"
       ],
-      "after": "느낌이 아니라 증거가 판단을 바꾸었는지 돌아보세요."
+      "after": "\ub290\ub08c\uc774 \uc544\ub2c8\ub77c \uc99d\uac70\uac00 \ud310\ub2e8\uc744 \ubc14\uafb8\uc5c8\ub294\uc9c0 \ub3cc\uc544\ubcf4\uc138\uc694."
      }
     ],
-    "reflect": "처음에는 ‘아무리 붙여도 1에 못 미친다’는 느낌이 강해요. 하지만 한 가지 사례(1/3의 3배)와 다른 방법(10x−x)이 같은 결론을 가리킬 때 판단을 바꾸는 것이 합리적이에요. 내 판단이 바뀐 계기가 ‘증거’였는지 ‘분위기’였는지 돌아보세요."
+    "reflect": "\ucc98\uc74c\uc5d0\ub294 \u2018\uc544\ubb34\ub9ac \ubd99\uc5ec\ub3c4 1\uc5d0 \ubabb \ubbf8\uce5c\ub2e4\u2019\ub294 \ub290\ub08c\uc774 \uac15\ud574\uc694. \ud558\uc9c0\ub9cc \ud55c \uac00\uc9c0 \uc0ac\ub840(1/3\uc758 3\ubc30)\uc640 \ub2e4\ub978 \ubc29\ubc95(10x\u2212x)\uc774 \uac19\uc740 \uacb0\ub860\uc744 \uac00\ub9ac\ud0ac \ub54c \ud310\ub2e8\uc744 \ubc14\uafb8\ub294 \uac83\uc774 \ud569\ub9ac\uc801\uc774\uc5d0\uc694. \ub0b4 \ud310\ub2e8\uc774 \ubc14\ub010 \uacc4\uae30\uac00 \u2018\uc99d\uac70\u2019\uc600\ub294\uc9c0 \u2018\ubd84\uc704\uae30\u2019\uc600\ub294\uc9c0 \ub3cc\uc544\ubcf4\uc138\uc694."
    },
    {
     "kind": "write",
     "minChars": 25,
     "id": "s2",
-    "prompt": "민수는 ‘0.999…는 9를 아무리 붙여도 1이 안 되니까 1보다 작아’라고 말해요. 위의 두 방법 중 하나를 골라 민수를 설득해 보세요.",
-    "placeholder": "예: 민수야, ...",
+    "prompt": "\ubbfc\uc218\ub294 \u20180.999\u2026\ub294 9\ub97c \uc544\ubb34\ub9ac \ubd99\uc5ec\ub3c4 1\uc774 \uc548 \ub418\ub2c8\uae4c 1\ubcf4\ub2e4 \uc791\uc544\u2019\ub77c\uace0 \ub9d0\ud574\uc694. \uc704\uc758 \ub450 \ubc29\ubc95 \uc911 \ud558\ub098\ub97c \uace8\ub77c \ubbfc\uc218\ub97c \uc124\ub4dd\ud574 \ubcf4\uc138\uc694.",
+    "placeholder": "\uc608: \ubbfc\uc218\uc57c, ...",
     "hints": [
-     "두 방법 중 하나를 골라 그 계산을 민수에게 순서대로 보여 주세요.",
-     "마지막 문장에 0.999…와 1의 관계를 분명히 쓰세요."
+     "\ub450 \ubc29\ubc95 \uc911 \ud558\ub098\ub97c \uace8\ub77c \uadf8 \uacc4\uc0b0\uc744 \ubbfc\uc218\uc5d0\uac8c \uc21c\uc11c\ub300\ub85c \ubcf4\uc5ec \uc8fc\uc138\uc694.",
+     "\ub9c8\uc9c0\ub9c9 \ubb38\uc7a5\uc5d0 0.999\u2026\uc640 1\uc758 \uad00\uacc4\ub97c \ubd84\uba85\ud788 \uc4f0\uc138\uc694."
     ],
     "checks": [
      {
       "id": "w1",
-      "label": "두 방법 중 하나를 구체적으로 썼다",
+      "label": "\ub450 \ubc29\ubc95 \uc911 \ud558\ub098\ub97c \uad6c\uccb4\uc801\uc73c\ub85c \uc37c\ub2e4",
       "mode": "any",
       "patterns": [
        "1\\s*/\\s*3",
-       "3분의\\s*1",
+       "3\ubd84\uc758\\s*1",
        "10\\s*x",
-       "10\\s*배",
+       "10\\s*\ubc30",
        "x\\s*=\\s*0\\.9"
       ]
      },
      {
       "id": "w2",
-      "label": "0.999…가 1과 같다는 결론을 말했다",
+      "label": "0.999\u2026\uac00 1\uacfc \uac19\ub2e4\ub294 \uacb0\ub860\uc744 \ub9d0\ud588\ub2e4",
       "mode": "any",
       "patterns": [
-       "1\\s*(과|이랑|하고|와)\\s*같(다|아|은|습니다|음|게)",
-       "같은\\s*수",
+       "1\\s*(\uacfc|\uc774\ub791|\ud558\uace0|\uc640)\\s*\uac19(\ub2e4|\uc544|\uc740|\uc2b5\ub2c8\ub2e4|\uc74c|\uac8c)",
+       "\uac19\uc740\\s*\uc218",
        "=\\s*1(?![0-9.])",
-       "(^|[^0-9.])1\\s*(이다|이야|이에요|입니다|이\\s*(된|돼|되))",
-       "같(다|아|아요|습니다)(?![가-힣])",
-       "같다고\\s*(할|말할|볼)\\s*수\\s*있"
+       "(^|[^0-9.])1\\s*(\uc774\ub2e4|\uc774\uc57c|\uc774\uc5d0\uc694|\uc785\ub2c8\ub2e4|\uc774\\s*(\ub41c|\ub3fc|\ub418))",
+       "\uac19(\ub2e4|\uc544|\uc544\uc694|\uc2b5\ub2c8\ub2e4)(?![\uac00-\ud7a3])",
+       "\uac19\ub2e4\uace0\\s*(\ud560|\ub9d0\ud560|\ubcfc)\\s*\uc218\\s*\uc788"
       ]
      },
      {
       "id": "w3",
-      "label": "‘같지 않다’는 식의 반대 결론을 쓰지 않았다",
+      "label": "\u2018\uac19\uc9c0 \uc54a\ub2e4\u2019\ub294 \uc2dd\uc758 \ubc18\ub300 \uacb0\ub860\uc744 \uc4f0\uc9c0 \uc54a\uc558\ub2e4",
       "mode": "none",
       "patterns": [
-       "같지\\s*(는\\s*)?않(아요|아|다|습니다|네요)(?![가-힣])",
-       "같은\\s*수가\\s*(아니(에요|야|다|네요)|아닙니다)",
-       "같다고\\s*(할|말할|볼)\\s*수\\s*(는\\s*)?없",
-       "같을\\s*수\\s*(는\\s*)?없",
-       "다른\\s*수(예요|야|이다|입니다)"
+       "\uac19\uc9c0\\s*(\ub294\\s*)?\uc54a(\uc544\uc694|\uc544|\ub2e4|\uc2b5\ub2c8\ub2e4|\ub124\uc694)(?![\uac00-\ud7a3])",
+       "\uac19\uc740\\s*\uc218\uac00\\s*(\uc544\ub2c8(\uc5d0\uc694|\uc57c|\ub2e4|\ub124\uc694)|\uc544\ub2d9\ub2c8\ub2e4)",
+       "\uac19\ub2e4\uace0\\s*(\ud560|\ub9d0\ud560|\ubcfc)\\s*\uc218\\s*(\ub294\\s*)?\uc5c6",
+       "\uac19\uc744\\s*\uc218\\s*(\ub294\\s*)?\uc5c6",
+       "\ub2e4\ub978\\s*\uc218(\uc608\uc694|\uc57c|\uc774\ub2e4|\uc785\ub2c8\ub2e4)"
       ]
      }
     ],
     "selfAssess": [
-     "내가 고른 방법의 계산 과정이 한 줄씩 보이나요?",
-     "민수의 ‘아무리 붙여도 1이 안 된다’는 말에 직접 답했나요?",
-     "결론이 ‘같다’인지 ‘작다’인지 분명한가요?"
+     "\ub0b4\uac00 \uace0\ub978 \ubc29\ubc95\uc758 \uacc4\uc0b0 \uacfc\uc815\uc774 \ud55c \uc904\uc529 \ubcf4\uc774\ub098\uc694?",
+     "\ubbfc\uc218\uc758 \u2018\uc544\ubb34\ub9ac \ubd99\uc5ec\ub3c4 1\uc774 \uc548 \ub41c\ub2e4\u2019\ub294 \ub9d0\uc5d0 \uc9c1\uc811 \ub2f5\ud588\ub098\uc694?",
+     "\uacb0\ub860\uc774 \u2018\uac19\ub2e4\u2019\uc778\uc9c0 \u2018\uc791\ub2e4\u2019\uc778\uc9c0 \ubd84\uba85\ud55c\uac00\uc694?"
     ],
     "modelAnswers": [
      {
-      "text": "민수야, 1/3은 0.333…이고 1/3을 3배 하면 1이잖아. 0.333…를 3배 하면 0.999…니까 0.999…와 1은 같은 수야."
+      "text": "\ubbfc\uc218\uc57c, 1/3\uc740 0.333\u2026\uc774\uace0 1/3\uc744 3\ubc30 \ud558\uba74 1\uc774\uc796\uc544. 0.333\u2026\ub97c 3\ubc30 \ud558\uba74 0.999\u2026\ub2c8\uae4c 0.999\u2026\uc640 1\uc740 \uac19\uc740 \uc218\uc57c."
      },
      {
-      "text": "x = 0.999…라 하면 10x = 9.999…야. 10x에서 x를 빼면 9가 남아서 9x = 9, 그러니까 x = 1이야. 그래서 0.999…는 1과 같아.",
-      "note": "계산으로 설득하는 답"
+      "text": "x = 0.999\u2026\ub77c \ud558\uba74 10x = 9.999\u2026\uc57c. 10x\uc5d0\uc11c x\ub97c \ube7c\uba74 9\uac00 \ub0a8\uc544\uc11c 9x = 9, \uadf8\ub7ec\ub2c8\uae4c x = 1\uc774\uc57c. \uadf8\ub798\uc11c 0.999\u2026\ub294 1\uacfc \uac19\uc544.",
+      "note": "\uacc4\uc0b0\uc73c\ub85c \uc124\ub4dd\ud558\ub294 \ub2f5"
      }
     ],
     "badAnswers": [
      {
-      "text": "민수 말이 맞아. 9를 아무리 붙여도 1보다 작아.",
-      "why": "근거 없이 처음 판단을 그대로 받아들였다."
+      "text": "\ubbfc\uc218 \ub9d0\uc774 \ub9de\uc544. 9\ub97c \uc544\ubb34\ub9ac \ubd99\uc5ec\ub3c4 1\ubcf4\ub2e4 \uc791\uc544.",
+      "why": "\uadfc\uac70 \uc5c6\uc774 \ucc98\uc74c \ud310\ub2e8\uc744 \uadf8\ub300\ub85c \ubc1b\uc544\ub4e4\uc600\ub2e4."
      }
     ],
-    "humanReview": "계산은 맞지만 ‘왜 소수 부분이 완전히 사라지는지’ 같은 핵심 근거를 이해했는지, 모순된 문장(‘같다’와 ‘작다’가 함께 있는 답)이 없는지는 사람이 읽어 판단한다."
+    "humanReview": "\uacc4\uc0b0\uc740 \ub9de\uc9c0\ub9cc \u2018\uc65c \uc18c\uc218 \ubd80\ubd84\uc774 \uc644\uc804\ud788 \uc0ac\ub77c\uc9c0\ub294\uc9c0\u2019 \uac19\uc740 \ud575\uc2ec \uadfc\uac70\ub97c \uc774\ud574\ud588\ub294\uc9c0, \ubaa8\uc21c\ub41c \ubb38\uc7a5(\u2018\uac19\ub2e4\u2019\uc640 \u2018\uc791\ub2e4\u2019\uac00 \ud568\uaed8 \uc788\ub294 \ub2f5)\uc774 \uc5c6\ub294\uc9c0\ub294 \uc0ac\ub78c\uc774 \uc77d\uc5b4 \ud310\ub2e8\ud55c\ub2e4."
    }
   ],
   "rubric": [
    {
-    "criterion": "판단 수정의 근거",
-    "full": "처음 예상과 증거를 비교하며 판단을 바꾼 이유를 말함",
-    "partial": "결론은 바꿨으나 증거를 언급하지 않음",
-    "none": "근거 없이 결론만 반복함"
+    "criterion": "\ud310\ub2e8 \uc218\uc815\uc758 \uadfc\uac70",
+    "full": "\ucc98\uc74c \uc608\uc0c1\uacfc \uc99d\uac70\ub97c \ube44\uad50\ud558\uba70 \ud310\ub2e8\uc744 \ubc14\uafbc \uc774\uc720\ub97c \ub9d0\ud568",
+    "partial": "\uacb0\ub860\uc740 \ubc14\uafe8\uc73c\ub098 \uc99d\uac70\ub97c \uc5b8\uae09\ud558\uc9c0 \uc54a\uc74c",
+    "none": "\uadfc\uac70 \uc5c6\uc774 \uacb0\ub860\ub9cc \ubc18\ubcf5\ud568"
    },
    {
-    "criterion": "설득의 구체성",
-    "full": "두 방법 중 하나의 계산 과정을 순서대로 보여 줌",
-    "partial": "결론만 말하고 계산이 흐릿함",
-    "none": "계산이나 근거가 없음"
+    "criterion": "\uc124\ub4dd\uc758 \uad6c\uccb4\uc131",
+    "full": "\ub450 \ubc29\ubc95 \uc911 \ud558\ub098\uc758 \uacc4\uc0b0 \uacfc\uc815\uc744 \uc21c\uc11c\ub300\ub85c \ubcf4\uc5ec \uc90c",
+    "partial": "\uacb0\ub860\ub9cc \ub9d0\ud558\uace0 \uacc4\uc0b0\uc774 \ud750\ub9bf\ud568",
+    "none": "\uacc4\uc0b0\uc774\ub098 \uadfc\uac70\uac00 \uc5c6\uc74c"
    }
   ],
   "alternatives": [
-   "1/3의 3배 대신 1/9 = 0.111…의 9배를 쓴 설득도 타당하다.",
-   "처음에 ‘같다’를 골랐다면 근거를 증거로 확인하는 데 집중해도 된다."
+   "1/3\uc758 3\ubc30 \ub300\uc2e0 1/9 = 0.111\u2026\uc758 9\ubc30\ub97c \uc4f4 \uc124\ub4dd\ub3c4 \ud0c0\ub2f9\ud558\ub2e4.",
+   "\ucc98\uc74c\uc5d0 \u2018\uac19\ub2e4\u2019\ub97c \uace8\ub790\ub2e4\uba74 \uadfc\uac70\ub97c \uc99d\uac70\ub85c \ud655\uc778\ud558\ub294 \ub370 \uc9d1\uc911\ud574\ub3c4 \ub41c\ub2e4."
   ],
   "hardCases": [
-   "극한이나 무한급수를 쓴 설명은 이 학년의 범위를 넘지만 맞다면 인정한다.",
-   "‘수학자들이 그렇게 정했다’는 식의 권위 의존 설명은 근거가 아니다."
+   "\uadf9\ud55c\uc774\ub098 \ubb34\ud55c\uae09\uc218\ub97c \uc4f4 \uc124\uba85\uc740 \uc774 \ud559\ub144\uc758 \ubc94\uc704\ub97c \ub118\uc9c0\ub9cc \ub9de\ub2e4\uba74 \uc778\uc815\ud55c\ub2e4.",
+   "\u2018\uc218\ud559\uc790\ub4e4\uc774 \uadf8\ub807\uac8c \uc815\ud588\ub2e4\u2019\ub294 \uc2dd\uc758 \uad8c\uc704 \uc758\uc874 \uc124\uba85\uc740 \uadfc\uac70\uac00 \uc544\ub2c8\ub2e4."
   ],
   "cautions": {
-   "language": "0.9̇ 표기는 낭독기가 정확히 읽지 못할 수 있어 ‘영 점 구 순환’이라는 읽기와 0.999…를 함께 적었다. ‘…’는 ‘끝없이 이어짐’이라고 풀어 주었다.",
-   "culture": "문화 의존 소재가 없다.",
-   "accessibility": "그림이 없고 단계별 정보를 한 번에 하나씩 본다. 색에 의존하지 않는다."
+   "language": "0.9\u0307 \ud45c\uae30\ub294 \ub0ad\ub3c5\uae30\uac00 \uc815\ud655\ud788 \uc77d\uc9c0 \ubabb\ud560 \uc218 \uc788\uc5b4 \u2018\uc601 \uc810 \uad6c \uc21c\ud658\u2019\uc774\ub77c\ub294 \uc77d\uae30\uc640 0.999\u2026\ub97c \ud568\uaed8 \uc801\uc5c8\ub2e4. \u2018\u2026\u2019\ub294 \u2018\ub05d\uc5c6\uc774 \uc774\uc5b4\uc9d0\u2019\uc774\ub77c\uace0 \ud480\uc5b4 \uc8fc\uc5c8\ub2e4.",
+   "culture": "\ubb38\ud654 \uc758\uc874 \uc18c\uc7ac\uac00 \uc5c6\ub2e4.",
+   "accessibility": "\uadf8\ub9bc\uc774 \uc5c6\uace0 \ub2e8\uacc4\ubcc4 \uc815\ubcf4\ub97c \ud55c \ubc88\uc5d0 \ud558\ub098\uc529 \ubcf8\ub2e4. \uc0c9\uc5d0 \uc758\uc874\ud558\uc9c0 \uc54a\ub294\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "단계별 선택이 ‘그 단계에서 합리적인 판단’에 포함되는지",
-    "서술에 구체적인 방법과 결론 문장이 들어 있는지"
+    "\ub2e8\uacc4\ubcc4 \uc120\ud0dd\uc774 \u2018\uadf8 \ub2e8\uacc4\uc5d0\uc11c \ud569\ub9ac\uc801\uc778 \ud310\ub2e8\u2019\uc5d0 \ud3ec\ud568\ub418\ub294\uc9c0",
+    "\uc11c\uc220\uc5d0 \uad6c\uccb4\uc801\uc778 \ubc29\ubc95\uacfc \uacb0\ub860 \ubb38\uc7a5\uc774 \ub4e4\uc5b4 \uc788\ub294\uc9c0"
    ],
    "human": [
-    "계산 과정의 정확성과 근거의 이해",
-    "모순된 결론 문장 여부"
+    "\uacc4\uc0b0 \uacfc\uc815\uc758 \uc815\ud655\uc131\uacfc \uadfc\uac70\uc758 \uc774\ud574",
+    "\ubaa8\uc21c\ub41c \uacb0\ub860 \ubb38\uc7a5 \uc5ec\ubd80"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "subject": "math",
   "grade": "M2",
   "level": 2,
-  "levelLabel": "중등",
+  "levelLabel": "\uc911\ub4f1",
   "uiLang": "ko",
   "curriculum": null,
   "id": "x-m-m2-03",
-  "topic": "식의 계산",
-  "title": "x=1로 검산한 풀이에서 틀린 곳 찾기",
+  "topic": "\uc2dd\uc758 \uacc4\uc0b0",
+  "title": "x=1\ub85c \uac80\uc0b0\ud55c \ud480\uc774\uc5d0\uc11c \ud2c0\ub9b0 \uacf3 \ucc3e\uae30",
   "format": "find-error-fix",
   "generative": true,
   "minutes": 14,
-  "goal": "단항식 계산 풀이에서 틀린 줄을 찾고, 검산에 쓴 값이 왜 틀림을 드러내지 못했는지 설명하며 바로잡는다.",
+  "goal": "\ub2e8\ud56d\uc2dd \uacc4\uc0b0 \ud480\uc774\uc5d0\uc11c \ud2c0\ub9b0 \uc904\uc744 \ucc3e\uace0, \uac80\uc0b0\uc5d0 \uc4f4 \uac12\uc774 \uc65c \ud2c0\ub9bc\uc744 \ub4dc\ub7ec\ub0b4\uc9c0 \ubabb\ud588\ub294\uc9c0 \uc124\uba85\ud558\uba70 \ubc14\ub85c\uc7a1\ub294\ub2e4.",
   "thinking": [
-   "오류 위치 찾기",
-   "검산 방법의 약점 평가하기",
-   "틀림이 드러나는 값 직접 찾기"
+   "\uc624\ub958 \uc704\uce58 \ucc3e\uae30",
+   "\uac80\uc0b0 \ubc29\ubc95\uc758 \uc57d\uc810 \ud3c9\uac00\ud558\uae30",
+   "\ud2c0\ub9bc\uc774 \ub4dc\ub7ec\ub098\ub294 \uac12 \uc9c1\uc811 \ucc3e\uae30"
   ],
-  "differsFromPlain": "단순 연습은 단항식 곱셈·나눗셈을 직접 계산한다. 여기서는 이미 쓰인 풀이와 검산을 평가하고, 틀린 답이 맞아 보이게 만든 값의 약점을 스스로 밝힌다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \ub2e8\ud56d\uc2dd \uacf1\uc148\u00b7\ub098\ub217\uc148\uc744 \uc9c1\uc811 \uacc4\uc0b0\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \uc774\ubbf8 \uc4f0\uc778 \ud480\uc774\uc640 \uac80\uc0b0\uc744 \ud3c9\uac00\ud558\uace0, \ud2c0\ub9b0 \ub2f5\uc774 \ub9de\uc544 \ubcf4\uc774\uac8c \ub9cc\ub4e0 \uac12\uc758 \uc57d\uc810\uc744 \uc2a4\uc2a4\ub85c \ubc1d\ud78c\ub2e4.",
   "prerequisites": [
-   "단항식의 곱셈과 나눗셈",
-   "문자에 수를 넣어 식의 값 구하기"
+   "\ub2e8\ud56d\uc2dd\uc758 \uacf1\uc148\uacfc \ub098\ub217\uc148",
+   "\ubb38\uc790\uc5d0 \uc218\ub97c \ub123\uc5b4 \uc2dd\uc758 \uac12 \uad6c\ud558\uae30"
   ],
-  "material": "서진이가 (−3x²y)² ÷ 6xy² × 2x 를 계산하고 아래 풀이를 썼어요. 확인하려고 x=1, y=1을 넣었더니 원래 식도 3, 자기 답도 3이어서 ‘맞았다’고 생각했어요. (읽는 법: x²은 ‘x의 2제곱’, x⁴는 ‘x의 4제곱’, 6xy²은 ‘6 곱하기 x 곱하기 y의 제곱’이고 ÷ 뒤의 6xy² 전체로 나눠요.)",
+  "material": "\uc11c\uc9c4\uc774\uac00 (\u22123x\u00b2y)\u00b2 \u00f7 6xy\u00b2 \u00d7 2x \ub97c \uacc4\uc0b0\ud558\uace0 \uc544\ub798 \ud480\uc774\ub97c \uc37c\uc5b4\uc694. \ud655\uc778\ud558\ub824\uace0 x=1, y=1\uc744 \ub123\uc5c8\ub354\ub2c8 \uc6d0\ub798 \uc2dd\ub3c4 3, \uc790\uae30 \ub2f5\ub3c4 3\uc774\uc5b4\uc11c \u2018\ub9de\uc558\ub2e4\u2019\uace0 \uc0dd\uac01\ud588\uc5b4\uc694. (\uc77d\ub294 \ubc95: x\u00b2\uc740 \u2018x\uc758 2\uc81c\uacf1\u2019, x\u2074\ub294 \u2018x\uc758 4\uc81c\uacf1\u2019, 6xy\u00b2\uc740 \u20186 \uacf1\ud558\uae30 x \uacf1\ud558\uae30 y\uc758 \uc81c\uacf1\u2019\uc774\uace0 \u00f7 \ub4a4\uc758 6xy\u00b2 \uc804\uccb4\ub85c \ub098\ub220\uc694.)",
   "steps": [
    {
     "id": "s1",
     "kind": "pickLine",
     "scaffold": true,
-    "prompt": "서진이의 풀이와 검산에서 잘못된 줄을 하나 고르세요. (틀린 곳이 둘 이상일 수 있어요.)",
+    "prompt": "\uc11c\uc9c4\uc774\uc758 \ud480\uc774\uc640 \uac80\uc0b0\uc5d0\uc11c \uc798\ubabb\ub41c \uc904\uc744 \ud558\ub098 \uace0\ub974\uc138\uc694. (\ud2c0\ub9b0 \uacf3\uc774 \ub458 \uc774\uc0c1\uc77c \uc218 \uc788\uc5b4\uc694.)",
     "lines": [
-     "원래 식: (−3x²y)² ÷ 6xy² × 2x",
-     "(−3x²y)² = 9x⁴y²",
-     "9x⁴y² ÷ 6xy² = (3/2)x⁵ (x⁴ ÷ x = x⁵, y² ÷ y² = 1)",
-     "(3/2)x⁵ × 2x = 3x⁶",
-     "x=1, y=1을 넣으면 원래 식도 3, 3x⁶도 3이므로 풀이가 맞다."
+     "\uc6d0\ub798 \uc2dd: (\u22123x\u00b2y)\u00b2 \u00f7 6xy\u00b2 \u00d7 2x",
+     "(\u22123x\u00b2y)\u00b2 = 9x\u2074y\u00b2",
+     "9x\u2074y\u00b2 \u00f7 6xy\u00b2 = (3/2)x\u2075 (x\u2074 \u00f7 x = x\u2075, y\u00b2 \u00f7 y\u00b2 = 1)",
+     "(3/2)x\u2075 \u00d7 2x = 3x\u2076",
+     "x=1, y=1\uc744 \ub123\uc73c\uba74 \uc6d0\ub798 \uc2dd\ub3c4 3, 3x\u2076\ub3c4 3\uc774\ubbc0\ub85c \ud480\uc774\uac00 \ub9de\ub2e4."
     ],
     "wrong": [
      2,
      4
     ],
-    "explain": "3번 줄이 틀렸어요. 나눗셈에서 같은 문자의 지수는 더하지 않고 빼요. x⁴ ÷ x = x³이므로 이 줄은 (3/2)x³이 되어야 하고, 4번 줄은 3x⁴가 돼요. 5번 줄도 문제예요. x=1은 몇 제곱을 해도 1이라서 지수가 틀려도 값이 같게 나와요.",
+    "explain": "3\ubc88 \uc904\uc774 \ud2c0\ub838\uc5b4\uc694. \ub098\ub217\uc148\uc5d0\uc11c \uac19\uc740 \ubb38\uc790\uc758 \uc9c0\uc218\ub294 \ub354\ud558\uc9c0 \uc54a\uace0 \ube7c\uc694. x\u2074 \u00f7 x = x\u00b3\uc774\ubbc0\ub85c \uc774 \uc904\uc740 (3/2)x\u00b3\uc774 \ub418\uc5b4\uc57c \ud558\uace0, 4\ubc88 \uc904\uc740 3x\u2074\uac00 \ub3fc\uc694. 5\ubc88 \uc904\ub3c4 \ubb38\uc81c\uc608\uc694. x=1\uc740 \uba87 \uc81c\uacf1\uc744 \ud574\ub3c4 1\uc774\ub77c\uc11c \uc9c0\uc218\uac00 \ud2c0\ub824\ub3c4 \uac12\uc774 \uac19\uac8c \ub098\uc640\uc694.",
     "hints": [
-     "줄마다 앞 줄의 결과로 다음 줄이 맞게 이어지는지 하나씩 다시 계산해 보세요.",
-     "식의 값이 같게 나온 것만으로 풀이가 맞다고 할 수 있는지 따져 보고, 각 줄을 앞 줄에서 다시 계산해 보세요."
+     "\uc904\ub9c8\ub2e4 \uc55e \uc904\uc758 \uacb0\uacfc\ub85c \ub2e4\uc74c \uc904\uc774 \ub9de\uac8c \uc774\uc5b4\uc9c0\ub294\uc9c0 \ud558\ub098\uc529 \ub2e4\uc2dc \uacc4\uc0b0\ud574 \ubcf4\uc138\uc694.",
+     "\uc2dd\uc758 \uac12\uc774 \uac19\uac8c \ub098\uc628 \uac83\ub9cc\uc73c\ub85c \ud480\uc774\uac00 \ub9de\ub2e4\uace0 \ud560 \uc218 \uc788\ub294\uc9c0 \ub530\uc838 \ubcf4\uace0, \uac01 \uc904\uc744 \uc55e \uc904\uc5d0\uc11c \ub2e4\uc2dc \uacc4\uc0b0\ud574 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "build",
-    "prompt": "서진이의 답 3x⁶이 원래 식의 값과 달라지는 (x, y)를 찾아 틀림을 드러내 보세요. x의 절댓값이 서로 다른 두 쌍을 만드세요. (x, y는 0이 아닌 수. 직접 계산해서 확인해 보세요.)",
+    "prompt": "\uc11c\uc9c4\uc774\uc758 \ub2f5 3x\u2076\uc774 \uc6d0\ub798 \uc2dd\uc758 \uac12\uacfc \ub2ec\ub77c\uc9c0\ub294 (x, y)\ub97c \ucc3e\uc544 \ud2c0\ub9bc\uc744 \ub4dc\ub7ec\ub0b4 \ubcf4\uc138\uc694. x\uc758 \uc808\ub313\uac12\uc774 \uc11c\ub85c \ub2e4\ub978 \ub450 \uc30d\uc744 \ub9cc\ub4dc\uc138\uc694. (x, y\ub294 0\uc774 \uc544\ub2cc \uc218. \uc9c1\uc811 \uacc4\uc0b0\ud574\uc11c \ud655\uc778\ud574 \ubcf4\uc138\uc694.)",
     "vars": [
      {
       "name": "x",
@@ -549,14 +549,14 @@
      {
       "id": "c1",
       "expr": "x!=0 && y!=0",
-      "ok": "x, y가 0이 아니에요.",
-      "fail": "x와 y는 0이 아니어야 해요(0이면 나누는 식의 값을 구할 수 없어요)."
+      "ok": "x, y\uac00 0\uc774 \uc544\ub2c8\uc5d0\uc694.",
+      "fail": "x\uc640 y\ub294 0\uc774 \uc544\ub2c8\uc5b4\uc57c \ud574\uc694(0\uc774\uba74 \ub098\ub204\ub294 \uc2dd\uc758 \uac12\uc744 \uad6c\ud560 \uc218 \uc5c6\uc5b4\uc694)."
      },
      {
       "id": "c2",
       "expr": "((-3*x^2*y)^2/(6*x*y^2))*(2*x) != 3*x^6",
-      "ok": "원래 식의 값과 3x⁶의 값이 달라서 틀림이 드러나요.",
-      "fail": "이 값에서는 두 값이 같아서 틀림이 드러나지 않아요."
+      "ok": "\uc6d0\ub798 \uc2dd\uc758 \uac12\uacfc 3x\u2076\uc758 \uac12\uc774 \ub2ec\ub77c\uc11c \ud2c0\ub9bc\uc774 \ub4dc\ub7ec\ub098\uc694.",
+      "fail": "\uc774 \uac12\uc5d0\uc11c\ub294 \ub450 \uac12\uc774 \uac19\uc544\uc11c \ud2c0\ub9bc\uc774 \ub4dc\ub7ec\ub098\uc9c0 \uc54a\uc544\uc694."
      }
     ],
     "need": 2,
@@ -589,138 +589,138 @@
       "y": 1
      }
     ],
-    "explain": "x=2, y=1이면 원래 식은 (−12)² ÷ 12 × 4 = 144 ÷ 12 × 4 = 48이고, 3x⁶ = 192라서 달라요. x=1이나 x=−1은 거듭제곱해도 값이 1이라 지수가 틀려도 드러나지 않아요.",
+    "explain": "x=2, y=1\uc774\uba74 \uc6d0\ub798 \uc2dd\uc740 (\u221212)\u00b2 \u00f7 12 \u00d7 4 = 144 \u00f7 12 \u00d7 4 = 48\uc774\uace0, 3x\u2076 = 192\ub77c\uc11c \ub2ec\ub77c\uc694. x=1\uc774\ub098 x=\u22121\uc740 \uac70\ub4ed\uc81c\uacf1\ud574\ub3c4 \uac12\uc774 1\uc774\ub77c \uc9c0\uc218\uac00 \ud2c0\ub824\ub3c4 \ub4dc\ub7ec\ub098\uc9c0 \uc54a\uc544\uc694.",
     "hints": [
-     "원래 식에 값을 넣어 먼저 계산하고, 같은 값을 3x⁶에도 넣어 비교해 보세요.",
-     "서진이가 고른 x=1이 왜 약했는지 생각해 보고, 그와 다른 성질의 x를 골라 보세요."
+     "\uc6d0\ub798 \uc2dd\uc5d0 \uac12\uc744 \ub123\uc5b4 \uba3c\uc800 \uacc4\uc0b0\ud558\uace0, \uac19\uc740 \uac12\uc744 3x\u2076\uc5d0\ub3c4 \ub123\uc5b4 \ube44\uad50\ud574 \ubcf4\uc138\uc694.",
+     "\uc11c\uc9c4\uc774\uac00 \uace0\ub978 x=1\uc774 \uc65c \uc57d\ud588\ub294\uc9c0 \uc0dd\uac01\ud574 \ubcf4\uace0, \uadf8\uc640 \ub2e4\ub978 \uc131\uc9c8\uc758 x\ub97c \uace8\ub77c \ubcf4\uc138\uc694."
     ]
    },
    {
     "kind": "write",
     "minChars": 20,
     "id": "s3",
-    "prompt": "3번 줄을 바로잡아 올바른 최종 답을 쓰고, 어디가 왜 틀렸는지 한 문장으로 설명하세요.",
-    "placeholder": "예: 3번 줄은 ...",
+    "prompt": "3\ubc88 \uc904\uc744 \ubc14\ub85c\uc7a1\uc544 \uc62c\ubc14\ub978 \ucd5c\uc885 \ub2f5\uc744 \uc4f0\uace0, \uc5b4\ub514\uac00 \uc65c \ud2c0\ub838\ub294\uc9c0 \ud55c \ubb38\uc7a5\uc73c\ub85c \uc124\uba85\ud558\uc138\uc694.",
+    "placeholder": "\uc608: 3\ubc88 \uc904\uc740 ...",
     "hints": [
-     "x⁴ ÷ x를 직접 풀어 쓰면(x×x×x×x ÷ x) 몇 개가 남나요?",
-     "고친 줄의 결과를 다음 줄에 이어서 최종 답까지 계산해 보세요."
+     "x\u2074 \u00f7 x\ub97c \uc9c1\uc811 \ud480\uc5b4 \uc4f0\uba74(x\u00d7x\u00d7x\u00d7x \u00f7 x) \uba87 \uac1c\uac00 \ub0a8\ub098\uc694?",
+     "\uace0\uce5c \uc904\uc758 \uacb0\uacfc\ub97c \ub2e4\uc74c \uc904\uc5d0 \uc774\uc5b4\uc11c \ucd5c\uc885 \ub2f5\uae4c\uc9c0 \uacc4\uc0b0\ud574 \ubcf4\uc138\uc694."
     ],
     "checks": [
      {
       "id": "e1",
-      "label": "올바른 최종 답 3x⁴를 썼다",
+      "label": "\uc62c\ubc14\ub978 \ucd5c\uc885 \ub2f5 3x\u2074\ub97c \uc37c\ub2e4",
       "mode": "any",
       "patterns": [
-       "3\\s*x\\s*(\\^|\\*\\*)?\\s*(4|⁴)",
-       "3\\s*x\\s*의\\s*4\\s*제곱"
+       "3\\s*x\\s*(\\^|\\*\\*)?\\s*(4|\u2074)",
+       "3\\s*x\\s*\uc758\\s*4\\s*\uc81c\uacf1"
       ]
      },
      {
       "id": "e2",
-      "label": "나눗셈에서 지수를 빼야 함을 설명했다",
+      "label": "\ub098\ub217\uc148\uc5d0\uc11c \uc9c0\uc218\ub97c \ube7c\uc57c \ud568\uc744 \uc124\uba85\ud588\ub2e4",
       "mode": "any",
       "patterns": [
-       "지수.{0,15}(빼|뺀|뺄|뺍|뺐|차)",
-       "(빼|뺀|뺄|뺍|뺐).{0,15}지수",
-       "지수.{0,10}더하(지|면\\s*안)",
-       "4\\s*[-−–]\\s*1",
-       "x\\s*(\\^\\s*4|⁴|4)?\\s*(÷|/)\\s*x[^.\\n]{0,8}x\\s*(\\^\\s*3|³)"
+       "\uc9c0\uc218.{0,15}(\ube7c|\ube80|\ube84|\ube8d|\ube90|\ucc28)",
+       "(\ube7c|\ube80|\ube84|\ube8d|\ube90).{0,15}\uc9c0\uc218",
+       "\uc9c0\uc218.{0,10}\ub354\ud558(\uc9c0|\uba74\\s*\uc548)",
+       "4\\s*[-\u2212\u2013]\\s*1",
+       "x\\s*(\\^\\s*4|\u2074|4)?\\s*(\u00f7|/)\\s*x[^.\\n]{0,8}x\\s*(\\^\\s*3|\u00b3)"
       ]
      }
     ],
     "selfAssess": [
-     "고친 줄과 최종 답이 서로 맞게 이어지나요?",
-     "‘더했다’가 아니라 ‘빼야 한다’는 이유까지 썼나요?",
-     "내가 직접 x=2를 넣어 새 답을 확인해 보았나요?"
+     "\uace0\uce5c \uc904\uacfc \ucd5c\uc885 \ub2f5\uc774 \uc11c\ub85c \ub9de\uac8c \uc774\uc5b4\uc9c0\ub098\uc694?",
+     "\u2018\ub354\ud588\ub2e4\u2019\uac00 \uc544\ub2c8\ub77c \u2018\ube7c\uc57c \ud55c\ub2e4\u2019\ub294 \uc774\uc720\uae4c\uc9c0 \uc37c\ub098\uc694?",
+     "\ub0b4\uac00 \uc9c1\uc811 x=2\ub97c \ub123\uc5b4 \uc0c8 \ub2f5\uc744 \ud655\uc778\ud574 \ubcf4\uc558\ub098\uc694?"
     ],
     "modelAnswers": [
      {
-      "text": "x⁴ ÷ x는 지수를 더하는 게 아니라 빼서 x³이 돼. 그래서 (3/2)x³ × 2x = 3x⁴가 최종 답이야."
+      "text": "x\u2074 \u00f7 x\ub294 \uc9c0\uc218\ub97c \ub354\ud558\ub294 \uac8c \uc544\ub2c8\ub77c \ube7c\uc11c x\u00b3\uc774 \ub3fc. \uadf8\ub798\uc11c (3/2)x\u00b3 \u00d7 2x = 3x\u2074\uac00 \ucd5c\uc885 \ub2f5\uc774\uc57c."
      },
      {
-      "text": "나눗셈에서는 지수끼리 빼야 하니까 x⁴÷x = x^3이다. 3번 줄은 (3/2)x³이고 최종 답은 3x^4이다.",
-      "note": "지수를 ^로 쓴 답도 인정"
+      "text": "\ub098\ub217\uc148\uc5d0\uc11c\ub294 \uc9c0\uc218\ub07c\ub9ac \ube7c\uc57c \ud558\ub2c8\uae4c x\u2074\u00f7x = x^3\uc774\ub2e4. 3\ubc88 \uc904\uc740 (3/2)x\u00b3\uc774\uace0 \ucd5c\uc885 \ub2f5\uc740 3x^4\uc774\ub2e4.",
+      "note": "\uc9c0\uc218\ub97c ^\ub85c \uc4f4 \ub2f5\ub3c4 \uc778\uc815"
      }
     ],
     "badAnswers": [
      {
-      "text": "3x⁶이 맞다고 생각해요. x=1을 넣었을 때 값이 같았으니까요.",
-      "why": "검산의 약점을 보지 못하고 틀린 답을 유지했다."
+      "text": "3x\u2076\uc774 \ub9de\ub2e4\uace0 \uc0dd\uac01\ud574\uc694. x=1\uc744 \ub123\uc5c8\uc744 \ub54c \uac12\uc774 \uac19\uc558\uc73c\ub2c8\uae4c\uc694.",
+      "why": "\uac80\uc0b0\uc758 \uc57d\uc810\uc744 \ubcf4\uc9c0 \ubabb\ud558\uace0 \ud2c0\ub9b0 \ub2f5\uc744 \uc720\uc9c0\ud588\ub2e4."
      }
     ],
-    "humanReview": "‘지수를 뺀다’를 이해하고 썼는지, 결과만 맞추고 이유를 흉내 낸 것인지는 사람이 읽어 판단한다."
+    "humanReview": "\u2018\uc9c0\uc218\ub97c \ube80\ub2e4\u2019\ub97c \uc774\ud574\ud558\uace0 \uc37c\ub294\uc9c0, \uacb0\uacfc\ub9cc \ub9de\ucd94\uace0 \uc774\uc720\ub97c \ud749\ub0b4 \ub0b8 \uac83\uc778\uc9c0\ub294 \uc0ac\ub78c\uc774 \uc77d\uc5b4 \ud310\ub2e8\ud55c\ub2e4."
    }
   ],
   "rubric": [
    {
-    "criterion": "오류 위치와 원인",
-    "full": "지수를 더한 줄을 찾고 나눗셈에서는 빼야 함을 설명",
-    "partial": "틀린 줄은 찾았으나 이유가 없음",
-    "none": "틀린 줄을 못 찾음"
+    "criterion": "\uc624\ub958 \uc704\uce58\uc640 \uc6d0\uc778",
+    "full": "\uc9c0\uc218\ub97c \ub354\ud55c \uc904\uc744 \ucc3e\uace0 \ub098\ub217\uc148\uc5d0\uc11c\ub294 \ube7c\uc57c \ud568\uc744 \uc124\uba85",
+    "partial": "\ud2c0\ub9b0 \uc904\uc740 \ucc3e\uc558\uc73c\ub098 \uc774\uc720\uac00 \uc5c6\uc74c",
+    "none": "\ud2c0\ub9b0 \uc904\uc744 \ubabb \ucc3e\uc74c"
    },
    {
-    "criterion": "검산 평가",
-    "full": "x=±1이 지수 오류를 못 드러냄을 알고 다른 값으로 확인",
-    "partial": "값을 바꿔 확인했으나 이유는 설명 못함",
-    "none": "x=1 검산을 그대로 신뢰"
+    "criterion": "\uac80\uc0b0 \ud3c9\uac00",
+    "full": "x=\u00b11\uc774 \uc9c0\uc218 \uc624\ub958\ub97c \ubabb \ub4dc\ub7ec\ub0c4\uc744 \uc54c\uace0 \ub2e4\ub978 \uac12\uc73c\ub85c \ud655\uc778",
+    "partial": "\uac12\uc744 \ubc14\uafd4 \ud655\uc778\ud588\uc73c\ub098 \uc774\uc720\ub294 \uc124\uba85 \ubabb\ud568",
+    "none": "x=1 \uac80\uc0b0\uc744 \uadf8\ub300\ub85c \uc2e0\ub8b0"
    }
   ],
   "alternatives": [
-   "x=−2나 x=0.5처럼 |x|≠1인 값은 모두 틀림을 드러낸다.",
-   "5번 줄의 검산 문제를 지적하고 3번 줄은 놓친 경우도 부분 인정한다(검산을 다른 값으로 다시 했다면)."
+   "x=\u22122\ub098 x=0.5\ucc98\ub7fc |x|\u22601\uc778 \uac12\uc740 \ubaa8\ub450 \ud2c0\ub9bc\uc744 \ub4dc\ub7ec\ub0b8\ub2e4.",
+   "5\ubc88 \uc904\uc758 \uac80\uc0b0 \ubb38\uc81c\ub97c \uc9c0\uc801\ud558\uace0 3\ubc88 \uc904\uc740 \ub193\uce5c \uacbd\uc6b0\ub3c4 \ubd80\ubd84 \uc778\uc815\ud55c\ub2e4(\uac80\uc0b0\uc744 \ub2e4\ub978 \uac12\uc73c\ub85c \ub2e4\uc2dc \ud588\ub2e4\uba74)."
   ],
   "hardCases": [
-   "최종 답을 3x⁴ 대신 (3/1)x⁴ 같은 꼴로 쓰면 맞지만 정규식이 놓칠 수 있어 사람이 본다.",
-   "y를 바꿔도 x가 같으면 틀림이 같다는 점을 인식했는지 확인이 필요하다."
+   "\ucd5c\uc885 \ub2f5\uc744 3x\u2074 \ub300\uc2e0 (3/1)x\u2074 \uac19\uc740 \uaf34\ub85c \uc4f0\uba74 \ub9de\uc9c0\ub9cc \uc815\uaddc\uc2dd\uc774 \ub193\uce60 \uc218 \uc788\uc5b4 \uc0ac\ub78c\uc774 \ubcf8\ub2e4.",
+   "y\ub97c \ubc14\uafd4\ub3c4 x\uac00 \uac19\uc73c\uba74 \ud2c0\ub9bc\uc774 \uac19\ub2e4\ub294 \uc810\uc744 \uc778\uc2dd\ud588\ub294\uc9c0 \ud655\uc778\uc774 \ud544\uc694\ud558\ub2e4."
   ],
   "cautions": {
-   "language": "x², x⁴ 같은 위 첨자는 화면낭독기가 ‘x 4’처럼 읽을 수 있어 자료에서 ‘x의 4제곱’ 읽기를 먼저 설명했다. 답을 쓸 때 x^4처럼 입력해도 된다.",
-   "culture": "문화 의존 소재가 없다.",
-   "accessibility": "그림이 없고 식을 줄 단위로 읽을 수 있다. 색에 의존하지 않는다."
+   "language": "x\u00b2, x\u2074 \uac19\uc740 \uc704 \ucca8\uc790\ub294 \ud654\uba74\ub0ad\ub3c5\uae30\uac00 \u2018x 4\u2019\ucc98\ub7fc \uc77d\uc744 \uc218 \uc788\uc5b4 \uc790\ub8cc\uc5d0\uc11c \u2018x\uc758 4\uc81c\uacf1\u2019 \uc77d\uae30\ub97c \uba3c\uc800 \uc124\uba85\ud588\ub2e4. \ub2f5\uc744 \uc4f8 \ub54c x^4\ucc98\ub7fc \uc785\ub825\ud574\ub3c4 \ub41c\ub2e4.",
+   "culture": "\ubb38\ud654 \uc758\uc874 \uc18c\uc7ac\uac00 \uc5c6\ub2e4.",
+   "accessibility": "\uadf8\ub9bc\uc774 \uc5c6\uace0 \uc2dd\uc744 \uc904 \ub2e8\uc704\ub85c \uc77d\uc744 \uc218 \uc788\ub2e4. \uc0c9\uc5d0 \uc758\uc874\ud558\uc9c0 \uc54a\ub294\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "선택한 줄이 오류 줄인지",
-    "만든 (x, y)에서 두 식의 값이 정말 다른지",
-    "서술에 3x⁴와 지수를 빼는 이유가 들어 있는지"
+    "\uc120\ud0dd\ud55c \uc904\uc774 \uc624\ub958 \uc904\uc778\uc9c0",
+    "\ub9cc\ub4e0 (x, y)\uc5d0\uc11c \ub450 \uc2dd\uc758 \uac12\uc774 \uc815\ub9d0 \ub2e4\ub978\uc9c0",
+    "\uc11c\uc220\uc5d0 3x\u2074\uc640 \uc9c0\uc218\ub97c \ube7c\ub294 \uc774\uc720\uac00 \ub4e4\uc5b4 \uc788\ub294\uc9c0"
    ],
    "human": [
-    "서술의 이해 정도와 표현의 정확성"
+    "\uc11c\uc220\uc758 \uc774\ud574 \uc815\ub3c4\uc640 \ud45c\ud604\uc758 \uc815\ud655\uc131"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "subject": "math",
   "grade": "M2",
   "level": 2,
-  "levelLabel": "중등",
+  "levelLabel": "\uc911\ub4f1",
   "uiLang": "ko",
   "curriculum": null,
   "id": "x-m-m2-04",
-  "topic": "일차부등식",
-  "title": "해가 x<3이 되게 하는 a는 있을까?",
+  "topic": "\uc77c\ucc28\ubd80\ub4f1\uc2dd",
+  "title": "\ud574\uac00 x<3\uc774 \ub418\uac8c \ud558\ub294 a\ub294 \uc788\uc744\uae4c?",
   "format": "judge-evidence-explain",
   "generative": true,
   "minutes": 14,
-  "goal": "부등식 ax−6>0에서 a의 부호가 해의 방향을 정함을 예로 확인하고, ‘해가 x<3이 되는 a가 있다’는 주장을 판단해 설명한다.",
+  "goal": "\ubd80\ub4f1\uc2dd ax\u22126>0\uc5d0\uc11c a\uc758 \ubd80\ud638\uac00 \ud574\uc758 \ubc29\ud5a5\uc744 \uc815\ud568\uc744 \uc608\ub85c \ud655\uc778\ud558\uace0, \u2018\ud574\uac00 x<3\uc774 \ub418\ub294 a\uac00 \uc788\ub2e4\u2019\ub294 \uc8fc\uc7a5\uc744 \ud310\ub2e8\ud574 \uc124\uba85\ud55c\ub2e4.",
   "thinking": [
-   "예를 모아 규칙 추론하기",
-   "주장의 참거짓 판단하기",
-   "경우를 나누어 설명하기"
+   "\uc608\ub97c \ubaa8\uc544 \uaddc\uce59 \ucd94\ub860\ud558\uae30",
+   "\uc8fc\uc7a5\uc758 \ucc38\uac70\uc9d3 \ud310\ub2e8\ud558\uae30",
+   "\uacbd\uc6b0\ub97c \ub098\ub204\uc5b4 \uc124\uba85\ud558\uae30"
   ],
-  "differsFromPlain": "단순 연습은 a가 정해진 부등식을 푼다. 여기서는 a를 바꿔 가며 해의 모양을 비교하고, 원하는 해가 나올 수 있는지 스스로 판단하고 이유를 쓴다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 a\uac00 \uc815\ud574\uc9c4 \ubd80\ub4f1\uc2dd\uc744 \ud47c\ub2e4. \uc5ec\uae30\uc11c\ub294 a\ub97c \ubc14\uafd4 \uac00\uba70 \ud574\uc758 \ubaa8\uc591\uc744 \ube44\uad50\ud558\uace0, \uc6d0\ud558\ub294 \ud574\uac00 \ub098\uc62c \uc218 \uc788\ub294\uc9c0 \uc2a4\uc2a4\ub85c \ud310\ub2e8\ud558\uace0 \uc774\uc720\ub97c \uc4f4\ub2e4.",
   "prerequisites": [
-   "일차부등식의 풀이",
-   "문자에 수를 넣어 식 풀어 보기"
+   "\uc77c\ucc28\ubd80\ub4f1\uc2dd\uc758 \ud480\uc774",
+   "\ubb38\uc790\uc5d0 \uc218\ub97c \ub123\uc5b4 \uc2dd \ud480\uc5b4 \ubcf4\uae30"
   ],
-  "material": "부등식 ax − 6 > 0 에서 a는 정해지지 않은 수예요(읽는 법: ‘a x 빼기 6 크다 0’). 수진이는 ‘해가 x < 3이 되게 하는 a를 찾을 수 있다’고 하고, 민호는 ‘그런 a는 없다’고 해요. 증거를 모아 누구 말이 맞는지 판단해 봅시다.",
+  "material": "\ubd80\ub4f1\uc2dd ax \u2212 6 > 0 \uc5d0\uc11c a\ub294 \uc815\ud574\uc9c0\uc9c0 \uc54a\uc740 \uc218\uc608\uc694(\uc77d\ub294 \ubc95: \u2018a x \ube7c\uae30 6 \ud06c\ub2e4 0\u2019). \uc218\uc9c4\uc774\ub294 \u2018\ud574\uac00 x < 3\uc774 \ub418\uac8c \ud558\ub294 a\ub97c \ucc3e\uc744 \uc218 \uc788\ub2e4\u2019\uace0 \ud558\uace0, \ubbfc\ud638\ub294 \u2018\uadf8\ub7f0 a\ub294 \uc5c6\ub2e4\u2019\uace0 \ud574\uc694. \uc99d\uac70\ub97c \ubaa8\uc544 \ub204\uad6c \ub9d0\uc774 \ub9de\ub294\uc9c0 \ud310\ub2e8\ud574 \ubd05\uc2dc\ub2e4.",
   "steps": [
    {
     "id": "s1",
     "kind": "build",
     "scaffold": true,
-    "prompt": "a에 수를 넣어 ax−6>0을 풀었을 때 해가 ‘x<k’ 꼴이 되는 (a, k)를 서로 다른 a로 2개 만드세요. k는 해의 경계값이에요.",
+    "prompt": "a\uc5d0 \uc218\ub97c \ub123\uc5b4 ax\u22126>0\uc744 \ud480\uc5c8\uc744 \ub54c \ud574\uac00 \u2018x<k\u2019 \uaf34\uc774 \ub418\ub294 (a, k)\ub97c \uc11c\ub85c \ub2e4\ub978 a\ub85c 2\uac1c \ub9cc\ub4dc\uc138\uc694. k\ub294 \ud574\uc758 \uacbd\uacc4\uac12\uc774\uc5d0\uc694.",
     "vars": [
      {
       "name": "a",
@@ -728,27 +728,27 @@
      },
      {
       "name": "k",
-      "label": "경계값 k"
+      "label": "\uacbd\uacc4\uac12 k"
      }
     ],
     "constraints": [
      {
       "id": "c1",
       "expr": "a!=0",
-      "ok": "a가 0이 아니에요.",
-      "fail": "a가 0이면 부등식이 −6>0이 되어 해의 모양을 말할 수 없어요."
+      "ok": "a\uac00 0\uc774 \uc544\ub2c8\uc5d0\uc694.",
+      "fail": "a\uac00 0\uc774\uba74 \ubd80\ub4f1\uc2dd\uc774 \u22126>0\uc774 \ub418\uc5b4 \ud574\uc758 \ubaa8\uc591\uc744 \ub9d0\ud560 \uc218 \uc5c6\uc5b4\uc694."
      },
      {
       "id": "c2",
       "expr": "a<0",
-      "ok": "이 a에서는 해가 ‘x<k’ 꼴이에요.",
-      "fail": "이 a에서는 해가 ‘x<k’ 꼴이 되지 않아요. 직접 풀어 보세요."
+      "ok": "\uc774 a\uc5d0\uc11c\ub294 \ud574\uac00 \u2018x<k\u2019 \uaf34\uc774\uc5d0\uc694.",
+      "fail": "\uc774 a\uc5d0\uc11c\ub294 \ud574\uac00 \u2018x<k\u2019 \uaf34\uc774 \ub418\uc9c0 \uc54a\uc544\uc694. \uc9c1\uc811 \ud480\uc5b4 \ubcf4\uc138\uc694."
      },
      {
       "id": "c3",
       "expr": "a*k==6",
-      "ok": "k가 경계값(ax=6이 되는 x)과 맞아요.",
-      "fail": "k가 ax−6=0이 되는 x와 달라요."
+      "ok": "k\uac00 \uacbd\uacc4\uac12(ax=6\uc774 \ub418\ub294 x)\uacfc \ub9de\uc544\uc694.",
+      "fail": "k\uac00 ax\u22126=0\uc774 \ub418\ub294 x\uc640 \ub2ec\ub77c\uc694."
      }
     ],
     "need": 2,
@@ -781,196 +781,197 @@
       "k": 5
      }
     ],
-    "explain": "a=−2이면 −2x−6>0 → −2x>6 → 양변을 −2로 나누면 부등호 방향이 바뀌어 x<−3이에요. a가 음수이면 해는 x<6/a 꼴이고, 경계값 6/a는 음수예요.",
+    "explain": "a=\u22122\uc774\uba74 \u22122x\u22126>0 \u2192 \u22122x>6 \u2192 \uc591\ubcc0\uc744 \u22122\ub85c \ub098\ub204\uba74 \ubd80\ub4f1\ud638 \ubc29\ud5a5\uc774 \ubc14\ub00c\uc5b4 x<\u22123\uc774\uc5d0\uc694. a\uac00 \uc74c\uc218\uc774\uba74 \ud574\ub294 x<6/a \uaf34\uc774\uace0, \uacbd\uacc4\uac12 6/a\ub294 \uc74c\uc218\uc608\uc694.",
     "hints": [
-     "a에 값을 하나 넣고 ax−6>0을 직접 풀어 보세요.",
-     "a가 양수일 때와 음수일 때 부등호 방향이 어떻게 달라지는지 비교해 보세요."
+     "a\uc5d0 \uac12\uc744 \ud558\ub098 \ub123\uace0 ax\u22126>0\uc744 \uc9c1\uc811 \ud480\uc5b4 \ubcf4\uc138\uc694.",
+     "a\uac00 \uc591\uc218\uc77c \ub54c\uc640 \uc74c\uc218\uc77c \ub54c \ubd80\ub4f1\ud638 \ubc29\ud5a5\uc774 \uc5b4\ub5bb\uac8c \ub2ec\ub77c\uc9c0\ub294\uc9c0 \ube44\uad50\ud574 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "choose",
-    "prompt": "수진이는 ‘해가 x<3이 되게 하는 a가 있다’고 해요. 위에서 모은 증거로 판단할 때 가장 알맞은 것은?",
+    "prompt": "\uc218\uc9c4\uc774\ub294 \u2018\ud574\uac00 x<3\uc774 \ub418\uac8c \ud558\ub294 a\uac00 \uc788\ub2e4\u2019\uace0 \ud574\uc694. \uc704\uc5d0\uc11c \ubaa8\uc740 \uc99d\uac70\ub85c \ud310\ub2e8\ud560 \ub54c \uac00\uc7a5 \uc54c\ub9de\uc740 \uac83\uc740?",
     "options": [
      {
       "id": "a",
-      "text": "그런 a는 없다. 해가 x<k 꼴이면 k는 음수가 된다",
-      "reveals": "경계값 6/a의 부호와 해의 방향을 함께 보았어요."
+      "text": "\uadf8\ub7f0 a\ub294 \uc5c6\ub2e4. \ud574\uac00 x<k \uaf34\uc774\uba74 k\ub294 \uc74c\uc218\uac00 \ub41c\ub2e4",
+      "reveals": "\uacbd\uacc4\uac12 6/a\uc758 \ubd80\ud638\uc640 \ud574\uc758 \ubc29\ud5a5\uc744 \ud568\uaed8 \ubcf4\uc558\uc5b4\uc694."
      },
      {
       "id": "b",
-      "text": "a=2로 하면 된다. 6÷2=3이니 경계값이 3이 되기 때문이다",
-      "reveals": "경계값만 맞추고 해의 방향은 확인하지 않았어요. a=2일 때 해가 어느 쪽인지 직접 풀어 보세요."
+      "text": "a=2\ub85c \ud558\uba74 \ub41c\ub2e4. 6\u00f72=3\uc774\ub2c8 \uacbd\uacc4\uac12\uc774 3\uc774 \ub418\uae30 \ub54c\ubb38\uc774\ub2e4",
+      "reveals": "\uacbd\uacc4\uac12\ub9cc \ub9de\ucd94\uace0 \ud574\uc758 \ubc29\ud5a5\uc740 \ud655\uc778\ud558\uc9c0 \uc54a\uc558\uc5b4\uc694. a=2\uc77c \ub54c \ud574\uac00 \uc5b4\ub290 \ucabd\uc778\uc9c0 \uc9c1\uc811 \ud480\uc5b4 \ubcf4\uc138\uc694."
      },
      {
       "id": "c",
-      "text": "a=−2로 하면 된다. 음수로 나누면 부등호 방향이 바뀌므로 맞다",
-      "reveals": "방향이 바뀐다는 점은 짚었지만, 그때 경계값이 얼마가 되는지는 확인하지 않았어요."
+      "text": "a=\u22122\ub85c \ud558\uba74 \ub41c\ub2e4. \uc74c\uc218\ub85c \ub098\ub204\uba74 \ubd80\ub4f1\ud638 \ubc29\ud5a5\uc774 \ubc14\ub00c\ubbc0\ub85c \ub9de\ub2e4",
+      "reveals": "\ubc29\ud5a5\uc774 \ubc14\ub010\ub2e4\ub294 \uc810\uc740 \uc9da\uc5c8\uc9c0\ub9cc, \uadf8\ub54c \uacbd\uacc4\uac12\uc774 \uc5bc\ub9c8\uac00 \ub418\ub294\uc9c0\ub294 \ud655\uc778\ud558\uc9c0 \uc54a\uc558\uc5b4\uc694."
      },
      {
       "id": "d",
-      "text": "a를 분수나 소수로 고르면 가능할 수도 있다. 더 시험해 봐야 한다",
-      "reveals": "a의 종류가 아니라 부호와 해의 방향의 관계가 핵심이에요. 분수나 소수로도 직접 풀어 보세요."
+      "text": "a\ub97c \ubd84\uc218\ub098 \uc18c\uc218\ub85c \uace0\ub974\uba74 \uac00\ub2a5\ud560 \uc218\ub3c4 \uc788\ub2e4. \ub354 \uc2dc\ud5d8\ud574 \ubd10\uc57c \ud55c\ub2e4",
+      "reveals": "a\uc758 \uc885\ub958\uac00 \uc544\ub2c8\ub77c \ubd80\ud638\uc640 \ud574\uc758 \ubc29\ud5a5\uc758 \uad00\uacc4\uac00 \ud575\uc2ec\uc774\uc5d0\uc694. \ubd84\uc218\ub098 \uc18c\uc218\ub85c\ub3c4 \uc9c1\uc811 \ud480\uc5b4 \ubcf4\uc138\uc694."
      }
     ],
     "correct": [
      "a"
     ],
-    "explain": "해가 x<k 꼴이려면 a<0이어야 하고, 그때 k=6/a는 항상 음수예요. 그래서 x<3처럼 k가 양수인 해는 만들 수 없어요. (a>0이면 해는 x>6/a 꼴이고, a=0이면 −6>0이 거짓이라 해가 없어요.)",
+    "explain": "\ud574\uac00 x<k \uaf34\uc774\ub824\uba74 a<0\uc774\uc5b4\uc57c \ud558\uace0, \uadf8\ub54c k=6/a\ub294 \ud56d\uc0c1 \uc74c\uc218\uc608\uc694. \uadf8\ub798\uc11c x<3\ucc98\ub7fc k\uac00 \uc591\uc218\uc778 \ud574\ub294 \ub9cc\ub4e4 \uc218 \uc5c6\uc5b4\uc694. (a>0\uc774\uba74 \ud574\ub294 x>6/a \uaf34\uc774\uace0, a=0\uc774\uba74 \u22126>0\uc774 \uac70\uc9d3\uc774\ub77c \ud574\uac00 \uc5c6\uc5b4\uc694.)",
     "hints": [
-     "a가 양수일 때 해는 어느 쪽 방향인지부터 정리해 보세요.",
-     "‘x<3’ 꼴의 해가 나오는 a를 직접 풀어 확인하고, 그때 경계값의 부호를 보세요."
+     "a\uac00 \uc591\uc218\uc77c \ub54c \ud574\ub294 \uc5b4\ub290 \ucabd \ubc29\ud5a5\uc778\uc9c0\ubd80\ud130 \uc815\ub9ac\ud574 \ubcf4\uc138\uc694.",
+     "\u2018x<3\u2019 \uaf34\uc758 \ud574\uac00 \ub098\uc624\ub294 a\ub97c \uc9c1\uc811 \ud480\uc5b4 \ud655\uc778\ud558\uace0, \uadf8\ub54c \uacbd\uacc4\uac12\uc758 \ubd80\ud638\ub97c \ubcf4\uc138\uc694."
     ]
    },
    {
     "kind": "write",
     "minChars": 30,
     "id": "s3",
-    "prompt": "수진이에게 왜 그런 a가 없는지 설명해 보세요. a가 양수일 때와 음수일 때 해가 어떻게 되는지 포함하세요.",
-    "placeholder": "예: a가 양수이면 ...",
+    "prompt": "\uc218\uc9c4\uc774\uc5d0\uac8c \uc65c \uadf8\ub7f0 a\uac00 \uc5c6\ub294\uc9c0 \uc124\uba85\ud574 \ubcf4\uc138\uc694. a\uac00 \uc591\uc218\uc77c \ub54c\uc640 \uc74c\uc218\uc77c \ub54c \ud574\uac00 \uc5b4\ub5bb\uac8c \ub418\ub294\uc9c0 \ud3ec\ud568\ud558\uc138\uc694.",
+    "placeholder": "\uc608: a\uac00 \uc591\uc218\uc774\uba74 ...",
     "hints": [
-     "a가 양수일 때와 음수일 때로 나눠서 각각 양변을 a로 나눈 결과를 써 보세요.",
-     "마지막 문장에서 ‘해가 x<3이 되는 a가 있는지’에 답하세요."
+     "a\uac00 \uc591\uc218\uc77c \ub54c\uc640 \uc74c\uc218\uc77c \ub54c\ub85c \ub098\ub220\uc11c \uac01\uac01 \uc591\ubcc0\uc744 a\ub85c \ub098\ub208 \uacb0\uacfc\ub97c \uc368 \ubcf4\uc138\uc694.",
+     "\ub9c8\uc9c0\ub9c9 \ubb38\uc7a5\uc5d0\uc11c \u2018\ud574\uac00 x<3\uc774 \ub418\ub294 a\uac00 \uc788\ub294\uc9c0\u2019\uc5d0 \ub2f5\ud558\uc138\uc694."
     ],
     "checks": [
      {
       "id": "p1",
-      "label": "a가 양수일 때와 음수일 때를 모두 다뤘다",
+      "label": "a\uac00 \uc591\uc218\uc77c \ub54c\uc640 \uc74c\uc218\uc77c \ub54c\ub97c \ubaa8\ub450 \ub2e4\ub918\ub2e4",
       "mode": "all",
       "patterns": [
-       "(양수|0보다\\s*크|a\\s*>\\s*0)",
-       "(음수|0보다\\s*작|a\\s*<\\s*0)"
+       "(\uc591\uc218|0\ubcf4\ub2e4\\s*\ud06c|a\\s*>\\s*0)",
+       "(\uc74c\uc218|0\ubcf4\ub2e4\\s*\uc791|a\\s*<\\s*0)"
       ]
      },
      {
       "id": "p2",
-      "label": "그런 a는 없다는 결론을 썼다",
+      "label": "\uadf8\ub7f0 a\ub294 \uc5c6\ub2e4\ub294 \uacb0\ub860\uc744 \uc37c\ub2e4",
       "mode": "any",
       "patterns": [
-       "없(다|어|습니다|음|으)",
-       "불가능",
-       "가능하지\\s*않",
-       "안\\s*(된|돼)"
+       "\uc5c6(\ub2e4|\uc5b4|\uc2b5\ub2c8\ub2e4|\uc74c|\uc73c)",
+       "\ubd88\uac00\ub2a5",
+       "\uac00\ub2a5\ud558\uc9c0\\s*\uc54a",
+       "\uc548\\s*(\ub41c|\ub3fc)"
       ]
      }
     ],
     "selfAssess": [
-     "양수일 때와 음수일 때의 해를 각각 썼나요?",
-     "음수일 때 경계값이 왜 3이 될 수 없는지 말했나요?",
-     "a=0인 경우도 한 번 생각해 보았나요?"
+     "\uc591\uc218\uc77c \ub54c\uc640 \uc74c\uc218\uc77c \ub54c\uc758 \ud574\ub97c \uac01\uac01 \uc37c\ub098\uc694?",
+     "\uc74c\uc218\uc77c \ub54c \uacbd\uacc4\uac12\uc774 \uc65c 3\uc774 \ub420 \uc218 \uc5c6\ub294\uc9c0 \ub9d0\ud588\ub098\uc694?",
+     "a=0\uc778 \uacbd\uc6b0\ub3c4 \ud55c \ubc88 \uc0dd\uac01\ud574 \ubcf4\uc558\ub098\uc694?"
     ],
     "modelAnswers": [
      {
-      "text": "a가 양수이면 ax>6에서 양변을 a로 나눠도 방향이 그대로라 x>6/a 꼴이야. a가 음수이면 방향이 바뀌어 x<6/a인데 6/a는 음수라서 3이 될 수 없어. 그래서 해가 x<3이 되는 a는 없어."
+      "text": "a\uac00 \uc591\uc218\uc774\uba74 ax>6\uc5d0\uc11c \uc591\ubcc0\uc744 a\ub85c \ub098\ub220\ub3c4 \ubc29\ud5a5\uc774 \uadf8\ub300\ub85c\ub77c x>6/a \uaf34\uc774\uc57c. a\uac00 \uc74c\uc218\uc774\uba74 \ubc29\ud5a5\uc774 \ubc14\ub00c\uc5b4 x<6/a\uc778\ub370 6/a\ub294 \uc74c\uc218\ub77c\uc11c 3\uc774 \ub420 \uc218 \uc5c6\uc5b4. \uadf8\ub798\uc11c \ud574\uac00 x<3\uc774 \ub418\ub294 a\ub294 \uc5c6\uc5b4."
      },
      {
-      "text": "해가 x<k 꼴이 되려면 a가 음수여야 하고, 그때 k=6/a는 0보다 작은 값이야. 3은 양수라서 불가능해. a가 양수이면 x>6/a 꼴이고 a=0이면 해가 없어.",
-      "note": "a=0까지 다룬 답"
+      "text": "\ud574\uac00 x<k \uaf34\uc774 \ub418\ub824\uba74 a\uac00 \uc74c\uc218\uc5ec\uc57c \ud558\uace0, \uadf8\ub54c k=6/a\ub294 0\ubcf4\ub2e4 \uc791\uc740 \uac12\uc774\uc57c. 3\uc740 \uc591\uc218\ub77c\uc11c \ubd88\uac00\ub2a5\ud574. a\uac00 \uc591\uc218\uc774\uba74 x>6/a \uaf34\uc774\uace0 a=0\uc774\uba74 \ud574\uac00 \uc5c6\uc5b4.",
+      "note": "a=0\uae4c\uc9c0 \ub2e4\ub8ec \ub2f5"
      }
     ],
     "badAnswers": [
      {
-      "text": "a=−2를 넣으면 될 것 같아요. 음수는 방향이 바뀌니까요.",
-      "why": "경계값을 확인하지 않았고 양수·음수 비교도 없다."
+      "text": "a=\u22122\ub97c \ub123\uc73c\uba74 \ub420 \uac83 \uac19\uc544\uc694. \uc74c\uc218\ub294 \ubc29\ud5a5\uc774 \ubc14\ub00c\ub2c8\uae4c\uc694.",
+      "why": "\uacbd\uacc4\uac12\uc744 \ud655\uc778\ud558\uc9c0 \uc54a\uc558\uace0 \uc591\uc218\u00b7\uc74c\uc218 \ube44\uad50\ub3c4 \uc5c6\ub2e4."
      }
     ],
-    "humanReview": "부호에 따른 방향 변화를 이해하고 썼는지, ‘6/a가 음수’라는 핵심 연결이 있는지는 사람이 읽어 판단한다."
+    "humanReview": "\ubd80\ud638\uc5d0 \ub530\ub978 \ubc29\ud5a5 \ubcc0\ud654\ub97c \uc774\ud574\ud558\uace0 \uc37c\ub294\uc9c0, \u20186/a\uac00 \uc74c\uc218\u2019\ub77c\ub294 \ud575\uc2ec \uc5f0\uacb0\uc774 \uc788\ub294\uc9c0\ub294 \uc0ac\ub78c\uc774 \uc77d\uc5b4 \ud310\ub2e8\ud55c\ub2e4."
    }
   ],
   "rubric": [
    {
-    "criterion": "증거 수집",
-    "full": "서로 다른 a로 해의 방향을 직접 풀어 확인",
-    "partial": "한 가지 a로만 확인",
-    "none": "확인 없이 추측"
+    "criterion": "\uc99d\uac70 \uc218\uc9d1",
+    "full": "\uc11c\ub85c \ub2e4\ub978 a\ub85c \ud574\uc758 \ubc29\ud5a5\uc744 \uc9c1\uc811 \ud480\uc5b4 \ud655\uc778",
+    "partial": "\ud55c \uac00\uc9c0 a\ub85c\ub9cc \ud655\uc778",
+    "none": "\ud655\uc778 \uc5c6\uc774 \ucd94\uce21"
    },
    {
-    "criterion": "판단과 설명",
-    "full": "a의 부호별 해의 방향과 경계값의 부호로 ‘없다’를 설명",
-    "partial": "‘없다’는 결론만 맞음",
-    "none": "a가 있다고 주장"
+    "criterion": "\ud310\ub2e8\uacfc \uc124\uba85",
+    "full": "a\uc758 \ubd80\ud638\ubcc4 \ud574\uc758 \ubc29\ud5a5\uacfc \uacbd\uacc4\uac12\uc758 \ubd80\ud638\ub85c \u2018\uc5c6\ub2e4\u2019\ub97c \uc124\uba85",
+    "partial": "\u2018\uc5c6\ub2e4\u2019\ub294 \uacb0\ub860\ub9cc \ub9de\uc74c",
+    "none": "a\uac00 \uc788\ub2e4\uace0 \uc8fc\uc7a5"
    }
   ],
   "alternatives": [
-   "수직선이나 표로 a=−1, −2 등을 정리해 보여 주는 설명도 타당하다.",
-   "‘경계값이 3이 되려면 a=2뿐인데 그때는 해가 x>3’이라는 반례 중심의 설명도 인정한다."
+   "\uc218\uc9c1\uc120\uc774\ub098 \ud45c\ub85c a=\u22121, \u22122 \ub4f1\uc744 \uc815\ub9ac\ud574 \ubcf4\uc5ec \uc8fc\ub294 \uc124\uba85\ub3c4 \ud0c0\ub2f9\ud558\ub2e4.",
+   "\u2018\uacbd\uacc4\uac12\uc774 3\uc774 \ub418\ub824\uba74 a=2\ubfd0\uc778\ub370 \uadf8\ub54c\ub294 \ud574\uac00 x>3\u2019\uc774\ub77c\ub294 \ubc18\ub840 \uc911\uc2ec\uc758 \uc124\uba85\ub3c4 \uc778\uc815\ud55c\ub2e4."
   ],
   "hardCases": [
-   "a=0이나 해가 없는 경우를 빠뜨려도 핵심 판단은 맞을 수 있다.",
-   "‘안 돼요’처럼 간단한 답은 정규식은 통과해도 이유가 있는지 사람이 확인한다."
+   "a=0\uc774\ub098 \ud574\uac00 \uc5c6\ub294 \uacbd\uc6b0\ub97c \ube60\ub728\ub824\ub3c4 \ud575\uc2ec \ud310\ub2e8\uc740 \ub9de\uc744 \uc218 \uc788\ub2e4.",
+   "\u2018\uc548 \ub3fc\uc694\u2019\ucc98\ub7fc \uac04\ub2e8\ud55c \ub2f5\uc740 \uc815\uaddc\uc2dd\uc740 \ud1b5\uacfc\ud574\ub3c4 \uc774\uc720\uac00 \uc788\ub294\uc9c0 \uc0ac\ub78c\uc774 \ud655\uc778\ud55c\ub2e4."
   ],
   "cautions": {
-   "language": "‘ax’는 ‘a 곱하기 x’로 읽는다고 적었다. 부등호 ‘<’와 ‘>’의 방향을 낭독기가 혼동하지 않도록 ‘크다’ 같은 말도 곁들였다.",
-   "culture": "문화 의존 소재가 없다.",
-   "accessibility": "그림이 없고 부등호는 문자와 말로 같이 적었다."
+   "language": "\u2018ax\u2019\ub294 \u2018a \uacf1\ud558\uae30 x\u2019\ub85c \uc77d\ub294\ub2e4\uace0 \uc801\uc5c8\ub2e4. \ubd80\ub4f1\ud638 \u2018<\u2019\uc640 \u2018>\u2019\uc758 \ubc29\ud5a5\uc744 \ub0ad\ub3c5\uae30\uac00 \ud63c\ub3d9\ud558\uc9c0 \uc54a\ub3c4\ub85d \u2018\ud06c\ub2e4\u2019 \uac19\uc740 \ub9d0\ub3c4 \uacc1\ub4e4\uc600\ub2e4.",
+   "culture": "\ubb38\ud654 \uc758\uc874 \uc18c\uc7ac\uac00 \uc5c6\ub2e4.",
+   "accessibility": "\uadf8\ub9bc\uc774 \uc5c6\uace0 \ubd80\ub4f1\ud638\ub294 \ubb38\uc790\uc640 \ub9d0\ub85c \uac19\uc774 \uc801\uc5c8\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "만든 (a, k)가 조건을 만족하는지",
-    "선택지 판단",
-    "서술에 양수·음수와 결론이 들어 있는지"
+    "\ub9cc\ub4e0 (a, k)\uac00 \uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294\uc9c0",
+    "\uc120\ud0dd\uc9c0 \ud310\ub2e8",
+    "\uc11c\uc220\uc5d0 \uc591\uc218\u00b7\uc74c\uc218\uc640 \uacb0\ub860\uc774 \ub4e4\uc5b4 \uc788\ub294\uc9c0"
    ],
    "human": [
-    "경계값의 부호 연결을 포함한 설명의 질"
+    "\uacbd\uacc4\uac12\uc758 \ubd80\ud638 \uc5f0\uacb0\uc744 \ud3ec\ud568\ud55c \uc124\uba85\uc758 \uc9c8"
    ]
-  }
+  },
+  "status": "reviewed-ai"
  },
  {
   "subject": "math",
   "grade": "M2",
   "level": 2,
-  "levelLabel": "중등",
+  "levelLabel": "\uc911\ub4f1",
   "uiLang": "ko",
   "curriculum": null,
   "id": "x-m-m2-05",
-  "topic": "연립방정식",
-  "title": "가격을 알아내려면 어떤 쪽지가 필요할까?",
+  "topic": "\uc5f0\ub9bd\ubc29\uc815\uc2dd",
+  "title": "\uac00\uaca9\uc744 \uc54c\uc544\ub0b4\ub824\uba74 \uc5b4\ub5a4 \ucabd\uc9c0\uac00 \ud544\uc694\ud560\uae4c?",
   "format": "choose-needed-info",
   "generative": true,
   "minutes": 14,
-  "goal": "연립방정식을 세울 때 식이 서로 다른 정보를 주는지 판단하고, 새 정보를 주지 않는 식을 직접 만들어 본다.",
+  "goal": "\uc5f0\ub9bd\ubc29\uc815\uc2dd\uc744 \uc138\uc6b8 \ub54c \uc2dd\uc774 \uc11c\ub85c \ub2e4\ub978 \uc815\ubcf4\ub97c \uc8fc\ub294\uc9c0 \ud310\ub2e8\ud558\uace0, \uc0c8 \uc815\ubcf4\ub97c \uc8fc\uc9c0 \uc54a\ub294 \uc2dd\uc744 \uc9c1\uc811 \ub9cc\ub4e4\uc5b4 \ubcf8\ub2e4.",
   "thinking": [
-   "정보 충분성 판단하기",
-   "식 사이의 관계(배수) 알아차리기",
-   "정보를 주지 않는 예 만들기"
+   "\uc815\ubcf4 \ucda9\ubd84\uc131 \ud310\ub2e8\ud558\uae30",
+   "\uc2dd \uc0ac\uc774\uc758 \uad00\uacc4(\ubc30\uc218) \uc54c\uc544\ucc28\ub9ac\uae30",
+   "\uc815\ubcf4\ub97c \uc8fc\uc9c0 \uc54a\ub294 \uc608 \ub9cc\ub4e4\uae30"
   ],
-  "differsFromPlain": "단순 연습은 주어진 두 식을 풀어 해를 구한다. 여기서는 어떤 식의 짝이 해를 하나로 정하는지 먼저 판단하고, 해가 안 정해지는 식을 직접 만든다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uc8fc\uc5b4\uc9c4 \ub450 \uc2dd\uc744 \ud480\uc5b4 \ud574\ub97c \uad6c\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \uc5b4\ub5a4 \uc2dd\uc758 \uc9dd\uc774 \ud574\ub97c \ud558\ub098\ub85c \uc815\ud558\ub294\uc9c0 \uba3c\uc800 \ud310\ub2e8\ud558\uace0, \ud574\uac00 \uc548 \uc815\ud574\uc9c0\ub294 \uc2dd\uc744 \uc9c1\uc811 \ub9cc\ub4e0\ub2e4.",
   "prerequisites": [
-   "미지수가 2개인 일차방정식",
-   "문장을 식으로 나타내기"
+   "\ubbf8\uc9c0\uc218\uac00 2\uac1c\uc778 \uc77c\ucc28\ubc29\uc815\uc2dd",
+   "\ubb38\uc7a5\uc744 \uc2dd\uc73c\ub85c \ub098\ud0c0\ub0b4\uae30"
   ],
-  "material": "문구점에서 연필 한 자루의 값 x원과 공책 한 권의 값 y원을 알아내려 해요. 주인이 사실인 쪽지 5장을 보여 줬어요. 가: 연필 2자루와 공책 3권을 사면 3,100원. 나: 연필 4자루와 공책 6권을 사면 6,200원. 다: 공책 한 권은 연필 한 자루보다 200원 비싸다. 라: 연필 6자루와 공책 9권을 사면 9,300원. 마: 연필 5자루와 공책 5권을 사면 6,000원.",
+  "material": "\ubb38\uad6c\uc810\uc5d0\uc11c \uc5f0\ud544 \ud55c \uc790\ub8e8\uc758 \uac12 x\uc6d0\uacfc \uacf5\ucc45 \ud55c \uad8c\uc758 \uac12 y\uc6d0\uc744 \uc54c\uc544\ub0b4\ub824 \ud574\uc694. \uc8fc\uc778\uc774 \uc0ac\uc2e4\uc778 \ucabd\uc9c0 5\uc7a5\uc744 \ubcf4\uc5ec \uc92c\uc5b4\uc694. \uac00: \uc5f0\ud544 2\uc790\ub8e8\uc640 \uacf5\ucc45 3\uad8c\uc744 \uc0ac\uba74 3,100\uc6d0. \ub098: \uc5f0\ud544 4\uc790\ub8e8\uc640 \uacf5\ucc45 6\uad8c\uc744 \uc0ac\uba74 6,200\uc6d0. \ub2e4: \uacf5\ucc45 \ud55c \uad8c\uc740 \uc5f0\ud544 \ud55c \uc790\ub8e8\ubcf4\ub2e4 200\uc6d0 \ube44\uc2f8\ub2e4. \ub77c: \uc5f0\ud544 6\uc790\ub8e8\uc640 \uacf5\ucc45 9\uad8c\uc744 \uc0ac\uba74 9,300\uc6d0. \ub9c8: \uc5f0\ud544 5\uc790\ub8e8\uc640 \uacf5\ucc45 5\uad8c\uc744 \uc0ac\uba74 6,000\uc6d0.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
     "multi": true,
-    "prompt": "쪽지 두 장을 고를 때, 연필 값과 공책 값을 모두 알 수 있는 묶음을 모두 고르세요.",
+    "prompt": "\ucabd\uc9c0 \ub450 \uc7a5\uc744 \uace0\ub97c \ub54c, \uc5f0\ud544 \uac12\uacfc \uacf5\ucc45 \uac12\uc744 \ubaa8\ub450 \uc54c \uc218 \uc788\ub294 \ubb36\uc74c\uc744 \ubaa8\ub450 \uace0\ub974\uc138\uc694.",
     "options": [
      {
       "id": "a",
-      "text": "가와 나",
-      "reveals": "두 쪽지가 서로 다른 정보를 주는지, 한쪽이 다른 쪽을 몇 배 한 것인지 비교했는지 돌아보세요."
+      "text": "\uac00\uc640 \ub098",
+      "reveals": "\ub450 \ucabd\uc9c0\uac00 \uc11c\ub85c \ub2e4\ub978 \uc815\ubcf4\ub97c \uc8fc\ub294\uc9c0, \ud55c\ucabd\uc774 \ub2e4\ub978 \ucabd\uc744 \uba87 \ubc30 \ud55c \uac83\uc778\uc9c0 \ube44\uad50\ud588\ub294\uc9c0 \ub3cc\uc544\ubcf4\uc138\uc694."
      },
      {
       "id": "b",
-      "text": "가와 마",
-      "reveals": "연필과 공책의 개수 비가 서로 다른 두 쪽지를 짝지어 서로 다른 정보를 얻었어요."
+      "text": "\uac00\uc640 \ub9c8",
+      "reveals": "\uc5f0\ud544\uacfc \uacf5\ucc45\uc758 \uac1c\uc218 \ube44\uac00 \uc11c\ub85c \ub2e4\ub978 \ub450 \ucabd\uc9c0\ub97c \uc9dd\uc9c0\uc5b4 \uc11c\ub85c \ub2e4\ub978 \uc815\ubcf4\ub97c \uc5bb\uc5c8\uc5b4\uc694."
      },
      {
       "id": "c",
-      "text": "나와 라",
-      "reveals": "금액과 개수가 모두 커져 새 정보처럼 보이는지, 실제로는 같은 비율인지 확인해 보세요."
+      "text": "\ub098\uc640 \ub77c",
+      "reveals": "\uae08\uc561\uacfc \uac1c\uc218\uac00 \ubaa8\ub450 \ucee4\uc838 \uc0c8 \uc815\ubcf4\ucc98\ub7fc \ubcf4\uc774\ub294\uc9c0, \uc2e4\uc81c\ub85c\ub294 \uac19\uc740 \ube44\uc728\uc778\uc9c0 \ud655\uc778\ud574 \ubcf4\uc138\uc694."
      },
      {
       "id": "d",
-      "text": "다와 마",
-      "reveals": "관계를 말로 준 쪽지와 합계를 준 쪽지를 짝지어 서로 다른 정보를 얻었어요."
+      "text": "\ub2e4\uc640 \ub9c8",
+      "reveals": "\uad00\uacc4\ub97c \ub9d0\ub85c \uc900 \ucabd\uc9c0\uc640 \ud569\uacc4\ub97c \uc900 \ucabd\uc9c0\ub97c \uc9dd\uc9c0\uc5b4 \uc11c\ub85c \ub2e4\ub978 \uc815\ubcf4\ub97c \uc5bb\uc5c8\uc5b4\uc694."
      },
      {
       "id": "e",
-      "text": "라와 마",
-      "reveals": "개수가 다른 두 쪽지라서 서로 다른 정보를 준다는 점을 포착했어요."
+      "text": "\ub77c\uc640 \ub9c8",
+      "reveals": "\uac1c\uc218\uac00 \ub2e4\ub978 \ub450 \ucabd\uc9c0\ub77c\uc11c \uc11c\ub85c \ub2e4\ub978 \uc815\ubcf4\ub97c \uc900\ub2e4\ub294 \uc810\uc744 \ud3ec\ucc29\ud588\uc5b4\uc694."
      }
     ],
     "correct": [
@@ -978,54 +979,54 @@
      "d",
      "e"
     ],
-    "explain": "가, 나, 라는 연필:공책 개수 비가 2:3으로 같고 금액도 같은 배수(1배, 2배, 3배)라 같은 정보를 반복해요. 이 쪽지끼리는 해를 하나로 정할 수 없어요. 개수 비가 다른 쪽지(다, 마)를 짝지으면 두 식이 서로 다른 정보를 줘서 값이 정해져요. (연필 500원, 공책 700원)",
+    "explain": "\uac00, \ub098, \ub77c\ub294 \uc5f0\ud544:\uacf5\ucc45 \uac1c\uc218 \ube44\uac00 2:3\uc73c\ub85c \uac19\uace0 \uae08\uc561\ub3c4 \uac19\uc740 \ubc30\uc218(1\ubc30, 2\ubc30, 3\ubc30)\ub77c \uac19\uc740 \uc815\ubcf4\ub97c \ubc18\ubcf5\ud574\uc694. \uc774 \ucabd\uc9c0\ub07c\ub9ac\ub294 \ud574\ub97c \ud558\ub098\ub85c \uc815\ud560 \uc218 \uc5c6\uc5b4\uc694. \uac1c\uc218 \ube44\uac00 \ub2e4\ub978 \ucabd\uc9c0(\ub2e4, \ub9c8)\ub97c \uc9dd\uc9c0\uc73c\uba74 \ub450 \uc2dd\uc774 \uc11c\ub85c \ub2e4\ub978 \uc815\ubcf4\ub97c \uc918\uc11c \uac12\uc774 \uc815\ud574\uc838\uc694. (\uc5f0\ud544 500\uc6d0, \uacf5\ucc45 700\uc6d0)",
     "hints": [
-     "쪽지를 ‘연필 □자루 + 공책 □권 = □원’ 꼴로 정리하고 두 쪽지를 나란히 비교해 보세요.",
-     "한 쪽지의 모든 수를 몇 배 하면 다른 쪽지가 되는 경우가 있는지 찾아보세요."
+     "\ucabd\uc9c0\ub97c \u2018\uc5f0\ud544 \u25a1\uc790\ub8e8 + \uacf5\ucc45 \u25a1\uad8c = \u25a1\uc6d0\u2019 \uaf34\ub85c \uc815\ub9ac\ud558\uace0 \ub450 \ucabd\uc9c0\ub97c \ub098\ub780\ud788 \ube44\uad50\ud574 \ubcf4\uc138\uc694.",
+     "\ud55c \ucabd\uc9c0\uc758 \ubaa8\ub4e0 \uc218\ub97c \uba87 \ubc30 \ud558\uba74 \ub2e4\ub978 \ucabd\uc9c0\uac00 \ub418\ub294 \uacbd\uc6b0\uac00 \uc788\ub294\uc9c0 \ucc3e\uc544\ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "build",
-    "prompt": "가 쪽지와 짝을 지어도 가격이 정해지지 않는 ‘새 쪽지’를 직접 만들어 보세요: 연필 p자루와 공책 q권을 사면 t원. 가 쪽지를 바탕으로 합계 t를 계산해 쓰고, 개수 p가 서로 다른 쪽지 2개를 만드세요. (이미 있는 가·나·라 쪽지는 안 돼요.)",
+    "prompt": "\uac00 \ucabd\uc9c0\uc640 \uc9dd\uc744 \uc9c0\uc5b4\ub3c4 \uac00\uaca9\uc774 \uc815\ud574\uc9c0\uc9c0 \uc54a\ub294 \u2018\uc0c8 \ucabd\uc9c0\u2019\ub97c \uc9c1\uc811 \ub9cc\ub4e4\uc5b4 \ubcf4\uc138\uc694: \uc5f0\ud544 p\uc790\ub8e8\uc640 \uacf5\ucc45 q\uad8c\uc744 \uc0ac\uba74 t\uc6d0. \uac00 \ucabd\uc9c0\ub97c \ubc14\ud0d5\uc73c\ub85c \ud569\uacc4 t\ub97c \uacc4\uc0b0\ud574 \uc4f0\uace0, \uac1c\uc218 p\uac00 \uc11c\ub85c \ub2e4\ub978 \ucabd\uc9c0 2\uac1c\ub97c \ub9cc\ub4dc\uc138\uc694. (\uc774\ubbf8 \uc788\ub294 \uac00\u00b7\ub098\u00b7\ub77c \ucabd\uc9c0\ub294 \uc548 \ub3fc\uc694.)",
     "vars": [
      {
       "name": "p",
-      "label": "연필 자루 수 p"
+      "label": "\uc5f0\ud544 \uc790\ub8e8 \uc218 p"
      },
      {
       "name": "q",
-      "label": "공책 권수 q"
+      "label": "\uacf5\ucc45 \uad8c\uc218 q"
      },
      {
       "name": "t",
-      "label": "합계 t(원)"
+      "label": "\ud569\uacc4 t(\uc6d0)"
      }
     ],
     "constraints": [
      {
       "id": "c1",
       "expr": "p>=1 && q>=1 && p==floor(p) && q==floor(q)",
-      "ok": "개수가 자연수예요.",
-      "fail": "연필과 공책의 개수는 1 이상의 자연수여야 해요."
+      "ok": "\uac1c\uc218\uac00 \uc790\uc5f0\uc218\uc608\uc694.",
+      "fail": "\uc5f0\ud544\uacfc \uacf5\ucc45\uc758 \uac1c\uc218\ub294 1 \uc774\uc0c1\uc758 \uc790\uc5f0\uc218\uc5ec\uc57c \ud574\uc694."
      },
      {
       "id": "c2",
       "expr": "3*p==2*q",
-      "ok": "개수 비가 가 쪽지와 같아요(2:3).",
-      "fail": "개수 비가 2:3이 아니라서 가 쪽지와 다른 정보를 줘 가격이 정해져 버려요."
+      "ok": "\uac1c\uc218 \ube44\uac00 \uac00 \ucabd\uc9c0\uc640 \uac19\uc544\uc694(2:3).",
+      "fail": "\uac1c\uc218 \ube44\uac00 2:3\uc774 \uc544\ub2c8\ub77c\uc11c \uac00 \ucabd\uc9c0\uc640 \ub2e4\ub978 \uc815\ubcf4\ub97c \uc918 \uac00\uaca9\uc774 \uc815\ud574\uc838 \ubc84\ub824\uc694."
      },
      {
       "id": "c3",
       "expr": "2*t==3100*p",
-      "ok": "합계가 가 쪽지를 같은 비율로 늘린 값이에요.",
-      "fail": "합계가 가 쪽지에서 계산한 값과 맞지 않아요."
+      "ok": "\ud569\uacc4\uac00 \uac00 \ucabd\uc9c0\ub97c \uac19\uc740 \ube44\uc728\ub85c \ub298\ub9b0 \uac12\uc774\uc5d0\uc694.",
+      "fail": "\ud569\uacc4\uac00 \uac00 \ucabd\uc9c0\uc5d0\uc11c \uacc4\uc0b0\ud55c \uac12\uacfc \ub9de\uc9c0 \uc54a\uc544\uc694."
      },
      {
       "id": "c4",
       "expr": "p!=2 && p!=4 && p!=6",
-      "ok": "가·나·라와 다른 새 쪽지예요.",
-      "fail": "p가 2, 4, 6이면 이미 있는 가·나·라 쪽지와 같아요."
+      "ok": "\uac00\u00b7\ub098\u00b7\ub77c\uc640 \ub2e4\ub978 \uc0c8 \ucabd\uc9c0\uc608\uc694.",
+      "fail": "p\uac00 2, 4, 6\uc774\uba74 \uc774\ubbf8 \uc788\ub294 \uac00\u00b7\ub098\u00b7\ub77c \ucabd\uc9c0\uc640 \uac19\uc544\uc694."
      }
     ],
     "need": 2,
@@ -1069,170 +1070,170 @@
       "t": 9300
      }
     ],
-    "explain": "개수가 가 쪽지의 몇 배(2:3의 배수)이고 합계도 같은 배수면 새 정보가 없어요. 예: 8자루+12권=12,400원, 10자루+15권=15,500원. (4자루+6권, 6자루+9권은 이미 나·라 쪽지로 있어요.)",
+    "explain": "\uac1c\uc218\uac00 \uac00 \ucabd\uc9c0\uc758 \uba87 \ubc30(2:3\uc758 \ubc30\uc218)\uc774\uace0 \ud569\uacc4\ub3c4 \uac19\uc740 \ubc30\uc218\uba74 \uc0c8 \uc815\ubcf4\uac00 \uc5c6\uc5b4\uc694. \uc608: 8\uc790\ub8e8+12\uad8c=12,400\uc6d0, 10\uc790\ub8e8+15\uad8c=15,500\uc6d0. (4\uc790\ub8e8+6\uad8c, 6\uc790\ub8e8+9\uad8c\uc740 \uc774\ubbf8 \ub098\u00b7\ub77c \ucabd\uc9c0\ub85c \uc788\uc5b4\uc694.)",
     "hints": [
-     "가 쪽지의 연필 수와 공책 수를 같은 수만큼 곱해서 늘려 보세요.",
-     "합계도 같은 수를 곱해야 앞뒤가 맞아요. 그 곱하는 수가 p와 어떤 관계인지 보세요."
+     "\uac00 \ucabd\uc9c0\uc758 \uc5f0\ud544 \uc218\uc640 \uacf5\ucc45 \uc218\ub97c \uac19\uc740 \uc218\ub9cc\ud07c \uacf1\ud574\uc11c \ub298\ub824 \ubcf4\uc138\uc694.",
+     "\ud569\uacc4\ub3c4 \uac19\uc740 \uc218\ub97c \uacf1\ud574\uc57c \uc55e\ub4a4\uac00 \ub9de\uc544\uc694. \uadf8 \uacf1\ud558\ub294 \uc218\uac00 p\uc640 \uc5b4\ub5a4 \uad00\uacc4\uc778\uc9c0 \ubcf4\uc138\uc694."
     ],
     "because": {
      "kind": "write",
      "minChars": 20,
      "id": "s2b",
-     "prompt": "새 쪽지를 받아도 연필 값과 공책 값을 알 수 없는 이유를 설명해 보세요.",
-     "placeholder": "예: 새 쪽지는 ...",
+     "prompt": "\uc0c8 \ucabd\uc9c0\ub97c \ubc1b\uc544\ub3c4 \uc5f0\ud544 \uac12\uacfc \uacf5\ucc45 \uac12\uc744 \uc54c \uc218 \uc5c6\ub294 \uc774\uc720\ub97c \uc124\uba85\ud574 \ubcf4\uc138\uc694.",
+     "placeholder": "\uc608: \uc0c8 \ucabd\uc9c0\ub294 ...",
      "hints": [
-      "새 쪽지와 가 쪽지를 식으로 쓰고, 둘의 관계를 살펴보세요.",
-      "식이 몇 개인지, 가능한 가격이 몇 가지인지 생각해 보세요."
+      "\uc0c8 \ucabd\uc9c0\uc640 \uac00 \ucabd\uc9c0\ub97c \uc2dd\uc73c\ub85c \uc4f0\uace0, \ub458\uc758 \uad00\uacc4\ub97c \uc0b4\ud3b4\ubcf4\uc138\uc694.",
+      "\uc2dd\uc774 \uba87 \uac1c\uc778\uc9c0, \uac00\ub2a5\ud55c \uac00\uaca9\uc774 \uba87 \uac00\uc9c0\uc778\uc9c0 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694."
      ],
      "checks": [
       {
        "id": "b1",
-       "label": "새 쪽지가 가 쪽지의 배수라 새 정보가 없다고 말했다",
+       "label": "\uc0c8 \ucabd\uc9c0\uac00 \uac00 \ucabd\uc9c0\uc758 \ubc30\uc218\ub77c \uc0c8 \uc815\ubcf4\uac00 \uc5c6\ub2e4\uace0 \ub9d0\ud588\ub2e4",
        "mode": "any",
        "patterns": [
-        "배",
-        "곱한|곱해|곱하",
-        "(똑같|같은\\s*(정보|내용|식|말|비율)|그대로|반복)",
-        "새로운\\s*(정보|내용).{0,6}(없|아니)"
+        "\ubc30",
+        "\uacf1\ud55c|\uacf1\ud574|\uacf1\ud558",
+        "(\ub611\uac19|\uac19\uc740\\s*(\uc815\ubcf4|\ub0b4\uc6a9|\uc2dd|\ub9d0|\ube44\uc728)|\uadf8\ub300\ub85c|\ubc18\ubcf5)",
+        "\uc0c8\ub85c\uc6b4\\s*(\uc815\ubcf4|\ub0b4\uc6a9).{0,6}(\uc5c6|\uc544\ub2c8)"
        ]
       },
       {
        "id": "b2",
-       "label": "식이 하나뿐이라 가격이 정해지지 않는다고 말했다",
+       "label": "\uc2dd\uc774 \ud558\ub098\ubfd0\uc774\ub77c \uac00\uaca9\uc774 \uc815\ud574\uc9c0\uc9c0 \uc54a\ub294\ub2e4\uace0 \ub9d0\ud588\ub2e4",
        "mode": "any",
        "patterns": [
-        "정해지지\\s*않",
-        "알\\s*수\\s*없",
-        "여러\\s*(개|가지|쌍)",
-        "무수히",
-        "하나(뿐|밖에)"
+        "\uc815\ud574\uc9c0\uc9c0\\s*\uc54a",
+        "\uc54c\\s*\uc218\\s*\uc5c6",
+        "\uc5ec\ub7ec\\s*(\uac1c|\uac00\uc9c0|\uc30d)",
+        "\ubb34\uc218\ud788",
+        "\ud558\ub098(\ubfd0|\ubc16\uc5d0)"
        ]
       }
      ],
      "selfAssess": [
-      "새 쪽지가 가 쪽지를 몇 배 한 것인지 밝혔나요?",
-      "가능한 가격의 예를 두 가지 이상 들어 보았나요?",
-      "‘식이 하나뿐’이라는 점을 썼나요?"
+      "\uc0c8 \ucabd\uc9c0\uac00 \uac00 \ucabd\uc9c0\ub97c \uba87 \ubc30 \ud55c \uac83\uc778\uc9c0 \ubc1d\ud614\ub098\uc694?",
+      "\uac00\ub2a5\ud55c \uac00\uaca9\uc758 \uc608\ub97c \ub450 \uac00\uc9c0 \uc774\uc0c1 \ub4e4\uc5b4 \ubcf4\uc558\ub098\uc694?",
+      "\u2018\uc2dd\uc774 \ud558\ub098\ubfd0\u2019\uc774\ub77c\ub294 \uc810\uc744 \uc37c\ub098\uc694?"
      ],
      "modelAnswers": [
       {
-       "text": "새 쪽지는 가 쪽지를 몇 배 한 것과 같아서 새로운 정보가 아니야. 결국 식이 하나뿐이라 연필 값과 공책 값이 정해지지 않아."
+       "text": "\uc0c8 \ucabd\uc9c0\ub294 \uac00 \ucabd\uc9c0\ub97c \uba87 \ubc30 \ud55c \uac83\uacfc \uac19\uc544\uc11c \uc0c8\ub85c\uc6b4 \uc815\ubcf4\uac00 \uc544\ub2c8\uc57c. \uacb0\uad6d \uc2dd\uc774 \ud558\ub098\ubfd0\uc774\ub77c \uc5f0\ud544 \uac12\uacfc \uacf5\ucc45 \uac12\uc774 \uc815\ud574\uc9c0\uc9c0 \uc54a\uc544."
       },
       {
-       "text": "새 쪽지는 가 쪽지를 4배로 늘린 것뿐이라서 결국 식이 하나뿐이야. 연필 500원 공책 700원도 되고 연필 800원 공책 500원도 되니까 가격이 여러 가지야.",
-       "note": "가능한 가격의 예까지 든 답"
+       "text": "\uc0c8 \ucabd\uc9c0\ub294 \uac00 \ucabd\uc9c0\ub97c 4\ubc30\ub85c \ub298\ub9b0 \uac83\ubfd0\uc774\ub77c\uc11c \uacb0\uad6d \uc2dd\uc774 \ud558\ub098\ubfd0\uc774\uc57c. \uc5f0\ud544 500\uc6d0 \uacf5\ucc45 700\uc6d0\ub3c4 \ub418\uace0 \uc5f0\ud544 800\uc6d0 \uacf5\ucc45 500\uc6d0\ub3c4 \ub418\ub2c8\uae4c \uac00\uaca9\uc774 \uc5ec\ub7ec \uac00\uc9c0\uc57c.",
+       "note": "\uac00\ub2a5\ud55c \uac00\uaca9\uc758 \uc608\uae4c\uc9c0 \ub4e0 \ub2f5"
       },
       {
-       "text": "새 쪽지는 가 쪽지에 2를 곱한 것뿐이라 새로운 정보가 되지 않아요. 식이 하나뿐이라 알 수 없어요.",
-       "note": "곱셈으로 관계를 말한 답"
+       "text": "\uc0c8 \ucabd\uc9c0\ub294 \uac00 \ucabd\uc9c0\uc5d0 2\ub97c \uacf1\ud55c \uac83\ubfd0\uc774\ub77c \uc0c8\ub85c\uc6b4 \uc815\ubcf4\uac00 \ub418\uc9c0 \uc54a\uc544\uc694. \uc2dd\uc774 \ud558\ub098\ubfd0\uc774\ub77c \uc54c \uc218 \uc5c6\uc5b4\uc694.",
+       "note": "\uacf1\uc148\uc73c\ub85c \uad00\uacc4\ub97c \ub9d0\ud55c \ub2f5"
       }
      ],
      "badAnswers": [
       {
-       "text": "쪽지가 더 있으면 알 수 있을 것 같아요. 지금은 조금 부족해요.",
-       "why": "새 쪽지가 왜 정보를 주지 않는지 설명하지 않았다."
+       "text": "\ucabd\uc9c0\uac00 \ub354 \uc788\uc73c\uba74 \uc54c \uc218 \uc788\uc744 \uac83 \uac19\uc544\uc694. \uc9c0\uae08\uc740 \uc870\uae08 \ubd80\uc871\ud574\uc694.",
+       "why": "\uc0c8 \ucabd\uc9c0\uac00 \uc65c \uc815\ubcf4\ub97c \uc8fc\uc9c0 \uc54a\ub294\uc9c0 \uc124\uba85\ud558\uc9c0 \uc54a\uc558\ub2e4."
       }
      ],
-     "humanReview": "‘같은 정보’라는 말을 이해하고 썼는지, 가능한 가격의 예가 실제 식을 만족하는지 사람이 확인한다."
+     "humanReview": "\u2018\uac19\uc740 \uc815\ubcf4\u2019\ub77c\ub294 \ub9d0\uc744 \uc774\ud574\ud558\uace0 \uc37c\ub294\uc9c0, \uac00\ub2a5\ud55c \uac00\uaca9\uc758 \uc608\uac00 \uc2e4\uc81c \uc2dd\uc744 \ub9cc\uc871\ud558\ub294\uc9c0 \uc0ac\ub78c\uc774 \ud655\uc778\ud55c\ub2e4."
     }
    }
   ],
   "rubric": [
    {
-    "criterion": "정보 충분성 판단",
-    "full": "배수 관계의 쪽지를 가려내고 서로 다른 정보를 주는 짝을 고름",
-    "partial": "일부만 맞음",
-    "none": "금액이 크면 정보가 많다고 판단"
+    "criterion": "\uc815\ubcf4 \ucda9\ubd84\uc131 \ud310\ub2e8",
+    "full": "\ubc30\uc218 \uad00\uacc4\uc758 \ucabd\uc9c0\ub97c \uac00\ub824\ub0b4\uace0 \uc11c\ub85c \ub2e4\ub978 \uc815\ubcf4\ub97c \uc8fc\ub294 \uc9dd\uc744 \uace0\ub984",
+    "partial": "\uc77c\ubd80\ub9cc \ub9de\uc74c",
+    "none": "\uae08\uc561\uc774 \ud06c\uba74 \uc815\ubcf4\uac00 \ub9ce\ub2e4\uace0 \ud310\ub2e8"
    },
    {
-    "criterion": "새 정보 없는 식 만들기",
-    "full": "가의 배수 꼴로 개수와 합계를 모두 맞게 만듦",
-    "partial": "개수만 맞고 합계가 틀림",
-    "none": "조건을 만족하는 쪽지가 없음"
+    "criterion": "\uc0c8 \uc815\ubcf4 \uc5c6\ub294 \uc2dd \ub9cc\ub4e4\uae30",
+    "full": "\uac00\uc758 \ubc30\uc218 \uaf34\ub85c \uac1c\uc218\uc640 \ud569\uacc4\ub97c \ubaa8\ub450 \ub9de\uac8c \ub9cc\ub4e6",
+    "partial": "\uac1c\uc218\ub9cc \ub9de\uace0 \ud569\uacc4\uac00 \ud2c0\ub9bc",
+    "none": "\uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294 \ucabd\uc9c0\uac00 \uc5c6\uc74c"
    }
   ],
   "alternatives": [
-   "식을 직접 풀어 보며 해가 하나로 정해지는지 확인하는 풀이도 타당하다.",
-   "가격을 구해서 각 쪽지를 검증하는 방법도 인정한다."
+   "\uc2dd\uc744 \uc9c1\uc811 \ud480\uc5b4 \ubcf4\uba70 \ud574\uac00 \ud558\ub098\ub85c \uc815\ud574\uc9c0\ub294\uc9c0 \ud655\uc778\ud558\ub294 \ud480\uc774\ub3c4 \ud0c0\ub2f9\ud558\ub2e4.",
+   "\uac00\uaca9\uc744 \uad6c\ud574\uc11c \uac01 \ucabd\uc9c0\ub97c \uac80\uc99d\ud558\ub294 \ubc29\ubc95\ub3c4 \uc778\uc815\ud55c\ub2e4."
   ],
   "hardCases": [
-   "다와 라처럼 한 쪽지가 관계를 말로만 주는 경우도 식으로 바꿔야 비교할 수 있다.",
-   "음수나 소수 개수 같은 비현실적 입력은 c1에서 걸러진다."
+   "\ub2e4\uc640 \ub77c\ucc98\ub7fc \ud55c \ucabd\uc9c0\uac00 \uad00\uacc4\ub97c \ub9d0\ub85c\ub9cc \uc8fc\ub294 \uacbd\uc6b0\ub3c4 \uc2dd\uc73c\ub85c \ubc14\uafd4\uc57c \ube44\uad50\ud560 \uc218 \uc788\ub2e4.",
+   "\uc74c\uc218\ub098 \uc18c\uc218 \uac1c\uc218 \uac19\uc740 \ube44\ud604\uc2e4\uc801 \uc785\ub825\uc740 c1\uc5d0\uc11c \uac78\ub7ec\uc9c4\ub2e4."
   ],
   "cautions": {
-   "language": "‘□’는 빈칸 표시이며 ‘□자루’는 ‘몇 자루’로 읽는다. 금액은 ‘3,100원’처럼 쉼표로 읽기 쉽게 적었다.",
-   "culture": "연필과 공책의 값은 가상의 숫자이며 실제 가격과 무관하다. 한국 원화 단위를 쓴다.",
-   "accessibility": "그림이 없고 쪽지를 모두 문장으로 제시한다."
+   "language": "\u2018\u25a1\u2019\ub294 \ube48\uce78 \ud45c\uc2dc\uc774\uba70 \u2018\u25a1\uc790\ub8e8\u2019\ub294 \u2018\uba87 \uc790\ub8e8\u2019\ub85c \uc77d\ub294\ub2e4. \uae08\uc561\uc740 \u20183,100\uc6d0\u2019\ucc98\ub7fc \uc27c\ud45c\ub85c \uc77d\uae30 \uc27d\uac8c \uc801\uc5c8\ub2e4.",
+   "culture": "\uc5f0\ud544\uacfc \uacf5\ucc45\uc758 \uac12\uc740 \uac00\uc0c1\uc758 \uc22b\uc790\uc774\uba70 \uc2e4\uc81c \uac00\uaca9\uacfc \ubb34\uad00\ud558\ub2e4. \ud55c\uad6d \uc6d0\ud654 \ub2e8\uc704\ub97c \uc4f4\ub2e4.",
+   "accessibility": "\uadf8\ub9bc\uc774 \uc5c6\uace0 \ucabd\uc9c0\ub97c \ubaa8\ub450 \ubb38\uc7a5\uc73c\ub85c \uc81c\uc2dc\ud55c\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "선택한 짝이 키와 일치하는지",
-    "새 쪽지의 개수와 합계가 조건을 만족하고 서로 다른지"
+    "\uc120\ud0dd\ud55c \uc9dd\uc774 \ud0a4\uc640 \uc77c\uce58\ud558\ub294\uc9c0",
+    "\uc0c8 \ucabd\uc9c0\uc758 \uac1c\uc218\uc640 \ud569\uacc4\uac00 \uc870\uac74\uc744 \ub9cc\uc871\ud558\uace0 \uc11c\ub85c \ub2e4\ub978\uc9c0"
    ],
    "human": [
-    "왜 정보가 반복되는지에 대한 이해와 서술의 정확성"
+    "\uc65c \uc815\ubcf4\uac00 \ubc18\ubcf5\ub418\ub294\uc9c0\uc5d0 \ub300\ud55c \uc774\ud574\uc640 \uc11c\uc220\uc758 \uc815\ud655\uc131"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "subject": "math",
   "grade": "M2",
   "level": 2,
-  "levelLabel": "중등",
+  "levelLabel": "\uc911\ub4f1",
   "uiLang": "ko",
   "curriculum": null,
   "id": "x-m-m2-06",
-  "topic": "일차함수",
-  "title": "점 하나를 지나는 직선은 몇 개일까?",
+  "topic": "\uc77c\ucc28\ud568\uc218",
+  "title": "\uc810 \ud558\ub098\ub97c \uc9c0\ub098\ub294 \uc9c1\uc120\uc740 \uba87 \uac1c\uc77c\uae4c?",
   "format": "build-many-verify",
   "generative": true,
   "minutes": 12,
-  "goal": "한 점을 지나는 일차함수의 기울기와 y절편 사이의 관계를 이용해 조건에 맞는 직선을 여러 개 만들고, 직선을 하나로 정하는 데 필요한 정보를 판단한다.",
+  "goal": "\ud55c \uc810\uc744 \uc9c0\ub098\ub294 \uc77c\ucc28\ud568\uc218\uc758 \uae30\uc6b8\uae30\uc640 y\uc808\ud3b8 \uc0ac\uc774\uc758 \uad00\uacc4\ub97c \uc774\uc6a9\ud574 \uc870\uac74\uc5d0 \ub9de\ub294 \uc9c1\uc120\uc744 \uc5ec\ub7ec \uac1c \ub9cc\ub4e4\uace0, \uc9c1\uc120\uc744 \ud558\ub098\ub85c \uc815\ud558\ub294 \ub370 \ud544\uc694\ud55c \uc815\ubcf4\ub97c \ud310\ub2e8\ud55c\ub2e4.",
   "thinking": [
-   "제약 속에서 여러 해 찾기",
-   "정보 충분성 판단하기",
-   "조건 사이의 관계 알아차리기"
+   "\uc81c\uc57d \uc18d\uc5d0\uc11c \uc5ec\ub7ec \ud574 \ucc3e\uae30",
+   "\uc815\ubcf4 \ucda9\ubd84\uc131 \ud310\ub2e8\ud558\uae30",
+   "\uc870\uac74 \uc0ac\uc774\uc758 \uad00\uacc4 \uc54c\uc544\ucc28\ub9ac\uae30"
   ],
-  "differsFromPlain": "단순 연습은 두 점이나 기울기로 직선의 식을 하나 구한다. 여기서는 점 하나만 있을 때 가능한 직선이 여럿임을 직접 만들어 확인하고, 어떤 정보를 더하면 하나로 정해지는지 판단한다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \ub450 \uc810\uc774\ub098 \uae30\uc6b8\uae30\ub85c \uc9c1\uc120\uc758 \uc2dd\uc744 \ud558\ub098 \uad6c\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \uc810 \ud558\ub098\ub9cc \uc788\uc744 \ub54c \uac00\ub2a5\ud55c \uc9c1\uc120\uc774 \uc5ec\ub7ff\uc784\uc744 \uc9c1\uc811 \ub9cc\ub4e4\uc5b4 \ud655\uc778\ud558\uace0, \uc5b4\ub5a4 \uc815\ubcf4\ub97c \ub354\ud558\uba74 \ud558\ub098\ub85c \uc815\ud574\uc9c0\ub294\uc9c0 \ud310\ub2e8\ud55c\ub2e4.",
   "prerequisites": [
-   "일차함수 y=ax+b에서 기울기와 y절편의 뜻",
-   "점의 좌표 읽기"
+   "\uc77c\ucc28\ud568\uc218 y=ax+b\uc5d0\uc11c \uae30\uc6b8\uae30\uc640 y\uc808\ud3b8\uc758 \ub73b",
+   "\uc810\uc758 \uc88c\ud45c \uc77d\uae30"
   ],
-  "material": "좌표평면 위의 점 P(2, 5)는 x좌표가 2, y좌표가 5인 점이에요. 점 P를 지나는 직선 y = ax + b 를 여러 개 만들어 보고, 직선을 하나로 정하려면 정보가 더 무엇이 필요한지 생각해 봅시다. (그림은 없고 식으로만 다뤄요.)",
+  "material": "\uc88c\ud45c\ud3c9\uba74 \uc704\uc758 \uc810 P(2, 5)\ub294 x\uc88c\ud45c\uac00 2, y\uc88c\ud45c\uac00 5\uc778 \uc810\uc774\uc5d0\uc694. \uc810 P\ub97c \uc9c0\ub098\ub294 \uc9c1\uc120 y = ax + b \ub97c \uc5ec\ub7ec \uac1c \ub9cc\ub4e4\uc5b4 \ubcf4\uace0, \uc9c1\uc120\uc744 \ud558\ub098\ub85c \uc815\ud558\ub824\uba74 \uc815\ubcf4\uac00 \ub354 \ubb34\uc5c7\uc774 \ud544\uc694\ud55c\uc9c0 \uc0dd\uac01\ud574 \ubd05\uc2dc\ub2e4. (\uadf8\ub9bc\uc740 \uc5c6\uace0 \uc2dd\uc73c\ub85c\ub9cc \ub2e4\ub904\uc694.)",
   "steps": [
    {
     "id": "s1",
     "kind": "build",
-    "prompt": "점 P(2, 5)를 지나는 직선 y = ax + b 중에서, 기울기 a가 0보다 크고 y절편 b가 자연수인 직선을 서로 다른 것으로 3개 만드세요. (a는 소수로 써도 돼요. 예: 1.5)",
+    "prompt": "\uc810 P(2, 5)\ub97c \uc9c0\ub098\ub294 \uc9c1\uc120 y = ax + b \uc911\uc5d0\uc11c, \uae30\uc6b8\uae30 a\uac00 0\ubcf4\ub2e4 \ud06c\uace0 y\uc808\ud3b8 b\uac00 \uc790\uc5f0\uc218\uc778 \uc9c1\uc120\uc744 \uc11c\ub85c \ub2e4\ub978 \uac83\uc73c\ub85c 3\uac1c \ub9cc\ub4dc\uc138\uc694. (a\ub294 \uc18c\uc218\ub85c \uc368\ub3c4 \ub3fc\uc694. \uc608: 1.5)",
     "vars": [
      {
       "name": "a",
-      "label": "기울기 a"
+      "label": "\uae30\uc6b8\uae30 a"
      },
      {
       "name": "b",
-      "label": "y절편 b"
+      "label": "y\uc808\ud3b8 b"
      }
     ],
     "constraints": [
      {
       "id": "c1",
       "expr": "a>0",
-      "ok": "기울기가 양수예요.",
-      "fail": "기울기 a는 0보다 커야 해요."
+      "ok": "\uae30\uc6b8\uae30\uac00 \uc591\uc218\uc608\uc694.",
+      "fail": "\uae30\uc6b8\uae30 a\ub294 0\ubcf4\ub2e4 \ucee4\uc57c \ud574\uc694."
      },
      {
       "id": "c2",
       "expr": "b>=1 && b==floor(b)",
-      "ok": "y절편이 자연수예요.",
-      "fail": "y절편 b는 자연수여야 해요."
+      "ok": "y\uc808\ud3b8\uc774 \uc790\uc5f0\uc218\uc608\uc694.",
+      "fail": "y\uc808\ud3b8 b\ub294 \uc790\uc5f0\uc218\uc5ec\uc57c \ud574\uc694."
      },
      {
       "id": "c3",
       "expr": "2*a+b==5",
-      "ok": "점 P(2, 5)를 지나요.",
-      "fail": "x=2를 넣었을 때 y가 5가 되지 않아 점 P를 지나지 않아요."
+      "ok": "\uc810 P(2, 5)\ub97c \uc9c0\ub098\uc694.",
+      "fail": "x=2\ub97c \ub123\uc5c8\uc744 \ub54c y\uac00 5\uac00 \ub418\uc9c0 \uc54a\uc544 \uc810 P\ub97c \uc9c0\ub098\uc9c0 \uc54a\uc544\uc694."
      }
     ],
     "need": 3,
@@ -1269,42 +1270,42 @@
       "b": 7
      }
     ],
-    "explain": "x=2, y=5를 y=ax+b에 넣으면 2a+b=5예요. b=1이면 a=2, b=2이면 a=1.5, b=3이면 a=1, b=4이면 a=0.5예요. b=5이면 a=0이 되어 기울기가 양수가 아니에요. 그러므로 조건에 맞는 직선은 모두 4개뿐이에요.",
+    "explain": "x=2, y=5\ub97c y=ax+b\uc5d0 \ub123\uc73c\uba74 2a+b=5\uc608\uc694. b=1\uc774\uba74 a=2, b=2\uc774\uba74 a=1.5, b=3\uc774\uba74 a=1, b=4\uc774\uba74 a=0.5\uc608\uc694. b=5\uc774\uba74 a=0\uc774 \ub418\uc5b4 \uae30\uc6b8\uae30\uac00 \uc591\uc218\uac00 \uc544\ub2c8\uc5d0\uc694. \uadf8\ub7ec\ubbc0\ub85c \uc870\uac74\uc5d0 \ub9de\ub294 \uc9c1\uc120\uc740 \ubaa8\ub450 4\uac1c\ubfd0\uc774\uc5d0\uc694.",
     "hints": [
-     "점 P를 지나려면 x=2일 때 y=5가 되어야 해요. 이를 식에 넣으면 a와 b 사이에 어떤 관계가 생기나요?",
-     "b를 먼저 하나 정하고 a를 맞춘 뒤, 모든 조건(양수, 자연수)을 확인해 보세요."
+     "\uc810 P\ub97c \uc9c0\ub098\ub824\uba74 x=2\uc77c \ub54c y=5\uac00 \ub418\uc5b4\uc57c \ud574\uc694. \uc774\ub97c \uc2dd\uc5d0 \ub123\uc73c\uba74 a\uc640 b \uc0ac\uc774\uc5d0 \uc5b4\ub5a4 \uad00\uacc4\uac00 \uc0dd\uae30\ub098\uc694?",
+     "b\ub97c \uba3c\uc800 \ud558\ub098 \uc815\ud558\uace0 a\ub97c \ub9de\ucd98 \ub4a4, \ubaa8\ub4e0 \uc870\uac74(\uc591\uc218, \uc790\uc5f0\uc218)\uc744 \ud655\uc778\ud574 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "choose",
     "multi": true,
-    "prompt": "점 P(2, 5)를 지나는 직선을 하나로 정하려고 해요. 다음 정보 중 하나만 더 있을 때 직선이 하나로 정해지는 것을 모두 고르세요.",
+    "prompt": "\uc810 P(2, 5)\ub97c \uc9c0\ub098\ub294 \uc9c1\uc120\uc744 \ud558\ub098\ub85c \uc815\ud558\ub824\uace0 \ud574\uc694. \ub2e4\uc74c \uc815\ubcf4 \uc911 \ud558\ub098\ub9cc \ub354 \uc788\uc744 \ub54c \uc9c1\uc120\uc774 \ud558\ub098\ub85c \uc815\ud574\uc9c0\ub294 \uac83\uc744 \ubaa8\ub450 \uace0\ub974\uc138\uc694.",
     "options": [
      {
       "id": "a",
-      "text": "직선이 점 Q(4, 9)도 지난다",
-      "reveals": "점 하나가 더 있으면 a와 b 사이에 식이 하나 더 생기는지 확인한 선택이에요."
+      "text": "\uc9c1\uc120\uc774 \uc810 Q(4, 9)\ub3c4 \uc9c0\ub09c\ub2e4",
+      "reveals": "\uc810 \ud558\ub098\uac00 \ub354 \uc788\uc73c\uba74 a\uc640 b \uc0ac\uc774\uc5d0 \uc2dd\uc774 \ud558\ub098 \ub354 \uc0dd\uae30\ub294\uc9c0 \ud655\uc778\ud55c \uc120\ud0dd\uc774\uc5d0\uc694."
      },
      {
       "id": "b",
-      "text": "직선의 기울기가 양수이다",
-      "reveals": "‘양수’라는 조건이 값 하나를 정하는지, 아니면 여러 값을 남기는지 앞에서 만든 직선들과 견주어 보세요."
+      "text": "\uc9c1\uc120\uc758 \uae30\uc6b8\uae30\uac00 \uc591\uc218\uc774\ub2e4",
+      "reveals": "\u2018\uc591\uc218\u2019\ub77c\ub294 \uc870\uac74\uc774 \uac12 \ud558\ub098\ub97c \uc815\ud558\ub294\uc9c0, \uc544\ub2c8\uba74 \uc5ec\ub7ec \uac12\uc744 \ub0a8\uae30\ub294\uc9c0 \uc55e\uc5d0\uc11c \ub9cc\ub4e0 \uc9c1\uc120\ub4e4\uacfc \uacac\uc8fc\uc5b4 \ubcf4\uc138\uc694."
      },
      {
       "id": "c",
-      "text": "직선의 y절편이 3이다",
-      "reveals": "y절편 값을 알면 a와 b 사이의 관계에서 a가 하나로 정해지는지 확인한 선택이에요."
+      "text": "\uc9c1\uc120\uc758 y\uc808\ud3b8\uc774 3\uc774\ub2e4",
+      "reveals": "y\uc808\ud3b8 \uac12\uc744 \uc54c\uba74 a\uc640 b \uc0ac\uc774\uc758 \uad00\uacc4\uc5d0\uc11c a\uac00 \ud558\ub098\ub85c \uc815\ud574\uc9c0\ub294\uc9c0 \ud655\uc778\ud55c \uc120\ud0dd\uc774\uc5d0\uc694."
      },
      {
       "id": "d",
-      "text": "직선이 점 R(2, 8)도 지난다",
-      "reveals": "R의 x좌표와 P의 x좌표를 비교해 보았나요? 두 점을 지나는 직선이 y=ax+b 꼴로 나타내질 수 있는지 생각해 보세요."
+      "text": "\uc9c1\uc120\uc774 \uc810 R(2, 8)\ub3c4 \uc9c0\ub09c\ub2e4",
+      "reveals": "R\uc758 x\uc88c\ud45c\uc640 P\uc758 x\uc88c\ud45c\ub97c \ube44\uad50\ud574 \ubcf4\uc558\ub098\uc694? \ub450 \uc810\uc744 \uc9c0\ub098\ub294 \uc9c1\uc120\uc774 y=ax+b \uaf34\ub85c \ub098\ud0c0\ub0b4\uc9c8 \uc218 \uc788\ub294\uc9c0 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694."
      },
      {
       "id": "e",
-      "text": "직선의 기울기가 2이다",
-      "reveals": "기울기 값을 알면 2a+b=5에서 b가 하나로 정해지는지 확인한 선택이에요."
+      "text": "\uc9c1\uc120\uc758 \uae30\uc6b8\uae30\uac00 2\uc774\ub2e4",
+      "reveals": "\uae30\uc6b8\uae30 \uac12\uc744 \uc54c\uba74 2a+b=5\uc5d0\uc11c b\uac00 \ud558\ub098\ub85c \uc815\ud574\uc9c0\ub294\uc9c0 \ud655\uc778\ud55c \uc120\ud0dd\uc774\uc5d0\uc694."
      }
     ],
     "correct": [
@@ -1312,298 +1313,299 @@
      "c",
      "e"
     ],
-    "explain": "점 P를 지나는 조건은 2a+b=5 하나뿐이라 식이 하나 더 필요해요. 점 Q(4, 9)를 쓰면 4a+b=9이고, 두 식에서 a=2, b=1이에요. y절편이 3이면 b=3이므로 a=1이에요. 기울기가 2이면 a=2이므로 b=1이에요. 기울기가 양수라는 조건은 값을 하나로 정하지 못해요. R(2, 8)은 P와 x좌표가 같아서 두 점을 지나는 직선이 x축에 수직이 되고, y=ax+b 꼴로 나타낼 수 없어요.",
+    "explain": "\uc810 P\ub97c \uc9c0\ub098\ub294 \uc870\uac74\uc740 2a+b=5 \ud558\ub098\ubfd0\uc774\ub77c \uc2dd\uc774 \ud558\ub098 \ub354 \ud544\uc694\ud574\uc694. \uc810 Q(4, 9)\ub97c \uc4f0\uba74 4a+b=9\uc774\uace0, \ub450 \uc2dd\uc5d0\uc11c a=2, b=1\uc774\uc5d0\uc694. y\uc808\ud3b8\uc774 3\uc774\uba74 b=3\uc774\ubbc0\ub85c a=1\uc774\uc5d0\uc694. \uae30\uc6b8\uae30\uac00 2\uc774\uba74 a=2\uc774\ubbc0\ub85c b=1\uc774\uc5d0\uc694. \uae30\uc6b8\uae30\uac00 \uc591\uc218\ub77c\ub294 \uc870\uac74\uc740 \uac12\uc744 \ud558\ub098\ub85c \uc815\ud558\uc9c0 \ubabb\ud574\uc694. R(2, 8)\uc740 P\uc640 x\uc88c\ud45c\uac00 \uac19\uc544\uc11c \ub450 \uc810\uc744 \uc9c0\ub098\ub294 \uc9c1\uc120\uc774 x\ucd95\uc5d0 \uc218\uc9c1\uc774 \ub418\uace0, y=ax+b \uaf34\ub85c \ub098\ud0c0\ub0bc \uc218 \uc5c6\uc5b4\uc694.",
     "hints": [
-     "각 정보를 a와 b에 대한 식이나 부등식으로 바꿔 보세요.",
-     "2a+b=5와 함께 쓰면 a와 b가 모두 하나로 정해지는지 하나씩 확인해 보세요."
+     "\uac01 \uc815\ubcf4\ub97c a\uc640 b\uc5d0 \ub300\ud55c \uc2dd\uc774\ub098 \ubd80\ub4f1\uc2dd\uc73c\ub85c \ubc14\uafd4 \ubcf4\uc138\uc694.",
+     "2a+b=5\uc640 \ud568\uaed8 \uc4f0\uba74 a\uc640 b\uac00 \ubaa8\ub450 \ud558\ub098\ub85c \uc815\ud574\uc9c0\ub294\uc9c0 \ud558\ub098\uc529 \ud655\uc778\ud574 \ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "제약에 맞는 직선 만들기",
-    "full": "서로 다른 b로 3개 이상, 모든 조건을 만족",
-    "partial": "조건 일부 위반 또는 2개",
-    "none": "점 P를 지나지 않음"
+    "criterion": "\uc81c\uc57d\uc5d0 \ub9de\ub294 \uc9c1\uc120 \ub9cc\ub4e4\uae30",
+    "full": "\uc11c\ub85c \ub2e4\ub978 b\ub85c 3\uac1c \uc774\uc0c1, \ubaa8\ub4e0 \uc870\uac74\uc744 \ub9cc\uc871",
+    "partial": "\uc870\uac74 \uc77c\ubd80 \uc704\ubc18 \ub610\ub294 2\uac1c",
+    "none": "\uc810 P\ub97c \uc9c0\ub098\uc9c0 \uc54a\uc74c"
    },
    {
-    "criterion": "정보 충분성 판단",
-    "full": "식이 하나 더 생기는 정보를 가려내고 R의 문제도 포착",
-    "partial": "일부만 맞음",
-    "none": "모든 정보가 충분하다고 판단"
+    "criterion": "\uc815\ubcf4 \ucda9\ubd84\uc131 \ud310\ub2e8",
+    "full": "\uc2dd\uc774 \ud558\ub098 \ub354 \uc0dd\uae30\ub294 \uc815\ubcf4\ub97c \uac00\ub824\ub0b4\uace0 R\uc758 \ubb38\uc81c\ub3c4 \ud3ec\ucc29",
+    "partial": "\uc77c\ubd80\ub9cc \ub9de\uc74c",
+    "none": "\ubaa8\ub4e0 \uc815\ubcf4\uac00 \ucda9\ubd84\ud558\ub2e4\uace0 \ud310\ub2e8"
    }
   ],
   "alternatives": [
-   "b를 먼저 정하든 a를 먼저 정하든 같은 직선들이 나온다.",
-   "a=1.5 대신 분수(3/2)로 쓰는 생각도 같은 직선이다. 입력은 소수로 한다."
+   "b\ub97c \uba3c\uc800 \uc815\ud558\ub4e0 a\ub97c \uba3c\uc800 \uc815\ud558\ub4e0 \uac19\uc740 \uc9c1\uc120\ub4e4\uc774 \ub098\uc628\ub2e4.",
+   "a=1.5 \ub300\uc2e0 \ubd84\uc218(3/2)\ub85c \uc4f0\ub294 \uc0dd\uac01\ub3c4 \uac19\uc740 \uc9c1\uc120\uc774\ub2e4. \uc785\ub825\uc740 \uc18c\uc218\ub85c \ud55c\ub2e4."
   ],
   "hardCases": [
-   "b가 자연수라는 조건을 빠뜨리면 무수히 많은 직선이 나온다.",
-   "점 R이 직선 y=ax+b로 나타낼 수 없다는 점은 이 학년에서 놓치기 쉬우므로 설명이 필요하다."
+   "b\uac00 \uc790\uc5f0\uc218\ub77c\ub294 \uc870\uac74\uc744 \ube60\ub728\ub9ac\uba74 \ubb34\uc218\ud788 \ub9ce\uc740 \uc9c1\uc120\uc774 \ub098\uc628\ub2e4.",
+   "\uc810 R\uc774 \uc9c1\uc120 y=ax+b\ub85c \ub098\ud0c0\ub0bc \uc218 \uc5c6\ub2e4\ub294 \uc810\uc740 \uc774 \ud559\ub144\uc5d0\uc11c \ub193\uce58\uae30 \uc26c\uc6b0\ubbc0\ub85c \uc124\uba85\uc774 \ud544\uc694\ud558\ub2e4."
   ],
   "cautions": {
-   "language": "P(2, 5)는 ‘점 P의 좌표는 2, 5’로 읽는다고 적었다. ‘a를 소수로’라는 지시로 분수 입력의 혼선을 막았다.",
-   "culture": "문화 의존 소재가 없다.",
-   "accessibility": "그림 없이 좌표와 식만 쓴다. 색에 의존하지 않는다."
+   "language": "P(2, 5)\ub294 \u2018\uc810 P\uc758 \uc88c\ud45c\ub294 2, 5\u2019\ub85c \uc77d\ub294\ub2e4\uace0 \uc801\uc5c8\ub2e4. \u2018a\ub97c \uc18c\uc218\ub85c\u2019\ub77c\ub294 \uc9c0\uc2dc\ub85c \ubd84\uc218 \uc785\ub825\uc758 \ud63c\uc120\uc744 \ub9c9\uc558\ub2e4.",
+   "culture": "\ubb38\ud654 \uc758\uc874 \uc18c\uc7ac\uac00 \uc5c6\ub2e4.",
+   "accessibility": "\uadf8\ub9bc \uc5c6\uc774 \uc88c\ud45c\uc640 \uc2dd\ub9cc \uc4f4\ub2e4. \uc0c9\uc5d0 \uc758\uc874\ud558\uc9c0 \uc54a\ub294\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "만든 직선이 모든 조건을 만족하고 서로 다른지",
-    "정보 선택이 키와 일치하는지"
+    "\ub9cc\ub4e0 \uc9c1\uc120\uc774 \ubaa8\ub4e0 \uc870\uac74\uc744 \ub9cc\uc871\ud558\uace0 \uc11c\ub85c \ub2e4\ub978\uc9c0",
+    "\uc815\ubcf4 \uc120\ud0dd\uc774 \ud0a4\uc640 \uc77c\uce58\ud558\ub294\uc9c0"
    ],
    "human": [
-    "선택 이유에 대한 설명(이 과제에는 서술 단계가 없다)"
+    "\uc120\ud0dd \uc774\uc720\uc5d0 \ub300\ud55c \uc124\uba85(\uc774 \uacfc\uc81c\uc5d0\ub294 \uc11c\uc220 \ub2e8\uacc4\uac00 \uc5c6\ub2e4)"
    ]
-  }
+  },
+  "status": "reviewed-ai"
  },
  {
   "subject": "math",
   "grade": "M2",
   "level": 2,
-  "levelLabel": "중등",
+  "levelLabel": "\uc911\ub4f1",
   "uiLang": "ko",
   "curriculum": null,
   "id": "x-m-m2-07",
-  "topic": "일차함수",
-  "title": "표에서 일차함수를 판단한 풀이 고치기",
+  "topic": "\uc77c\ucc28\ud568\uc218",
+  "title": "\ud45c\uc5d0\uc11c \uc77c\ucc28\ud568\uc218\ub97c \ud310\ub2e8\ud55c \ud480\uc774 \uace0\uce58\uae30",
   "format": "find-error-fix",
   "generative": false,
   "minutes": 12,
-  "goal": "표만 보고 일차함수인지 판단할 때 x의 증가량을 함께 보아야 함을 알고, 풀이의 오류를 고쳐 새로운 표에 적용한다.",
+  "goal": "\ud45c\ub9cc \ubcf4\uace0 \uc77c\ucc28\ud568\uc218\uc778\uc9c0 \ud310\ub2e8\ud560 \ub54c x\uc758 \uc99d\uac00\ub7c9\uc744 \ud568\uaed8 \ubcf4\uc544\uc57c \ud568\uc744 \uc54c\uace0, \ud480\uc774\uc758 \uc624\ub958\ub97c \uace0\uccd0 \uc0c8\ub85c\uc6b4 \ud45c\uc5d0 \uc801\uc6a9\ud55c\ub2e4.",
   "thinking": [
-   "오류 위치 찾기",
-   "판단 기준 수정하기",
-   "고친 기준을 새 자료에 적용하기"
+   "\uc624\ub958 \uc704\uce58 \ucc3e\uae30",
+   "\ud310\ub2e8 \uae30\uc900 \uc218\uc815\ud558\uae30",
+   "\uace0\uce5c \uae30\uc900\uc744 \uc0c8 \uc790\ub8cc\uc5d0 \uc801\uc6a9\ud558\uae30"
   ],
-  "differsFromPlain": "단순 연습은 일차함수의 식을 구하거나 값을 계산한다. 여기서는 누군가의 판단 과정이 어디서 틀렸는지 찾고, 올바른 기준으로 새 표를 판단한다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uc77c\ucc28\ud568\uc218\uc758 \uc2dd\uc744 \uad6c\ud558\uac70\ub098 \uac12\uc744 \uacc4\uc0b0\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \ub204\uad70\uac00\uc758 \ud310\ub2e8 \uacfc\uc815\uc774 \uc5b4\ub514\uc11c \ud2c0\ub838\ub294\uc9c0 \ucc3e\uace0, \uc62c\ubc14\ub978 \uae30\uc900\uc73c\ub85c \uc0c8 \ud45c\ub97c \ud310\ub2e8\ud55c\ub2e4.",
   "prerequisites": [
-   "일차함수 y=ax+b (a≠0)의 뜻",
-   "표로 나타낸 두 양 사이의 관계 읽기"
+   "\uc77c\ucc28\ud568\uc218 y=ax+b (a\u22600)\uc758 \ub73b",
+   "\ud45c\ub85c \ub098\ud0c0\ub0b8 \ub450 \uc591 \uc0ac\uc774\uc758 \uad00\uacc4 \uc77d\uae30"
   ],
-  "material": "표에서 x와 y의 관계가 일차함수(y=ax+b, a≠0)인지 알아보려고 해요. 표를 말로 읽을게요. x가 1, 2, 3, 5일 때 y는 차례로 5, 8, 11, 17이에요. (표: x | 1 2 3 5 / y | 5 8 11 17)",
+  "material": "\ud45c\uc5d0\uc11c x\uc640 y\uc758 \uad00\uacc4\uac00 \uc77c\ucc28\ud568\uc218(y=ax+b, a\u22600)\uc778\uc9c0 \uc54c\uc544\ubcf4\ub824\uace0 \ud574\uc694. \ud45c\ub97c \ub9d0\ub85c \uc77d\uc744\uac8c\uc694. x\uac00 1, 2, 3, 5\uc77c \ub54c y\ub294 \ucc28\ub840\ub85c 5, 8, 11, 17\uc774\uc5d0\uc694. (\ud45c: x | 1 2 3 5 / y | 5 8 11 17)",
   "steps": [
    {
     "id": "s1",
     "kind": "pickLine",
-    "prompt": "다음은 한 학생의 풀이예요. 잘못된 줄을 하나 고르세요.",
+    "prompt": "\ub2e4\uc74c\uc740 \ud55c \ud559\uc0dd\uc758 \ud480\uc774\uc608\uc694. \uc798\ubabb\ub41c \uc904\uc744 \ud558\ub098 \uace0\ub974\uc138\uc694.",
     "lines": [
-     "x가 1에서 2로 1 늘 때 y는 5에서 8로 3 늘어난다.",
-     "x가 2에서 3으로 1 늘 때 y는 8에서 11로 3 늘어난다.",
-     "x가 3에서 5로 늘 때 y는 11에서 17로 6 늘어난다.",
-     "y의 증가량이 3, 3, 6으로 일정하지 않으므로 일차함수가 아니다."
+     "x\uac00 1\uc5d0\uc11c 2\ub85c 1 \ub298 \ub54c y\ub294 5\uc5d0\uc11c 8\ub85c 3 \ub298\uc5b4\ub09c\ub2e4.",
+     "x\uac00 2\uc5d0\uc11c 3\uc73c\ub85c 1 \ub298 \ub54c y\ub294 8\uc5d0\uc11c 11\ub85c 3 \ub298\uc5b4\ub09c\ub2e4.",
+     "x\uac00 3\uc5d0\uc11c 5\ub85c \ub298 \ub54c y\ub294 11\uc5d0\uc11c 17\ub85c 6 \ub298\uc5b4\ub09c\ub2e4.",
+     "y\uc758 \uc99d\uac00\ub7c9\uc774 3, 3, 6\uc73c\ub85c \uc77c\uc815\ud558\uc9c0 \uc54a\uc73c\ubbc0\ub85c \uc77c\ucc28\ud568\uc218\uac00 \uc544\ub2c8\ub2e4."
     ],
     "wrong": [
      3
     ],
-    "explain": "4번 줄이 틀렸어요. 세 번째 구간은 x가 1이 아니라 2만큼 늘었어요. x의 증가량이 다르면 y의 증가량만 비교하면 안 돼요. y의 증가량 ÷ x의 증가량으로 맞춰 보면 3, 3, 6÷2=3으로 모두 같아서 일차함수(y=3x+2)예요.",
+    "explain": "4\ubc88 \uc904\uc774 \ud2c0\ub838\uc5b4\uc694. \uc138 \ubc88\uc9f8 \uad6c\uac04\uc740 x\uac00 1\uc774 \uc544\ub2c8\ub77c 2\ub9cc\ud07c \ub298\uc5c8\uc5b4\uc694. x\uc758 \uc99d\uac00\ub7c9\uc774 \ub2e4\ub974\uba74 y\uc758 \uc99d\uac00\ub7c9\ub9cc \ube44\uad50\ud558\uba74 \uc548 \ub3fc\uc694. y\uc758 \uc99d\uac00\ub7c9 \u00f7 x\uc758 \uc99d\uac00\ub7c9\uc73c\ub85c \ub9de\ucdb0 \ubcf4\uba74 3, 3, 6\u00f72=3\uc73c\ub85c \ubaa8\ub450 \uac19\uc544\uc11c \uc77c\ucc28\ud568\uc218(y=3x+2)\uc608\uc694.",
     "hints": [
-     "각 줄이 표의 어떤 구간을 비교하는지 적고, 그 구간들의 조건이 서로 같은지 표에서 확인해 보세요.",
-     "구간마다 x가 변한 양과 y가 변한 양을 각각 적고, 각 줄의 결론이 그 기록에서 나오는지 따져 보세요."
+     "\uac01 \uc904\uc774 \ud45c\uc758 \uc5b4\ub5a4 \uad6c\uac04\uc744 \ube44\uad50\ud558\ub294\uc9c0 \uc801\uace0, \uadf8 \uad6c\uac04\ub4e4\uc758 \uc870\uac74\uc774 \uc11c\ub85c \uac19\uc740\uc9c0 \ud45c\uc5d0\uc11c \ud655\uc778\ud574 \ubcf4\uc138\uc694.",
+     "\uad6c\uac04\ub9c8\ub2e4 x\uac00 \ubcc0\ud55c \uc591\uacfc y\uac00 \ubcc0\ud55c \uc591\uc744 \uac01\uac01 \uc801\uace0, \uac01 \uc904\uc758 \uacb0\ub860\uc774 \uadf8 \uae30\ub85d\uc5d0\uc11c \ub098\uc624\ub294\uc9c0 \ub530\uc838 \ubcf4\uc138\uc694."
     ]
    },
    {
     "kind": "write",
     "minChars": 25,
     "id": "s2",
-    "prompt": "이 풀이를 어떻게 고치면 될까요? 올바른 판단 방법과 이 표에 대한 결론을 써 보세요.",
-    "placeholder": "예: x의 증가량도 같이 보면 ...",
+    "prompt": "\uc774 \ud480\uc774\ub97c \uc5b4\ub5bb\uac8c \uace0\uce58\uba74 \ub420\uae4c\uc694? \uc62c\ubc14\ub978 \ud310\ub2e8 \ubc29\ubc95\uacfc \uc774 \ud45c\uc5d0 \ub300\ud55c \uacb0\ub860\uc744 \uc368 \ubcf4\uc138\uc694.",
+    "placeholder": "\uc608: x\uc758 \uc99d\uac00\ub7c9\ub3c4 \uac19\uc774 \ubcf4\uba74 ...",
     "hints": [
-     "각 구간의 y의 증가량과 x의 증가량을 어떻게 연결하면 구간마다 비교할 수 있을지 생각해 보세요.",
-     "비교한 값이 모두 같을 때와 다를 때 결론이 어떻게 달라지는지 쓰세요."
+     "\uac01 \uad6c\uac04\uc758 y\uc758 \uc99d\uac00\ub7c9\uacfc x\uc758 \uc99d\uac00\ub7c9\uc744 \uc5b4\ub5bb\uac8c \uc5f0\uacb0\ud558\uba74 \uad6c\uac04\ub9c8\ub2e4 \ube44\uad50\ud560 \uc218 \uc788\uc744\uc9c0 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694.",
+     "\ube44\uad50\ud55c \uac12\uc774 \ubaa8\ub450 \uac19\uc744 \ub54c\uc640 \ub2e4\ub97c \ub54c \uacb0\ub860\uc774 \uc5b4\ub5bb\uac8c \ub2ec\ub77c\uc9c0\ub294\uc9c0 \uc4f0\uc138\uc694."
     ],
     "checks": [
      {
       "id": "f1",
-      "label": "x의 증가량과 함께 비교하는 방법(나눈 값, 기울기, 변화율)을 썼다",
+      "label": "x\uc758 \uc99d\uac00\ub7c9\uacfc \ud568\uaed8 \ube44\uad50\ud558\ub294 \ubc29\ubc95(\ub098\ub208 \uac12, \uae30\uc6b8\uae30, \ubcc0\ud654\uc728)\uc744 \uc37c\ub2e4",
       "mode": "any",
       "patterns": [
-       "기울기",
-       "변화율",
-       "(나누|나눈|나눠|나눈)",
-       "x가\\s*1\\s*(씩\\s*)?(늘|증가)",
-       "x의\\s*증가량"
+       "\uae30\uc6b8\uae30",
+       "\ubcc0\ud654\uc728",
+       "(\ub098\ub204|\ub098\ub208|\ub098\ub220|\ub098\ub208)",
+       "x\uac00\\s*1\\s*(\uc529\\s*)?(\ub298|\uc99d\uac00)",
+       "x\uc758\\s*\uc99d\uac00\ub7c9"
       ]
      },
      {
       "id": "f2",
-      "label": "이 표가 일차함수라는 결론을 썼다",
+      "label": "\uc774 \ud45c\uac00 \uc77c\ucc28\ud568\uc218\ub77c\ub294 \uacb0\ub860\uc744 \uc37c\ub2e4",
       "mode": "any",
       "patterns": [
-       "일차함수(가|는|도|로)?\\s*(맞(?!지)|이다|이야|이에요|입니다|예요|야|이므로|이라|이\\s*(된|돼|되))",
-       "일차함수(라고|로)\\s*(할|볼)\\s*수\\s*(도\\s*)?있",
+       "\uc77c\ucc28\ud568\uc218(\uac00|\ub294|\ub3c4|\ub85c)?\\s*(\ub9de(?!\uc9c0)|\uc774\ub2e4|\uc774\uc57c|\uc774\uc5d0\uc694|\uc785\ub2c8\ub2e4|\uc608\uc694|\uc57c|\uc774\ubbc0\ub85c|\uc774\ub77c|\uc774\\s*(\ub41c|\ub3fc|\ub418))",
+       "\uc77c\ucc28\ud568\uc218(\ub77c\uace0|\ub85c)\\s*(\ud560|\ubcfc)\\s*\uc218\\s*(\ub3c4\\s*)?\uc788",
        "y\\s*=\\s*3\\s*x\\s*\\+\\s*2"
       ]
      },
      {
       "id": "f3",
-      "label": "일차함수가 아니라는 결론을 쓰지 않았다",
+      "label": "\uc77c\ucc28\ud568\uc218\uac00 \uc544\ub2c8\ub77c\ub294 \uacb0\ub860\uc744 \uc4f0\uc9c0 \uc54a\uc558\ub2e4",
       "mode": "none",
       "patterns": [
-       "일차함수(가|는|도)?\\s*(아니(다|야|에요|예요|네)|아닙니다|맞지\\s*않|되지\\s*않)",
-       "일차함수(라고|로)?\\s*(할|볼)\\s*수\\s*없",
-       "일차함수가\\s*될\\s*수\\s*없"
+       "\uc77c\ucc28\ud568\uc218(\uac00|\ub294|\ub3c4)?\\s*(\uc544\ub2c8(\ub2e4|\uc57c|\uc5d0\uc694|\uc608\uc694|\ub124)|\uc544\ub2d9\ub2c8\ub2e4|\ub9de\uc9c0\\s*\uc54a|\ub418\uc9c0\\s*\uc54a)",
+       "\uc77c\ucc28\ud568\uc218(\ub77c\uace0|\ub85c)?\\s*(\ud560|\ubcfc)\\s*\uc218\\s*\uc5c6",
+       "\uc77c\ucc28\ud568\uc218\uac00\\s*\ub420\\s*\uc218\\s*\uc5c6"
       ]
      }
     ],
     "selfAssess": [
-     "구간마다 x의 증가량도 같이 썼나요?",
-     "‘y의 증가량이 같다’가 아니라 ‘y의 증가량 ÷ x의 증가량이 같다’로 기준을 고쳤나요?",
-     "결론이 이 표의 값과 맞는지 직접 확인했나요?"
+     "\uad6c\uac04\ub9c8\ub2e4 x\uc758 \uc99d\uac00\ub7c9\ub3c4 \uac19\uc774 \uc37c\ub098\uc694?",
+     "\u2018y\uc758 \uc99d\uac00\ub7c9\uc774 \uac19\ub2e4\u2019\uac00 \uc544\ub2c8\ub77c \u2018y\uc758 \uc99d\uac00\ub7c9 \u00f7 x\uc758 \uc99d\uac00\ub7c9\uc774 \uac19\ub2e4\u2019\ub85c \uae30\uc900\uc744 \uace0\ucce4\ub098\uc694?",
+     "\uacb0\ub860\uc774 \uc774 \ud45c\uc758 \uac12\uacfc \ub9de\ub294\uc9c0 \uc9c1\uc811 \ud655\uc778\ud588\ub098\uc694?"
     ],
     "modelAnswers": [
      {
-      "text": "각 구간에서 y의 증가량을 x의 증가량으로 나눠야 해. 6÷2=3이어서 세 구간 모두 3으로 같으니까 일차함수가 맞아."
+      "text": "\uac01 \uad6c\uac04\uc5d0\uc11c y\uc758 \uc99d\uac00\ub7c9\uc744 x\uc758 \uc99d\uac00\ub7c9\uc73c\ub85c \ub098\ub220\uc57c \ud574. 6\u00f72=3\uc774\uc5b4\uc11c \uc138 \uad6c\uac04 \ubaa8\ub450 3\uc73c\ub85c \uac19\uc73c\ub2c8\uae4c \uc77c\ucc28\ud568\uc218\uac00 \ub9de\uc544."
      },
      {
-      "text": "x가 1 늘 때가 아니라 x가 2 늘었으니까 변화율은 6÷2=3이야. 기울기가 3으로 일정하니 y=3x+2인 일차함수야.",
-      "note": "식까지 구한 답"
+      "text": "x\uac00 1 \ub298 \ub54c\uac00 \uc544\ub2c8\ub77c x\uac00 2 \ub298\uc5c8\uc73c\ub2c8\uae4c \ubcc0\ud654\uc728\uc740 6\u00f72=3\uc774\uc57c. \uae30\uc6b8\uae30\uac00 3\uc73c\ub85c \uc77c\uc815\ud558\ub2c8 y=3x+2\uc778 \uc77c\ucc28\ud568\uc218\uc57c.",
+      "note": "\uc2dd\uae4c\uc9c0 \uad6c\ud55c \ub2f5"
      },
      {
-      "text": "y의 증가량을 x의 증가량으로 나누면 3, 3, 3이므로 일차함수로 볼 수 있다.",
-      "note": "증가량의 비를 세 구간 모두 쓴 답"
+      "text": "y\uc758 \uc99d\uac00\ub7c9\uc744 x\uc758 \uc99d\uac00\ub7c9\uc73c\ub85c \ub098\ub204\uba74 3, 3, 3\uc774\ubbc0\ub85c \uc77c\ucc28\ud568\uc218\ub85c \ubcfc \uc218 \uc788\ub2e4.",
+      "note": "\uc99d\uac00\ub7c9\uc758 \ube44\ub97c \uc138 \uad6c\uac04 \ubaa8\ub450 \uc4f4 \ub2f5"
      }
     ],
     "badAnswers": [
      {
-      "text": "일차함수가 아니다. 증가량이 3, 3, 6으로 다르니까 그대로 맞아요.",
-      "why": "x의 증가량을 보지 않고 원래 풀이를 그대로 받아들였다."
+      "text": "\uc77c\ucc28\ud568\uc218\uac00 \uc544\ub2c8\ub2e4. \uc99d\uac00\ub7c9\uc774 3, 3, 6\uc73c\ub85c \ub2e4\ub974\ub2c8\uae4c \uadf8\ub300\ub85c \ub9de\uc544\uc694.",
+      "why": "x\uc758 \uc99d\uac00\ub7c9\uc744 \ubcf4\uc9c0 \uc54a\uace0 \uc6d0\ub798 \ud480\uc774\ub97c \uadf8\ub300\ub85c \ubc1b\uc544\ub4e4\uc600\ub2e4."
      }
     ],
-    "humanReview": "기준을 ‘증가량 비’로 바꾸어 이해했는지, 계산만 맞추고 이유를 흉내 낸 것인지는 사람이 읽어 판단한다."
+    "humanReview": "\uae30\uc900\uc744 \u2018\uc99d\uac00\ub7c9 \ube44\u2019\ub85c \ubc14\uafb8\uc5b4 \uc774\ud574\ud588\ub294\uc9c0, \uacc4\uc0b0\ub9cc \ub9de\ucd94\uace0 \uc774\uc720\ub97c \ud749\ub0b4 \ub0b8 \uac83\uc778\uc9c0\ub294 \uc0ac\ub78c\uc774 \uc77d\uc5b4 \ud310\ub2e8\ud55c\ub2e4."
    },
    {
     "id": "s3",
     "kind": "choose",
     "multi": true,
-    "prompt": "고친 방법으로 아래 표들을 판단하세요. x와 y의 관계가 일차함수(y=ax+b, a≠0)인 표를 모두 고르세요. (표는 ‘x: …’ 줄과 ‘y: …’ 줄로 읽어요.)",
+    "prompt": "\uace0\uce5c \ubc29\ubc95\uc73c\ub85c \uc544\ub798 \ud45c\ub4e4\uc744 \ud310\ub2e8\ud558\uc138\uc694. x\uc640 y\uc758 \uad00\uacc4\uac00 \uc77c\ucc28\ud568\uc218(y=ax+b, a\u22600)\uc778 \ud45c\ub97c \ubaa8\ub450 \uace0\ub974\uc138\uc694. (\ud45c\ub294 \u2018x: \u2026\u2019 \uc904\uacfc \u2018y: \u2026\u2019 \uc904\ub85c \uc77d\uc5b4\uc694.)",
     "options": [
      {
       "id": "a",
       "text": "x: 2, 3, 4, 7 / y: 1, 4, 7, 16",
-      "reveals": "x가 1씩 늘지 않는 마지막 구간에서도 증가량의 비를 확인했는지 돌아보세요."
+      "reveals": "x\uac00 1\uc529 \ub298\uc9c0 \uc54a\ub294 \ub9c8\uc9c0\ub9c9 \uad6c\uac04\uc5d0\uc11c\ub3c4 \uc99d\uac00\ub7c9\uc758 \ube44\ub97c \ud655\uc778\ud588\ub294\uc9c0 \ub3cc\uc544\ubcf4\uc138\uc694."
      },
      {
       "id": "b",
       "text": "x: 1, 2, 3, 5 / y: 4, 7, 10, 14",
-      "reveals": "마지막 구간에서 y의 증가량 4를 x의 증가량 2로 나눈 값과 앞의 구간 값을 비교해 보세요."
+      "reveals": "\ub9c8\uc9c0\ub9c9 \uad6c\uac04\uc5d0\uc11c y\uc758 \uc99d\uac00\ub7c9 4\ub97c x\uc758 \uc99d\uac00\ub7c9 2\ub85c \ub098\ub208 \uac12\uacfc \uc55e\uc758 \uad6c\uac04 \uac12\uc744 \ube44\uad50\ud574 \ubcf4\uc138\uc694."
      },
      {
       "id": "c",
       "text": "x: 1, 2, 3, 4 / y: 1, 4, 9, 16",
-      "reveals": "y의 증가량이 3, 5, 7로 늘어나는 것을 보았는지, x는 1씩 늘어나는데 y의 증가량이 같은지 확인해 보세요."
+      "reveals": "y\uc758 \uc99d\uac00\ub7c9\uc774 3, 5, 7\ub85c \ub298\uc5b4\ub098\ub294 \uac83\uc744 \ubcf4\uc558\ub294\uc9c0, x\ub294 1\uc529 \ub298\uc5b4\ub098\ub294\ub370 y\uc758 \uc99d\uac00\ub7c9\uc774 \uac19\uc740\uc9c0 \ud655\uc778\ud574 \ubcf4\uc138\uc694."
      },
      {
       "id": "d",
-      "text": "x: 0, 2, 4, 6 / y: 7, 3, −1, −5",
-      "reveals": "y가 줄어들어도 x의 증가량으로 나눈 값이 같으면 일차함수라는 점을 확인했어요."
+      "text": "x: 0, 2, 4, 6 / y: 7, 3, \u22121, \u22125",
+      "reveals": "y\uac00 \uc904\uc5b4\ub4e4\uc5b4\ub3c4 x\uc758 \uc99d\uac00\ub7c9\uc73c\ub85c \ub098\ub208 \uac12\uc774 \uac19\uc73c\uba74 \uc77c\ucc28\ud568\uc218\ub77c\ub294 \uc810\uc744 \ud655\uc778\ud588\uc5b4\uc694."
      }
     ],
     "correct": [
      "a",
      "d"
     ],
-    "explain": "a는 3, 3, 9÷3=3으로 기울기가 모두 3이에요(y=3x−5). d는 구간마다 −4÷2=−2로 기울기가 일정해요(y=−2x+7). b는 3, 3, 4÷2=2로 달라지고, c는 3, 5, 7로 계속 달라져요.",
+    "explain": "a\ub294 3, 3, 9\u00f73=3\uc73c\ub85c \uae30\uc6b8\uae30\uac00 \ubaa8\ub450 3\uc774\uc5d0\uc694(y=3x\u22125). d\ub294 \uad6c\uac04\ub9c8\ub2e4 \u22124\u00f72=\u22122\ub85c \uae30\uc6b8\uae30\uac00 \uc77c\uc815\ud574\uc694(y=\u22122x+7). b\ub294 3, 3, 4\u00f72=2\ub85c \ub2ec\ub77c\uc9c0\uace0, c\ub294 3, 5, 7\ub85c \uacc4\uc18d \ub2ec\ub77c\uc838\uc694.",
     "hints": [
-     "구간마다 (y의 증가량) ÷ (x의 증가량)을 적어 보세요.",
-     "그 값이 모든 구간에서 같은지 비교하고, 값이 음수여도 같으면 어떻게 되는지 생각해 보세요."
+     "\uad6c\uac04\ub9c8\ub2e4 (y\uc758 \uc99d\uac00\ub7c9) \u00f7 (x\uc758 \uc99d\uac00\ub7c9)\uc744 \uc801\uc5b4 \ubcf4\uc138\uc694.",
+     "\uadf8 \uac12\uc774 \ubaa8\ub4e0 \uad6c\uac04\uc5d0\uc11c \uac19\uc740\uc9c0 \ube44\uad50\ud558\uace0, \uac12\uc774 \uc74c\uc218\uc5ec\ub3c4 \uac19\uc73c\uba74 \uc5b4\ub5bb\uac8c \ub418\ub294\uc9c0 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "오류 위치와 원인",
-    "full": "4번 줄에서 x의 증가량을 무시했음을 지적",
-    "partial": "틀렸다고만 하고 이유가 없음",
-    "none": "원래 풀이를 그대로 받아들임"
+    "criterion": "\uc624\ub958 \uc704\uce58\uc640 \uc6d0\uc778",
+    "full": "4\ubc88 \uc904\uc5d0\uc11c x\uc758 \uc99d\uac00\ub7c9\uc744 \ubb34\uc2dc\ud588\uc74c\uc744 \uc9c0\uc801",
+    "partial": "\ud2c0\ub838\ub2e4\uace0\ub9cc \ud558\uace0 \uc774\uc720\uac00 \uc5c6\uc74c",
+    "none": "\uc6d0\ub798 \ud480\uc774\ub97c \uadf8\ub300\ub85c \ubc1b\uc544\ub4e4\uc784"
    },
    {
-    "criterion": "고친 기준의 적용",
-    "full": "새 표에서 구간마다 증가량의 비를 비교해 올바르게 판단",
-    "partial": "표 하나만 맞음",
-    "none": "y의 증가량만 비교"
+    "criterion": "\uace0\uce5c \uae30\uc900\uc758 \uc801\uc6a9",
+    "full": "\uc0c8 \ud45c\uc5d0\uc11c \uad6c\uac04\ub9c8\ub2e4 \uc99d\uac00\ub7c9\uc758 \ube44\ub97c \ube44\uad50\ud574 \uc62c\ubc14\ub974\uac8c \ud310\ub2e8",
+    "partial": "\ud45c \ud558\ub098\ub9cc \ub9de\uc74c",
+    "none": "y\uc758 \uc99d\uac00\ub7c9\ub9cc \ube44\uad50"
    }
   ],
   "alternatives": [
-   "세 점이 한 직선 위에 있는지 좌표로 확인하는 설명도 타당하다.",
-   "식 y=3x+2에 모든 점을 넣어 확인하는 방법도 인정한다."
+   "\uc138 \uc810\uc774 \ud55c \uc9c1\uc120 \uc704\uc5d0 \uc788\ub294\uc9c0 \uc88c\ud45c\ub85c \ud655\uc778\ud558\ub294 \uc124\uba85\ub3c4 \ud0c0\ub2f9\ud558\ub2e4.",
+   "\uc2dd y=3x+2\uc5d0 \ubaa8\ub4e0 \uc810\uc744 \ub123\uc5b4 \ud655\uc778\ud558\ub294 \ubc29\ubc95\ub3c4 \uc778\uc815\ud55c\ub2e4."
   ],
   "hardCases": [
-   "y가 모두 같은 표(상수)는 a=0이라 일차함수가 아니다. 이 과제의 표에는 넣지 않았다.",
-   "x가 0을 포함하는 표에서 y절편이 바로 보인다는 점을 활용해도 좋다."
+   "y\uac00 \ubaa8\ub450 \uac19\uc740 \ud45c(\uc0c1\uc218)\ub294 a=0\uc774\ub77c \uc77c\ucc28\ud568\uc218\uac00 \uc544\ub2c8\ub2e4. \uc774 \uacfc\uc81c\uc758 \ud45c\uc5d0\ub294 \ub123\uc9c0 \uc54a\uc558\ub2e4.",
+   "x\uac00 0\uc744 \ud3ec\ud568\ud558\ub294 \ud45c\uc5d0\uc11c y\uc808\ud3b8\uc774 \ubc14\ub85c \ubcf4\uc778\ub2e4\ub294 \uc810\uc744 \ud65c\uc6a9\ud574\ub3c4 \uc88b\ub2e4."
   ],
   "cautions": {
-   "language": "표를 말로 읽어 주어 낭독기가 열을 정확히 구분하게 했다. ‘증가량’은 ‘얼마나 늘었는지’로 풀었다.",
-   "culture": "문화 의존 소재가 없다.",
-   "accessibility": "표를 행별 문장으로 제공한다. 색에 의존하지 않는다."
+   "language": "\ud45c\ub97c \ub9d0\ub85c \uc77d\uc5b4 \uc8fc\uc5b4 \ub0ad\ub3c5\uae30\uac00 \uc5f4\uc744 \uc815\ud655\ud788 \uad6c\ubd84\ud558\uac8c \ud588\ub2e4. \u2018\uc99d\uac00\ub7c9\u2019\uc740 \u2018\uc5bc\ub9c8\ub098 \ub298\uc5c8\ub294\uc9c0\u2019\ub85c \ud480\uc5c8\ub2e4.",
+   "culture": "\ubb38\ud654 \uc758\uc874 \uc18c\uc7ac\uac00 \uc5c6\ub2e4.",
+   "accessibility": "\ud45c\ub97c \ud589\ubcc4 \ubb38\uc7a5\uc73c\ub85c \uc81c\uacf5\ud55c\ub2e4. \uc0c9\uc5d0 \uc758\uc874\ud558\uc9c0 \uc54a\ub294\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "오류 줄 선택",
-    "서술에 비교 방법과 결론이 들어 있는지",
-    "새 표의 선택"
+    "\uc624\ub958 \uc904 \uc120\ud0dd",
+    "\uc11c\uc220\uc5d0 \ube44\uad50 \ubc29\ubc95\uacfc \uacb0\ub860\uc774 \ub4e4\uc5b4 \uc788\ub294\uc9c0",
+    "\uc0c8 \ud45c\uc758 \uc120\ud0dd"
    ],
    "human": [
-    "고친 기준을 이해하고 썼는지"
+    "\uace0\uce5c \uae30\uc900\uc744 \uc774\ud574\ud558\uace0 \uc37c\ub294\uc9c0"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "subject": "math",
   "grade": "M2",
   "level": 2,
-  "levelLabel": "중등",
+  "levelLabel": "\uc911\ub4f1",
   "uiLang": "ko",
   "curriculum": null,
   "id": "x-m-m2-08",
-  "topic": "삼각형·사각형의 성질",
-  "title": "평행사변형이라고 확신하려면 무엇이 필요할까?",
+  "topic": "\uc0bc\uac01\ud615\u00b7\uc0ac\uac01\ud615\uc758 \uc131\uc9c8",
+  "title": "\ud3c9\ud589\uc0ac\ubcc0\ud615\uc774\ub77c\uace0 \ud655\uc2e0\ud558\ub824\uba74 \ubb34\uc5c7\uc774 \ud544\uc694\ud560\uae4c?",
   "format": "choose-needed-info",
   "generative": true,
   "minutes": 14,
-  "goal": "사각형이 평행사변형임을 보장하는 조건과 그렇지 않은 조건을 가려내고, 보장하지 못하는 조건의 반례를 직접 만든다.",
+  "goal": "\uc0ac\uac01\ud615\uc774 \ud3c9\ud589\uc0ac\ubcc0\ud615\uc784\uc744 \ubcf4\uc7a5\ud558\ub294 \uc870\uac74\uacfc \uadf8\ub807\uc9c0 \uc54a\uc740 \uc870\uac74\uc744 \uac00\ub824\ub0b4\uace0, \ubcf4\uc7a5\ud558\uc9c0 \ubabb\ud558\ub294 \uc870\uac74\uc758 \ubc18\ub840\ub97c \uc9c1\uc811 \ub9cc\ub4e0\ub2e4.",
   "thinking": [
-   "조건의 충분성 판단하기",
-   "반례 만들기",
-   "성립 조건 구분하기"
+   "\uc870\uac74\uc758 \ucda9\ubd84\uc131 \ud310\ub2e8\ud558\uae30",
+   "\ubc18\ub840 \ub9cc\ub4e4\uae30",
+   "\uc131\ub9bd \uc870\uac74 \uad6c\ubd84\ud558\uae30"
   ],
-  "differsFromPlain": "단순 연습은 평행사변형의 성질을 이용해 각이나 변의 길이를 구한다. 여기서는 어떤 조건만으로 평행사변형이라고 단정할 수 있는지 판단하고, 안 되는 조건의 반례를 만든다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \ud3c9\ud589\uc0ac\ubcc0\ud615\uc758 \uc131\uc9c8\uc744 \uc774\uc6a9\ud574 \uac01\uc774\ub098 \ubcc0\uc758 \uae38\uc774\ub97c \uad6c\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \uc5b4\ub5a4 \uc870\uac74\ub9cc\uc73c\ub85c \ud3c9\ud589\uc0ac\ubcc0\ud615\uc774\ub77c\uace0 \ub2e8\uc815\ud560 \uc218 \uc788\ub294\uc9c0 \ud310\ub2e8\ud558\uace0, \uc548 \ub418\ub294 \uc870\uac74\uc758 \ubc18\ub840\ub97c \ub9cc\ub4e0\ub2e4.",
   "prerequisites": [
-   "평행사변형과 사다리꼴의 뜻",
-   "대변, 대각선 같은 용어"
+   "\ud3c9\ud589\uc0ac\ubcc0\ud615\uacfc \uc0ac\ub2e4\ub9ac\uaf34\uc758 \ub73b",
+   "\ub300\ubcc0, \ub300\uac01\uc120 \uac19\uc740 \uc6a9\uc5b4"
   ],
-  "material": "사각형 ABCD에 대해 다음 조건이 각각 하나씩만 주어졌다고 해요. (대변은 마주 보는 변, 대각선은 마주 보는 꼭짓점을 잇는 선분이에요. 그림은 없어요.)",
+  "material": "\uc0ac\uac01\ud615 ABCD\uc5d0 \ub300\ud574 \ub2e4\uc74c \uc870\uac74\uc774 \uac01\uac01 \ud558\ub098\uc529\ub9cc \uc8fc\uc5b4\uc84c\ub2e4\uace0 \ud574\uc694. (\ub300\ubcc0\uc740 \ub9c8\uc8fc \ubcf4\ub294 \ubcc0, \ub300\uac01\uc120\uc740 \ub9c8\uc8fc \ubcf4\ub294 \uaf2d\uc9d3\uc810\uc744 \uc787\ub294 \uc120\ubd84\uc774\uc5d0\uc694. \uadf8\ub9bc\uc740 \uc5c6\uc5b4\uc694.)",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
     "multi": true,
-    "prompt": "그 조건만으로 사각형 ABCD가 반드시 평행사변형이라고 할 수 있는 것을 모두 고르세요.",
+    "prompt": "\uadf8 \uc870\uac74\ub9cc\uc73c\ub85c \uc0ac\uac01\ud615 ABCD\uac00 \ubc18\ub4dc\uc2dc \ud3c9\ud589\uc0ac\ubcc0\ud615\uc774\ub77c\uace0 \ud560 \uc218 \uc788\ub294 \uac83\uc744 \ubaa8\ub450 \uace0\ub974\uc138\uc694.",
     "options": [
      {
       "id": "a",
-      "text": "한 쌍의 대변이 평행하고, 다른 한 쌍의 대변의 길이가 같다",
-      "reveals": "‘평행’과 ‘길이가 같음’을 서로 다른 대변에 나눠 쓴 조건이에요. 이런 조건을 만족하는데 평행사변형이 아닌 도형이 있는지 찾아보세요."
+      "text": "\ud55c \uc30d\uc758 \ub300\ubcc0\uc774 \ud3c9\ud589\ud558\uace0, \ub2e4\ub978 \ud55c \uc30d\uc758 \ub300\ubcc0\uc758 \uae38\uc774\uac00 \uac19\ub2e4",
+      "reveals": "\u2018\ud3c9\ud589\u2019\uacfc \u2018\uae38\uc774\uac00 \uac19\uc74c\u2019\uc744 \uc11c\ub85c \ub2e4\ub978 \ub300\ubcc0\uc5d0 \ub098\ub220 \uc4f4 \uc870\uac74\uc774\uc5d0\uc694. \uc774\ub7f0 \uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294\ub370 \ud3c9\ud589\uc0ac\ubcc0\ud615\uc774 \uc544\ub2cc \ub3c4\ud615\uc774 \uc788\ub294\uc9c0 \ucc3e\uc544\ubcf4\uc138\uc694."
      },
      {
       "id": "b",
-      "text": "두 쌍의 대변의 길이가 각각 같다",
-      "reveals": "대변이 각각 같은 길이라는 조건이 평행사변형을 정하는지 확인한 선택이에요."
+      "text": "\ub450 \uc30d\uc758 \ub300\ubcc0\uc758 \uae38\uc774\uac00 \uac01\uac01 \uac19\ub2e4",
+      "reveals": "\ub300\ubcc0\uc774 \uac01\uac01 \uac19\uc740 \uae38\uc774\ub77c\ub294 \uc870\uac74\uc774 \ud3c9\ud589\uc0ac\ubcc0\ud615\uc744 \uc815\ud558\ub294\uc9c0 \ud655\uc778\ud55c \uc120\ud0dd\uc774\uc5d0\uc694."
      },
      {
       "id": "c",
-      "text": "두 대각선의 길이가 같다",
-      "reveals": "대각선의 길이가 같은 도형이 직사각형 말고도 있는지 떠올려 보세요."
+      "text": "\ub450 \ub300\uac01\uc120\uc758 \uae38\uc774\uac00 \uac19\ub2e4",
+      "reveals": "\ub300\uac01\uc120\uc758 \uae38\uc774\uac00 \uac19\uc740 \ub3c4\ud615\uc774 \uc9c1\uc0ac\uac01\ud615 \ub9d0\uace0\ub3c4 \uc788\ub294\uc9c0 \ub5a0\uc62c\ub824 \ubcf4\uc138\uc694."
      },
      {
       "id": "d",
-      "text": "두 대각선이 서로 다른 것을 이등분한다",
-      "reveals": "대각선이 서로의 중점에서 만난다는 조건이 평행사변형을 정하는지 확인한 선택이에요."
+      "text": "\ub450 \ub300\uac01\uc120\uc774 \uc11c\ub85c \ub2e4\ub978 \uac83\uc744 \uc774\ub4f1\ubd84\ud55c\ub2e4",
+      "reveals": "\ub300\uac01\uc120\uc774 \uc11c\ub85c\uc758 \uc911\uc810\uc5d0\uc11c \ub9cc\ub09c\ub2e4\ub294 \uc870\uac74\uc774 \ud3c9\ud589\uc0ac\ubcc0\ud615\uc744 \uc815\ud558\ub294\uc9c0 \ud655\uc778\ud55c \uc120\ud0dd\uc774\uc5d0\uc694."
      },
      {
       "id": "e",
-      "text": "한 쌍의 대변이 평행하고 그 길이가 같다",
-      "reveals": "평행한 두 변이 길이도 같다는 조건을 평행사변형의 성질과 연결한 선택이에요."
+      "text": "\ud55c \uc30d\uc758 \ub300\ubcc0\uc774 \ud3c9\ud589\ud558\uace0 \uadf8 \uae38\uc774\uac00 \uac19\ub2e4",
+      "reveals": "\ud3c9\ud589\ud55c \ub450 \ubcc0\uc774 \uae38\uc774\ub3c4 \uac19\ub2e4\ub294 \uc870\uac74\uc744 \ud3c9\ud589\uc0ac\ubcc0\ud615\uc758 \uc131\uc9c8\uacfc \uc5f0\uacb0\ud55c \uc120\ud0dd\uc774\uc5d0\uc694."
      }
     ],
     "correct": [
@@ -1611,48 +1613,48 @@
      "d",
      "e"
     ],
-    "explain": "b, d, e는 모두 평행사변형이 되는 조건이에요. a와 c는 등변사다리꼴이 반례예요. 등변사다리꼴은 한 쌍의 대변이 평행하고 다른 한 쌍의 변(다리)의 길이가 같으며 두 대각선의 길이도 같지만 평행사변형이 아니에요.",
+    "explain": "b, d, e\ub294 \ubaa8\ub450 \ud3c9\ud589\uc0ac\ubcc0\ud615\uc774 \ub418\ub294 \uc870\uac74\uc774\uc5d0\uc694. a\uc640 c\ub294 \ub4f1\ubcc0\uc0ac\ub2e4\ub9ac\uaf34\uc774 \ubc18\ub840\uc608\uc694. \ub4f1\ubcc0\uc0ac\ub2e4\ub9ac\uaf34\uc740 \ud55c \uc30d\uc758 \ub300\ubcc0\uc774 \ud3c9\ud589\ud558\uace0 \ub2e4\ub978 \ud55c \uc30d\uc758 \ubcc0(\ub2e4\ub9ac)\uc758 \uae38\uc774\uac00 \uac19\uc73c\uba70 \ub450 \ub300\uac01\uc120\uc758 \uae38\uc774\ub3c4 \uac19\uc9c0\ub9cc \ud3c9\ud589\uc0ac\ubcc0\ud615\uc774 \uc544\ub2c8\uc5d0\uc694.",
     "hints": [
-     "각 조건을 만족하지만 평행사변형이 아닌 도형이 있는지 떠올려 보세요.",
-     "고른 조건을 만족하는 사각형을 길이를 정해 직접 그려 보고, 그 사각형의 나머지 변과 각이 평행사변형의 성질과 맞는지 확인해 보세요."
+     "\uac01 \uc870\uac74\uc744 \ub9cc\uc871\ud558\uc9c0\ub9cc \ud3c9\ud589\uc0ac\ubcc0\ud615\uc774 \uc544\ub2cc \ub3c4\ud615\uc774 \uc788\ub294\uc9c0 \ub5a0\uc62c\ub824 \ubcf4\uc138\uc694.",
+     "\uace0\ub978 \uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294 \uc0ac\uac01\ud615\uc744 \uae38\uc774\ub97c \uc815\ud574 \uc9c1\uc811 \uadf8\ub824 \ubcf4\uace0, \uadf8 \uc0ac\uac01\ud615\uc758 \ub098\uba38\uc9c0 \ubcc0\uacfc \uac01\uc774 \ud3c9\ud589\uc0ac\ubcc0\ud615\uc758 \uc131\uc9c8\uacfc \ub9de\ub294\uc9c0 \ud655\uc778\ud574 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "build",
-    "prompt": "조건 ‘한 쌍의 대변이 평행하고, 다른 한 쌍의 대변의 길이가 같다’를 만족하지만 평행사변형이 아닌 사각형을 만들어 보세요. 평행한 두 변의 길이를 a(윗변), b(아랫변), 길이가 같은 나머지 두 변(다리)의 길이를 c로 하고, 모양이 서로 다른 것을 2개 만드세요. (윗변과 아랫변을 바꿔 쓴 것은 같은 모양으로 봐요.)",
+    "prompt": "\uc870\uac74 \u2018\ud55c \uc30d\uc758 \ub300\ubcc0\uc774 \ud3c9\ud589\ud558\uace0, \ub2e4\ub978 \ud55c \uc30d\uc758 \ub300\ubcc0\uc758 \uae38\uc774\uac00 \uac19\ub2e4\u2019\ub97c \ub9cc\uc871\ud558\uc9c0\ub9cc \ud3c9\ud589\uc0ac\ubcc0\ud615\uc774 \uc544\ub2cc \uc0ac\uac01\ud615\uc744 \ub9cc\ub4e4\uc5b4 \ubcf4\uc138\uc694. \ud3c9\ud589\ud55c \ub450 \ubcc0\uc758 \uae38\uc774\ub97c a(\uc717\ubcc0), b(\uc544\ub7ab\ubcc0), \uae38\uc774\uac00 \uac19\uc740 \ub098\uba38\uc9c0 \ub450 \ubcc0(\ub2e4\ub9ac)\uc758 \uae38\uc774\ub97c c\ub85c \ud558\uace0, \ubaa8\uc591\uc774 \uc11c\ub85c \ub2e4\ub978 \uac83\uc744 2\uac1c \ub9cc\ub4dc\uc138\uc694. (\uc717\ubcc0\uacfc \uc544\ub7ab\ubcc0\uc744 \ubc14\uafd4 \uc4f4 \uac83\uc740 \uac19\uc740 \ubaa8\uc591\uc73c\ub85c \ubd10\uc694.)",
     "vars": [
      {
       "name": "a",
-      "label": "윗변 a"
+      "label": "\uc717\ubcc0 a"
      },
      {
       "name": "b",
-      "label": "아랫변 b"
+      "label": "\uc544\ub7ab\ubcc0 b"
      },
      {
       "name": "c",
-      "label": "다리 c"
+      "label": "\ub2e4\ub9ac c"
      }
     ],
     "constraints": [
      {
       "id": "c1",
       "expr": "a>0 && b>0 && c>0",
-      "ok": "길이가 양수예요.",
-      "fail": "길이는 0보다 커야 해요."
+      "ok": "\uae38\uc774\uac00 \uc591\uc218\uc608\uc694.",
+      "fail": "\uae38\uc774\ub294 0\ubcf4\ub2e4 \ucee4\uc57c \ud574\uc694."
      },
      {
       "id": "c2",
       "expr": "a!=b",
-      "ok": "평행한 두 변의 길이가 달라서 평행사변형이 아니에요.",
-      "fail": "평행한 두 변의 길이가 같으면 평행사변형이 되어 버려요."
+      "ok": "\ud3c9\ud589\ud55c \ub450 \ubcc0\uc758 \uae38\uc774\uac00 \ub2ec\ub77c\uc11c \ud3c9\ud589\uc0ac\ubcc0\ud615\uc774 \uc544\ub2c8\uc5d0\uc694.",
+      "fail": "\ud3c9\ud589\ud55c \ub450 \ubcc0\uc758 \uae38\uc774\uac00 \uac19\uc73c\uba74 \ud3c9\ud589\uc0ac\ubcc0\ud615\uc774 \ub418\uc5b4 \ubc84\ub824\uc694."
      },
      {
       "id": "c3",
       "expr": "2*c>abs(b-a)",
-      "ok": "다리의 길이가 충분해서 이런 사다리꼴을 만들 수 있어요.",
-      "fail": "다리가 너무 짧아서 이런 사각형을 만들 수 없어요(두 밑변의 차이의 절반보다 길어야 해요)."
+      "ok": "\ub2e4\ub9ac\uc758 \uae38\uc774\uac00 \ucda9\ubd84\ud574\uc11c \uc774\ub7f0 \uc0ac\ub2e4\ub9ac\uaf34\uc744 \ub9cc\ub4e4 \uc218 \uc788\uc5b4\uc694.",
+      "fail": "\ub2e4\ub9ac\uac00 \ub108\ubb34 \uc9e7\uc544\uc11c \uc774\ub7f0 \uc0ac\uac01\ud615\uc744 \ub9cc\ub4e4 \uc218 \uc5c6\uc5b4\uc694(\ub450 \ubc11\ubcc0\uc758 \ucc28\uc774\uc758 \uc808\ubc18\ubcf4\ub2e4 \uae38\uc5b4\uc57c \ud574\uc694)."
      }
     ],
     "need": 2,
@@ -1691,165 +1693,165 @@
       "c": 3
      }
     ],
-    "explain": "예: 윗변 4, 아랫변 10, 다리 5인 사다리꼴은 평행한 대변의 길이가 달라서 평행사변형이 아니에요. 다리가 너무 짧으면 윗변의 양 끝에서 내린 선이 아랫변에 닿지 못해 만들 수 없어요.",
+    "explain": "\uc608: \uc717\ubcc0 4, \uc544\ub7ab\ubcc0 10, \ub2e4\ub9ac 5\uc778 \uc0ac\ub2e4\ub9ac\uaf34\uc740 \ud3c9\ud589\ud55c \ub300\ubcc0\uc758 \uae38\uc774\uac00 \ub2ec\ub77c\uc11c \ud3c9\ud589\uc0ac\ubcc0\ud615\uc774 \uc544\ub2c8\uc5d0\uc694. \ub2e4\ub9ac\uac00 \ub108\ubb34 \uc9e7\uc73c\uba74 \uc717\ubcc0\uc758 \uc591 \ub05d\uc5d0\uc11c \ub0b4\ub9b0 \uc120\uc774 \uc544\ub7ab\ubcc0\uc5d0 \ub2ff\uc9c0 \ubabb\ud574 \ub9cc\ub4e4 \uc218 \uc5c6\uc5b4\uc694.",
     "hints": [
-     "평행한 두 변의 길이를 서로 다르게 정하고, 다리의 길이를 두 변의 길이 차이와 견주어 보세요.",
-     "윗변과 아랫변의 길이 차이를 양쪽 다리가 반씩 나눠 가진다고 생각하고, 다리가 그보다 길어야 한다는 점을 활용하세요."
+     "\ud3c9\ud589\ud55c \ub450 \ubcc0\uc758 \uae38\uc774\ub97c \uc11c\ub85c \ub2e4\ub974\uac8c \uc815\ud558\uace0, \ub2e4\ub9ac\uc758 \uae38\uc774\ub97c \ub450 \ubcc0\uc758 \uae38\uc774 \ucc28\uc774\uc640 \uacac\uc8fc\uc5b4 \ubcf4\uc138\uc694.",
+     "\uc717\ubcc0\uacfc \uc544\ub7ab\ubcc0\uc758 \uae38\uc774 \ucc28\uc774\ub97c \uc591\ucabd \ub2e4\ub9ac\uac00 \ubc18\uc529 \ub098\ub220 \uac00\uc9c4\ub2e4\uace0 \uc0dd\uac01\ud558\uace0, \ub2e4\ub9ac\uac00 \uadf8\ubcf4\ub2e4 \uae38\uc5b4\uc57c \ud55c\ub2e4\ub294 \uc810\uc744 \ud65c\uc6a9\ud558\uc138\uc694."
     ],
     "because": {
      "kind": "write",
      "minChars": 20,
      "id": "s2b",
-     "prompt": "만든 사각형이 평행사변형이 아닌 이유를 설명해 보세요.",
-     "placeholder": "예: 윗변과 아랫변이 ...",
+     "prompt": "\ub9cc\ub4e0 \uc0ac\uac01\ud615\uc774 \ud3c9\ud589\uc0ac\ubcc0\ud615\uc774 \uc544\ub2cc \uc774\uc720\ub97c \uc124\uba85\ud574 \ubcf4\uc138\uc694.",
+     "placeholder": "\uc608: \uc717\ubcc0\uacfc \uc544\ub7ab\ubcc0\uc774 ...",
      "hints": [
-      "평행사변형이 되기 위해 평행한 대변이 갖춰야 하는 조건을 떠올려 보세요.",
-      "내가 만든 a, b의 값을 대입해서 써 보세요."
+      "\ud3c9\ud589\uc0ac\ubcc0\ud615\uc774 \ub418\uae30 \uc704\ud574 \ud3c9\ud589\ud55c \ub300\ubcc0\uc774 \uac16\ucdb0\uc57c \ud558\ub294 \uc870\uac74\uc744 \ub5a0\uc62c\ub824 \ubcf4\uc138\uc694.",
+      "\ub0b4\uac00 \ub9cc\ub4e0 a, b\uc758 \uac12\uc744 \ub300\uc785\ud574\uc11c \uc368 \ubcf4\uc138\uc694."
      ],
      "checks": [
       {
        "id": "g1",
-       "label": "평행한 두 변의 길이가 다르다고 말했다",
+       "label": "\ud3c9\ud589\ud55c \ub450 \ubcc0\uc758 \uae38\uc774\uac00 \ub2e4\ub974\ub2e4\uace0 \ub9d0\ud588\ub2e4",
        "mode": "any",
        "patterns": [
-        "(윗변|아랫변|밑변|평행한\\s*(두\\s*)?(변|대변)|평행한\\s*쪽)[^.]{0,30}(다르|다른|달라|같지\\s*(는\\s*)?않)",
-        "(?<!\\d)\\d+\\s*(와|과|랑|하고|이랑)\\s*\\d+\\s*(은|는|이|가|으로)?[^.]{0,12}(다르|다른|달라|같지\\s*(는\\s*)?않)",
-        "(≠|!=)"
+        "(\uc717\ubcc0|\uc544\ub7ab\ubcc0|\ubc11\ubcc0|\ud3c9\ud589\ud55c\\s*(\ub450\\s*)?(\ubcc0|\ub300\ubcc0)|\ud3c9\ud589\ud55c\\s*\ucabd)[^.]{0,30}(\ub2e4\ub974|\ub2e4\ub978|\ub2ec\ub77c|\uac19\uc9c0\\s*(\ub294\\s*)?\uc54a)",
+        "(?<!\\d)\\d+\\s*(\uc640|\uacfc|\ub791|\ud558\uace0|\uc774\ub791)\\s*\\d+\\s*(\uc740|\ub294|\uc774|\uac00|\uc73c\ub85c)?[^.]{0,12}(\ub2e4\ub974|\ub2e4\ub978|\ub2ec\ub77c|\uac19\uc9c0\\s*(\ub294\\s*)?\uc54a)",
+        "(\u2260|!=)"
        ]
       },
       {
        "id": "g2",
-       "label": "그래서 평행사변형이 아니라고 결론 내렸다",
+       "label": "\uadf8\ub798\uc11c \ud3c9\ud589\uc0ac\ubcc0\ud615\uc774 \uc544\ub2c8\ub77c\uace0 \uacb0\ub860 \ub0b4\ub838\ub2e4",
        "mode": "any",
        "patterns": [
-        "평행사변형.{0,20}(아니|않|안\\s*(돼|된)|될\\s*수\\s*없|못\\s*(한|해|된|되)|아닙)"
+        "\ud3c9\ud589\uc0ac\ubcc0\ud615.{0,20}(\uc544\ub2c8|\uc54a|\uc548\\s*(\ub3fc|\ub41c)|\ub420\\s*\uc218\\s*\uc5c6|\ubabb\\s*(\ud55c|\ud574|\ub41c|\ub418)|\uc544\ub2d9)"
        ]
       }
      ],
      "selfAssess": [
-      "내가 만든 길이를 숫자로 넣어 설명했나요?",
-      "‘평행한 대변의 길이가 같아야 한다’는 조건을 말했나요?",
-      "왜 이 사각형이 사다리꼴이면서 평행사변형은 아닌지 구분했나요?"
+      "\ub0b4\uac00 \ub9cc\ub4e0 \uae38\uc774\ub97c \uc22b\uc790\ub85c \ub123\uc5b4 \uc124\uba85\ud588\ub098\uc694?",
+      "\u2018\ud3c9\ud589\ud55c \ub300\ubcc0\uc758 \uae38\uc774\uac00 \uac19\uc544\uc57c \ud55c\ub2e4\u2019\ub294 \uc870\uac74\uc744 \ub9d0\ud588\ub098\uc694?",
+      "\uc65c \uc774 \uc0ac\uac01\ud615\uc774 \uc0ac\ub2e4\ub9ac\uaf34\uc774\uba74\uc11c \ud3c9\ud589\uc0ac\ubcc0\ud615\uc740 \uc544\ub2cc\uc9c0 \uad6c\ubd84\ud588\ub098\uc694?"
      ],
      "modelAnswers": [
       {
-       "text": "윗변 4와 아랫변 10은 평행하지만 길이가 달라. 평행사변형이면 평행한 대변의 길이가 같아야 하는데 그렇지 않으니까 평행사변형이 아니야."
+       "text": "\uc717\ubcc0 4\uc640 \uc544\ub7ab\ubcc0 10\uc740 \ud3c9\ud589\ud558\uc9c0\ub9cc \uae38\uc774\uac00 \ub2ec\ub77c. \ud3c9\ud589\uc0ac\ubcc0\ud615\uc774\uba74 \ud3c9\ud589\ud55c \ub300\ubcc0\uc758 \uae38\uc774\uac00 \uac19\uc544\uc57c \ud558\ub294\ub370 \uadf8\ub807\uc9c0 \uc54a\uc73c\ub2c8\uae4c \ud3c9\ud589\uc0ac\ubcc0\ud615\uc774 \uc544\ub2c8\uc57c."
       },
       {
-       "text": "a=4, b=10이라 평행한 두 변의 길이가 같지 않아. 한 쌍의 대변이 평행해도 그 길이가 다르면 평행사변형이 안 돼.",
-       "note": "숫자를 사용한 답"
+       "text": "a=4, b=10\uc774\ub77c \ud3c9\ud589\ud55c \ub450 \ubcc0\uc758 \uae38\uc774\uac00 \uac19\uc9c0 \uc54a\uc544. \ud55c \uc30d\uc758 \ub300\ubcc0\uc774 \ud3c9\ud589\ud574\ub3c4 \uadf8 \uae38\uc774\uac00 \ub2e4\ub974\uba74 \ud3c9\ud589\uc0ac\ubcc0\ud615\uc774 \uc548 \ub3fc.",
+       "note": "\uc22b\uc790\ub97c \uc0ac\uc6a9\ud55c \ub2f5"
       },
       {
-       "text": "윗변과 아랫변이 평행하지만 길이가 4와 10으로 다르므로 평행사변형이 될 수 없습니다.",
-       "note": "‘될 수 없다’로 결론을 쓴 답"
+       "text": "\uc717\ubcc0\uacfc \uc544\ub7ab\ubcc0\uc774 \ud3c9\ud589\ud558\uc9c0\ub9cc \uae38\uc774\uac00 4\uc640 10\uc73c\ub85c \ub2e4\ub974\ubbc0\ub85c \ud3c9\ud589\uc0ac\ubcc0\ud615\uc774 \ub420 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.",
+       "note": "\u2018\ub420 \uc218 \uc5c6\ub2e4\u2019\ub85c \uacb0\ub860\uc744 \uc4f4 \ub2f5"
       }
      ],
      "badAnswers": [
       {
-       "text": "이 도형은 사다리꼴이라서 그냥 아니야.",
-       "why": "평행한 대변의 길이가 다르다는 구체적 근거가 없다."
+       "text": "\uc774 \ub3c4\ud615\uc740 \uc0ac\ub2e4\ub9ac\uaf34\uc774\ub77c\uc11c \uadf8\ub0e5 \uc544\ub2c8\uc57c.",
+       "why": "\ud3c9\ud589\ud55c \ub300\ubcc0\uc758 \uae38\uc774\uac00 \ub2e4\ub974\ub2e4\ub294 \uad6c\uccb4\uc801 \uadfc\uac70\uac00 \uc5c6\ub2e4."
       }
      ],
-     "humanReview": "‘왜’를 평행한 대변의 길이로 설명하는지, 단순히 ‘사다리꼴이라서’ 정도에 머무르는지 사람이 읽어 판단한다."
+     "humanReview": "\u2018\uc65c\u2019\ub97c \ud3c9\ud589\ud55c \ub300\ubcc0\uc758 \uae38\uc774\ub85c \uc124\uba85\ud558\ub294\uc9c0, \ub2e8\uc21c\ud788 \u2018\uc0ac\ub2e4\ub9ac\uaf34\uc774\ub77c\uc11c\u2019 \uc815\ub3c4\uc5d0 \uba38\ubb34\ub974\ub294\uc9c0 \uc0ac\ub78c\uc774 \uc77d\uc5b4 \ud310\ub2e8\ud55c\ub2e4."
     }
    }
   ],
   "rubric": [
    {
-    "criterion": "조건 충분성 판단",
-    "full": "충분한 조건 3개를 모두 고르고 반례가 있는 조건을 구분",
-    "partial": "일부만 맞음",
-    "none": "모든 조건이 충분하다고 판단"
+    "criterion": "\uc870\uac74 \ucda9\ubd84\uc131 \ud310\ub2e8",
+    "full": "\ucda9\ubd84\ud55c \uc870\uac74 3\uac1c\ub97c \ubaa8\ub450 \uace0\ub974\uace0 \ubc18\ub840\uac00 \uc788\ub294 \uc870\uac74\uc744 \uad6c\ubd84",
+    "partial": "\uc77c\ubd80\ub9cc \ub9de\uc74c",
+    "none": "\ubaa8\ub4e0 \uc870\uac74\uc774 \ucda9\ubd84\ud558\ub2e4\uace0 \ud310\ub2e8"
    },
    {
-    "criterion": "반례 구성",
-    "full": "평행한 두 변의 길이가 다르고 다리가 충분한 사다리꼴을 서로 다르게 2개 만듦",
-    "partial": "하나만 만들거나 길이 조건 일부 위반",
-    "none": "평행사변형을 만듦"
+    "criterion": "\ubc18\ub840 \uad6c\uc131",
+    "full": "\ud3c9\ud589\ud55c \ub450 \ubcc0\uc758 \uae38\uc774\uac00 \ub2e4\ub974\uace0 \ub2e4\ub9ac\uac00 \ucda9\ubd84\ud55c \uc0ac\ub2e4\ub9ac\uaf34\uc744 \uc11c\ub85c \ub2e4\ub974\uac8c 2\uac1c \ub9cc\ub4e6",
+    "partial": "\ud558\ub098\ub9cc \ub9cc\ub4e4\uac70\ub098 \uae38\uc774 \uc870\uac74 \uc77c\ubd80 \uc704\ubc18",
+    "none": "\ud3c9\ud589\uc0ac\ubcc0\ud615\uc744 \ub9cc\ub4e6"
    }
   ],
   "alternatives": [
-   "a=b이고 c가 다르면 평행사변형이 될 수 있으니 반례로는 쓸 수 없다는 설명도 타당하다.",
-   "조건 c의 반례로 직각이 아닌 등변사다리꼴을 든 설명도 인정한다."
+   "a=b\uc774\uace0 c\uac00 \ub2e4\ub974\uba74 \ud3c9\ud589\uc0ac\ubcc0\ud615\uc774 \ub420 \uc218 \uc788\uc73c\ub2c8 \ubc18\ub840\ub85c\ub294 \uc4f8 \uc218 \uc5c6\ub2e4\ub294 \uc124\uba85\ub3c4 \ud0c0\ub2f9\ud558\ub2e4.",
+   "\uc870\uac74 c\uc758 \ubc18\ub840\ub85c \uc9c1\uac01\uc774 \uc544\ub2cc \ub4f1\ubcc0\uc0ac\ub2e4\ub9ac\uaf34\uc744 \ub4e0 \uc124\uba85\ub3c4 \uc778\uc815\ud55c\ub2e4."
   ],
   "hardCases": [
-   "다리를 비스듬히 교차시켜 ‘꼬인’ 사각형을 만드는 경우는 일반적인 사각형이 아니라서 제외한다.",
-   "윗변이 더 긴 사다리꼴도 윗변·아랫변을 바꾼 것과 같은 모양으로 본다."
+   "\ub2e4\ub9ac\ub97c \ube44\uc2a4\ub4ec\ud788 \uad50\ucc28\uc2dc\ucf1c \u2018\uaf2c\uc778\u2019 \uc0ac\uac01\ud615\uc744 \ub9cc\ub4dc\ub294 \uacbd\uc6b0\ub294 \uc77c\ubc18\uc801\uc778 \uc0ac\uac01\ud615\uc774 \uc544\ub2c8\ub77c\uc11c \uc81c\uc678\ud55c\ub2e4.",
+   "\uc717\ubcc0\uc774 \ub354 \uae34 \uc0ac\ub2e4\ub9ac\uaf34\ub3c4 \uc717\ubcc0\u00b7\uc544\ub7ab\ubcc0\uc744 \ubc14\uafbc \uac83\uacfc \uac19\uc740 \ubaa8\uc591\uc73c\ub85c \ubcf8\ub2e4."
   ],
   "cautions": {
-   "language": "‘대변’, ‘대각선’은 문제에서 뜻을 풀어 주었다. 사각형 ABCD는 글자 순서대로 꼭짓점을 이은 사각형이다.",
-   "culture": "문화 의존 소재가 없다.",
-   "accessibility": "그림이 없고 모든 조건을 문장으로 제시했다. 사다리꼴은 변의 길이 숫자로 상상할 수 있다."
+   "language": "\u2018\ub300\ubcc0\u2019, \u2018\ub300\uac01\uc120\u2019\uc740 \ubb38\uc81c\uc5d0\uc11c \ub73b\uc744 \ud480\uc5b4 \uc8fc\uc5c8\ub2e4. \uc0ac\uac01\ud615 ABCD\ub294 \uae00\uc790 \uc21c\uc11c\ub300\ub85c \uaf2d\uc9d3\uc810\uc744 \uc774\uc740 \uc0ac\uac01\ud615\uc774\ub2e4.",
+   "culture": "\ubb38\ud654 \uc758\uc874 \uc18c\uc7ac\uac00 \uc5c6\ub2e4.",
+   "accessibility": "\uadf8\ub9bc\uc774 \uc5c6\uace0 \ubaa8\ub4e0 \uc870\uac74\uc744 \ubb38\uc7a5\uc73c\ub85c \uc81c\uc2dc\ud588\ub2e4. \uc0ac\ub2e4\ub9ac\uaf34\uc740 \ubcc0\uc758 \uae38\uc774 \uc22b\uc790\ub85c \uc0c1\uc0c1\ud560 \uc218 \uc788\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "선택한 조건이 키와 일치하는지",
-    "만든 (a, b, c)가 조건을 만족하는지"
+    "\uc120\ud0dd\ud55c \uc870\uac74\uc774 \ud0a4\uc640 \uc77c\uce58\ud558\ub294\uc9c0",
+    "\ub9cc\ub4e0 (a, b, c)\uac00 \uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294\uc9c0"
    ],
    "human": [
-    "왜 평행사변형이 아닌지 설명의 질"
+    "\uc65c \ud3c9\ud589\uc0ac\ubcc0\ud615\uc774 \uc544\ub2cc\uc9c0 \uc124\uba85\uc758 \uc9c8"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "subject": "math",
   "grade": "M2",
   "level": 2,
-  "levelLabel": "중등",
+  "levelLabel": "\uc911\ub4f1",
   "uiLang": "ko",
   "curriculum": null,
   "id": "x-m-m2-09",
-  "topic": "도형의 닮음",
-  "title": "각이 모두 같으면 닮음일까?",
+  "topic": "\ub3c4\ud615\uc758 \ub2ee\uc74c",
+  "title": "\uac01\uc774 \ubaa8\ub450 \uac19\uc73c\uba74 \ub2ee\uc74c\uc77c\uae4c?",
   "format": "judge-evidence-explain",
   "generative": true,
   "minutes": 13,
-  "goal": "‘대응하는 각이 모두 같으면 닮음’이라는 일반화가 어떤 도형에서 성립하고 어떤 도형에서 성립하지 않는지 예로 판단한다.",
+  "goal": "\u2018\ub300\uc751\ud558\ub294 \uac01\uc774 \ubaa8\ub450 \uac19\uc73c\uba74 \ub2ee\uc74c\u2019\uc774\ub77c\ub294 \uc77c\ubc18\ud654\uac00 \uc5b4\ub5a4 \ub3c4\ud615\uc5d0\uc11c \uc131\ub9bd\ud558\uace0 \uc5b4\ub5a4 \ub3c4\ud615\uc5d0\uc11c \uc131\ub9bd\ud558\uc9c0 \uc54a\ub294\uc9c0 \uc608\ub85c \ud310\ub2e8\ud55c\ub2e4.",
   "thinking": [
-   "일반화의 성립 범위 판단하기",
-   "반례 만들기",
-   "도형 종류별 비교하기"
+   "\uc77c\ubc18\ud654\uc758 \uc131\ub9bd \ubc94\uc704 \ud310\ub2e8\ud558\uae30",
+   "\ubc18\ub840 \ub9cc\ub4e4\uae30",
+   "\ub3c4\ud615 \uc885\ub958\ubcc4 \ube44\uad50\ud558\uae30"
   ],
-  "differsFromPlain": "단순 연습은 닮음비를 이용해 길이나 넓이를 구한다. 여기서는 삼각형에서 통하던 규칙이 다른 도형에도 통하는지 스스로 시험하고 이유를 쓴다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \ub2ee\uc74c\ube44\ub97c \uc774\uc6a9\ud574 \uae38\uc774\ub098 \ub113\uc774\ub97c \uad6c\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \uc0bc\uac01\ud615\uc5d0\uc11c \ud1b5\ud558\ub358 \uaddc\uce59\uc774 \ub2e4\ub978 \ub3c4\ud615\uc5d0\ub3c4 \ud1b5\ud558\ub294\uc9c0 \uc2a4\uc2a4\ub85c \uc2dc\ud5d8\ud558\uace0 \uc774\uc720\ub97c \uc4f4\ub2e4.",
   "prerequisites": [
-   "닮음의 뜻과 닮음비",
-   "직사각형과 마름모의 뜻"
+   "\ub2ee\uc74c\uc758 \ub73b\uacfc \ub2ee\uc74c\ube44",
+   "\uc9c1\uc0ac\uac01\ud615\uacfc \ub9c8\ub984\ubaa8\uc758 \ub73b"
   ],
-  "material": "지안이는 이렇게 생각했어요. ‘세 각의 크기가 각각 같은 두 삼각형은 닮음이잖아. 그러니까 네 각이 모두 90°로 같은 직사각형도 모두 닮음일 거야.’ (닮음은 한 도형을 일정한 비율로 확대하거나 축소해서 다른 도형과 완전히 포갤 수 있는 관계예요.)",
+  "material": "\uc9c0\uc548\uc774\ub294 \uc774\ub807\uac8c \uc0dd\uac01\ud588\uc5b4\uc694. \u2018\uc138 \uac01\uc758 \ud06c\uae30\uac00 \uac01\uac01 \uac19\uc740 \ub450 \uc0bc\uac01\ud615\uc740 \ub2ee\uc74c\uc774\uc796\uc544. \uadf8\ub7ec\ub2c8\uae4c \ub124 \uac01\uc774 \ubaa8\ub450 90\u00b0\ub85c \uac19\uc740 \uc9c1\uc0ac\uac01\ud615\ub3c4 \ubaa8\ub450 \ub2ee\uc74c\uc77c \uac70\uc57c.\u2019 (\ub2ee\uc74c\uc740 \ud55c \ub3c4\ud615\uc744 \uc77c\uc815\ud55c \ube44\uc728\ub85c \ud655\ub300\ud558\uac70\ub098 \ucd95\uc18c\ud574\uc11c \ub2e4\ub978 \ub3c4\ud615\uacfc \uc644\uc804\ud788 \ud3ec\uac24 \uc218 \uc788\ub294 \uad00\uacc4\uc608\uc694.)",
   "steps": [
    {
     "id": "s1",
     "kind": "build",
-    "prompt": "가로 3, 세로 4인 직사각형과 닮음이 아닌 직사각형을, 가로 c와 세로 d로 나타내 보세요. 가로 : 세로 비가 서로 다른 모양으로 3개 만드세요. (가로와 세로를 바꾼 것은 같은 모양으로 봐요.)",
+    "prompt": "\uac00\ub85c 3, \uc138\ub85c 4\uc778 \uc9c1\uc0ac\uac01\ud615\uacfc \ub2ee\uc74c\uc774 \uc544\ub2cc \uc9c1\uc0ac\uac01\ud615\uc744, \uac00\ub85c c\uc640 \uc138\ub85c d\ub85c \ub098\ud0c0\ub0b4 \ubcf4\uc138\uc694. \uac00\ub85c : \uc138\ub85c \ube44\uac00 \uc11c\ub85c \ub2e4\ub978 \ubaa8\uc591\uc73c\ub85c 3\uac1c \ub9cc\ub4dc\uc138\uc694. (\uac00\ub85c\uc640 \uc138\ub85c\ub97c \ubc14\uafbc \uac83\uc740 \uac19\uc740 \ubaa8\uc591\uc73c\ub85c \ubd10\uc694.)",
     "vars": [
      {
       "name": "c",
-      "label": "가로 c"
+      "label": "\uac00\ub85c c"
      },
      {
       "name": "d",
-      "label": "세로 d"
+      "label": "\uc138\ub85c d"
      }
     ],
     "constraints": [
      {
       "id": "c1",
       "expr": "c>0 && d>0",
-      "ok": "길이가 양수예요.",
-      "fail": "길이는 0보다 커야 해요."
+      "ok": "\uae38\uc774\uac00 \uc591\uc218\uc608\uc694.",
+      "fail": "\uae38\uc774\ub294 0\ubcf4\ub2e4 \ucee4\uc57c \ud574\uc694."
      },
      {
       "id": "c2",
       "expr": "c*4!=d*3",
-      "ok": "가로 : 세로 비가 3 : 4가 아니에요.",
-      "fail": "가로 : 세로가 3 : 4와 같아서 닮음이 돼요."
+      "ok": "\uac00\ub85c : \uc138\ub85c \ube44\uac00 3 : 4\uac00 \uc544\ub2c8\uc5d0\uc694.",
+      "fail": "\uac00\ub85c : \uc138\ub85c\uac00 3 : 4\uc640 \uac19\uc544\uc11c \ub2ee\uc74c\uc774 \ub3fc\uc694."
      },
      {
       "id": "c3",
       "expr": "c*3!=d*4",
-      "ok": "가로·세로를 바꿔 놓아도 3 : 4가 아니에요.",
-      "fail": "가로와 세로를 바꿔 놓으면 3 : 4와 같아져서 닮음이 돼요."
+      "ok": "\uac00\ub85c\u00b7\uc138\ub85c\ub97c \ubc14\uafd4 \ub193\uc544\ub3c4 3 : 4\uac00 \uc544\ub2c8\uc5d0\uc694.",
+      "fail": "\uac00\ub85c\uc640 \uc138\ub85c\ub97c \ubc14\uafd4 \ub193\uc73c\uba74 3 : 4\uc640 \uac19\uc544\uc838\uc11c \ub2ee\uc74c\uc774 \ub3fc\uc694."
      }
     ],
     "need": 3,
@@ -1882,208 +1884,208 @@
       "d": 4
      }
     ],
-    "explain": "예: 3×5, 5×5(정사각형), 2×7은 모두 네 각이 90°인 직사각형이지만 가로 : 세로 비가 3 : 4와 달라서 닮음이 아니에요. 6×8은 3×4의 2배라서 닮음이에요.",
+    "explain": "\uc608: 3\u00d75, 5\u00d75(\uc815\uc0ac\uac01\ud615), 2\u00d77\uc740 \ubaa8\ub450 \ub124 \uac01\uc774 90\u00b0\uc778 \uc9c1\uc0ac\uac01\ud615\uc774\uc9c0\ub9cc \uac00\ub85c : \uc138\ub85c \ube44\uac00 3 : 4\uc640 \ub2ec\ub77c\uc11c \ub2ee\uc74c\uc774 \uc544\ub2c8\uc5d0\uc694. 6\u00d78\uc740 3\u00d74\uc758 2\ubc30\ub77c\uc11c \ub2ee\uc74c\uc774\uc5d0\uc694.",
     "hints": [
-     "닮음이 되려면 변의 길이의 비가 어떻게 되어야 하는지 생각해 보세요.",
-     "3×4와 비가 다른 직사각형을 하나씩 만들고, 가로·세로를 바꿔도 3 : 4가 아닌지 확인하세요."
+     "\ub2ee\uc74c\uc774 \ub418\ub824\uba74 \ubcc0\uc758 \uae38\uc774\uc758 \ube44\uac00 \uc5b4\ub5bb\uac8c \ub418\uc5b4\uc57c \ud558\ub294\uc9c0 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694.",
+     "3\u00d74\uc640 \ube44\uac00 \ub2e4\ub978 \uc9c1\uc0ac\uac01\ud615\uc744 \ud558\ub098\uc529 \ub9cc\ub4e4\uace0, \uac00\ub85c\u00b7\uc138\ub85c\ub97c \ubc14\uafd4\ub3c4 3 : 4\uac00 \uc544\ub2cc\uc9c0 \ud655\uc778\ud558\uc138\uc694."
     ],
     "because": {
      "kind": "write",
      "minChars": 20,
      "id": "s1b",
-     "prompt": "네 각이 모두 90°로 같은데도 닮음이 아닌 이유를 설명해 보세요.",
-     "placeholder": "예: 직사각형은 ...",
+     "prompt": "\ub124 \uac01\uc774 \ubaa8\ub450 90\u00b0\ub85c \uac19\uc740\ub370\ub3c4 \ub2ee\uc74c\uc774 \uc544\ub2cc \uc774\uc720\ub97c \uc124\uba85\ud574 \ubcf4\uc138\uc694.",
+     "placeholder": "\uc608: \uc9c1\uc0ac\uac01\ud615\uc740 ...",
      "hints": [
-      "확대·축소해서 포개지려면 길이 사이에 어떤 관계가 필요한지 쓰세요.",
-      "내가 만든 직사각형 하나를 3×4와 비교하며 설명해 보세요."
+      "\ud655\ub300\u00b7\ucd95\uc18c\ud574\uc11c \ud3ec\uac1c\uc9c0\ub824\uba74 \uae38\uc774 \uc0ac\uc774\uc5d0 \uc5b4\ub5a4 \uad00\uacc4\uac00 \ud544\uc694\ud55c\uc9c0 \uc4f0\uc138\uc694.",
+      "\ub0b4\uac00 \ub9cc\ub4e0 \uc9c1\uc0ac\uac01\ud615 \ud558\ub098\ub97c 3\u00d74\uc640 \ube44\uad50\ud558\uba70 \uc124\uba85\ud574 \ubcf4\uc138\uc694."
      ],
      "checks": [
       {
        "id": "h1",
-       "label": "가로·세로(변)의 비를 언급했다",
+       "label": "\uac00\ub85c\u00b7\uc138\ub85c(\ubcc0)\uc758 \ube44\ub97c \uc5b8\uae09\ud588\ub2e4",
        "mode": "any",
        "patterns": [
-        "(가로|세로|변|길이).{0,12}(비율|비(?!교))",
-        "(비|비율).{0,12}(같|다르|달)",
-        "\\d\\s*[:：]\\s*\\d",
-        "(같은|일정한)\\s*(배|비)",
-        "닮음비"
+        "(\uac00\ub85c|\uc138\ub85c|\ubcc0|\uae38\uc774).{0,12}(\ube44\uc728|\ube44(?!\uad50))",
+        "(\ube44|\ube44\uc728).{0,12}(\uac19|\ub2e4\ub974|\ub2ec)",
+        "\\d\\s*[:\uff1a]\\s*\\d",
+        "(\uac19\uc740|\uc77c\uc815\ud55c)\\s*(\ubc30|\ube44)",
+        "\ub2ee\uc74c\ube44"
        ]
       },
       {
        "id": "h2",
-       "label": "비가 다르다/각만으로는 부족하다고 말했다",
+       "label": "\ube44\uac00 \ub2e4\ub974\ub2e4/\uac01\ub9cc\uc73c\ub85c\ub294 \ubd80\uc871\ud558\ub2e4\uace0 \ub9d0\ud588\ub2e4",
        "mode": "any",
        "patterns": [
-        "(다르|다른|달라|같지\\s*(는\\s*)?않)",
-        "각.{0,20}(만으로|뿐|부족|충분하지)",
-        "포개지지\\s*(않|못)",
-        "아니(면|라|다|에요|야)",
-        "않(는다|아|습니다|아요)"
+        "(\ub2e4\ub974|\ub2e4\ub978|\ub2ec\ub77c|\uac19\uc9c0\\s*(\ub294\\s*)?\uc54a)",
+        "\uac01.{0,20}(\ub9cc\uc73c\ub85c|\ubfd0|\ubd80\uc871|\ucda9\ubd84\ud558\uc9c0)",
+        "\ud3ec\uac1c\uc9c0\uc9c0\\s*(\uc54a|\ubabb)",
+        "\uc544\ub2c8(\uba74|\ub77c|\ub2e4|\uc5d0\uc694|\uc57c)",
+        "\uc54a(\ub294\ub2e4|\uc544|\uc2b5\ub2c8\ub2e4|\uc544\uc694)"
        ]
       }
      ],
      "selfAssess": [
-      "가로 : 세로 비를 숫자로 비교했나요?",
-      "‘각이 같아도’라는 말과 ‘변의 비가 달라서’를 연결했나요?",
-      "내가 만든 직사각형을 예로 들었나요?"
+      "\uac00\ub85c : \uc138\ub85c \ube44\ub97c \uc22b\uc790\ub85c \ube44\uad50\ud588\ub098\uc694?",
+      "\u2018\uac01\uc774 \uac19\uc544\ub3c4\u2019\ub77c\ub294 \ub9d0\uacfc \u2018\ubcc0\uc758 \ube44\uac00 \ub2ec\ub77c\uc11c\u2019\ub97c \uc5f0\uacb0\ud588\ub098\uc694?",
+      "\ub0b4\uac00 \ub9cc\ub4e0 \uc9c1\uc0ac\uac01\ud615\uc744 \uc608\ub85c \ub4e4\uc5c8\ub098\uc694?"
      ],
      "modelAnswers": [
       {
-       "text": "직사각형은 네 각이 모두 90°지만 가로와 세로의 비가 다르면 한쪽을 확대·축소해도 포개지지 않아. 닮음이 되려면 각뿐 아니라 대응하는 변의 길이의 비도 같아야 해."
+       "text": "\uc9c1\uc0ac\uac01\ud615\uc740 \ub124 \uac01\uc774 \ubaa8\ub450 90\u00b0\uc9c0\ub9cc \uac00\ub85c\uc640 \uc138\ub85c\uc758 \ube44\uac00 \ub2e4\ub974\uba74 \ud55c\ucabd\uc744 \ud655\ub300\u00b7\ucd95\uc18c\ud574\ub3c4 \ud3ec\uac1c\uc9c0\uc9c0 \uc54a\uc544. \ub2ee\uc74c\uc774 \ub418\ub824\uba74 \uac01\ubfd0 \uc544\ub2c8\ub77c \ub300\uc751\ud558\ub294 \ubcc0\uc758 \uae38\uc774\uc758 \ube44\ub3c4 \uac19\uc544\uc57c \ud574."
       },
       {
-       "text": "3×4를 2배 하면 6×8이지만 3×5는 가로 세로 비율이 달라서 늘리거나 줄여도 모양이 안 맞아. 각만 같다고 닮음이 되는 게 아니야.",
-       "note": "숫자로 비교한 답"
+       "text": "3\u00d74\ub97c 2\ubc30 \ud558\uba74 6\u00d78\uc774\uc9c0\ub9cc 3\u00d75\ub294 \uac00\ub85c \uc138\ub85c \ube44\uc728\uc774 \ub2ec\ub77c\uc11c \ub298\ub9ac\uac70\ub098 \uc904\uc5ec\ub3c4 \ubaa8\uc591\uc774 \uc548 \ub9de\uc544. \uac01\ub9cc \uac19\ub2e4\uace0 \ub2ee\uc74c\uc774 \ub418\ub294 \uac8c \uc544\ub2c8\uc57c.",
+       "note": "\uc22b\uc790\ub85c \ube44\uad50\ud55c \ub2f5"
       },
       {
-       "text": "확대하면 가로·세로가 같은 배로 변해야 하는데 3:4가 아니면 포개지지 않는다.",
-       "note": "같은 배율과 3:4로 설명한 답"
+       "text": "\ud655\ub300\ud558\uba74 \uac00\ub85c\u00b7\uc138\ub85c\uac00 \uac19\uc740 \ubc30\ub85c \ubcc0\ud574\uc57c \ud558\ub294\ub370 3:4\uac00 \uc544\ub2c8\uba74 \ud3ec\uac1c\uc9c0\uc9c0 \uc54a\ub294\ub2e4.",
+       "note": "\uac19\uc740 \ubc30\uc728\uacfc 3:4\ub85c \uc124\uba85\ud55c \ub2f5"
       }
      ],
      "badAnswers": [
       {
-       "text": "직사각형이니까 닮음이라고 생각해요. 각이 다 같으니까요.",
-       "why": "변의 비를 보지 않고 지안이의 생각을 그대로 받아들였다."
+       "text": "\uc9c1\uc0ac\uac01\ud615\uc774\ub2c8\uae4c \ub2ee\uc74c\uc774\ub77c\uace0 \uc0dd\uac01\ud574\uc694. \uac01\uc774 \ub2e4 \uac19\uc73c\ub2c8\uae4c\uc694.",
+       "why": "\ubcc0\uc758 \ube44\ub97c \ubcf4\uc9c0 \uc54a\uace0 \uc9c0\uc548\uc774\uc758 \uc0dd\uac01\uc744 \uadf8\ub300\ub85c \ubc1b\uc544\ub4e4\uc600\ub2e4."
       }
      ],
-     "humanReview": "‘변의 비가 같아야 한다’를 이해하고 쓴 것인지, 용어만 가져다 쓴 것인지 사람이 읽어 판단한다."
+     "humanReview": "\u2018\ubcc0\uc758 \ube44\uac00 \uac19\uc544\uc57c \ud55c\ub2e4\u2019\ub97c \uc774\ud574\ud558\uace0 \uc4f4 \uac83\uc778\uc9c0, \uc6a9\uc5b4\ub9cc \uac00\uc838\ub2e4 \uc4f4 \uac83\uc778\uc9c0 \uc0ac\ub78c\uc774 \uc77d\uc5b4 \ud310\ub2e8\ud55c\ub2e4."
     }
    },
    {
     "id": "s2",
     "kind": "choose",
     "multi": true,
-    "prompt": "그렇다면 다음 중 ‘대응하는 각의 크기가 모두 같기만 하면 항상 닮음’이라고 할 수 있는 도형 짝을 모두 고르세요.",
+    "prompt": "\uadf8\ub807\ub2e4\uba74 \ub2e4\uc74c \uc911 \u2018\ub300\uc751\ud558\ub294 \uac01\uc758 \ud06c\uae30\uac00 \ubaa8\ub450 \uac19\uae30\ub9cc \ud558\uba74 \ud56d\uc0c1 \ub2ee\uc74c\u2019\uc774\ub77c\uace0 \ud560 \uc218 \uc788\ub294 \ub3c4\ud615 \uc9dd\uc744 \ubaa8\ub450 \uace0\ub974\uc138\uc694.",
     "options": [
      {
       "id": "a",
-      "text": "네 각의 크기가 각각 같은 두 평행사변형",
-      "reveals": "각이 같아도 이웃한 두 변의 길이의 비를 자유롭게 바꿀 수 있는지 확인해 보세요."
+      "text": "\ub124 \uac01\uc758 \ud06c\uae30\uac00 \uac01\uac01 \uac19\uc740 \ub450 \ud3c9\ud589\uc0ac\ubcc0\ud615",
+      "reveals": "\uac01\uc774 \uac19\uc544\ub3c4 \uc774\uc6c3\ud55c \ub450 \ubcc0\uc758 \uae38\uc774\uc758 \ube44\ub97c \uc790\uc720\ub86d\uac8c \ubc14\uafc0 \uc218 \uc788\ub294\uc9c0 \ud655\uc778\ud574 \ubcf4\uc138\uc694."
      },
      {
       "id": "b",
-      "text": "세 각의 크기가 각각 같은 두 삼각형",
-      "reveals": "각이 정해지면 모양이 하나로 정해지는 도형인지 확인한 선택이에요."
+      "text": "\uc138 \uac01\uc758 \ud06c\uae30\uac00 \uac01\uac01 \uac19\uc740 \ub450 \uc0bc\uac01\ud615",
+      "reveals": "\uac01\uc774 \uc815\ud574\uc9c0\uba74 \ubaa8\uc591\uc774 \ud558\ub098\ub85c \uc815\ud574\uc9c0\ub294 \ub3c4\ud615\uc778\uc9c0 \ud655\uc778\ud55c \uc120\ud0dd\uc774\uc5d0\uc694."
      },
      {
       "id": "c",
-      "text": "네 각의 크기가 각각 같은 두 직사각형",
-      "reveals": "방금 직접 만든 반례를 떠올려 보세요."
+      "text": "\ub124 \uac01\uc758 \ud06c\uae30\uac00 \uac01\uac01 \uac19\uc740 \ub450 \uc9c1\uc0ac\uac01\ud615",
+      "reveals": "\ubc29\uae08 \uc9c1\uc811 \ub9cc\ub4e0 \ubc18\ub840\ub97c \ub5a0\uc62c\ub824 \ubcf4\uc138\uc694."
      },
      {
       "id": "d",
-      "text": "네 각의 크기가 각각 같은 두 마름모",
-      "reveals": "네 변의 길이가 모두 같으면 각만 정해져도 모양이 정해지는지 확인한 선택이에요."
+      "text": "\ub124 \uac01\uc758 \ud06c\uae30\uac00 \uac01\uac01 \uac19\uc740 \ub450 \ub9c8\ub984\ubaa8",
+      "reveals": "\ub124 \ubcc0\uc758 \uae38\uc774\uac00 \ubaa8\ub450 \uac19\uc73c\uba74 \uac01\ub9cc \uc815\ud574\uc838\ub3c4 \ubaa8\uc591\uc774 \uc815\ud574\uc9c0\ub294\uc9c0 \ud655\uc778\ud55c \uc120\ud0dd\uc774\uc5d0\uc694."
      }
     ],
     "correct": [
      "b",
      "d"
     ],
-    "explain": "삼각형은 각이 정해지면 모양이 하나로 정해져 닮음이에요. 마름모는 네 변이 모두 같아서 각이 정해지면 모양이 정해져 닮음이에요. 직사각형과 평행사변형은 이웃한 두 변의 길이의 비를 바꿀 수 있어서 각이 같아도 닮음이 아닐 수 있어요.",
+    "explain": "\uc0bc\uac01\ud615\uc740 \uac01\uc774 \uc815\ud574\uc9c0\uba74 \ubaa8\uc591\uc774 \ud558\ub098\ub85c \uc815\ud574\uc838 \ub2ee\uc74c\uc774\uc5d0\uc694. \ub9c8\ub984\ubaa8\ub294 \ub124 \ubcc0\uc774 \ubaa8\ub450 \uac19\uc544\uc11c \uac01\uc774 \uc815\ud574\uc9c0\uba74 \ubaa8\uc591\uc774 \uc815\ud574\uc838 \ub2ee\uc74c\uc774\uc5d0\uc694. \uc9c1\uc0ac\uac01\ud615\uacfc \ud3c9\ud589\uc0ac\ubcc0\ud615\uc740 \uc774\uc6c3\ud55c \ub450 \ubcc0\uc758 \uae38\uc774\uc758 \ube44\ub97c \ubc14\uafc0 \uc218 \uc788\uc5b4\uc11c \uac01\uc774 \uac19\uc544\ub3c4 \ub2ee\uc74c\uc774 \uc544\ub2d0 \uc218 \uc788\uc5b4\uc694.",
     "hints": [
-     "각이 정해졌을 때 변의 길이의 비를 마음대로 바꿀 수 있는 도형인지 따져 보세요.",
-     "각이 같은 두 도형을 한쪽이 길쭉하고 다른 쪽이 납작하게 그릴 수 있는지 상상해 보세요."
+     "\uac01\uc774 \uc815\ud574\uc84c\uc744 \ub54c \ubcc0\uc758 \uae38\uc774\uc758 \ube44\ub97c \ub9c8\uc74c\ub300\ub85c \ubc14\uafc0 \uc218 \uc788\ub294 \ub3c4\ud615\uc778\uc9c0 \ub530\uc838 \ubcf4\uc138\uc694.",
+     "\uac01\uc774 \uac19\uc740 \ub450 \ub3c4\ud615\uc744 \ud55c\ucabd\uc774 \uae38\ucb49\ud558\uace0 \ub2e4\ub978 \ucabd\uc774 \ub0a9\uc791\ud558\uac8c \uadf8\ub9b4 \uc218 \uc788\ub294\uc9c0 \uc0c1\uc0c1\ud574 \ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "반례 만들기",
-    "full": "가로 : 세로 비가 3 : 4와 달라 서로 비도 다른 직사각형 3개",
-    "partial": "비가 같은 모양을 중복하거나 2개",
-    "none": "닮음인 직사각형만 제시"
+    "criterion": "\ubc18\ub840 \ub9cc\ub4e4\uae30",
+    "full": "\uac00\ub85c : \uc138\ub85c \ube44\uac00 3 : 4\uc640 \ub2ec\ub77c \uc11c\ub85c \ube44\ub3c4 \ub2e4\ub978 \uc9c1\uc0ac\uac01\ud615 3\uac1c",
+    "partial": "\ube44\uac00 \uac19\uc740 \ubaa8\uc591\uc744 \uc911\ubcf5\ud558\uac70\ub098 2\uac1c",
+    "none": "\ub2ee\uc74c\uc778 \uc9c1\uc0ac\uac01\ud615\ub9cc \uc81c\uc2dc"
    },
    {
-    "criterion": "성립 범위 판단",
-    "full": "삼각형과 마름모는 성립, 직사각형·평행사변형은 불성립으로 구분",
-    "partial": "삼각형만 구분",
-    "none": "모든 도형에서 성립한다고 판단"
+    "criterion": "\uc131\ub9bd \ubc94\uc704 \ud310\ub2e8",
+    "full": "\uc0bc\uac01\ud615\uacfc \ub9c8\ub984\ubaa8\ub294 \uc131\ub9bd, \uc9c1\uc0ac\uac01\ud615\u00b7\ud3c9\ud589\uc0ac\ubcc0\ud615\uc740 \ubd88\uc131\ub9bd\uc73c\ub85c \uad6c\ubd84",
+    "partial": "\uc0bc\uac01\ud615\ub9cc \uad6c\ubd84",
+    "none": "\ubaa8\ub4e0 \ub3c4\ud615\uc5d0\uc11c \uc131\ub9bd\ud55c\ub2e4\uace0 \ud310\ub2e8"
    }
   ],
   "alternatives": [
-   "정사각형은 모든 정사각형끼리 닮음이라는 점을 들어 비교하는 설명도 타당하다.",
-   "삼각형에서는 두 각만 같아도 닮음이라는 사실을 연결하는 설명도 인정한다."
+   "\uc815\uc0ac\uac01\ud615\uc740 \ubaa8\ub4e0 \uc815\uc0ac\uac01\ud615\ub07c\ub9ac \ub2ee\uc74c\uc774\ub77c\ub294 \uc810\uc744 \ub4e4\uc5b4 \ube44\uad50\ud558\ub294 \uc124\uba85\ub3c4 \ud0c0\ub2f9\ud558\ub2e4.",
+   "\uc0bc\uac01\ud615\uc5d0\uc11c\ub294 \ub450 \uac01\ub9cc \uac19\uc544\ub3c4 \ub2ee\uc74c\uc774\ub77c\ub294 \uc0ac\uc2e4\uc744 \uc5f0\uacb0\ud558\ub294 \uc124\uba85\ub3c4 \uc778\uc815\ud55c\ub2e4."
   ],
   "hardCases": [
-   "평행사변형에서 네 각이 각각 같으면 닮음이 아닐 수 있다는 점은 그림 없이 상상하기 어려워 사람이 설명을 확인한다.",
-   "정사각형을 마름모의 특수한 경우로 보는 학생은 판단이 달라질 수 있다."
+   "\ud3c9\ud589\uc0ac\ubcc0\ud615\uc5d0\uc11c \ub124 \uac01\uc774 \uac01\uac01 \uac19\uc73c\uba74 \ub2ee\uc74c\uc774 \uc544\ub2d0 \uc218 \uc788\ub2e4\ub294 \uc810\uc740 \uadf8\ub9bc \uc5c6\uc774 \uc0c1\uc0c1\ud558\uae30 \uc5b4\ub824\uc6cc \uc0ac\ub78c\uc774 \uc124\uba85\uc744 \ud655\uc778\ud55c\ub2e4.",
+   "\uc815\uc0ac\uac01\ud615\uc744 \ub9c8\ub984\ubaa8\uc758 \ud2b9\uc218\ud55c \uacbd\uc6b0\ub85c \ubcf4\ub294 \ud559\uc0dd\uc740 \ud310\ub2e8\uc774 \ub2ec\ub77c\uc9c8 \uc218 \uc788\ub2e4."
   ],
   "cautions": {
-   "language": "‘닮음’은 모양이 같다는 뜻으로 풀어 주었고 ‘닮음비’는 대응하는 변의 길이의 비라고 설명할 수 있다.",
-   "culture": "문화 의존 소재가 없다.",
-   "accessibility": "그림이 없고 직사각형은 가로·세로의 수치로만 다룬다."
+   "language": "\u2018\ub2ee\uc74c\u2019\uc740 \ubaa8\uc591\uc774 \uac19\ub2e4\ub294 \ub73b\uc73c\ub85c \ud480\uc5b4 \uc8fc\uc5c8\uace0 \u2018\ub2ee\uc74c\ube44\u2019\ub294 \ub300\uc751\ud558\ub294 \ubcc0\uc758 \uae38\uc774\uc758 \ube44\ub77c\uace0 \uc124\uba85\ud560 \uc218 \uc788\ub2e4.",
+   "culture": "\ubb38\ud654 \uc758\uc874 \uc18c\uc7ac\uac00 \uc5c6\ub2e4.",
+   "accessibility": "\uadf8\ub9bc\uc774 \uc5c6\uace0 \uc9c1\uc0ac\uac01\ud615\uc740 \uac00\ub85c\u00b7\uc138\ub85c\uc758 \uc218\uce58\ub85c\ub9cc \ub2e4\ub8ec\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "만든 직사각형이 닮음이 아니고 서로 비가 다른지",
-    "도형 짝의 선택"
+    "\ub9cc\ub4e0 \uc9c1\uc0ac\uac01\ud615\uc774 \ub2ee\uc74c\uc774 \uc544\ub2c8\uace0 \uc11c\ub85c \ube44\uac00 \ub2e4\ub978\uc9c0",
+    "\ub3c4\ud615 \uc9dd\uc758 \uc120\ud0dd"
    ],
    "human": [
-    "변의 비를 근거로 한 설명의 질"
+    "\ubcc0\uc758 \ube44\ub97c \uadfc\uac70\ub85c \ud55c \uc124\uba85\uc758 \uc9c8"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "subject": "math",
   "grade": "M2",
   "level": 2,
-  "levelLabel": "중등",
+  "levelLabel": "\uc911\ub4f1",
   "uiLang": "ko",
   "curriculum": null,
   "id": "x-m-m2-10",
-  "topic": "확률",
-  "title": "동전 두 개에서 앞면이 한 개일 확률",
+  "topic": "\ud655\ub960",
+  "title": "\ub3d9\uc804 \ub450 \uac1c\uc5d0\uc11c \uc55e\uba74\uc774 \ud55c \uac1c\uc77c \ud655\ub960",
   "format": "reveal-and-revise",
   "generative": false,
   "minutes": 13,
-  "goal": "‘앞면 개수’로 센 경우가 같은 정도로 일어나지 않음을 증거로 확인하고, 확률에 대한 처음 판단을 고친다.",
+  "goal": "\u2018\uc55e\uba74 \uac1c\uc218\u2019\ub85c \uc13c \uacbd\uc6b0\uac00 \uac19\uc740 \uc815\ub3c4\ub85c \uc77c\uc5b4\ub098\uc9c0 \uc54a\uc74c\uc744 \uc99d\uac70\ub85c \ud655\uc778\ud558\uace0, \ud655\ub960\uc5d0 \ub300\ud55c \ucc98\uc74c \ud310\ub2e8\uc744 \uace0\uce5c\ub2e4.",
   "thinking": [
-   "증거에 따라 판단 수정하기",
-   "경우를 어떻게 세는지 비교하기",
-   "이론 확률과 실험 결과 비교하기"
+   "\uc99d\uac70\uc5d0 \ub530\ub77c \ud310\ub2e8 \uc218\uc815\ud558\uae30",
+   "\uacbd\uc6b0\ub97c \uc5b4\ub5bb\uac8c \uc138\ub294\uc9c0 \ube44\uad50\ud558\uae30",
+   "\uc774\ub860 \ud655\ub960\uacfc \uc2e4\ud5d8 \uacb0\uacfc \ube44\uad50\ud558\uae30"
   ],
-  "differsFromPlain": "단순 연습은 경우의 수를 세어 확률을 계산한다. 여기서는 그럴듯한 계산(1/3)이 왜 틀렸는지, 어떤 증거로 판단을 바꿔야 하는지 따져 본다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uacbd\uc6b0\uc758 \uc218\ub97c \uc138\uc5b4 \ud655\ub960\uc744 \uacc4\uc0b0\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \uadf8\ub7f4\ub4ef\ud55c \uacc4\uc0b0(1/3)\uc774 \uc65c \ud2c0\ub838\ub294\uc9c0, \uc5b4\ub5a4 \uc99d\uac70\ub85c \ud310\ub2e8\uc744 \ubc14\uafd4\uc57c \ud558\ub294\uc9c0 \ub530\uc838 \ubcf8\ub2e4.",
   "prerequisites": [
-   "경우의 수 세기",
-   "확률의 뜻"
+   "\uacbd\uc6b0\uc758 \uc218 \uc138\uae30",
+   "\ud655\ub960\uc758 \ub73b"
   ],
-  "material": "공평한 동전 두 개를 동시에 한 번 던져요. 나온 결과를 앞면의 개수로만 말하면 0개, 1개, 2개가 있어요. ‘앞면이 정확히 1개 나올 확률’에 대한 내 생각이 증거에 따라 어떻게 바뀌는지 살펴봐요.",
+  "material": "\uacf5\ud3c9\ud55c \ub3d9\uc804 \ub450 \uac1c\ub97c \ub3d9\uc2dc\uc5d0 \ud55c \ubc88 \ub358\uc838\uc694. \ub098\uc628 \uacb0\uacfc\ub97c \uc55e\uba74\uc758 \uac1c\uc218\ub85c\ub9cc \ub9d0\ud558\uba74 0\uac1c, 1\uac1c, 2\uac1c\uac00 \uc788\uc5b4\uc694. \u2018\uc55e\uba74\uc774 \uc815\ud655\ud788 1\uac1c \ub098\uc62c \ud655\ub960\u2019\uc5d0 \ub300\ud55c \ub0b4 \uc0dd\uac01\uc774 \uc99d\uac70\uc5d0 \ub530\ub77c \uc5b4\ub5bb\uac8c \ubc14\ub00c\ub294\uc9c0 \uc0b4\ud3b4\ubd10\uc694.",
   "steps": [
    {
     "id": "s1",
     "kind": "reveal",
-    "prompt": "단계마다 증거가 하나씩 더 공개돼요. 지금까지의 증거로 말할 수 있는 판단을 고르세요.",
+    "prompt": "\ub2e8\uacc4\ub9c8\ub2e4 \uc99d\uac70\uac00 \ud558\ub098\uc529 \ub354 \uacf5\uac1c\ub3fc\uc694. \uc9c0\uae08\uae4c\uc9c0\uc758 \uc99d\uac70\ub85c \ub9d0\ud560 \uc218 \uc788\ub294 \ud310\ub2e8\uc744 \uace0\ub974\uc138\uc694.",
     "hints": [
-     "‘지금 보이는 증거만으로’ 어떤 판단이 가능한지 먼저 생각해 보세요.",
-     "새 증거가 이전 선택의 가정을 바꾸는지 비교해 보세요."
+     "\u2018\uc9c0\uae08 \ubcf4\uc774\ub294 \uc99d\uac70\ub9cc\uc73c\ub85c\u2019 \uc5b4\ub5a4 \ud310\ub2e8\uc774 \uac00\ub2a5\ud55c\uc9c0 \uba3c\uc800 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694.",
+     "\uc0c8 \uc99d\uac70\uac00 \uc774\uc804 \uc120\ud0dd\uc758 \uac00\uc815\uc744 \ubc14\uafb8\ub294\uc9c0 \ube44\uad50\ud574 \ubcf4\uc138\uc694."
     ],
     "stages": [
      {
-      "info": "일어날 수 있는 결과를 앞면의 개수로만 나누면 ‘0개’, ‘1개’, ‘2개’의 세 가지예요.",
-      "ask": "앞면이 정확히 1개 나올 확률에 대한 가장 알맞은 예상은?",
+      "info": "\uc77c\uc5b4\ub0a0 \uc218 \uc788\ub294 \uacb0\uacfc\ub97c \uc55e\uba74\uc758 \uac1c\uc218\ub85c\ub9cc \ub098\ub204\uba74 \u20180\uac1c\u2019, \u20181\uac1c\u2019, \u20182\uac1c\u2019\uc758 \uc138 \uac00\uc9c0\uc608\uc694.",
+      "ask": "\uc55e\uba74\uc774 \uc815\ud655\ud788 1\uac1c \ub098\uc62c \ud655\ub960\uc5d0 \ub300\ud55c \uac00\uc7a5 \uc54c\ub9de\uc740 \uc608\uc0c1\uc740?",
       "options": [
        {
         "id": "a",
-        "text": "1/3이다. 세 가지 결과 중 하나니까",
-        "reveals": "세 가지 결과가 같은 정도로 일어난다고 가정한 예상이에요. 그 가정은 아직 확인되지 않았어요."
+        "text": "1/3\uc774\ub2e4. \uc138 \uac00\uc9c0 \uacb0\uacfc \uc911 \ud558\ub098\ub2c8\uae4c",
+        "reveals": "\uc138 \uac00\uc9c0 \uacb0\uacfc\uac00 \uac19\uc740 \uc815\ub3c4\ub85c \uc77c\uc5b4\ub09c\ub2e4\uace0 \uac00\uc815\ud55c \uc608\uc0c1\uc774\uc5d0\uc694. \uadf8 \uac00\uc815\uc740 \uc544\uc9c1 \ud655\uc778\ub418\uc9c0 \uc54a\uc558\uc5b4\uc694."
        },
        {
         "id": "b",
-        "text": "1/2이다. 앞면이나 뒷면이 반반일 것 같다",
-        "reveals": "동전 한 개의 감각을 두 개에 옮겨 본 예상이에요. 이유는 아직 더 따져 봐야 해요."
+        "text": "1/2\uc774\ub2e4. \uc55e\uba74\uc774\ub098 \ub4b7\uba74\uc774 \ubc18\ubc18\uc77c \uac83 \uac19\ub2e4",
+        "reveals": "\ub3d9\uc804 \ud55c \uac1c\uc758 \uac10\uac01\uc744 \ub450 \uac1c\uc5d0 \uc62e\uaca8 \ubcf8 \uc608\uc0c1\uc774\uc5d0\uc694. \uc774\uc720\ub294 \uc544\uc9c1 \ub354 \ub530\uc838 \ubd10\uc57c \ud574\uc694."
        },
        {
         "id": "c",
-        "text": "알 수 없다. 세 결과가 같은 정도로 일어나는지부터 확인해야 한다",
-        "reveals": "확률을 정하기 전에 ‘같은 정도로 일어나는가’를 먼저 묻는 태도예요."
+        "text": "\uc54c \uc218 \uc5c6\ub2e4. \uc138 \uacb0\uacfc\uac00 \uac19\uc740 \uc815\ub3c4\ub85c \uc77c\uc5b4\ub098\ub294\uc9c0\ubd80\ud130 \ud655\uc778\ud574\uc57c \ud55c\ub2e4",
+        "reveals": "\ud655\ub960\uc744 \uc815\ud558\uae30 \uc804\uc5d0 \u2018\uac19\uc740 \uc815\ub3c4\ub85c \uc77c\uc5b4\ub098\ub294\uac00\u2019\ub97c \uba3c\uc800 \ubb3b\ub294 \ud0dc\ub3c4\uc608\uc694."
        },
        {
         "id": "d",
-        "text": "1/4이다. 동전이 두 개니까 1/2 × 1/2이다",
-        "reveals": "1/2×1/2은 ‘두 동전 모두 앞면’ 같은 특정한 한 가지 결과의 확률이에요. 앞면이 정확히 1개인 경우를 몇 가지로 볼지 생각해 보세요."
+        "text": "1/4\uc774\ub2e4. \ub3d9\uc804\uc774 \ub450 \uac1c\ub2c8\uae4c 1/2 \u00d7 1/2\uc774\ub2e4",
+        "reveals": "1/2\u00d71/2\uc740 \u2018\ub450 \ub3d9\uc804 \ubaa8\ub450 \uc55e\uba74\u2019 \uac19\uc740 \ud2b9\uc815\ud55c \ud55c \uac00\uc9c0 \uacb0\uacfc\uc758 \ud655\ub960\uc774\uc5d0\uc694. \uc55e\uba74\uc774 \uc815\ud655\ud788 1\uac1c\uc778 \uacbd\uc6b0\ub97c \uba87 \uac00\uc9c0\ub85c \ubcfc\uc9c0 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694."
        }
       ],
       "reasonable": [
@@ -2091,170 +2093,171 @@
        "b",
        "c"
       ],
-      "after": "‘앞면 개수’로 세는 방법이 괜찮은지 다음 증거로 확인해 봐요."
+      "after": "\u2018\uc55e\uba74 \uac1c\uc218\u2019\ub85c \uc138\ub294 \ubc29\ubc95\uc774 \uad1c\ucc2e\uc740\uc9c0 \ub2e4\uc74c \uc99d\uac70\ub85c \ud655\uc778\ud574 \ubd10\uc694."
      },
      {
-      "info": "동전을 구별해(100원 동전, 500원 동전) 순서쌍으로 적으면 (앞, 앞), (앞, 뒤), (뒤, 앞), (뒤, 뒤)의 4가지예요. 각 동전은 앞과 뒤가 나올 가능성이 같고 서로 영향을 주지 않으므로 이 4가지는 같은 정도로 일어나요. 앞면이 정확히 1개인 경우는 (앞, 뒤), (뒤, 앞)이에요.",
-      "ask": "이 증거를 보고 예상을 어떻게 바꾸겠어요?",
+      "info": "\ub3d9\uc804\uc744 \uad6c\ubcc4\ud574(100\uc6d0 \ub3d9\uc804, 500\uc6d0 \ub3d9\uc804) \uc21c\uc11c\uc30d\uc73c\ub85c \uc801\uc73c\uba74 (\uc55e, \uc55e), (\uc55e, \ub4a4), (\ub4a4, \uc55e), (\ub4a4, \ub4a4)\uc758 4\uac00\uc9c0\uc608\uc694. \uac01 \ub3d9\uc804\uc740 \uc55e\uacfc \ub4a4\uac00 \ub098\uc62c \uac00\ub2a5\uc131\uc774 \uac19\uace0 \uc11c\ub85c \uc601\ud5a5\uc744 \uc8fc\uc9c0 \uc54a\uc73c\ubbc0\ub85c \uc774 4\uac00\uc9c0\ub294 \uac19\uc740 \uc815\ub3c4\ub85c \uc77c\uc5b4\ub098\uc694. \uc55e\uba74\uc774 \uc815\ud655\ud788 1\uac1c\uc778 \uacbd\uc6b0\ub294 (\uc55e, \ub4a4), (\ub4a4, \uc55e)\uc774\uc5d0\uc694.",
+      "ask": "\uc774 \uc99d\uac70\ub97c \ubcf4\uace0 \uc608\uc0c1\uc744 \uc5b4\ub5bb\uac8c \ubc14\uafb8\uaca0\uc5b4\uc694?",
       "options": [
        {
         "id": "a",
-        "text": "1/3으로 그대로 둔다. 앞면 개수가 0개, 1개, 2개의 세 가지뿐이므로",
-        "reveals": "‘0개·1개·2개’가 같은 정도로 일어난다는 근거가 없어요. 1개인 경우가 몇 가지로 이루어지는지 세어 보세요."
+        "text": "1/3\uc73c\ub85c \uadf8\ub300\ub85c \ub454\ub2e4. \uc55e\uba74 \uac1c\uc218\uac00 0\uac1c, 1\uac1c, 2\uac1c\uc758 \uc138 \uac00\uc9c0\ubfd0\uc774\ubbc0\ub85c",
+        "reveals": "\u20180\uac1c\u00b71\uac1c\u00b72\uac1c\u2019\uac00 \uac19\uc740 \uc815\ub3c4\ub85c \uc77c\uc5b4\ub09c\ub2e4\ub294 \uadfc\uac70\uac00 \uc5c6\uc5b4\uc694. 1\uac1c\uc778 \uacbd\uc6b0\uac00 \uba87 \uac00\uc9c0\ub85c \uc774\ub8e8\uc5b4\uc9c0\ub294\uc9c0 \uc138\uc5b4 \ubcf4\uc138\uc694."
        },
        {
         "id": "b",
-        "text": "2/4 = 1/2로 바꾼다. 같은 정도로 일어나는 4가지 중 2가지이므로",
-        "reveals": "경우를 같은 정도로 일어나는 것끼리 센 선택이에요."
+        "text": "2/4 = 1/2\ub85c \ubc14\uafbc\ub2e4. \uac19\uc740 \uc815\ub3c4\ub85c \uc77c\uc5b4\ub098\ub294 4\uac00\uc9c0 \uc911 2\uac00\uc9c0\uc774\ubbc0\ub85c",
+        "reveals": "\uacbd\uc6b0\ub97c \uac19\uc740 \uc815\ub3c4\ub85c \uc77c\uc5b4\ub098\ub294 \uac83\ub07c\ub9ac \uc13c \uc120\ud0dd\uc774\uc5d0\uc694."
        },
        {
         "id": "c",
-        "text": "1/4로 바꾼다. 4가지 중 앞면이 1개인 경우는 한 가지뿐이므로",
-        "reveals": "(앞, 뒤)와 (뒤, 앞)이 서로 다른 경우인지 다시 확인해 보세요."
+        "text": "1/4\ub85c \ubc14\uafbc\ub2e4. 4\uac00\uc9c0 \uc911 \uc55e\uba74\uc774 1\uac1c\uc778 \uacbd\uc6b0\ub294 \ud55c \uac00\uc9c0\ubfd0\uc774\ubbc0\ub85c",
+        "reveals": "(\uc55e, \ub4a4)\uc640 (\ub4a4, \uc55e)\uc774 \uc11c\ub85c \ub2e4\ub978 \uacbd\uc6b0\uc778\uc9c0 \ub2e4\uc2dc \ud655\uc778\ud574 \ubcf4\uc138\uc694."
        },
        {
         "id": "d",
-        "text": "1/2로 바꾸되 실제로 던진 결과로도 확인해 보고 싶다",
-        "reveals": "계산한 값을 실험으로 점검하려는 태도예요."
+        "text": "1/2\ub85c \ubc14\uafb8\ub418 \uc2e4\uc81c\ub85c \ub358\uc9c4 \uacb0\uacfc\ub85c\ub3c4 \ud655\uc778\ud574 \ubcf4\uace0 \uc2f6\ub2e4",
+        "reveals": "\uacc4\uc0b0\ud55c \uac12\uc744 \uc2e4\ud5d8\uc73c\ub85c \uc810\uac80\ud558\ub824\ub294 \ud0dc\ub3c4\uc608\uc694."
        }
       ],
       "reasonable": [
        "b",
        "d"
       ],
-      "after": "세는 대상을 바꾸니 확률이 달라졌어요. 이 계산이 실제 결과와 맞는지 볼까요?"
+      "after": "\uc138\ub294 \ub300\uc0c1\uc744 \ubc14\uafb8\ub2c8 \ud655\ub960\uc774 \ub2ec\ub77c\uc84c\uc5b4\uc694. \uc774 \uacc4\uc0b0\uc774 \uc2e4\uc81c \uacb0\uacfc\uc640 \ub9de\ub294\uc9c0 \ubcfc\uae4c\uc694?"
      },
      {
-      "info": "동전 두 개를 200번 던지는 실험을 했더니 앞면이 0개 나온 횟수가 52번, 1개가 101번, 2개가 47번이었어요.",
-      "ask": "이 결과는 두 계산(1/3과 1/2) 중 어느 쪽을 더 지지하나요?",
+      "info": "\ub3d9\uc804 \ub450 \uac1c\ub97c 200\ubc88 \ub358\uc9c0\ub294 \uc2e4\ud5d8\uc744 \ud588\ub354\ub2c8 \uc55e\uba74\uc774 0\uac1c \ub098\uc628 \ud69f\uc218\uac00 52\ubc88, 1\uac1c\uac00 101\ubc88, 2\uac1c\uac00 47\ubc88\uc774\uc5c8\uc5b4\uc694.",
+      "ask": "\uc774 \uacb0\uacfc\ub294 \ub450 \uacc4\uc0b0(1/3\uacfc 1/2) \uc911 \uc5b4\ub290 \ucabd\uc744 \ub354 \uc9c0\uc9c0\ud558\ub098\uc694?",
       "options": [
        {
         "id": "a",
-        "text": "1/3 쪽이다. 세 결과가 모두 어느 정도 나왔고 0개와 2개도 꽤 자주 나왔다",
-        "reveals": "1개의 비율 101/200 ≈ 0.5와 1/3 ≈ 0.33을 비교해 보세요. 세 결과가 같은 정도로 나왔나요?"
+        "text": "1/3 \ucabd\uc774\ub2e4. \uc138 \uacb0\uacfc\uac00 \ubaa8\ub450 \uc5b4\ub290 \uc815\ub3c4 \ub098\uc654\uace0 0\uac1c\uc640 2\uac1c\ub3c4 \uaf64 \uc790\uc8fc \ub098\uc654\ub2e4",
+        "reveals": "1\uac1c\uc758 \ube44\uc728 101/200 \u2248 0.5\uc640 1/3 \u2248 0.33\uc744 \ube44\uad50\ud574 \ubcf4\uc138\uc694. \uc138 \uacb0\uacfc\uac00 \uac19\uc740 \uc815\ub3c4\ub85c \ub098\uc654\ub098\uc694?"
        },
        {
         "id": "b",
-        "text": "1/2 쪽이다. 1개가 약 절반이고 0개와 2개는 각각 약 4분의 1이다",
-        "reveals": "실험 결과를 비율로 바꾸어 이론값과 비교했어요."
+        "text": "1/2 \ucabd\uc774\ub2e4. 1\uac1c\uac00 \uc57d \uc808\ubc18\uc774\uace0 0\uac1c\uc640 2\uac1c\ub294 \uac01\uac01 \uc57d 4\ubd84\uc758 1\uc774\ub2e4",
+        "reveals": "\uc2e4\ud5d8 \uacb0\uacfc\ub97c \ube44\uc728\ub85c \ubc14\uafb8\uc5b4 \uc774\ub860\uac12\uacfc \ube44\uad50\ud588\uc5b4\uc694."
        },
        {
         "id": "c",
-        "text": "계산이 틀렸다. 실험 결과가 정확히 1/2(100번)이 아니라 101번이므로",
-        "reveals": "실험은 우연 때문에 이론값에서 조금 벗어나요. 던지는 횟수를 늘리면 어떻게 될지 생각해 보세요."
+        "text": "\uacc4\uc0b0\uc774 \ud2c0\ub838\ub2e4. \uc2e4\ud5d8 \uacb0\uacfc\uac00 \uc815\ud655\ud788 1/2(100\ubc88)\uc774 \uc544\ub2c8\ub77c 101\ubc88\uc774\ubbc0\ub85c",
+        "reveals": "\uc2e4\ud5d8\uc740 \uc6b0\uc5f0 \ub54c\ubb38\uc5d0 \uc774\ub860\uac12\uc5d0\uc11c \uc870\uae08 \ubc97\uc5b4\ub098\uc694. \ub358\uc9c0\ub294 \ud69f\uc218\ub97c \ub298\ub9ac\uba74 \uc5b4\ub5bb\uac8c \ub420\uc9c0 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694."
        },
        {
         "id": "d",
-        "text": "1/2 쪽이 더 그럴듯하다. 다만 200번의 결과라 정확히 맞지는 않는다",
-        "reveals": "이론값과 비교하되 실험의 오차 가능성을 함께 고려한 판단이에요."
+        "text": "1/2 \ucabd\uc774 \ub354 \uadf8\ub7f4\ub4ef\ud558\ub2e4. \ub2e4\ub9cc 200\ubc88\uc758 \uacb0\uacfc\ub77c \uc815\ud655\ud788 \ub9de\uc9c0\ub294 \uc54a\ub294\ub2e4",
+        "reveals": "\uc774\ub860\uac12\uacfc \ube44\uad50\ud558\ub418 \uc2e4\ud5d8\uc758 \uc624\ucc28 \uac00\ub2a5\uc131\uc744 \ud568\uaed8 \uace0\ub824\ud55c \ud310\ub2e8\uc774\uc5d0\uc694."
        }
       ],
       "reasonable": [
        "b",
        "d"
       ],
-      "after": "이론으로 센 값과 실험의 결과가 서로 받쳐 주는지 확인했어요."
+      "after": "\uc774\ub860\uc73c\ub85c \uc13c \uac12\uacfc \uc2e4\ud5d8\uc758 \uacb0\uacfc\uac00 \uc11c\ub85c \ubc1b\uccd0 \uc8fc\ub294\uc9c0 \ud655\uc778\ud588\uc5b4\uc694."
      }
     ],
-    "reflect": "‘경우의 수를 센다’는 것은 같은 정도로 일어나는 경우를 센다는 뜻이에요. 앞면 개수(0개, 1개, 2개)는 같은 정도로 일어나지 않아서 1/3로 계산하면 틀려요. 처음 예상이 바뀐 이유가 ‘센 대상을 바꾼 것’이었는지 돌아보세요."
+    "reflect": "\u2018\uacbd\uc6b0\uc758 \uc218\ub97c \uc13c\ub2e4\u2019\ub294 \uac83\uc740 \uac19\uc740 \uc815\ub3c4\ub85c \uc77c\uc5b4\ub098\ub294 \uacbd\uc6b0\ub97c \uc13c\ub2e4\ub294 \ub73b\uc774\uc5d0\uc694. \uc55e\uba74 \uac1c\uc218(0\uac1c, 1\uac1c, 2\uac1c)\ub294 \uac19\uc740 \uc815\ub3c4\ub85c \uc77c\uc5b4\ub098\uc9c0 \uc54a\uc544\uc11c 1/3\ub85c \uacc4\uc0b0\ud558\uba74 \ud2c0\ub824\uc694. \ucc98\uc74c \uc608\uc0c1\uc774 \ubc14\ub010 \uc774\uc720\uac00 \u2018\uc13c \ub300\uc0c1\uc744 \ubc14\uafbc \uac83\u2019\uc774\uc5c8\ub294\uc9c0 \ub3cc\uc544\ubcf4\uc138\uc694."
    },
    {
     "kind": "write",
     "minChars": 25,
     "id": "s2",
-    "prompt": "친구가 ‘앞면 개수는 0개, 1개, 2개 세 가지니까 앞면이 1개일 확률은 1/3이야’라고 해요. 이 계산이 왜 틀렸는지 친구에게 설명해 주세요.",
-    "placeholder": "예: 동전을 구별하면 ...",
+    "prompt": "\uce5c\uad6c\uac00 \u2018\uc55e\uba74 \uac1c\uc218\ub294 0\uac1c, 1\uac1c, 2\uac1c \uc138 \uac00\uc9c0\ub2c8\uae4c \uc55e\uba74\uc774 1\uac1c\uc77c \ud655\ub960\uc740 1/3\uc774\uc57c\u2019\ub77c\uace0 \ud574\uc694. \uc774 \uacc4\uc0b0\uc774 \uc65c \ud2c0\ub838\ub294\uc9c0 \uce5c\uad6c\uc5d0\uac8c \uc124\uba85\ud574 \uc8fc\uc138\uc694.",
+    "placeholder": "\uc608: \ub3d9\uc804\uc744 \uad6c\ubcc4\ud558\uba74 ...",
     "hints": [
-     "동전 두 개를 서로 구별해서 나올 수 있는 모든 경우를 적어 보세요.",
-     "그 경우들이 같은 정도로 일어나는지, 앞면이 1개인 경우는 몇 가지인지 쓰세요."
+     "\ub3d9\uc804 \ub450 \uac1c\ub97c \uc11c\ub85c \uad6c\ubcc4\ud574\uc11c \ub098\uc62c \uc218 \uc788\ub294 \ubaa8\ub4e0 \uacbd\uc6b0\ub97c \uc801\uc5b4 \ubcf4\uc138\uc694.",
+     "\uadf8 \uacbd\uc6b0\ub4e4\uc774 \uac19\uc740 \uc815\ub3c4\ub85c \uc77c\uc5b4\ub098\ub294\uc9c0, \uc55e\uba74\uc774 1\uac1c\uc778 \uacbd\uc6b0\ub294 \uba87 \uac00\uc9c0\uc778\uc9c0 \uc4f0\uc138\uc694."
     ],
     "checks": [
      {
       "id": "q1",
-      "label": "동전을 구별해 센 경우(4가지, 순서쌍 등)를 썼다",
+      "label": "\ub3d9\uc804\uc744 \uad6c\ubcc4\ud574 \uc13c \uacbd\uc6b0(4\uac00\uc9c0, \uc21c\uc11c\uc30d \ub4f1)\ub97c \uc37c\ub2e4",
       "mode": "any",
       "patterns": [
-       "구별",
-       "(앞|H)\\s*[,，]\\s*(뒤|T)",
-       "4\\s*(가지|개|경우)",
-       "네\\s*가지",
-       "순서",
-       "(100|500)원"
+       "\uad6c\ubcc4",
+       "(\uc55e|H)\\s*[,\uff0c]\\s*(\ub4a4|T)",
+       "4\\s*(\uac00\uc9c0|\uac1c|\uacbd\uc6b0)",
+       "\ub124\\s*\uac00\uc9c0",
+       "\uc21c\uc11c",
+       "(100|500)\uc6d0"
       ]
      },
      {
       "id": "q3",
-      "label": "앞면 1개의 확률을 1/2로 결론지었다",
+      "label": "\uc55e\uba74 1\uac1c\uc758 \ud655\ub960\uc744 1/2\ub85c \uacb0\ub860\uc9c0\uc5c8\ub2e4",
       "mode": "any",
       "patterns": [
        "1\\s*/\\s*2",
        "2\\s*/\\s*4",
-       "2분의\\s*1",
-       "4분의\\s*2",
+       "2\ubd84\uc758\\s*1",
+       "4\ubd84\uc758\\s*2",
        "0\\.5",
-       "절반",
-       "반반"
+       "\uc808\ubc18",
+       "\ubc18\ubc18"
       ]
      }
     ],
     "selfAssess": [
-     "가능한 모든 경우를 하나도 빠짐없이 적었나요?",
-     "(앞, 뒤)와 (뒤, 앞)이 서로 다른 경우임을 밝혔나요?",
-     "‘0개, 1개, 2개’가 같은 정도로 일어나지 않는 이유를 썼나요?"
+     "\uac00\ub2a5\ud55c \ubaa8\ub4e0 \uacbd\uc6b0\ub97c \ud558\ub098\ub3c4 \ube60\uc9d0\uc5c6\uc774 \uc801\uc5c8\ub098\uc694?",
+     "(\uc55e, \ub4a4)\uc640 (\ub4a4, \uc55e)\uc774 \uc11c\ub85c \ub2e4\ub978 \uacbd\uc6b0\uc784\uc744 \ubc1d\ud614\ub098\uc694?",
+     "\u20180\uac1c, 1\uac1c, 2\uac1c\u2019\uac00 \uac19\uc740 \uc815\ub3c4\ub85c \uc77c\uc5b4\ub098\uc9c0 \uc54a\ub294 \uc774\uc720\ub97c \uc37c\ub098\uc694?"
     ],
     "modelAnswers": [
      {
-      "text": "동전을 구별해서 (앞,뒤), (뒤,앞)처럼 쓰면 전체 경우가 (앞,앞),(앞,뒤),(뒤,앞),(뒤,뒤) 4가지야. 앞면이 1개인 경우가 2가지라서 확률은 2/4=1/2이야. 0개, 1개, 2개는 같은 정도로 일어나지 않아."
+      "text": "\ub3d9\uc804\uc744 \uad6c\ubcc4\ud574\uc11c (\uc55e,\ub4a4), (\ub4a4,\uc55e)\ucc98\ub7fc \uc4f0\uba74 \uc804\uccb4 \uacbd\uc6b0\uac00 (\uc55e,\uc55e),(\uc55e,\ub4a4),(\ub4a4,\uc55e),(\ub4a4,\ub4a4) 4\uac00\uc9c0\uc57c. \uc55e\uba74\uc774 1\uac1c\uc778 \uacbd\uc6b0\uac00 2\uac00\uc9c0\ub77c\uc11c \ud655\ub960\uc740 2/4=1/2\uc774\uc57c. 0\uac1c, 1\uac1c, 2\uac1c\ub294 \uac19\uc740 \uc815\ub3c4\ub85c \uc77c\uc5b4\ub098\uc9c0 \uc54a\uc544."
      },
      {
-      "text": "앞면이 1개인 경우는 100원이 앞이고 500원이 뒤인 경우와 그 반대인 경우, 2가지야. 전체는 4가지고 모두 같은 가능성이므로 4분의 2, 즉 1/2이야.",
-      "note": "동전에 이름을 붙여 센 답"
+      "text": "\uc55e\uba74\uc774 1\uac1c\uc778 \uacbd\uc6b0\ub294 100\uc6d0\uc774 \uc55e\uc774\uace0 500\uc6d0\uc774 \ub4a4\uc778 \uacbd\uc6b0\uc640 \uadf8 \ubc18\ub300\uc778 \uacbd\uc6b0, 2\uac00\uc9c0\uc57c. \uc804\uccb4\ub294 4\uac00\uc9c0\uace0 \ubaa8\ub450 \uac19\uc740 \uac00\ub2a5\uc131\uc774\ubbc0\ub85c 4\ubd84\uc758 2, \uc989 1/2\uc774\uc57c.",
+      "note": "\ub3d9\uc804\uc5d0 \uc774\ub984\uc744 \ubd99\uc5ec \uc13c \ub2f5"
      }
     ],
     "badAnswers": [
      {
-      "text": "1/3이 아니라고 생각해요. 동전은 반반이니까요.",
-      "why": "경우를 세는 방법을 설명하지 않았다."
+      "text": "1/3\uc774 \uc544\ub2c8\ub77c\uace0 \uc0dd\uac01\ud574\uc694. \ub3d9\uc804\uc740 \ubc18\ubc18\uc774\ub2c8\uae4c\uc694.",
+      "why": "\uacbd\uc6b0\ub97c \uc138\ub294 \ubc29\ubc95\uc744 \uc124\uba85\ud558\uc9c0 \uc54a\uc558\ub2e4."
      }
     ],
-    "humanReview": "‘같은 정도로 일어나는 경우끼리 센다’는 핵심을 이해했는지, 결과(1/2)만 말하고 이유를 흉내 낸 것인지 사람이 읽어 판단한다."
+    "humanReview": "\u2018\uac19\uc740 \uc815\ub3c4\ub85c \uc77c\uc5b4\ub098\ub294 \uacbd\uc6b0\ub07c\ub9ac \uc13c\ub2e4\u2019\ub294 \ud575\uc2ec\uc744 \uc774\ud574\ud588\ub294\uc9c0, \uacb0\uacfc(1/2)\ub9cc \ub9d0\ud558\uace0 \uc774\uc720\ub97c \ud749\ub0b4 \ub0b8 \uac83\uc778\uc9c0 \uc0ac\ub78c\uc774 \uc77d\uc5b4 \ud310\ub2e8\ud55c\ub2e4."
    }
   ],
   "rubric": [
    {
-    "criterion": "판단 수정의 근거",
-    "full": "센 대상을 바꾸었기 때문에 판단이 바뀐다는 것을 말함",
-    "partial": "결론만 바꾸고 이유를 말하지 않음",
-    "none": "1/3을 유지함"
+    "criterion": "\ud310\ub2e8 \uc218\uc815\uc758 \uadfc\uac70",
+    "full": "\uc13c \ub300\uc0c1\uc744 \ubc14\uafb8\uc5c8\uae30 \ub54c\ubb38\uc5d0 \ud310\ub2e8\uc774 \ubc14\ub010\ub2e4\ub294 \uac83\uc744 \ub9d0\ud568",
+    "partial": "\uacb0\ub860\ub9cc \ubc14\uafb8\uace0 \uc774\uc720\ub97c \ub9d0\ud558\uc9c0 \uc54a\uc74c",
+    "none": "1/3\uc744 \uc720\uc9c0\ud568"
    },
    {
-    "criterion": "설명의 구체성",
-    "full": "동전을 구별한 4가지를 나열하고 2가지를 짚어 1/2을 이끌어 냄",
-    "partial": "1/2만 쓰고 경우의 나열이 흐릿함",
-    "none": "근거가 없음"
+    "criterion": "\uc124\uba85\uc758 \uad6c\uccb4\uc131",
+    "full": "\ub3d9\uc804\uc744 \uad6c\ubcc4\ud55c 4\uac00\uc9c0\ub97c \ub098\uc5f4\ud558\uace0 2\uac00\uc9c0\ub97c \uc9da\uc5b4 1/2\uc744 \uc774\ub04c\uc5b4 \ub0c4",
+    "partial": "1/2\ub9cc \uc4f0\uace0 \uacbd\uc6b0\uc758 \ub098\uc5f4\uc774 \ud750\ub9bf\ud568",
+    "none": "\uadfc\uac70\uac00 \uc5c6\uc74c"
    }
   ],
   "alternatives": [
-   "표나 나무 그림 대신 ‘각 동전이 앞/뒤일 확률의 곱’으로 설명한 답도 타당하다.",
-   "순서쌍 대신 ‘동전 A, 동전 B’ 같은 이름을 써도 된다."
+   "\ud45c\ub098 \ub098\ubb34 \uadf8\ub9bc \ub300\uc2e0 \u2018\uac01 \ub3d9\uc804\uc774 \uc55e/\ub4a4\uc77c \ud655\ub960\uc758 \uacf1\u2019\uc73c\ub85c \uc124\uba85\ud55c \ub2f5\ub3c4 \ud0c0\ub2f9\ud558\ub2e4.",
+   "\uc21c\uc11c\uc30d \ub300\uc2e0 \u2018\ub3d9\uc804 A, \ub3d9\uc804 B\u2019 \uac19\uc740 \uc774\ub984\uc744 \uc368\ub3c4 \ub41c\ub2e4."
   ],
   "hardCases": [
-   "구별하지 않고도 1/2를 얻는다고 말하는 직관은 근거를 사람이 확인해야 한다.",
-   "실험 결과의 비율을 ‘확률이 달라졌다’로 해석하는 오해가 있는지 확인이 필요하다."
+   "\uad6c\ubcc4\ud558\uc9c0 \uc54a\uace0\ub3c4 1/2\ub97c \uc5bb\ub294\ub2e4\uace0 \ub9d0\ud558\ub294 \uc9c1\uad00\uc740 \uadfc\uac70\ub97c \uc0ac\ub78c\uc774 \ud655\uc778\ud574\uc57c \ud55c\ub2e4.",
+   "\uc2e4\ud5d8 \uacb0\uacfc\uc758 \ube44\uc728\uc744 \u2018\ud655\ub960\uc774 \ub2ec\ub77c\uc84c\ub2e4\u2019\ub85c \ud574\uc11d\ud558\ub294 \uc624\ud574\uac00 \uc788\ub294\uc9c0 \ud655\uc778\uc774 \ud544\uc694\ud558\ub2e4."
   ],
   "cautions": {
-   "language": "순서쌍 (앞, 뒤)는 ‘앞 뒤’로 읽도록 쉼표를 두었다. 1/3, 1/2는 ‘3분의 1’, ‘2분의 1’로 읽는다.",
-   "culture": "100원 동전과 500원 동전은 한국 동전이다. 다른 나라 학생에게는 ‘큰 동전, 작은 동전’처럼 바꿔 말해도 된다.",
-   "accessibility": "그림이 없고 경우를 모두 문장·순서쌍으로 적었다."
+   "language": "\uc21c\uc11c\uc30d (\uc55e, \ub4a4)\ub294 \u2018\uc55e \ub4a4\u2019\ub85c \uc77d\ub3c4\ub85d \uc27c\ud45c\ub97c \ub450\uc5c8\ub2e4. 1/3, 1/2\ub294 \u20183\ubd84\uc758 1\u2019, \u20182\ubd84\uc758 1\u2019\ub85c \uc77d\ub294\ub2e4.",
+   "culture": "100\uc6d0 \ub3d9\uc804\uacfc 500\uc6d0 \ub3d9\uc804\uc740 \ud55c\uad6d \ub3d9\uc804\uc774\ub2e4. \ub2e4\ub978 \ub098\ub77c \ud559\uc0dd\uc5d0\uac8c\ub294 \u2018\ud070 \ub3d9\uc804, \uc791\uc740 \ub3d9\uc804\u2019\ucc98\ub7fc \ubc14\uafd4 \ub9d0\ud574\ub3c4 \ub41c\ub2e4.",
+   "accessibility": "\uadf8\ub9bc\uc774 \uc5c6\uace0 \uacbd\uc6b0\ub97c \ubaa8\ub450 \ubb38\uc7a5\u00b7\uc21c\uc11c\uc30d\uc73c\ub85c \uc801\uc5c8\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "단계별 선택이 합리적인 판단에 포함되는지",
-    "서술에 동전을 구별한 경우와 1/2 결론이 있는지"
+    "\ub2e8\uacc4\ubcc4 \uc120\ud0dd\uc774 \ud569\ub9ac\uc801\uc778 \ud310\ub2e8\uc5d0 \ud3ec\ud568\ub418\ub294\uc9c0",
+    "\uc11c\uc220\uc5d0 \ub3d9\uc804\uc744 \uad6c\ubcc4\ud55c \uacbd\uc6b0\uc640 1/2 \uacb0\ub860\uc774 \uc788\ub294\uc9c0"
    ],
    "human": [
-    "이유 설명의 질과 오개념 여부"
+    "\uc774\uc720 \uc124\uba85\uc758 \uc9c8\uacfc \uc624\uac1c\ub150 \uc5ec\ubd80"
    ]
-  }
+  },
+  "status": "reviewed-ai"
  }
 ]

@@ -4,141 +4,141 @@
   "subject": "math",
   "grade": "M3",
   "cell": "math|M3|statistics",
-  "topic": "분산과 표준편차의 풀이 점검",
+  "topic": "\ubd84\uc0b0\uacfc \ud45c\uc900\ud3b8\ucc28\uc758 \ud480\uc774 \uc810\uac80",
   "level": 2,
-  "levelLabel": "중등",
-  "title": "민서의 풀이에서 어긋난 곳 찾기",
+  "levelLabel": "\uc911\ub4f1",
+  "title": "\ubbfc\uc11c\uc758 \ud480\uc774\uc5d0\uc11c \uc5b4\uae0b\ub09c \uacf3 \ucc3e\uae30",
   "uiLang": "ko",
   "format": "find-error-fix",
   "generative": true,
-  "goal": "분산·표준편차 풀이에서 어긋난 줄을 찾고, 끝까지 다시 계산하지 않고도 결과가 이상하다는 단서를 말하며, 같은 평균과 분산을 갖는 다른 자료를 직접 만든다.",
+  "goal": "\ubd84\uc0b0\u00b7\ud45c\uc900\ud3b8\ucc28 \ud480\uc774\uc5d0\uc11c \uc5b4\uae0b\ub09c \uc904\uc744 \ucc3e\uace0, \ub05d\uae4c\uc9c0 \ub2e4\uc2dc \uacc4\uc0b0\ud558\uc9c0 \uc54a\uace0\ub3c4 \uacb0\uacfc\uac00 \uc774\uc0c1\ud558\ub2e4\ub294 \ub2e8\uc11c\ub97c \ub9d0\ud558\uba70, \uac19\uc740 \ud3c9\uade0\uacfc \ubd84\uc0b0\uc744 \uac16\ub294 \ub2e4\ub978 \uc790\ub8cc\ub97c \uc9c1\uc811 \ub9cc\ub4e0\ub2e4.",
   "thinking": [
-   "풀이의 줄마다 근거를 따져 오류 찾기",
-   "결과의 크기가 그럴듯한지 점검하기",
-   "조건을 모두 만족하는 다른 자료 만들기"
+   "\ud480\uc774\uc758 \uc904\ub9c8\ub2e4 \uadfc\uac70\ub97c \ub530\uc838 \uc624\ub958 \ucc3e\uae30",
+   "\uacb0\uacfc\uc758 \ud06c\uae30\uac00 \uadf8\ub7f4\ub4ef\ud55c\uc9c0 \uc810\uac80\ud558\uae30",
+   "\uc870\uac74\uc744 \ubaa8\ub450 \ub9cc\uc871\ud558\ub294 \ub2e4\ub978 \uc790\ub8cc \ub9cc\ub4e4\uae30"
   ],
-  "differsFromPlain": "단순 연습은 주어진 자료의 분산과 표준편차를 순서대로 계산한다. 여기서는 이미 쓰인 풀이에서 틀린 줄을 찾고, 계산을 다시 하지 않아도 의심할 수 있는 단서를 고르고, 같은 조건의 다른 자료를 스스로 만들어 본다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uc8fc\uc5b4\uc9c4 \uc790\ub8cc\uc758 \ubd84\uc0b0\uacfc \ud45c\uc900\ud3b8\ucc28\ub97c \uc21c\uc11c\ub300\ub85c \uacc4\uc0b0\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \uc774\ubbf8 \uc4f0\uc778 \ud480\uc774\uc5d0\uc11c \ud2c0\ub9b0 \uc904\uc744 \ucc3e\uace0, \uacc4\uc0b0\uc744 \ub2e4\uc2dc \ud558\uc9c0 \uc54a\uc544\ub3c4 \uc758\uc2ec\ud560 \uc218 \uc788\ub294 \ub2e8\uc11c\ub97c \uace0\ub974\uace0, \uac19\uc740 \uc870\uac74\uc758 \ub2e4\ub978 \uc790\ub8cc\ub97c \uc2a4\uc2a4\ub85c \ub9cc\ub4e4\uc5b4 \ubcf8\ub2e4.",
   "prerequisites": [
-   "평균, 편차의 뜻(중2)",
-   "분산과 표준편차의 정의: 편차를 제곱한 값의 평균이 분산, 그 양의 제곱근이 표준편차(중3). 이 과제의 자료는 전체 학생의 점수라서 자료의 개수로 나눈다."
+   "\ud3c9\uade0, \ud3b8\ucc28\uc758 \ub73b(\uc9112)",
+   "\ubd84\uc0b0\uacfc \ud45c\uc900\ud3b8\ucc28\uc758 \uc815\uc758: \ud3b8\ucc28\ub97c \uc81c\uacf1\ud55c \uac12\uc758 \ud3c9\uade0\uc774 \ubd84\uc0b0, \uadf8 \uc591\uc758 \uc81c\uacf1\uadfc\uc774 \ud45c\uc900\ud3b8\ucc28(\uc9113). \uc774 \uacfc\uc81c\uc758 \uc790\ub8cc\ub294 \uc804\uccb4 \ud559\uc0dd\uc758 \uc810\uc218\ub77c\uc11c \uc790\ub8cc\uc758 \uac1c\uc218\ub85c \ub098\ub208\ub2e4."
   ],
   "minutes": 12,
   "curriculum": null,
-  "material": "민서네 모둠 5명이 본 쪽지 시험 점수(점)는 4, 7, 5, 8, 11이에요. 민서는 이 자료의 흩어진 정도를 구하려고 아래와 같이 풀었어요. 민서의 풀이는 한 줄이 어긋나 있어요. 이 5명이 조사 대상의 전부이므로 분산은 5로 나누어 구해요.",
+  "material": "\ubbfc\uc11c\ub124 \ubaa8\ub460 5\uba85\uc774 \ubcf8 \ucabd\uc9c0 \uc2dc\ud5d8 \uc810\uc218(\uc810)\ub294 4, 7, 5, 8, 11\uc774\uc5d0\uc694. \ubbfc\uc11c\ub294 \uc774 \uc790\ub8cc\uc758 \ud769\uc5b4\uc9c4 \uc815\ub3c4\ub97c \uad6c\ud558\ub824\uace0 \uc544\ub798\uc640 \uac19\uc774 \ud480\uc5c8\uc5b4\uc694. \ubbfc\uc11c\uc758 \ud480\uc774\ub294 \ud55c \uc904\uc774 \uc5b4\uae0b\ub098 \uc788\uc5b4\uc694. \uc774 5\uba85\uc774 \uc870\uc0ac \ub300\uc0c1\uc758 \uc804\ubd80\uc774\ubbc0\ub85c \ubd84\uc0b0\uc740 5\ub85c \ub098\ub204\uc5b4 \uad6c\ud574\uc694.",
   "steps": [
    {
     "id": "s1",
     "kind": "pickLine",
-    "prompt": "민서의 풀이에서 어긋난 줄을 한 줄 고르세요.",
+    "prompt": "\ubbfc\uc11c\uc758 \ud480\uc774\uc5d0\uc11c \uc5b4\uae0b\ub09c \uc904\uc744 \ud55c \uc904 \uace0\ub974\uc138\uc694.",
     "lines": [
-     "평균 = (4+7+5+8+11)÷5 = 35÷5 = 7(점)",
-     "편차 = 4-7, 7-7, 5-7, 8-7, 11-7 = -3, 0, -2, 1, 4",
-     "편차의 합 = -3+0-2+1+4 = 0 이므로 평균을 맞게 구했다.",
-     "(편차)² = 9, 0, 4, 1, 16 이고 그 합은 30이다.",
-     "분산 = 30÷5 = 6",
-     "표준편차 = 6(점)"
+     "\ud3c9\uade0 = (4+7+5+8+11)\u00f75 = 35\u00f75 = 7(\uc810)",
+     "\ud3b8\ucc28 = 4-7, 7-7, 5-7, 8-7, 11-7 = -3, 0, -2, 1, 4",
+     "\ud3b8\ucc28\uc758 \ud569 = -3+0-2+1+4 = 0 \uc774\ubbc0\ub85c \ud3c9\uade0\uc744 \ub9de\uac8c \uad6c\ud588\ub2e4.",
+     "(\ud3b8\ucc28)\u00b2 = 9, 0, 4, 1, 16 \uc774\uace0 \uadf8 \ud569\uc740 30\uc774\ub2e4.",
+     "\ubd84\uc0b0 = 30\u00f75 = 6",
+     "\ud45c\uc900\ud3b8\ucc28 = 6(\uc810)"
     ],
     "wrong": [
      5
     ],
-    "explain": "어긋난 줄은 6번 줄이에요. 5번 줄까지는 각 수가 앞 줄에서 바르게 나왔어요. 2번 줄의 음수 편차는 평균보다 작은 점수라서 생기는 정상적인 값이고, 3번 줄에서 편차의 합이 0이 되는 것은 평균을 바르게 구했을 때 늘 생기는 일이에요. 6번 줄은 분산 6을 그대로 표준편차로 옮겼어요. 표준편차는 분산이 아니라 분산의 양의 제곱근이어서 √6(약 2.4점)이에요.",
+    "explain": "\uc5b4\uae0b\ub09c \uc904\uc740 6\ubc88 \uc904\uc774\uc5d0\uc694. 5\ubc88 \uc904\uae4c\uc9c0\ub294 \uac01 \uc218\uac00 \uc55e \uc904\uc5d0\uc11c \ubc14\ub974\uac8c \ub098\uc654\uc5b4\uc694. 2\ubc88 \uc904\uc758 \uc74c\uc218 \ud3b8\ucc28\ub294 \ud3c9\uade0\ubcf4\ub2e4 \uc791\uc740 \uc810\uc218\ub77c\uc11c \uc0dd\uae30\ub294 \uc815\uc0c1\uc801\uc778 \uac12\uc774\uace0, 3\ubc88 \uc904\uc5d0\uc11c \ud3b8\ucc28\uc758 \ud569\uc774 0\uc774 \ub418\ub294 \uac83\uc740 \ud3c9\uade0\uc744 \ubc14\ub974\uac8c \uad6c\ud588\uc744 \ub54c \ub298 \uc0dd\uae30\ub294 \uc77c\uc774\uc5d0\uc694. 6\ubc88 \uc904\uc740 \ubd84\uc0b0 6\uc744 \uadf8\ub300\ub85c \ud45c\uc900\ud3b8\ucc28\ub85c \uc62e\uacbc\uc5b4\uc694. \ud45c\uc900\ud3b8\ucc28\ub294 \ubd84\uc0b0\uc774 \uc544\ub2c8\ub77c \ubd84\uc0b0\uc758 \uc591\uc758 \uc81c\uacf1\uadfc\uc774\uc5b4\uc11c \u221a6(\uc57d 2.4\uc810)\uc774\uc5d0\uc694.",
     "hints": [
-     "각 줄의 수가 바로 앞 줄의 수에서 어떻게 나왔는지 줄마다 짚어 보세요.",
-     "줄마다 수를 직접 다시 계산해 보고, 마지막 줄의 수가 바로 앞 줄의 수와 어떤 관계인지 살펴보세요."
+     "\uac01 \uc904\uc758 \uc218\uac00 \ubc14\ub85c \uc55e \uc904\uc758 \uc218\uc5d0\uc11c \uc5b4\ub5bb\uac8c \ub098\uc654\ub294\uc9c0 \uc904\ub9c8\ub2e4 \uc9da\uc5b4 \ubcf4\uc138\uc694.",
+     "\uc904\ub9c8\ub2e4 \uc218\ub97c \uc9c1\uc811 \ub2e4\uc2dc \uacc4\uc0b0\ud574 \ubcf4\uace0, \ub9c8\uc9c0\ub9c9 \uc904\uc758 \uc218\uac00 \ubc14\ub85c \uc55e \uc904\uc758 \uc218\uc640 \uc5b4\ub5a4 \uad00\uacc4\uc778\uc9c0 \uc0b4\ud3b4\ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "choose",
     "multi": true,
-    "prompt": "6번 줄을 다시 계산하기 전에, 이 줄을 의심해 볼 만한 단서를 모두 고르세요.",
+    "prompt": "6\ubc88 \uc904\uc744 \ub2e4\uc2dc \uacc4\uc0b0\ud558\uae30 \uc804\uc5d0, \uc774 \uc904\uc744 \uc758\uc2ec\ud574 \ubcfc \ub9cc\ud55c \ub2e8\uc11c\ub97c \ubaa8\ub450 \uace0\ub974\uc138\uc694.",
     "options": [
      {
       "id": "a",
-      "text": "편차 가운데 -3, -2처럼 음수인 값이 섞여 있다.",
-      "reveals": "편차는 평균보다 작은 점수에서 음수가 돼요. 제곱해서 더하므로 음수가 있다고 풀이가 틀린 것은 아니에요."
+      "text": "\ud3b8\ucc28 \uac00\uc6b4\ub370 -3, -2\ucc98\ub7fc \uc74c\uc218\uc778 \uac12\uc774 \uc11e\uc5ec \uc788\ub2e4.",
+      "reveals": "\ud3b8\ucc28\ub294 \ud3c9\uade0\ubcf4\ub2e4 \uc791\uc740 \uc810\uc218\uc5d0\uc11c \uc74c\uc218\uac00 \ub3fc\uc694. \uc81c\uacf1\ud574\uc11c \ub354\ud558\ubbc0\ub85c \uc74c\uc218\uac00 \uc788\ub2e4\uace0 \ud480\uc774\uac00 \ud2c0\ub9b0 \uac83\uc740 \uc544\ub2c8\uc5d0\uc694."
      },
      {
       "id": "b",
-      "text": "표준편차 6이 편차의 가장 큰 크기 4보다 크다.",
-      "reveals": "편차들의 대표적인 크기가 가장 큰 편차보다 클 수는 없다는 점에 눈을 돌렸어요. 결과의 크기를 자료와 견준 좋은 점검이에요."
+      "text": "\ud45c\uc900\ud3b8\ucc28 6\uc774 \ud3b8\ucc28\uc758 \uac00\uc7a5 \ud070 \ud06c\uae30 4\ubcf4\ub2e4 \ud06c\ub2e4.",
+      "reveals": "\ud3b8\ucc28\ub4e4\uc758 \ub300\ud45c\uc801\uc778 \ud06c\uae30\uac00 \uac00\uc7a5 \ud070 \ud3b8\ucc28\ubcf4\ub2e4 \ud074 \uc218\ub294 \uc5c6\ub2e4\ub294 \uc810\uc5d0 \ub208\uc744 \ub3cc\ub838\uc5b4\uc694. \uacb0\uacfc\uc758 \ud06c\uae30\ub97c \uc790\ub8cc\uc640 \uacac\uc900 \uc88b\uc740 \uc810\uac80\uc774\uc5d0\uc694."
      },
      {
       "id": "c",
-      "text": "자료가 5개인데 분산을 구할 때 5로 나눈 것이 못마땅하다.",
-      "reveals": "5개 전부가 조사 대상이므로 개수 5로 나누는 것이 이 과제의 약속이에요. 이 줄은 문제가 아니에요."
+      "text": "\uc790\ub8cc\uac00 5\uac1c\uc778\ub370 \ubd84\uc0b0\uc744 \uad6c\ud560 \ub54c 5\ub85c \ub098\ub208 \uac83\uc774 \ubabb\ub9c8\ub545\ud558\ub2e4.",
+      "reveals": "5\uac1c \uc804\ubd80\uac00 \uc870\uc0ac \ub300\uc0c1\uc774\ubbc0\ub85c \uac1c\uc218 5\ub85c \ub098\ub204\ub294 \uac83\uc774 \uc774 \uacfc\uc81c\uc758 \uc57d\uc18d\uc774\uc5d0\uc694. \uc774 \uc904\uc740 \ubb38\uc81c\uac00 \uc544\ub2c8\uc5d0\uc694."
      },
      {
       "id": "d",
-      "text": "분산과 표준편차가 똑같이 6인데 단위는 점², 점이다.",
-      "reveals": "단위가 다른 두 양이 같은 수로 적힌 것을 이상하게 본 좋은 점검이에요. 분산에서 표준편차로 넘어갈 때 단위가 바뀐다는 점을 떠올렸어요."
+      "text": "\ubd84\uc0b0\uacfc \ud45c\uc900\ud3b8\ucc28\uac00 \ub611\uac19\uc774 6\uc778\ub370 \ub2e8\uc704\ub294 \uc810\u00b2, \uc810\uc774\ub2e4.",
+      "reveals": "\ub2e8\uc704\uac00 \ub2e4\ub978 \ub450 \uc591\uc774 \uac19\uc740 \uc218\ub85c \uc801\ud78c \uac83\uc744 \uc774\uc0c1\ud558\uac8c \ubcf8 \uc88b\uc740 \uc810\uac80\uc774\uc5d0\uc694. \ubd84\uc0b0\uc5d0\uc11c \ud45c\uc900\ud3b8\ucc28\ub85c \ub118\uc5b4\uac08 \ub54c \ub2e8\uc704\uac00 \ubc14\ub010\ub2e4\ub294 \uc810\uc744 \ub5a0\uc62c\ub838\uc5b4\uc694."
      },
      {
       "id": "e",
-      "text": "편차를 모두 더했더니 0이 나온 것이 이상하게 느껴진다.",
-      "reveals": "편차의 합은 평균을 바르게 구했다면 늘 0이에요. 0이 나온 것은 오히려 앞 단계가 맞다는 신호예요."
+      "text": "\ud3b8\ucc28\ub97c \ubaa8\ub450 \ub354\ud588\ub354\ub2c8 0\uc774 \ub098\uc628 \uac83\uc774 \uc774\uc0c1\ud558\uac8c \ub290\uaef4\uc9c4\ub2e4.",
+      "reveals": "\ud3b8\ucc28\uc758 \ud569\uc740 \ud3c9\uade0\uc744 \ubc14\ub974\uac8c \uad6c\ud588\ub2e4\uba74 \ub298 0\uc774\uc5d0\uc694. 0\uc774 \ub098\uc628 \uac83\uc740 \uc624\ud788\ub824 \uc55e \ub2e8\uacc4\uac00 \ub9de\ub2e4\ub294 \uc2e0\ud638\uc608\uc694."
      }
     ],
     "correct": [
      "b",
      "d"
     ],
-    "explain": "풀이를 처음부터 다시 하지 않아도 두 가지로 의심할 수 있어요. 첫째, 표준편차는 편차 크기의 대표값이라서 가장 큰 편차 크기(여기서는 4)보다 클 수 없는데 6이 나왔어요. 둘째, 분산(점²)과 표준편차(점)는 단위가 다른데 같은 수가 적혀 있어요. 음수 편차, 5로 나누기, 편차의 합 0은 모두 정상이에요.",
+    "explain": "\ud480\uc774\ub97c \ucc98\uc74c\ubd80\ud130 \ub2e4\uc2dc \ud558\uc9c0 \uc54a\uc544\ub3c4 \ub450 \uac00\uc9c0\ub85c \uc758\uc2ec\ud560 \uc218 \uc788\uc5b4\uc694. \uccab\uc9f8, \ud45c\uc900\ud3b8\ucc28\ub294 \ud3b8\ucc28 \ud06c\uae30\uc758 \ub300\ud45c\uac12\uc774\ub77c\uc11c \uac00\uc7a5 \ud070 \ud3b8\ucc28 \ud06c\uae30(\uc5ec\uae30\uc11c\ub294 4)\ubcf4\ub2e4 \ud074 \uc218 \uc5c6\ub294\ub370 6\uc774 \ub098\uc654\uc5b4\uc694. \ub458\uc9f8, \ubd84\uc0b0(\uc810\u00b2)\uacfc \ud45c\uc900\ud3b8\ucc28(\uc810)\ub294 \ub2e8\uc704\uac00 \ub2e4\ub978\ub370 \uac19\uc740 \uc218\uac00 \uc801\ud600 \uc788\uc5b4\uc694. \uc74c\uc218 \ud3b8\ucc28, 5\ub85c \ub098\ub204\uae30, \ud3b8\ucc28\uc758 \ud569 0\uc740 \ubaa8\ub450 \uc815\uc0c1\uc774\uc5d0\uc694.",
     "hints": [
-     "표준편차의 크기를 5개의 편차 -3, 0, -2, 1, 4와 나란히 놓고 비교해 보세요.",
-     "분산과 표준편차의 단위를 각각 적어 보고, 두 단위가 같은지 확인해 보세요."
+     "\ud45c\uc900\ud3b8\ucc28\uc758 \ud06c\uae30\ub97c 5\uac1c\uc758 \ud3b8\ucc28 -3, 0, -2, 1, 4\uc640 \ub098\ub780\ud788 \ub193\uace0 \ube44\uad50\ud574 \ubcf4\uc138\uc694.",
+     "\ubd84\uc0b0\uacfc \ud45c\uc900\ud3b8\ucc28\uc758 \ub2e8\uc704\ub97c \uac01\uac01 \uc801\uc5b4 \ubcf4\uace0, \ub450 \ub2e8\uc704\uac00 \uac19\uc740\uc9c0 \ud655\uc778\ud574 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s3",
     "kind": "build",
-    "prompt": "처음 자료(4, 5, 7, 8, 11)와는 다르면서 평균이 7점, 분산이 6인 5개의 점수를 만들어 보세요. 점수는 0 이상 15 이하의 정수이고, 같은 점수가 여러 번 나와도 돼요. 서로 다른 자료 2가지를 만드세요. (순서만 바꾼 것은 같은 자료예요.)",
+    "prompt": "\ucc98\uc74c \uc790\ub8cc(4, 5, 7, 8, 11)\uc640\ub294 \ub2e4\ub974\uba74\uc11c \ud3c9\uade0\uc774 7\uc810, \ubd84\uc0b0\uc774 6\uc778 5\uac1c\uc758 \uc810\uc218\ub97c \ub9cc\ub4e4\uc5b4 \ubcf4\uc138\uc694. \uc810\uc218\ub294 0 \uc774\uc0c1 15 \uc774\ud558\uc758 \uc815\uc218\uc774\uace0, \uac19\uc740 \uc810\uc218\uac00 \uc5ec\ub7ec \ubc88 \ub098\uc640\ub3c4 \ub3fc\uc694. \uc11c\ub85c \ub2e4\ub978 \uc790\ub8cc 2\uac00\uc9c0\ub97c \ub9cc\ub4dc\uc138\uc694. (\uc21c\uc11c\ub9cc \ubc14\uafbc \uac83\uc740 \uac19\uc740 \uc790\ub8cc\uc608\uc694.)",
     "vars": [
      {
       "name": "a",
-      "label": "1번째 점수"
+      "label": "1\ubc88\uc9f8 \uc810\uc218"
      },
      {
       "name": "b",
-      "label": "2번째 점수"
+      "label": "2\ubc88\uc9f8 \uc810\uc218"
      },
      {
       "name": "c",
-      "label": "3번째 점수"
+      "label": "3\ubc88\uc9f8 \uc810\uc218"
      },
      {
       "name": "d",
-      "label": "4번째 점수"
+      "label": "4\ubc88\uc9f8 \uc810\uc218"
      },
      {
       "name": "e",
-      "label": "5번째 점수"
+      "label": "5\ubc88\uc9f8 \uc810\uc218"
      }
     ],
     "constraints": [
      {
       "id": "c1",
       "expr": "a>=0 && b>=0 && c>=0 && d>=0 && e>=0 && a<=15 && b<=15 && c<=15 && d<=15 && e<=15 && a==floor(a) && b==floor(b) && c==floor(c) && d==floor(d) && e==floor(e)",
-      "ok": "점수가 0 이상 15 이하의 정수예요.",
-      "fail": "점수는 0 이상 15 이하의 정수로 해 주세요."
+      "ok": "\uc810\uc218\uac00 0 \uc774\uc0c1 15 \uc774\ud558\uc758 \uc815\uc218\uc608\uc694.",
+      "fail": "\uc810\uc218\ub294 0 \uc774\uc0c1 15 \uc774\ud558\uc758 \uc815\uc218\ub85c \ud574 \uc8fc\uc138\uc694."
      },
      {
       "id": "c2",
       "expr": "a+b+c+d+e==35",
-      "ok": "평균이 7점이에요.",
-      "fail": "평균이 7점이 아니에요. 5개의 합을 확인해 보세요."
+      "ok": "\ud3c9\uade0\uc774 7\uc810\uc774\uc5d0\uc694.",
+      "fail": "\ud3c9\uade0\uc774 7\uc810\uc774 \uc544\ub2c8\uc5d0\uc694. 5\uac1c\uc758 \ud569\uc744 \ud655\uc778\ud574 \ubcf4\uc138\uc694."
      },
      {
       "id": "c3",
       "expr": "((a-7)^2+(b-7)^2+(c-7)^2+(d-7)^2+(e-7)^2)/5==6",
-      "ok": "분산이 6이에요.",
-      "fail": "분산이 6이 아니에요. 편차를 제곱해 더한 값을 확인해 보세요."
+      "ok": "\ubd84\uc0b0\uc774 6\uc774\uc5d0\uc694.",
+      "fail": "\ubd84\uc0b0\uc774 6\uc774 \uc544\ub2c8\uc5d0\uc694. \ud3b8\ucc28\ub97c \uc81c\uacf1\ud574 \ub354\ud55c \uac12\uc744 \ud655\uc778\ud574 \ubcf4\uc138\uc694."
      },
      {
       "id": "c4",
       "expr": "a^4+b^4+c^4+d^4+e^4!=22019",
-      "ok": "처음 자료와 다른 자료예요.",
-      "fail": "처음 자료(4, 5, 7, 8, 11)와 같은 자료예요."
+      "ok": "\ucc98\uc74c \uc790\ub8cc\uc640 \ub2e4\ub978 \uc790\ub8cc\uc608\uc694.",
+      "fail": "\ucc98\uc74c \uc790\ub8cc(4, 5, 7, 8, 11)\uc640 \uac19\uc740 \uc790\ub8cc\uc608\uc694."
      }
     ],
     "need": 2,
@@ -189,197 +189,198 @@
       "e": 12
      }
     ],
-    "explain": "예를 들어 3, 6, 7, 9, 10은 합이 35, 편차 제곱의 합이 16+1+0+4+9=30이라 분산이 6이에요. 4, 4, 9, 9, 9와 5, 5, 5, 10, 10도 같은 조건을 만족해요. 평균과 분산이 같아도 자료는 서로 다를 수 있어요.",
+    "explain": "\uc608\ub97c \ub4e4\uc5b4 3, 6, 7, 9, 10\uc740 \ud569\uc774 35, \ud3b8\ucc28 \uc81c\uacf1\uc758 \ud569\uc774 16+1+0+4+9=30\uc774\ub77c \ubd84\uc0b0\uc774 6\uc774\uc5d0\uc694. 4, 4, 9, 9, 9\uc640 5, 5, 5, 10, 10\ub3c4 \uac19\uc740 \uc870\uac74\uc744 \ub9cc\uc871\ud574\uc694. \ud3c9\uade0\uacfc \ubd84\uc0b0\uc774 \uac19\uc544\ub3c4 \uc790\ub8cc\ub294 \uc11c\ub85c \ub2e4\ub97c \uc218 \uc788\uc5b4\uc694.",
     "hints": [
-     "먼저 5개의 합이 몇이어야 하는지 정하고, 평균에서 떨어진 정도(편차)가 -3~4 사이로 퍼지도록 점수를 놓아 보세요.",
-     "점수를 정했다면 편차를 제곱해 모두 더한 값이 30인지 확인해 보세요."
+     "\uba3c\uc800 5\uac1c\uc758 \ud569\uc774 \uba87\uc774\uc5b4\uc57c \ud558\ub294\uc9c0 \uc815\ud558\uace0, \ud3c9\uade0\uc5d0\uc11c \ub5a8\uc5b4\uc9c4 \uc815\ub3c4(\ud3b8\ucc28)\uac00 -3~4 \uc0ac\uc774\ub85c \ud37c\uc9c0\ub3c4\ub85d \uc810\uc218\ub97c \ub193\uc544 \ubcf4\uc138\uc694.",
+     "\uc810\uc218\ub97c \uc815\ud588\ub2e4\uba74 \ud3b8\ucc28\ub97c \uc81c\uacf1\ud574 \ubaa8\ub450 \ub354\ud55c \uac12\uc774 30\uc778\uc9c0 \ud655\uc778\ud574 \ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "오류 위치와 이유",
-    "full": "6번 줄을 고르고, 분산을 그대로 표준편차로 옮긴 것이 문제임을 설명",
-    "partial": "6번 줄은 골랐으나 이유가 모호",
-    "none": "다른 줄을 정상 줄로 오해한 채 끝남"
+    "criterion": "\uc624\ub958 \uc704\uce58\uc640 \uc774\uc720",
+    "full": "6\ubc88 \uc904\uc744 \uace0\ub974\uace0, \ubd84\uc0b0\uc744 \uadf8\ub300\ub85c \ud45c\uc900\ud3b8\ucc28\ub85c \uc62e\uae34 \uac83\uc774 \ubb38\uc81c\uc784\uc744 \uc124\uba85",
+    "partial": "6\ubc88 \uc904\uc740 \uace8\ub790\uc73c\ub098 \uc774\uc720\uac00 \ubaa8\ud638",
+    "none": "\ub2e4\ub978 \uc904\uc744 \uc815\uc0c1 \uc904\ub85c \uc624\ud574\ud55c \ucc44 \ub05d\ub0a8"
    },
    {
-    "criterion": "결과의 그럴듯함 점검",
-    "full": "편차의 크기나 단위를 근거로 의심하는 단서를 골랐다",
-    "partial": "한 단서만 골랐거나 정상인 줄까지 의심함",
-    "none": "단서 없이 전부 다시 계산하려고만 함"
+    "criterion": "\uacb0\uacfc\uc758 \uadf8\ub7f4\ub4ef\ud568 \uc810\uac80",
+    "full": "\ud3b8\ucc28\uc758 \ud06c\uae30\ub098 \ub2e8\uc704\ub97c \uadfc\uac70\ub85c \uc758\uc2ec\ud558\ub294 \ub2e8\uc11c\ub97c \uace8\ub790\ub2e4",
+    "partial": "\ud55c \ub2e8\uc11c\ub9cc \uace8\ub790\uac70\ub098 \uc815\uc0c1\uc778 \uc904\uae4c\uc9c0 \uc758\uc2ec\ud568",
+    "none": "\ub2e8\uc11c \uc5c6\uc774 \uc804\ubd80 \ub2e4\uc2dc \uacc4\uc0b0\ud558\ub824\uace0\ub9cc \ud568"
    },
    {
-    "criterion": "조건에 맞는 자료 만들기",
-    "full": "평균과 분산 조건을 모두 확인하고 서로 다른 두 자료를 제시",
-    "partial": "한 가지만 맞게 제시",
-    "none": "조건 확인 없이 숫자를 늘어놓음"
+    "criterion": "\uc870\uac74\uc5d0 \ub9de\ub294 \uc790\ub8cc \ub9cc\ub4e4\uae30",
+    "full": "\ud3c9\uade0\uacfc \ubd84\uc0b0 \uc870\uac74\uc744 \ubaa8\ub450 \ud655\uc778\ud558\uace0 \uc11c\ub85c \ub2e4\ub978 \ub450 \uc790\ub8cc\ub97c \uc81c\uc2dc",
+    "partial": "\ud55c \uac00\uc9c0\ub9cc \ub9de\uac8c \uc81c\uc2dc",
+    "none": "\uc870\uac74 \ud655\uc778 \uc5c6\uc774 \uc22b\uc790\ub97c \ub298\uc5b4\ub193\uc74c"
    }
   ],
   "alternatives": [
-   "3, 6, 7, 9, 10 외에 4, 4, 9, 9, 9 / 5, 5, 5, 10, 10도 같은 조건을 만족한다. 자료를 소수까지 허용하면 더 많은 답이 나온다.",
-   "2단계에서 두 단서 가운데 하나만 골라도 타당한 단서를 잡은 것이다."
+   "3, 6, 7, 9, 10 \uc678\uc5d0 4, 4, 9, 9, 9 / 5, 5, 5, 10, 10\ub3c4 \uac19\uc740 \uc870\uac74\uc744 \ub9cc\uc871\ud55c\ub2e4. \uc790\ub8cc\ub97c \uc18c\uc218\uae4c\uc9c0 \ud5c8\uc6a9\ud558\uba74 \ub354 \ub9ce\uc740 \ub2f5\uc774 \ub098\uc628\ub2e4.",
+   "2\ub2e8\uacc4\uc5d0\uc11c \ub450 \ub2e8\uc11c \uac00\uc6b4\ub370 \ud558\ub098\ub9cc \uace8\ub77c\ub3c4 \ud0c0\ub2f9\ud55c \ub2e8\uc11c\ub97c \uc7a1\uc740 \uac83\uc774\ub2e4."
   ],
   "hardCases": [
-   "5번 줄(30÷5=6)을 고른 학생은 '자료 전체를 대상으로 하므로 5로 나눈다'는 이 과제의 약속을 확인하게 한다. 대학 과정에서 (개수-1)로 나누는 방법을 아는 학생이 있을 수 있으나 이 과제의 약속이 아니다.",
-   "3단계에서 평균 7, 분산 6을 만족하지만 0~15 정수 범위를 벗어난 자료를 낸 경우는 범위 조건 위반으로 처리한다."
+   "5\ubc88 \uc904(30\u00f75=6)\uc744 \uace0\ub978 \ud559\uc0dd\uc740 '\uc790\ub8cc \uc804\uccb4\ub97c \ub300\uc0c1\uc73c\ub85c \ud558\ubbc0\ub85c 5\ub85c \ub098\ub208\ub2e4'\ub294 \uc774 \uacfc\uc81c\uc758 \uc57d\uc18d\uc744 \ud655\uc778\ud558\uac8c \ud55c\ub2e4. \ub300\ud559 \uacfc\uc815\uc5d0\uc11c (\uac1c\uc218-1)\ub85c \ub098\ub204\ub294 \ubc29\ubc95\uc744 \uc544\ub294 \ud559\uc0dd\uc774 \uc788\uc744 \uc218 \uc788\uc73c\ub098 \uc774 \uacfc\uc81c\uc758 \uc57d\uc18d\uc774 \uc544\ub2c8\ub2e4.",
+   "3\ub2e8\uacc4\uc5d0\uc11c \ud3c9\uade0 7, \ubd84\uc0b0 6\uc744 \ub9cc\uc871\ud558\uc9c0\ub9cc 0~15 \uc815\uc218 \ubc94\uc704\ub97c \ubc97\uc5b4\ub09c \uc790\ub8cc\ub97c \ub0b8 \uacbd\uc6b0\ub294 \ubc94\uc704 \uc870\uac74 \uc704\ubc18\uc73c\ub85c \ucc98\ub9ac\ud55c\ub2e4."
   ],
   "cautions": {
-   "language": "'편차', '분산', '표준편차'의 뜻을 그대로 쓰되, 'x²'는 '엑스 제곱', '점²'는 '점 제곱', '√6'은 '루트 육'으로 읽는다고 안내한다.",
-   "culture": "쪽지 시험 점수라는 학교 상황이며 문화 의존이 적다. 인물 이름 민서는 가상이다.",
-   "accessibility": "도형·그림 없이 숫자와 문장만으로 풀 수 있다. 수식은 모두 말로 읽을 수 있게 풀어 썼다."
+   "language": "'\ud3b8\ucc28', '\ubd84\uc0b0', '\ud45c\uc900\ud3b8\ucc28'\uc758 \ub73b\uc744 \uadf8\ub300\ub85c \uc4f0\ub418, 'x\u00b2'\ub294 '\uc5d1\uc2a4 \uc81c\uacf1', '\uc810\u00b2'\ub294 '\uc810 \uc81c\uacf1', '\u221a6'\uc740 '\ub8e8\ud2b8 \uc721'\uc73c\ub85c \uc77d\ub294\ub2e4\uace0 \uc548\ub0b4\ud55c\ub2e4.",
+   "culture": "\ucabd\uc9c0 \uc2dc\ud5d8 \uc810\uc218\ub77c\ub294 \ud559\uad50 \uc0c1\ud669\uc774\uba70 \ubb38\ud654 \uc758\uc874\uc774 \uc801\ub2e4. \uc778\ubb3c \uc774\ub984 \ubbfc\uc11c\ub294 \uac00\uc0c1\uc774\ub2e4.",
+   "accessibility": "\ub3c4\ud615\u00b7\uadf8\ub9bc \uc5c6\uc774 \uc22b\uc790\uc640 \ubb38\uc7a5\ub9cc\uc73c\ub85c \ud480 \uc218 \uc788\ub2e4. \uc218\uc2dd\uc740 \ubaa8\ub450 \ub9d0\ub85c \uc77d\uc744 \uc218 \uc788\uac8c \ud480\uc5b4 \uc37c\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "어긋난 줄의 위치",
-    "선택한 단서가 정답 집합과 같은지",
-    "만든 5개 점수의 평균·분산·정수 범위·서로 다른 자료 여부"
+    "\uc5b4\uae0b\ub09c \uc904\uc758 \uc704\uce58",
+    "\uc120\ud0dd\ud55c \ub2e8\uc11c\uac00 \uc815\ub2f5 \uc9d1\ud569\uacfc \uac19\uc740\uc9c0",
+    "\ub9cc\ub4e0 5\uac1c \uc810\uc218\uc758 \ud3c9\uade0\u00b7\ubd84\uc0b0\u00b7\uc815\uc218 \ubc94\uc704\u00b7\uc11c\ub85c \ub2e4\ub978 \uc790\ub8cc \uc5ec\ubd80"
    ],
    "human": [
-    "왜 그 단서가 의심스러운지 이해하고 골랐는지",
-    "풀이를 쓸 때 약속(전체를 대상으로 하므로 개수로 나눔)을 알고 있는지"
+    "\uc65c \uadf8 \ub2e8\uc11c\uac00 \uc758\uc2ec\uc2a4\ub7ec\uc6b4\uc9c0 \uc774\ud574\ud558\uace0 \uace8\ub790\ub294\uc9c0",
+    "\ud480\uc774\ub97c \uc4f8 \ub54c \uc57d\uc18d(\uc804\uccb4\ub97c \ub300\uc0c1\uc73c\ub85c \ud558\ubbc0\ub85c \uac1c\uc218\ub85c \ub098\ub214)\uc744 \uc54c\uace0 \uc788\ub294\uc9c0"
    ]
-  }
+  },
+  "status": "reviewed-ai"
  },
  {
   "id": "y-m-31-02",
   "subject": "math",
   "grade": "M3",
   "cell": "math|M3|statistics",
-  "topic": "산점도와 상관관계의 해석",
+  "topic": "\uc0b0\uc810\ub3c4\uc640 \uc0c1\uad00\uad00\uacc4\uc758 \ud574\uc11d",
   "level": 2,
-  "levelLabel": "중등",
-  "title": "아이스크림과 물놀이 사고, 어디까지 말할 수 있을까?",
+  "levelLabel": "\uc911\ub4f1",
+  "title": "\uc544\uc774\uc2a4\ud06c\ub9bc\uacfc \ubb3c\ub180\uc774 \uc0ac\uace0, \uc5b4\ub514\uae4c\uc9c0 \ub9d0\ud560 \uc218 \uc788\uc744\uae4c?",
   "uiLang": "ko",
   "format": "reveal-and-revise",
   "generative": false,
-  "goal": "두 변수가 함께 늘어나는 모양을 읽고, 새 자료가 들어올 때마다 '원인'에 대한 판단을 고치며 상관관계만으로 말할 수 있는 것과 없는 것을 구분한다.",
+  "goal": "\ub450 \ubcc0\uc218\uac00 \ud568\uaed8 \ub298\uc5b4\ub098\ub294 \ubaa8\uc591\uc744 \uc77d\uace0, \uc0c8 \uc790\ub8cc\uac00 \ub4e4\uc5b4\uc62c \ub54c\ub9c8\ub2e4 '\uc6d0\uc778'\uc5d0 \ub300\ud55c \ud310\ub2e8\uc744 \uace0\uce58\uba70 \uc0c1\uad00\uad00\uacc4\ub9cc\uc73c\ub85c \ub9d0\ud560 \uc218 \uc788\ub294 \uac83\uacfc \uc5c6\ub294 \uac83\uc744 \uad6c\ubd84\ud55c\ub2e4.",
   "thinking": [
-   "산점도의 모양에서 상관관계 읽기",
-   "새 자료를 보고 판단과 확신의 정도를 고치기",
-   "상관관계와 인과관계 구분하기"
+   "\uc0b0\uc810\ub3c4\uc758 \ubaa8\uc591\uc5d0\uc11c \uc0c1\uad00\uad00\uacc4 \uc77d\uae30",
+   "\uc0c8 \uc790\ub8cc\ub97c \ubcf4\uace0 \ud310\ub2e8\uacfc \ud655\uc2e0\uc758 \uc815\ub3c4\ub97c \uace0\uce58\uae30",
+   "\uc0c1\uad00\uad00\uacc4\uc640 \uc778\uacfc\uad00\uacc4 \uad6c\ubd84\ud558\uae30"
   ],
-  "differsFromPlain": "단순 연습은 산점도가 양의 상관·음의 상관·상관없음 중 무엇인지 고른다. 여기서는 상관이 뚜렷한 자료로 인과 제안을 평가하고, 자료가 하나 더해질 때마다 무엇이 바뀌고 무엇이 바뀌지 않는지 따진다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uc0b0\uc810\ub3c4\uac00 \uc591\uc758 \uc0c1\uad00\u00b7\uc74c\uc758 \uc0c1\uad00\u00b7\uc0c1\uad00\uc5c6\uc74c \uc911 \ubb34\uc5c7\uc778\uc9c0 \uace0\ub978\ub2e4. \uc5ec\uae30\uc11c\ub294 \uc0c1\uad00\uc774 \ub69c\ub837\ud55c \uc790\ub8cc\ub85c \uc778\uacfc \uc81c\uc548\uc744 \ud3c9\uac00\ud558\uace0, \uc790\ub8cc\uac00 \ud558\ub098 \ub354\ud574\uc9c8 \ub54c\ub9c8\ub2e4 \ubb34\uc5c7\uc774 \ubc14\ub00c\uace0 \ubb34\uc5c7\uc774 \ubc14\ub00c\uc9c0 \uc54a\ub294\uc9c0 \ub530\uc9c4\ub2e4.",
   "prerequisites": [
-   "산점도를 보고 양의 상관관계·음의 상관관계·상관관계가 없음을 구별하기(중2~중3 수준)"
+   "\uc0b0\uc810\ub3c4\ub97c \ubcf4\uace0 \uc591\uc758 \uc0c1\uad00\uad00\uacc4\u00b7\uc74c\uc758 \uc0c1\uad00\uad00\uacc4\u00b7\uc0c1\uad00\uad00\uacc4\uac00 \uc5c6\uc74c\uc744 \uad6c\ubcc4\ud558\uae30(\uc9112~\uc9113 \uc218\uc900)"
   ],
   "minutes": 10,
   "curriculum": null,
-  "material": "바다마을에서 3월부터 8월까지 매달 아이스크림 판매량(천 개)과 해수욕장 물놀이 사고 건수(건)를 기록했어요. 월별로 (판매량, 사고 건수)는 3월 (9, 2), 4월 (14, 3), 5월 (20, 5), 6월 (26, 7), 7월 (34, 10), 8월 (36, 11)이에요. 가로축을 판매량, 세로축을 사고 건수로 점을 찍어 산점도를 그린다고 생각해 보세요.",
+  "material": "\ubc14\ub2e4\ub9c8\uc744\uc5d0\uc11c 3\uc6d4\ubd80\ud130 8\uc6d4\uae4c\uc9c0 \ub9e4\ub2ec \uc544\uc774\uc2a4\ud06c\ub9bc \ud310\ub9e4\ub7c9(\ucc9c \uac1c)\uacfc \ud574\uc218\uc695\uc7a5 \ubb3c\ub180\uc774 \uc0ac\uace0 \uac74\uc218(\uac74)\ub97c \uae30\ub85d\ud588\uc5b4\uc694. \uc6d4\ubcc4\ub85c (\ud310\ub9e4\ub7c9, \uc0ac\uace0 \uac74\uc218)\ub294 3\uc6d4 (9, 2), 4\uc6d4 (14, 3), 5\uc6d4 (20, 5), 6\uc6d4 (26, 7), 7\uc6d4 (34, 10), 8\uc6d4 (36, 11)\uc774\uc5d0\uc694. \uac00\ub85c\ucd95\uc744 \ud310\ub9e4\ub7c9, \uc138\ub85c\ucd95\uc744 \uc0ac\uace0 \uac74\uc218\ub85c \uc810\uc744 \ucc0d\uc5b4 \uc0b0\uc810\ub3c4\ub97c \uadf8\ub9b0\ub2e4\uace0 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694.",
   "steps": [
    {
     "id": "s1",
     "kind": "reveal",
-    "prompt": "자료가 하나씩 더해져요. 그때마다 어떻게 생각하는지 고르세요.",
+    "prompt": "\uc790\ub8cc\uac00 \ud558\ub098\uc529 \ub354\ud574\uc838\uc694. \uadf8\ub54c\ub9c8\ub2e4 \uc5b4\ub5bb\uac8c \uc0dd\uac01\ud558\ub294\uc9c0 \uace0\ub974\uc138\uc694.",
     "stages": [
      {
-      "info": "위의 6개 월의 (판매량, 사고 건수) 값만 알고 있어요.",
-      "ask": "산점도에서 6개의 점은 어떤 모양으로 놓일까요?",
+      "info": "\uc704\uc758 6\uac1c \uc6d4\uc758 (\ud310\ub9e4\ub7c9, \uc0ac\uace0 \uac74\uc218) \uac12\ub9cc \uc54c\uace0 \uc788\uc5b4\uc694.",
+      "ask": "\uc0b0\uc810\ub3c4\uc5d0\uc11c 6\uac1c\uc758 \uc810\uc740 \uc5b4\ub5a4 \ubaa8\uc591\uc73c\ub85c \ub193\uc77c\uae4c\uc694?",
       "options": [
        {
         "id": "a",
-        "text": "점들이 오른쪽 아래로 내려가는 모양으로, 판매량이 많은 달에 사고가 적은 경향이 있다",
-        "reveals": "표를 다시 보세요. 판매량이 커질 때 사고 건수도 커지는지 작아지는지 확인해 보세요."
+        "text": "\uc810\ub4e4\uc774 \uc624\ub978\ucabd \uc544\ub798\ub85c \ub0b4\ub824\uac00\ub294 \ubaa8\uc591\uc73c\ub85c, \ud310\ub9e4\ub7c9\uc774 \ub9ce\uc740 \ub2ec\uc5d0 \uc0ac\uace0\uac00 \uc801\uc740 \uacbd\ud5a5\uc774 \uc788\ub2e4",
+        "reveals": "\ud45c\ub97c \ub2e4\uc2dc \ubcf4\uc138\uc694. \ud310\ub9e4\ub7c9\uc774 \ucee4\uc9c8 \ub54c \uc0ac\uace0 \uac74\uc218\ub3c4 \ucee4\uc9c0\ub294\uc9c0 \uc791\uc544\uc9c0\ub294\uc9c0 \ud655\uc778\ud574 \ubcf4\uc138\uc694."
        },
        {
         "id": "b",
-        "text": "점들이 모두 정확히 한 직선 위에 놓인다",
-        "reveals": "판매량이 9에서 14로 5 늘 때 사고는 1 늘고, 14에서 20으로 6 늘 때 사고는 2 늘어서 늘어나는 폭이 일정하지 않아요. 직선 둘레에 모여 있을 뿐 정확히 한 직선 위는 아니에요."
+        "text": "\uc810\ub4e4\uc774 \ubaa8\ub450 \uc815\ud655\ud788 \ud55c \uc9c1\uc120 \uc704\uc5d0 \ub193\uc778\ub2e4",
+        "reveals": "\ud310\ub9e4\ub7c9\uc774 9\uc5d0\uc11c 14\ub85c 5 \ub298 \ub54c \uc0ac\uace0\ub294 1 \ub298\uace0, 14\uc5d0\uc11c 20\uc73c\ub85c 6 \ub298 \ub54c \uc0ac\uace0\ub294 2 \ub298\uc5b4\uc11c \ub298\uc5b4\ub098\ub294 \ud3ed\uc774 \uc77c\uc815\ud558\uc9c0 \uc54a\uc544\uc694. \uc9c1\uc120 \ub458\ub808\uc5d0 \ubaa8\uc5ec \uc788\uc744 \ubfd0 \uc815\ud655\ud788 \ud55c \uc9c1\uc120 \uc704\ub294 \uc544\ub2c8\uc5d0\uc694."
        },
        {
         "id": "c",
-        "text": "점들이 오른쪽 위로 올라가는 모양으로, 판매량이 많은 달에 사고도 많은 경향이 있다",
-        "reveals": "판매량과 사고 건수가 함께 커지는 경향, 곧 양의 상관관계를 읽었어요."
+        "text": "\uc810\ub4e4\uc774 \uc624\ub978\ucabd \uc704\ub85c \uc62c\ub77c\uac00\ub294 \ubaa8\uc591\uc73c\ub85c, \ud310\ub9e4\ub7c9\uc774 \ub9ce\uc740 \ub2ec\uc5d0 \uc0ac\uace0\ub3c4 \ub9ce\uc740 \uacbd\ud5a5\uc774 \uc788\ub2e4",
+        "reveals": "\ud310\ub9e4\ub7c9\uacfc \uc0ac\uace0 \uac74\uc218\uac00 \ud568\uaed8 \ucee4\uc9c0\ub294 \uacbd\ud5a5, \uace7 \uc591\uc758 \uc0c1\uad00\uad00\uacc4\ub97c \uc77d\uc5c8\uc5b4\uc694."
        },
        {
         "id": "d",
-        "text": "점들이 뚜렷한 방향 없이 흩어져 있다",
-        "reveals": "3월과 8월의 두 점을 비교해 보세요. 방향이 없다고 하기에는 판매량과 사고 건수가 함께 움직여요."
+        "text": "\uc810\ub4e4\uc774 \ub69c\ub837\ud55c \ubc29\ud5a5 \uc5c6\uc774 \ud769\uc5b4\uc838 \uc788\ub2e4",
+        "reveals": "3\uc6d4\uacfc 8\uc6d4\uc758 \ub450 \uc810\uc744 \ube44\uad50\ud574 \ubcf4\uc138\uc694. \ubc29\ud5a5\uc774 \uc5c6\ub2e4\uace0 \ud558\uae30\uc5d0\ub294 \ud310\ub9e4\ub7c9\uacfc \uc0ac\uace0 \uac74\uc218\uac00 \ud568\uaed8 \uc6c0\uc9c1\uc5ec\uc694."
        }
       ],
       "reasonable": [
        "c"
       ],
-      "after": "판매량이 클수록 사고 건수도 큰 경향이 있어서 점들이 오른쪽 위로 향해요. 아주 가깝게 모여 있어 상관관계가 강해요."
+      "after": "\ud310\ub9e4\ub7c9\uc774 \ud074\uc218\ub85d \uc0ac\uace0 \uac74\uc218\ub3c4 \ud070 \uacbd\ud5a5\uc774 \uc788\uc5b4\uc11c \uc810\ub4e4\uc774 \uc624\ub978\ucabd \uc704\ub85c \ud5a5\ud574\uc694. \uc544\uc8fc \uac00\uae5d\uac8c \ubaa8\uc5ec \uc788\uc5b4 \uc0c1\uad00\uad00\uacc4\uac00 \uac15\ud574\uc694."
      },
      {
-      "info": "시청 담당자가 말해요. '아이스크림 판매량과 사고 건수가 이렇게 함께 늘어나니, 아이스크림 판매를 줄이면 물놀이 사고도 줄어들 것입니다.'",
-      "ask": "이 말에 대해 어떻게 생각하나요?",
+      "info": "\uc2dc\uccad \ub2f4\ub2f9\uc790\uac00 \ub9d0\ud574\uc694. '\uc544\uc774\uc2a4\ud06c\ub9bc \ud310\ub9e4\ub7c9\uacfc \uc0ac\uace0 \uac74\uc218\uac00 \uc774\ub807\uac8c \ud568\uaed8 \ub298\uc5b4\ub098\ub2c8, \uc544\uc774\uc2a4\ud06c\ub9bc \ud310\ub9e4\ub97c \uc904\uc774\uba74 \ubb3c\ub180\uc774 \uc0ac\uace0\ub3c4 \uc904\uc5b4\ub4e4 \uac83\uc785\ub2c8\ub2e4.'",
+      "ask": "\uc774 \ub9d0\uc5d0 \ub300\ud574 \uc5b4\ub5bb\uac8c \uc0dd\uac01\ud558\ub098\uc694?",
       "options": [
        {
         "id": "a",
-        "text": "함께 늘어난 것만으로 원인이라 말하기 어렵다. 다른 이유가 둘 다에 영향을 줄 수 있다",
-        "reveals": "상관관계와 인과관계를 구분하고, 숨은 다른 요인의 가능성까지 생각했어요."
+        "text": "\ud568\uaed8 \ub298\uc5b4\ub09c \uac83\ub9cc\uc73c\ub85c \uc6d0\uc778\uc774\ub77c \ub9d0\ud558\uae30 \uc5b4\ub835\ub2e4. \ub2e4\ub978 \uc774\uc720\uac00 \ub458 \ub2e4\uc5d0 \uc601\ud5a5\uc744 \uc904 \uc218 \uc788\ub2e4",
+        "reveals": "\uc0c1\uad00\uad00\uacc4\uc640 \uc778\uacfc\uad00\uacc4\ub97c \uad6c\ubd84\ud558\uace0, \uc228\uc740 \ub2e4\ub978 \uc694\uc778\uc758 \uac00\ub2a5\uc131\uae4c\uc9c0 \uc0dd\uac01\ud588\uc5b4\uc694."
        },
        {
         "id": "b",
-        "text": "상관이 이렇게 뚜렷하니, 아이스크림 판매를 줄이면 물놀이 사고도 줄어든다고 볼 수 있다",
-        "reveals": "함께 늘어난다는 사실과 하나가 다른 하나를 일으킨다는 사실은 달라요. 판매를 줄였을 때 사고가 정말 줄어드는지는 이 표로 알 수 없어요."
+        "text": "\uc0c1\uad00\uc774 \uc774\ub807\uac8c \ub69c\ub837\ud558\ub2c8, \uc544\uc774\uc2a4\ud06c\ub9bc \ud310\ub9e4\ub97c \uc904\uc774\uba74 \ubb3c\ub180\uc774 \uc0ac\uace0\ub3c4 \uc904\uc5b4\ub4e0\ub2e4\uace0 \ubcfc \uc218 \uc788\ub2e4",
+        "reveals": "\ud568\uaed8 \ub298\uc5b4\ub09c\ub2e4\ub294 \uc0ac\uc2e4\uacfc \ud558\ub098\uac00 \ub2e4\ub978 \ud558\ub098\ub97c \uc77c\uc73c\ud0a8\ub2e4\ub294 \uc0ac\uc2e4\uc740 \ub2ec\ub77c\uc694. \ud310\ub9e4\ub97c \uc904\uc600\uc744 \ub54c \uc0ac\uace0\uac00 \uc815\ub9d0 \uc904\uc5b4\ub4dc\ub294\uc9c0\ub294 \uc774 \ud45c\ub85c \uc54c \uc218 \uc5c6\uc5b4\uc694."
        },
        {
         "id": "c",
-        "text": "표만으로는 알 수 없고, 판매를 줄여 보고 사고가 변하는지 살펴봐야 한다",
-        "reveals": "관찰한 자료만으로 원인을 정하지 않고 검증 방법을 떠올렸어요. 조건을 신중하게 통제해야 한다는 점도 함께 생각해 보세요."
+        "text": "\ud45c\ub9cc\uc73c\ub85c\ub294 \uc54c \uc218 \uc5c6\uace0, \ud310\ub9e4\ub97c \uc904\uc5ec \ubcf4\uace0 \uc0ac\uace0\uac00 \ubcc0\ud558\ub294\uc9c0 \uc0b4\ud3b4\ubd10\uc57c \ud55c\ub2e4",
+        "reveals": "\uad00\ucc30\ud55c \uc790\ub8cc\ub9cc\uc73c\ub85c \uc6d0\uc778\uc744 \uc815\ud558\uc9c0 \uc54a\uace0 \uac80\uc99d \ubc29\ubc95\uc744 \ub5a0\uc62c\ub838\uc5b4\uc694. \uc870\uac74\uc744 \uc2e0\uc911\ud558\uac8c \ud1b5\uc81c\ud574\uc57c \ud55c\ub2e4\ub294 \uc810\ub3c4 \ud568\uaed8 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694."
        },
        {
         "id": "d",
-        "text": "판매량과 사고 건수 사이에 상관이 있다는 말부터 믿기 어렵고, 표의 숫자가 우연히 그렇게 나왔다",
-        "reveals": "표의 6개 점은 분명히 함께 늘어나는 경향을 보여요. 상관이 있다는 사실과 원인이라는 해석은 다른 문제예요."
+        "text": "\ud310\ub9e4\ub7c9\uacfc \uc0ac\uace0 \uac74\uc218 \uc0ac\uc774\uc5d0 \uc0c1\uad00\uc774 \uc788\ub2e4\ub294 \ub9d0\ubd80\ud130 \ubbff\uae30 \uc5b4\ub835\uace0, \ud45c\uc758 \uc22b\uc790\uac00 \uc6b0\uc5f0\ud788 \uadf8\ub807\uac8c \ub098\uc654\ub2e4",
+        "reveals": "\ud45c\uc758 6\uac1c \uc810\uc740 \ubd84\uba85\ud788 \ud568\uaed8 \ub298\uc5b4\ub098\ub294 \uacbd\ud5a5\uc744 \ubcf4\uc5ec\uc694. \uc0c1\uad00\uc774 \uc788\ub2e4\ub294 \uc0ac\uc2e4\uacfc \uc6d0\uc778\uc774\ub77c\ub294 \ud574\uc11d\uc740 \ub2e4\ub978 \ubb38\uc81c\uc608\uc694."
        }
       ],
       "reasonable": [
        "a",
        "c"
       ],
-      "after": "함께 늘어나는 것(상관)을 보았다고 해서 한쪽이 다른 쪽의 원인이라고 말할 수는 없어요. 숨은 요인이 있을 수도 있고, 원인인지 확인하려면 다른 방법이 필요해요."
+      "after": "\ud568\uaed8 \ub298\uc5b4\ub098\ub294 \uac83(\uc0c1\uad00)\uc744 \ubcf4\uc558\ub2e4\uace0 \ud574\uc11c \ud55c\ucabd\uc774 \ub2e4\ub978 \ucabd\uc758 \uc6d0\uc778\uc774\ub77c\uace0 \ub9d0\ud560 \uc218\ub294 \uc5c6\uc5b4\uc694. \uc228\uc740 \uc694\uc778\uc774 \uc788\uc744 \uc218\ub3c4 \uc788\uace0, \uc6d0\uc778\uc778\uc9c0 \ud655\uc778\ud558\ub824\uba74 \ub2e4\ub978 \ubc29\ubc95\uc774 \ud544\uc694\ud574\uc694."
      },
      {
-      "info": "같은 달의 평균 기온(°C)을 알아보았어요. 3월 6, 4월 12, 5월 18, 6월 23, 7월 27, 8월 28이에요. 기온과 사고 건수도, 기온과 판매량도 함께 늘어나는 모양이에요.",
-      "ask": "이 자료를 더해서 생각을 정리해 보세요.",
+      "info": "\uac19\uc740 \ub2ec\uc758 \ud3c9\uade0 \uae30\uc628(\u00b0C)\uc744 \uc54c\uc544\ubcf4\uc558\uc5b4\uc694. 3\uc6d4 6, 4\uc6d4 12, 5\uc6d4 18, 6\uc6d4 23, 7\uc6d4 27, 8\uc6d4 28\uc774\uc5d0\uc694. \uae30\uc628\uacfc \uc0ac\uace0 \uac74\uc218\ub3c4, \uae30\uc628\uacfc \ud310\ub9e4\ub7c9\ub3c4 \ud568\uaed8 \ub298\uc5b4\ub098\ub294 \ubaa8\uc591\uc774\uc5d0\uc694.",
+      "ask": "\uc774 \uc790\ub8cc\ub97c \ub354\ud574\uc11c \uc0dd\uac01\uc744 \uc815\ub9ac\ud574 \ubcf4\uc138\uc694.",
       "options": [
        {
         "id": "a",
-        "text": "기온이 사고의 원인이라는 사실이 이 표로 확실하게 증명되었으므로 더 알아볼 것이 없다",
-        "reveals": "기온도 상관을 보여 줄 뿐이에요. 날씨 말고 방문객 수 같은 다른 요인도 있을 수 있어 '증명'이라고 하기엔 일러요."
+        "text": "\uae30\uc628\uc774 \uc0ac\uace0\uc758 \uc6d0\uc778\uc774\ub77c\ub294 \uc0ac\uc2e4\uc774 \uc774 \ud45c\ub85c \ud655\uc2e4\ud558\uac8c \uc99d\uba85\ub418\uc5c8\uc73c\ubbc0\ub85c \ub354 \uc54c\uc544\ubcfc \uac83\uc774 \uc5c6\ub2e4",
+        "reveals": "\uae30\uc628\ub3c4 \uc0c1\uad00\uc744 \ubcf4\uc5ec \uc904 \ubfd0\uc774\uc5d0\uc694. \ub0a0\uc528 \ub9d0\uace0 \ubc29\ubb38\uac1d \uc218 \uac19\uc740 \ub2e4\ub978 \uc694\uc778\ub3c4 \uc788\uc744 \uc218 \uc788\uc5b4 '\uc99d\uba85'\uc774\ub77c\uace0 \ud558\uae30\uc5d4 \uc77c\ub7ec\uc694."
        },
        {
         "id": "b",
-        "text": "기온을 알고 보니 판매량과 사고 건수 사이의 상관관계가 없어져 버렸으므로 둘은 무관하다",
-        "reveals": "기온 자료를 더해도 판매량과 사고 건수 점들의 모양은 그대로예요. 상관은 남아 있고 해석이 달라질 뿐이에요."
+        "text": "\uae30\uc628\uc744 \uc54c\uace0 \ubcf4\ub2c8 \ud310\ub9e4\ub7c9\uacfc \uc0ac\uace0 \uac74\uc218 \uc0ac\uc774\uc758 \uc0c1\uad00\uad00\uacc4\uac00 \uc5c6\uc5b4\uc838 \ubc84\ub838\uc73c\ubbc0\ub85c \ub458\uc740 \ubb34\uad00\ud558\ub2e4",
+        "reveals": "\uae30\uc628 \uc790\ub8cc\ub97c \ub354\ud574\ub3c4 \ud310\ub9e4\ub7c9\uacfc \uc0ac\uace0 \uac74\uc218 \uc810\ub4e4\uc758 \ubaa8\uc591\uc740 \uadf8\ub300\ub85c\uc608\uc694. \uc0c1\uad00\uc740 \ub0a8\uc544 \uc788\uace0 \ud574\uc11d\uc774 \ub2ec\ub77c\uc9c8 \ubfd0\uc774\uc5d0\uc694."
        },
        {
         "id": "c",
-        "text": "기온 자료가 더해졌어도 판매를 줄이면 사고가 줄어든다는 담당자의 처음 말은 그대로 믿을 만하다",
-        "reveals": "기온처럼 둘 다에 영향을 줄 수 있는 요인이 보였어요. 처음 말을 그대로 믿기에는 근거가 약해졌어요."
+        "text": "\uae30\uc628 \uc790\ub8cc\uac00 \ub354\ud574\uc84c\uc5b4\ub3c4 \ud310\ub9e4\ub97c \uc904\uc774\uba74 \uc0ac\uace0\uac00 \uc904\uc5b4\ub4e0\ub2e4\ub294 \ub2f4\ub2f9\uc790\uc758 \ucc98\uc74c \ub9d0\uc740 \uadf8\ub300\ub85c \ubbff\uc744 \ub9cc\ud558\ub2e4",
+        "reveals": "\uae30\uc628\ucc98\ub7fc \ub458 \ub2e4\uc5d0 \uc601\ud5a5\uc744 \uc904 \uc218 \uc788\ub294 \uc694\uc778\uc774 \ubcf4\uc600\uc5b4\uc694. \ucc98\uc74c \ub9d0\uc744 \uadf8\ub300\ub85c \ubbff\uae30\uc5d0\ub294 \uadfc\uac70\uac00 \uc57d\ud574\uc84c\uc5b4\uc694."
        },
        {
         "id": "d",
-        "text": "기온이 둘 다에 영향을 줬을 수 있다. 다만 판매가 사고와 무관하다고 단정하긴 이르다",
-        "reveals": "새 자료를 반영하면서도 확신의 정도를 알맞게 조절했어요."
+        "text": "\uae30\uc628\uc774 \ub458 \ub2e4\uc5d0 \uc601\ud5a5\uc744 \uc92c\uc744 \uc218 \uc788\ub2e4. \ub2e4\ub9cc \ud310\ub9e4\uac00 \uc0ac\uace0\uc640 \ubb34\uad00\ud558\ub2e4\uace0 \ub2e8\uc815\ud558\uae34 \uc774\ub974\ub2e4",
+        "reveals": "\uc0c8 \uc790\ub8cc\ub97c \ubc18\uc601\ud558\uba74\uc11c\ub3c4 \ud655\uc2e0\uc758 \uc815\ub3c4\ub97c \uc54c\ub9de\uac8c \uc870\uc808\ud588\uc5b4\uc694."
        }
       ],
       "reasonable": [
        "d"
       ],
-      "after": "기온이 판매량과 사고 건수 모두와 함께 움직이므로, 두 값이 함께 늘어난 이유를 기온으로 설명할 수 있어요. 그래도 판매량이 사고에 전혀 영향이 없다고 단정하려면 더 많은 자료나 실험이 필요해요."
+      "after": "\uae30\uc628\uc774 \ud310\ub9e4\ub7c9\uacfc \uc0ac\uace0 \uac74\uc218 \ubaa8\ub450\uc640 \ud568\uaed8 \uc6c0\uc9c1\uc774\ubbc0\ub85c, \ub450 \uac12\uc774 \ud568\uaed8 \ub298\uc5b4\ub09c \uc774\uc720\ub97c \uae30\uc628\uc73c\ub85c \uc124\uba85\ud560 \uc218 \uc788\uc5b4\uc694. \uadf8\ub798\ub3c4 \ud310\ub9e4\ub7c9\uc774 \uc0ac\uace0\uc5d0 \uc804\ud600 \uc601\ud5a5\uc774 \uc5c6\ub2e4\uace0 \ub2e8\uc815\ud558\ub824\uba74 \ub354 \ub9ce\uc740 \uc790\ub8cc\ub098 \uc2e4\ud5d8\uc774 \ud544\uc694\ud574\uc694."
      }
     ],
-    "reflect": "2단계에서 내 생각은 3단계 자료를 만난 뒤 어떻게 달라졌나요? 처음 생각이 그대로였다면 새 자료가 확신의 정도를 어떻게 바꾸었는지 말해 보세요.",
+    "reflect": "2\ub2e8\uacc4\uc5d0\uc11c \ub0b4 \uc0dd\uac01\uc740 3\ub2e8\uacc4 \uc790\ub8cc\ub97c \ub9cc\ub09c \ub4a4 \uc5b4\ub5bb\uac8c \ub2ec\ub77c\uc84c\ub098\uc694? \ucc98\uc74c \uc0dd\uac01\uc774 \uadf8\ub300\ub85c\uc600\ub2e4\uba74 \uc0c8 \uc790\ub8cc\uac00 \ud655\uc2e0\uc758 \uc815\ub3c4\ub97c \uc5b4\ub5bb\uac8c \ubc14\uafb8\uc5c8\ub294\uc9c0 \ub9d0\ud574 \ubcf4\uc138\uc694.",
     "hints": [
-     "각 단계에서 표의 숫자 중 두세 개를 골라, 한쪽이 커질 때 다른 쪽이 어떻게 움직이는지 나란히 비교해 보세요.",
-     "새로 나온 정보가 '함께 움직인다'는 사실을 바꾸는지, 그 사실을 설명하는 방식을 바꾸는지 구별해 보세요."
+     "\uac01 \ub2e8\uacc4\uc5d0\uc11c \ud45c\uc758 \uc22b\uc790 \uc911 \ub450\uc138 \uac1c\ub97c \uace8\ub77c, \ud55c\ucabd\uc774 \ucee4\uc9c8 \ub54c \ub2e4\ub978 \ucabd\uc774 \uc5b4\ub5bb\uac8c \uc6c0\uc9c1\uc774\ub294\uc9c0 \ub098\ub780\ud788 \ube44\uad50\ud574 \ubcf4\uc138\uc694.",
+     "\uc0c8\ub85c \ub098\uc628 \uc815\ubcf4\uac00 '\ud568\uaed8 \uc6c0\uc9c1\uc778\ub2e4'\ub294 \uc0ac\uc2e4\uc744 \ubc14\uafb8\ub294\uc9c0, \uadf8 \uc0ac\uc2e4\uc744 \uc124\uba85\ud558\ub294 \ubc29\uc2dd\uc744 \ubc14\uafb8\ub294\uc9c0 \uad6c\ubcc4\ud574 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "시청 담당자에게 보낼 답장을 2~3문장으로 쓰세요. 표의 숫자를 하나 이상 근거로 들고, '판매를 줄이면 사고가 줄어든다'는 제안을 어떻게 보는지 밝히세요.",
-    "placeholder": "예: 말씀하신 제안과 달리 표를 보면 ...",
+    "prompt": "\uc2dc\uccad \ub2f4\ub2f9\uc790\uc5d0\uac8c \ubcf4\ub0bc \ub2f5\uc7a5\uc744 2~3\ubb38\uc7a5\uc73c\ub85c \uc4f0\uc138\uc694. \ud45c\uc758 \uc22b\uc790\ub97c \ud558\ub098 \uc774\uc0c1 \uadfc\uac70\ub85c \ub4e4\uace0, '\ud310\ub9e4\ub97c \uc904\uc774\uba74 \uc0ac\uace0\uac00 \uc904\uc5b4\ub4e0\ub2e4'\ub294 \uc81c\uc548\uc744 \uc5b4\ub5bb\uac8c \ubcf4\ub294\uc9c0 \ubc1d\ud788\uc138\uc694.",
+    "placeholder": "\uc608: \ub9d0\uc500\ud558\uc2e0 \uc81c\uc548\uacfc \ub2ec\ub9ac \ud45c\ub97c \ubcf4\uba74 ...",
     "minChars": 30,
     "checks": [
      {
       "id": "w1",
-      "label": "표의 숫자를 하나 이상 인용했다",
+      "label": "\ud45c\uc758 \uc22b\uc790\ub97c \ud558\ub098 \uc774\uc0c1 \uc778\uc6a9\ud588\ub2e4",
       "mode": "any",
       "patterns": [
        "\\d"
@@ -387,213 +388,213 @@
      },
      {
       "id": "w2",
-      "label": "제안을 단정하지 않거나 다른 요인·추가 확인을 말했다",
+      "label": "\uc81c\uc548\uc744 \ub2e8\uc815\ud558\uc9c0 \uc54a\uac70\ub098 \ub2e4\ub978 \uc694\uc778\u00b7\ucd94\uac00 \ud655\uc778\uc744 \ub9d0\ud588\ub2e4",
       "mode": "any",
       "patterns": [
-       "단정",
-       "확신할\\s*수\\s*없",
-       "말할\\s*수\\s*없",
-       "알\\s*수\\s*없",
-       "어려(워|운|움|우)",
-       "불확실",
-       "장담",
-       "아닐",
-       "(원인|인과).{0,10}(아니|아닐|단정|어렵|않)",
-       "다른\\s*(원인|요인|이유)",
-       "(기온|날씨|더위|방문객|관광객).{0,25}(때문|영향|원인|같이|함께|동시)",
-       "수도\\s*있",
-       "일\\s*수\\s*있",
-       "(추가|더)\\s*(로\\s*)?(확인|조사|자료|알아)",
-       "확인해\\s*(보|봐)"
+       "\ub2e8\uc815",
+       "\ud655\uc2e0\ud560\\s*\uc218\\s*\uc5c6",
+       "\ub9d0\ud560\\s*\uc218\\s*\uc5c6",
+       "\uc54c\\s*\uc218\\s*\uc5c6",
+       "\uc5b4\ub824(\uc6cc|\uc6b4|\uc6c0|\uc6b0)",
+       "\ubd88\ud655\uc2e4",
+       "\uc7a5\ub2f4",
+       "\uc544\ub2d0",
+       "(\uc6d0\uc778|\uc778\uacfc).{0,10}(\uc544\ub2c8|\uc544\ub2d0|\ub2e8\uc815|\uc5b4\ub835|\uc54a)",
+       "\ub2e4\ub978\\s*(\uc6d0\uc778|\uc694\uc778|\uc774\uc720)",
+       "(\uae30\uc628|\ub0a0\uc528|\ub354\uc704|\ubc29\ubb38\uac1d|\uad00\uad11\uac1d).{0,25}(\ub54c\ubb38|\uc601\ud5a5|\uc6d0\uc778|\uac19\uc774|\ud568\uaed8|\ub3d9\uc2dc)",
+       "\uc218\ub3c4\\s*\uc788",
+       "\uc77c\\s*\uc218\\s*\uc788",
+       "(\ucd94\uac00|\ub354)\\s*(\ub85c\\s*)?(\ud655\uc778|\uc870\uc0ac|\uc790\ub8cc|\uc54c\uc544)",
+       "\ud655\uc778\ud574\\s*(\ubcf4|\ubd10)"
       ]
      },
      {
       "id": "w3",
-      "label": "'줄이면 사고가 줄어든다'고 그대로 단정하지 않았다",
+      "label": "'\uc904\uc774\uba74 \uc0ac\uace0\uac00 \uc904\uc5b4\ub4e0\ub2e4'\uace0 \uadf8\ub300\ub85c \ub2e8\uc815\ud558\uc9c0 \uc54a\uc558\ub2e4",
       "mode": "none",
       "patterns": [
-       "줄이면\\s*(사고(가|도)?\\s*)?(줄(어들|어요|어듭|겠|것)|준다|줄\\s*거)(?![^.!?]*(단정|어렵|않|없|아닐|모르|장담|말할|알\\s*수))"
+       "\uc904\uc774\uba74\\s*(\uc0ac\uace0(\uac00|\ub3c4)?\\s*)?(\uc904(\uc5b4\ub4e4|\uc5b4\uc694|\uc5b4\ub4ed|\uaca0|\uac83)|\uc900\ub2e4|\uc904\\s*\uac70)(?![^.!?]*(\ub2e8\uc815|\uc5b4\ub835|\uc54a|\uc5c6|\uc544\ub2d0|\ubaa8\ub974|\uc7a5\ub2f4|\ub9d0\ud560|\uc54c\\s*\uc218))"
       ]
      }
     ],
     "selfAssess": [
-     "내가 든 숫자나 근거가 표에 실제로 있는 값인가요?",
-     "'함께 늘어난다'와 '원인이다'를 구별해서 썼나요?",
-     "담당자에게 앞으로 무엇을 확인해 보자고 제안했나요?"
+     "\ub0b4\uac00 \ub4e0 \uc22b\uc790\ub098 \uadfc\uac70\uac00 \ud45c\uc5d0 \uc2e4\uc81c\ub85c \uc788\ub294 \uac12\uc778\uac00\uc694?",
+     "'\ud568\uaed8 \ub298\uc5b4\ub09c\ub2e4'\uc640 '\uc6d0\uc778\uc774\ub2e4'\ub97c \uad6c\ubcc4\ud574\uc11c \uc37c\ub098\uc694?",
+     "\ub2f4\ub2f9\uc790\uc5d0\uac8c \uc55e\uc73c\ub85c \ubb34\uc5c7\uc744 \ud655\uc778\ud574 \ubcf4\uc790\uace0 \uc81c\uc548\ud588\ub098\uc694?"
     ],
     "modelAnswers": [
      {
-      "text": "3월에는 판매량 9에 사고 2건이고 8월에는 36에 11건으로 둘이 함께 늘었습니다. 하지만 기온이 오르면 두 값이 같이 늘 수 있으므로 판매를 줄이면 사고가 준다고 단정하기는 어렵습니다."
+      "text": "3\uc6d4\uc5d0\ub294 \ud310\ub9e4\ub7c9 9\uc5d0 \uc0ac\uace0 2\uac74\uc774\uace0 8\uc6d4\uc5d0\ub294 36\uc5d0 11\uac74\uc73c\ub85c \ub458\uc774 \ud568\uaed8 \ub298\uc5c8\uc2b5\ub2c8\ub2e4. \ud558\uc9c0\ub9cc \uae30\uc628\uc774 \uc624\ub974\uba74 \ub450 \uac12\uc774 \uac19\uc774 \ub298 \uc218 \uc788\uc73c\ubbc0\ub85c \ud310\ub9e4\ub97c \uc904\uc774\uba74 \uc0ac\uace0\uac00 \uc900\ub2e4\uace0 \ub2e8\uc815\ud558\uae30\ub294 \uc5b4\ub835\uc2b5\ub2c8\ub2e4."
      },
      {
-      "text": "표를 보면 더운 달일수록 판매량과 사고가 함께 많아집니다(8월 기온 28도, 사고 11건). 아이스크림이 원인이라는 증거는 아직 없으니 방문객 수 같은 다른 요인도 확인한 뒤에 정하면 좋겠습니다.",
-      "note": "기온을 근거로 삼고 추가 확인을 제안한 답."
+      "text": "\ud45c\ub97c \ubcf4\uba74 \ub354\uc6b4 \ub2ec\uc77c\uc218\ub85d \ud310\ub9e4\ub7c9\uacfc \uc0ac\uace0\uac00 \ud568\uaed8 \ub9ce\uc544\uc9d1\ub2c8\ub2e4(8\uc6d4 \uae30\uc628 28\ub3c4, \uc0ac\uace0 11\uac74). \uc544\uc774\uc2a4\ud06c\ub9bc\uc774 \uc6d0\uc778\uc774\ub77c\ub294 \uc99d\uac70\ub294 \uc544\uc9c1 \uc5c6\uc73c\ub2c8 \ubc29\ubb38\uac1d \uc218 \uac19\uc740 \ub2e4\ub978 \uc694\uc778\ub3c4 \ud655\uc778\ud55c \ub4a4\uc5d0 \uc815\ud558\uba74 \uc88b\uaca0\uc2b5\ub2c8\ub2e4.",
+      "note": "\uae30\uc628\uc744 \uadfc\uac70\ub85c \uc0bc\uace0 \ucd94\uac00 \ud655\uc778\uc744 \uc81c\uc548\ud55c \ub2f5."
      },
      {
-      "text": "8월에는 판매량이 36천 개이고 사고가 11건이어서 둘이 함께 늘었지만, 판매를 줄이면 사고가 줄어든다고 단정하기 어렵습니다. 기온 같은 다른 요인이 둘 다에 영향을 줬을 수 있습니다."
+      "text": "8\uc6d4\uc5d0\ub294 \ud310\ub9e4\ub7c9\uc774 36\ucc9c \uac1c\uc774\uace0 \uc0ac\uace0\uac00 11\uac74\uc774\uc5b4\uc11c \ub458\uc774 \ud568\uaed8 \ub298\uc5c8\uc9c0\ub9cc, \ud310\ub9e4\ub97c \uc904\uc774\uba74 \uc0ac\uace0\uac00 \uc904\uc5b4\ub4e0\ub2e4\uace0 \ub2e8\uc815\ud558\uae30 \uc5b4\ub835\uc2b5\ub2c8\ub2e4. \uae30\uc628 \uac19\uc740 \ub2e4\ub978 \uc694\uc778\uc774 \ub458 \ub2e4\uc5d0 \uc601\ud5a5\uc744 \uc92c\uc744 \uc218 \uc788\uc2b5\ub2c8\ub2e4."
      }
     ],
     "badAnswers": [
      {
-      "text": "아이스크림을 줄이면 사고가 줄어들 거예요. 8월은 판매량 36, 사고 11건이잖아요.",
-      "why": "함께 늘어난다는 사실만으로 원인이라고 단정했다."
+      "text": "\uc544\uc774\uc2a4\ud06c\ub9bc\uc744 \uc904\uc774\uba74 \uc0ac\uace0\uac00 \uc904\uc5b4\ub4e4 \uac70\uc608\uc694. 8\uc6d4\uc740 \ud310\ub9e4\ub7c9 36, \uc0ac\uace0 11\uac74\uc774\uc796\uc544\uc694.",
+      "why": "\ud568\uaed8 \ub298\uc5b4\ub09c\ub2e4\ub294 \uc0ac\uc2e4\ub9cc\uc73c\ub85c \uc6d0\uc778\uc774\ub77c\uace0 \ub2e8\uc815\ud588\ub2e4."
      },
      {
-      "text": "잘 모르겠어요. 어려운 문제네요.",
-      "why": "표의 숫자도, 이유도 없다."
+      "text": "\uc798 \ubaa8\ub974\uaca0\uc5b4\uc694. \uc5b4\ub824\uc6b4 \ubb38\uc81c\ub124\uc694.",
+      "why": "\ud45c\uc758 \uc22b\uc790\ub3c4, \uc774\uc720\ub3c4 \uc5c6\ub2e4."
      },
      {
-      "text": "아이스크림을 줄이면 사고가 줄어들 거예요. 기온도 함께 늘어요. 8월은 판매량 36이에요.",
-      "why": "기온을 언급했지만 함께 늘어난 것만으로 원인이라고 단정했다."
+      "text": "\uc544\uc774\uc2a4\ud06c\ub9bc\uc744 \uc904\uc774\uba74 \uc0ac\uace0\uac00 \uc904\uc5b4\ub4e4 \uac70\uc608\uc694. \uae30\uc628\ub3c4 \ud568\uaed8 \ub298\uc5b4\uc694. 8\uc6d4\uc740 \ud310\ub9e4\ub7c9 36\uc774\uc5d0\uc694.",
+      "why": "\uae30\uc628\uc744 \uc5b8\uae09\ud588\uc9c0\ub9cc \ud568\uaed8 \ub298\uc5b4\ub09c \uac83\ub9cc\uc73c\ub85c \uc6d0\uc778\uc774\ub77c\uace0 \ub2e8\uc815\ud588\ub2e4."
      }
     ],
-    "humanReview": "든 숫자가 표와 맞는지, '단정할 수 없다'를 이유와 함께 썼는지, 이유 없이 신중한 척한 것은 아닌지는 사람이 읽어야 안다.",
+    "humanReview": "\ub4e0 \uc22b\uc790\uac00 \ud45c\uc640 \ub9de\ub294\uc9c0, '\ub2e8\uc815\ud560 \uc218 \uc5c6\ub2e4'\ub97c \uc774\uc720\uc640 \ud568\uaed8 \uc37c\ub294\uc9c0, \uc774\uc720 \uc5c6\uc774 \uc2e0\uc911\ud55c \ucc99\ud55c \uac83\uc740 \uc544\ub2cc\uc9c0\ub294 \uc0ac\ub78c\uc774 \uc77d\uc5b4\uc57c \uc548\ub2e4.",
     "hints": [
-     "표에서 판매량이 가장 적은 달과 가장 많은 달을 골라 사고 건수와 기온을 나란히 적어 보세요.",
-     "담당자의 제안이 맞으려면 어떤 일이 확인되어야 하는지 한 문장으로 먼저 적어 보세요."
+     "\ud45c\uc5d0\uc11c \ud310\ub9e4\ub7c9\uc774 \uac00\uc7a5 \uc801\uc740 \ub2ec\uacfc \uac00\uc7a5 \ub9ce\uc740 \ub2ec\uc744 \uace8\ub77c \uc0ac\uace0 \uac74\uc218\uc640 \uae30\uc628\uc744 \ub098\ub780\ud788 \uc801\uc5b4 \ubcf4\uc138\uc694.",
+     "\ub2f4\ub2f9\uc790\uc758 \uc81c\uc548\uc774 \ub9de\uc73c\ub824\uba74 \uc5b4\ub5a4 \uc77c\uc774 \ud655\uc778\ub418\uc5b4\uc57c \ud558\ub294\uc9c0 \ud55c \ubb38\uc7a5\uc73c\ub85c \uba3c\uc800 \uc801\uc5b4 \ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "판단의 수정과 확신의 정도",
-    "full": "단계마다 새 정보를 반영해 판단과 확신의 정도를 조절",
-    "partial": "정보는 반영하나 확신의 정도가 그대로",
-    "none": "처음 해석을 끝까지 고수하거나 이유 없이 뒤집음"
+    "criterion": "\ud310\ub2e8\uc758 \uc218\uc815\uacfc \ud655\uc2e0\uc758 \uc815\ub3c4",
+    "full": "\ub2e8\uacc4\ub9c8\ub2e4 \uc0c8 \uc815\ubcf4\ub97c \ubc18\uc601\ud574 \ud310\ub2e8\uacfc \ud655\uc2e0\uc758 \uc815\ub3c4\ub97c \uc870\uc808",
+    "partial": "\uc815\ubcf4\ub294 \ubc18\uc601\ud558\ub098 \ud655\uc2e0\uc758 \uc815\ub3c4\uac00 \uadf8\ub300\ub85c",
+    "none": "\ucc98\uc74c \ud574\uc11d\uc744 \ub05d\uae4c\uc9c0 \uace0\uc218\ud558\uac70\ub098 \uc774\uc720 \uc5c6\uc774 \ub4a4\uc9d1\uc74c"
    },
    {
-    "criterion": "상관과 인과의 구분",
-    "full": "함께 늘어남과 원인임을 구분하고 다른 요인·추가 확인을 근거와 함께 제시",
-    "partial": "구분은 하나 근거가 약함",
-    "none": "상관이 있으면 원인이라고 단정"
+    "criterion": "\uc0c1\uad00\uacfc \uc778\uacfc\uc758 \uad6c\ubd84",
+    "full": "\ud568\uaed8 \ub298\uc5b4\ub0a8\uacfc \uc6d0\uc778\uc784\uc744 \uad6c\ubd84\ud558\uace0 \ub2e4\ub978 \uc694\uc778\u00b7\ucd94\uac00 \ud655\uc778\uc744 \uadfc\uac70\uc640 \ud568\uaed8 \uc81c\uc2dc",
+    "partial": "\uad6c\ubd84\uc740 \ud558\ub098 \uadfc\uac70\uac00 \uc57d\ud568",
+    "none": "\uc0c1\uad00\uc774 \uc788\uc73c\uba74 \uc6d0\uc778\uc774\ub77c\uace0 \ub2e8\uc815"
    }
   ],
   "alternatives": [
-   "2단계에서 '원인이라 말하기 어렵다'와 '실제로 줄여 보며 확인해야 한다'는 둘 다 타당하다. 3단계에서 기온을 고려한 정리를 고른 학생이 2단계에서 실제 확인을 골랐다면 판단이 일관된 것이다.",
-   "3단계에서 '사고가 많은 건 사람이 많이 찾아서일 수 있다'고 다른 숨은 요인을 제시하는 것도 타당하다."
+   "2\ub2e8\uacc4\uc5d0\uc11c '\uc6d0\uc778\uc774\ub77c \ub9d0\ud558\uae30 \uc5b4\ub835\ub2e4'\uc640 '\uc2e4\uc81c\ub85c \uc904\uc5ec \ubcf4\uba70 \ud655\uc778\ud574\uc57c \ud55c\ub2e4'\ub294 \ub458 \ub2e4 \ud0c0\ub2f9\ud558\ub2e4. 3\ub2e8\uacc4\uc5d0\uc11c \uae30\uc628\uc744 \uace0\ub824\ud55c \uc815\ub9ac\ub97c \uace0\ub978 \ud559\uc0dd\uc774 2\ub2e8\uacc4\uc5d0\uc11c \uc2e4\uc81c \ud655\uc778\uc744 \uace8\ub790\ub2e4\uba74 \ud310\ub2e8\uc774 \uc77c\uad00\ub41c \uac83\uc774\ub2e4.",
+   "3\ub2e8\uacc4\uc5d0\uc11c '\uc0ac\uace0\uac00 \ub9ce\uc740 \uac74 \uc0ac\ub78c\uc774 \ub9ce\uc774 \ucc3e\uc544\uc11c\uc77c \uc218 \uc788\ub2e4'\uace0 \ub2e4\ub978 \uc228\uc740 \uc694\uc778\uc744 \uc81c\uc2dc\ud558\ub294 \uac83\ub3c4 \ud0c0\ub2f9\ud558\ub2e4."
   ],
   "hardCases": [
-   "1단계에서 '정확히 한 직선 위'를 고른 학생은 '직선 둘레에 모임'과 '직선 위에 있음'을 구별하는지 짚어 준다.",
-   "실제 연구에서는 한 번의 관찰로 인과를 결론짓지 않는 반면, 실험이나 무작위 배정은 학생이 쉽게 해 볼 수 없다. 실제로 판매를 줄여 보는 확인 방법을 고른 학생에게는 실험의 현실적 한계를 이야기하게 할 수 있다."
+   "1\ub2e8\uacc4\uc5d0\uc11c '\uc815\ud655\ud788 \ud55c \uc9c1\uc120 \uc704'\ub97c \uace0\ub978 \ud559\uc0dd\uc740 '\uc9c1\uc120 \ub458\ub808\uc5d0 \ubaa8\uc784'\uacfc '\uc9c1\uc120 \uc704\uc5d0 \uc788\uc74c'\uc744 \uad6c\ubcc4\ud558\ub294\uc9c0 \uc9da\uc5b4 \uc900\ub2e4.",
+   "\uc2e4\uc81c \uc5f0\uad6c\uc5d0\uc11c\ub294 \ud55c \ubc88\uc758 \uad00\ucc30\ub85c \uc778\uacfc\ub97c \uacb0\ub860\uc9d3\uc9c0 \uc54a\ub294 \ubc18\uba74, \uc2e4\ud5d8\uc774\ub098 \ubb34\uc791\uc704 \ubc30\uc815\uc740 \ud559\uc0dd\uc774 \uc27d\uac8c \ud574 \ubcfc \uc218 \uc5c6\ub2e4. \uc2e4\uc81c\ub85c \ud310\ub9e4\ub97c \uc904\uc5ec \ubcf4\ub294 \ud655\uc778 \ubc29\ubc95\uc744 \uace0\ub978 \ud559\uc0dd\uc5d0\uac8c\ub294 \uc2e4\ud5d8\uc758 \ud604\uc2e4\uc801 \ud55c\uacc4\ub97c \uc774\uc57c\uae30\ud558\uac8c \ud560 \uc218 \uc788\ub2e4."
   ],
   "cautions": {
-   "language": "'상관관계'와 '인과관계'의 차이를 학생 말로 풀이해 준다. '원인'과 '단정'이라는 낱말은 힌트에서 설명하지 않았으므로 문장 속에서 뜻을 확인한다.",
-   "culture": "가상의 해변 마을 자료이며 지역 문화에 의존하지 않는다. 아이스크림은 누구에게나 익숙한 소재이다.",
-   "accessibility": "산점도 그림 없이 (판매량, 사고 건수) 순서쌍 표현으로 제시했다. 모든 값은 문장과 괄호 속 숫자로 읽을 수 있다."
+   "language": "'\uc0c1\uad00\uad00\uacc4'\uc640 '\uc778\uacfc\uad00\uacc4'\uc758 \ucc28\uc774\ub97c \ud559\uc0dd \ub9d0\ub85c \ud480\uc774\ud574 \uc900\ub2e4. '\uc6d0\uc778'\uacfc '\ub2e8\uc815'\uc774\ub77c\ub294 \ub0b1\ub9d0\uc740 \ud78c\ud2b8\uc5d0\uc11c \uc124\uba85\ud558\uc9c0 \uc54a\uc558\uc73c\ubbc0\ub85c \ubb38\uc7a5 \uc18d\uc5d0\uc11c \ub73b\uc744 \ud655\uc778\ud55c\ub2e4.",
+   "culture": "\uac00\uc0c1\uc758 \ud574\ubcc0 \ub9c8\uc744 \uc790\ub8cc\uc774\uba70 \uc9c0\uc5ed \ubb38\ud654\uc5d0 \uc758\uc874\ud558\uc9c0 \uc54a\ub294\ub2e4. \uc544\uc774\uc2a4\ud06c\ub9bc\uc740 \ub204\uad6c\uc5d0\uac8c\ub098 \uc775\uc219\ud55c \uc18c\uc7ac\uc774\ub2e4.",
+   "accessibility": "\uc0b0\uc810\ub3c4 \uadf8\ub9bc \uc5c6\uc774 (\ud310\ub9e4\ub7c9, \uc0ac\uace0 \uac74\uc218) \uc21c\uc11c\uc30d \ud45c\ud604\uc73c\ub85c \uc81c\uc2dc\ud588\ub2e4. \ubaa8\ub4e0 \uac12\uc740 \ubb38\uc7a5\uacfc \uad04\ud638 \uc18d \uc22b\uc790\ub85c \uc77d\uc744 \uc218 \uc788\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "각 단계 선택이 reasonable 집합에 있는지",
-    "서술에 숫자·근거 낱말과 단정하지 않은 표현이 있는지"
+    "\uac01 \ub2e8\uacc4 \uc120\ud0dd\uc774 reasonable \uc9d1\ud569\uc5d0 \uc788\ub294\uc9c0",
+    "\uc11c\uc220\uc5d0 \uc22b\uc790\u00b7\uadfc\uac70 \ub0b1\ub9d0\uacfc \ub2e8\uc815\ud558\uc9c0 \uc54a\uc740 \ud45c\ud604\uc774 \uc788\ub294\uc9c0"
    ],
    "human": [
-    "숫자 인용이 표와 일치하는지",
-    "상관과 인과의 구분을 이해하고 썼는지, 구호로 반복했는지"
+    "\uc22b\uc790 \uc778\uc6a9\uc774 \ud45c\uc640 \uc77c\uce58\ud558\ub294\uc9c0",
+    "\uc0c1\uad00\uacfc \uc778\uacfc\uc758 \uad6c\ubd84\uc744 \uc774\ud574\ud558\uace0 \uc37c\ub294\uc9c0, \uad6c\ud638\ub85c \ubc18\ubcf5\ud588\ub294\uc9c0"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "y-m-31-03",
   "subject": "math",
   "grade": "M3",
   "cell": "math|M3|statistics",
-  "topic": "평균과 중앙값의 서로 다른 변화",
+  "topic": "\ud3c9\uade0\uacfc \uc911\uc559\uac12\uc758 \uc11c\ub85c \ub2e4\ub978 \ubcc0\ud654",
   "level": 2,
-  "levelLabel": "중등",
-  "title": "평균은 올랐는데 한가운데는 그대로",
+  "levelLabel": "\uc911\ub4f1",
+  "title": "\ud3c9\uade0\uc740 \uc62c\ub790\ub294\ub370 \ud55c\uac00\uc6b4\ub370\ub294 \uadf8\ub300\ub85c",
   "uiLang": "ko",
   "format": "build-many-verify",
   "generative": true,
-  "goal": "일부 점수만 바뀔 때 평균은 변하고 중앙값은 그대로인 경우를 조건에 맞게 직접 만들고, 두 값이 알려 주는 것이 다름을 설명한다.",
+  "goal": "\uc77c\ubd80 \uc810\uc218\ub9cc \ubc14\ub014 \ub54c \ud3c9\uade0\uc740 \ubcc0\ud558\uace0 \uc911\uc559\uac12\uc740 \uadf8\ub300\ub85c\uc778 \uacbd\uc6b0\ub97c \uc870\uac74\uc5d0 \ub9de\uac8c \uc9c1\uc811 \ub9cc\ub4e4\uace0, \ub450 \uac12\uc774 \uc54c\ub824 \uc8fc\ub294 \uac83\uc774 \ub2e4\ub984\uc744 \uc124\uba85\ud55c\ub2e4.",
   "thinking": [
-   "조건에서 반드시 성립하는 것과 아닌 것을 가리기",
-   "조건을 모두 만족하는 여러 사례 만들기",
-   "상황에 맞는 대푯값을 고르고 이유 대기"
+   "\uc870\uac74\uc5d0\uc11c \ubc18\ub4dc\uc2dc \uc131\ub9bd\ud558\ub294 \uac83\uacfc \uc544\ub2cc \uac83\uc744 \uac00\ub9ac\uae30",
+   "\uc870\uac74\uc744 \ubaa8\ub450 \ub9cc\uc871\ud558\ub294 \uc5ec\ub7ec \uc0ac\ub840 \ub9cc\ub4e4\uae30",
+   "\uc0c1\ud669\uc5d0 \ub9de\ub294 \ub300\ud46f\uac12\uc744 \uace0\ub974\uace0 \uc774\uc720 \ub300\uae30"
   ],
-  "differsFromPlain": "단순 연습은 자료의 평균과 중앙값을 각각 구한다. 여기서는 평균과 중앙값이 어떻게 달리 움직이는지를, 바뀐 점수 두 개를 직접 정하는 방식으로 시험하고 어떤 값을 안내에 쓸지 판단한다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uc790\ub8cc\uc758 \ud3c9\uade0\uacfc \uc911\uc559\uac12\uc744 \uac01\uac01 \uad6c\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \ud3c9\uade0\uacfc \uc911\uc559\uac12\uc774 \uc5b4\ub5bb\uac8c \ub2ec\ub9ac \uc6c0\uc9c1\uc774\ub294\uc9c0\ub97c, \ubc14\ub010 \uc810\uc218 \ub450 \uac1c\ub97c \uc9c1\uc811 \uc815\ud558\ub294 \ubc29\uc2dd\uc73c\ub85c \uc2dc\ud5d8\ud558\uace0 \uc5b4\ub5a4 \uac12\uc744 \uc548\ub0b4\uc5d0 \uc4f8\uc9c0 \ud310\ub2e8\ud55c\ub2e4.",
   "prerequisites": [
-   "평균, 중앙값의 뜻과 구하는 방법(중1~중2)",
-   "자료 5개를 크기 순으로 놓았을 때 가운데 값이 중앙값이라는 것"
+   "\ud3c9\uade0, \uc911\uc559\uac12\uc758 \ub73b\uacfc \uad6c\ud558\ub294 \ubc29\ubc95(\uc9111~\uc9112)",
+   "\uc790\ub8cc 5\uac1c\ub97c \ud06c\uae30 \uc21c\uc73c\ub85c \ub193\uc558\uc744 \ub54c \uac00\uc6b4\ub370 \uac12\uc774 \uc911\uc559\uac12\uc774\ub77c\ub294 \uac83"
   ],
   "minutes": 14,
   "curriculum": null,
-  "material": "5명이 본 수행평가 점수(점)는 60, 65, 70, 75, 80이었어요. 평균도 중앙값도 70점이에요. 채점 기준이 고쳐져서 60점이던 학생과 80점이던 학생, 이 두 학생의 점수만 다시 매겼어요. 새 점수를 a점, b점이라 하고(0 이상 100 이하의 정수), 나머지 세 학생(65점, 70점, 75점)의 점수는 그대로예요. 다시 매긴 뒤 평균은 70점에서 4점 이상 올랐지만 중앙값은 그대로 70점이었어요.",
+  "material": "5\uba85\uc774 \ubcf8 \uc218\ud589\ud3c9\uac00 \uc810\uc218(\uc810)\ub294 60, 65, 70, 75, 80\uc774\uc5c8\uc5b4\uc694. \ud3c9\uade0\ub3c4 \uc911\uc559\uac12\ub3c4 70\uc810\uc774\uc5d0\uc694. \ucc44\uc810 \uae30\uc900\uc774 \uace0\uccd0\uc838\uc11c 60\uc810\uc774\ub358 \ud559\uc0dd\uacfc 80\uc810\uc774\ub358 \ud559\uc0dd, \uc774 \ub450 \ud559\uc0dd\uc758 \uc810\uc218\ub9cc \ub2e4\uc2dc \ub9e4\uacbc\uc5b4\uc694. \uc0c8 \uc810\uc218\ub97c a\uc810, b\uc810\uc774\ub77c \ud558\uace0(0 \uc774\uc0c1 100 \uc774\ud558\uc758 \uc815\uc218), \ub098\uba38\uc9c0 \uc138 \ud559\uc0dd(65\uc810, 70\uc810, 75\uc810)\uc758 \uc810\uc218\ub294 \uadf8\ub300\ub85c\uc608\uc694. \ub2e4\uc2dc \ub9e4\uae34 \ub4a4 \ud3c9\uade0\uc740 70\uc810\uc5d0\uc11c 4\uc810 \uc774\uc0c1 \uc62c\ub790\uc9c0\ub9cc \uc911\uc559\uac12\uc740 \uadf8\ub300\ub85c 70\uc810\uc774\uc5c8\uc5b4\uc694.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
     "multi": true,
-    "prompt": "위 상황에서, 반드시 참인 말을 모두 고르세요.",
+    "prompt": "\uc704 \uc0c1\ud669\uc5d0\uc11c, \ubc18\ub4dc\uc2dc \ucc38\uc778 \ub9d0\uc744 \ubaa8\ub450 \uace0\ub974\uc138\uc694.",
     "options": [
      {
       "id": "a",
-      "text": "새 점수 a와 b의 합은 160점 이상이다.",
-      "reveals": "평균이 4점 올랐으니 5명의 합이 20점 이상 늘었다는 것을 이용했어요. 원래 두 점수의 합은 140점이에요."
+      "text": "\uc0c8 \uc810\uc218 a\uc640 b\uc758 \ud569\uc740 160\uc810 \uc774\uc0c1\uc774\ub2e4.",
+      "reveals": "\ud3c9\uade0\uc774 4\uc810 \uc62c\ub790\uc73c\ub2c8 5\uba85\uc758 \ud569\uc774 20\uc810 \uc774\uc0c1 \ub298\uc5c8\ub2e4\ub294 \uac83\uc744 \uc774\uc6a9\ud588\uc5b4\uc694. \uc6d0\ub798 \ub450 \uc810\uc218\uc758 \ud569\uc740 140\uc810\uc774\uc5d0\uc694."
      },
      {
       "id": "b",
-      "text": "중앙값이 그대로이니 바뀐 두 점수의 합도 원래대로 140점이다.",
-      "reveals": "중앙값은 가운데 순서의 값이라서 두 점수의 합이 바뀌어도 그대로일 수 있어요. 평균이 오른 것은 합이 바뀌었다는 뜻이에요."
+      "text": "\uc911\uc559\uac12\uc774 \uadf8\ub300\ub85c\uc774\ub2c8 \ubc14\ub010 \ub450 \uc810\uc218\uc758 \ud569\ub3c4 \uc6d0\ub798\ub300\ub85c 140\uc810\uc774\ub2e4.",
+      "reveals": "\uc911\uc559\uac12\uc740 \uac00\uc6b4\ub370 \uc21c\uc11c\uc758 \uac12\uc774\ub77c\uc11c \ub450 \uc810\uc218\uc758 \ud569\uc774 \ubc14\ub00c\uc5b4\ub3c4 \uadf8\ub300\ub85c\uc77c \uc218 \uc788\uc5b4\uc694. \ud3c9\uade0\uc774 \uc624\ub978 \uac83\uc740 \ud569\uc774 \ubc14\ub00c\uc5c8\ub2e4\ub294 \ub73b\uc774\uc5d0\uc694."
      },
      {
       "id": "c",
-      "text": "70점 이상인 학생 수가 3명보다 늘었다.",
-      "reveals": "(60→60, 80→100)처럼 70점 이상 학생이 여전히 3명인 경우를 만들 수 있어요. 늘었다고 반드시 말할 수는 없어요."
+      "text": "70\uc810 \uc774\uc0c1\uc778 \ud559\uc0dd \uc218\uac00 3\uba85\ubcf4\ub2e4 \ub298\uc5c8\ub2e4.",
+      "reveals": "(60\u219260, 80\u2192100)\ucc98\ub7fc 70\uc810 \uc774\uc0c1 \ud559\uc0dd\uc774 \uc5ec\uc804\ud788 3\uba85\uc778 \uacbd\uc6b0\ub97c \ub9cc\ub4e4 \uc218 \uc788\uc5b4\uc694. \ub298\uc5c8\ub2e4\uace0 \ubc18\ub4dc\uc2dc \ub9d0\ud560 \uc218\ub294 \uc5c6\uc5b4\uc694."
      },
      {
       "id": "d",
-      "text": "새로 매긴 두 점수 중 적어도 하나는 90점 이상이다.",
-      "reveals": "합이 160 이상인데 한 점수는 70 이하여야 하므로 다른 점수가 얼마나 커야 하는지 따져 본 좋은 추론이에요."
+      "text": "\uc0c8\ub85c \ub9e4\uae34 \ub450 \uc810\uc218 \uc911 \uc801\uc5b4\ub3c4 \ud558\ub098\ub294 90\uc810 \uc774\uc0c1\uc774\ub2e4.",
+      "reveals": "\ud569\uc774 160 \uc774\uc0c1\uc778\ub370 \ud55c \uc810\uc218\ub294 70 \uc774\ud558\uc5ec\uc57c \ud558\ubbc0\ub85c \ub2e4\ub978 \uc810\uc218\uac00 \uc5bc\ub9c8\ub098 \ucee4\uc57c \ud558\ub294\uc9c0 \ub530\uc838 \ubcf8 \uc88b\uc740 \ucd94\ub860\uc774\uc5d0\uc694."
      },
      {
       "id": "e",
-      "text": "60점이던 학생도 80점이던 학생도 새 점수가 원래보다 올랐다.",
-      "reveals": "바뀐 두 점수 가운데 한 점수는 그대로이거나 오히려 내려갈 수도 있어요. 60점이던 학생이 그대로 60점이어도 조건을 만족하는 경우가 있는지 따져 보세요."
+      "text": "60\uc810\uc774\ub358 \ud559\uc0dd\ub3c4 80\uc810\uc774\ub358 \ud559\uc0dd\ub3c4 \uc0c8 \uc810\uc218\uac00 \uc6d0\ub798\ubcf4\ub2e4 \uc62c\ub790\ub2e4.",
+      "reveals": "\ubc14\ub010 \ub450 \uc810\uc218 \uac00\uc6b4\ub370 \ud55c \uc810\uc218\ub294 \uadf8\ub300\ub85c\uc774\uac70\ub098 \uc624\ud788\ub824 \ub0b4\ub824\uac08 \uc218\ub3c4 \uc788\uc5b4\uc694. 60\uc810\uc774\ub358 \ud559\uc0dd\uc774 \uadf8\ub300\ub85c 60\uc810\uc774\uc5b4\ub3c4 \uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294 \uacbd\uc6b0\uac00 \uc788\ub294\uc9c0 \ub530\uc838 \ubcf4\uc138\uc694."
      }
     ],
     "correct": [
      "a",
      "d"
     ],
-    "explain": "평균이 4점 올랐으니 합이 20점 이상 늘어 a+b는 160 이상이에요. 중앙값이 70으로 그대로이려면 a, b 중 하나는 70 이하, 하나는 70 이상이어야 해요. 하나가 70 이하이면 다른 하나는 90 이상이어야 합이 160을 넘어요. (60, 100)처럼 한 학생의 점수가 그대로여도 조건을 만족하므로 마지막 선택지(60점이던 학생도 80점이던 학생도 새 점수가 원래보다 올랐다는 말)는 반드시 참이 아니에요.",
+    "explain": "\ud3c9\uade0\uc774 4\uc810 \uc62c\ub790\uc73c\ub2c8 \ud569\uc774 20\uc810 \uc774\uc0c1 \ub298\uc5b4 a+b\ub294 160 \uc774\uc0c1\uc774\uc5d0\uc694. \uc911\uc559\uac12\uc774 70\uc73c\ub85c \uadf8\ub300\ub85c\uc774\ub824\uba74 a, b \uc911 \ud558\ub098\ub294 70 \uc774\ud558, \ud558\ub098\ub294 70 \uc774\uc0c1\uc774\uc5b4\uc57c \ud574\uc694. \ud558\ub098\uac00 70 \uc774\ud558\uc774\uba74 \ub2e4\ub978 \ud558\ub098\ub294 90 \uc774\uc0c1\uc774\uc5b4\uc57c \ud569\uc774 160\uc744 \ub118\uc5b4\uc694. (60, 100)\ucc98\ub7fc \ud55c \ud559\uc0dd\uc758 \uc810\uc218\uac00 \uadf8\ub300\ub85c\uc5ec\ub3c4 \uc870\uac74\uc744 \ub9cc\uc871\ud558\ubbc0\ub85c \ub9c8\uc9c0\ub9c9 \uc120\ud0dd\uc9c0(60\uc810\uc774\ub358 \ud559\uc0dd\ub3c4 80\uc810\uc774\ub358 \ud559\uc0dd\ub3c4 \uc0c8 \uc810\uc218\uac00 \uc6d0\ub798\ubcf4\ub2e4 \uc62c\ub790\ub2e4\ub294 \ub9d0)\ub294 \ubc18\ub4dc\uc2dc \ucc38\uc774 \uc544\ub2c8\uc5d0\uc694.",
     "hints": [
-     "각 말이 거짓이 되는 새 점수 짝 (a, b)를 하나씩 직접 만들어 보고, 만들 수 없는 말이 어느 것인지 가려 보세요.",
-     "나머지 세 점수 65, 70, 75와 a, b를 크기 순으로 놓았을 때 가운데에 70이 오려면 a, b가 70을 기준으로 어느 쪽에 있어야 하는지 표로 그려 보세요."
+     "\uac01 \ub9d0\uc774 \uac70\uc9d3\uc774 \ub418\ub294 \uc0c8 \uc810\uc218 \uc9dd (a, b)\ub97c \ud558\ub098\uc529 \uc9c1\uc811 \ub9cc\ub4e4\uc5b4 \ubcf4\uace0, \ub9cc\ub4e4 \uc218 \uc5c6\ub294 \ub9d0\uc774 \uc5b4\ub290 \uac83\uc778\uc9c0 \uac00\ub824 \ubcf4\uc138\uc694.",
+     "\ub098\uba38\uc9c0 \uc138 \uc810\uc218 65, 70, 75\uc640 a, b\ub97c \ud06c\uae30 \uc21c\uc73c\ub85c \ub193\uc558\uc744 \ub54c \uac00\uc6b4\ub370\uc5d0 70\uc774 \uc624\ub824\uba74 a, b\uac00 70\uc744 \uae30\uc900\uc73c\ub85c \uc5b4\ub290 \ucabd\uc5d0 \uc788\uc5b4\uc57c \ud558\ub294\uc9c0 \ud45c\ub85c \uadf8\ub824 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "build",
-    "prompt": "조건에 맞는 새 점수 (a, b)를 서로 다른 경우로 3가지 만들어 보세요. a와 b는 0 이상 100 이하의 정수이고, 다시 매긴 뒤 평균은 70점에서 4점 이상 오르며 중앙값은 70점 그대로여야 해요. (a, b를 서로 바꾼 것은 같은 경우예요.)",
+    "prompt": "\uc870\uac74\uc5d0 \ub9de\ub294 \uc0c8 \uc810\uc218 (a, b)\ub97c \uc11c\ub85c \ub2e4\ub978 \uacbd\uc6b0\ub85c 3\uac00\uc9c0 \ub9cc\ub4e4\uc5b4 \ubcf4\uc138\uc694. a\uc640 b\ub294 0 \uc774\uc0c1 100 \uc774\ud558\uc758 \uc815\uc218\uc774\uace0, \ub2e4\uc2dc \ub9e4\uae34 \ub4a4 \ud3c9\uade0\uc740 70\uc810\uc5d0\uc11c 4\uc810 \uc774\uc0c1 \uc624\ub974\uba70 \uc911\uc559\uac12\uc740 70\uc810 \uadf8\ub300\ub85c\uc5ec\uc57c \ud574\uc694. (a, b\ub97c \uc11c\ub85c \ubc14\uafbc \uac83\uc740 \uac19\uc740 \uacbd\uc6b0\uc608\uc694.)",
     "vars": [
      {
       "name": "a",
-      "label": "60점이던 학생의 새 점수"
+      "label": "60\uc810\uc774\ub358 \ud559\uc0dd\uc758 \uc0c8 \uc810\uc218"
      },
      {
       "name": "b",
-      "label": "80점이던 학생의 새 점수"
+      "label": "80\uc810\uc774\ub358 \ud559\uc0dd\uc758 \uc0c8 \uc810\uc218"
      }
     ],
     "constraints": [
      {
       "id": "c1",
       "expr": "a>=0 && a<=100 && b>=0 && b<=100 && a==floor(a) && b==floor(b)",
-      "ok": "점수가 0 이상 100 이하의 정수예요.",
-      "fail": "점수는 0 이상 100 이하의 정수로 해 주세요."
+      "ok": "\uc810\uc218\uac00 0 \uc774\uc0c1 100 \uc774\ud558\uc758 \uc815\uc218\uc608\uc694.",
+      "fail": "\uc810\uc218\ub294 0 \uc774\uc0c1 100 \uc774\ud558\uc758 \uc815\uc218\ub85c \ud574 \uc8fc\uc138\uc694."
      },
      {
       "id": "c2",
       "expr": "a+b>=160",
-      "ok": "평균이 4점 이상 올랐어요.",
-      "fail": "평균이 4점 이상 오르지 않았어요. 5명의 합을 확인해 보세요."
+      "ok": "\ud3c9\uade0\uc774 4\uc810 \uc774\uc0c1 \uc62c\ub790\uc5b4\uc694.",
+      "fail": "\ud3c9\uade0\uc774 4\uc810 \uc774\uc0c1 \uc624\ub974\uc9c0 \uc54a\uc558\uc5b4\uc694. 5\uba85\uc758 \ud569\uc744 \ud655\uc778\ud574 \ubcf4\uc138\uc694."
      },
      {
       "id": "c3",
       "expr": "2+(a<=70)+(b<=70)>=3 && 2+(a>=70)+(b>=70)>=3",
-      "ok": "중앙값이 70점 그대로예요.",
-      "fail": "중앙값이 70점이 아니에요. 5개를 크기 순으로 놓았을 때 가운데를 확인해 보세요."
+      "ok": "\uc911\uc559\uac12\uc774 70\uc810 \uadf8\ub300\ub85c\uc608\uc694.",
+      "fail": "\uc911\uc559\uac12\uc774 70\uc810\uc774 \uc544\ub2c8\uc5d0\uc694. 5\uac1c\ub97c \ud06c\uae30 \uc21c\uc73c\ub85c \ub193\uc558\uc744 \ub54c \uac00\uc6b4\ub370\ub97c \ud655\uc778\ud574 \ubcf4\uc138\uc694."
      }
     ],
     "need": 3,
@@ -634,255 +635,255 @@
       "b": 100
      }
     ],
-    "explain": "예를 들어 (60, 100)은 합이 160이고 크기 순으로 60, 65, 70, 75, 100이라 중앙값이 70이에요. (70, 90)과 (65, 95)도 같아요. (80, 80)은 평균은 74점이지만 중앙값이 75점으로 달라지고, (100, 100)도 중앙값이 75점이 되어 버려요. 조건에 맞는 경우는 한 점수가 60~70, 다른 점수가 90~100 부근에서 합이 160 이상이 되는 짝이에요.",
+    "explain": "\uc608\ub97c \ub4e4\uc5b4 (60, 100)\uc740 \ud569\uc774 160\uc774\uace0 \ud06c\uae30 \uc21c\uc73c\ub85c 60, 65, 70, 75, 100\uc774\ub77c \uc911\uc559\uac12\uc774 70\uc774\uc5d0\uc694. (70, 90)\uacfc (65, 95)\ub3c4 \uac19\uc544\uc694. (80, 80)\uc740 \ud3c9\uade0\uc740 74\uc810\uc774\uc9c0\ub9cc \uc911\uc559\uac12\uc774 75\uc810\uc73c\ub85c \ub2ec\ub77c\uc9c0\uace0, (100, 100)\ub3c4 \uc911\uc559\uac12\uc774 75\uc810\uc774 \ub418\uc5b4 \ubc84\ub824\uc694. \uc870\uac74\uc5d0 \ub9de\ub294 \uacbd\uc6b0\ub294 \ud55c \uc810\uc218\uac00 60~70, \ub2e4\ub978 \uc810\uc218\uac00 90~100 \ubd80\uadfc\uc5d0\uc11c \ud569\uc774 160 \uc774\uc0c1\uc774 \ub418\ub294 \uc9dd\uc774\uc5d0\uc694.",
     "hints": [
-     "5개 점수 65, 70, 75와 a, b를 크기 순으로 놓았을 때 가운데에 70이 오는 짝을 몇 가지 시험해 보세요.",
-     "a+b의 합이 160 이상이 되도록 한 점수를 정하고 다른 점수를 조정해 보세요. 순서만 바뀐 경우는 한 가지로 센다는 점을 기억하세요."
+     "5\uac1c \uc810\uc218 65, 70, 75\uc640 a, b\ub97c \ud06c\uae30 \uc21c\uc73c\ub85c \ub193\uc558\uc744 \ub54c \uac00\uc6b4\ub370\uc5d0 70\uc774 \uc624\ub294 \uc9dd\uc744 \uba87 \uac00\uc9c0 \uc2dc\ud5d8\ud574 \ubcf4\uc138\uc694.",
+     "a+b\uc758 \ud569\uc774 160 \uc774\uc0c1\uc774 \ub418\ub3c4\ub85d \ud55c \uc810\uc218\ub97c \uc815\ud558\uace0 \ub2e4\ub978 \uc810\uc218\ub97c \uc870\uc815\ud574 \ubcf4\uc138\uc694. \uc21c\uc11c\ub9cc \ubc14\ub010 \uacbd\uc6b0\ub294 \ud55c \uac00\uc9c0\ub85c \uc13c\ub2e4\ub294 \uc810\uc744 \uae30\uc5b5\ud558\uc138\uc694."
     ]
    },
    {
     "id": "s3",
     "kind": "write",
-    "prompt": "학부모 안내문에 이 반의 점수가 어떻게 바뀌었는지 한두 문장으로 알리려고 해요. 평균과 중앙값 중 무엇을 어떻게 쓸지, 이유와 함께 쓰세요.",
-    "placeholder": "예: 안내문에는 ... 을(를) 쓰겠습니다. 왜냐하면 ...",
+    "prompt": "\ud559\ubd80\ubaa8 \uc548\ub0b4\ubb38\uc5d0 \uc774 \ubc18\uc758 \uc810\uc218\uac00 \uc5b4\ub5bb\uac8c \ubc14\ub00c\uc5c8\ub294\uc9c0 \ud55c\ub450 \ubb38\uc7a5\uc73c\ub85c \uc54c\ub9ac\ub824\uace0 \ud574\uc694. \ud3c9\uade0\uacfc \uc911\uc559\uac12 \uc911 \ubb34\uc5c7\uc744 \uc5b4\ub5bb\uac8c \uc4f8\uc9c0, \uc774\uc720\uc640 \ud568\uaed8 \uc4f0\uc138\uc694.",
+    "placeholder": "\uc608: \uc548\ub0b4\ubb38\uc5d0\ub294 ... \uc744(\ub97c) \uc4f0\uaca0\uc2b5\ub2c8\ub2e4. \uc65c\ub0d0\ud558\uba74 ...",
     "minChars": 25,
     "checks": [
      {
       "id": "w1",
-      "label": "평균이나 중앙값을 말했다",
+      "label": "\ud3c9\uade0\uc774\ub098 \uc911\uc559\uac12\uc744 \ub9d0\ud588\ub2e4",
       "mode": "any",
       "patterns": [
-       "평균",
-       "중앙\\s*값",
-       "가운데"
+       "\ud3c9\uade0",
+       "\uc911\uc559\\s*\uac12",
+       "\uac00\uc6b4\ub370"
       ]
      },
      {
       "id": "w2",
-      "label": "이유나 근거를 말했다",
+      "label": "\uc774\uc720\ub098 \uadfc\uac70\ub97c \ub9d0\ud588\ub2e4",
       "mode": "any",
       "patterns": [
-       "때문",
-       "왜냐하면",
-       "이유",
-       "라서",
-       "므로",
-       "니까",
-       "써서",
-       "해서",
-       "위해",
-       "이어서"
+       "\ub54c\ubb38",
+       "\uc65c\ub0d0\ud558\uba74",
+       "\uc774\uc720",
+       "\ub77c\uc11c",
+       "\ubbc0\ub85c",
+       "\ub2c8\uae4c",
+       "\uc368\uc11c",
+       "\ud574\uc11c",
+       "\uc704\ud574",
+       "\uc774\uc5b4\uc11c"
       ]
      },
      {
       "id": "w3",
-      "label": "두 값이 알려 주는 것의 차이(일부 변화, 그대로, 함께 쓰기 등)를 말했다",
+      "label": "\ub450 \uac12\uc774 \uc54c\ub824 \uc8fc\ub294 \uac83\uc758 \ucc28\uc774(\uc77c\ubd80 \ubcc0\ud654, \uadf8\ub300\ub85c, \ud568\uaed8 \uc4f0\uae30 \ub4f1)\ub97c \ub9d0\ud588\ub2e4",
       "mode": "any",
       "patterns": [
-       "한두\\s*명",
-       "두\\s*명",
-       "일부",
-       "대부분",
-       "극단",
-       "소수",
-       "몇\\s*명",
-       "나머지",
-       "그대로",
-       "변(하|화)\\s*(지\\s*)?않",
-       "둘\\s*다\\s*(써|쓰|알|적)",
-       "함께\\s*(쓰|알|적|표시)",
-       "같이\\s*(쓰|알|적)",
-       "둘을"
+       "\ud55c\ub450\\s*\uba85",
+       "\ub450\\s*\uba85",
+       "\uc77c\ubd80",
+       "\ub300\ubd80\ubd84",
+       "\uadf9\ub2e8",
+       "\uc18c\uc218",
+       "\uba87\\s*\uba85",
+       "\ub098\uba38\uc9c0",
+       "\uadf8\ub300\ub85c",
+       "\ubcc0(\ud558|\ud654)\\s*(\uc9c0\\s*)?\uc54a",
+       "\ub458\\s*\ub2e4\\s*(\uc368|\uc4f0|\uc54c|\uc801)",
+       "\ud568\uaed8\\s*(\uc4f0|\uc54c|\uc801|\ud45c\uc2dc)",
+       "\uac19\uc774\\s*(\uc4f0|\uc54c|\uc801)",
+       "\ub458\uc744"
       ]
      },
      {
       "id": "w4",
-      "label": "'성적이 모두 좋아졌다'처럼 평균 상승을 전체의 향상으로 단정하지 않았다",
+      "label": "'\uc131\uc801\uc774 \ubaa8\ub450 \uc88b\uc544\uc84c\ub2e4'\ucc98\ub7fc \ud3c9\uade0 \uc0c1\uc2b9\uc744 \uc804\uccb4\uc758 \ud5a5\uc0c1\uc73c\ub85c \ub2e8\uc815\ud558\uc9c0 \uc54a\uc558\ub2e4",
       "mode": "none",
       "patterns": [
-       "성적이\\s*좋아졌(?![^.!?]*(않|아니|오해|말|못))",
-       "모두\\s*(올랐|좋아졌)",
-       "다\\s*올랐",
-       "전체적으로\\s*(올랐|좋아졌)",
-       "중앙\\s*값은?\\s*(안|쓰지)\\s*(쓸|쓰|않)"
+       "\uc131\uc801\uc774\\s*\uc88b\uc544\uc84c(?![^.!?]*(\uc54a|\uc544\ub2c8|\uc624\ud574|\ub9d0|\ubabb))",
+       "\ubaa8\ub450\\s*(\uc62c\ub790|\uc88b\uc544\uc84c)",
+       "\ub2e4\\s*\uc62c\ub790",
+       "\uc804\uccb4\uc801\uc73c\ub85c\\s*(\uc62c\ub790|\uc88b\uc544\uc84c)",
+       "\uc911\uc559\\s*\uac12\uc740?\\s*(\uc548|\uc4f0\uc9c0)\\s*(\uc4f8|\uc4f0|\uc54a)"
       ]
      }
     ],
     "selfAssess": [
-     "내가 고른 값이 '이 반 학생들의 점수가 전체적으로 올랐는지'를 알려 주는지 따져 보았나요?",
-     "평균과 중앙값 중 하나만 쓰면 무엇이 가려지는지 생각했나요?",
-     "이유에 숫자(점수)를 들었나요?"
+     "\ub0b4\uac00 \uace0\ub978 \uac12\uc774 '\uc774 \ubc18 \ud559\uc0dd\ub4e4\uc758 \uc810\uc218\uac00 \uc804\uccb4\uc801\uc73c\ub85c \uc62c\ub790\ub294\uc9c0'\ub97c \uc54c\ub824 \uc8fc\ub294\uc9c0 \ub530\uc838 \ubcf4\uc558\ub098\uc694?",
+     "\ud3c9\uade0\uacfc \uc911\uc559\uac12 \uc911 \ud558\ub098\ub9cc \uc4f0\uba74 \ubb34\uc5c7\uc774 \uac00\ub824\uc9c0\ub294\uc9c0 \uc0dd\uac01\ud588\ub098\uc694?",
+     "\uc774\uc720\uc5d0 \uc22b\uc790(\uc810\uc218)\ub97c \ub4e4\uc5c8\ub098\uc694?"
     ],
     "modelAnswers": [
      {
-      "text": "평균 74점과 중앙값 70점을 함께 쓰겠습니다. 평균이 올랐어도 중앙값이 그대로면 두 명의 점수가 크게 바뀐 영향일 수 있어서, 둘을 같이 알려야 오해가 없기 때문입니다."
+      "text": "\ud3c9\uade0 74\uc810\uacfc \uc911\uc559\uac12 70\uc810\uc744 \ud568\uaed8 \uc4f0\uaca0\uc2b5\ub2c8\ub2e4. \ud3c9\uade0\uc774 \uc62c\ub790\uc5b4\ub3c4 \uc911\uc559\uac12\uc774 \uadf8\ub300\ub85c\uba74 \ub450 \uba85\uc758 \uc810\uc218\uac00 \ud06c\uac8c \ubc14\ub010 \uc601\ud5a5\uc77c \uc218 \uc788\uc5b4\uc11c, \ub458\uc744 \uac19\uc774 \uc54c\ub824\uc57c \uc624\ud574\uac00 \uc5c6\uae30 \ub54c\ubb38\uc785\ub2c8\ub2e4."
      },
      {
-      "text": "중앙값 70점이 그대로라고 쓰고, 평균은 한두 명의 점수 변화로 올랐다고 덧붙이겠습니다. 대부분 학생의 점수는 변하지 않았기 때문입니다.",
-      "note": "평균 대신 중앙값을 중심으로 하되 평균의 변화 원인을 밝힌 답."
+      "text": "\uc911\uc559\uac12 70\uc810\uc774 \uadf8\ub300\ub85c\ub77c\uace0 \uc4f0\uace0, \ud3c9\uade0\uc740 \ud55c\ub450 \uba85\uc758 \uc810\uc218 \ubcc0\ud654\ub85c \uc62c\ub790\ub2e4\uace0 \ub367\ubd99\uc774\uaca0\uc2b5\ub2c8\ub2e4. \ub300\ubd80\ubd84 \ud559\uc0dd\uc758 \uc810\uc218\ub294 \ubcc0\ud558\uc9c0 \uc54a\uc558\uae30 \ub54c\ubb38\uc785\ub2c8\ub2e4.",
+      "note": "\ud3c9\uade0 \ub300\uc2e0 \uc911\uc559\uac12\uc744 \uc911\uc2ec\uc73c\ub85c \ud558\ub418 \ud3c9\uade0\uc758 \ubcc0\ud654 \uc6d0\uc778\uc744 \ubc1d\ud78c \ub2f5."
      },
      {
-      "text": "평균과 중앙값을 둘 다 써서 알리겠습니다. 평균은 올랐지만 중앙값은 그대로라서 일부 학생의 점수만 크게 바뀐 것이기 때문입니다."
+      "text": "\ud3c9\uade0\uacfc \uc911\uc559\uac12\uc744 \ub458 \ub2e4 \uc368\uc11c \uc54c\ub9ac\uaca0\uc2b5\ub2c8\ub2e4. \ud3c9\uade0\uc740 \uc62c\ub790\uc9c0\ub9cc \uc911\uc559\uac12\uc740 \uadf8\ub300\ub85c\ub77c\uc11c \uc77c\ubd80 \ud559\uc0dd\uc758 \uc810\uc218\ub9cc \ud06c\uac8c \ubc14\ub010 \uac83\uc774\uae30 \ub54c\ubb38\uc785\ub2c8\ub2e4."
      }
     ],
     "badAnswers": [
      {
-      "text": "평균이 올랐습니다.",
-      "why": "이유가 없고 중앙값이 그대로라는 점이 가려진다."
+      "text": "\ud3c9\uade0\uc774 \uc62c\ub790\uc2b5\ub2c8\ub2e4.",
+      "why": "\uc774\uc720\uac00 \uc5c6\uace0 \uc911\uc559\uac12\uc774 \uadf8\ub300\ub85c\ub77c\ub294 \uc810\uc774 \uac00\ub824\uc9c4\ub2e4."
      },
      {
-      "text": "성적이 좋아졌어요.",
-      "why": "평균·중앙값 어느 값인지도, 이유도 없다."
+      "text": "\uc131\uc801\uc774 \uc88b\uc544\uc84c\uc5b4\uc694.",
+      "why": "\ud3c9\uade0\u00b7\uc911\uc559\uac12 \uc5b4\ub290 \uac12\uc778\uc9c0\ub3c4, \uc774\uc720\ub3c4 \uc5c6\ub2e4."
      },
      {
-      "text": "평균이 올랐기 때문에 성적이 좋아졌다고 쓰겠습니다. 중앙값은 안 쓸래요.",
-      "why": "평균 상승을 전체의 향상으로 읽었고 중앙값이 그대로라는 점을 가렸다."
+      "text": "\ud3c9\uade0\uc774 \uc62c\ub790\uae30 \ub54c\ubb38\uc5d0 \uc131\uc801\uc774 \uc88b\uc544\uc84c\ub2e4\uace0 \uc4f0\uaca0\uc2b5\ub2c8\ub2e4. \uc911\uc559\uac12\uc740 \uc548 \uc4f8\ub798\uc694.",
+      "why": "\ud3c9\uade0 \uc0c1\uc2b9\uc744 \uc804\uccb4\uc758 \ud5a5\uc0c1\uc73c\ub85c \uc77d\uc5c8\uace0 \uc911\uc559\uac12\uc774 \uadf8\ub300\ub85c\ub77c\ub294 \uc810\uc744 \uac00\ub838\ub2e4."
      }
     ],
-    "humanReview": "선택한 값과 이유가 맞물려 있는지, 평균 상승이 '대부분의 학생이 오름'을 뜻한다고 오해하지 않았는지는 사람이 읽어야 안다.",
+    "humanReview": "\uc120\ud0dd\ud55c \uac12\uacfc \uc774\uc720\uac00 \ub9de\ubb3c\ub824 \uc788\ub294\uc9c0, \ud3c9\uade0 \uc0c1\uc2b9\uc774 '\ub300\ubd80\ubd84\uc758 \ud559\uc0dd\uc774 \uc624\ub984'\uc744 \ub73b\ud55c\ub2e4\uace0 \uc624\ud574\ud558\uc9c0 \uc54a\uc558\ub294\uc9c0\ub294 \uc0ac\ub78c\uc774 \uc77d\uc5b4\uc57c \uc548\ub2e4.",
     "hints": [
-     "만든 사례 하나를 골라 5명의 새 점수를 모두 적고, 그 중 몇 명의 점수가 바뀌었는지 세어 보세요.",
-     "평균과 중앙값 각각에 대해 '이 값만 보고 알 수 있는 것'을 한 줄씩 적어 비교해 보세요."
+     "\ub9cc\ub4e0 \uc0ac\ub840 \ud558\ub098\ub97c \uace8\ub77c 5\uba85\uc758 \uc0c8 \uc810\uc218\ub97c \ubaa8\ub450 \uc801\uace0, \uadf8 \uc911 \uba87 \uba85\uc758 \uc810\uc218\uac00 \ubc14\ub00c\uc5c8\ub294\uc9c0 \uc138\uc5b4 \ubcf4\uc138\uc694.",
+     "\ud3c9\uade0\uacfc \uc911\uc559\uac12 \uac01\uac01\uc5d0 \ub300\ud574 '\uc774 \uac12\ub9cc \ubcf4\uace0 \uc54c \uc218 \uc788\ub294 \uac83'\uc744 \ud55c \uc904\uc529 \uc801\uc5b4 \ube44\uad50\ud574 \ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "조건에서 반드시 참인 것 가리기",
-    "full": "합 조건과 가운데 값 조건을 연결해 추론하고 반례로 오답을 걸러냄",
-    "partial": "한 조건만 사용",
-    "none": "조건 없이 직관으로 선택"
+    "criterion": "\uc870\uac74\uc5d0\uc11c \ubc18\ub4dc\uc2dc \ucc38\uc778 \uac83 \uac00\ub9ac\uae30",
+    "full": "\ud569 \uc870\uac74\uacfc \uac00\uc6b4\ub370 \uac12 \uc870\uac74\uc744 \uc5f0\uacb0\ud574 \ucd94\ub860\ud558\uace0 \ubc18\ub840\ub85c \uc624\ub2f5\uc744 \uac78\ub7ec\ub0c4",
+    "partial": "\ud55c \uc870\uac74\ub9cc \uc0ac\uc6a9",
+    "none": "\uc870\uac74 \uc5c6\uc774 \uc9c1\uad00\uc73c\ub85c \uc120\ud0dd"
    },
    {
-    "criterion": "조건 만족 사례 만들기",
-    "full": "평균과 중앙값 조건을 모두 확인한 서로 다른 3가지 사례",
-    "partial": "1~2가지 사례",
-    "none": "조건 확인 없는 사례"
+    "criterion": "\uc870\uac74 \ub9cc\uc871 \uc0ac\ub840 \ub9cc\ub4e4\uae30",
+    "full": "\ud3c9\uade0\uacfc \uc911\uc559\uac12 \uc870\uac74\uc744 \ubaa8\ub450 \ud655\uc778\ud55c \uc11c\ub85c \ub2e4\ub978 3\uac00\uc9c0 \uc0ac\ub840",
+    "partial": "1~2\uac00\uc9c0 \uc0ac\ub840",
+    "none": "\uc870\uac74 \ud655\uc778 \uc5c6\ub294 \uc0ac\ub840"
    },
    {
-    "criterion": "대푯값 선택과 설명",
-    "full": "두 값이 알려 주는 것의 차이를 숫자와 함께 설명",
-    "partial": "값 선택은 했으나 이유가 모호",
-    "none": "이유 없이 한 값만 제시"
+    "criterion": "\ub300\ud46f\uac12 \uc120\ud0dd\uacfc \uc124\uba85",
+    "full": "\ub450 \uac12\uc774 \uc54c\ub824 \uc8fc\ub294 \uac83\uc758 \ucc28\uc774\ub97c \uc22b\uc790\uc640 \ud568\uaed8 \uc124\uba85",
+    "partial": "\uac12 \uc120\ud0dd\uc740 \ud588\uc73c\ub098 \uc774\uc720\uac00 \ubaa8\ud638",
+    "none": "\uc774\uc720 \uc5c6\uc774 \ud55c \uac12\ub9cc \uc81c\uc2dc"
    }
   ],
   "alternatives": [
-   "안내문에서 평균 하나만 쓰되 '두 명의 점수가 크게 올라서'라고 이유를 밝히는 답도 정직한 답이다.",
-   "a, b를 소수 점수까지 허용하면 더 많은 사례가 나온다."
+   "\uc548\ub0b4\ubb38\uc5d0\uc11c \ud3c9\uade0 \ud558\ub098\ub9cc \uc4f0\ub418 '\ub450 \uba85\uc758 \uc810\uc218\uac00 \ud06c\uac8c \uc62c\ub77c\uc11c'\ub77c\uace0 \uc774\uc720\ub97c \ubc1d\ud788\ub294 \ub2f5\ub3c4 \uc815\uc9c1\ud55c \ub2f5\uc774\ub2e4.",
+   "a, b\ub97c \uc18c\uc218 \uc810\uc218\uae4c\uc9c0 \ud5c8\uc6a9\ud558\uba74 \ub354 \ub9ce\uc740 \uc0ac\ub840\uac00 \ub098\uc628\ub2e4."
   ],
   "hardCases": [
-   "(60, 100)처럼 한 학생의 점수가 그대로인 사례는 '두 학생 점수를 다시 매겼다'는 상황과 맞는지 논의할 수 있다. 이 과제에서는 재채점 결과가 같을 수 있다고 본다.",
-   "3단계에서 평균과 중앙값을 모두 쓰는 것이 항상 최선인지는 안내문의 길이·독자에 따라 달라진다."
+   "(60, 100)\ucc98\ub7fc \ud55c \ud559\uc0dd\uc758 \uc810\uc218\uac00 \uadf8\ub300\ub85c\uc778 \uc0ac\ub840\ub294 '\ub450 \ud559\uc0dd \uc810\uc218\ub97c \ub2e4\uc2dc \ub9e4\uacbc\ub2e4'\ub294 \uc0c1\ud669\uacfc \ub9de\ub294\uc9c0 \ub17c\uc758\ud560 \uc218 \uc788\ub2e4. \uc774 \uacfc\uc81c\uc5d0\uc11c\ub294 \uc7ac\ucc44\uc810 \uacb0\uacfc\uac00 \uac19\uc744 \uc218 \uc788\ub2e4\uace0 \ubcf8\ub2e4.",
+   "3\ub2e8\uacc4\uc5d0\uc11c \ud3c9\uade0\uacfc \uc911\uc559\uac12\uc744 \ubaa8\ub450 \uc4f0\ub294 \uac83\uc774 \ud56d\uc0c1 \ucd5c\uc120\uc778\uc9c0\ub294 \uc548\ub0b4\ubb38\uc758 \uae38\uc774\u00b7\ub3c5\uc790\uc5d0 \ub530\ub77c \ub2ec\ub77c\uc9c4\ub2e4."
   ],
   "cautions": {
-   "language": "'중앙값'은 '크기 순으로 놓았을 때 가운데 값'으로 풀어 쓴다. '반드시 참'이라는 표현이 '그럴 수도 있다'와 다름을 문제에서 확인한다.",
-   "culture": "수행평가는 학교에서 흔한 상황이다. 점수를 학부모에게 알리는 안내문이라는 설정은 한국 학교 문화를 반영한다.",
-   "accessibility": "점수 목록을 문장과 숫자로만 제시했다. 'a점, b점'은 '에이 점, 비 점'으로 읽을 수 있다."
+   "language": "'\uc911\uc559\uac12'\uc740 '\ud06c\uae30 \uc21c\uc73c\ub85c \ub193\uc558\uc744 \ub54c \uac00\uc6b4\ub370 \uac12'\uc73c\ub85c \ud480\uc5b4 \uc4f4\ub2e4. '\ubc18\ub4dc\uc2dc \ucc38'\uc774\ub77c\ub294 \ud45c\ud604\uc774 '\uadf8\ub7f4 \uc218\ub3c4 \uc788\ub2e4'\uc640 \ub2e4\ub984\uc744 \ubb38\uc81c\uc5d0\uc11c \ud655\uc778\ud55c\ub2e4.",
+   "culture": "\uc218\ud589\ud3c9\uac00\ub294 \ud559\uad50\uc5d0\uc11c \ud754\ud55c \uc0c1\ud669\uc774\ub2e4. \uc810\uc218\ub97c \ud559\ubd80\ubaa8\uc5d0\uac8c \uc54c\ub9ac\ub294 \uc548\ub0b4\ubb38\uc774\ub77c\ub294 \uc124\uc815\uc740 \ud55c\uad6d \ud559\uad50 \ubb38\ud654\ub97c \ubc18\uc601\ud55c\ub2e4.",
+   "accessibility": "\uc810\uc218 \ubaa9\ub85d\uc744 \ubb38\uc7a5\uacfc \uc22b\uc790\ub85c\ub9cc \uc81c\uc2dc\ud588\ub2e4. 'a\uc810, b\uc810'\uc740 '\uc5d0\uc774 \uc810, \ube44 \uc810'\uc73c\ub85c \uc77d\uc744 \uc218 \uc788\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "1단계 선택(정답 집합과 일치 여부)과 반례 의존 선택지",
-    "2단계에서 만든 (a, b)의 정수·합·중앙값 조건과 서로 다른 사례 수",
-    "서술에 평균/중앙값과 이유 낱말이 있는지"
+    "1\ub2e8\uacc4 \uc120\ud0dd(\uc815\ub2f5 \uc9d1\ud569\uacfc \uc77c\uce58 \uc5ec\ubd80)\uacfc \ubc18\ub840 \uc758\uc874 \uc120\ud0dd\uc9c0",
+    "2\ub2e8\uacc4\uc5d0\uc11c \ub9cc\ub4e0 (a, b)\uc758 \uc815\uc218\u00b7\ud569\u00b7\uc911\uc559\uac12 \uc870\uac74\uacfc \uc11c\ub85c \ub2e4\ub978 \uc0ac\ub840 \uc218",
+    "\uc11c\uc220\uc5d0 \ud3c9\uade0/\uc911\uc559\uac12\uacfc \uc774\uc720 \ub0b1\ub9d0\uc774 \uc788\ub294\uc9c0"
    ],
    "human": [
-    "고른 값과 이유가 맞물리는지",
-    "평균이 오른 이유를 대부분 학생의 향상으로 오해하지 않았는지"
+    "\uace0\ub978 \uac12\uacfc \uc774\uc720\uac00 \ub9de\ubb3c\ub9ac\ub294\uc9c0",
+    "\ud3c9\uade0\uc774 \uc624\ub978 \uc774\uc720\ub97c \ub300\ubd80\ubd84 \ud559\uc0dd\uc758 \ud5a5\uc0c1\uc73c\ub85c \uc624\ud574\ud558\uc9c0 \uc54a\uc558\ub294\uc9c0"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "y-m-31-04",
   "subject": "math",
   "grade": "M3",
   "cell": "math|M3|statistics",
-  "topic": "평균과 표준편차만으로 알 수 있는 것",
+  "topic": "\ud3c9\uade0\uacfc \ud45c\uc900\ud3b8\ucc28\ub9cc\uc73c\ub85c \uc54c \uc218 \uc788\ub294 \uac83",
   "level": 2,
-  "levelLabel": "중등",
-  "title": "평균과 표준편차만 알 때, 확실히 말할 수 있는 것",
+  "levelLabel": "\uc911\ub4f1",
+  "title": "\ud3c9\uade0\uacfc \ud45c\uc900\ud3b8\ucc28\ub9cc \uc54c \ub54c, \ud655\uc2e4\ud788 \ub9d0\ud560 \uc218 \uc788\ub294 \uac83",
   "uiLang": "ko",
   "format": "choose-needed-info",
   "generative": true,
-  "goal": "평균과 표준편차만 주어졌을 때 확실히 말할 수 있는 것, 가능하지만 확실하지 않은 것, 더 알아야 하는 것을 구별하고 불가능한 값을 직접 찾아낸다.",
+  "goal": "\ud3c9\uade0\uacfc \ud45c\uc900\ud3b8\ucc28\ub9cc \uc8fc\uc5b4\uc84c\uc744 \ub54c \ud655\uc2e4\ud788 \ub9d0\ud560 \uc218 \uc788\ub294 \uac83, \uac00\ub2a5\ud558\uc9c0\ub9cc \ud655\uc2e4\ud558\uc9c0 \uc54a\uc740 \uac83, \ub354 \uc54c\uc544\uc57c \ud558\ub294 \uac83\uc744 \uad6c\ubcc4\ud558\uace0 \ubd88\uac00\ub2a5\ud55c \uac12\uc744 \uc9c1\uc811 \ucc3e\uc544\ub0b8\ub2e4.",
   "thinking": [
-   "정보가 충분한지 판단하기",
-   "반례로 '반드시 참'이 아님을 보이기",
-   "불가능한 경우를 추론으로 걸러내기"
+   "\uc815\ubcf4\uac00 \ucda9\ubd84\ud55c\uc9c0 \ud310\ub2e8\ud558\uae30",
+   "\ubc18\ub840\ub85c '\ubc18\ub4dc\uc2dc \ucc38'\uc774 \uc544\ub2d8\uc744 \ubcf4\uc774\uae30",
+   "\ubd88\uac00\ub2a5\ud55c \uacbd\uc6b0\ub97c \ucd94\ub860\uc73c\ub85c \uac78\ub7ec\ub0b4\uae30"
   ],
-  "differsFromPlain": "단순 연습은 자료가 모두 주어졌을 때 평균과 표준편차를 구한다. 여기서는 자료의 일부(평균, 표준편차)만 주어졌을 때 어떤 말은 반드시 참이고 어떤 말은 그렇지 않은지, 더 알아야 할 정보가 무엇인지 따진다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uc790\ub8cc\uac00 \ubaa8\ub450 \uc8fc\uc5b4\uc84c\uc744 \ub54c \ud3c9\uade0\uacfc \ud45c\uc900\ud3b8\ucc28\ub97c \uad6c\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \uc790\ub8cc\uc758 \uc77c\ubd80(\ud3c9\uade0, \ud45c\uc900\ud3b8\ucc28)\ub9cc \uc8fc\uc5b4\uc84c\uc744 \ub54c \uc5b4\ub5a4 \ub9d0\uc740 \ubc18\ub4dc\uc2dc \ucc38\uc774\uace0 \uc5b4\ub5a4 \ub9d0\uc740 \uadf8\ub807\uc9c0 \uc54a\uc740\uc9c0, \ub354 \uc54c\uc544\uc57c \ud560 \uc815\ubcf4\uac00 \ubb34\uc5c7\uc778\uc9c0 \ub530\uc9c4\ub2e4.",
   "prerequisites": [
-   "평균, 편차, 분산, 표준편차의 뜻(중3). 분산은 편차를 제곱한 값의 평균이므로 (편차 제곱의 합) = (자료의 개수) × (분산)이라는 관계",
-   "자료의 편차를 제곱하면 항상 0 이상임"
+   "\ud3c9\uade0, \ud3b8\ucc28, \ubd84\uc0b0, \ud45c\uc900\ud3b8\ucc28\uc758 \ub73b(\uc9113). \ubd84\uc0b0\uc740 \ud3b8\ucc28\ub97c \uc81c\uacf1\ud55c \uac12\uc758 \ud3c9\uade0\uc774\ubbc0\ub85c (\ud3b8\ucc28 \uc81c\uacf1\uc758 \ud569) = (\uc790\ub8cc\uc758 \uac1c\uc218) \u00d7 (\ubd84\uc0b0)\uc774\ub77c\ub294 \uad00\uacc4",
+   "\uc790\ub8cc\uc758 \ud3b8\ucc28\ub97c \uc81c\uacf1\ud558\uba74 \ud56d\uc0c1 0 \uc774\uc0c1\uc784"
   ],
   "minutes": 16,
   "curriculum": null,
-  "material": "어느 학교 3학년 한 반 30명이 본 수학 시험(0점~100점, 점수는 정수)의 평균은 70점, 표준편차는 5점이에요. 개인별 점수는 알려지지 않았어요. 이 반 학생 30명이 조사 대상의 전부이므로 분산(= 25)은 30으로 나누어 구한 값이에요. 따라서 30명의 편차를 제곱한 값을 모두 더하면 25×30=750이에요.",
+  "material": "\uc5b4\ub290 \ud559\uad50 3\ud559\ub144 \ud55c \ubc18 30\uba85\uc774 \ubcf8 \uc218\ud559 \uc2dc\ud5d8(0\uc810~100\uc810, \uc810\uc218\ub294 \uc815\uc218)\uc758 \ud3c9\uade0\uc740 70\uc810, \ud45c\uc900\ud3b8\ucc28\ub294 5\uc810\uc774\uc5d0\uc694. \uac1c\uc778\ubcc4 \uc810\uc218\ub294 \uc54c\ub824\uc9c0\uc9c0 \uc54a\uc558\uc5b4\uc694. \uc774 \ubc18 \ud559\uc0dd 30\uba85\uc774 \uc870\uc0ac \ub300\uc0c1\uc758 \uc804\ubd80\uc774\ubbc0\ub85c \ubd84\uc0b0(= 25)\uc740 30\uc73c\ub85c \ub098\ub204\uc5b4 \uad6c\ud55c \uac12\uc774\uc5d0\uc694. \ub530\ub77c\uc11c 30\uba85\uc758 \ud3b8\ucc28\ub97c \uc81c\uacf1\ud55c \uac12\uc744 \ubaa8\ub450 \ub354\ud558\uba74 25\u00d730=750\uc774\uc5d0\uc694.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
     "multi": true,
-    "prompt": "평균 70점, 표준편차 5점이라는 정보만으로 반드시 참이라고 할 수 있는 말을 모두 고르세요.",
+    "prompt": "\ud3c9\uade0 70\uc810, \ud45c\uc900\ud3b8\ucc28 5\uc810\uc774\ub77c\ub294 \uc815\ubcf4\ub9cc\uc73c\ub85c \ubc18\ub4dc\uc2dc \ucc38\uc774\ub77c\uace0 \ud560 \uc218 \uc788\ub294 \ub9d0\uc744 \ubaa8\ub450 \uace0\ub974\uc138\uc694.",
     "options": [
      {
       "id": "a",
-      "text": "이 반 학생들의 점수는 모두 65점 이상 75점 이하이다.",
-      "reveals": "표준편차 5가 '모든 학생이 평균에서 5점 안'을 뜻하지는 않아요. 일부가 더 멀리 떨어져 있어도 표준편차는 5가 될 수 있어요."
+      "text": "\uc774 \ubc18 \ud559\uc0dd\ub4e4\uc758 \uc810\uc218\ub294 \ubaa8\ub450 65\uc810 \uc774\uc0c1 75\uc810 \uc774\ud558\uc774\ub2e4.",
+      "reveals": "\ud45c\uc900\ud3b8\ucc28 5\uac00 '\ubaa8\ub4e0 \ud559\uc0dd\uc774 \ud3c9\uade0\uc5d0\uc11c 5\uc810 \uc548'\uc744 \ub73b\ud558\uc9c0\ub294 \uc54a\uc544\uc694. \uc77c\ubd80\uac00 \ub354 \uba40\ub9ac \ub5a8\uc5b4\uc838 \uc788\uc5b4\ub3c4 \ud45c\uc900\ud3b8\ucc28\ub294 5\uac00 \ub420 \uc218 \uc788\uc5b4\uc694."
      },
      {
       "id": "b",
-      "text": "이 반에 점수가 정확히 70점인 학생이 적어도 한 명 있다.",
-      "reveals": "평균이 70이라고 해서 70점을 받은 학생이 있어야 하는 것은 아니에요. 60점과 80점만 있어도 평균은 70이 될 수 있어요."
+      "text": "\uc774 \ubc18\uc5d0 \uc810\uc218\uac00 \uc815\ud655\ud788 70\uc810\uc778 \ud559\uc0dd\uc774 \uc801\uc5b4\ub3c4 \ud55c \uba85 \uc788\ub2e4.",
+      "reveals": "\ud3c9\uade0\uc774 70\uc774\ub77c\uace0 \ud574\uc11c 70\uc810\uc744 \ubc1b\uc740 \ud559\uc0dd\uc774 \uc788\uc5b4\uc57c \ud558\ub294 \uac83\uc740 \uc544\ub2c8\uc5d0\uc694. 60\uc810\uacfc 80\uc810\ub9cc \uc788\uc5b4\ub3c4 \ud3c9\uade0\uc740 70\uc774 \ub420 \uc218 \uc788\uc5b4\uc694."
      },
      {
       "id": "c",
-      "text": "70점보다 높은 점수를 받은 학생이 적어도 한 명 있다.",
-      "reveals": "표준편차가 0이 아니므로 모든 점수가 70점일 수 없고, 평균이 70이므로 70보다 낮은 학생이 있다면 높은 학생도 있어야 해요. 평균의 뜻과 표준편차가 0이 아니라는 점을 연결했어요."
+      "text": "70\uc810\ubcf4\ub2e4 \ub192\uc740 \uc810\uc218\ub97c \ubc1b\uc740 \ud559\uc0dd\uc774 \uc801\uc5b4\ub3c4 \ud55c \uba85 \uc788\ub2e4.",
+      "reveals": "\ud45c\uc900\ud3b8\ucc28\uac00 0\uc774 \uc544\ub2c8\ubbc0\ub85c \ubaa8\ub4e0 \uc810\uc218\uac00 70\uc810\uc77c \uc218 \uc5c6\uace0, \ud3c9\uade0\uc774 70\uc774\ubbc0\ub85c 70\ubcf4\ub2e4 \ub0ae\uc740 \ud559\uc0dd\uc774 \uc788\ub2e4\uba74 \ub192\uc740 \ud559\uc0dd\ub3c4 \uc788\uc5b4\uc57c \ud574\uc694. \ud3c9\uade0\uc758 \ub73b\uacfc \ud45c\uc900\ud3b8\ucc28\uac00 0\uc774 \uc544\ub2c8\ub77c\ub294 \uc810\uc744 \uc5f0\uacb0\ud588\uc5b4\uc694."
      },
      {
       "id": "d",
-      "text": "이 반의 중앙값은 70점이다.",
-      "reveals": "평균과 중앙값은 다를 수 있어요. 평균과 표준편차만으로는 가운데 순서의 점수를 알 수 없어요."
+      "text": "\uc774 \ubc18\uc758 \uc911\uc559\uac12\uc740 70\uc810\uc774\ub2e4.",
+      "reveals": "\ud3c9\uade0\uacfc \uc911\uc559\uac12\uc740 \ub2e4\ub97c \uc218 \uc788\uc5b4\uc694. \ud3c9\uade0\uacfc \ud45c\uc900\ud3b8\ucc28\ub9cc\uc73c\ub85c\ub294 \uac00\uc6b4\ub370 \uc21c\uc11c\uc758 \uc810\uc218\ub97c \uc54c \uc218 \uc5c6\uc5b4\uc694."
      },
      {
       "id": "e",
-      "text": "40점 이하인 학생은 이 반에 한 명도 없다.",
-      "reveals": "편차가 30 이상이면 한 학생의 편차 제곱만 900 이상이에요. 전체 합 750을 넘으므로 불가능해요. 편차 제곱의 합이 정해져 있다는 점을 이용한 좋은 추론이에요."
+      "text": "40\uc810 \uc774\ud558\uc778 \ud559\uc0dd\uc740 \uc774 \ubc18\uc5d0 \ud55c \uba85\ub3c4 \uc5c6\ub2e4.",
+      "reveals": "\ud3b8\ucc28\uac00 30 \uc774\uc0c1\uc774\uba74 \ud55c \ud559\uc0dd\uc758 \ud3b8\ucc28 \uc81c\uacf1\ub9cc 900 \uc774\uc0c1\uc774\uc5d0\uc694. \uc804\uccb4 \ud569 750\uc744 \ub118\uc73c\ubbc0\ub85c \ubd88\uac00\ub2a5\ud574\uc694. \ud3b8\ucc28 \uc81c\uacf1\uc758 \ud569\uc774 \uc815\ud574\uc838 \uc788\ub2e4\ub294 \uc810\uc744 \uc774\uc6a9\ud55c \uc88b\uc740 \ucd94\ub860\uc774\uc5d0\uc694."
      }
     ],
     "correct": [
      "c",
      "e"
     ],
-    "explain": "편차 제곱의 합이 750으로 정해져 있으므로, 한 학생의 편차 제곱이 750을 넘을 수는 없어요. 40점이면 편차가 -30이라 제곱이 900이므로 불가능해요. 또 표준편차가 0이 아니면 점수가 모두 같을 수 없고 평균이 70이므로 70보다 높은 학생이 있어요. 중앙값, 70점인 학생의 존재, '모두 65~75점'은 이 정보만으로 말할 수 없어요.",
+    "explain": "\ud3b8\ucc28 \uc81c\uacf1\uc758 \ud569\uc774 750\uc73c\ub85c \uc815\ud574\uc838 \uc788\uc73c\ubbc0\ub85c, \ud55c \ud559\uc0dd\uc758 \ud3b8\ucc28 \uc81c\uacf1\uc774 750\uc744 \ub118\uc744 \uc218\ub294 \uc5c6\uc5b4\uc694. 40\uc810\uc774\uba74 \ud3b8\ucc28\uac00 -30\uc774\ub77c \uc81c\uacf1\uc774 900\uc774\ubbc0\ub85c \ubd88\uac00\ub2a5\ud574\uc694. \ub610 \ud45c\uc900\ud3b8\ucc28\uac00 0\uc774 \uc544\ub2c8\uba74 \uc810\uc218\uac00 \ubaa8\ub450 \uac19\uc744 \uc218 \uc5c6\uace0 \ud3c9\uade0\uc774 70\uc774\ubbc0\ub85c 70\ubcf4\ub2e4 \ub192\uc740 \ud559\uc0dd\uc774 \uc788\uc5b4\uc694. \uc911\uc559\uac12, 70\uc810\uc778 \ud559\uc0dd\uc758 \uc874\uc7ac, '\ubaa8\ub450 65~75\uc810'\uc740 \uc774 \uc815\ubcf4\ub9cc\uc73c\ub85c \ub9d0\ud560 \uc218 \uc5c6\uc5b4\uc694.",
     "hints": [
-     "각 말에 대해 그 말이 거짓이 되는 점수 목록(반례)을 한두 개 직접 만들어 평균과 편차 제곱의 합이 맞는지 확인해 보세요.",
-     "점수 하나를 40점이라고 가정하고, 그 학생의 편차를 제곱한 값이 전체 편차 제곱의 합과 어떻게 어울려야 하는지 따져 보세요."
+     "\uac01 \ub9d0\uc5d0 \ub300\ud574 \uadf8 \ub9d0\uc774 \uac70\uc9d3\uc774 \ub418\ub294 \uc810\uc218 \ubaa9\ub85d(\ubc18\ub840)\uc744 \ud55c\ub450 \uac1c \uc9c1\uc811 \ub9cc\ub4e4\uc5b4 \ud3c9\uade0\uacfc \ud3b8\ucc28 \uc81c\uacf1\uc758 \ud569\uc774 \ub9de\ub294\uc9c0 \ud655\uc778\ud574 \ubcf4\uc138\uc694.",
+     "\uc810\uc218 \ud558\ub098\ub97c 40\uc810\uc774\ub77c\uace0 \uac00\uc815\ud558\uace0, \uadf8 \ud559\uc0dd\uc758 \ud3b8\ucc28\ub97c \uc81c\uacf1\ud55c \uac12\uc774 \uc804\uccb4 \ud3b8\ucc28 \uc81c\uacf1\uc758 \ud569\uacfc \uc5b4\ub5bb\uac8c \uc5b4\uc6b8\ub824\uc57c \ud558\ub294\uc9c0 \ub530\uc838 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "build",
-    "prompt": "이 반에서 한 학생의 점수가 될 수 없음이 확실한 점수를 서로 다르게 3개 찾아 입력하세요. (0 이상 100 이하의 정수)",
+    "prompt": "\uc774 \ubc18\uc5d0\uc11c \ud55c \ud559\uc0dd\uc758 \uc810\uc218\uac00 \ub420 \uc218 \uc5c6\uc74c\uc774 \ud655\uc2e4\ud55c \uc810\uc218\ub97c \uc11c\ub85c \ub2e4\ub974\uac8c 3\uac1c \ucc3e\uc544 \uc785\ub825\ud558\uc138\uc694. (0 \uc774\uc0c1 100 \uc774\ud558\uc758 \uc815\uc218)",
     "vars": [
      {
       "name": "x",
-      "label": "불가능한 점수"
+      "label": "\ubd88\uac00\ub2a5\ud55c \uc810\uc218"
      }
     ],
     "constraints": [
      {
       "id": "c1",
       "expr": "x>=0 && x<=100 && x==floor(x)",
-      "ok": "0 이상 100 이하의 정수예요.",
-      "fail": "점수는 0 이상 100 이하의 정수로 해 주세요."
+      "ok": "0 \uc774\uc0c1 100 \uc774\ud558\uc758 \uc815\uc218\uc608\uc694.",
+      "fail": "\uc810\uc218\ub294 0 \uc774\uc0c1 100 \uc774\ud558\uc758 \uc815\uc218\ub85c \ud574 \uc8fc\uc138\uc694."
      },
      {
       "id": "c2",
       "expr": "(70-x)^2>725",
-      "ok": "이 점수를 받은 학생이 있다면 편차 제곱의 합 750과 평균 70을 동시에 만족할 수 없어요.",
-      "fail": "이 점수는 이 반에서 가능한 점수예요. 그 점수의 학생이 있고 나머지 학생도 평균과 편차 제곱의 합을 맞출 수 있는 점수 목록을 만들 수 있어요."
+      "ok": "\uc774 \uc810\uc218\ub97c \ubc1b\uc740 \ud559\uc0dd\uc774 \uc788\ub2e4\uba74 \ud3b8\ucc28 \uc81c\uacf1\uc758 \ud569 750\uacfc \ud3c9\uade0 70\uc744 \ub3d9\uc2dc\uc5d0 \ub9cc\uc871\ud560 \uc218 \uc5c6\uc5b4\uc694.",
+      "fail": "\uc774 \uc810\uc218\ub294 \uc774 \ubc18\uc5d0\uc11c \uac00\ub2a5\ud55c \uc810\uc218\uc608\uc694. \uadf8 \uc810\uc218\uc758 \ud559\uc0dd\uc774 \uc788\uace0 \ub098\uba38\uc9c0 \ud559\uc0dd\ub3c4 \ud3c9\uade0\uacfc \ud3b8\ucc28 \uc81c\uacf1\uc758 \ud569\uc744 \ub9de\ucd9c \uc218 \uc788\ub294 \uc810\uc218 \ubaa9\ub85d\uc744 \ub9cc\ub4e4 \uc218 \uc788\uc5b4\uc694."
      }
     ],
     "need": 3,
@@ -909,193 +910,193 @@
       "x": 75
      }
     ],
-    "explain": "한 학생의 편차 제곱은 750을 넘을 수 없고, 나머지 29명의 편차 합이 그 학생의 편차를 상쇄해야 하므로 실제로는 약 725를 넘을 수 없어요. 그래서 43점 이하, 97점 이상은 불가능해요. 20점, 35점, 100점은 쉽게 걸러지는 예이고 43점이나 97점은 더 세밀한 계산이 필요한 경계 예예요. 반대로 45점은 한 명이 45점, 다섯 명이 75점, 스물네 명이 70점이면 평균 70, 표준편차 5가 되어 가능해요.",
+    "explain": "\ud55c \ud559\uc0dd\uc758 \ud3b8\ucc28 \uc81c\uacf1\uc740 750\uc744 \ub118\uc744 \uc218 \uc5c6\uace0, \ub098\uba38\uc9c0 29\uba85\uc758 \ud3b8\ucc28 \ud569\uc774 \uadf8 \ud559\uc0dd\uc758 \ud3b8\ucc28\ub97c \uc0c1\uc1c4\ud574\uc57c \ud558\ubbc0\ub85c \uc2e4\uc81c\ub85c\ub294 \uc57d 725\ub97c \ub118\uc744 \uc218 \uc5c6\uc5b4\uc694. \uadf8\ub798\uc11c 43\uc810 \uc774\ud558, 97\uc810 \uc774\uc0c1\uc740 \ubd88\uac00\ub2a5\ud574\uc694. 20\uc810, 35\uc810, 100\uc810\uc740 \uc27d\uac8c \uac78\ub7ec\uc9c0\ub294 \uc608\uc774\uace0 43\uc810\uc774\ub098 97\uc810\uc740 \ub354 \uc138\ubc00\ud55c \uacc4\uc0b0\uc774 \ud544\uc694\ud55c \uacbd\uacc4 \uc608\uc608\uc694. \ubc18\ub300\ub85c 45\uc810\uc740 \ud55c \uba85\uc774 45\uc810, \ub2e4\uc12f \uba85\uc774 75\uc810, \uc2a4\ubb3c\ub124 \uba85\uc774 70\uc810\uc774\uba74 \ud3c9\uade0 70, \ud45c\uc900\ud3b8\ucc28 5\uac00 \ub418\uc5b4 \uac00\ub2a5\ud574\uc694.",
     "hints": [
-     "후보 점수를 하나 정해 그 편차의 제곱을 계산한 뒤, 이 값이 전체 편차 제곱의 합과 어울릴 수 있는지 따져 보세요.",
-     "45점, 60점 같은 점수는 그런 학생이 있어도 평균 70과 표준편차 5를 만족하는 점수 목록을 만들 수 있는지 시험해 보세요."
+     "\ud6c4\ubcf4 \uc810\uc218\ub97c \ud558\ub098 \uc815\ud574 \uadf8 \ud3b8\ucc28\uc758 \uc81c\uacf1\uc744 \uacc4\uc0b0\ud55c \ub4a4, \uc774 \uac12\uc774 \uc804\uccb4 \ud3b8\ucc28 \uc81c\uacf1\uc758 \ud569\uacfc \uc5b4\uc6b8\ub9b4 \uc218 \uc788\ub294\uc9c0 \ub530\uc838 \ubcf4\uc138\uc694.",
+     "45\uc810, 60\uc810 \uac19\uc740 \uc810\uc218\ub294 \uadf8\ub7f0 \ud559\uc0dd\uc774 \uc788\uc5b4\ub3c4 \ud3c9\uade0 70\uacfc \ud45c\uc900\ud3b8\ucc28 5\ub97c \ub9cc\uc871\ud558\ub294 \uc810\uc218 \ubaa9\ub85d\uc744 \ub9cc\ub4e4 \uc218 \uc788\ub294\uc9c0 \uc2dc\ud5d8\ud574 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s3",
     "kind": "write",
-    "prompt": "친구가 '표준편차가 5점이니까 이 반 학생은 모두 65점부터 75점 사이야'라고 말했어요. 이 말이 왜 반드시 맞지는 않은지 구체적인 예와 함께 쓰고, 그 말이 맞는지 확인하려면 무엇을 더 알아야 하는지도 쓰세요.",
-    "placeholder": "예: 반드시 맞지는 않아. 예를 들어 ...",
+    "prompt": "\uce5c\uad6c\uac00 '\ud45c\uc900\ud3b8\ucc28\uac00 5\uc810\uc774\ub2c8\uae4c \uc774 \ubc18 \ud559\uc0dd\uc740 \ubaa8\ub450 65\uc810\ubd80\ud130 75\uc810 \uc0ac\uc774\uc57c'\ub77c\uace0 \ub9d0\ud588\uc5b4\uc694. \uc774 \ub9d0\uc774 \uc65c \ubc18\ub4dc\uc2dc \ub9de\uc9c0\ub294 \uc54a\uc740\uc9c0 \uad6c\uccb4\uc801\uc778 \uc608\uc640 \ud568\uaed8 \uc4f0\uace0, \uadf8 \ub9d0\uc774 \ub9de\ub294\uc9c0 \ud655\uc778\ud558\ub824\uba74 \ubb34\uc5c7\uc744 \ub354 \uc54c\uc544\uc57c \ud558\ub294\uc9c0\ub3c4 \uc4f0\uc138\uc694.",
+    "placeholder": "\uc608: \ubc18\ub4dc\uc2dc \ub9de\uc9c0\ub294 \uc54a\uc544. \uc608\ub97c \ub4e4\uc5b4 ...",
     "minChars": 30,
     "checks": [
      {
       "id": "w1",
-      "label": "반드시 그렇지는 않다는 결론을 말했다",
+      "label": "\ubc18\ub4dc\uc2dc \uadf8\ub807\uc9c0\ub294 \uc54a\ub2e4\ub294 \uacb0\ub860\uc744 \ub9d0\ud588\ub2e4",
       "mode": "any",
       "patterns": [
-       "반드시",
-       "꼭\\s*(그런|아니|그렇)",
-       "아닐\\s*수",
-       "아니",
-       "않을\\s*수",
-       "틀릴\\s*수",
-       "벗어",
-       "예외",
-       "넘을\\s*수",
-       "수\\s*도\\s*있",
-       "할\\s*수\\s*없",
-       "일\\s*뿐",
-       "수\\s*있",
-       "가능",
-       "안\\s*맞",
-       "맞지\\s*않",
-       "틀(리|린)"
+       "\ubc18\ub4dc\uc2dc",
+       "\uaf2d\\s*(\uadf8\ub7f0|\uc544\ub2c8|\uadf8\ub807)",
+       "\uc544\ub2d0\\s*\uc218",
+       "\uc544\ub2c8",
+       "\uc54a\uc744\\s*\uc218",
+       "\ud2c0\ub9b4\\s*\uc218",
+       "\ubc97\uc5b4",
+       "\uc608\uc678",
+       "\ub118\uc744\\s*\uc218",
+       "\uc218\\s*\ub3c4\\s*\uc788",
+       "\ud560\\s*\uc218\\s*\uc5c6",
+       "\uc77c\\s*\ubfd0",
+       "\uc218\\s*\uc788",
+       "\uac00\ub2a5",
+       "\uc548\\s*\ub9de",
+       "\ub9de\uc9c0\\s*\uc54a",
+       "\ud2c0(\ub9ac|\ub9b0)"
       ]
      },
      {
       "id": "w2",
-      "label": "더 알아야 할 정보(개별 점수·분포 등)를 말했다",
+      "label": "\ub354 \uc54c\uc544\uc57c \ud560 \uc815\ubcf4(\uac1c\ubcc4 \uc810\uc218\u00b7\ubd84\ud3ec \ub4f1)\ub97c \ub9d0\ud588\ub2e4",
       "mode": "any",
       "patterns": [
-       "(개별|각|모든|전체|학생)\\s*(의\\s*)?점수",
-       "점수\\s*(분포|목록|표|자료)",
-       "분포",
-       "도수",
-       "최저|최고|최솟|최댓|최소|최대",
-       "가장\\s*(낮|높)",
-       "직접\\s*(확인|봐|보)",
-       "자료\\s*(전체|를\\s*다)",
-       "개인(별)?\\s*(의\\s*)?점수",
-       "각자",
-       "점수를\\s*알",
-       "성적\\s*(자료|분포)"
+       "(\uac1c\ubcc4|\uac01|\ubaa8\ub4e0|\uc804\uccb4|\ud559\uc0dd)\\s*(\uc758\\s*)?\uc810\uc218",
+       "\uc810\uc218\\s*(\ubd84\ud3ec|\ubaa9\ub85d|\ud45c|\uc790\ub8cc)",
+       "\ubd84\ud3ec",
+       "\ub3c4\uc218",
+       "\ucd5c\uc800|\ucd5c\uace0|\ucd5c\uc19f|\ucd5c\ub313|\ucd5c\uc18c|\ucd5c\ub300",
+       "\uac00\uc7a5\\s*(\ub0ae|\ub192)",
+       "\uc9c1\uc811\\s*(\ud655\uc778|\ubd10|\ubcf4)",
+       "\uc790\ub8cc\\s*(\uc804\uccb4|\ub97c\\s*\ub2e4)",
+       "\uac1c\uc778(\ubcc4)?\\s*(\uc758\\s*)?\uc810\uc218",
+       "\uac01\uc790",
+       "\uc810\uc218\ub97c\\s*\uc54c",
+       "\uc131\uc801\\s*(\uc790\ub8cc|\ubd84\ud3ec)"
       ]
      }
     ],
     "selfAssess": [
-     "내가 든 예에서 평균 70과 표준편차 5가 정말 맞는지 따져 보았나요?",
-     "'모든 학생'이라는 말을 깨려면 반례 하나로 충분하다는 점을 활용했나요?",
-     "어떤 정보가 있으면 이 말을 확인할 수 있는지 구체적으로 썼나요?"
+     "\ub0b4\uac00 \ub4e0 \uc608\uc5d0\uc11c \ud3c9\uade0 70\uacfc \ud45c\uc900\ud3b8\ucc28 5\uac00 \uc815\ub9d0 \ub9de\ub294\uc9c0 \ub530\uc838 \ubcf4\uc558\ub098\uc694?",
+     "'\ubaa8\ub4e0 \ud559\uc0dd'\uc774\ub77c\ub294 \ub9d0\uc744 \uae68\ub824\uba74 \ubc18\ub840 \ud558\ub098\ub85c \ucda9\ubd84\ud558\ub2e4\ub294 \uc810\uc744 \ud65c\uc6a9\ud588\ub098\uc694?",
+     "\uc5b4\ub5a4 \uc815\ubcf4\uac00 \uc788\uc73c\uba74 \uc774 \ub9d0\uc744 \ud655\uc778\ud560 \uc218 \uc788\ub294\uc9c0 \uad6c\uccb4\uc801\uc73c\ub85c \uc37c\ub098\uc694?"
     ],
     "modelAnswers": [
      {
-      "text": "반드시 맞지는 않아. 예를 들어 한 명이 45점, 다섯 명이 75점, 나머지 24명이 70점이면 평균 70, 표준편차 5인데 45점인 학생이 있어. 확인하려면 학생들의 개별 점수나 최저점과 최고점을 알아야 해."
+      "text": "\ubc18\ub4dc\uc2dc \ub9de\uc9c0\ub294 \uc54a\uc544. \uc608\ub97c \ub4e4\uc5b4 \ud55c \uba85\uc774 45\uc810, \ub2e4\uc12f \uba85\uc774 75\uc810, \ub098\uba38\uc9c0 24\uba85\uc774 70\uc810\uc774\uba74 \ud3c9\uade0 70, \ud45c\uc900\ud3b8\ucc28 5\uc778\ub370 45\uc810\uc778 \ud559\uc0dd\uc774 \uc788\uc5b4. \ud655\uc778\ud558\ub824\uba74 \ud559\uc0dd\ub4e4\uc758 \uac1c\ubcc4 \uc810\uc218\ub098 \ucd5c\uc800\uc810\uacfc \ucd5c\uace0\uc810\uc744 \uc54c\uc544\uc57c \ud574."
      },
      {
-      "text": "표준편차는 점수들이 평균에서 떨어진 정도의 대표적인 크기일 뿐이야. 일부 학생이 65~75 밖에 있어도 되는 거라서 모두가 그 안이라고 할 수 없어. 점수 분포(도수분포표)를 봐야 알 수 있어."
+      "text": "\ud45c\uc900\ud3b8\ucc28\ub294 \uc810\uc218\ub4e4\uc774 \ud3c9\uade0\uc5d0\uc11c \ub5a8\uc5b4\uc9c4 \uc815\ub3c4\uc758 \ub300\ud45c\uc801\uc778 \ud06c\uae30\uc77c \ubfd0\uc774\uc57c. \uc77c\ubd80 \ud559\uc0dd\uc774 65~75 \ubc16\uc5d0 \uc788\uc5b4\ub3c4 \ub418\ub294 \uac70\ub77c\uc11c \ubaa8\ub450\uac00 \uadf8 \uc548\uc774\ub77c\uace0 \ud560 \uc218 \uc5c6\uc5b4. \uc810\uc218 \ubd84\ud3ec(\ub3c4\uc218\ubd84\ud3ec\ud45c)\ub97c \ubd10\uc57c \uc54c \uc218 \uc788\uc5b4."
      },
      {
-      "text": "65~75 밖의 점수가 있어도 평균 70, 표준편차 5가 될 수 있어요. 예를 들어 한 명이 45점, 다섯 명이 75점, 나머지 24명이 70점이에요. 확인하려면 개인별 점수를 알아야 해요."
+      "text": "65~75 \ubc16\uc758 \uc810\uc218\uac00 \uc788\uc5b4\ub3c4 \ud3c9\uade0 70, \ud45c\uc900\ud3b8\ucc28 5\uac00 \ub420 \uc218 \uc788\uc5b4\uc694. \uc608\ub97c \ub4e4\uc5b4 \ud55c \uba85\uc774 45\uc810, \ub2e4\uc12f \uba85\uc774 75\uc810, \ub098\uba38\uc9c0 24\uba85\uc774 70\uc810\uc774\uc5d0\uc694. \ud655\uc778\ud558\ub824\uba74 \uac1c\uc778\ubcc4 \uc810\uc218\ub97c \uc54c\uc544\uc57c \ud574\uc694."
      }
     ],
     "badAnswers": [
      {
-      "text": "표준편차가 5니까 65점에서 75점 사이가 맞아.",
-      "why": "주장을 그대로 받아들였고 반례와 필요한 정보가 없다."
+      "text": "\ud45c\uc900\ud3b8\ucc28\uac00 5\ub2c8\uae4c 65\uc810\uc5d0\uc11c 75\uc810 \uc0ac\uc774\uac00 \ub9de\uc544.",
+      "why": "\uc8fc\uc7a5\uc744 \uadf8\ub300\ub85c \ubc1b\uc544\ub4e4\uc600\uace0 \ubc18\ub840\uc640 \ud544\uc694\ud55c \uc815\ubcf4\uac00 \uc5c6\ub2e4."
      },
      {
-      "text": "반드시 맞지는 않아. 왜냐하면 그냥 그래.",
-      "why": "결론만 있고 예도, 더 알아야 할 정보도 없다."
+      "text": "\ubc18\ub4dc\uc2dc \ub9de\uc9c0\ub294 \uc54a\uc544. \uc65c\ub0d0\ud558\uba74 \uadf8\ub0e5 \uadf8\ub798.",
+      "why": "\uacb0\ub860\ub9cc \uc788\uace0 \uc608\ub3c4, \ub354 \uc54c\uc544\uc57c \ud560 \uc815\ubcf4\ub3c4 \uc5c6\ub2e4."
      }
     ],
-    "humanReview": "든 예가 평균과 표준편차 조건을 실제로 만족하는지, '더 알아야 할 정보'가 이 말을 확인하는 데 정말 필요한 것인지는 사람이 확인해야 한다.",
+    "humanReview": "\ub4e0 \uc608\uac00 \ud3c9\uade0\uacfc \ud45c\uc900\ud3b8\ucc28 \uc870\uac74\uc744 \uc2e4\uc81c\ub85c \ub9cc\uc871\ud558\ub294\uc9c0, '\ub354 \uc54c\uc544\uc57c \ud560 \uc815\ubcf4'\uac00 \uc774 \ub9d0\uc744 \ud655\uc778\ud558\ub294 \ub370 \uc815\ub9d0 \ud544\uc694\ud55c \uac83\uc778\uc9c0\ub294 \uc0ac\ub78c\uc774 \ud655\uc778\ud574\uc57c \ud55c\ub2e4.",
     "hints": [
-     "일부 학생이 65~75점 밖에 있는 점수 목록을 하나 정해서, 그 목록의 평균과 편차 제곱의 합이 맞는지 확인해 보세요.",
-     "'모든 학생이 그 범위 안'이라고 말하려면 어떤 점수 정보를 볼 수 있어야 하는지 적어 보세요."
+     "\uc77c\ubd80 \ud559\uc0dd\uc774 65~75\uc810 \ubc16\uc5d0 \uc788\ub294 \uc810\uc218 \ubaa9\ub85d\uc744 \ud558\ub098 \uc815\ud574\uc11c, \uadf8 \ubaa9\ub85d\uc758 \ud3c9\uade0\uacfc \ud3b8\ucc28 \uc81c\uacf1\uc758 \ud569\uc774 \ub9de\ub294\uc9c0 \ud655\uc778\ud574 \ubcf4\uc138\uc694.",
+     "'\ubaa8\ub4e0 \ud559\uc0dd\uc774 \uadf8 \ubc94\uc704 \uc548'\uc774\ub77c\uace0 \ub9d0\ud558\ub824\uba74 \uc5b4\ub5a4 \uc810\uc218 \uc815\ubcf4\ub97c \ubcfc \uc218 \uc788\uc5b4\uc57c \ud558\ub294\uc9c0 \uc801\uc5b4 \ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "반드시 참인 것 가리기",
-    "full": "반례와 편차 제곱의 합 조건을 사용해 반드시 참인 것만 고름",
-    "partial": "일부만 근거와 함께 고름",
-    "none": "직관으로 고름"
+    "criterion": "\ubc18\ub4dc\uc2dc \ucc38\uc778 \uac83 \uac00\ub9ac\uae30",
+    "full": "\ubc18\ub840\uc640 \ud3b8\ucc28 \uc81c\uacf1\uc758 \ud569 \uc870\uac74\uc744 \uc0ac\uc6a9\ud574 \ubc18\ub4dc\uc2dc \ucc38\uc778 \uac83\ub9cc \uace0\ub984",
+    "partial": "\uc77c\ubd80\ub9cc \uadfc\uac70\uc640 \ud568\uaed8 \uace0\ub984",
+    "none": "\uc9c1\uad00\uc73c\ub85c \uace0\ub984"
    },
    {
-    "criterion": "불가능한 값 추론",
-    "full": "편차 제곱이 합을 넘을 수 없다는 점을 이용해 불가능한 값을 제시",
-    "partial": "불가능한 값은 맞으나 이유가 없음",
-    "none": "가능한 점수를 불가능하다고 제시"
+    "criterion": "\ubd88\uac00\ub2a5\ud55c \uac12 \ucd94\ub860",
+    "full": "\ud3b8\ucc28 \uc81c\uacf1\uc774 \ud569\uc744 \ub118\uc744 \uc218 \uc5c6\ub2e4\ub294 \uc810\uc744 \uc774\uc6a9\ud574 \ubd88\uac00\ub2a5\ud55c \uac12\uc744 \uc81c\uc2dc",
+    "partial": "\ubd88\uac00\ub2a5\ud55c \uac12\uc740 \ub9de\uc73c\ub098 \uc774\uc720\uac00 \uc5c6\uc74c",
+    "none": "\uac00\ub2a5\ud55c \uc810\uc218\ub97c \ubd88\uac00\ub2a5\ud558\ub2e4\uace0 \uc81c\uc2dc"
    },
    {
-    "criterion": "정보 충분성 설명",
-    "full": "구체적 반례와 확인에 필요한 정보를 모두 제시",
-    "partial": "둘 중 하나만 제시",
-    "none": "결론만 말함"
+    "criterion": "\uc815\ubcf4 \ucda9\ubd84\uc131 \uc124\uba85",
+    "full": "\uad6c\uccb4\uc801 \ubc18\ub840\uc640 \ud655\uc778\uc5d0 \ud544\uc694\ud55c \uc815\ubcf4\ub97c \ubaa8\ub450 \uc81c\uc2dc",
+    "partial": "\ub458 \uc911 \ud558\ub098\ub9cc \uc81c\uc2dc",
+    "none": "\uacb0\ub860\ub9cc \ub9d0\ud568"
    }
   ],
   "alternatives": [
-   "필요한 정보로 '모든 학생의 점수 목록' 대신 '최저점과 최고점', '65~75점 밖의 학생 수'를 말하는 답도 타당하다.",
-   "2단계에서 43점, 97점을 못 찾아도 20점, 100점 같은 확실한 값을 제시하면 목표는 달성한다."
+   "\ud544\uc694\ud55c \uc815\ubcf4\ub85c '\ubaa8\ub4e0 \ud559\uc0dd\uc758 \uc810\uc218 \ubaa9\ub85d' \ub300\uc2e0 '\ucd5c\uc800\uc810\uacfc \ucd5c\uace0\uc810', '65~75\uc810 \ubc16\uc758 \ud559\uc0dd \uc218'\ub97c \ub9d0\ud558\ub294 \ub2f5\ub3c4 \ud0c0\ub2f9\ud558\ub2e4.",
+   "2\ub2e8\uacc4\uc5d0\uc11c 43\uc810, 97\uc810\uc744 \ubabb \ucc3e\uc544\ub3c4 20\uc810, 100\uc810 \uac19\uc740 \ud655\uc2e4\ud55c \uac12\uc744 \uc81c\uc2dc\ud558\uba74 \ubaa9\ud45c\ub294 \ub2ec\uc131\ud55c\ub2e4."
   ],
   "hardCases": [
-   "2단계 판정은 '불가능함이 확실한 값'만 인정하므로 44~96점은 입력해도 틀린 것으로 처리된다. 경계(43점·97점)는 나머지 학생이 평균을 맞추어야 한다는 점까지 쓴 세밀한 추론이어서 학생이 계산 없이 쓰기는 어렵다.",
-   "표준편차를 n-1로 나누는 방식을 아는 학생이 있을 수 있으나 이 과제는 30명 전체를 대상으로 약속했다."
+   "2\ub2e8\uacc4 \ud310\uc815\uc740 '\ubd88\uac00\ub2a5\ud568\uc774 \ud655\uc2e4\ud55c \uac12'\ub9cc \uc778\uc815\ud558\ubbc0\ub85c 44~96\uc810\uc740 \uc785\ub825\ud574\ub3c4 \ud2c0\ub9b0 \uac83\uc73c\ub85c \ucc98\ub9ac\ub41c\ub2e4. \uacbd\uacc4(43\uc810\u00b797\uc810)\ub294 \ub098\uba38\uc9c0 \ud559\uc0dd\uc774 \ud3c9\uade0\uc744 \ub9de\ucd94\uc5b4\uc57c \ud55c\ub2e4\ub294 \uc810\uae4c\uc9c0 \uc4f4 \uc138\ubc00\ud55c \ucd94\ub860\uc774\uc5b4\uc11c \ud559\uc0dd\uc774 \uacc4\uc0b0 \uc5c6\uc774 \uc4f0\uae30\ub294 \uc5b4\ub835\ub2e4.",
+   "\ud45c\uc900\ud3b8\ucc28\ub97c n-1\ub85c \ub098\ub204\ub294 \ubc29\uc2dd\uc744 \uc544\ub294 \ud559\uc0dd\uc774 \uc788\uc744 \uc218 \uc788\uc73c\ub098 \uc774 \uacfc\uc81c\ub294 30\uba85 \uc804\uccb4\ub97c \ub300\uc0c1\uc73c\ub85c \uc57d\uc18d\ud588\ub2e4."
   ],
   "cautions": {
-   "language": "'반드시 참'과 '참일 수도 있음'의 차이를 질문 안에서 분명히 한다. '편차 제곱의 합'은 '편차를 제곱해 모두 더한 값'으로 풀어 쓴다.",
-   "culture": "학교 시험 점수 상황으로 문화 의존이 적다.",
-   "accessibility": "산점도·그래프 없이 숫자와 문장만으로 제시했다. '70 마이너스 x 제곱'처럼 읽을 수 있다."
+   "language": "'\ubc18\ub4dc\uc2dc \ucc38'\uacfc '\ucc38\uc77c \uc218\ub3c4 \uc788\uc74c'\uc758 \ucc28\uc774\ub97c \uc9c8\ubb38 \uc548\uc5d0\uc11c \ubd84\uba85\ud788 \ud55c\ub2e4. '\ud3b8\ucc28 \uc81c\uacf1\uc758 \ud569'\uc740 '\ud3b8\ucc28\ub97c \uc81c\uacf1\ud574 \ubaa8\ub450 \ub354\ud55c \uac12'\uc73c\ub85c \ud480\uc5b4 \uc4f4\ub2e4.",
+   "culture": "\ud559\uad50 \uc2dc\ud5d8 \uc810\uc218 \uc0c1\ud669\uc73c\ub85c \ubb38\ud654 \uc758\uc874\uc774 \uc801\ub2e4.",
+   "accessibility": "\uc0b0\uc810\ub3c4\u00b7\uadf8\ub798\ud504 \uc5c6\uc774 \uc22b\uc790\uc640 \ubb38\uc7a5\ub9cc\uc73c\ub85c \uc81c\uc2dc\ud588\ub2e4. '70 \ub9c8\uc774\ub108\uc2a4 x \uc81c\uacf1'\ucc98\ub7fc \uc77d\uc744 \uc218 \uc788\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "1단계 선택이 정답 집합과 같은지",
-    "2단계 입력값이 정수 범위와 '불가능' 조건을 만족하는지 및 서로 다른 값 3개인지",
-    "서술에 반드시 아님의 결론과 필요한 정보를 가리키는 낱말이 있는지"
+    "1\ub2e8\uacc4 \uc120\ud0dd\uc774 \uc815\ub2f5 \uc9d1\ud569\uacfc \uac19\uc740\uc9c0",
+    "2\ub2e8\uacc4 \uc785\ub825\uac12\uc774 \uc815\uc218 \ubc94\uc704\uc640 '\ubd88\uac00\ub2a5' \uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294\uc9c0 \ubc0f \uc11c\ub85c \ub2e4\ub978 \uac12 3\uac1c\uc778\uc9c0",
+    "\uc11c\uc220\uc5d0 \ubc18\ub4dc\uc2dc \uc544\ub2d8\uc758 \uacb0\ub860\uacfc \ud544\uc694\ud55c \uc815\ubcf4\ub97c \uac00\ub9ac\ud0a4\ub294 \ub0b1\ub9d0\uc774 \uc788\ub294\uc9c0"
    ],
    "human": [
-    "든 예의 평균·표준편차가 실제로 맞는지",
-    "필요한 정보가 이 주장의 검증에 적절한지"
+    "\ub4e0 \uc608\uc758 \ud3c9\uade0\u00b7\ud45c\uc900\ud3b8\ucc28\uac00 \uc2e4\uc81c\ub85c \ub9de\ub294\uc9c0",
+    "\ud544\uc694\ud55c \uc815\ubcf4\uac00 \uc774 \uc8fc\uc7a5\uc758 \uac80\uc99d\uc5d0 \uc801\uc808\ud55c\uc9c0"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "y-m-31-05",
   "subject": "math",
   "grade": "M3",
   "cell": "math|M3|statistics",
-  "topic": "단위가 다른 자료의 흩어진 정도 비교",
+  "topic": "\ub2e8\uc704\uac00 \ub2e4\ub978 \uc790\ub8cc\uc758 \ud769\uc5b4\uc9c4 \uc815\ub3c4 \ube44\uad50",
   "level": 2,
-  "levelLabel": "중등",
-  "title": "표준편차가 둘 다 6이면 똑같이 흩어진 걸까?",
+  "levelLabel": "\uc911\ub4f1",
+  "title": "\ud45c\uc900\ud3b8\ucc28\uac00 \ub458 \ub2e4 6\uc774\uba74 \ub611\uac19\uc774 \ud769\uc5b4\uc9c4 \uac78\uae4c?",
   "uiLang": "ko",
   "format": "judge-evidence-explain",
   "generative": false,
-  "goal": "단위가 다른 두 자료의 표준편차 숫자를 곧바로 맞대어 비교할 수 있는지 판단하고, 비교하려면 어떤 방법과 조건이 필요한지 설명한다.",
+  "goal": "\ub2e8\uc704\uac00 \ub2e4\ub978 \ub450 \uc790\ub8cc\uc758 \ud45c\uc900\ud3b8\ucc28 \uc22b\uc790\ub97c \uace7\ubc14\ub85c \ub9de\ub300\uc5b4 \ube44\uad50\ud560 \uc218 \uc788\ub294\uc9c0 \ud310\ub2e8\ud558\uace0, \ube44\uad50\ud558\ub824\uba74 \uc5b4\ub5a4 \ubc29\ubc95\uacfc \uc870\uac74\uc774 \ud544\uc694\ud55c\uc9c0 \uc124\uba85\ud55c\ub2e4.",
   "thinking": [
-   "숫자의 의미(단위)를 고려해 판단하기",
-   "새 정보로 주장을 점검하기",
-   "비교 방법과 그 한계 제안하기"
+   "\uc22b\uc790\uc758 \uc758\ubbf8(\ub2e8\uc704)\ub97c \uace0\ub824\ud574 \ud310\ub2e8\ud558\uae30",
+   "\uc0c8 \uc815\ubcf4\ub85c \uc8fc\uc7a5\uc744 \uc810\uac80\ud558\uae30",
+   "\ube44\uad50 \ubc29\ubc95\uacfc \uadf8 \ud55c\uacc4 \uc81c\uc548\ud558\uae30"
   ],
-  "differsFromPlain": "단순 연습은 두 자료의 표준편차를 구해 큰 쪽이 더 흩어졌다고 답한다. 여기서는 단위가 다른 두 자료를 놓고 '숫자가 같으면 흩어진 정도도 같은가'를 따지고, 단위를 바꾸면 결론이 어떻게 달라지는지 시험한다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \ub450 \uc790\ub8cc\uc758 \ud45c\uc900\ud3b8\ucc28\ub97c \uad6c\ud574 \ud070 \ucabd\uc774 \ub354 \ud769\uc5b4\uc84c\ub2e4\uace0 \ub2f5\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \ub2e8\uc704\uac00 \ub2e4\ub978 \ub450 \uc790\ub8cc\ub97c \ub193\uace0 '\uc22b\uc790\uac00 \uac19\uc73c\uba74 \ud769\uc5b4\uc9c4 \uc815\ub3c4\ub3c4 \uac19\uc740\uac00'\ub97c \ub530\uc9c0\uace0, \ub2e8\uc704\ub97c \ubc14\uafb8\uba74 \uacb0\ub860\uc774 \uc5b4\ub5bb\uac8c \ub2ec\ub77c\uc9c0\ub294\uc9c0 \uc2dc\ud5d8\ud55c\ub2e4.",
   "prerequisites": [
-   "표준편차가 클수록 자료가 평균 둘레에 더 넓게 흩어져 있다는 것(중3)",
-   "길이 단위 m와 cm의 관계 (1 m = 100 cm)"
+   "\ud45c\uc900\ud3b8\ucc28\uac00 \ud074\uc218\ub85d \uc790\ub8cc\uac00 \ud3c9\uade0 \ub458\ub808\uc5d0 \ub354 \ub113\uac8c \ud769\uc5b4\uc838 \uc788\ub2e4\ub294 \uac83(\uc9113)",
+   "\uae38\uc774 \ub2e8\uc704 m\uc640 cm\uc758 \uad00\uacc4 (1 m = 100 cm)"
   ],
   "minutes": 12,
   "curriculum": null,
-  "material": "보건실에서 같은 반 20명의 키와 몸무게를 쟀어요. 키는 평균 160 cm, 표준편차 6 cm이고, 몸무게는 평균 52 kg, 표준편차 6 kg이에요. 지후가 말했어요. '표준편차가 둘 다 6이니까 키와 몸무게는 똑같은 정도로 흩어져 있어!'",
+  "material": "\ubcf4\uac74\uc2e4\uc5d0\uc11c \uac19\uc740 \ubc18 20\uba85\uc758 \ud0a4\uc640 \ubab8\ubb34\uac8c\ub97c \uc7c0\uc5b4\uc694. \ud0a4\ub294 \ud3c9\uade0 160 cm, \ud45c\uc900\ud3b8\ucc28 6 cm\uc774\uace0, \ubab8\ubb34\uac8c\ub294 \ud3c9\uade0 52 kg, \ud45c\uc900\ud3b8\ucc28 6 kg\uc774\uc5d0\uc694. \uc9c0\ud6c4\uac00 \ub9d0\ud588\uc5b4\uc694. '\ud45c\uc900\ud3b8\ucc28\uac00 \ub458 \ub2e4 6\uc774\ub2c8\uae4c \ud0a4\uc640 \ubab8\ubb34\uac8c\ub294 \ub611\uac19\uc740 \uc815\ub3c4\ub85c \ud769\uc5b4\uc838 \uc788\uc5b4!'",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
-    "prompt": "지후의 말에 대해 가장 알맞은 생각을 고르세요.",
+    "prompt": "\uc9c0\ud6c4\uc758 \ub9d0\uc5d0 \ub300\ud574 \uac00\uc7a5 \uc54c\ub9de\uc740 \uc0dd\uac01\uc744 \uace0\ub974\uc138\uc694.",
     "options": [
      {
       "id": "a",
-      "text": "표준편차가 둘 다 6이므로 두 자료는 똑같이 흩어져 있다고 말할 수 있다.",
-      "reveals": "표준편차의 수는 단위에 따라 달라져요. cm와 kg이라는 서로 다른 단위의 6을 같은 값으로 바로 읽을 수는 없어요."
+      "text": "\ud45c\uc900\ud3b8\ucc28\uac00 \ub458 \ub2e4 6\uc774\ubbc0\ub85c \ub450 \uc790\ub8cc\ub294 \ub611\uac19\uc774 \ud769\uc5b4\uc838 \uc788\ub2e4\uace0 \ub9d0\ud560 \uc218 \uc788\ub2e4.",
+      "reveals": "\ud45c\uc900\ud3b8\ucc28\uc758 \uc218\ub294 \ub2e8\uc704\uc5d0 \ub530\ub77c \ub2ec\ub77c\uc838\uc694. cm\uc640 kg\uc774\ub77c\ub294 \uc11c\ub85c \ub2e4\ub978 \ub2e8\uc704\uc758 6\uc744 \uac19\uc740 \uac12\uc73c\ub85c \ubc14\ub85c \uc77d\uc744 \uc218\ub294 \uc5c6\uc5b4\uc694."
      },
      {
       "id": "b",
-      "text": "평균이 더 큰 키 자료가 6만큼 흩어졌으니 키가 몸무게보다 더 많이 흩어져 있다.",
-      "reveals": "평균이 크다고 흩어진 정도가 큰 것은 아니에요. 오히려 평균에 견주면 6이 얼마나 큰지는 다르게 보일 수 있어요."
+      "text": "\ud3c9\uade0\uc774 \ub354 \ud070 \ud0a4 \uc790\ub8cc\uac00 6\ub9cc\ud07c \ud769\uc5b4\uc84c\uc73c\ub2c8 \ud0a4\uac00 \ubab8\ubb34\uac8c\ubcf4\ub2e4 \ub354 \ub9ce\uc774 \ud769\uc5b4\uc838 \uc788\ub2e4.",
+      "reveals": "\ud3c9\uade0\uc774 \ud06c\ub2e4\uace0 \ud769\uc5b4\uc9c4 \uc815\ub3c4\uac00 \ud070 \uac83\uc740 \uc544\ub2c8\uc5d0\uc694. \uc624\ud788\ub824 \ud3c9\uade0\uc5d0 \uacac\uc8fc\uba74 6\uc774 \uc5bc\ub9c8\ub098 \ud070\uc9c0\ub294 \ub2e4\ub974\uac8c \ubcf4\uc77c \uc218 \uc788\uc5b4\uc694."
      },
      {
       "id": "c",
-      "text": "한쪽은 cm, 다른 쪽은 kg이라 6이라는 수를 그대로 맞대어 비교하기는 어렵다.",
-      "reveals": "단위가 다른 양의 표준편차를 숫자만으로 비교하지 않으려는 점을 짚었어요."
+      "text": "\ud55c\ucabd\uc740 cm, \ub2e4\ub978 \ucabd\uc740 kg\uc774\ub77c 6\uc774\ub77c\ub294 \uc218\ub97c \uadf8\ub300\ub85c \ub9de\ub300\uc5b4 \ube44\uad50\ud558\uae30\ub294 \uc5b4\ub835\ub2e4.",
+      "reveals": "\ub2e8\uc704\uac00 \ub2e4\ub978 \uc591\uc758 \ud45c\uc900\ud3b8\ucc28\ub97c \uc22b\uc790\ub9cc\uc73c\ub85c \ube44\uad50\ud558\uc9c0 \uc54a\uc73c\ub824\ub294 \uc810\uc744 \uc9da\uc5c8\uc5b4\uc694."
      },
      {
       "id": "d",
-      "text": "평균에 비해 6이 차지하는 몫이 큰 몸무게 쪽이 상대적으로 더 흩어져 있다고 볼 수 있다.",
-      "reveals": "평균에 견준 몫(6÷160과 6÷52)으로 비교하는 방법이에요. 약속을 정한다면 타당한 비교이지만 '표준편차 숫자 자체'를 비교한 것은 아니에요."
+      "text": "\ud3c9\uade0\uc5d0 \ube44\ud574 6\uc774 \ucc28\uc9c0\ud558\ub294 \ubaab\uc774 \ud070 \ubab8\ubb34\uac8c \ucabd\uc774 \uc0c1\ub300\uc801\uc73c\ub85c \ub354 \ud769\uc5b4\uc838 \uc788\ub2e4\uace0 \ubcfc \uc218 \uc788\ub2e4.",
+      "reveals": "\ud3c9\uade0\uc5d0 \uacac\uc900 \ubaab(6\u00f7160\uacfc 6\u00f752)\uc73c\ub85c \ube44\uad50\ud558\ub294 \ubc29\ubc95\uc774\uc5d0\uc694. \uc57d\uc18d\uc744 \uc815\ud55c\ub2e4\uba74 \ud0c0\ub2f9\ud55c \ube44\uad50\uc774\uc9c0\ub9cc '\ud45c\uc900\ud3b8\ucc28 \uc22b\uc790 \uc790\uccb4'\ub97c \ube44\uad50\ud55c \uac83\uc740 \uc544\ub2c8\uc5d0\uc694."
      }
     ],
     "correct": [
@@ -1106,255 +1107,256 @@
       "ids": [
        "d"
       ],
-      "reason": "평균에 견준 크기(6÷160은 약 3.8%, 6÷52는 약 11.5%)로 비교하는 것은 타당한 방법이에요. 다만 이것은 표준편차 숫자를 직접 비교한 것이 아니라 '평균에 견준 몫'이라는 다른 기준을 정한 것이에요."
+      "reason": "\ud3c9\uade0\uc5d0 \uacac\uc900 \ud06c\uae30(6\u00f7160\uc740 \uc57d 3.8%, 6\u00f752\ub294 \uc57d 11.5%)\ub85c \ube44\uad50\ud558\ub294 \uac83\uc740 \ud0c0\ub2f9\ud55c \ubc29\ubc95\uc774\uc5d0\uc694. \ub2e4\ub9cc \uc774\uac83\uc740 \ud45c\uc900\ud3b8\ucc28 \uc22b\uc790\ub97c \uc9c1\uc811 \ube44\uad50\ud55c \uac83\uc774 \uc544\ub2c8\ub77c '\ud3c9\uade0\uc5d0 \uacac\uc900 \ubaab'\uc774\ub77c\ub294 \ub2e4\ub978 \uae30\uc900\uc744 \uc815\ud55c \uac83\uc774\uc5d0\uc694."
      }
     ],
-    "explain": "단위가 다른 두 자료의 표준편차는 숫자를 그대로 비교하기 어려워요. 단위를 바꾸면 숫자가 달라지기 때문이에요. 평균에 견준 몫처럼 단위의 영향을 없애는 기준을 따로 정하면 비교할 수 있어요.",
+    "explain": "\ub2e8\uc704\uac00 \ub2e4\ub978 \ub450 \uc790\ub8cc\uc758 \ud45c\uc900\ud3b8\ucc28\ub294 \uc22b\uc790\ub97c \uadf8\ub300\ub85c \ube44\uad50\ud558\uae30 \uc5b4\ub824\uc6cc\uc694. \ub2e8\uc704\ub97c \ubc14\uafb8\uba74 \uc22b\uc790\uac00 \ub2ec\ub77c\uc9c0\uae30 \ub54c\ubb38\uc774\uc5d0\uc694. \ud3c9\uade0\uc5d0 \uacac\uc900 \ubaab\ucc98\ub7fc \ub2e8\uc704\uc758 \uc601\ud5a5\uc744 \uc5c6\uc560\ub294 \uae30\uc900\uc744 \ub530\ub85c \uc815\ud558\uba74 \ube44\uad50\ud560 \uc218 \uc788\uc5b4\uc694.",
     "hints": [
-     "키 자료와 몸무게 자료에서 표준편차 6이 각각 무엇을 재는 단위의 6인지 적어 보세요.",
-     "키를 m로 바꾸어 적으면 평균과 표준편차가 각각 얼마가 되는지 계산해 보세요."
+     "\ud0a4 \uc790\ub8cc\uc640 \ubab8\ubb34\uac8c \uc790\ub8cc\uc5d0\uc11c \ud45c\uc900\ud3b8\ucc28 6\uc774 \uac01\uac01 \ubb34\uc5c7\uc744 \uc7ac\ub294 \ub2e8\uc704\uc758 6\uc778\uc9c0 \uc801\uc5b4 \ubcf4\uc138\uc694.",
+     "\ud0a4\ub97c m\ub85c \ubc14\uafb8\uc5b4 \uc801\uc73c\uba74 \ud3c9\uade0\uacfc \ud45c\uc900\ud3b8\ucc28\uac00 \uac01\uac01 \uc5bc\ub9c8\uac00 \ub418\ub294\uc9c0 \uacc4\uc0b0\ud574 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "choose",
-    "prompt": "새 정보예요. 키를 cm가 아니라 m로 적었더니 평균 1.6 m, 표준편차 0.06 m가 되었어요. 몸무게는 그대로 평균 52 kg, 표준편차 6 kg이에요. 이제 어떻게 말할 수 있을까요?",
+    "prompt": "\uc0c8 \uc815\ubcf4\uc608\uc694. \ud0a4\ub97c cm\uac00 \uc544\ub2c8\ub77c m\ub85c \uc801\uc5c8\ub354\ub2c8 \ud3c9\uade0 1.6 m, \ud45c\uc900\ud3b8\ucc28 0.06 m\uac00 \ub418\uc5c8\uc5b4\uc694. \ubab8\ubb34\uac8c\ub294 \uadf8\ub300\ub85c \ud3c9\uade0 52 kg, \ud45c\uc900\ud3b8\ucc28 6 kg\uc774\uc5d0\uc694. \uc774\uc81c \uc5b4\ub5bb\uac8c \ub9d0\ud560 \uc218 \uc788\uc744\uae4c\uc694?",
     "options": [
      {
       "id": "a",
-      "text": "표준편차 0.06이 6보다 훨씬 작으니 키는 거의 흩어져 있지 않고 몸무게가 훨씬 더 흩어져 있다.",
-      "reveals": "같은 키 자료의 단위만 바꿨을 뿐인데 결론이 달라지는지 확인해 보세요. 숫자만 보면 단위를 바꿀 때마다 결론이 뒤집혀요."
+      "text": "\ud45c\uc900\ud3b8\ucc28 0.06\uc774 6\ubcf4\ub2e4 \ud6e8\uc52c \uc791\uc73c\ub2c8 \ud0a4\ub294 \uac70\uc758 \ud769\uc5b4\uc838 \uc788\uc9c0 \uc54a\uace0 \ubab8\ubb34\uac8c\uac00 \ud6e8\uc52c \ub354 \ud769\uc5b4\uc838 \uc788\ub2e4.",
+      "reveals": "\uac19\uc740 \ud0a4 \uc790\ub8cc\uc758 \ub2e8\uc704\ub9cc \ubc14\uafe8\uc744 \ubfd0\uc778\ub370 \uacb0\ub860\uc774 \ub2ec\ub77c\uc9c0\ub294\uc9c0 \ud655\uc778\ud574 \ubcf4\uc138\uc694. \uc22b\uc790\ub9cc \ubcf4\uba74 \ub2e8\uc704\ub97c \ubc14\uafc0 \ub54c\ub9c8\ub2e4 \uacb0\ub860\uc774 \ub4a4\uc9d1\ud600\uc694."
      },
      {
       "id": "b",
-      "text": "단위만 바꿨을 뿐 흩어진 정도는 그대로라서, 표준편차 숫자만 맞대어 판단하면 안 된다.",
-      "reveals": "단위를 바꿔도 자료의 흩어진 모양은 그대로이고 표준편차 숫자만 단위에 맞게 바뀐다는 점을 짚었어요."
+      "text": "\ub2e8\uc704\ub9cc \ubc14\uafe8\uc744 \ubfd0 \ud769\uc5b4\uc9c4 \uc815\ub3c4\ub294 \uadf8\ub300\ub85c\ub77c\uc11c, \ud45c\uc900\ud3b8\ucc28 \uc22b\uc790\ub9cc \ub9de\ub300\uc5b4 \ud310\ub2e8\ud558\uba74 \uc548 \ub41c\ub2e4.",
+      "reveals": "\ub2e8\uc704\ub97c \ubc14\uafd4\ub3c4 \uc790\ub8cc\uc758 \ud769\uc5b4\uc9c4 \ubaa8\uc591\uc740 \uadf8\ub300\ub85c\uc774\uace0 \ud45c\uc900\ud3b8\ucc28 \uc22b\uc790\ub9cc \ub2e8\uc704\uc5d0 \ub9de\uac8c \ubc14\ub010\ub2e4\ub294 \uc810\uc744 \uc9da\uc5c8\uc5b4\uc694."
      },
      {
       "id": "c",
-      "text": "계산이 틀렸다. 단위를 바꾸어도 표준편차는 그대로 6이어야 한다고 생각한다.",
-      "reveals": "길이를 cm에서 m로 바꾸면 모든 값이 100으로 나뉘므로 평균과 표준편차 모두 100으로 나뉘어요. 0.06 m는 맞는 값이에요."
+      "text": "\uacc4\uc0b0\uc774 \ud2c0\ub838\ub2e4. \ub2e8\uc704\ub97c \ubc14\uafb8\uc5b4\ub3c4 \ud45c\uc900\ud3b8\ucc28\ub294 \uadf8\ub300\ub85c 6\uc774\uc5b4\uc57c \ud55c\ub2e4\uace0 \uc0dd\uac01\ud55c\ub2e4.",
+      "reveals": "\uae38\uc774\ub97c cm\uc5d0\uc11c m\ub85c \ubc14\uafb8\uba74 \ubaa8\ub4e0 \uac12\uc774 100\uc73c\ub85c \ub098\ub258\ubbc0\ub85c \ud3c9\uade0\uacfc \ud45c\uc900\ud3b8\ucc28 \ubaa8\ub450 100\uc73c\ub85c \ub098\ub258\uc5b4\uc694. 0.06 m\ub294 \ub9de\ub294 \uac12\uc774\uc5d0\uc694."
      }
     ],
     "correct": [
      "b"
     ],
-    "explain": "cm를 m로 바꿨을 뿐 20명의 키는 그대로이므로 흩어진 정도도 그대로예요. 하지만 표준편차는 6 cm에서 0.06 m로 숫자가 달라졌어요. 그러니 서로 다른 단위의 표준편차 숫자를 곧바로 비교하면 단위를 어떻게 적느냐에 따라 결론이 뒤집혀요.",
+    "explain": "cm\ub97c m\ub85c \ubc14\uafe8\uc744 \ubfd0 20\uba85\uc758 \ud0a4\ub294 \uadf8\ub300\ub85c\uc774\ubbc0\ub85c \ud769\uc5b4\uc9c4 \uc815\ub3c4\ub3c4 \uadf8\ub300\ub85c\uc608\uc694. \ud558\uc9c0\ub9cc \ud45c\uc900\ud3b8\ucc28\ub294 6 cm\uc5d0\uc11c 0.06 m\ub85c \uc22b\uc790\uac00 \ub2ec\ub77c\uc84c\uc5b4\uc694. \uadf8\ub7ec\ub2c8 \uc11c\ub85c \ub2e4\ub978 \ub2e8\uc704\uc758 \ud45c\uc900\ud3b8\ucc28 \uc22b\uc790\ub97c \uace7\ubc14\ub85c \ube44\uad50\ud558\uba74 \ub2e8\uc704\ub97c \uc5b4\ub5bb\uac8c \uc801\ub290\ub0d0\uc5d0 \ub530\ub77c \uacb0\ub860\uc774 \ub4a4\uc9d1\ud600\uc694.",
     "hints": [
-     "키 한 명의 값 160 cm를 m로 바꾸면 얼마인지 쓰고, 모든 학생에 같은 일이 일어나는지 생각해 보세요.",
-     "만약 몸무게를 g으로 적으면 표준편차가 얼마가 되는지 생각해 보세요."
+     "\ud0a4 \ud55c \uba85\uc758 \uac12 160 cm\ub97c m\ub85c \ubc14\uafb8\uba74 \uc5bc\ub9c8\uc778\uc9c0 \uc4f0\uace0, \ubaa8\ub4e0 \ud559\uc0dd\uc5d0 \uac19\uc740 \uc77c\uc774 \uc77c\uc5b4\ub098\ub294\uc9c0 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694.",
+     "\ub9cc\uc57d \ubab8\ubb34\uac8c\ub97c g\uc73c\ub85c \uc801\uc73c\uba74 \ud45c\uc900\ud3b8\ucc28\uac00 \uc5bc\ub9c8\uac00 \ub418\ub294\uc9c0 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s3",
     "kind": "write",
-    "prompt": "키 자료와 몸무게 자료가 어느 쪽이 더 흩어져 있는지 비교하고 싶어요. 비교하는 방법을 하나 제안하고, 그 방법의 한계나 조건도 함께 쓰세요.",
-    "placeholder": "예: 비교하려면 ...",
+    "prompt": "\ud0a4 \uc790\ub8cc\uc640 \ubab8\ubb34\uac8c \uc790\ub8cc\uac00 \uc5b4\ub290 \ucabd\uc774 \ub354 \ud769\uc5b4\uc838 \uc788\ub294\uc9c0 \ube44\uad50\ud558\uace0 \uc2f6\uc5b4\uc694. \ube44\uad50\ud558\ub294 \ubc29\ubc95\uc744 \ud558\ub098 \uc81c\uc548\ud558\uace0, \uadf8 \ubc29\ubc95\uc758 \ud55c\uacc4\ub098 \uc870\uac74\ub3c4 \ud568\uaed8 \uc4f0\uc138\uc694.",
+    "placeholder": "\uc608: \ube44\uad50\ud558\ub824\uba74 ...",
     "minChars": 30,
     "checks": [
      {
       "id": "w1",
-      "label": "비교 방법을 제안했다",
+      "label": "\ube44\uad50 \ubc29\ubc95\uc744 \uc81c\uc548\ud588\ub2e4",
       "mode": "any",
       "patterns": [
-       "비율",
-       "÷",
-       "나누",
-       "평균에\\s*(대한|비해|견)",
-       "몇\\s*배",
-       "상대",
-       "백분율",
+       "\ube44\uc728",
+       "\u00f7",
+       "\ub098\ub204",
+       "\ud3c9\uade0\uc5d0\\s*(\ub300\ud55c|\ube44\ud574|\uacac)",
+       "\uba87\\s*\ubc30",
+       "\uc0c1\ub300",
+       "\ubc31\ubd84\uc728",
        "%",
-       "같은\\s*단위",
-       "단위를\\s*(맞|통일)",
-       "표준화",
-       "다른\\s*학급",
-       "같은\\s*종류"
+       "\uac19\uc740\\s*\ub2e8\uc704",
+       "\ub2e8\uc704\ub97c\\s*(\ub9de|\ud1b5\uc77c)",
+       "\ud45c\uc900\ud654",
+       "\ub2e4\ub978\\s*\ud559\uae09",
+       "\uac19\uc740\\s*\uc885\ub958"
       ]
      },
      {
       "id": "w2",
-      "label": "한계나 조건을 말했다",
+      "label": "\ud55c\uacc4\ub098 \uc870\uac74\uc744 \ub9d0\ud588\ub2e4",
       "mode": "any",
       "patterns": [
-       "한계",
-       "조건",
-       "주의",
-       "다만",
-       "단\\s*,",
-       "하지만",
-       "그러나",
-       "그렇지만",
-       "항상",
-       "불가",
-       "어렵",
-       "아닐",
-       "해석",
-       "약속",
-       "의미"
+       "\ud55c\uacc4",
+       "\uc870\uac74",
+       "\uc8fc\uc758",
+       "\ub2e4\ub9cc",
+       "\ub2e8\\s*,",
+       "\ud558\uc9c0\ub9cc",
+       "\uadf8\ub7ec\ub098",
+       "\uadf8\ub807\uc9c0\ub9cc",
+       "\ud56d\uc0c1",
+       "\ubd88\uac00",
+       "\uc5b4\ub835",
+       "\uc544\ub2d0",
+       "\ud574\uc11d",
+       "\uc57d\uc18d",
+       "\uc758\ubbf8"
       ]
      }
     ],
     "selfAssess": [
-     "내 방법은 단위를 바꾸어도 결론이 바뀌지 않나요?",
-     "내 방법이 어떤 경우에 잘 맞지 않을지 한 가지라도 생각했나요?",
-     "숫자를 한 번 넣어 방법을 시험해 보았나요?"
+     "\ub0b4 \ubc29\ubc95\uc740 \ub2e8\uc704\ub97c \ubc14\uafb8\uc5b4\ub3c4 \uacb0\ub860\uc774 \ubc14\ub00c\uc9c0 \uc54a\ub098\uc694?",
+     "\ub0b4 \ubc29\ubc95\uc774 \uc5b4\ub5a4 \uacbd\uc6b0\uc5d0 \uc798 \ub9de\uc9c0 \uc54a\uc744\uc9c0 \ud55c \uac00\uc9c0\ub77c\ub3c4 \uc0dd\uac01\ud588\ub098\uc694?",
+     "\uc22b\uc790\ub97c \ud55c \ubc88 \ub123\uc5b4 \ubc29\ubc95\uc744 \uc2dc\ud5d8\ud574 \ubcf4\uc558\ub098\uc694?"
     ],
     "modelAnswers": [
      {
-      "text": "각 자료의 표준편차를 평균으로 나눈 비율로 비교할 수 있어. 키는 6÷160이고 몸무게는 6÷52야. 다만 평균이 0에 가까운 자료나 음수가 있는 자료에서는 이 방법이 잘 맞지 않아."
+      "text": "\uac01 \uc790\ub8cc\uc758 \ud45c\uc900\ud3b8\ucc28\ub97c \ud3c9\uade0\uc73c\ub85c \ub098\ub208 \ube44\uc728\ub85c \ube44\uad50\ud560 \uc218 \uc788\uc5b4. \ud0a4\ub294 6\u00f7160\uc774\uace0 \ubab8\ubb34\uac8c\ub294 6\u00f752\uc57c. \ub2e4\ub9cc \ud3c9\uade0\uc774 0\uc5d0 \uac00\uae4c\uc6b4 \uc790\ub8cc\ub098 \uc74c\uc218\uac00 \uc788\ub294 \uc790\ub8cc\uc5d0\uc11c\ub294 \uc774 \ubc29\ubc95\uc774 \uc798 \ub9de\uc9c0 \uc54a\uc544."
      },
      {
-      "text": "같은 단위끼리 비교하자. 예를 들어 다른 반 학생들의 키 자료와 이 반의 키 자료를 모두 cm로 맞춰 표준편차를 비교해. 한계는 키와 몸무게처럼 종류가 다른 자료는 이 방법으로 비교할 수 없다는 거야.",
-      "note": "종류가 다른 자료를 비교하는 대신 비교 대상을 바꾸는 방법."
+      "text": "\uac19\uc740 \ub2e8\uc704\ub07c\ub9ac \ube44\uad50\ud558\uc790. \uc608\ub97c \ub4e4\uc5b4 \ub2e4\ub978 \ubc18 \ud559\uc0dd\ub4e4\uc758 \ud0a4 \uc790\ub8cc\uc640 \uc774 \ubc18\uc758 \ud0a4 \uc790\ub8cc\ub97c \ubaa8\ub450 cm\ub85c \ub9de\ucdb0 \ud45c\uc900\ud3b8\ucc28\ub97c \ube44\uad50\ud574. \ud55c\uacc4\ub294 \ud0a4\uc640 \ubab8\ubb34\uac8c\ucc98\ub7fc \uc885\ub958\uac00 \ub2e4\ub978 \uc790\ub8cc\ub294 \uc774 \ubc29\ubc95\uc73c\ub85c \ube44\uad50\ud560 \uc218 \uc5c6\ub2e4\ub294 \uac70\uc57c.",
+      "note": "\uc885\ub958\uac00 \ub2e4\ub978 \uc790\ub8cc\ub97c \ube44\uad50\ud558\ub294 \ub300\uc2e0 \ube44\uad50 \ub300\uc0c1\uc744 \ubc14\uafb8\ub294 \ubc29\ubc95."
      }
     ],
     "badAnswers": [
      {
-      "text": "숫자가 같으니까 똑같이 흩어져 있어.",
-      "why": "비교 방법도, 단위 문제에 대한 인식도 없다."
+      "text": "\uc22b\uc790\uac00 \uac19\uc73c\ub2c8\uae4c \ub611\uac19\uc774 \ud769\uc5b4\uc838 \uc788\uc5b4.",
+      "why": "\ube44\uad50 \ubc29\ubc95\ub3c4, \ub2e8\uc704 \ubb38\uc81c\uc5d0 \ub300\ud55c \uc778\uc2dd\ub3c4 \uc5c6\ub2e4."
      },
      {
-      "text": "비교하기 어려워서 모르겠어요.",
-      "why": "방법을 제안하지 않았다."
+      "text": "\ube44\uad50\ud558\uae30 \uc5b4\ub824\uc6cc\uc11c \ubaa8\ub974\uaca0\uc5b4\uc694.",
+      "why": "\ubc29\ubc95\uc744 \uc81c\uc548\ud558\uc9c0 \uc54a\uc558\ub2e4."
      }
     ],
-    "humanReview": "제안한 방법이 단위의 영향을 없애는지, 한계가 실제 문제인지 말만 한 것인지는 사람이 읽어야 안다.",
+    "humanReview": "\uc81c\uc548\ud55c \ubc29\ubc95\uc774 \ub2e8\uc704\uc758 \uc601\ud5a5\uc744 \uc5c6\uc560\ub294\uc9c0, \ud55c\uacc4\uac00 \uc2e4\uc81c \ubb38\uc81c\uc778\uc9c0 \ub9d0\ub9cc \ud55c \uac83\uc778\uc9c0\ub294 \uc0ac\ub78c\uc774 \uc77d\uc5b4\uc57c \uc548\ub2e4.",
     "hints": [
-     "키 자료의 표준편차를 단위가 없는 수로 바꿀 방법이 있는지 평균과 견주어 생각해 보세요.",
-     "내가 제안한 방법으로 키를 m로 적어도 같은 결과가 나오는지 시험해 보세요."
+     "\ud0a4 \uc790\ub8cc\uc758 \ud45c\uc900\ud3b8\ucc28\ub97c \ub2e8\uc704\uac00 \uc5c6\ub294 \uc218\ub85c \ubc14\uafc0 \ubc29\ubc95\uc774 \uc788\ub294\uc9c0 \ud3c9\uade0\uacfc \uacac\uc8fc\uc5b4 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694.",
+     "\ub0b4\uac00 \uc81c\uc548\ud55c \ubc29\ubc95\uc73c\ub85c \ud0a4\ub97c m\ub85c \uc801\uc5b4\ub3c4 \uac19\uc740 \uacb0\uacfc\uac00 \ub098\uc624\ub294\uc9c0 \uc2dc\ud5d8\ud574 \ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "단위 인식",
-    "full": "표준편차 숫자가 단위에 달려 있음을 근거와 함께 설명",
-    "partial": "단위가 다르다는 사실만 언급",
-    "none": "단위를 고려하지 않음"
+    "criterion": "\ub2e8\uc704 \uc778\uc2dd",
+    "full": "\ud45c\uc900\ud3b8\ucc28 \uc22b\uc790\uac00 \ub2e8\uc704\uc5d0 \ub2ec\ub824 \uc788\uc74c\uc744 \uadfc\uac70\uc640 \ud568\uaed8 \uc124\uba85",
+    "partial": "\ub2e8\uc704\uac00 \ub2e4\ub974\ub2e4\ub294 \uc0ac\uc2e4\ub9cc \uc5b8\uae09",
+    "none": "\ub2e8\uc704\ub97c \uace0\ub824\ud558\uc9c0 \uc54a\uc74c"
    },
    {
-    "criterion": "비교 방법의 제안",
-    "full": "단위의 영향을 없애는 방법과 그 조건·한계를 제시",
-    "partial": "방법만 제시하고 한계가 없음",
-    "none": "방법 없이 결론만 말함"
+    "criterion": "\ube44\uad50 \ubc29\ubc95\uc758 \uc81c\uc548",
+    "full": "\ub2e8\uc704\uc758 \uc601\ud5a5\uc744 \uc5c6\uc560\ub294 \ubc29\ubc95\uacfc \uadf8 \uc870\uac74\u00b7\ud55c\uacc4\ub97c \uc81c\uc2dc",
+    "partial": "\ubc29\ubc95\ub9cc \uc81c\uc2dc\ud558\uace0 \ud55c\uacc4\uac00 \uc5c6\uc74c",
+    "none": "\ubc29\ubc95 \uc5c6\uc774 \uacb0\ub860\ub9cc \ub9d0\ud568"
    }
   ],
   "alternatives": [
-   "1단계에서 '평균에 견준 몫' 쪽을 고른 학생도 그 몫이라는 다른 기준을 정했음을 알고 있다면 타당하다.",
-   "같은 종류의 자료(예: 다른 반 학생의 키)와 비교하는 방법도 허용된다."
+   "1\ub2e8\uacc4\uc5d0\uc11c '\ud3c9\uade0\uc5d0 \uacac\uc900 \ubaab' \ucabd\uc744 \uace0\ub978 \ud559\uc0dd\ub3c4 \uadf8 \ubaab\uc774\ub77c\ub294 \ub2e4\ub978 \uae30\uc900\uc744 \uc815\ud588\uc74c\uc744 \uc54c\uace0 \uc788\ub2e4\uba74 \ud0c0\ub2f9\ud558\ub2e4.",
+   "\uac19\uc740 \uc885\ub958\uc758 \uc790\ub8cc(\uc608: \ub2e4\ub978 \ubc18 \ud559\uc0dd\uc758 \ud0a4)\uc640 \ube44\uad50\ud558\ub294 \ubc29\ubc95\ub3c4 \ud5c8\uc6a9\ub41c\ub2e4."
   ],
   "hardCases": [
-   "평균이 0에 가까운 자료나 평균이 음수일 수 있는 자료(기온 등)에서는 평균에 견준 몫이 잘 맞지 않는다.",
-   "키와 몸무게처럼 서로 다른 종류의 자료는 '어느 쪽이 더 흩어졌는가'라는 질문 자체가 의미가 있는지 논의할 수 있다."
+   "\ud3c9\uade0\uc774 0\uc5d0 \uac00\uae4c\uc6b4 \uc790\ub8cc\ub098 \ud3c9\uade0\uc774 \uc74c\uc218\uc77c \uc218 \uc788\ub294 \uc790\ub8cc(\uae30\uc628 \ub4f1)\uc5d0\uc11c\ub294 \ud3c9\uade0\uc5d0 \uacac\uc900 \ubaab\uc774 \uc798 \ub9de\uc9c0 \uc54a\ub294\ub2e4.",
+   "\ud0a4\uc640 \ubab8\ubb34\uac8c\ucc98\ub7fc \uc11c\ub85c \ub2e4\ub978 \uc885\ub958\uc758 \uc790\ub8cc\ub294 '\uc5b4\ub290 \ucabd\uc774 \ub354 \ud769\uc5b4\uc84c\ub294\uac00'\ub77c\ub294 \uc9c8\ubb38 \uc790\uccb4\uac00 \uc758\ubbf8\uac00 \uc788\ub294\uc9c0 \ub17c\uc758\ud560 \uc218 \uc788\ub2e4."
   ],
   "cautions": {
-   "language": "'표준편차', '단위'를 처음 쓰는 학생을 위해 '자료가 평균에서 흩어진 정도를 나타내는 수'라고 풀이한다. '6÷160'은 '160분의 6'으로 읽는다.",
-   "culture": "학교 건강 측정은 보편적인 상황이지만 몸무게는 민감할 수 있으므로 개인이 아니라 반 전체 자료만 다룬다.",
-   "accessibility": "그림 없이 숫자와 문장만 썼다. cm는 '센티미터', kg은 '킬로그램', m는 '미터'로 읽는다."
+   "language": "'\ud45c\uc900\ud3b8\ucc28', '\ub2e8\uc704'\ub97c \ucc98\uc74c \uc4f0\ub294 \ud559\uc0dd\uc744 \uc704\ud574 '\uc790\ub8cc\uac00 \ud3c9\uade0\uc5d0\uc11c \ud769\uc5b4\uc9c4 \uc815\ub3c4\ub97c \ub098\ud0c0\ub0b4\ub294 \uc218'\ub77c\uace0 \ud480\uc774\ud55c\ub2e4. '6\u00f7160'\uc740 '160\ubd84\uc758 6'\uc73c\ub85c \uc77d\ub294\ub2e4.",
+   "culture": "\ud559\uad50 \uac74\uac15 \uce21\uc815\uc740 \ubcf4\ud3b8\uc801\uc778 \uc0c1\ud669\uc774\uc9c0\ub9cc \ubab8\ubb34\uac8c\ub294 \ubbfc\uac10\ud560 \uc218 \uc788\uc73c\ubbc0\ub85c \uac1c\uc778\uc774 \uc544\ub2c8\ub77c \ubc18 \uc804\uccb4 \uc790\ub8cc\ub9cc \ub2e4\ub8ec\ub2e4.",
+   "accessibility": "\uadf8\ub9bc \uc5c6\uc774 \uc22b\uc790\uc640 \ubb38\uc7a5\ub9cc \uc37c\ub2e4. cm\ub294 '\uc13c\ud2f0\ubbf8\ud130', kg\uc740 '\ud0ac\ub85c\uadf8\ub7a8', m\ub294 '\ubbf8\ud130'\ub85c \uc77d\ub294\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "1단계·2단계 선택",
-    "서술에 비교 방법과 한계·조건을 가리키는 낱말이 있는지"
+    "1\ub2e8\uacc4\u00b72\ub2e8\uacc4 \uc120\ud0dd",
+    "\uc11c\uc220\uc5d0 \ube44\uad50 \ubc29\ubc95\uacfc \ud55c\uacc4\u00b7\uc870\uac74\uc744 \uac00\ub9ac\ud0a4\ub294 \ub0b1\ub9d0\uc774 \uc788\ub294\uc9c0"
    ],
    "human": [
-    "제안한 방법이 단위의 영향을 정말 없애는지",
-    "한계가 구체적인지"
+    "\uc81c\uc548\ud55c \ubc29\ubc95\uc774 \ub2e8\uc704\uc758 \uc601\ud5a5\uc744 \uc815\ub9d0 \uc5c6\uc560\ub294\uc9c0",
+    "\ud55c\uacc4\uac00 \uad6c\uccb4\uc801\uc778\uc9c0"
    ]
-  }
+  },
+  "status": "reviewed-ai"
  },
  {
   "id": "y-m-31-06",
   "subject": "math",
   "grade": "M3",
   "cell": "math|M3|statistics",
-  "topic": "대푯값의 선택과 알리는 글",
+  "topic": "\ub300\ud46f\uac12\uc758 \uc120\ud0dd\uacfc \uc54c\ub9ac\ub294 \uae00",
   "level": 2,
-  "levelLabel": "중등",
-  "title": "월급 공고, 평균만 쓰면 괜찮을까?",
+  "levelLabel": "\uc911\ub4f1",
+  "title": "\uc6d4\uae09 \uacf5\uace0, \ud3c9\uade0\ub9cc \uc4f0\uba74 \uad1c\ucc2e\uc744\uae4c?",
   "uiLang": "ko",
   "format": "rewrite-for-audience",
   "generative": false,
-  "goal": "극단적으로 큰 값이 있는 자료에서 평균이 읽는 사람에게 주는 인상을 따져 보고, 읽는 사람에게 오해 없는 대푯값과 문장을 고르거나 다시 쓴다.",
+  "goal": "\uadf9\ub2e8\uc801\uc73c\ub85c \ud070 \uac12\uc774 \uc788\ub294 \uc790\ub8cc\uc5d0\uc11c \ud3c9\uade0\uc774 \uc77d\ub294 \uc0ac\ub78c\uc5d0\uac8c \uc8fc\ub294 \uc778\uc0c1\uc744 \ub530\uc838 \ubcf4\uace0, \uc77d\ub294 \uc0ac\ub78c\uc5d0\uac8c \uc624\ud574 \uc5c6\ub294 \ub300\ud46f\uac12\uacfc \ubb38\uc7a5\uc744 \uace0\ub974\uac70\ub098 \ub2e4\uc2dc \uc4f4\ub2e4.",
   "thinking": [
-   "문장이 독자에게 주는 인상 평가하기",
-   "자료의 모양에 맞는 대푯값 선택하기",
-   "독자를 위해 문장을 고쳐 쓰기"
+   "\ubb38\uc7a5\uc774 \ub3c5\uc790\uc5d0\uac8c \uc8fc\ub294 \uc778\uc0c1 \ud3c9\uac00\ud558\uae30",
+   "\uc790\ub8cc\uc758 \ubaa8\uc591\uc5d0 \ub9de\ub294 \ub300\ud46f\uac12 \uc120\ud0dd\ud558\uae30",
+   "\ub3c5\uc790\ub97c \uc704\ud574 \ubb38\uc7a5\uc744 \uace0\uccd0 \uc4f0\uae30"
   ],
-  "differsFromPlain": "단순 연습은 평균·중앙값·최빈값을 각각 구한다. 여기서는 같은 자료를 공고문으로 알릴 때 어떤 값이 읽는 사람에게 어떤 인상을 주는지 따지고, 오해 없는 문장으로 다시 쓴다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \ud3c9\uade0\u00b7\uc911\uc559\uac12\u00b7\ucd5c\ube48\uac12\uc744 \uac01\uac01 \uad6c\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \uac19\uc740 \uc790\ub8cc\ub97c \uacf5\uace0\ubb38\uc73c\ub85c \uc54c\ub9b4 \ub54c \uc5b4\ub5a4 \uac12\uc774 \uc77d\ub294 \uc0ac\ub78c\uc5d0\uac8c \uc5b4\ub5a4 \uc778\uc0c1\uc744 \uc8fc\ub294\uc9c0 \ub530\uc9c0\uace0, \uc624\ud574 \uc5c6\ub294 \ubb38\uc7a5\uc73c\ub85c \ub2e4\uc2dc \uc4f4\ub2e4.",
   "prerequisites": [
-   "평균, 중앙값, 최빈값의 뜻과 구하는 방법(중1~중2)"
+   "\ud3c9\uade0, \uc911\uc559\uac12, \ucd5c\ube48\uac12\uc758 \ub73b\uacfc \uad6c\ud558\ub294 \ubc29\ubc95(\uc9111~\uc9112)"
   ],
   "minutes": 12,
   "curriculum": null,
-  "material": "분식집 '별빛 분식'이 직원을 구하는 공고문을 올리려고 해요. 현재 직원 6명의 월급(만 원)은 200, 200, 210, 220, 230, 860이에요(860은 점장의 월급). 공고문 초안은 아래와 같아요.",
+  "material": "\ubd84\uc2dd\uc9d1 '\ubcc4\ube5b \ubd84\uc2dd'\uc774 \uc9c1\uc6d0\uc744 \uad6c\ud558\ub294 \uacf5\uace0\ubb38\uc744 \uc62c\ub9ac\ub824\uace0 \ud574\uc694. \ud604\uc7ac \uc9c1\uc6d0 6\uba85\uc758 \uc6d4\uae09(\ub9cc \uc6d0)\uc740 200, 200, 210, 220, 230, 860\uc774\uc5d0\uc694(860\uc740 \uc810\uc7a5\uc758 \uc6d4\uae09). \uacf5\uace0\ubb38 \ucd08\uc548\uc740 \uc544\ub798\uc640 \uac19\uc544\uc694.",
   "steps": [
    {
     "id": "s1",
     "kind": "pickLine",
-    "prompt": "이 공고문에서 월급 자료와 맞지 않는 말이 한 줄 있어요. 그 줄을 고르세요.",
+    "prompt": "\uc774 \uacf5\uace0\ubb38\uc5d0\uc11c \uc6d4\uae09 \uc790\ub8cc\uc640 \ub9de\uc9c0 \uc54a\ub294 \ub9d0\uc774 \ud55c \uc904 \uc788\uc5b4\uc694. \uadf8 \uc904\uc744 \uace0\ub974\uc138\uc694.",
     "lines": [
-     "별빛 분식에서 함께 일할 직원을 찾습니다.",
-     "현재 직원은 6명입니다.",
-     "직원 평균 월급은 320만 원입니다.",
-     "우리 가게에 입사하면 누구나 320만 원 가까이 받을 수 있습니다.",
-     "관심 있는 분은 가게로 연락 주세요."
+     "\ubcc4\ube5b \ubd84\uc2dd\uc5d0\uc11c \ud568\uaed8 \uc77c\ud560 \uc9c1\uc6d0\uc744 \ucc3e\uc2b5\ub2c8\ub2e4.",
+     "\ud604\uc7ac \uc9c1\uc6d0\uc740 6\uba85\uc785\ub2c8\ub2e4.",
+     "\uc9c1\uc6d0 \ud3c9\uade0 \uc6d4\uae09\uc740 320\ub9cc \uc6d0\uc785\ub2c8\ub2e4.",
+     "\uc6b0\ub9ac \uac00\uac8c\uc5d0 \uc785\uc0ac\ud558\uba74 \ub204\uad6c\ub098 320\ub9cc \uc6d0 \uac00\uae4c\uc774 \ubc1b\uc744 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
+     "\uad00\uc2ec \uc788\ub294 \ubd84\uc740 \uac00\uac8c\ub85c \uc5f0\ub77d \uc8fc\uc138\uc694."
     ],
     "wrong": [
      3
     ],
-    "explain": "4번 줄이 자료와 맞지 않아요. 3번 줄의 평균 320만 원은 계산이 맞는 값이지만, 6명 중 5명이 320만 원보다 적게 받아요. 한 명의 860만 원이 평균을 끌어올렸어요. 4번 줄은 이 평균을 '누구나 받을 수 있는 금액'처럼 말하고 있어서 자료와 맞지 않아요.",
+    "explain": "4\ubc88 \uc904\uc774 \uc790\ub8cc\uc640 \ub9de\uc9c0 \uc54a\uc544\uc694. 3\ubc88 \uc904\uc758 \ud3c9\uade0 320\ub9cc \uc6d0\uc740 \uacc4\uc0b0\uc774 \ub9de\ub294 \uac12\uc774\uc9c0\ub9cc, 6\uba85 \uc911 5\uba85\uc774 320\ub9cc \uc6d0\ubcf4\ub2e4 \uc801\uac8c \ubc1b\uc544\uc694. \ud55c \uba85\uc758 860\ub9cc \uc6d0\uc774 \ud3c9\uade0\uc744 \ub04c\uc5b4\uc62c\ub838\uc5b4\uc694. 4\ubc88 \uc904\uc740 \uc774 \ud3c9\uade0\uc744 '\ub204\uad6c\ub098 \ubc1b\uc744 \uc218 \uc788\ub294 \uae08\uc561'\ucc98\ub7fc \ub9d0\ud558\uace0 \uc788\uc5b4\uc11c \uc790\ub8cc\uc640 \ub9de\uc9c0 \uc54a\uc544\uc694.",
     "hints": [
-     "월급 6개를 크기 순으로 놓고, 각 줄의 숫자나 말이 이 자료와 맞는지 하나씩 대조해 보세요.",
-     "각 줄이 자료의 일부(평균 하나 등)를 말하는지, 자료 전체의 사람들에 대해 말하는지 구별해 보세요."
+     "\uc6d4\uae09 6\uac1c\ub97c \ud06c\uae30 \uc21c\uc73c\ub85c \ub193\uace0, \uac01 \uc904\uc758 \uc22b\uc790\ub098 \ub9d0\uc774 \uc774 \uc790\ub8cc\uc640 \ub9de\ub294\uc9c0 \ud558\ub098\uc529 \ub300\uc870\ud574 \ubcf4\uc138\uc694.",
+     "\uac01 \uc904\uc774 \uc790\ub8cc\uc758 \uc77c\ubd80(\ud3c9\uade0 \ud558\ub098 \ub4f1)\ub97c \ub9d0\ud558\ub294\uc9c0, \uc790\ub8cc \uc804\uccb4\uc758 \uc0ac\ub78c\ub4e4\uc5d0 \ub300\ud574 \ub9d0\ud558\ub294\uc9c0 \uad6c\ubcc4\ud574 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "choose",
-    "prompt": "공고문에 쓸 숫자로, 지원하려는 사람이 가장 오해 없이 읽을 수 있는 것은 무엇일까요?",
+    "prompt": "\uacf5\uace0\ubb38\uc5d0 \uc4f8 \uc22b\uc790\ub85c, \uc9c0\uc6d0\ud558\ub824\ub294 \uc0ac\ub78c\uc774 \uac00\uc7a5 \uc624\ud574 \uc5c6\uc774 \uc77d\uc744 \uc218 \uc788\ub294 \uac83\uc740 \ubb34\uc5c7\uc77c\uae4c\uc694?",
     "options": [
      {
       "id": "a",
-      "text": "중앙값 215만 원과 월급의 범위(200~860)를 함께 적는다",
-      "reveals": "가운데 월급과 월급의 범위를 함께 알려, 평균이 놓치는 부분을 보완했어요."
+      "text": "\uc911\uc559\uac12 215\ub9cc \uc6d0\uacfc \uc6d4\uae09\uc758 \ubc94\uc704(200~860)\ub97c \ud568\uaed8 \uc801\ub294\ub2e4",
+      "reveals": "\uac00\uc6b4\ub370 \uc6d4\uae09\uacfc \uc6d4\uae09\uc758 \ubc94\uc704\ub97c \ud568\uaed8 \uc54c\ub824, \ud3c9\uade0\uc774 \ub193\uce58\ub294 \ubd80\ubd84\uc744 \ubcf4\uc644\ud588\uc5b4\uc694."
      },
      {
       "id": "b",
-      "text": "직원 평균 월급 320만 원과 그 값을 구한 방법을 함께 적는다",
-      "reveals": "평균은 맞는 값이지만, 방법을 밝혀도 5명이 평균보다 적게 받는다는 사실은 읽는 사람이 알 수 없어요."
+      "text": "\uc9c1\uc6d0 \ud3c9\uade0 \uc6d4\uae09 320\ub9cc \uc6d0\uacfc \uadf8 \uac12\uc744 \uad6c\ud55c \ubc29\ubc95\uc744 \ud568\uaed8 \uc801\ub294\ub2e4",
+      "reveals": "\ud3c9\uade0\uc740 \ub9de\ub294 \uac12\uc774\uc9c0\ub9cc, \ubc29\ubc95\uc744 \ubc1d\ud600\ub3c4 5\uba85\uc774 \ud3c9\uade0\ubcf4\ub2e4 \uc801\uac8c \ubc1b\ub294\ub2e4\ub294 \uc0ac\uc2e4\uc740 \uc77d\ub294 \uc0ac\ub78c\uc774 \uc54c \uc218 \uc5c6\uc5b4\uc694."
      },
      {
       "id": "c",
-      "text": "가장 높은 월급인 860만 원을 크게 강조해서 적는다",
-      "reveals": "눈길을 끄는 값일 뿐이에요. 한 명만 받는 금액이라 대부분의 직원 월급을 말해 주지 못해요."
+      "text": "\uac00\uc7a5 \ub192\uc740 \uc6d4\uae09\uc778 860\ub9cc \uc6d0\uc744 \ud06c\uac8c \uac15\uc870\ud574\uc11c \uc801\ub294\ub2e4",
+      "reveals": "\ub208\uae38\uc744 \ub044\ub294 \uac12\uc77c \ubfd0\uc774\uc5d0\uc694. \ud55c \uba85\ub9cc \ubc1b\ub294 \uae08\uc561\uc774\ub77c \ub300\ubd80\ubd84\uc758 \uc9c1\uc6d0 \uc6d4\uae09\uc744 \ub9d0\ud574 \uc8fc\uc9c0 \ubabb\ud574\uc694."
      },
      {
       "id": "d",
-      "text": "가장 많이 나온 월급인 200만 원만 대표값으로 적는다",
-      "reveals": "2명이 받는 월급이라는 점은 알려 주지만 나머지 직원의 월급을 알 수 없고 가장 낮은 쪽만 보여 줘요."
+      "text": "\uac00\uc7a5 \ub9ce\uc774 \ub098\uc628 \uc6d4\uae09\uc778 200\ub9cc \uc6d0\ub9cc \ub300\ud45c\uac12\uc73c\ub85c \uc801\ub294\ub2e4",
+      "reveals": "2\uba85\uc774 \ubc1b\ub294 \uc6d4\uae09\uc774\ub77c\ub294 \uc810\uc740 \uc54c\ub824 \uc8fc\uc9c0\ub9cc \ub098\uba38\uc9c0 \uc9c1\uc6d0\uc758 \uc6d4\uae09\uc744 \uc54c \uc218 \uc5c6\uace0 \uac00\uc7a5 \ub0ae\uc740 \ucabd\ub9cc \ubcf4\uc5ec \uc918\uc694."
      }
     ],
     "correct": [
      "a"
     ],
-    "explain": "이 자료는 한 명의 월급이 훨씬 커서 평균(320)이 대부분의 직원(200~230)보다 높아요. 가운데 값인 중앙값(215)과 가장 낮은 값·가장 높은 값(200, 860)을 함께 알리면 읽는 사람이 실제 분포를 짐작할 수 있어요.",
+    "explain": "\uc774 \uc790\ub8cc\ub294 \ud55c \uba85\uc758 \uc6d4\uae09\uc774 \ud6e8\uc52c \ucee4\uc11c \ud3c9\uade0(320)\uc774 \ub300\ubd80\ubd84\uc758 \uc9c1\uc6d0(200~230)\ubcf4\ub2e4 \ub192\uc544\uc694. \uac00\uc6b4\ub370 \uac12\uc778 \uc911\uc559\uac12(215)\uacfc \uac00\uc7a5 \ub0ae\uc740 \uac12\u00b7\uac00\uc7a5 \ub192\uc740 \uac12(200, 860)\uc744 \ud568\uaed8 \uc54c\ub9ac\uba74 \uc77d\ub294 \uc0ac\ub78c\uc774 \uc2e4\uc81c \ubd84\ud3ec\ub97c \uc9d0\uc791\ud560 \uc218 \uc788\uc5b4\uc694.",
     "hints": [
-     "월급 6개를 크기 순으로 놓고 3번째와 4번째 값 사이를 확인해 보세요.",
-     "각 선택지를 골랐을 때 읽는 사람이 '내가 받을 월급'을 어떻게 짐작하게 될지 상상해 보세요."
+     "\uc6d4\uae09 6\uac1c\ub97c \ud06c\uae30 \uc21c\uc73c\ub85c \ub193\uace0 3\ubc88\uc9f8\uc640 4\ubc88\uc9f8 \uac12 \uc0ac\uc774\ub97c \ud655\uc778\ud574 \ubcf4\uc138\uc694.",
+     "\uac01 \uc120\ud0dd\uc9c0\ub97c \uace8\ub790\uc744 \ub54c \uc77d\ub294 \uc0ac\ub78c\uc774 '\ub0b4\uac00 \ubc1b\uc744 \uc6d4\uae09'\uc744 \uc5b4\ub5bb\uac8c \uc9d0\uc791\ud558\uac8c \ub420\uc9c0 \uc0c1\uc0c1\ud574 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s3",
     "kind": "write",
-    "prompt": "4번 줄을 지원자가 오해하지 않도록 다시 쓰세요. 월급 숫자를 하나 이상 넣으세요.",
-    "placeholder": "예: 직원 월급은 ...",
+    "prompt": "4\ubc88 \uc904\uc744 \uc9c0\uc6d0\uc790\uac00 \uc624\ud574\ud558\uc9c0 \uc54a\ub3c4\ub85d \ub2e4\uc2dc \uc4f0\uc138\uc694. \uc6d4\uae09 \uc22b\uc790\ub97c \ud558\ub098 \uc774\uc0c1 \ub123\uc73c\uc138\uc694.",
+    "placeholder": "\uc608: \uc9c1\uc6d0 \uc6d4\uae09\uc740 ...",
     "minChars": 25,
     "checks": [
      {
       "id": "w1",
-      "label": "월급 숫자(215, 200, 860, 320 등)를 넣었다",
+      "label": "\uc6d4\uae09 \uc22b\uc790(215, 200, 860, 320 \ub4f1)\ub97c \ub123\uc5c8\ub2e4",
       "mode": "any",
       "patterns": [
        "215",
@@ -1368,228 +1370,228 @@
      },
      {
       "id": "w2",
-      "label": "대부분·가운데·한 명·차이 등 분포를 알리는 말을 썼다",
+      "label": "\ub300\ubd80\ubd84\u00b7\uac00\uc6b4\ub370\u00b7\ud55c \uba85\u00b7\ucc28\uc774 \ub4f1 \ubd84\ud3ec\ub97c \uc54c\ub9ac\ub294 \ub9d0\uc744 \uc37c\ub2e4",
       "mode": "any",
       "patterns": [
-       "대부분",
-       "가운데",
-       "중앙",
-       "절반",
-       "한\\s*(명|사람)",
-       "높은",
-       "차이",
-       "크게",
-       "보통",
-       "범위",
-       "최고",
-       "최저",
-       "가장"
+       "\ub300\ubd80\ubd84",
+       "\uac00\uc6b4\ub370",
+       "\uc911\uc559",
+       "\uc808\ubc18",
+       "\ud55c\\s*(\uba85|\uc0ac\ub78c)",
+       "\ub192\uc740",
+       "\ucc28\uc774",
+       "\ud06c\uac8c",
+       "\ubcf4\ud1b5",
+       "\ubc94\uc704",
+       "\ucd5c\uace0",
+       "\ucd5c\uc800",
+       "\uac00\uc7a5"
       ]
      },
      {
       "id": "w3",
-      "label": "'누구나/모두 320만 원'처럼 평균을 모두의 월급으로 읽게 쓰지 않았다",
+      "label": "'\ub204\uad6c\ub098/\ubaa8\ub450 320\ub9cc \uc6d0'\ucc98\ub7fc \ud3c9\uade0\uc744 \ubaa8\ub450\uc758 \uc6d4\uae09\uc73c\ub85c \uc77d\uac8c \uc4f0\uc9c0 \uc54a\uc558\ub2e4",
       "mode": "none",
       "patterns": [
-       "(누구나|모두|전원|다들|전부).{0,12}320",
-       "320.{0,12}(받을\\s*수\\s*있|받습니다|받아요)",
-       "대부분.{0,15}(320|그만큼|그\\s*정도|그\\s*금액|그렇게)",
-       "320.{0,15}대부분"
+       "(\ub204\uad6c\ub098|\ubaa8\ub450|\uc804\uc6d0|\ub2e4\ub4e4|\uc804\ubd80).{0,12}320",
+       "320.{0,12}(\ubc1b\uc744\\s*\uc218\\s*\uc788|\ubc1b\uc2b5\ub2c8\ub2e4|\ubc1b\uc544\uc694)",
+       "\ub300\ubd80\ubd84.{0,15}(320|\uadf8\ub9cc\ud07c|\uadf8\\s*\uc815\ub3c4|\uadf8\\s*\uae08\uc561|\uadf8\ub807\uac8c)",
+       "320.{0,15}\ub300\ubd80\ubd84"
       ]
      },
      {
       "id": "w4",
-      "label": "중앙값·범위, 또는 한 명(점장)만 높다는 사실을 밝혔다",
+      "label": "\uc911\uc559\uac12\u00b7\ubc94\uc704, \ub610\ub294 \ud55c \uba85(\uc810\uc7a5)\ub9cc \ub192\ub2e4\ub294 \uc0ac\uc2e4\uc744 \ubc1d\ud614\ub2e4",
       "mode": "any",
       "patterns": [
        "215",
-       "200\\s*[~\\-–]\\s*(230|860)",
-       "한\\s*(명|사람)",
-       "점장",
-       "5\\s*명",
-       "다섯\\s*명",
-       "범위",
-       "중앙",
-       "가운데",
-       "최고",
-       "최저",
-       "가장\\s*(높|낮)"
+       "200\\s*[~\\-\u2013]\\s*(230|860)",
+       "\ud55c\\s*(\uba85|\uc0ac\ub78c)",
+       "\uc810\uc7a5",
+       "5\\s*\uba85",
+       "\ub2e4\uc12f\\s*\uba85",
+       "\ubc94\uc704",
+       "\uc911\uc559",
+       "\uac00\uc6b4\ub370",
+       "\ucd5c\uace0",
+       "\ucd5c\uc800",
+       "\uac00\uc7a5\\s*(\ub192|\ub0ae)"
       ]
      }
     ],
     "selfAssess": [
-     "읽는 사람이 '내가 받을 월급'을 어느 정도로 짐작하게 되나요?",
-     "평균, 중앙값, 범위 중 무엇을 썼고 왜 그 값이 이 자료에 알맞다고 생각했나요?",
-     "거짓은 아니면서 오해를 줄이는 문장이 되었나요?"
+     "\uc77d\ub294 \uc0ac\ub78c\uc774 '\ub0b4\uac00 \ubc1b\uc744 \uc6d4\uae09'\uc744 \uc5b4\ub290 \uc815\ub3c4\ub85c \uc9d0\uc791\ud558\uac8c \ub418\ub098\uc694?",
+     "\ud3c9\uade0, \uc911\uc559\uac12, \ubc94\uc704 \uc911 \ubb34\uc5c7\uc744 \uc37c\uace0 \uc65c \uadf8 \uac12\uc774 \uc774 \uc790\ub8cc\uc5d0 \uc54c\ub9de\ub2e4\uace0 \uc0dd\uac01\ud588\ub098\uc694?",
+     "\uac70\uc9d3\uc740 \uc544\ub2c8\uba74\uc11c \uc624\ud574\ub97c \uc904\uc774\ub294 \ubb38\uc7a5\uc774 \ub418\uc5c8\ub098\uc694?"
     ],
     "modelAnswers": [
      {
-      "text": "현재 직원 6명 월급의 가운데 값은 215만 원이고, 가장 높은 월급은 860만 원, 가장 낮은 월급은 200만 원입니다. 대부분의 직원은 200만 원대를 받습니다."
+      "text": "\ud604\uc7ac \uc9c1\uc6d0 6\uba85 \uc6d4\uae09\uc758 \uac00\uc6b4\ub370 \uac12\uc740 215\ub9cc \uc6d0\uc774\uace0, \uac00\uc7a5 \ub192\uc740 \uc6d4\uae09\uc740 860\ub9cc \uc6d0, \uac00\uc7a5 \ub0ae\uc740 \uc6d4\uae09\uc740 200\ub9cc \uc6d0\uc785\ub2c8\ub2e4. \ub300\ubd80\ubd84\uc758 \uc9c1\uc6d0\uc740 200\ub9cc \uc6d0\ub300\ub97c \ubc1b\uc2b5\ub2c8\ub2e4."
      },
      {
-      "text": "직원 평균 월급은 320만 원이지만 한 명이 860만 원을 받아 평균이 높게 나온 것입니다. 나머지 5명은 200~230만 원을 받습니다.",
-      "note": "평균을 쓰되 그 값이 높게 나온 이유를 밝히는 방법."
+      "text": "\uc9c1\uc6d0 \ud3c9\uade0 \uc6d4\uae09\uc740 320\ub9cc \uc6d0\uc774\uc9c0\ub9cc \ud55c \uba85\uc774 860\ub9cc \uc6d0\uc744 \ubc1b\uc544 \ud3c9\uade0\uc774 \ub192\uac8c \ub098\uc628 \uac83\uc785\ub2c8\ub2e4. \ub098\uba38\uc9c0 5\uba85\uc740 200~230\ub9cc \uc6d0\uc744 \ubc1b\uc2b5\ub2c8\ub2e4.",
+      "note": "\ud3c9\uade0\uc744 \uc4f0\ub418 \uadf8 \uac12\uc774 \ub192\uac8c \ub098\uc628 \uc774\uc720\ub97c \ubc1d\ud788\ub294 \ubc29\ubc95."
      }
     ],
     "badAnswers": [
      {
-      "text": "입사하면 누구나 평균 320만 원을 받을 수 있습니다!",
-      "why": "평균을 모두의 월급처럼 읽게 한다."
+      "text": "\uc785\uc0ac\ud558\uba74 \ub204\uad6c\ub098 \ud3c9\uade0 320\ub9cc \uc6d0\uc744 \ubc1b\uc744 \uc218 \uc788\uc2b5\ub2c8\ub2e4!",
+      "why": "\ud3c9\uade0\uc744 \ubaa8\ub450\uc758 \uc6d4\uae09\ucc98\ub7fc \uc77d\uac8c \ud55c\ub2e4."
      },
      {
-      "text": "월급이 아주 높은 가게입니다. 많은 지원 바랍니다.",
-      "why": "숫자가 없고 오해를 줄이지 못한다."
+      "text": "\uc6d4\uae09\uc774 \uc544\uc8fc \ub192\uc740 \uac00\uac8c\uc785\ub2c8\ub2e4. \ub9ce\uc740 \uc9c0\uc6d0 \ubc14\ub78d\ub2c8\ub2e4.",
+      "why": "\uc22b\uc790\uac00 \uc5c6\uace0 \uc624\ud574\ub97c \uc904\uc774\uc9c0 \ubabb\ud55c\ub2e4."
      },
      {
-      "text": "평균은 320만 원이고 대부분의 직원이 그만큼 받아요.",
-      "why": "평균을 대부분의 직원의 월급처럼 읽게 하고 한 명이 높다는 사실을 밝히지 않았다."
+      "text": "\ud3c9\uade0\uc740 320\ub9cc \uc6d0\uc774\uace0 \ub300\ubd80\ubd84\uc758 \uc9c1\uc6d0\uc774 \uadf8\ub9cc\ud07c \ubc1b\uc544\uc694.",
+      "why": "\ud3c9\uade0\uc744 \ub300\ubd80\ubd84\uc758 \uc9c1\uc6d0\uc758 \uc6d4\uae09\ucc98\ub7fc \uc77d\uac8c \ud558\uace0 \ud55c \uba85\uc774 \ub192\ub2e4\ub294 \uc0ac\uc2e4\uc744 \ubc1d\ud788\uc9c0 \uc54a\uc558\ub2e4."
      },
      {
-      "text": "직원 평균 월급은 320만 원이에요. 높은 월급은 860만 원이에요.",
-      "why": "숫자는 있지만 860이 한 명의 월급이라서 평균이 높아졌다는 설명이 없다."
+      "text": "\uc9c1\uc6d0 \ud3c9\uade0 \uc6d4\uae09\uc740 320\ub9cc \uc6d0\uc774\uc5d0\uc694. \ub192\uc740 \uc6d4\uae09\uc740 860\ub9cc \uc6d0\uc774\uc5d0\uc694.",
+      "why": "\uc22b\uc790\ub294 \uc788\uc9c0\ub9cc 860\uc774 \ud55c \uba85\uc758 \uc6d4\uae09\uc774\ub77c\uc11c \ud3c9\uade0\uc774 \ub192\uc544\uc84c\ub2e4\ub294 \uc124\uba85\uc774 \uc5c6\ub2e4."
      }
     ],
-    "humanReview": "쓴 문장이 사실과 맞는지, 읽는 사람이 오해하지 않는지, 평균만 쓴 경우 이유를 밝혔는지는 사람이 읽어야 안다.",
+    "humanReview": "\uc4f4 \ubb38\uc7a5\uc774 \uc0ac\uc2e4\uacfc \ub9de\ub294\uc9c0, \uc77d\ub294 \uc0ac\ub78c\uc774 \uc624\ud574\ud558\uc9c0 \uc54a\ub294\uc9c0, \ud3c9\uade0\ub9cc \uc4f4 \uacbd\uc6b0 \uc774\uc720\ub97c \ubc1d\ud614\ub294\uc9c0\ub294 \uc0ac\ub78c\uc774 \uc77d\uc5b4\uc57c \uc548\ub2e4.",
     "hints": [
-     "월급 6개 중 몇 명이 어느 범위에 있는지 한 문장으로 먼저 정리해 보세요.",
-     "고친 문장을 처음 보는 사람 입장에서 읽고, '나는 얼마쯤 받을 것 같다'고 짐작해 보세요."
+     "\uc6d4\uae09 6\uac1c \uc911 \uba87 \uba85\uc774 \uc5b4\ub290 \ubc94\uc704\uc5d0 \uc788\ub294\uc9c0 \ud55c \ubb38\uc7a5\uc73c\ub85c \uba3c\uc800 \uc815\ub9ac\ud574 \ubcf4\uc138\uc694.",
+     "\uace0\uce5c \ubb38\uc7a5\uc744 \ucc98\uc74c \ubcf4\ub294 \uc0ac\ub78c \uc785\uc7a5\uc5d0\uc11c \uc77d\uace0, '\ub098\ub294 \uc5bc\ub9c8\ucbe4 \ubc1b\uc744 \uac83 \uac19\ub2e4'\uace0 \uc9d0\uc791\ud574 \ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "읽는 사람에게 주는 인상 평가",
-    "full": "4번 줄이 오해를 만드는 이유를 자료의 숫자와 연결해 설명",
-    "partial": "오해 가능성은 알았으나 이유가 모호",
-    "none": "3번 줄(계산)과 4번 줄(해석)을 구별하지 못함"
+    "criterion": "\uc77d\ub294 \uc0ac\ub78c\uc5d0\uac8c \uc8fc\ub294 \uc778\uc0c1 \ud3c9\uac00",
+    "full": "4\ubc88 \uc904\uc774 \uc624\ud574\ub97c \ub9cc\ub4dc\ub294 \uc774\uc720\ub97c \uc790\ub8cc\uc758 \uc22b\uc790\uc640 \uc5f0\uacb0\ud574 \uc124\uba85",
+    "partial": "\uc624\ud574 \uac00\ub2a5\uc131\uc740 \uc54c\uc558\uc73c\ub098 \uc774\uc720\uac00 \ubaa8\ud638",
+    "none": "3\ubc88 \uc904(\uacc4\uc0b0)\uacfc 4\ubc88 \uc904(\ud574\uc11d)\uc744 \uad6c\ubcc4\ud558\uc9c0 \ubabb\ud568"
    },
    {
-    "criterion": "알맞은 숫자 선택",
-    "full": "자료의 모양(한 값이 큼)에 맞는 값과 범위를 선택",
-    "partial": "값은 골랐으나 이유 없음",
-    "none": "상황과 무관하게 평균만 선택"
+    "criterion": "\uc54c\ub9de\uc740 \uc22b\uc790 \uc120\ud0dd",
+    "full": "\uc790\ub8cc\uc758 \ubaa8\uc591(\ud55c \uac12\uc774 \ud07c)\uc5d0 \ub9de\ub294 \uac12\uacfc \ubc94\uc704\ub97c \uc120\ud0dd",
+    "partial": "\uac12\uc740 \uace8\ub790\uc73c\ub098 \uc774\uc720 \uc5c6\uc74c",
+    "none": "\uc0c1\ud669\uacfc \ubb34\uad00\ud558\uac8c \ud3c9\uade0\ub9cc \uc120\ud0dd"
    },
    {
-    "criterion": "다시 쓰기",
-    "full": "숫자와 분포를 정직하게 반영해 오해 없는 문장으로 씀",
-    "partial": "숫자는 있으나 해석이 모호",
-    "none": "오해를 줄이지 못함"
+    "criterion": "\ub2e4\uc2dc \uc4f0\uae30",
+    "full": "\uc22b\uc790\uc640 \ubd84\ud3ec\ub97c \uc815\uc9c1\ud558\uac8c \ubc18\uc601\ud574 \uc624\ud574 \uc5c6\ub294 \ubb38\uc7a5\uc73c\ub85c \uc500",
+    "partial": "\uc22b\uc790\ub294 \uc788\uc73c\ub098 \ud574\uc11d\uc774 \ubaa8\ud638",
+    "none": "\uc624\ud574\ub97c \uc904\uc774\uc9c0 \ubabb\ud568"
    }
   ],
   "alternatives": [
-   "평균 320만 원을 쓰면서 '점장 한 명의 높은 월급이 포함됨'을 밝히는 문장도 정직하다.",
-   "중앙값 대신 '6명 중 5명이 200~230만 원'처럼 범위를 쓰는 방법도 타당하다."
+   "\ud3c9\uade0 320\ub9cc \uc6d0\uc744 \uc4f0\uba74\uc11c '\uc810\uc7a5 \ud55c \uba85\uc758 \ub192\uc740 \uc6d4\uae09\uc774 \ud3ec\ud568\ub428'\uc744 \ubc1d\ud788\ub294 \ubb38\uc7a5\ub3c4 \uc815\uc9c1\ud558\ub2e4.",
+   "\uc911\uc559\uac12 \ub300\uc2e0 '6\uba85 \uc911 5\uba85\uc774 200~230\ub9cc \uc6d0'\ucc98\ub7fc \ubc94\uc704\ub97c \uc4f0\ub294 \ubc29\ubc95\ub3c4 \ud0c0\ub2f9\ud558\ub2e4."
   ],
   "hardCases": [
-   "점장의 월급은 일반 직원과 성격이 다르다는 점을 고려해 '점장을 제외한 5명의 평균 212만 원'을 알리는 것도 한 방법이지만 이것은 자료를 나누는 선택이라 근거를 밝혀야 한다.",
-   "실제 공고에서 월급은 근무 시간·수당 등이 달라 비교가 어려우므로 이 과제는 월급만 다룬다."
+   "\uc810\uc7a5\uc758 \uc6d4\uae09\uc740 \uc77c\ubc18 \uc9c1\uc6d0\uacfc \uc131\uaca9\uc774 \ub2e4\ub974\ub2e4\ub294 \uc810\uc744 \uace0\ub824\ud574 '\uc810\uc7a5\uc744 \uc81c\uc678\ud55c 5\uba85\uc758 \ud3c9\uade0 212\ub9cc \uc6d0'\uc744 \uc54c\ub9ac\ub294 \uac83\ub3c4 \ud55c \ubc29\ubc95\uc774\uc9c0\ub9cc \uc774\uac83\uc740 \uc790\ub8cc\ub97c \ub098\ub204\ub294 \uc120\ud0dd\uc774\ub77c \uadfc\uac70\ub97c \ubc1d\ud600\uc57c \ud55c\ub2e4.",
+   "\uc2e4\uc81c \uacf5\uace0\uc5d0\uc11c \uc6d4\uae09\uc740 \uadfc\ubb34 \uc2dc\uac04\u00b7\uc218\ub2f9 \ub4f1\uc774 \ub2ec\ub77c \ube44\uad50\uac00 \uc5b4\ub824\uc6b0\ubbc0\ub85c \uc774 \uacfc\uc81c\ub294 \uc6d4\uae09\ub9cc \ub2e4\ub8ec\ub2e4."
   ],
   "cautions": {
-   "language": "'평균', '가운데 값'은 문제 안에서 풀이한다. '오해하다'라는 낱말이 어려운 학생에게는 '실제와 다르게 짐작하다'로 풀어 준다.",
-   "culture": "분식집과 구인 공고는 한국의 일상 소재이다. 가게 이름 '별빛 분식'과 숫자는 가상이다. 월급을 공개하는 방식은 가게마다 다를 수 있다.",
-   "accessibility": "월급 숫자를 목록과 문장으로만 제시했다. '200, 200, 210, ...'을 읽으면 되도록 했다."
+   "language": "'\ud3c9\uade0', '\uac00\uc6b4\ub370 \uac12'\uc740 \ubb38\uc81c \uc548\uc5d0\uc11c \ud480\uc774\ud55c\ub2e4. '\uc624\ud574\ud558\ub2e4'\ub77c\ub294 \ub0b1\ub9d0\uc774 \uc5b4\ub824\uc6b4 \ud559\uc0dd\uc5d0\uac8c\ub294 '\uc2e4\uc81c\uc640 \ub2e4\ub974\uac8c \uc9d0\uc791\ud558\ub2e4'\ub85c \ud480\uc5b4 \uc900\ub2e4.",
+   "culture": "\ubd84\uc2dd\uc9d1\uacfc \uad6c\uc778 \uacf5\uace0\ub294 \ud55c\uad6d\uc758 \uc77c\uc0c1 \uc18c\uc7ac\uc774\ub2e4. \uac00\uac8c \uc774\ub984 '\ubcc4\ube5b \ubd84\uc2dd'\uacfc \uc22b\uc790\ub294 \uac00\uc0c1\uc774\ub2e4. \uc6d4\uae09\uc744 \uacf5\uac1c\ud558\ub294 \ubc29\uc2dd\uc740 \uac00\uac8c\ub9c8\ub2e4 \ub2e4\ub97c \uc218 \uc788\ub2e4.",
+   "accessibility": "\uc6d4\uae09 \uc22b\uc790\ub97c \ubaa9\ub85d\uacfc \ubb38\uc7a5\uc73c\ub85c\ub9cc \uc81c\uc2dc\ud588\ub2e4. '200, 200, 210, ...'\uc744 \uc77d\uc73c\uba74 \ub418\ub3c4\ub85d \ud588\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "어긋난 줄 위치",
-    "2단계 선택",
-    "서술에 숫자, 분포 낱말이 있고 '누구나 320' 같은 표현이 없는지"
+    "\uc5b4\uae0b\ub09c \uc904 \uc704\uce58",
+    "2\ub2e8\uacc4 \uc120\ud0dd",
+    "\uc11c\uc220\uc5d0 \uc22b\uc790, \ubd84\ud3ec \ub0b1\ub9d0\uc774 \uc788\uace0 '\ub204\uad6c\ub098 320' \uac19\uc740 \ud45c\ud604\uc774 \uc5c6\ub294\uc9c0"
    ],
    "human": [
-    "고친 문장이 사실과 맞고 읽는 사람이 오해하지 않는지",
-    "값 선택의 이유가 자료와 맞는지"
+    "\uace0\uce5c \ubb38\uc7a5\uc774 \uc0ac\uc2e4\uacfc \ub9de\uace0 \uc77d\ub294 \uc0ac\ub78c\uc774 \uc624\ud574\ud558\uc9c0 \uc54a\ub294\uc9c0",
+    "\uac12 \uc120\ud0dd\uc758 \uc774\uc720\uac00 \uc790\ub8cc\uc640 \ub9de\ub294\uc9c0"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "y-m-31-07",
   "subject": "math",
   "grade": "M3",
   "cell": "math|M3|statistics",
-  "topic": "산점도에서 직선이 아닌 관계",
+  "topic": "\uc0b0\uc810\ub3c4\uc5d0\uc11c \uc9c1\uc120\uc774 \uc544\ub2cc \uad00\uacc4",
   "level": 2,
-  "levelLabel": "중등",
-  "title": "상관이 없다고 나왔는데, 정말 아무 관계도 없을까?",
+  "levelLabel": "\uc911\ub4f1",
+  "title": "\uc0c1\uad00\uc774 \uc5c6\ub2e4\uace0 \ub098\uc654\ub294\ub370, \uc815\ub9d0 \uc544\ubb34 \uad00\uacc4\ub3c4 \uc5c6\uc744\uae4c?",
   "uiLang": "ko",
   "format": "make-your-own",
   "generative": true,
-  "goal": "상관관계가 없다는 말이 '직선 모양의 경향이 없다'는 뜻임을 알고, 직선이 아닌 관계가 있는 자료를 직접 만들어 친구의 결론을 반박한다.",
+  "goal": "\uc0c1\uad00\uad00\uacc4\uac00 \uc5c6\ub2e4\ub294 \ub9d0\uc774 '\uc9c1\uc120 \ubaa8\uc591\uc758 \uacbd\ud5a5\uc774 \uc5c6\ub2e4'\ub294 \ub73b\uc784\uc744 \uc54c\uace0, \uc9c1\uc120\uc774 \uc544\ub2cc \uad00\uacc4\uac00 \uc788\ub294 \uc790\ub8cc\ub97c \uc9c1\uc811 \ub9cc\ub4e4\uc5b4 \uce5c\uad6c\uc758 \uacb0\ub860\uc744 \ubc18\ubc15\ud55c\ub2e4.",
   "thinking": [
-   "주장의 범위(직선 경향 vs 모든 관계)를 따지기",
-   "조건에 맞는 새 자료 만들기",
-   "반례를 설명하기"
+   "\uc8fc\uc7a5\uc758 \ubc94\uc704(\uc9c1\uc120 \uacbd\ud5a5 vs \ubaa8\ub4e0 \uad00\uacc4)\ub97c \ub530\uc9c0\uae30",
+   "\uc870\uac74\uc5d0 \ub9de\ub294 \uc0c8 \uc790\ub8cc \ub9cc\ub4e4\uae30",
+   "\ubc18\ub840\ub97c \uc124\uba85\ud558\uae30"
   ],
-  "differsFromPlain": "단순 연습은 산점도를 보고 양의 상관·음의 상관·상관없음 중 하나를 고른다. 여기서는 '상관이 없다'가 '관계가 없다'는 뜻인지 따지고, 직선이 아닌 관계를 나타내는 자료를 스스로 더해 본다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \uc0b0\uc810\ub3c4\ub97c \ubcf4\uace0 \uc591\uc758 \uc0c1\uad00\u00b7\uc74c\uc758 \uc0c1\uad00\u00b7\uc0c1\uad00\uc5c6\uc74c \uc911 \ud558\ub098\ub97c \uace0\ub978\ub2e4. \uc5ec\uae30\uc11c\ub294 '\uc0c1\uad00\uc774 \uc5c6\ub2e4'\uac00 '\uad00\uacc4\uac00 \uc5c6\ub2e4'\ub294 \ub73b\uc778\uc9c0 \ub530\uc9c0\uace0, \uc9c1\uc120\uc774 \uc544\ub2cc \uad00\uacc4\ub97c \ub098\ud0c0\ub0b4\ub294 \uc790\ub8cc\ub97c \uc2a4\uc2a4\ub85c \ub354\ud574 \ubcf8\ub2e4.",
   "prerequisites": [
-   "산점도와 양의 상관관계, 음의 상관관계, 상관관계가 없음(중2~중3 수준)",
-   "(수면 시간, 집중도) 같은 순서쌍을 점으로 읽기"
+   "\uc0b0\uc810\ub3c4\uc640 \uc591\uc758 \uc0c1\uad00\uad00\uacc4, \uc74c\uc758 \uc0c1\uad00\uad00\uacc4, \uc0c1\uad00\uad00\uacc4\uac00 \uc5c6\uc74c(\uc9112~\uc9113 \uc218\uc900)",
+   "(\uc218\uba74 \uc2dc\uac04, \uc9d1\uc911\ub3c4) \uac19\uc740 \uc21c\uc11c\uc30d\uc744 \uc810\uc73c\ub85c \uc77d\uae30"
   ],
   "minutes": 14,
   "curriculum": null,
-  "material": "8명의 학생에게 어젯밤 수면 시간(x, 시간)과 오늘 수업 집중도(y, 0점~10점)를 물었어요. (x, y)는 (4, 3), (5, 5), (6, 8), (7, 9), (8, 9), (9, 8), (10, 5), (11, 3)이에요. 이 8개의 점은 한쪽으로 기울어진 경향이 없어요(수면 시간이 길어진다고 집중도가 전체적으로 올라가거나 내려가지 않아요). 친구 하윤이 말했어요. '상관이 없으니 수면 시간은 집중도와 아무 관계가 없어.'",
+  "material": "8\uba85\uc758 \ud559\uc0dd\uc5d0\uac8c \uc5b4\uc82f\ubc24 \uc218\uba74 \uc2dc\uac04(x, \uc2dc\uac04)\uacfc \uc624\ub298 \uc218\uc5c5 \uc9d1\uc911\ub3c4(y, 0\uc810~10\uc810)\ub97c \ubb3c\uc5c8\uc5b4\uc694. (x, y)\ub294 (4, 3), (5, 5), (6, 8), (7, 9), (8, 9), (9, 8), (10, 5), (11, 3)\uc774\uc5d0\uc694. \uc774 8\uac1c\uc758 \uc810\uc740 \ud55c\ucabd\uc73c\ub85c \uae30\uc6b8\uc5b4\uc9c4 \uacbd\ud5a5\uc774 \uc5c6\uc5b4\uc694(\uc218\uba74 \uc2dc\uac04\uc774 \uae38\uc5b4\uc9c4\ub2e4\uace0 \uc9d1\uc911\ub3c4\uac00 \uc804\uccb4\uc801\uc73c\ub85c \uc62c\ub77c\uac00\uac70\ub098 \ub0b4\ub824\uac00\uc9c0 \uc54a\uc544\uc694). \uce5c\uad6c \ud558\uc724\uc774 \ub9d0\ud588\uc5b4\uc694. '\uc0c1\uad00\uc774 \uc5c6\uc73c\ub2c8 \uc218\uba74 \uc2dc\uac04\uc740 \uc9d1\uc911\ub3c4\uc640 \uc544\ubb34 \uad00\uacc4\uac00 \uc5c6\uc5b4.'",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
-    "prompt": "하윤의 결론에 대해 가장 알맞은 생각을 고르세요.",
+    "prompt": "\ud558\uc724\uc758 \uacb0\ub860\uc5d0 \ub300\ud574 \uac00\uc7a5 \uc54c\ub9de\uc740 \uc0dd\uac01\uc744 \uace0\ub974\uc138\uc694.",
     "options": [
      {
       "id": "a",
-      "text": "점들이 직선 모양을 이루지 않으면 두 값 사이에 아무 관계도 없다고 볼 수 있다고 생각한다.",
-      "reveals": "직선이 아닌 모양으로도 두 값이 관계를 가질 수 있어요. 표의 숫자를 순서대로 읽어 보세요."
+      "text": "\uc810\ub4e4\uc774 \uc9c1\uc120 \ubaa8\uc591\uc744 \uc774\ub8e8\uc9c0 \uc54a\uc73c\uba74 \ub450 \uac12 \uc0ac\uc774\uc5d0 \uc544\ubb34 \uad00\uacc4\ub3c4 \uc5c6\ub2e4\uace0 \ubcfc \uc218 \uc788\ub2e4\uace0 \uc0dd\uac01\ud55c\ub2e4.",
+      "reveals": "\uc9c1\uc120\uc774 \uc544\ub2cc \ubaa8\uc591\uc73c\ub85c\ub3c4 \ub450 \uac12\uc774 \uad00\uacc4\ub97c \uac00\uc9c8 \uc218 \uc788\uc5b4\uc694. \ud45c\uc758 \uc22b\uc790\ub97c \uc21c\uc11c\ub300\ub85c \uc77d\uc5b4 \ubcf4\uc138\uc694."
      },
      {
       "id": "b",
-      "text": "점이 8개뿐이라서 이 자료로는 두 값 사이의 관계에 대해 말하기 이르다고 본다.",
-      "reveals": "8개 점에도 분명한 모양(중간 수면 시간에서 높고 양쪽 끝에서 낮음)이 보여요. 적은 자료라는 점은 조심할 이유이지, 아무것도 말할 수 없다는 뜻은 아니에요."
+      "text": "\uc0c1\uad00\uc774 \uc5c6\ub2e4\ub294 \ub9d0\uc740 \uae30\uc6b0\ub294 \uacbd\ud5a5\uc774 \uc5c6\ub2e4\ub294 \ub73b\uc77c \ubfd0, \ub2e4\ub978 \ubaa8\uc591\uc758 \uad00\uacc4\ub294 \uc788\uc744 \uc218 \uc788\ub2e4.",
+      "reveals": "'\uc0c1\uad00\uc774 \uc5c6\uc74c'\uc774 '\uad00\uacc4\uac00 \uc5c6\uc74c'\uacfc \uac19\uc740 \ub73b\uc774 \uc544\ub2d8\uc744 \uc9da\uc5c8\uc5b4\uc694."
      },
      {
       "id": "c",
-      "text": "상관이 없다는 말은 기우는 경향이 없다는 뜻일 뿐, 다른 모양의 관계는 있을 수 있다.",
-      "reveals": "'상관이 없음'이 '관계가 없음'과 같은 뜻이 아님을 짚었어요."
+      "text": "\uc810\uc774 8\uac1c\ubfd0\uc774\ub77c\uc11c \uc774 \uc790\ub8cc\ub85c\ub294 \ub450 \uac12 \uc0ac\uc774\uc758 \uad00\uacc4\uc5d0 \ub300\ud574 \ub9d0\ud558\uae30 \uc774\ub974\ub2e4\uace0 \ubcf8\ub2e4.",
+      "reveals": "8\uac1c \uc810\uc5d0\ub3c4 \ubd84\uba85\ud55c \ubaa8\uc591(\uc911\uac04 \uc218\uba74 \uc2dc\uac04\uc5d0\uc11c \ub192\uace0 \uc591\ucabd \ub05d\uc5d0\uc11c \ub0ae\uc74c)\uc774 \ubcf4\uc5ec\uc694. \uc801\uc740 \uc790\ub8cc\ub77c\ub294 \uc810\uc740 \uc870\uc2ec\ud560 \uc774\uc720\uc774\uc9c0, \uc544\ubb34\uac83\ub3c4 \ub9d0\ud560 \uc218 \uc5c6\ub2e4\ub294 \ub73b\uc740 \uc544\ub2c8\uc5d0\uc694."
      },
      {
       "id": "d",
-      "text": "수면 시간이 길수록 집중도가 계속 높아지는 경향이 있어서 상관이 있다고 보아야 한다고 생각한다.",
-      "reveals": "점들을 읽어 보세요. 10시간, 11시간 수면의 집중도는 낮아요. 긴 수면 시간에서 집중도가 계속 올라가지 않아요."
+      "text": "\uc218\uba74 \uc2dc\uac04\uc774 \uae38\uc218\ub85d \uc9d1\uc911\ub3c4\uac00 \uacc4\uc18d \ub192\uc544\uc9c0\ub294 \uacbd\ud5a5\uc774 \uc788\uc5b4\uc11c \uc0c1\uad00\uc774 \uc788\ub2e4\uace0 \ubcf4\uc544\uc57c \ud55c\ub2e4\uace0 \uc0dd\uac01\ud55c\ub2e4.",
+      "reveals": "\uc810\ub4e4\uc744 \uc77d\uc5b4 \ubcf4\uc138\uc694. 10\uc2dc\uac04, 11\uc2dc\uac04 \uc218\uba74\uc758 \uc9d1\uc911\ub3c4\ub294 \ub0ae\uc544\uc694. \uae34 \uc218\uba74 \uc2dc\uac04\uc5d0\uc11c \uc9d1\uc911\ub3c4\uac00 \uacc4\uc18d \uc62c\ub77c\uac00\uc9c0 \uc54a\uc544\uc694."
      }
     ],
     "correct": [
-     "c"
+     "b"
     ],
-    "explain": "'상관이 없다'는 점들이 한 방향으로 기울어진 경향(직선 모양)이 없다는 뜻이에요. 이 자료는 잠이 너무 적거나 너무 많은 학생의 집중도가 낮고, 알맞게 잔 학생의 집중도가 높은 뚜렷한 관계가 있어요. 직선으로 보면 경향이 없지만 두 값이 무관한 것은 아니에요.",
+    "explain": "'\uc0c1\uad00\uc774 \uc5c6\ub2e4'\ub294 \uc810\ub4e4\uc774 \ud55c \ubc29\ud5a5\uc73c\ub85c \uae30\uc6b8\uc5b4\uc9c4 \uacbd\ud5a5(\uc9c1\uc120 \ubaa8\uc591)\uc774 \uc5c6\ub2e4\ub294 \ub73b\uc774\uc5d0\uc694. \uc774 \uc790\ub8cc\ub294 \uc7a0\uc774 \ub108\ubb34 \uc801\uac70\ub098 \ub108\ubb34 \ub9ce\uc740 \ud559\uc0dd\uc758 \uc9d1\uc911\ub3c4\uac00 \ub0ae\uace0, \uc54c\ub9de\uac8c \uc794 \ud559\uc0dd\uc758 \uc9d1\uc911\ub3c4\uac00 \ub192\uc740 \ub69c\ub837\ud55c \uad00\uacc4\uac00 \uc788\uc5b4\uc694. \uc9c1\uc120\uc73c\ub85c \ubcf4\uba74 \uacbd\ud5a5\uc774 \uc5c6\uc9c0\ub9cc \ub450 \uac12\uc774 \ubb34\uad00\ud55c \uac83\uc740 \uc544\ub2c8\uc5d0\uc694.",
     "hints": [
-     "수면 시간을 4시간부터 11시간까지 차례로 읽으며 집중도가 어떻게 변하는지 적어 보세요.",
-     "집중도가 가장 높은 수면 시간과 가장 낮은 수면 시간을 찾아 비교해 보세요."
+     "\uc218\uba74 \uc2dc\uac04\uc744 4\uc2dc\uac04\ubd80\ud130 11\uc2dc\uac04\uae4c\uc9c0 \ucc28\ub840\ub85c \uc77d\uc73c\uba70 \uc9d1\uc911\ub3c4\uac00 \uc5b4\ub5bb\uac8c \ubcc0\ud558\ub294\uc9c0 \uc801\uc5b4 \ubcf4\uc138\uc694.",
+     "\uc9d1\uc911\ub3c4\uac00 \uac00\uc7a5 \ub192\uc740 \uc218\uba74 \uc2dc\uac04\uacfc \uac00\uc7a5 \ub0ae\uc740 \uc218\uba74 \uc2dc\uac04\uc744 \ucc3e\uc544 \ube44\uad50\ud574 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "build",
-    "prompt": "같은 패턴이 이어지는 새 학생 3명의 자료를 만들어 보세요. 수면 시간 x는 3 이상 12 이하의 정수이고 집중도 y는 0 이상 10 이하의 정수예요. '수면 시간이 5시간 이하이거나 10시간 이상이면 집중도 5점 이하, 6~9시간이면 집중도 7점 이상'이 되도록, 수면 시간이 서로 다른 3명을 입력하세요.",
+    "prompt": "\uac19\uc740 \ud328\ud134\uc774 \uc774\uc5b4\uc9c0\ub294 \uc0c8 \ud559\uc0dd 3\uba85\uc758 \uc790\ub8cc\ub97c \ub9cc\ub4e4\uc5b4 \ubcf4\uc138\uc694. \uc218\uba74 \uc2dc\uac04 x\ub294 3 \uc774\uc0c1 12 \uc774\ud558\uc758 \uc815\uc218\uc774\uace0 \uc9d1\uc911\ub3c4 y\ub294 0 \uc774\uc0c1 10 \uc774\ud558\uc758 \uc815\uc218\uc608\uc694. '\uc218\uba74 \uc2dc\uac04\uc774 5\uc2dc\uac04 \uc774\ud558\uc774\uac70\ub098 10\uc2dc\uac04 \uc774\uc0c1\uc774\uba74 \uc9d1\uc911\ub3c4 5\uc810 \uc774\ud558, 6~9\uc2dc\uac04\uc774\uba74 \uc9d1\uc911\ub3c4 7\uc810 \uc774\uc0c1'\uc774 \ub418\ub3c4\ub85d, \uc218\uba74 \uc2dc\uac04\uc774 \uc11c\ub85c \ub2e4\ub978 3\uba85\uc744 \uc785\ub825\ud558\uc138\uc694.",
     "vars": [
      {
       "name": "x",
-      "label": "수면 시간(시간)"
+      "label": "\uc218\uba74 \uc2dc\uac04(\uc2dc\uac04)"
      },
      {
       "name": "y",
-      "label": "집중도(점)"
+      "label": "\uc9d1\uc911\ub3c4(\uc810)"
      }
     ],
     "constraints": [
      {
       "id": "c1",
       "expr": "x>=3 && x<=12 && x==floor(x) && y>=0 && y<=10 && y==floor(y)",
-      "ok": "수면 시간과 집중도가 범위 안의 정수예요.",
-      "fail": "수면 시간은 3~12, 집중도는 0~10의 정수로 해 주세요."
+      "ok": "\uc218\uba74 \uc2dc\uac04\uacfc \uc9d1\uc911\ub3c4\uac00 \ubc94\uc704 \uc548\uc758 \uc815\uc218\uc608\uc694.",
+      "fail": "\uc218\uba74 \uc2dc\uac04\uc740 3~12, \uc9d1\uc911\ub3c4\ub294 0~10\uc758 \uc815\uc218\ub85c \ud574 \uc8fc\uc138\uc694."
      },
      {
       "id": "c2",
       "expr": "(x<=5 && y<=5) || (x>=10 && y<=5) || (x>=6 && x<=9 && y>=7)",
-      "ok": "패턴에 맞아요.",
-      "fail": "패턴에 맞지 않아요. 수면 시간이 5시간 이하·10시간 이상이면 집중도 5점 이하, 6~9시간이면 7점 이상이어야 해요."
+      "ok": "\ud328\ud134\uc5d0 \ub9de\uc544\uc694.",
+      "fail": "\ud328\ud134\uc5d0 \ub9de\uc9c0 \uc54a\uc544\uc694. \uc218\uba74 \uc2dc\uac04\uc774 5\uc2dc\uac04 \uc774\ud558\u00b710\uc2dc\uac04 \uc774\uc0c1\uc774\uba74 \uc9d1\uc911\ub3c4 5\uc810 \uc774\ud558, 6~9\uc2dc\uac04\uc774\uba74 7\uc810 \uc774\uc0c1\uc774\uc5b4\uc57c \ud574\uc694."
      }
     ],
     "need": 3,
@@ -1630,225 +1632,227 @@
       "y": 1
      }
     ],
-    "explain": "예를 들어 (3, 2), (7, 10), (12, 1)은 패턴에 맞아요. 수면 시간이 너무 짧거나 길면 집중도가 낮고 알맞으면 높은 점들이 더해져도 점들은 한쪽으로 기울지 않아요. 이 패턴을 가진 자료는 상관이 없다고 나올 수 있지만 두 값은 분명한 관계를 가져요.",
+    "explain": "\uc608\ub97c \ub4e4\uc5b4 (3, 2), (7, 10), (12, 1)\uc740 \ud328\ud134\uc5d0 \ub9de\uc544\uc694. \uc218\uba74 \uc2dc\uac04\uc774 \ub108\ubb34 \uc9e7\uac70\ub098 \uae38\uba74 \uc9d1\uc911\ub3c4\uac00 \ub0ae\uace0 \uc54c\ub9de\uc73c\uba74 \ub192\uc740 \uc810\ub4e4\uc774 \ub354\ud574\uc838\ub3c4 \uc810\ub4e4\uc740 \ud55c\ucabd\uc73c\ub85c \uae30\uc6b8\uc9c0 \uc54a\uc544\uc694. \uc774 \ud328\ud134\uc744 \uac00\uc9c4 \uc790\ub8cc\ub294 \uc0c1\uad00\uc774 \uc5c6\ub2e4\uace0 \ub098\uc62c \uc218 \uc788\uc9c0\ub9cc \ub450 \uac12\uc740 \ubd84\uba85\ud55c \uad00\uacc4\ub97c \uac00\uc838\uc694.",
     "hints": [
-     "수면 시간을 먼저 정한 다음, 그 시간이 어느 구간(5시간 이하·6~9시간·10시간 이상)에 있는지 확인해 보세요.",
-     "구간에 따라 집중도가 5점 이하여야 하는지 7점 이상이어야 하는지 정한 뒤 그 범위 안에서 점수를 고르세요."
+     "\uc218\uba74 \uc2dc\uac04\uc744 \uba3c\uc800 \uc815\ud55c \ub2e4\uc74c, \uadf8 \uc2dc\uac04\uc774 \uc5b4\ub290 \uad6c\uac04(5\uc2dc\uac04 \uc774\ud558\u00b76~9\uc2dc\uac04\u00b710\uc2dc\uac04 \uc774\uc0c1)\uc5d0 \uc788\ub294\uc9c0 \ud655\uc778\ud574 \ubcf4\uc138\uc694.",
+     "\uad6c\uac04\uc5d0 \ub530\ub77c \uc9d1\uc911\ub3c4\uac00 5\uc810 \uc774\ud558\uc5ec\uc57c \ud558\ub294\uc9c0 7\uc810 \uc774\uc0c1\uc774\uc5b4\uc57c \ud558\ub294\uc9c0 \uc815\ud55c \ub4a4 \uadf8 \ubc94\uc704 \uc548\uc5d0\uc11c \uc810\uc218\ub97c \uace0\ub974\uc138\uc694."
     ]
    },
    {
     "id": "s3",
     "kind": "write",
-    "prompt": "하윤에게 어떻게 설명하겠어요? 위 자료를 예로 들어, '상관이 없다'와 '관계가 없다'가 어떻게 다른지 쓰세요.",
-    "placeholder": "예: 하윤아, 점들을 보면 ...",
+    "prompt": "\ud558\uc724\uc5d0\uac8c \uc5b4\ub5bb\uac8c \uc124\uba85\ud558\uaca0\uc5b4\uc694? \uc704 \uc790\ub8cc\ub97c \uc608\ub85c \ub4e4\uc5b4, '\uc0c1\uad00\uc774 \uc5c6\ub2e4'\uc640 '\uad00\uacc4\uac00 \uc5c6\ub2e4'\uac00 \uc5b4\ub5bb\uac8c \ub2e4\ub978\uc9c0 \uc4f0\uc138\uc694.",
+    "placeholder": "\uc608: \ud558\uc724\uc544, \uc810\ub4e4\uc744 \ubcf4\uba74 ...",
     "minChars": 30,
     "checks": [
      {
       "id": "w1",
-      "label": "두 값 사이에 관계(패턴)가 있다는 결론을 말했다",
+      "label": "\ub450 \uac12 \uc0ac\uc774\uc5d0 \uad00\uacc4(\ud328\ud134)\uac00 \uc788\ub2e4\ub294 \uacb0\ub860\uc744 \ub9d0\ud588\ub2e4",
       "mode": "any",
       "patterns": [
-       "관계(가|는|도)?\\s*(분명(히)?\\s*)?(있|분명)",
-       "패턴이\\s*(있|보)",
-       "(연관|관련)(이|성이)?\\s*(이|가)?\\s*있",
-       "영향(을)?\\s*(주|받|미)"
+       "\uad00\uacc4(\uac00|\ub294|\ub3c4)?\\s*(\ubd84\uba85(\ud788)?\\s*)?(\uc788|\ubd84\uba85)",
+       "\ud328\ud134\uc774\\s*(\uc788|\ubcf4)",
+       "(\uc5f0\uad00|\uad00\ub828)(\uc774|\uc131\uc774)?\\s*(\uc774|\uac00)?\\s*\uc788",
+       "\uc601\ud5a5(\uc744)?\\s*(\uc8fc|\ubc1b|\ubbf8)",
+       "\uad00\uacc4(\uac00|\ub294)?\\s*\uc5c6(\ub294\\s*(\uac83|\uac8c|\uac74)|\ub2e4\uace0\\s*(\ud560|\ub9d0\ud560|\ubcfc)\\s*\uc218\\s*\uc5c6)",
+       "\uad00\uacc4(\uac00|\ub294)?\\s*\uc5c6\ub2e4\ub294\\s*(\ub9d0|\uacb0\ub860|\uc8fc\uc7a5)\uc740\\s*(\ud2c0|\ub9de\uc9c0|\uc544\ub2c8)"
       ]
      },
      {
       "id": "w2",
-      "label": "자료의 구체적인 근거(수면 시간·집중도 값이나 알맞은 수면 시간)를 들었다",
+      "label": "\uc790\ub8cc\uc758 \uad6c\uccb4\uc801\uc778 \uadfc\uac70(\uc218\uba74 \uc2dc\uac04\u00b7\uc9d1\uc911\ub3c4 \uac12\uc774\ub098 \uc54c\ub9de\uc740 \uc218\uba74 \uc2dc\uac04)\ub97c \ub4e4\uc5c8\ub2e4",
       "mode": "any",
       "patterns": [
        "\\d",
-       "너무\\s*(적|짧|길|많)",
-       "알맞",
-       "적당",
-       "가운데",
-       "중간",
-       "양쪽",
-       "양끝",
-       "양\\s*끝"
+       "\ub108\ubb34\\s*(\uc801|\uc9e7|\uae38|\ub9ce)",
+       "\uc54c\ub9de",
+       "\uc801\ub2f9",
+       "\uac00\uc6b4\ub370",
+       "\uc911\uac04",
+       "\uc591\ucabd",
+       "\uc591\ub05d",
+       "\uc591\\s*\ub05d"
       ]
      },
      {
       "id": "w3",
-      "label": "'관계가 없다'고 하윤의 결론을 그대로 인정하지 않았다",
+      "label": "'\uad00\uacc4\uac00 \uc5c6\ub2e4'\uace0 \ud558\uc724\uc758 \uacb0\ub860\uc744 \uadf8\ub300\ub85c \uc778\uc815\ud558\uc9c0 \uc54a\uc558\ub2e4",
       "mode": "none",
       "patterns": [
-       "관계(가|도)?\\s*(전혀|아무)?\\s*없(어요|다|습니다|음)(?![^.!?]*(아니|않|오해|틀))",
-       "관계(가|는)?\\s*있(다고|는\\s*것)?[^.!?]{0,6}(볼|말할|할)\\s*수\\s*없"
+       "\uad00\uacc4(\uac00|\ub3c4)?\\s*(\uc804\ud600|\uc544\ubb34)?\\s*\uc5c6(\uc5b4\uc694|\ub2e4(?!\uace0|\ub294)|\uc2b5\ub2c8\ub2e4|\uc74c)(?![^.!?]*(\uc544\ub2c8|\uc54a|\uc624\ud574|\ud2c0|\uc218\\s*\uc5c6))",
+       "\uad00\uacc4(\uac00|\ub294)?\\s*\uc788(\ub2e4\uace0|\ub294\\s*\uac83)?[^.!?]{0,6}(\ubcfc|\ub9d0\ud560|\ud560)\\s*\uc218\\s*\uc5c6"
       ]
      }
     ],
     "selfAssess": [
-     "하윤의 말에서 어디까지가 맞고 어디부터가 지나친 일반화인지 구별했나요?",
-     "내가 든 값이 표의 값과 맞는지 확인했나요?",
-     "'직선'이라는 낱말 없이도 설명을 이해할 수 있나요?"
+     "\ud558\uc724\uc758 \ub9d0\uc5d0\uc11c \uc5b4\ub514\uae4c\uc9c0\uac00 \ub9de\uace0 \uc5b4\ub514\ubd80\ud130\uac00 \uc9c0\ub098\uce5c \uc77c\ubc18\ud654\uc778\uc9c0 \uad6c\ubcc4\ud588\ub098\uc694?",
+     "\ub0b4\uac00 \ub4e0 \uac12\uc774 \ud45c\uc758 \uac12\uacfc \ub9de\ub294\uc9c0 \ud655\uc778\ud588\ub098\uc694?",
+     "'\uc9c1\uc120'\uc774\ub77c\ub294 \ub0b1\ub9d0 \uc5c6\uc774\ub3c4 \uc124\uba85\uc744 \uc774\ud574\ud560 \uc218 \uc788\ub098\uc694?"
     ],
     "modelAnswers": [
      {
-      "text": "하윤아, 상관이 없다는 건 점들이 한쪽으로 기울지 않는다는 뜻이야. 그런데 7~8시간 잔 학생은 집중도가 9점이고 4시간이나 11시간 잔 학생은 3점이라서 수면 시간과 집중도 사이에는 분명한 관계가 있어."
+      "text": "\ud558\uc724\uc544, \uc0c1\uad00\uc774 \uc5c6\ub2e4\ub294 \uac74 \uc810\ub4e4\uc774 \ud55c\ucabd\uc73c\ub85c \uae30\uc6b8\uc9c0 \uc54a\ub294\ub2e4\ub294 \ub73b\uc774\uc57c. \uadf8\ub7f0\ub370 7~8\uc2dc\uac04 \uc794 \ud559\uc0dd\uc740 \uc9d1\uc911\ub3c4\uac00 9\uc810\uc774\uace0 4\uc2dc\uac04\uc774\ub098 11\uc2dc\uac04 \uc794 \ud559\uc0dd\uc740 3\uc810\uc774\ub77c\uc11c \uc218\uba74 \uc2dc\uac04\uacfc \uc9d1\uc911\ub3c4 \uc0ac\uc774\uc5d0\ub294 \ubd84\uba85\ud55c \uad00\uacc4\uac00 \uc788\uc5b4."
      },
      {
-      "text": "직선 모양이 아니라고 관계가 없는 건 아니야. 잠이 너무 적거나 많으면 집중도가 낮고 알맞게 자면 높아서 중간이 높은 패턴이 보여. 이 관계는 상관관계로는 잘 드러나지 않을 뿐이야.",
-      "note": "상관과 관계를 구별하고 자료의 패턴을 근거로 든 답."
+      "text": "\uc9c1\uc120 \ubaa8\uc591\uc774 \uc544\ub2c8\ub77c\uace0 \uad00\uacc4\uac00 \uc5c6\ub294 \uac74 \uc544\ub2c8\uc57c. \uc7a0\uc774 \ub108\ubb34 \uc801\uac70\ub098 \ub9ce\uc73c\uba74 \uc9d1\uc911\ub3c4\uac00 \ub0ae\uace0 \uc54c\ub9de\uac8c \uc790\uba74 \ub192\uc544\uc11c \uc911\uac04\uc774 \ub192\uc740 \ud328\ud134\uc774 \ubcf4\uc5ec. \uc774 \uad00\uacc4\ub294 \uc0c1\uad00\uad00\uacc4\ub85c\ub294 \uc798 \ub4dc\ub7ec\ub098\uc9c0 \uc54a\uc744 \ubfd0\uc774\uc57c.",
+      "note": "\uc0c1\uad00\uacfc \uad00\uacc4\ub97c \uad6c\ubcc4\ud558\uace0 \uc790\ub8cc\uc758 \ud328\ud134\uc744 \uadfc\uac70\ub85c \ub4e0 \ub2f5."
      }
     ],
     "badAnswers": [
      {
-      "text": "하윤이 맞아. 상관이 없으니까 아무 관계도 없어.",
-      "why": "주장을 그대로 받아들였다."
+      "text": "\ud558\uc724\uc774 \ub9de\uc544. \uc0c1\uad00\uc774 \uc5c6\uc73c\ub2c8\uae4c \uc544\ubb34 \uad00\uacc4\ub3c4 \uc5c6\uc5b4.",
+      "why": "\uc8fc\uc7a5\uc744 \uadf8\ub300\ub85c \ubc1b\uc544\ub4e4\uc600\ub2e4."
      },
      {
-      "text": "관계가 있어.",
-      "why": "근거가 없고 문장이 너무 짧다."
+      "text": "\uad00\uacc4\uac00 \uc788\uc5b4.",
+      "why": "\uadfc\uac70\uac00 \uc5c6\uace0 \ubb38\uc7a5\uc774 \ub108\ubb34 \uc9e7\ub2e4."
      },
      {
-      "text": "상관이 없으면 관계도 없어요. 모양이 직선이 아니니까 7시간 8시간은 모두 아무 관계가 없어요.",
-      "why": "상관이 없음을 관계가 없음으로 읽었다."
+      "text": "\uc0c1\uad00\uc774 \uc5c6\uc73c\uba74 \uad00\uacc4\ub3c4 \uc5c6\uc5b4\uc694. \ubaa8\uc591\uc774 \uc9c1\uc120\uc774 \uc544\ub2c8\ub2c8\uae4c 7\uc2dc\uac04 8\uc2dc\uac04\uc740 \ubaa8\ub450 \uc544\ubb34 \uad00\uacc4\uac00 \uc5c6\uc5b4\uc694.",
+      "why": "\uc0c1\uad00\uc774 \uc5c6\uc74c\uc744 \uad00\uacc4\uac00 \uc5c6\uc74c\uc73c\ub85c \uc77d\uc5c8\ub2e4."
      }
     ],
-    "humanReview": "'상관이 없음'과 '관계가 없음'의 차이를 이해하고 썼는지, 표의 값을 맞게 인용했는지는 사람이 읽어야 안다.",
+    "humanReview": "'\uc0c1\uad00\uc774 \uc5c6\uc74c'\uacfc '\uad00\uacc4\uac00 \uc5c6\uc74c'\uc758 \ucc28\uc774\ub97c \uc774\ud574\ud558\uace0 \uc37c\ub294\uc9c0, \ud45c\uc758 \uac12\uc744 \ub9de\uac8c \uc778\uc6a9\ud588\ub294\uc9c0\ub294 \uc0ac\ub78c\uc774 \uc77d\uc5b4\uc57c \uc548\ub2e4.",
     "hints": [
-     "하윤의 말에서 '상관이 없다'는 부분과 '아무 관계도 없다'는 부분을 따로 떼어 각각 맞는지 따져 보세요.",
-     "표에서 집중도가 높은 점들과 낮은 점들의 수면 시간을 각각 적어 보세요."
+     "\ud558\uc724\uc758 \ub9d0\uc5d0\uc11c '\uc0c1\uad00\uc774 \uc5c6\ub2e4'\ub294 \ubd80\ubd84\uacfc '\uc544\ubb34 \uad00\uacc4\ub3c4 \uc5c6\ub2e4'\ub294 \ubd80\ubd84\uc744 \ub530\ub85c \ub5bc\uc5b4 \uac01\uac01 \ub9de\ub294\uc9c0 \ub530\uc838 \ubcf4\uc138\uc694.",
+     "\ud45c\uc5d0\uc11c \uc9d1\uc911\ub3c4\uac00 \ub192\uc740 \uc810\ub4e4\uacfc \ub0ae\uc740 \uc810\ub4e4\uc758 \uc218\uba74 \uc2dc\uac04\uc744 \uac01\uac01 \uc801\uc5b4 \ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "주장의 범위 따지기",
-    "full": "'상관이 없음'이 직선 경향이 없다는 뜻임을 구별",
-    "partial": "상관이 없음의 의미를 모호하게 설명",
-    "none": "상관이 없으면 관계가 없다고 믿음"
+    "criterion": "\uc8fc\uc7a5\uc758 \ubc94\uc704 \ub530\uc9c0\uae30",
+    "full": "'\uc0c1\uad00\uc774 \uc5c6\uc74c'\uc774 \uc9c1\uc120 \uacbd\ud5a5\uc774 \uc5c6\ub2e4\ub294 \ub73b\uc784\uc744 \uad6c\ubcc4",
+    "partial": "\uc0c1\uad00\uc774 \uc5c6\uc74c\uc758 \uc758\ubbf8\ub97c \ubaa8\ud638\ud558\uac8c \uc124\uba85",
+    "none": "\uc0c1\uad00\uc774 \uc5c6\uc73c\uba74 \uad00\uacc4\uac00 \uc5c6\ub2e4\uace0 \ubbff\uc74c"
    },
    {
-    "criterion": "새 자료 만들기",
-    "full": "범위와 패턴을 모두 만족하는 서로 다른 3개의 점",
-    "partial": "1~2개만 맞음",
-    "none": "패턴 확인 없이 입력"
+    "criterion": "\uc0c8 \uc790\ub8cc \ub9cc\ub4e4\uae30",
+    "full": "\ubc94\uc704\uc640 \ud328\ud134\uc744 \ubaa8\ub450 \ub9cc\uc871\ud558\ub294 \uc11c\ub85c \ub2e4\ub978 3\uac1c\uc758 \uc810",
+    "partial": "1~2\uac1c\ub9cc \ub9de\uc74c",
+    "none": "\ud328\ud134 \ud655\uc778 \uc5c6\uc774 \uc785\ub825"
    },
    {
-    "criterion": "반박하기",
-    "full": "자료의 값을 근거로 하윤의 지나친 일반화를 설명",
-    "partial": "결론만 반박",
-    "none": "주장을 받아들임"
+    "criterion": "\ubc18\ubc15\ud558\uae30",
+    "full": "\uc790\ub8cc\uc758 \uac12\uc744 \uadfc\uac70\ub85c \ud558\uc724\uc758 \uc9c0\ub098\uce5c \uc77c\ubc18\ud654\ub97c \uc124\uba85",
+    "partial": "\uacb0\ub860\ub9cc \ubc18\ubc15",
+    "none": "\uc8fc\uc7a5\uc744 \ubc1b\uc544\ub4e4\uc784"
    }
   ],
   "alternatives": [
-   "수면 시간이 길수록 집중도가 낮아지는 형태가 아니라 '중간이 가장 높은 산 모양'이라고 말하는 것이 이 자료를 가장 잘 설명한다.",
-   "'점이 8개뿐이라 조심해야 한다'를 덧붙이는 답도 타당하다."
+   "\uc218\uba74 \uc2dc\uac04\uc774 \uae38\uc218\ub85d \uc9d1\uc911\ub3c4\uac00 \ub0ae\uc544\uc9c0\ub294 \ud615\ud0dc\uac00 \uc544\ub2c8\ub77c '\uc911\uac04\uc774 \uac00\uc7a5 \ub192\uc740 \uc0b0 \ubaa8\uc591'\uc774\ub77c\uace0 \ub9d0\ud558\ub294 \uac83\uc774 \uc774 \uc790\ub8cc\ub97c \uac00\uc7a5 \uc798 \uc124\uba85\ud55c\ub2e4.",
+   "'\uc810\uc774 8\uac1c\ubfd0\uc774\ub77c \uc870\uc2ec\ud574\uc57c \ud55c\ub2e4'\ub97c \ub367\ubd99\uc774\ub294 \ub2f5\ub3c4 \ud0c0\ub2f9\ud558\ub2e4."
   ],
   "hardCases": [
-   "실제 자료에서 수면 시간과 집중도의 관계는 개인차가 크다. 이 8개 점은 설명을 위해 만든 가상 자료이다.",
-   "3단계에서 '관계가 있다'만 쓰고 근거가 없으면 반박으로 부족하다."
+   "\uc2e4\uc81c \uc790\ub8cc\uc5d0\uc11c \uc218\uba74 \uc2dc\uac04\uacfc \uc9d1\uc911\ub3c4\uc758 \uad00\uacc4\ub294 \uac1c\uc778\ucc28\uac00 \ud06c\ub2e4. \uc774 8\uac1c \uc810\uc740 \uc124\uba85\uc744 \uc704\ud574 \ub9cc\ub4e0 \uac00\uc0c1 \uc790\ub8cc\uc774\ub2e4.",
+   "3\ub2e8\uacc4\uc5d0\uc11c '\uad00\uacc4\uac00 \uc788\ub2e4'\ub9cc \uc4f0\uace0 \uadfc\uac70\uac00 \uc5c6\uc73c\uba74 \ubc18\ubc15\uc73c\ub85c \ubd80\uc871\ud558\ub2e4."
   ],
   "cautions": {
-   "language": "'상관'과 '관계'를 일상어와 수학 용어로 구별해 설명한다. '(x, y)'는 '엑스, 와이'로 읽는다.",
-   "culture": "수면과 집중은 한국 학생에게 익숙한 소재이다. 특정한 수면 습관을 권장하는 내용이 아니라 가상 자료이다.",
-   "accessibility": "산점도 그림 없이 순서쌍으로 제시했다. 색에 의존하지 않는다."
+   "language": "'\uc0c1\uad00'\uacfc '\uad00\uacc4'\ub97c \uc77c\uc0c1\uc5b4\uc640 \uc218\ud559 \uc6a9\uc5b4\ub85c \uad6c\ubcc4\ud574 \uc124\uba85\ud55c\ub2e4. '(x, y)'\ub294 '\uc5d1\uc2a4, \uc640\uc774'\ub85c \uc77d\ub294\ub2e4.",
+   "culture": "\uc218\uba74\uacfc \uc9d1\uc911\uc740 \ud55c\uad6d \ud559\uc0dd\uc5d0\uac8c \uc775\uc219\ud55c \uc18c\uc7ac\uc774\ub2e4. \ud2b9\uc815\ud55c \uc218\uba74 \uc2b5\uad00\uc744 \uad8c\uc7a5\ud558\ub294 \ub0b4\uc6a9\uc774 \uc544\ub2c8\ub77c \uac00\uc0c1 \uc790\ub8cc\uc774\ub2e4.",
+   "accessibility": "\uc0b0\uc810\ub3c4 \uadf8\ub9bc \uc5c6\uc774 \uc21c\uc11c\uc30d\uc73c\ub85c \uc81c\uc2dc\ud588\ub2e4. \uc0c9\uc5d0 \uc758\uc874\ud558\uc9c0 \uc54a\ub294\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "선택 정답",
-    "새 점이 범위와 패턴 조건을 만족하는지와 수면 시간이 서로 다른 3개인지",
-    "서술에 관계 결론과 자료 근거가 있는지"
+    "\uc120\ud0dd \uc815\ub2f5",
+    "\uc0c8 \uc810\uc774 \ubc94\uc704\uc640 \ud328\ud134 \uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294\uc9c0\uc640 \uc218\uba74 \uc2dc\uac04\uc774 \uc11c\ub85c \ub2e4\ub978 3\uac1c\uc778\uc9c0",
+    "\uc11c\uc220\uc5d0 \uad00\uacc4 \uacb0\ub860\uacfc \uc790\ub8cc \uadfc\uac70\uac00 \uc788\ub294\uc9c0"
    ],
    "human": [
-    "상관과 관계의 구별",
-    "표의 값 인용의 정확성"
+    "\uc0c1\uad00\uacfc \uad00\uacc4\uc758 \uad6c\ubcc4",
+    "\ud45c\uc758 \uac12 \uc778\uc6a9\uc758 \uc815\ud655\uc131"
    ]
   },
-  "status": "draft"
+  "status": "reviewed-ai"
  },
  {
   "id": "y-m-31-08",
   "subject": "math",
   "grade": "M3",
   "cell": "math|M3|statistics",
-  "topic": "두 집단을 합친 평균",
+  "topic": "\ub450 \uc9d1\ub2e8\uc744 \ud569\uce5c \ud3c9\uade0",
   "level": 2,
-  "levelLabel": "중등",
-  "title": "두 반의 평균을 합치면 전체 평균일까?",
+  "levelLabel": "\uc911\ub4f1",
+  "title": "\ub450 \ubc18\uc758 \ud3c9\uade0\uc744 \ud569\uce58\uba74 \uc804\uccb4 \ud3c9\uade0\uc77c\uae4c?",
   "uiLang": "ko",
   "format": "choose-needed-info",
   "generative": true,
-  "goal": "두 집단의 평균만으로 합친 평균을 정할 수 없음을 알고, 어떤 정보(인원수)가 더 필요한지 말하며 조건에 맞는 인원 구성을 직접 만든다.",
+  "goal": "\ub450 \uc9d1\ub2e8\uc758 \ud3c9\uade0\ub9cc\uc73c\ub85c \ud569\uce5c \ud3c9\uade0\uc744 \uc815\ud560 \uc218 \uc5c6\uc74c\uc744 \uc54c\uace0, \uc5b4\ub5a4 \uc815\ubcf4(\uc778\uc6d0\uc218)\uac00 \ub354 \ud544\uc694\ud55c\uc9c0 \ub9d0\ud558\uba70 \uc870\uac74\uc5d0 \ub9de\ub294 \uc778\uc6d0 \uad6c\uc131\uc744 \uc9c1\uc811 \ub9cc\ub4e0\ub2e4.",
   "thinking": [
-   "정보가 충분한지 판단하기",
-   "조건을 만족하는 여러 사례 만들기",
-   "일반화(두 평균의 평균)가 성립하는 조건 말하기"
+   "\uc815\ubcf4\uac00 \ucda9\ubd84\ud55c\uc9c0 \ud310\ub2e8\ud558\uae30",
+   "\uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294 \uc5ec\ub7ec \uc0ac\ub840 \ub9cc\ub4e4\uae30",
+   "\uc77c\ubc18\ud654(\ub450 \ud3c9\uade0\uc758 \ud3c9\uade0)\uac00 \uc131\ub9bd\ud558\ub294 \uc870\uac74 \ub9d0\ud558\uae30"
   ],
-  "differsFromPlain": "단순 연습은 두 반의 점수 합과 인원수를 이용해 전체 평균을 구한다. 여기서는 인원수를 모르는 채로 '두 평균의 평균'이 맞는지 따지고, 합친 평균이 주어진 범위에 들어오는 인원수 짝을 직접 찾는다.",
+  "differsFromPlain": "\ub2e8\uc21c \uc5f0\uc2b5\uc740 \ub450 \ubc18\uc758 \uc810\uc218 \ud569\uacfc \uc778\uc6d0\uc218\ub97c \uc774\uc6a9\ud574 \uc804\uccb4 \ud3c9\uade0\uc744 \uad6c\ud55c\ub2e4. \uc5ec\uae30\uc11c\ub294 \uc778\uc6d0\uc218\ub97c \ubaa8\ub974\ub294 \ucc44\ub85c '\ub450 \ud3c9\uade0\uc758 \ud3c9\uade0'\uc774 \ub9de\ub294\uc9c0 \ub530\uc9c0\uace0, \ud569\uce5c \ud3c9\uade0\uc774 \uc8fc\uc5b4\uc9c4 \ubc94\uc704\uc5d0 \ub4e4\uc5b4\uc624\ub294 \uc778\uc6d0\uc218 \uc9dd\uc744 \uc9c1\uc811 \ucc3e\ub294\ub2e4.",
   "prerequisites": [
-   "평균의 뜻: (전체 합) ÷ (자료의 개수)(중1)",
-   "부등식을 이용한 범위 확인(중2)"
+   "\ud3c9\uade0\uc758 \ub73b: (\uc804\uccb4 \ud569) \u00f7 (\uc790\ub8cc\uc758 \uac1c\uc218)(\uc9111)",
+   "\ubd80\ub4f1\uc2dd\uc744 \uc774\uc6a9\ud55c \ubc94\uc704 \ud655\uc778(\uc9112)"
   ],
   "minutes": 12,
   "curriculum": null,
-  "material": "A반 평균은 70점, B반 평균은 80점이에요(같은 시험, 각 반에는 학생이 1명 이상). 두 반을 합친 학생 전체의 평균을 알고 싶어요. 소율이 말했어요. '두 반 평균의 평균인 75점이 전체 평균이야.' 아직 두 반의 인원수는 몰라요.",
+  "material": "A\ubc18 \ud3c9\uade0\uc740 70\uc810, B\ubc18 \ud3c9\uade0\uc740 80\uc810\uc774\uc5d0\uc694(\uac19\uc740 \uc2dc\ud5d8, \uac01 \ubc18\uc5d0\ub294 \ud559\uc0dd\uc774 1\uba85 \uc774\uc0c1). \ub450 \ubc18\uc744 \ud569\uce5c \ud559\uc0dd \uc804\uccb4\uc758 \ud3c9\uade0\uc744 \uc54c\uace0 \uc2f6\uc5b4\uc694. \uc18c\uc728\uc774 \ub9d0\ud588\uc5b4\uc694. '\ub450 \ubc18 \ud3c9\uade0\uc758 \ud3c9\uade0\uc778 75\uc810\uc774 \uc804\uccb4 \ud3c9\uade0\uc774\uc57c.' \uc544\uc9c1 \ub450 \ubc18\uc758 \uc778\uc6d0\uc218\ub294 \ubab0\ub77c\uc694.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
-    "prompt": "소율의 말과 합친 전체 평균에 대해 알맞은 설명을 고르세요.",
+    "prompt": "\uc18c\uc728\uc758 \ub9d0\uacfc \ud569\uce5c \uc804\uccb4 \ud3c9\uade0\uc5d0 \ub300\ud574 \uc54c\ub9de\uc740 \uc124\uba85\uc744 \uace0\ub974\uc138\uc694.",
     "options": [
      {
       "id": "a",
-      "text": "두 평균의 가운데인 75점이 두 반을 합친 전체 평균이 반드시 된다고 생각한다.",
-      "reveals": "두 반의 인원이 다르면 평균에 주는 영향도 달라요. 한 반이 훨씬 크면 그 반 쪽으로 전체 평균이 가까워져요."
+      "text": "\ub450 \ud3c9\uade0\uc758 \uac00\uc6b4\ub370\uc778 75\uc810\uc774 \ub450 \ubc18\uc744 \ud569\uce5c \uc804\uccb4 \ud3c9\uade0\uc774 \ubc18\ub4dc\uc2dc \ub41c\ub2e4\uace0 \uc0dd\uac01\ud55c\ub2e4.",
+      "reveals": "\ub450 \ubc18\uc758 \uc778\uc6d0\uc774 \ub2e4\ub974\uba74 \ud3c9\uade0\uc5d0 \uc8fc\ub294 \uc601\ud5a5\ub3c4 \ub2ec\ub77c\uc694. \ud55c \ubc18\uc774 \ud6e8\uc52c \ud06c\uba74 \uadf8 \ubc18 \ucabd\uc73c\ub85c \uc804\uccb4 \ud3c9\uade0\uc774 \uac00\uae4c\uc6cc\uc838\uc694."
      },
      {
       "id": "b",
-      "text": "전체 평균은 70점과 80점 사이이지만, 정확한 값은 인원수를 알아야 한다.",
-      "reveals": "합친 평균이 두 평균 사이에 있다는 것과 정확한 값은 인원수 정보가 필요하다는 것을 함께 짚었어요."
+      "text": "\uc804\uccb4 \ud3c9\uade0\uc740 70\uc810\uacfc 80\uc810 \uc0ac\uc774\uc774\uc9c0\ub9cc, \uc815\ud655\ud55c \uac12\uc740 \uc778\uc6d0\uc218\ub97c \uc54c\uc544\uc57c \ud55c\ub2e4.",
+      "reveals": "\ud569\uce5c \ud3c9\uade0\uc774 \ub450 \ud3c9\uade0 \uc0ac\uc774\uc5d0 \uc788\ub2e4\ub294 \uac83\uacfc \uc815\ud655\ud55c \uac12\uc740 \uc778\uc6d0\uc218 \uc815\ubcf4\uac00 \ud544\uc694\ud558\ub2e4\ub294 \uac83\uc744 \ud568\uaed8 \uc9da\uc5c8\uc5b4\uc694."
      },
      {
       "id": "c",
-      "text": "인원수를 몰라도 B반의 평균이 더 높으니, 전체 평균은 반드시 75점보다 높다.",
-      "reveals": "B반 평균이 높아도 A반 학생이 훨씬 많으면 75점보다 낮아질 수 있어요. 인원수를 살펴보세요."
+      "text": "\uc778\uc6d0\uc218\ub97c \ubab0\ub77c\ub3c4 B\ubc18\uc758 \ud3c9\uade0\uc774 \ub354 \ub192\uc73c\ub2c8, \uc804\uccb4 \ud3c9\uade0\uc740 \ubc18\ub4dc\uc2dc 75\uc810\ubcf4\ub2e4 \ub192\ub2e4.",
+      "reveals": "B\ubc18 \ud3c9\uade0\uc774 \ub192\uc544\ub3c4 A\ubc18 \ud559\uc0dd\uc774 \ud6e8\uc52c \ub9ce\uc73c\uba74 75\uc810\ubcf4\ub2e4 \ub0ae\uc544\uc9c8 \uc218 \uc788\uc5b4\uc694. \uc778\uc6d0\uc218\ub97c \uc0b4\ud3b4\ubcf4\uc138\uc694."
      },
      {
       "id": "d",
-      "text": "인원수를 몰라도 70과 80만 있으면 전체 평균을 정확히 계산할 수 있다고 본다.",
-      "reveals": "평균만으로는 각 반의 점수 합을 알 수 없어요. 점수 합은 평균에 인원수를 곱해야 알 수 있어요."
+      "text": "\uc778\uc6d0\uc218\ub97c \ubab0\ub77c\ub3c4 70\uacfc 80\ub9cc \uc788\uc73c\uba74 \uc804\uccb4 \ud3c9\uade0\uc744 \uc815\ud655\ud788 \uacc4\uc0b0\ud560 \uc218 \uc788\ub2e4\uace0 \ubcf8\ub2e4.",
+      "reveals": "\ud3c9\uade0\ub9cc\uc73c\ub85c\ub294 \uac01 \ubc18\uc758 \uc810\uc218 \ud569\uc744 \uc54c \uc218 \uc5c6\uc5b4\uc694. \uc810\uc218 \ud569\uc740 \ud3c9\uade0\uc5d0 \uc778\uc6d0\uc218\ub97c \uacf1\ud574\uc57c \uc54c \uc218 \uc788\uc5b4\uc694."
      }
     ],
     "correct": [
      "b"
     ],
-    "explain": "각 반의 점수 합은 (평균)×(인원수)이므로 전체 평균은 (70×A반 인원 + 80×B반 인원)÷(전체 인원)이에요. 인원이 같을 때만 75점이 돼요. 어느 쪽 인원이 많은지에 따라 70에 가까워지기도, 80에 가까워지기도 하지만 항상 70과 80 사이에 있어요.",
+    "explain": "\uac01 \ubc18\uc758 \uc810\uc218 \ud569\uc740 (\ud3c9\uade0)\u00d7(\uc778\uc6d0\uc218)\uc774\ubbc0\ub85c \uc804\uccb4 \ud3c9\uade0\uc740 (70\u00d7A\ubc18 \uc778\uc6d0 + 80\u00d7B\ubc18 \uc778\uc6d0)\u00f7(\uc804\uccb4 \uc778\uc6d0)\uc774\uc5d0\uc694. \uc778\uc6d0\uc774 \uac19\uc744 \ub54c\ub9cc 75\uc810\uc774 \ub3fc\uc694. \uc5b4\ub290 \ucabd \uc778\uc6d0\uc774 \ub9ce\uc740\uc9c0\uc5d0 \ub530\ub77c 70\uc5d0 \uac00\uae4c\uc6cc\uc9c0\uae30\ub3c4, 80\uc5d0 \uac00\uae4c\uc6cc\uc9c0\uae30\ub3c4 \ud558\uc9c0\ub9cc \ud56d\uc0c1 70\uacfc 80 \uc0ac\uc774\uc5d0 \uc788\uc5b4\uc694.",
     "hints": [
-     "A반과 B반의 인원이 각각 같을 때와 A반이 훨씬 많을 때, 전체 점수 합이 어떻게 달라지는지 숫자를 하나씩 넣어 비교해 보세요.",
-     "각 반의 평균에 인원수를 곱하면 무엇을 알 수 있는지 적어 보세요."
+     "A\ubc18\uacfc B\ubc18\uc758 \uc778\uc6d0\uc774 \uac01\uac01 \uac19\uc744 \ub54c\uc640 A\ubc18\uc774 \ud6e8\uc52c \ub9ce\uc744 \ub54c, \uc804\uccb4 \uc810\uc218 \ud569\uc774 \uc5b4\ub5bb\uac8c \ub2ec\ub77c\uc9c0\ub294\uc9c0 \uc22b\uc790\ub97c \ud558\ub098\uc529 \ub123\uc5b4 \ube44\uad50\ud574 \ubcf4\uc138\uc694.",
+     "\uac01 \ubc18\uc758 \ud3c9\uade0\uc5d0 \uc778\uc6d0\uc218\ub97c \uacf1\ud558\uba74 \ubb34\uc5c7\uc744 \uc54c \uc218 \uc788\ub294\uc9c0 \uc801\uc5b4 \ubcf4\uc138\uc694."
     ]
    },
    {
     "id": "s2",
     "kind": "build",
-    "prompt": "A반 인원 a명, B반 인원 b명(둘 다 1 이상 40 이하의 정수)을 정해, 합친 전체 평균이 72점 이상 74점 이하가 되게 하세요. 인원수의 비가 서로 다른 경우로 3가지 만드세요. (예: 20명과 10명, 10명과 5명은 비가 같아 하나로 세요.)",
+    "prompt": "A\ubc18 \uc778\uc6d0 a\uba85, B\ubc18 \uc778\uc6d0 b\uba85(\ub458 \ub2e4 1 \uc774\uc0c1 40 \uc774\ud558\uc758 \uc815\uc218)\uc744 \uc815\ud574, \ud569\uce5c \uc804\uccb4 \ud3c9\uade0\uc774 72\uc810 \uc774\uc0c1 74\uc810 \uc774\ud558\uac00 \ub418\uac8c \ud558\uc138\uc694. \uc778\uc6d0\uc218\uc758 \ube44\uac00 \uc11c\ub85c \ub2e4\ub978 \uacbd\uc6b0\ub85c 3\uac00\uc9c0 \ub9cc\ub4dc\uc138\uc694. (\uc608: 20\uba85\uacfc 10\uba85, 10\uba85\uacfc 5\uba85\uc740 \ube44\uac00 \uac19\uc544 \ud558\ub098\ub85c \uc138\uc694.)",
     "vars": [
      {
       "name": "a",
-      "label": "A반 인원(명)"
+      "label": "A\ubc18 \uc778\uc6d0(\uba85)"
      },
      {
       "name": "b",
-      "label": "B반 인원(명)"
+      "label": "B\ubc18 \uc778\uc6d0(\uba85)"
      }
     ],
     "constraints": [
      {
       "id": "c1",
       "expr": "a>=1 && a<=40 && b>=1 && b<=40 && a==floor(a) && b==floor(b)",
-      "ok": "인원수가 범위 안의 정수예요.",
-      "fail": "인원수는 1 이상 40 이하의 정수로 해 주세요."
+      "ok": "\uc778\uc6d0\uc218\uac00 \ubc94\uc704 \uc548\uc758 \uc815\uc218\uc608\uc694.",
+      "fail": "\uc778\uc6d0\uc218\ub294 1 \uc774\uc0c1 40 \uc774\ud558\uc758 \uc815\uc218\ub85c \ud574 \uc8fc\uc138\uc694."
      },
      {
       "id": "c2",
       "expr": "(70*a+80*b)/(a+b)>=72 && (70*a+80*b)/(a+b)<=74",
-      "ok": "합친 평균이 72점 이상 74점 이하예요.",
-      "fail": "합친 평균이 72점 이상 74점 이하가 아니에요. (70×a+80×b)÷(a+b)를 확인해 보세요."
+      "ok": "\ud569\uce5c \ud3c9\uade0\uc774 72\uc810 \uc774\uc0c1 74\uc810 \uc774\ud558\uc608\uc694.",
+      "fail": "\ud569\uce5c \ud3c9\uade0\uc774 72\uc810 \uc774\uc0c1 74\uc810 \uc774\ud558\uac00 \uc544\ub2c8\uc5d0\uc694. (70\u00d7a+80\u00d7b)\u00f7(a+b)\ub97c \ud655\uc778\ud574 \ubcf4\uc138\uc694."
      }
     ],
     "need": 3,
@@ -1889,120 +1893,121 @@
       "b": 10
      }
     ],
-    "explain": "A반 인원이 B반의 1.5배 이상 4배 이하이면 합친 평균이 72~74점이에요. (30, 10)은 평균 72.5, (20, 10)은 약 73.3, (6, 4)는 정확히 74예요. (10, 10)은 평균이 75이고 (10, 30)은 77.5라서 범위를 벗어나요.",
+    "explain": "A\ubc18 \uc778\uc6d0\uc774 B\ubc18\uc758 1.5\ubc30 \uc774\uc0c1 4\ubc30 \uc774\ud558\uc774\uba74 \ud569\uce5c \ud3c9\uade0\uc774 72~74\uc810\uc774\uc5d0\uc694. (30, 10)\uc740 \ud3c9\uade0 72.5, (20, 10)\uc740 \uc57d 73.3, (6, 4)\ub294 \uc815\ud655\ud788 74\uc608\uc694. (10, 10)\uc740 \ud3c9\uade0\uc774 75\uc774\uace0 (10, 30)\uc740 77.5\ub77c\uc11c \ubc94\uc704\ub97c \ubc97\uc5b4\ub098\uc694.",
     "hints": [
-     "A반이 더 많아야 할지 B반이 더 많아야 할지, 전체 평균이 70에 가까운 쪽으로 가려면 어느 반 인원이 많아야 하는지 생각해 보세요.",
-     "인원 한 쌍을 정하고 (70×a+80×b)÷(a+b)를 계산해 72와 74 사이인지 확인한 뒤, 같은 비의 짝은 하나로 센다는 점을 기억하세요."
+     "A\ubc18\uc774 \ub354 \ub9ce\uc544\uc57c \ud560\uc9c0 B\ubc18\uc774 \ub354 \ub9ce\uc544\uc57c \ud560\uc9c0, \uc804\uccb4 \ud3c9\uade0\uc774 70\uc5d0 \uac00\uae4c\uc6b4 \ucabd\uc73c\ub85c \uac00\ub824\uba74 \uc5b4\ub290 \ubc18 \uc778\uc6d0\uc774 \ub9ce\uc544\uc57c \ud558\ub294\uc9c0 \uc0dd\uac01\ud574 \ubcf4\uc138\uc694.",
+     "\uc778\uc6d0 \ud55c \uc30d\uc744 \uc815\ud558\uace0 (70\u00d7a+80\u00d7b)\u00f7(a+b)\ub97c \uacc4\uc0b0\ud574 72\uc640 74 \uc0ac\uc774\uc778\uc9c0 \ud655\uc778\ud55c \ub4a4, \uac19\uc740 \ube44\uc758 \uc9dd\uc740 \ud558\ub098\ub85c \uc13c\ub2e4\ub294 \uc810\uc744 \uae30\uc5b5\ud558\uc138\uc694."
     ]
    },
    {
     "id": "s3",
     "kind": "write",
-    "prompt": "소율의 '두 평균의 평균이 전체 평균이다'라는 말은 언제 맞고 언제 맞지 않는지 쓰세요.",
-    "placeholder": "예: 두 반의 인원이 ... 때는 맞고 ... 때는 맞지 않아.",
+    "prompt": "\uc18c\uc728\uc758 '\ub450 \ud3c9\uade0\uc758 \ud3c9\uade0\uc774 \uc804\uccb4 \ud3c9\uade0\uc774\ub2e4'\ub77c\ub294 \ub9d0\uc740 \uc5b8\uc81c \ub9de\uace0 \uc5b8\uc81c \ub9de\uc9c0 \uc54a\ub294\uc9c0 \uc4f0\uc138\uc694.",
+    "placeholder": "\uc608: \ub450 \ubc18\uc758 \uc778\uc6d0\uc774 ... \ub54c\ub294 \ub9de\uace0 ... \ub54c\ub294 \ub9de\uc9c0 \uc54a\uc544.",
     "minChars": 30,
     "checks": [
      {
       "id": "w1",
-      "label": "맞는 경우(인원이 같을 때)를 말했다",
+      "label": "\ub9de\ub294 \uacbd\uc6b0(\uc778\uc6d0\uc774 \uac19\uc744 \ub54c)\ub97c \ub9d0\ud588\ub2e4",
       "mode": "any",
       "patterns": [
-       "(인원|학생\\s*수|명\\s*수|사람\\s*수|인원수)(이|가|은|는)?\\s*(서로\\s*)?(같|똑같)",
-       "같은\\s*(인원|학생\\s*수)",
-       "인원이\\s*같",
-       "같은\\s*수"
+       "(\uc778\uc6d0|\ud559\uc0dd\\s*\uc218|\uba85\\s*\uc218|\uc0ac\ub78c\\s*\uc218|\uc778\uc6d0\uc218)(\uc774|\uac00|\uc740|\ub294)?\\s*(\uc11c\ub85c\\s*)?(\uac19|\ub611\uac19)",
+       "\uac19\uc740\\s*(\uc778\uc6d0|\ud559\uc0dd\\s*\uc218)",
+       "\uc778\uc6d0\uc774\\s*\uac19",
+       "\uac19\uc740\\s*\uc218"
       ]
      },
      {
       "id": "w2",
-      "label": "맞지 않는 경우(인원이 다를 때)를 말했다",
+      "label": "\ub9de\uc9c0 \uc54a\ub294 \uacbd\uc6b0(\uc778\uc6d0\uc774 \ub2e4\ub97c \ub54c)\ub97c \ub9d0\ud588\ub2e4",
       "mode": "any",
       "patterns": [
-       "(인원|학생\\s*수|명\\s*수|사람\\s*수|인원수)(이|가|은|는)?\\s*(서로\\s*)?(다르|다를|차이)",
-       "다르면",
-       "많은\\s*(쪽|반)",
-       "가까워",
-       "가중",
-       "더\\s*많",
-       "틀린",
-       "맞지\\s*않"
+       "(\uc778\uc6d0|\ud559\uc0dd\\s*\uc218|\uba85\\s*\uc218|\uc0ac\ub78c\\s*\uc218|\uc778\uc6d0\uc218)(\uc774|\uac00|\uc740|\ub294)?\\s*(\uc11c\ub85c\\s*)?(\ub2e4\ub974|\ub2e4\ub97c|\ucc28\uc774)",
+       "\ub2e4\ub974\uba74",
+       "\ub9ce\uc740\\s*(\ucabd|\ubc18)",
+       "\uac00\uae4c\uc6cc",
+       "\uac00\uc911",
+       "\ub354\\s*\ub9ce",
+       "\ud2c0\ub9b0",
+       "\ub9de\uc9c0\\s*\uc54a"
       ]
      }
     ],
     "selfAssess": [
-     "맞는 경우와 맞지 않는 경우를 모두 말했나요?",
-     "숫자 예(예: 20명과 10명)를 들었나요?",
-     "'전체 평균은 점수의 합을 전체 인원으로 나눈 것'이라는 뜻에 맞게 설명했나요?"
+     "\ub9de\ub294 \uacbd\uc6b0\uc640 \ub9de\uc9c0 \uc54a\ub294 \uacbd\uc6b0\ub97c \ubaa8\ub450 \ub9d0\ud588\ub098\uc694?",
+     "\uc22b\uc790 \uc608(\uc608: 20\uba85\uacfc 10\uba85)\ub97c \ub4e4\uc5c8\ub098\uc694?",
+     "'\uc804\uccb4 \ud3c9\uade0\uc740 \uc810\uc218\uc758 \ud569\uc744 \uc804\uccb4 \uc778\uc6d0\uc73c\ub85c \ub098\ub208 \uac83'\uc774\ub77c\ub294 \ub73b\uc5d0 \ub9de\uac8c \uc124\uba85\ud588\ub098\uc694?"
     ],
     "modelAnswers": [
      {
-      "text": "두 반의 인원이 같으면 75점이 맞아. 하지만 인원이 다르면 많은 쪽 평균에 가까워져. 예를 들어 A반 30명, B반 10명이면 (2100+800)÷40=72.5로 75가 아니야."
+      "text": "\ub450 \ubc18\uc758 \uc778\uc6d0\uc774 \uac19\uc73c\uba74 75\uc810\uc774 \ub9de\uc544. \ud558\uc9c0\ub9cc \uc778\uc6d0\uc774 \ub2e4\ub974\uba74 \ub9ce\uc740 \ucabd \ud3c9\uade0\uc5d0 \uac00\uae4c\uc6cc\uc838. \uc608\ub97c \ub4e4\uc5b4 A\ubc18 30\uba85, B\ubc18 10\uba85\uc774\uba74 (2100+800)\u00f740=72.5\ub85c 75\uac00 \uc544\ub2c8\uc57c."
      },
      {
-      "text": "A반과 B반 학생 수가 똑같을 때만 두 평균의 평균이 전체 평균이야. 학생 수가 다르면 학생이 많은 반 평균 쪽으로 전체 평균이 치우치므로 틀려.",
-      "note": "숫자 예 없이 이유를 말로 설명한 답."
+      "text": "A\ubc18\uacfc B\ubc18 \ud559\uc0dd \uc218\uac00 \ub611\uac19\uc744 \ub54c\ub9cc \ub450 \ud3c9\uade0\uc758 \ud3c9\uade0\uc774 \uc804\uccb4 \ud3c9\uade0\uc774\uc57c. \ud559\uc0dd \uc218\uac00 \ub2e4\ub974\uba74 \ud559\uc0dd\uc774 \ub9ce\uc740 \ubc18 \ud3c9\uade0 \ucabd\uc73c\ub85c \uc804\uccb4 \ud3c9\uade0\uc774 \uce58\uc6b0\uce58\ubbc0\ub85c \ud2c0\ub824.",
+      "note": "\uc22b\uc790 \uc608 \uc5c6\uc774 \uc774\uc720\ub97c \ub9d0\ub85c \uc124\uba85\ud55c \ub2f5."
      }
     ],
     "badAnswers": [
      {
-      "text": "항상 맞아. 75점이야.",
-      "why": "조건을 따지지 않고 주장을 받아들였다."
+      "text": "\ud56d\uc0c1 \ub9de\uc544. 75\uc810\uc774\uc57c.",
+      "why": "\uc870\uac74\uc744 \ub530\uc9c0\uc9c0 \uc54a\uace0 \uc8fc\uc7a5\uc744 \ubc1b\uc544\ub4e4\uc600\ub2e4."
      },
      {
-      "text": "인원이 같으면 맞아.",
-      "why": "맞지 않는 경우에 대한 언급이 없다."
+      "text": "\uc778\uc6d0\uc774 \uac19\uc73c\uba74 \ub9de\uc544.",
+      "why": "\ub9de\uc9c0 \uc54a\ub294 \uacbd\uc6b0\uc5d0 \ub300\ud55c \uc5b8\uae09\uc774 \uc5c6\ub2e4."
      }
     ],
-    "humanReview": "'인원이 많은 반 쪽으로 치우친다'는 이유를 이해하고 쓴 것인지 외운 문장인지는 사람이 읽어야 안다.",
+    "humanReview": "'\uc778\uc6d0\uc774 \ub9ce\uc740 \ubc18 \ucabd\uc73c\ub85c \uce58\uc6b0\uce5c\ub2e4'\ub294 \uc774\uc720\ub97c \uc774\ud574\ud558\uace0 \uc4f4 \uac83\uc778\uc9c0 \uc678\uc6b4 \ubb38\uc7a5\uc778\uc9c0\ub294 \uc0ac\ub78c\uc774 \uc77d\uc5b4\uc57c \uc548\ub2e4.",
     "hints": [
-     "두 반의 인원이 같은 경우와 다른 경우, 전체 점수 합을 (평균)×(인원)으로 각각 적어 비교해 보세요.",
-     "20명과 10명처럼 인원 예를 하나 넣어 전체 평균을 직접 계산해 보세요."
+     "\ub450 \ubc18\uc758 \uc778\uc6d0\uc774 \uac19\uc740 \uacbd\uc6b0\uc640 \ub2e4\ub978 \uacbd\uc6b0, \uc804\uccb4 \uc810\uc218 \ud569\uc744 (\ud3c9\uade0)\u00d7(\uc778\uc6d0)\uc73c\ub85c \uac01\uac01 \uc801\uc5b4 \ube44\uad50\ud574 \ubcf4\uc138\uc694.",
+     "20\uba85\uacfc 10\uba85\ucc98\ub7fc \uc778\uc6d0 \uc608\ub97c \ud558\ub098 \ub123\uc5b4 \uc804\uccb4 \ud3c9\uade0\uc744 \uc9c1\uc811 \uacc4\uc0b0\ud574 \ubcf4\uc138\uc694."
     ]
    }
   ],
   "rubric": [
    {
-    "criterion": "정보의 충분성 판단",
-    "full": "인원수가 더 필요함과 평균이 두 평균 사이에 있음을 함께 설명",
-    "partial": "한쪽만 언급",
-    "none": "정보가 충분하다고 판단"
+    "criterion": "\uc815\ubcf4\uc758 \ucda9\ubd84\uc131 \ud310\ub2e8",
+    "full": "\uc778\uc6d0\uc218\uac00 \ub354 \ud544\uc694\ud568\uacfc \ud3c9\uade0\uc774 \ub450 \ud3c9\uade0 \uc0ac\uc774\uc5d0 \uc788\uc74c\uc744 \ud568\uaed8 \uc124\uba85",
+    "partial": "\ud55c\ucabd\ub9cc \uc5b8\uae09",
+    "none": "\uc815\ubcf4\uac00 \ucda9\ubd84\ud558\ub2e4\uace0 \ud310\ub2e8"
    },
    {
-    "criterion": "조건을 만족하는 사례 만들기",
-    "full": "범위 조건을 만족하는 서로 다른 비의 3가지 사례",
-    "partial": "1~2가지",
-    "none": "조건 확인 없는 사례"
+    "criterion": "\uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294 \uc0ac\ub840 \ub9cc\ub4e4\uae30",
+    "full": "\ubc94\uc704 \uc870\uac74\uc744 \ub9cc\uc871\ud558\ub294 \uc11c\ub85c \ub2e4\ub978 \ube44\uc758 3\uac00\uc9c0 \uc0ac\ub840",
+    "partial": "1~2\uac00\uc9c0",
+    "none": "\uc870\uac74 \ud655\uc778 \uc5c6\ub294 \uc0ac\ub840"
    },
    {
-    "criterion": "성립 조건 설명",
-    "full": "맞는 경우(인원 같음)와 맞지 않는 경우(인원 다름)를 이유와 함께 설명",
-    "partial": "한 경우만 설명",
-    "none": "결론만 말함"
+    "criterion": "\uc131\ub9bd \uc870\uac74 \uc124\uba85",
+    "full": "\ub9de\ub294 \uacbd\uc6b0(\uc778\uc6d0 \uac19\uc74c)\uc640 \ub9de\uc9c0 \uc54a\ub294 \uacbd\uc6b0(\uc778\uc6d0 \ub2e4\ub984)\ub97c \uc774\uc720\uc640 \ud568\uaed8 \uc124\uba85",
+    "partial": "\ud55c \uacbd\uc6b0\ub9cc \uc124\uba85",
+    "none": "\uacb0\ub860\ub9cc \ub9d0\ud568"
    }
   ],
   "alternatives": [
-   "2단계에서 B반 인원이 더 많은 경우는 평균이 74점을 넘어 불가능하다. A반이 B반의 1.5배 이상 4배 이하인 어느 짝이든 인정된다.",
-   "3단계에서 점수 합 식으로 설명하는 답도 타당하다."
+   "2\ub2e8\uacc4\uc5d0\uc11c B\ubc18 \uc778\uc6d0\uc774 \ub354 \ub9ce\uc740 \uacbd\uc6b0\ub294 \ud3c9\uade0\uc774 74\uc810\uc744 \ub118\uc5b4 \ubd88\uac00\ub2a5\ud558\ub2e4. A\ubc18\uc774 B\ubc18\uc758 1.5\ubc30 \uc774\uc0c1 4\ubc30 \uc774\ud558\uc778 \uc5b4\ub290 \uc9dd\uc774\ub4e0 \uc778\uc815\ub41c\ub2e4.",
+   "3\ub2e8\uacc4\uc5d0\uc11c \uc810\uc218 \ud569 \uc2dd\uc73c\ub85c \uc124\uba85\ud558\ub294 \ub2f5\ub3c4 \ud0c0\ub2f9\ud558\ub2e4."
   ],
   "hardCases": [
-   "한 반이 0명인 경우는 '각 반에는 학생이 1명 이상'이라는 전제에서 제외된다.",
-   "점수 합을 모르고 평균만 알려진 상황에서 전체 평균의 정확한 값을 요구하는 문제는 정보가 부족하다."
+   "\ud55c \ubc18\uc774 0\uba85\uc778 \uacbd\uc6b0\ub294 '\uac01 \ubc18\uc5d0\ub294 \ud559\uc0dd\uc774 1\uba85 \uc774\uc0c1'\uc774\ub77c\ub294 \uc804\uc81c\uc5d0\uc11c \uc81c\uc678\ub41c\ub2e4.",
+   "\uc810\uc218 \ud569\uc744 \ubaa8\ub974\uace0 \ud3c9\uade0\ub9cc \uc54c\ub824\uc9c4 \uc0c1\ud669\uc5d0\uc11c \uc804\uccb4 \ud3c9\uade0\uc758 \uc815\ud655\ud55c \uac12\uc744 \uc694\uad6c\ud558\ub294 \ubb38\uc81c\ub294 \uc815\ubcf4\uac00 \ubd80\uc871\ud558\ub2e4."
   ],
   "cautions": {
-   "language": "'합친 평균'은 '두 반 학생 전체의 평균'으로 풀이한다. '70×a'는 '칠십 곱하기 에이'로 읽는다.",
-   "culture": "학교 시험의 반별 평균은 한국 중학생에게 익숙한 상황이다.",
-   "accessibility": "그림 없이 숫자와 문장만 썼다. 식은 말로 읽을 수 있다."
+   "language": "'\ud569\uce5c \ud3c9\uade0'\uc740 '\ub450 \ubc18 \ud559\uc0dd \uc804\uccb4\uc758 \ud3c9\uade0'\uc73c\ub85c \ud480\uc774\ud55c\ub2e4. '70\u00d7a'\ub294 '\uce60\uc2ed \uacf1\ud558\uae30 \uc5d0\uc774'\ub85c \uc77d\ub294\ub2e4.",
+   "culture": "\ud559\uad50 \uc2dc\ud5d8\uc758 \ubc18\ubcc4 \ud3c9\uade0\uc740 \ud55c\uad6d \uc911\ud559\uc0dd\uc5d0\uac8c \uc775\uc219\ud55c \uc0c1\ud669\uc774\ub2e4.",
+   "accessibility": "\uadf8\ub9bc \uc5c6\uc774 \uc22b\uc790\uc640 \ubb38\uc7a5\ub9cc \uc37c\ub2e4. \uc2dd\uc740 \ub9d0\ub85c \uc77d\uc744 \uc218 \uc788\ub2e4."
   },
   "autoVsHuman": {
    "auto": [
-    "1단계 선택",
-    "2단계 인원수 범위, 평균 범위, 서로 다른 비",
-    "서술에 인원이 같을 때/다를 때를 가리키는 낱말이 있는지"
+    "1\ub2e8\uacc4 \uc120\ud0dd",
+    "2\ub2e8\uacc4 \uc778\uc6d0\uc218 \ubc94\uc704, \ud3c9\uade0 \ubc94\uc704, \uc11c\ub85c \ub2e4\ub978 \ube44",
+    "\uc11c\uc220\uc5d0 \uc778\uc6d0\uc774 \uac19\uc744 \ub54c/\ub2e4\ub97c \ub54c\ub97c \uac00\ub9ac\ud0a4\ub294 \ub0b1\ub9d0\uc774 \uc788\ub294\uc9c0"
    ],
    "human": [
-    "왜 많은 반 쪽으로 치우치는지 이해했는지",
-    "제시한 예의 계산이 맞는지"
+    "\uc65c \ub9ce\uc740 \ubc18 \ucabd\uc73c\ub85c \uce58\uc6b0\uce58\ub294\uc9c0 \uc774\ud574\ud588\ub294\uc9c0",
+    "\uc81c\uc2dc\ud55c \uc608\uc758 \uacc4\uc0b0\uc774 \ub9de\ub294\uc9c0"
    ]
-  }
+  },
+  "status": "reviewed-ai"
  }
 ]
