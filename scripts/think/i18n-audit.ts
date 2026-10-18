@@ -22,6 +22,7 @@ async function main() {
   for (const k of Object.keys(TASK_LOADERS)) tasks.push(...(await TASK_LOADERS[k]()));
   const rows: string[] = [];
   const list: string[] = [];
+  const missingFull: Array<{ subject: string; id: string; path: string; text: string }> = [];
   for (const subject of ["math", "english", "korean"] as const) {
     const ts = tasks.filter((t) => t.subject === subject);
     for (const lang of LANGS) {
@@ -37,7 +38,7 @@ async function main() {
           const tr = m[path];
           if (typeof tr === "string" && tr.trim()) { overlay++; if (hangulShare(tr) > 0.7) { korean++; list.push(`${lang} ${t.id} ${path}: ${tr.slice(0, 60)}`); } }
           else if (!needsTranslation(text)) { notNeeded++; }
-          else { missing++; miss++; if (lang === "vi") list.push(`MISSING ${lang} ${t.id} ${path}: ${text.slice(0, 50)}`); }
+          else { missing++; miss++; if (lang === "vi") { list.push(`MISSING ${lang} ${t.id} ${path}: ${text.slice(0, 50)}`); missingFull.push({ subject, id: t.id, path, text }); } }
         }
         if (miss) tasksMissing++;
       }
@@ -45,6 +46,7 @@ async function main() {
     }
   }
   console.log(rows.join("\n"));
+  if (process.argv.includes("--missing-json")) console.log(JSON.stringify(missingFull));
   if (process.argv.includes("--list")) console.log(list.slice(0, 80).join("\n"));
 }
 void main();
