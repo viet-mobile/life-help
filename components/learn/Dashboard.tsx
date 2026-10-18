@@ -12,12 +12,18 @@ import { useLearner } from "./LearnerProvider";
 import { LevelUnavailable } from "./LevelUnavailable";
 import { thinkLangFor } from "@/lib/think/lang";
 import { HUB } from "@/components/think/hubLabels";
+import { CADENCE_TEXT, thinkCadence } from "@/lib/think/cadence";
 import { QuestList } from "./QuestList";
 import { SkillBars } from "./SkillBars";
 
 export function Dashboard() {
   const { state, index, t, href, mode, accountsEnabled, site, locale } = useLearner();
-  const thinkText = HUB[thinkLangFor(locale, site)];
+  const thinkLang = thinkLangFor(locale, site);
+  const thinkText = HUB[thinkLang];
+  const answered = Object.values(state.mastery).reduce((n, m) => n + m.attempts, 0);
+  let tried = 0;
+  try { tried = Object.keys(JSON.parse(window.localStorage.getItem(`learn:think:${site}`) ?? "{}")).length; } catch { /* storage unavailable: counted as none tried */ }
+  const cadence = thinkCadence(answered, tried);
   const now = new Date();
   const level = levelProgress(state.totalXp);
   const rec = recommendNext(state, index, now);
@@ -62,6 +68,9 @@ export function Dashboard() {
       <Link className="l-card l-stack" data-testid="think-card" href={href("/think")} style={{ textDecoration: "none", color: "inherit" }}>
         <h2 className="l-h2">🧠 {thinkText.title}</h2>
         <p className="l-muted">{thinkText.intro}</p>
+        <p data-testid="think-cadence" style={cadence.owed > 0 ? { fontWeight: 600 } : undefined} className={cadence.owed > 0 ? undefined : "l-muted"}>
+          {cadence.owed > 0 ? CADENCE_TEXT[thinkLang].unlocked(cadence.owed) : CADENCE_TEXT[thinkLang].toNext(cadence.toNext)}
+        </p>
         <span className="l-btn l-btn-ghost l-btn-block">{thinkText.tryOne}</span>
       </Link>
 
