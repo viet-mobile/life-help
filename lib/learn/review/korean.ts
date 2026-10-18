@@ -83,6 +83,7 @@ export async function loadReviewLevel(level: ReviewLevel, locale: LearnLocale, o
   for (const [skillId, sk] of Object.entries(bank.skills)) {
     if (levelOfSkill(skillId) !== level) continue;
     for (const item of sk.items) for (const form of formsOf(item, skillId)) {
+      if (form === "dict" && !kit.templates.dict) continue;
       const q = expandItem(skillId, item, sk.items, sk.notes, kit, form, { draft: bank.status === "DRAFT", vi: locale === "vi" });
       const fb: string[] = [];
       if (locale !== "en") {
@@ -108,7 +109,7 @@ export function reviewCounts(): Record<ReviewLevel, { course: number; bridge: nu
   for (const q of course.questions) { const o = out[levelOfSkill(q.skillId)]; if (q.skillId.startsWith("k.k7.bridge_")) o.bridge++; else o.course++; }
   for (const [skillId, sk] of Object.entries(bank.skills)) {
     const o = out[levelOfSkill(skillId)];
-    for (const item of sk.items) { if (item.c !== "syl") o.items++; o.bank += formsOf(item, skillId).length; }
+    for (const item of sk.items) { if (item.c !== "syl") o.items++; o.bank += formsOf(item, skillId).filter((f) => f !== "dict" || (kitEn.templates as Record<string, unknown>).dict).length; }
   }
   return out;
 }

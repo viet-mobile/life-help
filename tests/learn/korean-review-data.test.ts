@@ -54,11 +54,11 @@ describe("Korean review data", () => {
     const all = [];
     for (const l of reviewLevels) for (const s of (await loadReviewLevel(l, "en", { limit: 1 })).skills) all.push(s);
     const counts = reviewCounts();
-    expect(reviewLevels.reduce((n, l) => n + counts[l].bank, 0)).toBe(11184);
+    expect(reviewLevels.reduce((n, l) => n + counts[l].bank, 0)).toBe(13385);
     expect(counts.K7.bridge).toBe(40);
     // published since 2026-10-15: the review console reads the same material that learners now receive
     const served = bankQuestions("korean", "en", null, new Set(Object.keys(KOREAN_BANK_DATA.skills)), "all");
-    expect(served.length).toBe(11184);
+    expect(served.length).toBe(13385);
     expect(served.every((q) => q.status === "PUBLISHED")).toBe(true);
   });
 

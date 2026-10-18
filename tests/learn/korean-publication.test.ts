@@ -39,11 +39,11 @@ describe("Korean K1..K10 publication across the student pathways", () => {
     }
   });
 
-  it("3. the practice bank (11,184 questions) is served in Korean-learning's English and in the 14 languages that carry every meaning, PUBLISHED", async () => {
+  it("3. the practice bank (13,385 questions) is served in Korean-learning's English and in the 14 languages that carry every meaning, PUBLISHED", async () => {
     for (const locale of ["en", "ko", "vi", "ja", "zh-Hans"] as const) {
       const { bundle } = await loadIndex("korean", { locale });
       const bank = bundle.questions.filter((q) => q.id.startsWith("kb-"));
-      expect(bank.length, locale).toBe(11184);
+      expect(bank.length, locale).toBe(13385);
       expect(bank.every((q) => q.status === "PUBLISHED" && q.role === "variant"), locale).toBe(true);
     }
   });
