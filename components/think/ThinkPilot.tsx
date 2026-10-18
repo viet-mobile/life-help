@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { allTasks } from "@/lib/think/tasks";
+import { TASK_LOADERS } from "@/lib/think/data/assets-index";
+import type { ThinkTask } from "@/lib/think/types";
 import { THINK_LANGS, LANG_NAMES, type ThinkLang } from "@/lib/think/lang";
 import { checksOffFor, loadOverlay, localize } from "@/lib/think/localize";
 import type { Overlay } from "@/lib/think/data/files";
@@ -15,7 +16,10 @@ const writeFlags = (f: Flag[]) => { try { window.localStorage.setItem(STORE, JSO
 
 const SUBJECT_ICON = { math: "➗", english: "🔤", korean: "🇰🇷" } as const;
 
-export function ThinkPilot() {
+export function ThinkPilot({ initialTasks }: { initialTasks?: ThinkTask[] } = {}) {
+  const [allTasks, setAllTasks] = useState<ThinkTask[]>(initialTasks ?? []);
+  const [loadFailed, setLoadFailed] = useState(false);
+  useEffect(() => { if (initialTasks) return; let live = true; void Promise.all(Object.values(TASK_LOADERS).map(load => load())).then(lists => { if (live) setAllTasks(lists.flat()); }).catch(() => { if (live) setLoadFailed(true); }); return () => { live = false; }; }, [initialTasks]);
   const [taskId, setTaskId] = useState<string | null>(null);
   const [subject, setSubject] = useState<string>("all");
   const [level, setLevel] = useState<string>("all");
@@ -25,7 +29,7 @@ export function ThinkPilot() {
   const [overlay, setOverlay] = useState<Overlay>({});
   useEffect(() => { let live = true; setOverlay({}); void loadOverlay(lang).then((o) => { if (live) setOverlay(o); }); return () => { live = false; }; }, [lang]);
   const [flags, setFlags] = useState<Flag[]>([]);
-  useEffect(() => { setFlags(readFlags()); const h = window.location.hash.slice(1); if (h && allTasks.some((t) => t.id === h)) setTaskId(h); }, []);
+  useEffect(() => { setFlags(readFlags()); const h = window.location.hash.slice(1); if (h) setTaskId(h); }, []);
   const open = (id: string | null) => { setTaskId(id); try { window.history.replaceState(null, "", id ? `#${id}` : window.location.pathname); } catch { /* ignore */ } window.scrollTo?.(0, 0); };
   const addFlag = (f: Omit<Flag, "at">) => { const n = [...flags, { ...f, at: new Date().toISOString() }]; setFlags(n); writeFlags(n); };
   const found = taskId ? allTasks.find((t) => t.id === taskId) ?? null : null;
@@ -35,6 +39,8 @@ export function ThinkPilot() {
 
   if (task) return <TaskPlayer key={`${task.id}:${lang}:${loc?.translated}`} task={task} lang={lang} checksOff={checksOffFor(task, lang)} reviewer={reviewer} onBack={() => open(null)} onFlag={addFlag} />;
 
+  if (loadFailed) return <p role="alert">과제를 불러오지 못했습니다. 새로고침해 다시 시도해 주세요. / Could not load tasks. Please reload.</p>;
+  if (!allTasks.length) return <p role="status">과제를 불러오는 중… / Loading tasks…</p>;
   const grades = [...new Set(allTasks.filter((t) => (subject === "all" || t.subject === subject) && t.grade).map((t) => t.grade as string))];
   const shown = allTasks.filter((t) => (subject === "all" || t.subject === subject) && (level === "all" || String(t.level) === level) && (grade === "all" || t.grade === grade));
   return (

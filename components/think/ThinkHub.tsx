@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { FILE_META, TASK_LOADERS } from "@/lib/think/data/files";
+import { FILE_META, TASK_LOADERS } from "@/lib/think/data/assets-index";
 import { domainOf } from "@/lib/think/domains";
 import { thinkLangFor, type ThinkLang } from "@/lib/think/lang";
 import { checksOffFor, loadOverlay, localize } from "@/lib/think/localize";
@@ -31,6 +31,9 @@ export function ThinkHub() {
   const own = (state.profile?.grade ?? siteConfig(site).levels[0]) as string;
   const [grade, setGrade] = useState<string>(own);
   const [field, setField] = useState<string>("all");
+  const [loadError, setLoadError] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [retry, setRetry] = useState(0);
   const [tasks, setTasks] = useState<ThinkTask[]>([]);
   const [overlay, setOverlay] = useState<Record<string, Record<string, string>>>({});
   const [done, setDone] = useState<Record<string, string>>({});
@@ -43,15 +46,16 @@ export function ThinkHub() {
   useEffect(() => { setDone(readDone(site)); }, [site]);
   useEffect(() => {
     let live = true;
+    setTasks([]); setOverlay({}); setLoadError(false); setLoading(true);
     const isElective = grade.startsWith("EL-");
     const metas = FILE_META.filter((m) => m.subject === site && (m.grades.includes(grade) || (!isElective && m.grades.length === 0)));
     void Promise.all(metas.map((m) => TASK_LOADERS[m.key]())).then(async (lists) => {
       const all = lists.flat().filter((t) => (t.grade ? t.grade === grade : !isElective && t.level === bandOf(grade)));
       const o = await loadOverlay(lang, metas.map((m) => m.key));
-      if (live) { setTasks(all); setOverlay(o); }
-    });
+      if (live) { setTasks(all); setOverlay(o); setLoading(false); }
+    }).catch(() => { if (live) { setLoadError(true); setLoading(false); } });
     return () => { live = false; };
-  }, [site, grade, lang]);
+  }, [site, grade, lang, retry]);
 
   const localized = useMemo(() => tasks.map((t) => localize(t, lang, overlay)), [tasks, lang, overlay]);
   const fields = useMemo(() => [...new Set(localized.map((x) => x.task.topic ?? domainOf(x.task)))], [localized]);
@@ -61,6 +65,9 @@ export function ThinkHub() {
   const gradeName = (g: string) => (g.startsWith("EL-") ? ELECTIVE_NAMES[g][lang] : g);
 
   if (!ready) return <div className="l-wrap" role="status">…</div>;
+  const loadText = { ko: ["과제를 불러오는 중…", "과제를 불러오지 못했어요.", "다시 시도"], en: ["Loading tasks…", "Could not load tasks.", "Try again"], vi: ["Đang tải bài tập…", "Không thể tải bài tập.", "Thử lại"], ja: ["課題を読み込み中…", "課題を読み込めませんでした。", "再試行"], "zh-Hans": ["正在加载任务…", "无法加载任务。", "重试"], "zh-Hant": ["正在載入任務…", "無法載入任務。", "重試"] }[lang];
+  if (loadError) return <div className="l-wrap" role="alert"><p>{loadText[1]}</p><button className="l-btn" onClick={() => setRetry(n => n + 1)}>{loadText[2]}</button></div>;
+  if (loading) return <div className="l-wrap" role="status">{loadText[0]}</div>;
   if (current) {
     return (
       <div className="l-wrap l-stack" data-testid="think-player">

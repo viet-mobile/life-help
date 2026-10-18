@@ -17,8 +17,8 @@ const remoteGroup = (lang) => Object.entries(REMOTE).find(([, ls]) => ls.include
 const remotePlugin = {
   name: "remote-overlays",
   setup(b) {
-    b.onLoad({ filter: /lib[\\/]think[\\/]data[\\/]files\.ts$/ }, async (args) => {
-      const src = fs.readFileSync(args.path, "utf8").replace(/\(\) => import\("\.\.\/i18n\/([^/]+)\/([^"]+)\.json"\)\.then\([^\n]*?\),/g, (m, lang, key) => {
+    b.onLoad({ filter: /lib[\\/]think[\\/]data[\\/](?:files|assets-index)\.ts$/ }, async (args) => {
+      const src = fs.readFileSync(path.join(path.dirname(args.path), "files.ts"), "utf8").replace(/\(\) => import\("\.\.\/i18n\/([^/]+)\/([^"]+)\.json"\)\.then\([^\n]*?\),/g, (m, lang, key) => {
         const g = remoteGroup(lang);
         return g ? `() => fetch("${baseOf(g)}/o/${lang}/${key}.json").then((r) => r.json() as Promise<Overlay>),` : m;
       });

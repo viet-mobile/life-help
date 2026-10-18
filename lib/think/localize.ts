@@ -1,5 +1,5 @@
 import { applyFlat } from "./flat";
-import { OVERLAY_LOADERS, type Overlay } from "./data/files";
+import { OVERLAY_LOADERS, type Overlay } from "./data/assets-index";
 import { baseLang, type ThinkLang } from "./lang";
 import type { ThinkTask } from "./types";
 

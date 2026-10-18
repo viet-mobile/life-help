@@ -1,8 +1,10 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, beforeAll, afterAll, vi } from "vitest";
 import { TASK_LOADERS } from "../../lib/think/data/files";
 import { loadOverlay, localize } from "../../lib/think/localize";
 import { flatten } from "../../lib/think/flat";
 import type { ThinkTask } from "../../lib/think/types";
+import { readFileSync } from "node:fs";
+import path from "node:path";
 import pendingList from "./translation-pending.json";
 
 /** Tasks that exist but have no translation overlay yet, per language. They are tracked here, never counted as translated; the list must match reality exactly (no hiding, no stale entries). */
@@ -17,6 +19,11 @@ async function allTasks(): Promise<ThinkTask[]> {
 }
 
 describe("translation overlays", () => {
+  beforeAll(() => { vi.stubGlobal("fetch", async (url: string) => {
+    if (!/^\/think-assets\/[a-f0-9]{64}\.json$/.test(url)) throw new Error("Unexpected asset request");
+    return new Response(readFileSync(path.join(process.cwd(), "public", url)));
+  }); });
+  afterAll(() => vi.unstubAllGlobals());
   for (const lang of LANGS) {
     it(`${lang}: covers every translatable string, none empty, no stray Hangul outside currency`, async () => {
       const tasks = await allTasks();
