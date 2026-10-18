@@ -6,6 +6,7 @@ import { useMemo, useRef, useState } from "react";
 import type { EngineDelta, PlayerState, PublicQuestion } from "@/lib/learn/types";
 import { ApiError, useLearner } from "./LearnerProvider";
 import { AnswerInput, ListenButton, TargetBlock } from "./renderers";
+import { PronTip } from "./PronTip";
 import { MathBlock, RichText } from "./RichText";
 import { useEnterToContinue } from "./useEnterToContinue";
 import { ListeningPanel } from "./Listening";
@@ -147,6 +148,7 @@ export function QuestionCard({
             {hints.map((h, k) => <p key={k}><RichText text={h} /></p>)}
           </div>
         )}
+        {(status === "wrong" || status === "revealed") && <PronTip text={q.target?.text ?? q.audioText} />}
         {status === "correct" && (
           <div className="l-panel l-panel-good l-pop">
             <div className="l-panel-title">✅ {attempts > 0 ? t("lesson.correct.after") : t("lesson.correct")}</div>

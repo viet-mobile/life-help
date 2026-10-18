@@ -39,7 +39,7 @@ describe("korean bank data", () => {
     const seen = new Set<string>();
     for (const q of all) {
       const ans: any = q.answer;
-      const correct = ans.kind === "choice" ? (q.type === "true_false" ? `${q.prompt}|${ans.id}` : q.options!.find((o) => o.id === ans.id)!.text) : (ans.ids as string[]).join(",");
+      const correct = ans.kind === "choice" ? (q.type === "true_false" ? `${q.prompt}|${ans.id}` : q.options!.find((o) => o.id === ans.id)!.text) : ans.kind === "text" ? (ans.accepted as string[]).join(",") : (ans.ids as string[]).join(",");
       const key = `${q.skillId}|${q.tags![2]}|${q.target?.text ?? q.audioText ?? q.prompt}|${correct}`;
       expect(seen.has(key), `duplicate question ${q.id}`).toBe(false);
       seen.add(key);
@@ -49,6 +49,7 @@ describe("korean bank data", () => {
   it("every choice question has 4 distinct options and a valid answer key; ordering has a non-trivial order", () => {
     for (const q of all) {
       if (q.type === "true_false") { expect(["true", "false"]).toContain((q.answer as any).id); continue; }
+      if (q.type === "short_answer") { expect((q.answer as any).kind, q.id).toBe("text"); expect((q.answer as any).dictation, q.id).toBe("ko"); expect(q.audioText, q.id).toBeTruthy(); continue; } // dictation: typed, graded with the Korean dictation rules
       if (q.type === "ordering") {
         const ids = (q.answer as any).ids as string[];
         expect(q.options!.map((o) => o.id).sort()).toEqual([...ids].sort());
@@ -85,7 +86,7 @@ describe("korean bank data", () => {
         expect(q.prompt.includes(`“${correctText}”`) || (HANGUL.test(correctText) && q.prompt.includes(correctText)), `${q.id} prompt reveals ${correctText}`).toBe(false);
       }
       const form = q.tags![2];
-      if (form !== "read" && form !== "fromrr") for (const h of q.hints) expect(HANGUL.test(h), `${q.id} hint has Hangul`).toBe(false);
+      if (form !== "read" && form !== "fromrr" && form !== "dict") for (const h of q.hints) expect(HANGUL.test(h), `${q.id} hint has Hangul`).toBe(false);
     }
   });
 

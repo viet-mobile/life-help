@@ -20,6 +20,7 @@ const ENGLISH: Record<string, string> = {
   "en-h1-grammar-reading": "Bridge of Logic",
   "en-h2-advanced-grammar-logic": "Tower of Rhetoric",
   "en-h3-reading-summary": "Exam Summit",
+  "en-h3e-electives": "Elective Plaza",
 };
 type WorldBundle = { courses: Record<string, { world: { name: string } }> };
 const readJson = (rel: string) => JSON.parse(fs.readFileSync(path.join(root, rel), "utf8"));

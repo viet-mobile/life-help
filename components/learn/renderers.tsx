@@ -236,7 +236,7 @@ export function ListenButton({ text }: { text: string }) {
   );
 }
 function subscribeVoices(notify: () => void) {
-  if (typeof window === "undefined" || !("speechSynthesis" in window) || typeof window.speechSynthesis.addEventListener !== "function") return () => {};
+  if (typeof window === "undefined" || !window.speechSynthesis || typeof window.speechSynthesis.addEventListener !== "function") return () => {};
   window.speechSynthesis.addEventListener("voiceschanged", notify);
   return () => window.speechSynthesis.removeEventListener("voiceschanged", notify);
 }

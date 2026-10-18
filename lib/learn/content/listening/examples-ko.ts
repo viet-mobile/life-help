@@ -83,6 +83,14 @@ export const EXAMPLE_KO: Readonly<Record<string, readonly string[]>> = {
   "en-e6-seq1": ["먼저, 나는 일어나요.", "그다음 나는 아침을 먹어요.", "마지막으로 나는 학교에 가요."],
   "en-e6-pun1": ["이것은 네 가방이니?", "응, 그래."],
   "en-m2-sum1": ["재활용은 자원을 아끼고 쓰레기를 줄여요."],
+  // H3 electives (scripts/learn/secondary/english-h3-elective.mjs)
+  "en-h3e-l1": ["소금 좀 건네주실래요?", "잘 듣고 있어요."],
+  "en-h3e-l2": ["이 건은 나중에 다시 얘기해요.", "진행 상황을 계속 알려 주세요."],
+  "en-h3e-l3": ["보고서에 따르면 매출이 5% 올랐어요.", "지루한 영화였어요."],
+  "en-h3e-l4": ["인사법은 문화마다 달라서 궁금해요."],
+  "en-h3e-l5": ["주인공은 마을을 구하고 싶어 해요.", "폭풍은 흔히 어려움을 암시해요."],
+  "en-h3e-l6": ["자료가 다른 결과를 보여 주기 때문에 반대해요.", "상대는 그것이 싸다고 주장하지만, 그렇지 않아요."],
+  "en-h3e-l7": ["날씨는 나빴지만 여행은 즐거웠어요."],
 };
 
 /** Lessons whose example has no English to speak, excluded from bilingual listening on purpose (the reason is part of the record). */

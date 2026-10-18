@@ -30,7 +30,7 @@ export class BrowserSpeechEngine implements SpeechEngine {
   private wired = false;
 
   private get synth(): SpeechSynthesis | null {
-    return typeof window !== "undefined" && "speechSynthesis" in window && typeof SpeechSynthesisUtterance !== "undefined" ? window.speechSynthesis : null;
+    return typeof window !== "undefined" && !!window.speechSynthesis && typeof SpeechSynthesisUtterance !== "undefined" ? window.speechSynthesis : null;
   }
   private refreshVoices() {
     const s = this.synth;

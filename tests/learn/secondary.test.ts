@@ -43,9 +43,10 @@ describe("generated files are in sync with the generators (deterministic)", () =
   it("secondary bundles and overlays equal what the generators produce", () => {
     const m = buildSecondaryMath(); const e = buildSecondaryEnglish();
     expect(JSON.parse(JSON.stringify(m.bundle))).toEqual(mathSecondary);
-    expect(JSON.parse(JSON.stringify(e.bundle))).toEqual(englishSecondary);
+    // the generator also emits the H3 electives layer; the original-curriculum comparison strips it from both sides (it has its own checks)
+    expect(stripGeneratedLayers(e.bundle)).toEqual(englishSecondary);
     expect(JSON.parse(JSON.stringify(m.overlay))).toEqual(viMath);
-    expect(JSON.parse(JSON.stringify(e.overlay))).toEqual(viEnglish);
+    expect(stripGeneratedLayers(e.overlay)).toEqual(viEnglish);
   });
 });
 

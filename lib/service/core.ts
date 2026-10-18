@@ -192,6 +192,10 @@ export class ServiceCore {
   /** Adds the cached or fresh machine translation to messages written by someone else in another language. Originals are never touched. */
   private async withTranslations(rows: any[], reader: ActorKind | "ADMIN", locale: string): Promise<MessageView[]> {
     let budget = 8;
+    // First pass: everything that needs no provider call is decided right away; the messages that do need one are translated CONCURRENTLY.
+    // (They used to be translated one after the other, so a list answer could wait up to 8 x the provider timeout - well over the polling
+    // window - before the receiver saw even the messages that needed no translation.)
+    const pending: Array<{ slot: number; m: any; base: Omit<MessageView, "translation" | "translationStatus">; key: string }> = [];
     const views: MessageView[] = [];
     for (const m of rows) {
       const own = m.senderKind === reader;
@@ -203,15 +207,19 @@ export class ServiceCore {
       const last = this.failures.get(key);
       if (budget <= 0 || (last !== undefined && this.now() - last < this.failureCooldownMs)) { views.push({ ...base, translation: null, translationStatus: "FAILED" }); continue; }
       budget -= 1;
+      pending.push({ slot: views.length, m, base, key });
+      views.push({ ...base, translation: null, translationStatus: "FAILED" }); // replaced below
+    }
+    await Promise.all(pending.map(async ({ slot, m, base, key }) => {
       const res = await this.translator.translate(m.body, m.sourceLocale, locale);
       if (res.ok) {
-        await this.db.rpc("svc_translation_put", { p_entity: "MESSAGE", p_id: m.id, p_target: locale, p_body: res.text, p_provider: res.provider });
-        views.push({ ...base, translation: { locale, text: res.text }, translationStatus: "OK" });
+        // the cache write is best effort: a genuine translation is shown even when it could not be stored (it is fetched again next time)
+        await this.db.rpc("svc_translation_put", { p_entity: "MESSAGE", p_id: m.id, p_target: locale, p_body: res.text, p_provider: res.provider }).catch(() => undefined);
+        views[slot] = { ...base, translation: { locale, text: res.text }, translationStatus: "OK" };
       } else {
         this.failures.set(key, this.now());
-        views.push({ ...base, translation: null, translationStatus: "FAILED" });
       }
-    }
+    }));
     return views;
   }
 

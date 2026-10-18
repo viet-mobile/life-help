@@ -76,7 +76,7 @@ describe.each(SCHOOL_SITES)("grade-scoped curriculum: %s", (site) => {
       seen.add(scoped.catalog.courses[0].id);
       expect(scoped.catalog.courses[0].id, g).not.toBe(DEMO[site].catalog.courses[0].id);
       for (const s of scoped.catalog.skills) expect(m1Skills.has(s.id), `${g}: ${s.id} is an M1 skill`).toBe(false);
-      for (const q of scoped.questions) expect(q.id.includes(`-${g.toLowerCase()}-`) || q.id.startsWith("m-el-"), `${g}: ${q.id}`).toBe(true); // m-el-*: elective subjects (H2, H3)
+      for (const q of scoped.questions) expect(q.id.includes(`-${g.toLowerCase()}-`) || q.id.startsWith("m-el-") || q.id.startsWith("e-h3e-"), `${g}: ${q.id}`).toBe(true); // m-el-*, e-h3e-*: elective subjects (H2, H3)
     }
     expect(seen.size).toBe(5);
   });

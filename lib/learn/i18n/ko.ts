@@ -424,6 +424,15 @@ export const ko = {
   "semester.2": "2학기",
   "semester.empty": "이 학기의 학습 내용은 곧 준비돼요.",
   "semester.shared": "1·2학기 공통",
+  "pron.heading": "발음 도움말",
+  "pron.final": "단어 끝이나 자음 앞에서 받침 ㄲ·ㅋ, ㅅ·ㅆ·ㅈ·ㅊ·ㅌ, ㅍ은 각각 [ㄱ], [ㄷ], [ㅂ]으로 소리 나요. 예: {ex}.",
+  "pron.liaison": "홑받침이나 쌍받침 뒤에 모음으로 시작하는 조사·어미·접미사가 오면, 받침이 다음 음절의 첫소리로 옮겨 소리 나요. 예: {ex}.",
+  "pron.nasal": "받침 ㄱ·ㄷ·ㅂ 계열 소리가 ㄴ, ㅁ 앞에서는 콧소리(ㅇ, ㄴ, ㅁ)로 바뀌어요. 예: {ex}.",
+  "pron.lateral": "ㄴ과 ㄹ이 이어지면 보통 [ㄹ]로 소리 나요(예외가 몇 개 있어요). 예: {ex}.",
+  "pron.tense": "받침 ㄱ·ㄷ·ㅂ 계열 소리 뒤의 ㄱ, ㄷ, ㅂ, ㅅ, ㅈ은 된소리로 소리 나요. 예: {ex}.",
+  "pron.source": "출처: 표준 발음법 제{art}항(국립국어원).",
+  "pron.note": "규칙을 설명하는 도움말이에요. 기기 음성은 소리만 들려주며, 이 앱은 내 발음을 평가하지 않아요.",
+  "pron.hide": "발음 도움말 끄기",
 } as const;
 
 export type MessageKey = keyof typeof ko;

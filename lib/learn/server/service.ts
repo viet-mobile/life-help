@@ -274,6 +274,7 @@ export class LearnService {
 
   /** Flashcard fronts for the skills the learner has reached. No session, no XP, no mastery change; the back is fetched with `revealCard`. */
   async startCards(actor: Actor, site: Site, input: { skillId?: string; count?: number }) {
+    if (site !== "korean") throw new LearnError("unknown_action", 404); // flashcards are Korean-only in this release
     const { state, bundle, index } = await this.load(actor, site);
     const open = new Set(buildPath(state, index).filter((n) => n.status !== "locked").flatMap((n) => index.lessons.get(n.lessonId)?.lesson.skillIds ?? []));
     const skills = input.skillId ? (open.has(input.skillId) ? [input.skillId] : []) : [...open];
@@ -297,6 +298,7 @@ export class LearnService {
   }
 
   async revealCard(actor: Actor, site: Site, body: { questionId: string }) {
+    if (site !== "korean") throw new LearnError("unknown_action", 404);
     const { bundle: full } = await loadIndex(site, { locale: actor.locale ?? "ko", bankQuestionId: body.questionId });
     const [access, plan] = await Promise.all([this.getAccess(actor, site), this.accessPlan(site)]);
     if (plan.questionTier.get(body.questionId) === "PREMIUM" && access.tier !== "PREMIUM") this.premiumDenied(access);
