@@ -169,6 +169,7 @@ export const ko = {
   "dash.level": "레벨",
   "dash.xp": "XP",
   "dash.toNext": "다음 레벨까지 {n} XP",
+  "dash.coverage": "지금은 이 언어로 전체 {total}개 중 {served}개 문제만 풀 수 있어요. 나머지는 번역이 준비되면 열려요.",
   "dash.maxLevel": "최고 레벨이에요!",
   "dash.streak": "{n}일 연속",
   "dash.streak.none": "오늘 시작해 봐요",

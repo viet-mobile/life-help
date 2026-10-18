@@ -14,6 +14,7 @@ import { thinkLangFor } from "@/lib/think/lang";
 import { HUB } from "@/components/think/hubLabels";
 import { CADENCE_TEXT } from "@/lib/think/cadence";
 import { flowView } from "@/lib/think/flow";
+import { coverageFor, hasGap } from "@/lib/learn/coverage";
 import { readLedger } from "../think/ThinkOffer";
 import { QuestList } from "./QuestList";
 import { SkillBars } from "./SkillBars";
@@ -23,6 +24,7 @@ export function Dashboard() {
   const thinkLang = thinkLangFor(locale, site);
   const thinkText = HUB[thinkLang];
   const cadence = flowView(readLedger(site)); // counted per distinct solved / revealed question, retries never count (lib/think/flow.ts)
+  const coverage = coverageFor(site, locale);
   const now = new Date();
   const level = levelProgress(state.totalXp);
   const rec = recommendNext(state, index, now);
@@ -63,6 +65,8 @@ export function Dashboard() {
         <Link className="l-btn l-btn-light l-btn-block" href={ctaHref}>▶ {t("dash.continue")}</Link>
         <Link className="l-btn l-btn-ghost l-btn-block" href={href("/modes")}>{t("modes.title")}</Link>
       </section>
+
+      {hasGap(coverage) && <div className="l-panel l-panel-hint" role="note" data-testid="coverage-notice">{t("dash.coverage", { served: coverage.served.toLocaleString(locale), total: coverage.total.toLocaleString(locale) })}</div>}
 
       <Link className="l-card l-stack" data-testid="think-card" href={href("/think")} style={{ textDecoration: "none", color: "inherit" }}>
         <h2 className="l-h2">🧠 {thinkText.title}</h2>
