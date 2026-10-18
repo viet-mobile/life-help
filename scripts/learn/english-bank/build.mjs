@@ -112,10 +112,8 @@ const seenKeys = new Map(); // normalised prompt+answer -> id
 const seenSets = new Set();
 const seenFrames = new Set();
 const byKind = {};
-const PROMOTED = new Set(JSON.parse(fs.readFileSync(path.join(here, "electives-core.json"), "utf8")).questionIds); // now core questions of the electives course
 const push = (skill, packet, item, form, q) => {
-  if (PROMOTED.has(q.id)) { dropped.promotedToCatalog = (dropped.promotedToCatalog ?? 0) + 1; return; }
-  const answerText = q.answer.kind === "order" ? q.answer.ids.map((id) => q.options.find((o) => o.id === id)?.text).join(" ") : q.options.find((o) => o.id === q.answer.id)?.text;
+  const answerText = q.answer.kind === "text" ? q.answer.accepted[0] : q.answer.kind === "order" ? q.answer.ids.map((id) => q.options.find((o) => o.id === id)?.text).join(" ") : q.options.find((o) => o.id === q.answer.id)?.text;
   if (form === "cloze") q = { ...q, prompt: q.prompt.replace(/\b(a|an)(\s+)(_{2,})/gi, (_m, art, sp, bl) => `${art[0] === "A" ? "A" : "a"}(n)${sp}${bl}`) }; // the article would single out the one option that starts with the matching sound
   const k1 = `${norm(q.prompt)}|${norm(answerText ?? "")}`;
   const k2 = `${norm(q.prompt)}|${(q.options ?? [{ text: q.audioText ?? "" }]).map((o) => norm(o.text)).sort().join("|")}`;
