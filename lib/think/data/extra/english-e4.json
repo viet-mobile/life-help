@@ -91,11 +91,37 @@
       ]
      },
      {
+      "id": "w4",
+      "label": "쪽지의 일정과 겹치지 않는 다른 시각을 제안했다",
+      "mode": "any",
+      "patterns": [
+       "\\b5\\s*[:.]\\s*(?:3\\d|4\\d|5\\d)\\b",
+       "\\b6\\b(?!\\s*[:.]\\s*[3-5]\\d)",
+       "\\bsix\\b",
+       "\\bhalf past five\\b",
+       "\\bafter\\b",
+       "\\btomorrow\\b"
+      ]
+     },
+     {
       "id": "w3",
       "label": "무조건 찬성하는 답이 아니다",
       "mode": "none",
       "patterns": [
        "^\\s*(?:yes|sure|great)\\b"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "거절하는 말을 썼다(can't, sorry 등)",
+      "mode": "any",
+      "patterns": [
+       "\\bcan['’]?t\\b",
+       "\\bcannot\\b",
+       "\\bsorry\\b",
+       "\\bnot able\\b",
+       "\\bbusy\\b",
+       "\\bunable\\b"
       ]
      }
     ],
@@ -121,6 +147,14 @@
      {
       "text": "I have piano class.",
       "why": "쓰레기 버리기 일정과 다른 시각 제안이 없다."
+     },
+     {
+      "text": "Sorry, I can't. I have piano class at 4:00 and I must take out the trash at 5:00.",
+      "why": "가능한 다른 시각을 제안하지 않았다."
+     },
+     {
+      "text": "Sorry, I can't play at 4:15. Can we play at 5:00? I have piano and trash too.",
+      "why": "제안한 시각 5:00은 쓰레기 버리기 시각과 겹친다."
      }
     ],
     "humanReview": "제안한 시각이 쪽지와 정말 겹치지 않는지, 영어 문장이 자연스러운지는 사람이 본다. 자동 점검은 이유 낱말의 유무만 본다.",
@@ -168,7 +202,8 @@
     "대안 시각이 일정과 맞는지",
     "영어 문장의 자연스러움"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-e4-02",
@@ -1092,18 +1127,13 @@
      },
      {
       "id": "w2",
-      "label": "어느 도서관인지 알 수 있는 말이 있다",
+      "label": "어느 도서관인지 알 수 있는 말(City, 공원 옆 등)이 있다",
       "mode": "any",
       "patterns": [
        "\\bcity\\b",
        "\\bpublic\\b",
        "\\bpark\\b",
-       "\\bnear\\b",
-       "\\bnext to\\b",
-       "\\bin front of\\b",
-       "\\bentrance\\b",
-       "\\bgate\\b",
-       "\\bschool\\b"
+       "\\bnot\\s+(?:at\\s+|in\\s+)?the\\s+school\\b"
       ]
      },
      {
@@ -1113,6 +1143,14 @@
       "patterns": [
        "\\bsaturday\\b",
        "\\b(?:2|two)\\b"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "학교 도서관으로 오라는 말이 아니다",
+      "mode": "none",
+      "patterns": [
+       "(?<!\\bnot\\s)(?<!n['’]t\\s)\\b(?:at|in|to)\\s+the\\s+school\\s+library\\b"
       ]
      }
     ],
@@ -1128,6 +1166,9 @@
      {
       "text": "Let's meet at the library next to the park on Saturday at 2 p.m. Wait in front of the main door.",
       "note": "장소를 두 가지 방법으로 알려 주고 만나는 곳까지 정한 답."
+     },
+     {
+      "text": "Let's meet at the library, not the school library, on Saturday at 2 p.m."
      }
     ],
     "badAnswers": [
@@ -1138,6 +1179,10 @@
      {
       "text": "Let's meet on Saturday at 2 p.m.",
       "why": "도서관 이야기가 사라졌다."
+     },
+     {
+      "text": "Let's meet at the school library on Saturday at 2 p.m.",
+      "why": "Jisu가 있는 City Library가 아니라 문 닫은 학교 도서관이다."
      }
     ],
     "humanReview": "고친 문장이 정말 오해를 없애는지, 영어가 자연스러운지는 사람이 본다. 자동 점검은 낱말 유무만 본다.",
@@ -1168,7 +1213,7 @@
    "'Let's meet at the City Library' 대신 'Let's meet at the library by the park'도 같은 효과다."
   ],
   "hardCases": [
-   "'school'을 쓴 답(예: 'not the school library')은 도서관을 구분하지만 만날 장소를 City Library로 정하는지 사람이 확인한다.",
+   "'not the school library'처럼 학교 도서관이 아니라고만 쓴 답은 w2를 통과하지만, 만날 장소를 City Library로 정했는지는 사람이 확인한다.",
    "'at 2' 대신 '2:00'처럼 쓴 답은 w3이 통과하도록 허용했다."
   ],
   "cautions": {
@@ -1185,7 +1230,8 @@
     "고친 문장의 효과",
     "영어의 자연스러움"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-e4-08",
@@ -1277,8 +1323,20 @@
       "label": "Sora(또는 you)가 풀을 가져오는 일이 드러난다",
       "mode": "any",
       "patterns": [
-       "\\bsora\\b[^.?!]*\\b(?:has|have|will|should|must|brings?|needs?)\\b",
-       "\\byou\\b[^.?!]*\\b(?:have|will|should|must|bring)\\b"
+       "\\bsora\\s+(?:to|has to|have to|needs? to|will|should|must|can)\\s+bring\\b",
+       "\\bsora\\s+brings?\\b",
+       "\\bsora,?\\s+(?:please\\s+)?bring\\b",
+       "\\byou\\b[^.?!]*\\bbring\\b",
+       "[\\x22“'‘]\\s*(?:please\\s+)?bring\\b"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "Mina가 가져온다는 뜻이 아니다",
+      "mode": "none",
+      "patterns": [
+       "\\bmina\\s+(?:has|have|had|will|must|should)\\s+(?:the\\s+glue|to\\s+bring|bring)\\b",
+       "\\bmina\\s+brings?\\b"
       ]
      }
     ],
@@ -1294,6 +1352,9 @@
      {
       "text": "Mina told Sora to bring the glue.",
       "note": "'to bring'으로 간접화법을 쓴 자연스러운 답."
+     },
+     {
+      "text": "Mina told Sora that Sora must bring the glue."
      }
     ],
     "badAnswers": [
@@ -1304,6 +1365,10 @@
      {
       "text": "Mina has the glue.",
       "why": "Sora가 가져온다는 뜻을 담지 못했다."
+     },
+     {
+      "text": "Mina told Sora that Mina has the glue.",
+      "why": "풀을 가진 사람이 Mina가 되어 Sora가 가져온다는 뜻이 바뀌었다."
      }
     ],
     "humanReview": "고친 문장이 Mina의 원래 말과 같은 뜻인지, 영어가 자연스러운지는 사람이 본다. 자동 점검은 낱말 유무만 본다.",
@@ -1351,7 +1416,8 @@
     "고친 문장의 의미",
     "영어의 자연스러움"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-e4-09",

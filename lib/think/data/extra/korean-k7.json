@@ -646,7 +646,7 @@
   ],
   "minutes": 10,
   "curriculum": null,
-  "material": "In the hallway 하나 says quickly to 지우: '선생님이 내일 준비물 가져오래.' 지우 wants to tell 엄마 tonight so she can prepare it, but 지우 does not know what to bring.",
+  "material": "In the hallway 하나 says quickly to 지우: '선생님이 준비물 가져오래.' 지우 wants to tell 엄마 tonight so she can prepare it, but 지우 does not know what to bring.",
   "steps": [
    {
     "id": "s1",
@@ -734,7 +734,9 @@
        "(가져|챙겨|들고|사|준비하)\\s*오?(래|랬|라고)",
        "오(래|랬|라)",
        "챙기(래|랬|라고)",
-       "준비하(래|랬|라고)"
+       "준비하(래|랬|라고)",
+       "(가져|챙겨|들고|사)\\s*(와|오)야\\s*(한대|한다고|한다|해|하신|하셨|하래)",
+       "오시(래|랬|라고)"
       ]
      }
     ],
@@ -748,6 +750,9 @@
      },
      {
       "text": "선생님이 금요일까지 색연필 한 통을 가져오라고 하셨어요. 12색이래요."
+     },
+     {
+      "text": "선생님이 금요일까지 12색 색연필 한 통을 가져와야 한대요."
      }
     ],
     "badAnswers": [
@@ -800,7 +805,8 @@
    "human": [
     "Quality of the relay"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k7-05",
@@ -925,19 +931,25 @@
     "checks": [
      {
       "id": "w1",
-      "label": "includes the 10 minutes",
+      "label": "includes the earlier arrival time (10 minutes, or 2:50)",
       "mode": "any",
       "patterns": [
        "10\\s*분",
-       "십\\s*분"
+       "십\\s*분",
+       "2\\s*시\\s*50",
+       "두\\s*시\\s*50",
+       "50\\s*분"
       ]
      },
      {
       "id": "w2",
-      "label": "says 'before'",
+      "label": "says it is earlier than 3 (전, 일찍 or 2:50)",
       "mode": "any",
       "patterns": [
-       "전"
+       "전",
+       "일찍",
+       "2\\s*시\\s*50",
+       "두\\s*시\\s*50"
       ]
      },
      {
@@ -946,7 +958,8 @@
       "mode": "any",
       "patterns": [
        "오(래|랬|라)",
-       "오라고"
+       "오라고",
+       "오시(래|랬|라고)"
       ]
      }
     ],
@@ -960,6 +973,12 @@
      },
      {
       "text": "선생님이 수업이 3시에 시작하니까 10분 전까지 오라고 하셨어요."
+     },
+     {
+      "text": "수업은 3시에 시작하니까 10분 일찍 오라고 하셨어요."
+     },
+     {
+      "text": "선생님이 2시 50분까지 오래요."
      }
     ],
     "badAnswers": [
@@ -988,7 +1007,7 @@
    },
    {
     "criterion": "Repair",
-    "full": "Message keeps the 10 minutes before and an instruction form",
+    "full": "Message keeps the earlier arrival time (10 minutes before 3:00, or 2:50) and an instruction form",
     "partial": "Keeps the time but not the instruction form",
     "none": "Repeats the shortened message"
    }
@@ -1012,7 +1031,8 @@
    "human": [
     "The wording and the explanation"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k7-06",
@@ -1431,14 +1451,14 @@
     ],
     "explain": "-재요 reports a suggestion 'let's ...' and includes the speaker. -래요 reports an instruction to the listeners, -ㄴ대요 reports a statement.",
     "hints": [
-     "Think of the original sentences: 청소해요, 청소하세요, 같이 청소해요.",
-     "Which original sentence includes the teacher?"
+     "Work backwards: for each report, say what the teacher's original sentence must have been.",
+     "Which original sentence would be said by someone who is going to clean too?"
     ]
    },
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "Write 3 lines the teacher said (a fact, a request to the class, and a suggestion that includes the teacher), then write what you tell your friend, one reported sentence per line.",
+    "prompt": "Write 3 lines the teacher said (a fact, a request to the class, and a suggestion that includes the teacher), then write what you tell your friend, one reported sentence per line. Use one speech style, polite or casual, in all three reports.",
     "placeholder": "선생님: ...",
     "minChars": 35,
     "checks": [
@@ -1447,18 +1467,18 @@
       "label": "reports a statement",
       "mode": "any",
       "patterns": [
-       "[가-힣]대요",
+       "[가-힣]대(요|[.!?,\\s]|$)",
        "다고\\s*(했|해|하셨)"
       ]
      },
      {
       "id": "w2",
-      "label": "reports a request",
+      "label": "reports a request (not the copula 이래요)",
       "mode": "any",
       "patterns": [
-       "[가-힣]래요",
+       "(?<!이)래(요|[.!?,\\s]|$)",
        "라고\\s*(했|해|하셨)",
-       "랬어요"
+       "랬어"
       ]
      },
      {
@@ -1466,9 +1486,9 @@
       "label": "reports a suggestion",
       "mode": "any",
       "patterns": [
-       "[가-힣]재요",
+       "[가-힣]재(요|[.!?,\\s]|$)",
        "자고\\s*(했|해|하셨)",
-       "쟀어요"
+       "쟀어"
       ]
      }
     ],
@@ -1482,6 +1502,9 @@
      },
      {
       "text": "선생님: 오늘 숙제가 많아요. 내일까지 내세요. 우리 같이 도서관에 가요.\n전달: 선생님이 숙제가 많대요. 내일까지 내래요. 같이 도서관에 가재요."
+     },
+     {
+      "text": "선생님: 시험이 끝났어요. 숙제를 내세요. 같이 점심 먹어요.\n전달: 시험이 끝났대. 숙제를 내라고 하셨어. 같이 점심 먹자고 하셨어."
      }
     ],
     "badAnswers": [
@@ -1492,6 +1515,10 @@
      {
       "text": "선생님이 청소하래요.",
       "why": "Only one kind."
+     },
+     {
+      "text": "선생님이 시험이래요. 책을 가져오래요.",
+      "why": "이래요 comes from the copula 이다 (a statement), not a request, and there is no suggestion."
      }
     ],
     "humanReview": "Whether the three original lines really are different kinds and whether the reports match them.",
@@ -1534,7 +1561,8 @@
    "human": [
     "Whether the teacher lines are really three kinds"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k7-09",

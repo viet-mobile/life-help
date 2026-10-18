@@ -434,7 +434,7 @@
   ],
   "minutes": 9,
   "curriculum": null,
-  "material": "A student report to the teacher about PE class. Lines are numbered from 1.\n\nLine 1: 민수가 지수에게 발을 밟혔습니다.\nLine 2: 지수는 놀라서 소리를 질렀습니다.\nLine 3: 선생님께서 민수에게 지수를 보건실에 데려가게 하셨습니다.\nLine 4: 보건 선생님께서 지수에게 얼음을 대게 하셨습니다.",
+  "material": "A student report to the teacher about PE class. Lines are numbered from 1.\n\nLine 1: 민수가 지수에게 발을 밟혔습니다.\nLine 2: 민수는 아파서 소리를 질렀습니다.\nLine 3: 선생님께서 지수에게 민수를 보건실에 데려가게 하셨습니다.\nLine 4: 보건 선생님께서 민수에게 얼음을 대게 하셨습니다.",
   "steps": [
    {
     "id": "s1",
@@ -477,29 +477,29 @@
     "options": [
      {
       "id": "a",
-      "text": "선생님 gave the order; 민수 walked with 지수 to the nurse.",
-      "reveals": "The pattern is -게 하셨습니다: someone makes another person do it."
+      "text": "지수 gave the order; 선생님 took 민수 to the nurse.",
+      "reveals": "지수 follows 에게 in a -게 하다 sentence: she is the one who acts, not the one who orders."
      },
      {
       "id": "b",
-      "text": "민수 gave the order; 선생님 walked with 지수.",
-      "reveals": "The honorific -시- in 하셨습니다 belongs to the teacher, who is the one making someone act."
+      "text": "선생님 gave the order; 지수 took 민수 to the nurse.",
+      "reveals": "The pattern is -게 하셨습니다: someone makes another person do it."
      },
      {
       "id": "c",
-      "text": "선생님 walked with 지수; 민수 gave the order.",
-      "reveals": "The person after 에게 in a -게 하다 sentence is the one who acts, not the one who orders."
+      "text": "민수 gave the order; 지수 walked there alone.",
+      "reveals": "민수 is marked with 를: he is the one being taken, not a subject of the sentence."
      },
      {
       "id": "d",
-      "text": "지수 gave the order; 민수 walked.",
-      "reveals": "지수 is the one being taken (를), not a subject of the sentence."
+      "text": "선생님 gave the order and took 민수 to the nurse herself.",
+      "reveals": "The honorific -시- belongs to the teacher as the one who makes someone act; the person after 에게 does the walking."
      }
     ],
     "correct": [
-     "a"
+     "b"
     ],
-    "explain": "In 선생님께서 민수에게 ... 데려가게 하셨습니다, the causer is the subject (선생님께서) and the person who actually acts is marked by 에게 (민수).",
+    "explain": "In 선생님께서 지수에게 ... 데려가게 하셨습니다, the causer is the subject (선생님께서) and the person who actually acts is marked by 에게 (지수).",
     "hints": [
      "In a causative with -게 하다, which name is the subject and which one follows 에게?",
      "Ask who is honoured with -시- and what that tells you about who gives the order."
@@ -537,11 +537,28 @@
      },
      {
       "id": "w3",
-      "label": "does not simply accept the claim",
+      "label": "says what the grammar does not tell us (or disagrees)",
       "mode": "any",
       "patterns": [
-       "(^|[^a-z])(no|not|never|nothing|only|cannot)([^a-z]|$)",
-       "n['’]t"
+       "(does not|doesn['’]t|do not|don['’]t|did not|didn['’]t|cannot|can['’]t|could not|couldn['’]t|not) (say|tell|show|state|mention|prove|know|indicate|specify|give)",
+       "nothing",
+       "no information",
+       "not enough",
+       "disagree",
+       "^\\s*no\\b",
+       "unclear",
+       "not clear",
+       "unknown",
+       "only (says|tells|shows|states)"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "does not open by agreeing with the claim",
+      "mode": "none",
+      "patterns": [
+       "^\\s*yes",
+       "(^|[^a-z])agree"
       ]
      }
     ],
@@ -566,6 +583,10 @@
      {
       "text": "No, I do not think so.",
       "why": "Disagrees without reference to the Korean wording or to intention."
+     },
+     {
+      "text": "Yes, 밟혔습니다 proves it was not an accident, only on purpose.",
+      "why": "Agrees with the claim and treats the grammar as proof of intention."
      }
     ],
     "humanReview": "Whether the explanation separates agent (stated) from intention (not stated), and whether it asks for the right missing information.",
@@ -594,7 +615,7 @@
    "Saying the report is unreliable because it is short is not a grammar answer but can be accepted if tied to missing context."
   ],
   "hardCases": [
-   "Line 2 could be read as 지수 being startled by her own mistake, but the text does not say so."
+   "Line 2 says 민수 cried out in pain; it does not say whether 지수 meant to step on him."
   ],
   "cautions": {
    "language": "Key forms: 밟히다 (passive of 밟다), -게 하다 (causative), -시- on the teacher. The passive uses 에게 to mark the agent; learners from languages without this may expect a different particle.",
@@ -609,7 +630,8 @@
    "human": [
     "Quality of the explanation"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k8-04",
@@ -720,7 +742,7 @@
        },
        {
         "id": "c",
-        "text": "Keeps -요 but sounds friendlier (e.g. 네, 하린 씨 고마워요)."
+        "text": "Mixes some casual endings into -요 speech (e.g. 네, 하린 씨, 고마워!)."
        },
        {
         "id": "d",
@@ -732,7 +754,7 @@
        "a",
        "c"
       ],
-      "after": "하린 relaxes her own speech because she is older; 선우 is free to choose and most people keep -요 or soften it. Switching all the way to 반말 would need more closeness or her clear invitation."
+      "after": "하린 relaxes her own speech because she is older; 선우 is free to choose. Two ways are reasonable: stay with -요, or mix in some casual endings step by step. Switching all the way to 반말 (and 하린아) would need more closeness or her clear invitation."
      }
     ]
    },
@@ -774,6 +796,26 @@
        "could not tell",
        "couldn't tell"
       ]
+     },
+     {
+      "id": "w3",
+      "label": "says what could not be inferred or was unknown",
+      "mode": "any",
+      "patterns": [
+       "could not",
+       "couldn['’]t",
+       "cannot",
+       "can['’]t",
+       "did not",
+       "didn['’]t",
+       "wasn['’]t",
+       "not (enough|clear|given|shown)",
+       "unknown",
+       "no (way|clue|information)",
+       "nothing",
+       "only (showed|said|means|shows)",
+       "not yet"
+      ]
      }
     ],
     "selfAssess": [
@@ -787,6 +829,9 @@
      },
      {
       "text": "I could not tell. 하린 said 반가워요 and 선우 said 입사한 선우입니다, which is polite but equal. Only the birth years in the last part showed who was older."
+     },
+     {
+      "text": "In part 1 both used polite speech (안녕하세요, 반가워요), so I could not say who was older. I needed their ages; I got them from 98년생 and 96 later."
      }
     ],
     "badAnswers": [
@@ -797,6 +842,10 @@
      {
       "text": "I could not tell who was older.",
       "why": "No Korean evidence and no statement of what information was missing."
+     },
+     {
+      "text": "선우 is younger than 하린.",
+      "why": "States the conclusion without saying what could be inferred or what information was missing."
      }
     ],
     "humanReview": "Whether the answer is honest about the first part's limits and links the later evidence.",
@@ -840,7 +889,8 @@
    "human": [
     "Whether the explanation is honest about limits"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k8-05",
@@ -1144,6 +1194,10 @@
       "text": "The relationship or role between you (classmate, teacher, customer ...)"
      },
      {
+      "id": "f",
+      "text": "Whether she is older or younger than you"
+     },
+     {
       "id": "b",
       "text": "Her gender",
       "reveals": "Korean speech levels do not depend on whether the listener is a man or a woman."
@@ -1165,12 +1219,13 @@
     "correct": [
      "a",
      "c",
-     "e"
+     "e",
+     "f"
     ],
-    "explain": "Speech level depends on role, agreed familiarity and the setting (private or public). Gender and a photo are not reliable cues; when unsure, polite speech is the safe default.",
+    "explain": "Speech level depends on role, relative age, agreed familiarity and the setting (private or public). Gender and a photo are not reliable cues; when unsure, polite speech is the safe default.",
     "hints": [
      "Ask yourself: would a Korean speaker change the ending because of this fact?",
-     "Think of one case where you would speak differently even to the same person."
+     "Test each option: if this fact changed, would the right speech level change?"
     ]
    },
    {
@@ -1196,7 +1251,7 @@
      },
      {
       "id": "w2",
-      "label": "asks about speech or age",
+      "label": "asks about speech style",
       "mode": "any",
       "patterns": [
        "편하게",
@@ -1204,11 +1259,7 @@
        "존댓말",
        "말 ?놓",
        "말씀",
-       "나이",
-       "연세",
-       "몇 살",
-       "학번",
-       "동갑"
+       "말을"
       ]
      },
      {
@@ -1251,6 +1302,10 @@
      {
       "text": "말 편하게 해.",
       "why": "An order, not a question, and without a polite ending."
+     },
+     {
+      "text": "하은 씨 몇 살이에요?",
+      "why": "Asks only about age, not about how to speak to each other."
      }
     ],
     "humanReview": "Whether the question is natural, polite and not intrusive.",
@@ -1263,7 +1318,7 @@
   "rubric": [
    {
     "criterion": "Selecting needed facts",
-    "full": "Chooses role, agreement and setting; rejects gender and photo",
+    "full": "Chooses role, relative age, agreement and setting; rejects gender and photo",
     "partial": "Chooses some needed facts",
     "none": "Relies on gender or photo"
    },
@@ -1275,7 +1330,7 @@
    }
   ],
   "alternatives": [
-   "Asking for age (연세, 나이) is also used in Korea, but some students may find it too direct; both approaches are acceptable if polite.",
+   "Asking for age (연세, 나이) is also used in Korea, but some students find it too direct; the question here should be about the speech style.",
    "A student may add that polite speech is the safe default and skip the question; accept if they say why."
   ],
   "hardCases": [
@@ -1294,7 +1349,8 @@
    "human": [
     "Naturalness and tact"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k8-07",
@@ -1339,7 +1395,7 @@
     "explain": "In line 4 the subject is 이 책, the thing that is read. 읽혀요 is the passive here, so the sentence means 'This book can be read easily even by children'. There is no one who makes anyone read.",
     "hints": [
      "For each line, name the subject. Does it do the action, receive it, or make someone else do it?",
-     "In line 4, what is the subject, and can a book make someone read?"
+     "Compare the role of the subject in each Korean sentence with the role it has in its English gloss."
     ]
    },
    {
@@ -1349,26 +1405,26 @@
     "options": [
      {
       "id": "a",
-      "text": "The subject receives the action (the book is read), so the form is passive and not causative."
-     },
-     {
-      "id": "b",
-      "text": "읽히다 can only be a causative verb, so the gloss is the only possible reading.",
-      "reveals": "The same form can be passive or causative; the subject and particles decide which one."
-     },
-     {
-      "id": "c",
       "text": "아이도 cannot mean 'children' in this sentence.",
       "reveals": "아이도 means 'children too'; the gloss problem lies elsewhere."
      },
      {
-      "id": "d",
-      "text": "The word 쉽게 turns every verb into a passive.",
+      "id": "b",
+      "text": "The adverb 쉽게 turns every verb it follows into a passive.",
       "reveals": "An adverb does not change the role of the subject."
+     },
+     {
+      "id": "c",
+      "text": "The subject 이 책 receives the action, so the form is passive, not causative."
+     },
+     {
+      "id": "d",
+      "text": "읽히다 is always a causative verb, so the gloss is the only possible reading.",
+      "reveals": "The same form can be passive or causative; the subject and particles decide which one."
      }
     ],
     "correct": [
-     "a"
+     "c"
     ],
     "explain": "The same stem 읽히- can mean 'be read' (passive) or 'make someone read' (causative). The subject 이 책 can only be read, so the meaning is passive.",
     "hints": [
@@ -1393,7 +1449,14 @@
        "reads? (easily|well)",
        "easy to read",
        "is read",
-       "passive"
+       "passive",
+       "(can|could) (easily )?read",
+       "children (can|could)",
+       "easy for (children|kids)",
+       "even (a )?(child|children|kids)",
+       "not (a )?causative",
+       "easily read",
+       "readable"
       ]
      },
      {
@@ -1424,6 +1487,9 @@
      },
      {
       "text": "Meaning: this book reads easily even for kids. 한국어: 엄마는 동생한테 그 책을 읽혀요."
+     },
+     {
+      "text": "Meaning: even a child can read this book easily. 한국어: 저는 아이에게 이 책을 읽혔어요."
      }
     ],
     "badAnswers": [
@@ -1478,7 +1544,8 @@
    "human": [
     "Naturalness of the causative sentence"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k8-08",
@@ -1682,7 +1749,7 @@
   "uiLang": "en",
   "format": "rewrite-for-audience",
   "generative": true,
-  "goal": "Find what is wrong with a hearsay draft when the school itself is the source, then rewrite it for two audiences with different registers.",
+  "goal": "Check a chat draft against its source and its audience, then rewrite it for two audiences with different registers.",
   "thinking": [
    "Evaluating a draft against its source and audience",
    "Choosing a formal notice register with a passive form",
@@ -1704,32 +1771,32 @@
     "options": [
      {
       "id": "a",
-      "text": "The word 취소 is too difficult for a parent.",
-      "reveals": "Parents are adults; the problem is not vocabulary."
-     },
-     {
-      "id": "b",
-      "text": "The passive -되- is not allowed in notices.",
+      "text": "The passive -되- is never used in school notices.",
       "reveals": "Passive forms like 취소되었습니다 are very common in official notices."
      },
      {
-      "id": "c",
-      "text": "The -대 ending shows that you only heard it from someone, but the school is the source.",
+      "id": "b",
+      "text": "The -대 ending marks hearsay, but here the school itself made the decision.",
       "reveals": "Check what -대 usually shows about where the information came from."
      },
      {
+      "id": "c",
+      "text": "The word 취소 is too difficult for most parents to read.",
+      "reveals": "Parents are adults; the problem is not vocabulary."
+     },
+     {
       "id": "d",
-      "text": "The draft does not mention the weather.",
-      "reveals": "The draft does mention the weather: 비 와서."
+      "text": "The draft never says why the event is cancelled.",
+      "reveals": "The draft does give a reason: 비 와서."
      }
     ],
     "correct": [
-     "c"
+     "b"
     ],
     "explain": "-대 marks hearsay. A notice from the school should state the decision directly with a formal ending, for example 취소되었습니다.",
     "hints": [
-     "Ask who is the source of the information in the notice.",
-     "What does -대 usually say about where the speaker learned something?"
+     "Read the draft's verbs one by one and recall what each ending does in class.",
+     "Think about who knows the decision first-hand, and how the notice should sound when it comes from them."
     ]
    },
    {
@@ -1757,20 +1824,47 @@
      },
      {
       "id": "w3",
-      "label": "cancel/postpone",
+      "label": "says it is cancelled or will not be held",
       "mode": "any",
       "patterns": [
        "취소",
        "연기",
-       "열리지",
-       "미루",
+       "열리지 않",
+       "개최되지 않",
+       "진행되지 않",
        "미뤄",
-       "하지 않"
+       "미루",
+       "순연",
+       "운동회(는|를|가|도)?\\s*(비\\s*때문에\\s*|우천으로\\s*)?(하지 않|진행하지 않|개최하지 않|없)"
       ]
      },
      {
       "id": "w4",
-      "label": "courteous marker toward parents",
+      "label": "does not say the event is still on",
+      "mode": "none",
+      "patterns": [
+       "취소되지",
+       "취소하지",
+       "연기되지",
+       "정상",
+       "예정대로",
+       "그대로 (열|진행|개최)",
+       "열립니다",
+       "개최됩니다",
+       "진행됩니다"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "tells parents the lunch box is not needed",
+      "mode": "any",
+      "patterns": [
+       "(도시락|점심)[^.?!]{0,15}(않|마시|마세요|마십시오|말아|필요(가)? ?없|불필요|안 (가져|보내|싸|준비)|없이)"
+      ]
+     },
+     {
+      "id": "w6",
+      "label": "courteous or notice-style marker toward parents",
       "mode": "any",
       "patterns": [
        "바랍니다",
@@ -1782,7 +1876,12 @@
        "오시",
        "양해",
        "부탁",
-       "협조"
+       "협조",
+       "안내",
+       "않아도",
+       "학부모",
+       "필요(가)? ?없",
+       "불필요"
       ]
      }
     ],
@@ -1797,6 +1896,10 @@
      },
      {
       "text": "학부모님께 안내드립니다. 비 예보로 내일 운동회가 연기되었습니다. 도시락은 보내지 않으시기 바랍니다."
+     },
+     {
+      "text": "내일 운동회는 비 때문에 취소되었습니다. 도시락은 보내지 않아도 됩니다.",
+      "note": "Plain but still a formal ending; also fine."
      }
     ],
     "badAnswers": [
@@ -1807,6 +1910,14 @@
      {
       "text": "내일 운동회는 취소되었습니다.",
       "why": "Formal but lacks the lunch-box message and any courtesy toward parents."
+     },
+     {
+      "text": "운동회는 도시락은 준비하지 않으셔도 됩니다.",
+      "why": "Mentions the lunch box but never says the sports day is cancelled."
+     },
+     {
+      "text": "내일 운동회는 취소되지 않았습니다. 도시락을 가져오십시오.",
+      "why": "Says the opposite of the facts."
      }
     ],
     "humanReview": "Whether the notice sounds like a real school notice and whether the courtesy is natural.",
@@ -1855,10 +1966,30 @@
      },
      {
       "id": "w4",
-      "label": "lunch box",
+      "label": "tells the children not to bring a lunch box",
       "mode": "any",
       "patterns": [
-       "도시락"
+       "도시락[^.?!]{0,15}(안 |않|오지 마|지 마|말고|없어도|필요 ?없)"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "says the sports day will not happen",
+      "mode": "any",
+      "patterns": [
+       "(안|못)\\s?(해|하|열|한)",
+       "열리지",
+       "쉬어|쉬는|쉽니다|쉬게",
+       "운동회(가|는|도)?\\s*없",
+       "하지 않|하지 못"
+      ]
+     },
+     {
+      "id": "w6",
+      "label": "does not say the sports day is still on",
+      "mode": "none",
+      "patterns": [
+       "운동회(가|는|도|를)?\\s*(있|해요|한다|해서)"
       ]
      }
     ],
@@ -1883,6 +2014,10 @@
      {
       "text": "비가 와요. 운동회를 못 해요.",
       "why": "Leaves out the lunch box."
+     },
+     {
+      "text": "내일 운동회가 있어요. 도시락을 가져오세요.",
+      "why": "Says the opposite of the facts."
      }
     ],
     "humanReview": "Whether the vocabulary is truly child-friendly.",
@@ -1926,7 +2061,8 @@
    "human": [
     "Tone and naturalness of both versions"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k8-10",
@@ -1960,7 +2096,7 @@
     "prompt": "Decide using only what you have read so far.",
     "hints": [
      "Check which person, if any, the sentence names as doing the action.",
-     "Ask what the sentence would look like if it wanted to blame someone."
+     "Compare what each sentence actually says with what you only assume from it."
     ],
     "reflect": "A sentence with no agent does not claim that nobody did it, and a sentence with an agent assumes one. Fair reporting keeps these two apart.",
     "stages": [
@@ -1975,12 +2111,12 @@
        },
        {
         "id": "b",
-        "text": "It does not say whether a person was involved."
+        "text": "The window broke by itself with no cause.",
+        "reveals": "The sentence does not claim there was no cause; it just does not say."
        },
        {
         "id": "c",
-        "text": "The window broke by itself with no cause.",
-        "reveals": "The sentence does not claim there was no cause; it just does not say."
+        "text": "It does not say whether a person was involved."
        },
        {
         "id": "d",
@@ -1989,7 +2125,7 @@
        }
       ],
       "reasonable": [
-       "b"
+       "c"
       ],
       "after": "깨졌습니다 has no doer. It states a result without saying who or what caused it."
      },
@@ -1999,12 +2135,12 @@
       "options": [
        {
         "id": "a",
-        "text": "It now assumes a person broke the window."
+        "text": "It says a teacher broke it.",
+        "reveals": "깬 학생 names a student as the doer, not a teacher."
        },
        {
         "id": "b",
-        "text": "It now says the window broke by itself.",
-        "reveals": "깬 is the active form with the object marker 을; it is the opposite of 깨졌."
+        "text": "It now assumes a person broke the window."
        },
        {
         "id": "c",
@@ -2013,43 +2149,43 @@
        },
        {
         "id": "d",
-        "text": "It says a teacher broke it.",
-        "reveals": "깬 학생 names a student as the doer, not a teacher."
+        "text": "It now says the window broke by itself.",
+        "reveals": "깬 is the active form with the object marker 을; it is the opposite of 깨졌."
        }
       ],
       "reasonable": [
-       "a"
+       "b"
       ],
       "after": "깬 is the active form: it presupposes that someone broke the window. The first notice left that open."
      },
      {
       "info": "In the office, 민호 says:\n체육 시간에 제 공이 날아가서 유리창에 맞았어요. 일부러 한 건 아니에요.",
-      "ask": "Which report of the event do you now find fair?",
+      "ask": "Which reports of the event do you now find fair? (More than one may fit.)",
       "options": [
        {
         "id": "a",
+        "text": "민호의 공에 유리창이 깨졌다."
+       },
+       {
+        "id": "b",
         "text": "민호가 일부러 유리창을 깼다.",
         "reveals": "This adds an intention that nothing in the story supports."
        },
        {
-        "id": "b",
-        "text": "민호의 공에 유리창이 깨졌다."
-       },
-       {
         "id": "c",
-        "text": "민호가 실수로 유리창을 깼다."
+        "text": "누군가 민호에게 유리창을 깨게 했다.",
+        "reveals": "A causative means someone made 민호 do it; nobody else appears in the story."
        },
        {
         "id": "d",
-        "text": "누군가 민호에게 유리창을 깨게 했다.",
-        "reveals": "A causative means someone made 민호 do it; nobody else appears in the story."
+        "text": "민호가 실수로 유리창을 깼다."
        }
       ],
       "reasonable": [
-       "b",
-       "c"
+       "a",
+       "d"
       ],
-      "after": "Both b and c fit the story: one names the cause (his ball) without a verb of blame, and one names him as the doer while stating it was a mistake. Saying he did it on purpose, or that somebody made him, goes beyond the evidence."
+      "after": "Two reports fit the story: the one that names the cause (his ball) without a verb of blame, and the one that names him as the doer while stating it was a mistake. Saying he did it on purpose, or that somebody made him, goes beyond the evidence."
      }
     ]
    },
@@ -2062,30 +2198,71 @@
     "checks": [
      {
       "id": "w1",
-      "label": "uses a no-agent form (깨지다)",
+      "label": "uses a no-agent form about the window (깨지다)",
       "mode": "any",
       "patterns": [
        "깨졌",
        "깨져",
-       "깨어졌"
+       "깨어졌",
+       "깨지",
+       "파손",
+       "부서졌",
+       "부서져"
       ]
      },
      {
       "id": "w2",
-      "label": "does not name a doer with 깨다/깨뜨리다",
+      "label": "does not name a doer with an action verb",
       "mode": "none",
       "patterns": [
        "깼",
        "깨뜨",
-       "깨게"
+       "깨게",
+       "차서",
+       "던져",
+       "던졌",
+       "던진",
+       "찬 공",
+       "찼",
+       "쳐서",
+       "쳤"
       ]
      },
      {
       "id": "w3",
+      "label": "does not name a person or use blame words",
+      "mode": "none",
+      "patterns": [
+       "민호",
+       "부주의",
+       "잘못",
+       "탓",
+       "일부러",
+       "실수",
+       "책임",
+       "학생이",
+       "친구가",
+       "누가",
+       "누군가"
+      ]
+     },
+     {
+      "id": "w4",
       "label": "polite ending",
       "mode": "any",
       "patterns": [
        "(요|니다|니까)(?![가-힣])"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "mentions the cause (the ball / PE class)",
+      "mode": "any",
+      "patterns": [
+       "공",
+       "날아",
+       "체육",
+       "맞"
       ]
      }
     ],
@@ -2110,6 +2287,18 @@
      {
       "text": "유리창이 깨졌어.",
       "why": "The ending is not polite enough for the principal."
+     },
+     {
+      "text": "민호가 공을 차서 유리창이 깨졌습니다.",
+      "why": "Puts a person in the subject with an action verb, which is blame."
+     },
+     {
+      "text": "유리창이 깨졌어요.",
+      "why": "Neutral, but it leaves out the cause that was asked for."
+     },
+     {
+      "text": "민호의 부주의로 유리창이 깨졌습니다.",
+      "why": "Uses the no-agent verb but still blames a person."
      }
     ],
     "humanReview": "Whether the report is neutral and natural.",
@@ -2134,7 +2323,7 @@
    }
   ],
   "alternatives": [
-   "b and c in the last stage are both fair; a student may prefer one for style.",
+   "The two fair reports in the last stage (the ball as cause, or 민호 as doer by mistake) are both fine; a student may prefer one for style.",
    "A student may keep a neutral report even in stage 3 and say that more evidence is needed; this is acceptable."
   ],
   "hardCases": [
@@ -2153,6 +2342,7 @@
    "human": [
     "Whether the report is neutral and natural"
    ]
-  }
+  },
+  "status": "draft"
  }
 ]

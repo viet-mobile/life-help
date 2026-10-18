@@ -30,7 +30,7 @@
     "kind": "choose",
     "prompt": "Which sign should the visitor follow in order to park?",
     "hints": [
-     "Read the last word of each sign, not only the first one.",
+     "List what each sign says in words, and what its symbol or arrow adds.",
      "Ask of each sign: does it send a car in, out, or nowhere?"
     ],
     "options": [
@@ -51,8 +51,8 @@
      },
      {
       "id": "d",
-      "text": "None of them; no sign speaks about parking",
-      "reveals": "Two signs contain 주차장 or 주차. Read them again before saying that nothing is there."
+      "text": "Sign B or Sign C; both say 주차장 and have an arrow",
+      "reveals": "Both do say 주차장 and have an arrow, but check what the other word of Sign C and the direction of its arrow say."
      }
     ],
     "correct": [
@@ -90,7 +90,14 @@
        "\\bentrance\\b",
        "입구",
        "\\benter\\w*",
-       "\\bgoing out\\b"
+       "\\bgo\\w* out\\b",
+       "\\bdrive\\w* out\\b",
+       "\\bcome\\w* out\\b",
+       "\\bway out\\b",
+       "wrong way",
+       "opposite",
+       "\\bSign B\\b",
+       "\\bB\\b"
       ]
      }
     ],
@@ -156,7 +163,8 @@
    "human": [
     "Quality and politeness of the reply to the friend"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k1-02",
@@ -182,7 +190,7 @@
   ],
   "minutes": 8,
   "curriculum": null,
-  "material": "A teacher stuck a notice on the classroom door:\n\n내일은 소풍 가요.\n9시까지 학교에 오세요.\n도시락을 가져오세요.\n비가 오면 소풍을 안 가요.\n\nWords: 소풍 = outing/picnic; 도시락 = lunch box; 비 = rain; 오다 = to come (비가 오다 = it rains); 안 = not.\n\nJoon read it and wrote four notes in English (shown below).",
+  "material": "A teacher stuck a notice on the classroom door:\n\n내일은 소풍 가요.\n9시까지 학교에 오세요.\n도시락을 가져오세요.\n비가 오면 소풍을 안 가요.\n\nWords: 소풍 = outing/picnic; 도시락 = lunch box; 비 = rain; 오다 = to come (비가 오다 = it rains); 안 = not.\n\nJoon read it and wrote four notes in English (shown below).\n\nMore words (for step 2): 눈 = snow (눈이 오다 = it snows); 공원 = park.",
   "steps": [
    {
     "id": "s1",
@@ -206,12 +214,12 @@
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "Write in Korean (polite -요 speech) one sentence that says the rule correctly: what happens to the picnic if it rains.",
+    "prompt": "Another notice, said in English: \"If it snows tomorrow, we do not go to the park.\" Write this rule in Korean (polite -요 speech), using the words above.",
     "placeholder": "예: ...",
     "minChars": 5,
     "hints": [
      "Which two parts must be in the sentence: the condition and what happens?",
-     "Check that your sentence does not say that it WILL rain."
+     "Check that your sentence does not say that it WILL snow."
     ],
     "checks": [
      {
@@ -224,50 +232,52 @@
      },
      {
       "id": "w2",
-      "label": "condition: 비가 오면",
+      "label": "condition: 눈이 오면 (if it snows)",
       "mode": "any",
       "patterns": [
-       "비 ?(가|이)? ?오면"
+       "눈 ?(이|도)? ?(많이 )?오면",
+       "눈 ?(이|가)? ?(많이 )?오는 날"
       ]
      },
      {
       "id": "w3",
-      "label": "result: no picnic (안 가요 / 없어요 / 못 ...)",
+      "label": "result: no park (공원 ... 안 가요 / 못 / 없어요 / 취소)",
       "mode": "any",
       "patterns": [
-       "(안|못) ?(가|해|합|갑)",
-       "없",
-       "취소",
-       "않"
+       "공원.{0,12}(안|못|없|취소|않)"
       ]
      }
     ],
     "selfAssess": [
-     "Does my sentence contain 'if it rains' and not 'it rains'?",
-     "Does it tell the result for the picnic?",
+     "Does my sentence contain 'if it snows' and not 'it snows'?",
+     "Does it tell the result for the park?",
      "Is my ending polite?"
     ],
     "modelAnswers": [
      {
-      "text": "비가 오면 소풍을 안 가요.",
-      "note": "Close to the notice."
+      "text": "눈이 오면 공원에 안 가요.",
+      "note": "Close to the pattern of the first notice."
      },
      {
-      "text": "비 오면 소풍이 없어요.",
+      "text": "눈 오면 공원에 못 가요.",
       "note": "Spoken style with the same meaning."
      }
     ],
     "badAnswers": [
      {
-      "text": "비가 와요. 소풍 가요.",
-      "why": "States rain as a fact and keeps the picnic."
+      "text": "눈이 와요. 공원에 가요.",
+      "why": "States snow as a fact and keeps the park trip."
      },
      {
-      "text": "소풍을 안 가요.",
+      "text": "공원에 안 가요.",
       "why": "Drops the condition completely."
+     },
+     {
+      "text": "눈이 오면 도시락을 안 가져와요.",
+      "why": "Has the condition, but the result is about a lunch box, not about the park."
      }
     ],
-    "humanReview": "Whether the sentence is natural; other correct wordings such as 소풍은 취소돼요 should be accepted."
+    "humanReview": "Whether the sentence is natural; other correct wordings such as 공원은 취소돼요 should be accepted."
    }
   ],
   "rubric": [
@@ -286,10 +296,10 @@
   ],
   "alternatives": [
    "Some learners may also mark line 2 or 3 because they cannot read 9시 or 도시락; the explanation shows these are accurate.",
-   "A sentence such as 비가 오면 우산을 가져오세요 is correct Korean but does not say what happens to the picnic."
+   "In s2, a sentence such as 눈이 오면 우산을 가져오세요 is correct Korean but does not say what happens to the park trip."
   ],
   "hardCases": [
-   "Whether 소풍은 못 가요 is as good as 안 가요: it implies cannot rather than will not, so it is accepted but flagged for a human."
+   "Whether 공원에 못 가요 is as good as 안 가요: it implies cannot rather than will not, so it is accepted but flagged for a human."
   ],
   "cautions": {
    "language": "-(으)면 is the only grammar point and it is a prerequisite, not taught here. The write check accepts 비 오면 (without 가) because many learners drop the particle.",
@@ -299,12 +309,13 @@
   "autoVsHuman": {
    "auto": [
     "Which line was chosen",
-    "Surface features of the Korean sentence: polite ending, 비가 오면, result word"
+    "Surface features of the Korean sentence: polite ending, 눈이 오면, a result word with 공원"
    ],
    "human": [
     "Naturalness and exact meaning of the written sentence"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k1-03",
@@ -687,7 +698,8 @@
   "differsFromPlain": "Plain practice asks you to turn 가 into 가요. Here you decide what changes for a new reader, and you must keep the facts (cannot come, sick) while changing the style.",
   "prerequisites": [
    "Can read short Hangul sentences",
-   "Knows the polite -요 ending and the word 선생님"
+   "Knows the polite -요 ending and the word 선생님",
+   "Has seen 저 as the polite word for 'I'"
   ],
   "minutes": 8,
   "curriculum": null,
@@ -700,7 +712,7 @@
     "prompt": "Which parts of the friend text must change when it is written for 선생님? Choose all that apply.",
     "hints": [
      "Read the text one word at a time and ask: would I say it this way to a teacher?",
-     "Look at the ends of the sentences and at the first word."
+     "Say the text aloud as if to your teacher, and notice which words feel wrong."
     ],
     "options": [
      {
@@ -764,7 +776,9 @@
       "patterns": [
        "(못|안) ?(가|갑|와|옵|오)",
        "오지 못",
-       "가지 못"
+       "가지 못",
+       "수 없",
+       "가지 않"
       ]
      },
      {
@@ -790,6 +804,14 @@
        "감사합니다",
        "안녕하세요"
       ]
+     },
+     {
+      "id": "w5",
+      "label": "keeps the day (내일)",
+      "mode": "any",
+      "patterns": [
+       "내일"
+      ]
      }
     ],
     "selfAssess": [
@@ -805,6 +827,10 @@
      {
       "text": "선생님, 안녕하세요. 저는 내일 몸이 아파서 학교에 못 갑니다. 죄송합니다.",
       "note": "More formal, with a reason."
+     },
+     {
+      "text": "선생님, 내일 학교에 갈 수 없습니다. 몸이 아픕니다.",
+      "note": "Formal, with 수 없다."
      }
     ],
     "badAnswers": [
@@ -815,6 +841,10 @@
      {
       "text": "선생님, 내일 학교에 가요. 아파요.",
       "why": "Polite, but changes the fact: it says that you go."
+     },
+     {
+      "text": "선생님, 저 학교에 못 가요. 아파요.",
+      "why": "Polite, but drops the day (내일)."
      }
     ],
     "humanReview": "Whether the tone suits a teacher and the wording is natural; 저 is a bonus, not a requirement."
@@ -854,7 +884,8 @@
    "human": [
     "Tone, naturalness and whether the facts are all kept"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k1-06",
@@ -951,7 +982,19 @@
       "label": "does not say there are no peanuts",
       "mode": "none",
       "patterns": [
-       "땅콩(이|은|도|을)? ?(없|안 )"
+       "땅콩(?!\\s*알레르기).{0,8}(없|않|안 |아니)",
+       "(없|않).{0,3}땅콩"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "says that the box has peanuts or warns about them",
+      "mode": "any",
+      "patterns": [
+       "땅콩.{0,10}(있|들어|포함|함유|주의|조심|넣)",
+       "(주의|조심).{0,6}땅콩",
+       "땅콩\\s*쿠키",
+       "쿠키.{0,6}땅콩"
       ]
      }
     ],
@@ -978,6 +1021,14 @@
      {
       "text": "맛있는 쿠키예요!",
       "why": "No warning."
+     },
+     {
+      "text": "쿠키예요. 땅콩이 하나도 없어요.",
+      "why": "Says there are no peanuts, which is the opposite of the truth."
+     },
+     {
+      "text": "쿠키예요. 땅콩이 들어 있지 않아요.",
+      "why": "Also says there are no peanuts."
      }
     ],
     "humanReview": "Whether the label is natural and clear; labels using 땅콩 주의 or similar need a human to confirm they read as a warning."
@@ -1017,7 +1068,8 @@
    "human": [
     "Whether the label is clear, natural and safe"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k1-07",
@@ -1261,7 +1313,7 @@
   "goal": "Match one sign to the place where it most likely hangs, using details of each scene, and notice what the sign leaves unsaid.",
   "thinking": [
    "Using scene details as evidence for a match",
-   "Accepting more than one reasonable match",
+   "Comparing which match fits best",
    "Noticing what a sign does not say"
   ],
   "differsFromPlain": "Plain practice asks what 벗고 means. Here three scenes each contain small clues, and you must decide where the sign most likely hangs and what it still leaves open.",
@@ -1276,11 +1328,11 @@
    {
     "id": "s1",
     "kind": "choose",
-    "multi": true,
-    "prompt": "Where could this sign hang? Choose all places where it makes sense.",
+    "multi": false,
+    "prompt": "Which place fits this sign best?",
     "hints": [
      "For each place, ask: do people there walk on the floor in their shoes?",
-     "Look for clues like a raised floor or shoes on the step."
+     "Compare the details of the floor and of what people wear on their feet in each place."
     ],
     "options": [
      {
@@ -1296,22 +1348,13 @@
      {
       "id": "c",
       "text": "Place 3: the gym",
-      "reveals": "You used the new polished floor as a reason to protect the floor."
+      "reveals": "The polished floor is a reason to protect it, but students there already wear clean indoor shoes, so a 'shoes off' sign is less needed."
      }
     ],
     "correct": [
      "b"
     ],
-    "acceptable": [
-     {
-      "ids": [
-       "b",
-       "c"
-      ],
-      "reason": "A gym can ask people to take off outdoor shoes, even if students there wear indoor shoes, so choosing the restaurant and the gym is also reasonable."
-     }
-    ],
-    "explain": "The restaurant has the clearest clues (raised floor, shoes at the step). The gym is also possible because the floor is new; the shoe shop is the least likely because customers try shoes on."
+    "explain": "The restaurant has the clearest clues (raised floor, shoes at the step). The gym is a weaker fit because students already wear clean indoor shoes, and the shoe shop is the least likely because customers try shoes on."
    },
    {
     "id": "s2",
@@ -1366,7 +1409,7 @@
    }
   ],
   "alternatives": [
-   "Choosing the restaurant alone or the restaurant and the gym are both acceptable.",
+   "A learner may say the gym is also possible; the explanation shows why the restaurant is the best fit.",
    "A learner may also say that the shoe shop is possible for a trial area; the explanation notes that it is the least likely."
   ],
   "hardCases": [
@@ -1379,13 +1422,14 @@
   },
   "autoVsHuman": {
    "auto": [
-    "Choice of places against the key and the acceptable set",
+    "Choice of place against the key",
     "Choice of unanswered questions"
    ],
    "human": [
     "Free-text reasons if a teacher adds a discussion"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k1-09",
@@ -1395,7 +1439,7 @@
   "level": 1,
   "levelLabel": "Beginner",
   "uiLang": "en",
-  "title": "Is the bakery open yet?",
+  "title": "Mina checks the bakery sign",
   "format": "find-error-fix",
   "generative": true,
   "goal": "Check a classmate's reasoning about a sign against the clock, find the wrong step and write the corrected step.",
@@ -1416,10 +1460,10 @@
    {
     "id": "s1",
     "kind": "pickLine",
-    "prompt": "One line of Mina's reasoning is wrong. Which one?",
+    "prompt": "Some of Mina's reasoning is wrong. Which is the FIRST line that is wrong?",
     "hints": [
-     "Check each line against the sign and the clock.",
-     "Compare the two times: which one is later?"
+     "Start at line 1 and check each line in order against the sign and the clock.",
+     "Stop at the first line that does not agree with both."
     ],
     "lines": [
      "The sign says 열어요, so it tells when the bakery opens.",
@@ -1445,11 +1489,14 @@
     "checks": [
      {
       "id": "w1",
-      "label": "mentions the 11 o'clock time",
+      "label": "mentions the time now (11 o'clock) or that the opening time has passed",
       "mode": "any",
       "patterns": [
        "\\b11\\b",
-       "eleven"
+       "eleven",
+       "\\bnow\\b",
+       "already",
+       "passed"
       ]
      },
      {
@@ -1458,7 +1505,9 @@
       "mode": "any",
       "patterns": [
        "\\b10\\b",
-       "ten"
+       "\\bten\\b",
+       "opening",
+       "\\bopens?\\b"
       ]
      },
      {
@@ -1472,7 +1521,8 @@
        "already",
        "passed",
        "over",
-       "gone"
+       "gone",
+       "hour"
       ]
      }
     ],
@@ -1489,6 +1539,12 @@
      {
       "text": "Ten o'clock has passed because it is eleven now, so the opening time is over.",
       "note": "Says the same in other words."
+     },
+     {
+      "text": "Ten o'clock has already passed, so it is open."
+     },
+     {
+      "text": "It is eleven now, one hour past opening."
      }
     ],
     "badAnswers": [
@@ -1538,7 +1594,8 @@
    "human": [
     "Correctness and clarity of the corrected line"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k1-10",

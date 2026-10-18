@@ -27,7 +27,7 @@
    {
     "id": "s1",
     "kind": "pickLine",
-    "prompt": "필자의 근거가 결론을 충분히 뒷받침하지 못하는 부분을 포함한 줄을 하나 고르세요.",
+    "prompt": "필자의 근거가 결론을 충분히 뒷받침하지 못하는 부분을 포함한 줄을 하나 고르세요. (그런 줄이 둘 이상이어도 그중 하나만 고르면 돼요.)",
     "lines": [
      "Eastbridge should ban private cars from Main Street.",
      "Cars cause noise and air pollution, and they make the street dangerous for walkers.",
@@ -65,7 +65,7 @@
       "label": "결론의 범위를 제한하거나 한계를 말했다",
       "mode": "any",
       "patterns": [
-       "\\b(only|some|may|might|cannot|can't|not enough|does not show|doesn't show|suggests?|unclear|not sure|more (people|residents)|larger|other residents)\\b"
+       "\\b(?:only|some|may|might|could|cannot|can['’]?t|not enough|isn['’]?t enough|does not show|doesn['’]?t show|suggests?|unclear|not sure|small (?:group|sample)|too (?:few|small)|limited|wider|broader|larger|representative|random\\w*|more (?:people|residents|customers)|other residents|need(?:s|ed)? to)\\b"
       ]
      }
     ],
@@ -80,6 +80,12 @@
      {
       "text": "Some café customers support the ban, which suggests the idea may have supporters; the council should survey more residents first.",
       "note": "결론을 줄이고 다음 행동을 제안했다."
+     },
+     {
+      "text": "Nine of ten cafe customers supported a ban, but that isn't enough to speak for all residents."
+     },
+     {
+      "text": "Nine of ten customers I asked at the cafe supported the ban, but a wider survey is needed."
      }
     ],
     "badAnswers": [
@@ -134,7 +140,8 @@
     "고친 문장의 논리와 영어의 자연스러움",
     "필자의 주장이 유지되는지"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-h3-02",
@@ -373,8 +380,8 @@
        },
        {
         "id": "b",
-        "text": "변화가 작고 일상적인 조정이라는 느낌",
-        "reveals": "강한 낱말을 쓴 제목과는 반대 인상이에요."
+        "text": "숫자(50 Percent)가 있으니 인상 없이 사실만 전하는 제목이라는 느낌",
+        "reveals": "숫자가 정확해도 'slaps' 같은 낱말이 인상을 만들어요."
        },
        {
         "id": "c",
@@ -418,8 +425,8 @@
       "options": [
        {
         "id": "a",
-        "text": "Council Boldly Fixes Station Parking and Funds New Buses for Everyone",
-        "reveals": "좋은 쪽만 강조하고 반대 의견을 지운 반대편의 편향이에요."
+        "text": "Council Wisely Raises Parking Fee to Fund New Bus Routes",
+        "reveals": "'wisely'라는 판단 낱말이 좋은 쪽 인상을 만들고, 반대 의견은 빠져 있어요."
        },
        {
         "id": "b",
@@ -430,12 +437,18 @@
         "id": "c",
         "text": "Drivers Furious as Council Pushes Through Fee Increase to Pay for Buses",
         "reveals": "'furious'는 기사에서 확인되지 않은 감정을 만들어 붙인 거예요."
+       },
+       {
+        "id": "d",
+        "text": "Council Raises Station Parking Fee to Pay for Two New Bus Routes",
+        "reveals": "확인된 사실만 쓰고 판단 낱말은 없어요. 표결 결과와 반대 의견은 빠졌지만 제목에서는 허용할 만한 선택이에요."
        }
       ],
       "reasonable": [
-       "b"
+       "b",
+       "d"
       ],
-      "after": "공정한 제목은 확인된 사실만 쓰고 판단의 낱말을 빼요. 버스 노선이나 옆 도시 요금 같은 맥락은 본문이 담당해요."
+      "after": "공정한 제목은 확인된 사실만 쓰고 판단의 낱말을 빼요. 그런 제목은 여러 개가 가능하고, 어떤 사실을 고르느냐에 따라 인상이 조금씩 달라져요. 나머지 맥락은 본문이 담당해요."
      },
      {
       "info": "독자 댓글: \"Every headline leaves something out, so there is no such thing as a fair headline.\"",
@@ -443,17 +456,17 @@
       "options": [
        {
         "id": "a",
-        "text": "맞다. 그러므로 모든 제목은 똑같이 편향되어 있다.",
+        "text": "맞다. 그러므로 모든 제목은 똑같은 정도로 편향되어 있다.",
         "reveals": "'모두 생략하니 모두 같다'는 비교를 포기한 결론이에요."
        },
        {
         "id": "b",
-        "text": "틀렸다. 훌륭한 편집자라면 모든 사실을 제목에 넣을 수 있다.",
-        "reveals": "제목은 길이가 제한되어 있어서 모든 사실을 넣을 수 없어요."
+        "text": "틀렸다. 숫자와 날짜 같은 사실만 쓰면 아무것도 생략하지 않은 제목이 된다.",
+        "reveals": "어떤 사실을 고르는 것 자체가 선택이라 생략이 생겨요."
        },
        {
         "id": "c",
-        "text": "어느 정도 맞지만 어떤 선택은 다른 선택보다 더 한쪽으로 기운다.",
+        "text": "일부 맞다. 생략은 피할 수 없지만 어떤 선택은 다른 선택보다 더 한쪽으로 기운다.",
         "reveals": "생략이 불가피하다는 점과 정도의 차이를 모두 인정한 판단이에요."
        }
       ],
@@ -479,13 +492,14 @@
       "patterns": [
        "\\bslaps?\\b",
        "\\bhike\\b",
-       "12\\s*years",
+       "\\b(?:12|twelve)\\s*years\\b",
+       "\\bfirst (?:increase|rise|hike|raise|time)\\b",
        "\\bomit\\w*\\b",
        "\\bleaves?\\s+out\\b",
        "\\bleft\\s+out\\b",
        "\\bmissing\\b",
-       "\\bdoes\\s+not\\s+(mention|say)\\b",
-       "\\bbus\\b"
+       "\\bdoes\\s+not\\s+(?:mention|say)\\b",
+       "\\b(?:bus routes?|bus lines?|bus service|new buses|buses)\\b"
       ]
      },
      {
@@ -493,7 +507,8 @@
       "label": "그것이 주는 효과(인상)를 설명했다",
       "mode": "any",
       "patterns": [
-       "\\b(negative|biased|one-sided|loaded|emotional|unfair|impression|sympathetic|dramatic|angry|violent|misleading)\\b"
+       "\\b(?:negative|biased|one-sided|loaded|emotional|unfair|impression|sympathetic|sympath\\w*|dramatic|angry|violent|misleading|punish\\w*|neutral|sounds?|seems?|feels?|victims?|aggressive|harsh|blame\\w*|tone|image|idea|suggest\\w*|impl(?:y|ies|ying))\\b",
+       "\\bmakes? (?:the )?(?:council|drivers?|it|readers?)\\b"
       ]
      }
     ],
@@ -508,6 +523,12 @@
      {
       "text": "\"Hike\" is a negative word, and the headline omits the bus routes, which gives drivers a sympathetic impression.",
       "note": "낱말과 생략을 함께 짚었다."
+     },
+     {
+      "text": "The word slaps makes the council seem to be punishing drivers, and the headline leaves out that this is the first increase in 12 years."
+     },
+     {
+      "text": "Without 'Slaps', the headline would sound neutral; 'Slaps' gives the idea that drivers are being punished."
      }
     ],
     "badAnswers": [
@@ -561,7 +582,8 @@
    "human": [
     "설명의 구체성과 영어의 자연스러움"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-h3-04",
@@ -718,10 +740,11 @@
      },
      {
       "id": "w2",
-      "label": "정중한 표현(please, hope, thank 등)을 썼다",
+      "label": "정중하거나 안내하는 표현(please, hope, thank, inform, from March 등)을 썼다",
       "mode": "any",
       "patterns": [
-       "\\b(please|hope|hopes|thank|thanks|appreciate|welcome|understanding|understand)\\b"
+       "\\b(?:please|hope|hopes|thank|thanks|appreciate|welcome|understanding|understand|inform|notify|note|let you know|we (?:would|will|want|wish|are writing)|writing to)\\b",
+       "\\b(?:from|starting|beginning|on) march\\b"
       ]
      },
      {
@@ -729,7 +752,7 @@
       "label": "학교의 이유(집중, 학습 등)를 담았다",
       "mode": "any",
       "patterns": [
-       "\\b(focus|learn|learning|distract\\w*|bully\\w*|safe|safety|concentrat\\w*)\\b"
+       "\\b(?:focus|learn|learning|distract\\w*|bully\\w*|safe|safety|concentrat\\w*|attention|study|studies|class|classes|calm)\\b"
       ]
      }
     ],
@@ -744,6 +767,10 @@
      {
       "text": "Dear parents, please note that phones will be kept in a locker box during school hours starting March 4. This is meant to reduce distractions, and thank you for your understanding.",
       "note": "요청과 감사를 함께 썼다."
+     },
+     {
+      "text": "Dear parents, from March 4 phones will be collected at 8:30 a.m. and returned at 3:30 p.m. The school says this helps students focus.",
+      "note": "정중한 호칭과 사실, 학교의 이유를 담았다."
      }
     ],
     "badAnswers": [
@@ -798,7 +825,8 @@
    "human": [
     "두 글의 어조와 영어의 자연스러움"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-h3-05",
@@ -807,24 +835,24 @@
   "topic": "증거의 강도: 표본",
   "level": 3,
   "levelLabel": "고등",
-  "title": "'10명 중 9명'은 전교생을 말해 주는가",
+  "title": "'5명 중 4명'은 전교생을 말해 주는가",
   "uiLang": "ko",
   "format": "build-many-verify",
   "generative": true,
-  "goal": "겉보기엔 설득력 있는 조사 결과를 직접 만들어 보면서, 작은 규모의 조사가 전교생에 대한 주장을 왜 약하게 뒷받침하는지 설명한다.",
+  "goal": "겉보기엔 설득력 있는 작은 조사 결과를 직접 만들어 보면서, 5명 안팎의 응답이 전교생에 대한 주장을 왜 약하게 뒷받침하는지 설명한다.",
   "thinking": [
    "수치의 크기와 근거의 강도를 구분하기",
    "반례가 되는 예 만들기",
    "조사 방법의 한계 설명하기"
   ],
-  "differsFromPlain": "단순 연습은 퍼센트를 계산하거나 그래프를 읽는다. 여기서는 '비율은 높아 보이지만 근거로는 약한' 조사 결과를 직접 만들고, 무엇이 약한지를 영어로 설명한다.",
+  "differsFromPlain": "단순 연습은 퍼센트를 계산하거나 그래프를 읽는다. 여기서는 '비율은 높아 보이지만 전교생 중에서는 오히려 소수만 좋아할 수도 있는' 작은 조사 결과를 직접 만들고, 무엇이 약한지를 영어로 설명한다.",
   "prerequisites": [
    "비율과 퍼센트의 기본",
    "영어로 쓴 간단한 설문 결과 문장"
   ],
   "minutes": 12,
   "curriculum": null,
-  "material": "Jun이 말했어요. \"Most of our 1,200 students like the new lunch menu. I asked my friends, and 9 out of 10 said yes.\"",
+  "material": "Jun이 말했어요. \"Most of our 1,200 students like the new lunch menu. I asked five of my friends, and four said yes.\"",
   "steps": [
    {
     "id": "s1",
@@ -833,33 +861,37 @@
     "options": [
      {
       "id": "a",
+      "text": "Is 4 out of 5 higher than last year's lunch poll?",
+      "reveals": "작년과의 비교는 변화를 보지만, 이번 조사가 믿을 만한지는 알려 주지 않아요."
+     },
+     {
+      "id": "b",
       "text": "Do the new menu's dishes cost more than the old ones?",
       "reveals": "메뉴 가격은 흥미로운 정보지만 조사 결과를 얼마나 믿을지와는 직접 관련이 없어요."
      },
      {
-      "id": "b",
-      "text": "How many students answered, and who were they?",
-      "reveals": "누구에게 몇 명에게 물었는지가 결과를 전교생에게 넓힐 수 있는 정도를 정해요."
+      "id": "c",
+      "text": "Did Jun count his friends' answers correctly?",
+      "reveals": "세는 일이 정확해도 물은 사람이 전교생을 대표하는지는 알 수 없어요."
      },
      {
-      "id": "c",
-      "text": "Is 90 percent higher than last year's lunch poll?",
-      "reveals": "작년과의 비교는 변화를 보지만, 이번 조사가 믿을 만한지는 알려 주지 않아요."
+      "id": "d",
+      "text": "How many students answered, and how were they chosen?"
      }
     ],
     "correct": [
-     "b"
+     "d"
     ],
     "explain": "결과가 전교생을 대표하는지는 조사 대상의 수와 선택 방식에 달려 있어요. 퍼센트가 높다는 사실만으로는 알 수 없어요.",
     "hints": [
-     "Jun이 쓴 숫자와 주장에 쓴 집단(전교생)을 나란히 적어 보세요.",
+     "Jun의 주장을 뒷받침하는 근거가 무엇이고 어디서 왔는지 한 줄로 적어 보세요.",
      "같은 결과가 어떤 조사 방식에서는 믿기 어려울지 생각해 보세요."
     ]
    },
    {
     "id": "s2",
     "kind": "build",
-    "prompt": "'좋아한다' 응답이 60퍼센트보다 많아서 겉보기엔 설득력이 있지만 조사한 학생이 20명 이하인 조사 결과를, 서로 다르게 두 개 만들어 보세요. (n = 조사한 학생 수, y = 좋아한다고 답한 학생 수)",
+    "prompt": "친구 5~20명에게 물어 '좋아한다'가 60퍼센트를 넘게 나왔지만, 전교생 1,200명 중 실제로 좋아하는 학생은 절반(600명) 미만인 경우를 만들어 보세요. 조사 인원(n)이 서로 다른 두 가지를 만드세요. (n = 조사한 학생 수, y = 좋아한다고 답한 학생 수, t = 전교생 1,200명 중 실제로 좋아하는 학생 수)",
     "vars": [
      {
       "name": "n",
@@ -868,26 +900,36 @@
      {
       "name": "y",
       "label": "'좋아한다'고 답한 학생 수"
+     },
+     {
+      "name": "t",
+      "label": "전교생 1,200명 중 실제로 좋아하는 학생 수"
      }
     ],
     "constraints": [
      {
       "id": "c1",
-      "expr": "n>=1 && y>=0 && y<=n && floor(n)==n && floor(y)==y",
-      "ok": "학생 수가 알맞은 정수예요.",
-      "fail": "조사한 학생 수는 1 이상의 정수이고 응답 수는 0 이상 조사 인원 이하의 정수여야 해요."
+      "expr": "n>=5 && n<=20 && floor(n)==n && y>=0 && y<=n && floor(y)==y",
+      "ok": "조사 인원이 5명 이상 20명 이하의 정수이고 응답 수도 알맞은 정수예요.",
+      "fail": "조사한 학생 수는 5 이상 20 이하의 정수이고, 응답 수는 0 이상 조사 인원 이하의 정수여야 해요."
      },
      {
       "id": "c2",
       "expr": "y*10>6*n",
-      "ok": "'좋아한다'가 전체의 60퍼센트보다 많아요.",
+      "ok": "'좋아한다'가 조사 인원의 60퍼센트보다 많아요.",
       "fail": "'좋아한다' 응답이 조사 인원의 60퍼센트를 넘지 않아요."
      },
      {
       "id": "c3",
-      "expr": "n<=20",
-      "ok": "조사 인원이 20명 이하예요.",
-      "fail": "조사 인원이 20명을 넘어요."
+      "expr": "t>=0 && t<600 && floor(t)==t",
+      "ok": "전교생 중 실제로 좋아하는 학생이 절반(600명) 미만이에요.",
+      "fail": "t는 0 이상 600 미만의 정수여야 해요."
+     },
+     {
+      "id": "c4",
+      "expr": "t>=y",
+      "ok": "조사에서 좋아한다고 한 학생도 전교생 중 좋아하는 학생에 포함돼요.",
+      "fail": "전교생 중 좋아하는 학생 수 t는 조사에서 좋아한다고 한 학생 수 y보다 작을 수 없어요."
      }
     ],
     "need": 2,
@@ -895,33 +937,42 @@
     "modelRows": [
      {
       "n": 5,
-      "y": 4
+      "y": 4,
+      "t": 300
      },
      {
       "n": 12,
-      "y": 9
+      "y": 9,
+      "t": 500
      }
     ],
     "badRows": [
      {
       "n": 10,
-      "y": 5
+      "y": 5,
+      "t": 300
      },
      {
-      "n": 200,
-      "y": 150
+      "n": 10,
+      "y": 8,
+      "t": 700
+     },
+     {
+      "n": 8,
+      "y": 6,
+      "t": 4
      }
     ],
-    "explain": "5명 중 4명(80퍼센트), 12명 중 9명(75퍼센트)처럼 비율은 높아도 전교생 1,200명에 비하면 아주 작은 집단이에요. 비율이 같아도 근거의 강도는 조사한 사람의 수와 방식에 따라 달라요.",
+    "explain": "5명 중 4명(80퍼센트)이나 12명 중 9명(75퍼센트)이 좋아한다고 해도, 전교생 1,200명 중 실제로 좋아하는 학생이 600명도 안 될 수 있어요. 응답이 적으면 우연으로 비율이 크게 흔들리고, 친구들은 전교생과 다를 수도 있어요.",
     "hints": [
-     "60퍼센트를 넘는 비율이 되려면 조사 인원 대비 응답이 몇 이상이어야 할지 하나 정해 보세요.",
-     "조사 인원을 바꾸어 가며 응답 수를 맞춰 보세요.",
-     "서로 다른 인원으로 두 개를 만들어야 해요."
+     "60퍼센트를 넘으려면 조사 인원 대비 응답이 몇 이상이어야 할지 하나 정해 보세요.",
+     "그런 조사 결과가 나왔을 때 전교생 중 좋아하는 학생 수 t가 어디까지 가능한지 따져 보세요.",
+     "조사 인원 n이 서로 다른 두 결과를 만들어야 해요."
     ],
     "because": {
      "id": "s2b",
      "kind": "write",
-     "prompt": "이런 결과(예: 10명 중 8명)가 전교생 1,200명에 대한 주장을 왜 약하게 뒷받침하는지, 더 나은 조사를 위해 무엇을 바꾸겠는지 영어로 써 보세요.",
+     "prompt": "이런 결과(예: 5명 중 4명)가 전교생 1,200명에 대한 주장을 왜 약하게 뒷받침하는지, 더 나은 조사를 위해 무엇을 바꾸겠는지 영어로 써 보세요.",
      "placeholder": "예: Only a few students ...",
      "minChars": 40,
      "checks": [
@@ -955,7 +1006,7 @@
      ],
      "modelAnswers": [
       {
-       "text": "Only a few students were asked, so a result like 8 of 10 may happen by chance and may not show what all 1,200 students think. I would ask a larger, random group."
+       "text": "Only a few students were asked, so a result like 4 of 5 may happen by chance and may not show what all 1,200 students think. I would ask a larger, random group."
       },
       {
        "text": "The sample is too small, and the friends I asked may not be like the rest of the school. Asking 100 students chosen at random would be better.",
@@ -995,7 +1046,7 @@
    }
   ],
   "alternatives": [
-   "n=20, y=13처럼 경계에 가까운 예도 조건을 만족한다.",
+   "n=20, y=13처럼 경계에 가까운 예도 조건을 만족한다. t는 y 이상, 600 미만인 어떤 정수라도 된다.",
    "대표성(누구에게 물었나)만 짚고 크기를 말하지 않아도 부분 점수로 본다."
   ],
   "hardCases": [
@@ -1008,13 +1059,14 @@
   },
   "autoVsHuman": {
    "auto": [
-    "만든 두 예가 세 조건을 만족하고 서로 다른 인원인지",
+    "만든 두 예가 네 조건을 만족하고 서로 다른 인원인지",
     "because에서 규모와 전체 집단 언급의 유무"
    ],
    "human": [
     "설명의 논리와 개선안의 현실성"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-h3-06",
@@ -1027,16 +1079,16 @@
   "uiLang": "ko",
   "format": "choose-needed-info",
   "generative": true,
-  "goal": "조사 결과가 '원인'까지 말해 주는지 판단하고, 판단에 필요한 추가 정보를 고르며, 연구자에게 할 질문을 영어로 쓴다.",
+  "goal": "조사 결과가 '원인'까지 말해 주는지 판단하고, 판단에 필요한 추가 정보를 고르며, 무료 급식의 효과를 확인할 비교 방법을 영어로 제안한다.",
   "thinking": [
    "정보가 충분한지 판단하기",
    "추가 정보의 쓸모 구분하기",
-   "질문 만들기"
+   "공정한 비교 방법 설계하기"
   ],
-  "differsFromPlain": "단순 연습은 표의 평균을 읽거나 비교한다. 여기서는 숫자가 이미 주어진 표를 두고 '어떤 결론까지 말할 수 있는가'를 판단하고, 결론에 필요한 정보와 필요 없는 정보를 나누며 직접 질문을 만든다.",
+  "differsFromPlain": "단순 연습은 표의 평균을 읽거나 비교한다. 여기서는 숫자가 이미 주어진 표를 두고 '어떤 결론까지 말할 수 있는가'를 판단하고, 결론에 필요한 정보와 필요 없는 정보를 나누며, 효과를 확인할 비교 방법을 직접 설계한다.",
   "prerequisites": [
    "평균이라는 말의 뜻",
-   "영어 의문문(Did / Has / Do ... ?)을 만들어 본 경험"
+   "영어로 간단한 제안 문장(Give ... to ..., then compare ...)을 써 본 경험"
   ],
   "minutes": 12,
   "curriculum": null,
@@ -1049,8 +1101,8 @@
     "options": [
      {
       "id": "a",
-      "text": "How many students named eggs as their favorite breakfast",
-      "reveals": "좋아하는 메뉴는 결론과 관계가 거의 없는 정보예요."
+      "text": "The average score of all 200 students combined",
+      "reveals": "두 집단의 평균에서 이미 계산할 수 있는 값이고, 점수 차이의 원인을 알려 주지 않아요."
      },
      {
       "id": "b",
@@ -1064,8 +1116,8 @@
      },
      {
       "id": "d",
-      "text": "What time the cafeteria opens in the morning",
-      "reveals": "운영 시간은 실행에 관한 정보이고 효과의 증거는 아니에요."
+      "text": "How much a free breakfast program would cost per student",
+      "reveals": "비용은 시행 여부를 정할 때는 필요하지만, 점수를 올리는지에 대한 증거는 아니에요."
      },
      {
       "id": "e",
@@ -1078,7 +1130,7 @@
      "c",
      "e"
     ],
-    "explain": "b는 다른 원인(수면, 공부 시간), c는 실제 개입의 결과, e는 비교의 공정성을 확인해 줘요. a와 d는 결론이 맞는지와 거의 관계가 없어요.",
+    "explain": "b는 다른 원인(수면, 공부 시간), c는 실제 개입의 결과, e는 비교의 공정성을 확인해 줘요. a와 d는 급식이 점수를 올리는지에 대한 증거가 아니에요.",
     "hints": [
      "각 정보가 '아침과 점수의 관계가 원인인가?'라는 질문에 답하는 데 도움이 되는지 따져 보세요.",
      "결론이 틀릴 수 있는 이유를 하나 떠올리고, 그것을 확인하는 정보를 찾아보세요."
@@ -1092,7 +1144,7 @@
     "options": [
      {
       "id": "a",
-      "text": "먹는 학생의 점수가 더 높았지만 이유는 모른다",
+      "text": "아침을 먹는 학생의 평균 점수가 먹지 않는 학생보다 높았다",
       "reveals": "표가 보여 주는 사실만 말하고 원인은 열어 둔 판단이에요."
      },
      {
@@ -1104,6 +1156,11 @@
       "id": "c",
       "text": "아침은 성적과 아무 관계가 없다",
       "reveals": "차이가 있는 표를 보고 관계가 없다고 하는 것은 표와 맞지 않아요."
+     },
+     {
+      "id": "d",
+      "text": "아침을 먹는 학생이 많은 학교일수록 학교 평균 점수가 높다",
+      "reveals": "표에는 학교별 자료가 없어요. 이 한 학교의 두 집단만 비교한 결과예요."
      }
     ],
     "correct": [
@@ -1118,54 +1175,81 @@
    {
     "id": "s3",
     "kind": "write",
-    "prompt": "이 조사를 한 연구자에게 보낼 질문을 영어로 한 문장 써 보세요. 위 결론의 약점을 겨냥하는 질문이면 좋아요.",
-    "placeholder": "예: Did the students who ...?",
-    "minChars": 15,
+    "prompt": "무료 아침 급식이 점수를 올리는지 확인하려면 어떻게 비교하면 좋을까요? 영어로 한두 문장으로 제안하세요. 표의 비교가 가진 약점(먹는 학생과 거르는 학생은 급식 말고도 다를 수 있어요)을 피해야 해요.",
+    "placeholder": "예: To test this, we could ...",
+    "minChars": 30,
     "checks": [
      {
       "id": "w1",
-      "label": "의문문이다",
+      "label": "아침 급식(breakfast)을 다뤘다",
       "mode": "any",
       "patterns": [
-       "\\?"
+       "\\bbreakfast\\b"
       ]
      },
      {
       "id": "w2",
-      "label": "결론의 약점(다른 요인, 다른 학교의 결과, 같은 시험 등)을 겨냥했다",
+      "label": "표와 다른 비교 설계(급식 전후, 일부 반/학교에만 제공, 무작위 등)를 말했다",
       "mode": "any",
       "patterns": [
-       "\\b(sleep|slept|income|family|study|studied|studying|same test|free breakfast|other schools?|another school|before|control|group|random\\w*|cause|why|also|different)\\b"
+       "\\bbefore and after\\b",
+       "\\bbefore\\b",
+       "\\bafter\\b",
+       "\\brandom\\w*",
+       "\\bassign\\w*",
+       "\\bsome (?:classes|students|schools)\\b",
+       "\\bhalf\\b",
+       "\\bother (?:schools?|classes)\\b",
+       "\\bcontrol\\b",
+       "\\bsame students\\b",
+       "\\bone (?:class|school|group)\\b",
+       "\\balready (?:started|provide\\w*|offer\\w*|have|has)\\b"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "점수(또는 성적·결과)를 비교한다고 말했다",
+      "mode": "any",
+      "patterns": [
+       "\\bscores?\\b",
+       "\\bgrades?\\b",
+       "\\bresults?\\b",
+       "\\btests?\\b"
       ]
      }
     ],
     "selfAssess": [
-     "내 질문은 '예/아니오'로 답해도 결론의 믿음이 달라지는 질문인가요?",
-     "표에 이미 있는 정보를 다시 묻지는 않았나요?"
+     "내 방법에서 급식을 받는 학생과 받지 않는 학생(또는 급식 전과 후)이 비교할 만큼 비슷한가요?",
+     "점수를 비교하는 집단이나 시점이 분명한가요?"
     ],
     "modelAnswers": [
      {
-      "text": "Did the students who skip breakfast also sleep less or study less than the others?"
+      "text": "Give free breakfast to some classes but not others, chosen at random, and compare their test scores after one semester.",
+      "note": "무작위로 정한 비교 집단을 두었다."
      },
      {
-      "text": "Has any school raised its scores after starting free breakfast?",
-      "note": "원인을 직접 시험한 사례를 묻는다."
+      "text": "Compare the scores of the same students before and after the school starts free breakfast, and also look at other schools that already did it.",
+      "note": "급식 전후와 다른 학교의 사례를 함께 썼다."
      }
     ],
     "badAnswers": [
      {
-      "text": "Is breakfast good?",
-      "why": "무엇이 결론의 약점인지 겨냥하지 않았고 막연하다."
+      "text": "Ask students if they like free breakfast.",
+      "why": "점수의 변화를 비교하는 방법이 아니다."
+     },
+     {
+      "text": "Compare the scores of students who eat breakfast with those who skip it.",
+      "why": "표의 비교를 되풀이했다. 급식 말고 다른 차이가 그대로 남는다."
      },
      {
       "text": "I want to eat breakfast.",
-      "why": "질문이 아니다."
+      "why": "비교 방법이 아니다."
      }
     ],
-    "humanReview": "질문이 실제로 결론의 약점을 겨냥하는지, 영어가 문법적인지는 사람이 본다.",
+    "humanReview": "방법이 다른 요인을 실제로 줄이는지, 영어가 문법적인지는 사람이 본다. 자동 점검은 급식·점수 낱말과 비교 설계 낱말의 유무만 본다.",
     "hints": [
-     "결론이 틀릴 수 있다면 점수 차이를 만드는 다른 이유는 무엇일까요?",
-     "그 이유를 확인하는 Yes/No 질문으로 바꿔 보세요."
+     "표의 비교에서 아침 급식 말고 두 집단이 어떻게 달랐을지 하나 떠올려 보세요.",
+     "그 차이가 생기지 않도록 누가 급식을 받을지 정하는 방법을 생각해 보세요."
     ]
    }
   ],
@@ -1177,15 +1261,15 @@
     "none": "표면적 흥미로 고름"
    },
    {
-    "criterion": "결론 범위 판단과 질문",
-    "full": "표가 말하는 범위를 알고 약점을 겨냥한 질문을 영어로 씀",
-    "partial": "범위는 알았으나 질문이 막연함",
+    "criterion": "결론 범위 판단과 비교 방법",
+    "full": "표가 말하는 범위를 알고, 급식을 받는 집단과 받지 않는 집단(또는 급식 전후)을 비교하는 방법을 영어로 씀",
+    "partial": "범위는 알았으나 방법이 막연하거나 표와 같은 비교를 되풀이함",
     "none": "원인까지 단정함"
    }
   ],
   "alternatives": [
    "s1에서 d를 '실행 가능성' 때문에 고른 학생은 정책 결정에는 맞지만 효과 증거 판단에는 맞지 않는다는 reveals를 본다.",
-   "s3에서 표본 크기를 묻는 질문도 합리적이다."
+   "s3에서 급식을 이미 시작한 다른 학교의 점수 변화를 조사하겠다는 제안도 합리적이다."
   ],
   "hardCases": [
    "아침 급식이 가난한 학생에게만 점수를 올릴 수 있다는 등 세부 해석은 학생마다 다를 수 있어 사람이 판단한다."
@@ -1198,12 +1282,14 @@
   "autoVsHuman": {
    "auto": [
     "s1, s2의 선택 판정",
-    "s3에서 물음표와 약점 관련 낱말의 유무"
+    "s3에서 급식·점수 낱말과 비교 집단·시점 낱말의 유무"
    ],
    "human": [
-    "질문의 적절성과 영어의 정확성"
+    "방법이 다른 요인을 실제로 줄이는지",
+    "영어의 정확성"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-h3-07",
@@ -1444,7 +1530,7 @@
    {
     "id": "s1",
     "kind": "pickLine",
-    "prompt": "선생님이 읽을 때 '부탁이 아니라 명령'처럼 들릴 수 있는 줄을 하나 고르세요.",
+    "prompt": "선생님이 읽을 때 '부탁이 아니라 명령'처럼 들릴 수 있는 줄을 하나 고르세요. (그런 줄이 둘 이상이어도 그중 하나만 고르면 돼요.)",
     "lines": [
      "Hey Mr. Lee,",
      "Give me two more days for the essay.",
@@ -1482,7 +1568,7 @@
       "label": "부드러운 부탁 표현을 썼다",
       "mode": "any",
       "patterns": [
-       "\\b(could|would|may i|would it be possible|i was wondering|if possible|i would appreciate|would you mind|is it possible|do you think)\\b"
+       "\\b(?:could|would|may i|can i|can you|will you|would it be possible|i was wondering|if possible|i would appreciate|would you mind|do you mind|is it possible|is it (?:ok|okay|alright|all right|fine)|do you think|i['’]d like to ask|any chance)\\b"
       ]
      },
      {
@@ -1513,6 +1599,12 @@
      {
       "text": "Hello Mr. Lee, would it be possible to hand in my essay two days later? Our festival rehearsal takes up most of this week. I would appreciate your understanding.",
       "note": "질문형 부탁과 감사를 갖췄다."
+     },
+     {
+      "text": "Dear Mr. Lee, is it okay if I turn in the essay two days late? I have festival rehearsal all week. Thank you."
+     },
+     {
+      "text": "Dear Mr. Lee, can I please have two more days for the essay? I have festival rehearsal all week. Thank you for your help."
      }
     ],
     "badAnswers": [
@@ -1527,7 +1619,7 @@
     ],
     "humanReview": "어조가 선생님께 알맞은지, 너무 비굴하거나 모호하지 않은지, 영어의 자연스러움은 사람이 본다.",
     "hints": [
-     "'Give me ...'를 질문으로 바꿀 수 있는 표현을 찾아보세요.",
+     "초안에서 명령처럼 들리는 문장을 질문이나 가정 표현으로 바꿀 수 있는 방법을 찾아보세요.",
      "이메일의 순서(인사-부탁-이유-감사)를 정해 놓고 한 부분씩 써 보세요."
     ]
    },
@@ -1596,7 +1688,8 @@
    "human": [
     "어조의 적절함과 영어의 자연스러움"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-h3-09",
@@ -1669,31 +1762,31 @@
    {
     "id": "s2",
     "kind": "choose",
-    "prompt": "교수님께 \"Could you look at my draft today?\"라고 묻자 교수님이 \"I'm afraid I'm away until Friday.\"라고 답했어요. 이 답에서 가장 합리적인 추론은?",
+    "prompt": "카페 직원에게 \"Could you make my coffee right now?\"라고 묻자 직원이 \"I'm afraid the machine is being cleaned until three.\"라고 답했어요. 이 답에서 가장 합리적인 추론은?",
     "options": [
      {
       "id": "a",
-      "text": "She has refused to read my draft at any time.",
-      "reveals": "오늘 안 된다는 말을 '언제든 안 된다'로 넓혀 읽었어요."
+      "text": "He has refused to make my coffee at any time.",
+      "reveals": "지금 안 된다는 말을 \"언제든 안 된다\"로 넓혀 읽었어요."
      },
      {
       "id": "b",
-      "text": "She has agreed to read my draft on Friday.",
-      "reveals": "교수님이 금요일에 읽겠다고 말한 적은 없어요. 말하지 않은 약속을 덧붙여 읽었어요."
+      "text": "He has promised to make my coffee at three.",
+      "reveals": "직원이 세 시에 만들어 주겠다고 말한 적은 없어요. 말하지 않은 약속을 덧붙여 읽었어요."
      },
      {
       "id": "c",
-      "text": "She cannot read it today, but later may work.",
-      "reveals": "오늘은 어렵다는 속뜻과 거절이 영원한 것이 아니라는 가능성을 함께 읽었어요."
+      "text": "He cannot make it right now, but later may work.",
+      "reveals": "지금은 어렵다는 속뜻과, 거절이 영원한 것이 아니라는 가능성을 함께 읽었어요."
      }
     ],
     "correct": [
      "c"
     ],
-    "explain": "교수님은 오늘 가능하지 않다는 이유를 알려 주었을 뿐이에요. 다음에 할 일은 가능한 시간을 정중하게 다시 묻는 것이에요.",
+    "explain": "직원은 지금 가능하지 않다는 이유를 알려 주었을 뿐이에요. 다음에 할 일은 가능한 시간을 정중하게 다시 묻는 것이에요.",
     "hints": [
-     "답에 있는 정보(떠나 있음, 금요일까지)가 오늘의 부탁과 어떻게 이어지는지 보세요.",
-     "교수님이 말한 것과 내가 덧붙여 짐작한 것을 나눠 보세요."
+     "답에 있는 정보(기계 청소, 세 시까지)가 지금의 부탁과 어떻게 이어지는지 보세요.",
+     "직원이 말한 것과 내가 덧붙여 짐작한 것을 나눠 보세요."
     ]
    },
    {
@@ -1719,7 +1812,15 @@
        "\\b(may|might|could|can)\\s*(not|n't)\\s+(know|understand|realize|notice|act|help|get)\\b",
        "\\b(may|might)\\s+not\\b",
        "\\bwon't\\s+(know|understand|act)\\b",
-       "\\bnothing\\b"
+       "\\bnothing\\b",
+       "\\bcan(?:not|['’]?t)\\s+(?:tell|find|see|work out|figure|know|understand|decide)\\b",
+       "\\b(?:does|do) not know what\\b",
+       "\\bdon['’]?t know what\\b",
+       "\\bunclear what\\b",
+       "\\bnot clear\\b",
+       "\\b(?:may|might|could) ignore\\b",
+       "\\bnot (?:act|do anything|help)\\b",
+       "\\bno clear request\\b"
       ]
      }
     ],
@@ -1734,6 +1835,9 @@
      {
       "text": "The request is vague, so the worker might not understand that the coffee is really late and nothing may happen.",
       "note": "같은 설명을 다른 표현으로."
+     },
+     {
+      "text": "It is polite but too vague, so the staff cannot tell what to do."
      }
     ],
     "badAnswers": [
@@ -1787,7 +1891,8 @@
    "human": [
     "설명의 근거와 영어의 자연스러움"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-h3-10",

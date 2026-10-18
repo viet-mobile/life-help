@@ -329,7 +329,7 @@
     "kind": "pickLine",
     "prompt": "Mia가 계획을 네 줄로 말했어요. 광고와 맞지 않는 줄을 하나 고르세요. (맞지 않는 줄이 둘 이상일 수 있어요. 하나만 골라도 돼요.)",
     "hints": [
-     "광고에서 날짜·시각과 관계된 문구(Today only, Open)에 표시하세요.",
+     "광고의 각 줄을 읽으면서 날짜나 시각을 말하는 문구에 밑줄을 그어 보세요.",
      "Mia의 줄 중 날짜나 시각을 말하는 줄을 광고의 그 문구와 비교하세요."
     ],
     "lines": [
@@ -375,7 +375,27 @@
       "label": "계획에 그냥 찬성하는 답이 아니다",
       "mode": "none",
       "patterns": [
-       "^\\s*(?:yes|great|ok(?:ay)?|good)\\b"
+       "^\\s*(?:yes|great|ok(?:ay)?|good)\\b",
+       "\\b(?:is|are|it['’]s|that['’]s)\\s+(?:fine|ok(?:ay)?|good|great)\\b",
+       "\\bno problem\\b",
+       "\\bnot a problem\\b"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "안 되는 점(못 한다, 늦다, 닫는다 등)을 말했다",
+      "mode": "any",
+      "patterns": [
+       "\\bcannot\\b",
+       "\\bcan\\s?not\\b",
+       "\\bcan['’]?t\\b",
+       "\\bonly\\b",
+       "\\btoo\\s+(?:late|early)\\b",
+       "\\bclos(?:e|es|ed|ing)\\b",
+       "\\bnot\\b",
+       "\\bno\\b",
+       "n['’]t\\b",
+       "\\bunable\\b"
       ]
      }
     ],
@@ -400,6 +420,10 @@
      {
       "text": "I like bikes very much.",
       "why": "광고 조건과 관계없는 말이다."
+     },
+     {
+      "text": "I think 7 p.m. is fine, and we can go tomorrow.",
+      "why": "광고 조건을 어기는 계획에 그냥 찬성했다."
      }
     ],
     "humanReview": "이유가 광고 문구와 일치하는지, 영어가 자연스러운지는 사람이 본다."
@@ -440,7 +464,8 @@
     "이유의 정확성",
     "영어의 자연스러움"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "subject": "english",
@@ -533,22 +558,22 @@
       "options": [
        {
         "id": "a",
+        "text": "알 수 없다",
+        "reveals": "새 줄이 Jun의 경우에 해당하는지 다시 확인해 보세요."
+       },
+       {
+        "id": "b",
         "text": "5,000원 (Jun은 회원이 아니므로)",
         "reveals": "앞 줄의 조건만 보고 새 줄을 반영하지 않았을 수 있어요."
        },
        {
-        "id": "b",
+        "id": "c",
         "text": "0원 (Ara가 데려가는 친구이므로)",
         "reveals": "새 줄과 두 사람의 관계를 연결했어요."
-       },
-       {
-        "id": "c",
-        "text": "알 수 없다",
-        "reveals": "새 줄이 Jun의 경우에 해당하는지 다시 확인해 보세요."
        }
       ],
       "reasonable": [
-       "b"
+       "c"
       ],
       "after": "회원은 친구 한 명을 무료로 데려갈 수 있어요. Ara가 회원이므로 Jun은 Ara와 함께 가면 무료예요."
      }
@@ -576,18 +601,19 @@
      },
      {
       "id": "w2",
-      "label": "시각·신청·장소 등 새 정보를 묻는다",
+      "label": "시작·신청·준비물 등 포스터에 없는 정보를 묻는다",
       "mode": "any",
       "patterns": [
        "\\bsign(?:ing)?\\s*up\\b",
        "\\bregist",
-       "\\btime\\b",
-       "\\bstart",
-       "\\bbegin",
-       "\\bwhen\\b",
-       "\\bwhere\\b",
-       "\\bhow\\b",
-       "\\bbring\\b"
+       "\\bapply\\b",
+       "\\bwhat\\s+time\\b",
+       "\\bwhen\\s+(?:does|do|will|is|can|should)\\b",
+       "\\b(?:start|begin|end|finish)s?\\b",
+       "\\bhow\\s+(?:do|can|should|could)\\s+(?:i|we|you)\\s+(?:sign|join|apply|register)\\b",
+       "\\bwhere\\s+(?:do|can|should|is|will)\\b[^?]*\\b(?:meet|camp|sign|register|room|start|go)\\b",
+       "\\b(?:need|should|can)\\s+(?:i|we|to)\\s+bring\\b",
+       "\\bbring\\s+anything\\b"
       ]
      },
      {
@@ -600,6 +626,25 @@
        "\\bpay\\b",
        "\\bprice\\b",
        "\\bcost"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "캠프·행사에 대한 질문이다",
+      "mode": "any",
+      "patterns": [
+       "\\bcamp\\b",
+       "\\bart\\b",
+       "\\bsunday\\b",
+       "\\bprogram\\b",
+       "\\bevent\\b",
+       "\\bclass\\b",
+       "\\bsession\\b",
+       "\\bposter\\b",
+       "\\bbring\\b",
+       "\\b(?:does|will|do|when)\\s+it\\b",
+       "\\bsign(?:ing)?\\s*up\\b",
+       "\\bregist"
       ]
      }
     ],
@@ -624,6 +669,14 @@
      {
       "text": "The camp is fun.",
       "why": "질문이 아니다."
+     },
+     {
+      "text": "How are you?",
+      "why": "포스터와 관계없는 인사말 질문이다."
+     },
+     {
+      "text": "What time is it now?",
+      "why": "행사의 정보가 아니라 지금 시각을 묻는다."
      }
     ],
     "humanReview": "질문이 포스터에 없는 정보를 묻는지, 영어가 자연스러운지는 사람이 본다."
@@ -664,7 +717,8 @@
     "질문이 새 정보를 묻는지",
     "영어의 자연스러움"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "subject": "english",
@@ -899,7 +953,7 @@
     "prompt": "두 안내문을 비교했을 때 '진짜 다른 점'(한쪽에만 있는 정보나 서로 맞지 않는 정보)을 모두 고르세요.",
     "hints": [
      "날짜, 시각, 준비물, 비 올 때의 네 항목으로 표를 그려 A와 B를 채워 보세요.",
-     "시각이 다르게 보이는 곳은 두 글이 같은 일을 말하는지 확인하세요."
+     "항목마다 A와 B가 말하는 '일'이 같은지, 아니면 서로 다른 일을 말하는지 확인하세요."
     ],
     "options": [
      {
@@ -937,16 +991,21 @@
     "minChars": 20,
     "hints": [
      "s1에서 고른 '진짜 다른 점' 중 하나를 정하세요.",
-     "'Do we need ...?' 또는 'What if ...?'로 시작해 질문 하나를 쓰세요."
+     "질문 하나를 영어 의문문으로 쓰고 끝에 물음표를 붙이세요."
     ],
     "checks": [
      {
       "id": "w1",
-      "label": "수영 모자나 비 오는 날 같은 진짜 차이를 다룬다",
+      "label": "수영 모자, 비 오는 날, 모이는 곳·버스·시각처럼 두 안내문의 실제 차이를 다룬다",
       "mode": "any",
       "patterns": [
        "\\bcaps?\\b",
-       "\\brain(?:s|ed|ing|y)?\\b"
+       "\\brain(?:s|ed|ing|y)?\\b",
+       "\\bbus\\b",
+       "\\bgate\\b",
+       "\\b8[:.]30\\b",
+       "\\b9[:.]00\\b",
+       "\\b(?:meet|leave|leaves|depart)\\b"
       ]
      },
      {
@@ -969,6 +1028,10 @@
      {
       "text": "Hello, if it rains on June 7, will Swim Day be on June 14? Notice A does not say this.",
       "note": "비 올 때 계획을 확인하는 또 다른 좋은 질문."
+     },
+     {
+      "text": "Do we meet at the school gate at 8:30 or take the bus at 9:00?",
+      "note": "A에만 있는 모이는 곳과 B에만 있는 버스를 함께 확인하는 질문."
      }
     ],
     "badAnswers": [
@@ -979,6 +1042,10 @@
      {
       "text": "Is Swim Day on Friday?",
       "why": "두 안내문이 똑같이 말하는 내용을 물었다."
+     },
+     {
+      "text": "Is Swim Day on June 7?",
+      "why": "두 안내문이 똑같이 말하는 날짜를 물었다."
      }
     ],
     "humanReview": "질문이 진짜 차이를 짚는지, 영어가 자연스러운지는 사람이 본다. 자동 점검은 cap/rain과 물음표만 본다."
@@ -1019,7 +1086,8 @@
     "질문의 적절성",
     "영어의 자연스러움"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "subject": "english",
@@ -1053,7 +1121,7 @@
     "prompt": "다음 주 Sam은 어느 안내를 따라야 할까요?",
     "hints": [
      "두 안내문에 적힌 날짜를 비교하고 어느 쪽이 나중에 만들어졌는지 보세요.",
-     "쪽지에 '바뀐다'는 말이 있는지 찾아보세요."
+     "두 안내문이 앞의 일정에 대해 각각 무엇을 말하는지 비교하세요."
     ],
     "options": [
      {
@@ -1063,13 +1131,13 @@
      },
      {
       "id": "b",
-      "text": "9월 1일 포스터를 따른다. 벽에 붙어 있어서 가장 믿을 만하다.",
-      "reveals": "붙어 있는 장소와 만든 시기 중 무엇을 근거로 삼았는지 돌아보세요."
+      "text": "9월 20일 쪽지를 따른다. 더 나중에 나왔고 변경이라고 쓰여 있다.",
+      "reveals": "날짜와 변경 표시를 근거로 최신 정보를 가려냈어요."
      },
      {
       "id": "c",
-      "text": "9월 20일 쪽지를 따른다. 더 나중에 나왔고 변경이라고 쓰여 있다.",
-      "reveals": "날짜와 변경 표시를 근거로 최신 정보를 가려냈어요."
+      "text": "9월 1일 포스터를 따른다. 벽에 붙어 있고 처음 정해진 일정이라 가장 믿을 만하다.",
+      "reveals": "붙어 있는 장소와 만든 시기 중 무엇을 근거로 삼았는지 돌아보세요."
      },
      {
       "id": "d",
@@ -1078,15 +1146,7 @@
      }
     ],
     "correct": [
-     "c"
-    ],
-    "acceptable": [
-     {
-      "ids": [
-       "d"
-      ],
-      "reason": "선생님께 확인하는 것도 신중한 선택이지만, 날짜와 CHANGE 표시만으로 판단할 수 있어 이 과제에서는 근거 판단(c)을 기대한다."
-     }
+     "b"
     ],
     "explain": "쪽지가 9월 20일로 더 나중이고 'CHANGE!'라고 쓰여 있어요. 그러니 현재 모임은 수요일 4시, 도서관이에요. 벽에 오래 붙어 있다는 것은 정보가 최신이라는 근거가 아니에요."
    },
@@ -1123,10 +1183,12 @@
       "mode": "any",
       "patterns": [
        "\\bchang(?:e|ed|es|ing)\\b",
+       "\\binstead\\b",
+       "\\bno longer\\b",
        "\\bnow\\b",
-       "\\bnew\\b",
-       "\\bnot\\b",
-       "\\binstead\\b"
+       "\\bnew\\s+(?:day|place|time|room|location|schedule|plan)\\b",
+       "\\b(?:time|place|day|room|plan|schedule)\\s+is\\s+new\\b",
+       "\\bnot\\b[^.?!]*\\b(?:tuesday|room\\s*5)\\b"
       ]
      }
     ],
@@ -1151,6 +1213,10 @@
      {
       "text": "Come to Book Club.",
       "why": "요일과 장소가 없다."
+     },
+     {
+      "text": "Book Club is on Wednesday in the library. Not new.",
+      "why": "바뀌었다는 말이 아니라 바뀌지 않았다는 뜻으로 읽힌다."
      }
     ],
     "humanReview": "정보가 쪽지와 일치하는지, 받는 사람이 이해하기 쉬운지는 사람이 본다."
@@ -1191,7 +1257,8 @@
     "정보의 일치",
     "받는 사람에게 쉬운지"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "subject": "english",
@@ -1563,27 +1630,27 @@
     "prompt": "엄마에게 친구 집에 가도 되는지 묻는 세 가지 말이에요. 엄마가 결정하는 데 가장 도움이 되는 말은?",
     "hints": [
      "엄마가 허락할지 말지 정할 때 알고 싶은 것이 무엇인지 생각해 보세요.",
-     "각 보기의 이유가 '해야 하는 일'인지, 다른 사람 이야기인지, 마음만 말하는지 비교하세요."
+     "각 보기의 이유가 엄마가 판단할 때 쓸 수 있는 정보를 주는지 비교하세요."
     ],
     "options": [
      {
       "id": "a",
-      "text": "Can I go to Jiho's house on Saturday? We must finish our science project.",
-      "reveals": "엄마가 판단할 수 있는 이유가 있는지 확인한 선택이에요."
-     },
-     {
-      "id": "b",
       "text": "Can I go to Jiho's house on Saturday? All my friends go there every weekend.",
       "reveals": "다른 사람들이 한다는 말이 엄마의 결정에 도움이 되는지 따져 보세요."
      },
      {
-      "id": "c",
+      "id": "b",
       "text": "Can I go to Jiho's house on Saturday? I really, really want to go.",
       "reveals": "마음만 말하는 이유가 엄마의 결정에 정보를 주는지 따져 보세요."
+     },
+     {
+      "id": "c",
+      "text": "Can I go to Jiho's house on Saturday? We must finish our science project.",
+      "reveals": "엄마가 판단할 수 있는 이유가 있는지 확인한 선택이에요."
      }
     ],
     "correct": [
-     "a"
+     "c"
     ],
     "explain": "a의 '과학 숙제를 끝내야 한다'는 이유는 엄마가 필요성을 판단할 수 있는 구체적인 정보예요. b는 다른 사람들의 사정이고, c는 마음만 말해 결정에 쓸 정보가 적어요."
    },
@@ -1595,7 +1662,7 @@
     "minChars": 25,
     "hints": [
      "하고 싶은 일, 때, 이유를 한 칸씩 정해 두고 쓰세요.",
-     "이유는 s1에서 고른 보기처럼 '해야 하는 일'로 쓰세요."
+     "이유는 듣는 사람이 결정하는 데 쓸 수 있는 구체적인 사정으로 쓰세요."
     ],
     "checks": [
      {
@@ -1677,13 +1744,13 @@
       "label": "다른 요일이나 시각을 말했다",
       "mode": "any",
       "patterns": [
-       "\\b(?:mon|tues|wednes|thurs|fri|satur|sun)day\\b",
+       "\\b(?:mon|tues|wednes|thurs|fri|sun)day\\b",
        "\\bat\\s+\\d",
        "\\b\\d{1,2}\\s*(?:a\\.?m|p\\.?m)\\b",
        "\\btonight\\b",
        "\\btomorrow\\b",
        "\\bafter\\s+school\\b",
-       "\\bnext\\s+week\\b"
+       "\\bnext\\s+(?:week|saturday)\\b"
       ]
      },
      {
@@ -1698,6 +1765,14 @@
        "\\bmaybe\\b",
        "\\bthen\\b"
       ]
+     },
+     {
+      "id": "w3",
+      "label": "거절당한 토요일을 다시 제안하지 않았다",
+      "mode": "none",
+      "patterns": [
+       "(?<!instead of )(?<!not )(?<!other than )(?<!besides )\\bsaturday\\b"
+      ]
      }
     ],
     "selfAssess": [
@@ -1711,6 +1786,9 @@
      {
       "text": "I understand. Could I go on Friday after school, then?",
       "note": "금요일을 제안한 다른 답."
+     },
+     {
+      "text": "OK, Mom. Could I go on Friday instead of Saturday?"
      }
     ],
     "badAnswers": [
@@ -1721,6 +1799,10 @@
      {
       "text": "OK.",
       "why": "다른 때를 제안하지 않았다."
+     },
+     {
+      "text": "Could I go on Saturday instead?",
+      "why": "거절당한 토요일을 다시 제안했다."
      }
     ],
     "humanReview": "제안한 때가 거절 이유와 겹치지 않는지, 말투가 자연스러운지는 사람이 본다."
@@ -1762,6 +1844,7 @@
     "이유의 구체성과 적절성",
     "영어의 자연스러움"
    ]
-  }
+  },
+  "status": "draft"
  }
 ]

@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeAll, afterAll, vi } from "vitest";
 import { TASK_LOADERS } from "../../lib/think/data/files";
 import { loadOverlay, localize } from "../../lib/think/localize";
-import { flatten } from "../../lib/think/flat";
+import { flatten, needsTranslation } from "../../lib/think/flat";
 import type { ThinkTask } from "../../lib/think/types";
 import { readFileSync } from "node:fs";
 import path from "node:path";
@@ -50,6 +50,17 @@ describe("translation overlays", () => {
           }
         }
       }
+      // every string that needs a translation HAS one: a half-translated task would show the authored language between translated sentences
+      const gaps: string[] = [];
+      for (const t of tasks) {
+        if (lang === "en" && t.subject === "korean") continue;
+        if (lang === "ko" && t.subject !== "korean") continue;
+        const m = overlay[t.id];
+        if (!m) continue;
+        const holes = Object.entries(flatten(t)).filter(([p, s]) => needsTranslation(t.subject, s) && !(typeof m[p] === "string" && m[p].trim())).map(([p]) => p);
+        if (holes.length) gaps.push(`${t.id}: ${holes.slice(0, 3).join(",")}${holes.length > 3 ? ` (+${holes.length - 3})` : ""}`);
+      }
+      expect(gaps.slice(0, 10), `${lang}: ${gaps.length} tasks have untranslated strings`).toEqual([]);
       expect(actuallyMissing.sort(), `translation-pending.json for ${lang} must list exactly the tasks without an overlay`).toEqual([...pending].sort());
       // labels (가/나), names and Korean quoted material may remain; a flood of Hangul means untranslated text
       expect(hangul).toBeLessThan(150);

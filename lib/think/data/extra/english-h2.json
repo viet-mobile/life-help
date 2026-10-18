@@ -32,29 +32,29 @@
     "options": [
      {
       "id": "a",
-      "text": "Library use has doubled for good and will keep growing each month.",
-      "reveals": "'for good'과 'keep growing'을 뒷받침하는 숫자가 있는지 찾아보세요. 4월 숫자는 무엇을 보여 주나요?"
+      "text": "Library use doubled in March and has stayed twice as high since then.",
+      "reveals": "4월 숫자(4,500)를 3월 숫자(8,000)와 비교해 보세요. 두 배가 이어졌나요?"
      },
      {
       "id": "b",
-      "text": "Free coffee was proven to be the only reason for all the extra visits.",
-      "reveals": "담당자의 발언은 '이벤트에서 왔다'는 설명이지, 다른 이유가 없다는 증명은 아니에요."
+      "text": "The free coffee caused the March visits to double, so the coffee should stay.",
+      "reveals": "담당자는 이벤트 때문이라고 했을 뿐, 커피가 원인이라는 증거는 기사에 없어요."
      },
      {
       "id": "c",
-      "text": "The library became less popular than it was a year ago.",
-      "reveals": "작년 3월(4,000)과 올해 4월(4,500)을 같은 기준으로 비교했는지 확인해 보세요."
+      "text": "The library became less popular than it was a year ago in March.",
+      "reveals": "작년 3월(4,000)과 올해 4월(4,500)을 같은 달끼리 비교한 것인지 확인해 보세요."
      },
      {
       "id": "d",
-      "text": "March visits doubled during an event, but April's visits fell back.",
+      "text": "March visits doubled during an event, but April's visits were much lower.",
       "reveals": "기사의 세 숫자와 이벤트 기간을 함께 놓고 읽는 판단이에요."
      }
     ],
     "correct": [
      "d"
     ],
-    "explain": "3월에만 두 배(4,000 → 8,000)가 되었고 그 달은 이벤트 기간이었으며, 이벤트 후 4월은 4,500으로 줄었어요. 그래서 '계속 늘 것'이나 '유일한 이유'는 기사 근거를 넘어요.",
+    "explain": "3월에만 두 배(4,000 → 8,000)가 되었고 그 달은 이벤트 기간이었으며, 이벤트 후 4월은 4,500으로 줄었어요. 그래서 \"계속 두 배\"나 \"커피가 원인\"이라는 말은 기사 근거를 넘어요.",
     "hints": [
      "문장마다 기사 속 숫자나 발언 중 근거가 되는 곳을 찾아 줄을 그어 보세요.",
      "3월 숫자와 4월 숫자를 나란히 놓고 변화의 방향을 비교해 보세요."
@@ -67,42 +67,42 @@
     "checks": [
      {
       "id": "w1",
-      "label": "3월·이벤트 등 기간을 언급했다",
+      "label": "기간·이벤트 같은 범위를 밝혔다(March, event, Book Month 등)",
       "mode": "any",
       "patterns": [
-       "\\bevent\\b",
        "\\bmarch\\b",
-       "\\bmonth\\b",
-       "free coffee",
-       "\\bbook month\\b"
+       "\\bevent\\b",
+       "\\bbook month\\b",
+       "\\bone[- ]month\\b",
+       "\\bduring\\b",
+       "\\btemporar\\w*",
+       "\\bapril\\b",
+       "\\bthis month\\b"
       ]
      },
      {
       "id": "w2",
-      "label": "한정/대비 표현(during, but, then 등)을 썼다",
-      "mode": "any",
+      "label": "근거 없는 단정(영원히·증명·커피가 원인 등)을 쓰지 않았다",
+      "mode": "none",
       "patterns": [
-       "\\bduring\\b",
-       "\\bbut\\b",
-       "\\bwhile\\b",
-       "\\bafter\\b",
-       "\\bthen\\b",
-       "\\bfall(?:s|en)?\\b",
-       "\\bfell\\b",
-       "\\bdrops?\\b",
-       "\\bdropped\\b",
-       "\\bonly\\b",
-       "\\btemporar"
+       "\\b(?:forever|permanent\\w*|always|for good)\\b",
+       "\\bkeeps? (?:growing|rising|doubling)\\b",
+       "\\bwill (?:continue|keep|stay|grow)\\b",
+       "\\bproven?\\b",
+       "\\bthanks to\\b",
+       "\\bbecause of\\b",
+       "\\bcaused? by\\b",
+       "\\bdue to\\b",
+       "\\bonly reason\\b",
+       "\\bfree coffee (?:doubles|causes|drives|boosts|brings)\\b"
       ]
      },
      {
       "id": "w3",
-      "label": "'영원히/계속 늘 것' 같은 단정을 쓰지 않았다",
-      "mode": "none",
+      "label": "15단어 이하의 한 줄이다",
+      "mode": "any",
       "patterns": [
-       "\\b(?:forever|permanent(?:ly)?|always|for good)\\b",
-       "\\bkeeps? (?:growing|rising)\\b",
-       "\\bwill (?:continue|keep)\\b"
+       "^\\s*(?:\\S+\\s+){0,14}\\S+\\s*$"
       ]
      }
     ],
@@ -119,6 +119,10 @@
      {
       "text": "Free Coffee Event Doubles March Visits, but April Drops",
       "note": "이벤트와 대비를 담았다."
+     },
+     {
+      "text": "Greenfield Library Visits Double in March",
+      "note": "기간을 3월로 한정한 사실 그대로의 제목."
      }
     ],
     "badAnswers": [
@@ -131,7 +135,7 @@
       "why": "근거에 없는 영속·원인 단정이다."
      }
     ],
-    "humanReview": "제목이 기사의 사실과 일치하는지, 영어 제목 문체(현재형, 관사 생략)가 자연스러운지는 사람이 본다. 자동 점검은 기간 언급, 한정 표현, 단정어 유무만 본다.",
+    "humanReview": "제목이 기사의 사실과 일치하는지, 영어 제목 문체(현재형, 관사 생략)가 자연스러운지는 사람이 본다. 자동 점검은 기간·이벤트 언급, 단정어 유무, 단어 수만 본다.",
     "hints": [
      "먼저 기사에서 제목이 말하지 않는 사실(이벤트, 4월)을 하나 고르세요.",
      "그 사실을 넣어 'A 동안 B, 그 뒤 C' 순서로 제목을 만들어 보세요."
@@ -175,7 +179,8 @@
     "제목의 의미 정확성과 영어 자연스러움",
     "대안 제목의 타당성"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-h2-02",
@@ -206,7 +211,7 @@
    {
     "id": "s1",
     "kind": "pickLine",
-    "prompt": "아래는 한 학생이 쓴 기사 요약입니다. 기사와 맞지 않는 줄을 하나 고르세요. (맞지 않는 줄이 둘 이상일 수 있어요.)",
+    "prompt": "아래는 한 학생이 쓴 기사 요약입니다. 기사와 맞지 않는 줄을 하나 고르세요. (맞지 않는 줄이 둘 이상이어도 그중 하나만 고르면 돼요.)",
     "lines": [
      "Maple High School changed its start time to 8:45 in September.",
      "A survey found that 120 of 200 students felt less tired.",
@@ -221,28 +226,28 @@
     "explain": "3번 줄은 설문에 답한 200명 중 120명이 덜 피곤하다고 했을 뿐인데 '모든 학생이 더 잘 잔다'고 넓혔어요. 5번 줄은 교장이 6월에 검토한 뒤 결정한다고 했는데 '영원히'로 확정했어요.",
     "hints": [
      "각 줄에 대응하는 기사 문장을 찾아 숫자와 동사를 비교해 보세요.",
-     "숫자가 같아도 'all'이나 'forever' 같은 낱말이 기사에 근거를 가지는지 확인해 보세요."
+     "숫자가 같아도, 줄이 말하는 범위(누구까지, 언제까지)와 확정 정도가 기사에 근거가 있는지 확인해 보세요."
     ]
    },
    {
     "id": "s2",
     "kind": "choose",
-    "prompt": "3번 줄과 5번 줄의 오류에는 어떤 공통점이 있나요?",
+    "prompt": "요약문에서 오류가 있는 두 줄에는 어떤 공통점이 있나요?",
     "options": [
      {
       "id": "a",
-      "text": "두 줄 모두 한정된 결과를 넓게 단정했다.",
-      "reveals": "원문이 말한 범위(일부, 검토 예정)를 넘어 일반화하고 확정하는 오류를 짚었다는 뜻이에요."
-     },
-     {
-      "id": "b",
       "text": "두 줄 모두 기사에 없는 숫자를 만들어 넣었다.",
       "reveals": "두 줄에 새 숫자가 있나요? 숫자 대신 어떤 낱말이 바뀌었는지 보세요."
      },
      {
-      "id": "c",
+      "id": "b",
       "text": "두 줄 모두 시제를 잘못 써서 사실이 바뀌었다.",
       "reveals": "시제를 바꿔도 의미가 같은지 확인해 보세요. 이 두 줄의 문제는 시제가 아니에요."
+     },
+     {
+      "id": "c",
+      "text": "두 줄 모두 한정된 결과를 넓게 단정했다.",
+      "reveals": "원문이 말한 범위(일부, 검토 예정)를 넘어 일반화하고 확정하는 오류를 짚었다는 뜻이에요."
      },
      {
       "id": "d",
@@ -251,18 +256,18 @@
      }
     ],
     "correct": [
-     "a"
+     "c"
     ],
     "explain": "3번 줄은 '설문 응답자 일부'를 '학교의 모든 학생'으로, 5번 줄은 '검토 예정'을 '영구'로 넓혔어요. 숫자가 아니라 범위·확정성이 바뀐 것이에요.",
     "hints": [
-     "오류 줄에서 바뀐 낱말(all, forever)에 밑줄을 긋고 원문의 어떤 낱말과 대응하는지 보세요.",
+     "오류 줄에서 원문과 달라진 낱말에 밑줄을 긋고, 원문의 어떤 표현과 대응하는지 보세요.",
      "두 오류를 같은 질문('원문이 이만큼 말했나?')으로 묶을 수 있는지 생각해 보세요."
     ]
    },
    {
     "id": "s3",
     "kind": "write",
-    "prompt": "3번 줄과 5번 줄을 기사에 맞게 고쳐 영어로 두 문장을 쓰세요.",
+    "prompt": "요약문에서 오류가 있던 두 줄을 기사에 맞게 고쳐 영어로 두 문장을 쓰세요.",
     "checks": [
      {
       "id": "w1",
@@ -272,10 +277,15 @@
        "\\b120\\b",
        "\\b60 ?(?:%|percent)\\b",
        "\\bof (?:the )?200\\b",
-       "\\bsurvey",
+       "\\bout of 200\\b",
        "three out of five",
+       "\\b3 (?:out of|in) 5\\b",
        "more than half",
-       "\\bsome students\\b"
+       "\\bsome (?:of the )?(?:surveyed )?students\\b",
+       "\\bmany (?:of the )?(?:surveyed )?students\\b",
+       "\\bsurveyed students\\b",
+       "\\bnot all\\b",
+       "\\bonly some\\b"
       ]
      },
      {
@@ -283,14 +293,12 @@
       "label": "교장의 검토가 남아 있다는 점을 밝혔다",
       "mode": "any",
       "patterns": [
-       "\\breview",
+       "\\breview\\w*",
        "\\bjune\\b",
-       "not (?:yet )?(?:decided|final|sure)",
-       "\\bmay\\b",
-       "\\bmight\\b",
-       "\\bcould\\b",
-       "\\bwhether\\b",
-       "\\bif\\b"
+       "\\bdecid\\w*",
+       "\\bevaluat\\w*",
+       "\\bconsider\\w*",
+       "\\bnot (?:yet )?final\\b"
       ]
      },
      {
@@ -298,9 +306,9 @@
       "label": "'모두'/'영원히' 단정을 쓰지 않았다",
       "mode": "none",
       "patterns": [
-       "\\ball (?:the )?students\\b",
+       "(?<!not )(?<!n['’]t )\\ball (?:the )?students\\b",
        "\\bforever\\b",
-       "\\bpermanent",
+       "\\bpermanent\\w*",
        "\\beveryone\\b"
       ]
      }
@@ -316,6 +324,10 @@
      {
       "text": "About 60 percent of the surveyed students felt less tired, and the school may change the start time after the June review.",
       "note": "퍼센트로 바꿔 표현했다."
+     },
+     {
+      "text": "Not all students sleep better; 120 of 200 surveyed said they felt less tired. The principal will review the results in June before deciding.",
+      "note": "\"not all\"로 범위를 한정했다."
      }
     ],
     "badAnswers": [
@@ -372,7 +384,8 @@
     "고친 문장의 정확성과 자연스러움",
     "다른 타당한 표현의 인정"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-h2-03",
@@ -631,14 +644,14 @@
       "mode": "any",
       "patterns": [
        "would like",
-       "\\bask\\b",
+       "\\bask(?:s|ing)?\\b",
        "\\brequest",
        "\\bhope\\b",
        "\\bsuggest",
        "\\bpropose",
-       "\\bplease\\b",
-       "\\bcould\\b",
-       "\\bwould you\\b"
+       "\\bplease (?:find|give|let|consider|provide|share|allow|help|restore|return)\\b",
+       "\\bwould you (?:please )?(?:consider|find|give|let|share|provide)\\b",
+       "\\bcould you\\b"
       ]
      },
      {
@@ -646,10 +659,12 @@
       "label": "초안의 추측·단정·협박 표현이 남아 있지 않다",
       "mode": "none",
       "patterns": [
-       "\\bnobody\\b",
+       "\\bnobody cares\\b",
+       "\\bno ?one cares\\b",
        "\\bunfair\\b",
        "\\bjust because\\b",
-       "\\bor we(?:'ll| will)\\b",
+       "\\bor we(?:'|’)ll\\b",
+       "\\bor we will\\b",
        "stop coming",
        "fix it now",
        "likes? sports? more"
@@ -667,6 +682,10 @@
      },
      {
       "text": "Dear Editor, Our music club no longer has a room to practice in, and the winter concert is only two months away. We know space is limited, so we ask the school to find a shared room for a few hours a week. We would be happy to explain our needs to the principal. Thank you for reading. Sincerely, Mina, Music Club"
+     },
+     {
+      "text": "Dear Editor, our music club lost its room, and nobody can rehearse before the winter concert. We would like the school to find us a shared room for a few hours a week. Thank you for reading.",
+      "note": "'nobody'를 사실 문장 안에서 쓴 경우."
      }
     ],
     "badAnswers": [
@@ -725,7 +744,8 @@
     "요청의 현실성",
     "영어의 자연스러움"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-h2-05",
@@ -786,7 +806,7 @@
     "explain": "고객과 기간이 정해지지 않으면 틀린 파일을 틀린 고객에게 보낼 수 있어요. 형식은 PDF 같은 기본값을 정해 알리면 되고, 출근 여부는 일의 내용과 무관해요.",
     "hints": [
      "이메일에서 '누구에게', '무엇을', '언제까지'가 각각 한 가지로 정해지는지 확인해 보세요.",
-     "틀린 값을 골랐을 때 되돌리기 어려운 것(고객에게 잘못 보내기)을 먼저 찾아 보세요."
+     "어떤 값을 골랐다가 틀렸을 때 되돌리기 어려운 결과가 생기는지 먼저 찾아 보세요."
     ],
     "multi": true,
     "acceptable": [
@@ -817,13 +837,15 @@
      },
      {
       "id": "w2",
-      "label": "고객이 누구인지 물었다",
+      "label": "어느 고객인지 구체적으로 물었다",
       "mode": "any",
       "patterns": [
        "\\baurora\\b",
        "\\bblue pine\\b",
-       "which client",
-       "\\bclient\\b"
+       "\\bwhich (?:client|company|customer)\\b",
+       "\\bwhich one\\b",
+       "\\btuesday\\b",
+       "\\bthursday\\b"
       ]
      },
      {
@@ -845,6 +867,20 @@
       "mode": "any",
       "patterns": [
        "\\?"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "선택지나 기본 계획을 제안했다",
+      "mode": "any",
+      "patterns": [
+       "\\b(?:aurora|blue pine|july|august|september|tuesday|thursday)\\b[^.?!]{0,60}\\bor\\b",
+       "\\bby default\\b",
+       "\\bif I (?:do not|don['’]?t) hear\\b",
+       "\\bunless you (?:tell|say|let)\\b",
+       "\\botherwise,? I(?:['’]ll| will)\\b",
+       "\\bshould I (?:send|use|include)\\b",
+       "\\bI (?:will|can|could) (?:send|include|put|attach|assume)\\b"
       ]
      }
     ],
@@ -916,7 +952,8 @@
     "영어의 자연스러움",
     "기본값 제안의 적절성"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-h2-06",
@@ -947,7 +984,7 @@
    {
     "id": "s1",
     "kind": "pickLine",
-    "prompt": "팀원이 읽고 '무슨 회의죠?', '언제까지 답해요?'라고 되묻게 만드는 줄을 하나 고르세요. (그런 줄이 여러 개일 수 있어요.)",
+    "prompt": "팀원이 읽고 '무슨 회의죠?', '언제까지 답해요?'라고 되물을 만한 줄을 하나 고르세요. (그런 줄이 여러 개여도 그중 하나만 고르면 돼요.)",
     "lines": [
      "Subject: Meeting",
      "Hi all,",
@@ -963,7 +1000,7 @@
     ],
     "explain": "1번 줄(제목)과 3번 줄은 어느 회의인지 알 수 없고, 4번 줄은 답할 기한이 없어요. 회의가 두 개 있으니 'the meeting'만으로는 어느 것인지 알 수 없어요.",
     "hints": [
-     "수신자가 받은편지함에서 제목만 보고 무슨 일인지 알 수 있는지 상상해 보세요.",
+     "이 메일을 처음 받은 팀원이 줄마다 \"그래서 뭐지?\" 하고 되물을 만한 부분이 있는지 상상해 보세요.",
      "각 줄을 읽고 '그래서 나는 무엇을 언제까지 해야 하지?'를 물어 보세요."
     ]
    },
@@ -995,7 +1032,7 @@
       "label": "답할 기한을 밝혔다",
       "mode": "any",
       "patterns": [
-       "\\b(?:by|before|until|no later than)\\s+(?:the end of\\s+)?(?:mon|tue|wed|thu|fri|sat|sun|noon|tomorrow|today|tonight|\\d)"
+       "\\b(?:by|before|until|no later than|within)\\s+(?:the\\s+)?(?:end of\\s+)?(?:this\\s+|next\\s+|that\\s+)?(?:week\\b|mon(?:day)?\\b|tue(?:s|sday)?\\b|wed(?:nesday)?\\b|thu(?:r|rs|rsday)?\\b|fri(?:day)?\\b|sat(?:urday)?\\b|sun(?:day)?\\b|noon\\b|tomorrow|today|tonight|eod\\b|midday|\\d|(?:one|two|three|four|five|a)\\s+(?:days?|hours?))"
       ]
      },
      {
@@ -1022,6 +1059,10 @@
      },
      {
       "text": "Subject: Design check (Wed 3 pm) needs a new time\nHi all,\nBecause the client can't come, the Wednesday design check will move to next week. Could you send me your free times before Friday? Then I will pick a time and book a room.\nBest, Sora"
+     },
+     {
+      "text": "Subject: Wednesday design check needs a new time\nHi all,\nThe client cannot join the Wednesday design check this week, so we need to move it to next week. Please send me your free times by the end of this week. I will book a room after that.\nThanks, Sora",
+      "note": "기한을 'by the end of this week'로 썼다."
      }
     ],
     "badAnswers": [
@@ -1040,7 +1081,7 @@
      "'어느 회의'와 '언제까지'를 적었는지 점검표처럼 확인하세요."
     ],
     "placeholder": "Subject: ...",
-    "minChars": 60
+    "minChars": 200
    }
   ],
   "rubric": [
@@ -1079,7 +1120,8 @@
     "영어 문체의 자연스러움",
     "대안 기한 표현의 인정"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-h2-07",
@@ -1163,25 +1205,31 @@
      },
      {
       "id": "w2",
-      "label": "구체적인 대안 요인을 말했다",
+      "label": "원인·결과의 연결이나 구체적인 대안 요인을 말했다",
       "mode": "any",
       "patterns": [
+       "\\b(?:because|so|since|therefore|which is why|lead(?:s|ing)? to|make[sd]?|cause[sd]?|affect(?:s|ed)?|influence[sd]?|result(?:s|ed)? in|both)\\b",
+       "other way",
+       "opposite",
+       "revers\\w*",
+       "third",
+       "another (?:factor|reason|cause|possibility|explanation|idea|thing)",
+       "other (?:factor|reason|cause|possibilit\\w*|explanation)",
+       "something else",
+       "\\b(?:poor|low|bad|weak|struggling)\\s+(?:math\\s+)?(?:students?|scores?|grades?|results?)\\b",
        "stress",
        "worr",
        "anxi",
+       "depress\\w*",
        "part-time",
        "\\bjobs?\\b",
        "homework",
        "\\bphones?\\b",
        "\\bexams?\\b",
-       "other way",
-       "opposite",
-       "third",
-       "another factor",
-       "other factor",
-       "low grades",
        "\\bbusy\\b",
-       "\\bgames?\\b"
+       "\\bgames?\\b",
+       "\\bfamil\\w*",
+       "\\bhealth\\w*"
       ]
      },
      {
@@ -1211,6 +1259,10 @@
      {
       "text": "It could be stress: students who feel stressed about school may sleep less and also score lower. Or the survey might have been taken near exam time, when some students stay up late but have not studied enough.",
       "note": "제3 요인 + 조사 시기."
+     },
+     {
+      "text": "Perhaps poor math students are depressed and cannot sleep. Another idea is that rich families have quiet houses and good tutors.",
+      "note": "역방향(또는 건강 문제)과 가정환경이라는 제3 요인."
      }
     ],
     "badAnswers": [
@@ -1267,7 +1319,8 @@
     "대안의 타당성과 유형 다양성",
     "영어의 자연스러움"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-h2-08",
@@ -1302,23 +1355,23 @@
     "options": [
      {
       "id": "a",
-      "text": "How many books and magazines the club room owns this year",
-      "reveals": "책의 수가 가입자의 점수가 원래 높았는지와 관계있나요?"
+      "text": "How many students joined the reading club this year compared with last year",
+      "reveals": "가입자가 늘었는지는 인기를 보여 줄 뿐, 두 집단의 점수 차이가 동아리 때문인지는 알려 주지 않아요."
      },
      {
       "id": "b",
-      "text": "The average English score of all students in the country",
-      "reveals": "전국 평균은 이 학교의 가입자와 비가입자를 비교하는 데 쓰이지 않아요."
+      "text": "Whether the averages of 82 and 74 were calculated correctly",
+      "reveals": "계산이 맞아도 그 차이가 동아리 때문인지는 알 수 없어요. 평균 계산의 정확성과 원인은 다른 문제예요."
      },
      {
       "id": "c",
-      "text": "The scores of the club members before they joined the club",
+      "text": "The English scores of the club members before they joined the club",
       "reveals": "가입 전과 가입 후 점수를 구분해 비교하려는 생각이에요."
      },
      {
       "id": "d",
-      "text": "The favorite books of the club members and their reading habits",
-      "reveals": "좋아하는 책의 종류는 점수 차이가 동아리 때문인지 알려 주지 않아요."
+      "text": "How much the club members enjoy the club activities",
+      "reveals": "동아리를 좋아하는지는 점수가 왜 높은지, 원래 높았는지를 알려 주지 않아요."
      }
     ],
     "correct": [
@@ -1327,7 +1380,7 @@
     "explain": "가입 전 점수를 알면 가입자의 점수가 원래 높았는지, 가입 후 올랐는지를 비교할 수 있어요. 신청해서 들어가는 방식이라 원래 영어를 잘하는 학생이 더 많이 가입했을 수도 있기 때문이에요.",
     "hints": [
      "가입 방식이 '희망자 신청'이라는 점이 두 집단의 시작점에 어떤 영향을 줄지 생각해 보세요.",
-     "각 선택지가 '원래 점수'와 '가입 후 점수'를 구분하게 해 주는지 따져 보세요."
+     "점수 차이를 만들 수 있는 다른 이유를 먼저 한 가지 적고, 각 선택지의 정보로 그 이유를 확인할 수 있는지 하나씩 따져 보세요."
     ]
    },
    {
@@ -1345,21 +1398,12 @@
      },
      {
       "id": "w2",
-      "label": "가입 전/선택 방식/비교를 다룬 낱말이 있다",
+      "label": "가입 전 점수나 가입 방식(선택·무작위)을 다뤘다",
       "mode": "any",
       "patterns": [
-       "\\bbefore\\b",
-       "\\balready\\b",
-       "\\bearlier\\b",
-       "\\bprevious",
-       "last (?:year|term|semester)",
-       "\\bchose\\b",
-       "\\bchoose\\b",
-       "\\bjoin(?:ed)? (?:the club )?(?:by|because)\\b",
-       "\\blottery\\b",
-       "\\brandom",
-       "assigned",
-       "same students"
+       "\\b(?:scores?|grades?|results?|level|marks?)\\b[^.?!]{0,60}\\b(?:before|earlier|previous\\w*|already|prior|last (?:year|term|semester)|middle school)\\b",
+       "\\b(?:before|earlier|previous\\w*|already|prior|last (?:year|term|semester)|middle school)\\b[^.?!]{0,60}\\b(?:scores?|grades?|results?|level|marks?|good at|better at|higher)\\b",
+       "\\b(?:choose|chose|volunteer\\w*|self[- ]select\\w*|lottery|random\\w*|assigned|apply|applied)\\b"
       ]
      },
      {
@@ -1388,6 +1432,10 @@
      {
       "text": "Did students choose to join the reading club themselves, or were they picked at random?",
       "note": "선택 방식을 묻는다."
+     },
+     {
+      "text": "What were the members' English scores in middle school, before the club started?",
+      "note": "가입 전 수준을 묻는다."
      }
     ],
     "badAnswers": [
@@ -1403,7 +1451,7 @@
     "humanReview": "질문이 실제로 인과를 가르는 정보를 얻는지는 사람이 본다. 자동 점검은 물음표, 가입 전/선택 방식 낱말, 점수·동아리 낱말만 본다.",
     "hints": [
      "'원래 높았다'와 '올랐다' 중 무엇을 알고 싶은지 한 줄로 적어 보세요.",
-     "그것을 알려 줄 질문을 'Did ... before ...?' 또는 'Did ... or ...?' 형태로 써 보세요."
+     "그 질문의 답이 어떻게 나오면 \"동아리 때문이 아니다\"라고 볼 수 있을지 먼저 생각해 보세요."
     ],
     "placeholder": "Did ...?",
     "minChars": 20
@@ -1444,7 +1492,8 @@
     "질문의 정보 가치",
     "영어 문장의 자연스러움"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-h2-09",

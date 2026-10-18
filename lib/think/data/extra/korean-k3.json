@@ -543,7 +543,7 @@
   ],
   "minutes": 10,
   "curriculum": null,
-  "material": "A pen pal, 서준, wrote to you:\n\n안녕하세요! 저는 서준이에요. 열두 살이에요. 우리 가족은 다섯 명이에요. 형은 저보다 세 살 많아요. 당신도 가족을 소개해 주세요.",
+  "material": "A pen pal, 서준, wrote to you:\n\n안녕하세요! 저는 서준이에요. 열두 살이에요. 우리 가족은 다섯 명이에요. 형은 저보다 세 살 많아요. 가족을 소개해 주세요.",
   "steps": [
    {
     "id": "s1",
@@ -561,18 +561,18 @@
      },
      {
       "id": "b",
-      "text": "저는 하나예요. 열 살이에요. 어머니, 아버지, 동생이 있어요. 동생은 저보다 두 살 어려요."
+      "text": "우리 가족은 세 명이에요. 어머니는 선생님이에요. 아버지는 의사예요. 저는 학생이에요.",
+      "reveals": "It describes the parents' jobs but leaves out the writer's name, age and any comparison like 서준's."
      },
      {
       "id": "c",
-      "text": "우리 가족은 세 명이에요. 어머니는 선생님이에요. 아버지는 의사예요. 저는 학생이에요.",
-      "reveals": "It describes the parents' jobs but leaves out the writer's name, age and any comparison like 서준's."
+      "text": "저는 하나예요. 열 살이에요. 어머니, 아버지, 동생이 있어요. 동생은 저보다 두 살 어려요."
      }
     ],
     "correct": [
-     "b"
+     "c"
     ],
-    "explain": "Reply b gives a name, an age, the family members and a comparison, which matches 서준's own message. The other replies are friendly or detailed but miss what he asked."
+    "explain": "Reply c gives a name, an age, the family members and a comparison, which matches 서준's own message. The other replies are friendly or detailed but miss what he asked."
    },
    {
     "id": "s2",
@@ -688,7 +688,8 @@
    "human": [
     "Whether the message is true to the learner's situation and warm in tone"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k3-05",
@@ -812,11 +813,13 @@
     "checks": [
      {
       "id": "w1",
-      "label": "asks a question",
+      "label": "asks a question or asks for the information",
       "mode": "any",
       "patterns": [
        "[?？]",
-       "(까요|나요|니까)"
+       "(까요|나요|니까)",
+       "알려 (주|줄)",
+       "가르쳐 (주|줄)"
       ]
      },
      {
@@ -829,10 +832,13 @@
      },
      {
       "id": "w3",
-      "label": "asks about age",
+      "label": "asks about age (몇 살 / 나이)",
       "mode": "any",
       "patterns": [
-       "(몇 살|몇 년|나이|살)"
+       "몇\\s*살",
+       "몇\\s*세",
+       "몇\\s*년",
+       "나이"
       ]
      },
      {
@@ -856,6 +862,10 @@
      {
       "text": "누나는 몇 살이에요?",
       "note": "Directly asks for the age."
+     },
+     {
+      "text": "누나가 몇 살인지 알려 주세요.",
+      "note": "A polite request instead of a question."
      }
     ],
     "badAnswers": [
@@ -866,6 +876,10 @@
      {
       "text": "민호는 몇 살이야?",
       "why": "Asks about the wrong person and drops the polite ending."
+     },
+     {
+      "text": "누나는 어디에 살아요?",
+      "why": "Asks where 누나 lives, not how old she is."
      }
     ],
     "humanReview": "Whether the question is natural and precise."
@@ -904,7 +918,8 @@
    "human": [
     "Naturalness and precision of the learner's question"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k3-06",
@@ -1339,18 +1354,27 @@
      },
      {
       "id": "w2",
-      "label": "one casual question for the younger sibling",
+      "label": "one casual eating question for the younger sibling",
       "mode": "any",
       "patterns": [
-       "(먹었어|먹었니|먹을래|먹었냐|먹었지)(?!요)"
+       "(먹|밥|식사|점심|아침|저녁)[^.?!？]*(어|니|냐|지|래)\\s*[?？]"
       ]
      },
      {
       "id": "w3",
-      "label": "names the grandparent",
+      "label": "names the grandparent in the polite question",
       "mode": "any",
       "patterns": [
-       "(할머니|할아버지)"
+       "(할머니|할아버지)[^.?!？]*요\\s*[?？]",
+       "(드셨|드세요|드실|식사하셨|식사하세요|잡수)[^.?!？]*(할머니|할아버지)"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "the polite sentence asks about eating",
+      "mode": "any",
+      "patterns": [
+       "(드셨|드세요|드실|잡수|진지|먹었|먹어|식사|밥|점심|아침|저녁)[^.?!？]*요\\s*[?？]"
       ]
      }
     ],
@@ -1366,6 +1390,10 @@
      {
       "text": "너 밥 먹었니? 할아버지, 식사하셨어요?",
       "note": "Uses the honorific verb 식사하셨어요."
+     },
+     {
+      "text": "동생아, 식사했어? 할머니, 식사하셨어요?",
+      "note": "Another casual and polite pair."
      }
     ],
     "badAnswers": [
@@ -1376,6 +1404,14 @@
      {
       "text": "할머니, 식사하셨어요? 할아버지, 드셨어요?",
       "why": "Both sentences are polite; no casual sentence for the sibling."
+     },
+     {
+      "text": "동생아, 밥 먹었어? 할머니, 안녕하세요?",
+      "why": "The grandparent sentence is polite but does not ask about eating."
+     },
+     {
+      "text": "할머니, 밥 먹었어? 동생아, 밥 드셨어요?",
+      "why": "The endings are swapped: casual to the grandparent, polite to the sibling."
      }
     ],
     "humanReview": "Whether the casual sentence is natural, and whether the grandparent sentence has suitable respect words."
@@ -1414,7 +1450,8 @@
    "human": [
     "Naturalness of the two sentences and the learner's reasoning"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k3-09",
@@ -1673,7 +1710,7 @@
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "Choose another person from 민수's family (not 아버지) and write two Korean clue sentences that fit only that person. Do not say the family word itself.",
+    "prompt": "Choose 누나, 남동생 or 할머니 and write two Korean clue sentences that fit only that person. Do not use the word for that person (누나, 동생, 할머니).",
     "hints": [
      "Combine two kinds of clue, like 남자/여자 with an age comparison or a number of years.",
      "Test your two sentences on all six people before you finish."
@@ -1696,11 +1733,30 @@
       "patterns": [
        "(남자|여자|살|많아요|어려요|어려|보다|딸|아들|의 (어머니|아버지))"
       ]
+     },
+     {
+      "id": "w3",
+      "label": "does not use the word for the person (누나 / 동생 / 할머니)",
+      "mode": "none",
+      "patterns": [
+       "누나",
+       "동생",
+       "할머니"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "does not give both 남자 and 여자",
+      "mode": "none",
+      "patterns": [
+       "남자[\\s\\S]*여자",
+       "여자[\\s\\S]*남자"
+      ]
      }
     ],
     "selfAssess": [
      "Does my clue pair fit only one person when I check all six?",
-     "Did I avoid saying the family word of the answer?",
+     "Did I avoid the word for the person (누나, 동생 or 할머니)?",
      "Are both sentences polite?"
     ],
     "modelAnswers": [
@@ -1711,16 +1767,28 @@
      {
       "text": "여자예요. 15살이에요.",
       "note": "Fits only 누나."
+     },
+     {
+      "text": "여자예요. 아버지의 어머니예요.",
+      "note": "Fits only 할머니."
      }
     ],
     "badAnswers": [
      {
       "text": "아버지예요.",
-      "why": "Only one sentence, and it says the family word itself."
+      "why": "Only one sentence, and 아버지 is not one of the three people to describe."
      },
      {
       "text": "누구일까요? 맞혀 보세요.",
       "why": "No clue about the person."
+     },
+     {
+      "text": "남자예요. 여자예요.",
+      "why": "The two clues contradict each other and fit nobody."
+     },
+     {
+      "text": "누나예요. 15살이에요.",
+      "why": "Says the family word of the answer."
      }
     ],
     "humanReview": "Whether the two clues really single out one person, which needs a person to test against the list."
@@ -1759,6 +1827,7 @@
    "human": [
     "Whether the written clues identify exactly one person"
    ]
-  }
+  },
+  "status": "draft"
  }
 ]

@@ -202,25 +202,24 @@
     "prompt": "Jia의 메시지에서 안내문과 다른 줄을 하나 고르세요.",
     "lines": [
      "Hi Hana! I saw a notice.",
-     "The bottle is red.",
+     "The bottle is blue.",
      "It was near Room 3.",
      "Go to Room 3 after school and ask Ms. Park."
     ],
     "wrong": [
-     1,
      3
     ],
-    "explain": "2번 줄은 안내문에서 병이 blue(파란색)인데 red라고 써서 틀렸어요. 4번 줄은 Ms. Park이 있는 곳이 Room 1인데 Room 3이라고 써서 틀렸어요. 3번 줄의 Room 3은 병이 발견된 장소라서 맞아요.",
+    "explain": "4번 줄이 틀렸어요. 안내문에서 Ms. Park이 있는 곳은 Room 1인데 Room 3이라고 써서 틀렸어요. 2번 줄의 blue(파란색)는 안내문과 같고, 3번 줄의 Room 3은 병이 발견된 장소라서 맞아요.",
     "hints": [
      "안내문의 낱말(색깔, 방 번호, 사람 이름)을 하나씩 짚으며 메시지 줄과 맞춰 보세요.",
-     "'Room 3'이 두 번 나와요. 각각 안내문에서 무엇을 말하는지 비교해 보세요."
+     "메시지의 줄마다 안내문의 어느 줄을 옮긴 말인지 짝지어 보고, 짝이 맞지 않는 낱말이 있는지 찾아 보세요."
     ]
    },
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "4번 줄 'Go to Room 3 after school and ask Ms. Park.'을 안내문에 맞게 영어로 고쳐 쓰세요.",
-    "placeholder": "예: Go to Room ...",
+    "prompt": "방금 찾은 틀린 줄을 안내문에 맞게 영어로 고쳐 쓰세요.",
+    "placeholder": "고친 문장을 영어로 쓰세요.",
     "minChars": 12,
     "checks": [
      {
@@ -312,7 +311,8 @@
    "human": [
     "고친 문장의 정확성과 자연스러움"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-e1-03",
@@ -347,8 +347,8 @@
     "options": [
      {
       "id": "a",
-      "text": "Class 3 is out now. Please wait here.",
-      "reveals": "'어디'가 빠졌는지 확인해 보세요."
+      "text": "Class 3 is out until 11:00. Please wait here.",
+      "reveals": "'어디'를 알려 주는지 확인해 보세요."
      },
      {
       "id": "b",
@@ -392,29 +392,28 @@
      },
      {
       "id": "w2",
-      "label": "시각(10, 11 등)을 썼다",
+      "label": "끝나는 시각(11시, until 등)을 썼다",
       "mode": "any",
       "patterns": [
-       "\\b(?:10|11)(?::\\d\\d)?\\b",
-       "\\bten\\b",
-       "\\beleven\\b"
+       "\\b11(?::00)?\\b",
+       "\\beleven\\b",
+       "\\buntil\\b",
+       "\\bback at\\b"
       ]
      },
      {
       "id": "w3",
-      "label": "3반(Class 3)을 썼다",
+      "label": "두 줄로 썼다",
       "mode": "any",
       "patterns": [
-       "class\\s*(?:3|three)\\b",
-       "\\b3rd\\b",
-       "\\bthree\\b"
+       "\\S[ \\t]*\\n\\s*\\S"
       ]
      }
     ],
     "selfAssess": [
-     "지나가는 사람이 읽고 어디, 언제를 알 수 있나요?",
+     "지나가는 사람이 읽고 어디, 몇 시까지인지 알 수 있나요?",
      "두 줄 안에 필요한 정보만 담았나요?",
-     "더 쓰고 싶은 정보(예: Please wait)를 골랐나요? (선택)"
+     "더 쓰고 싶은 정보(예: Class 3, Please wait)를 골랐나요? (선택)"
     ],
     "modelAnswers": [
      {
@@ -422,6 +421,9 @@
      },
      {
       "text": "Class 3: music room, 10:00 to 11:00.\nPlease wait here."
+     },
+     {
+      "text": "We are in the music room.\nPlease wait until 11:00."
      }
     ],
     "badAnswers": [
@@ -432,6 +434,10 @@
      {
       "text": "Music room!",
       "why": "어느 반인지, 몇 시까지인지 없다."
+     },
+     {
+      "text": "Class 3 is in the music room\nfrom 10:00.",
+      "why": "끝나는 시각이 없고 시작 시각만 있다."
      }
     ],
     "humanReview": "정보가 정확하고 안내문으로 자연스러운지는 사람이 확인한다. 자동 점검은 장소·시각·반 표현만 본다.",
@@ -476,7 +482,8 @@
    "human": [
     "안내문이 자연스럽고 필요한 정보를 주는지"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-e1-04",
@@ -899,29 +906,29 @@
     "options": [
      {
       "id": "a",
+      "text": "Can you eat it?",
+      "reveals": "네 후보 중 대답이 다른 것이 있는지 확인해 보세요."
+     },
+     {
+      "id": "b",
       "text": "Is it round?",
       "reveals": "이미 힌트 1에서 알게 된 것인지 확인해 보세요."
      },
      {
-      "id": "b",
+      "id": "c",
       "text": "Is it in the kitchen?",
       "reveals": "이미 힌트 2에서 알게 된 것인지 확인해 보세요."
      },
      {
-      "id": "c",
+      "id": "d",
       "text": "Is it nice?",
       "reveals": "네 후보를 나누는 대답이 나올지 생각해 보세요."
-     },
-     {
-      "id": "d",
-      "text": "Can you eat it?",
-      "reveals": "네 후보 중 대답이 다른 것이 있는지 확인해 보세요."
      }
     ],
     "correct": [
-     "d"
+     "a"
     ],
-    "explain": "먹을 수 있는 것은 apple뿐이고 plate, clock, cup은 아니에요. 그래서 이 질문은 후보를 나눠 줘요. a와 b는 이미 아는 정보이고 'nice'는 사람마다 달라 후보를 나누지 못해요.",
+    "explain": "먹을 수 있는 것은 apple뿐이고 plate, clock, cup은 아니에요. 그래서 'Can you eat it?'은 후보를 나눠 줘요. 'round'와 'kitchen'은 이미 힌트로 아는 정보이고 'nice'는 사람마다 달라 후보를 나누지 못해요.",
     "hints": [
      "이미 알고 있는 힌트와 같은 내용을 묻는 질문은 후보를 줄일 수 없어요.",
      "질문에 '예'일 때와 '아니요'일 때 남는 후보를 각각 적어 보세요."
@@ -930,7 +937,7 @@
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "후보를 줄일 수 있는 영어 질문을 하나 쓰고, 대답이 '예'일 때 어느 후보가 남는지 영어로 덧붙이세요.",
+    "prompt": "앞에서 고른 것과 다른 질문으로, 후보를 줄일 수 있는 영어 질문을 하나 쓰고 대답이 '예'일 때 어느 후보가 남는지 영어로 덧붙이세요.",
     "placeholder": "예: Does it tell the time? If yes, ...",
     "minChars": 10,
     "checks": [
@@ -952,6 +959,24 @@
        "\\bclock\\b",
        "\\bcup\\b"
       ]
+     },
+     {
+      "id": "w3",
+      "label": "'yes'일 때 남는 후보를 덧붙였다",
+      "mode": "any",
+      "patterns": [
+       "\\byes\\b"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "이미 아는 정보(round, kitchen)나 앞 단계 질문을 그대로 묻지 않았다",
+      "mode": "none",
+      "patterns": [
+       "\\bround\\b",
+       "\\bkitchen\\b",
+       "\\bcan you eat it\\b"
+      ]
      }
     ],
     "selfAssess": [
@@ -970,6 +995,14 @@
      {
       "text": "Is it round?",
       "why": "이미 아는 정보이고 후보 이름이 없다."
+     },
+     {
+      "text": "Is it in the kitchen? If yes, it is the cup.",
+      "why": "이미 아는 정보(kitchen)를 물어서 후보가 줄지 않는다."
+     },
+     {
+      "text": "Is it round? If yes, it is the apple.",
+      "why": "이미 아는 정보(round)를 다시 물었다."
      }
     ],
     "humanReview": "질문이 후보를 실제로 나누는지, 영어 질문 모양이 자연스러운지는 사람이 확인한다.",
@@ -1014,7 +1047,8 @@
    "human": [
     "질문이 후보를 나누는지, 영어의 자연스러움"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-e1-07",
@@ -1048,23 +1082,22 @@
     "lines": [
      "Leo: Happy birthday, Ana! This is for you.",
      "Ana: Happy birthday to you too!",
-     "Leo: Open it, please.",
-     "Ana: Wow, a book! I love it.",
-     "Leo: You're welcome."
+     "Leo: You're welcome. Open it, please.",
+     "Ana: Wow, a book! I love it."
     ],
     "wrong": [
      1
     ],
-    "explain": "2번 줄이 어울리지 않아요. 오늘은 Ana의 생일이고 Leo의 생일이 아니라서 'to you too'가 맞지 않아요. Leo가 선물을 줬으니 감사 인사가 알맞아요.",
+    "explain": "2번 줄이 어울리지 않아요. 오늘은 Ana의 생일이고 Leo의 생일이 아니라서 'to you too'가 맞지 않아요. 선물을 받은 Ana는 감사 인사를 해야 하고, 그래야 다음 줄 Leo의 'You're welcome.'과도 이어져요.",
     "hints": [
      "오늘 누구의 생일인지 먼저 확인하고, 그 사람이 한 말인지 보세요.",
-     "Leo의 마지막 말('You're welcome.')이 어떤 말에 대한 대답인지 거슬러 올라가 보세요."
+     "각 줄을 바로 앞 줄에 대한 자연스러운 반응으로 읽을 수 있는지 차례로 확인해 보세요."
     ]
    },
    {
     "id": "s2",
     "kind": "choose",
-    "prompt": "2번 줄 Ana의 대답으로 알맞은 것을 고르세요.",
+    "prompt": "방금 찾은 줄에서 Ana의 대답으로 알맞은 것을 고르세요.",
     "options": [
      {
       "id": "a",
@@ -1073,24 +1106,24 @@
      },
      {
       "id": "b",
-      "text": "Thank you, Leo!",
-      "reveals": "선물을 받은 순간 누가 누구에게 무엇을 해 주었는지 생각해 보세요."
-     },
-     {
-      "id": "c",
       "text": "Me too!",
       "reveals": "Leo가 말한 내용에 '나도'가 맞는지 확인해 보세요."
      },
      {
-      "id": "d",
+      "id": "c",
       "text": "Sorry, I can't.",
       "reveals": "선물을 받았을 때 어울리는 반응인지 생각해 보세요."
+     },
+     {
+      "id": "d",
+      "text": "Thank you, Leo!",
+      "reveals": "선물을 받은 순간 누가 누구에게 무엇을 해 주었는지 생각해 보세요."
      }
     ],
     "correct": [
-     "b"
+     "d"
     ],
-    "explain": "선물을 받았으므로 Thank you가 알맞아요. 이렇게 고치면 마지막 줄 'You're welcome.'도 자연스럽게 이어져요.",
+    "explain": "선물을 받았으므로 Thank you가 알맞아요. 이렇게 고치면 다음 줄 Leo의 'You're welcome.'도 자연스럽게 이어져요.",
     "hints": [
      "그 말이 어떤 상황에서 쓰이는지 한국어로 먼저 바꿔 보세요.",
      "선택한 말을 2번 줄에 넣고 마지막 줄 Leo의 말과 이어지는지 읽어 보세요."
@@ -1132,7 +1165,8 @@
    "human": [
     "대화가 자연스럽게 이어지는지에 대한 학생의 설명"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-e1-08",
@@ -1172,27 +1206,27 @@
      },
      {
       "id": "b",
-      "text": "I'm sorry, but I can't. I have a dentist at three.",
-      "reveals": "거절만 했는지, 이유와 정중함이 함께 있는지 확인해 보세요."
+      "text": "No way. I have to go to the dentist at three.",
+      "reveals": "이유는 있지만 선생님께 하는 말투로 알맞은지 생각해 보세요."
      },
      {
       "id": "c",
-      "text": "No.",
-      "reveals": "상대에게 필요한 정보와 태도가 들어 있는지 생각해 보세요."
+      "text": "I'm sorry, but I can't help you today. Maybe next time.",
+      "reveals": "정중하지만 거절의 이유가 들어 있는지 확인해 보세요."
      },
      {
       "id": "d",
-      "text": "Not now, bye.",
-      "reveals": "말투와 이유가 선생님께 어울리는지 생각해 보세요."
+      "text": "I'm sorry, but I can't. I have to go to the dentist at three.",
+      "reveals": "거절만 했는지, 이유와 정중함이 함께 있는지 확인해 보세요."
      }
     ],
     "correct": [
-     "b"
+     "d"
     ],
-    "explain": "선생님께는 미안함을 말하고 이유를 함께 알려 주는 것이 알맞아요. a는 사실과 달라요. b와 d는 이유가 없고 말투가 퉁명스러울 수 있어요.",
+    "explain": "선생님께는 미안함을 말하고 이유를 함께 알려 주는 것이 알맞아요. a는 사실과 달라요. b는 이유는 있지만 말투가 거칠고, c는 정중하지만 이유가 없어요.",
     "hints": [
      "상황(치과 약속)과 맞는 말인지 먼저 확인하세요.",
-     "선생님이 듣고 싶은 것이 거절 이유인지 생각해 보세요."
+     "대답마다 거절, 이유, 말투 세 가지가 갖춰졌는지 표시해 비교해 보세요."
     ]
    },
    {
@@ -1238,9 +1272,7 @@
        "\\bplease\\b",
        "thank",
        "excuse",
-       "\\bms\\b",
-       "\\bmr\\b",
-       "teacher"
+       "\\bafraid\\b"
       ]
      }
     ],
@@ -1250,7 +1282,7 @@
     ],
     "modelAnswers": [
      {
-      "text": "I'm sorry, but I can't help today. I have a dentist at three o'clock."
+      "text": "I'm sorry, but I can't help today. I have to go to the dentist at three o'clock."
      },
      {
       "text": "Sorry, teacher. I have to go to the dentist at 3, so I can't help. Can I help tomorrow?"
@@ -1264,6 +1296,10 @@
      {
       "text": "Yes, I can.",
       "why": "상황과 다르게 승낙했다."
+     },
+     {
+      "text": "Not now. I can't. I have a dentist, teacher.",
+      "why": "호칭만 있고 정중한 표현(sorry 등)이 없다."
      }
     ],
     "humanReview": "말투가 선생님께 적절한지, 영어가 자연스러운지는 사람이 확인한다.",
@@ -1306,6 +1342,28 @@
        "\\b3(?::00)?\\b",
        "three"
       ]
+     },
+     {
+      "id": "w3",
+      "label": "선생님께 쓰는 격식 표현(I'm sorry, but / please / Ms. 등)을 쓰지 않았다",
+      "mode": "none",
+      "patterns": [
+       "i['’]?m sorry,? but",
+       "\\bplease\\b",
+       "\\bteacher\\b",
+       "\\bms\\b",
+       "\\bmr\\b",
+       "\\bexcuse\\b",
+       "\\bafraid\\b"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "짧게(70자 이하) 썼다",
+      "mode": "any",
+      "patterns": [
+       "^[\\s\\S]{0,70}$"
+      ]
      }
     ],
     "selfAssess": [
@@ -1314,7 +1372,7 @@
     ],
     "modelAnswers": [
      {
-      "text": "Sorry, I can't! I have a dentist at 3."
+      "text": "Sorry, I can't! I have to go to the dentist at 3."
      },
      {
       "text": "Can't help today. Dentist at three!"
@@ -1328,6 +1386,10 @@
      {
       "text": "No.",
       "why": "이유가 없다."
+     },
+     {
+      "text": "I'm sorry, but I can't help today. I have to go to the dentist at three o'clock, teacher.",
+      "why": "선생님께 한 말과 같은 격식 있는 말투이고 길다."
      }
     ],
     "humanReview": "친구에게 맞는 편안한 말투인지, 선생님께 쓴 말과 비교해 차이가 있는지는 사람이 확인한다.",
@@ -1372,7 +1434,8 @@
    "human": [
     "말투의 적절성, 영어의 자연스러움"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-e1-09",

@@ -12,6 +12,11 @@ const WRITE = (p: string, w: any, out: Record<string, string>) => {
   w.modelAnswers.forEach((m: any, i: number) => { out[`${p}.model.${i}`] = m.text; if (m.note) out[`${p}.modelNote.${i}`] = m.note; });
 };
 const OPTS = (p: string, opts: any[], out: Record<string, string>) => opts.forEach((o) => { out[`${p}.o.${o.id}`] = o.text; if (o.reveals) out[`${p}.r.${o.id}`] = o.reveals; });
+/**
+ * Does this learner-facing string need a translation? Korean-subject tasks are authored with English instructions (pure Korean is the learning
+ * target); math / English tasks are authored with Korean instructions (English target text and formulas stay as authored).
+ */
+export const needsTranslation = (subject: ThinkTask["subject"], s: string): boolean => (subject === "korean" ? (s.match(/[A-Za-z]{3,}/g) ?? []).length >= 2 : /[가-힣]/.test(s));
 export function flatten(t: ThinkTask): Record<string, string> {
   const out: Record<string, string> = {};
   out.title = t.title; out.topic = t.topic ?? ""; out.goal = t.goal; out.material = t.material;

@@ -42,8 +42,8 @@
      },
      {
       "id": "c",
-      "text": "Rain caught her on the way, and then her phone went off.",
-      "reveals": "This one accounts for the delay, the wet shoes and the missed calls at the same time without adding facts from outside the text."
+      "text": "Something soaked her shoes on the way, and then her phone went off.",
+      "reveals": "This one accounts for the delay, the wet shoes and the missed calls at the same time, without choosing a specific cause that the chat does not give."
      },
      {
       "id": "d",
@@ -54,15 +54,7 @@
     "correct": [
      "c"
     ],
-    "acceptable": [
-     {
-      "ids": [
-       "a"
-      ],
-      "reason": "Oversleeping may be part of the story, but it leaves the wet shoes unexplained; a good answer notes that gap."
-     }
-    ],
-    "explain": "Wet shoes plus a phone that went off point to one event (weather or an accident on the way) that explains several clues at once. Rain is likely but not proven: a puddle or a spilled drink would also fit.",
+    "explain": "Wet shoes plus a phone that went off point to one event on the way (weather or an accident) that explains several clues at once. Rain is a likely cause but not proven: a puddle or a spilled drink would also fit.",
     "hints": [
      "List the four clues, then test each explanation against all of them, not only the first one.",
      "Prefer the explanation that covers the most clues without adding new facts."
@@ -76,18 +68,18 @@
     "checks": [
      {
       "id": "w1",
-      "label": "quotes the Korean text",
+      "label": "quotes at least two separate Korean phrases",
       "mode": "any",
       "patterns": [
-       "[가-힣]{2,}"
+       "[가-힣]{2,}[^가-힣]*([A-Za-z]|[,;/+&])[^가-힣]*[가-힣]{2,}"
       ]
      },
      {
       "id": "w2",
-      "label": "gives a reason (because / shows / so / which means ...)",
+      "label": "gives a reason (because / shows / suggests / fits / means ...)",
       "mode": "any",
       "patterns": [
-       "\\b(because|since|so|shows?|suggests?|means|explains?|therefore|points? to|supports?)\\b"
+       "\\b(because|since|so|shows?|suggests?|means|explains?|therefore|points? to|supports?|fits?|consistent|indicat\\w*|impl\\w*|hints?|evidence|which|why|thus)\\b"
       ]
      },
      {
@@ -95,7 +87,7 @@
       "label": "admits an uncertainty or another possibility",
       "mode": "any",
       "patterns": [
-       "\\b(could|might|maybe|perhaps|possibly|not sure|unless|another|other explanation|alternatively|not certain|cannot be sure|can't be sure)\\b"
+       "\\b(could|might|may|maybe|perhaps|possibly|probably|not sure|unless|another|other explanation|alternatively|not certain|cannot be sure|can't be sure|not proven|unsure|else|alternative\\w*|possib\\w*)\\b"
       ]
      }
     ],
@@ -111,6 +103,9 @@
      {
       "text": "Two clues: '전화를 해도 안 받았어요' and '신발이 다 젖어 있었어요'. They suggest she was on the road without a working phone. Maybe the phone battery died, or the phone got wet; I cannot be sure which.",
       "note": "Different clue pair and a different alternative; both are valid."
+     },
+     {
+      "text": "Wet shoes (신발이 다 젖어 있었어요) and phone off (휴대폰이 꺼져서) fit a story of getting soaked on the way. She may have fallen in a puddle instead of being caught in rain."
      }
     ],
     "badAnswers": [
@@ -121,6 +116,14 @@
      {
       "text": "신발이 젖어 있었어요. 휴대폰이 꺼져서.",
       "why": "Only copies Korean; gives no reasoning and no other possibility."
+     },
+     {
+      "text": "I think rain 신발 because shoes. might",
+      "why": "Only one Korean word, no second clue, and no real reasoning."
+     },
+     {
+      "text": "신발이 다 젖어 있었어요. It might have rained.",
+      "why": "Quotes only one clue and gives no reason."
      }
     ],
     "humanReview": "Whether the two quoted clues really support the explanation, and whether the alternative is a genuine one.",
@@ -165,7 +168,8 @@
    "human": [
     "Whether the clues are used correctly and the alternative is real"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k5-02",
@@ -237,10 +241,31 @@
      },
      {
       "id": "w3",
-      "label": "does not keep both 'all day at home' and 'wedding' together",
+      "label": "is a changed line, not a copy of one of the original lines",
       "mode": "none",
       "patterns": [
-       "(?=.*하루\\s*종일)(?=.*결혼식)"
+       "^\\s*토요일에는\\s*감기에\\s*걸려서\\s*하루\\s*종일\\s*집에서\\s*쉬었어요[.!]?\\s*$",
+       "^\\s*토요일\\s*저녁에는\\s*친구\\s*결혼식에\\s*가서\\s*사진을\\s*많이\\s*찍었어요[.!]?\\s*$"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "does not keep both 'all day at home' and an attended wedding",
+      "mode": "none",
+      "patterns": [
+       "(?=[\\s\\S]*하루\\s*종일)(?=[\\s\\S]*결혼식)(?![\\s\\S]*(못\\s*갔|못\\s*가|안\\s*갔|안\\s*가|가지\\s*못|가지\\s*않|취소|불참))"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "shows how the two parts fit (another part of the day, not going, no wedding, or sick but still went)",
+      "mode": "any",
+      "patterns": [
+       "^(?![\\s\\S]*결혼식)[\\s\\S]+",
+       "못\\s*갔|못\\s*가|안\\s*갔|안\\s*가|가지\\s*못|가지\\s*않|취소|불참",
+       "(아침|오전|낮|오후|점심)[\\s\\S]*(쉬|집|누워|아프|감기)",
+       "(쉬|집|누워|아프|감기)[\\s\\S]*(아침|오전|낮|오후|점심)",
+       "지만|그래도|괜찮아|나아|다 나|약을 먹고|나았"
       ]
      }
     ],
@@ -256,6 +281,14 @@
      {
       "text": "토요일 저녁에도 집에서 책을 읽고 쉬었어요.",
       "note": "Changes the second line instead; also valid."
+     },
+     {
+      "text": "토요일에는 감기에 걸렸지만 약을 먹고 저녁에 친구 결혼식에 갔어요.",
+      "note": "Repairs line 2: sick, but better by the evening."
+     },
+     {
+      "text": "토요일 저녁에는 감기 때문에 친구 결혼식에 못 갔어요.",
+      "note": "Repairs line 4: she did not go."
      }
     ],
     "badAnswers": [
@@ -266,12 +299,20 @@
      {
       "text": "토요일에 쉬어요.",
       "why": "Present tense, and says nothing about the repaired time."
+     },
+     {
+      "text": "토요일에는 감기에 걸려서 하루 종일 집에서 쉬었어요.",
+      "why": "A copy of the original line, nothing is repaired."
+     },
+     {
+      "text": "토요일 저녁에는 친구 결혼식에 가서 사진을 많이 찍었어요.",
+      "why": "A copy of the original line, nothing is repaired."
      }
     ],
     "humanReview": "Naturalness of the Korean and whether the repaired line really removes the conflict.",
     "hints": [
-     "Decide which of the two lines you will change.",
-     "Replace 하루 종일 with a part of the day (아침, 오후) or change what she did in the evening."
+     "Decide which of the two lines you will change, then ask what exactly makes the two lines clash.",
+     "Change the time or the activity so that both Saturday lines can be true on the same day."
     ],
     "placeholder": "예: 토요일 ..."
    }
@@ -310,7 +351,8 @@
    "human": [
     "Naturalness and consistency of the rewritten sentence"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k5-03",
@@ -374,16 +416,6 @@
      "b",
      "e"
     ],
-    "acceptable": [
-     {
-      "ids": [
-       "b",
-       "d",
-       "e"
-      ],
-      "reason": "The meeting place is not needed to decide, but asking for it is sensible; the two decisive questions are included."
-     }
-    ],
     "explain": "Your two limits are a work end time (1:00) and a budget (10,000 won). The start time answers the first limit and the number of hours (times 5,000 won) answers the second.",
     "hints": [
      "Write down your two limits first, then ask which missing detail would let you test each one.",
@@ -416,13 +448,23 @@
      },
      {
       "id": "w3",
-      "label": "asks about how long",
+      "label": "asks how long or until when",
       "mode": "any",
       "patterns": [
        "몇\\s*시간",
        "얼마나",
        "언제까지",
-       "끝"
+       "끝",
+       "몇\\s*시\\s*까지"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "does not say yes or no yet",
+      "mode": "none",
+      "patterns": [
+       "^\\s*(좋아요|좋아|네|예|그래요|물론|알겠어요|갈게요|같이 가요)",
+       "같이 갈게요|갈 수 있어요|갈 수 없어요|못 가요|안 갈게요"
       ]
      }
     ],
@@ -438,6 +480,10 @@
      {
       "text": "저는 토요일 1시까지 일해요. 자전거는 몇 시에 탈 거예요? 언제까지 탈 거예요?",
       "note": "Gives a reason for asking and uses 언제까지 for duration."
+     },
+     {
+      "text": "몇 시부터 몇 시까지 탈 거예요?",
+      "note": "Start and end in one question."
      }
     ],
     "badAnswers": [
@@ -448,6 +494,14 @@
      {
       "text": "자전거는 무슨 색이에요?",
       "why": "Asks an irrelevant question."
+     },
+     {
+      "text": "좋아요! 몇 시에 시작해요? 몇 시간 타요?",
+      "why": "Says yes before the two limits are checked."
+     },
+     {
+      "text": "저는 토요일 1시까지 일해요. 몇 시에 시작해요?",
+      "why": "Asks only about the start; the length (the budget) is missing."
      }
     ],
     "humanReview": "Politeness level and whether the questions are clear.",
@@ -492,7 +546,8 @@
    "human": [
     "Clarity and naturalness of the questions"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k5-04",
@@ -1329,7 +1384,7 @@
   ],
   "minutes": 12,
   "curriculum": null,
-  "material": "Class ends at 3:30. Minsu's home is a 30-minute walk from school. Three classmates talk the next day.\n민수: 어제 수업이 끝나고 바로 집에 갔어요.\n하나: 어제 4시쯤 도서관에서 민수 씨를 봤어요. 책을 빌리고 있었어요.\n준호: 저는 4시 30분쯤 도서관에 있었는데 민수 씨는 못 봤어요.",
+  "material": "Class ends at 3:30. Minsu's home is a 30-minute walk from school, and he always walks (no bus). Three classmates talk the next day.\n민수: 어제 수업이 끝나고 바로 집에 갔어요.\n하나: 어제 4시쯤 도서관에서 민수 씨를 봤어요. 책을 빌리고 있었어요.\n준호: 저는 4시 30분쯤 도서관에 있었는데 민수 씨는 못 봤어요.",
   "steps": [
    {
     "id": "s1",
@@ -1338,18 +1393,18 @@
     "options": [
      {
       "id": "a",
+      "text": "Hana's and Minsu's accounts clash, and Junho's does not decide between them",
+      "reveals": "Minsu would not be home before 4:00 if he walked straight home, so he cannot also be at the library at 4:00; Junho's time is different."
+     },
+     {
+      "id": "b",
       "text": "Minsu is lying about going straight home, because Hana saw him at the library",
       "reveals": "One account conflicts with another, but a conflict does not show who is wrong or whether anyone lied."
      },
      {
-      "id": "b",
+      "id": "c",
       "text": "Hana must be wrong, because Junho was at the library later and did not see Minsu",
       "reveals": "Junho arrived half an hour later than the time Hana gives, so his account says nothing about 4:00."
-     },
-     {
-      "id": "c",
-      "text": "Hana's and Minsu's accounts clash, and Junho's does not decide between them",
-      "reveals": "Minsu would not be home before 4:00 if he walked straight home, so he cannot also be at the library at 4:00; Junho's time is different."
      },
      {
       "id": "d",
@@ -1358,15 +1413,7 @@
      }
     ],
     "correct": [
-     "c"
-    ],
-    "acceptable": [
-     {
-      "ids": [
-       "a"
-      ],
-      "reason": "Lying is one possible explanation, but a mistaken time or person is as likely; a good answer notes that the text does not prove it."
-     }
+     "a"
     ],
     "explain": "Walking straight home takes until about 4:00, so Minsu cannot be at the library at 4:00. Either Minsu or Hana is wrong (or 'shortly after 4' is loosely meant). Junho arrived at 4:30, so he shows nothing about 4:00.",
     "hints": [
@@ -1393,7 +1440,7 @@
       "label": "proposes a way to check or ask",
       "mode": "any",
       "patterns": [
-       "\\b(ask|check|find out|confirm|compare|verify|record|call|text|look at)\\b"
+       "\\b(ask|check|find out|confirm|compare|verify|records?|logs?|camera|cctv|footage|call|text|look at|see|go to|visit|watch|view|examine|inspect|talk|speak|interview|search|review)\\b"
       ]
      },
      {
@@ -1418,6 +1465,9 @@
      {
       "text": "Check the library's loan record: if Minsu borrowed a book around '4시쯤' then Hana is right; Junho's '4시 30분쯤' is half an hour later, so it does not settle anything.",
       "note": "Uses an outside record."
+     },
+     {
+      "text": "I would visit the library and look at the loan records to see when Minsu borrowed the book, because Hana says '4시쯤' but Minsu says '바로 집에 갔어요'."
      }
     ],
     "badAnswers": [
@@ -1472,7 +1522,8 @@
    "human": [
     "Whether the check really separates the two accounts"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k5-09",
@@ -1561,11 +1612,21 @@
      },
      {
       "id": "w3",
-      "label": "avoids direct reason words",
+      "label": "avoids direct reason words (-아서/어서/해서, 그래서, 때문에, 이유, -니까)",
       "mode": "none",
       "patterns": [
-       "아서|어서|해서|여서",
-       "그래서|때문|이유|왜냐"
+       "(?<!에|에게)서(?![가-힣])",
+       "니까",
+       "느라",
+       "탓",
+       "덕분",
+       "덕에",
+       "그래서",
+       "그러니까",
+       "따라서",
+       "때문",
+       "이유",
+       "왜냐"
       ]
      }
     ],
@@ -1591,6 +1652,14 @@
      {
       "text": "학교에 갑니다.",
       "why": "Not past tense and only one sentence."
+     },
+     {
+      "text": "어제 감기에 걸려서 학교에 못 갔어요. 집에서 쉬었어요.",
+      "why": "States the reason with -려서."
+     },
+     {
+      "text": "어제 몸이 아파서 학교에 못 갔어요. 집에서 쉬었어요.",
+      "why": "States the reason with -파서."
      }
     ],
     "humanReview": "Whether the reason can really be inferred and the Korean is natural.",
@@ -1635,7 +1704,8 @@
    "human": [
     "Whether the reason can be inferred from the writer's details"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k5-10",
@@ -1719,7 +1789,7 @@
        },
        {
         "id": "c",
-        "text": "Sunday at 3:30 or later",
+        "text": "Sunday at 3:00 or later",
         "reveals": "Sunday is sunny and Minsu is free after 3:00."
        }
       ],
@@ -1787,7 +1857,7 @@
       "label": "gives 4 o'clock",
       "mode": "any",
       "patterns": [
-       "(?:4|네)\\s*시"
+       "(?:4|네)\\s*시(?!간)"
       ]
      },
      {
@@ -1798,6 +1868,15 @@
        "5\\s*시\\s*(?:30\\s*분|반)",
        "다섯\\s*시\\s*(?:30\\s*분|반)",
        "5:30"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "says who brings the sandwiches (민수 + 샌드위치)",
+      "mode": "all",
+      "patterns": [
+       "샌드위치",
+       "민수"
       ]
      }
     ],
@@ -1823,6 +1902,10 @@
      {
       "text": "일요일에 만나요. 샌드위치 가져오세요.",
       "why": "Missing times."
+     },
+     {
+      "text": "일요일 4시에 한강에서 만나요. 5시 30분에 헤어져요.",
+      "why": "Does not say who brings the sandwiches."
      }
     ],
     "humanReview": "Whether the message is clear and complete.",
@@ -1867,6 +1950,7 @@
    "human": [
     "Whether the confirmation is clear and consistent"
    ]
-  }
+  },
+  "status": "draft"
  }
 ]

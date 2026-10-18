@@ -23,12 +23,12 @@
   ],
   "minutes": 9,
   "curriculum": null,
-  "material": "Today is 수요일. A notice is on the door of the swimming pool, and your friend 민지 sends you a message.\n\n[수영 수업 안내]\n- 수업: 화요일, 목요일 오후 4시 30분 ~ 5시 30분\n- 수업 시작 10분 전까지 수영장 앞으로 오세요.\n- 수업이 시작되면 문을 닫아요. 늦으면 들어갈 수 없어요.\n\n민지: 내일 수영 수업 4시 40분까지 가면 돼요?",
+  "material": "A notice is on the door of the swimming pool, and your friend 민지 sends you a message.\n\n[수영 수업 안내]\n- 수업: 화요일, 목요일 오후 4시 30분 ~ 5시 30분\n- 수업 시작 10분 전까지 수영장 앞으로 오세요.\n- 수업이 시작되면 문을 닫아요. 늦으면 들어갈 수 없어요.\n\n민지: 목요일 수영 수업, 4시 40분까지 가면 돼요?",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
-    "prompt": "Can 민지 go at 4시 40분 tomorrow? Decide using the notice.",
+    "prompt": "Can 민지 go at 4시 40분 on Thursday? Decide using the notice.",
     "options": [
      {
       "id": "a",
@@ -42,8 +42,8 @@
      },
      {
       "id": "c",
-      "text": "Cannot tell: the notice has no time for tomorrow.",
-      "reveals": "Today is 수요일, so tomorrow is 목요일, and the notice does list 목요일."
+      "text": "Cannot tell: the notice does not say what time the pool opens.",
+      "reveals": "The opening time of the pool does not decide it: the notice gives the start of the 목요일 class and says what happens once it has started."
      },
      {
       "id": "d",
@@ -54,9 +54,9 @@
     "correct": [
      "d"
     ],
-    "explain": "Tomorrow is 목요일, so there is a class at 4:30. The door closes when it starts, and the notice asks people to come 10 minutes earlier (4:20). 4:40 is after both times.",
+    "explain": "On 목요일 there is a class at 4:30. The door closes when it starts, and the notice asks people to come 10 minutes earlier (4:20). 4:40 is after both times.",
     "hints": [
-     "First work out which day tomorrow is, then find that day in the notice.",
+     "Find 목요일 in the notice and read the start time of the class.",
      "Put 4시 40분 next to the start time and next to the line about the door."
     ]
    },
@@ -83,7 +83,7 @@
      {
       "id": "d",
       "text": "There are classes on 화요일 and 목요일.",
-      "reveals": "This shows that a class exists tomorrow, but not whether 4:40 is late."
+      "reveals": "This shows that a class exists on that day, but not whether 4:40 is late."
      },
      {
       "id": "e",
@@ -115,7 +115,7 @@
    {
     "id": "s3",
     "kind": "write",
-    "prompt": "Reply to 민지 in Korean (polite -요). Tell her the latest time she should arrive and give the reason from the notice.",
+    "prompt": "Reply to 민지 in Korean (polite -요). Tell her by what time she must be there and give the reason from the notice.",
     "placeholder": "예: ...",
     "minChars": 6,
     "checks": [
@@ -129,13 +129,16 @@
      },
      {
       "id": "w2",
-      "label": "names the arrival limit (4시 20분 or 10분 전)",
+      "label": "names an arrival limit (4시 20분 / 4시 30분 / 시작 전 / 10분 전)",
       "mode": "any",
       "patterns": [
-       "4\\s*시\\s*20\\s*분",
+       "4\\s*시\\s*(20|30|15|10)\\s*분",
+       "4\\s*시\\s*반",
        "10\\s*분\\s*전",
-       "네\\s*시\\s*이십\\s*분",
-       "4:20"
+       "시작(하기)?\\s*전",
+       "네\\s*시\\s*(이십|삼십|십오|십)\\s*분",
+       "네\\s*시\\s*반",
+       "4:(20|30)"
       ]
      },
      {
@@ -154,7 +157,7 @@
     "selfAssess": [
      "Does my reply tell 민지 one clear time?",
      "Does my reason come from the notice (door closes, start time)?",
-     "Would 민지 know what to do tomorrow?"
+     "Would 민지 know what to do on Thursday?"
     ],
     "modelAnswers": [
      {
@@ -164,6 +167,10 @@
      {
       "text": "수업 10분 전인 4시 20분까지 오세요. 수업이 시작되면 문을 닫아요.",
       "note": "Gives the limit by explaining the notice."
+     },
+     {
+      "text": "4시 30분 전에 와야 해요. 수업이 시작되면 들어갈 수 없어요.",
+      "note": "Gives the hard limit (the start) instead of the 10-minute request."
      }
     ],
     "badAnswers": [
@@ -198,11 +205,11 @@
    }
   ],
   "alternatives": [
-   "Telling 민지 to arrive 'by 4시 15분' or 'around 4시' is also fine, as long as it is before 4:20.",
+   "Telling 민지 to arrive 'by 4시 15분' or 'around 4시' is also fine, as long as it is before the class starts at 4:30.",
    "A student may say 'no' only because 4:40 is after 4:30; that is already correct, the 10-minute line is extra."
   ],
   "hardCases": [
-   "A reply that says 4시 30분 before without mentioning the 10-minute request: it is not wrong against the door rule but is looser than the notice; a teacher decides."
+   "A reply that names 4시 30분 (the start) instead of 4시 20분 is not wrong against the door rule but is looser than the notice's 10-minute request; a teacher decides."
   ],
   "cautions": {
    "language": "시 (o'clock) and 시간 (length of time) are easy to mix up; the checks only accept digits or spoken forms followed by 시/분. 'Late' is 늦다: 늦으면 = if (she is) late.",
@@ -217,7 +224,8 @@
    "human": [
     "Quality and naturalness of the reply"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k4-02",
@@ -290,10 +298,18 @@
      },
      {
       "id": "w3",
-      "label": "no stiff notice-style ending (-ㅂ니다)",
+      "label": "no polite -요 and no stiff notice-style ending (-ㅂ니다)",
       "mode": "none",
       "patterns": [
-       "니다(?![가-힣])|십시오"
+       "니다(?![가-힣])|십시오|요(?![가-힣])"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "ends with a casual ending (어 / 야 / 아 / 지 / 와 ...)",
+      "mode": "any",
+      "patterns": [
+       "(어|야|아|지|자|라|와|해|네|거든|잖아)\\s*[.!?？~]*\\s*$"
       ]
      }
     ],
@@ -320,12 +336,16 @@
      {
       "text": "열람실은 3층에 있습니다.",
       "why": "Right floor, but the stiff ending does not fit a message to a little brother."
+     },
+     {
+      "text": "열람실은 3층에 있어요.",
+      "why": "Right floor, but polite -요 instead of casual speech to a younger brother."
      }
     ],
     "humanReview": "Whether the casual register is natural and the sentence is complete.",
     "hints": [
      "Find 열람실 in the guide and read its floor.",
-     "Keep the ending like 있어 or 이야, not 있습니다."
+     "Keep the ending like 있어 or 이야, not 있습니다 or 있어요."
     ]
    }
   ],
@@ -362,7 +382,8 @@
    "human": [
     "Naturalness of the fixed sentence"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k4-03",
@@ -388,7 +409,7 @@
   ],
   "minutes": 9,
   "curriculum": null,
-  "material": "Today is Friday. This is your plan for Sunday, and then a message from your friend 수아.\n\n[내 일요일 계획]\n- 오전 10시 ~ 11시: 가족 산책\n- 오후 6시: 할머니 댁에서 가족 저녁 식사\n\n수아: 일요일 오후에 영화 볼래요? 영화관 앞에서 만나요.",
+  "material": "Today is Friday. This is your plan for Sunday, and then a message from your friend 수아. 할머니 댁 is far from where you live, and you do not know the cinema, so you do not know how long it takes to get from the cinema to 할머니 댁.\n\n[내 일요일 계획]\n- 오전 10시 ~ 11시: 가족 산책\n- 오후 6시: 할머니 댁에서 가족 저녁 식사\n\n수아: 일요일 오후에 영화 볼래요? 영화관 앞에서 만나요.",
   "steps": [
    {
     "id": "s1",
@@ -413,7 +434,7 @@
      {
       "id": "d",
       "text": "영화관이 어디에 있어요?",
-      "reveals": "You thought about getting from the cinema to the dinner, which also takes time."
+      "reveals": "You thought about getting from the cinema to the dinner, which takes time you do not know yet."
      },
      {
       "id": "e",
@@ -425,26 +446,13 @@
      "c",
      "d"
     ],
-    "explain": "Your only fixed event in the afternoon is dinner at 6. To decide, you need the time the film ends and how far the cinema is from where you must be. The film's cast or the price do not change your time.",
+    "explain": "Your only fixed event in the afternoon is dinner at 6 at 할머니 댁. To decide, you need the time the film ends and where the cinema is, because the trip from there to 할머니 댁 takes time you do not know yet. The film's cast or the price do not change your time.",
     "hints": [
      "List what you already know about Sunday afternoon, then list what is still unknown.",
      "Ask of each question: could its answer make me late for 6 o'clock?"
     ],
     "multi": true,
     "acceptable": [
-     {
-      "ids": [
-       "c"
-      ],
-      "reason": "The end time alone settles it if the cinema is close to the dinner place."
-     },
-     {
-      "ids": [
-       "a",
-       "c"
-      ],
-      "reason": "Asking for both start and end time gives the length of the film, a reasonable extra."
-     },
      {
       "ids": [
        "a",
@@ -494,7 +502,8 @@
        "어디",
        "위치",
        "멀",
-       "걸려"
+       "걸려",
+       "몇 시에 끝"
       ]
      },
      {
@@ -556,7 +565,7 @@
    }
   ],
   "alternatives": [
-   "Asking only for the end time is reasonable if the student assumes the cinema is near.",
+   "Asking how far the cinema is from 할머니 댁 instead of where it is works too.",
    "A student may ask 'how long is the film?' (영화가 몇 시간이에요?); this is also a good question."
   ],
   "hardCases": [
@@ -574,7 +583,8 @@
    "human": [
     "Whether the questions are natural and relevant"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k4-04",
@@ -869,7 +879,7 @@
     ],
     "stages": [
      {
-      "info": "유나: 나 도착했어요. 편의점 앞이에요.",
+      "info": "유나: 도착했어요. 편의점 앞이에요.",
       "ask": "Where do you think 유나 is?",
       "options": [
        {
@@ -886,6 +896,11 @@
         "id": "c",
         "text": "I need one more clue before I can say.",
         "reveals": "You noticed that the clue fits two places."
+       },
+       {
+        "id": "d",
+        "text": "공원 앞",
+        "reveals": "The park has only a 카페 on the map, no 편의점."
        }
       ],
       "reasonable": [
@@ -986,7 +1001,16 @@
        "걸어",
        "이동",
        "갈까요",
-       "와요"
+       "와요",
+       "갈 거",
+       "올 거",
+       "갈 건",
+       "올 건",
+       "와 주",
+       "가 줄",
+       "도착",
+       "기다릴",
+       "만나요"
       ]
      }
     ],
@@ -1003,6 +1027,12 @@
      {
       "text": "후문 앞에서 기다려 주세요. 제가 걸어서 갈게요!",
       "note": "Asks her to wait and says you will come."
+     },
+     {
+      "text": "정문에 있어요. 제가 후문으로 갈 거예요."
+     },
+     {
+      "text": "저는 정문이에요. 유나 씨가 정문으로 와 주세요."
      }
     ],
     "badAnswers": [
@@ -1018,7 +1048,7 @@
     "humanReview": "Whether the plan is clear (who moves where) and the Korean is natural.",
     "hints": [
      "Name the gate where you stand.",
-     "Add one verb: 갈게요 (I will go), 기다려 주세요 (please wait) or 오세요 (please come)."
+     "Add one verb that says who moves: for example 갈게요 (I will go), 기다려 주세요 (please wait) or 와 주세요 (please come)."
     ]
    }
   ],
@@ -1054,7 +1084,8 @@
    "human": [
     "Clarity and naturalness of the message"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k4-06",
@@ -1121,7 +1152,7 @@
     "explain": "하준 needs the place (강당), the period (3교시) and what to bring (실내화). The heading and the stiff endings belong to the form of the notice.",
     "hints": [
      "Imagine 하준 tomorrow morning: what does he need to know to be in the right place with the right things?",
-     "Separate facts from the notice's style."
+     "Ask of each option: would 하준 miss something he needs to do if it were left out?"
     ],
     "multi": true,
     "acceptable": [
@@ -1170,10 +1201,19 @@
      },
      {
       "id": "w4",
-      "label": "no stiff notice-style ending",
+      "label": "no polite -요 and no stiff notice-style ending",
       "mode": "none",
       "patterns": [
-       "니다(?![가-힣])|십시오"
+       "니다(?![가-힣])|십시오|요(?![가-힣])"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "says when (내일)",
+      "mode": "any",
+      "patterns": [
+       "내일",
+       "낼"
       ]
      }
     ],
@@ -1200,6 +1240,10 @@
      {
       "text": "내일 체육 있어.",
       "why": "Casual but loses the place, period and what to bring."
+     },
+     {
+      "text": "하준아, 내일 비 와서 3교시 체육을 강당에서 해요. 실내화 가져오세요.",
+      "why": "All facts, but polite -요 instead of casual speech."
      }
     ],
     "humanReview": "Whether the casual register is natural and no fact is changed.",
@@ -1225,7 +1269,7 @@
   ],
   "alternatives": [
    "Adding the reason (it will rain) is allowed and good.",
-   "A polite -요 ending is an acceptable register for a classmate you do not know well; the checks only reject notice-style -ㅂ니다."
+   "A polite -요 ending could suit a classmate you do not know well, but this task asks for 반말, so the checks reject -요 and -ㅂ니다."
   ],
   "hardCases": [
    "Whether 'bring 실내화 instead of 운동화' counts as an extra fact; it is not in the notice, so do not require it."
@@ -1242,7 +1286,8 @@
    "human": [
     "Naturalness of the casual register, whether it fits the writer's relationship"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k4-07",
@@ -1277,13 +1322,13 @@
     "options": [
      {
       "id": "a",
-      "text": "그림 교실 10시 → 점심 12시 → 요리 교실 2시",
-      "reveals": "You matched each activity to its time on the notice."
+      "text": "그림 교실 10시 → 요리 교실 2시 → 점심 4시",
+      "reveals": "Lunch at 4시 does not fit the times of the center's restaurant."
      },
      {
       "id": "b",
-      "text": "그림 교실 10시 → 요리 교실 2시 → 점심 4시",
-      "reveals": "Lunch at 4시 does not fit the times of the center's restaurant."
+      "text": "그림 교실 10시 → 점심 12시 → 요리 교실 2시",
+      "reveals": "You matched each activity to its time on the notice."
      },
      {
       "id": "c",
@@ -1292,9 +1337,9 @@
      }
     ],
     "correct": [
-     "a"
+     "b"
     ],
-    "explain": "Only the plan in b follows the notice: 그림 교실 10시 ~ 11시 30분, 점심 12시 ~ 1시 and 요리 교실 2시 ~ 4시.",
+    "explain": "Only plan b follows the notice: 그림 교실 10시 ~ 11시 30분, 점심 12시 ~ 1시 and 요리 교실 2시 ~ 4시.",
     "hints": [
      "Put the three activities in order of their times on the notice.",
      "Check each activity of a plan against its own line in the notice."
@@ -1309,10 +1354,11 @@
     "checks": [
      {
       "id": "w1",
-      "label": "mentions 그림 교실 before 요리 교실",
-      "mode": "any",
+      "label": "mentions both 그림 교실 and 요리 교실",
+      "mode": "all",
       "patterns": [
-       "그림[\\s\\S]*요리"
+       "그림",
+       "요리"
       ]
      },
      {
@@ -1329,7 +1375,34 @@
       "label": "gives at least three clock times",
       "mode": "any",
       "patterns": [
-       "(\\d+\\s*시(?!간)[\\s\\S]*){3}"
+       "((\\d+|열두|열한|열|한|두|세|네|다섯|여섯|일곱|여덟|아홉)\\s*시(?!간)[\\s\\S]*){3}"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "puts 그림 교실 at 10시",
+      "mode": "any",
+      "patterns": [
+       "그림[^.!?,고]*((?<![0-9])10\\s*시|열\\s*시)",
+       "((?<![0-9])10\\s*시|열\\s*시)[^.!?,고]*그림"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "puts 요리 교실 at 2시",
+      "mode": "any",
+      "patterns": [
+       "요리[^.!?,고]*((?<![0-9])(2|14)\\s*시|두\\s*시)",
+       "((?<![0-9])(2|14)\\s*시|두\\s*시)[^.!?,고]*요리"
+      ]
+     },
+     {
+      "id": "w6",
+      "label": "puts lunch at 12시",
+      "mode": "any",
+      "patterns": [
+       "(점심|식당)[^.!?,고]*((?<![0-9])12\\s*시|열두\\s*시|낮\\s*12)",
+       "((?<![0-9])12\\s*시|열두\\s*시)[^.!?,고]*(점심|식당)"
       ]
      }
     ],
@@ -1346,6 +1419,12 @@
      {
       "text": "9시 50분에 문화센터 앞에서 만나자. 10시 그림 교실, 12시 점심, 2시 요리 교실 순서로 하자. 1시에는 공원에서 쉬자.",
       "note": "Adds a meeting time and a rest in the gap."
+     },
+     {
+      "text": "요리 교실은 2시에, 그림 교실은 10시에 가자. 12시에 점심 먹자."
+     },
+     {
+      "text": "열 시에 그림 교실 가자. 열두 시에 점심 먹자. 두 시에 요리 교실 가자."
      }
     ],
     "badAnswers": [
@@ -1356,6 +1435,14 @@
      {
       "text": "2시에 요리 교실, 3시에 그림 교실, 4시에 점심 먹자.",
       "why": "Order and times do not follow the notice."
+     },
+     {
+      "text": "10시에 그림 교실 가고 4시에 점심 먹고 2시에 요리 교실 가자.",
+      "why": "Lunch at 4시 does not fit the restaurant's hours (12시 ~ 1시)."
+     },
+     {
+      "text": "10시에 요리 교실 가고 2시에 그림 교실 가고 12시에 점심 먹자.",
+      "why": "The two classes are at each other's times."
      }
     ],
     "humanReview": "Whether the plan is realistic (the free gaps are used sensibly) and the Korean is natural.",
@@ -1398,7 +1485,8 @@
    "human": [
     "Whether the own addition is sensible and the Korean natural"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k4-08",
@@ -1442,7 +1530,7 @@
     "explain": "Line 3 is wrong: the notice says 점심 식사는 없어요, so there is no school lunch. The other lines match the notice (days, start time and things to bring).",
     "hints": [
      "Read the notice and mark one detail for each line of the draft.",
-     "Look for a line that says something the notice denies."
+     "For each line, ask: does the notice confirm it, or does it say something different?"
     ]
    },
    {
@@ -1462,23 +1550,40 @@
      },
      {
       "id": "w2",
-      "label": "mentions lunch (점심)",
+      "label": "talks about lunch (점심 / 먹)",
       "mode": "any",
       "patterns": [
-       "점심"
+       "점심",
+       "먹",
+       "도시락",
+       "식사"
       ]
      },
      {
       "id": "w3",
-      "label": "says lunch is eaten at home or brought (not school lunch)",
+      "label": "says lunch is eaten at home, bought or brought (not school lunch)",
       "mode": "any",
       "patterns": [
        "집에",
+       "집에서",
        "도시락",
-       "싸 ?(서|가|올|갈)",
+       "싸 ?(서|가|올|갈|주)",
        "가져",
        "먹고 (올|와)",
-       "밖에서"
+       "밖에서",
+       "식당",
+       "사 ?먹",
+       "편의점",
+       "준비",
+       "음식"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "does not count on a school lunch (급식)",
+      "mode": "none",
+      "patterns": [
+       "급식"
       ]
      }
     ],
@@ -1495,6 +1600,15 @@
      {
       "text": "수업이 11시 30분에 끝나요. 점심은 도시락을 싸 갈게요.",
       "note": "Keeps the time fact and brings a packed lunch."
+     },
+     {
+      "text": "11시 30분에 끝나니까 집에 가서 먹을게요."
+     },
+     {
+      "text": "점심은 식당에서 사 먹을게요."
+     },
+     {
+      "text": "11시 30분에 끝나니까 점심은 엄마가 싸 주신 걸 먹을게요."
      }
     ],
     "badAnswers": [
@@ -1547,183 +1661,8 @@
    "human": [
     "Naturalness and consistency of the fixed line"
    ]
-  }
- },
- {
-  "id": "x-k-k4-09",
-  "subject": "korean",
-  "grade": "K4",
-  "topic": "notice and message together",
-  "level": 1,
-  "levelLabel": "Beginner",
-  "title": "Will the bus stop for 소라?",
-  "uiLang": "en",
-  "format": "judge-evidence-explain",
-  "generative": false,
-  "goal": "Decide whether a friend's travel plan works by combining a bus notice with what day tomorrow is, and write a helpful reply.",
-  "thinking": [
-   "Combining a rule with the date",
-   "Rejecting a tempting but irrelevant rule",
-   "Explaining the reason to a friend"
-  ],
-  "differsFromPlain": "Plain practice asks when a bus comes. Here a weekend timetable looks as if it solves the case, but a different rule decides, and you must find it.",
-  "prerequisites": [
-   "Can read Hangul and times written with 시",
-   "Knows weekday names and polite -요 endings"
-  ],
-  "minutes": 9,
-  "curriculum": null,
-  "material": "Today is 토요일. You are waiting at the bus stop and read the notice. Your friend 소라 will visit you tomorrow.\n\n[마을버스 7번 안내]\n- 첫차 6시, 막차 밤 9시 30분\n- 평일: 15분마다 / 주말: 30분마다\n- 일요일에는 도서관 앞 정류장에 서지 않아요.\n\n소라: 내일 도서관 앞 정류장에서 7번 버스를 탈게요. 3시쯤 도착해요!",
-  "steps": [
-   {
-    "id": "s1",
-    "kind": "choose",
-    "prompt": "Will 소라's plan work tomorrow?",
-    "options": [
-     {
-      "id": "a",
-      "text": "Yes. The bus runs from 6:00 to 9:30, and 3시 is in between.",
-      "reveals": "You checked the hours of service but not the stop rule."
-     },
-     {
-      "id": "b",
-      "text": "No. Tomorrow is Sunday, and 7번 does not stop there.",
-      "reveals": "You combined the date with the rule about the stop."
-     },
-     {
-      "id": "c",
-      "text": "Yes, but on weekends she may wait up to 30 minutes for the bus.",
-      "reveals": "You used the weekend timetable, which is about how often the bus comes, not where it stops."
-     },
-     {
-      "id": "d",
-      "text": "Cannot tell: the notice does not say which stop she should use.",
-      "reveals": "The notice does name a stop, in the rule about Sunday."
-     }
-    ],
-    "correct": [
-     "b"
-    ],
-    "explain": "Today is 토요일, so tomorrow is 일요일. The notice says 7번 does not stop at 도서관 앞 on Sundays. The hours and the weekend timetable do not change that.",
-    "hints": [
-     "First find out which day of the week tomorrow is.",
-     "Search the notice for every line that mentions that day."
-    ]
-   },
-   {
-    "id": "s2",
-    "kind": "write",
-    "prompt": "Write a polite reply (-요) to 소라. Tell her that her plan does not work, give the reason, and suggest what she can do.",
-    "placeholder": "예: ...",
-    "minChars": 6,
-    "checks": [
-     {
-      "id": "w1",
-      "label": "polite ending",
-      "mode": "any",
-      "patterns": [
-       "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
-      ]
-     },
-     {
-      "id": "w2",
-      "label": "mentions Sunday (일요일)",
-      "mode": "any",
-      "patterns": [
-       "일요일"
-      ]
-     },
-     {
-      "id": "w3",
-      "label": "mentions the bus or stop",
-      "mode": "any",
-      "patterns": [
-       "정류장",
-       "서지",
-       "버스",
-       "안 서"
-      ]
-     },
-     {
-      "id": "w4",
-      "label": "says it will not stop or suggests another way",
-      "mode": "any",
-      "patterns": [
-       "않",
-       "안 서",
-       "못",
-       "없",
-       "다른",
-       "걸어",
-       "시청"
-      ]
-     }
-    ],
-    "selfAssess": [
-     "Do I say that the plan does not work, and why?",
-     "Do I give her something she can do?",
-     "Is the reply polite?"
-    ],
-    "modelAnswers": [
-     {
-      "text": "소라 씨, 일요일에는 7번이 도서관 앞에 서지 않아요. 다른 정류장에서 타세요.",
-      "note": "States the rule and a way out."
-     },
-     {
-      "text": "내일은 일요일이라서 도서관 앞 정류장에는 버스가 안 서요. 걸어서 오세요.",
-      "note": "Explains the day and suggests walking."
-     }
-    ],
-    "badAnswers": [
-     {
-      "text": "버스를 타고 오세요.",
-      "why": "Does not mention the problem or the day."
-     },
-     {
-      "text": "일요일이 좋아요.",
-      "why": "Mentions the day but gives no information about the bus."
-     }
-    ],
-    "humanReview": "Whether the suggestion is realistic and natural.",
-    "hints": [
-     "Start by naming the day and the stop.",
-     "Add one thing she can do instead, with a verb ending in -세요."
-    ]
-   }
-  ],
-  "rubric": [
-   {
-    "criterion": "Judgement",
-    "full": "Combines the date with the stop rule and rejects the plan",
-    "partial": "Reaches the right answer without naming the rule",
-    "none": "Accepts the plan"
-   },
-   {
-    "criterion": "Reply",
-    "full": "Names the day, the problem and an alternative in polite Korean",
-    "partial": "Says the plan fails without a reason or alternative",
-    "none": "Accepts the plan"
-   }
-  ],
-  "alternatives": [
-   "Suggesting a different stop (for example 시청 앞) is fine even though the notice does not name one, as long as it is flagged as a suggestion."
-  ],
-  "hardCases": [
-   "A student may say that 3시 on a Sunday may be fine if she takes another route; the plan as stated (library stop) still fails."
-  ],
-  "cautions": {
-   "language": "서다 = (a vehicle) stops; 서지 않아요 = does not stop; 마다 = every; 일요일에는 stresses 'on Sundays'.",
-   "culture": "Village buses in Korea can have special weekend rules; the notice explains them.",
-   "accessibility": "The notice is a plain list, times are written with 시. No timetable image."
   },
-  "autoVsHuman": {
-   "auto": [
-    "Choice of the verdict; presence of 일요일, bus/stop and a negation or alternative in the reply"
-   ],
-   "human": [
-    "Whether the suggested alternative is realistic and natural"
-   ]
-  }
+  "status": "draft"
  },
  {
   "id": "x-k-k4-10",
@@ -1855,13 +1794,13 @@
      },
      {
       "id": "w2",
-      "label": "gives a time or minutes",
+      "label": "gives the final arrival time (about 4시 10분) or 10분 late",
       "mode": "any",
       "patterns": [
-       "\\d\\s*시(?!간)",
-       "\\d+\\s*분",
-       "십\\s*분",
-       "네\\s*시"
+       "(?<![0-9])4\\s*시(?!\\s*[2-5][0-9]\\s*분)",
+       "네\\s*시(?!\\s*(이십|삼십|사십|오십))",
+       "(?<![0-9])10\\s*분\\s*(쯤|정도)?\\s*(늦|뒤|후)",
+       "십\\s*분\\s*(쯤|정도)?\\s*(늦|뒤|후)"
       ]
      },
      {
@@ -1874,6 +1813,17 @@
        "조금",
        "좀",
        "약간"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "does not give a wrong time (3시 30분 / 3시 40분 / 4시 20분 or later)",
+      "mode": "none",
+      "patterns": [
+       "(?<![0-9])3\\s*시\\s*(30|40|45|50)\\s*분",
+       "(?<![0-9])3\\s*시\\s*반",
+       "(?<![0-9])4\\s*시\\s*[2-5][0-9]\\s*분",
+       "세\\s*시"
       ]
      }
     ],
@@ -1900,6 +1850,14 @@
      {
       "text": "파티 재미있겠다.",
       "why": "Does not answer the question."
+     },
+     {
+      "text": "조금 늦을 것 같아. 3시 40분에 도착해.",
+      "why": "Says late, but gives the arrival time of the cancelled exam message."
+     },
+     {
+      "text": "미안해, 조금 늦어. 4시 40분쯤 도착할 거야.",
+      "why": "The time is too late; the final facts give about 4시 10분."
      }
     ],
     "humanReview": "Whether the time matches the final message (about 4시 10분).",
@@ -1941,6 +1899,7 @@
    "human": [
     "Naturalness of the message"
    ]
-  }
+  },
+  "status": "draft"
  }
 ]

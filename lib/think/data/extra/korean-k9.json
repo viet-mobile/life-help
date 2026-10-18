@@ -34,33 +34,33 @@
     "options": [
      {
       "id": "a",
-      "text": "Which floor the meeting room is on and who booked it",
-      "reveals": "Where the room is can be found without asking, and it does not change what material you prepare."
+      "text": "Whether the layout should be the same as last time",
+      "reveals": "지난번처럼 already says this, so asking again shows the message was not read closely."
      },
      {
       "id": "b",
+      "text": "Whether the meeting is held in person or online",
+      "reveals": "That does not change which material you prepare."
+     },
+     {
+      "id": "c",
       "text": "Which of the two kinds of material 지난번처럼 refers to",
       "reveals": "Noticing that 지난번 could point to either of two things shows you read the message against what you know."
      },
      {
-      "id": "c",
+      "id": "d",
       "text": "Whether 팀장 liked last month's material",
       "reveals": "Opinions about the past do not change what you must make tomorrow."
      },
      {
-      "id": "d",
+      "id": "e",
       "text": "By what time 팀장 needs it, given when the meeting starts",
       "reveals": "Seeing that 내일 오전 gives no clock time shows you checked the message for a missing deadline."
-     },
-     {
-      "id": "e",
-      "text": "Whether the layout should be the same as last time",
-      "reveals": "지난번처럼 already says this, so asking again shows the message was not read closely."
      }
     ],
     "correct": [
-     "b",
-     "d"
+     "c",
+     "e"
     ],
     "explain": "Two things are open: 지난번처럼 can mean either of two documents, and 내일 오전 gives no deadline. The layout is already answered by 지난번처럼 (both documents share one layout), and the room or 팀장's opinion does not affect your work.",
     "hints": [
@@ -93,18 +93,18 @@
      },
      {
       "id": "w3",
-      "label": "asks which material",
+      "label": "asks which material, as a question or request",
       "mode": "any",
       "patterns": [
-       "어느|어떤|무슨|월간|신제품|실적|일정표"
+       "(어느|어떤|무슨|무엇|뭘|월간|신제품|실적|일정표)[^.?!]*(까요|나요|인지|는지|주시|부탁|여쭤|여쭙|가요|\\?)"
       ]
      },
      {
       "id": "w4",
-      "label": "asks about the time or deadline",
+      "label": "asks about the time or deadline, as a question or request",
       "mode": "any",
       "patterns": [
-       "몇\\s*시|언제|까지|시간|시에"
+       "(몇\\s*시|언제|까지|시각|시간|시에)[^.?!]*(까요|나요|인지|는지|주시|부탁|여쭤|여쭙|가요|\\?)"
       ]
      }
     ],
@@ -120,6 +120,9 @@
      {
       "text": "팀장님, 어떤 자료를 말씀하시는지 여쭤봐도 될까요? 회의 전에 몇 시까지 보내 드리면 되는지도 알려 주시면 감사하겠습니다.",
       "note": "Shorter, and both questions are still clearly separate."
+     },
+     {
+      "text": "팀장님, 무엇을 정리할지, 회의 시작 시각은 언제인지 여쭙습니다."
      }
     ],
     "badAnswers": [
@@ -130,6 +133,10 @@
      {
       "text": "알겠습니다. 내일까지 하겠습니다.",
       "why": "Accepts without asking anything, so the two open points stay open."
+     },
+     {
+      "text": "팀장님, 알겠습니다. 월간 실적 요약을 내일 오전까지 하겠습니다.",
+      "why": "Names a document and a time, but only as a statement; nothing is asked."
      }
     ],
     "humanReview": "Whether the tone really suits the speaker's workplace, and whether the two questions are phrased clearly, needs a person.",
@@ -174,7 +181,8 @@
     "Politeness and clarity of the reply",
     "Whether the questions are phrased naturally"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k9-02",
@@ -361,50 +369,50 @@
     "options": [
      {
       "id": "a",
-      "text": "네, 그렇게 진행하시죠. 세부 조건은 다음 주 월요일 오전에 다시 만나서 협의하면 되겠습니다.",
-      "reveals": "A concrete next step with a date shows you read the reply as an agreement to go on."
-     },
-     {
-      "id": "b",
-      "text": "내부적으로 검토해 보겠습니다. 다만 이번 분기 예산은 이미 확정되어서요.",
-      "reveals": "Weighing the 'however' sentence more than the first sentence shows attention to where the real message sits."
-     },
-     {
-      "id": "c",
-      "text": "좋은 제안 감사합니다. 한번 생각해 보겠습니다.",
-      "reveals": "Treating thanks plus 'I will think' as unclear shows you separate politeness from commitment."
-     },
-     {
-      "id": "d",
       "text": "다음 분기 예산을 짤 때 다시 말씀해 주시면 적극 검토하겠습니다.",
       "reveals": "Noticing that the offer is moved to a later date shows you read what is deferred."
      },
      {
+      "id": "b",
+      "text": "좋은 제안 감사합니다. 한번 생각해 보겠습니다.",
+      "reveals": "Treating thanks plus 'I will think' as unclear shows you separate politeness from commitment."
+     },
+     {
+      "id": "c",
+      "text": "글쎄요, 이번에는 어려울 것 같습니다. 양해 부탁드립니다.",
+      "reveals": "Hearing 어려울 것 같다 plus a request for understanding as a refusal shows you read hedges as evidence."
+     },
+     {
+      "id": "d",
+      "text": "네, 그렇게 진행하시죠. 다음 주 월요일 오전에 세부 조건을 협의하겠습니다.",
+      "reveals": "A concrete next step with a date shows you read the reply as an agreement to go on."
+     },
+     {
       "id": "e",
-      "text": "글쎄요, 어려울 것 같기는 한데… 일단 알겠습니다.",
-      "reveals": "Hearing 어려울 것 같다 as a doubt rather than a yes shows you read hedges as evidence."
+      "text": "내부적으로 검토해 보겠습니다. 다만 이번 분기 예산은 이미 확정되어서요.",
+      "reveals": "Weighing the 'however' sentence more than the first sentence shows attention to where the real message sits."
      }
     ],
     "correct": [
-     "b",
-     "d",
+     "a",
+     "c",
      "e"
     ],
     "acceptable": [
      {
       "ids": [
+       "a",
        "b",
        "c",
-       "d",
        "e"
       ],
       "reason": "한번 생각해 보겠습니다 with no reason, date or next step is often a soft no as well, so counting it is a reasonable reading, though it is less certain than the others."
      }
     ],
-    "explain": "Reply 1 (a) names a next meeting, so it is an agreement. Replies b, d and e each point away from a yes: a closed budget, a later quarter, and 'it seems difficult'. Reply c is thanks plus a promise to think with no date, which is genuinely unclear and often a soft no.",
+    "explain": "The reply that names a next meeting is an agreement. The replies with a closed budget, a later quarter, and 'it seems difficult' each point away from a yes. The thanks-plus-'I will think' reply has no date or step, which is genuinely unclear and often a soft no.",
     "hints": [
      "For each reply, look for a concrete next step (a date, a meeting, a decision). Which replies have none?",
-     "Find words that limit the first positive sentence: 다만, 이미, 어려울 것 같다, 다음 분기. What do they take away?"
+     "Which replies leave the original request open, and which close it? Look at what each reply takes away or postpones."
     ]
    },
    {
@@ -493,11 +501,11 @@
    }
   ],
   "alternatives": [
-   "Counting reply c as a refusal is reasonable, but it is less certain than the others; an answer that calls it 'unclear' and plans a follow-up is equally good.",
-   "Reading reply d as hopeful ('ask again later') is valid if the student also sees it gives nothing for this year."
+   "Counting the thanks-and-think reply as a refusal is reasonable, but it is less certain than the others; an answer that calls it 'unclear' and plans a follow-up is equally good.",
+   "Reading the later-quarter reply as hopeful ('ask again later') is valid if the student also sees it gives nothing for this year."
   ],
   "hardCases": [
-   "Reply e ends with 일단 알겠습니다, which could be read as 'I understand' rather than 'I agree'; the hedge before it is the stronger evidence."
+   "The 'it seems difficult' reply is softened by 글쎄요 and 양해 부탁드립니다; some may read it as a request for understanding only, but the wording leaves little hope for the discount."
   ],
   "cautions": {
    "language": "한번 생각해 보겠습니다 and 어려울 것 같다 are softeners; learners should treat them as signals, not as dictionary meanings.",
@@ -512,7 +520,8 @@
    "human": [
     "Whether the reasoning in step 2 fits the quoted phrase"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k9-04",
@@ -525,11 +534,11 @@
   "uiLang": "en",
   "format": "build-many-verify",
   "generative": true,
-  "goal": "Turn a manager's scheduling rules into number constraints, find several schedules that satisfy all of them, and report one politely.",
+  "goal": "Turn a manager's scheduling rules into number constraints, find several schedules that satisfy all of them, and work out the latest possible start.",
   "thinking": [
    "Translating sentences into constraints",
    "Finding several solutions that satisfy them together",
-   "Checking a solution against every rule"
+   "Working backwards from a deadline to the latest start"
   ],
   "differsFromPlain": "Plain practice asks the meaning of date expressions. Here several rules interact and more than one schedule works, so you must test each rule against each plan.",
   "prerequisites": [
@@ -548,27 +557,27 @@
     "options": [
      {
       "id": "a",
+      "text": "16일",
+      "reveals": "Adding one extra day shows 이상 ('or more') was taken as 'more than'."
+     },
+     {
+      "id": "b",
       "text": "14일",
       "reveals": "Reading 이틀 이상 뒤 as just the next day shows the 'two days' part was not counted."
      },
      {
-      "id": "b",
+      "id": "c",
       "text": "15일",
       "reveals": "Counting two full days after the 13th shows 이틀 이상 뒤 was read as written."
-     },
-     {
-      "id": "c",
-      "text": "16일",
-      "reveals": "Adding one extra day shows 이상 ('or more') was taken as 'more than'."
      }
     ],
     "correct": [
-     "b"
+     "c"
     ],
     "explain": "이틀 이상 뒤 means two or more days later: 13 + 2 = 15. So the earliest is the 15th.",
     "hints": [
      "Find the part of sentence ② that says how much later the review ends.",
-     "Count forward from the 13th by that many days and check that 'or more' allows your day."
+     "Check your answer by counting the days between the 13th and your day: does the gap fit '이틀 이상'?"
     ]
    },
    {
@@ -656,7 +665,7 @@
       "b": 16
      }
     ],
-    "explain": "Many schedules work, for example 12 / 14 / 15 or 14 / 18 / 19. The latest possible draft day is the 16th (d=16, r=18, b=19), because the review needs two days and 부장님 needs one more day before the 19th.",
+    "explain": "Many schedules work, for example 12 / 14 / 15 or 14 / 18 / 19. Next, look at the extreme case: how late can the draft day move?",
     "hints": [
      "Write each rule as one comparison between two numbers before you try any values.",
      "Fix the draft day first, then choose the review day, and only then the 부장님 day.",
@@ -665,65 +674,91 @@
     "because": {
      "id": "s2b",
      "kind": "write",
-     "prompt": "Pick ONE of your schedules and report it to 팀장 in Korean, politely, naming the three days.",
-     "placeholder": "예: ...",
-     "minChars": 20,
+     "prompt": "What is the latest day the draft (d) can be finished so that all three rules can still be kept? Give the day, and show how you know by naming the review day (r) and the 부장님 day (b) it leads to. You may write in English or Korean.",
+     "hints": [
+      "Work backwards: begin with the last rule (the 부장님 deadline) and move to the day before it, then back through the next rule.",
+      "Name every day on the way (b, then r, then d) and say which rule you used for each step."
+     ],
+     "placeholder": "Write your answer and your reasoning.",
+     "minChars": 30,
      "checks": [
       {
        "id": "w1",
-       "label": "formal or polite ending",
+       "label": "gives the latest draft day as a number",
        "mode": "any",
        "patterns": [
-        "니다|니까|세요|까요|십시오|어요|아요|해요"
+        "(?<!\\d)16(?!\\d)",
+        "sixteen"
        ]
       },
       {
        "id": "w2",
-       "label": "mentions the draft, the review and 부장님",
-       "mode": "all",
+       "label": "gives the review day it leads to",
+       "mode": "any",
        "patterns": [
-        "초안",
-        "검토",
-        "부장님"
+        "(?<!\\d)18(?!\\d)",
+        "eighteen"
        ]
       },
       {
        "id": "w3",
-       "label": "gives at least three days (N일)",
+       "label": "gives the 부장님 day it leads to",
        "mode": "any",
        "patterns": [
-        "\\d+\\s*일[^\\d]*\\d+\\s*일[^\\d]*\\d+\\s*일"
+        "(?<!\\d)19(?!\\d)",
+        "nineteen"
+       ]
+      },
+      {
+       "id": "w4",
+       "label": "gives a reason (because / so / after ...)",
+       "mode": "any",
+       "patterns": [
+        "because",
+        "since",
+        "\\bso\\b",
+        "therefore",
+        "\\bthen\\b",
+        "\\bafter\\b",
+        "\\bbefore\\b",
+        "plus",
+        "\\+",
+        "->",
+        "→",
+        "라서",
+        "므로",
+        "니까",
+        "때문",
+        "그러므로",
+        "그래서",
+        "이틀",
+        "하루"
        ]
       }
      ],
      "selfAssess": [
-      "Do the three days I report match one schedule I built?",
-      "Does it sound like a report to a superior?"
+      "Did I go backwards from 부장님's deadline instead of guessing?",
+      "Can I say which rule justifies each step from b to r to d?"
      ],
      "modelAnswers": [
       {
-       "text": "팀장님, 초안은 12일, 팀원 검토는 14일, 부장님 확인은 15일로 잡았습니다. 부장님 출장 전에 여유가 있습니다."
+       "text": "The draft can be finished on the 16th at the latest. 부장님 must check by the 19th, so the review must end by the 18th (the day before), and the review ends two days after the draft, so the draft is done on the 16th."
       },
       {
-       "text": "팀장님, 일정을 정리했습니다. 초안 완료 13일, 팀원 검토 종료 15일, 부장님 확인은 17일에 받겠습니다.",
-       "note": "Another valid schedule, different wording."
+       "text": "초안은 16일이 마지막입니다. 부장님 확인이 19일까지라서 검토는 18일에 끝나야 하고, 검토는 초안보다 이틀 뒤에 끝나므로 초안은 16일입니다."
       }
      ],
      "badAnswers": [
       {
-       "text": "12일, 14일, 15일.",
-       "why": "No sentence, no polite ending, and the steps are not named."
+       "text": "The 19th, because that is the last day before the trip.",
+       "why": "Gives the 부장님 deadline, not the latest draft day."
       },
       {
-       "text": "초안은 12일, 검토는 14일입니다.",
-       "why": "Leaves out 부장님 and the third day."
+       "text": "I think the draft can be finished on the 16th.",
+       "why": "Right number but no days worked backwards and no reason."
       }
      ],
-     "humanReview": "Whether the reported dates match the student's own schedule and fit the rules, and the tone, need a person.",
-     "hints": [
-      "Use the pattern 'X은 12일, Y은 14일, Z은 15일' for the three steps.",
-      "End with a formal ending such as -ㅂ니다 or ask for confirmation."
-     ]
+     "humanReview": "A person has to judge whether the backward reasoning is correct and clearly stated; the checks only look for the three days and a reason word."
     }
    }
   ],
@@ -735,10 +770,10 @@
     "none": "Dates unrelated to the rules."
    },
    {
-    "criterion": "Reporting to a superior",
-    "full": "Polite sentence naming all three steps with days.",
-    "partial": "Lists days without a sentence or a step name.",
-    "none": "No report."
+    "criterion": "Finding the extreme case",
+    "full": "States the latest draft day and works back through ③ and ② to reach it.",
+    "partial": "States the day without the reasoning.",
+    "none": "Gives no day, or a day that breaks a rule."
    }
   ],
   "alternatives": [
@@ -755,12 +790,13 @@
   "autoVsHuman": {
    "auto": [
     "Every built schedule against the three rules",
-    "Presence of the three step names and day numbers in the report"
+    "Presence of the three days and a reason word in the explanation"
    ],
    "human": [
-    "Tone and clarity of the report"
+    "Whether the backward reasoning is correct and clear"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k9-05",
@@ -804,17 +840,17 @@
        },
        {
         "id": "b",
-        "text": "It is a wish for this week, but I cannot yet tell how firm it is.",
-        "reveals": "Holding the reading open shows you weigh both the softness and the stated time frame."
+        "text": "It is a strict order: the report must be on 부장님's desk by Friday midnight.",
+        "reveals": "Treating the soft wording as a strict order adds details the message does not give."
        },
        {
         "id": "c",
-        "text": "It is a strict order: the report must be on 부장님's desk by Friday midnight.",
-        "reveals": "Treating the soft wording as a strict order adds details the message does not give."
+        "text": "It is a wish for this week, but I cannot yet tell how firm it is.",
+        "reveals": "Holding the reading open shows you weigh both the softness and the stated time frame."
        }
       ],
       "reasonable": [
-       "b"
+       "c"
       ],
       "after": "The wording is soft, but a time frame is named. Without more evidence the firmness is uncertain, so asking or looking for more information is sensible."
      },
@@ -824,13 +860,13 @@
       "options": [
        {
         "id": "a",
-        "text": "Treat the deadline as probably firm, but check it before relying on it.",
-        "reveals": "Raising your estimate while keeping a check shows you weigh second-hand information."
+        "text": "Ignore it, because only 부장님's own words count.",
+        "reveals": "Throwing out relevant experience shows you wait for a perfect source."
        },
        {
         "id": "b",
-        "text": "Ignore it, because only 부장님's own words count.",
-        "reveals": "Throwing out relevant experience shows you wait for a perfect source."
+        "text": "Treat the deadline as probably firm, but check it before relying on it.",
+        "reveals": "Raising your estimate while keeping a check shows you weigh second-hand information."
        },
        {
         "id": "c",
@@ -839,7 +875,7 @@
        }
       ],
       "reasonable": [
-       "a"
+       "b"
       ],
       "after": "정 과장 knows 부장님's habits, so the deadline is more likely firm; but the details (Friday morning) come from her, not from 부장님, so it is wise to verify."
      },
@@ -849,22 +885,22 @@
       "options": [
        {
         "id": "a",
+        "text": "Send it by Thursday before leaving, and confirm that in a short message.",
+        "reveals": "Combining the calendar evidence with the reply shows evidence from all three pieces was used."
+       },
+       {
+        "id": "b",
         "text": "Send it on Friday at 8 a.m., just before the meeting.",
         "reveals": "This ignores that 부장님 starts reviewing at 8:30 and may want time to read."
        },
        {
-        "id": "b",
-        "text": "Wait for another instruction, because 부장님 did not say 'yes' clearly.",
-        "reveals": "Treating 그래 주면 고맙지요 as unclear shows hesitation about indirect agreement."
-       },
-       {
         "id": "c",
-        "text": "Send it by Thursday before leaving, and confirm that in a short message.",
-        "reveals": "Combining the calendar evidence with the reply shows evidence from all three pieces was used."
+        "text": "Do nothing yet: 그래 주면 고맙지요 sounds like mere politeness, not a decision.",
+        "reveals": "Treating 그래 주면 고맙지요 as only polite shows hesitation about indirect agreement; here it answers your Thursday proposal."
        }
       ],
       "reasonable": [
-       "c"
+       "a"
       ],
       "after": "The calendar shows when 부장님 reads it, and 그래 주면 고맙지요 is an agreement. Thursday before leaving is safe, and a short confirmation closes the loop."
      }
@@ -892,10 +928,11 @@
      },
      {
       "id": "w2",
-      "label": "names a day or time",
+      "label": "names Thursday (or earlier) as the sending day",
       "mode": "any",
       "patterns": [
-       "목요일|금요일|퇴근|\\d+\\s*시|오전|오후"
+       "목요일",
+       "수요일"
       ]
      },
      {
@@ -903,7 +940,17 @@
       "label": "says it will be sent",
       "mode": "any",
       "patterns": [
-       "보내|드리|제출|전달|공유"
+       "보내",
+       "드리겠",
+       "드릴",
+       "송부",
+       "발송",
+       "전송",
+       "올리",
+       "제출",
+       "전달",
+       "공유",
+       "메일"
       ]
      }
     ],
@@ -918,6 +965,10 @@
      {
       "text": "부장님, 목요일 오후 6시 전에 거래처 보고서를 전달드리겠습니다. 확인 부탁드립니다.",
       "note": "Gives a clock time and asks for review."
+     },
+     {
+      "text": "부장님, 목요일 퇴근 전에 메일로 송부하겠습니다.",
+      "note": "Other verbs for sending are fine."
      }
     ],
     "badAnswers": [
@@ -928,6 +979,10 @@
      {
       "text": "알겠습니다.",
       "why": "Does not say when it will be sent."
+     },
+     {
+      "text": "부장님, 금요일 오전 8시에 보내 드리겠습니다.",
+      "why": "Too late: 부장님 starts reading at 8:30 on Friday, so the plan ignores the calendar."
      }
     ],
     "humanReview": "Whether the chosen time is realistic and the register natural needs a person.",
@@ -971,7 +1026,8 @@
    "human": [
     "Whether the reflection and message fit the evidence"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k9-06",
@@ -1007,33 +1063,33 @@
     "options": [
      {
       "id": "a",
+      "text": "Switch the pronoun, the endings and the bare name 민수 to polite forms",
+      "reveals": "Spotting the pronoun, endings and name together shows you checked the whole sentence."
+     },
+     {
+      "id": "b",
       "text": "Delete the reason, because explaining why you need leave is rude",
       "reveals": "The idea that a reason should be hidden shows a rule being applied without checking whether the reason helps the listener."
      },
      {
-      "id": "b",
+      "id": "c",
       "text": "Say it as a request for approval instead of announcing the decision",
       "reveals": "Seeing that 쓸게 announces something that needs approval shows you compared the act, not only the endings."
      },
      {
-      "id": "c",
-      "text": "Add several sentences of apology so that it sounds serious enough",
-      "reveals": "Piling on apology treats length as respect, which makes the message harder to read."
-     },
-     {
       "id": "d",
-      "text": "Replace casual forms (나, 쓸게, 물어봐) and the bare name with polite ones",
-      "reveals": "Spotting the pronoun, endings and name together shows you checked the whole sentence."
+      "text": "Send it to 민수 and let him pass it on, since he covers the work",
+      "reveals": "Redirecting the message shows a mix-up between who approves and who covers."
      },
      {
       "id": "e",
-      "text": "Ask 민수 instead of 부장님, since he covers the work",
-      "reveals": "Redirecting the message shows a mix-up between who approves and who covers."
+      "text": "Add several sentences of apology so that it sounds serious enough",
+      "reveals": "Piling on apology treats length as respect, which makes the message harder to read."
      }
     ],
     "correct": [
-     "b",
-     "d"
+     "a",
+     "c"
     ],
     "explain": "Two things change: the act (an announcement becomes a request for approval) and the forms (나, 쓸게, 물어봐 and the bare name 민수 are casual). The reason and the handover should stay: they help 부장님 decide.",
     "hints": [
@@ -1058,10 +1114,10 @@
      },
      {
       "id": "w2",
-      "label": "asks for approval",
+      "label": "asks for approval or politely states the wish",
       "mode": "any",
       "patterns": [
-       "될까요|괜찮을까요|가능할까요|해도\\s*되|써도|부탁드|허락|양해|여쭙|어떠실까요|승인"
+       "될까요|괜찮을까요|가능할까요|해도\\s*되|써도|부탁드|허락|양해|여쭙|어떠실까요|승인|쓰고 싶|사용하고자|쓰려고"
       ]
      },
      {
@@ -1074,10 +1130,30 @@
      },
      {
       "id": "w4",
-      "label": "mentions the handover",
+      "label": "keeps the reason (appointment / hospital)",
       "mode": "any",
       "patterns": [
-       "민수|대신|급한|업무|처리|문의"
+       "병원|예약|진료|검진|치료"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "names 민수 with 씨 or 님",
+      "mode": "any",
+      "patterns": [
+       "민수\\s*(씨|님)"
+      ]
+     },
+     {
+      "id": "w6",
+      "label": "no casual 한테 and no command to a superior",
+      "mode": "none",
+      "patterns": [
+       "물어봐",
+       "물어보세요",
+       "민수한테",
+       "민수 씨한테",
+       "민수에게 물어"
       ]
      }
     ],
@@ -1093,6 +1169,9 @@
      {
       "text": "부장님, 내일 병원 예약이 있어 반차를 사용하고자 합니다. 허락해 주시면 감사하겠습니다. 급한 업무는 민수 씨에게 물어보시면 됩니다.",
       "note": "More formal, same elements."
+     },
+     {
+      "text": "부장님, 내일 병원 예약이 있어서 반차를 쓰고 싶습니다. 급한 일은 민수 씨께 여쭤보시면 됩니다."
      }
     ],
     "badAnswers": [
@@ -1103,6 +1182,10 @@
      {
       "text": "부장님, 내일 반차를 쓰겠습니다.",
       "why": "Polite but still an announcement, and the reason and handover are lost."
+     },
+     {
+      "text": "부장님, 내일 반차 써도 될까요? 급한 건 민수한테 물어보세요.",
+      "why": "Asks politely but drops the reason, uses the casual 한테 and gives a command to a director."
      }
     ],
     "humanReview": "Whether the request sounds natural and appropriately humble needs a fluent reader.",
@@ -1146,7 +1229,8 @@
    "human": [
     "Naturalness of the rewrite"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k9-07",
@@ -1180,17 +1264,17 @@
     "prompt": "Which line of the classmate's draft makes the refusal sound too blunt?",
     "lines": [
      "부장님, 말씀 주셔서 감사합니다.",
-     "이번 주말은 일이 있어서 안 됩니다.",
-     "대신 금요일 퇴근 후 8시까지 남아서 먼저 정리해 두겠습니다.",
-     "죄송합니다."
+     "이번 주말은 가족 행사가 있어서 어려울 것 같습니다.",
+     "그래서 주말에는 절대 나갈 수 없습니다.",
+     "대신 금요일 퇴근 후 8시까지 남아서 먼저 정리해 두겠습니다."
     ],
     "wrong": [
-     1
+     2
     ],
-    "explain": "Line 2 is the blunt one: 안 됩니다 is a flat 'not allowed' with no softener, even though the line is formal. Lines 1, 3 and 4 thank, offer something else and apologise, which is what makes a refusal acceptable.",
+    "explain": "Line 3 is the blunt one: 절대 ... 수 없습니다 is an absolute 'cannot' that leaves 부장님 no room to answer, even though the ending is formal. Line 2 already refuses softly with 어려울 것 같습니다 and a reason, line 1 thanks, and line 4 offers an alternative.",
     "hints": [
-     "Mark which lines refuse and which lines offer or thank.",
-     "Compare the refusing line with a softer way of saying the same thing, like using 어렵습니다 or 것 같습니다."
+     "Mark which lines refuse and which lines thank or offer.",
+     "Compare how much room each refusing line leaves for 부장님 to answer."
     ]
    },
    {
@@ -1210,10 +1294,10 @@
      },
      {
       "id": "w2",
-      "label": "softens the refusal (apology or 어렵다)",
+      "label": "softens the refusal (apology, regret or 어렵다)",
       "mode": "any",
       "patterns": [
-       "죄송|아쉽|송구|안타깝|어렵|힘들"
+       "죄송|아쉽|송구|안타깝|어렵|어려[우울워운]|힘들|힘든"
       ]
      },
      {
@@ -1221,15 +1305,24 @@
       "label": "offers an alternative",
       "mode": "any",
       "patterns": [
-       "대신|금요일|월요일|평일|미리|먼저|퇴근\\s*전|\\d+\\s*시"
+       "대신",
+       "(금요일|월요일|평일|미리|먼저)[^.?!]*(하겠|해 두|해두|정리|드리겠|드릴|나오겠|출근)"
       ]
      },
      {
       "id": "w4",
+      "label": "gives a short reason",
+      "mode": "any",
+      "patterns": [
+       "행사|일정|약속|가족|선약|결혼|모임|사정|일이 있"
+      ]
+     },
+     {
+      "id": "w5",
       "label": "no blunt refusal",
       "mode": "none",
       "patterns": [
-       "안\\s*됩니다|안\\s*돼요|싫|못\\s*하겠|안\\s*갑니다|안\\s*갈|안\\s*가요"
+       "안\\s*됩니다|안\\s*돼요|싫|못\\s*하겠|안\\s*갑니다|안\\s*갈|안\\s*가요|절대"
       ]
      }
     ],
@@ -1245,6 +1338,9 @@
      {
       "text": "부장님, 도움이 필요하시다니 말씀 주셔서 감사합니다. 아쉽게도 주말에는 가족 행사가 있어서 어렵습니다. 금요일 퇴근 전까지 가능한 부분을 정리해 드려도 될까요?",
       "note": "Asks permission for the alternative."
+     },
+     {
+      "text": "부장님, 말씀 주셔서 감사합니다. 이번 주말에는 가족 행사가 있어서 나오기 어려울 것 같습니다. 대신 금요일 퇴근 후에 남아서 먼저 정리해 두겠습니다."
      }
     ],
     "badAnswers": [
@@ -1255,6 +1351,10 @@
      {
       "text": "네, 알겠습니다. 주말에 나가겠습니다.",
       "why": "Accepts, so it is not a refusal."
+     },
+     {
+      "text": "죄송합니다. 금요일은 어렵습니다.",
+      "why": "Softens the refusal, but gives no reason and offers nothing (it even names the alternative day as unavailable)."
      }
     ],
     "humanReview": "Whether the refusal is clear but not rude, and the reason is acceptable, needs a person.",
@@ -1298,7 +1398,8 @@
    "human": [
     "Clarity and tone of the refusal"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k9-08",
@@ -1330,42 +1431,42 @@
     "id": "s1",
     "kind": "choose",
     "multi": true,
-    "prompt": "Which action items could the named person start working on today without asking anyone anything? Select all that apply.",
+    "prompt": "Which action items are complete, so that the person named could plan and do the work without asking anyone about who, what or when? Select all that apply.",
     "options": [
      {
       "id": "a",
-      "text": "이 과장이 21일 오전까지 B관 예약 가능 여부를 확인한다.",
-      "reveals": "Seeing a person, a task and a time together shows you check for all three parts of an action item."
-     },
-     {
-      "id": "b",
-      "text": "행사 장소는 A관과 B관 중에서 더 넓은 쪽으로 정한다.",
-      "reveals": "Counting this as ready shows the missing owner and date were not noticed."
-     },
-     {
-      "id": "c",
       "text": "다음 회의 전에 예산안을 공유한다.",
       "reveals": "Counting this as ready shows a vague 'before the next meeting' was treated as a date."
      },
      {
+      "id": "b",
+      "text": "이 과장이 21일 오전까지 B관 예약 가능 여부를 확인한다.",
+      "reveals": "Seeing a person, a task and a time together shows you check for all three parts of an action item."
+     },
+     {
+      "id": "c",
+      "text": "행사 장소는 A관과 B관 중에서 더 넓은 쪽으로 정한다.",
+      "reveals": "Counting this as ready shows the missing owner and date were not noticed."
+     },
+     {
       "id": "d",
-      "text": "최 사원이 지난달 행사에 참석한 고객 명단을 다시 정리한다.",
-      "reveals": "A named person is not enough; the missing due date and unclear scope are what keep this from being ready."
+      "text": "박 대리가 22일까지 설문지 초안을 만든다.",
+      "reveals": "Checking person, task and date in one sentence shows you test each item the same way."
      },
      {
       "id": "e",
-      "text": "박 대리가 22일까지 설문지 초안을 만든다.",
-      "reveals": "Checking person, task and date in one sentence shows you test each item the same way."
+      "text": "최 사원이 지난달 행사에 참석한 고객 명단을 다시 정리한다.",
+      "reveals": "A named person is not enough; the missing due date and unclear scope are what keep this from being ready."
      }
     ],
     "correct": [
-     "a",
-     "e"
+     "b",
+     "d"
     ],
-    "explain": "Items 1 and 5 each have a person, a task and a date. Item 2 has no owner and no date, item 3 has no owner and only 'before the next meeting' (no date for that meeting), and item 4 has an owner but no due date.",
+    "explain": "The items with a named person, a clear task and a due date can be planned and started at once: 이 과장's check (by the morning of the 21st) and 박 대리's questionnaire draft (by the 22nd). The venue item has no owner and no date, the budget item has no owner and only 'before the next meeting' (not a date), and the customer-list item has an owner but no due date.",
     "hints": [
-     "For each item, mark three things: who, what, by when.",
-     "If one of the three is missing or only a vague phrase, could the person still start without asking?"
+     "Read each item as the person who has to act on it. Write down the first question you would ask.",
+     "Compare the five items: which ones leave no question for the person who has to act?"
     ]
    },
    {
@@ -1380,7 +1481,7 @@
       "label": "polite question ending",
       "mode": "any",
       "patterns": [
-       "까요|니까|나요|는지|을지|ㄹ지|십시오|주세요|주시면|여쭤"
+       "까요|니까|나요|는지|을지|ㄹ지|십시오|주세요|주시면|여쭤|시겠어요|인가요|가요|ㅂ니까|주실 수|인지요"
       ]
      },
      {
@@ -1396,7 +1497,7 @@
       "label": "names an incomplete item",
       "mode": "any",
       "patterns": [
-       "장소|A관|B관|예산|명단|회의"
+       "장소|예산|명단|고객"
       ]
      }
     ],
@@ -1410,7 +1511,13 @@
      },
      {
       "text": "회의록 확인했습니다. 예산안은 누가 공유하고, 다음 회의가 언제인지 알려 주시면 감사하겠습니다.",
-      "note": "Asks for two missing facts about item 3."
+      "note": "Asks for two missing facts about the budget item."
+     },
+     {
+      "text": "예산안은 누가 담당이고 기한은 언제인가요?"
+     },
+     {
+      "text": "예산안은 담당자가 누구인지 알려 주시겠어요?"
      }
     ],
     "badAnswers": [
@@ -1421,6 +1528,10 @@
      {
       "text": "알겠습니다.",
       "why": "Does not ask anything."
+     },
+     {
+      "text": "B관 예약은 언제까지 확인하면 될까요?",
+      "why": "A polite question, but about an item that is already complete."
      }
     ],
     "humanReview": "Whether the question is precise and polite and addresses the right person needs a person.",
@@ -1445,10 +1556,10 @@
    }
   ],
   "alternatives": [
-   "Asking for the date of the next meeting for item 3 is as valid as asking who will share the budget."
+   "Asking for the date of the next meeting for the budget item is as valid as asking who will share the budget."
   ],
   "hardCases": [
-   "Item 4 has an owner and a clear verb; some will say it is ready. The task treats the missing due date and the unclear scope ('다시') as enough to ask."
+   "The customer-list item has an owner and a clear verb; some will say it is ready. The task treats the missing due date and the unclear scope ('다시') as enough to ask."
   ],
   "cautions": {
    "language": "Action items in Korean notes often end in -한다 / -함; the task uses plain form like real minutes.",
@@ -1463,7 +1574,8 @@
    "human": [
     "Precision of the question"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k9-09",
@@ -1631,23 +1743,23 @@
   ],
   "minutes": 16,
   "curriculum": null,
-  "material": "일정 메모: 다음 주에 1시간짜리 팀 회의를 잡아야 합니다. 요일은 월=1, 화=2, 수=3, 목=4, 금=5로 쓰고, 시작 시각은 24시간제 시(예: 오후 1시 = 13)로 씁니다.\n- 부장님은 화요일과 목요일에 하루 종일 출장입니다.\n- 회의는 오전 9시 이후에 시작해서 오후 6시(18시)까지는 끝나야 합니다.\n- 점심시간(12시~13시)에는 회의를 시작하지 않습니다.\n- 박 대리는 수요일 오후(12시 이후)에 시작하는 회의에는 참석할 수 없습니다.\n- 최 사원은 금요일 오후 2시(14시)부터 외근이라서, 금요일 회의는 14시 전에 끝나야 합니다.\n- 팀장님은 월요일 오전에는 참석할 수 없습니다.",
+  "material": "일정 메모: 다음 주에 1시간짜리 팀 회의를 잡아야 합니다. 요일은 월=1, 화=2, 수=3, 목=4, 금=5로 쓰고, 시작 시각은 24시간제 시(예: 오후 1시 = 13)로 씁니다.\n- 부장님은 화요일과 목요일에 하루 종일 출장입니다.\n- 회의는 오전 9시부터 시작할 수 있고, 오후 6시(18시)까지는 끝나야 합니다.\n- 점심시간(12시~13시)에는 회의를 시작하지 않습니다.\n- 박 대리는 수요일 오후(12시 이후)에 시작하는 회의에는 참석할 수 없습니다.\n- 최 사원은 금요일 오후 2시(14시)부터 외근이라서, 금요일 회의는 14시까지는 끝나야 합니다.\n- 팀장님은 월요일 오전에는 참석할 수 없습니다.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
     "scaffold": true,
-    "prompt": "A Friday meeting lasts 1 hour and must end before 14시 because of 최 사원. What is the latest start time (24-hour)?",
+    "prompt": "A Friday meeting lasts 1 hour and must be over by 14시 because of 최 사원. What is the latest start time (24-hour)?",
     "options": [
      {
       "id": "a",
-      "text": "14시",
-      "reveals": "Starting at 14시 mixes up the time the meeting must end with the time it starts."
+      "text": "13시",
+      "reveals": "Subtracting the 1-hour length from the end time shows the duration was used."
      },
      {
       "id": "b",
-      "text": "13시",
-      "reveals": "Subtracting the 1-hour length from the end time shows the duration was used."
+      "text": "14시",
+      "reveals": "Starting at 14시 mixes up the time the meeting must end with the time it starts."
      },
      {
       "id": "c",
@@ -1656,12 +1768,12 @@
      }
     ],
     "correct": [
-     "b"
+     "a"
     ],
     "explain": "The meeting is 1 hour long and must end by 14시, so it must start by 13시.",
     "hints": [
      "Find the sentence about Friday and the time 14시.",
-     "A 1-hour meeting that must end by 14시 starts one hour earlier."
+     "Test the options: for each start time, when would a 1-hour meeting be over?"
     ]
    },
    {
@@ -1779,7 +1891,7 @@
        "label": "formal or polite ending",
        "mode": "any",
        "patterns": [
-        "니다|니까|세요|까요|십시오"
+        "니다|니까|세요|까요|십시오|가요|지요"
        ]
       },
       {
@@ -1787,7 +1899,7 @@
        "label": "asks or proposes politely",
        "mode": "any",
        "patterns": [
-        "가능|괜찮|어떠|어떨|부탁드|제안|여쭙|될까요"
+        "가능|괜찮|어떠|어떨|어떻|부탁드|제안|여쭙|될까요"
        ]
       },
       {
@@ -1805,6 +1917,17 @@
        "patterns": [
         "\\d+\\s*시|오전|오후"
        ]
+      },
+      {
+       "id": "w5",
+       "label": "does not name a slot the memo rules out",
+       "mode": "none",
+       "patterns": [
+        "(화|목)요일",
+        "월요일\\s*(오전|9\\s*시|10\\s*시|11\\s*시)",
+        "수요일\\s*(오후|1[2-8]\\s*시)",
+        "금요일\\s*(오후\\s*(12|2|3|4|5|6)\\s*시|1[24-8]\\s*시)"
+       ]
       }
      ],
      "selfAssess": [
@@ -1818,6 +1941,9 @@
       {
        "text": "팀장님, 금요일 오전 10시에 회의를 제안드립니다. 괜찮으신지 확인 부탁드립니다.",
        "note": "Different slot, formal proposal."
+      },
+      {
+       "text": "팀장님, 수요일 오전 10시에 회의가 가능하신가요?"
       }
      ],
      "badAnswers": [
@@ -1828,6 +1954,10 @@
       {
        "text": "팀장님, 회의 시간을 정하고 싶습니다. 가능하신 때 알려 주세요.",
        "why": "Does not propose a day or time."
+      },
+      {
+       "text": "팀장님, 화요일 오전 10시에 회의가 가능하신가요?",
+       "why": "Polite, but 부장님 is away on Tuesday."
       }
      ],
      "humanReview": "Whether the proposed slot really works for everyone and the tone is right needs a person.",
@@ -1872,6 +2002,7 @@
    "human": [
     "Whether the message is natural and the slot sensible"
    ]
-  }
+  },
+  "status": "draft"
  }
 ]

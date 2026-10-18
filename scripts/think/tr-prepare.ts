@@ -6,14 +6,11 @@
 import fs from "node:fs";
 import path from "node:path";
 import { FILE_META, TASK_LOADERS } from "../../lib/think/data/files";
-import { flatten } from "../../lib/think/flat";
+import { flatten, needsTranslation } from "../../lib/think/flat";
 import { baseLang } from "../../lib/think/lang";
 import type { Subject } from "../../lib/think/types";
 
-const needs = (subject: Subject, s: string): boolean => {
-  if (subject === "korean") return (s.match(/[A-Za-z]{3,}/g) ?? []).length >= 2; // English instruction text; pure Korean is the learning target
-  return /[가-힣]/.test(s); // math / english: Korean instruction text; English target text and formulas stay
-};
+const needs = needsTranslation;
 
 async function main() {
   const out = process.argv[2];

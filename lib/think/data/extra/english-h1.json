@@ -57,25 +57,25 @@
      },
      {
       "id": "b",
+      "text": "Grades of students with phones and without, over the same year"
+     },
+     {
+      "id": "c",
       "text": "A poll asking students if they think phones hurt grades",
       "reveals": "사람들의 의견은 실제 성적 변화와 다를 수 있어요."
      },
      {
-      "id": "c",
+      "id": "d",
       "text": "Stories from teachers about phones being used in class",
       "reveals": "교실에서의 사용 모습은 성적과의 관계를 직접 보여 주지 않아요."
-     },
-     {
-      "id": "d",
-      "text": "Grades of students with phones and without, over the same year"
      }
     ],
     "correct": [
-     "d"
+     "b"
     ],
     "explain": "휴대폰이 있는 학생과 없는 학생을 같은 기간에 비교하면, '휴대폰 때문에'라는 설명이 다른 원인보다 나은지 따져 볼 수 있어요. 사례를 더 모으거나 의견을 묻는 것은 주장을 강하게 느끼게 할 뿐이에요.",
     "hints": [
-     "각 자료로 '휴대폰이 없는 경우'와 비교할 수 있는지 확인해 보세요.",
+     "각 보기의 자료를 모았을 때, 3번 줄이 틀렸더라도 같은 자료가 나올 수 있는지 생각해 보세요.",
      "같은 사례가 몇 개 더 있다고 해서 다른 원인이 사라지는지 생각해 보세요."
     ]
    },
@@ -107,7 +107,11 @@
        "\\bdata\\b",
        "\\bsurvey\\b",
        "\\bstudy\\b",
-       "\\baverage\\b"
+       "\\baverage\\b",
+       "\\bwithout\\b",
+       "\\bcontrol\\b",
+       "\\bwith and without\\b",
+       "\\bmore (?:cases|examples)\\b"
       ]
      }
     ],
@@ -123,6 +127,9 @@
      {
       "text": "One student's drop may be caused by something else, like a harder test. To say phones hurt grades, we need data from more students over time.",
       "note": "다른 원인을 직접 언급했다."
+     },
+     {
+      "text": "Mina's case does not prove that phones make all students' grades worse; we need grades of students with and without phones."
      }
     ],
     "badAnswers": [
@@ -178,7 +185,8 @@
     "신중한 표현이 자연스러운지",
     "필요한 자료가 실제로 비교가 되는지"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-h1-02",
@@ -288,6 +296,14 @@
       "patterns": [
        "\\b(?:thank you|thanks|best regards|regards|sincerely|best wishes)\\b"
       ]
+     },
+     {
+      "id": "w5",
+      "label": "빠진 정보(날짜, 금액, 기한)를 묻는 질문이 있다",
+      "mode": "any",
+      "patterns": [
+       "\\b(?:date|which\\s+day|what\\s+day|when|how\\s+much|money|cost|fee|price|amount|how\\s+soon|deadline|by\\s+when)\\b[^?]*\\?"
+      ]
      }
     ],
     "selfAssess": [
@@ -312,6 +328,10 @@
      {
       "text": "Hi Ms. Park, I will come. Thanks.",
       "why": "질문이 없어 부족한 정보를 확인하지 못했다."
+     },
+     {
+      "text": "Dear Ms. Park, Could you sing? Could you dance? Thank you.",
+      "why": "질문이 이메일의 빠진 정보(날짜, 금액)와 관계없다."
      }
     ],
     "humanReview": "질문이 실제로 빠진 정보를 묻는지, 선생님께 쓰기에 적절한 어조인지는 사람이 읽고 판단한다.",
@@ -355,7 +375,8 @@
    "human": [
     "질문의 정확성과 어조"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-h1-03",
@@ -395,16 +416,16 @@
      },
      {
       "id": "b",
-      "text": "Review B, because it gives specific problems with details",
-      "reveals": "구체적이지만 방문한 때가 내 상황과 다른지 따져 봐야 해요."
+      "text": "Review C, because it describes a visit at a similar time to mine"
      },
      {
       "id": "c",
-      "text": "Review C, because it describes a weekday afternoon visit like mine"
+      "text": "Review B, because it gives specific problems with details",
+      "reveals": "구체적이지만 방문한 때가 내 상황과 다른지 따져 봐야 해요."
      }
     ],
     "correct": [
-     "c"
+     "b"
     ],
     "explain": "내 상황(평일 오후, 조용함)과 가장 비슷한 방문 후기가 가장 쓸모 있어요. 후기 B도 구체적이지만 토요일 점심이라는 다른 상황이에요.",
     "hints": [
@@ -431,10 +452,23 @@
      },
      {
       "id": "w2",
-      "label": "가능성이나 이유를 말하는 표현이 있다",
+      "label": "가능성이나 '그대로 적용되지 않는다'는 표현이 있다",
       "mode": "any",
       "patterns": [
-       "\\b(?:because|so|may|might|could|probably|maybe|perhaps|different)\\b"
+       "\\b(?:may|might|could|probably|maybe|perhaps)\\b",
+       "\\b(?:not|n['’]t)\\b[^.?!]*\\b(?:apply|same|happen|true)\\b",
+       "\\bdifferent\\b"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "평일 오후와 비교하는 말이 있다",
+      "mode": "any",
+      "patterns": [
+       "\\b(?:tuesday|weekday|weekdays|afternoon|quiet|quieter)\\b",
+       "\\bless\\s+(?:busy|crowded)\\b",
+       "\\bnot\\s+(?:as\\s+|so\\s+)?(?:busy|crowded)\\b",
+       "\\bother\\s+time\\b"
       ]
      }
     ],
@@ -459,6 +493,10 @@
      {
       "text": "Saturday is a good day.",
       "why": "시간은 말했지만 후기 B와 연결하지 않았다."
+     },
+     {
+      "text": "Saturday is a good day, so Review B is great.",
+      "why": "후기 B의 문제와 평일 오후를 연결하지 않았다."
      }
     ],
     "humanReview": "이유가 후기 B의 구체적 내용과 연결되는지, '확정'이 아닌 가능성으로 말했는지는 사람이 읽고 판단한다.",
@@ -502,7 +540,8 @@
    "human": [
     "이유가 후기 내용과 논리적으로 이어지는지"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-h1-04",
@@ -605,10 +644,9 @@
        }
       ],
       "reasonable": [
-       "a",
-       "c"
+       "a"
       ],
-      "after": "두 번째 단서에서 어긋남을 느꼈다면 짜증을 조금 느꼈지만 마음을 풀었다고 읽을 수 있어요. 처음부터 진심이었다는 읽기도 불가능하지는 않아요."
+      "after": "두 번째 단서에서 어긋남을 느꼈다면, Mina가 조금 짜증을 느꼈지만 Tom을 받아들이고 마음을 풀었다고 읽을 수 있어요."
      }
     ],
     "reflect": "단서가 늘 때마다 해석이 바뀌었나요? 바뀌었다면 어떤 문장 때문이었는지 한 가지 말해 보세요.",
@@ -624,21 +662,21 @@
     "options": [
      {
       "id": "a",
-      "text": "'Great'는 영어에서 언제나 빈정거림이기 때문이다.",
-      "reveals": "낱말 하나가 항상 같은 뜻이라고 일반화한 생각이에요."
+      "text": "말은 긍정적인데, 늦게 왔다는 상황과 맞지 않기 때문이다."
      },
      {
       "id": "b",
-      "text": "Mina의 목소리가 컸기 때문이다.",
-      "reveals": "이 대화에는 목소리 정보가 없어요. 주어진 단서가 아닌 것을 지어낸 이유예요."
+      "text": "'Great'는 영어에서 대체로 빈정거리는 말이기 때문이다.",
+      "reveals": "낱말 하나가 항상 같은 뜻이라고 일반화한 생각이에요."
      },
      {
       "id": "c",
-      "text": "말은 긍정적인데, 늦게 왔다는 상황과 맞지 않기 때문이다."
+      "text": "Mina의 목소리가 컸기 때문이다.",
+      "reveals": "이 대화에는 목소리 정보가 없어요. 주어진 단서가 아닌 것을 지어낸 이유예요."
      }
     ],
     "correct": [
-     "c"
+     "a"
     ],
     "explain": "뜻은 낱말만이 아니라 말과 상황이 맞는지로 정해져요. 말이 좋은데 상황이 나쁘면 숨은 뜻을 의심해 볼 수 있어요.",
     "hints": [
@@ -680,7 +718,8 @@
    "human": [
     "해석 수정의 이유를 말로 설명하는 부분(성찰)"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-h1-05",
@@ -1213,7 +1252,7 @@
    {
     "id": "s1",
     "kind": "pickLine",
-    "prompt": "학생의 요약문에서 잘못된 줄은 어느 것일까요?",
+    "prompt": "학생의 요약문에서 잘못된 줄을 하나 고르세요. (잘못된 줄이 둘 이상이어도 그중 하나만 고르면 돼요.)",
     "lines": [
      "Both sources say that the Hanbit Library reopened after repairs.",
      "They disagree about the reopening date: March 1 and March 2.",
@@ -1234,7 +1273,7 @@
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "3번 줄을 바르게 고쳐 영어 1~2문장으로 쓰세요. 두 자료의 방문자 수가 어떤 관계인지 포함하세요.",
+    "prompt": "요약문에서 두 자료의 방문자 수를 비교한 줄이 틀렸다고 가정하고, 그 줄을 바르게 고쳐 영어 1~2문장으로 쓰세요. 두 자료의 방문자 수가 어떤 관계인지 포함하세요.",
     "placeholder": "",
     "minChars": 30,
     "checks": [
@@ -1251,9 +1290,15 @@
       "label": "두 자료가 어긋나지 않는다(양립한다)고 말했다",
       "mode": "any",
       "patterns": [
-       "\\b(?:agree|agrees|consistent|compatible|same)\\b",
-       "\\bnot (?:really |actually |necessarily )?(?:disagree|contradict|conflict)",
-       "\\bboth (?:can|could|may|might) be true\\b"
+       "(?<!not )(?<!not really )(?<!n['’]t )\\bagree(?:s|d)?\\b",
+       "\\bconsistent\\b",
+       "\\bcompatible\\b",
+       "\\bnot (?:really |actually |necessarily |truly )?(?:a |an )?(?:real |actual |true )?(?:disagree\\w*|contradict\\w*|conflict\\w*)",
+       "\\b(?:do|does|did)n['’]?t (?:really |actually )?(?:disagree|contradict|conflict)",
+       "\\bboth (?:can|could|may|might|are|would) (?:also )?be (?:true|right|correct)\\b",
+       "\\bcan (?:both )?be (?:true|right|correct)\\b",
+       "\\bmore than 300 (?:includes?|means|fits)\\b",
+       "\\bfits?\\b"
       ]
      }
     ],
@@ -1268,6 +1313,10 @@
      {
       "text": "Both sources agree that about 300 people came; Source B just says more than 300, which fits.",
       "note": "'agree'를 써서 양립함을 말했다."
+     },
+     {
+      "text": "Source A says about 300 and Source B says more than 300, so both can be right if the real number was 310.",
+      "note": "구체적인 수(310)로 양립 가능함을 보였다."
      }
     ],
     "badAnswers": [
@@ -1283,7 +1332,7 @@
     "humanReview": "'양립한다'는 설명이 정확한지, 숫자를 정확히 옮겼는지는 사람이 읽고 판단한다.",
     "hints": [
      "두 자료의 방문자 수 표현을 그대로 옮겨 적어 보세요.",
-     "그 두 표현이 동시에 참이 될 수 있는 경우를 하나 만들어 보세요."
+     "'about'과 'more than'이 각각 어떤 범위의 숫자를 말하는지 적어 보세요."
     ]
    },
    {
@@ -1293,23 +1342,23 @@
     "options": [
      {
       "id": "a",
-      "text": "그날 만들어진 날짜가 있는 기록(공지 등)을 찾아본다."
+      "text": "Source B는 날짜가 더 늦게 쓰였으니 따로 확인하지 않고 B를 따른다.",
+      "reveals": "글이 나중에 쓰였다는 것만으로는 날짜가 맞다고 할 수 없어요. 날짜를 직접 확인한 근거가 필요해요."
      },
      {
       "id": "b",
-      "text": "나중에 쓰인 글이 더 믿을 만하니 Source B를 따른다.",
-      "reveals": "나중에 쓰였다고 더 정확하다고 할 수 없어요. 날짜를 확인한 근거가 필요해요."
+      "text": "개점일에 만들어진 날짜 기록(공지 등)을 찾아서 확인한다."
      },
      {
       "id": "c",
-      "text": "독자가 더 많은 쪽의 글을 따른다.",
+      "text": "글을 읽는 독자가 더 많은 쪽의 글을 따른다.",
       "reveals": "읽는 사람 수가 정확성을 보장하지 않아요."
      }
     ],
     "correct": [
-     "a"
+     "b"
     ],
-    "explain": "날짜가 달라진 이유를 알려면 그날 만들어진 기록 같은 직접 근거가 필요해요. 글을 쓴 때나 독자 수는 정확성과 직접 관련이 없어요.",
+    "explain": "날짜가 달라진 이유를 알려면 그날 만들어진 기록 같은 직접 근거가 필요해요. 글을 쓴 때나 독자 수만으로는 어느 쪽이 정확한지 알 수 없어요.",
     "hints": [
      "두 글이 어떤 정보에 근거해 썼을지 생각해 보세요.",
      "어느 한쪽을 믿기 전에 확인할 수 있는 제3의 자료를 떠올려 보세요."
@@ -1351,7 +1400,8 @@
    "human": [
     "고친 문장의 정확성"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-h1-09",
@@ -1386,17 +1436,17 @@
     "options": [
      {
       "id": "a",
-      "text": "The festival starts at 5 p.m. on Friday in the gym, and every student needs a ticket that costs 1,000 won.",
+      "text": "The festival is on Friday at 5 p.m. in the gym, and every student needs a ticket that costs 1,000 won to get in.",
       "reveals": "확인하지 않은 정보를 하나만 골라 단정했어요."
      },
      {
       "id": "b",
-      "text": "Everybody is confused about the festival, so nobody should come until the school sends another message about it.",
-      "reveals": "독자에게 불필요한 지시를 하고 정보도 주지 않았어요."
+      "text": "The festival plans are confusing, so please stay home and wait until the school tells us the right time and price.",
+      "reveals": "독자에게 오지 말라는 불필요한 지시를 하면서, 두 공지가 각각 무엇을 말했는지는 알려 주지 않았어요."
      },
      {
       "id": "c",
-      "text": "Two sources differ: the notice says 4 p.m., free; the poster says 5 p.m., 1,000 won. We are checking."
+      "text": "The school notice says 4 p.m. and free; the student council poster says 5 p.m. and 1,000 won. We are still checking."
      }
     ],
     "correct": [
@@ -1420,8 +1470,8 @@
       "label": "두 시간(4와 5)을 모두 썼다",
       "mode": "all",
       "patterns": [
-       "\\b4\\b",
-       "\\b5\\b"
+       "(?:\\bat\\s+)?\\b(?:4|four)(?::00)?\\s*(?:p\\.?\\s?m\\b|o['’]?clock)|\\b(?:at|from|around)\\s+(?:4|four)\\b",
+       "(?:\\bat\\s+)?\\b(?:5|five)(?::00)?\\s*(?:p\\.?\\s?m\\b|o['’]?clock)|\\b(?:at|from|around)\\s+(?:5|five)\\b"
       ]
      },
      {
@@ -1438,11 +1488,13 @@
       "label": "확인되지 않았음을 말했다",
       "mode": "any",
       "patterns": [
-       "\\bnot (?:yet )?(?:sure|confirmed|clear|certain)\\b",
+       "\\bnot (?:yet |been |really |fully )*(?:sure|confirmed|clear|certain|checked|verified|decided|final)\\b",
        "\\bunconfirmed\\b",
-       "\\b(?:differ|differs|different|disagree|conflict)\\b",
-       "\\bdo(?:es)? not agree\\b",
-       "\\bnot the same\\b"
+       "\\b(?:differ|differs|different|disagree|disagrees|conflict|conflicts|conflicting)\\b",
+       "\\bdo(?:es)? not (?:agree|match)\\b",
+       "\\bnot the same\\b",
+       "\\b(?:still|currently)\\s+(?:checking|verifying|confirming)\\b",
+       "\\b(?:are|am|['’]re)\\s+(?:now\\s+)?(?:checking|verifying|confirming)\\b"
       ]
      },
      {
@@ -1450,13 +1502,12 @@
       "label": "독자가 할 일을 말했다",
       "mode": "any",
       "patterns": [
-       "\\bask\\b",
        "\\bwait\\b",
-       "\\bupdate\\b",
+       "\\bask (?:your|the|a|us|someone|at|them|a teacher)\\b",
+       "\\bcheck (?:the|with|our|back|again|before)\\b",
        "\\bstay tuned\\b",
-       "\\bcheck (?:the|with|again|before)\\b",
-       "\\buntil\\b",
-       "\\bbefore you\\b"
+       "\\bbefore you (?:come|go|decide|plan|leave|make)\\b",
+       "\\bplease (?:ask|check|hold|look|watch)\\b"
       ]
      }
     ],
@@ -1472,6 +1523,10 @@
      {
       "text": "The festival time is not confirmed yet. The notice says 4 p.m. on Friday, but the poster says 5 p.m. and a 1,000 won ticket. Ask your homeroom teacher or check the school website before you go.",
       "note": "독자에게 직접 확인할 방법을 주었다."
+     },
+     {
+      "text": "The school notice says 4 p.m. and free, but the student council poster says 5 p.m. and 1,000 won. We are still checking, so please wait for our next message.",
+      "note": "'확인 중'과 '기다려 달라'는 요청을 함께 썼다."
      }
     ],
     "badAnswers": [
@@ -1525,7 +1580,8 @@
    "human": [
     "공정성과 독자에 대한 배려"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-h1-10",
@@ -1560,21 +1616,21 @@
     "options": [
      {
       "id": "a",
-      "text": "Thanks for inviting me! I can't go because of a family dinner. Could we pick another day?"
+      "text": "No, I can't come to that. I have a family dinner, and a family dinner matters more than a concert.",
+      "reveals": "분명하지만 상대의 초대를 깎아내리는 말투예요."
      },
      {
       "id": "b",
-      "text": "That sounds fun! I'll try to come, but I have a family dinner, so I'm not sure about it at all.",
-      "reveals": "'노력해 볼게'는 거절인지 승낙인지 모호해서 상대가 계획을 세우기 어려워요."
+      "text": "Thanks for inviting me! I can't go because of a family dinner. Could we pick another day?"
      },
      {
       "id": "c",
-      "text": "No, I can't come to that. I have a family dinner and it is more important than a concert.",
-      "reveals": "분명하지만 상대의 초대를 깎아내리는 말투예요."
+      "text": "That sounds fun! I'll try to come, but I have a family dinner, so I'm really not sure about it.",
+      "reveals": "'노력해 볼게'는 거절인지 승낙인지 모호해서 상대가 계획을 세우기 어려워요."
      }
     ],
     "correct": [
-     "a"
+     "b"
     ],
     "explain": "분명한 거절(can't), 이유, 대안(another day)이 함께 있으면 상대가 오해하지 않고 기분도 덜 상해요. 모호한 대답은 상대를 기다리게 하고, 지나치게 직설적인 말은 관계에 부담이 돼요.",
     "hints": [
@@ -1603,7 +1659,7 @@
       "label": "B가 분명히 갈 수 없다고 말했다",
       "mode": "any",
       "patterns": [
-       "(?:^|\\n)\\s*B\\s*:[^\\n]*\\b(?:can['’]?t|cannot|can not|won['’]?t be able|not able|unable|have to miss)\\b"
+       "(?:^|\\n)\\s*B\\s*:[^\\n]*\\b(?:can['’]?t|cannot|can not|won['’]?t be able|not able|unable|have to miss|not going to be able|will miss)\\b"
       ]
      },
      {
@@ -1611,7 +1667,7 @@
       "label": "B가 이유를 말했다",
       "mode": "any",
       "patterns": [
-       "(?:^|\\n)\\s*B\\s*:[^\\n]*\\b(?:because|since|I have|I['’]?ve got|I need|I['’]?m going)\\b"
+       "(?:^|\\n)\\s*B\\s*:[^\\n]*\\b(?:(?:because|since)\\s+\\S+|I have (?:a|an|to|some|my)\\b|I['’]?ve got (?:a|an|to|some|my)\\b|I need to\\b|I['’]?m going (?:to|with)\\b|family (?:dinner|event|party|trip|gathering|plans|wedding)|(?:my|our) (?:family|mom|dad|mother|father|parents|cousin|grandma|grandmother|grandfather|brother|sister)\\b|(?:is|are) having\\b|that (?:night|evening)|I(?:['’]?m| am) busy|I(?:['’]?ll| will) be (?:at|with|busy))"
       ]
      },
      {
@@ -1619,7 +1675,7 @@
       "label": "B가 대안을 제안했다",
       "mode": "any",
       "patterns": [
-       "(?:^|\\n)\\s*B\\s*:[^\\n]*\\b(?:another|next time|instead|how about|could we|can we|what about|let['’]?s|maybe)\\b"
+       "(?:^|\\n)\\s*B\\s*:[^\\n]*\\b(?:another (?:day|time|night)|next (?:time|week|saturday|weekend)|instead|how about|what about|could we|can we|would [^\\n]{0,20} work|let['’]?s (?:go|meet|try|do|plan|pick|see)|sunday|friday|tomorrow)\\b"
       ]
      },
      {
@@ -1627,7 +1683,15 @@
       "label": "A가 이해하는 반응을 보였다",
       "mode": "any",
       "patterns": [
-       "(?:^|\\n)\\s*A\\s*:[^\\n]*\\b(?:no problem|I understand|sounds good|that works|of course|don['’]?t worry|oh,? I see|that['’]?s (?:ok|okay|fine|alright)|it['’]?s (?:ok|okay|fine|alright))\\b"
+       "(?:^|\\n)\\s*A\\s*:[^\\n]*\\b(?:no problem|no worries|I understand|I get it|got it|I see|sounds (?:good|great|fine)|that works|of course|sure|don['’]?t worry|too bad|that['’]?s a shame|makes sense|understood|no big deal|that['’]?s (?:ok|okay|fine|alright|all right)|it['’]?s (?:ok|okay|fine|alright|all right))\\b"
+      ]
+     },
+     {
+      "id": "w6",
+      "label": "대화 전체가 충분히 길다(약 20단어 이상)",
+      "mode": "any",
+      "patterns": [
+       "^\\s*(?:\\S+\\s+){19}\\S+"
       ]
      }
     ],
@@ -1643,6 +1707,10 @@
      {
       "text": "A: I got two tickets for a movie on Saturday at 7. Want to come?\nB: That sounds fun, but I can't. I have to help at my cousin's birthday party.\nA: No problem. Are you free on Sunday?\nB: Yes! How about the afternoon show on Sunday?",
       "note": "상황을 바꿔도 같은 조건을 채웠다."
+     },
+     {
+      "text": "A: Do you want to go to the concert with me on Saturday at 7?\nB: Thanks! I'm sorry, but I can't go. My family is having a dinner that night.\nA: Oh, no worries!\nB: How about next Saturday? I'll check the schedule.\nA: Sounds great.",
+      "note": "다른 표현으로 같은 조건을 채웠다."
      }
     ],
     "badAnswers": [
@@ -1696,6 +1764,7 @@
    "human": [
     "분명한 거절과 배려의 균형"
    ]
-  }
+  },
+  "status": "draft"
  }
 ]

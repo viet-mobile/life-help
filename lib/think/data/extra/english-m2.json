@@ -41,7 +41,7 @@
     "explain": "3번째 줄은 첫 한 시간에 30봉지를 모았다고 하고, 4번째 줄은 전체가 18봉지라고 해요. 전체가 첫 한 시간에 모은 양보다 적을 수는 없어요. 3번째 줄과 4번째 줄 중 어느 쪽이 틀렸는지는 이 글만으로는 알 수 없어서 둘 중 하나를 골라도 돼요.",
     "hints": [
      "숫자가 나오는 줄만 모아서 서로 비교해 보세요.",
-     "'일부(첫 한 시간)'와 '전체(in total)'가 어느 쪽이 더 커야 하는지 생각해 보세요."
+     "숫자가 나오는 두 줄이 각각 무엇을 센 숫자인지(어느 시간 동안인지, 어디까지인지) 적어 놓고 나란히 비교해 보세요."
     ]
    },
    {
@@ -51,22 +51,22 @@
     "options": [
      {
       "id": "a",
-      "text": "더 작은 숫자인 18이 맞을 것 같으니 3번째 줄을 지운다.",
-      "reveals": "확인 없이 한쪽을 고르면 틀린 숫자가 그대로 남을 수 있어요."
+      "text": "봉지를 센 친구들에게 실제 숫자를 확인하고 두 줄을 함께 고친다.",
+      "reveals": "실제로 센 사람에게 묻는 것이 근거가 있는 수정이에요."
      },
      {
       "id": "b",
-      "text": "숫자 대신 'a lot'이라고만 써서 틀릴 가능성을 없앤다.",
-      "reveals": "오류는 사라지지만 글의 정보도 함께 사라져요."
+      "text": "3번째 줄의 숫자만 18보다 작게 바꿔서 두 줄이 서로 맞게 만든다.",
+      "reveals": "두 숫자끼리는 맞아도 실제로 센 값이 아니면 틀린 정보가 그대로 남아요."
      },
      {
       "id": "c",
-      "text": "봉지를 센 친구들에게 실제 숫자를 확인하고 두 줄을 함께 고친다.",
-      "reveals": "실제로 센 사람에게 묻는 것이 근거가 있는 수정이에요."
+      "text": "숫자 대신 'a lot'이라고만 써서 틀릴 가능성을 없앤다.",
+      "reveals": "오류는 사라지지만 글의 정보도 함께 사라져요."
      }
     ],
     "correct": [
-     "c"
+     "a"
     ],
     "explain": "두 숫자 중 무엇이 맞는지 글만으로는 알 수 없어요. 원래 숫자를 센 사람에게 확인해 맞는 쪽으로 고치는 것이 근거가 있는 방법이에요. 'a lot'으로 바꾸는 것도 오류는 피하지만 정보가 줄어요.",
     "hints": [
@@ -81,48 +81,57 @@
     "placeholder": "예: We collected ...",
     "minChars": 30,
     "hints": [
-     "전체(total)는 일부(first hour)보다 작을 수 없어요. 두 숫자를 나란히 써 보세요.",
+     "먼저 첫 한 시간에 모은 봉지 수를 정하고, 그 숫자와 확인된 전체 30봉지를 나란히 써서 비교해 보세요.",
      "'in total'이나 'altogether' 같은 표현이 어느 문장에 어울리는지 생각해 보세요."
     ],
     "checks": [
      {
       "id": "w1",
-      "label": "30이라는 숫자(또는 thirty)가 들어 있다",
+      "label": "'전체' 문장에서 확인된 숫자 30(또는 thirty)을 말했다",
       "mode": "any",
       "patterns": [
-       "\\b30\\b",
-       "\\bthirty\\b"
+       "\\b(?:in total|altogether|in all|all together|total)\\b[^.!?]*?\\b(?:30|thirty)\\b",
+       "\\b(?:30|thirty)\\b[^.!?]*?\\b(?:in total|altogether|in all|all together|total)\\b"
       ]
      },
      {
       "id": "w2",
-      "label": "옛날 숫자 18이 남아 있지 않다",
+      "label": "'전체' 문장에 30이 아닌 다른 봉지 수가 없다",
       "mode": "none",
       "patterns": [
-       "\\b18\\b",
-       "\\beighteen\\b"
+       "\\b(?:in total|altogether|in all|all together|total)\\b[^.!?]*?\\b(?!30\\b)(?:\\d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|forty|fifty|sixty|seventy|eighty|ninety|hundred)\\s+(?:more\\s+)?(?:bags?|pieces)\\b"
       ]
      },
      {
       "id": "w3",
+      "label": "첫 한 시간의 봉지 수가 30보다 크지 않다",
+      "mode": "none",
+      "patterns": [
+       "\\bfirst hour\\b[^.!?]*?\\b(?:3[1-9]|[4-9]\\d|\\d{3,})\\b",
+       "\\b(?:3[1-9]|[4-9]\\d|\\d{3,})\\b[^.!?]*?\\bfirst hour\\b"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "'첫 한 시간'을 말했다",
+      "mode": "any",
+      "patterns": [
+       "\\bfirst hour\\b",
+       "\\bfirst (?:60|sixty) minutes\\b",
+       "\\b1st hour\\b",
+       "\\bin the first\\b",
+       "\\bduring the first\\b",
+       "\\bat first\\b"
+      ]
+     },
+     {
+      "id": "w5",
       "label": "쓰레기 봉지에 대해 말했다",
       "mode": "any",
       "patterns": [
        "\\bbags?\\b",
        "\\btrash\\b",
        "\\bgarbage\\b"
-      ]
-     },
-     {
-      "id": "w4",
-      "label": "전체를 말하는 표현이 있다",
-      "mode": "any",
-      "patterns": [
-       "\\bin total\\b",
-       "\\baltogether\\b",
-       "\\bin all\\b",
-       "\\btotal\\b",
-       "\\ball together\\b"
       ]
      }
     ],
@@ -137,6 +146,10 @@
      },
      {
       "text": "In the first hour we filled 20 bags of trash. Altogether, we collected 30 bags."
+     },
+     {
+      "text": "We collected 18 bags of trash in the first hour. In total, we collected 30 bags, and everyone went home happy.",
+      "note": "첫 한 시간의 숫자는 30 이하이면 무엇이든 된다."
      }
     ],
     "badAnswers": [
@@ -149,7 +162,7 @@
       "why": "옛 숫자가 그대로 남았고 30이 없다."
      }
     ],
-    "humanReview": "첫 한 시간의 숫자를 학생이 어떻게 정했는지(30 이하인지), 문장이 자연스러운지는 사람이 읽어야 한다."
+    "humanReview": "첫 한 시간의 숫자를 학생이 어떻게 정했는지(30 이하인지), 두 문장이 자연스럽게 이어지는지는 사람이 읽어야 한다. 자동 점검은 숫자 표면만 본다."
    }
   ],
   "rubric": [
@@ -167,7 +180,8 @@
    }
   ],
   "alternatives": [
-   "3번째 줄의 30이 틀렸다고 보고 4번째 줄을 그대로 둔 수정도 이 글만 보면 가능하지만, 확인이 필요하다."
+   "3번째 줄의 30이 틀렸다고 보고 4번째 줄을 그대로 둔 수정도 이 글만 보면 가능하지만, 확인이 필요하다.",
+   "3번째 줄을 그대로 두고 4번째 줄의 전체를 더 큰 수로 고치는 답도 같은 이유로 가능하지만, 이 과제에서는 확인된 전체 30봉지를 쓴다."
   ],
   "hardCases": [
    "첫 한 시간 30봉지, 전체 30봉지처럼 같은 숫자를 쓰면 모순은 아니지만 글이 어색하다."
@@ -181,13 +195,14 @@
    "auto": [
     "고른 줄이 모순 줄인지",
     "선택지 정답",
-    "수정문에 30이 있고 18이 없는지"
+    "수정문의 '전체' 문장에 30이 있고 다른 봉지 수가 없는지, 첫 한 시간 숫자가 30을 넘지 않는지"
    ],
    "human": [
     "수정한 문장의 자연스러움",
     "첫 시간 숫자의 합리성"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-m2-02",
@@ -247,7 +262,7 @@
     "explain": "3개를 사면 하나가 무료이므로 2개 값만 내는 셈이고(a), 조건이 '2개 구매'이므로 1개만 사면 무료는 없어요(c). 내일 행사(b)는 'Today only'와 반대이고, 다른 빵집과의 가격 비교(d)는 광고에 근거가 없어요.",
     "hints": [
      "각 선택지가 광고의 어느 문장에서 나오는지 짚어 보세요.",
-     "광고에 없는 비교(다른 가게, 내일)가 들어 있는 선택지를 걸러 보세요."
+     "각 선택지의 근거가 되는 광고 문장을 찾아 줄을 그어 보고, 근거를 찾을 수 없는 선택지에는 표시해 보세요."
     ]
    },
    {
@@ -271,31 +286,57 @@
      },
      {
       "id": "w2",
-      "label": "광고의 내용(머핀·무료·가격 등)과 관련 있다",
+      "label": "광고나 빵집·머핀·가격·주문과 관련된 말이 있다",
       "mode": "any",
       "patterns": [
        "\\bmuffins?\\b",
        "\\bfree\\b",
        "\\bthird\\b",
-       "\\bprice\\b",
-       "\\bcheap",
+       "\\bpric\\w*\\b",
+       "\\bcost\\w*\\b",
+       "\\bcheap\\w*\\b",
        "\\bflavou?rs?\\b",
-       "\\bsizes?\\b"
+       "\\bsizes?\\b",
+       "\\bbuy\\w*\\b",
+       "\\bsale\\b",
+       "\\bdeals?\\b",
+       "\\boffers?\\b",
+       "\\bdiscounts?\\b",
+       "\\bmenu\\b",
+       "\\bsell\\w*\\b",
+       "\\bcakes?\\b",
+       "\\bbread\\b",
+       "\\bcookies?\\b",
+       "\\ballerg\\w*\\b",
+       "\\bnuts?\\b",
+       "\\bgluten\\b",
+       "\\bvegan\\b",
+       "\\bsugar\\b",
+       "\\bbakery\\b",
+       "\\bopen\\b",
+       "\\bhours?\\b",
+       "\\btomorrow\\b",
+       "\\btoday\\b",
+       "\\border\\w*\\b",
+       "\\bpay\\w*\\b",
+       "\\bcard\\b",
+       "\\bcash\\b",
+       "\\bbox\\b",
+       "\\bleft\\b",
+       "\\bsold\\b"
       ]
      },
      {
       "id": "w3",
-      "label": "이유를 덧붙였다",
+      "label": "이유나 사정을 덧붙였다",
       "mode": "any",
       "patterns": [
        "\\bbecause\\b",
-       "\\bso\\b",
+       "\\bsince\\b",
+       "\\bso (?:I|we|that|it|my|can|could)\\b",
        "\\bmatters?\\b",
-       "\\bnot say\\b",
-       "\\bdoesn'?t say\\b",
-       "\\bdoes not say\\b",
-       "\\bif I\\b",
-       "\\bI want to know\\b"
+       "\\b(?:I|we) (?:want|need|would like|am|have|like|can't|cannot|don't|do not|will|plan|bought|buy|usually|always)\\b",
+       "\\bmy (?:\\w+ ){0,2}(?:friend|sister|brother|mom|dad|family|class|team|birthday|party)\\b"
       ]
      }
     ],
@@ -310,6 +351,12 @@
      },
      {
       "text": "Can I choose any flavor for the free muffin? I want to know because I like chocolate."
+     },
+     {
+      "text": "Do you have a nut-free option? I am allergic to nuts."
+     },
+     {
+      "text": "Can I use the sale for a cake? I want to know because I like cake."
      }
     ],
     "badAnswers": [
@@ -353,13 +400,14 @@
   "autoVsHuman": {
    "auto": [
     "선택한 추론 선택지",
-    "질문 부호, 광고 관련 단어, 이유 표현의 유무"
+    "물음표, 광고·빵집과 관련된 낱말, 이유 표현의 유무"
    ],
    "human": [
     "질문이 정말 새로운 정보를 묻는지",
     "이유의 설득력"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-m2-03",
@@ -619,26 +667,26 @@
     "id": "s1",
     "kind": "choose",
     "multi": true,
-    "prompt": "글쓴이가 쓰려는 '점심시간에 친구와 대화가 줄어든다'는 내용을 가장 직접 뒷받침하는 근거를 모두 고르세요.",
+    "prompt": "글쓴이의 주장 'Phones make students lonely.'를 점검하려고 해요. 아래 후보 중, 우리 학교 학생들의 실제 점심시간 모습을 직접 보여 주는 근거를 모두 고르세요.",
     "options": [
      {
       "id": "a",
-      "text": "In our survey, 30 of 40 students said they talk less with friends on phones.",
+      "text": "In our survey, 30 of 40 students said they talk less with friends at lunch when they use phones.",
       "reveals": "설문 결과는 직접 관련이 있지만 학생들의 말에 기댄 근거예요."
      },
      {
       "id": "b",
       "text": "My cousin's school banned phones, and he says he is happier.",
-      "reveals": "한 사람의 이야기이고, 행복과 대화는 같은 말이 아니에요."
+      "reveals": "다른 학교의 한 사람 이야기이고, 행복과 점심시간 대화는 같은 말이 아니에요."
      },
      {
       "id": "c",
       "text": "Many students at our school have a phone and bring it to school every day.",
-      "reveals": "휴대전화가 많다는 것은 대화가 줄어든다는 근거가 아니에요."
+      "reveals": "휴대전화가 많다는 것은 점심시간 모습에 대한 근거가 아니에요."
      },
      {
       "id": "d",
-      "text": "In a phone-free lunch week, talking groups went from 4 to 9 out of 12.",
+      "text": "In a phone-free lunch week, talking groups at lunch went from 4 of 12 tables to 9 of 12 tables.",
       "reveals": "휴대전화를 쓰지 않은 주와 비교한 관찰이라 변화가 눈에 보이는 근거예요."
      }
     ],
@@ -646,10 +694,10 @@
      "a",
      "d"
     ],
-    "explain": "a는 학생들이 직접 답한 설문이고, d는 휴대전화를 쓰지 않은 주의 변화를 센 관찰이에요. 둘 다 '대화가 줄어든다'와 직접 관련이 있어요. b는 한 사람의 이야기에 행복이라는 다른 주제가 섞였고, c는 휴대전화가 많다는 사실만 말해요.",
+    "explain": "a는 학생들이 직접 답한 설문이고, d는 휴대전화를 쓰지 않은 주에 이야기하는 탁자가 늘어난 것을 센 관찰이에요. 둘 다 우리 학교 점심시간의 모습을 직접 보여 줘요. b는 다른 학교 한 사람의 이야기에 행복이라는 다른 주제가 섞였고, c는 휴대전화가 많다는 사실만 말해요.",
     "hints": [
-     "각 근거가 '친구와 이야기하는 정도'에 대해 말하는지 확인해 보세요.",
-     "한 사람의 이야기와 여러 사람의 수 자료를 비교해 보세요."
+     "각 근거가 어느 학교의 이야기인지, 누가 말했는지, 점심시간에 대한 것인지 표시해 보세요.",
+     "근거마다 '무엇을 세거나 물어서 얻은 정보인지'를 한 줄로 적어 보세요."
     ]
    },
    {
@@ -664,22 +712,22 @@
      },
      {
       "id": "b",
-      "text": "점심시간에 휴대전화를 쓰면 친구와 이야기하는 일이 줄어든다.",
-      "reveals": "근거가 말하는 범위와 같은 크기의 주장이에요."
+      "text": "모든 학교는 휴대전화를 금지해야 한다.",
+      "reveals": "한 학교의 자료로 모든 학교를 말하려는 큰 주장이에요."
      },
      {
       "id": "c",
-      "text": "모든 학교는 휴대전화를 금지해야 한다.",
-      "reveals": "한 학교의 자료로 모든 학교를 말하려는 큰 주장이에요."
+      "text": "점심시간에 휴대전화를 쓰면 친구와 이야기하는 일이 줄어든다.",
+      "reveals": "근거가 말하는 범위와 같은 크기의 주장이에요."
      }
     ],
     "correct": [
-     "b"
+     "c"
     ],
-    "explain": "근거가 보여 주는 것은 '대화가 줄어든다'까지예요. 외로움(a)이나 모든 학교의 금지(c)로 가려면 그 주장을 직접 뒷받침하는 다른 근거가 필요해요.",
+    "explain": "근거가 보여 주는 것은 '점심시간에 이야기하는 일이 줄어든다'까지예요. 외로움(a)이나 모든 학교의 금지(b)로 가려면 그 주장을 직접 뒷받침하는 다른 근거가 필요해요.",
     "hints": [
      "근거 문장에 나오는 낱말과 주장 문장의 낱말을 나란히 비교해 보세요.",
-     "근거에는 없는데 주장에만 있는 낱말이 있는지 찾아보세요."
+     "근거 문장에는 없는데 주장 문장에만 있는 낱말이나 범위(누구, 어디, 무엇)가 있는지 찾아보세요."
     ]
    },
    {
@@ -690,35 +738,47 @@
     "minChars": 30,
     "hints": [
      "그 근거가 어떻게 얻어졌는지(누가, 얼마 동안, 어떻게) 떠올려 보세요.",
-     "'but', 'only', 'may not' 같은 말이 도움이 돼요."
+     "'only', 'may not', 'does not show' 같은 말이 도움이 돼요."
     ],
     "checks": [
      {
       "id": "w1",
-      "label": "근거(설문·한 주 등)를 가리킨다",
+      "label": "근거의 한계를 나타내는 표현이 있다",
       "mode": "any",
       "patterns": [
-       "\\bsurvey\\b",
-       "\\bstudents?\\b",
-       "\\bweek\\b",
-       "\\bgroups?\\b",
-       "\\b30\\b",
-       "\\b40\\b",
-       "\\bclass\\b"
+       "\\bonly\\b",
+       "\\bnot enough\\b",
+       "\\bmay not\\b",
+       "\\bmight not\\b",
+       "\\bmight\\b",
+       "\\bmay\\b",
+       "\\bcould\\b",
+       "\\b(?:does not|doesn['’]?t|do not|don['’]?t|cannot|can['’]?t|can not) (?:show|prove|say|tell|mean|know|explain)\\b",
+       "\\bnot sure\\b",
+       "\\bother reasons?\\b",
+       "\\bwe (?:don['’]?t|do not|cannot) know\\b",
+       "\\bunknown\\b",
+       "\\bone week\\b",
+       "\\bjust (?:one|a)\\b"
       ]
      },
      {
       "id": "w2",
-      "label": "한계를 나타내는 표현이 있다",
+      "label": "고른 근거(설문·한 주·학생·휴대전화 등)를 가리킨다",
       "mode": "any",
       "patterns": [
-       "\\bonly\\b",
-       "\\bbut\\b",
-       "\\bmay not\\b",
-       "\\bmight\\b",
-       "\\b(?:does not|doesn't|cannot|can't) (?:show|prove|say|tell)\\b",
-       "\\bnot sure\\b",
-       "\\bother reasons?\\b"
+       "\\bsurvey\\b",
+       "\\bweek\\b",
+       "\\bgroups?\\b",
+       "\\btables?\\b",
+       "\\bphones?\\b",
+       "\\bstudents?\\b",
+       "\\bthem\\b",
+       "\\bthey\\b",
+       "\\b30\\b",
+       "\\b40\\b",
+       "\\blunch\\b",
+       "\\bclass\\b"
       ]
      }
     ],
@@ -733,6 +793,9 @@
      },
      {
       "text": "The phone-free week was only one week, so it may not show what happens every day."
+     },
+     {
+      "text": "The survey does not tell us how long students used phones at lunch or why they talk less."
      }
     ],
     "badAnswers": [
@@ -772,17 +835,18 @@
   "cautions": {
    "language": "survey, ban 같은 낱말이 낯설면 뜻을 hint에서 짚는다. 수는 '30 of 40'처럼 읽기 쉬운 형태로만 썼다.",
    "culture": "휴대전화 규칙은 한국 학교에서 흔한 주제이지만, 학교마다 규칙이 다르다는 점을 열어 둔다.",
-   "accessibility": "숫자 비교는 말로 풀어 썼다(4 to 9 out of 12 = 12개 모둠 중 4개에서 9개로)."
+   "accessibility": "숫자 비교는 말로 풀어 썼다(4 of 12 tables to 9 of 12 tables = 12개 탁자 중 4개에서 9개로)."
   },
   "autoVsHuman": {
    "auto": [
     "선택 단계 정답",
-    "서술에 근거와 한계 표현이 있는지"
+    "서술에 근거를 가리키는 말과 한계 표현이 있는지"
    ],
    "human": [
     "한계의 적절성"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-m2-05",
@@ -1037,7 +1101,7 @@
     "explain": "3번째 줄은 명령하는 말투('Give me ... now.')라서 선생님께 하는 부탁으로는 무례하게 들려요. 1번째 줄은 인사, 2번째 줄은 자기소개, 4번째 줄은 이유, 5번째 줄은 감사 인사로 모두 알맞아요.",
     "hints": [
      "부탁하는 문장과 인사·이유 문장의 말투를 비교해 보세요.",
-     "동사로 시작하는 명령문이 어디에 있는지 찾아보세요."
+     "각 줄이 인사, 소개, 부탁, 이유, 감사 중 무엇을 하는 문장인지 적어 보고, 선생님께 하는 말로 소리 내어 읽어 보세요."
     ]
    },
    {
@@ -1047,8 +1111,8 @@
     "options": [
      {
       "id": "a",
-      "text": "Could I borrow the key to the music room, please?",
-      "reveals": "빌려도 되는지 묻는 정중한 요청이에요."
+      "text": "Hey, can you give me the music room key?",
+      "reveals": "'Hey'와 가벼운 말투는 친구에게 어울려요."
      },
      {
       "id": "b",
@@ -1057,22 +1121,22 @@
      },
      {
       "id": "c",
-      "text": "Hey, can you give me the music room key?",
-      "reveals": "'Hey'와 가벼운 말투는 친구에게 어울려요."
+      "text": "Could I borrow the key to the music room, please?",
+      "reveals": "빌려도 되는지 묻는 정중한 요청이에요."
      },
      {
       "id": "d",
-      "text": "I was wondering if you might possibly be able to lend me, if it is not too much trouble, the key.",
-      "reveals": "지나치게 돌려 말해 오히려 요점이 흐려져요."
+      "text": "I need the key to the music room. Is that OK?",
+      "reveals": "필요하다고 먼저 선언하고 동의만 구하는 말투라 허락을 구하는 요청으로 들리지 않아요."
      }
     ],
     "correct": [
-     "a"
+     "c"
     ],
-    "explain": "Could I borrow ... , please?는 부탁하는 사람이 상대의 허락을 구하는 형태예요. a는 명령이고, b는 친구에게 쓰는 가벼운 말투이고, d는 너무 길고 돌려 말해서 요점이 흐려져요.",
+    "explain": "Could I borrow ... , please?는 부탁하는 사람이 상대의 허락을 구하는 형태라 공손해요. 'Please give me ... now'는 please가 있어도 명령이고, 'Hey, can you ...'는 친구에게 어울리는 가벼운 말투이고, 'I need ...'는 필요하다고 먼저 말해 요구처럼 들려요.",
     "hints": [
      "명령인지, 허락을 구하는 질문인지 형태를 비교해 보세요.",
-     "선생님께 말할 때 '너무 가볍거나 너무 장황한' 선택지를 걸러 보세요."
+     "선택지를 하나씩 선생님께 보내는 이메일에 넣어 소리 내어 읽어 보고, 어색하게 들리는 이유를 적어 보세요."
     ]
    },
    {
@@ -1096,18 +1160,17 @@
      },
      {
       "id": "w2",
-      "label": "공손한 요청 표현이 있다",
+      "label": "허락을 구하는 공손한 요청 표현이 있다",
       "mode": "any",
       "patterns": [
-       "\\bplease\\b",
-       "\\bcould\\b",
-       "\\bwould\\b",
-       "\\bmay I\\b",
-       "\\bcan I\\b",
+       "\\b(?:could|would|may|can) (?:I|you|we)\\b",
+       "\\bwould it be (?:possible|okay|ok|all right|alright)\\b",
+       "\\bis it (?:possible|okay|ok|all right|alright)\\b",
        "\\bdo you mind\\b",
-       "\\bI'd like\\b",
-       "\\bI would like\\b",
-       "\\bif possible\\b"
+       "\\bwould you mind\\b",
+       "\\bI(?:'d| would) like to\\b",
+       "\\bif possible\\b",
+       "\\bI was wondering\\b"
       ]
      },
      {
@@ -1115,9 +1178,9 @@
       "label": "명령문이나 가벼운 인사로 시작하지 않는다",
       "mode": "none",
       "patterns": [
-       "^\\s*give me\\b",
+       "(?:^|[.!?]\\s*)(?:please[, ]+)?(?:give|lend|let) me\\b",
        "^\\s*hey\\b",
-       "[.!?]\\s*give me\\b"
+       "\\bI (?:want|need) the\\b"
       ]
      }
     ],
@@ -1132,6 +1195,13 @@
      },
      {
       "text": "May I borrow the music room key? I will bring it back after practice."
+     },
+     {
+      "text": "Could you please lend me the key to the music room for our practice?"
+     },
+     {
+      "text": "Can you give me the key to the music room?",
+      "note": "Can you ...?는 Could ...?보다 약간 가볍지만 허락을 구하는 질문이다."
      }
     ],
     "badAnswers": [
@@ -1177,12 +1247,13 @@
    "auto": [
     "고른 줄 위치",
     "선택 단계 정답",
-    "key와 공손한 표현의 유무"
+    "key와 허락을 구하는 요청 표현의 유무, 명령문으로 시작하지 않는지"
    ],
    "human": [
     "고쳐 쓴 문장의 공손함과 자연스러움"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-m2-07",
@@ -1216,13 +1287,13 @@
     "options": [
      {
       "id": "a",
-      "text": "I keep checking my notes again and again. Tomorrow is the math test.",
-      "reveals": "행동과 상황만 있고 감정 낱말은 없지만 읽는 사람이 짐작할 수 있어요."
+      "text": "I'm so scared about tomorrow's test, I can't even eat.",
+      "reveals": "'scared'로 감정을 직접 말했어요."
      },
      {
       "id": "b",
-      "text": "I'm so scared about tomorrow's test, I can't even eat.",
-      "reveals": "'scared'로 감정을 직접 말했어요."
+      "text": "I keep checking my notes again and again. Tomorrow is the math test.",
+      "reveals": "행동과 상황만 있고 감정 낱말은 없지만 읽는 사람이 짐작할 수 있어요."
      },
      {
       "id": "c",
@@ -1231,11 +1302,11 @@
      }
     ],
     "correct": [
-     "a"
+     "b"
     ],
-    "explain": "c는 노트를 계속 다시 보는 행동과 내일 시험이라는 상황만으로 긴장을 짐작하게 해요. a는 감정 낱말(scared)이 직접 나오고, b는 단서가 없어요.",
+    "explain": "b는 노트를 계속 다시 보는 행동과 내일 시험이라는 상황만으로 긴장을 짐작하게 해요. a는 감정 낱말(scared)이 직접 나오고, c는 시험이나 긴장을 짐작할 단서가 없어요.",
     "hints": [
-     "감정을 나타내는 낱말이 있는지 먼저 찾아보세요.",
+     "각 메시지에서 글쓴이의 마음을 직접 설명하는 부분과 글쓴이가 하고 있는 일을 따로 표시해 보세요.",
      "읽는 사람이 짐작할 단서(행동, 상황)가 있는지 비교해 보세요."
     ]
    },
@@ -1255,7 +1326,7 @@
       "label": "감정 낱말을 직접 쓰지 않았다",
       "mode": "none",
       "patterns": [
-       "\\b(?:nervous|nervously|worried|worry|worrying|scared|afraid|anxious|anxiety|fear)\\b"
+       "\\b(?:nervous\\w*|nerves|worried|worry\\w*|scared|afraid|anxious\\w*|anxiety|fear\\w*|frightened|terrified|stress\\w*|panic\\w*|tense|tension|uneasy|upset|jittery|on edge|pressure)\\b"
       ]
      },
      {
@@ -1273,20 +1344,11 @@
      },
      {
       "id": "w3",
-      "label": "행동이나 상황 단서(몸·행동·시간)가 있다",
+      "label": "행동·몸·시간·반복 같은 단서가 있다",
       "mode": "any",
       "patterns": [
-       "\\bcan'?t\\b",
-       "\\bcannot\\b",
-       "\\bkeep\\b",
-       "\\bagain\\b",
-       "\\bstill\\b",
-       "\\bawake\\b",
-       "\\bsleep\\b",
-       "\\bhands?\\b",
-       "\\bstomach\\b",
-       "\\bheart\\b",
-       "\\bwhat if\\b"
+       "\\d",
+       "\\b(?:times|twice|again|over and over|ten|hours?|midnight|o'clock|a\\.?m|p\\.?m|all night|late|still|can'?t|cannot|keep|awake|sleep|hands?|stomach|heart|shak\\w+|sweat\\w*|cold|trembl\\w+|pacing|checked|checking|re-?read\\w*|read|opened|what if|breath\\w*)\\b"
       ]
      }
     ],
@@ -1301,6 +1363,9 @@
      },
      {
       "text": "It's 11 p.m. and I'm still awake. I opened my math book ten times, but I can't start. What if I forget everything tomorrow?"
+     },
+     {
+      "text": "I read my notes ten times. The test is tomorrow."
      }
     ],
     "badAnswers": [
@@ -1337,20 +1402,21 @@
    "'I can't sleep' 하나만으로는 긴장 말고 다른 이유(소음 등)도 가능하다. 단서가 둘 이상일 때 추론이 더 분명하다."
   ],
   "cautions": {
-   "language": "감정 낱말 금지 목록에 없는 변형(jittery 등)이 쓰이면 사람이 판단한다.",
+   "language": "금지 목록(nervous, worried, stressed, terrified 등)에 없는 감정 낱말이 쓰이면 사람이 판단한다.",
    "culture": "시험 전 긴장은 문화에 관계없이 흔한 경험이지만, 시험에 대한 압박이 큰 학생에게는 부담스러운 주제일 수 있어 가상의 친구 이야기로 제시했다.",
    "accessibility": "그림이 없고 글로만 구성했다."
   },
   "autoVsHuman": {
    "auto": [
     "선택 단계 정답",
-    "금지 감정 낱말이 없는지",
-    "시험·단서 표현의 유무"
+    "감정 낱말(nervous, stressed 등)이 없는지",
+    "시험·단서(숫자, 반복, 몸·행동) 표현의 유무"
    ],
    "human": [
     "단서가 정말 긴장을 짐작하게 하는지"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-m2-08",
@@ -1390,30 +1456,27 @@
      },
      {
       "id": "b",
-      "text": "Can you seat 8 people together on Saturday at 7 p.m.?",
-      "reveals": "광고의 '최대 6명'과 친구의 조건(8명)이 부딪히는 부분을 묻는 질문이에요."
+      "text": "Do you have a vegetarian menu?",
+      "reveals": "친구가 요청하지 않은 조건이에요. 추천 결정에 꼭 필요하지는 않아요."
      },
      {
       "id": "c",
-      "text": "Do you have a vegetarian menu?",
-      "reveals": "친구가 요청하지 않은 조건이에요. 추천 결정에 꼭 필요하지는 않아요."
+      "text": "Is your restaurant open on Saturday evening?",
+      "reveals": "광고에 '매일 오전 11시부터 오후 10시까지'라고 이미 나와 있어요."
+     },
+     {
+      "id": "d",
+      "text": "Can you seat 8 people together on Saturday at 7 p.m.?",
+      "reveals": "광고의 '최대 6명'과 친구의 조건(8명)이 부딪히는 부분을 묻는 질문이에요."
      }
     ],
     "correct": [
-     "b"
+     "d"
     ],
-    "explain": "광고에는 한 테이블에 최대 6명이라고 되어 있는데, 친구는 8명이에요. 이 부분이 해결되어야 추천할 수 있어요. 역 근처(a)는 이미 알려졌고, 채식 메뉴(c)는 친구가 요청한 조건이 아니에요.",
+    "explain": "광고에는 한 테이블에 최대 6명이라고 되어 있는데, 친구는 8명이에요. 이 부분이 해결되어야 추천할 수 있어요. 역 근처와 토요일 저녁 영업은 광고에 이미 나와 있고, 채식 메뉴는 친구가 요청한 조건이 아니에요.",
     "hints": [
      "친구의 조건(인원, 요일, 시각, 음식, 장소)을 하나씩 광고와 맞춰 보세요.",
      "조건과 광고가 부딪히거나 광고에 없는 항목에 표시해 보세요."
-    ],
-    "acceptable": [
-     {
-      "ids": [
-       "c"
-      ],
-      "reason": "메뉴 선택지를 알면 더 좋은 추천이 되지만, 이 질문의 답이 추천 여부를 가르지는 않아요. 8명 좌석 문제가 먼저예요."
-     }
     ]
    },
    {
@@ -1447,11 +1510,12 @@
      },
      {
       "id": "w3",
-      "label": "시각(7)을 말했다",
+      "label": "시각(7시 또는 19시)을 말했다",
       "mode": "any",
       "patterns": [
        "\\b7\\b",
-       "\\bseven\\b"
+       "\\bseven\\b",
+       "\\b19(?::00)?\\b"
       ]
      },
      {
@@ -1460,6 +1524,25 @@
       "mode": "any",
       "patterns": [
        "\\?"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "6명 제한 문제와 관련된 자리·테이블·함께 앉기를 다뤘다",
+      "mode": "any",
+      "patterns": [
+       "\\btables?\\b",
+       "\\bseat\\w*\\b",
+       "\\btogether\\b",
+       "\\bjoin\\b",
+       "\\bsit\\b",
+       "\\breserv\\w*\\b",
+       "\\bbook\\w*\\b",
+       "\\bgroup\\b",
+       "\\bspace\\b",
+       "\\broom for\\b",
+       "\\baccommodat\\w*\\b",
+       "\\bfit\\b"
       ]
      }
     ],
@@ -1474,6 +1557,9 @@
      },
      {
       "text": "Hi. We are eight people and want to come on Saturday at seven. Is it possible to sit together?"
+     },
+     {
+      "text": "Hi! Eight of us want to visit on Saturday at 19:00. Can you join two tables?"
      }
     ],
     "badAnswers": [
@@ -1508,7 +1594,7 @@
    "예산 조건(1인 15,000원 이하)을 확인하는 질문도 좋은 추가 질문이다. 메인 요리 가격대가 12,000~16,000원이라 조건과 부딪힐 수 있다."
   ],
   "hardCases": [
-   "c(채식 메뉴)를 고른 학생은 추천의 질을 생각했을 수 있다. 그러나 질문의 우선순위는 '추천할 수 있는지'를 가르는 정보다."
+   "채식 메뉴나 영업시간을 고른 학생은 추천의 질을 생각했을 수 있다. 그러나 그 질문의 답은 추천할 수 있는지를 가르지 않는다. 가르는 것은 8명이 앉을 수 있는지이다."
   ],
   "cautions": {
    "language": "seat 8 people, up to 6 같은 표현이 어려우면 hint에서 풀어 준다.",
@@ -1518,13 +1604,14 @@
   "autoVsHuman": {
    "auto": [
     "선택 단계 정답",
-    "인원·요일·시각·물음표의 유무"
+    "인원·요일·시각·물음표, 자리나 테이블을 다루는 낱말의 유무"
    ],
    "human": [
     "질문이 부딪히는 정보를 해결하는지",
     "영어 표현의 자연스러움"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-m2-09",
@@ -1533,7 +1620,7 @@
   "topic": "politeness and tone",
   "level": 2,
   "levelLabel": "중등",
-  "title": "결석 연락을 선생님과 친구에게 다르게 쓰기",
+  "title": "연습 날짜를 옮기자는 부탁을 선생님과 친구에게 다르게 쓰기",
   "uiLang": "ko",
   "format": "rewrite-for-audience",
   "generative": true,
@@ -1544,12 +1631,12 @@
   ],
   "differsFromPlain": "단순 연습은 정중한 문장과 가벼운 문장을 외워 짝짓게 한다. 여기서는 같은 일을 두 사람에게 쓰며, 무엇이 바뀌고 무엇이 그대로여야 하는지 직접 판단하고 만든다.",
   "prerequisites": [
-   "인사와 사과 표현(sorry, thank you)",
-   "과거와 미래 표현 (could not, will)"
+   "Can we ...? / Could we ...? 같은 제안 표현",
+   "요일과 test 같은 쉬운 낱말"
   ],
   "minutes": 14,
   "curriculum": null,
-  "material": "어제 배탈 때문에 동아리 연습에 가지 못한 학생이 있어요. 아래 초안을 한국어 설명 없이 그대로 보내려고 해요.\n\n'I didn't come yesterday. I was sick. Whatever, I'll come tomorrow.'\n\n이 내용을 (1) 동아리 선생님 Mr. Han에게, (2) 같은 동아리 친구에게 보내려고 해요.",
+  "material": "동아리 발표 연습이 수요일에 잡혀 있어요. 그런데 그날 학교 시험이 있어서 연습을 목요일로 옮기고 싶은 학생이 있어요. 아래 초안을 그대로 보내려고 해요.\n\n'Wednesday is bad. Change it to Thursday. I have a test.'\n\n이 부탁을 (1) 동아리 선생님 Mr. Han에게, (2) 같은 동아리 친구에게 보내려고 해요.",
   "steps": [
    {
     "id": "s1",
@@ -1559,44 +1646,44 @@
     "options": [
      {
       "id": "a",
+      "text": "시험이 있다는 이유는 빼고, 목요일로 옮기자고만 쓴다.",
+      "reveals": "이유를 빼면 왜 옮기려는지 전달되지 않아 일방적인 요구처럼 들려요."
+     },
+     {
+      "id": "b",
       "text": "인사와 호칭(예: Hello, Mr. Han)을 넣는다.",
       "reveals": "받는 사람에게 예의를 갖추는 첫 부분이에요."
      },
      {
-      "id": "b",
-      "text": "배탈이었다는 이유는 말하지 않는다.",
-      "reveals": "이유를 빼면 결석 사정이 전달되지 않아요."
-     },
-     {
       "id": "c",
-      "text": "'Whatever' 같은 말을 빼고 미안하다는 말을 넣는다.",
-      "reveals": "태도가 무성의하게 들리는 말을 고치는 방향이에요."
+      "text": "'Change it to Thursday.'를 허락을 구하는 질문(예: Could we ...?)으로 바꾼다.",
+      "reveals": "상대가 결정할 수 있도록 묻는 형태로 바꾸는 방향이에요."
      },
      {
       "id": "d",
-      "text": "내일 오겠다는 말을 빼고 인사만 쓴다.",
-      "reveals": "앞으로의 계획은 상대가 알고 싶어 하는 정보예요."
+      "text": "'bad'를 'not good for me'로만 바꾸고 나머지 문장 형태는 그대로 둔다.",
+      "reveals": "낱말 하나만 부드럽게 해도 'Change it to Thursday.' 같은 명령 형태가 남으면 여전히 무례하게 들려요."
      }
     ],
     "correct": [
-     "a",
+     "b",
      "c"
     ],
-    "explain": "선생님께는 인사·호칭(a)을 넣고, 'Whatever' 같은 무성의한 말은 사과나 감사로 바꾸는 것(c)이 좋아요. 결석 이유(b)와 내일 계획(d)은 상대가 알아야 할 정보라서 빼지 않고 공손하게 말해요.",
+    "explain": "선생님께는 인사·호칭(b)을 넣고 'Change it to Thursday.' 같은 명령은 허락을 구하는 질문(c)으로 바꿔요. 시험이라는 이유는 상대가 결정하는 데 필요한 정보라서 빼지 않아요(a). 낱말 하나만 부드럽게 바꾸고 명령 형태를 그대로 두면(d) 여전히 무례하게 들려요.",
     "hints": [
      "초안의 각 문장이 선생님께 어떻게 들릴지 상상해 보세요.",
-     "받는 사람이 꼭 알아야 하는 정보(이유, 계획)와 말투(태도)를 나눠 보세요."
+     "선생님이 결정하는 데 꼭 필요한 정보(이유, 새 날짜)와 말투(문장 형태)를 나눠 보세요."
     ]
    },
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "(1) 선생님 Mr. Han에게 보내는 영어 메시지를 쓰세요. 인사, 결석 이유, 사과나 감사, 내일 오겠다는 말을 넣으세요.",
+    "prompt": "(1) 선생님 Mr. Han에게 보내는 영어 메시지를 쓰세요. 인사, 수요일에 못 하는 이유, 목요일로 옮겨도 되는지 묻는 질문, 감사 인사를 넣으세요.",
     "placeholder": "예: Hello, Mr. Han. ...",
     "minChars": 35,
     "hints": [
-     "인사와 호칭을 먼저 쓰고, 이유와 계획을 이어 쓰세요.",
-     "'sorry'나 'thank you'를 넣을 위치를 정해 보세요."
+     "인사와 호칭을 먼저 쓰고, 수요일에 못 하는 이유를 이어 쓰세요.",
+     "목요일을 제안하는 문장을 허락을 구하는 질문으로 만들어 보세요."
     ],
     "checks": [
      {
@@ -1613,33 +1700,49 @@
      },
      {
       "id": "w2",
-      "label": "사과나 감사가 있다",
+      "label": "허락을 구하는 공손한 요청 표현이 있다",
       "mode": "any",
       "patterns": [
-       "\\bsorry\\b",
-       "\\bapologi[sz]e",
-       "\\bthank",
-       "\\bthanks\\b"
+       "\\b(?:could|would|may|can) (?:we|I|you)\\b",
+       "\\bwould it be (?:possible|okay|ok|all right|alright)\\b",
+       "\\bis it (?:possible|okay|ok|all right|alright)\\b",
+       "\\bdo you mind\\b",
+       "\\bwould you mind\\b",
+       "\\bI was wondering\\b",
+       "\\bif possible\\b"
       ]
      },
      {
       "id": "w3",
-      "label": "결석 이유(몸이 아팠음)가 있다",
+      "label": "수요일에 못 하는 이유(시험)가 있다",
       "mode": "any",
       "patterns": [
-       "\\bsick\\b",
-       "\\bill\\b",
-       "\\bunwell\\b",
-       "stomach",
-       "\\bache\\b",
-       "not feeling well",
-       "didn't feel well",
-       "did not feel well"
+       "\\btest\\b",
+       "\\bexam\\b",
+       "\\bquiz\\b"
       ]
      },
      {
       "id": "w4",
-      "label": "가벼운 말이나 줄임말이 없다",
+      "label": "새로 제안하는 날(목요일)이 있다",
+      "mode": "any",
+      "patterns": [
+       "\\bthursday\\b",
+       "\\bthu\\b"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "감사 인사가 있다",
+      "mode": "any",
+      "patterns": [
+       "\\bthank\\w*\\b",
+       "\\bappreciate\\b"
+      ]
+     },
+     {
+      "id": "w6",
+      "label": "명령문이나 가벼운 말이 없다",
       "mode": "none",
       "patterns": [
        "\\bwhatever\\b",
@@ -1650,67 +1753,64 @@
        "\\bur\\b",
        "\\blol\\b",
        "\\byo\\b",
-       "\\bya\\b"
+       "\\bya\\b",
+       "(?:^|[.!?]\\s*)(?:please[, ]+)?change (?:it|the|our)\\b"
       ]
      }
     ],
     "selfAssess": [
      "선생님이 읽어도 무례하지 않나요?",
-     "이유와 계획이 분명한가요?",
+     "이유와 새 날짜가 분명한가요?",
      "친구에게 쓰는 말투가 섞여 있지 않나요?"
     ],
     "modelAnswers": [
      {
-      "text": "Hello, Mr. Han. I'm sorry I missed practice yesterday because I had a stomachache. I will come tomorrow. Thank you for understanding."
+      "text": "Hello, Mr. Han. I have a test on Wednesday, so could we move our practice to Thursday? Thank you for understanding."
      },
      {
-      "text": "Dear Mr. Han, I could not come to practice yesterday because I was sick. I apologize, and I will be there tomorrow."
+      "text": "Dear Mr. Han, I have a school test on Wednesday. Would it be possible to practice on Thursday instead? Thank you."
      }
     ],
     "badAnswers": [
      {
-      "text": "Hi Mr. Han, I was sick. Whatever. I'll come tomorrow.",
-      "why": "'Whatever'가 있고 사과나 감사가 없다."
+      "text": "Hi Mr. Han, Change it to Thursday. I have a test.",
+      "why": "허락을 구하는 질문이 아니라 명령이고 감사 인사가 없다."
      },
      {
-      "text": "I didn't come, gonna come tomorrow.",
-      "why": "인사·사과가 없고 줄임말 'gonna'를 썼다."
+      "text": "Wednesday is bad, gonna do Thursday.",
+      "why": "인사와 요청 표현이 없고 줄임말 'gonna'를 썼다."
      }
     ],
-    "humanReview": "공손함의 정도, 영어의 자연스러움은 사람이 읽어야 한다."
+    "humanReview": "공손함의 정도, 영어의 자연스러움은 사람이 읽어야 한다. 자동 점검은 인사·요청 표현·이유·새 날짜·감사의 유무만 본다."
    },
    {
     "id": "s3",
     "kind": "write",
-    "prompt": "(2) 같은 일을 같은 동아리 친구에게 보내는 가벼운 영어 메시지로 쓰세요. 이유와 내일 오겠다는 말은 그대로 넣되, 선생님께 쓴 것보다 편한 말투로 쓰세요.",
+    "prompt": "(2) 같은 부탁을 같은 동아리 친구에게 보내는 가벼운 영어 메시지로 쓰세요. 시험이라는 이유와 목요일 제안은 그대로 넣되, 선생님께 쓴 것보다 편한 말투로 쓰세요.",
     "placeholder": "예: Hey, ...",
     "minChars": 20,
     "hints": [
-     "선생님께 쓴 메시지에서 바꾸고 싶은 부분(인사, 호칭, 사과의 정도)을 정해 보세요.",
-     "이유와 계획은 그대로 남기세요."
+     "선생님께 쓴 메시지에서 바꾸고 싶은 부분(인사, 호칭, 질문 형태)을 정해 보세요.",
+     "이유와 새 날짜는 그대로 남기세요."
     ],
     "checks": [
      {
       "id": "w1",
-      "label": "결석 이유(몸이 아팠음)가 있다",
+      "label": "수요일에 못 하는 이유(시험)가 있다",
       "mode": "any",
       "patterns": [
-       "\\bsick\\b",
-       "\\bill\\b",
-       "stomach",
-       "\\bhurt",
-       "\\bache\\b",
-       "not feeling well",
-       "didn't feel well",
-       "did not feel well"
+       "\\btest\\b",
+       "\\bexam\\b",
+       "\\bquiz\\b"
       ]
      },
      {
       "id": "w2",
-      "label": "내일 올 것이라고 말했다",
+      "label": "새로 제안하는 날(목요일)이 있다",
       "mode": "any",
       "patterns": [
-       "\\btomorrow\\b"
+       "\\bthursday\\b",
+       "\\bthu\\b"
       ]
      },
      {
@@ -1724,56 +1824,77 @@
        "\\bapologi[sz]e",
        "\\bMr\\.",
        "\\bMs\\.",
-       "\\bMrs\\."
+       "\\bMrs\\.",
+       "\\bwould it be possible\\b",
+       "\\bwould you mind\\b",
+       "\\bI was wondering\\b",
+       "\\bthank you for\\b"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "친구에게 쓰는 편한 표시(Hey, Can we, 줄임형, 느낌표 등)가 있다",
+      "mode": "any",
+      "patterns": [
+       "\\b(?:hey|hi|yo)\\b",
+       "\\bcan (?:we|you)\\b",
+       "\\bhow about\\b",
+       "\\bwhat about\\b",
+       "\\bokay\\b",
+       "\\bok\\b",
+       "\\bthanks\\b",
+       "\\bsee you\\b",
+       "[a-z]['’][a-z]{1,2}\\b",
+       "!"
       ]
      }
     ],
     "selfAssess": [
      "선생님께 쓴 것과 말투가 구별되나요?",
-     "이유와 계획은 그대로인가요?",
+     "이유와 새 날짜는 그대로인가요?",
      "친구에게 쓰기에 너무 딱딱하지 않나요?"
     ],
     "modelAnswers": [
      {
-      "text": "Hey, sorry I missed practice yesterday! My stomach hurt. I'll be there tomorrow!"
+      "text": "Hey! Can we move practice to Thursday? I have a test on Wednesday."
      },
      {
-      "text": "Hi! I couldn't come yesterday because I was sick. See you tomorrow."
+      "text": "Hi! I have a test on Wednesday, so Wednesday won't work for me. How about practicing on Thursday?"
      }
     ],
     "badAnswers": [
      {
-      "text": "Dear Mr. Han, I sincerely apologize for my absence yesterday.",
-      "why": "친구에게 쓰기에는 지나치게 격식 있고 내일 계획이 없다."
+      "text": "Dear Mr. Han, would it be possible to practice on Thursday, please?",
+      "why": "친구에게 쓰기에는 지나치게 격식 있고 시험이라는 이유가 없다."
      },
      {
-      "text": "I will come.",
-      "why": "이유가 없고 짧다."
+      "text": "I have a test on Wednesday. Thursday.",
+      "why": "이유와 날짜는 있지만 말투가 선생님께 쓴 것과 구별되지 않고 부탁하는 문장이 되지 않았다."
      }
     ],
-    "humanReview": "친구 메시지의 자연스러움은 사람이 읽어야 한다."
+    "humanReview": "친구 메시지의 자연스러움과 말투 차이는 사람이 읽어야 한다. 자동 점검은 이유·새 날짜·격식 표현·편한 표시의 유무만 본다."
    }
   ],
   "rubric": [
    {
     "criterion": "말투 구분",
-    "full": "선생님용과 친구용의 인사·사과·표현 수준이 뚜렷이 다름",
+    "full": "선생님용과 친구용의 인사·요청 형태·표현 수준이 뚜렷이 다름",
     "partial": "차이는 있으나 일부 섞임",
     "none": "두 글이 같음"
    },
    {
     "criterion": "정보 유지",
-    "full": "두 글 모두 이유와 계획을 전달",
+    "full": "두 글 모두 시험이라는 이유와 목요일 제안을 전달",
     "partial": "한 글에서 정보 하나가 빠짐",
     "none": "정보가 빠지거나 바뀜"
    }
   ],
   "alternatives": [
-   "친구용에서 'Sorry'로 시작하거나 이모티콘 같은 표현을 쓰는 것도 가능하다.",
+   "친구용에서 'Is Thursday okay?'처럼 짧게 묻는 것도 가능하다.",
    "선생님용에서 'Dear Mr. Han' 또는 'Hello, Mr. Han'은 모두 괜찮다."
   ],
   "hardCases": [
-   "'I'm sorry'는 선생님용과 친구용에 모두 쓸 수 있으나, 'I apologize'는 친구에게 지나치게 격식 있게 들린다."
+   "'please'가 있다고 모두 공손한 것은 아니다. 'Please change it to Thursday.'는 여전히 명령형이라 선생님께는 어색하다."
   ],
   "cautions": {
    "language": "gonna, wanna 같은 줄임말이 친구용에는 가능하다는 점은 자동 점검에서 막지 않는다.",
@@ -1783,13 +1904,14 @@
   "autoVsHuman": {
    "auto": [
     "선택 단계 정답",
-    "인사·사과·이유·금지 표현의 유무"
+    "인사·요청 표현·이유·새 날짜·금지 표현의 유무"
    ],
    "human": [
     "말투의 적절성",
     "자연스러움"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-m2-10",
@@ -1828,8 +1950,8 @@
       "options": [
        {
         "id": "a",
-        "text": "Jun이 Sora를 싫어하게 되었다.",
-        "reveals": "문자에는 그런 단서가 없어요. 이유를 마음대로 지어낸 해석이에요."
+        "text": "Jun에게 아픈 가족이 생긴 것 같다.",
+        "reveals": "그럴 수도 있지만 문자에는 이유를 짐작할 단서가 없어요. 이유를 하나로 정해 버린 해석이에요."
        },
        {
         "id": "b",
@@ -1874,29 +1996,28 @@
      },
      {
       "info": "Jun: Thanks for not asking too much. Can we see the movie next Saturday instead?",
-      "ask": "Sora의 답장으로 알맞은 방향을 모두 고르세요.",
+      "ask": "Sora의 답장으로 가장 알맞은 방향은 무엇일까요?",
       "options": [
        {
         "id": "a",
-        "text": "Sure! Next Saturday works. I hope your grandfather gets better.",
-        "reveals": "걱정과 일정 수락을 함께 담았어요."
-       },
-       {
-        "id": "b",
         "text": "Why didn't you tell me earlier? I waited an hour!",
         "reveals": "상대의 사정을 헤아리지 않고 따지는 말투예요."
        },
        {
+        "id": "b",
+        "text": "Sure! Next Saturday works. By the way, what happened to your grandfather? Tell me everything.",
+        "reveals": "걱정은 담았지만 Jun이 '너무 묻지 않아 줘서 고맙다'고 한 말을 놓치고 캐묻고 있어요."
+       },
+       {
         "id": "c",
-        "text": "Of course. I'm busy on Saturday, so can we try Sunday?",
-        "reveals": "걱정을 전하면서 가능한 날짜를 제안하는 답이에요."
+        "text": "Sure! Next Saturday works. I hope your grandfather gets better.",
+        "reveals": "걱정과 일정 수락을 함께 담았어요."
        }
       ],
       "reasonable": [
-       "a",
        "c"
       ],
-      "after": "a와 c는 모두 사정을 헤아리면서 다음 일정을 정하는 답이에요. b는 새 정보를 반영하지 못했어요."
+      "after": "c는 사정을 헤아리면서 다음 일정에 답하는 말이에요. a는 새 정보를 반영하지 못했고, b는 Jun이 부담스러워하지 않게 해 준 배려를 이어 가지 못했어요."
      }
     ],
     "reflect": "처음 문자에서는 이유를 모른다고만 해석했고, 새 문자가 올 때마다 해석이 바뀌었어요. 어떤 문장이 해석을 바꿨는지, 처음에 이유를 지어내지 않은 것이 왜 중요했는지 떠올려 보세요.",
@@ -1921,40 +2042,52 @@
       "label": "위로나 이해를 나타내는 표현이 있다",
       "mode": "any",
       "patterns": [
-       "\\bsorry to hear\\b",
+       "\\bsorry (?:to hear|about|for)\\b",
+       "\\bI(?:'m| am) (?:so |very )?sorry\\b",
        "\\bhope\\b",
        "\\btake care\\b",
        "\\bno problem\\b",
-       "\\bit'?s okay\\b",
+       "\\bit['’]?s okay\\b",
        "\\bit is okay\\b",
-       "\\bthat'?s okay\\b",
+       "\\bthat['’]?s okay\\b",
        "\\bunderstand\\b",
-       "\\bdon'?t worry\\b",
-       "\\bdo not worry\\b"
+       "\\bdon['’]?t worry\\b",
+       "\\bdo not worry\\b",
+       "\\bthat['’]?s sad\\b",
+       "\\bfeel better\\b",
+       "\\bget well\\b",
+       "\\bthinking of\\b",
+       "\\bhere for you\\b"
       ]
      },
      {
       "id": "w2",
-      "label": "다음 일정(영화·토요일 등)에 대해 대답했다",
+      "label": "다음 일정(토요일·영화 등)을 가리켰다",
       "mode": "any",
       "patterns": [
        "\\bsaturday\\b",
        "\\bsunday\\b",
        "\\bnext week\\b",
        "\\bmovie\\b",
-       "\\bnext time\\b",
-       "\\bsure\\b",
-       "\\bgood\\b",
-       "\\bworks?\\b"
+       "\\bthen\\b"
       ]
      },
      {
       "id": "w3",
-      "label": "따지는 질문이 없다",
+      "label": "제안한 일정을 받아들였다",
+      "mode": "any",
+      "patterns": [
+       "\\b(?:sure|yes|yeah|works?|sounds (?:good|great|perfect|fine)|let['’]?s|perfect|of course|I['’]?d love to|is (?:fine|okay|ok|good|great)|that['’]?s fine|would be (?:great|good|fine))\\b"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "따지는 질문이나 거절하는 말이 없다",
       "mode": "none",
       "patterns": [
        "\\bwhy\\b",
-       "\\bwhat happened\\b"
+       "\\bwhat happened\\b",
+       "\\b(?:doesn['’]?t|does not|won['’]?t|will not|can['’]?t|cannot|can not) (?:work|go|make it|come)\\b"
       ]
      }
     ],
@@ -1969,6 +2102,12 @@
      },
      {
       "text": "No problem, I understand. I hope your grandfather gets better soon. Next Saturday sounds good!"
+     },
+     {
+      "text": "Of course! I'm sorry about your grandfather. Let's go next Saturday."
+     },
+     {
+      "text": "That's sad. I'm sorry about your grandfather. Next Saturday is fine!"
      }
     ],
     "badAnswers": [
@@ -1999,7 +2138,7 @@
    }
   ],
   "alternatives": [
-   "마지막 단계의 a와 c 모두 타당하다. 일정이 안 맞는 경우에는 대안을 제안하는 것이 자연스럽다."
+   "마지막 단계에서는 사정을 헤아리면서 일정을 받아들이는 답이 알맞다. 일정이 안 맞으면 먼저 사정을 헤아린 뒤 다른 날을 제안하는 답도 자연스럽지만, 이 장면에서는 Jun이 제안한 날에 대답해야 한다."
   ],
   "hardCases": [
    "Jun이 'Something came up'이라고만 말했을 때 가족 일을 짐작하는 것은 이른 판단이다. 1단계의 근거는 사정이 있다는 것까지다."
@@ -2012,11 +2151,12 @@
   "autoVsHuman": {
    "auto": [
     "각 단계의 선택",
-    "답장에 위로·일정·금지 표현의 유무"
+    "답장에 위로, 일정 수락, 따지는 말이 없는지의 유무"
    ],
    "human": [
     "답장의 진심과 자연스러움"
    ]
-  }
+  },
+  "status": "draft"
  }
 ]

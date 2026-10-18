@@ -31,7 +31,7 @@
     "prompt": "Which core meaning of 손이 크다 fits all three sentences?",
     "hints": [
      "Cover the idiom and ask what the three situations (김장, 월급날, 찌개) have in common.",
-     "Test each option against (나), the sentence with no cooking."
+     "Test each option against all three sentences, not only the one that sounds easiest."
     ],
     "options": [
      {
@@ -46,8 +46,8 @@
      },
      {
       "id": "c",
-      "text": "The person is careless and often drops or breaks things at home.",
-      "reveals": "Importing a different 'hands' idiom. Nothing in the three sentences mentions breaking or dropping."
+      "text": "The person spends money without thinking about tomorrow.",
+      "reveals": "Fits (나) only. Check (가) and (다): they are about the amount of food, not about careless spending."
      },
      {
       "id": "d",
@@ -65,8 +65,8 @@
     "kind": "choose",
     "prompt": "In which sentences does the speaker treat 손이 크다 as at least a mild problem? Choose all that apply.",
     "hints": [
-     "For each sentence, find the clause that says what happened as a result.",
-     "Ask whether that result is something the speaker would be glad about."
+     "For each sentence, ask how the speaker sounds: pleased, neutral or worried?",
+     "Then find the words in the sentence that make you feel that."
     ],
     "options": [
      {
@@ -129,7 +129,16 @@
        "because",
        "whereas",
        "while",
-       "but ",
+       "\\bso\\b",
+       "therefore",
+       "\\bsince\\b",
+       "\\bas\\b",
+       "differ",
+       "contrast",
+       "instead",
+       "lead",
+       "end(s)? in",
+       "\\bthus\\b",
        "depend",
        "결과",
        "그래서",
@@ -150,12 +159,19 @@
      },
      {
       "text": "손이 크다 only says that she or he uses things in large amounts. In (가) that helps the neighbours, but in (나) 빠듯해요 shows it costs the brother money, so the speaker sounds worried."
+     },
+     {
+      "text": "(가) 넉넉하게 담그세요 is a gift to the neighbours so it feels warm; (나) 월말에는 늘 빠듯해요 is a money problem so it feels worrying."
      }
     ],
     "badAnswers": [
      {
       "text": "It means that the person has big hands, so it is warm.",
       "why": "No Korean evidence and a literal reading of the idiom."
+     },
+     {
+      "text": "It means big hands, but 김장 is warm",
+      "why": "Quotes a Korean word but gives no link between the result and the feeling, and reads the idiom literally."
      }
     ],
     "humanReview": "Whether the quoted phrase really supports the claimed feeling, and whether the learner treats connotation as coming from context."
@@ -195,7 +211,8 @@
    "human": [
     "Whether the explanation actually connects the result clause with the feeling"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k10-02",
@@ -204,7 +221,7 @@
   "topic": "News headline vs. article",
   "level": 3,
   "levelLabel": "Advanced",
-  "title": "The headline that says too much",
+  "title": "Reading a headline against its numbers",
   "uiLang": "en",
   "format": "find-error-fix",
   "generative": true,
@@ -217,7 +234,8 @@
   "differsFromPlain": "Plain practice asks the meaning of news vocabulary such as 과반 or 응답자. Here you must use those words to test whether a conclusion follows from the numbers and then write a corrected headline.",
   "prerequisites": [
    "Can read percentages and numbers in Korean news",
-   "Knows the words 찬성, 반대, 응답자"
+   "Knows the words 찬성, 반대, 응답자",
+   "Knows 다수 (many / most) and 과반 (more than half)"
   ],
   "minutes": 10,
   "curriculum": null,
@@ -228,8 +246,8 @@
     "kind": "pickLine",
     "prompt": "One sentence claims more than the sentences before it support. Which one?",
     "hints": [
-     "Compare the percentages in line 2 with the word used in line 4.",
-     "Ask who the 1,000 people were (line 3) before deciding what they can speak for."
+     "Compare the percentages in the second sentence with the conclusion drawn in the last one.",
+     "Ask who the 1,000 people actually were before deciding what they can speak for."
     ],
     "lines": [
      "서울시가 시민 1,000명에게 대중교통 요금 인상에 대한 의견을 물었다.",
@@ -240,7 +258,7 @@
     "wrong": [
      3
     ],
-    "explain": "Line 4 is the overreach. 48% is less than half, and 41% opposed, so 'majority' (다수) is not supported by line 2. Line 3 also shows that only people met at subway stations at rush hour answered, so they cannot speak for all Seoul citizens."
+    "explain": "Line 4 is the overreach. 다수 sounds like 'most', but 48% is less than half and 41% opposed: 찬성 is the largest group (a plurality), not a majority. Line 3 also shows that only people met at subway stations at rush hour answered, so they cannot speak for all Seoul citizens."
    },
    {
     "id": "s2",
@@ -255,10 +273,11 @@
     "checks": [
      {
       "id": "w1",
-      "label": "uses the figure 48",
+      "label": "uses a figure from line 2 (48 or 41)",
       "mode": "any",
       "patterns": [
-       "48"
+       "48",
+       "41"
       ]
      },
      {
@@ -280,14 +299,22 @@
        "지하철",
        "역 앞",
        "표본",
-       "대상",
+       "만난",
+       "물었",
+       "한정",
+       "한계",
+       "대표",
+       "전체 시민",
+       "일부 시민",
        "commut",
        "sample",
        "subway",
        "station",
-       "limit",
        "biased",
-       "only"
+       "representative",
+       "rush hour",
+       "not all",
+       "limited"
       ]
      }
     ],
@@ -302,6 +329,9 @@
      },
      {
       "text": "요금 인상 찬성 48%, 반대 41%… 찬성이 가장 많지만 절반은 안 돼. 조사 대상이 출근길 지하철역 이용자뿐이라는 한계가 있다."
+     },
+     {
+      "text": "찬성 48%, 반대 41%… 찬성이 가장 많지만 과반은 아니다. 평일 아침에 만난 사람만 물었다는 한계가 있다."
      }
     ],
     "badAnswers": [
@@ -312,6 +342,10 @@
      {
       "text": "서울 시민 절반 요금 인상 찬성, 48%",
       "why": "Uses the figure but ignores the sampling limit."
+     },
+     {
+      "text": "찬성 48% (조사 대상: 시민 1,000명)",
+      "why": "Uses the figure and mentions who was asked, but names no limit of the sample."
      }
     ],
     "humanReview": "Whether the rewritten headline is natural headline style and whether the limit named is really about representativeness."
@@ -351,7 +385,8 @@
    "human": [
     "Naturalness of the headline and quality of the stated limit"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k10-03",
@@ -360,11 +395,11 @@
   "topic": "News claim and evidence",
   "level": 3,
   "levelLabel": "Advanced",
-  "title": "Does the phone cause the grades?",
+  "title": "Does the library cause the grades?",
   "uiLang": "en",
   "format": "choose-needed-info",
   "generative": false,
-  "goal": "Decide which additional information would help test whether phone use causes lower grades, spot a reversed-cause reading, and write one question for the researcher.",
+  "goal": "Decide which additional information would help test whether library use causes higher grades, spot a reversed-cause reading, and write one question for the researcher.",
   "thinking": [
    "Separating correlation from cause",
    "Choosing the information that would settle a claim",
@@ -373,40 +408,40 @@
   "differsFromPlain": "Plain practice reads a news article for its main idea. Here you ask what the article does not tell you and which missing facts would change your judgement.",
   "prerequisites": [
    "Can read a short Korean news summary",
-   "Knows the words 성적, 사용 시간, 평균"
+   "Knows the words 성적, 이용, 평균"
   ],
   "minutes": 9,
   "curriculum": null,
-  "material": "News summary: 한 연구에서 하루 스마트폰 사용 시간이 4시간 이상인 학생의 평균 성적이 2시간 미만인 학생보다 낮았다. 연구자는 \"스마트폰 때문에 성적이 떨어진다\"고 말했다.",
+  "material": "News summary: 한 연구에서 한 달에 도서관을 8번 이상 이용한 학생의 평균 성적이 2번 미만 이용한 학생보다 높았다. 연구자는 \"도서관 이용이 성적을 올린다\"고 말했다.",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
-    "prompt": "Which extra facts would help you decide whether phone use CAUSES lower grades? Choose all that apply.",
+    "prompt": "Which extra facts would help you decide whether library use CAUSES higher grades? Choose all that apply.",
     "hints": [
-     "For each option ask: would the answer change how likely it is that the phone is the cause?",
-     "Ask what else could differ between heavy and light phone users."
+     "For each option ask: would the answer change how likely it is that the library is the cause?",
+     "Ask what else could differ between frequent and rare library users."
     ],
     "options": [
      {
       "id": "a",
-      "text": "Whether the same students' grades were measured before and after their phone use increased",
+      "text": "Whether the same students' grades were measured before and after they began to use the library often",
       "reveals": "Looking for change over time in the same people, which a single comparison cannot show."
      },
      {
       "id": "b",
-      "text": "The brand of phone most of the students use",
-      "reveals": "Treating a detail that is not linked to grades as evidence."
+      "text": "Which kinds of books the students borrowed most often",
+      "reveals": "An interesting detail about use, but it does not tell you whether the use or something else produces the grades."
      },
      {
       "id": "c",
-      "text": "Whether students who use phones a lot also sleep less or study fewer hours",
-      "reveals": "Looking for a third factor that could explain both phone use and grades."
+      "text": "Whether students who use the library a lot already study more or are more motivated",
+      "reveals": "Looking for a third factor that could explain both library use and grades."
      },
      {
       "id": "d",
-      "text": "How famous the researcher's university is",
-      "reveals": "Trusting the speaker's reputation instead of the evidence."
+      "text": "What the average grade of all students in the country is",
+      "reveals": "A national average shows whether these students are typical, not what causes their gap."
      },
      {
       "id": "e",
@@ -418,7 +453,7 @@
      "a",
      "c"
     ],
-    "explain": "To test cause you need before/after data on the same students (a) and a check of other factors such as sleep or study time (c). Brand and fame do not bear on the cause.",
+    "explain": "To test cause you need before/after data on the same students (a) and a check of other factors such as study time or motivation (c). Book types and a national average do not bear on the cause.",
     "multi": true,
     "acceptable": [
      {
@@ -434,10 +469,10 @@
    {
     "id": "s2",
     "kind": "choose",
-    "prompt": "A reader says: \"Maybe students with lower grades use their phones more to escape stress.\" Which idea does this show?",
+    "prompt": "A reader says: \"Maybe students with high grades like studying, so they go to the library more.\" Which idea does this show?",
     "hints": [
-     "Rewrite the reader's sentence with 'grades' as the cause and 'phone' as the effect.",
-     "Check which option talks about direction, not honesty or sampling."
+     "Compare what the study says with what the reader says: in each, which is the cause and which is the effect?",
+     "Check which option is about direction, not honesty or sampling."
     ],
     "options": [
      {
@@ -447,32 +482,32 @@
      },
      {
       "id": "b",
-      "text": "Phone use and grades are certainly unrelated.",
+      "text": "Library use and grades are certainly unrelated.",
       "reveals": "Overcorrecting: reversing the direction does not mean there is no link."
      },
      {
       "id": "c",
-      "text": "The cause may run the other way: low grades may lead to more phone use.",
+      "text": "The cause may run the other way: high grades (or studious habits) may lead to more library use.",
       "reveals": "Considering the reverse direction of cause and effect."
      },
      {
       "id": "d",
-      "text": "Only the heaviest phone users were surveyed.",
+      "text": "Only students who like reading were surveyed.",
       "reveals": "Mixing in a sampling worry that the reader's sentence does not mention."
      }
     ],
     "correct": [
      "c"
     ],
-    "explain": "The reader proposes reverse causation. The same numbers fit both directions, which is why the claim '때문에' goes beyond the data."
+    "explain": "The reader proposes reverse causation. The same numbers fit both directions, which is why the claim that library use raises grades goes beyond the data."
    },
    {
     "id": "s3",
     "kind": "write",
-    "prompt": "In Korean, write ONE question you would ask the researcher before accepting \"스마트폰 때문에 성적이 떨어진다\".",
+    "prompt": "In Korean, write ONE question you would ask the researcher before accepting \"도서관 이용이 성적을 올린다\".",
     "hints": [
-     "Choose a missing fact from step 1.",
-     "Make the question one that a yes/no answer would not close."
+     "Choose a missing fact from step 1, or the reverse direction from step 2.",
+     "Think what you would need to know in order to rule out another explanation."
     ],
     "placeholder": "예: ...",
     "minChars": 10,
@@ -493,27 +528,36 @@
      },
      {
       "id": "w2",
-      "label": "asks about change over time, other factors, or cause",
+      "label": "asks about change over time, other factors, the direction of cause, or how grades were measured",
       "mode": "any",
       "patterns": [
-       "수면",
-       "잠",
-       "공부",
        "이전",
        "전에",
+       "이후",
        "같은 학생",
        "추적",
        "변화",
-       "원인",
-       "인과",
+       "원래",
+       "공부 시간",
+       "공부를",
+       "의욕",
+       "동기",
        "다른 요인",
-       "때문",
-       "sleep",
+       "인과",
+       "학교 기록",
+       "기록",
+       "스스로",
+       "자기 보고",
+       "반대로",
+       "오히려",
+       "성적이 높은",
+       "더 자주",
        "before",
        "over time",
        "same students",
-       "cause",
-       "other factor"
+       "other factor",
+       "motivat",
+       "study"
       ]
      }
     ],
@@ -523,10 +567,16 @@
     ],
     "modelAnswers": [
      {
-      "text": "사용 시간이 늘기 전에는 같은 학생들의 성적이 어땠나요?"
+      "text": "도서관을 자주 이용하기 전에는 같은 학생들의 성적이 어땠나요?"
      },
      {
-      "text": "스마트폰을 오래 쓰는 학생들이 잠이나 공부 시간도 적은 것은 아닌가요?"
+      "text": "도서관을 자주 가는 학생들이 원래 공부를 더 열심히 하는 학생은 아닌가요?"
+     },
+     {
+      "text": "성적이 높은 학생이 도서관에 더 자주 가는 것은 아닐까요?"
+     },
+     {
+      "text": "학생들의 성적은 학교 기록에서 가져왔나요?"
      }
     ],
     "badAnswers": [
@@ -535,8 +585,12 @@
       "why": "A question, but about nothing specific."
      },
      {
-      "text": "스마트폰이 나쁜 거예요.",
+      "text": "도서관이 좋은 곳이에요.",
       "why": "A statement, not a question."
+     },
+     {
+      "text": "도서관 때문에 성적이 오르는 게 맞나요?",
+      "why": "A question, but it only repeats the claim and asks for no missing fact."
      }
     ],
     "humanReview": "Whether the question is natural and genuinely probes cause."
@@ -576,7 +630,8 @@
    "human": [
     "Quality of the question"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k10-04",
@@ -598,7 +653,8 @@
   "differsFromPlain": "Plain practice translates short chat lines. Here the same few words are reread three times as more context arrives, and you track how and why your interpretation changes.",
   "prerequisites": [
    "Can read casual Korean chat",
-   "Knows that 괜찮아 and 알겠습니다 can be said without agreeing happily"
+   "Knows that 괜찮아 and 알겠습니다 can be said without agreeing happily",
+   "Knows 막내 (the youngest member) and 어차피 (anyway)"
   ],
   "minutes": 10,
   "curriculum": null,
@@ -665,12 +721,12 @@
      },
      {
       "info": "Later, 지민 writes to a friend: \"자료 정리? 뭐, 어차피 내가 제일 막내인데 어쩌겠어. 괜찮아.\"",
-      "ask": "If you were the senior and could read this, what is the best next step?",
+      "ask": "Suppose the senior learned what she wrote to her friend. What is the best next step?",
       "options": [
        {
         "id": "a",
-        "text": "Take 괜찮아 at face value and ask for the same next time.",
-        "reveals": "Reading 괜찮아 literally and ignoring 어쩌겠어 (what else can I do)."
+        "text": "Thank her warmly in the team chat and leave it there.",
+        "reveals": "Kind, but it answers 'she is fine' and ignores the one-sided burden she describes with 어쩌겠어."
        },
        {
         "id": "b",
@@ -704,15 +760,24 @@
     "checks": [
      {
       "id": "w1",
-      "label": "quotes Korean phrases from the chat",
+      "label": "quotes at least TWO different Korean phrases from the chat",
       "mode": "any",
       "patterns": [
-       "아, 네",
-       "제가요",
-       "알겠습니다",
-       "어쩌겠어",
-       "막내",
-       "괜찮아"
+       "(?=[\\s\\S]*아[,，]?\\s*네)(?=[\\s\\S]*제가요)",
+       "(?=[\\s\\S]*아[,，]?\\s*네)(?=[\\s\\S]*알겠습니다)",
+       "(?=[\\s\\S]*아[,，]?\\s*네)(?=[\\s\\S]*어쩌겠어)",
+       "(?=[\\s\\S]*아[,，]?\\s*네)(?=[\\s\\S]*막내)",
+       "(?=[\\s\\S]*아[,，]?\\s*네)(?=[\\s\\S]*괜찮아)",
+       "(?=[\\s\\S]*제가요)(?=[\\s\\S]*알겠습니다)",
+       "(?=[\\s\\S]*제가요)(?=[\\s\\S]*어쩌겠어)",
+       "(?=[\\s\\S]*제가요)(?=[\\s\\S]*막내)",
+       "(?=[\\s\\S]*제가요)(?=[\\s\\S]*괜찮아)",
+       "(?=[\\s\\S]*알겠습니다)(?=[\\s\\S]*어쩌겠어)",
+       "(?=[\\s\\S]*알겠습니다)(?=[\\s\\S]*막내)",
+       "(?=[\\s\\S]*알겠습니다)(?=[\\s\\S]*괜찮아)",
+       "(?=[\\s\\S]*어쩌겠어)(?=[\\s\\S]*막내)",
+       "(?=[\\s\\S]*어쩌겠어)(?=[\\s\\S]*괜찮아)",
+       "(?=[\\s\\S]*막내)(?=[\\s\\S]*괜찮아)"
       ]
      },
      {
@@ -723,10 +788,14 @@
        "chang",
        "revis",
        "at first",
-       "later",
-       "however",
-       "but",
-       "now",
+       "first read",
+       "first thought",
+       "\\bthen\\b",
+       "\\blater\\b",
+       "instead",
+       "turned",
+       "realiz",
+       "at the end",
        "바뀌",
        "달라",
        "처음"
@@ -749,6 +818,10 @@
      {
       "text": "She is happy to help.",
       "why": "No quoted Korean and no change of reading."
+     },
+     {
+      "text": "괜찮아 but she is happy",
+      "why": "Quotes only one phrase and shows no change of reading."
      }
     ],
     "humanReview": "Whether the quoted phrases truly drive the revised reading."
@@ -788,7 +861,8 @@
    "human": [
     "Whether the reasoning is persuasive"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k10-05",
@@ -822,7 +896,7 @@
     "prompt": "Which features of this message would a Korean professor probably find inappropriate? Choose all that apply.",
     "hints": [
      "Imagine you are the professor reading it at 11 p.m. What would you need to know?",
-     "Separate a missing function (asking, naming) from a matter of taste (symbols)."
+     "Separate what the message fails to DO (ask, identify the writer) from how it merely SOUNDS."
     ],
     "options": [
      {
@@ -873,6 +947,15 @@
        "e"
       ],
       "reason": "A more formal ending is expected in a written message to a professor, so noticing it is reasonable."
+     },
+     {
+      "ids": [
+       "a",
+       "b",
+       "c",
+       "e"
+      ],
+      "reason": "Noticing both the casual markers and the ending, besides the two core problems, is a reasonable extra."
      }
     ]
    },
@@ -906,9 +989,17 @@
        "괜찮을까요",
        "가능할까요",
        "있을까요",
+       "되겠습니까",
+       "되는지",
+       "여쭙",
+       "문의",
        "허락",
        "양해",
-       "부탁드"
+       "부탁드",
+       "드려도",
+       "제출해도",
+       "괜찮겠습니까",
+       "가능하겠습니까"
       ]
      },
      {
@@ -919,10 +1010,15 @@
        "몸",
        "아프",
        "아파",
+       "아픕",
+       "편찮",
        "컨디션",
        "감기",
        "병",
-       "몸살"
+       "몸살",
+       "건강",
+       "열이",
+       "통증"
       ]
      },
      {
@@ -935,6 +1031,20 @@
        "~",
        "낼게요",
        "할게요"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "says who the writer is (name or class)",
+      "mode": "any",
+      "patterns": [
+       "수업",
+       "강의",
+       "학번",
+       "학과",
+       "과목",
+       "교시",
+       "[가-힣]{2,4}(이?라고 합니다|입니다)"
       ]
      }
     ],
@@ -949,6 +1059,12 @@
      },
      {
       "text": "안녕하세요, 교수님. 목요일 3교시 수업의 김민준입니다. 감기 몸살로 과제를 마무리하지 못했습니다. 하루만 늦게 제출할 수 있을까요? 죄송하지만 허락해 주시면 감사하겠습니다."
+     },
+     {
+      "text": "교수님, 안녕하세요. 월요일 수업 박서연입니다. 건강이 안 좋아 과제를 하루 늦게 제출해도 되는지 여쭙고 싶습니다."
+     },
+     {
+      "text": "안녕하세요, 교수님. 화요일 수업의 최민호입니다. 몸이 아파서 과제를 내일 제출해도 되겠습니까? 죄송합니다."
      }
     ],
     "badAnswers": [
@@ -998,7 +1114,8 @@
    "human": [
     "Naturalness and register of the rewrite"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k10-06",
@@ -1011,13 +1128,13 @@
   "uiLang": "en",
   "format": "find-error-fix",
   "generative": false,
-  "goal": "Find the sentence where an idiom clashes with the rest of the sentence, fix it, and write a new sentence in which the context makes the idiom's meaning inferable.",
+  "goal": "Find the sentence where an idiom clashes with the rest of the sentence, choose a repair, and then repair a second clashing sentence yourself.",
   "thinking": [
    "Detecting a contradiction between an idiom and its context",
    "Repairing a sentence",
-   "Giving context clues"
+   "Making an idiom and its context agree"
   ],
-  "differsFromPlain": "Plain practice matches idioms to meanings. Here the meanings are not asked; you detect which use fails and why, and then build context that makes an idiom understandable.",
+  "differsFromPlain": "Plain practice matches idioms to meanings. Here the meanings are not asked; you detect which use fails and why, and then repair a second clashing sentence.",
   "prerequisites": [
    "Knows the idioms 발등에 불이 떨어지다, 누워서 떡 먹기, 발이 넓다 as vocabulary items",
    "Can read short learner essays"
@@ -1056,18 +1173,18 @@
     "options": [
      {
       "id": "a",
-      "text": "우리 팀장님은 발이 넓어서 여러 부서 사람들을 두루 아시고 소개도 잘해 주세요.",
-      "reveals": "Keeping the idiom and giving it a result that matches 'knows many people'."
-     },
-     {
-      "id": "b",
       "text": "우리 팀장님은 발이 넓어서 키가 큰 편이시고 신발을 따로 맞추세요.",
       "reveals": "Reading the idiom literally as wide feet."
      },
      {
+      "id": "b",
+      "text": "우리 팀장님은 발이 넓어서 여러 부서 사람들을 두루 아시고 소개도 잘해 주세요.",
+      "reveals": "Keeping the idiom and giving it a result that matches 'knows many people'."
+     },
+     {
       "id": "c",
-      "text": "우리 팀장님은 발이 넓어서 어디서나 아는 사람을 만나세요.",
-      "reveals": "Keeping the idiom with a fitting result, though the sentence now focuses on chance meetings."
+      "text": "우리 팀장님은 발이 넓어서 요즘은 사람들을 피해 집에서 쉬는 날이 많으세요.",
+      "reveals": "Keeps the idiom, but the result still does not follow: knowing many people is not a reason to avoid people."
      },
      {
       "id": "d",
@@ -1076,80 +1193,85 @@
      }
     ],
     "correct": [
-     "a"
+     "b"
     ],
-    "explain": "A good repair keeps 발이 넓다 as 'knows many people' and adds a consequence, such as knowing people across departments. Literal readings (b, d) use the words, not the idiom.",
-    "acceptable": [
-     {
-      "ids": [
-       "c"
-      ],
-      "reason": "Option c also keeps the figurative meaning and gives a fitting consequence."
-     }
-    ]
+    "explain": "A good repair keeps 발이 넓다 as 'knows many people' and adds a consequence, such as knowing people across departments. Literal readings (a, d) use the words, not the idiom, and c keeps the clash."
    },
    {
     "id": "s3",
     "kind": "write",
-    "prompt": "Write ONE Korean sentence with an idiom from the passage so that the context makes its meaning clear to someone who has never seen it.",
+    "prompt": "Another learner wrote: \"그 식당은 소문난 잔치에 먹을 것 없다더니 음식이 정말 맛있고 줄도 길어서 매일 가요.\" The idiom clashes with the rest. Rewrite it as ONE Korean sentence so that the idiom (or another expression) and the rest agree, changing as little as you can.",
     "hints": [
-     "Add a clause that tells what happened because of the idiom's meaning.",
-     "Avoid explaining the idiom directly; show the situation."
+     "Decide what the idiom says about the restaurant, then check whether the rest of the sentence says the same thing.",
+     "You may change the rest of the sentence to match the idiom, or change the opening to match the rest."
     ],
     "placeholder": "예: ...",
     "minChars": 15,
     "checks": [
      {
       "id": "w1",
-      "label": "contains one of the idioms",
-      "mode": "any",
+      "label": "does not keep the idiom together with praise",
+      "mode": "none",
       "patterns": [
-       "발등에 불",
-       "누워서 떡",
-       "발이 넓",
-       "소문난 잔치"
+       "소문난 잔치.{0,30}(맛있고|맛있어서|맛있어요|맛있었|훌륭|최고|매일 가)"
       ]
      },
      {
       "id": "w2",
-      "label": "gives a reason or result clause",
+      "label": "has a word that agrees with the idiom or replaces it",
       "mode": "any",
       "patterns": [
-       "어서",
-       "아서",
-       "해서",
-       "라서",
-       "니까",
-       "는데",
-       "지만",
-       "더니",
-       "때문에"
+       "별로",
+       "실망",
+       "기대",
+       "맛없",
+       "맛이 없",
+       "아쉽",
+       "그저 그",
+       "평범",
+       "소문대로",
+       "소문처럼",
+       "과연",
+       "역시",
+       "명성",
+       "인기"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "is a complete sentence about the restaurant",
+      "mode": "any",
+      "patterns": [
+       "식당",
+       "음식",
+       "맛",
+       "집"
       ]
      }
     ],
     "selfAssess": [
-     "Would a reader guess the meaning from my sentence?",
-     "Does my clause contradict the idiom?"
+     "If I kept the idiom, does the rest of my sentence say the same thing as the idiom?",
+     "Did I change only what was needed?"
     ],
     "modelAnswers": [
      {
-      "text": "시험 전날 노트북이 고장 나서 발등에 불이 떨어졌지만 친구가 빌려줘서 다행이었어요."
+      "text": "그 식당은 소문난 잔치에 먹을 것 없다더니 줄만 길고 음식은 별로여서 실망했어요."
      },
      {
-      "text": "그 선배는 발이 넓어서 어느 회사에 가도 아는 사람이 있대요."
+      "text": "그 식당은 소문대로 음식이 정말 맛있고 줄도 길어서 매일 가요."
      }
     ],
     "badAnswers": [
      {
-      "text": "발이 넓다.",
-      "why": "Only the idiom; no context clue."
+      "text": "그 식당은 소문난 잔치에 먹을 것 없다더니 음식이 정말 맛있고 줄도 길어서 매일 가요.",
+      "why": "The original sentence: the idiom still clashes with the praise."
      },
      {
       "text": "저는 한국어를 공부해요.",
-      "why": "No idiom from the passage."
+      "why": "Not a repair; says nothing about the restaurant."
      }
     ],
-    "humanReview": "Whether the context really makes the meaning inferable."
+    "humanReview": "Whether the repaired sentence reads naturally and the idiom and the rest of the sentence really agree."
    }
   ],
   "rubric": [
@@ -1168,10 +1290,10 @@
   ],
   "alternatives": [
    "Line 2 can be argued weak if the writer found it hard; the clash in line 3 is stronger.",
-   "In s2 both a and c are acceptable."
+   "In s3 a learner may keep the idiom and make the rest negative, or drop the idiom and keep the praise; both repair the clash."
   ],
   "hardCases": [
-   "A clause that uses 하지만 may flip the meaning; check that the clause matches the idiom."
+   "Writing 소문난 잔치 together with a mixed result (long queue but bad food) is fine; check that the result is not praise only."
   ],
   "cautions": {
    "language": "Idioms are glossed in English in the material because the aim is to judge use, not to recall meanings.",
@@ -1181,12 +1303,14 @@
   "autoVsHuman": {
    "auto": [
     "The error line in s1",
-    "The idiom and a reason or result clause in s3"
+    "The repair choice in s2",
+    "No idiom + praise clash and an agreeing word in s3"
    ],
    "human": [
-    "Whether the context clue is real"
+    "Whether the repaired sentence is natural and consistent"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k10-07",
@@ -1212,15 +1336,15 @@
   ],
   "minutes": 11,
   "curriculum": null,
-  "material": "A newspaper polled 200 people about a new policy. Each person answered 찬성 (in favour), 반대 (opposed) or 모름 (not sure). Headline A: 새 정책, 국민 반대가 더 많아.",
+  "material": "A newspaper polled 200 people about a new policy. Each person answered 찬성 (in favour), 반대 (opposed) or 모름 (not sure). In this task, 과반 means more than half of ALL 200 people asked (so more than 100).",
   "steps": [
    {
     "id": "s1",
     "kind": "choose",
     "prompt": "The poll found 찬성 60, 반대 90, 모름 50. Which headline claims more than these counts support?",
     "hints": [
-     "Compute half of 200 first.",
-     "Compare 90 with that number."
+     "For each headline, write down the count or share it needs in order to be true.",
+     "Check each of them against 60, 90 and 50 out of 200."
     ],
     "options": [
      {
@@ -1230,34 +1354,33 @@
      },
      {
       "id": "b",
+      "text": "새 정책 반대 응답, 찬성보다 많아",
+      "reveals": "Comparing only the two answers and leaving out the third."
+     },
+     {
+      "id": "c",
       "text": "국민 과반, 새 정책 반대",
       "reveals": "Treating 'most' as 'more than any other group' and missing that 90 of 200 is under half."
      },
      {
-      "id": "c",
+      "id": "d",
       "text": "새 정책 반대 45%·찬성 30%·모름 25%",
       "reveals": "Converting counts into shares of the whole group (90, 60, 50 out of 200)."
-     },
-     {
-      "id": "d",
-      "text": "새 정책 반대 응답, 찬성보다 많아",
-      "reveals": "Comparing only the two answers and leaving out the third."
      }
     ],
     "correct": [
-     "b"
+     "c"
     ],
-    "explain": "과반 means more than half. Half of 200 is 100, and 90 is fewer, so b overreaches. The others report the counts correctly.",
+    "explain": "과반 means more than half. Half of 200 is 100, and 90 is fewer, so the headline with 과반 overreaches. The others report the counts correctly.",
     "scaffold": true
    },
    {
     "id": "s2",
     "kind": "build",
-    "prompt": "Enter three different poll results (200 people in total) where more people opposed than were in favour, but fewer than or exactly 100 opposed, and at least 20 answered 모름.",
+    "prompt": "Enter three different poll results (200 people in total) where opposed is the largest group (more than 찬성 and more than 모름), but not more than 100, with at least 20 in favour and at least 20 answering 모름.",
     "hints": [
      "Pick the number opposed first; keep it at 100 or below.",
-     "Then choose a smaller number in favour and let 모름 take the rest.",
-     "Check that 찬성 + 반대 + 모름 = 200."
+     "Then choose smaller numbers for in favour and for 모름 so that all three add up to 200."
     ],
     "vars": [
      {
@@ -1303,6 +1426,18 @@
       "expr": "c>=20",
       "ok": "At least 20 were not sure.",
       "fail": "At least 20 must answer 모름."
+     },
+     {
+      "id": "c6",
+      "expr": "b>c",
+      "ok": "Opposed is larger than 모름 too, so it is the largest group.",
+      "fail": "Opposed must be larger than 모름, so that it is the largest group."
+     },
+     {
+      "id": "c7",
+      "expr": "a>=20",
+      "ok": "At least 20 in favour.",
+      "fail": "At least 20 must be in favour."
      }
     ],
     "need": 3,
@@ -1340,7 +1475,7 @@
     "because": {
      "id": "s2b",
      "kind": "write",
-     "prompt": "In English or Korean, explain why 'opposed is the largest group' does not allow the headline '과반 반대', and what role the 모름 group plays.",
+     "prompt": "In English or Korean, explain why 'opposed is the largest group' does not allow the headline '과반 반대', and what role the other two groups play.",
      "hints": [
       "Think about how many people did not oppose.",
       "Look at your own examples."
@@ -1357,8 +1492,16 @@
         "절반",
         "half",
         "majority",
+        "plurality",
         "100",
-        "50%"
+        "50\\s*%",
+        "합쳐",
+        "합치",
+        "together",
+        "combined",
+        "나머지",
+        "110",
+        "not oppose"
        ]
       },
       {
@@ -1386,6 +1529,9 @@
       },
       {
        "text": "More opposed than in favour does not mean a majority: with 90 of 200 opposed, 110 people did not oppose, many answered 모름 or in favour."
+      },
+      {
+       "text": "Largest group is only a plurality; the 모름 and 찬성 together can be as big as or bigger than 반대."
       }
      ],
      "badAnswers": [
@@ -1432,7 +1578,8 @@
    "human": [
     "Whether the reasoning is clear"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k10-08",
@@ -1614,19 +1761,19 @@
     "kind": "pickLine",
     "prompt": "One phrase in the draft is a well-known problem when speaking to a superior, whatever the refusal is. Which line contains it?",
     "hints": [
-     "Ask which line would sound odd if said to a boss even in a different message.",
-     "Remember what is said when leaving a workplace."
+     "Ask of each line: would it be a problem if said to a superior in ANY message, apart from the refusal?",
+     "Separate lines that are only blunt in this situation from a phrase that is wrong whatever the message is."
     ],
     "lines": [
      "팀장님, 금요일 회식 공지 확인했습니다.",
      "그날은 선약이 있어서 못 가요.",
-     "다음에 가요.",
+     "다음에는 꼭 참석하고 싶습니다.",
      "그럼 수고하세요."
     ],
     "wrong": [
      3
     ],
-    "explain": "Line 4 is the problem. 수고하세요 is said to someone of equal or lower rank; to a superior many Koreans prefer 먼저 가보겠습니다 or 고생하셨습니다. Lines 2 and 3 are also too blunt, but they can be fixed by wording."
+    "explain": "Line 4 is the problem. 수고하세요 is said to someone of equal or lower rank; to a superior many Koreans prefer 먼저 가보겠습니다 or 고생하셨습니다. Line 2 is also blunt (못 가요), but that can be fixed by wording the refusal more softly; 수고하세요 is wrong whatever the refusal says."
    },
    {
     "id": "s2",
@@ -1683,6 +1830,40 @@
        "못\\s*가요",
        "다음에\\s*가요"
       ]
+     },
+     {
+      "id": "w5",
+      "label": "gives a reason",
+      "mode": "any",
+      "patterns": [
+       "선약",
+       "일정",
+       "약속",
+       "사정",
+       "가족",
+       "집안",
+       "일이 있",
+       "행사"
+      ]
+     },
+     {
+      "id": "w6",
+      "label": "declines (says that attending is difficult / not possible)",
+      "mode": "any",
+      "patterns": [
+       "어렵",
+       "불참",
+       "참석하지 못",
+       "참석하기 어",
+       "참석이 어",
+       "못 갈",
+       "가지 못",
+       "함께하지 못",
+       "참여하지 못",
+       "참석할 수 없",
+       "갈 수 없",
+       "가기 어"
+      ]
      }
     ],
     "selfAssess": [
@@ -1700,12 +1881,16 @@
     ],
     "badAnswers": [
      {
-      "text": "팀장님, 금요일 회식 공지 확인했습니다. 그날은 선약이 있어서 못 가요. 다음에 가요. 그럼 수고하세요.",
+      "text": "팀장님, 금요일 회식 공지 확인했습니다. 그날은 선약이 있어서 못 가요. 다음에는 꼭 참석하고 싶습니다. 그럼 수고하세요.",
       "why": "The original draft: blunt and ends with an inappropriate phrase."
      },
      {
       "text": "금요일에 못 가요.",
       "why": "Blunt, no acknowledgement, no apology."
+     },
+     {
+      "text": "팀장님, 공지 확인했습니다. 죄송합니다. 다음에 참석하겠습니다.",
+      "why": "Polite, but gives no reason and never says that the writer cannot come on Friday."
      }
     ],
     "humanReview": "Naturalness and whether the tone is neither servile nor curt."
@@ -1745,7 +1930,8 @@
    "human": [
     "Tone and naturalness"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k10-10",
@@ -1840,15 +2026,42 @@
        "하지만",
        "그런데",
        "때문",
-       "어서",
-       "아서",
-       "해서",
-       "라서",
+       "[어아해워와여라]서",
        "니까",
        "는데",
        "지만",
        "더니",
-       "면"
+       "면\\s"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "shows a behaviour or situation that fits the meaning of the idiom",
+      "mode": "any",
+      "patterns": [
+       "광고",
+       "말리",
+       "마음을 바꿔",
+       "바꾸",
+       "휘둘",
+       "솔깃",
+       "추천",
+       "남의 말",
+       "친구 말",
+       "비밀",
+       "말하지 않",
+       "얘기하지 않",
+       "이야기하지 않",
+       "아무에게도",
+       "아무한테도",
+       "퍼뜨",
+       "털어놓",
+       "마음에 드는",
+       "까다",
+       "따지",
+       "기준",
+       "눈에 차",
+       "만족"
       ]
      }
     ],
@@ -1862,6 +2075,9 @@
      },
      {
       "text": "그 사람은 눈이 높아서 소개팅을 열 번 해도 마음에 드는 사람이 없대요. 외모뿐 아니라 성격이나 직업도 까다롭게 따지거든요."
+     },
+     {
+      "text": "그는 입이 무거워서 내가 말한 비밀을 아무에게도 말하지 않았어요."
      }
     ],
     "badAnswers": [
@@ -1872,6 +2088,10 @@
      {
       "text": "준호는 키가 커요.",
       "why": "Does not use any of the idioms."
+     },
+     {
+      "text": "민지는 귀가 얇은데 키가 커요.",
+      "why": "Uses the idiom and a connective, but nothing in the situation shows what 귀가 얇다 means."
      }
     ],
     "humanReview": "Whether the situation really reveals the meaning and the Korean is natural."
@@ -1889,10 +2109,10 @@
     "checks": [
      {
       "id": "w1",
-      "label": "quotes Korean words",
+      "label": "quotes a Korean phrase (two or more words)",
       "mode": "any",
       "patterns": [
-       "[가-힣]{2,}"
+       "[가-힣]{2,}\\s+[가-힣]{2,}"
       ]
      },
      {
@@ -1905,15 +2125,21 @@
        "different meaning",
        "ambigu",
        "mistake",
-       "literally",
        "actual",
-       "body"
+       "body",
+       "physical",
+       "ears",
+       "eyes",
+       "mouth",
+       "thin",
+       "heavy"
       ]
      }
     ],
     "selfAssess": [
      "Did I quote, not paraphrase?",
-     "Is my misreading a real alternative?"
+     "Is my misreading a real alternative?",
+     "Is the phrase I quoted really in my own sentences?"
     ],
     "modelAnswers": [
      {
@@ -1966,6 +2192,7 @@
    "human": [
     "Whether the clues truly reveal the idiom"
    ]
-  }
+  },
+  "status": "draft"
  }
 ]

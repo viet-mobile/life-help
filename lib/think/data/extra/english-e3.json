@@ -23,7 +23,7 @@
   ],
   "minutes": 7,
   "curriculum": null,
-  "material": "생일 초대장(그림 없이 글로만 적었어요):\n\nYou are invited to Yuna's birthday party!\nDate: Saturday, June 7. Time: 2 p.m. to 4 p.m.\nPlace: Yuna's house.\nPlease bring a small gift. No pets, please.\n\n친구 Ben이 답장을 보냈어요. \"I can come to the party on Sunday with my puppy and a book.\"",
+  "material": "생일 초대장(그림 없이 글로만 적었어요):\n\nYou are invited to Yuna's birthday party!\nDate: Saturday, June 7. Time: 2 p.m. to 4 p.m.\nPlace: Yuna's house.\nPlease bring a small gift. No pets, please.\n\n친구 Ben이 답장을 보냈어요. \"I can come to the party on Sunday with my puppy and my sister.\"",
   "steps": [
    {
     "kind": "choose",
@@ -36,8 +36,8 @@
      },
      {
       "id": "b",
-      "text": "a book as a gift",
-      "reveals": "'Please bring' 줄이 무엇을 가져오라고 하는지 다시 읽어 보세요. 책이 그 줄과 어긋나는지 따져 보세요."
+      "text": "with my sister",
+      "reveals": "초대장에 함께 오는 사람에 대해 쓴 줄이 있는지 찾아 보세요. 말이 없다면 어긋난 것인지, 확인이 필요한 것인지 구분해 보세요."
      },
      {
       "id": "c",
@@ -54,10 +54,10 @@
      "a",
      "c"
     ],
-    "explain": "파티는 토요일이고 반려동물은 안 되는데, Ben은 일요일에 강아지와 온다고 했어요. 책은 작은 선물로 볼 수 있고, 참석하겠다는 대답은 문제가 없어요.",
+    "explain": "파티는 토요일이고 반려동물은 안 되는데, Ben은 일요일에 강아지와 온다고 했어요. 여동생에 대해서는 초대장에 아무 말이 없으므로 어긋난다고 할 수 없고 Yuna에게 물어볼 일이에요. 참석하겠다는 대답은 문제가 없어요.",
     "hints": [
      "Ben의 대답을 '누구와', '무엇을', '언제' 조각으로 나눠 초대장의 줄과 하나씩 맞춰 보세요.",
-     "'Date' 줄과 'No pets' 줄을 먼저 찾아 보세요."
+     "Ben의 말 조각마다 초대장에서 그것을 다루는 줄이 있는지 찾아 보세요. 줄이 없는 조각도 있을 수 있어요."
     ],
     "multi": true,
     "scaffold": true,
@@ -79,13 +79,13 @@
      },
      {
       "id": "w2",
-      "label": "날짜(요일) 문제를 말했다",
+      "label": "날짜(요일) 문제를 말했다(토요일과 일요일을 구분)",
       "mode": "any",
       "patterns": [
        "\\bsaturday\\b",
-       "\\bsunday\\b",
        "\\bjune\\s*7\\b",
-       "\\bdate\\b"
+       "\\bnot\\s+(?:on\\s+)?sunday\\b",
+       "\\b(?:isn['’]?t|is not|it['’]?s not)\\s+(?:on\\s+)?sunday\\b"
       ]
      },
      {
@@ -95,13 +95,14 @@
       "patterns": [
        "^\\s*great\\b",
        "^\\s*yes\\b",
-       "\\bsee you (?:on )?sunday\\b"
+       "\\bsee you (?:on )?sunday\\b",
+       "\\bsunday\\s+(?:is\\s+|will be\\s+)?(?:fine|ok|okay|good|great)\\b"
       ]
      }
     ],
     "selfAssess": [
      "내가 말한 두 가지 문제가 초대장의 어느 줄에서 왔는지 말할 수 있나요?",
-     "책이 선물이라는 점은 문제로 만들지 않았나요? (선택)",
+     "여동생이 와도 되는지는 초대장에 없는 정보라서 '어긋남'이 아니라 '물어볼 일'로 구분했나요? (선택)",
      "Ben이 기분 나쁘지 않게 말했나요?"
     ],
     "modelAnswers": [
@@ -121,6 +122,10 @@
      {
       "text": "No pets at the party, Ben.",
       "why": "날짜 문제가 빠졌다."
+     },
+     {
+      "text": "Ben, no pets. Sunday is fine.",
+      "why": "날짜 문제를 놓치고 일요일에 찬성했다."
      }
     ],
     "humanReview": "영어 문장의 자연스러움, 근거가 초대장과 맞는지는 사람이 본다. 자동 점검은 낱말의 유무만 본다.",
@@ -167,7 +172,8 @@
     "영어 문장의 자연스러움",
     "근거가 초대장과 맞는지"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-e3-02",
@@ -607,8 +613,8 @@
       "options": [
        {
         "id": "a",
-        "text": "Ara에게 화가 났어요",
-        "reveals": "Jun이 화를 내는 말이나 행동이 있는지 찾아 보세요."
+        "text": "Ara가 진 것이 당연하다고 생각해요",
+        "reveals": "Jun의 말 'I am sorry'가 그런 뜻인지 말과 행동을 비교해 보세요."
        },
        {
         "id": "b",
@@ -622,8 +628,8 @@
        },
        {
         "id": "d",
-        "text": "편지가 필요 없어졌어요",
-        "reveals": "편지를 버렸나요, 가방에 넣었나요?"
+        "text": "상 받은 것이 이제 하나도 기쁘지 않아요",
+        "reveals": "Jun이 편지를 버렸나요, 가방에 넣었나요? 기쁨이 완전히 사라졌다는 단서가 있는지 찾아 보세요."
        }
       ],
       "reasonable": [
@@ -633,7 +639,7 @@
      },
      {
       "info": "After school, Jun says, \"Ara, let us draw together tomorrow. I want to see your picture.\"",
-      "ask": "Jun은 어떤 사람일까요?",
+      "ask": "이 말로 볼 때 Jun은 Ara에게 어떤 마음일까요?",
       "options": [
        {
         "id": "a",
@@ -647,8 +653,8 @@
        },
        {
         "id": "c",
-        "text": "Ara를 피하고 싶어 해요",
-        "reveals": "'let us draw together'가 피하는 말과 어울리는지 따져 보세요."
+        "text": "Ara와 겨뤄서 다시 이기고 싶어 해요",
+        "reveals": "'I want to see your picture'가 이기려는 말인지 함께 그리자는 말인지 따져 보세요."
        }
       ],
       "reasonable": [
@@ -671,21 +677,23 @@
       "label": "마음/성격을 나타내는 낱말을 썼다",
       "mode": "any",
       "patterns": [
-       "\\b(?:kind|caring|nice|sorry|happy|glad|proud|sad|worried|friendly|thoughtful)\\b"
+       "\\b(?:kind|caring|sorry|happy|glad|proud|friendly|thoughtful|considerate)\\b"
       ]
      },
      {
       "id": "w2",
-      "label": "단서나 이유를 함께 썼다",
+      "label": "이야기의 단서(상, Ara, 그림, 편지 등)를 함께 썼다",
       "mode": "any",
       "patterns": [
-       "\\bbecause\\b",
-       "\\bso\\b",
-       "\\bsays?\\b",
-       "\\bsaid\\b",
-       "\\bdraw\\b",
+       "\\bprize\\b",
+       "\\bara\\b",
+       "\\bpicture\\b",
+       "\\bdraw(?:ing)?\\b",
        "\\bletter\\b",
-       "\\bbag\\b"
+       "\\bbag\\b",
+       "\\bcontest\\b",
+       "\\bwon\\b",
+       "\\bwin\\b"
       ]
      }
     ],
@@ -710,6 +718,10 @@
      {
       "text": "Jun is angry at Ara.",
       "why": "이야기에 근거가 없다."
+     },
+     {
+      "text": "Jun is sad because he is hungry. So bad.",
+      "why": "이야기에 없는 이유이고 단서가 없다."
      }
     ],
     "humanReview": "근거가 이야기와 맞는지는 사람이 본다.",
@@ -753,7 +765,8 @@
    "human": [
     "영어 서술의 근거와 자연스러움"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-e3-05",
@@ -783,31 +796,31 @@
   "steps": [
    {
     "kind": "choose",
-    "prompt": "다음 세 글 중에서 'nervous(긴장한)'라는 낱말 없이 읽는 사람이 긴장을 짐작하게 만드는 글은 무엇인가요?",
+    "prompt": "세 글은 모두 감정 낱말을 쓰지 않고 Mina의 행동만 보여 줘요. 시험 시간에 Mina가 '긴장했다'고 짐작하게 하는 글은 무엇인가요?",
     "options": [
      {
       "id": "a",
-      "text": "Mina feels very nervous because the English test is today.",
-      "reveals": "이 글은 감정을 낱말로 직접 말해 주고 있어요. 단서로 짐작하는 글인지 따져 보세요."
+      "text": "Mina yawns and looks out of the window. She draws a small circle on her paper.",
+      "reveals": "이 행동이 어떤 마음과 이어지는지 따져 보세요. 같은 '창밖 보기'가 긴장과 이어지는지 비교해 보세요."
      },
      {
       "id": "b",
-      "text": "Her hands are cold. She looks at the clock again and again.",
-      "reveals": "행동과 몸의 변화가 감정의 단서가 되는 방식이에요."
+      "text": "Mina smiles and writes fast. She puts down her pencil and sits back.",
+      "reveals": "이 행동이 어떤 마음과 이어지는지 따져 보세요. 긴장한 사람의 모습과 맞는지 비교해 보세요."
      },
      {
       "id": "c",
-      "text": "Mina is in the classroom, and the test paper is on her desk.",
-      "reveals": "장소와 물건만 있고 마음을 짐작하게 하는 행동이 있는지 찾아 보세요."
+      "text": "Her hands are cold. She looks at the clock again and again.",
+      "reveals": "몸의 변화와 반복되는 행동이 긴장의 단서가 되는 방식이에요."
      }
     ],
     "correct": [
-     "b"
+     "c"
     ],
-    "explain": "차가운 손, 시계를 계속 보기라는 단서에서 읽는 사람이 긴장을 짐작할 수 있어요.",
+    "explain": "차가운 손과 시계를 계속 보는 행동에서 읽는 사람이 긴장을 짐작할 수 있어요. 하품하며 창밖을 보는 모습은 지루함을, 웃으며 빠르게 쓰는 모습은 여유나 자신감을 짐작하게 해요.",
     "hints": [
-     "감정 낱말이 있는 글과 없는 글을 구분해 보세요.",
-     "남은 글에서 몸이나 행동 단서가 있는 글을 찾아 보세요."
+     "세 글에서 Mina의 행동이나 몸의 변화를 하나씩 뽑아 적어 보세요.",
+     "뽑은 행동마다 어떤 마음을 떠올리게 하는지 적고, 시험 앞의 마음과 맞는지 비교해 보세요."
     ],
     "scaffold": true,
     "id": "s1"
@@ -820,14 +833,27 @@
     "checks": [
      {
       "id": "w1",
-      "label": "감정 낱말(worried, nervous 등)을 쓰지 않았다",
+      "label": "감정 낱말(worried, nervous, upset 등)을 직접 쓰지 않았다",
       "mode": "none",
       "patterns": [
        "\\bworr(?:y|ied|ies|ying)\\b",
        "\\bnervous\\b",
        "\\bscared\\b",
        "\\bafraid\\b",
-       "\\banxious\\b"
+       "\\banxious\\b",
+       "\\btense\\b",
+       "\\bupset\\b",
+       "\\bstress\\w*\\b",
+       "\\bsad\\b",
+       "\\bunhappy\\b",
+       "\\bfear\\w*\\b",
+       "\\bfrightened\\b",
+       "\\bpanic\\w*\\b",
+       "\\buneasy\\b",
+       "\\bconcerned\\b",
+       "\\bhappy\\b",
+       "\\bexcited\\b",
+       "\\bbored\\b"
       ]
      },
      {
@@ -840,10 +866,11 @@
      },
      {
       "id": "w3",
-      "label": "행동이나 몸의 단서를 썼다",
-      "mode": "any",
+      "label": "몸의 단서와 행동의 단서를 각각 썼다",
+      "mode": "all",
       "patterns": [
-       "\\b(?:hands?|clock|looks?|looking|walks?|walking|bites?|nails?|door|phone|checks?|checking|again|waits?|waiting|face|heart|shak\\w*|cold|sweat\\w*|can['’]?t|cannot)\\b"
+       "\\b(?:hands?|face|heart|shak\\w*|cold|sweat\\w*|nails?|bites?|trembl\\w*|breath\\w*|stomach|lips?|shiver\\w*|pale)\\b",
+       "\\b(?:clock|looks?|looking|walks?|walking|checks?|checking|phone|door|again|waits?|waiting|pac\\w*|tapp?\\w*|fidget\\w*|can['’]?t sit|cannot sit)\\b"
       ]
      }
     ],
@@ -869,6 +896,10 @@
      {
       "text": "Jun is at home. He eats rice.",
       "why": "행동이 걱정과 관계가 없다."
+     },
+     {
+      "text": "Mina is in class. She is happy. It is cold.",
+      "why": "걱정과 관계 없는 감정이고 행동 단서가 없다."
      }
     ],
     "humanReview": "단서가 걱정을 잘 보여 주는지, 영어 문장이 자연스러운지는 사람이 본다.",
@@ -912,7 +943,8 @@
    "human": [
     "단서가 걱정을 보여 주는지, 자연스러움"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-e3-06",
@@ -1082,27 +1114,27 @@
     "options": [
      {
       "id": "a",
-      "text": "둘 다 같아요. 쪽지로는 이유를 전혀 짐작할 수 없어요",
-      "reveals": "쪽지에는 이유를 짐작할 만한 줄이 있는지 줄마다 다시 읽어 보세요."
+      "text": "Tom은 걷기를 좋아하기 때문이에요",
+      "reveals": "쪽지에 그런 말이 있는지 찾아 보세요."
      },
      {
       "id": "b",
-      "text": "진우의 설명이 더 근거가 있어요. 우산을 챙겼기 때문이에요",
-      "reveals": "쪽지 속 단서와 설명이 이어져요. 다만 우산이 비 때문일 수 있다는 점은 짐작이에요."
-     },
-     {
-      "id": "c",
       "text": "'고장 났다'는 설명이 더 근거가 있어요. 자전거 이야기가 나와요",
       "reveals": "쪽지에는 자전거가 고장이라는 말이 없고 타지 않았다는 말만 있어요."
      },
      {
+      "id": "c",
+      "text": "진우의 설명이 더 근거가 있어요. 우산을 챙겼기 때문이에요",
+      "reveals": "쪽지 속 단서와 설명이 이어져요. 다만 우산이 비 때문일 수 있다는 점은 짐작이에요."
+     },
+     {
       "id": "d",
-      "text": "Tom은 걷기를 좋아하기 때문이에요",
-      "reveals": "쪽지에 그런 말이 있는지 찾아 보세요."
+      "text": "둘 다 같아요. 쪽지로는 이유를 전혀 짐작할 수 없어요",
+      "reveals": "쪽지에는 이유를 짐작할 만한 줄이 있는지 줄마다 다시 읽어 보세요."
      }
     ],
     "correct": [
-     "b"
+     "c"
     ],
     "explain": "우산과 외투는 날씨와 관련된 단서이고, 고장 났다는 말은 쪽지에 없어요. 따라서 진우의 설명에 더 근거가 있지만 확실한 것은 아니에요.",
     "hints": [
@@ -1113,7 +1145,7 @@
     "acceptable": [
      {
       "ids": [
-       "a"
+       "d"
       ],
       "reason": "쪽지만으로는 이유를 확정할 수 없다는 점을 지적한 신중한 판단. 다만 우산이라는 단서가 있으므로 완전히 짐작 불가라고는 하기 어렵다."
      }
@@ -1142,17 +1174,18 @@
       "label": "날씨와 관련된 말을 썼다",
       "mode": "any",
       "patterns": [
-       "\\b(?:rain\\w*|umbrella|wet|cloud\\w*|storm\\w*|weather|cold|coat)\\b"
+       "\\b(?:rain\\w*|umbrella|wet|cloud\\w*|storm\\w*|weather)\\b"
       ]
      },
      {
       "id": "w3",
-      "label": "단서와 이유를 이었다",
-      "mode": "any",
+      "label": "쪽지에 없는 이유(자전거 고장 등)로 단정하지 않았다",
+      "mode": "none",
       "patterns": [
-       "\\bbecause\\b",
-       "\\bsince\\b",
-       "\\bso\\b"
+       "\\bbroke\\w*\\b",
+       "\\bbroken\\b",
+       "\\bfix\\w*\\b",
+       "\\bflat\\b"
       ]
      }
     ],
@@ -1167,6 +1200,9 @@
      {
       "text": "Maybe it is cold and rainy. Tom took an umbrella, so he did not take his bike.",
       "note": "두 번째 문장에서 단서를 이었다."
+     },
+     {
+      "text": "I think it is raining. Tom took an umbrella."
      }
     ],
     "badAnswers": [
@@ -1177,6 +1213,10 @@
      {
       "text": "It is raining.",
       "why": "단정하고 단서를 말하지 않았다."
+     },
+     {
+      "text": "Maybe the bike is broken, so he took a coat.",
+      "why": "쪽지에 없는 이유(고장)로 짐작했고 날씨 단서가 없다."
      }
     ],
     "humanReview": "단서와 이유의 연결이 타당한지, 영어의 자연스러움은 사람이 본다.",
@@ -1221,7 +1261,8 @@
    "human": [
     "추론의 타당성과 영어의 자연스러움"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-e3-08",
@@ -1412,14 +1453,28 @@
      },
      {
       "id": "w3",
-      "label": "다른 시각을 제안했다",
+      "label": "다른 시각(오후 2시 등)을 제안했다",
       "mode": "any",
       "patterns": [
-       "\\d\\s*(?:[:.]\\d\\d)?\\s*(?:a\\.?m\\.?|p\\.?m\\.?)",
+       "\\b(?:2|two|3|three|4|four)(?:\\s*[:.]\\s*(?:00|30))?\\s*(?:p\\.?m\\.?|o['’]?clock)?(?![\\w:])",
+       "\\bafternoon\\b",
        "\\bafter lunch\\b",
-       "\\bsunday\\b",
-       "\\bat\\s+(?:\\d|two|three|four)\\b",
-       "\\bin the afternoon\\b"
+       "\\bsunday\\b"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "어른께 쓰는 격식 표현(Dear, Mrs., I'm afraid, Would 등)을 쓰지 않았다(친구 말투)",
+      "mode": "none",
+      "patterns": [
+       "\\bdear\\b",
+       "\\bmrs\\b",
+       "\\bi['’]?m afraid\\b",
+       "\\bi am afraid\\b",
+       "\\bwould\\b",
+       "\\bcould i\\b",
+       "\\bunfortunately\\b",
+       "\\bexcuse me\\b"
       ]
      }
     ],
@@ -1482,14 +1537,13 @@
      },
      {
       "id": "w3",
-      "label": "다른 시각을 제안했다",
+      "label": "다른 시각(오후 2시 등)을 제안했다",
       "mode": "any",
       "patterns": [
-       "\\d\\s*(?:[:.]\\d\\d)?\\s*(?:a\\.?m\\.?|p\\.?m\\.?)",
+       "\\b(?:2|two|3|three|4|four)(?:\\s*[:.]\\s*(?:00|30))?\\s*(?:p\\.?m\\.?|o['’]?clock)?(?![\\w:])",
+       "\\bafternoon\\b",
        "\\bafter lunch\\b",
-       "\\bsunday\\b",
-       "\\bat\\s+(?:\\d|two|three|four)\\b",
-       "\\bin the afternoon\\b"
+       "\\bsunday\\b"
       ]
      },
      {
@@ -1505,6 +1559,19 @@
        "\\bi['’]?m (?:afraid|sorry)\\b",
        "\\bi am (?:afraid|sorry)\\b"
       ]
+     },
+     {
+      "id": "w5",
+      "label": "친구에게 쓰는 말투(Can I, Thanks, How about, Hey)가 아니다",
+      "mode": "none",
+      "patterns": [
+       "\\bcan i\\b",
+       "\\bhow about\\b",
+       "\\bthanks\\b",
+       "\\bhey\\b",
+       "\\bgonna\\b",
+       "\\bwanna\\b"
+      ]
      }
     ],
     "selfAssess": [
@@ -1519,6 +1586,9 @@
      {
       "text": "Hello Mrs. Lee. Thank you very much. I'm afraid I can't come on Saturday morning. Would 2 p.m. be OK?",
       "note": "'I'm afraid', 'Would'로 공손함을 높였다."
+     },
+     {
+      "text": "Thank you for inviting me. Unfortunately I have a class at ten, so I am afraid I cannot come. Would two o'clock be possible?"
      }
     ],
     "badAnswers": [
@@ -1529,6 +1599,10 @@
      {
       "text": "Thank you for inviting me.",
       "why": "못 가는 말과 다른 시각이 없다."
+     },
+     {
+      "text": "Thank you for inviting me. I'm sorry, but I can't come at 10 a.m. because I have a class. Please excuse me.",
+      "why": "다른 시각을 제안하지 않았다."
      }
     ],
     "humanReview": "공손함이 자연스러운지는 사람이 본다. 자동 점검은 공손한 표현의 유무만 본다.",
@@ -1574,7 +1648,8 @@
     "말투의 자연스러움과 공손함",
     "조건을 모두 담았는지"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-e3-10",
@@ -1608,24 +1683,24 @@
     "options": [
      {
       "id": "a",
+      "text": "I will bring fruit salad for 8 people. It has no nuts.",
+      "reveals": "세 조건을 하나씩 대조해 보세요. 음식, 견과류, 인원이 모두 있는지 확인해야 해요."
+     },
+     {
+      "id": "b",
       "text": "I will bring cookies for 12 people. They have nuts, but they are tasty.",
       "reveals": "조건 2(견과류 없음)를 이 답장이 지키는지 확인해 보세요."
      },
      {
-      "id": "b",
+      "id": "c",
       "text": "I will bring sandwiches. They have no nuts, and they are good.",
       "reveals": "조건 3(몇 명이 먹을 양인지)을 이 답장에서 찾아 보세요."
-     },
-     {
-      "id": "c",
-      "text": "I will bring fruit salad for 8 people. It has no nuts.",
-      "reveals": "세 조건을 하나씩 대조해 보세요. 음식, 견과류, 인원이 모두 있는지 확인해야 해요."
      }
     ],
     "correct": [
-     "c"
+     "a"
     ],
-    "explain": "b는 음식, 견과류 없음, 인원(8명)을 모두 말해요. a는 견과류가 있고, c는 인원이 없어요.",
+    "explain": "a는 음식, 견과류 없음, 인원(8명)을 모두 말해요. b는 견과류가 있다고 했고, c는 몇 명분인지 빠져 있어요.",
     "hints": [
      "조건 1, 2, 3을 따로 표시해 두고 답장마다 확인해 보세요.",
      "각 답장에서 빠졌거나 어긋난 조건이 하나인 것을 찾아 보세요."
@@ -1644,7 +1719,7 @@
       "label": "가져올 음식을 말했다",
       "mode": "any",
       "patterns": [
-       "\\b(?:bring|make|bake|cook)\\b"
+       "\\b(?:bring|make|bake|cook|buy|get|take|prepare)\\b"
       ]
      },
      {
@@ -1654,7 +1729,8 @@
       "patterns": [
        "\\b(?:no|without)\\s+(?:any\\s+)?nuts?\\b",
        "\\bnut[- ]free\\b",
-       "\\b(?:doesn['’]?t|does not|don['’]?t|do not)\\s+have\\s+(?:any\\s+)?nuts?\\b"
+       "\\b(?:doesn['’]?t|does not|don['’]?t|do not)\\s+(?:have|contain|include)\\s+(?:any\\s+)?nuts?\\b",
+       "\\bcontains?\\s+no\\s+nuts?\\b"
       ]
      },
      {
@@ -1662,7 +1738,16 @@
       "label": "몇 명분인지 말했다",
       "mode": "any",
       "patterns": [
-       "\\bfor\\s+(?:\\d+|one|two|three|four|five|six|seven|eight|nine|ten|twelve|twenty|all|everyone|the class)\\b"
+       "\\bfor\\s+(?:\\d+|one|two|three|four|five|six|seven|eight|nine|ten|twelve|twenty|all|everyone|the class)\\b",
+       "\\b(?:\\d+|one|two|three|four|five|six|seven|eight|nine|ten|twelve|twenty)\\s+(?:people|students|kids|friends|classmates|persons)\\b"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "견과류가 있다고 쓰지 않았다",
+      "mode": "none",
+      "patterns": [
+       "(?<!not )(?<!n't )(?<!n’t )(?<!no )(?<!any )\\b(?:has|have|contains?|with)\\s+(?:some\\s+)?nuts?\\b"
       ]
      }
     ],
@@ -1678,6 +1763,12 @@
      {
       "text": "Hi Ms. Lee! I will make sandwiches for 12 students. They are nut-free.",
       "note": "다른 음식과 표현을 썼다."
+     },
+     {
+      "text": "Hello Ms. Lee, I will buy a cake for 15 students. It is nut free."
+     },
+     {
+      "text": "Hi Ms. Lee! I can make rice balls for ten people. They do not contain nuts."
      }
     ],
     "badAnswers": [
@@ -1688,6 +1779,10 @@
      {
       "text": "I can bring a cake.",
       "why": "견과류 조건과 인원이 없다."
+     },
+     {
+      "text": "I will bring cookies for 10 people. You said no nuts but they have nuts.",
+      "why": "견과류가 있다고 썼다."
      }
     ],
     "humanReview": "음식이 정말 견과류가 없는지, 영어 표현이 자연스러운지는 사람이 본다.",
@@ -1732,6 +1827,7 @@
    "human": [
     "음식의 현실성, 영어의 자연스러움"
    ]
-  }
+  },
+  "status": "draft"
  }
 ]

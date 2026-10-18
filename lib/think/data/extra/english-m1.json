@@ -830,7 +830,7 @@
   "topic": "말하는 이의 의도",
   "level": 2,
   "levelLabel": "중등",
-  "title": "빌려 간 사전을 돌려받는 메시지, 목적이 분명한 것 고르고 직접 써 보기",
+  "title": "빌려 준 물건을 돌려받는 메시지, 목적이 분명한 것 고르고 직접 써 보기",
   "uiLang": "ko",
   "format": "make-your-own",
   "generative": true,
@@ -925,6 +925,22 @@
        "\\breturn(?:s|ed|ing)?\\b",
        "\\bgive\\b[^.?!]{0,30}\\bback\\b"
       ]
+     },
+     {
+      "id": "w5",
+      "label": "Jun이 해야 할 일(부탁)을 분명히 말했다",
+      "mode": "any",
+      "patterns": [
+       "\\b(?:could|can|would|will) you\\b",
+       "\\bcan i\\b",
+       "\\bmay i\\b",
+       "\\bplease\\b",
+       "\\bbring\\b",
+       "\\bsend\\b",
+       "\\bgive me\\b",
+       "\\bget (?:it|my|the)\\b",
+       "\\bI(?:['’]d| would) like\\b"
+      ]
      }
     ],
     "selfAssess": [
@@ -989,7 +1005,8 @@
     "메시지의 자연스러움",
     "정중함과 목적의 분명함"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-m1-07",
@@ -1071,8 +1088,8 @@
      },
      {
       "id": "c",
-      "text": "Follow the notice because it gives a reason and more details.",
-      "reveals": "자료에 이유가 있는 것과 믿을 만한 것은 같은지 생각해 보세요."
+      "text": "Follow the poster because more students have probably seen it.",
+      "reveals": "본 사람이 많다고 정보가 맞는 것은 아니에요. 두 자료의 날짜와 올린 곳을 비교해야 해요."
      },
      {
       "id": "d",
@@ -1128,7 +1145,10 @@
        "\\bmoved?\\b",
        "\\bnow\\b",
        "\\binstead\\b",
-       "\\bnot\\b"
+       "\\bnot\\b",
+       "\\bwill be\\b",
+       "\\bno longer\\b",
+       "\\bfriday\\b"
       ]
      }
     ],
@@ -1144,6 +1164,9 @@
      {
       "text": "Sora, don't go to Room 101 on Friday. There is a new notice: it is on Saturday in the gym.",
       "note": "행동 지침으로 알린 답."
+     },
+     {
+      "text": "The movie night will be on Saturday in the gym."
      }
     ],
     "badAnswers": [
@@ -1195,7 +1218,8 @@
     "전달 문장의 자연스러움",
     "확인하지 않은 정보를 단정했는지"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-e-m1-08",

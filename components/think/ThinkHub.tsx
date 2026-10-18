@@ -59,7 +59,10 @@ export function ThinkHub() {
     return () => { live = false; };
   }, [site, grade, lang, retry]);
 
-  const localized = useMemo(() => tasks.map((t) => localize(t, lang, overlay)), [tasks, lang, overlay]);
+  const everything = useMemo(() => tasks.map((t) => localize(t, lang, overlay)), [tasks, lang, overlay]);
+  // Only tasks fully available in the learner's language are listed or opened; the others are counted and explained, never shown half-translated.
+  const localized = useMemo(() => everything.filter((x) => x.translated), [everything]);
+  const hidden = everything.length - localized.length;
   const fields = useMemo(() => [...new Set(localized.map((x) => x.task.topic ?? domainOf(x.task)))], [localized]);
   const shown = localized.filter((x) => field === "all" || (x.task.topic ?? domainOf(x.task)) === field);
   const current = open ? localized.find((x) => x.task.id === open) : undefined;
@@ -103,7 +106,7 @@ export function ThinkHub() {
         <p className="l-muted">{H.done}: {doneCount} {H.of} {shown.length}</p>
       </div>
       {shown.length === 0 && <div className="l-panel l-panel-hint" role="status">{H.empty}</div>}
-      {shown.some((x) => !x.translated) && lang !== "ko" && <div className="l-panel l-panel-hint" role="status">{H.notTranslated}</div>}
+      {hidden > 0 && <div className="l-panel l-panel-hint" role="status" data-testid="think-hidden">{H.notTranslated} ({hidden})</div>}
       <ul className="l-stack" style={{ listStyle: "none", padding: 0 }}>
         {shown.map(({ task }) => (
           <li key={task.id}>

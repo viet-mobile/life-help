@@ -204,13 +204,13 @@
     "kind": "pickLine",
     "prompt": "One line of the draft to 김 선배 does not fit the audience. Which line?",
     "hints": [
-     "Read the endings of each line and compare them with the first line.",
+     "Read how each line ends and ask which one would sound out of place addressed to someone five years older.",
      "Ask what a senior hears when you promise something for the future."
     ],
     "lines": [
      "선배님, 초대해 주셔서 정말 감사합니다.",
      "토요일에는 가족 저녁 약속이 있어서 못 갈 것 같습니다.",
-     "죄송하지만 이번에는 안 되겠어요.",
+     "죄송하지만 이번에는 어려울 것 같습니다.",
      "다음에는 제가 꼭 가겠다고 약속할게, 선배!"
     ],
     "wrong": [
@@ -223,7 +223,7 @@
     "kind": "write",
     "prompt": "Now write the refusal to your close friend 지아 (same age; casual speech is fine). Thank her, give the reason, and leave the door open. 2-3 short sentences in Korean.",
     "hints": [
-     "Which three jobs did lines 1-3 of the senior draft do? Do the same jobs in your own friend-style words.",
+     "Lines 1-3 of the senior draft thank, give a reason and decline. Do those three jobs in friend-style words, then add a fourth: leave the door open.",
      "Keep it warm: say what you regret, not only what you cannot do."
     ],
     "placeholder": "예: ...",
@@ -286,7 +286,10 @@
        "싫어",
        "귀찮",
        "관심\\s*없",
-       "별로"
+       "별로",
+       "부르지 ?마",
+       "오지 ?마",
+       "연락하지 ?마"
       ]
      }
     ],
@@ -312,6 +315,10 @@
      {
       "text": "가기 싫어. 다음에 가자.",
       "why": "Gives a rude reason instead of a real one."
+     },
+     {
+      "text": "고마워. 가족 저녁이 있어서 못 가. 다음엔 나 부르지 마.",
+      "why": "Closes the door instead of leaving it open."
      }
     ],
     "humanReview": "Whether the tone feels natural for close friends, including slang and endings, needs a person."
@@ -333,7 +340,7 @@
   ],
   "alternatives": [
    "Using 해요체 (polite casual) with a friend is also acceptable if friendly and consistent.",
-   "Line 3 might be argued to be blunt; the key still treats line 4 as the register slip."
+   "Line 3 may sound a little firm, but it keeps the honorific ending; the key still treats line 4 as the register slip."
   ],
   "hardCases": [
    "A learner who writes a plausible but unusual reason (e.g. 'my cat is sick') is fine if the key components are present."
@@ -350,7 +357,8 @@
    "human": [
     "Naturalness and tone of the friend message"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k6-03",
@@ -449,13 +457,13 @@
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "Write your reply to 하준 in Korean (2-3 sentences): thank him, say you may come, and politely ask the questions you chose.",
+    "prompt": "Write your reply to 하준 in Korean (2-4 sentences): thank him, say you may come, and politely ask the questions you chose.",
     "hints": [
      "Start with thanks, then give the fact that makes the questions necessary.",
      "Soften the questions with 혹시 or -(으)ㄹ 수 있을까요."
     ],
     "placeholder": "예: ...",
-    "minChars": 20,
+    "minChars": 25,
     "checks": [
      {
       "id": "w1",
@@ -476,30 +484,20 @@
      },
      {
       "id": "w2",
-      "label": "asks about time",
+      "label": "asks a question about time (start or end)",
       "mode": "any",
       "patterns": [
-       "몇 시",
-       "시작",
-       "끝나",
-       "끝나요",
+       "몇 ?시",
        "언제",
-       "까지"
+       "(시작|끝나|끝날|까지)[^.!]*(\\?|까요|나요|가요|세요|ㅂ니까|어요\\?)"
       ]
      },
      {
       "id": "w3",
-      "label": "asks about food or the allergy",
+      "label": "asks a question about the food or the allergy",
       "mode": "any",
       "patterns": [
-       "음식",
-       "메뉴",
-       "해산물",
-       "새우",
-       "게가",
-       "알레르기",
-       "알러지",
-       "먹"
+       "(음식|메뉴|해산물|새우|게가|게나|알레르기|알러지|들어가)[^.!]*(\\?|까요|나요|가요|세요|ㅂ니까|어요\\?)"
       ]
      }
     ],
@@ -521,6 +519,10 @@
      {
       "text": "네, 갈게요!",
       "why": "Accepts without checking the facts and asks nothing."
+     },
+     {
+      "text": "초대 고마워요! 7시까지 일해서 늦을 것 같아요. 새우 알레르기가 있어요.",
+      "why": "States the facts but asks nothing, so 하준 cannot answer."
      }
     ],
     "humanReview": "Whether the questions are natural and polite enough needs a person."
@@ -559,7 +561,8 @@
    "human": [
     "Appropriateness and politeness of the reply"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k6-04",
@@ -968,7 +971,7 @@
     "prompt": "In Situation 1, three of the four sentences are really softened. Which one is still essentially a command?",
     "hints": [
      "Ask: could the other person say 'no' to this sentence without it sounding rude?",
-     "Notice what 좀 and -(으)세요 do and do not change."
+     "Compare the four sentences: for each one, decide whether it asks the other person or tells the other person."
     ],
     "lines": [
      "죄송한데 창문을 조금만 닫아 주실 수 있을까요?",
@@ -984,7 +987,7 @@
    {
     "id": "s2",
     "kind": "write",
-    "prompt": "Situation 2: write TWO different sentences asking the person to lower their voice or take the call outside. Use two different softening strategies, such as an apology opener, a permission question or giving your reason. Korean.",
+    "prompt": "Situation 2: write TWO different sentences asking the person to lower their voice or take the call outside. Use two different softening strategies, such as an apology opener, a request question or giving your reason. Korean.",
     "hints": [
      "Look back at lines 1, 2 and 4 for strategies you could reuse.",
      "Give a reason that is about you, not an accusation."
@@ -997,8 +1000,8 @@
       "label": "two separate sentences",
       "mode": "any",
       "patterns": [
-       "[.?!。].+[.?!。]",
-       "\\n"
+       "[.?!。]\\s*[가-힣]",
+       "\\n\\s*[가-힣]"
       ]
      },
      {
@@ -1018,16 +1021,32 @@
      },
      {
       "id": "w3",
+      "label": "asks as a request (question form or 주시면), not only a command",
+      "mode": "any",
+      "patterns": [
+       "까요",
+       "주시면",
+       "주실래요",
+       "주실 수",
+       "부탁"
+      ]
+     },
+     {
+      "id": "w4",
       "label": "gives a reason",
       "mode": "any",
       "patterns": [
-       "[가-힣]서(요|\\s)",
+       "[가-힣]서요",
+       "[가-힣]서\\s*(그런데|죄송|부탁)",
        "때문",
+       "거든요",
        "는데요",
        "인데요",
-       "공부",
+       "집중",
        "시험",
-       "읽"
+       "공부",
+       "읽고",
+       "읽어"
       ]
      }
     ],
@@ -1043,12 +1062,24 @@
      {
       "text": "실례합니다. 전화 소리가 조금 커서 그런데, 통화는 밖에서 해 주시면 감사하겠습니다.",
       "note": "Uses 실례합니다 and a polite request form."
+     },
+     {
+      "text": "실례합니다. 제가 책을 읽고 있어서 그런데, 조금만 작게 말씀해 주실 수 있을까요",
+      "note": "No final punctuation is fine."
      }
     ],
     "badAnswers": [
      {
       "text": "조용히 좀 하세요.",
       "why": "Only a command with 좀; no second sentence, no reason."
+     },
+     {
+      "text": "죄송한데 조금만 조용히 해 주세요. 죄송한데 밖에서 통화해 주세요.",
+      "why": "Two apologies but both are commands with the same strategy, and no reason."
+     },
+     {
+      "text": "죄송한데 밖에서 통화해 주실 수 있을까요? 혹시 조용히 해 주실 수 있을까요?",
+      "why": "Two requests with the same strategy and no reason."
      }
     ],
     "humanReview": "Whether the two sentences really use different strategies needs a person."
@@ -1087,7 +1118,8 @@
    "human": [
     "Different strategies and politeness"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k6-07",
@@ -1121,42 +1153,34 @@
     "prompt": "What most likely caused the clerk's confusion?",
     "hints": [
      "Reread the clerk's first question: is it asking about eating here or about not eating here?",
-     "Check what 네 agrees with."
+     "Compare the clerk's first question with the first word of the customer's answer: do they point the same way as the rest of the answer?"
     ],
     "options": [
      {
       "id": "a",
-      "text": "In Korean 네 agrees with the question as asked: 'right, I am not eating here'",
-      "reveals": "You noticed that the answer 네 confirmed the negative question and clashed with the next words."
+      "text": "네 can only answer questions about the future, so it did not fit the clerk's question",
+      "reveals": "네 answers any yes/no question; the question here is about the present. Look at what 네 agrees with."
      },
      {
       "id": "b",
-      "text": "The customer's ending -ㄹ 거예요 made the whole sentence sound like a question to the clerk",
-      "reveals": "The ending is a normal plan statement; check the first word instead."
+      "text": "The customer's ending -ㄹ 거예요 is too casual for café staff, so the clerk asked again",
+      "reveals": "-ㄹ 거예요 is a normal polite plan ending; the clerk's confusion comes from elsewhere."
      },
      {
       "id": "c",
-      "text": "The customer spoke too quietly, so 여기서 sounded like 저기서 (over there)",
-      "reveals": "Nothing in the text suggests a pronunciation problem."
+      "text": "The clerk asked a negative question, so 네 was heard as 'I am not eating here'",
+      "reveals": "You noticed that 네 confirmed the negative question and clashed with the next words."
      },
      {
       "id": "d",
-      "text": "The clerk did not know the word 포장 and guessed from the customer's words",
-      "reveals": "The clerk uses 포장 correctly in the last line."
+      "text": "The customer said 여기서 where 여기에서 is required, so the place was not understood",
+      "reveals": "여기서 is the normal short form of 여기에서; the place was clear."
      }
     ],
     "correct": [
-     "a"
+     "c"
     ],
-    "explain": "The clerk asked 'You are not eating here?' and 네 means 'that is right', i.e. 'I am not'. Then 'I'll eat here' contradicts it, so the clerk asks again.",
-    "acceptable": [
-     {
-      "ids": [
-       "a"
-      ],
-      "reason": "Only c explains the clash between 네 and the following words."
-     }
-    ]
+    "explain": "The clerk asked 'You are not eating here?' and 네 means 'that is right', i.e. 'I am not'. Then 'I'll eat here' contradicts it, so the clerk asks again."
    },
    {
     "id": "s2",
@@ -1196,6 +1220,14 @@
       "patterns": [
        "^\\s*네[.!]?\\s*$"
       ]
+     },
+     {
+      "id": "w4",
+      "label": "does not start with 네",
+      "mode": "none",
+      "patterns": [
+       "^\\s*네"
+      ]
      }
     ],
     "selfAssess": [
@@ -1209,6 +1241,9 @@
      },
      {
       "text": "여기서 먹고 갈게요."
+     },
+     {
+      "text": "저는 안에서 먹을 거예요."
      }
     ],
     "badAnswers": [
@@ -1219,6 +1254,14 @@
      {
       "text": "네, 먹어요.",
       "why": "Does not say where, so the clash remains."
+     },
+     {
+      "text": "네, 여기서 먹고 갈 거예요.",
+      "why": "This is the customer's original reply; starting with 네 repeats the clash."
+     },
+     {
+      "text": "네, 여기서 먹어요.",
+      "why": "Still starts with 네 to a negative question."
      }
     ],
     "humanReview": "Whether the reply is natural and unambiguous needs a person."
@@ -1242,7 +1285,7 @@
    "아니요, 먹을 거예요 is also a good answer (denying the negative question); both 아니요 and an explicit statement work."
   ],
   "hardCases": [
-   "Answering a negative question with a bare 아니요 can also be misunderstood; the check only forbids a bare 네."
+   "Answering a negative question with a bare 아니요 can also be misunderstood; the check only forbids a reply that starts with 네."
   ],
   "cautions": {
    "language": "In Korean 네/아니요 answer to the statement as asked, not to the facts.",
@@ -1256,7 +1299,8 @@
    "human": [
     "Naturalness"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k6-08",
@@ -1287,10 +1331,10 @@
    {
     "id": "s1",
     "kind": "pickLine",
-    "prompt": "Two of your lines try to repair the misunderstanding but fail. Which line fails?",
+    "prompt": "Two of your own lines try to repair the misunderstanding but both fail. Pick one of them.",
     "hints": [
      "Look at which words the repair uses to name the day.",
-     "Ask: if 지수 and I disagree about what 다음 주 is, does repeating it help?"
+     "For each repair, ask what new information it gives 지수 that she did not already have."
     ],
     "lines": [
      "나: 그럼 다음 주 월요일 오후 2시에 만나요.",
@@ -1318,12 +1362,11 @@
     "checks": [
      {
       "id": "w1",
-      "label": "contains a date",
+      "label": "names the intended date (9일)",
       "mode": "any",
       "patterns": [
-       "\\d+\\s*일(?![가-힣])",
-       "\\d+\\s*월\\s*\\d+",
-       "\\d+\\s*일"
+       "(?<![0-9])9\\s*일",
+       "구\\s*일"
       ]
      },
      {
@@ -1367,6 +1410,10 @@
      {
       "text": "아니요, 다음 주 월요일이에요.",
       "why": "Repeats the ambiguous phrase and gives no date."
+     },
+     {
+      "text": "죄송해요, 내일 말고 5일 월요일이에요. 괜찮으세요?",
+      "why": "Names a date, but the wrong one (5일, not 9일)."
      }
     ],
     "humanReview": "Tone and naturalness of the repair need a person."
@@ -1391,7 +1438,7 @@
    "Weekday plus date ('9일 월요일') is the usual repair; 'Monday the 9th' in Korean order is fine."
   ],
   "hardCases": [
-   "Learners who write '9/9' or 'nine' need the check to be tolerant; the pattern accepts 9일 only. A human decides on other formats."
+   "Learners who write '9/9' or 'nine' need the check to be tolerant; the pattern accepts 9일 or 구일 only. A human decides on other formats."
   ],
   "cautions": {
    "language": "Numbers with 일 (days) are used; the pattern also accepts 월/일.",
@@ -1405,7 +1452,8 @@
    "human": [
     "Naturalness and tone"
    ]
-  }
+  },
+  "status": "draft"
  },
  {
   "id": "x-k-k6-09",
@@ -1646,7 +1694,7 @@
     "kind": "choose",
     "prompt": "Which pieces of information will help the owner fix the problem? Choose all that apply.",
     "hints": [
-     "Think about what the owner cannot see by looking at the app.",
+     "Think about what the owner needs in order to find and fix this particular order.",
      "Add only what they need to act."
     ],
     "options": [
@@ -1710,7 +1758,16 @@
        "바뀐",
        "대신",
        "틀렸",
-       "틀리"
+       "틀리",
+       "왔어요",
+       "왔는데",
+       "왔습니다",
+       "도착",
+       "받았",
+       "시켰는데",
+       "주문했는데",
+       "배달됐",
+       "배달되었"
       ]
      },
      {
@@ -1738,7 +1795,13 @@
        "감사",
        "실례",
        "혹시",
-       "고맙"
+       "고맙",
+       "주시겠",
+       "주실 수",
+       "주시면",
+       "안녕하세요",
+       "불편",
+       "여쭤"
       ]
      },
      {
@@ -1769,6 +1832,12 @@
      {
       "text": "죄송하지만 주문한 음료가 빠져 있었어요. 혹시 환불해 주실 수 있을까요? 감사합니다.",
       "note": "Uses a different problem; same structure."
+     },
+     {
+      "text": "안녕하세요. 김치찌개를 시켰는데 된장찌개가 왔어요. 죄송하지만 교환해 주실 수 있을까요?"
+     },
+     {
+      "text": "안녕하세요. 주문한 김치찌개 대신 된장찌개가 도착했습니다. 다시 보내 주시겠어요?"
      }
     ],
     "badAnswers": [
@@ -1813,6 +1882,7 @@
    "human": [
     "Tone and sufficiency of the facts"
    ]
-  }
+  },
+  "status": "draft"
  }
 ]

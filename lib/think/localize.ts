@@ -1,4 +1,4 @@
-import { applyFlat } from "./flat";
+import { applyFlat, flatten, needsTranslation } from "./flat";
 import { OVERLAY_LOADERS, type Overlay } from "./data/assets-index";
 import { baseLang, type ThinkLang } from "./lang";
 import type { ThinkTask } from "./types";
@@ -18,6 +18,10 @@ export function localize(task: ThinkTask, lang: ThinkLang, overlay: Overlay): Lo
   const authored = baseLang(task.subject);
   const m = overlay[task.id];
   if (lang === authored || !m) return { task, lang, translated: lang === authored };
+  // A task counts as translated only when EVERY string that needs a translation has one: a half-translated task would show the authored language
+  // the learner cannot read between translated sentences, so it is treated as not translated (and not offered) until the gap is filled.
+  const complete = Object.entries(flatten(task)).every(([p, s]) => !needsTranslation(task.subject, s) || (typeof m[p] === "string" && m[p].trim().length > 0));
+  if (!complete) return { task, lang, translated: false };
   return { task: applyFlat(task, m), lang, translated: true };
 }
 
