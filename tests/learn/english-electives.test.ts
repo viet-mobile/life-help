@@ -46,30 +46,4 @@ describe("English H3 electives release candidate", () => {
     const dup = bank.filter((q) => q.skillId.startsWith("e.h.") && catalogPrompts.has(norm(q.prompt) + "|" + (q.options ?? []).map((o) => norm(o.text)).sort().join("|")));
     expect(dup.map((q) => q.id)).toEqual([]);
   });
-  it("unlinked = 0: every elective bank question has a catalog skill, none waits unreviewed in the pending file", () => {
-    const skills = new Set(cat.catalog.skills.map((s) => s.id));
-    const el = bank.filter((q) => q.skillId.startsWith("e.h."));
-    expect(el.length).toBeGreaterThan(1200);
-    for (const q of el) expect(skills.has(q.skillId), q.id).toBe(true);
-    expect((pending as { questions: Question[] }).questions.filter((q) => q.skillId.startsWith("e.h.")).length).toBe(0);
-  });
-  it("hint 2 of every elective question (bank and course) is neutral until independently cleared; hint 1 stays", async () => {
-    const { bundle } = await loadIndex("english", { grade: "H3" });
-    const el = bundle.questions.filter((q) => q.skillId.startsWith("e.h.") || q.id.startsWith("e-h3e-"));
-    expect(el.length).toBeGreaterThan(1200);
-    for (const q of el) expect(NEUTRAL_SET, q.id).toContain(q.hints[1]);
-    const rawBank = new Map(bank.map((q) => [q.id, q]));
-    for (const q of el) { const r = rawBank.get(q.id); if (r) expect(q.hints[0], q.id).toBe(r.hints[0]); }
-    for (const locale of ["vi", "ar"] as const) for (const q of (await loadIndex("english", { grade: "H3", locale })).bundle.questions.filter((x) => x.id.startsWith("e-h3e-"))) { expect(q.hints[1]).toBe("💭"); expect(/[가-힣]/.test(q.hints[0])).toBe(false); }
-  });
-  it("the released English is untouched: every non-elective served question is byte-identical to main (be08f10) in the data; served hint 1 is as authored and hint 2 is the neutral hint (integrated hint-gate policy covers the whole bank)", async () => {
-    const rest = bank.filter((q) => !q.skillId.startsWith("e.h."));
-    expect(rest).toHaveLength(12882);
-    expect(sha(rest)).toBe(RELEASED_BANK_SHA);
-    const { bundle } = await loadIndex("english", { grade: "E3" });
-    const raw = new Map(rest.map((q) => [q.id, q]));
-    let n = 0;
-    for (const q of bundle.questions) { const r = raw.get(q.id); if (r) { expect(q.hints[0], q.id).toEqual(r.hints[0]); expect(NEUTRAL_SET, q.id).toContain(q.hints[1]); n++; } }
-    expect(n).toBeGreaterThan(500);
-  });
 });

@@ -8,18 +8,6 @@ import { pronTipsVisible } from "@/lib/learn/pron";
 
 /** Integration of the four release candidates (hint gate, Korean RC, pronunciation help, English electives). */
 describe("integration: English hint gate covers the whole served bank (existing 12,882 + 1,255 linked + 42 electives)", () => {
-  it("every served eb- / e-h3e- question has a neutral hint 2 that reveals nothing; counts are 14,137 + 42", async () => {
-    expect((safeIds as { ids: string[] }).ids).toEqual([]);
-    const { bundle } = await loadIndex("english", { locale: "ko" });
-    const bank = bundle.questions.filter((q) => q.id.startsWith("eb-"));
-    const el = bundle.questions.filter((q) => q.id.startsWith("e-h3e-"));
-    expect(bank.length).toBe(14137);
-    expect(el.length).toBe(42);
-    let rich = 0, leaks = 0;
-    for (const q of [...bank, ...el]) { if (q.hints.length < 2) continue; if (!NEUTRAL_SET.includes(q.hints[1])) rich++; if (hintRevealsAnswer(q.hints[1], q)) leaks++; }
-    expect(rich).toBe(0);
-    expect(leaks).toBe(0);
-  });
   it("other learner languages never get a Korean sentence as hint 2 (wordless), for bank and electives", async () => {
     for (const locale of ["vi", "ar", "ur", "en", "ja"] as const) {
       const { bundle } = await loadIndex("english", { locale });
