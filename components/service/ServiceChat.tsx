@@ -27,6 +27,7 @@ export function ServiceChat({ requestId, kind, canSend, tone = "light", pollMs =
   const [sending, setSending] = useState(false);
   const [problem, setProblem] = useState<string | null>(null);
   const cursor = useRef(0);
+  const epoch = useRef(0); // bumped when the conversation or reader language changes: an answer to an older question is dropped
   const seen = useRef(new Set<string>());
   const bottom = useRef<HTMLDivElement>(null);
   const dark = tone === "dark";
@@ -42,13 +43,17 @@ export function ServiceChat({ requestId, kind, canSend, tone = "light", pollMs =
   // reading in another language: start over so every message is shown in the new reader language
   useEffect(() => {
     cursor.current = 0;
+    epoch.current += 1;
     seen.current = new Set();
     // eslint-disable-next-line react-hooks/set-state-in-effect -- hydrates from the server / browser cache after mount
     setMessages([]);
   }, [requestId, locale]);
 
   usePoll(async () => {
-    merge(await chatApi.list(kind, requestId, cursor.current, locale));
+    const at = epoch.current;
+    const list = await chatApi.list(kind, requestId, cursor.current, locale);
+    if (at !== epoch.current) return; // the conversation / language changed while this was in flight
+    merge(list);
     setProblem(null);
   }, pollMs, true, (e) => setProblem(e instanceof ApiError && e.status === 404 ? "gone" : "retry"));
 

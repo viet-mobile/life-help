@@ -64,6 +64,7 @@ async function deliver(opts: { from: Page; to: Page; text: string; requestId: st
     chatMounted: !!document.querySelector('[data-testid="chat-log"]'),
     shownCount: document.querySelectorAll('[data-testid="msg-shown"]').length,
     originalCount: document.querySelectorAll('[data-testid="msg-original"]').length })).catch(() => undefined);
+  const lifeSnapshot = { ...toObs.life, startedAt: undefined, pending: toObs.life.pending, longestPendingMs: (toObs.life as unknown as { longestPendingMs: number }).longestPendingMs };
   const send = fromObs.sends[0];
   const polls = toObs.polls.filter((p) => p.at >= t0);
   const rows = await dbRows(`svc_messages?select=id&request_id=eq.${requestId}&body=eq.${encodeURIComponent(text)}`);
@@ -86,7 +87,7 @@ async function deliver(opts: { from: Page; to: Page; text: string; requestId: st
     persisted: rows === null ? null : rows.length > 0, pollsInWindow: polls.length, pollStatuses: polls.map((p) => p.status),
     anyPollHasMessage: polls.some((p) => p.hasMarker), uiShowsMessage: false, partyOk, reloadShowsMessage: reloadShows, receiverView,
   };
-  throw new Error(`chat delivery failed (${label})\n${report(label, e, polls)}\nverdict=${classifyChat(e)}`);
+  throw new Error(`chat delivery failed (${label})\n${report(label, e, polls)}\nRECEIVER_REQUEST_LIFECYCLE=${JSON.stringify(lifeSnapshot)}\nverdict=${classifyChat(e)}`);
 }
 
 test("customer -> helper -> chat -> start -> complete; admin sees the same state; localStorage cleared mid-flow", async ({ browser }) => {
@@ -158,6 +159,25 @@ test("customer -> helper -> chat -> start -> complete; admin sees the same state
     await deliver({ from: C.page, to: H.page, text: hello, requestId, helperName: NAME, label: "customer -> helper" });
     const reply = `${RUN_ID} ok`;
     await deliver({ from: H.page, to: C.page, text: reply, requestId, helperName: NAME, label: "helper -> customer" });
+
+    // recovery: a poll that never answers must not end the customer's auto-refresh (the next message still appears, no reload)
+    const POLL = /\/api\/svc\/c\/requests\/[0-9a-f-]{36}\/messages\?after=/;
+    let held = 0;
+    await C.page.route(POLL, (route) => { if (held++ === 0) return; /* the first poll is held and never answered */ return route.continue(); });
+    await deliver({ from: H.page, to: C.page, text: `${RUN_ID} after-stall`, requestId, helperName: NAME, label: "helper -> customer (after a stalled poll)" });
+    await C.page.unroute(POLL);
+    // recovery: polls that fail for a while show the retry notice, and the message sent meanwhile appears once the network is back
+    await C.page.route(POLL, (route) => route.abort("failed"));
+    await H.page.getByTestId("chat-input").fill(`${RUN_ID} during-outage`);
+    await H.page.getByTestId("chat-send").click();
+    await expect(C.page.getByTestId("chat-problem")).toBeVisible({ timeout: 30_000 });
+    await C.page.unroute(POLL);
+    await expect(C.page.getByTestId("chat-log")).toContainText(`${RUN_ID} during-outage`, { timeout: 30_000 });
+    await expect(C.page.getByTestId("chat-problem")).toHaveCount(0, { timeout: 30_000 });
+    // no duplicates after all that
+    expect(await C.page.getByTestId("chat-log").getByText(`${RUN_ID} during-outage`).count()).toBe(1);
+    // the other direction after the customer's own message went through a stalled poll as well
+    await deliver({ from: C.page, to: H.page, text: `${RUN_ID} thanks`, requestId, helperName: NAME, label: "customer -> helper (after recovery)" });
 
     // start -> complete, customer follows without reloads
     await job.getByTestId("start-job").click();
