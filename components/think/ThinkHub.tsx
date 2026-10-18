@@ -10,7 +10,9 @@ import { siteConfig } from "@/lib/learn/sites";
 import { schoolLevel, type Grade } from "@/lib/learn/types";
 import type { ThinkTask } from "@/lib/think/types";
 import { useLearner } from "../learn/LearnerProvider";
+import { flowKey, taskCompleted } from "@/lib/think/flow";
 import { ELECTIVE_NAMES, HUB } from "./hubLabels";
+import { readLedger } from "./ThinkOffer";
 import { labels } from "./labels";
 import { TaskPlayer } from "./ThinkPlayer";
 
@@ -73,7 +75,7 @@ export function ThinkHub() {
       <div className="l-wrap l-stack" data-testid="think-player">
         <TaskPlayer key={`${current.task.id}:${lang}`} task={current.task} lang={lang} checksOff={checksOffFor(current.task, lang)} reviewer={false}
           onBack={() => router.push(href("/think"))} onFlag={() => undefined}
-          onComplete={() => { const d = { ...readDone(site), [current.task.id]: new Date().toISOString() }; writeDone(site, d); setDone(d); }} />
+          onComplete={() => { const d = { ...readDone(site), [current.task.id]: new Date().toISOString() }; writeDone(site, d); setDone(d); try { window.localStorage.setItem(flowKey(site), JSON.stringify(taskCompleted(readLedger(site), current.task.id))); } catch { /* storage unavailable */ } }} />
       </div>
     );
   }

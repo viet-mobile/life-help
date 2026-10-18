@@ -9,6 +9,7 @@ import { displayStreak } from "@/lib/learn/domain/streak";
 import { siteConfig } from "@/lib/learn/sites";
 import { BrandLogo } from "./BrandLogo";
 import { LocaleSwitch } from "./LocaleSwitch";
+import { ThinkOffer } from "../think/ThinkOffer";
 import { useLearner } from "./LearnerProvider";
 
 const FOCUS_PATHS = ["/lesson/", "/onboarding", "/diagnostic", "/practice"]; // /think keeps the tab bar (its hub), the player is part of it
@@ -27,7 +28,7 @@ export function PlayShell({ children }: { children: ReactNode }) {
     { path: "/profile", icon: "🙂", label: t("nav.profile") },
   ];
 
-  if (focus) return <main id="main" className="l-main">{children}</main>;
+  if (focus) return <><main id="main" className="l-main">{children}</main><ThinkOffer /></>;
 
   return (
     <>
@@ -52,6 +53,7 @@ export function PlayShell({ children }: { children: ReactNode }) {
         ))}
       </nav>
       <main id="main" className="l-main">{ready ? children : <div className="l-wrap" role="status">{t("common.loading")}</div>}</main>
+      <ThinkOffer />
     </>
   );
 }

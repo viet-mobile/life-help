@@ -92,6 +92,8 @@ export function QuestionCard({
         seenIds,
       });
       onAttempt(res);
+      // a solved or revealed regular question counts toward the thinking-challenge offer (once per question; see lib/think/flow.ts)
+      if (res.correct || res.revealed) window.dispatchEvent(new CustomEvent("learn:q-complete", { detail: { site, questionId: q.id } }));
       setFeedback(res.feedback);
       if (res.correct) {
         setStatus("correct");

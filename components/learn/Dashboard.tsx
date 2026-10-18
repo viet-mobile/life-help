@@ -12,7 +12,9 @@ import { useLearner } from "./LearnerProvider";
 import { LevelUnavailable } from "./LevelUnavailable";
 import { thinkLangFor } from "@/lib/think/lang";
 import { HUB } from "@/components/think/hubLabels";
-import { CADENCE_TEXT, thinkCadence } from "@/lib/think/cadence";
+import { CADENCE_TEXT } from "@/lib/think/cadence";
+import { flowView } from "@/lib/think/flow";
+import { readLedger } from "../think/ThinkOffer";
 import { QuestList } from "./QuestList";
 import { SkillBars } from "./SkillBars";
 
@@ -20,10 +22,7 @@ export function Dashboard() {
   const { state, index, t, href, mode, accountsEnabled, site, locale } = useLearner();
   const thinkLang = thinkLangFor(locale, site);
   const thinkText = HUB[thinkLang];
-  const answered = Object.values(state.mastery).reduce((n, m) => n + m.attempts, 0);
-  let tried = 0;
-  try { tried = Object.keys(JSON.parse(window.localStorage.getItem(`learn:think:${site}`) ?? "{}")).length; } catch { /* storage unavailable: counted as none tried */ }
-  const cadence = thinkCadence(answered, tried);
+  const cadence = flowView(readLedger(site)); // counted per distinct solved / revealed question, retries never count (lib/think/flow.ts)
   const now = new Date();
   const level = levelProgress(state.totalXp);
   const rec = recommendNext(state, index, now);
