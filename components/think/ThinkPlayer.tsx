@@ -26,7 +26,7 @@ export function TaskPlayer({ task, lang, checksOff = false, reviewer, onBack, on
       {/* internal codes (id, format) are shown to reviewers only */}
       <p className="mt-3 text-xs font-bold text-slate-500" data-testid="task-meta">{reviewer ? `${task.id} · ` : ""}{task.levelLabel} · ≈{task.minutes}{L.minutes}{reviewer ? ` · ${task.format}` : ""}</p>
       <h1 className="text-2xl font-black">{task.title}</h1>
-      {task.status === "draft" && <p className="mt-1 rounded-lg bg-amber-50 p-2 text-xs font-bold text-amber-800" data-testid="draft-note">🟡 {L.draft}</p>}
+      {reviewer && task.status === "draft" && <p className="mt-1 rounded-lg bg-amber-50 p-2 text-xs font-bold text-amber-800" data-testid="draft-note">🟡 {L.draft}</p>}
       <p className="mt-2 text-sm" data-testid="prereq"><b>{L.prereq}:</b> {task.prerequisites.join("; ")}</p>
       <details className="mt-3 rounded-2xl border bg-slate-50 p-4 text-sm" data-testid="task-info" open={reviewer}>
         <summary className="cursor-pointer font-black">{L.info}</summary>

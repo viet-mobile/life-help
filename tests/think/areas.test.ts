@@ -201,3 +201,12 @@ describe("hub wiring for Korean-first tasks", () => {
     expect(src).toContain("key={`${current.task.id}:${lang}`}"); // the key does not include the toggle: switching keeps the learner's progress in the task
   });
 });
+
+describe("draft note", () => {
+  it("is shown to reviewers only, never to learners", async () => {
+    const fs = await import("node:fs");
+    const src = fs.readFileSync("components/think/ThinkPlayer.tsx", "utf8");
+    expect(src).toContain('{reviewer && task.status === "draft" &&');
+    expect(src).not.toMatch(/\{task\.status === "draft" &&/);
+  });
+});
