@@ -64,7 +64,8 @@ export async function diagnostic(page: Page, site: Site, hook?: ScreenHook, opts
   await expect(page.getByText(t["diag.result.reward"].replace("{xp}", "30"))).toBeVisible();
   await hook?.("diagnostic result");
   await page.getByRole("link", { name: t["diag.result.cta"] }).click();
-  await expect(page).toHaveURL(url(site, "/dashboard"));
+  await expect(page).toHaveURL(new RegExp(`/study/${site}/(lesson|practice|learn)`)); // the learner studies on, not back to the main screen
+  await page.goto(url(site, "/dashboard"));
   await hook?.("dashboard");
 }
 

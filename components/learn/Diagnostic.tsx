@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import type { Placement } from "@/lib/learn/domain/diagnostic";
 import type { EngineDelta, PlayerState, PublicQuestion } from "@/lib/learn/types";
+import { recommendNext } from "@/lib/learn/domain/path";
 import { useLearner } from "./LearnerProvider";
 import { AnswerInput, ListenButton, TargetBlock } from "./renderers";
 import { MathBlock, RichText } from "./RichText";
@@ -26,7 +27,7 @@ interface StepResponse {
 
 /** Adaptive placement: gentle wording, no scores, ends in a skill map. */
 export function Diagnostic() {
-  const { api, t, href, site } = useLearner();
+  const { api, t, href, site, state, index } = useLearner();
   const router = useRouter();
   const [phase, setPhase] = useState<"intro" | "loading" | "question" | "feedback" | "done" | "error">("intro");
   const [q, setQ] = useState<PublicQuestion | null>(null);
@@ -82,11 +83,20 @@ export function Diagnostic() {
     }
   };
 
+  /** After the diagnostic the learner studies on: straight to the next recommended lesson / practice (same pick as the dashboard's "continue"), not back to the main screen. */
+  const studyHref = (): string => {
+    const rec = recommendNext((result?.state ?? state) as PlayerState, index, new Date());
+    if (rec.kind === "lesson") return href(`/lesson/${rec.lessonId}`);
+    if (rec.kind === "review") return href("/practice?kind=review");
+    if (rec.kind === "practice") return href(`/practice?kind=practice&skill=${encodeURIComponent(rec.skillId)}`);
+    return href("/learn");
+  };
+
   const answerReady = Array.isArray(value) ? value.length > 0 && (q?.type !== "ordering" || value.length === (q.options?.length ?? 0)) : value.trim().length > 0;
   useEnterToContinue(phase === "intro" || phase === "feedback" || phase === "done" || (phase === "question" && answerReady), () => {
     if (phase === "intro") void begin();
     else if (phase === "feedback") proceed();
-    else if (phase === "done") router.push(href("/dashboard"));
+    else if (phase === "done") router.push(studyHref());
     else void submit();
   }, phase + (q?.id ?? ""));
 
@@ -122,7 +132,8 @@ export function Diagnostic() {
         <section className="l-card"><SkillBars skillIds={skillIds.length ? skillIds : undefined} /></section>
         {(result.delta?.xp ?? 0) > 0 && <p className="l-card" role="status">🎁 {t("diag.result.reward", { xp: result.delta?.xp ?? 0 })}</p>}
         {(result.placement?.placedOutLessonIds.length ?? 0) > 0 && <p className="l-muted">{t("diag.result.placed", { n: result.placement?.placedOutLessonIds.length ?? 0 })}</p>}
-        <Link className="l-btn l-btn-block" href={href("/dashboard")}>▶ {t("diag.result.cta")}</Link>
+        <Link className="l-btn l-btn-block" data-testid="diag-continue" href={studyHref()}>▶ {t("diag.result.cta")}</Link>
+        <Link className="l-link" href={href("/dashboard")}>{t("result.home")}</Link>
       </div>
     );
   }

@@ -64,7 +64,8 @@ async function diagnostic(page: Page, site: Site, grade: Grade, locale: Locale) 
 }
 async function lesson(page: Page, site: Site, grade: Grade, locale: Locale) {
   const t = L(locale);
-  await page.getByRole("link", { name: new RegExp(`^▶ ${t["dash.continue"]}`) }).click();
+  // after the diagnostic the learner is taken straight into the next lesson; from the dashboard the continue link leads there
+  if (!/\/lesson\//.test(page.url())) await page.getByRole("link", { name: new RegExp(`^▶ ${t["dash.continue"]}`) }).click();
   await expect(page).toHaveURL(new RegExp(`/lesson/${site === "math" ? "math" : "en"}-${grade.toLowerCase()}-l`));
   // a strong placement can place a guest (never Premium) past the free lessons: the next lesson is then behind the Premium gate,
   // and the lesson flow continues on the course's first (free) lesson

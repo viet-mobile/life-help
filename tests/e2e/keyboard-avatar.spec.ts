@@ -113,5 +113,5 @@ test("Enter moves on in the placement test too", async ({ page }) => {
   await expect(page.getByRole("heading", { name: ko["diag.result.title"] })).toBeVisible();
   await page.locator("h1").click();
   await page.keyboard.press("Enter");
-  await page.waitForURL(/dashboard/);
+  await page.waitForURL(/\/(lesson|practice|learn)\//); // Enter on the result screen continues studying, not back to the main screen
 });

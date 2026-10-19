@@ -66,7 +66,8 @@ async function diagnostic(page: Page, site: "math" | "english", locale: Locale) 
 }
 async function lesson(page: Page, site: "math" | "english", locale: Locale) {
   const t = L(locale);
-  await page.getByRole("link", { name: new RegExp(`^▶ ${t["dash.continue"]}`) }).click();
+  // after the diagnostic the learner is taken straight into the next lesson; from the dashboard the continue link leads there
+  if (!/\/lesson\//.test(page.url())) await page.getByRole("link", { name: new RegExp(`^▶ ${t["dash.continue"]}`) }).click();
   await expect(page).toHaveURL(/\/lesson\//);
   const start = page.waitForResponse(isApi("start"));
   await page.getByRole("button", { name: t["lesson.begin"] }).click();
