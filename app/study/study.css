@@ -92,8 +92,11 @@
 .l-stats { display: flex; gap: 8px; align-items: center; }
 /* Korean site only (Math / English layouts stay as released): the status chips fit 320-390px screens */
 .study-root[data-site="korean"] .l-stats { flex: 0 0 auto; }
-.study-root[data-site="korean"] .l-topbar-inner > .l-locale { flex: 1 1 0; min-width: 0; }
-.study-root[data-site="korean"] .l-topbar-inner > .l-locale .l-locale-select { min-width: 0; width: 100%; max-width: 100%; }
+/* the language picker takes the free space only on narrow screens (so the chips fit); from 561px it keeps the same natural width as Math / English */
+@media (max-width: 560px) {
+  .study-root[data-site="korean"] .l-topbar-inner > .l-locale { flex: 1 1 0; min-width: 0; }
+  .study-root[data-site="korean"] .l-topbar-inner > .l-locale .l-locale-select { min-width: 0; width: 100%; max-width: 100%; }
+}
 @media (max-width: 420px) { .study-root[data-site="korean"] .l-topbar-inner { gap: 6px; padding: 8px 10px; } .study-root[data-site="korean"] .l-stats { gap: 4px; } .study-root[data-site="korean"] .l-stat { padding: 4px 8px; font-size: 0.8rem; gap: 2px; } }
 .l-stat { display: inline-flex; align-items: center; gap: 4px; font-weight: 800; padding: 6px 10px; border-radius: 999px; background: #fff; border: 2px solid var(--l-line); font-size: 0.9rem; }
 
