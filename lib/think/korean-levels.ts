@@ -13,6 +13,8 @@ export const levelFromCode = (c: string): KoreanLevel | null => (isLevelCode(c) 
 const LEVELS = (data as { levels: Record<string, number> }).levels;
 export const koreanLevelOf = (taskId: string): KoreanLevel | null => (LEVELS[taskId] as KoreanLevel | undefined) ?? null;
 /** The level a learner of the site's step K1-K10 starts on: the official grade (한국어 표준 교육과정) the site already assigns to that course. */
+/** The thinking level (1-6급) of a curriculum band of the learning map: Introduction learners get level 1; level 6 is never returned for a band that has no lessons yet. */
+export const levelForBand = (band: string): KoreanLevel => (band === "intro" ? 1 : (Math.min(6, Math.max(1, Number(band.slice(6)) || 1)) as KoreanLevel));
 export const priorLevelFor = (grade: string): KoreanLevel => ((officialGradeOf(grade)?.primary as KoreanLevel | undefined) ?? 1);
 
 const NAMES: Record<ThinkLang, string[]> = {

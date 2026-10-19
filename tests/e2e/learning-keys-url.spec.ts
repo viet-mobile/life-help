@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { expect, test, type Page } from "@playwright/test";
 import { ko } from "../../lib/learn/i18n/ko";
+import { pickLevel } from "./pickLevel";
 
 /**
  * 1. Language in the URL: https://<learning host>/<locale> serves that language's metadata (title, description, social preview, <html lang>)
@@ -75,7 +76,7 @@ async function onboardGuest(page: Page, site: Site, level: string) {
   await page.goto(`${HOST[site]}/onboarding`);
   await page.locator("#nick").fill("tester");
   await page.getByRole("button", { name: t["onboarding.next"] }).click();
-  await page.getByRole("radio", { name: t[`grade.${level}`], exact: true }).click();
+  await pickLevel(page, site, level, t[`grade.${level}`]);
   await page.getByRole("button", { name: t["onboarding.next"] }).click();
   await page.getByRole("radio", { name: t["goal.fill_gaps"] }).click();
   await page.getByRole("button", { name: t["onboarding.next"] }).click();

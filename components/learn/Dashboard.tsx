@@ -5,6 +5,7 @@ import { ACHIEVEMENTS } from "@/lib/learn/domain/achievements";
 import { dayKey } from "@/lib/learn/domain/dates";
 import { levelProgress } from "@/lib/learn/domain/level";
 import { recommendNext, weakestSkills } from "@/lib/learn/domain/path";
+import { BandChip } from "./BandChip";
 import { ensureQuest } from "@/lib/learn/domain/quests";
 import { displayStreak } from "@/lib/learn/domain/streak";
 import { avatarEmoji } from "@/lib/learn/avatars";
@@ -62,7 +63,7 @@ export function Dashboard() {
 
       <section className="l-card l-card-accent l-stack" aria-labelledby="cta-h">
         <h2 id="cta-h" className="l-h2">{t("dash.continue")}</h2>
-        <p>{ctaLabel}</p>
+        <p>{ctaLabel}{site === "korean" && rec.kind === "lesson" && <> <BandChip lessonId={rec.lessonId} t={t} /></>}</p>
         <Link className="l-btn l-btn-light l-btn-block" href={ctaHref}>▶ {t("dash.continue")}</Link>
         <Link className="l-btn l-btn-ghost l-btn-block" href={href("/modes")}>{t("modes.title")}</Link>
       </section>

@@ -1,4 +1,5 @@
 import { readFileSync, existsSync } from "node:fs";
+import { pickLevel } from "./pickLevel";
 import { expect, test, type Page } from "@playwright/test";
 import { ko } from "../../lib/learn/i18n/ko";
 
@@ -49,7 +50,7 @@ async function onboardGuest(page: Page, site: Site, loc: string, level: string) 
   await page.goto(`${HOST[site]}/onboarding`);
   await page.locator("#nick").fill("tester");
   await page.getByRole("button", { name: t["onboarding.next"] }).click();
-  await page.getByRole("radio", { name: t[`grade.${level}`], exact: true }).click();
+  await pickLevel(page, site, level, t[`grade.${level}`]);
   await page.getByRole("button", { name: t["onboarding.next"] }).click();
   await page.getByRole("radio", { name: t["goal.fill_gaps"] }).click();
   await page.getByRole("button", { name: t["onboarding.next"] }).click();
@@ -89,7 +90,7 @@ test.describe("representative matrix: 16 locales x 3 sites x desktop / 390 px", 
           await page.goto(`${HOST[site]}/onboarding`);
           await page.locator("#nick").fill("tester");
           await page.getByRole("button", { name: t["onboarding.next"] }).click();
-          await expect(page.getByRole("radio", { name: t[site === "korean" ? "grade.K1" : "grade.E1"], exact: true })).toBeVisible();
+          await expect(site === "korean" ? page.getByTestId("band-pick-intro") : page.getByRole("radio", { name: t["grade.E1"], exact: true })).toBeVisible();
           await expect(page.getByRole("heading", { level: 1 })).toHaveText(t[site === "korean" ? "onboarding.level.title" : "onboarding.grade.title"]);
         }
       });

@@ -3,7 +3,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { FILE_META, TASK_LOADERS } from "@/lib/think/data/assets-index";
-import { koreanLevelOf, priorLevelFor } from "@/lib/think/korean-levels";
+import { koreanLevelOf, levelForBand, priorLevelFor } from "@/lib/think/korean-levels";
+import { bandOfLesson } from "@/lib/learn/korean-bands";
+import { buildPath } from "@/lib/learn/domain/path";
 import { isFinalBoss } from "@/lib/think/bosses";
 import { thinkLangFor } from "@/lib/think/lang";
 import { loadOverlay, localize } from "@/lib/think/localize";
@@ -34,9 +36,9 @@ export function readTried(site: string): Set<string> {
 }
 
 /** The tasks of the learner's own grade / level that are ready in the learner's language (never an untranslated original). */
-async function readyTasks(site: "math" | "english" | "korean", grade: string, locale: string) {
+async function readyTasks(site: "math" | "english" | "korean", grade: string, locale: string, bandLevel?: number) {
   const lang = thinkLangFor(locale, site);
-  const level = site === "korean" ? priorLevelFor(grade) : null; // Korean: the tasks of the learner's language level (1-6급), see lib/think/korean-levels.ts
+  const level = site === "korean" ? (bandLevel ?? priorLevelFor(grade)) : null; // Korean: the tasks of the learner's language level (1-6급), see lib/think/korean-levels.ts
   const metas = FILE_META.filter((m) => m.subject === site && (level ? true : m.grades.includes(grade) || m.grades.length === 0));
   const lists = await Promise.all(metas.map((m) => TASK_LOADERS[m.key]()));
   const own = lists.flat().filter((t: ThinkTask) => (level ? koreanLevelOf(t.id) === level : t.grade ? t.grade === grade : t.level === bandOf(grade)));
@@ -49,7 +51,7 @@ async function readyTasks(site: "math" | "english" | "korean", grade: string, lo
  * thinking challenge as a small non-blocking card: "try now" opens it, "later" keeps it owed. Mounted once in the play shell.
  */
 export function ThinkOffer() {
-  const { site, state, locale, href, ready } = useLearner();
+  const { site, state, locale, href, ready, index } = useLearner();
   const router = useRouter();
   const pathname = usePathname();
   const grade = (state.profile?.grade ?? siteConfig(site).levels[0]) as string;
@@ -57,12 +59,16 @@ export function ThinkOffer() {
   const L = FLOW[lang];
   const [offer, setOffer] = useState<{ id: string; title: string; minutes: number } | null>(null);
   const busy = useRef(false);
-  const ctx = useRef({ site, grade, locale, pathname });
-  ctx.current = { site, grade, locale, pathname };
+  // Korean: the thinking level follows the curriculum band of the lesson the learner is on (the learning map), not only the course they chose
+  const curLesson = site === "korean" ? buildPath(state, index).find((n) => n.status === "current")?.lessonId : undefined;
+  const curBand = curLesson ? bandOfLesson(curLesson) : null;
+  const bandLevel = curBand ? levelForBand(curBand) : undefined;
+  const ctx = useRef({ site, grade, locale, pathname, bandLevel });
+  ctx.current = { site, grade, locale, pathname, bandLevel };
 
   const show = useCallback(async (taskId: string) => {
     try {
-      const ready = await readyTasks(ctx.current.site, ctx.current.grade, ctx.current.locale);
+      const ready = await readyTasks(ctx.current.site, ctx.current.grade, ctx.current.locale, ctx.current.bandLevel);
       const hit = ready.find((x) => x.task.id === taskId);
       if (hit) setOffer({ id: hit.task.id, title: hit.task.title, minutes: hit.task.minutes });
       else writeLedger(ctx.current.site, { ...readLedger(ctx.current.site), pending: null }); // no longer ready (language or grade changed): drop the offer
@@ -77,7 +83,7 @@ export function ThinkOffer() {
     if (!reached || busy.current) return;
     busy.current = true;
     try {
-      const cands = (await readyTasks(cur.site, cur.grade, cur.locale)).map<Candidate>((x) => ({ id: x.task.id, topic: x.task.topic, status: x.task.status }));
+      const cands = (await readyTasks(cur.site, cur.grade, cur.locale, cur.bandLevel)).map<Candidate>((x) => ({ id: x.task.id, topic: x.task.topic, status: x.task.status }));
       const fresh = readLedger(cur.site);
       const id = chooseTask(cands, fresh, readTried(cur.site));
       if (!id) { writeLedger(cur.site, noTaskAvailable(fresh)); return; }
