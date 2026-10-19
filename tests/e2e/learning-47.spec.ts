@@ -135,6 +135,30 @@ test("English E3: vi -> ur -> sw -> te; the English target sentence never change
   }
 });
 
+test("English practice modes, flashcards, and 375px/RTL rendering across ko, en, vi, ja, zh-Hans, zh-Hant, ar, ur, fa, he", async ({ page }) => {
+  await page.addInitScript(mockSpeech);
+  await onboardGuest(page, "english", "en", "E3");
+  for (const loc of ["ko", "en", "vi", "ja", "zh-Hans", "zh-Hant", "ar", "ur", "fa", "he"] as const) {
+    await setLocale(page, "english", loc);
+    await page.setViewportSize({ width: 375, height: 812 });
+    await page.goto(`${HOST.english}/modes`);
+    const root = page.locator(".study-root");
+    await expect(root).toHaveAttribute("dir", RTL.has(loc) ? "rtl" : "ltr");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText(dict(loc)["modes.title"]);
+    const modesText = (await root.innerText()).replaceAll("한국어", "");
+    if (loc !== "ko") expect(HANGUL.test(modesText), `${loc} /modes Hangul leak`).toBe(false);
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+    expect(overflow, `${loc} /modes @375px overflow`).toBeLessThanOrEqual(1);
+
+    // Flashcards front + reveal back
+    await page.goto(`${HOST.english}/cards`);
+    await page.getByRole("button", { name: dict(loc)["cards.reveal"] }).click();
+    await expect(page.getByRole("button", { name: `${dict(loc)["cards.knew"]} (2)` })).toBeVisible();
+    const cardsText = (await root.innerText()).replaceAll("한국어", "");
+    if (loc !== "ko") expect(HANGUL.test(cardsText), `${loc} /cards Hangul leak`).toBe(false);
+  }
+});
+
 test('study.korean K2: "안녕하세요." stays Korean target text while the explanation language follows en / vi / ur / sw / mr', async ({ page }) => {
   await page.addInitScript(mockSpeech);
   await onboardGuest(page, "korean", "en", "K2");

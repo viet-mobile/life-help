@@ -56,12 +56,16 @@ describe.each(SITES)("%s: 47-locale parity and semantic policy", (site: Site) =>
     expect(structure(loc), "ANSWER / DIFFICULTY / SKILL parity: catalog").toEqual(structure(canon));
     const served = new Set(loc.questions.map((q) => q.id));
     const gap = canon.questions.filter((q) => bankOnly(site, q.id) && !served.has(q.id));
-    // a gap is all-or-nothing per bank and only where the language has no wording
+    // math / korean banks are all-or-nothing per locale; english bank uses the per-question completeness gate (english-bank.ts)
     if (gap.length) {
       const all = canon.questions.filter((q) => bankOnly(site, q.id)).length;
-      expect(gap.length, `${site}/${locale}: a bank is withheld whole or not at all`).toBe(all);
-      if (site === "math") expect(["ko", "en"]).not.toContain(locale);
-      if (site === "english") expect(locale).not.toBe("ko");
+      if (site === "english") {
+        expect(locale).not.toBe("ko");
+        expect(all - gap.length, `${site}/${locale}: localized English bank questions served`).toBeGreaterThan(6000);
+      } else {
+        expect(gap.length, `${site}/${locale}: a bank is withheld whole or not at all`).toBe(all);
+        if (site === "math") expect(["ko", "en"]).not.toContain(locale);
+      }
     }
     const gapIds = new Set(gap.map((q) => q.id));
     expect(loc.questions.map(parityView), "ANSWER / DIFFICULTY / SKILL parity: questions").toEqual(canon.questions.filter((q) => !gapIds.has(q.id)).map(parityView));

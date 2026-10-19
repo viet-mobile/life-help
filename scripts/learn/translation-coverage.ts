@@ -35,7 +35,7 @@ for (const l of locales) {
   const k = await served("korean", l), e = await served("english", l);
   rows.push(`| ${[l, ...cells, k.course, k.bank, e.bank].join(" | ")} |`);
 }
-const md = `# Translation coverage (generated)\n\nAI translations only; no language has had a native-speaker review. "Q" columns are what \`loadIndex(site, {locale})\` really serves (no silent substitution: a language that lacks a text for a bank form does not get that bank). The English bank's wording is Korean, so only Korean-language learners receive it.\n\n${rows.join("\n")}\n`;
+const md = `# Translation coverage (generated)\n\nAI translations only; no language has had a native-speaker review. "Q" columns are what \`loadIndex(site, {locale})\` really serves (no silent substitution: a language that lacks a text for a bank form or item does not get that item). The English bank serves every item whose prompt, options, hint 1, and explanation are completely localized and Hangul-free in the learner's language.\n\n${rows.join("\n")}\n`;
 if (process.argv.includes("--write")) { fs.mkdirSync("docs/learn", { recursive: true }); fs.writeFileSync("docs/learn/translation-coverage.md", md); }
 console.log(md.split("\n").slice(4, 12).join("\n"));
 }

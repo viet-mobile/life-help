@@ -86,7 +86,7 @@ export function exampleSegments(scope: string, example: string, ko?: readonly st
 export function passageText(prompt: string): string | null {
   const first = prompt.search(/["“]/);
   if (first < 0) return null;
-  const marker = prompt.search(/\s(질문|문장|Câu hỏi|Câu)\s*[:：]/);
+  const marker = prompt.search(/\s(질문|문장|Câu hỏi|Câu)\s*[:：]|(?<=["”])\s+[^"”:\n]{1,28}[:：៖]/);
   const endLimit = marker > first ? marker : prompt.length;
   const head = prompt.slice(0, endLimit);
   const last = Math.max(head.lastIndexOf("\""), head.lastIndexOf("”"));

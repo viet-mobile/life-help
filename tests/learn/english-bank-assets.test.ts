@@ -66,7 +66,7 @@ describe("English practice bank = server-only, versioned, sha-pinned static asse
     const none = eb((await loadIndex("english", { locale: "ko", bankQuestionId: "eb-does-not-exist" })).bundle);
     expect(none.length).toBe(0);
   });
-  it("question ids, answers and hints are exactly the committed bank's; other languages get none; the browser view carries no key, hint or explanation", async () => {
+  it("question ids, answers and hints are exactly the committed bank's; other languages get localized Hangul-free bank items; the browser view carries no key, hint or explanation", async () => {
     const all = eb((await loadIndex("english")).bundle);
     const byId = new Map(all.map((q) => [q.id, q]));
     for (const s of served.slice(0, 4000)) {
@@ -84,7 +84,14 @@ describe("English practice bank = server-only, versioned, sha-pinned static asse
       expect(pub).not.toContain('"answer"');
       expect(pub).not.toContain('"hints"');
     }
-    expect(eb((await loadIndex("english", { locale: "vi" })).bundle).length).toBe(0);
+    const viBank = eb((await loadIndex("english", { locale: "vi" })).bundle);
+    expect(viBank.length).toBeGreaterThan(6000);
+    for (const q of viBank.slice(0, 500)) {
+      expect(q.prompt, q.id).not.toMatch(/[가-힣ㄱ-ㆎ]/);
+      expect(q.explanation, q.id).not.toMatch(/[가-힣ㄱ-ㆎ]/);
+      expect(q.hints[0], q.id).not.toMatch(/[가-힣ㄱ-ㆎ]/);
+      expect(q.hints[1], q.id).toBe("💭");
+    }
   });
   it("a tampered or missing shard is a clear error (never another file, never a silent skip); a good one is still readable afterwards", async () => {
     const file = path.join(dir, "e.pres.json");
