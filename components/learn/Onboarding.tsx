@@ -110,7 +110,7 @@ export function Onboarding() {
                 {BANDS.map((b) => {
                   const open = isPublishedBand(b);
                   return (
-                    <button key={b} type="button" role="radio" aria-checked={bandSelected === b} aria-disabled={!open} disabled={!open} data-selected={bandSelected === b} data-testid={`band-pick-${b}`} className="l-option l-grade" style={open ? undefined : { opacity: 0.55 }}
+                    <button key={b} type="button" role="radio" aria-checked={bandSelected === b} aria-disabled={!open} disabled={!open} data-selected={bandSelected === b} data-testid={`band-pick-${b}`} data-grade={startLevelOfBand(b) ?? undefined} className="l-option l-grade" style={open ? undefined : { opacity: 0.55 }}
                       onClick={() => { setBandPick(b); const lv = startLevelOfBand(b); if (lv) setGrade(lv); }}>
                       {bandLabel(b, t)}{open ? "" : " 🔒"}
                     </button>
