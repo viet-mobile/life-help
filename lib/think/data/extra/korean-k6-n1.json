@@ -1,0 +1,1288 @@
+[
+ {
+  "id": "n-k-k6-01",
+  "subject": "korean",
+  "grade": "K6",
+  "topic": "Evaluating claims and evidence: what a table of numbers can show",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "title": "Reading the library's numbers",
+  "uiLang": "en",
+  "format": "judge-evidence-explain",
+  "generative": true,
+  "goal": "Decide which statements a small table of library numbers really supports, find the gap between a poster's headline and the table, and explain it with a number.",
+  "thinking": [
+   "Separating what a table counts from what a claim says",
+   "Telling a supported statement from a hopeful one",
+   "Using a number as evidence in an explanation"
+  ],
+  "differsFromPlain": "Plain practice asks you to read a number or a graph aloud. Here a poster draws a conclusion from the numbers, and you decide how far the numbers go.",
+  "prerequisites": [
+   "Can read numbers with 명 and 권",
+   "Knows 늘다 / 줄다 and 작년 / 올해"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "A neighbourhood library put up a table and a poster.\n\n[우리 동네 도서관 3월 이용 현황]\n구분 | 작년 3월 | 올해 3월\n이용자 수 | 2,400명 | 3,000명\n빌려 간 책 | 5,200권 | 5,100권\n(올해 3월부터 1층에 무료 공부방을 열었습니다.)\n\n[포스터]\n\"도서관 덕분에 우리 동네 사람들이 책을 더 많이 읽게 되었습니다!\"",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "Which statements does the table itself support, without any guessing? Select all that apply.",
+    "options": [
+     {
+      "id": "a",
+      "text": "사람들이 책을 더 좋아하게 됐다.",
+      "reveals": "Liking books is a feeling; the table counts visits and borrowed books, not feelings."
+     },
+     {
+      "id": "b",
+      "text": "이용자 수가 작년 3월보다 늘었다."
+     },
+     {
+      "id": "c",
+      "text": "올해는 책을 더 많이 빌려 갔다.",
+      "reveals": "Compare 5,200 and 5,100 again: the number of borrowed books went the other way."
+     },
+     {
+      "id": "d",
+      "text": "공부방이 생겨서 이용자가 늘었다.",
+      "reveals": "The table lists the study room only as a side note; it does not show that the room is the reason for the rise."
+     },
+     {
+      "id": "e",
+      "text": "빌려 간 책 수는 작년보다 조금 줄었다."
+     }
+    ],
+    "correct": [
+     "b",
+     "e"
+    ],
+    "explain": "The table shows 2,400 to 3,000 visitors (more) and 5,200 to 5,100 borrowed books (slightly fewer). Feelings and reasons are not in the table, and 'more books' is the opposite of what it shows.",
+    "hints": [
+     "Mark each statement as 'a number I can point to' or 'something I would have to guess'.",
+     "For the statements about numbers, find the two figures and compare them in the right direction."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "What is the main gap between the poster's headline and the table?",
+    "options": [
+     {
+      "id": "a",
+      "text": "The poster talks about last year, but the table shows only this year.",
+      "reveals": "The table has both a last-year and a this-year column."
+     },
+     {
+      "id": "b",
+      "text": "The poster says people read more, but the table shows fewer visitors.",
+      "reveals": "The table shows more visitors, not fewer."
+     },
+     {
+      "id": "c",
+      "text": "The poster is correct, because a busier library means more reading.",
+      "reveals": "More visitors is not the same as more reading: people may come for other reasons, and the loan number did not grow."
+     },
+     {
+      "id": "d",
+      "text": "The poster speaks of reading, but the table counts visits and loans, and loans did not rise."
+     }
+    ],
+    "correct": [
+     "d"
+    ],
+    "explain": "'Reading more' is not something the table counts. The nearest measure is borrowed books, and it did not rise. More visitors may be a result of the new study room, but the table cannot say.",
+    "hints": [
+     "Underline the verb in the poster headline, then find a row in the table that measures that same thing.",
+     "Compare what each row of the table counts with what the headline says people did."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "In 1-2 sentences (English or Korean), say whether the table supports the poster's headline and why. Use at least one number from the table.",
+    "placeholder": "예: ... / e.g. ...",
+    "minChars": 20,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "talks about books borrowed (loans)",
+      "mode": "any",
+      "patterns": [
+       "대출|빌려|빌린|빌리|책 수|borrow|loan|lent|check(ed)? out"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "uses a number from the table",
+      "mode": "any",
+      "patterns": [
+       "5,?200",
+       "5,?100",
+       "3,?000",
+       "2,?400",
+       "100\\s*권",
+       "100 (books|fewer)"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "puts the loan numbers (5,200 / 5,100) together with 'fell / did not rise / about the same'",
+      "mode": "any",
+      "patterns": [
+       "(5,?200|5,?100)[^.\\n]{0,45}(줄|fell|fewer|down|decreas|drop|lower|less|did not (rise|go up|increase|grow)|didn['’]t (rise|go up|increase|grow)|not (rise|go up|increase|grow)|same|비슷|거의|늘지|안 늘)",
+       "(줄|fell|fewer|down|decreas|drop|lower|less|did not (rise|go up|increase|grow)|didn['’]t (rise|go up|increase|grow)|not (rise|go up|increase|grow)|same|비슷|거의|늘지|안 늘)[^.\\n]{0,45}(5,?200|5,?100)",
+       "(대출|빌려|빌린|빌리|책 수|borrow|loan|lent|check(ed)? out)[^.\\n]{0,45}(줄|fell|fewer|down|decreas|drop|lower|less|did not (rise|go up|increase|grow)|didn['’]t (rise|go up|increase|grow)|not (rise|go up|increase|grow)|same|비슷|거의|늘지|안 늘)",
+       "100\\s*권[^.\\n]{0,10}(줄|적)",
+       "100 (books )?(fewer|less)"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "gives a verdict: the table does not (fully) support the headline",
+      "mode": "any",
+      "patterns": [
+       "(does not|doesn['’]t|do not|don['’]t|cannot|can['’]t|isn['’]t|not|no)\\s+(really\\s+|fully\\s+|necessarily\\s+|actually\\s+)?(show|support|prove|mean|say|tell|enough|true)",
+       "말할 수(는)? 없",
+       "알 수(는)? 없",
+       "보여 주지 (못|않)",
+       "뒷받침(하지|되지|할 수)",
+       "사실이 아",
+       "맞지 않",
+       "틀렸",
+       "not (the same as|proof)",
+       "half[- ]right"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I say what the table measures and what the poster claims?",
+     "Is my number placed where it works as evidence, not just copied?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "The table shows more visitors (2,400 to 3,000), but borrowed books fell from 5,200 to 5,100, so it does not show that people read more."
+     },
+     {
+      "text": "표에는 대출 책이 5,200권에서 5,100권으로 줄었다고 나와 있어요. 이용자는 늘었지만 책을 더 읽었다고 말할 수는 없어요.",
+      "note": "In Korean."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "Yes, 3,000 people came in March, so the poster is true.",
+      "why": "Treats visits as reading and never looks at the loan row."
+     },
+     {
+      "text": "The poster is wrong and the table is small.",
+      "why": "No row and no number are used as evidence."
+     }
+    ],
+    "humanReview": "Whether the explanation separates 'visiting' from 'reading' and uses the number sensibly; mixed English and Korean answers need a person to read them.",
+    "hints": [
+     "Name the row of the table that comes closest to 'reading', and give its two numbers.",
+     "Then say what that row does NOT show about the poster's headline."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Choosing supported statements",
+    "full": "Picks exactly the two number-based statements",
+    "partial": "Picks one of them, or those two plus a guess",
+    "none": "Picks only guesses or the reversed comparison"
+   },
+   {
+    "criterion": "Claim versus evidence",
+    "full": "Names the loan row as the closest measure and says it does not support 'read more'",
+    "partial": "Notices the gap but without a number",
+    "none": "Accepts the headline because visitors rose"
+   }
+  ],
+  "alternatives": [
+   "A learner may say the table also cannot show whether the study-room users read books inside the library; that is a sound extra point.",
+   "Saying 'about the same' for 5,200 versus 5,100 is acceptable; 'slightly fewer' is more exact."
+  ],
+  "hardCases": [
+   "Visits are up 25 percent while loans fell about 2 percent: a learner may say the poster is 'half right'. Accept this if the reasons are stated."
+  ],
+  "cautions": {
+   "language": "Table words (이용 현황, 빌려 간 책) are short and appear only in the material.",
+   "culture": "Neighbourhood libraries with study rooms are common in Korea, but details vary by district. Honorific and politeness norms vary by region, workplace, age and personal preference; this task reflects common standard-Korean usage, not a rule for every situation.",
+   "accessibility": "All material is text; nothing depends on colour or images. Tables are written out as lines of text. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of the two supported statements",
+    "Choice of the gap between headline and table",
+    "A loan word, a number from the table and a 'fell / did not rise' idea in the explanation"
+   ],
+   "human": [
+    "Whether the explanation is clear and fair; mixed English and Korean wording"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-k6-02",
+  "subject": "korean",
+  "grade": "K6",
+  "topic": "Reading rules with limits: groups, ratios and a budget",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "title": "Which groups can enter?",
+  "uiLang": "en",
+  "format": "build-many-verify",
+  "generative": true,
+  "goal": "Read an entrance notice whose rules limit each other, build several groups that satisfy all the rules at once, and explain why one kind of group can never work.",
+  "thinking": [
+   "Turning Korean quantity words into conditions",
+   "Checking several conditions at once",
+   "Seeing how one rule limits another"
+  ],
+  "differsFromPlain": "Plain practice asks you to read one number from a price list. Here several rules (이상, 이하, 최대, 한 명당) interact, and you must construct groups that satisfy all of them.",
+  "prerequisites": [
+   "Knows 이상 / 이하 and 최대",
+   "Can calculate with prices in 원"
+  ],
+  "minutes": 11,
+  "curriculum": null,
+  "material": "Your club wants to visit a children's science museum. You read the notice and decide on a budget.\n\n[어린이 과학관 단체 입장 안내]\n- 요금: 어른 한 명 5,000원, 어린이 한 명 3,000원\n- 어린이는 어른과 함께 와야 합니다. 어른 한 명당 어린이 세 명까지 들어갈 수 있습니다.\n- 단체 입장은 모두 5명 이상일 때만 가능합니다.\n- 어린이가 1명 이상 있는 단체만 신청할 수 있습니다.\n\nYour club's budget: 총 요금 25,000원 이하.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Look only at the rule about adults and children (ignore the price and the group-size rules). Which visit is NOT allowed?",
+    "options": [
+     {
+      "id": "a",
+      "text": "어른 2명, 어린이 7명"
+     },
+     {
+      "id": "b",
+      "text": "어른 1명, 어린이 3명",
+      "reveals": "Allowed: one adult may bring up to three children, and three is the limit itself."
+     },
+     {
+      "id": "c",
+      "text": "어른 2명, 어린이 6명",
+      "reveals": "Allowed: two adults may bring up to six children."
+     },
+     {
+      "id": "d",
+      "text": "어른 4명, 어린이 9명",
+      "reveals": "Allowed: four adults may bring up to twelve children."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "The limit is three children for EACH adult. Two adults can bring at most 2 x 3 = 6 children, so seven is too many.",
+    "hints": [
+     "Read '어른 한 명당 어린이 세 명까지' as a rule that is applied to every adult separately.",
+     "For each option, multiply the number of adults by the allowed children and compare."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "build",
+    "prompt": "Build 3 different groups that satisfy EVERY rule and the budget. a = number of adults, c = number of children.",
+    "vars": [
+     {
+      "name": "a",
+      "label": "adults (어른)"
+     },
+     {
+      "name": "c",
+      "label": "children (어린이)"
+     }
+    ],
+    "constraints": [
+     {
+      "id": "c0",
+      "expr": "a==floor(a) && c==floor(c) && c>=0",
+      "ok": "Whole numbers of people.",
+      "fail": "Use whole numbers of people (0 or more children)."
+     },
+     {
+      "id": "c1",
+      "expr": "a>=1",
+      "ok": "At least one adult.",
+      "fail": "어린이는 어른과 함께 와야 합니다: at least one adult."
+     },
+     {
+      "id": "c2",
+      "expr": "c<=3*a",
+      "ok": "No more than three children per adult.",
+      "fail": "Too many children: at most three for each adult."
+     },
+     {
+      "id": "c3",
+      "expr": "a+c>=5",
+      "ok": "5 people or more.",
+      "fail": "단체 입장은 5명 이상: at least 5 people in total."
+     },
+     {
+      "id": "c4",
+      "expr": "5000*a+3000*c<=25000",
+      "ok": "Within 25,000 won.",
+      "fail": "The total fee is over 25,000 won."
+     },
+     {
+      "id": "c5",
+      "expr": "c>=1",
+      "ok": "At least one child.",
+      "fail": "어린이가 1명 이상 있는 단체만 신청할 수 있습니다: at least one child."
+     }
+    ],
+    "need": 3,
+    "modelRows": [
+     {
+      "a": 2,
+      "c": 3
+     },
+     {
+      "a": 3,
+      "c": 2
+     },
+     {
+      "a": 4,
+      "c": 1
+     },
+     {
+      "a": 2,
+      "c": 5
+     }
+    ],
+    "badRows": [
+     {
+      "a": 1,
+      "c": 3
+     },
+     {
+      "a": 2,
+      "c": 7
+     },
+     {
+      "a": 3,
+      "c": 4
+     },
+     {
+      "a": 0,
+      "c": 5
+     },
+     {
+      "a": 5,
+      "c": 0
+     }
+    ],
+    "explain": "For example 2 adults + 3 children = 19,000 won; 3 + 2 = 21,000 won; 4 + 1 = 23,000 won. Six groups fit in all: (2,3), (2,4), (2,5), (3,2), (3,3), (4,1). The notice gives limits, not one exact group.",
+    "hints": [
+     "Write the four conditions in your own words first (adults, children per adult, total people, money).",
+     "Choose the number of adults first, then find which numbers of children are allowed by the ratio rule and the 5-person rule.",
+     "Check the money last: 5,000 x adults + 3,000 x children."
+    ],
+    "because": {
+     "id": "s2b",
+     "kind": "write",
+     "prompt": "Try a group with exactly ONE adult. In one or two sentences (English or Korean), explain why no such group can satisfy the rules. Use numbers.",
+     "placeholder": "예: ... / e.g. ...",
+     "minChars": 15,
+     "checks": [
+      {
+       "id": "w1",
+       "label": "talks about one adult",
+       "mode": "any",
+       "patterns": [
+        "어른이?\\s*(한|1)\\s*명",
+        "어른\\s*(한|1)",
+        "(한|1)\\s*명의\\s*어른",
+        "(1|one|a single|a lone|only one) (adult|grown)",
+        "adult[^.]{0,12}(only )?(1|one)\\b"
+       ]
+      },
+      {
+       "id": "w2",
+       "label": "gives the limit: 3 children or 4 people in total",
+       "mode": "any",
+       "patterns": [
+        "(어린이|아이|children|kids)[^.]{0,14}(3|세|three)",
+        "(3|세|three)[^.]{0,14}(어린이|아이|children|kids|명)",
+        "(4|네|four)\\s*(people|명|persons|in total|total)",
+        "(최대|이하|at most|max|up to|only)\\s*(3|세|세 명|three|4|네|four)",
+        "총?\\s*4\\s*명"
+       ]
+      },
+      {
+       "id": "w3",
+       "label": "compares with the 5-person minimum",
+       "mode": "any",
+       "patterns": [
+        "(5|다섯|five)\\s*(명|people|persons|or more|minimum)",
+        "최소",
+        "minimum",
+        "이상"
+       ]
+      },
+      {
+       "id": "w4",
+       "label": "reasons with group size, not with money",
+       "mode": "none",
+       "patterns": [
+        "5,?000",
+        "9,?000",
+        "14,?000",
+        "비싸",
+        "expensive",
+        "too (little|much|cheap)",
+        "예산",
+        "budget",
+        "\\bcosts?\\b",
+        "가격",
+        "price"
+       ]
+      }
+     ],
+     "selfAssess": [
+      "Did I use the 3-children limit and the 5-person minimum together?",
+      "Would my numbers also work for 2 adults?"
+     ],
+     "modelAnswers": [
+      {
+       "text": "어른이 한 명이면 어린이는 최대 세 명이라서 모두 4명밖에 안 돼요. 그런데 5명 이상이어야 해요."
+      },
+      {
+       "text": "With 1 adult, at most 3 children can come, so the group is only 4 people, but the minimum is 5."
+      },
+      {
+       "text": "한 명의 어른이 3명의 어린이만 데려올 수 있어서 4명인데 5명이 필요해요."
+      }
+     ],
+     "badAnswers": [
+      {
+       "text": "The adult ticket is too expensive.",
+       "why": "Mentions neither one adult nor the child limit."
+      },
+      {
+       "text": "어른 한 명이면 너무 비싸요.",
+       "why": "Price is not the reason; the ratio and the minimum size are."
+      }
+     ],
+     "humanReview": "Whether the explanation really combines the ratio rule with the minimum size.",
+     "hints": [
+      "Count the most people a group with one adult can have.",
+      "Compare that count with the group-size rule."
+     ]
+    }
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Reading the quantity words",
+    "full": "Picks the disallowed visit and builds groups that respect 한 명당, 이상 and the child rule",
+    "partial": "Understands some rules but misses one",
+    "none": "Ignores the ratio or size rule"
+   },
+   {
+    "criterion": "Explaining the limit",
+    "full": "Shows that one adult allows 4 people at most, below 5",
+    "partial": "Says it does not work without the numbers",
+    "none": "Gives an unrelated reason"
+   }
+  ],
+  "alternatives": [
+   "Any combination that passes all six checks is correct.",
+   "A learner may count the money first and then the ratio; the order does not matter."
+  ],
+  "hardCases": [
+   "Some learners read 한 명당 세 명 as three children for the whole group; it applies to every adult separately."
+  ],
+  "cautions": {
+   "language": "Quantity words 이상 / 이하 / 최대 / 한 명당 are glossed only in hints; the notice itself uses short plain sentences.",
+   "culture": "Group entrance rules with a child-to-adult ratio are common, though the numbers here are invented. Honorific and politeness norms vary by region, workplace, age and personal preference; this task reflects common standard-Korean usage, not a rule for every situation.",
+   "accessibility": "All material is text; nothing depends on colour or images. Tables are written out as lines of text. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of the disallowed visit",
+    "Every built group against all rules",
+    "Words for one adult, the limit and the minimum in the explanation"
+   ],
+   "human": [
+    "Whether the explanation of the one-adult case is clear"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-k6-03",
+  "subject": "korean",
+  "grade": "K6",
+  "topic": "Sufficiency of information: what a coupon states and what it leaves open",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "title": "Is the coupon enough to decide?",
+  "uiLang": "en",
+  "format": "choose-needed-info",
+  "generative": true,
+  "goal": "Separate what a coupon already answers from what it leaves open, then answer a friend by correcting one point and asking about the open one.",
+  "thinking": [
+   "Checking a claim against small print",
+   "Finding the one fact that is still missing",
+   "Asking only what is needed"
+  ],
+  "differsFromPlain": "Plain practice asks you to read the date on a coupon. Here you test a friend's plan against the coupon and decide which question is really still open.",
+  "prerequisites": [
+   "Knows dates and days of the week",
+   "Can read short notices in 해요체"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "Today is Monday, 4월 27일. Your friend 민아 sends you a message and a coupon.\n\n민아: 나 카페 쿠폰 받았어! 이번 주 목요일 수업 끝나고 세 시쯤 학교 앞 모아카페에 가자. 아메리카노 두 잔 시키면 쿠폰으로 4,000원 할인받을 수 있어!\n\n[아메리카노 2,000원 할인 쿠폰]\n- 유효 기간: 4월 30일까지\n- 사용 매장: 모아카페 전 지점\n- 1회 사용 (쿠폰 한 장당)\n- 다른 할인과 중복 불가\n- 그 밖의 조건은 앱에서 확인하세요.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "If you follow 민아's plan and use this one coupon for two Americanos on Thursday, which statement is true?",
+    "options": [
+     {
+      "id": "a",
+      "text": "The coupon has expired by Thursday, so there is no discount.",
+      "reveals": "Thursday is April 30, and '4월 30일까지' includes that day."
+     },
+     {
+      "id": "b",
+      "text": "The coupon takes 2,000 won off each drink, so 4,000 in total.",
+      "reveals": "'1회 사용' means one use per coupon, not one use per drink."
+     },
+     {
+      "id": "c",
+      "text": "Adding another discount makes the saving bigger than 2,000 won.",
+      "reveals": "'다른 할인과 중복 불가' means discounts cannot be combined."
+     },
+     {
+      "id": "d",
+      "text": "One coupon takes 2,000 won off once, not 4,000."
+     }
+    ],
+    "correct": [
+     "d"
+    ],
+    "explain": "Today is Monday the 27th, so Thursday is the 30th, the last valid day. The coupon is for one use and cannot be combined, so two drinks still get 2,000 won off in total.",
+    "hints": [
+     "Test each option against the printed lines of the coupon: which can you confirm and which can you contradict?",
+     "Work out what the plan would cost with and without the coupon, using only what the coupon states."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "The plan is Thursday at about 3 p.m. at the café in front of school. Which question is NOT answered by the coupon and could still stop the plan?",
+    "options": [
+     {
+      "id": "a",
+      "text": "목요일에도 쿠폰을 쓸 수 있어요?",
+      "reveals": "The coupon already gives the last valid day, and Thursday fits it."
+     },
+     {
+      "id": "b",
+      "text": "쿠폰 한 장으로 두 잔을 할인받을 수 있어요?",
+      "reveals": "The coupon already says it is used once per coupon."
+     },
+     {
+      "id": "c",
+      "text": "오후 세 시에도 쿠폰을 쓸 수 있어요?"
+     },
+     {
+      "id": "d",
+      "text": "학교 앞 모아카페에서도 쿠폰을 쓸 수 있어요?",
+      "reveals": "The coupon already says it works at every 모아카페 branch."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "Date, number of uses and branches are printed on the coupon. The last line leaves 'other conditions' open, and the time of day is one that could matter for a 3 p.m. visit.",
+    "hints": [
+     "For each question, look for the line of the coupon that answers it; cross out those you can answer.",
+     "Which part of the plan is not covered by any printed line?"
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Reply to 민아 in Korean (friendly 해요체). Gently correct the 4,000 won idea, and ask or suggest checking the open question.",
+    "placeholder": "예: ...",
+    "minChars": 15,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "corrects the idea: one coupon, one use / one drink, 2,000 won",
+      "mode": "any",
+      "patterns": [
+       "한 (잔|번)(만|밖에|은|이)",
+       "1회",
+       "한 번",
+       "한 잔",
+       "한 장(으로|은)? ?한",
+       "2,?000",
+       "2천",
+       "이천",
+       "(4,?000|4천|사천)[^.]{0,6}(아니|안|못)",
+       "두 잔[^.]{0,20}(안|못|아니)"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "names something still open (time of day, iced, size, other conditions)",
+      "mode": "any",
+      "patterns": [
+       "세 ?시",
+       "3 ?시",
+       "오후",
+       "시간",
+       "시간대",
+       "아이스",
+       "사이즈",
+       "크기",
+       "조건",
+       "앱"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "suggests checking or asks",
+      "mode": "any",
+      "patterns": [
+       "확인",
+       "물어",
+       "알아",
+       "문의",
+       "앱",
+       "[?？]",
+       "까요",
+       "나요",
+       "는지",
+       "ㄴ지"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "does not say the discount works twice or for both drinks",
+      "mode": "none",
+      "patterns": [
+       "(할인|쿠폰|2,?000|2천|이천)[^.?!]{0,12}(두|2) ?(번|잔|배)",
+       "4,?000\\s*원?\\s*(할인)?\\s*(이|도|을|를)?\\s*(돼|되|받|가능)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I say what the coupon really gives (one 2,000 won discount)?",
+     "Is my question about the one thing the coupon does not say?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "쿠폰은 한 번만 쓸 수 있어서 두 잔 다 할인은 안 돼요. 오후 세 시에도 쓸 수 있는지 앱에서 먼저 확인해 볼까요?"
+     },
+     {
+      "text": "쿠폰 한 장은 한 잔만 2,000원 할인이에요. 세 시에 가도 되는지 앱에서 확인해 보면 좋겠어요.",
+      "note": "A suggestion instead of a question."
+     },
+     {
+      "text": "쿠폰은 2,000원이에요. 아이스는 되는지 물어볼까요?"
+     },
+     {
+      "text": "쿠폰은 2,000원 할인이에요. 가기 전에 앱에서 조건을 확인해 볼까요?"
+     },
+     {
+      "text": "할인은 2천 원이에요. 세 시에도 되는지 앱에서 확인해 봐요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "알겠어요. 목요일에 가요.",
+      "why": "Accepts the plan without correcting or asking."
+     },
+     {
+      "text": "쿠폰은 한 번만 쓸 수 있어요.",
+      "why": "Corrects the idea but does not raise the open question."
+     },
+     {
+      "text": "학교 앞 지점에서도 쿠폰을 쓸 수 있어요?",
+      "why": "Asks something the coupon already answers (every branch)."
+     },
+     {
+      "text": "2,000원 할인이 두 번 돼요. 세 시에 가요?",
+      "why": "Says the discount works twice, the opposite of 1회 사용."
+     }
+    ],
+    "humanReview": "Whether the tone toward a friend is natural and whether the correction is gentle.",
+    "hints": [
+     "Write two short parts: what you know from the coupon, then what you want to find out.",
+     "Use an ending that suggests or asks, such as '-(으)ㄹ까요?'."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Testing the plan against the coupon",
+    "full": "Finds that one coupon gives one 2,000 won discount and that Thursday is still valid",
+    "partial": "Sees one of the two points",
+    "none": "Accepts the 4,000 won idea or thinks the coupon expired"
+   },
+   {
+    "criterion": "Choosing the open question",
+    "full": "Picks the question the coupon does not answer and writes it",
+    "partial": "Picks a question already answered",
+    "none": "Asks something unrelated, such as the price"
+   }
+  ],
+  "alternatives": [
+   "'오후 세 시에도 쓸 수 있어요?' is the intended open question; asking about iced versus hot drinks or size is also a valid open question because the coupon says nothing about it.",
+   "A learner may suggest 'pay separately, one coupon for one of us'; this is a good practical idea."
+  ],
+  "hardCases": [
+   "'1회 사용' could be read as 'once per customer'. Either reading gives 2,000 won off for the order."
+  ],
+  "cautions": {
+   "language": "Coupon words (유효 기간, 중복 불가) are short and common in apps.",
+   "culture": "Café coupons in apps are common; the exact conditions differ by company. Honorific and politeness norms vary by region, workplace, age and personal preference; this task reflects common standard-Korean usage, not a rule for every situation.",
+   "accessibility": "All material is text; nothing depends on colour or images. Tables are written out as lines of text. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of the true statement about the discount",
+    "Choice of the unanswered question",
+    "Correction, time-of-day mention, question or suggestion and polite ending in the reply"
+   ],
+   "human": [
+    "Tone and naturalness of the reply to a friend",
+    "Whether other open conditions that the learner chooses are reasonable"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-k6-04",
+  "subject": "korean",
+  "grade": "K6",
+  "topic": "Summarising a survey faithfully: what the report supports",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "title": "Does the summary match the report?",
+  "uiLang": "en",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Compare a classmate's blog summary with a school-newspaper report, find the lines the report does not support, and repair one of them.",
+  "thinking": [
+   "Comparing a summary with its source",
+   "Checking what a claim is based on",
+   "Rewriting a line so it matches its evidence"
+  ],
+  "differsFromPlain": "Plain practice asks you to read the numbers of a survey. Here you check whether a retelling of the survey stays faithful to its source.",
+  "prerequisites": [
+   "Knows numbers with 명 and 반",
+   "Can read a short report and relayed speech (-대 / -래)"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "The school newspaper printed a short report. 하준 summarised it on the class blog for a friend who could not read the paper.\n\n[학교 신문: 급식 설문 결과]\n- 조사 대상: 6학년 2반 학생 24명 (6학년은 모두 다섯 반입니다.)\n- 18명은 \"급식이 맛있다\", 6명은 \"보통이다\"라고 답했습니다. \"맛없다\"고 답한 학생은 없었습니다.\n- 급식을 남기지 않는 학생은 14명이었습니다.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "Compare 하준's summary with the report. Pick one summary line that is NOT supported by the report. (More than one line is wrong.)",
+    "lines": [
+     "6학년 2반 24명에게 물어봤대.",
+     "6학년 학생들은 모두 급식이 맛있다고 했대.",
+     "맛없다고 한 학생은 한 명도 없었대.",
+     "다른 반도 비슷하게 대답했대.",
+     "2반에서 급식을 남기지 않는 학생은 14명이래.",
+     "우리 학교 학생 대부분이 급식을 남기지 않는대."
+    ],
+    "wrong": [
+     1,
+     3,
+     5
+    ],
+    "explain": "Lines 2, 4 and 6 are wrong. The report asked only 24 students of 6학년 2반, so it says nothing about all sixth graders, other classes or the whole school. Lines 1, 3 and 5 are about that class and match the report.",
+    "hints": [
+     "Take the summary one line at a time and find the sentence of the report it comes from.",
+     "For each line, compare the students the report's numbers are about with the students the line talks about."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "The wrong lines have one thing in common. What kind of mistake is it?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Numbers from the report were copied wrongly.",
+      "reveals": "The numbers 24 and 14 in the summary are the same as in the report."
+     },
+     {
+      "id": "b",
+      "text": "Something known about one class was said about a bigger group."
+     },
+     {
+      "id": "c",
+      "text": "Polite endings were turned into casual endings.",
+      "reveals": "Casual endings are normal in a summary to a friend and are not a mistake about content."
+     },
+     {
+      "id": "d",
+      "text": "Some results of the survey were left out of the summary.",
+      "reveals": "The wrong lines add claims; they do not drop results."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "The report is about 24 students in one class. The wrong lines stretch that result to all sixth graders, to the other classes, or to the whole school, which the report never says.",
+    "hints": [
+     "For each line you picked, say which students the report is about and which students the line is about.",
+     "Look for what the three lines have in common when you compare those two groups."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Rewrite the last summary line (about leaving no food) so it says only what the report says (casual speech to your friend is fine).",
+    "placeholder": "예: ...",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "names the class that was surveyed",
+      "mode": "any",
+      "patterns": [
+       "2 ?반",
+       "이 ?반",
+       "그 ?반",
+       "24 ?명",
+       "class 2",
+       "2nd class"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "gives the number from the report (14)",
+      "mode": "any",
+      "patterns": [
+       "14",
+       "열 ?네",
+       "십사",
+       "fourteen"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "no words that widen it to a larger group",
+      "mode": "none",
+      "patterns": [
+       "우리 학교",
+       "학교 (학생|전체)",
+       "전교",
+       "모든",
+       "모두",
+       "대부분",
+       "거의",
+       "다들",
+       "전부",
+       "everyone",
+       "all (the )?students",
+       "most",
+       "whole school",
+       "every"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my line name the group the report asked?",
+     "Did I keep the number as the report gives it, without turning it into 'most' or 'all'?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "6학년 2반 24명 중에서 14명이 급식을 남기지 않는대."
+     },
+     {
+      "text": "2반에서 급식을 남기지 않는 학생은 14명이래.",
+      "note": "Short and exact."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "우리 학교 학생 대부분이 급식을 남기지 않는대.",
+      "why": "Stretches one class to the whole school and does not give the number."
+     },
+     {
+      "text": "2반 학생들은 모두 급식을 남기지 않는대.",
+      "why": "Turns 14 of 24 into 'all'."
+     },
+     {
+      "text": "6학년은 모두 급식을 안 남긴대.",
+      "why": "Names the wrong group and widens it."
+     }
+    ],
+    "humanReview": "Whether the rewritten line keeps the teacher's meaning and reads naturally as a relayed message.",
+    "hints": [
+     "Find the sentence of the report this line comes from and note exactly who and how many it names.",
+     "Rewrite the line using only that group and that number."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finding unsupported lines",
+    "full": "Picks a wrong line and sees all three go beyond the surveyed class",
+    "partial": "Finds one line but not what they share",
+    "none": "Picks a correct line"
+   },
+   {
+    "criterion": "Repairing the line",
+    "full": "Names the surveyed class and the number 14 and adds nothing wider",
+    "partial": "Right group but no number, or a number with a wider word",
+    "none": "Still speaks about the whole school or about all students"
+   }
+  ],
+  "alternatives": [
+   "For line 2, '2반에서는 24명 중 18명이 맛있다고 했대' is an accurate repair.",
+   "For line 4, '다른 반은 조사하지 않았대' or '다른 반은 잘 모른대' is an accurate repair."
+  ],
+  "hardCases": [
+   "14 of 24 is more than half, so a learner may say '대부분' fits the class. Inside 2반 that is arguable, but the original line names the whole school, so it stays wrong."
+  ],
+  "cautions": {
+   "language": "The task uses relayed speech (-대 / -래) and 반 (class); the hints explain what to compare, not the forms.",
+   "culture": "School field trips and class chat notices are common; details vary by school. Honorific and politeness norms vary by region, workplace, age and personal preference; this task reflects common standard-Korean usage, not a rule for every situation.",
+   "accessibility": "All material is text; nothing depends on colour or images. Tables are written out as lines of text. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of one unsupported summary line",
+    "Choice of the common mistake",
+    "The class, the number 14 and no widening words in the rewrite"
+   ],
+   "human": [
+    "Whether the rewrite sounds natural and keeps the meaning"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-k6-05",
+  "subject": "korean",
+  "grade": "K6",
+  "topic": "Ambiguity in a message: 다 + 안 can mean 'none' or 'not all'",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "title": "Did he do the homework?",
+  "uiLang": "en",
+  "format": "reveal-and-revise",
+  "generative": true,
+  "goal": "Read a short exchange in stages, see that 'ㅡ 다 안 했어요' can mean two things, revise the reading as details arrive, and write unambiguous sentences.",
+  "thinking": [
+   "Holding two readings of one sentence",
+   "Revising a reading when new details arrive",
+   "Rewording a message so it cannot be misread"
+  ],
+  "differsFromPlain": "Plain practice teaches the negative -지 않다 / 안. Here a common sentence is ambiguous, and you watch the details decide the meaning.",
+  "prerequisites": [
+   "Knows 안 + verb and 못 + verb",
+   "Knows 다 (all) and 하나도"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "A teacher asks about homework. The homework had 10 problems.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "Read each part, choose the reading that seems most likely, then continue.",
+    "hints": [
+     "Decide using only what you have read so far, and say aloud every meaning the sentence could have.",
+     "Ask which meanings still fit once the new lines are added."
+    ],
+    "reflect": "Notice that the same words stayed the same and only the details changed your reading. A speaker who wants to be sure of being understood should choose wording that allows only one meaning.",
+    "stages": [
+     {
+      "info": "선생님: 민수야, 어제 낸 숙제 가져왔니?\n민수: 선생님, 죄송해요. 숙제를 다 안 했어요.",
+      "ask": "What does 민수 mean?",
+      "options": [
+       {
+        "id": "a",
+        "text": "He did none of the homework."
+       },
+       {
+        "id": "b",
+        "text": "He did some of it but did not finish."
+       },
+       {
+        "id": "c",
+        "text": "He finished all of it.",
+        "reveals": "He apologises ('죄송해요'), which does not fit having finished everything."
+       },
+       {
+        "id": "d",
+        "text": "He did the homework for a different class.",
+        "reveals": "Nothing in the lines mentions another class."
+       }
+      ],
+      "reasonable": [
+       "a",
+       "b"
+      ],
+      "after": "Both readings are possible: '다 안 했어요' can mean 'did none' or 'did not do all of it'. '죄송해요' shows something is missing, but not how much."
+     },
+     {
+      "info": "선생님: 어디까지 했니?\n민수: 1번부터 8번까지는 했는데, 마지막 9번과 10번은 못 풀었어요.",
+      "ask": "Now what did '숙제를 다 안 했어요' mean?",
+      "options": [
+       {
+        "id": "a",
+        "text": "He did none of it.",
+        "reveals": "He says he did problems 1 to 8."
+       },
+       {
+        "id": "b",
+        "text": "He did most of it and missed the last two problems."
+       },
+       {
+        "id": "c",
+        "text": "He did only about half of it.",
+        "reveals": "Eight of ten is more than half."
+       },
+       {
+        "id": "d",
+        "text": "It still cannot be told.",
+        "reveals": "His second answer tells exactly which problems he did."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "The details settle it: 8 of 10 problems were done, so the sentence meant 'not all'."
+     },
+     {
+      "info": "유나는 어제 숙제를 시작도 못 했어요. 그래서 선생님께 문자를 보내려고 해요. 선생님이 오해하지 않게 써야 해요.",
+      "ask": "Which sentence should 유나 write so that the teacher cannot mistake it for 'did most of it'?",
+      "options": [
+       {
+        "id": "a",
+        "text": "숙제를 다 안 했어요.",
+        "reveals": "This is the same two-way sentence as before; it does not rule out 'did part'."
+       },
+       {
+        "id": "b",
+        "text": "숙제를 하나도 안 했어요."
+       },
+       {
+        "id": "c",
+        "text": "숙제를 다는 못 했어요.",
+        "reveals": "This sounds like 'did part but not all', the opposite of what 유나 wants to say."
+       },
+       {
+        "id": "d",
+        "text": "숙제를 거의 다 했어요.",
+        "reveals": "This says she did almost all of it."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "'하나도 안 했어요' leaves no room for 'part'. '다는 못 했어요' is the clearer way to say 'not all'."
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Which of these sentences can be misunderstood in the same way as '숙제를 다 안 했어요'?",
+    "options": [
+     {
+      "id": "a",
+      "text": "손님이 다 안 왔어요."
+     },
+     {
+      "id": "b",
+      "text": "손님이 아직 안 왔어요.",
+      "reveals": "This says guests have not come yet; it has no 'all or none' split."
+     },
+     {
+      "id": "c",
+      "text": "손님이 하나도 안 왔어요.",
+      "reveals": "This clearly says none came."
+     },
+     {
+      "id": "d",
+      "text": "손님이 별로 안 왔어요.",
+      "reveals": "This says few came; it does not leave 'none or not all' open."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "'다' (all) followed by a negative can be read as 'none' or as 'not all', so '손님이 다 안 왔어요' has the same two readings.",
+    "hints": [
+     "Find the sentence in which a word meaning 'all' meets a negative word.",
+     "Try saying each sentence with two different situations in mind and see which one fits both."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Write two Korean sentences (polite speech), each about a DIFFERENT task (for example homework, cleaning or a book). Sentence 1: you did none of the first task. Sentence 2: you did only part of the second task. Do not use '다 안' or '다 못' in either sentence.",
+    "placeholder": "예: ...",
+    "minChars": 15,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "a clear 'none' sentence (하나도 / 전혀 / 아예 ... 안)",
+      "mode": "any",
+      "patterns": [
+       "(하나도|전혀|아예|조금도|아무것도|아무 ?[가-힣]+도|한 ?[가-힣]{1,3}도)[^.!?\\n]{0,12}(안|못|않|없)",
+       "\\bnone\\b",
+       "nothing"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "a clear 'part' sentence (반 / 조금 / 일부 / 8번까지 / 다는 못 ...)",
+      "mode": "any",
+      "patterns": [
+       "다는",
+       "다 하지는",
+       "(?<![가-힣])반(만|쯤|은|을|도|밖에)?\\s",
+       "절반",
+       "조금(?!도)",
+       "일부",
+       "몇 [가-힣]+만",
+       "[가-힣0-9]+(번|쪽|장|개|페이지)까지",
+       "까지만",
+       "빼고",
+       "제외",
+       "only (half|part|some)",
+       "half",
+       "a little",
+       "some of"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "does not use 다 안 / 다 못 / 다 하지 않",
+      "mode": "none",
+      "patterns": [
+       "(?<![가-힣])다\\s*(안|못|하지 ?(않|못))"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "the two sentences are about different tasks",
+      "mode": "none",
+      "patterns": [
+       "(숙제|청소|책|영화|단어|공부|설거지|일기|독서|운동|그림|빨래|방)(을|를|는|은|도)?[^.!?\\n]*[.!?]\\s*(하지만|그런데|그리고)?\\s*\\1"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Can each of my sentences be read in only one way?",
+     "Do the two sentences really describe different amounts?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "숙제를 하나도 안 했어요. 청소는 반만 했어요."
+     },
+     {
+      "text": "책은 한 쪽도 안 읽었어요. 하지만 영화는 조금만 봤어요.",
+      "note": "Different topics are also fine."
+     },
+     {
+      "text": "숙제를 전혀 못 했어요. 그런데 단어 공부는 다는 못 했어요.",
+      "note": "Uses 다는 못 for 'part'."
+     },
+     {
+      "text": "숙제를 하나도 안 했어요. 청소는 조금 했어요."
+     },
+     {
+      "text": "책은 한 쪽도 안 읽었어요. 숙제는 다 하지는 못했어요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "숙제를 다 안 했어요. 청소도 다 안 했어요.",
+      "why": "Uses the ambiguous pattern in both sentences."
+     },
+     {
+      "text": "숙제를 하나도 안 했어요.",
+      "why": "Only the 'none' sentence; there is no 'part' sentence."
+     },
+     {
+      "text": "숙제를 하나도 안 했어요. 숙제를 반만 했어요.",
+      "why": "Both sentences are about the same task, so they contradict each other."
+     }
+    ],
+    "humanReview": "Whether both sentences are natural and unambiguous, and whether the two amounts differ.",
+    "hints": [
+     "For 'none', choose a word that means 'not even one'.",
+     "For 'part', say how much you did (half, a little, up to a point) or use a form that means 'not all'."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Revising the reading",
+    "full": "Keeps both readings at first and moves to 'not all' when 8 of 10 appear",
+    "partial": "Keeps only one reading from the start",
+    "none": "Ignores the new details"
+   },
+   {
+    "criterion": "Writing unambiguous sentences",
+    "full": "Gives a clear 'none' sentence and a clear 'part' sentence",
+    "partial": "One of the two is clear",
+    "none": "Uses the ambiguous pattern"
+   }
+  ],
+  "alternatives": [
+   "Other clear 'none' wording: 전혀 안 했어요, 아예 안 했어요, 아무것도 안 했어요.",
+   "Other clear 'part' wording: 반만 했어요, 조금 했어요, 일부만 했어요, 8번까지 했어요, 다 하지는 못했어요."
+  ],
+  "hardCases": [
+   "In speech, stress and pause often show which meaning is intended, so a native speaker may say the original sentence is not unclear in real life. The task is about writing, where stress is not visible."
+  ],
+  "cautions": {
+   "language": "The grammar words are not named; the ambiguity is shown through examples.",
+   "culture": "Teacher-student exchanges about homework are common in schools; the teacher's casual endings to a student are normal. Honorific and politeness norms vary by region, workplace, age and personal preference; this task reflects common standard-Korean usage, not a rule for every situation.",
+   "accessibility": "All material is text; nothing depends on colour or images. Tables are written out as lines of text. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Reasonable readings at each stage",
+    "Choice of the same-pattern sentence",
+    "A none word, a part word and no '다 안 / 다 못' in the writing"
+   ],
+   "human": [
+    "Naturalness of the learner's two sentences"
+   ]
+  },
+  "status": "draft"
+ }
+]

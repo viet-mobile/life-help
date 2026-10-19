@@ -1,0 +1,1476 @@
+[
+ {
+  "id": "n-k-k10-01",
+  "subject": "korean",
+  "grade": "K10",
+  "topic": "Reported speech: attribution and strength of a claim",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Who said it, and how firmly?",
+  "uiLang": "en",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Compare a student's summary with the original hearing record, find the lines that misreport a speaker, name the kind of change, and rewrite one line without distortion.",
+  "thinking": [
+   "Checking who said what",
+   "Noticing a change in how strongly a claim is made",
+   "Rewriting a report so it stays faithful"
+  ],
+  "differsFromPlain": "Plain practice turns direct speech into indirect speech with -다고 하다. Here a finished summary already uses reported speech, and you must test it against the record for the wrong speaker and for a worry turned into a prediction.",
+  "prerequisites": [
+   "Reads news-style Korean",
+   "Knows reported speech (-다고 했다) and -(으)ㄹ까 걱정이다"
+  ],
+  "minutes": 12,
+  "curriculum": null,
+  "material": "A school newspaper student summarised a public hearing. Below are the speakers' exact words and then the student's summary.\n\n[간담회 발언 기록] 주제: 전통시장 주차장 유료화\n박 시장: \"내년 3월부터 시범 운영을 검토하고 있습니다. 아직 확정된 것은 아닙니다.\"\n김 상인회장: \"유료화되면 손님이 줄어들까 걱정입니다. 첫 30분은 무료로 해 주셨으면 합니다.\"\n이 교수: \"다른 도시에서는 유료화 후 주차 회전율이 높아졌다는 연구가 있습니다. 다만 상인 매출에 미친 영향은 도시마다 달랐습니다.\"",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "Two lines of the student's summary do not match what the named speaker said. Pick one of them (either counts).",
+    "lines": [
+     "시장은 내년 3월부터 시범 운영을 검토 중이며 아직 확정된 것은 아니라고 밝혔다.",
+     "상인회장은 유료화되면 손님이 줄어들 것이라고 단언했다.",
+     "상인회장은 첫 30분은 무료로 해 달라고 요청했다.",
+     "교수는 유료화 후 주차 회전율이 높아진 도시가 있다고 설명했다.",
+     "시장은 다른 도시에서 유료화 후 주차 회전율이 높아졌다는 연구가 있다고 말했다.",
+     "교수는 상인 매출에 미친 영향은 도시마다 달랐다고 덧붙였다."
+    ],
+    "wrong": [
+     1,
+     4
+    ],
+    "explain": "Line 2 turns the merchants' leader's worry ('줄어들까 걱정입니다') into a flat prediction ('단언했다'). Line 5 gives the professor's remark about research to the mayor. Lines 1, 3, 4 and 6 match the record.",
+    "hints": [
+     "Take each line in turn and find the person it names in the record.",
+     "Compare the claim in the line with that person's own sentences: is it the same claim, said by the same person?",
+     "If a line seems to match, put it next to the record sentence it comes from and compare them word by word."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "Two lines are faulty. Which TWO descriptions fit what went wrong in them?",
+    "options": [
+     {
+      "id": "a",
+      "text": "A remark was credited to the wrong speaker."
+     },
+     {
+      "id": "b",
+      "text": "A number in the quote was changed.",
+      "reveals": "Both faulty lines keep the numbers (3월, 30분) as they were; the distortion is elsewhere."
+     },
+     {
+      "id": "c",
+      "text": "A worry was reported as a firm prediction."
+     },
+     {
+      "id": "d",
+      "text": "A request was turned into an order.",
+      "reveals": "The request for 30 free minutes is reported as a request ('요청했다') in line 3, which is correct."
+     }
+    ],
+    "correct": [
+     "c",
+     "a"
+    ],
+    "explain": "One line credits the professor's research remark to the mayor; the other upgrades '걱정입니다' to a certain outcome.",
+    "hints": [
+     "Describe each faulty line's problem in one phrase before looking at the options.",
+     "Decide for each option whether it happens in a line you picked or in none of them."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Rewrite the faulty line about the 상인회장 so it reports his words without distortion. Write in Korean (news style, e.g. -다고 말했다) or in English.",
+    "placeholder": "예: 상인회장은 ...",
+    "minChars": 10,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "names the merchants' leader as the speaker",
+      "mode": "any",
+      "patterns": [
+       "상인",
+       "회장",
+       "김",
+       "merchant",
+       "association",
+       "chair",
+       "head of",
+       "Kim"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "reports the worry or possibility (걱정, 우려, 줄어들 수 있다 ...)",
+      "mode": "any",
+      "patterns": [
+       "걱정",
+       "우려",
+       "염려",
+       "불안",
+       "줄어들까",
+       "줄까",
+       "두려",
+       "worr",
+       "concern",
+       "fear",
+       "afraid",
+       "anxious"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "does not make it a certain prediction",
+      "mode": "none",
+      "patterns": [
+       "단언",
+       "확신",
+       "장담",
+       "틀림없",
+       "분명히",
+       "반드시",
+       "무조건",
+       "definitely",
+       "certain",
+       "for sure",
+       "guarantee",
+       "단정",
+       "확실",
+       "확정",
+       "뻔",
+       "예측",
+       "예상",
+       "장담",
+       "predict",
+       "expect",
+       "sure",
+       "will definitely"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "does not start with the wrong speaker",
+      "mode": "none",
+      "patterns": [
+       "^\\s*(시장|교수)",
+       "^\\s*(the )?(mayor|professor)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Is the speaker still the 상인회장?",
+     "Does my verb or ending show a worry rather than a certainty?",
+     "Could the 상인회장 read my sentence and say 'yes, that is what I said'?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "상인회장은 유료화되면 손님이 줄어들까 걱정된다고 말했다."
+     },
+     {
+      "text": "김 상인회장은 유료화로 손님이 줄 수 있다며 우려를 나타냈다.",
+      "note": "Uses a possibility form instead of 걱정."
+     },
+     {
+      "text": "The head of the merchants' association said he was worried that fewer customers might come.",
+      "note": "English answer."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "상인회장은 유료화되면 손님이 반드시 줄어들 것이라고 말했다.",
+      "why": "Still reports a certain outcome."
+     },
+     {
+      "text": "시장은 유료화되면 손님이 줄어들까 걱정한다고 말했다.",
+      "why": "Wrong speaker."
+     },
+     {
+      "text": "상인회장은 유료화되면 손님이 줄 수 있다고 단정했다.",
+      "why": "단정했다 turns a possibility into a flat claim."
+     },
+     {
+      "text": "상인회장은 손님이 줄 것이 확실하다고 걱정했다.",
+      "why": "확실하다 makes the outcome certain although the speaker only said he was worried."
+     }
+    ],
+    "humanReview": "Whether the rewrite is natural news Korean and keeps the worry level of the original.",
+    "hints": [
+     "Start the sentence with the person the record names, then say what that person felt or asked.",
+     "Choose a verb or ending that matches 'I am worried that...' rather than 'it will happen'."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Checking against the record",
+    "full": "Finds both faulty lines and names both kinds of change",
+    "partial": "Finds one line or names one kind",
+    "none": "Accepts the summary or guesses"
+   },
+   {
+    "criterion": "Faithful rewrite",
+    "full": "Right speaker and a worry kept as a worry",
+    "partial": "Right speaker but strength still changed (or the reverse)",
+    "none": "Wrong speaker and certain tone"
+   }
+  ],
+  "alternatives": [
+   "Any wording that keeps the speaker and the level of worry is valid, e.g. 우려했다, 걱정이라고 말했다.",
+   "The line about the professor (line 4) could be argued as a slight shortening, but it keeps the claim and the speaker, so it is not faulty."
+  ],
+  "hardCases": [
+   "'걱정이라고 밝혔다' versus '걱정했다': both are faithful; the choice of reporting verb is a style matter.",
+   "Whether 'it is likely' (줄어들 것 같다) is acceptable is a judgement call: it is stronger than 걱정 but weaker than 단언."
+  ],
+  "cautions": {
+   "language": "Reported-speech endings (-다고 했다, -(으)ㄴ다며) vary in formality; the task accepts any that keep speaker and strength.",
+   "culture": "Hearings on local policy appear in Korean news; the names and the policy are invented.",
+   "accessibility": "All material is text. Line numbers are shown by the player; nothing depends on colour."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Position of the faulty lines",
+    "Choice of the two kinds of change",
+    "Rewrite names the speaker, mentions a worry, avoids certain wording"
+   ],
+   "human": [
+    "Naturalness and faithfulness of the rewrite"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-k10-02",
+  "subject": "korean",
+  "grade": "K10",
+  "topic": "Notice with an exception clause: finding all valid options",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Which practice slots survive every rule?",
+  "uiLang": "en",
+  "format": "build-many-verify",
+  "generative": true,
+  "goal": "Read a club-room notice with a deadline rule, a lunch break, weekend closing and an exam-period exception, find three practice slots on different dates that obey every rule, and request one in Korean.",
+  "thinking": [
+   "Combining several conditions at once",
+   "Finding an exception written as 단",
+   "Finding more than one valid answer"
+  ],
+  "differsFromPlain": "Plain practice reads one date and time from a notice. Here the notice and a teammate's text together set many limits, one of them an exception, and you must find several slots that fit all of them.",
+  "prerequisites": [
+   "Reads formal notices",
+   "Knows -까지, -이상/이내, 단 (exception)"
+  ],
+  "minutes": 12,
+  "curriculum": null,
+  "material": "Today is 10월 10일, 월요일. Your band wants to book the club room today.\n\n[동아리방 사용 안내]\n1. 사용 신청은 사용일 3일 전까지 받습니다.\n2. 사용 시간은 오전 10시부터 오후 8시까지이며, 한 팀이 한 번에 쓸 수 있는 시간은 3시간 이내입니다.\n3. 낮 12시부터 오후 1시까지는 점심시간이므로 사용할 수 없습니다.\n4. 토요일과 일요일에는 문을 열지 않습니다.\n5. 단, 시험 기간인 10월 17일부터 19일까지는 사용할 수 없습니다.\n\n밴드 친구의 문자: \"우리 공연이 22일이라 21일까지는 연습을 끝내야 해요. 연습은 한 번에 2시간 이상 해야 하고요.\"",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "scaffold": true,
+    "prompt": "Condition 1 says applications close three days before the day of use. If you apply today (the 10th), which use dates does this allow?",
+    "options": [
+     {
+      "id": "a",
+      "text": "The 13th or any later date"
+     },
+     {
+      "id": "b",
+      "text": "Any date up to the 13th",
+      "reveals": "That reverses the direction: the rule sets the earliest day you can book, not the latest."
+     },
+     {
+      "id": "c",
+      "text": "Only the 13th",
+      "reveals": "'-까지' gives a limit, not one exact day; later dates are allowed too."
+     },
+     {
+      "id": "d",
+      "text": "The 7th or any later date",
+      "reveals": "That counts three days back from today, but the rule counts from the day of use."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "Applying on the 10th is exactly three days before the 13th, so the 13th is the earliest use date and later dates also work.",
+    "hints": [
+     "Ask: on which use date is 'today' exactly three days before?",
+     "Think whether a later date would make the application earlier or later than the deadline."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "build",
+    "prompt": "Find 3 practice slots on 3 different dates that satisfy the notice and the teammate's text. d = date in October, s = start hour on a 24-hour clock (오후 2시 = 14), t = hours of practice.",
+    "vars": [
+     {
+      "name": "d",
+      "label": "date (10월 d일)"
+     },
+     {
+      "name": "s",
+      "label": "start hour (24-hour clock)"
+     },
+     {
+      "name": "t",
+      "label": "length in hours"
+     }
+    ],
+    "constraints": [
+     {
+      "id": "c0",
+      "expr": "d==floor(d) && s==floor(s) && t==floor(t)",
+      "ok": "Whole numbers.",
+      "fail": "Use whole days and whole hours."
+     },
+     {
+      "id": "c1",
+      "expr": "d>=13",
+      "ok": "Booked at least 3 days ahead.",
+      "fail": "Too soon: the application deadline is 3 days before the day of use."
+     },
+     {
+      "id": "c2",
+      "expr": "d<=21",
+      "ok": "Before the 22nd show.",
+      "fail": "The band must finish by the 21st."
+     },
+     {
+      "id": "c3",
+      "expr": "d%7!=1 && d%7!=2",
+      "ok": "A weekday.",
+      "fail": "The club room is closed on that day (weekend)."
+     },
+     {
+      "id": "c4",
+      "expr": "d<17 || d>19",
+      "ok": "Not in the exam period.",
+      "fail": "That date is in the exam period."
+     },
+     {
+      "id": "c5",
+      "expr": "s>=10 && s+t<=20",
+      "ok": "Within opening hours.",
+      "fail": "The slot starts too early or ends after closing time."
+     },
+     {
+      "id": "c6",
+      "expr": "t>=2 && t<=3",
+      "ok": "2 to 3 hours.",
+      "fail": "Practice must be at least 2 hours and the club allows at most 3."
+     },
+     {
+      "id": "c7",
+      "expr": "s+t<=12 || s>=13",
+      "ok": "Avoids the lunch break.",
+      "fail": "The slot overlaps the 12:00-13:00 lunch break."
+     }
+    ],
+    "need": 3,
+    "distinctBy": "d",
+    "modelRows": [
+     {
+      "d": 13,
+      "s": 10,
+      "t": 2
+     },
+     {
+      "d": 14,
+      "s": 14,
+      "t": 3
+     },
+     {
+      "d": 20,
+      "s": 13,
+      "t": 2
+     },
+     {
+      "d": 21,
+      "s": 17,
+      "t": 3
+     }
+    ],
+    "badRows": [
+     {
+      "d": 16,
+      "s": 14,
+      "t": 2
+     },
+     {
+      "d": 18,
+      "s": 14,
+      "t": 2
+     },
+     {
+      "d": 12,
+      "s": 14,
+      "t": 2
+     },
+     {
+      "d": 14,
+      "s": 11,
+      "t": 2
+     },
+     {
+      "d": 20,
+      "s": 18,
+      "t": 3
+     },
+     {
+      "d": 20,
+      "s": 14,
+      "t": 1
+     }
+    ],
+    "explain": "Only four dates work: the 13th and 14th (Thu, Fri) and the 20th and 21st (Thu, Fri). The 15th-16th are a weekend, the 17th-19th are the exam period (the exception), the 12th is too soon, and the 22nd is too late. On each date the hours must avoid lunch and stay within 10:00-20:00.",
+    "hints": [
+     "Write the calendar from the 10th: which date is each weekday? The 10th is a Monday.",
+     "Cross out dates first (too soon, too late, weekend, exception), then choose hours.",
+     "Check the clock last: start at 10 or later, end by 20, keep 12-13 free, and 2-3 hours long."
+    ],
+    "because": {
+     "id": "s2b",
+     "kind": "write",
+     "prompt": "Choose ONE of your slots and write a short message in Korean (polite) to the club-room manager requesting it. Give the date and the time.",
+     "placeholder": "예: ...",
+     "minChars": 10,
+     "checks": [
+      {
+       "id": "w1",
+       "label": "polite ending",
+       "mode": "any",
+       "patterns": [
+        "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
+       ]
+      },
+      {
+       "id": "w2",
+       "label": "gives a date (n일)",
+       "mode": "any",
+       "patterns": [
+        "\\d+\\s*일",
+        "\\d+\\s*/\\s*\\d+",
+        "\\d+\\s*월"
+       ]
+      },
+      {
+       "id": "w3",
+       "label": "gives a time (e.g. 오후 2시, 14:00)",
+       "mode": "any",
+       "patterns": [
+        "(오전|오후|낮|저녁)\\s*[0-9한두세네다섯여섯일곱여덟아홉열]",
+        "\\d{1,2}\\s*시",
+        "\\d{1,2}\\s*:\\s*\\d{2}",
+        "(?<![가-힣])(열두|열한|열|한|두|세|네|다섯|여섯|일곱|여덟|아홉)\\s*시"
+       ]
+      },
+      {
+       "id": "w4",
+       "label": "makes a request (신청, 사용, 예약 ...)",
+       "mode": "any",
+       "patterns": [
+        "신청",
+        "사용",
+        "예약",
+        "쓰고",
+        "쓸 수",
+        "빌리"
+       ]
+      },
+      {
+       "id": "w5",
+       "label": "names one of the open dates (13, 14, 20 or 21)",
+       "mode": "any",
+       "patterns": [
+        "(?<![0-9])(13|14|20|21)\\s*일",
+        "십삼\\s*일",
+        "십사\\s*일",
+        "이십\\s*일",
+        "이십일\\s*일"
+       ]
+      }
+     ],
+     "selfAssess": [
+      "Do the date and times match a slot I built?",
+      "Is the message polite enough for a manager?"
+     ],
+     "modelAnswers": [
+      {
+       "text": "10월 13일 오전 10시부터 12시까지 동아리방 사용을 신청합니다."
+      },
+      {
+       "text": "안녕하세요. 14일 오후 2시부터 5시까지 동아리방을 사용하고 싶습니다."
+      },
+      {
+       "text": "14일 오후 두 시부터 다섯 시까지 동아리방을 예약하고 싶습니다."
+      }
+     ],
+     "badAnswers": [
+      {
+       "text": "동아리방 쓰고 싶어.",
+       "why": "Casual, no date or time."
+      },
+      {
+       "text": "연습하고 싶어요.",
+       "why": "No date and no time."
+      },
+      {
+       "text": "13일에 동아리방을 사용하시게 해 주세요.",
+       "why": "Gives a date but no time."
+      },
+      {
+       "text": "10월 16일 오전 3시부터 5시까지 동아리방 사용을 신청합니다.",
+       "why": "16일 is a Sunday and 오전 3시 is outside opening hours."
+      }
+     ],
+     "humanReview": "Whether the message is natural and the time matches a valid slot.",
+     "hints": [
+      "Open with a greeting or the date, then the time span.",
+      "End with a polite request like -고 싶습니다 or 신청합니다."
+     ]
+    }
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Reading every condition",
+    "full": "All three slots satisfy every rule including the exception",
+    "partial": "Slots miss one rule (often the exam period or lunch)",
+    "none": "Slots ignore several rules"
+   },
+   {
+    "criterion": "Request message",
+    "full": "Polite, with date, time and request",
+    "partial": "Missing one element",
+    "none": "Casual or missing details"
+   }
+  ],
+  "alternatives": [
+   "Any triple of slots on three of the dates 13, 14, 20, 21 with hours that avoid lunch is correct.",
+   "A 24-hour or an 오전/오후 clock in the message are both fine."
+  ],
+  "hardCases": [
+   "'3일 전까지' could be read as including or excluding the application day; the task counts the 13th as allowed when applying on the 10th.",
+   "A slot that ends exactly at 12:00 or starts exactly at 13:00 is allowed."
+  ],
+  "cautions": {
+   "language": "Numbers are written in digits; the notice uses formal 합쇼체.",
+   "culture": "Club rooms in schools often close in exam periods; the schedule is invented.",
+   "accessibility": "All material is text; weekdays are given in words and the calendar is not a picture."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Each slot against every rule",
+    "Three different dates",
+    "Message has polite ending, date, time, request"
+   ],
+   "human": [
+    "Naturalness of the message"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-k10-03",
+  "subject": "korean",
+  "grade": "K10",
+  "topic": "Rules with an exception: which fact decides the case",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Can the shop refuse this refund?",
+  "uiLang": "en",
+  "format": "choose-needed-info",
+  "generative": true,
+  "goal": "Find which single missing fact decides a refund request under a rule with an exception, state what can already be said, and ask for the missing fact politely in Korean.",
+  "thinking": [
+   "Finding the fact that changes the answer",
+   "Not assuming facts that were not given",
+   "Answering only as far as the facts allow"
+  ],
+  "differsFromPlain": "Plain practice reads a refund notice and answers one question. Here the case is incomplete, rules interact, and you must say which fact matters and what can already be said.",
+  "prerequisites": [
+   "Reads formal notices",
+   "Knows 단 (exception) and -(으)ㄴ 경우"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "A shop's refund rules and a customer's request.\n\n[환불 안내]\n1. 구매일로부터 7일 이내에 신청하시면 환불해 드립니다.\n2. 포장을 뜯었거나 사용한 상품은 환불이 되지 않습니다.\n3. 단, 상품에 불량이 있는 경우에는 구매일로부터 30일 이내에 포장이나 사용 여부와 상관없이 환불해 드립니다.\n\n[주문 내역] 무선 이어폰 1개 / 구매일: 10월 3일\n오늘은 10월 12일입니다. 손님: \"이어폰이 생각보다 별로예요. 환불해 주세요.\"",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "You are the clerk. Which ONE missing fact would change whether a refund is possible?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Whether the customer paid by card or cash.",
+      "reveals": "The rules never mention how the customer paid."
+     },
+     {
+      "id": "b",
+      "text": "Whether the earphones are still sealed in their package.",
+      "reveals": "The 7-day limit has already passed, so a sealed package alone does not earn a refund, and rule 3 ignores the package anyway."
+     },
+     {
+      "id": "c",
+      "text": "Whether the earphones are defective."
+     },
+     {
+      "id": "d",
+      "text": "Whether the customer still has the receipt.",
+      "reveals": "The order record already shows the purchase date, and the rules do not ask for a receipt."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "Counting from 10월 3일, today is the 9th day, so rule 1 no longer applies. Only rule 3 can still give a refund, and it depends on whether there is a defect.",
+    "hints": [
+     "First work out how many days have passed since the purchase and compare with the first rule.",
+     "Then find the rule that could still help the customer and see what it requires."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Based only on what is known now, what can the clerk correctly say?",
+    "options": [
+     {
+      "id": "a",
+      "text": "A refund is possible, because the request is within 7 days.",
+      "reveals": "10월 3일 to 10월 12일 is 9 days, which is past the 7-day limit."
+     },
+     {
+      "id": "b",
+      "text": "A change-of-mind refund is past the limit, but a defective product would still qualify."
+     },
+     {
+      "id": "c",
+      "text": "A refund is not possible in any case, because 7 days have passed.",
+      "reveals": "This ignores rule 3, which gives 30 days when there is a defect."
+     },
+     {
+      "id": "d",
+      "text": "A refund is possible only if the package is still unopened.",
+      "reveals": "The unopened package matters only inside the 7 days; after that, nothing in the rules gives a refund for an unopened product."
+     },
+     {
+      "id": "e",
+      "text": "A refund is not possible, because the package was probably opened.",
+      "reveals": "Nothing in the case says the package was opened; this is an assumption."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "The clerk can say what follows from the facts: no refund for simply disliking the product after 7 days, but the answer could change if the product is defective.",
+    "hints": [
+     "Separate what the facts already settle from what they leave open.",
+     "Check each option for a fact it adds that the case never stated, or a rule it leaves out."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Reply to the customer in Korean (polite). Say the 7-day limit has passed for a change-of-mind refund, then ask the one thing you still need to know before you can decide.",
+    "placeholder": "예: 손님, ...",
+    "minChars": 15,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "mentions the time limit (7일, 일주일, 기간)",
+      "mode": "any",
+      "patterns": [
+       "7\\s*일",
+       "칠\\s*일",
+       "일주일",
+       "기간",
+       "7 days",
+       "week"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "asks about a defect (불량, 고장, 결함, 하자 ...)",
+      "mode": "any",
+      "patterns": [
+       "불량",
+       "고장",
+       "하자",
+       "결함",
+       "망가",
+       "이상이 있",
+       "작동",
+       "안 켜",
+       "(제품|상품|이어폰|물건).{0,8}(문제|이상)",
+       "defect",
+       "broken",
+       "faulty",
+       "not work",
+       "doesn't work",
+       "malfunction",
+       "(problem|issue) with"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "is a question",
+      "mode": "any",
+      "patterns": [
+       "[?？]",
+       "까요",
+       "나요",
+       "신가요",
+       "인가요",
+       "있으신",
+       "없으신",
+       "습니까",
+       "\\bis it\\b",
+       "\\bdoes it\\b"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Do I explain why the answer is not yes yet?",
+     "Does my question ask for the one fact that decides the case?",
+     "Is my tone polite to a customer?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "손님, 구매 후 7일이 지나서 단순 변심으로는 환불이 어렵습니다. 혹시 제품에 불량이나 문제가 있나요?"
+     },
+     {
+      "text": "죄송하지만 일주일이 지나서 환불은 어려워요. 제품에 고장이 있으신 건가요?",
+      "note": "Softer 해요체."
+     },
+     {
+      "text": "구매 기간 7일이 지나 환불이 어렵습니다만, 불량이 있다면 가능합니다. 불량이 있습니까?"
+     },
+     {
+      "text": "7일이 지나서 단순 변심 환불은 어렵습니다. 혹시 제품에 결함이 있으신가요?"
+     },
+     {
+      "text": "죄송하지만 7일이 지나 환불이 어려워요. 소리가 안 나오거나 망가진 데가 있나요?"
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "환불해 드리겠습니다.",
+      "why": "Promises a refund without the missing fact."
+     },
+     {
+      "text": "환불은 안 됩니다. 7일이 지났어요.",
+      "why": "Refuses outright and never asks about a defect."
+     },
+     {
+      "text": "7일이 지나서 환불이 어렵습니다. 영수증에 문제가 없나요?",
+      "why": "Asks about the receipt, not about a defect."
+     },
+     {
+      "text": "7일이 지났어요. 포장을 뜯었나요? 문제 없죠?",
+      "why": "Asks about the package and never about a defect."
+     }
+    ],
+    "humanReview": "Politeness and clarity of the reply; whether it avoids promising something the facts do not support.",
+    "hints": [
+     "First give the reason from the first rule, briefly and politely.",
+     "Then reread the three rules and ask about the fact the case still lacks."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Deciding what matters",
+    "full": "Picks the fact that decides the case and states what can already be said",
+    "partial": "Picks the fact but over- or under-states the answer",
+    "none": "Picks an irrelevant fact or assumes an unstated one"
+   },
+   {
+    "criterion": "Reply",
+    "full": "Polite, gives the limit, asks about the defect",
+    "partial": "Missing one of the three",
+    "none": "Promises or refuses without the question"
+   }
+  ],
+  "alternatives": [
+   "Asking for a photo of the problem is also reasonable, as long as the reply asks whether there is a defect.",
+   "Offering to inspect the product is a good addition."
+  ],
+  "hardCases": [
+   "The customer's 'not as good as expected' might hide a real defect; the clerk may need to ask follow-up questions.",
+   "The case does not say whether the package is open, which only matters inside 7 days."
+  ],
+  "cautions": {
+   "language": "Formal notice wording (해 드립니다, -(으)ㄴ 경우) is explained by the rules themselves.",
+   "culture": "Return policies vary by shop; this one is invented.",
+   "accessibility": "All material is text; dates are written in words and numerals."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of the deciding fact",
+    "Choice of the correct statement",
+    "Reply mentions the time limit, asks about a defect, polite"
+   ],
+   "human": [
+    "Tone and wording of the reply"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-k10-04",
+  "subject": "korean",
+  "grade": "K10",
+  "topic": "Summarising a formal notice without losing its limits",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "One notice, two neighbours",
+  "uiLang": "en",
+  "format": "rewrite-for-audience",
+  "generative": true,
+  "goal": "Find the summary line that changes a notice's time limit, then rewrite the notice for a neighbour group chat and as a spoken reminder to an elderly neighbour, keeping the date, hours and building exact.",
+  "thinking": [
+   "Summarising without distortion",
+   "Choosing register for each listener",
+   "Keeping the conditions that matter"
+  ],
+  "differsFromPlain": "Plain practice changes a sentence from 합쇼체 to 해요체. Here you compress a whole notice, must keep its limits intact, and then say it twice to two different listeners.",
+  "prerequisites": [
+   "Knows 합쇼체, 해요체 and the honorific -(으)세요",
+   "Knows -(으)니까 and -아/어 두다"
+  ],
+  "minutes": 12,
+  "curriculum": null,
+  "material": "The management office posted a notice. You live in 101동.\n\n[단수 안내]\n배관 점검 공사로 10월 25일 토요일 오전 9시부터 오후 2시까지 101동 전 세대의 물이 나오지 않습니다. 공사가 일찍 끝나면 물이 먼저 나올 수 있습니다. 단수 전에 필요한 물을 미리 받아 두시기 바라며, 공사 후 처음 나오는 물은 누런색일 수 있으니 잠시 틀어 둔 뒤 사용하시기 바랍니다.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "A neighbour made four short summaries of the notice. Which one changes the meaning?",
+    "options": [
+     {
+      "id": "a",
+      "text": "25일 토요일 오전 9시부터 오후 2시까지 101동은 물이 나오지 않는다고 해요.",
+      "reveals": "This keeps the date, the hours and the building exactly as the notice has them."
+     },
+     {
+      "id": "b",
+      "text": "공사가 일찍 끝나면 2시 전에 물이 다시 나올 수도 있다고 해요.",
+      "reveals": "The notice says the water may come back earlier if the work ends early."
+     },
+     {
+      "id": "c",
+      "text": "공사 후 처음 나오는 물은 누런색일 수 있으니 잠시 틀어 두라고 해요.",
+      "reveals": "The notice does say the first water after the work may be yellowish and should be run for a while."
+     },
+     {
+      "id": "d",
+      "text": "토요일에는 101동에 하루 종일 물이 나오지 않는다고 해요."
+     }
+    ],
+    "correct": [
+     "d"
+    ],
+    "explain": "'하루 종일' stretches a five-hour cut (9:00-14:00) to the whole day, which would make people plan wrongly.",
+    "hints": [
+     "Reread the notice and list its facts (when, where, what to do). Then compare each summary with your list.",
+     "Look for any phrase that makes the time longer, shorter or looser than the notice says."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write a short message (2-3 sentences) for the neighbours' group chat in Korean, friendly 해요체. Keep the date, the hours, the building and the advice about water exact.",
+    "placeholder": "예: 안녕하세요, ...",
+    "minChars": 30,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "friendly polite 요 ending",
+      "mode": "any",
+      "patterns": [
+       "(?<=[가-힣])요(?=[.!?~,…^ㅎㅋ]|\\s*$|\\s*\\n)"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "gives the date (25일)",
+      "mode": "any",
+      "patterns": [
+       "25\\s*일",
+       "이십오\\s*일",
+       "25th"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "gives the start time (9시)",
+      "mode": "any",
+      "patterns": [
+       "(?<![0-9])9\\s*시",
+       "아홉\\s*시",
+       "(오전|아침)\\s*9(?![0-9])",
+       "(?<![0-9])0?9:00",
+       "9\\s*am"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "gives the end time (2시)",
+      "mode": "any",
+      "patterns": [
+       "(?<![0-9])2\\s*시",
+       "(?<![0-9])14\\s*시",
+       "두\\s*시",
+       "오후\\s*2(?![0-9])",
+       "(?<![0-9])14:00",
+       "(?<![0-9])2:00",
+       "2\\s*pm"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "names the building (101동)",
+      "mode": "any",
+      "patterns": [
+       "101",
+       "백일",
+       "일공일"
+      ]
+     },
+     {
+      "id": "w6",
+      "label": "advises storing water beforehand",
+      "mode": "any",
+      "patterns": [
+       "받아",
+       "미리",
+       "저장",
+       "채워",
+       "담아",
+       "떠 ?놓",
+       "store",
+       "fill"
+      ]
+     },
+     {
+      "id": "w7",
+      "label": "does not stretch the cut to the whole day",
+      "mode": "none",
+      "patterns": [
+       "종일",
+       "하루 ?내내",
+       "하루 ?전체",
+       "온종일"
+      ]
+     },
+     {
+      "id": "w8",
+      "label": "avoids the notice's stiff wording",
+      "mode": "none",
+      "patterns": [
+       "바랍니다",
+       "바라며",
+       "하십시오",
+       "단수됩니다"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Would a neighbour who only reads my message know exactly when and where water stops?",
+     "Does it sound like chat among neighbours, not like the notice?",
+     "Did I keep the advice about storing water?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "안녕하세요, 101동 이웃 여러분! 25일 토요일 오전 9시부터 오후 2시까지 배관 공사로 물이 안 나온대요. 필요한 물은 미리 받아 두세요~"
+     },
+     {
+      "text": "101동은 이번 토요일(25일) 9시~2시에 단수래요. 그 전에 물 미리 받아 놓으시면 좋아요. 공사 끝나고 처음 나오는 물은 누래도 놀라지 마세요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "토요일에는 하루 종일 물이 안 나와요.",
+      "why": "Stretches the cut to the whole day and gives no hours or building."
+     },
+     {
+      "text": "25일 오전 9시부터 오후 2시까지 101동 단수됩니다. 물을 미리 받아 두시기 바랍니다.",
+      "why": "Keeps the facts but copies the notice's stiff formal wording."
+     },
+     {
+      "text": "25일 토요일 오전 10시부터 오후 3시까지 101동 물이 안 나와요. 미리 받아 두세요.",
+      "why": "Wrong hours (the cut is 9:00-14:00)."
+     },
+     {
+      "text": "25일 토요일 9시부터 12시까지 101동 물이 안 나와요. 미리 받아 두세요.",
+      "why": "Wrong end time."
+     }
+    ],
+    "humanReview": "Whether the chat tone is natural and friendly and whether anything important was left out.",
+    "hints": [
+     "List the four facts that must survive: when, until when, who is affected, what to do first.",
+     "Rephrase each in friendly 해요체 and replace the notice's stiff phrases with chat wording."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "You meet an elderly neighbour at the elevator. Say the key point in one or two spoken sentences in Korean, respectfully (honorific). Keep the day, the hours and the advice.",
+    "placeholder": "예: 어르신, ...",
+    "minChars": 15,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "honorific or formal ending (-세요, -시-, -습니다 ...)",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]시(는|면|고|지|죠|네|기|도록|겠|길|라|거|어요|니)",
+       "세요",
+       "셔",
+       "십시오",
+       "십니다",
+       "습니다",
+       "[가-힣]니다",
+       "께서",
+       "드릴",
+       "드려",
+       "드립"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "gives the day (토요일, 25일)",
+      "mode": "any",
+      "patterns": [
+       "25\\s*일",
+       "토요일",
+       "이번 주 토",
+       "Saturday"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "gives the start hour (9시)",
+      "mode": "any",
+      "patterns": [
+       "(?<![0-9])9\\s*시",
+       "아홉\\s*시",
+       "(오전|아침)\\s*9(?![0-9])",
+       "(?<![0-9])0?9:00",
+       "9\\s*am"
+      ]
+     },
+     {
+      "id": "w3b",
+      "label": "gives the end hour (2시)",
+      "mode": "any",
+      "patterns": [
+       "(?<![0-9])2\\s*시",
+       "(?<![0-9])14\\s*시",
+       "두\\s*시",
+       "오후\\s*2(?![0-9])",
+       "(?<![0-9])14:00",
+       "(?<![0-9])2:00",
+       "2\\s*pm"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "mentions water",
+      "mode": "any",
+      "patterns": [
+       "물",
+       "단수",
+       "water"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "advises preparing water",
+      "mode": "any",
+      "patterns": [
+       "받아",
+       "미리",
+       "저장",
+       "채워",
+       "담아",
+       "떠 ?놓",
+       "준비",
+       "store",
+       "fill"
+      ]
+     },
+     {
+      "id": "w6",
+      "label": "no casual 반말 command",
+      "mode": "none",
+      "patterns": [
+       "받아 ?둬",
+       "받아 ?놔",
+       "받아 ?라",
+       "[ ]해[.!?]?$"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Would I speak like this to an older person I respect?",
+     "Can the neighbour act on it (day, hours, preparing water) from this alone?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "어르신, 이번 토요일 오전 9시부터 오후 2시까지 물이 안 나오니까 미리 물을 받아 두세요."
+     },
+     {
+      "text": "할머니, 토요일 아침 9시부터 2시까지 단수예요. 미리 받아 두시는 게 좋겠어요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "토요일에 물 안 나와. 미리 받아 둬.",
+      "why": "Casual 반말 to an elderly neighbour."
+     },
+     {
+      "text": "토요일에 물이 안 나와서 힘드시겠어요.",
+      "why": "Honorific, but no hours and no advice."
+     },
+     {
+      "text": "어르신, 토요일 오전에 물이 안 나오니 물을 받아 두세요.",
+      "why": "No exact hours."
+     }
+    ],
+    "humanReview": "Warmth and naturalness of the honorific wording; whether a very short version still carries the key facts.",
+    "hints": [
+     "Address the neighbour respectfully first (어르신, 할머니, 할아버지 ...).",
+     "Use -(으)세요 or -(으)시- for what the neighbour should do, and keep the hours short."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Spotting the distortion",
+    "full": "Finds the summary that stretches the time and keeps all facts in both messages",
+    "partial": "Finds it but drops a fact in a message",
+    "none": "Misses it or distorts the time again"
+   },
+   {
+    "criterion": "Register for each listener",
+    "full": "Friendly 해요체 in the chat and honorific forms for the elderly neighbour",
+    "partial": "One message fits its listener",
+    "none": "Copies the notice or uses 반말 for the elder"
+   }
+  ],
+  "alternatives": [
+   "Writing '14시' or '오후 2시' for the end time are both fine.",
+   "A very short spoken sentence can leave out the building if the speaker and listener live in the same building."
+  ],
+  "hardCases": [
+   "Whether to mention the yellowish first water is a judgement call in a short spoken line; the chat message should keep it if space allows.",
+   "A message that says 9시~2시 without 오전/오후 is clear enough in context."
+  ],
+  "cautions": {
+   "language": "The notice uses 합쇼체 and written forms (바라며, 하시기); the task asks you to leave them out in speech.",
+   "culture": "Water outages with advance notice are common in apartments; the building and times are invented.",
+   "accessibility": "All material is text; times are given in words and numerals."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of the distorting summary",
+    "Chat message contains date, hours, building, advice; avoids stiff wording",
+    "Spoken line is honorific and has the day, hours, advice"
+   ],
+   "human": [
+    "Naturalness and warmth of the tone"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-k10-05",
+  "subject": "korean",
+  "grade": "K10",
+  "topic": "Answering a negative question: 네 and 아니요",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "The 'yes' that meant no",
+  "uiLang": "en",
+  "format": "reveal-and-revise",
+  "generative": true,
+  "goal": "Revise your reading of a bare 네 after a negative question as the dialogue shows a misunderstanding, choose a clearer way to answer, and repair the miscommunication in Korean.",
+  "thinking": [
+   "Noticing that a short answer can be read two ways",
+   "Revising a reading when the other person's reaction appears",
+   "Repairing a misunderstanding politely"
+  ],
+  "differsFromPlain": "Plain practice learns 네 = yes and 아니요 = no. Here a negative question shows how a bare 네 or 아니요 can be understood in two ways, and you revise your view as the conversation shows what each person heard.",
+  "prerequisites": [
+   "Knows 네/아니요 and 안 + verb",
+   "Knows -(으)ㄹ게요 and -(으)ㄹ 거예요"
+  ],
+  "minutes": 12,
+  "curriculum": null,
+  "material": "You work in a company. Your department head (부장님) asks you about tomorrow's meeting. Both of you speak politely.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "Read each part and choose the reading that seems most likely before continuing.",
+    "hints": [
+     "Decide using only the lines you have read so far.",
+     "Think about what the speaker may have been agreeing with: the question as asked, or the facts?"
+    ],
+    "reflect": "A bare 네 or 아니요 after a negative question ('안 가세요?') attaches to the whole question, not just to the facts, so it can be heard in two opposite ways. Adding the verb ('아니요, 가요') prevents the misunderstanding.",
+    "stages": [
+     {
+      "info": "부장님: 내일 회의에 안 가세요?\n나: 네.",
+      "ask": "What did 나 most likely mean?",
+      "options": [
+       {
+        "id": "a",
+        "text": "I am not going to the meeting."
+       },
+       {
+        "id": "b",
+        "text": "I am going to the meeting."
+       },
+       {
+        "id": "c",
+        "text": "I have not decided yet.",
+        "reveals": "A bare 네 gives no sign of hesitation; an undecided answer would use words like '글쎄요' or '아직요'."
+       },
+       {
+        "id": "d",
+        "text": "I am asking you a question back.",
+        "reveals": "Nothing in a plain 네 asks anything; the tone would need to rise and the question would use words."
+       }
+      ],
+      "reasonable": [
+       "a",
+       "b"
+      ],
+      "after": "In standard Korean a bare 네 agrees with the question as asked ('네, 안 가요'), so a is the usual reading. Reading b is how a speaker used to English 'yes' might mean it. Either way, a bare 네 does not tell the listener which."
+     },
+     {
+      "info": "부장님: 아, 그럼 제가 대신 말씀드릴게요.\n나: 아니요, 가요! 제가 갈 거예요.",
+      "ask": "What most likely happened?",
+      "options": [
+       {
+        "id": "a",
+        "text": "부장님 heard the 네 as 'not going'; 나 had meant 'yes, I am going'."
+       },
+       {
+        "id": "b",
+        "text": "부장님 heard the 네 as 'going', and 나 is really not going.",
+        "reveals": "나's last line says 가요 and 갈 거예요, so 나 is going."
+       },
+       {
+        "id": "c",
+        "text": "부장님 and 나 disagree about the date of the meeting.",
+        "reveals": "Neither of them mentions a date or time."
+       },
+       {
+        "id": "d",
+        "text": "나 changed their mind after 부장님 offered to speak for them."
+       }
+      ],
+      "reasonable": [
+       "a",
+       "d"
+      ],
+      "after": "Both a and d can fit, but 나's immediate 아니요 and the emphasis point more to a: the bare 네 was heard as 'not going' although 나 meant 'yes, I am going'."
+     },
+     {
+      "info": "부장님: 아, 간다는 뜻이었군요. 대답을 듣고 나서 잠깐 헷갈렸어요.",
+      "ask": "Next time a negative question comes up, which answer style avoids this problem?",
+      "options": [
+       {
+        "id": "a",
+        "text": "Answer 네 and explain only afterwards if the listener looks confused.",
+        "reveals": "The misunderstanding already happens at the first 네; explaining later repairs it instead of preventing it."
+       },
+       {
+        "id": "b",
+        "text": "Answer with a louder, clearer 네.",
+        "reveals": "Loudness does not change the fact that 네 can be heard as agreeing with the question or with the facts."
+       },
+       {
+        "id": "c",
+        "text": "Always answer 아니요, whatever the question.",
+        "reveals": "Always saying 아니요 would give a wrong answer whenever the real answer is that you are not going."
+       },
+       {
+        "id": "d",
+        "text": "Say 네 or 아니요 and repeat the verb: '네, 안 가요' or '아니요, 가요'."
+       }
+      ],
+      "reasonable": [
+       "d"
+      ],
+      "after": "Repeating the verb with its negation or affirmation states the fact directly, so the listener does not have to decide what 네 refers to."
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Right after the misunderstanding, you send 부장님 a short message in Korean (polite) saying you meant that you ARE going and apologising for the confusion.",
+    "placeholder": "예: 부장님, ...",
+    "minChars": 15,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "says that you are going (not 'not going')",
+      "mode": "any",
+      "patterns": [
+       "(가요|갑니다|갈 거|갈게|갈 겁|갈 예정|가겠|가려고|가는 (게|것)|참석(합|할|하겠|해|하려|하고)|참여(합|할|하겠|해)|참가)",
+       "I am going",
+       "I'm going",
+       "will go",
+       "will attend",
+       "am attending"
+      ]
+     },
+     {
+      "id": "w2n",
+      "label": "does not say that you are NOT going",
+      "mode": "none",
+      "patterns": [
+       "(안|못)\\s*(가요|갑니다|갈|가겠|참석|참여)",
+       "가지 (않|못)",
+       "참석하지 (않|못)",
+       "참여하지 (않|못)",
+       "참석\\s*안",
+       "불참",
+       "not going",
+       "won't",
+       "will not"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "explains or apologises (죄송, 헷갈, 오해 ...)",
+      "mode": "any",
+      "patterns": [
+       "죄송",
+       "미안",
+       "헷갈",
+       "혼동",
+       "오해",
+       "잘못",
+       "confus",
+       "sorry",
+       "misunderst"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my message say clearly that I am going?",
+     "Do I state the fact with the verb instead of a bare 네?",
+     "Is my apology polite without being too long?",
+     "Did I address 부장님 respectfully?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "부장님, 아까 제 대답이 헷갈리게 들렸죠? 죄송합니다. 내일 회의에 갑니다."
+     },
+     {
+      "text": "부장님, 오해하게 해서 죄송해요. 제가 내일 회의에 갈 거예요. 대신 말씀하실 필요 없어요."
+     },
+     {
+      "text": "부장님, 헷갈리게 해서 죄송합니다. 내일 회의에는 갈 예정입니다."
+     },
+     {
+      "text": "부장님, 죄송해요. 내일 회의에 가려고 했어요."
+     },
+     {
+      "text": "부장님, 오해하시게 해서 죄송합니다. 내일 회의에 참석할 거예요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "네, 안 가요.",
+      "why": "Says the opposite and has no apology."
+     },
+     {
+      "text": "죄송해요.",
+      "why": "Apologises but never says that you are going."
+     },
+     {
+      "text": "부장님, 헷갈리게 해서 죄송합니다. 내일 회의에 참석하지 않습니다.",
+      "why": "Apologises but says the opposite: not attending."
+     },
+     {
+      "text": "부장님, 죄송해요. 내일 회의에 참석 안 해요.",
+      "why": "Says that you are not going."
+     }
+    ],
+    "humanReview": "Whether the apology and honorific level suit a department head.",
+    "hints": [
+     "Address 부장님 and say sorry for the confusion in a short phrase.",
+     "State the fact with the verb (what you will do tomorrow), not with a bare answer word."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Revising the reading",
+    "full": "Moves from 'could mean either' to 'the 네 was heard in the other sense' and picks the clearer answer style",
+    "partial": "Sees the misunderstanding at the end only",
+    "none": "Keeps one fixed meaning for 네"
+   },
+   {
+    "criterion": "Repair message",
+    "full": "Polite, names the fact with its verb, apologises",
+    "partial": "Missing the fact or the apology",
+    "none": "Repeats the bare answer"
+   }
+  ],
+  "alternatives": [
+   "At stage 1 many Korean speakers would hear a bare 네 as 'not going', but both readings are reasonable because the speaker's intention is not shown.",
+   "Using '아니요, 가요' as the very first answer is the clearest form."
+  ],
+  "hardCases": [
+   "In fast speech tone and gesture may show which meaning is intended; the text cannot.",
+   "Some speakers reverse the usual pattern when they are tired or nervous."
+  ],
+  "cautions": {
+   "language": "네 agrees with the question as asked; this convention differs from English 'yes/no' answers to negative questions, and learners are often caught by it.",
+   "culture": "Answering a department head with a clear and polite sentence is expected; the scene is invented.",
+   "accessibility": "All material is text with no pictures; the speakers are labelled in the lines."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choices at each stage are compared with the reasonable set",
+    "Message has a polite ending, the fact that you are going, and an apology"
+   ],
+   "human": [
+    "Tone of the apology and fluency"
+   ]
+  },
+  "status": "draft"
+ }
+]

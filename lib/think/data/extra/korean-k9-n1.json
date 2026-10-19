@@ -1,0 +1,1281 @@
+[
+ {
+  "id": "n-k-k9-01",
+  "subject": "korean",
+  "grade": "K9",
+  "topic": "News headlines: claim versus evidence",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Does the headline say more than the survey?",
+  "uiLang": "en",
+  "format": "judge-evidence-explain",
+  "generative": true,
+  "goal": "Compare a news headline with the survey figures in the article, decide which headline words go beyond the evidence, and write a headline that does not.",
+  "thinking": [
+   "Checking a claim against the evidence behind it",
+   "Noticing quantity words (대다수, 과반) and group words (주민, 이용객)",
+   "Summarising without distortion"
+  ],
+  "differsFromPlain": "Plain practice asks you to find the main idea of an article. Here the headline and the body disagree in strength, and you must judge which words the evidence does not support and then write a faithful headline.",
+  "prerequisites": [
+   "Can read a short news article in written style (-했다, -밝혔다)",
+   "Knows the words 찬성/반대, 설문, 응답, 절반"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "A local news site published this article.\n\n[제목] 주민 대다수, 공원 야간 개방에 찬성\n\n[본문] 구청이 지난 3일 공원 이용객 50명에게 설문한 결과, 야간 개방에 찬성한 사람은 28명이었다. 반대는 15명, 모르겠다는 응답은 7명이었다. 설문은 낮 시간에 공원 입구에서만 진행됐다. 구청은 \"주민 전체의 의견으로 보기는 어렵다\"며 추가 조사를 하겠다고 밝혔다.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "Compare the headline with the figures in the body. Which headline words go beyond what the survey shows? Choose all that apply.",
+    "options": [
+     {
+      "id": "a",
+      "text": "'주민' (residents)"
+     },
+     {
+      "id": "b",
+      "text": "'대다수' (the great majority)"
+     },
+     {
+      "id": "c",
+      "text": "'찬성' (in favour)",
+      "reveals": "Support is exactly what the 28 people said, so this word is backed by the figures."
+     },
+     {
+      "id": "d",
+      "text": "'야간 개방' (night opening)",
+      "reveals": "Night opening is the subject of the survey question, so this word is backed too."
+     }
+    ],
+    "correct": [
+     "a",
+     "b"
+    ],
+    "acceptable": [
+     {
+      "ids": [
+       "a"
+      ],
+      "reason": "The group is a real overreach (the article itself says so). Also check how strong 대다수 is for 28 of 50."
+     },
+     {
+      "ids": [
+       "b"
+      ],
+      "reason": "The strength word is a real overreach. Also check who was actually asked: only visitors at one place and time."
+     }
+    ],
+    "explain": "Only park visitors who passed the entrance in the daytime were asked, so '주민' is wider than the evidence. 28 of 50 is 56 percent, just over half, which is not '대다수'. '찬성' and '야간 개방' match the survey.",
+    "hints": [
+     "Write down who was asked, where and when, using only the body text.",
+     "Turn 28 out of 50 into a share, then ask whether that share fits the headline's quantity word."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Which headline would fit the evidence best?",
+    "options": [
+     {
+      "id": "a",
+      "text": "주민 과반, 야간 개방 찬성",
+      "reveals": "This still says 주민, a group the survey did not cover, even though 과반 matches the share."
+     },
+     {
+      "id": "b",
+      "text": "공원 이용객 56%, 야간 개방 찬성"
+     },
+     {
+      "id": "c",
+      "text": "이용객 70%, 야간 개방 찬성",
+      "reveals": "70 percent mixes the 28 people in favour with the 7 who answered 'not sure'; only 56 percent said they favour it."
+     },
+     {
+      "id": "d",
+      "text": "야간 개방, 주민 찬반 팽팽",
+      "reveals": "28 in favour against 15 against is not an even split, and 주민 is again too wide."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "28 of 50 is 56 percent, and the people asked were park visitors. The headline names both the group and the figure.",
+    "hints": [
+     "Check each headline for two things: the group and the number.",
+     "Recompute the share for the option that uses a different percentage."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Write ONE new headline (a single line in Korean) that reports this survey without going beyond it.",
+    "placeholder": "예: ...",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "gives the result as a number or share (56%, 28명, 절반 ...)",
+      "mode": "any",
+      "patterns": [
+       "56",
+       "28\\s*명",
+       "절반",
+       "과반",
+       "50\\s*명\\s*중",
+       "10\\s*명\\s*중\\s*5",
+       "반 이상"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "says who was asked (이용객, 방문객, 응답자 ...)",
+      "mode": "any",
+      "patterns": [
+       "이용객",
+       "방문객",
+       "응답자",
+       "설문",
+       "조사 대상",
+       "참여자",
+       "공원을 찾은",
+       "조사에 응한"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "reports support, not opposition",
+      "mode": "any",
+      "patterns": [
+       "찬성",
+       "동의",
+       "좋다고",
+       "환영",
+       "지지"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "does not say residents / great majority",
+      "mode": "none",
+      "patterns": [
+       "주민",
+       "대다수",
+       "압도적",
+       "거의 모든",
+       "대부분"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Can a reader tell who answered the survey?",
+     "Is the number in my headline one I can calculate from the body?",
+     "Does any word make the result sound stronger than 56 percent of 50 visitors?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "공원 이용객 56%, 야간 개방 찬성"
+     },
+     {
+      "text": "설문 응답자 50명 중 28명이 공원 야간 개방에 찬성"
+     },
+     {
+      "text": "공원 방문객 절반 넘게 야간 개방 찬성",
+      "note": "Uses 절반 넘게 instead of a percentage."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "주민 대다수, 공원 야간 개방에 찬성",
+      "why": "Repeats the original overreach."
+     },
+     {
+      "text": "공원 이용객 56%, 야간 개방 반대",
+      "why": "Right number, wrong direction."
+     },
+     {
+      "text": "야간 개방 찬성 많아",
+      "why": "No number and no group."
+     }
+    ],
+    "humanReview": "Whether the headline is natural news Korean and whether a learner's wording (for example 절반 가까이) is a fair description of 56 percent.",
+    "hints": [
+     "Start with the group that was asked, then the number or share, then the verb 찬성.",
+     "Leave out any word that is wider or stronger than what you can calculate."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Judging the headline",
+    "full": "Identifies both the group overreach and the strength overreach",
+    "partial": "Identifies one of them",
+    "none": "Accepts the headline or marks the supported words"
+   },
+   {
+    "criterion": "New headline",
+    "full": "Names the group, gives the figure and keeps the direction",
+    "partial": "Fair but missing the group or the figure",
+    "none": "Repeats the overreach or reverses the result"
+   }
+  ],
+  "alternatives": [
+   "A headline such as '공원 이용객 절반 넘게 찬성' is as good as one with 56%.",
+   "Adding the limit (낮 시간 입구 설문) in a second clause is also a fair answer."
+  ],
+  "hardCases": [
+   "Some readers feel 56 percent is already 'many'; the task asks only that the word match the evidence, and the article itself calls the result limited."
+  ],
+  "cautions": {
+   "language": "News written style (-했다, -밝혔다) appears only in the reading; the learner answers in a headline form.",
+   "culture": "Local-government surveys and news headlines are common; the figures are invented.",
+   "accessibility": "All material is text; no emoji or colour carries meaning. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Which headline words are marked as overreach",
+    "Choice of the faithful headline",
+    "Headline has a figure, a group and support, and avoids the stretched words"
+   ],
+   "human": [
+    "Naturalness of the headline",
+    "Whether a learner's alternative description of the share is fair"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "n-k-k9-02",
+  "subject": "korean",
+  "grade": "K9",
+  "topic": "Connectives in an argument (find and fix an error)",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "A connective that flips the argument",
+  "uiLang": "en",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Find the line whose connective points the argument the wrong way, pick the connective that restores the logic, and rewrite the line.",
+  "thinking": [
+   "Reading connectives as signals of direction (addition, contrast, result)",
+   "Finding a break in the logic of a paragraph",
+   "Repairing the argument with minimal change"
+  ],
+  "differsFromPlain": "Plain practice asks you to fill a gap with a connective. Here every line looks grammatical and you must test the direction of the argument to find the one line whose connective contradicts it.",
+  "prerequisites": [
+   "Knows 그래서, 하지만, 그러나, 게다가, 결국, 예를 들어, 왜냐하면",
+   "Can read short written-style sentences (-다)"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "A student wrote a short paragraph about working from home for a school magazine. One connective does not fit the logic.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "Pick the line whose opening connective works against the direction of the argument.",
+    "lines": [
+     "재택근무를 도입하는 기업이 빠르게 늘고 있다.",
+     "출퇴근 시간이 사라져 직원의 피로가 줄어든다는 점은 분명한 장점이다.",
+     "게다가 직원들이 서로 얼굴을 볼 기회가 줄어 소통이 어려워진다는 문제도 있다.",
+     "그래서 주 2~3일은 사무실에 나오도록 하는 기업이 늘고 있다.",
+     "결국 재택근무의 성패는 장점은 살리고 소통 문제는 줄이는 방법을 찾는 데 달려 있다."
+    ],
+    "wrong": [
+     2
+    ],
+    "explain": "Line 3 turns from an advantage (line 2) to a problem, but its connective adds more of the same kind. A contrast word is needed there. Lines 4 and 5 correctly give a result and a conclusion.",
+    "hints": [
+     "Say in your own words what job each line does in the paragraph, then look at how its opening word links it to the line before.",
+     "For each connective ask whether the line continues the previous line's direction or turns against it."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Which connective should replace the opening word of that line?",
+    "options": [
+     {
+      "id": "a",
+      "text": "그래서 (so, as a result)",
+      "reveals": "This would claim the problem is a result of the advantage, which makes no sense."
+     },
+     {
+      "id": "b",
+      "text": "예를 들어 (for example)",
+      "reveals": "The problem is not an example of the advantage in line 2."
+     },
+     {
+      "id": "c",
+      "text": "하지만 (but, however)"
+     },
+     {
+      "id": "d",
+      "text": "왜냐하면 (because)",
+      "reveals": "This would present the problem as the reason for the advantage."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "The paragraph moves from an advantage to a drawback, so the connective must mark a contrast.",
+    "hints": [
+     "Say in English what relationship the line has to the one before it.",
+     "Try each option in the sentence and see if the two lines still make sense together."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Rewrite the faulty line with a fitting connective (keep the rest of the sentence). Then add ONE sentence of your own beginning with a result word (for example 그래서 or 따라서) that follows from the problem.",
+    "placeholder": "예: ...",
+    "minChars": 25,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "uses a contrast connective (하지만, 그러나, 반면 ...)",
+      "mode": "any",
+      "patterns": [
+       "하지만",
+       "그러나",
+       "그렇지만",
+       "반면",
+       "다만"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "does not keep an additive connective",
+      "mode": "none",
+      "patterns": [
+       "게다가",
+       "더구나",
+       "뿐만 아니라"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "keeps the problem (소통)",
+      "mode": "any",
+      "patterns": [
+       "소통",
+       "의사소통",
+       "대화",
+       "얼굴"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "adds a sentence with a result word",
+      "mode": "any",
+      "patterns": [
+       "그래서",
+       "따라서",
+       "그러므로",
+       "그렇기\\s*때문에",
+       "때문에",
+       "이로 인해",
+       "이로 인하여",
+       "그 결과",
+       "이에 따라",
+       "이에 ",
+       "이러한 \\S*\\s*(문제|단점)로",
+       "이런 \\S*\\s*(문제|단점)으로"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my new connective show a turn from advantage to problem?",
+     "Does my extra sentence really follow from the problem, not from the advantage?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "하지만 직원들이 서로 얼굴을 볼 기회가 줄어 소통이 어려워진다는 문제도 있다. 그래서 일부 기업은 주 1회 전체 회의를 연다."
+     },
+     {
+      "text": "반면 직원들이 서로 만날 기회가 줄어 소통이 어려워진다는 단점이 있다. 따라서 정기적인 대면 회의가 필요하다."
+     },
+     {
+      "text": "하지만 직원들이 서로 얼굴을 볼 기회가 줄어 소통이 어려워진다는 문제도 있다. 그렇기 때문에 기업들이 회의를 늘리고 있다."
+     },
+     {
+      "text": "하지만 직원들이 서로 얼굴을 볼 기회가 줄어 소통이 어려워진다는 문제도 있다. 이러한 문제 때문에 회사들이 대면 회의를 연다."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "게다가 직원들이 서로 얼굴을 볼 기회가 줄어 소통이 어려워진다는 문제도 있다. 그래서 회의가 늘었다.",
+      "why": "Keeps the additive connective."
+     },
+     {
+      "text": "하지만 재택근무는 좋다.",
+      "why": "Loses the communication problem and has no result sentence."
+     },
+     {
+      "text": "하지만 직원들이 서로 얼굴을 볼 기회가 줄어 소통이 어려워진다는 문제도 있다. 결국 재택근무는 좋다.",
+      "why": "The extra sentence uses a conclusion word, not a result that follows from the problem."
+     },
+     {
+      "text": "그런데 직원들이 서로 얼굴을 볼 기회가 줄어 소통이 어려워진다는 문제도 있다. 그래서 출퇴근 시간이 줄었다.",
+      "why": "그런데 only changes the topic instead of marking a contrast, and the result sentence follows from the advantage, not the problem."
+     }
+    ],
+    "humanReview": "Whether the added sentence is logical and natural in written style.",
+    "hints": [
+     "Replace only the first word of the faulty line.",
+     "For the new sentence, ask: because of this problem, what do companies do or need?"
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Locating the fault",
+    "full": "Picks the faulty line and can state the advantage-to-problem turn",
+    "partial": "Picks the line without a clear reason",
+    "none": "Picks a correct line"
+   },
+   {
+    "criterion": "Repair",
+    "full": "Contrast connective plus a result sentence that follows from the problem",
+    "partial": "Right connective but the extra sentence does not follow",
+    "none": "Additive connective kept"
+   }
+  ],
+  "alternatives": [
+   "반면, 그러나 and 그렇지만 are all fine; 그런데 is acceptable but weaker as a contrast.",
+   "An answer that restructures the line (...는 단점도 있다) is fine if the contrast is still marked."
+  ],
+  "hardCases": [
+   "Some readers feel 그래서 in line 4 is also doubtful; it is a reasonable result of line 3, so the task treats it as correct."
+  ],
+  "cautions": {
+   "language": "Written style (-다); the connectives are glossed in the options.",
+   "culture": "Working from home is a common topic; the paragraph is invented for the task.",
+   "accessibility": "All material is text; no emoji or colour carries meaning. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The faulty line",
+    "The connective choice",
+    "Contrast word present, additive word absent, result word present"
+   ],
+   "human": [
+    "Whether the extra sentence follows logically",
+    "Naturalness of the rewritten line"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-k9-03",
+  "subject": "korean",
+  "grade": "K9",
+  "topic": "Boundaries in rules: 이상, 이하, 초과, 미만 (build several solutions)",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Who may join the coding camp?",
+  "uiLang": "en",
+  "format": "build-many-verify",
+  "generative": true,
+  "goal": "Read an announcement with boundary words, work out which values are allowed, build several teams that satisfy every rule at once, and report one in Korean.",
+  "thinking": [
+   "Reading boundary words (이상, 이하, 초과, 미만) exactly",
+   "Finding a hidden consequence (the fee limits the team size)",
+   "Producing several valid solutions and checking each"
+  ],
+  "differsFromPlain": "Plain practice asks you to match a boundary word to its meaning. Here the rules interact: the fee rule quietly limits the team size, and you must test your own teams against all of them.",
+  "prerequisites": [
+   "Knows 이상, 이하, 초과, 미만",
+   "Knows 만 ~세 (international age) and 명"
+  ],
+  "minutes": 11,
+  "curriculum": null,
+  "material": "[제5회 청소년 코딩 캠프 참가 안내]\n- 참가 자격: 팀원 모두 만 14세 이상 만 19세 미만\n- 팀 구성: 3명 이상 5명 이하\n- 팀원 중 가장 어린 사람과 가장 나이 많은 사람의 나이 차이는 3살 이하\n- 참가비: 1인당 7,000원. 팀 전체 참가비는 20,000원 초과 30,000원 이하여야 함",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "scaffold": true,
+    "prompt": "Which statements are allowed by the announcement? Choose all that apply.",
+    "options": [
+     {
+      "id": "a",
+      "text": "A 14-year-old (만 14세) may be on a team."
+     },
+     {
+      "id": "b",
+      "text": "A 19-year-old (만 19세) may be on a team.",
+      "reveals": "Check what 미만 does to the number itself: 'under 19' does not include 19."
+     },
+     {
+      "id": "c",
+      "text": "A team fee of exactly 20,000 won would be fine.",
+      "reveals": "Check what 초과 does to the number itself: 'over 20,000' does not include 20,000."
+     },
+     {
+      "id": "d",
+      "text": "A team fee of exactly 30,000 won would be fine."
+     }
+    ],
+    "correct": [
+     "a",
+     "d"
+    ],
+    "explain": "이상 and 이하 include the number itself; 초과 and 미만 do not. So 14 is in, 19 is out, 20,000 is out and 30,000 is in.",
+    "hints": [
+     "Draw a number line and mark each boundary number as included or not included.",
+     "Ask whether the word means 'including this number' or 'beyond this number'."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "build",
+    "prompt": "Build 3 different teams that satisfy every rule. n = number of members, y = age of the youngest member, o = age of the oldest member (whole years).",
+    "vars": [
+     {
+      "name": "n",
+      "label": "number of members (명)"
+     },
+     {
+      "name": "y",
+      "label": "youngest member's age (만 ~세)"
+     },
+     {
+      "name": "o",
+      "label": "oldest member's age (만 ~세)"
+     }
+    ],
+    "constraints": [
+     {
+      "id": "c0",
+      "expr": "n==floor(n) && y==floor(y) && o==floor(o)",
+      "ok": "Whole numbers.",
+      "fail": "Use whole numbers for people and ages."
+     },
+     {
+      "id": "c1",
+      "expr": "y>=14",
+      "ok": "Everyone is 14 or older.",
+      "fail": "The youngest member is below 만 14세."
+     },
+     {
+      "id": "c2",
+      "expr": "o<19",
+      "ok": "Everyone is under 19.",
+      "fail": "The oldest member must be under 만 19세, so 19 is not allowed."
+     },
+     {
+      "id": "c3",
+      "expr": "o>=y",
+      "ok": "The oldest is at least as old as the youngest.",
+      "fail": "The oldest member cannot be younger than the youngest."
+     },
+     {
+      "id": "c4",
+      "expr": "o-y<=3",
+      "ok": "Age gap within 3 years.",
+      "fail": "The age gap is more than 3 years."
+     },
+     {
+      "id": "c5",
+      "expr": "n>=3 && n<=5",
+      "ok": "3 to 5 members.",
+      "fail": "A team has 3 to 5 members."
+     },
+     {
+      "id": "c6",
+      "expr": "7000*n>20000 && 7000*n<=30000",
+      "ok": "The team fee is over 20,000 and at most 30,000 won.",
+      "fail": "The team fee (7,000 x members) must be over 20,000 and at most 30,000 won."
+     }
+    ],
+    "need": 3,
+    "modelRows": [
+     {
+      "n": 3,
+      "y": 14,
+      "o": 16
+     },
+     {
+      "n": 4,
+      "y": 15,
+      "o": 18
+     },
+     {
+      "n": 3,
+      "y": 16,
+      "o": 18
+     }
+    ],
+    "badRows": [
+     {
+      "n": 5,
+      "y": 15,
+      "o": 17
+     },
+     {
+      "n": 3,
+      "y": 14,
+      "o": 19
+     },
+     {
+      "n": 4,
+      "y": 13,
+      "o": 15
+     },
+     {
+      "n": 4,
+      "y": 14,
+      "o": 18
+     }
+    ],
+    "explain": "The fee rule allows only 3 members (21,000 won) or 4 members (28,000 won), even though the team rule says up to 5. Ages must stay between 14 and 18 with a gap of at most 3.",
+    "hints": [
+     "Work out the fee for 3, 4 and 5 members before choosing ages.",
+     "Choose the youngest age first, then the oldest within 3 years and below 19."
+    ],
+    "because": {
+     "id": "s2b",
+     "kind": "write",
+     "prompt": "Pick ONE of your teams and write a short registration message to the organiser in Korean (polite speech): the number of members, the ages of the youngest and oldest, and the total fee.",
+     "placeholder": "예: ...",
+     "minChars": 15,
+     "checks": [
+      {
+       "id": "w1",
+       "label": "polite ending",
+       "mode": "any",
+       "patterns": [
+        "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
+       ]
+      },
+      {
+       "id": "w2",
+       "label": "gives the number of members (명)",
+       "mode": "any",
+       "patterns": [
+        "명"
+       ]
+      },
+      {
+       "id": "w3",
+       "label": "gives ages (세, 살)",
+       "mode": "any",
+       "patterns": [
+        "세",
+        "살"
+       ]
+      },
+      {
+       "id": "w4",
+       "label": "gives the total fee (원)",
+       "mode": "any",
+       "patterns": [
+        "원"
+       ]
+      }
+     ],
+     "selfAssess": [
+      "Do the numbers in my message match one team I built?",
+      "Is the total fee 7,000 won times the number of members?"
+     ],
+     "modelAnswers": [
+      {
+       "text": "저희 팀은 4명이고, 가장 어린 사람은 만 15세, 가장 나이 많은 사람은 만 18세입니다. 참가비는 총 28,000원입니다."
+      },
+      {
+       "text": "3명이 신청해요. 만 14세부터 16세까지이고 참가비는 21,000원이에요."
+      }
+     ],
+     "badAnswers": [
+      {
+       "text": "신청합니다.",
+       "why": "No numbers at all."
+      },
+      {
+       "text": "우리 팀 세 명이고 만 15세야. 참가비는 알아서 낼게.",
+       "why": "Casual ending and no total fee."
+      }
+     ],
+     "humanReview": "Whether the numbers in the message match a valid team and the message is natural.",
+     "hints": [
+      "Use one row from your teams: three numbers.",
+      "Write the members, then the ages, then the fee, ending each sentence politely."
+     ]
+    }
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Reading boundary words",
+    "full": "Marks included and excluded numbers correctly and builds valid teams",
+    "partial": "Builds some valid teams",
+    "none": "Teams break boundary rules (for example age 19)"
+   },
+   {
+    "criterion": "Reporting",
+    "full": "Message gives members, ages and fee, politely and consistently",
+    "partial": "One element missing",
+    "none": "Not a report"
+   }
+  ],
+  "alternatives": [
+   "Any team with 3 or 4 members, ages from 14 to 18 and a gap of at most 3 is valid.",
+   "In the message, '만 15세부터 18세까지' and '15살과 18살' are both fine."
+  ],
+  "hardCases": [
+   "Some learners read '3명 이상 5명 이하' alone and build a 5-member team; the fee rule excludes it."
+  ],
+  "cautions": {
+   "language": "Counters and 만 ~세 appear; the announcement uses short noun-phrase style.",
+   "culture": "Korean age counting differs from 만 age; the announcement says 만, so international age is used.",
+   "accessibility": "All material is text; no emoji or colour carries meaning. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Each team against all rules",
+    "Boundary statements",
+    "Message has a polite ending, members, ages and fee"
+   ],
+   "human": [
+    "Whether the message matches a built team"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "n-k-k9-04",
+  "subject": "korean",
+  "grade": "K9",
+  "topic": "Irony and context (reveal and revise)",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "'참 일찍도 오셨네요'",
+  "uiLang": "en",
+  "format": "reveal-and-revise",
+  "generative": true,
+  "goal": "Read one sentence as more context arrives, notice how the meaning flips between praise and irony, and reply to an ironic remark politely.",
+  "thinking": [
+   "Telling literal from ironic meaning",
+   "Revising a reading when new facts arrive",
+   "Answering the meaning, not just the words"
+  ],
+  "differsFromPlain": "Plain practice gives the literal meaning of a sentence. Here the same words mean different things as new facts appear, and you must revise your reading and reply to what was meant.",
+  "prerequisites": [
+   "Knows polite speech (-요, -습니다) and the ending -네요",
+   "Knows 팀장님, 회의, 공지"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "Monday morning. Your team has a weekly meeting. You walk into the room and your 팀장님 (team leader) says one sentence to you. Read each part, choose the reading that seems most likely, then continue.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "Read each part and choose the most likely meaning of the 팀장님's sentence before you continue.",
+    "hints": [
+     "Decide using only what you have read so far.",
+     "Ask which facts about time and the speaker's manner would make the words true or untrue."
+    ],
+    "reflect": "The words never changed; the facts did. When a sentence says something that does not match the facts (here, 'early' for someone late), the listener reads it as irony (반어). New facts can also remove that reading again.",
+    "stages": [
+     {
+      "info": "팀장님: 아, 참 일찍도 오셨네요.",
+      "ask": "What is the 팀장님 most likely doing with this sentence?",
+      "options": [
+       {
+        "id": "a",
+        "text": "Praising you for being early"
+       },
+       {
+        "id": "b",
+        "text": "Criticising you with irony"
+       },
+       {
+        "id": "c",
+        "text": "Asking you to come earlier next time",
+        "reveals": "Nothing in the sentence asks for a future change; a request would use an ending like -아 주세요."
+       },
+       {
+        "id": "d",
+        "text": "Asking what time you arrived",
+        "reveals": "The ending is a statement (-네요), not a question about the time."
+       }
+      ],
+      "reasonable": [
+       "a",
+       "b"
+      ],
+      "after": "Out of context both readings are possible: '참 ...도' can express real admiration or an ironic exaggeration. The words alone do not decide."
+     },
+     {
+      "info": "회의는 원래 9시에 시작한다. 지금 시계는 9시 40분이다. 팀장님은 웃지 않고 시계를 한 번 쳐다본다.",
+      "ask": "Now what does the sentence most likely mean?",
+      "options": [
+       {
+        "id": "a",
+        "text": "A sincere compliment",
+        "reveals": "The meeting is already 40 minutes old, so nobody could sincerely praise this arrival."
+       },
+       {
+        "id": "b",
+        "text": "A friendly joke about the weather",
+        "reveals": "Nothing connects the sentence to weather."
+       },
+       {
+        "id": "c",
+        "text": "Irony: a criticism of being late"
+       },
+       {
+        "id": "d",
+        "text": "A neutral question about the schedule",
+        "reveals": "The speaker is not asking anything; the glance at the clock points to a comment."
+       }
+      ],
+      "reasonable": [
+       "c"
+      ],
+      "after": "Said the opposite of the fact (early vs 40 minutes late), without a smile: this is irony. A learner who translates only the words would miss the criticism."
+     },
+     {
+      "info": "그런데 어젯밤 메신저에 '내일 회의는 10시 30분으로 변경합니다'라는 공지가 올라왔다. 당신은 그 공지를 보고 9시 40분에 왔다. 팀장님은 웃으며 커피를 건넨다.",
+      "ask": "With this new information, what does the 팀장님's sentence mean?",
+      "options": [
+       {
+        "id": "a",
+        "text": "Still irony: a criticism of being late",
+        "reveals": "With the meeting at 10:30 you are 50 minutes early, so there is no lateness to criticise."
+       },
+       {
+        "id": "b",
+        "text": "A sincere remark: you really are early"
+       },
+       {
+        "id": "c",
+        "text": "A hint that you should leave the room",
+        "reveals": "No sign of this; the coffee and the smile point to friendliness."
+       },
+       {
+        "id": "d",
+        "text": "A question about when the notice was posted",
+        "reveals": "The sentence is not a question and the notice is not mentioned in it."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "The facts now fit the words, so the sentence is meant literally (perhaps warmly). Context can create irony and also remove it."
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Go back to the second part: the meeting started at 9:00 and you arrived at 9:40. Answer the 팀장님 in polite speech, replying to what the remark really means.",
+    "placeholder": "예: ...",
+    "minChars": 12,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "apologises (죄송, 미안)",
+      "mode": "any",
+      "patterns": [
+       "죄송",
+       "미안"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "acknowledges the lateness or gives a reason",
+      "mode": "any",
+      "patterns": [
+       "늦",
+       "지각",
+       "40분",
+       "시간",
+       "때문에",
+       "해서",
+       "어서",
+       "막혀",
+       "지연",
+       "착각",
+       "못 봐",
+       "못 들"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "promises to avoid it or offers to catch up",
+      "mode": "any",
+      "patterns": [
+       "앞으로",
+       "다음부터",
+       "다음에는",
+       "조심",
+       "일찍",
+       "미리",
+       "따라잡",
+       "정리하겠",
+       "만회",
+       "노력"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my reply show I understood the remark as criticism?",
+     "Is my reason or promise something a colleague could accept?",
+     "Would I speak this way to my 팀장님 (polite, not defensive)?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "늦어서 죄송합니다. 지하철이 지연돼서 늦었습니다. 다음부터는 더 일찍 나오겠습니다."
+     },
+     {
+      "text": "죄송해요, 제가 시간을 잘못 봤어요. 앞으로 조심하겠습니다.",
+      "note": "Short apology with a promise."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "감사합니다! 일찍 오려고 노력했어요.",
+      "why": "Takes the remark as praise and does not apologise."
+     },
+     {
+      "text": "늦어서 미안해.",
+      "why": "Casual ending to a superior and no promise."
+     }
+    ],
+    "humanReview": "Naturalness and tone of the apology; whether the reason is polite and not defensive.",
+    "hints": [
+     "Start by naming what you did wrong in one short phrase.",
+     "End with what you will do next time."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Revising the reading",
+    "full": "Moves from open to irony to literal and can say which fact caused each change",
+    "partial": "Gets the final reading but cannot explain the changes",
+    "none": "Keeps one reading regardless of the facts"
+   },
+   {
+    "criterion": "Reply",
+    "full": "Polite apology that answers the criticism and offers a reason or promise",
+    "partial": "Polite but misses the criticism or the promise",
+    "none": "Answers as if praised or uses casual speech"
+   }
+  ],
+  "alternatives": [
+   "In the first part both praise and irony are reasonable.",
+   "In the last part, a warm teasing tone (still literal) is also acceptable."
+  ],
+  "hardCases": [
+   "Tone cannot be seen in text; the task supplies manner (no smile, a glance at the clock) as the clue."
+  ],
+  "cautions": {
+   "language": "Relies on '참 ...도' and the -네요 ending of noticing; 반어 (irony) is explained in the reflection.",
+   "culture": "Indirect criticism with irony toward a junior is common in Korean workplaces, but not every leader speaks this way.",
+   "accessibility": "All material is text; no emoji or colour carries meaning. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Reasonable readings at each stage",
+    "Reply has a polite ending, an apology, a reason or acknowledgement and a promise"
+   ],
+   "human": [
+    "Tone of the apology",
+    "Whether the learner's explanation of the change is sound"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "n-k-k9-05",
+  "subject": "korean",
+  "grade": "K9",
+  "topic": "News to spoken Korean for a grandmother (rewrite for audience)",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Telling Grandma about the bus fare",
+  "uiLang": "en",
+  "format": "rewrite-for-audience",
+  "generative": true,
+  "goal": "Rewrite a news sentence in spoken polite Korean for a 68-year-old grandmother while keeping what is certain, what is only planned and what applies to her.",
+  "thinking": [
+   "Changing register and word choice for a new listener",
+   "Keeping the facts and their status (planned, not done) when retelling",
+   "Putting forward what matters to this listener"
+  ],
+  "differsFromPlain": "Plain practice changes a sentence to a different speech level. Here the facts must survive the change: the plan must not become a done deed, and the part that concerns the listener must be said.",
+  "prerequisites": [
+   "Knows -ㄴ/는대요 (reported speech) and 예정",
+   "Knows 존댓말 versus news written style"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "You read this news article on your phone. Your grandmother (68) lives with you and takes the bus every day. She does not read the news.\n\n[기사] 시는 다음 달 1일부터 시내버스 기본요금을 1,500원에서 1,700원으로 200원 인상할 예정이라고 밝혔다. 다만 만 65세 이상 어르신의 요금은 현행 1,500원으로 유지된다.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "You will tell your grandmother by voice. Which retelling would DISTORT the news?",
+    "options": [
+     {
+      "id": "a",
+      "text": "The bus fare will rise 200 won next month, but not for seniors.",
+      "reveals": "This keeps the plan, the amount and the exception, so it is faithful."
+     },
+     {
+      "id": "b",
+      "text": "The bus fare will rise 200 won next month for everybody."
+     },
+     {
+      "id": "c",
+      "text": "From next month seniors keep paying 1,500 won; others pay 200 won more.",
+      "reveals": "This is faithful and puts the part about seniors first."
+     },
+     {
+      "id": "d",
+      "text": "The city says the fare will rise by 200 won from next month.",
+      "reveals": "This is faithful: it keeps who said it and that it is still a plan."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "The article says the fare is planned to rise next month and that people 65 and over keep the old fare. The distorted version says the rise applies to everybody, so it drops the exception that matters for your grandmother.",
+    "hints": [
+     "Read the article once and list its facts (when, how much, who pays what, how sure it is). Then tick each fact off in every retelling.",
+     "Look for a retelling where one of your listed facts is missing or turned around."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Which opening sentence fits speaking to your grandmother?",
+    "options": [
+     {
+      "id": "a",
+      "text": "할머니, 다음 달 1일부터 버스 요금이 오른대요."
+     },
+     {
+      "id": "b",
+      "text": "할머니, 시는 다음 달 1일부터 요금을 인상한다고 밝혔습니다.",
+      "reveals": "This is still a news-style announcement and too stiff for family conversation."
+     },
+     {
+      "id": "c",
+      "text": "할머니, 다음 달부터 버스 요금이 오른다니까.",
+      "reveals": "The plain casual ending is not respectful to a grandmother, and -니까 sounds impatient."
+     },
+     {
+      "id": "d",
+      "text": "할머니, 다음 달 1일부터 시내버스 요금이 인상되오니 참고하시기 바랍니다.",
+      "reveals": "'인상되오니 … 바랍니다' is notice-board language, and it states the rise as settled rather than reported."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "Family speech to an elder is polite but soft (-요), uses everyday words (오르다 rather than 인상되다) and -대요 reports what someone else said.",
+    "hints": [
+     "Look at the sentence endings: which are for a news desk and which for a family room?",
+     "Check whether the verb is an everyday word or a newspaper word."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Now tell your grandmother in your own Korean words: at most two sentences, polite -요 speech, no newspaper endings. Keep the date, the amount, that it is only planned, and what applies to her.",
+    "placeholder": "예: ...",
+    "minChars": 20,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "gives the amount (200원, 1,700원 ...)",
+      "mode": "any",
+      "patterns": [
+       "200",
+       "이백",
+       "2백",
+       "1,?700",
+       "천칠백"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "gives the time (다음 달, 1일 ...)",
+      "mode": "any",
+      "patterns": [
+       "다음\\s*달",
+       "내달",
+       "1일",
+       "일일",
+       "첫날"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "says it will rise or is planned (오른대, 오를, 올라요 ...)",
+      "mode": "any",
+      "patterns": [
+       "예정",
+       "오른대",
+       "오른다고",
+       "오를",
+       "올린대",
+       "올린다고",
+       "올리기로",
+       "올릴",
+       "오르게",
+       "오르거든",
+       "될 거",
+       "될 것",
+       "된대",
+       "된다고",
+       "이 돼",
+       "이 됩",
+       "올라요",
+       "올라가",
+       "올려요",
+       "올라갑"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "says what applies to her (어르신, 65세, 그대로, 안 오르 ...)",
+      "mode": "any",
+      "patterns": [
+       "어르신",
+       "65",
+       "그대로",
+       "안 (올|오르)",
+       "오르지 않",
+       "변함",
+       "똑같",
+       "지금처럼",
+       "동결",
+       "경로"
+      ]
+     },
+     {
+      "id": "w6",
+      "label": "does not say it has already risen",
+      "mode": "none",
+      "patterns": [
+       "올랐",
+       "올려서",
+       "올렸"
+      ]
+     },
+     {
+      "id": "w7",
+      "label": "no newspaper endings or bulletin words",
+      "mode": "none",
+      "patterns": [
+       "밝혔다",
+       "유지된다",
+       "현행",
+       "인상한다",
+       "인상될",
+       "인상됩"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my version still say that the rise is only planned?",
+     "Would my grandmother know that she herself pays the same?",
+     "Are my words ones I would really say at home?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "할머니, 다음 달 1일부터 버스 요금이 200원 오른대요. 그런데 할머니 같은 어르신은 지금처럼 1,500원만 내시면 돼요."
+     },
+     {
+      "text": "다음 달부터 시내버스 요금이 1,700원으로 오를 예정이에요. 하지만 65세 이상은 안 오르고 그대로예요."
+     },
+     {
+      "text": "할머니, 다음 달 1일부터 버스비가 200원 올라요. 근데 할머니는 안 올라요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "시는 다음 달 1일부터 200원 인상할 예정이라고 밝혔다.",
+      "why": "Copies the news style and does not mention the exception."
+     },
+     {
+      "text": "버스 요금이 200원 올랐어요. 할머니도 내야 해요.",
+      "why": "Says the rise has already happened and misses the exception."
+     },
+     {
+      "text": "다음 달 1일부터 1,700원으로 오를 거래요. 1,500원에서요.",
+      "why": "Gives the plan but never says that she herself pays the same; the old fare alone is not the exception."
+     }
+    ],
+    "humanReview": "Whether the wording sounds natural and respectful for a grandmother, and whether the facts are kept in the learner's own phrasing.",
+    "hints": [
+     "First sentence: when, how much, and that it is a plan. Second sentence: what it means for her.",
+     "Replace every newspaper word by the word you would use at the dinner table."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Keeping the facts",
+    "full": "Date, amount, plan status and the exception for seniors are all present",
+    "partial": "One fact missing or the plan sounds done",
+    "none": "Wrong or reversed facts"
+   },
+   {
+    "criterion": "Register",
+    "full": "Polite spoken style with everyday words",
+    "partial": "Polite but still bulletin words",
+    "none": "News endings or casual speech to an elder"
+   }
+  ],
+  "alternatives": [
+   "오른다고 해요, 오를 거래요 and 오를 예정이에요 are all fine for the planned rise.",
+   "A version that puts the exception first (할머니는 그대로예요) is also good."
+  ],
+  "hardCases": [
+   "'1,500원' alone can show the exception only if the sentence makes clear it is her fare; the checker accepts it, a reader should confirm."
+  ],
+  "cautions": {
+   "language": "The article uses 인상할 예정이라고 밝혔다 and 현행; the learner must convert these to everyday words.",
+   "culture": "Fares and senior discounts are invented. Elders are addressed with polite endings; some families use softer casual speech with grandparents, and the task treats polite speech as the safe default.",
+   "accessibility": "All material is text; no emoji or colour carries meaning. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of the distorting retelling",
+    "Choice of the register",
+    "Rewrite has a polite ending, amount, time, plan status and exception, and no news endings"
+   ],
+   "human": [
+    "Naturalness and warmth for a grandmother",
+    "Whether the learner's words keep every fact accurately"
+   ]
+  },
+  "status": "draft"
+ }
+]

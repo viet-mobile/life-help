@@ -1,0 +1,1187 @@
+[
+ {
+  "subject": "korean",
+  "grade": "K5",
+  "topic": "hidden condition in a shop notice",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "uiLang": "en",
+  "curriculum": null,
+  "id": "n-k-k5-01",
+  "title": "Does the notice back Minseo up?",
+  "format": "judge-evidence-explain",
+  "generative": true,
+  "goal": "Check a friend's claim against every condition of a notice, not just the first one, and explain the result in Korean.",
+  "thinking": [
+   "Splitting a claim into separate conditions",
+   "Checking each condition against the evidence",
+   "Noticing an excluding rule"
+  ],
+  "differsFromPlain": "Plain practice asks you to read a notice and answer a detail question. Here a friend's claim sounds right after the first condition, and you must test every condition before you agree.",
+  "prerequisites": [
+   "Can read 이상, 제외, -(으)면 and short notices",
+   "Knows numbers such as 만 원 and 삼천 원",
+   "Knows 도서산간 = remote islands and mountain areas"
+  ],
+  "minutes": 8,
+  "material": "A shop's online notice and a message from your friend Minseo. Today is July 12.\n\n[여름맞이 이벤트 안내]\n- 기간: 7월 1일 ~ 7월 15일\n- 이벤트 기간에 3만 원 이상 사시면 배송비가 무료입니다.\n- 제주·도서산간 지역은 무료 배송 대상이 아닙니다. (배송비 3,000원)\n- 할인 쿠폰은 한 번만 쓸 수 있습니다.\n\n민서의 문자: \"나 어제 4만 원어치 샀어! 배송비 무료래. 제주도에 계신 우리 할머니 댁으로 보냈는데 잘됐지?\"",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "To decide whether Minseo's claim is true, which lines of the notice must you compare with her message? Pick all that matter.",
+    "options": [
+     {
+      "id": "a",
+      "text": "할인 쿠폰은 한 번만 쓸 수 있습니다.",
+      "reveals": "The coupon rule is about discounts. Minseo's claim is about the delivery fee, so this line does not decide it."
+     },
+     {
+      "id": "b",
+      "text": "기간: 7월 1일 ~ 7월 15일"
+     },
+     {
+      "id": "c",
+      "text": "3만 원 이상 사시면 배송비가 무료입니다."
+     },
+     {
+      "id": "d",
+      "text": "제주·도서산간 지역은 무료 배송 대상이 아닙니다."
+     }
+    ],
+    "correct": [
+     "b",
+     "c",
+     "d"
+    ],
+    "explain": "Her claim has three parts: when she bought (the event period), how much (30,000 won or more) and where it was sent (the area rule). Each part is covered by one line; the coupon line is not about delivery.",
+    "hints": [
+     "Which facts in Minseo's message does the notice speak about? Look for a line for each fact.",
+     "For each line of the notice, ask: does it set a condition for free delivery?"
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Does the notice support Minseo's claim that her delivery is free?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Yes, but only if she also used the one-time discount coupon.",
+      "reveals": "The coupon is a separate offer; it is not a condition for free delivery."
+     },
+     {
+      "id": "b",
+      "text": "Cannot tell, because only Minseo knows how much she really paid.",
+      "reveals": "The amount is in her message, and the notice names the regions it excludes, so a decision is possible."
+     },
+     {
+      "id": "c",
+      "text": "Yes. She bought for 40,000 won during the event, so the delivery is free.",
+      "reveals": "She checked the date and the amount, but stopped there. The notice has one more condition about where the parcel goes."
+     },
+     {
+      "id": "d",
+      "text": "No. The notice does not offer free delivery to the area she sent it to."
+     }
+    ],
+    "correct": [
+     "d"
+    ],
+    "explain": "Free delivery needs the event period AND 30,000 won or more AND a delivery area that is not excluded. Minseo meets the first two, but the notice excludes 제주·도서산간. Meeting the first condition does not make the claim true.",
+    "hints": [
+     "Take the conditions of the notice one by one and tick each one against her message.",
+     "Which condition have you not yet checked against her message?"
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Reply to Minseo in Korean (friendly -요 speech). Say what you think about her delivery fee and give the reason from the notice. English is accepted if you are stuck.",
+    "placeholder": "예: ...",
+    "minChars": 10,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "mentions the place (제주, 도서산간, 지역, 할머니 댁 ...)",
+      "mode": "any",
+      "patterns": [
+       "제주",
+       "도서",
+       "산간",
+       "지역",
+       "할머니 ?(댁|집)",
+       "주소",
+       "jeju",
+       "island",
+       "address"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "says the delivery is not free / a fee applies",
+      "mode": "any",
+      "patterns": [
+       "무료.{0,8}(아[니닐닌]|안 |제외|대상이 아|못|않)",
+       "배송비.{0,12}(내야|붙|있|들|3,?000|삼천|추가|나올|나와|생겨|부과|물어)",
+       "제외",
+       "유료",
+       "not free",
+       "isn.t free",
+       "fee",
+       "charge",
+       "extra",
+       "대상(이|은)? ?(아니|아닌|아닙)",
+       "무료(가|는)? ?(아니|아닌|아닙)",
+       "안 ?(될|돼|됩|되)"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "does not repeat the claim that it is free",
+      "mode": "none",
+      "patterns": [
+       "(배송비|배송).{0,6}무료(예요|에요|야|입니다|이에요|맞|래요)(?!\\S*\\?)",
+       "is free",
+       "잘됐"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Do I name the condition that Minseo missed (the area)?",
+     "Did I base it on the notice and not only on my guess?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "제주도는 무료 배송 대상이 아니라고 공지에 나와 있어요. 배송비 3,000원이 붙을 것 같아요."
+     },
+     {
+      "text": "할머니 댁이 제주도면 배송비를 내야 할 수도 있어요. 공지에서 제주는 제외된다고 했어요."
+     },
+     {
+      "text": "I think it's not free: the notice says Jeju is not included, so there may be a 3,000 won fee.",
+      "note": "English answer."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "4만 원이니까 배송비 무료예요. 잘됐네요!",
+      "why": "Checks only the amount and ignores the area rule."
+     },
+     {
+      "text": "제주도에 보냈어요? 좋겠다.",
+      "why": "Mentions the place but gives no judgement about the fee."
+     }
+    ],
+    "humanReview": "Whether the reply really uses the notice as the reason and sounds friendly and natural.",
+    "hints": [
+     "Start with the place, then say what the notice does about that place.",
+     "Finish with what Minseo should expect to pay."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Evidence selection",
+    "full": "Picks the period, amount and area lines and leaves out the coupon line",
+    "partial": "Picks two of the three needed lines",
+    "none": "Picks only the amount line or the coupon line"
+   },
+   {
+    "criterion": "Verdict and reason",
+    "full": "Says the claim is not supported and names the area rule as the reason",
+    "partial": "Doubts the claim but gives no reason from the notice",
+    "none": "Agrees because of the amount alone"
+   }
+  ],
+  "alternatives": [
+   "A reply that asks Minseo 'did you check the address rule?' instead of stating a verdict is also reasonable.",
+   "The reply may be in 반말 or English as long as it uses the area rule."
+  ],
+  "hardCases": [
+   "The notice does not say whether the 3,000 won is added to a 40,000 won order or replaces something; the task only asks whether delivery is free."
+  ],
+  "cautions": {
+   "language": "Notice vocabulary (제외, 대상, 도서산간) is glossed through the hints; 도서산간 = remote island and mountain areas.",
+   "culture": "Delivery surcharges for 제주 and islands are common in Korea, but each shop sets its own rules; the task relies only on the notice shown.",
+   "accessibility": "All material is plain text; nothing depends on colour or images."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Selection of the needed notice lines",
+    "Verdict choice",
+    "Reply mentions the place and a fee and does not repeat the free claim"
+   ],
+   "human": [
+    "Naturalness and tone of the reply",
+    "Whether the reasoning is really drawn from the notice"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "subject": "korean",
+  "grade": "K5",
+  "topic": "passing on someone's words without distortion",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "uiLang": "en",
+  "curriculum": null,
+  "id": "n-k-k5-02",
+  "title": "Hayun passes on the teacher's words",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Compare a relayed message with the original, find the lines that changed its meaning, and repair them in reported speech.",
+  "thinking": [
+   "Comparing a summary with its source",
+   "Telling apart a limit, a requirement and a permission",
+   "Keeping numbers and days exact"
+  ],
+  "differsFromPlain": "Plain practice asks you to turn a quotation into -대요/-래요. Here a relay has some correct and some distorted lines, and you must find what changed by checking against the original.",
+  "prerequisites": [
+   "Has met -대요 / -래요 / -라고 했어요 (reported speech)",
+   "Knows -까지 as a limit and -아/어야 하다"
+  ],
+  "minutes": 9,
+  "material": "The teacher gave this announcement to the class today (Tuesday). Hayun was in class. 민수 was absent and asked her what the teacher said, so Hayun texts him the same afternoon. (-대 / -래 mean 'I heard that ...': they pass on someone else's words. 벼룩시장 = flea market.)\n\n[선생님 말씀]\n\"토요일 학교 벼룩시장은 비가 오면 체육관에서 합니다. 물건은 한 사람이 다섯 개까지 팔 수 있어요. 가격표는 학교에서 준비하니까 안 만들어 와도 돼요. 아침 9시 30분까지 체육관에 물건을 가져다 놓으세요. 팔고 남은 물건은 집에 가져가세요. 참가 신청서는 목요일까지 내세요.\"",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "Hayun's text should pass on exactly what the teacher said. Several lines change the teacher's meaning. Pick one of them.",
+    "lines": [
+     "하윤: 선생님 말씀 전해 줄게.",
+     "토요일 벼룩시장은 비가 오면 체육관에서 한대.",
+     "물건은 꼭 다섯 개를 팔아야 한대.",
+     "가격표는 학교에서 준비해 준대.",
+     "아침 8시 30분까지 체육관에 물건을 가져다 놓으래.",
+     "남은 물건은 집에 가져가래.",
+     "신청서는 금요일까지 내래."
+    ],
+    "wrong": [
+     2,
+     4,
+     6
+    ],
+    "explain": "Lines 3, 5 and 7 are wrong. Line 3 turns 'up to five' (다섯 개까지 팔 수 있어요) into 'must sell five'. Line 5 changes 9:30 to 8:30. Line 7 changes the deadline from Thursday to Friday. The other lines match the teacher's words.",
+    "hints": [
+     "Take the teacher's message sentence by sentence and find the matching line in Hayun's text.",
+     "For each pair, compare the numbers, the days and whether the meaning is 'may', 'must' or 'need not'."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Which version of line 3 passes on what the teacher said about the number of items?",
+    "options": [
+     {
+      "id": "a",
+      "text": "물건은 다섯 개까지 팔 수 있대."
+     },
+     {
+      "id": "b",
+      "text": "물건은 다섯 개만 팔아야 한대.",
+      "reveals": "This says you must sell exactly five. The teacher gave a limit, not a required number."
+     },
+     {
+      "id": "c",
+      "text": "물건은 다섯 개 이상 팔아야 한대.",
+      "reveals": "이상 turns the limit into a minimum, which is the opposite of 'up to five'."
+     },
+     {
+      "id": "d",
+      "text": "물건은 팔 수 없대.",
+      "reveals": "This says selling is not allowed at all; the teacher allowed up to five."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "'다섯 개까지 팔 수 있어요' (you may sell up to five) is relayed as '다섯 개까지 팔 수 있대'. A maximum, a minimum and an exact number are three different messages.",
+    "hints": [
+     "Say the teacher's sentence about the items in your own words first: is five a maximum, a minimum or an exact number?",
+     "Test each option against that meaning and compare the endings (-아/어야 하다 and -(으)ㄹ 수 있다)."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Write the corrected versions of line 5 (the time to bring the items) and line 7 (the form deadline) in Korean as Hayun would send them to 민수 (the same afternoon, relaying the teacher's words).",
+    "placeholder": "예: ...",
+    "minChars": 12,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "gives the time 9:30 (9시 30분 / 9시 반)",
+      "mode": "any",
+      "patterns": [
+       "(?<![0-9])9\\s*시\\s*(30\\s*분|반)",
+       "9:30",
+       "아홉\\s*시\\s*(삼십\\s*분|반)",
+       "9\\.30"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "gives the deadline as Thursday (목요일)",
+      "mode": "any",
+      "patterns": [
+       "목요일",
+       "목욜",
+       "thursday"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "does not keep the wrong 8:30 or Friday",
+      "mode": "none",
+      "patterns": [
+       "(?<![0-9])8\\s*시",
+       "여덟\\s*시",
+       "금요일",
+       "friday"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "passes it on as reported speech (-대/-래/-라고 했어)",
+      "mode": "any",
+      "patterns": [
+       "[가-힣](대|래)(?![가-힣])",
+       "라고 ?(했|하셨|해)",
+       "다고 ?(했|하셨|해)",
+       "랬",
+       "하셨"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Do my two sentences end like reported speech (-대/-래/-라고 했어)?",
+     "Would 민수 arrive on time and hand in the form on the right day?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "아침 9시 30분까지 체육관에 물건을 가져다 놓으래. 신청서는 목요일까지 내래."
+     },
+     {
+      "text": "9시 반까지 체육관으로 가져오라고 하셨어. 신청서는 목요일까지 내라고 했어."
+     },
+     {
+      "text": "선생님이 아침 9시 30분까지 물건을 가져다 놓으라고 하셨대. 신청서는 목요일까지 내야 한대."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "8시 30분까지 가져다 놓으래. 신청서는 금요일까지 내래.",
+      "why": "Repeats both errors."
+     },
+     {
+      "text": "아침 9시 30분까지 가져다 놓으래.",
+      "why": "Fixes the time but leaves out the deadline."
+     },
+     {
+      "text": "9시 30분에 가져다 놔. 신청서는 목요일에 내.",
+      "why": "Direct commands, not a relay of the teacher's words."
+     }
+    ],
+    "humanReview": "Whether the reported-speech endings are natural and whether the two facts are passed on without adding anything.",
+    "hints": [
+     "Copy the numbers and the day from the teacher's message, not from Hayun's text.",
+     "Use reported speech (for example -대/-래 or -라고 했어), as in the correct lines."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finding the distorted lines",
+    "full": "Picks a line that really changes the meaning and sees what changed",
+    "partial": "Picks a correct line, or cannot say what changed",
+    "none": "No line picked"
+   },
+   {
+    "criterion": "Repairing the relay",
+    "full": "Both facts (9:30 and Thursday) are passed on in reported speech",
+    "partial": "One fact repaired",
+    "none": "Errors repeated"
+   }
+  ],
+  "alternatives": [
+   "Any of -대/-래/-라고 했어/-라고 하셨어 is fine.",
+   "A learner may also fix line 3 on their own; the choice step already shows the meaning."
+  ],
+  "hardCases": [
+   "'목요일까지' is kept as the day name; the relay must not turn it into 'in two days' or 'tomorrow'."
+  ],
+  "cautions": {
+   "language": "Reported-speech endings (-대, -래) are casual; the task is in a friend chat, so 반말 is natural.",
+   "culture": "Students commonly pass on teachers' announcements to absent classmates by text, and exact times, limits and days matter; school flea markets are common.",
+   "accessibility": "All material is text; nothing depends on colour."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The picked line is one of the distorted lines",
+    "Choice about the 'up to five' meaning",
+    "Presence of 9:30 and Thursday, absence of 8:30 and Friday, a reported-speech ending"
+   ],
+   "human": [
+    "Naturalness of the reported-speech endings"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "subject": "korean",
+  "grade": "K5",
+  "topic": "several conditions at once, one hidden in the wording",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "uiLang": "en",
+  "curriculum": null,
+  "id": "n-k-k5-03",
+  "title": "A reservation that fits every rule",
+  "format": "build-many-verify",
+  "generative": true,
+  "goal": "Turn a notice with a negative rule into exact conditions, find several reservations that satisfy all of them, and report one in Korean.",
+  "thinking": [
+   "Reading a negative rule correctly (적으면 안 되다)",
+   "Satisfying several constraints at once",
+   "Finding more than one solution"
+  ],
+  "differsFromPlain": "Plain practice asks you to add up one price. Here the rules are limits (one is a negative rule), so you must build several valid reservations and check each rule.",
+  "prerequisites": [
+   "Knows numbers, 명, 원 and 이상 / 이하",
+   "Has met -(으)면 안 되다 and -보다"
+  ],
+  "minutes": 10,
+  "material": "You are booking a museum workshop for your family. The museum's notice and your aunt's text:\n\n[가족 체험 예약 안내]\n- 요금: 어른 1명 8,000원, 어린이 1명 5,000원\n- 한 번에 4명 이상 6명 이하까지 예약할 수 있습니다.\n- 어른이 어린이보다 적으면 안 됩니다.\n- 어린이는 1명 이상 있어야 합니다.\n\n이모 문자: \"예산은 4만 원까지예요.\"",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "scaffold": true,
+    "prompt": "The notice says '어른이 어린이보다 적으면 안 됩니다.' Which reservations does this rule allow?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Exactly as many adults as children, and no other mix.",
+      "reveals": "The rule only forbids FEWER adults. More adults is fine too."
+     },
+     {
+      "id": "b",
+      "text": "As many adults as children, or more adults than children."
+     },
+     {
+      "id": "c",
+      "text": "More adults than children; the same number is not allowed.",
+      "reveals": "Equal numbers are not 'fewer adults', so they are allowed."
+     },
+     {
+      "id": "d",
+      "text": "More children than adults; the same number is not allowed.",
+      "reveals": "That is the opposite of the rule."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "'적으면 안 되다' means 'must not be fewer'. So adults >= children: more adults is fine and the same number is fine, but fewer adults is not.",
+    "hints": [
+     "Translate the rule into a rule about adults: 'adults must not be ... than children'.",
+     "Write the rule as a comparison between the number of adults and the number of children, then test it on cases where the two numbers differ and where they are equal."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "build",
+    "prompt": "Find 3 different reservations that follow every rule of the notice and the budget in the message. a = number of adults, c = number of children.",
+    "vars": [
+     {
+      "name": "a",
+      "label": "adults (어른)"
+     },
+     {
+      "name": "c",
+      "label": "children (어린이)"
+     }
+    ],
+    "constraints": [
+     {
+      "id": "c0",
+      "expr": "a==floor(a) && c==floor(c)",
+      "ok": "Whole people.",
+      "fail": "Use whole numbers of people."
+     },
+     {
+      "id": "c1",
+      "expr": "c>=1",
+      "ok": "At least one child.",
+      "fail": "어린이는 1명 이상 있어야 합니다: at least one child."
+     },
+     {
+      "id": "c2",
+      "expr": "a>=c",
+      "ok": "Adults are not fewer than children.",
+      "fail": "어른이 어린이보다 적으면 안 됩니다: adults must not be fewer than children."
+     },
+     {
+      "id": "c3",
+      "expr": "a+c>=4",
+      "ok": "At least 4 people.",
+      "fail": "4명 이상: at least 4 people in total."
+     },
+     {
+      "id": "c4",
+      "expr": "a+c<=6",
+      "ok": "At most 6 people.",
+      "fail": "6명 이하: at most 6 people in total."
+     },
+     {
+      "id": "c5",
+      "expr": "8000*a+5000*c<=40000",
+      "ok": "Within 40,000 won.",
+      "fail": "The total is over 40,000 won (8,000 per adult, 5,000 per child)."
+     }
+    ],
+    "need": 3,
+    "modelRows": [
+     {
+      "a": 3,
+      "c": 1
+     },
+     {
+      "a": 2,
+      "c": 2
+     },
+     {
+      "a": 3,
+      "c": 3
+     }
+    ],
+    "badRows": [
+     {
+      "a": 1,
+      "c": 3
+     },
+     {
+      "a": 4,
+      "c": 2
+     },
+     {
+      "a": 2,
+      "c": 1
+     }
+    ],
+    "explain": "Five reservations fit: (3 adults, 1 child) 29,000 won; (2, 2) 26,000 won; (4, 1) 37,000 won; (3, 2) 34,000 won; (3, 3) 39,000 won. The notice and the message give limits, not one exact order.",
+    "hints": [
+     "List the rules as short conditions on a and c before you try numbers.",
+     "Try one reservation and check it against each rule in turn; if one rule fails, change a or c and check again.",
+     "Check the money last: 8,000 x a + 5,000 x c."
+    ],
+    "because": {
+     "id": "s2b",
+     "kind": "write",
+     "prompt": "Choose ONE of your reservations and write the request in Korean (polite -요) to the museum: how many adults, how many children, and the total price.",
+     "placeholder": "예: ...",
+     "minChars": 10,
+     "checks": [
+      {
+       "id": "w1",
+       "label": "polite ending",
+       "mode": "any",
+       "patterns": [
+        "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
+       ]
+      },
+      {
+       "id": "w2",
+       "label": "gives the adult count",
+       "mode": "any",
+       "patterns": [
+        "(어른|성인)\\s*(\\d|한|두|세|네|다섯|여섯|하나|둘|셋|넷|일|이|삼|사|오|육)"
+       ]
+      },
+      {
+       "id": "w3",
+       "label": "gives the child count",
+       "mode": "any",
+       "patterns": [
+        "(어린이|아이)\\s*(\\d|한|두|세|네|다섯|여섯|하나|둘|셋|넷|일|이|삼|사|오|육)"
+       ]
+      },
+      {
+       "id": "w4",
+       "label": "says the total (원)",
+       "mode": "any",
+       "patterns": [
+        "원"
+       ]
+      },
+      {
+       "id": "w5",
+       "label": "counts and total together are one of the allowed reservations (check your build table)",
+       "mode": "any",
+       "patterns": [
+        "(어른|성인)\\s*(3|세|셋|삼)(?!\\d)\\s*(명|분|사람)?[\\s\\S]{0,25}(어린이|아이)\\s*(1|한|하나|일)(?!\\d)\\s*(명|분|사람)?[\\s\\S]{0,40}(?<!\\d)(29,?000|2만 ?9천)\\s*(원|won)",
+        "(어린이|아이)\\s*(1|한|하나|일)(?!\\d)\\s*(명|분|사람)?[\\s\\S]{0,25}(어른|성인)\\s*(3|세|셋|삼)(?!\\d)\\s*(명|분|사람)?[\\s\\S]{0,40}(?<!\\d)(29,?000|2만 ?9천)\\s*(원|won)",
+        "(어른|성인)\\s*(2|두|둘|이)(?!\\d)\\s*(명|분|사람)?[\\s\\S]{0,25}(어린이|아이)\\s*(2|두|둘|이)(?!\\d)\\s*(명|분|사람)?[\\s\\S]{0,40}(?<!\\d)(26,?000|2만 ?6천)\\s*(원|won)",
+        "(어린이|아이)\\s*(2|두|둘|이)(?!\\d)\\s*(명|분|사람)?[\\s\\S]{0,25}(어른|성인)\\s*(2|두|둘|이)(?!\\d)\\s*(명|분|사람)?[\\s\\S]{0,40}(?<!\\d)(26,?000|2만 ?6천)\\s*(원|won)",
+        "(어른|성인)\\s*(4|네|넷|사)(?!\\d)\\s*(명|분|사람)?[\\s\\S]{0,25}(어린이|아이)\\s*(1|한|하나|일)(?!\\d)\\s*(명|분|사람)?[\\s\\S]{0,40}(?<!\\d)(37,?000|3만 ?7천)\\s*(원|won)",
+        "(어린이|아이)\\s*(1|한|하나|일)(?!\\d)\\s*(명|분|사람)?[\\s\\S]{0,25}(어른|성인)\\s*(4|네|넷|사)(?!\\d)\\s*(명|분|사람)?[\\s\\S]{0,40}(?<!\\d)(37,?000|3만 ?7천)\\s*(원|won)",
+        "(어른|성인)\\s*(3|세|셋|삼)(?!\\d)\\s*(명|분|사람)?[\\s\\S]{0,25}(어린이|아이)\\s*(2|두|둘|이)(?!\\d)\\s*(명|분|사람)?[\\s\\S]{0,40}(?<!\\d)(34,?000|3만 ?4천)\\s*(원|won)",
+        "(어린이|아이)\\s*(2|두|둘|이)(?!\\d)\\s*(명|분|사람)?[\\s\\S]{0,25}(어른|성인)\\s*(3|세|셋|삼)(?!\\d)\\s*(명|분|사람)?[\\s\\S]{0,40}(?<!\\d)(34,?000|3만 ?4천)\\s*(원|won)",
+        "(어른|성인)\\s*(3|세|셋|삼)(?!\\d)\\s*(명|분|사람)?[\\s\\S]{0,25}(어린이|아이)\\s*(3|세|셋|삼)(?!\\d)\\s*(명|분|사람)?[\\s\\S]{0,40}(?<!\\d)(39,?000|3만 ?9천)\\s*(원|won)",
+        "(어린이|아이)\\s*(3|세|셋|삼)(?!\\d)\\s*(명|분|사람)?[\\s\\S]{0,25}(어른|성인)\\s*(3|세|셋|삼)(?!\\d)\\s*(명|분|사람)?[\\s\\S]{0,40}(?<!\\d)(39,?000|3만 ?9천)\\s*(원|won)"
+       ]
+      }
+     ],
+     "selfAssess": [
+      "Do the numbers match one reservation I built?",
+      "Is the total correct (8,000 per adult + 5,000 per child)?"
+     ],
+     "modelAnswers": [
+      {
+       "text": "어른 3명, 어린이 2명으로 예약하고 싶어요. 모두 34,000원이에요."
+      },
+      {
+       "text": "어른 두 명과 어린이 두 명이 갈 거예요. 26,000원이죠?"
+      },
+      {
+       "text": "성인 3명, 어린이 2명이에요. 34,000원이에요."
+      },
+      {
+       "text": "어른 삼 명, 어린이 이 명 예약하고 싶어요. 34,000원이에요."
+      }
+     ],
+     "badAnswers": [
+      {
+       "text": "가족 체험을 예약하고 싶어요.",
+       "why": "Gives no numbers or total."
+      },
+      {
+       "text": "어른 3명 어린이 2명 34000",
+       "why": "Not polite and no 원."
+      },
+      {
+       "text": "어른 1명 어린이 5명 예약하고 싶어요. 33,000원이에요.",
+       "why": "This group breaks the adults-not-fewer rule."
+      },
+      {
+       "text": "어른 4명과 어린이 2명으로 예약하고 싶어요. 42,000원이에요.",
+       "why": "This group is over the budget."
+      }
+     ],
+     "humanReview": "Whether the request sounds natural and polite.",
+     "hints": [
+      "Start with the number of adults, then children.",
+      "Say the total last and end with -요."
+     ]
+    }
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Reading the rules",
+    "full": "Reads the negative rule as adults >= children and builds only valid groups",
+    "partial": "Misses one rule but finds some valid groups",
+    "none": "Cannot build a valid group"
+   },
+   {
+    "criterion": "Reporting in Korean",
+    "full": "Numbers and total are correct, polite ending",
+    "partial": "Missing the total or one count",
+    "none": "Numbers do not match the group"
+   }
+  ],
+  "alternatives": [
+   "Any three of the five valid groups are accepted.",
+   "The Korean request may say 'we would like to book' (예약하고 싶어요 / 예약할게요 / 신청합니다)."
+  ],
+  "hardCases": [
+   "Some learners read '4명 이상 6명 이하' as 'between 4 and 6, not including 4 or 6'; the notice's 이상/이하 include the number itself."
+  ],
+  "cautions": {
+   "language": "이상 (this number or more) and 이하 (this number or less) include the number. They are glossed in the hints and explanation.",
+   "culture": "Family programmes that require an adult for children are common; the particular rules here are made up for the task.",
+   "accessibility": "All material is text and numbers; the build step needs only typing numbers."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Every rule of the build step",
+    "Presence of counts and 원 in the Korean request"
+   ],
+   "human": [
+    "Naturalness and politeness of the request"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "subject": "korean",
+  "grade": "K5",
+  "topic": "ambiguity in a deadline message",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "uiLang": "en",
+  "curriculum": null,
+  "id": "n-k-k5-04",
+  "title": "Which day is the deadline?",
+  "format": "choose-needed-info",
+  "generative": true,
+  "goal": "Read a deadline message closely, choose the question that settles what you must do, and write that question politely.",
+  "thinking": [
+   "Spotting an ambiguous time boundary",
+   "Choosing the question that changes the decision",
+   "Asking a teacher politely"
+  ],
+  "differsFromPlain": "Plain practice asks what a time phrase means. Here a real message leaves a boundary open, and you must work out which single question removes the doubt.",
+  "prerequisites": [
+   "Knows days of the week and dates",
+   "Has met 전에 / -까지 and polite or honorific speech to a teacher"
+  ],
+  "minutes": 8,
+  "material": "Today is Monday, 11월 2일. Your teacher sends this message to the class chat.\n\n선생님: \"발표 자료는 금요일 전까지 메일로 보내 주세요. 파일 이름에는 이름을 꼭 써 주세요.\"\n\nYou plan to finish your slides on Friday morning.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "You plan to finish your slides on Friday morning. Before you decide, which question is the most useful to ask the teacher?",
+    "options": [
+     {
+      "id": "a",
+      "text": "자료는 몇 장 정도 만들면 돼요?",
+      "reveals": "The number of slides is not the issue; the message leaves a different question open."
+     },
+     {
+      "id": "b",
+      "text": "파일 이름은 어떻게 쓰면 돼요?",
+      "reveals": "The message already tells you what to write in the file name."
+     },
+     {
+      "id": "c",
+      "text": "금요일 당일에 보내도 되나요?"
+     },
+     {
+      "id": "d",
+      "text": "금요일은 11월 며칠이에요?",
+      "reveals": "Today is Monday 11월 2일, so Friday is already known (11월 6일)."
+     },
+     {
+      "id": "e",
+      "text": "금요일 몇 시까지 보내면 돼요?",
+      "reveals": "This takes it for granted that sending on Friday is allowed. That is exactly what the message leaves unclear."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "acceptable": [
+     {
+      "ids": [
+       "e"
+      ],
+      "reason": "A teacher answering 'until what time on Friday' would settle it in practice, but the question does not first check whether Friday counts."
+     }
+    ],
+    "explain": "'금요일 전까지' can mean 'up to the day before Friday' or 'by Friday'. Only the teacher knows which, so the useful question asks whether Friday itself counts.",
+    "hints": [
+     "Read the deadline sentence slowly. Which word in it can be read in two ways?",
+     "Which of the questions would change what you do on Friday morning?"
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write your question to the teacher in Korean (polite, honorific speech). Mention the deadline and say clearly what you want to confirm.",
+    "placeholder": "예: ...",
+    "minChars": 10,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "is a question",
+      "mode": "any",
+      "patterns": [
+       "[?？]",
+       "까요",
+       "나요",
+       "ㅂ니까",
+       "습니까",
+       "될까",
+       "되죠",
+       "맞나요",
+       "인가요",
+       "요\\s*$"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "mentions Friday",
+      "mode": "any",
+      "patterns": [
+       "금요일",
+       "금욜",
+       "friday"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "asks about the boundary (Thursday, that day, included ...)",
+      "mode": "any",
+      "patterns": [
+       "목요일",
+       "당일",
+       "그날",
+       "포함",
+       "금요일에도",
+       "금요일에 (보내|내|제출)",
+       "금요일 (오전|오후|저녁|아침|낮|자정|몇 시|[0-9]+\\s*시)",
+       "thursday",
+       "included",
+       "마지막 날"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "polite or honorific ending",
+      "mode": "any",
+      "patterns": [
+       "요(?![가-힣])",
+       "니다",
+       "니까",
+       "세요",
+       "십니까",
+       "시나요"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my question show that I see two possible readings?",
+     "Could the teacher answer it with one short sentence?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "선생님, 자료를 목요일까지 보내야 하나요, 아니면 금요일에 보내도 되나요?"
+     },
+     {
+      "text": "금요일 전까지라고 하셨는데, 금요일 당일에 보내도 될까요?"
+     },
+     {
+      "text": "선생님, 마감이 금요일 오전까지인가요, 목요일까지인가요?"
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "자료는 언제 보내야 해요?",
+      "why": "Asks something the message already answers and does not point at the unclear day."
+     },
+     {
+      "text": "금요일에 발표해요?",
+      "why": "Mentions Friday but asks about something else."
+     }
+    ],
+    "humanReview": "Whether the question is polite and clear, and whether the honorific forms (-시-, 여쭙다) are natural.",
+    "hints": [
+     "Mention the teacher's deadline words, then say which day you are unsure about.",
+     "Address the teacher (선생님) and end with -요 or -ㅂ니다 speech."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "choose",
+    "prompt": "The teacher answers: '아, 금요일 오전 9시까지요.' Why was it worth asking?",
+    "options": [
+     {
+      "id": "a",
+      "text": "The teacher mistyped the day and meant Wednesday.",
+      "reveals": "Nothing in the message points to Wednesday, and the reply gives a Friday deadline."
+     },
+     {
+      "id": "b",
+      "text": "Both Thursday and Friday were fair readings, so only the teacher could settle it."
+     },
+     {
+      "id": "c",
+      "text": "'전까지' always leaves the named day out, so Thursday was the last day.",
+      "reveals": "The answer shows Friday morning was allowed, and many speakers use '전까지' loosely. It is not a fixed rule."
+     },
+     {
+      "id": "d",
+      "text": "'까지' always includes the named day, so Friday was allowed from the start.",
+      "reveals": "If that were always true no question was needed; the reply also adds a time (오전 9시) that the message never gave."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "The same sentence could mean 'by Thursday' or 'by Friday'. Reading it only one way risked a late file. The reply also adds a time (오전 9시) that the message never gave.",
+    "hints": [
+     "Compare what you assumed before asking with the answer you got.",
+     "Ask yourself: could a reasonable classmate have read the message the other way?"
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finding the open question",
+    "full": "Chooses or writes a question about whether Friday itself counts",
+    "partial": "Asks about the time on Friday but not whether Friday counts",
+    "none": "Asks about something the message already answers"
+   },
+   {
+    "criterion": "Polite question",
+    "full": "Mentions the deadline day and uses polite or honorific speech to the teacher",
+    "partial": "Clear but too casual, or too vague about the day",
+    "none": "Not a question to the teacher"
+   }
+  ],
+  "alternatives": [
+   "Asking 'Thursday or Friday?' directly is as good as asking whether Friday counts.",
+   "Writing 금요일 몇 시까지요? is a practical question but skips the main doubt."
+  ],
+  "hardCases": [
+   "Many Korean speakers say '금요일 전까지' and mean 'by Friday'; the sentence is genuinely unclear, so different readers may disagree."
+  ],
+  "cautions": {
+   "language": "전까지 (until before) and 까지 (until / by) are glossed in the explanation; the task does not require native intuition about which is 'correct'.",
+   "culture": "Asking a teacher to confirm a deadline is normal and polite; honorific forms such as -시- and 여쭙다 are expected but not required for this task.",
+   "accessibility": "All material is text; dates are written out in words and numbers."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of the question",
+    "Question is present, mentions Friday and a boundary, and is polite"
+   ],
+   "human": [
+    "Clarity and politeness of the learner's question",
+    "Honorific naturalness"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "subject": "korean",
+  "grade": "K5",
+  "topic": "audience that does not share your context",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "uiLang": "en",
+  "curriculum": null,
+  "id": "n-k-k5-05",
+  "title": "From a friends' chat to an elevator notice",
+  "format": "rewrite-for-audience",
+  "generative": true,
+  "goal": "Rewrite a chat message for strangers by adding the information friends already share and changing the register.",
+  "thinking": [
+   "Judging what the new reader does not know",
+   "Choosing a register for strangers of different ages",
+   "Adding missing facts"
+  ],
+  "differsFromPlain": "Plain practice asks you to change casual endings into polite ones. Here you must also add facts that only friends already know and judge whether a request is respectful.",
+  "prerequisites": [
+   "Knows -(으)ㅂ니다 and -세요 endings",
+   "Has met 양해, 죄송, 부탁 or can learn them from the hints"
+  ],
+  "minutes": 10,
+  "material": "You and your roommate are holding a housewarming party (집들이) in your flat 502호 next Saturday, 10월 24일, from 6 to 9 p.m. You wrote this in your friends' chat:\n\n\"토욜 저녁에 우리집 파티함ㅋㅋ 좀 시끄러울 듯. 이해 ㄱㄱ\"\n\n(ㅋㅋ = laughing, ㄱㄱ = 'go / okay', 토욜 = 토요일.) Now you want to post a notice in the elevator for the neighbours. Many are older, and you have not met most of them.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "Friends know where you live and when the party is. Neighbours who have never met you do not. Which things must the elevator notice add? Pick all that apply.",
+    "options": [
+     {
+      "id": "a",
+      "text": "Which flat (호수) is holding the party"
+     },
+     {
+      "id": "b",
+      "text": "When the party starts and when it ends"
+     },
+     {
+      "id": "c",
+      "text": "What food and drinks will be served",
+      "reveals": "The neighbours do not need the menu to understand the notice."
+     },
+     {
+      "id": "d",
+      "text": "An apology and a request for their understanding"
+     },
+     {
+      "id": "e",
+      "text": "The names of the guests who are coming",
+      "reveals": "Guest names are of no use to the neighbours."
+     }
+    ],
+    "correct": [
+     "a",
+     "b",
+     "d"
+    ],
+    "explain": "The neighbours must know who is making the noise (the flat), for how long (start and end time) and that you respect them (apology and request). The menu and the guest list are of interest to friends only.",
+    "hints": [
+     "Imagine reading the chat message as a neighbour: what would you still not know?",
+     "The neighbours may be annoyed by the noise. What would they want to hear from you?"
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "pickLine",
+    "prompt": "A classmate wrote a first draft of the notice. One line is not suitable for neighbours you do not know, including older people. Pick it.",
+    "lines": [
+     "주민 여러분께",
+     "안녕하세요, 502호입니다.",
+     "이번 토요일(10월 24일) 저녁 6시부터 9시까지 집들이를 합니다.",
+     "그 시간에는 조금 시끄러울 수 있는데 이해해 줘요.",
+     "불편하신 점이 있으면 502호로 말씀해 주세요.",
+     "감사합니다."
+    ],
+    "wrong": [
+     3
+    ],
+    "explain": "Line 4 asks the neighbours for something in a plain, friendly-casual way ('이해해 줘요'). To people you do not know, ask with '주세요 / 주시면 감사하겠습니다', e.g. '이해해 주시면 감사하겠습니다'.",
+    "hints": [
+     "Read each line as an older neighbour. Which one sounds like it comes from a friend?",
+     "Look at how the other requests in the draft are worded."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Now write the whole notice yourself in Korean for the elevator. Include your flat, the start and end times, and an apology or request for understanding. Use polite, notice-style speech.",
+    "placeholder": "예: ...",
+    "minChars": 25,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "names the flat (502호)",
+      "mode": "any",
+      "patterns": [
+       "502",
+       "\\d{3}\\s*호"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "gives both times (6시 and 9시)",
+      "mode": "all",
+      "patterns": [
+       "(6|여섯|18)\\s*시|6:00|18:00",
+       "(9|아홉|21)\\s*시|9:00|21:00"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "apology or request for understanding",
+      "mode": "any",
+      "patterns": [
+       "죄송",
+       "양해",
+       "이해해 ?주",
+       "이해 ?부탁",
+       "부탁",
+       "불편",
+       "sorry"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "polite or formal ending",
+      "mode": "any",
+      "patterns": [
+       "니다",
+       "세요",
+       "드려요",
+       "해요(?![가-힣])",
+       "예요",
+       "이에요"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "no chat slang or casual requests",
+      "mode": "none",
+      "patterns": [
+       "ㅋ",
+       "ㅎ{2,}",
+       "ㅠ",
+       "ㅜ",
+       "토욜",
+       "ㄱㄱ",
+       "파티함",
+       "이해해 ?줘",
+       "이해해 ?줄"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Would a neighbour who has never met me know whose flat it is and when it ends?",
+     "Does my request sound respectful to an older person?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "주민 여러분께. 안녕하세요, 502호입니다. 이번 토요일(10월 24일) 저녁 6시부터 9시까지 집들이를 합니다. 소리가 날 수 있어 죄송합니다. 이해해 주시면 감사하겠습니다."
+     },
+     {
+      "text": "안녕하세요, 502호예요. 토요일 저녁 6시에서 9시까지 집들이를 해요. 시끄러우면 죄송해요. 양해 부탁드려요."
+     },
+     {
+      "text": "502호에서 이번 토요일 저녁 6시부터 밤 9시까지 집들이를 합니다. 불편을 드려 죄송하며 양해를 부탁드립니다."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "토요일 저녁에 파티해요ㅋㅋ 시끄러워도 이해해 줘요.",
+      "why": "Chat style, no flat or times, casual request."
+     },
+     {
+      "text": "502호입니다. 6시부터 9시까지 집들이를 합니다.",
+      "why": "Gives the facts but no apology or request for understanding."
+     }
+    ],
+    "humanReview": "Whether the tone is right for neighbours of all ages and the notice reads like a real notice.",
+    "hints": [
+     "Begin with a greeting and your flat, as in a real notice.",
+     "Put the facts (when, what) in one sentence, then the apology in the next."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "What the new reader needs",
+    "full": "Picks flat, times and apology/request and leaves out menu and guests",
+    "partial": "Picks two of the three needed things",
+    "none": "Picks mainly friend-only information"
+   },
+   {
+    "criterion": "Rewritten notice",
+    "full": "Flat, both times, apology or request, notice-style polite speech, no slang",
+    "partial": "One element missing or the register mixed",
+    "none": "Still reads like the chat message"
+   }
+  ],
+  "alternatives": [
+   "Formal -ㅂ니다 and polite -요 are both acceptable for a short notice; formal is the safer choice for older neighbours.",
+   "A notice may also give a contact point, but the task does not require one."
+  ],
+  "hardCases": [
+   "Whether an apology is needed when the party ends before 9 p.m. is a matter of taste; the task assumes noise until 9."
+  ],
+  "cautions": {
+   "language": "양해 (understanding, indulgence) is a notice word; the hints and model answers show it.",
+   "culture": "Notices to neighbours in Korean apartment buildings usually give the flat number, exact times and an apology for noise. The details here are made up for the task.",
+   "accessibility": "All material is text. The chat message contains internet shorthand (ㅋㅋ, ㄱㄱ, 토욜); it is glossed in the material."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of needed information",
+    "Picked draft line",
+    "Flat, both times, apology and polite ending present; slang absent"
+   ],
+   "human": [
+    "Tone and naturalness of the notice"
+   ]
+  },
+  "status": "reviewed-ai"
+ }
+]
