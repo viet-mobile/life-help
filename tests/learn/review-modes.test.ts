@@ -72,4 +72,26 @@ describe("review modes", () => {
     const bad = await call("reveal", { site: "english", locale: "ko", state: st, questionId: "eb-nope-x" });
     expect(bad.status).toBe(404);
   });
+  it("non-Korean locales serve all four practice modes and Hangul-free flashcards", async () => {
+    const st = state("E3");
+    for (const locale of ["en", "vi", "ja", "zh-Hans", "ar"] as const) {
+      for (const mode of ["order", "dictation", "listening", "choice"] as const) {
+        const res = await call("start", { site: "english", locale, state: st, kind: "practice", mode });
+        expect(res.status, `${locale}:${mode}`).toBe(200);
+        const data = await res.json();
+        expect(data.questions.length, `${locale}:${mode}`).toBeGreaterThan(0);
+        for (const q of data.questions) {
+          expect(q.prompt, `${locale}:${mode}:${q.id}`).not.toMatch(/[가-힣ㄱ-ㆎ]/);
+        }
+      }
+      const cRes = await call("cards", { site: "english", locale, state: st, count: 6 });
+      expect(cRes.status, `${locale}:cards`).toBe(200);
+      const { cards } = (await cRes.json()) as { cards: { id: string; front: string }[] };
+      expect(cards.length, `${locale}:cards`).toBeGreaterThan(0);
+      const rRes = await call("reveal", { site: "english", locale, state: st, questionId: cards[0].id });
+      expect(rRes.status, `${locale}:reveal`).toBe(200);
+      const { back } = (await rRes.json()) as { back: string };
+      expect(back, `${locale}:reveal`).not.toMatch(/[가-힣ㄱ-ㆎ]/);
+    }
+  });
 });

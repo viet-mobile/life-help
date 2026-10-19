@@ -65,9 +65,13 @@ describe("English bank through the learning API", () => {
     const high = [...bank.values()].find((x) => x.skillId.startsWith("e.h3."))!;
     expect((await call("attempt", { site: "english", locale: "ko", state: s, questionId: high.id, sessionId: start.sessionId, answer: "a" })).status).toBeGreaterThanOrEqual(400);
   });
-  it("another learner language gets no bank question", async () => {
+  it("another learner language gets localized, Hangul-free bank questions through the API", async () => {
     const res = await call("start", { site: "english", locale: "vi", state: state("E3"), kind: "practice", skillId: "e.e3.snd1" });
     const data = await res.json();
-    expect((data.questions ?? []).some((q: { id: string }) => q.id.startsWith("eb-"))).toBe(false);
+    const eb = (data.questions ?? []).filter((q: { id: string }) => q.id.startsWith("eb-"));
+    expect(eb.length).toBeGreaterThan(0);
+    for (const q of eb) {
+      expect(q.prompt).not.toMatch(/[가-힣ㄱ-ㆎ]/);
+    }
   });
 });

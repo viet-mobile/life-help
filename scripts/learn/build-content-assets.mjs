@@ -130,6 +130,14 @@ for (const [site, files] of Object.entries(CANON)) {
       for (const k of Object.keys(bank.texts)) if (typeof bankOv.texts[k] !== "string" || !bankOv.texts[k].trim() || HANGUL.test(bankOv.texts[k])) fail(`${locale}/${site}: bank text ${k} not localized`);
       for (const k of Object.keys(bankOv.templates)) if (!bank.templates[k]) delete bankOv.templates[k];
       for (const k of Object.keys(bankOv.texts)) if (!bank.texts[k]) delete bankOv.texts[k];
+    } else if (site === "english") {
+      const eKitPath = path.join(root, `scripts/learn/english-bank/kit/${locale}.json`);
+      if (!fs.existsSync(eKitPath)) fail(`${locale}/english: missing scripts/learn/english-bank/kit/${locale}.json`);
+      const eKit = JSON.parse(fs.readFileSync(eKitPath, "utf8"));
+      bankOv = { templates: {}, texts: Object.fromEntries(Object.entries(eKit.texts ?? {}).sort(([a], [b]) => (a < b ? -1 : 1))) };
+      for (const [k, v] of Object.entries(bankOv.texts)) {
+        if (typeof v !== "string" || !v.trim() || HANGUL.test(v)) fail(`${locale}/english: bank text ${k} is empty or still Korean`);
+      }
     }
 
     for (const [id, o] of Object.entries(ov.questions)) {
