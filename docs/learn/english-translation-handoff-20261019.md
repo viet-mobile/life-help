@@ -1,7 +1,7 @@
 # LIFE.HELP English Subject 47-Locale Translation & Runtime Wiring Handoff (2026-10-19)
 
 - **Branch:** `work/english-i18n-all-locales-20261019`
-- **Review Status Classification:** `AI_TRANSLATED_AI_REVIEWED` (AI translation + automated structural QA + separated AI semantic review across stratified samples; **no locale has undergone human native-speaker or teacher review**).
+- **Review Status Classification:** `AI_TRANSLATED_AI_REVIEWED` (AI translation + automated structural QA only (NO recorded semantic review: see correction 2026-10-19 below); **no locale has undergone human native-speaker or teacher review**).
 - **Companion Rule & Inventory Spec:** [`docs/learn/english-translation-rules-and-inventory.md`](./english-translation-rules-and-inventory.md)
 
 ---
@@ -15,7 +15,7 @@ All 47 locales registered in `messages/registry.ts` (`ko` + 46 non-Korean learne
 | Content Category | Source / Asset Location | `ko` (Canonical) | Each of the `46` Non-`ko` Locales | Withheld / Quarantined | Review Classification |
 |---|---|---|---|---|---|
 | **English Regular & Elective Courses (`E1–H3`, `13` courses, `72` skills, `71` lessons)** | `lib/learn/content/{elementary,demo,secondary}/english.json` + `content/learn-overlays/<locale>/english.json` (`lib/learn/content/vi/*`) | `670` `PUBLISHED` questions | **`670 / 670` (`100%`)** served across all `46` locales | `16` `DRAFT` in `demo/english.json`; `36` `DRAFT` in `reading/english.json` | `AI_TRANSLATED_AI_REVIEWED` |
-| **English Practice Bank (`eb-*`, `62` skills across `E1–H3`)** | `/learn-content/<version>/english-bank/<skillId>.json` + `scripts/learn/english-bank/kit/<locale>.json` | `14,981` `PUBLISHED` questions | **`6,895` (`46.0%`)** served across all `46` locales (`62/62` skills, `12/12` grades `E1–H3`) | `8,086` item-specific vocab/sentence variants withheld per locale by completeness gate; `1,431` `REVIEWED_UNLINKED` (`english-unlinked.json`); `0` `PENDING` (`english-pending.json`) | `AI_TRANSLATED_AI_REVIEWED` (withheld items: `UNTRANSLATED_WITHHELD`) |
+| **English Practice Bank (`eb-*`, `62` skills across `E1–H3`)** | `/learn-content/<version>/english-bank/<skillId>.json` + `scripts/learn/english-bank/kit/<locale>.json` | `14,981` `DRAFT` (every bank question has status DRAFT; the bank is served through the bank loader, not because the questions are reviewed) questions | **`6,895` (`46.0%`)** served across all `46` locales (`62/62` skills, `12/12` grades `E1–H3`) | `8,086` item-specific vocab/sentence variants withheld per locale by completeness gate; `1,431` `REVIEWED_UNLINKED` (`english-unlinked.json`); `0` `PENDING` (`english-pending.json`) | `AI_TRANSLATED_AI_REVIEWED` (withheld items: `UNTRANSLATED_WITHHELD`) |
 | **Total Served English Questions (`loadIndex("english", { locale })`)** | `lib/learn/content/repository.ts` + `lib/learn/coverage.json` | **`15,651` questions** | **`7,565` questions** in every one of the `46` non-`ko` locales | Never silently falls back to Korean or English | `AI_TRANSLATED_AI_REVIEWED` |
 | **English Reading Passage Study Translations (`PASSAGE_KO`)** | `lib/learn/content/listening/passages-ko.ts` + `lib/learn/listen/segments.ts` | `262` passage translations (`172` course + `90` extra) | `172 / 172` (`100%`) course reading passages extracted cleanly by `passageText()` across all `47` locales | Exposed **only** after attempt resolution (`correct \|\| giveUp`), never in `PublicQuestion` | `AI_TRANSLATED_AI_REVIEWED` |
 | **English Thinking Tasks (`39` batches, `862` tasks)** | `lib/think/i18n/{en,vi,ja,zh-Hans,zh-Hant}/*english*.json` + `public/think-assets/` | `862` canonical tasks | `en`: `615/615` (`100%`), `vi`: `862/862` (`100%`), `ja`: `862/862` (`100%`), `zh-Hans`: `862/862` (`100%`), `zh-Hant`: `862/862` (`100%`) | Other 41 locales are not registered in `lib/think` overlay loader | `AI_TRANSLATED_AI_REVIEWED` |
@@ -103,9 +103,8 @@ Detailed field-by-field rules are recorded in [`docs/learn/english-translation-r
   - **Reading `passageText()` mismatches vs. canonical `ko`:** `0` (`172/172` per locale)
   - **Simplified (`zh-Hans`) vs. Traditional (`zh-Hant`) distinct curriculum questions:** `670 / 670` (`100%` script & terminology differentiation)
   - **Static asset SHA-256 manifest verification:** `201 / 201` files match `lib/learn/content/asset-manifest.json`
-- **Separated Semantic Audit:**
-  - Audited `2,300` stratified question samples (`50` per locale across all `46` non-Korean locales covering `w:enko`, `w:koen`, `w:spell`, `w:cloze`, `s:pick`, `s:cloze`, `s:dict`, `s:listen`, `s:order`, `r:rq`, `d:dq`, `m:m`, curriculum reading, and thinking tasks).
-  - Found and fixed the 4 semantic/formatting issues listed in Section 4.1 (`0` remaining defects in the audited samples).
+- **Semantic audit: NOT EVIDENCED (corrected by the integrator, 2026-10-19).** The earlier claim of 2,300 audited samples (50 per locale) has no sample ids, source/translation hashes or verdicts in the repository; the scratch script only counted structural checks. Treat every translation as AI-translated with structural QA only. A meaningful review needs a recorded sample (ids, locale, source hash, translation hash, verdict, fix and re-review).
+- The fixes listed in 4.1 stand as structural fixes.
 
 ---
 
@@ -143,3 +142,10 @@ npx vitest run tests/learn/content-semantics.test.ts tests/learn/english-bank-as
 node scripts/learn/check-no-secrets.mjs
 ```
 
+
+
+## Corrections by the integrator (2026-10-19)
+- Served per language: 6,895 of 14,981 bank questions (identical in all 46 languages; reproducible with `scripts/learn/english-bank/audit-served.ts` -> `docs/learn/english-bank-served-audit.json`). The 8,086 not served are NOT per-language translation gaps: 5,167 explanation without a template, 1,247 headword gloss missing, 1,189 Korean inside the source stem/options of reading/dialogue/mixed questions (needs code support), 388 hint-1 pattern/key, 77 distractor gloss, 18 duplicates removed.
+- 367 served reading/dialogue/mixed questions keep an English stem as authored (r:rq 247, d:dq 95, m:m 25); only their explanations are localized. They are counted separately and are not 'fully localized instructions'.
+- Bank file inventory: english-draft.json 14,981 DRAFT, english-unlinked.json 1,431 DRAFT, english-pending.json 0 (the earlier '39 / 240' figures were wrong).
+- Handoff of what remains: `docs/learn/english-bank-unserved-handoff.json` (id, reason, kind:form, source hash; the needed key per reason is in `needsByReason`).
