@@ -6,6 +6,7 @@ import { buildPath } from "@/lib/learn/domain/path";
 import type { Course } from "@/lib/learn/types";
 import { currentSemester, hasSemesters, semesterOf, type Semester } from "@/lib/learn/content/semesters";
 import { previousLevel } from "@/lib/learn/korean-grades";
+import { BandChip } from "./BandChip";
 import { OfficialGradeChip } from "./OfficialGradeChip";
 import { useLearner } from "./LearnerProvider";
 
@@ -67,7 +68,7 @@ export function CoursePath({ course }: { course: Course }) {
                 <>
                   <span className="l-node-ico" aria-hidden="true">{icon}</span>
                   <span style={{ flex: 1 }}>
-                    <strong>{lesson.title}</strong>{split && semesterOf(site, lesson.id) === 0 && <span className="l-muted"> · {t("semester.shared")}</span>}{showTier && " "}
+                    <strong>{lesson.title}</strong>{site === "korean" && <> <BandChip lessonId={lesson.id} t={t} /></>}{split && semesterOf(site, lesson.id) === 0 && <span className="l-muted"> · {t("semester.shared")}</span>}{showTier && " "}
                     {showTier && <span className="l-tier" data-tier={tier.toLowerCase()} data-testid={`tier-${lesson.id}`}>{tier === "PARTIAL" ? `${t("premium.free")} + ${t("premium.premium")}` : t(premium ? "premium.premium" : "premium.free")}</span>}
                     <br />
                     <span className="l-muted">

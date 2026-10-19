@@ -6,11 +6,10 @@ import { learnConfig } from "@/lib/learn/config";
 import { AVATARS } from "@/lib/learn/avatars";
 import { siteConfig, isLevelOf } from "@/lib/learn/sites";
 import { UNAVAILABLE_KOREAN_LEVELS } from "@/lib/learn/korean-availability";
-import { OFFICIAL_GRADES, recommendedLevel } from "@/lib/learn/korean-grades";
+import { BANDS, bandLabel, bandOfLevel, isPublishedBand, startLevelOfBand, type Band } from "@/lib/learn/korean-bands";
 import { GOALS, type Goal, type Grade } from "@/lib/learn/types";
 import { useEnterToContinue } from "./useEnterToContinue";
 import { LocaleSwitch } from "./LocaleSwitch";
-import { OfficialGradeChip } from "./OfficialGradeChip";
 import { ApiError, useLearner } from "./LearnerProvider";
 
 const TOTAL = 4;
@@ -37,12 +36,13 @@ export function Onboarding() {
   const [step, setStep] = useState(1);
   const [nicknameInput, setNickname] = useState<string | null>(null);
   const [gradeInput, setGrade] = useState<Grade | null>(null);
-  const [officialPick, setOfficialPick] = useState<number | null>(null);
+  const [bandPick, setBandPick] = useState<Band | null>(null);
   const [goalInput, setGoal] = useState<Goal | null>(null);
   const [avatarInput, setAvatar] = useState<string | null>(null);
   const nickname = nicknameInput ?? state.profile?.nickname ?? guest?.nickname ?? "";
   // a level from another site (e.g. a school grade carried by a guest profile) is never offered on a language site, and vice versa
   const grade = [gradeInput, state.profile?.grade, guest?.grade].find((g): g is Grade => isLevelOf(site, g)) ?? null;
+  const bandSelected: Band | null = bandPick ?? (site === "korean" && grade ? bandOfLevel(grade) : null);
   const goal = goalInput ?? state.profile?.goal ?? guest?.goal ?? null;
   const avatar = avatarInput ?? state.profile?.avatar ?? guest?.avatar ?? "fox";
   const [saving, setSaving] = useState(false);
@@ -103,31 +103,33 @@ export function Onboarding() {
         <section className="l-stack">
           <h1 className="l-h1">{t(site === "korean" ? "onboarding.level.title" : "onboarding.grade.title")}</h1>
           {site === "korean" && (
-            <div role="radiogroup" aria-label={t("korean.official.pick")} className="l-stack" data-testid="official-picker">
-              <p className="l-muted" style={{ fontWeight: 800 }}>{t("korean.official.pick")}</p>
-              <p className="l-muted" style={{ fontSize: "0.9rem" }}>{t("korean.official.pick.hint")}</p>
+            <div role="radiogroup" aria-label={t("korean.band.pick")} className="l-stack" data-testid="band-picker">
+              <p className="l-muted" style={{ fontWeight: 800 }}>{t("korean.band.pick")}</p>
+              <p className="l-muted" style={{ fontSize: "0.9rem" }}>{t("korean.band.pick.hint")}</p>
               <div className="l-options l-grades">
-                {OFFICIAL_GRADES.map((n) => (
-                  <button key={n} type="button" role="radio" aria-checked={officialPick === n} data-selected={officialPick === n} data-testid={`official-pick-${n}`} className="l-option l-grade" onClick={() => { setOfficialPick(n); setGrade(recommendedLevel(n).level); }}>
-                    {t("korean.official.grade", { grade: n })}
-                  </button>
-                ))}
+                {BANDS.map((b) => {
+                  const open = isPublishedBand(b);
+                  return (
+                    <button key={b} type="button" role="radio" aria-checked={bandSelected === b} aria-disabled={!open} disabled={!open} data-selected={bandSelected === b} data-testid={`band-pick-${b}`} className="l-option l-grade" style={open ? undefined : { opacity: 0.55 }}
+                      onClick={() => { setBandPick(b); const lv = startLevelOfBand(b); if (lv) setGrade(lv); }}>
+                      {bandLabel(b, t)}{open ? "" : " 🔒"}
+                    </button>
+                  );
+                })}
               </div>
-              {officialPick !== null && (
-                <p className="l-panel" role="status" style={{ fontSize: "0.9rem" }}>
-                  {t("korean.official.recommend", { level: t(`grade.${recommendedLevel(officialPick).level}` as never) })}
-                  {!recommendedLevel(officialPick).exact && <><br />{t("korean.official.none6")}</>}
-                </p>
-              )}
+              <p className="l-panel" role="status" style={{ fontSize: "0.9rem" }}>
+                {grade ? t("korean.band.start", { level: t(`grade.${grade}` as never) }) : t("korean.band.preparing")}
+                {!isPublishedBand("grade-6") && grade ? <><br />{t("korean.band.preparing")}</> : null}
+              </p>
             </div>
           )}
-          {siteConfig(site).levelGroups.map(({ key: level, levels: list }) => (
+          {site !== "korean" && siteConfig(site).levelGroups.map(({ key: level, levels: list }) => (
             <div key={level} role="radiogroup" aria-label={t(`grade.group.${level}` as never)} className="l-stack">
               <p className="l-muted" style={{ fontWeight: 800 }}>{t(`grade.group.${level}` as never)}</p>
               <div className="l-options l-grades">
                 {list.map((g) => (
-                  <button key={g} type="button" role="radio" aria-checked={grade === g} data-selected={grade === g} data-grade={g} data-unavailable={site === "korean" && UNAVAILABLE_KOREAN_LEVELS.includes(g) ? "true" : undefined} className="l-option l-grade" style={site === "korean" && UNAVAILABLE_KOREAN_LEVELS.includes(g) ? { opacity: 0.6 } : undefined} onClick={() => setGrade(g)}>
-                    {t(`grade.${g}` as never)}{site === "korean" && UNAVAILABLE_KOREAN_LEVELS.includes(g) ? " 🔒" : ""}{site === "korean" && <><br /><OfficialGradeChip level={g} t={t} /></>}
+                  <button key={g} type="button" role="radio" aria-checked={grade === g} data-selected={grade === g} data-grade={g} className="l-option l-grade" onClick={() => setGrade(g)}>
+                    {t(`grade.${g}` as never)}
                   </button>
                 ))}
               </div>
