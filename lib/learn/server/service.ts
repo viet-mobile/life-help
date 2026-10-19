@@ -383,15 +383,15 @@ export class LearnService {
     }
 
     // Wrong answers escalate: small hint -> concrete hint -> worked explanation + similar question.
-    let feedback: { hint?: string; hintLevel?: number; explanation?: string; answer?: string; passageKo?: string[] } = {};
+    let feedback: { hint?: string; hintLevel?: number; explanation?: string; answer?: string; passageKo?: string[]; audioAnswer?: string } = {};
     // canonical Korean of an English reading passage: only once the question is solved or revealed (it would help answer it)
     const passage = q.site === "english" ? passageText(q.prompt) : null;
     const passageKo = passage ? PASSAGE_KO[passage] : undefined;
     let followUp: PublicQuestion | null = null;
     if (correct) {
-      feedback = { explanation: q.explanation, ...(passageKo ? { passageKo: [...passageKo] } : {}) };
+      feedback = { explanation: q.explanation, ...(passageKo ? { passageKo: [...passageKo] } : {}), ...(q.audioAnswer ? { audioAnswer: q.audioAnswer } : {}) };
     } else if (reveal) {
-      feedback = { explanation: q.explanation, answer: describeAnswer(q), ...(passageKo ? { passageKo: [...passageKo] } : {}) };
+      feedback = { explanation: q.explanation, answer: describeAnswer(q), ...(passageKo ? { passageKo: [...passageKo] } : {}), ...(q.audioAnswer ? { audioAnswer: q.audioAnswer } : {}) };
       followUp = this.pickFollowUp(bundle, index, q, body.seenIds ?? []);
     } else {
       const level = Math.min(attemptNo, q.hints.length);

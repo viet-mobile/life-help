@@ -16,7 +16,7 @@ export interface AttemptResponse {
   correct: boolean;
   attemptNo: number;
   revealed: boolean;
-  feedback: { hint?: string; hintLevel?: number; explanation?: string; answer?: string; /** canonical Korean of the passage, sent once the question is solved or revealed */ passageKo?: string[] };
+  feedback: { hint?: string; hintLevel?: number; explanation?: string; answer?: string; /** canonical Korean of the passage, sent once the question is solved or revealed */ passageKo?: string[]; /** the correct Korean sentence for pick-the-Korean / fill-in questions, sent only once solved or revealed */ audioAnswer?: string };
   followUp: PublicQuestion | null;
   delta: EngineDelta;
   state: PlayerState;
@@ -155,6 +155,7 @@ export function QuestionCard({
           <div className="l-panel l-panel-good l-pop">
             <div className="l-panel-title">✅ {attempts > 0 ? t("lesson.correct.after") : t("lesson.correct")}</div>
             {feedback.explanation && <p><strong>{t("lesson.explain")}</strong> · <RichText text={feedback.explanation} /></p>}
+            {feedback.audioAnswer && <ListenButton text={feedback.audioAnswer} />}
             {floatXp ? <p className="l-rise" aria-hidden="true">{t("lesson.xp", { n: floatXp })}</p> : null}
           </div>
         )}
@@ -163,6 +164,7 @@ export function QuestionCard({
             <div className="l-panel-title">🧭 {t("lesson.reveal")}</div>
             {feedback.answer && <p><strong>{t("lesson.answerIs")}</strong> · <RichText text={feedback.answer} /></p>}
             {feedback.explanation && <p><strong>{t("lesson.explain")}</strong> · <RichText text={feedback.explanation} /></p>}
+            {feedback.audioAnswer && <ListenButton text={feedback.audioAnswer} />}
           </div>
         )}
       </div>
