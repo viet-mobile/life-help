@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { FILE_META, TASK_LOADERS } from "@/lib/think/data/assets-index";
+import { koreanLevelOf, priorLevelFor } from "@/lib/think/korean-levels";
 import { thinkLangFor } from "@/lib/think/lang";
 import { loadOverlay, localize } from "@/lib/think/localize";
 import {
@@ -34,9 +35,10 @@ export function readTried(site: string): Set<string> {
 /** The tasks of the learner's own grade / level that are ready in the learner's language (never an untranslated original). */
 async function readyTasks(site: "math" | "english" | "korean", grade: string, locale: string) {
   const lang = thinkLangFor(locale, site);
-  const metas = FILE_META.filter((m) => m.subject === site && (m.grades.includes(grade) || m.grades.length === 0));
+  const level = site === "korean" ? priorLevelFor(grade) : null; // Korean: the tasks of the learner's language level (1-6급), see lib/think/korean-levels.ts
+  const metas = FILE_META.filter((m) => m.subject === site && (level ? true : m.grades.includes(grade) || m.grades.length === 0));
   const lists = await Promise.all(metas.map((m) => TASK_LOADERS[m.key]()));
-  const own = lists.flat().filter((t: ThinkTask) => (t.grade ? t.grade === grade : t.level === bandOf(grade)));
+  const own = lists.flat().filter((t: ThinkTask) => (level ? koreanLevelOf(t.id) === level : t.grade ? t.grade === grade : t.level === bandOf(grade)));
   const overlay = await loadOverlay(lang, metas.map((m) => m.key));
   return own.map((t) => localize(t, lang, overlay)).filter((x) => x.translated || x.task.uiLang === lang);
 }

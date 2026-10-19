@@ -7,6 +7,7 @@ import { domainOf } from "@/lib/think/domains";
 import { fieldInfo, fieldKeyOf, fieldList } from "@/lib/think/areas";
 import { hasThinkSemesters, inSemester } from "@/lib/think/semesters";
 import { gradeLabel } from "@/lib/think/grades";
+import { KOREAN_LEVELS, isLevelCode, koreanLevelOf, levelCode, levelFromCode, levelName, priorLevelFor } from "@/lib/think/korean-levels";
 import { thinkLangFor, type ThinkLang } from "@/lib/think/lang";
 import { checksOffFor, loadOverlay, localize } from "@/lib/think/localize";
 import { siteConfig } from "@/lib/learn/sites";
@@ -33,7 +34,8 @@ export function ThinkHub() {
   const { site, state, locale, href, ready, t } = useLearner();
   const router = useRouter();
   const params = useSearchParams();
-  const own = (state.profile?.grade ?? siteConfig(site).levels[0]) as string;
+  const ownGrade = (state.profile?.grade ?? siteConfig(site).levels[0]) as string;
+  const own = site === "korean" ? levelCode(priorLevelFor(ownGrade)) : ownGrade;
   const [grade, setGrade] = useState<string>(params.get("grade") || own);
   const [field, setField] = useState<string>(params.get("field") || "all");
   const [semester, setSemester] = useState<string>(params.get("semester") === "1" || params.get("semester") === "2" ? (params.get("semester") as string) : "all");
@@ -54,9 +56,10 @@ export function ThinkHub() {
     let live = true;
     setTasks([]); setOverlay({}); setLoadError(false); setLoading(true);
     const isElective = grade.startsWith("EL-");
-    const metas = FILE_META.filter((m) => m.subject === site && (m.grades.includes(grade) || (!isElective && m.grades.length === 0)));
+    const level = site === "korean" ? levelFromCode(grade) : null; // Korean: tasks are grouped by language level (1-6급), whatever step they were written for
+    const metas = FILE_META.filter((m) => m.subject === site && (level ? true : m.grades.includes(grade) || (!isElective && m.grades.length === 0)));
     void Promise.all(metas.map((m) => TASK_LOADERS[m.key]())).then(async (lists) => {
-      const all = lists.flat().filter((t) => (t.grade ? t.grade === grade : !isElective && t.level === bandOf(grade)));
+      const all = lists.flat().filter((t) => (level ? koreanLevelOf(t.id) === level : t.grade ? t.grade === grade : !isElective && t.level === bandOf(grade)));
       const o = await loadOverlay(lang, metas.map((m) => m.key));
       if (live) { setTasks(all); setOverlay(o); setLoading(false); }
     }).catch(() => { if (live) { setLoadError(true); setLoading(false); } });
@@ -76,7 +79,7 @@ export function ThinkHub() {
   const fieldNow = fields.includes(field) ? field : "all"; // a ?field= that this grade has no tasks for falls back to all
   const shown = bySemester.filter((x) => fieldNow === "all" || fieldOf(x.task) === fieldNow);
   const current = open ? localized.find((x) => x.task.id === open) : undefined;
-  const grades = [...siteConfig(site).levels, ...(site === "math" ? Object.keys(ELECTIVE_NAMES) : [])];
+  const grades = site === "korean" ? KOREAN_LEVELS.map(levelCode) : [...siteConfig(site).levels, ...(site === "math" ? Object.keys(ELECTIVE_NAMES) : [])];
   const gradeName = (g: string) => (g.startsWith("EL-") ? ELECTIVE_NAMES[g][lang] : g);
 
   if (!ready) return <div className="l-wrap" role="status">…</div>;
@@ -101,7 +104,7 @@ export function ThinkHub() {
         <label className="l-stack" style={{ gap: 4 }}>
           <span className="l-muted">{H.grade}</span>
           <select className="l-input" data-testid="think-grade" value={grade} onChange={(e) => { setGrade(e.target.value); setField("all"); }}>
-            {grades.map((g) => <option key={g} value={g}>{g.startsWith("EL-") ? `${H.electives}: ${gradeName(g)}` : gradeLabel(g, lang)}</option>)}
+            {grades.map((g) => <option key={g} value={g}>{g.startsWith("EL-") ? `${H.electives}: ${gradeName(g)}` : isLevelCode(g) ? levelName(Number(g.slice(1)), lang) : gradeLabel(g, lang)}</option>)}
           </select>
         </label>
         {semesterOn && (

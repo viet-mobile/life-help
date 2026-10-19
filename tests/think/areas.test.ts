@@ -90,3 +90,20 @@ describe("grade display names", async () => {
     expect(gradeLabel("M3", "en")).toBe("Middle 3");
   });
 });
+
+describe("korean levels (1-6급)", async () => {
+  const { koreanLevelOf, priorLevelFor, KOREAN_LEVELS, levelName, levelCode, levelFromCode } = await import("@/lib/think/korean-levels");
+  it("has six named levels and level codes round-trip", () => {
+    expect(KOREAN_LEVELS).toEqual([1, 2, 3, 4, 5, 6]);
+    expect(levelName(1, "ko")).toBe("1급 · 초급 1");
+    expect(levelName(6, "ko")).toBe("6급 · 고급 2");
+    expect(levelFromCode(levelCode(4))).toBe(4);
+    expect(levelFromCode("K4")).toBeNull();
+  });
+  it("assigns every korean task to a level, and every old step K1-K10 has a starting level", async () => {
+    const missing: string[] = [];
+    for (const m of FILE_META.filter((x) => x.subject === "korean")) for (const t of await TASK_LOADERS[m.key]()) if (!koreanLevelOf(t.id)) missing.push(t.id);
+    expect(missing).toEqual([]);
+    for (let i = 1; i <= 10; i++) expect(priorLevelFor(`K${i}`), `K${i}`).toBeGreaterThanOrEqual(1);
+  });
+});
