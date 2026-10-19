@@ -139,3 +139,13 @@ describe("opening a task keeps the chosen list", () => {
     expect(src).toContain("koreanLevelOf(open)");
   });
 });
+
+describe("learner view shows only translated parts", () => {
+  it("reviewer-facing fields (not part of the translation overlay) are not rendered for learners", async () => {
+    const fs = await import("node:fs");
+    const src = fs.readFileSync("components/think/ThinkPlayer.tsx", "utf8");
+    expect(src).toContain("{reviewer && (");                                  // summary: rubric, alternatives, hard cases, cautions, auto-vs-human
+    expect(src).toContain("{reviewer && <p><b>{L.differs}:</b>");              // info panel: differs-from-plain
+    expect(src).toContain("{reviewer && <p><b>{L.curriculum}:</b>");           // info panel: curriculum note
+  });
+});

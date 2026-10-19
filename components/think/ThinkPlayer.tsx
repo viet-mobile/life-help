@@ -33,8 +33,8 @@ export function TaskPlayer({ task, lang, checksOff = false, reviewer, onBack, on
         <div className="mt-2 grid gap-2">
           <p><b>{L.goal}:</b> {task.goal}</p>
           <p><b>{L.thinking}:</b> {task.thinking.join(" · ")}</p>
-          <p><b>{L.differs}:</b> {task.differsFromPlain}</p>
-          <p><b>{L.curriculum}:</b> {task.curriculum ? `${task.curriculum.standard} — ${task.curriculum.note}` : L.none2}</p>
+          {reviewer && <p><b>{L.differs}:</b> {task.differsFromPlain}</p>}
+          {reviewer && <p><b>{L.curriculum}:</b> {task.curriculum ? `${task.curriculum.standard} — ${task.curriculum.note}` : L.none2}</p>}
         </div>
       </details>
       <p className="mt-2 text-xs text-slate-500">{L.uncertainty}</p>
@@ -264,6 +264,8 @@ function Summary({ task, L, done, reviewer }: { task: ThinkTask; L: Labels; done
     <section className="grid gap-3 rounded-2xl border-2 border-slate-900 p-4" data-testid="summary">
       <h2 className="text-lg font-black">{L.summary}</h2>
       <ul className="text-sm">{task.steps.map((s, i) => <li key={s.id}>{done[s.id] === "auto" ? "✅" : done[s.id] === "skipped" ? "⏭" : "◐"} {reviewer ? s.id : i + 1}: {done[s.id] === "auto" ? L.matchT : done[s.id] === "skipped" ? L.skip : L.needsHuman}</li>)}</ul>
+      {reviewer && (
+        <>
       <div><b>{L.autoVs}</b><ul className="list-disc pl-5 text-sm"><li><u>auto</u>: {task.autoVsHuman.auto.join("; ")}</li><li><u>human</u>: {task.autoVsHuman.human.join("; ")}</li></ul></div>
       <div><b>{L.rubric}</b>
         <table className="mt-1 w-full border text-xs"><thead><tr><th className="border p-1" /><th className="border p-1">{L.full}</th><th className="border p-1">{L.partial}</th><th className="border p-1">{L.none}</th></tr></thead>
@@ -271,6 +273,8 @@ function Summary({ task, L, done, reviewer }: { task: ThinkTask; L: Labels; done
       <div><b>{L.alternatives}</b><ul className="list-disc pl-5 text-sm">{task.alternatives.map((a, i) => <li key={i}>{a}</li>)}</ul></div>
       <div><b>{L.hard}</b><ul className="list-disc pl-5 text-sm">{task.hardCases.map((a, i) => <li key={i}>{a}</li>)}</ul></div>
       <div><b>{L.cautions}</b><ul className="list-disc pl-5 text-sm"><li>{task.cautions.language}</li><li>{task.cautions.culture}</li><li>{task.cautions.accessibility}</li></ul></div>
+            </>
+      )}
     </section>
   );
 }
