@@ -7,6 +7,7 @@ import { domainOf } from "@/lib/think/domains";
 import { fieldInfo, fieldKeyOf, fieldList } from "@/lib/think/areas";
 import { hasThinkSemesters, inSemester } from "@/lib/think/semesters";
 import { gradeLabel } from "@/lib/think/grades";
+import { BOSS_TEXT, addTrophy, bossKey, bossKeyOf, bossProgress, finalBossFor, isFinalBoss, readTrophies, type Trophy } from "@/lib/think/bosses";
 import { KOREAN_LEVELS, isLevelCode, koreanLevelOf, levelCode, levelFromCode, levelName, priorLevelFor } from "@/lib/think/korean-levels";
 import { thinkLangFor, type ThinkLang } from "@/lib/think/lang";
 import { checksOffFor, loadOverlay, localize } from "@/lib/think/localize";
@@ -45,13 +46,15 @@ export function ThinkHub() {
   const [tasks, setTasks] = useState<ThinkTask[]>([]);
   const [overlay, setOverlay] = useState<Record<string, Record<string, string>>>({});
   const [done, setDone] = useState<Record<string, string>>({});
+  const [trophies, setTrophies] = useState<Record<string, Trophy>>({});
+  const [won, setWon] = useState(false);
   const lang: ThinkLang = thinkLangFor(locale, site);
   const H = HUB[lang];
   const L = labels(lang);
   const open = params.get("task");
 
   useEffect(() => { if (!params.get("grade")) setGrade(own); }, [own, params]);
-  useEffect(() => { setDone(readDone(site)); }, [site]);
+  useEffect(() => { setDone(readDone(site)); setTrophies(readTrophies(site)); }, [site]);
   useEffect(() => {
     let live = true;
     setTasks([]); setOverlay({}); setLoadError(false); setLoading(true);
@@ -77,7 +80,12 @@ export function ThinkHub() {
   const semesterOn = hasThinkSemesters(site) && !grade.startsWith("EL-");
   const bySemester = localized.filter((x) => !semesterOn || inSemester(x.task.id, semester));
   const fieldNow = fields.includes(field) ? field : "all"; // a ?field= that this grade has no tasks for falls back to all
-  const shown = bySemester.filter((x) => fieldNow === "all" || fieldOf(x.task) === fieldNow);
+  const shown = bySemester.filter((x) => !isFinalBoss(x.task.id) && (fieldNow === "all" || fieldOf(x.task) === fieldNow));
+  const BT = BOSS_TEXT[lang];
+  // final bosses of the chosen grade / semester(s) / level, only those fully available in this language
+  const bossSlots = (grade.startsWith("EL-") ? [] : site === "korean" ? [bossKey(site, grade, 1)] : semester === "all" ? [bossKey(site, grade, 1), bossKey(site, grade, 2)] : [bossKey(site, grade, Number(semester) as 1 | 2)])
+    .map((key) => ({ key, task: localized.find((x) => x.task.id === finalBossFor(key))?.task })).filter((b) => b.task);
+  const slotName = (key: string) => (site === "korean" ? levelName(Number(key.split("L")[1]), lang) : `${gradeLabel(key.split("|")[1], lang)} ${t(`semester.${key.split("|")[2]}` as never)}`);
   const current = open ? localized.find((x) => x.task.id === open) : undefined;
   const grades = site === "korean" ? KOREAN_LEVELS.map(levelCode) : [...siteConfig(site).levels, ...(site === "math" ? Object.keys(ELECTIVE_NAMES) : [])];
   const gradeName = (g: string) => (g.startsWith("EL-") ? ELECTIVE_NAMES[g][lang] : g);
@@ -91,7 +99,7 @@ export function ThinkHub() {
       <div className="l-wrap l-stack" data-testid="think-player">
         <TaskPlayer key={`${current.task.id}:${lang}`} task={current.task} lang={lang} checksOff={checksOffFor(current.task, lang)} reviewer={false}
           onBack={() => router.push(href("/think"))} onFlag={() => undefined}
-          onComplete={() => { const d = { ...readDone(site), [current.task.id]: new Date().toISOString() }; writeDone(site, d); setDone(d); try { window.localStorage.setItem(flowKey(site), JSON.stringify(taskCompleted(readLedger(site), current.task.id))); } catch { /* storage unavailable */ } }} />
+          onComplete={() => { const d = { ...readDone(site), [current.task.id]: new Date().toISOString() }; writeDone(site, d); setDone(d); try { window.localStorage.setItem(flowKey(site), JSON.stringify(taskCompleted(readLedger(site), current.task.id))); } catch { /* storage unavailable */ } if (isFinalBoss(current.task.id)) { addTrophy(site, current.task.id); setTrophies(readTrophies(site)); setWon(true); } }} />
       </div>
     );
   }
@@ -128,6 +136,30 @@ export function ThinkHub() {
         )}
         <p className="l-muted">{H.done}: {doneCount} {H.of} {shown.length}</p>
       </div>
+      {(bossSlots.length > 0 || Object.keys(trophies).length > 0) && (
+        <section className="l-card l-stack" data-testid="think-boss" aria-labelledby="boss-h" style={{ borderColor: "var(--l-accent)" }}>
+          <h2 id="boss-h" className="l-h2">👑 {BT.final}</h2>
+          {won && <div className="l-panel l-panel-hint" role="status" data-testid="boss-reward">🏆 {BT.reward}</div>}
+          {bossSlots.map(({ key, task }) => {
+            const prog = bossProgress(key, state.lessons ?? {});
+            const beaten = trophies[key];
+            return (
+              <button key={key} type="button" className="l-card" disabled={!prog.open} data-testid={`boss-${key}`} data-state={beaten ? "defeated" : prog.open ? "open" : "locked"}
+                style={{ textAlign: "left", width: "100%", cursor: prog.open ? "pointer" : "not-allowed", opacity: prog.open ? 1 : 0.65, display: "block" }}
+                onClick={() => router.push(href(`/think?task=${encodeURIComponent(task!.id)}`))}>
+                <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                  <div className="l-muted" style={{ fontSize: 13 }}>{beaten ? `✅ ${BT.defeated} · ` : prog.open ? "⚔️ " : "🔒 "}{slotName(key)}</div>
+                  <strong style={{ display: "block", fontSize: 18, lineHeight: 1.35 }}>{task!.title}</strong>
+                  <div className="l-muted" style={{ lineHeight: 1.5 }}>{beaten ? BT.title(slotName(key)) : prog.open ? BT.open : BT.locked(prog.done, prog.total)}</div>
+                </div>
+              </button>
+            );
+          })}
+          {Object.keys(trophies).length > 0 && (
+            <div data-testid="boss-trophies" className="l-muted"><strong>🏆 {BT.trophies} ({Object.keys(trophies).length})</strong>{" "}{Object.keys(trophies).sort().map((k) => slotName(k)).join(" · ")}</div>
+          )}
+        </section>
+      )}
       {shown.length === 0 && <div className="l-panel l-panel-hint" role="status">{H.empty}</div>}
       {hidden > 0 && <div className="l-panel l-panel-hint" role="status" data-testid="think-hidden">{H.notTranslated} ({hidden})</div>}
       <ul className="l-stack" style={{ listStyle: "none", padding: 0 }}>

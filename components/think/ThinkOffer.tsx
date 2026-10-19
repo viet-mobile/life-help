@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { FILE_META, TASK_LOADERS } from "@/lib/think/data/assets-index";
 import { koreanLevelOf, priorLevelFor } from "@/lib/think/korean-levels";
+import { isFinalBoss } from "@/lib/think/bosses";
 import { thinkLangFor } from "@/lib/think/lang";
 import { loadOverlay, localize } from "@/lib/think/localize";
 import {
@@ -40,7 +41,7 @@ async function readyTasks(site: "math" | "english" | "korean", grade: string, lo
   const lists = await Promise.all(metas.map((m) => TASK_LOADERS[m.key]()));
   const own = lists.flat().filter((t: ThinkTask) => (level ? koreanLevelOf(t.id) === level : t.grade ? t.grade === grade : t.level === bandOf(grade)));
   const overlay = await loadOverlay(lang, metas.map((m) => m.key));
-  return own.map((t) => localize(t, lang, overlay)).filter((x) => x.translated || x.task.uiLang === lang);
+  return own.filter((t) => !isFinalBoss(t.id)).map((t) => localize(t, lang, overlay)).filter((x) => x.translated || x.task.uiLang === lang); // final bosses are not offered as mid-bosses
 }
 
 /**

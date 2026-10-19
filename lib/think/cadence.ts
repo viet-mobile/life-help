@@ -13,10 +13,10 @@ export function thinkCadence(answered: number, tried: number, per = REGULAR_PER_
 }
 
 export const CADENCE_TEXT: Record<ThinkLang, { unlocked: (n: number) => string; toNext: (n: number) => string }> = {
-  ko: { unlocked: (n) => `일반 문제 10개를 풀어 사고력 도전 ${n}개가 열렸어요`, toNext: (n) => `일반 문제 ${n}개를 더 풀면 사고력 도전이 열려요` },
-  en: { unlocked: (n) => `${n} thinking challenge${n > 1 ? "s" : ""} unlocked by your regular practice`, toNext: (n) => `${n} more regular question${n > 1 ? "s" : ""} to unlock a thinking challenge` },
-  "zh-Hans": { unlocked: (n) => `做完常规题已解锁 ${n} 个思维力挑战`, toNext: (n) => `再做 ${n} 道常规题即可解锁一个思维力挑战` },
-  "zh-Hant": { unlocked: (n) => `完成一般題已解鎖 ${n} 個思考力挑戰`, toNext: (n) => `再做 ${n} 道一般題即可解鎖一個思考力挑戰` },
-  ja: { unlocked: (n) => `通常の問題で思考力チャレンジが${n}個解放されました`, toNext: (n) => `通常の問題をあと${n}問解くと思考力チャレンジが解放されます` },
-  vi: { unlocked: (n) => `Đã mở ${n} thử thách tư duy nhờ luyện tập thường`, toNext: (n) => `Làm thêm ${n} câu thường để mở một thử thách tư duy` },
+  ko: { unlocked: (n) => `일반 문제를 풀어서 중간 보스 ${n}명이 기다리고 있어요`, toNext: (n) => `일반 문제 ${n}개를 더 풀면 중간 보스가 나타나요` },
+  en: { unlocked: (n) => `${n} mid-boss${n > 1 ? "es are" : " is"} waiting after your regular practice`, toNext: (n) => `${n} more regular question${n > 1 ? "s" : ""} until the next mid-boss` },
+  "zh-Hans": { unlocked: (n) => `做完常规题，${n} 个中期首领在等你`, toNext: (n) => `再做 ${n} 道常规题，中期首领就会出现` },
+  "zh-Hant": { unlocked: (n) => `做完一般題，${n} 個中期首領在等你`, toNext: (n) => `再做 ${n} 道一般題，中期首領就會出現` },
+  ja: { unlocked: (n) => `通常の問題を解いて、中ボスが${n}体待っています`, toNext: (n) => `通常の問題をあと${n}問解くと中ボスが現れます` },
+  vi: { unlocked: (n) => `${n} trùm giữa đang chờ sau phần luyện tập thường`, toNext: (n) => `Làm thêm ${n} câu thường để trùm giữa xuất hiện` },
 };
