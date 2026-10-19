@@ -6,6 +6,7 @@ import { buildPath } from "@/lib/learn/domain/path";
 import type { Course } from "@/lib/learn/types";
 import { currentSemester, hasSemesters, semesterOf, type Semester } from "@/lib/learn/content/semesters";
 import { previousLevel } from "@/lib/learn/korean-grades";
+import { courseTopic } from "@/lib/learn/korean-bands";
 import { BandChip } from "./BandChip";
 import { OfficialGradeChip } from "./OfficialGradeChip";
 import { useLearner } from "./LearnerProvider";
@@ -39,7 +40,7 @@ export function CoursePath({ course }: { course: Course }) {
         {site === "korean" && (
           <p className="l-muted" data-testid="course-official">
             <OfficialGradeChip level={course.grade} t={t} />
-            {previousLevel(course.grade) && <span> · {t("korean.official.prev", { level: t(`grade.${previousLevel(course.grade)}` as never) })}</span>}
+            {previousLevel(course.grade) && <span> · {t("korean.official.prev", { level: courseTopic(t(`grade.${previousLevel(course.grade)}` as never)) })}</span>}
           </p>
         )}
       </div>

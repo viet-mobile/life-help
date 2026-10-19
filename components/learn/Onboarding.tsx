@@ -6,7 +6,7 @@ import { learnConfig } from "@/lib/learn/config";
 import { AVATARS } from "@/lib/learn/avatars";
 import { siteConfig, isLevelOf } from "@/lib/learn/sites";
 import { UNAVAILABLE_KOREAN_LEVELS } from "@/lib/learn/korean-availability";
-import { BANDS, bandLabel, bandOfLevel, isPublishedBand, startLevelOfBand, type Band } from "@/lib/learn/korean-bands";
+import { BANDS, bandLabel, courseTopic, bandOfLevel, isPublishedBand, startLevelOfBand, type Band } from "@/lib/learn/korean-bands";
 import { GOALS, type Goal, type Grade } from "@/lib/learn/types";
 import { useEnterToContinue } from "./useEnterToContinue";
 import { LocaleSwitch } from "./LocaleSwitch";
@@ -104,9 +104,8 @@ export function Onboarding() {
           <h1 className="l-h1">{t(site === "korean" ? "onboarding.level.title" : "onboarding.grade.title")}</h1>
           {site === "korean" && (
             <div role="radiogroup" aria-label={t("korean.band.pick")} className="l-stack" data-testid="band-picker">
-              <p className="l-muted" style={{ fontWeight: 800 }}>{t("korean.band.pick")}</p>
               <p className="l-muted" style={{ fontSize: "0.9rem" }}>{t("korean.band.pick.hint")}</p>
-              <div className="l-options l-grades">
+              <div className="l-options l-grades" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(8rem, 1fr))" }}>
                 {BANDS.map((b) => {
                   const open = isPublishedBand(b);
                   return (
@@ -117,10 +116,8 @@ export function Onboarding() {
                   );
                 })}
               </div>
-              <p className="l-panel" role="status" style={{ fontSize: "0.9rem" }}>
-                {grade ? t("korean.band.start", { level: t(`grade.${grade}` as never) }) : t("korean.band.preparing")}
-                {!isPublishedBand("grade-6") && grade ? <><br />{t("korean.band.preparing")}</> : null}
-              </p>
+              {grade && <p className="l-panel" role="status" style={{ fontSize: "0.9rem" }}>{t("korean.band.start", { level: courseTopic(t(`grade.${grade}` as never)) })}</p>}
+              <p className="l-muted" style={{ fontSize: "0.85rem" }}>{t("korean.band.preparing")}</p>
             </div>
           )}
           {site !== "korean" && siteConfig(site).levelGroups.map(({ key: level, levels: list }) => (

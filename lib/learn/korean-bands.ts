@@ -30,3 +30,6 @@ export function bandOfLevel(level: string): Band | null {
 }
 /** Display label of a band (the numbered levels reuse "{grade}급"). */
 export const bandLabel = (b: Band, t: Translator): string => (b === "intro" ? t("korean.band.intro") : t("korean.official.grade", { grade: bandNumber(b) }));
+
+/** The course label without its internal step number ("Level 5 · Past events" -> "Past events"): the step numbers K1~K10 are internal and must not be mistaken for the curriculum levels 1~6. */
+export const courseTopic = (label: string): string => { const i = label.indexOf(" · "); return i >= 0 ? label.slice(i + 3) : label; };

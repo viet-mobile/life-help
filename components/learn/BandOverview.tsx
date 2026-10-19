@@ -1,6 +1,6 @@
 "use client";
 
-import { BANDS, bandLabel, bandOfLesson, isPublishedBand, lessonsOfBand, startLevelOfBand } from "@/lib/learn/korean-bands";
+import { BANDS, bandLabel, courseTopic, bandOfLesson, isPublishedBand, lessonsOfBand, startLevelOfBand } from "@/lib/learn/korean-bands";
 import { useLearner } from "./LearnerProvider";
 
 /**
@@ -22,7 +22,7 @@ export function BandOverview() {
             <li key={b} data-testid={`band-row-${b}`} data-band={b} data-current={current === b ? "true" : undefined} data-published={isPublishedBand(b) ? "true" : "false"}>
               <strong>{bandLabel(b, t)}</strong>{" "}
               {isPublishedBand(b) ? (
-                <span className="l-muted">{t("korean.band.progress", { done: n, total: ids.length })}{startLevelOfBand(b) ? ` · ${t("korean.band.start", { level: t(`grade.${startLevelOfBand(b)}` as never) })}` : ""}</span>
+                <span className="l-muted">{t("korean.band.progress", { done: n, total: ids.length })}{startLevelOfBand(b) ? ` · ${t("korean.band.start", { level: courseTopic(t(`grade.${startLevelOfBand(b)}` as never)) })}` : ""}</span>
               ) : (
                 <span className="l-muted">{t("korean.band.preparing")}</span>
               )}
