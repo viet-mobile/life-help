@@ -94,11 +94,14 @@ export function ThinkHub() {
   const loadText = { ko: ["과제를 불러오는 중…", "과제를 불러오지 못했어요.", "다시 시도"], en: ["Loading tasks…", "Could not load tasks.", "Try again"], vi: ["Đang tải bài tập…", "Không thể tải bài tập.", "Thử lại"], ja: ["課題を読み込み中…", "課題を読み込めませんでした。", "再試行"], "zh-Hans": ["正在加载任务…", "无法加载任务。", "重试"], "zh-Hant": ["正在載入任務…", "無法載入任務。", "重試"] }[lang];
   if (loadError) return <div className="l-wrap" role="alert"><p>{loadText[1]}</p><button className="l-btn" onClick={() => setRetry(n => n + 1)}>{loadText[2]}</button></div>;
   if (loading) return <div className="l-wrap" role="status">{loadText[0]}</div>;
+  // "next challenge": the next not-yet-tried task of the list the learner is looking at (this grade / semester / field), else any other untried one
+  const order = shown.map((x) => x.task.id);
+  const nextId = current ? (order.slice(order.indexOf(current.task.id) + 1).find((id) => !done[id]) ?? order.find((id) => id !== current.task.id && !done[id]) ?? null) : null;
   if (current) {
     return (
       <div className="l-wrap l-stack" data-testid="think-player">
         <TaskPlayer key={`${current.task.id}:${lang}`} task={current.task} lang={lang} checksOff={checksOffFor(current.task, lang)} reviewer={false}
-          onBack={() => router.push(href("/think"))} onFlag={() => undefined}
+          onBack={() => router.push(href("/think"))} onNext={nextId ? () => router.push(href(`/think?task=${encodeURIComponent(nextId)}`)) : undefined} onFlag={() => undefined}
           onComplete={() => { const d = { ...readDone(site), [current.task.id]: new Date().toISOString() }; writeDone(site, d); setDone(d); try { window.localStorage.setItem(flowKey(site), JSON.stringify(taskCompleted(readLedger(site), current.task.id))); } catch { /* storage unavailable */ } if (isFinalBoss(current.task.id)) { addTrophy(site, current.task.id); setTrophies(readTrophies(site)); setWon(true); } }} />
       </div>
     );

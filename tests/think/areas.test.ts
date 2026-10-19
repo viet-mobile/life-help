@@ -107,3 +107,14 @@ describe("korean levels (1-6급)", async () => {
     for (let i = 1; i <= 10; i++) expect(priorLevelFor(`K${i}`), `K${i}`).toBeGreaterThanOrEqual(1);
   });
 });
+
+describe("player actions after the last step", async () => {
+  const { labels } = await import("@/components/think/labels");
+  it("has a next-challenge and a back-to-list label in every language", () => {
+    for (const l of ["ko", "en", "zh-Hans", "zh-Hant", "ja", "vi"] as const) {
+      expect(labels(l).nextTask.length, l).toBeGreaterThan(2);
+      expect(labels(l).toList.length, l).toBeGreaterThan(1);
+    }
+    expect(labels("ko").nextTask).toContain("다음");
+  });
+});

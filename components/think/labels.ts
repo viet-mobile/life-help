@@ -3,7 +3,7 @@ import type { ThinkLang } from "@/lib/think/lang";
 /** Chrome strings of the review player. Task content has its own language (task.uiLang); the player follows it. */
 const L = {
   ko: {
-    title: "사고력 시범 과제", info: "이 과제의 목표와 요구하는 사고 (먼저 풀고 나서 보세요)", back: "← 목록", all: "전체", subject: "과목", level: "수준", math: "수학", english: "영어", korean: "한국어",
+    title: "사고력 시범 과제", info: "이 과제의 목표와 요구하는 사고 (먼저 풀고 나서 보세요)", back: "← 목록", nextTask: "다음 문제 ▶", toList: "목록으로", all: "전체", subject: "과목", level: "수준", math: "수학", english: "영어", korean: "한국어",
     minutes: "분", goal: "학습 목표", thinking: "요구하는 사고", differs: "단순 문항과 다른 점", prereq: "선수학습",
     start: "시작", check: "확인", next: "다음", finish: "마치기", hint: "힌트", hintNone: "더 이상 힌트가 없어요", skip: "이미 알아요 — 건너뛰기", retry: "다시 도전",
     matchT: "자동으로 확인됨", acceptT: "다른 타당한 답", notT: "아직 맞지 않아요", surfaceNote: "아래는 글의 '겉모습'만 확인한 결과예요. 글이 좋은지 아닌지는 판단하지 않아요.",
@@ -15,7 +15,7 @@ const L = {
     uncertainty: "이 화면의 자동 확인은 정답을 확정하는 판정이 아니에요. 틀렸다고 나와도 다시 시도하거나 이의를 남길 수 있어요.", before: "이전 예측", notAnswered: "아직 답하지 않았어요", enterAnswer: "답을 입력하세요", numbers: "숫자로 입력",
   },
   en: {
-    title: "Thinking tasks (pilot)", info: "Goal and the thinking this task asks for (open it after you try)", back: "← List", all: "All", subject: "Subject", level: "Level", math: "Math", english: "English", korean: "Korean",
+    title: "Thinking tasks (pilot)", info: "Goal and the thinking this task asks for (open it after you try)", back: "← List", nextTask: "Next challenge ▶", toList: "Back to the list", all: "All", subject: "Subject", level: "Level", math: "Math", english: "English", korean: "Korean",
     minutes: "min", goal: "Learning goal", thinking: "Thinking required", differs: "How this differs from plain practice", prereq: "Prior knowledge",
     start: "Start", check: "Check", next: "Next", finish: "Finish", hint: "Hint", hintNone: "No more hints", skip: "I already see it — skip", retry: "Try again",
     matchT: "Checked automatically", acceptT: "Another valid answer", notT: "Not matching yet", surfaceNote: "This only checks the surface of your text. It does not judge whether the text is good.",
@@ -27,7 +27,7 @@ const L = {
     uncertainty: "Automatic checks here are not a final verdict. Even if it says no, you can try again or leave a note.", before: "Earlier prediction", notAnswered: "Not answered yet", enterAnswer: "Enter your answer", numbers: "Enter numbers",
   },
   "zh-Hans": {
-    title: "思维力任务（试点）", info: "本任务的目标与所需思考（做完再看）", back: "← 列表", all: "全部", subject: "科目", level: "水平", math: "数学", english: "英语", korean: "韩语",
+    title: "思维力任务（试点）", info: "本任务的目标与所需思考（做完再看）", back: "← 列表", nextTask: "下一题 ▶", toList: "返回列表", all: "全部", subject: "科目", level: "水平", math: "数学", english: "英语", korean: "韩语",
     minutes: "分钟", goal: "学习目标", thinking: "需要的思考", differs: "与普通练习的区别", prereq: "先修知识",
     start: "开始", check: "检查", next: "下一步", finish: "完成", hint: "提示", hintNone: "没有更多提示了", skip: "我已经懂了 — 跳过", retry: "再试一次",
     matchT: "已自动确认", acceptT: "另一种合理的答案", notT: "还不太对", surfaceNote: "下面只检查文字的“表面特征”，不判断文章好不好。",
@@ -39,7 +39,7 @@ const L = {
     uncertainty: "这里的自动确认不是最终判定。即使显示不对，也可以再试一次或留下意见。", before: "之前的预测", notAnswered: "尚未作答", enterAnswer: "请输入答案", numbers: "请输入数字",
   },
   "zh-Hant": {
-    title: "思考力任務（試辦）", info: "本任務的目標與所需思考（做完再看）", back: "← 列表", all: "全部", subject: "科目", level: "程度", math: "數學", english: "英語", korean: "韓語",
+    title: "思考力任務（試辦）", info: "本任務的目標與所需思考（做完再看）", back: "← 列表", nextTask: "下一題 ▶", toList: "返回列表", all: "全部", subject: "科目", level: "程度", math: "數學", english: "英語", korean: "韓語",
     minutes: "分鐘", goal: "學習目標", thinking: "需要的思考", differs: "與一般練習的差別", prereq: "先備知識",
     start: "開始", check: "檢查", next: "下一步", finish: "完成", hint: "提示", hintNone: "沒有更多提示了", skip: "我已經懂了 — 跳過", retry: "再試一次",
     matchT: "已自動確認", acceptT: "另一種合理的答案", notT: "還不太對", surfaceNote: "以下只檢查文字的「表面特徵」，不判斷文章好不好。",
@@ -51,7 +51,7 @@ const L = {
     uncertainty: "這裡的自動確認不是最終判定。即使顯示不對，也可以再試一次或留下意見。", before: "先前的預測", notAnswered: "尚未作答", enterAnswer: "請輸入答案", numbers: "請輸入數字",
   },
   ja: {
-    title: "思考力タスク（試行版）", info: "このタスクの目標と求められる思考（解いてから開いてください）", back: "← 一覧", all: "すべて", subject: "教科", level: "レベル", math: "数学", english: "英語", korean: "韓国語",
+    title: "思考力タスク（試行版）", info: "このタスクの目標と求められる思考（解いてから開いてください）", back: "← 一覧", nextTask: "次の問題 ▶", toList: "一覧へ", all: "すべて", subject: "教科", level: "レベル", math: "数学", english: "英語", korean: "韓国語",
     minutes: "分", goal: "学習目標", thinking: "求められる思考", differs: "通常の練習との違い", prereq: "必要な予備知識",
     start: "はじめる", check: "確認", next: "次へ", finish: "終了", hint: "ヒント", hintNone: "これ以上ヒントはありません", skip: "もう分かるのでスキップ", retry: "もう一度",
     matchT: "自動で確認できました", acceptT: "ほかにも妥当な答え", notT: "まだ合っていません", surfaceNote: "以下は文章の「表面的な特徴」だけを確認した結果です。文章の良し悪しは判断しません。",
@@ -63,7 +63,7 @@ const L = {
     uncertainty: "ここでの自動確認は最終判定ではありません。違うと出ても、もう一度試すか意見を残せます。", before: "前の予想", notAnswered: "まだ答えていません", enterAnswer: "答えを入力してください", numbers: "数字で入力",
   },
   vi: {
-    title: "Bài tập tư duy (thử nghiệm)", info: "Mục tiêu và kiểu tư duy của bài (hãy mở sau khi làm)", back: "← Danh sách", all: "Tất cả", subject: "Môn", level: "Mức", math: "Toán", english: "Tiếng Anh", korean: "Tiếng Hàn",
+    title: "Bài tập tư duy (thử nghiệm)", info: "Mục tiêu và kiểu tư duy của bài (hãy mở sau khi làm)", back: "← Danh sách", nextTask: "Câu tiếp theo ▶", toList: "Về danh sách", all: "Tất cả", subject: "Môn", level: "Mức", math: "Toán", english: "Tiếng Anh", korean: "Tiếng Hàn",
     minutes: "phút", goal: "Mục tiêu học tập", thinking: "Tư duy cần dùng", differs: "Khác gì bài luyện thông thường", prereq: "Kiến thức cần có trước",
     start: "Bắt đầu", check: "Kiểm tra", next: "Tiếp", finish: "Hoàn thành", hint: "Gợi ý", hintNone: "Hết gợi ý", skip: "Em đã hiểu — bỏ qua", retry: "Thử lại",
     matchT: "Đã được xác nhận tự động", acceptT: "Một đáp án hợp lý khác", notT: "Chưa đúng", surfaceNote: "Phần dưới chỉ kiểm tra \"hình thức\" của văn bản, không đánh giá văn bản hay hay dở.",

@@ -11,7 +11,7 @@ export interface Flag { task: string; step: string; note: string; at: string }
  * One task, played step by step. `lang` is the language of the (already localized) task content and of the chrome; `checksOff` hides the
  * surface checks of written answers (math answers are written in the learner's language, the checks only know the authored language).
  */
-export function TaskPlayer({ task, lang, checksOff = false, reviewer, onBack, onFlag, onComplete }: { task: ThinkTask; lang?: ThinkLang; checksOff?: boolean; reviewer: boolean; onBack: () => void; onFlag: (f: Omit<Flag, "at">) => void; onComplete?: () => void }) {
+export function TaskPlayer({ task, lang, checksOff = false, reviewer, onBack, onNext, onFlag, onComplete }: { task: ThinkTask; lang?: ThinkLang; checksOff?: boolean; reviewer: boolean; onBack: () => void; onNext?: () => void; onFlag: (f: Omit<Flag, "at">) => void; onComplete?: () => void }) {
   const L = labels(lang ?? task.uiLang);
   const shownLang = lang ?? task.uiLang;
   const [started, setStarted] = useState(false);
@@ -47,7 +47,9 @@ export function TaskPlayer({ task, lang, checksOff = false, reviewer, onBack, on
               onResult={(how) => mark(s.id, how)} onFlag={(note) => onFlag({ task: task.id, step: s.id, note })}
               onNext={() => setAt((a) => Math.max(a, i + 1))} resolved={done[s.id]} />
           ))}
+          {finished && <Actions L={L} onNext={onNext} onBack={onBack} where="top" />}
           {finished && <Summary task={task} L={L} done={done} />}
+          {finished && <Actions L={L} onNext={onNext} onBack={onBack} where="bottom" />}
         </div>
       )}
     </main>
@@ -269,5 +271,15 @@ function Summary({ task, L, done }: { task: ThinkTask; L: Labels; done: Record<s
       <div><b>{L.hard}</b><ul className="list-disc pl-5 text-sm">{task.hardCases.map((a, i) => <li key={i}>{a}</li>)}</ul></div>
       <div><b>{L.cautions}</b><ul className="list-disc pl-5 text-sm"><li>{task.cautions.language}</li><li>{task.cautions.culture}</li><li>{task.cautions.accessibility}</li></ul></div>
     </section>
+  );
+}
+
+/** After the last step: go on to the next challenge without scrolling back to the top (shown right under the work and again under the summary). */
+function Actions({ L, onNext, onBack, where }: { L: Labels; onNext?: () => void; onBack: () => void; where: "top" | "bottom" }) {
+  return (
+    <div className="flex flex-wrap gap-3" data-testid={`think-actions-${where}`}>
+      {onNext && <button type="button" className="rounded-xl bg-slate-900 px-5 py-3 font-black text-white" data-testid={`think-next-${where}`} onClick={onNext}>{L.nextTask}</button>}
+      <button type="button" className="rounded-xl border-2 border-slate-900 px-5 py-3 font-black" data-testid={`think-tolist-${where}`} onClick={onBack}>{L.toList}</button>
+    </div>
   );
 }
