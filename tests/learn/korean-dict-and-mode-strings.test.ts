@@ -45,7 +45,7 @@ describe("Korean dictation is on only where the language carries its template", 
     }
     for (const loc of ["tr", "hi", "ar"]) {
       const { bundle } = await loadIndex("korean", { locale: loc as never });
-      expect(bundle.questions.length, loc).toBe(718);
+      expect(bundle.questions.length, loc).toBe(722);
       expect(bundle.questions.some((q) => q.id.startsWith("kb-") || q.type === "short_answer"), loc).toBe(false);
       expect(bundle.catalog.skills.length, loc).toBeGreaterThan(0);
     }

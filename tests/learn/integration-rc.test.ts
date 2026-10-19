@@ -18,12 +18,12 @@ describe("integration: English hint gate covers the whole served bank (existing 
 });
 
 describe("integration: Korean bank per-language scope (a missing translation kit never removes the existing course)", () => {
-  it("all 47 languages keep the 718 existing Korean course questions; the bank is all-or-nothing per language; dict only where the dict template exists", async () => {
+  it("all 47 languages keep the 722 existing Korean course questions; the bank is all-or-nothing per language; dict only where the dict template exists", async () => {
     const withBank: string[] = [];
     for (const l of LOCALES) {
       const { bundle } = await loadIndex("korean", { locale: l as never });
       const kb = bundle.questions.filter((q) => q.id.startsWith("kb-"));
-      expect(bundle.questions.length - kb.length, l).toBe(718);
+      expect(bundle.questions.length - kb.length, l).toBe(722);
       const dict = kb.filter((q) => q.id.endsWith("-dict"));
       expect([0, 13445], l).toContain(kb.length);
       if (kb.length) { withBank.push(l); expect(dict.length, l).toBe(60); for (const q of dict) { expect(q.audioText, `${l} ${q.id}`).toBeTruthy(); expect(q.prompt.length, `${l} ${q.id}`).toBeGreaterThan(0); } }

@@ -141,9 +141,9 @@ describe("the real service hands the published bank to learners", () => {
       mastery: Object.fromEntries(skills.map((s) => [s, { skillId: s, score: 40, attempts: 5, correct: 2, streak: 0, box: 1, lastPracticedAt: "2026-02-01T00:00:00.000Z", nextReviewAt: "2026-02-01T00:00:00.000Z" }])), lessons: {},
     },
   });
-  it("loadIndex carries the 718 course questions (K1..K10) and the 13,445 bank questions", async () => {
+  it("loadIndex carries the 722 course questions (K1..K10) and the 13,445 bank questions", async () => {
     const { bundle } = await loadIndex("korean", { locale: "ko" });
-    expect(bundle.questions.length).toBe(718 + 13445);
+    expect(bundle.questions.length).toBe(722 + 13445);
     expect(bundle.questions.filter((q) => q.id.startsWith("kb-")).length).toBe(13445);
   });
   it("hint and attempt reach a bank question", async () => {

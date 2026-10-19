@@ -123,6 +123,8 @@ const BASE_LEVELS = [
         { k: "number", ko: "삼", rr: "sam", n: 3, note: "sino", challenge: true },
         { k: "number", ko: "넷", rr: "net", n: 4, variant: true },
         { k: "number", ko: "일", rr: "il", n: 1, note: "sino", variant: true },
+        // typed answers (added 2026-10-19: every lesson that claims writing has typed or ordering questions)
+        { k: "fill", blank: "하나, ____, 셋", ko: "하나, 둘, 셋", rr: "hana, dul, set", answers: ["둘"], g: "two", ans_rr: "dul" },
       ] },
     ],
     diagnostic: [
@@ -141,6 +143,7 @@ const BASE_LEVELS = [
         { k: "listen", ko: "공부해요.", rr: "gongbuhaeyo.", wrong: ["마셔요.", "먹어요.", "와요."], challenge: true },
         { k: "meaning", ko: "와요.", rr: "wayo.", g: "come", wrong: ["go", "sleep", "eat"], variant: true },
         { k: "read", ko: "먹어요", rr: "meogeoyo", wrong: ["meokeoyo", "mogoyo", "meogoyo"], variant: true },
+        { k: "fill", blank: "물을 ____.", ko: "물을 마셔요.", rr: "mureul masyeoyo.", answers: ["마셔요"], g: "drinkWater", ans_rr: "masyeoyo" },
       ] },
       { skill: "places", items: [
         { k: "meaning", ko: "학교에 가요.", rr: "hakgyoe gayo.", g: "goSchool", wrong: ["goHome", "comeHome", "goLibrary"], note: "e" },

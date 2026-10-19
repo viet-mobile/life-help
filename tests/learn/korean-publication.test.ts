@@ -52,7 +52,7 @@ describe("Korean K1..K10 publication across the student pathways", () => {
     for (const locale of ["am", "ar", "tr", "uk"] as const) {
       const { bundle } = await loadIndex("korean", { locale });
       expect(bundle.questions.some((q) => q.id.startsWith("kb-")), locale).toBe(false);
-      expect(bundle.questions.length, locale).toBe(718);
+      expect(bundle.questions.length, locale).toBe(722);
     }
   });
 
@@ -89,8 +89,8 @@ describe("Korean K1..K10 publication across the student pathways", () => {
     expect(totalLessonQuestions).toBeGreaterThan(0);
   });
 
-  it("7. Canonical uniqueness audit: 716 distinct content items across 718 IDs with exactly 2 intentional placement duplicates", () => {
-    expect(korCanonical.questions.length).toBe(718);
+  it("7. Canonical uniqueness audit: 720 distinct content items across 722 IDs with exactly 2 intentional placement duplicates", () => {
+    expect(korCanonical.questions.length).toBe(722);
     const contentKeys = new Map<string, string[]>();
 
     for (const q of korCanonical.questions) {
@@ -103,7 +103,7 @@ describe("Korean K1..K10 publication across the student pathways", () => {
     }
 
     // 676 distinct items
-    expect(contentKeys.size).toBe(716);
+    expect(contentKeys.size).toBe(720);
 
     const duplicateGroups = [...contentKeys.values()].filter((ids) => ids.length > 1);
     expect(duplicateGroups).toEqual([

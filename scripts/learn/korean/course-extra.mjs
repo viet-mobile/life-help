@@ -94,10 +94,12 @@ export const EXTRA_LESSONS = {
     { skill: "native10", items: [
       N("여섯", "yeoseot", 6, { note: "native" }), N("일곱", "ilgop", 7), N("여덟", "yeodeol", 8), N("아홉", "ahop", 9),
       N("열", "yeol", 10, c), M("여덟", "yeodeol", "eight", ["six", "nine", "ten"], v), L("아홉", "ahop", ["여덟", "일곱", "여섯"], v),
+      F("여섯, 일곱, ____", "여섯, 일곱, 여덟", "yeoseot, ilgop, yeodeol", ["여덟"], "eight", "yeodeol"),
     ] },
     { skill: "sino", items: [
       N("이", "i", 2, { note: "sino" }), N("사", "sa", 4), N("육", "yuk", 6), N("칠", "chil", 7),
       N("십", "sip", 10, c), N("구", "gu", 9, v), N("팔", "pal", 8, v),
+      F("일, 이, ____", "일, 이, 삼", "il, i, sam", ["삼"], "three", "sam"),
     ] },
     { skill: "ages", items: [
       M("나이", "nai", "age", ["family", "friend", "school"]), M("몇 살이에요?", "myeot sarieyo?", "howOld", ["whatTime", "howMuch", "whatsYourName"]),
