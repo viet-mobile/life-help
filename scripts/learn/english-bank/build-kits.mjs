@@ -557,6 +557,10 @@ for (const locale of locales) {
   const extraPath = path.join(ROOT, "scripts/learn/english-bank/kit-extra", `${locale}.json`);
   if (fs.existsSync(extraPath)) Object.assign(texts, JSON.parse(fs.readFileSync(extraPath, "utf8")).texts ?? {});
 
+  // keys held back until a competent reviewer approves them (scripts/learn/english-bank/kit-hold.json): not served, nothing else in the language is touched
+  const holdPath = path.join(ROOT, "scripts/learn/english-bank/kit-hold.json");
+  if (fs.existsSync(holdPath)) for (const k of JSON.parse(fs.readFileSync(holdPath, "utf8"))[locale]?.keys ?? []) delete texts[k];
+
   for (const [k, v] of Object.entries(texts)) {
     if (typeof v !== "string" || !v.trim()) {
       throw new Error(`[${locale}] Empty text for key ${k}`);

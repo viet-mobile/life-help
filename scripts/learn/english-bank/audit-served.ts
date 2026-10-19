@@ -32,10 +32,12 @@ const NEEDS: Record<string, string> = {
   "w-gloss-missing": "g:<itemId> (gloss of the headword; itemId = second part of the question id)",
   "w-option-gloss-missing": "wo:<questionId>:<option> (gloss of a distractor)",
   "prompt-or-explanation-missing": "why:<questionId> (explanation text; its Korean form has no template)",
-  "hint1-template-missing": "hint 1 pattern not handled by localizeHint1 or its kit key is missing (code or kit)",
+  "hint1-template-missing": "hint 1: a shared pattern template is missing OR an individual Korean hint needs h:<questionId>",
   "rdm-question-untranslated": "reading / dialogue / mixed question whose English stem has no translation (key q:<questionId>); most of these ALSO lack an explanation template or hint-1 pattern, so the stem is only the first of several keys (stem, explanation why:<id>, hint 1)",
   "duplicate-options": "two options became identical after translation in this language (the question is dropped; fix the translation of the duplicated option)",
-  "rdm-korean-in-source-stem-or-options": "stem/options contain Korean: needs code support for translating r/d/m stems and options, then translations (NOT translatable with the current kit keys)",
+  "rdm-option-untranslated": "an option written in Korean needs o:<questionId>:<optionId>",
+  "rdm-korean-in-passage": "the passage/dialogue itself contains Korean (not translatable by the question/option keys; review the source)",
+  "rdm-no-question-part": "no blank line between passage and question in the source (source format problem)",
 };
 type Row = { served: number; excluded: Record<string, number>; duplicate: number; englishStemPassthrough: number; passthroughByForm: Record<string, number> };
 const perLocale: Record<string, Row> = {};
