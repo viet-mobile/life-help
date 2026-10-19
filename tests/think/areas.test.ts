@@ -129,3 +129,13 @@ describe("learner view hides internal codes", () => {
     expect(src).toContain("{reviewer ? s.id : i + 1}");
   });
 });
+
+describe("opening a task keeps the chosen list", () => {
+  it("the hub no longer resets the grade when the URL gains ?task=", async () => {
+    const fs = await import("node:fs");
+    const src = fs.readFileSync("components/think/ThinkHub.tsx", "utf8");
+    expect(src).not.toContain('if (!params.get("grade")) setGrade(own)');
+    expect(src).toContain("startedWithGrade");
+    expect(src).toContain("koreanLevelOf(open)");
+  });
+});

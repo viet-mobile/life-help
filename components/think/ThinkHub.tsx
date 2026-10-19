@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { FILE_META, TASK_LOADERS } from "@/lib/think/data/assets-index";
 import { domainOf } from "@/lib/think/domains";
@@ -53,7 +53,11 @@ export function ThinkHub() {
   const L = labels(lang);
   const open = params.get("task");
 
-  useEffect(() => { if (!params.get("grade")) setGrade(own); }, [own, params]);
+  // the learner's own grade / level is the default only until they pick one (or arrive with ?grade=): opening a task changes the URL (?task=) and must not reset the list
+  const startedWithGrade = useRef(!!params.get("grade"));
+  useEffect(() => { if (!startedWithGrade.current) setGrade(own); }, [own]);
+  // a task opened by link (?task=) that belongs to another Korean level: switch to that level so it can open
+  useEffect(() => { if (site === "korean" && open) { const n = koreanLevelOf(open); if (n && levelCode(n) !== grade) setGrade(levelCode(n)); } }, [site, open]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => { setDone(readDone(site)); setTrophies(readTrophies(site)); }, [site]);
   useEffect(() => {
     let live = true;
