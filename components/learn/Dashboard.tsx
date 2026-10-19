@@ -14,6 +14,7 @@ import { thinkLangFor } from "@/lib/think/lang";
 import { HUB } from "@/components/think/hubLabels";
 import { CADENCE_TEXT } from "@/lib/think/cadence";
 import { flowView } from "@/lib/think/flow";
+import { ThinkQuickEntry } from "../think/ThinkQuickEntry";
 import { coverageFor, hasGap } from "@/lib/learn/coverage";
 import { readLedger } from "../think/ThinkOffer";
 import { QuestList } from "./QuestList";
@@ -76,6 +77,8 @@ export function Dashboard() {
         </p>
         <span className="l-btn l-btn-ghost l-btn-block">{thinkText.tryOne}</span>
       </Link>
+
+      <ThinkQuickEntry />
 
       {!state.diagnosticDone && (
         <Link className="l-card" href={href("/diagnostic")} style={{ textDecoration: "none", color: "inherit", display: "block", borderColor: "var(--l-accent)" }}>

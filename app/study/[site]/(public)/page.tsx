@@ -9,6 +9,8 @@ import { loadContent, accountsEnabled, getLearnService, getUserId } from "@/lib/
 import { learnHost, parseLearnHost } from "@/lib/learn/hosts";
 import { siteConfig } from "@/lib/learn/sites";
 import { SITES, isSite, schoolLevel } from "@/lib/learn/types";
+import { HUB } from "@/components/think/hubLabels";
+import { thinkLangFor } from "@/lib/think/lang";
 
 export default async function Landing({ params }: { params: Promise<{ site: string }> }) {
   const { site } = await params;
@@ -36,6 +38,7 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
         <h1 className="l-h1">{t(`site.${site}.tagline` as never)}</h1>
         <p>{t(`site.${site}.description` as never)}</p>
         <StartCta accountHasProfile={hasProfile} accountsEnabled={accountsEnabled()} />
+        <Link className="l-btn l-btn-light l-btn-block" data-testid="landing-think" href={`${base}/think`}>🧠 {HUB[thinkLangFor(locale, site)].title}</Link>
         <p style={{ fontSize: "0.85rem", opacity: 0.9 }}>{t("landing.privacy")}</p>
         <p style={{ fontSize: "0.85rem", opacity: 0.9 }}>
           <Link className="l-link" href={`${base}/privacy`}>{t("legal.privacy")}</Link> · <Link className="l-link" href={`${base}/terms`}>{t("legal.terms")}</Link>

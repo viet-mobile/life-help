@@ -11,11 +11,13 @@ import { BrandLogo } from "./BrandLogo";
 import { LocaleSwitch } from "./LocaleSwitch";
 import { ThinkOffer } from "../think/ThinkOffer";
 import { useLearner } from "./LearnerProvider";
+import { HUB } from "../think/hubLabels";
+import { thinkLangFor } from "@/lib/think/lang";
 
 const FOCUS_PATHS = ["/lesson/", "/onboarding", "/diagnostic", "/practice"]; // /think keeps the tab bar (its hub), the player is part of it
 
 export function PlayShell({ children }: { children: ReactNode }) {
-  const { t, href, site, state, ready } = useLearner();
+  const { t, href, site, state, ready, locale } = useLearner();
   const pathname = usePathname();
   const focus = FOCUS_PATHS.some((p) => pathname.includes(p));
   const level = levelProgress(state.totalXp);
@@ -25,6 +27,7 @@ export function PlayShell({ children }: { children: ReactNode }) {
     { path: "/dashboard", icon: "🏠", label: t("nav.home") },
     { path: "/learn", icon: "🗺️", label: t("nav.learn") },
     { path: "/quest", icon: "📜", label: t("nav.quest") },
+    { path: "/think", icon: "🧠", label: HUB[thinkLangFor(locale, site)].title },
     { path: "/profile", icon: "🙂", label: t("nav.profile") },
   ];
 

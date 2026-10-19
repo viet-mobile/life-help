@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { FILE_META, TASK_LOADERS } from "@/lib/think/data/assets-index";
 import { domainOf } from "@/lib/think/domains";
 import { fieldInfo, fieldKeyOf, fieldList } from "@/lib/think/areas";
+import { hasThinkSemesters, inSemester } from "@/lib/think/semesters";
 import { thinkLangFor, type ThinkLang } from "@/lib/think/lang";
 import { checksOffFor, loadOverlay, localize } from "@/lib/think/localize";
 import { siteConfig } from "@/lib/learn/sites";
@@ -28,12 +29,13 @@ const bandOf = (g: string): 1 | 2 | 3 => (g.startsWith("K") ? (Number(g.slice(1)
  * kept on this device - the tasks write no scores, XP or accounts data.
  */
 export function ThinkHub() {
-  const { site, state, locale, href, ready } = useLearner();
+  const { site, state, locale, href, ready, t } = useLearner();
   const router = useRouter();
   const params = useSearchParams();
   const own = (state.profile?.grade ?? siteConfig(site).levels[0]) as string;
-  const [grade, setGrade] = useState<string>(own);
-  const [field, setField] = useState<string>("all");
+  const [grade, setGrade] = useState<string>(params.get("grade") || own);
+  const [field, setField] = useState<string>(params.get("field") || "all");
+  const [semester, setSemester] = useState<string>(params.get("semester") === "1" || params.get("semester") === "2" ? (params.get("semester") as string) : "all");
   const [loadError, setLoadError] = useState(false);
   const [loading, setLoading] = useState(true);
   const [retry, setRetry] = useState(0);
@@ -45,7 +47,7 @@ export function ThinkHub() {
   const L = labels(lang);
   const open = params.get("task");
 
-  useEffect(() => { setGrade(own); }, [own]);
+  useEffect(() => { if (!params.get("grade")) setGrade(own); }, [own, params]);
   useEffect(() => { setDone(readDone(site)); }, [site]);
   useEffect(() => {
     let live = true;
@@ -68,7 +70,10 @@ export function ThinkHub() {
   const fieldOf = (t: (typeof tasks)[number]): string | null => (fieldList(site).length ? fieldKeyOf(site, t.id) : (t.topic ?? domainOf(t)));
   const fields = useMemo(() => (fieldList(site).length ? fieldList(site).filter((a) => localized.some((x) => fieldKeyOf(site, x.task.id) === a)) : [...new Set(localized.map((x) => x.task.topic ?? domainOf(x.task)))]), [localized, site]);
   const fieldText = (k: string | null, full: boolean) => (k && fieldList(site).length ? fieldInfo(site, k, lang)[full ? "full" : "short"] : k ?? "");
-  const shown = localized.filter((x) => field === "all" || fieldOf(x.task) === field);
+  const semesterOn = hasThinkSemesters(site) && !grade.startsWith("EL-");
+  const bySemester = localized.filter((x) => !semesterOn || inSemester(x.task.id, semester));
+  const fieldNow = fields.includes(field) ? field : "all"; // a ?field= that this grade has no tasks for falls back to all
+  const shown = bySemester.filter((x) => fieldNow === "all" || fieldOf(x.task) === fieldNow);
   const current = open ? localized.find((x) => x.task.id === open) : undefined;
   const grades = [...siteConfig(site).levels, ...(site === "math" ? Object.keys(ELECTIVE_NAMES) : [])];
   const gradeName = (g: string) => (g.startsWith("EL-") ? ELECTIVE_NAMES[g][lang] : g);
@@ -98,10 +103,20 @@ export function ThinkHub() {
             {grades.map((g) => <option key={g} value={g}>{g.startsWith("EL-") ? `${H.electives}: ${gradeName(g)}` : g.startsWith("K") ? g : g}</option>)}
           </select>
         </label>
+        {semesterOn && (
+          <label className="l-stack" style={{ gap: 4 }}>
+            <span className="l-muted">{t("semester.title")}</span>
+            <select className="l-input" data-testid="think-semester" value={semester} onChange={(e) => setSemester(e.target.value)}>
+              <option value="all">{H.allSemesters}</option>
+              <option value="1">{t("semester.1")}</option>
+              <option value="2">{t("semester.2")}</option>
+            </select>
+          </label>
+        )}
         {fields.length > 1 && (
           <label className="l-stack" style={{ gap: 4 }}>
             <span className="l-muted">{H.field}</span>
-            <select className="l-input" data-testid="think-field" value={field} onChange={(e) => setField(e.target.value)}>
+            <select className="l-input" data-testid="think-field" value={fieldNow} onChange={(e) => setField(e.target.value)}>
               <option value="all">{H.allFields}</option>
               {fields.map((f) => <option key={f} value={f}>{fieldText(f, true)}</option>)}
             </select>

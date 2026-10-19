@@ -55,3 +55,26 @@ describe("english / korean hub fields", () => {
     expect([...used].sort()).toEqual([...LANG_FIELDS].sort());
   });
 });
+
+describe("math hub semesters", async () => {
+  const { thinkSemesterOf, inSemester, hasThinkSemesters } = await import("@/lib/think/semesters");
+  it("only math offers the semester choice; a task tied to one semester shows under it and under 'all', a both-task under either", () => {
+    expect(hasThinkSemesters("math")).toBe(true);
+    expect(hasThinkSemesters("english")).toBe(false);
+    expect(hasThinkSemesters("korean")).toBe(false);
+    expect(inSemester("x-none", "1")).toBe(true); // unknown id = 0 = both
+    expect(inSemester("x-none", "all")).toBe(true);
+  });
+  it("every regular-grade math task has a semester entry (electives and grade-less tasks count as both)", async () => {
+    const bad: string[] = [];
+    let ones = 0, twos = 0;
+    for (const m of FILE_META.filter((x) => x.subject === "math")) for (const t of await TASK_LOADERS[m.key]()) {
+      const s = thinkSemesterOf(t.id);
+      if (![0, 1, 2].includes(s)) bad.push(t.id);
+      if (t.grade && !t.grade.startsWith("EL-")) { if (s === 1) ones++; if (s === 2) twos++; }
+    }
+    expect(bad).toEqual([]);
+    expect(ones).toBeGreaterThan(200);
+    expect(twos).toBeGreaterThan(200);
+  });
+});
