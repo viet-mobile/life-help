@@ -4,7 +4,8 @@
 // A record is `certain` only when exactly one instruction sentence is found and every other segment is plainly content; anything else is `uncertain` and must be reviewed, never auto-processed.
 import fs from "node:fs";
 import crypto from "node:crypto";
-export const STRUCTURE_VERSION = "structure-stems/2";
+import { isSpeakerLabel } from "./structure-rules";
+export const STRUCTURE_VERSION = "structure-stems/3";
 type Q = { id: string; prompt: string; tags: string[]; options?: Array<{ id: string; text: string }> };
 const draft = JSON.parse(fs.readFileSync("lib/learn/content/bank/english-draft.json", "utf8")).questions as Q[];
 const rows = JSON.parse(fs.readFileSync(process.argv[2] + "/dependency-table.json", "utf8")) as Array<{ id: string; needs: Array<{ type: string }> }>;
@@ -19,11 +20,11 @@ const out: unknown[] = []; const tally: Record<string, number> = {};
 for (const r of rows) {
   if (!r.needs.some((n) => n.type === "q")) continue;
   const q = by.get(r.id)!; const t = qPart(q);
-  if (H.test(t) || !(/_{2,}|\(A\)|\(B\)/.test(t) || /^[A-Z][A-Za-z ]{0,12}:\s/m.test(t) || !/[?]$/.test(t))) continue; // only the English-content classes (en-cloze-stem, en-dialogue-line, en-other)
+  if (H.test(t) || !(/_{2,}|\(A\)|\(B\)/.test(t) || t.split("\n").some(isSpeakerLabel) || !/[?]$/.test(t))) continue; // only the English-content classes (en-cloze-stem, en-dialogue-line, en-other)
   const lines = t.split("\n").map((s) => s.trim()).filter(Boolean);
   const segs: Array<{ type: "content" | "instruction" | "unknown"; text: string }> = [];
   for (const line of lines) {
-    if (/^[A-Z][A-Za-z ]{0,12}:\s/.test(line) || /^_{2,}[^A-Za-z]*$/.test(line) || /^\(?[A-D]\)/.test(line)) { segs.push({ type: "content", text: line }); continue; }
+    if (isSpeakerLabel(line) || /^_{2,}[^A-Za-z]*$/.test(line) || /^\(?[A-D]\)/.test(line)) { segs.push({ type: "content", text: line }); continue; }
     for (const s of line.split(/(?<=[.?!])\s+/)) {
       if (WH.test(s) && /[?]$|[:.]$/.test(s)) segs.push({ type: "instruction", text: s });
       else if (FRAME.test(s) || /_{2,}/.test(s)) segs.push({ type: /^(In|The|Which)\b/.test(s) && FRAME.test(s) ? "instruction" : "content", text: s });
@@ -51,7 +52,7 @@ for (const r of rows) {
   const cls = certain ? "certain" : contentOnly ? "content-only" : "uncertain";
   const genericKind = contentOnly ? (/^[A-Z][A-Za-z ]{0,12}:/m.test(t) && /_{2,}/.test(t) ? "reply-to-dialogue" : /_{2,}/.test(t) ? "fill-the-blank" : /^[A-Z][A-Za-z ]{0,12}:/m.test(t) ? "dialogue-question" : "other") : undefined;
   tally[cls] = (tally[cls] ?? 0) + 1;
-  out.push({ id: q.id, form: `${q.tags[3]}:${q.tags[2]}`, original: t, certainty: cls, segments: segs, learnerEnglish: segs.filter((s) => s.type === "content").map((s) => s.text), instruction: segs.filter((s) => s.type === "instruction").map((s) => s.text), unknownSegments: segs.filter((s) => s.type === "unknown").map((s) => s.text), protected: [...quotes(t), ...(t.match(/_{2,}/g) ?? []).slice(0, 1), ...(t.match(/^[A-Z][A-Za-z ]{0,12}:/gm) ?? [])], optionRole, optionPolicy, optionChecks, ...(genericKind ? { genericKind } : {}) });
+  out.push({ id: q.id, form: `${q.tags[3]}:${q.tags[2]}`, original: t, certainty: cls, segments: segs, learnerEnglish: segs.filter((s) => s.type === "content").map((s) => s.text), instruction: segs.filter((s) => s.type === "instruction").map((s) => s.text), unknownSegments: segs.filter((s) => s.type === "unknown").map((s) => s.text), protected: [...quotes(t), ...(t.match(/_{2,}/g) ?? []).slice(0, 1), ...t.split("\n").filter(isSpeakerLabel).map((l) => l.split(":")[0] + ":")], optionRole, optionPolicy, optionChecks, ...(genericKind ? { genericKind } : {}) });
 }
 const recs = out as Array<any>;
 const norm = (x: string) => x.replace(/\s+/g, " ").trim();
