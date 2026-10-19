@@ -25,7 +25,7 @@ OVERRIDES = {  # tasks whose topic text carries no area word; decided one by one
  "z-m-01-04":"number","z-m-01-05":"number","z-m-01-06":"number","z-m-01-08":"number","z-m-02-03":"relations","z-m-02-04":"relations","z-m-03-05":"geometry",
  "z-m-04-02":"number","z-m-04-07":"data","z-m-05-10":"number","z-m-07-09":"data","z-m-10-04":"geometry","z-m-14-06":"relations","z-m-20-05":"number","z-m-21-01":"number",
  "z-m-22-06":"number","z-m-25-13":"relations","z-m-26-03":"data","z-m-26-04":"data","z-m-27-01":"data","z-m-28-01":"data","z-m-28-09":"data","z-m-28-10":"data",
- "z-m-28-11":"data","z-m-28-12":"data","z-m-32-06":"geometry","y-m-82-12":"geometry","y-m-37-08":"relations","z-m-28-03":"data","y-m-77-03":"number","y-m-31-06":"data","y-m-31-07":"data","y-m-08-06":"relations","y-m-17-11":"geometry","y-m-21-02":"geometry","y-m-21-05":"geometry","y-m-40-08":"data","y-m-65-02":"data","y-m-72-09":"relations","y-m-80-09":"number","y-m-82-02":"relations","y-m-83-06":"number","z-m-06-09":"relations","z-m-22-10":"number",
+ "z-m-28-11":"data","z-m-28-12":"data","z-m-32-06":"geometry","y-m-82-12":"geometry","y-m-37-08":"relations","z-m-28-03":"data","y-m-77-03":"number","y-m-31-06":"data","y-m-31-07":"data","n-m-e1-s1-03":"number","n-m-e3-s2-04":"geometry","y-m-08-06":"relations","y-m-17-11":"geometry","y-m-21-02":"geometry","y-m-21-05":"geometry","y-m-40-08":"data","y-m-65-02":"data","y-m-72-09":"relations","y-m-80-09":"number","y-m-82-02":"relations","y-m-83-06":"number","z-m-06-09":"relations","z-m-22-10":"number",
 }
 UNIT = {  # fallback by id prefix (checked longest first)
  "n-m-h1-comb":"data","n-m-h1-eq":"relations","n-m-h1-func":"relations","n-m-h1-geo":"geometry","n-m-h1-ineq":"relations","n-m-h1-logic":"number","n-m-h1-mat":"number",

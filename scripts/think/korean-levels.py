@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Merges the level assignment (id -> 1..6, from the Korean curriculum 급) into lib/think/korean-levels.json and computes `prior`:
-(not used by the app: the start level comes from lib/learn/korean-grades.ts)
+"""Merges the level assignment (id -> 1..6, from the Korean curriculum 급) into lib/think/korean-levels.json (the `levels` map).
+Usage: korean-levels.py <levels.json>. (The start level of a learner comes from lib/learn/korean-grades.ts, not from this file.)"""
 import json, glob, sys, statistics, collections
 lv = json.load(open(sys.argv[1]))
 tasks = {}

@@ -1,0 +1,4738 @@
+[
+ {
+  "id": "n-k-l1a-01",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Reading Hangul: look-alike vowels",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Junho reads the shop labels aloud",
+  "uiLang": "en",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Find the readings in a classmate's list that mix up look-alike vowels, name the kind of mistake, and write the correct readings.",
+  "thinking": [
+   "Checking a reading letter by letter",
+   "Naming the pattern behind an error",
+   "Correcting with a memory tip"
+  ],
+  "differsFromPlain": "Plain practice asks you to read a word. Here you check someone else's reading, find every wrong line, and say what kind of mistake it is.",
+  "prerequisites": [
+   "Knows the Hangul letters and their basic sounds"
+  ],
+  "minutes": 7,
+  "curriculum": null,
+  "material": "Junho is learning Hangul. He reads six labels from a shop aloud and writes his readings next to the words. Letter values to use: ㅏ = a, ㅓ = eo (like 'uh'), ㅗ = o, ㅜ = u, ㅣ = i, ㅡ = eu; ㄱ = g, ㄴ = n, ㄷ = d, ㅁ = m, ㅂ = b, ㄹ = r/l; a block starting with ㅇ starts with a vowel sound. Some of Junho's readings are wrong.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "Pick one line where Junho's reading does not match the Hangul. (More than one line is wrong.)",
+    "lines": [
+     "고기 (meat) → go-gi",
+     "구두 (shoes) → go-du",
+     "나무 (tree) → na-mu",
+     "거미 (spider) → ga-mi",
+     "바나나 (banana) → ba-na-na",
+     "우유 (milk) → u-yu"
+    ],
+    "wrong": [
+     1,
+     3
+    ],
+    "explain": "Lines 2 and 4 are wrong. 구두 has ㅜ (u), so it is gu-du, not go-du. 거미 has ㅓ (eo), so it is geo-mi, not ga-mi. The other four lines match.",
+    "hints": [
+     "Read each block yourself with the letter values, then compare your reading with Junho's.",
+     "Compare the vowel in each block with the vowel in his reading, one block at a time."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "What kind of mistake is it?",
+    "options": [
+     {
+      "id": "a",
+      "text": "He mixed up two similar consonants (for example ㄱ and ㅋ).",
+      "reveals": "The consonants in the wrong lines (ㄱ, ㄷ, ㅁ) were read correctly (g, d, m). The change is in the vowel."
+     },
+     {
+      "id": "b",
+      "text": "He mixed up vowels that look alike: the stroke is on the other side or the other end (ㅜ/ㅗ, ㅓ/ㅏ)."
+     },
+     {
+      "id": "c",
+      "text": "He read the blocks in the wrong order, last block first.",
+      "reveals": "Both readings keep the order of the blocks (go-du has the same order as gu-du). Only a vowel sound changed."
+     },
+     {
+      "id": "d",
+      "text": "He forgot that ㅇ at the start of a block makes no sound.",
+      "reveals": "The words with a starting ㅇ (우유) were read correctly, and the wrong lines have no starting ㅇ."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "In both wrong lines the vowel changed: ㅜ became o, and ㅓ became a. These pairs differ only in where the short stroke sits. Look-alike vowels are a common first mistake.",
+    "hints": [
+     "List which letters changed between the Hangul and Junho's reading in each wrong line.",
+     "Is the change in a consonant, in a vowel, or in the order of the blocks?"
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Write the correct reading of the two wrong words in Latin letters (like 'na-mu'), then add one short tip that helps Junho tell the look-alike vowels apart.",
+    "placeholder": "예: gu-du, ... Tip: ...",
+    "minChars": 12,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "gives the correct reading of 구두 (gu-du)",
+      "mode": "any",
+      "patterns": [
+       "(g|k)u[\\s\\-·.]?du"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "gives the correct reading of 거미 (geo-mi)",
+      "mode": "any",
+      "patterns": [
+       "(g|k)(eo|ŏ|ə)[\\s\\-·.]?mi"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "adds a tip about the stroke (position, side, direction, up/down)",
+      "mode": "any",
+      "patterns": [
+       "stroke",
+       "line",
+       "side",
+       "left",
+       "right",
+       "above",
+       "below",
+       "top",
+       "bottom",
+       "up",
+       "down",
+       "point",
+       "위",
+       "아래",
+       "왼",
+       "오른",
+       "획",
+       "옆"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Is each reading made only from the letter values given?",
+     "Does my tip say where the stroke of each vowel is?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "gu-du and geo-mi. Tip: ㅜ has its stroke below the line, ㅗ has it above."
+     },
+     {
+      "text": "구두 = gudu, 거미 = geomi. Tip: for ㅓ the short stroke points to the left side, for ㅏ it is on the right."
+     },
+     {
+      "text": "gu-du / geo-mi. Remember: 'up' vowel ㅗ is o, 'down' vowel ㅜ is u."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "go-du and ga-mi",
+      "why": "These are Junho's wrong readings again; no tip."
+     },
+     {
+      "text": "gu-du and geo-mi",
+      "why": "The readings are right, but there is no tip about telling the vowels apart."
+     }
+    ],
+    "humanReview": "Whether the memory tip is clear and true for the vowels in question; other tips (a picture, a rhyme) can be fine.",
+    "hints": [
+     "Compare your own reading of the two wrong words block by block.",
+     "The tip should say where the short stroke is (above, below, left or right of the long line)."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finding the wrong readings",
+    "full": "Picks a wrong line and sees that the other wrong line has the same kind of problem",
+    "partial": "Picks a wrong line but cannot say what is wrong in it",
+    "none": "Picks a correct line"
+   },
+   {
+    "criterion": "Naming and fixing the mistake",
+    "full": "Names the vowel mix-up, gives both correct readings and a usable tip",
+    "partial": "One correct reading or no tip",
+    "none": "Repeats the wrong readings"
+   }
+  ],
+  "alternatives": [
+   "Readings such as 'kudu' or 'keomi' (k for g) follow another romanization habit and are accepted.",
+   "A tip that uses a picture or a rhyme instead of a rule about strokes is fine if it is correct."
+  ],
+  "hardCases": [
+   "Real learners often confuse ㅓ with ㅗ as well; a mistake in a different pair is still a vowel mix-up."
+  ],
+  "cautions": {
+   "language": "All Korean texts are single words or very short phrases. Latin-letter readings follow common revised romanization; other spellings of the same sound (for example k for g) are accepted.",
+   "culture": "Korean letter shapes and their sounds are fixed, but romanization is only a tool; Latin readings differ between systems and never replace hearing the sound.",
+   "accessibility": "All words are shown in text with their meaning in English; no sound or picture is needed. Letters are described by shape and position, not by colour."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Picking a wrong line",
+    "Choice about the kind of mistake",
+    "Both correct Latin-letter readings present and a tip about stroke position present"
+   ],
+   "human": [
+    "Whether the tip is helpful and true"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "n-k-l1a-02",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Reading Hangul: the final consonant (받침) changes the word",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Is the small bottom letter just decoration?",
+  "uiLang": "en",
+  "format": "judge-evidence-explain",
+  "generative": true,
+  "goal": "Judge a classmate's claim about the final consonant (받침) with evidence from a price tag and a payment, and explain it in your own words.",
+  "thinking": [
+   "Testing a claim against evidence",
+   "Seeing that a small detail can change the meaning",
+   "Explaining a reading rule to someone"
+  ],
+  "differsFromPlain": "Plain practice asks you to read 삼천 원 aloud. Here you decide whether a classmate's rule about the bottom letter holds, and prove it with evidence outside the tag.",
+  "prerequisites": [
+   "Can read Hangul blocks with a final consonant",
+   "Knows the numbers 이, 삼, 사, 오 and 천"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "At a market stall, Jiwoo and Hajun look at the price tag on a bag of apples. Numbers you need: 이 = 2, 삼 = 3, 사 = 4, 오 = 5, 천 = 1,000 (so 이천 원 = 2,000 won). Jiwoo reads the tag as 삼천 원. Hajun says: 'The little letter at the bottom of a block is only decoration, so 삼 and 사 are the same and I read 사천 원.'",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Test Hajun's rule on the number list: what does the rule say about the blocks 삼 and 사, and does that fit the list?",
+    "options": [
+     {
+      "id": "a",
+      "text": "They would be the same word, and that fits the list: 삼 = 3 and 사 = 3.",
+      "reveals": "The list does not say that. It gives 삼 = 3 and 사 = 4, two different numbers."
+     },
+     {
+      "id": "b",
+      "text": "They would look different in handwriting, but in print they are the same block.",
+      "reveals": "In print too, 삼 and 사 are two different blocks: one has ㅁ at the bottom and one has nothing."
+     },
+     {
+      "id": "c",
+      "text": "They would be the same word under the rule, but the list gives 삼 = 3 and 사 = 4, so the rule fails."
+     },
+     {
+      "id": "d",
+      "text": "The rule does not touch them, because neither block has a bottom letter.",
+      "reveals": "The block 삼 has ㅁ under the vowel. That is exactly the bottom letter the rule is about."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "A Hangul block is read as a whole, including the final consonant. If the bottom letter were decoration, 삼 and 사 would be the same word, but the list says 삼 (sam) = 3 and 사 (sa) = 4. So the rule fails; Jiwoo's reading 삼천 원 is the one to check against the payment.",
+    "hints": [
+     "Cover the bottom letter of 삼 with your finger. Which block is left?",
+     "Compare that block with the number list. Would the rule still give two different numbers?"
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "New evidence: Jiwoo pays with a 5,000 won note and the clerk gives her 2,000 won back. Which tag does this support?",
+    "options": [
+     {
+      "id": "a",
+      "text": "삼천 원 (3,000 won)"
+     },
+     {
+      "id": "b",
+      "text": "이천 원 (2,000 won)",
+      "reveals": "Then 5,000 - 2,000 = 3,000 would be the change, not 2,000."
+     },
+     {
+      "id": "c",
+      "text": "사천 원 (4,000 won)",
+      "reveals": "Then the change would be 1,000 won."
+     },
+     {
+      "id": "d",
+      "text": "오천 원 (5,000 won)",
+      "reveals": "Then there would be no change."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "5,000 - 2,000 = 3,000. The payment agrees with Jiwoo's reading 삼천 원 and not with Hajun's 사천 원, so the bottom letter did matter.",
+    "hints": [
+     "Work out how much Jiwoo spent: money paid minus change.",
+     "Check which of the four tags gives that amount."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "In one or two sentences, explain to Hajun why the bottom letter is not decoration. Use the tag 삼천 원 as your example.",
+    "placeholder": "예: ...",
+    "minChars": 20,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "mentions the bottom letter / final consonant (받침, ㅁ, ㄴ)",
+      "mode": "any",
+      "patterns": [
+       "bottom",
+       "under",
+       "below",
+       "final",
+       "last letter",
+       "ending",
+       "받침",
+       "ㅁ",
+       "ㄴ",
+       "lower"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "contrasts two blocks with and without a bottom letter (삼/사 or another pair such as 가/간)",
+      "mode": "any",
+      "patterns": [
+       "(3|three|삼)[\\s\\S]*(4|four|사)",
+       "(4|four|사)[\\s\\S]*(3|three|삼)",
+       "가[\\s\\S]*간",
+       "간[\\s\\S]*가",
+       "바[\\s\\S]*밤",
+       "밤[\\s\\S]*바"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "does not say the letter is decoration or does not matter",
+      "mode": "none",
+      "patterns": [
+       "(?<!(not|n't|never) )(only|just|merely) (a )?(decoration|decorat|style)",
+       "(doesn'?t|does not|did not|didn'?t|not|no|never)\\s+(really\\s+)?(matter|change)",
+       "can be ignored|ignore (it|the (bottom|last|final))|(is|are) the same"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I say what the bottom letter does to the block?",
+     "Did I show it with a pair of blocks, such as 삼 and 사?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "The bottom letter ㅁ is part of the block. Without it the block is 사 (4); with it, it is 삼 (3). So the tag says 3,000 won, not 4,000."
+     },
+     {
+      "text": "삼 and 사 are different words: 삼 = 3 and 사 = 4. The letter at the bottom changes the number, so it is not decoration."
+     },
+     {
+      "text": "The letter at the bottom changes the word: 가 and 간 are different words. In the same way 삼 (3) and 사 (4) are different, so the bottom letter matters."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "삼천 원 is right.",
+      "why": "Says what the tag says but gives no reason about the bottom letter."
+     },
+     {
+      "text": "The bottom letter is just decoration, so 사천 원 is fine.",
+      "why": "Repeats Hajun's mistaken claim."
+     },
+     {
+      "text": "The bottom letter doesn't matter, 삼 is 3 and 사 is 4 anyway.",
+      "why": "Says the letter does not matter, which repeats Hajun's claim."
+     }
+    ],
+    "humanReview": "Whether the explanation is clear and addressed to Hajun; other correct examples (for example 가/간 or 바/밤) are accepted by the checks.",
+    "hints": [
+     "Compare 삼 and 사 letter by letter.",
+     "Say what the extra letter adds to the block and what number each block means."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Judging the claim",
+    "full": "Rejects 'decoration' and uses both the tag and the payment as evidence",
+    "partial": "Rejects the claim but only with the tag",
+    "none": "Accepts 'decoration' or says it cannot be known"
+   },
+   {
+    "criterion": "Explaining",
+    "full": "Says that the final consonant is part of the block and changes the word, with 3 vs 4",
+    "partial": "Mentions the letter but not the effect",
+    "none": "Does not explain"
+   }
+  ],
+  "alternatives": [
+   "Other examples, for example 가 / 간 or 바 / 밤, also show that a final consonant changes a word.",
+   "Saying 'the block 삼 is sam and the block 사 is sa' is a good explanation in sound terms."
+  ],
+  "hardCases": [
+   "A very small final consonant in handwriting may be hard to see; then checking with the money or asking is wise."
+  ],
+  "cautions": {
+   "language": "All Korean texts are single words or very short phrases. Latin-letter readings follow common revised romanization; other spellings of the same sound (for example k for g) are accepted.",
+   "culture": "Prices in Korean markets are often read aloud as well as written, so reading every part of a block saves money; asking the seller to repeat is always polite.",
+   "accessibility": "All content is text; numbers are given in Hangul and in digits. Nothing depends on colour or sound."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choosing the correct reading",
+    "Choosing the price that fits the payment",
+    "Presence of the bottom-letter and 3/4 contrast, absence of the 'decoration' claim"
+   ],
+   "human": [
+    "Whether the explanation is clear and respectful to Hajun"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-l1a-03",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Reading Hangul: syllable blocks in signs",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "The torn sign over the door",
+  "uiLang": "en",
+  "format": "choose-needed-info",
+  "generative": true,
+  "goal": "Decide which information is needed to read a half-covered sign, say what you know for sure, and read the final word when more is shown.",
+  "thinking": [
+   "Spotting what two possible words share",
+   "Separating what is certain from what is not",
+   "Updating after new information"
+  ],
+  "differsFromPlain": "Plain practice gives a full word to read. Here part of the sign is missing, and you decide which new information could actually separate the two possible words.",
+  "prerequisites": [
+   "Can read Hangul blocks",
+   "Knows 화장실 and 화장품 as words"
+  ],
+  "minutes": 7,
+  "curriculum": null,
+  "material": "A sign above a door in a department store is torn. You can read only the first two blocks: 화장. Two words on this floor begin this way: 화장실 (restroom) and 화장품 (makeup). You want the restroom.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which of these would help you tell which word the sign says?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Reading the first two blocks (화장) again, more slowly.",
+      "reveals": "Both words begin with the same two blocks, 화장, so rereading them cannot separate the words."
+     },
+     {
+      "id": "b",
+      "text": "Seeing the block that comes after 화장 on the sign."
+     },
+     {
+      "id": "c",
+      "text": "The colour of the door.",
+      "reveals": "Colour is not part of the written word; two doors of any colour can carry either word."
+     },
+     {
+      "id": "d",
+      "text": "The number of the floor.",
+      "reveals": "The floor tells you where you are, not which of the two words the torn sign shows."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "The two words differ only in the third block (실 or 품). The first two blocks are shared, so only the third block can decide.",
+    "hints": [
+     "Write the two possible words under each other and underline what is the same.",
+     "Ask which part of the sign could be different between the two words."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "A friend calls and asks: 'What does the sign say?' Answer in one or two short sentences (Korean or English): say what you can read for sure and what you cannot yet.",
+    "placeholder": "예: ...",
+    "minChars": 12,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "says what is readable (화장)",
+      "mode": "any",
+      "patterns": [
+       "화장",
+       "hwa-?jang",
+       "the first (two|2)",
+       "first two blocks"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "says what is still unknown",
+      "mode": "any",
+      "patterns": [
+       "not sure",
+       "don'?t know",
+       "do not know",
+       "cannot",
+       "can'?t",
+       "not yet",
+       "unknown",
+       "still",
+       "might",
+       "maybe",
+       "either",
+       "\\bor\\b",
+       "but not",
+       "third (block|word|one|letter)",
+       "need to see",
+       "hidden",
+       "torn",
+       "covered",
+       "missing",
+       "not (visible|clear)",
+       "haven'?t",
+       "have not",
+       "모르",
+       "몰라",
+       "아직",
+       "확실",
+       "잘 안",
+       "못 읽",
+       "안 (보|읽)",
+       "찢"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I separate the part I can read from the part I cannot?",
+     "Did I avoid choosing one word without evidence?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "I can read 화장, but I don't know the third block yet. It could be 화장실 or 화장품."
+     },
+     {
+      "text": "The first two blocks say 화장. I cannot say the whole word until I see the third block."
+     },
+     {
+      "text": "아직 몰라요. 앞의 두 글자는 화장이에요."
+     },
+     {
+      "text": "I can read 화장 but not the third block yet; I need to see it to know the word."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "화장실이에요.",
+      "why": "Chooses one word without evidence and does not say what is unknown."
+     },
+     {
+      "text": "It is torn.",
+      "why": "Does not say what can be read."
+     },
+     {
+      "text": "화장실이에요, for sure.",
+      "why": "Chooses one word as certain and does not say what is unknown."
+     }
+    ],
+    "humanReview": "Whether the reply is clear to the friend; learners may answer in English.",
+    "hints": [
+     "Say which blocks you can read.",
+     "Add what you still need to see before you can name the word."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "choose",
+    "prompt": "The tear is moved and the third block is visible. It is made of ㅍ (top), ㅜ (vowel) and ㅁ (bottom). Which door is it?",
+    "options": [
+     {
+      "id": "a",
+      "text": "The restroom door (화장실).",
+      "reveals": "The restroom word has the block 실; the letters given make a different block, 품."
+     },
+     {
+      "id": "b",
+      "text": "Either one; the first two blocks are enough.",
+      "reveals": "The third block decides between the two words and now it is visible."
+     },
+     {
+      "id": "c",
+      "text": "The makeup door (화장품)."
+     },
+     {
+      "id": "d",
+      "text": "Neither; the sign cannot be read.",
+      "reveals": "All three blocks are now readable, so the sign can be read."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "The letters ㅍ + ㅜ + ㅁ make the block 품, so the sign says 화장품 (makeup). The restroom is not behind this door.",
+    "hints": [
+     "Put the top letter, the vowel and the bottom letter together into one block.",
+     "Compare that block with the two candidate blocks 실 and 품."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finding the deciding information",
+    "full": "Chooses the third block and can explain that the first two blocks are shared",
+    "partial": "Chooses it without a reason",
+    "none": "Chooses colour, floor or rereading"
+   },
+   {
+    "criterion": "Stating certainty",
+    "full": "Separates what is read for sure from what is not, then reads 품 correctly",
+    "partial": "Does one of the two",
+    "none": "Names one word without evidence"
+   }
+  ],
+  "alternatives": [
+   "A pictogram (a person symbol) next to the sign would also be good evidence in real life; here only the written word is considered."
+  ],
+  "hardCases": [
+   "Other words share the beginning 화장 (for example 화장지, tissue); more than two candidates can exist in a real shop."
+  ],
+  "cautions": {
+   "language": "All Korean texts are single words or very short phrases. Latin-letter readings follow common revised romanization; other spellings of the same sound (for example k for g) are accepted.",
+   "culture": "Signs in Korea often combine a word with a pictogram, but reading the full word is the most reliable way.",
+   "accessibility": "The torn sign is described in words; nothing depends on colour or on seeing the picture."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of the deciding block",
+    "Choice of the door after the reveal",
+    "Presence of a statement of what is known and unknown"
+   ],
+   "human": [
+    "Whether the reply to the friend is clear"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-l1a-04",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Reading Hangul: signs with one or two words, similar blocks",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "A paper on the restaurant wall",
+  "uiLang": "en",
+  "format": "reveal-and-revise",
+  "generative": true,
+  "goal": "Read a covered paper in three steps, do not decide too early, and notice how two look-alike words (있어요, 없어요) change the meaning.",
+  "thinking": [
+   "Waiting for enough evidence",
+   "Revising a first guess",
+   "Telling two look-alike blocks apart"
+  ],
+  "differsFromPlain": "Plain practice gives the whole sign at once. Here the paper is uncovered bit by bit and you decide what you can say at each point.",
+  "prerequisites": [
+   "Can read Hangul blocks with final consonants",
+   "Knows 있어요 and 없어요"
+  ],
+  "minutes": 7,
+  "curriculum": null,
+  "material": "A paper is taped to the wall of a restaurant. A hand covers most of it and moves a little each time. Words you may need: 있어요 = there is, 없어요 = there is not.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "Read each part, choose the answer that fits what you can read so far, then continue.",
+    "hints": [
+     "Use only the letters you can see so far.",
+     "Ask yourself what else could start with the same block or the same word."
+    ],
+    "reflect": "A first block rarely tells the whole sign, and a food name alone does not say what the paper says about it. The last word decided the meaning, and it differed from its look-alike by only the bottom letters.",
+    "stages": [
+     {
+      "info": "You can see only one block: 김",
+      "ask": "What does the paper say?",
+      "options": [
+       {
+        "id": "a",
+        "text": "김치 (kimchi)"
+       },
+       {
+        "id": "b",
+        "text": "김밥 (rice roll)"
+       },
+       {
+        "id": "c",
+        "text": "I cannot tell yet; more than one word starts with 김."
+       },
+       {
+        "id": "d",
+        "text": "A name tag: 김 is a common family name.",
+        "reveals": "A family name is one more guess. One block does not show whether it is a name, 김치 or 김밥."
+       }
+      ],
+      "reasonable": [
+       "c"
+      ],
+      "after": "김 starts 김치, 김밥, and also the very common family name 김. One block is too little to decide, so waiting is the reasonable choice."
+     },
+     {
+      "info": "The hand moves. Now you can read the first word: 김치",
+      "ask": "What do you know now?",
+      "options": [
+       {
+        "id": "a",
+        "text": "The paper is about kimchi, but I do not know what it says about it."
+       },
+       {
+        "id": "b",
+        "text": "Kimchi is on sale today.",
+        "reveals": "Nothing yet says 'sale'. A paper that names a food can be a menu, a price, a warning or a notice."
+       },
+       {
+        "id": "c",
+        "text": "Kimchi is free.",
+        "reveals": "There is no word about free or price yet."
+       },
+       {
+        "id": "d",
+        "text": "Kimchi is too spicy.",
+        "reveals": "There is no word about taste yet."
+       }
+      ],
+      "reasonable": [
+       "a"
+      ],
+      "after": "You know the topic (kimchi), but not what is said about it. The next word will say that."
+     },
+     {
+      "info": "The hand moves away. The whole paper: 김치 없어요.",
+      "ask": "What does the paper say?",
+      "options": [
+       {
+        "id": "a",
+        "text": "Kimchi is here: 김치 있어요.",
+        "reveals": "The last word has two letters under the vowel (ㅂ and ㅅ), so it is 없어요, not 있어요. The two words look alike but mean opposite things."
+       },
+       {
+        "id": "b",
+        "text": "There is no kimchi."
+       },
+       {
+        "id": "c",
+        "text": "Kimchi is cheap.",
+        "reveals": "Nothing on the paper is about price."
+       },
+       {
+        "id": "d",
+        "text": "Please bring kimchi.",
+        "reveals": "The paper does not ask for anything; it states that something is missing."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "없어요 (there is not) has the bottom letters ㅂ + ㅅ; 있어요 (there is) has only ㅆ. The paper says there is no kimchi."
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write what the paper says in your own words (English or Korean). Then name the word that decides the meaning.",
+    "placeholder": "예: ...",
+    "minChars": 10,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "says there is no kimchi",
+      "mode": "any",
+      "patterns": [
+       "no kimchi",
+       "없",
+       "out of",
+       "none",
+       "not (have|available|any)",
+       "sold out",
+       "there is no",
+       "there isn'?t",
+       "don'?t have",
+       "do not have",
+       "no more",
+       "run out",
+       "ran out"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "names the deciding last word",
+      "mode": "any",
+      "patterns": [
+       "있",
+       "없",
+       "last",
+       "final",
+       "second word",
+       "ending",
+       "bottom",
+       "받침",
+       "ㅂ",
+       "ㅆ",
+       "ㅅ"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I say the meaning, not just the Hangul?",
+     "Did I name the word that changes the meaning?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "It says there is no kimchi. The last word 없어요 decides it; 있어요 would mean the opposite."
+     },
+     {
+      "text": "김치 없어요 = no kimchi. The second word, 없어요, is the important one."
+     },
+     {
+      "text": "They have run out of kimchi. The ending word (없어요) tells me, not the first word."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "It says kimchi.",
+      "why": "Names only the topic, not what the paper says."
+     },
+     {
+      "text": "There is kimchi: 김치 있어요.",
+      "why": "Reads the look-alike word 있어요, the opposite meaning."
+     }
+    ],
+    "humanReview": "Whether the learner can tell 있 and 없 apart in handwriting; this needs a person for other fonts.",
+    "hints": [
+     "First say the whole message in English.",
+     "Then point to the one word that, if it changed, would flip the message."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "choose",
+    "prompt": "Another paper is covered the same way. You can read 물 and then a covered word that is either 있어요 or 없어요. What must you see before you can say what the paper says?",
+    "options": [
+     {
+      "id": "a",
+      "text": "The bottom letters of the covered word: one letter (ㅆ) or two (ㅂ + ㅅ)."
+     },
+     {
+      "id": "b",
+      "text": "The first block 물 again, read more slowly.",
+      "reveals": "You can already read 물. Reading it again does not show which of the two last words is covered."
+     },
+     {
+      "id": "c",
+      "text": "The colour of the paper.",
+      "reveals": "Colour is not part of the written message."
+     },
+     {
+      "id": "d",
+      "text": "Nothing more; 물 alone tells me there is water.",
+      "reveals": "A drink or food name only gives the topic. 있어요 and 없어요 have opposite meanings."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "물 gives the topic only. The two last words look alike and differ in their bottom letters, so you must see those letters to know whether the paper says there is water or there is not.",
+    "hints": [
+     "Write the two possible messages under each other and underline what is different.",
+     "Ask which part of the paper could still turn one message into the other."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Deciding at the right time",
+    "full": "Waits at stage 1 and does not claim more than the text says at stage 2",
+    "partial": "Waits but guesses at stage 2",
+    "none": "Names a word at stage 1 as certain"
+   },
+   {
+    "criterion": "Reading the look-alike words",
+    "full": "Reads 없어요, states the meaning and names the deciding word",
+    "partial": "Reads the meaning without naming the word",
+    "none": "Reads 있어요 or the topic only"
+   }
+  ],
+  "alternatives": [
+   "At stage 1 a guess that is marked as a guess is fine in conversation, but this stage rewards waiting because one block fits several words.",
+   "Asking the staff after the paper is read is also sensible."
+  ],
+  "hardCases": [
+   "In very small print or handwriting, 있 and 없 can look nearly identical; context (is the dish on the table?) then matters."
+  ],
+  "cautions": {
+   "language": "All Korean texts are single words or very short phrases. Latin-letter readings follow common revised romanization; other spellings of the same sound (for example k for g) are accepted.",
+   "culture": "Notices about sold-out items are common on restaurant walls in Korea; 없어요 is a normal, polite way to say an item is not available.",
+   "accessibility": "The paper is described in text. Nothing depends on colour, a picture or sound."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choices at each stage",
+    "Presence of the meaning and of the deciding word in the written answer"
+   ],
+   "human": [
+    "Whether the learner understood the message in their own words"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-l1a-05",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Reading Hangul: look-alike consonants and quiz pairs",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Make a look-alike quiz for your class",
+  "uiLang": "en",
+  "format": "make-your-own",
+  "generative": true,
+  "goal": "Choose a good look-alike pair, create your own pair of real Korean words, and explain how to tell them apart.",
+  "thinking": [
+   "Setting a condition for a good example",
+   "Creating an example that meets it",
+   "Explaining a difference in one's own words"
+  ],
+  "differsFromPlain": "Plain practice asks you to read given words. Here you design the quiz item: it must be a real pair, differ by one letter, and be explainable.",
+  "prerequisites": [
+   "Knows a few simple Hangul words",
+   "Can recognize ㅁ/ㅂ, ㅏ/ㅓ, ㄴ/ㄷ shapes"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "Your teacher asks every student to make one look-alike quiz item: two real Korean words that look almost the same, because only one letter is different. Example of the idea: 가 and 나 (one letter different).",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which pair is a good look-alike quiz item?",
+    "options": [
+     {
+      "id": "a",
+      "text": "산 (mountain) and 바다 (sea)",
+      "reveals": "Every block is different; this is not a look-alike pair."
+     },
+     {
+      "id": "b",
+      "text": "물 (water) and 불 (fire)"
+     },
+     {
+      "id": "c",
+      "text": "물 (water) and 물고기 (fish)",
+      "reveals": "One word is inside the other and the lengths differ; this is not a one-letter difference."
+     },
+     {
+      "id": "d",
+      "text": "눈 (snow) and 눈 (eye)",
+      "reveals": "The two words are written exactly the same, so no one can tell them apart by reading."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "물 and 불 are both real words and only the first letter differs (ㅁ vs ㅂ). A good item needs two real words, one small difference, and a difference you can point to.",
+    "hints": [
+     "Write down what stays the same and what changes between the two words in each option.",
+     "A good item has a difference you can point to with your finger."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Make your own pair: write two real Korean words that differ by one letter (a pair that is not printed in this task), and add their English meanings.",
+    "placeholder": "예: ... (...) - ... (...)",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "two Korean words",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]+[^가-힣]{1,40}[가-힣]+"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "English meanings given",
+      "mode": "any",
+      "patterns": [
+       "[A-Za-z]{3,}"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "the two words are not the same word repeated",
+      "mode": "none",
+      "patterns": [
+       "^[^가-힣]*([가-힣]+)[^가-힣]{0,40}\\1(?![가-힣])[^가-힣]*$"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "the two Korean words have the same number of blocks",
+      "mode": "any",
+      "patterns": [
+       "^[^가-힣]*[가-힣](?![가-힣])[^가-힣]+[가-힣](?![가-힣])",
+       "^[^가-힣]*[가-힣]{2}(?![가-힣])[^가-힣]+[가-힣]{2}(?![가-힣])",
+       "^[^가-힣]*[가-힣]{3}(?![가-힣])[^가-힣]+[가-힣]{3}(?![가-힣])"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "the pair is your own, not one printed in this task",
+      "mode": "none",
+      "patterns": [
+       "물[^가-힣]+불",
+       "불[^가-힣]+물"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Are both words real Korean words I know?",
+     "Do they differ in exactly one letter?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "달 (moon) - 말 (horse)"
+     },
+     {
+      "text": "공 (ball) / 곰 (bear)"
+     },
+     {
+      "text": "눈 (eye) and 문 (door): the first letter is different."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "달 (moon) - 달 (moon)",
+      "why": "The two words are the same."
+     },
+     {
+      "text": "water and fire",
+      "why": "No Korean words are written."
+     },
+     {
+      "text": "산 (mountain) and 바다 (sea)",
+      "why": "Different words with different lengths, not a one-letter difference."
+     },
+     {
+      "text": "물 (water) and 불 (fire)",
+      "why": "This is the pair printed in the task, not your own."
+     }
+    ],
+    "humanReview": "Whether both words are real and really differ by one letter; the checks only see that two words of the same length are written, not the Korean vocabulary.",
+    "hints": [
+     "Think of a word you know well and change one letter of it.",
+     "Check that the new block is also a real word."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Write one or two sentences telling a classmate how to tell your two words apart (which part is different and where).",
+    "placeholder": "예: ...",
+    "minChars": 15,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "says where the difference is (first, last, top, bottom, vowel, consonant, ...)",
+      "mode": "any",
+      "patterns": [
+       "top",
+       "bottom",
+       "above",
+       "below",
+       "first",
+       "last",
+       "middle",
+       "vowel",
+       "consonant",
+       "left",
+       "right",
+       "받침",
+       "자음",
+       "모음",
+       "위",
+       "아래",
+       "첫",
+       "끝",
+       "가운데"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "names a Korean letter or word",
+      "mode": "any",
+      "patterns": [
+       "[가-힣ㄱ-ㅣ]"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I say which part is different?",
+     "Could my classmate find it from my sentence?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "The first letter is different: ㄷ in 달 and ㅁ in 말. The rest of the block is the same."
+     },
+     {
+      "text": "Look at the bottom letter: 공 has ㅇ at the bottom and 곰 has ㅁ. The first letter and the vowel ㅗ are the same."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "They are different.",
+      "why": "Does not say which part differs."
+     },
+     {
+      "text": "I like Korean.",
+      "why": "Not related to the task."
+     }
+    ],
+    "humanReview": "Whether the sentence is accurate for the learner's own pair and clear to a classmate.",
+    "hints": [
+     "Say which block, and which letter inside it, is different.",
+     "Say whether the difference is at the top, in the middle or at the bottom of the block."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Choosing and making the pair",
+    "full": "Picks 물/불 for a reason and makes two real words that differ by one letter",
+    "partial": "Pair is real but differs by more than one letter",
+    "none": "Pair is not real or both words are the same"
+   },
+   {
+    "criterion": "Explaining the difference",
+    "full": "Names the block and the letter that differs and where it is",
+    "partial": "Says 'different' only in general",
+    "none": "No explanation"
+   }
+  ],
+  "alternatives": [
+   "Any real pair that differs by one letter is valid, for example 가 / 거, 산 / 삼, 밤 / 밥.",
+   "A pair that differs only by sound but looks different (like 김 / 심) can be fine if the written difference is one letter."
+  ],
+  "hardCases": [
+   "Some pairs differ by one letter but one word is rare (for example proper names); a person should check that both words are common."
+  ],
+  "cautions": {
+   "language": "All Korean texts are single words or very short phrases. Latin-letter readings follow common revised romanization; other spellings of the same sound (for example k for g) are accepted.",
+   "culture": "Korean has many near-pairs; making your own helps memory. Teachers may prefer pairs from the textbook word list.",
+   "accessibility": "All content is text; letters are described by position (top, bottom, left, right), not by colour."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choosing a good quiz pair",
+    "Two Korean words and English meanings present, not repeated",
+    "Mentions the differing part"
+   ],
+   "human": [
+    "Whether both words are real and differ in one letter; whether the explanation fits the pair"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-l1b-01",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Hangul in real life: spelling vs sound of final consonants",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "The sign painter who wrote what he heard",
+  "uiLang": "en",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Find the shop signs that copy the sound instead of the spelling, understand why sound alone cannot give the spelling, and write the signs correctly.",
+  "thinking": [
+   "Telling apart what you hear from what is written",
+   "Finding errors by checking each line against what you know",
+   "Explaining why one sound can come from several written letters"
+  ],
+  "differsFromPlain": "Plain practice asks you to read a final consonant aloud. Here the direction is reversed: from a sound to a spelling, and you see why that direction is unsafe.",
+  "prerequisites": [
+   "Can read Hangul with final consonants (받침)",
+   "Knows 꽃, 옷, 신발, 과일, 빵 as vocabulary"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "Dongho paints signs for a market street. A friend read the shop names aloud, and Dongho wrote each one down the way it sounded. Below are six of his signs, with the meaning in English. The words are everyday words you have met in class.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "Some of Dongho's signs are misspelled. Pick one line that has a spelling mistake.",
+    "lines": [
+     "1. 과일 가게 (fruit shop)",
+     "2. 꼳 가게 (flower shop)",
+     "3. 신발 가게 (shoe shop)",
+     "4. 옫 가게 (clothes shop)",
+     "5. 빵집 (bakery)",
+     "6. 밥집 (rice restaurant)"
+    ],
+    "wrong": [
+     1,
+     3
+    ],
+    "explain": "Lines 2 and 4 are misspelled. The flower shop is 꽃 가게 and the clothes shop is 옷 가게. Line 6 is correct: 밥 is written with ㅂ at the bottom, as the word is spelled.",
+    "hints": [
+     "Pick a sign whose word you know from class and spell it from memory. Does its bottom letter match the sign?",
+     "Say each sign aloud, then compare the last letter of each word with the word as you know it."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Dongho wrote his signs by copying what he heard. Why can copying the sound lead to a wrong spelling?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Only ㄷ can be written at the bottom of a block, so Dongho's signs were right.",
+      "reveals": "Many letters can be written at the bottom (ㅂ in 밥, ㅁ in 삼, ㅅ in 옷). ㄷ is only one of them."
+     },
+     {
+      "id": "b",
+      "text": "Bottom letters are never pronounced, so Dongho could not hear them.",
+      "reveals": "Bottom letters are pronounced; the sound is just not always the written letter (옷 is said [옫])."
+     },
+     {
+      "id": "c",
+      "text": "Shop signs use a special spelling that is different from ordinary words.",
+      "reveals": "Signs use ordinary spelling. 꽃 is written 꽃 everywhere, on signs and in books."
+     },
+     {
+      "id": "d",
+      "text": "Several bottom letters can have the same sound, so the sound alone does not show the spelling."
+     }
+    ],
+    "correct": [
+     "d"
+    ],
+    "explain": "At the bottom of a syllable, ㅅ, ㅈ, ㅊ, ㅌ (and others) are all said like ㄷ. So [꼳] could come from 꽃, and a sound can come from more than one spelling. You must know the written word, not just its sound.",
+    "hints": [
+     "Say the word 꽃 and the word 옷 aloud. Do their last sounds tell you which bottom letter is written?",
+     "Ask: if two different letters sound the same, can you tell from the sound which one was written?"
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Write the corrected signs in Hangul for the lines that are misspelled.",
+    "placeholder": "예: ...",
+    "minChars": 4,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "the flower shop uses the written word 꽃",
+      "mode": "any",
+      "patterns": [
+       "꽃"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "the clothes shop uses the written word 옷",
+      "mode": "any",
+      "patterns": [
+       "옷"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "does not keep a sound spelling (꼳, 옫)",
+      "mode": "none",
+      "patterns": [
+       "꼳",
+       "옫"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Do both signs show the written word, not the sound?",
+     "Did I keep the shop word (가게 or 집) after each?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "꽃 가게, 옷 가게"
+     },
+     {
+      "text": "꽃집 / 옷가게",
+      "note": "Joined spelling or 집 also works."
+     },
+     {
+      "text": "1) 꽃 가게  2) 옷 가게"
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "꼳 가게, 옷 가게",
+      "why": "The flower sign still copies the sound."
+     },
+     {
+      "text": "꽃 가게, 옫 가게",
+      "why": "The clothes sign still copies the sound."
+     },
+     {
+      "text": "I would not change them.",
+      "why": "Keeps both mistakes."
+     },
+     {
+      "text": "꽃, 옷, 꼳, 옫",
+      "why": "Lists the right and the wrong spellings together."
+     }
+    ],
+    "humanReview": "Spacing (가게 apart or joined) and whether a learner's own wording of a shop name is natural.",
+    "hints": [
+     "Take the two lines you found and replace only the word with the bottom-letter mistake.",
+     "Use the spelling of the word as in your textbook, not the sound in your head."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finding the misspelled signs",
+    "full": "Picks a wrong line and, in the write step, fixes both",
+    "partial": "Fixes only one or picks a correct line (e.g. 닭집)",
+    "none": "Cannot find any mistake"
+   },
+   {
+    "criterion": "Explaining why sound is not enough",
+    "full": "Chooses the reason that several letters share one sound",
+    "partial": "Knows the signs are wrong but blames hearing",
+    "none": "Thinks signs use a special spelling"
+   }
+  ],
+  "alternatives": [
+   "Writing '꽃집' or '꽃가게' instead of '꽃 가게' is fine.",
+   "A learner may spot 닭집 as suspicious; that is a good question, the model answer explains why it is correct."
+  ],
+  "hardCases": [
+   "Whether 닭집 is a shop name people really use (it exists; the task only uses it as a spelling check)."
+  ],
+  "cautions": {
+   "language": "The sounds are written in Hangul inside [ ]; this is a way to show sound, not an official spelling. Tense sounds like [빵찝] are not asked.",
+   "culture": "Real signs are spelled normally; the 'sign painter' is a made-up situation to practise spelling.",
+   "accessibility": "All material is text. Nothing depends on colour or pictures. Romanization is not used."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Which line is picked",
+    "Which reason is chosen",
+    "Whether both corrected signs contain 꽃 and 옷"
+   ],
+   "human": [
+    "Spelling and spacing of the learner's own signs"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-l1b-02",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Hangul in real life: bus-stop board",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Which bus does Hana take today?",
+  "uiLang": "en",
+  "format": "choose-needed-info",
+  "generative": true,
+  "goal": "Decide which pieces of information on a bus board and in a text are needed to name the right bus, notice the condition printed in brackets, and explain your choice.",
+  "thinking": [
+   "Choosing which information is needed",
+   "Noticing a condition hidden in brackets",
+   "Combining a board with a message"
+  ],
+  "differsFromPlain": "Plain practice asks you to read a place name on a sign. Here the board has a condition in brackets, and the answer depends on a fact in a different message.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows days of the week (월 ~ 일), numbers + 번"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "You and your friend Hana are at a bus stop called 시장 앞. Days: 월 Mon, 화 Tue, 수 Wed, 목 Thu, 금 Fri, 토 Sat, 일 Sun. 매일 = every day.\n\n[버스 정류장: 시장 앞]\n3번 (월~금): 학교 · 병원\n5번 (매일): 공원 · 병원 · 역\n7번 (매일): 시장 · 학교\n\nHana's text: \"오늘은 일요일이에요. 병원에 가요. 몇 번 버스예요?\"",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "To tell Hana the bus number, which pieces of information do you need? Pick all that apply.",
+    "options": [
+     {
+      "id": "a",
+      "text": "Where Hana wants to go"
+     },
+     {
+      "id": "b",
+      "text": "The name of the stop where you stand",
+      "reveals": "You are already at the stop. The board is the same whatever its name is, so the stop name does not decide the bus."
+     },
+     {
+      "id": "c",
+      "text": "What day today is"
+     },
+     {
+      "id": "d",
+      "text": "The lines of the board that list that place"
+     },
+     {
+      "id": "e",
+      "text": "How much the bus costs",
+      "reveals": "The price does not change which bus goes to the place, and the board does not show any price."
+     }
+    ],
+    "correct": [
+     "a",
+     "c",
+     "d"
+    ],
+    "explain": "You need the place (병원), the board lines that list it, and today's day, because 3번 runs only 월~금. The stop name and the fare do not help choose the number.",
+    "hints": [
+     "First write down what Hana wants to do, then ask which part of the board answers it.",
+     "Read what is written in brackets after each bus number. What fact about today would you need to use it?"
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Which bus should Hana take today?",
+    "options": [
+     {
+      "id": "a",
+      "text": "3번",
+      "reveals": "3번 goes to 병원, but the bracket says it runs only 월~금, and today is 일요일."
+     },
+     {
+      "id": "b",
+      "text": "7번",
+      "reveals": "7번 goes to 시장 and 학교. 병원 is not in its list."
+     },
+     {
+      "id": "c",
+      "text": "5번"
+     },
+     {
+      "id": "d",
+      "text": "3번 or 5번, either one",
+      "reveals": "Both list 병원, but 3번 does not run today, so they are not equal."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "5번 lists 병원 and runs 매일. 3번 also lists 병원 but runs only 월~금, and today is Sunday.",
+    "hints": [
+     "Cross out the buses whose list does not name the place.",
+     "For the buses that are left, check the bracket against today's day."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Reply to Hana in English (you may add Korean words): which bus should she take, and why not the other bus that also goes there?",
+    "placeholder": "예: ...",
+    "minChars": 20,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "names bus 5",
+      "mode": "any",
+      "patterns": [
+       "\\b5\\b",
+       "5번",
+       "five",
+       "오번"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "refers to the day (Sunday / weekdays / 월~금 / today)",
+      "mode": "any",
+      "patterns": [
+       "sunday",
+       "일요일",
+       "weekday",
+       "월\\s*[~-]\\s*금",
+       "mon(day)?\\s*(to|-|~|through)\\s*fri",
+       "today",
+       "not run",
+       "doesn't run",
+       "does not run",
+       "only on"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "says bus 3 does not run today",
+      "mode": "any",
+      "patterns": [
+       "(3|three)[^.;]{0,70}(not|n't|only|weekday|월|except|no )",
+       "(not|n't|only|weekday|월|except|no )[^.;]{0,70}(3|three)",
+       "(3|three|3번)[^.;]{0,70}(mon(day)?\\s*(to|-|~|through)\\s*fri(day)?|monday|friday)",
+       "(3|three|3번)[^.;]{0,70}안\\s*(가|와|다녀|다니)"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "does not tell her to take 3",
+      "mode": "none",
+      "patterns": [
+       "(?<!not )(?<!n't )(?<!never )\\b(take|ride|use|get on|catch)\\s+(the\\s+)?(bus\\s+)?(number\\s+|no\\.?\\s*)?(3|three)\\b"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I name one bus and say why it works today?",
+     "Did I say why the other bus does not work today?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "Take bus 5. Bus 3 also goes to the hospital, but it runs only Monday to Friday and today is Sunday."
+     },
+     {
+      "text": "5번 is the one. 3번 is only 월~금, so it does not run on Sunday."
+     },
+     {
+      "text": "Hana should take 5. The 3 says Mon-Fri only, but today is 일요일."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "Take 3 because it goes to the hospital.",
+      "why": "Ignores the bracket."
+     },
+     {
+      "text": "Take 5.",
+      "why": "Right bus but no reason; the day condition is not mentioned."
+     },
+     {
+      "text": "Take 3, not 5, because it is Sunday.",
+      "why": "Chooses the bus that does not run today."
+     },
+     {
+      "text": "Take 5. Bus 3 also goes to the hospital but is slower.",
+      "why": "Gives a reason that is not in the board; the day condition is missing."
+     }
+    ],
+    "humanReview": "Whether the reason is clear in the learner's own words, including mixed English and Korean.",
+    "hints": [
+     "Say the bus number first, then the reason in one sentence.",
+     "Mention the day in today's text and the bracket on the other bus."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Choosing the needed information",
+    "full": "Picks the place, the matching board lines and today's day, and leaves out the stop name and the fare",
+    "partial": "Misses the day or adds an unneeded item",
+    "none": "Picks mostly unneeded items"
+   },
+   {
+    "criterion": "Using the bracket condition",
+    "full": "Chooses 5번 and explains that 3번 runs only 월~금",
+    "partial": "Chooses 5번 without a reason",
+    "none": "Chooses 3번"
+   }
+  ],
+  "alternatives": [
+   "Saying '5 or maybe 3 if it runs on Sunday' is not wrong as caution, but the board says 3번 does not run on Sunday.",
+   "Naming the bracket as 'Mon to Fri only' or 'not on weekends' are both fine."
+  ],
+  "hardCases": [
+   "If the learner is unsure that 월~금 means Monday to Friday, check the day list in the material first."
+  ],
+  "cautions": {
+   "language": "The Korean is limited to place names, 번 and the days. Hana's text uses only ~이에요, ~에 가요 and 몇 번.",
+   "culture": "Some local buses really do change the route on weekends; the board is simplified.",
+   "accessibility": "All material is text. The board is shown as plain lines, with nothing depending on colour."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Which items are chosen",
+    "Which bus is chosen",
+    "Whether the reply names bus 5 and the day condition"
+   ],
+   "human": [
+    "Whether the written reason is clear"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-l1b-03",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Hangul in real life: reading names and name tags",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Two name tags, one family?",
+  "uiLang": "en",
+  "format": "reveal-and-revise",
+  "generative": true,
+  "goal": "Read Korean name tags, work out which part is the family name, and revise a guess about how two people are related as new information arrives.",
+  "thinking": [
+   "Separating what a name shows from what it does not show",
+   "Revising a judgement with new information",
+   "Telling certain from possible"
+  ],
+  "differsFromPlain": "Plain practice asks you to read a name aloud. Here you decide what a name tag really tells you, and what it only suggests.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows 동생 (younger sibling), 저는 ~이에요, ~씨"
+  ],
+  "minutes": 7,
+  "curriculum": null,
+  "material": "First day of a Korean class. You read the name tags on the desks and listen to people introduce themselves. Korean names are written with the family name first, then the given name. In this class every family name has one syllable (like 박, 김, 이). The tags have no space between them.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "Read each part and choose the statement you are most sure of. Then continue.",
+    "hints": [
+     "Decide using only what you have read so far.",
+     "Ask yourself: is this certain, or only possible?"
+    ],
+    "reflect": "A name shows the family name and the given name, not whether people are related or whether the person is a boy or a girl. Each new piece of information narrowed what we knew, and we kept 'possible' separate from 'certain'.",
+    "stages": [
+     {
+      "info": "Two name tags on the desks:\n박지민\n박지훈",
+      "ask": "What can you say for certain?",
+      "options": [
+       {
+        "id": "a",
+        "text": "They are brother and sister.",
+        "reveals": "Possible, but not certain. 박 is a very common family name, so people with it are often not related."
+       },
+       {
+        "id": "b",
+        "text": "They have the same family name."
+       },
+       {
+        "id": "c",
+        "text": "They have the same given name.",
+        "reveals": "The given names are different (지민 and 지훈)."
+       },
+       {
+        "id": "d",
+        "text": "They are the same person.",
+        "reveals": "Two tags on two desks. The given names also differ."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "Both tags start with 박, so the family name is the same. The tags alone do not show whether the two are related."
+     },
+     {
+      "info": "지훈: 안녕하세요. 저는 지훈이에요. 지민은 제 동생이에요.",
+      "ask": "Now what do you know about 지민 and 지훈?",
+      "options": [
+       {
+        "id": "a",
+        "text": "지민 is 지훈's younger brother or sister."
+       },
+       {
+        "id": "b",
+        "text": "지민 is 지훈's teacher.",
+        "reveals": "지훈 says 지민 is 제 동생, 'my younger sibling', not a teacher."
+       },
+       {
+        "id": "c",
+        "text": "지민 is 지훈's older sister.",
+        "reveals": "동생 means a younger sibling. An older sister would be 누나 or 언니."
+       },
+       {
+        "id": "d",
+        "text": "They are classmates only.",
+        "reveals": "지훈 says 제 동생, so they are family, not just classmates."
+       }
+      ],
+      "reasonable": [
+       "a"
+      ],
+      "after": "지훈 says it directly: 지민 is his younger sibling. So the same family name 박 did fit a family here, but we only learned it from what he said."
+     },
+     {
+      "info": "지훈: 동생은 열두 살이에요.",
+      "ask": "Is 지민 a boy or a girl?",
+      "options": [
+       {
+        "id": "a",
+        "text": "A girl, because 지민 sounds like a girl's name.",
+        "reveals": "The name 지민 is used for both boys and girls, so the name is not evidence."
+       },
+       {
+        "id": "b",
+        "text": "A boy, because 지훈 is a boy and they have the same family name.",
+        "reveals": "The family name is shared by everyone in the family and says nothing about being a boy or a girl."
+       },
+       {
+        "id": "c",
+        "text": "We do not know yet. Nothing said so far shows it."
+       },
+       {
+        "id": "d",
+        "text": "A boy, because older siblings are boys.",
+        "reveals": "지훈 is the older one. Nothing says the older one is a boy, and nothing is said about the younger one."
+       }
+      ],
+      "reasonable": [
+       "c"
+      ],
+      "after": "'동생' and the age do not tell the gender, and the name 지민 is used for both. Nothing so far shows whether 지민 is a boy or a girl."
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Now you are 박지민 in your turn to introduce yourself. Write two short lines in Korean (polite speech): say hello, then say your name.",
+    "placeholder": "예: ...",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "a polite greeting (안녕하세요)",
+      "mode": "any",
+      "patterns": [
+       "안녕하세요",
+       "안녕하십니까"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "says the name 지민 with a polite ending (지민이에요 / 지민입니다)",
+      "mode": "any",
+      "patterns": [
+       "지민\\s*(이에요|입니다|이라고 해요|이라고 합니다)"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "contains the name 지민",
+      "mode": "any",
+      "patterns": [
+       "지민"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "does not use the other name 지훈",
+      "mode": "none",
+      "patterns": [
+       "지훈"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I say hello and my name in two lines?",
+     "Did I put the family name first if I said both parts?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "안녕하세요. 저는 지민이에요."
+     },
+     {
+      "text": "안녕하세요? 저는 박지민입니다."
+     },
+     {
+      "text": "안녕하세요. 제 이름은 박지민이에요."
+     },
+     {
+      "text": "안녕하세요. 지민이에요.",
+      "note": "Also natural: the subject 저는 can be left out."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "안녕. 나는 지민이야.",
+      "why": "Casual speech; this is a class introduction."
+     },
+     {
+      "text": "안녕하세요.",
+      "why": "Greeting only; no name."
+     },
+     {
+      "text": "안녕하세요. 저는 지훈이에요. 지민이에요?",
+      "why": "Says the wrong name (지훈) first."
+     },
+     {
+      "text": "안녕하세요. 저는 지민.",
+      "why": "No polite ending after the name."
+     }
+    ],
+    "humanReview": "Whether the introduction sounds natural, and whether the name order is family name first.",
+    "hints": [
+     "Start with the greeting you use in class.",
+     "Think about how a name is said politely: which ending follows it, and does your name end in a bottom consonant?"
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Separating certain from possible",
+    "full": "Says that only the shared family name is certain at first and that being siblings is only possible",
+    "partial": "Gets the answer but does not notice the difference",
+    "none": "Treats the same family name as proof of being family"
+   },
+   {
+    "criterion": "Revising with new information",
+    "full": "Updates correctly after 동생 and keeps gender open",
+    "partial": "Updates only for the relation",
+    "none": "Keeps the first guess against the evidence"
+   }
+  ],
+  "alternatives": [
+   "In stage 1 saying 'they might be siblings' as a possibility is reasonable; only 'for certain' is wrong.",
+   "In stage 3 some learners say 'probably a girl'. The task treats 'we do not know yet' as the safe answer."
+  ],
+  "hardCases": [
+   "Real names: some Korean family names have two syllables, and 박 is only one of many family names."
+  ],
+  "cautions": {
+   "language": "Names are only written with Hangul; given names are common and short. 열두 (twelve) is a native Korean number used for age.",
+   "culture": "Using family name first is the Korean order. Calling a person by given name + 씨 is common among adults; siblings do not use 씨 to each other.",
+   "accessibility": "All material is text. The tags are typed on separate lines in the stage text."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choices at each stage",
+    "Which statements count as reasonable"
+   ],
+   "human": [
+    "Whether the learner explains the difference between certain and possible"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-l1b-04",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Hangul in real life: a menu board and its notes",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Mina counts the prices",
+  "uiLang": "en",
+  "format": "judge-evidence-explain",
+  "generative": true,
+  "goal": "Judge a friend's claim against the whole menu board, find the line of her reasoning that fails, and explain it using the note under the menu.",
+  "thinking": [
+   "Checking a claim against all the evidence on a page",
+   "Finding the first step that fails",
+   "Explaining with evidence"
+  ],
+  "differsFromPlain": "Plain practice asks you to read prices off a menu. Here a note at the bottom changes which price applies, and the claim has to be checked against it.",
+  "prerequisites": [
+   "Can read Hangul and numbers in 천 원",
+   "Knows 시 and 분 for time"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "Mina and you are at a snack shop. Mina looks at the menu board and sends you a text. The board:\n\n[분식집 메뉴]\n김밥 3,000원\n라면 4,000원\n떡볶이 4,000원\n※ 점심 세트 (11시~2시) 김밥 + 라면 5,000원\n(세트 = set meal)\n\nMina's text: \"지금 12시 30분이에요. 저는 6,000원 있어요. 김밥하고 라면은 7,000원이에요. 못 먹어요.\"",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Mina says she cannot afford 김밥 + 라면. Look at the whole board and the time in her text. What is the best judgement?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Mina is right: 3,000 + 4,000 is 7,000, which is more than 6,000.",
+      "reveals": "This uses the single prices only and skips the note at the bottom of the board."
+     },
+     {
+      "id": "b",
+      "text": "Mina is wrong: at 12:30 the lunch set gives both for 5,000, less than 6,000."
+     },
+     {
+      "id": "c",
+      "text": "Mina is right: the set is only for 김밥 and 떡볶이, so 라면 costs extra.",
+      "reveals": "The set line reads 김밥 + 라면. It includes 라면."
+     },
+     {
+      "id": "d",
+      "text": "Mina is right: the lunch set ends before 12:30, so the price is 7,000.",
+      "reveals": "The set runs 11시~2시, and 12시 30분 is inside those hours."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "11시~2시 is the lunch set time and 12시 30분 is inside it. 김밥 + 라면 is then 5,000원, so Mina can order both with 6,000원.",
+    "hints": [
+     "Look at every line of the board, not only the prices, before you add anything.",
+     "Compare the time in Mina's text with the times written on the board."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "pickLine",
+    "prompt": "Here is Mina's reasoning, line by line. Pick the FIRST line that is not true at 12:30.",
+    "lines": [
+     "1. 김밥은 3,000원이에요.",
+     "2. 라면은 4,000원이에요.",
+     "3. 12시 30분에 김밥하고 라면은 7,000원이에요.",
+     "4. 저는 6,000원 있어요.",
+     "5. 그래서 못 먹어요."
+    ],
+    "wrong": [
+     2
+    ],
+    "explain": "Line 3 is the first line that fails: at 12:30 the set makes 김밥 + 라면 5,000원, not 7,000원. Lines 1, 2 and 4 are true. Line 5 is also false, but only because line 3 was false.",
+    "hints": [
+     "Check the lines one by one from the top and stop at the first one that does not match the board at 12:30.",
+     "For each line ask: does the whole board, at that time, agree with it?"
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Write a short reply to Mina in English (Korean words are fine) that shows her the board's evidence.",
+    "placeholder": "예: ...",
+    "minChars": 25,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "mentions the 5,000 won set price",
+      "mode": "any",
+      "patterns": [
+       "5,?000",
+       "오천",
+       "five thousand",
+       "5천"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "mentions the lunch set or the time",
+      "mode": "any",
+      "patterns": [
+       "lunch",
+       "점심",
+       "세트",
+       "\\bset\\b",
+       "12[:시.]\\s*30",
+       "noon",
+       "11",
+       "2시",
+       "\\btime\\b",
+       "hours?"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "says she can afford / order it",
+      "mode": "any",
+      "patterns": [
+       "\\b(can|could|able to|enough|fits|within)\\b",
+       "먹을 수 있",
+       "살 수 있",
+       "돼요"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "does not simply agree with Mina",
+      "mode": "none",
+      "patterns": [
+       "\\b(is|was|are)\\s+(right|correct)\\b(?!\\s+(that|about|but)\\b|\\s*,\\s*but\\b)"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "does not say she cannot pay",
+      "mode": "none",
+      "patterns": [
+       "cannot|can't|can not|not enough|too expensive|not able|못 먹|don't have enough|do not have enough"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my reply point to the line of the board that Mina missed?",
+     "Did I give the new price and compare it to 6,000?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "You can order both. It is lunch time now (12:30), and the 점심 set is 김밥 + 라면 for 5,000 won. You have 6,000."
+     },
+     {
+      "text": "Look at the ※ line: from 11 to 2 the set costs 5,000원, less than your 6,000원, so you can have both."
+     },
+     {
+      "text": "점심 세트 is 5,000원 until 2시. Now is 12:30, so 김밥 + 라면 is only 5,000 and you have enough."
+     },
+     {
+      "text": "You are right that separately it is 7,000, but at lunch time the set is 5,000 won, so you can eat both."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "Mina is correct because 3,000 + 4,000 is 7,000.",
+      "why": "Agrees with the wrong reading and skips the note."
+     },
+     {
+      "text": "The board has prices 3,000 and 4,000.",
+      "why": "Repeats the single prices; no set price or time."
+     },
+     {
+      "text": "It is 5,000 won.",
+      "why": "Gives the price but not the time condition or whether she can afford it."
+     },
+     {
+      "text": "The set is 5,000 won at lunch time; you cannot afford it.",
+      "why": "Names the set price but still says she cannot pay."
+     }
+    ],
+    "humanReview": "Whether the reply is clear and kind, and whether the explanation links the time to the set price.",
+    "hints": [
+     "Start by telling Mina what she can or cannot do, then give the reason.",
+     "Say which line of the board you used and what it says about her situation."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Using the note on the board",
+    "full": "Judges that the lunch set applies at 12:30 and names the 5,000-won price",
+    "partial": "Sees the set but not the time condition",
+    "none": "Uses only the single prices"
+   },
+   {
+    "criterion": "Locating the failing step",
+    "full": "Picks the line that states the 7,000-won total",
+    "partial": "Picks the conclusion line",
+    "none": "Picks a correct line"
+   }
+  ],
+  "alternatives": [
+   "Saying '5,000 won, so she even has 1,000 left' is a good extension.",
+   "Replies that only point to the ※ line and the time, without writing the price, also show the key idea."
+  ],
+  "hardCases": [
+   "Is the set offered at exactly 11 or 2? The board does not say; this task uses 12:30 so the case is clear."
+  ],
+  "cautions": {
+   "language": "The Korean uses numbers in 원, 시 and 분, and 못 먹어요. Prices are written with digits and 원.",
+   "culture": "Snack shops (분식집) often have lunch sets with time limits; the board is simplified.",
+   "accessibility": "All material is text. The menu is given as plain lines; the ※ mark is read as 'note'."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of the judgement",
+    "The failing line",
+    "Whether the reply contains the price, the time and not 'Mina is right'"
+   ],
+   "human": [
+    "Clarity and kindness of the reply"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-l1b-05",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Hangul in real life: final consonants and the sounds you say",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "A rule with exceptions: do you say the bottom letter?",
+  "uiLang": "en",
+  "format": "make-your-own",
+  "generative": true,
+  "goal": "Test a friend's rule about final consonants against real words, produce your own counter-example, and choose a rule that fits all the words.",
+  "thinking": [
+   "Testing a rule against examples",
+   "Producing a counter-example",
+   "Revising a rule so it fits the facts"
+  ],
+  "differsFromPlain": "Plain practice asks you to read words with final consonants. Here you test a rule, break it with an example you choose, and repair it.",
+  "prerequisites": [
+   "Can read Hangul with final consonants (받침)",
+   "Knows the words 밥, 집, 책, 물, 옷, 꽃, 밖, 맛, 낮"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "Tom, a classmate, has a rule: \"The letter at the bottom of a syllable is the sound you say at the end. 밥 is said [밥]. 집 is said [집].\" Tom tries it on a list of words. In [ ] is how each word is said.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "Which words break Tom's rule? Pick all that apply.",
+    "options": [
+     {
+      "id": "a",
+      "text": "밥 [밥]",
+      "reveals": "The bottom letter ㅂ is said as ㅂ, so the rule holds. It is not a counter-example."
+     },
+     {
+      "id": "b",
+      "text": "옷 [옫]"
+     },
+     {
+      "id": "c",
+      "text": "집 [집]",
+      "reveals": "The bottom letter ㅂ is said as ㅂ, so the rule holds."
+     },
+     {
+      "id": "d",
+      "text": "꽃 [꼳]"
+     },
+     {
+      "id": "e",
+      "text": "물 [물]",
+      "reveals": "The bottom letter ㄹ is said as ㄹ, so the rule holds."
+     },
+     {
+      "id": "f",
+      "text": "밖 [박]"
+     }
+    ],
+    "correct": [
+     "b",
+     "d",
+     "f"
+    ],
+    "explain": "옷 [옫], 꽃 [꼳] and 밖 [박] are said with a different bottom sound than the written letter (ㅅ, ㅊ and ㄲ). 밥, 집 and 물 follow Tom's rule, so one counter-example is enough to show the rule is not always true.",
+    "hints": [
+     "For each word, compare the bottom letter of the written word with the bottom letter of the sound in [ ].",
+     "A word breaks the rule when the two do not match."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Give ONE more counter-example of your own, a word that is not in the list above. Write the word, how it is said in [ ], and one English sentence saying what happens to the bottom letter. Word bank if you need it: 맛 (taste), 낮 (daytime), 밭 (field).",
+    "placeholder": "예: 맛 [맏] ...",
+    "minChars": 10,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "a new word whose bottom letter is not said as written (맛, 낮, 밭, 앞 ...)",
+      "mode": "any",
+      "patterns": [
+       "맛",
+       "낮",
+       "밭",
+       "빛",
+       "앞",
+       "부엌",
+       "닭",
+       "값",
+       "낫",
+       "숲",
+       "잎",
+       "끝",
+       "밑",
+       "높",
+       "깊",
+       "맞"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "shows the sound, for example in [ ] or with →",
+      "mode": "any",
+      "patterns": [
+       "\\[[가-힣ㄱ-ㅎ]+\\]",
+       "→",
+       "=>",
+       "sounds? like",
+       "said (as|like)",
+       "pronounced"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "the sound is not the same as the spelling",
+      "mode": "none",
+      "patterns": [
+       "([맛낮밭빛앞꽃옷밖닭값낫숲잎끝밑높깊맞])\\s*(→|=>|=|:|-|is|sounds like)?\\s*\\[\\1\\]"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "says in English or with a letter what the bottom sound becomes",
+      "mode": "any",
+      "patterns": [
+       "ㄷ|ㄱ|ㅂ",
+       "\\b[dgbtkp]\\s+sound",
+       "like (a )?(d|g|b|t|k|p)\\b",
+       "different",
+       "instead",
+       "changes?",
+       "becomes?",
+       "not (said|pronounced|read)",
+       "doesn'?t|does not|isn'?t",
+       "same as"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Is my word one where the bottom letter is not said as written?",
+     "Did I write the sound in [ ] and say what the bottom sound is?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "맛 [맏] - the bottom letter ㅅ is said like ㄷ, not like ㅅ."
+     },
+     {
+      "text": "낮 [낟]. The ㅈ at the bottom sounds like d, so it is not said as written."
+     },
+     {
+      "text": "앞 [압] → the bottom letter ㅍ becomes ㅂ."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "맛 [맛] is the same.",
+      "why": "Gives the sound as the spelling, so it is not a counter-example."
+     },
+     {
+      "text": "밥 [밥]. It follows the rule.",
+      "why": "This word follows the rule, so it does not break it."
+     },
+     {
+      "text": "I do not know.",
+      "why": "No word and no sound."
+     },
+     {
+      "text": "옷 [옫] the bottom letter changes to d",
+      "why": "옷 is already in the list; not a new word."
+     }
+    ],
+    "humanReview": "Whether the sound given in [ ] is really how the word is said, since the check only looks at surface features.",
+    "hints": [
+     "Pick a word from the bank (or one you know) and say it slowly: what sound do you hear at the very end?",
+     "Write the word and its sound in [ ], then check: is the bottom letter in [ ] the same as the written one?"
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "choose",
+    "prompt": "Now fix Tom's rule. Which new rule fits ALL of the words, including your own counter-example?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Every bottom letter is said louder and clearer, so ㅅ stays ㅅ and ㅊ stays ㅊ.",
+      "reveals": "This is Tom's rule again. It fails for 옷 [옫] and 꽃 [꼳]."
+     },
+     {
+      "id": "b",
+      "text": "Every bottom letter is dropped, so 옷 is said [오] and 꽃 is said [꼬].",
+      "reveals": "The bottom letter is still said (as a short stop). 밥 is not said [바]."
+     },
+     {
+      "id": "c",
+      "text": "Only a few sounds end a syllable: ㅅ ㅈ ㅊ ㅌ → ㄷ, ㄲ ㅋ → ㄱ, ㅍ → ㅂ."
+     },
+     {
+      "id": "d",
+      "text": "Only the words on the list are special; all other words follow the first rule.",
+      "reveals": "The words on the list are only examples. There are many more, so this does not fit them all."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "At the bottom of a syllable only a few sounds are used. Letters such as ㅅ, ㅈ, ㅊ, ㅌ are said like ㄷ, and ㄲ and ㅋ like ㄱ, ㅍ like ㅂ. The bottom letter is still said, but not always as written.",
+    "hints": [
+     "Check each new rule against 밥 [밥], 옷 [옫], 꽃 [꼳] and 밖 [박].",
+     "Reject a rule if a single word from the list breaks it."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Testing the rule with examples",
+    "full": "Finds exactly 옷, 꽃, 밖 and explains why the others are fine",
+    "partial": "Finds some but not all, or marks a fitting word",
+    "none": "Cannot compare written and said bottom letters"
+   },
+   {
+    "criterion": "Producing a counter-example",
+    "full": "Gives a real word, its sound in [ ], and what the bottom sound becomes",
+    "partial": "Gives a word without the sound or reason",
+    "none": "Repeats a word that fits the rule"
+   }
+  ],
+  "alternatives": [
+   "Other valid counter-examples: 앞 [압], 부엌 [부억], 닭 [닥], 값 [갑], 끝 [끋].",
+   "A learner may write the sound in Roman letters (e.g. 'mat -> mad'); the surface checks can miss this wording, so human review applies."
+  ],
+  "hardCases": [
+   "Some words change further in context (for example before a vowel); the task only asks about the sound at the end of a word."
+  ],
+  "cautions": {
+   "language": "The sounds are shown in Hangul inside [ ]; the pronunciation of the final sound as a short stop is not explained in detail.",
+   "culture": "Korean learners often meet this rule early; there are spelling-by-sound mistakes even among native speakers, which is why spelling is learned from words.",
+   "accessibility": "All material is text. Nothing depends on colour or listening."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The set of counter-examples chosen",
+    "The final rule chosen",
+    "Whether the written answer has a real word, a sound in [ ] and no spelling = sound"
+   ],
+   "human": [
+    "Whether the sound in [ ] is correct for the learner's word",
+    "Whether the sentence about the bottom letter is clear"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-l1c-01",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Subject, object and particles: who does what",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Who teaches whom in the photo?",
+  "uiLang": "en",
+  "format": "judge-evidence-explain",
+  "generative": true,
+  "goal": "Decide which captions fit a photo, test your clue on a new caption, and explain why a look-alike caption means the opposite.",
+  "thinking": [
+   "Telling roles by markers, not by position",
+   "Using evidence to reject a tempting reading",
+   "Explaining a rule to someone who thinks in English word order"
+  ],
+  "differsFromPlain": "Plain practice asks you to fill in 이/가 or 을/를 in a given sentence. Here you judge real captions that swap the order of the names, find which clue really decides, and explain the clue.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Has met 이/가 and 을/를 (the doer and the receiver)"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "A class newsletter has a photo: 수진 is teaching 민수 to draw. Five students suggest a caption. Words: 가르쳐요 = teach(es). Particles: 이/가 follow the one who does something; 은/는 follow the topic (\"as for ...\"); 을/를 follow the one the action is done to.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "In the photo, 수진 is teaching 민수. Which captions describe this photo? Choose all that apply.",
+    "options": [
+     {
+      "id": "a",
+      "text": "수진이 민수를 가르쳐요."
+     },
+     {
+      "id": "b",
+      "text": "민수가 수진을 가르쳐요.",
+      "reveals": "The particle 가 is on 민수, so 민수 is the one who teaches here. That is the opposite of the photo."
+     },
+     {
+      "id": "c",
+      "text": "민수를 수진이 가르쳐요."
+     },
+     {
+      "id": "d",
+      "text": "수진을 민수가 가르쳐요.",
+      "reveals": "수진 comes first, but 을 is on 수진: she is the one being taught and 민수 teaches. Word order is not the clue."
+     },
+     {
+      "id": "e",
+      "text": "수진은 민수를 가르쳐요."
+     }
+    ],
+    "correct": [
+     "a",
+     "c",
+     "e"
+    ],
+    "explain": "In a, c and e, 수진 has 이/가 or 은/는 (the one who does or the topic) and 민수 has 를 (the one who is taught). The order of the two names can change; the particles keep the roles.",
+    "hints": [
+     "Do not read the names from left to right. First find which name has 이/가 or 은/는 and which has 을/를.",
+     "Ask of each caption: who has the 를 (or 을) after the name, and is that person taught or teaching?"
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "A new caption appears: 동생을 엄마가 안아요. (안아요 = hug(s), 엄마 = mom, 동생 = younger sibling.) Who hugs whom?",
+    "options": [
+     {
+      "id": "a",
+      "text": "엄마 hugs 동생, because 엄마 has 가 and 동생 has 을."
+     },
+     {
+      "id": "b",
+      "text": "동생 hugs 엄마, because 동생 is the first name in the sentence.",
+      "reveals": "The first name is not automatically the one who acts. 동생 has 을, so 동생 is the one who is hugged."
+     },
+     {
+      "id": "c",
+      "text": "They hug each other, because both names carry a particle.",
+      "reveals": "The two particles are different. 가 marks the one who hugs and 을 marks the one who is hugged."
+     },
+     {
+      "id": "d",
+      "text": "We cannot tell, because the names are in an unusual order.",
+      "reveals": "You can tell: the particles keep the roles even when the order changes."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "가 is on 엄마 (the one who hugs) and 을 is on 동생 (the one who is hugged), so the caption means mom hugs her younger sibling. The particles, not the order, give the roles.",
+    "hints": [
+     "Find the particle after each name before you read the order.",
+     "Ask which particle marks the one who does the action and which marks the one who receives it."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "A friend reads English word order and says: \"수진을 민수가 가르쳐요 starts with 수진, so 수진 teaches.\" In one or two sentences of English, explain why this caption does NOT fit the photo.",
+    "placeholder": "Because ...",
+    "minChars": 20,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "mentions the particle (을/를, 이/가) as the clue",
+      "mode": "any",
+      "patterns": [
+       "particle",
+       "marker",
+       "ending",
+       "이/가",
+       "을/를",
+       "\\b(ga|eul|reul)\\b",
+       "(가|을|를|이|은|는)\\s*(on|after|marks?|shows?|means?|tells?|is attached|attached)",
+       "(on|after|with|has|have)\\s+(수진|민수)?\\s*(가|을|를|이|은|는)\\b",
+       "수진을",
+       "민수가"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "says who really teaches / who is taught in this caption (민수 teaches, 수진 is taught)",
+      "mode": "any",
+      "patterns": [
+       "(민수|min-?su)[^.]{0,40}(teach|doer|subject|does the)",
+       "(수진|su-?jin)[^.]{0,40}(taught|receiv|learn|object|student|being)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I name the particle that is on 수진?",
+     "Did I say who teaches in this caption?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "수진 has the particle 을, so she is the one who is taught; 민수 has 가, so 민수 teaches. Position does not decide it."
+     },
+     {
+      "text": "The particles show the roles, not the order: 을 marks 수진 as the receiver and 가 marks 민수 as the doer, so it says 민수 teaches 수진."
+     },
+     {
+      "text": "Because 가 shows that 민수 is the one teaching."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "Because the order of the words is different from the other captions.",
+      "why": "Order is not the reason; the particles are."
+     },
+     {
+      "text": "It is wrong because it is a different sentence.",
+      "why": "No clue named and no role stated."
+     },
+     {
+      "text": "The particle 이 is on 수진, so 수진 teaches 민수.",
+      "why": "Reverses the roles: 수진 has 을 in the caption."
+     }
+    ],
+    "humanReview": "Whether the explanation correctly links each particle with its role, in the learner's own words.",
+    "hints": [
+     "Point to the particle next to 수진 and the particle next to 민수.",
+     "Say what each particle tells you about the role of its name."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Choosing the captions",
+    "full": "Picks exactly the three captions where 수진 has 이/은 and 민수 has 를",
+    "partial": "Picks two correct captions or one extra",
+    "none": "Picks by word order only"
+   },
+   {
+    "criterion": "Explaining the clue",
+    "full": "Names the particles and says who teaches in the caption",
+    "partial": "Says particles matter but not which one is where",
+    "none": "Says word order decides"
+   }
+  ],
+  "alternatives": [
+   "Any caption with 수진 as the doer (이/가/은/는) and 민수 with 을/를 fits, in either order.",
+   "In spoken Korean 를 may be dropped; the task uses the full written form."
+  ],
+  "hardCases": [
+   "Some learners treat 은 in caption e as marking the taught person; it marks the topic, and 를 on 민수 shows the receiver."
+  ],
+  "cautions": {
+   "language": "Only the verb 가르쳐요 and names appear.",
+   "culture": "Sentence-final verbs and flexible order of the other parts are standard in Korean; very formal or poetic texts sometimes put the verb elsewhere.",
+   "accessibility": "All material is text; the photo or scene is described in words, nothing depends on colour. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of captions",
+    "Who does what in a new caption",
+    "Surface check that the explanation names the particle and one of the roles"
+   ],
+   "human": [
+    "Whether the English explanation is accurate and clear"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-l1c-02",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Place particles: 에 (go, be) vs 에서 (do)",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Where does 민호 do what? A diary check",
+  "uiLang": "en",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Find the lines in a short diary where the wrong place-particle is used, say the rule that separates 에 from 에서, and repair the lines.",
+  "thinking": [
+   "Spotting an error by checking each line against a rule",
+   "Stating the rule behind a pattern",
+   "Repairing without changing the meaning"
+  ],
+  "differsFromPlain": "Plain practice gives a gap with 에/에서 to fill. Here you scan a whole diary, decide which lines break the rule, and name the rule yourself.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows 에 and 에서 exist (place-particles)",
+   "Knows 가요, 있어요, 먹어요, 봐요"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "A learner, 민호, writes his day in Korean. Some place-particles are wrong. Words: 아침 = morning, 점심 = lunch time, 오후 = afternoon, 저녁 = evening, 운동해요 = exercise(s).",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "This is 민호's diary about one day. Some lines have a place-particle mistake (there is more than one). Pick any line that has it.",
+    "lines": [
+     "저는 아침에 학교에 가요.",
+     "학교에서 친구를 만나요.",
+     "도서관에 책을 읽어요.",
+     "점심에 식당에서 밥을 먹어요.",
+     "오후에 집에서 있어요.",
+     "집에서 텔레비전을 봐요.",
+     "저녁에 공원에 운동해요."
+    ],
+    "wrong": [
+     2,
+     4,
+     6
+    ],
+    "explain": "Lines 3, 5 and 7 are wrong: 도서관에서 책을 읽어요 (action at a place), 집에 있어요 (being at a place), 공원에서 운동해요 (action at a place). Lines 1, 2, 4 and 6 are fine.",
+    "hints": [
+     "Underline the verb and the place-particle in each line. Which lines look alike?",
+     "Sort the lines into groups by their verb, and see which particle each group uses."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Which rule explains the difference between 에 and 에서 in this diary?",
+    "options": [
+     {
+      "id": "a",
+      "text": "에 shows the place where an action happens; 에서 shows the place someone goes to or is in.",
+      "reveals": "That is reversed. Check 학교에 가요 (go to) and 식당에서 먹어요 (eat at)."
+     },
+     {
+      "id": "b",
+      "text": "에 is for big places like a school; 에서 is for small places like a room.",
+      "reveals": "Size does not matter: 학교에서 and 집에서 are both fine for an action."
+     },
+     {
+      "id": "c",
+      "text": "에 and 에서 mean the same; either one works with any verb.",
+      "reveals": "They are different: 도서관에 책을 읽어요 sounds wrong to Koreans."
+     },
+     {
+      "id": "d",
+      "text": "에서 shows the place where an action happens; 에 shows the place someone goes to or is in."
+     }
+    ],
+    "correct": [
+     "d"
+    ],
+    "explain": "에서 = the place where you do something (eat, read, study, exercise). 에 = the place you go to, or where someone or something is (가요, 와요, 있어요).",
+    "hints": [
+     "Group the correct lines by their verbs: which verbs go with 에 and which with 에서?",
+     "Ask: does the verb say the person moves or stays, or does the person do something there?"
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Now rewrite EVERY line that had the mistake, correctly. Write the corrected sentences in Korean and keep the verbs.",
+    "placeholder": "예: ...",
+    "minChars": 20,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "the library line is corrected (도서관 + 에서 ... 읽어요)",
+      "mode": "any",
+      "patterns": [
+       "도서관\\s*(에서|에서는|에서도|에\\s*가서)[^.\\n]{0,15}읽"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "the afternoon line is corrected (집 + 에 ... 있어요)",
+      "mode": "any",
+      "patterns": [
+       "집\\s*(에|에는|에도)(?!서)\\s*[^.\\n]{0,8}있"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "the park line is corrected (공원 + 에서 ... 운동해요)",
+      "mode": "any",
+      "patterns": [
+       "공원\\s*(에서|에서는|에서도|에\\s*가서)[^.\\n]{0,15}운동"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "does not keep a mistake (도서관에 책 ..., 집에서 있어요, 공원에 운동 ...)",
+      "mode": "none",
+      "patterns": [
+       "도서관\\s*에\\s*(책|읽)",
+       "공원\\s*에\\s*(운동|달려|걸어)",
+       "집\\s*에서\\s*(있|계)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I use 에서 for the actions and 에 for being at a place?",
+     "Does each sentence still end politely?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "도서관에서 책을 읽어요. 오후에 집에 있어요. 저녁에 공원에서 운동해요."
+     },
+     {
+      "text": "도서관에서 책을 읽어요. 집에 있어요. 공원에서 운동해요."
+     },
+     {
+      "text": "도서관에 가서 책을 읽어요. 오후에 집에 있어요. 공원에 가서 운동해요.",
+      "note": "Also fine: the place is a destination, then the action follows."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "도서관에 책을 읽어요. 오후에 집에 있어요. 공원에서 운동해요.",
+      "why": "Line 3 still has the mistake."
+     },
+     {
+      "text": "도서관에서 책을 읽어요. 오후에 집에서 있어요. 공원에서 운동해요.",
+      "why": "Line 5 still has the mistake."
+     },
+     {
+      "text": "도서관에서 책을 읽어요. 오후에 집에 있어요. 공원에 운동해요.",
+      "why": "Line 7 still has the mistake."
+     },
+     {
+      "text": "도서관에서 노래해요. 집에 있어요. 공원에서 잠자요.",
+      "why": "The verbs were changed instead of repairing the particles."
+     },
+     {
+      "text": "도서관 에서 읽어요 공원에서",
+      "why": "Not a full repair: lines are missing."
+     }
+    ],
+    "humanReview": "Whether the learner's rewrite stays natural if the learner changes the verbs or adds words.",
+    "hints": [
+     "For each wrong line decide: does the person go or stay there, or do something there?",
+     "Read your sentence aloud: is the person doing something at the place, or going or being there?"
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finding the lines",
+    "full": "Picks a wrong line and can say why (action at a place)",
+    "partial": "Picks a wrong line without a reason",
+    "none": "Picks a correct line"
+   },
+   {
+    "criterion": "Repair",
+    "full": "All three lines are repaired with the right particle and stay polite",
+    "partial": "One or two lines repaired",
+    "none": "Not repaired"
+   }
+  ],
+  "alternatives": [
+   "Some sentences with a movement first (도서관에 가서 읽어요) are also correct.",
+   "Dropping 을/를 in speech (책 읽어요) is common and not an error for this task."
+  ],
+  "hardCases": [
+   "학교에서 가요 (go from school) is possible with another meaning; this task uses the basic pattern."
+  ],
+  "cautions": {
+   "language": "Only 에 and 에서 and short present-tense sentences. 아침에, 점심에 use 에 for time; this is not asked.",
+   "culture": "Diaries are normally written in plain style (-ㄴ다); the task uses polite -요 to stay at level 1.",
+   "accessibility": "All material is text; the photo or scene is described in words, nothing depends on colour. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of a wrong line",
+    "Choice of the rule",
+    "Surface check that each repaired line has the right particle with its verb"
+   ],
+   "human": [
+    "Naturalness of the learner's own rewrite"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-l1c-03",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Time and place: who is where, when",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Can 지나 and 톰 meet at the library?",
+  "uiLang": "en",
+  "format": "choose-needed-info",
+  "generative": true,
+  "goal": "Pick the facts that matter for a meeting (a place AND a time for both people), decide with them, and propose a repair in Korean.",
+  "thinking": [
+   "Sufficiency of information",
+   "Combining place and time conditions",
+   "Ignoring facts that do not matter"
+  ],
+  "differsFromPlain": "Plain practice asks where one person goes. Here two messages each look fine alone, and you must find which facts to combine, notice that the times do not match, and propose a fix.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows 에 (going, being) and 에서 (doing) at a basic level",
+   "Knows 오전 and 오후"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "Two messages for tomorrow. 오전 = morning (a.m.), 오후 = afternoon (p.m.), 저녁 = evening, 시장 = market, 집 = home.\n\n지나: 저는 내일 오전에 도서관에서 한국어를 공부해요. 오후에는 시장에 가요.\n톰: 저는 내일 오전에 집에 있어요. 오후에는 도서관에 가요. 저녁에 친구를 만나요.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "지나 wants to study with 톰 at the library tomorrow, in the morning or in the afternoon. Which facts do you need to know whether this can work? Choose all that apply.",
+    "options": [
+     {
+      "id": "a",
+      "text": "Where 톰 is in the afternoon."
+     },
+     {
+      "id": "b",
+      "text": "Where 지나 is in the evening.",
+      "reveals": "The question is only about the morning or the afternoon; the evening is not part of it."
+     },
+     {
+      "id": "c",
+      "text": "Where 지나 is in the morning."
+     },
+     {
+      "id": "d",
+      "text": "Where 톰 is in the morning."
+     },
+     {
+      "id": "e",
+      "text": "Where 지나 is in the afternoon."
+     },
+     {
+      "id": "f",
+      "text": "Where 톰 is in the evening.",
+      "reveals": "The question is only about the morning or the afternoon; the evening is not part of it."
+     }
+    ],
+    "correct": [
+     "a",
+     "c",
+     "d",
+     "e"
+    ],
+    "explain": "To compare you need each person's place for each time of day in question: 지나 morning and afternoon, 톰 morning and afternoon. The evening does not matter for this plan.",
+    "hints": [
+     "Re-read the question: which people and which times of day does it mention?",
+     "For each option ask: would knowing this change my decision about meeting?"
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Now decide: can 지나 and 톰 study together at the library tomorrow, as the messages stand?",
+    "options": [
+     {
+      "id": "a",
+      "text": "No. 톰 does not go to the library tomorrow.",
+      "reveals": "톰 says 오후에는 도서관에 가요, so he does go to the library."
+     },
+     {
+      "id": "b",
+      "text": "No. They are at the library at different times of the day."
+     },
+     {
+      "id": "c",
+      "text": "Yes. Both of them go to the library tomorrow.",
+      "reveals": "Both name the library, but at different times of the day. Check 오전 and 오후."
+     },
+     {
+      "id": "d",
+      "text": "Yes. Both of them are at the library in the morning.",
+      "reveals": "톰 is at home (집에 있어요) in the morning."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "지나 is at the library in the morning (도서관에서 공부해요) and goes to the market in the afternoon. 톰 is at home in the morning and goes to the library in the afternoon. Both are at the library tomorrow, but never at the same time.",
+    "hints": [
+     "Fill a small table: person, morning place, afternoon place.",
+     "Check each option against your table, one by one."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Write a short message in Korean from 지나 to 톰 (polite -요) that proposes a time (오전 or 오후) to study together at the library.",
+    "placeholder": "예: ...",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "names the library (도서관)",
+      "mode": "any",
+      "patterns": [
+       "도서관"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "names a time (오전, 오후, a clock time ...)",
+      "mode": "any",
+      "patterns": [
+       "오전",
+       "오후",
+       "아침",
+       "점심",
+       "낮",
+       "\\d\\s*시",
+       "(한|두|세|네|다섯|여섯|일곱|여덟|아홉|열)\\s*시"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "polite sentence ending (…해요, …까요, …어요)",
+      "mode": "any",
+      "patterns": [
+       "(어요|아요|여요|해요|와요|워요|가요|나요|려요|세요|예요|이에요|까요|래요|봐요|니다|니까)(?![가-힣])"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "proposes or asks (같이, 함께, a question, 어때요 ...)",
+      "mode": "any",
+      "patterns": [
+       "같이",
+       "함께",
+       "\\?",
+       "어때",
+       "까요",
+       "래요",
+       "ㅂ시다",
+       "(해요|나요|가요|와요)\\s*[?？]"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my time really work for both of us (one of us has to change a plan)?",
+     "Did I use 에 for the time and for going to the library?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "톰 씨, 내일 오전에 도서관에 와요? 같이 공부해요."
+     },
+     {
+      "text": "내일 오후에 같이 도서관에서 공부해요. 저는 시장에 안 가요."
+     },
+     {
+      "text": "톰 씨, 오전에 도서관에서 만나요. 괜찮아요?"
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "내일 도서관에 가요.",
+      "why": "No time and no proposal."
+     },
+     {
+      "text": "오전에 좋아요.",
+      "why": "The library is not named and nothing is proposed."
+     },
+     {
+      "text": "저는 내일 오전에 도서관에서 공부해요.",
+      "why": "A statement about herself; it does not propose or ask anything."
+     },
+     {
+      "text": "오전 오후 도서관 공부 같이요",
+      "why": "Only words; no sentence."
+     }
+    ],
+    "humanReview": "Whether the proposal is clear and natural, and whether the learner noticed that someone has to change a plan.",
+    "hints": [
+     "Choose a time of day where one of the two could change his or her plan.",
+     "Name the time, the place, and end with a request to study together."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Choosing the needed facts",
+    "full": "Chooses the four place-and-time facts and leaves out the two others",
+    "partial": "Chooses all four but also one extra, or misses one",
+    "none": "Chooses mostly unneeded facts"
+   },
+   {
+    "criterion": "Repair message",
+    "full": "Library, time and a request; polite",
+    "partial": "One element missing",
+    "none": "Not a proposal"
+   }
+  ],
+  "alternatives": [
+   "Either 지나 or 톰 can change; the message may ask either of them.",
+   "A clock time such as 두 시에 is also acceptable."
+  ],
+  "hardCases": [
+   "Some learners say \"yes\" because both go to the library; the times are what decide."
+  ],
+  "cautions": {
+   "language": "Only simple present-tense sentences. 한국어를 공부해요 is the object of studying.",
+   "culture": "Using 씨 after a name is polite among adults; it is optional in the answer.",
+   "accessibility": "All material is text; the photo or scene is described in words, nothing depends on colour. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of needed facts",
+    "The yes/no decision",
+    "Surface check that the message names the library and a time"
+   ],
+   "human": [
+    "Whether the proposal is natural and sensible"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-l1c-04",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Sentence parts: doer, place, thing",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Make a sentence card: who, where, what",
+  "uiLang": "en",
+  "format": "make-your-own",
+  "generative": true,
+  "goal": "Use the roles of doer, place and thing (with their particles) to build your own correct sentence, and check other cards against the same rules.",
+  "thinking": [
+   "Building a sentence from roles",
+   "Checking against explicit rules",
+   "Finding a role swap that looks fine at a glance"
+  ],
+  "differsFromPlain": "Plain practice gives a sentence with gaps. Here you apply four rules, make your own sentence, and then use the same rules as a checker.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Has met 이/가, 을/를, 에서",
+   "Knows 먹어요 and 마셔요"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "A game with sentence cards. Words: 동생 = younger sibling, 공원 = park, 빵 = bread, 카페 = cafe, 식당 = restaurant, 시장 = market, 사요 = buy(s), 읽어요 = read(s).",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "A game of sentence cards has four rules: (1) the doer + 이/가 or 은/는, (2) the place + 에서, (3) the thing + 을/를, (4) the verb at the end. Which sentences follow all four rules? Choose all that apply.",
+    "options": [
+     {
+      "id": "a",
+      "text": "동생이 공원에서 빵 먹어요.",
+      "reveals": "The thing (빵) has no 을/를. Spoken Korean often drops it, but the card rules ask for it."
+     },
+     {
+      "id": "b",
+      "text": "동생을 공원에서 빵이 먹어요.",
+      "reveals": "The particles are swapped: this says that the bread eats the sibling."
+     },
+     {
+      "id": "c",
+      "text": "동생이 빵을 공원에서 먹어요."
+     },
+     {
+      "id": "d",
+      "text": "동생이 공원에 빵을 먹어요.",
+      "reveals": "공원에 marks a place you go to; for the place where you eat, the card needs 에서."
+     },
+     {
+      "id": "e",
+      "text": "동생이 공원에서 빵을 먹어요."
+     }
+    ],
+    "correct": [
+     "c",
+     "e"
+    ],
+    "explain": "c and e have all four parts: doer 동생이, place 공원에서, thing 빵을, verb 먹어요 at the end. The order of the middle parts can change; the verb stays last.",
+    "hints": [
+     "Check one rule at a time. Underline the particle on each part.",
+     "Remember which part each particle marks: doer, place, thing."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Make your own card. Write one Korean sentence about someone (you, a friend, your family) who eats or drinks something at a place. Follow all four rules, and end the verb with -아요/어요.",
+    "placeholder": "예: ...",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "has a doer with 이/가 or 은/는 (저는, 친구가, 엄마는 ...)",
+      "mode": "any",
+      "patterns": [
+       "(^|\\s)(저|제|나|내|엄마|아빠|친구|동생|언니|오빠|형|누나|선생님|[가-힣]{2,4})(는|은|가|이|도)\\s"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "has a place with 에서",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]\\s*에서"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "has a thing with 을/를",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]\\s*(을|를)\\s"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "ends with a polite verb (-아요/어요)",
+      "mode": "any",
+      "patterns": [
+       "([가-힣]요|니다)[.!?~ ]*$"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "the verb is eat or drink (먹어요, 마셔요 ...)",
+      "mode": "any",
+      "patterns": [
+       "먹|마셔|마시"
+      ]
+     },
+     {
+      "id": "w6",
+      "label": "the roles are not swapped (no person with 을/를, no food or drink with 이/가)",
+      "mode": "none",
+      "patterns": [
+       "(^|\\s)(저|나|친구|동생|엄마|아빠|언니|오빠|형|누나|선생님)\\s*(을|를)\\s",
+       "(^|\\s)(커피|빵|밥|물|우유|주스|과일|사과|김밥|라면|차|케이크)\\s*(이|가)\\s"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Can I point to the doer, the place and the thing in my sentence?",
+     "Does my sentence end with the verb?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "저는 카페에서 커피를 마셔요."
+     },
+     {
+      "text": "동생이 식당에서 밥을 먹어요."
+     },
+     {
+      "text": "엄마가 빵을 집에서 먹어요.",
+      "note": "The middle parts may change order."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "카페에서 커피를 마셔요.",
+      "why": "No doer (rule 1)."
+     },
+     {
+      "text": "저는 카페에 커피를 마셔요.",
+      "why": "에 instead of 에서."
+     },
+     {
+      "text": "저는 카페에서 커피 마셔요.",
+      "why": "No 을/를 on the thing."
+     },
+     {
+      "text": "저는 카페에서 커피를 마셨어",
+      "why": "Not a polite -아요/어요 ending."
+     },
+     {
+      "text": "커피가 카페에서 저를 마셔요.",
+      "why": "The roles are swapped: the coffee drinks the speaker."
+     },
+     {
+      "text": "저는 카페에서 책을 읽어요.",
+      "why": "The verb is not eating or drinking."
+     }
+    ],
+    "humanReview": "Whether the sentence is natural: the chosen thing and verb fit, and the learner did not only copy the examples.",
+    "hints": [
+     "Decide the three parts first: who, where, what.",
+     "Add the particles one by one, then put the verb last and give it -아요/어요."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "pickLine",
+    "prompt": "Your classmate made four cards. One card has the wrong particles, so the roles are mixed up. Pick it.",
+    "lines": [
+     "엄마가 시장에서 사과를 사요.",
+     "친구가 카페에서 커피를 마셔요.",
+     "책이 동생을 읽어요.",
+     "아빠가 공원에서 운동을 해요."
+    ],
+    "wrong": [
+     2
+    ],
+    "explain": "Line 3 says that the book reads the sibling: 이 is on 책 and 를 is on 동생. Written correctly: 동생이 책을 읽어요.",
+    "hints": [
+     "Read each card by asking: who does it, and what is it done to?",
+     "Is the doer someone who can really do the action?"
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Applying the rules",
+    "full": "Picks both fully correct sentences",
+    "partial": "Picks one and no wrong one",
+    "none": "Picks sentences with swapped or missing particles"
+   },
+   {
+    "criterion": "Own sentence",
+    "full": "Doer, place with 에서, thing with 을/를, polite verb last",
+    "partial": "One part missing",
+    "none": "Rules not followed"
+   }
+  ],
+  "alternatives": [
+   "Dropping the doer (저는) is normal in speech; the card rules ask for it.",
+   "Other eating and drinking verbs, places and things are fine."
+  ],
+  "hardCases": [
+   "Someone may write 저도 or 우리는 as the doer; both are fine."
+  ],
+  "cautions": {
+   "language": "Short sentences with common nouns; the words are glossed.",
+   "culture": "Eating and drinking in a cafe or restaurant is typical; foods are everyday ones.",
+   "accessibility": "All material is text; the photo or scene is described in words, nothing depends on colour. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of fitting sentences",
+    "Surface check for doer, 에서, 을/를 and a polite last verb",
+    "Choice of the mistaken card"
+   ],
+   "human": [
+    "Naturalness of the learner's own sentence"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-l1c-05",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Who does the action: reading the verb and the particles",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Who eats the cake? The chat keeps changing",
+  "uiLang": "en",
+  "format": "reveal-and-revise",
+  "generative": true,
+  "goal": "Revise your idea of who does the action as a chat adds one sentence at a time, separate what is stated from what is only suggested, and write a negative sentence with the right roles.",
+  "thinking": [
+   "Updating a judgement with new evidence",
+   "Stated vs suggested (claim vs evidence)",
+   "Reading the verb before deciding who does what"
+  ],
+  "differsFromPlain": "Plain practice gives a single sentence and one question. Here the same family scene grows in three parts and you must keep revising what you can really say.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Has met 이/가, 은/는, 을/를",
+   "Knows 안 + verb"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "A family chat about a cake: Mom (엄마), Dad (아빠), a younger sibling (동생) and the speaker (저). The sentences arrive in three parts.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "Read the family chat one part at a time. Words: 만들어요 = make(s), 좋아해요 = like(s), 먹어요 = eat(s), 안 + verb = does not. Choose the reading that fits what you have read so far.",
+    "stages": [
+     {
+      "info": "엄마가 케이크를 만들어요.",
+      "ask": "Who will eat the cake?",
+      "options": [
+       {
+        "id": "a",
+        "text": "엄마 eats it, because she makes it.",
+        "reveals": "만들어요 says who makes it. Making and eating are different actions."
+       },
+       {
+        "id": "b",
+        "text": "We cannot tell yet; we only know who makes it."
+       },
+       {
+        "id": "c",
+        "text": "Probably 엄마 eats it too, since people often eat what they make.",
+        "reveals": "That is a guess from a habit. The sentence only says that 엄마 makes it."
+       },
+       {
+        "id": "d",
+        "text": "동생 eats it, because it is for children.",
+        "reveals": "Nothing in the sentence mentions 동생 or children."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "The sentence has a doer (엄마가) and a thing (케이크를), but the verb is 만들어요: it tells who makes the cake, not who eats it."
+     },
+     {
+      "info": "동생이 케이크를 좋아해요.",
+      "ask": "Who will probably eat the cake now?",
+      "options": [
+       {
+        "id": "a",
+        "text": "동생 probably eats it, since 동생 likes it."
+       },
+       {
+        "id": "b",
+        "text": "동생 makes it, because 동생이 comes first.",
+        "reveals": "엄마가 was the one who makes it. 동생이 goes with 좋아해요 (likes)."
+       },
+       {
+        "id": "c",
+        "text": "Only 엄마 eats it, because she makes it.",
+        "reveals": "The new sentence is about 동생, not about 엄마."
+       },
+       {
+        "id": "d",
+        "text": "동생 surely eats it, because 좋아해요 means eats.",
+        "reveals": "좋아해요 means likes. Liking a cake is a good sign, but it is not the same as eating."
+       }
+      ],
+      "reasonable": [
+       "a"
+      ],
+      "after": "좋아해요 means likes. It is a good sign that 동생 will eat the cake, but it is not proof."
+     },
+     {
+      "info": "아빠는 케이크를 안 먹어요. 저는 케이크를 먹어요.",
+      "ask": "Who eats the cake now?",
+      "options": [
+       {
+        "id": "a",
+        "text": "Only 동생 eats it; 저 and 아빠 do not.",
+        "reveals": "저는 케이크를 먹어요 says that the speaker eats it."
+       },
+       {
+        "id": "b",
+        "text": "아빠 and 저 eat it; 동생 does not.",
+        "reveals": "안 comes before 먹어요: 아빠 does NOT eat it."
+       },
+       {
+        "id": "c",
+        "text": "Probably 아빠 eats it and 저 does not.",
+        "reveals": "The two sentences say the opposite: 아빠 does not eat it and 저 does."
+       },
+       {
+        "id": "d",
+        "text": "저 eats it and 아빠 does not; 동생 is only likely."
+       }
+      ],
+      "reasonable": [
+       "d"
+      ],
+      "after": "안 + verb = does not. 아빠 does not eat it, 저 does, and 동생 probably does. 엄마 is still not mentioned as an eater."
+     }
+    ],
+    "reflect": "Each new sentence changed the answer. At first nothing was known about the eater; then a likely eater appeared; then one person was ruled out. Check which verb you are reading before you decide who does it.",
+    "hints": [
+     "Decide using only the parts you have read so far.",
+     "Compare each choice with the verb in the newest sentence: does it say eats, makes, likes or does not eat?"
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Look back at all three parts. Which statement is proved by the text (not only suggested)?",
+    "options": [
+     {
+      "id": "a",
+      "text": "엄마 eats the cake.",
+      "reveals": "The text says she makes it; it never says she eats it."
+     },
+     {
+      "id": "b",
+      "text": "동생 eats the cake.",
+      "reveals": "동생 likes it, which suggests it, but liking is not eating."
+     },
+     {
+      "id": "c",
+      "text": "아빠 does not eat the cake."
+     },
+     {
+      "id": "d",
+      "text": "엄마 does not eat the cake.",
+      "reveals": "No sentence says that. 엄마 is only said to make the cake."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "아빠는 케이크를 안 먹어요 says directly that 아빠 does not eat it. Other statements are guesses from making or liking.",
+    "hints": [
+     "For each statement, find the sentence about that person and read its verb.",
+     "Ask for each statement: does the text say it, or only make it likely?"
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Now 엄마 says she does not eat the cake either. Write that sentence in Korean (polite -요), using 엄마 and 케이크 with the right particles.",
+    "placeholder": "예: ...",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "엄마 as the doer (엄마는, 엄마가 ...)",
+      "mode": "any",
+      "patterns": [
+       "엄마\\s*(는|은|도|가|이)"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "mentions 케이크",
+      "mode": "any",
+      "patterns": [
+       "케이크"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "negative: 안 먹어요 / 먹지 않아요",
+      "mode": "any",
+      "patterns": [
+       "안\\s*먹",
+       "먹지\\s*않",
+       "못\\s*먹"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "케이크 with the object particle 를",
+      "mode": "any",
+      "patterns": [
+       "케이크\\s*를"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "케이크 is not marked as the doer (no 케이크가/이)",
+      "mode": "none",
+      "patterns": [
+       "케이크\\s*(가|이)(?![가-힣])"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Is 엄마 the one who does (not eat)?",
+     "Is 케이크 the thing, with 을/를?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "엄마는 케이크를 안 먹어요."
+     },
+     {
+      "text": "엄마도 케이크를 안 먹어요.",
+      "note": "도 = also."
+     },
+     {
+      "text": "엄마가 케이크를 먹지 않아요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "엄마가 케이크를 먹어요.",
+      "why": "Missing the negative; it says that 엄마 eats it."
+     },
+     {
+      "text": "케이크가 엄마를 안 먹어요.",
+      "why": "The roles are swapped: the cake does not eat 엄마."
+     },
+     {
+      "text": "엄마는 케이크 안 먹어요.",
+      "why": "The thing 케이크 has no 를."
+     },
+     {
+      "text": "엄마는 케이크가 안 먹어요.",
+      "why": "케이크가 makes the cake the doer: the cake does not eat."
+     }
+    ],
+    "humanReview": "Whether the sentence is natural, and whether the learner chose 는/은 or 가/이 knowingly.",
+    "hints": [
+     "Name the doer, the thing, and the verb with 안.",
+     "Put 안 right before the verb 먹어요."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Revising",
+    "full": "Gives the reasonable reading at every stage and sees why it changes",
+    "partial": "One stage misread",
+    "none": "Treats making/liking as eating"
+   },
+   {
+    "criterion": "Stated vs suggested",
+    "full": "Chooses only what the text proves and writes a correct negative sentence",
+    "partial": "Right choice but sentence has a particle problem",
+    "none": "Chooses a guess"
+   }
+  ],
+  "alternatives": [
+   "In the last stage a learner may think the speaker is \"we\"; 저 is \"I\".",
+   "엄마는 케이크를 안 먹어요 and 엄마가 케이크를 안 먹어요 are both fine."
+  ],
+  "hardCases": [
+   "If someone says Mom probably eats it too, that is a guess; the text never says it."
+  ],
+  "cautions": {
+   "language": "Short sentences; 안 + verb is explained in the task.",
+   "culture": "Family chats about cake are a common scene; no real people.",
+   "accessibility": "All material is text; the photo or scene is described in words, nothing depends on colour. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Reasonable reading at each stage",
+    "Choice of the proved statement",
+    "Surface check of the particles and 안"
+   ],
+   "human": [
+    "Naturalness of the written sentence"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-l1d-01",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Time of day: hours and opening times",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Does Mina's Saturday plan work?",
+  "uiLang": "en",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Read o'clock times in a short plan and a library sign, find the first line that cannot work, say why, and repair it with a correct time.",
+  "thinking": [
+   "Checking a plan against a rule on a sign",
+   "Spotting a time conflict",
+   "Reading hours with native numbers (한 시, 두 시 ...)"
+  ],
+  "differsFromPlain": "Plain practice asks you to read one clock time aloud. Here the times only make sense together with the sign, so you must compare two sources before you can find the problem.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows hour words (한 시, 두 시 ... 열두 시) and 삼십 분",
+   "Knows 아침 (morning) and 저녁 (evening)"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "Mina wrote her plan for Saturday. The sign below hangs at the entrance of the library near her home.\n\n[도서관]\n아침 아홉 시 ~ 저녁 여섯 시\n\nThe sign shows the hours when the library is open.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "Mina's plan is below. Find the FIRST line that does not fit the library sign.",
+    "lines": [
+     "일곱 시에 일어나요.",
+     "여덟 시 삼십 분에 도서관에 가요.",
+     "도서관에서 공부해요.",
+     "열두 시에 친구를 만나요.",
+     "여섯 시 삼십 분에 집에 와요."
+    ],
+    "wrong": [
+     1
+    ],
+    "explain": "Line 2 is the first problem: she goes to the library at 8:30 (여덟 시 삼십 분), but the sign says it opens at 9:00 (아침 아홉 시). The later lines depend on this one, and each of them is fine by itself.",
+    "hints": [
+     "Read the sign first and write down the opening hour and the closing hour.",
+     "Go through Mina's lines in order. Compare each time with the sign."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "What exactly is wrong with that line?",
+    "options": [
+     {
+      "id": "a",
+      "text": "She wrote the hour with the wrong number words.",
+      "reveals": "The hour 여덟 시 is written correctly: hours use 한, 두, 세 ... 여덟 ... so this is not the problem."
+     },
+     {
+      "id": "b",
+      "text": "She plans to arrive while the library is still closed."
+     },
+     {
+      "id": "c",
+      "text": "The place is not marked correctly with 에.",
+      "reveals": "도서관에 가요 is correct: 에 marks the place you go to. The problem is the time."
+     },
+     {
+      "id": "d",
+      "text": "She plans to arrive after the library has closed.",
+      "reveals": "The library closes in the evening (저녁 여섯 시). 8:30 is early morning."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "The words and the particle are correct. The problem is a conflict between her time (8:30) and the opening time on the sign (9:00): she would stand in front of a closed library.",
+    "hints": [
+     "Check the number words, the particle and the time one by one.",
+     "Put the two times on a line: 8:30 and the time on the sign. Which comes first?"
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Rewrite the line you found in step 1 as one Korean sentence so that the plan works. Keep the library and use a time that also fits her other lines.",
+    "placeholder": "예: ...",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "names the library (도서관)",
+      "mode": "any",
+      "patterns": [
+       "도서관"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "a time when the library is open and before the 12 o'clock meeting (9, 10 or 11 o'clock)",
+      "mode": "any",
+      "patterns": [
+       "(아홉|열|열한)\\s*시",
+       "(^|[^\\d])(9|10|11)\\s*시",
+       "(^|[^\\d])(9|10|11):\\d\\d"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "hour written with a native number word (not 구 시, 십 시 ...)",
+      "mode": "none",
+      "patterns": [
+       "(^|[^가-힣])(십일|십이|일|이|삼|사|오|육|칠|팔|구|십)\\s*시(?!간)"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "goes to the library (도서관에 가요 / 와요)",
+      "mode": "any",
+      "patterns": [
+       "도서관\\s*에\\s*(가|갈|갔|와|올|왔|도착)"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "no evening or night time (the library closes at six)",
+      "mode": "none",
+      "patterns": [
+       "저녁|밤|오후"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Is my time at or after the opening hour?",
+     "Is it early enough for Mina to meet her friend at twelve?",
+     "Did I use a native number word for the hour?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "아홉 시에 도서관에 가요."
+     },
+     {
+      "text": "아홉 시 삼십 분에 도서관에 가요.",
+      "note": "Minutes use 삼십 분 (Sino number)."
+     },
+     {
+      "text": "열 시에 도서관에 가요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "여덟 시 삼십 분에 도서관에 가요.",
+      "why": "This is the original time, still before the opening hour."
+     },
+     {
+      "text": "열두 시에 도서관에 가요.",
+      "why": "The library is open, but 12:00 is when she meets her friend."
+     },
+     {
+      "text": "구 시에 도서관에 가요.",
+      "why": "Hours use native numbers (아홉 시), not 구 시."
+     },
+     {
+      "text": "열 시에 도서관에서 와요.",
+      "why": "The place needs 에 (도서관에 와요), not 에서."
+     },
+     {
+      "text": "저녁 아홉 시에 도서관에 가요.",
+      "why": "Evening 9:00 is after the library has closed."
+     }
+    ],
+    "humanReview": "Whether the whole sentence is natural and whether a time like 11:30 or 1 p.m. should be accepted with a good reason.",
+    "hints": [
+     "Compare your time with the sign again, and with Mina's other lines.",
+     "For o'clock, put a native number word before 시 (like 한, 두, 세 ...)."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finding the conflict",
+    "full": "Picks the first line that fails the sign and says the library is still closed",
+    "partial": "Picks the line but gives a vague reason",
+    "none": "Picks a line that fits the sign"
+   },
+   {
+    "criterion": "Repair",
+    "full": "A polite sentence with a time that works and a native hour word",
+    "partial": "A time that works but a wrong number word, or a time that conflicts with another line",
+    "none": "The same impossible time"
+   }
+  ],
+  "alternatives": [
+   "A time such as 열한 시 삼십 분 is also correct; any open hour before 12:00 works.",
+   "A learner may point out that line 3 also fails if line 2 fails; that is right, but the first failing line is line 2."
+  ],
+  "hardCases": [
+   "If Mina could meet her friend at the library, later times would also be fine; the task states only the plan as written."
+  ],
+  "cautions": {
+   "language": "Only hour and minute words are needed; 아침 and 저녁 appear on the sign.",
+   "culture": "Prices and shops are made up and simple. Honorific and politeness norms vary by region, workplace, age and personal preference; this task reflects common standard-Korean usage, not a rule for every situation.",
+   "accessibility": "All material is text; emoji and any scene are described in words, nothing depends on colour. Romanization is not provided. Prices and number words are written out as text."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The line position of the first problem",
+    "The reason about the opening hour",
+    "Presence of 도서관, an open hour before noon, and a native hour word"
+   ],
+   "human": [
+    "Whether the repaired sentence is natural"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-l1d-02",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Prices and counting words",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "A friend's list for the convenience store",
+  "uiLang": "en",
+  "format": "build-many-verify",
+  "generative": true,
+  "goal": "Turn a short Korean text and a price table into several shopping baskets that fit every condition, then report one basket in Korean.",
+  "thinking": [
+   "Satisfying several conditions at once",
+   "Reading a price table that is not simply price times number",
+   "Finding more than one solution"
+  ],
+  "differsFromPlain": "Plain practice asks the price of one item. Here the table has a hidden twist and the text sets limits, so you must test baskets instead of calculating one answer.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows Sino-Korean numbers up to the thousands (천, 오백, 칠천) and 원",
+   "Knows native counts with 개 (한 개 ... 일곱 개)"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "Your friend texts you before you go to the convenience store:\n\n\"편의점에 가요? 부탁해요!\n칠천오백 원 있어요.\n물 두 개 사요.\n김밥하고 빵도 사요.\n모두 일곱 개 사요.\"\n\n[가격표]\n물 한 개: 오백 원\n빵 한 개: 천 원\n김밥 한 개: 이천 원\n김밥 두 개: 사천 원\n김밥 세 개: 사천오백 원\n김밥 네 개: 육천 원\n\n(The text says: your friend has 7,500 won, buys 2 bottles of water, wants gimbap and bread too, and buys 7 things in all.)",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "scaffold": true,
+    "prompt": "Look at the gimbap lines of the price list. Which statement is true?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Gimbap is cheaper per piece when you buy more: 3 cost 4,500 won."
+     },
+     {
+      "id": "b",
+      "text": "Each gimbap costs 2,000 won, so 3 gimbap cost 6,000 won.",
+      "reveals": "The list says 세 개: 사천오백 원, so 3 gimbap cost 4,500 won, not 6,000."
+     },
+     {
+      "id": "c",
+      "text": "Gimbap gets more expensive: 4 gimbap cost 8,000 won.",
+      "reveals": "The list says 네 개: 육천 원, so 4 gimbap cost 6,000 won."
+     },
+     {
+      "id": "d",
+      "text": "Two gimbap cost 3,000 won, one cheaper than 1 + 1.",
+      "reveals": "The list says 두 개: 사천 원, so 2 gimbap cost 4,000 won."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "The table lists the price of the whole set: 1 gimbap 2,000, 2 gimbap 4,000, 3 gimbap 4,500, 4 gimbap 6,000. The price is not always 2,000 times the number.",
+    "hints": [
+     "Read each gimbap line as 'number of gimbap: price of all of them'.",
+     "Compare the price of each number of gimbap with the price of one gimbap."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "build",
+    "prompt": "Find 2 different baskets that fit EVERYTHING in the text. g = number of gimbap, b = number of bread (the 2 bottles of water are already fixed).",
+    "vars": [
+     {
+      "name": "g",
+      "label": "gimbap (김밥)"
+     },
+     {
+      "name": "b",
+      "label": "bread (빵)"
+     }
+    ],
+    "constraints": [
+     {
+      "id": "c0",
+      "expr": "g==floor(g) && b==floor(b)",
+      "ok": "Whole pieces.",
+      "fail": "Buy whole pieces only."
+     },
+     {
+      "id": "c1",
+      "expr": "g>=1 && b>=1",
+      "ok": "Both gimbap and bread are included.",
+      "fail": "김밥하고 빵도 사요: buy at least one of each."
+     },
+     {
+      "id": "c2",
+      "expr": "g+b==5",
+      "ok": "Seven things in all with the 2 bottles of water.",
+      "fail": "모두 일곱 개: with the 2 bottles of water, gimbap plus bread must be 5."
+     },
+     {
+      "id": "c3",
+      "expr": "1000+2000*g-1500*(g==3)-2000*(g==4)+1000*b<=7500",
+      "ok": "Within 7,500 won.",
+      "fail": "More than 7,500 won (칠천오백 원). Remember water costs 1,000 won in all and use the price LIST for gimbap."
+     }
+    ],
+    "need": 2,
+    "distinctBy": "g",
+    "modelRows": [
+     {
+      "g": 1,
+      "b": 4
+     },
+     {
+      "g": 3,
+      "b": 2
+     }
+    ],
+    "badRows": [
+     {
+      "g": 2,
+      "b": 3
+     },
+     {
+      "g": 4,
+      "b": 1
+     },
+     {
+      "g": 3,
+      "b": 3
+     },
+     {
+      "g": 0,
+      "b": 5
+     }
+    ],
+    "explain": "There are exactly two baskets: 1 gimbap + 4 bread (water 1,000 + 2,000 + 4,000 = 7,000 won) and 3 gimbap + 2 bread (1,000 + 4,500 + 2,000 = 7,500 won). 2 gimbap + 3 bread costs 8,000 and 4 gimbap + 1 bread costs 8,000, which is too much. Using the price list, not 2,000 times the number, is what makes 3 gimbap fit.",
+    "hints": [
+     "Write the conditions in your own words first: how much money, how many things in all, what must be included.",
+     "Count the 2 bottles of water too. Then try the possible numbers of gimbap one at a time.",
+     "For each try add water, gimbap (from the LIST) and bread, then compare with 7,500 won."
+    ],
+    "because": {
+     "id": "s2b",
+     "kind": "write",
+     "prompt": "Pick ONE of your baskets and text your friend in Korean (polite -요): how many gimbap, how many bread and the total price including the water.",
+     "placeholder": "예: ...",
+     "minChars": 10,
+     "checks": [
+      {
+       "id": "w1",
+       "label": "polite ending",
+       "mode": "any",
+       "patterns": [
+        "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
+       ]
+      },
+      {
+       "id": "w2",
+       "label": "gives the gimbap count",
+       "mode": "any",
+       "patterns": [
+        "김밥[^빵]{0,8}(\\d|한|두|세|네|다섯|하나|둘|셋|넷)"
+       ]
+      },
+      {
+       "id": "w3",
+       "label": "gives the bread count",
+       "mode": "any",
+       "patterns": [
+        "빵[^김]{0,8}(\\d|한|두|세|네|다섯|하나|둘|셋|넷)"
+       ]
+      },
+      {
+       "id": "w4",
+       "label": "says the total price (원)",
+       "mode": "any",
+       "patterns": [
+        "원"
+       ]
+      },
+      {
+       "id": "w5",
+       "label": "counts with 개 use native numbers (한 개, 세 개 ...), not 삼 개",
+       "mode": "none",
+       "patterns": [
+        "(^|[^가-힣])(일|이|삼|사|오|육|칠|팔|구|십)\\s*개"
+       ]
+      },
+      {
+       "id": "w6",
+       "label": "the counts and the total fit one valid basket",
+       "mode": "any",
+       "patterns": [
+        "^(?=[\\s\\S]*김밥[^빵]{0,8}(한|1|하나))(?=[\\s\\S]*빵[^김]{0,8}(네|4|넷))(?=[\\s\\S]*(칠천\\s*원|7,?000\\s*원))[\\s\\S]*$",
+        "^(?=[\\s\\S]*김밥[^빵]{0,8}(세|3|셋))(?=[\\s\\S]*빵[^김]{0,8}(두|2|둘))(?=[\\s\\S]*(칠천\\s*오백\\s*원|7,?500\\s*원))[\\s\\S]*$"
+       ]
+      }
+     ],
+     "selfAssess": [
+      "Do the counts in my text match one basket I built?",
+      "Is the total correct (water 1,000 + gimbap from the list + bread 1,000 each)?"
+     ],
+     "modelAnswers": [
+      {
+       "text": "김밥 한 개하고 빵 네 개 샀어요. 물 두 개도 샀어요. 모두 칠천 원이에요."
+      },
+      {
+       "text": "김밥 세 개, 빵 두 개 샀어요. 물도 두 개요. 7,500원이에요.",
+       "note": "Digits for the price are fine."
+      }
+     ],
+     "badAnswers": [
+      {
+       "text": "많이 샀어요.",
+       "why": "No items, counts or price."
+      },
+      {
+       "text": "김밥 삼 개하고 빵 두 개 샀어요. 칠천오백 원이에요.",
+       "why": "삼 개 uses a Sino number with 개; it should be 세 개."
+      },
+      {
+       "text": "김밥 두 개, 빵 세 개 샀어요. 팔천 원이에요.",
+       "why": "This basket costs 8,000 won, more than the money."
+      },
+      {
+       "text": "김밥 한 개 빵 네 개 샀어요. 칠천오백 원이에요.",
+       "why": "The total does not match this basket."
+      },
+      {
+       "text": "김밥 한 개하고 빵 네 개 샀어요. 모두 삼천 원이에요.",
+       "why": "The total is wrong (water is missing and the sum is off)."
+      }
+     ],
+     "humanReview": "Whether the counts and the total in the text really match one valid basket.",
+     "hints": [
+      "Use one of your baskets from the step before.",
+      "Say the gimbap count, the bread count, then the total in won."
+     ]
+    }
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Reading the conditions",
+    "full": "Builds two valid baskets and uses the price list (3 gimbap = 4,500 won)",
+    "partial": "Builds one valid basket, or treats gimbap as 2,000 each",
+    "none": "Baskets break the money or count limits"
+   },
+   {
+    "criterion": "Reporting",
+    "full": "Polite text with both counts (native numbers with 개) and a total in won",
+    "partial": "Missing one element",
+    "none": "Not a report"
+   }
+  ],
+  "alternatives": [
+   "Digits for prices in the report (7,500원) are fine; Sino number words (칠천오백 원) are also fine.",
+   "A learner who counts the two bottles of water in the 7 things gets g + b = 5; a learner who forgets the water gets g + b = 7, which the checker rejects."
+  ],
+  "hardCases": [
+   "Spoken Korean often says 칠천오백 원 as '칠천오백 원' only; some people shorten to '칠천 오백'. The task uses the full form."
+  ],
+  "cautions": {
+   "language": "Numbers appear as words in the text and the list. 천, 백 and 만 are read as Sino-Korean numbers; counts with 개 use native numbers.",
+   "culture": "Prices and shops are made up and simple. Honorific and politeness norms vary by region, workplace, age and personal preference; this task reflects common standard-Korean usage, not a rule for every situation.",
+   "accessibility": "All material is text; emoji and any scene are described in words, nothing depends on colour. Romanization is not provided. Prices and number words are written out as text. The price list is written out as text."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Each basket against all the conditions",
+    "The report has a polite ending, both counts, a price in won, and no 삼 개 type error"
+   ],
+   "human": [
+    "Whether the total in the report matches the chosen basket"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-l1d-03",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Prices and counting words",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Three signs at the fruit shop",
+  "uiLang": "en",
+  "format": "reveal-and-revise",
+  "generative": true,
+  "goal": "Update the price you expect for three apples as more signs appear, then ask for three apples correctly in Korean.",
+  "thinking": [
+   "Revising a conclusion when new information arrives",
+   "Using the most specific rule over the general one",
+   "Counting with native numbers (세 개)"
+  ],
+  "differsFromPlain": "Plain practice reads one price tag. Here the price of the same fruit is changed by later, more specific signs and you must update your answer each time.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows Sino-Korean prices (이천 원, 오천 원, 사천 원)",
+   "Knows 한 개, 두 개, 세 개 and 주세요, 얼마예요"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "Today you are at a small fruit shop. You want 3 apples. You read the signs one after another as you come closer to the stall.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "Read each sign, choose the price you expect to pay for 3 apples, then continue.",
+    "hints": [
+     "Use only the signs you have already read.",
+     "Ask for each new sign: does it match how many you want, and when you buy?"
+    ],
+    "reflect": "Each new sign talked about a more specific case (first one apple, then exactly three apples, then three apples today). The more specific sign wins, so your answer changed twice. The last paper was the newest, but it was for yesterday, so it did not change your answer: check that a sign fits your case before you use it.",
+    "stages": [
+     {
+      "info": "The sign on the stall: 사과 한 개: 이천 원",
+      "ask": "You want 3 apples. How much do you expect to pay?",
+      "options": [
+       {
+        "id": "a",
+        "text": "6,000원"
+       },
+       {
+        "id": "b",
+        "text": "2,000원",
+        "reveals": "That is the price of ONE apple. You want three."
+       },
+       {
+        "id": "c",
+        "text": "5,000원",
+        "reveals": "Nothing on this sign says 5,000. That number comes from a different kind of sign."
+       },
+       {
+        "id": "d",
+        "text": "9,000원",
+        "reveals": "That would be 3,000 won per apple, but the sign says 2,000 won for one."
+       }
+      ],
+      "reasonable": [
+       "a"
+      ],
+      "after": "With only this sign, 3 x 2,000 = 6,000 won is the reasonable answer."
+     },
+     {
+      "info": "A small note under the sign: 세 개: 오천 원",
+      "ask": "Now how much for 3 apples?",
+      "options": [
+       {
+        "id": "a",
+        "text": "7,000원",
+        "reveals": "That adds 2,000 and 5,000, but the note already covers all three apples."
+       },
+       {
+        "id": "b",
+        "text": "6,000원",
+        "reveals": "That is the old calculation. The new note gives a price for exactly three apples."
+       },
+       {
+        "id": "c",
+        "text": "5,000원"
+       },
+       {
+        "id": "d",
+        "text": "10,000원",
+        "reveals": "The note says 오천 원 (5,000), not 만 원 (10,000)."
+       }
+      ],
+      "reasonable": [
+       "c"
+      ],
+      "after": "The note gives a price for the set of 3 apples: 5,000 won. It is cheaper than 6,000 won."
+     },
+     {
+      "info": "A red paper on the stall: 오늘만! 세 개 사천 원",
+      "ask": "It is today. How much do you pay for 3 apples?",
+      "options": [
+       {
+        "id": "a",
+        "text": "5,000원",
+        "reveals": "That was the normal price for three. The red paper says today only, and today is today."
+       },
+       {
+        "id": "b",
+        "text": "4,000원"
+       },
+       {
+        "id": "c",
+        "text": "9,000원",
+        "reveals": "That adds the prices of different signs. Each sign is a price for the same 3 apples, not an extra charge."
+       },
+       {
+        "id": "d",
+        "text": "6,000원",
+        "reveals": "The old price. Two newer signs give lower prices for three apples."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "'오늘만' (today only) with '세 개' gives the best price for exactly your case: 4,000 won."
+     },
+     {
+      "info": "A paper under the red one: 어제만! 세 개 삼천 원",
+      "ask": "It is still today. How much do you pay for 3 apples?",
+      "options": [
+       {
+        "id": "a",
+        "text": "3,000원",
+        "reveals": "That paper says 어제만 (yesterday only). It does not count today."
+       },
+       {
+        "id": "b",
+        "text": "5,000원",
+        "reveals": "That is the normal price for three. The red paper for today still gives a lower price."
+       },
+       {
+        "id": "c",
+        "text": "7,000원",
+        "reveals": "That adds 4,000 and 3,000, but each sign gives a price for the same 3 apples."
+       },
+       {
+        "id": "d",
+        "text": "4,000원"
+       }
+      ],
+      "reasonable": [
+       "d"
+      ],
+      "after": "The newest paper is for yesterday, so it does not apply. Today's price for three apples is still 4,000 won."
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "You walk up to the shopkeeper. In Korean, ask for 3 apples and ask the price (polite speech).",
+    "placeholder": "예: ...",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "names apples (사과)",
+      "mode": "any",
+      "patterns": [
+       "사과"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "says three (세 개 / 3개 / 셋)",
+      "mode": "any",
+      "patterns": [
+       "사과\\s*(세|3)\\s*개",
+       "사과\\s*셋",
+       "(세|3)\\s*개\\s*(주|사|살|부탁|요|얼마)",
+       "셋"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "asks for them (주세요, 사요, 살게요 ...) or asks the price of the three apples",
+      "mode": "any",
+      "patterns": [
+       "주세요",
+       "주시",
+       "사요",
+       "살게요",
+       "사고 싶",
+       "부탁",
+       "(세|3)\\s*개\\s*(에\\s*)?얼마",
+       "(세|3)\\s*개요"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "asks the price (얼마, 원)",
+      "mode": "any",
+      "patterns": [
+       "얼마",
+       "원"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "counts with 개 use a native number (세 개), not 삼 개",
+      "mode": "none",
+      "patterns": [
+       "(^|[^가-힣])(일|이|삼|사|오|육|칠|팔|구|십)\\s*개"
+      ]
+     },
+     {
+      "id": "w6",
+      "label": "does not ask for another number (한/두/네 ... 개)",
+      "mode": "none",
+      "patterns": [
+       "(^|[^가-힣\\d])(한|두|네|다섯|여섯|1|2|4|5|6)\\s*개"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I say apples, the number three and the request?",
+     "Did I ask the price?",
+     "Did I use 세 개 and not 삼 개?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "사과 세 개 주세요. 얼마예요?"
+     },
+     {
+      "text": "사과 세 개 사요. 오늘 사천 원이에요?",
+      "note": "Checks the sale price directly."
+     },
+     {
+      "text": "사과 3개 주세요. 얼마예요?"
+     },
+     {
+      "text": "사과 세 개 얼마예요?",
+      "note": "Asking the price of three apples is also natural."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "사과 삼 개 주세요. 얼마예요?",
+      "why": "삼 개 uses a Sino number with 개; use 세 개."
+     },
+     {
+      "text": "사과 주세요.",
+      "why": "No count and no price question."
+     },
+     {
+      "text": "사과 두 개 주세요. 얼마예요?",
+      "why": "That asks for two apples, not three."
+     },
+     {
+      "text": "사과 한 개 주세요. 사과 세 개 얼마예요?",
+      "why": "It asks for one apple, not three."
+     },
+     {
+      "text": "사과 네 개 주세요. 사과 세 개 얼마예요?",
+      "why": "It asks for four apples, not three."
+     }
+    ],
+    "humanReview": "Whether the sentence is natural.",
+    "hints": [
+     "Start with the fruit and the number, then the request word.",
+     "Count apples with 한, 두, 세 + 개; finish with a price question."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Revising the price",
+    "full": "Moves 6,000 -> 5,000 -> 4,000 and can say why each sign replaced the earlier answer",
+    "partial": "Ends at 4,000 but cannot say why",
+    "none": "Keeps the first price or adds the prices"
+   },
+   {
+    "criterion": "Asking in Korean",
+    "full": "Apples, 세 개, a request and a price question, polite",
+    "partial": "One element is missing",
+    "none": "Wrong count or no request"
+   }
+  ],
+  "alternatives": [
+   "At stage 1 a learner may say they could not know the real price before the shopkeeper confirms; the reasonable answer is still 6,000 from the sign.",
+   "Asking '오늘 세 개 얼마예요?' is a good way to confirm the sale price."
+  ],
+  "hardCases": [
+   "Signs can be out of date; in real life you would confirm the price at the counter."
+  ],
+  "cautions": {
+   "language": "Uses Sino numbers for prices and 세 개 for counting. 오늘만 is glossed as 'today only' in the explanations.",
+   "culture": "Prices and shops are made up and simple. Honorific and politeness norms vary by region, workplace, age and personal preference; this task reflects common standard-Korean usage, not a rule for every situation.",
+   "accessibility": "All material is text; emoji and any scene are described in words, nothing depends on colour. Romanization is not provided. Prices and number words are written out as text."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Reasonable prices at each stage",
+    "Presence of apples, three, a request and a price question; 삼 개 is rejected"
+   ],
+   "human": [
+    "Naturalness of the request"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-l1d-04",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Prices, ages and counting people",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "What does the family pay?",
+  "uiLang": "en",
+  "format": "choose-needed-info",
+  "generative": true,
+  "goal": "Decide which missing fact is needed to work out a family ticket price, calculate it, and tell the clerk the facts that matter.",
+  "thinking": [
+   "Sufficiency of information",
+   "A hidden condition in a price rule",
+   "Counting people (명) and ages (살) with native numbers"
+  ],
+  "differsFromPlain": "Plain practice multiplies a price by a number. Here the price depends on a rule that your information does not yet cover, so you must find out what is missing before you can compute.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows Sino-Korean prices (오천 원, 삼천 원)",
+   "Knows native numbers for 명 and 살 (두 명, 네 살, 여덟 살)"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "You are at the ticket window of a zoo with your family: two adults and two children. The sign says:\n\n[동물원 표]\n어른: 오천 원\n아이: 삼천 원\n다섯 살까지: 0원\n\n(The last line means: children up to 5 years old pay nothing.)",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "You want to tell the clerk the family's price. Which fact do you STILL need before you can work it out?",
+    "options": [
+     {
+      "id": "a",
+      "text": "The price of an adult ticket",
+      "reveals": "It is already on the sign: 5,000 won."
+     },
+     {
+      "id": "b",
+      "text": "The ages of the two children"
+     },
+     {
+      "id": "c",
+      "text": "Whether the children are boys or girls",
+      "reveals": "The sign has no rule about boys and girls."
+     },
+     {
+      "id": "d",
+      "text": "The ages of the two adults",
+      "reveals": "The sign has no age rule for adults; adults pay 5,000 won."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "The sign has a hidden condition: children up to 5 years old pay 0 won, other children pay 3,000 won. You know there are two children but not their ages, so you cannot say the price yet.",
+    "hints": [
+     "Read all three lines of the sign and underline the line that depends on a fact you do not have.",
+     "Compare your family information with each line: which line needs something you were not told?"
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "One child is 네 살 and the other is 여덟 살. What does the family pay?",
+    "options": [
+     {
+      "id": "a",
+      "text": "16,000원",
+      "reveals": "That charges 3,000 won for both children, but a 4-year-old pays 0."
+     },
+     {
+      "id": "b",
+      "text": "10,000원",
+      "reveals": "That treats both children as free; the 8-year-old is not covered by the free line."
+     },
+     {
+      "id": "c",
+      "text": "8,000원",
+      "reveals": "That counts only one adult and one child."
+     },
+     {
+      "id": "d",
+      "text": "13,000원"
+     }
+    ],
+    "correct": [
+     "d"
+    ],
+    "explain": "Two adults pay 5,000 x 2 = 10,000 won. The 8-year-old pays 3,000 won. The 4-year-old pays 0. Total: 13,000 won.",
+    "hints": [
+     "Sort the four people into who pays 5,000, who pays 3,000, and who pays 0.",
+     "Add only the people who pay something."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Tell the clerk in Korean (polite speech): who is in your family (adults and children, with numbers) and how old the children are, then ask the price.",
+    "placeholder": "예: ...",
+    "minChars": 15,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "two adults (어른 두 명)",
+      "mode": "any",
+      "patterns": [
+       "어른[^아]{0,6}(두|2|둘)"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "two children (아이/어린이 두 명)",
+      "mode": "any",
+      "patterns": [
+       "(아이|어린이)[^어]{0,8}(두|2|둘)"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "both ages (네 살 and 여덟 살)",
+      "mode": "all",
+      "patterns": [
+       "(네|4)\\s*살",
+       "(여덟|8)\\s*살"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "asks the price (얼마)",
+      "mode": "any",
+      "patterns": [
+       "얼마"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "people and ages use native numbers (두 명, 네 살), not 이 명 / 사 살",
+      "mode": "none",
+      "patterns": [
+       "(^|[^가-힣])(일|이|삼|사|오|육|칠|팔|구|십)\\s*(명|살)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I say how many adults and how many children?",
+     "Did I give both ages?",
+     "Did I ask the price?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "어른 두 명, 아이 두 명이에요. 아이는 네 살하고 여덟 살이에요. 얼마예요?"
+     },
+     {
+      "text": "어른 두 명하고 아이 두 명이에요. 한 명은 네 살이고 한 명은 여덟 살이에요. 모두 얼마예요?"
+     },
+     {
+      "text": "어른 두 명, 어린이 두 명이에요. 네 살, 여덟 살이에요. 얼마예요?"
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "얼마예요?",
+      "why": "No family information and no ages."
+     },
+     {
+      "text": "어른 이 명, 아이 이 명이에요. 네 살하고 여덟 살이에요. 얼마예요?",
+      "why": "이 명 uses a Sino number; people are counted with 두 명."
+     },
+     {
+      "text": "네 명이에요. 얼마예요?",
+      "why": "Says four people but not who the adults and children are, and no ages."
+     }
+    ],
+    "humanReview": "Naturalness and whether the message gives the clerk what the sign needs.",
+    "hints": [
+     "Say adults first, then children, with 명.",
+     "Add the two ages with 살, then finish with a price question."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finding the missing fact",
+    "full": "Chooses the children's ages and can say that the free line depends on age",
+    "partial": "Chooses it without a reason",
+    "none": "Chooses a fact the sign does not use"
+   },
+   {
+    "criterion": "Total and telling the clerk",
+    "full": "13,000 won and a Korean message with the counts, both ages and a price question",
+    "partial": "One of the two is missing",
+    "none": "Neither is correct"
+   }
+  ],
+  "alternatives": [
+   "A learner may say the clerk will ask the ages; asking them yourself first is still the clearer plan.",
+   "Writing digits (2명, 4살) instead of number words is fine for the check."
+  ],
+  "hardCases": [
+   "Real zoos often have more age rules (for example for students); this sign has only the three lines shown."
+  ],
+  "cautions": {
+   "language": "People and ages use native numbers (두 명, 네 살); prices use Sino numbers. '까지' is glossed.",
+   "culture": "Prices and shops are made up and simple. Honorific and politeness norms vary by region, workplace, age and personal preference; this task reflects common standard-Korean usage, not a rule for every situation.",
+   "accessibility": "All material is text; emoji and any scene are described in words, nothing depends on colour. Romanization is not provided. Prices and number words are written out as text."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of the missing fact and the total",
+    "Adults, children, both ages, a price question and no Sino 명/살 error in the message"
+   ],
+   "human": [
+    "Naturalness of the message"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-l1d-05",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Two number systems and counting words",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Can 일, 이, 삼 do everything?",
+  "uiLang": "en",
+  "format": "make-your-own",
+  "generative": true,
+  "goal": "Test a learner's rule that Sino numbers (일, 이, 삼) work everywhere, state the real pattern, and write your own two sentences that show it.",
+  "thinking": [
+   "Finding counter-examples to a rule",
+   "Stating a rule that fits all the evidence",
+   "Making your own examples"
+  ],
+  "differsFromPlain": "Plain practice drills one list of numbers. Here you test a tempting rule against real sentences, find which ones break it, and make your own examples.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows 하나 둘 셋 / 한 두 세 and 일 이 삼",
+   "Has met the words 개, 명, 살, 시, 원, 분, 월, 일, 번"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "Tom is learning Korean. He says: \"I know 일, 이, 삼, 사, 오 ... so I will use only these numbers for everything!\"\n\nHere are six sentences Tom wrote:",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "Which of Tom's sentences would sound wrong to a Korean person? Select every one.",
+    "options": [
+     {
+      "id": "a",
+      "text": "의자 이 개 있어요."
+     },
+     {
+      "id": "b",
+      "text": "이만 원이에요.",
+      "reveals": "This is correct: money uses Sino numbers (이만 원 = 20,000 won)."
+     },
+     {
+      "id": "c",
+      "text": "동생이 오 살이에요."
+     },
+     {
+      "id": "d",
+      "text": "오늘은 오월 오 일이에요.",
+      "reveals": "This is correct: months and days use Sino numbers (5월 5일)."
+     },
+     {
+      "id": "e",
+      "text": "학생이 오 명 있어요."
+     },
+     {
+      "id": "f",
+      "text": "삼 번 버스예요.",
+      "reveals": "This is correct: bus and route numbers use Sino numbers."
+     }
+    ],
+    "correct": [
+     "a",
+     "c",
+     "e"
+    ],
+    "explain": "Three sentences are wrong because 개 (things), 살 (age) and 명 (people) need native numbers: 의자 두 개, 다섯 살, 학생이 다섯 명. The other three are fine: money (원), dates (월, 일) and numbers like bus 3 use Sino numbers.",
+    "hints": [
+     "Say the six sentences aloud one by one. Which ones have you heard in real life with a Sino number, and which with a native one?",
+     "Say each sentence in your head. Which ones have you heard with 하나, 둘, 셋 style numbers instead?"
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Which rule fits ALL six sentences?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Both kinds of numbers are always fine; the speaker chooses freely.",
+      "reveals": "Three of the sentences sound wrong, so the choice is not free."
+     },
+     {
+      "id": "b",
+      "text": "The word you are counting decides which number system fits."
+     },
+     {
+      "id": "c",
+      "text": "Small numbers are native (하나, 둘 ...) and big numbers are Sino (이십오, 이만 ...).",
+      "reveals": "오월 오 일 uses the small number 5 as Sino, and 이십오 살 is big but needs the native 스물다섯, so size does not decide."
+     },
+     {
+      "id": "d",
+      "text": "Native numbers are for casual speech and Sino numbers for polite speech.",
+      "reveals": "The same numbers appear in polite speech: 세 개 주세요 and 이만 원이에요 are both polite."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "The counting word decides. Things, people, age and hours (개, 명, 살, 시) use native numbers; money, minutes, months, days and numbers like bus 3 (원, 분, 월, 일, 번) use Sino numbers.",
+    "hints": [
+     "Make two columns: the wrong sentences and the right ones. What stays the same inside each column?",
+     "Test each rule against a sentence it should explain. Does it also explain the others?"
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Show Tom the pattern with your OWN two Korean sentences (write numbers in Hangul): one with a native number and 개, 명, 살 or 시; one with a Sino number and 원, 분, 월, 일 or 번.",
+    "placeholder": "예: ...",
+    "minChars": 12,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "a native number with 개 / 명 / 살 / 시 (한, 두, 세, 네, 다섯 ... 열, 스물 ...)",
+      "mode": "any",
+      "patterns": [
+       "(열|스물|서른|마흔|쉰)?(한|두|세|네|다섯|여섯|일곱|여덟|아홉)\\s*(개|명|살|시|잔|병|마리|권)",
+       "(열|스물|서른|마흔|쉰)\\s*(개|명|시|잔|병|마리|권)",
+       "(스무|열|서른|마흔|쉰)\\s*살"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "a Sino number with 원 / 분 / 월 / 일 / 번 (일, 이, 삼 ... 천, 만)",
+      "mode": "any",
+      "patterns": [
+       "[일이삼사오육칠팔구십백천만]+\\s*(원|분|월|번)",
+       "(^|[^가-힣])[일이삼사오육칠팔구십]+\\s*일"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "no Sino number (일, 이, 삼, 이십 ...) before 개 / 명 / 살 / 시",
+      "mode": "none",
+      "patterns": [
+       "(^|[^가-힣])(일|이|삼|사|오|육|칠|팔|구|십|백)+\\s*(개|명|살)",
+       "(^|[^가-힣])(일|이|삼|사|오|육|칠|팔|구|십)+\\s*시(?!간)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my first sentence count things, people, age or hours with a native number?",
+     "Does my second sentence give money, minutes, a date or a number with a Sino number?",
+     "Could Tom see the pattern from my two sentences?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "사과 세 개 주세요. 삼천 원이에요."
+     },
+     {
+      "text": "동생은 다섯 살이에요. 지금 오 분 후예요.",
+      "note": "Age with a native number; minutes with a Sino number."
+     },
+     {
+      "text": "학생이 다섯 명 있어요. 오늘은 시월 이십일 일이에요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "사과 삼 개 주세요. 천 원이에요.",
+      "why": "삼 개 puts a Sino number before 개."
+     },
+     {
+      "text": "사과 세 개 주세요. 네 개 주세요.",
+      "why": "Both sentences use native numbers; there is no Sino example."
+     },
+     {
+      "text": "삼천 원이에요. 오 분이에요.",
+      "why": "Both sentences use Sino numbers; there is no native example."
+     },
+     {
+      "text": "저는 이십오 살이에요. 삼천 원이에요.",
+      "why": "이십오 살 puts a Sino number before 살."
+     }
+    ],
+    "humanReview": "Whether the two sentences really form a native/Sino contrast, and whether dates and times are written naturally.",
+    "hints": [
+     "First sentence: pick something you can count (apples, students, your age).",
+     "Second sentence: pick a price, a number of minutes or a date."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finding counter-examples",
+    "full": "Selects exactly the three sentences with native-number counters",
+    "partial": "Selects two of three or adds one extra",
+    "none": "Selects mostly correct sentences"
+   },
+   {
+    "criterion": "Rule and own examples",
+    "full": "Chooses the counting-word rule and writes one native and one Sino example correctly",
+    "partial": "One example is correct",
+    "none": "Examples mix the systems"
+   }
+  ],
+  "alternatives": [
+   "Hours in 'X시 Y분' use both systems in the same phrase (세 시 십오 분); a learner may use that as an example for both columns.",
+   "Some Koreans say 이십오 세 for age in formal writing; the task is about 살."
+  ],
+  "hardCases": [
+   "Ages: Korean learners meet different ways of counting age; the task only asks you to attach a number to 살."
+  ],
+  "cautions": {
+   "language": "Counting words 개, 명, 살, 시, 원, 분, 월, 일, 번 are used; numbers must be written in Hangul in the last step.",
+   "culture": "Prices and shops are made up and simple. Honorific and politeness norms vary by region, workplace, age and personal preference; this task reflects common standard-Korean usage, not a rule for every situation.",
+   "accessibility": "All material is text; emoji and any scene are described in words, nothing depends on colour. Romanization is not provided. Prices and number words are written out as text."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Selection of the wrong sentences and the rule",
+    "Native and Sino examples present, with no Sino number before 개/명/살/시"
+   ],
+   "human": [
+    "Whether the examples are natural and really show the contrast"
+   ]
+  },
+  "status": "draft"
+ }
+]
