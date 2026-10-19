@@ -78,3 +78,15 @@ describe("math hub semesters", async () => {
     expect(twos).toBeGreaterThan(200);
   });
 });
+
+describe("grade display names", async () => {
+  const { gradeLabel } = await import("@/lib/think/grades");
+  it("shows 초1-초6 / 중1-중3 / 고1-고3 in Korean and keeps other codes", () => {
+    expect(["E1", "E2", "E3", "E4", "E5", "E6"].map((g) => gradeLabel(g, "ko"))).toEqual(["초1", "초2", "초3", "초4", "초5", "초6"]);
+    expect(["M1", "M2", "M3"].map((g) => gradeLabel(g, "ko"))).toEqual(["중1", "중2", "중3"]);
+    expect(["H1", "H2", "H3"].map((g) => gradeLabel(g, "ko"))).toEqual(["고1", "고2", "고3"]);
+    expect(gradeLabel("K7", "ko")).toBe("K7");
+    expect(gradeLabel("H2", "ja")).toBe("高2");
+    expect(gradeLabel("M3", "en")).toBe("Middle 3");
+  });
+});

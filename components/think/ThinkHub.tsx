@@ -6,6 +6,7 @@ import { FILE_META, TASK_LOADERS } from "@/lib/think/data/assets-index";
 import { domainOf } from "@/lib/think/domains";
 import { fieldInfo, fieldKeyOf, fieldList } from "@/lib/think/areas";
 import { hasThinkSemesters, inSemester } from "@/lib/think/semesters";
+import { gradeLabel } from "@/lib/think/grades";
 import { thinkLangFor, type ThinkLang } from "@/lib/think/lang";
 import { checksOffFor, loadOverlay, localize } from "@/lib/think/localize";
 import { siteConfig } from "@/lib/learn/sites";
@@ -100,7 +101,7 @@ export function ThinkHub() {
         <label className="l-stack" style={{ gap: 4 }}>
           <span className="l-muted">{H.grade}</span>
           <select className="l-input" data-testid="think-grade" value={grade} onChange={(e) => { setGrade(e.target.value); setField("all"); }}>
-            {grades.map((g) => <option key={g} value={g}>{g.startsWith("EL-") ? `${H.electives}: ${gradeName(g)}` : g.startsWith("K") ? g : g}</option>)}
+            {grades.map((g) => <option key={g} value={g}>{g.startsWith("EL-") ? `${H.electives}: ${gradeName(g)}` : gradeLabel(g, lang)}</option>)}
           </select>
         </label>
         {semesterOn && (

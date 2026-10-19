@@ -7,6 +7,7 @@ import { siteConfig } from "@/lib/learn/sites";
 import { thinkLangFor } from "@/lib/think/lang";
 import { fieldInfo, fieldList } from "@/lib/think/areas";
 import { hasThinkSemesters } from "@/lib/think/semesters";
+import { gradeLabel } from "@/lib/think/grades";
 import { ELECTIVE_NAMES, HUB } from "./hubLabels";
 
 /** Main-screen shortcut into the thinking hub: pick grade, semester (math) and field, then go. The hub reads ?grade= &semester= &field=. */
@@ -31,7 +32,7 @@ export function ThinkQuickEntry() {
         <label className="l-stack" style={{ gap: 4 }}>
           <span className="l-muted">{H.grade}</span>
           <select className="l-input" data-testid="think-quick-grade" value={grade} onChange={(e) => setGrade(e.target.value)}>
-            {grades.map((g) => <option key={g} value={g}>{g.startsWith("EL-") ? `${H.electives}: ${ELECTIVE_NAMES[g][lang]}` : g}</option>)}
+            {grades.map((g) => <option key={g} value={g}>{g.startsWith("EL-") ? `${H.electives}: ${ELECTIVE_NAMES[g][lang]}` : gradeLabel(g, lang)}</option>)}
           </select>
         </label>
         {hasThinkSemesters(site) && !isElective && (
