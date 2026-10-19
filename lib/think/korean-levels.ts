@@ -1,4 +1,5 @@
 import data from "./korean-levels.json";
+import { officialGradeOf } from "@/lib/learn/korean-grades";
 import type { ThinkLang } from "./lang";
 
 /** Korean-subject thinking tasks are grouped by the language level (급) they need, not by the site's ten learning steps (K1-K10).
@@ -10,10 +11,9 @@ export const isLevelCode = (c: string): boolean => /^L[1-6]$/.test(c);
 export const levelFromCode = (c: string): KoreanLevel | null => (isLevelCode(c) ? (Number(c.slice(1)) as KoreanLevel) : null);
 
 const LEVELS = (data as { levels: Record<string, number> }).levels;
-const PRIOR = (data as { prior: Record<string, number> }).prior;
 export const koreanLevelOf = (taskId: string): KoreanLevel | null => (LEVELS[taskId] as KoreanLevel | undefined) ?? null;
-/** The level a learner of the site's step K1-K10 starts on (the level most of that step's tasks belong to). */
-export const priorLevelFor = (grade: string): KoreanLevel => ((PRIOR[grade] as KoreanLevel | undefined) ?? 1);
+/** The level a learner of the site's step K1-K10 starts on: the official grade (한국어 표준 교육과정) the site already assigns to that course. */
+export const priorLevelFor = (grade: string): KoreanLevel => ((officialGradeOf(grade)?.primary as KoreanLevel | undefined) ?? 1);
 
 const NAMES: Record<ThinkLang, string[]> = {
   ko: ["1급 · 초급 1", "2급 · 초급 2", "3급 · 중급 1", "4급 · 중급 2", "5급 · 고급 1", "6급 · 고급 2"],

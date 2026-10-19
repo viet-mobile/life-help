@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Merges the level assignment (id -> 1..6, from the Korean curriculum 급) into lib/think/korean-levels.json and computes `prior`:
-the level a learner of the site's step K1-K10 starts on = the median level of that step's tasks, capped by the step order (K1-K2 -> 1, K3-K4 -> 2, K5-K6 -> 3, K7-K8 -> 4, K9 -> 5, K10 -> 6). Usage: korean-levels.py <levels.json>"""
+(not used by the app: the start level comes from lib/learn/korean-grades.ts)
 import json, glob, sys, statistics, collections
 lv = json.load(open(sys.argv[1]))
 tasks = {}
