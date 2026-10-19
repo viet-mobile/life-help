@@ -75,3 +75,21 @@ describe("Korean-mixed reading / mixed questions: stable per-question keys, noth
     expect(q.prompt).toBe("เข็มสั้นชี้เลข 9 เข็มยาวชี้เลข 6 ตอนนี้กี่โมง?");
   });
 });
+
+describe("option localization policy: form options stay English; understanding options are all-or-none", () => {
+  const T = (extra: Record<string, string> = {}) => ({ templates: {}, texts: { "t:rdm:expl:quote": "“{quote}”", "t:rdm:h1:ask": "ask first", "q:eb-o1-q1": "คำว่า happy หมายถึงอะไร?", ...extra } as Record<string, string> });
+  const q = { ...base, id: "eb-o1-q1", prompt: "Read the notice.\n\nWhat does happy mean?", hints: ["질문이 무엇을 묻는지 먼저 한 문장으로 말해 보세요.", "h2"], explanation: "“glad”", options: [{ id: "a", text: "glad" }, { id: "b", text: "sad" }, { id: "c", text: "tall" }] } as unknown as Question;
+  it("without o: keys the English options are served unchanged (form / unlocalized)", () => {
+    expect(localizeEnglishBankQuestion(q, T(), "th")!.options!.map((o) => o.text)).toEqual(["glad", "sad", "tall"]);
+  });
+  it("with o: keys for all options they are localized, ids and order unchanged", () => {
+    const o = localizeEnglishBankQuestion(q, T({ "o:eb-o1-q1:a": "ดีใจ", "o:eb-o1-q1:b": "เศร้า", "o:eb-o1-q1:c": "สูง" }), "th")!;
+    expect(o.options!.map((x) => x.id)).toEqual(["a", "b", "c"]);
+    expect(o.options!.map((x) => x.text)).toEqual(["ดีใจ", "เศร้า", "สูง"]);
+  });
+  it("a half-localized choice list is never served", () => {
+    const t: { reason?: string } = {};
+    expect(localizeEnglishBankQuestion(q, T({ "o:eb-o1-q1:a": "ดีใจ" }), "th", t)).toBeNull();
+    expect(t.reason).toBe("rdm-option-untranslated");
+  });
+});

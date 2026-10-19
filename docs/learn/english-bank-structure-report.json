@@ -1,0 +1,214 @@
+{
+ "version": "structure-stems/2",
+ "inputs": {
+  "lib/learn/content/bank/english-draft.json sha256[0:16]": "0264353e252def68",
+  "kit th.json sha256[0:16]": "80f6669a83580a0b",
+  "dependencyTableDigest": "81be89f5ed4e9704"
+ },
+ "outputDigest": "314c0da51ee85f42",
+ "counts": {
+  "structured": 1404,
+  "tally": {
+   "content-only": 462,
+   "certain": 595,
+   "uncertain": 347
+  },
+  "legacySurvey": 1395,
+  "addedSinceSurvey": 9,
+  "removedSinceSurvey": 0
+ },
+ "added": [
+  {
+   "id": "eb-dac2eaba-m",
+   "why": "label rule widened from /^[A-Z][a-z]*:/ to /^[A-Z][A-Za-z ]{0,12}:/: multi-word prefixes such as 'Calendar note:' / 'Read the sign:' / 'Shopping list:' now match (they are labels of a text, not speakers; such records are classified by the split, never assumed certain)"
+  },
+  {
+   "id": "eb-b7c25d9c-m",
+   "why": "label rule widened from /^[A-Z][a-z]*:/ to /^[A-Z][A-Za-z ]{0,12}:/: multi-word prefixes such as 'Calendar note:' / 'Read the sign:' / 'Shopping list:' now match (they are labels of a text, not speakers; such records are classified by the split, never assumed certain)"
+  },
+  {
+   "id": "eb-e3f14126-m",
+   "why": "label rule widened from /^[A-Z][a-z]*:/ to /^[A-Z][A-Za-z ]{0,12}:/: multi-word prefixes such as 'Calendar note:' / 'Read the sign:' / 'Shopping list:' now match (they are labels of a text, not speakers; such records are classified by the split, never assumed certain)"
+  },
+  {
+   "id": "eb-93e6c352-m",
+   "why": "label rule widened from /^[A-Z][a-z]*:/ to /^[A-Z][A-Za-z ]{0,12}:/: multi-word prefixes such as 'Calendar note:' / 'Read the sign:' / 'Shopping list:' now match (they are labels of a text, not speakers; such records are classified by the split, never assumed certain)"
+  },
+  {
+   "id": "eb-67b0da10-m",
+   "why": "label rule widened from /^[A-Z][a-z]*:/ to /^[A-Z][A-Za-z ]{0,12}:/: multi-word prefixes such as 'Calendar note:' / 'Read the sign:' / 'Shopping list:' now match (they are labels of a text, not speakers; such records are classified by the split, never assumed certain)"
+  },
+  {
+   "id": "eb-b6140c87-m",
+   "why": "label rule widened from /^[A-Z][a-z]*:/ to /^[A-Z][A-Za-z ]{0,12}:/: multi-word prefixes such as 'Calendar note:' / 'Read the sign:' / 'Shopping list:' now match (they are labels of a text, not speakers; such records are classified by the split, never assumed certain)"
+  },
+  {
+   "id": "eb-8c19214f-m",
+   "why": "label rule widened from /^[A-Z][a-z]*:/ to /^[A-Z][A-Za-z ]{0,12}:/: multi-word prefixes such as 'Calendar note:' / 'Read the sign:' / 'Shopping list:' now match (they are labels of a text, not speakers; such records are classified by the split, never assumed certain)"
+  },
+  {
+   "id": "eb-45460066-m",
+   "why": "label rule widened from /^[A-Z][a-z]*:/ to /^[A-Z][A-Za-z ]{0,12}:/: multi-word prefixes such as 'Calendar note:' / 'Read the sign:' / 'Shopping list:' now match (they are labels of a text, not speakers; such records are classified by the split, never assumed certain)"
+  },
+  {
+   "id": "eb-15a7f807-m",
+   "why": "label rule widened from /^[A-Z][a-z]*:/ to /^[A-Z][A-Za-z ]{0,12}:/: multi-word prefixes such as 'Calendar note:' / 'Read the sign:' / 'Shopping list:' now match (they are labels of a text, not speakers; such records are classified by the split, never assumed certain)"
+  }
+ ],
+ "removed": [],
+ "structureCheckOnCertain": {
+  "checked": 595,
+  "failures": 2,
+  "failureSamples": [
+   {
+    "id": "eb-20ee506f-m",
+    "why": "protected token lost in the split: The kitchen smells wonderful. Dad ___ since noon."
+   },
+   {
+    "id": "eb-6d6e9c71-m",
+    "why": "protected token lost in the split: Hyunwoo is exhausted. He ___ since five this morning."
+   }
+  ],
+  "failedQuestionIds": [
+   "eb-20ee506f-m",
+   "eb-6d6e9c71-m"
+  ]
+ },
+ "optionRolePolicy": {
+  "form:preserve": 589,
+  "content:review": 405,
+  "meaning:localize": 410
+ },
+ "genericInstructionKinds": {
+  "note": "content-only questions get ONE shared localized instruction per kind (composed at merge time with the untouched English content); this is a handful of template strings per language, not one string per question",
+  "kinds": {
+   "reply-to-dialogue": 132,
+   "fill-the-blank": 256,
+   "dialogue-question": 70,
+   "other": 4
+  }
+ },
+ "patternsForMeaningReview": {
+  "patterns": 188,
+  "reviewQuestions": 274,
+  "top": [
+   {
+    "frame": "In the passage, “…” is closest in meaning to",
+    "questions": 50,
+    "review": [
+     "eb-94de5f12-q3",
+     "eb-d5ef7174-q4",
+     "eb-eee5d5f3-q3"
+    ]
+   },
+   {
+    "frame": "Which pair best fills (A) and (B)?",
+    "questions": 30,
+    "review": [
+     "eb-de815f2c-q1",
+     "eb-f8efa69a-q1"
+    ]
+   },
+   {
+    "frame": "Which connective best fills the blank?",
+    "questions": 28,
+    "review": [
+     "eb-472d150e-q1",
+     "eb-70a07cae-q1",
+     "eb-971f4c8a-q1"
+    ]
+   },
+   {
+    "frame": "Choose the pair that best fills in (A) and (B) in the summary.",
+    "questions": 20,
+    "review": [
+     "eb-fd95eec5-m",
+     "eb-419103ec-m",
+     "eb-a2ab5922-m"
+    ]
+   },
+   {
+    "frame": "In the dialogue, “…” means:",
+    "questions": 17,
+    "review": [
+     "eb-04581f39-q3",
+     "eb-ec237e07-q3"
+    ]
+   },
+   {
+    "frame": "Choose the best word for the blank.",
+    "questions": 17,
+    "review": [
+     "eb-9cc1cb8d-m",
+     "eb-0935f277-m"
+    ]
+   },
+   {
+    "frame": "In the passage, “…” means",
+    "questions": 16,
+    "review": [
+     "eb-994328c5-q3",
+     "eb-23248913-q3",
+     "eb-8b363399-q3"
+    ]
+   },
+   {
+    "frame": "In the passage, “…” in “…” refers to",
+    "questions": 15,
+    "review": [
+     "eb-a4f38685-q3",
+     "eb-77497b56-q5",
+     "eb-2b32fee1-q5"
+    ]
+   },
+   {
+    "frame": "Complete the sentence.",
+    "questions": 15,
+    "review": [
+     "eb-6fe489f3-m",
+     "eb-4baba7d7-m",
+     "eb-c0421878-m"
+    ]
+   },
+   {
+    "frame": "What is the most natural order of (A), (B) and (C) after the given par",
+    "questions": 15,
+    "review": [
+     "eb-095bdfde-q1",
+     "eb-4b9ed536-q1"
+    ]
+   },
+   {
+    "frame": "In the dialogue, “…” means",
+    "questions": 13,
+    "review": [
+     "eb-fe4e62ec-q4",
+     "eb-f1b3f37c-q4",
+     "eb-f292e0f3-q4"
+    ]
+   },
+   {
+    "frame": "Choose the best connective.",
+    "questions": 13,
+    "review": [
+     "eb-b6c07cb5-m",
+     "eb-6c7d01d4-m",
+     "eb-9b3d12f3-m"
+    ]
+   }
+  ]
+ },
+ "failureRule": "any pattern with a failure is held for ALL its questions; uncertain records are never auto-processed",
+ "heldByFailedPattern": {
+  "patterns": [
+   "Choose the best answer: \"The kitchen smells wonderful.",
+   "Choose the best answer: \"Hyunwoo is exhausted."
+  ],
+  "questions": 2,
+  "ids": [
+   "eb-20ee506f-m",
+   "eb-6d6e9c71-m"
+  ]
+ },
+ "certainAvailable": 593
+}

@@ -240,10 +240,13 @@ export function localizeEnglishBankQuestion(q: Question, bankOv: BankOverlay | n
     const qText = texts[`q:${q.id}`];
     if (!qText || HANGUL.test(qText)) return no("rdm-question-untranslated");
     prompt = kind === "m" ? qText : `${passage}\n\n${qText}`;
+    // Options: form-assessing English options stay as authored (no o: keys). Options that test understanding (meaning / content) may be localized: as soon as ANY option of the
+    // question has an o: key, EVERY option must have one (never a half-localized choice list); Korean options always need their key.
+    const hasAnyOptionKey = (q.options ?? []).some((o) => !HANGUL.test(o.text) && texts[`o:${q.id}:${o.id}`]); // keys on ENGLISH options switch the whole English list to localized
     const mappedOptions: QuestionOption[] = [];
     for (const o of q.options ?? []) {
-      if (!HANGUL.test(o.text)) { mappedOptions.push(o); continue; }
       const t = texts[`o:${q.id}:${o.id}`];
+      if (!t && !HANGUL.test(o.text) && !hasAnyOptionKey) { mappedOptions.push(o); continue; }
       if (!t || HANGUL.test(t)) return no("rdm-option-untranslated");
       mappedOptions.push({ id: o.id, text: t });
     }
