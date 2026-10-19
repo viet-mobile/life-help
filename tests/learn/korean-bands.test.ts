@@ -51,3 +51,26 @@ describe("study.korean curriculum bands (Introduction + levels 1~6)", () => {
     }
   });
 });
+
+describe("progress preservation: nothing a learner already has changed meaning", () => {
+  const before = JSON.parse(fs.readFileSync(path.resolve(__dirname, "fixtures/korean-ids-before-bands.json"), "utf8")) as { questions: Record<string, [string, string, string]>; lessons: Record<string, string[]> };
+  it("every question id of the course before the band layer still exists with the same type, answer key and skill", () => {
+    const now = new Map(bundle.questions.map((q) => [q.id, q as unknown as { id: string; type: string; skillId: string; answer: unknown }]));
+    for (const [id, [type, answer, skill]] of Object.entries(before.questions)) {
+      const q = now.get(id);
+      expect(q, id).toBeDefined();
+      expect(q!.type, id).toBe(type);
+      expect(q!.skillId, id).toBe(skill);
+      expect(JSON.stringify(sortKeys(q!.answer)), id).toBe(answer);
+    }
+  });
+  it("every lesson keeps all its earlier questions (new typed-answer questions may only be appended)", () => {
+    const now = new Map(lessons.map((l) => [l.id, l.questionIds]));
+    for (const [id, ids] of Object.entries(before.lessons)) expect(now.get(id)?.slice(0, ids.length), id).toEqual(ids);
+  });
+});
+function sortKeys(v: unknown): unknown {
+  if (Array.isArray(v)) return v.map(sortKeys);
+  if (v && typeof v === "object") return Object.fromEntries(Object.keys(v as object).sort().map((k) => [k, sortKeys((v as Record<string, unknown>)[k])]));
+  return v;
+}
