@@ -229,7 +229,16 @@ export function localizeEnglishBankQuestion(q: Question, bankOv: BankOverlay | n
     }
   } else if (kind === "r" || kind === "d" || kind === "m") {
     if (HANGUL.test(q.prompt) || (q.options ?? []).some((o) => HANGUL.test(o.text))) return no("rdm-korean-in-source-stem-or-options");
-    prompt = q.prompt;
+    // The passage / dialogue and the English answer choices are the learning target and stay as authored; the QUESTION (the instruction the learner
+    // reads in their own language) comes from the kit key q:<id>. A question without its translation is not served (never an English instruction).
+    const qText = texts[`q:${q.id}`];
+    if (!qText || HANGUL.test(qText)) return no("rdm-question-untranslated");
+    if (kind === "m") prompt = qText;
+    else {
+      const cut = q.prompt.lastIndexOf("\n\n");
+      if (cut < 0) return no("rdm-question-untranslated");
+      prompt = `${q.prompt.slice(0, cut)}\n\n${qText}`;
+    }
     const rawExpl = q.explanation.trim();
     if (texts[`why:${q.id}`]) {
       explanation = texts[`why:${q.id}`];

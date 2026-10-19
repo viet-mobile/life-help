@@ -553,6 +553,10 @@ for (const locale of locales) {
   }
 
   // Validate zero Hangul and non-empty strings
+  // hand-maintained / separately translated keys (scripts/learn/english-bank/kit-extra/<locale>.json): merged last so a rebuild never drops them
+  const extraPath = path.join(ROOT, "scripts/learn/english-bank/kit-extra", `${locale}.json`);
+  if (fs.existsSync(extraPath)) Object.assign(texts, JSON.parse(fs.readFileSync(extraPath, "utf8")).texts ?? {});
+
   for (const [k, v] of Object.entries(texts)) {
     if (typeof v !== "string" || !v.trim()) {
       throw new Error(`[${locale}] Empty text for key ${k}`);
