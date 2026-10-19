@@ -7,8 +7,8 @@ import { koreanLevelOf, levelForBand, priorLevelFor } from "@/lib/think/korean-l
 import { bandOfLesson } from "@/lib/learn/korean-bands";
 import { buildPath } from "@/lib/learn/domain/path";
 import { isFinalBoss } from "@/lib/think/bosses";
-import { thinkLangFor } from "@/lib/think/lang";
-import { loadOverlay, localize } from "@/lib/think/localize";
+import { taskLangFor, thinkLangFor } from "@/lib/think/lang";
+import { loadOverlays, localizeFor } from "@/lib/think/localize";
 import {
   OFFER_EVERY, chooseLater, chooseNow, chooseTask, flowKey, noTaskAvailable, parseLedger, recordCompleted, startOffer, type Candidate, type FlowLedger,
 } from "@/lib/think/flow";
@@ -37,13 +37,13 @@ export function readTried(site: string): Set<string> {
 
 /** The tasks of the learner's own grade / level that are ready in the learner's language (never an untranslated original). */
 async function readyTasks(site: "math" | "english" | "korean", grade: string, locale: string, bandLevel?: number) {
-  const lang = thinkLangFor(locale, site);
+  const lang = taskLangFor(locale);
   const level = site === "korean" ? (bandLevel ?? priorLevelFor(grade)) : null; // Korean: the tasks of the learner's language level (1-6급), see lib/think/korean-levels.ts
   const metas = FILE_META.filter((m) => m.subject === site && (level ? true : m.grades.includes(grade) || m.grades.length === 0));
   const lists = await Promise.all(metas.map((m) => TASK_LOADERS[m.key]()));
   const own = lists.flat().filter((t: ThinkTask) => (level ? koreanLevelOf(t.id) === level : t.grade ? t.grade === grade : t.level === bandOf(grade)));
-  const overlay = await loadOverlay(lang, metas.map((m) => m.key));
-  return own.filter((t) => !isFinalBoss(t.id)).map((t) => localize(t, lang, overlay)).filter((x) => x.translated || x.task.uiLang === lang); // final bosses are not offered as mid-bosses
+  const overlays = await loadOverlays(lang, metas.map((m) => m.key));
+  return own.filter((t) => !isFinalBoss(t.id)).map((t) => localizeFor(t, lang, overlays)).filter((x) => x.translated || x.task.uiLang === x.lang); // final bosses are not offered as mid-bosses
 }
 
 /**
