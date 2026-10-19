@@ -74,3 +74,21 @@ function sortKeys(v: unknown): unknown {
   if (v && typeof v === "object") return Object.fromEntries(Object.keys(v as object).sort().map((k) => [k, sortKeys((v as Record<string, unknown>)[k])]));
   return v;
 }
+
+describe("vocabulary: \"level\" means only the standard curriculum levels 1~6; the app's own K1~K10 courses use another word", () => {
+  const locales = fs.readdirSync(path.resolve(__dirname, "../../lib/learn/i18n/locales")).filter((f) => f.endsWith(".json")).map((f) => f.slice(0, -5));
+  it("in every language the K1~K10 course labels and titles never contain the word used for a curriculum level", () => {
+    for (const loc of locales) {
+      const ui = read(`lib/learn/i18n/locales/${loc}.json`) as Record<string, string>;
+      const word = ui["korean.official.grade"].replace("{grade}", "").replace(/[\s·\-–]/g, "");
+      expect(word.length, loc).toBeGreaterThan(0);
+      for (let n = 1; n <= 10; n++) expect(ui[`grade.K${n}`].includes(word), `${loc} grade.K${n}: ${ui[`grade.K${n}`]} vs "${word}"`).toBe(false);
+      for (const kit of ["kit", "kit-extra"]) {
+        const f = path.resolve(__dirname, `../../scripts/learn/korean/${kit}/${loc}.json`);
+        if (!fs.existsSync(f)) continue;
+        const courses = (JSON.parse(fs.readFileSync(f, "utf8")).course ?? {}) as Record<string, { title: string }>;
+        for (const [k, c] of Object.entries(courses)) if (/^K\d+$/.test(k)) expect(c.title.includes(word), `${loc} ${kit} ${k}: ${c.title} vs "${word}"`).toBe(false);
+      }
+    }
+  });
+});

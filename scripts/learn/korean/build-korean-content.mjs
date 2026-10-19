@@ -185,4 +185,4 @@ for (const [rel, data] of Object.entries(outputs)) {
   }
 }
 if (stale) { console.error("korean content is out of date: run node scripts/learn/korean/build-korean-content.mjs"); process.exit(1); }
-console.log(`${check ? "checked" : "wrote"} korean course: ${bundle.catalog.courses.length} levels, ${bundle.questions.length} questions, ${Object.keys(outputs).length - 1} overlays`);
+console.log(`${check ? "checked" : "wrote"} korean course: ${bundle.catalog.courses.length} courses, ${bundle.questions.length} questions, ${Object.keys(outputs).length - 1} overlays`);
