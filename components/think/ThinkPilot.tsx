@@ -66,7 +66,7 @@ export function ThinkPilot({ initialTasks }: { initialTasks?: ThinkTask[] } = {}
         {shown.map((t0) => { const t = localize(t0, lang, overlay).task; return (
           <li key={t.id}>
             <button onClick={() => open(t.id)} data-testid={`task-${t.id}`} className="w-full rounded-2xl border bg-white p-4 text-left shadow-sm hover:border-slate-900">
-              <div className="flex items-center gap-2 text-xs font-bold text-slate-500"><span aria-hidden>{SUBJECT_ICON[t.subject]}</span>{t.id} · {t.grade ? `${t.grade} · ` : ""}{t.levelLabel} · {t.minutes}{labels(t.uiLang).minutes} · {t.format}{t.generative ? ` · ✍ ${labels(t.uiLang).generative}` : ""}{t.topic ? ` · ${t.topic}` : ""}{t.status === "draft" ? " · 🟡 draft (not independently reviewed)" : ""}</div>
+              <div className="flex items-center gap-2 text-xs font-bold text-slate-500"><span aria-hidden>{SUBJECT_ICON[t.subject]}</span>{t.id} · {t.grade ? `${t.grade} · ` : ""}{t.levelLabel} · {t.minutes}{labels(t.uiLang).minutes} · {t.format}{t.topic ? ` · ${t.topic}` : ""}{t.status === "draft" ? " · 🟡 draft (not independently reviewed)" : ""}</div>
               <div className="mt-1 text-lg font-black">{t.title}</div>
               <div className="mt-1 text-sm text-slate-600">{t.goal}</div>
             </button>

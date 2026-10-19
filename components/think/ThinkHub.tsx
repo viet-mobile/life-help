@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { FILE_META, TASK_LOADERS } from "@/lib/think/data/assets-index";
 import { domainOf } from "@/lib/think/domains";
+import { AREA_LABELS, MATH_AREAS, mathAreaOf } from "@/lib/think/areas";
 import { thinkLangFor, type ThinkLang } from "@/lib/think/lang";
 import { checksOffFor, loadOverlay, localize } from "@/lib/think/localize";
 import { siteConfig } from "@/lib/learn/sites";
@@ -63,8 +64,10 @@ export function ThinkHub() {
   // Only tasks fully available in the learner's language are listed or opened; the others are counted and explained, never shown half-translated.
   const localized = useMemo(() => everything.filter((x) => x.translated), [everything]);
   const hidden = everything.length - localized.length;
-  const fields = useMemo(() => [...new Set(localized.map((x) => x.task.topic ?? domainOf(x.task)))], [localized]);
-  const shown = localized.filter((x) => field === "all" || (x.task.topic ?? domainOf(x.task)) === field);
+  // Math: the four curriculum areas (a task that fits none is listed under "all" only). Other sites: the task's topic / skill.
+  const fieldOf = (t: (typeof tasks)[number]): string | null => (site === "math" ? mathAreaOf(t.id) : (t.topic ?? domainOf(t)));
+  const fields = useMemo(() => (site === "math" ? MATH_AREAS.filter((a) => localized.some((x) => mathAreaOf(x.task.id) === a)) : [...new Set(localized.map((x) => x.task.topic ?? domainOf(x.task)))]), [localized, site]);
+  const shown = localized.filter((x) => field === "all" || fieldOf(x.task) === field);
   const current = open ? localized.find((x) => x.task.id === open) : undefined;
   const grades = [...siteConfig(site).levels, ...(site === "math" ? Object.keys(ELECTIVE_NAMES) : [])];
   const gradeName = (g: string) => (g.startsWith("EL-") ? ELECTIVE_NAMES[g][lang] : g);
@@ -99,7 +102,7 @@ export function ThinkHub() {
             <span className="l-muted">{H.field}</span>
             <select className="l-input" data-testid="think-field" value={field} onChange={(e) => setField(e.target.value)}>
               <option value="all">{H.allFields}</option>
-              {fields.map((f) => <option key={f} value={f}>{f}</option>)}
+              {fields.map((f) => <option key={f} value={f}>{site === "math" ? AREA_LABELS[f as keyof typeof AREA_LABELS][lang] : f}</option>)}
             </select>
           </label>
         )}
@@ -110,10 +113,12 @@ export function ThinkHub() {
       <ul className="l-stack" style={{ listStyle: "none", padding: 0 }}>
         {shown.map(({ task }) => (
           <li key={task.id}>
-            <button type="button" className="l-card l-stack" data-testid={`think-${task.id}`} style={{ textAlign: "left", width: "100%", cursor: "pointer" }} onClick={() => router.push(href(`/think?task=${encodeURIComponent(task.id)}`))}>
-              <span className="l-muted">{done[task.id] ? "✅ " : ""}{task.topic ?? ""} · ≈{task.minutes}{L.minutes}{task.generative ? ` · ✍ ${L.generative}` : ""}</span>
-              <strong>{task.title}</strong>
-              <span className="l-muted">{task.goal}</span>
+            <button type="button" className="l-card" data-testid={`think-${task.id}`} style={{ textAlign: "left", width: "100%", cursor: "pointer", display: "block" }} onClick={() => router.push(href(`/think?task=${encodeURIComponent(task.id)}`))}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                <div className="l-muted" style={{ fontSize: 13 }}>{done[task.id] ? "✅ " : ""}{task.topic ? `${task.topic} · ` : ""}≈{task.minutes}{L.minutes}</div>
+                <strong style={{ display: "block", fontSize: 18, lineHeight: 1.35 }}>{task.title}</strong>
+                <div className="l-muted" style={{ lineHeight: 1.5 }}>{task.goal}</div>
+              </div>
             </button>
           </li>
         ))}
