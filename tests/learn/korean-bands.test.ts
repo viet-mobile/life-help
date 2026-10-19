@@ -92,3 +92,11 @@ describe("vocabulary: \"level\" means only the standard curriculum levels 1~6; t
     }
   });
 });
+
+describe("math middle-school semesters follow the 2022-revision table (numbers + change/relationships in 1학기, shapes + data in 2학기)", () => {
+  it("functions, graphs and quadratics are semester 1 in every grade; shapes and probability stay in semester 2", async () => {
+    const { semesterOf } = await import("@/lib/learn/content/semesters");
+    for (const id of ["math-m1-crd1", "math-m1-prp1", "math-m1-neg1", "math-m1-fac1", "math-m2-l4", "math-m2-lfn1", "math-m3-l4"]) expect(semesterOf("math", id), id).toBe(1);
+    for (const id of ["math-m1-geo1", "math-m1-geo2", "math-m1-sta1", "math-m2-geo1", "math-m2-geo2", "math-m2-l5", "math-m3-geo1", "math-m3-geo2", "math-m3-sta1"]) expect(semesterOf("math", id), id).toBe(2);
+  });
+});

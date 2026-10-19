@@ -98,7 +98,7 @@ describe("elective courses", () => {
     expect(st["math-h3-geo1"]).toBe("current");
   });
   it("semester assignments exist for the new grade topics", () => {
-    for (const [id, sem] of Object.entries({ "math-e2-dat1": 2, "math-e6-dat1": 1, "math-m1-neg1": 1, "math-m1-crd1": 2, "math-m2-rec1": 1, "math-m2-lfn1": 2 })) {
+    for (const [id, sem] of Object.entries({ "math-e2-dat1": 2, "math-e6-dat1": 1, "math-m1-neg1": 1, "math-m1-crd1": 1, "math-m2-rec1": 1, "math-m2-lfn1": 1 })) {
       expect(semesterOf("math", id), id).toBe(sem);
     }
   });
