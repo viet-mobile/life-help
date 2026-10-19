@@ -15,7 +15,7 @@ describe("thinking assets", () => {
       expect(hash(text)).toBe(r.hash);
       expect(JSON.parse(text)).toEqual(JSON.parse(readFileSync(r.source, "utf8")));
     }
-    expect(FILE_META.reduce((n, m) => n + m.count, 0)).toBe(1548); // 1,576 minus 23 duplicate tasks removed after the independent blind review
+    expect(FILE_META.reduce((n, m) => n + m.count, 0)).toBe(1732); // 1,576 - 28 duplicates removed after the blind review + 184 new high-school math tasks
     expect(readFileSync("lib/think/data/assets-index.ts", "utf8")).not.toMatch(/import\([^)]*\.json/);
   });
   it("fetches a pilot through the actual asset loader and retains review status", async () => {
