@@ -31,3 +31,18 @@ export function localize(task: ThinkTask, lang: ThinkLang, overlay: Overlay): Lo
  * surface checks are off there too (the self-assessment and the review notes carry the judgement).
  */
 export const checksOffFor = (task: ThinkTask, lang: ThinkLang): boolean => (task.subject === "math" && lang !== "ko") || (task.subject === "korean" && lang === "ko");
+
+/**
+ * Two languages side by side: every learner-facing string that differs between the two versions becomes "primary\nsecondary"
+ * (strings that are the same in both, such as Korean target text, stay single). Used for Korean level 4+ tasks: Korean first, the learner's language beneath.
+ */
+export function mergeBilingual(primary: ThinkTask, secondary: ThinkTask): ThinkTask {
+  const a = flatten(primary);
+  const b = flatten(secondary);
+  const m: Record<string, string> = {};
+  for (const [p, s] of Object.entries(a)) {
+    const o = b[p];
+    if (typeof o === "string" && o.trim() && s.trim() && o.trim() !== s.trim()) m[p] = `${s}\n${o}`;
+  }
+  return applyFlat(primary, m);
+}

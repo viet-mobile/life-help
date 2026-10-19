@@ -8,9 +8,9 @@ import { fieldInfo, fieldKeyOf, fieldList } from "@/lib/think/areas";
 import { hasThinkSemesters, inSemester } from "@/lib/think/semesters";
 import { gradeLabel } from "@/lib/think/grades";
 import { BOSS_TEXT, addTrophy, bossKey, bossKeyOf, bossProgress, finalBossFor, isFinalBoss, readTrophies, type Trophy } from "@/lib/think/bosses";
-import { KOREAN_LEVELS, isLevelCode, koreanLevelOf, levelCode, levelFromCode, levelName, priorLevelFor } from "@/lib/think/korean-levels";
-import { thinkLangFor, type ThinkLang } from "@/lib/think/lang";
-import { checksOffFor, loadOverlay, localize } from "@/lib/think/localize";
+import { KOREAN_FIRST_TEXT, KOREAN_LEVELS, isKoreanFirst, isLevelCode, koreanLevelOf, levelCode, levelFromCode, levelName, priorLevelFor } from "@/lib/think/korean-levels";
+import { LANG_NAMES, thinkLangFor, type ThinkLang } from "@/lib/think/lang";
+import { checksOffFor, loadOverlay, localize, mergeBilingual } from "@/lib/think/localize";
 import { siteConfig } from "@/lib/learn/sites";
 import { schoolLevel, type Grade } from "@/lib/learn/types";
 import type { ThinkTask } from "@/lib/think/types";
@@ -45,6 +45,9 @@ export function ThinkHub() {
   const [retry, setRetry] = useState(0);
   const [tasks, setTasks] = useState<ThinkTask[]>([]);
   const [overlay, setOverlay] = useState<Record<string, Record<string, string>>>({});
+  const [overlayKo, setOverlayKo] = useState<Record<string, Record<string, string>>>({}); // Korean version of the Korean-subject tasks (level 4+ shows it first)
+  const [bilingual, setBilingual] = useState(false);
+  useEffect(() => { try { setBilingual(window.localStorage.getItem("learn:think:bilingual") === "1"); } catch { /* storage unavailable */ } }, []);
   const [done, setDone] = useState<Record<string, string>>({});
   const [trophies, setTrophies] = useState<Record<string, Trophy>>({});
   const [won, setWon] = useState(false);
@@ -61,14 +64,15 @@ export function ThinkHub() {
   useEffect(() => { setDone(readDone(site)); setTrophies(readTrophies(site)); }, [site]);
   useEffect(() => {
     let live = true;
-    setTasks([]); setOverlay({}); setLoadError(false); setLoading(true);
+    setTasks([]); setOverlay({}); setOverlayKo({}); setLoadError(false); setLoading(true);
     const isElective = grade.startsWith("EL-");
     const level = site === "korean" ? levelFromCode(grade) : null; // Korean: tasks are grouped by language level (1-6급), whatever step they were written for
     const metas = FILE_META.filter((m) => m.subject === site && (level ? true : m.grades.includes(grade) || (!isElective && m.grades.length === 0)));
     void Promise.all(metas.map((m) => TASK_LOADERS[m.key]())).then(async (lists) => {
       const all = lists.flat().filter((t) => (level ? koreanLevelOf(t.id) === level : t.grade ? t.grade === grade : !isElective && t.level === bandOf(grade)));
       const o = await loadOverlay(lang, metas.map((m) => m.key));
-      if (live) { setTasks(all); setOverlay(o); setLoading(false); }
+      const ok = site === "korean" && lang !== "ko" ? await loadOverlay("ko", metas.map((m) => m.key)) : {};
+      if (live) { setTasks(all); setOverlay(o); setOverlayKo(ok); setLoading(false); }
     }).catch(() => { if (live) { setLoadError(true); setLoading(false); } });
     return () => { live = false; };
   }, [site, grade, lang, retry]);
@@ -102,9 +106,24 @@ export function ThinkHub() {
   const order = shown.map((x) => x.task.id);
   const nextId = current ? (order.slice(order.indexOf(current.task.id) + 1).find((id) => !done[id]) ?? order.find((id) => id !== current.task.id && !done[id]) ?? null) : null;
   if (current) {
+    // Korean level 4+: the instructions are shown in Korean (reading them is practice); the learner's language can be shown beside them
+    const raw = tasks.find((t) => t.id === current.task.id);
+    const koItem = site === "korean" && lang !== "ko" && raw && isKoreanFirst(raw.id) ? localize(raw, "ko", overlayKo) : null;
+    const koFirst = !!koItem?.translated;
+    const playTask = koFirst ? (bilingual ? mergeBilingual(koItem!.task, current.task) : koItem!.task) : current.task;
+    const KF = KOREAN_FIRST_TEXT[lang];
     return (
-      <div className="l-wrap l-stack" data-testid="think-player">
-        <TaskPlayer key={`${current.task.id}:${lang}`} task={current.task} lang={lang} checksOff={checksOffFor(current.task, lang)} reviewer={false}
+      <div className="l-wrap l-stack" data-testid="think-player" style={{ whiteSpace: "pre-line" }}>
+        {koFirst && (
+          <div className="l-panel l-panel-hint" data-testid="korean-first-bar" style={{ whiteSpace: "normal" }}>
+            <p>{KF.note}</p>
+            <label style={{ display: "inline-flex", alignItems: "center", gap: 8, marginTop: 8, fontWeight: 700 }}>
+              <input type="checkbox" data-testid="bilingual-toggle" checked={bilingual} onChange={(e) => { setBilingual(e.target.checked); try { window.localStorage.setItem("learn:think:bilingual", e.target.checked ? "1" : "0"); } catch { /* storage unavailable */ } }} />
+              {KF.toggle(LANG_NAMES[lang])}
+            </label>
+          </div>
+        )}
+        <TaskPlayer key={`${current.task.id}:${lang}`} task={playTask} lang={lang} checksOff={checksOffFor(playTask, lang)} reviewer={false}
           onBack={() => router.push(href("/think"))} onNext={nextId ? () => router.push(href(`/think?task=${encodeURIComponent(nextId)}`)) : undefined} onFlag={() => undefined}
           onComplete={() => { const d = { ...readDone(site), [current.task.id]: new Date().toISOString() }; writeDone(site, d); setDone(d); try { window.localStorage.setItem(flowKey(site), JSON.stringify(taskCompleted(readLedger(site), current.task.id))); } catch { /* storage unavailable */ } if (isFinalBoss(current.task.id)) { addTrophy(site, current.task.id); setTrophies(readTrophies(site)); setWon(true); } }} />
       </div>

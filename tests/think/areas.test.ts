@@ -149,3 +149,55 @@ describe("learner view shows only translated parts", () => {
     expect(src).toContain("{reviewer && <p><b>{L.curriculum}:</b>");           // info panel: curriculum note
   });
 });
+
+describe("Korean level 4+ shows Korean instructions, optionally beside the learner's language", async () => {
+  const { mergeBilingual, localize } = await import("@/lib/think/localize");
+  const { isKoreanFirst, KOREAN_FIRST_LEVEL, KOREAN_FIRST_TEXT, koreanLevelOf } = await import("@/lib/think/korean-levels");
+  it("level 4+ tasks are Korean-first, levels 1-3 are not", async () => {
+    expect(KOREAN_FIRST_LEVEL).toBe(4);
+    let hi = 0, lo = 0;
+    for (const m of FILE_META.filter((x) => x.subject === "korean")) for (const t of await TASK_LOADERS[m.key]()) { if (isKoreanFirst(t.id)) { hi++; expect(koreanLevelOf(t.id)!).toBeGreaterThanOrEqual(4); } else lo++; }
+    expect(hi).toBeGreaterThan(50);
+    expect(lo).toBeGreaterThan(50);
+    for (const l of ["en", "zh-Hans", "zh-Hant", "ja", "vi"] as const) { expect(KOREAN_FIRST_TEXT[l].toggle("X")).toContain("X"); expect(KOREAN_FIRST_TEXT[l].note.length).toBeGreaterThan(10); }
+  });
+  it("a Korean-first task has a complete Korean version, and the merge puts Korean first and keeps shared text single", async () => {
+    // overlay files read straight from disk (the app loads them as static assets)
+    const fs = await import("node:fs");
+    const readOverlay = (lang: string) => {
+      const o: Record<string, Record<string, string>> = {};
+      for (const f of fs.readdirSync(`lib/think/i18n/${lang}`)) if (f.startsWith("korean")) Object.assign(o, JSON.parse(fs.readFileSync(`lib/think/i18n/${lang}/${f}`, "utf8")));
+      return o;
+    };
+    const ko = readOverlay("ko");
+    const vi = readOverlay("vi");
+    const missing: string[] = [];
+    let checked = 0;
+    for (const m of FILE_META.filter((x) => x.subject === "korean")) for (const t of await TASK_LOADERS[m.key]()) {
+      if (!isKoreanFirst(t.id)) continue;
+      const k = localize(t, "ko", ko);
+      if (!k.translated) { missing.push(t.id); continue; }
+      const v = localize(t, "vi", vi);
+      if (!v.translated) continue;
+      const both = mergeBilingual(k.task, v.task);
+      if (checked++ === 0) { expect(both.material.startsWith(k.task.material.split("\n")[0])).toBe(true); expect(both.material).toContain(v.task.material.split("\n")[0].slice(0, 12)); }
+      expect(both.steps.length).toBe(t.steps.length);
+    }
+    // known gaps: these have no complete Korean version yet, so they stay in the learner's language (the player falls back); the list only shrinks
+    const KNOWN_NO_KO = new Set(["k-10", "k-11", "z-k-01-05", "z-k-01-06", "z-k-01-07", "z-k-01-08", "z-k-01-09", "z-k-01-10", "z-k-01-11", "z-k-01-12"]);
+    expect(missing.filter((id) => !KNOWN_NO_KO.has(id))).toEqual([]);
+    expect(checked).toBeGreaterThan(10);
+  });
+});
+
+describe("hub wiring for Korean-first tasks", () => {
+  it("loads the Korean overlay, shows the toggle for level 4+, and does not reset the player when toggled", async () => {
+    const fs = await import("node:fs");
+    const src = fs.readFileSync("components/think/ThinkHub.tsx", "utf8");
+    expect(src).toContain('loadOverlay("ko"');
+    expect(src).toContain("isKoreanFirst(raw.id)");
+    expect(src).toContain('data-testid="bilingual-toggle"');
+    expect(src).toContain("mergeBilingual(koItem!.task, current.task)");
+    expect(src).toContain("key={`${current.task.id}:${lang}`}"); // the key does not include the toggle: switching keeps the learner's progress in the task
+  });
+});

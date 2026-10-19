@@ -24,3 +24,15 @@ const NAMES: Record<ThinkLang, string[]> = {
   vi: ["Cấp 1 · Sơ cấp 1", "Cấp 2 · Sơ cấp 2", "Cấp 3 · Trung cấp 1", "Cấp 4 · Trung cấp 2", "Cấp 5 · Cao cấp 1", "Cấp 6 · Cao cấp 2"],
 };
 export const levelName = (n: number, lang: ThinkLang): string => NAMES[lang][n - 1] ?? `L${n}`;
+
+/** From this level on, Korean-subject tasks show their instructions in Korean (the learner's language can be shown beside it): reading the instructions is part of the practice. */
+export const KOREAN_FIRST_LEVEL = 4;
+export const isKoreanFirst = (taskId: string): boolean => (koreanLevelOf(taskId) ?? 0) >= KOREAN_FIRST_LEVEL;
+export const KOREAN_FIRST_TEXT: Record<ThinkLang, { toggle: (name: string) => string; note: string }> = {
+  ko: { toggle: () => "", note: "" },
+  en: { toggle: (n) => `Also show ${n}`, note: "From level 4 the instructions are in Korean. You can show your language next to them." },
+  "zh-Hans": { toggle: (n) => `同时显示${n}`, note: "从4级开始，指示语为韩语。可以同时显示你的语言。" },
+  "zh-Hant": { toggle: (n) => `同時顯示${n}`, note: "從4級開始，指示語為韓語。可以同時顯示你的語言。" },
+  ja: { toggle: (n) => `${n}も表示`, note: "4級からは指示文が韓国語になります。あなたの言語も一緒に表示できます。" },
+  vi: { toggle: (n) => `Hiện kèm ${n}`, note: "Từ cấp 4, phần hướng dẫn hiển thị bằng tiếng Hàn. Bạn có thể bật hiển thị kèm ngôn ngữ của mình." },
+};
