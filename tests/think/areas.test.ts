@@ -118,3 +118,14 @@ describe("player actions after the last step", async () => {
     expect(labels("ko").nextTask).toContain("다음");
   });
 });
+
+describe("learner view hides internal codes", () => {
+  it("the player only shows the id / format line to reviewers", async () => {
+    const fs = await import("node:fs");
+    const src = fs.readFileSync("components/think/ThinkPlayer.tsx", "utf8");
+    expect(src).toContain('{reviewer ? `${task.id} · ` : ""}');
+    expect(src).toContain('{reviewer ? ` · ${task.format}` : ""}');
+    expect(src).not.toMatch(/\{task\.id\} · \{task\.levelLabel\}/);
+    expect(src).toContain("{reviewer ? s.id : i + 1}");
+  });
+});

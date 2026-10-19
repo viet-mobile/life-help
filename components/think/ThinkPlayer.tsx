@@ -23,7 +23,8 @@ export function TaskPlayer({ task, lang, checksOff = false, reviewer, onBack, on
   return (
     <main className="mx-auto max-w-3xl px-4 py-6 text-slate-900" data-testid="think-task" data-task={task.id} lang={task.uiLang}>
       <button onClick={onBack} className="text-sm font-bold underline">{L.back}</button>
-      <p className="mt-3 text-xs font-bold text-slate-500">{task.id} · {task.levelLabel} · ≈{task.minutes}{L.minutes} · {task.format}</p>
+      {/* internal codes (id, format) are shown to reviewers only */}
+      <p className="mt-3 text-xs font-bold text-slate-500" data-testid="task-meta">{reviewer ? `${task.id} · ` : ""}{task.levelLabel} · ≈{task.minutes}{L.minutes}{reviewer ? ` · ${task.format}` : ""}</p>
       <h1 className="text-2xl font-black">{task.title}</h1>
       {task.status === "draft" && <p className="mt-1 rounded-lg bg-amber-50 p-2 text-xs font-bold text-amber-800" data-testid="draft-note">🟡 {shownLang === "ko" ? "초안: 자동 검증만 통과했고 독립 검토 전이에요." : "Draft: passed the automatic validator only; not independently reviewed yet."}</p>}
       <p className="mt-2 text-sm" data-testid="prereq"><b>{L.prereq}:</b> {task.prerequisites.join("; ")}</p>
@@ -48,7 +49,7 @@ export function TaskPlayer({ task, lang, checksOff = false, reviewer, onBack, on
               onNext={() => setAt((a) => Math.max(a, i + 1))} resolved={done[s.id]} />
           ))}
           {finished && <Actions L={L} onNext={onNext} onBack={onBack} where="top" />}
-          {finished && <Summary task={task} L={L} done={done} />}
+          {finished && <Summary task={task} L={L} done={done} reviewer={reviewer} />}
           {finished && <Actions L={L} onNext={onNext} onBack={onBack} where="bottom" />}
         </div>
       )}
@@ -258,11 +259,11 @@ function RevealView({ step, L, onResult, onFlag }: SV & { step: RevealStep }) {
   );
 }
 
-function Summary({ task, L, done }: { task: ThinkTask; L: Labels; done: Record<string, string> }) {
+function Summary({ task, L, done, reviewer }: { task: ThinkTask; L: Labels; done: Record<string, string>; reviewer: boolean }) {
   return (
     <section className="grid gap-3 rounded-2xl border-2 border-slate-900 p-4" data-testid="summary">
       <h2 className="text-lg font-black">{L.summary}</h2>
-      <ul className="text-sm">{task.steps.map((s) => <li key={s.id}>{done[s.id] === "auto" ? "✅" : done[s.id] === "skipped" ? "⏭" : "◐"} {s.id}: {done[s.id] === "auto" ? L.matchT : done[s.id] === "skipped" ? L.skip : L.needsHuman}</li>)}</ul>
+      <ul className="text-sm">{task.steps.map((s, i) => <li key={s.id}>{done[s.id] === "auto" ? "✅" : done[s.id] === "skipped" ? "⏭" : "◐"} {reviewer ? s.id : i + 1}: {done[s.id] === "auto" ? L.matchT : done[s.id] === "skipped" ? L.skip : L.needsHuman}</li>)}</ul>
       <div><b>{L.autoVs}</b><ul className="list-disc pl-5 text-sm"><li><u>auto</u>: {task.autoVsHuman.auto.join("; ")}</li><li><u>human</u>: {task.autoVsHuman.human.join("; ")}</li></ul></div>
       <div><b>{L.rubric}</b>
         <table className="mt-1 w-full border text-xs"><thead><tr><th className="border p-1" /><th className="border p-1">{L.full}</th><th className="border p-1">{L.partial}</th><th className="border p-1">{L.none}</th></tr></thead>
