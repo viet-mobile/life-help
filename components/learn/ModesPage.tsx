@@ -9,13 +9,16 @@ import { NEEDS_AUDIO, REVIEW_MODES, type ReviewMode } from "@/lib/learn/reviewMo
  * (progress, SRS and rewards are the ordinary ones: a wrong answer, hint or retry earns what it always earns). Modes that need sound say so.
  */
 export function ModesPage() {
-  const { t, href } = useLearner();
+  const { t, href, site } = useLearner();
+  // Math: only "pick from the options" is offered (no listening, ordering, dictation or flashcards)
+  const modes: readonly ReviewMode[] = site === "math" ? ["choice"] : REVIEW_MODES;
+  const onlyChoice = site === "math";
   return (
     <main className="l-stack">
       <h1 className="l-h1">{t("modes.title")}</h1>
-      <p className="l-muted">{t("modes.intro")}</p>
+      {!onlyChoice && <p className="l-muted">{t("modes.intro")}</p>}
       <ul className="l-stack" style={{ listStyle: "none", padding: 0 }}>
-        {REVIEW_MODES.map((m: ReviewMode) => (
+        {modes.map((m: ReviewMode) => (
           <li key={m} className="l-card l-stack">
             <h2 className="l-h2">{t(`modes.${m}`)}</h2>
             <p>{t(`modes.${m}.desc`)}</p>
@@ -23,13 +26,13 @@ export function ModesPage() {
             <Link className="l-btn" href={href(`/practice?kind=practice&mode=${m}`)}>{t("modes.start")}</Link>
           </li>
         ))}
-        <li className="l-card l-stack">
+        {!onlyChoice && <li className="l-card l-stack">
           <h2 className="l-h2">{t("modes.cards")}</h2>
           <p>{t("modes.cards.desc")}</p>
           <Link className="l-btn" href={href("/cards")}>{t("modes.start")}</Link>
-        </li>
+        </li>}
       </ul>
-      <p className="l-muted">{t("modes.noSound")}</p>
+      {!onlyChoice && <p className="l-muted">{t("modes.noSound")}</p>}
     </main>
   );
 }

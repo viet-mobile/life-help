@@ -210,3 +210,13 @@ describe("draft note", () => {
     expect(src).not.toMatch(/\{task\.status === "draft" &&/);
   });
 });
+
+describe("math review modes", () => {
+  it("math offers only 'pick from the options'; English and Korean keep every mode", async () => {
+    const fs = await import("node:fs");
+    const src = fs.readFileSync("components/learn/ModesPage.tsx", "utf8");
+    expect(src).toContain('site === "math" ? ["choice"] : REVIEW_MODES');
+    expect(src).toContain("{!onlyChoice && <li");
+    expect(src).toContain("{!onlyChoice && <p");
+  });
+});
