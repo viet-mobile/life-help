@@ -1,0 +1,4514 @@
+{
+  "reviewType": "independent AI semantic review of root-authored PCM drafts",
+  "scope": {
+    "sentenceMeanings": [
+      200,
+      349
+    ],
+    "grammarRules": [
+      60,
+      79
+    ],
+    "reviewedMeanings": 150,
+    "reviewedRules": 20
+  },
+  "nativeTeacherApproval": false,
+  "method": "Read each Korean source, every supplied English target and full context record, and current PCM wording. Judgments below are semantic, not substitutes for hash/structure checks. Context-dependent zero-marked Pidgin past and natural family-title possession were not automatically rejected.",
+  "targetFilesModified": false,
+  "items": [
+    {
+      "kind": "meanings",
+      "index": 200,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "그는 어젯밤에 나에게 전화하지 않았어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "924b30adef10c2687f61fc6c036883c47c6a620c027d33389eb1a72c9eeb4da1",
+      "contextHash": "ca1a4e6dbae8ccd57ceb188ff4a12f7692e2da803ecc97a7e58bec234adfcdaf",
+      "targetHash": "deebc29722729ac62ff707374b730f69719706914828ca6080eb2cc2521e219b",
+      "translation": "E no call me last night.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Last-night negative calling event, first-person recipient and third-person actor retained; E adds no new gender.",
+      "contexts": [
+        {
+          "itemId": "7846d39e",
+          "skillId": "e.e4.qneg",
+          "englishTarget": "He didn't call me last night.",
+          "koreanMeaning": "그는 어젯밤에 나에게 전화하지 않았어요.",
+          "rule": "last night처럼 지난 일을 부정할 때는 didn't + 동사원형을 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 201,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "도서관은 일요일에 문을 여니?",
+      "sourceLanguage": "ko",
+      "sourceHash": "e0b46cd16540fe4a3e3d932c6d60155b5139d5f52fbd01d61ecd759a7abb6ea1",
+      "contextHash": "dc8782d48e19a68910bbf4d05a1da64c51f4372accf22916de6260560bc28f72",
+      "targetHash": "95d9c5687afa7a0d9f6e630120bc39ee51f5bf088d54799cb35b34f5af7e786f",
+      "translation": "Library dey open on Sunday dem?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Sunday recurring library opening remains a question; dem marks repeated Sundays.",
+      "contexts": [
+        {
+          "itemId": "a1984f47",
+          "skillId": "e.e4.qneg",
+          "englishTarget": "Does the library open on Sundays?",
+          "koreanMeaning": "도서관은 일요일에 문을 여니?",
+          "rule": "주어가 3인칭 단수일 때 Does로 묻고 동사는 원형이에요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 202,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "오늘 우산이 필요할까요?",
+      "sourceLanguage": "ko",
+      "sourceHash": "7731cf5ac1482896a2124d7d49ec89a4c5c9cafcf9d4e262ee982b029a6b704c",
+      "contextHash": "5176556b04ef6b49f1ecc2045ccb6629630a812c1b7a04f36ee7946825d276fa",
+      "targetHash": "0d86933cbb5f41340e0daea0967cb87f6fd10900410725769e5b8a122e4a3fff",
+      "translation": "I need umbrella today?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Today's umbrella need remains a question; first-person need matches English target.",
+      "contexts": [
+        {
+          "itemId": "52cae718",
+          "skillId": "e.e4.qneg",
+          "englishTarget": "Do I need an umbrella today?",
+          "koreanMeaning": "오늘 우산이 필요할까요?",
+          "rule": "주어가 I일 때 일반동사 질문은 Do로 시작해요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 203,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "미아는 오늘 학교에 없어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "1166b3750711cce21bbe9c4f3518199f5a2c86e1c2124425733ac6d43aa10780",
+      "contextHash": "6d4c9b70a97d51e2a7f4c5a7ea1481a81d37eb3a59d421c79ad915078478e9a9",
+      "targetHash": "b8ddb618f610c2044e548851fa9a84620b780ecf20df8e1bd40aef21fa8314d0",
+      "translation": "Mia no dey school today.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Mia's absence at school today retained; no gender is inferred from the name.",
+      "contexts": [
+        {
+          "itemId": "a0077fc9",
+          "skillId": "e.e4.qneg",
+          "englishTarget": "Mia isn't at school today.",
+          "koreanMeaning": "미아는 오늘 학교에 없어요.",
+          "rule": "be동사(is)의 부정은 isn't예요. 일반동사가 없으므로 doesn't를 쓰지 않아요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 204,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "너는 아침으로 뭘 먹었니?",
+      "sourceLanguage": "ko",
+      "sourceHash": "695a298d850fc30e9ebaa723a9d2571eb0223e3aa6804ee0ebe2189c79e9901a",
+      "contextHash": "fc151a969ef93ebc7d76694940b7306819a2a7e5aef0f1af5c3f1b65eeae9d66",
+      "targetHash": "a255df4e79a916119bc14364fa3ff710dffaeaf814ae9589d48f988bb6f2fb3b",
+      "translation": "Wetin you chop for morning food?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Breakfast consumption question retained; no new food or actor added.",
+      "contexts": [
+        {
+          "itemId": "a906430b",
+          "skillId": "e.e4.qneg",
+          "englishTarget": "What did you eat for breakfast?",
+          "koreanMeaning": "너는 아침으로 뭘 먹었니?",
+          "rule": "did 뒤에는 동사원형을 써요. ate를 쓰지 않아요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 205,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "너희 할머니는 바다 가까이에 사시니?",
+      "sourceLanguage": "ko",
+      "sourceHash": "bbd7539947c254fdfcb345212e3e0c62d622fecb5791e1cb89654a5a8ad44e0f",
+      "contextHash": "ceadfa6477c0ab536e893421eb9874fb9c1600d0a4be4930429624e75a9b9ae0",
+      "targetHash": "fc20c403502b4299d5380b1a3525ea8038ec0b108c9dd8d3f56aa90a65375d49",
+      "translation": "Your grandmama dey live near sea?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Addressee's grandmother, residence and nearness to sea retained.",
+      "contexts": [
+        {
+          "itemId": "76597f37",
+          "skillId": "e.e4.qneg",
+          "englishTarget": "Does your grandmother live near the sea?",
+          "koreanMeaning": "너희 할머니는 바다 가까이에 사시니?",
+          "rule": "3인칭 단수 주어(your grandmother)의 일반동사 질문은 Does로 시작해요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 206,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "나는 새 필통이 있어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "dbb94c9148e94be5754ea83c8f6d8c362b2a1e1044739f087d36b940be5a1efc",
+      "contextHash": "28fe3d6fd9a34ac3217a86a2c1586f0b715870cdc4835be69a46970bc1cd0411",
+      "targetHash": "e40718d291d865f41c93cbf5427fd6ed843cf28c38cfba20d852ceeb42d460bd",
+      "translation": "I get new pencil case.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "First-person possession of a new pencil case retained.",
+      "contexts": [
+        {
+          "itemId": "b8d09fe0",
+          "skillId": "e.e4.adj",
+          "englishTarget": "I have a new pencil case.",
+          "koreanMeaning": "나는 새 필통이 있어요.",
+          "rule": "형용사는 명사 바로 앞에 놓여 명사를 꾸며요. a와 명사 사이에 형용사를 넣어요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 207,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "수프가 뜨거워요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "8979046201dbdd7b1f9fdb6cbd225485fa611825cc2a79d725e226464611db16",
+      "contextHash": "16cd500a7628b13d019cad64f4e8b3c74e4c9cf54a069dc27838659ff9ee7074",
+      "targetHash": "d91525bc9322080a22240d1101b07d96e56abf135ac5f9505a0fbc40b437e3a8",
+      "translation": "Soup hot.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Soup temperature remains hot, not spicy or emotionally hot.",
+      "contexts": [
+        {
+          "itemId": "73b22a1f",
+          "skillId": "e.e4.adj",
+          "englishTarget": "The soup is hot.",
+          "koreanMeaning": "수프가 뜨거워요.",
+          "rule": "주어를 설명하는 형용사 앞에는 be동사가 필요해요. soup는 3인칭 단수라서 is를 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 208,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "이것은 오래된 집이에요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "d277c4d729291e84fe3a9eeef0d37f0b76e6e1f927d888734e749df9789848c5",
+      "contextHash": "078c4687d481c57eaecb7ac866c3e6d6e3e21563a11367a97570f3252ed3a67a",
+      "targetHash": "bcd58ca07a85d716c57519a98db1cdbb22a039f3293c0e388817a21a95584923",
+      "translation": "Dis na old house.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "This old-house identity retained; deictic Dis and old state match.",
+      "contexts": [
+        {
+          "itemId": "f22e9b62",
+          "skillId": "e.e4.adj",
+          "englishTarget": "This is an old house.",
+          "koreanMeaning": "이것은 오래된 집이에요.",
+          "rule": "모음 소리로 시작하는 형용사(old) 앞에는 a 대신 an을 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 209,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "그 케이크는 아주 달콤해요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "461e0b14415e3251394019cfeb422fc6f7249435f9c1666fbbfebd6f7c617180",
+      "contextHash": "f169b137625ae739a7d4f54ad40052b32afa2c7cf6ea706c807b2ccecddb2cee",
+      "targetHash": "c19ead34a8ba0d340094deac9e6c8e9f2e079f666171a6f475c927e6c0df6dff",
+      "translation": "Dat cake sweet well-well.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "That cake and strong sweetness retained by Dat and well-well.",
+      "contexts": [
+        {
+          "itemId": "5b516f18",
+          "skillId": "e.e4.adj",
+          "englishTarget": "The cake is very sweet.",
+          "koreanMeaning": "그 케이크는 아주 달콤해요.",
+          "rule": "very는 형용사 바로 앞에서 '아주'라는 뜻으로 정도를 나타내요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 210,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "나는 오늘 피곤해요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "573c9acbbb21883acf95f95dee48646fdc4aec5ce47725e0c69993fbd78e82c8",
+      "contextHash": "ca1bbff15f57322aaa91fa16ee033329c99cf358ca69dff70873ce78b399a258",
+      "targetHash": "562cfd74731d7d36f73006c188d0013ef614b717c1bff837b9bd12e6470622d3",
+      "translation": "I tire today.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Today's first-person tired state retained.",
+      "contexts": [
+        {
+          "itemId": "943a3221",
+          "skillId": "e.e4.adj",
+          "englishTarget": "I feel tired today.",
+          "koreanMeaning": "나는 오늘 피곤해요.",
+          "rule": "feel 뒤에는 기분을 나타내는 형용사가 와요. 부사(-ly)나 명사 형태는 쓰지 않아요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 211,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "그녀는 다리가 길어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "60cd6429d47d17c4ab97191450252326da2d1743a9503136d8e93c7a8ae3a15f",
+      "contextHash": "08af035136366115f888eacf037d8b56b933eddc78463367aa76c0e761321851",
+      "targetHash": "c58c9ea78625020262e0cc3a6115593d6799a7f3fe4f0c0f7bd47ef31d2085dc",
+      "translation": "Her leg dem long.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Female referent's long plural legs retained; source explicitly supplies 그녀/She.",
+      "contexts": [
+        {
+          "itemId": "6016c843",
+          "skillId": "e.e4.adj",
+          "englishTarget": "She has long legs.",
+          "koreanMeaning": "그녀는 다리가 길어요.",
+          "rule": "형용사는 명사가 복수여도 모양이 변하지 않아요. long에는 s를 붙이지 않아요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 212,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "그녀는 작은 빨간 가방을 가지고 있어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "f242638200227ce3dc62acbd66840cabcff8f0b62961c8b8dd2c340ef7dc1396",
+      "contextHash": "233f4e2c01f3dd87eaa8263aa2ff7983a670407e7bee27222185a5c13f80f123",
+      "targetHash": "a5a9ac2c906cb3b8a6184eefaad8864402aed0be550524f66e24329a8df3b415",
+      "translation": "She get small red bag.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Female possessor, one small red bag and adjective meanings retained.",
+      "contexts": [
+        {
+          "itemId": "91c8f3e7",
+          "skillId": "e.e4.adj",
+          "englishTarget": "She has a small red bag.",
+          "koreanMeaning": "그녀는 작은 빨간 가방을 가지고 있어요.",
+          "rule": "형용사는 명사 바로 앞에 와요. a 다음에 형용사(small, red)를 쓰고, 가방이 한 개이므로 명사는 bag으로 단수로 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 213,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "새끼 고양이들은 아주 작아요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "f6d150646771b2d67662e2ee4e96da9c4ca2eaf1399e6d7004f117eed372d6ab",
+      "contextHash": "dcd002213e2cfc9cb80950b241076c6960c3b3ff5ea69dc2e80ee530b79ad1cc",
+      "targetHash": "fb9e7097a68d06c38d3b9539508965890b3837713a21cf291847ccd52a40d869",
+      "translation": "Di kitten dem small well-well.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Plural kittens and very small size retained by dem and well-well.",
+      "contexts": [
+        {
+          "itemId": "fc3dc87c",
+          "skillId": "e.e4.adj",
+          "englishTarget": "The kittens are very small.",
+          "koreanMeaning": "새끼 고양이들은 아주 작아요.",
+          "rule": "복수 주어(kittens)에는 are를 쓰고, 형용사에는 -s를 붙이지 않아요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 214,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "오늘 기분이 어때요?",
+      "sourceLanguage": "ko",
+      "sourceHash": "3462e8403fe2d2cacf1b73cdb0718540e8814665e7ef6176c92af44d3db67c3e",
+      "contextHash": "38acd7a033f113b74d9336d57a11f100736b88432bf5589aa9961087a8706713",
+      "targetHash": "b6d5f4f8ba2ec476f335f4ff35aad11134013711f66a80d5150fa9bc8f37250e",
+      "translation": "How you dey feel today?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Question asks today's feeling, not weather.",
+      "contexts": [
+        {
+          "itemId": "7933a2e1",
+          "skillId": "e.e4.adj",
+          "englishTarget": "How do you feel today?",
+          "koreanMeaning": "오늘 기분이 어때요?",
+          "rule": "기분을 물을 때는 How do you feel?이라고 해요. feel 앞에 do를 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 215,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "오늘 날씨는 어때요?",
+      "sourceLanguage": "ko",
+      "sourceHash": "cfe5ed041f658f7248534b77fa8e0c6f05ab29921b5754b96a140136621d55ca",
+      "contextHash": "00902be1031013899d190d62d9413ab7e9c07b4184c1a921179cbab304180cc2",
+      "targetHash": "e2c60a8ebe81620f49f738d236c1d670660fd12f69959cf25a976facc771618e",
+      "translation": "How weather be today?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Question asks today's weather, not personal mood.",
+      "contexts": [
+        {
+          "itemId": "fa1fae1a",
+          "skillId": "e.e4.adj",
+          "englishTarget": "What is the weather like today?",
+          "koreanMeaning": "오늘 날씨는 어때요?",
+          "rule": "What is ... like?는 모습이나 상태를 묻는 표현이에요. like 뒤에는 -s를 붙이지 않아요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 216,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "할머니 댁은 밤에 조용해요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "96d1e2a66e239db74707314bb22525193b3b631eff5d05ee7d5d8091ea936b5f",
+      "contextHash": "1f679c442d8ee2f670db2e212d2dd783ce7f920456a7b66dc8e2f1cdba32da8e",
+      "targetHash": "529fbba32e527a8825a503ac67840a1739b742ba52966692c92a0e2a3f63a650",
+      "translation": "Grandmama house quiet for night.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Nighttime quiet at grandmother's home retained, but first-person ownership is no longer explicit.",
+      "contexts": [
+        {
+          "itemId": "fe84efdc",
+          "skillId": "e.e4.adj",
+          "englishTarget": "My grandmother's house is quiet at night.",
+          "koreanMeaning": "할머니 댁은 밤에 조용해요.",
+          "rule": "be동사(is) 뒤에서 상태를 말할 때는 형용사(quiet)를 써요. 소유는 's로 나타내요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval.",
+      "contextNote": "Family-title/deictic possession is natural in context. Korean 우리 may idiomatically mean my; our is not by itself proof of a wrong number of owners. No correction required solely from literal Korean/English owner variation."
+    },
+    {
+      "kind": "meanings",
+      "index": 217,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "나는 어둠이 무섭지 않아요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "d43ba28e538f75c7d4c5154c86ecbffdc3f2be41eeaac020a920ba6aadd898d7",
+      "contextHash": "fffe0bdccca87d3aa4066e4a2c86417705c5671602640c797736b5b3f4ede70c",
+      "targetHash": "bf09038ca12b902554d8ff9a7f7cfa6420041121ed8a71a20893704d68d757c8",
+      "translation": "I no dey fear darkness.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "First-person lack of fear of darkness retained; negative scope is correct.",
+      "contexts": [
+        {
+          "itemId": "3709c100",
+          "skillId": "e.e4.adj",
+          "englishTarget": "I am not afraid of the dark.",
+          "koreanMeaning": "나는 어둠이 무섭지 않아요.",
+          "rule": "'~이 무섭다'는 be afraid of ~로 말해요. 부정은 am not이에요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 218,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "이 수프는 냄새가 좋아요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "c358cb133ac729c57c0311bca7f10958630105025015ff612d39476f0fed7f0e",
+      "contextHash": "70e25806b09b7a869f181f7e151931cc3c974288344509e3ced45e1916ed47fd",
+      "targetHash": "8c6202963ef049bbb41fce70e2c10cc75498a4eb92fc61c06e713790ff173d84",
+      "translation": "Dis soup smell good.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "This soup's pleasant smell retained, without turning it into taste.",
+      "contexts": [
+        {
+          "itemId": "61f0fe27",
+          "skillId": "e.e4.adj",
+          "englishTarget": "This soup smells good.",
+          "koreanMeaning": "이 수프는 냄새가 좋아요.",
+          "rule": "냄새가 어떤지 말할 때는 smell 뒤에 형용사(good)를 써요. this soup은 한 개이므로 smells예요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 219,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "공은 상자 앞에 있어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "1f1b54cf2db68cda537b8b9dbb238944574268eb0cbc6fa340aedea5a742204b",
+      "contextHash": "82e83857b3d320002f43ee077bb324ebf13129fd428c69e0d797980f80802095",
+      "targetHash": "5d71bc19f39d607c9c3da18ea2b0c6a07a6526e7d3fcd7f8890cb852be48577a",
+      "translation": "Ball dey front of box.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Ball remains in front of box, without reversal.",
+      "contexts": [
+        {
+          "itemId": "9f3fd193",
+          "skillId": "e.e4.prep",
+          "englishTarget": "The ball is in front of the box.",
+          "koreanMeaning": "공은 상자 앞에 있어요.",
+          "rule": "'~ 앞에'는 in front of로 써요. of를 빠뜨리지 않도록 해요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 220,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "은행은 학교와 공원 사이에 있어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "5cbd843ce0f9ed02577b2b6966e7f5fa607e9a964767f7fa5bde5d9c8de9d5da",
+      "contextHash": "d58660496a2c3de39cea2f70c366f11d05009b6a5c086fd58e310990952f4a40",
+      "targetHash": "5cde3e3559cc3e94471f2ea63bff405878dd28985c2537d85c95068d3870f505",
+      "translation": "Bank dey between school and park.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Bank remains between school and park; both landmarks retained.",
+      "contexts": [
+        {
+          "itemId": "77000db3",
+          "skillId": "e.e4.prep",
+          "englishTarget": "The bank is between the school and the park.",
+          "koreanMeaning": "은행은 학교와 공원 사이에 있어요.",
+          "rule": "between은 'A and B' 형태로 두 대상 사이를 말해요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 221,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "연필은 책상 위에 있어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "272e4b910bc6619cb7bfaffab8c59798d3f1a3beeb9879decc6242ddefb8e395",
+      "contextHash": "f451f8c3829217a14c72bc93e8416738e9eabbb3e7dd180e3255c3237253ffe1",
+      "targetHash": "dc0be2df3d94157bda7240b742b51a180482b677d3452af4f4ed298f45a5dd67",
+      "translation": "Pencil dey on top desk.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Pencil remains on desk, not inside or under it.",
+      "contexts": [
+        {
+          "itemId": "82bb1d74",
+          "skillId": "e.e4.prep",
+          "englishTarget": "The pencil is on the desk.",
+          "koreanMeaning": "연필은 책상 위에 있어요.",
+          "rule": "장소를 나타내는 말 뒤에는 보통 the + 명사가 와요. on the desk처럼 쓰고 the를 빠뜨리지 않아요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 222,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "개는 문을 향해 달려요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "29ac215340a333f932f9419a74fbeb3bcce0ee5cb92e248a11f86d1ec9f6fb6a",
+      "contextHash": "bc9878a2ba1842892e066344c4646a77f00351c0855ee570d1e6bf53200de7e8",
+      "targetHash": "b3c9cade7dd6807b207642ff875ed336c271913820cf2a89fe66315071104276",
+      "translation": "Dog dey run towards gate.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Dog motion toward gate retained; Korean 문 is broader than English gate but does not reverse direction.",
+      "contexts": [
+        {
+          "itemId": "9f4b11ef",
+          "skillId": "e.e4.prep",
+          "englishTarget": "The dog runs toward the gate.",
+          "koreanMeaning": "개는 문을 향해 달려요.",
+          "rule": "toward는 '~을 향해'라는 뜻이고 to 없이 바로 장소가 와요. 주어가 The dog이면 동사에 s를 붙여요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 223,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "아이들이 나무 주위에 서 있어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "e75de5e95dea44d97f266dbe8d34b50862bbfc239b05e21694e805b2981a2b6f",
+      "contextHash": "3b3dfaa9d5c17865aaac86b67ff5f9b3fc17b69693e1374170a8f18d17edb400",
+      "targetHash": "16202b49f45bc1b2e97386930a44557269b4ba478f50aa8fbd7c3761f861f516",
+      "translation": "Di pikin dem dey stand round tree.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Plural children remain standing around tree.",
+      "contexts": [
+        {
+          "itemId": "9d226f3d",
+          "skillId": "e.e4.prep",
+          "englishTarget": "The children are standing around the tree.",
+          "koreanMeaning": "아이들이 나무 주위에 서 있어요.",
+          "rule": "around는 '~ 주위에'라는 뜻으로 뒤에 장소를 나타내는 명사가 바로 와요. 현재진행은 are + 동사ing예요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 224,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "그녀는 강을 따라 개와 함께 걸어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "d3dd1480014461c7a9391de074c6cd4385d769f8d96018fe700706879f1915bb",
+      "contextHash": "47f4d6d30b5196f5281614f1c310c1ca04f2e2bbd93778761584100097839f9c",
+      "targetHash": "0d224706d940ccabcac4fc199f115ace472dcb40d180bfbf6eb5c01b0778a484",
+      "translation": "She dey waka along river with dog.",
+      "hashBindingPass": true,
+      "verdict": "source_issue_hold",
+      "reason": "Female actor and river-walking companionship retained; English target's ownership of the dog is omitted.",
+      "contexts": [
+        {
+          "itemId": "431b6059",
+          "skillId": "e.e4.prep",
+          "englishTarget": "She walks along the river with her dog.",
+          "koreanMeaning": "그녀는 강을 따라 개와 함께 걸어요.",
+          "rule": "along은 '~을 따라'라는 뜻이고 to 없이 바로 장소가 와요. 주어가 She이면 동사에 s를 붙여요."
+        }
+      ],
+      "sourceIssue": "Korean says with a dog, with no explicit owner; English target says her dog. Current PCM follows broader Korean. Confirm owner alignment before applying proposed owner-preserving English-target patch.",
+      "suggestedPatch": {
+        "expectedSourceHash": "d3dd1480014461c7a9391de074c6cd4385d769f8d96018fe700706879f1915bb",
+        "expectedContextHash": "47f4d6d30b5196f5281614f1c310c1ca04f2e2bbd93778761584100097839f9c",
+        "expectedTargetHash": "0d224706d940ccabcac4fc199f115ace472dcb40d180bfbf6eb5c01b0778a484",
+        "translation": "She dey waka along river with her dog.",
+        "proposedTargetHash": "541f0db1df331d714f6a76763e791a0ecaf9140a4dda29fd15e260b12fbdea20",
+        "applyOnlyAfter": "source-author role/owner confirmation"
+      },
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 225,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "곧장 가서 모퉁이에서 왼쪽으로 도세요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "931ea15290de50d8312b486cedbc02619cc82ee4273d15d20494df82ce95ea41",
+      "contextHash": "498eeb6d348805ffc3e21a6b45c0174c0c3039d1098f89e036984fb952ca8b36",
+      "targetHash": "a708a8a10f9bfdd2847bf8f7fd47dc58ae020cc3b98cebece4492059f5879789",
+      "translation": "Go straight, come turn left for corner.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Straight movement then left turn at corner retained in order.",
+      "contexts": [
+        {
+          "itemId": "0c324e3d",
+          "skillId": "e.e4.prep",
+          "englishTarget": "Go straight and turn left at the corner.",
+          "koreanMeaning": "곧장 가서 모퉁이에서 왼쪽으로 도세요.",
+          "rule": "길 안내에서 ‘모퉁이에서 돌아라’는 turn left at the corner라고 해요. 명령문에는 -s를 붙이지 않아요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 226,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "박물관 앞에 버스 정류장이 있어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "162a11b5b3c72974f6e4dbc902aa33ffba05c82690a91878678aa6c17ea1d141",
+      "contextHash": "e55a3af6a201090cdae1e8c80374f81650b660a5016033474decffa706ac77bc",
+      "targetHash": "9efe783990f78216b5b7e0ddeb75757eaa141d530c4b137a025659ffd66b7c8b",
+      "translation": "Bus stop dey front of museum.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Bus stop remains in front of museum, not museum in front of stop.",
+      "contexts": [
+        {
+          "itemId": "9c964f4c",
+          "skillId": "e.e4.prep",
+          "englishTarget": "There is a bus stop in front of the museum.",
+          "koreanMeaning": "박물관 앞에 버스 정류장이 있어요.",
+          "rule": "하나(a bus stop)가 있을 때는 There is를 써요. ‘~ 앞에’는 in front of예요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 227,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "장난감 가게는 어디에 있어요?",
+      "sourceLanguage": "ko",
+      "sourceHash": "7566b758a1cdd13e69149d7f80ae714d967b05f0429a079dd8de8299301d49ee",
+      "contextHash": "d4a6201a166f521f80eb9dff315e62b80dc58ea7ce3614961ba1c7daacee93c1",
+      "targetHash": "aa712db92b16bb3eca34a78542451bc32fd4a3b259657695c3b0fe0833a32524",
+      "translation": "Where toy shop dey?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Toy-shop location question retained.",
+      "contexts": [
+        {
+          "itemId": "5ee63bda",
+          "skillId": "e.e4.prep",
+          "englishTarget": "Where is the toy shop?",
+          "koreanMeaning": "장난감 가게는 어디에 있어요?",
+          "rule": "장소를 물을 때는 Where 다음에 is와 주어를 차례로 써요. toy shop은 하나이므로 is예요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 228,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "실례합니다, 박물관에 어떻게 가나요?",
+      "sourceLanguage": "ko",
+      "sourceHash": "77e0a95ddf266750fd5d0d43a964c46bab38cea85df948347823845f3cd29e16",
+      "contextHash": "a8686c3373f8b6e9675b4712139ca9b7a6bf5f4fba788a712e0b58bb5aff80f6",
+      "targetHash": "267377bbab3d3e08d8208da5791e321f36f218d2a2687fc3103b484c77f49a07",
+      "translation": "Abeg, how I fit reach museum?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Polite museum route request retained; Abeg serves request politeness.",
+      "contexts": [
+        {
+          "itemId": "85a52a67",
+          "skillId": "e.e4.prep",
+          "englishTarget": "Excuse me, how can I get to the museum?",
+          "koreanMeaning": "실례합니다, 박물관에 어떻게 가나요?",
+          "rule": "get to ~는 ‘~에 도착하다, 가다’예요. 의문사 다음에는 can I의 순서로 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 229,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "그녀는 버스 정류장 근처에 살아요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "0e8cb8cf0532e543f7882717173b45b7c19995d6be5ac8cff55d438e60d486ca",
+      "contextHash": "698a801482f91a9724139544e8ea75065e756de08ef97b2cdc99b49069251918",
+      "targetHash": "33f2d222a4824c026f065380f81547ab6decb4f7768d5577805bfb623cafd9ed",
+      "translation": "She dey live near bus stop.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Female resident remains near bus stop.",
+      "contexts": [
+        {
+          "itemId": "9dc14403",
+          "skillId": "e.e4.prep",
+          "englishTarget": "She lives near the bus stop.",
+          "koreanMeaning": "그녀는 버스 정류장 근처에 살아요.",
+          "rule": "near는 그 자체로 ‘~ 가까이에’라는 뜻이라서 of를 붙이지 않아요. She는 한 명이므로 lives예요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 230,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "내 가방은 의자 아래에 있어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "5b8574ccfa6907aa1f4e541eec8d86dba0f8e6cd87693bfbed585fecce2d2f4f",
+      "contextHash": "a80428a3cd875149a331574a288692c07f1ff0ed14ed33c4f980734bd7d3a4d0",
+      "targetHash": "7392906c884d58dfbb5d6d3ab9d4ed53e70c9862ac7389279c49d467a558a19d",
+      "translation": "My bag dey under chair.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "First-person bag remains under chair.",
+      "contexts": [
+        {
+          "itemId": "72213a5b",
+          "skillId": "e.e4.prep",
+          "englishTarget": "My bag is under the chair.",
+          "koreanMeaning": "내 가방은 의자 아래에 있어요.",
+          "rule": "‘~ 아래에’는 under예요. 장소 말은 the chair 앞에 와요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 231,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "이 근처에 우체국이 있어요?",
+      "sourceLanguage": "ko",
+      "sourceHash": "ede9839bea064d6aecca778404ec10daa1dc7a648f3d09dcf7cbaeba1dbf8bc8",
+      "contextHash": "31f94c9b1377660b120fa83ceca1027cf27940b50e8a6b2445f34c1361240f1a",
+      "targetHash": "b7733abc0f688b1c48ee9e6772cfa3caf137647c46aea41906f7062b9d870409",
+      "translation": "Post office dey near here?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Nearby post-office existence question retained.",
+      "contexts": [
+        {
+          "itemId": "c08df9ad",
+          "skillId": "e.e4.prep",
+          "englishTarget": "Is there a post office near here?",
+          "koreanMeaning": "이 근처에 우체국이 있어요?",
+          "rule": "하나가 있는지 물을 때는 Is there a ~?를 써요. ‘이 근처에’는 near here예요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 232,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "진은 방과 후에 축구를 해요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "3eb13c240e11dd8e098a57f6aea233e335c052bd05c0e16c451209eecd823603",
+      "contextHash": "ff34f076f440648a0240a06a075497e8a730a72b189fcb00bf45c5f244ed0d16",
+      "targetHash": "b3206c0cc2fd9e51673ed4375e8ad2cca86e4aaae90d8c23bfd41bbe0a6460f8",
+      "translation": "Jin dey play football after school.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Jin's after-school football habit retained; no gender is introduced.",
+      "contexts": [
+        {
+          "itemId": "747fa837",
+          "skillId": "e.e4.read",
+          "englishTarget": "Jin plays soccer after school.",
+          "koreanMeaning": "진은 방과 후에 축구를 해요.",
+          "rule": "주어가 3인칭 단수(Jin)이면 현재형 동사에 -s를 붙여요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 233,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "그녀는 어디에 살아요?",
+      "sourceLanguage": "ko",
+      "sourceHash": "f72ae160b7805ef2e202aa5abe10942066d49416d68c46cc42df899f15077255",
+      "contextHash": "52985674be0d82909a84e5c1fe7757648b74dbefc3e4ab66e0cc935d80969755",
+      "targetHash": "59758cf71a6639c8d47f874a4e9b2c966a41c16819f14a4abd612908f2104f34",
+      "translation": "Where she dey live?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Female subject's residence location question retained.",
+      "contexts": [
+        {
+          "itemId": "195d35a2",
+          "skillId": "e.e4.read",
+          "englishTarget": "Where does she live?",
+          "koreanMeaning": "그녀는 어디에 살아요?",
+          "rule": "의문사 의문문은 의문사 + does/do + 주어 + 동사원형 순서예요. 주어가 she이면 does를 쓰고 동사는 원형(live)이에요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 234,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "나무에 새 두 마리가 있어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "d0a451487a87374c31c75ae1a433548b4f2c17bb18714340234b6cb91c07cde3",
+      "contextHash": "db03b8fec66383112648374ed495e9c8a3497235fa7f495bddb0894fce36f6fb",
+      "targetHash": "59c5224910e48a4db0c121fa3775518fc74f44b429607247a0e38c03f733f44b",
+      "translation": "Two bird dey for tree.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Exactly two birds remain in tree; Pidgin does not require English plural-s here.",
+      "contexts": [
+        {
+          "itemId": "a02b00da",
+          "skillId": "e.e4.read",
+          "englishTarget": "There are two birds in the tree.",
+          "koreanMeaning": "나무에 새 두 마리가 있어요.",
+          "rule": "복수 명사(two birds) 앞에서는 There are를 써요. 하나일 때는 There is예요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 235,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "내 남동생은 만화책 읽기를 좋아해요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "3f5b240b75ccea5b4dd2d5303d82d4d0ee05f8a1bc92a0f008f3f69f803e7aa0",
+      "contextHash": "729c1fc725567a9267c9e52fef4fa32d390c4426cf4fdb41ddbf2655bc6c24dd",
+      "targetHash": "d158405d9b02e8ea16c7cf83ff28110945f23543868503284b8c83979a481a33",
+      "translation": "My younger brother like to read comic book dem.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Younger male sibling and comic-reading preference retained; Korean age relation is more specific than English.",
+      "contexts": [
+        {
+          "itemId": "5f103e6e",
+          "skillId": "e.e4.read",
+          "englishTarget": "My brother likes to read comic books.",
+          "koreanMeaning": "내 남동생은 만화책 읽기를 좋아해요.",
+          "rule": "주어가 3인칭 단수이면 like에 -s를 붙여요. 'to + 동사원형'(to read)에서는 동사에 -s를 붙이지 않아요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 236,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "그녀는 오렌지 하나와 바나나 하나가 있어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "8d2387e1e6cc90c6d297adc8da5ba0c26d95e9a18f00985d39a37cf594a38497",
+      "contextHash": "a56fd97d58f652efe52ed0d0a3f0121ab5a845251a61cd902ff936d45755526a",
+      "targetHash": "5f030f5370588a05ec9d6ade7ca892586db1e41a8f0babe14d1775d9a7b603e1",
+      "translation": "She get one orange and one banana.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Female possessor has exactly one orange and one banana.",
+      "contexts": [
+        {
+          "itemId": "42674784",
+          "skillId": "e.e4.read",
+          "englishTarget": "She has an orange and a banana.",
+          "koreanMeaning": "그녀는 오렌지 하나와 바나나 하나가 있어요.",
+          "rule": "모음 소리로 시작하는 단어(orange) 앞에는 an을, 자음 소리로 시작하는 단어(banana) 앞에는 a를 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 237,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "우리는 보통 여섯 시에 저녁을 먹어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "d179e3ee026da02afcb1e2160263a379632262fde927cc69ddfdb760c3c31ba4",
+      "contextHash": "addccb44c14448eaf7a10e9481c6851a2764e40c1e4a93ba64b99953f81dc7d9",
+      "targetHash": "0effefdefa2dd06ca4d152a4a13c82c60515c371255da2f4dd7c71f60eda3b33",
+      "translation": "We dey normally chop evening food for six o'clock.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "First-person plural, habitual dinner and six o'clock retained.",
+      "contexts": [
+        {
+          "itemId": "d8717733",
+          "skillId": "e.e4.read",
+          "englishTarget": "We usually eat dinner at six.",
+          "koreanMeaning": "우리는 보통 여섯 시에 저녁을 먹어요.",
+          "rule": "빈도부사(usually)는 보통 일반동사 앞에 놓아요. 주어가 We이므로 동사에 -s를 붙이지 않아요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 238,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "그녀는 오렌지 한 개를 가지고 있어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "fdacaac69bfdc1af051d24e9e0040f52e78ce5095ab2c2a3e235794dd245c038",
+      "contextHash": "96bd7507e2fe8ef6b97951e6b427e73f05b975ba02d57a713e6664ce71d87825",
+      "targetHash": "fabbf66818bc79d05d3cc63748ea60af3b9863078f62443863d6d0443a9a5314",
+      "translation": "She get one orange.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Female possessor and one orange retained.",
+      "contexts": [
+        {
+          "itemId": "39b8f41d",
+          "skillId": "e.e5.gram",
+          "englishTarget": "She has an orange.",
+          "koreanMeaning": "그녀는 오렌지 한 개를 가지고 있어요.",
+          "rule": "orange는 모음 소리로 시작하는 셀 수 있는 낱말이라서 한 개일 때 an을 붙여요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 239,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "거기까지 가는 데 한 시간이 걸려요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "b67feb5c6ad7e201f03439b0bdbf68b7a1770fe1707004046b89ea15ad171038",
+      "contextHash": "8cf2084cec0d337f21adb2a9bce654540b7d55d9067ef2bf554f2ce640febf17",
+      "targetHash": "6e0f06adcc7e4580714828a81eb2fa902364c9ab4f148485515e2252e0ffcf74",
+      "translation": "E dey take one hour to reach there.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "One-hour journey duration retained; no arrival place invented.",
+      "contexts": [
+        {
+          "itemId": "ba73b044",
+          "skillId": "e.e5.gram",
+          "englishTarget": "It takes an hour to get there.",
+          "koreanMeaning": "거기까지 가는 데 한 시간이 걸려요.",
+          "rule": "hour의 h는 소리가 나지 않고 모음 소리로 시작해서 an을 써요. 철자가 아니라 소리로 판단해요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 240,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "탁자 위에 상자 세 개가 있어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "ab97088d4783dbd6603c8360c15dbb3764f28f84299a2b49275447de986b1a54",
+      "contextHash": "e114123b28d03a85e9247f8bc2d817e9a69f0b2037f9884c16cd313cf221607a",
+      "targetHash": "0d7084b7ebca7cd82cbc8db1972f93d8ead7f5a207116258e49474bb515952b8",
+      "translation": "Three box dey on top table.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Exactly three boxes remain on table.",
+      "contexts": [
+        {
+          "itemId": "da97d569",
+          "skillId": "e.e5.gram",
+          "englishTarget": "There are three boxes on the table.",
+          "koreanMeaning": "탁자 위에 상자 세 개가 있어요.",
+          "rule": "x, s, ch, sh로 끝나는 낱말은 -es를 붙여 복수형을 만들어요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 241,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "나는 공원에서 아기 두 명을 봐요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "c32bbb60e5d0cb5d49129f7a490c14d2d8f8219b51f8a0cca0b7f95663fccd0e",
+      "contextHash": "0953a0af9eeed977cd3716a0de493c8b9b21c589a953c7e2305696ea22a3ad32",
+      "targetHash": "bb8f4c294c48cbd351e0d71bdda9bcb43324bd12ac0f37e305e267b03a520208",
+      "translation": "I dey see two baby for park.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "First-person observation of exactly two babies in park retained.",
+      "contexts": [
+        {
+          "itemId": "690e9149",
+          "skillId": "e.e5.gram",
+          "englishTarget": "I see two babies in the park.",
+          "koreanMeaning": "나는 공원에서 아기 두 명을 봐요.",
+          "rule": "〈자음+y〉로 끝나는 낱말은 y를 i로 바꾸고 -es를 붙여요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 242,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "아이들 세 명이 마당에서 놀고 있어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "d6f79a5d90f17b737f4625b8d97ab2b6ec2b2498755682e5a89baf1aefdb4422",
+      "contextHash": "bdf6af9c19c6671c8c7e6e135f7767d03268a20193c6c66341c7d09617203a76",
+      "targetHash": "eedc5c3d9e26195aa4c83f333eeb514afb6dbd5efbda53bcd7bc979c05bd4464",
+      "translation": "Three pikin dey play for yard.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Exactly three children playing in yard retained.",
+      "contexts": [
+        {
+          "itemId": "58dfcf5f",
+          "skillId": "e.e5.gram",
+          "englishTarget": "Three children are playing in the yard.",
+          "koreanMeaning": "아이들 세 명이 마당에서 놀고 있어요.",
+          "rule": "child의 복수형은 불규칙하게 children이에요. children은 이미 복수라서 -s를 또 붙이지 않아요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 243,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "내 발이 차가워요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "baa412e06193821322af468b708f41446daf04c2f38fffd99ab59472c28c5f5e",
+      "contextHash": "e6544b4615180151cf2198210c6ae00af3035e7a528e14f3efa7f01271c99309",
+      "targetHash": "e4df131e7de8973a054e968a63292e037397609f7459ffd9cfd5fbec620102d1",
+      "translation": "My foot dem cold.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "First-person plural feet and cold state retained by dem.",
+      "contexts": [
+        {
+          "itemId": "c1912423",
+          "skillId": "e.e5.gram",
+          "englishTarget": "My feet are cold.",
+          "koreanMeaning": "내 발이 차가워요.",
+          "rule": "foot의 복수형은 불규칙하게 feet이고, 복수 주어 뒤에는 are를 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 244,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "우리 학교 근처에 도서관이 하나 있어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "d26b993381df05f8b4103faea69e07c4beb97f66e9db967859703f26c05c4986",
+      "contextHash": "723a3d502bc151ec8f599cf8519746031c94047239ee5f2f056f56374f764472",
+      "targetHash": "b531f0d85f9992bf54449be78994b447d66072c1b401861cf886ba548f3f9339",
+      "translation": "One library dey near our school.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "One library near speaker's school retained; Korean 우리 and English my differ in idiomatic possession wording.",
+      "contexts": [
+        {
+          "itemId": "0edda728",
+          "skillId": "e.e5.gram",
+          "englishTarget": "There is a library near my school.",
+          "koreanMeaning": "우리 학교 근처에 도서관이 하나 있어요.",
+          "rule": "하나(단수)가 있을 때는 There is를 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval.",
+      "contextNote": "Family-title/deictic possession is natural in context. Korean 우리 may idiomatically mean my; our is not by itself proof of a wrong number of owners. No correction required solely from literal Korean/English owner variation."
+    },
+    {
+      "kind": "meanings",
+      "index": 245,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "나무에 새가 많이 있어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "efe68f2ee13c4276e3e081188687e93e41723a42a18c415b436f608bd9dd4d02",
+      "contextHash": "43d6446063c4e793d0d107eaba4a647838ba3fc88a8777aa41b61c7f23ee6134",
+      "targetHash": "86b05119e0544bb249fca80a619cd0358dc1e365610b3d7e0277a3c6483ae5dc",
+      "translation": "Plenty bird dey for tree.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Many birds in tree retained.",
+      "contexts": [
+        {
+          "itemId": "23b16f05",
+          "skillId": "e.e5.gram",
+          "englishTarget": "There are many birds in the tree.",
+          "koreanMeaning": "나무에 새가 많이 있어요.",
+          "rule": "여러 개(복수)가 있을 때는 There are를 쓰고, many 뒤에는 복수 명사가 와요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 246,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "이 근처에 은행이 있나요?",
+      "sourceLanguage": "ko",
+      "sourceHash": "16908be71292a94f9a9d520bb8873c0cc73f72872424a7812a538f1ccb7fb1ab",
+      "contextHash": "64ac2b6dcecc089eeb9f997957928e0d4839a040c4103ab1fa51f920572adb21",
+      "targetHash": "b7e5ff87f2d002ec40a47ff846c7c4e95aead2519c01e2342ade5dd15a58f254",
+      "translation": "Bank dey near here?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Nearby bank existence question retained.",
+      "contexts": [
+        {
+          "itemId": "6356979e",
+          "skillId": "e.e5.gram",
+          "englishTarget": "Is there a bank near here?",
+          "koreanMeaning": "이 근처에 은행이 있나요?",
+          "rule": "There is의 의문문은 Is there ~?로 is를 앞으로 보내요. 하나일 때는 Is, 여러 개일 때는 Are를 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 247,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "바구니에 사과가 좀 있나요?",
+      "sourceLanguage": "ko",
+      "sourceHash": "b2d71f1b2ef452a48473dfec51e3bf375bfa7d14ab3b7cfbd92a0c346ceec852",
+      "contextHash": "7fd634aa132ffdbabd6d8a6dede5ee09867e996fc1d655d2d313d5e50ee0d3dc",
+      "targetHash": "1d09521906101e156e89b117e20fcbdd7411fed36b24dd01fdf2810514c7fe3f",
+      "translation": "Any apple dey inside basket?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Question about any apples inside basket retained.",
+      "contexts": [
+        {
+          "itemId": "46e7d82d",
+          "skillId": "e.e5.gram",
+          "englishTarget": "Are there any apples in the basket?",
+          "koreanMeaning": "바구니에 사과가 좀 있나요?",
+          "rule": "의문문에서 '조금도, 좀'이라는 뜻으로는 any를 쓰고, 뒤에는 복수 명사가 와요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 248,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "하늘에 구름 한 점 없어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "938d1a1bfe367db9c59ad62bb44bb3effa84ab04314556dc7ba6372bc3aab143",
+      "contextHash": "3ea5b777b2bf542a3dc3f029a4f7fe8b84a5f92b6797d1307f92dbfce3fcfa8b",
+      "targetHash": "1d3218c84d96275509a381ae910437b2992399d93da3a4a5a35eec0151b74823",
+      "translation": "No cloud at all dey for sky.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Zero clouds anywhere in sky retained by no cloud at all.",
+      "contexts": [
+        {
+          "itemId": "84533c3c",
+          "skillId": "e.e5.gram",
+          "englishTarget": "There isn't a cloud in the sky.",
+          "koreanMeaning": "하늘에 구름 한 점 없어요.",
+          "rule": "하나가 없다고 할 때는 There isn't를 써요. 여러 개가 없을 때는 There aren't를 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 249,
+      "file": "english-bank-sentence-meanings-pcm-0200-0249.json",
+      "source": "방에 의자가 하나도 없어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "c63584aa3168bc0586336f560c5299bf8d6f7d90c061d4db2086d99beb47ab23",
+      "contextHash": "76ba37f6a46a3390701f6488a9b72351ec4dd4b19286a3d0dac8c70cb848921b",
+      "targetHash": "5a9bbf7da0ff06a31050edf07938a9b7980eb61d18884b8830ffca4b62fe70e2",
+      "translation": "No chair at all dey inside room.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Zero chairs in room retained by no chair at all.",
+      "contexts": [
+        {
+          "itemId": "68c7ee20",
+          "skillId": "e.e5.gram",
+          "englishTarget": "There aren't any chairs in the room.",
+          "koreanMeaning": "방에 의자가 하나도 없어요.",
+          "rule": "부정문에서 '하나도'라는 뜻으로는 any를 쓰고, 뒤에는 복수 명사가 와요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 250,
+      "file": "english-bank-sentence-meanings-pcm-0250-0279.json",
+      "source": "우리 엄마는 선생님이에요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "0d02e0ba37950ece59ce675a747b1a5015d2b0c90f57a8f712a5bff3efce8007",
+      "contextHash": "46f75b1fe491a984daf745fa3350c8f2cb6ec38c25abb922c525669f29d9832e",
+      "targetHash": "b711b78676d03020944c301337c66bdb46cd52e37a71c84784e0a6b2c2941a67",
+      "translation": "Our mama na teacher.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Mother as teacher retained; Our follows Korean 우리 but can suggest shared ownership beyond English My.",
+      "contexts": [
+        {
+          "itemId": "25901d18",
+          "skillId": "e.e5.gram",
+          "englishTarget": "My mother is a teacher.",
+          "koreanMeaning": "우리 엄마는 선생님이에요.",
+          "rule": "직업을 말할 때 셀 수 있는 단수 명사 앞에는 a/an을 붙여요. teacher는 자음 소리로 시작해서 a를 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval.",
+      "contextNote": "Family-title/deictic possession is natural in context. Korean 우리 may idiomatically mean my; our is not by itself proof of a wrong number of owners. No correction required solely from literal Korean/English owner variation."
+    },
+    {
+      "kind": "meanings",
+      "index": 251,
+      "file": "english-bank-sentence-meanings-pcm-0250-0279.json",
+      "source": "그것은 낡은 자전거예요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "dc825b9f15a9dda89ae6f46cacd9e489aa1b511de8b8448a3aebfa8e421370bc",
+      "contextHash": "f01d270bd8cb2c273bafb7f3d983e9ba192976d7bba20a1d7b40087004500172",
+      "targetHash": "b016573b142d1866d693e191b41b7ebdfc94062c5b649233b952c24057e28f08",
+      "translation": "Na old bicycle.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Old bicycle identity retained.",
+      "contexts": [
+        {
+          "itemId": "2d0ddd4f",
+          "skillId": "e.e5.gram",
+          "englishTarget": "It is an old bike.",
+          "koreanMeaning": "그것은 낡은 자전거예요.",
+          "rule": "a와 an은 바로 뒤에 오는 낱말의 소리로 정해요. old는 모음 소리로 시작해서 an old가 돼요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 252,
+      "file": "english-bank-sentence-meanings-pcm-0250-0279.json",
+      "source": "유리잔에 우유가 조금 있어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "055003d8eaf68c53fe61b563cd7f66be7371f250ba20379ffec3ce08c6f263cd",
+      "contextHash": "5a147d38da1bf8e72dc4eb4dbb2bc414bdc1c3ceb12c89f042e2211d72ab6b75",
+      "targetHash": "ebb92ecf61081e82851e940a32dc1276852e3a8488fc59a2fbd289fdb920057d",
+      "translation": "Small milk dey inside glass.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Small uncountable amount of milk in glass retained.",
+      "contexts": [
+        {
+          "itemId": "84d7dc88",
+          "skillId": "e.e5.gram",
+          "englishTarget": "There is some milk in the glass.",
+          "koreanMeaning": "유리잔에 우유가 조금 있어요.",
+          "rule": "milk처럼 셀 수 없는 명사는 복수형으로 쓰지 않고 There is와 함께 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 253,
+      "file": "english-bank-sentence-meanings-pcm-0250-0279.json",
+      "source": "나는 시계가 두 개 있어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "511e458bda55cb74a05eb7963470ca01961fdd642299e9871f69f54ed8d768e5",
+      "contextHash": "9bff88b3bc144cad579f86cdc0c13c5c070bc07ee657e2610ef5176d2d8f0804",
+      "targetHash": "26f4ebddc5b837fd8a740bf134767e52381ac29d8997e3cdb192e67ded8ff067",
+      "translation": "I get two watch.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "First-person possession of two watches retained.",
+      "contexts": [
+        {
+          "itemId": "e65db401",
+          "skillId": "e.e5.gram",
+          "englishTarget": "I have two watches.",
+          "koreanMeaning": "나는 시계가 두 개 있어요.",
+          "rule": "ch로 끝나는 낱말은 -es를 붙여 복수형을 만들어요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 254,
+      "file": "english-bank-sentence-meanings-pcm-0250-0279.json",
+      "source": "나뭇잎 두 장이 나무에서 떨어졌어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "136d7763cc2fb3980bbe6e427776c623e44796b6e1b0cf5029b364b62b168222",
+      "contextHash": "8346e3379544777240b882d644793341094975e223e914f8c4c9d2cd928fd79a",
+      "targetHash": "f979ceb60d1d10df2609c6b9b927abcc715fc40c30ecdee45e578dc4107c7783",
+      "translation": "Two leaf fall from tree.",
+      "hashBindingPass": true,
+      "verdict": "unsure",
+      "reason": "Two leaves falling from tree retained; unmarked eventive verb is compatible with Pidgin past but bin would disambiguate time.",
+      "contexts": [
+        {
+          "itemId": "ecf9e352",
+          "skillId": "e.e5.gram",
+          "englishTarget": "Two leaves fell from the tree.",
+          "koreanMeaning": "나뭇잎 두 장이 나무에서 떨어졌어요.",
+          "rule": "leaf처럼 f로 끝나는 일부 낱말은 f를 v로 바꾸고 -es를 붙여 leaves가 돼요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": {
+        "expectedSourceHash": "136d7763cc2fb3980bbe6e427776c623e44796b6e1b0cf5029b364b62b168222",
+        "expectedContextHash": "8346e3379544777240b882d644793341094975e223e914f8c4c9d2cd928fd79a",
+        "expectedTargetHash": "f979ceb60d1d10df2609c6b9b927abcc715fc40c30ecdee45e578dc4107c7783",
+        "translation": "Two leaf bin fall from tree.",
+        "proposedTargetHash": "53f840cf7ffced878e828b537178d4947c616a65d58c50626099278256733b67",
+        "applyOnlyAfter": "human or authorized author review; recommendation only"
+      },
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 255,
+      "file": "english-bank-sentence-meanings-pcm-0250-0279.json",
+      "source": "남자 두 명이 지붕을 고치고 있어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "5e339bb4a0e679433b4321a21863eba1138ccb5469e6695d816eb0e114110d61",
+      "contextHash": "71e5a140c32d23f1bc51598b72c019e594be3381b5122575ddef19f815ad4756",
+      "targetHash": "93ff411195befbe0fb9fbd49ab801f3307f4b897971944edb38a860a03050e38",
+      "translation": "Two man dey repair roof.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Exactly two male workers repairing roof retained; source explicitly says 남자/men.",
+      "contexts": [
+        {
+          "itemId": "d4e76467",
+          "skillId": "e.e5.gram",
+          "englishTarget": "Two men are fixing the roof.",
+          "koreanMeaning": "남자 두 명이 지붕을 고치고 있어요.",
+          "rule": "man의 복수형은 불규칙하게 men이에요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 256,
+      "file": "english-bank-sentence-meanings-pcm-0250-0279.json",
+      "source": "양 다섯 마리가 들판에 있어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "03a171f01744aba824cb4937796259ff8ae73fca792561359bd09357166af9df",
+      "contextHash": "d2e1b8ba399c41627e988fd09eed51dac39f11c3070e8290bd5a1338739edf71",
+      "targetHash": "7e2d228dda3379cca95f4dfcc099518ee3a6d534337ced9532957148e98ff82f",
+      "translation": "Five sheep dey for field.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Five sheep remain in field.",
+      "contexts": [
+        {
+          "itemId": "67a40a6e",
+          "skillId": "e.e5.gram",
+          "englishTarget": "Five sheep are in the field.",
+          "koreanMeaning": "양 다섯 마리가 들판에 있어요.",
+          "rule": "sheep은 단수와 복수의 모양이 같아서 -s를 붙이지 않아요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 257,
+      "file": "english-bank-sentence-meanings-pcm-0250-0279.json",
+      "source": "책상 위에 책이 몇 권 있나요?",
+      "sourceLanguage": "ko",
+      "sourceHash": "c54e99a48a4b10b86a480abcf776bfc3d1e072b1f043f9dfea744fd18d7c25dd",
+      "contextHash": "9386732725721b4613987a16127fe472ed8b7d10c58e7eaea6567f5759f8a3f0",
+      "targetHash": "7f8dc5d872745e23d8f557a9480793c908db671ad20019a8e867f677afb2ce06",
+      "translation": "How many book dey on top desk?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Book-count question on desk retained.",
+      "contexts": [
+        {
+          "itemId": "c37279db",
+          "skillId": "e.e5.gram",
+          "englishTarget": "How many books are there on the desk?",
+          "koreanMeaning": "책상 위에 책이 몇 권 있나요?",
+          "rule": "How many 뒤에는 셀 수 있는 복수 명사가 와요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 258,
+      "file": "english-bank-sentence-meanings-pcm-0250-0279.json",
+      "source": "수프에 쓸 양파가 몇 개 필요해요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "84ee17112b8bdcb69d12c3c782e772257511270934a7ee45aac029bb2afe6d45",
+      "contextHash": "39b81cd05de128ae9cc62fd80a3747951296cfe524034a6b1e34335caf5ec758",
+      "targetHash": "cdd0992f08d706f6bd3e56ae01c752b890d8549cc1cfd5e18617a053053112a0",
+      "translation": "Small number of onion dey needed for soup.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "A few onions needed for soup retained; subject left unspecified as in Korean rather than adding English we.",
+      "contexts": [
+        {
+          "itemId": "ecdba5bb",
+          "skillId": "e.e5.gram",
+          "englishTarget": "We need a few onions for the soup.",
+          "koreanMeaning": "수프에 쓸 양파가 몇 개 필요해요.",
+          "rule": "onions는 셀 수 있는 복수 명사라서 '몇 개'는 a few예요. a little은 셀 수 없는 명사 앞에 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 259,
+      "file": "english-bank-sentence-meanings-pcm-0250-0279.json",
+      "source": "이 길에는 차가 많지 않아요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "1ad2a6adc2326cddf3fa00868c6a6797447e9182544d592da509655d5f8c8b2a",
+      "contextHash": "e39b88b3a9e73589f3a313a57ea16685d6fbfbbb62ebb6374aeca10b29928109",
+      "targetHash": "794064d2649302469a04e5a192c30107ce770774be21c288e6d8a63c5e988978",
+      "translation": "Motor no too plenty for dis road.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Low traffic volume on this road retained; no too plenty conveys limited amount.",
+      "contexts": [
+        {
+          "itemId": "4bc677ee",
+          "skillId": "e.e5.gram",
+          "englishTarget": "There isn't much traffic on this road.",
+          "koreanMeaning": "이 길에는 차가 많지 않아요.",
+          "rule": "traffic은 셀 수 없는 명사라서 부정문에서 much를 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 260,
+      "file": "english-bank-sentence-meanings-pcm-0250-0279.json",
+      "source": "벤은 고양이가 한 마리 있는데, 그 고양이는 흰색이에요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "eeb2cd43e783a067ad23783979efb8e09e78518c7e711f753b0f9193c2ab629d",
+      "contextHash": "a96842ba7bec8a0b097456773fdd8b8b3fb2b836f76692afa17b2247816c0acb",
+      "targetHash": "32e187bfc4c315c7797246f7afbd08644fe6f86aaa10359a3bc729efe3bea4c7",
+      "translation": "Ben get one cat, and di cat white.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Ben's one cat and cat's white color retained; no Ben gender introduced.",
+      "contexts": [
+        {
+          "itemId": "f8f8dbd7",
+          "skillId": "e.e5.gram",
+          "englishTarget": "Ben has a cat, and the cat is white.",
+          "koreanMeaning": "벤은 고양이가 한 마리 있는데, 그 고양이는 흰색이에요.",
+          "rule": "처음 말할 때는 a cat, 이미 말한 고양이를 다시 말할 때는 the cat이에요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 261,
+      "file": "english-bank-sentence-meanings-pcm-0250-0279.json",
+      "source": "이 포도들은 달지만 저 레몬들은 시어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "04bd337ac966ef2a2f8f5b294707541390f30caae283f41f11fa4c7be051d7d4",
+      "contextHash": "dffcf77d7c955421403bf78d5c2a330324c69197569726631786407be1283801",
+      "targetHash": "46de22c2a3226ff5fb8f62c78a3ad9021341558236a89bef4ef82a31225a9da0",
+      "translation": "Dis grape dem sweet, but dat lemon dem sour.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "These grapes sweet versus those lemons sour retained.",
+      "contexts": [
+        {
+          "itemId": "c0ad0bbe",
+          "skillId": "e.e5.gram",
+          "englishTarget": "These grapes taste sweet, but those lemons taste sour.",
+          "koreanMeaning": "이 포도들은 달지만 저 레몬들은 시어요.",
+          "rule": "가까운 여러 개는 these, 먼 여러 개는 those예요. 뒤의 명사가 복수이면 that/this는 쓸 수 없어요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 262,
+      "file": "english-bank-sentence-meanings-pcm-0250-0279.json",
+      "source": "거위 두 마리가 호수에서 헤엄치고 있어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "bdefd1e7a673c55066603c7874c89528cdea9b0d75f20918ec0371357c436ae2",
+      "contextHash": "df38a19750452712e459741e37ae4e56792dfbe0658e453f6fc985e255edcc06",
+      "targetHash": "bb5a4f8ad8aaa7ecebbb7fee40fa586fc3b94c2e3222f3477f4ecddac4ab97a9",
+      "translation": "Two goose dey swim for lake.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Two geese swimming on lake retained; number is explicit.",
+      "contexts": [
+        {
+          "itemId": "fc8f38bb",
+          "skillId": "e.e5.gram",
+          "englishTarget": "Two geese are swimming on the lake.",
+          "koreanMeaning": "거위 두 마리가 호수에서 헤엄치고 있어요.",
+          "rule": "goose의 복수형은 불규칙하게 geese예요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 263,
+      "file": "english-bank-sentence-meanings-pcm-0250-0279.json",
+      "source": "병에 쌀이 얼마나 남아 있나요?",
+      "sourceLanguage": "ko",
+      "sourceHash": "f746735cbdbda3062ccf31b6dffe556885870a7f06257f58aaab9202d1a46e5e",
+      "contextHash": "954b0aa4107e5cfab544ef8b546dd301e41d2fbe92ddf22aea205dbf954a98bf",
+      "targetHash": "bd86259981fae68b7d47e6a65ae1be8e18302dfa7075b1bf83783d4f10d8b8a0",
+      "translation": "How much rice remain inside jar?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Remaining rice amount inside jar retained.",
+      "contexts": [
+        {
+          "itemId": "c032622d",
+          "skillId": "e.e5.gram",
+          "englishTarget": "How much rice is left in the jar?",
+          "koreanMeaning": "병에 쌀이 얼마나 남아 있나요?",
+          "rule": "rice는 셀 수 없는 명사라서 How much로 묻고 단수 동사 is를 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 264,
+      "file": "english-bank-sentence-meanings-pcm-0250-0279.json",
+      "source": "부엌에 시계가 있나요?",
+      "sourceLanguage": "ko",
+      "sourceHash": "d8346c39f35355356fa60b2776f699dca16d0b6d24bb3304d620b9ed4d19a99c",
+      "contextHash": "209f6ad64d69f6ab3f6302233282eb6f1032f73f954b97e27346d8d4f7736418",
+      "targetHash": "4b5c4f6ecbbca28f7cae7cbe9cf9e0eb4d0794b704658147f651614906edf06e",
+      "translation": "Clock dey inside kitchen?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Kitchen-clock existence question retained.",
+      "contexts": [
+        {
+          "itemId": "f16db132",
+          "skillId": "e.e5.gram",
+          "englishTarget": "Is there a clock in the kitchen?",
+          "koreanMeaning": "부엌에 시계가 있나요?",
+          "rule": "하나(a clock)가 있는지 물을 때는 Is there ...?로 물어요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 265,
+      "file": "english-bank-sentence-meanings-pcm-0250-0279.json",
+      "source": "톰은 벤보다 키가 커요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "6dfff9de6602caed32a863d7c0e4900ddeee5bf9c0a0805089f015f92f42fe3d",
+      "contextHash": "2bb71b12a453f9abe9949aed9ad6782b7bd1933656098860fb0613673dbbf55b",
+      "targetHash": "4e13188a26643f587449bb55718eae00d8f48bd5c424c5b430e27930f5297de9",
+      "translation": "Tom tall pass Ben.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Tom taller than Ben retained; no gender inference.",
+      "contexts": [
+        {
+          "itemId": "48c723d5",
+          "skillId": "e.e5.comp",
+          "englishTarget": "Tom is taller than Ben.",
+          "koreanMeaning": "톰은 벤보다 키가 커요.",
+          "rule": "짧은 형용사는 -er을 붙여 비교급을 만들고, 비교 대상 앞에는 than을 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 266,
+      "file": "english-bank-sentence-meanings-pcm-0250-0279.json",
+      "source": "이 가방은 저 가방보다 무거워요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "4922f070560b6691bde15fba7c36ff5441e85a9fa1b9a868cf1ee7442935e961",
+      "contextHash": "f69be5c4a553a7169d0026275c6743b58b9aa715137d366a40fe53dab3faa4fc",
+      "targetHash": "a3bccc1741b730241772e8a4e1db59f6603c1003e0b9048e4da01180d6f569fb",
+      "translation": "Dis bag heavy pass dat bag.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "This bag heavier than that bag retained.",
+      "contexts": [
+        {
+          "itemId": "84bf01a7",
+          "skillId": "e.e5.comp",
+          "englishTarget": "This bag is heavier than that bag.",
+          "koreanMeaning": "이 가방은 저 가방보다 무거워요.",
+          "rule": "〈자음+y〉로 끝나는 형용사는 y를 i로 바꾸고 -er을 붙여요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 267,
+      "file": "english-bank-sentence-meanings-pcm-0250-0279.json",
+      "source": "우리 개는 너의 개보다 커요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "d00c4e51627ecb5b93790dcb3d13d65e993de0a2cc7e002261dda1100050d570",
+      "contextHash": "03bd8c5aa83be590e477a01bcaab673085fb3558466a8528e0bf04e22e753411",
+      "targetHash": "66e047e279830467488d9f090b306726618bda18ca6740f9d74ea1c57bdffe6d",
+      "translation": "Our dog big pass your dog.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Dog size comparison retained; Our follows Korean 우리 whereas English target says My.",
+      "contexts": [
+        {
+          "itemId": "08b2bd9b",
+          "skillId": "e.e5.comp",
+          "englishTarget": "My dog is bigger than your dog.",
+          "koreanMeaning": "우리 개는 너의 개보다 커요.",
+          "rule": "〈짧은 모음+자음 한 개〉로 끝나는 낱말은 자음을 한 번 더 쓰고 -er을 붙여요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval.",
+      "contextNote": "Family-title/deictic possession is natural in context. Korean 우리 may idiomatically mean my; our is not by itself proof of a wrong number of owners. No correction required solely from literal Korean/English owner variation."
+    },
+    {
+      "kind": "meanings",
+      "index": 268,
+      "file": "english-bank-sentence-meanings-pcm-0250-0279.json",
+      "source": "이 책은 저 책보다 더 재미있어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "0ec964fb8e6b3001fc9075067e54f4d7b2629460625acd906d3f6f1a573a9ed7",
+      "contextHash": "7374cbf1a02dd801eed1256a683a44e3e8042a622d6fcc2111b430e5d2a6505e",
+      "targetHash": "e4419b18b08a33e3d377bbf684eb6d2d9c933cb9b0f7f064f55cefc18eee5be2",
+      "translation": "Dis book interesting pass dat book.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "This book more interesting than the other retained.",
+      "contexts": [
+        {
+          "itemId": "0ccd5be9",
+          "skillId": "e.e5.comp",
+          "englishTarget": "This book is more interesting than that one.",
+          "koreanMeaning": "이 책은 저 책보다 더 재미있어요.",
+          "rule": "긴 형용사는 -er 대신 앞에 more를 붙여 비교급을 만들어요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 269,
+      "file": "english-bank-sentence-meanings-pcm-0250-0279.json",
+      "source": "미나는 우리 반에서 키가 가장 큰 여자아이예요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "989696ffd8cefaa88b5ae580c909d5ccd33f4d6709acc9ca9040407b69e1f870",
+      "contextHash": "48c5f9994eacc91584f61432aec65c8d97f5971a57c9137641bb4e47c965a35e",
+      "targetHash": "0b47a20af7be1084a9d5a667d88880532ee31235c29b88b84b8ef90c0f21b40a",
+      "translation": "Mina na di girl wey tall pass all other girl for our class.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Mina's female class-member identity and tallest comparison retained; Korean explicitly says 여자아이.",
+      "contexts": [
+        {
+          "itemId": "7c815f98",
+          "skillId": "e.e5.comp",
+          "englishTarget": "Mina is the tallest girl in my class.",
+          "koreanMeaning": "미나는 우리 반에서 키가 가장 큰 여자아이예요.",
+          "rule": "셋 이상 중에서 가장 ~한 것은 the + -est로 나타내요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 270,
+      "file": "english-bank-sentence-meanings-pcm-0250-0279.json",
+      "source": "이 피자는 저 피자보다 더 맛있어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "dad079c67c88cf0cb56217f25b9cbab636f2aacfbc3b262855d30ca23ec0b48a",
+      "contextHash": "d4138dce7a2c067d7470bb36b35a46ce896acf7dde9fb069d4dcae5ee2ce951a",
+      "targetHash": "0afa7106ce3f7dea3b5629243d4dd9e408b93f12ad7a6a6aeaab1c92cb4c755a",
+      "translation": "Dis pizza sweet pass dat pizza.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "This pizza's superior taste retained; sweet in this food context can mean tasty, not merely sugary.",
+      "contexts": [
+        {
+          "itemId": "11a3b43a",
+          "skillId": "e.e5.comp",
+          "englishTarget": "This pizza is better than that pizza.",
+          "koreanMeaning": "이 피자는 저 피자보다 더 맛있어요.",
+          "rule": "good의 비교급은 불규칙하게 better예요. good-better-best로 외워요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 271,
+      "file": "english-bank-sentence-meanings-pcm-0250-0279.json",
+      "source": "그녀는 우리 학교에서 노래를 가장 잘하는 사람이에요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "651eb5ad54063d8df678e2e51f596e09cbd1d6d614775168576ba65680b0fedc",
+      "contextHash": "caf8b8457abf8a52657888821882b9ed29b81ae09db6023bf3764fa7b192af00",
+      "targetHash": "247c927ae275384d777c99b1b06ca2a33604818a7d71c8666dd8232c59ff9cf7",
+      "translation": "Na she sabi sing pass everybody for our school.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Explicit female subject is best singer at school; sing pass everybody preserves comparison.",
+      "contexts": [
+        {
+          "itemId": "9ed317e9",
+          "skillId": "e.e5.comp",
+          "englishTarget": "She is the best singer in our school.",
+          "koreanMeaning": "그녀는 우리 학교에서 노래를 가장 잘하는 사람이에요.",
+          "rule": "good의 최상급은 불규칙하게 best예요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 272,
+      "file": "english-bank-sentence-meanings-pcm-0250-0279.json",
+      "source": "오늘 날씨는 어제보다 더 나빠요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "2a9f579cac67a4e07134117c5c36b4719e21b202534ccd3e4e667937f4dc7b1e",
+      "contextHash": "80d65e703592795add3c68b38c6ced1ee028bd346c01fa02195de0b91b444354",
+      "targetHash": "8ea73acc171b1b01e7c1d81d79ba20431d2fec1645defbef15d705017ef521b0",
+      "translation": "Today weather bad pass yesterday weather.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Today's weather worse than yesterday retained.",
+      "contexts": [
+        {
+          "itemId": "f39a1e1d",
+          "skillId": "e.e5.comp",
+          "englishTarget": "Today the weather is worse than yesterday.",
+          "koreanMeaning": "오늘 날씨는 어제보다 더 나빠요.",
+          "rule": "bad의 비교급은 불규칙하게 worse, 최상급은 worst예요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 273,
+      "file": "english-bank-sentence-meanings-pcm-0250-0279.json",
+      "source": "내 남동생은 아빠만큼 키가 커요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "7c7f748fe91fc749d99c9628321f10150ee8890d251cdc86d7f6fb6f56bffec8",
+      "contextHash": "f38ab555c6f1e9ed47c233588b42949d15ea6122bf438fb646ab2792d032d02c",
+      "targetHash": "f2443fe2226f0d926f73a233ce55f3bc33bdbb29baba7b2bb5f883c76d8a7688",
+      "translation": "My younger brother tall reach papa.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Younger male sibling equals father in height retained; Papa is a family title but My would make ownership explicit.",
+      "contexts": [
+        {
+          "itemId": "cefa0825",
+          "skillId": "e.e5.comp",
+          "englishTarget": "My brother is as tall as my father.",
+          "koreanMeaning": "내 남동생은 아빠만큼 키가 커요.",
+          "rule": "두 대상이 같을 때는 as + 원래 형태의 형용사 + as로 나타내요. as ~ as 사이에는 -er을 붙이지 않아요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval.",
+      "contextNote": "Family-title/deictic possession is natural in context. Korean 우리 may idiomatically mean my; our is not by itself proof of a wrong number of owners. No correction required solely from literal Korean/English owner variation."
+    },
+    {
+      "kind": "meanings",
+      "index": 274,
+      "file": "english-bank-sentence-meanings-pcm-0250-0279.json",
+      "source": "이 상자는 저 상자만큼 크지 않아요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "05cb301230d8604cc3bde2a81fb1dd6f46113adfe55f0c2f76c831804e43aa14",
+      "contextHash": "d30193be4d0a508b8d3a87b307eea72513965d8b29986e681755227fafd53c12",
+      "targetHash": "0095142f9b56f1036fb0c6c9e8dba0e8f9ccd9aef9f216009147018e7bfeef09",
+      "translation": "Dis box no big reach dat box.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "This box not reaching other box's size retains negative equality.",
+      "contexts": [
+        {
+          "itemId": "401f6af6",
+          "skillId": "e.e5.comp",
+          "englishTarget": "This box is not as big as that box.",
+          "koreanMeaning": "이 상자는 저 상자만큼 크지 않아요.",
+          "rule": "not as ~ as는 '~만큼 …하지 않다'라는 뜻이고, 사이에는 원래 형태의 형용사를 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 275,
+      "file": "english-bank-sentence-meanings-pcm-0250-0279.json",
+      "source": "고양이와 개 중에 어느 쪽이 더 커요?",
+      "sourceLanguage": "ko",
+      "sourceHash": "56434818690f43d7ac52cfddaf7bba9f9e8a66f80ce63521be7e236ebfb6310a",
+      "contextHash": "636a74110f5b1954fa1e033494d302c6072205522e2bff34d9976493df12d3f2",
+      "targetHash": "433d56881c23466a3924037ea5357efdc1b34f700db6b7f330eb4a7b81964c20",
+      "translation": "Between cat and dog, which one big pass?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Cat/dog bigger comparison remains a question.",
+      "contexts": [
+        {
+          "itemId": "4c6f7f8e",
+          "skillId": "e.e5.comp",
+          "englishTarget": "Which is bigger, a cat or a dog?",
+          "koreanMeaning": "고양이와 개 중에 어느 쪽이 더 커요?",
+          "rule": "둘 중에서 어느 쪽이 더 ~한지 물을 때는 비교급을 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 276,
+      "file": "english-bank-sentence-meanings-pcm-0250-0279.json",
+      "source": "서울은 한국에서 가장 큰 도시 중 하나예요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "750a6e0cdf2d92db8b513ca2bb7e5dfe3ac7f4dea671dab3ab04043ec4157bd4",
+      "contextHash": "e93259defe88e18f70a3e357161559ad36d831bbd39c8c9a0ef9abbc1a846ed2",
+      "targetHash": "6d2f38b34aa5be3a9cc7d66fcb2c42997500aa7367dd15558d76dcbc99ed5276",
+      "translation": "Seoul na one of di biggest city dem for Korea.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Seoul remains one among biggest Korean cities, not the sole biggest by this sentence.",
+      "contexts": [
+        {
+          "itemId": "cb0d22ef",
+          "skillId": "e.e5.comp",
+          "englishTarget": "Seoul is one of the biggest cities in Korea.",
+          "koreanMeaning": "서울은 한국에서 가장 큰 도시 중 하나예요.",
+          "rule": "one of the + 최상급 뒤에는 복수 명사를 써요. big은 g를 한 번 더 써서 biggest가 돼요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 277,
+      "file": "english-bank-sentence-meanings-pcm-0250-0279.json",
+      "source": "나에게는 영어가 수학보다 더 어려워요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "ce2a324b839ad3a1598c9fd47a02f66f50a6ebd71608377acbbf1b63837c6102",
+      "contextHash": "4027ed68f6783f9cf5552350e77042c883ff2fb04b2e50118a19982b3217e1d4",
+      "targetHash": "3363303a3f3d3e9a28a2442bd9a39ae825373eed6926451f06ffdd7380ecb936",
+      "translation": "For me, English hard pass maths.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "English harder than mathematics for first-person evaluator retained.",
+      "contexts": [
+        {
+          "itemId": "b82efb55",
+          "skillId": "e.e5.comp",
+          "englishTarget": "English is more difficult than math for me.",
+          "koreanMeaning": "나에게는 영어가 수학보다 더 어려워요.",
+          "rule": "difficult처럼 긴 형용사는 more를 붙여 비교급을 만들어요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 278,
+      "file": "english-bank-sentence-meanings-pcm-0250-0279.json",
+      "source": "이것은 정원에서 가장 아름다운 꽃이에요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "bd668d86d96fa10f134d60587e5991ce8db5c7d7312b63566108657fb77a267f",
+      "contextHash": "73e32de4035d6d052bb1a2569e52f974c39d52555e289100e397ab22a10ae59a",
+      "targetHash": "4295804e3d582d5b3be4b703f62274d8ccbd3711329beb682e8e631a294e5293",
+      "translation": "Dis na di most beautiful flower for garden.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "This flower remains most beautiful within garden.",
+      "contexts": [
+        {
+          "itemId": "4a02942e",
+          "skillId": "e.e5.comp",
+          "englishTarget": "This is the most beautiful flower in the garden.",
+          "koreanMeaning": "이것은 정원에서 가장 아름다운 꽃이에요.",
+          "rule": "긴 형용사의 최상급은 the most를 앞에 붙여요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 279,
+      "file": "english-bank-sentence-meanings-pcm-0250-0279.json",
+      "source": "여름은 봄보다 더 더워요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "e3bd2de1aaf641944f382b65a087df53a84faad5f8920d4a180926d4e841d479",
+      "contextHash": "64146e1733ea2fb16e886d81c7efbb3e5acb07ff02cf7b40c66e4da010f5bb74",
+      "targetHash": "be1b4867f82d9d1a6af440535e6e1e84d9ac05bc592f42137c188eef994b5245",
+      "translation": "Summer hot pass spring.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Summer hotter than spring retained.",
+      "contexts": [
+        {
+          "itemId": "9d4695e1",
+          "skillId": "e.e5.comp",
+          "englishTarget": "Summer is hotter than spring.",
+          "koreanMeaning": "여름은 봄보다 더 더워요.",
+          "rule": "hot처럼 〈짧은 모음+자음〉으로 끝나는 낱말은 t를 한 번 더 쓰고 -er을 붙여요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 280,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "벤은 진보다 더 빨리 달려요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "112f807936da46e3c658278a2f68b1edec2e47a20c787ea611835af335362242",
+      "contextHash": "90d6cc940495276a73abbcaa17fd7e114c942e4a318dec07971bf85286c2d9b7",
+      "targetHash": "ff45e903ac131b48fb7a0ca21c6238c316b47cd7f011b0159af306b24f74075f",
+      "translation": "Ben dey run fast pass Jin.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Ben runs faster than Jin; comparison does not reverse actors.",
+      "contexts": [
+        {
+          "itemId": "b3d682a5",
+          "skillId": "e.e5.comp",
+          "englishTarget": "Ben runs faster than Jin.",
+          "koreanMeaning": "벤은 진보다 더 빨리 달려요.",
+          "rule": "fast는 형용사와 부사의 모양이 같고, 비교급은 faster예요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 281,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "나는 언니보다 책이 더 많아요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "30c07464400256b104401df701e9d942c4e56d65546bc33a1a63b47aa8b9e16a",
+      "contextHash": "249fb7781c2b5fa59eefa8b09237d63f2f5102dde9c58e9ad87c8c5d908d1686",
+      "targetHash": "76c7b73fc5689bda3c17542ddd2f8857106463964c42de4b2fb7dce6610fd66e",
+      "translation": "I get book pass my elder sister.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "First-person greater book quantity than older sister retained; get book pass expresses quantity comparison.",
+      "contexts": [
+        {
+          "itemId": "118652f3",
+          "skillId": "e.e5.comp",
+          "englishTarget": "I have more books than my sister.",
+          "koreanMeaning": "나는 언니보다 책이 더 많아요.",
+          "rule": "many의 비교급은 more이고, more 뒤에 than으로 비교 대상을 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 282,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "에베레스트산은 세계에서 가장 높은 산이에요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "f263cc5a7bb3f0480cfe0bd762ce44161bddc5339b16fbb101ab1caab321704d",
+      "contextHash": "80beab9a64764a6b0168cd614701aa6c5b0cdc670b3585505e3eda358ad15c59",
+      "targetHash": "7c3395f31dfb53b30a6936e5bd745aefd1544b8554c49946358a69c231078aa7",
+      "translation": "Mount Everest na di highest mountain for world.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Everest remains highest worldwide.",
+      "contexts": [
+        {
+          "itemId": "c270d23f",
+          "skillId": "e.e5.comp",
+          "englishTarget": "Mount Everest is the highest mountain in the world.",
+          "koreanMeaning": "에베레스트산은 세계에서 가장 높은 산이에요.",
+          "rule": "세계에서 가장 ~한 것은 the + -est로 나타내요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 283,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "자동차는 자전거보다 훨씬 더 빨라요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "1d654188009687323ba05ed7ca8930d1c3c96bda112d42cce9c59a9f7fd43d7d",
+      "contextHash": "941b32aab0a5ab972739e6578243cb4e085baf3c3f1c2fb2c9029771124efcfb",
+      "targetHash": "e1ba3167af9c5da5cf662887674d520ca7ebb735625cc5e18ddce4261813baab",
+      "translation": "Motor fast pass bicycle by far.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Car much faster than bicycle retained; by far carries much.",
+      "contexts": [
+        {
+          "itemId": "26973a7e",
+          "skillId": "e.e5.comp",
+          "englishTarget": "A car is much faster than a bike.",
+          "koreanMeaning": "자동차는 자전거보다 훨씬 더 빨라요.",
+          "rule": "비교급을 강조해서 '훨씬'이라고 할 때는 much를 써요. very는 비교급 앞에 쓰지 않아요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 284,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "파란 셔츠는 빨간 셔츠보다 더 싸요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "3f8eb7ea992b7c01db32c5b8468491777ac67619001dcea946948938bf9d0725",
+      "contextHash": "2f3cd186f48fd8f4f369576b902b695497ee526b5d6daa0b78a4c7eeceed209d",
+      "targetHash": "19798f0ed56765d3d72e3efcaa86462a45b25e21cf75e03b0798691a511742f8",
+      "translation": "Blue shirt cheap pass red shirt.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Blue shirt cheaper than red retained.",
+      "contexts": [
+        {
+          "itemId": "e2f0ad7b",
+          "skillId": "e.e5.comp",
+          "englishTarget": "The blue shirt is cheaper than the red one.",
+          "koreanMeaning": "파란 셔츠는 빨간 셔츠보다 더 싸요.",
+          "rule": "비교하는 대상 앞에는 than을 써요. cheap처럼 짧은 형용사는 -er을 붙이므로 more cheap이나 cheapest than은 틀려요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 285,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "겨울은 한국에서 가장 추운 계절이에요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "2ac6602a219ae64b8615f1ca025f54b4349a82799af65edd84dfa69b547f3890",
+      "contextHash": "73b08f0829a6bb1708040c0efdf01b0c9e9507e8f8de9e3de288c60157e9f7f8",
+      "targetHash": "7f09da6ddd14582e2a3740b726b32849d6a1a6ee70ec68f0053431f8dbf9aa88",
+      "translation": "Winter na di coldest season for Korea.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Winter remains Korea's coldest season.",
+      "contexts": [
+        {
+          "itemId": "35605548",
+          "skillId": "e.e5.comp",
+          "englishTarget": "Winter is the coldest season in Korea.",
+          "koreanMeaning": "겨울은 한국에서 가장 추운 계절이에요.",
+          "rule": "네 계절 중에서 가장 ~한 것이므로 최상급 the coldest를 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 286,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "나는 내일 할머니를 찾아뵐 거예요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "9b403dc04958089326aa9c6ebf76a79694cee5ada015aaaabcc7d82f74ff82b0",
+      "contextHash": "781ca6f150f1c655f99467f516cf6894932df291852b8156544d39368c3ad7d6",
+      "targetHash": "406441fc3b6ae77fba803bae8ab522cf0a8a7a60b153005a3e8ad016ccf815bc",
+      "translation": "I go visit grandmama tomorrow.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Future grandmother visit tomorrow retained.",
+      "contexts": [
+        {
+          "itemId": "279dfc96",
+          "skillId": "e.e5.future",
+          "englishTarget": "I will visit my grandmother tomorrow.",
+          "koreanMeaning": "나는 내일 할머니를 찾아뵐 거예요.",
+          "rule": "will 뒤에는 항상 동사원형이 와요. 주어가 3인칭이어도 -s를 붙이지 않아요."
+        },
+        {
+          "itemId": "52d391ed",
+          "skillId": "e.e6.tense",
+          "englishTarget": "I will visit my grandmother tomorrow.",
+          "koreanMeaning": "나는 내일 할머니를 찾아뵐 거예요.",
+          "rule": "tomorrow(내일)는 앞으로 할 일이므로 will + 동사원형을 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 287,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "그녀는 새 가방을 살 거예요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "e6d9d081b94e87044dbcfa09ea280f15dac42987f00764e4bb4943d82bb1ff0f",
+      "contextHash": "986389a8131e2e9e41923a3f5ee957e4c67d92ce66abef3d603fe17e06f32eb7",
+      "targetHash": "74d33c7fa5172c13947e424ecb3774261329f2d567a297084efd20d5d1e4b875",
+      "translation": "She go buy new bag.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Female future buyer and new bag retained.",
+      "contexts": [
+        {
+          "itemId": "dbcb8326",
+          "skillId": "e.e5.future",
+          "englishTarget": "She is going to buy a new bag.",
+          "koreanMeaning": "그녀는 새 가방을 살 거예요.",
+          "rule": "be going to는 be동사(am/is/are)와 함께 써요. 주어가 She이므로 is를 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 288,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "그들은 방과 후에 축구를 할 거예요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "578511b1ebc205fcc0f60403e2d18bb2678611592773be80b4e169b32f22ecd8",
+      "contextHash": "72e0f7eef138f831db21eb4d2d9d6973578c28a40bb1eb2e5953fa5df0a68456",
+      "targetHash": "f21eaf55e428c832bd7dd7663a6c7734b466662ac7a5b3941aa16f949527123b",
+      "translation": "Dem go play football after school.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Plural future football after school retained.",
+      "contexts": [
+        {
+          "itemId": "b8bc3d69",
+          "skillId": "e.e5.future",
+          "englishTarget": "They are going to play soccer after school.",
+          "koreanMeaning": "그들은 방과 후에 축구를 할 거예요.",
+          "rule": "be going to 뒤에는 동사원형이 와요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 289,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "그는 파티에 오지 않을 거예요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "587f1ba822e7b748a3a212bb2ead7432e9db5c0a0f52a423f11d0eb7452f675e",
+      "contextHash": "dc065d30ff9c16661caf9f86e812b217e11a15c71a91ed393a05b0ed6b58e11e",
+      "targetHash": "0fa7186e8b26911a55c93f43d3a05eb4f7abf8e2f095efd602a76461c908dbb0",
+      "translation": "E no go come party.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Third-person nonarrival at party retained with no go.",
+      "contexts": [
+        {
+          "itemId": "c91652a1",
+          "skillId": "e.e5.future",
+          "englishTarget": "He will not come to the party.",
+          "koreanMeaning": "그는 파티에 오지 않을 거예요.",
+          "rule": "will 부정문은 will not + 동사원형이에요. not은 will 바로 뒤에 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 290,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "우리는 오늘 밤 TV를 보지 않을 거예요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "4b7f731413c20db9c5a352a34ba4536c69c1cbff29efec3dc12738e6e6b53bb8",
+      "contextHash": "218a4b30710d7ac14dddb88a70cde112aa7f7771b0321de539259d19d6a5b6e9",
+      "targetHash": "f4c9512e864113557669715c37fc70ff30d61e6ef8ef32609bc67444700b2fe0",
+      "translation": "We no go watch TV tonight.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "First-person plural refusal/nonplan to watch TV tonight retained.",
+      "contexts": [
+        {
+          "itemId": "5b5a15a2",
+          "skillId": "e.e5.future",
+          "englishTarget": "We aren't going to watch TV tonight.",
+          "koreanMeaning": "우리는 오늘 밤 TV를 보지 않을 거예요.",
+          "rule": "be going to의 부정문은 be동사 뒤에 not을 붙여요. 그 뒤에는 동사원형이 와요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 291,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "내 숙제를 도와줄래요?",
+      "sourceLanguage": "ko",
+      "sourceHash": "f2d25e3267aac2955d7b91c705c6487859612197564e8a718a05a6d9e4d7dd42",
+      "contextHash": "547b78a2325c74549ce5d071461040c509f2465f005c05369389986dcb772603",
+      "targetHash": "22ce613db6b60840f66760e8a38fb7804ea1902923c3f3774536401c5638c67f",
+      "translation": "You go help me with my homework?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Addressee asked to help speaker with speaker's homework; both ownership and beneficiary retained.",
+      "contexts": [
+        {
+          "itemId": "7a1aac58",
+          "skillId": "e.e5.future",
+          "englishTarget": "Will you help me with my homework?",
+          "koreanMeaning": "내 숙제를 도와줄래요?",
+          "rule": "will 의문문은 Will + 주어 + 동사원형 ~?의 순서예요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 292,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "오늘 오후에 비가 올까요?",
+      "sourceLanguage": "ko",
+      "sourceHash": "af0612b9c17d745013f629e74b04df7be06d498f9159185bf5979629d1153a7b",
+      "contextHash": "45d1b7f8ef941dc1b71c32387f985d7596903c0d4ff66182e91dffcd0fa1bee7",
+      "targetHash": "5a0e582ece134808b0fcac461fafc8de5e7eb4cf49a31d551d0887935faa6ae7",
+      "translation": "Rain go fall dis afternoon?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "This-afternoon rain prediction remains interrogative.",
+      "contexts": [
+        {
+          "itemId": "5118e5be",
+          "skillId": "e.e5.future",
+          "englishTarget": "Is it going to rain this afternoon?",
+          "koreanMeaning": "오늘 오후에 비가 올까요?",
+          "rule": "be going to 의문문은 be동사를 주어 앞으로 보내요. it에는 Is를 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 293,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "너는 미술 동아리에 들어갈 거니?",
+      "sourceLanguage": "ko",
+      "sourceHash": "c510447154b8ec0a4d0995bd62ebf88f4b62888165c17e125406f6b54ee18ce8",
+      "contextHash": "6caee129a5807a2d536638f3c0b06a0cd46c04e3fd014825099bd648845195e2",
+      "targetHash": "51c6f70c3dc1072d0773729b110de87f02c34de201afc9d19bb5d6dc162e9e41",
+      "translation": "You go join art club?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Future art-club joining remains a question.",
+      "contexts": [
+        {
+          "itemId": "fa2aed18",
+          "skillId": "e.e5.future",
+          "englishTarget": "Are you going to join the art club?",
+          "koreanMeaning": "너는 미술 동아리에 들어갈 거니?",
+          "rule": "be going to를 쓸 때는 going to를 빠뜨리지 않아야 해요. 앞에는 be동사가 와요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 294,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "너는 점심으로 뭘 먹을 거니?",
+      "sourceLanguage": "ko",
+      "sourceHash": "dc45e291efbb9a4b7d1de2ea408520a91bcef5a8714f6e6d1b92908c2d507ce4",
+      "contextHash": "dee527a2064d782ad7485321221f3e0737149af7ee6b392b85e146ecac9dda4b",
+      "targetHash": "006507d495fffe8469a691838438e14f98420a48839893a1ef5d205340760463",
+      "translation": "Wetin you go chop for afternoon food?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Future lunch food question retained.",
+      "contexts": [
+        {
+          "itemId": "c8e19024",
+          "skillId": "e.e5.future",
+          "englishTarget": "What are you going to eat for lunch?",
+          "koreanMeaning": "너는 점심으로 뭘 먹을 거니?",
+          "rule": "의문사 뒤에도 be going to 의문문의 순서(be동사 + 주어 + going to)를 그대로 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 295,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "내일은 맑을 것 같아요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "e8970f8d54a4521867954920d6bbad31f9fbaee390c75d6d39af9e095f0146ea",
+      "contextHash": "8d5d258374c5eb08b9c1197c508b542d42a674471109b918cdb940e877084ac2",
+      "targetHash": "757856e16827624b170112f43d15ad0bbfeb99ba3dd6e2d16c60a8abbe92b57b",
+      "translation": "E be like say tomorrow weather go clear.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Tomorrow clear-weather prediction is hedged by E be like say, matching I think/seems.",
+      "contexts": [
+        {
+          "itemId": "009ee096",
+          "skillId": "e.e5.future",
+          "englishTarget": "I think it will be sunny tomorrow.",
+          "koreanMeaning": "내일은 맑을 것 같아요.",
+          "rule": "will 뒤에는 be동사도 원형인 be를 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 296,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "내 남동생은 다음 달에 열 살이 될 거예요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "fe3186357c805da42db3d0a4571a02777a3cad019f74aae9aa1e1f98655cb2ef",
+      "contextHash": "95ec70ed328361bc01bbd6530cb2c574f5d59c168c13d8eabc83d9075e186742",
+      "targetHash": "cd992e274f7263e4b225b58c7030d1bdca95b77d8bbf47f266aa9b095082f480",
+      "translation": "My younger brother go reach ten year next month.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Younger male sibling will reach age ten next month.",
+      "contexts": [
+        {
+          "itemId": "f680c37a",
+          "skillId": "e.e5.future",
+          "englishTarget": "My brother will be ten years old next month.",
+          "koreanMeaning": "내 남동생은 다음 달에 열 살이 될 거예요.",
+          "rule": "next month 같은 미래 시간 표현은 will과 함께 써요. will 뒤에는 동사원형 be가 와요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 297,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "아빠가 5시에 나를 데리러 오실 거예요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "11122c383809f4efdb06b36136ecb2b54a658c50baecbf815fab5528e012181a",
+      "contextHash": "e67ea09357917fd839a4d10eebc8b1c01e9511483ab673d68f0e1d36d625157d",
+      "targetHash": "0bc4e0a30c2c2b637fad201da9c121a59503e0eaf3b053325ce999fbaf0124b9",
+      "translation": "Papa go come pick me for 5 o'clock.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Father future pickup of speaker at 5 o'clock retained.",
+      "contexts": [
+        {
+          "itemId": "e76a1f37",
+          "skillId": "e.e5.future",
+          "englishTarget": "Dad is going to pick me up at five.",
+          "koreanMeaning": "아빠가 5시에 나를 데리러 오실 거예요.",
+          "rule": "be going to 뒤에는 동사원형이 와요. 주어가 3인칭 단수여도 동사에는 -s를 붙이지 않아요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 298,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "조심해! 너 넘어지겠다.",
+      "sourceLanguage": "ko",
+      "sourceHash": "50a7a004f0ea6b7f01e98c4f1b607f5d0409a3a62b25875616bdf0a834634b81",
+      "contextHash": "1802132c50874935578692999669c384afb368be3b95a605c8d00069afcf3424",
+      "targetHash": "78ef490f13511442ce3a92df438620bbfe31b25d384228349ebdcbda8623dd0c",
+      "translation": "Careful! You wan fall.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Warning and imminent fall retained; wan can mark imminence in Pidgin, not necessarily desire.",
+      "contexts": [
+        {
+          "itemId": "950eb58f",
+          "skillId": "e.e5.future",
+          "englishTarget": "Be careful! You are going to fall.",
+          "koreanMeaning": "조심해! 너 넘어지겠다.",
+          "rule": "눈앞의 상황으로 곧 일어날 일을 예상할 때도 be going to를 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 299,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "오늘 밤에 전화할게요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "393ab0d5d934fb1806f99456550dfa1fbb9ac0a2df11e42840aa6392881476cd",
+      "contextHash": "91cac87c3a0f20bff5a4459ebf97ad6dcfe78f397d55a093be5513afae23626e",
+      "targetHash": "59fbcd90627b6974a193077cf95000578e0cebd2354b5602999536a64dd08e19",
+      "translation": "I go call tonight.",
+      "hashBindingPass": true,
+      "verdict": "source_issue_hold",
+      "reason": "Tonight's promised calling retained, but English target's you recipient is omitted.",
+      "contexts": [
+        {
+          "itemId": "d4fa55d7",
+          "skillId": "e.e5.future",
+          "englishTarget": "I'll call you tonight.",
+          "koreanMeaning": "오늘 밤에 전화할게요.",
+          "rule": "I'll은 I will의 줄임말이에요. 그 뒤에도 동사원형이 와요."
+        }
+      ],
+      "sourceIssue": "Korean omits call recipient, English target says you. Confirm target recipient metadata; patch restores you without adding gender.",
+      "suggestedPatch": {
+        "expectedSourceHash": "393ab0d5d934fb1806f99456550dfa1fbb9ac0a2df11e42840aa6392881476cd",
+        "expectedContextHash": "91cac87c3a0f20bff5a4459ebf97ad6dcfe78f397d55a093be5513afae23626e",
+        "expectedTargetHash": "59fbcd90627b6974a193077cf95000578e0cebd2354b5602999536a64dd08e19",
+        "translation": "I go call you tonight.",
+        "proposedTargetHash": "8c5c190a83000ffffd97a638b86621c5a4278df40c21035b224c69f801ed9f80",
+        "applyOnlyAfter": "source-author role/owner confirmation"
+      },
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 300,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "그녀는 학교에 늦지 않을 거예요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "facf259442ae283e54cfd3ee95c5ea82e930007b1d1afd856dc59e0b16a6632d",
+      "contextHash": "1b409da6cec6037348c74dcd1e70796b7966f2b63228cc493611a469905cdf69",
+      "targetHash": "2a4ce576ff412a1c58bd1208f20737f60b5b8c09dcc3d39574a5b8c01f15da4c",
+      "translation": "She no go late for school.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Female subject's future nonlateness for school retained.",
+      "contexts": [
+        {
+          "itemId": "0218a843",
+          "skillId": "e.e5.future",
+          "englishTarget": "She won't be late for school.",
+          "koreanMeaning": "그녀는 학교에 늦지 않을 거예요.",
+          "rule": "won't는 will not의 줄임말이에요. 뒤에는 동사원형 be가 와요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 301,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "그 영화는 언제 시작해요?",
+      "sourceLanguage": "ko",
+      "sourceHash": "db70bd9d657a314a0e5527fc440df7f4eb18e4c3e10d60d48cf361e841fbe56b",
+      "contextHash": "9a10016144b61aa13ea4545cd4c510df59a4314d78c2288854d13d187dc0a36a",
+      "targetHash": "c054f198caf4be66e44d49509b6ae65d491ed326daf7d9e1c4ca8369acda6709",
+      "translation": "When di film go start?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Movie starting-time question retained.",
+      "contexts": [
+        {
+          "itemId": "b291469f",
+          "skillId": "e.e5.future",
+          "englishTarget": "When will the movie start?",
+          "koreanMeaning": "그 영화는 언제 시작해요?",
+          "rule": "의문사 + will + 주어 + 동사원형 순서로 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 302,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "버스가 곧 도착할 거예요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "18e35a79e61b434d0cc8eac7c45a039e913c52c638a18f904553e95274b0ac6d",
+      "contextHash": "03d5415a74402229c23beaad1bb85c0d9aeca5e034553a570772de1ec139468a",
+      "targetHash": "2cc4275ea255931ff8d58d88f16b8a87130506ccd091f38e56d3f7097ea9db97",
+      "translation": "Bus go soon arrive.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Bus arrival soon retained.",
+      "contexts": [
+        {
+          "itemId": "6b779145",
+          "skillId": "e.e5.future",
+          "englishTarget": "The bus will arrive soon.",
+          "koreanMeaning": "버스가 곧 도착할 거예요.",
+          "rule": "will 뒤에는 동사원형이 와요. 주어가 3인칭 단수여도 동사에 -s를 붙이지 않아요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 303,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "톰은 언젠가 의사가 될 거예요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "2d654eca38a51935348a1133d38bdb586ba561fcc26188a42b27a4a77742ff00",
+      "contextHash": "e2c923ae2d1fc9bd4af7b4b12be629524406993cf17271faad1d62e1930b6e04",
+      "targetHash": "66f27209115f7795bcc18c7d9a3ece4518a11fc3b59ef0f854dd8837d5b924d4",
+      "translation": "Tom go become doctor one day.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Tom's future doctor identity someday retained; job does not add gender.",
+      "contexts": [
+        {
+          "itemId": "0bf0b1fe",
+          "skillId": "e.e5.future",
+          "englishTarget": "Tom is going to be a doctor someday.",
+          "koreanMeaning": "톰은 언젠가 의사가 될 거예요.",
+          "rule": "be going to 뒤에는 동사원형이 오므로 be동사도 be로 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 304,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "그들은 기차로 여행할 거니?",
+      "sourceLanguage": "ko",
+      "sourceHash": "553864839b0cbd991c7d8652eedbb2e9bd368136d3a09ff13c3c755ffa5a578f",
+      "contextHash": "34e76fa064e3ead4687cc310a1c2a8f91044945f235fa99aafd6c3bf3adb1422",
+      "targetHash": "8e46feaee902e74d39852394709016c633c733c5beb7b1bf32f9ab747effc7c1",
+      "translation": "Dem go travel by train?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Plural future train travel remains a question.",
+      "contexts": [
+        {
+          "itemId": "0582076c",
+          "skillId": "e.e5.future",
+          "englishTarget": "Are they going to travel by train?",
+          "koreanMeaning": "그들은 기차로 여행할 거니?",
+          "rule": "be going to 의문문에서도 going to 뒤에는 동사원형을 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 305,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "나는 네 생일을 잊지 않을 거야.",
+      "sourceLanguage": "ko",
+      "sourceHash": "aa783a1987338740952192a7be91b612eac9116e38aa8999d6eb0de19b410c5f",
+      "contextHash": "6cc5e2a8f3def458a17e547fef6efd28c3a73c400ae44aaf55c1319fd23ccad8",
+      "targetHash": "b2338db7715f1bc6592414f8712cd17fe43698941ec88032b729eb465b7136b6",
+      "translation": "I no go forget your birthday.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Promise not to forget addressee's birthday retained.",
+      "contexts": [
+        {
+          "itemId": "02f87a34",
+          "skillId": "e.e5.future",
+          "englishTarget": "I will not forget your birthday.",
+          "koreanMeaning": "나는 네 생일을 잊지 않을 거야.",
+          "rule": "will not 뒤에는 동사원형을 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 306,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "미나는 우산을 가져올까요?",
+      "sourceLanguage": "ko",
+      "sourceHash": "be361f9663a9bbe3a9a4a0321e9e767935928ec76c62497b1f436137883ffaf8",
+      "contextHash": "9f87fed435931a92af1ded5d9aa5be572141e743b1fb2fd5a95f9c9d0e54beaa",
+      "targetHash": "2834e74690dfafeb50d356e21b0e59d31497e82f3e9968f0747ccf88b4728754",
+      "translation": "Mina go bring umbrella?",
+      "hashBindingPass": true,
+      "verdict": "source_issue_hold",
+      "reason": "Mina future umbrella-bringing question retained, but English target specifies possessive her umbrella.",
+      "contexts": [
+        {
+          "itemId": "50e29e19",
+          "skillId": "e.e5.future",
+          "englishTarget": "Will Mina bring her umbrella?",
+          "koreanMeaning": "미나는 우산을 가져올까요?",
+          "rule": "Will + 주어 + 동사원형 ~? 로 물어요. 주어가 Mina여도 동사는 원형이에요."
+        }
+      ],
+      "sourceIssue": "Korean says umbrella without owner; English target says her umbrella. Do not infer Mina gender from her/name. Proposed repeated-name owner needs source-author confirmation of antecedent.",
+      "suggestedPatch": {
+        "expectedSourceHash": "be361f9663a9bbe3a9a4a0321e9e767935928ec76c62497b1f436137883ffaf8",
+        "expectedContextHash": "9f87fed435931a92af1ded5d9aa5be572141e743b1fb2fd5a95f9c9d0e54beaa",
+        "expectedTargetHash": "2834e74690dfafeb50d356e21b0e59d31497e82f3e9968f0747ccf88b4728754",
+        "translation": "Mina go bring Mina own umbrella?",
+        "proposedTargetHash": "31bfde0dece5f0c222f791dde554672735c4e1f5699bac37ad41b77180a24686",
+        "applyOnlyAfter": "source-author role/owner confirmation"
+      },
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 307,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "나는 지금 배고프지 않아요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "3054badbc6e3f738fe066d342796c1a0c0e099b4b3e02364e50105dc450000ab",
+      "contextHash": "fec624b917cb82568d61ef6eb19ecc8e88f5daea1dfc75b0eb5630b79d14c995",
+      "targetHash": "54ca598f7805b37735f2726b3c1953b3551fa3081da8fdb73186f57fd250b517",
+      "translation": "I no hungry now.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "First-person nonhungry state now retained.",
+      "contexts": [
+        {
+          "itemId": "8a073a27",
+          "skillId": "e.e5.transform",
+          "englishTarget": "I am not hungry now.",
+          "koreanMeaning": "나는 지금 배고프지 않아요.",
+          "rule": "be동사의 부정문은 be동사 바로 뒤에 not을 붙여요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 308,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "너는 시험 볼 준비가 됐니?",
+      "sourceLanguage": "ko",
+      "sourceHash": "4048a00ec6840588f4efefecab615416ae1d983c56431f4e6e2eb70bb96ca7e0",
+      "contextHash": "57137e8ccd8717f9502dd602f098363786967663441c36239f7298955b168a8d",
+      "targetHash": "bf6ba1efe3bcddc036534d8e3ec322d6cc58178cac37bbf84415c2eca30dade7",
+      "translation": "You don ready for test?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Readiness for test question retained by don ready.",
+      "contexts": [
+        {
+          "itemId": "ead01f50",
+          "skillId": "e.e5.transform",
+          "englishTarget": "Are you ready for the test?",
+          "koreanMeaning": "너는 시험 볼 준비가 됐니?",
+          "rule": "be동사 문장의 의문문은 be동사를 주어 앞으로 보내요. you에는 Are를 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 309,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "그녀는 매운 음식을 좋아하지 않아요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "23b43a5c2b0d72dfe7f221030bdab0047cbfd599476d25ada930866fab985a92",
+      "contextHash": "077e85a1a68ab6f7e921f6c6c3c29015bd5641a6bc39b31b3a0f88e4fcff4420",
+      "targetHash": "e717f339dcc1dbe4d00aa31bb538467084e06ee52d44d1f9c114b1311a023a53",
+      "translation": "She no like peppery food.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Female subject dislikes spicy food; peppery is a natural food interpretation here.",
+      "contexts": [
+        {
+          "itemId": "827acc56",
+          "skillId": "e.e5.transform",
+          "englishTarget": "She doesn't like spicy food.",
+          "koreanMeaning": "그녀는 매운 음식을 좋아하지 않아요.",
+          "rule": "주어가 3인칭 단수일 때 일반동사의 부정문은 doesn't + 동사원형이에요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 310,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "네 오빠(형)는 피아노를 치니?",
+      "sourceLanguage": "ko",
+      "sourceHash": "eac365bced8e004f5add73a624e32ef4b448ef172cdd9f38e0a258d00e5c15f6",
+      "contextHash": "c572580fbada2db757a2cf956e6d66f2e268aa84101bb8ccd959e697b1216914",
+      "targetHash": "6cdbf26977b468519218f9425c91aae2fc9e65cf1907226306aa57ff86b1e91a",
+      "translation": "Your elder brother dey play piano?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Addressee's older male sibling and piano habit question retained; Korean explicitly older relation.",
+      "contexts": [
+        {
+          "itemId": "6ddd4a11",
+          "skillId": "e.e5.transform",
+          "englishTarget": "Does your brother play the piano?",
+          "koreanMeaning": "네 오빠(형)는 피아노를 치니?",
+          "rule": "주어가 3인칭 단수인 일반동사 의문문은 Does + 주어 + 동사원형 ~?이에요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 311,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "우리는 어젯밤에 TV를 보지 않았어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "dc4a941e4989c63406419373c831158d68afd7c535557f2b3eae867d6ec2bf8d",
+      "contextHash": "488d93513dbb0af6fe54d40ab5971dd25968790080d3b4a5edab740f0bcd2e44",
+      "targetHash": "f667d7ec624191dad9443ba6d3c7371348f97d955427db721d4eee9ad2c2dd4b",
+      "translation": "We no watch TV last night.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "First-person plural negative TV event last night retained.",
+      "contexts": [
+        {
+          "itemId": "1b0ba51f",
+          "skillId": "e.e5.transform",
+          "englishTarget": "We didn't watch TV last night.",
+          "koreanMeaning": "우리는 어젯밤에 TV를 보지 않았어요.",
+          "rule": "과거 부정문은 didn't + 동사원형이에요. didn't에 이미 과거의 뜻이 있어요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 312,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "너는 숙제를 끝냈니?",
+      "sourceLanguage": "ko",
+      "sourceHash": "eaf97b52fcf57c74dadba1ac400d0b2edde248217885fc70f079f8ca0058a1f2",
+      "contextHash": "45dceb4c132e4869d9223cf1924f2b83acc4be7ed68a3ae00073d96758d65b1f",
+      "targetHash": "764c8461b98e538e26535b1619037a0e7b4dca526975f89bce880ef672db0b9a",
+      "translation": "You don finish your homework?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Homework completion question retained; don encodes completed state relevant to did finish.",
+      "contexts": [
+        {
+          "itemId": "4eef611e",
+          "skillId": "e.e5.transform",
+          "englishTarget": "Did you finish your homework?",
+          "koreanMeaning": "너는 숙제를 끝냈니?",
+          "rule": "과거 의문문은 Did + 주어 + 동사원형 ~?이에요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 313,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "그들은 공원에 있지 않아요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "c5c326d15e4155af870951eb46f7028f6c134001f19baf52191602befe434be9",
+      "contextHash": "aca8a27b60a26da3a821c6233d07404a704a09881f35a207d914040920454e71",
+      "targetHash": "3d1ed6dbf4af83aa6fb1704ff33af054a410ad60b5612efc7e65f2388696a450",
+      "translation": "Dem no dey park.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Plural subjects absent from park retained.",
+      "contexts": [
+        {
+          "itemId": "f940c81d",
+          "skillId": "e.e5.transform",
+          "englishTarget": "They are not at the park.",
+          "koreanMeaning": "그들은 공원에 있지 않아요.",
+          "rule": "be동사가 있는 문장은 don't 없이 be동사 + not으로 부정해요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 314,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "톰은 수영을 잘 못해요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "3c198a465ab4964864a6639c8ec132d607e83445136f853d8e26eb2feb2a6ec3",
+      "contextHash": "17b0ddb72e66ae3c5e16476a4dba51bfc3084d3874fe7f6b43c147d6c8348f48",
+      "targetHash": "3e70c3e0921be9cef6681236b0254903fa75b03c66cdd10defeae85cc85fa6a7",
+      "translation": "Tom no too sabi swim.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Tom's limited swimming ability retained; no too sabi preserves not very well rather than no ability whatsoever.",
+      "contexts": [
+        {
+          "itemId": "e410db0e",
+          "skillId": "e.e5.transform",
+          "englishTarget": "Tom can't swim very well.",
+          "koreanMeaning": "톰은 수영을 잘 못해요.",
+          "rule": "can의 부정은 can't(cannot) + 동사원형이에요. can 뒤에서는 주어가 3인칭 단수여도 -s를 붙이지 않아요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 315,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "창문을 열어 줄래요?",
+      "sourceLanguage": "ko",
+      "sourceHash": "fde4ac380cc65a04a2760529948e3f55292c034891eb1c1dfc6a273585c37aa3",
+      "contextHash": "4f35380e2ef3f96b0559302e2c572bddd207bc95067556f7b74a1dbb23b9c124",
+      "targetHash": "30282620a0227cecf4616d2f7becf4504e2dd7b06803d093198165a66837ee1d",
+      "translation": "You fit open window?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Polite ability/request question to open window retained.",
+      "contexts": [
+        {
+          "itemId": "44e3ebac",
+          "skillId": "e.e5.transform",
+          "englishTarget": "Can you open the window?",
+          "koreanMeaning": "창문을 열어 줄래요?",
+          "rule": "조동사 can의 의문문은 Can + 주어 + 동사원형 ~?이에요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 316,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "그는 어제 집에 없었어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "332fe83d3fe9e592a4bc7daed34b690ca80f508c1b88e5523ae33d90b1547da0",
+      "contextHash": "cfcd0e55518f2a107095e3f9ab5d87067c7738f0358402ce6effcd53ed2d0b3f",
+      "targetHash": "d5ee6d4b98c44996642f9c13fd68407fbedffa196bc540dcdb9b3ec2c2d24694",
+      "translation": "E no dey house yesterday.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Third-person absence at home yesterday retained; explicit time anchors past.",
+      "contexts": [
+        {
+          "itemId": "f64f6305",
+          "skillId": "e.e5.transform",
+          "englishTarget": "He wasn't at home yesterday.",
+          "koreanMeaning": "그는 어제 집에 없었어요.",
+          "rule": "be동사의 과거 부정문은 was/were + not이에요. He에는 was를 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 317,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "그들은 수업에 늦었나요?",
+      "sourceLanguage": "ko",
+      "sourceHash": "63b5dfa1e649a04d09a53521a884f94346e39749ba32a9691874c201b2b0777d",
+      "contextHash": "1d3807c02639758e4c3e674b0107edf30c348af0605442e7df95884009e77339",
+      "targetHash": "4a427d39cb08ea54b252127406d35adae70b65616392e6a312261875f4f2fb1f",
+      "translation": "Dem late for class?",
+      "hashBindingPass": true,
+      "verdict": "unsure",
+      "reason": "Past lateness question lacks time anchor; unmarked late can also read present, so bin would clarify past.",
+      "contexts": [
+        {
+          "itemId": "9d6481f5",
+          "skillId": "e.e5.transform",
+          "englishTarget": "Were they late for class?",
+          "koreanMeaning": "그들은 수업에 늦었나요?",
+          "rule": "be동사 과거 의문문은 Was/Were를 주어 앞에 써요. they에는 Were를 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": {
+        "expectedSourceHash": "63b5dfa1e649a04d09a53521a884f94346e39749ba32a9691874c201b2b0777d",
+        "expectedContextHash": "1d3807c02639758e4c3e674b0107edf30c348af0605442e7df95884009e77339",
+        "expectedTargetHash": "4a427d39cb08ea54b252127406d35adae70b65616392e6a312261875f4f2fb1f",
+        "translation": "Dem bin late for class?",
+        "proposedTargetHash": "6ae685b3b6635ae95de496f30e33d3787317dc7f816e7475eac6ddd0912c9776",
+        "applyOnlyAfter": "human or authorized author review; recommendation only"
+      },
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 318,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "그녀는 생일에 무엇을 갖고 싶어 하나요?",
+      "sourceLanguage": "ko",
+      "sourceHash": "90260c08011c9ee1af476a1faf981a5dcdcb9e666300f14f2d1e96b558bc42c3",
+      "contextHash": "67dc72ea7d4d7d960326431718aa13228b7609fa5fbe6b4d0de2c60a0a34e943",
+      "targetHash": "be64feb71010c604729c1683644630892c7d2afd0b61cf65eb537cdba467e4c6",
+      "translation": "Wetin she want for her birthday?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Female subject's birthday wish question retained.",
+      "contexts": [
+        {
+          "itemId": "bdd1efac",
+          "skillId": "e.e5.transform",
+          "englishTarget": "What does she want for her birthday?",
+          "koreanMeaning": "그녀는 생일에 무엇을 갖고 싶어 하나요?",
+          "rule": "의문사 뒤에도 does + 주어 + 동사원형 순서를 지켜요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 319,
+      "file": "english-bank-sentence-meanings-pcm-0280-0319.json",
+      "source": "너는 어제 어디에 갔니?",
+      "sourceLanguage": "ko",
+      "sourceHash": "68b39a9768c8c7982b8d6d8f2a2cf4d7a83735d71aefada1e3ad8292322c9f99",
+      "contextHash": "e1a00df14f47b700d3efcfb2246689862fe60a568b005c425de767e42717892c",
+      "targetHash": "db7f8bc782de8c70ff78e10dbcba1796c134efd5c63c9ebb1267e7262c8c793c",
+      "translation": "Where you go yesterday?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Addressee's destination yesterday question retained.",
+      "contexts": [
+        {
+          "itemId": "2b118cc1",
+          "skillId": "e.e5.transform",
+          "englishTarget": "Where did you go yesterday?",
+          "koreanMeaning": "너는 어제 어디에 갔니?",
+          "rule": "과거 의문문에서는 did 때문에 동사가 원형이에요. went로 쓰면 틀려요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 320,
+      "file": "english-bank-sentence-meanings-pcm-0320-0349.json",
+      "source": "나는 연필이 하나도 없어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "93f61407dc8dec8d24bb812b7d1861d3bd006c454735daef40e08f4af267130c",
+      "contextHash": "ffd2a5f3086e4baac710d410a03f9ea344a5461730d3beee2ed663859d980674",
+      "targetHash": "a4afbbbeb326d59674efcf9cd9d89440a66a685666042edd5766da997912a738",
+      "translation": "I no get any pencil.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "First-person zero pencils retained.",
+      "contexts": [
+        {
+          "itemId": "871e707f",
+          "skillId": "e.e5.transform",
+          "englishTarget": "I don't have any pencils.",
+          "koreanMeaning": "나는 연필이 하나도 없어요.",
+          "rule": "주어가 I일 때 일반동사 부정문은 don't + 동사원형이에요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 321,
+      "file": "english-bank-sentence-meanings-pcm-0320-0349.json",
+      "source": "냉장고에 달걀이 하나도 없어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "6a3b1e7cf664b965b9a197747d074e00ac52d03570e12a367e66d0b978d5ff88",
+      "contextHash": "0d84ff0a6e4a588a65109583c9e1a9c888ca3448a11b0a60de69d5f119861923",
+      "targetHash": "7da3d350dd601077365a3ace1784d38dd8a73232dd59f1966a5679f8d8b81e84",
+      "translation": "No egg dey inside fridge.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Zero eggs inside refrigerator retained.",
+      "contexts": [
+        {
+          "itemId": "2af9aec8",
+          "skillId": "e.e5.transform",
+          "englishTarget": "There aren't any eggs in the fridge.",
+          "koreanMeaning": "냉장고에 달걀이 하나도 없어요.",
+          "rule": "There are ~의 부정문은 There aren't ~예요. 부정문의 any 뒤에는 복수명사를 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 322,
+      "file": "english-bank-sentence-meanings-pcm-0320-0349.json",
+      "source": "그녀는 지금 TV를 보고 있니?",
+      "sourceLanguage": "ko",
+      "sourceHash": "a4081984691bcc84b5b8214f6d2b1503adeaab3ed2d4331ce525f8eee8d8e716",
+      "contextHash": "237802b5d0904ca30f1f41f78ebdd62ebb388c3ab452befe87c3cf13559ed963",
+      "targetHash": "d821863f12286a367b3f6bf565bf257f7967b8f835ba9f4d3a47534001652c91",
+      "translation": "She dey watch TV now?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Female ongoing TV watching now remains a question.",
+      "contexts": [
+        {
+          "itemId": "961a563b",
+          "skillId": "e.e5.transform",
+          "englishTarget": "Is she watching TV now?",
+          "koreanMeaning": "그녀는 지금 TV를 보고 있니?",
+          "rule": "현재진행 의문문은 Is/Are + 주어 + 동사-ing ~?이에요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 323,
+      "file": "english-bank-sentence-meanings-pcm-0320-0349.json",
+      "source": "그는 복도에서 뛰고 있지 않아요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "9f3368eae64a1bcb981e522bb744f5d834ad79d91b32ecf13ab71d1e95a3b984",
+      "contextHash": "12835c07ced1177f976e549ee1f710c50e755a86aa02078311980f18984879b3",
+      "targetHash": "ce7d79e7a981e5df6e638e86ed2661d2fa96f9bfffce467b47b1caf574c5c430",
+      "translation": "E no dey run for corridor.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Third-person not running in corridor retained.",
+      "contexts": [
+        {
+          "itemId": "1d630c91",
+          "skillId": "e.e5.transform",
+          "englishTarget": "He isn't running in the hallway.",
+          "koreanMeaning": "그는 복도에서 뛰고 있지 않아요.",
+          "rule": "현재진행 부정문은 be동사 + not + 동사-ing예요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 324,
+      "file": "english-bank-sentence-meanings-pcm-0320-0349.json",
+      "source": "너는 책이 몇 권 있니?",
+      "sourceLanguage": "ko",
+      "sourceHash": "a38acc22d6859fdaf312596bcbbee3eec78022726823c1e5d29f1e89c1ee903b",
+      "contextHash": "dd0ac6939f1822559c21dff51c52b4978f5770039d65b3d8a824fb38e0e385c8",
+      "targetHash": "17549f63be46843ebba4828e5d351297b0324bb0aaf9c2da32d46ae4f68b7ad0",
+      "translation": "How many book you get?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Question asks addressee's number of books.",
+      "contexts": [
+        {
+          "itemId": "abef2ee1",
+          "skillId": "e.e5.transform",
+          "englishTarget": "How many books do you have?",
+          "koreanMeaning": "너는 책이 몇 권 있니?",
+          "rule": "How many 뒤에는 복수명사가 오고, 이어서 do + 주어 + 동사원형 순서로 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 325,
+      "file": "english-bank-sentence-meanings-pcm-0320-0349.json",
+      "source": "그들은 학교에서 점심을 먹나요?",
+      "sourceLanguage": "ko",
+      "sourceHash": "1123a6818b604d59789635029309ef6b34aaad7148e542863d865c8da8e9c4a9",
+      "contextHash": "20e1c7df8c4dea40633bc26e6352e9137910149bc5750bae9fb9a92cf5f56a54",
+      "targetHash": "bf8d2656ae417403215960f3e8660002219d232dd1de4063e9d52303ee7339a0",
+      "translation": "Dem dey chop afternoon food for school?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Plural habitual lunch at school remains a question.",
+      "contexts": [
+        {
+          "itemId": "d7a95ad5",
+          "skillId": "e.e5.transform",
+          "englishTarget": "Do they eat lunch at school?",
+          "koreanMeaning": "그들은 학교에서 점심을 먹나요?",
+          "rule": "주어가 they이면 일반동사 의문문은 Do + 주어 + 동사원형 ~?이에요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 326,
+      "file": "english-bank-sentence-meanings-pcm-0320-0349.json",
+      "source": "그녀는 아파서 파티에 가지 않았어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "ee08eca73666be087a801797a9e5267f84f4a42bc39e259f64989f6cf4f2a1dd",
+      "contextHash": "0cb6a46c606a7dc07b78da28bf6a4951c72d71cae1b1592b08707af24b27277e",
+      "targetHash": "41c84af32862c7ba73503f5ec591dcc3f3c723d9bad721661a618a9ab589f105",
+      "translation": "She no go party because she sick.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Female nonattendance at party because sick retained; no changes to cause or negation.",
+      "contexts": [
+        {
+          "itemId": "e2b0fbe8",
+          "skillId": "e.e5.transform",
+          "englishTarget": "She didn't go to the party because she was sick.",
+          "koreanMeaning": "그녀는 아파서 파티에 가지 않았어요.",
+          "rule": "didn't 뒤에는 동사원형이 와요. because 뒤의 절은 따로 과거 형태를 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 327,
+      "file": "english-bank-sentence-meanings-pcm-0320-0349.json",
+      "source": "지난주에 우리 반은 농장을 방문했어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "abd30aeafd1f31f75a1dbb83728e1f46966c0c40d3be4628d9ce52209216b558",
+      "contextHash": "9bf72a348f0d60fe8ff9c405d9931c2dbd7c7f62e6735801eeba7ea1b1a74713",
+      "targetHash": "0c6117f638382a70a713ef91daeea9f49f8f2eee003b0db38c653b447bd57935",
+      "translation": "Last week, our class visit farm.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Last-week class farm visit retained; our class follows Korean 우리 반 and is idiomatically compatible with English my class.",
+      "contexts": [
+        {
+          "itemId": "5723f097",
+          "skillId": "e.e5.transform",
+          "englishTarget": "Last week, my class visited a farm.",
+          "koreanMeaning": "지난주에 우리 반은 농장을 방문했어요.",
+          "rule": "last week는 지난 일을 나타내서 동사를 과거형(visited)으로 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval.",
+      "contextNote": "Family-title/deictic possession is natural in context. Korean 우리 may idiomatically mean my; our is not by itself proof of a wrong number of owners. No correction required solely from literal Korean/English owner variation."
+    },
+    {
+      "kind": "meanings",
+      "index": 328,
+      "file": "english-bank-sentence-meanings-pcm-0320-0349.json",
+      "source": "내일 아빠가 우리에게 밥을 해 주실 거예요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "25abb2c4d2c3ba5fb5f7d6c72e35aafa887e3c73ce894576a28c71a2c5f00435",
+      "contextHash": "4270d234f95fc805853abfb621635dbd572c11467622deff03acccb1aa33784c",
+      "targetHash": "1059a71444664c4e3e5e6284c048b8d3c484f411d99a052fdc1336b226940ff0",
+      "translation": "Tomorrow, papa go cook food for us.",
+      "hashBindingPass": true,
+      "verdict": "source_issue_hold",
+      "reason": "Future father cooking for first-person plural retained; Korean 밥 says meal/food whereas English target narrows it to rice.",
+      "contexts": [
+        {
+          "itemId": "9db1f502",
+          "skillId": "e.e5.transform",
+          "englishTarget": "Tomorrow, Dad will cook rice for us.",
+          "koreanMeaning": "내일 아빠가 우리에게 밥을 해 주실 거예요.",
+          "rule": "tomorrow는 앞으로 올 때를 나타내서 will + 동사원형으로 미래를 표현해요."
+        }
+      ],
+      "sourceIssue": "Korean 밥 can mean meal/food; English target specifically says rice. Current food follows Korean and is not a confirmed translation error. Resolve intended English lexical target versus Korean gloss.",
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 329,
+      "file": "english-bank-sentence-meanings-pcm-0320-0349.json",
+      "source": "점심 전에 손을 씻어 주세요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "8e67058186ed5427c9348da634897c8d8fe95438afdbf40d3490a177cdda7787",
+      "contextHash": "f56e68dd03549d18e418104d6044451724de757ff9cadd5e1cd2df566f12ab75",
+      "targetHash": "8e6e7c1f97717463eef8b037deb5c8eddbae58a7b30aebd604d516306b5895fb",
+      "translation": "Abeg wash your hand dem before afternoon food.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Polite handwashing request before lunch retained; order is correct.",
+      "contexts": [
+        {
+          "itemId": "d7d0a84e",
+          "skillId": "e.e5.transform",
+          "englishTarget": "Please wash your hands before lunch.",
+          "koreanMeaning": "점심 전에 손을 씻어 주세요.",
+          "rule": "정중한 요청은 Please + 동사원형으로 말해요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 330,
+      "file": "english-bank-sentence-meanings-pcm-0320-0349.json",
+      "source": "그들은 피곤해서 집에 갔어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "9b7b390a7f9ed886caef9669e4f07fcf0eb5f463a4e90a88d3c72e049edb6b02",
+      "contextHash": "e2a00df4583a188e42de7c6ebd0fbf74994ab9b1c497a6f30304d285df90b99b",
+      "targetHash": "d9129127baa18096348c169070cd85da0a71224c9025c1cb6c7abdff28628061",
+      "translation": "Dem tire, so dem go house.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Plural tired state causes going home; no actor added.",
+      "contexts": [
+        {
+          "itemId": "32b0818e",
+          "skillId": "e.e5.transform",
+          "englishTarget": "They were tired, so they went home.",
+          "koreanMeaning": "그들은 피곤해서 집에 갔어요.",
+          "rule": "원인 뒤에 결과를 이을 때는 so를 써요. go의 과거형은 went이고, home 앞에는 to를 쓰지 않아요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 331,
+      "file": "english-bank-sentence-meanings-pcm-0320-0349.json",
+      "source": "미나와 준은 열쇠를 찾았나요?",
+      "sourceLanguage": "ko",
+      "sourceHash": "49b432b8c8e717c94e5eb320dd3fa6b1ba32bb99ab1bdc9318381c6e35b1f559",
+      "contextHash": "4ffab44c252cf43e4faa4f1536f5cc7811f085d436538421203f02517dc3aad9",
+      "targetHash": "3f580be322ed3d5c72ac6edffb760583fd52cefb01a8d794f6ae0cc902417738",
+      "translation": "Mina and Jun find di key?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Mina and Jun key-finding question retained; names do not add gender.",
+      "contexts": [
+        {
+          "itemId": "11f40160",
+          "skillId": "e.e5.transform",
+          "englishTarget": "Did Mina and Jun find the key?",
+          "koreanMeaning": "미나와 준은 열쇠를 찾았나요?",
+          "rule": "Did로 시작하는 과거 의문문에서는 동사를 원형(find)으로 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 332,
+      "file": "english-bank-sentence-meanings-pcm-0320-0349.json",
+      "source": "지호는 아파서 올 수 없어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "8350b7f9a8ae8fdb8a04ccb98fed697ff050fc673d82c9741bf7adadbafa1ac3",
+      "contextHash": "d7edccdcc1738bb6974618bce38b70de0bc553343144532029fe894bb812d076",
+      "targetHash": "95ddcbb0b20d2dd2391afe97d02588f4950a07e2c4623066ecf834ce9d60c0fc",
+      "translation": "Ji-ho no fit come because Ji-ho sick.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Ji-ho inability to come caused by illness retained; repeating name avoids inferred he.",
+      "contexts": [
+        {
+          "itemId": "2516cab0",
+          "skillId": "e.e5.transform",
+          "englishTarget": "Ji-ho can't come because he is sick.",
+          "koreanMeaning": "지호는 아파서 올 수 없어요.",
+          "rule": "이유를 말할 때는 because를 써요. can't 뒤에는 동사원형, because 뒤에도 주어와 동사를 갖춰야 해요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 333,
+      "file": "english-bank-sentence-meanings-pcm-0320-0349.json",
+      "source": "아침으로 무엇을 먹었나요?",
+      "sourceLanguage": "ko",
+      "sourceHash": "383641487b89454fc5c00bb0deba87599f0234c918e29f3ae2d4d9454937307a",
+      "contextHash": "88e808a797989d59e4be4d5853dc430e83e417dec9e187d758e9f9bd5b7eaac6",
+      "targetHash": "a255df4e79a916119bc14364fa3ff710dffaeaf814ae9589d48f988bb6f2fb3b",
+      "translation": "Wetin you chop for morning food?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Breakfast-food question retained.",
+      "contexts": [
+        {
+          "itemId": "bf542706",
+          "skillId": "e.e5.transform",
+          "englishTarget": "What did you eat for breakfast?",
+          "koreanMeaning": "아침으로 무엇을 먹었나요?",
+          "rule": "의문사 + did + 주어 + 동사원형 순서로 과거 질문을 만들어요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 334,
+      "file": "english-bank-sentence-meanings-pcm-0320-0349.json",
+      "source": "미나는 남동생보다 키가 커요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "9cebc1b72b1a67ed28c3fcc878d1e0a8c8b48acfaea594ce11460f871225a377",
+      "contextHash": "0080d7830be2cbecc019e0910a49f9592a9eca90011d5d111d6442e662f5daa7",
+      "targetHash": "34de3aaf2d31015f243855f56284457b6d877b03f74cc26fed14e57365e7cf39",
+      "translation": "Mina tall pass younger brother.",
+      "hashBindingPass": true,
+      "verdict": "needs_revision",
+      "reason": "Mina taller than younger brother retained, but whose younger brother is no longer explicit.",
+      "contexts": [
+        {
+          "itemId": "ba881c3d",
+          "skillId": "e.e5.read",
+          "englishTarget": "Mina is taller than her brother.",
+          "koreanMeaning": "미나는 남동생보다 키가 커요.",
+          "rule": "짧은 형용사의 비교급은 -er을 붙이고 than과 함께 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": {
+        "expectedSourceHash": "9cebc1b72b1a67ed28c3fcc878d1e0a8c8b48acfaea594ce11460f871225a377",
+        "expectedContextHash": "0080d7830be2cbecc019e0910a49f9592a9eca90011d5d111d6442e662f5daa7",
+        "expectedTargetHash": "34de3aaf2d31015f243855f56284457b6d877b03f74cc26fed14e57365e7cf39",
+        "translation": "Mina tall pass Mina younger brother.",
+        "proposedTargetHash": "7109e5eafc056dd3fd332041b423a49a1d1e8ce56a96467f2832b114ceaeddb6",
+        "applyOnlyAfter": "human or authorized author review; recommendation only"
+      },
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 335,
+      "file": "english-bank-sentence-meanings-pcm-0320-0349.json",
+      "source": "우리는 어제 동물원에 갔어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "5ce0671a492a6b87b8cef408997bea02d3e1234855e19490d986416dfb5f137c",
+      "contextHash": "88fbece83f3db8a7dc695c0218ef341fb07ed346beb527e98b3f655e90a14838",
+      "targetHash": "e715e02819184a7bf7c5faf437a7b97bf4b655c9666a5aed570fb04ffd51e9aa",
+      "translation": "We go zoo yesterday.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "First-person plural zoo journey yesterday retained.",
+      "contexts": [
+        {
+          "itemId": "753fce6f",
+          "skillId": "e.e5.read",
+          "englishTarget": "We went to the zoo yesterday.",
+          "koreanMeaning": "우리는 어제 동물원에 갔어요.",
+          "rule": "yesterday가 있으면 과거형을 써요. go의 과거형은 불규칙형 went예요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 336,
+      "file": "english-bank-sentence-meanings-pcm-0320-0349.json",
+      "source": "그는 이번 주말에 삼촌을 방문할 거예요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "e3a23cbd5acd7621b5a122bc3841dab953df29cb556774d24f8c7fc13287516e",
+      "contextHash": "0512114a0e1dcd5b733fdbca52eaa83979cde23222c63dbb54ad4468e2092ca1",
+      "targetHash": "d4a9ba0641599b61817213ac57a41c647509ade256f63a5c3fa0a05c50f66fbd",
+      "translation": "E go visit uncle dis weekend.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Third-person future uncle visit this weekend retained; possessive his is omitted in target.",
+      "contexts": [
+        {
+          "itemId": "08229fd8",
+          "skillId": "e.e5.read",
+          "englishTarget": "He is going to visit his uncle this weekend.",
+          "koreanMeaning": "그는 이번 주말에 삼촌을 방문할 거예요.",
+          "rule": "계획은 be going to + 동사원형으로 말해요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval.",
+      "contextNote": "Family-title/deictic possession is natural in context. Korean 우리 may idiomatically mean my; our is not by itself proof of a wrong number of owners. No correction required solely from literal Korean/English owner variation."
+    },
+    {
+      "kind": "meanings",
+      "index": 337,
+      "file": "english-bank-sentence-meanings-pcm-0320-0349.json",
+      "source": "도서관은 몇 시에 열어요?",
+      "sourceLanguage": "ko",
+      "sourceHash": "95d6af9cd10306b62228757111c27e9d4f6dee996f211490c3f46840ab5c3657",
+      "contextHash": "edd0de952f14163c733ff55f825a619a33b95ac2f09bda599d14bca0948e4c7a",
+      "targetHash": "a3fb6e137acbc3bae9d0183050983e6200b91faeed7f050c4d4862a53bca2731",
+      "translation": "Which time library dey open?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Library-opening clock-time question retained.",
+      "contexts": [
+        {
+          "itemId": "2a91c51d",
+          "skillId": "e.e5.read",
+          "englishTarget": "What time does the library open?",
+          "koreanMeaning": "도서관은 몇 시에 열어요?",
+          "rule": "의문사 의문문에서 주어가 3인칭 단수이면 does를 쓰고, 뒤의 동사는 원형으로 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 338,
+      "file": "english-bank-sentence-meanings-pcm-0320-0349.json",
+      "source": "책상 위에 책 몇 권이 있어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "c9e0e4a85d6d6453513f295dfe00255410e73b062b332ce9b3bdae855ced09bd",
+      "contextHash": "a2d379efea4e74d1be45c94b93419eb62b2aeee703a67b262eadaf0667778a0a",
+      "targetHash": "070e15d8ef36127035103e0d6066806d0ef650defbec7048b58bac75b3052dcb",
+      "translation": "Some book dey on top desk.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Some books on desk retained; not zero or a specific invented count.",
+      "contexts": [
+        {
+          "itemId": "ac2162e7",
+          "skillId": "e.e5.read",
+          "englishTarget": "There are some books on the desk.",
+          "koreanMeaning": "책상 위에 책 몇 권이 있어요.",
+          "rule": "복수 명사(books) 앞에서는 There are를 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 339,
+      "file": "english-bank-sentence-meanings-pcm-0320-0349.json",
+      "source": "내 여동생은 수영은 못하지만 빨리 달릴 수 있어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "6a48e1dc2894ccf729aa67931e761cc934846b9427337016d3f535de149e1e20",
+      "contextHash": "df799de8d8c0de3afd7994b8fd82c311db7b32e9ba2ce3b0ade3ced075e14163",
+      "targetHash": "492bb19b121f2a038d24f17a11992aee649759e3e6f092af52c95bcac278bfb8",
+      "translation": "My younger sister no fit swim, but she fit run fast.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Younger female sibling cannot swim but can run fast; both ability contrasts retained.",
+      "contexts": [
+        {
+          "itemId": "c97743b7",
+          "skillId": "e.e5.read",
+          "englishTarget": "My sister can't swim, but she can run fast.",
+          "koreanMeaning": "내 여동생은 수영은 못하지만 빨리 달릴 수 있어요.",
+          "rule": "can과 can't 뒤에는 항상 동사원형이 와요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 340,
+      "file": "english-bank-sentence-meanings-pcm-0320-0349.json",
+      "source": "톰은 지금 책을 읽고 있어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "75c75051541fad9d8bcf1007209616cfb39c1c75ed00636b93d7c773019e5883",
+      "contextHash": "70fd3dfbb3702faf666e3dffe8d73d0a1f174cd783b0c6a697bf0228ab32be67",
+      "targetHash": "466bd890aebe8701d97a044b25d39fe3402b7dc4b8de2b6a9c6d2af830d22d7a",
+      "translation": "Tom dey read book now.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Tom currently reading a book retained without gender inference.",
+      "contexts": [
+        {
+          "itemId": "dfa6e98c",
+          "skillId": "e.e6.tense",
+          "englishTarget": "Tom is reading a book now.",
+          "koreanMeaning": "톰은 지금 책을 읽고 있어요.",
+          "rule": "now(지금)가 있으면 지금 하고 있는 일이므로 현재진행형 be + -ing를 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 341,
+      "file": "english-bank-sentence-meanings-pcm-0320-0349.json",
+      "source": "우리는 어제 축구를 했어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "7f136d81c1421178623bfb7235e332ca34e098f5ae368e915732ff06f8224e31",
+      "contextHash": "d808389be0c9c3d327066a30f04038d8026edd89d5c7fa9bd48e447e0d862e40",
+      "targetHash": "c49565f34f51215f8c9425bb352b5985005a7175592235083d6f387c81e98077",
+      "translation": "We play football yesterday.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "First-person plural football yesterday retained.",
+      "contexts": [
+        {
+          "itemId": "9b80474b",
+          "skillId": "e.e6.tense",
+          "englishTarget": "We played soccer yesterday.",
+          "koreanMeaning": "우리는 어제 축구를 했어요.",
+          "rule": "yesterday(어제)는 지난 일이므로 동사의 과거형(-ed)을 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 342,
+      "file": "english-bank-sentence-meanings-pcm-0320-0349.json",
+      "source": "그녀는 토요일마다 도서관에 가요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "4bccd34a8629e520998ddc1ba046c4e04cde44ed5c04d5e658b1681623df5bbc",
+      "contextHash": "638d3f697904bc5eecee091b22be9a2d6d12727dd8aeb8d6c3348b944c2d701e",
+      "targetHash": "d311a330a43c9aa879fc3c6e7a2622e93462c693f8ba7a5deca32016668319c3",
+      "translation": "She dey go library every Saturday.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Female library habit every Saturday retained.",
+      "contexts": [
+        {
+          "itemId": "01ea6505",
+          "skillId": "e.e6.tense",
+          "englishTarget": "She goes to the library every Saturday.",
+          "koreanMeaning": "그녀는 토요일마다 도서관에 가요.",
+          "rule": "every Saturday처럼 늘 반복되는 일은 현재형으로 말하고, 주어가 she이면 동사에 -(e)s를 붙여요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 343,
+      "file": "english-bank-sentence-meanings-pcm-0320-0349.json",
+      "source": "보세요! 밖에 비가 오고 있어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "30a134ea850ba927fab4503f3c3e34d4ef6c00047601028fe441fad886e43eff",
+      "contextHash": "01a78e6f7cd41fb07cedca927f4f0186b6d8f812c98ad00ab6730c96a71e101b",
+      "targetHash": "b44c1a760960d6985ebe93ce9daea52f137c3677ee4faf8e06b91114e78fdc27",
+      "translation": "Look! Rain dey fall outside.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Attention command plus ongoing rain outside retained.",
+      "contexts": [
+        {
+          "itemId": "4a2c2ecb",
+          "skillId": "e.e6.tense",
+          "englishTarget": "Look! It is raining outside.",
+          "koreanMeaning": "보세요! 밖에 비가 오고 있어요.",
+          "rule": "눈앞에서 지금 일어나는 일은 be + -ing(현재진행형)로 말해요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 344,
+      "file": "english-bank-sentence-meanings-pcm-0320-0349.json",
+      "source": "내 남동생은 지난주에 아팠어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "6a1d9a62eaa1db6c509b89206a7cd56e0724586c1d44418565b3d37e1d9a2a19",
+      "contextHash": "bd22f61656e6adeb427ae7e365a3a2bd282decc57e6982f4b72187d8a69c8049",
+      "targetHash": "5c116cdf52fbbb4a73fb857286df16a2bcfe8d9d1d72fb8c5e3b9ffe8b8d15d7",
+      "translation": "My younger brother sick last week.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Younger male sibling's illness last week retained.",
+      "contexts": [
+        {
+          "itemId": "9ef3f781",
+          "skillId": "e.e6.tense",
+          "englishTarget": "My brother was sick last week.",
+          "koreanMeaning": "내 남동생은 지난주에 아팠어요.",
+          "rule": "be동사의 과거형은 주어가 I, he, she, it이면 was, you, we, they이면 were예요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 345,
+      "file": "english-bank-sentence-meanings-pcm-0320-0349.json",
+      "source": "나는 그녀의 생일을 위해 케이크를 만들 거예요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "eff9be42743374b5348fbf233f1509a96164d5d25e3347402d05b08e0a914573",
+      "contextHash": "ba46e990f301abc67cbd87cc485aeac32f64701f87c91e7427b5fba9edca1c8a",
+      "targetHash": "e058306c7c5d6d1cc2e92e00347be716d0b12f437142d07b7de869ccc77b77aa",
+      "translation": "I go bake cake for her birthday.",
+      "hashBindingPass": true,
+      "verdict": "needs_revision",
+      "reason": "Future cake for explicitly female owner's birthday retained, but bake adds a cooking method absent from make/만들다.",
+      "contexts": [
+        {
+          "itemId": "229f844a",
+          "skillId": "e.e6.tense",
+          "englishTarget": "I am going to make a cake for her birthday.",
+          "koreanMeaning": "나는 그녀의 생일을 위해 케이크를 만들 거예요.",
+          "rule": "be going to 뒤에는 동사원형이 와요. 앞으로의 계획을 말할 때 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": {
+        "expectedSourceHash": "eff9be42743374b5348fbf233f1509a96164d5d25e3347402d05b08e0a914573",
+        "expectedContextHash": "ba46e990f301abc67cbd87cc485aeac32f64701f87c91e7427b5fba9edca1c8a",
+        "expectedTargetHash": "e058306c7c5d6d1cc2e92e00347be716d0b12f437142d07b7de869ccc77b77aa",
+        "translation": "I go make cake for her birthday.",
+        "proposedTargetHash": "590f9a2e5e4c43ec64da6f80652370273433425fa41399e36aa9268984b33b2d",
+        "applyOnlyAfter": "human or authorized author review; recommendation only"
+      },
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 346,
+      "file": "english-bank-sentence-meanings-pcm-0320-0349.json",
+      "source": "너는 어젯밤에 텔레비전을 봤니?",
+      "sourceLanguage": "ko",
+      "sourceHash": "59ca5164fa5f100d9c081a366b93a6f76dc6b45e549713c99873315f68658149",
+      "contextHash": "d2d9f063ba2db11e4e198e164840c96612b195aaa60d6c4a6a25d1281589e91e",
+      "targetHash": "50544f0e175d0f7d7f79d7c7bd8bb68fac3c1d15a08d2c167caae8b3d2a4b47a",
+      "translation": "You watch TV last night?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Addressee's TV watching last night remains a question.",
+      "contexts": [
+        {
+          "itemId": "110fd1ba",
+          "skillId": "e.e6.tense",
+          "englishTarget": "Did you watch TV last night?",
+          "koreanMeaning": "너는 어젯밤에 텔레비전을 봤니?",
+          "rule": "과거의 일을 묻는 일반동사 의문문은 Did + 주어 + 동사원형으로 만들어요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 347,
+      "file": "english-bank-sentence-meanings-pcm-0320-0349.json",
+      "source": "너는 지금 무엇을 하고 있니?",
+      "sourceLanguage": "ko",
+      "sourceHash": "a0cfebcf7e47dd00556833132913e463e656e52af278e133a231adcee01af311",
+      "contextHash": "d4b2edeb23c8384b48b9d5400e440662eab93ce29270b8222b7b7d7a4783f5e7",
+      "targetHash": "984c87aa36f12b80f02064c8b18091c078de94438c50344eb2290512076671dc",
+      "translation": "Wetin you dey do now?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Question asks addressee's ongoing activity now.",
+      "contexts": [
+        {
+          "itemId": "68a1c5bb",
+          "skillId": "e.e6.tense",
+          "englishTarget": "What are you doing now?",
+          "koreanMeaning": "너는 지금 무엇을 하고 있니?",
+          "rule": "지금 하고 있는 일을 묻는 말은 What + be동사 + 주어 + -ing ~?로 만들어요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 348,
+      "file": "english-bank-sentence-meanings-pcm-0320-0349.json",
+      "source": "내일은 날씨가 맑을까요?",
+      "sourceLanguage": "ko",
+      "sourceHash": "7c3537c813dd6a1b47623f7da582100366059e5b0673eff22190ff1dbdbe6da8",
+      "contextHash": "59605d303cb8329db66acacb9087b1705e45b444e620352c89ea216565446286",
+      "targetHash": "709312a0c72332f3cbfb5e07e0583aac140bd0956c3b31e7b46fe5a415dde709",
+      "translation": "Tomorrow weather go clear?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Tomorrow clear-weather prediction remains a question.",
+      "contexts": [
+        {
+          "itemId": "0e47bc02",
+          "skillId": "e.e6.tense",
+          "englishTarget": "Will it be sunny tomorrow?",
+          "koreanMeaning": "내일은 날씨가 맑을까요?",
+          "rule": "will이 있는 의문문에서는 Will + 주어 + 동사원형 순서로 쓰고, be동사도 원형 be가 와요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "meanings",
+      "index": 349,
+      "file": "english-bank-sentence-meanings-pcm-0320-0349.json",
+      "source": "그는 어제 학교에 가지 않았어요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "88648874e7efea57ea28c3d95eea9c7bd0b39afcfc0fb97191e56ab1376e9015",
+      "contextHash": "9043e615c0b23088a28baca2fa86a33a7eaa04d0cb522664e042d5d2cfcc7d4d",
+      "targetHash": "6d00f78449a6b260f3e06b467bf7bfc5cfaa555f7c96c47dc19e37c48906081b",
+      "translation": "E no go school yesterday.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Third-person negative school attendance yesterday retained.",
+      "contexts": [
+        {
+          "itemId": "64ce202d",
+          "skillId": "e.e6.tense",
+          "englishTarget": "He didn't go to school yesterday.",
+          "koreanMeaning": "그는 어제 학교에 가지 않았어요.",
+          "rule": "과거의 부정문은 didn't + 동사원형이에요. didn't가 이미 과거를 나타내므로 동사는 과거형으로 쓰지 않아요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "rules",
+      "index": 60,
+      "file": "english-bank-sentence-rules-pcm-0060-0079.json",
+      "source": "You 다음에는 are를 써요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "0637a48b1877484d083688a1e2286aeff63f47d843336e4e8d9e049ac25341c5",
+      "contextHash": "e86ba4e8ad1f9c766c83696abdd1c8b24dd59a17960b73ee4681fdd0d3c076cb",
+      "targetHash": "a805c98c0ce9e3080ea0c79b7ace55b9d46189d33fa13c0b22068b8f50de9824",
+      "translation": "Use are after You.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "You→are association retained for the target You are tall; bare imperative wording is shared with English but semantically accurate.",
+      "contexts": [
+        {
+          "itemId": "3e954395",
+          "skillId": "e.e2.sent",
+          "englishTarget": "You are tall.",
+          "koreanMeaning": "너는 키가 커요.",
+          "rule": "You 다음에는 are를 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval.",
+      "surfaceNote": "Short command shares its form with English; semantic content passes. More visibly Naijá phrasing could be preferred editorially, but this review does not classify shared imperative vocabulary as proven untranslated fallback."
+    },
+    {
+      "kind": "rules",
+      "index": 61,
+      "file": "english-bank-sentence-rules-pcm-0060-0079.json",
+      "source": "‘어떤 상태’를 말할 때는 am 뒤에 happy 같은 형용사를 써요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "11e7fcc68a80b798c38aec228499d5034bfb445fd911a716b5491b2e1d3be3d6",
+      "contextHash": "3d76f3f187137d9c224c5f0d25b50aaacbb3e90e5c3107dff57836adce1703ca",
+      "targetHash": "612f451e2cc09a9aaa4c19648469edc0cca59b7a8687aec30bca45c9238cbf23",
+      "translation": "To talk how person be or feel, put adjective like happy after am.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "State/feeling adjective happy follows am, matching I am happy; no new character state introduced.",
+      "contexts": [
+        {
+          "itemId": "a058a4df",
+          "skillId": "e.e2.sent",
+          "englishTarget": "I am happy.",
+          "koreanMeaning": "나는 행복해요.",
+          "rule": "‘어떤 상태’를 말할 때는 am 뒤에 happy 같은 형용사를 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "rules",
+      "index": 62,
+      "file": "english-bank-sentence-rules-pcm-0060-0079.json",
+      "source": "We 다음에는 are를 써요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "c3dcfb3b1aa8f0df22e42eae425eb78f230df1c967aeef815a747391a1d4f2c5",
+      "contextHash": "ca2991fa564a615042faceb242d093e24828dc62092b2cbfdb9481f445db524e",
+      "targetHash": "dd67d7cf975d7e73eef5847533274c7383e76a9b22aadf5923c8404993808e12",
+      "translation": "Use are after We.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "We→are association retained for We are in the park; semantic ordering correct.",
+      "contexts": [
+        {
+          "itemId": "e709081d",
+          "skillId": "e.e2.sent",
+          "englishTarget": "We are in the park.",
+          "koreanMeaning": "우리는 공원에 있어요.",
+          "rule": "We 다음에는 are를 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval.",
+      "surfaceNote": "Short command shares its form with English; semantic content passes. More visibly Naijá phrasing could be preferred editorially, but this review does not classify shared imperative vocabulary as proven untranslated fallback."
+    },
+    {
+      "kind": "rules",
+      "index": 63,
+      "file": "english-bank-sentence-rules-pcm-0060-0079.json",
+      "source": "They는 여러 명이니까 friends처럼 -s를 붙여요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "210be3e6b121b2d647940acbfa410de131ee8cbb778138e5c59fc7ab52106ddb",
+      "contextHash": "420ae48a779706ff95c5335671707420ca6bc831bd725ca3387ad41e251dc3dd",
+      "targetHash": "ea027d58dcec9812b25477e445514f217e8352ad9c0d8ce666a4a12e4df9588f",
+      "translation": "They mean more than one person, so add -s like for friends.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Plural They context takes plural noun friends with -s; scope is this plural target, not a universal prohibition on singular they.",
+      "contexts": [
+        {
+          "itemId": "b54810a3",
+          "skillId": "e.e2.sent",
+          "englishTarget": "They are good friends.",
+          "koreanMeaning": "그들은 좋은 친구예요.",
+          "rule": "They는 여러 명이니까 friends처럼 -s를 붙여요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "rules",
+      "index": 64,
+      "file": "english-bank-sentence-rules-pcm-0060-0079.json",
+      "source": "You 다음에는 동사 원래 모양(jump)을 써요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "d3408d405e8ea57f51ee81b963c468efafcd5e44045ee48c56920a113460aade",
+      "contextHash": "7c82dcd6a489a1aa0672334d30d1dd46be4d659602e1662d8c6c7ec607be3ad3",
+      "targetHash": "b543afd79477ce836b6b34f5803acf94c52d4bff93e69293922ee2b70b352b73",
+      "translation": "After You, use verb base form, jump.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "You takes base verb jump, matching You jump high; no tense or agreement reversal.",
+      "contexts": [
+        {
+          "itemId": "f479ebd3",
+          "skillId": "e.e2.sent",
+          "englishTarget": "You jump high.",
+          "koreanMeaning": "너는 높이 뛰어요.",
+          "rule": "You 다음에는 동사 원래 모양(jump)을 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval.",
+      "surfaceNote": "Short command shares its form with English; semantic content passes. More visibly Naijá phrasing could be preferred editorially, but this review does not classify shared imperative vocabulary as proven untranslated fallback."
+    },
+    {
+      "kind": "rules",
+      "index": 65,
+      "file": "english-bank-sentence-rules-pcm-0060-0079.json",
+      "source": "‘누가 → 한다 → 무엇을’ 순서예요. eat 뒤에는 먹는 것이 와요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "3ae80de804123d88060c20efbb195d9ba56aa9b01a96984a9d869b2da97b5567",
+      "contextHash": "d304e9e141c783c131c59eac04c94bc13e855a529d68be96d6f0effdd2a5bd30",
+      "targetHash": "59eed04922b731f610db1cbcb7c28caea534899787f79b99c52e3c3dff8442e8",
+      "translation": "Di order na person wey do am → action → thing. Put wetin dem chop after eat.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Agent→action→object sequence and food object after eat retained; English examples stay learning targets.",
+      "contexts": [
+        {
+          "itemId": "efe2e213",
+          "skillId": "e.e2.sent",
+          "englishTarget": "We eat lunch.",
+          "koreanMeaning": "우리는 점심을 먹어요.",
+          "rule": "‘누가 → 한다 → 무엇을’ 순서예요. eat 뒤에는 먹는 것이 와요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "rules",
+      "index": 66,
+      "file": "english-bank-sentence-rules-pcm-0060-0079.json",
+      "source": "나이를 말할 때는 I am ... years old라고 해요. 둘 이상이면 years예요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "8ef43ad305b1abe0603f52aaae6577428e7016cebf6d457973e0a1bf33cf8b7b",
+      "contextHash": "4fe9549de8dc1ca178d5d66c34f0376f96949a224ab8e0dc3ce30bd0ee77e326",
+      "targetHash": "568c4fc8df0ddbe150d93a9c36088e36921c5bd7512071fddbdc0c07c82ee0fa",
+      "translation": "To talk age, use I am ... years old. If di number reach two or more, use years.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "I am ... years old age frame retained; two-or-more integer age plural years instruction retained.",
+      "contexts": [
+        {
+          "itemId": "b511962d",
+          "skillId": "e.e2.sent",
+          "englishTarget": "I am nine years old.",
+          "koreanMeaning": "나는 아홉 살이에요.",
+          "rule": "나이를 말할 때는 I am ... years old라고 해요. 둘 이상이면 years예요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "rules",
+      "index": 67,
+      "file": "english-bank-sentence-rules-pcm-0060-0079.json",
+      "source": "‘춤추는 사람’은 dancer예요. 사람을 말할 때 -er을 붙여요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "a20d02964b78c23c0cb05c60ace24000e6cbfbd85e6d512c76f19e39fba2f57e",
+      "contextHash": "fdb092d9279d7cdd9064a4798ad6b392a80a10dcbdf9d05088dc0cf5f5510fcc",
+      "targetHash": "1c76b025a9b3d1c1a9efa989f169de65816892291fa092967ac897330e6defc0",
+      "translation": "Person wey dey dance na dancer. For dis word, add -er to show di person.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Dancer and person-forming -er retained; For dis word usefully scopes the derivation to this example.",
+      "contexts": [
+        {
+          "itemId": "8a98d58f",
+          "skillId": "e.e2.sent",
+          "englishTarget": "You are a good dancer.",
+          "koreanMeaning": "너는 춤을 잘 추는 사람이야.",
+          "rule": "‘춤추는 사람’은 dancer예요. 사람을 말할 때 -er을 붙여요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "rules",
+      "index": 68,
+      "file": "english-bank-sentence-rules-pcm-0060-0079.json",
+      "source": "‘~이 아니에요’는 am 뒤에 not을 붙여요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "ba2b2a6771c513f69f37f8dd54760248297e7be4d6b6f878f08d49a20011bff0",
+      "contextHash": "ddb43d7cb8c1775d0e57de9003f1d9e598827474109ff424d977224569296956",
+      "targetHash": "2ad81cc23ec84adcd4cb752f6a2d00e6f42c139d97fb9524e18c53b7d7146f67",
+      "translation": "To talk say something no be so, put not after am.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Not follows am to form the target negative state; no loss of negation.",
+      "contexts": [
+        {
+          "itemId": "06082757",
+          "skillId": "e.e2.sent",
+          "englishTarget": "I am not sad.",
+          "koreanMeaning": "나는 슬프지 않아요.",
+          "rule": "‘~이 아니에요’는 am 뒤에 not을 붙여요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "rules",
+      "index": 69,
+      "file": "english-bank-sentence-rules-pcm-0060-0079.json",
+      "source": "you에 대한 질문은 Are you ...?로 시작해요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "1285c562f1a6f6013a866867334758b6cd07cf4985cecfaa30563dc446e97502",
+      "contextHash": "ee24279a463e9121ec45193dbf33429cf37ac945e24e3a547020a33b1752e77f",
+      "targetHash": "f1206b31ba3919249fb0079618bda8b871adfd3056e493e01ffed36869f0fd5c",
+      "translation": "Question about you dey start with Are you ...?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Are you ...? opening for addressee questions retained exactly as English learning target.",
+      "contexts": [
+        {
+          "itemId": "7c5564f2",
+          "skillId": "e.e2.sent",
+          "englishTarget": "Are you hungry?",
+          "koreanMeaning": "너는 배고프니?",
+          "rule": "you에 대한 질문은 Are you ...?로 시작해요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "rules",
+      "index": 70,
+      "file": "english-bank-sentence-rules-pcm-0060-0079.json",
+      "source": "book은 자음 소리로 시작해서 a를 써요. 하나일 때는 -s를 붙이지 않아요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "6f4835af2a1ee7d301e2921f2ce7bc0899f784c1e7b5cdc82c680ade2805a9eb",
+      "contextHash": "da871ad3f22d0eaf1415a8bda0d827b208e2671215649577a31520ad214ad125",
+      "targetHash": "4b73457222559457d7c1301a3e797907684d5525dfcd710ce43663c08028d76a",
+      "translation": "book start with consonant sound, so use a. If na one book, no add -s.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Book begins with consonant sound, selects a, and no plural-s for the one-book target; sound/spelling distinction preserved.",
+      "contexts": [
+        {
+          "itemId": "8804923c",
+          "skillId": "e.e2.sent",
+          "englishTarget": "I read a book.",
+          "koreanMeaning": "나는 책을 읽어요.",
+          "rule": "book은 자음 소리로 시작해서 a를 써요. 하나일 때는 -s를 붙이지 않아요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "rules",
+      "index": 71,
+      "file": "english-bank-sentence-rules-pcm-0060-0079.json",
+      "source": "‘그들은’은 They예요. Them은 주어로 쓰지 않아요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "84f48f2bf75dbd4ae11be51dd3bcffda69b0f83fc2b1261a382f1711287e8fdb",
+      "contextHash": "c4567267be69e97e58a111bfc3cab0723e28f3aed392441e86ce2c9367f683f0",
+      "targetHash": "7caa0e51a21d01cd1fccade613900ff6c43ba4b7e0eecee9ac1c22f23ab654c9",
+      "translation": "They mean di people wey do di action. No use Them as subject.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "They is the subject pronoun for the plural actors and Them is not the subject form in this sentence; target distinction retained.",
+      "contexts": [
+        {
+          "itemId": "2c57bebc",
+          "skillId": "e.e2.sent",
+          "englishTarget": "They play soccer.",
+          "koreanMeaning": "그들은 축구를 해요.",
+          "rule": "‘그들은’은 They예요. Them은 주어로 쓰지 않아요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "rules",
+      "index": 72,
+      "file": "english-bank-sentence-rules-pcm-0060-0079.json",
+      "source": "This 다음에는 is를 써요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "08dbf3e6c48bedc34022d0d975c9e494664847e6801da1310aa5178c63536201",
+      "contextHash": "bf9119e02d0e4a2bfa5a47147137f2c446240623dbb8ccfa1efeea05ece27c39",
+      "targetHash": "21812e59ea8f19bcb452dd18a30cbce32b063374bb494bbe5734b20a41b698f3",
+      "translation": "Use is after This.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "This→is association retained for This is my room.",
+      "contexts": [
+        {
+          "itemId": "a8352300",
+          "skillId": "e.e2.sent",
+          "englishTarget": "This is my room.",
+          "koreanMeaning": "이곳은 내 방이에요.",
+          "rule": "This 다음에는 is를 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval.",
+      "surfaceNote": "Short command shares its form with English; semantic content passes. More visibly Naijá phrasing could be preferred editorially, but this review does not classify shared imperative vocabulary as proven untranslated fallback."
+    },
+    {
+      "kind": "rules",
+      "index": 73,
+      "file": "english-bank-sentence-rules-pcm-0060-0079.json",
+      "source": "‘누가 → 본다 → 무엇을 → 어디에’ 순서예요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "9801fae588ade4c2608d7e045c249a992cf233d6e4753103138eb38d24bf73ca",
+      "contextHash": "092082e26e8c46bab718bff80d8546d5670c67dea0e31618d06255ec559fb1b4",
+      "targetHash": "2fa581b6a899cdcd9c67bbd324d84d23b57229de9343b735aa9b1c50ea632ff5",
+      "translation": "Di order na person → see → thing → place.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Agent→see→object→place sequence retained for bird-in-tree target.",
+      "contexts": [
+        {
+          "itemId": "410611f9",
+          "skillId": "e.e2.sent",
+          "englishTarget": "I see a bird in the tree.",
+          "koreanMeaning": "나는 나무 위의 새를 봐요.",
+          "rule": "‘누가 → 본다 → 무엇을 → 어디에’ 순서예요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "rules",
+      "index": 74,
+      "file": "english-bank-sentence-rules-pcm-0060-0079.json",
+      "source": "‘아주’는 very예요. 형용사 앞에 와요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "f90fa7ac059e293646d7e0dd70878e639bb39059f0484c1896a5b9b1c195bd6c",
+      "contextHash": "2bb4b8fe125132ab26d26d5f97c01773f060a63080592e531e5c975f53003601",
+      "targetHash": "ace20eae5667813dc044866fca9d89d9623046f8ee97c5b113d99930490ffc49",
+      "translation": "very mean say di level high. E dey before adjective.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Very intensifies degree and precedes adjective; learner meaning retained without translating the English target word.",
+      "contexts": [
+        {
+          "itemId": "8df9b564",
+          "skillId": "e.e2.sent",
+          "englishTarget": "You are very smart.",
+          "koreanMeaning": "너는 아주 똑똑해요.",
+          "rule": "‘아주’는 very예요. 형용사 앞에 와요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "rules",
+      "index": 75,
+      "file": "english-bank-sentence-rules-pcm-0060-0079.json",
+      "source": "‘~에서 왔다’는 am from이라고 해요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "b2a3c8d9cc725044c655bf06aa4f0441a1a19b701d895b6e757031e571dad028",
+      "contextHash": "7a33f1fe2e9819bf7469b7155878061b1d105caca78c7081117b47b3d4a1fed8",
+      "targetHash": "a36c05063130fe6d3813ef4a44aca604cfc263c5d1819450ec38d8ae0d1923b9",
+      "translation": "am from dey show di place wey person come from.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Am from origin construction retained; this correctly concerns origin, unlike nationality identity sentences.",
+      "contexts": [
+        {
+          "itemId": "cbb45f62",
+          "skillId": "e.e2.sent",
+          "englishTarget": "I am from Korea.",
+          "koreanMeaning": "나는 한국에서 왔어요.",
+          "rule": "‘~에서 왔다’는 am from이라고 해요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "rules",
+      "index": 76,
+      "file": "english-bank-sentence-rules-pcm-0060-0079.json",
+      "source": "‘나의’는 My예요. 'My + 명사' 형태로 써요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "a50bbe21d56528fd7b8802fceac5eaf205d4841656cbafe382c32fce535c057e",
+      "contextHash": "9f49945174e1ababefb8d12a6b6dac3f08db9e9cf7f713045e6246930260c8bd",
+      "targetHash": "ab14422b257cd0e90ef3b7c93c44ea5292c338b233bc8a43dc81c707d1061fda",
+      "translation": "My mean say something belong to me. Use My + noun.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "My possession and My + noun construction retained; first-person ownership correct.",
+      "contexts": [
+        {
+          "itemId": "600608a3",
+          "skillId": "e.e2.sent",
+          "englishTarget": "My bag is blue.",
+          "koreanMeaning": "내 가방은 파란색이에요.",
+          "rule": "‘나의’는 My예요. 'My + 명사' 형태로 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "rules",
+      "index": 77,
+      "file": "english-bank-sentence-rules-pcm-0060-0079.json",
+      "source": "둘 이상이 주어일 때는 are를 써요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "3a348bf8ad8c462ba5179272594e3947e34a10d5539d22f44aed7b413defa835",
+      "contextHash": "1a0e16b2f076e7afcffbfb8da31461e93ca84e1a8bae1420671ee961be43970c",
+      "targetHash": "c3cd5f9381a96ded95bd40f13806073fd6753fa46979e6cec04ad1dd1ab6f258",
+      "translation": "If subject mean two or more, use are.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Plural You and I take are; two-or-more source instruction retained within this person-subject example.",
+      "contexts": [
+        {
+          "itemId": "c07b4c88",
+          "skillId": "e.e2.sent",
+          "englishTarget": "You and I are friends.",
+          "koreanMeaning": "너와 나는 친구예요.",
+          "rule": "둘 이상이 주어일 때는 are를 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "rules",
+      "index": 78,
+      "file": "english-bank-sentence-rules-pcm-0060-0079.json",
+      "source": "가방 한 개를 물을 때는 Where is ~?를 써요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "b18cd1891c28cce5b8ee8c9849a84d06c690be8f6391bab8aadd6c6b549e22d0",
+      "contextHash": "f1882bb5170791aac4194038dc4393bd3689b9e3629b36aa8fc41f44db4835c6",
+      "targetHash": "54d6a01b87fc26e77f1c7537837b51485ef5f31b27e6aec9a74fa7bd568cba07",
+      "translation": "To ask where one bag dey, use Where is ~?",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Where is ~? retained for one-bag location question; singular quantity preserved.",
+      "contexts": [
+        {
+          "itemId": "ade81aa0",
+          "skillId": "e.e2.read",
+          "englishTarget": "Where is my bag?",
+          "koreanMeaning": "내 가방은 어디에 있어요?",
+          "rule": "가방 한 개를 물을 때는 Where is ~?를 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    },
+    {
+      "kind": "rules",
+      "index": 79,
+      "file": "english-bank-sentence-rules-pcm-0060-0079.json",
+      "source": "“~을 보다”라고 할 때는 look at을 써요.",
+      "sourceLanguage": "ko",
+      "sourceHash": "7c3c9d890f0ec702c02b89fc70f3cefb5d95ecfd891b2ec136709e266a7e025a",
+      "contextHash": "16b772eb8693dbaa2c753fe3a77cfb5e5ecf6130f84e458c25bd7b8f545479c0",
+      "targetHash": "105701e236065534981932fad95c663eb40a7eca7607c6557fdae156ce351ffd",
+      "translation": "To talk say person dey look something, use look at.",
+      "hashBindingPass": true,
+      "verdict": "pass",
+      "reason": "Look at retained as the object-looking construction; no substitution with bare look.",
+      "contexts": [
+        {
+          "itemId": "5ab57040",
+          "skillId": "e.e2.read",
+          "englishTarget": "Look at the bird!",
+          "koreanMeaning": "저 새를 봐!",
+          "rule": "“~을 보다”라고 할 때는 look at을 써요."
+        }
+      ],
+      "sourceIssue": null,
+      "suggestedPatch": null,
+      "limits": "AI semantic assessment; no native-speaker or teacher approval."
+    }
+  ],
+  "counts": {
+    "pass": 162,
+    "source_issue_hold": 4,
+    "unsure": 2,
+    "needs_revision": 2
+  },
+  "summary": "170 fields reviewed: semantic corrections proposed for explicit Mina sibling ownership and unsupported bake method. Four source-alignment holds are distinct from confirmed translation errors. Two zero-marked past readings remain unsure; bin patches are clarity suggestions, not claims that all Pidgin past needs bin."
+}
