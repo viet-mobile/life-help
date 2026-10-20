@@ -4,13 +4,13 @@
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
-import { lintQwhy } from "./qwhy-lint";
+import { lintQwhy, ackValid } from "./qwhy-lint";
 const root = path.resolve(__dirname, "../../..");
 const work = process.argv[2];
 const checkOnly = process.argv.includes("--check"); // report rejections without writing anything
 const { items } = JSON.parse(fs.readFileSync(path.join(work, "items.json"), "utf8")) as { items: Array<{ id: string; q: string; why: string }> };
 const approved = fs.existsSync(path.join(work, "approved.json")) ? (JSON.parse(fs.readFileSync(path.join(work, "approved.json"), "utf8")) as Record<string, string[]>) : null;
-const lintAck: Record<string, Record<string, string>> = fs.existsSync(path.join(work, "lint-ack.json")) ? JSON.parse(fs.readFileSync(path.join(work, "lint-ack.json"), "utf8")) : {}; // {locale: {id: reason}}
+const lintAck: Record<string, Record<string, unknown>> = fs.existsSync(path.join(work, "lint-ack.json")) ? JSON.parse(fs.readFileSync(path.join(work, "lint-ack.json"), "utf8")) : {}; // {locale: {id: reason}}
 const HANGUL = /[가-힣ㄱ-ㆎ]/;
 const sha = (s: string) => crypto.createHash("sha1").update(s).digest("hex").slice(0, 10);
 const quotes = (s: string) => [...s.matchAll(/[“"‘']([A-Za-z][^”"’']{2,80})[”"’'](?![A-Za-z])/g)].map((m) => m[1].replace(/[.,!?]+$/, ""));
@@ -27,7 +27,7 @@ for (const f of fs.readdirSync(path.join(work, "done")).filter((x) => x.endsWith
     if (approved && !approved[loc]?.includes(it.id)) { rep.rejected.push([it.id, "not approved"]); continue; }
     const v = tr[it.id]; const q = v?.q?.trim(), w = v?.why?.trim();
     const why = !q || !w ? "missing field" : HANGUL.test(q) || HANGUL.test(w) ? "korean left" : [...quotes(it.why), ...quotes(it.q)].some((x) => !w.includes(x) && !q.includes(x)) ? "quoted English changed" : engWords(it.why).some((x) => !w.includes(x)) ? "English phrase changed" : loc !== "en" && (it.why.match(/\d+/g) ?? []).some((d) => !w.includes(d)) ? "digit lost" : null;
-    const flags = !why && !lintAck[loc]?.[it.id] ? lintQwhy(loc, it.q, it.why, "", q!, w!) : [];
+    const flags = !why && !ackValid(lintAck[loc]?.[it.id]) ? lintQwhy(loc, it.q, it.why, "", q!, w!) : [];
     if (flags.length) { rep.rejected.push([it.id, `lint:${flags.map((f) => f.code + "=" + f.detail).join(",")}`]); continue; }
     if (why) { rep.rejected.push([it.id, why]); continue; }
     if (checkOnly) { rep.merged++; continue; }

@@ -31,3 +31,9 @@ export function lintQwhy(locale: string, srcQ: string, srcWhy: string, passage: 
   void passage;
   return out;
 }
+
+/** A lint exception counts only when it carries independent evidence and a finished review; "needs-recheck" or a sibling-question reason does not. */
+export const ackValid = (a: unknown): boolean => {
+  const x = a as Record<string, unknown> | null;
+  return !!x && typeof x === "object" && x.status === "verified" && ["passage", "title", "character-info"].includes(String(x.evidenceKind)) && !!x.sourceId && !!x.passageHash && !!x.evidenceLocation && !!x.reason;
+};
