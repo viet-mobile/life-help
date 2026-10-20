@@ -1,0 +1,31 @@
+import { expect, test } from "@playwright/test";
+import { ko } from "../../lib/learn/i18n/ko";
+import { BASE, learnUrl } from "./target";
+
+test("math dashboard opens localized navy/red motion videos and retains next-concept navigation", async ({ page }) => {
+ await page.setViewportSize({width:390,height:844});
+ await page.context().addCookies([{name:"learn_lang",value:"ko",url:BASE}]);
+ await page.goto(learnUrl("math","/onboarding"));
+ await page.locator("#nick").fill("motion-test");
+ await page.getByRole("button",{name:ko["onboarding.next"]}).click();
+ await page.locator('[data-grade="E1"]').click();
+ await page.getByRole("button",{name:ko["onboarding.next"]}).click();
+ await page.getByRole("radio",{name:ko["goal.fill_gaps"]}).click();
+ await page.getByRole("button",{name:ko["onboarding.next"]}).click();
+ await page.getByRole("radio",{name:ko["avatar.penguin"],exact:true}).click();
+ await page.getByRole("button",{name:ko["onboarding.finish"]}).click();
+ await page.getByRole("heading",{name:ko["diag.intro.title"]}).waitFor();
+ await page.goto(learnUrl("math","/dashboard"));
+ await page.getByTestId("math-motion-entry").click();
+ const frame=page.frameLocator('iframe[title="MATH.LIFE.HELP"]');
+ await expect(frame.locator('article').first()).toBeVisible();
+ await expect(frame.locator('#grade')).toHaveValue('E1');
+ const video=frame.locator('video').first();
+ await video.evaluate(async (v:HTMLVideoElement)=>{v.load();await v.play();});
+ await expect.poll(()=>video.evaluate((v:HTMLVideoElement)=>v.currentTime)).toBeGreaterThan(0.2);
+ await video.evaluate((v:HTMLVideoElement)=>{v.currentTime=9.8;v.playbackRate=4;});
+ await expect(frame.locator('.end').first()).toBeVisible();
+ await frame.locator('.end').first().click();
+ await expect(frame.locator('article').first()).toBeVisible();
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBeLessThanOrEqual(1);
+});
