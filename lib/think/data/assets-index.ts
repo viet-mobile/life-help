@@ -1164,6 +1164,7 @@ export const OVERLAY_LOADERS: Record<string, Record<string, () => Promise<Overla
     "z-k-01": () => loadThinkAsset<Overlay>("1b698b5e44e00580b1dd89ecd54d16ac79515d6d3ff545ceceb0eb99da50d818"),
   },
   "pcm": {
+    "pilot-english": () => loadThinkAsset<Overlay>("ae0a359d5d2400c0763b31495c35be1210e1f060ad6613532942296f114fac27"),
     "pilot-math": () => loadThinkAsset<Overlay>("0b2adc538d1f75d99614ee70599a7d4113c7a488f6e6a22995d6954caaccf10e"),
   },
   "tl": {

@@ -1,0 +1,68 @@
+{
+  "status": "ai_translated_unreviewed",
+  "range": [
+    1000,
+    1499
+  ],
+  "completedPerLocale": 500,
+  "locales": {
+    "af": {
+      "fileSHA256": "c3eb378d10cbd63750f6f348a52bed28a376cd82cb6bc0b6e6dce2ec3fcfcb5a",
+      "roles": {
+        "localized_instruction_or_meaning": 480,
+        "preserved_learning_target": 20
+      }
+    },
+    "tl": {
+      "fileSHA256": "6ef165896ee35c7d1634662f637c5d037b0554fe2aa72ed49cc5594fc8da0787",
+      "roles": {
+        "localized_instruction_or_meaning": 480,
+        "preserved_learning_target": 20
+      }
+    }
+  },
+  "canonicalContextSHA256": "17e09c783b1fe80bec1712c890fddf99ce9673f246e86527e461b4640ba08284",
+  "checks": "Every corresponding canonical string was read. Exact sourceHash/index coverage; numeric tokens, underscore blanks and placeholders; double-quoted passages preserved. Mixed grammar forms and quoted target fragments manually retained. Instructions, questions and meaning glosses localized.",
+  "nativeReviewDone": false,
+  "teacherReviewDone": false,
+  "independentSemanticReviewDone": false,
+  "genderPolicy": "Existing unknowns retained. Source-explicit gender statements in local pronoun exercises preserved only in their source scope; not propagated to other occurrences of names.",
+  "exceptions": [
+    {
+      "index": 1125,
+      "reason": "English reference in a month differs from canonical next month; translated canonical next month."
+    },
+    {
+      "index": 1139,
+      "reason": "English reference not my favorite is weaker than canonical do not like; translated canonical meaning."
+    },
+    {
+      "index": 1151,
+      "reason": "Not happy does not entail sad; canonical negation retained without reference added inference."
+    },
+    {
+      "index": 1166,
+      "reason": "Not tall does not entail short; canonical negation retained without reference added inference."
+    },
+    {
+      "index": 1179,
+      "reason": "Source prohibition on the in sentences with than is overgeneralised; teacher review needed."
+    },
+    {
+      "index": 1192,
+      "reason": "Prompt requests does not, whereas source explanation gives contracted doesn’t. Source consistency issue; both original English forms retained where present."
+    },
+    {
+      "index": 1288,
+      "reason": "English reference finished homework strengthens canonical did homework; translated canonical did."
+    },
+    {
+      "index": 1342,
+      "reason": "Source story says last week followed by after two weeks of practice; temporal consistency requires source review."
+    },
+    {
+      "index": 1450,
+      "reason": "Example tests connective/discourse fit but source calls it grammatical correctness; distinction needs teacher review."
+    }
+  ]
+}

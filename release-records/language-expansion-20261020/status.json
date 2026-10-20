@@ -26,7 +26,7 @@
   "CongoISO": "CG",
   "productionUnchanged": "eea593a1-cc8b-4b60-a683-ebd9c88179a3",
   "checks": {
-    "typecheck": "PASS",
+    "typecheck": "PASS next typegen + tsc on current incremental code",
     "uiKeysTypesPlaceholdersNumbers": "PASS: 7 x (885+422)",
     "focusedUnitTests": "30 PASS; isolated unit configuration, not full release gate",
     "motion": "53 x 828 strings;455 videos; number/placeholder/symbol checks PASS",
@@ -35,11 +35,14 @@
     "stagingDeploy": "NOT_DONE",
     "productionDeploy": "NOT_DONE",
     "newCountryDomains": "PLAN_ONLY_NOT_CREATED",
-    "thinkingUnitTests": "71 PASS in 9 files; isolated configuration, no full release gate",
-    "thinkingCoverage": "FAIL as expected: each locale has 1/1867 source tasks explicitly covered; includes draft source tasks, not served question count",
+    "thinkingUnitTests": "73 PASS in 10 files; isolated unit configuration, not full release gate",
+    "thinkingCoverage": "INCOMPLETE: pcm has m-01 and e-01; other added locales m-01 only; k-01 PCM is private, held on source hint/model inconsistency",
     "expandedContentReleaseGate": "FAIL_INCOMPLETE: actual loader coverage; wired to prebuild and prebuild:next",
     "stagingSpecs": "Updated country defaults, seven new locales and sg-to-fr redirects; NOT_EXECUTED",
-    "courseMeaningSample": "96 bounded sample fields reviewed; two addend-count wording changes independently rechecked; not full semantic review"
+    "courseMeaningSample": "96 bounded sample fields reviewed; two addend-count wording changes independently rechecked; not full semantic review",
+    "koreanCourseExplicitFields": "3 node tests PASS: protected Korean accepted, missing native instructions/meaning options rejected",
+    "courseAssemblyBoundary": "3 Python tests PASS: incomplete/changed quantity/changed Korean target creates no overlay",
+    "englishCourseStructure": "7 x 2454 explicit strings PASS; seven assembled drafts remain private; source adjudication and independent review incomplete"
   },
   "review": "AI authoring only; bounded cross-review; native/teacher review not done",
   "contentScopeDecision": "ALL_GENERAL_AND_THINKING_TRANSLATED_BEFORE_RELEASE",
@@ -50,5 +53,26 @@
     "Thinking interface: 129 translated strings per new language; native metadata and progression labels wired",
     "First thinking task m-01: 56 learner fields per locale, independent AI review and 14 wording-patch rechecks; complete overlays connected for this one task only",
     "General and thinking private source inventories exported; release requires complete general and thinking translations"
-  ]
+  ],
+  "courseDraftProgress": {
+    "english": {
+      "pcm": 2454,
+      "tl": 2454,
+      "ro": 2454,
+      "fi": 2454,
+      "cs": 2454,
+      "hu": 2454,
+      "af": 2454
+    },
+    "korean": {
+      "pcm": 1250,
+      "tl": 1500,
+      "ro": 1000,
+      "fi": 1000,
+      "cs": 2793,
+      "hu": 2793,
+      "af": 1500
+    },
+    "note": "Explicit authored source strings, including preserved learning targets. These are not served question counts or full semantic approval."
+  }
 }

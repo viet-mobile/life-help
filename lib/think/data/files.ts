@@ -1166,6 +1166,7 @@ export const OVERLAY_LOADERS: Record<string, Record<string, () => Promise<Overla
     "z-k-01": () => import("../i18n/ko/z-k-01.json").then((m) => m.default as unknown as Overlay),
   },
   "pcm": {
+    "pilot-english": () => import("../i18n/pcm/pilot-english.json").then((m) => m.default as unknown as Overlay),
     "pilot-math": () => import("../i18n/pcm/pilot-math.json").then((m) => m.default as unknown as Overlay),
   },
   "tl": {

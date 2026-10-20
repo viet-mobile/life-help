@@ -1,0 +1,57 @@
+{
+  "status": "ai_translated_unreviewed",
+  "range": [
+    1500,
+    1999
+  ],
+  "completedPerLocale": 500,
+  "locales": {
+    "af": {
+      "fileSHA256": "36249f4c3e2f7fa94540516412ed3b11991fa763740ea6cf66250080d61490a7",
+      "roles": {
+        "localized_instruction_or_meaning": 436,
+        "preserved_learning_target": 64
+      }
+    },
+    "tl": {
+      "fileSHA256": "a3aa5a88eda26f990321346bd6b913b11921829e5860830b0eac30b6bc7abf99",
+      "roles": {
+        "localized_instruction_or_meaning": 436,
+        "preserved_learning_target": 64
+      }
+    }
+  },
+  "canonicalContextSHA256": "17e09c783b1fe80bec1712c890fddf99ce9673f246e86527e461b4640ba08284",
+  "checks": "All corresponding canonical strings read. Exact index/sourceHash coverage; digit tokens, underscore blanks and placeholders checked. English quotations were checked against canonical role: English target text retained, Korean canonical meaning glosses localized. Canonical-full-English answer fragments retained. Source simplifications/issues separated from target changes.",
+  "nativeReviewDone": false,
+  "teacherReviewDone": false,
+  "independentSemanticReviewDone": false,
+  "genderPolicy": "Existing unknowns retained. Source-explicit gender statements in local pronoun exercises preserved only in their source scope; not propagated to other occurrences of names.",
+  "exceptions": [
+    {
+      "index": 1534,
+      "sourceHash": "7ac0f2ab1b98b2a2fe56edb59447bdf608107f39603a07a8f849a5a09a600a2b",
+      "reason": "Canonical Korean says move tense one step forward, while English reference says back into past. Translated English backshift meaning; Korean wording source ambiguity recorded, not silently rewritten."
+    },
+    {
+      "index": 1560,
+      "sourceHash": "e03877b3f68386999d309fa4de56374408ff644ead7b02e3ccfed69698ca92ec",
+      "reason": "Canonical and reference allow which in an it-cleft for a thing; usage/register depends on grammatical framework and needs teacher review."
+    },
+    {
+      "index": 1612,
+      "sourceHash": "a5b4befae1639924ad528d592ef6a2b0bd45d8b97d323e339a0932e8e2834d33",
+      "reason": "Source absolute ban on would have after I wish is a teaching simplification; context and clause structure matter."
+    },
+    {
+      "index": 1690,
+      "sourceHash": "5d4691f412ab1ef07a2971a34d6a1b646807cc0372b6ccee6a27a44bd8cd01f1",
+      "reason": "Canonical grammar target retained exactly; no added named-person gender setting."
+    },
+    {
+      "index": 1850,
+      "sourceHash": "9411ac8ad0090f537afbae470371ab4929fbf7bc20f3144745b67fd3a86ede51",
+      "reason": "Canonical wording says than after the comparison target; English reference correctly places than before compared noun. Translation follows English structure; source wording needs review."
+    }
+  ]
+}

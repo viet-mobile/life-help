@@ -1,0 +1,30 @@
+{
+  "scope": "Two label deltas only",
+  "records": [
+    {
+      "taskId": "e-01",
+      "path": "s.s3.check.w4.label",
+      "sourceHash": "7146af8281847cd2fbb02d8f939adce1355e4e7876c1433140aa06b76d4470ea",
+      "beforeHash": "a3b0658ce0a51e393462039ec8ba96184314d44507a13428c51d071d852dc34e",
+      "targetHash": "863e6f06faaf770ffb331851a6a49e0d9a098c789fb97befeb204dc3b7dcc2a2",
+      "matchesProposedPatch": true,
+      "verdict": "pass",
+      "reason": "Explicit paired negatives preserve both prohibited claims without no-A-or-B scope ambiguity."
+    },
+    {
+      "taskId": "k-01",
+      "path": "s.s3.check.w1.label",
+      "sourceHash": "c6e801fc6b5780986c6039075a936e291efe751aca9e34ff033fe1f3f07915dd",
+      "beforeHash": "c6e801fc6b5780986c6039075a936e291efe751aca9e34ff033fe1f3f07915dd",
+      "targetHash": "2bdd91b70c0b9ee38580ae4673e3051a1270379f0ab12d285572a92d3c9a6799",
+      "matchesProposedPatch": true,
+      "verdict": "pass",
+      "reason": "Naijá predicate framing localizes the check label while retaining exact Korean 요/습니다 technical targets; same polite-ending criterion."
+    }
+  ],
+  "sourceIssueStillOpen": "k-01 s3 hint.1 requires a question ending, while model.1 ends 만나요!; canonical untouched.",
+  "limits": [
+    "Independent AI recheck, not native/teacher approval.",
+    "No target or canonical files edited."
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "status": "ai_translated_unreviewed",
+  "coverage": {
+    "af": {
+      "completed": 500,
+      "range": [
+        500,
+        999
+      ],
+      "fileSHA256": "92677f3583fbd8c8d41232bca41edac6da4a2c8a299b66f6dad876b803e7265c",
+      "roles": {
+        "preserved_learning_target": 110,
+        "localized_instruction_or_meaning": 390
+      }
+    },
+    "tl": {
+      "completed": 500,
+      "range": [
+        500,
+        999
+      ],
+      "fileSHA256": "f733e4d6da4d569d4e444078e7b2c8ffb2b48527550fa69f8c52cbf327950094",
+      "roles": {
+        "preserved_learning_target": 110,
+        "localized_instruction_or_meaning": 390
+      }
+    }
+  },
+  "canonicalContextSHA256": "5b346b1dd07e05d1df8abf6d6308b03ed6ae55605e21e3daadb2a5d0876a9cd8",
+  "checks": "Corresponding canonical context resolved for all entries. Hangul/jamo,digits,blanks/placeholders preserved. Romanized learning targets retained while meaning glosses/instructions localized; pure Korean/phonetic choices preserved.",
+  "KcoursePolicy": "K1..10 are course steps, not official proficiency grades.",
+  "entityPolicy": "No new Korean persons/settings authored. Existing named people remain unknown absent explicit source evidence. No gender inferred from English reference pronouns or names. Omitted Korean agents left unspecified where reporting constructions require it.",
+  "nativeReviewDone": false,
+  "teacherReviewDone": false,
+  "independentSemanticReviewDone": false,
+  "sourceIssues": [
+    {
+      "indices": [
+        913,
+        936,
+        953
+      ],
+      "sourceHashes": [
+        "9173174b66556c7631cb1f967c58358f333a2b4e3ac6b1732998aa88de5d999c",
+        "570716b8c6579d306c1319438f49fe79989795082016352775cd294f090e602d",
+        "2ecbece050fb2b4df04b91b4dc4c23363fae34e5ffe5e026d06701c3e7bae4ad"
+      ],
+      "reason": "Source labels a whole three-number sequence as meaning a single missing/last number. Translation faithfully retains source whole sequence and single-number gloss; fill-blank-specific explanation should name only answer, or explain sequence positions. Source hold pending repair."
+    },
+    {
+      "indices": [
+        870,
+        880,
+        882
+      ],
+      "reason": "Afrikaans sib is gender-neutral and avoids name/sex inference, but lexical familiarity needs native review."
+    }
+  ]
+}

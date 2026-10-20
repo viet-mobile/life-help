@@ -1,0 +1,79 @@
+{
+  "scope": "Czech and Hungarian English-course unique indexes 500–999; 500 entries each. First sourceHash occurrence order unchanged.",
+  "files": {
+    "cs": {
+      "entries": 500,
+      "roles": {
+        "localized_instruction_or_meaning": 499,
+        "preserved_learning_target": 1
+      },
+      "fileSha256": "6ea1a89395e3946f56d292f9b0714d92c7cefb3afdbc1d3c147cf7d24de42538"
+    },
+    "hu": {
+      "entries": 500,
+      "roles": {
+        "localized_instruction_or_meaning": 499,
+        "preserved_learning_target": 1
+      },
+      "fileSha256": "8ff9b8032ea1c15941bb9e62e650f55826e8ccb1b8b5261d2a0afd0eae00bf92"
+    }
+  },
+  "validation": "All rows passed source SHA256, exact key/schema, numeric token multisets, blank/underscore lengths, formulas, placeholders, equation/arrow signatures and selected full English learning/passage spans. Canonical Latin-token diagnostic used to catch target words hidden in mixed Korean explanations; these were restored before final save.",
+  "sourceHolds": [
+    {
+      "index": 736,
+      "sourceHash": "3d8defa742dbdc98bc2ada92d1e19da0757cd67b839f6923b196a5b80d986932",
+      "targetHashes": {
+        "cs": "a9ea47aced54bb467023ca5258701bdb6fe651bee894f82848ca7eaedb89286f",
+        "hu": "b1ddb8cd8381cba68a55ae234b79f3fbee2db7de8d4a1711d5b0da3be266d69c"
+      },
+      "canonical": "Anna는 여자 이름이에요.",
+      "reason": "Canonical hint infers gender from the name Anna. Translated faithfully as existing content, without treating the name as independent evidence or applying the gender in any other question. Hold for source author review; source not changed."
+    }
+  ],
+  "context": [
+    {
+      "index": 721,
+      "sourceHash": "e14bf6ddcd66769e5c0804ebcd199d14311ab58db9013cd63f8e6802343b9030",
+      "targetHashes": {
+        "cs": "ab4d8a2c415fc0f4be7bf9540244f3eca2c0a3922ccef829207ba2d619de01f0",
+        "hu": "f3a3120e6897062f9b01eeb8529155f7657e94e87dc3ed20ff633eaf7d607419"
+      },
+      "canonical": "Tom은 남자예요.",
+      "reason": "This question explicitly states Tom is male in its own canonical hint. Scope-local evidence only."
+    },
+    {
+      "index": 724,
+      "sourceHash": "19080b4c26f9223d5cbe9bd3f8680f54e0b7175992f6e280c9a4b36504a96015",
+      "targetHashes": {
+        "cs": "1e9a18988777b3312e9ec30aff3d39ddd63e327d21d63dedb24dbac7041652ee",
+        "hu": "ba944ebed1db17a9f04bb71c1656eaeebf39675f96b326d439325a25f6b85593"
+      },
+      "canonical": "Mina는 여자예요.",
+      "reason": "This question explicitly states Mina is female in its own canonical hint; not propagated to other Mina questions."
+    },
+    {
+      "index": 759,
+      "sourceHash": "6422bb915ae7ec9960221dec5e20b3212a89ea8d0a1d2fbd80d913fdc7b211b0",
+      "targetHashes": {
+        "cs": "e004c6a57d380ae15069631753b909e651f3eb274f2a3fba57985df67de711d6",
+        "hu": "f7f2e5237681a2462122fe3e6179112526158b7576d5f9405238fa71438e6a5e"
+      },
+      "canonical": "글을 읽고 답하세요. \"Yesterday Mina visited her grandmother. They cooked dinner together. It was fun.\" 질문: What did they do together?",
+      "reason": "Unknown Mina gender is not inferred from English-reference her. Czech uses impersonal question and explanation for the shared cooking activity."
+    },
+    {
+      "index": 858,
+      "sourceHash": "9b78b9e3b701ece040e9be1fe92e75d7235cf8df2b9614b0a8d244987103cc0b",
+      "targetHashes": {
+        "cs": "32bc398041bc2355d4090000e8258cd58e511aa8f93a4a84bd575bea34626a80",
+        "hu": "c2698ccd487a9274d9129bf7b39de0ea44890f96e96063554c951bdfceb5c675"
+      },
+      "canonical": "자전거와 등굣길에 대한 글이므로 'Mina's bike and her way to school' 이 맞아요.",
+      "reason": "Canonical quoted answer Mina’s bike and her way to school remains English; surrounding explanation localized."
+    }
+  ],
+  "genderPolicy": "No newly authored characters or new settings. Existing unknowns preserved. Czech present/passive/impersonal phrasing avoids gender assignment to unknown learner or actor. Explicit source role terms such as brother/sister retain their meanings; grammatical gender is not person metadata.",
+  "limitations": "Authoring and scoped author semantic checks only; no independent/native/teacher approval, no runtime learner test. No shared application/source edits.",
+  "remainingScope": "1000–2453 not yet authored completely; native prompt templates for some later rows are saved in local working state, not published as complete packs."
+}

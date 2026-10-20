@@ -1,0 +1,84 @@
+{
+  "scope": "Czech/Hungarian Korean-course unique 1500–1999, 500 entries per locale.",
+  "status": "authoring complete; independent language/teacher review required; source issues pending",
+  "sourceCatalogSha256": "bc901b11a739c5086820e07a5d7fb8a51348bca0a2a5ad23b62a89fe023183e5",
+  "canonicalContextSha256": "5b346b1dd07e05d1df8abf6d6308b03ed6ae55605e21e3daadb2a5d0876a9cd8",
+  "validation": "All 5586 entries passed exact range/schema/source SHA256, nonempty strings, ordered Hangul/Jamo sequence, numeric token multisets, blanks/placeholders, equation/arrow signatures and protected excerpts. Preserved targets match source exactly. Native international taxi is intentionally identical with localized role. Earlier context-recorded romanization spans rechecked in both locales; all preserved. These are structural checks, not semantic approval.",
+  "documentedRomanizationSpansRechecked": 141,
+  "method": "Native Czech/Hungarian phrase and meaning authoring, reused across identical instruction/meaning patterns; Korean syllables, target strings, romanization and intentional wrong Korean options retained. No external translation API. Original Korean/canonical contexts used to resolve compressed English glosses. Existing RO/FI issue reports used as issue evidence, not as translation text or approval.",
+  "contextPolicy": {
+    "newCharactersAuthored": false,
+    "existingGender": "unspecified unless explicit in the same source; no gender inferred from Minsu, Mina, Kim, Park, Lee or occupations",
+    "number": "Explicit numbers preserved; unspecified human counts remain unspecified in internal interpretation. Hungarian impersonal plural reporting and Czech generic singular role nouns do not establish new semantic participant counts.",
+    "subjectObject": "Reporter, embedded friend/weather/rain, addressee and causative younger-sibling objects kept distinct. Unknown omitted subjects remain unknown.",
+    "grammaticalGender": "Czech generic masculine role nouns přítel, žák, lékař, sourozenec are grammatical choices, not authored male settings. Impersonal/present constructions preferred where practical. Hungarian does not assign grammatical person gender.",
+    "explicitGender": "Woman-speaker older-brother/older-sister definitions 203/204/999/1000/1001/1003 and lexical father/mother/grandmother meanings remain source-explicit.",
+    "courseStages": "K1–K10 are course stages, not official proficiency grades."
+  },
+  "issues": [
+    {
+      "kind": "source_reporter_embedded_subject_ambiguity",
+      "records": [
+        {
+          "index": 1961,
+          "sourceHash": "189809af87d403abd33519ea860acffdc75b342184bd0f1e5f58c3d0230b35ac",
+          "targetHashes": {
+            "cs": "2cf40e9cb24a688881b98fe18ceaa0e768bec9ff89fa069563743bdbb4665071",
+            "hu": "aa2e6d40a5a46bf0ed9f9f4efeeac29a426edf9924e3b31696d436a11be62903"
+          }
+        },
+        {
+          "index": 1967,
+          "sourceHash": "c8a5447c8a9b0a0f0b4d1cc7f1313fc4996cd7ab527ca90fe07ae96949a02e4e",
+          "targetHashes": {
+            "cs": "ccdc1efb1c7bb0ba2e21a561226e0c947ec380a8dfb4c6b7aeea687d6ff68e09",
+            "hu": "8bf04946853690bb3f6bcff159ccef830f9f2661c67d7b6897bc9cd49ba215b4"
+          }
+        },
+        {
+          "index": 1973,
+          "sourceHash": "3ea13f87bf51a33d4cbf1a03e6ab813eb8737374c8618d451545e919a6d5fbf6",
+          "targetHashes": {
+            "cs": "5f328bb171c558fc9eaab881f58053f55171e43d931c97c93d3344360a912564",
+            "hu": "c477625dd6292ae702c40c62e2cf9cf1c3e114b7165923934d789f735952d1f9"
+          }
+        }
+      ],
+      "reason": "Compressed English glosses make friend/weather/rain appear to be the reporter. Korean marks the embedded subject; reporter and addressee remain unknown. Native glosses use impersonal reporting. 307/2159 retain past 했어요 versus present 해요."
+    },
+    {
+      "kind": "author_native_fluency_review_needed",
+      "locale": "cs",
+      "records": [
+        {
+          "index": 1874,
+          "sourceHash": "47db2177751aa29d779e5a41ea4264ba51e5d4e4adb6fa0878424109e94d4fd2",
+          "targetHashes": {
+            "cs": "0bfa9a144c78f09df904bb865860d6ffdf03d07ac7eb19f09ea07b09b001a7b7",
+            "hu": "53d82917adaf7ed2c8d8017f2746923c0a319e249261bf84411db1124e4cffe8"
+          }
+        }
+      ],
+      "reason": "Gender-neutral Czech past-event/appearance paraphrases preserve unknown gender but are sometimes formal. Independent Czech educational/native fluency review required; not marked approved."
+    }
+  ],
+  "files": {
+    "korean-course-cs-1500-1999.json": {
+      "entries": 500,
+      "roles": {
+        "localized_instruction_or_meaning": 372,
+        "preserved_learning_target": 128
+      },
+      "sha256": "21937123b6b44f00c8fce258906b49116c3b8c3054b78d7d9de82ee5d782c813"
+    },
+    "korean-course-hu-1500-1999.json": {
+      "entries": 500,
+      "roles": {
+        "localized_instruction_or_meaning": 372,
+        "preserved_learning_target": 128
+      },
+      "sha256": "681e166e0d00cd85ee633fcb2e0e6805af18195ff3f5a1eebc6c42c1bb6f5b8f"
+    }
+  },
+  "limits": "Independent AI review, native-speaker review, Korean phonetics review, teacher review and learner runtime testing have not been completed. No shared source/application files, registry, deployment, commits or pushes changed."
+}

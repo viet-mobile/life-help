@@ -1,0 +1,67 @@
+{
+  "status": "ai_translated_unreviewed",
+  "coverage": {
+    "af": {
+      "completed": 220,
+      "range": [
+        0,
+        219
+      ],
+      "fileSHA256": "e42452af59ff8d2b2d947f07fa811dc2cf44c2ceabc88efe0b91f4bfcbd95dca",
+      "roles": {
+        "localized_instruction_or_meaning": 210,
+        "preserved_learning_target": 10
+      }
+    },
+    "tl": {
+      "completed": 220,
+      "range": [
+        0,
+        219
+      ],
+      "fileSHA256": "b86f8d843eacf9e87f5c497cdb2a6f0fe1925437b36f81d316c60c543bc8981b",
+      "roles": {
+        "localized_instruction_or_meaning": 210,
+        "preserved_learning_target": 10
+      }
+    }
+  },
+  "requestedScope": [
+    0,
+    999
+  ],
+  "remaining": [
+    220,
+    999
+  ],
+  "remainingPerLocale": 780,
+  "canonicalContextSHA256": "5b346b1dd07e05d1df8abf6d6308b03ed6ae55605e21e3daadb2a5d0876a9cd8",
+  "checks": "Every source0..219 matched canonical context; Hangul/jamo,digit tokens,underscore blanks,placeholders exactly preserved. Romanized examples retained; instructions and meaning glosses actually localized. No target-English gloss treated as Korean learning target.",
+  "KcoursePolicy": "K1..10 described as course steps; no equivalence to official six TOPIK levels claimed.",
+  "entityPolicy": "No new Korean sentences or fictional persons authored. Existing unknowns remain unknown. Female speaker of 오빠/언니 is source-explicit usage in203/204 only, not inferred from a name.",
+  "sourceIssues": [
+    {
+      "index": 150,
+      "sourceHash": "6f704ff5338976b79cfc86cfd5b2abdc26a9d88897506f38a33bf51038b02e93",
+      "reason": "Source compares tense consonants to first sound of skate, which is /s/. Phonetic analogy unreliable; translated faithfully but requires source repair/teacher/audio review."
+    },
+    {
+      "index": 155,
+      "sourceHash": "e8fd7b48e04560c34c279cb5efef60bf8e80726ffabc5133cca85777a129a1f0",
+      "reason": "Source mixes orthographic hakgyo romanization with tense pronunciation guidance; explain distinction for learners."
+    },
+    {
+      "indices": [
+        148,
+        160,
+        163,
+        193,
+        211
+      ],
+      "reason": "Beginner sound/register/number/linking generalizations need Korean-teacher review; not universally exhaustive rules."
+    }
+  ],
+  "nativeReviewDone": false,
+  "teacherReviewDone": false,
+  "independentSemanticReviewDone": false
+}

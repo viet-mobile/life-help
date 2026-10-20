@@ -17,6 +17,7 @@ import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { completeKoreanPresentation } from "./korean-course-completeness.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const check = process.argv.includes("--check");
@@ -89,6 +90,10 @@ for (const [site, files] of Object.entries(CANON)) {
     const ov = Object.fromEntries(SECTIONS.map((k) => [k, {}]));
     for (const p of parts) { const d = JSON.parse(read(p)); for (const k of SECTIONS) Object.assign(ov[k], d[k] ?? {}); }
     for (const k of ["skills", "courses", "units", "lessons"]) for (const id of Object.keys(ov[k])) if (!ids[k].has(id)) fail(`${locale}/${site}: unknown ${k} id ${id}`);
+    if (site === "korean" && fullContentLocales.has(locale)) {
+      const missing = completeKoreanPresentation(bundles, questions).filter((key) => { const value = pick(ov,key); return typeof value !== "string" || !value.trim(); });
+      if (missing.length) fail(`${locale}/korean: ${missing.length} missing explicit course presentation fields; English fallback is forbidden`);
+    }
     // the parametric question bank (lib/learn/content/bank): this language's wording of every canonical template and text
     let bankOv;
     if (kbank) {

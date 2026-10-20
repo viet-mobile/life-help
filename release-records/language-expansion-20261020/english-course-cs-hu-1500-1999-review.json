@@ -1,0 +1,114 @@
+{
+  "scope": "Czech/Hungarian English-course unique indexes 1500–1999, 500 per locale.",
+  "status": "authoring complete; structural/protected-span verification passed; source holds remain",
+  "sourceCatalogSha256": "62dee82b0484d1da5b27475a66109c16ada064bd26fadae9c6bdd383c7c16224",
+  "sourceCopySha256": "a768509c31b87688a034039f85494164d05940f2a0681a7aa59b12e8b286b024",
+  "method": "Exact sourceHash deduplication in catalog first-occurrence order. Source and shared application code unchanged. Previously authored exact instruction templates reused after hash/span validation. Native instructions, meanings, hints and explanations authored; English reading passages, grammar transformations, spellings and target excerpts preserved.",
+  "validation": "All 4908 entries: exact schema/range/source hashes, nonempty/no Korean fallback, numeric token multisets, blank lengths, formulas, placeholders, math/equality/arrow signatures and roles checked. New 2908 entries additionally checked against saved source/target state and protected excerpts; full reading passages and multiline passages remain exact. Preserved-learning-target rows containing canonical Hangul explanation rejected. Canonical mixed-Latin diagnostic reviewed; localized instructions and Czech name inflections are intentional exceptions.",
+  "sourceHolds": [
+    {
+      "index": 1724,
+      "path": [
+        "questions",
+        "e-h3-col-v3",
+        "prompt"
+      ],
+      "sourceHash": "cfdc6634c015bd506c9454c2cc4f8d792d442cf10f1d9adbe3f65b1803325e7c",
+      "targetHashes": {
+        "cs": "0072f2e4ec73fe10d0a15447b1919897dfc418e572574f8a62f83b5b0f92c2d7",
+        "hu": "318f2a09f39256c9c157eeb62f8dce16f13c80b1fc993ff52f22963d4ff34a78"
+      },
+      "canonicalHash": "bb280584954d311ba7e266cc32290dd42031e9ed0222247d15d953c879294a5d",
+      "kind": "source_question_error",
+      "reason": "e-h3-col-v3 prompt It's ____ a piece of cake. has correct option b=a piece of; filling it yields It's a piece of a piece of cake. Canonical Korean source has the same duplication. Translation faithfully retains source; hold for source/answer repair before release."
+    }
+  ],
+  "existingHold": "Index 736 name-based gender inference remains recorded in english-course-cs-hu-0500-0999-review.json. No source repair or source-based gender inference was applied here.",
+  "context": [
+    {
+      "index": 2021,
+      "path": [
+        "questions",
+        "e-m3-cond-5",
+        "explanation"
+      ],
+      "sourceHash": "d943b8a93dbf64e68e793a45a08d37f96cd941a2a3adf590f038687cacf78309",
+      "targetHashes": {
+        "cs": "23d1fc3299a78a3ace122a06ea44dff6cad3173c0c777d6f1627909eaf39bad6",
+        "hu": "e4dc1da53df9f808363d665ab67259477f90b56fbc458dfc8a51275855ba5519"
+      },
+      "canonicalHash": "a4c9335af7130816000f9f6a383a8c3c37cea51b9de429ff7c2a0c4f93d81706",
+      "kind": "canonical_context",
+      "reason": "Canonical is entirely Korean conceptual meaning, so both halves of the conditional equivalence are localized; English reference text is not treated as an English learning quote."
+    },
+    {
+      "index": 2195,
+      "path": [
+        "questions",
+        "e-pres-4",
+        "prompt"
+      ],
+      "sourceHash": "e4966f7e9ee46ed6bd91b467dc8b2dab9af2b481541eecbd753e7a6e5a292c61",
+      "targetHashes": {
+        "cs": "d035d97508c3dee02e40ce98929a56839eea5eee8c7431f5f2cc7d5375deecc4",
+        "hu": "5bf38f0f6f8698f748f5212525f5f1edb6598e2c9294f09749cb091ef4af6bf9"
+      },
+      "canonicalHash": "68545ec6133169847db745012d91c9306986cdd7321fb3be94e561a4c265f185",
+      "kind": "canonical_context",
+      "reason": "She study English. is deliberately judged false in canonical e-pres-4. The English error is preserved as the tested statement, not silently corrected."
+    },
+    {
+      "index": 1801,
+      "path": [
+        "questions",
+        "e-h3-sum-5",
+        "prompt"
+      ],
+      "sourceHash": "c8721b5d4490e98db4488c4db51f349387f017b9ba48db949a78689e850ff690",
+      "targetHashes": {
+        "cs": "89e4875080a2db1aa4ecb4ab5a947db35ed7f3fc8822358c887247d038f9d028",
+        "hu": "1078c5675de9c8d7af7765f3237cf2fa22f2fada4e1b6e1c7513d6102a251833"
+      },
+      "canonicalHash": "5479249d8dc097f8d91220711ae4a967366d4f3673bfb264d307d219e69e248d",
+      "kind": "canonical_context",
+      "reason": "English summary-completion sentence and both blanks remain English; introductory instruction localized."
+    },
+    {
+      "index": 2445,
+      "path": [
+        "questions",
+        "e-m2-sum1-1",
+        "explanation"
+      ],
+      "sourceHash": "4b3438aacfafaf2ad0b2f231b7cdd75c7d57b43a4ca3e9d6c12ff414a1d5193b",
+      "targetHashes": {
+        "cs": "08ba1e60061cb2319c3853828cb87e324c4ec58a903ccf0e5a4ec0725e5159be",
+        "hu": "2a0144f8d4943685bab118354370b93e9f1e60a8ba188b02e5035f2b7ba3b9a2"
+      },
+      "canonicalHash": "29d0f0cc34a13318f55d01562eb594d37f2b3ca0f81d5e41551f0c20dd399f0e",
+      "kind": "canonical_context",
+      "reason": "English proposed summary remains quoted exactly; explanation localized."
+    }
+  ],
+  "gender": "No new characters/settings authored. Existing unknowns retained. Named source actors do not gain gender from English reference pronouns or names. Czech impersonal/present/passive wording used where needed; grammatical noun gender kept distinct from entity gender. Original English source passages and explicit source pronouns remain intact.",
+  "limits": "Author translation and author semantic/context review only. No independent AI approval, native-speaker review, teacher review or learner runtime verification claimed. Structural lint does not prove semantic approval.",
+  "earlierPacks": "0–999 read and hashed only in this turn; parent canonical-gloss patches retained, no overwrite.",
+  "files": {
+    "english-course-cs-1500-1999.json": {
+      "entries": 500,
+      "roles": {
+        "localized_instruction_or_meaning": 436,
+        "preserved_learning_target": 64
+      },
+      "sha256": "e9ce18871bf84b190695c232746b7e6377d35dd888fc74d0f42f2ef86e8bc38d"
+    },
+    "english-course-hu-1500-1999.json": {
+      "entries": 500,
+      "roles": {
+        "localized_instruction_or_meaning": 436,
+        "preserved_learning_target": 64
+      },
+      "sha256": "07e8c6b90ec4dfd4950408c35f111f199843c75f843fa367e9ba7c8c99a65125"
+    }
+  }
+}

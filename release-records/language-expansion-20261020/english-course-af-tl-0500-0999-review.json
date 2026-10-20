@@ -1,0 +1,51 @@
+{
+  "status": "ai_translated_unreviewed",
+  "range": [
+    500,
+    999
+  ],
+  "completedPerLocale": 500,
+  "locales": {
+    "af": {
+      "fileSHA256": "9990598c9c14c7ef6cad91193f3f244f2a3d8c33069d94cca82c237cb1c195a1",
+      "roles": {
+        "localized_instruction_or_meaning": 500
+      }
+    },
+    "tl": {
+      "fileSHA256": "612b370680d5a842ed4cbaeb2423698776f86273df2f130548d7da2fa5a6254d",
+      "roles": {
+        "localized_instruction_or_meaning": 500
+      }
+    }
+  },
+  "canonicalContextSHA256": "17e09c783b1fe80bec1712c890fddf99ce9673f246e86527e461b4640ba08284",
+  "checks": "Every corresponding canonical string was read. Exact sourceHash/index coverage; numeric tokens, underscore blanks and placeholders; double-quoted passages preserved. Mixed grammar forms and quoted target fragments manually retained. Instructions, questions and meaning glosses localized.",
+  "nativeReviewDone": false,
+  "teacherReviewDone": false,
+  "independentSemanticReviewDone": false,
+  "genderPolicy": "Existing unknowns retained. Source-explicit gender statements in local pronoun exercises preserved only in their source scope; not propagated to other occurrences of names.",
+  "exceptions": [
+    {
+      "index": 736,
+      "sourceHash": "3d8defa742dbdc98bc2ada92d1e19da0757cd67b839f6923b196a5b80d986932",
+      "reason": "Canonical/source hints assume Anna gender from a name. Source wording preserved but needs source repair or explicit authored-character setting before release; not independently justified by translator."
+    },
+    {
+      "indices": [
+        721,
+        724,
+        830
+      ],
+      "reason": "Gender is explicitly stated in source hints of respective pronoun tasks, preserved locally; no global name-based setting inferred."
+    },
+    {
+      "indices": [
+        798,
+        969
+      ],
+      "reason": "Add-ed past-tense instruction is a source simplification omitting irregular verbs."
+    }
+  ],
+  "postAuthoringChange": "Root applied canonical educational meaning glosses to selected completed entries; hashes refreshed without rewriting translated target files."
+}

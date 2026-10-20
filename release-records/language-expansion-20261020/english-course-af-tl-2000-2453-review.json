@@ -1,0 +1,57 @@
+{
+  "status": "ai_translated_unreviewed",
+  "range": [
+    2000,
+    2453
+  ],
+  "completedPerLocale": 454,
+  "locales": {
+    "af": {
+      "fileSHA256": "8b5b757d3528a48685afb9a3d8e7a9b221a8f80fc4d9a7cc6766b604f5982b10",
+      "roles": {
+        "localized_instruction_or_meaning": 420,
+        "preserved_learning_target": 34
+      }
+    },
+    "tl": {
+      "fileSHA256": "031eb1356b89f8d7f5ac0edf72506bf21f5465d1cd071288c3dde9797c28786c",
+      "roles": {
+        "localized_instruction_or_meaning": 420,
+        "preserved_learning_target": 34
+      }
+    }
+  },
+  "canonicalContextSHA256": "17e09c783b1fe80bec1712c890fddf99ce9673f246e86527e461b4640ba08284",
+  "checks": "All corresponding canonical strings read. Exact index/sourceHash coverage; digit tokens, underscore blanks and placeholders checked. English quotations were checked against canonical role: English target text retained, Korean canonical meaning glosses localized. Canonical-full-English answer fragments retained. Source simplifications/issues separated from target changes.",
+  "nativeReviewDone": false,
+  "teacherReviewDone": false,
+  "independentSemanticReviewDone": false,
+  "genderPolicy": "Existing unknowns retained. Source-explicit gender statements in local pronoun exercises preserved only in their source scope; not propagated to other occurrences of names.",
+  "exceptions": [
+    {
+      "index": 2020,
+      "sourceHash": "093419e43fb69e254267262d0ec958ae4bf4f70738d18499b358a0b70b1fec4e",
+      "reason": "Source presents a counterfactual inverse as equivalent to a causal statement; strict logical equivalence is not guaranteed."
+    },
+    {
+      "index": 2195,
+      "sourceHash": "e4966f7e9ee46ed6bd91b467dc8b2dab9af2b481541eecbd753e7a6e5a292c61",
+      "reason": "False statement She study English. must stay uncorrected because it is the learner true/false target, not an author grammar error."
+    },
+    {
+      "index": 2310,
+      "sourceHash": "06e165d5e88686ddfa7cd0501bab08e08635576db9c1b8b55a792a26b0772e8c",
+      "reason": "Artificial is not always fake or an exact antonym of authentic; source glossary simplification preserved and requires teacher review."
+    },
+    {
+      "index": 2322,
+      "sourceHash": "5a420e192acd1ca6f0d60aabe6a8db4df67aae88641950e8a9db4b215c67ad1d",
+      "reason": "Omniscient vs limited point-of-view distinction is simplified; knowing two minds can involve variable focalization, so full passage/context matters."
+    },
+    {
+      "index": 2377,
+      "sourceHash": "da3053c395277916205de860328e1bb66250b69a125f30a42463539ffcd687ec",
+      "reason": "Capital letters are not generally enlarged lowercase shapes; source mnemonic is unreliable for several letters. Translation follows source; teacher review recommended."
+    }
+  ]
+}

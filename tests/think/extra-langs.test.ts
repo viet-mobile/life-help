@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { EXTRA_TASK_LANGS, TASK_LANGS, THINK_LANGS, TASK_LANG_NAMES, isThinkLang, taskLangFor, thinkLangFor } from "../../lib/think/lang";
 import { localize, localizeFor } from "../../lib/think/localize";
-import { flatten, needsTranslation } from "../../lib/think/flat";
+import { flatten, flattenLearnerExtras, needsTranslation } from "../../lib/think/flat";
 import type { ThinkTask } from "../../lib/think/types";
 
 const root = path.resolve(__dirname, "../..");
@@ -49,7 +49,7 @@ describe("Task language registry and legacy fallback policy", () => {
   it("every overlay folder of an extra language (once translations exist) only addresses real tasks and paths, with no empty values", async () => {
     const { FILE_META, TASK_LOADERS } = await import("../../lib/think/data/files");
     const flats = new Map<string, Record<string, string>>();
-    for (const m of FILE_META) for (const t of await TASK_LOADERS[m.key]()) flats.set(t.id, flatten(t));
+    for (const m of FILE_META) for (const t of await TASK_LOADERS[m.key]()) flats.set(t.id, { ...flatten(t), ...flattenLearnerExtras(t) });
     for (const l of EXTRA_TASK_LANGS) {
       const dir = path.join(root, "lib/think/i18n", l);
       if (!fs.existsSync(dir)) continue;

@@ -1,0 +1,143 @@
+{
+  "scope": "Czech/Hungarian Korean-course unique 2000–2499, 500 entries per locale.",
+  "status": "authoring complete; independent language/teacher review required; source issues pending",
+  "sourceCatalogSha256": "bc901b11a739c5086820e07a5d7fb8a51348bca0a2a5ad23b62a89fe023183e5",
+  "canonicalContextSha256": "5b346b1dd07e05d1df8abf6d6308b03ed6ae55605e21e3daadb2a5d0876a9cd8",
+  "validation": "All 5586 entries passed exact range/schema/source SHA256, nonempty strings, ordered Hangul/Jamo sequence, numeric token multisets, blanks/placeholders, equation/arrow signatures and protected excerpts. Preserved targets match source exactly. Native international taxi is intentionally identical with localized role. Earlier context-recorded romanization spans rechecked in both locales; all preserved. These are structural checks, not semantic approval.",
+  "documentedRomanizationSpansRechecked": 141,
+  "method": "Native Czech/Hungarian phrase and meaning authoring, reused across identical instruction/meaning patterns; Korean syllables, target strings, romanization and intentional wrong Korean options retained. No external translation API. Original Korean/canonical contexts used to resolve compressed English glosses. Existing RO/FI issue reports used as issue evidence, not as translation text or approval.",
+  "contextPolicy": {
+    "newCharactersAuthored": false,
+    "existingGender": "unspecified unless explicit in the same source; no gender inferred from Minsu, Mina, Kim, Park, Lee or occupations",
+    "number": "Explicit numbers preserved; unspecified human counts remain unspecified in internal interpretation. Hungarian impersonal plural reporting and Czech generic singular role nouns do not establish new semantic participant counts.",
+    "subjectObject": "Reporter, embedded friend/weather/rain, addressee and causative younger-sibling objects kept distinct. Unknown omitted subjects remain unknown.",
+    "grammaticalGender": "Czech generic masculine role nouns přítel, žák, lékař, sourozenec are grammatical choices, not authored male settings. Impersonal/present constructions preferred where practical. Hungarian does not assign grammatical person gender.",
+    "explicitGender": "Woman-speaker older-brother/older-sister definitions 203/204/999/1000/1001/1003 and lexical father/mother/grandmother meanings remain source-explicit.",
+    "courseStages": "K1–K10 are course stages, not official proficiency grades."
+  },
+  "issues": [
+    {
+      "kind": "source_reporter_embedded_subject_ambiguity",
+      "records": [
+        {
+          "index": 2159,
+          "sourceHash": "4b27838e560f186cefff26b6cae5da6532ed11f8af65441f7b91436ce47fc5e3",
+          "targetHashes": {
+            "cs": "84a6ed4e3a90d3e8108e23ad868ea92e78e171b34c09edec9a90ccbc5026ffbc",
+            "hu": "fc08cc0a65dcfdaa2b2b4221c29b4237e9853ec3d4519906ed5b47dc1a19b6b2"
+          }
+        }
+      ],
+      "reason": "Compressed English glosses make friend/weather/rain appear to be the reporter. Korean marks the embedded subject; reporter and addressee remain unknown. Native glosses use impersonal reporting. 307/2159 retain past 했어요 versus present 해요."
+    },
+    {
+      "kind": "unsupported_english_gloss_manner",
+      "records": [
+        {
+          "index": 2237,
+          "sourceHash": "c62725cae3d6c9e589942aefcc62d473956162bf72e827a4cf8b6c6f64a4aeb0",
+          "targetHashes": {
+            "cs": "291e22329ff654e4edb2778f961a844e7189aae7487493279250ce6ab5594f43",
+            "hu": "10ff8f636cdca155f9ebe084b959422464d9f79242a589387a2aa30eb1d08087"
+          }
+        },
+        {
+          "index": 2240,
+          "sourceHash": "c1d14fc6fade0dd375edd91eefd6a1ba390b1b9036756714d9daf19b0267619d",
+          "targetHashes": {
+            "cs": "52b86deba26b78e125b6073e0b5a4d3d618f5c996ba447bc5e6ef260254dafd8",
+            "hu": "ce48bb96593336983dd07f5e870267b6e8298b4954224d7caaafc11ad0863422"
+          }
+        },
+        {
+          "index": 2252,
+          "sourceHash": "b033a2e49565d45e881db9475e001670620e378ddd13d4597767ec8ac1b54d46",
+          "targetHashes": {
+            "cs": "3267c309326f7574eceb9405662ea5dc7f0f0e50bdf11e9c97bda9b055b3b655",
+            "hu": "be417696e5ee7ac87f27f473a1507459a24efb53d74b7de25da2aa53acb7bb61"
+          }
+        }
+      ],
+      "reason": "Korean 글씨가 써져요 does not say well. Native meanings describe writing without this unsupported manner claim; protected Korean and romanization unchanged."
+    },
+    {
+      "kind": "source_phone_message_direction",
+      "records": [
+        {
+          "index": 2404,
+          "sourceHash": "18fb317816532cde170b67ab5b15ea56379437c272e49af71de44b53cce262c8",
+          "targetHashes": {
+            "cs": "2515062c5936e971eece08d87006738f966931d26c5446baf06e173a4d2f12d8",
+            "hu": "6c392d0f0a9ad1a92e864d730a67001cb0fa2f7523dc5b1633a1de097c217fe1"
+          }
+        },
+        {
+          "index": 2407,
+          "sourceHash": "8b82d6975fcc609998985cc3e9359bf641c84a15cc2c96005fffbea454175265",
+          "targetHashes": {
+            "cs": "e91d89cdb4623eae27dbe6409fa7d5b3ff57320019cee10e5fdb5ff25198b397",
+            "hu": "70fa0928ba52126795ce3db39d96d8c90d10fcfac78795befa8211922a148859"
+          }
+        },
+        {
+          "index": 2409,
+          "sourceHash": "bd710c91156d1b93e5b72464442c17545ccf642bc13830e3b0baf5d4fbed5f83",
+          "targetHashes": {
+            "cs": "cb18a06b331525a2baed3043e8ddf5bc0ec9a9a274d25e092fb5691989195f9d",
+            "hu": "e47e23dff72732191c78f9ea62855d2c467da990f265efaed79e7ebbf724b7b4"
+          }
+        },
+        {
+          "index": 2419,
+          "sourceHash": "86a0a00054f1275b218f3db95ec447e95307b17e57f4c600d3ea42e8a79a4e77",
+          "targetHashes": {
+            "cs": "5dbbaaff4d9c643db639b771aae9924f15e1cc76dfc2ff289b2b185eaa6d5e71",
+            "hu": "a725bce00d1d923a7f037a064c408ed667f3c1ad3a4e3e1769217886515d5db6"
+          }
+        }
+      ],
+      "reason": "메모를 남겨 드릴까요 offers to leave a message. English take message can imply receiving one. Targets follow Korean leave-message meaning; source gloss review required."
+    },
+    {
+      "kind": "compressed_gloss_context",
+      "records": [
+        {
+          "index": 2273,
+          "sourceHash": "fa19f98f27850741d52347a312cc02deb9868f7f1292226be369920d00da1d6d",
+          "targetHashes": {
+            "cs": "4eaf925fb8a3794db1d989d1075361476606bbcabf6ef3c6d1fee3d8981d5a10",
+            "hu": "1f0eda30572dfc5f5b4f77ea9f4899ca155147e1625ff76e0923c364f5917489"
+          }
+        },
+        {
+          "index": 2298,
+          "sourceHash": "e765b0a3c158227395b15fa0d91edb1ac4c9fa03082a740f8de45c544bf5247f",
+          "targetHashes": {
+            "cs": "d1271c2ecb2629923ecfa37534a49834f0852c1cd48a5ec04d05f65bb38093fa",
+            "hu": "ed668e9f6508e137826b8c23733859394f2760fc6aad50ee917498c5d32f5273"
+          }
+        }
+      ],
+      "reason": "Korean explicitly includes younger-sibling objects in dressing/causing crying, and says the essence is important. Native glosses retain these relationships rather than only copying compressed English labels."
+    }
+  ],
+  "files": {
+    "korean-course-cs-2000-2499.json": {
+      "entries": 500,
+      "roles": {
+        "preserved_learning_target": 116,
+        "localized_instruction_or_meaning": 384
+      },
+      "sha256": "91f1f78b8fb9a2de0a477700054b7d5116f0a00681c4ec17417575244597c6eb"
+    },
+    "korean-course-hu-2000-2499.json": {
+      "entries": 500,
+      "roles": {
+        "preserved_learning_target": 116,
+        "localized_instruction_or_meaning": 384
+      },
+      "sha256": "aee614478dd6a6825c610444bb5cc49b84cf4540660559da8345bae6e639529b"
+    }
+  },
+  "limits": "Independent AI review, native-speaker review, Korean phonetics review, teacher review and learner runtime testing have not been completed. No shared source/application files, registry, deployment, commits or pushes changed."
+}
