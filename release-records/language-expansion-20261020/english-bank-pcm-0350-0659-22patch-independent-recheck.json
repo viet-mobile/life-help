@@ -1,0 +1,582 @@
+{
+  "scope": "Only the 22 applied changes in english-bank-pcm-0350-0659-review-patches.json; four earlier source holds unchanged, not cleared.",
+  "reviewType": "Independent AI semantic delta recheck; not native-speaker or teacher approval.",
+  "targetFilesModified": false,
+  "counts": {
+    "semantic_pass": 22
+  },
+  "records": [
+    {
+      "index": 390,
+      "file": "english-bank-sentence-meanings-pcm-0350-0399.json",
+      "sourceHash": "9432fc8747fb6436496cda8be59a89a1b25aa65dfc51747f06729a9aefce3615",
+      "contextHash": "9ef12cf17b3cfc0aabaf57c07c280f936c1961e034c1c2f42c38d0ab78288dbf",
+      "targetHash": "9a8dfae34461769b0a13e697ffa751535cdece7e2f414aaa2154cdaf8d12f7f1",
+      "source": "그 이야기는 재미있었어요.",
+      "contexts": [
+        {
+          "itemId": "9784195c",
+          "skillId": "e.e6.vocab",
+          "englishTarget": "The story was interesting.",
+          "koreanMeaning": "그 이야기는 재미있었어요.",
+          "rule": "사물이 재미를 주는 것은 -ing(interesting), 사람이 재미를 느끼는 것은 -ed(interested)예요."
+        }
+      ],
+      "translation": "Di story bin interesting.",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Explicit bin now anchors the interesting story in the past."
+    },
+    {
+      "index": 410,
+      "file": "english-bank-sentence-meanings-pcm-0400-0439.json",
+      "sourceHash": "b9ac8e35e5a7ce6f17b006ec2eb7a556ce21a169a731a9ed4b41a93e72733765",
+      "contextHash": "9914a674d9f9c8c11fe19189923ecff8ef06d72a988202ed1e58dd8af8f0860e",
+      "targetHash": "86ea95eea2c946f056b61eb3073a605617b11615a66a29626e252d5c8d0b802f",
+      "source": "도움이 필요하면 내가 너에게 전화할게.",
+      "contexts": [
+        {
+          "itemId": "aaf9243a",
+          "skillId": "e.e6.clause",
+          "englishTarget": "I will call you if I need help.",
+          "koreanMeaning": "도움이 필요하면 내가 너에게 전화할게.",
+          "rule": "if 뒤에는 조건이 와요. I 다음에는 need처럼 동사원형을 써요."
+        }
+      ],
+      "translation": "If I need help, I go call you.",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Condition explicitly concerns the speaker needing help, followed by speaker calling the addressee."
+    },
+    {
+      "index": 420,
+      "file": "english-bank-sentence-meanings-pcm-0400-0439.json",
+      "sourceHash": "bf745875a4e9e7bbcb0747cf20296b9f35b4b66c209cdd5aa934b7d3c0c80d3e",
+      "contextHash": "8de2b33094779c7e7384f95b1e9ec4a94a27389cf01a46a3c4911e5c918cd4a4",
+      "targetHash": "04790bd25fbadeb832df91d9e8f31c6859d902dece97a4128c18f9f6739f894e",
+      "source": "나는 나가고 싶었지만 비가 와서 집에 있었어요.",
+      "contexts": [
+        {
+          "itemId": "8b736251",
+          "skillId": "e.e6.clause",
+          "englishTarget": "I wanted to go out, but it was raining, so I stayed home.",
+          "koreanMeaning": "나는 나가고 싶었지만 비가 와서 집에 있었어요.",
+          "rule": "but은 반대되는 내용을, so는 결과를 이어 줘요."
+        }
+      ],
+      "translation": "I bin want go out, but rain bin dey fall, so I stay house.",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Past desire and ongoing rain now explicit; staying home remains the resulting event in the same past frame."
+    },
+    {
+      "index": 477,
+      "file": "english-bank-sentence-meanings-pcm-0440-0479.json",
+      "sourceHash": "d03bb53ae1e46c98706dc6cf385ba7f2033c09dc99c7d84492c24fafb31c8823",
+      "contextHash": "1e27c0a64a09a488a6c56d6ea7a6767e827f6977a3d1e52608733b950a904750",
+      "targetHash": "a5d345c8f73469e31b7ee428f2db5dba20ca4c834b49a33cdc74ea81dd46a146",
+      "source": "그 영화는 재미있었나요?",
+      "contexts": [
+        {
+          "itemId": "99a34fed",
+          "skillId": "e.be",
+          "englishTarget": "Was the movie interesting?",
+          "koreanMeaning": "그 영화는 재미있었나요?",
+          "rule": "과거의 일을 물을 때는 Was/Were를 주어 앞에 써요. the movie는 단수이므로 Was예요."
+        }
+      ],
+      "translation": "Di film bin interesting?",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Past question about the film being interesting, not a current evaluation."
+    },
+    {
+      "index": 478,
+      "file": "english-bank-sentence-meanings-pcm-0440-0479.json",
+      "sourceHash": "c18f1ce5c936af9a1c86a1f2af00ddf58929517601b898751abd87a427a55ba1",
+      "contextHash": "22d1aa1b133aea0a0d2b9d81237d163faacb9029074a1affa5e06ab6325bd10e",
+      "targetHash": "21586f44bb52e428ab4ba8d6eb2d0d555a108fb88f02edb7ec7aa964e87f6dbd",
+      "source": "당신은 정오에 역에 있었나요?",
+      "contexts": [
+        {
+          "itemId": "7e84e637",
+          "skillId": "e.be",
+          "englishTarget": "Were you at the station at noon?",
+          "koreanMeaning": "당신은 정오에 역에 있었나요?",
+          "rule": "you의 be동사 과거형은 were예요. 'Were + 주어 ~?'로 물어요."
+        }
+      ],
+      "translation": "You bin dey station for noon?",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Past presence at the station and noon retained."
+    },
+    {
+      "index": 502,
+      "file": "english-bank-sentence-meanings-pcm-0480-0529.json",
+      "sourceHash": "528ce3d0d37c21d476ad028f333bd664c6720b846cac0cdcca5d84dc21b42a43",
+      "contextHash": "0ea5c1caa32f924d662909f2bd31800f1c4aa53cda1c220f8f7711e2d5038102",
+      "targetHash": "ed489272b456e85b08304758d8ef5bc77392839cf55832add43cdd7012d75b3f",
+      "source": "내 강아지는 빨간 공을 가지고 있어요.",
+      "contexts": [
+        {
+          "itemId": "18f83292",
+          "skillId": "e.pres",
+          "englishTarget": "My dog has a red ball.",
+          "koreanMeaning": "내 강아지는 빨간 공을 가지고 있어요.",
+          "rule": "have는 3인칭 단수 주어와 쓸 때 has로 모양이 바뀌는 불규칙 동사예요."
+        }
+      ],
+      "translation": "My puppy get red ball.",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Puppy preserves Korean 강아지 age sense; red ball and speaker ownership retained. English dog is broader."
+    },
+    {
+      "index": 521,
+      "file": "english-bank-sentence-meanings-pcm-0480-0529.json",
+      "sourceHash": "d43293bcf5d2b5ac0489551915d22e55f29948eb031f618e450cd1171732b304",
+      "contextHash": "553301304f17b8760961dd13140be48def3e88f5bc8c0fbdec9163fb06686d23",
+      "targetHash": "93a6f93c17cdbcf10c815d210182b4abf711f2277ed15c287d079b2f3fd6f227",
+      "source": "고양이는 밤에 쥐를 잡아요.",
+      "contexts": [
+        {
+          "itemId": "a64576ec",
+          "skillId": "e.pres",
+          "englishTarget": "A cat catches mice at night.",
+          "koreanMeaning": "고양이는 밤에 쥐를 잡아요.",
+          "rule": "-ch로 끝나는 동사는 -es를 붙여요. (catch → catches)"
+        }
+      ],
+      "translation": "Cat dey catch mouse dem for night.",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Mouse dem follows English mice precisely and retains habitual catching at night."
+    },
+    {
+      "index": 522,
+      "file": "english-bank-sentence-meanings-pcm-0480-0529.json",
+      "sourceHash": "16e7eeaab15228ab791422afdfa573fa526b4954d9751f6ce32bc31096b96766",
+      "contextHash": "07219f73176eda75a6ad0553b389e0b7a797183871061d9f456df424d6a6e1cc",
+      "targetHash": "a8dc1d15997fbc869e7a0d11d77838d8dd99d78bd60365c63302efb9a2bad000",
+      "source": "우리 아버지는 작은 가게에서 자전거를 고쳐요.",
+      "contexts": [
+        {
+          "itemId": "67692f9c",
+          "skillId": "e.pres",
+          "englishTarget": "My father fixes bikes at his small shop.",
+          "koreanMeaning": "우리 아버지는 작은 가게에서 자전거를 고쳐요.",
+          "rule": "-x로 끝나는 동사는 -es를 붙여요. (fix → fixes)"
+        }
+      ],
+      "translation": "Our papa dey repair bicycle dem for im small shop.",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Father remains the repairer; im binds small-shop ownership without introducing gender from a name. Our papa is idiomatic with Korean 우리 아버지."
+    },
+    {
+      "index": 523,
+      "file": "english-bank-sentence-meanings-pcm-0480-0529.json",
+      "sourceHash": "537c247049f4963b08f07719ef80b95da857dc53949fa06721ff3e3cd75ebe9d",
+      "contextHash": "c6277c8083250865d8c21f6bc5031955adb5ab548acee9585554044b8c9d5c1a",
+      "targetHash": "8b38383e5bb464a2da1898e3edd4fca4dc81f2d48b52c8898348b8b625a02336",
+      "source": "이모는 미술 수업을 위해 물감을 섞어요.",
+      "contexts": [
+        {
+          "itemId": "b55c46c2",
+          "skillId": "e.pres",
+          "englishTarget": "My aunt mixes paint for her art class.",
+          "koreanMeaning": "이모는 미술 수업을 위해 물감을 섞어요.",
+          "rule": "-x로 끝나는 동사는 -es를 붙여요. (mix → mixes)"
+        }
+      ],
+      "translation": "Mama sister dey mix paint for her art class.",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Maternal aunt remains the mixer; class ownership now explicit. Female reference derives from 이모, not a name."
+    },
+    {
+      "index": 528,
+      "file": "english-bank-sentence-meanings-pcm-0480-0529.json",
+      "sourceHash": "14b4781bb9dd4a7d5e93f1c0d188e4bbfcf930c7c45426a0e239ac02153f16fa",
+      "contextHash": "14d068f1686b050b3993de065dd71daee2863363801079e2baf078f19019c6b5",
+      "targetHash": "9b6c100409022e76a93f6d8e0ba3b658470dc17d20d89fcaebe9c34725a3b0e3",
+      "source": "수민이는 남동생의 가방을 들어 줘요.",
+      "contexts": [
+        {
+          "itemId": "cbb19a10",
+          "skillId": "e.pres",
+          "englishTarget": "Sumin carries her little brother's bag.",
+          "koreanMeaning": "수민이는 남동생의 가방을 들어 줘요.",
+          "rule": "자음+y로 끝나는 동사는 y를 i로 바꾸고 -es를 붙여요. (carry → carries)"
+        }
+      ],
+      "translation": "Sumin dey help carry Sumin younger brother bag.",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Repeating Sumin binds the younger brother and that brother’s bag without assigning Sumin a gender."
+    },
+    {
+      "index": 539,
+      "file": "english-bank-sentence-meanings-pcm-0530-0579.json",
+      "sourceHash": "98e5d91e2fc2773d9d262f0332a86c7f9b58ae623995cd51ac26d98432c1921c",
+      "contextHash": "cd725fb3fe441c79faa6908bb8128252fa75b3896798026de36a255a52d112af",
+      "targetHash": "5124b7f9b43780c5f2e76f4c939d6145cb0f1577edb6af7e513026136e9556d2",
+      "source": "민호는 자전거를 타고 학교에 가니?",
+      "contexts": [
+        {
+          "itemId": "c545a7a2",
+          "skillId": "e.pres",
+          "englishTarget": "Does Minho ride his bike to school?",
+          "koreanMeaning": "민호는 자전거를 타고 학교에 가니?",
+          "rule": "의문문에서는 Does + 주어 + 동사원형 ~?의 순서를 써요."
+        }
+      ],
+      "translation": "Minho dey ride Minho own bicycle go school?",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Repeated Minho binds the bicycle owner and retains the school-journey question without gender inference."
+    },
+    {
+      "index": 548,
+      "file": "english-bank-sentence-meanings-pcm-0530-0579.json",
+      "sourceHash": "1e89d97d69f681bb92637d46a1f897f5dbcc7d9383d3664ffc3b028f67e7b9a7",
+      "contextHash": "ad30db75fc534ea55e9e40950e9ae909f8a0394e0148548c4df01aed5c6dc840",
+      "targetHash": "80d5775a1013ad4fce05231e35754586efe0274b1cd1412c8f26957aa771aa49",
+      "source": "주방에 쥐 두 마리가 있어요.",
+      "contexts": [
+        {
+          "itemId": "d11b5974",
+          "skillId": "e.plural",
+          "englishTarget": "Two mice are in the kitchen.",
+          "koreanMeaning": "주방에 쥐 두 마리가 있어요.",
+          "rule": "mouse의 복수형은 mice예요."
+        }
+      ],
+      "translation": "Two mouse dey kitchen.",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Two mouse retains exact two, kitchen and English mice distinction."
+    },
+    {
+      "index": 549,
+      "file": "english-bank-sentence-meanings-pcm-0530-0579.json",
+      "sourceHash": "396dc507865998657a62f981e35680622af43d307437daab8b2d94e38829d999",
+      "contextHash": "894719ada2df802ff98139a9bfc78868bedf22de2c9b9252f420bc281cd9b7fc",
+      "targetHash": "6ba527dfd6dabf52577cc06ec2b6d2a24b77565b0acbe2ed71c8ec44b3057e2b",
+      "source": "오늘은 발이 차가워요.",
+      "contexts": [
+        {
+          "itemId": "41ff7fd1",
+          "skillId": "e.plural",
+          "englishTarget": "My feet are cold today.",
+          "koreanMeaning": "오늘은 발이 차가워요.",
+          "rule": "foot의 복수형은 feet예요."
+        }
+      ],
+      "translation": "My foot dem cold today.",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "My foot dem retains plural feet and explicit English speaker ownership today."
+    },
+    {
+      "index": 568,
+      "file": "english-bank-sentence-meanings-pcm-0530-0579.json",
+      "sourceHash": "531c7d1249bfead9e09155bf4ce665ed98ee239691b897c4d0c32bcf94e756b7",
+      "contextHash": "d86a2790d4fe53ac2b3f389a96b024306d9f10e23e2008dea5bcc49231b81420",
+      "targetHash": "586bdb2b3ccc5e9a81dc487c33e6a2efd6d2295e82aaa1fbe5c4b0dfaa6455e7",
+      "source": "오늘 숙제가 많아요.",
+      "contexts": [
+        {
+          "itemId": "4ff3dcd5",
+          "skillId": "e.plural",
+          "englishTarget": "I have a lot of homework today.",
+          "koreanMeaning": "오늘 숙제가 많아요.",
+          "rule": "homework는 셀 수 없는 명사라서 복수형이 없어요."
+        }
+      ],
+      "translation": "I get plenty homework today.",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Speaker now explicitly has much homework today, as in the English target."
+    },
+    {
+      "index": 595,
+      "file": "english-bank-sentence-meanings-pcm-0580-0619.json",
+      "sourceHash": "0558e2d1442d6bc2b1107b4e840ec0efef8aa128aab69255d01193e0a4b8a358",
+      "contextHash": "206e63fd01ba25762f5574aca48c1425915e330a2410549679a8b64ea9652bd2",
+      "targetHash": "5c799246243bcd5becd253aa508acb1fa9a4e65b385d1587bf79237d313c4438",
+      "source": "그 방은 따뜻하고 조용하게 느껴졌어요.",
+      "contexts": [
+        {
+          "itemId": "fe7ea0d9",
+          "skillId": "e.order",
+          "englishTarget": "The room felt warm and quiet.",
+          "koreanMeaning": "그 방은 따뜻하고 조용하게 느껴졌어요.",
+          "rule": "주어 + 감각동사 + 형용사(보어) 순서예요. 둘 이상을 이을 때는 A and B로 써요."
+        }
+      ],
+      "translation": "Di room bin feel warm and quiet.",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Past warm and quiet feeling retained with bin."
+    },
+    {
+      "index": 604,
+      "file": "english-bank-sentence-meanings-pcm-0580-0619.json",
+      "sourceHash": "1f52e4d4e30fc0838b91d089c434b60374087cca8d1db2ce07b7b7c8eef7158c",
+      "contextHash": "fcfd2d640cd7df40c9420bd917c977a95742fd82dacaed1a7fab4e720c9b2b01",
+      "targetHash": "fbf9640dab2759202a7993a5ad0957ca680c3aafd8dd0bcc4615f495ef5eae5c",
+      "source": "내 옆에 앉은 소녀는 내 사촌이에요.",
+      "contexts": [
+        {
+          "itemId": "47a81a70",
+          "skillId": "e.order",
+          "englishTarget": "The girl who sits next to me is my cousin.",
+          "koreanMeaning": "내 옆에 앉은 소녀는 내 사촌이에요.",
+          "rule": "관계대명사 who는 꾸며 줄 사람 바로 뒤에 와요."
+        }
+      ],
+      "translation": "Di girl wey dey sit next to me na my cousin.",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Next to retains adjacency, plus sitting girl and speaker’s cousin relation."
+    },
+    {
+      "index": 619,
+      "file": "english-bank-sentence-meanings-pcm-0580-0619.json",
+      "sourceHash": "c4e83f556196a9533a9ee4b54184827a3fd4e702c9efab20dce80b348174083f",
+      "contextHash": "5b9515441924b6d830578b359bb2c2ec1789fc539692b089c2de9f427c78b761",
+      "targetHash": "80838b46bb0f44bfe889b6d3f44833a3614dbe1bccfc506b60223d6671cdd32d",
+      "source": "그 상자는 내가 들기에는 너무 무거웠어요.",
+      "contexts": [
+        {
+          "itemId": "9bf407e3",
+          "skillId": "e.order",
+          "englishTarget": "The box was too heavy for me to lift.",
+          "koreanMeaning": "그 상자는 내가 들기에는 너무 무거웠어요.",
+          "rule": "too + 형용사 + for + 사람 + to부정사 순서로 써요."
+        }
+      ],
+      "translation": "Di box bin heavy too much for me to lift.",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Past excessive weight prevents this speaker lifting the box."
+    },
+    {
+      "index": 651,
+      "file": "english-bank-sentence-meanings-pcm-0620-0659.json",
+      "sourceHash": "8639e89509b78c0658689ada3cb9bc8731398e3a326bc2fb6ea453e0485e781f",
+      "contextHash": "7e6b77b545e10199baed9394a22b0235b40481d4cf25697a9a73cfe831d51ba3",
+      "targetHash": "37ca1c30e3dcb7e53ebcb52cf455c005573a89099e00e902eab677291493e36a",
+      "source": "우리 할아버지는 수년 동안 정원에서 토마토를 키워 오셨어요.",
+      "contexts": [
+        {
+          "itemId": "b05cdeeb",
+          "skillId": "e.m2.perf",
+          "englishTarget": "My grandfather has grown tomatoes in his garden for years.",
+          "koreanMeaning": "우리 할아버지는 수년 동안 정원에서 토마토를 키워 오셨어요.",
+          "rule": "grow-grew-grown. 기간(for years)과 함께 쓴 현재완료에는 과거분사 grown을 써요."
+        }
+      ],
+      "translation": "Our grandpapa don dey grow tomato for im garden for many year.",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Ongoing tomato growing over many years retained; im garden binds the grandfather as owner, not a name-based gender inference."
+    },
+    {
+      "index": 653,
+      "file": "english-bank-sentence-meanings-pcm-0620-0659.json",
+      "sourceHash": "35204a8d147a5fe2820de32b35037df8bd5e0d8be07b23370b441410fcc7c4e8",
+      "contextHash": "76f4b8c57d3f4f7b55a8ac8c394bdcbc6864fcd0f2b89222d6e9024dacec5f11",
+      "targetHash": "0b859665c100f9a84a53e85596b74597473841904eb84f457bfd324067191ea9",
+      "source": "그 어린 남자아이는 침대 밑에 신발을 숨겼어요.",
+      "contexts": [
+        {
+          "itemId": "9f49036e",
+          "skillId": "e.m2.perf",
+          "englishTarget": "The little boy has hidden his shoes under the bed.",
+          "koreanMeaning": "그 어린 남자아이는 침대 밑에 신발을 숨겼어요.",
+          "rule": "hide-hid-hidden. 3인칭 단수 주어에는 has + hidden을 써요."
+        }
+      ],
+      "translation": "Di small boy don hide im shoe dem under bed.",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Completed hiding of the little boy’s own shoes under the bed retained; boy is explicit in Korean."
+    },
+    {
+      "index": 654,
+      "file": "english-bank-sentence-meanings-pcm-0620-0659.json",
+      "sourceHash": "a26c8da5b02f296809eddb5d180c120a4662906c0f2441f2cbfa2eeaf7f8e967",
+      "contextHash": "6555bd2b014818c0bc358315ca7f34b8f93b51e03a9d5b477feeb628aa8454d4",
+      "targetHash": "992ce08f555aa03a290e02f68d586908b49fb411d90706afe2140827472309a0",
+      "source": "우리는 밴드 이름을 정했어요.",
+      "contexts": [
+        {
+          "itemId": "d62a93fc",
+          "skillId": "e.m2.perf",
+          "englishTarget": "We have chosen a name for our band.",
+          "koreanMeaning": "우리는 밴드 이름을 정했어요.",
+          "rule": "choose-chose-chosen. 규칙형 -ed를 붙인 choosed는 틀린 형태예요."
+        }
+      ],
+      "translation": "We don choose name for our band.",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Completed name selection and our band ownership retained."
+    },
+    {
+      "index": 657,
+      "file": "english-bank-sentence-meanings-pcm-0620-0659.json",
+      "sourceHash": "b0a6c22b5f4809c1f8719a1fb777ac7e92f8d688135ea10944e6fa11db309ac4",
+      "contextHash": "e18b2fab1d931fc7aa5b37547f6162f23b4d354e685676dfdf8599755b9d4772",
+      "targetHash": "a86d300f13c62d010feeb53b1d6bf6eb5d2e836bdae578ffe5a53e5123adbcde",
+      "source": "지갑을 잃어버려서 계산할 수 없어요.",
+      "contexts": [
+        {
+          "itemId": "2401b80e",
+          "skillId": "e.m2.perf",
+          "englishTarget": "I have lost my wallet, so I can't pay.",
+          "koreanMeaning": "지갑을 잃어버려서 계산할 수 없어요.",
+          "rule": "과거에 잃어버려서 지금도 없는 결과를 나타낼 때 현재완료를 써요. lose의 과거분사는 lost예요."
+        }
+      ],
+      "translation": "I don lose my wallet, so I no fit pay.",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Speaker’s wallet ownership, completed loss and resulting inability to pay retained."
+    },
+    {
+      "index": 659,
+      "file": "english-bank-sentence-meanings-pcm-0620-0659.json",
+      "sourceHash": "048c3e6fd182a4dd414ecff4e07db7072e4d6d2e499f4399f775eabba5c47d33",
+      "contextHash": "6d06391cc8b7959d96531679770b1dedfe86ce4ad950710631db05ba6554b3f2",
+      "targetHash": "20ae3f5f838b2f1a28f301be45b2f6293af86c78a0152768def208e55cd3eee8",
+      "source": "내 휴대전화가 작동을 멈췄어요.",
+      "contexts": [
+        {
+          "itemId": "fc6a38fd",
+          "skillId": "e.m2.perf",
+          "englishTarget": "My phone has stopped working.",
+          "koreanMeaning": "내 휴대전화가 작동을 멈췄어요.",
+          "rule": "현재완료는 has + 과거분사(stopped)예요. 지금 작동하지 않는 결과를 나타내요."
+        }
+      ],
+      "translation": "My phone no dey work again.",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "No dey work again unambiguously expresses cessation of phone operation rather than stopping in order to work."
+    }
+  ]
+}

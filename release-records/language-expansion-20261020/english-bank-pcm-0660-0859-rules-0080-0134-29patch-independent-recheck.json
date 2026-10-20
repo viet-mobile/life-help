@@ -1,0 +1,793 @@
+{
+  "scope": "Only the 29 applied changes in english-bank-pcm-0660-0859-rules-0080-0134-patches.json; previous source holds 763,791,843 unchanged and not cleared.",
+  "reviewType": "Independent AI semantic delta review, not native-speaker/teacher approval.",
+  "targetFilesModified": false,
+  "counts": {
+    "semantic_pass": 29
+  },
+  "records": [
+    {
+      "kind": "meaning",
+      "index": 672,
+      "file": "english-bank-sentence-meanings-pcm-0660-0699.json",
+      "source": "그녀는 이번 주에 매일 도시락을 가져왔어요.",
+      "sourceHash": "75140c6c7175dbae5a73d437ab4e08210e6b0516152dfc0745c8461c1c50def4",
+      "contextHash": "c8d0f06f026c147d665c5290dbeaadfff422596d042ddfdb71565309883761dc",
+      "contexts": [
+        {
+          "itemId": "f9e282d5",
+          "skillId": "e.m2.perf",
+          "englishTarget": "She has brought her own lunch every day this week.",
+          "koreanMeaning": "그녀는 이번 주에 매일 도시락을 가져왔어요.",
+          "rule": "bring-brought-brought. 불규칙 동사이므로 -ed를 붙이지 않아요."
+        }
+      ],
+      "translation": "She don bring her own lunch box every day dis week.",
+      "targetHash": "92d801aaba566a7c42890f6c4de7780a2b455e11fe750a08265a53a02ae29924",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Own lunch box now binds female subject as lunch owner, every day this week unchanged."
+    },
+    {
+      "kind": "meaning",
+      "index": 674,
+      "file": "english-bank-sentence-meanings-pcm-0660-0699.json",
+      "source": "그는 게임에 돈을 다 써 버렸어요.",
+      "sourceHash": "70f870986d0ca0b1e96991779a76313ae1cf30e54f0b1187928d0f79d542f48b",
+      "contextHash": "c14821415f7515c889dba92103179cfbc0ef0bc330cdeb7e3fc934a3caf55eb4",
+      "contexts": [
+        {
+          "itemId": "fd7e3501",
+          "skillId": "e.m2.perf",
+          "englishTarget": "He has spent all his money on games.",
+          "koreanMeaning": "그는 게임에 돈을 다 써 버렸어요.",
+          "rule": "spend-spent-spent. spended라는 형태는 없어요."
+        }
+      ],
+      "translation": "E don spend all im money for game.",
+      "targetHash": "d860b5aa57e4626d35c05071fef6ce98d4260edbb58f0fd3ae5cbf05a021f756",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "All im money binds subject as owner without changing totality or completed spending on games."
+    },
+    {
+      "kind": "meaning",
+      "index": 676,
+      "file": "english-bank-sentence-meanings-pcm-0660-0699.json",
+      "source": "유리는 펜팔 친구를 두 번 만난 적이 있어요.",
+      "sourceHash": "9658b123aa43898012d1195ed60e50f44fe5e6e068382cb6453449779ac1c56e",
+      "contextHash": "c58c8d56a2627b32f3a71590f3134811bc51baac13801ae91a5f3199ec24fb17",
+      "contexts": [
+        {
+          "itemId": "39768e88",
+          "skillId": "e.m2.perf",
+          "englishTarget": "Yuri has met her pen pal twice.",
+          "koreanMeaning": "유리는 펜팔 친구를 두 번 만난 적이 있어요.",
+          "rule": "meet-met-met. 경험을 나타내는 현재완료에 과거분사 met을 써요."
+        }
+      ],
+      "translation": "Yuri don meet Yuri own pen pal two time.",
+      "targetHash": "68604d45accbd97fdb00d7c902efbf0e27b8ccb0fac4f2b9947d599faf225f0b",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Yuri own pen pal binds relationship to Yuri; repeated name avoids inferring female from reference her."
+    },
+    {
+      "kind": "meaning",
+      "index": 702,
+      "file": "english-bank-sentence-meanings-pcm-0700-0739.json",
+      "source": "내가 도착했을 때 방이 청소되고 있었어요.",
+      "sourceHash": "fc0f8935c50be3fd560daf229fc685ba0640f1da581d6bac54b47920d4f740e0",
+      "contextHash": "099cb100b287e093398415b191532decbcef4c93ddd504eb6ee2f1f33b402304",
+      "contexts": [
+        {
+          "itemId": "75eb8b42",
+          "skillId": "e.m2.pass",
+          "englishTarget": "The room was being cleaned when I arrived.",
+          "koreanMeaning": "내가 도착했을 때 방이 청소되고 있었어요.",
+          "rule": "과거진행형 수동태는 was/were + being + 과거분사예요."
+        }
+      ],
+      "translation": "Dem bin dey clean di room when I arrive.",
+      "targetHash": "534320ab1a9447d58ccc0d221ad52077253bbd02d8afe9284833453aea4d65a8",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Bin dey clean now gives explicit past-progressive frame at speaker arrival."
+    },
+    {
+      "kind": "meaning",
+      "index": 730,
+      "file": "english-bank-sentence-meanings-pcm-0700-0739.json",
+      "source": "아기는 그 노래를 듣자 울음을 멈췄어요.",
+      "sourceHash": "21f5bf8f6b27b33a8cb3b05cd9880422f3be5b82290489604e957875e3fac805",
+      "contextHash": "563b2d32ac1d5ba4587151980be1c96713ab55eed5ebb7daced1465600c1f252",
+      "contexts": [
+        {
+          "itemId": "90ffbd42",
+          "skillId": "e.m2.inf",
+          "englishTarget": "The baby stopped crying when she heard the song.",
+          "koreanMeaning": "아기는 그 노래를 듣자 울음을 멈췄어요.",
+          "rule": "stop + V-ing는 '~하던 것을 멈추다(중단)'라는 뜻이에요."
+        }
+      ],
+      "translation": "Di baby no cry again after di baby hear di song.",
+      "targetHash": "6bf08b980890700528f864fdd2e5a75a4244cb196eca92df96e8d5bc9eed9b32",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "No cry again after hearing song clearly stops prior crying; baby sex stays unknown despite English she."
+    },
+    {
+      "kind": "meaning",
+      "index": 731,
+      "file": "english-bank-sentence-meanings-pcm-0700-0739.json",
+      "source": "내 형은 숙제를 도와주겠다고 약속했어요.",
+      "sourceHash": "b6156cfaed68367c05131252e21a522552e54b33979fd2f4523c4b009b76419f",
+      "contextHash": "df78837fb1de09dfa7b4c78db59a35dd77014aee4f47bff22f7a4fd97356650b",
+      "contexts": [
+        {
+          "itemId": "0788a27c",
+          "skillId": "e.m2.inf",
+          "englishTarget": "My brother promised to help me with homework.",
+          "koreanMeaning": "내 형은 숙제를 도와주겠다고 약속했어요.",
+          "rule": "promise는 to부정사를 목적어로 취해요."
+        }
+      ],
+      "translation": "My elder brother promise to help me with homework.",
+      "targetHash": "f07e76eb66836717ecf4811f2f309ab5689ff9d5afe401bedcd0a064871b6126",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Help me restores speaker beneficiary; elder brother and promise unchanged."
+    },
+    {
+      "kind": "meaning",
+      "index": 738,
+      "file": "english-bank-sentence-meanings-pcm-0700-0739.json",
+      "source": "엄마는 나에게 방을 청소하라고 말씀하셨어요.",
+      "sourceHash": "a08fd3cac15c03731b7cfa3144497214c372f060ad34d9fcea70359f3ae51742",
+      "contextHash": "9d4d67132c260746851a85ecb97312f6ad7525290c9f1e11abdc0d5cea303353",
+      "contexts": [
+        {
+          "itemId": "5842a230",
+          "skillId": "e.m2.inf",
+          "englishTarget": "My mom told me to clean my room.",
+          "koreanMeaning": "엄마는 나에게 방을 청소하라고 말씀하셨어요.",
+          "rule": "tell + 목적어 + to V: '~에게 ...하라고 말하다'."
+        }
+      ],
+      "translation": "Mama tell me to clean my room.",
+      "targetHash": "b74a9f5c1f502d0f4c03055630a716502a2c7b25ec12f03ed2fb03468d07b9bc",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "My room restores speaker ownership and mother instructing speaker."
+    },
+    {
+      "kind": "meaning",
+      "index": 746,
+      "file": "english-bank-sentence-meanings-pcm-0740-0779.json",
+      "source": "준은 금요일까지 프로젝트를 끝내야 해요.",
+      "sourceHash": "84b522e08dc54e6c0b11ae04d960e3d24c0245765795925db39ff105de99d9c5",
+      "contextHash": "1d96bb42cf0de69de64c9392421f757b8dc0818ea697203b35d4ef1145c89c61",
+      "contexts": [
+        {
+          "itemId": "cd6667a7",
+          "skillId": "e.m2.inf",
+          "englishTarget": "Jun needs to finish his project by Friday.",
+          "koreanMeaning": "준은 금요일까지 프로젝트를 끝내야 해요.",
+          "rule": "need는 to부정사를 목적어로 취해요. 주어가 3인칭 단수이면 needs가 돼요."
+        }
+      ],
+      "translation": "Jun need finish Jun own project by Friday.",
+      "targetHash": "94141347b35f236584fe7f3cfcf2a330b94ac9d74cbdee286043a4e3f74eb650",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Jun own project explicitly binds owner without inferring gender from English his."
+    },
+    {
+      "kind": "meaning",
+      "index": 749,
+      "file": "english-bank-sentence-meanings-pcm-0740-0779.json",
+      "source": "내 여동생은 계속 열쇠를 잃어버려요.",
+      "sourceHash": "661153a3b76ce504764f4d504b2c4c00c3167e0bb3b406404f56f8e06d94b9a0",
+      "contextHash": "89c73c242841a6d52e82d0ad798bb77431c7037b84dfa8822704f21fccdb64f1",
+      "contexts": [
+        {
+          "itemId": "3bcd11d1",
+          "skillId": "e.m2.inf",
+          "englishTarget": "My sister keeps losing her keys.",
+          "koreanMeaning": "내 여동생은 계속 열쇠를 잃어버려요.",
+          "rule": "keep + V-ing는 '계속 ~하다'라는 뜻이에요."
+        }
+      ],
+      "translation": "My younger sister dey lose her own key again and again.",
+      "targetHash": "71aa778269c74643d5849cff2b690c482e25385fd90f7b93931fb31a6ad01513",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Her own keys binds explicit younger sister as repeated loser and owner."
+    },
+    {
+      "kind": "meaning",
+      "index": 750,
+      "file": "english-bank-sentence-meanings-pcm-0740-0779.json",
+      "source": "나는 일찍 일어나는 것에 익숙해요.",
+      "sourceHash": "25be640350b56c0a21013fa45111da708c99485af8c97646f203f50dabe5efdc",
+      "contextHash": "0d6c4b00f46f0c60463362bc92b91895227c121752407ac0d07ef47656815228",
+      "contexts": [
+        {
+          "itemId": "94716fbb",
+          "skillId": "e.m2.inf",
+          "englishTarget": "I'm used to getting up early.",
+          "koreanMeaning": "나는 일찍 일어나는 것에 익숙해요.",
+          "rule": "be used to + V-ing는 '~하는 데 익숙하다'라는 뜻이고, 이때 to는 전치사예요."
+        }
+      ],
+      "translation": "To wake early don become normal for me.",
+      "targetHash": "963a6d5e17365782c4d05cf0f7e497f21b49a79eb94386be5fc9f7fb3b01f87b",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Wake early becoming normal for me expresses habituation rather than an English-form used to borrowing."
+    },
+    {
+      "kind": "meaning",
+      "index": 755,
+      "file": "english-bank-sentence-meanings-pcm-0740-0779.json",
+      "source": "그녀는 무슨 말을 해야 할지 몰랐어요.",
+      "sourceHash": "d65fb138750a816a0e1e0fe539407bfd07d533c35bf1b7e85f394bc23df761f3",
+      "contextHash": "cb2ab77aec35b036b5d9f8fc1c7c3c277f36c178fd61074206d1cb34e8454008",
+      "contexts": [
+        {
+          "itemId": "9f9d3a4f",
+          "skillId": "e.m2.inf",
+          "englishTarget": "She didn't know what to say.",
+          "koreanMeaning": "그녀는 무슨 말을 해야 할지 몰랐어요.",
+          "rule": "what + to V는 '무엇을 ~할지'라는 뜻의 명사구예요."
+        }
+      ],
+      "translation": "She no bin know wetin to talk.",
+      "targetHash": "4e8cd5c9b3fe05ba17ab2069f53352db24034041ad8a5957769760dd1085eec4",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "No bin know retains past negative knowledge and unspecified thing to say."
+    },
+    {
+      "kind": "meaning",
+      "index": 774,
+      "file": "english-bank-sentence-meanings-pcm-0740-0779.json",
+      "source": "금요일은 내 한 주에서 가장 바쁜 날이었어요.",
+      "sourceHash": "2b23d9f014517603cbf55d5f962a0138f974378d21cb47a606975fb7c621a339",
+      "contextHash": "07255a2de09c4cdde3d1cbb2749e8d241052355f151b9cad2f9b96a4aacc3869",
+      "contexts": [
+        {
+          "itemId": "b69a0ca0",
+          "skillId": "e.m2.comp",
+          "englishTarget": "Friday was the busiest day of my week.",
+          "koreanMeaning": "금요일은 내 한 주에서 가장 바쁜 날이었어요.",
+          "rule": "y를 i로 바꾸고 -est를 붙이며(busy → busiest), 최상급 앞에는 the를 써요."
+        }
+      ],
+      "translation": "Friday bin be di busiest day for my week.",
+      "targetHash": "3c4ad04523192fbe3f588efe1b3f568f3f892b623fa6eafe03ec9acbd7a85c43",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Bin be anchors busiest Friday within speaker’s week in past."
+    },
+    {
+      "kind": "meaning",
+      "index": 781,
+      "file": "english-bank-sentence-meanings-pcm-0780-0819.json",
+      "source": "민지는 오빠보다 영어를 더 잘해요.",
+      "sourceHash": "fc8678bb40d5ba2fc7bd9b5765b8be15f0ed9658c393d1f9d1bc2293b10a3431",
+      "contextHash": "e155137cd47fa7a96d44ad80491ea7db5b3c3fb69c0569c856e26682d1ac0691",
+      "contexts": [
+        {
+          "itemId": "a139adf4",
+          "skillId": "e.m2.comp",
+          "englishTarget": "Minji speaks English better than her brother.",
+          "koreanMeaning": "민지는 오빠보다 영어를 더 잘해요.",
+          "rule": "good/well의 비교급은 불규칙 형태인 better예요 (good - better - best)."
+        }
+      ],
+      "translation": "Minji sabi speak English pass Minji own elder brother.",
+      "targetHash": "932133b08fb8bb9566d99c9343836a7aa751e511fab3dcda99cfbc028351ee7b",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Minji own elder brother restores kinship referent with no name-based gender inference."
+    },
+    {
+      "kind": "meaning",
+      "index": 782,
+      "file": "english-bank-sentence-meanings-pcm-0780-0819.json",
+      "source": "그것은 올해 최악의 폭풍이었어요.",
+      "sourceHash": "a8ab2c12feb0ee6060527e49436ef83bcac0863efdfe703f7a424a0e723369b7",
+      "contextHash": "2a80fa949386a22b75282139ce68620e8506308ab46e8b247a84680766f36f5b",
+      "contexts": [
+        {
+          "itemId": "eeb1eb97",
+          "skillId": "e.m2.comp",
+          "englishTarget": "That was the worst storm of the year.",
+          "koreanMeaning": "그것은 올해 최악의 폭풍이었어요.",
+          "rule": "bad의 최상급은 worst예요 (bad - worse - worst)."
+        }
+      ],
+      "translation": "Dat bin be di worst storm for di year.",
+      "targetHash": "d9c0a03a2003f30da86a0317ab213f8c3588707ffe9c99e0af2c2282825eb542",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Bin be restores past worst-storm evaluation within the year."
+    },
+    {
+      "kind": "meaning",
+      "index": 799,
+      "file": "english-bank-sentence-meanings-pcm-0780-0819.json",
+      "source": "지호는 반에서 가장 빠른 달리기 선수예요.",
+      "sourceHash": "f2bcaf03fe5dbd51b2d16e0dc60147bbe708d3fcc54f6f38c0edb292ce702bd5",
+      "contextHash": "60821bfb6492afaa6002deef86fb0aef285807d7cd975b09e52d52677e98e97f",
+      "contexts": [
+        {
+          "itemId": "e607b0d0",
+          "skillId": "e.m2.comp",
+          "englishTarget": "Jiho is the fastest runner in his class.",
+          "koreanMeaning": "지호는 반에서 가장 빠른 달리기 선수예요.",
+          "rule": "최상급 뒤에는 범위를 나타내는 in(집단·장소)을 쓰고, than은 쓰지 않아요."
+        }
+      ],
+      "translation": "Jiho na di fastest runner for Jiho own class.",
+      "targetHash": "b34f27856f2a95707d11f5f5287ebc7f582dd377fe5667e2368b0fa83e3f76df",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Jiho own class binds school comparison group, no male inference from name."
+    },
+    {
+      "kind": "meaning",
+      "index": 801,
+      "file": "english-bank-sentence-meanings-pcm-0780-0819.json",
+      "source": "소라는 친구들보다 더 일찍 도착해요.",
+      "sourceHash": "5dc3a46903d7c7c6ca0a32a6f4974d8aba8f23afff888f2f38540501fb8ba377",
+      "contextHash": "2d2cb6bc96e60ef000b0357b40e4906a5775160f13d48db90aaf6a1c9384adf0",
+      "contexts": [
+        {
+          "itemId": "3fc1069e",
+          "skillId": "e.m2.comp",
+          "englishTarget": "Sora arrives earlier than her friends.",
+          "koreanMeaning": "소라는 친구들보다 더 일찍 도착해요.",
+          "rule": "early는 y를 i로 바꿔 earlier/earliest가 돼요. 부사 early도 같은 방식이에요."
+        }
+      ],
+      "translation": "Sora dey arrive earlier pass Sora own friend dem.",
+      "targetHash": "8ac8f758c897bbbdf97f03b34a2446866c1c676dfef9a1b8e96c14d4fb2a2cdf",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Sora own friends restores comparison relation without assigning Sora sex."
+    },
+    {
+      "kind": "meaning",
+      "index": 814,
+      "file": "english-bank-sentence-meanings-pcm-0780-0819.json",
+      "source": "비가 왔지만 우리는 밖에서 놀았다.",
+      "sourceHash": "ebfd9a708023b7266e53d9b0ed183939e2432a397e335cca07663c4c4ad39f36",
+      "contextHash": "3070b81545a5597c63e78baded4a830aef38bcc32dc4b24ca3317ecbbc772a7b",
+      "contexts": [
+        {
+          "itemId": "98628ab3",
+          "skillId": "e.m2.read",
+          "englishTarget": "Although it was raining, we played outside.",
+          "koreanMeaning": "비가 왔지만 우리는 밖에서 놀았다.",
+          "rule": "Although는 ‘~이지만’이라는 양보의 접속사이고, 같은 문장에서 but과 함께 쓰지 않아요."
+        }
+      ],
+      "translation": "Even though rain bin dey fall, we play outside.",
+      "targetHash": "a42db945819d7424b06689d0028879cc230c392ece27fbb9987338cd04cef196",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Bin dey fall gives past rain frame; outside play despite rain unchanged."
+    },
+    {
+      "kind": "meaning",
+      "index": 815,
+      "file": "english-bank-sentence-meanings-pcm-0780-0819.json",
+      "source": "내가 빌린 책은 아주 재미있었다.",
+      "sourceHash": "59e33037064339eb855b2d667eff65ea39e170e4fbef1c463eae74d80ba4227e",
+      "contextHash": "a68423e66ec191bbfb23a84b35ee81492558662e003934cb3b451378f77a9442",
+      "contexts": [
+        {
+          "itemId": "a195dd3e",
+          "skillId": "e.m2.read",
+          "englishTarget": "The book that I borrowed was very interesting.",
+          "koreanMeaning": "내가 빌린 책은 아주 재미있었다.",
+          "rule": "사물을 꾸미는 관계대명사는 that이나 which를 써요. who는 사람에게 쓰고, 관계대명사가 목적어 역할을 하면 it을 따로 쓰지 않아요."
+        }
+      ],
+      "translation": "Di book wey I borrow bin interesting well-well.",
+      "targetHash": "5865f4994b3e7712cce30945c511f29ae115640b2c6b743b6fda9de33d745bdb",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Bin anchors interesting evaluation of speaker’s borrowed book in past."
+    },
+    {
+      "kind": "meaning",
+      "index": 818,
+      "file": "english-bank-sentence-meanings-pcm-0780-0819.json",
+      "source": "너무 추워서 우리는 집에 있었다.",
+      "sourceHash": "623be3959ffe7f22992ad916f042adff034975170228db21e23744c8b4b2b7a0",
+      "contextHash": "4917d639f84ea151fbef8c82be8509990ec1c47ac42276131f29a74f796ce305",
+      "contexts": [
+        {
+          "itemId": "6419d011",
+          "skillId": "e.m2.read",
+          "englishTarget": "It was so cold that we stayed at home.",
+          "koreanMeaning": "너무 추워서 우리는 집에 있었다.",
+          "rule": "‘so + 형용사 + that ~’은 ‘너무 ~해서 …하다’라는 결과를 나타내요."
+        }
+      ],
+      "translation": "Weather bin cold so much, so we stay house.",
+      "targetHash": "2ca9df127f4084b4dfdd7ef20e80db84c2bb957330b773da18a147a1d7ed8286",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Bin cold gives past excessive-cold cause of staying home."
+    },
+    {
+      "kind": "meaning",
+      "index": 824,
+      "file": "english-bank-sentence-meanings-pcm-0820-0859.json",
+      "source": "우산을 가져오는 것을 잊어서 비를 맞았다.",
+      "sourceHash": "de3df6a8f04800e65423470a6c6161b72d9a8a949493b48435fb3a7a6ec14145",
+      "contextHash": "88198feb6f1723c499be04b4a6abe20a042d006925c455ca22ad65f84cfbb068",
+      "contexts": [
+        {
+          "itemId": "0d67e909",
+          "skillId": "e.m2.read",
+          "englishTarget": "I forgot to bring my umbrella, so I got wet.",
+          "koreanMeaning": "우산을 가져오는 것을 잊어서 비를 맞았다.",
+          "rule": "forget to-부정사는 ‘~할 것을 잊다’, forget -ing는 ‘~했던 것을 잊다’라는 뜻이에요."
+        }
+      ],
+      "translation": "I forget to bring my umbrella, so rain wet me.",
+      "targetHash": "37c98e19f95bf6db6e5d76eb2f3c9c53b0ff842e3656bc1c9ea5ac1dbb97fb7b",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "My umbrella binds speaker ownership; forgetting to bring and wet result unchanged."
+    },
+    {
+      "kind": "meaning",
+      "index": 828,
+      "file": "english-bank-sentence-meanings-pcm-0820-0859.json",
+      "source": "그녀가 한 모든 말은 사실이었어요.",
+      "sourceHash": "5b3f4d4d9ad1b2f1b976c90ecb22c1f5edfe202edf4480a1c86ace7886cf129e",
+      "contextHash": "8eb50de7045bcbfabcef4a56097377cd7f8ec15d54cb520c80c2e908fe16cc90",
+      "contexts": [
+        {
+          "itemId": "6d48e53c",
+          "skillId": "e.m3.rel",
+          "englishTarget": "Everything that she said was true.",
+          "koreanMeaning": "그녀가 한 모든 말은 사실이었어요.",
+          "rule": "everything, all, only 같은 말이 선행사일 때는 주로 that을 써요. 선행사가 이미 있으므로 what은 쓸 수 없어요."
+        }
+      ],
+      "translation": "Everything wey she talk bin true.",
+      "targetHash": "51936d16528d3178031a0d7844ca06bb34b9179a5d73e074b669f3a49a9f6796",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Bin true retains past truth of everything said by explicit female subject."
+    },
+    {
+      "kind": "meaning",
+      "index": 831,
+      "file": "english-bank-sentence-meanings-pcm-0820-0859.json",
+      "source": "내가 함께 춤춘 소녀는 미나였어요.",
+      "sourceHash": "6987142f8d65d453a962604617ec466c05023c5ce6b5a7076bafcde5f502a998",
+      "contextHash": "3c206217cffb9589f2bcf6c64fdb67ef570ce7b1c1a1dc4dd1c50c497e6566f9",
+      "contexts": [
+        {
+          "itemId": "1d9e3c81",
+          "skillId": "e.m3.rel",
+          "englishTarget": "The girl with whom I danced was Mina.",
+          "koreanMeaning": "내가 함께 춤춘 소녀는 미나였어요.",
+          "rule": "전치사 바로 뒤에는 who나 that을 쓸 수 없고 사람이면 whom을 써요."
+        }
+      ],
+      "translation": "Di girl wey I dance with bin be Mina.",
+      "targetHash": "2a2de23f9fcb83967551dc8b4c52df38c4e46e90af0caab95ff5a60512433ec7",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Bin be restores past identification of danced-with girl as Mina, explicit girl only within this row."
+    },
+    {
+      "kind": "meaning",
+      "index": 833,
+      "file": "english-bank-sentence-meanings-pcm-0820-0859.json",
+      "source": "내가 듣고 있던 노래는 내가 가장 좋아하는 곡이에요.",
+      "sourceHash": "2ca9c580d9f414ce0999c62313007ad866281a1a36bf745f57582cbb53b09d00",
+      "contextHash": "ff4add481fb5b180d8cebd6fa0bc9e1cc1099ea6000455bc9e539784c3a050d2",
+      "contexts": [
+        {
+          "itemId": "2bb1cd68",
+          "skillId": "e.m3.rel",
+          "englishTarget": "The song that I was listening to is my favorite.",
+          "koreanMeaning": "내가 듣고 있던 노래는 내가 가장 좋아하는 곡이에요.",
+          "rule": "전치사를 관계절 끝에 남겨 두면 그 전치사(listen to)를 빠뜨리면 안 돼요."
+        }
+      ],
+      "translation": "Di song wey I bin dey listen to na di one wey I like pass all.",
+      "targetHash": "fd22015f07aa947356b8a27c8a60a2aa37861576f06a8e8992a9b874fc60848f",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Bin dey listen marks prior ongoing listening while current favorite-song assertion remains current."
+    },
+    {
+      "kind": "meaning",
+      "index": 846,
+      "file": "english-bank-sentence-meanings-pcm-0820-0859.json",
+      "source": "그는 시험에 합격했고, 그것이 부모님을 기쁘게 했어요.",
+      "sourceHash": "08987660bfb2f9f543df28561e68aedb1a1c47bd0edbf0661e6c4e8a35447378",
+      "contextHash": "fe52a8b1163580f29de8a544c3bafda26a18893e6165a54a68f47fc425f7d75b",
+      "contexts": [
+        {
+          "itemId": "60a02fa5",
+          "skillId": "e.m3.rel",
+          "englishTarget": "He passed the exam, which made his parents happy.",
+          "koreanMeaning": "그는 시험에 합격했고, 그것이 부모님을 기쁘게 했어요.",
+          "rule": "which는 앞 문장 전체를 받아 ‘그것이 ~했다’는 뜻으로 쓸 수 있어요. 쉼표 뒤에는 that을 쓰지 않아요."
+        }
+      ],
+      "translation": "E pass di exam, and dat make im parent dem happy.",
+      "targetHash": "9631a096b9b4b8e3a1707336b044df54eb0574fc1d9c8f8724bc0174f4f83e8c",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Im parent dem binds exam passer’s parents; neutral im adds no inferred sex."
+    },
+    {
+      "kind": "meaning",
+      "index": 847,
+      "file": "english-bank-sentence-meanings-pcm-0820-0859.json",
+      "source": "우리가 어제 본 영화는 지루했어요.",
+      "sourceHash": "51d69bb42d8621e0b80e454a591a8ac72bba96667b175ba946e4cba13ce89731",
+      "contextHash": "98906fa8eb0484d68b913cb3537511afa8fea69ea7ad25bafb20a05171587c66",
+      "contexts": [
+        {
+          "itemId": "f2dde084",
+          "skillId": "e.m3.rel",
+          "englishTarget": "The movie that we watched yesterday was boring.",
+          "koreanMeaning": "우리가 어제 본 영화는 지루했어요.",
+          "rule": "목적격 관계대명사는 관계절 안에서 목적어 역할을 하므로 it 같은 목적어를 또 쓰지 않아요."
+        }
+      ],
+      "translation": "Di film wey we watch yesterday bin boring.",
+      "targetHash": "32d524b73790343c0128f481e7b992cc87341f52f041b2a62e8d1aa41cc89128",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Bin boring restores past film evaluation, yesterday watching unchanged."
+    },
+    {
+      "kind": "meaning",
+      "index": 855,
+      "file": "english-bank-sentence-meanings-pcm-0820-0859.json",
+      "source": "할머니를 치료해 주신 의사 선생님은 아주 친절했어요.",
+      "sourceHash": "2990338f20b699a2dc6e18f352e5adcb8ebf2e8b91ce7941f90cddba19a7f256",
+      "contextHash": "b2afda05399c4df9b4cd36adccc63d0bedc4a5c082e4f024b26c2ad76b7f56aa",
+      "contexts": [
+        {
+          "itemId": "33f42758",
+          "skillId": "e.m3.rel",
+          "englishTarget": "The doctor who treated my grandmother was very kind.",
+          "koreanMeaning": "할머니를 치료해 주신 의사 선생님은 아주 친절했어요.",
+          "rule": "사람 선행사의 주격 관계대명사는 who예요. 전체 문장의 동사는 doctor(단수)에 맞춰 was를 써요."
+        }
+      ],
+      "translation": "Di doctor wey treat my grandmama bin kind well-well.",
+      "targetHash": "d53415e19644531828605533a16b6cdd9f22ed7ff5dfef5475640f1dbd6f130f",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "My grandmama and bin kind restore English speaker kinship and Korean past kind evaluation; doctor sex remains unknown."
+    },
+    {
+      "kind": "rule",
+      "index": 93,
+      "file": "english-bank-sentence-rules-pcm-0080-0109.json",
+      "source": "A cat은 한 마리이므로 동사에 -s를 붙여 sits라고 해요. 'on the sofa'(소파 위에)는 덩어리로 같이 써요.",
+      "sourceHash": "eecff8a8a4b34997ab028e5d0f82487495e4e1de8de1083dbd39551735013c72",
+      "contextHash": "7732d4b40aa804f4fdec3d596a03d354036b711e39a713c7eb849c36b0b4149c",
+      "contexts": [
+        {
+          "itemId": "4ccf97cc",
+          "skillId": "e.e3.build",
+          "englishTarget": "A cat sits on the sofa.",
+          "koreanMeaning": "고양이 한 마리가 소파 위에 앉아 있어요.",
+          "rule": "A cat은 한 마리이므로 동사에 -s를 붙여 sits라고 해요. 'on the sofa'(소파 위에)는 덩어리로 같이 써요."
+        }
+      ],
+      "translation": "A cat na one animal, so add -s and use sits. on the sofa mean on top sofa. Keep di English expression on the sofa together as one place expression.",
+      "targetHash": "67e96c7a36aa0a6d228b00cc874f2fe9d2d788ba02929f7b0446625b3580d38a",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "English on the sofa preserved as learning chunk, native on top sofa restores source meaning; cat singular and sits rule unchanged."
+    },
+    {
+      "kind": "rule",
+      "index": 95,
+      "file": "english-bank-sentence-rules-pcm-0080-0109.json",
+      "source": "Mom and Dad는 두 사람이라서 동사에 -s를 붙이지 않아요. in the park(공원에서)는 문장 뒤쪽에 써요.",
+      "sourceHash": "030b2b981cb35f05c23d0c25ead3d8c43c26bf06938d539edcc016e53e1af89f",
+      "contextHash": "6134f77204bd78947b6b4e09705c143dbabe0a5573b594655e5cc462b29bfbdf",
+      "contexts": [
+        {
+          "itemId": "75bedd54",
+          "skillId": "e.e3.build",
+          "englishTarget": "Mom and Dad walk in the park.",
+          "koreanMeaning": "엄마와 아빠는 공원에서 걸어요.",
+          "rule": "Mom and Dad는 두 사람이라서 동사에 -s를 붙이지 않아요. in the park(공원에서)는 문장 뒤쪽에 써요."
+        }
+      ],
+      "translation": "Mom and Dad na two person, so no add -s to verb. in the park mean inside di park. Put in the park near di end of di sentence.",
+      "targetHash": "ad90fb78148c458bef50e365dab3a9cd296357ee054535b46052f13ee39d871d",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "English in the park retained, inside di park restores place gloss; two parents and no -s rule unchanged."
+    },
+    {
+      "kind": "rule",
+      "index": 100,
+      "file": "english-bank-sentence-rules-pcm-0080-0109.json",
+      "source": "can(~할 수 있다) 뒤에는 동사의 원래 모양을 써요. Tom이 한 명이어도 swims라고 하지 않아요.",
+      "sourceHash": "8a7d6b746c9b043e918fe45adbd2fe04c065ecb7f33650c51c17e949df30a1ff",
+      "contextHash": "04002717cd208eecdfe5d04d625e221c7e3462b5dd0abe8eb508970a76a753ae",
+      "contexts": [
+        {
+          "itemId": "f0839178",
+          "skillId": "e.e3.build",
+          "englishTarget": "Tom can swim fast.",
+          "koreanMeaning": "톰은 빨리 수영할 수 있어요.",
+          "rule": "can(~할 수 있다) 뒤에는 동사의 원래 모양을 써요. Tom이 한 명이어도 swims라고 하지 않아요."
+        }
+      ],
+      "translation": "can dey show say person fit do something. After can, use verb base form. Even though Tom na one person, no use swims after can.",
+      "targetHash": "039338f773f7afe34b2e7edd21ff1d7ab3bb074531f10ec1d24f5842f86f907f",
+      "bindingChecks": {
+        "sourceHash": true,
+        "contextHash": true,
+        "afterHash": true,
+        "afterText": true
+      },
+      "verdict": "semantic_pass",
+      "reason": "Person fit do something restores ability meaning of can; base-form rule and rejection of swims unchanged."
+    }
+  ]
+}
