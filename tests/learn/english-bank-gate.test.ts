@@ -26,7 +26,8 @@ describe("English bank completeness gate: reasons are recorded, nothing is serve
     expect(counts.length).toBe(46);
     for (const c of counts) expect(c).toBeGreaterThanOrEqual(6895); // never below the first verified result (ratchet; raise it as keys are added)
     // languages may differ slightly (a translation that makes two options identical removes only that question in that language)
-    expect(Math.max(...counts) - Math.min(...counts)).toBeLessThan(60);
+    // spread = duplicate-after-translation losses (<60) + questions held on purpose per language (kit-hold.json: sg, ar gender hold 25 questions)
+    expect(Math.max(...counts) - Math.min(...counts)).toBeLessThan(100);
     expect(Object.values(audit.reasonsFirstLocale as Record<string, number>).reduce((a, b) => a + b, 0) + audit.duplicatesFirstLocale).toBe(audit.generatedFrom.bankQuestions - (audit.servedPerLocale[Object.keys(audit.servedPerLocale)[0]] as number));
   });
 });

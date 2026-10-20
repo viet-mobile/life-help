@@ -6,11 +6,12 @@ import path from "node:path";
 import crypto from "node:crypto";
 const root = path.resolve(__dirname, "../../..");
 const work = process.argv[2];
+const checkOnly = process.argv.includes("--check"); // report rejections without writing anything
 const { items } = JSON.parse(fs.readFileSync(path.join(work, "items.json"), "utf8")) as { items: Array<{ id: string; q: string; why: string }> };
 const approved = fs.existsSync(path.join(work, "approved.json")) ? (JSON.parse(fs.readFileSync(path.join(work, "approved.json"), "utf8")) as Record<string, string[]>) : null;
 const HANGUL = /[가-힣ㄱ-ㆎ]/;
 const sha = (s: string) => crypto.createHash("sha1").update(s).digest("hex").slice(0, 10);
-const quotes = (s: string) => [...s.matchAll(/[“"‘']([A-Za-z][^”"’']{2,80})[”"’'](?![A-Za-z])/g)].map((m) => m[1]);
+const quotes = (s: string) => [...s.matchAll(/[“"‘']([A-Za-z][^”"’']{2,80})[”"’'](?![A-Za-z])/g)].map((m) => m[1].replace(/[.,!?]+$/, ""));
 const engWords = (s: string) => (s.match(/\b[A-Za-z][A-Za-z']+(?: [A-Za-z][A-Za-z']+)+/g) ?? []).map((x) => x.replace(/^'+|'+$/g, "")); // quote marks around a phrase may change; the words may not // English phrases embedded in Korean explanations (e.g. "river park", "My brother and I")
 const extraDir = path.join(root, "scripts/learn/english-bank/kit-extra");
 const manifestPath = path.join(extraDir, "_manifest.json");
@@ -23,13 +24,14 @@ for (const f of fs.readdirSync(path.join(work, "done")).filter((x) => x.endsWith
   for (const it of items) {
     if (approved && !approved[loc]?.includes(it.id)) { rep.rejected.push([it.id, "not approved"]); continue; }
     const v = tr[it.id]; const q = v?.q?.trim(), w = v?.why?.trim();
-    const why = !q || !w ? "missing field" : HANGUL.test(q) || HANGUL.test(w) ? "korean left" : quotes(it.why).some((x) => !w.includes(x)) ? "quoted English changed" : engWords(it.why).some((x) => !w.includes(x)) ? "English phrase changed" : (it.why.match(/\d+/g) ?? []).some((d) => !w.includes(d)) ? "digit lost" : null;
+    const why = !q || !w ? "missing field" : HANGUL.test(q) || HANGUL.test(w) ? "korean left" : [...quotes(it.why), ...quotes(it.q)].some((x) => !w.includes(x) && !q.includes(x)) ? "quoted English changed" : engWords(it.why).some((x) => !w.includes(x)) ? "English phrase changed" : loc !== "en" && (it.why.match(/\d+/g) ?? []).some((d) => !w.includes(d)) ? "digit lost" : null;
     if (why) { rep.rejected.push([it.id, why]); continue; }
+    if (checkOnly) { rep.merged++; continue; }
     extra.texts[`q:${it.id}`] = q; extra.texts[`why:${it.id}`] = w;
     (manifest[`q:${it.id}`] ??= { srcHash: sha(it.q) })[loc] = sha(q!); (manifest[`why:${it.id}`] ??= { srcHash: sha(it.why) })[loc] = sha(w!);
     rep.merged++;
   }
-  fs.writeFileSync(ep, JSON.stringify({ locale: loc, texts: Object.fromEntries(Object.entries(extra.texts).sort(([a], [b]) => a.localeCompare(b))) }, null, 1) + "\n");
+  if (!checkOnly) fs.writeFileSync(ep, JSON.stringify({ locale: loc, texts: Object.fromEntries(Object.entries(extra.texts).sort(([a], [b]) => a.localeCompare(b))) }, null, 1) + "\n");
 }
-fs.writeFileSync(manifestPath, JSON.stringify(manifest) + "\n");
+if (!checkOnly) fs.writeFileSync(manifestPath, JSON.stringify(manifest) + "\n");
 console.log(JSON.stringify(report));
