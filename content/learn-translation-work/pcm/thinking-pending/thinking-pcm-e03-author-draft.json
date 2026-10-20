@@ -1,0 +1,206 @@
+{
+  "taskId": "e-03",
+  "status": "AUTHOR_DRAFT_NOT_INDEPENDENTLY_REVIEWED",
+  "rows": {
+    "title": {
+      "sourceHash": "c809750fbc5ea96ae1b62156ee87381555e5727465dd9e06b4461a3eb7abf4a7",
+      "translation": "Decide wetin you need ask before you reply",
+      "role": "localized_instruction_or_meaning"
+    },
+    "goal": {
+      "sourceHash": "8decc130e9e7c8f66abb909b88f80b3ac63c8e352776c7d1515ef76fe6032b65",
+      "translation": "Check which information you really need before you answer an invitation, then write short English reply to ask for am.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "material": {
+      "sourceHash": "611f82dc9befa0001a4439125f50f584aa8c32955a20fe1ee05deafc0d261970",
+      "translation": "Your friend Ari send you this message: \"Let's play soccer tomorrow!\"\nYou like the idea, but this message alone no enough to decide whether you fit go.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "thinking.0": {
+      "sourceHash": "9f96d05c2f41803e2f6ecce6bfd227212f05562b1aec17440edfd88cef08edde",
+      "translation": "Check whether information enough",
+      "role": "localized_instruction_or_meaning"
+    },
+    "thinking.1": {
+      "sourceHash": "8ed7c880cd034332546e4ab24cefca773d5dc50a0e595cdd825e1e35863fe021",
+      "translation": "Choose the questions wey you need",
+      "role": "localized_instruction_or_meaning"
+    },
+    "thinking.2": {
+      "sourceHash": "4a1c2ee7bda539cd8a9decb3cbe5e266559698dab5751a81752660237cd9737f",
+      "translation": "Write reply wey include questions",
+      "role": "localized_instruction_or_meaning"
+    },
+    "prereq.0": {
+      "sourceHash": "f43a08a51e9d660fb652196f0d0d3df19c3342b8293c75df5b6e01474ea2a1dd",
+      "translation": "Basic question forms wey start with question words (wh-questions)",
+      "role": "localized_instruction_or_meaning"
+    },
+    "prereq.1": {
+      "sourceHash": "048610215b12a02db7b7e247cf54557ab4d9f885c68ca74736860744dd8609a8",
+      "translation": "Short replies like Sure and OK",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s1.prompt": {
+      "sourceHash": "1b12357dd4f5f8812f403bc2212752c1c7f9d6c08eded41270c035314c3f6eba",
+      "translation": "Choose all the information wey you must know before you fit reply say you fit go.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s1.hint.0": {
+      "sourceHash": "b6a5eae37cab2957fec713664572dada28489e27577834f130f6326776d713f0",
+      "translation": "Check whether the message don already give answer to each question.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s1.hint.1": {
+      "sourceHash": "8b499b44036b357c84796f2cca3eceb0b9d99c88eafbeefb3867e669805bf9a0",
+      "translation": "Try each question one by one: if you no get the answer, you fit still promise say you go come?",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s1.o.a": {
+      "sourceHash": "68d0116bda606d0efa3b5cc4e0e4832d9ff22e7a256cd2f99f4c59739fe92540",
+      "translation": "What time?",
+      "role": "preserved_learning_target"
+    },
+    "s.s1.r.a": {
+      "sourceHash": "b871cc429e7f97b72001b76a6a456196c8cce6a321807bb3288b89763e34da94",
+      "translation": "You need the time. But this one alone no tell you where to go. Check whether another thing still dey wey you need know.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s1.o.b": {
+      "sourceHash": "91f45115c34f7dcf6eb244ea679ade1f3ff13bf8215b007449b7624d67b19858",
+      "translation": "Where?",
+      "role": "preserved_learning_target"
+    },
+    "s.s1.r.b": {
+      "sourceHash": "d418157c1b7dee18fb2ab7ad5381ceca98c508a759625dfba3ebad8a66cdccc6",
+      "translation": "You need the place. But this one alone no tell you the time. Check whether another thing still dey wey you need know.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s1.o.c": {
+      "sourceHash": "4bd2ed0287ca84e17189e2988d7e8498d237d72ef83ceb03d8a926c64cd8fc2d",
+      "translation": "Do we need a ball?",
+      "role": "preserved_learning_target"
+    },
+    "s.s1.r.c": {
+      "sourceHash": "76152bb20ac2e2d81de48149fcfab0b385a2e5084c7d871963fa20755f5adf96",
+      "translation": "Ball fit useful, but you no need that information to decide whether you fit go.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s1.o.d": {
+      "sourceHash": "426c5bc0fd7c3a0362b10aec0fde49c1de99a215bbe4f299dbdf702387bca117",
+      "translation": "Who else is coming?",
+      "role": "preserved_learning_target"
+    },
+    "s.s1.r.d": {
+      "sourceHash": "d9f20cc8f05c054dbaf78b6527d11d87130c0ffeb3abeb396f27e1d67890206e",
+      "translation": "This one fit help, but even without am you fit decide whether you fit go. Check whether na information wey you must get.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s1.o.e": {
+      "sourceHash": "3a205451b01e6f2526abfff3512934ac857aa41ed035225e50a297ee7ffc46cb",
+      "translation": "Do you like soccer?",
+      "role": "preserved_learning_target"
+    },
+    "s.s1.r.e": {
+      "sourceHash": "bf4873c38818ad4b4cd984bd4098b649943e08171b987e6e1ed0b3cee2b05747",
+      "translation": "Na Ari first suggest soccer. This question dey ask again for information wey you already get.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s1.o.f": {
+      "sourceHash": "8bb2f6860b670d4ebde072a8fb8c44f152c878548759ba24c8abd9ddee59b546",
+      "translation": "Why do you want to play?",
+      "role": "preserved_learning_target"
+    },
+    "s.s1.r.f": {
+      "sourceHash": "7578fc6d7e36fc4a48c721f5294a4a1b951fda2fed0842a7fe4efd7f977224b1",
+      "translation": "The reason fit satisfy your curiosity, but you no need am to decide whether you fit go. Question wey start with question word no automatically be necessary question.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s1.explain": {
+      "sourceHash": "0883094afaf31453eb3b7b890818f94837d4bdf0f9daded70311546d0ac4f1a8",
+      "translation": "If you no know time and place, you no fit check whether e fit your schedule or whether you fit reach there. If you choose only one, test again whether you fit promise to come without the other one. Time alone no tell you where; place alone no tell you when.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s1.acc.0": {
+      "sourceHash": "cb9e2cb26d14cbf363cfc5db49dc32c4b3c65a018a74718b1c2c7c3b30206d40",
+      "translation": "E natural to want know who else dey come. But the most important thing here na say you no fit answer without time and place.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s2.prompt": {
+      "sourceHash": "5ba245f742d4b69bed24bbf7f571de8efa16589604582a682d2c3d811002dfed",
+      "translation": "Write reply to Ari in English. Show say you want join, and include questions wey ask for the information you choose above.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s2.hint.0": {
+      "sourceHash": "cc8a5227470f3d1b0a42c9244ee4b42b7693e0256bbc8e85b9cde6203545e014",
+      "translation": "First write short expression wey show say you like the idea.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s2.hint.1": {
+      "sourceHash": "c0e827c26200c6c6e03f142bf14e301cf82ab7be1cf144516dd8a38c0b737ac7",
+      "translation": "You fit join the two questions wey you choose inside one sentence.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s2.placeholder": {
+      "sourceHash": "740999e3335056705b6de6cc5470db61aac8034cd89a2e27522d99e97ff3a3f5",
+      "translation": "Example: Sure! ...",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s2.selfAssess.0": {
+      "sourceHash": "5562a85acaa7ab0a12dd2682383de670758383496724e0303279911c6ddb86f3",
+      "translation": "If Ari read my reply, Ari fit tell me the time and place?",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s2.selfAssess.1": {
+      "sourceHash": "173539aa5eccf80c7bc23c9d8581f0acc12e751b82b4fd890db0cd43c4bf29a4",
+      "translation": "My reply show say I like the idea and also ask questions?",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s2.model.0": {
+      "sourceHash": "26021dc8078e96774fa5e7cd90cf3bbb850ed9a7d6a39eeb3616392a56332ff4",
+      "translation": "Sure! What time and where?",
+      "role": "preserved_learning_target"
+    },
+    "s.s2.model.1": {
+      "sourceHash": "922dda52737f23369d1819c58410b31f5a6f4cd0d61aea1f5118da12012321b2",
+      "translation": "Sounds fun! When do we start, and where do we meet?",
+      "role": "preserved_learning_target"
+    },
+    "s.s2.modelNote.1": {
+      "sourceHash": "f330751bdb3ee712b00ea31d1e34fc1622bcf06e4ca35f7b17501dc25696b16d",
+      "translation": "This answer use longer sentence to ask for the information.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "meta.levelLabel": {
+      "sourceHash": "2b35e448b26a7a66d31784ea648e252a3ee066fd9141a02a4fe0a9f03079e9ab",
+      "translation": "Primary school",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s2.humanReview": {
+      "sourceHash": "63ed233787cad0d06a80e81d278596a4065dce9b4380bd050f8ee0c24fe4658f",
+      "translation": "Person need read the answer to check whether the questions fit the situation, ask for necessary information, and sound natural.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s2.check.w1.label": {
+      "sourceHash": "aa44d9e6bdd3b2a2774a12a25090a2ba144765ff6ba343945c177a0ed59564e1",
+      "translation": "The answer get question with question mark",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s2.check.w2.label": {
+      "sourceHash": "4b8c023cc198bec1c1ef7bba6c9f47f10e5d98816999474c18c17511a36aee93",
+      "translation": "The question ask about time and place",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s2.check.w3.label": {
+      "sourceHash": "ad2f746da3dcc44199b248a1769053682c0c8073d0cb3945d5d4af0e44024d42",
+      "translation": "The answer show willingness to join",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s2.check.w4.label": {
+      "sourceHash": "7cf44c5cc2f966156021d5f1138840fe15899f5ce5a44bafa73f1ed567198638",
+      "translation": "The answer no use only ball question replace the necessary questions",
+      "role": "localized_instruction_or_meaning"
+    }
+  }
+}

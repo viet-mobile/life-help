@@ -33,3 +33,7 @@ English-course authoring now covers all seven locales: 2,454 unique source strin
 ## Additional authoring checkpoint
 
 All seven regular English course drafts (2454 source strings per locale) and Korean course drafts (2793 per locale) are now complete in private work files and pass structural checks. They are not runtime overlays or full independent semantic approval. The shared English bank subset is 80 templates plus 581 context-bound vocabulary meanings per locale, mapping to 1087 keys. Per-question bank translations and most thinking tasks remain incomplete. Korean bank authoring is in progress. No production deployment was executed.
+
+## Korean bank continuation
+
+PCM has all 3189 source strings authored in private drafts. The first 1000 received an independent AI review with 12 bounded corrections and rechecks; the remainder is not independently approved. Other locale chunk counts are recorded in korean-bank-progress.json. PCM English vocabulary five meaning corrections and Czech course five nationality corrections were independently rechecked. Thinking e-03 has a 40-field translation review but remains held on source/assessment issues, and e-04 is an unreviewed private draft. These are not additional deployed tasks. The production release gate remains incomplete.

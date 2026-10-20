@@ -37,15 +37,16 @@
     "newCountryDomains": "PLAN_ONLY_NOT_CREATED",
     "thinkingUnitTests": "73 PASS in 10 files; isolated unit configuration, not full release gate",
     "thinkingCoverage": "INCOMPLETE: pcm has m-01 and e-01; other added locales m-01 only; k-01 PCM is private, held on source hint/model inconsistency",
-    "expandedContentReleaseGate": "FAIL_INCOMPLETE: actual loader coverage; wired to prebuild and prebuild:next",
+    "expandedContentReleaseGate": "FAIL_INCOMPLETE: pcm thinking2/1867, other new locales1/1867; English bank0/14981 each. No deployment.",
     "stagingSpecs": "Updated country defaults, seven new locales and sg-to-fr redirects; NOT_EXECUTED",
     "courseMeaningSample": "96 bounded sample fields reviewed; two addend-count wording changes independently rechecked; not full semantic review",
     "koreanCourseExplicitFields": "3 node tests PASS: protected Korean accepted, missing native instructions/meaning options rejected",
     "courseAssemblyBoundary": "3 Python tests PASS: incomplete/changed quantity/changed Korean target creates no overlay",
     "englishCourseStructure": "7 x 2454 explicit strings PASS; seven assembled drafts remain private; source adjudication and independent review incomplete",
-    "koreanCourseStructure": "7 x 2793 explicit strings PASS; assembled drafts private, independent meaning review incomplete"
+    "koreanCourseStructure": "7 x 2793 explicit strings PASS; assembled drafts private, independent meaning review incomplete",
+    "bankDrafts": "Seven English shared/vocabulary subsets pass structural checks; Korean private bank chunks pass source-hash/token checks; runtime not activated"
   },
-  "review": "AI authoring only; bounded cross-review; native/teacher review not done",
+  "review": "AI authoring with bounded independent AI review and hash-bound corrections; native/teacher review not done",
   "contentScopeDecision": "ALL_GENERAL_AND_THINKING_TRANSLATED_BEFORE_RELEASE",
   "englishContentFallbackAllowed": false,
   "workStarted": [
@@ -82,5 +83,63 @@
     "contextBoundVocabularyConceptsPerLocale": 581,
     "mappedKeysPerLocale": 1087,
     "note": "Incomplete shared/lexical subset; not independent meaning approval or runtime bank completion"
+  },
+  "koreanBankDraftProgress": {
+    "pcm": {
+      "authoredSourceStrings": 3189,
+      "requiredSourceStrings": 3189,
+      "remaining": 0,
+      "structuralChecks": "PASS",
+      "meaningApproval": "SEPARATE_REQUIRED",
+      "runtimeActivated": false
+    },
+    "tl": {
+      "authoredSourceStrings": 2500,
+      "requiredSourceStrings": 3189,
+      "remaining": 689,
+      "structuralChecks": "PASS",
+      "meaningApproval": "SEPARATE_REQUIRED",
+      "runtimeActivated": false
+    },
+    "ro": {
+      "authoredSourceStrings": 2500,
+      "requiredSourceStrings": 3189,
+      "remaining": 689,
+      "structuralChecks": "PASS",
+      "meaningApproval": "SEPARATE_REQUIRED",
+      "runtimeActivated": false
+    },
+    "fi": {
+      "authoredSourceStrings": 2500,
+      "requiredSourceStrings": 3189,
+      "remaining": 689,
+      "structuralChecks": "PASS",
+      "meaningApproval": "SEPARATE_REQUIRED",
+      "runtimeActivated": false
+    },
+    "cs": {
+      "authoredSourceStrings": 1500,
+      "requiredSourceStrings": 3189,
+      "remaining": 1689,
+      "structuralChecks": "PASS",
+      "meaningApproval": "SEPARATE_REQUIRED",
+      "runtimeActivated": false
+    },
+    "hu": {
+      "authoredSourceStrings": 1500,
+      "requiredSourceStrings": 3189,
+      "remaining": 1689,
+      "structuralChecks": "PASS",
+      "meaningApproval": "SEPARATE_REQUIRED",
+      "runtimeActivated": false
+    },
+    "af": {
+      "authoredSourceStrings": 2500,
+      "requiredSourceStrings": 3189,
+      "remaining": 689,
+      "structuralChecks": "PASS",
+      "meaningApproval": "SEPARATE_REQUIRED",
+      "runtimeActivated": false
+    }
   }
 }

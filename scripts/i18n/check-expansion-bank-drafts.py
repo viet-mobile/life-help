@@ -19,7 +19,7 @@ for locale in ['pcm','tl','ro','fi','cs','hu','af']:
   for pattern in [r'\{\w+\}',r'\d+(?:\.\d+)?']:
    assert tokens(pattern,s)==tokens(pattern,source['source']),('template token changed',locale,source['key'])
   texts[source['key']]=s
- v={};files=sorted((w/'translations').glob(f'english-bank-vocabulary-{locale}-[0-9]*.json'))
+ v={};files=sorted(f for f in (w/'translations').glob(f'english-bank-vocabulary-{locale}-[0-9]*.json') if re.fullmatch(rf'english-bank-vocabulary-{locale}-\d{{4}}-\d{{4}}\.json',f.name))
  for file in files:
   for index,row in json.loads(file.read_text()).items():
    assert int(index) not in v,('duplicate vocabulary',locale,index)

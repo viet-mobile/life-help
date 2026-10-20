@@ -1,0 +1,294 @@
+{
+  "scope": "Korean bank0..999,1000 sources per language,2000 authored fields; 45 instruction templates and955 texts.",
+  "status": "AUTHOR_DRAFT_NOT_REVIEWED",
+  "files": {
+    "korean-bank-cs-0000-0499.json": {
+      "entries": 500,
+      "sha256": "6569c645e9d7f3fd0f903d0772395f5fd132c7211cd34f7c4b726b4d5390814f"
+    },
+    "korean-bank-hu-0000-0499.json": {
+      "entries": 500,
+      "sha256": "f3085cca244432a08d59c28ffbbac61a224efcdd691bf218e87d8a9b23ace690"
+    },
+    "korean-bank-cs-0500-0999.json": {
+      "entries": 500,
+      "sha256": "a1ddc7c964245d894892ad5224749a61b38096208b63efac3fc47837dc7f55c9"
+    },
+    "korean-bank-hu-0500-0999.json": {
+      "entries": 500,
+      "sha256": "ebc8a468b9d91a8bbde689bdcdb3e4067f8e53de1256da4f081d6b96b6413c2a"
+    }
+  },
+  "roleDecision": "All1000 source fields are templates or canonical texts g/s/notes. None is an actual standalone ko/rr learning-form field, so all roles localized_instruction_or_meaning. Loanwords may legitimately coincide with English. Role was not inferred from English text alone.",
+  "canonicalGrounding": {
+    "sourceSha256": "e7f7f388a78171a5aa36a1708c83e042fb5256f377ddb50ad0f0244bfc1bfd8b",
+    "canonicalContextSha256": "8404f8c47bc769de283e2707c20cd7d3f4a941599c5505f13a69eac2978a732a",
+    "method": "Canonical skill/items ko,g,rr,c and g/s/n path links inspected; templates45 have reference-kit instruction text without item-level Korean originals."
+  },
+  "checks": [
+    "Exact0..999coverage/sourceSHA/schema/role and atomic500-file saves",
+    "Ordered Hangul/Jamo spans, placeholders, blank markers and numeric token multiplicity preserved",
+    "Learning phoneme/romanized grammar tokens and explicit English comparison forms retained",
+    "Number words and age/count/time/arithmetic/money meanings compared to canonical Korean; no inferred gender from names",
+    "Reused meaning drafts context-audited: help(도움) and cook(요리사) are nouns here, not prior verb senses; Korean nationality remains identity, not place of origin"
+  ],
+  "sourceAndContextHolds": [
+    {
+      "indices": [
+        170
+      ],
+      "classification": "source_terminology_review_required",
+      "reason": "독수리 is translated as vulture/sup/keselyű. English-source aside about being called eagle is a potentially misleading species-equivalence note; retained as quoted English aside, not approved zoological terminology.",
+      "items": [
+        {
+          "index": 170,
+          "sourceHash": "e498cd3d6f3368da8fe47867888bd2f153ac157b73885039c3b634aae9831efb",
+          "targetHashes": {
+            "cs": "0beeec784bd9e2183d1d6afd2edd7783e0cc172b585c67e7b3d3ac41ba25da0c",
+            "hu": "4fcf68f4aa7aa00e71c7c14178768466c1a251a2c2a2dd47d24cdb7fb804ffba"
+          }
+        }
+      ]
+    },
+    {
+      "indices": [
+        245,
+        267
+      ],
+      "classification": "source_reference_review_required",
+      "reason": "English reference adds soon to 다녀오세요. The Korean farewell does not itself specify a short return interval. Native meanings keep the return/farewell and omit the unsupported soon requirement. Frozen source remains unchanged.",
+      "items": [
+        {
+          "index": 245,
+          "sourceHash": "9b70d08e567f5bc041dae15c88f623dc80c0ab208683a7beea7e0db971ef1363",
+          "targetHashes": {
+            "cs": "1764125c4fd927fa9d3ef7ccc12d72b2eb5b4c85af554a2de01ba9a376f03b00",
+            "hu": "03413d57bb9ebcffb8cb603039d681ada9d127a7f1d9e1c03557e28da03e77ea"
+          }
+        },
+        {
+          "index": 267,
+          "sourceHash": "2fa1e902c04d9e39b8ea27d33244f8cc4f2d3ada9fc3302678b0ac35c8aca390",
+          "targetHashes": {
+            "cs": "e86266d3e72dc80c2fa35eb8cddd83e8e531230f2d5a64dca77fb52998971bd3",
+            "hu": "139dca314518ef9be5831ebf250e3fdc22297924e5d9583ea1008449967e66fc"
+          }
+        }
+      ]
+    },
+    {
+      "indices": [
+        332
+      ],
+      "classification": "teacher_register_review_required",
+      "reason": "Register note is introductory: age/stranger/close-friend rules are not exhaustive and depend on relationship and consent. Faithful native version, no claim of universal sociolinguistic law.",
+      "items": [
+        {
+          "index": 332,
+          "sourceHash": "3f89644dbe002760efa0998bd9aba7fc4d34870bf5237f510b8ba2f9c9dad54a",
+          "targetHashes": {
+            "cs": "3f07cf973e75a4e4d7313b0cfa4412a643d461ed42df9fbd46a0479528a4d1cf",
+            "hu": "518381a14a5344f04d01d6fd80b74d4871c0ae34ed461f713a59e157f407d58c"
+          }
+        }
+      ]
+    },
+    {
+      "indices": [
+        784,
+        791,
+        795,
+        797
+      ],
+      "classification": "teacher_phonology_review_required",
+      "reason": "Phonology notes compress conditional sound-change rules. Learning examples/phoneme names preserved, but exhaustive phonetic validity was not established by translation checks.",
+      "items": [
+        {
+          "index": 784,
+          "sourceHash": "c74a9e4a8444a3714613fa0ea57479b08998588969cdeb98f0b02e18ffb11e45",
+          "targetHashes": {
+            "cs": "e50e2fb47729b9218f81a811873cfdd59087a8654786df2b92b552490aac2527",
+            "hu": "d1ec42fed2eeb134ae0b484c9b9dd7ac6cf32b5d56e3701ba7330161e8a8bbfd"
+          }
+        },
+        {
+          "index": 791,
+          "sourceHash": "0e10f86fd592c7ecd9568b93db7b858c9f99dad6fb8d2c6a6f86511fb152ed06",
+          "targetHashes": {
+            "cs": "6fa4f7c53391f55c5166eb6ad78800affabdf2abab98ad14f11d39e49649fe92",
+            "hu": "95c4675ae4a5a4d41ae76016b18ff336786ee7850e038471b66ff14ae2dd6ec8"
+          }
+        },
+        {
+          "index": 795,
+          "sourceHash": "3675c8be98039a359aaad81682eeaae2c4191a7eea05ebd81b39b82f86cef5f1",
+          "targetHashes": {
+            "cs": "706e990dcf3f4dff4c9a3462d626322c65bb65fa68986728039ff6ccc25ef687",
+            "hu": "fb3bec9a91516684b74b684deb2c64457d99f111c7330ac54a2ae570ab3f21cc"
+          }
+        },
+        {
+          "index": 797,
+          "sourceHash": "4f62c4ba1faa91d1f78ebaae72a817bdead89edb1f8e59f0662e6ad3294155ad",
+          "targetHashes": {
+            "cs": "6ca08396c2774a20d1bf15c4778a52ba468f24182723583ecd521ca3cca67ea7",
+            "hu": "96d873a93a34eff9fc7c2c5bd2da132d2dec41c103f78bba99f09afe62f27c68"
+          }
+        }
+      ]
+    },
+    {
+      "indices": [
+        664,
+        666,
+        667,
+        668
+      ],
+      "classification": "context_review_required",
+      "reason": "Floor numbers kept using podlaží/szint, avoiding an unannounced shift between Korean ground-floor counting and Czech/Hungarian upper-storey numbering. Instantiated question context should verify numbering conventions.",
+      "items": [
+        {
+          "index": 664,
+          "sourceHash": "c4081beecb33273b7cb446a6c6aeb518da307ad379ae58dd88e9eef557820a81",
+          "targetHashes": {
+            "cs": "2560bc7fa58cb0fdb8fca07e0fc8f7516b20305cb809c9f6a6ba4a1e8869606a",
+            "hu": "152352cc1e9f0e475acad91dea1af75b87114397027f322eaa159648a3cab149"
+          }
+        },
+        {
+          "index": 666,
+          "sourceHash": "e217876bf2001ae49029efcf6fec6297c9b23a8ba854af6f3a69affd1dd28861",
+          "targetHashes": {
+            "cs": "57c5954a2539f715d24dd8b87b59ae38ebb92860ae07831be644df2bbaeefdc9",
+            "hu": "e5af5aedd8126be577f6576da2ae5e6ad941ccfe508cff4d1790d6d0e5daa80b"
+          }
+        },
+        {
+          "index": 667,
+          "sourceHash": "fbf488ad4f442d6db5e4c1a2925769fede7e69946106803dc98169e431b27046",
+          "targetHashes": {
+            "cs": "910c9914f947f09851435b07609a846bbb7d4a67818d1cdd1c284af8b954a0b9",
+            "hu": "9cbc8f48839707105f6667e7a98baa4b6a5f61b9b0b8545b6b5ef7b6c132a363"
+          }
+        },
+        {
+          "index": 668,
+          "sourceHash": "6205666ee58915277d96289f76ac20d20a604749a2284c671535c24ebdc86f40",
+          "targetHashes": {
+            "cs": "fba9b846af5762acd1804cb278f8e1b6d9419b333a7fbb7d471670ed7abd72d4",
+            "hu": "62a775b663174f556546627880d2076f11bd4870c6c4b5570cc2203ac3bd3812"
+          }
+        }
+      ]
+    }
+  ],
+  "collisionCandidates": [
+    {
+      "locale": "hu",
+      "translation": "koreaiul tanulok.",
+      "indices": [
+        328,
+        990
+      ],
+      "verdict": "context_collision_candidate_not_question_error_proof"
+    },
+    {
+      "locale": "cs",
+      "translation": "cvičení nemám v oblibě.",
+      "indices": [
+        418,
+        871
+      ],
+      "verdict": "context_collision_candidate_not_question_error_proof"
+    },
+    {
+      "locale": "hu",
+      "translation": "nem szeretem a testmozgást.",
+      "indices": [
+        418,
+        871
+      ],
+      "verdict": "context_collision_candidate_not_question_error_proof"
+    },
+    {
+      "locale": "hu",
+      "translation": "(én) sétálok",
+      "indices": [
+        839,
+        975
+      ],
+      "verdict": "context_collision_candidate_not_question_error_proof"
+    }
+  ],
+  "collisionLimit": "This is a source-text catalog, not all instantiated option sets. Equal/overlapping native meanings are not artificially differentiated; candidate collisions require question-level review.",
+  "authoringContext": {
+    "newEntities": "No newly invented fictional entity settings. Existing referents/count/gender unknowns preserved.",
+    "unknownGender": "Minsu, Hana, Lee Jisu, Lee Sujin are not gender evidence. Czech neutral recasts/passives used where practical. Grammatical noun/adjective gender is not an assigned person setting.",
+    "explicitKinshipSpeakerEvidence": [
+      {
+        "index": 569,
+        "sourceHash": "1efa498dc465830f04eba3f123d87273610261ae40605aed08d16e07409b3323",
+        "canonicalKo": [
+          "형"
+        ],
+        "evidenceKind": "explicit_source"
+      },
+      {
+        "index": 571,
+        "sourceHash": "951cb5a5374c2cf45a086669fd4458a0e3e98fa37e47b456bb25346d13ceb48e",
+        "canonicalKo": [
+          "누나"
+        ],
+        "evidenceKind": "explicit_source"
+      },
+      {
+        "index": 595,
+        "sourceHash": "74c2da7b5440cc44a1cd9d4c46b63eb52594cdf17bccc04d21c45262b3020485",
+        "canonicalKo": [
+          "저는 오빠가 한 명 있어요."
+        ],
+        "evidenceKind": "explicit_source"
+      },
+      {
+        "index": 596,
+        "sourceHash": "2200ffc3292dcff6df352d7a8ba820489ae60fd8c216e001cd2dd53fac4dd34d",
+        "canonicalKo": [
+          "저는 누나가 두 명 있어요."
+        ],
+        "evidenceKind": "explicit_source"
+      },
+      {
+        "index": 691,
+        "sourceHash": "41ba2d7e3f6b9aad4314ab3b661eb1786e699a2a5f1ca231b122ff1f02756278",
+        "canonicalKo": [
+          "아버지, 어머니, 오빠, 그리고 저예요."
+        ],
+        "evidenceKind": "explicit_source"
+      },
+      {
+        "index": 872,
+        "sourceHash": "3e5cf637a16b9056d2ec8540a390606c38b1d9e681f6c141a0084dde6d2f6e89",
+        "canonicalKo": [
+          "언니는 음악을 좋아해요."
+        ],
+        "evidenceKind": "explicit_source"
+      },
+      {
+        "index": 879,
+        "sourceHash": "236cc3be75f8ead6c4e05d1c059dd549607fbc8d3b6c97b1c7ce278d41052843",
+        "canonicalKo": [
+          "형은 책을 좋아해요."
+        ],
+        "evidenceKind": "explicit_source"
+      }
+    ],
+    "numbers": "Explicit family members, siblings, ages and counting quantities retained; no new headcounts assigned to generic situations."
+  },
+  "existingOutOfScopeFinding": "Prior regular-course Czech I am Korean. reuse was Pocházím z Koreje.; current bank317 corrects identity. Existing regular-course files were not edited; root notified for follow-up audit.",
+  "limits": [
+    "Authoring+self-check only, not independent/native/teacher approval.",
+    "Politeness, idiom, sound rules and unknown-gender Czech recasts still need independent semantic review.",
+    "No shared/runtime/deployment/commit edits."
+  ],
+  "nativeTeacherApproval": false
+}

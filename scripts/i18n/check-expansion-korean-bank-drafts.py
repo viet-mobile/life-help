@@ -4,7 +4,7 @@ from pathlib import Path
 p=argparse.ArgumentParser();p.add_argument('--workspace',required=True);p.add_argument('--checkpoint',action='store_true');a=p.parse_args();w=Path(a.workspace);root=Path(__file__).resolve().parents[2]
 sources=json.loads((w/'catalog/korean-bank-unique.json').read_text());report={};pending=[]
 for locale in ['pcm','tl','ro','fi','cs','hu','af']:
- rows={};files=sorted((w/'translations').glob(f'korean-bank-{locale}-[0-9]*.json'))
+ rows={};files=sorted(f for f in (w/'translations').glob(f'korean-bank-{locale}-[0-9]*.json') if re.fullmatch(rf'korean-bank-{locale}-\d{{4}}-\d{{4}}\.json',f.name))
  for file in files:
   m=re.fullmatch(rf'korean-bank-{locale}-(\d{{4}})-(\d{{4}})\.json',file.name);assert m,file
   data=json.loads(file.read_text());assert set(map(int,data))==set(range(int(m[1]),int(m[2])+1)),('range',file)
