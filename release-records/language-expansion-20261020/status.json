@@ -24,7 +24,7 @@
   ],
   "centralAfricanRepublicLanguage": "fr",
   "CongoISO": "CG",
-  "productionUnchanged": "eea593a1-cc8b-4b60-a683-ebd9c88179a3",
+  "productionUnchanged": "NOT_RECHECKED_THIS_TURN; no deployment executed",
   "checks": {
     "typecheck": "PASS next typegen + tsc on current incremental code",
     "uiKeysTypesPlaceholdersNumbers": "PASS: 7 x (885+422)",
@@ -42,7 +42,8 @@
     "courseMeaningSample": "96 bounded sample fields reviewed; two addend-count wording changes independently rechecked; not full semantic review",
     "koreanCourseExplicitFields": "3 node tests PASS: protected Korean accepted, missing native instructions/meaning options rejected",
     "courseAssemblyBoundary": "3 Python tests PASS: incomplete/changed quantity/changed Korean target creates no overlay",
-    "englishCourseStructure": "7 x 2454 explicit strings PASS; seven assembled drafts remain private; source adjudication and independent review incomplete"
+    "englishCourseStructure": "7 x 2454 explicit strings PASS; seven assembled drafts remain private; source adjudication and independent review incomplete",
+    "koreanCourseStructure": "7 x 2793 explicit strings PASS; assembled drafts private, independent meaning review incomplete"
   },
   "review": "AI authoring only; bounded cross-review; native/teacher review not done",
   "contentScopeDecision": "ALL_GENERAL_AND_THINKING_TRANSLATED_BEFORE_RELEASE",
@@ -65,14 +66,21 @@
       "af": 2454
     },
     "korean": {
-      "pcm": 1250,
-      "tl": 1500,
-      "ro": 1000,
-      "fi": 1000,
+      "pcm": 2793,
+      "tl": 2793,
+      "ro": 2793,
+      "fi": 2793,
       "cs": 2793,
       "hu": 2793,
-      "af": 1500
+      "af": 2793
     },
     "note": "Explicit authored source strings, including preserved learning targets. These are not served question counts or full semantic approval."
+  },
+  "bankSharedDrafts": {
+    "locales": 7,
+    "templatesPerLocale": 80,
+    "contextBoundVocabularyConceptsPerLocale": 581,
+    "mappedKeysPerLocale": 1087,
+    "note": "Incomplete shared/lexical subset; not independent meaning approval or runtime bank completion"
   }
 }

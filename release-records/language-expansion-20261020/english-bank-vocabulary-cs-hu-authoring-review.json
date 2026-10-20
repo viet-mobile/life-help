@@ -1,0 +1,289 @@
+{
+  "files": {
+    "english-bank-vocabulary-cs-0000-0299.json": {
+      "entries": 300,
+      "sha256": "de7aedd109e3f45b97907f90f24f8dbbaecd0155522675541ccc7444859938ee"
+    },
+    "english-bank-vocabulary-cs-0300-0580.json": {
+      "entries": 281,
+      "sha256": "e1aaec599454b190b20bc72dadbd8645f7aa8019393e8df68f6a1997d0a796d0"
+    },
+    "english-bank-vocabulary-hu-0000-0299.json": {
+      "entries": 300,
+      "sha256": "3e78a02d0dbfffd4ca7e51dd39a43959295e21731a69e5b855df2e37fff87844"
+    },
+    "english-bank-vocabulary-hu-0300-0580.json": {
+      "entries": 281,
+      "sha256": "0a152241b6ccf72537ba079bd0fb3a9253e7908c156a4b2a09567c0531be0dcf"
+    }
+  },
+  "identicalEnglishTargets": [],
+  "scope": "581 distinct context-bound concepts each in Czech/Hungarian;1162 authored meanings. AUTHOR_DRAFT_NOT_REVIEWED.",
+  "sourceCatalogSha256": "aac85c58c9d04a04be5412aaadf6bad6c5c656c42f8bf5f2aa1f20662c38a688",
+  "hashMethod": "sha256 UTF-8 compact sorted JSON {source,englishTargets}, matching catalog rather than source-only SHA",
+  "checks": [
+    "Coverage exactly0..580 for each language, split300+281",
+    "Exact schema/sourceHash/role localized_meaning; atomic file saves",
+    "All source digits/placeholders and grammatical ~ markers preserved",
+    "No Hangul fallback; no translation exactly repeats an English target",
+    "Each Korean source/EnglishTargets/reference row inspected; catalog keys remain context identifiers, and conflicting references were ignored in favor of Korean+target"
+  ],
+  "sourceReferenceIssues": [
+    {
+      "index": 144,
+      "sourceHash": "9b1a59dc7c64745d4b990ff2bd4cf13df5cd5d8f9bc5d5633cb3a16563f908e6",
+      "source": "지나서",
+      "englishTargets": [
+        "past"
+      ],
+      "incorrectEnglishReferences": [
+        "in the direction of something"
+      ],
+      "verdict": "source_reference_correction_required",
+      "reason": "English reference says in the direction of something, describing toward, not past. Korean 지나서 and English target past give passing/by-and-beyond meaning.",
+      "translationBasis": "Korean+EnglishTargets; no incorrect reference definition copied",
+      "targetHashes": {
+        "cs": "e481f106170cd6cadd82db1308ef9197f7656893b84d2f9a8ae0d2ac6b21627f",
+        "hu": "1b629ab433a710b9995c5b599f62bdeb12b9a178c03cad5c9b138e0d3ae4cffd"
+      }
+    },
+    {
+      "index": 176,
+      "sourceHash": "21c7bbc32f0ddeef14ee8d6905ad717318a8fe76e82e5dc3395dae2eaf4f5248",
+      "source": "아래쪽에",
+      "englishTargets": [
+        "below"
+      ],
+      "incorrectEnglishReferences": [
+        "going by something and beyond it"
+      ],
+      "verdict": "source_reference_correction_required",
+      "reason": "English reference says going by something and beyond it, describing past, not below. Korean 아래쪽에 and English target below give a lower position.",
+      "translationBasis": "Korean+EnglishTargets; no incorrect reference definition copied",
+      "targetHashes": {
+        "cs": "9d31348a715e36074586c54fc277f5f47e0c24aa9ff2ba734416988f9754929e",
+        "hu": "866f5c5613692b7afd2f36d5e39db8932a9ce53dcd3c73c0150a1e612a53da69"
+      }
+    },
+    {
+      "index": 241,
+      "sourceHash": "922b6f61f4cfa814727685b724d8a37280e0686008c047e2f36aaccf76e3bed7",
+      "source": "향해",
+      "englishTargets": [
+        "toward"
+      ],
+      "incorrectEnglishReferences": [
+        "at the top of something else"
+      ],
+      "verdict": "source_reference_correction_required",
+      "reason": "English reference says at the top of something else, describing on top of, not toward. Korean 향해 and English target toward give direction.",
+      "translationBasis": "Korean+EnglishTargets; no incorrect reference definition copied",
+      "targetHashes": {
+        "cs": "63ec80a7ac6475ff203fea57f0882a10a24be6b460d6046943db33e56897c3f2",
+        "hu": "94f6f695705a32f97633b1884fb044239857258775020febf285713ce5e3bc44"
+      }
+    },
+    {
+      "index": 566,
+      "sourceHash": "ae5100be1274f499310235ed2494107047a74a0a33db63667d8eb26a787151e7",
+      "source": "맨 위에",
+      "englishTargets": [
+        "on top of"
+      ],
+      "incorrectEnglishReferences": [
+        "at a lower place than something"
+      ],
+      "verdict": "source_reference_correction_required",
+      "reason": "Additional reference mismatch: at a lower place than something describes under/below, not on top of. Korean 맨 위에 and English target on top of require the top position.",
+      "translationBasis": "Korean+EnglishTargets; no incorrect reference definition copied",
+      "targetHashes": {
+        "cs": "89fe9fca338e4c9624c76f50af5a589552d0b90c49856b458f8cbfb7440a5386",
+        "hu": "e073777f66f34f741fbcbaf0b34dbc0271cae0d1e851763dbfe744081fdb693a"
+      }
+    }
+  ],
+  "repeatedKoreanContexts": [
+    {
+      "source": "안녕",
+      "entries": [
+        {
+          "index": 147,
+          "englishTargets": [
+            "goodbye"
+          ],
+          "sourceHash": "e986988087c7c73f1e77d2696409edd5db01564c5b6f45431107ba90a44f227e",
+          "cs": "na shledanou",
+          "hu": "viszontlátásra"
+        },
+        {
+          "index": 309,
+          "englishTargets": [
+            "hi"
+          ],
+          "sourceHash": "eb6d9ff217af56f165b1ced6c518375753f8242fa1ccdae1b61a28d10378f253",
+          "cs": "ahoj",
+          "hu": "szia"
+        }
+      ],
+      "note": "Separate context identities retained. Actual synonyms may retain overlapping native meanings; no uniqueness claim or invented sense distinction."
+    },
+    {
+      "source": "거대한",
+      "entries": [
+        {
+          "index": 157,
+          "englishTargets": [
+            "enormous"
+          ],
+          "sourceHash": "2b43ec8aff0e1e0dc549dcf3a342d6e89a65b3a78f607f89fb8534a326ae55f2",
+          "cs": "nesmírně velký",
+          "hu": "óriási"
+        },
+        {
+          "index": 205,
+          "englishTargets": [
+            "huge"
+          ],
+          "sourceHash": "4155a89e17d0606e1a1dad0cb0cfc38a77e896fd6cb4f76d12f728bc4734d3fd",
+          "cs": "obrovský",
+          "hu": "hatalmas"
+        }
+      ],
+      "note": "Separate context identities retained. Actual synonyms may retain overlapping native meanings; no uniqueness claim or invented sense distinction."
+    },
+    {
+      "source": "보다",
+      "entries": [
+        {
+          "index": 259,
+          "englishTargets": [
+            "see"
+          ],
+          "sourceHash": "7d4ca7a38df7f0992f8e78c543d4b38652061fd90f4084a2731b02f22ff06950",
+          "cs": "vidět",
+          "hu": "látni"
+        },
+        {
+          "index": 323,
+          "englishTargets": [
+            "look"
+          ],
+          "sourceHash": "6558cb496163bd0f7433b6f3e107d03cab6747bac330e2db80de7b9bb4ff2d77",
+          "cs": "dívat se",
+          "hu": "nézni"
+        }
+      ],
+      "note": "Separate context identities retained. Actual synonyms may retain overlapping native meanings; no uniqueness claim or invented sense distinction."
+    },
+    {
+      "source": "비록 ~이지만",
+      "entries": [
+        {
+          "index": 341,
+          "englishTargets": [
+            "although"
+          ],
+          "sourceHash": "1a6c42ed0e5e40da4d8a202de5cc0f3f35eebb2ce58314af1d775aab692a9945",
+          "cs": "ačkoli ~",
+          "hu": "bár ~"
+        },
+        {
+          "index": 508,
+          "englishTargets": [
+            "albeit"
+          ],
+          "sourceHash": "46a96d79476f07249096058be2f4fb61cb805460bd88d99aa0498ba749cedece",
+          "cs": "byť ~; přestože",
+          "hu": "jóllehet ~"
+        }
+      ],
+      "note": "Separate context identities retained. Actual synonyms may retain overlapping native meanings; no uniqueness claim or invented sense distinction."
+    },
+    {
+      "source": "친절한",
+      "entries": [
+        {
+          "index": 404,
+          "englishTargets": [
+            "nice"
+          ],
+          "sourceHash": "dc1ad9412af6613a692883616430e06d058dcf9b2c26146ad677365479368404",
+          "cs": "milý",
+          "hu": "kedves"
+        },
+        {
+          "index": 576,
+          "englishTargets": [
+            "kind"
+          ],
+          "sourceHash": "46a47a5add0f83830b7903d876059f85dcc83206ba2e8fc8e2b7884f42d03af5",
+          "cs": "laskavý",
+          "hu": "segítőkész; jószívű"
+        }
+      ],
+      "note": "Separate context identities retained. Actual synonyms may retain overlapping native meanings; no uniqueness claim or invented sense distinction."
+    },
+    {
+      "source": "향상시키다",
+      "entries": [
+        {
+          "index": 426,
+          "englishTargets": [
+            "enhance"
+          ],
+          "sourceHash": "ad78f38d38c58b06219aa0124d1a860acf44dfab17ce93de99990c05e277d31a",
+          "cs": "posílit; zvýšit kvalitu",
+          "hu": "fokozni; javítani a minőséget"
+        },
+        {
+          "index": 524,
+          "englishTargets": [
+            "improve"
+          ],
+          "sourceHash": "49f34c37890da6d553d1ab8026243ffc6325e83a4d7d5b2e5bf9fd51f390993c",
+          "cs": "zlepšit",
+          "hu": "javítani"
+        }
+      ],
+      "note": "Separate context identities retained. Actual synonyms may retain overlapping native meanings; no uniqueness claim or invented sense distinction."
+    },
+    {
+      "source": "제안하다",
+      "entries": [
+        {
+          "index": 482,
+          "englishTargets": [
+            "suggest"
+          ],
+          "sourceHash": "4ab4772aa3020871e03838700e10b271f6663a26fd1d01048fc95ac39c9dce6c",
+          "cs": "navrhnout",
+          "hu": "javasolni"
+        },
+        {
+          "index": 569,
+          "englishTargets": [
+            "offer"
+          ],
+          "sourceHash": "b9163bc053beb190d6dce9e2c21bbe62115a7881e7ef3cad41ee2aa6d6e8a113",
+          "cs": "nabídnout",
+          "hu": "felajánlani"
+        }
+      ],
+      "note": "Separate context identities retained. Actual synonyms may retain overlapping native meanings; no uniqueness claim or invented sense distinction."
+    }
+  ],
+  "policy": {
+    "unknownEntities": "Dictionary meanings, no new fictional characters or named entity settings. Existing gender and number unknowns remain unknown.",
+    "grammaticalGender": "Czech dictionary adjective/noun gender is grammatical, not a fictional person setting. Person definitions used where practical. Explicit daughter/son/sister/brother/mother/father/queen meanings retain source lexical gender.",
+    "synonyms": "Separate indices are not forced to have non-overlapping meanings. Synonym choices causing multiple correct answers must be held at the question/source level, not repaired by invention.",
+    "questionValidation": "This is a concept catalog, not complete instantiated question sets; no question answer-uniqueness approval or collision-free claim."
+  },
+  "limitations": [
+    "Authored and self-checked only; independent semantic/native/teacher review required.",
+    "Polysemy/register and idiomatic definitions need contextual review against actual question uses before publication.",
+    "SourceReferenceIssues record defects without editing the frozen catalog.",
+    "No runtime/shared code/commits/deployment modified."
+  ],
+  "nativeTeacherApproval": false,
+  "independentReviewRequired": true
+}

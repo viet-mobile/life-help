@@ -1,0 +1,65 @@
+{
+  "status": "ai_translated_unreviewed",
+  "coverage": {
+    "af": {
+      "completed": 293,
+      "range": [
+        2500,
+        2792
+      ],
+      "fileSHA256": "77e37eeaf7d13afc01815236ebaa7291a3af042f9b6b1df75043f495721221c3",
+      "roles": {
+        "localized_instruction_or_meaning": 218,
+        "preserved_learning_target": 75
+      }
+    },
+    "tl": {
+      "completed": 293,
+      "range": [
+        2500,
+        2792
+      ],
+      "fileSHA256": "4bbad538f3f3febf3d2f65ad82c45693c3c56bb9b6ae63458a1b8de7c4ff11c8",
+      "roles": {
+        "localized_instruction_or_meaning": 218,
+        "preserved_learning_target": 75
+      }
+    }
+  },
+  "canonicalContextSHA256": "5b346b1dd07e05d1df8abf6d6308b03ed6ae55605e21e3daadb2a5d0876a9cd8",
+  "checks": "Corresponding canonical context resolved for all entries. Hangul/jamo,digits,blanks/placeholders preserved. Romanized learning targets retained while meaning glosses/instructions localized; pure Korean/phonetic choices preserved.",
+  "KcoursePolicy": "K1..10 are course steps, not official proficiency grades.",
+  "entityPolicy": "No new Korean persons/settings authored. Existing named people remain unknown absent explicit source evidence. No gender inferred from English reference pronouns or names. Omitted Korean agents left unspecified where reporting constructions require it.",
+  "nativeReviewDone": false,
+  "teacherReviewDone": false,
+  "independentSemanticReviewDone": false,
+  "sourceIssues": [
+    {
+      "index": 2596,
+      "sourceHash": "77d28e64c5554b2b80e92b7ef71b1024ba685e324d258aef3830e98f9fbe94e2",
+      "reason": "English rapidly adds rate not expressed in embedded Korean 발전하고 있습니다; native wording does not add rapidity."
+    },
+    {
+      "index": 2611,
+      "sourceHash": "d0e661238146d4cd7a489813755b18066023541b24406d53943d7303dd434f67",
+      "reason": "English popular is stronger/different than Korean 주목받다 receiving attention. Native wording follows receiving attention."
+    },
+    {
+      "index": 2635,
+      "sourceHash": "eb835b582b958053a5029c8bdeddad9899c2cdf0e686fc31d6f1386bd3b33c92",
+      "reason": "English omits Kim and deputy role present in Korean; native explanation retains Kim and role without gender inference."
+    },
+    {
+      "index": 2758,
+      "sourceHash": "15ce944ad41d8e7956d54ea7ba5773fe2244141c22c6561815444f162a32753e",
+      "reason": "English adds Chuseok holiday to Korean sentence that only says make songpyeon; native gloss does not add occasion."
+    },
+    {
+      "index": 2762,
+      "sourceHash": "d278ea420f6b1b49d54a14b4bf44cfec4adc3b4a4d2195ee7af02dc50f2cf9a7",
+      "reason": "English adds neighbors to Korean sentence that says share food/eat together; native gloss does not introduce neighbor referents."
+    }
+  ],
+  "targetUncertainties": [],
+  "method": "Authored native bilingual gloss vocabulary and instruction templates after reading distinct meanings and embedded Korean examples. Exact repeated meanings reused only where referents/tense align; explicit per-item overrides preserve Korean objects/reporting tense. All entries resolved against canonical context, with surface protection checks. This is authoring, not independent semantic approval."
+}

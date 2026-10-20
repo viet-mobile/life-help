@@ -1,0 +1,418 @@
+{
+  "status": "AUTHOR_DRAFT_NOT_REVIEWED",
+  "scope": "581 context-bound vocabulary meanings each in Afrikaans and Tagalog, 1162 authored translations. Common bank components only, not all14981 bank strings.",
+  "files": [
+    {
+      "locale": "af",
+      "path": "/Users/juboklee/life-project/language-expansion-20261020/content/translations/english-bank-vocabulary-af-0000-0299.json",
+      "count": 300,
+      "sha256": "4abf959ff528720b48d59e8c190e35d55ec177e5a5fad645d0dfcee803339c23"
+    },
+    {
+      "locale": "af",
+      "path": "/Users/juboklee/life-project/language-expansion-20261020/content/translations/english-bank-vocabulary-af-0300-0580.json",
+      "count": 281,
+      "sha256": "0a62baabb0a7ac8a7fa96ceb56ccec1e96d45272c44f7c139862c44a26b46076"
+    },
+    {
+      "locale": "tl",
+      "path": "/Users/juboklee/life-project/language-expansion-20261020/content/translations/english-bank-vocabulary-tl-0000-0299.json",
+      "count": 300,
+      "sha256": "cb8a7aae979e33bec1902118f8d05fe668b052404b9debff0984a1a113f79af2"
+    },
+    {
+      "locale": "tl",
+      "path": "/Users/juboklee/life-project/language-expansion-20261020/content/translations/english-bank-vocabulary-tl-0300-0580.json",
+      "count": 281,
+      "sha256": "3768f6e2a44cd4baea5fc07564bb70915eafe96f26d61a28c0d15ded4fed3e54"
+    }
+  ],
+  "checks": [
+    "Exact581 indices and sourceHash per language",
+    "Required localized_meaning role",
+    "Source digits preserved with no new digits",
+    "Brace placeholders preserved",
+    "Native meanings authored from KO and actual English targets; known erroneous references ignored",
+    "No pre-existing translated files overwritten"
+  ],
+  "sourceAndContextIssues": [
+    {
+      "index": 12,
+      "sourceHash": "22854d2fd69a9e9cba222367d2694239853e4556af6e5b97345a8522ac4358ad",
+      "englishTargets": [
+        "jar"
+      ],
+      "keys": [
+        "w:병"
+      ],
+      "judgment": "source_reference_context_review",
+      "reason": "KO 병 normally bottle, but actual English target jar specifies wide-mouth container. Translation follows context; source label needs contextual review."
+    },
+    {
+      "index": 144,
+      "sourceHash": "9b1a59dc7c64745d4b990ff2bd4cf13df5cd5d8f9bc5d5633cb3a16563f908e6",
+      "englishTargets": [
+        "past"
+      ],
+      "keys": [
+        "g:03203ac1",
+        "w:지나서"
+      ],
+      "judgment": "source_reference_context_review",
+      "reason": "Reference mixes directional sense; canonical 지나서 and actual target past govern translation."
+    },
+    {
+      "index": 176,
+      "sourceHash": "21c7bbc32f0ddeef14ee8d6905ad717318a8fe76e82e5dc3395dae2eaf4f5248",
+      "englishTargets": [
+        "below"
+      ],
+      "keys": [
+        "g:14e86190",
+        "w:아래쪽에"
+      ],
+      "judgment": "source_reference_context_review",
+      "reason": "Reference can mean going by; canonical 아래쪽에 and target below govern translation."
+    },
+    {
+      "index": 241,
+      "sourceHash": "922b6f61f4cfa814727685b724d8a37280e0686008c047e2f36aaccf76e3bed7",
+      "englishTargets": [
+        "toward"
+      ],
+      "keys": [
+        "g:356ebb19",
+        "w:향해"
+      ],
+      "judgment": "source_reference_context_review",
+      "reason": "Reference can mean at top; canonical 향해 and target toward govern translation."
+    }
+  ],
+  "sharedMeaningCandidates": [
+    {
+      "locale": "af",
+      "indices": [
+        190,
+        455
+      ],
+      "translationHash": "d36ff43b43152f3e38666c0e060140c68aed0f2fc41eaa006426fc093ae0c0e1",
+      "sources": [
+        {
+          "index": 190,
+          "source": "빨리",
+          "englishTargets": [
+            "quickly"
+          ],
+          "keys": [
+            "g:1c5312c6",
+            "w:빨리"
+          ],
+          "sourceHash": "6c365b90f945db5a00a0cba4c15e2f77fc4e14604ce85b163d4169493c675a2f"
+        },
+        {
+          "index": 455,
+          "source": "빠른",
+          "englishTargets": [
+            "fast"
+          ],
+          "keys": [
+            "g:b1a36114",
+            "w:빠른"
+          ],
+          "sourceHash": "2053d2ca50728bfd249da2c4b0c255a2137444a1e16878213f41f67f70120666"
+        }
+      ],
+      "judgment": "shared_meaning_not_automatically_error",
+      "reason": "Natural synonymous meanings or repeated native concepts are preserved. If these appear together as distinct answer options in one question, hold that question for source review; no invented semantic distinction."
+    },
+    {
+      "locale": "af",
+      "indices": [
+        341,
+        508
+      ],
+      "translationHash": "5ac0d8ed7bb54f4663c2b24941a084361fa400bddd9455b1600b1e9ff036d389",
+      "sources": [
+        {
+          "index": 341,
+          "source": "비록 ~이지만",
+          "englishTargets": [
+            "although"
+          ],
+          "keys": [
+            "g:6a197f04"
+          ],
+          "sourceHash": "1a6c42ed0e5e40da4d8a202de5cc0f3f35eebb2ce58314af1d775aab692a9945"
+        },
+        {
+          "index": 508,
+          "source": "비록 ~이지만",
+          "englishTargets": [
+            "albeit"
+          ],
+          "keys": [
+            "g:d123da99"
+          ],
+          "sourceHash": "46a96d79476f07249096058be2f4fb61cb805460bd88d99aa0498ba749cedece"
+        }
+      ],
+      "judgment": "shared_meaning_not_automatically_error",
+      "reason": "Natural synonymous meanings or repeated native concepts are preserved. If these appear together as distinct answer options in one question, hold that question for source review; no invented semantic distinction."
+    },
+    {
+      "locale": "af",
+      "indices": [
+        426,
+        524
+      ],
+      "translationHash": "f34a68d15ad2ca1adc3c6acfaab74917202e763bb158c757b4d29d5547bd4509",
+      "sources": [
+        {
+          "index": 426,
+          "source": "향상시키다",
+          "englishTargets": [
+            "enhance"
+          ],
+          "keys": [
+            "g:a32b4fbc"
+          ],
+          "sourceHash": "ad78f38d38c58b06219aa0124d1a860acf44dfab17ce93de99990c05e277d31a"
+        },
+        {
+          "index": 524,
+          "source": "향상시키다",
+          "englishTargets": [
+            "improve"
+          ],
+          "keys": [
+            "g:dafe7e00"
+          ],
+          "sourceHash": "49f34c37890da6d553d1ab8026243ffc6325e83a4d7d5b2e5bf9fd51f390993c"
+        }
+      ],
+      "judgment": "shared_meaning_not_automatically_error",
+      "reason": "Natural synonymous meanings or repeated native concepts are preserved. If these appear together as distinct answer options in one question, hold that question for source review; no invented semantic distinction."
+    },
+    {
+      "locale": "tl",
+      "indices": [
+        31,
+        422
+      ],
+      "translationHash": "8289f06a240ded22fcdfef01141a6986a1d34beb0ea529e33e4f308ed70d4160",
+      "sources": [
+        {
+          "index": 31,
+          "source": "거의 ~않는",
+          "englishTargets": [
+            "scarcely"
+          ],
+          "keys": [
+            "w:거의 ~않는"
+          ],
+          "sourceHash": "5a8cd3c907adae12a9d3bf93b4fa9d6aedf2a9f6ea4605309c1745abc2328b4a"
+        },
+        {
+          "index": 422,
+          "source": "거의 ~않게",
+          "englishTargets": [
+            "hardly"
+          ],
+          "keys": [
+            "g:a2099792",
+            "w:거의 ~않게"
+          ],
+          "sourceHash": "0c18b705f24de459326a930c615fd26f458c9805d2e4740f648cb36c2ade8ad9"
+        }
+      ],
+      "judgment": "shared_meaning_not_automatically_error",
+      "reason": "Natural synonymous meanings or repeated native concepts are preserved. If these appear together as distinct answer options in one question, hold that question for source review; no invented semantic distinction."
+    },
+    {
+      "locale": "tl",
+      "indices": [
+        38,
+        309
+      ],
+      "translationHash": "568cef8d313634c9cd7a7426eaa4a8a3235aee6ec4d9ed591c85b6aac2f8a310",
+      "sources": [
+        {
+          "index": 38,
+          "source": "안녕하세요",
+          "englishTargets": [
+            "hello"
+          ],
+          "keys": [
+            "w:안녕하세요"
+          ],
+          "sourceHash": "5a1552fef2de21c7e8890f1f49318bb199e0c3213232879a7282350258721181"
+        },
+        {
+          "index": 309,
+          "source": "안녕",
+          "englishTargets": [
+            "hi"
+          ],
+          "keys": [
+            "g:58682c55"
+          ],
+          "sourceHash": "eb6d9ff217af56f165b1ced6c518375753f8242fa1ccdae1b61a28d10378f253"
+        }
+      ],
+      "judgment": "shared_meaning_not_automatically_error",
+      "reason": "Natural synonymous meanings or repeated native concepts are preserved. If these appear together as distinct answer options in one question, hold that question for source review; no invented semantic distinction."
+    },
+    {
+      "locale": "tl",
+      "indices": [
+        157,
+        205
+      ],
+      "translationHash": "f1f6d2e3c1286d58b53b4f7e588def3cfbb4f82ccb5cca0fa875c0fe900cd637",
+      "sources": [
+        {
+          "index": 157,
+          "source": "거대한",
+          "englishTargets": [
+            "enormous"
+          ],
+          "keys": [
+            "g:08d0ac3f"
+          ],
+          "sourceHash": "2b43ec8aff0e1e0dc549dcf3a342d6e89a65b3a78f607f89fb8534a326ae55f2"
+        },
+        {
+          "index": 205,
+          "source": "거대한",
+          "englishTargets": [
+            "huge"
+          ],
+          "keys": [
+            "g:25d50c06"
+          ],
+          "sourceHash": "4155a89e17d0606e1a1dad0cb0cfc38a77e896fd6cb4f76d12f728bc4734d3fd"
+        }
+      ],
+      "judgment": "shared_meaning_not_automatically_error",
+      "reason": "Natural synonymous meanings or repeated native concepts are preserved. If these appear together as distinct answer options in one question, hold that question for source review; no invented semantic distinction."
+    },
+    {
+      "locale": "tl",
+      "indices": [
+        227,
+        554
+      ],
+      "translationHash": "b3a4feda14d3d2c63aec63a48e94e596f3e2a0e5870b0b552b0d2014f7665c9f",
+      "sources": [
+        {
+          "index": 227,
+          "source": "안에",
+          "englishTargets": [
+            "in"
+          ],
+          "keys": [
+            "g:31210d90",
+            "w:안에"
+          ],
+          "sourceHash": "4a5687945c0448e8dbd479d31e4cf2218d7683422f1477368e244299c1eaa765"
+        },
+        {
+          "index": 554,
+          "source": "안쪽에",
+          "englishTargets": [
+            "inside"
+          ],
+          "keys": [
+            "g:eff6cc59",
+            "w:안쪽에"
+          ],
+          "sourceHash": "6f8deb52204e7454b8dc3d49aec0986979b8ed378015d0fc4c9148313516e97e"
+        }
+      ],
+      "judgment": "shared_meaning_not_automatically_error",
+      "reason": "Natural synonymous meanings or repeated native concepts are preserved. If these appear together as distinct answer options in one question, hold that question for source review; no invented semantic distinction."
+    },
+    {
+      "locale": "tl",
+      "indices": [
+        303,
+        449
+      ],
+      "translationHash": "5b148706ab4c3f0ec9a30c683c4c45672d8ff032a2704cb58a9a27589b8d4f7d",
+      "sources": [
+        {
+          "index": 303,
+          "source": "평범한",
+          "englishTargets": [
+            "ordinary"
+          ],
+          "keys": [
+            "g:5357abe2",
+            "w:평범한"
+          ],
+          "sourceHash": "e8090d88bbe16e021dff62920951e4a3bfa53221e5bba8c672b27c2caa34728a"
+        },
+        {
+          "index": 449,
+          "source": "보통",
+          "englishTargets": [
+            "usually"
+          ],
+          "keys": [
+            "g:b0404b95",
+            "w:보통"
+          ],
+          "sourceHash": "ada41868122011774f4188564e7a2da543b4fa34ad5d04aa6f033505bb52a02d"
+        }
+      ],
+      "judgment": "shared_meaning_not_automatically_error",
+      "reason": "Natural synonymous meanings or repeated native concepts are preserved. If these appear together as distinct answer options in one question, hold that question for source review; no invented semantic distinction."
+    },
+    {
+      "locale": "tl",
+      "indices": [
+        341,
+        508
+      ],
+      "translationHash": "7275f3e0459597c913ac329991730e9f785396590ef063c977209878b8d0ff5c",
+      "sources": [
+        {
+          "index": 341,
+          "source": "비록 ~이지만",
+          "englishTargets": [
+            "although"
+          ],
+          "keys": [
+            "g:6a197f04"
+          ],
+          "sourceHash": "1a6c42ed0e5e40da4d8a202de5cc0f3f35eebb2ce58314af1d775aab692a9945"
+        },
+        {
+          "index": 508,
+          "source": "비록 ~이지만",
+          "englishTargets": [
+            "albeit"
+          ],
+          "keys": [
+            "g:d123da99"
+          ],
+          "sourceHash": "46a96d79476f07249096058be2f4fb61cb805460bd88d99aa0498ba749cedece"
+        }
+      ],
+      "judgment": "shared_meaning_not_automatically_error",
+      "reason": "Natural synonymous meanings or repeated native concepts are preserved. If these appear together as distinct answer options in one question, hold that question for source review; no invented semantic distinction."
+    }
+  ],
+  "authoringContext": {
+    "kind": "generic dictionary definitions, not newly authored narrative entities",
+    "entityGender": "unspecified for generic people; explicit source kinship gender retained",
+    "entityNumber": "source-singular/plural where explicit, otherwise generic",
+    "subjectObjectReferents": "existing dictionary roles only; no named-character settings or invented facts"
+  },
+  "reviewLimitations": [
+    "Author self-check and surface validation only; independent semantic review pending.",
+    "Native-speaker and teacher review not performed.",
+    "Synonyms retained rather than artificially distinguished to rescue ambiguous answer choices.",
+    "Target contexts with no EnglishTargets rely on the KO dictionary source."
+  ]
+}

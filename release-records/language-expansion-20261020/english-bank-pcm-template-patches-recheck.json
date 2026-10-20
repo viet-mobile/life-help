@@ -1,0 +1,22 @@
+{
+  "scope": "Independent AI delta review of exactly two patched templates. No native/teacher approval; full source validity not approved.",
+  "targetFileHash": "dfbf95e502de834a279dd7b0a7ff06ecc77d192fdf11c2d64867927b184cad55",
+  "entries": [
+    {
+      "key": "t:rdm:h1:refer",
+      "sourceHash": "50f5adf557fd5069d855ae4949e4fafe665a1b56d8775ab2ae1643f4537972b9",
+      "targetHash": "7cdd19c47edee1b451900693cdb3dd71f815db7a8e32887b92cc5526c158a0e2",
+      "afterHashMatch": true,
+      "judgment": "pass_ai_semantic_delta",
+      "reason": "just before restores immediate prior referent."
+    },
+    {
+      "key": "t:w:cloze:h1:next",
+      "sourceHash": "c0339f710c8314d24f5109e07f9d6f3395fc5bc520295821e4f991f4ccbb0b53",
+      "targetHash": "b53781e37a29e11abc875f859e0767133bd53fca7862bf339f044def2504792c",
+      "afterHashMatch": true,
+      "judgment": "pass_ai_semantic_delta",
+      "reason": "First sentence explicitly locates {next} immediately after blank; sought word naturally comes before it. Placeholder preserved."
+    }
+  ]
+}

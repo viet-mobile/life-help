@@ -1,0 +1,30 @@
+{
+  "scope": "Independent AI semantic comparison of all 80 PCM templates against authoritative source, including word count, ordinal, spelling versus meaning, position hints and learning excerpts. Not native-speaker or teacher approval.",
+  "targetFile": "/Users/juboklee/life-project/language-expansion-20261020/content/translations/english-bank-pcm-templates.json",
+  "targetFileHash": "325d9b4b88dbf3600d546f9ef239a501fc0937365aa08482e6d27b7edd37a323",
+  "reviewedCount": 80,
+  "normalCount": 78,
+  "exceptions": [
+    {
+      "key": "t:rdm:h1:refer",
+      "sourceHash": "50f5adf557fd5069d855ae4949e4fafe665a1b56d8775ab2ae1643f4537972b9",
+      "targetHash": "ef569f0d4de4703453622458f7b8dc4e287a7a41375c04a0e807b0e98ba3604e",
+      "judgment": "needs_revision",
+      "reason": "KO 바로 앞 specifies the immediately preceding mention; target before am weakens this proximity cue.",
+      "proposedPatch": "Pronoun normally dey refer to person or thing wey dem mention immediately before am."
+    },
+    {
+      "key": "t:w:cloze:h1:next",
+      "sourceHash": "c0339f710c8314d24f5109e07f9d6f3395fc5bc520295821e4f991f4ccbb0b53",
+      "targetHash": "da0a3703652a301116706442391b333bf7f177d4455cbfb3e183330161d60c02",
+      "judgment": "unsure",
+      "reason": "Placement of immediately after di blank can attach to the sought word rather than quoted next word. Meaning is probably intended correctly, but explicit relative clause removes ambiguity.",
+      "proposedPatch": "Find di word wey naturally come before “{next}”, wey dey immediately after di blank."
+    }
+  ],
+  "normalRationale": "Remaining entries preserve the requested operation, placeholders, numbers and examples. Shared English grammatical labels/ordinals are normal Pidgin technical vocabulary; extra short POS definitions are faithful. Syllable clapping makes the intended clapping convention explicit without answer disclosure. No entity genders introduced.",
+  "sourceLimitations": [
+    "Pronoun nearest-antecedent hint is a teaching heuristic, not a universal grammar rule."
+  ],
+  "targetEdited": false
+}

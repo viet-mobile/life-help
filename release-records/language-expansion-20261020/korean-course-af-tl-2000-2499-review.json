@@ -1,0 +1,70 @@
+{
+  "status": "ai_translated_unreviewed",
+  "coverage": {
+    "af": {
+      "completed": 500,
+      "range": [
+        2000,
+        2499
+      ],
+      "fileSHA256": "870dfb7f9465f36ed57a072b7816ff0d04d1b150b4e35d5e46b70cd721d2380d",
+      "roles": {
+        "preserved_learning_target": 116,
+        "localized_instruction_or_meaning": 384
+      }
+    },
+    "tl": {
+      "completed": 500,
+      "range": [
+        2000,
+        2499
+      ],
+      "fileSHA256": "8d91f085bfe0ef1707dbeda40e4fd460576d419f2fd984e752e10fba9768da93",
+      "roles": {
+        "preserved_learning_target": 116,
+        "localized_instruction_or_meaning": 384
+      }
+    }
+  },
+  "canonicalContextSHA256": "5b346b1dd07e05d1df8abf6d6308b03ed6ae55605e21e3daadb2a5d0876a9cd8",
+  "checks": "Corresponding canonical context resolved for all entries. Hangul/jamo,digits,blanks/placeholders preserved. Romanized learning targets retained while meaning glosses/instructions localized; pure Korean/phonetic choices preserved.",
+  "KcoursePolicy": "K1..10 are course steps, not official proficiency grades.",
+  "entityPolicy": "No new Korean persons/settings authored. Existing named people remain unknown absent explicit source evidence. No gender inferred from English reference pronouns or names. Omitted Korean agents left unspecified where reporting constructions require it.",
+  "nativeReviewDone": false,
+  "teacherReviewDone": false,
+  "independentSemanticReviewDone": false,
+  "sourceIssues": [
+    {
+      "index": 2159,
+      "sourceHash": "4b27838e560f186cefff26b6cae5da6532ed11f8af65441f7b91436ce47fc5e3",
+      "reason": "Past reporting 했어요 distinguished from present 해요 in1961, despite same English gloss fragment."
+    },
+    {
+      "index": 2237,
+      "sourceHash": "c62725cae3d6c9e589942aefcc62d473956162bf72e827a4cf8b6c6f64a4aeb0",
+      "reason": "English gloss adds well; embedded Korean 글씨가 써져요 expresses writing/passive ability without well. Native explanation omits well."
+    },
+    {
+      "index": 2247,
+      "sourceHash": "c9b375a9530bfb04be97655452ecd0cbd9dac090ac1bf1efe8dc4669f97384f6",
+      "reason": "-게 되었어요 describes a resulting situation; English went may imply a completed trip not established by context. Native wording preserves resulting Korea-going situation; tense nuance needs teacher review."
+    },
+    {
+      "index": 2273,
+      "sourceHash": "fa19f98f27850741d52347a312cc02deb9868f7f1292226be369920d00da1d6d",
+      "reason": "English dresses clothes omits younger sibling object explicitly present in Korean; native explanation restores unspecified-gender younger sibling."
+    },
+    {
+      "index": 2298,
+      "sourceHash": "e765b0a3c158227395b15fa0d91edb1ac4c9fa03082a740f8de45c544bf5247f",
+      "reason": "English made cry omits younger sibling object; native explanation restores source relationship without gender inference."
+    },
+    {
+      "index": 2409,
+      "sourceHash": "bd710c91156d1b93e5b72464442c17545ccf642bc13830e3b0baf5d4fbed5f83",
+      "reason": "English take message versus Korean 메모를 남겨 드리다 leave a memo requires telephone-role context. Native wording follows embedded Korean leave-message meaning; human review requested."
+    }
+  ],
+  "targetUncertainties": [],
+  "method": "Authored native bilingual gloss vocabulary and instruction templates after reading distinct meanings and embedded Korean examples. Exact repeated meanings reused only where referents/tense align; explicit per-item overrides preserve Korean objects/reporting tense. All entries resolved against canonical context, with surface protection checks. This is authoring, not independent semantic approval."
+}

@@ -1,0 +1,565 @@
+{
+  "scope": "1250..2792 inclusive, 1543 sources; authoring plus bounded self-check, not independent/native/teacher approval",
+  "files": {
+    "korean-course-pcm-1250-1499.json": {
+      "entries": 250,
+      "sha256": "6ecca9bbfb84439dac9211a93a3f0ec4a7367ea3aa010dc4bd52b71aef2d4389",
+      "roles": {
+        "localized_instruction_or_meaning": 205,
+        "preserved_learning_target": 45
+      }
+    },
+    "korean-course-pcm-1500-1999.json": {
+      "entries": 500,
+      "sha256": "ca9a9633f5d646a2101146e716e95aef7265c8fc51543f2964255fb6ac7e2386",
+      "roles": {
+        "localized_instruction_or_meaning": 372,
+        "preserved_learning_target": 128
+      }
+    },
+    "korean-course-pcm-2000-2499.json": {
+      "entries": 500,
+      "sha256": "3de4732dd9bd3015c2f0759c95893d38ad78f3e706361cc3e3d1af77e5d8be42",
+      "roles": {
+        "preserved_learning_target": 116,
+        "localized_instruction_or_meaning": 384
+      }
+    },
+    "korean-course-pcm-2500-2792.json": {
+      "entries": 293,
+      "sha256": "1a5783835cce9d0e359c5f040122008a12738173cf01280eaafbc62070b5860c",
+      "roles": {
+        "localized_instruction_or_meaning": 218,
+        "preserved_learning_target": 75
+      }
+    }
+  },
+  "checks": [
+    "Exact key coverage/sourceHash/schema/roles",
+    "Ordered decoded Hangul/Jamo sequence",
+    "Digits, blanks, placeholders, +=→ operators",
+    "All captured Korean/romanization learning spans exact",
+    "Preserved role requires exact original; explicit glossary for every localized meaning, no fallback",
+    "No gendered English person pronouns; no gender inferred from names"
+  ],
+  "sharedLexicalIdentities": [
+    {
+      "index": 1260,
+      "source": "yesterday",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1261,
+      "source": "weather",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1262,
+      "source": "today",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1263,
+      "source": "tomorrow",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1331,
+      "source": "afternoon",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1332,
+      "source": "morning",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1333,
+      "source": "night",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1340,
+      "source": "now",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1409,
+      "source": "Sunday",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1410,
+      "source": "Monday",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1411,
+      "source": "Tuesday",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1412,
+      "source": "Wednesday",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1415,
+      "source": "Friday",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1418,
+      "source": "Saturday",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1433,
+      "source": "December",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1434,
+      "source": "January",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1435,
+      "source": "March",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1436,
+      "source": "May",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1441,
+      "source": "July",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1444,
+      "source": "September",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1457,
+      "source": "one o'clock",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1458,
+      "source": "two o'clock",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1459,
+      "source": "three o'clock",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1460,
+      "source": "ten o'clock",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1486,
+      "source": "every day",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1487,
+      "source": "sometimes",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1527,
+      "source": "weekend",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1528,
+      "source": "birthday",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1544,
+      "source": "gift",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1570,
+      "source": "Go straight.",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1571,
+      "source": "back",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1572,
+      "source": "right (side)",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1573,
+      "source": "left (side)",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1618,
+      "source": "menu",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1640,
+      "source": "bus",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1642,
+      "source": "taxi",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1643,
+      "source": "train",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1665,
+      "source": "phone call",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1666,
+      "source": "text message",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1667,
+      "source": "phone number",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1696,
+      "source": "hospital",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    },
+    {
+      "index": 1697,
+      "source": "medicine",
+      "reason": "Shared Naija/English lexical or short directional/time form; explicit authored glossary entry, not a fallback."
+    }
+  ],
+  "protectedSpans": 1374,
+  "nativeTeacherApproval": false,
+  "independentSemanticReviewRequired": true,
+  "sourceIssueHolds": [
+    {
+      "group": "indirect-report",
+      "verdict": "source_review_hold",
+      "reason": "English gloss is reused for present 해요 and past 했어요 and can misidentify the embedded friend as reporter. 1961/2159 explanations distinguish reporting tense; shared prompts/options must remain temporally underspecified. Source-key split/canonical review needed.",
+      "items": [
+        {
+          "index": 1961,
+          "sourceHash": "189809af87d403abd33519ea860acffdc75b342184bd0f1e5f58c3d0230b35ac",
+          "targetHash": "eb8191ab1cef6a2a8ba31bb9e86fa1c746b181fe9b84119e8c188a969ddc8035"
+        },
+        {
+          "index": 1962,
+          "sourceHash": "000f0c8a13026c198db58759d26db9373d108578016003d62d52b915c62c426b",
+          "targetHash": "c536ebc7d869bc1e9b0b398d01f7cab403c17f444e8ab716b4035bca72455887"
+        },
+        {
+          "index": 1978,
+          "sourceHash": "1b5afe5051248e7663e97350758579f4d1e13607f57edd46700c87f691d36278",
+          "targetHash": "68e6330ab667c8123e2566664ab42715945283487f232c84bc9f150beb17e3ce"
+        },
+        {
+          "index": 1985,
+          "sourceHash": "d197b3ce5d9c3435cfb14cc8947ef79962153733d683059a458d810483db592c",
+          "targetHash": "1f007c4ac6dfc4811fb05d9d9319774d748cb7e1ceb7071ee0bb17c60bd87e89"
+        },
+        {
+          "index": 2159,
+          "sourceHash": "4b27838e560f186cefff26b6cae5da6532ed11f8af65441f7b91436ce47fc5e3",
+          "targetHash": "b4211ef1e4cfc6202a1a6a3100a9125a2c2d1c5e6f91eb9402b072b3113bde80"
+        }
+      ]
+    },
+    {
+      "group": "report-weather",
+      "verdict": "source_review_hold",
+      "reason": "Weather is content of the report, not speaker. Rendered as reported good weather.",
+      "items": [
+        {
+          "index": 1967,
+          "sourceHash": "c8a5447c8a9b0a0f0b4d1cc7f1313fc4996cd7ab527ca90fe07ae96949a02e4e",
+          "targetHash": "7ef4ed6fddb4bbb4d79d7e02e9638eee953d13111cd85e92fff3396e3d7dfb6a"
+        },
+        {
+          "index": 1969,
+          "sourceHash": "aa2444b65026c1a14455c4dbced29d891fea772675d4c322f549ec2e1781712e",
+          "targetHash": "51bd9aa0025c07064c36a0e3b49f4568bce17633fe57c64e980efbac0f5cdd37"
+        }
+      ]
+    },
+    {
+      "group": "report-rain",
+      "verdict": "source_review_hold",
+      "reason": "Rain is content of report, not speaker. Rendered as reported rainfall.",
+      "items": [
+        {
+          "index": 1968,
+          "sourceHash": "6749a4b46ca97108c9c0414c0d8246f570b827f3acf68564a611a48605aa9b24",
+          "targetHash": "7708196387d8dc38a948d12781b1cdb7fe2f263a86e8939f76b528121e3782db"
+        },
+        {
+          "index": 1971,
+          "sourceHash": "0a253d213cca1d7dbed6448ec6741428a95aae96a397f5a52af19ce1cfa48d56",
+          "targetHash": "2deb9d96afe056b54b5c8e3b7ece89bf70971992f134435dfb4dfa3c4795796b"
+        },
+        {
+          "index": 1973,
+          "sourceHash": "3ea13f87bf51a33d4cbf1a03e6ab813eb8737374c8618d451545e919a6d5fbf6",
+          "targetHash": "b1bc6e9e1109d484ff87f3309678b63a06971ce0b24c8e0896bf16b5022c9ebb"
+        }
+      ]
+    },
+    {
+      "group": "passive-writing",
+      "verdict": "source_review_hold",
+      "reason": "Canonical 글씨가 써져요 contains no 잘/well; no unsupported quality claim added.",
+      "items": [
+        {
+          "index": 2237,
+          "sourceHash": "c62725cae3d6c9e589942aefcc62d473956162bf72e827a4cf8b6c6f64a4aeb0",
+          "targetHash": "76f82e7405d7c7979f1d792a802159e3c576da9aea2b20db6830253c40cfe722"
+        },
+        {
+          "index": 2240,
+          "sourceHash": "c1d14fc6fade0dd375edd91eefd6a1ba390b1b9036756714d9daf19b0267619d",
+          "targetHash": "6adce692fca3e831d3d58bc69931776083cda7192a1d98584991aedfd47660cf"
+        },
+        {
+          "index": 2252,
+          "sourceHash": "b033a2e49565d45e881db9475e001670620e378ddd13d4597767ec8ac1b54d46",
+          "targetHash": "42d6da75661fc25d0e53669323d3069a2e41f20602bacc1b9e06a25c8dad4f2f"
+        }
+      ]
+    },
+    {
+      "group": "sibling-causative",
+      "verdict": "source_review_hold",
+      "reason": "Canonical 동생에게 옷을 입혀요 includes younger sibling recipient. Preserve unspecified sibling gender and causative dressing.",
+      "items": [
+        {
+          "index": 2265,
+          "sourceHash": "3aec7a36745a90ff4b2971a84f2b6e3f6a9bdb5ffe09d3ba7e6ff88e21d3a1a9",
+          "targetHash": "07400495e2f2a4aa42f40086f2763195e79917529c0e7eaa0b21398de4e644d3"
+        },
+        {
+          "index": 2271,
+          "sourceHash": "1456b6a2cf96addc7f9be24b2ba4cb0b3f9400e97d0da4adb4b4ea039fe0b9b2",
+          "targetHash": "70419f1058adc6d02fab65a7d22834d4284f9c2151f6a3b733b90a1c9a98c5bb"
+        },
+        {
+          "index": 2273,
+          "sourceHash": "fa19f98f27850741d52347a312cc02deb9868f7f1292226be369920d00da1d6d",
+          "targetHash": "455d12e11b034eda1dfb00e9317d8b6e3a75cec1e4b76fae4e2a5f568d08b711"
+        }
+      ]
+    },
+    {
+      "group": "sibling-cry",
+      "verdict": "source_review_hold",
+      "reason": "Canonical 동생을 울게 했어요 includes younger sibling causee, gender unknown; not replaced with generic gendered child.",
+      "items": [
+        {
+          "index": 2296,
+          "sourceHash": "8ba24cb7f58e4aeabea83e84173a2474bdce139078519e764c21e42c34bc2f62",
+          "targetHash": "bd1c13de6b7aec6e2bc9ae5c57a3432514aea2c187f2115f609fcbe1a8fb796e"
+        },
+        {
+          "index": 2298,
+          "sourceHash": "e765b0a3c158227395b15fa0d91edb1ac4c9fa03082a740f8de45c544bf5247f",
+          "targetHash": "2966faee4437553aa07b4c32be6fd837914e17681fc9b86758868761c79dc6d7"
+        },
+        {
+          "index": 2307,
+          "sourceHash": "f91e702137fb518391720440f46f70e1fe8b4899f6bb2c2715f86e74bc1869f9",
+          "targetHash": "4f53fd795ecaa450773f48cfe5582269af0b370d7cdde6dc89d6bbd2c0582458"
+        }
+      ]
+    },
+    {
+      "group": "message-direction",
+      "verdict": "source_review_hold",
+      "reason": "Canonical 메모를 남겨 드릴까요 offers to LEAVE a message, not receive/take one; romanization punctuation also differs at 2419 and remains exact.",
+      "items": [
+        {
+          "index": 2404,
+          "sourceHash": "18fb317816532cde170b67ab5b15ea56379437c272e49af71de44b53cce262c8",
+          "targetHash": "d11c5f0ad64fc863c68eb8e110dca95e8365a28bc6b3f3938901429de3afc9ee"
+        },
+        {
+          "index": 2407,
+          "sourceHash": "8b82d6975fcc609998985cc3e9359bf641c84a15cc2c96005fffbea454175265",
+          "targetHash": "ea067ba127054fb0877397e14da3b509d71994cadf5c01ffa8003bc619caafe7"
+        },
+        {
+          "index": 2409,
+          "sourceHash": "bd710c91156d1b93e5b72464442c17545ccf642bc13830e3b0baf5d4fbed5f83",
+          "targetHash": "0ccf5a4672575438ccfb3f16b9718ec37bba4fca262a85f95becfa929a42aea4"
+        },
+        {
+          "index": 2419,
+          "sourceHash": "86a0a00054f1275b218f3db95ec447e95307b17e57f4c600d3ea42e8a79a4e77",
+          "targetHash": "859a42ea943c148e4385bf660af3651443208f5136a9a3246a829463cfba7961"
+        }
+      ]
+    },
+    {
+      "group": "ai-speed",
+      "verdict": "source_review_hold",
+      "reason": "Canonical sentence has no 빠르게/rapidly; translated development without unsupported speed.",
+      "items": [
+        {
+          "index": 2588,
+          "sourceHash": "fe07e5338876c458106e35183d567a912f3e3c62e48f791689eb5616cb01acff",
+          "targetHash": "1800412916ddcd414d78665d8f3a234730de71dfb6bec0ee144ff4296faee4dd"
+        },
+        {
+          "index": 2594,
+          "sourceHash": "22505242480c586f062409ee3704f31da564ba87f000c80e1b797d9a2807c31b",
+          "targetHash": "10295e855fdcc07a79f951e26c924e966f4d8b27e6e10a42d1e65acff0336ce5"
+        },
+        {
+          "index": 2596,
+          "sourceHash": "77d28e64c5554b2b80e92b7ef71b1024ba685e324d258aef3830e98f9fbe94e2",
+          "targetHash": "b7e7244255732d1ea924946154c2851db09f0fa342f358cd62d2b9606fce4ef9"
+        }
+      ]
+    },
+    {
+      "group": "songpyeon-occasion",
+      "verdict": "source_review_hold",
+      "reason": "Canonical 송편을 빚어요 itself does not state Chuseok; translation does not add an occasion.",
+      "items": [
+        {
+          "index": 2755,
+          "sourceHash": "86096cd4fc25591bc01945f1f20907a99582d96d13e33091e377bdeadfff18fb",
+          "targetHash": "30a1cb793e34841ddb9be91b3111adf42bdc64dd877437fdd54795e0defecdf0"
+        },
+        {
+          "index": 2758,
+          "sourceHash": "15ce944ad41d8e7956d54ea7ba5773fe2244141c22c6561815444f162a32753e",
+          "targetHash": "e75fa9e2bed5a2def9c4cbd0fedbac0e2f4710947d643795b4e2b81dc58473af"
+        }
+      ]
+    },
+    {
+      "group": "sharing-neighbors",
+      "verdict": "source_review_hold",
+      "reason": "Canonical 음식을 나눠 먹어요 does not specify neighbors; translation keeps sharing and eating food.",
+      "items": [
+        {
+          "index": 2756,
+          "sourceHash": "97d28f371b6531efbf512912714eb1953824b416d223e17231c77c286394bfe5",
+          "targetHash": "37e6639b90532c8d8e0a610e4fe3396988712076c1ca0e50aeda3c03cbd714fa"
+        },
+        {
+          "index": 2760,
+          "sourceHash": "028e6e6962ccd21746ccd93c7cb17b99b00177d3cc7cb48ab71799dde6399d98",
+          "targetHash": "39a85ff274ff12a02bb97c35fbd2122de4b44f1e46749d141d4fee3fc9acb99b"
+        },
+        {
+          "index": 2762,
+          "sourceHash": "d278ea420f6b1b49d54a14b4bf44cfec4adc3b4a4d2195ee7af02dc50f2cf9a7",
+          "targetHash": "4aa24238dd541f70ea6723a45cb03c6b6b5bb572859c8346ee99a50789081aac"
+        }
+      ]
+    },
+    {
+      "group": "essence",
+      "verdict": "source_review_hold",
+      "reason": "Compressed English gloss omits proposition: canonical says the essence/main thing is important. Full native proposition retained.",
+      "items": [
+        {
+          "index": 2728,
+          "sourceHash": "7a9e07e38ead73ceb6362bed5b95cf50a6d7ce33719a936a7e5ebf8f2cb3d360",
+          "targetHash": "9fb2cc4c2392054864b1a0276499736d95aedd2b4cde1d77fb02dc7da8e8cc9e"
+        },
+        {
+          "index": 2735,
+          "sourceHash": "58583ef75c905e1b651190b303626da7622aaaafec58e69f68be6aa4687d681d",
+          "targetHash": "89c3c23779ab885d66672f73bb613819c453b04bc66259b014ffc9e1a71c8de6"
+        },
+        {
+          "index": 2737,
+          "sourceHash": "8c75ed04f2881653bec31dc2d70388c4f1118dfbc0f96c958e4ba4d6e071bcea",
+          "targetHash": "8a7a70ac2537a2b01ab8721dccf29e85842abd938ca43dff2c4ad93ba336b697"
+        }
+      ]
+    },
+    {
+      "group": "kim-name",
+      "verdict": "source_review_hold",
+      "reason": "Canonical explanation 2635 names Assistant Manager Kim. Full explanation retains Kim without gender assumptions; shared generic gloss elsewhere stays generic.",
+      "items": [
+        {
+          "index": 2612,
+          "sourceHash": "585c48d81f9fd7826297103a639a3077506cbae69c0d31218a5a77ea653b3cc0",
+          "targetHash": "6d380afeb3dfdf9c6905c5f638459c7e20bc0467b45903092beb7b5dc29ebf2e"
+        },
+        {
+          "index": 2635,
+          "sourceHash": "eb835b582b958053a5029c8bdeddad9899c2cdf0e686fc31d6f1386bd3b33c92",
+          "targetHash": "a24031b70da33b34207bcdda9895d1beb9ce3352a6e33b370cd523aec51b4783"
+        },
+        {
+          "index": 2653,
+          "sourceHash": "9960ace4c8b014df45ccdf106c46eb1c9bcf77de90e0ba090891ca764e195dcf",
+          "targetHash": "44434c995ace4267bde1d6bcf045bcfedb289ed3d9381a2c2dfe8eae3f76015a"
+        }
+      ]
+    },
+    {
+      "group": "awkward-conclusion",
+      "verdict": "source_review_hold",
+      "reason": "Korean answer option is awkward as standalone target; kept byte-for-byte. Canonical author/teacher should confirm pedagogical acceptability; no silent source repair.",
+      "items": [
+        {
+          "index": 2741,
+          "sourceHash": "bf88cf495bb02258d9706c2d9b14fa3982cc54241d50ba7ac61db211c8e593e3",
+          "targetHash": "bf88cf495bb02258d9706c2d9b14fa3982cc54241d50ba7ac61db211c8e593e3"
+        }
+      ]
+    }
+  ],
+  "authoringContext": {
+    "policy": "Existing sources only; no new fictional entity settings authored. Unknown genders/referents/counts remain unknown.",
+    "genderEvidence": "No gender inferred from names Kim/Minsu/Mina or professions. Explicit grandmother/mother/father words retain lexical meaning; sibling gender remains unknown.",
+    "genericReferents": "person and Naija impersonal dem represent unspecified source referents, not invented named entities or established plural groups.",
+    "grammaticalGender": "not_applicable for these Naija person references",
+    "courseStages": "K1..K10 are course stages; no claim of official proficiency grades.",
+    "register": "Honorific/formal/humble information retained where present in source meaning; native register validation pending."
+  },
+  "limitations": [
+    "All1543 authored with exact-gloss lookup and bounded source-grounded templates, then self-checked; not independent meaning approval.",
+    "Shared English/Naija nouns and time expressions are deliberate lexical matches. This is not evidence of native approval.",
+    "Proverbs, reported speech, passive/causative nuances and formal registers require independent proficient Naija review.",
+    "Existing root-owned 0..1249 target packs were read only; source catalogs and shared repository code unchanged."
+  ],
+  "optionCollisionCheck": {
+    "completeQuestionSets": 379,
+    "partialSets": 0,
+    "normalizedCollisions": [],
+    "note": "No meaning approval inferred from absence of collisions."
+  },
+  "sourceCatalogSha256": "bc901b11a739c5086820e07a5d7fb8a51348bca0a2a5ad23b62a89fe023183e5",
+  "canonicalContextSha256": "5b346b1dd07e05d1df8abf6d6308b03ed6ae55605e21e3daadb2a5d0876a9cd8"
+}
