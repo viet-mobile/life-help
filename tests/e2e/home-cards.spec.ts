@@ -5,9 +5,9 @@ import { expect, test } from "@playwright/test";
  * translated copy. The main site runs on `localhost`; the learning sites on `math.localhost` / `english.localhost` (Chromium resolves *.localhost
  * to loopback). The Aircon service is NOT part of this release: the page must not offer it.
  */
-const PORT = 3100;
+const PORT = Number(process.env.PW_PORT ?? 3100);
 const MAIN = `http://localhost:${PORT}`;
-const ORDER = ["study", "jobHelp", "mobileHelp", "boiler", "housing", "cleaning", "hospitalHelp", "clog", "leakPlumbing", "bankHelp", "insuranceHelp"];
+const ORDER = ["study", "jobHelp", "mobileHelp", "boiler", "housing", "cleaning", "hospitalHelp", "clog", "leakPlumbing", "bankHelp", "insuranceHelp", "visaDocs"];
 const ids = (page: import("@playwright/test").Page) => page.locator("[data-service-id]").evaluateAll((els) => els.map((e) => e.getAttribute("data-service-id")));
 
 test.describe("Korean", () => {
@@ -21,11 +21,11 @@ test.describe("Korean", () => {
     await expect(page.getByTestId("home-card-aircon")).toHaveCount(0);
     expect(await page.getByTestId("home-card-study").evaluate((e) => e.tagName)).toBe("BUTTON");
     const tabs = page.locator("button.droplet-pill").filter({ hasText: /^(🌈|🔧|🤝)/ });
-    expect((await tabs.allTextContents()).map((t) => Number(t.match(/(\d+)\s*$/)?.[1]))).toEqual([11, 5, 6]);
+    expect((await tabs.allTextContents()).map((t) => Number(t.match(/(\d+)\s*$/)?.[1]))).toEqual([12, 5, 7]);
     await tabs.nth(1).click();
     expect(await ids(page)).toEqual(["boiler", "housing", "cleaning", "clog", "leakPlumbing"]);
     await tabs.nth(2).click();
-    expect(await ids(page)).toEqual(["study", "jobHelp", "mobileHelp", "hospitalHelp", "bankHelp", "insuranceHelp"]);
+    expect(await ids(page)).toEqual(["study", "jobHelp", "mobileHelp", "hospitalHelp", "bankHelp", "insuranceHelp", "visaDocs"]);
   });
 
   test("Study chooser: two links to the learning sub-domains, Escape closes and returns focus, no /study request on the main host", async ({ page }) => {

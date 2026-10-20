@@ -14,7 +14,9 @@ import { StudyChooser } from "@/components/customer/StudyChooser";
 export interface ServiceItem {
   id: string;
   /** "study" is a link card (chooser to the learning sub-domains), not a marketplace service */
-  kind?: "service" | "study";
+  kind?: "service" | "study" | "link";
+  /** link cards (information pages) open this path instead of /services/<slug> */
+  href?: string;
   category: "repair" | "support";
   icon: string;
   key: string;
@@ -256,6 +258,28 @@ const allServices: ServiceItem[] = [
     btnBg: "bg-purple-600 hover:bg-purple-700",
     badgeLabelKo: "보험·체류",
   },
+  // 11. 빨강 (Pastel Red) - 각국별 비자 신청 서류 정보 모음: an information page (not a service request), always the LAST card
+  {
+    id: "visaDocs",
+    kind: "link",
+    href: "/visa",
+    category: "support",
+    icon: "🛂",
+    key: "visaDocs",
+    slug: "visa",
+    pathPrefix: "support",
+    ko: "각국별 비자 신청 서류 정보 모음",
+    colorName: "빨강",
+    cardBg: "bg-red-50/85",
+    cardBorder: "border-red-200/90",
+    cardHover: "hover:border-red-400 hover:bg-red-100/90",
+    textColor: "text-red-950",
+    iconBg: "bg-red-100/80 text-red-700",
+    badgeBg: "bg-red-100/90",
+    badgeText: "text-red-900",
+    btnBg: "bg-red-700 hover:bg-red-800",
+    badgeLabelKo: "정보 안내",
+  },
 ];
 
 const benefits = [
@@ -275,7 +299,7 @@ function CardShell({ svc, onStudy, className, children }: { svc: ServiceItem; on
     );
   }
   return (
-    <Link href={`/services/${svc.slug}`} data-testid={`home-card-${svc.id}`} data-service-id={svc.id} className={className}>
+    <Link href={svc.href ?? `/services/${svc.slug}`} data-testid={`home-card-${svc.id}`} data-service-id={svc.id} className={className}>
       {children}
     </Link>
   );
@@ -472,7 +496,7 @@ export function CustomerHome() {
       {/* ④ 10 Pastel Services Mobile App Grid (Fit Above-The-Fold on Mobile Screen!) */}
       <section className="px-3 py-1 sm:px-4 sm:py-2">
         <div className="mx-auto max-w-6xl">
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3">
             {displayedServices.map((svc) => (
               <CardShell
                 key={svc.id}
