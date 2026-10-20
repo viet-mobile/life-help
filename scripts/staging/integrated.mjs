@@ -7,7 +7,7 @@
  *   3 migration + DB gate  read-only audit, grants/RLS as exposed      pending migrations -> BLOCKED_MIGRATIONS_PENDING (exit 4)
  *   4 service-core harness 20-connection races, replay, idempotency, request-link expiry/revocation/rotation/revoke-all, negative auth
  *   5 service journey      customer / helper / admin in three browser contexts on the staging Worker
- *   6 main 47-locale smoke registry-derived picker/lang/dir for every locale + representative matrix + country defaults
+ *   6 main registry-locale smoke registry-derived picker/lang/dir for every locale + representative matrix + country defaults
  *   7 learning suite       math / english / study.korean pickers (registry count), switching, target-language rules, overlay assets
  *   8 entitlements         free / premium boundary with run-scoped entitlement fixtures (no checkout, no provider)
  *   9 cleanup + residue    run-scoped cleanup, CURRENT_RUN_RESIDUE = 0, FOREIGN_ROWS_UNTOUCHED     (runs even after a failure)
@@ -31,8 +31,8 @@ export const STEPS = [
   { id: "db-gate", title: "migration audit + DB gate", cmd: ["node", "scripts/staging/db-gate.mjs", "--snapshot", "{baseline}"], blockedCodes: { 4: "BLOCKED_MIGRATIONS_PENDING", 3: "BLOCKED_MISSING_ENV", 6: "BLOCKED_AUTH" } },
   { id: "service-core-harness", title: "service-core staging harness (true concurrency)", cmd: ["node", "scripts/staging/service-core-staging.mjs"] },
   { id: "service-journey", title: "three-client service journey", browser: true, cmd: [...PW, "tests/staging/service-journey.staging.spec.ts"] },
-  { id: "main-locale-smoke", title: "main site 47-locale smoke + country defaults", browser: true, cmd: [...PW, "tests/staging/main-locales.staging.spec.ts", "tests/staging/country-defaults.staging.spec.ts"] },
-  { id: "learning-suite", title: "learning staging suite (47-locale aware)", browser: true, cmd: [...PW, "tests/staging/learning-locales.staging.spec.ts"] },
+  { id: "main-locale-smoke", title: "main site registry-locale smoke + country defaults", browser: true, cmd: [...PW, "tests/staging/main-locales.staging.spec.ts", "tests/staging/country-defaults.staging.spec.ts"] },
+  { id: "learning-suite", title: "learning staging suite (registry-locale aware)", browser: true, cmd: [...PW, "tests/staging/learning-locales.staging.spec.ts"] },
   { id: "entitlements", title: "premium switched off, sign-up closed (the Free / Premium gate spec returns with the boundary)", browser: true, cmd: [...PW, "tests/staging/premium-off.staging.spec.ts"] },
   { id: "cleanup", title: "run-scoped cleanup + residue verifier", cmd: ["node", "scripts/staging/cleanup.mjs", "--baseline", "{baseline}"], always: true, blockedCodes: { 5: "CLEANUP_BLOCKED_AUTH", 3: "BLOCKED_MISSING_ENV" } },
   { id: "post-smoke", title: "post-cleanup smoke", browser: true, cmd: [...PW, "tests/staging/post-smoke.staging.spec.ts"] },
@@ -108,5 +108,5 @@ if (process.argv[1] && import.meta.url === new URL(`file://${process.argv[1]}`).
   console.log("\n" + results.map(([id, r]) => `${id.padEnd(22)} ${r}`).join("\n"));
   if (failed.length) { console.log("INTEGRATED STAGING VALIDATION = BLOCKED (failed gate(s): " + failed.join(", ") + ")"); process.exit(1); }
   if (blocked) { console.log(`INTEGRATED STAGING VALIDATION = ${blocked}`); process.exit(EXIT[blocked] ?? 4); }
-  console.log("SERVICE CORE + 47-LOCALE LEARNING = STAGING VALIDATED");
+  console.log("SERVICE CORE + REGISTRY-LOCALE LEARNING = STAGING VALIDATED");
 }

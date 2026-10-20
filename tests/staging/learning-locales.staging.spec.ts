@@ -5,7 +5,7 @@ import manifest from "../../lib/learn/content/asset-manifest.json";
 import { BASE, LOCALES, MATRIX, RTL, SITES, learnUrl } from "./target";
 
 /**
- * Learning on the integrated STAGING Worker (path mode /study/<site>), 47-locale aware: the learner locale list is the canonical registry.
+ * Learning on the integrated STAGING Worker (path mode /study/<site>), registry-locale aware: the learner locale list is the canonical registry.
  *   pickers   math / english / study.korean list exactly the registry locales
  *   matrix    representative locales: lang, dir, tagline from that locale's own dictionary, no Korean outside Korean UI, 390 px / desktop
  *   journeys  math en -> mr -> ur, english vi -> ur -> sw -> te, korean en -> vi -> ur -> sw -> mr: same canonical question and answer key,
@@ -152,11 +152,11 @@ test('study.korean K2: "안녕하세요." stays Korean while the explanation fol
 
 test("externalized overlays: manifest version is current, files are Worker-only, representative locales serve their own overlay", async ({ request }) => {
   expect(manifest.version, "committed manifest has a version").toMatch(/\S/);
-  for (const site of SITES) for (const loc of ["ur", "sg", "sw", "mr", "te"]) {
+  for (const site of SITES) for (const loc of ["ur", "fr", "sw", "mr", "te", "pcm", "tl", "ro", "fi", "cs", "hu", "af"]) {
     const res = await request.get(`${BASE}/learn-content/${manifest.version}/${site}/${loc}.json`, { maxRedirects: 0 });
     expect([403, 404], `${site}/${loc} must not be readable by a browser`).toContain(res.status());
   }
-  for (const loc of ["ur", "sg", "sw", "mr", "te"]) for (const site of SITES) {
+  for (const loc of ["ur", "fr", "sw", "mr", "te", "pcm", "tl", "ro", "fi", "cs", "hu", "af"]) for (const site of SITES) {
     const f = `content/learn-overlays/${loc}/${site}.json`;
     expect(existsSync(f), `${f} exists (no silent fallback for a registry locale)`).toBe(true);
     const ov = readOv(loc, site);

@@ -1,16 +1,16 @@
 import { readFileSync } from "node:fs";
 import { expect, test } from "@playwright/test";
 
-// Integration of the 47-locale learning work with the service core: every picker is derived from the canonical registry.
+// Integration of the registry-locale learning work with the service core: every picker is derived from the canonical registry.
 const PORT = 3200;
 const REGISTRY = readFileSync("messages/registry.ts", "utf8");
 const CODES = [...REGISTRY.split("export const locales = [")[1].split("] as const")[0].matchAll(/"([A-Za-z-]+)"/g)].map((m) => m[1]);
 const NATIVE_DIGITS: Record<string, string> = { fa: "arabext", bn: "beng", ne: "deva", km: "khmr", my: "mymr" };
 const countLabel = (l: string) => new Intl.NumberFormat(NATIVE_DIGITS[l] ? `${l}-u-nu-${NATIVE_DIGITS[l]}` : "en").format(CODES.length);
-const MATRIX = ["ko", "en", "vi", "ur", "ar", "sw", "sg", "mr", "te", "ja", "zh-Hans"];
+const MATRIX = ["ko", "en", "vi", "ur", "ar", "sw", "fr", "pcm", "tl", "ro", "fi", "cs", "hu", "af", "mr", "te", "ja", "zh-Hans"];
 const RTL = new Set(["ar", "arz", "fa", "he", "ur"]);
 
-test("the registry has 47 locales (derived, not typed)", () => { expect(CODES.length).toBe(47); });
+test("the registry has 53 locales (derived, not typed)", () => { expect(CODES.length).toBe(53); });
 
 for (const width of [1280, 390]) {
   test(`main page @${width}px: picker lists every registry locale; label shows the registry count, never 38`, async ({ browser }) => {

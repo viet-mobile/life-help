@@ -7,9 +7,16 @@ import { BASE } from "./target";
  */
 const DEFAULTS: Array<[host: string, lang: string]> = [
   ["pakistan.life.help", "ur"],
-  ["centralafrica.life.help", "sg"],
+  ["centralafrica.life.help", "fr"],
   ["kenya.life.help", "sw"],
   ["korea.life.help", "ko"],
+  ["romania.life.help", "ro"],
+  ["finland.life.help", "fi"],
+  ["czechia.life.help", "cs"],
+  ["hungary.life.help", "hu"],
+  ["zambia.life.help", "en"],
+  ["uganda.life.help", "en"],
+  ["congo.life.help", "fr"],
   // existing defaults stay as they were
   ["vietnam.life.help", "vi"],
   ["japan.life.help", "ja"],
@@ -29,6 +36,14 @@ for (const [host, lang] of DEFAULTS) {
     expect(html.match(/<html[^>]*\slang="([^"]+)"/)?.[1]).toBe(lang);
   });
 }
+test("retired Sango paths migrate to French while preserving the destination and query", async ({ request }) => {
+  for (const [before, after] of [["/sg/request?from=legacy", "/fr/request?from=legacy"], ["/study/math/sg/lesson/example?from=legacy", "/study/math/fr/lesson/example?from=legacy"]]) {
+    const res = await request.get(`${BASE}${before}`, { maxRedirects: 0 });
+    expect(res.status()).toBe(308);
+    const location = new URL(res.headers().location, BASE);
+    expect(location.pathname + location.search).toBe(after);
+  }
+});
 test("a learning hostname is never mistaken for a country host (and the reverse)", async ({ request }) => {
   const res = await request.get(`${BASE}/`, { headers: { "x-forwarded-host": "xmath.life.help" }, maxRedirects: 0 });
   expect(res.status()).toBeLessThan(500);

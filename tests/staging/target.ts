@@ -18,7 +18,7 @@ export const NATIVE_DIGITS: Record<string, string> = { fa: "arabext", bn: "beng"
 export const countLabel = (locale: string, n = LOCALES.length) => new Intl.NumberFormat(NATIVE_DIGITS[locale] ? `${locale}-u-nu-${NATIVE_DIGITS[locale]}` : "en").format(n);
 
 /** Representative browser matrix: RTL, Indic scripts, African, CJK, Latin. All must be registry locales. */
-export const MATRIX = ["ko", "en", "vi", "ur", "ar", "sg", "sw", "mr", "gu", "pa", "te", "kn", "ml", "ja", "zh-Hans"] as const;
+export const MATRIX = ["ko", "en", "vi", "ur", "ar", "fr", "pcm", "tl", "ro", "fi", "cs", "hu", "af", "sw", "mr", "gu", "pa", "te", "kn", "ml", "ja", "zh-Hans"] as const;
 export const RUN_ID = process.env.STAGING_RUN_ID ?? `STG-local-${Date.now().toString(36)}`;
 /** Learning sites on the staging Worker (path mode /study/<site>; on a dry run the same paths on localhost). */
 export const SITES = ["math", "english", "korean"] as const;

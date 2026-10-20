@@ -6,9 +6,9 @@
     "dev": "next dev",
     "learn:assets": "node scripts/learn/build-content-assets.mjs",
     "check:worker-size": "node scripts/check-worker-size.mjs",
-    "prebuild": "node scripts/learn/build-content-assets.mjs",
+    "prebuild": "npm run check:expanded-content && node scripts/learn/build-content-assets.mjs",
     "build": "opennextjs-cloudflare build",
-    "prebuild:next": "node scripts/learn/build-content-assets.mjs",
+    "prebuild:next": "npm run check:expanded-content && node scripts/learn/build-content-assets.mjs",
     "predev": "node scripts/learn/build-content-assets.mjs",
     "build:next": "next build",
     "start": "next start",
@@ -25,7 +25,8 @@
     "test:learn:routes": "node scripts/release/test_baseline_routes.mjs",
     "staging:preflight": "node scripts/staging/preflight.mjs",
     "staging:integrated": "node scripts/staging/integrated.mjs",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "check:expanded-content": "node scripts/i18n/check-expansion-release.cjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",

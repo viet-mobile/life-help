@@ -18,9 +18,9 @@ export function thinkLangFor(locale: string, _subject: Subject): ThinkLang {
 }
 
 /**
- * Languages the TASK text (instructions, options, hints, explanations) can exist in: the six above plus the other registered service languages. The screen text around a
+ * Languages the TASK text (instructions, options, hints, explanations) can exist in: the native interface locales above plus the other registered service languages. The screen text around a
  * task (labels, buttons) stays in a ThinkLang (anything else shows English) until it is translated; a task is shown in the learner's language only when every
- * string of it is translated, otherwise in English exactly as before (see localizeFor in localize.ts).
+ * string of it is translated, otherwise the legacy locales retain English fallback; the seven expanded locales require their own complete translation (see localizeFor in localize.ts).
  */
 export const EXTRA_TASK_LANGS = ["am", "ar", "arz", "bn", "da", "de", "el", "es", "fa", "fr", "gu", "he", "hi", "id", "it", "kk", "km", "kn", "ml", "mn", "mr", "my", "ne", "nl", "no", "pa", "pl", "pt", "ru", "si", "sv", "sw", "ta", "te", "tet", "th", "tr", "uk", "ur", "uz"] as const;
 export type ExtraTaskLang = (typeof EXTRA_TASK_LANGS)[number];

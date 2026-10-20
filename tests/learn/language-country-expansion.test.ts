@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+import { readdirSync } from 'node:fs';
 import { locales } from '@/messages/registry';
 import { detectDeviceLocale } from '@/messages';
 import { parseLocale } from '@/lib/learn/i18n';
@@ -10,6 +11,7 @@ import { loadMessages } from '@/lib/learn/i18n/catalog';
 describe('active language expansion and retired Sango migration', () => {
  it('has 53 active languages and preserves French migration and Tagalog aliases', () => {
   expect(locales).toHaveLength(53);
+  expect(readdirSync('messages').filter(f=>f.endsWith('.json')).map(f=>f.slice(0,-5)).sort()).toEqual([...locales].sort());
   expect(locales).not.toContain('sg');
   for (const l of ['pcm','tl','ro','fi','cs','hu','af']) expect(locales).toContain(l);
   expect(parseLocale('sg')).toBe('fr');

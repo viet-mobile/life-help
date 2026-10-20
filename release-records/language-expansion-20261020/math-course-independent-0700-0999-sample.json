@@ -1,0 +1,2852 @@
+{
+  "reviewType": "stratified_fixed_sample_independent_AI_semantic_review",
+  "reviewer": "expand_af_tl; not author of reviewed ro/fi/cs/hu translation files",
+  "range": [
+    700,
+    999
+  ],
+  "indices": [
+    700,
+    705,
+    710,
+    725,
+    740,
+    758,
+    770,
+    790,
+    810,
+    830,
+    850,
+    870,
+    879,
+    890,
+    910,
+    930,
+    950,
+    970,
+    980,
+    985,
+    990,
+    995,
+    998,
+    999
+  ],
+  "reviewedPerLocale": 24,
+  "reviewedTotal": 96,
+  "coverageLimit": "Only specified24indices per locale. This is not full700..999 review or release/native-teacher approval.",
+  "nativeSpeakerApproval": false,
+  "teacherApproval": false,
+  "fullSemanticApproval": false,
+  "targetFilesEdited": false,
+  "counts": {
+    "no_material_translation_issue_found": 94,
+    "unsure": 2
+  },
+  "diagnosticCorrection": {
+    "initialLatexWarningWithdrawn": true,
+    "reason": "Initial suspicion came from interpreting JSON/Python display escaping as decoded-string mismatch. Actual string/code-point comparisons show EN/KO/targets match for710,725,990. Each relevant command contains one U+005C backslash in current decoded strings. No translation/source defect asserted; no global replacement performed.",
+    "renderingCheck": "Renderer compatibility was not independently exercised; equality is a string diagnostic only."
+  },
+  "entries": [
+    {
+      "locale": "ro",
+      "index": 700,
+      "file": "math-course-ro-0700-0999.json",
+      "sourceHash": "4ba6e6a33fa7e1fbabe2049e03132b2c8e5161c2fa0c021fd3d74206ec718190",
+      "targetHash": "57192712d64638c1733adbbcbde098bf5102e8399ad337ecf475a6b32f395b3a",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-mul-3",
+            "hints",
+            0
+          ],
+          "fieldHash": "d086d57cb00fdcddee095a0ae86f8f427551b7bd2277db107d9733e6a7bf4c53",
+          "questionContextHash": "75e21dbd41769156897db1be24b4009645c99f869ef336a90ee1182744fdd399",
+          "promptHash": "4845664434d40e1dceab5e7f9678494dd832128a073eba58e50f351e0f0a4952",
+          "answerHash": "ff2e1158a6fd35f7ec75404debf9b3f7ddb3943d2d5398b07a69c63a69c2c4e9"
+        },
+        {
+          "path": [
+            "questions",
+            "m-e2-mul-v2",
+            "hints",
+            0
+          ],
+          "fieldHash": "d086d57cb00fdcddee095a0ae86f8f427551b7bd2277db107d9733e6a7bf4c53",
+          "questionContextHash": "86b059c56ffdd61f164b9035b607dfa57efef8d345200ec437a469761ac12bd4",
+          "promptHash": "9f6d3b69e59f0285111e49ee4c95f3bf5d459f6c8ad47050dc6bd4807c19436a",
+          "answerHash": "ff2e1158a6fd35f7ec75404debf9b3f7ddb3943d2d5398b07a69c63a69c2c4e9"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Repeated addition of the same quantity is retained; contextual plates3×4 or4×3 both give12.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "ro",
+      "index": 705,
+      "file": "math-course-ro-0700-0999.json",
+      "sourceHash": "3d5a426b64ef0de56190dbdb0544580eb408eecea72eb62e83e4d019acca819d",
+      "targetHash": "34c237da00dc25a4ed9973736d6684dc3305445403230d84bb1ab5fb6d2c1c55",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-mul-4",
+            "hints",
+            1
+          ],
+          "fieldHash": "b629835e65ced8e586d99db7ca4bab8310005e8b6267e53bc2fd85bf7a1a1bf5",
+          "questionContextHash": "8f3e544c7c175057f64f49d5310af7dd8bce131c3dedee68d4c074a8ad289734",
+          "promptHash": "56fe3f8792f568bdd855fb9fab175233254177465912cd268104c278211c2ee2",
+          "answerHash": "c42301051b567dd2c143d6298d4cd7d8fa07d6db135492c5b7a06c749501717b"
+        }
+      ],
+      "verdict": "unsure",
+      "reason": "Repeated equal-addend count is the multiplier in5+5+5+5=5×4, so intended count is4 summands. Target speaks of number of repeated additions (RO adunărilor/FI lisäyskertojen), which may mean3 binary+ operations rather than4 addends. Source wording has similar ambiguity; CS/HU explicitly count equal addends. Prefer explicit addend count; native teacher should confirm idiomatic interpretation.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": {
+        "index": 705,
+        "translation": "Numărul termenilor egali adunați este numărul cu care înmulțești.",
+        "status": "AI_proposal_not_applied"
+      }
+    },
+    {
+      "locale": "ro",
+      "index": 710,
+      "file": "math-course-ro-0700-0999.json",
+      "sourceHash": "2d547cec4386e2f6a4b5ac3c7dc584616c0e501d9ffb8c0bcd075237552c9468",
+      "targetHash": "43068a0ddfdeba2c8cf943490d32a3f2b440a363f29322ae05a1eea6b95e4b28",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-mul-d1",
+            "prompt"
+          ],
+          "fieldHash": "6c44a5452dc0101a56b5e152c4db60263b4c8951af8503c8c1cc566848b61350",
+          "questionContextHash": "4da6247857244df864b27a6f898fd71bc5ea69e64a76ddf8ea9faa7ea4e19430",
+          "promptHash": "6c44a5452dc0101a56b5e152c4db60263b4c8951af8503c8c1cc566848b61350",
+          "answerHash": "b16604dc6da1d437ddf97c3894fcfe976eb95118d185cf37716b92bcbebe4d17"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Asks5×3, with15 as contextual answer. Exact LaTeX content matches English and canonical Korean.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "ro",
+      "index": 725,
+      "file": "math-course-ro-0700-0999.json",
+      "sourceHash": "fe1abeb31e73b1b874157cebd211bbfa92d7308883469d3a10fc373342f3abd5",
+      "targetHash": "f458967b2631d26e1c43318b045bbc6014a2e9ce7ec18643333dac3637cf6605",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-pattern-2",
+            "prompt"
+          ],
+          "fieldHash": "68cc0827efe8b31a78cd0aa067045958b7e39da658d8ef192e134c087a15a79e",
+          "questionContextHash": "e9f06ea0f3fe70f74a15a69c79465ae5afb2ec1143c456bb5605b50364df30cd",
+          "promptHash": "68cc0827efe8b31a78cd0aa067045958b7e39da658d8ef192e134c087a15a79e",
+          "answerHash": "b51db7f63b0c70e057fc3024898bfdfdc09cfb1eebc3dce064c77deb01db4057"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Requests next number in5,10,15,□; step+5 and answer20 remain implicit as in source. Exact square command retained.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "ro",
+      "index": 740,
+      "file": "math-course-ro-0700-0999.json",
+      "sourceHash": "bc23e815e114e505676fe3c0b160384574b565eb399a367101f7a6536dfc04ab",
+      "targetHash": "869901216f5800aae7856b07899f5f83f9362fcb46a59b960744d62092fb1037",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-pattern-v1",
+            "explanation"
+          ],
+          "fieldHash": "ea988faa56fda66f53a02f0aa0dd673bc121fb44a09c0ca8f112f0c25489394f",
+          "questionContextHash": "bef84e2e2ea66b8be35a5f071e6f02990998debda05fee4431109b0c92515e8a",
+          "promptHash": "2e46d9cbbc8cfc8fe1036c09a85744de0368bd44841c64efc7d3d15f37a1b46d",
+          "answerHash": "0dc075b01935d1af00e10dd29a3657c7e76c6c1f768e844e75e9060f21df727a"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves increment4 and12+4=16, matching contextual pattern4,8,12.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "ro",
+      "index": 758,
+      "file": "math-course-ro-0700-0999.json",
+      "sourceHash": "8471a8835fe8253aaad6e74a03c0de4521104d5c57f1d62017c8299ec47b4e01",
+      "targetHash": "732422ddec3617ba211780395ba0d5544555918f1b238e646685839083efd7fb",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-place-4",
+            "hints",
+            1
+          ],
+          "fieldHash": "c59e57c30150a763420ec3a6299e3aa5136e18454f83dce27e9d59eb9dcc6d87",
+          "questionContextHash": "941ceaebc731a168e3059d8e4ea226745264535a4db362274dc626d25664d52b",
+          "promptHash": "38c57fc6571d5d845630faa34f14062da6dc94b3bf7e5a9c038d51cc58ec2e74",
+          "answerHash": "4301007410f0afcbc5a0e9d5dc3dcbf485f62d9902f3f3f58cc7ebb6c65e7d88"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "In the actual29+1 context, carrying turns29 to30; ones9 and tens increase by one are correct. Not interpreted as unconditional behaviour without adding1.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "ro",
+      "index": 770,
+      "file": "math-course-ro-0700-0999.json",
+      "sourceHash": "92bbbcf980976543af086a12c0e3c499e1ae972efc8146e548075bb4327c27f7",
+      "targetHash": "b6fe490ad402104f4f2712b8f1ef8a944326494692fb26a26f3d8e89cc0cbdac",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-place-v2",
+            "hints",
+            1
+          ],
+          "fieldHash": "ff80cfce216c920b1a86e28c6d942667ae77ae36e9c6e99cdbc826ec8946825b",
+          "questionContextHash": "193544e117d204e68099b9e8e6d4b1687d9ed5308207b177f3fc1f73fde13508",
+          "promptHash": "1308b713d88d1754dc187204bb34e554f8be2f525af6625b57df3bae8353ca20",
+          "answerHash": "60c2f07322d2e129befa58c07ebeeb2e447ee340ab25ee3d65e3a46104d9979d"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Retains70+4=74 for seven tens and four ones.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "ro",
+      "index": 790,
+      "file": "math-course-ro-0700-0999.json",
+      "sourceHash": "9a5f80f85ffa18c07529585af379b3f0010ee3132eecd90c1d8dd03024084ba6",
+      "targetHash": "7baed9e49d50dd5733c2e5377024b408cd6ed5b432d7bffcbd992c6cafa5052b",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-time-5",
+            "hints",
+            1
+          ],
+          "fieldHash": "a09980bd979c7a0b39849d5623a354c219d117cdaf85f8999c9260cd77da9f1a",
+          "questionContextHash": "98367fb9797b7096886ba009e56b1aa40850c7151ebb7235fd06e35b542e791c",
+          "promptHash": "b481b4dc999cf772d3ad4a8b0ff23feda9db9ab39c557aaf09574aeb81ba1e81",
+          "answerHash": "4301007410f0afcbc5a0e9d5dc3dcbf485f62d9902f3f3f58cc7ebb6c65e7d88"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Retains minute calculation20+10=30 for2:20 plus10minutes; no hour/minute swap.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "ro",
+      "index": 810,
+      "file": "math-course-ro-0700-0999.json",
+      "sourceHash": "1e76b8f30a159bbe9bebe8aa626bcfcdf540bd1505df5aa6b237143a973f8e9c",
+      "targetHash": "73c967c1ec2c01cb28da6df26e97b5c56040de11e8064f89862ef525414522ab",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-up-l2a",
+            "hints",
+            1
+          ],
+          "fieldHash": "7854485381a5f782cf7e8bbfbbb19381666812d888ad15e1fad4996392ecf1b8",
+          "questionContextHash": "33178c9a44bdbbc7bbdf5597f77c6d88cbd18839d2b069afa785de6d3824ac77",
+          "promptHash": "92fda68fa55a9b8d08ba443c0fcb93acc3cec7ea2632b3ca0984e88295127e81",
+          "answerHash": "68205196e7298c8461433bb47e8d3cc3bd38818aac378da909abb68990283e87"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves subtracting read-page total from100, with context38+27 and unread35; subtraction direction correct.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "ro",
+      "index": 830,
+      "file": "math-course-ro-0700-0999.json",
+      "sourceHash": "02a7516f62ceb2464f0fcf0bb92d5ab1e84ac96d96f11972cd024e978b8a73b5",
+      "targetHash": "02a7516f62ceb2464f0fcf0bb92d5ab1e84ac96d96f11972cd024e978b8a73b5",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-up-l4b",
+            "hints",
+            1
+          ],
+          "fieldHash": "feedbf27d3f1530826045da516d145de2a13decd31f2c439695a73f43c25d861",
+          "questionContextHash": "1b6148405132b10674aa81d24ff0551ed9151de382e6bc6effa86cd3eb158a2b",
+          "promptHash": "ece79e4a84663d2593f47a2c1a8f42526b73e2ed1914ce8a743fff4696cbee4d",
+          "answerHash": "4301007410f0afcbc5a0e9d5dc3dcbf485f62d9902f3f3f58cc7ebb6c65e7d88"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves exact1m=100cm conversion in150cm minus1m20cm context, answer30cm.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "ro",
+      "index": 850,
+      "file": "math-course-ro-0700-0999.json",
+      "sourceHash": "eddb35c1e167787400943eba2835a85078c285a8af44553706c9953356044de3",
+      "targetHash": "23a7cde3c97f5df8a7ef3b2ab051fe2bb50160b8de4bfc3a5761d3e7087dece4",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-data-4",
+            "prompt"
+          ],
+          "fieldHash": "2f635abc3d41691ae765577d48949c2d99ab6ea230b25042d70db0418b7297ed",
+          "questionContextHash": "65f10b74c3f761701bbfbc0730a85c39fc3840553b6708347242d18ab64f3bf7",
+          "promptHash": "2f635abc3d41691ae765577d48949c2d99ab6ea230b25042d70db0418b7297ed",
+          "answerHash": "2c08289b5d2b3fc04da6b96ddf7ae98e98e370cfa8c4dc286b74251ee3ab60a0"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves fruit-count correspondence apple7,banana5,grape9,tangerine4 and asks minimum preference, not maximum. Correct option remains tangerine.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "ro",
+      "index": 870,
+      "file": "math-course-ro-0700-0999.json",
+      "sourceHash": "3fd7fd52841e5f6448adf8c374267449a790e60661175c9cd701033bf1ee0ba8",
+      "targetHash": "3fd7fd52841e5f6448adf8c374267449a790e60661175c9cd701033bf1ee0ba8",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-data-v2",
+            "explanation"
+          ],
+          "fieldHash": "3fd7fd52841e5f6448adf8c374267449a790e60661175c9cd701033bf1ee0ba8",
+          "questionContextHash": "32a75b4c7b2d8889d22e2056ff66554825bc52e1f7728781dbe4b739f8e717c3",
+          "promptHash": "a06ec705bdeb1082359cf95a221ec5c912ce5ee138b56909fadad081a008085e",
+          "answerHash": "a6284c165059c1d08e31892fbb9cf832f860282d5f973086ecdb226cbe2d38bc"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves7−4=3 as difference between apple and tangerine counts.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "ro",
+      "index": 879,
+      "file": "math-course-ro-0700-0999.json",
+      "sourceHash": "f0431afa6df6faaa12f6d855d53f5572e7d864f808d6ea697a2aeb9a1defc5af",
+      "targetHash": "33eaf49f983c745339c3b668d629e9f25a5c812192693be37fcefe236fb6ae4b",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-frac-3",
+            "prompt"
+          ],
+          "fieldHash": "ddb327ebc46584e36fb01742d461837668df065c238de70605299cd6a873e3b5",
+          "questionContextHash": "3132bbe1fad0d58e20aee97f840951c61d17a8500bcc0c9682b5d60adefc41ea",
+          "promptHash": "ddb327ebc46584e36fb01742d461837668df065c238de70605299cd6a873e3b5",
+          "answerHash": "2c08289b5d2b3fc04da6b96ddf7ae98e98e370cfa8c4dc286b74251ee3ab60a0"
+        },
+        {
+          "path": [
+            "questions",
+            "m-e3-frac-v2",
+            "prompt"
+          ],
+          "fieldHash": "ddb327ebc46584e36fb01742d461837668df065c238de70605299cd6a873e3b5",
+          "questionContextHash": "e60a61842d707fcac67fc27b7ea47221f78b5a494525ca25f2dd3ab2cf7dac5c",
+          "promptHash": "ddb327ebc46584e36fb01742d461837668df065c238de70605299cd6a873e3b5",
+          "answerHash": "9932ad61254d9c6c12cb692dfaf23fc639116c9c27738e9e3e951fe1e67c0075"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Asks largest of three fractions, preserving comparison direction for both linked option sets; no options reordered or answers inserted.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "ro",
+      "index": 890,
+      "file": "math-course-ro-0700-0999.json",
+      "sourceHash": "fc7331217676d9eee3cd5cd2d517417bcc5c39f50eb4524a4ae9c4ce4fe7b833",
+      "targetHash": "0ae3475bc2da9a3c9494533588d7583e3fb03877eb42fdf674a21a94575a3225",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-frac-5",
+            "hints",
+            1
+          ],
+          "fieldHash": "73615a2242393ebac65354fa8120bba5856fb5433188fc0475d1d1dfb7badc67",
+          "questionContextHash": "638d972fd2c2dfc9a5a94c8b5b2f82b74fa8bcc1ca42688409cc410804e017ce",
+          "promptHash": "33071232e7113c92afdad5cdeae046397e8fb714e29ad558f8ac3c99295ac80d",
+          "answerHash": "34bdec415a063a6f257ced85a4c8db2fad52d60dcd211e1e98f8ba75051768d3"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Retains five copies of1/8, corresponding to5/8=(1/8)×□ and□=5.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "ro",
+      "index": 910,
+      "file": "math-course-ro-0700-0999.json",
+      "sourceHash": "cd8fa67443e745bc99a5d34b7264f23d5685b753cb19f5955d209cb6956ac771",
+      "targetHash": "059f35a85ee09d38e83f36aeb6cd1b69de442f895e5497354de26f698f64ba7b",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-geo-3",
+            "hints",
+            1
+          ],
+          "fieldHash": "8a6eb0e5639767b8bfb2e48c2d9423d3244b21ddd4dab2d59448e87bead6cce4",
+          "questionContextHash": "a2f8b350d1ebf1153a7f27f1693bd638d832eca604ac7eff8d7dea4bf70a1230",
+          "promptHash": "1f92a53ce1f304efa5bbf0db501c91edd1aa319b75340fce322fe168fe7bf42a",
+          "answerHash": "486c301b28cce8f0a6381624515b889736c7c4d272c112f6bfba7eda9f8b4883"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Retains5×2 for diameter of radius5cm; no area/circumference confusion.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "ro",
+      "index": 930,
+      "file": "math-course-ro-0700-0999.json",
+      "sourceHash": "5a242ea3471383e1621588a491e959adf9452452c6266d59260fa9501708cadb",
+      "targetHash": "0739896665443f18b6ddfb5500ab11ffcc387bd67c6bb1001644714a04e76664",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-geo-v2",
+            "hints",
+            0
+          ],
+          "fieldHash": "9bf5c0153d4ab8472125a406905ef2e6680e41f312b63703d1a397de1eceb47e",
+          "questionContextHash": "863c37c5030282ca61d6ca78acf982cd43d9fcdfe259ae742b7e8d634a4a4627",
+          "promptHash": "de32a36b2a545186d51835d912aec26098cdb464f839f332348064f99b329d69",
+          "answerHash": "c42301051b567dd2c143d6298d4cd7d8fa07d6db135492c5b7a06c749501717b"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Directs looking at every square angle, consistent with four right angles in contextual answer.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "ro",
+      "index": 950,
+      "file": "math-course-ro-0700-0999.json",
+      "sourceHash": "e7c9ed9c1a440231cd294b4c18e10e7214530e89057ceb0872698ffeb36e5ea0",
+      "targetHash": "d95e3cc195e277e3369dea40dfe70ed00e04fb004021893abcbb48acadc03a48",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-muldiv-5",
+            "hints",
+            1
+          ],
+          "fieldHash": "2bdf2a4a844384e34b779d5f5d80b69ab5ea533408ef0707ec7aa4767e4b1d31",
+          "questionContextHash": "66ccc4f647a954d8b3009ac9c527739e273726a4f4f8b2f3d3dcc1ca66fea5f4",
+          "promptHash": "f6ef82ad9d2313e8abb48c5e95465c3ea8dcfcc04ac20d6ef99fad5942cbd0b0",
+          "answerHash": "cbf614d0938d70d41a86fb280fd6364c32eeb14e09e4c52a7ef4c228b47d15ca"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Retains23 added three times, giving69 for23×3.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "ro",
+      "index": 970,
+      "file": "math-course-ro-0700-0999.json",
+      "sourceHash": "dfc4c243168a3354f6b2abe9a469dfb469224c38033fa868776c54e3ca58b4b8",
+      "targetHash": "7783cc9b9a2d65b4abf416d42b702195b9fa96f59bf40b292cfec6104301f6a1",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-1",
+            "hints",
+            0
+          ],
+          "fieldHash": "e5e8b02b6448d3a8498062b81011acfc397bbfef11b7632ecd84d29279eb7b85",
+          "questionContextHash": "f44596cd60477b2831e10c4ffc4f26d845e4ce1ea1d6f29b54598f967131a067",
+          "promptHash": "94a5ca4fbb0ec76c02e997531c36fb96de179679df4706f8ab5bfe0444aa4532",
+          "answerHash": "f06bb095818fbdc358fb67267d2c3e55ef53eab8de3705906714d0333ff90d19"
+        },
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-2",
+            "hints",
+            0
+          ],
+          "fieldHash": "e5e8b02b6448d3a8498062b81011acfc397bbfef11b7632ecd84d29279eb7b85",
+          "questionContextHash": "68bc1500a251f109d441c368328251a643fce2df163fb9ed31464cabd3e1a438",
+          "promptHash": "3c8fe9093a52cd780d6d5b60a4dffe0d4ad4400230420533105890c9ded42461",
+          "answerHash": "e4c5c850fe4d0f3536f98b5b42873babbbb3aca80952fb6266868d296c4b14d3"
+        },
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-3",
+            "hints",
+            0
+          ],
+          "fieldHash": "e5e8b02b6448d3a8498062b81011acfc397bbfef11b7632ecd84d29279eb7b85",
+          "questionContextHash": "673eb3aca8f3c8d9ca3cfdbac71c0d15e7031d7f56f5ea65165d4cf46b53d589",
+          "promptHash": "5b87731dd36140b2ca9019c4aab6de95edf57f8829638babe065667708d81de0",
+          "answerHash": "abac48811644cd30c27b04a1730292e1a251e11510524db8b414aa24a6a42a6a"
+        },
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-d1",
+            "hints",
+            0
+          ],
+          "fieldHash": "e5e8b02b6448d3a8498062b81011acfc397bbfef11b7632ecd84d29279eb7b85",
+          "questionContextHash": "15b27154ae25c288c807458390ad34e5e822ce679ca8c895b0ab89d6c2f55dd7",
+          "promptHash": "65494dbbef358371c462dfa2e0266243a5118ad63e8a426d0982f07718029da7",
+          "answerHash": "fcc16199623bff7e647243201281331a3bcddbecbe98394167dce6e5985eaebc"
+        },
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-v1",
+            "hints",
+            0
+          ],
+          "fieldHash": "e5e8b02b6448d3a8498062b81011acfc397bbfef11b7632ecd84d29279eb7b85",
+          "questionContextHash": "3a63c296f775b69c217fa08db9700f755b62e9191a9262b9a769b76e3aee4f27",
+          "promptHash": "9deb7edd866d23350f7956c3e457824c2bf359b574c2dc2041f22d74c406c207",
+          "answerHash": "e52576232841e611133c39cf0b5938d450e0e350f7d0ea5a8a7b6fbf26310a83"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves multiplying by the conversion factor. All five linked contexts explicitly use larger-to-smaller conversions with factor1000 (km→m,L→mL,kg→g); not treated as universal conversion rule.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "ro",
+      "index": 980,
+      "file": "math-course-ro-0700-0999.json",
+      "sourceHash": "da4b909972428532b520a3a503ebe7d06207fe98f3ff2944e833880673cdf51b",
+      "targetHash": "6981299b3b72457d19412686fa41b369b8ac99fe02bb205136a87ac24875f4ae",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-4",
+            "hints",
+            0
+          ],
+          "fieldHash": "7afbd87b7389ae7c2d23d7e7cc67da2ea68b9e6d85a0c421287321b7f082104d",
+          "questionContextHash": "45394a6434891d32a1271ff7c7e4675444ad8bdcbf1e512ea4595fce2de42598",
+          "promptHash": "0a9c3e460abf0e5bdc3ce1dddb47f35e387c4fc11875760582ff67be0092b0c3",
+          "answerHash": "9a2877c239e315e997993e591dfc7b2d22954460e23427613e32daca73e33a69"
+        },
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-v2",
+            "hints",
+            0
+          ],
+          "fieldHash": "7afbd87b7389ae7c2d23d7e7cc67da2ea68b9e6d85a0c421287321b7f082104d",
+          "questionContextHash": "8ee9d1fb7ac0ed9de102834d5924acf508baa22627427ceac040f8a37e1dd04a",
+          "promptHash": "caa998880f3390e71554094c53eb028b151c23882396a49375df4ed72fba3766",
+          "answerHash": "a7d6f35cb577f081210224630fec819e8aa226c210b4aa389c6f00b12adb6123"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves1m=100cm, used for mixed1m20cm or1m50cm lengths, answers120cm and150cm.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "ro",
+      "index": 985,
+      "file": "math-course-ro-0700-0999.json",
+      "sourceHash": "b15f0cae62fe1c771c02800f4974dd6b598a48eeb549d56ef0d01f1ed064d783",
+      "targetHash": "8602c769d45031d4e432fd11631bc40b775e88259758e52c36daa321775df650",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-5",
+            "hints",
+            1
+          ],
+          "fieldHash": "e28636849d7f8df9d8a4cd9757e8aa8812d8089a11ee2921cf2e63e9c6edfbc8",
+          "questionContextHash": "ece33f0d980279dccec8ad847735cf89ed602a80b11289e377e3ea9024386f27",
+          "promptHash": "6ab8d6698b62e18ad2456d7e4c0e20977db86ca71ee7caf60999db02201452f2",
+          "answerHash": "abb1fcf60207f508f7d79a15bca638e62e8c248525fe88edb2f4e0333d53bddf"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Adds300m to2000m after2km conversion, giving2300m; same-unit addition retained.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "ro",
+      "index": 990,
+      "file": "math-course-ro-0700-0999.json",
+      "sourceHash": "90d486a0375bf32b2d46e3710a52d9e7670ce12a8ff3de6759bcbc86baa787c3",
+      "targetHash": "d72fac085f5decb58053415e08b7b227984b91858a138afb2513b7b2eb186d0f",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-v1",
+            "explanation"
+          ],
+          "fieldHash": "63561c898f0bdd96c03997f7937631cf6a0f44253b700aff6bae1afc9f3cee8f",
+          "questionContextHash": "3a63c296f775b69c217fa08db9700f755b62e9191a9262b9a769b76e3aee4f27",
+          "promptHash": "9deb7edd866d23350f7956c3e457824c2bf359b574c2dc2041f22d74c406c207",
+          "answerHash": "e52576232841e611133c39cf0b5938d450e0e350f7d0ea5a8a7b6fbf26310a83"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves4×1000=4000 and4km=4000m, with exact source/canonical LaTeX.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "ro",
+      "index": 995,
+      "file": "math-course-ro-0700-0999.json",
+      "sourceHash": "0403d1885f067c6659e708548d2817d4959a06bd46493a4f400a9ec9ec9237af",
+      "targetHash": "595e00cd868ec9f4f87bb6b4f3f370b7bd6445478549ea049766960f6dc4a12e",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-up-l1a",
+            "prompt"
+          ],
+          "fieldHash": "49812bf032b8856b24e69f2490fa48a8fa644affd7c81e6021b0d5859995f675",
+          "questionContextHash": "4781e5996066e9bae88e90763611aae80c076d75f2f53d635e22c42549254904",
+          "promptHash": "49812bf032b8856b24e69f2490fa48a8fa644affd7c81e6021b0d5859995f675",
+          "answerHash": "5573a6ab84576fabe2773fe447659a44ea7e054009c93c82947eaf3f61fdce95"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves12 pencils per box,4 boxes and15 given away; remaining4×12−15=33, with numeric answer request.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "ro",
+      "index": 998,
+      "file": "math-course-ro-0700-0999.json",
+      "sourceHash": "358bb4c9e4af3aa4a608c9da2badd863fa2c14f93b0a80df0591b86f86e62e21",
+      "targetHash": "5c6a9f7fcc08bdad38e43a2c21a5d018b405b931b881764d364fb675f896971c",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-up-l1a",
+            "hints",
+            1
+          ],
+          "fieldHash": "53ba0364693e622d13d74ea34c89899a4ded15e983ca97fdbd453f506bef70e9",
+          "questionContextHash": "4781e5996066e9bae88e90763611aae80c076d75f2f53d635e22c42549254904",
+          "promptHash": "49812bf032b8856b24e69f2490fa48a8fa644affd7c81e6021b0d5859995f675",
+          "answerHash": "5573a6ab84576fabe2773fe447659a44ea7e054009c93c82947eaf3f61fdce95"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves subtracting15 given-away pencils from total48, not subtracting total from15.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "ro",
+      "index": 999,
+      "file": "math-course-ro-0700-0999.json",
+      "sourceHash": "77365faadc9d2823e392489005e43f2eabc53ba2b326835e40885b48b0a4addc",
+      "targetHash": "03c2b140e6e8debb6569a2e7a10925d4e770dbc148bc117e784ef954524e0685",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-up-l1b",
+            "prompt"
+          ],
+          "fieldHash": "9f78e292521b36d636b0a228693639ba5d55f4b20828db0c17d909c9c02c5aef",
+          "questionContextHash": "6604caad449c9815c5b6fcecd41015a8714df7dee115553e66b0554d80b87aa8",
+          "promptHash": "9f78e292521b36d636b0a228693639ba5d55f4b20828db0c17d909c9c02c5aef",
+          "answerHash": "bd3c55e2531467cc941d5a04a6f77751cbdb0df6aad110e9bd32f73d7c93faaf"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves same unknown number from6x=42, then asks3x=21, not replacement of multiplier in the first product.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "fi",
+      "index": 700,
+      "file": "math-course-fi-0700-0999.json",
+      "sourceHash": "4ba6e6a33fa7e1fbabe2049e03132b2c8e5161c2fa0c021fd3d74206ec718190",
+      "targetHash": "26b90d583bb93d38bca3774c23f2e5d8afefc205f5de1a135ce2c0726fc4f02a",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-mul-3",
+            "hints",
+            0
+          ],
+          "fieldHash": "d086d57cb00fdcddee095a0ae86f8f427551b7bd2277db107d9733e6a7bf4c53",
+          "questionContextHash": "75e21dbd41769156897db1be24b4009645c99f869ef336a90ee1182744fdd399",
+          "promptHash": "4845664434d40e1dceab5e7f9678494dd832128a073eba58e50f351e0f0a4952",
+          "answerHash": "ff2e1158a6fd35f7ec75404debf9b3f7ddb3943d2d5398b07a69c63a69c2c4e9"
+        },
+        {
+          "path": [
+            "questions",
+            "m-e2-mul-v2",
+            "hints",
+            0
+          ],
+          "fieldHash": "d086d57cb00fdcddee095a0ae86f8f427551b7bd2277db107d9733e6a7bf4c53",
+          "questionContextHash": "86b059c56ffdd61f164b9035b607dfa57efef8d345200ec437a469761ac12bd4",
+          "promptHash": "9f6d3b69e59f0285111e49ee4c95f3bf5d459f6c8ad47050dc6bd4807c19436a",
+          "answerHash": "ff2e1158a6fd35f7ec75404debf9b3f7ddb3943d2d5398b07a69c63a69c2c4e9"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Repeated addition of the same quantity is retained; contextual plates3×4 or4×3 both give12.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "fi",
+      "index": 705,
+      "file": "math-course-fi-0700-0999.json",
+      "sourceHash": "3d5a426b64ef0de56190dbdb0544580eb408eecea72eb62e83e4d019acca819d",
+      "targetHash": "46f6b89b530e7fda1cd9f4cd12a9e3667184f305cd4f37033a73a80308c48f96",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-mul-4",
+            "hints",
+            1
+          ],
+          "fieldHash": "b629835e65ced8e586d99db7ca4bab8310005e8b6267e53bc2fd85bf7a1a1bf5",
+          "questionContextHash": "8f3e544c7c175057f64f49d5310af7dd8bce131c3dedee68d4c074a8ad289734",
+          "promptHash": "56fe3f8792f568bdd855fb9fab175233254177465912cd268104c278211c2ee2",
+          "answerHash": "c42301051b567dd2c143d6298d4cd7d8fa07d6db135492c5b7a06c749501717b"
+        }
+      ],
+      "verdict": "unsure",
+      "reason": "Repeated equal-addend count is the multiplier in5+5+5+5=5×4, so intended count is4 summands. Target speaks of number of repeated additions (RO adunărilor/FI lisäyskertojen), which may mean3 binary+ operations rather than4 addends. Source wording has similar ambiguity; CS/HU explicitly count equal addends. Prefer explicit addend count; native teacher should confirm idiomatic interpretation.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": {
+        "index": 705,
+        "translation": "Yhtä suurten yhteenlaskettavien lukumäärä on kertoja.",
+        "status": "AI_proposal_not_applied"
+      }
+    },
+    {
+      "locale": "fi",
+      "index": 710,
+      "file": "math-course-fi-0700-0999.json",
+      "sourceHash": "2d547cec4386e2f6a4b5ac3c7dc584616c0e501d9ffb8c0bcd075237552c9468",
+      "targetHash": "8d074d9e217994300538c70f336e2d5fbe8ea4817acb43fe46d98cd53572466f",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-mul-d1",
+            "prompt"
+          ],
+          "fieldHash": "6c44a5452dc0101a56b5e152c4db60263b4c8951af8503c8c1cc566848b61350",
+          "questionContextHash": "4da6247857244df864b27a6f898fd71bc5ea69e64a76ddf8ea9faa7ea4e19430",
+          "promptHash": "6c44a5452dc0101a56b5e152c4db60263b4c8951af8503c8c1cc566848b61350",
+          "answerHash": "b16604dc6da1d437ddf97c3894fcfe976eb95118d185cf37716b92bcbebe4d17"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Asks5×3, with15 as contextual answer. Exact LaTeX content matches English and canonical Korean.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "fi",
+      "index": 725,
+      "file": "math-course-fi-0700-0999.json",
+      "sourceHash": "fe1abeb31e73b1b874157cebd211bbfa92d7308883469d3a10fc373342f3abd5",
+      "targetHash": "556e80537b29cd9838fc8ab3ae4ae9b6587578320c671a173be5d32261a46f9e",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-pattern-2",
+            "prompt"
+          ],
+          "fieldHash": "68cc0827efe8b31a78cd0aa067045958b7e39da658d8ef192e134c087a15a79e",
+          "questionContextHash": "e9f06ea0f3fe70f74a15a69c79465ae5afb2ec1143c456bb5605b50364df30cd",
+          "promptHash": "68cc0827efe8b31a78cd0aa067045958b7e39da658d8ef192e134c087a15a79e",
+          "answerHash": "b51db7f63b0c70e057fc3024898bfdfdc09cfb1eebc3dce064c77deb01db4057"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Requests next number in5,10,15,□; step+5 and answer20 remain implicit as in source. Exact square command retained.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "fi",
+      "index": 740,
+      "file": "math-course-fi-0700-0999.json",
+      "sourceHash": "bc23e815e114e505676fe3c0b160384574b565eb399a367101f7a6536dfc04ab",
+      "targetHash": "9079887687b57eb21352fef1c760547317dae5932da2f6ce629aa8c6eda6e7e8",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-pattern-v1",
+            "explanation"
+          ],
+          "fieldHash": "ea988faa56fda66f53a02f0aa0dd673bc121fb44a09c0ca8f112f0c25489394f",
+          "questionContextHash": "bef84e2e2ea66b8be35a5f071e6f02990998debda05fee4431109b0c92515e8a",
+          "promptHash": "2e46d9cbbc8cfc8fe1036c09a85744de0368bd44841c64efc7d3d15f37a1b46d",
+          "answerHash": "0dc075b01935d1af00e10dd29a3657c7e76c6c1f768e844e75e9060f21df727a"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves increment4 and12+4=16, matching contextual pattern4,8,12.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "fi",
+      "index": 758,
+      "file": "math-course-fi-0700-0999.json",
+      "sourceHash": "8471a8835fe8253aaad6e74a03c0de4521104d5c57f1d62017c8299ec47b4e01",
+      "targetHash": "343c50baad814eb6913d1163f16442ea7348be413ca309bf4bc3af43f60a728d",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-place-4",
+            "hints",
+            1
+          ],
+          "fieldHash": "c59e57c30150a763420ec3a6299e3aa5136e18454f83dce27e9d59eb9dcc6d87",
+          "questionContextHash": "941ceaebc731a168e3059d8e4ea226745264535a4db362274dc626d25664d52b",
+          "promptHash": "38c57fc6571d5d845630faa34f14062da6dc94b3bf7e5a9c038d51cc58ec2e74",
+          "answerHash": "4301007410f0afcbc5a0e9d5dc3dcbf485f62d9902f3f3f58cc7ebb6c65e7d88"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "In the actual29+1 context, carrying turns29 to30; ones9 and tens increase by one are correct. Not interpreted as unconditional behaviour without adding1.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "fi",
+      "index": 770,
+      "file": "math-course-fi-0700-0999.json",
+      "sourceHash": "92bbbcf980976543af086a12c0e3c499e1ae972efc8146e548075bb4327c27f7",
+      "targetHash": "6915014339dcfa8b7148c0858e9bdc5f29a6557eda3ae2c40ddcfccc2d62894f",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-place-v2",
+            "hints",
+            1
+          ],
+          "fieldHash": "ff80cfce216c920b1a86e28c6d942667ae77ae36e9c6e99cdbc826ec8946825b",
+          "questionContextHash": "193544e117d204e68099b9e8e6d4b1687d9ed5308207b177f3fc1f73fde13508",
+          "promptHash": "1308b713d88d1754dc187204bb34e554f8be2f525af6625b57df3bae8353ca20",
+          "answerHash": "60c2f07322d2e129befa58c07ebeeb2e447ee340ab25ee3d65e3a46104d9979d"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Retains70+4=74 for seven tens and four ones.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "fi",
+      "index": 790,
+      "file": "math-course-fi-0700-0999.json",
+      "sourceHash": "9a5f80f85ffa18c07529585af379b3f0010ee3132eecd90c1d8dd03024084ba6",
+      "targetHash": "9cf8b5e3f24d5eb5a30a09b557fbb0151f4b7a47e9763d6c48c65e5f2b0e6297",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-time-5",
+            "hints",
+            1
+          ],
+          "fieldHash": "a09980bd979c7a0b39849d5623a354c219d117cdaf85f8999c9260cd77da9f1a",
+          "questionContextHash": "98367fb9797b7096886ba009e56b1aa40850c7151ebb7235fd06e35b542e791c",
+          "promptHash": "b481b4dc999cf772d3ad4a8b0ff23feda9db9ab39c557aaf09574aeb81ba1e81",
+          "answerHash": "4301007410f0afcbc5a0e9d5dc3dcbf485f62d9902f3f3f58cc7ebb6c65e7d88"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Retains minute calculation20+10=30 for2:20 plus10minutes; no hour/minute swap.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "fi",
+      "index": 810,
+      "file": "math-course-fi-0700-0999.json",
+      "sourceHash": "1e76b8f30a159bbe9bebe8aa626bcfcdf540bd1505df5aa6b237143a973f8e9c",
+      "targetHash": "1f0de2a320d640dcf5d2c2be50f727e3c228491e9419a3cb2ec7d502e56ddb6f",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-up-l2a",
+            "hints",
+            1
+          ],
+          "fieldHash": "7854485381a5f782cf7e8bbfbbb19381666812d888ad15e1fad4996392ecf1b8",
+          "questionContextHash": "33178c9a44bdbbc7bbdf5597f77c6d88cbd18839d2b069afa785de6d3824ac77",
+          "promptHash": "92fda68fa55a9b8d08ba443c0fcb93acc3cec7ea2632b3ca0984e88295127e81",
+          "answerHash": "68205196e7298c8461433bb47e8d3cc3bd38818aac378da909abb68990283e87"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves subtracting read-page total from100, with context38+27 and unread35; subtraction direction correct.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "fi",
+      "index": 830,
+      "file": "math-course-fi-0700-0999.json",
+      "sourceHash": "02a7516f62ceb2464f0fcf0bb92d5ab1e84ac96d96f11972cd024e978b8a73b5",
+      "targetHash": "02a7516f62ceb2464f0fcf0bb92d5ab1e84ac96d96f11972cd024e978b8a73b5",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-up-l4b",
+            "hints",
+            1
+          ],
+          "fieldHash": "feedbf27d3f1530826045da516d145de2a13decd31f2c439695a73f43c25d861",
+          "questionContextHash": "1b6148405132b10674aa81d24ff0551ed9151de382e6bc6effa86cd3eb158a2b",
+          "promptHash": "ece79e4a84663d2593f47a2c1a8f42526b73e2ed1914ce8a743fff4696cbee4d",
+          "answerHash": "4301007410f0afcbc5a0e9d5dc3dcbf485f62d9902f3f3f58cc7ebb6c65e7d88"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves exact1m=100cm conversion in150cm minus1m20cm context, answer30cm.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "fi",
+      "index": 850,
+      "file": "math-course-fi-0700-0999.json",
+      "sourceHash": "eddb35c1e167787400943eba2835a85078c285a8af44553706c9953356044de3",
+      "targetHash": "66e4070c07ac4527e1d81c12173efe1d657b91bf738e7c3fb75d63a14f8ebd81",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-data-4",
+            "prompt"
+          ],
+          "fieldHash": "2f635abc3d41691ae765577d48949c2d99ab6ea230b25042d70db0418b7297ed",
+          "questionContextHash": "65f10b74c3f761701bbfbc0730a85c39fc3840553b6708347242d18ab64f3bf7",
+          "promptHash": "2f635abc3d41691ae765577d48949c2d99ab6ea230b25042d70db0418b7297ed",
+          "answerHash": "2c08289b5d2b3fc04da6b96ddf7ae98e98e370cfa8c4dc286b74251ee3ab60a0"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves fruit-count correspondence apple7,banana5,grape9,tangerine4 and asks minimum preference, not maximum. Correct option remains tangerine.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "fi",
+      "index": 870,
+      "file": "math-course-fi-0700-0999.json",
+      "sourceHash": "3fd7fd52841e5f6448adf8c374267449a790e60661175c9cd701033bf1ee0ba8",
+      "targetHash": "3fd7fd52841e5f6448adf8c374267449a790e60661175c9cd701033bf1ee0ba8",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-data-v2",
+            "explanation"
+          ],
+          "fieldHash": "3fd7fd52841e5f6448adf8c374267449a790e60661175c9cd701033bf1ee0ba8",
+          "questionContextHash": "32a75b4c7b2d8889d22e2056ff66554825bc52e1f7728781dbe4b739f8e717c3",
+          "promptHash": "a06ec705bdeb1082359cf95a221ec5c912ce5ee138b56909fadad081a008085e",
+          "answerHash": "a6284c165059c1d08e31892fbb9cf832f860282d5f973086ecdb226cbe2d38bc"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves7−4=3 as difference between apple and tangerine counts.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "fi",
+      "index": 879,
+      "file": "math-course-fi-0700-0999.json",
+      "sourceHash": "f0431afa6df6faaa12f6d855d53f5572e7d864f808d6ea697a2aeb9a1defc5af",
+      "targetHash": "1bc59684717d04fee725802b84214c449f34bb8d9974cd5c2eb603be2d1a15bc",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-frac-3",
+            "prompt"
+          ],
+          "fieldHash": "ddb327ebc46584e36fb01742d461837668df065c238de70605299cd6a873e3b5",
+          "questionContextHash": "3132bbe1fad0d58e20aee97f840951c61d17a8500bcc0c9682b5d60adefc41ea",
+          "promptHash": "ddb327ebc46584e36fb01742d461837668df065c238de70605299cd6a873e3b5",
+          "answerHash": "2c08289b5d2b3fc04da6b96ddf7ae98e98e370cfa8c4dc286b74251ee3ab60a0"
+        },
+        {
+          "path": [
+            "questions",
+            "m-e3-frac-v2",
+            "prompt"
+          ],
+          "fieldHash": "ddb327ebc46584e36fb01742d461837668df065c238de70605299cd6a873e3b5",
+          "questionContextHash": "e60a61842d707fcac67fc27b7ea47221f78b5a494525ca25f2dd3ab2cf7dac5c",
+          "promptHash": "ddb327ebc46584e36fb01742d461837668df065c238de70605299cd6a873e3b5",
+          "answerHash": "9932ad61254d9c6c12cb692dfaf23fc639116c9c27738e9e3e951fe1e67c0075"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Asks largest of three fractions, preserving comparison direction for both linked option sets; no options reordered or answers inserted.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "fi",
+      "index": 890,
+      "file": "math-course-fi-0700-0999.json",
+      "sourceHash": "fc7331217676d9eee3cd5cd2d517417bcc5c39f50eb4524a4ae9c4ce4fe7b833",
+      "targetHash": "6a345be6f14a80cb5e0191b0fff33c114ddf04daadd609847dc8079745cc6c70",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-frac-5",
+            "hints",
+            1
+          ],
+          "fieldHash": "73615a2242393ebac65354fa8120bba5856fb5433188fc0475d1d1dfb7badc67",
+          "questionContextHash": "638d972fd2c2dfc9a5a94c8b5b2f82b74fa8bcc1ca42688409cc410804e017ce",
+          "promptHash": "33071232e7113c92afdad5cdeae046397e8fb714e29ad558f8ac3c99295ac80d",
+          "answerHash": "34bdec415a063a6f257ced85a4c8db2fad52d60dcd211e1e98f8ba75051768d3"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Retains five copies of1/8, corresponding to5/8=(1/8)×□ and□=5.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "fi",
+      "index": 910,
+      "file": "math-course-fi-0700-0999.json",
+      "sourceHash": "cd8fa67443e745bc99a5d34b7264f23d5685b753cb19f5955d209cb6956ac771",
+      "targetHash": "57716923f2a381fb836b334ef58d74885b7aed921ccc01a6b8efa76b7c60f2dc",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-geo-3",
+            "hints",
+            1
+          ],
+          "fieldHash": "8a6eb0e5639767b8bfb2e48c2d9423d3244b21ddd4dab2d59448e87bead6cce4",
+          "questionContextHash": "a2f8b350d1ebf1153a7f27f1693bd638d832eca604ac7eff8d7dea4bf70a1230",
+          "promptHash": "1f92a53ce1f304efa5bbf0db501c91edd1aa319b75340fce322fe168fe7bf42a",
+          "answerHash": "486c301b28cce8f0a6381624515b889736c7c4d272c112f6bfba7eda9f8b4883"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Retains5×2 for diameter of radius5cm; no area/circumference confusion.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "fi",
+      "index": 930,
+      "file": "math-course-fi-0700-0999.json",
+      "sourceHash": "5a242ea3471383e1621588a491e959adf9452452c6266d59260fa9501708cadb",
+      "targetHash": "935bfb0786e4882a6276ffd91d5bd64b7b3739fd9825c74bbdfca416cf217397",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-geo-v2",
+            "hints",
+            0
+          ],
+          "fieldHash": "9bf5c0153d4ab8472125a406905ef2e6680e41f312b63703d1a397de1eceb47e",
+          "questionContextHash": "863c37c5030282ca61d6ca78acf982cd43d9fcdfe259ae742b7e8d634a4a4627",
+          "promptHash": "de32a36b2a545186d51835d912aec26098cdb464f839f332348064f99b329d69",
+          "answerHash": "c42301051b567dd2c143d6298d4cd7d8fa07d6db135492c5b7a06c749501717b"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Directs looking at every square angle, consistent with four right angles in contextual answer.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "fi",
+      "index": 950,
+      "file": "math-course-fi-0700-0999.json",
+      "sourceHash": "e7c9ed9c1a440231cd294b4c18e10e7214530e89057ceb0872698ffeb36e5ea0",
+      "targetHash": "ba62de7df90c3a5da8d4e9699fa297eb8240369eed024ffc446b10bcff54188e",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-muldiv-5",
+            "hints",
+            1
+          ],
+          "fieldHash": "2bdf2a4a844384e34b779d5f5d80b69ab5ea533408ef0707ec7aa4767e4b1d31",
+          "questionContextHash": "66ccc4f647a954d8b3009ac9c527739e273726a4f4f8b2f3d3dcc1ca66fea5f4",
+          "promptHash": "f6ef82ad9d2313e8abb48c5e95465c3ea8dcfcc04ac20d6ef99fad5942cbd0b0",
+          "answerHash": "cbf614d0938d70d41a86fb280fd6364c32eeb14e09e4c52a7ef4c228b47d15ca"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Retains23 added three times, giving69 for23×3.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "fi",
+      "index": 970,
+      "file": "math-course-fi-0700-0999.json",
+      "sourceHash": "dfc4c243168a3354f6b2abe9a469dfb469224c38033fa868776c54e3ca58b4b8",
+      "targetHash": "04a73d82d314835e73542ce0602000aea7728320c7af7ef9aaf0af10163160b5",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-1",
+            "hints",
+            0
+          ],
+          "fieldHash": "e5e8b02b6448d3a8498062b81011acfc397bbfef11b7632ecd84d29279eb7b85",
+          "questionContextHash": "f44596cd60477b2831e10c4ffc4f26d845e4ce1ea1d6f29b54598f967131a067",
+          "promptHash": "94a5ca4fbb0ec76c02e997531c36fb96de179679df4706f8ab5bfe0444aa4532",
+          "answerHash": "f06bb095818fbdc358fb67267d2c3e55ef53eab8de3705906714d0333ff90d19"
+        },
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-2",
+            "hints",
+            0
+          ],
+          "fieldHash": "e5e8b02b6448d3a8498062b81011acfc397bbfef11b7632ecd84d29279eb7b85",
+          "questionContextHash": "68bc1500a251f109d441c368328251a643fce2df163fb9ed31464cabd3e1a438",
+          "promptHash": "3c8fe9093a52cd780d6d5b60a4dffe0d4ad4400230420533105890c9ded42461",
+          "answerHash": "e4c5c850fe4d0f3536f98b5b42873babbbb3aca80952fb6266868d296c4b14d3"
+        },
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-3",
+            "hints",
+            0
+          ],
+          "fieldHash": "e5e8b02b6448d3a8498062b81011acfc397bbfef11b7632ecd84d29279eb7b85",
+          "questionContextHash": "673eb3aca8f3c8d9ca3cfdbac71c0d15e7031d7f56f5ea65165d4cf46b53d589",
+          "promptHash": "5b87731dd36140b2ca9019c4aab6de95edf57f8829638babe065667708d81de0",
+          "answerHash": "abac48811644cd30c27b04a1730292e1a251e11510524db8b414aa24a6a42a6a"
+        },
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-d1",
+            "hints",
+            0
+          ],
+          "fieldHash": "e5e8b02b6448d3a8498062b81011acfc397bbfef11b7632ecd84d29279eb7b85",
+          "questionContextHash": "15b27154ae25c288c807458390ad34e5e822ce679ca8c895b0ab89d6c2f55dd7",
+          "promptHash": "65494dbbef358371c462dfa2e0266243a5118ad63e8a426d0982f07718029da7",
+          "answerHash": "fcc16199623bff7e647243201281331a3bcddbecbe98394167dce6e5985eaebc"
+        },
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-v1",
+            "hints",
+            0
+          ],
+          "fieldHash": "e5e8b02b6448d3a8498062b81011acfc397bbfef11b7632ecd84d29279eb7b85",
+          "questionContextHash": "3a63c296f775b69c217fa08db9700f755b62e9191a9262b9a769b76e3aee4f27",
+          "promptHash": "9deb7edd866d23350f7956c3e457824c2bf359b574c2dc2041f22d74c406c207",
+          "answerHash": "e52576232841e611133c39cf0b5938d450e0e350f7d0ea5a8a7b6fbf26310a83"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves multiplying by the conversion factor. All five linked contexts explicitly use larger-to-smaller conversions with factor1000 (km→m,L→mL,kg→g); not treated as universal conversion rule.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "fi",
+      "index": 980,
+      "file": "math-course-fi-0700-0999.json",
+      "sourceHash": "da4b909972428532b520a3a503ebe7d06207fe98f3ff2944e833880673cdf51b",
+      "targetHash": "c7f3a7d131f8d8e426c98c01aead4a70ba3d777a7a37bfdc8e6663c25ce437e6",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-4",
+            "hints",
+            0
+          ],
+          "fieldHash": "7afbd87b7389ae7c2d23d7e7cc67da2ea68b9e6d85a0c421287321b7f082104d",
+          "questionContextHash": "45394a6434891d32a1271ff7c7e4675444ad8bdcbf1e512ea4595fce2de42598",
+          "promptHash": "0a9c3e460abf0e5bdc3ce1dddb47f35e387c4fc11875760582ff67be0092b0c3",
+          "answerHash": "9a2877c239e315e997993e591dfc7b2d22954460e23427613e32daca73e33a69"
+        },
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-v2",
+            "hints",
+            0
+          ],
+          "fieldHash": "7afbd87b7389ae7c2d23d7e7cc67da2ea68b9e6d85a0c421287321b7f082104d",
+          "questionContextHash": "8ee9d1fb7ac0ed9de102834d5924acf508baa22627427ceac040f8a37e1dd04a",
+          "promptHash": "caa998880f3390e71554094c53eb028b151c23882396a49375df4ed72fba3766",
+          "answerHash": "a7d6f35cb577f081210224630fec819e8aa226c210b4aa389c6f00b12adb6123"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves1m=100cm, used for mixed1m20cm or1m50cm lengths, answers120cm and150cm.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "fi",
+      "index": 985,
+      "file": "math-course-fi-0700-0999.json",
+      "sourceHash": "b15f0cae62fe1c771c02800f4974dd6b598a48eeb549d56ef0d01f1ed064d783",
+      "targetHash": "a9346871a6f6ef89eb875cfbdbc2e790660529eaafa402fab3408fae4b93b9cf",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-5",
+            "hints",
+            1
+          ],
+          "fieldHash": "e28636849d7f8df9d8a4cd9757e8aa8812d8089a11ee2921cf2e63e9c6edfbc8",
+          "questionContextHash": "ece33f0d980279dccec8ad847735cf89ed602a80b11289e377e3ea9024386f27",
+          "promptHash": "6ab8d6698b62e18ad2456d7e4c0e20977db86ca71ee7caf60999db02201452f2",
+          "answerHash": "abb1fcf60207f508f7d79a15bca638e62e8c248525fe88edb2f4e0333d53bddf"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Adds300m to2000m after2km conversion, giving2300m; same-unit addition retained.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "fi",
+      "index": 990,
+      "file": "math-course-fi-0700-0999.json",
+      "sourceHash": "90d486a0375bf32b2d46e3710a52d9e7670ce12a8ff3de6759bcbc86baa787c3",
+      "targetHash": "2bc5ad4615d3d6064f9df98afe97bfa77fb3b82a24d6d6cd74830d7f48b5b822",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-v1",
+            "explanation"
+          ],
+          "fieldHash": "63561c898f0bdd96c03997f7937631cf6a0f44253b700aff6bae1afc9f3cee8f",
+          "questionContextHash": "3a63c296f775b69c217fa08db9700f755b62e9191a9262b9a769b76e3aee4f27",
+          "promptHash": "9deb7edd866d23350f7956c3e457824c2bf359b574c2dc2041f22d74c406c207",
+          "answerHash": "e52576232841e611133c39cf0b5938d450e0e350f7d0ea5a8a7b6fbf26310a83"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves4×1000=4000 and4km=4000m, with exact source/canonical LaTeX.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "fi",
+      "index": 995,
+      "file": "math-course-fi-0700-0999.json",
+      "sourceHash": "0403d1885f067c6659e708548d2817d4959a06bd46493a4f400a9ec9ec9237af",
+      "targetHash": "6f9273883be6e1263bca19c4bab225607bb2a641ec3e6fc0ca4cb70249888545",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-up-l1a",
+            "prompt"
+          ],
+          "fieldHash": "49812bf032b8856b24e69f2490fa48a8fa644affd7c81e6021b0d5859995f675",
+          "questionContextHash": "4781e5996066e9bae88e90763611aae80c076d75f2f53d635e22c42549254904",
+          "promptHash": "49812bf032b8856b24e69f2490fa48a8fa644affd7c81e6021b0d5859995f675",
+          "answerHash": "5573a6ab84576fabe2773fe447659a44ea7e054009c93c82947eaf3f61fdce95"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves12 pencils per box,4 boxes and15 given away; remaining4×12−15=33, with numeric answer request.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "fi",
+      "index": 998,
+      "file": "math-course-fi-0700-0999.json",
+      "sourceHash": "358bb4c9e4af3aa4a608c9da2badd863fa2c14f93b0a80df0591b86f86e62e21",
+      "targetHash": "97d0f9bec3433eff2baa931566af2b4284c73ab57eed8aa7a58238ef8bed2a19",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-up-l1a",
+            "hints",
+            1
+          ],
+          "fieldHash": "53ba0364693e622d13d74ea34c89899a4ded15e983ca97fdbd453f506bef70e9",
+          "questionContextHash": "4781e5996066e9bae88e90763611aae80c076d75f2f53d635e22c42549254904",
+          "promptHash": "49812bf032b8856b24e69f2490fa48a8fa644affd7c81e6021b0d5859995f675",
+          "answerHash": "5573a6ab84576fabe2773fe447659a44ea7e054009c93c82947eaf3f61fdce95"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves subtracting15 given-away pencils from total48, not subtracting total from15.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "fi",
+      "index": 999,
+      "file": "math-course-fi-0700-0999.json",
+      "sourceHash": "77365faadc9d2823e392489005e43f2eabc53ba2b326835e40885b48b0a4addc",
+      "targetHash": "134d1bc16573f64e0423f82417554c00d6aeffa26255466a466611c7974b03da",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-up-l1b",
+            "prompt"
+          ],
+          "fieldHash": "9f78e292521b36d636b0a228693639ba5d55f4b20828db0c17d909c9c02c5aef",
+          "questionContextHash": "6604caad449c9815c5b6fcecd41015a8714df7dee115553e66b0554d80b87aa8",
+          "promptHash": "9f78e292521b36d636b0a228693639ba5d55f4b20828db0c17d909c9c02c5aef",
+          "answerHash": "bd3c55e2531467cc941d5a04a6f77751cbdb0df6aad110e9bd32f73d7c93faaf"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves same unknown number from6x=42, then asks3x=21, not replacement of multiplier in the first product.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "cs",
+      "index": 700,
+      "file": "math-course-cs-0700-0999.json",
+      "sourceHash": "4ba6e6a33fa7e1fbabe2049e03132b2c8e5161c2fa0c021fd3d74206ec718190",
+      "targetHash": "ec3822649ccf308875862c731e247a0b0fbb834b8f42c16a435b885cd7642f82",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-mul-3",
+            "hints",
+            0
+          ],
+          "fieldHash": "d086d57cb00fdcddee095a0ae86f8f427551b7bd2277db107d9733e6a7bf4c53",
+          "questionContextHash": "75e21dbd41769156897db1be24b4009645c99f869ef336a90ee1182744fdd399",
+          "promptHash": "4845664434d40e1dceab5e7f9678494dd832128a073eba58e50f351e0f0a4952",
+          "answerHash": "ff2e1158a6fd35f7ec75404debf9b3f7ddb3943d2d5398b07a69c63a69c2c4e9"
+        },
+        {
+          "path": [
+            "questions",
+            "m-e2-mul-v2",
+            "hints",
+            0
+          ],
+          "fieldHash": "d086d57cb00fdcddee095a0ae86f8f427551b7bd2277db107d9733e6a7bf4c53",
+          "questionContextHash": "86b059c56ffdd61f164b9035b607dfa57efef8d345200ec437a469761ac12bd4",
+          "promptHash": "9f6d3b69e59f0285111e49ee4c95f3bf5d459f6c8ad47050dc6bd4807c19436a",
+          "answerHash": "ff2e1158a6fd35f7ec75404debf9b3f7ddb3943d2d5398b07a69c63a69c2c4e9"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Repeated addition of the same quantity is retained; contextual plates3×4 or4×3 both give12.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "cs",
+      "index": 705,
+      "file": "math-course-cs-0700-0999.json",
+      "sourceHash": "3d5a426b64ef0de56190dbdb0544580eb408eecea72eb62e83e4d019acca819d",
+      "targetHash": "0db30b7fb113cbb600c294531bcff75b8460d3353e54b10e168d7cc64497d001",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-mul-4",
+            "hints",
+            1
+          ],
+          "fieldHash": "b629835e65ced8e586d99db7ca4bab8310005e8b6267e53bc2fd85bf7a1a1bf5",
+          "questionContextHash": "8f3e544c7c175057f64f49d5310af7dd8bce131c3dedee68d4c074a8ad289734",
+          "promptHash": "56fe3f8792f568bdd855fb9fab175233254177465912cd268104c278211c2ee2",
+          "answerHash": "c42301051b567dd2c143d6298d4cd7d8fa07d6db135492c5b7a06c749501717b"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Repeated equal-addend count is the multiplier in5+5+5+5=5×4, so intended count is4 summands.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "cs",
+      "index": 710,
+      "file": "math-course-cs-0700-0999.json",
+      "sourceHash": "2d547cec4386e2f6a4b5ac3c7dc584616c0e501d9ffb8c0bcd075237552c9468",
+      "targetHash": "c90af5bd77deff304fc6cd35282d69ac70d948e94161e03cd019b0674a0d7a0d",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-mul-d1",
+            "prompt"
+          ],
+          "fieldHash": "6c44a5452dc0101a56b5e152c4db60263b4c8951af8503c8c1cc566848b61350",
+          "questionContextHash": "4da6247857244df864b27a6f898fd71bc5ea69e64a76ddf8ea9faa7ea4e19430",
+          "promptHash": "6c44a5452dc0101a56b5e152c4db60263b4c8951af8503c8c1cc566848b61350",
+          "answerHash": "b16604dc6da1d437ddf97c3894fcfe976eb95118d185cf37716b92bcbebe4d17"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Asks5×3, with15 as contextual answer. Exact LaTeX content matches English and canonical Korean.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "cs",
+      "index": 725,
+      "file": "math-course-cs-0700-0999.json",
+      "sourceHash": "fe1abeb31e73b1b874157cebd211bbfa92d7308883469d3a10fc373342f3abd5",
+      "targetHash": "0c925f54456f70dee8854ba2115effdef620ec6b6dbbdbac93ed8eabaf0d5a0d",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-pattern-2",
+            "prompt"
+          ],
+          "fieldHash": "68cc0827efe8b31a78cd0aa067045958b7e39da658d8ef192e134c087a15a79e",
+          "questionContextHash": "e9f06ea0f3fe70f74a15a69c79465ae5afb2ec1143c456bb5605b50364df30cd",
+          "promptHash": "68cc0827efe8b31a78cd0aa067045958b7e39da658d8ef192e134c087a15a79e",
+          "answerHash": "b51db7f63b0c70e057fc3024898bfdfdc09cfb1eebc3dce064c77deb01db4057"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Requests next number in5,10,15,□; step+5 and answer20 remain implicit as in source. Exact square command retained.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "cs",
+      "index": 740,
+      "file": "math-course-cs-0700-0999.json",
+      "sourceHash": "bc23e815e114e505676fe3c0b160384574b565eb399a367101f7a6536dfc04ab",
+      "targetHash": "a57fe90d9dfc3ea3c505f3ee21df33b5c32c23311271302371fa380727a5aabf",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-pattern-v1",
+            "explanation"
+          ],
+          "fieldHash": "ea988faa56fda66f53a02f0aa0dd673bc121fb44a09c0ca8f112f0c25489394f",
+          "questionContextHash": "bef84e2e2ea66b8be35a5f071e6f02990998debda05fee4431109b0c92515e8a",
+          "promptHash": "2e46d9cbbc8cfc8fe1036c09a85744de0368bd44841c64efc7d3d15f37a1b46d",
+          "answerHash": "0dc075b01935d1af00e10dd29a3657c7e76c6c1f768e844e75e9060f21df727a"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves increment4 and12+4=16, matching contextual pattern4,8,12.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "cs",
+      "index": 758,
+      "file": "math-course-cs-0700-0999.json",
+      "sourceHash": "8471a8835fe8253aaad6e74a03c0de4521104d5c57f1d62017c8299ec47b4e01",
+      "targetHash": "ec8e53b1e3cccb71e3d271930d9e20a74bdcb912a654e8dc28a498fdbfae675f",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-place-4",
+            "hints",
+            1
+          ],
+          "fieldHash": "c59e57c30150a763420ec3a6299e3aa5136e18454f83dce27e9d59eb9dcc6d87",
+          "questionContextHash": "941ceaebc731a168e3059d8e4ea226745264535a4db362274dc626d25664d52b",
+          "promptHash": "38c57fc6571d5d845630faa34f14062da6dc94b3bf7e5a9c038d51cc58ec2e74",
+          "answerHash": "4301007410f0afcbc5a0e9d5dc3dcbf485f62d9902f3f3f58cc7ebb6c65e7d88"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "In the actual29+1 context, carrying turns29 to30; ones9 and tens increase by one are correct. Not interpreted as unconditional behaviour without adding1.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "cs",
+      "index": 770,
+      "file": "math-course-cs-0700-0999.json",
+      "sourceHash": "92bbbcf980976543af086a12c0e3c499e1ae972efc8146e548075bb4327c27f7",
+      "targetHash": "3df21da68c18a15b1ec0a3b659d08addcfc39aeec906224c9e1c7d4ca11af450",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-place-v2",
+            "hints",
+            1
+          ],
+          "fieldHash": "ff80cfce216c920b1a86e28c6d942667ae77ae36e9c6e99cdbc826ec8946825b",
+          "questionContextHash": "193544e117d204e68099b9e8e6d4b1687d9ed5308207b177f3fc1f73fde13508",
+          "promptHash": "1308b713d88d1754dc187204bb34e554f8be2f525af6625b57df3bae8353ca20",
+          "answerHash": "60c2f07322d2e129befa58c07ebeeb2e447ee340ab25ee3d65e3a46104d9979d"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Retains70+4=74 for seven tens and four ones.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "cs",
+      "index": 790,
+      "file": "math-course-cs-0700-0999.json",
+      "sourceHash": "9a5f80f85ffa18c07529585af379b3f0010ee3132eecd90c1d8dd03024084ba6",
+      "targetHash": "58c3559f90f2c083b9b8d84325f621787723ae96c46a1247bd2b2d8b84cd5819",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-time-5",
+            "hints",
+            1
+          ],
+          "fieldHash": "a09980bd979c7a0b39849d5623a354c219d117cdaf85f8999c9260cd77da9f1a",
+          "questionContextHash": "98367fb9797b7096886ba009e56b1aa40850c7151ebb7235fd06e35b542e791c",
+          "promptHash": "b481b4dc999cf772d3ad4a8b0ff23feda9db9ab39c557aaf09574aeb81ba1e81",
+          "answerHash": "4301007410f0afcbc5a0e9d5dc3dcbf485f62d9902f3f3f58cc7ebb6c65e7d88"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Retains minute calculation20+10=30 for2:20 plus10minutes; no hour/minute swap.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "cs",
+      "index": 810,
+      "file": "math-course-cs-0700-0999.json",
+      "sourceHash": "1e76b8f30a159bbe9bebe8aa626bcfcdf540bd1505df5aa6b237143a973f8e9c",
+      "targetHash": "e0b7041b053e9fbb6420f91f858a3aa9b8212b6ece987fdd54b3c8938ff073cf",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-up-l2a",
+            "hints",
+            1
+          ],
+          "fieldHash": "7854485381a5f782cf7e8bbfbbb19381666812d888ad15e1fad4996392ecf1b8",
+          "questionContextHash": "33178c9a44bdbbc7bbdf5597f77c6d88cbd18839d2b069afa785de6d3824ac77",
+          "promptHash": "92fda68fa55a9b8d08ba443c0fcb93acc3cec7ea2632b3ca0984e88295127e81",
+          "answerHash": "68205196e7298c8461433bb47e8d3cc3bd38818aac378da909abb68990283e87"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves subtracting read-page total from100, with context38+27 and unread35; subtraction direction correct.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "cs",
+      "index": 830,
+      "file": "math-course-cs-0700-0999.json",
+      "sourceHash": "02a7516f62ceb2464f0fcf0bb92d5ab1e84ac96d96f11972cd024e978b8a73b5",
+      "targetHash": "02a7516f62ceb2464f0fcf0bb92d5ab1e84ac96d96f11972cd024e978b8a73b5",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-up-l4b",
+            "hints",
+            1
+          ],
+          "fieldHash": "feedbf27d3f1530826045da516d145de2a13decd31f2c439695a73f43c25d861",
+          "questionContextHash": "1b6148405132b10674aa81d24ff0551ed9151de382e6bc6effa86cd3eb158a2b",
+          "promptHash": "ece79e4a84663d2593f47a2c1a8f42526b73e2ed1914ce8a743fff4696cbee4d",
+          "answerHash": "4301007410f0afcbc5a0e9d5dc3dcbf485f62d9902f3f3f58cc7ebb6c65e7d88"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves exact1m=100cm conversion in150cm minus1m20cm context, answer30cm.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "cs",
+      "index": 850,
+      "file": "math-course-cs-0700-0999.json",
+      "sourceHash": "eddb35c1e167787400943eba2835a85078c285a8af44553706c9953356044de3",
+      "targetHash": "c1105b25b6781aacf47106c688331480653a3586f3596047af16d9c3947b3a5a",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-data-4",
+            "prompt"
+          ],
+          "fieldHash": "2f635abc3d41691ae765577d48949c2d99ab6ea230b25042d70db0418b7297ed",
+          "questionContextHash": "65f10b74c3f761701bbfbc0730a85c39fc3840553b6708347242d18ab64f3bf7",
+          "promptHash": "2f635abc3d41691ae765577d48949c2d99ab6ea230b25042d70db0418b7297ed",
+          "answerHash": "2c08289b5d2b3fc04da6b96ddf7ae98e98e370cfa8c4dc286b74251ee3ab60a0"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves fruit-count correspondence apple7,banana5,grape9,tangerine4 and asks minimum preference, not maximum. Correct option remains tangerine.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "cs",
+      "index": 870,
+      "file": "math-course-cs-0700-0999.json",
+      "sourceHash": "3fd7fd52841e5f6448adf8c374267449a790e60661175c9cd701033bf1ee0ba8",
+      "targetHash": "3fd7fd52841e5f6448adf8c374267449a790e60661175c9cd701033bf1ee0ba8",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-data-v2",
+            "explanation"
+          ],
+          "fieldHash": "3fd7fd52841e5f6448adf8c374267449a790e60661175c9cd701033bf1ee0ba8",
+          "questionContextHash": "32a75b4c7b2d8889d22e2056ff66554825bc52e1f7728781dbe4b739f8e717c3",
+          "promptHash": "a06ec705bdeb1082359cf95a221ec5c912ce5ee138b56909fadad081a008085e",
+          "answerHash": "a6284c165059c1d08e31892fbb9cf832f860282d5f973086ecdb226cbe2d38bc"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves7−4=3 as difference between apple and tangerine counts.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "cs",
+      "index": 879,
+      "file": "math-course-cs-0700-0999.json",
+      "sourceHash": "f0431afa6df6faaa12f6d855d53f5572e7d864f808d6ea697a2aeb9a1defc5af",
+      "targetHash": "b131c2fb893e0f6c035a80b8b8618da3327b4a534506d3c7f7d40018ef3a7254",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-frac-3",
+            "prompt"
+          ],
+          "fieldHash": "ddb327ebc46584e36fb01742d461837668df065c238de70605299cd6a873e3b5",
+          "questionContextHash": "3132bbe1fad0d58e20aee97f840951c61d17a8500bcc0c9682b5d60adefc41ea",
+          "promptHash": "ddb327ebc46584e36fb01742d461837668df065c238de70605299cd6a873e3b5",
+          "answerHash": "2c08289b5d2b3fc04da6b96ddf7ae98e98e370cfa8c4dc286b74251ee3ab60a0"
+        },
+        {
+          "path": [
+            "questions",
+            "m-e3-frac-v2",
+            "prompt"
+          ],
+          "fieldHash": "ddb327ebc46584e36fb01742d461837668df065c238de70605299cd6a873e3b5",
+          "questionContextHash": "e60a61842d707fcac67fc27b7ea47221f78b5a494525ca25f2dd3ab2cf7dac5c",
+          "promptHash": "ddb327ebc46584e36fb01742d461837668df065c238de70605299cd6a873e3b5",
+          "answerHash": "9932ad61254d9c6c12cb692dfaf23fc639116c9c27738e9e3e951fe1e67c0075"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Asks largest of three fractions, preserving comparison direction for both linked option sets; no options reordered or answers inserted.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "cs",
+      "index": 890,
+      "file": "math-course-cs-0700-0999.json",
+      "sourceHash": "fc7331217676d9eee3cd5cd2d517417bcc5c39f50eb4524a4ae9c4ce4fe7b833",
+      "targetHash": "477a8c8d739223d549f0a2fe3909929331a7e00c5bc2e69ecb14861bd45ab4e6",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-frac-5",
+            "hints",
+            1
+          ],
+          "fieldHash": "73615a2242393ebac65354fa8120bba5856fb5433188fc0475d1d1dfb7badc67",
+          "questionContextHash": "638d972fd2c2dfc9a5a94c8b5b2f82b74fa8bcc1ca42688409cc410804e017ce",
+          "promptHash": "33071232e7113c92afdad5cdeae046397e8fb714e29ad558f8ac3c99295ac80d",
+          "answerHash": "34bdec415a063a6f257ced85a4c8db2fad52d60dcd211e1e98f8ba75051768d3"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Retains five copies of1/8, corresponding to5/8=(1/8)×□ and□=5.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "cs",
+      "index": 910,
+      "file": "math-course-cs-0700-0999.json",
+      "sourceHash": "cd8fa67443e745bc99a5d34b7264f23d5685b753cb19f5955d209cb6956ac771",
+      "targetHash": "3e80b4cab3196d8602d550075e8eaa8e1e0b2790e390d2c5d8b0412219134e81",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-geo-3",
+            "hints",
+            1
+          ],
+          "fieldHash": "8a6eb0e5639767b8bfb2e48c2d9423d3244b21ddd4dab2d59448e87bead6cce4",
+          "questionContextHash": "a2f8b350d1ebf1153a7f27f1693bd638d832eca604ac7eff8d7dea4bf70a1230",
+          "promptHash": "1f92a53ce1f304efa5bbf0db501c91edd1aa319b75340fce322fe168fe7bf42a",
+          "answerHash": "486c301b28cce8f0a6381624515b889736c7c4d272c112f6bfba7eda9f8b4883"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Retains5×2 for diameter of radius5cm; no area/circumference confusion.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "cs",
+      "index": 930,
+      "file": "math-course-cs-0700-0999.json",
+      "sourceHash": "5a242ea3471383e1621588a491e959adf9452452c6266d59260fa9501708cadb",
+      "targetHash": "28d14f31fdde7c55cfa203041f37b6e25c756799b43aad37b67a3d2d92c1e215",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-geo-v2",
+            "hints",
+            0
+          ],
+          "fieldHash": "9bf5c0153d4ab8472125a406905ef2e6680e41f312b63703d1a397de1eceb47e",
+          "questionContextHash": "863c37c5030282ca61d6ca78acf982cd43d9fcdfe259ae742b7e8d634a4a4627",
+          "promptHash": "de32a36b2a545186d51835d912aec26098cdb464f839f332348064f99b329d69",
+          "answerHash": "c42301051b567dd2c143d6298d4cd7d8fa07d6db135492c5b7a06c749501717b"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Directs looking at every square angle, consistent with four right angles in contextual answer.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "cs",
+      "index": 950,
+      "file": "math-course-cs-0700-0999.json",
+      "sourceHash": "e7c9ed9c1a440231cd294b4c18e10e7214530e89057ceb0872698ffeb36e5ea0",
+      "targetHash": "bd5de7c34726cf9ae08a441242c3be9111b7568354b0266646ec4e7b39d0fab2",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-muldiv-5",
+            "hints",
+            1
+          ],
+          "fieldHash": "2bdf2a4a844384e34b779d5f5d80b69ab5ea533408ef0707ec7aa4767e4b1d31",
+          "questionContextHash": "66ccc4f647a954d8b3009ac9c527739e273726a4f4f8b2f3d3dcc1ca66fea5f4",
+          "promptHash": "f6ef82ad9d2313e8abb48c5e95465c3ea8dcfcc04ac20d6ef99fad5942cbd0b0",
+          "answerHash": "cbf614d0938d70d41a86fb280fd6364c32eeb14e09e4c52a7ef4c228b47d15ca"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Retains23 added three times, giving69 for23×3.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "cs",
+      "index": 970,
+      "file": "math-course-cs-0700-0999.json",
+      "sourceHash": "dfc4c243168a3354f6b2abe9a469dfb469224c38033fa868776c54e3ca58b4b8",
+      "targetHash": "b9b094d75aea317c0ce5edc936f9310f19c882e387276433c6d35ce0f2c623a4",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-1",
+            "hints",
+            0
+          ],
+          "fieldHash": "e5e8b02b6448d3a8498062b81011acfc397bbfef11b7632ecd84d29279eb7b85",
+          "questionContextHash": "f44596cd60477b2831e10c4ffc4f26d845e4ce1ea1d6f29b54598f967131a067",
+          "promptHash": "94a5ca4fbb0ec76c02e997531c36fb96de179679df4706f8ab5bfe0444aa4532",
+          "answerHash": "f06bb095818fbdc358fb67267d2c3e55ef53eab8de3705906714d0333ff90d19"
+        },
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-2",
+            "hints",
+            0
+          ],
+          "fieldHash": "e5e8b02b6448d3a8498062b81011acfc397bbfef11b7632ecd84d29279eb7b85",
+          "questionContextHash": "68bc1500a251f109d441c368328251a643fce2df163fb9ed31464cabd3e1a438",
+          "promptHash": "3c8fe9093a52cd780d6d5b60a4dffe0d4ad4400230420533105890c9ded42461",
+          "answerHash": "e4c5c850fe4d0f3536f98b5b42873babbbb3aca80952fb6266868d296c4b14d3"
+        },
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-3",
+            "hints",
+            0
+          ],
+          "fieldHash": "e5e8b02b6448d3a8498062b81011acfc397bbfef11b7632ecd84d29279eb7b85",
+          "questionContextHash": "673eb3aca8f3c8d9ca3cfdbac71c0d15e7031d7f56f5ea65165d4cf46b53d589",
+          "promptHash": "5b87731dd36140b2ca9019c4aab6de95edf57f8829638babe065667708d81de0",
+          "answerHash": "abac48811644cd30c27b04a1730292e1a251e11510524db8b414aa24a6a42a6a"
+        },
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-d1",
+            "hints",
+            0
+          ],
+          "fieldHash": "e5e8b02b6448d3a8498062b81011acfc397bbfef11b7632ecd84d29279eb7b85",
+          "questionContextHash": "15b27154ae25c288c807458390ad34e5e822ce679ca8c895b0ab89d6c2f55dd7",
+          "promptHash": "65494dbbef358371c462dfa2e0266243a5118ad63e8a426d0982f07718029da7",
+          "answerHash": "fcc16199623bff7e647243201281331a3bcddbecbe98394167dce6e5985eaebc"
+        },
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-v1",
+            "hints",
+            0
+          ],
+          "fieldHash": "e5e8b02b6448d3a8498062b81011acfc397bbfef11b7632ecd84d29279eb7b85",
+          "questionContextHash": "3a63c296f775b69c217fa08db9700f755b62e9191a9262b9a769b76e3aee4f27",
+          "promptHash": "9deb7edd866d23350f7956c3e457824c2bf359b574c2dc2041f22d74c406c207",
+          "answerHash": "e52576232841e611133c39cf0b5938d450e0e350f7d0ea5a8a7b6fbf26310a83"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves multiplying by the conversion factor. All five linked contexts explicitly use larger-to-smaller conversions with factor1000 (km→m,L→mL,kg→g); not treated as universal conversion rule.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "cs",
+      "index": 980,
+      "file": "math-course-cs-0700-0999.json",
+      "sourceHash": "da4b909972428532b520a3a503ebe7d06207fe98f3ff2944e833880673cdf51b",
+      "targetHash": "23fc20a69a21d999fa7b348ee161a2c59b6a9c5c4093417b91f6fea39b3f5706",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-4",
+            "hints",
+            0
+          ],
+          "fieldHash": "7afbd87b7389ae7c2d23d7e7cc67da2ea68b9e6d85a0c421287321b7f082104d",
+          "questionContextHash": "45394a6434891d32a1271ff7c7e4675444ad8bdcbf1e512ea4595fce2de42598",
+          "promptHash": "0a9c3e460abf0e5bdc3ce1dddb47f35e387c4fc11875760582ff67be0092b0c3",
+          "answerHash": "9a2877c239e315e997993e591dfc7b2d22954460e23427613e32daca73e33a69"
+        },
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-v2",
+            "hints",
+            0
+          ],
+          "fieldHash": "7afbd87b7389ae7c2d23d7e7cc67da2ea68b9e6d85a0c421287321b7f082104d",
+          "questionContextHash": "8ee9d1fb7ac0ed9de102834d5924acf508baa22627427ceac040f8a37e1dd04a",
+          "promptHash": "caa998880f3390e71554094c53eb028b151c23882396a49375df4ed72fba3766",
+          "answerHash": "a7d6f35cb577f081210224630fec819e8aa226c210b4aa389c6f00b12adb6123"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves1m=100cm, used for mixed1m20cm or1m50cm lengths, answers120cm and150cm.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "cs",
+      "index": 985,
+      "file": "math-course-cs-0700-0999.json",
+      "sourceHash": "b15f0cae62fe1c771c02800f4974dd6b598a48eeb549d56ef0d01f1ed064d783",
+      "targetHash": "7e79a76662713ef4172be5cfa649282124d33ccfd64435a87b06d3ef3550b5a3",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-5",
+            "hints",
+            1
+          ],
+          "fieldHash": "e28636849d7f8df9d8a4cd9757e8aa8812d8089a11ee2921cf2e63e9c6edfbc8",
+          "questionContextHash": "ece33f0d980279dccec8ad847735cf89ed602a80b11289e377e3ea9024386f27",
+          "promptHash": "6ab8d6698b62e18ad2456d7e4c0e20977db86ca71ee7caf60999db02201452f2",
+          "answerHash": "abb1fcf60207f508f7d79a15bca638e62e8c248525fe88edb2f4e0333d53bddf"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Adds300m to2000m after2km conversion, giving2300m; same-unit addition retained.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "cs",
+      "index": 990,
+      "file": "math-course-cs-0700-0999.json",
+      "sourceHash": "90d486a0375bf32b2d46e3710a52d9e7670ce12a8ff3de6759bcbc86baa787c3",
+      "targetHash": "528e3f7c1571d4b451ff738fd468ac89c53fe55bd3529b747a698f45d1fda4cb",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-v1",
+            "explanation"
+          ],
+          "fieldHash": "63561c898f0bdd96c03997f7937631cf6a0f44253b700aff6bae1afc9f3cee8f",
+          "questionContextHash": "3a63c296f775b69c217fa08db9700f755b62e9191a9262b9a769b76e3aee4f27",
+          "promptHash": "9deb7edd866d23350f7956c3e457824c2bf359b574c2dc2041f22d74c406c207",
+          "answerHash": "e52576232841e611133c39cf0b5938d450e0e350f7d0ea5a8a7b6fbf26310a83"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves4×1000=4000 and4km=4000m, with exact source/canonical LaTeX.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "cs",
+      "index": 995,
+      "file": "math-course-cs-0700-0999.json",
+      "sourceHash": "0403d1885f067c6659e708548d2817d4959a06bd46493a4f400a9ec9ec9237af",
+      "targetHash": "26be1f6ce704150aa66b2a3ab5b4e1bf167be5ca03b07d11f8b79a18ba30f1ea",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-up-l1a",
+            "prompt"
+          ],
+          "fieldHash": "49812bf032b8856b24e69f2490fa48a8fa644affd7c81e6021b0d5859995f675",
+          "questionContextHash": "4781e5996066e9bae88e90763611aae80c076d75f2f53d635e22c42549254904",
+          "promptHash": "49812bf032b8856b24e69f2490fa48a8fa644affd7c81e6021b0d5859995f675",
+          "answerHash": "5573a6ab84576fabe2773fe447659a44ea7e054009c93c82947eaf3f61fdce95"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves12 pencils per box,4 boxes and15 given away; remaining4×12−15=33, with numeric answer request.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "cs",
+      "index": 998,
+      "file": "math-course-cs-0700-0999.json",
+      "sourceHash": "358bb4c9e4af3aa4a608c9da2badd863fa2c14f93b0a80df0591b86f86e62e21",
+      "targetHash": "6e889f08c36115ee32108d05d331d89df54b0a1d486576ad461e2a38aa48fb92",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-up-l1a",
+            "hints",
+            1
+          ],
+          "fieldHash": "53ba0364693e622d13d74ea34c89899a4ded15e983ca97fdbd453f506bef70e9",
+          "questionContextHash": "4781e5996066e9bae88e90763611aae80c076d75f2f53d635e22c42549254904",
+          "promptHash": "49812bf032b8856b24e69f2490fa48a8fa644affd7c81e6021b0d5859995f675",
+          "answerHash": "5573a6ab84576fabe2773fe447659a44ea7e054009c93c82947eaf3f61fdce95"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves subtracting15 given-away pencils from total48, not subtracting total from15.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "cs",
+      "index": 999,
+      "file": "math-course-cs-0700-0999.json",
+      "sourceHash": "77365faadc9d2823e392489005e43f2eabc53ba2b326835e40885b48b0a4addc",
+      "targetHash": "f10843759f6806d54dec0e926de52fe481f9f566c9a78dcce1556c1fa13649b4",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-up-l1b",
+            "prompt"
+          ],
+          "fieldHash": "9f78e292521b36d636b0a228693639ba5d55f4b20828db0c17d909c9c02c5aef",
+          "questionContextHash": "6604caad449c9815c5b6fcecd41015a8714df7dee115553e66b0554d80b87aa8",
+          "promptHash": "9f78e292521b36d636b0a228693639ba5d55f4b20828db0c17d909c9c02c5aef",
+          "answerHash": "bd3c55e2531467cc941d5a04a6f77751cbdb0df6aad110e9bd32f73d7c93faaf"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves same unknown number from6x=42, then asks3x=21, not replacement of multiplier in the first product.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "hu",
+      "index": 700,
+      "file": "math-course-hu-0700-0999.json",
+      "sourceHash": "4ba6e6a33fa7e1fbabe2049e03132b2c8e5161c2fa0c021fd3d74206ec718190",
+      "targetHash": "8c31048335da05e9c6db9935dea06824c32e7bb81f644dda4a1e644a1a690864",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-mul-3",
+            "hints",
+            0
+          ],
+          "fieldHash": "d086d57cb00fdcddee095a0ae86f8f427551b7bd2277db107d9733e6a7bf4c53",
+          "questionContextHash": "75e21dbd41769156897db1be24b4009645c99f869ef336a90ee1182744fdd399",
+          "promptHash": "4845664434d40e1dceab5e7f9678494dd832128a073eba58e50f351e0f0a4952",
+          "answerHash": "ff2e1158a6fd35f7ec75404debf9b3f7ddb3943d2d5398b07a69c63a69c2c4e9"
+        },
+        {
+          "path": [
+            "questions",
+            "m-e2-mul-v2",
+            "hints",
+            0
+          ],
+          "fieldHash": "d086d57cb00fdcddee095a0ae86f8f427551b7bd2277db107d9733e6a7bf4c53",
+          "questionContextHash": "86b059c56ffdd61f164b9035b607dfa57efef8d345200ec437a469761ac12bd4",
+          "promptHash": "9f6d3b69e59f0285111e49ee4c95f3bf5d459f6c8ad47050dc6bd4807c19436a",
+          "answerHash": "ff2e1158a6fd35f7ec75404debf9b3f7ddb3943d2d5398b07a69c63a69c2c4e9"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Repeated addition of the same quantity is retained; contextual plates3×4 or4×3 both give12.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "hu",
+      "index": 705,
+      "file": "math-course-hu-0700-0999.json",
+      "sourceHash": "3d5a426b64ef0de56190dbdb0544580eb408eecea72eb62e83e4d019acca819d",
+      "targetHash": "c6f3ae60d474cbc38c039ed2c6ee53825bfce622859652970527b198737739bb",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-mul-4",
+            "hints",
+            1
+          ],
+          "fieldHash": "b629835e65ced8e586d99db7ca4bab8310005e8b6267e53bc2fd85bf7a1a1bf5",
+          "questionContextHash": "8f3e544c7c175057f64f49d5310af7dd8bce131c3dedee68d4c074a8ad289734",
+          "promptHash": "56fe3f8792f568bdd855fb9fab175233254177465912cd268104c278211c2ee2",
+          "answerHash": "c42301051b567dd2c143d6298d4cd7d8fa07d6db135492c5b7a06c749501717b"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Repeated equal-addend count is the multiplier in5+5+5+5=5×4, so intended count is4 summands.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "hu",
+      "index": 710,
+      "file": "math-course-hu-0700-0999.json",
+      "sourceHash": "2d547cec4386e2f6a4b5ac3c7dc584616c0e501d9ffb8c0bcd075237552c9468",
+      "targetHash": "8175620f80847b8028084278cfc37d212d75916ca1073b4098de13a210bca165",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-mul-d1",
+            "prompt"
+          ],
+          "fieldHash": "6c44a5452dc0101a56b5e152c4db60263b4c8951af8503c8c1cc566848b61350",
+          "questionContextHash": "4da6247857244df864b27a6f898fd71bc5ea69e64a76ddf8ea9faa7ea4e19430",
+          "promptHash": "6c44a5452dc0101a56b5e152c4db60263b4c8951af8503c8c1cc566848b61350",
+          "answerHash": "b16604dc6da1d437ddf97c3894fcfe976eb95118d185cf37716b92bcbebe4d17"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Asks5×3, with15 as contextual answer. Exact LaTeX content matches English and canonical Korean.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "hu",
+      "index": 725,
+      "file": "math-course-hu-0700-0999.json",
+      "sourceHash": "fe1abeb31e73b1b874157cebd211bbfa92d7308883469d3a10fc373342f3abd5",
+      "targetHash": "e9a23e29fb5ed34b53febe004f54415b7848be6acb8efaa42ad2d24faa7c52ed",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-pattern-2",
+            "prompt"
+          ],
+          "fieldHash": "68cc0827efe8b31a78cd0aa067045958b7e39da658d8ef192e134c087a15a79e",
+          "questionContextHash": "e9f06ea0f3fe70f74a15a69c79465ae5afb2ec1143c456bb5605b50364df30cd",
+          "promptHash": "68cc0827efe8b31a78cd0aa067045958b7e39da658d8ef192e134c087a15a79e",
+          "answerHash": "b51db7f63b0c70e057fc3024898bfdfdc09cfb1eebc3dce064c77deb01db4057"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Requests next number in5,10,15,□; step+5 and answer20 remain implicit as in source. Exact square command retained.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "hu",
+      "index": 740,
+      "file": "math-course-hu-0700-0999.json",
+      "sourceHash": "bc23e815e114e505676fe3c0b160384574b565eb399a367101f7a6536dfc04ab",
+      "targetHash": "cfe2747020855153025a1da2473f1f4521f6de87219f10c6633b46884913a88f",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-pattern-v1",
+            "explanation"
+          ],
+          "fieldHash": "ea988faa56fda66f53a02f0aa0dd673bc121fb44a09c0ca8f112f0c25489394f",
+          "questionContextHash": "bef84e2e2ea66b8be35a5f071e6f02990998debda05fee4431109b0c92515e8a",
+          "promptHash": "2e46d9cbbc8cfc8fe1036c09a85744de0368bd44841c64efc7d3d15f37a1b46d",
+          "answerHash": "0dc075b01935d1af00e10dd29a3657c7e76c6c1f768e844e75e9060f21df727a"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves increment4 and12+4=16, matching contextual pattern4,8,12.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "hu",
+      "index": 758,
+      "file": "math-course-hu-0700-0999.json",
+      "sourceHash": "8471a8835fe8253aaad6e74a03c0de4521104d5c57f1d62017c8299ec47b4e01",
+      "targetHash": "9af3390b9318585212c7ba290d028db158c87b16fbc241b44844e7d7f17dcdf1",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-place-4",
+            "hints",
+            1
+          ],
+          "fieldHash": "c59e57c30150a763420ec3a6299e3aa5136e18454f83dce27e9d59eb9dcc6d87",
+          "questionContextHash": "941ceaebc731a168e3059d8e4ea226745264535a4db362274dc626d25664d52b",
+          "promptHash": "38c57fc6571d5d845630faa34f14062da6dc94b3bf7e5a9c038d51cc58ec2e74",
+          "answerHash": "4301007410f0afcbc5a0e9d5dc3dcbf485f62d9902f3f3f58cc7ebb6c65e7d88"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "In the actual29+1 context, carrying turns29 to30; ones9 and tens increase by one are correct. Not interpreted as unconditional behaviour without adding1.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "hu",
+      "index": 770,
+      "file": "math-course-hu-0700-0999.json",
+      "sourceHash": "92bbbcf980976543af086a12c0e3c499e1ae972efc8146e548075bb4327c27f7",
+      "targetHash": "ac2bfee60ee6bed5b899e84ff1ba45a240e34c364f6b9fcede9a6983d54a6542",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-place-v2",
+            "hints",
+            1
+          ],
+          "fieldHash": "ff80cfce216c920b1a86e28c6d942667ae77ae36e9c6e99cdbc826ec8946825b",
+          "questionContextHash": "193544e117d204e68099b9e8e6d4b1687d9ed5308207b177f3fc1f73fde13508",
+          "promptHash": "1308b713d88d1754dc187204bb34e554f8be2f525af6625b57df3bae8353ca20",
+          "answerHash": "60c2f07322d2e129befa58c07ebeeb2e447ee340ab25ee3d65e3a46104d9979d"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Retains70+4=74 for seven tens and four ones.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "hu",
+      "index": 790,
+      "file": "math-course-hu-0700-0999.json",
+      "sourceHash": "9a5f80f85ffa18c07529585af379b3f0010ee3132eecd90c1d8dd03024084ba6",
+      "targetHash": "4b6aa26d5cc74ab89d8439aaa488a0189dc8e28e8ec3f4207d517df9a939f6bd",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-time-5",
+            "hints",
+            1
+          ],
+          "fieldHash": "a09980bd979c7a0b39849d5623a354c219d117cdaf85f8999c9260cd77da9f1a",
+          "questionContextHash": "98367fb9797b7096886ba009e56b1aa40850c7151ebb7235fd06e35b542e791c",
+          "promptHash": "b481b4dc999cf772d3ad4a8b0ff23feda9db9ab39c557aaf09574aeb81ba1e81",
+          "answerHash": "4301007410f0afcbc5a0e9d5dc3dcbf485f62d9902f3f3f58cc7ebb6c65e7d88"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Retains minute calculation20+10=30 for2:20 plus10minutes; no hour/minute swap.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "hu",
+      "index": 810,
+      "file": "math-course-hu-0700-0999.json",
+      "sourceHash": "1e76b8f30a159bbe9bebe8aa626bcfcdf540bd1505df5aa6b237143a973f8e9c",
+      "targetHash": "de8855c9f4e39c96c43d18fa7e3461a087c7402b764447bd15cca18212c2ddff",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-up-l2a",
+            "hints",
+            1
+          ],
+          "fieldHash": "7854485381a5f782cf7e8bbfbbb19381666812d888ad15e1fad4996392ecf1b8",
+          "questionContextHash": "33178c9a44bdbbc7bbdf5597f77c6d88cbd18839d2b069afa785de6d3824ac77",
+          "promptHash": "92fda68fa55a9b8d08ba443c0fcb93acc3cec7ea2632b3ca0984e88295127e81",
+          "answerHash": "68205196e7298c8461433bb47e8d3cc3bd38818aac378da909abb68990283e87"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves subtracting read-page total from100, with context38+27 and unread35; subtraction direction correct.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "hu",
+      "index": 830,
+      "file": "math-course-hu-0700-0999.json",
+      "sourceHash": "02a7516f62ceb2464f0fcf0bb92d5ab1e84ac96d96f11972cd024e978b8a73b5",
+      "targetHash": "02a7516f62ceb2464f0fcf0bb92d5ab1e84ac96d96f11972cd024e978b8a73b5",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e2-up-l4b",
+            "hints",
+            1
+          ],
+          "fieldHash": "feedbf27d3f1530826045da516d145de2a13decd31f2c439695a73f43c25d861",
+          "questionContextHash": "1b6148405132b10674aa81d24ff0551ed9151de382e6bc6effa86cd3eb158a2b",
+          "promptHash": "ece79e4a84663d2593f47a2c1a8f42526b73e2ed1914ce8a743fff4696cbee4d",
+          "answerHash": "4301007410f0afcbc5a0e9d5dc3dcbf485f62d9902f3f3f58cc7ebb6c65e7d88"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves exact1m=100cm conversion in150cm minus1m20cm context, answer30cm.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "hu",
+      "index": 850,
+      "file": "math-course-hu-0700-0999.json",
+      "sourceHash": "eddb35c1e167787400943eba2835a85078c285a8af44553706c9953356044de3",
+      "targetHash": "0b49d1eec5e241c8993edbb04a106aad98967ff394a5014032806b90e3494f76",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-data-4",
+            "prompt"
+          ],
+          "fieldHash": "2f635abc3d41691ae765577d48949c2d99ab6ea230b25042d70db0418b7297ed",
+          "questionContextHash": "65f10b74c3f761701bbfbc0730a85c39fc3840553b6708347242d18ab64f3bf7",
+          "promptHash": "2f635abc3d41691ae765577d48949c2d99ab6ea230b25042d70db0418b7297ed",
+          "answerHash": "2c08289b5d2b3fc04da6b96ddf7ae98e98e370cfa8c4dc286b74251ee3ab60a0"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves fruit-count correspondence apple7,banana5,grape9,tangerine4 and asks minimum preference, not maximum. Correct option remains tangerine.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "hu",
+      "index": 870,
+      "file": "math-course-hu-0700-0999.json",
+      "sourceHash": "3fd7fd52841e5f6448adf8c374267449a790e60661175c9cd701033bf1ee0ba8",
+      "targetHash": "3fd7fd52841e5f6448adf8c374267449a790e60661175c9cd701033bf1ee0ba8",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-data-v2",
+            "explanation"
+          ],
+          "fieldHash": "3fd7fd52841e5f6448adf8c374267449a790e60661175c9cd701033bf1ee0ba8",
+          "questionContextHash": "32a75b4c7b2d8889d22e2056ff66554825bc52e1f7728781dbe4b739f8e717c3",
+          "promptHash": "a06ec705bdeb1082359cf95a221ec5c912ce5ee138b56909fadad081a008085e",
+          "answerHash": "a6284c165059c1d08e31892fbb9cf832f860282d5f973086ecdb226cbe2d38bc"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves7−4=3 as difference between apple and tangerine counts.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "hu",
+      "index": 879,
+      "file": "math-course-hu-0700-0999.json",
+      "sourceHash": "f0431afa6df6faaa12f6d855d53f5572e7d864f808d6ea697a2aeb9a1defc5af",
+      "targetHash": "02f976308b32a3b81db54caeefabbe96e0c02ccced0b234875e6f3f20dd1c3bb",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-frac-3",
+            "prompt"
+          ],
+          "fieldHash": "ddb327ebc46584e36fb01742d461837668df065c238de70605299cd6a873e3b5",
+          "questionContextHash": "3132bbe1fad0d58e20aee97f840951c61d17a8500bcc0c9682b5d60adefc41ea",
+          "promptHash": "ddb327ebc46584e36fb01742d461837668df065c238de70605299cd6a873e3b5",
+          "answerHash": "2c08289b5d2b3fc04da6b96ddf7ae98e98e370cfa8c4dc286b74251ee3ab60a0"
+        },
+        {
+          "path": [
+            "questions",
+            "m-e3-frac-v2",
+            "prompt"
+          ],
+          "fieldHash": "ddb327ebc46584e36fb01742d461837668df065c238de70605299cd6a873e3b5",
+          "questionContextHash": "e60a61842d707fcac67fc27b7ea47221f78b5a494525ca25f2dd3ab2cf7dac5c",
+          "promptHash": "ddb327ebc46584e36fb01742d461837668df065c238de70605299cd6a873e3b5",
+          "answerHash": "9932ad61254d9c6c12cb692dfaf23fc639116c9c27738e9e3e951fe1e67c0075"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Asks largest of three fractions, preserving comparison direction for both linked option sets; no options reordered or answers inserted.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "hu",
+      "index": 890,
+      "file": "math-course-hu-0700-0999.json",
+      "sourceHash": "fc7331217676d9eee3cd5cd2d517417bcc5c39f50eb4524a4ae9c4ce4fe7b833",
+      "targetHash": "20e9955c8fccc6e265b4523e95f0066b950b747e1213f1d143a3219cbb79d247",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-frac-5",
+            "hints",
+            1
+          ],
+          "fieldHash": "73615a2242393ebac65354fa8120bba5856fb5433188fc0475d1d1dfb7badc67",
+          "questionContextHash": "638d972fd2c2dfc9a5a94c8b5b2f82b74fa8bcc1ca42688409cc410804e017ce",
+          "promptHash": "33071232e7113c92afdad5cdeae046397e8fb714e29ad558f8ac3c99295ac80d",
+          "answerHash": "34bdec415a063a6f257ced85a4c8db2fad52d60dcd211e1e98f8ba75051768d3"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Retains five copies of1/8, corresponding to5/8=(1/8)×□ and□=5.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "hu",
+      "index": 910,
+      "file": "math-course-hu-0700-0999.json",
+      "sourceHash": "cd8fa67443e745bc99a5d34b7264f23d5685b753cb19f5955d209cb6956ac771",
+      "targetHash": "c9c09f2630898503fdccb93251ab72ad97b9938481b4fc61e20155ea6d78719c",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-geo-3",
+            "hints",
+            1
+          ],
+          "fieldHash": "8a6eb0e5639767b8bfb2e48c2d9423d3244b21ddd4dab2d59448e87bead6cce4",
+          "questionContextHash": "a2f8b350d1ebf1153a7f27f1693bd638d832eca604ac7eff8d7dea4bf70a1230",
+          "promptHash": "1f92a53ce1f304efa5bbf0db501c91edd1aa319b75340fce322fe168fe7bf42a",
+          "answerHash": "486c301b28cce8f0a6381624515b889736c7c4d272c112f6bfba7eda9f8b4883"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Retains5×2 for diameter of radius5cm; no area/circumference confusion.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "hu",
+      "index": 930,
+      "file": "math-course-hu-0700-0999.json",
+      "sourceHash": "5a242ea3471383e1621588a491e959adf9452452c6266d59260fa9501708cadb",
+      "targetHash": "383af9925b4569b6bdb947810fec98900196f141119d1beb01ccc441e4fcaf2d",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-geo-v2",
+            "hints",
+            0
+          ],
+          "fieldHash": "9bf5c0153d4ab8472125a406905ef2e6680e41f312b63703d1a397de1eceb47e",
+          "questionContextHash": "863c37c5030282ca61d6ca78acf982cd43d9fcdfe259ae742b7e8d634a4a4627",
+          "promptHash": "de32a36b2a545186d51835d912aec26098cdb464f839f332348064f99b329d69",
+          "answerHash": "c42301051b567dd2c143d6298d4cd7d8fa07d6db135492c5b7a06c749501717b"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Directs looking at every square angle, consistent with four right angles in contextual answer.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "hu",
+      "index": 950,
+      "file": "math-course-hu-0700-0999.json",
+      "sourceHash": "e7c9ed9c1a440231cd294b4c18e10e7214530e89057ceb0872698ffeb36e5ea0",
+      "targetHash": "0b4f6742a35870ef0572bcc1916f37bf73cce97431d9ea6cd5fa5d3366c60fcc",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-muldiv-5",
+            "hints",
+            1
+          ],
+          "fieldHash": "2bdf2a4a844384e34b779d5f5d80b69ab5ea533408ef0707ec7aa4767e4b1d31",
+          "questionContextHash": "66ccc4f647a954d8b3009ac9c527739e273726a4f4f8b2f3d3dcc1ca66fea5f4",
+          "promptHash": "f6ef82ad9d2313e8abb48c5e95465c3ea8dcfcc04ac20d6ef99fad5942cbd0b0",
+          "answerHash": "cbf614d0938d70d41a86fb280fd6364c32eeb14e09e4c52a7ef4c228b47d15ca"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Retains23 added three times, giving69 for23×3.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "hu",
+      "index": 970,
+      "file": "math-course-hu-0700-0999.json",
+      "sourceHash": "dfc4c243168a3354f6b2abe9a469dfb469224c38033fa868776c54e3ca58b4b8",
+      "targetHash": "af027b9847fb1906334a9e1d5980f2a853c13d8e11bb4f7b6252b64a06dcf492",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-1",
+            "hints",
+            0
+          ],
+          "fieldHash": "e5e8b02b6448d3a8498062b81011acfc397bbfef11b7632ecd84d29279eb7b85",
+          "questionContextHash": "f44596cd60477b2831e10c4ffc4f26d845e4ce1ea1d6f29b54598f967131a067",
+          "promptHash": "94a5ca4fbb0ec76c02e997531c36fb96de179679df4706f8ab5bfe0444aa4532",
+          "answerHash": "f06bb095818fbdc358fb67267d2c3e55ef53eab8de3705906714d0333ff90d19"
+        },
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-2",
+            "hints",
+            0
+          ],
+          "fieldHash": "e5e8b02b6448d3a8498062b81011acfc397bbfef11b7632ecd84d29279eb7b85",
+          "questionContextHash": "68bc1500a251f109d441c368328251a643fce2df163fb9ed31464cabd3e1a438",
+          "promptHash": "3c8fe9093a52cd780d6d5b60a4dffe0d4ad4400230420533105890c9ded42461",
+          "answerHash": "e4c5c850fe4d0f3536f98b5b42873babbbb3aca80952fb6266868d296c4b14d3"
+        },
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-3",
+            "hints",
+            0
+          ],
+          "fieldHash": "e5e8b02b6448d3a8498062b81011acfc397bbfef11b7632ecd84d29279eb7b85",
+          "questionContextHash": "673eb3aca8f3c8d9ca3cfdbac71c0d15e7031d7f56f5ea65165d4cf46b53d589",
+          "promptHash": "5b87731dd36140b2ca9019c4aab6de95edf57f8829638babe065667708d81de0",
+          "answerHash": "abac48811644cd30c27b04a1730292e1a251e11510524db8b414aa24a6a42a6a"
+        },
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-d1",
+            "hints",
+            0
+          ],
+          "fieldHash": "e5e8b02b6448d3a8498062b81011acfc397bbfef11b7632ecd84d29279eb7b85",
+          "questionContextHash": "15b27154ae25c288c807458390ad34e5e822ce679ca8c895b0ab89d6c2f55dd7",
+          "promptHash": "65494dbbef358371c462dfa2e0266243a5118ad63e8a426d0982f07718029da7",
+          "answerHash": "fcc16199623bff7e647243201281331a3bcddbecbe98394167dce6e5985eaebc"
+        },
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-v1",
+            "hints",
+            0
+          ],
+          "fieldHash": "e5e8b02b6448d3a8498062b81011acfc397bbfef11b7632ecd84d29279eb7b85",
+          "questionContextHash": "3a63c296f775b69c217fa08db9700f755b62e9191a9262b9a769b76e3aee4f27",
+          "promptHash": "9deb7edd866d23350f7956c3e457824c2bf359b574c2dc2041f22d74c406c207",
+          "answerHash": "e52576232841e611133c39cf0b5938d450e0e350f7d0ea5a8a7b6fbf26310a83"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves multiplying by the conversion factor. All five linked contexts explicitly use larger-to-smaller conversions with factor1000 (km→m,L→mL,kg→g); not treated as universal conversion rule.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "hu",
+      "index": 980,
+      "file": "math-course-hu-0700-0999.json",
+      "sourceHash": "da4b909972428532b520a3a503ebe7d06207fe98f3ff2944e833880673cdf51b",
+      "targetHash": "10fdc5efe9e0f9c5ac5695a6eba1f0fdce0ac8ed7840646fc16a13587afde11d",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-4",
+            "hints",
+            0
+          ],
+          "fieldHash": "7afbd87b7389ae7c2d23d7e7cc67da2ea68b9e6d85a0c421287321b7f082104d",
+          "questionContextHash": "45394a6434891d32a1271ff7c7e4675444ad8bdcbf1e512ea4595fce2de42598",
+          "promptHash": "0a9c3e460abf0e5bdc3ce1dddb47f35e387c4fc11875760582ff67be0092b0c3",
+          "answerHash": "9a2877c239e315e997993e591dfc7b2d22954460e23427613e32daca73e33a69"
+        },
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-v2",
+            "hints",
+            0
+          ],
+          "fieldHash": "7afbd87b7389ae7c2d23d7e7cc67da2ea68b9e6d85a0c421287321b7f082104d",
+          "questionContextHash": "8ee9d1fb7ac0ed9de102834d5924acf508baa22627427ceac040f8a37e1dd04a",
+          "promptHash": "caa998880f3390e71554094c53eb028b151c23882396a49375df4ed72fba3766",
+          "answerHash": "a7d6f35cb577f081210224630fec819e8aa226c210b4aa389c6f00b12adb6123"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves1m=100cm, used for mixed1m20cm or1m50cm lengths, answers120cm and150cm.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "hu",
+      "index": 985,
+      "file": "math-course-hu-0700-0999.json",
+      "sourceHash": "b15f0cae62fe1c771c02800f4974dd6b598a48eeb549d56ef0d01f1ed064d783",
+      "targetHash": "a0ecaec4d7be18f718f4e27a22b6d7ab55e1742da9116cb7d2337279d7c70f20",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-5",
+            "hints",
+            1
+          ],
+          "fieldHash": "e28636849d7f8df9d8a4cd9757e8aa8812d8089a11ee2921cf2e63e9c6edfbc8",
+          "questionContextHash": "ece33f0d980279dccec8ad847735cf89ed602a80b11289e377e3ea9024386f27",
+          "promptHash": "6ab8d6698b62e18ad2456d7e4c0e20977db86ca71ee7caf60999db02201452f2",
+          "answerHash": "abb1fcf60207f508f7d79a15bca638e62e8c248525fe88edb2f4e0333d53bddf"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Adds300m to2000m after2km conversion, giving2300m; same-unit addition retained.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "hu",
+      "index": 990,
+      "file": "math-course-hu-0700-0999.json",
+      "sourceHash": "90d486a0375bf32b2d46e3710a52d9e7670ce12a8ff3de6759bcbc86baa787c3",
+      "targetHash": "6d73e5e5c6312c4c5b034df8efb3ba6af979b870f91c6748bc5686cdf70544cc",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-unit-v1",
+            "explanation"
+          ],
+          "fieldHash": "63561c898f0bdd96c03997f7937631cf6a0f44253b700aff6bae1afc9f3cee8f",
+          "questionContextHash": "3a63c296f775b69c217fa08db9700f755b62e9191a9262b9a769b76e3aee4f27",
+          "promptHash": "9deb7edd866d23350f7956c3e457824c2bf359b574c2dc2041f22d74c406c207",
+          "answerHash": "e52576232841e611133c39cf0b5938d450e0e350f7d0ea5a8a7b6fbf26310a83"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves4×1000=4000 and4km=4000m, with exact source/canonical LaTeX.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "hu",
+      "index": 995,
+      "file": "math-course-hu-0700-0999.json",
+      "sourceHash": "0403d1885f067c6659e708548d2817d4959a06bd46493a4f400a9ec9ec9237af",
+      "targetHash": "3d1488ba0e9897cdef1b65cf520ae4230321c93d0cdf3f132bcb78323e9c0aa1",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-up-l1a",
+            "prompt"
+          ],
+          "fieldHash": "49812bf032b8856b24e69f2490fa48a8fa644affd7c81e6021b0d5859995f675",
+          "questionContextHash": "4781e5996066e9bae88e90763611aae80c076d75f2f53d635e22c42549254904",
+          "promptHash": "49812bf032b8856b24e69f2490fa48a8fa644affd7c81e6021b0d5859995f675",
+          "answerHash": "5573a6ab84576fabe2773fe447659a44ea7e054009c93c82947eaf3f61fdce95"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves12 pencils per box,4 boxes and15 given away; remaining4×12−15=33, with numeric answer request.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "hu",
+      "index": 998,
+      "file": "math-course-hu-0700-0999.json",
+      "sourceHash": "358bb4c9e4af3aa4a608c9da2badd863fa2c14f93b0a80df0591b86f86e62e21",
+      "targetHash": "33fe0e0ba3cef05a29e7269213b713dc0b25c48eafbc4358d9f259c64b134d61",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-up-l1a",
+            "hints",
+            1
+          ],
+          "fieldHash": "53ba0364693e622d13d74ea34c89899a4ded15e983ca97fdbd453f506bef70e9",
+          "questionContextHash": "4781e5996066e9bae88e90763611aae80c076d75f2f53d635e22c42549254904",
+          "promptHash": "49812bf032b8856b24e69f2490fa48a8fa644affd7c81e6021b0d5859995f675",
+          "answerHash": "5573a6ab84576fabe2773fe447659a44ea7e054009c93c82947eaf3f61fdce95"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves subtracting15 given-away pencils from total48, not subtracting total from15.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    },
+    {
+      "locale": "hu",
+      "index": 999,
+      "file": "math-course-hu-0700-0999.json",
+      "sourceHash": "77365faadc9d2823e392489005e43f2eabc53ba2b326835e40885b48b0a4addc",
+      "targetHash": "4217eea74b74ae7d22a7200ad516ea8dd3211bb46bf58cc128790d4f255248d4",
+      "canonicalContexts": [
+        {
+          "path": [
+            "questions",
+            "m-e3-up-l1b",
+            "prompt"
+          ],
+          "fieldHash": "9f78e292521b36d636b0a228693639ba5d55f4b20828db0c17d909c9c02c5aef",
+          "questionContextHash": "6604caad449c9815c5b6fcecd41015a8714df7dee115553e66b0554d80b87aa8",
+          "promptHash": "9f78e292521b36d636b0a228693639ba5d55f4b20828db0c17d909c9c02c5aef",
+          "answerHash": "bd3c55e2531467cc941d5a04a6f77751cbdb0df6aad110e9bd32f73d7c93faaf"
+        }
+      ],
+      "verdict": "no_material_translation_issue_found",
+      "reason": "Preserves same unknown number from6x=42, then asks3x=21, not replacement of multiplier in the first product.",
+      "genderCheck": "No named-person gender setting occurs in sampled fields. Generic learner/group grammatical forms are not treated as factual gender assignments; no source person gender inferred.",
+      "structuralDiagnostics": [],
+      "suggestedPatch": null
+    }
+  ]
+}
