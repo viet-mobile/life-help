@@ -12,7 +12,7 @@ function useMotionLabels() {
     let active = true;
     setLabels(null);
     (async () => {
-      const index = await fetch("/math-motion/i18n/public/index.json").then(r => { if (!r.ok) throw Error("index"); return r.json(); });
+      const index = await fetch("/math-motion/i18n/public/index.json?v=redball-20261021").then(r => { if (!r.ok) throw Error("index"); return r.json(); });
       const record = index.locales[locale];
       if (!record) return;
       const bytes = await fetch("/math-motion/" + record.path).then(r => { if (!r.ok) throw Error("pack"); return r.arrayBuffer(); });
@@ -41,5 +41,5 @@ export function MathMotion() {
   const labels = useMotionLabels();
   const query = new URLSearchParams({ lang: locale });
   if (state.profile?.grade) query.set("grade", state.profile.grade);
-  return <iframe title={labels?.brand ?? "MOA / Mathematics"} src={`/math-motion/index.html?${query}`} style={{ width: "100%", minHeight: "85dvh", border: 0, borderRadius: 16 }} allow="fullscreen" />;
+  return <iframe title={labels?.brand ?? "MATH.LIFE.HELP"} src={`/math-motion/index.html?v=redball-20261021&${query}`} style={{ width: "100%", minHeight: "85dvh", border: 0, borderRadius: 16 }} allow="fullscreen" />;
 }

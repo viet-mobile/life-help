@@ -33,6 +33,23 @@ describe("math motion assets", () => {
    expect(e.nodes).toBeUndefined();
   }
  });
+ it("serves the new mascot media with matching video hashes and cache revision", () => {
+  const report = read("media-checks.json");
+  expect(report.fullDecode).toBe("PASS");
+  expect(report.baseVideos).toBe(455);
+  expect(report.localizedNeutralVideos).toBe(193);
+  expect(report.posterCount).toBe(3240);
+  expect(report.mathSceneNodesUnchanged).toBe(true);
+  expect(report.curriculumMetadataUnchanged).toBe(true);
+  const data = read("episodes.public.json"), overlays = read("i18n/public/overlays.json");
+  expect(data.mediaVersion).toBe("redball-20261021");
+  for (const e of data.episodes) {
+   const actual = crypto.createHash("sha256").update(fs.readFileSync(path.join(root, e.video))).digest("hex");
+   expect(actual).toBe(e.renderedSHA256);
+   if (overlays[e.id]) expect(overlays[e.id].sourceVideoSHA256).toBe(actual);
+  }
+  expect(fs.readFileSync(path.join(root, "index.html"), "utf8")).toContain('mediaVersion="redball-20261021"');
+ });
  it("does not publish private authoring or translation inputs", () => {
   for (const file of ["episodes.internal.json", "render-scenes.json", "i18n/source-catalog.json", "i18n/sg-authored.tsv"])
    expect(fs.existsSync(path.join(root, file))).toBe(false);
