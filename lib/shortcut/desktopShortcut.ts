@@ -80,6 +80,14 @@ export const COUNTRY_KOREAN_NAMES: Record<string, string> = {
   venezuela: "베네수엘라",
   kenya: "케냐",
   argentina: "아르헨티나",
+  romania: "루마니아",
+  finland: "핀란드",
+  czechia: "체코",
+  hungary: "헝가리",
+  zambia: "잠비아",
+  uganda: "우간다",
+  congo: "콩고공화국",
+
 };
 
 /**

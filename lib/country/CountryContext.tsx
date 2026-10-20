@@ -81,6 +81,14 @@ const COUNTRY_NAMES: Record<string, string> = {
   venezuela: "VENEZUELA",
   kenya: "KENYA",
   argentina: "ARGENTINA",
+  romania: "ROMANIA",
+  finland: "FINLAND",
+  czechia: "CZECHIA",
+  hungary: "HUNGARY",
+  zambia: "ZAMBIA",
+  uganda: "UGANDA",
+  congo: "REPUBLIC OF THE CONGO",
+
 };
 
 const PORTAL_DISPLAY_NAMES: Record<string, string> = {

@@ -1,3 +1,5 @@
+import expandedRegionUITexts from "./expandedRegionUITexts.json";
+
 /**
  * Multilingual UI Translations for Region Selection and Display (all supported languages incl. Urdu)
  * 
@@ -35,6 +37,7 @@ export interface RegionCategoryHeaders {
 }
 
 export const REGION_UI_TRANSLATIONS: Record<string, RegionUITexts> = {
+  ...expandedRegionUITexts,
   ko: {
     countryCategory: "국가",
     yourLocation: "서비스 받을 곳 · 시·도 / 구·군·시 / 동·읍·면",

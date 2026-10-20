@@ -100,6 +100,8 @@ export function resolveLocaleFromPath(pathname?: string | null): Locale | null {
   const lower = firstSegment.toLowerCase();
 
   // Explicit mappings required by LIFE.HELP routing
+  if (lower === "sg") return "fr";
+  if (lower === "fil") return "tl";
   if (lower === "zt") return "zh-Hant";
   if (lower === "zs" || lower === "zh") return "zh-Hans";
 
@@ -174,7 +176,9 @@ function getClientLocaleSnapshot(): Locale {
   // 2. A language the user explicitly picked (setLocale is the only writer of STORAGE_KEY) is kept across
   //    navigation and across country domains: the domain default never resets a manual choice.
   try {
-    const saved = localStorage.getItem(STORAGE_KEY) || localStorage.getItem(LEGACY_STORAGE_KEY);
+    const stored = localStorage.getItem(STORAGE_KEY) || localStorage.getItem(LEGACY_STORAGE_KEY);
+    const saved = stored === "sg" ? "fr" : stored;
+    if (stored === "sg") localStorage.setItem(STORAGE_KEY, "fr");
     if (saved && isValidLocale(saved)) {
       cachedLocale = saved;
       return saved;

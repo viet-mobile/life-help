@@ -8,7 +8,7 @@ const run = async (host: string, path = "/") => proxy(new NextRequest(`https://$
 const hdr = (res: Response, h: string) => res.headers.get(`x-middleware-request-${h}`);
 
 describe("integrated host routing", () => {
-  for (const [host, lang, country] of [["pakistan.life.help", "ur", "pakistan"], ["centralafrica.life.help", "sg", "centralafrica"], ["kenya.life.help", "sw", "kenya"], ["korea.life.help", "ko", "korea"]]) {
+  for (const [host, lang, country] of [["pakistan.life.help", "ur", "pakistan"], ["centralafrica.life.help", "fr", "centralafrica"], ["kenya.life.help", "sw", "kenya"], ["korea.life.help", "ko", "korea"], ["romania.life.help", "ro", "romania"], ["finland.life.help", "fi", "finland"], ["czechia.life.help", "cs", "czechia"], ["hungary.life.help", "hu", "hungary"], ["zambia.life.help", "en", "zambia"], ["uganda.life.help", "en", "uganda"], ["congo.life.help", "fr", "congo"]]) {
     it(`${host} -> default language ${lang}, a registry locale, country ${country}`, async () => {
       const res = await run(host);
       expect(hdr(res, "x-life-language")).toBe(lang);

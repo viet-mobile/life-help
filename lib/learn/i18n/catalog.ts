@@ -45,7 +45,6 @@ const LOADERS: Record<Exclude<LearnLocale, "ko">, () => Promise<{ default: Messa
   el: () => import("./locales/el.json"),
   pt: () => import("./locales/pt.json"),
   ur: () => import("./locales/ur.json"),
-  sg: () => import("./locales/sg.json"),
   sw: () => import("./locales/sw.json"),
   mr: () => import("./locales/mr.json"),
   gu: () => import("./locales/gu.json"),
@@ -53,6 +52,14 @@ const LOADERS: Record<Exclude<LearnLocale, "ko">, () => Promise<{ default: Messa
   te: () => import("./locales/te.json"),
   kn: () => import("./locales/kn.json"),
   ml: () => import("./locales/ml.json"),
+  pcm: () => import("./locales/pcm.json"),
+  tl: () => import("./locales/tl.json"),
+  ro: () => import("./locales/ro.json"),
+  fi: () => import("./locales/fi.json"),
+  cs: () => import("./locales/cs.json"),
+  hu: () => import("./locales/hu.json"),
+  af: () => import("./locales/af.json"),
+
 };
 
 const cache = new Map<LearnLocale, Messages>();

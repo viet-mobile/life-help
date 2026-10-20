@@ -17,9 +17,9 @@ const key = (q: Question) => (q.answer.kind === "choice" ? q.answer.id : q.answe
 const canonical = async (site: Site): Promise<ContentBundle> => (await loadIndex(site, { bank: false })).bundle; // stored content: the practice bank has its own wording checks (bank.test.ts)
 
 describe("learner locales come from the registry", () => {
-  it("is exactly the 47 registry locales, with rtl taken from the registry metadata", () => {
+  it("is exactly the 53 registry locales, with rtl taken from the registry metadata", () => {
     expect([...LOCALES]).toEqual([...REGISTRY]);
-    expect(LOCALES).toHaveLength(47);
+    expect(LOCALES).toHaveLength(53);
     for (const l of LOCALES) expect(localeDir(l)).toBe(languages.find((x) => x.code === l)?.dir === "rtl" ? "rtl" : "ltr");
     expect(LOCALES.filter((l) => localeDir(l) === "rtl").sort()).toEqual(["ar", "arz", "fa", "he", "ur"]);
   });

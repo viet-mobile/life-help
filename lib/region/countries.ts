@@ -8,6 +8,7 @@ export type CountryCode =
   | "YE" | "IQ" | "BD" | "US" | "GB" | "CA" | "AU"
   | "NZ" | "SG" | "MY" | "NG" | "SV" | "CF" | "VE"
   | "KE" | "AR"
+  | "RO" | "FI" | "CZ" | "HU" | "ZM" | "UG" | "CG"
   | string;
 
 export interface CountryInfo {
@@ -77,10 +78,17 @@ export const COUNTRIES: readonly CountryInfo[] = [
   { code: "MY", slug: "malaysia", flag: "🇲🇾", nameKo: "말레이시아", nameEn: "Malaysia", nameNative: "Malaysia", level1Category: "Negeri", level2Category: "Daerah", level3Category: "Mukim" },
   { code: "NG", slug: "nigeria", flag: "🇳🇬", nameKo: "나이지리아", nameEn: "Nigeria", nameNative: "Nigeria", level1Category: "State", level2Category: "LGA", level3Category: "Ward" },
   { code: "SV", slug: "elsalvador", flag: "🇸🇻", nameKo: "엘살바도르", nameEn: "El Salvador", nameNative: "El Salvador", level1Category: "Departamento", level2Category: "Municipio", level3Category: "Distrito / Colonia" },
-  { code: "CF", slug: "centralafrica", flag: "🇨🇫", nameKo: "중앙아프리카공화국", nameEn: "Central African Republic", nameNative: "Ködörösêse tî Bêafrîka", level1Category: "Préfecture", level2Category: "Sous-préfecture", level3Category: "Quartier" },
+  { code: "CF", slug: "centralafrica", flag: "🇨🇫", nameKo: "중앙아프리카공화국", nameEn: "Central African Republic", nameNative: "République centrafricaine", level1Category: "Préfecture", level2Category: "Sous-préfecture", level3Category: "Quartier" },
   { code: "VE", slug: "venezuela", flag: "🇻🇪", nameKo: "베네수엘라", nameEn: "Venezuela", nameNative: "Venezuela", level1Category: "Estado", level2Category: "Municipio", level3Category: "Parroquia / Sector" },
   { code: "KE", slug: "kenya", flag: "🇰🇪", nameKo: "케냐", nameEn: "Kenya", nameNative: "Kenya", level1Category: "County", level2Category: "Sub-county / Town", level3Category: "Ward / Area" },
   { code: "AR", slug: "argentina", flag: "🇦🇷", nameKo: "아르헨티나", nameEn: "Argentina", nameNative: "Argentina", level1Category: "Provincia", level2Category: "Departamento / Partido / Comuna", level3Category: "Localidad / Barrio" },
+  { code: "RO", slug: "romania", flag: "🇷🇴", nameKo: "루마니아", nameEn: "Romania", nameNative: "România", level1Category: "Județ", level2Category: "Municipiu / Oraș", level3Category: "Cartier / Sat" },
+  { code: "FI", slug: "finland", flag: "🇫🇮", nameKo: "핀란드", nameEn: "Finland", nameNative: "Suomi", level1Category: "Maakunta", level2Category: "Kunta / Kaupunki", level3Category: "Kaupunginosa / Kylä" },
+  { code: "CZ", slug: "czechia", flag: "🇨🇿", nameKo: "체코", nameEn: "Czechia", nameNative: "Česko", level1Category: "Kraj", level2Category: "Okres / Obec", level3Category: "Část obce" },
+  { code: "HU", slug: "hungary", flag: "🇭🇺", nameKo: "헝가리", nameEn: "Hungary", nameNative: "Magyarország", level1Category: "Vármegye", level2Category: "Járás / Település", level3Category: "Városrész" },
+  { code: "ZM", slug: "zambia", flag: "🇿🇲", nameKo: "잠비아", nameEn: "Zambia", nameNative: "Zambia", level1Category: "Province", level2Category: "District", level3Category: "Town / Area" },
+  { code: "UG", slug: "uganda", flag: "🇺🇬", nameKo: "우간다", nameEn: "Uganda", nameNative: "Uganda", level1Category: "Region", level2Category: "District / City", level3Category: "Town / Area" },
+  { code: "CG", slug: "congo", flag: "🇨🇬", nameKo: "콩고공화국", nameEn: "Republic of the Congo", nameNative: "République du Congo", level1Category: "Département", level2Category: "District / Commune", level3Category: "Quartier / Village" },
 ] as const;
 
 export function getCountryInfo(code: CountryCode | undefined | null): CountryInfo {

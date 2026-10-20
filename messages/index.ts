@@ -37,7 +37,6 @@ import no from "./no.json";
 import el from "./el.json";
 import pt from "./pt.json";
 import ur from "./ur.json";
-import sg from "./sg.json";
 import sw from "./sw.json";
 import mr from "./mr.json";
 import gu from "./gu.json";
@@ -45,6 +44,14 @@ import pa from "./pa.json";
 import te from "./te.json";
 import kn from "./kn.json";
 import ml from "./ml.json";
+
+import pcm from "./pcm.json";
+import tl from "./tl.json";
+import ro from "./ro.json";
+import fi from "./fi.json";
+import cs from "./cs.json";
+import hu from "./hu.json";
+import af from "./af.json";
 
 export * from "./registry";
 import { type Locale, defaultLocale, isValidLocale, locales } from "./registry";
@@ -89,7 +96,6 @@ export const dictionaries = {
   el,
   pt,
   ur,
-  sg,
   sw,
   mr,
   gu,
@@ -97,6 +103,13 @@ export const dictionaries = {
   te,
   kn,
   ml,
+  pcm,
+  tl,
+  ro,
+  fi,
+  cs,
+  hu,
+  af,
 } as const;
 
 
@@ -111,6 +124,8 @@ export function detectDeviceLocale(preferredLanguages?: readonly string[]): Loca
   for (const raw of langs) {
     if (!raw) continue;
     const tag = raw.toLowerCase().trim();
+    if (tag === "sg" || tag.startsWith("sg-")) return "fr";
+    if (tag === "fil" || tag.startsWith("fil-")) return "tl";
 
     // Chinese Traditional
     if (

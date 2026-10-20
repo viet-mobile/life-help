@@ -1,0 +1,44 @@
+{
+  "status": "CANDIDATE_NOT_DEPLOYED",
+  "activeLanguages": 53,
+  "retiredLocale": "sg",
+  "legacyLocaleRedirect": "fr",
+  "addedLocales": [
+    "pcm",
+    "tl",
+    "ro",
+    "fi",
+    "cs",
+    "hu",
+    "af"
+  ],
+  "countriesInRepository": 65,
+  "addedCountries": [
+    "RO",
+    "FI",
+    "CZ",
+    "HU",
+    "ZM",
+    "UG",
+    "CG"
+  ],
+  "centralAfricanRepublicLanguage": "fr",
+  "CongoISO": "CG",
+  "productionUnchanged": "eea593a1-cc8b-4b60-a683-ebd9c88179a3",
+  "checks": {
+    "typecheck": "PASS",
+    "uiKeysTypesPlaceholdersNumbers": "PASS: 7 x (885+422)",
+    "focusedUnitTests": "23 PASS; isolated config, not release gate",
+    "motion": "53 x 828 strings;455 videos; number/placeholder/symbol checks PASS",
+    "fullSuite": "BLOCKED_GLOBAL_SETUP: missing overlay pcm/math",
+    "build": "NOT_RUN_AFTER_BLOCK",
+    "stagingDeploy": "NOT_DONE",
+    "productionDeploy": "NOT_DONE",
+    "newCountryDomains": "PLAN_ONLY_NOT_CREATED"
+  },
+  "contentScopeDecisionPending": [
+    "Ship native UI and video, explicitly disclose English for untranslated general learning content",
+    "Complete new-seven-language general learning translations before release"
+  ],
+  "review": "AI authoring only; bounded cross-review; native/teacher review not done"
+}

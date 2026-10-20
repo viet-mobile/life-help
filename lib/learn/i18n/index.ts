@@ -21,6 +21,7 @@ export function isLocale(value: unknown): value is LearnLocale {
 }
 /** Unknown / missing values fall back to the site's default locale (Korean for math / english, the existing guest behaviour). */
 export function parseLocale(value: unknown, fallback: LearnLocale = DEFAULT_LOCALE): LearnLocale {
+  if (value === "sg") return "fr"; // Retired Sango preferences migrate to French.
   return isLocale(value) ? value : fallback;
 }
 

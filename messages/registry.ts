@@ -43,7 +43,6 @@ export const locales = [
   "el",
   "pt",
   "ur",
-  "sg",
   "sw",
   "mr",
   "gu",
@@ -51,6 +50,13 @@ export const locales = [
   "te",
   "kn",
   "ml",
+  "pcm",
+  "tl",
+  "ro",
+  "fi",
+  "cs",
+  "hu",
+  "af",
 ] as const;
 
 export type Locale = (typeof locales)[number];
@@ -64,6 +70,13 @@ export interface LanguageMeta {
 }
 
 export const languages: readonly LanguageMeta[] = [
+  { code: "pcm", name: "나이지리아 피진어", nativeName: "Naijá" },
+  { code: "tl", name: "타갈로그어", nativeName: "Tagalog" },
+  { code: "ro", name: "루마니아어", nativeName: "Română" },
+  { code: "fi", name: "핀란드어", nativeName: "Suomi" },
+  { code: "cs", name: "체코어", nativeName: "Čeština" },
+  { code: "hu", name: "헝가리어", nativeName: "Magyar" },
+  { code: "af", name: "아프리칸스어", nativeName: "Afrikaans" },
   { code: "ko", name: "한국어", nativeName: "한국어" },
   { code: "en", name: "영어", nativeName: "English" },
   { code: "vi", name: "베트남어", nativeName: "Tiếng Việt" },
@@ -82,7 +95,6 @@ export const languages: readonly LanguageMeta[] = [
   { code: "mn", name: "몽골어", nativeName: "Монгол" },
   { code: "my", name: "미얀마어", nativeName: "မြန်မာဘာသာ" },
   { code: "bn", name: "벵골어", nativeName: "বাংলা" },
-  { code: "sg", name: "상고어", nativeName: "Sängö" },
   { code: "sw", name: "스와힐리어", nativeName: "Kiswahili" },
   { code: "sv", name: "스웨덴어", nativeName: "Svenska" },
   { code: "es", name: "스페인어", nativeName: "Español" },

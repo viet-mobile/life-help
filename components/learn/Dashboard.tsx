@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { MathMotionEntry } from "./MathMotion";
 import { ACHIEVEMENTS } from "@/lib/learn/domain/achievements";
 import { dayKey } from "@/lib/learn/domain/dates";
 import { levelProgress } from "@/lib/learn/domain/level";
@@ -80,6 +81,7 @@ export function Dashboard() {
       </Link>
 
       <ThinkQuickEntry />
+      {site === "math" && <MathMotionEntry />}
 
       {!state.diagnosticDone && (
         <Link className="l-card" href={href("/diagnostic")} style={{ textDecoration: "none", color: "inherit", display: "block", borderColor: "var(--l-accent)" }}>

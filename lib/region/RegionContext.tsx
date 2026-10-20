@@ -14,6 +14,7 @@ import {
   defaultRegion,
   DEFAULT_COUNTRY_REGIONS,
   COUNTRY_SLUG_TO_CODE,
+  MANUAL_REGION_COUNTRIES,
 } from "./regions";
 import { resolveCountryFromHost } from "@/lib/country/CountryContext";
 import {
@@ -362,6 +363,7 @@ function RegionSelectorModal({
     : dong;
 
   const countryDisplayName = getCountryDisplayName(countryInfo, locale);
+  const manualRegion = MANUAL_REGION_COUNTRIES.has(country);
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 p-4 backdrop-blur-xs">
@@ -435,6 +437,7 @@ function RegionSelectorModal({
                 {country === "KR" ? categoryHeaders.sidoTitle : countryInfo.level1Category}
               </div>
               <div className="mt-1 space-y-1">
+                {manualRegion && <input aria-label={countryInfo.level1Category} value={sido} onChange={e => setSido(e.target.value)} className="w-full rounded-lg border border-slate-300 bg-white p-2 text-sm" />}
                 {sidoList.map((s) => (
                   <button
                     key={s.key}
@@ -459,6 +462,7 @@ function RegionSelectorModal({
                 {country === "KR" ? categoryHeaders.gunguTitle : countryInfo.level2Category}
               </div>
               <div className="mt-1 space-y-1">
+                {manualRegion && <input aria-label={countryInfo.level2Category} value={gungu} onChange={e => setGungu(e.target.value)} className="w-full rounded-lg border border-slate-300 bg-white p-2 text-sm" />}
                 {gunguList.map((g) => (
                   <button
                     key={g.key}
@@ -530,6 +534,7 @@ function RegionSelectorModal({
           <button
             type="button"
             onClick={handleConfirm}
+            disabled={manualRegion && (!sido.trim() || !gungu.trim() || !(customDong.trim() || dong.trim()))}
             className="rounded-xl bg-blue-700 px-6 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-blue-800 sm:text-sm cursor-pointer"
           >
             {getRegionUIText("confirmLocation", locale, isBilingual)}

@@ -6,7 +6,7 @@ import { locales, type Locale } from "@/messages/registry";
  * the server and the client language switcher all read the SAME rule. Locale codes can never collide with a learning route
  * (dashboard, lesson, onboarding, ...), which are all longer words.
  */
-const ALIASES: Record<string, Locale> = { zs: "zh-Hans", zt: "zh-Hant", zh: "zh-Hans" };
+const ALIASES: Record<string, Locale> = { sg: "fr", fil: "tl", zs: "zh-Hans", zt: "zh-Hant", zh: "zh-Hans" };
 const BY_LOWER = new Map<string, Locale>(locales.map((l) => [l.toLowerCase(), l]));
 
 export function localeFromSegment(segment: string | undefined): Locale | null {

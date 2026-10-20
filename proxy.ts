@@ -78,6 +78,13 @@ const COUNTRIES = new Set([
   "venezuela",
   "kenya",
   "argentina",
+  "romania",
+  "finland",
+  "czechia",
+  "hungary",
+  "zambia",
+  "uganda",
+  "congo",
 ]);
 
 /**
@@ -127,7 +134,6 @@ const LANGUAGES = new Set([
   "pt",
   "el",
   "ur",
-  "sg",
   "sw",
   "mr",
   "gu",
@@ -137,6 +143,12 @@ const LANGUAGES = new Set([
   "ml",
   "zh-hans",
   "zh-hant",
+  "pcm",
+  "ro",
+  "fi",
+  "cs",
+  "hu",
+  "af",
 ]);
 
 export const COUNTRY_TO_DEFAULT_LANGUAGE: Record<string, string> = {
@@ -194,10 +206,18 @@ export const COUNTRY_TO_DEFAULT_LANGUAGE: Record<string, string> = {
   malaysia: "en",
   nigeria: "en",
   elsalvador: "es",
-  centralafrica: "sg",
+  centralafrica: "fr",
   venezuela: "es",
   kenya: "sw",
   argentina: "es",
+  romania: "ro",
+  finland: "fi",
+  czechia: "cs",
+  hungary: "hu",
+  zambia: "en",
+  uganda: "en",
+  congo: "fr",
+
 };
 
 function getHost(request: NextRequest) {
@@ -436,6 +456,8 @@ function buildInternalPath(
 }
 
 export async function proxy(request: NextRequest) {
+  const retired = request.nextUrl.pathname.match(/^(\/study\/(?:math|english|korean))?\/sg(?=\/|$)/);
+  if (retired) { const url = request.nextUrl.clone(); url.pathname = url.pathname.replace(/\/sg(?=\/|$)/, "/fr"); return NextResponse.redirect(url, 308); }
   // Learning presentation overlays (hints, explanations) are server-side content read through the ASSETS binding only; they are never
   // served to a browser (wrangler.jsonc makes /learn-content/* worker-first, and this refuses it on every host, also under next start).
   if (request.nextUrl.pathname === "/learn-content" || request.nextUrl.pathname.startsWith("/learn-content/")) {
