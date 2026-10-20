@@ -2394,6 +2394,354 @@
      }
     }
    ]
+  },
+  {
+   "date": "2026-10-20",
+   "scope": "gender-safe Arabic rewrites for the remaining 20 held items (technique confirmed on 5/5 earlier)",
+   "reviewer": "independent AI agent (fable), separate from the rewriting agent; not teacher/native review",
+   "grammaticalDefaults": "eb-6da6eda4-q1 masculine dual الصديقين (two speakers, unstated gender; dual matches passage), eb-da93424c-q1/-q5 البائع (role noun for unnamed Clerk; Arabic has no gender-free agent noun), eb-e6a4c5e4-q3 المرء (generic 'one'). Recorded as unmarked grammatical defaults, not facts about a person's sex; a native Arabic reviewer should confirm this reading.",
+   "items": [
+    {
+     "id": "ar|eb-1387413b-q4",
+     "srcHash": "e0f23c79b0",
+     "trHash": "e7ce0d50d8",
+     "verdict": "ok",
+     "genderAssumed": false,
+     "evidence": {
+      "meaning": "trQ asks the reason for Joon's saying \"Then what about a water filter?\" via the masdar قول + name, which matches srcQ exactly.",
+      "whyFacts": "Both facts of srcWhy present: the volcano idea was rejected (رُفضت فكرة البركان) and the line proposes another alternative (لاقتراح بديل آخر = 다른 대안).",
+      "negationTense": "ok",
+      "quotes": "ok",
+      "number": "Singular speaker Joon, singular alternative; passage shows one speaker proposing one alternative. No change in meaning.",
+      "genderWordsChecked": null,
+      "answerLogicSame": null,
+      "naturalness": "ok. Words checked: قول (masdar, no gender), جون (name only), قيلت (passive agreeing with grammatical gender of العبارة, not a person), رُفضت (agrees with فكرة). No word commits to Joon's sex. Spelling جون consistent with the accepted eb-1387413b-q1/q2 rewrites and the previous version; distinct from جُن used for the different character Jun in eb-6da6eda4."
+     }
+    },
+    {
+     "id": "ar|eb-1387413b-q5",
+     "srcHash": "872a15cf02",
+     "trHash": "6788576ef9",
+     "verdict": "ok",
+     "genderAssumed": false,
+     "evidence": {
+      "meaning": "trQ asks what Mina is most likely expected to do tonight (ما الذي يُتوقَّع من مينا فعله هذه الليلة على الأرجح), matching srcQ 'What will Mina probably do tonight?'.",
+      "whyFacts": "The single fact of srcWhy is present: Mina said at the end (في النهاية) \"I'll make a list tonight.\"",
+      "negationTense": "ok",
+      "quotes": "ok",
+      "number": "Singular Mina; passage shows Mina alone saying the line. No change.",
+      "genderWordsChecked": null,
+      "answerLogicSame": null,
+      "naturalness": "ok, slightly formal; يُتوقَّع + على الأرجح is a little redundant but renders 'probably' acceptably. Words checked: يُتوقَّع (impersonal passive), فعله (the -ه refers to ما الذي, the thing, not Mina), مينا (name only), ورد في كلام مينا (noun-based, no gendered verb). Previous ستفعل/قالت are gone. Spelling مينا consistent with accepted q1/q2."
+     }
+    },
+    {
+     "id": "ar|eb-6da6eda4-q1",
+     "srcHash": "97142c00e1",
+     "trHash": "b5865689ca",
+     "verdict": "ok",
+     "genderAssumed": false,
+     "evidence": {
+      "meaning": "trQ asks how much money each of the two friends has (كم من المال لدى كلٍّ من الصديقَين), matching srcQ 'How much money does each friend have?' with the number made explicit as two.",
+      "whyFacts": "Both facts present: Abel said \"We each have only ten dollars.\" and 20 dollars is the two people's combined total (مجموع ما لديهما معًا).",
+      "negationTense": "ok",
+      "quotes": "ok",
+      "number": "Dual الصديقَين / لديهما: the passage has exactly two people (Lena and Abel: 'We each have only ten dollars' + 'Together that's twenty'), so the dual is correct and does not change the answer (10 each).",
+      "genderWordsChecked": null,
+      "answerLogicSame": null,
+      "naturalness": "ok. Words checked: الصديقَين is a MASCULINE dual noun for Lena and Abel whose genders the passage never states; Arabic has no gender-free dual noun for 'two friends', and the masculine dual is the unmarked grammatical default for two people of unstated/mixed gender, so it does not assert either person's sex (translatorNote says this explicitly; genderAssumed therefore false). A fully neutral alternative exists (كم من المال لدى كلٍّ منهما؟) but it drops the word 'friend', so the chosen form is acceptable. لديهما and -هما are gender-common dual pronouns. هابيل is the standard Arabic form of Abel and matches the previous version; كلٍّ is correctly vocalised."
+     }
+    },
+    {
+     "id": "ar|eb-6da6eda4-q2",
+     "srcHash": "e04299e8d2",
+     "trHash": "848b0e69a3",
+     "verdict": "ok",
+     "genderAssumed": false,
+     "evidence": {
+      "meaning": "trQ asks what can be inferred about Jun (ما الذي يمكن استنتاجه عن جُن), identical in meaning to srcQ.",
+      "whyFacts": "Both facts present: it was said Jun is in the process of trying new recipes (في طور تجربة وصفات جديدة) and therefore Jun has an interest in cooking (لدى جُن اهتمامًا بالطبخ).",
+      "negationTense": "ok",
+      "quotes": "ok",
+      "number": "Singular Jun; passage treats Jun as one person. No change.",
+      "genderWordsChecked": null,
+      "answerLogicSame": null,
+      "naturalness": "ok, formal but idiomatic. Words checked: ذُكر (passive, subject is the clause), جُن في طور تجربة (prepositional predicate, no gendered verb; previous يجرّب removed), يُستنتج (impersonal passive), لدى جُن اهتمامًا (possession via لدى, no pronoun; previous أنه مهتم removed). Name repeated instead of a pronoun. Spelling جُن consistent with the previous version of this dialogue."
+     }
+    },
+    {
+     "id": "ar|eb-6da6eda4-q4",
+     "srcHash": "2ff66c93f2",
+     "trHash": "d864754b80",
+     "verdict": "ok",
+     "genderAssumed": false,
+     "evidence": {
+      "meaning": "trQ asks the reason for Lena's saying \"Together that's twenty\" via the masdar قول, matching srcQ.",
+      "whyFacts": "Both facts present: combined amount becomes 20 dollars and that suffices for a book costing 18 dollars. srcWhy's '둘이' (the two of them) is rendered implicitly by معًا rather than by an explicit dual, which is acceptable since 'together' entails the two speakers.",
+      "negationTense": "ok",
+      "quotes": "ok",
+      "number": "Singular speaker Lena; 'together' implies the two friends, as in the passage. Amounts 20 and 18 preserved. No change.",
+      "genderWordsChecked": null,
+      "answerLogicSame": null,
+      "naturalness": "ok. Words checked: قول لينا (masdar + name), الغرض من العبارة إظهار (noun-based, impersonal), يصير / يكفي (subjects are المبلغ and the amount, grammatical gender only). Previous تقول and فيمكنهما removed. Spelling لينا consistent with q5."
+     }
+    },
+    {
+     "id": "ar|eb-6da6eda4-q5",
+     "srcHash": "bec6fe9e50",
+     "trHash": "ab118bcd56",
+     "verdict": "ok",
+     "genderAssumed": false,
+     "evidence": {
+      "meaning": "trQ asks what Lena is expected to do before the two of them go to the bookstore (ما الذي يُنتظر من لينا فعله قبل ذهابهما إلى متجر الكتب), matching srcQ 'What will Lena do before they go to the bookstore?'.",
+      "whyFacts": "The single fact present: Lena said at the end (في النهاية) \"First I'll check the shop's hours.\"",
+      "negationTense": "ok",
+      "quotes": "ok",
+      "number": "Dual ذهابهما for 'they': the passage's 'they' = Lena and Abel (Abel: 'Let's go to the bookstore'), two people, so the dual is correct. No change.",
+      "genderWordsChecked": null,
+      "answerLogicSame": null,
+      "naturalness": "ok. يُنتظر ('is expected') is a mild hedge not in srcQ, but it is the device needed to avoid the gendered future verb ستفعل and matches the accepted-example style (ينبغي على سورا إحضاره). Words checked: يُنتظر (impersonal passive), فعله (-ه refers to ما الذي), ذهابهما (-هما is gender-common dual), لينا (name only), ورد في كلام لينا (noun-based). Minor stylistic variation يُنتظر (q5, 950a868c-q5) vs يُتوقَّع (1387413b-q5, da93424c-q5, e6a4c5e4-q5) is harmless."
+     }
+    },
+    {
+     "id": "ar|eb-950a868c-q1",
+     "srcHash": "fc7019f8a7",
+     "trHash": "e81db40c75",
+     "verdict": "ok",
+     "genderAssumed": false,
+     "evidence": {
+      "meaning": "trQ asks the reason for Jisu's not wanting to hold the picnic outside (ما سبب عدم رغبة جيسو في إقامة النزهة في الخارج), matching srcQ 'Why doesn't Jisu want to picnic outside?'.",
+      "whyFacts": "Both facts present: wet grass isn't fun (العشب المبلل ليس ممتعًا) and the sandwiches will get soggy (السندويشات ستصبح رطبة; رطبة = damp, an acceptable rendering of soggy, same as the previous version).",
+      "negationTense": "ok (negation rendered by عدم رغبة; 'isn't fun' rendered by ليس ممتعًا; future 'will get' by ستصبح)",
+      "quotes": "ok (srcWhy contains no English quote; none required)",
+      "number": "Singular Jisu; plural السندويشات matches 'Our sandwiches'. No change.",
+      "genderWordsChecked": null,
+      "answerLogicSame": null,
+      "naturalness": "ok. Words checked: عدم رغبة جيسو (masdar + name, replaces gendered لا تريد), إقامة (masdar), ورد في كلام جيسو (noun-based, replaces قالت), ممتعًا (agrees with العشب), ستصبح رطبة (agree with السندويشات). No word commits to Jisu's sex. Spelling جيسو consistent in q1, q3, q5."
+     }
+    },
+    {
+     "id": "ar|eb-950a868c-q2",
+     "srcHash": "f3157dd9ed",
+     "trHash": "178d5775ec",
+     "verdict": "ok",
+     "genderAssumed": false,
+     "evidence": {
+      "meaning": "trQ asks what can be inferred about the community room (قاعة المجتمع), identical to srcQ.",
+      "whyFacts": "Both facts present: Ben's speech shows an intention to call and book it (book) today, and from that the room needs booking in advance (تحتاج إلى حجز مسبق ≈ 먼저 예약해야 한다).",
+      "negationTense": "ok",
+      "quotes": "ok ((book) kept verbatim)",
+      "number": "Singular Ben, singular room. No change.",
+      "genderWordsChecked": null,
+      "answerLogicSame": null,
+      "naturalness": "ok. Words checked: ورد في كلام بن عزمٌ (noun عزم as subject; replaces gendered قال/إنه سيتصل), حجزها (-ها refers to القاعة, grammatical gender), يُفهم (impersonal passive), تحتاج (agrees with القاعة). No word commits to Ben's sex. Spelling بن consistent in q2, q4, q5."
+     }
+    },
+    {
+     "id": "ar|eb-950a868c-q3",
+     "srcHash": "80a9a6e020",
+     "trHash": "17631b4ff0",
+     "verdict": "ok",
+     "genderAssumed": false,
+     "evidence": {
+      "meaning": "trQ is the same vocabulary-in-context stem: 'In the dialogue, the phrase \"Fair enough\" means ...', matching srcQ.",
+      "whyFacts": "All facts present: the phrase accepts Jisu's reason (لقبول سبب جيسو), then an alternative is put forward (ثم طرح بديل), so it means acknowledging the other party's view (الإقرار بوجهة نظر الطرف الآخر = 상대 의견을 인정).",
+      "negationTense": "ok",
+      "quotes": "ok",
+      "number": "Singular speakers; no number choice affects meaning.",
+      "genderWordsChecked": null,
+      "answerLogicSame": null,
+      "naturalness": "ok. Words checked: قيلت (passive agreeing with العبارة), قبول / طرح (masdars, no agent gender), الطرف الآخر (generic noun, replaces the gendered بوجهة نظرها of the previous version), جيسو (name only). Ben is not named here, so no gendered verb for Ben either (previous يقبل بها بن / يقترح / يقرّ removed)."
+     }
+    },
+    {
+     "id": "ar|eb-950a868c-q4",
+     "srcHash": "edc3546315",
+     "trHash": "28394211dd",
+     "verdict": "ok",
+     "genderAssumed": false,
+     "evidence": {
+      "meaning": "trQ asks the reason for Ben's saying \"No way\" via the masdar قول, matching srcQ.",
+      "whyFacts": "Both facts present: strong opposition (معارضة قوية = 강하게 반대) to the cancellation proposal (لاقتراح الإلغاء).",
+      "negationTense": "ok",
+      "quotes": "ok",
+      "number": "Singular Ben, singular proposal. No change.",
+      "genderWordsChecked": null,
+      "answerLogicSame": null,
+      "naturalness": "ok. Words checked: قول بن (masdar + name, replaces يقول), العبارة تعبير عن (nominal sentence, no gendered verb). Nothing commits to Ben's sex."
+     }
+    },
+    {
+     "id": "ar|eb-950a868c-q5",
+     "srcHash": "854907fe98",
+     "trHash": "cafc81b829",
+     "verdict": "ok",
+     "genderAssumed": false,
+     "evidence": {
+      "meaning": "trQ asks what Ben is expected to do today (ما الذي يُنتظر من بن فعله اليوم), matching srcQ 'What will Ben do today?'.",
+      "whyFacts": "Both facts present: Ben said \"I'll call and book it today.\" and telling the others is Jisu's task (مهمة جيسو = 다른 사람들에게 알리는 것은 Jisu).",
+      "negationTense": "ok",
+      "quotes": "ok",
+      "number": "Singular Ben and Jisu; الآخرين plural matches 'the others'. No change.",
+      "genderWordsChecked": null,
+      "answerLogicSame": null,
+      "naturalness": "ok. Words checked: يُنتظر (impersonal passive, replaces سيفعل), فعله (-ه refers to ما الذي), ورد في كلام بن (noun-based, replaces قال), إخبار (masdar), مهمة جيسو (noun phrase; replaces gendered فستفعله جيسو). No word commits to Ben's or Jisu's sex."
+     }
+    },
+    {
+     "id": "ar|eb-da93424c-q1",
+     "srcHash": "05e6b66349",
+     "trHash": "086a05109c",
+     "verdict": "ok",
+     "genderAssumed": false,
+     "evidence": {
+      "meaning": "trQ asks how many times the goldfish needs clean water (ما عدد المرات التي يحتاج فيها السمك الذهبي إلى ماء نظيف), matching srcQ 'How often does a goldfish need clean water?'.",
+      "whyFacts": "Both facts present: the clerk said \"clean water every week\", and twice a day (مرتان في اليوم) is the feeding frequency (عدد مرات الإطعام), so the distractor logic is kept.",
+      "negationTense": "ok",
+      "quotes": "ok",
+      "number": "Singular goldfish (السمك الذهبي, collective singular), one clerk. مرتان dual = 'twice'. No change.",
+      "genderWordsChecked": null,
+      "answerLogicSame": null,
+      "naturalness": "ok. Words checked: يحتاج (agrees with السمك, grammatical gender of a noun), البائع: a MASCULINE singular role noun for the unnamed Clerk whose sex the passage does not state. Arabic has no gender-free agent noun for this role, and the masculine singular is the unmarked default for an unspecified person in a profession (translatorNote states this explicitly), so it does not assert the clerk's sex and genderAssumed is false. ورد في كلام البائع is noun-based (previous قال البائع replaced). الإطعام (masdar) removes the previous إطعامه pronoun. البائع ('seller/shop assistant') is an appropriate rendering of a pet-shop clerk and is consistent with q5."
+     }
+    },
+    {
+     "id": "ar|eb-da93424c-q2",
+     "srcHash": "fc5d473e82",
+     "trHash": "64b069205b",
+     "verdict": "ok",
+     "genderAssumed": false,
+     "evidence": {
+      "meaning": "trQ asks what can be inferred about Sora, identical to srcQ.",
+      "whyFacts": "All three facts present: worry that tanks need a lot of effort (قلق من أن الأحواض تحتاج إلى جهد كبير), the decision to start with a beginner-friendly fish (قرار بالبدء بسمكة مناسبة للمبتدئين), hence Sora has never raised fish before (لم يسبق لسورا تربية الأسماك).",
+      "negationTense": "ok (لم يسبق ... من قبل renders '길러 본 적이 없다')",
+      "quotes": "ok (no English quote in srcWhy)",
+      "number": "Singular Sora; plural الأحواض matches 'tanks'. No change.",
+      "genderWordsChecked": null,
+      "answerLogicSame": null,
+      "naturalness": "ok; لم يسبق ... من قبل is slightly redundant but idiomatic. Words checked: قلق is here the NOUN 'worry' (subject of يظهر), not the adjective قلقة/قلق predicated of Sora (previous سورا قلقة removed); قرار (noun, replaces gendered تقرر / أن تبدأ); يُستنتج (impersonal passive); أنه in أنه لم يسبق لسورا is the impersonal ضمير الشأن ('that it has not previously happened for Sora'), not a pronoun for Sora (previous أنها لم تربِّ removed). Name repeated as لسورا instead of a pronoun. Nothing commits to Sora's sex."
+     }
+    },
+    {
+     "id": "ar|eb-da93424c-q4",
+     "srcHash": "592ba69ca3",
+     "trHash": "722206daef",
+     "verdict": "ok",
+     "genderAssumed": false,
+     "evidence": {
+      "meaning": "trQ asks the reason for Sora's question \"How often does it need care?\" via the masdar سؤال, matching srcQ.",
+      "whyFacts": "The fact present: asking about frequency of care (عدد مرات العناية) in order to learn how much work is involved (مقدار العمل المطلوب).",
+      "negationTense": "ok",
+      "quotes": "ok",
+      "number": "Singular Sora. No change.",
+      "genderWordsChecked": null,
+      "answerLogicSame": null,
+      "naturalness": "ok. Words checked: سؤال سورا (masdar + name, replaces gendered تسأل), الغرض من السؤال ... هو معرفة (nominal, impersonal; replaces سألت ... لتعرف). Nothing commits to Sora's sex."
+     }
+    },
+    {
+     "id": "ar|eb-da93424c-q5",
+     "srcHash": "e1874796e7",
+     "trHash": "db01269225",
+     "verdict": "ok",
+     "genderAssumed": false,
+     "evidence": {
+      "meaning": "trQ asks what the clerk is most likely expected to do next (ما الذي يُتوقَّع من البائع فعله بعد ذلك على الأرجح), matching srcQ 'What will the clerk probably do next?'.",
+      "whyFacts": "The single fact present: the clerk said at the end (في النهاية) \"Let me find you a small tank.\"",
+      "negationTense": "ok",
+      "quotes": "ok",
+      "number": "Singular clerk. No change.",
+      "genderWordsChecked": null,
+      "answerLogicSame": null,
+      "naturalness": "ok. Words checked: البائع (masculine singular role noun for the unnamed Clerk; unmarked default for an unspecified professional, as in q1 and stated in translatorNote, so it does not assert the clerk's sex; genderAssumed false), يُتوقَّع (impersonal passive, replaces سيفعل), فعله (-ه refers to ما الذي), ورد في كلام البائع (noun-based, replaces قال البائع). Consistent البائع spelling in q1 and q5."
+     }
+    },
+    {
+     "id": "ar|eb-e6a4c5e4-q1",
+     "srcHash": "324bcb73f9",
+     "trHash": "e1a1b79d8b",
+     "verdict": "ok",
+     "genderAssumed": false,
+     "evidence": {
+      "meaning": "trQ asks the reason for Noah's preference for riding the bike (ما سبب تفضيل نوح لركوب الدراجة); srcQ says 'his bike', but the possessive is incidental (Noah: 'I'm going by bike') and dropping it loses no answerable content, so the meaning matches.",
+      "whyFacts": "The single fact present: Noah said \"It's faster, and it's free.\"",
+      "negationTense": "ok",
+      "quotes": "ok",
+      "number": "Singular Noah, singular bike. No change.",
+      "genderWordsChecked": null,
+      "answerLogicSame": null,
+      "naturalness": "ok. Words checked: تفضيل نوح (masdar + name, replaces gendered يفضّل), الدراجة (definite noun replacing دراجته, avoiding the masculine possessive that srcQ's 'his' would force; the passage itself never genders Noah, only the English question does, and translatorNote records the choice), ورد في كلام نوح (noun-based, replaces قال نوح). نوح is the standard Arabic form of Noah and is consistent in q1, q2, q5."
+     }
+    },
+    {
+     "id": "ar|eb-e6a4c5e4-q2",
+     "srcHash": "5ec1d267f3",
+     "trHash": "9f8ec23e73",
+     "verdict": "ok",
+     "genderAssumed": false,
+     "evidence": {
+      "meaning": "trQ asks Noah's opinion of the weather (ما رأي نوح في الطقس), identical to srcQ.",
+      "whyFacts": "Both facts present: putting the raincoat in the bag \"just in case\" means rain is seen as possible (محتمل) but not certain (غير مؤكد).",
+      "negationTense": "ok (غير مؤكد renders '확실하지는 않다')",
+      "quotes": "ok",
+      "number": "Singular Noah. No change.",
+      "genderWordsChecked": null,
+      "answerLogicSame": null,
+      "naturalness": "ok, somewhat abstract (يعني النظر إلى المطر ...) but clear. Words checked: وضع (masdar without pronoun, replaces وضعه), النظر (masdar, replaces أنه يرى), أنه in على أنه محتمل refers to المطر (rain, masculine noun), not to Noah; لكنه likewise refers to المطر. Nothing commits to Noah's sex."
+     }
+    },
+    {
+     "id": "ar|eb-e6a4c5e4-q3",
+     "srcHash": "dfe2fb1fa8",
+     "trHash": "bd9fc9f7d1",
+     "verdict": "ok",
+     "genderAssumed": false,
+     "evidence": {
+      "meaning": "trQ is the same vocabulary-in-context stem 'In the dialogue, the word \"soaked\" means ...', matching srcQ.",
+      "whyFacts": "Both facts present: the context is that pouring rain (pours) leads to becoming \"soaked\", i.e. completely wet (مبللًا تمامًا = 흠뻑 젖는다).",
+      "negationTense": "ok",
+      "quotes": "ok (\"soaked\" and (pours) kept verbatim)",
+      "number": "Generic singular المرء ('one'); no character is referred to. No change.",
+      "genderWordsChecked": null,
+      "answerLogicSame": null,
+      "naturalness": "ok. Words checked: المرء is the generic noun 'a person/one' (masculine grammatical default of a generic noun, not a statement about Noah or Ella), and مبللًا agrees with المرء; يصبح agrees with المرء. The previous version's فسيصبح with an implied 'he' = Noah is replaced by this generic subject, so no character is gendered."
+     }
+    },
+    {
+     "id": "ar|eb-e6a4c5e4-q4",
+     "srcHash": "1f236e8068",
+     "trHash": "169e2e3c39",
+     "verdict": "ok",
+     "genderAssumed": false,
+     "evidence": {
+      "meaning": "trQ asks the reason for Ella's saying \"I'd take the bus if I were you\" via the masdar قول, matching srcQ.",
+      "whyFacts": "The fact present: \"if I were you\" is used when giving advice to the other party (عند إسداء النصيحة للطرف الآخر = 상대에게 조언할 때).",
+      "negationTense": "ok",
+      "quotes": "ok",
+      "number": "Singular Ella; generic 'other party'. No change.",
+      "genderWordsChecked": null,
+      "answerLogicSame": null,
+      "naturalness": "ok. Words checked: قول إيلا (masdar + name, replaces gendered تقول), تُستعمل (passive agreeing with عبارة), إسداء (masdar), الطرف الآخر (generic noun). Nothing commits to Ella's sex. Spelling إيلا consistent with q5."
+     }
+    },
+    {
+     "id": "ar|eb-e6a4c5e4-q5",
+     "srcHash": "7e4741e827",
+     "trHash": "48630cc4e3",
+     "verdict": "ok",
+     "genderAssumed": false,
+     "evidence": {
+      "meaning": "trQ asks what Noah is most likely expected to do upon arriving at the library (ما الذي يُتوقَّع من نوح فعله عند الوصول إلى المكتبة على الأرجح), matching srcQ 'What will Noah probably do when he gets to the library?' with 'he gets' rendered as the agentless masdar 'arrival'.",
+      "whyFacts": "Both facts present: Ella's request \"Text me when you arrive.\" and the consequence that a text message will be sent to Ella on arrival. 'to Ella' is entailed by 'Text me' and adds no new fact.",
+      "negationTense": "ok (من المتوقع renders the predicted future '보낼 거예요' with the same 'probably' hedge as srcQ)",
+      "quotes": "ok",
+      "number": "Singular Noah and Ella. No change.",
+      "genderWordsChecked": null,
+      "answerLogicSame": null,
+      "naturalness": "ok. Words checked: يُتوقَّع (impersonal passive, replaces سيفعل), فعله (-ه refers to ما الذي), الوصول (masdar without pronoun, replaces يصل / وصوله; srcQ's 'he' comes from the English question, not the passage, and translatorNote records this), ورد في كلام إيلا طلبٌ (noun-based, replaces طلبت منه), إرسال ... إلى إيلا (masdar + name, replaces سيرسل لها). Nothing commits to Noah's or Ella's sex."
+     }
+    }
+   ]
   }
  ]
 }
