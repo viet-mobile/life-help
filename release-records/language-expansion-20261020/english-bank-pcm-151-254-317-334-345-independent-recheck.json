@@ -1,0 +1,112 @@
+{
+  "reviewType": "independent AI patch delta recheck",
+  "nativeTeacherApproval": false,
+  "targetFilesModified": false,
+  "items": [
+    {
+      "index": 254,
+      "sourceHash": "136d7763cc2fb3980bbe6e427776c623e44796b6e1b0cf5029b364b62b168222",
+      "contextHash": "8346e3379544777240b882d644793341094975e223e914f8c4c9d2cd928fd79a",
+      "beforeHash": "f979ceb60d1d10df2609c6b9b927abcc715fc40c30ecdee45e578dc4107c7783",
+      "expectedAfterHash": "53f840cf7ffced878e828b537178d4947c616a65d58c50626099278256733b67",
+      "currentTargetHash": "53f840cf7ffced878e828b537178d4947c616a65d58c50626099278256733b67",
+      "verdict": "pass",
+      "reason": "bin explicitly anchors the falling event in the past; exactly two leaves and tree source retained.",
+      "contexts": [
+        {
+          "itemId": "ecf9e352",
+          "skillId": "e.e5.gram",
+          "englishTarget": "Two leaves fell from the tree.",
+          "koreanMeaning": "나뭇잎 두 장이 나무에서 떨어졌어요.",
+          "rule": "leaf처럼 f로 끝나는 일부 낱말은 f를 v로 바꾸고 -es를 붙여 leaves가 돼요."
+        }
+      ],
+      "hashBindingPass": true
+    },
+    {
+      "index": 317,
+      "sourceHash": "63b5dfa1e649a04d09a53521a884f94346e39749ba32a9691874c201b2b0777d",
+      "contextHash": "1d3807c02639758e4c3e674b0107edf30c348af0605442e7df95884009e77339",
+      "beforeHash": "4a427d39cb08ea54b252127406d35adae70b65616392e6a312261875f4f2fb1f",
+      "expectedAfterHash": "6ae685b3b6635ae95de496f30e33d3787317dc7f816e7475eac6ddd0912c9776",
+      "currentTargetHash": "6ae685b3b6635ae95de496f30e33d3787317dc7f816e7475eac6ddd0912c9776",
+      "verdict": "pass",
+      "reason": "bin disambiguates past lateness while retaining plural subject and interrogative meaning.",
+      "contexts": [
+        {
+          "itemId": "9d6481f5",
+          "skillId": "e.e5.transform",
+          "englishTarget": "Were they late for class?",
+          "koreanMeaning": "그들은 수업에 늦었나요?",
+          "rule": "be동사 과거 의문문은 Was/Were를 주어 앞에 써요. they에는 Were를 써요."
+        }
+      ],
+      "hashBindingPass": true
+    },
+    {
+      "index": 334,
+      "sourceHash": "9cebc1b72b1a67ed28c3fcc878d1e0a8c8b48acfaea594ce11460f871225a377",
+      "contextHash": "0080d7830be2cbecc019e0910a49f9592a9eca90011d5d111d6442e662f5daa7",
+      "beforeHash": "34de3aaf2d31015f243855f56284457b6d877b03f74cc26fed14e57365e7cf39",
+      "expectedAfterHash": "7109e5eafc056dd3fd332041b423a49a1d1e8ce56a96467f2832b114ceaeddb6",
+      "currentTargetHash": "7109e5eafc056dd3fd332041b423a49a1d1e8ce56a96467f2832b114ceaeddb6",
+      "verdict": "pass",
+      "reason": "Repeated Mina explicitly connects younger brother to Mina without deriving Mina gender from name or English her; height comparison remains correct.",
+      "contexts": [
+        {
+          "itemId": "ba881c3d",
+          "skillId": "e.e5.read",
+          "englishTarget": "Mina is taller than her brother.",
+          "koreanMeaning": "미나는 남동생보다 키가 커요.",
+          "rule": "짧은 형용사의 비교급은 -er을 붙이고 than과 함께 써요."
+        }
+      ],
+      "hashBindingPass": true
+    },
+    {
+      "index": 345,
+      "sourceHash": "eff9be42743374b5348fbf233f1509a96164d5d25e3347402d05b08e0a914573",
+      "contextHash": "ba46e990f301abc67cbd87cc485aeac32f64701f87c91e7427b5fba9edca1c8a",
+      "beforeHash": "e058306c7c5d6d1cc2e92e00347be716d0b12f437142d07b7de869ccc77b77aa",
+      "expectedAfterHash": "590f9a2e5e4c43ec64da6f80652370273433425fa41399e36aa9268984b33b2d",
+      "currentTargetHash": "590f9a2e5e4c43ec64da6f80652370273433425fa41399e36aa9268984b33b2d",
+      "verdict": "pass",
+      "reason": "make matches 만들다/make without adding an unsupported baking method; future plan and explicitly female birthday owner retained.",
+      "contexts": [
+        {
+          "itemId": "229f844a",
+          "skillId": "e.e6.tense",
+          "englishTarget": "I am going to make a cake for her birthday.",
+          "koreanMeaning": "나는 그녀의 생일을 위해 케이크를 만들 거예요.",
+          "rule": "be going to 뒤에는 동사원형이 와요. 앞으로의 계획을 말할 때 써요."
+        }
+      ],
+      "hashBindingPass": true
+    },
+    {
+      "index": 151,
+      "sourceHash": "6bfb5eab891dadc9f568d41199b0ac48236b7ff8eeed00996e5aa6b264e058c0",
+      "contextHash": "6be70c8753dac47692e4e85c8c6f3abfa64b7ece9395bb7c7ee87bb1d59962a8",
+      "beforeHash": "9cae6aec6bfb2969bfd95e48056ec3a50fcb3c874e4e1a31e237e0635ea220d4",
+      "expectedAfterHash": null,
+      "currentTargetHash": "75cca0cf4dee1b7ab6eb0382f3ec23dd9f68bc56c4d8fe0cd50ef35879639f1f",
+      "verdict": "pass",
+      "reason": "no dey ... at all expresses absolute habitual negation, not not-yet. Speaker, school location and breakfast object retained.",
+      "contexts": [
+        {
+          "itemId": "7eb39e5c",
+          "skillId": "e.e3.routine",
+          "englishTarget": "I never eat breakfast at school.",
+          "koreanMeaning": "나는 학교에서 아침을 절대 먹지 않아요.",
+          "rule": "never가 이미 부정이라 don't를 함께 쓰지 않아요. never는 일반동사 앞에 두고, 주어가 I이면 동사원형을 써요."
+        }
+      ],
+      "hashBindingPass": true
+    }
+  ],
+  "summary": {
+    "reviewed": 5,
+    "pass": 5,
+    "limit": "Semantic AI recheck only, not Nigerian Pidgin native/teacher approval.151 manifest supplies no afterHash; actual after text and current target hash are recorded."
+  }
+}
