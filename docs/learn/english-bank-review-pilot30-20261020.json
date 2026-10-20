@@ -2284,5 +2284,116 @@
     "naturalness": "ok"
    }
   }
+ ],
+ "followUp": [
+  {
+   "date": "2026-10-20",
+   "scope": "gender-safe rewrites: ar x5 (held items) + vi eb-e6a4c5e4-q2",
+   "reviewer": "independent AI agent (fable), separate from the rewriting agent; not teacher/native review",
+   "items": [
+    {
+     "id": "ar|eb-d512193c-q1",
+     "srcHash": "ddeddfe446",
+     "trHash": "c7a53f82a3",
+     "verdict": "ok",
+     "genderAssumed": false,
+     "evidence": {
+      "meaning": "trQ asks why it is not possible for Sora to meet Jun in the morning, which matches srcQ 'Why can't Sora meet Jun in the morning?'.",
+      "whyFacts": "Both facts of srcWhy are present: the reason is attributed to what Sora said (بحسب كلام سورا) and the content is a piano lesson in the morning (درس بيانو في الصباح).",
+      "negationTense": "ok",
+      "quotes": "ok",
+      "number": "Singular throughout (one lesson, one morning), matching the passage 'a piano lesson in the morning'; no change of meaning.",
+      "genderWordsChecked": "يتعذّر (3ms, but its grammatical subject is the masculine verbal noun لقاء 'meeting', not Sora); لقاء (noun); سورا / جون (bare names, no gendered marker); كلام (noun); هناك (impersonal); درس (noun). No verb, adjective or pronoun agrees with Sora or Jun.",
+      "answerLogicSame": true,
+      "naturalness": "ok; يتعذّر is slightly formal for a children's dialogue but idiomatic. Optional (not required): 'لدى سورا درس بيانو في الصباح' would state explicitly that the lesson is Sora's while staying gender-neutral."
+     }
+    },
+    {
+     "id": "ar|eb-d512193c-q3",
+     "srcHash": "eb8be71a7c",
+     "trHash": "96723bbb20",
+     "verdict": "ok",
+     "genderAssumed": false,
+     "evidence": {
+      "meaning": "trQ asks what Sora should bring, matching srcQ 'What should Sora bring?'.",
+      "whyFacts": "Both facts present: only a water bottle is to be brought (زجاجة ماء فقط) and the kite is already prepared (الطائرة الورقية ... جاهزة).",
+      "negationTense": "ok",
+      "quotes": "ok",
+      "number": "Singular 'a water bottle' and singular 'the kite' match the passage ('Just a water bottle', 'a big kite'); no change.",
+      "genderWordsChecked": "ينبغي (impersonal, subject is the verbal noun إحضار); إحضاره (the ـه suffix refers back to ما الذي 'the thing', not to Sora); المطلوب (passive participle agreeing with the thing required, not with Sora); هي and جاهزة (agree with الطائرة الورقية 'the kite', a feminine noun). Nothing agrees with Sora or Jun.",
+      "answerLogicSame": true,
+      "naturalness": "ok"
+     }
+    },
+    {
+     "id": "ar|eb-d512193c-q5",
+     "srcHash": "c476ad03cc",
+     "trHash": "73524539c3",
+     "verdict": "ok",
+     "genderAssumed": false,
+     "evidence": {
+      "meaning": "trQ asks who will go with Jun, matching srcQ 'Who is going with Jun?' (English present progressive for a plan rendered as Arabic future).",
+      "whyFacts": "The single fact of srcWhy is present: the evidence phrase 'My brother and I' is quoted and attributed to Jun's words (ورد في كلام جون).",
+      "negationTense": "ok",
+      "quotes": "ok",
+      "number": "Interrogative من with default singular agreement; the passage answer is one person ('My brother'), so no change. The quote keeps 'My brother and I' verbatim.",
+      "genderWordsChecked": "من الذي / سيذهب (default masculine-singular agreement of the interrogative 'who', referring to the unknown companion, not to Jun; the companion is in any case 'my brother'); ورد (subject is the quoted phrase); كلام (noun); جون (bare name). The gendered verb يقول of the previous version is gone.",
+      "answerLogicSame": true,
+      "naturalness": "ok"
+     }
+    },
+    {
+     "id": "ar|eb-1387413b-q1",
+     "srcHash": "0b1149ccc0",
+     "trHash": "119104ba0e",
+     "verdict": "ok",
+     "genderAssumed": false,
+     "evidence": {
+      "meaning": "trQ asks for the reason for Mina's rejection of the volcano idea (nominalised), equivalent to srcQ 'Why does Mina reject the volcano idea?'.",
+      "whyFacts": "Both facts present: Mina's line 'Three groups already chose that' is quoted and attributed to Mina, and the paraphrase states other groups had already chosen the same topic (مجموعات أخرى اختارت الموضوع نفسه بالفعل).",
+      "negationTense": "ok (past 'already chose' rendered as past اختارت ... بالفعل)",
+      "quotes": "ok",
+      "number": "Plural 'groups' kept as مجموعات; the passage says 'Three groups'; the paraphrase 'other groups' matches srcWhy '다른 조들'. No change.",
+      "genderWordsChecked": "رفض (verbal noun, no agreement); مينا (bare name); ورد (subject is the quoted phrase); كلام (noun); اختارت (feminine singular, the obligatory agreement for the non-human plural مجموعات 'groups', not a person). The gendered قالت of the previous version is gone.",
+      "answerLogicSame": true,
+      "naturalness": "ok"
+     }
+    },
+    {
+     "id": "ar|eb-1387413b-q2",
+     "srcHash": "274b0131a6",
+     "trHash": "6236223673",
+     "verdict": "ok",
+     "genderAssumed": false,
+     "evidence": {
+      "meaning": "trQ asks what can be inferred about Mina, matching srcQ.",
+      "whyFacts": "All three facts present: the judges may get bored (الحكام قد يشعرون بالملل), a preference for a 'more unusual' topic (quoted verbatim), and the inference that Mina wants a noticeable/eye-catching work (هدف مينا هو عمل لافت للنظر).",
+      "negationTense": "ok (modal 'might get bored' rendered as قد يشعرون)",
+      "quotes": "ok",
+      "number": "'The judges' plural kept as الحكام with plural verb; the passage has plural 'judges'. Singular 'a work' matches 눈에 띄는 작품. No change.",
+      "genderWordsChecked": "استنتاجه (ـه refers to ما الذي, not Mina); يشير and يُظهر (subject is كلام 'Mina's words', a masculine noun); يشعرون (masculine plural agreeing with الحكام 'the judges', the unmarked default for a human group of unspecified composition; the passage does not gender the judges and this is the only idiomatic plural, so it is not a commitment); هو (refers to هدف 'goal', masculine noun, not Mina); لافت (agrees with عمل). The gendered ترى / تفضّل / تريد of the previous version are gone.",
+      "answerLogicSame": true,
+      "naturalness": "ok; 'هدف مينا هو عمل لافت للنظر' is a little stiff ('هدف مينا هو تقديم عمل لافت للنظر' would read more smoothly) but it is clear and correct."
+     }
+    },
+    {
+     "id": "vi|eb-e6a4c5e4-q2",
+     "srcHash": "5ec1d267f3",
+     "trHash": "a824834497",
+     "verdict": "ok",
+     "genderAssumed": false,
+     "evidence": {
+      "meaning": "trQ asks what Noah thinks about the weather, matching srcQ.",
+      "whyFacts": "Both facts present: Noah packs the raincoat 'just in case' (quoted verbatim), and this shows Noah thinks it may rain but is not certain (trời có thể mưa nhưng chưa chắc chắn).",
+      "negationTense": "ok ('chưa chắc chắn' = not certain, matching 확실하지는 않다)",
+      "quotes": "ok",
+      "number": "Vietnamese has no number marking; one raincoat, one bag, as in the passage. No change.",
+      "genderWordsChecked": "No pronoun or kinship term for Noah: the earlier 'cậu ấy' has been replaced by the repeated name 'Noah' (twice). 'cặp' (bag) and 'trời' (sky/weather) are not person-referring.",
+      "answerLogicSame": true,
+      "naturalness": "ok; repeating 'Noah' twice in one sentence is slightly heavy but natural in Vietnamese and is the correct way to avoid a gendered pronoun."
+     }
+    }
+   ]
+  }
  ]
 }
