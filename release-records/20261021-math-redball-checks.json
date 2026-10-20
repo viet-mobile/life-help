@@ -1,0 +1,124 @@
+{
+  "date": "2026-10-21",
+  "worker": "life-help",
+  "productionVersion": "e488532a-4d8c-41cb-9d94-d8c04b59d9c4",
+  "productionPercent": 100,
+  "rollbackVersion": "9b1aaed3-d1a2-42ee-8931-f15fc8d8716f",
+  "codeSHA": "b179dd5d906c6191a6ddc47adb12943b3e959d55",
+  "stagingVersion": "236f6aad-ad9a-4d42-ac57-f74199e9d1d9",
+  "mediaVersion": "redball-20261021",
+  "baseVideoCount": 455,
+  "neutralVideoCount": 193,
+  "posterCount": 3240,
+  "mathSceneNodesUnchanged": true,
+  "curriculumMetadataUnchanged": true,
+  "mathSceneSHA256": "c99c8cb580432713735eeeb7fbdeb7f32a2434deea1a7b5270fde05b6bdcfbed",
+  "completeExistingVideoLocalePacks": 46,
+  "newLanguageRegistryActivated": false,
+  "checks": {
+    "typecheck": "PASS",
+    "vitest": {
+      "files": 109,
+      "tests": 1570,
+      "passed": 1570
+    },
+    "stagingIntegrated": "10/10 PASS",
+    "stagingRunId": "STG-mvgvcyob-0726e7",
+    "currentRunResidue": 0,
+    "foreignRowsUntouched": "PASS",
+    "fullVideoDecode": "648/648 PASS",
+    "localGalleryLocales": "46/46 PASS",
+    "localViewports": [
+      320,
+      390,
+      768,
+      1280
+    ],
+    "stagingMathDashboardJourney": "PASS",
+    "productionOrdinaryGuestJourney": {
+      "version": "e488532a-4d8c-41cb-9d94-d8c04b59d9c4",
+      "overrideUsed": false,
+      "viewport": 390,
+      "dashboardEntry": "PASS",
+      "playback": "PASS",
+      "nextConcept": "PASS",
+      "reload": "PASS",
+      "questionXpUnchanged": true,
+      "pageErrors": []
+    },
+    "productionPublicSmoke": {
+      "version": "e488532a-4d8c-41cb-9d94-d8c04b59d9c4",
+      "overrideUsed": false,
+      "checks": [
+        {
+          "host": "math.life.help",
+          "path": "/",
+          "status": 200,
+          "notFoundExpected": false
+        },
+        {
+          "host": "math.life.help",
+          "path": "/motion",
+          "status": 200,
+          "notFoundExpected": false
+        },
+        {
+          "host": "english.life.help",
+          "path": "/",
+          "status": 200,
+          "notFoundExpected": false
+        },
+        {
+          "host": "english.life.help",
+          "path": "/motion",
+          "status": 200,
+          "notFoundExpected": true
+        },
+        {
+          "host": "korean.life.help",
+          "path": "/",
+          "status": 200,
+          "notFoundExpected": false
+        },
+        {
+          "host": "korean.life.help",
+          "path": "/motion",
+          "status": 200,
+          "notFoundExpected": true
+        },
+        {
+          "host": "korea.life.help",
+          "path": "/",
+          "status": 200,
+          "notFoundExpected": false
+        },
+        {
+          "host": "jiu.life.help",
+          "path": "/",
+          "status": 200,
+          "notFoundExpected": false
+        },
+        {
+          "host": "jiu.life.help",
+          "path": "/jiu/admin",
+          "status": 200,
+          "notFoundExpected": false
+        }
+      ],
+      "videos": 455,
+      "localizedAlternatives": 193,
+      "translationPacks": 46,
+      "downloadedMovieHashes": "PASS",
+      "privateInputs": "404"
+    },
+    "workerCompressedMiB": 5.78,
+    "workerBudgetMiB": 7.5,
+    "bundleSecretScan": "PASS with positive control",
+    "jiuExactValueScan": "PASS",
+    "unchangedNonAssetRuntimeBindings": 14,
+    "unchangedJiuFiles": 41
+  },
+  "productionSchemaMigrations": 0,
+  "productionAuthenticatedAccountJourney": "NOT_RUN; credentials not used",
+  "teacherReview": "NOT_ADDED; mathematical content unchanged"
+}
