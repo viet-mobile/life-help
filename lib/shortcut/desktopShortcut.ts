@@ -1,3 +1,4 @@
+import { isJiuHost, JIU_TITLE, JIU_DESCRIPTION, JIU_ORIGIN } from "@/lib/jiu/brand";
 // lib/shortcut/desktopShortcut.ts
 import {
   SITE_METADATA,
@@ -95,6 +96,19 @@ export function getDomainShortcutDetails(options?: {
   const host = (options?.host || "").split(":")[0].toLowerCase().trim();
   const pathname = options?.pathname || "/";
   const searchParams = options?.searchParams;
+
+  if (isJiuHost(host)) {
+    const canonicalDomain = "jiu.life.help";
+    const canonicalUrl = `${JIU_ORIGIN}${pathname.startsWith("/") ? pathname : "/"}`;
+    const iconIcoUrl = "/logos/favicon-jiu.ico?v=jiu-1";
+    return {
+      host, portal: "customer", country: null, countryDisplayName: "JIU", lang: "ko",
+      canonicalDomain, canonicalUrl, title: JIU_TITLE, shortName: "JIU", description: JIU_DESCRIPTION,
+      iconPngUrl: "/logos/favicon-jiu.png?v=jiu-1", iconIcoUrl,
+      urlFileContent: `[InternetShortcut]\r\nURL=${canonicalUrl}\r\nIconIndex=0\r\nIconFile=${JIU_ORIGIN}${iconIcoUrl}\r\nComment=${JIU_DESCRIPTION}\r\n`,
+      suggestedFileName: "jiu.life.help.url",
+    };
+  }
 
   // 1. Detect Portal
   let portal: "tech" | "chat" | "sys" | "customer" = "customer";

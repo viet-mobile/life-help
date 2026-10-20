@@ -1,4 +1,4 @@
-﻿import { NextResponse, type NextRequest } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 import { hasRole } from "@/lib/auth/roles";
 import { updateSession } from "@/utils/supabase/middleware";
 import { LOCALE_COOKIE, LOCALE_COOKIE_MAX_AGE } from "@/lib/learn/i18n";
@@ -487,6 +487,9 @@ export async function proxy(request: NextRequest) {
    * Country-specific favicon.ico routing
    */
   if (request.nextUrl.pathname === "/favicon.ico") {
+    if (host === "jiu.life.help" || host === "jiu.localhost") {
+      return NextResponse.rewrite(new URL("/jiu/favicon.ico", request.url));
+    }
     // math.life.help / english.life.help: the site's own logo (LIFE.HELP with MATH / ENGLISH above it), served by a route handler.
     // The Worker runs first for /favicon.ico only (wrangler.jsonc assets.run_worker_first); public/ files are NOT reachable by a rewrite there.
     const learnFaviconSite = getLearnSiteFromHost(host);
@@ -495,6 +498,23 @@ export async function proxy(request: NextRequest) {
     }
     // Every existing host keeps the generic LIFE.HELP favicon (app/favicon.ico, byte-identical to public/favicon.ico) - what production has always served.
     return NextResponse.next();
+  }
+
+  if (host === "jiu.life.help" || host === "jiu.localhost") {
+    const path = request.nextUrl.pathname;
+    if (path === "/study" || path.startsWith("/study/") || path === "/api/learn" || path.startsWith("/api/learn/")) {
+      return new NextResponse("Not Found", { status: 404 });
+    }
+    const jiuHeaders = new Headers(request.headers);
+    jiuHeaders.set("x-life-portal", "jiu");
+    jiuHeaders.set("x-life-language", "ko");
+    jiuHeaders.delete("x-life-country");
+    const target = path === "/" ? "/jiu" : path;
+    const out = target !== path
+      ? NextResponse.rewrite(new URL(target + request.nextUrl.search, request.url), { request: { headers: jiuHeaders } })
+      : NextResponse.next({ request: { headers: jiuHeaders } });
+    out.headers.set("X-Robots-Tag", "noindex, nofollow");
+    return out;
   }
 
   /**
