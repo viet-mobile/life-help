@@ -1,0 +1,211 @@
+{
+  "taskId": "e-06",
+  "status": "AUTHOR_DRAFT_NOT_INDEPENDENTLY_REVIEWED",
+  "rows": {
+    "title": {
+      "sourceHash": "e93279638418143de0450f971e4d0c2a41223b5068508d1b958868009aaba25e",
+      "translation": "Find schedules wey clash inside group message",
+      "role": "localized_instruction_or_meaning"
+    },
+    "goal": {
+      "sourceHash": "7fb14e5f84708913be9362332c42e8634843ae4f912eff312ae157c2092427ea",
+      "translation": "Find two schedule statements wey no fit together, explain the confusion dem fit cause, then rewrite dem.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "material": {
+      "sourceHash": "c4c9a8a2c319ec793f37e3fb4ba8841af527c9f54ef153c30d677aec3fd54e6a",
+      "translation": "Science-project group leader post this message for group chat. Each line get number. Afternoon and evening times use p.m.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "thinking.0": {
+      "sourceHash": "7e166141becfe4350835367cbb0da98a29f0eca9c2d7d21c69bfb695907a8056",
+      "translation": "Find schedule contradictions between sentences",
+      "role": "localized_instruction_or_meaning"
+    },
+    "thinking.1": {
+      "sourceHash": "f57a7585767747f0dcc16a6723b7eeaabfa36f3a74d05121f15aec64ac0ccb0c",
+      "translation": "Predict the problem wey fit happen",
+      "role": "localized_instruction_or_meaning"
+    },
+    "thinking.2": {
+      "sourceHash": "b406f82683c700099a56889892f9e5503cc3fa233f7e670038e12e127dd0967e",
+      "translation": "Rewrite to fix am",
+      "role": "localized_instruction_or_meaning"
+    },
+    "prereq.0": {
+      "sourceHash": "5f0f075c4b0bfcece31e505c02fd1f57d1bc233b9de21fb8686748bb7ad6913d",
+      "translation": "by / before / after with days and times",
+      "role": "localized_instruction_or_meaning"
+    },
+    "prereq.1": {
+      "sourceHash": "6a7c2c4f36970afaa05b6b45bea2951859724cf5fc258a1f7d69ea64a2dca3ed",
+      "translation": "Verbs like send and put together",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s1.prompt": {
+      "sourceHash": "8e5c82ddcc428db0232094e86554b7a34d5a98a2da5165f5dbca276ca59aed66",
+      "translation": "Choose one sentence wey fit cause problem if group members follow the plan. Its time order no fit another line.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s1.hint.0": {
+      "sourceHash": "22a4e86fee3e9b8db7d1077c26cf8dc8ddcc7b2417a9ae6fde446ae36b563fee",
+      "translation": "Find all lines wey get times and arrange the times from earlier to later.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s1.hint.1": {
+      "sourceHash": "eb35639c3c80f6a1ac73674bd7abbbadd530667a19622ebd5cec682141e944c2",
+      "translation": "Which one should come first: deadline for sending parts or time for joining dem?",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s1.line.0": {
+      "sourceHash": "c75b6ea25c7c4b39fc155f2985b34b7949fc3e004145dda528385af6613e382b",
+      "translation": "Hi team! Our science poster is due on Friday morning.",
+      "role": "preserved_learning_target"
+    },
+    "s.s1.line.1": {
+      "sourceHash": "3668d04237d14d12ca29f73995eb927f092c440f618adefafce990eb2005aa91",
+      "translation": "Please send me your part by Thursday 9:00 p.m.",
+      "role": "preserved_learning_target"
+    },
+    "s.s1.line.2": {
+      "sourceHash": "48896eebc0a962092628f688184156a86c90e058f5e3cf700ef600ab0f612fe4",
+      "translation": "I will put all the parts together on Thursday at 4:30 p.m., right after school.",
+      "role": "preserved_learning_target"
+    },
+    "s.s1.line.3": {
+      "sourceHash": "f10cb309c8f12370df1f4c654b3986ef5c377e0bde7f7d737c1d8f45dbfd5948",
+      "translation": "Then we will print it before class on Friday.",
+      "role": "preserved_learning_target"
+    },
+    "s.s1.explain": {
+      "sourceHash": "6c83f1b598de36cdd614bb98fec1b35606335218bbe3725a6b847beb42150cf1",
+      "translation": "Joining time na Thursday 4:30 p.m., but deadline na Thursday 9:00 p.m. Deadline later than joining time, so lines 2 and 3 clash. Lines 1 and 4 concern Friday deadline and printing; dem no clash with each other.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s2.prompt": {
+      "sourceHash": "3aa1c93f32534e8bdaddb93b085493ac749376d312d06c540ee6b3cddd63182a",
+      "translation": "If everybody follow this message as e be, wetin fit actually happen?",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s2.hint.0": {
+      "sourceHash": "1ce15c6bc265a4f239be445eb4905db22b8df613fe3c597d89f2c988ed903083",
+      "translation": "Imagine say one group member send part exactly Thursday night.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s2.hint.1": {
+      "sourceHash": "c9422f32cde9b72105c7ab21245e71b9955179811760f04bb546432e0173fe96",
+      "translation": "By then, wetin group leader don already finish?",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s2.o.a": {
+      "sourceHash": "ba7a51fcef80ba13940dd6a785bb6f51f86294659edca6e2a92ed11ec6d64028",
+      "translation": "Part wey person fit submit till 9:00 p.m. fit never arrive when dem join parts at 4:30 p.m.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s2.o.b": {
+      "sourceHash": "40860b90fe6a259673ea8e06ce8505b9dd43f601c5b86cc7aae17df866d79f62",
+      "translation": "All parts arrive before joining work, so poster finish early.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s2.r.b": {
+      "sourceHash": "846bb674e6ffbda87207f69d80cc3eb89fb42214651b11e118f70045abf64253",
+      "translation": "Joining time na 4:30 p.m.; sending deadline na 9:00 p.m. Compare the times again.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s2.o.c": {
+      "sourceHash": "5b19c83c726fb001020f42dac06bcfbed5035d29c84192235fe2ae418309f931",
+      "translation": "Time no remain to print before Friday class.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s2.r.c": {
+      "sourceHash": "3b8c2c950086d730112bd248bee9af95e11252e6ebfc50337700c0c57069f581",
+      "translation": "The problem na order within Thursday. Time still dey before Friday morning.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s2.explain": {
+      "sourceHash": "40cc90843f62bb50e9b61af162bb377e422a71e976d881ce8886f03d8b82715b",
+      "translation": "Joining work come first, but people fit send parts till later. So late-sent parts fit miss the combined work.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s3.prompt": {
+      "sourceHash": "8724903cdbe24a3cc18e10ec2a2364bd8037e6e99401dfd97153290a7f2bffd5",
+      "translation": "Rewrite one or both clashing lines in English. Make days and times fit together.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s3.hint.0": {
+      "sourceHash": "35e6e9892c2da097102737da9db9526b2ebcca0acccbf3c66738aa05720bce9c",
+      "translation": "First decide which time you go change.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s3.hint.1": {
+      "sourceHash": "a9d944744fc4bd8eed0f8cf47b426fac56e43929b6336c8451735ecb1460212c",
+      "translation": "After changing am, read again and check order: sending deadline, joining, then printing.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s3.placeholder": {
+      "sourceHash": "f3a077f91f9c56a3a2e77b71916712a303965582d4e13ceee9e991c065578ce0",
+      "translation": "Example: Please send me your part by ...",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s3.selfAssess.0": {
+      "sourceHash": "849002444bfb6ad5b02d5a17edbdef93d48fe3ff263c15088b3997a543a4c1b5",
+      "translation": "Sending deadline come before joining time? Compare both times as numbers.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s3.selfAssess.1": {
+      "sourceHash": "36fe1a901e932d7fcc3ec88e6f592a62e5b748a0569d6243fe91d6badc361c6e",
+      "translation": "Enough time remain before Friday-morning deadline?",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s3.model.0": {
+      "sourceHash": "2419d91d5c74b32bf50565f278a7f96104b8e211a1041357d2111e1dc4eba74f",
+      "translation": "Please send me your part by Wednesday night.",
+      "role": "preserved_learning_target"
+    },
+    "s.s3.modelNote.0": {
+      "sourceHash": "851103fc8f2410841d8679714f2f0f697f9b5bb57c83ba18642ac39eeda398f6",
+      "translation": "This one move sending deadline earlier.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s3.model.1": {
+      "sourceHash": "edee2876a89c101a4edb03f8bcf096f69ca57f84d9a43a1e4a02a7025ebc4fd6",
+      "translation": "I will put all the parts together on Friday before class, so please send your part by Thursday 9:00 p.m.",
+      "role": "preserved_learning_target"
+    },
+    "s.s3.modelNote.1": {
+      "sourceHash": "68727d3c83e13a25bf98f0ecbb9a03b0b613a7b6c99efd102f69c252fa3061e3",
+      "translation": "This one move joining time later and add explanation.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "meta.levelLabel": {
+      "sourceHash": "7c8a2d030d0915ad8edd67ae13df1d89e23909fcc4f1f12257866b129a649ab6",
+      "translation": "Junior secondary school",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s3.humanReview": {
+      "sourceHash": "fa54cf4bcfb59ee4d20dd708df18ed5d42c30ee2d4c8875941bfab8429a5e190",
+      "translation": "Automatic check only look for words, copied original wording, or deadline wey still only say Thursday night or evening. Person need check whether revised schedule logical. If joining time move like second model, check whether final printing line still fit.",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s3.check.w1.label": {
+      "sourceHash": "4357c254f382ba1270b50002c3faf99cece56b2b4cf955386bc72a6e69ed6039",
+      "translation": "Schedule-related verb dey",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s3.check.w2.label": {
+      "sourceHash": "9a6fe7a983d63eb0635370e2679a847118f21719fb84a37cdba878f6a3233529",
+      "translation": "Day or time dey",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s3.check.w3.label": {
+      "sourceHash": "1441dc284b3d8eb5232b823bc093503803b3714f9399f476e4e0f62c37be3b50",
+      "translation": "No unchanged original or Thursday deadline later than joining time (4:30)",
+      "role": "localized_instruction_or_meaning"
+    },
+    "s.s3.check.w4.label": {
+      "sourceHash": "ad1f95c44b092b82d4f6314fd283336a127ffece1c71cc708d350d7653665da1",
+      "translation": "Both original times (9:00, 4:30) no remain together unchanged",
+      "role": "localized_instruction_or_meaning"
+    }
+  }
+}

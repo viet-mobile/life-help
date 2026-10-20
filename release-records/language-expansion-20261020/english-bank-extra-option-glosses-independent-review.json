@@ -1,0 +1,1286 @@
+{
+  "status": "INDEPENDENT_AI_MEANING_REVIEW_NOT_NATIVE_OR_TEACHER_APPROVAL",
+  "scope": {
+    "locales": [
+      "af",
+      "cs",
+      "fi",
+      "hu",
+      "pcm",
+      "ro",
+      "tl"
+    ],
+    "keysPerLocale": 8,
+    "totalTranslations": 56,
+    "historicalMissingWrongOptionQuestions": 29,
+    "allBankQuestionsContainingAnyOfEightKeys": 41
+  },
+  "inputFileSHA256": {
+    "english-bank-af-option-glosses.json": "b2ec23e62db41bd07f05646e3a131a55849a44377535557ceba277cb7aee849e",
+    "english-bank-cs-option-glosses.json": "32c60f97f759146b89a14ad70f04033e008486bde3052f240a0d232be914bd47",
+    "english-bank-fi-option-glosses.json": "4b2533e6ffa349fbdc7de9be1c3e8bc201a7b11fc4ac939d508e365647da5e76",
+    "english-bank-hu-option-glosses.json": "2e0d21f1a5cd29060a662c7c22891e6b185a96827d2456072485f3f61dbceb6c",
+    "english-bank-pcm-option-glosses.json": "24a9ba91214a6f2a14f33e371a63897995e19989baa40da71af51503986788d2",
+    "english-bank-ro-option-glosses.json": "eb7666b5c75d544dfcd46ba13da154c6dc5535877e38f31c38c58815f1ea8610",
+    "english-bank-tl-option-glosses.json": "0c65201c1406129232db45a439e94dab06708fac1d82560ece62a01ddfec2a55"
+  },
+  "diagnostic": {
+    "originalScript": "/private/tmp/english-bank-word-gaps.ts",
+    "currentRunResult": {
+      "missingKeys": 0,
+      "missingQuestions": 0
+    },
+    "reproduction": "A private script copy removed only these eight w: entries from the in-memory kit, then ran the same localizer unchanged. Reproduced 8 missing glosses across exactly 29 question IDs. No runtime/source edits.",
+    "reproducedOutputSHA256": "2141828e123166bd5d1ad1fb0af7c4794d5a703ac9e9af262dbff19506f3196c",
+    "questionsBySource": {
+      "안녕": [
+        {
+          "qid": "eb-d1a87f5c-enko",
+          "optionId": "c",
+          "prompt": "영어 단어 “sorry”의 뜻으로 알맞은 것은?",
+          "answer": {
+            "kind": "choice",
+            "id": "a"
+          },
+          "explanation": "“sorry” → “미안해요”. 예문: Oh, sorry! I am late. Please wait for me. (아, 미안해요! 제가 늦었어요. 저를 기다려 주세요.)"
+        },
+        {
+          "qid": "eb-da1bb6b1-enko",
+          "optionId": "d",
+          "prompt": "영어 단어 “please”의 뜻으로 알맞은 것은?",
+          "answer": {
+            "kind": "choice",
+            "id": "b"
+          },
+          "explanation": "“please” → “부탁해요”. 예문: Water, please. (물 주세요.) please는 부탁할 때 말 끝에 붙여서 정중하게 말해요."
+        },
+        {
+          "qid": "eb-746ddde8-enko",
+          "optionId": "d",
+          "prompt": "영어 단어 “thanks”의 뜻으로 알맞은 것은?",
+          "answer": {
+            "kind": "choice",
+            "id": "a"
+          },
+          "explanation": "“thanks” → “고마워요”. 예문: Oh, thanks for the gift! (아, 선물 고마워요!)"
+        }
+      ],
+      "친절한": [
+        {
+          "qid": "eb-3b896490-enko",
+          "optionId": "a",
+          "prompt": "영어 단어 “happy”의 뜻으로 알맞은 것은?",
+          "answer": {
+            "kind": "choice",
+            "id": "c"
+          },
+          "explanation": "“happy” → “행복한”. 예문: I am happy to see you. (너를 봐서 기뻐요.)"
+        },
+        {
+          "qid": "eb-ddc238f2-enko",
+          "optionId": "b",
+          "prompt": "영어 단어 “slow”의 뜻으로 알맞은 것은?",
+          "answer": {
+            "kind": "choice",
+            "id": "c"
+          },
+          "explanation": "“slow” → “느린”. 예문: The turtle is slow, so it comes last in the race. (거북이는 느려서 경주에서 꼴찌로 들어와요.)"
+        },
+        {
+          "qid": "eb-6cb0b499-enko",
+          "optionId": "b",
+          "prompt": "영어 단어 “soft”의 뜻으로 알맞은 것은?",
+          "answer": {
+            "kind": "choice",
+            "id": "d"
+          },
+          "explanation": "“soft” → “부드러운”. 예문: My pillow is soft, so I sleep well at night. (내 베개는 부드러워서 나는 밤에 잘 자요.)"
+        },
+        {
+          "qid": "eb-04a3e465-enko",
+          "optionId": "d",
+          "prompt": "영어 단어 “angry”의 뜻으로 알맞은 것은?",
+          "answer": {
+            "kind": "choice",
+            "id": "c"
+          },
+          "explanation": "“angry” → “화난”. 예문: Mina is angry because her brother broke her toy. (미나는 남동생이 장난감을 망가뜨려서 화가 났어요.)"
+        },
+        {
+          "qid": "eb-0ad2f01b-enko",
+          "optionId": "c",
+          "prompt": "영어 단어 “popular”의 뜻으로 알맞은 것은?",
+          "answer": {
+            "kind": "choice",
+            "id": "b"
+          },
+          "explanation": "“popular” → “인기 있는”. 예문: Soccer is a popular sport at my school. (축구는 우리 학교에서 인기 있는 운동이에요.)"
+        }
+      ],
+      "보다": [
+        {
+          "qid": "eb-839081cc-enko",
+          "optionId": "c",
+          "prompt": "영어 단어 “thank”의 뜻으로 알맞은 것은?",
+          "answer": {
+            "kind": "choice",
+            "id": "d"
+          },
+          "explanation": "“thank” → “감사하다”. 예문: I thank my teacher. (나는 선생님께 감사해요.)"
+        },
+        {
+          "qid": "eb-52fce98b-enko",
+          "optionId": "d",
+          "prompt": "영어 단어 “say”의 뜻으로 알맞은 것은?",
+          "answer": {
+            "kind": "choice",
+            "id": "c"
+          },
+          "explanation": "“say” → “말하다”. 예문: I say hello to my friend. (나는 친구에게 안녕이라고 말해요.)"
+        },
+        {
+          "qid": "eb-e29bf385-enko",
+          "optionId": "b",
+          "prompt": "영어 단어 “go”의 뜻으로 알맞은 것은?",
+          "answer": {
+            "kind": "choice",
+            "id": "a"
+          },
+          "explanation": "“go” → “가다”. 예문: Let's go to school. (학교에 가자.)"
+        },
+        {
+          "qid": "eb-c7b7a64f-enko",
+          "optionId": "d",
+          "prompt": "영어 단어 “run”의 뜻으로 알맞은 것은?",
+          "answer": {
+            "kind": "choice",
+            "id": "b"
+          },
+          "explanation": "“run” → “달리다”. 예문: I run to school. (나는 학교까지 달려요.)"
+        },
+        {
+          "qid": "eb-a34bcfae-enko",
+          "optionId": "c",
+          "prompt": "영어 단어 “draw”의 뜻으로 알맞은 것은?",
+          "answer": {
+            "kind": "choice",
+            "id": "b"
+          },
+          "explanation": "“draw” → “그리다”. 예문: I draw a house. (나는 집을 그려요.)"
+        }
+      ],
+      "거대한": [
+        {
+          "qid": "eb-5e53ea8d-enko",
+          "optionId": "b",
+          "prompt": "영어 단어 “busy”의 뜻으로 알맞은 것은?",
+          "answer": {
+            "kind": "choice",
+            "id": "d"
+          },
+          "explanation": "“busy” → “바쁜”. 예문: Mom has a lot of work today. She is very busy. (엄마는 오늘 할 일이 많아요. 엄마는 아주 바빠요.)"
+        },
+        {
+          "qid": "eb-5048bb19-enko",
+          "optionId": "b",
+          "prompt": "영어 단어 “tiny”의 뜻으로 알맞은 것은?",
+          "answer": {
+            "kind": "choice",
+            "id": "a"
+          },
+          "explanation": "“tiny” → “아주 작은”. 예문: The ant was so tiny that I could hardly see it. (그 개미는 너무 작아서 거의 보이지 않았어요.) tiny는 huge와 반대되는 낱말이에요."
+        },
+        {
+          "qid": "eb-10fe51a1-enko",
+          "optionId": "b",
+          "prompt": "영어 단어 “selfish”의 뜻으로 알맞은 것은?",
+          "answer": {
+            "kind": "choice",
+            "id": "d"
+          },
+          "explanation": "“selfish” → “이기적인”. 예문: A selfish person never shares anything with others. (이기적인 사람은 다른 사람과 아무것도 나누지 않아요.)"
+        },
+        {
+          "qid": "eb-36c20416-enko",
+          "optionId": "c",
+          "prompt": "영어 단어 “dangerous”의 뜻으로 알맞은 것은?",
+          "answer": {
+            "kind": "choice",
+            "id": "d"
+          },
+          "explanation": "“dangerous” → “위험한”. 예문: It is dangerous to swim in the river after a storm. (폭풍이 지난 뒤 강에서 수영하는 것은 위험해요.) dangerous는 safe와 반대되는 낱말이에요."
+        },
+        {
+          "qid": "eb-e428f430-enko",
+          "optionId": "d",
+          "prompt": "영어 단어 “polite”의 뜻으로 알맞은 것은?",
+          "answer": {
+            "kind": "choice",
+            "id": "a"
+          },
+          "explanation": "“polite” → “예의 바른”. 예문: Be polite and say thank you to the bus driver. (예의 바르게 버스 기사님께 고맙다고 말하세요.)"
+        },
+        {
+          "qid": "eb-1762d3f0-enko",
+          "optionId": "c",
+          "prompt": "영어 단어 “similar”의 뜻으로 알맞은 것은?",
+          "answer": {
+            "kind": "choice",
+            "id": "a"
+          },
+          "explanation": "“similar” → “비슷한”. 예문: My phone and your phone are very similar. (내 휴대폰과 네 휴대폰은 매우 비슷해요.)"
+        }
+      ],
+      "제안하다": [
+        {
+          "qid": "eb-b11e1379-enko",
+          "optionId": "a",
+          "prompt": "영어 단어 “promise”의 뜻으로 알맞은 것은?",
+          "answer": {
+            "kind": "choice",
+            "id": "c"
+          },
+          "explanation": "“promise” → “약속하다”. 예문: I promise to call you tonight. (오늘 밤에 전화하겠다고 약속할게.)"
+        },
+        {
+          "qid": "eb-34518ca1-enko",
+          "optionId": "a",
+          "prompt": "영어 단어 “avoid”의 뜻으로 알맞은 것은?",
+          "answer": {
+            "kind": "choice",
+            "id": "b"
+          },
+          "explanation": "“avoid” → “피하다”. 예문: You should avoid eating too much sugar. (너는 설탕을 너무 많이 먹는 것을 피해야 해요.)"
+        },
+        {
+          "qid": "eb-afb8233c-enko",
+          "optionId": "a",
+          "prompt": "영어 단어 “refuse”의 뜻으로 알맞은 것은?",
+          "answer": {
+            "kind": "choice",
+            "id": "b"
+          },
+          "explanation": "“refuse” → “거절하다”. 예문: She will refuse to sign the paper. (그녀는 그 서류에 서명하기를 거절할 거예요.)"
+        }
+      ],
+      "향상시키다": [
+        {
+          "qid": "eb-9de7a7a3-enko",
+          "optionId": "c",
+          "prompt": "영어 단어 “explain”의 뜻으로 알맞은 것은?",
+          "answer": {
+            "kind": "choice",
+            "id": "d"
+          },
+          "explanation": "“explain” → “설명하다”. 예문: Please explain the rule to the new students. (새로 온 학생들에게 그 규칙을 설명해 주세요.)"
+        },
+        {
+          "qid": "eb-7a4622c5-enko",
+          "optionId": "d",
+          "prompt": "영어 단어 “predict”의 뜻으로 알맞은 것은?",
+          "answer": {
+            "kind": "choice",
+            "id": "b"
+          },
+          "explanation": "“predict” → “예측하다”. 예문: No one can predict the weather perfectly. (아무도 날씨를 완벽하게 예측할 수는 없어요.)"
+        },
+        {
+          "qid": "eb-ca4384b4-enko",
+          "optionId": "a",
+          "prompt": "영어 단어 “overcome”의 뜻으로 알맞은 것은?",
+          "answer": {
+            "kind": "choice",
+            "id": "b"
+          },
+          "explanation": "“overcome” → “극복하다”. 예문: With hard work, you can overcome almost any fear. (노력하면 거의 모든 두려움을 극복할 수 있어요.)"
+        },
+        {
+          "qid": "eb-0a18e5d7-enko",
+          "optionId": "c",
+          "prompt": "영어 단어 “inspect”의 뜻으로 알맞은 것은?",
+          "answer": {
+            "kind": "choice",
+            "id": "b"
+          },
+          "explanation": "“inspect” → “검사하다”. 예문: An officer will inspect every bag at the airport before the passengers board. (공항에서는 승객이 탑승하기 전에 직원이 모든 가방을 꼼꼼히 검사해요.)"
+        },
+        {
+          "qid": "eb-a1f425f0-enko",
+          "optionId": "b",
+          "prompt": "영어 단어 “justify”의 뜻으로 알맞은 것은?",
+          "answer": {
+            "kind": "choice",
+            "id": "c"
+          },
+          "explanation": "“justify” → “정당화하다”. 예문: Nothing can justify cruelty to animals. (그 무엇도 동물에 대한 잔인함을 정당화할 수는 없어요.)"
+        }
+      ],
+      "자세히 설명하다": [
+        {
+          "qid": "eb-3e0f8ee0-enko",
+          "optionId": "d",
+          "prompt": "영어 단어 “assume”의 뜻으로 알맞은 것은?",
+          "answer": {
+            "kind": "choice",
+            "id": "a"
+          },
+          "explanation": "“assume” → “가정하다, 추정하다”. 예문: Don't assume that everyone knows the rule. (모든 사람이 그 규칙을 안다고 가정하지 마세요.)"
+        }
+      ],
+      "반박": [
+        {
+          "qid": "eb-09ccd8fe-enko",
+          "optionId": "d",
+          "prompt": "영어 단어 “doubt”의 뜻으로 알맞은 것은?",
+          "answer": {
+            "kind": "choice",
+            "id": "c"
+          },
+          "explanation": "“doubt” → “의심, 의문”. 예문: There is no doubt that she will win. (그녀가 이길 것이라는 데는 의심의 여지가 없어요.)"
+        }
+      ]
+    }
+  },
+  "verdictCounts": {
+    "no_material_mismatch": 56
+  },
+  "limitations": [
+    "This is independent AI semantic review, not native-speaker/teacher approval or full question-answer uniqueness certification.",
+    "Reviewed actual source meanings and all listed prompt/answer/explanation contexts; machine checks only confirm source/target hashes and row coverage.",
+    "English learning examples were read as context and not modified. No gender, number or owner facts were invented.",
+    "Synonyms may correctly share a translation; any later same-answer collision must be held as a source question defect, not repaired by inventing distinct meanings."
+  ],
+  "items": [
+    {
+      "locale": "af",
+      "key": "w:안녕",
+      "source": "안녕",
+      "sourceHash": "e8f817f346d1d411cc59d5bdda64fab3763890e1f0f8f4c15805cf78874d68bf",
+      "translation": "hallo of totsiens",
+      "targetHash": "41ca46b771418a33fcd12df9394e9ecb457e0ebf18551becbba01e442dd87da6",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses hello/goodbye greeting, not apology/request/thanks. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated. Both hello and goodbye are legitimate readings of 안녕; offering both follows the broad source key. This is a definition gloss, not a claim that every listed farewell has identical register.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-d1a87f5c-enko",
+        "eb-da1bb6b1-enko",
+        "eb-746ddde8-enko"
+      ]
+    },
+    {
+      "locale": "af",
+      "key": "w:친절한",
+      "source": "친절한",
+      "sourceHash": "36ea4102c074c4cad233c5c53f2d78e5a6b2d422368f81f8b5dbe60c8f0b8f08",
+      "translation": "vriendelik",
+      "targetHash": "1a8f0db7fcd1c3f305e41c778933cbf2b7c756d7ea8c93567641efa33b3cb2c1",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses kind/friendly adjective, not happy/slow/soft/angry/popular. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-3b896490-enko",
+        "eb-ddc238f2-enko",
+        "eb-6cb0b499-enko",
+        "eb-04a3e465-enko",
+        "eb-0ad2f01b-enko"
+      ]
+    },
+    {
+      "locale": "af",
+      "key": "w:보다",
+      "source": "보다",
+      "sourceHash": "6a45cf834264a5ec36113824c2c48dea888e2fbafcad2d12c110a34932728e7a",
+      "translation": "sien of kyk",
+      "targetHash": "777ae4a52d1f65a82bdda17bfd02f85a4f9b5b8d24327f8b7fc30789926f6a6e",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses visual see/look verb, not thank/say/go/run/draw. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-839081cc-enko",
+        "eb-52fce98b-enko",
+        "eb-e29bf385-enko",
+        "eb-c7b7a64f-enko",
+        "eb-a34bcfae-enko"
+      ]
+    },
+    {
+      "locale": "af",
+      "key": "w:거대한",
+      "source": "거대한",
+      "sourceHash": "1f83f9a78186ffaedccb265efd506e4582fa6ba0a91474f7c504e2a2e2369429",
+      "translation": "reusagtig",
+      "targetHash": "f0761bbc964972708e88d99315741a96c20bee674954190e23791b03adb5ebdf",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses huge/enormous size adjective, not busy/tiny/selfish/dangerous/polite/similar. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated. huge and enormous may share this meaning; no arbitrary difference is introduced to force answer uniqueness.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-5e53ea8d-enko",
+        "eb-5048bb19-enko",
+        "eb-10fe51a1-enko",
+        "eb-36c20416-enko",
+        "eb-e428f430-enko",
+        "eb-1762d3f0-enko"
+      ]
+    },
+    {
+      "locale": "af",
+      "key": "w:제안하다",
+      "source": "제안하다",
+      "sourceHash": "3fe11d5e24d3e91842e583577141fbcc719b961d50113e74041c4867bfa20fe2",
+      "translation": "voorstel",
+      "targetHash": "194fbab97290147f4143cbd9ae81d4eab1bb890ab8ef2d56034b36d08f85ca87",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses propose/suggest verb, not promise/avoid/refuse. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated. voorstel is interpreted as the separable verb suggest/propose here, not only the homographic proposal noun; proficient reviewer should confirm learner-facing citation form.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-b11e1379-enko",
+        "eb-34518ca1-enko",
+        "eb-afb8233c-enko"
+      ]
+    },
+    {
+      "locale": "af",
+      "key": "w:향상시키다",
+      "source": "향상시키다",
+      "sourceHash": "e171da07fd31c84da1ce36ca71a93b4e124da99fb1074a683d7495511e1d0334",
+      "translation": "verbeter",
+      "targetHash": "f34a68d15ad2ca1adc3c6acfaab74917202e763bb158c757b4d29d5547bd4509",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses improve/enhance something, not explain/predict/overcome/inspect/justify. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated. improve and enhance may share this meaning; no arbitrary difference is introduced to force answer uniqueness.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-9de7a7a3-enko",
+        "eb-7a4622c5-enko",
+        "eb-ca4384b4-enko",
+        "eb-0a18e5d7-enko",
+        "eb-a1f425f0-enko"
+      ]
+    },
+    {
+      "locale": "af",
+      "key": "w:자세히 설명하다",
+      "source": "자세히 설명하다",
+      "sourceHash": "2bb0ddb885c35c39e4809e9d5b43dab5397a7d1b2800505e4d86d2b799b50915",
+      "translation": "in besonderhede verduidelik",
+      "targetHash": "adf7afa0e6af9307d97b8eff507dad7866c40ac8a574c0e4ea2c68456d7d45bf",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses explain in detail, not assume. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-3e0f8ee0-enko"
+      ]
+    },
+    {
+      "locale": "af",
+      "key": "w:반박",
+      "source": "반박",
+      "sourceHash": "94ead0e6ba423a5639b189adf50800a9d72f5df0fa159f0840f05f014b824ff9",
+      "translation": "teenargument",
+      "targetHash": "2fc774ee89399cebe268eff8ae50585ee38a99a18d7bc15cb3e22fca7ac1f7d0",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses counterargument/rebuttal noun, not doubt/resources/evidence. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated. Noun category is retained, including the Tagalog definition of reasoned opposition and Naija argument challenging a claim.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-09ccd8fe-enko"
+      ]
+    },
+    {
+      "locale": "cs",
+      "key": "w:안녕",
+      "source": "안녕",
+      "sourceHash": "e8f817f346d1d411cc59d5bdda64fab3763890e1f0f8f4c15805cf78874d68bf",
+      "translation": "ahoj nebo na shledanou",
+      "targetHash": "542f3c77173158a14c730c04a53f3219ba81662b0c9a8ff01ba9563ddc09b52f",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses hello/goodbye greeting, not apology/request/thanks. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated. Both hello and goodbye are legitimate readings of 안녕; offering both follows the broad source key. This is a definition gloss, not a claim that every listed farewell has identical register.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-d1a87f5c-enko",
+        "eb-da1bb6b1-enko",
+        "eb-746ddde8-enko"
+      ]
+    },
+    {
+      "locale": "cs",
+      "key": "w:친절한",
+      "source": "친절한",
+      "sourceHash": "36ea4102c074c4cad233c5c53f2d78e5a6b2d422368f81f8b5dbe60c8f0b8f08",
+      "translation": "laskavý",
+      "targetHash": "bb7986ee19934a56c5c14c4a624b3ea87baf4aa63ac1de91a699ad8828f44346",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses kind/friendly adjective, not happy/slow/soft/angry/popular. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-3b896490-enko",
+        "eb-ddc238f2-enko",
+        "eb-6cb0b499-enko",
+        "eb-04a3e465-enko",
+        "eb-0ad2f01b-enko"
+      ]
+    },
+    {
+      "locale": "cs",
+      "key": "w:보다",
+      "source": "보다",
+      "sourceHash": "6a45cf834264a5ec36113824c2c48dea888e2fbafcad2d12c110a34932728e7a",
+      "translation": "vidět nebo dívat se",
+      "targetHash": "8812db451eb79d91c0555d51debe533cc040278bef4588b33391b26a90daadda",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses visual see/look verb, not thank/say/go/run/draw. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-839081cc-enko",
+        "eb-52fce98b-enko",
+        "eb-e29bf385-enko",
+        "eb-c7b7a64f-enko",
+        "eb-a34bcfae-enko"
+      ]
+    },
+    {
+      "locale": "cs",
+      "key": "w:거대한",
+      "source": "거대한",
+      "sourceHash": "1f83f9a78186ffaedccb265efd506e4582fa6ba0a91474f7c504e2a2e2369429",
+      "translation": "obrovský",
+      "targetHash": "6830a7ae9dfe44d60099712b9c5dc19fe52f382a0f0e42ac6905f7ba425278ac",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses huge/enormous size adjective, not busy/tiny/selfish/dangerous/polite/similar. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated. huge and enormous may share this meaning; no arbitrary difference is introduced to force answer uniqueness.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-5e53ea8d-enko",
+        "eb-5048bb19-enko",
+        "eb-10fe51a1-enko",
+        "eb-36c20416-enko",
+        "eb-e428f430-enko",
+        "eb-1762d3f0-enko"
+      ]
+    },
+    {
+      "locale": "cs",
+      "key": "w:제안하다",
+      "source": "제안하다",
+      "sourceHash": "3fe11d5e24d3e91842e583577141fbcc719b961d50113e74041c4867bfa20fe2",
+      "translation": "navrhnout",
+      "targetHash": "12eff34f4c8ffd872e00c9375715af47628af303bdc025c8fe3db1f5f90d7b13",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses propose/suggest verb, not promise/avoid/refuse. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-b11e1379-enko",
+        "eb-34518ca1-enko",
+        "eb-afb8233c-enko"
+      ]
+    },
+    {
+      "locale": "cs",
+      "key": "w:향상시키다",
+      "source": "향상시키다",
+      "sourceHash": "e171da07fd31c84da1ce36ca71a93b4e124da99fb1074a683d7495511e1d0334",
+      "translation": "zlepšit",
+      "targetHash": "6d660b18522637c29159485634eb8bc52c589eee782010b0ad2d8dcfa044966f",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses improve/enhance something, not explain/predict/overcome/inspect/justify. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated. improve and enhance may share this meaning; no arbitrary difference is introduced to force answer uniqueness.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-9de7a7a3-enko",
+        "eb-7a4622c5-enko",
+        "eb-ca4384b4-enko",
+        "eb-0a18e5d7-enko",
+        "eb-a1f425f0-enko"
+      ]
+    },
+    {
+      "locale": "cs",
+      "key": "w:자세히 설명하다",
+      "source": "자세히 설명하다",
+      "sourceHash": "2bb0ddb885c35c39e4809e9d5b43dab5397a7d1b2800505e4d86d2b799b50915",
+      "translation": "podrobně vysvětlit",
+      "targetHash": "bbf1cca38182e495cc5cf85be642b1aee7efb70abce012d79385accd0f7b8ea3",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses explain in detail, not assume. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-3e0f8ee0-enko"
+      ]
+    },
+    {
+      "locale": "cs",
+      "key": "w:반박",
+      "source": "반박",
+      "sourceHash": "94ead0e6ba423a5639b189adf50800a9d72f5df0fa159f0840f05f014b824ff9",
+      "translation": "protiargument",
+      "targetHash": "8d7eb50f81440951f3edc9bcf6815587127dc6e5e58329ff1c54b1013e41f6de",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses counterargument/rebuttal noun, not doubt/resources/evidence. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated. Noun category is retained, including the Tagalog definition of reasoned opposition and Naija argument challenging a claim.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-09ccd8fe-enko"
+      ]
+    },
+    {
+      "locale": "fi",
+      "key": "w:안녕",
+      "source": "안녕",
+      "sourceHash": "e8f817f346d1d411cc59d5bdda64fab3763890e1f0f8f4c15805cf78874d68bf",
+      "translation": "hei tai näkemiin",
+      "targetHash": "612f9f9b5d4a2c923d30e47c947d444377c0e5ebbe560c13e4638d9db9b7eae9",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses hello/goodbye greeting, not apology/request/thanks. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated. Both hello and goodbye are legitimate readings of 안녕; offering both follows the broad source key. This is a definition gloss, not a claim that every listed farewell has identical register.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-d1a87f5c-enko",
+        "eb-da1bb6b1-enko",
+        "eb-746ddde8-enko"
+      ]
+    },
+    {
+      "locale": "fi",
+      "key": "w:친절한",
+      "source": "친절한",
+      "sourceHash": "36ea4102c074c4cad233c5c53f2d78e5a6b2d422368f81f8b5dbe60c8f0b8f08",
+      "translation": "ystävällinen",
+      "targetHash": "f4ed523656c1c747e32e87f17561ddd35cc5aa4a5efb0a3fb34d0f74a48b3071",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses kind/friendly adjective, not happy/slow/soft/angry/popular. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-3b896490-enko",
+        "eb-ddc238f2-enko",
+        "eb-6cb0b499-enko",
+        "eb-04a3e465-enko",
+        "eb-0ad2f01b-enko"
+      ]
+    },
+    {
+      "locale": "fi",
+      "key": "w:보다",
+      "source": "보다",
+      "sourceHash": "6a45cf834264a5ec36113824c2c48dea888e2fbafcad2d12c110a34932728e7a",
+      "translation": "nähdä tai katsoa",
+      "targetHash": "19813404b1cca3e61d552cd4faaba9b2b9e9efea74d160337add9cf02e4fb9b7",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses visual see/look verb, not thank/say/go/run/draw. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-839081cc-enko",
+        "eb-52fce98b-enko",
+        "eb-e29bf385-enko",
+        "eb-c7b7a64f-enko",
+        "eb-a34bcfae-enko"
+      ]
+    },
+    {
+      "locale": "fi",
+      "key": "w:거대한",
+      "source": "거대한",
+      "sourceHash": "1f83f9a78186ffaedccb265efd506e4582fa6ba0a91474f7c504e2a2e2369429",
+      "translation": "valtava",
+      "targetHash": "6766529273888b55ec263215416cd9aaf85fbd876bbde50948fe63e1ac231185",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses huge/enormous size adjective, not busy/tiny/selfish/dangerous/polite/similar. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated. huge and enormous may share this meaning; no arbitrary difference is introduced to force answer uniqueness.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-5e53ea8d-enko",
+        "eb-5048bb19-enko",
+        "eb-10fe51a1-enko",
+        "eb-36c20416-enko",
+        "eb-e428f430-enko",
+        "eb-1762d3f0-enko"
+      ]
+    },
+    {
+      "locale": "fi",
+      "key": "w:제안하다",
+      "source": "제안하다",
+      "sourceHash": "3fe11d5e24d3e91842e583577141fbcc719b961d50113e74041c4867bfa20fe2",
+      "translation": "ehdottaa",
+      "targetHash": "38120ced0b00bdcac1c4f519a94f6b9209bed983b13775d6051bb8ad28229466",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses propose/suggest verb, not promise/avoid/refuse. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-b11e1379-enko",
+        "eb-34518ca1-enko",
+        "eb-afb8233c-enko"
+      ]
+    },
+    {
+      "locale": "fi",
+      "key": "w:향상시키다",
+      "source": "향상시키다",
+      "sourceHash": "e171da07fd31c84da1ce36ca71a93b4e124da99fb1074a683d7495511e1d0334",
+      "translation": "parantaa",
+      "targetHash": "e4f894307b20a4945904ab806359fa428371334f2bd0b62d4e75df2bdb65f0fb",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses improve/enhance something, not explain/predict/overcome/inspect/justify. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated. improve and enhance may share this meaning; no arbitrary difference is introduced to force answer uniqueness.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-9de7a7a3-enko",
+        "eb-7a4622c5-enko",
+        "eb-ca4384b4-enko",
+        "eb-0a18e5d7-enko",
+        "eb-a1f425f0-enko"
+      ]
+    },
+    {
+      "locale": "fi",
+      "key": "w:자세히 설명하다",
+      "source": "자세히 설명하다",
+      "sourceHash": "2bb0ddb885c35c39e4809e9d5b43dab5397a7d1b2800505e4d86d2b799b50915",
+      "translation": "selittää yksityiskohtaisesti",
+      "targetHash": "94c5fcbfac17c39ffe1bab62e0ca65def6090e631463d1f48c9442c053803ba8",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses explain in detail, not assume. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-3e0f8ee0-enko"
+      ]
+    },
+    {
+      "locale": "fi",
+      "key": "w:반박",
+      "source": "반박",
+      "sourceHash": "94ead0e6ba423a5639b189adf50800a9d72f5df0fa159f0840f05f014b824ff9",
+      "translation": "vasta-argumentti",
+      "targetHash": "aee9857cf2953d1eeadf655267bb5ce527d6920f662730d886dbcc6b8a657fd3",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses counterargument/rebuttal noun, not doubt/resources/evidence. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated. Noun category is retained, including the Tagalog definition of reasoned opposition and Naija argument challenging a claim.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-09ccd8fe-enko"
+      ]
+    },
+    {
+      "locale": "hu",
+      "key": "w:안녕",
+      "source": "안녕",
+      "sourceHash": "e8f817f346d1d411cc59d5bdda64fab3763890e1f0f8f4c15805cf78874d68bf",
+      "translation": "szia vagy viszlát",
+      "targetHash": "8e6dede0caf19de1ce7be7c83c2e7d7e2be69d12a03768657c3caae7e75917b1",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses hello/goodbye greeting, not apology/request/thanks. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated. Both hello and goodbye are legitimate readings of 안녕; offering both follows the broad source key. This is a definition gloss, not a claim that every listed farewell has identical register.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-d1a87f5c-enko",
+        "eb-da1bb6b1-enko",
+        "eb-746ddde8-enko"
+      ]
+    },
+    {
+      "locale": "hu",
+      "key": "w:친절한",
+      "source": "친절한",
+      "sourceHash": "36ea4102c074c4cad233c5c53f2d78e5a6b2d422368f81f8b5dbe60c8f0b8f08",
+      "translation": "kedves",
+      "targetHash": "ad1b0d70048697e2acf0d77172d1316b705d6879d6f2219c5fd98c6d8c8383e9",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses kind/friendly adjective, not happy/slow/soft/angry/popular. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-3b896490-enko",
+        "eb-ddc238f2-enko",
+        "eb-6cb0b499-enko",
+        "eb-04a3e465-enko",
+        "eb-0ad2f01b-enko"
+      ]
+    },
+    {
+      "locale": "hu",
+      "key": "w:보다",
+      "source": "보다",
+      "sourceHash": "6a45cf834264a5ec36113824c2c48dea888e2fbafcad2d12c110a34932728e7a",
+      "translation": "látni vagy nézni",
+      "targetHash": "d212a4b858af543fd6b89595cb06fb1e86206e668e24edff8b30f26efebb1da8",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses visual see/look verb, not thank/say/go/run/draw. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-839081cc-enko",
+        "eb-52fce98b-enko",
+        "eb-e29bf385-enko",
+        "eb-c7b7a64f-enko",
+        "eb-a34bcfae-enko"
+      ]
+    },
+    {
+      "locale": "hu",
+      "key": "w:거대한",
+      "source": "거대한",
+      "sourceHash": "1f83f9a78186ffaedccb265efd506e4582fa6ba0a91474f7c504e2a2e2369429",
+      "translation": "hatalmas",
+      "targetHash": "aea76e465371123c6f9f99373ce25563bcaf42d4bee43b66a59578c418832135",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses huge/enormous size adjective, not busy/tiny/selfish/dangerous/polite/similar. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated. huge and enormous may share this meaning; no arbitrary difference is introduced to force answer uniqueness.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-5e53ea8d-enko",
+        "eb-5048bb19-enko",
+        "eb-10fe51a1-enko",
+        "eb-36c20416-enko",
+        "eb-e428f430-enko",
+        "eb-1762d3f0-enko"
+      ]
+    },
+    {
+      "locale": "hu",
+      "key": "w:제안하다",
+      "source": "제안하다",
+      "sourceHash": "3fe11d5e24d3e91842e583577141fbcc719b961d50113e74041c4867bfa20fe2",
+      "translation": "javasolni",
+      "targetHash": "e02f96d75bb0f268fb0fc78d91def6a6c74b54dd0dc6248ceda05c791d0820bc",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses propose/suggest verb, not promise/avoid/refuse. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-b11e1379-enko",
+        "eb-34518ca1-enko",
+        "eb-afb8233c-enko"
+      ]
+    },
+    {
+      "locale": "hu",
+      "key": "w:향상시키다",
+      "source": "향상시키다",
+      "sourceHash": "e171da07fd31c84da1ce36ca71a93b4e124da99fb1074a683d7495511e1d0334",
+      "translation": "javítani",
+      "targetHash": "1472f86d4d2b23389f36ea8d7e33e898daef7d6a1e9b300297e833fa8c8e4559",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses improve/enhance something, not explain/predict/overcome/inspect/justify. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated. improve and enhance may share this meaning; no arbitrary difference is introduced to force answer uniqueness.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-9de7a7a3-enko",
+        "eb-7a4622c5-enko",
+        "eb-ca4384b4-enko",
+        "eb-0a18e5d7-enko",
+        "eb-a1f425f0-enko"
+      ]
+    },
+    {
+      "locale": "hu",
+      "key": "w:자세히 설명하다",
+      "source": "자세히 설명하다",
+      "sourceHash": "2bb0ddb885c35c39e4809e9d5b43dab5397a7d1b2800505e4d86d2b799b50915",
+      "translation": "részletesen elmagyarázni",
+      "targetHash": "5b185a1a10c48e6d80c9fbe1faacb91824ca0893a4092a97f2595d21ff145d25",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses explain in detail, not assume. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-3e0f8ee0-enko"
+      ]
+    },
+    {
+      "locale": "hu",
+      "key": "w:반박",
+      "source": "반박",
+      "sourceHash": "94ead0e6ba423a5639b189adf50800a9d72f5df0fa159f0840f05f014b824ff9",
+      "translation": "ellenérv",
+      "targetHash": "80eba4edc4a7b4f9d1641896b9e70ec7aeb63be0a6db36beb9fc0cef59c4eb26",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses counterargument/rebuttal noun, not doubt/resources/evidence. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated. Noun category is retained, including the Tagalog definition of reasoned opposition and Naija argument challenging a claim.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-09ccd8fe-enko"
+      ]
+    },
+    {
+      "locale": "pcm",
+      "key": "w:안녕",
+      "source": "안녕",
+      "sourceHash": "e8f817f346d1d411cc59d5bdda64fab3763890e1f0f8f4c15805cf78874d68bf",
+      "translation": "greeting wey mean hello or goodbye",
+      "targetHash": "95f9cc9e7344cf37016d1648ae9d2c756fc70755d1c020753e627d7ea508d622",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses hello/goodbye greeting, not apology/request/thanks. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated. Both hello and goodbye are legitimate readings of 안녕; offering both follows the broad source key. This is a definition gloss, not a claim that every listed farewell has identical register.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-d1a87f5c-enko",
+        "eb-da1bb6b1-enko",
+        "eb-746ddde8-enko"
+      ]
+    },
+    {
+      "locale": "pcm",
+      "key": "w:친절한",
+      "source": "친절한",
+      "sourceHash": "36ea4102c074c4cad233c5c53f2d78e5a6b2d422368f81f8b5dbe60c8f0b8f08",
+      "translation": "wey treat people with care and friendliness",
+      "targetHash": "38ebaa0aaba3839817458b832a6800f2af3c00a0f29b340c25fa633f59b8a5b0",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses kind/friendly adjective, not happy/slow/soft/angry/popular. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-3b896490-enko",
+        "eb-ddc238f2-enko",
+        "eb-6cb0b499-enko",
+        "eb-04a3e465-enko",
+        "eb-0ad2f01b-enko"
+      ]
+    },
+    {
+      "locale": "pcm",
+      "key": "w:보다",
+      "source": "보다",
+      "sourceHash": "6a45cf834264a5ec36113824c2c48dea888e2fbafcad2d12c110a34932728e7a",
+      "translation": "use eyes to see or look",
+      "targetHash": "cff42392aa957e0c8c91e5051722b4b999277a331f88bf947af5d323416c9d56",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses visual see/look verb, not thank/say/go/run/draw. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-839081cc-enko",
+        "eb-52fce98b-enko",
+        "eb-e29bf385-enko",
+        "eb-c7b7a64f-enko",
+        "eb-a34bcfae-enko"
+      ]
+    },
+    {
+      "locale": "pcm",
+      "key": "w:거대한",
+      "source": "거대한",
+      "sourceHash": "1f83f9a78186ffaedccb265efd506e4582fa6ba0a91474f7c504e2a2e2369429",
+      "translation": "wey very big",
+      "targetHash": "d3a5d3661d5d6d326146e035a54d746916ab26a74ad7ac8ab579a05df0ed5539",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses huge/enormous size adjective, not busy/tiny/selfish/dangerous/polite/similar. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated. huge and enormous may share this meaning; no arbitrary difference is introduced to force answer uniqueness.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-5e53ea8d-enko",
+        "eb-5048bb19-enko",
+        "eb-10fe51a1-enko",
+        "eb-36c20416-enko",
+        "eb-e428f430-enko",
+        "eb-1762d3f0-enko"
+      ]
+    },
+    {
+      "locale": "pcm",
+      "key": "w:제안하다",
+      "source": "제안하다",
+      "sourceHash": "3fe11d5e24d3e91842e583577141fbcc719b961d50113e74041c4867bfa20fe2",
+      "translation": "put idea forward for person to consider",
+      "targetHash": "2efbbdaa2c62fd666bf662737e01ce69c4e67aad7eb928a78ebbb2c3f31112af",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses propose/suggest verb, not promise/avoid/refuse. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-b11e1379-enko",
+        "eb-34518ca1-enko",
+        "eb-afb8233c-enko"
+      ]
+    },
+    {
+      "locale": "pcm",
+      "key": "w:향상시키다",
+      "source": "향상시키다",
+      "sourceHash": "e171da07fd31c84da1ce36ca71a93b4e124da99fb1074a683d7495511e1d0334",
+      "translation": "make something better",
+      "targetHash": "3e3b1cdf47184386f373ad01e31959e44baaba9d0cf5115f653a27743ff17114",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses improve/enhance something, not explain/predict/overcome/inspect/justify. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated. improve and enhance may share this meaning; no arbitrary difference is introduced to force answer uniqueness.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-9de7a7a3-enko",
+        "eb-7a4622c5-enko",
+        "eb-ca4384b4-enko",
+        "eb-0a18e5d7-enko",
+        "eb-a1f425f0-enko"
+      ]
+    },
+    {
+      "locale": "pcm",
+      "key": "w:자세히 설명하다",
+      "source": "자세히 설명하다",
+      "sourceHash": "2bb0ddb885c35c39e4809e9d5b43dab5397a7d1b2800505e4d86d2b799b50915",
+      "translation": "explain something with full details",
+      "targetHash": "b476a7b3db5b10c8d52da94b74cc4627767269e7de1cf0fefb728b64eec5e815",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses explain in detail, not assume. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-3e0f8ee0-enko"
+      ]
+    },
+    {
+      "locale": "pcm",
+      "key": "w:반박",
+      "source": "반박",
+      "sourceHash": "94ead0e6ba423a5639b189adf50800a9d72f5df0fa159f0840f05f014b824ff9",
+      "translation": "argument wey challenge another claim",
+      "targetHash": "b40c77b1b9015df433973c9db82ad8c5a15e89aadd2effe8b043a05f15c4588c",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses counterargument/rebuttal noun, not doubt/resources/evidence. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated. Noun category is retained, including the Tagalog definition of reasoned opposition and Naija argument challenging a claim.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-09ccd8fe-enko"
+      ]
+    },
+    {
+      "locale": "ro",
+      "key": "w:안녕",
+      "source": "안녕",
+      "sourceHash": "e8f817f346d1d411cc59d5bdda64fab3763890e1f0f8f4c15805cf78874d68bf",
+      "translation": "salut sau la revedere",
+      "targetHash": "87122e5a8e5e49f5e58e636965b63fec239098b99712addca896127331877493",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses hello/goodbye greeting, not apology/request/thanks. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated. Both hello and goodbye are legitimate readings of 안녕; offering both follows the broad source key. This is a definition gloss, not a claim that every listed farewell has identical register.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-d1a87f5c-enko",
+        "eb-da1bb6b1-enko",
+        "eb-746ddde8-enko"
+      ]
+    },
+    {
+      "locale": "ro",
+      "key": "w:친절한",
+      "source": "친절한",
+      "sourceHash": "36ea4102c074c4cad233c5c53f2d78e5a6b2d422368f81f8b5dbe60c8f0b8f08",
+      "translation": "amabil",
+      "targetHash": "9c67d9c7c76162d02b36bdf3f570e3657346e0e068ee41a0cfb8a694773e9451",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses kind/friendly adjective, not happy/slow/soft/angry/popular. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-3b896490-enko",
+        "eb-ddc238f2-enko",
+        "eb-6cb0b499-enko",
+        "eb-04a3e465-enko",
+        "eb-0ad2f01b-enko"
+      ]
+    },
+    {
+      "locale": "ro",
+      "key": "w:보다",
+      "source": "보다",
+      "sourceHash": "6a45cf834264a5ec36113824c2c48dea888e2fbafcad2d12c110a34932728e7a",
+      "translation": "a vedea sau a privi",
+      "targetHash": "16dfae0da10f811e5bace9946e8baf15a45da166af5879974a1bc5dbcce0746b",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses visual see/look verb, not thank/say/go/run/draw. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-839081cc-enko",
+        "eb-52fce98b-enko",
+        "eb-e29bf385-enko",
+        "eb-c7b7a64f-enko",
+        "eb-a34bcfae-enko"
+      ]
+    },
+    {
+      "locale": "ro",
+      "key": "w:거대한",
+      "source": "거대한",
+      "sourceHash": "1f83f9a78186ffaedccb265efd506e4582fa6ba0a91474f7c504e2a2e2369429",
+      "translation": "enorm",
+      "targetHash": "7d60812202f22d09b74d459ed9de4cc7e5c4da5b29fe857770d064c772882045",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses huge/enormous size adjective, not busy/tiny/selfish/dangerous/polite/similar. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated. huge and enormous may share this meaning; no arbitrary difference is introduced to force answer uniqueness.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-5e53ea8d-enko",
+        "eb-5048bb19-enko",
+        "eb-10fe51a1-enko",
+        "eb-36c20416-enko",
+        "eb-e428f430-enko",
+        "eb-1762d3f0-enko"
+      ]
+    },
+    {
+      "locale": "ro",
+      "key": "w:제안하다",
+      "source": "제안하다",
+      "sourceHash": "3fe11d5e24d3e91842e583577141fbcc719b961d50113e74041c4867bfa20fe2",
+      "translation": "a propune",
+      "targetHash": "4fb129ad46478a4c20e496b1e0537b571e4ecc39626b9de58fcacee3456fde0e",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses propose/suggest verb, not promise/avoid/refuse. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-b11e1379-enko",
+        "eb-34518ca1-enko",
+        "eb-afb8233c-enko"
+      ]
+    },
+    {
+      "locale": "ro",
+      "key": "w:향상시키다",
+      "source": "향상시키다",
+      "sourceHash": "e171da07fd31c84da1ce36ca71a93b4e124da99fb1074a683d7495511e1d0334",
+      "translation": "a îmbunătăți",
+      "targetHash": "cffe7c389c2bbe6d31f1a3f3bc86a9a71268aaa936d9201f9e08bc0d4e38fa24",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses improve/enhance something, not explain/predict/overcome/inspect/justify. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated. improve and enhance may share this meaning; no arbitrary difference is introduced to force answer uniqueness.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-9de7a7a3-enko",
+        "eb-7a4622c5-enko",
+        "eb-ca4384b4-enko",
+        "eb-0a18e5d7-enko",
+        "eb-a1f425f0-enko"
+      ]
+    },
+    {
+      "locale": "ro",
+      "key": "w:자세히 설명하다",
+      "source": "자세히 설명하다",
+      "sourceHash": "2bb0ddb885c35c39e4809e9d5b43dab5397a7d1b2800505e4d86d2b799b50915",
+      "translation": "a explica în detaliu",
+      "targetHash": "f39ccf07434faaa6b24e2f1a87e75f37751a9664ef65a8f31f5ac1fb51f4540e",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses explain in detail, not assume. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-3e0f8ee0-enko"
+      ]
+    },
+    {
+      "locale": "ro",
+      "key": "w:반박",
+      "source": "반박",
+      "sourceHash": "94ead0e6ba423a5639b189adf50800a9d72f5df0fa159f0840f05f014b824ff9",
+      "translation": "contraargument",
+      "targetHash": "7794997bbd038d0b411915f5e42326670f811f58697238f4ddd1d5d51f3f1281",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses counterargument/rebuttal noun, not doubt/resources/evidence. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated. Noun category is retained, including the Tagalog definition of reasoned opposition and Naija argument challenging a claim.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-09ccd8fe-enko"
+      ]
+    },
+    {
+      "locale": "tl",
+      "key": "w:안녕",
+      "source": "안녕",
+      "sourceHash": "e8f817f346d1d411cc59d5bdda64fab3763890e1f0f8f4c15805cf78874d68bf",
+      "translation": "pagbati o pamamaalam",
+      "targetHash": "461f02766d02850cd29bdf2abb6cfbdc3cd10c01fbe108ea579a01fc7678038e",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses hello/goodbye greeting, not apology/request/thanks. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated. Both hello and goodbye are legitimate readings of 안녕; offering both follows the broad source key. This is a definition gloss, not a claim that every listed farewell has identical register.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-d1a87f5c-enko",
+        "eb-da1bb6b1-enko",
+        "eb-746ddde8-enko"
+      ]
+    },
+    {
+      "locale": "tl",
+      "key": "w:친절한",
+      "source": "친절한",
+      "sourceHash": "36ea4102c074c4cad233c5c53f2d78e5a6b2d422368f81f8b5dbe60c8f0b8f08",
+      "translation": "mabait",
+      "targetHash": "b543d4deff57ad2231ab622ee8b4393039dfdd7187da648138768e8042b1c995",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses kind/friendly adjective, not happy/slow/soft/angry/popular. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-3b896490-enko",
+        "eb-ddc238f2-enko",
+        "eb-6cb0b499-enko",
+        "eb-04a3e465-enko",
+        "eb-0ad2f01b-enko"
+      ]
+    },
+    {
+      "locale": "tl",
+      "key": "w:보다",
+      "source": "보다",
+      "sourceHash": "6a45cf834264a5ec36113824c2c48dea888e2fbafcad2d12c110a34932728e7a",
+      "translation": "makita o tumingin",
+      "targetHash": "1c07e88cce407ff01bf4e4536b901053ed6aa762a847a945a6f665f3197b8368",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses visual see/look verb, not thank/say/go/run/draw. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-839081cc-enko",
+        "eb-52fce98b-enko",
+        "eb-e29bf385-enko",
+        "eb-c7b7a64f-enko",
+        "eb-a34bcfae-enko"
+      ]
+    },
+    {
+      "locale": "tl",
+      "key": "w:거대한",
+      "source": "거대한",
+      "sourceHash": "1f83f9a78186ffaedccb265efd506e4582fa6ba0a91474f7c504e2a2e2369429",
+      "translation": "napakalaki",
+      "targetHash": "f1f6d2e3c1286d58b53b4f7e588def3cfbb4f82ccb5cca0fa875c0fe900cd637",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses huge/enormous size adjective, not busy/tiny/selfish/dangerous/polite/similar. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated. huge and enormous may share this meaning; no arbitrary difference is introduced to force answer uniqueness.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-5e53ea8d-enko",
+        "eb-5048bb19-enko",
+        "eb-10fe51a1-enko",
+        "eb-36c20416-enko",
+        "eb-e428f430-enko",
+        "eb-1762d3f0-enko"
+      ]
+    },
+    {
+      "locale": "tl",
+      "key": "w:제안하다",
+      "source": "제안하다",
+      "sourceHash": "3fe11d5e24d3e91842e583577141fbcc719b961d50113e74041c4867bfa20fe2",
+      "translation": "magmungkahi",
+      "targetHash": "12dbe80d88939f0e50b14f965d9397ff94f64a911058cae50ca8da699344bf16",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses propose/suggest verb, not promise/avoid/refuse. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-b11e1379-enko",
+        "eb-34518ca1-enko",
+        "eb-afb8233c-enko"
+      ]
+    },
+    {
+      "locale": "tl",
+      "key": "w:향상시키다",
+      "source": "향상시키다",
+      "sourceHash": "e171da07fd31c84da1ce36ca71a93b4e124da99fb1074a683d7495511e1d0334",
+      "translation": "pagbutihin",
+      "targetHash": "ed14ba02d0dec1a24ed3149bbca2f6b08f5fb736d45aed3490029380535a9486",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses improve/enhance something, not explain/predict/overcome/inspect/justify. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated. improve and enhance may share this meaning; no arbitrary difference is introduced to force answer uniqueness.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-9de7a7a3-enko",
+        "eb-7a4622c5-enko",
+        "eb-ca4384b4-enko",
+        "eb-0a18e5d7-enko",
+        "eb-a1f425f0-enko"
+      ]
+    },
+    {
+      "locale": "tl",
+      "key": "w:자세히 설명하다",
+      "source": "자세히 설명하다",
+      "sourceHash": "2bb0ddb885c35c39e4809e9d5b43dab5397a7d1b2800505e4d86d2b799b50915",
+      "translation": "ipaliwanag nang detalyado",
+      "targetHash": "128529683ffd65a80785122df052b7cb11da68ff2ba8d3eb61aca784dcb0c6fa",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses explain in detail, not assume. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-3e0f8ee0-enko"
+      ]
+    },
+    {
+      "locale": "tl",
+      "key": "w:반박",
+      "source": "반박",
+      "sourceHash": "94ead0e6ba423a5639b189adf50800a9d72f5df0fa159f0840f05f014b824ff9",
+      "translation": "pagtutol na may pangangatwiran",
+      "targetHash": "dda4ce5c575c9df6cffaf124b906a6283549d8a7d2121faa5e400d061e5e4960",
+      "verdict": "no_material_mismatch",
+      "reason": "Target expresses counterargument/rebuttal noun, not doubt/resources/evidence. Compared the actual 29 missing-wrong-option contexts and the additional direct/option uses for this Korean key. No target/answer synonym distinction was fabricated. Noun category is retained, including the Tagalog definition of reasoned opposition and Naija argument challenging a claim.",
+      "proposedTranslation": null,
+      "reviewedQuestionIds": [
+        "eb-09ccd8fe-enko"
+      ]
+    }
+  ]
+}
