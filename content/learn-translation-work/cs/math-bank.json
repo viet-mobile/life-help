@@ -1,0 +1,1065 @@
+{
+  "templates": {
+    "addThree": {
+      "prompt": "Kolik je {a}+{b}?",
+      "hints": [
+        "Sčítej od jednotek.",
+        "Pokud součet ve sloupci dosáhne 10 nebo více, přenes do vyššího řádu."
+      ],
+      "explanation": "{a}+{b}={ans}."
+    },
+    "areaX2": {
+      "prompt": "Jaký je obsah oblasti ohraničené křivkou $y={k}x^2$, osou $x$ a přímkou $x={a}$? (jen číslice)",
+      "hints": [
+        "Obsah je určitý integrál od 0 do {a}.",
+        "$\\int x^2\\,dx=\\frac{x^3}{3}$."
+      ],
+      "explanation": "$\\int_0^{{a}} {k}x^2\\,dx=\\frac{{k}\\times{a}^3}{3}={ans}$."
+    },
+    "arithSum": {
+      "prompt": "Jaký je součet prvních {n} členů aritmetické posloupnosti s prvním členem {a} a diferencí {d}? (jen číslice)",
+      "hints": [
+        "Vzorec pro součet je $S_n=\\frac{n(2a+(n-1)d)}{2}$.",
+        "Můžeš také najít poslední člen a vypočítat (první + poslední) × počet členů ÷ 2."
+      ],
+      "explanation": "$S_{{n}}=\\frac{{n}(2\\times{a}+({n}-1)\\times({d}))}{2}={ans}$."
+    },
+    "arithTerm": {
+      "prompt": "Jaký je {n}. člen aritmetické posloupnosti s prvním členem {a} a diferencí {d}? (jen číslice)",
+      "hints": [
+        "Obecný člen je $a_n=a+(n-1)d$.",
+        "Vynásob (n-1) diferencí a přičti k prvnímu členu."
+      ],
+      "explanation": "{a}+({n}-1)×({d})={ans}."
+    },
+    "bigNum": {
+      "prompt": "Jaké číslo tvoří {a} desetitisíců a {b} tisíců? (jen číslice)",
+      "hints": [
+        "{a} desetitisíců je {a}0000.",
+        "{b} tisíců je {b}000. Sečti je."
+      ],
+      "explanation": "{a} desetitisíců a {b} tisíců tvoří {ans}."
+    },
+    "binomCoef": {
+      "prompt": "Jaký je koeficient u $x^{{k}}$ v rozvoji $(x+1)^{{n}}$?",
+      "hints": [
+        "Podle binomické věty jsou koeficienty kombinační čísla.",
+        "Koeficient u $x^k$ je $_nC_k$, počet způsobů výběru k z n."
+      ],
+      "explanation": "{calc}={ans}."
+    },
+    "binomMean": {
+      "prompt": "Pokud náhodná veličina $X$ má binomické rozdělení $B({n},\\ {p})$, kolik je $E(X)$? (jen číslice)",
+      "hints": [
+        "Střední hodnota rozdělení $B(n,\\ p)$ je $np$.",
+        "Vynásob n a p."
+      ],
+      "explanation": "E(X)={n}×{p}={ans}."
+    },
+    "chanceFraction": {
+      "prompt": "V krabici je {a} míčků A a {b} míčků B. Vytáhneme jeden míček. Jaká je pravděpodobnost vytažení míčku A vyjádřená desetinným číslem?",
+      "hints": [
+        "Pravděpodobnost = (příznivé případy) ÷ (všechny případy).",
+        "Nejprve zjisti celkový počet míčků."
+      ],
+      "explanation": "{a}÷{total}={ans}, takže pravděpodobnost je {ans}."
+    },
+    "ciHalf": {
+      "prompt": "Směrodatná odchylka populace je {s} a velikost výběru {n}. Jaká je 95% mez chyby $1.96\\times\\frac{σ}{\\sqrt{ n }}$? (na dvě desetinná místa)",
+      "hints": [
+        "Nejprve vypočítej $\\sqrt{ n }$.",
+        "Vyděl tím σ a vynásob 1.96."
+      ],
+      "explanation": "$1.96\\times\\frac{{s}}{{rt}}={ans}$."
+    },
+    "circleArea": {
+      "prompt": "Kruh má poloměr {r} cm. Jaký je jeho obsah v cm²? (za pí použij $3.14$) (cm²)",
+      "hints": [
+        "Obsah je poloměr × poloměr × pí.",
+        "Umocni poloměr na druhou a vynásob 3.14."
+      ],
+      "explanation": "{r}×{r}×3.14={ans}, takže obsah je {ans} cm²."
+    },
+    "circleR": {
+      "prompt": "Jaký je poloměr kružnice $({fx})^2+({fy})^2={r2}$? (jen číslice)",
+      "hints": [
+        "V rovnici $(x-a)^2+(y-b)^2=r^2$ je r poloměr.",
+        "Číslo napravo je r²."
+      ],
+      "explanation": "$r^2={r2}$, takže poloměr je {ans}."
+    },
+    "circum": {
+      "prompt": "Kruh má poloměr {r} cm. Jaký je jeho obvod v cm? (za pí použij $3.14$) (cm)",
+      "hints": [
+        "Obvod je průměr × pí.",
+        "Průměr je dvojnásobek poloměru."
+      ],
+      "explanation": "{r}×2×3.14={ans}, takže obvod je {ans} cm."
+    },
+    "coinCases": {
+      "prompt": "Kolik je možných výsledků při současném hodu {n} mincemi? (jen číslice)",
+      "hints": [
+        "Jedna mince má 2 výsledky: líc nebo rub.",
+        "Vynásob počty výsledků jednotlivých mincí."
+      ],
+      "explanation": "2 násobené {n}krát je {ans}, takže je {ans} výsledků."
+    },
+    "combNC": {
+      "prompt": "Kolika způsoby lze vybrat {r} z {n} různých osob, pokud nezáleží na pořadí? (jen číslice)",
+      "hints": [
+        "Na pořadí nezáleží, jde tedy o kombinaci.",
+        "Vyděl počet uspořádaných výběrů číslem {r}!."
+      ],
+      "explanation": "{calc}={ans}, takže existuje {ans} způsobů."
+    },
+    "complexSum": {
+      "prompt": "Jaký je součet reálné a imaginární části čísla ${expr}$? (jen číslice)",
+      "hints": [
+        "Sečti zvlášť reálné části a zvlášť imaginární části.",
+        "S i zacházej jako s písmenem."
+      ],
+      "explanation": "Reálná část je {re} a imaginární část {im}, takže součet je {ans}."
+    },
+    "composite": {
+      "prompt": "Pokud $f(x)={f}$ a $g(x)={g}$, kolik je {comp}?",
+      "hints": [
+        "Složení $(g\\circ f)(a)$ znamená $g(f(a))$. Postupuj od vnitřní funkce ven.",
+        "Nejprve zjisti hodnotu vnitřní funkce a dosaď ji do vnější."
+      ],
+      "explanation": "{steps}, takže odpověď je {ans}."
+    },
+    "condProb": {
+      "prompt": "Pro jevy $A,\\ B$ platí $P(A)={pa}$ a $P(A\\cap B)={pab}$. Kolik je $P(B\\mid A)$? (zapiš desetinným číslem)",
+      "hints": [
+        "Podmíněná pravděpodobnost: $P(B\\mid A)=\\frac{P(A\\cap B)}{P(A)}$.",
+        "Vyděl obě hodnoty."
+      ],
+      "explanation": "{pab}÷{pa}={ans}."
+    },
+    "convKgG": {
+      "prompt": "Kolik g je {v} kg? (g)",
+      "hints": [
+        "1 kg je 1000 g.",
+        "Vynásob {v} číslem 1000."
+      ],
+      "explanation": "{v}×1000={ans}, tedy {ans} g."
+    },
+    "convMCm": {
+      "prompt": "Kolik cm je {v} m? (cm)",
+      "hints": [
+        "1 m je 100 cm.",
+        "Vynásob {v} číslem 100."
+      ],
+      "explanation": "{v}×100={ans}, tedy {ans} cm."
+    },
+    "crossX": {
+      "prompt": "Grafy $y={a1}x+{b1}$ a $y={a2}x+{b2}$ se protínají v P. Jaká je x-ová souřadnice bodu P?",
+      "hints": [
+        "V průsečíku jsou obě hodnoty y stejné.",
+        "Vyřeš $a_1x+b_1=a_2x+b_2$."
+      ],
+      "explanation": "Z ${a1}x+{b1}={a2}x+{b2}$ vychází x={ans}."
+    },
+    "cubeVol": {
+      "prompt": "Hrana krychle měří {a} cm. Jaký je její objem v cm³? (jen číslice)",
+      "hints": [
+        "Objem krychle je hrana × hrana × hrana.",
+        "V součinu použij {a} třikrát."
+      ],
+      "explanation": "{a}×{a}×{a}={ans}, takže objem je {ans} cm³."
+    },
+    "cuboidVol": {
+      "prompt": "Kvádr je dlouhý {a} cm, široký {b} cm a vysoký {c} cm. Jaký je jeho objem v cm³? (cm³)",
+      "hints": [
+        "Objem kvádru je délka × šířka × výška.",
+        "Vynásob všechny tři délky."
+      ],
+      "explanation": "{a}×{b}×{c}={ans}, takže objem je {ans} cm³."
+    },
+    "dataRange": {
+      "prompt": "Jaký je rozdíl největší a nejmenší hodnoty v datech {list}?",
+      "hints": [
+        "Najdi největší a nejmenší hodnotu.",
+        "Od větší odečti menší."
+      ],
+      "explanation": "{max}-{min}={ans}."
+    },
+    "decPct": {
+      "prompt": "Zapiš desetinné číslo ${d}$ v procentech. (jen číslice)",
+      "hints": [
+        "Pro převod na procenta vynásob desetinné číslo 100.",
+        "Posuň desetinnou čárku o dvě místa doprava."
+      ],
+      "explanation": "{d}×100={ans}, tedy {ans}%."
+    },
+    "decTimes": {
+      "prompt": "Vypočítej $ {a} \\times {b} $.",
+      "hints": [
+        "Vynech desetinnou čárku a násob jako celá čísla.",
+        "Pak vrať desetinnou čárku tak, aby součin měl dohromady tolik desetinných míst jako oba činitelé."
+      ],
+      "explanation": "{a}×{b}={ans}."
+    },
+    "defInt": {
+      "prompt": "Jaká je hodnota $\\int_{0}^{{b}} ({fx})\\,dx$? (jen číslice)",
+      "hints": [
+        "Najdi primitivní funkci a vypočítej (hodnota v horní mezi) - (hodnota v dolní mezi).",
+        "$\\int x\\,dx=\\frac{x^2}{2}$ a $\\int c\\,dx=cx$."
+      ],
+      "explanation": "Dosazením x={b} do primitivní funkce ${anti}$ dostaneme {ans}."
+    },
+    "derivAt": {
+      "prompt": "Pokud $f(x)={poly}$, kolik je $f'({a})$? (jen číslice)",
+      "hints": [
+        "$(x^n)'=nx^{n-1}$.",
+        "Najdi derivaci a místo x dosaď {a}."
+      ],
+      "explanation": "$f'(x)={deriv}$, takže $f'({a})={ans}$."
+    },
+    "derivVal": {
+      "prompt": "Pokud $f(x)={f}$, kolik je $f'({a})$?",
+      "hints": [
+        "U složené funkce derivuj vnější funkci a násob derivací vnitřní funkce; pro podíl platí $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$.",
+        "Použij $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ a $(\\cos x)'=-\\sin x$."
+      ],
+      "explanation": "{steps}."
+    },
+    "diameter": {
+      "prompt": "Poloměr kruhu je {r} cm. Kolik cm měří jeho průměr? (cm)",
+      "hints": [
+        "Průměr je dvojnásobek poloměru.",
+        "Vynásob poloměr 2."
+      ],
+      "explanation": "{r}×2={ans}, takže průměr je {ans} cm."
+    },
+    "directConst": {
+      "prompt": "Graf přímé úměrnosti y=ax prochází bodem ({x1}, {y1}). Kolik je a?",
+      "hints": [
+        "Dosaď souřadnice bodu do y=ax.",
+        "a=y÷x."
+      ],
+      "explanation": "a={y1}÷{x1}={ans}."
+    },
+    "discount": {
+      "prompt": "Zboží stojí {p} wonů a prodává se se slevou {d}%. Jaká je prodejní cena? (wony)",
+      "hints": [
+        "Sleva je cena × {d}%.",
+        "Odečti slevu od ceny."
+      ],
+      "explanation": "{p}-{p}×{dr}={ans}, tedy {ans} wonů."
+    },
+    "dist2": {
+      "prompt": "Jaká je vzdálenost bodů A({x1}, {y1}) a B({x2}, {y2})? (jen číslice)",
+      "hints": [
+        "Vzdálenost je $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+        "Umocni rozdíl souřadnic x a rozdíl souřadnic y na druhou a sečti je."
+      ],
+      "explanation": "$\\sqrt{{dx}^2+{dy}^2}={ans}$."
+    },
+    "divide": {
+      "prompt": "Vypočítej $ {a} \\div {b} $.",
+      "hints": [
+        "Použij násobilku dělitele obráceně.",
+        "Najdi číslo, které po vynásobení {b} dává {a}."
+      ],
+      "explanation": "{a}÷{b}={ans}."
+    },
+    "divisorCount": {
+      "prompt": "Kolik dělitelů má {n}?",
+      "hints": [
+        "Najdi všechna čísla, která dělí {n} beze zbytku.",
+        "Ověřuj od nejmenšího postupně vzhůru."
+      ],
+      "explanation": "Dělitelé čísla {n} jsou {list}: celkem {ans}."
+    },
+    "equilibrium": {
+      "prompt": "Křivka poptávky $p={a}-{b}q$ a křivka nabídky $p={c}+{d}q$ se protínají při rovnovážném množství q. Kolik je q?",
+      "hints": [
+        "V rovnováze je poptávková cena stejná jako nabídková.",
+        "Vyřeš $a-bq=c+dq$."
+      ],
+      "explanation": "Z ${a}-{b}q={c}+{d}q$ vychází q={ans}."
+    },
+    "expMul": {
+      "prompt": "Jaké číslo patří do rámečku v $x^{{a}} \\times x^{{b}} = x^{\\square}$? (jen číslice)",
+      "hints": [
+        "Při stejných základech se exponenty sčítají.",
+        "Vypočítej {a}+{b}."
+      ],
+      "explanation": "{a}+{b}={ans}, takže □={ans}."
+    },
+    "expPow": {
+      "prompt": "Jaké číslo patří do rámečku v $(x^{{a}})^{{b}} = x^{\\square}$? (jen číslice)",
+      "hints": [
+        "Při umocňování mocniny se exponenty násobí.",
+        "Vypočítej {a}×{b}."
+      ],
+      "explanation": "{a}×{b}={ans}, takže □={ans}."
+    },
+    "expandPQ": {
+      "prompt": "Pokud $({fa})({fb}) = x^2+px+q$, kolik je $p+q$? (jen číslice)",
+      "hints": [
+        "Použij $(x+a)(x+b)=x^2+(a+b)x+ab$.",
+        "p je součet obou čísel a q jejich součin."
+      ],
+      "explanation": "p={p} a q={q}, takže p+q={ans}."
+    },
+    "expandSquare": {
+      "prompt": "Pokud $({e})^2 = x^2+px+q$, kolik je $p+q$? (jen číslice)",
+      "hints": [
+        "Použij $(x+a)^2=x^2+2ax+a^2$.",
+        "p je 2a a q je a²."
+      ],
+      "explanation": "p={p} a q={q}, takže p+q={ans}."
+    },
+    "exprValue": {
+      "prompt": "Když $x={x}$, jaká je hodnota ${expr}$?",
+      "hints": [
+        "Místo x dosaď dané číslo.",
+        "Nejprve násob, potom sčítej nebo odčítej."
+      ],
+      "explanation": "Dosazením x={x} dostaneme ${expr}={ans}$."
+    },
+    "factorDiff": {
+      "prompt": "Rozložíme-li ${poly}$ na součin $(x+m)(x+n)$, jaký je rozdíl m a n (větší minus menší)? (jen číslice)",
+      "hints": [
+        "Najdi dvě čísla, jejichž součet je koeficient u x a součin je absolutní člen.",
+        "Po nalezení obou čísel odečti menší od většího."
+      ],
+      "explanation": "${poly}=({fm})({fn})$, takže obě čísla jsou {m} a {n} a jejich rozdíl je {ans}."
+    },
+    "factorExp": {
+      "prompt": "Prvočíselný rozklad čísla ${n}$ je $2^a\\times3^b$. Kolik je $a+b$?",
+      "hints": [
+        "Děl {n} číslem 2, dokud to jde beze zbytku.",
+        "Zbytek pak děl číslem 3."
+      ],
+      "explanation": "${n}=2^{a}\\times3^{b}$, takže $a+b={ans}$."
+    },
+    "focusX": {
+      "prompt": "Jaká je souřadnice $x$ ohniska paraboly $y^2={c}x$? (jen číslice)",
+      "hints": [
+        "Ohnisko paraboly $y^2=4px$ je $(p,\\ 0)$.",
+        "Z {c}=4p urči p."
+      ],
+      "explanation": "4p={c}, takže p={ans}."
+    },
+    "fracAdd": {
+      "prompt": "Vypočítej $\\frac{{a}}{{b}} + \\frac{{c}}{{d}}$. (můžeš použít desetinné číslo nebo zlomek ve tvaru 3/4)",
+      "hints": [
+        "Převeď zlomky na společného jmenovatele.",
+        "Sečti čitatele."
+      ],
+      "explanation": "$\\frac{{a}}{{b}}+\\frac{{c}}{{d}}=\\frac{{num}}{{den}}$."
+    },
+    "fracDivInt": {
+      "prompt": "Vypočítej $\\frac{{a}}{{b}} \\div {c}$. (můžeš použít desetinné číslo nebo zlomek ve tvaru 3/4)",
+      "hints": [
+        "Při dělení zlomku celým číslem vynásob jeho jmenovatele tímto číslem.",
+        "Po výpočtu zlomek zkrať."
+      ],
+      "explanation": "$\\frac{{a}}{{b}}\\div{c}=\\frac{{num}}{{den}}$."
+    },
+    "fracToDec": {
+      "prompt": "Zapiš zlomek $\\frac{{a}}{{b}}$ jako desetinné číslo. (zapiš desetinným číslem)",
+      "hints": [
+        "Uprav zlomek tak, aby měl jmenovatele 10 nebo 100.",
+        "Nebo vyděl čitatele jmenovatelem."
+      ],
+      "explanation": "$\\frac{{a}}{{b}}={ans}$."
+    },
+    "funcValue": {
+      "prompt": "Pro lineární funkci $f(x)={a}x+{b}$ urči $f({c})$.",
+      "hints": [
+        "Místo x dosaď {c}.",
+        "Násob a pak přičti."
+      ],
+      "explanation": "$f({c})={a}\\times{c}+{b}={ans}$."
+    },
+    "gcd": {
+      "prompt": "Jaký je největší společný dělitel čísel {a} a {b}?",
+      "hints": [
+        "Najdi společné dělitele obou čísel.",
+        "Největší z nich je největší společný dělitel."
+      ],
+      "explanation": "Největší společný dělitel čísel {a} a {b} je {ans}."
+    },
+    "geoRatio": {
+      "prompt": "Geometrická posloupnost má první člen {a} a třetí člen {c}. Jaký je její kvocient? (kladný, jen číslice)",
+      "hints": [
+        "Třetí člen vznikne dvojím vynásobením prvního členu kvocientem.",
+        "Z $ar^2=c$ urči $r^2$."
+      ],
+      "explanation": "Z {a}×r²={c} dostaneme r²={sq}, takže kvocient je {ans}."
+    },
+    "geoSeries": {
+      "prompt": "Jaký je součet nekonečné geometrické řady s prvním členem {a} a kvocientem ${rtex}$? (můžeš použít desetinné číslo nebo zlomek ve tvaru 3/4)",
+      "hints": [
+        "Součet existuje, je-li absolutní hodnota kvocientu menší než 1.",
+        "Součet je (první člen) ÷ (1 - kvocient)."
+      ],
+      "explanation": "{a}÷(1-${rtex}$)=${res}$."
+    },
+    "geoTerm": {
+      "prompt": "Jaký je {n}. člen geometrické posloupnosti s prvním členem {a} a kvocientem {r}? (jen číslice)",
+      "hints": [
+        "Obecný člen je $a_n=ar^{n-1}$.",
+        "Násob kvocientem (n-1)krát."
+      ],
+      "explanation": "{a} krát {r} umocněné na ({n}-1) je {ans}."
+    },
+    "groups": {
+      "prompt": "V každém svazku je {a} kusů a svazků je {b}. Kolik kusů je celkem? (jen číslice)",
+      "hints": [
+        "Stejně početné skupiny lze spočítat násobením.",
+        "Je to totéž jako sečíst {a} celkem {b}krát."
+      ],
+      "explanation": "{a}×{b}={ans}, takže celkem je {ans} kusů."
+    },
+    "hundredsDigit": {
+      "prompt": "Jaká číslice je na místě stovek v čísle ${n}$? (jen číslice)",
+      "hints": [
+        "Je to třetí číslice zprava.",
+        "V trojciferném čísle je to první číslice."
+      ],
+      "explanation": "Číslice stovek v čísle {n} je {ans}."
+    },
+    "hypot": {
+      "prompt": "Odvěsny pravoúhlého trojúhelníku měří {a} cm a {b} cm. Kolik cm měří nejdelší strana? (cm)",
+      "hints": [
+        "Pythagorova věta: (přepona)² = (jedna odvěsna)² + (druhá odvěsna)².",
+        "Umocni obě odvěsny na druhou, sečti a odmocni."
+      ],
+      "explanation": "${a}^2+{b}^2={sq}$, takže nejdelší strana měří {ans} cm."
+    },
+    "ineqCount": {
+      "prompt": "Kolik celých čísel $x$ splňuje kvadratickou nerovnici ${eq}<0$? (jen číslice)",
+      "hints": [
+        "Rozlož levou stranu na součin a najdi oba kořeny.",
+        "Spočítej celá čísla mezi kořeny; samotné kořeny se nezahrnují."
+      ],
+      "explanation": "Z ${fact}<0$ dostaneme {r1}<x<{r2}, takže existuje {ans} celých čísel."
+    },
+    "ineqMax": {
+      "prompt": "Jaké je největší celé číslo $x$ splňující $x+{a} < {b}$? (jen číslice)",
+      "hints": [
+        "Odečti na obou stranách stejné číslo a urči rozsah x.",
+        "x musí být menší než nalezená hodnota; samotná tato hodnota se nezahrnuje."
+      ],
+      "explanation": "x<{bound}, takže největší celé číslo je {ans}."
+    },
+    "intAdd": {
+      "prompt": "Vypočítej $({a})+({b})$.",
+      "hints": [
+        "Stejná znaménka: sečti absolutní hodnoty a zachovej znaménko.",
+        "Různá znaménka: odečti absolutní hodnoty a použij znaménko čísla s větší absolutní hodnotou."
+      ],
+      "explanation": "$({a})+({b})={ans}$."
+    },
+    "intDiv": {
+      "prompt": "Vypočítej $({a})\\div({b})$.",
+      "hints": [
+        "Stejná znaménka dávají kladný výsledek, různá záporný.",
+        "Vyděl absolutní hodnoty."
+      ],
+      "explanation": "$({a})\\div({b})={ans}$."
+    },
+    "intMul": {
+      "prompt": "Vypočítej $({a})\\times({b})$.",
+      "hints": [
+        "Stejná znaménka dávají kladný výsledek, různá záporný.",
+        "Vynásob absolutní hodnoty."
+      ],
+      "explanation": "$({a})\\times({b})={ans}$."
+    },
+    "intSub": {
+      "prompt": "Vypočítej $({a})-({b})$.",
+      "hints": [
+        "Odčítání znamená přičtení opačného čísla.",
+        "Přepiš jako $({a})+({nb})$."
+      ],
+      "explanation": "$({a})-({b})=({a})+({nb})={ans}$."
+    },
+    "inverseConst": {
+      "prompt": "Graf nepřímé úměrnosti $y=\\frac{a}{x}$ prochází bodem ({x1}, {y1}). Kolik je a?",
+      "hints": [
+        "Dosaď souřadnice bodu do $y=\\frac{a}{x}$.",
+        "a=x×y."
+      ],
+      "explanation": "a={x1}×{y1}={ans}."
+    },
+    "inverseVal": {
+      "prompt": "Je-li $f^{-1}$ inverzní funkcí k $f(x)={f}$, kolik je $f^{-1}({y})$?",
+      "hints": [
+        "$f^{-1}(y)=x$ znamená totéž jako $f(x)=y$.",
+        "Najdi hodnotu x splňující $f(x)={y}$."
+      ],
+      "explanation": "{steps}, takže $f^{-1}({y})={ans}$."
+    },
+    "isoApex": {
+      "prompt": "Úhel při základně rovnoramenného trojúhelníku má {b}°. Kolik stupňů má úhel při hlavním vrcholu? (stupně)",
+      "hints": [
+        "Oba úhly při základně rovnoramenného trojúhelníku jsou stejné.",
+        "Odečti oba úhly při základně od 180°, součtu úhlů trojúhelníku."
+      ],
+      "explanation": "180-{b}×2={ans}, takže úhel při hlavním vrcholu je {ans}°."
+    },
+    "kmToM": {
+      "prompt": "Kolik metrů je {v} km? (jen číslice)",
+      "hints": [
+        "1 km je 1000 m.",
+        "Vynásob {v} číslem 1000."
+      ],
+      "explanation": "{v}×1000={ans}, tedy {ans} m."
+    },
+    "lToMl": {
+      "prompt": "Kolik mililitrů je {v} L? (jen číslice)",
+      "hints": [
+        "1 L je 1000 mL.",
+        "Vynásob {v} číslem 1000."
+      ],
+      "explanation": "{v}×1000={ans}, tedy {ans} mL."
+    },
+    "lcm": {
+      "prompt": "Jaký je nejmenší společný násobek čísel {a} a {b}?",
+      "hints": [
+        "Vypiš společné násobky obou čísel od nejmenšího.",
+        "Nejmenší společný násobek je nejmenší z těchto společných násobků."
+      ],
+      "explanation": "Nejmenší společný násobek čísel {a} a {b} je {ans}."
+    },
+    "lessBy": {
+      "prompt": "Jaké číslo je o {k} menší než {n}? (jen číslice)",
+      "hints": [
+        "Je to jako počítání zpět po {k}.",
+        "Zaměř se na číslici na měnícím se místě."
+      ],
+      "explanation": "{n}-{k}={ans}."
+    },
+    "limFactor": {
+      "prompt": "Jaká je hodnota $\\lim_{x\\to {a}}\\frac{x^2-{sq}}{{den}}$? (jen číslice)",
+      "hints": [
+        "Čitatele lze rozložit jako $(x-a)(x+a)$.",
+        "Zkrať a místo x dosaď hodnotu, k níž se blíží."
+      ],
+      "explanation": "Po rozkladu čitatele a krácení dosadíme x={a} a dostaneme {ans}."
+    },
+    "limLinear": {
+      "prompt": "Jaká je hodnota $\\lim_{x\\to {a}}({f})$? (jen číslice)",
+      "hints": [
+        "U polynomu se limita rovná hodnotě funkce.",
+        "Místo x dosaď {a}."
+      ],
+      "explanation": "Dosazením x={a} dostaneme {ans}."
+    },
+    "logAdd": {
+      "prompt": "Jaká je hodnota $\\log_{{b}} {m} + \\log_{{b}} {n}$? (jen číslice)",
+      "hints": [
+        "$\\log_b m+\\log_b n=\\log_b mn$.",
+        "Nejprve vypočítej součin {m}×{n}."
+      ],
+      "explanation": "$\\log_{{b}} ({m}\\times{n})=\\log_{{b}} {prod}={ans}$."
+    },
+    "logVal": {
+      "prompt": "Jaká je hodnota $\\log_{{b}} {n}$? (jen číslice)",
+      "hints": [
+        "$\\log_b n=k$ znamená $b^k=n$.",
+        "Urči, kolikrát se musí {b} objevit jako činitel, aby výsledkem bylo {n}."
+      ],
+      "explanation": "${b}^{{ans}}={n}$, takže odpověď je {ans}."
+    },
+    "makeTen": {
+      "prompt": "Jaké číslo je třeba přičíst k {a}, aby vzniklo 10? (jen číslice)",
+      "hints": [
+        "Od 10 odečti {a}.",
+        "Představ si svých deset prstů."
+      ],
+      "explanation": "{a}+{ans}=10, takže odpověď je {ans}."
+    },
+    "matEntry": {
+      "prompt": "Pro {mats} urči prvek na pozici ({r}, {c}) v {expr}.",
+      "hints": [
+        "Sčítání, odčítání a násobení matice skalárem se provádí po prvcích na stejných pozicích.",
+        "Prvek (i, j) součinu $AB$ je součet součinů odpovídajících prvků řádku i matice $A$ a sloupce j matice $B$."
+      ],
+      "explanation": "{steps}, takže odpověď je {ans}."
+    },
+    "maxOf": {
+      "prompt": "Které z čísel {list} je největší? (jen číslice)",
+      "hints": [
+        "Porovnávej čísla jedno po druhém.",
+        "Najdi číslo představující největší množství."
+      ],
+      "explanation": "Největší z čísel {list} je {ans}."
+    },
+    "mean": {
+      "prompt": "Jaký je průměr těchto čísel? {list}",
+      "hints": [
+        "Průměr je (součet všech hodnot) ÷ (počet hodnot).",
+        "Nejprve všechna čísla sečti."
+      ],
+      "explanation": "({sum})÷{n}={ans}, takže průměr je {ans}."
+    },
+    "meanSum": {
+      "prompt": "Průměr {n} čísel je {m}. Jaký je součet těchto {n} čísel? (jen číslice)",
+      "hints": [
+        "průměr = součet ÷ počet.",
+        "Tedy součet = průměr × počet."
+      ],
+      "explanation": "{m}×{n}={ans}."
+    },
+    "median": {
+      "prompt": "Jaký je medián dat {list}?",
+      "hints": [
+        "Seřaď data podle velikosti.",
+        "Medián je prostřední hodnota; při sudém počtu použij průměr dvou prostředních hodnot."
+      ],
+      "explanation": "Po seřazení: {sorted}, takže medián je {ans}."
+    },
+    "minOf": {
+      "prompt": "Které z čísel {list} je nejmenší? (jen číslice)",
+      "hints": [
+        "Porovnávej čísla jedno po druhém.",
+        "Najdi číslo představující nejmenší množství."
+      ],
+      "explanation": "Nejmenší z čísel {list} je {ans}."
+    },
+    "minus": {
+      "prompt": "Vypočítej $ {a} - {b} $.",
+      "hints": [
+        "Odčítej číslice na stejných řádových místech.",
+        "Když nelze odečíst, vezmi z vyššího řádu 10 jednotek nižšího řádu."
+      ],
+      "explanation": "{a}-{b}={ans}."
+    },
+    "missAdd": {
+      "prompt": "Jaké číslo patří do rámečku v $\\square + {b} = {c}$? (jen číslice)",
+      "hints": [
+        "Pro nalezení □ odečti známé číslo od součtu.",
+        "Vypočítej {c}-{b}."
+      ],
+      "explanation": "{c}-{b}={ans}, takže □={ans}."
+    },
+    "missSub": {
+      "prompt": "Jaké číslo patří do rámečku v $ {a} - \\square = {c}$? (jen číslice)",
+      "hints": [
+        "Pro nalezení □ odečti výsledek od prvního čísla.",
+        "Vypočítej {a}-{c}."
+      ],
+      "explanation": "{a}-{c}={ans}, takže □={ans}."
+    },
+    "mixedCalc": {
+      "prompt": "Vypočítej: {expr}",
+      "hints": [
+        "Nejprve vypočítej výrazy v závorkách.",
+        "Potom násob a děl před sčítáním a odčítáním, vždy zleva doprava."
+      ],
+      "explanation": "{steps}, takže odpověď je {ans}."
+    },
+    "mode": {
+      "prompt": "Jaký je modus dat {list}?",
+      "hints": [
+        "Modus je nejčastěji se vyskytující hodnota.",
+        "Spočítej počet výskytů každé hodnoty."
+      ],
+      "explanation": "Nejčastěji se vyskytuje {ans}, takže modus je {ans}."
+    },
+    "moreBy": {
+      "prompt": "Jaké číslo je o {k} větší než {n}? (jen číslice)",
+      "hints": [
+        "Je to jako počítání vpřed po {k}.",
+        "Zaměř se na číslici na měnícím se místě."
+      ],
+      "explanation": "{n}+{k}={ans}."
+    },
+    "nextNum": {
+      "prompt": "Jaké číslo následuje hned po {n}? (jen číslice)",
+      "hints": [
+        "Počítej čísla po řadě.",
+        "Od {n} napočítej o jednu více."
+      ],
+      "explanation": "Hned po {n} následuje {ans}."
+    },
+    "onesDigit": {
+      "prompt": "Jaká číslice je na místě jednotek v čísle ${n}$? (jen číslice)",
+      "hints": [
+        "Je to číslice úplně vpravo.",
+        "Místo jednotek udává jednotlivé jednotky."
+      ],
+      "explanation": "Číslice jednotek v čísle {n} je {ans}."
+    },
+    "percentChange": {
+      "prompt": "Hodnota se změnila z {a} na {b}. O kolik procent vzrostla? (%)",
+      "hints": [
+        "Míra růstu = (přírůstek) ÷ (počáteční hodnota) × 100.",
+        "Přírůstek je {b}-{a}."
+      ],
+      "explanation": "({b}-{a})÷{a}×100={ans}, tedy {ans}%."
+    },
+    "permNP": {
+      "prompt": "Kolika způsoby lze vybrat {r} z {n} různých osob a seřadit je do řady? (jen číslice)",
+      "hints": [
+        "Na pořadí záleží, jde tedy o uspořádaný výběr.",
+        "Začni od {n} a vynásob {r} po sobě jdoucích sestupných čísel."
+      ],
+      "explanation": "{calc}={ans}, takže existuje {ans} způsobů."
+    },
+    "permSame": {
+      "prompt": "Kolika způsoby lze seřadit všechna písmena slova {word} do řady?",
+      "hints": [
+        "Při opakování písmen vyděl faktoriál celkového počtu písmen součinem faktoriálů počtů jednotlivých opakování.",
+        "Spočítej, kolikrát se každé písmeno vyskytuje."
+      ],
+      "explanation": "{calc}={ans} způsobů."
+    },
+    "pieCount": {
+      "prompt": "V kruhovém grafu tvoří A {p}% celku. Celek představuje {t} osob. Kolik osob je v A?",
+      "hints": [
+        "{p}% je $\\frac{p}{100}$.",
+        "Vynásob celek podílem."
+      ],
+      "explanation": "{t}×{p}÷100={ans}, tedy {ans} osob."
+    },
+    "plus": {
+      "prompt": "Vypočítej $ {a} + {b} $.",
+      "hints": [
+        "Sčítej číslice na stejných řádových místech.",
+        "Pokud součet na místě dosáhne 10 nebo více, přenes do vyššího řádu."
+      ],
+      "explanation": "{a}+{b}={ans}."
+    },
+    "pmAverage": {
+      "prompt": "Během 5 dní byly koncentrace jemného prachu {list} (µg/m³). Jaká je průměrná koncentrace?",
+      "hints": [
+        "Průměr je (součet) ÷ (počet dní).",
+        "Nejprve sečti 5 hodnot."
+      ],
+      "explanation": "({sum})÷5={ans}, takže průměr je {ans}."
+    },
+    "prevNum": {
+      "prompt": "Jaké číslo je hned před {n}? (jen číslice)",
+      "hints": [
+        "Počítej pozpátku.",
+        "Od {n} napočítej o jednu méně."
+      ],
+      "explanation": "Hned před {n} je {ans}."
+    },
+    "probAdd": {
+      "prompt": "Pro dva jevy A a B platí $P(A)={pa}$, $P(B)={pb}$ a $P(A\\cap B)={pab}$. Kolik je $P(A\\cup B)$?",
+      "hints": [
+        "Použij pravidlo sčítání $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$.",
+        "Postupně dosaď dané hodnoty."
+      ],
+      "explanation": "{pa}+{pb}-{pab}={ans}."
+    },
+    "probComplement": {
+      "prompt": "Pravděpodobnost jevu A je $P(A)={pa}$. Jaká je pravděpodobnost opačného jevu $P(A^c)$?",
+      "hints": [
+        "Opačný jev má pravděpodobnost $1-P(A)$.",
+        "Od 1 odečti $P(A)$."
+      ],
+      "explanation": "1-{pa}={ans}."
+    },
+    "propX": {
+      "prompt": "Jaké číslo patří do rámečku v úměře ${a} : {b} = \\square : {d}$? (jen číslice)",
+      "hints": [
+        "V úměře je součin vnějších členů roven součinu vnitřních.",
+        "Vyřeš □ × {b} = {a} × {d}."
+      ],
+      "explanation": "□×{b}={a}×{d}, takže □={ans}."
+    },
+    "qfuncValue": {
+      "prompt": "Pro kvadratickou funkci $y={expr}$ urči $y$, když $x={x}$. (jen číslice)",
+      "hints": [
+        "Místo x dosaď danou hodnotu.",
+        "Nejprve vypočítej druhou mocninu."
+      ],
+      "explanation": "Dosazením x={x} dostaneme y={ans}."
+    },
+    "quadDisc": {
+      "prompt": "Jaká je hodnota diskriminantu $D=b^2-4ac$ kvadratické rovnice ${eq}=0$? (jen číslice)",
+      "hints": [
+        "Diskriminant rovnice $ax^2+bx+c=0$ je $D=b^2-4ac$.",
+        "Dávej pozor na znaménka a, b a c."
+      ],
+      "explanation": "a={a}, b={b}, c={c}, takže D=({b})²-4×({a})×({c})={ans}."
+    },
+    "quadFourth": {
+      "prompt": "Tři úhly čtyřúhelníku mají {a}°, {b}° a {c}°. Kolik stupňů má čtvrtý úhel? (stupně)",
+      "hints": [
+        "Součet čtyř úhlů čtyřúhelníku je 360°.",
+        "Od 360 odečti tři známé úhly."
+      ],
+      "explanation": "360-{a}-{b}-{c}={ans}, takže úhel má {ans}°."
+    },
+    "quadRoot": {
+      "prompt": "Který ze dvou kořenů rovnice ${eq}$ je větší? (jen číslice)",
+      "hints": [
+        "Rozlož levou stranu na součin.",
+        "Kořeny jsou hodnoty x, pro které je některý činitel nulový."
+      ],
+      "explanation": "Z ${fact}$ dostaneme kořeny {roots}, takže větší kořen je {ans}."
+    },
+    "radDeg": {
+      "prompt": "Převeď $\\theta=\\dfrac{{num}}{{d}}$ (radiány) na stupně. (jen číslice)",
+      "hints": [
+        "$\\pi$ radiánů je 180°.",
+        "Místo $\\pi$ dosaď 180°."
+      ],
+      "explanation": "Dosazením $\\pi=180^\\circ$ dostaneme {ans}°."
+    },
+    "ratioPct": {
+      "prompt": "Zapiš $\\frac{{a}}{{b}}$ v procentech. (jen číslice)",
+      "hints": [
+        "Procentní vyjádření je poměr vynásobený 100.",
+        "Můžeš také převést zlomek na jmenovatele 100."
+      ],
+      "explanation": "$\\frac{{a}}{{b}}\\times100={ans}$, tedy {ans}%."
+    },
+    "rectArea": {
+      "prompt": "Obdélník je široký {w} cm a vysoký {h} cm. Jaký je jeho obsah v cm²? (jen číslice)",
+      "hints": [
+        "Obsah obdélníku je šířka × výška.",
+        "Vynásob délky obou stran."
+      ],
+      "explanation": "{w}×{h}={ans}, takže obsah je {ans} cm²."
+    },
+    "rectPerim": {
+      "prompt": "Obdélník je široký {w} cm a vysoký {h} cm. Jaký je jeho obvod v cm? (cm)",
+      "hints": [
+        "Obvod je součet délek všech čtyř stran.",
+        "Můžeš použít (šířka + výška) × 2."
+      ],
+      "explanation": "({w}+{h})×2={ans}, takže obvod je {ans} cm."
+    },
+    "relFreq": {
+      "prompt": "Celková četnost je {t} a četnost jedné třídy je {f}. Jaká je relativní četnost této třídy? (desetinné číslo)",
+      "hints": [
+        "Relativní četnost = (četnost třídy) ÷ (celková četnost).",
+        "Výsledek zapiš desetinným číslem."
+      ],
+      "explanation": "{f}÷{t}={ans}, takže relativní četnost je {ans}."
+    },
+    "remainder": {
+      "prompt": "Jaký je zbytek při dělení $P(x)={poly}$ výrazem ${div}$? (jen číslice)",
+      "hints": [
+        "Věta o zbytku: zbytek po dělení P(x) výrazem x-a je P(a).",
+        "Místo x dosaď a a vypočítej."
+      ],
+      "explanation": "Podle věty o zbytku je P({a})={ans}."
+    },
+    "repComb": {
+      "prompt": "Kolika způsoby lze vybrat {r} kusů z {n} různých druhů, je-li dovoleno opakování?",
+      "hints": [
+        "Při n druzích a výběru r kusů se počet rovná počtu kombinací r z n+r−1.",
+        "Dosaď počet druhů a počet vybíraných kusů."
+      ],
+      "explanation": "{calc}={ans}."
+    },
+    "repPerm": {
+      "prompt": "Kolika způsoby lze z {n} různých předmětů vybrat {r} předmětů s opakováním a seřadit je do řady?",
+      "hints": [
+        "Počet uspořádání s opakováním je počet voleb násobený sám sebou tak, že každé pozici odpovídá jeden činitel.",
+        "Každou pozici lze obsadit {n} způsoby."
+      ],
+      "explanation": "{prod}={ans} způsobů."
+    },
+    "rootMax": {
+      "prompt": "Jaký je největší reálný kořen rovnice {eq}?",
+      "hints": [
+        "Rozlož na součin. První kořen můžeš najít pomocí Hornerova schématu.",
+        "Kořeny jsou hodnoty x, pro které je některý činitel nulový."
+      ],
+      "explanation": "{fact}, takže reálné kořeny jsou {roots} a největší je {ans}."
+    },
+    "rootSum": {
+      "prompt": "Jaký je součet všech reálných kořenů rovnice {eq}?",
+      "hints": [
+        "Rozlož na součin. První kořen můžeš najít pomocí Hornerova schématu.",
+        "Kořeny jsou hodnoty x, pro které je některý činitel nulový."
+      ],
+      "explanation": "{fact}, takže reálné kořeny jsou {roots} a jejich součet je {ans}."
+    },
+    "roundTo": {
+      "prompt": "Jak se číslo {n} vyjádří v jednotkách {u} při použití „{mode}“?",
+      "hints": [
+        "Podívej se na číslice na nižších místech než {u}.",
+        "Při zaokrouhlení nahoru se zvyšuje, při zaokrouhlení dolů se nižší místa zahodí a při zaokrouhlení na nejbližší hodnotu se zvyšuje jen při číslici 5 nebo vyšší."
+      ],
+      "explanation": "Při použití „{mode}“ se {n} v jednotkách {u} změní na {ans}."
+    },
+    "seqNext": {
+      "prompt": "Najdi pravidlo a doplň chybějící číslo: ${list}, \\square$",
+      "hints": [
+        "Najdi rozdíl sousedních čísel.",
+        "Čísla se v každém kroku zvětšují nebo zmenšují o stejnou hodnotu."
+      ],
+      "explanation": "Rozdíl sousedních čísel je {d}, takže □={ans}."
+    },
+    "setCount": {
+      "prompt": "Pokud $n(A)={na}$, $n(B)={nb}$ a $n(A\\cap B)={nab}$, kolik je $n(A\\cup B)$?",
+      "hints": [
+        "Použij $n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$.",
+        "Postupně dosaď dané hodnoty."
+      ],
+      "explanation": "{na}+{nb}-{nab}={ans}."
+    },
+    "sigmaSum": {
+      "prompt": "Vypočítej součet: {expr}",
+      "hints": [
+        "Znak ∑ znamená: postupně dosaď k=1, 2, 3, … a vše sečti.",
+        "Můžeš také použít pravidla $\\sum k=\\frac{n(n+1)}{2}$ a $\\sum c=cn$."
+      ],
+      "explanation": "{steps}, takže součet je {ans}."
+    },
+    "simpleInterest": {
+      "prompt": "Vklad {p} wonů je uložen na {n} let s ročním jednoduchým úrokem {r}%. Jaký je úrok? (wony)",
+      "hints": [
+        "Jednoduchý úrok = jistina × sazba × počet let.",
+        "{r}% je {rr}."
+      ],
+      "explanation": "{p}×{rr}×{n}={ans}, takže úrok je {ans} wonů."
+    },
+    "slope2": {
+      "prompt": "Jaká je směrnice přímky procházející body $({x1},\\,{y1})$ a $({x2},\\,{y2})$? (jen číslice)",
+      "hints": [
+        "Směrnice je (změna y) ÷ (změna x).",
+        "Vyděl rozdíl souřadnic y rozdílem souřadnic x."
+      ],
+      "explanation": "$\\frac{{y2}-({y1})}{{x2}-({x1})}={ans}$."
+    },
+    "slopeOf": {
+      "prompt": "Jaká je směrnice lineární funkce $y={a}x+{b}$?",
+      "hints": [
+        "V $y=ax+b$ je směrnice a.",
+        "Přečti koeficient u x."
+      ],
+      "explanation": "Směrnice je {ans}."
+    },
+    "solveLin": {
+      "prompt": "Vyřeš lineární rovnici ${eq}$ (najdi x).",
+      "hints": [
+        "Na obou stranách přičti nebo odečti stejné číslo, aby zůstal samotný člen s x.",
+        "Pak vyděl obě strany číslem před x."
+      ],
+      "explanation": "Z ${eq}$ dostaneme x={ans}."
+    },
+    "sqrtProd": {
+      "prompt": "Jaká je hodnota $\\sqrt{{a}} \\times \\sqrt{{b}}$? (jen číslice)",
+      "hints": [
+        "$\\sqrt{a}\\times\\sqrt{b}=\\sqrt{ab}$.",
+        "Ověř, zda je součin čtvercové číslo."
+      ],
+      "explanation": "$\\sqrt{{a}\\times{b}}=\\sqrt{{prod}}={ans}$."
+    },
+    "sqrtVal": {
+      "prompt": "Jaká je hodnota $\\sqrt{{n}}$? (jen číslice)",
+      "hints": [
+        "Najdi kladné číslo, jehož druhá mocnina je {n}.",
+        "Vzpomeň si na násobilku."
+      ],
+      "explanation": "${ans}^2={n}$, takže $\\sqrt{{n}}={ans}$."
+    },
+    "stdev": {
+      "prompt": "Jaká je směrodatná odchylka dat {list}? (směrodatná odchylka populace)",
+      "hints": [
+        "Nejprve vypočítej průměr.",
+        "Směrodatná odchylka je odmocnina průměru čtverců odchylek, tedy rozptylu."
+      ],
+      "explanation": "Průměr je {mean} a rozptyl {var}, takže směrodatná odchylka je {ans}."
+    },
+    "subThree": {
+      "prompt": "Kolik je {a}-{b}?",
+      "hints": [
+        "Odčítej od jednotek.",
+        "Pokud nelze odečíst, vezmi jednotku z vyššího řádu."
+      ],
+      "explanation": "{a}-{b}={ans}."
+    },
+    "subsetCount": {
+      "prompt": "Kolik podmnožin má množina s {n} prvky?",
+      "hints": [
+        "Množina s n prvky má $2^n$ podmnožin.",
+        "U každého prvku se rozhodni, zda jej zahrneš, nebo ne."
+      ],
+      "explanation": "{prod}={ans}, takže existuje {ans} podmnožin."
+    },
+    "taxTotal": {
+      "prompt": "Zboží stojí {p} wonů a připočítá se {t}% DPH. Kolik wonů je třeba zaplatit? (wony)",
+      "hints": [
+        "Daň je cena × {t}%.",
+        "Přičti daň k ceně."
+      ],
+      "explanation": "{p}+{p}×{tr}={ans}, tedy {ans} wonů."
+    },
+    "tensDigit": {
+      "prompt": "Jaká číslice je na místě desítek v čísle ${n}$? (jen číslice)",
+      "hints": [
+        "Je to druhá číslice zprava.",
+        "Najdi číslici hned vlevo od jednotek."
+      ],
+      "explanation": "Číslice desítek v čísle {n} je {ans}."
+    },
+    "times": {
+      "prompt": "Vypočítej $ {a} \\times {b} $.",
+      "hints": [
+        "Vzpomeň si na násobilku nebo na stejně početné skupiny.",
+        "U větších čísel násob po řádech a dílčí výsledky sečti."
+      ],
+      "explanation": "{a}×{b}={ans}."
+    },
+    "triThird": {
+      "prompt": "Dva úhly trojúhelníku mají {a}° a {b}°. Kolik stupňů má třetí úhel? (stupně)",
+      "hints": [
+        "Součet tří úhlů trojúhelníku je 180°.",
+        "Od 180 odečti oba známé úhly."
+      ],
+      "explanation": "180-{a}-{b}={ans}, takže úhel má {ans}°."
+    },
+    "variance": {
+      "prompt": "Jaký je rozptyl dat {list}?",
+      "hints": [
+        "Najdi průměr a pak odchylku každé hodnoty od něj.",
+        "Rozptyl je průměr druhých mocnin odchylek."
+      ],
+      "explanation": "Průměr je {mean} a součet čtverců odchylek je {sq}, takže rozptyl je {sq}÷{n}={ans}."
+    },
+    "vecNorm": {
+      "prompt": "Jaká je velikost $|\\vec{a}|$ vektoru $\\vec{a}=({x},\\ {y})$? (jen číslice)",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Umocni každou složku na druhou, sečti a odmocni."
+      ],
+      "explanation": "$\\sqrt{({x})^2+({y})^2}={ans}$."
+    },
+    "vertexSum": {
+      "prompt": "Vrchol kvadratické funkce $y={expr}$ je $(p,\\ q)$. Kolik je $p+q$? (jen číslice)",
+      "hints": [
+        "V $y=a(x-p)^2+q$ je vrchol $(p,\\ q)$.",
+        "Dávej pozor na znaménko uvnitř závorky."
+      ],
+      "explanation": "Vrchol je $({p},\\ {q})$, takže p+q={ans}."
+    },
+    "xInt": {
+      "prompt": "Jaká je souřadnice průsečíku $y={a}x+{b}$ s osou x?",
+      "hints": [
+        "Průsečík s osou x má souřadnici x při y=0.",
+        "Vyřeš $0=ax+b$."
+      ],
+      "explanation": "Z $0={a}x+{b}$ vychází x={ans}."
+    },
+    "yInt": {
+      "prompt": "Jaká je souřadnice průsečíku $y={a}x+{b}$ s osou y?",
+      "hints": [
+        "Průsečík s osou y má souřadnici y při x=0.",
+        "V $y=ax+b$ je to b."
+      ],
+      "explanation": "Souřadnice průsečíku s osou y je {ans}."
+    }
+  },
+  "texts": {
+    "rd_down": "zaokrouhlení dolů",
+    "rd_half": "zaokrouhlení na nejbližší hodnotu",
+    "rd_up": "zaokrouhlení nahoru"
+  }
+}

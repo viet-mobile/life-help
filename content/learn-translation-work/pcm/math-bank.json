@@ -1,0 +1,1065 @@
+{
+  "templates": {
+    "addThree": {
+      "prompt": "Wetin be {a}+{b}?",
+      "hints": [
+        "Start addition from di units place.",
+        "If one column add reach 10 or more, carry go di next place."
+      ],
+      "explanation": "{a}+{b}={ans}."
+    },
+    "areaX2": {
+      "prompt": "Wetin be di area wey curve $y={k}x^2$, di $x$-axis and line $x={a}$ enclose? (write number only)",
+      "hints": [
+        "Di area na definite integral from 0 to {a}.",
+        "$\\int x^2\\,dx=\\frac{x^3}{3}$."
+      ],
+      "explanation": "$\\int_0^{{a}} {k}x^2\\,dx=\\frac{{k}\\times{a}^3}{3}={ans}$."
+    },
+    "arithSum": {
+      "prompt": "Wetin be di sum of di first {n} terms for arithmetic sequence wey first term na {a} and common difference na {d}? (write number only)",
+      "hints": [
+        "Di sum formula na $S_n=\\frac{n(2a+(n-1)d)}{2}$.",
+        "You fit also find di last term, then calculate (first + last) × number of terms ÷ 2."
+      ],
+      "explanation": "$S_{{n}}=\\frac{{n}(2\\times{a}+({n}-1)\\times({d}))}{2}={ans}$."
+    },
+    "arithTerm": {
+      "prompt": "Wetin be term number {n} for arithmetic sequence wey first term na {a} and common difference na {d}? (write number only)",
+      "hints": [
+        "Di general term na $a_n=a+(n-1)d$.",
+        "Multiply (n-1) by di common difference, then add di first term."
+      ],
+      "explanation": "{a}+({n}-1)×({d})={ans}."
+    },
+    "bigNum": {
+      "prompt": "Which number {a} groups of ten thousand and {b} groups of one thousand go make? (write number only)",
+      "hints": [
+        "{a} groups of ten thousand na {a}0000.",
+        "{b} groups of one thousand na {b}000. Add dem together."
+      ],
+      "explanation": "{a} groups of ten thousand and {b} groups of one thousand make {ans}."
+    },
+    "binomCoef": {
+      "prompt": "Wetin be di coefficient of $x^{{k}}$ when you expand $(x+1)^{{n}}$?",
+      "hints": [
+        "For binomial theorem, di coefficients na numbers of combinations.",
+        "Di coefficient of $x^k$ na $_nC_k$: di number of ways to choose k from n."
+      ],
+      "explanation": "{calc}={ans}."
+    },
+    "binomMean": {
+      "prompt": "If random variable $X$ follow binomial distribution $B({n},\\ {p})$, wetin be $E(X)$? (write number only)",
+      "hints": [
+        "Di mean of $B(n,\\ p)$ na $np$.",
+        "Multiply n and p."
+      ],
+      "explanation": "E(X)={n}×{p}={ans}."
+    },
+    "chanceFraction": {
+      "prompt": "Box get {a} A-balls and {b} B-balls. Dem remove one ball. Wetin be di probability say na A-ball, as decimal?",
+      "hints": [
+        "Probability = (favourable cases) ÷ (all cases).",
+        "Find di total number of balls first."
+      ],
+      "explanation": "{a}÷{total}={ans}, so di probability na {ans}."
+    },
+    "ciHalf": {
+      "prompt": "Di population standard deviation na {s}, and sample size na {n}. Wetin be di 95% margin of error $1.96\\times\\frac{σ}{\\sqrt{ n }}$? (two decimal places)",
+      "hints": [
+        "Find $\\sqrt{ n }$ first.",
+        "Divide σ by am, then multiply by 1.96."
+      ],
+      "explanation": "$1.96\\times\\frac{{s}}{{rt}}={ans}$."
+    },
+    "circleArea": {
+      "prompt": "Circle get radius {r} cm. Wetin be di area in cm²? (use $3.14$ for pi) (cm²)",
+      "hints": [
+        "Di area na radius × radius × pi.",
+        "Square di radius, then multiply by 3.14."
+      ],
+      "explanation": "{r}×{r}×3.14={ans}, so di area na {ans} cm²."
+    },
+    "circleR": {
+      "prompt": "Wetin be di radius of circle $({fx})^2+({fy})^2={r2}$? (write number only)",
+      "hints": [
+        "For $(x-a)^2+(y-b)^2=r^2$, r na di radius.",
+        "Di number for di right side na r²."
+      ],
+      "explanation": "$r^2={r2}$, so di radius na {ans}."
+    },
+    "circum": {
+      "prompt": "Circle get radius {r} cm. How long di circumference be in cm? (use $3.14$ for pi) (cm)",
+      "hints": [
+        "Di circumference na diameter × pi.",
+        "Di diameter na twice di radius."
+      ],
+      "explanation": "{r}×2×3.14={ans}, so e be {ans} cm."
+    },
+    "coinCases": {
+      "prompt": "How many possible outcomes dey when dem toss {n} coins together? (write number only)",
+      "hints": [
+        "One coin get 2 outcomes: head or tail.",
+        "Multiply di number of outcomes for each coin together."
+      ],
+      "explanation": "Product of {n} equal factors of 2 na {ans}, so {ans} outcomes dey."
+    },
+    "combNC": {
+      "prompt": "How many ways you fit choose {r} out of {n} different people if order no matter? (write number only)",
+      "hints": [
+        "Order no matter, so na combination.",
+        "Divide di number of permutations by {r}!."
+      ],
+      "explanation": "{calc}={ans}, so {ans} ways dey."
+    },
+    "complexSum": {
+      "prompt": "Wetin be di sum of di real part and imaginary part of ${expr}$? (write number only)",
+      "hints": [
+        "Add di real parts together, and di imaginary parts together.",
+        "Treat i like letter."
+      ],
+      "explanation": "Di real part na {re} and imaginary part na {im}, so di sum na {ans}."
+    },
+    "composite": {
+      "prompt": "If $f(x)={f}$ and $g(x)={g}$, wetin be {comp}?",
+      "hints": [
+        "Di composite $(g\\circ f)(a)$ mean $g(f(a))$. Work from di inside function go outside.",
+        "Find di value of di inside function first, then put am inside di outside function."
+      ],
+      "explanation": "{steps}, so di answer na {ans}."
+    },
+    "condProb": {
+      "prompt": "For events $A,\\ B$, $P(A)={pa}$ and $P(A\\cap B)={pab}$. Wetin be $P(B\\mid A)$? (write decimal)",
+      "hints": [
+        "Conditional probability: $P(B\\mid A)=\\frac{P(A\\cap B)}{P(A)}$.",
+        "Divide di two values."
+      ],
+      "explanation": "{pab}÷{pa}={ans}."
+    },
+    "convKgG": {
+      "prompt": "{v} kg na how many g? (g)",
+      "hints": [
+        "1 kg na 1000 g.",
+        "Multiply {v} by 1000."
+      ],
+      "explanation": "{v}×1000={ans}, so na {ans} g."
+    },
+    "convMCm": {
+      "prompt": "{v} m na how many cm? (cm)",
+      "hints": [
+        "1 m na 100 cm.",
+        "Multiply {v} by 100."
+      ],
+      "explanation": "{v}×100={ans}, so na {ans} cm."
+    },
+    "crossX": {
+      "prompt": "Di graphs of $y={a1}x+{b1}$ and $y={a2}x+{b2}$ meet for P. Wetin be di x-coordinate of P?",
+      "hints": [
+        "For where dem meet, both y-values equal.",
+        "Solve $a_1x+b_1=a_2x+b_2$."
+      ],
+      "explanation": "${a1}x+{b1}={a2}x+{b2}$ give x={ans}."
+    },
+    "cubeVol": {
+      "prompt": "One edge of cube na {a} cm. Wetin be di volume in cm³? (write number only)",
+      "hints": [
+        "Di volume of cube na edge × edge × edge.",
+        "Multiply three equal factors, each na {a}."
+      ],
+      "explanation": "{a}×{a}×{a}={ans}, so di volume na {ans} cm³."
+    },
+    "cuboidVol": {
+      "prompt": "Cuboid long {a} cm, wide {b} cm and high {c} cm. Wetin be di volume in cm³? (cm³)",
+      "hints": [
+        "Di volume of cuboid na length × width × height.",
+        "Multiply all three lengths."
+      ],
+      "explanation": "{a}×{b}×{c}={ans}, so di volume na {ans} cm³."
+    },
+    "dataRange": {
+      "prompt": "Wetin be di difference between di biggest and smallest value for {list}?",
+      "hints": [
+        "Find di biggest and smallest value.",
+        "Subtract di smaller one from di bigger one."
+      ],
+      "explanation": "{max}-{min}={ans}."
+    },
+    "decPct": {
+      "prompt": "Write this decimal as percentage: ${d}$ (write number only)",
+      "hints": [
+        "Multiply di decimal by 100 to get percentage.",
+        "Move di decimal point two places go right."
+      ],
+      "explanation": "{d}×100={ans}, so na {ans}%."
+    },
+    "decTimes": {
+      "prompt": "Calculate $ {a} \\times {b} $.",
+      "hints": [
+        "Leave di decimal point first; multiply like whole numbers.",
+        "After, put di decimal point back, using di total number of decimal places for both factors."
+      ],
+      "explanation": "{a}×{b}={ans}."
+    },
+    "defInt": {
+      "prompt": "Wetin be di value of $\\int_{0}^{{b}} ({fx})\\,dx$? (write number only)",
+      "hints": [
+        "Find di antiderivative, then calculate (value for di upper limit) - (value for di lower limit).",
+        "$\\int x\\,dx=\\frac{x^2}{2}$ and $\\int c\\,dx=cx$."
+      ],
+      "explanation": "When you put x={b} inside di antiderivative ${anti}$, you get {ans}."
+    },
+    "derivAt": {
+      "prompt": "If $f(x)={poly}$, wetin be $f'({a})$? (write number only)",
+      "hints": [
+        "$(x^n)'=nx^{n-1}$.",
+        "Find di derivative, then put {a} instead of x."
+      ],
+      "explanation": "$f'(x)={deriv}$, so $f'({a})={ans}$."
+    },
+    "derivVal": {
+      "prompt": "If $f(x)={f}$, wetin be $f'({a})$?",
+      "hints": [
+        "For composite function, differentiate di outside function and multiply by di derivative of di inside one; for quotient, $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$.",
+        "Use $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ and $(\\cos x)'=-\\sin x$."
+      ],
+      "explanation": "{steps}."
+    },
+    "diameter": {
+      "prompt": "Di radius of circle na {r} cm. How many cm di diameter be? (cm)",
+      "hints": [
+        "Di diameter na twice di radius.",
+        "Multiply di radius by 2."
+      ],
+      "explanation": "{r}×2={ans}, so di diameter na {ans} cm."
+    },
+    "directConst": {
+      "prompt": "Di graph of direct proportion y=ax pass through point ({x1}, {y1}). Wetin be a?",
+      "hints": [
+        "Put di point inside y=ax.",
+        "a=y÷x."
+      ],
+      "explanation": "a={y1}÷{x1}={ans}."
+    },
+    "discount": {
+      "prompt": "Item cost {p} won, and dem sell am with {d}% discount. Wetin be di selling price? (won)",
+      "hints": [
+        "Di discount na price × {d}%.",
+        "Subtract di discount from di price."
+      ],
+      "explanation": "{p}-{p}×{dr}={ans}, so na {ans} won."
+    },
+    "dist2": {
+      "prompt": "Wetin be di distance between points A({x1}, {y1}) and B({x2}, {y2})? (write number only)",
+      "hints": [
+        "Di distance na $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+        "Square di difference of di x-coordinates and di difference of di y-coordinates, then add dem."
+      ],
+      "explanation": "$\\sqrt{{dx}^2+{dy}^2}={ans}$."
+    },
+    "divide": {
+      "prompt": "Calculate $ {a} \\div {b} $.",
+      "hints": [
+        "Use di divisor times table backwards.",
+        "Find which number × {b} go give {a}."
+      ],
+      "explanation": "{a}÷{b}={ans}."
+    },
+    "divisorCount": {
+      "prompt": "How many divisors {n} get?",
+      "hints": [
+        "Find every number wey fit divide {n} without remainder.",
+        "Start check from di smallest go up."
+      ],
+      "explanation": "Di divisors of {n} na {list}: dem be {ans}."
+    },
+    "equilibrium": {
+      "prompt": "Demand curve $p={a}-{b}q$ and supply curve $p={c}+{d}q$ meet for equilibrium quantity q. Wetin be q?",
+      "hints": [
+        "For equilibrium, demand price equal supply price.",
+        "Solve $a-bq=c+dq$."
+      ],
+      "explanation": "${a}-{b}q={c}+{d}q$ give q={ans}."
+    },
+    "expMul": {
+      "prompt": "For $x^{{a}} \\times x^{{b}} = x^{\\square}$, which number go inside di box? (write number only)",
+      "hints": [
+        "When di bases equal, add di exponents.",
+        "Calculate {a}+{b}."
+      ],
+      "explanation": "{a}+{b}={ans}, so □={ans}."
+    },
+    "expPow": {
+      "prompt": "For $(x^{{a}})^{{b}} = x^{\\square}$, which number go inside di box? (write number only)",
+      "hints": [
+        "For power of another power, multiply di exponents.",
+        "Calculate {a}×{b}."
+      ],
+      "explanation": "{a}×{b}={ans}, so □={ans}."
+    },
+    "expandPQ": {
+      "prompt": "If $({fa})({fb}) = x^2+px+q$, wetin be $p+q$? (write number only)",
+      "hints": [
+        "Use $(x+a)(x+b)=x^2+(a+b)x+ab$.",
+        "p na di sum of di two numbers; q na their product."
+      ],
+      "explanation": "p={p} and q={q}, so p+q={ans}."
+    },
+    "expandSquare": {
+      "prompt": "If $({e})^2 = x^2+px+q$, wetin be $p+q$? (write number only)",
+      "hints": [
+        "Use $(x+a)^2=x^2+2ax+a^2$.",
+        "p na 2a; q na a²."
+      ],
+      "explanation": "p={p} and q={q}, so p+q={ans}."
+    },
+    "exprValue": {
+      "prompt": "When $x={x}$, wetin be di value of ${expr}$?",
+      "hints": [
+        "Put di given number instead of x.",
+        "Multiply first, then add or subtract."
+      ],
+      "explanation": "When you put x={x}, you get ${expr}={ans}$."
+    },
+    "factorDiff": {
+      "prompt": "When you factorise ${poly}$ as $(x+m)(x+n)$, wetin be di difference between m and n (bigger minus smaller)? (write number only)",
+      "hints": [
+        "Find two numbers wey sum na di coefficient of x and product na di constant term.",
+        "After you find dem, subtract di smaller from di bigger."
+      ],
+      "explanation": "${poly}=({fm})({fn})$, so di two numbers na {m} and {n}, and di difference na {ans}."
+    },
+    "factorExp": {
+      "prompt": "${n}$ factorised into primes na $2^a\\times3^b$. Wetin be $a+b$?",
+      "hints": [
+        "Divide {n} by 2 as long as e fit divide without remainder.",
+        "Then divide wetin remain by 3."
+      ],
+      "explanation": "${n}=2^{a}\\times3^{b}$, so $a+b={ans}$."
+    },
+    "focusX": {
+      "prompt": "Wetin be di $x$-coordinate of di focus of parabola $y^2={c}x$? (write number only)",
+      "hints": [
+        "Di focus of $y^2=4px$ na $(p,\\ 0)$.",
+        "Use {c}=4p find p."
+      ],
+      "explanation": "4p={c}, so p={ans}."
+    },
+    "fracAdd": {
+      "prompt": "Calculate $\\frac{{a}}{{b}} + \\frac{{c}}{{d}}$. (decimal dey OK, or fraction like 3/4)",
+      "hints": [
+        "Rewrite di fractions with one common denominator.",
+        "Add di numerators."
+      ],
+      "explanation": "$\\frac{{a}}{{b}}+\\frac{{c}}{{d}}=\\frac{{num}}{{den}}$."
+    },
+    "fracDivInt": {
+      "prompt": "Calculate $\\frac{{a}}{{b}} \\div {c}$. (decimal dey OK, or fraction like 3/4)",
+      "hints": [
+        "To divide fraction by whole number, multiply di denominator by that number.",
+        "Simplify after you calculate."
+      ],
+      "explanation": "$\\frac{{a}}{{b}}\\div{c}=\\frac{{num}}{{den}}$."
+    },
+    "fracToDec": {
+      "prompt": "Write fraction $\\frac{{a}}{{b}}$ as decimal. (write decimal)",
+      "hints": [
+        "Rewrite di fraction make di denominator be 10 or 100.",
+        "Or divide di numerator by di denominator."
+      ],
+      "explanation": "$\\frac{{a}}{{b}}={ans}$."
+    },
+    "funcValue": {
+      "prompt": "For linear function $f(x)={a}x+{b}$, wetin be $f({c})$?",
+      "hints": [
+        "Put {c} instead of x.",
+        "Multiply, then add."
+      ],
+      "explanation": "$f({c})={a}\\times{c}+{b}={ans}$."
+    },
+    "gcd": {
+      "prompt": "Wetin be di highest common factor of {a} and {b}?",
+      "hints": [
+        "Find di factors wey both numbers share.",
+        "Di biggest one na di highest common factor."
+      ],
+      "explanation": "Di highest common factor of {a} and {b} na {ans}."
+    },
+    "geoRatio": {
+      "prompt": "Geometric sequence get first term {a} and third term {c}. Wetin be di common ratio? (positive number only)",
+      "hints": [
+        "Di third term na di first term multiplied by di ratio twice.",
+        "Use $ar^2=c$ find $r^2$."
+      ],
+      "explanation": "From {a}×r²={c}, we get r²={sq}, so di common ratio na {ans}."
+    },
+    "geoSeries": {
+      "prompt": "Wetin be di sum of di infinite geometric series wey first term na {a} and common ratio na ${rtex}$? (decimal dey OK, or fraction like 3/4)",
+      "hints": [
+        "Di sum dey exist when di absolute value of di ratio dey less than 1.",
+        "Di sum na (first term) ÷ (1 - ratio)."
+      ],
+      "explanation": "{a}÷(1-${rtex}$)=${res}$."
+    },
+    "geoTerm": {
+      "prompt": "Wetin be term number {n} for geometric sequence wey first term na {a} and common ratio na {r}? (write number only)",
+      "hints": [
+        "Di general term na $a_n=ar^{n-1}$.",
+        "Multiply by di common ratio (n-1) times."
+      ],
+      "explanation": "Di ({n}-1) power of {r}, multiplied by {a}, na {ans}."
+    },
+    "groups": {
+      "prompt": "Each bundle get {a}, and {b} bundles dey. How many dey altogether? (write number only)",
+      "hints": [
+        "You fit use multiplication count equal groups.",
+        "Na di same as adding {a} altogether {b} times."
+      ],
+      "explanation": "{a}×{b}={ans}, so {ans} dey."
+    },
+    "hundredsDigit": {
+      "prompt": "Which digit dey di hundreds place for ${n}$? (write number only)",
+      "hints": [
+        "Na di third digit from di right.",
+        "For three-digit number, na di first digit."
+      ],
+      "explanation": "Di hundreds digit of {n} na {ans}."
+    },
+    "hypot": {
+      "prompt": "Di two sides beside di right angle for right-angled triangle na {a} cm and {b} cm. How long di longest side be in cm? (cm)",
+      "hints": [
+        "Pythagoras theorem: (hypotenuse)² = (one side)² + (other side)².",
+        "Square each side, add dem, then take di square root."
+      ],
+      "explanation": "${a}^2+{b}^2={sq}$, so di longest side na {ans} cm."
+    },
+    "ineqCount": {
+      "prompt": "How many integers $x$ satisfy quadratic inequality ${eq}<0$? (write number only)",
+      "hints": [
+        "Factorise di left side to find di two roots.",
+        "Count di integers between di roots; no include di roots themselves."
+      ],
+      "explanation": "From ${fact}<0$, we get {r1}<x<{r2}, so {ans} integers dey."
+    },
+    "ineqMax": {
+      "prompt": "Wetin be di biggest integer $x$ wey satisfy $x+{a} < {b}$? (write number only)",
+      "hints": [
+        "Subtract di same number from both sides to find di range of x.",
+        "x must dey less than di value wey you find; no include that value itself."
+      ],
+      "explanation": "x<{bound}, so di biggest integer na {ans}."
+    },
+    "intAdd": {
+      "prompt": "Calculate $({a})+({b})$.",
+      "hints": [
+        "Same signs: add di absolute values, keep di sign.",
+        "Different signs: subtract di absolute values; use di sign of di one with bigger absolute value."
+      ],
+      "explanation": "$({a})+({b})={ans}$."
+    },
+    "intDiv": {
+      "prompt": "Calculate $({a})\\div({b})$.",
+      "hints": [
+        "Same signs give positive result; different signs give negative result.",
+        "Divide di absolute values."
+      ],
+      "explanation": "$({a})\\div({b})={ans}$."
+    },
+    "intMul": {
+      "prompt": "Calculate $({a})\\times({b})$.",
+      "hints": [
+        "Same signs give positive result; different signs give negative result.",
+        "Multiply di absolute values."
+      ],
+      "explanation": "$({a})\\times({b})={ans}$."
+    },
+    "intSub": {
+      "prompt": "Calculate $({a})-({b})$.",
+      "hints": [
+        "To subtract number na to add di opposite number.",
+        "Rewrite am as $({a})+({nb})$."
+      ],
+      "explanation": "$({a})-({b})=({a})+({nb})={ans}$."
+    },
+    "inverseConst": {
+      "prompt": "Di graph of inverse proportion $y=\\frac{a}{x}$ pass through ({x1}, {y1}). Wetin be a?",
+      "hints": [
+        "Put di point inside $y=\\frac{a}{x}$.",
+        "a=x×y."
+      ],
+      "explanation": "a={x1}×{y1}={ans}."
+    },
+    "inverseVal": {
+      "prompt": "If $f^{-1}$ na di inverse function of $f(x)={f}$, wetin be $f^{-1}({y})$?",
+      "hints": [
+        "$f^{-1}(y)=x$ mean di same as $f(x)=y$.",
+        "Find di value of x wey satisfy $f(x)={y}$."
+      ],
+      "explanation": "{steps}, so $f^{-1}({y})={ans}$."
+    },
+    "isoApex": {
+      "prompt": "One base angle of isosceles triangle na {b}°. How many degrees di apex angle be? (degrees)",
+      "hints": [
+        "Di two base angles of isosceles triangle equal.",
+        "Subtract both base angles from 180°, di sum of triangle angles."
+      ],
+      "explanation": "180-{b}×2={ans}, so di apex angle na {ans}°."
+    },
+    "kmToM": {
+      "prompt": "{v} km na how many metres? (write number only)",
+      "hints": [
+        "1 km na 1000 m.",
+        "Multiply {v} by 1000."
+      ],
+      "explanation": "{v}×1000={ans}, so na {ans} m."
+    },
+    "lToMl": {
+      "prompt": "{v} L na how many millilitres? (write number only)",
+      "hints": [
+        "1 L na 1000 mL.",
+        "Multiply {v} by 1000."
+      ],
+      "explanation": "{v}×1000={ans}, so na {ans} mL."
+    },
+    "lcm": {
+      "prompt": "Wetin be di lowest common multiple of {a} and {b}?",
+      "hints": [
+        "List di multiples wey both numbers share; start from di smallest.",
+        "Di smallest multiple wey dem share na di lowest common multiple."
+      ],
+      "explanation": "Di lowest common multiple of {a} and {b} na {ans}."
+    },
+    "lessBy": {
+      "prompt": "Which number dey {k} less than {n}? (write number only)",
+      "hints": [
+        "Na di same as skip-counting down by {k}.",
+        "Focus on di digits for di places wey dey change."
+      ],
+      "explanation": "{n}-{k}={ans}."
+    },
+    "limFactor": {
+      "prompt": "Wetin be di value of $\\lim_{x\\to {a}}\\frac{x^2-{sq}}{{den}}$? (write number only)",
+      "hints": [
+        "You fit factorise di numerator as $(x-a)(x+a)$.",
+        "Cancel, then put di limit value instead of x."
+      ],
+      "explanation": "After you factorise di numerator and cancel, put x={a} to get {ans}."
+    },
+    "limLinear": {
+      "prompt": "Wetin be di value of $\\lim_{x\\to {a}}({f})$? (write number only)",
+      "hints": [
+        "For polynomial, di limit equal di value of di function.",
+        "Put {a} instead of x."
+      ],
+      "explanation": "Put x={a} to get {ans}."
+    },
+    "logAdd": {
+      "prompt": "Wetin be di value of $\\log_{{b}} {m} + \\log_{{b}} {n}$? (write number only)",
+      "hints": [
+        "$\\log_b m+\\log_b n=\\log_b mn$.",
+        "First find di product {m}×{n}."
+      ],
+      "explanation": "$\\log_{{b}} ({m}\\times{n})=\\log_{{b}} {prod}={ans}$."
+    },
+    "logVal": {
+      "prompt": "Wetin be di value of $\\log_{{b}} {n}$? (write number only)",
+      "hints": [
+        "$\\log_b n=k$ mean $b^k=n$.",
+        "Count how many factors you need, if each factor na {b} and their product na {n}."
+      ],
+      "explanation": "${b}^{{ans}}={n}$, so di answer na {ans}."
+    },
+    "makeTen": {
+      "prompt": "Which number you go add to {a} to make 10? (write number only)",
+      "hints": [
+        "Subtract {a} from 10.",
+        "Think of your ten fingers."
+      ],
+      "explanation": "{a}+{ans}=10, so di answer na {ans}."
+    },
+    "matEntry": {
+      "prompt": "For {mats}, wetin be di ({r}, {c}) entry of {expr}?",
+      "hints": [
+        "Matrix addition, subtraction and scalar multiplication dey work on entries for di same position.",
+        "Di (i, j) entry of product $AB$ na di sum of products from row i of $A$ and column j of $B$, paired in order."
+      ],
+      "explanation": "{steps}, so di answer na {ans}."
+    },
+    "maxOf": {
+      "prompt": "Which number big pass for {list}? (write number only)",
+      "hints": [
+        "Compare di numbers one by one.",
+        "Find di number wey represent di biggest amount."
+      ],
+      "explanation": "Di biggest number for {list} na {ans}."
+    },
+    "mean": {
+      "prompt": "Wetin be di mean of these numbers? {list}",
+      "hints": [
+        "Di mean na (sum of all) ÷ (how many).",
+        "Add all of dem first."
+      ],
+      "explanation": "({sum})÷{n}={ans}, so di mean na {ans}."
+    },
+    "meanSum": {
+      "prompt": "Di mean of {n} numbers na {m}. Wetin be di sum of these {n} numbers? (write number only)",
+      "hints": [
+        "mean = sum ÷ count.",
+        "So sum = mean × count."
+      ],
+      "explanation": "{m}×{n}={ans}."
+    },
+    "median": {
+      "prompt": "Wetin be di median of data {list}?",
+      "hints": [
+        "Arrange di data by size.",
+        "Di middle value na di median; if di count na even number, use di mean of di middle two."
+      ],
+      "explanation": "For order: {sorted}, so di median na {ans}."
+    },
+    "minOf": {
+      "prompt": "Which number small pass for {list}? (write number only)",
+      "hints": [
+        "Compare di numbers one by one.",
+        "Find di number wey represent di smallest amount."
+      ],
+      "explanation": "Di smallest number for {list} na {ans}."
+    },
+    "minus": {
+      "prompt": "Calculate $ {a} - {b} $.",
+      "hints": [
+        "Subtract di digits for di same place.",
+        "If you no fit subtract, borrow 10 from di next place."
+      ],
+      "explanation": "{a}-{b}={ans}."
+    },
+    "missAdd": {
+      "prompt": "For $\\square + {b} = {c}$, which number go inside di box? (write number only)",
+      "hints": [
+        "Subtract di known number from di total to find □.",
+        "Calculate {c}-{b}."
+      ],
+      "explanation": "{c}-{b}={ans}, so □={ans}."
+    },
+    "missSub": {
+      "prompt": "For $ {a} - \\square = {c}$, which number go inside di box? (write number only)",
+      "hints": [
+        "Subtract di result from di first number to find □.",
+        "Calculate {a}-{c}."
+      ],
+      "explanation": "{a}-{c}={ans}, so □={ans}."
+    },
+    "mixedCalc": {
+      "prompt": "Calculate this: {expr}",
+      "hints": [
+        "Do wetin dey inside brackets first.",
+        "Then do multiplication and division before addition and subtraction, from left go right."
+      ],
+      "explanation": "{steps}, so di answer na {ans}."
+    },
+    "mode": {
+      "prompt": "Wetin be di mode of data {list}?",
+      "hints": [
+        "Di mode na di value wey appear most often.",
+        "Count how many times each value appear."
+      ],
+      "explanation": "{ans} appear most often, so di mode na {ans}."
+    },
+    "moreBy": {
+      "prompt": "Which number dey {k} more than {n}? (write number only)",
+      "hints": [
+        "Na di same as skip-counting up by {k}.",
+        "Focus on di digits for di places wey dey change."
+      ],
+      "explanation": "{n}+{k}={ans}."
+    },
+    "nextNum": {
+      "prompt": "Which number come immediately after {n}? (write number only)",
+      "hints": [
+        "Count di numbers in order.",
+        "Count one more from {n}."
+      ],
+      "explanation": "Di number immediately after {n} na {ans}."
+    },
+    "onesDigit": {
+      "prompt": "Which digit dey di units place for ${n}$? (write number only)",
+      "hints": [
+        "Na di digit for far right.",
+        "Di units place dey show single units."
+      ],
+      "explanation": "Di units digit of {n} na {ans}."
+    },
+    "percentChange": {
+      "prompt": "Value change from {a} to {b}. By which percent e increase? (%)",
+      "hints": [
+        "Increase rate = (amount wey increase) ÷ (first value) × 100.",
+        "Di increase na {b}-{a}."
+      ],
+      "explanation": "({b}-{a})÷{a}×100={ans}, so na {ans}%."
+    },
+    "permNP": {
+      "prompt": "How many ways you fit choose {r} out of {n} different people and arrange dem for line? (write number only)",
+      "hints": [
+        "Order matter, so na permutation.",
+        "Start from {n}; multiply {r} numbers as you count down."
+      ],
+      "explanation": "{calc}={ans}, so {ans} ways dey."
+    },
+    "permSame": {
+      "prompt": "How many ways you fit arrange all di letters of {word} for one line?",
+      "hints": [
+        "If letters repeat, divide di factorial of di total number of letters by di product of di factorials of how many times each letter repeat.",
+        "Count how many times each letter appear."
+      ],
+      "explanation": "{calc}={ans} ways dey."
+    },
+    "pieCount": {
+      "prompt": "For pie chart, A na {p}% of di whole. Di whole na {t} people. How many people dey A?",
+      "hints": [
+        "{p}% na $\\frac{p}{100}$.",
+        "Multiply di whole by di ratio."
+      ],
+      "explanation": "{t}×{p}÷100={ans}, so na {ans} people."
+    },
+    "plus": {
+      "prompt": "Calculate $ {a} + {b} $.",
+      "hints": [
+        "Add di digits for di same place.",
+        "When one place add reach 10 or more, carry go di next place."
+      ],
+      "explanation": "{a}+{b}={ans}."
+    },
+    "pmAverage": {
+      "prompt": "For 5 days, fine-dust concentrations na {list} (µg/m³). Wetin be di mean concentration?",
+      "hints": [
+        "Di mean na (sum) ÷ (number of days).",
+        "Add di 5 values first."
+      ],
+      "explanation": "({sum})÷5={ans}, so di mean na {ans}."
+    },
+    "prevNum": {
+      "prompt": "Which number come immediately before {n}? (write number only)",
+      "hints": [
+        "Count backwards.",
+        "Count one less from {n}."
+      ],
+      "explanation": "Di number immediately before {n} na {ans}."
+    },
+    "probAdd": {
+      "prompt": "For two events A and B, $P(A)={pa}$, $P(B)={pb}$ and $P(A\\cap B)={pab}$. Wetin be $P(A\\cup B)$?",
+      "hints": [
+        "Use di addition rule $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$.",
+        "Put di given values one by one."
+      ],
+      "explanation": "{pa}+{pb}-{pab}={ans}."
+    },
+    "probComplement": {
+      "prompt": "Di probability of event A na $P(A)={pa}$. Wetin be di probability of di complement, $P(A^c)$?",
+      "hints": [
+        "Di probability of di complement na $1-P(A)$.",
+        "Subtract $P(A)$ from 1."
+      ],
+      "explanation": "1-{pa}={ans}."
+    },
+    "propX": {
+      "prompt": "For proportion ${a} : {b} = \\square : {d}$, which number go inside di box? (write number only)",
+      "hints": [
+        "For proportion, di product of di outside terms equal di product of di inside terms.",
+        "Solve □ × {b} = {a} × {d}."
+      ],
+      "explanation": "□×{b}={a}×{d}, so □={ans}."
+    },
+    "qfuncValue": {
+      "prompt": "For quadratic function $y={expr}$, wetin be $y$ when $x={x}$? (write number only)",
+      "hints": [
+        "Put di given value instead of x.",
+        "Calculate di square first."
+      ],
+      "explanation": "Put x={x} to get y={ans}."
+    },
+    "quadDisc": {
+      "prompt": "Wetin be di discriminant $D=b^2-4ac$ of quadratic equation ${eq}=0$? (write number only)",
+      "hints": [
+        "Di discriminant of $ax^2+bx+c=0$ na $D=b^2-4ac$.",
+        "Mind di signs of a, b and c."
+      ],
+      "explanation": "a={a}, b={b}, c={c}, so D=({b})²-4×({a})×({c})={ans}."
+    },
+    "quadFourth": {
+      "prompt": "Three angles of quadrilateral na {a}°, {b}° and {c}°. How many degrees di fourth angle be? (degrees)",
+      "hints": [
+        "Di four angles of quadrilateral add up to 360°.",
+        "Subtract di three known angles from 360."
+      ],
+      "explanation": "360-{a}-{b}-{c}={ans}, so na {ans}°."
+    },
+    "quadRoot": {
+      "prompt": "Which root big pass out of di two roots of ${eq}$? (write number only)",
+      "hints": [
+        "Factorise di left side.",
+        "Di roots na di values of x wey make one factor zero."
+      ],
+      "explanation": "From ${fact}$, di roots na {roots}, so di bigger root na {ans}."
+    },
+    "radDeg": {
+      "prompt": "Write $\\theta=\\dfrac{{num}}{{d}}$ (radians) as degrees. (write number only)",
+      "hints": [
+        "$\\pi$ radians na 180°.",
+        "Put 180° instead of $\\pi$."
+      ],
+      "explanation": "Put $\\pi=180^\\circ$ to get {ans}°."
+    },
+    "ratioPct": {
+      "prompt": "Write $\\frac{{a}}{{b}}$ as percentage. (write number only)",
+      "hints": [
+        "Percentage na di ratio multiplied by 100.",
+        "You fit also rewrite di fraction with denominator 100."
+      ],
+      "explanation": "$\\frac{{a}}{{b}}\\times100={ans}$, so na {ans}%."
+    },
+    "rectArea": {
+      "prompt": "Rectangle wide {w} cm and high {h} cm. Wetin be di area in cm²? (write number only)",
+      "hints": [
+        "Di area of rectangle na width × height.",
+        "Multiply di two side lengths."
+      ],
+      "explanation": "{w}×{h}={ans}, so di area na {ans} cm²."
+    },
+    "rectPerim": {
+      "prompt": "Rectangle wide {w} cm and high {h} cm. How long di perimeter be in cm? (cm)",
+      "hints": [
+        "Di perimeter na di sum of di four sides.",
+        "You fit use (width + height) × 2."
+      ],
+      "explanation": "({w}+{h})×2={ans}, so di perimeter na {ans} cm."
+    },
+    "relFreq": {
+      "prompt": "Di total frequency na {t}, and one class get frequency {f}. Wetin be di relative frequency of that class? (decimal)",
+      "hints": [
+        "Relative frequency = (class frequency) ÷ (total frequency).",
+        "Write di result as decimal."
+      ],
+      "explanation": "{f}÷{t}={ans}, so di relative frequency na {ans}."
+    },
+    "remainder": {
+      "prompt": "Wetin be di remainder when dem divide $P(x)={poly}$ by ${div}$? (write number only)",
+      "hints": [
+        "Remainder theorem: di remainder when you divide P(x) by x-a na P(a).",
+        "Put a instead of x, then calculate."
+      ],
+      "explanation": "By di remainder theorem, P({a})={ans}."
+    },
+    "repComb": {
+      "prompt": "How many ways you fit choose {r} items from {n} different kinds, if repetition dey allowed?",
+      "hints": [
+        "With n kinds and r items to choose, di count equal di number of ways to choose r from n+r−1.",
+        "Put di number of kinds and di number of items."
+      ],
+      "explanation": "{calc}={ans}."
+    },
+    "repPerm": {
+      "prompt": "How many ways you fit choose {r} items from {n} different items, repetition dey allowed, and arrange dem for line?",
+      "hints": [
+        "Use one factor for each position, and make every factor equal di number of choices.",
+        "You fit fill each position for {n} ways."
+      ],
+      "explanation": "{prod}={ans} ways dey."
+    },
+    "rootMax": {
+      "prompt": "Wetin be di biggest real root of {eq}?",
+      "hints": [
+        "Factorise am into product of factors. Synthetic division fit help find di first root.",
+        "Di roots na di values of x wey make one factor zero."
+      ],
+      "explanation": "{fact}, so di real roots na {roots}; di biggest na {ans}."
+    },
+    "rootSum": {
+      "prompt": "Wetin be di sum of all di real roots of {eq}?",
+      "hints": [
+        "Factorise am into product of factors. Synthetic division fit help find di first root.",
+        "Di roots na di values of x wey make one factor zero."
+      ],
+      "explanation": "{fact}, so di real roots na {roots}, and their sum na {ans}."
+    },
+    "roundTo": {
+      "prompt": "If you use “{mode}”, wetin {n} go become in units of {u}?",
+      "hints": [
+        "Look di digits below di {u} place.",
+        "Round up dey move am up, round down dey remove di lower digits, and round to nearest dey move am up only when di next digit na 5 or more."
+      ],
+      "explanation": "If you use “{mode}”, {n} go become {ans} in units of {u}."
+    },
+    "seqNext": {
+      "prompt": "Find di rule, then write di missing number: ${list}, \\square$",
+      "hints": [
+        "Find di difference between neighbouring numbers.",
+        "Di numbers dey increase or decrease by di same amount for each step."
+      ],
+      "explanation": "Di difference between neighbours na {d}, so □={ans}."
+    },
+    "setCount": {
+      "prompt": "If $n(A)={na}$, $n(B)={nb}$ and $n(A\\cap B)={nab}$, wetin be $n(A\\cup B)$?",
+      "hints": [
+        "Use $n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$.",
+        "Put di given values one by one."
+      ],
+      "explanation": "{na}+{nb}-{nab}={ans}."
+    },
+    "sigmaSum": {
+      "prompt": "Calculate this sum: {expr}",
+      "hints": [
+        "Di ∑ sign mean: put k=1, 2, 3, … one after another, then add everything.",
+        "You fit also use di rules $\\sum k=\\frac{n(n+1)}{2}$ and $\\sum c=cn$."
+      ],
+      "explanation": "{steps}, so di sum na {ans}."
+    },
+    "simpleInterest": {
+      "prompt": "Dem deposit {p} won for {n} years at {r}% simple interest per year. How much di interest be? (won)",
+      "hints": [
+        "Simple interest = principal × rate × years.",
+        "{r}% na {rr}."
+      ],
+      "explanation": "{p}×{rr}×{n}={ans}, so di interest na {ans} won."
+    },
+    "slope2": {
+      "prompt": "Wetin be di gradient of di line through points $({x1},\\,{y1})$ and $({x2},\\,{y2})$? (write number only)",
+      "hints": [
+        "Di gradient na (change in y) ÷ (change in x).",
+        "Divide di difference of di y-coordinates by di difference of di x-coordinates."
+      ],
+      "explanation": "$\\frac{{y2}-({y1})}{{x2}-({x1})}={ans}$."
+    },
+    "slopeOf": {
+      "prompt": "Wetin be di gradient of linear function $y={a}x+{b}$?",
+      "hints": [
+        "For $y=ax+b$, di gradient na a.",
+        "Check di coefficient of x."
+      ],
+      "explanation": "Di gradient na {ans}."
+    },
+    "solveLin": {
+      "prompt": "Solve linear equation ${eq}$ (find x).",
+      "hints": [
+        "Add or subtract di same number for both sides, make di x term stand alone.",
+        "Then divide both sides by di number in front of x."
+      ],
+      "explanation": "From ${eq}$, we get x={ans}."
+    },
+    "sqrtProd": {
+      "prompt": "Wetin be di value of $\\sqrt{{a}} \\times \\sqrt{{b}}$? (write number only)",
+      "hints": [
+        "$\\sqrt{a}\\times\\sqrt{b}=\\sqrt{ab}$.",
+        "Check whether di product na square number."
+      ],
+      "explanation": "$\\sqrt{{a}\\times{b}}=\\sqrt{{prod}}={ans}$."
+    },
+    "sqrtVal": {
+      "prompt": "Wetin be di value of $\\sqrt{{n}}$? (write number only)",
+      "hints": [
+        "Find di positive number wey square na {n}.",
+        "Think of di times table."
+      ],
+      "explanation": "${ans}^2={n}$, so $\\sqrt{{n}}={ans}$."
+    },
+    "stdev": {
+      "prompt": "Wetin be di standard deviation of data {list}? (population standard deviation)",
+      "hints": [
+        "Find di mean first.",
+        "Di square root of di mean of squared deviations (di variance) na di standard deviation."
+      ],
+      "explanation": "Di mean na {mean}, and variance na {var}, so di standard deviation na {ans}."
+    },
+    "subThree": {
+      "prompt": "Wetin be {a}-{b}?",
+      "hints": [
+        "Start subtraction from di units place.",
+        "If you no fit subtract, borrow from di next place."
+      ],
+      "explanation": "{a}-{b}={ans}."
+    },
+    "subsetCount": {
+      "prompt": "How many subsets set wey get {n} elements get?",
+      "hints": [
+        "Set wey get n elements get $2^n$ subsets.",
+        "Think how you go decide for each element whether to include am or not."
+      ],
+      "explanation": "{prod}={ans}, so {ans} subsets dey."
+    },
+    "taxTotal": {
+      "prompt": "Item cost {p} won, and {t}% value-added tax dey on top. How many won person must pay? (won)",
+      "hints": [
+        "Di tax na price × {t}%.",
+        "Add di tax to di price."
+      ],
+      "explanation": "{p}+{p}×{tr}={ans}, so na {ans} won."
+    },
+    "tensDigit": {
+      "prompt": "Which digit dey di tens place for ${n}$? (write number only)",
+      "hints": [
+        "Na di second digit from di right.",
+        "Find di digit immediately left of di units place."
+      ],
+      "explanation": "Di tens digit of {n} na {ans}."
+    },
+    "times": {
+      "prompt": "Calculate $ {a} \\times {b} $.",
+      "hints": [
+        "Think of di times table or equal groups.",
+        "For bigger numbers, multiply place by place, then add di parts."
+      ],
+      "explanation": "{a}×{b}={ans}."
+    },
+    "triThird": {
+      "prompt": "Two angles of triangle na {a}° and {b}°. How many degrees di third angle be? (degrees)",
+      "hints": [
+        "Di three angles of triangle add up to 180°.",
+        "Subtract di two known angles from 180."
+      ],
+      "explanation": "180-{a}-{b}={ans}, so na {ans}°."
+    },
+    "variance": {
+      "prompt": "Wetin be di variance of data {list}?",
+      "hints": [
+        "Find di mean, then di difference of each value from am.",
+        "Di variance na di mean of di squared deviations."
+      ],
+      "explanation": "Di mean na {mean}, and di squared deviations add up to {sq}, so di variance na {sq}÷{n}={ans}."
+    },
+    "vecNorm": {
+      "prompt": "Wetin be di magnitude $|\\vec{a}|$ of vector $\\vec{a}=({x},\\ {y})$? (write number only)",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Square each component, add dem, then take di square root."
+      ],
+      "explanation": "$\\sqrt{({x})^2+({y})^2}={ans}$."
+    },
+    "vertexSum": {
+      "prompt": "Di vertex of quadratic function $y={expr}$ na $(p,\\ q)$. Wetin be $p+q$? (write number only)",
+      "hints": [
+        "For $y=a(x-p)^2+q$, di vertex na $(p,\\ q)$.",
+        "Mind di sign inside di brackets."
+      ],
+      "explanation": "Di vertex na $({p},\\ {q})$, so p+q={ans}."
+    },
+    "xInt": {
+      "prompt": "Wetin be di x-intercept of $y={a}x+{b}$?",
+      "hints": [
+        "Di x-intercept na x when y=0.",
+        "Solve $0=ax+b$."
+      ],
+      "explanation": "$0={a}x+{b}$ give x={ans}."
+    },
+    "yInt": {
+      "prompt": "Wetin be di y-intercept of $y={a}x+{b}$?",
+      "hints": [
+        "Di y-intercept na y when x=0.",
+        "For $y=ax+b$, na b."
+      ],
+      "explanation": "Di y-intercept na {ans}."
+    }
+  },
+  "texts": {
+    "rd_down": "round down",
+    "rd_half": "round to di nearest",
+    "rd_up": "round up"
+  }
+}

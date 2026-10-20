@@ -1,0 +1,1065 @@
+{
+  "templates": {
+    "addThree": {
+      "prompt": "Cât este {a}+{b}?",
+      "hints": [
+        "Adună începând de la unități.",
+        "Dacă suma pe o coloană este 10 sau mai mare, treci o unitate la ordinul următor."
+      ],
+      "explanation": "{a}+{b}={ans}."
+    },
+    "areaX2": {
+      "prompt": "Care este aria delimitată de curba $y={k}x^2$, axa $x$ și dreapta $x={a}$? (doar cifre)",
+      "hints": [
+        "Aria este integrala definită de la 0 la {a}.",
+        "$\\int x^2\\,dx=\\frac{x^3}{3}$."
+      ],
+      "explanation": "$\\int_0^{{a}} {k}x^2\\,dx=\\frac{{k}\\times{a}^3}{3}={ans}$."
+    },
+    "arithSum": {
+      "prompt": "Care este suma primilor {n} termeni ai progresiei aritmetice cu primul termen {a} și rația {d}? (doar cifre)",
+      "hints": [
+        "Formula sumei este $S_n=\\frac{n(2a+(n-1)d)}{2}$.",
+        "Poți găsi și ultimul termen, apoi calcula (primul + ultimul) × numărul de termeni ÷ 2."
+      ],
+      "explanation": "$S_{{n}}=\\frac{{n}(2\\times{a}+({n}-1)\\times({d}))}{2}={ans}$."
+    },
+    "arithTerm": {
+      "prompt": "Care este termenul de rang {n} al progresiei aritmetice cu primul termen {a} și rația {d}? (doar cifre)",
+      "hints": [
+        "Termenul general este $a_n=a+(n-1)d$.",
+        "Înmulțește (n-1) cu rația și adună rezultatul la primul termen."
+      ],
+      "explanation": "{a}+({n}-1)×({d})={ans}."
+    },
+    "bigNum": {
+      "prompt": "Ce număr este format din {a} zeci de mii și {b} mii? (doar cifre)",
+      "hints": [
+        "{a} zeci de mii înseamnă {a}0000.",
+        "{b} mii înseamnă {b}000. Adună-le."
+      ],
+      "explanation": "{a} zeci de mii și {b} mii formează {ans}."
+    },
+    "binomCoef": {
+      "prompt": "Care este coeficientul lui $x^{{k}}$ în dezvoltarea lui $(x+1)^{{n}}$?",
+      "hints": [
+        "Potrivit formulei binomiale, coeficienții sunt numere de combinări.",
+        "Coeficientul lui $x^k$ este $_nC_k$, numărul modurilor de a alege k elemente din n."
+      ],
+      "explanation": "{calc}={ans}."
+    },
+    "binomMean": {
+      "prompt": "Dacă variabila aleatoare $X$ urmează distribuția binomială $B({n},\\ {p})$, cât este $E(X)$? (doar cifre)",
+      "hints": [
+        "Media distribuției $B(n,\\ p)$ este $np$.",
+        "Înmulțește n cu p."
+      ],
+      "explanation": "E(X)={n}×{p}={ans}."
+    },
+    "chanceFraction": {
+      "prompt": "O cutie conține {a} bile A și {b} bile B. Se extrage o bilă. Care este probabilitatea să fie o bilă A, exprimată zecimal?",
+      "hints": [
+        "Probabilitate = (cazuri favorabile) ÷ (toate cazurile).",
+        "Găsește mai întâi numărul total de bile."
+      ],
+      "explanation": "{a}÷{total}={ans}, deci probabilitatea este {ans}."
+    },
+    "ciHalf": {
+      "prompt": "Abaterea standard a populației este {s}, iar mărimea eșantionului este {n}. Care este marja de eroare de 95% $1.96\\times\\frac{σ}{\\sqrt{ n }}$? (două zecimale)",
+      "hints": [
+        "Calculează mai întâi $\\sqrt{ n }$.",
+        "Împarte σ la rezultat și înmulțește cu 1.96."
+      ],
+      "explanation": "$1.96\\times\\frac{{s}}{{rt}}={ans}$."
+    },
+    "circleArea": {
+      "prompt": "Un cerc are raza de {r} cm. Care este aria sa în cm²? (folosește $3.14$ pentru pi) (cm²)",
+      "hints": [
+        "Aria este rază × rază × pi.",
+        "Ridică raza la pătrat, apoi înmulțește cu 3.14."
+      ],
+      "explanation": "{r}×{r}×3.14={ans}, deci aria este {ans} cm²."
+    },
+    "circleR": {
+      "prompt": "Care este raza cercului $({fx})^2+({fy})^2={r2}$? (doar cifre)",
+      "hints": [
+        "În $(x-a)^2+(y-b)^2=r^2$, r este raza.",
+        "Numărul din dreapta este r²."
+      ],
+      "explanation": "$r^2={r2}$, deci raza este {ans}."
+    },
+    "circum": {
+      "prompt": "Un cerc are raza de {r} cm. Care este lungimea circumferinței sale în cm? (folosește $3.14$ pentru pi) (cm)",
+      "hints": [
+        "Circumferința este diametru × pi.",
+        "Diametrul este dublul razei."
+      ],
+      "explanation": "{r}×2×3.14={ans}, deci lungimea este {ans} cm."
+    },
+    "coinCases": {
+      "prompt": "Câte rezultate sunt posibile când se aruncă simultan {n} monede? (doar cifre)",
+      "hints": [
+        "O monedă are 2 rezultate: cap sau pajură.",
+        "Înmulțește numărul rezultatelor fiecărei monede."
+      ],
+      "explanation": "Produsul a {n} factori egali cu 2 este {ans}, deci sunt {ans} rezultate."
+    },
+    "combNC": {
+      "prompt": "În câte moduri poți alege {r} din {n} persoane diferite, dacă ordinea nu contează? (doar cifre)",
+      "hints": [
+        "Ordinea nu contează, deci este o combinare.",
+        "Împarte numărul aranjamentelor la {r}!."
+      ],
+      "explanation": "{calc}={ans}, deci sunt {ans} moduri."
+    },
+    "complexSum": {
+      "prompt": "Care este suma părții reale și a părții imaginare a lui ${expr}$? (doar cifre)",
+      "hints": [
+        "Adună separat părțile reale și părțile imaginare.",
+        "Tratează i ca pe o literă."
+      ],
+      "explanation": "Partea reală este {re}, iar partea imaginară este {im}, deci suma este {ans}."
+    },
+    "composite": {
+      "prompt": "Dacă $f(x)={f}$ și $g(x)={g}$, cât este {comp}?",
+      "hints": [
+        "Compunerea $(g\\circ f)(a)$ înseamnă $g(f(a))$. Începe cu funcția din interior.",
+        "Calculează întâi valoarea funcției interioare, apoi introdu-o în funcția exterioară."
+      ],
+      "explanation": "{steps}, deci răspunsul este {ans}."
+    },
+    "condProb": {
+      "prompt": "Pentru evenimentele $A,\\ B$, $P(A)={pa}$ și $P(A\\cap B)={pab}$. Cât este $P(B\\mid A)$? (scrie un număr zecimal)",
+      "hints": [
+        "Probabilitate condiționată: $P(B\\mid A)=\\frac{P(A\\cap B)}{P(A)}$.",
+        "Împarte cele două valori."
+      ],
+      "explanation": "{pab}÷{pa}={ans}."
+    },
+    "convKgG": {
+      "prompt": "Câte g sunt {v} kg? (g)",
+      "hints": [
+        "1 kg înseamnă 1000 g.",
+        "Înmulțește {v} cu 1000."
+      ],
+      "explanation": "{v}×1000={ans}, deci {ans} g."
+    },
+    "convMCm": {
+      "prompt": "Câți cm sunt {v} m? (cm)",
+      "hints": [
+        "1 m înseamnă 100 cm.",
+        "Înmulțește {v} cu 100."
+      ],
+      "explanation": "{v}×100={ans}, deci {ans} cm."
+    },
+    "crossX": {
+      "prompt": "Graficele $y={a1}x+{b1}$ și $y={a2}x+{b2}$ se întâlnesc în P. Care este coordonata x a lui P?",
+      "hints": [
+        "La intersecție, cele două valori y sunt egale.",
+        "Rezolvă $a_1x+b_1=a_2x+b_2$."
+      ],
+      "explanation": "Din ${a1}x+{b1}={a2}x+{b2}$ rezultă x={ans}."
+    },
+    "cubeVol": {
+      "prompt": "Muchia unui cub este de {a} cm. Care este volumul său în cm³? (doar cifre)",
+      "hints": [
+        "Volumul cubului este muchie × muchie × muchie.",
+        "Înmulțește trei factori egali cu {a}."
+      ],
+      "explanation": "{a}×{a}×{a}={ans}, deci volumul este {ans} cm³."
+    },
+    "cuboidVol": {
+      "prompt": "Un paralelipiped dreptunghic are lungimea {a} cm, lățimea {b} cm și înălțimea {c} cm. Care este volumul său în cm³? (cm³)",
+      "hints": [
+        "Volumul paralelipipedului dreptunghic este lungime × lățime × înălțime.",
+        "Înmulțește cele trei lungimi."
+      ],
+      "explanation": "{a}×{b}×{c}={ans}, deci volumul este {ans} cm³."
+    },
+    "dataRange": {
+      "prompt": "Care este diferența dintre valoarea maximă și cea minimă din {list}?",
+      "hints": [
+        "Găsește valoarea maximă și valoarea minimă.",
+        "Scade valoarea mai mică din cea mai mare."
+      ],
+      "explanation": "{max}-{min}={ans}."
+    },
+    "decPct": {
+      "prompt": "Scrie acest număr zecimal ca procent: ${d}$ (doar cifre)",
+      "hints": [
+        "Înmulțește numărul zecimal cu 100 pentru a obține procentul.",
+        "Mută separatorul zecimal cu două poziții la dreapta."
+      ],
+      "explanation": "{d}×100={ans}, deci este {ans}%."
+    },
+    "decTimes": {
+      "prompt": "Calculează $ {a} \\times {b} $.",
+      "hints": [
+        "Ignoră separatorul zecimal și înmulțește ca numere întregi.",
+        "Apoi pune separatorul înapoi, cu numărul total de zecimale al factorilor."
+      ],
+      "explanation": "{a}×{b}={ans}."
+    },
+    "defInt": {
+      "prompt": "Cât este $\\int_{0}^{{b}} ({fx})\\,dx$? (doar cifre)",
+      "hints": [
+        "Găsește o primitivă, apoi calculează (valoarea la limita superioară) - (valoarea la limita inferioară).",
+        "$\\int x\\,dx=\\frac{x^2}{2}$ și $\\int c\\,dx=cx$."
+      ],
+      "explanation": "Înlocuind x={b} în primitiva ${anti}$, obținem {ans}."
+    },
+    "derivAt": {
+      "prompt": "Dacă $f(x)={poly}$, cât este $f'({a})$? (doar cifre)",
+      "hints": [
+        "$(x^n)'=nx^{n-1}$.",
+        "Găsește derivata, apoi înlocuiește x cu {a}."
+      ],
+      "explanation": "$f'(x)={deriv}$, deci $f'({a})={ans}$."
+    },
+    "derivVal": {
+      "prompt": "Dacă $f(x)={f}$, cât este $f'({a})$?",
+      "hints": [
+        "Pentru o funcție compusă, derivează funcția exterioară și înmulțește cu derivata celei interioare; pentru un raport, $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$.",
+        "Folosește $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ și $(\\cos x)'=-\\sin x$."
+      ],
+      "explanation": "{steps}."
+    },
+    "diameter": {
+      "prompt": "Raza unui cerc este de {r} cm. Câți cm are diametrul său? (cm)",
+      "hints": [
+        "Diametrul este dublul razei.",
+        "Înmulțește raza cu 2."
+      ],
+      "explanation": "{r}×2={ans}, deci diametrul este {ans} cm."
+    },
+    "directConst": {
+      "prompt": "Graficul proporționalității directe y=ax trece prin punctul ({x1}, {y1}). Cât este a?",
+      "hints": [
+        "Înlocuiește coordonatele punctului în y=ax.",
+        "a=y÷x."
+      ],
+      "explanation": "a={y1}÷{x1}={ans}."
+    },
+    "discount": {
+      "prompt": "Un produs costă {p} won și este vândut cu reducere de {d}%. Care este prețul de vânzare? (won)",
+      "hints": [
+        "Reducerea este preț × {d}%.",
+        "Scade reducerea din preț."
+      ],
+      "explanation": "{p}-{p}×{dr}={ans}, deci {ans} won."
+    },
+    "dist2": {
+      "prompt": "Care este distanța dintre punctele A({x1}, {y1}) și B({x2}, {y2})? (doar cifre)",
+      "hints": [
+        "Distanța este $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+        "Ridică la pătrat diferența coordonatelor x și diferența coordonatelor y, apoi adună."
+      ],
+      "explanation": "$\\sqrt{{dx}^2+{dy}^2}={ans}$."
+    },
+    "divide": {
+      "prompt": "Calculează $ {a} \\div {b} $.",
+      "hints": [
+        "Folosește invers tabla înmulțirii pentru împărțitor.",
+        "Găsește numărul care, înmulțit cu {b}, dă {a}."
+      ],
+      "explanation": "{a}÷{b}={ans}."
+    },
+    "divisorCount": {
+      "prompt": "Câți divizori are {n}?",
+      "hints": [
+        "Găsește toate numerele care împart exact pe {n}.",
+        "Verifică începând cu cel mai mic."
+      ],
+      "explanation": "Divizorii lui {n} sunt {list}: în total {ans}."
+    },
+    "equilibrium": {
+      "prompt": "Curba cererii $p={a}-{b}q$ și curba ofertei $p={c}+{d}q$ se întâlnesc la cantitatea de echilibru q. Cât este q?",
+      "hints": [
+        "La echilibru, prețul cererii este egal cu prețul ofertei.",
+        "Rezolvă $a-bq=c+dq$."
+      ],
+      "explanation": "Din ${a}-{b}q={c}+{d}q$ rezultă q={ans}."
+    },
+    "expMul": {
+      "prompt": "În $x^{{a}} \\times x^{{b}} = x^{\\square}$, ce număr intră în căsuță? (doar cifre)",
+      "hints": [
+        "Când bazele sunt egale, adună exponenții.",
+        "Calculează {a}+{b}."
+      ],
+      "explanation": "{a}+{b}={ans}, deci □={ans}."
+    },
+    "expPow": {
+      "prompt": "În $(x^{{a}})^{{b}} = x^{\\square}$, ce număr intră în căsuță? (doar cifre)",
+      "hints": [
+        "La ridicarea unei puteri la altă putere, se înmulțesc exponenții.",
+        "Calculează {a}×{b}."
+      ],
+      "explanation": "{a}×{b}={ans}, deci □={ans}."
+    },
+    "expandPQ": {
+      "prompt": "Dacă $({fa})({fb}) = x^2+px+q$, cât este $p+q$? (doar cifre)",
+      "hints": [
+        "Folosește $(x+a)(x+b)=x^2+(a+b)x+ab$.",
+        "p este suma celor două numere, iar q este produsul lor."
+      ],
+      "explanation": "p={p} și q={q}, deci p+q={ans}."
+    },
+    "expandSquare": {
+      "prompt": "Dacă $({e})^2 = x^2+px+q$, cât este $p+q$? (doar cifre)",
+      "hints": [
+        "Folosește $(x+a)^2=x^2+2ax+a^2$.",
+        "p este 2a, iar q este a²."
+      ],
+      "explanation": "p={p} și q={q}, deci p+q={ans}."
+    },
+    "exprValue": {
+      "prompt": "Când $x={x}$, cât este ${expr}$?",
+      "hints": [
+        "Pune numărul dat în locul lui x.",
+        "Înmulțește mai întâi, apoi adună sau scade."
+      ],
+      "explanation": "Înlocuind x={x}, obținem ${expr}={ans}$."
+    },
+    "factorDiff": {
+      "prompt": "Când ${poly}$ se descompune în $(x+m)(x+n)$, care este diferența dintre m și n (mai mare minus mai mic)? (doar cifre)",
+      "hints": [
+        "Găsește două numere a căror sumă este coeficientul lui x și al căror produs este termenul liber.",
+        "După ce le găsești, scade numărul mai mic din cel mai mare."
+      ],
+      "explanation": "${poly}=({fm})({fn})$, deci cele două numere sunt {m} și {n}, iar diferența este {ans}."
+    },
+    "factorExp": {
+      "prompt": "Descompunerea în factori primi a lui ${n}$ este $2^a\\times3^b$. Cât este $a+b$?",
+      "hints": [
+        "Împarte {n} la 2 de câte ori poți.",
+        "Apoi împarte ce rămâne la 3."
+      ],
+      "explanation": "${n}=2^{a}\\times3^{b}$, deci $a+b={ans}$."
+    },
+    "focusX": {
+      "prompt": "Care este coordonata $x$ a focarului parabolei $y^2={c}x$? (doar cifre)",
+      "hints": [
+        "Focarul lui $y^2=4px$ este $(p,\\ 0)$.",
+        "Găsește p din {c}=4p."
+      ],
+      "explanation": "4p={c}, deci p={ans}."
+    },
+    "fracAdd": {
+      "prompt": "Calculează $\\frac{{a}}{{b}} + \\frac{{c}}{{d}}$. (poți scrie un număr zecimal sau o fracție ca 3/4)",
+      "hints": [
+        "Adu fracțiile la același numitor.",
+        "Adună numărătorii."
+      ],
+      "explanation": "$\\frac{{a}}{{b}}+\\frac{{c}}{{d}}=\\frac{{num}}{{den}}$."
+    },
+    "fracDivInt": {
+      "prompt": "Calculează $\\frac{{a}}{{b}} \\div {c}$. (poți scrie un număr zecimal sau o fracție ca 3/4)",
+      "hints": [
+        "La împărțirea unei fracții la un număr întreg, numitorul se înmulțește cu acel număr.",
+        "Simplifică după calcul."
+      ],
+      "explanation": "$\\frac{{a}}{{b}}\\div{c}=\\frac{{num}}{{den}}$."
+    },
+    "fracToDec": {
+      "prompt": "Scrie fracția $\\frac{{a}}{{b}}$ ca număr zecimal. (scrie un număr zecimal)",
+      "hints": [
+        "Rescrie fracția cu numitorul 10 sau 100.",
+        "Sau împarte numărătorul la numitor."
+      ],
+      "explanation": "$\\frac{{a}}{{b}}={ans}$."
+    },
+    "funcValue": {
+      "prompt": "Pentru funcția de gradul întâi $f(x)={a}x+{b}$, cât este $f({c})$?",
+      "hints": [
+        "Pune {c} în locul lui x.",
+        "Înmulțește, apoi adună."
+      ],
+      "explanation": "$f({c})={a}\\times{c}+{b}={ans}$."
+    },
+    "gcd": {
+      "prompt": "Care este cel mai mare divizor comun al lui {a} și {b}?",
+      "hints": [
+        "Găsește divizorii comuni ai celor două numere.",
+        "Cel mai mare dintre ei este cel mai mare divizor comun."
+      ],
+      "explanation": "Cel mai mare divizor comun al lui {a} și {b} este {ans}."
+    },
+    "geoRatio": {
+      "prompt": "O progresie geometrică are primul termen {a} și al treilea termen {c}. Care este rația? (pozitivă, doar cifre)",
+      "hints": [
+        "Al treilea termen este primul termen înmulțit de două ori cu rația.",
+        "Din $ar^2=c$, găsește $r^2$."
+      ],
+      "explanation": "Din {a}×r²={c} obținem r²={sq}, deci rația este {ans}."
+    },
+    "geoSeries": {
+      "prompt": "Care este suma seriei geometrice infinite cu primul termen {a} și rația ${rtex}$? (poți scrie un număr zecimal sau o fracție ca 3/4)",
+      "hints": [
+        "Suma există când modulul rației este mai mic decât 1.",
+        "Suma este (primul termen) ÷ (1 - rație)."
+      ],
+      "explanation": "{a}÷(1-${rtex}$)=${res}$."
+    },
+    "geoTerm": {
+      "prompt": "Care este termenul de rang {n} al progresiei geometrice cu primul termen {a} și rația {r}? (doar cifre)",
+      "hints": [
+        "Termenul general este $a_n=ar^{n-1}$.",
+        "Înmulțește cu rația de (n-1) ori."
+      ],
+      "explanation": "{a} înmulțit cu {r} la puterea ({n}-1) este {ans}."
+    },
+    "groups": {
+      "prompt": "În fiecare grupă sunt {a} obiecte și există {b} grupe. Câte obiecte sunt în total? (doar cifre)",
+      "hints": [
+        "Grupele egale pot fi numărate prin înmulțire.",
+        "Este același lucru cu a aduna {a} de {b} ori."
+      ],
+      "explanation": "{a}×{b}={ans}, deci sunt {ans}."
+    },
+    "hundredsDigit": {
+      "prompt": "Care este cifra sutelor din ${n}$? (doar cifre)",
+      "hints": [
+        "Este a treia cifră din dreapta.",
+        "Într-un număr de trei cifre, este prima cifră."
+      ],
+      "explanation": "Cifra sutelor din {n} este {ans}."
+    },
+    "hypot": {
+      "prompt": "Cele două laturi care formează unghiul drept al unui triunghi dreptunghic au {a} cm și {b} cm. Câți cm are latura cea mai lungă? (cm)",
+      "hints": [
+        "Teorema lui Pitagora: (ipotenuză)² = (o catetă)² + (cealaltă catetă)².",
+        "Ridică ambele lungimi la pătrat, adună, apoi extrage rădăcina pătrată."
+      ],
+      "explanation": "${a}^2+{b}^2={sq}$, deci latura cea mai lungă are {ans} cm."
+    },
+    "ineqCount": {
+      "prompt": "Câte numere întregi $x$ satisfac inecuația de gradul al doilea ${eq}<0$? (doar cifre)",
+      "hints": [
+        "Descompune membrul stâng în factori pentru a găsi cele două rădăcini.",
+        "Numără întregii dintre rădăcini; rădăcinile nu sunt incluse."
+      ],
+      "explanation": "Din ${fact}<0$ obținem {r1}<x<{r2}, deci sunt {ans} numere întregi."
+    },
+    "ineqMax": {
+      "prompt": "Care este cel mai mare întreg $x$ care satisface $x+{a} < {b}$? (doar cifre)",
+      "hints": [
+        "Scade același număr din ambii membri pentru a găsi intervalul lui x.",
+        "x trebuie să fie mai mic decât valoarea găsită; acea valoare nu este inclusă."
+      ],
+      "explanation": "x<{bound}, deci cel mai mare întreg este {ans}."
+    },
+    "intAdd": {
+      "prompt": "Calculează $({a})+({b})$.",
+      "hints": [
+        "Aceleași semne: adună modulele și păstrează semnul.",
+        "Semne diferite: scade modulele și păstrează semnul numărului cu modulul mai mare."
+      ],
+      "explanation": "$({a})+({b})={ans}$."
+    },
+    "intDiv": {
+      "prompt": "Calculează $({a})\\div({b})$.",
+      "hints": [
+        "Semnele identice dau un rezultat pozitiv, iar cele diferite, unul negativ.",
+        "Împarte modulele."
+      ],
+      "explanation": "$({a})\\div({b})={ans}$."
+    },
+    "intMul": {
+      "prompt": "Calculează $({a})\\times({b})$.",
+      "hints": [
+        "Semnele identice dau un rezultat pozitiv, iar cele diferite, unul negativ.",
+        "Înmulțește modulele."
+      ],
+      "explanation": "$({a})\\times({b})={ans}$."
+    },
+    "intSub": {
+      "prompt": "Calculează $({a})-({b})$.",
+      "hints": [
+        "Scăderea înseamnă adunarea opusului.",
+        "Rescrie ca $({a})+({nb})$."
+      ],
+      "explanation": "$({a})-({b})=({a})+({nb})={ans}$."
+    },
+    "inverseConst": {
+      "prompt": "Graficul proporționalității inverse $y=\\frac{a}{x}$ trece prin ({x1}, {y1}). Cât este a?",
+      "hints": [
+        "Înlocuiește coordonatele punctului în $y=\\frac{a}{x}$.",
+        "a=x×y."
+      ],
+      "explanation": "a={x1}×{y1}={ans}."
+    },
+    "inverseVal": {
+      "prompt": "Dacă $f^{-1}$ este inversa funcției $f(x)={f}$, cât este $f^{-1}({y})$?",
+      "hints": [
+        "$f^{-1}(y)=x$ înseamnă același lucru ca $f(x)=y$.",
+        "Găsește valoarea lui x care satisface $f(x)={y}$."
+      ],
+      "explanation": "{steps}, deci $f^{-1}({y})={ans}$."
+    },
+    "isoApex": {
+      "prompt": "Un unghi de la baza unui triunghi isoscel este de {b}°. Câte grade are unghiul de la vârf? (grade)",
+      "hints": [
+        "Cele două unghiuri de la baza triunghiului isoscel sunt egale.",
+        "Scade ambele unghiuri de la bază din 180°, suma unghiurilor triunghiului."
+      ],
+      "explanation": "180-{b}×2={ans}, deci unghiul de la vârf este {ans}°."
+    },
+    "kmToM": {
+      "prompt": "Câți metri sunt {v} km? (doar cifre)",
+      "hints": [
+        "1 km înseamnă 1000 m.",
+        "Înmulțește {v} cu 1000."
+      ],
+      "explanation": "{v}×1000={ans}, deci {ans} m."
+    },
+    "lToMl": {
+      "prompt": "Câți mililitri sunt {v} L? (doar cifre)",
+      "hints": [
+        "1 L înseamnă 1000 mL.",
+        "Înmulțește {v} cu 1000."
+      ],
+      "explanation": "{v}×1000={ans}, deci {ans} mL."
+    },
+    "lcm": {
+      "prompt": "Care este cel mai mic multiplu comun al lui {a} și {b}?",
+      "hints": [
+        "Scrie multiplii comuni începând cu cel mai mic.",
+        "Cel mai mic multiplu comun este cel mai mic dintre multiplii comuni."
+      ],
+      "explanation": "Cel mai mic multiplu comun al lui {a} și {b} este {ans}."
+    },
+    "lessBy": {
+      "prompt": "Ce număr este cu {k} mai mic decât {n}? (doar cifre)",
+      "hints": [
+        "Este același lucru cu a număra descrescător cu pasul {k}.",
+        "Concentrează-te pe cifrele din pozițiile care se schimbă."
+      ],
+      "explanation": "{n}-{k}={ans}."
+    },
+    "limFactor": {
+      "prompt": "Cât este $\\lim_{x\\to {a}}\\frac{x^2-{sq}}{{den}}$? (doar cifre)",
+      "hints": [
+        "Numărătorul se descompune ca $(x-a)(x+a)$.",
+        "Simplifică, apoi înlocuiește x cu valoarea spre care tinde."
+      ],
+      "explanation": "După descompunerea numărătorului și simplificare, înlocuind x={a} obținem {ans}."
+    },
+    "limLinear": {
+      "prompt": "Cât este $\\lim_{x\\to {a}}({f})$? (doar cifre)",
+      "hints": [
+        "Pentru un polinom, limita este egală cu valoarea funcției.",
+        "Pune {a} în locul lui x."
+      ],
+      "explanation": "Înlocuind x={a}, obținem {ans}."
+    },
+    "logAdd": {
+      "prompt": "Cât este $\\log_{{b}} {m} + \\log_{{b}} {n}$? (doar cifre)",
+      "hints": [
+        "$\\log_b m+\\log_b n=\\log_b mn$.",
+        "Găsește mai întâi produsul {m}×{n}."
+      ],
+      "explanation": "$\\log_{{b}} ({m}\\times{n})=\\log_{{b}} {prod}={ans}$."
+    },
+    "logVal": {
+      "prompt": "Cât este $\\log_{{b}} {n}$? (doar cifre)",
+      "hints": [
+        "$\\log_b n=k$ înseamnă $b^k=n$.",
+        "Numără de câte ori înmulțești {b} pentru a obține {n}."
+      ],
+      "explanation": "${b}^{{ans}}={n}$, deci răspunsul este {ans}."
+    },
+    "makeTen": {
+      "prompt": "Ce număr adunat cu {a} dă 10? (doar cifre)",
+      "hints": [
+        "Scade {a} din 10.",
+        "Gândește-te la cele zece degete ale tale."
+      ],
+      "explanation": "{a}+{ans}=10, deci răspunsul este {ans}."
+    },
+    "matEntry": {
+      "prompt": "Pentru {mats}, care este elementul ({r}, {c}) al lui {expr}?",
+      "hints": [
+        "Adunarea, scăderea și înmulțirea cu un scalar se fac element cu element, pe aceeași poziție.",
+        "Elementul (i, j) al produsului $AB$ este suma produselor dintre elementele rândului i din $A$ și ale coloanei j din $B$, luate în ordine."
+      ],
+      "explanation": "{steps}, deci răspunsul este {ans}."
+    },
+    "maxOf": {
+      "prompt": "Care este cel mai mare număr din {list}? (doar cifre)",
+      "hints": [
+        "Compară numerele pe rând.",
+        "Găsește numărul care reprezintă cantitatea cea mai mare."
+      ],
+      "explanation": "Cel mai mare număr din {list} este {ans}."
+    },
+    "mean": {
+      "prompt": "Care este media acestor numere? {list}",
+      "hints": [
+        "Media este (suma tuturor) ÷ (numărul lor).",
+        "Mai întâi adună-le pe toate."
+      ],
+      "explanation": "({sum})÷{n}={ans}, deci media este {ans}."
+    },
+    "meanSum": {
+      "prompt": "Media a {n} numere este {m}. Care este suma acestor {n} numere? (doar cifre)",
+      "hints": [
+        "medie = sumă ÷ număr de valori.",
+        "Așadar sumă = medie × număr de valori."
+      ],
+      "explanation": "{m}×{n}={ans}."
+    },
+    "median": {
+      "prompt": "Care este mediana datelor {list}?",
+      "hints": [
+        "Ordonează datele după mărime.",
+        "Valoarea din mijloc este mediana; pentru un număr par de valori, folosește media celor două din mijloc."
+      ],
+      "explanation": "În ordine: {sorted}, deci mediana este {ans}."
+    },
+    "minOf": {
+      "prompt": "Care este cel mai mic număr din {list}? (doar cifre)",
+      "hints": [
+        "Compară numerele pe rând.",
+        "Găsește numărul care reprezintă cantitatea cea mai mică."
+      ],
+      "explanation": "Cel mai mic număr din {list} este {ans}."
+    },
+    "minus": {
+      "prompt": "Calculează $ {a} - {b} $.",
+      "hints": [
+        "Scade cifrele de pe aceeași poziție.",
+        "Când nu poți scădea, împrumută 10 de la ordinul următor."
+      ],
+      "explanation": "{a}-{b}={ans}."
+    },
+    "missAdd": {
+      "prompt": "În $\\square + {b} = {c}$, ce număr intră în căsuță? (doar cifre)",
+      "hints": [
+        "Scade numărul cunoscut din total pentru a găsi □.",
+        "Calculează {c}-{b}."
+      ],
+      "explanation": "{c}-{b}={ans}, deci □={ans}."
+    },
+    "missSub": {
+      "prompt": "În $ {a} - \\square = {c}$, ce număr intră în căsuță? (doar cifre)",
+      "hints": [
+        "Scade rezultatul din primul număr pentru a găsi □.",
+        "Calculează {a}-{c}."
+      ],
+      "explanation": "{a}-{c}={ans}, deci □={ans}."
+    },
+    "mixedCalc": {
+      "prompt": "Calculează: {expr}",
+      "hints": [
+        "Efectuează mai întâi operațiile din paranteze.",
+        "Apoi înmulțirile și împărțirile înaintea adunărilor și scăderilor, de la stânga la dreapta."
+      ],
+      "explanation": "{steps}, deci răspunsul este {ans}."
+    },
+    "mode": {
+      "prompt": "Care este moda datelor {list}?",
+      "hints": [
+        "Moda este valoarea care apare cel mai des.",
+        "Numără de câte ori apare fiecare valoare."
+      ],
+      "explanation": "{ans} apare cel mai des, deci moda este {ans}."
+    },
+    "moreBy": {
+      "prompt": "Ce număr este cu {k} mai mare decât {n}? (doar cifre)",
+      "hints": [
+        "Este același lucru cu a număra crescător cu pasul {k}.",
+        "Concentrează-te pe cifrele din pozițiile care se schimbă."
+      ],
+      "explanation": "{n}+{k}={ans}."
+    },
+    "nextNum": {
+      "prompt": "Ce număr urmează imediat după {n}? (doar cifre)",
+      "hints": [
+        "Numără în ordine.",
+        "Numără încă unul de la {n}."
+      ],
+      "explanation": "Numărul imediat următor lui {n} este {ans}."
+    },
+    "onesDigit": {
+      "prompt": "Care este cifra unităților din ${n}$? (doar cifre)",
+      "hints": [
+        "Este cifra aflată cel mai la dreapta.",
+        "Poziția unităților arată unitățile simple."
+      ],
+      "explanation": "Cifra unităților din {n} este {ans}."
+    },
+    "percentChange": {
+      "prompt": "O valoare s-a schimbat de la {a} la {b}. Cu câte procente a crescut? (%)",
+      "hints": [
+        "Rata creșterii = (creșterea) ÷ (valoarea inițială) × 100.",
+        "Creșterea este {b}-{a}."
+      ],
+      "explanation": "({b}-{a})÷{a}×100={ans}, deci {ans}%."
+    },
+    "permNP": {
+      "prompt": "În câte moduri poți alege {r} din {n} persoane diferite și le poți așeza în șir? (doar cifre)",
+      "hints": [
+        "Ordinea contează, deci este un aranjament.",
+        "Începe cu {n} și înmulțește {r} numere consecutive descrescătoare."
+      ],
+      "explanation": "{calc}={ans}, deci sunt {ans} moduri."
+    },
+    "permSame": {
+      "prompt": "În câte moduri pot fi aranjate în șir toate literele din {word}?",
+      "hints": [
+        "Pentru litere repetate, împarte factorialul numărului total de litere la factorialul fiecărui număr de repetări.",
+        "Numără de câte ori apare fiecare literă."
+      ],
+      "explanation": "{calc}={ans} moduri."
+    },
+    "pieCount": {
+      "prompt": "În diagrama circulară, A reprezintă {p}% din total. Totalul este de {t} persoane. Câte sunt A?",
+      "hints": [
+        "{p}% înseamnă $\\frac{p}{100}$.",
+        "Înmulțește totalul cu proporția."
+      ],
+      "explanation": "{t}×{p}÷100={ans}, deci {ans} persoane."
+    },
+    "plus": {
+      "prompt": "Calculează $ {a} + {b} $.",
+      "hints": [
+        "Adună cifrele de pe aceeași poziție.",
+        "Când suma pe o poziție este 10 sau mai mare, treci o unitate la ordinul următor."
+      ],
+      "explanation": "{a}+{b}={ans}."
+    },
+    "pmAverage": {
+      "prompt": "În 5 zile, concentrațiile de particule fine au fost {list} (µg/m³). Care este concentrația medie?",
+      "hints": [
+        "Media este (sumă) ÷ (număr de zile).",
+        "Adună mai întâi cele 5 valori."
+      ],
+      "explanation": "({sum})÷5={ans}, deci media este {ans}."
+    },
+    "prevNum": {
+      "prompt": "Ce număr se află imediat înainte de {n}? (doar cifre)",
+      "hints": [
+        "Numără descrescător.",
+        "Numără unul mai puțin de la {n}."
+      ],
+      "explanation": "Numărul imediat anterior lui {n} este {ans}."
+    },
+    "probAdd": {
+      "prompt": "Pentru două evenimente A și B, $P(A)={pa}$, $P(B)={pb}$ și $P(A\\cap B)={pab}$. Cât este $P(A\\cup B)$?",
+      "hints": [
+        "Folosește regula adunării $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$.",
+        "Înlocuiește valorile date pe rând."
+      ],
+      "explanation": "{pa}+{pb}-{pab}={ans}."
+    },
+    "probComplement": {
+      "prompt": "Probabilitatea evenimentului A este $P(A)={pa}$. Care este probabilitatea evenimentului complementar, $P(A^c)$?",
+      "hints": [
+        "Evenimentul complementar are probabilitatea $1-P(A)$.",
+        "Scade $P(A)$ din 1."
+      ],
+      "explanation": "1-{pa}={ans}."
+    },
+    "propX": {
+      "prompt": "În proporția ${a} : {b} = \\square : {d}$, ce număr intră în căsuță? (doar cifre)",
+      "hints": [
+        "Într-o proporție, produsul extremilor este egal cu produsul mezilor.",
+        "Rezolvă □ × {b} = {a} × {d}."
+      ],
+      "explanation": "□×{b}={a}×{d}, deci □={ans}."
+    },
+    "qfuncValue": {
+      "prompt": "Pentru funcția de gradul al doilea $y={expr}$, cât este $y$ când $x={x}$? (doar cifre)",
+      "hints": [
+        "Pune valoarea dată în locul lui x.",
+        "Calculează mai întâi pătratul."
+      ],
+      "explanation": "Înlocuind x={x}, obținem y={ans}."
+    },
+    "quadDisc": {
+      "prompt": "Care este valoarea discriminantului $D=b^2-4ac$ al ecuației de gradul al doilea ${eq}=0$? (doar cifre)",
+      "hints": [
+        "Discriminantul lui $ax^2+bx+c=0$ este $D=b^2-4ac$.",
+        "Fii atent la semnele lui a, b și c."
+      ],
+      "explanation": "a={a}, b={b}, c={c}, deci D=({b})²-4×({a})×({c})={ans}."
+    },
+    "quadFourth": {
+      "prompt": "Trei unghiuri ale unui patrulater sunt {a}°, {b}° și {c}°. Câte grade are al patrulea unghi? (grade)",
+      "hints": [
+        "Cele patru unghiuri ale unui patrulater însumează 360°.",
+        "Scade cele trei unghiuri cunoscute din 360."
+      ],
+      "explanation": "360-{a}-{b}-{c}={ans}, deci este {ans}°."
+    },
+    "quadRoot": {
+      "prompt": "Care este cea mai mare dintre cele două rădăcini ale lui ${eq}$? (doar cifre)",
+      "hints": [
+        "Descompune membrul stâng în factori.",
+        "Rădăcinile sunt valorile lui x care anulează un factor."
+      ],
+      "explanation": "Din ${fact}$, rădăcinile sunt {roots}, deci cea mai mare este {ans}."
+    },
+    "radDeg": {
+      "prompt": "Scrie $\\theta=\\dfrac{{num}}{{d}}$ (radiani) în grade. (doar cifre)",
+      "hints": [
+        "$\\pi$ radiani înseamnă 180°.",
+        "Înlocuiește $\\pi$ cu 180°."
+      ],
+      "explanation": "Înlocuind $\\pi=180^\\circ$, obținem {ans}°."
+    },
+    "ratioPct": {
+      "prompt": "Scrie $\\frac{{a}}{{b}}$ ca procent. (doar cifre)",
+      "hints": [
+        "Procentul este raportul înmulțit cu 100.",
+        "Poți rescrie și fracția cu numitorul 100."
+      ],
+      "explanation": "$\\frac{{a}}{{b}}\\times100={ans}$, deci este {ans}%."
+    },
+    "rectArea": {
+      "prompt": "Un dreptunghi are lățimea {w} cm și înălțimea {h} cm. Care este aria sa în cm²? (doar cifre)",
+      "hints": [
+        "Aria dreptunghiului este lățime × înălțime.",
+        "Înmulțește cele două lungimi ale laturilor."
+      ],
+      "explanation": "{w}×{h}={ans}, deci aria este {ans} cm²."
+    },
+    "rectPerim": {
+      "prompt": "Un dreptunghi are lățimea {w} cm și înălțimea {h} cm. Câți cm are perimetrul său? (cm)",
+      "hints": [
+        "Perimetrul este suma celor patru laturi.",
+        "Poți folosi (lățime + înălțime) × 2."
+      ],
+      "explanation": "({w}+{h})×2={ans}, deci perimetrul este {ans} cm."
+    },
+    "relFreq": {
+      "prompt": "Frecvența totală este {t}, iar o clasă are frecvența {f}. Care este frecvența relativă a acelei clase? (număr zecimal)",
+      "hints": [
+        "Frecvență relativă = (frecvența clasei) ÷ (frecvența totală).",
+        "Scrie rezultatul ca număr zecimal."
+      ],
+      "explanation": "{f}÷{t}={ans}, deci frecvența relativă este {ans}."
+    },
+    "remainder": {
+      "prompt": "Care este restul împărțirii lui $P(x)={poly}$ la ${div}$? (doar cifre)",
+      "hints": [
+        "Teorema restului: restul împărțirii lui P(x) la x-a este P(a).",
+        "Pune a în locul lui x și calculează."
+      ],
+      "explanation": "Potrivit teoremei restului, P({a})={ans}."
+    },
+    "repComb": {
+      "prompt": "În câte moduri poți alege {r} obiecte din {n} tipuri diferite, cu repetare permisă?",
+      "hints": [
+        "Pentru n tipuri și r obiecte alese, numărul este egal cu numărul modurilor de a alege r din n+r−1.",
+        "Înlocuiește numărul de tipuri și numărul de obiecte."
+      ],
+      "explanation": "{calc}={ans}."
+    },
+    "repPerm": {
+      "prompt": "În câte moduri poți alege {r} obiecte din {n} obiecte diferite, cu repetare permisă, și le poți aranja în șir?",
+      "hints": [
+        "Numărul aranjamentelor cu repetare este numărul alegerilor înmulțit cu sine pentru fiecare poziție.",
+        "Fiecare poziție poate fi ocupată în {n} moduri."
+      ],
+      "explanation": "{prod}={ans} moduri."
+    },
+    "rootMax": {
+      "prompt": "Care este cea mai mare rădăcină reală a lui {eq}?",
+      "hints": [
+        "Descompune în produs de factori. Schema lui Horner poate găsi o primă rădăcină.",
+        "Rădăcinile sunt valorile lui x care anulează un factor."
+      ],
+      "explanation": "{fact}, deci rădăcinile reale sunt {roots}, iar cea mai mare este {ans}."
+    },
+    "rootSum": {
+      "prompt": "Care este suma tuturor rădăcinilor reale ale lui {eq}?",
+      "hints": [
+        "Descompune în produs de factori. Schema lui Horner poate găsi o primă rădăcină.",
+        "Rădăcinile sunt valorile lui x care anulează un factor."
+      ],
+      "explanation": "{fact}, deci rădăcinile reale sunt {roots}, iar suma lor este {ans}."
+    },
+    "roundTo": {
+      "prompt": "Folosind „{mode}”, cât devine {n} în unități de {u}?",
+      "hints": [
+        "Privește cifrele de sub poziția {u}.",
+        "Rotunjirea în sus mărește întotdeauna, rotunjirea în jos elimină întotdeauna, iar rotunjirea la cel mai apropiat mărește doar când cifra este 5 sau mai mare."
+      ],
+      "explanation": "Folosind „{mode}”, {n} devine {ans} în unități de {u}."
+    },
+    "seqNext": {
+      "prompt": "Găsește regula și scrie numărul lipsă: ${list}, \\square$",
+      "hints": [
+        "Găsește diferența dintre numerele vecine.",
+        "Numerele cresc sau scad cu aceeași cantitate la fiecare pas."
+      ],
+      "explanation": "Diferența dintre vecini este {d}, deci □={ans}."
+    },
+    "setCount": {
+      "prompt": "Dacă $n(A)={na}$, $n(B)={nb}$ și $n(A\\cap B)={nab}$, cât este $n(A\\cup B)$?",
+      "hints": [
+        "Folosește $n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$.",
+        "Înlocuiește valorile date pe rând."
+      ],
+      "explanation": "{na}+{nb}-{nab}={ans}."
+    },
+    "sigmaSum": {
+      "prompt": "Calculează această sumă: {expr}",
+      "hints": [
+        "Semnul ∑ înseamnă să pui pe rând k=1, 2, 3, … și să aduni totul.",
+        "Poți folosi și regulile $\\sum k=\\frac{n(n+1)}{2}$ și $\\sum c=cn$."
+      ],
+      "explanation": "{steps}, deci suma este {ans}."
+    },
+    "simpleInterest": {
+      "prompt": "Se depun {p} won timp de {n} ani cu dobândă simplă anuală de {r}%. Cât este dobânda? (won)",
+      "hints": [
+        "Dobândă simplă = capital × rată × ani.",
+        "{r}% înseamnă {rr}."
+      ],
+      "explanation": "{p}×{rr}×{n}={ans}, deci dobânda este {ans} won."
+    },
+    "slope2": {
+      "prompt": "Care este panta dreptei prin punctele $({x1},\\,{y1})$ și $({x2},\\,{y2})$? (doar cifre)",
+      "hints": [
+        "Panta este (variația lui y) ÷ (variația lui x).",
+        "Împarte diferența coordonatelor y la diferența coordonatelor x."
+      ],
+      "explanation": "$\\frac{{y2}-({y1})}{{x2}-({x1})}={ans}$."
+    },
+    "slopeOf": {
+      "prompt": "Care este panta funcției de gradul întâi $y={a}x+{b}$?",
+      "hints": [
+        "În $y=ax+b$, panta este a.",
+        "Citește coeficientul lui x."
+      ],
+      "explanation": "Panta este {ans}."
+    },
+    "solveLin": {
+      "prompt": "Rezolvă ecuația de gradul întâi ${eq}$ (găsește x).",
+      "hints": [
+        "Adună sau scade același număr în ambii membri pentru a izola termenul cu x.",
+        "Apoi împarte ambii membri la numărul din fața lui x."
+      ],
+      "explanation": "Din ${eq}$ obținem x={ans}."
+    },
+    "sqrtProd": {
+      "prompt": "Cât este $\\sqrt{{a}} \\times \\sqrt{{b}}$? (doar cifre)",
+      "hints": [
+        "$\\sqrt{a}\\times\\sqrt{b}=\\sqrt{ab}$.",
+        "Verifică dacă produsul este un pătrat perfect."
+      ],
+      "explanation": "$\\sqrt{{a}\\times{b}}=\\sqrt{{prod}}={ans}$."
+    },
+    "sqrtVal": {
+      "prompt": "Cât este $\\sqrt{{n}}$? (doar cifre)",
+      "hints": [
+        "Găsește numărul pozitiv al cărui pătrat este {n}.",
+        "Gândește-te la tabla înmulțirii."
+      ],
+      "explanation": "${ans}^2={n}$, deci $\\sqrt{{n}}={ans}$."
+    },
+    "stdev": {
+      "prompt": "Care este abaterea standard a datelor {list}? (abaterea standard a populației)",
+      "hints": [
+        "Găsește mai întâi media.",
+        "Rădăcina pătrată a mediei pătratelor abaterilor (dispersia) este abaterea standard."
+      ],
+      "explanation": "Media este {mean}, iar dispersia este {var}, deci abaterea standard este {ans}."
+    },
+    "subThree": {
+      "prompt": "Cât este {a}-{b}?",
+      "hints": [
+        "Scade începând de la unități.",
+        "Dacă nu poți scădea, împrumută de la ordinul următor."
+      ],
+      "explanation": "{a}-{b}={ans}."
+    },
+    "subsetCount": {
+      "prompt": "Câte submulțimi are o mulțime cu {n} elemente?",
+      "hints": [
+        "O mulțime cu n elemente are $2^n$ submulțimi.",
+        "Gândește-te că pentru fiecare element decizi dacă îl incluzi sau nu."
+      ],
+      "explanation": "{prod}={ans}, deci sunt {ans} submulțimi."
+    },
+    "taxTotal": {
+      "prompt": "Un produs costă {p} won și se adaugă TVA de {t}%. Câți won trebuie plătiți? (won)",
+      "hints": [
+        "Taxa este preț × {t}%.",
+        "Adună taxa la preț."
+      ],
+      "explanation": "{p}+{p}×{tr}={ans}, deci {ans} won."
+    },
+    "tensDigit": {
+      "prompt": "Care este cifra zecilor din ${n}$? (doar cifre)",
+      "hints": [
+        "Este a doua cifră din dreapta.",
+        "Găsește cifra imediat la stânga unităților."
+      ],
+      "explanation": "Cifra zecilor din {n} este {ans}."
+    },
+    "times": {
+      "prompt": "Calculează $ {a} \\times {b} $.",
+      "hints": [
+        "Gândește-te la tabla înmulțirii sau la grupe egale.",
+        "Pentru numere mai mari, înmulțește pe poziții și adună rezultatele parțiale."
+      ],
+      "explanation": "{a}×{b}={ans}."
+    },
+    "triThird": {
+      "prompt": "Două unghiuri ale unui triunghi sunt {a}° și {b}°. Câte grade are al treilea? (grade)",
+      "hints": [
+        "Cele trei unghiuri ale triunghiului însumează 180°.",
+        "Scade cele două unghiuri cunoscute din 180."
+      ],
+      "explanation": "180-{a}-{b}={ans}, deci este {ans}°."
+    },
+    "variance": {
+      "prompt": "Care este dispersia datelor {list}?",
+      "hints": [
+        "Găsește media, apoi abaterea fiecărei valori față de ea.",
+        "Dispersia este media pătratelor abaterilor."
+      ],
+      "explanation": "Media este {mean}, iar suma pătratelor abaterilor este {sq}, deci dispersia este {sq}÷{n}={ans}."
+    },
+    "vecNorm": {
+      "prompt": "Care este modulul $|\\vec{a}|$ al vectorului $\\vec{a}=({x},\\ {y})$? (doar cifre)",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Ridică fiecare componentă la pătrat, adună, apoi extrage rădăcina pătrată."
+      ],
+      "explanation": "$\\sqrt{({x})^2+({y})^2}={ans}$."
+    },
+    "vertexSum": {
+      "prompt": "Vârful funcției de gradul al doilea $y={expr}$ este $(p,\\ q)$. Cât este $p+q$? (doar cifre)",
+      "hints": [
+        "În $y=a(x-p)^2+q$, vârful este $(p,\\ q)$.",
+        "Fii atent la semnul din paranteze."
+      ],
+      "explanation": "Vârful este $({p},\\ {q})$, deci p+q={ans}."
+    },
+    "xInt": {
+      "prompt": "Care este abscisa la origine a lui $y={a}x+{b}$?",
+      "hints": [
+        "Abscisa la origine este x când y=0.",
+        "Rezolvă $0=ax+b$."
+      ],
+      "explanation": "Din $0={a}x+{b}$ rezultă x={ans}."
+    },
+    "yInt": {
+      "prompt": "Care este ordonata la origine a lui $y={a}x+{b}$?",
+      "hints": [
+        "Ordonata la origine este y când x=0.",
+        "În $y=ax+b$, aceasta este b."
+      ],
+      "explanation": "Ordonata la origine este {ans}."
+    }
+  },
+  "texts": {
+    "rd_down": "rotunjirea în jos",
+    "rd_half": "rotunjirea la cel mai apropiat",
+    "rd_up": "rotunjirea în sus"
+  }
+}

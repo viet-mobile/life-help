@@ -1,4 +1,5 @@
 "use client";
+import { EXPANDED_UI_EXTRA } from "@/lib/think/expandedUiExtra";
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -101,7 +102,7 @@ export function ThinkHub() {
   const gradeName = (g: string) => (g.startsWith("EL-") ? ELECTIVE_NAMES[g][lang] : g);
 
   if (!ready) return <div className="l-wrap" role="status">…</div>;
-  const loadText = { ko: ["과제를 불러오는 중…", "과제를 불러오지 못했어요.", "다시 시도"], en: ["Loading tasks…", "Could not load tasks.", "Try again"], vi: ["Đang tải bài tập…", "Không thể tải bài tập.", "Thử lại"], ja: ["課題を読み込み中…", "課題を読み込めませんでした。", "再試行"], "zh-Hans": ["正在加载任务…", "无法加载任务。", "重试"], "zh-Hant": ["正在載入任務…", "無法載入任務。", "重試"] }[lang];
+  const loadText = { pcm: EXPANDED_UI_EXTRA.pcm.loading, tl: EXPANDED_UI_EXTRA.tl.loading, ro: EXPANDED_UI_EXTRA.ro.loading, fi: EXPANDED_UI_EXTRA.fi.loading, cs: EXPANDED_UI_EXTRA.cs.loading, hu: EXPANDED_UI_EXTRA.hu.loading, af: EXPANDED_UI_EXTRA.af.loading, ko: ["과제를 불러오는 중…", "과제를 불러오지 못했어요.", "다시 시도"], en: ["Loading tasks…", "Could not load tasks.", "Try again"], vi: ["Đang tải bài tập…", "Không thể tải bài tập.", "Thử lại"], ja: ["課題を読み込み中…", "課題を読み込めませんでした。", "再試行"], "zh-Hans": ["正在加载任务…", "无法加载任务。", "重试"], "zh-Hant": ["正在載入任務…", "無法載入任務。", "重試"] }[lang];
   if (loadError) return <div className="l-wrap" role="alert"><p>{loadText[1]}</p><button className="l-btn" onClick={() => setRetry(n => n + 1)}>{loadText[2]}</button></div>;
   if (loading) return <div className="l-wrap" role="status">{loadText[0]}</div>;
   // "next challenge": the next not-yet-tried task of the list the learner is looking at (this grade / semester / field), else any other untried one

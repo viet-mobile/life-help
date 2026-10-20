@@ -1,0 +1,154 @@
+{
+  "status": "ai-translated-unreviewed",
+  "nativeSpeakerReviewed": false,
+  "teacherReviewed": false,
+  "independentApproval": false,
+  "sourceFiles": {
+    "source/math-bank-en.json": "32814ab296420bb4b00130b4d4f56b9a5ae0f17dba054be24d204cf31bd15e4f",
+    "source/math-bank-ko.json": "8b20dd5eae82e1e89a2160702b2d76638d35dd491494613bd20c81984c7b7bb9",
+    "catalog/math-course-unique.json": "54a44ffa2b7caa72c558f7aee7e8205c8a668dfbdc936bef9f4557b8fa02d789",
+    "catalog/math-canonical-context.json": "f0232fbaa4876c6270c8f4a8e9600ba8cb2041122be69717363d58c3d4d1daae"
+  },
+  "completed": {
+    "cs": {
+      "bankTemplates": 132,
+      "bankTexts": 3,
+      "courseRange": [
+        0,
+        349
+      ],
+      "courseStrings": 350,
+      "bankTargetHash": "1f31458cb09fc81c5189698cb869389857080360a57c3393cf7f21aa0901ac57",
+      "courseTargetHash": "f52ece6ddc2bfb9a72dbcba30cf47ecb32d165645e6792091e33194cd9d4cfd5",
+      "unchangedPureFormulaOrPlaceholderLeaves": 46
+    },
+    "hu": {
+      "bankTemplates": 132,
+      "bankTexts": 3,
+      "courseRange": [
+        0,
+        349
+      ],
+      "courseStrings": 350,
+      "bankTargetHash": "dec4293321a1871c7d8f4db965a82f1dbb5541c2467c366d0ae33244a915e952",
+      "courseTargetHash": "79c6dd919d3f867ff0ecee747e0f9c5e1ca5b3f2e149b2bf0625426661f98be3",
+      "unchangedPureFormulaOrPlaceholderLeaves": 46
+    }
+  },
+  "validation": {
+    "cs": {
+      "bankLeavesChecked": 531,
+      "courseStringsChecked": 350,
+      "keyTypeHintArrayNumberPlaceholderLatexSymbolMismatches": 0,
+      "untranslatedEnglishProseCandidates": 0
+    },
+    "hu": {
+      "bankLeavesChecked": 531,
+      "courseStringsChecked": 350,
+      "keyTypeHintArrayNumberPlaceholderLatexSymbolMismatches": 0,
+      "untranslatedEnglishProseCandidates": 0
+    }
+  },
+  "sourceIssues": [
+    {
+      "index": 202,
+      "sourceHash": "33cc0983e9328b3eaa6a5e33d9b8cc239344a4b636c97bcbffcbceb2b3bf799e",
+      "source": "Work out the ones, then the tens. If a sum is more than 10, carry over. If you cannot subtract, regroup (borrow).",
+      "paths": [
+        [
+          "lessons",
+          "math-e2-l2",
+          "concept"
+        ]
+      ],
+      "reason": "Canonical Korean and English say carry only if sum is more than10; carry is required at10 as well. Source-level correction/review required.",
+      "targets": {
+        "cs": {
+          "translation": "Nejprve počítej jednotky, potom desítky. Je-li součet větší než 10, přenes do vyššího řádu. Nelze-li odečíst, rozlož vyšší řád.",
+          "translationHash": "87d26dca096643a76d3ed9ea48a61ff8bcfca1666e9ec083177b8d3a0f223c8b"
+        },
+        "hu": {
+          "translation": "Először az egyesekkel, majd a tízesekkel számolj. Ha az összeg nagyobb, mint 10, vigyél át. Ha nem tudsz kivonni, válts át a következő helyi értékről.",
+          "translationHash": "5d4f9714dfee09252038f2704e1cb3f480efd0e79cd57fc2d92c2aefb4865ff6"
+        }
+      },
+      "status": "source-review-required-preserved-in-translation"
+    },
+    {
+      "index": 273,
+      "sourceHash": "79f18fec0b7064efe6e721af774854eeff5486b121989852432ac1e6015e8c44",
+      "source": "For area, integrate $|f(x)|$. Split off the parts of the graph below the $x$-axis, and between two curves integrate (upper)−(lower). Integrating velocity gives the distance travelled.",
+      "paths": [
+        [
+          "lessons",
+          "math-h3-l2",
+          "concept"
+        ]
+      ],
+      "reason": "Canonical Korean and English say integrating velocity gives travelled distance. Signed velocity integrates to displacement; travelled distance requires integrating speed/absolute velocity or splitting signs. Source-level correction/review required.",
+      "targets": {
+        "cs": {
+          "translation": "Pro obsah integruj $|f(x)|$. Odděl části grafu pod osou $x$ a mezi dvěma křivkami integruj (horní)−(dolní). Integrál rychlosti udává uraženou dráhu.",
+          "translationHash": "55b183f5c9bbacb059ae6fbad3f1ea81dc5d176fff478d522a1ae6d5618a55ab"
+        },
+        "hu": {
+          "translation": "Területhez integráld $|f(x)|$ értékét. Válaszd külön a grafikon $x$ tengely alatti részeit, két görbe között pedig a (felső)−(alsó) különbséget integráld. A sebesség integrálja a megtett utat adja.",
+          "translationHash": "3ce37dae46df06e2a0268063f51073db288f1e2dd3f10381bdba105c26980b55"
+        }
+      },
+      "status": "source-review-required-preserved-in-translation"
+    }
+  ],
+  "entityContext": {
+    "scope": "Existing translated material only; no new Korean learning sentences or fictional-person settings authored.",
+    "newEntitySettings": false,
+    "genderInference": false,
+    "personGroups": {
+      "combNC": {
+        "gender": "unknown_from_existing_source",
+        "number": "{n} source people; {r} selected people",
+        "subjectRefs": [
+          "source_people_group"
+        ],
+        "objectRefs": [
+          "selected_people_group"
+        ]
+      },
+      "permNP": {
+        "gender": "unknown_from_existing_source",
+        "number": "{n} source people; {r} selected and ordered people",
+        "subjectRefs": [
+          "source_people_group"
+        ],
+        "objectRefs": [
+          "selected_people_group"
+        ]
+      },
+      "pieCount": {
+        "gender": "unknown_from_existing_source",
+        "number": "{t} total people; computed A subgroup",
+        "subjectRefs": [
+          "source_total_group"
+        ],
+        "objectRefs": [
+          "source_A_group"
+        ]
+      }
+    },
+    "grammaticalGender": "Target-language noun agreement is not evidence of entity gender."
+  },
+  "limitations": [
+    "No native-speaker or teacher review has been performed.",
+    "Lints validate structure and protected tokens, not semantic approval.",
+    "Known source-level mathematical issues at course indexes202 and273 were preserved rather than silently altering the canonical source."
+  ],
+  "canonicalDisambiguation": [
+    {
+      "key": "templates.cubeVol.hints.1",
+      "sourceHash": "99c1649bacbf4b16135f213916eb0cab8e0972e778c2b3d80d52fbabce12e12c",
+      "canonicalSource": "{a}를 세 번 곱해요.",
+      "canonicalSourceHash": "c22e6bcbdc0a366861a2ed9ae05888ffffc9f6017a150ac08da658a58101daae",
+      "reason": "English multiply-by-itself-three-times can suggest four factors; translations follow canonical Korean and use the edge length as three factors."
+    }
+  ]
+}

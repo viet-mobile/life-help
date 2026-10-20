@@ -1,0 +1,1065 @@
+{
+  "templates": {
+    "addThree": {
+      "prompt": "Mennyi {a}+{b}?",
+      "hints": [
+        "Az egyesek helyén kezdd az összeadást.",
+        "Ha egy oszlop összege 10 vagy több, vigyél át a következő helyi értékre."
+      ],
+      "explanation": "{a}+{b}={ans}."
+    },
+    "areaX2": {
+      "prompt": "Mekkora a(z) $y={k}x^2$ görbe, az $x$ tengely és az $x={a}$ egyenes által határolt terület? (csak számot írj)",
+      "hints": [
+        "A terület a 0 és {a} közötti határozott integrál.",
+        "$\\int x^2\\,dx=\\frac{x^3}{3}$."
+      ],
+      "explanation": "$\\int_0^{{a}} {k}x^2\\,dx=\\frac{{k}\\times{a}^3}{3}={ans}$."
+    },
+    "arithSum": {
+      "prompt": "Mennyi a(z) {a} első tagú, {d} különbségű számtani sorozat első {n} tagjának összege? (csak számot írj)",
+      "hints": [
+        "Az összeg képlete: $S_n=\\frac{n(2a+(n-1)d)}{2}$.",
+        "Az utolsó tagot is meghatározhatod, majd számolj így: (első + utolsó) × tagok száma ÷ 2."
+      ],
+      "explanation": "$S_{{n}}=\\frac{{n}(2\\times{a}+({n}-1)\\times({d}))}{2}={ans}$."
+    },
+    "arithTerm": {
+      "prompt": "Mennyi a(z) {a} első tagú, {d} különbségű számtani sorozat {n}. tagja? (csak számot írj)",
+      "hints": [
+        "Az általános tag képlete: $a_n=a+(n-1)d$.",
+        "Szorozd meg az (n-1) értéket a különbséggel, és add hozzá az első taghoz."
+      ],
+      "explanation": "{a}+({n}-1)×({d})={ans}."
+    },
+    "bigNum": {
+      "prompt": "Melyik szám áll {a} tízezresből és {b} ezresből? (csak számot írj)",
+      "hints": [
+        "{a} tízezres értéke {a}0000.",
+        "{b} ezres értéke {b}000. Add össze őket."
+      ],
+      "explanation": "{a} tízezres és {b} ezres együtt {ans}."
+    },
+    "binomCoef": {
+      "prompt": "Mennyi $x^{{k}}$ együtthatója $(x+1)^{{n}}$ kifejtésében?",
+      "hints": [
+        "A binomiális tétel szerint az együtthatók kombinációszámok.",
+        "$x^k$ együtthatója $_nC_k$, azaz k elem kiválasztási lehetőségeinek száma n elemből."
+      ],
+      "explanation": "{calc}={ans}."
+    },
+    "binomMean": {
+      "prompt": "Ha a(z) $X$ valószínűségi változó eloszlása $B({n},\\ {p})$ binomiális eloszlás, mennyi $E(X)$? (csak számot írj)",
+      "hints": [
+        "A(z) $B(n,\\ p)$ eloszlás várható értéke $np$.",
+        "Szorozd össze n és p értékét."
+      ],
+      "explanation": "E(X)={n}×{p}={ans}."
+    },
+    "chanceFraction": {
+      "prompt": "Egy dobozban {a} darab A és {b} darab B golyó van. Kiveszünk egy golyót. Mennyi az A golyó kivételének valószínűsége tizedes törtben?",
+      "hints": [
+        "Valószínűség = (kedvező esetek száma) ÷ (összes eset száma).",
+        "Először határozd meg a golyók teljes számát."
+      ],
+      "explanation": "{a}÷{total}={ans}, ezért a valószínűség {ans}."
+    },
+    "ciHalf": {
+      "prompt": "A sokasági szórás {s}, a mintanagyság {n}. Mennyi a 95%-os hibahatár $1.96\\times\\frac{σ}{\\sqrt{ n }}$? (két tizedesjegyre)",
+      "hints": [
+        "Először számítsd ki $\\sqrt{ n }$ értékét.",
+        "Oszd el vele σ értékét, majd szorozd meg 1.96-dal."
+      ],
+      "explanation": "$1.96\\times\\frac{{s}}{{rt}}={ans}$."
+    },
+    "circleArea": {
+      "prompt": "Egy kör sugara {r} cm. Mekkora a területe cm²-ben? (pi értékének $3.14$-et használj) (cm²)",
+      "hints": [
+        "A terület sugár × sugár × pi.",
+        "Emeld négyzetre a sugarat, majd szorozd meg 3.14-dal."
+      ],
+      "explanation": "{r}×{r}×3.14={ans}, ezért a terület {ans} cm²."
+    },
+    "circleR": {
+      "prompt": "Mennyi a(z) $({fx})^2+({fy})^2={r2}$ kör sugara? (csak számot írj)",
+      "hints": [
+        "A(z) $(x-a)^2+(y-b)^2=r^2$ egyenletben r a sugár.",
+        "A jobb oldali szám r²."
+      ],
+      "explanation": "$r^2={r2}$, ezért a sugár {ans}."
+    },
+    "circum": {
+      "prompt": "Egy kör sugara {r} cm. Mekkora a kerülete cm-ben? (pi értékének $3.14$-et használj) (cm)",
+      "hints": [
+        "A kerület átmérő × pi.",
+        "Az átmérő a sugár kétszerese."
+      ],
+      "explanation": "{r}×2×3.14={ans}, ezért a kerület {ans} cm."
+    },
+    "coinCases": {
+      "prompt": "Hány lehetséges kimenetele van {n} érme együttes feldobásának? (csak számot írj)",
+      "hints": [
+        "Egy érmének 2 kimenetele van: fej vagy írás.",
+        "Szorozd össze az egyes érmék kimeneteleinek számát."
+      ],
+      "explanation": "A 2 szám {n} tényezőként összeszorozva {ans}, ezért {ans} kimenetel van."
+    },
+    "combNC": {
+      "prompt": "Hányféleképpen választhatunk ki {r} személyt {n} különböző személyből, ha a sorrend nem számít? (csak számot írj)",
+      "hints": [
+        "A sorrend nem számít, ezért kombinációról van szó.",
+        "Oszd el a sorrendet figyelembe vevő kiválasztások számát {r}! értékével."
+      ],
+      "explanation": "{calc}={ans}, ezért {ans} lehetőség van."
+    },
+    "complexSum": {
+      "prompt": "Mennyi ${expr}$ valós és képzetes részének összege? (csak számot írj)",
+      "hints": [
+        "Add össze külön a valós, külön a képzetes részeket.",
+        "Az i jelével úgy számolj, mint egy betűvel."
+      ],
+      "explanation": "A valós rész {re}, a képzetes rész {im}, ezért összegük {ans}."
+    },
+    "composite": {
+      "prompt": "Ha $f(x)={f}$ és $g(x)={g}$, mennyi {comp}?",
+      "hints": [
+        "A(z) $(g\\circ f)(a)$ összetétel jelentése $g(f(a))$. Belülről kifelé haladj.",
+        "Először határozd meg a belső függvény értékét, majd helyettesítsd a külső függvénybe."
+      ],
+      "explanation": "{steps}, ezért a válasz {ans}."
+    },
+    "condProb": {
+      "prompt": "A(z) $A,\\ B$ eseményeknél $P(A)={pa}$ és $P(A\\cap B)={pab}$. Mennyi $P(B\\mid A)$? (tizedes törtet írj)",
+      "hints": [
+        "Feltételes valószínűség: $P(B\\mid A)=\\frac{P(A\\cap B)}{P(A)}$.",
+        "Oszd el a két értéket."
+      ],
+      "explanation": "{pab}÷{pa}={ans}."
+    },
+    "convKgG": {
+      "prompt": "Hány g {v} kg? (g)",
+      "hints": [
+        "1 kg értéke 1000 g.",
+        "Szorozd meg {v} értékét 1000-rel."
+      ],
+      "explanation": "{v}×1000={ans}, tehát {ans} g."
+    },
+    "convMCm": {
+      "prompt": "Hány cm {v} m? (cm)",
+      "hints": [
+        "1 m értéke 100 cm.",
+        "Szorozd meg {v} értékét 100-zal."
+      ],
+      "explanation": "{v}×100={ans}, tehát {ans} cm."
+    },
+    "crossX": {
+      "prompt": "A(z) $y={a1}x+{b1}$ és $y={a2}x+{b2}$ grafikonok a P pontban metszik egymást. Mennyi P x-koordinátája?",
+      "hints": [
+        "A metszéspontban a két y-érték egyenlő.",
+        "Oldd meg: $a_1x+b_1=a_2x+b_2$."
+      ],
+      "explanation": "A(z) ${a1}x+{b1}={a2}x+{b2}$ egyenletből x={ans}."
+    },
+    "cubeVol": {
+      "prompt": "Egy kocka éle {a} cm. Mekkora a térfogata cm³-ben? (csak számot írj)",
+      "hints": [
+        "A kocka térfogata él × él × él.",
+        "A szorzatban {a} háromszor szerepeljen tényezőként."
+      ],
+      "explanation": "{a}×{a}×{a}={ans}, ezért a térfogat {ans} cm³."
+    },
+    "cuboidVol": {
+      "prompt": "Egy téglatest hossza {a} cm, szélessége {b} cm, magassága {c} cm. Mekkora a térfogata cm³-ben? (cm³)",
+      "hints": [
+        "A téglatest térfogata hossz × szélesség × magasság.",
+        "Szorozd össze a három hosszúságot."
+      ],
+      "explanation": "{a}×{b}×{c}={ans}, ezért a térfogat {ans} cm³."
+    },
+    "dataRange": {
+      "prompt": "Mennyi a(z) {list} adatsor legnagyobb és legkisebb értékének különbsége?",
+      "hints": [
+        "Keresd meg a legnagyobb és legkisebb értéket.",
+        "A nagyobból vond ki a kisebbet."
+      ],
+      "explanation": "{max}-{min}={ans}."
+    },
+    "decPct": {
+      "prompt": "Írd fel a(z) ${d}$ tizedes törtet százalékban. (csak számot írj)",
+      "hints": [
+        "A százalékos alakhoz szorozd meg a tizedes törtet 100-zal.",
+        "Told a tizedesjelet két hellyel jobbra."
+      ],
+      "explanation": "{d}×100={ans}, tehát {ans}%."
+    },
+    "decTimes": {
+      "prompt": "Számítsd ki $ {a} \\times {b} $ értékét.",
+      "hints": [
+        "Hagyd figyelmen kívül a tizedesjelet, és szorozz egész számokként.",
+        "Ezután tedd vissza a tizedesjelet úgy, hogy annyi tizedesjegy legyen, amennyi a tényezőkben összesen volt."
+      ],
+      "explanation": "{a}×{b}={ans}."
+    },
+    "defInt": {
+      "prompt": "Mennyi $\\int_{0}^{{b}} ({fx})\\,dx$ értéke? (csak számot írj)",
+      "hints": [
+        "Határozd meg a primitív függvényt, majd számolj így: (érték a felső határon) - (érték az alsó határon).",
+        "$\\int x\\,dx=\\frac{x^2}{2}$ és $\\int c\\,dx=cx$."
+      ],
+      "explanation": "A(z) ${anti}$ primitív függvénybe x={b} értéket helyettesítve {ans} adódik."
+    },
+    "derivAt": {
+      "prompt": "Ha $f(x)={poly}$, mennyi $f'({a})$? (csak számot írj)",
+      "hints": [
+        "$(x^n)'=nx^{n-1}$.",
+        "Határozd meg a deriváltat, majd x helyére helyettesíts {a} értéket."
+      ],
+      "explanation": "$f'(x)={deriv}$, ezért $f'({a})={ans}$."
+    },
+    "derivVal": {
+      "prompt": "Ha $f(x)={f}$, mennyi $f'({a})$?",
+      "hints": [
+        "Összetett függvénynél deriváld a külső függvényt, és szorozd meg a belső deriváltjával; hányadosnál $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$.",
+        "Használd ezeket: $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ és $(\\cos x)'=-\\sin x$."
+      ],
+      "explanation": "{steps}."
+    },
+    "diameter": {
+      "prompt": "Egy kör sugara {r} cm. Hány cm az átmérője? (cm)",
+      "hints": [
+        "Az átmérő a sugár kétszerese.",
+        "Szorozd meg a sugarat 2-vel."
+      ],
+      "explanation": "{r}×2={ans}, ezért az átmérő {ans} cm."
+    },
+    "directConst": {
+      "prompt": "Az y=ax egyenes arányosság grafikonja átmegy a ({x1}, {y1}) ponton. Mennyi a?",
+      "hints": [
+        "Helyettesítsd a pontot az y=ax képletbe.",
+        "a=y÷x."
+      ],
+      "explanation": "a={y1}÷{x1}={ans}."
+    },
+    "discount": {
+      "prompt": "Egy termék ára {p} von, és {d}% kedvezménnyel árulják. Mennyi az eladási ár? (von)",
+      "hints": [
+        "A kedvezmény ár × {d}%.",
+        "Vond ki a kedvezményt az árból."
+      ],
+      "explanation": "{p}-{p}×{dr}={ans}, tehát {ans} von."
+    },
+    "dist2": {
+      "prompt": "Mennyi az A({x1}, {y1}) és B({x2}, {y2}) pontok távolsága? (csak számot írj)",
+      "hints": [
+        "A távolság $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+        "Emeld négyzetre az x-koordináták és az y-koordináták különbségét, majd add össze őket."
+      ],
+      "explanation": "$\\sqrt{{dx}^2+{dy}^2}={ans}$."
+    },
+    "divide": {
+      "prompt": "Számítsd ki $ {a} \\div {b} $ értékét.",
+      "hints": [
+        "Használd visszafelé az osztó szorzótábláját.",
+        "Keresd meg, melyik számot kell {b} értékével szorozni, hogy {a} legyen."
+      ],
+      "explanation": "{a}÷{b}={ans}."
+    },
+    "divisorCount": {
+      "prompt": "Hány osztója van {n} számnak?",
+      "hints": [
+        "Keresd meg az összes számot, amely maradék nélkül osztja {n} értékét.",
+        "A legkisebbtől felfelé haladva ellenőrizd."
+      ],
+      "explanation": "{n} osztói: {list}, összesen {ans}."
+    },
+    "equilibrium": {
+      "prompt": "A(z) $p={a}-{b}q$ keresleti és $p={c}+{d}q$ kínálati görbe a q egyensúlyi mennyiségnél metszi egymást. Mennyi q?",
+      "hints": [
+        "Egyensúlyban a keresleti ár egyenlő a kínálati árral.",
+        "Oldd meg: $a-bq=c+dq$."
+      ],
+      "explanation": "A(z) ${a}-{b}q={c}+{d}q$ egyenletből q={ans}."
+    },
+    "expMul": {
+      "prompt": "Melyik szám kerül a négyzetbe a(z) $x^{{a}} \\times x^{{b}} = x^{\\square}$ egyenletben? (csak számot írj)",
+      "hints": [
+        "Azonos alapok esetén a kitevőket összeadjuk.",
+        "Számítsd ki: {a}+{b}."
+      ],
+      "explanation": "{a}+{b}={ans}, ezért □={ans}."
+    },
+    "expPow": {
+      "prompt": "Melyik szám kerül a négyzetbe a(z) $(x^{{a}})^{{b}} = x^{\\square}$ egyenletben? (csak számot írj)",
+      "hints": [
+        "Hatvány hatványozásakor a kitevőket összeszorozzuk.",
+        "Számítsd ki: {a}×{b}."
+      ],
+      "explanation": "{a}×{b}={ans}, ezért □={ans}."
+    },
+    "expandPQ": {
+      "prompt": "Ha $({fa})({fb}) = x^2+px+q$, mennyi $p+q$? (csak számot írj)",
+      "hints": [
+        "Használd ezt: $(x+a)(x+b)=x^2+(a+b)x+ab$.",
+        "p a két szám összege, q pedig a szorzatuk."
+      ],
+      "explanation": "p={p} és q={q}, ezért p+q={ans}."
+    },
+    "expandSquare": {
+      "prompt": "Ha $({e})^2 = x^2+px+q$, mennyi $p+q$? (csak számot írj)",
+      "hints": [
+        "Használd ezt: $(x+a)^2=x^2+2ax+a^2$.",
+        "p értéke 2a, q értéke a²."
+      ],
+      "explanation": "p={p} és q={q}, ezért p+q={ans}."
+    },
+    "exprValue": {
+      "prompt": "Ha $x={x}$, mennyi ${expr}$ értéke?",
+      "hints": [
+        "x helyére helyettesítsd az adott számot.",
+        "Először szorozz, utána adj össze vagy vonj ki."
+      ],
+      "explanation": "x={x} helyettesítéssel ${expr}={ans}$ adódik."
+    },
+    "factorDiff": {
+      "prompt": "Ha ${poly}$ tényezős alakja $(x+m)(x+n)$, mennyi m és n különbsége (nagyobb mínusz kisebb)? (csak számot írj)",
+      "hints": [
+        "Keress két számot, amelyek összege x együtthatója, szorzata pedig az állandó tag.",
+        "Miután megtaláltad őket, a nagyobból vond ki a kisebbet."
+      ],
+      "explanation": "${poly}=({fm})({fn})$, ezért a két szám {m} és {n}, különbségük {ans}."
+    },
+    "factorExp": {
+      "prompt": "${n}$ prímtényezős felbontása $2^a\\times3^b$. Mennyi $a+b$?",
+      "hints": [
+        "Oszd {n} értékét 2-vel, amíg maradék nélkül lehet.",
+        "Ezután a maradékot oszd 3-mal."
+      ],
+      "explanation": "${n}=2^{a}\\times3^{b}$, ezért $a+b={ans}$."
+    },
+    "focusX": {
+      "prompt": "Mennyi a(z) $y^2={c}x$ parabola fókuszának $x$-koordinátája? (csak számot írj)",
+      "hints": [
+        "A(z) $y^2=4px$ parabola fókusza $(p,\\ 0)$.",
+        "A {c}=4p egyenletből határozd meg p értékét."
+      ],
+      "explanation": "4p={c}, ezért p={ans}."
+    },
+    "fracAdd": {
+      "prompt": "Számítsd ki $\\frac{{a}}{{b}} + \\frac{{c}}{{d}}$ értékét. (tizedes tört vagy 3/4 alakú tört is lehet)",
+      "hints": [
+        "Hozd közös nevezőre a törteket.",
+        "Add össze a számlálókat."
+      ],
+      "explanation": "$\\frac{{a}}{{b}}+\\frac{{c}}{{d}}=\\frac{{num}}{{den}}$."
+    },
+    "fracDivInt": {
+      "prompt": "Számítsd ki $\\frac{{a}}{{b}} \\div {c}$ értékét. (tizedes tört vagy 3/4 alakú tört is lehet)",
+      "hints": [
+        "Tört egész számmal való osztásakor szorozd meg a nevezőt azzal a számmal.",
+        "Számolás után egyszerűsíts."
+      ],
+      "explanation": "$\\frac{{a}}{{b}}\\div{c}=\\frac{{num}}{{den}}$."
+    },
+    "fracToDec": {
+      "prompt": "Írd fel a(z) $\\frac{{a}}{{b}}$ törtet tizedes tört alakban. (tizedes törtet írj)",
+      "hints": [
+        "Alakítsd úgy a törtet, hogy nevezője 10 vagy 100 legyen.",
+        "Vagy oszd el a számlálót a nevezővel."
+      ],
+      "explanation": "$\\frac{{a}}{{b}}={ans}$."
+    },
+    "funcValue": {
+      "prompt": "A(z) $f(x)={a}x+{b}$ lineáris függvénynél mennyi $f({c})$?",
+      "hints": [
+        "x helyére helyettesíts {c} értéket.",
+        "Szorozz, majd adj össze."
+      ],
+      "explanation": "$f({c})={a}\\times{c}+{b}={ans}$."
+    },
+    "gcd": {
+      "prompt": "Mennyi {a} és {b} legnagyobb közös osztója?",
+      "hints": [
+        "Keresd meg a két szám közös osztóit.",
+        "Közülük a legnagyobb a legnagyobb közös osztó."
+      ],
+      "explanation": "{a} és {b} legnagyobb közös osztója {ans}."
+    },
+    "geoRatio": {
+      "prompt": "Egy mértani sorozat első tagja {a}, harmadik tagja {c}. Mennyi a hányadosa? (pozitív, csak számot írj)",
+      "hints": [
+        "A harmadik tagot úgy kapjuk, hogy az első tagot kétszer megszorozzuk a hányadossal.",
+        "A(z) $ar^2=c$ egyenletből határozd meg $r^2$ értékét."
+      ],
+      "explanation": "A {a}×r²={c} egyenletből r²={sq}, ezért a hányados {ans}."
+    },
+    "geoSeries": {
+      "prompt": "Mennyi a(z) {a} első tagú, ${rtex}$ hányadosú végtelen mértani sor összege? (tizedes tört vagy 3/4 alakú tört is lehet)",
+      "hints": [
+        "Az összeg létezik, ha a hányados abszolútértéke kisebb, mint 1.",
+        "Az összeg (első tag) ÷ (1 - hányados)."
+      ],
+      "explanation": "{a}÷(1-${rtex}$)=${res}$."
+    },
+    "geoTerm": {
+      "prompt": "Mennyi a(z) {a} első tagú, {r} hányadosú mértani sorozat {n}. tagja? (csak számot írj)",
+      "hints": [
+        "Az általános tag képlete $a_n=ar^{n-1}$.",
+        "Szorozz a hányadossal (n-1) alkalommal."
+      ],
+      "explanation": "{a} szorozva {r} ({n}-1) kitevőjű hatványával {ans}."
+    },
+    "groups": {
+      "prompt": "Minden kötegben {a} darab van, és {b} köteg van. Hány darab van összesen? (csak számot írj)",
+      "hints": [
+        "Az azonos elemszámú csoportokat szorzással számolhatjuk meg.",
+        "Ez ugyanaz, mint {a} értékét összesen {b} alkalommal összeadni."
+      ],
+      "explanation": "{a}×{b}={ans}, ezért összesen {ans} darab van."
+    },
+    "hundredsDigit": {
+      "prompt": "Melyik számjegy áll a százasok helyén a(z) ${n}$ számban? (csak számot írj)",
+      "hints": [
+        "Ez a jobbról harmadik számjegy.",
+        "Háromjegyű számban ez az első számjegy."
+      ],
+      "explanation": "A(z) {n} szám százasainak számjegye {ans}."
+    },
+    "hypot": {
+      "prompt": "Egy derékszögű háromszög befogói {a} cm és {b} cm hosszúak. Hány cm a leghosszabb oldal? (cm)",
+      "hints": [
+        "Pitagorasz-tétel: (átfogó)² = (egyik befogó)² + (másik befogó)².",
+        "Emeld négyzetre mindkét befogót, add össze, majd vonj négyzetgyököt."
+      ],
+      "explanation": "${a}^2+{b}^2={sq}$, ezért a leghosszabb oldal {ans} cm."
+    },
+    "ineqCount": {
+      "prompt": "Hány $x$ egész szám elégíti ki a(z) ${eq}<0$ másodfokú egyenlőtlenséget? (csak számot írj)",
+      "hints": [
+        "Bontsd tényezőkre a bal oldalt, és keresd meg a két gyököt.",
+        "Számold meg a gyökök közötti egész számokat; magukat a gyököket ne számítsd bele."
+      ],
+      "explanation": "A(z) ${fact}<0$ egyenlőtlenségből {r1}<x<{r2}, ezért {ans} egész szám van."
+    },
+    "ineqMax": {
+      "prompt": "Melyik a legnagyobb $x$ egész szám, amelyre $x+{a} < {b}$ teljesül? (csak számot írj)",
+      "hints": [
+        "Vonj ki azonos számot mindkét oldalból, és határozd meg x tartományát.",
+        "x legyen kisebb a kapott értéknél; ez az érték nem tartozik bele."
+      ],
+      "explanation": "x<{bound}, ezért a legnagyobb egész szám {ans}."
+    },
+    "intAdd": {
+      "prompt": "Számítsd ki $({a})+({b})$ értékét.",
+      "hints": [
+        "Azonos előjelek: add össze az abszolútértékeket, és tartsd meg az előjelet.",
+        "Eltérő előjelek: vond ki az abszolútértékeket, és a nagyobb abszolútértékű szám előjelét használd."
+      ],
+      "explanation": "$({a})+({b})={ans}$."
+    },
+    "intDiv": {
+      "prompt": "Számítsd ki $({a})\\div({b})$ értékét.",
+      "hints": [
+        "Azonos előjelek esetén az eredmény pozitív, eltérőknél negatív.",
+        "Oszd el az abszolútértékeket."
+      ],
+      "explanation": "$({a})\\div({b})={ans}$."
+    },
+    "intMul": {
+      "prompt": "Számítsd ki $({a})\\times({b})$ értékét.",
+      "hints": [
+        "Azonos előjelek esetén az eredmény pozitív, eltérőknél negatív.",
+        "Szorozd össze az abszolútértékeket."
+      ],
+      "explanation": "$({a})\\times({b})={ans}$."
+    },
+    "intSub": {
+      "prompt": "Számítsd ki $({a})-({b})$ értékét.",
+      "hints": [
+        "A kivonás az ellentett szám hozzáadása.",
+        "Írd át így: $({a})+({nb})$."
+      ],
+      "explanation": "$({a})-({b})=({a})+({nb})={ans}$."
+    },
+    "inverseConst": {
+      "prompt": "A(z) $y=\\frac{a}{x}$ fordított arányosság grafikonja átmegy a ({x1}, {y1}) ponton. Mennyi a?",
+      "hints": [
+        "Helyettesítsd a pontot a(z) $y=\\frac{a}{x}$ képletbe.",
+        "a=x×y."
+      ],
+      "explanation": "a={x1}×{y1}={ans}."
+    },
+    "inverseVal": {
+      "prompt": "Ha $f^{-1}$ a(z) $f(x)={f}$ függvény inverze, mennyi $f^{-1}({y})$?",
+      "hints": [
+        "$f^{-1}(y)=x$ ugyanazt jelenti, mint $f(x)=y$.",
+        "Keresd meg azt az x értéket, amelyre $f(x)={y}$ teljesül."
+      ],
+      "explanation": "{steps}, ezért $f^{-1}({y})={ans}$."
+    },
+    "isoApex": {
+      "prompt": "Egy egyenlő szárú háromszög egyik alapszöge {b}°. Hány fokos a csúcsszöge? (fok)",
+      "hints": [
+        "Az egyenlő szárú háromszög két alapszöge egyenlő.",
+        "Vond ki mindkét alapszöget 180°-ból, a háromszög szögeinek összegéből."
+      ],
+      "explanation": "180-{b}×2={ans}, ezért a csúcsszög {ans}°."
+    },
+    "kmToM": {
+      "prompt": "Hány méter {v} km? (csak számot írj)",
+      "hints": [
+        "1 km értéke 1000 m.",
+        "Szorozd meg {v} értékét 1000-rel."
+      ],
+      "explanation": "{v}×1000={ans}, tehát {ans} m."
+    },
+    "lToMl": {
+      "prompt": "Hány milliliter {v} L? (csak számot írj)",
+      "hints": [
+        "1 L értéke 1000 mL.",
+        "Szorozd meg {v} értékét 1000-rel."
+      ],
+      "explanation": "{v}×1000={ans}, tehát {ans} mL."
+    },
+    "lcm": {
+      "prompt": "Mennyi {a} és {b} legkisebb közös többszöröse?",
+      "hints": [
+        "Sorold fel a két szám közös többszöröseit a legkisebbtől kezdve.",
+        "A legkisebb közös többszörös a közös többszörösök közül a legkisebb."
+      ],
+      "explanation": "{a} és {b} legkisebb közös többszöröse {ans}."
+    },
+    "lessBy": {
+      "prompt": "Melyik szám {k} értékkel kisebb {n} számnál? (csak számot írj)",
+      "hints": [
+        "Ez ugyanaz, mint {k} lépésekkel visszafelé számolni.",
+        "A változó helyi érték számjegyére figyelj."
+      ],
+      "explanation": "{n}-{k}={ans}."
+    },
+    "limFactor": {
+      "prompt": "Mennyi $\\lim_{x\\to {a}}\\frac{x^2-{sq}}{{den}}$ értéke? (csak számot írj)",
+      "hints": [
+        "A számláló tényezős alakja $(x-a)(x+a)$.",
+        "Egyszerűsíts, majd x helyére helyettesítsd a közelítési értéket."
+      ],
+      "explanation": "A számláló felbontása és egyszerűsítés után x={a} helyettesítéssel {ans} adódik."
+    },
+    "limLinear": {
+      "prompt": "Mennyi $\\lim_{x\\to {a}}({f})$ értéke? (csak számot írj)",
+      "hints": [
+        "Polinomnál a határérték megegyezik a függvényértékkel.",
+        "x helyére helyettesíts {a} értéket."
+      ],
+      "explanation": "x={a} helyettesítéssel {ans} adódik."
+    },
+    "logAdd": {
+      "prompt": "Mennyi $\\log_{{b}} {m} + \\log_{{b}} {n}$ értéke? (csak számot írj)",
+      "hints": [
+        "$\\log_b m+\\log_b n=\\log_b mn$.",
+        "Először számítsd ki a {m}×{n} szorzatot."
+      ],
+      "explanation": "$\\log_{{b}} ({m}\\times{n})=\\log_{{b}} {prod}={ans}$."
+    },
+    "logVal": {
+      "prompt": "Mennyi $\\log_{{b}} {n}$ értéke? (csak számot írj)",
+      "hints": [
+        "$\\log_b n=k$ jelentése $b^k=n$.",
+        "Számold meg, hányszor kell {b} értékét tényezőként összeszorozni, hogy {n} legyen."
+      ],
+      "explanation": "${b}^{{ans}}={n}$, ezért a válasz {ans}."
+    },
+    "makeTen": {
+      "prompt": "Melyik számot kell {a} értékéhez adni, hogy 10 legyen? (csak számot írj)",
+      "hints": [
+        "Vond ki {a} értékét 10-ből.",
+        "Gondolj a tíz ujjadra."
+      ],
+      "explanation": "{a}+{ans}=10, ezért a válasz {ans}."
+    },
+    "matEntry": {
+      "prompt": "Ha {mats}, mennyi {expr} ({r}, {c}) helyen álló eleme?",
+      "hints": [
+        "A mátrixok összeadása, kivonása és skalárral szorzása az azonos helyen álló elemekkel történik.",
+        "A(z) $AB$ szorzat (i, j) eleme a(z) $A$ i sorának és a(z) $B$ j oszlopának sorrendben összepárosított elemeiből képzett szorzatok összege."
+      ],
+      "explanation": "{steps}, ezért a válasz {ans}."
+    },
+    "maxOf": {
+      "prompt": "A(z) {list} számok közül melyik a legnagyobb? (csak számot írj)",
+      "hints": [
+        "Hasonlítsd össze a számokat egyenként.",
+        "Keresd meg a legnagyobb mennyiséget jelölő számot."
+      ],
+      "explanation": "A(z) {list} számok közül a legnagyobb {ans}."
+    },
+    "mean": {
+      "prompt": "Mennyi e számok átlaga? {list}",
+      "hints": [
+        "Az átlag (az összes érték összege) ÷ (értékek száma).",
+        "Először add össze az összes számot."
+      ],
+      "explanation": "({sum})÷{n}={ans}, ezért az átlag {ans}."
+    },
+    "meanSum": {
+      "prompt": "{n} szám átlaga {m}. Mennyi e {n} szám összege? (csak számot írj)",
+      "hints": [
+        "átlag = összeg ÷ darabszám.",
+        "Tehát összeg = átlag × darabszám."
+      ],
+      "explanation": "{m}×{n}={ans}."
+    },
+    "median": {
+      "prompt": "Mennyi a(z) {list} adatsor mediánja?",
+      "hints": [
+        "Rendezd nagyság szerint az adatokat.",
+        "A medián a középső érték; páros darabszámnál a két középső átlagát használd."
+      ],
+      "explanation": "Sorba rendezve: {sorted}, ezért a medián {ans}."
+    },
+    "minOf": {
+      "prompt": "A(z) {list} számok közül melyik a legkisebb? (csak számot írj)",
+      "hints": [
+        "Hasonlítsd össze a számokat egyenként.",
+        "Keresd meg a legkisebb mennyiséget jelölő számot."
+      ],
+      "explanation": "A(z) {list} számok közül a legkisebb {ans}."
+    },
+    "minus": {
+      "prompt": "Számítsd ki $ {a} - {b} $ értékét.",
+      "hints": [
+        "Az azonos helyi értékű számjegyeket vond ki.",
+        "Ha nem tudsz kivonni, válts át a következő helyi értékről 10 egységet."
+      ],
+      "explanation": "{a}-{b}={ans}."
+    },
+    "missAdd": {
+      "prompt": "Melyik szám kerül a négyzetbe a(z) $\\square + {b} = {c}$ egyenletben? (csak számot írj)",
+      "hints": [
+        "A □ meghatározásához vond ki az ismert számot az összegből.",
+        "Számítsd ki: {c}-{b}."
+      ],
+      "explanation": "{c}-{b}={ans}, ezért □={ans}."
+    },
+    "missSub": {
+      "prompt": "Melyik szám kerül a négyzetbe a(z) $ {a} - \\square = {c}$ egyenletben? (csak számot írj)",
+      "hints": [
+        "A □ meghatározásához vond ki az eredményt az első számból.",
+        "Számítsd ki: {a}-{c}."
+      ],
+      "explanation": "{a}-{c}={ans}, ezért □={ans}."
+    },
+    "mixedCalc": {
+      "prompt": "Számítsd ki: {expr}",
+      "hints": [
+        "Először a zárójelben lévő műveleteket végezd el.",
+        "Ezután a szorzást és osztást végezd el az összeadás és kivonás előtt, balról jobbra haladva."
+      ],
+      "explanation": "{steps}, ezért a válasz {ans}."
+    },
+    "mode": {
+      "prompt": "Mennyi a(z) {list} adatsor módusza?",
+      "hints": [
+        "A módusz a leggyakrabban előforduló érték.",
+        "Számold meg, hányszor fordul elő az egyes érték."
+      ],
+      "explanation": "{ans} fordul elő leggyakrabban, ezért a módusz {ans}."
+    },
+    "moreBy": {
+      "prompt": "Melyik szám {k} értékkel nagyobb {n} számnál? (csak számot írj)",
+      "hints": [
+        "Ez ugyanaz, mint {k} lépésekkel előrefelé számolni.",
+        "A változó helyi érték számjegyére figyelj."
+      ],
+      "explanation": "{n}+{k}={ans}."
+    },
+    "nextNum": {
+      "prompt": "Melyik szám következik közvetlenül {n} után? (csak számot írj)",
+      "hints": [
+        "Számolj sorban.",
+        "{n} után számolj még egyet."
+      ],
+      "explanation": "Közvetlenül {n} után {ans} következik."
+    },
+    "onesDigit": {
+      "prompt": "Melyik számjegy áll az egyesek helyén a(z) ${n}$ számban? (csak számot írj)",
+      "hints": [
+        "Ez a jobb szélső számjegy.",
+        "Az egyesek helye az önálló egységek számát mutatja."
+      ],
+      "explanation": "A(z) {n} szám egyeseinek számjegye {ans}."
+    },
+    "percentChange": {
+      "prompt": "Egy érték {a} értékről {b} értékre változott. Hány százalékkal nőtt? (%)",
+      "hints": [
+        "Növekedési arány = (növekmény) ÷ (kezdeti érték) × 100.",
+        "A növekmény {b}-{a}."
+      ],
+      "explanation": "({b}-{a})÷{a}×100={ans}, tehát {ans}%."
+    },
+    "permNP": {
+      "prompt": "Hányféleképpen választhatunk ki {r} személyt {n} különböző személyből, és állíthatjuk őket sorba? (csak számot írj)",
+      "hints": [
+        "A sorrend számít, ezért sorrendet figyelembe vevő kiválasztásról van szó.",
+        "{n} értékétől kezdve szorozz össze {r} egymást követő, csökkenő számot."
+      ],
+      "explanation": "{calc}={ans}, ezért {ans} lehetőség van."
+    },
+    "permSame": {
+      "prompt": "Hányféleképpen rendezhető sorba a(z) {word} összes betűje?",
+      "hints": [
+        "Ismétlődő betűknél oszd el az összes betű számának faktoriálisát az egyes előfordulásszámok faktoriálisainak szorzatával.",
+        "Számold meg, hányszor fordul elő minden betű."
+      ],
+      "explanation": "{calc}={ans} lehetőség."
+    },
+    "pieCount": {
+      "prompt": "Egy kördiagramon A az egész {p}%-a. Az egész {t} személy. Hányan tartoznak A-hoz?",
+      "hints": [
+        "{p}% értéke $\\frac{p}{100}$.",
+        "Szorozd meg az egészet az aránnyal."
+      ],
+      "explanation": "{t}×{p}÷100={ans}, tehát {ans} személy."
+    },
+    "plus": {
+      "prompt": "Számítsd ki $ {a} + {b} $ értékét.",
+      "hints": [
+        "Az azonos helyi értékű számjegyeket add össze.",
+        "Ha egy helyi értéken az összeg 10 vagy több, vigyél át a következő helyi értékre."
+      ],
+      "explanation": "{a}+{b}={ans}."
+    },
+    "pmAverage": {
+      "prompt": "5 nap alatt a finompor-koncentrációk {list} (µg/m³) voltak. Mennyi az átlagos koncentráció?",
+      "hints": [
+        "Az átlag (összeg) ÷ (napok száma).",
+        "Először add össze az 5 értéket."
+      ],
+      "explanation": "({sum})÷5={ans}, ezért az átlag {ans}."
+    },
+    "prevNum": {
+      "prompt": "Melyik szám áll közvetlenül {n} előtt? (csak számot írj)",
+      "hints": [
+        "Számolj visszafelé.",
+        "{n} előtt számolj eggyel kevesebbet."
+      ],
+      "explanation": "Közvetlenül {n} előtt {ans} áll."
+    },
+    "probAdd": {
+      "prompt": "Két A és B eseménynél $P(A)={pa}$, $P(B)={pb}$ és $P(A\\cap B)={pab}$. Mennyi $P(A\\cup B)$?",
+      "hints": [
+        "Használd az összeadási szabályt: $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$.",
+        "Helyettesítsd be az adott értékeket egyenként."
+      ],
+      "explanation": "{pa}+{pb}-{pab}={ans}."
+    },
+    "probComplement": {
+      "prompt": "Az A esemény valószínűsége $P(A)={pa}$. Mennyi a komplementer esemény $P(A^c)$ valószínűsége?",
+      "hints": [
+        "A komplementer esemény valószínűsége $1-P(A)$.",
+        "Vond ki $P(A)$ értékét 1-ből."
+      ],
+      "explanation": "1-{pa}={ans}."
+    },
+    "propX": {
+      "prompt": "Melyik szám kerül a négyzetbe a(z) ${a} : {b} = \\square : {d}$ aránypárban? (csak számot írj)",
+      "hints": [
+        "Aránypárban a külső tagok szorzata egyenlő a belső tagok szorzatával.",
+        "Oldd meg: □ × {b} = {a} × {d}."
+      ],
+      "explanation": "□×{b}={a}×{d}, ezért □={ans}."
+    },
+    "qfuncValue": {
+      "prompt": "A(z) $y={expr}$ másodfokú függvénynél mennyi $y$, ha $x={x}$? (csak számot írj)",
+      "hints": [
+        "x helyére helyettesítsd az adott értéket.",
+        "Először a négyzetet számítsd ki."
+      ],
+      "explanation": "x={x} helyettesítéssel y={ans} adódik."
+    },
+    "quadDisc": {
+      "prompt": "Mennyi a(z) ${eq}=0$ másodfokú egyenlet $D=b^2-4ac$ diszkriminánsának értéke? (csak számot írj)",
+      "hints": [
+        "A(z) $ax^2+bx+c=0$ egyenlet diszkriminánsa $D=b^2-4ac$.",
+        "Figyelj a, b és c előjelére."
+      ],
+      "explanation": "a={a}, b={b}, c={c}, ezért D=({b})²-4×({a})×({c})={ans}."
+    },
+    "quadFourth": {
+      "prompt": "Egy négyszög három szöge {a}°, {b}° és {c}°. Hány fokos a negyedik szög? (fok)",
+      "hints": [
+        "A négyszög négy szögének összege 360°.",
+        "Vond ki a három ismert szöget 360-ból."
+      ],
+      "explanation": "360-{a}-{b}-{c}={ans}, ezért a szög {ans}°."
+    },
+    "quadRoot": {
+      "prompt": "A(z) ${eq}$ egyenlet két gyöke közül melyik a nagyobb? (csak számot írj)",
+      "hints": [
+        "Bontsd tényezőkre a bal oldalt.",
+        "A gyökök azok az x értékek, amelyeknél valamelyik tényező nulla."
+      ],
+      "explanation": "A(z) ${fact}$ alakból a gyökök {roots}, ezért a nagyobb gyök {ans}."
+    },
+    "radDeg": {
+      "prompt": "Váltsd át $\\theta=\\dfrac{{num}}{{d}}$ értékét radiánból fokba. (csak számot írj)",
+      "hints": [
+        "$\\pi$ radián értéke 180°.",
+        "$\\pi$ helyére helyettesíts 180°-ot."
+      ],
+      "explanation": "$\\pi=180^\\circ$ helyettesítéssel {ans}° adódik."
+    },
+    "ratioPct": {
+      "prompt": "Írd fel $\\frac{{a}}{{b}}$ értékét százalékban. (csak számot írj)",
+      "hints": [
+        "A százalékos érték az arány 100-zal szorozva.",
+        "A törtet 100-as nevezőjűre is alakíthatod."
+      ],
+      "explanation": "$\\frac{{a}}{{b}}\\times100={ans}$, tehát {ans}%."
+    },
+    "rectArea": {
+      "prompt": "Egy téglalap szélessége {w} cm, magassága {h} cm. Mekkora a területe cm²-ben? (csak számot írj)",
+      "hints": [
+        "A téglalap területe szélesség × magasság.",
+        "Szorozd össze a két oldalhosszt."
+      ],
+      "explanation": "{w}×{h}={ans}, ezért a terület {ans} cm²."
+    },
+    "rectPerim": {
+      "prompt": "Egy téglalap szélessége {w} cm, magassága {h} cm. Mekkora a kerülete cm-ben? (cm)",
+      "hints": [
+        "A kerület a négy oldal hosszának összege.",
+        "Használhatod ezt: (szélesség + magasság) × 2."
+      ],
+      "explanation": "({w}+{h})×2={ans}, ezért a kerület {ans} cm."
+    },
+    "relFreq": {
+      "prompt": "Az összes gyakoriság {t}, egy osztály gyakorisága {f}. Mennyi ennek az osztálynak a relatív gyakorisága? (tizedes tört)",
+      "hints": [
+        "Relatív gyakoriság = (osztály gyakorisága) ÷ (összes gyakoriság).",
+        "Az eredményt tizedes törtben írd fel."
+      ],
+      "explanation": "{f}÷{t}={ans}, ezért a relatív gyakoriság {ans}."
+    },
+    "remainder": {
+      "prompt": "Mennyi a maradék, ha $P(x)={poly}$ kifejezést ${div}$ kifejezéssel osztjuk? (csak számot írj)",
+      "hints": [
+        "Maradéktétel: P(x) osztási maradéka x-a osztó esetén P(a).",
+        "x helyére helyettesíts a értéket, és számolj."
+      ],
+      "explanation": "A maradéktétel szerint P({a})={ans}."
+    },
+    "repComb": {
+      "prompt": "Hányféleképpen választhatunk ki {r} darabot {n} különböző fajtából, ha ismétlés megengedett?",
+      "hints": [
+        "n fajta és r kiválasztott darab esetén a lehetőségek száma annyi, mint r elem kiválasztása n+r−1 elemből.",
+        "Helyettesítsd be a fajták számát és a kiválasztott darabszámot."
+      ],
+      "explanation": "{calc}={ans}."
+    },
+    "repPerm": {
+      "prompt": "Hányféleképpen választhatunk ki {r} elemet {n} különböző elemből ismétléssel, és rendezhetjük őket sorba?",
+      "hints": [
+        "Az ismétléses elrendezések száma a választási lehetőségek számának szorzata önmagával, minden helyhez egy tényezővel.",
+        "Minden hely {n} módon tölthető ki."
+      ],
+      "explanation": "{prod}={ans} lehetőség."
+    },
+    "rootMax": {
+      "prompt": "Mennyi a(z) {eq} egyenlet legnagyobb valós gyöke?",
+      "hints": [
+        "Bontsd tényezők szorzatára. Az első gyököt Horner-elrendezéssel is megtalálhatod.",
+        "A gyökök azok az x értékek, amelyeknél valamelyik tényező nulla."
+      ],
+      "explanation": "{fact}, ezért a valós gyökök {roots}, közülük a legnagyobb {ans}."
+    },
+    "rootSum": {
+      "prompt": "Mennyi a(z) {eq} egyenlet összes valós gyökének összege?",
+      "hints": [
+        "Bontsd tényezők szorzatára. Az első gyököt Horner-elrendezéssel is megtalálhatod.",
+        "A gyökök azok az x értékek, amelyeknél valamelyik tényező nulla."
+      ],
+      "explanation": "{fact}, ezért a valós gyökök {roots}, összegük {ans}."
+    },
+    "roundTo": {
+      "prompt": "Mennyi {n} értéke {u} egységekre kerekítve ezzel: „{mode}“?",
+      "hints": [
+        "Nézd meg a(z) {u} helyi értéknél kisebb helyeken álló számjegyeket.",
+        "Felfelé kerekítéskor növelünk, lefelé kerekítéskor elhagyjuk a kisebb helyi értékeket, a legközelebbi értékre kerekítéskor pedig csak 5 vagy nagyobb számjegynél növelünk."
+      ],
+      "explanation": "A „{mode}“ alkalmazásával {n} értéke {u} egységekben {ans} lesz."
+    },
+    "seqNext": {
+      "prompt": "Keresd meg a szabályt, és írd be a hiányzó számot: ${list}, \\square$",
+      "hints": [
+        "Határozd meg a szomszédos számok különbségét.",
+        "A számok minden lépésben ugyanannyival nőnek vagy csökkennek."
+      ],
+      "explanation": "A szomszédos számok különbsége {d}, ezért □={ans}."
+    },
+    "setCount": {
+      "prompt": "Ha $n(A)={na}$, $n(B)={nb}$ és $n(A\\cap B)={nab}$, mennyi $n(A\\cup B)$?",
+      "hints": [
+        "Használd ezt: $n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$.",
+        "Helyettesítsd be az adott értékeket egyenként."
+      ],
+      "explanation": "{na}+{nb}-{nab}={ans}."
+    },
+    "sigmaSum": {
+      "prompt": "Számítsd ki ezt az összeget: {expr}",
+      "hints": [
+        "A ∑ jel azt jelenti: helyettesítsd sorban k=1, 2, 3, … értékeit, és add össze az eredményeket.",
+        "Ezeket a szabályokat is használhatod: $\\sum k=\\frac{n(n+1)}{2}$ és $\\sum c=cn$."
+      ],
+      "explanation": "{steps}, ezért az összeg {ans}."
+    },
+    "simpleInterest": {
+      "prompt": "{p} von betétet {n} évre helyezünk el évi {r}% egyszerű kamattal. Mennyi a kamat? (von)",
+      "hints": [
+        "Egyszerű kamat = tőke × kamatláb × évek száma.",
+        "{r}% értéke {rr}."
+      ],
+      "explanation": "{p}×{rr}×{n}={ans}, ezért a kamat {ans} von."
+    },
+    "slope2": {
+      "prompt": "Mennyi a(z) $({x1},\\,{y1})$ és $({x2},\\,{y2})$ pontokon átmenő egyenes meredeksége? (csak számot írj)",
+      "hints": [
+        "A meredekség (y változása) ÷ (x változása).",
+        "Oszd el az y-koordináták különbségét az x-koordináták különbségével."
+      ],
+      "explanation": "$\\frac{{y2}-({y1})}{{x2}-({x1})}={ans}$."
+    },
+    "slopeOf": {
+      "prompt": "Mennyi a(z) $y={a}x+{b}$ lineáris függvény meredeksége?",
+      "hints": [
+        "A(z) $y=ax+b$ alakban a meredekség a.",
+        "Olvasd le x együtthatóját."
+      ],
+      "explanation": "A meredekség {ans}."
+    },
+    "solveLin": {
+      "prompt": "Oldd meg a(z) ${eq}$ lineáris egyenletet (határozd meg x értékét).",
+      "hints": [
+        "Mindkét oldalon ugyanazt a számot add hozzá vagy vond ki, hogy az x-es tag egyedül maradjon.",
+        "Ezután oszd el mindkét oldalt az x előtt álló számmal."
+      ],
+      "explanation": "A(z) ${eq}$ egyenletből x={ans} adódik."
+    },
+    "sqrtProd": {
+      "prompt": "Mennyi $\\sqrt{{a}} \\times \\sqrt{{b}}$ értéke? (csak számot írj)",
+      "hints": [
+        "$\\sqrt{a}\\times\\sqrt{b}=\\sqrt{ab}$.",
+        "Ellenőrizd, hogy a szorzat négyzetszám-e."
+      ],
+      "explanation": "$\\sqrt{{a}\\times{b}}=\\sqrt{{prod}}={ans}$."
+    },
+    "sqrtVal": {
+      "prompt": "Mennyi $\\sqrt{{n}}$ értéke? (csak számot írj)",
+      "hints": [
+        "Keresd meg azt a pozitív számot, amelynek négyzete {n}.",
+        "Gondolj a szorzótáblára."
+      ],
+      "explanation": "${ans}^2={n}$, ezért $\\sqrt{{n}}={ans}$."
+    },
+    "stdev": {
+      "prompt": "Mennyi a(z) {list} adatsor szórása? (sokasági szórás)",
+      "hints": [
+        "Először határozd meg az átlagot.",
+        "A szórás az eltérésnégyzetek átlagának, vagyis a varianciának a négyzetgyöke."
+      ],
+      "explanation": "Az átlag {mean}, a variancia {var}, ezért a szórás {ans}."
+    },
+    "subThree": {
+      "prompt": "Mennyi {a}-{b}?",
+      "hints": [
+        "Az egyesek helyén kezdd a kivonást.",
+        "Ha nem tudsz kivonni, válts át a következő helyi értékről."
+      ],
+      "explanation": "{a}-{b}={ans}."
+    },
+    "subsetCount": {
+      "prompt": "Hány részhalmaza van egy {n} elemű halmaznak?",
+      "hints": [
+        "Egy n elemű halmaznak $2^n$ részhalmaza van.",
+        "Gondolj arra, hogy minden elemnél eldöntöd, beveszed-e vagy sem."
+      ],
+      "explanation": "{prod}={ans}, ezért {ans} részhalmaz van."
+    },
+    "taxTotal": {
+      "prompt": "Egy termék ára {p} von, amelyhez {t}% áfa adódik. Hány vont kell fizetni? (von)",
+      "hints": [
+        "Az adó ár × {t}%.",
+        "Add hozzá az adót az árhoz."
+      ],
+      "explanation": "{p}+{p}×{tr}={ans}, tehát {ans} von."
+    },
+    "tensDigit": {
+      "prompt": "Melyik számjegy áll a tízesek helyén a(z) ${n}$ számban? (csak számot írj)",
+      "hints": [
+        "Ez a jobbról második számjegy.",
+        "Keresd meg a közvetlenül az egyesektől balra álló számjegyet."
+      ],
+      "explanation": "A(z) {n} szám tízeseinek számjegye {ans}."
+    },
+    "times": {
+      "prompt": "Számítsd ki $ {a} \\times {b} $ értékét.",
+      "hints": [
+        "Gondolj a szorzótáblára vagy az azonos elemszámú csoportokra.",
+        "Nagyobb számoknál helyi értékenként szorozz, majd add össze a részeredményeket."
+      ],
+      "explanation": "{a}×{b}={ans}."
+    },
+    "triThird": {
+      "prompt": "Egy háromszög két szöge {a}° és {b}°. Hány fokos a harmadik szög? (fok)",
+      "hints": [
+        "A háromszög három szögének összege 180°.",
+        "Vond ki a két ismert szöget 180-ból."
+      ],
+      "explanation": "180-{a}-{b}={ans}, ezért a szög {ans}°."
+    },
+    "variance": {
+      "prompt": "Mennyi a(z) {list} adatsor varianciája?",
+      "hints": [
+        "Határozd meg az átlagot, majd minden érték eltérését tőle.",
+        "A variancia az eltérésnégyzetek átlaga."
+      ],
+      "explanation": "Az átlag {mean}, az eltérésnégyzetek összege {sq}, ezért a variancia {sq}÷{n}={ans}."
+    },
+    "vecNorm": {
+      "prompt": "Mennyi a(z) $\\vec{a}=({x},\\ {y})$ vektor $|\\vec{a}|$ hossza? (csak számot írj)",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Emeld négyzetre a komponenseket, add össze, majd vonj négyzetgyököt."
+      ],
+      "explanation": "$\\sqrt{({x})^2+({y})^2}={ans}$."
+    },
+    "vertexSum": {
+      "prompt": "A(z) $y={expr}$ másodfokú függvény csúcsa $(p,\\ q)$. Mennyi $p+q$? (csak számot írj)",
+      "hints": [
+        "A(z) $y=a(x-p)^2+q$ alakban a csúcs $(p,\\ q)$.",
+        "Figyelj a zárójelen belüli előjelre."
+      ],
+      "explanation": "A csúcs $({p},\\ {q})$, ezért p+q={ans}."
+    },
+    "xInt": {
+      "prompt": "Mennyi a(z) $y={a}x+{b}$ grafikon x-tengelymetszete?",
+      "hints": [
+        "Az x-tengelymetszet az x értéke, amikor y=0.",
+        "Oldd meg: $0=ax+b$."
+      ],
+      "explanation": "A(z) $0={a}x+{b}$ egyenletből x={ans}."
+    },
+    "yInt": {
+      "prompt": "Mennyi a(z) $y={a}x+{b}$ grafikon y-tengelymetszete?",
+      "hints": [
+        "Az y-tengelymetszet az y értéke, amikor x=0.",
+        "A(z) $y=ax+b$ alakban ez b."
+      ],
+      "explanation": "Az y-tengelymetszet {ans}."
+    }
+  },
+  "texts": {
+    "rd_down": "lefelé kerekítés",
+    "rd_half": "kerekítés a legközelebbi értékre",
+    "rd_up": "felfelé kerekítés"
+  }
+}

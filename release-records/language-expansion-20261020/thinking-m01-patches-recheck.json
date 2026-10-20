@@ -1,0 +1,68 @@
+{
+  "scope": "Only the4applied changes listed in pending-recheck manifest; no re-review or approval of untouched fields.",
+  "kind": "independent-ai-targeted-patch-recheck",
+  "results": [
+    {
+      "locale": "tl",
+      "path": "thinking.2",
+      "beforeHash": "3c2c32533bcdecec088312537a36fbb3b4c752c39e9b972da38f9de90dba1357",
+      "afterHash": "8f2ad550c5acadb3795633ac318f532d738c13e9af0b3745b35c82f0a4bb210d",
+      "sourceHash": "b22b840634943792d27148960a28dbc513003853ba9df796fd02b793e6d579d9",
+      "currentTargetHash": "8f2ad550c5acadb3795633ac318f532d738c13e9af0b3745b35c82f0a4bb210d",
+      "hashMatchesExpectedAfter": true,
+      "matchesReviewedProposedPatch": true,
+      "target": "Tuklasin ang mga kundisyon kung kailan totoo ang pahayag",
+      "verdict": "pass_recheck",
+      "reason": "Tuklasin ang mga kundisyon kung kailan totoo ang pahayag now explicitly asks for conditions under which the claim is true. It avoids making-it-true causation and preserves the original inquiry objective."
+    },
+    {
+      "locale": "pcm",
+      "path": "s.s4.selfAssess.0",
+      "beforeHash": "0d63ea923275e9c77b68d9a0d8c74db70eeacf5e1742e9af80fcdd450520e256",
+      "afterHash": "b06a89d21dc260a8f86a8e5cd2822a891098fa1643da35be48abc366181b2fe2",
+      "sourceHash": "a457b1f87927d4642c5c7a085840dfd862413a935ad503945ae11ec09e5c968c",
+      "currentTargetHash": "b06a89d21dc260a8f86a8e5cd2822a891098fa1643da35be48abc366181b2fe2",
+      "hashMatchesExpectedAfter": true,
+      "matchesReviewedProposedPatch": true,
+      "target": "I compare di product with di starting number clear for my examples?",
+      "verdict": "pass_recheck",
+      "reason": "Revised question asks whether the learner clearly compared product with starting number in their examples; no threshold, equality condition or answer is added."
+    },
+    {
+      "locale": "pcm",
+      "path": "s.s4.selfAssess.1",
+      "beforeHash": "72d41a751a7ba04caf494cd2a952b9f4ebd2ca721a3a2e6e8a54eda8db83a344",
+      "afterHash": "511a3e7f499c1a0d8ed719f632d4c4ea10ae8c3f67ff0902d693c97de8ec1af0",
+      "sourceHash": "12e04017e815eb49cf31a494dc5430db4978863da7d3a81f78f4c9630f1c6d82",
+      "currentTargetHash": "511a3e7f499c1a0d8ed719f632d4c4ea10ae8c3f67ff0902d693c97de8ec1af0",
+      "hashMatchesExpectedAfter": true,
+      "matchesReviewedProposedPatch": true,
+      "target": "I show say I understand say even one example fit break 'always'?",
+      "verdict": "pass_recheck",
+      "reason": "Revised question asks whether the learner showed understanding that one example can refute always. This matches the source self-assessment intent rather than asking merely whether a number was written."
+    },
+    {
+      "locale": "pcm",
+      "path": "s.s4.selfAssess.2",
+      "beforeHash": "beac3ff3657ff7139c3763c4e2edccb63f7038f4fe347b5e22429f36b34865eb",
+      "afterHash": "969b66e9c90a75caa8707ef28ddf47586be786608a8150d3c214a49502747236",
+      "sourceHash": "9580c6a5be271da70fc52d42d91639dca5b7cfb91fb4c6af7cbc329c8b574185",
+      "currentTargetHash": "969b66e9c90a75caa8707ef28ddf47586be786608a8150d3c214a49502747236",
+      "hashMatchesExpectedAfter": true,
+      "matchesReviewedProposedPatch": true,
+      "target": "I also explain which kind of number person must multiply by before di product go big pass di starting number?",
+      "verdict": "pass_recheck",
+      "reason": "Revised question asks whether the explanation specifies what kind of multiplier makes product greater than initial number. It preserves the growth-condition self-check and adds no explicit threshold1."
+    }
+  ],
+  "summary": {
+    "checked": 4,
+    "afterHashMatches": 4,
+    "semanticRecheckPass": 4
+  },
+  "limitations": [
+    "Independent AI recheck only, not native-speaker or teacher approval.",
+    "No runtime or target-language free-response grading test performed.",
+    "No source or translation files modified during recheck."
+  ]
+}

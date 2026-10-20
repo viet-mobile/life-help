@@ -1,3 +1,4 @@
+import { extendThinkLabels, type CoreThinkLang } from "./expandedUiExtra";
 import areas from "./math-areas.json";
 import langFields from "./lang-fields.json";
 import type { ThinkLang } from "./lang";
@@ -5,7 +6,7 @@ import type { ThinkLang } from "./lang";
 /** The four areas of the math hub's field filter (2022 curriculum style). Assignment: scripts/think/classify-math-areas.py -> math-areas.json. */
 export type MathArea = "number" | "relations" | "geometry" | "data";
 export const MATH_AREAS: MathArea[] = ["number", "relations", "geometry", "data"];
-export const AREA_LABELS: Record<MathArea, Record<ThinkLang, string>> = {
+const CORE_AREA_LABELS: Record<MathArea, Record<CoreThinkLang, string>> = {
   number: { ko: "수와 연산", en: "Numbers and operations", "zh-Hans": "数与运算", "zh-Hant": "數與運算", ja: "数と計算", vi: "Số và phép tính" },
   relations: { ko: "변화와 관계", en: "Change and relationships", "zh-Hans": "变化与关系", "zh-Hant": "變化與關係", ja: "変化と関係", vi: "Biến đổi và quan hệ" },
   geometry: { ko: "도형과 측정", en: "Shapes and measurement", "zh-Hans": "图形与测量", "zh-Hant": "圖形與測量", ja: "図形と測定", vi: "Hình học và đo lường" },
@@ -17,7 +18,7 @@ export const mathAreaOf = (taskId: string): MathArea | null => (areas as Record<
 /** English- and Korean-subject tasks: six fields (English curriculum content areas). Assignment: scripts/think/classify-lang-fields.py -> lang-fields.json. */
 export type LangField = "topic" | "function" | "context" | "strategy" | "language" | "text";
 export const LANG_FIELDS: LangField[] = ["topic", "function", "context", "strategy", "language", "text"];
-export const FIELD_LABELS: Record<LangField, Record<ThinkLang, { short: string; full: string }>> = {
+const CORE_FIELD_LABELS: Record<LangField, Record<CoreThinkLang, { short: string; full: string }>> = {
   topic: { ko: { short: "주제", full: "주제" }, en: { short: "Topic", full: "Topic" }, "zh-Hans": { short: "主题", full: "主题" }, "zh-Hant": { short: "主題", full: "主題" }, ja: { short: "テーマ", full: "テーマ" }, vi: { short: "Chủ đề", full: "Chủ đề" } },
   function: { ko: { short: "기능", full: "기능" }, en: { short: "Function", full: "Function" }, "zh-Hans": { short: "功能", full: "功能" }, "zh-Hant": { short: "功能", full: "功能" }, ja: { short: "機能", full: "機能" }, vi: { short: "Chức năng", full: "Chức năng" } },
   context: { ko: { short: "맥락", full: "맥락" }, en: { short: "Context", full: "Context" }, "zh-Hans": { short: "语境", full: "语境" }, "zh-Hant": { short: "語境", full: "語境" }, ja: { short: "文脈", full: "文脈" }, vi: { short: "Ngữ cảnh", full: "Ngữ cảnh" } },
@@ -35,3 +36,6 @@ export function fieldInfo(site: string, key: string, lang: ThinkLang): FieldInfo
   if (site === "math") { const t = AREA_LABELS[key as MathArea][lang]; return { key, short: t, full: t }; }
   const l = FIELD_LABELS[key as LangField][lang]; return { key, short: l.short, full: l.full };
 }
+
+export const AREA_LABELS = Object.fromEntries(Object.entries(CORE_AREA_LABELS).map(([key,row])=>[key,extendThinkLabels(row,p=>p.areas[key as MathArea])])) as Record<MathArea,Record<ThinkLang,string>>;
+export const FIELD_LABELS = Object.fromEntries(Object.entries(CORE_FIELD_LABELS).map(([key,row])=>[key,extendThinkLabels(row,p=>p.fields[key as LangField])])) as Record<LangField,Record<ThinkLang,{short:string;full:string}>>;

@@ -1,7 +1,16 @@
+import { EXPANDED_THINK_UI } from "./expandedUi";
 import type { ThinkLang } from "@/lib/think/lang";
 
 /** Chrome strings of the review player. Task content has its own language (task.uiLang); the player follows it. */
 const L = {
+  pcm: EXPANDED_THINK_UI.pcm.player,
+  tl: EXPANDED_THINK_UI.tl.player,
+  ro: EXPANDED_THINK_UI.ro.player,
+  fi: EXPANDED_THINK_UI.fi.player,
+  cs: EXPANDED_THINK_UI.cs.player,
+  hu: EXPANDED_THINK_UI.hu.player,
+  af: EXPANDED_THINK_UI.af.player,
+
   ko: {
     title: "사고력 시범 과제", info: "이 과제의 목표와 요구하는 사고 (먼저 풀고 나서 보세요)", back: "← 목록", nextTask: "다음 문제 ▶", draft: "초안: 자동 검증만 통과했고 독립 검토 전이에요.", toList: "목록으로", all: "전체", subject: "과목", level: "수준", math: "수학", english: "영어", korean: "한국어",
     minutes: "분", goal: "학습 목표", thinking: "요구하는 사고", differs: "단순 문항과 다른 점", prereq: "선수학습",

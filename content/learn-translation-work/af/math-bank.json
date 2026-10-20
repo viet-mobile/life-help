@@ -1,0 +1,1065 @@
+{
+  "templates": {
+    "addThree": {
+      "prompt": "Wat is {a}+{b}?",
+      "hints": [
+        "Tel vanaf die eneplek op.",
+        "As 'n kolom 10 of meer gee, dra oor na die volgende plek."
+      ],
+      "explanation": "{a}+{b}={ans}."
+    },
+    "areaX2": {
+      "prompt": "Wat is die oppervlakte begrens deur die kromme $y={k}x^2$, die $x$-as en die lyn $x={a}$? (slegs syfers)",
+      "hints": [
+        "Die oppervlakte is die bepaalde integraal van 0 tot {a}.",
+        "$\\int x^2\\,dx=\\frac{x^3}{3}$."
+      ],
+      "explanation": "$\\int_0^{{a}} {k}x^2\\,dx=\\frac{{k}\\times{a}^3}{3}={ans}$."
+    },
+    "arithSum": {
+      "prompt": "Wat is die som van die eerste {n} terme van die rekenkundige ry met eerste term {a} en gemene verskil {d}? (slegs syfers)",
+      "hints": [
+        "Die somformule is $S_n=\\frac{n(2a+(n-1)d)}{2}$.",
+        "Jy kan ook die laaste term vind en (eerste + laaste) × aantal terme ÷ 2 bereken."
+      ],
+      "explanation": "$S_{{n}}=\\frac{{n}(2\\times{a}+({n}-1)\\times({d}))}{2}={ans}$."
+    },
+    "arithTerm": {
+      "prompt": "Wat is term nommer {n} van die rekenkundige ry met eerste term {a} en gemene verskil {d}? (slegs syfers)",
+      "hints": [
+        "Die algemene term is $a_n=a+(n-1)d$.",
+        "Vermenigvuldig (n-1) met die gemene verskil en tel dit by die eerste term."
+      ],
+      "explanation": "{a}+({n}-1)×({d})={ans}."
+    },
+    "bigNum": {
+      "prompt": "Watter getal bestaan uit {a} tienduisende en {b} duisende? (slegs syfers)",
+      "hints": [
+        "{a} tienduisende is {a}0000.",
+        "{b} duisende is {b}000. Tel hulle op."
+      ],
+      "explanation": "{a} tienduisende en {b} duisende maak {ans}."
+    },
+    "binomCoef": {
+      "prompt": "Wat is die koëffisiënt van $x^{{k}}$ in die uitbreiding van $(x+1)^{{n}}$?",
+      "hints": [
+        "Volgens die binomiaalstelling is die koëffisiënte aantalle kombinasies.",
+        "Die koëffisiënt van $x^k$ is $_nC_k$, die aantal maniere om k uit n te kies."
+      ],
+      "explanation": "{calc}={ans}."
+    },
+    "binomMean": {
+      "prompt": "As die toevalsveranderlike $X$ die binomiale verdeling $B({n},\\ {p})$ volg, wat is $E(X)$? (slegs syfers)",
+      "hints": [
+        "Die gemiddelde van $B(n,\\ p)$ is $np$.",
+        "Vermenigvuldig n en p."
+      ],
+      "explanation": "E(X)={n}×{p}={ans}."
+    },
+    "chanceFraction": {
+      "prompt": "'n Boks bevat {a} A-balle en {b} B-balle. Een bal word uitgehaal. Wat is die waarskynlikheid dat dit 'n A-bal is, as 'n desimaal?",
+      "hints": [
+        "Waarskynlikheid = (gunstige gevalle) ÷ (alle gevalle).",
+        "Vind eers die totale aantal balle."
+      ],
+      "explanation": "{a}÷{total}={ans}, dus is die waarskynlikheid {ans}."
+    },
+    "ciHalf": {
+      "prompt": "Die populasiestandaardafwyking is {s} en die steekproefgrootte is {n}. Wat is die 95%-foutgrens $1.96\\times\\frac{σ}{\\sqrt{ n }}$? (twee desimale plekke)",
+      "hints": [
+        "Vind eers $\\sqrt{ n }$.",
+        "Deel σ daardeur en vermenigvuldig met 1.96."
+      ],
+      "explanation": "$1.96\\times\\frac{{s}}{{rt}}={ans}$."
+    },
+    "circleArea": {
+      "prompt": "'n Sirkel se radius is {r} cm. Wat is sy oppervlakte in cm²? (gebruik $3.14$ vir pi) (cm²)",
+      "hints": [
+        "Die oppervlakte is radius × radius × pi.",
+        "Kwadreer die radius en vermenigvuldig dan met 3.14."
+      ],
+      "explanation": "{r}×{r}×3.14={ans}, dus is die oppervlakte {ans} cm²."
+    },
+    "circleR": {
+      "prompt": "Wat is die radius van die sirkel $({fx})^2+({fy})^2={r2}$? (slegs syfers)",
+      "hints": [
+        "In $(x-a)^2+(y-b)^2=r^2$ is r die radius.",
+        "Die getal regs is r²."
+      ],
+      "explanation": "$r^2={r2}$, dus is die radius {ans}."
+    },
+    "circum": {
+      "prompt": "'n Sirkel se radius is {r} cm. Hoe lank is sy omtrek in cm? (gebruik $3.14$ vir pi) (cm)",
+      "hints": [
+        "Die omtrek is deursnee × pi.",
+        "Die deursnee is twee keer die radius."
+      ],
+      "explanation": "{r}×2×3.14={ans}, dus is dit {ans} cm."
+    },
+    "coinCases": {
+      "prompt": "Hoeveel uitkomste is daar wanneer {n} munte saam gegooi word? (slegs syfers)",
+      "hints": [
+        "Een munt het 2 uitkomste: kop of stert.",
+        "Vermenigvuldig die aantal uitkomste van elke munt."
+      ],
+      "explanation": "Die produk van {n} faktore wat elk 2 is, is {ans}, dus is daar {ans} uitkomste."
+    },
+    "combNC": {
+      "prompt": "Op hoeveel maniere kan jy {r} uit {n} verskillende mense kies wanneer volgorde nie saak maak nie? (slegs syfers)",
+      "hints": [
+        "Volgorde maak nie saak nie, dus is dit 'n kombinasie.",
+        "Deel die aantal permutasies deur {r}!."
+      ],
+      "explanation": "{calc}={ans}, dus is daar {ans} maniere."
+    },
+    "complexSum": {
+      "prompt": "Wat is die som van die reële en imaginêre dele van ${expr}$? (slegs syfers)",
+      "hints": [
+        "Tel die reële dele saam en die imaginêre dele saam.",
+        "Behandel i soos 'n letter."
+      ],
+      "explanation": "Die reële deel is {re} en die imaginêre deel is {im}, dus is die som {ans}."
+    },
+    "composite": {
+      "prompt": "As $f(x)={f}$ en $g(x)={g}$, wat is {comp}?",
+      "hints": [
+        "Die samestelling $(g\\circ f)(a)$ beteken $g(f(a))$. Werk van die binneste funksie na buite.",
+        "Vind eers die waarde van die binneste funksie en plaas dit dan in die buitenste funksie."
+      ],
+      "explanation": "{steps}, dus is die antwoord {ans}."
+    },
+    "condProb": {
+      "prompt": "Vir gebeurtenisse $A,\\ B$ is $P(A)={pa}$ en $P(A\\cap B)={pab}$. Wat is $P(B\\mid A)$? (skryf 'n desimaal)",
+      "hints": [
+        "Voorwaardelike waarskynlikheid: $P(B\\mid A)=\\frac{P(A\\cap B)}{P(A)}$.",
+        "Deel die twee waardes."
+      ],
+      "explanation": "{pab}÷{pa}={ans}."
+    },
+    "convKgG": {
+      "prompt": "Hoeveel g is {v} kg? (g)",
+      "hints": [
+        "1 kg is 1000 g.",
+        "Vermenigvuldig {v} met 1000."
+      ],
+      "explanation": "{v}×1000={ans}, dus {ans} g."
+    },
+    "convMCm": {
+      "prompt": "Hoeveel cm is {v} m? (cm)",
+      "hints": [
+        "1 m is 100 cm.",
+        "Vermenigvuldig {v} met 100."
+      ],
+      "explanation": "{v}×100={ans}, dus {ans} cm."
+    },
+    "crossX": {
+      "prompt": "Die grafieke van $y={a1}x+{b1}$ en $y={a2}x+{b2}$ sny by P. Wat is die x-koördinaat van P?",
+      "hints": [
+        "By die snypunt is albei y-waardes gelyk.",
+        "Los $a_1x+b_1=a_2x+b_2$ op."
+      ],
+      "explanation": "${a1}x+{b1}={a2}x+{b2}$ gee x={ans}."
+    },
+    "cubeVol": {
+      "prompt": "Een rand van 'n kubus is {a} cm. Wat is sy volume in cm³? (slegs syfers)",
+      "hints": [
+        "Die volume van 'n kubus is rand × rand × rand.",
+        "Vermenigvuldig drie faktore wat elk {a} is."
+      ],
+      "explanation": "{a}×{a}×{a}={ans}, dus is die volume {ans} cm³."
+    },
+    "cuboidVol": {
+      "prompt": "'n Reghoekige prisma is {a} cm lank, {b} cm breed en {c} cm hoog. Wat is sy volume in cm³? (cm³)",
+      "hints": [
+        "Die volume van 'n reghoekige prisma is lengte × breedte × hoogte.",
+        "Vermenigvuldig al drie lengtes."
+      ],
+      "explanation": "{a}×{b}×{c}={ans}, dus is die volume {ans} cm³."
+    },
+    "dataRange": {
+      "prompt": "Wat is die verskil tussen die grootste en kleinste waarde van {list}?",
+      "hints": [
+        "Vind die grootste en kleinste waarde.",
+        "Trek die kleiner van die groter af."
+      ],
+      "explanation": "{max}-{min}={ans}."
+    },
+    "decPct": {
+      "prompt": "Skryf hierdie desimaal as 'n persentasie: ${d}$ (slegs syfers)",
+      "hints": [
+        "Vermenigvuldig die desimaal met 100 om 'n persentasie te kry.",
+        "Skuif die desimale komma twee plekke na regs."
+      ],
+      "explanation": "{d}×100={ans}, dus is dit {ans}%."
+    },
+    "decTimes": {
+      "prompt": "Vind die waarde van $ {a} \\times {b} $.",
+      "hints": [
+        "Ignoreer die desimale komma en vermenigvuldig soos heelgetalle.",
+        "Plaas daarna die desimale komma terug, met soveel desimale plekke as wat die faktore saam gehad het."
+      ],
+      "explanation": "{a}×{b}={ans}."
+    },
+    "defInt": {
+      "prompt": "Wat is die waarde van $\\int_{0}^{{b}} ({fx})\\,dx$? (slegs syfers)",
+      "hints": [
+        "Vind die primitiewe funksie en bereken dan (waarde by die boonste grens) - (waarde by die onderste grens).",
+        "$\\int x\\,dx=\\frac{x^2}{2}$ en $\\int c\\,dx=cx$."
+      ],
+      "explanation": "Deur x={b} in die primitiewe funksie ${anti}$ te plaas, kry ons {ans}."
+    },
+    "derivAt": {
+      "prompt": "As $f(x)={poly}$, wat is $f'({a})$? (slegs syfers)",
+      "hints": [
+        "$(x^n)'=nx^{n-1}$.",
+        "Vind die afgeleide en plaas dan {a} in die plek van x."
+      ],
+      "explanation": "$f'(x)={deriv}$, dus $f'({a})={ans}$."
+    },
+    "derivVal": {
+      "prompt": "As $f(x)={f}$, wat is $f'({a})$?",
+      "hints": [
+        "Vir 'n saamgestelde funksie, differensieer die buitenste funksie en vermenigvuldig met die afgeleide van die binneste; vir 'n kwosiënt, $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$.",
+        "Gebruik $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ en $(\\cos x)'=-\\sin x$."
+      ],
+      "explanation": "{steps}."
+    },
+    "diameter": {
+      "prompt": "Die radius van 'n sirkel is {r} cm. Hoeveel cm is sy deursnee? (cm)",
+      "hints": [
+        "Die deursnee is twee keer die radius.",
+        "Vermenigvuldig die radius met 2."
+      ],
+      "explanation": "{r}×2={ans}, dus is die deursnee {ans} cm."
+    },
+    "directConst": {
+      "prompt": "Die grafiek van die direkte eweredigheid y=ax gaan deur die punt ({x1}, {y1}). Wat is a?",
+      "hints": [
+        "Vervang die punt in y=ax.",
+        "a=y÷x."
+      ],
+      "explanation": "a={y1}÷{x1}={ans}."
+    },
+    "discount": {
+      "prompt": "'n Artikel kos {p} won en word teen {d}% afslag verkoop. Wat is die verkoopprys? (won)",
+      "hints": [
+        "Die afslag is prys × {d}%.",
+        "Trek die afslag van die prys af."
+      ],
+      "explanation": "{p}-{p}×{dr}={ans}, dus {ans} won."
+    },
+    "dist2": {
+      "prompt": "Wat is die afstand tussen die punte A({x1}, {y1}) en B({x2}, {y2})? (slegs syfers)",
+      "hints": [
+        "Die afstand is $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+        "Kwadreer die verskil van die x-koördinate en van die y-koördinate en tel dit dan op."
+      ],
+      "explanation": "$\\sqrt{{dx}^2+{dy}^2}={ans}$."
+    },
+    "divide": {
+      "prompt": "Vind die waarde van $ {a} \\div {b} $.",
+      "hints": [
+        "Gebruik die deler se maaltafel agteruit.",
+        "Vind watter getal maal {b} vir jou {a} gee."
+      ],
+      "explanation": "{a}÷{b}={ans}."
+    },
+    "divisorCount": {
+      "prompt": "Hoeveel delers het {n}?",
+      "hints": [
+        "Vind elke getal wat presies in {n} deel.",
+        "Kontroleer vanaf die kleinste opwaarts."
+      ],
+      "explanation": "Die delers van {n} is {list}: daar is {ans}."
+    },
+    "equilibrium": {
+      "prompt": "Die vraagkromme $p={a}-{b}q$ en die aanbodkromme $p={c}+{d}q$ sny by die ewewigshoeveelheid q. Wat is q?",
+      "hints": [
+        "By ewewig is die vraagprys gelyk aan die aanbodprys.",
+        "Los $a-bq=c+dq$ op."
+      ],
+      "explanation": "${a}-{b}q={c}+{d}q$ gee q={ans}."
+    },
+    "expMul": {
+      "prompt": "Watter getal kom in die blokkie in $x^{{a}} \\times x^{{b}} = x^{\\square}$? (slegs syfers)",
+      "hints": [
+        "Wanneer die grondtalle gelyk is, tel die eksponente op.",
+        "Bereken {a}+{b}."
+      ],
+      "explanation": "{a}+{b}={ans}, dus □={ans}."
+    },
+    "expPow": {
+      "prompt": "Watter getal kom in die blokkie in $(x^{{a}})^{{b}} = x^{\\square}$? (slegs syfers)",
+      "hints": [
+        "By 'n mag van 'n mag vermenigvuldig jy die eksponente.",
+        "Bereken {a}×{b}."
+      ],
+      "explanation": "{a}×{b}={ans}, dus □={ans}."
+    },
+    "expandPQ": {
+      "prompt": "As $({fa})({fb}) = x^2+px+q$, wat is $p+q$? (slegs syfers)",
+      "hints": [
+        "Gebruik $(x+a)(x+b)=x^2+(a+b)x+ab$.",
+        "p is die som van die twee getalle en q is hul produk."
+      ],
+      "explanation": "p={p} en q={q}, dus p+q={ans}."
+    },
+    "expandSquare": {
+      "prompt": "As $({e})^2 = x^2+px+q$, wat is $p+q$? (slegs syfers)",
+      "hints": [
+        "Gebruik $(x+a)^2=x^2+2ax+a^2$.",
+        "p is 2a en q is a²."
+      ],
+      "explanation": "p={p} en q={q}, dus p+q={ans}."
+    },
+    "exprValue": {
+      "prompt": "Wanneer $x={x}$, wat is die waarde van ${expr}$?",
+      "hints": [
+        "Plaas die gegewe getal in die plek van x.",
+        "Vermenigvuldig eers en tel dan op of trek af."
+      ],
+      "explanation": "Deur x={x} te vervang, kry ons ${expr}={ans}$."
+    },
+    "factorDiff": {
+      "prompt": "Wanneer ${poly}$ as $(x+m)(x+n)$ gefaktoriseer word, wat is die verskil tussen m en n (groter minus kleiner)? (slegs syfers)",
+      "hints": [
+        "Vind twee getalle waarvan die som die koëffisiënt van x is en die produk die konstante term is.",
+        "Nadat jy hulle gevind het, trek die kleiner van die groter af."
+      ],
+      "explanation": "${poly}=({fm})({fn})$, dus is die twee getalle {m} en {n}, en die verskil is {ans}."
+    },
+    "factorExp": {
+      "prompt": "${n}$ se priemfaktorontbinding is $2^a\\times3^b$. Wat is $a+b$?",
+      "hints": [
+        "Deel {n} so lank moontlik deur 2.",
+        "Deel dan wat oorbly deur 3."
+      ],
+      "explanation": "${n}=2^{a}\\times3^{b}$, dus $a+b={ans}$."
+    },
+    "focusX": {
+      "prompt": "Wat is die $x$-koördinaat van die brandpunt van die parabool $y^2={c}x$? (slegs syfers)",
+      "hints": [
+        "Die brandpunt van $y^2=4px$ is $(p,\\ 0)$.",
+        "Vind p uit {c}=4p."
+      ],
+      "explanation": "4p={c}, dus p={ans}."
+    },
+    "fracAdd": {
+      "prompt": "Vind die waarde van $\\frac{{a}}{{b}} + \\frac{{c}}{{d}}$. ('n desimaal is aanvaarbaar, of 'n breuk soos 3/4)",
+      "hints": [
+        "Herskryf die breuke met 'n gemene noemer.",
+        "Tel die tellers op."
+      ],
+      "explanation": "$\\frac{{a}}{{b}}+\\frac{{c}}{{d}}=\\frac{{num}}{{den}}$."
+    },
+    "fracDivInt": {
+      "prompt": "Vind die waarde van $\\frac{{a}}{{b}} \\div {c}$. ('n desimaal is aanvaarbaar, of 'n breuk soos 3/4)",
+      "hints": [
+        "Om 'n breuk deur 'n heelgetal te deel, vermenigvuldig jy sy noemer met daardie getal.",
+        "Vereenvoudig ná berekening."
+      ],
+      "explanation": "$\\frac{{a}}{{b}}\\div{c}=\\frac{{num}}{{den}}$."
+    },
+    "fracToDec": {
+      "prompt": "Skryf die breuk $\\frac{{a}}{{b}}$ as 'n desimaal. (skryf 'n desimaal)",
+      "hints": [
+        "Herskryf die breuk sodat die noemer 10 of 100 is.",
+        "Of deel die teller deur die noemer."
+      ],
+      "explanation": "$\\frac{{a}}{{b}}={ans}$."
+    },
+    "funcValue": {
+      "prompt": "Vir die lineêre funksie $f(x)={a}x+{b}$, wat is $f({c})$?",
+      "hints": [
+        "Plaas {c} in die plek van x.",
+        "Vermenigvuldig en tel dan op."
+      ],
+      "explanation": "$f({c})={a}\\times{c}+{b}={ans}$."
+    },
+    "gcd": {
+      "prompt": "Wat is die grootste gemene deler van {a} en {b}?",
+      "hints": [
+        "Vind die delers wat die twee getalle deel.",
+        "Die grootste daarvan is die grootste gemene deler."
+      ],
+      "explanation": "Die grootste gemene deler van {a} en {b} is {ans}."
+    },
+    "geoRatio": {
+      "prompt": "'n Meetkundige ry het eerste term {a} en derde term {c}. Wat is die gemene verhouding? (positief, slegs syfers)",
+      "hints": [
+        "Die derde term is die eerste term twee keer met die verhouding vermenigvuldig.",
+        "Vind uit $ar^2=c$ die waarde van $r^2$."
+      ],
+      "explanation": "Uit {a}×r²={c} kry ons r²={sq}, dus is die gemene verhouding {ans}."
+    },
+    "geoSeries": {
+      "prompt": "Wat is die som van die oneindige meetkundige reeks met eerste term {a} en gemene verhouding ${rtex}$? ('n desimaal is aanvaarbaar, of 'n breuk soos 3/4)",
+      "hints": [
+        "Die som bestaan wanneer die absolute waarde van die verhouding kleiner as 1 is.",
+        "Die som is (eerste term) ÷ (1 - verhouding)."
+      ],
+      "explanation": "{a}÷(1-${rtex}$)=${res}$."
+    },
+    "geoTerm": {
+      "prompt": "Wat is term nommer {n} van die meetkundige ry met eerste term {a} en gemene verhouding {r}? (slegs syfers)",
+      "hints": [
+        "Die algemene term is $a_n=ar^{n-1}$.",
+        "Vermenigvuldig (n-1) keer met die gemene verhouding."
+      ],
+      "explanation": "{a} maal {r} tot die mag ({n}-1) is {ans}."
+    },
+    "groups": {
+      "prompt": "Daar is {a} in elke bondel en {b} bondels. Hoeveel is daar altesaam? (slegs syfers)",
+      "hints": [
+        "Gelyke groepe kan met vermenigvuldiging getel word.",
+        "Dit is dieselfde as om {a} altesaam {b} keer op te tel."
+      ],
+      "explanation": "{a}×{b}={ans}, dus is daar {ans}."
+    },
+    "hundredsDigit": {
+      "prompt": "Wat is die syfer in die honderdeplek van ${n}$? (slegs syfers)",
+      "hints": [
+        "Dit is die derde syfer van regs af.",
+        "In 'n driesyfergetal is dit die eerste syfer."
+      ],
+      "explanation": "Die honderdesyfer van {n} is {ans}."
+    },
+    "hypot": {
+      "prompt": "Die twee sye langs die regte hoek van 'n reghoekige driehoek is {a} cm en {b} cm. Hoe lank is die langste sy in cm? (cm)",
+      "hints": [
+        "Stelling van Pythagoras: (skuinssy)² = (een sy)² + (ander sy)².",
+        "Kwadreer albei sye, tel op en neem dan die vierkantswortel."
+      ],
+      "explanation": "${a}^2+{b}^2={sq}$, dus is die langste sy {ans} cm."
+    },
+    "ineqCount": {
+      "prompt": "Hoeveel heelgetalle $x$ voldoen aan die kwadratiese ongelykheid ${eq}<0$? (slegs syfers)",
+      "hints": [
+        "Faktoriseer die linkerkant om die twee wortels te vind.",
+        "Tel die heelgetalle tussen die wortels; die wortels self is uitgesluit."
+      ],
+      "explanation": "Uit ${fact}<0$ kry ons {r1}<x<{r2}, dus is daar {ans} heelgetalle."
+    },
+    "ineqMax": {
+      "prompt": "Wat is die grootste heelgetal $x$ wat aan $x+{a} < {b}$ voldoen? (slegs syfers)",
+      "hints": [
+        "Trek dieselfde getal aan albei kante af om die gebied van x te vind.",
+        "x moet kleiner as jou berekende waarde wees; daardie waarde self is uitgesluit."
+      ],
+      "explanation": "x<{bound}, dus is die grootste heelgetal {ans}."
+    },
+    "intAdd": {
+      "prompt": "Bereken $({a})+({b})$.",
+      "hints": [
+        "Dieselfde tekens: tel die absolute waardes op en behou die teken.",
+        "Verskillende tekens: trek die kleiner absolute waarde van die groter af en gebruik die teken van die oorspronklike getal met die groter absolute waarde."
+      ],
+      "explanation": "$({a})+({b})={ans}$."
+    },
+    "intDiv": {
+      "prompt": "Bereken $({a})\\div({b})$.",
+      "hints": [
+        "Dieselfde tekens gee 'n positiewe resultaat, verskillende tekens 'n negatiewe een.",
+        "Deel die absolute waardes."
+      ],
+      "explanation": "$({a})\\div({b})={ans}$."
+    },
+    "intMul": {
+      "prompt": "Bereken $({a})\\times({b})$.",
+      "hints": [
+        "Dieselfde tekens gee 'n positiewe resultaat, verskillende tekens 'n negatiewe een.",
+        "Vermenigvuldig die absolute waardes."
+      ],
+      "explanation": "$({a})\\times({b})={ans}$."
+    },
+    "intSub": {
+      "prompt": "Bereken $({a})-({b})$.",
+      "hints": [
+        "Aftrekking is optelling van die teenoorgestelde getal.",
+        "Herskryf dit as $({a})+({nb})$."
+      ],
+      "explanation": "$({a})-({b})=({a})+({nb})={ans}$."
+    },
+    "inverseConst": {
+      "prompt": "Die grafiek van die omgekeerde eweredigheid $y=\\frac{a}{x}$ gaan deur ({x1}, {y1}). Wat is a?",
+      "hints": [
+        "Vervang die punt in $y=\\frac{a}{x}$.",
+        "a=x×y."
+      ],
+      "explanation": "a={x1}×{y1}={ans}."
+    },
+    "inverseVal": {
+      "prompt": "As $f^{-1}$ die inverse funksie van $f(x)={f}$ is, wat is $f^{-1}({y})$?",
+      "hints": [
+        "$f^{-1}(y)=x$ beteken dieselfde as $f(x)=y$.",
+        "Vind die waarde van x wat aan $f(x)={y}$ voldoen."
+      ],
+      "explanation": "{steps}, dus $f^{-1}({y})={ans}$."
+    },
+    "isoApex": {
+      "prompt": "Een basishoek van 'n gelykbenige driehoek is {b}°. Hoeveel grade is die tophoek? (grade)",
+      "hints": [
+        "Die twee basishoeke van 'n gelykbenige driehoek is gelyk.",
+        "Trek albei basishoeke af van 180°, die som van 'n driehoek se hoeke."
+      ],
+      "explanation": "180-{b}×2={ans}, dus is die tophoek {ans}°."
+    },
+    "kmToM": {
+      "prompt": "Hoeveel meter is {v} km? (slegs syfers)",
+      "hints": [
+        "1 km is 1000 m.",
+        "Vermenigvuldig {v} met 1000."
+      ],
+      "explanation": "{v}×1000={ans}, dus is dit {ans} m."
+    },
+    "lToMl": {
+      "prompt": "Hoeveel milliliter is {v} L? (slegs syfers)",
+      "hints": [
+        "1 L is 1000 mL.",
+        "Vermenigvuldig {v} met 1000."
+      ],
+      "explanation": "{v}×1000={ans}, dus is dit {ans} mL."
+    },
+    "lcm": {
+      "prompt": "Wat is die kleinste gemene veelvoud van {a} en {b}?",
+      "hints": [
+        "Lys die veelvoude wat albei getalle deel, kleinste eerste.",
+        "Die kleinste gedeelde veelvoud is die kleinste gemene veelvoud."
+      ],
+      "explanation": "Die kleinste gemene veelvoud van {a} en {b} is {ans}."
+    },
+    "lessBy": {
+      "prompt": "Watter getal is {k} minder as {n}? (slegs syfers)",
+      "hints": [
+        "Dit is dieselfde as om in spronge van {k} af te tel.",
+        "Net die syfer in een plek verander."
+      ],
+      "explanation": "{n}-{k}={ans}."
+    },
+    "limFactor": {
+      "prompt": "Wat is die waarde van $\\lim_{x\\to {a}}\\frac{x^2-{sq}}{{den}}$? (slegs syfers)",
+      "hints": [
+        "Die teller faktoriseer as $(x-a)(x+a)$.",
+        "Kanselleer en plaas dan die limietwaarde in die plek van x."
+      ],
+      "explanation": "Nadat die teller gefaktoriseer en gekanselleer is, gee x={a} die waarde {ans}."
+    },
+    "limLinear": {
+      "prompt": "Wat is die waarde van $\\lim_{x\\to {a}}({f})$? (slegs syfers)",
+      "hints": [
+        "Vir 'n polinoom is die limiet gelyk aan die funksiewaarde.",
+        "Plaas {a} in die plek van x."
+      ],
+      "explanation": "Deur x={a} te vervang, kry ons {ans}."
+    },
+    "logAdd": {
+      "prompt": "Wat is die waarde van $\\log_{{b}} {m} + \\log_{{b}} {n}$? (slegs syfers)",
+      "hints": [
+        "$\\log_b m+\\log_b n=\\log_b mn$.",
+        "Vind eers die produk {m}×{n}."
+      ],
+      "explanation": "$\\log_{{b}} ({m}\\times{n})=\\log_{{b}} {prod}={ans}$."
+    },
+    "logVal": {
+      "prompt": "Wat is die waarde van $\\log_{{b}} {n}$? (slegs syfers)",
+      "hints": [
+        "$\\log_b n=k$ beteken $b^k=n$.",
+        "Tel hoeveel keer jy {b} vermenigvuldig om {n} te kry."
+      ],
+      "explanation": "${b}^{{ans}}={n}$, dus is die antwoord {ans}."
+    },
+    "makeTen": {
+      "prompt": "Watter getal by {a} getel, maak 10? (slegs syfers)",
+      "hints": [
+        "Trek {a} van 10 af.",
+        "Dink aan jou tien vingers."
+      ],
+      "explanation": "{a}+{ans}=10, dus is die antwoord {ans}."
+    },
+    "matEntry": {
+      "prompt": "Vir {mats}, wat is die ({r}, {c})-inskrywing van {expr}?",
+      "hints": [
+        "Optelling, aftrekking en skalaarveelvoude van matrikse werk inskrywing vir inskrywing op dieselfde posisie.",
+        "Die (i, j)-inskrywing van die produk $AB$ is die som van die produkte van ry i van $A$ en kolom j van $B$, in volgorde."
+      ],
+      "explanation": "{steps}, dus is die antwoord {ans}."
+    },
+    "maxOf": {
+      "prompt": "Watter is die grootste van {list}? (slegs syfers)",
+      "hints": [
+        "Vergelyk die getalle een vir een.",
+        "Vind die getal wat die meeste voorstel."
+      ],
+      "explanation": "Die grootste van {list} is {ans}."
+    },
+    "mean": {
+      "prompt": "Wat is die gemiddelde van hierdie getalle? {list}",
+      "hints": [
+        "Die gemiddelde is (som van alles) ÷ (aantal).",
+        "Tel eers alles op."
+      ],
+      "explanation": "({sum})÷{n}={ans}, dus is die gemiddelde {ans}."
+    },
+    "meanSum": {
+      "prompt": "Die gemiddelde van {n} getalle is {m}. Wat is die som van hierdie {n} getalle? (slegs syfers)",
+      "hints": [
+        "gemiddelde = som ÷ aantal.",
+        "Dus som = gemiddelde × aantal."
+      ],
+      "explanation": "{m}×{n}={ans}."
+    },
+    "median": {
+      "prompt": "Wat is die mediaan van die data {list}?",
+      "hints": [
+        "Rangskik die data volgens grootte.",
+        "Die middelste waarde is die mediaan; by 'n ewe aantal gebruik jy die gemiddelde van die middelste twee."
+      ],
+      "explanation": "In volgorde: {sorted}, dus is die mediaan {ans}."
+    },
+    "minOf": {
+      "prompt": "Watter is die kleinste van {list}? (slegs syfers)",
+      "hints": [
+        "Vergelyk die getalle een vir een.",
+        "Vind die getal wat die minste voorstel."
+      ],
+      "explanation": "Die kleinste van {list} is {ans}."
+    },
+    "minus": {
+      "prompt": "Vind die waarde van $ {a} - {b} $.",
+      "hints": [
+        "Trek die syfers in dieselfde plek af.",
+        "Wanneer jy nie kan aftrek nie, leen 10 van die volgende plek."
+      ],
+      "explanation": "{a}-{b}={ans}."
+    },
+    "missAdd": {
+      "prompt": "Watter getal kom in die blokkie in $\\square + {b} = {c}$? (slegs syfers)",
+      "hints": [
+        "Trek die bekende getal van die totaal af om □ te vind.",
+        "Bereken {c}-{b}."
+      ],
+      "explanation": "{c}-{b}={ans}, dus □={ans}."
+    },
+    "missSub": {
+      "prompt": "Watter getal kom in die blokkie in $ {a} - \\square = {c}$? (slegs syfers)",
+      "hints": [
+        "Trek die resultaat van die eerste getal af om □ te vind.",
+        "Bereken {a}-{c}."
+      ],
+      "explanation": "{a}-{c}={ans}, dus □={ans}."
+    },
+    "mixedCalc": {
+      "prompt": "Werk dit uit: {expr}",
+      "hints": [
+        "Doen eers wat binne die hakies is.",
+        "Daarna vermenigvuldiging en deling voor optelling en aftrekking, van links na regs."
+      ],
+      "explanation": "{steps}, dus is die antwoord {ans}."
+    },
+    "mode": {
+      "prompt": "Wat is die modus van die data {list}?",
+      "hints": [
+        "Die modus is die waarde wat die meeste voorkom.",
+        "Tel hoeveel keer elke waarde voorkom."
+      ],
+      "explanation": "{ans} kom die meeste voor, dus is die modus {ans}."
+    },
+    "moreBy": {
+      "prompt": "Watter getal is {k} meer as {n}? (slegs syfers)",
+      "hints": [
+        "Dit is dieselfde as om in spronge van {k} op te tel.",
+        "Net die syfer in een plek verander."
+      ],
+      "explanation": "{n}+{k}={ans}."
+    },
+    "nextNum": {
+      "prompt": "Watter getal kom direk ná {n}? (slegs syfers)",
+      "hints": [
+        "Tel die getalle in volgorde.",
+        "Tel een meer vanaf {n}."
+      ],
+      "explanation": "Die getal direk ná {n} is {ans}."
+    },
+    "onesDigit": {
+      "prompt": "Wat is die syfer in die eneplek van ${n}$? (slegs syfers)",
+      "hints": [
+        "Dit is die syfer heel regs.",
+        "Die eneplek wys die enkele eenhede."
+      ],
+      "explanation": "Die enesyfer van {n} is {ans}."
+    },
+    "percentChange": {
+      "prompt": "'n Waarde het van {a} na {b} verander. Met watter persentasie het dit toegeneem? (%)",
+      "hints": [
+        "Toenamekoers = (toename) ÷ (eerste waarde) × 100.",
+        "Die toename is {b}-{a}."
+      ],
+      "explanation": "({b}-{a})÷{a}×100={ans}, dus {ans}%."
+    },
+    "permNP": {
+      "prompt": "Op hoeveel maniere kan jy {r} uit {n} verskillende mense kies en in 'n ry plaas? (slegs syfers)",
+      "hints": [
+        "Volgorde maak saak, dus is dit 'n permutasie.",
+        "Begin by {n} en vermenigvuldig {r} getalle terwyl jy aftel."
+      ],
+      "explanation": "{calc}={ans}, dus is daar {ans} maniere."
+    },
+    "permSame": {
+      "prompt": "Op hoeveel maniere kan al die letters van {word} in 'n ry gerangskik word?",
+      "hints": [
+        "By herhaalde letters, deel die fakulteit van die totale aantal letters deur die fakulteit van elke herhalingstelling.",
+        "Tel hoeveel keer elke letter voorkom."
+      ],
+      "explanation": "{calc}={ans} maniere."
+    },
+    "pieCount": {
+      "prompt": "In die sirkelgrafiek is A {p}% van die geheel. Die geheel is {t} mense. Hoeveel is A?",
+      "hints": [
+        "{p}% is $\\frac{p}{100}$.",
+        "Vermenigvuldig die geheel met die verhouding."
+      ],
+      "explanation": "{t}×{p}÷100={ans}, dus {ans} mense."
+    },
+    "plus": {
+      "prompt": "Vind die waarde van $ {a} + {b} $.",
+      "hints": [
+        "Tel die syfers in dieselfde plek op.",
+        "Wanneer 'n plek 10 of meer gee, dra oor na die volgende plek."
+      ],
+      "explanation": "{a}+{b}={ans}."
+    },
+    "pmAverage": {
+      "prompt": "Oor 5 dae was die fynstofkonsentrasies {list} (µg/m³). Wat is die gemiddelde konsentrasie?",
+      "hints": [
+        "Die gemiddelde is (som) ÷ (aantal dae).",
+        "Tel eers die 5 waardes op."
+      ],
+      "explanation": "({sum})÷5={ans}, dus is die gemiddelde {ans}."
+    },
+    "prevNum": {
+      "prompt": "Watter getal kom direk voor {n}? (slegs syfers)",
+      "hints": [
+        "Tel agteruit.",
+        "Tel een minder vanaf {n}."
+      ],
+      "explanation": "Die getal direk voor {n} is {ans}."
+    },
+    "probAdd": {
+      "prompt": "Vir twee gebeurtenisse A en B is $P(A)={pa}$, $P(B)={pb}$ en $P(A\\cap B)={pab}$. Wat is $P(A\\cup B)$?",
+      "hints": [
+        "Gebruik die optelreël $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$.",
+        "Vervang die gegewe waardes een vir een."
+      ],
+      "explanation": "{pa}+{pb}-{pab}={ans}."
+    },
+    "probComplement": {
+      "prompt": "Die waarskynlikheid van gebeurtenis A is $P(A)={pa}$. Wat is die waarskynlikheid van die komplement, $P(A^c)$?",
+      "hints": [
+        "Die komplement het waarskynlikheid $1-P(A)$.",
+        "Trek $P(A)$ van 1 af."
+      ],
+      "explanation": "1-{pa}={ans}."
+    },
+    "propX": {
+      "prompt": "Watter getal kom in die blokkie in die eweredigheid ${a} : {b} = \\square : {d}$? (slegs syfers)",
+      "hints": [
+        "In 'n eweredigheid is die produk van die buiteterme gelyk aan die produk van die binneterme.",
+        "Los □ × {b} = {a} × {d} op."
+      ],
+      "explanation": "□×{b}={a}×{d}, dus □={ans}."
+    },
+    "qfuncValue": {
+      "prompt": "Vir die kwadratiese funksie $y={expr}$, wat is $y$ wanneer $x={x}$? (slegs syfers)",
+      "hints": [
+        "Plaas die gegewe waarde in die plek van x.",
+        "Bereken eers die kwadraat."
+      ],
+      "explanation": "Deur x={x} te vervang, kry ons y={ans}."
+    },
+    "quadDisc": {
+      "prompt": "Wat is die waarde van die diskriminant $D=b^2-4ac$ van die kwadratiese vergelyking ${eq}=0$? (slegs syfers)",
+      "hints": [
+        "Die diskriminant van $ax^2+bx+c=0$ is $D=b^2-4ac$.",
+        "Let op die tekens van a, b en c."
+      ],
+      "explanation": "a={a}, b={b}, c={c}, dus D=({b})²-4×({a})×({c})={ans}."
+    },
+    "quadFourth": {
+      "prompt": "Drie hoeke van 'n vierhoek is {a}°, {b}° en {c}°. Hoeveel grade is die vierde hoek? (grade)",
+      "hints": [
+        "Die vier hoeke van 'n vierhoek tel op tot 360°.",
+        "Trek die drie bekende hoeke van 360 af."
+      ],
+      "explanation": "360-{a}-{b}-{c}={ans}, dus is dit {ans}°."
+    },
+    "quadRoot": {
+      "prompt": "Watter is die grootste van die twee wortels van ${eq}$? (slegs syfers)",
+      "hints": [
+        "Faktoriseer die linkerkant.",
+        "Die wortels is die waardes van x wat 'n faktor nul maak."
+      ],
+      "explanation": "Uit ${fact}$ is die wortels {roots}, dus is die grootste wortel {ans}."
+    },
+    "radDeg": {
+      "prompt": "Skryf $\\theta=\\dfrac{{num}}{{d}}$ (radiale) in grade. (slegs syfers)",
+      "hints": [
+        "$\\pi$ radiale is 180°.",
+        "Plaas 180° in die plek van $\\pi$."
+      ],
+      "explanation": "Deur $\\pi=180^\\circ$ te vervang, kry ons {ans}°."
+    },
+    "ratioPct": {
+      "prompt": "Skryf $\\frac{{a}}{{b}}$ as 'n persentasie. (slegs syfers)",
+      "hints": [
+        "'n Persentasie is die verhouding vermenigvuldig met 100.",
+        "Jy kan ook die breuk met noemer 100 herskryf."
+      ],
+      "explanation": "$\\frac{{a}}{{b}}\\times100={ans}$, dus is dit {ans}%."
+    },
+    "rectArea": {
+      "prompt": "'n Reghoek is {w} cm breed en {h} cm hoog. Wat is sy oppervlakte in cm²? (slegs syfers)",
+      "hints": [
+        "Die oppervlakte van 'n reghoek is breedte × hoogte.",
+        "Vermenigvuldig die twee sylengtes."
+      ],
+      "explanation": "{w}×{h}={ans}, dus is die oppervlakte {ans} cm²."
+    },
+    "rectPerim": {
+      "prompt": "'n Reghoek is {w} cm breed en {h} cm hoog. Hoe lank is sy omtrek in cm? (cm)",
+      "hints": [
+        "Die omtrek is die som van die vier sye.",
+        "Jy kan (breedte + hoogte) × 2 gebruik."
+      ],
+      "explanation": "({w}+{h})×2={ans}, dus is die omtrek {ans} cm."
+    },
+    "relFreq": {
+      "prompt": "Die totale frekwensie is {t} en een klas se frekwensie is {f}. Wat is daardie klas se relatiewe frekwensie? (desimaal)",
+      "hints": [
+        "Relatiewe frekwensie = (klasfrekwensie) ÷ (totale frekwensie).",
+        "Skryf die resultaat as 'n desimaal."
+      ],
+      "explanation": "{f}÷{t}={ans}, dus is die relatiewe frekwensie {ans}."
+    },
+    "remainder": {
+      "prompt": "Wat is die res wanneer $P(x)={poly}$ deur ${div}$ gedeel word? (slegs syfers)",
+      "hints": [
+        "Resstelling: die res van P(x) gedeel deur x-a is P(a).",
+        "Plaas a in die plek van x en bereken."
+      ],
+      "explanation": "Volgens die resstelling is P({a})={ans}."
+    },
+    "repComb": {
+      "prompt": "Op hoeveel maniere kan jy {r} items uit {n} verskillende soorte kies, met herhaling toegelaat?",
+      "hints": [
+        "Met n soorte en r gekose items is die aantal gelyk aan die aantal maniere om r uit n+r−1 te kies.",
+        "Vervang die aantal soorte en die aantal items."
+      ],
+      "explanation": "{calc}={ans}."
+    },
+    "repPerm": {
+      "prompt": "Op hoeveel maniere kan jy {r} items uit {n} verskillende items kies, met herhaling toegelaat, en in 'n ry rangskik?",
+      "hints": [
+        "Gebruik vir elke plek een faktor gelyk aan die aantal keuses en vermenigvuldig al die faktore.",
+        "Elke plek kan op {n} maniere gevul word."
+      ],
+      "explanation": "{prod}={ans} maniere."
+    },
+    "rootMax": {
+      "prompt": "Wat is die grootste reële wortel van {eq}?",
+      "hints": [
+        "Faktoriseer dit in 'n produk van faktore. Sintetiese deling kan 'n eerste wortel vind.",
+        "Die wortels is die waardes van x wat 'n faktor nul maak."
+      ],
+      "explanation": "{fact}, dus is die reële wortels {roots} en die grootste is {ans}."
+    },
+    "rootSum": {
+      "prompt": "Wat is die som van al die reële wortels van {eq}?",
+      "hints": [
+        "Faktoriseer dit in 'n produk van faktore. Sintetiese deling kan 'n eerste wortel vind.",
+        "Die wortels is die waardes van x wat 'n faktor nul maak."
+      ],
+      "explanation": "{fact}, dus is die reële wortels {roots} en hul som is {ans}."
+    },
+    "roundTo": {
+      "prompt": "Met “{mode}”, wat is {n} in eenhede van {u}?",
+      "hints": [
+        "Kyk na die syfers onder die {u}-plek.",
+        "Opwaartse afronding verhoog altyd, afwaartse afronding laat altyd weg, en afronding tot die naaste verhoog net wanneer die syfer 5 of meer is."
+      ],
+      "explanation": "Met “{mode}” word {n} gelyk aan {ans} in eenhede van {u}."
+    },
+    "seqNext": {
+      "prompt": "Vind die reël en skryf die ontbrekende getal: ${list}, \\square$",
+      "hints": [
+        "Vind die verskil tussen aangrensende getalle.",
+        "Die getalle neem elke stap met dieselfde hoeveelheid toe of af."
+      ],
+      "explanation": "Die verskil tussen bure is {d}, dus □={ans}."
+    },
+    "setCount": {
+      "prompt": "As $n(A)={na}$, $n(B)={nb}$ en $n(A\\cap B)={nab}$, wat is $n(A\\cup B)$?",
+      "hints": [
+        "Gebruik $n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$.",
+        "Vervang die gegewe waardes een vir een."
+      ],
+      "explanation": "{na}+{nb}-{nab}={ans}."
+    },
+    "sigmaSum": {
+      "prompt": "Vind die waarde van hierdie som: {expr}",
+      "hints": [
+        "Die ∑-teken beteken: vervang k=1, 2, 3, … om die beurt en tel alles op.",
+        "Jy kan ook die reëls $\\sum k=\\frac{n(n+1)}{2}$ en $\\sum c=cn$ gebruik."
+      ],
+      "explanation": "{steps}, dus is die som {ans}."
+    },
+    "simpleInterest": {
+      "prompt": "{p} won word vir {n} jaar teen {r}% enkelvoudige rente per jaar belê. Hoeveel rente is dit? (won)",
+      "hints": [
+        "Enkelvoudige rente = hoofsom × koers × jare.",
+        "{r}% is {rr}."
+      ],
+      "explanation": "{p}×{rr}×{n}={ans}, dus is die rente {ans} won."
+    },
+    "slope2": {
+      "prompt": "Wat is die helling van die lyn deur die punte $({x1},\\,{y1})$ en $({x2},\\,{y2})$? (slegs syfers)",
+      "hints": [
+        "Die helling is (verandering in y) ÷ (verandering in x).",
+        "Deel die verskil van die y-koördinate deur die verskil van die x-koördinate."
+      ],
+      "explanation": "$\\frac{{y2}-({y1})}{{x2}-({x1})}={ans}$."
+    },
+    "slopeOf": {
+      "prompt": "Wat is die helling van die lineêre funksie $y={a}x+{b}$?",
+      "hints": [
+        "In $y=ax+b$ is die helling a.",
+        "Lees die koëffisiënt van x."
+      ],
+      "explanation": "Die helling is {ans}."
+    },
+    "solveLin": {
+      "prompt": "Los die lineêre vergelyking ${eq}$ op (vind x).",
+      "hints": [
+        "Tel dieselfde getal aan albei kante by of trek dit af om die x-term alleen te laat.",
+        "Deel dan albei kante deur die getal voor x."
+      ],
+      "explanation": "Uit ${eq}$ kry ons x={ans}."
+    },
+    "sqrtProd": {
+      "prompt": "Wat is die waarde van $\\sqrt{{a}} \\times \\sqrt{{b}}$? (slegs syfers)",
+      "hints": [
+        "$\\sqrt{a}\\times\\sqrt{b}=\\sqrt{ab}$.",
+        "Kontroleer of die produk 'n vierkantsgetal is."
+      ],
+      "explanation": "$\\sqrt{{a}\\times{b}}=\\sqrt{{prod}}={ans}$."
+    },
+    "sqrtVal": {
+      "prompt": "Wat is die waarde van $\\sqrt{{n}}$? (slegs syfers)",
+      "hints": [
+        "Vind die positiewe getal waarvan die kwadraat {n} is.",
+        "Dink aan die maaltafel."
+      ],
+      "explanation": "${ans}^2={n}$, dus $\\sqrt{{n}}={ans}$."
+    },
+    "stdev": {
+      "prompt": "Wat is die standaardafwyking van die data {list}? (populasiestandaardafwyking)",
+      "hints": [
+        "Vind eers die gemiddelde.",
+        "Die vierkantswortel van die gemiddelde van gekwadreerde afwykings (die variansie) is die standaardafwyking."
+      ],
+      "explanation": "Die gemiddelde is {mean} en die variansie is {var}, dus is die standaardafwyking {ans}."
+    },
+    "subThree": {
+      "prompt": "Wat is {a}-{b}?",
+      "hints": [
+        "Trek vanaf die eneplek af.",
+        "As jy nie kan aftrek nie, leen van die volgende plek."
+      ],
+      "explanation": "{a}-{b}={ans}."
+    },
+    "subsetCount": {
+      "prompt": "Hoeveel deelversamelings het 'n versameling met {n} elemente?",
+      "hints": [
+        "'n Versameling met n elemente het $2^n$ deelversamelings.",
+        "Dink daaraan om vir elke element te besluit of dit ingesluit word of nie."
+      ],
+      "explanation": "{prod}={ans}, dus is daar {ans} deelversamelings."
+    },
+    "taxTotal": {
+      "prompt": "'n Artikel kos {p} won en {t}% belasting op toegevoegde waarde word bygetel. Hoeveel won moet betaal word? (won)",
+      "hints": [
+        "Die belasting is prys × {t}%.",
+        "Tel die belasting by die prys."
+      ],
+      "explanation": "{p}+{p}×{tr}={ans}, dus {ans} won."
+    },
+    "tensDigit": {
+      "prompt": "Wat is die syfer in die tieneplek van ${n}$? (slegs syfers)",
+      "hints": [
+        "Dit is die tweede syfer van regs af.",
+        "Vind die syfer net links van die eneplek."
+      ],
+      "explanation": "Die tienesyfer van {n} is {ans}."
+    },
+    "times": {
+      "prompt": "Vind die waarde van $ {a} \\times {b} $.",
+      "hints": [
+        "Dink aan die maaltafel of aan gelyke groepe.",
+        "Vir groter getalle, vermenigvuldig plek vir plek en tel die dele op."
+      ],
+      "explanation": "{a}×{b}={ans}."
+    },
+    "triThird": {
+      "prompt": "Twee hoeke van 'n driehoek is {a}° en {b}°. Hoeveel grade is die derde hoek? (grade)",
+      "hints": [
+        "Die drie hoeke van 'n driehoek tel op tot 180°.",
+        "Trek die twee bekende hoeke van 180 af."
+      ],
+      "explanation": "180-{a}-{b}={ans}, dus is dit {ans}°."
+    },
+    "variance": {
+      "prompt": "Wat is die variansie van die data {list}?",
+      "hints": [
+        "Vind die gemiddelde en dan elke afwyking daarvan.",
+        "Die variansie is die gemiddelde van die gekwadreerde afwykings."
+      ],
+      "explanation": "Die gemiddelde is {mean} en die gekwadreerde afwykings tel op tot {sq}, dus is die variansie {sq}÷{n}={ans}."
+    },
+    "vecNorm": {
+      "prompt": "Wat is die grootte $|\\vec{a}|$ van die vektor $\\vec{a}=({x},\\ {y})$? (slegs syfers)",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Kwadreer elke komponent, tel op en neem dan die vierkantswortel."
+      ],
+      "explanation": "$\\sqrt{({x})^2+({y})^2}={ans}$."
+    },
+    "vertexSum": {
+      "prompt": "Die draaipunt van die kwadratiese funksie $y={expr}$ is $(p,\\ q)$. Wat is $p+q$? (slegs syfers)",
+      "hints": [
+        "In $y=a(x-p)^2+q$ is die draaipunt $(p,\\ q)$.",
+        "Let op die teken binne die hakies."
+      ],
+      "explanation": "Die draaipunt is $({p},\\ {q})$, dus p+q={ans}."
+    },
+    "xInt": {
+      "prompt": "Wat is die x-afsnit van $y={a}x+{b}$?",
+      "hints": [
+        "Die x-afsnit is x wanneer y=0.",
+        "Los $0=ax+b$ op."
+      ],
+      "explanation": "$0={a}x+{b}$ gee x={ans}."
+    },
+    "yInt": {
+      "prompt": "Wat is die y-afsnit van $y={a}x+{b}$?",
+      "hints": [
+        "Die y-afsnit is y wanneer x=0.",
+        "In $y=ax+b$ is dit b."
+      ],
+      "explanation": "Die y-afsnit is {ans}."
+    }
+  },
+  "texts": {
+    "rd_down": "afwaartse afronding",
+    "rd_half": "afronding tot die naaste",
+    "rd_up": "opwaartse afronding"
+  }
+}

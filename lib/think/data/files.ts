@@ -1165,4 +1165,25 @@ export const OVERLAY_LOADERS: Record<string, Record<string, () => Promise<Overla
     "pilot-korean": () => import("../i18n/ko/pilot-korean.json").then((m) => m.default as unknown as Overlay),
     "z-k-01": () => import("../i18n/ko/z-k-01.json").then((m) => m.default as unknown as Overlay),
   },
+  "pcm": {
+    "pilot-math": () => import("../i18n/pcm/pilot-math.json").then((m) => m.default as unknown as Overlay),
+  },
+  "tl": {
+    "pilot-math": () => import("../i18n/tl/pilot-math.json").then((m) => m.default as unknown as Overlay),
+  },
+  "ro": {
+    "pilot-math": () => import("../i18n/ro/pilot-math.json").then((m) => m.default as unknown as Overlay),
+  },
+  "fi": {
+    "pilot-math": () => import("../i18n/fi/pilot-math.json").then((m) => m.default as unknown as Overlay),
+  },
+  "cs": {
+    "pilot-math": () => import("../i18n/cs/pilot-math.json").then((m) => m.default as unknown as Overlay),
+  },
+  "hu": {
+    "pilot-math": () => import("../i18n/hu/pilot-math.json").then((m) => m.default as unknown as Overlay),
+  },
+  "af": {
+    "pilot-math": () => import("../i18n/af/pilot-math.json").then((m) => m.default as unknown as Overlay),
+  },
 };

@@ -1,3 +1,4 @@
+import { extendThinkLabels, formatThinkExtra, type CoreThinkLang } from "./expandedUiExtra";
 import data from "./korean-levels.json";
 import { officialGradeOf } from "@/lib/learn/korean-grades";
 import type { ThinkLang } from "./lang";
@@ -17,7 +18,7 @@ export const koreanLevelOf = (taskId: string): KoreanLevel | null => (LEVELS[tas
 export const levelForBand = (band: string): KoreanLevel => (band === "intro" ? 1 : (Math.min(6, Math.max(1, Number(band.slice(6)) || 1)) as KoreanLevel));
 export const priorLevelFor = (grade: string): KoreanLevel => ((officialGradeOf(grade)?.primary as KoreanLevel | undefined) ?? 1);
 
-const NAMES: Record<ThinkLang, string[]> = {
+const CORE_NAMES: Record<CoreThinkLang, string[]> = {
   ko: ["1급 · 초급 1", "2급 · 초급 2", "3급 · 중급 1", "4급 · 중급 2", "5급 · 고급 1", "6급 · 고급 2"],
   en: ["Level 1 · Beginner 1", "Level 2 · Beginner 2", "Level 3 · Intermediate 1", "Level 4 · Intermediate 2", "Level 5 · Advanced 1", "Level 6 · Advanced 2"],
   "zh-Hans": ["1级 · 初级1", "2级 · 初级2", "3级 · 中级1", "4级 · 中级2", "5级 · 高级1", "6级 · 高级2"],
@@ -30,7 +31,7 @@ export const levelName = (n: number, lang: ThinkLang): string => NAMES[lang][n -
 /** From this level on, Korean-subject tasks show their instructions in Korean (the learner's language can be shown beside it): reading the instructions is part of the practice. */
 export const KOREAN_FIRST_LEVEL = 4;
 export const isKoreanFirst = (taskId: string): boolean => (koreanLevelOf(taskId) ?? 0) >= KOREAN_FIRST_LEVEL;
-export const KOREAN_FIRST_TEXT: Record<ThinkLang, { toggle: (name: string) => string; note: string }> = {
+const CORE_KOREAN_FIRST_TEXT: Record<CoreThinkLang, { toggle: (name: string) => string; note: string }> = {
   ko: { toggle: () => "", note: "" },
   en: { toggle: (n) => `Also show ${n}`, note: "From level 4 the instructions are in Korean. You can show your language next to them." },
   "zh-Hans": { toggle: (n) => `同时显示${n}`, note: "从4级开始，指示语为韩语。可以同时显示你的语言。" },
@@ -38,3 +39,6 @@ export const KOREAN_FIRST_TEXT: Record<ThinkLang, { toggle: (name: string) => st
   ja: { toggle: (n) => `${n}も表示`, note: "4級からは指示文が韓国語になります。あなたの言語も一緒に表示できます。" },
   vi: { toggle: (n) => `Hiện kèm ${n}`, note: "Từ cấp 4, phần hướng dẫn hiển thị bằng tiếng Hàn. Bạn có thể bật hiển thị kèm ngôn ngữ của mình." },
 };
+
+const NAMES = extendThinkLabels(CORE_NAMES,p=>p.koreanLevels);
+export const KOREAN_FIRST_TEXT = extendThinkLabels(CORE_KOREAN_FIRST_TEXT,p=>({toggle:(name:string)=>formatThinkExtra(p.koreanFirst.toggle,{name}),note:p.koreanFirst.note}));

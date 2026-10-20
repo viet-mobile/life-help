@@ -21,7 +21,7 @@ export function TaskPlayer({ task, lang, checksOff = false, reviewer, onBack, on
   useEffect(() => { if (finished) onComplete?.(); }, [finished]); // eslint-disable-line react-hooks/exhaustive-deps
   const mark = (id: string, how: "auto" | "surface" | "skipped" | "revealed") => setDone((d) => ({ ...d, [id]: how }));
   return (
-    <main className="mx-auto max-w-3xl px-4 py-6 text-slate-900" data-testid="think-task" data-task={task.id} lang={task.uiLang}>
+    <main className="mx-auto max-w-3xl px-4 py-6 text-slate-900" data-testid="think-task" data-task={task.id} lang={shownLang}>
       <button onClick={onBack} className="text-sm font-bold underline">{L.back}</button>
       {/* internal codes (id, format) are shown to reviewers only */}
       <p className="mt-3 text-xs font-bold text-slate-500" data-testid="task-meta">{reviewer ? `${task.id} · ` : ""}{task.levelLabel} · ≈{task.minutes}{L.minutes}{reviewer ? ` · ${task.format}` : ""}</p>

@@ -1,0 +1,301 @@
+{
+  "status": "ai-authored-unreviewed",
+  "independentApproval": false,
+  "nativeSpeakerReview": false,
+  "teacherReview": false,
+  "range": [
+    350,
+    699
+  ],
+  "sourceCatalogHash": "54a44ffa2b7caa72c558f7aee7e8205c8a668dfbdc936bef9f4557b8fa02d789",
+  "locales": {
+    "cs": {
+      "file": "/Users/juboklee/life-project/language-expansion-20261020/content/translations/math-course-cs-0350-0699.json",
+      "sha256": "e35162213b9e632605e72b64f8e859c10b40b5e82fe69fe1e2538d3ddae2e237",
+      "stringsChecked": 350,
+      "keySourceHashNumberPlaceholderLatexMathSymbolUnitEmojiMismatches": 0,
+      "englishProseCopyCandidates": 0,
+      "unchangedPureMathOrProperNameCount": 50,
+      "unchangedProperNames": [
+        636,
+        637,
+        638
+      ]
+    },
+    "hu": {
+      "file": "/Users/juboklee/life-project/language-expansion-20261020/content/translations/math-course-hu-0350-0699.json",
+      "sha256": "ab42a682bd868ff4c59787fe430aac9062e938a9d9708242fd1d87b9cafdb3bb",
+      "stringsChecked": 350,
+      "keySourceHashNumberPlaceholderLatexMathSymbolUnitEmojiMismatches": 0,
+      "englishProseCopyCandidates": 0,
+      "unchangedPureMathOrProperNameCount": 50,
+      "unchangedProperNames": [
+        636,
+        637,
+        638
+      ]
+    }
+  },
+  "sourceIssues": [
+    {
+      "index": 386,
+      "source": "**Rounding up** raises the number to the next multiple, **rounding down** drops the lower digits, and **rounding to the nearest** raises it only if the next digit is 5 or more.",
+      "sourceHash": "6e0b1c79accb47af6f68046173fb8b339a71b09a63e18bf8fc12c45e4cb450a1",
+      "paths": [
+        [
+          "lessons",
+          "math-e6-ari2",
+          "concept"
+        ]
+      ],
+      "reason": "Rounding-up says next multiple, but an exact multiple should remain unchanged. Verify intended non-multiple precondition.",
+      "targets": {
+        "cs": {
+          "translationHash": "20ce6bd2205746c0a634eb556bea65dddaac7761abc3a3703f95070a9374b321",
+          "translation": "**Zaokrouhlení nahoru** zvýší číslo na další násobek, **zaokrouhlení dolů** zahodí nižší číslice a **zaokrouhlení na nejbližší hodnotu** zvýší jen tehdy, je-li další číslice 5 nebo vyšší."
+        },
+        "hu": {
+          "translationHash": "cb437cbc41fc25d353c8b54e2d03d60414347637158824d234949e7e24d5059f",
+          "translation": "A **felfelé kerekítés** a következő többszörösre növel, a **lefelé kerekítés** elhagyja a kisebb helyi értékű számjegyeket, a **legközelebbi értékre kerekítés** pedig csak akkor növel, ha a következő számjegy 5 vagy nagyobb."
+        }
+      },
+      "status": "source-review-required-preserved-in-translation"
+    },
+    {
+      "index": 388,
+      "source": "The **deviation** is (value) − (mean). The **variance** is the mean of the squared deviations and the **standard deviation** is its positive square root. The larger it is, the more spread out the data are.",
+      "sourceHash": "26dde986f5dd192be61b271f55f8354caccbe594a2dc5b55a1d9884a5e0de256",
+      "paths": [
+        [
+          "lessons",
+          "math-m3-sta1",
+          "concept"
+        ]
+      ],
+      "reason": "Standard deviation is the non-negative square root; positive omits zero.",
+      "targets": {
+        "cs": {
+          "translationHash": "f71e8f99594f952118e4722b29788739cdabe5fd9ba922cd4a2acc8c4c6dc5e5",
+          "translation": "**Odchylka** je (hodnota) − (průměr). **Rozptyl** je průměr čtverců odchylek a **směrodatná odchylka** jeho kladná odmocnina. Čím je větší, tím více jsou data rozptýlena."
+        },
+        "hu": {
+          "translationHash": "03077afb48d2379d3d4d3bfe46d91055b58a8ec0385df752eb07690863b429d9",
+          "translation": "Az **eltérés** (érték) − (átlag). A **variancia** az eltérésnégyzetek átlaga, a **szórás** pedig ennek pozitív négyzetgyöke. Minél nagyobb, annál jobban szóródnak az adatok."
+        }
+      },
+      "status": "source-review-required-preserved-in-translation"
+    },
+    {
+      "index": 398,
+      "source": "A document becomes a vector of word counts and an image a matrix of pixel values. The larger the dot product, the more alike two documents are.",
+      "sourceHash": "d6d2ccc6e67a3cfc37b7a099e3c06a307d744b001fca4efe70e453c8c3ef0ed1",
+      "paths": [
+        [
+          "lessons",
+          "math-el-ai1",
+          "concept"
+        ]
+      ],
+      "reason": "Raw word-count dot product varies with document length/count scale. Larger raw dot product alone does not prove greater document similarity; clarify metric/normalisation assumptions.",
+      "targets": {
+        "cs": {
+          "translationHash": "670dfe1f9e82c87634938a871ae57de2e7d656cc173ad359f8bf7b4ed9373571",
+          "translation": "Dokument se převádí na vektor četností slov a obraz na matici hodnot pixelů. Čím větší je skalární součin, tím jsou si dva dokumenty podobnější."
+        },
+        "hu": {
+          "translationHash": "4363616b2b85f9ad16bfadeaff8179bca76448a561bcc99fdd6c7890a1da6b48",
+          "translation": "A dokumentum szógyakoriság-vektorrá, a kép pixelértékek mátrixává válik. Minél nagyobb a skaláris szorzat, annál hasonlóbb a két dokumentum."
+        }
+      },
+      "status": "source-review-required-preserved-in-translation"
+    },
+    {
+      "index": 600,
+      "source": "Which shape has 4 sides that are all the same length?",
+      "sourceHash": "992d9a4b225e0aea07ed5865d86130e9c929bd89246e3c247ccf1628873105a5",
+      "paths": [
+        [
+          "questions",
+          "m-e1-shape-5",
+          "prompt"
+        ]
+      ],
+      "reason": "Four equal sides do not uniquely specify a square; a non-square rhombus is a counterexample. Check choices/figure restriction or right-angle condition.",
+      "targets": {
+        "cs": {
+          "translationHash": "a8c525d59abbdee5c31ecc18d628a8abc781d80f11a366df3bffdd8a795f4df8",
+          "translation": "Který obrazec má 4 stejně dlouhé strany?"
+        },
+        "hu": {
+          "translationHash": "c4f3b84f90b1b32fbffabe461b0d07e595396c31cde3e45cea99a5f56429a957",
+          "translation": "Melyik alakzatnak van 4 egyenlő hosszú oldala?"
+        }
+      },
+      "status": "source-review-required-preserved-in-translation"
+    },
+    {
+      "index": 601,
+      "source": "The shape whose four sides are all the same length is a square.",
+      "sourceHash": "aad62ead14cdbf84c68e8388fc5b79357f263f1ca04bf18e7f4fbaf345f188ab",
+      "paths": [
+        [
+          "questions",
+          "m-e1-shape-5",
+          "explanation"
+        ]
+      ],
+      "reason": "Explanation identifies every quadrilateral with four equal sides as a square; right-angle condition is missing.",
+      "targets": {
+        "cs": {
+          "translationHash": "0691be581652a4c53765b5293e747165b0698116dc90559753d59cea8b7a93ce",
+          "translation": "Obrazec se čtyřmi stejně dlouhými stranami je čtverec."
+        },
+        "hu": {
+          "translationHash": "9b128a44e99fba017bfadc6dcf8979b0c7f8e7a9d771bc1581038ef29926d796",
+          "translation": "Az azonos hosszúságú négy oldallal rendelkező alakzat a négyzet."
+        }
+      },
+      "status": "source-review-required-preserved-in-translation"
+    },
+    {
+      "index": 605,
+      "source": "In a rectangle, only the opposite sides are the same length.",
+      "sourceHash": "e08b0b8b4ca9c5d07cb3cd2230e6bff609df45dae93be96e87b37c01e7ecf17d",
+      "paths": [
+        [
+          "questions",
+          "m-e1-shape-5",
+          "hints",
+          1
+        ]
+      ],
+      "reason": "Only opposite sides equal excludes the square special case of a rectangle. Check intended exclusive classification.",
+      "targets": {
+        "cs": {
+          "translationHash": "dfe687b8906889546735f68592da882fa44c557cea2e329738461371a589d0f7",
+          "translation": "V obdélníku jsou stejně dlouhé pouze protější strany."
+        },
+        "hu": {
+          "translationHash": "cb645e98ec67a8d50198b0450b516ca18ca6c82b87aacc388e939c1f745e971f",
+          "translation": "A téglalapban csak a szemközti oldalak egyenlő hosszúak."
+        }
+      },
+      "status": "source-review-required-preserved-in-translation"
+    },
+    {
+      "index": 670,
+      "source": "If the ones add up to more than 10, carry 1 to the tens.",
+      "sourceHash": "c2ead87910d93fee49d2800f70534908d00281cd96da2dd07e925b010bdb2372",
+      "paths": [
+        [
+          "questions",
+          "m-e2-addsub-2",
+          "hints",
+          1
+        ],
+        [
+          "questions",
+          "m-e2-addsub-d1",
+          "hints",
+          1
+        ]
+      ],
+      "reason": "Carry is required at10 as well as above10; same source boundary issue as prior202.",
+      "targets": {
+        "cs": {
+          "translationHash": "b6c8251c293050a1e3420012aeb8004fbb6af92123572384b783e264c14db20a",
+          "translation": "Pokud součet jednotek přesáhne 10, přenes 1 do desítek."
+        },
+        "hu": {
+          "translationHash": "7f47ee9af70c8f1b55345be3c560a8ef0c5e78d56c97f494817eb2d0c710ccfe",
+          "translation": "Ha az egyesek összege több mint 10, vigyél át 1-et a tízesekhez."
+        }
+      },
+      "status": "source-review-required-preserved-in-translation"
+    }
+  ],
+  "authoringContext": {
+    "newKoreanSentencesAuthored": false,
+    "newFictionalPeopleAuthored": false,
+    "genderInferredFromNames": false,
+    "entities": [
+      {
+        "entityId": "m-e1-up-l1b.jia",
+        "sourceIndex": 622,
+        "name": "Jia",
+        "gender": "unknown_from_canonical_source",
+        "number": "singular",
+        "subjectRefs": [
+          "jia"
+        ],
+        "objectRefs": [
+          "candies"
+        ],
+        "evidence": {
+          "kind": "existing_source_gender_unspecified",
+          "sourceHash": "660c3e87cc4d116cdf56b838e6ca685516e47bc73d4aab0c92d87387b90bc2f2",
+          "canonicalNote": "Korean canonical source does not specify gender. Czech neutral present narrative avoids past-tense gender marking. Hungarian is gender-neutral. English she at622 is not established by Korean canonical source."
+        }
+      },
+      {
+        "entityId": "m-e1-up-l3a.minsu",
+        "sourceIndex": 634,
+        "name": "Minsu",
+        "gender": "unknown_from_canonical_source",
+        "number": "singular",
+        "subjectRefs": [
+          "minsu"
+        ],
+        "objectRefs": [
+          "stickers"
+        ],
+        "evidence": {
+          "kind": "existing_source_gender_unspecified",
+          "sourceHash": "da7e2b63c920d8ed8c24c997d5119b3e1293a032530095c4f666104faff5734a",
+          "canonicalNote": "Korean canonical source does not specify gender. Czech neutral present narrative avoids past-tense gender marking. Hungarian is gender-neutral. English she at622 is not established by Korean canonical source."
+        }
+      },
+      {
+        "entityId": "m-e1-up-l3a.hana",
+        "sourceIndex": 634,
+        "name": "Hana",
+        "gender": "unknown_from_canonical_source",
+        "number": "singular",
+        "subjectRefs": [
+          "hana"
+        ],
+        "objectRefs": [
+          "stickers"
+        ],
+        "evidence": {
+          "kind": "existing_source_gender_unspecified",
+          "sourceHash": "da7e2b63c920d8ed8c24c997d5119b3e1293a032530095c4f666104faff5734a",
+          "canonicalNote": "Korean canonical source does not specify gender. Czech neutral present narrative avoids past-tense gender marking. Hungarian is gender-neutral. English she at622 is not established by Korean canonical source."
+        }
+      },
+      {
+        "entityId": "m-e1-up-l3a.seojun",
+        "sourceIndex": 634,
+        "name": "Seojun",
+        "gender": "unknown_from_canonical_source",
+        "number": "singular",
+        "subjectRefs": [
+          "seojun"
+        ],
+        "objectRefs": [
+          "stickers"
+        ],
+        "evidence": {
+          "kind": "existing_source_gender_unspecified",
+          "sourceHash": "da7e2b63c920d8ed8c24c997d5119b3e1293a032530095c4f666104faff5734a",
+          "canonicalNote": "Korean canonical source does not specify gender. Czech neutral present narrative avoids past-tense gender marking. Hungarian is gender-neutral. English she at622 is not established by Korean canonical source."
+        }
+      }
+    ]
+  },
+  "limitations": [
+    "Writing stage only; no native/teacher/independent semantic approval.",
+    "Source issues preserved for canonical-source correction; no shared source edits.",
+    "Proper names retained; no gender settings invented."
+  ]
+}

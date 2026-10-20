@@ -1,0 +1,1065 @@
+{
+  "templates": {
+    "addThree": {
+      "prompt": "Paljonko on {a}+{b}?",
+      "hints": [
+        "Laske yhteen ykkösistä alkaen.",
+        "Jos sarakkeen summa on 10 tai enemmän, siirrä muistinumero seuraavaan lukupaikkaan."
+      ],
+      "explanation": "{a}+{b}={ans}."
+    },
+    "areaX2": {
+      "prompt": "Mikä on käyrän $y={k}x^2$, $x$-akselin ja suoran $x={a}$ rajaama pinta-ala? (vain numerot)",
+      "hints": [
+        "Pinta-ala on määrätty integraali välillä 0–{a}.",
+        "$\\int x^2\\,dx=\\frac{x^3}{3}$."
+      ],
+      "explanation": "$\\int_0^{{a}} {k}x^2\\,dx=\\frac{{k}\\times{a}^3}{3}={ans}$."
+    },
+    "arithSum": {
+      "prompt": "Mikä on aritmeettisen jonon ensimmäisten {n} termin summa, kun ensimmäinen termi on {a} ja erotus on {d}? (vain numerot)",
+      "hints": [
+        "Summan kaava on $S_n=\\frac{n(2a+(n-1)d)}{2}$.",
+        "Voit myös selvittää viimeisen termin ja laskea (ensimmäinen + viimeinen) × termien määrä ÷ 2."
+      ],
+      "explanation": "$S_{{n}}=\\frac{{n}(2\\times{a}+({n}-1)\\times({d}))}{2}={ans}$."
+    },
+    "arithTerm": {
+      "prompt": "Mikä on aritmeettisen jonon termi numero {n}, kun ensimmäinen termi on {a} ja erotus on {d}? (vain numerot)",
+      "hints": [
+        "Yleinen termi on $a_n=a+(n-1)d$.",
+        "Kerro (n-1) erotuksella ja lisää tulos ensimmäiseen termiin."
+      ],
+      "explanation": "{a}+({n}-1)×({d})={ans}."
+    },
+    "bigNum": {
+      "prompt": "Mikä luku muodostuu {a} kymmenestätuhannesta ja {b} tuhannesta? (vain numerot)",
+      "hints": [
+        "{a} kymmenentuhatta on {a}0000.",
+        "{b} tuhatta on {b}000. Laske ne yhteen."
+      ],
+      "explanation": "{a} kymmenentuhatta ja {b} tuhatta muodostavat luvun {ans}."
+    },
+    "binomCoef": {
+      "prompt": "Mikä on termin $x^{{k}}$ kerroin lausekkeen $(x+1)^{{n}}$ kehitelmässä?",
+      "hints": [
+        "Binomilauseen mukaan kertoimet ovat kombinaatioiden lukumääriä.",
+        "Termin $x^k$ kerroin on $_nC_k$, eli niiden tapojen määrä, joilla valitaan k alkiota n alkiosta."
+      ],
+      "explanation": "{calc}={ans}."
+    },
+    "binomMean": {
+      "prompt": "Jos satunnaismuuttuja $X$ noudattaa binomijakaumaa $B({n},\\ {p})$, mikä on $E(X)$? (vain numerot)",
+      "hints": [
+        "Jakauman $B(n,\\ p)$ keskiarvo on $np$.",
+        "Kerro n ja p keskenään."
+      ],
+      "explanation": "E(X)={n}×{p}={ans}."
+    },
+    "chanceFraction": {
+      "prompt": "Laatikossa on {a} A-palloa ja {b} B-palloa. Yksi pallo nostetaan. Mikä on A-pallon todennäköisyys desimaalilukuna?",
+      "hints": [
+        "Todennäköisyys = (suotuisat tapaukset) ÷ (kaikki tapaukset).",
+        "Laske ensin pallojen kokonaismäärä."
+      ],
+      "explanation": "{a}÷{total}={ans}, joten todennäköisyys on {ans}."
+    },
+    "ciHalf": {
+      "prompt": "Populaation keskihajonta on {s} ja otoskoko {n}. Mikä on 95%:n virhemarginaali $1.96\\times\\frac{σ}{\\sqrt{ n }}$? (kaksi desimaalia)",
+      "hints": [
+        "Laske ensin $\\sqrt{ n }$.",
+        "Jaa σ sillä ja kerro tulos luvulla 1.96."
+      ],
+      "explanation": "$1.96\\times\\frac{{s}}{{rt}}={ans}$."
+    },
+    "circleArea": {
+      "prompt": "Ympyrän säde on {r} cm. Mikä on sen pinta-ala yksikössä cm²? (käytä piin arvona $3.14$) (cm²)",
+      "hints": [
+        "Pinta-ala on säde × säde × pii.",
+        "Korota säde neliöön ja kerro sitten luvulla 3.14."
+      ],
+      "explanation": "{r}×{r}×3.14={ans}, joten pinta-ala on {ans} cm²."
+    },
+    "circleR": {
+      "prompt": "Mikä on ympyrän $({fx})^2+({fy})^2={r2}$ säde? (vain numerot)",
+      "hints": [
+        "Yhtälössä $(x-a)^2+(y-b)^2=r^2$ r on säde.",
+        "Oikean puolen luku on r²."
+      ],
+      "explanation": "$r^2={r2}$, joten säde on {ans}."
+    },
+    "circum": {
+      "prompt": "Ympyrän säde on {r} cm. Kuinka pitkä sen kehä on senttimetreinä? (käytä piin arvona $3.14$) (cm)",
+      "hints": [
+        "Kehän pituus on halkaisija × pii.",
+        "Halkaisija on kaksi kertaa säde."
+      ],
+      "explanation": "{r}×2×3.14={ans}, joten pituus on {ans} cm."
+    },
+    "coinCases": {
+      "prompt": "Montako mahdollista tulosta on, kun {n} kolikkoa heitetään yhtä aikaa? (vain numerot)",
+      "hints": [
+        "Yhdellä kolikolla on 2 tulosta: kruuna tai klaava.",
+        "Kerro kunkin kolikon tulosten määrät keskenään."
+      ],
+      "explanation": "Kun tulossa on {n} tekijää, jotka kaikki ovat 2, tulos on {ans}, joten tuloksia on {ans}."
+    },
+    "combNC": {
+      "prompt": "Monellako tavalla voit valita {r} henkilöä {n} eri henkilöstä, kun järjestyksellä ei ole väliä? (vain numerot)",
+      "hints": [
+        "Järjestyksellä ei ole väliä, joten kyseessä on kombinaatio.",
+        "Jaa järjestettyjen valintojen määrä luvulla {r}!."
+      ],
+      "explanation": "{calc}={ans}, joten tapoja on {ans}."
+    },
+    "complexSum": {
+      "prompt": "Mikä on luvun ${expr}$ reaaliosan ja imaginaariosan summa? (vain numerot)",
+      "hints": [
+        "Laske reaaliosat yhteen ja imaginaariosat yhteen.",
+        "Käsittele i:tä kuin kirjainta."
+      ],
+      "explanation": "Reaaliosa on {re} ja imaginaariosa {im}, joten summa on {ans}."
+    },
+    "composite": {
+      "prompt": "Jos $f(x)={f}$ ja $g(x)={g}$, mikä on {comp}?",
+      "hints": [
+        "Yhdistetty funktio $(g\\circ f)(a)$ tarkoittaa $g(f(a))$. Etene sisemmästä funktiosta ulospäin.",
+        "Laske ensin sisemmän funktion arvo ja sijoita se sitten ulompaan funktioon."
+      ],
+      "explanation": "{steps}, joten vastaus on {ans}."
+    },
+    "condProb": {
+      "prompt": "Tapahtumille $A,\\ B$ pätee $P(A)={pa}$ ja $P(A\\cap B)={pab}$. Mikä on $P(B\\mid A)$? (kirjoita desimaaliluku)",
+      "hints": [
+        "Ehdollinen todennäköisyys: $P(B\\mid A)=\\frac{P(A\\cap B)}{P(A)}$.",
+        "Jaa nämä kaksi arvoa keskenään."
+      ],
+      "explanation": "{pab}÷{pa}={ans}."
+    },
+    "convKgG": {
+      "prompt": "Montako g on {v} kg? (g)",
+      "hints": [
+        "1 kg on 1000 g.",
+        "Kerro {v} luvulla 1000."
+      ],
+      "explanation": "{v}×1000={ans}, eli {ans} g."
+    },
+    "convMCm": {
+      "prompt": "Montako cm on {v} m? (cm)",
+      "hints": [
+        "1 m on 100 cm.",
+        "Kerro {v} luvulla 100."
+      ],
+      "explanation": "{v}×100={ans}, eli {ans} cm."
+    },
+    "crossX": {
+      "prompt": "Kuvaajat $y={a1}x+{b1}$ ja $y={a2}x+{b2}$ leikkaavat pisteessä P. Mikä on P:n x-koordinaatti?",
+      "hints": [
+        "Leikkauspisteessä molemmat y-arvot ovat samat.",
+        "Ratkaise $a_1x+b_1=a_2x+b_2$."
+      ],
+      "explanation": "Yhtälöstä ${a1}x+{b1}={a2}x+{b2}$ saadaan x={ans}."
+    },
+    "cubeVol": {
+      "prompt": "Kuution särmä on {a} cm. Mikä on sen tilavuus yksikössä cm³? (vain numerot)",
+      "hints": [
+        "Kuution tilavuus on särmä × särmä × särmä.",
+        "Kerro keskenään kolme tekijää, joista jokainen on {a}."
+      ],
+      "explanation": "{a}×{a}×{a}={ans}, joten tilavuus on {ans} cm³."
+    },
+    "cuboidVol": {
+      "prompt": "Suorakulmainen särmiö on {a} cm pitkä, {b} cm leveä ja {c} cm korkea. Mikä on sen tilavuus yksikössä cm³? (cm³)",
+      "hints": [
+        "Suorakulmaisen särmiön tilavuus on pituus × leveys × korkeus.",
+        "Kerro kaikki kolme pituutta keskenään."
+      ],
+      "explanation": "{a}×{b}×{c}={ans}, joten tilavuus on {ans} cm³."
+    },
+    "dataRange": {
+      "prompt": "Mikä on aineiston {list} suurimman ja pienimmän arvon erotus?",
+      "hints": [
+        "Etsi suurin ja pienin arvo.",
+        "Vähennä pienempi suuremmasta."
+      ],
+      "explanation": "{max}-{min}={ans}."
+    },
+    "decPct": {
+      "prompt": "Kirjoita tämä desimaaliluku prosentteina: ${d}$ (vain numerot)",
+      "hints": [
+        "Kerro desimaaliluku luvulla 100 saadaksesi prosenttiluvun.",
+        "Siirrä desimaalierotinta kaksi paikkaa oikealle."
+      ],
+      "explanation": "{d}×100={ans}, eli {ans}%."
+    },
+    "decTimes": {
+      "prompt": "Laske $ {a} \\times {b} $.",
+      "hints": [
+        "Jätä desimaalierotin huomiotta ja kerro kuten kokonaisluvuilla.",
+        "Palauta sitten desimaalierotin niin, että desimaaleja on yhteensä yhtä monta kuin tekijöissä."
+      ],
+      "explanation": "{a}×{b}={ans}."
+    },
+    "defInt": {
+      "prompt": "Mikä on lausekkeen $\\int_{0}^{{b}} ({fx})\\,dx$ arvo? (vain numerot)",
+      "hints": [
+        "Etsi integraalifunktio ja laske (arvo ylärajalla) - (arvo alarajalla).",
+        "$\\int x\\,dx=\\frac{x^2}{2}$ ja $\\int c\\,dx=cx$."
+      ],
+      "explanation": "Kun integraalifunktioon ${anti}$ sijoitetaan x={b}, saadaan {ans}."
+    },
+    "derivAt": {
+      "prompt": "Jos $f(x)={poly}$, mikä on $f'({a})$? (vain numerot)",
+      "hints": [
+        "$(x^n)'=nx^{n-1}$.",
+        "Etsi derivaatta ja sijoita sitten {a} x:n paikalle."
+      ],
+      "explanation": "$f'(x)={deriv}$, joten $f'({a})={ans}$."
+    },
+    "derivVal": {
+      "prompt": "Jos $f(x)={f}$, mikä on $f'({a})$?",
+      "hints": [
+        "Yhdistettyä funktiota derivoitaessa derivoi ulompi funktio ja kerro sisemmän derivaatalla; osamäärälle pätee $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$.",
+        "Käytä kaavoja $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ ja $(\\cos x)'=-\\sin x$."
+      ],
+      "explanation": "{steps}."
+    },
+    "diameter": {
+      "prompt": "Ympyrän säde on {r} cm. Montako cm on sen halkaisija? (cm)",
+      "hints": [
+        "Halkaisija on kaksi kertaa säde.",
+        "Kerro säde luvulla 2."
+      ],
+      "explanation": "{r}×2={ans}, joten halkaisija on {ans} cm."
+    },
+    "directConst": {
+      "prompt": "Suoran verrannollisuuden y=ax kuvaaja kulkee pisteen ({x1}, {y1}) kautta. Mikä on a?",
+      "hints": [
+        "Sijoita piste yhtälöön y=ax.",
+        "a=y÷x."
+      ],
+      "explanation": "a={y1}÷{x1}={ans}."
+    },
+    "discount": {
+      "prompt": "Tuote maksaa {p} wonia, ja se myydään {d}%:n alennuksella. Mikä on myyntihinta? (wonia)",
+      "hints": [
+        "Alennus on hinta × {d}%.",
+        "Vähennä alennus hinnasta."
+      ],
+      "explanation": "{p}-{p}×{dr}={ans}, eli {ans} wonia."
+    },
+    "dist2": {
+      "prompt": "Mikä on pisteiden A({x1}, {y1}) ja B({x2}, {y2}) välinen etäisyys? (vain numerot)",
+      "hints": [
+        "Etäisyys on $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+        "Korota x-koordinaattien erotus ja y-koordinaattien erotus neliöön ja laske ne yhteen."
+      ],
+      "explanation": "$\\sqrt{{dx}^2+{dy}^2}={ans}$."
+    },
+    "divide": {
+      "prompt": "Laske $ {a} \\div {b} $.",
+      "hints": [
+        "Käytä jakajan kertotaulua käänteisesti.",
+        "Etsi luku, joka kerrottuna luvulla {b} antaa luvun {a}."
+      ],
+      "explanation": "{a}÷{b}={ans}."
+    },
+    "divisorCount": {
+      "prompt": "Montako tekijää luvulla {n} on?",
+      "hints": [
+        "Etsi kaikki luvut, joilla {n} on tasan jaollinen.",
+        "Tarkista pienimmästä alkaen."
+      ],
+      "explanation": "Luvun {n} tekijät ovat {list}: yhteensä {ans}."
+    },
+    "equilibrium": {
+      "prompt": "Kysyntäkäyrä $p={a}-{b}q$ ja tarjontakäyrä $p={c}+{d}q$ leikkaavat tasapainomäärän q kohdalla. Mikä on q?",
+      "hints": [
+        "Tasapainossa kysyntähinta on sama kuin tarjontahinta.",
+        "Ratkaise $a-bq=c+dq$."
+      ],
+      "explanation": "Yhtälöstä ${a}-{b}q={c}+{d}q$ saadaan q={ans}."
+    },
+    "expMul": {
+      "prompt": "Mikä luku tulee ruutuun yhtälössä $x^{{a}} \\times x^{{b}} = x^{\\square}$? (vain numerot)",
+      "hints": [
+        "Kun kantaluvut ovat samat, laske eksponentit yhteen.",
+        "Laske {a}+{b}."
+      ],
+      "explanation": "{a}+{b}={ans}, joten □={ans}."
+    },
+    "expPow": {
+      "prompt": "Mikä luku tulee ruutuun yhtälössä $(x^{{a}})^{{b}} = x^{\\square}$? (vain numerot)",
+      "hints": [
+        "Potenssin potenssissa eksponentit kerrotaan keskenään.",
+        "Laske {a}×{b}."
+      ],
+      "explanation": "{a}×{b}={ans}, joten □={ans}."
+    },
+    "expandPQ": {
+      "prompt": "Jos $({fa})({fb}) = x^2+px+q$, mikä on $p+q$? (vain numerot)",
+      "hints": [
+        "Käytä kaavaa $(x+a)(x+b)=x^2+(a+b)x+ab$.",
+        "p on kahden luvun summa ja q niiden tulo."
+      ],
+      "explanation": "p={p} ja q={q}, joten p+q={ans}."
+    },
+    "expandSquare": {
+      "prompt": "Jos $({e})^2 = x^2+px+q$, mikä on $p+q$? (vain numerot)",
+      "hints": [
+        "Käytä kaavaa $(x+a)^2=x^2+2ax+a^2$.",
+        "p on 2a ja q on a²."
+      ],
+      "explanation": "p={p} ja q={q}, joten p+q={ans}."
+    },
+    "exprValue": {
+      "prompt": "Kun $x={x}$, mikä on lausekkeen ${expr}$ arvo?",
+      "hints": [
+        "Sijoita annettu luku x:n paikalle.",
+        "Kerro ensin, sitten laske yhteen tai vähennä."
+      ],
+      "explanation": "Sijoittamalla x={x} saadaan ${expr}={ans}$."
+    },
+    "factorDiff": {
+      "prompt": "Kun ${poly}$ jaetaan tekijöihin muotoon $(x+m)(x+n)$, mikä on lukujen m ja n erotus (suurempi miinus pienempi)? (vain numerot)",
+      "hints": [
+        "Etsi kaksi lukua, joiden summa on x:n kerroin ja tulo vakiotermi.",
+        "Kun löydät ne, vähennä pienempi suuremmasta."
+      ],
+      "explanation": "${poly}=({fm})({fn})$, joten luvut ovat {m} ja {n} ja erotus on {ans}."
+    },
+    "factorExp": {
+      "prompt": "Luvun ${n}$ alkutekijähajotelma on $2^a\\times3^b$. Mikä on $a+b$?",
+      "hints": [
+        "Jaa {n} luvulla 2 niin kauan kuin voit.",
+        "Jaa sitten jäljelle jäävä luku luvulla 3."
+      ],
+      "explanation": "${n}=2^{a}\\times3^{b}$, joten $a+b={ans}$."
+    },
+    "focusX": {
+      "prompt": "Mikä on paraabelin $y^2={c}x$ polttopisteen $x$-koordinaatti? (vain numerot)",
+      "hints": [
+        "Paraabelin $y^2=4px$ polttopiste on $(p,\\ 0)$.",
+        "Selvitä p yhtälöstä {c}=4p."
+      ],
+      "explanation": "4p={c}, joten p={ans}."
+    },
+    "fracAdd": {
+      "prompt": "Laske $\\frac{{a}}{{b}} + \\frac{{c}}{{d}}$. (desimaaliluku tai murtoluku, kuten 3/4, käy)",
+      "hints": [
+        "Muunna murtoluvut samannimisiksi.",
+        "Laske osoittajat yhteen."
+      ],
+      "explanation": "$\\frac{{a}}{{b}}+\\frac{{c}}{{d}}=\\frac{{num}}{{den}}$."
+    },
+    "fracDivInt": {
+      "prompt": "Laske $\\frac{{a}}{{b}} \\div {c}$. (desimaaliluku tai murtoluku, kuten 3/4, käy)",
+      "hints": [
+        "Kun murtoluku jaetaan kokonaisluvulla, nimittäjä kerrotaan sillä luvulla.",
+        "Supista laskemisen jälkeen."
+      ],
+      "explanation": "$\\frac{{a}}{{b}}\\div{c}=\\frac{{num}}{{den}}$."
+    },
+    "fracToDec": {
+      "prompt": "Kirjoita murtoluku $\\frac{{a}}{{b}}$ desimaalilukuna. (kirjoita desimaaliluku)",
+      "hints": [
+        "Muunna murtoluku niin, että nimittäjä on 10 tai 100.",
+        "Tai jaa osoittaja nimittäjällä."
+      ],
+      "explanation": "$\\frac{{a}}{{b}}={ans}$."
+    },
+    "funcValue": {
+      "prompt": "Mikä on $f({c})$, kun ensimmäisen asteen funktio on $f(x)={a}x+{b}$?",
+      "hints": [
+        "Sijoita {c} x:n paikalle.",
+        "Kerro, sitten laske yhteen."
+      ],
+      "explanation": "$f({c})={a}\\times{c}+{b}={ans}$."
+    },
+    "gcd": {
+      "prompt": "Mikä on lukujen {a} ja {b} suurin yhteinen tekijä?",
+      "hints": [
+        "Etsi lukujen yhteiset tekijät.",
+        "Niistä suurin on suurin yhteinen tekijä."
+      ],
+      "explanation": "Lukujen {a} ja {b} suurin yhteinen tekijä on {ans}."
+    },
+    "geoRatio": {
+      "prompt": "Geometrisen jonon ensimmäinen termi on {a} ja kolmas termi {c}. Mikä on suhdeluku? (positiivinen, vain numerot)",
+      "hints": [
+        "Kolmas termi saadaan kertomalla ensimmäinen termi suhdeluvulla kahdesti.",
+        "Ratkaise $r^2$ yhtälöstä $ar^2=c$."
+      ],
+      "explanation": "Yhtälöstä {a}×r²={c} saadaan r²={sq}, joten suhdeluku on {ans}."
+    },
+    "geoSeries": {
+      "prompt": "Mikä on äärettömän geometrisen sarjan summa, kun ensimmäinen termi on {a} ja suhdeluku ${rtex}$? (desimaaliluku tai murtoluku, kuten 3/4, käy)",
+      "hints": [
+        "Summa on olemassa, kun suhdeluvun itseisarvo on pienempi kuin 1.",
+        "Summa on (ensimmäinen termi) ÷ (1 - suhdeluku)."
+      ],
+      "explanation": "{a}÷(1-${rtex}$)=${res}$."
+    },
+    "geoTerm": {
+      "prompt": "Mikä on geometrisen jonon termi numero {n}, kun ensimmäinen termi on {a} ja suhdeluku {r}? (vain numerot)",
+      "hints": [
+        "Yleinen termi on $a_n=ar^{n-1}$.",
+        "Kerro suhdeluvulla (n-1) kertaa."
+      ],
+      "explanation": "{a} kertaa {r} potenssiin ({n}-1) on {ans}."
+    },
+    "groups": {
+      "prompt": "Jokaisessa nipussa on {a} ja nippuja on {b}. Montako on yhteensä? (vain numerot)",
+      "hints": [
+        "Yhtä suuret ryhmät voidaan laskea kertolaskulla.",
+        "Se vastaa luvun {a} yhteenlaskemista {b} kertaa."
+      ],
+      "explanation": "{a}×{b}={ans}, joten niitä on {ans}."
+    },
+    "hundredsDigit": {
+      "prompt": "Mikä on luvun ${n}$ satojen numero? (vain numerot)",
+      "hints": [
+        "Se on kolmas numero oikealta.",
+        "Kolminumeroisessa luvussa se on ensimmäinen numero."
+      ],
+      "explanation": "Luvun {n} satojen numero on {ans}."
+    },
+    "hypot": {
+      "prompt": "Suorakulmaisen kolmion suoran kulman viereiset sivut ovat {a} cm ja {b} cm. Kuinka pitkä pisin sivu on senttimetreinä? (cm)",
+      "hints": [
+        "Pythagoraan lause: (hypotenuusa)² = (yksi kateetti)² + (toinen kateetti)².",
+        "Korota molemmat pituudet neliöön, laske yhteen ja ota neliöjuuri."
+      ],
+      "explanation": "${a}^2+{b}^2={sq}$, joten pisin sivu on {ans} cm."
+    },
+    "ineqCount": {
+      "prompt": "Montako kokonaislukua $x$ toteuttaa toisen asteen epäyhtälön ${eq}<0$? (vain numerot)",
+      "hints": [
+        "Jaa vasen puoli tekijöihin löytääksesi kaksi juurta.",
+        "Laske juurten väliset kokonaisluvut; juuria itseään ei lasketa mukaan."
+      ],
+      "explanation": "Epäyhtälöstä ${fact}<0$ saadaan {r1}<x<{r2}, joten kokonaislukuja on {ans}."
+    },
+    "ineqMax": {
+      "prompt": "Mikä on suurin kokonaisluku $x$, joka toteuttaa epäyhtälön $x+{a} < {b}$? (vain numerot)",
+      "hints": [
+        "Vähennä sama luku molemmilta puolilta löytääksesi x:n arvoalueen.",
+        "x:n on oltava löytämääsi arvoa pienempi; itse raja-arvo ei kuulu mukaan."
+      ],
+      "explanation": "x<{bound}, joten suurin kokonaisluku on {ans}."
+    },
+    "intAdd": {
+      "prompt": "Laske $({a})+({b})$.",
+      "hints": [
+        "Samat merkit: laske itseisarvot yhteen ja säilytä merkki.",
+        "Eri merkit: vähennä itseisarvot ja valitse sen luvun merkki, jonka itseisarvo on suurempi."
+      ],
+      "explanation": "$({a})+({b})={ans}$."
+    },
+    "intDiv": {
+      "prompt": "Laske $({a})\\div({b})$.",
+      "hints": [
+        "Samat merkit antavat positiivisen tuloksen, eri merkit negatiivisen.",
+        "Jaa itseisarvot keskenään."
+      ],
+      "explanation": "$({a})\\div({b})={ans}$."
+    },
+    "intMul": {
+      "prompt": "Laske $({a})\\times({b})$.",
+      "hints": [
+        "Samat merkit antavat positiivisen tuloksen, eri merkit negatiivisen.",
+        "Kerro itseisarvot keskenään."
+      ],
+      "explanation": "$({a})\\times({b})={ans}$."
+    },
+    "intSub": {
+      "prompt": "Laske $({a})-({b})$.",
+      "hints": [
+        "Vähentäminen tarkoittaa vastaluvun lisäämistä.",
+        "Kirjoita se muotoon $({a})+({nb})$."
+      ],
+      "explanation": "$({a})-({b})=({a})+({nb})={ans}$."
+    },
+    "inverseConst": {
+      "prompt": "Käänteisen verrannollisuuden $y=\\frac{a}{x}$ kuvaaja kulkee pisteen ({x1}, {y1}) kautta. Mikä on a?",
+      "hints": [
+        "Sijoita piste yhtälöön $y=\\frac{a}{x}$.",
+        "a=x×y."
+      ],
+      "explanation": "a={x1}×{y1}={ans}."
+    },
+    "inverseVal": {
+      "prompt": "Jos $f^{-1}$ on funktion $f(x)={f}$ käänteisfunktio, mikä on $f^{-1}({y})$?",
+      "hints": [
+        "$f^{-1}(y)=x$ tarkoittaa samaa kuin $f(x)=y$.",
+        "Etsi x:n arvo, joka toteuttaa yhtälön $f(x)={y}$."
+      ],
+      "explanation": "{steps}, joten $f^{-1}({y})={ans}$."
+    },
+    "isoApex": {
+      "prompt": "Tasakylkisen kolmion yksi kantakulma on {b}°. Montako astetta on huippukulma? (astetta)",
+      "hints": [
+        "Tasakylkisen kolmion kantakulmat ovat yhtä suuret.",
+        "Vähennä molemmat kantakulmat luvusta 180°, joka on kolmion kulmien summa."
+      ],
+      "explanation": "180-{b}×2={ans}, joten huippukulma on {ans}°."
+    },
+    "kmToM": {
+      "prompt": "Montako metriä on {v} km? (vain numerot)",
+      "hints": [
+        "1 km on 1000 m.",
+        "Kerro {v} luvulla 1000."
+      ],
+      "explanation": "{v}×1000={ans}, eli {ans} m."
+    },
+    "lToMl": {
+      "prompt": "Montako millilitraa on {v} L? (vain numerot)",
+      "hints": [
+        "1 L on 1000 mL.",
+        "Kerro {v} luvulla 1000."
+      ],
+      "explanation": "{v}×1000={ans}, eli {ans} mL."
+    },
+    "lcm": {
+      "prompt": "Mikä on lukujen {a} ja {b} pienin yhteinen jaettava?",
+      "hints": [
+        "Luettele lukujen yhteiset monikerrat pienimmästä alkaen.",
+        "Pienin yhteinen monikerta on pienin yhteinen jaettava."
+      ],
+      "explanation": "Lukujen {a} ja {b} pienin yhteinen jaettava on {ans}."
+    },
+    "lessBy": {
+      "prompt": "Mikä luku on {k} pienempi kuin {n}? (vain numerot)",
+      "hints": [
+        "Se vastaa laskemista alaspäin {k}:n askelin.",
+        "Keskity niiden lukupaikkojen numeroihin, jotka muuttuvat."
+      ],
+      "explanation": "{n}-{k}={ans}."
+    },
+    "limFactor": {
+      "prompt": "Mikä on lausekkeen $\\lim_{x\\to {a}}\\frac{x^2-{sq}}{{den}}$ arvo? (vain numerot)",
+      "hints": [
+        "Osoittaja jaetaan tekijöihin muotoon $(x-a)(x+a)$.",
+        "Supista ja sijoita sitten x:n paikalle arvo, jota kohti se lähestyy."
+      ],
+      "explanation": "Kun osoittaja on jaettu tekijöihin ja lauseke supistettu, sijoittamalla x={a} saadaan {ans}."
+    },
+    "limLinear": {
+      "prompt": "Mikä on lausekkeen $\\lim_{x\\to {a}}({f})$ arvo? (vain numerot)",
+      "hints": [
+        "Polynomin raja-arvo on sama kuin funktion arvo.",
+        "Sijoita {a} x:n paikalle."
+      ],
+      "explanation": "Sijoittamalla x={a} saadaan {ans}."
+    },
+    "logAdd": {
+      "prompt": "Mikä on lausekkeen $\\log_{{b}} {m} + \\log_{{b}} {n}$ arvo? (vain numerot)",
+      "hints": [
+        "$\\log_b m+\\log_b n=\\log_b mn$.",
+        "Laske ensin tulo {m}×{n}."
+      ],
+      "explanation": "$\\log_{{b}} ({m}\\times{n})=\\log_{{b}} {prod}={ans}$."
+    },
+    "logVal": {
+      "prompt": "Mikä on lausekkeen $\\log_{{b}} {n}$ arvo? (vain numerot)",
+      "hints": [
+        "$\\log_b n=k$ tarkoittaa, että $b^k=n$.",
+        "Laske, montako tekijää {b} tarvitaan, jotta niiden tulo on {n}."
+      ],
+      "explanation": "${b}^{{ans}}={n}$, joten vastaus on {ans}."
+    },
+    "makeTen": {
+      "prompt": "Mikä luku lisätään lukuun {a}, jotta saadaan 10? (vain numerot)",
+      "hints": [
+        "Vähennä {a} luvusta 10.",
+        "Ajattele kymmentä sormeasi."
+      ],
+      "explanation": "{a}+{ans}=10, joten vastaus on {ans}."
+    },
+    "matEntry": {
+      "prompt": "Mikä on lausekkeen {expr} alkio ({r}, {c}), kun matriisit ovat {mats}?",
+      "hints": [
+        "Matriisien yhteenlasku, vähennyslasku ja skalaarilla kertominen tehdään samojen paikkojen alkioille.",
+        "Tulon $AB$ alkio (i, j) on matriisin $A$ rivin i ja matriisin $B$ sarakkeen j vastaavien alkioiden tulojen summa."
+      ],
+      "explanation": "{steps}, joten vastaus on {ans}."
+    },
+    "maxOf": {
+      "prompt": "Mikä on suurin luvuista {list}? (vain numerot)",
+      "hints": [
+        "Vertaa lukuja yksi kerrallaan.",
+        "Etsi luku, joka kuvaa suurinta määrää."
+      ],
+      "explanation": "Suurin luvuista {list} on {ans}."
+    },
+    "mean": {
+      "prompt": "Mikä on näiden lukujen keskiarvo? {list}",
+      "hints": [
+        "Keskiarvo on (kaikkien summa) ÷ (lukujen määrä).",
+        "Laske ensin kaikki yhteen."
+      ],
+      "explanation": "({sum})÷{n}={ans}, joten keskiarvo on {ans}."
+    },
+    "meanSum": {
+      "prompt": "Lukujen määrä on {n} ja keskiarvo {m}. Mikä on näiden {n} luvun summa? (vain numerot)",
+      "hints": [
+        "keskiarvo = summa ÷ lukumäärä.",
+        "Siis summa = keskiarvo × lukumäärä."
+      ],
+      "explanation": "{m}×{n}={ans}."
+    },
+    "median": {
+      "prompt": "Mikä on aineiston {list} mediaani?",
+      "hints": [
+        "Järjestä aineisto suuruusjärjestykseen.",
+        "Keskimmäinen arvo on mediaani; jos arvoja on parillinen määrä, ota kahden keskimmäisen keskiarvo."
+      ],
+      "explanation": "Järjestyksessä: {sorted}, joten mediaani on {ans}."
+    },
+    "minOf": {
+      "prompt": "Mikä on pienin luvuista {list}? (vain numerot)",
+      "hints": [
+        "Vertaa lukuja yksi kerrallaan.",
+        "Etsi luku, joka kuvaa pienintä määrää."
+      ],
+      "explanation": "Pienin luvuista {list} on {ans}."
+    },
+    "minus": {
+      "prompt": "Laske $ {a} - {b} $.",
+      "hints": [
+        "Vähennä samojen lukupaikkojen numerot toisistaan.",
+        "Kun vähennys ei onnistu, lainaa seuraavasta lukupaikasta 10."
+      ],
+      "explanation": "{a}-{b}={ans}."
+    },
+    "missAdd": {
+      "prompt": "Mikä luku tulee ruutuun yhtälössä $\\square + {b} = {c}$? (vain numerot)",
+      "hints": [
+        "Löydät luvun □ vähentämällä tunnetun luvun summasta.",
+        "Laske {c}-{b}."
+      ],
+      "explanation": "{c}-{b}={ans}, joten □={ans}."
+    },
+    "missSub": {
+      "prompt": "Mikä luku tulee ruutuun yhtälössä $ {a} - \\square = {c}$? (vain numerot)",
+      "hints": [
+        "Löydät luvun □ vähentämällä tuloksen ensimmäisestä luvusta.",
+        "Laske {a}-{c}."
+      ],
+      "explanation": "{a}-{c}={ans}, joten □={ans}."
+    },
+    "mixedCalc": {
+      "prompt": "Laske: {expr}",
+      "hints": [
+        "Laske ensin sulkeiden sisällä olevat laskut.",
+        "Tee sitten kerto- ja jakolaskut ennen yhteen- ja vähennyslaskuja, vasemmalta oikealle."
+      ],
+      "explanation": "{steps}, joten vastaus on {ans}."
+    },
+    "mode": {
+      "prompt": "Mikä on aineiston {list} moodi?",
+      "hints": [
+        "Moodi on useimmin esiintyvä arvo.",
+        "Laske kunkin arvon esiintymiskerrat."
+      ],
+      "explanation": "{ans} esiintyy useimmin, joten moodi on {ans}."
+    },
+    "moreBy": {
+      "prompt": "Mikä luku on {k} suurempi kuin {n}? (vain numerot)",
+      "hints": [
+        "Se vastaa laskemista ylöspäin {k}:n askelin.",
+        "Keskity niiden lukupaikkojen numeroihin, jotka muuttuvat."
+      ],
+      "explanation": "{n}+{k}={ans}."
+    },
+    "nextNum": {
+      "prompt": "Mikä luku tulee heti luvun {n} jälkeen? (vain numerot)",
+      "hints": [
+        "Laske luvut järjestyksessä.",
+        "Laske luvusta {n} yksi eteenpäin."
+      ],
+      "explanation": "Heti luvun {n} jälkeen tulee {ans}."
+    },
+    "onesDigit": {
+      "prompt": "Mikä on luvun ${n}$ ykkösten numero? (vain numerot)",
+      "hints": [
+        "Se on oikeanpuoleisin numero.",
+        "Ykkösten paikka näyttää yksittäiset yksiköt."
+      ],
+      "explanation": "Luvun {n} ykkösten numero on {ans}."
+    },
+    "percentChange": {
+      "prompt": "Arvo muuttui luvusta {a} lukuun {b}. Kuinka monta prosenttia se kasvoi? (%)",
+      "hints": [
+        "Kasvuprosentti = (kasvun määrä) ÷ (alkuarvo) × 100.",
+        "Kasvun määrä on {b}-{a}."
+      ],
+      "explanation": "({b}-{a})÷{a}×100={ans}, eli {ans}%."
+    },
+    "permNP": {
+      "prompt": "Monellako tavalla voit valita {r} henkilöä {n} eri henkilöstä ja järjestää heidät riviin? (vain numerot)",
+      "hints": [
+        "Järjestyksellä on väliä, joten kyseessä on järjestetty valinta.",
+        "Aloita luvusta {n} ja kerro {r} peräkkäistä lukua laskevassa järjestyksessä."
+      ],
+      "explanation": "{calc}={ans}, joten tapoja on {ans}."
+    },
+    "permSame": {
+      "prompt": "Monellako tavalla sanan {word} kaikki kirjaimet voidaan järjestää riviin?",
+      "hints": [
+        "Kun kirjaimia toistuu, jaa kirjainten kokonaismäärän kertoma kunkin toistomäärän kertomalla.",
+        "Laske, kuinka monta kertaa kukin kirjain esiintyy."
+      ],
+      "explanation": "{calc}={ans} tapaa."
+    },
+    "pieCount": {
+      "prompt": "Ympyrädiagrammissa A on {p}% kokonaisuudesta. Kokonaismäärä on {t} henkilöä. Montako kuuluu A:han?",
+      "hints": [
+        "{p}% on $\\frac{p}{100}$.",
+        "Kerro kokonaismäärä osuudella."
+      ],
+      "explanation": "{t}×{p}÷100={ans}, eli {ans} henkilöä."
+    },
+    "plus": {
+      "prompt": "Laske $ {a} + {b} $.",
+      "hints": [
+        "Laske samojen lukupaikkojen numerot yhteen.",
+        "Kun lukupaikan summa on 10 tai enemmän, siirrä muistinumero seuraavaan paikkaan."
+      ],
+      "explanation": "{a}+{b}={ans}."
+    },
+    "pmAverage": {
+      "prompt": "Pienhiukkaspitoisuudet olivat 5 päivän aikana {list} (µg/m³). Mikä on keskimääräinen pitoisuus?",
+      "hints": [
+        "Keskiarvo on (summa) ÷ (päivien määrä).",
+        "Laske ensin 5 arvoa yhteen."
+      ],
+      "explanation": "({sum})÷5={ans}, joten keskiarvo on {ans}."
+    },
+    "prevNum": {
+      "prompt": "Mikä luku tulee juuri ennen lukua {n}? (vain numerot)",
+      "hints": [
+        "Laske taaksepäin.",
+        "Laske luvusta {n} yksi taaksepäin."
+      ],
+      "explanation": "Juuri ennen lukua {n} tulee {ans}."
+    },
+    "probAdd": {
+      "prompt": "Kahdelle tapahtumalle A ja B pätee $P(A)={pa}$, $P(B)={pb}$ ja $P(A\\cap B)={pab}$. Mikä on $P(A\\cup B)$?",
+      "hints": [
+        "Käytä yhteenlaskusääntöä $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$.",
+        "Sijoita annetut arvot yksi kerrallaan."
+      ],
+      "explanation": "{pa}+{pb}-{pab}={ans}."
+    },
+    "probComplement": {
+      "prompt": "Tapahtuman A todennäköisyys on $P(A)={pa}$. Mikä on vastatapahtuman todennäköisyys $P(A^c)$?",
+      "hints": [
+        "Vastatapahtuman todennäköisyys on $1-P(A)$.",
+        "Vähennä $P(A)$ luvusta 1."
+      ],
+      "explanation": "1-{pa}={ans}."
+    },
+    "propX": {
+      "prompt": "Mikä luku tulee ruutuun verrannossa ${a} : {b} = \\square : {d}$? (vain numerot)",
+      "hints": [
+        "Verrannossa ulompien termien tulo on sama kuin sisempien termien tulo.",
+        "Ratkaise □ × {b} = {a} × {d}."
+      ],
+      "explanation": "□×{b}={a}×{d}, joten □={ans}."
+    },
+    "qfuncValue": {
+      "prompt": "Mikä on toisen asteen funktion $y={expr}$ arvo $y$, kun $x={x}$? (vain numerot)",
+      "hints": [
+        "Sijoita annettu arvo x:n paikalle.",
+        "Laske ensin neliö."
+      ],
+      "explanation": "Sijoittamalla x={x} saadaan y={ans}."
+    },
+    "quadDisc": {
+      "prompt": "Mikä on toisen asteen yhtälön ${eq}=0$ diskriminantin $D=b^2-4ac$ arvo? (vain numerot)",
+      "hints": [
+        "Yhtälön $ax^2+bx+c=0$ diskriminantti on $D=b^2-4ac$.",
+        "Tarkkaile lukujen a, b ja c merkkejä."
+      ],
+      "explanation": "a={a}, b={b}, c={c}, joten D=({b})²-4×({a})×({c})={ans}."
+    },
+    "quadFourth": {
+      "prompt": "Nelikulmion kolme kulmaa ovat {a}°, {b}° ja {c}°. Montako astetta on neljäs kulma? (astetta)",
+      "hints": [
+        "Nelikulmion neljän kulman summa on 360°.",
+        "Vähennä kolme tunnettua kulmaa luvusta 360."
+      ],
+      "explanation": "360-{a}-{b}-{c}={ans}, eli {ans}°."
+    },
+    "quadRoot": {
+      "prompt": "Kumpi yhtälön ${eq}$ kahdesta juuresta on suurempi? (vain numerot)",
+      "hints": [
+        "Jaa vasen puoli tekijöihin.",
+        "Juuret ovat x:n arvoja, jotka tekevät jonkin tekijän nollaksi."
+      ],
+      "explanation": "Lausekkeesta ${fact}$ saadaan juuret {roots}, joten suurempi juuri on {ans}."
+    },
+    "radDeg": {
+      "prompt": "Kirjoita $\\theta=\\dfrac{{num}}{{d}}$ (radiaania) asteina. (vain numerot)",
+      "hints": [
+        "$\\pi$ radiaania on 180°.",
+        "Sijoita 180° symbolin $\\pi$ paikalle."
+      ],
+      "explanation": "Sijoittamalla $\\pi=180^\\circ$ saadaan {ans}°."
+    },
+    "ratioPct": {
+      "prompt": "Kirjoita $\\frac{{a}}{{b}}$ prosentteina. (vain numerot)",
+      "hints": [
+        "Prosenttiluku on suhdeluku kerrottuna luvulla 100.",
+        "Voit myös muuntaa murtoluvun nimittäjäksi 100."
+      ],
+      "explanation": "$\\frac{{a}}{{b}}\\times100={ans}$, eli {ans}%."
+    },
+    "rectArea": {
+      "prompt": "Suorakulmio on {w} cm leveä ja {h} cm korkea. Mikä on sen pinta-ala yksikössä cm²? (vain numerot)",
+      "hints": [
+        "Suorakulmion pinta-ala on leveys × korkeus.",
+        "Kerro sivujen pituudet keskenään."
+      ],
+      "explanation": "{w}×{h}={ans}, joten pinta-ala on {ans} cm²."
+    },
+    "rectPerim": {
+      "prompt": "Suorakulmio on {w} cm leveä ja {h} cm korkea. Kuinka pitkä sen piiri on senttimetreinä? (cm)",
+      "hints": [
+        "Piiri on neljän sivun summa.",
+        "Voit käyttää kaavaa (leveys + korkeus) × 2."
+      ],
+      "explanation": "({w}+{h})×2={ans}, joten piiri on {ans} cm."
+    },
+    "relFreq": {
+      "prompt": "Kokonaisfrekvenssi on {t} ja yhden luokan frekvenssi {f}. Mikä on kyseisen luokan suhteellinen frekvenssi? (desimaaliluku)",
+      "hints": [
+        "Suhteellinen frekvenssi = (luokan frekvenssi) ÷ (kokonaisfrekvenssi).",
+        "Kirjoita tulos desimaalilukuna."
+      ],
+      "explanation": "{f}÷{t}={ans}, joten suhteellinen frekvenssi on {ans}."
+    },
+    "remainder": {
+      "prompt": "Mikä on jakojäännös, kun $P(x)={poly}$ jaetaan lausekkeella ${div}$? (vain numerot)",
+      "hints": [
+        "Jakojäännöslause: kun P(x) jaetaan lausekkeella x-a, jakojäännös on P(a).",
+        "Sijoita a x:n paikalle ja laske."
+      ],
+      "explanation": "Jakojäännöslauseen mukaan P({a})={ans}."
+    },
+    "repComb": {
+      "prompt": "Monellako tavalla voit valita {r} esinettä {n} eri lajista, kun toisto sallitaan?",
+      "hints": [
+        "Kun lajeja on n ja valittavia esineitä r, määrä on sama kuin valittaessa r alkiota n+r−1 alkiosta.",
+        "Sijoita lajien määrä ja esineiden määrä."
+      ],
+      "explanation": "{calc}={ans}."
+    },
+    "repPerm": {
+      "prompt": "Monellako tavalla voit valita {r} esinettä {n} eri esineestä toiston ollessa sallittu ja järjestää ne riviin?",
+      "hints": [
+        "Toiston sallivien järjestysten määrä saadaan kertomalla valintojen määrä itsellään kerran kutakin paikkaa kohti.",
+        "Kukin paikka voidaan täyttää {n} tavalla."
+      ],
+      "explanation": "{prod}={ans} tapaa."
+    },
+    "rootMax": {
+      "prompt": "Mikä on yhtälön {eq} suurin reaalijuuri?",
+      "hints": [
+        "Jaa lauseke tekijöiden tuloksi. Hornerin menetelmällä voi löytää ensimmäisen juuren.",
+        "Juuret ovat x:n arvoja, jotka tekevät jonkin tekijän nollaksi."
+      ],
+      "explanation": "{fact}, joten reaalijuuret ovat {roots} ja suurin on {ans}."
+    },
+    "rootSum": {
+      "prompt": "Mikä on yhtälön {eq} kaikkien reaalijuurten summa?",
+      "hints": [
+        "Jaa lauseke tekijöiden tuloksi. Hornerin menetelmällä voi löytää ensimmäisen juuren.",
+        "Juuret ovat x:n arvoja, jotka tekevät jonkin tekijän nollaksi."
+      ],
+      "explanation": "{fact}, joten reaalijuuret ovat {roots} ja niiden summa on {ans}."
+    },
+    "roundTo": {
+      "prompt": "Mikä on {n} yksiköissä {u}, kun käytetään tapaa ”{mode}”?",
+      "hints": [
+        "Katso lukupaikan {u} alapuolella olevia numeroita.",
+        "Ylöspäin pyöristys korottaa aina, alaspäin pyöristys poistaa aina, ja lähimpään pyöristys korottaa vain, kun numero on 5 tai suurempi."
+      ],
+      "explanation": "Tavalla ”{mode}” luku {n} muuttuu luvuksi {ans} yksiköissä {u}."
+    },
+    "seqNext": {
+      "prompt": "Etsi sääntö ja kirjoita puuttuva luku: ${list}, \\square$",
+      "hints": [
+        "Etsi vierekkäisten lukujen erotus.",
+        "Luvut kasvavat tai pienenevät joka askeleella saman verran."
+      ],
+      "explanation": "Vierekkäisten erotus on {d}, joten □={ans}."
+    },
+    "setCount": {
+      "prompt": "Jos $n(A)={na}$, $n(B)={nb}$ ja $n(A\\cap B)={nab}$, mikä on $n(A\\cup B)$?",
+      "hints": [
+        "Käytä kaavaa $n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$.",
+        "Sijoita annetut arvot yksi kerrallaan."
+      ],
+      "explanation": "{na}+{nb}-{nab}={ans}."
+    },
+    "sigmaSum": {
+      "prompt": "Laske tämän summan arvo: {expr}",
+      "hints": [
+        "Merkki ∑ tarkoittaa: sijoita vuorotellen k=1, 2, 3, … ja laske kaikki yhteen.",
+        "Voit käyttää myös kaavoja $\\sum k=\\frac{n(n+1)}{2}$ ja $\\sum c=cn$."
+      ],
+      "explanation": "{steps}, joten summa on {ans}."
+    },
+    "simpleInterest": {
+      "prompt": "{p} wonia talletetaan {n} vuodeksi {r}%:n yksinkertaisella vuosikorolla. Paljonko korkoa kertyy? (wonia)",
+      "hints": [
+        "Yksinkertainen korko = pääoma × korkoprosentti desimaalina × vuodet.",
+        "{r}% on {rr}."
+      ],
+      "explanation": "{p}×{rr}×{n}={ans}, joten korko on {ans} wonia."
+    },
+    "slope2": {
+      "prompt": "Mikä on pisteiden $({x1},\\,{y1})$ ja $({x2},\\,{y2})$ kautta kulkevan suoran kulmakerroin? (vain numerot)",
+      "hints": [
+        "Kulmakerroin on (y:n muutos) ÷ (x:n muutos).",
+        "Jaa y-koordinaattien erotus x-koordinaattien erotuksella."
+      ],
+      "explanation": "$\\frac{{y2}-({y1})}{{x2}-({x1})}={ans}$."
+    },
+    "slopeOf": {
+      "prompt": "Mikä on ensimmäisen asteen funktion $y={a}x+{b}$ kulmakerroin?",
+      "hints": [
+        "Muodossa $y=ax+b$ kulmakerroin on a.",
+        "Lue x:n kerroin."
+      ],
+      "explanation": "Kulmakerroin on {ans}."
+    },
+    "solveLin": {
+      "prompt": "Ratkaise ensimmäisen asteen yhtälö ${eq}$ (etsi x).",
+      "hints": [
+        "Lisää tai vähennä sama luku molemmilta puolilta, jotta x-termi jää yksin.",
+        "Jaa sitten molemmat puolet x:n edessä olevalla luvulla."
+      ],
+      "explanation": "Yhtälöstä ${eq}$ saadaan x={ans}."
+    },
+    "sqrtProd": {
+      "prompt": "Mikä on lausekkeen $\\sqrt{{a}} \\times \\sqrt{{b}}$ arvo? (vain numerot)",
+      "hints": [
+        "$\\sqrt{a}\\times\\sqrt{b}=\\sqrt{ab}$.",
+        "Tarkista, onko tulo neliöluku."
+      ],
+      "explanation": "$\\sqrt{{a}\\times{b}}=\\sqrt{{prod}}={ans}$."
+    },
+    "sqrtVal": {
+      "prompt": "Mikä on lausekkeen $\\sqrt{{n}}$ arvo? (vain numerot)",
+      "hints": [
+        "Etsi positiivinen luku, jonka neliö on {n}.",
+        "Ajattele kertotaulua."
+      ],
+      "explanation": "${ans}^2={n}$, joten $\\sqrt{{n}}={ans}$."
+    },
+    "stdev": {
+      "prompt": "Mikä on aineiston {list} keskihajonta? (populaation keskihajonta)",
+      "hints": [
+        "Laske ensin keskiarvo.",
+        "Poikkeamien neliöiden keskiarvon eli varianssin neliöjuuri on keskihajonta."
+      ],
+      "explanation": "Keskiarvo on {mean} ja varianssi {var}, joten keskihajonta on {ans}."
+    },
+    "subThree": {
+      "prompt": "Paljonko on {a}-{b}?",
+      "hints": [
+        "Vähennä ykkösistä alkaen.",
+        "Jos vähennys ei onnistu, lainaa seuraavasta lukupaikasta."
+      ],
+      "explanation": "{a}-{b}={ans}."
+    },
+    "subsetCount": {
+      "prompt": "Montako osajoukkoa on joukolla, jossa on {n} alkiota?",
+      "hints": [
+        "Joukolla, jossa on n alkiota, on $2^n$ osajoukkoa.",
+        "Ajattele, että päätät jokaisesta alkiosta, otetaanko se mukaan vai ei."
+      ],
+      "explanation": "{prod}={ans}, joten osajoukkoja on {ans}."
+    },
+    "taxTotal": {
+      "prompt": "Tuote maksaa {p} wonia ja hintaan lisätään {t}% arvonlisäveroa. Montako wonia on maksettava? (wonia)",
+      "hints": [
+        "Vero on hinta × {t}%.",
+        "Lisää vero hintaan."
+      ],
+      "explanation": "{p}+{p}×{tr}={ans}, eli {ans} wonia."
+    },
+    "tensDigit": {
+      "prompt": "Mikä on luvun ${n}$ kymmenten numero? (vain numerot)",
+      "hints": [
+        "Se on toinen numero oikealta.",
+        "Etsi numero heti ykkösten vasemmalta puolelta."
+      ],
+      "explanation": "Luvun {n} kymmenten numero on {ans}."
+    },
+    "times": {
+      "prompt": "Laske $ {a} \\times {b} $.",
+      "hints": [
+        "Ajattele kertotaulua tai yhtä suuria ryhmiä.",
+        "Suuremmilla luvuilla kerro lukupaikka kerrallaan ja laske osatulot yhteen."
+      ],
+      "explanation": "{a}×{b}={ans}."
+    },
+    "triThird": {
+      "prompt": "Kolmion kaksi kulmaa ovat {a}° ja {b}°. Montako astetta on kolmas kulma? (astetta)",
+      "hints": [
+        "Kolmion kolmen kulman summa on 180°.",
+        "Vähennä kaksi tunnettua kulmaa luvusta 180."
+      ],
+      "explanation": "180-{a}-{b}={ans}, eli {ans}°."
+    },
+    "variance": {
+      "prompt": "Mikä on aineiston {list} varianssi?",
+      "hints": [
+        "Laske keskiarvo ja sitten kunkin arvon poikkeama siitä.",
+        "Varianssi on poikkeamien neliöiden keskiarvo."
+      ],
+      "explanation": "Keskiarvo on {mean} ja poikkeamien neliöiden summa {sq}, joten varianssi on {sq}÷{n}={ans}."
+    },
+    "vecNorm": {
+      "prompt": "Mikä on vektorin $\\vec{a}=({x},\\ {y})$ pituus $|\\vec{a}|$? (vain numerot)",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Korota komponentit neliöön, laske yhteen ja ota neliöjuuri."
+      ],
+      "explanation": "$\\sqrt{({x})^2+({y})^2}={ans}$."
+    },
+    "vertexSum": {
+      "prompt": "Toisen asteen funktion $y={expr}$ huippu on $(p,\\ q)$. Mikä on $p+q$? (vain numerot)",
+      "hints": [
+        "Muodossa $y=a(x-p)^2+q$ huippu on $(p,\\ q)$.",
+        "Tarkkaile sulkeiden sisällä olevaa merkkiä."
+      ],
+      "explanation": "Huippu on $({p},\\ {q})$, joten p+q={ans}."
+    },
+    "xInt": {
+      "prompt": "Mikä on suoran $y={a}x+{b}$ x-akselin leikkauskohdan x-koordinaatti?",
+      "hints": [
+        "x-akselin leikkauskohdan x-arvo saadaan, kun y=0.",
+        "Ratkaise $0=ax+b$."
+      ],
+      "explanation": "Yhtälöstä $0={a}x+{b}$ saadaan x={ans}."
+    },
+    "yInt": {
+      "prompt": "Mikä on suoran $y={a}x+{b}$ y-akselin leikkauskohdan y-koordinaatti?",
+      "hints": [
+        "y-akselin leikkauskohdan y-arvo saadaan, kun x=0.",
+        "Muodossa $y=ax+b$ se on b."
+      ],
+      "explanation": "y-akselin leikkauskohdan y-koordinaatti on {ans}."
+    }
+  },
+  "texts": {
+    "rd_down": "pyöristäminen alaspäin",
+    "rd_half": "pyöristäminen lähimpään",
+    "rd_up": "pyöristäminen ylöspäin"
+  }
+}

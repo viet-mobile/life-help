@@ -1,0 +1,1065 @@
+{
+  "templates": {
+    "addThree": {
+      "prompt": "Magkano ang {a}+{b}?",
+      "hints": [
+        "Magdagdag mula sa puwestong isahan.",
+        "Kung 10 o higit pa ang kabuuan sa isang hanay, magdala sa susunod na puwesto."
+      ],
+      "explanation": "{a}+{b}={ans}."
+    },
+    "areaX2": {
+      "prompt": "Ano ang lawak na napapaloob sa kurbang $y={k}x^2$, $x$-axis at linyang $x={a}$? (mga digit lamang)",
+      "hints": [
+        "Ang lawak ay ang definite integral mula 0 hanggang {a}.",
+        "$\\int x^2\\,dx=\\frac{x^3}{3}$."
+      ],
+      "explanation": "$\\int_0^{{a}} {k}x^2\\,dx=\\frac{{k}\\times{a}^3}{3}={ans}$."
+    },
+    "arithSum": {
+      "prompt": "Ano ang kabuuan ng unang {n} termino ng aritmetikong sequence na may unang terminong {a} at kapwa diperensiyang {d}? (mga digit lamang)",
+      "hints": [
+        "Ang pormula ng kabuuan ay $S_n=\\frac{n(2a+(n-1)d)}{2}$.",
+        "Maaari ring hanapin ang huling termino at kalkulahin ang (una + huli) × bilang ng termino ÷ 2."
+      ],
+      "explanation": "$S_{{n}}=\\frac{{n}(2\\times{a}+({n}-1)\\times({d}))}{2}={ans}$."
+    },
+    "arithTerm": {
+      "prompt": "Ano ang terminong bilang {n} ng aritmetikong sequence na may unang terminong {a} at kapwa diperensiyang {d}? (mga digit lamang)",
+      "hints": [
+        "Ang pangkalahatang termino ay $a_n=a+(n-1)d$.",
+        "I-multiply ang (n-1) sa kapwa diperensiya at idagdag sa unang termino."
+      ],
+      "explanation": "{a}+({n}-1)×({d})={ans}."
+    },
+    "bigNum": {
+      "prompt": "Anong bilang ang binubuo ng {a} sampung libuhan at {b} libuhan? (mga digit lamang)",
+      "hints": [
+        "Ang {a} sampung libuhan ay {a}0000.",
+        "Ang {b} libuhan ay {b}000. Idagdag ang mga ito."
+      ],
+      "explanation": "Ang {a} sampung libuhan at {b} libuhan ay {ans}."
+    },
+    "binomCoef": {
+      "prompt": "Ano ang koepisyente ng $x^{{k}}$ sa pagpapalawak ng $(x+1)^{{n}}$?",
+      "hints": [
+        "Ayon sa teoremang binomial, ang mga koepisyente ay bilang ng mga kombinasyon.",
+        "Ang koepisyente ng $x^k$ ay $_nC_k$, ang bilang ng paraan ng pagpili ng k mula sa n."
+      ],
+      "explanation": "{calc}={ans}."
+    },
+    "binomMean": {
+      "prompt": "Kung sumusunod ang random variable na $X$ sa distribusyong binomial na $B({n},\\ {p})$, ano ang $E(X)$? (mga digit lamang)",
+      "hints": [
+        "Ang mean ng $B(n,\\ p)$ ay $np$.",
+        "I-multiply ang n at p."
+      ],
+      "explanation": "E(X)={n}×{p}={ans}."
+    },
+    "chanceFraction": {
+      "prompt": "May {a} bolang A at {b} bolang B sa kahon. Kukuha ng isang bola. Ano ang posibilidad na bola itong A, bilang desimal?",
+      "hints": [
+        "Posibilidad = (mga gustong kaso) ÷ (lahat ng kaso).",
+        "Hanapin muna ang kabuuang bilang ng bola."
+      ],
+      "explanation": "{a}÷{total}={ans}, kaya {ans} ang posibilidad."
+    },
+    "ciHalf": {
+      "prompt": "Ang standard deviation ng populasyon ay {s} at ang laki ng sample ay {n}. Ano ang 95% na palugit ng pagkakamali na $1.96\\times\\frac{σ}{\\sqrt{ n }}$? (dalawang desimal na puwesto)",
+      "hints": [
+        "Hanapin muna ang $\\sqrt{ n }$.",
+        "Hatiin ang σ dito at i-multiply sa 1.96."
+      ],
+      "explanation": "$1.96\\times\\frac{{s}}{{rt}}={ans}$."
+    },
+    "circleArea": {
+      "prompt": "May radius na {r} cm ang bilog. Ano ang lawak nito sa cm²? (gamitin ang $3.14$ para sa pi) (cm²)",
+      "hints": [
+        "Ang lawak ay radius × radius × pi.",
+        "Ikuwadrado ang radius, saka i-multiply sa 3.14."
+      ],
+      "explanation": "{r}×{r}×3.14={ans}, kaya {ans} cm² ang lawak."
+    },
+    "circleR": {
+      "prompt": "Ano ang radius ng bilog na $({fx})^2+({fy})^2={r2}$? (mga digit lamang)",
+      "hints": [
+        "Sa $(x-a)^2+(y-b)^2=r^2$, ang r ang radius.",
+        "Ang bilang sa kanan ay r²."
+      ],
+      "explanation": "$r^2={r2}$, kaya {ans} ang radius."
+    },
+    "circum": {
+      "prompt": "May radius na {r} cm ang bilog. Gaano kahaba ang sirkumperensiya nito sa cm? (gamitin ang $3.14$ para sa pi) (cm)",
+      "hints": [
+        "Ang sirkumperensiya ay diyametro × pi.",
+        "Doble ng radius ang diyametro."
+      ],
+      "explanation": "{r}×2×3.14={ans}, kaya {ans} cm ito."
+    },
+    "coinCases": {
+      "prompt": "Ilang resulta ang mayroon kapag sabay na inihagis ang {n} barya? (mga digit lamang)",
+      "hints": [
+        "May 2 resulta ang isang barya: ulo o buntot.",
+        "I-multiply ang bilang ng resulta ng bawat barya."
+      ],
+      "explanation": "Ang produkto ng {n} salik na bawat isa ay 2 ay {ans}, kaya may {ans} resulta."
+    },
+    "combNC": {
+      "prompt": "Sa ilang paraan makakapili ng {r} mula sa {n} magkakaibang tao kung hindi mahalaga ang pagkakasunod? (mga digit lamang)",
+      "hints": [
+        "Hindi mahalaga ang pagkakasunod, kaya kombinasyon ito.",
+        "Hatiin ang bilang ng permutasyon sa {r}!."
+      ],
+      "explanation": "{calc}={ans}, kaya may {ans} paraan."
+    },
+    "complexSum": {
+      "prompt": "Ano ang kabuuan ng tunay na bahagi at imahinaryong bahagi ng ${expr}$? (mga digit lamang)",
+      "hints": [
+        "Pagsamahin ang mga tunay na bahagi at pagsamahin ang mga imahinaryong bahagi.",
+        "Ituring ang i na parang titik."
+      ],
+      "explanation": "Ang tunay na bahagi ay {re} at ang imahinaryong bahagi ay {im}, kaya {ans} ang kabuuan."
+    },
+    "composite": {
+      "prompt": "Kung $f(x)={f}$ at $g(x)={g}$, ano ang {comp}?",
+      "hints": [
+        "Ang komposisyong $(g\\circ f)(a)$ ay nangangahulugang $g(f(a))$. Magsimula sa panloob na function palabas.",
+        "Hanapin muna ang halaga ng panloob na function, saka ipasok sa panlabas na function."
+      ],
+      "explanation": "{steps}, kaya {ans} ang sagot."
+    },
+    "condProb": {
+      "prompt": "Para sa mga pangyayaring $A,\\ B$, $P(A)={pa}$ at $P(A\\cap B)={pab}$. Ano ang $P(B\\mid A)$? (sumulat ng desimal)",
+      "hints": [
+        "Kondisyonal na probabilidad: $P(B\\mid A)=\\frac{P(A\\cap B)}{P(A)}$.",
+        "Hatiin ang dalawang halaga."
+      ],
+      "explanation": "{pab}÷{pa}={ans}."
+    },
+    "convKgG": {
+      "prompt": "Ilang g ang {v} kg? (g)",
+      "hints": [
+        "Ang 1 kg ay 1000 g.",
+        "I-multiply ang {v} sa 1000."
+      ],
+      "explanation": "{v}×1000={ans}, kaya {ans} g."
+    },
+    "convMCm": {
+      "prompt": "Ilang cm ang {v} m? (cm)",
+      "hints": [
+        "Ang 1 m ay 100 cm.",
+        "I-multiply ang {v} sa 100."
+      ],
+      "explanation": "{v}×100={ans}, kaya {ans} cm."
+    },
+    "crossX": {
+      "prompt": "Nagtatagpo sa P ang mga graph ng $y={a1}x+{b1}$ at $y={a2}x+{b2}$. Ano ang x-coordinate ng P?",
+      "hints": [
+        "Sa interseksiyon, pareho ang dalawang halaga ng y.",
+        "Lutasin ang $a_1x+b_1=a_2x+b_2$."
+      ],
+      "explanation": "Nagbibigay ang ${a1}x+{b1}={a2}x+{b2}$ ng x={ans}."
+    },
+    "cubeVol": {
+      "prompt": "Ang isang gilid ng kubo ay {a} cm. Ano ang bolyum nito sa cm³? (mga digit lamang)",
+      "hints": [
+        "Ang bolyum ng kubo ay gilid × gilid × gilid.",
+        "I-multiply ang tatlong salik na bawat isa ay {a}."
+      ],
+      "explanation": "{a}×{a}×{a}={ans}, kaya {ans} cm³ ang bolyum."
+    },
+    "cuboidVol": {
+      "prompt": "Ang parihabang prisma ay may habang {a} cm, lapad na {b} cm at taas na {c} cm. Ano ang bolyum nito sa cm³? (cm³)",
+      "hints": [
+        "Ang bolyum ng parihabang prisma ay haba × lapad × taas.",
+        "I-multiply ang lahat ng tatlong haba."
+      ],
+      "explanation": "{a}×{b}×{c}={ans}, kaya {ans} cm³ ang bolyum."
+    },
+    "dataRange": {
+      "prompt": "Ano ang diperensiya ng pinakamalaki at pinakamaliit na halaga sa {list}?",
+      "hints": [
+        "Hanapin ang pinakamalaki at pinakamaliit na halaga.",
+        "Ibawas ang mas maliit mula sa mas malaki."
+      ],
+      "explanation": "{max}-{min}={ans}."
+    },
+    "decPct": {
+      "prompt": "Isulat ang desimal na ito bilang porsiyento: ${d}$ (mga digit lamang)",
+      "hints": [
+        "I-multiply ang desimal sa 100 para makuha ang porsiyento.",
+        "Ilipat ang tuldok desimal nang dalawang puwesto pakanan."
+      ],
+      "explanation": "{d}×100={ans}, kaya {ans}% ito."
+    },
+    "decTimes": {
+      "prompt": "Hanapin ang halaga ng $ {a} \\times {b} $.",
+      "hints": [
+        "Huwag munang pansinin ang tuldok desimal at mag-multiply na parang buong bilang.",
+        "Ibalik ang tuldok desimal ayon sa kabuuang bilang ng desimal na puwesto ng mga salik."
+      ],
+      "explanation": "{a}×{b}={ans}."
+    },
+    "defInt": {
+      "prompt": "Ano ang halaga ng $\\int_{0}^{{b}} ({fx})\\,dx$? (mga digit lamang)",
+      "hints": [
+        "Hanapin ang antiderivative, saka kalkulahin ang (halaga sa itaas na limit) - (halaga sa ibabang limit).",
+        "$\\int x\\,dx=\\frac{x^2}{2}$ at $\\int c\\,dx=cx$."
+      ],
+      "explanation": "Kapag ipinasok ang x={b} sa antiderivative na ${anti}$, makukuha ang {ans}."
+    },
+    "derivAt": {
+      "prompt": "Kung $f(x)={poly}$, ano ang $f'({a})$? (mga digit lamang)",
+      "hints": [
+        "$(x^n)'=nx^{n-1}$.",
+        "Hanapin ang derivative, saka ipalit ang {a} sa x."
+      ],
+      "explanation": "$f'(x)={deriv}$, kaya $f'({a})={ans}$."
+    },
+    "derivVal": {
+      "prompt": "Kung $f(x)={f}$, ano ang $f'({a})$?",
+      "hints": [
+        "Para sa komposisyong function, kunin ang derivative ng panlabas na function at i-multiply sa derivative ng panloob; para sa kusyente, $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$.",
+        "Gamitin ang $(e^x)'=e^x$, $(\\ln x)'=\\frac{1}{x}$, $(\\sin x)'=\\cos x$ at $(\\cos x)'=-\\sin x$."
+      ],
+      "explanation": "{steps}."
+    },
+    "diameter": {
+      "prompt": "Ang radius ng bilog ay {r} cm. Ilang cm ang diyametro nito? (cm)",
+      "hints": [
+        "Doble ng radius ang diyametro.",
+        "I-multiply ang radius sa 2."
+      ],
+      "explanation": "{r}×2={ans}, kaya {ans} cm ang diyametro."
+    },
+    "directConst": {
+      "prompt": "Dumaraan sa puntong ({x1}, {y1}) ang graph ng tuwirang proporsiyong y=ax. Ano ang a?",
+      "hints": [
+        "Ipasok ang punto sa y=ax.",
+        "a=y÷x."
+      ],
+      "explanation": "a={y1}÷{x1}={ans}."
+    },
+    "discount": {
+      "prompt": "Nagkakahalaga ng {p} won ang isang bagay at ibinebenta nang may {d}% diskuwento. Ano ang presyo ng pagbebenta? (won)",
+      "hints": [
+        "Ang diskuwento ay presyo × {d}%.",
+        "Ibawas ang diskuwento sa presyo."
+      ],
+      "explanation": "{p}-{p}×{dr}={ans}, kaya {ans} won."
+    },
+    "dist2": {
+      "prompt": "Ano ang layo sa pagitan ng mga puntong A({x1}, {y1}) at B({x2}, {y2})? (mga digit lamang)",
+      "hints": [
+        "Ang layo ay $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.",
+        "Ikuwadrado ang diperensiya ng mga x-coordinate at y-coordinate, saka idagdag."
+      ],
+      "explanation": "$\\sqrt{{dx}^2+{dy}^2}={ans}$."
+    },
+    "divide": {
+      "prompt": "Hanapin ang halaga ng $ {a} \\div {b} $.",
+      "hints": [
+        "Gamitin nang pabaligtad ang multiplication table ng divisor.",
+        "Hanapin ang bilang na kapag minultiply sa {b} ay nagbibigay ng {a}."
+      ],
+      "explanation": "{a}÷{b}={ans}."
+    },
+    "divisorCount": {
+      "prompt": "Ilang divisor mayroon ang {n}?",
+      "hints": [
+        "Hanapin ang bawat bilang na eksaktong nakahahati sa {n}.",
+        "Suriin mula sa pinakamaliit pataas."
+      ],
+      "explanation": "Ang mga divisor ng {n} ay {list}: may {ans} lahat."
+    },
+    "equilibrium": {
+      "prompt": "Nagtatagpo ang kurba ng demand na $p={a}-{b}q$ at kurba ng suplay na $p={c}+{d}q$ sa daming ekwilibriyong q. Ano ang q?",
+      "hints": [
+        "Sa ekwilibriyo, pantay ang presyo ng demand at presyo ng suplay.",
+        "Lutasin ang $a-bq=c+dq$."
+      ],
+      "explanation": "Nagbibigay ang ${a}-{b}q={c}+{d}q$ ng q={ans}."
+    },
+    "expMul": {
+      "prompt": "Sa $x^{{a}} \\times x^{{b}} = x^{\\square}$, anong bilang ang ilalagay sa kahon? (mga digit lamang)",
+      "hints": [
+        "Kapag pareho ang base, idagdag ang mga eksponente.",
+        "Kalkulahin ang {a}+{b}."
+      ],
+      "explanation": "{a}+{b}={ans}, kaya □={ans}."
+    },
+    "expPow": {
+      "prompt": "Sa $(x^{{a}})^{{b}} = x^{\\square}$, anong bilang ang ilalagay sa kahon? (mga digit lamang)",
+      "hints": [
+        "Sa power ng power, minumultiply ang mga eksponente.",
+        "Kalkulahin ang {a}×{b}."
+      ],
+      "explanation": "{a}×{b}={ans}, kaya □={ans}."
+    },
+    "expandPQ": {
+      "prompt": "Kung $({fa})({fb}) = x^2+px+q$, ano ang $p+q$? (mga digit lamang)",
+      "hints": [
+        "Gamitin ang $(x+a)(x+b)=x^2+(a+b)x+ab$.",
+        "Ang p ang kabuuan ng dalawang bilang at q ang produkto nila."
+      ],
+      "explanation": "p={p} at q={q}, kaya p+q={ans}."
+    },
+    "expandSquare": {
+      "prompt": "Kung $({e})^2 = x^2+px+q$, ano ang $p+q$? (mga digit lamang)",
+      "hints": [
+        "Gamitin ang $(x+a)^2=x^2+2ax+a^2$.",
+        "Ang p ay 2a at q ay a²."
+      ],
+      "explanation": "p={p} at q={q}, kaya p+q={ans}."
+    },
+    "exprValue": {
+      "prompt": "Kapag $x={x}$, ano ang halaga ng ${expr}$?",
+      "hints": [
+        "Ipalit ang ibinigay na bilang sa x.",
+        "Mag-multiply muna, saka magdagdag o magbawas."
+      ],
+      "explanation": "Sa pagpapalit ng x={x}, makukuha ang ${expr}={ans}$."
+    },
+    "factorDiff": {
+      "prompt": "Kapag isinalik ang ${poly}$ bilang $(x+m)(x+n)$, ano ang diperensiya ng m at n (mas malaki bawas mas maliit)? (mga digit lamang)",
+      "hints": [
+        "Hanapin ang dalawang bilang na ang kabuuan ay ang koepisyente ng x at ang produkto ay ang constant term.",
+        "Pagkahanap sa mga ito, ibawas ang mas maliit mula sa mas malaki."
+      ],
+      "explanation": "${poly}=({fm})({fn})$, kaya ang dalawang bilang ay {m} at {n}, at {ans} ang diperensiya."
+    },
+    "factorExp": {
+      "prompt": "Ang prime factorization ng ${n}$ ay $2^a\\times3^b$. Ano ang $a+b$?",
+      "hints": [
+        "Hatiin ang {n} sa 2 hangga't maaari.",
+        "Pagkatapos, hatiin ang natira sa 3."
+      ],
+      "explanation": "${n}=2^{a}\\times3^{b}$, kaya $a+b={ans}$."
+    },
+    "focusX": {
+      "prompt": "Ano ang $x$-coordinate ng focus ng parabolang $y^2={c}x$? (mga digit lamang)",
+      "hints": [
+        "Ang focus ng $y^2=4px$ ay $(p,\\ 0)$.",
+        "Hanapin ang p mula sa {c}=4p."
+      ],
+      "explanation": "4p={c}, kaya p={ans}."
+    },
+    "fracAdd": {
+      "prompt": "Hanapin ang halaga ng $\\frac{{a}}{{b}} + \\frac{{c}}{{d}}$. (puwede ang desimal o praksyong nakasulat na gaya ng 3/4)",
+      "hints": [
+        "Isulat muli ang mga praksyon na may kapwa denominator.",
+        "Idagdag ang mga numerator."
+      ],
+      "explanation": "$\\frac{{a}}{{b}}+\\frac{{c}}{{d}}=\\frac{{num}}{{den}}$."
+    },
+    "fracDivInt": {
+      "prompt": "Hanapin ang halaga ng $\\frac{{a}}{{b}} \\div {c}$. (puwede ang desimal o praksyong nakasulat na gaya ng 3/4)",
+      "hints": [
+        "Sa paghahati ng praksyon sa buong bilang, minumultiply ang denominator nito sa bilang na iyon.",
+        "Pasimplehin pagkatapos magkalkula."
+      ],
+      "explanation": "$\\frac{{a}}{{b}}\\div{c}=\\frac{{num}}{{den}}$."
+    },
+    "fracToDec": {
+      "prompt": "Isulat ang praksyong $\\frac{{a}}{{b}}$ bilang desimal. (sumulat ng desimal)",
+      "hints": [
+        "Isulat muli ang praksyon upang maging 10 o 100 ang denominator.",
+        "O hatiin ang numerator sa denominator."
+      ],
+      "explanation": "$\\frac{{a}}{{b}}={ans}$."
+    },
+    "funcValue": {
+      "prompt": "Para sa linyar na function na $f(x)={a}x+{b}$, ano ang $f({c})$?",
+      "hints": [
+        "Ipalit ang {c} sa x.",
+        "Mag-multiply, saka magdagdag."
+      ],
+      "explanation": "$f({c})={a}\\times{c}+{b}={ans}$."
+    },
+    "gcd": {
+      "prompt": "Ano ang pinakamalaking kapwa divisor ng {a} at {b}?",
+      "hints": [
+        "Hanapin ang mga divisor na pareho sa dalawang bilang.",
+        "Ang pinakamalaki sa mga ito ang pinakamalaking kapwa divisor."
+      ],
+      "explanation": "Ang pinakamalaking kapwa divisor ng {a} at {b} ay {ans}."
+    },
+    "geoRatio": {
+      "prompt": "May unang terminong {a} at ikatlong terminong {c} ang heometrikong sequence. Ano ang kapwa rasyo? (positibo, mga digit lamang)",
+      "hints": [
+        "Ang ikatlong termino ay ang unang terminong minultiply sa rasyo nang dalawang beses.",
+        "Mula sa $ar^2=c$, hanapin ang $r^2$."
+      ],
+      "explanation": "Mula sa {a}×r²={c}, makukuha ang r²={sq}, kaya {ans} ang kapwa rasyo."
+    },
+    "geoSeries": {
+      "prompt": "Ano ang kabuuan ng walang-hanggang heometrikong series na may unang terminong {a} at kapwa rasyong ${rtex}$? (puwede ang desimal o praksyong nakasulat na gaya ng 3/4)",
+      "hints": [
+        "May kabuuan kapag mas mababa sa 1 ang absolute value ng rasyo.",
+        "Ang kabuuan ay (unang termino) ÷ (1 - rasyo)."
+      ],
+      "explanation": "{a}÷(1-${rtex}$)=${res}$."
+    },
+    "geoTerm": {
+      "prompt": "Ano ang terminong bilang {n} ng heometrikong sequence na may unang terminong {a} at kapwa rasyong {r}? (mga digit lamang)",
+      "hints": [
+        "Ang pangkalahatang termino ay $a_n=ar^{n-1}$.",
+        "I-multiply sa kapwa rasyo nang (n-1) beses."
+      ],
+      "explanation": "Ang {a} na minultiply sa {r} na itinaas sa power na ({n}-1) ay {ans}."
+    },
+    "groups": {
+      "prompt": "May {a} sa bawat bungkos at may {b} bungkos. Ilan lahat? (mga digit lamang)",
+      "hints": [
+        "Maaaring bilangin ang magkakapantay na pangkat gamit ang pagpaparami.",
+        "Kapareho ito ng pagdaragdag ng {a} nang {b} beses lahat."
+      ],
+      "explanation": "{a}×{b}={ans}, kaya may {ans}."
+    },
+    "hundredsDigit": {
+      "prompt": "Ano ang digit sa puwestong sandaanan ng ${n}$? (mga digit lamang)",
+      "hints": [
+        "Ito ang ikatlong digit mula sa kanan.",
+        "Sa tatlong-digit na bilang, ito ang unang digit."
+      ],
+      "explanation": "Ang digit sa sandaanan ng {n} ay {ans}."
+    },
+    "hypot": {
+      "prompt": "Ang dalawang gilid sa tabi ng anggulong siku ng tatsulok na may anggulong siku ay {a} cm at {b} cm. Gaano kahaba ang pinakamahabang gilid sa cm? (cm)",
+      "hints": [
+        "Teorema ni Pythagoras: (hypotenuse)² = (isang gilid)² + (kabilang gilid)².",
+        "Ikuwadrado ang dalawang gilid, idagdag, saka kunin ang square root."
+      ],
+      "explanation": "${a}^2+{b}^2={sq}$, kaya {ans} cm ang pinakamahabang gilid."
+    },
+    "ineqCount": {
+      "prompt": "Ilang integer na $x$ ang tumutupad sa kuwadratikong di-pagkakapantay na ${eq}<0$? (mga digit lamang)",
+      "hints": [
+        "Isalik ang kaliwang panig para mahanap ang dalawang ugat.",
+        "Bilangin ang mga integer sa pagitan ng mga ugat; hindi kasama ang mga ugat mismo."
+      ],
+      "explanation": "Mula sa ${fact}<0$, makukuha ang {r1}<x<{r2}, kaya may {ans} integer."
+    },
+    "ineqMax": {
+      "prompt": "Ano ang pinakamalaking integer na $x$ na tumutupad sa $x+{a} < {b}$? (mga digit lamang)",
+      "hints": [
+        "Ibawas ang parehong bilang sa magkabilang panig para mahanap ang saklaw ng x.",
+        "Dapat mas maliit ang x sa halagang nahanap mo; hindi kasama ang halagang iyon mismo."
+      ],
+      "explanation": "x<{bound}, kaya {ans} ang pinakamalaking integer."
+    },
+    "intAdd": {
+      "prompt": "Kalkulahin ang $({a})+({b})$.",
+      "hints": [
+        "Parehong tanda: idagdag ang mga absolute value at panatilihin ang tanda.",
+        "Magkaibang tanda: ibawas ang mas maliit na absolute value sa mas malaki at gamitin ang tanda ng orihinal na bilang na may mas malaking absolute value."
+      ],
+      "explanation": "$({a})+({b})={ans}$."
+    },
+    "intDiv": {
+      "prompt": "Kalkulahin ang $({a})\\div({b})$.",
+      "hints": [
+        "Positibo ang resulta kapag pareho ang tanda, negatibo kapag magkaiba.",
+        "Hatiin ang mga absolute value."
+      ],
+      "explanation": "$({a})\\div({b})={ans}$."
+    },
+    "intMul": {
+      "prompt": "Kalkulahin ang $({a})\\times({b})$.",
+      "hints": [
+        "Positibo ang resulta kapag pareho ang tanda, negatibo kapag magkaiba.",
+        "I-multiply ang mga absolute value."
+      ],
+      "explanation": "$({a})\\times({b})={ans}$."
+    },
+    "intSub": {
+      "prompt": "Kalkulahin ang $({a})-({b})$.",
+      "hints": [
+        "Ang pagbabawas ay pagdaragdag ng kasalungat na bilang.",
+        "Isulat muli bilang $({a})+({nb})$."
+      ],
+      "explanation": "$({a})-({b})=({a})+({nb})={ans}$."
+    },
+    "inverseConst": {
+      "prompt": "Dumaraan sa ({x1}, {y1}) ang graph ng baligtad na proporsiyong $y=\\frac{a}{x}$. Ano ang a?",
+      "hints": [
+        "Ipasok ang punto sa $y=\\frac{a}{x}$.",
+        "a=x×y."
+      ],
+      "explanation": "a={x1}×{y1}={ans}."
+    },
+    "inverseVal": {
+      "prompt": "Kung $f^{-1}$ ang inverse function ng $f(x)={f}$, ano ang $f^{-1}({y})$?",
+      "hints": [
+        "Pareho ang kahulugan ng $f^{-1}(y)=x$ at $f(x)=y$.",
+        "Hanapin ang halaga ng x na tumutupad sa $f(x)={y}$."
+      ],
+      "explanation": "{steps}, kaya $f^{-1}({y})={ans}$."
+    },
+    "isoApex": {
+      "prompt": "Ang isang anggulo sa base ng tatsulok na may dalawang pantay na gilid ay {b}°. Ilang degree ang anggulo sa tuktok? (degree)",
+      "hints": [
+        "Pantay ang dalawang anggulo sa base ng tatsulok na may dalawang pantay na gilid.",
+        "Ibawas ang dalawang anggulo sa base sa 180°, ang kabuuan ng mga anggulo ng tatsulok."
+      ],
+      "explanation": "180-{b}×2={ans}, kaya {ans}° ang anggulo sa tuktok."
+    },
+    "kmToM": {
+      "prompt": "Ilang metro ang {v} km? (mga digit lamang)",
+      "hints": [
+        "Ang 1 km ay 1000 m.",
+        "I-multiply ang {v} sa 1000."
+      ],
+      "explanation": "{v}×1000={ans}, kaya {ans} m ito."
+    },
+    "lToMl": {
+      "prompt": "Ilang mililitro ang {v} L? (mga digit lamang)",
+      "hints": [
+        "Ang 1 L ay 1000 mL.",
+        "I-multiply ang {v} sa 1000."
+      ],
+      "explanation": "{v}×1000={ans}, kaya {ans} mL ito."
+    },
+    "lcm": {
+      "prompt": "Ano ang pinakamaliit na kapwa multiple ng {a} at {b}?",
+      "hints": [
+        "Ilista ang mga multiple na pareho sa dalawang bilang, mula sa pinakamaliit.",
+        "Ang pinakamaliit na magkaparehong multiple ang pinakamaliit na kapwa multiple."
+      ],
+      "explanation": "Ang pinakamaliit na kapwa multiple ng {a} at {b} ay {ans}."
+    },
+    "lessBy": {
+      "prompt": "Anong bilang ang {k} na mas mababa sa {n}? (mga digit lamang)",
+      "hints": [
+        "Kapareho ito ng pagbilang pababa nang tig-{k}.",
+        "Digit sa isang puwesto lamang ang nagbabago."
+      ],
+      "explanation": "{n}-{k}={ans}."
+    },
+    "limFactor": {
+      "prompt": "Ano ang halaga ng $\\lim_{x\\to {a}}\\frac{x^2-{sq}}{{den}}$? (mga digit lamang)",
+      "hints": [
+        "Maisasalik ang numerator bilang $(x-a)(x+a)$.",
+        "Kanselahin, saka ipalit ang halaga ng limit sa x."
+      ],
+      "explanation": "Pagkatapos isalik ang numerator at magkansela, ang pagpapalit ng x={a} ay nagbibigay ng {ans}."
+    },
+    "limLinear": {
+      "prompt": "Ano ang halaga ng $\\lim_{x\\to {a}}({f})$? (mga digit lamang)",
+      "hints": [
+        "Para sa polinomial, katumbas ng halaga ng function ang limit.",
+        "Ipalit ang {a} sa x."
+      ],
+      "explanation": "Sa pagpapalit ng x={a}, makukuha ang {ans}."
+    },
+    "logAdd": {
+      "prompt": "Ano ang halaga ng $\\log_{{b}} {m} + \\log_{{b}} {n}$? (mga digit lamang)",
+      "hints": [
+        "$\\log_b m+\\log_b n=\\log_b mn$.",
+        "Hanapin muna ang produktong {m}×{n}."
+      ],
+      "explanation": "$\\log_{{b}} ({m}\\times{n})=\\log_{{b}} {prod}={ans}$."
+    },
+    "logVal": {
+      "prompt": "Ano ang halaga ng $\\log_{{b}} {n}$? (mga digit lamang)",
+      "hints": [
+        "Ang $\\log_b n=k$ ay nangangahulugang $b^k=n$.",
+        "Bilangin kung ilang beses imumultiply ang {b} para makuha ang {n}."
+      ],
+      "explanation": "${b}^{{ans}}={n}$, kaya {ans} ang sagot."
+    },
+    "makeTen": {
+      "prompt": "Anong bilang ang idadagdag sa {a} para maging 10? (mga digit lamang)",
+      "hints": [
+        "Ibawas ang {a} sa 10.",
+        "Isipin ang sampung daliri mo."
+      ],
+      "explanation": "{a}+{ans}=10, kaya {ans} ang sagot."
+    },
+    "matEntry": {
+      "prompt": "Para sa {mats}, ano ang ({r}, {c}) na entry ng {expr}?",
+      "hints": [
+        "Ang pagdaragdag, pagbabawas at scalar multiple ng mga matrix ay ginagawa sa magkatugmang entry sa parehong posisyon.",
+        "Ang (i, j) na entry ng produktong $AB$ ay ang kabuuan ng mga produkto ng hilera i ng $A$ at hanay j ng $B$, ayon sa pagkakasunod."
+      ],
+      "explanation": "{steps}, kaya {ans} ang sagot."
+    },
+    "maxOf": {
+      "prompt": "Alin ang pinakamalaki sa {list}? (mga digit lamang)",
+      "hints": [
+        "Ihambing ang mga bilang nang paisa-isa.",
+        "Hanapin ang bilang na kumakatawan sa pinakamarami."
+      ],
+      "explanation": "Ang pinakamalaki sa {list} ay {ans}."
+    },
+    "mean": {
+      "prompt": "Ano ang mean ng mga bilang na ito? {list}",
+      "hints": [
+        "Ang mean ay (kabuuan ng lahat) ÷ (bilang).",
+        "Idagdag muna lahat."
+      ],
+      "explanation": "({sum})÷{n}={ans}, kaya {ans} ang mean."
+    },
+    "meanSum": {
+      "prompt": "Ang mean ng {n} bilang ay {m}. Ano ang kabuuan ng {n} bilang na ito? (mga digit lamang)",
+      "hints": [
+        "mean = kabuuan ÷ bilang.",
+        "Kaya kabuuan = mean × bilang."
+      ],
+      "explanation": "{m}×{n}={ans}."
+    },
+    "median": {
+      "prompt": "Ano ang median ng datos na {list}?",
+      "hints": [
+        "Ayusin ang datos ayon sa laki.",
+        "Ang gitnang halaga ang median; kung even ang bilang, gamitin ang mean ng dalawang nasa gitna."
+      ],
+      "explanation": "Sa pagkakasunod: {sorted}, kaya {ans} ang median."
+    },
+    "minOf": {
+      "prompt": "Alin ang pinakamaliit sa {list}? (mga digit lamang)",
+      "hints": [
+        "Ihambing ang mga bilang nang paisa-isa.",
+        "Hanapin ang bilang na kumakatawan sa pinakakaunti."
+      ],
+      "explanation": "Ang pinakamaliit sa {list} ay {ans}."
+    },
+    "minus": {
+      "prompt": "Hanapin ang halaga ng $ {a} - {b} $.",
+      "hints": [
+        "Ibawas ang mga digit sa parehong puwesto.",
+        "Kapag hindi makapagbawas, humiram ng 10 mula sa susunod na puwesto."
+      ],
+      "explanation": "{a}-{b}={ans}."
+    },
+    "missAdd": {
+      "prompt": "Sa $\\square + {b} = {c}$, anong bilang ang ilalagay sa kahon? (mga digit lamang)",
+      "hints": [
+        "Ibawas ang alam na bilang sa kabuuan para mahanap ang □.",
+        "Kalkulahin ang {c}-{b}."
+      ],
+      "explanation": "{c}-{b}={ans}, kaya □={ans}."
+    },
+    "missSub": {
+      "prompt": "Sa $ {a} - \\square = {c}$, anong bilang ang ilalagay sa kahon? (mga digit lamang)",
+      "hints": [
+        "Ibawas ang resulta sa unang bilang para mahanap ang □.",
+        "Kalkulahin ang {a}-{c}."
+      ],
+      "explanation": "{a}-{c}={ans}, kaya □={ans}."
+    },
+    "mixedCalc": {
+      "prompt": "Kalkulahin ito: {expr}",
+      "hints": [
+        "Unahin ang nasa loob ng panaklong.",
+        "Pagkatapos, pagpaparami at paghahati bago pagdaragdag at pagbabawas, mula kaliwa pakanan."
+      ],
+      "explanation": "{steps}, kaya {ans} ang sagot."
+    },
+    "mode": {
+      "prompt": "Ano ang mode ng datos na {list}?",
+      "hints": [
+        "Ang mode ay ang halagang pinakamadalas lumitaw.",
+        "Bilangin kung ilang beses lumilitaw ang bawat halaga."
+      ],
+      "explanation": "Pinakamadalas lumitaw ang {ans}, kaya {ans} ang mode."
+    },
+    "moreBy": {
+      "prompt": "Anong bilang ang {k} na mas mataas sa {n}? (mga digit lamang)",
+      "hints": [
+        "Kapareho ito ng pagbilang pataas nang tig-{k}.",
+        "Digit sa isang puwesto lamang ang nagbabago."
+      ],
+      "explanation": "{n}+{k}={ans}."
+    },
+    "nextNum": {
+      "prompt": "Anong bilang ang kasunod mismo ng {n}? (mga digit lamang)",
+      "hints": [
+        "Bilangin nang sunod-sunod ang mga bilang.",
+        "Magbilang ng isa pa mula sa {n}."
+      ],
+      "explanation": "Ang kasunod mismo ng {n} ay {ans}."
+    },
+    "onesDigit": {
+      "prompt": "Ano ang digit sa puwestong isahan ng ${n}$? (mga digit lamang)",
+      "hints": [
+        "Ito ang digit sa pinakakanan.",
+        "Ipinapakita ng puwestong isahan ang mga tig-iisang yunit."
+      ],
+      "explanation": "Ang digit sa isahan ng {n} ay {ans}."
+    },
+    "percentChange": {
+      "prompt": "Nagbago ang halaga mula {a} tungo sa {b}. Ilang porsiyento ang itinaas nito? (%)",
+      "hints": [
+        "Rate ng pagtaas = (daming itinaas) ÷ (unang halaga) × 100.",
+        "Ang itinaas ay {b}-{a}."
+      ],
+      "explanation": "({b}-{a})÷{a}×100={ans}, kaya {ans}%."
+    },
+    "permNP": {
+      "prompt": "Sa ilang paraan makakapili ng {r} mula sa {n} magkakaibang tao at maisasaayos sila sa pila? (mga digit lamang)",
+      "hints": [
+        "Mahalaga ang pagkakasunod, kaya permutasyon ito.",
+        "Magsimula sa {n} at i-multiply ang {r} bilang habang bumibilang pababa."
+      ],
+      "explanation": "{calc}={ans}, kaya may {ans} paraan."
+    },
+    "permSame": {
+      "prompt": "Sa ilang paraan maisasaayos sa isang hanay ang lahat ng titik ng {word}?",
+      "hints": [
+        "Kapag may nauulit na titik, hatiin ang factorial ng kabuuang bilang ng titik sa factorial ng bawat bilang ng pag-uulit.",
+        "Bilangin kung ilang beses lumilitaw ang bawat titik."
+      ],
+      "explanation": "{calc}={ans} paraan."
+    },
+    "pieCount": {
+      "prompt": "Sa pie chart, ang A ay {p}% ng kabuuan. Ang kabuuan ay {t} tao. Ilan ang A?",
+      "hints": [
+        "Ang {p}% ay $\\frac{p}{100}$.",
+        "I-multiply ang kabuuan sa rasyo."
+      ],
+      "explanation": "{t}×{p}÷100={ans}, kaya {ans} tao."
+    },
+    "plus": {
+      "prompt": "Hanapin ang halaga ng $ {a} + {b} $.",
+      "hints": [
+        "Idagdag ang mga digit sa parehong puwesto.",
+        "Kapag 10 o higit pa ang kabuuan sa isang puwesto, magdala sa susunod na puwesto."
+      ],
+      "explanation": "{a}+{b}={ans}."
+    },
+    "pmAverage": {
+      "prompt": "Sa loob ng 5 araw, ang konsentrasyon ng pinong alikabok ay {list} (µg/m³). Ano ang mean na konsentrasyon?",
+      "hints": [
+        "Ang mean ay (kabuuan) ÷ (bilang ng araw).",
+        "Idagdag muna ang 5 halaga."
+      ],
+      "explanation": "({sum})÷5={ans}, kaya {ans} ang mean."
+    },
+    "prevNum": {
+      "prompt": "Anong bilang ang nauuna mismo sa {n}? (mga digit lamang)",
+      "hints": [
+        "Magbilang nang pabalik.",
+        "Magbilang ng isang mas kaunti mula sa {n}."
+      ],
+      "explanation": "Ang nauuna mismo sa {n} ay {ans}."
+    },
+    "probAdd": {
+      "prompt": "Para sa dalawang pangyayaring A at B, $P(A)={pa}$, $P(B)={pb}$ at $P(A\\cap B)={pab}$. Ano ang $P(A\\cup B)$?",
+      "hints": [
+        "Gamitin ang tuntunin ng pagdaragdag na $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$.",
+        "Isa-isang ipasok ang mga ibinigay na halaga."
+      ],
+      "explanation": "{pa}+{pb}-{pab}={ans}."
+    },
+    "probComplement": {
+      "prompt": "Ang probabilidad ng pangyayaring A ay $P(A)={pa}$. Ano ang probabilidad ng complement na $P(A^c)$?",
+      "hints": [
+        "Ang probabilidad ng complement ay $1-P(A)$.",
+        "Ibawas ang $P(A)$ sa 1."
+      ],
+      "explanation": "1-{pa}={ans}."
+    },
+    "propX": {
+      "prompt": "Sa proporsiyong ${a} : {b} = \\square : {d}$, anong bilang ang ilalagay sa kahon? (mga digit lamang)",
+      "hints": [
+        "Sa proporsiyon, pantay ang produkto ng mga panlabas na termino at produkto ng mga panloob na termino.",
+        "Lutasin ang □ × {b} = {a} × {d}."
+      ],
+      "explanation": "□×{b}={a}×{d}, kaya □={ans}."
+    },
+    "qfuncValue": {
+      "prompt": "Para sa kuwadratikong function na $y={expr}$, ano ang $y$ kapag $x={x}$? (mga digit lamang)",
+      "hints": [
+        "Ipalit ang ibinigay na halaga sa x.",
+        "Unahin ang pagkukuwadrado."
+      ],
+      "explanation": "Sa pagpapalit ng x={x}, makukuha ang y={ans}."
+    },
+    "quadDisc": {
+      "prompt": "Ano ang halaga ng discriminant na $D=b^2-4ac$ ng kuwadratikong ekwasyong ${eq}=0$? (mga digit lamang)",
+      "hints": [
+        "Ang discriminant ng $ax^2+bx+c=0$ ay $D=b^2-4ac$.",
+        "Bantayan ang mga tanda ng a, b at c."
+      ],
+      "explanation": "a={a}, b={b}, c={c}, kaya D=({b})²-4×({a})×({c})={ans}."
+    },
+    "quadFourth": {
+      "prompt": "Ang tatlong anggulo ng apat-na-gilid ay {a}°, {b}° at {c}°. Ilang degree ang ikaapat na anggulo? (degree)",
+      "hints": [
+        "Ang kabuuan ng apat na anggulo ng apat-na-gilid ay 360°.",
+        "Ibawas ang tatlong alam na anggulo sa 360."
+      ],
+      "explanation": "360-{a}-{b}-{c}={ans}, kaya {ans}° ito."
+    },
+    "quadRoot": {
+      "prompt": "Alin ang mas malaki sa dalawang ugat ng ${eq}$? (mga digit lamang)",
+      "hints": [
+        "Isalik ang kaliwang panig.",
+        "Ang mga ugat ay mga halaga ng x na nagpapasero sa isang salik."
+      ],
+      "explanation": "Mula sa ${fact}$, ang mga ugat ay {roots}, kaya {ans} ang mas malaking ugat."
+    },
+    "radDeg": {
+      "prompt": "Isulat ang $\\theta=\\dfrac{{num}}{{d}}$ (radian) sa degree. (mga digit lamang)",
+      "hints": [
+        "Ang $\\pi$ radian ay 180°.",
+        "Ipalit ang 180° sa $\\pi$."
+      ],
+      "explanation": "Sa pagpapalit ng $\\pi=180^\\circ$, makukuha ang {ans}°."
+    },
+    "ratioPct": {
+      "prompt": "Isulat ang $\\frac{{a}}{{b}}$ bilang porsiyento. (mga digit lamang)",
+      "hints": [
+        "Ang porsiyento ay ang rasyong minultiply sa 100.",
+        "Maaari ring isulat muli ang praksyon na may denominator na 100."
+      ],
+      "explanation": "$\\frac{{a}}{{b}}\\times100={ans}$, kaya {ans}% ito."
+    },
+    "rectArea": {
+      "prompt": "Ang parihaba ay may lapad na {w} cm at taas na {h} cm. Ano ang lawak nito sa cm²? (mga digit lamang)",
+      "hints": [
+        "Ang lawak ng parihaba ay lapad × taas.",
+        "I-multiply ang haba ng dalawang gilid."
+      ],
+      "explanation": "{w}×{h}={ans}, kaya {ans} cm² ang lawak."
+    },
+    "rectPerim": {
+      "prompt": "Ang parihaba ay may lapad na {w} cm at taas na {h} cm. Gaano kahaba ang perimetro nito sa cm? (cm)",
+      "hints": [
+        "Ang perimetro ay ang kabuuan ng apat na gilid.",
+        "Maaaring gamitin ang (lapad + taas) × 2."
+      ],
+      "explanation": "({w}+{h})×2={ans}, kaya {ans} cm ang perimetro."
+    },
+    "relFreq": {
+      "prompt": "Ang kabuuang dalas ay {t} at may dalas na {f} ang isang klase. Ano ang relatibong dalas ng klaseng iyon? (desimal)",
+      "hints": [
+        "Relatibong dalas = (dalas ng klase) ÷ (kabuuang dalas).",
+        "Isulat ang resulta bilang desimal."
+      ],
+      "explanation": "{f}÷{t}={ans}, kaya {ans} ang relatibong dalas."
+    },
+    "remainder": {
+      "prompt": "Ano ang tira kapag hinati ang $P(x)={poly}$ sa ${div}$? (mga digit lamang)",
+      "hints": [
+        "Teorema ng tira: ang tira ng P(x) kapag hinati sa x-a ay P(a).",
+        "Ipalit ang a sa x at kalkulahin."
+      ],
+      "explanation": "Ayon sa teorema ng tira, P({a})={ans}."
+    },
+    "repComb": {
+      "prompt": "Sa ilang paraan makakapili ng {r} bagay mula sa {n} magkakaibang uri, na puwedeng ulitin?",
+      "hints": [
+        "Sa n uri at r piniling bagay, katumbas ng bilang ng paraan ng pagpili ng r mula sa n+r−1 ang bilang.",
+        "Ipasok ang bilang ng uri at bilang ng bagay."
+      ],
+      "explanation": "{calc}={ans}."
+    },
+    "repPerm": {
+      "prompt": "Sa ilang paraan makakapili ng {r} bagay mula sa {n} magkakaibang bagay, na puwedeng ulitin, at maisasaayos sa isang hanay?",
+      "hints": [
+        "Gumamit ng isang salik na katumbas ng bilang ng pagpipilian para sa bawat puwesto, saka i-multiply ang lahat ng salik.",
+        "May {n} paraan para punan ang bawat puwesto."
+      ],
+      "explanation": "{prod}={ans} paraan."
+    },
+    "rootMax": {
+      "prompt": "Ano ang pinakamalaking tunay na ugat ng {eq}?",
+      "hints": [
+        "Isalik ito bilang produkto ng mga salik. Maaaring gamitin ang synthetic division para mahanap ang unang ugat.",
+        "Ang mga ugat ay mga halaga ng x na nagpapasero sa isang salik."
+      ],
+      "explanation": "{fact}, kaya ang mga tunay na ugat ay {roots} at {ans} ang pinakamalaki."
+    },
+    "rootSum": {
+      "prompt": "Ano ang kabuuan ng lahat ng tunay na ugat ng {eq}?",
+      "hints": [
+        "Isalik ito bilang produkto ng mga salik. Maaaring gamitin ang synthetic division para mahanap ang unang ugat.",
+        "Ang mga ugat ay mga halaga ng x na nagpapasero sa isang salik."
+      ],
+      "explanation": "{fact}, kaya ang mga tunay na ugat ay {roots} at {ans} ang kabuuan nila."
+    },
+    "roundTo": {
+      "prompt": "Gamit ang “{mode}”, ano ang {n} sa mga yunit na {u}?",
+      "hints": [
+        "Tingnan ang mga digit sa ibaba ng puwestong {u}.",
+        "Sa pag-round pataas ay palaging itinataas, sa pag-round pababa ay palaging inaalis, at sa pag-round sa pinakamalapit ay itinataas lamang kapag 5 o higit pa ang digit."
+      ],
+      "explanation": "Gamit ang “{mode}”, ang {n} ay nagiging {ans} sa mga yunit na {u}."
+    },
+    "seqNext": {
+      "prompt": "Hanapin ang tuntunin at isulat ang nawawalang bilang: ${list}, \\square$",
+      "hints": [
+        "Hanapin ang diperensiya ng magkatabing bilang.",
+        "Pare-parehong dami ang idinadagdag o ibinabawas sa bawat hakbang."
+      ],
+      "explanation": "Ang diperensiya ng magkatabi ay {d}, kaya □={ans}."
+    },
+    "setCount": {
+      "prompt": "Kung $n(A)={na}$, $n(B)={nb}$ at $n(A\\cap B)={nab}$, ano ang $n(A\\cup B)$?",
+      "hints": [
+        "Gamitin ang $n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$.",
+        "Isa-isang ipasok ang mga ibinigay na halaga."
+      ],
+      "explanation": "{na}+{nb}-{nab}={ans}."
+    },
+    "sigmaSum": {
+      "prompt": "Hanapin ang halaga ng kabuuang ito: {expr}",
+      "hints": [
+        "Ang tandang ∑ ay nangangahulugang: isa-isang ipasok ang k=1, 2, 3, … at idagdag lahat.",
+        "Maaari ring gamitin ang mga tuntuning $\\sum k=\\frac{n(n+1)}{2}$ at $\\sum c=cn$."
+      ],
+      "explanation": "{steps}, kaya {ans} ang kabuuan."
+    },
+    "simpleInterest": {
+      "prompt": "Idineposito ang {p} won sa loob ng {n} taon na may {r}% simpleng interes bawat taon. Magkano ang interes? (won)",
+      "hints": [
+        "Simpleng interes = puhunan × rate × taon.",
+        "Ang {r}% ay {rr}."
+      ],
+      "explanation": "{p}×{rr}×{n}={ans}, kaya {ans} won ang interes."
+    },
+    "slope2": {
+      "prompt": "Ano ang dalisdis ng linyang dumaraan sa mga puntong $({x1},\\,{y1})$ at $({x2},\\,{y2})$? (mga digit lamang)",
+      "hints": [
+        "Ang dalisdis ay (pagbabago sa y) ÷ (pagbabago sa x).",
+        "Hatiin ang diperensiya ng mga y-coordinate sa diperensiya ng mga x-coordinate."
+      ],
+      "explanation": "$\\frac{{y2}-({y1})}{{x2}-({x1})}={ans}$."
+    },
+    "slopeOf": {
+      "prompt": "Ano ang dalisdis ng linyar na function na $y={a}x+{b}$?",
+      "hints": [
+        "Sa $y=ax+b$, ang a ang dalisdis.",
+        "Basahin ang koepisyente ng x."
+      ],
+      "explanation": "Ang dalisdis ay {ans}."
+    },
+    "solveLin": {
+      "prompt": "Lutasin ang linyar na ekwasyong ${eq}$ (hanapin ang x).",
+      "hints": [
+        "Idagdag o ibawas ang parehong bilang sa magkabilang panig para maiwang mag-isa ang terminong x.",
+        "Pagkatapos, hatiin ang magkabilang panig sa bilang sa harap ng x."
+      ],
+      "explanation": "Mula sa ${eq}$, makukuha ang x={ans}."
+    },
+    "sqrtProd": {
+      "prompt": "Ano ang halaga ng $\\sqrt{{a}} \\times \\sqrt{{b}}$? (mga digit lamang)",
+      "hints": [
+        "$\\sqrt{a}\\times\\sqrt{b}=\\sqrt{ab}$.",
+        "Suriin kung perpektong kuwadrado ang produkto."
+      ],
+      "explanation": "$\\sqrt{{a}\\times{b}}=\\sqrt{{prod}}={ans}$."
+    },
+    "sqrtVal": {
+      "prompt": "Ano ang halaga ng $\\sqrt{{n}}$? (mga digit lamang)",
+      "hints": [
+        "Hanapin ang positibong bilang na ang kuwadrado ay {n}.",
+        "Isipin ang multiplication table."
+      ],
+      "explanation": "${ans}^2={n}$, kaya $\\sqrt{{n}}={ans}$."
+    },
+    "stdev": {
+      "prompt": "Ano ang standard deviation ng datos na {list}? (standard deviation ng populasyon)",
+      "hints": [
+        "Hanapin muna ang mean.",
+        "Ang square root ng mean ng mga kuwadradong paglihis (ang variance) ay ang standard deviation."
+      ],
+      "explanation": "Ang mean ay {mean} at ang variance ay {var}, kaya {ans} ang standard deviation."
+    },
+    "subThree": {
+      "prompt": "Magkano ang {a}-{b}?",
+      "hints": [
+        "Magbawas mula sa puwestong isahan.",
+        "Kung hindi makapagbawas, humiram mula sa susunod na puwesto."
+      ],
+      "explanation": "{a}-{b}={ans}."
+    },
+    "subsetCount": {
+      "prompt": "Ilang subset mayroon ang set na may {n} elemento?",
+      "hints": [
+        "Ang set na may n elemento ay may $2^n$ subset.",
+        "Isipin ang pagpapasya para sa bawat elemento kung isasama ito o hindi."
+      ],
+      "explanation": "{prod}={ans}, kaya may {ans} subset."
+    },
+    "taxTotal": {
+      "prompt": "Nagkakahalaga ng {p} won ang isang bagay at dinagdagan ng {t}% value-added tax. Ilang won ang kailangang bayaran? (won)",
+      "hints": [
+        "Ang buwis ay presyo × {t}%.",
+        "Idagdag ang buwis sa presyo."
+      ],
+      "explanation": "{p}+{p}×{tr}={ans}, kaya {ans} won."
+    },
+    "tensDigit": {
+      "prompt": "Ano ang digit sa puwestong sampuhan ng ${n}$? (mga digit lamang)",
+      "hints": [
+        "Ito ang ikalawang digit mula sa kanan.",
+        "Hanapin ang digit sa kaliwa mismo ng puwestong isahan."
+      ],
+      "explanation": "Ang digit sa sampuhan ng {n} ay {ans}."
+    },
+    "times": {
+      "prompt": "Hanapin ang halaga ng $ {a} \\times {b} $.",
+      "hints": [
+        "Isipin ang multiplication table o magkakapantay na pangkat.",
+        "Para sa mas malalaking bilang, i-multiply ayon sa puwesto at idagdag ang mga bahagi."
+      ],
+      "explanation": "{a}×{b}={ans}."
+    },
+    "triThird": {
+      "prompt": "Ang dalawang anggulo ng tatsulok ay {a}° at {b}°. Ilang degree ang ikatlong anggulo? (degree)",
+      "hints": [
+        "Ang kabuuan ng tatlong anggulo ng tatsulok ay 180°.",
+        "Ibawas ang dalawang alam na anggulo sa 180."
+      ],
+      "explanation": "180-{a}-{b}={ans}, kaya {ans}° ito."
+    },
+    "variance": {
+      "prompt": "Ano ang variance ng datos na {list}?",
+      "hints": [
+        "Hanapin ang mean, saka bawat paglihis mula rito.",
+        "Ang variance ay ang mean ng mga kuwadradong paglihis."
+      ],
+      "explanation": "Ang mean ay {mean} at ang kabuuan ng mga kuwadradong paglihis ay {sq}, kaya ang variance ay {sq}÷{n}={ans}."
+    },
+    "vecNorm": {
+      "prompt": "Ano ang laki na $|\\vec{a}|$ ng vector na $\\vec{a}=({x},\\ {y})$? (mga digit lamang)",
+      "hints": [
+        "$|\\vec{a}|=\\sqrt{x^2+y^2}$.",
+        "Ikuwadrado ang bawat bahagi, idagdag, saka kunin ang square root."
+      ],
+      "explanation": "$\\sqrt{({x})^2+({y})^2}={ans}$."
+    },
+    "vertexSum": {
+      "prompt": "Ang tuktok ng kuwadratikong function na $y={expr}$ ay $(p,\\ q)$. Ano ang $p+q$? (mga digit lamang)",
+      "hints": [
+        "Sa $y=a(x-p)^2+q$, ang tuktok ay $(p,\\ q)$.",
+        "Bantayan ang tanda sa loob ng panaklong."
+      ],
+      "explanation": "Ang tuktok ay $({p},\\ {q})$, kaya p+q={ans}."
+    },
+    "xInt": {
+      "prompt": "Ano ang x-intercept ng $y={a}x+{b}$?",
+      "hints": [
+        "Ang x-intercept ay x kapag y=0.",
+        "Lutasin ang $0=ax+b$."
+      ],
+      "explanation": "Nagbibigay ang $0={a}x+{b}$ ng x={ans}."
+    },
+    "yInt": {
+      "prompt": "Ano ang y-intercept ng $y={a}x+{b}$?",
+      "hints": [
+        "Ang y-intercept ay y kapag x=0.",
+        "Sa $y=ax+b$, ito ay b."
+      ],
+      "explanation": "Ang y-intercept ay {ans}."
+    }
+  },
+  "texts": {
+    "rd_down": "pag-round pababa",
+    "rd_half": "pag-round sa pinakamalapit",
+    "rd_up": "pag-round pataas"
+  }
+}

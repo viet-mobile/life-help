@@ -1,4 +1,5 @@
-import { applyFlat, flatten, needsTranslation } from "./flat";
+import contentReleasePolicy from "@/lib/i18n/contentReleasePolicy.json";
+import { applyFlat, flatten, flattenLearnerExtras, needsTranslation } from "./flat";
 import { OVERLAY_LOADERS, type Overlay } from "./data/assets-index";
 import { THINK_LANGS, baseLang } from "./lang";
 import type { ThinkTask } from "./types";
@@ -20,12 +21,16 @@ export function localize(task: ThinkTask, lang: string, overlay: Overlay): Local
   if (lang === authored || !m) return { task, lang, translated: lang === authored };
   // A task counts as translated only when EVERY string that needs a translation has one: a half-translated task would show the authored language
   // the learner cannot read between translated sentences, so it is treated as not translated (and not offered) until the gap is filled.
-  const complete = Object.entries(flatten(task)).every(([p, s]) => !needsTranslation(task.subject, s) || (typeof m[p] === "string" && m[p].trim().length > 0));
+  const strict = contentReleasePolicy.fullyLocalizedBeforeRelease.includes(lang);
+  // New locales require an explicit entry even for short labels and preserved learning targets.
+  // This prevents one-word English instructions from being silently treated as translated.
+  const fields = strict ? { ...flatten(task), ...flattenLearnerExtras(task) } : flatten(task);
+  const complete = Object.entries(fields).every(([p, s]) => !s.trim() || (!strict && !needsTranslation(task.subject, s)) || (typeof m[p] === "string" && m[p].trim().length > 0));
   if (!complete) return { task, lang, translated: false };
   return { task: applyFlat(task, m), lang, translated: true };
 }
 
-/** Overlays a learner needs: their own task language and, for a language outside the six with full reviews, English as the fallback. */
+/** Overlays a learner needs: their own task language and, only for legacy locales without native UI, English as the fallback. */
 export async function loadOverlays(lang: string, keys?: string[]): Promise<{ primary: Overlay; fallback: Overlay }> {
   const own = (THINK_LANGS as readonly string[]).includes(lang);
   const [primary, fallback] = await Promise.all([loadOverlay(lang, keys), own ? Promise.resolve({} as Overlay) : loadOverlay("en", keys)]);
@@ -39,7 +44,7 @@ export async function loadOverlays(lang: string, keys?: string[]): Promise<{ pri
  */
 export function localizeFor(task: ThinkTask, lang: string, overlays: { primary: Overlay; fallback: Overlay }): Localized {
   const first = localize(task, lang, overlays.primary);
-  if (first.translated || (THINK_LANGS as readonly string[]).includes(lang)) return first;
+  if (first.translated || (THINK_LANGS as readonly string[]).includes(lang) || contentReleasePolicy.fullyLocalizedBeforeRelease.includes(lang)) return first;
   return localize(task, "en", overlays.fallback);
 }
 

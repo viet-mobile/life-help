@@ -1163,4 +1163,25 @@ export const OVERLAY_LOADERS: Record<string, Record<string, () => Promise<Overla
     "pilot-korean": () => loadThinkAsset<Overlay>("48073553f19cfe4d16f7a21c047dc471bd6b640dcf109873df5915c2763d9a3c"),
     "z-k-01": () => loadThinkAsset<Overlay>("1b698b5e44e00580b1dd89ecd54d16ac79515d6d3ff545ceceb0eb99da50d818"),
   },
+  "pcm": {
+    "pilot-math": () => loadThinkAsset<Overlay>("0b2adc538d1f75d99614ee70599a7d4113c7a488f6e6a22995d6954caaccf10e"),
+  },
+  "tl": {
+    "pilot-math": () => loadThinkAsset<Overlay>("7745122f15a895ecb6e3f29577a79b5e51859e0d43b106122121739dfb88985d"),
+  },
+  "ro": {
+    "pilot-math": () => loadThinkAsset<Overlay>("221625a9b2741ab1f854756484e8e77b668cec7bb7e6663bcd3ac796182a7b65"),
+  },
+  "fi": {
+    "pilot-math": () => loadThinkAsset<Overlay>("d181238cef139477494e8366fdf05d46a206dd0c6b0f32b313c8c45910582aeb"),
+  },
+  "cs": {
+    "pilot-math": () => loadThinkAsset<Overlay>("2a1dff0a6994d16b9314b950231cb0a3d7ef5912ccecf6f37b1562a22b15a180"),
+  },
+  "hu": {
+    "pilot-math": () => loadThinkAsset<Overlay>("0121ff6db9b4dfc876e0cbaf889011f31ff0feb6c596c8c8cd75a720bbbc61c1"),
+  },
+  "af": {
+    "pilot-math": () => loadThinkAsset<Overlay>("2f3920b37c8576bb0364e490fc20a3523afa0ec87f988bde3ae85f4d05b5a539"),
+  },
 };

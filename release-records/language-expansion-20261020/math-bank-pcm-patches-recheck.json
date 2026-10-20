@@ -1,0 +1,96 @@
+{
+  "reviewer": "expand_af_tl; independent of root patch author and cs/hu proposing reviewer",
+  "scope": "only the seven listed PCM patches, with surrounding template context and EN/KO checked",
+  "nativeSpeakerReview": false,
+  "teacherReview": false,
+  "fullBankSemanticApproval": false,
+  "targetEdited": false,
+  "passed": 7,
+  "unsure": 0,
+  "entries": [
+    {
+      "locale": "pcm",
+      "path": "/templates/coinCases/explanation",
+      "beforeHash": "63532719de57d6768611448613c9fd0e35cf57edb7d4fca52850df1c9aca8bbb",
+      "expectedAfterHash": "182f8f34da7f4351a61530ff1fddf945977bb8d4afe889e6da19fe8c2e4a424e",
+      "actualTargetHash": "182f8f34da7f4351a61530ff1fddf945977bb8d4afe889e6da19fe8c2e4a424e",
+      "sourceHash": "26946f07498df5b220457f0fc6f7532541c37bb345bbefe258133a1dc0d70c09",
+      "canonicalHash": "8ada0be33019c7760322faf201faf0893cdb34054ad4a531dfc0cd0ab38079aa",
+      "afterHashMatches": true,
+      "verdict": "pass_independent_ai_patch_recheck",
+      "reason": "Explicitly states n factors each equal2, hence2^n, rather than n multiplication operations starting from2. Preserves outcome count and both answer references."
+    },
+    {
+      "locale": "pcm",
+      "path": "/templates/geoTerm/explanation",
+      "beforeHash": "4147fd8f30862ebfdb20b65bd409dbe0f608cf39a81f31318b340abf14357ba7",
+      "expectedAfterHash": "90b5f2758a7fc956b08d5e2b2bebaa40e9e5107827a15c405a82dff33327fc17",
+      "actualTargetHash": "90b5f2758a7fc956b08d5e2b2bebaa40e9e5107827a15c405a82dff33327fc17",
+      "sourceHash": "f4d11f4c5a5546d52f5309d73717ec7bf41a4d9d8a581fef4f4f0ed06e314df6",
+      "canonicalHash": "ae3e5576d1e3ba221f81e7febaee17366d1d68cb9e056dcafee23e19443b9b80",
+      "afterHashMatches": true,
+      "verdict": "pass_independent_ai_patch_recheck",
+      "reason": "Parenthesises exponent n−1 on r alone, then multiplies by first term a. This matches ar^(n−1) in both canonical and English general-term hints and avoids raising ar as a whole."
+    },
+    {
+      "locale": "pcm",
+      "path": "/templates/lessBy/hints/1",
+      "beforeHash": "09ae969c69245591029c4035254ff69396d4a47076f00fbe90d2912f827930ff",
+      "expectedAfterHash": "d4f67ccab3efe0433bba01c422921e2a12681c53bd496c05c2302cb174b0dea0",
+      "actualTargetHash": "d4f67ccab3efe0433bba01c422921e2a12681c53bd496c05c2302cb174b0dea0",
+      "sourceHash": "8a4584e8133819438c664fb597c872087a5668f599ff81efe5483caa0c3f0419",
+      "canonicalHash": "f1cd37f8165dd2acfc493075320d98fb7183d175972c1aa580c5bca72dca6a2e",
+      "afterHashMatches": true,
+      "verdict": "pass_independent_ai_patch_recheck",
+      "reason": "Focuses on changing place digits, matching Korean advice without the erroneous English claim that only one digit changes. Allows borrowing to change several digits."
+    },
+    {
+      "locale": "pcm",
+      "path": "/templates/logVal/hints/1",
+      "beforeHash": "6a19338e54a4adc9089e01221ea40779d4b832ced242c7fd032ccb05d0ed396e",
+      "expectedAfterHash": "e6397917b4c34b03d4cea246d091502348fa42c732d110a343096b26f78265a2",
+      "actualTargetHash": "e6397917b4c34b03d4cea246d091502348fa42c732d110a343096b26f78265a2",
+      "sourceHash": "bdc0d0ab3f8b14cea46cd8fc6508946bb2b6ccca1628090e5f916b703b2d12af",
+      "canonicalHash": "e0f21bc8bd8591fd84f29e1f41a896890f9a49d77fbca4686913c289b994217a",
+      "afterHashMatches": true,
+      "verdict": "pass_independent_ai_patch_recheck",
+      "reason": "Counts factors equal b whose product is n, so the count is the exponent k in b^k=n. Removes the multiplication-operation versus factor-count ambiguity while retaining both variables."
+    },
+    {
+      "locale": "pcm",
+      "path": "/templates/moreBy/hints/1",
+      "beforeHash": "09ae969c69245591029c4035254ff69396d4a47076f00fbe90d2912f827930ff",
+      "expectedAfterHash": "d4f67ccab3efe0433bba01c422921e2a12681c53bd496c05c2302cb174b0dea0",
+      "actualTargetHash": "d4f67ccab3efe0433bba01c422921e2a12681c53bd496c05c2302cb174b0dea0",
+      "sourceHash": "8a4584e8133819438c664fb597c872087a5668f599ff81efe5483caa0c3f0419",
+      "canonicalHash": "f1cd37f8165dd2acfc493075320d98fb7183d175972c1aa580c5bca72dca6a2e",
+      "afterHashMatches": true,
+      "verdict": "pass_independent_ai_patch_recheck",
+      "reason": "Focuses on changing place digits, matching Korean advice without the erroneous English single-digit assertion. Allows carrying to change several digits."
+    },
+    {
+      "locale": "pcm",
+      "path": "/templates/permSame/hints/0",
+      "beforeHash": "06558e982776bd09556581d0ebfd186d696f7e7b042fe52966fe90d9aaa9d8ae",
+      "expectedAfterHash": "0f8923600da34342dec482841c275e09ff64789e3015a142910c60f3ff7e9e26",
+      "actualTargetHash": "0f8923600da34342dec482841c275e09ff64789e3015a142910c60f3ff7e9e26",
+      "sourceHash": "40095038173136383d44ea9f0f3e6e6fd3d041d2c7a048a1e3be4c5ddc6e4e39",
+      "canonicalHash": "cace7910db67cc6c4ddbfb9243623933c83df05854dabd546cde7cc0afef3f32",
+      "afterHashMatches": true,
+      "verdict": "pass_independent_ai_patch_recheck",
+      "reason": "Denominator is explicitly the product of all repetition-count factorials, matching Korean and total!/(count1!count2!…). It does not divide by a raw count or just one factorial."
+    },
+    {
+      "locale": "pcm",
+      "path": "/templates/repPerm/hints/0",
+      "beforeHash": "f422c608c25fbfca2e88e5ec652ca344fd5752ef6cd0a8a844a8a5f49d4e5baa",
+      "expectedAfterHash": "cc5061ef73eab2ba8e31cf8e2475e23ef366757ae06b723db772a0cd243dcf1c",
+      "actualTargetHash": "cc5061ef73eab2ba8e31cf8e2475e23ef366757ae06b723db772a0cd243dcf1c",
+      "sourceHash": "e902b96222bb97aaf8f146e2e45d436c54742f566833d381f4d3c11f329c59bb",
+      "canonicalHash": "e7b651acb5cfd2090f6c885785d698f643f8cd6cade198d43a903296c19af474",
+      "afterHashMatches": true,
+      "verdict": "pass_independent_ai_patch_recheck",
+      "reason": "Assigns exactly one factor to each position, each factor equal to the number of choices. This gives n^r for r positions, not n^(r+1) from an extra starting factor."
+    }
+  ]
+}

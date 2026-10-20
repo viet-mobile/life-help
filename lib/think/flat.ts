@@ -3,7 +3,7 @@ import type { ThinkTask } from "./types";
 
 /**
  * Flat map of the learner-facing strings of a task (path -> string), and the inverse (apply a translated map onto a task).
- * Reviewer-facing fields (rubric, alternatives, hardCases, cautions, autoVsHuman, humanReview, checks) are not part of it.
+ * Reviewer-only fields (rubric, alternatives, hardCases, cautions, autoVsHuman) are excluded. Learner-visible humanReview/check labels are exported separately by flattenLearnerExtras.
  * The ORDER of Object.keys(flatten(task)) is the index a translator works with (scripts/think/tr-*.ts), so keep it stable.
  */
 const WRITE = (p: string, w: any, out: Record<string, string>) => {
@@ -41,12 +41,27 @@ export function flatten(t: ThinkTask): Record<string, string> {
   }
   return out;
 }
+/** Additional learner-visible fields, kept separate to preserve existing authoring indices and locale coverage. */
+export function flattenLearnerExtras(t: ThinkTask): Record<string, string> {
+  const out: Record<string, string> = {};
+  if (t.levelLabel) out["meta.levelLabel"] = t.levelLabel;
+  const write = (p: string, w: any) => {
+    if (w.humanReview) out[`${p}.humanReview`] = w.humanReview;
+    (w.checks ?? []).forEach((c: any) => { if (c.label) out[`${p}.check.${c.id}.label`] = c.label; });
+  };
+  for (const s of t.steps as any[]) {
+    const p = `s.${s.id}`;
+    if (s.kind === "write") write(p, s);
+    if (s.kind === "build" && s.because) write(`${p}.because`, s.because);
+  }
+  return out;
+}
 export function applyFlat(t: ThinkTask, m: Record<string, string>): ThinkTask {
   const g = (k: string, d: string): string => (typeof m[k] === "string" && m[k].trim() ? m[k] : d);
-  const W = (p: string, w: any) => ({ ...w, placeholder: w.placeholder ? g(`${p}.placeholder`, w.placeholder) : w.placeholder, selfAssess: w.selfAssess.map((s: string, i: number) => g(`${p}.selfAssess.${i}`, s)),
+  const W = (p: string, w: any) => ({ ...w, humanReview: g(`${p}.humanReview`, w.humanReview), checks: w.checks.map((c: any) => ({ ...c, label: g(`${p}.check.${c.id}.label`, c.label) })), placeholder: w.placeholder ? g(`${p}.placeholder`, w.placeholder) : w.placeholder, selfAssess: w.selfAssess.map((s: string, i: number) => g(`${p}.selfAssess.${i}`, s)),
     modelAnswers: w.modelAnswers.map((x: any, i: number) => ({ ...x, text: g(`${p}.model.${i}`, x.text), ...(x.note ? { note: g(`${p}.modelNote.${i}`, x.note) } : {}) })) });
   const O = (p: string, opts: any[]) => opts.map((o) => ({ ...o, text: g(`${p}.o.${o.id}`, o.text), ...(o.reveals ? { reveals: g(`${p}.r.${o.id}`, o.reveals) } : {}) }));
-  return { ...(t as any), title: g("title", t.title), ...(t.topic ? { topic: g("topic", t.topic) } : {}), goal: g("goal", t.goal), material: g("material", t.material),
+  return { ...(t as any), levelLabel: g("meta.levelLabel", t.levelLabel), title: g("title", t.title), ...(t.topic ? { topic: g("topic", t.topic) } : {}), goal: g("goal", t.goal), material: g("material", t.material),
     thinking: t.thinking.map((x: string, i: number) => g(`thinking.${i}`, x)), prerequisites: t.prerequisites.map((x: string, i: number) => g(`prereq.${i}`, x)),
     steps: (t.steps as any[]).map((s: any) => {
       const p = `s.${s.id}`; const base = { ...s, prompt: g(`${p}.prompt`, s.prompt), hints: s.hints.map((h: string, i: number) => g(`${p}.hint.${i}`, h)) };

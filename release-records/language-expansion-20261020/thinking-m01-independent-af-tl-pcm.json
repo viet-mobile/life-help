@@ -1,0 +1,2607 @@
+{
+  "kind": "independent-ai-semantic-review",
+  "task": "m-01",
+  "reviewedLocales": [
+    "af",
+    "tl",
+    "pcm"
+  ],
+  "reviewerIndependence": "Reviewer authored neither of these three task overlays.",
+  "scope": [
+    {
+      "locale": "af",
+      "fileSHA256": "175315b5b7834681fcb8381fe57e5477b875df1bd40f2feca99c67b791e222fb",
+      "fieldsReadAndReviewed": 56
+    },
+    {
+      "locale": "tl",
+      "fileSHA256": "b4885bfcf0fa84643b67ba4520f6b5a82f7f5f6ae2d7cf8d23db2ad9e05e2545",
+      "fieldsReadAndReviewed": 56
+    },
+    {
+      "locale": "pcm",
+      "fileSHA256": "345e4ac879728d0a3026f5066a03d56bdc91e4a0a2dd39e2e74537c51b1b6d80",
+      "fieldsReadAndReviewed": 56
+    }
+  ],
+  "records": [
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "title",
+      "sourceHash": "338ec55f70c99343de819bc0758c6fee9614fc8bbf19bf1854a7e3587d1b38d6",
+      "targetHash": "90811190d8b527de358d4cc1410995db65afd206a9812b3414d5676b541ddea7",
+      "verdict": "pass",
+      "reason": "Preserves the claim under examination as always increasing; does not present it as an accepted rule.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "goal",
+      "sourceHash": "7c5c525e3f677bb70e1782e0d6e32fe171ff34dd86384a9599d2a9a2e8eac363",
+      "targetHash": "68f988016acbe93b660b51298866c9deea729210e88b653939de052b1b00c069",
+      "verdict": "pass",
+      "reason": "Retains limits of examples, learner-created non-increasing counterexamples and discovery of growth conditions.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "material",
+      "sourceHash": "785760db652204cc8720c3bbd17d3c19a50cbb728fc4bf1c3b2cf4dbd3326b8b",
+      "targetHash": "29f2f56bb8f00ac76fc86b98970f53782efd855c3e02677627bf1f5c074fb28b",
+      "verdict": "pass",
+      "reason": "Preserves Minji's three correct products3×4=12,5×2=10,7×6=42 and the deliberately false universal conclusion, without adding gender.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "thinking.0",
+      "sourceHash": "bb24fdaa5d3718cb7400c695505ae24b3176d529db065f855165108c449a39c9",
+      "targetHash": "bdfae4819f995145683dae13e0198b3dff98aace4b40d170d00166a4ebabc3b5",
+      "verdict": "pass",
+      "reason": "Preserves scrutiny of overgeneralization despite several examples.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "thinking.1",
+      "sourceHash": "753f779ed75b42d2a62f6acf07f185f7251141818c69cfbe4dacaa92aceb5558",
+      "targetHash": "4600acbb96e753fdddf09c1fcd9573361fd05f9f5f3facf760333d0f47deb057",
+      "verdict": "pass",
+      "reason": "Requires the learner to create counterexamples rather than merely repeat examples.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "thinking.2",
+      "sourceHash": "b22b840634943792d27148960a28dbc513003853ba9df796fd02b793e6d579d9",
+      "targetHash": "3ebcbbeee2a9e65d36f20a64159fc691f1c460e5865c70753730bba12ec7d94b",
+      "verdict": "pass",
+      "reason": "Retains discovery of conditions under which the claim is valid.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "prereq.0",
+      "sourceHash": "6ff03f08899eb33c849c70d946b5ba54d5a69fc1f4c588ce090b83672115a307",
+      "targetHash": "c3eea1f26bcfc23515f0a8fbe74978644152b7550a7895c49a20e41690ee6be0",
+      "verdict": "pass",
+      "reason": "Natural and decimal multiplication prerequisites, grade5~6 and8×0.5 example preserved.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s1.prompt",
+      "sourceHash": "314166613930147917baabc840a8d6183b898cb7eae738e930e7f2aa30eb513c",
+      "targetHash": "edc597c4ac32b3543844b7fa9ed6123c4406a2561cfa758fed3132913f71b850",
+      "verdict": "pass",
+      "reason": "Asks learner to select one questionable line; does not name the correct line before selection.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s1.hint.0",
+      "sourceHash": "42136aa12adf9543ce81a69f6dd267ae1e35014471a6b583c3784171d3008c41",
+      "targetHash": "ddd1ed1b555ddc27f67377b05760bb1ccdf64ed5736412222d61894a8dd6ce8b",
+      "verdict": "pass",
+      "reason": "Asks to verify all three calculations first; no added answer cue.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s1.hint.1",
+      "sourceHash": "dc7ce9a82dc6395bc05e512b0824e969e7e1bc5e97538ad93c5374865c820001",
+      "targetHash": "5c65d2d84f692d0c7912761caa1bd3c36f809e67bd4a03ee71c2edd54900d356",
+      "verdict": "pass",
+      "reason": "Retains multiplier list4,2,6 and asks for commonality without stating threshold1.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s1.line.0",
+      "sourceHash": "4186251d92eef72bf776d95e623ed519d1329f17dfd37d73c781c2d0850bc190",
+      "targetHash": "18bc163f085e1aaa75356035b4be28a87fd874fe938e401cdf3fc61a47144691",
+      "verdict": "pass",
+      "reason": "Correct product3×4=12 and comparison12>3 preserved.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s1.line.1",
+      "sourceHash": "6aea74481daac8f80c66e57ec19426c7f0c607d79aedc0ee6232246cd4851cf1",
+      "targetHash": "9782abb61a9fb4e0a31507046e3e43cc28780e661bd70a87ed3522efd233be61",
+      "verdict": "pass",
+      "reason": "Correct product5×2=10 and comparison10>5 preserved.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s1.line.2",
+      "sourceHash": "b2bfbe64c09a0f4e3f6e39b58f2177f3e583640bdd0948a20844125154df6285",
+      "targetHash": "182972f4a2dab978b68bf8c56c5cd5cf8890314679a421d98c708c6ee7f2fb04",
+      "verdict": "pass",
+      "reason": "Correct product7×6=42 and comparison42>7 preserved.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s1.line.3",
+      "sourceHash": "d6e03bce0d0a08f7097a3989a1c8a3d45cec435c6696c872b144ba405c55b663",
+      "targetHash": "ba38eb641c551c3714da9641ab384606a717246846156d3eabc67b6f50b8b56e",
+      "verdict": "pass",
+      "reason": "Preserves deliberately invalid universal statement, leaving this the unique unsupported line.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s1.explain",
+      "sourceHash": "3eecfeaba1b2589ffe4994ed6d93d746c58567e55c983bf0e44b07a01221c214",
+      "targetHash": "e023e0fe8782aa28c96dfe03625d4ab29eefa1370ad491e37f147c0b895c381a",
+      "verdict": "pass",
+      "reason": "Distinguishes correct examples from invalid generalization, identifies last line only in explanation, and retains untested-number-types reasoning.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s2.prompt",
+      "sourceHash": "3e19d8681455f3f9f07bc93e3adfe1d5a11da790c03f78163bbc0580b956e458",
+      "targetHash": "30b2e0c8d9d60d15fa452cd32aff6b241eb6219a7d358190ced466e66de541e7",
+      "verdict": "pass",
+      "reason": "Retains exactly two examples with different multipliers, initial natural a≥1, multiplier b>0, natural/decimal allowance and product≤initial condition. Does not tighten ≤ into <.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s2.hint.0",
+      "sourceHash": "b552ebb6dd42cc0a14b226438e78bc0d9dc5edf8f709e72438c26139e36cf9d7",
+      "targetHash": "5fa5e20bee2875ffce45621127891651bfedeb3b4da16318ed3265b34a341256",
+      "verdict": "pass",
+      "reason": "Asks for untested kinds of multiplier after4,2,6; no added zero or negative allowance.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s2.hint.1",
+      "sourceHash": "23566b6f7217ec83a2847cc535539b5df1138d3fe0c7413ff67d24a8a2fbf2cc",
+      "targetHash": "ba5fab16067c10f6baf68641eb7b7627afd9c65677b056afe855aad1d322ecb3",
+      "verdict": "pass",
+      "reason": "Asks comparison while varying multiplier; non-increase preserved without leaking explicit valid choices.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s2.var.a",
+      "sourceHash": "92a38c212292639c3e4345488279c399319771de10d7953fe1ed55cb517d6f5f",
+      "targetHash": "0a7c8ff0cf9009c508a00725a4f8ebe38cabb7253c03ee937b2943fbc8227fad",
+      "verdict": "pass",
+      "reason": "Label identifies initial number as natural, not the multiplier.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s2.var.b",
+      "sourceHash": "360736d7604a19910a2c0d5744862fefef2df527260d689ceee8224d880cd295",
+      "targetHash": "6b6964a89f40df6a9dc0d8c33271b37e1ca5ccbeb3dde17a3436c4cd06c65afd",
+      "verdict": "pass",
+      "reason": "Label identifies multiplier and allows natural or decimal representation.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s2.ok.c1",
+      "sourceHash": "f1da90617a489ebd7c36af44babc247bbeb9eaf4569be96a76918035e3f7edbe",
+      "targetHash": "0aee23f284fe2fe8275491579aec5831401664ca71d05a9363d449e708f21eee",
+      "verdict": "pass",
+      "reason": "Success confirms natural initial number at least1.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s2.fail.c1",
+      "sourceHash": "7af6f115778d2d66025577381f13a3ef43d86dcdf997149b170c33b1e9fe2498",
+      "targetHash": "40ca061e1af9f636a0d1f1bb5f6f0ecec6e9cad735424bce4ca5f9e5c536dabf",
+      "verdict": "pass",
+      "reason": "Failure asks for natural initial number at least1 rather than greater than1.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s2.ok.c2",
+      "sourceHash": "b184f14d8b941eaf564774b5d3d68013ee0eadd70f0fb458e1a8bcf8bdec65f8",
+      "targetHash": "5dc82e049819eaa20d98ea53c718964bf6f19fa121617370825d3e5794990a5e",
+      "verdict": "pass",
+      "reason": "Confirms strict positive multiplier b>0, not b≥0.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s2.fail.c2",
+      "sourceHash": "535653d140ec44199082ee2e36c7eef4d21ad9a16ef969ab508649aefb170f32",
+      "targetHash": "ef9af1a9fc056b30144293a0954dc78c0e5a25f00923b09e69ede567be7b9b6e",
+      "verdict": "pass",
+      "reason": "Requests multiplier>0 and explicitly excludes0 for this activity.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s2.ok.c3",
+      "sourceHash": "3c44a3dd0d489ba99fd28ea6abeb1cd773525b70319311580dfd43de091ea881",
+      "targetHash": "666d3873a31d2ccb4f720ee051738fb8c056f47630e3f046529dbd655e9b4ef3",
+      "verdict": "pass",
+      "reason": "Accepts equality or decrease as counterexample; rejects universal claim without requiring strict decrease.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s2.fail.c3",
+      "sourceHash": "ee0ca3d36aeee4e725cb267c3f8e75c22ae407e76c35c7c068a8f8b8bcd68892",
+      "targetHash": "d7ee49dca27af8ca509cccc23083c8fbdf460c37ce7e5f888036bab4de16fa32",
+      "verdict": "pass",
+      "reason": "Failure correctly means product exceeded initial and asks to compare with initial.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s2.explain",
+      "sourceHash": "931b0f788da7b9af41215676e515a1c0e9f511ac80bb6f48eb93792d09cfdbd5",
+      "targetHash": "e36eb6a6986d42d2980234558de06ee2fb25a3e6fceb2e438349a3d40272176e",
+      "verdict": "pass",
+      "reason": "8×0.5=4<8 and6×1=6 equality are both valid non-increasing cases; one counterexample refutes always.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s3.prompt",
+      "sourceHash": "0d69e923a08ea7dcf815b9058f93bbcfa2d85c36feeece9593dbdac6ef7f24d6",
+      "targetHash": "63d61aff3e1a49721269b104e36d7acc2020397db307ccab160baef1ad3a542d",
+      "verdict": "pass",
+      "reason": "Retains positive initial number and complete-and-exact condition requirement, so b>2 is not a second correct answer despite being sufficient.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s3.hint.0",
+      "sourceHash": "9098208c4742e9292ca5cf87a5fab91d83c49e3498efd4cd8e9bf594c31a6660",
+      "targetHash": "72e094f11741df2427e06c6ebb4d733ed1d284b436a03f1a84f6dc72a938be2c",
+      "verdict": "pass",
+      "reason": "Retains initial×multiplier table and variable multiplier, without supplying boundary.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s3.hint.1",
+      "sourceHash": "559e7ab337d10931833c29d62622b79c90c7a8da5cfada2e11fc9245e5c6d118",
+      "targetHash": "93a68ee8bf3c15c1502a6e20380ba80bf446ac8a10d9b67a4865fdf5118fd67e",
+      "verdict": "pass",
+      "reason": "Separates increasing and non-increasing rows and compares multipliers; no stronger threshold leaked.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s3.o.a",
+      "sourceHash": "5c9b270018b83c143e74b2143b119094df2b91f7c2b74348cb841da79f0559bf",
+      "targetHash": "0b641c42ec750320516f32333d4b25fd125d4a94d0b8028f2180a81026f5a4b7",
+      "verdict": "pass",
+      "reason": "Correct exact condition multiplier>1 preserved, strict boundary intact.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s3.r.a",
+      "sourceHash": "6889449542bc4f84c8012a1f0aef0d7dd9e4a7d5a6a5558dae880cc3505e9c33",
+      "targetHash": "9b2fbe799535eaf1a885568897f1a60f60e2670d2eee1c973fb2c13a29d8acbd",
+      "verdict": "pass",
+      "reason": "Distinguishes>1 growth,=1 equality,0<b<1 decrease; explanation precision preserved.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s3.o.b",
+      "sourceHash": "5ba4315cfff8d48aa131dbb85007dd0840337c60eee6555c93391f18efdd94c1",
+      "targetHash": "0c90d14dd5d2823a8b1f0d877345f1862e31095fa7968c352d95ddb9087990df",
+      "verdict": "pass",
+      "reason": "Natural-number distractor preserved, including possibility1.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s3.r.b",
+      "sourceHash": "38e543cddc5508052bde6472c04b52194dae260f3910a1557c99631ed29687b6",
+      "targetHash": "585ba2900f09ea57215b1b7759762165fa8b32cd5f6859b366a9b30e26e3adf9",
+      "verdict": "pass",
+      "reason": "Explains natural numbers include1 and8×1 does not grow.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s3.o.c",
+      "sourceHash": "1fdcf1ae365567a25d1d17c72a3415b6ea76d9a13456d0a4d0d6edde97c84b78",
+      "targetHash": "92b97229b47b4362aca37c492b735a76649e0baadd574e983ee77c088d5f0628",
+      "verdict": "pass",
+      "reason": "Decimal distractor preserved; does not incorrectly restrict decimals below1.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s3.r.c",
+      "sourceHash": "713bfea38056ea1298245dc09f4354dc311d693b76eb7f9d77cd6596073eda57",
+      "targetHash": "5e88035bd7f998349f60ff7119b557571be23169dda036d077417bb5e40c39ad",
+      "verdict": "pass",
+      "reason": "Contrasts1.5>1 with0.5<1, preserving why decimal classification is insufficient.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s3.o.d",
+      "sourceHash": "f8e16fcc348de59699342680be6d3741af1596bfe29cd41b79722a43eda90436",
+      "targetHash": "7861956990531dfd523e5f5c81a4b2455463e7afed237198c127c725a1638bf9",
+      "verdict": "pass",
+      "reason": "Distractor multiplier>2 preserved, not changed to≥2 or>1.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s3.r.d",
+      "sourceHash": "141997d51c4224c0245d9b78091a0e9c5a387a63c6366fb2862f93e858789944",
+      "targetHash": "08b078c7599f425836f28889170eb88e07b840af521ab1ecf48f1941f4369855",
+      "verdict": "pass",
+      "reason": "States>2 is sufficient but incomplete and1.5 supplies missing growth case; no claim that this option is mathematically false.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s3.o.e",
+      "sourceHash": "fdb3fbd1d97b798300055eb406f9da1db474d79dbd0fe66e9c88380b52903a85",
+      "targetHash": "9bb33ffd543e97514ef9ded392fe9ad48174ecc0bd582ce26c2131bf8c7cfe64",
+      "verdict": "pass",
+      "reason": "Large-initial-number distractor preserved without changing the multiplier condition.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s3.r.e",
+      "sourceHash": "c1f74e0af65672159d16b5a9bb8d1da71748610b39201262c5be7c2dec10ebca",
+      "targetHash": "a9b4ac017abd4065a00649da80eee7e525710d891bdb49b08254a4c381c5b519",
+      "verdict": "pass",
+      "reason": "0.5 shrinks even a large positive initial number; multiplier controls comparison.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s3.explain",
+      "sourceHash": "6aaf95b2d3b4b44d9c7bcb25e89a84ebe438963e2b604254e09cbfa361e15644",
+      "targetHash": "80b3c58c1dfba37b5ddd3e1b3ece8b290ae7d1d0c72ebcd08c15edb6d549e7b2",
+      "verdict": "pass",
+      "reason": "Preserves all three positive-multiplier regimes and correct replacement of always by multiplier>1.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s4.prompt",
+      "sourceHash": "3e359a6b07ba8950fd87de5304db724e52d29a9a24c6743e3830f558a9d9dc52",
+      "targetHash": "abeaabc1b300fde8512d6d2be2e3b9f4a05b009ab96d760cb8ccc77f513a1ccf",
+      "verdict": "pass",
+      "reason": "Requests explanation to Minji with self-created numeric examples, falsity reason and growth condition; no imposed gender.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s4.hint.0",
+      "sourceHash": "0a6a15a092f1f3e88f49a1dcf05f56f5f54117efe95c1499579dbece9b1c9b17",
+      "targetHash": "a8ff1da0180ee4c489e78ee9277be26eb5397441ba6afa1bce2ae5f4f0aaff07",
+      "verdict": "pass",
+      "reason": "Allows reuse of the two constructed examples without changing them.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s4.hint.1",
+      "sourceHash": "aa2c20370c0c64dab8ba51d21870fe3228b6dde3d3cd4baff88d7c22a36f62a7",
+      "targetHash": "414d8f236985dc58f2f79e48ac8d9b696dbd4a743acdcf28ee247154ca5ab03e",
+      "verdict": "pass",
+      "reason": "Suggests addressing Minji, rejecting overgeneralized case and adding multiplier condition without giving threshold1 in the hint itself.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s4.placeholder",
+      "sourceHash": "7b7242396ed026d854d7c9a402720650aed5dd674a72fa3e84ecb0e729d4229d",
+      "targetHash": "9e4b48723d4c1b7964b6d795acea101f5b27a0268ae9ce139c7cf55a99ccd928",
+      "verdict": "pass",
+      "reason": "Retains open example address to Minji; does not insert a complete answer.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s4.selfAssess.0",
+      "sourceHash": "a457b1f87927d4642c5c7a085840dfd862413a935ad503945ae11ec09e5c968c",
+      "targetHash": "60f1a000689e466339dada58e2608440ec3c82a34ab66cb2649989faf06b00be",
+      "verdict": "pass",
+      "reason": "Self-assessment checks explicit comparison of product with initial in learner examples.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s4.selfAssess.1",
+      "sourceHash": "12e04017e815eb49cf31a494dc5430db4978863da7d3a81f78f4c9630f1c6d82",
+      "targetHash": "1f31b72aafd2714ce7946b889c0aac97eddaf7f0f866f80a98aa756ba754d325",
+      "verdict": "pass",
+      "reason": "Self-assessment checks understanding that one counterexample suffices to refute always.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s4.selfAssess.2",
+      "sourceHash": "9580c6a5be271da70fc52d42d91639dca5b7cfb91fb4c6af7cbc329c8b574185",
+      "targetHash": "9a2615763614bb7fe78977ed58ed479217585d1204405910a62e3941f43953ae",
+      "verdict": "pass",
+      "reason": "Self-assessment checks that explanation states multiplier condition for growth.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s4.model.0",
+      "sourceHash": "8793aa919c6c1966c4044dc3f2338bd34206313cb7f3959cd92ee13ace1394a7",
+      "targetHash": "9f1a8454bd5120c0761ff6f7a4b99ccfb7fcb3f68bad5403d5da478d20e70e5a",
+      "verdict": "pass",
+      "reason": "Preserves8×0.5=4<8 and necessary-and-sufficient multiplier>1 condition for positive initial number.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s4.model.1",
+      "sourceHash": "c2499d265166da8c890204b0b6b8225c008728831ee090250d9004e45a669299",
+      "targetHash": "82d229dc402b315a4df87aebb81e92b6050a1743c176205634055272e5a474ad",
+      "verdict": "pass",
+      "reason": "Preserves equality6×1=6 and decrease10×0.1=1, then states multiplier>1 for growth.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "meta.levelLabel",
+      "sourceHash": "2b35e448b26a7a66d31784ea648e252a3ee066fd9141a02a4fe0a9f03079e9ab",
+      "targetHash": "d8ef19e2595503401af73513b1b7b08e02f71f3dc08d8aa04400f52b98e0d43f",
+      "verdict": "pass",
+      "reason": "Elementary-stage label retained; not a claim of official local curriculum equivalence.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s4.humanReview",
+      "sourceHash": "aa72bba6b7ff2d1280b7cf0135bfb444438d24f61cd90204142b0db4ab7d05e0",
+      "targetHash": "504442dbb15f99f8998774b776c9249c4fe8213dd6972497bbf24e9acc55d711",
+      "verdict": "pass",
+      "reason": "Requires a human to assess arithmetic and genuine understanding versus accidental mention of>1; no automatic-quality guarantee introduced.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s4.check.w1.label",
+      "sourceHash": "bbe58aa4dbe7865362be4df9e2defbfb7475f24191f9153916981ae0077d3747",
+      "targetHash": "443b79816e19c6dbda920e007cf4666cd8a19cd7d6583e7248e71573667170b2",
+      "verdict": "pass",
+      "reason": "Label describes presence of a concrete numeric example, not proof of its correctness.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s4.check.w2.label",
+      "sourceHash": "fc0c70424fe2972308d46769d6d40d55ee74ff5114a206a27cbab2dcda90cabd",
+      "targetHash": "467909202130c06912007161af4b6153517b18816e8582d8cfb2f034c170da8e",
+      "verdict": "pass",
+      "reason": "Label describes not-always-growing conclusion, not denial of all growth.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s4.check.w3.label",
+      "sourceHash": "3482964980aaa28c203c6860b5a87d4d2c81264596b20c033f661de5f520663d",
+      "targetHash": "7eed3288410b2aba7e95e7443c5a884e2db932f645ff710490a6fc4287045061",
+      "verdict": "pass",
+      "reason": "Label identifies stated threshold multiplier>1; does not claim validator understands prose.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "af",
+      "task": "m-01",
+      "path": "s.s4.check.w4.label",
+      "sourceHash": "cd1179092c474cbfb717a9f29380abec75c9823a6615029ebf9978820f853dc4",
+      "targetHash": "41ffc933136d3121d5891eb51ec1dae765632063865247e73f1c9cab474be92f",
+      "verdict": "pass",
+      "reason": "Label requires not simply accepting Minji's claim; no new correctness clue inserted.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "title",
+      "sourceHash": "338ec55f70c99343de819bc0758c6fee9614fc8bbf19bf1854a7e3587d1b38d6",
+      "targetHash": "1da2bf3148b378817d7702d3d47d8a26641d94e4a02b0a25edaee88e3cd6be3a",
+      "verdict": "pass",
+      "reason": "Preserves the claim under examination as always increasing; does not present it as an accepted rule.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "goal",
+      "sourceHash": "7c5c525e3f677bb70e1782e0d6e32fe171ff34dd86384a9599d2a9a2e8eac363",
+      "targetHash": "020ffa6293eaf3b2408c899b83ecf6f7cf5b68f1bc1c4fb1eba4f168ee37c79c",
+      "verdict": "pass",
+      "reason": "Retains limits of examples, learner-created non-increasing counterexamples and discovery of growth conditions.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "material",
+      "sourceHash": "785760db652204cc8720c3bbd17d3c19a50cbb728fc4bf1c3b2cf4dbd3326b8b",
+      "targetHash": "bf12532f328a21e1ec0e6cf8a24548feb54b5bd4bdb06fd6a9cf345b39c1075a",
+      "verdict": "pass",
+      "reason": "Preserves Minji's three correct products3×4=12,5×2=10,7×6=42 and the deliberately false universal conclusion, without adding gender.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "thinking.0",
+      "sourceHash": "bb24fdaa5d3718cb7400c695505ae24b3176d529db065f855165108c449a39c9",
+      "targetHash": "8b47fa854eec9ecd2db244199551c88908d82951044d0451afa1428bf1d105c7",
+      "verdict": "pass",
+      "reason": "Preserves scrutiny of overgeneralization despite several examples.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "thinking.1",
+      "sourceHash": "753f779ed75b42d2a62f6acf07f185f7251141818c69cfbe4dacaa92aceb5558",
+      "targetHash": "dc62ee29f6e3361e3117325f0e098c164446b897773a39ff4a8702ee55c8f5f0",
+      "verdict": "pass",
+      "reason": "Requires the learner to create counterexamples rather than merely repeat examples.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "thinking.2",
+      "sourceHash": "b22b840634943792d27148960a28dbc513003853ba9df796fd02b793e6d579d9",
+      "targetHash": "3c2c32533bcdecec088312537a36fbb3b4c752c39e9b972da38f9de90dba1357",
+      "verdict": "language_review_suggested",
+      "reason": "Retains discovery of conditions under which the claim is valid. The phrase nagpapakatotoo is understandable but may suggest making a claim true rather than identifying when it holds; clearer wording is suggested, not a finding of altered mathematics.",
+      "proposedPatch": {
+        "op": "replace",
+        "path": "/m-01/thinking.2",
+        "value": "Tuklasin ang mga kundisyon kung kailan totoo ang pahayag"
+      },
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "prereq.0",
+      "sourceHash": "6ff03f08899eb33c849c70d946b5ba54d5a69fc1f4c588ce090b83672115a307",
+      "targetHash": "fd3f95031ff3b41d2b369e7bd041ad4fc68cf5e266f0c815dd6bbb6a1d5a7f47",
+      "verdict": "pass",
+      "reason": "Natural and decimal multiplication prerequisites, grade5~6 and8×0.5 example preserved.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s1.prompt",
+      "sourceHash": "314166613930147917baabc840a8d6183b898cb7eae738e930e7f2aa30eb513c",
+      "targetHash": "0c2b01b994caeac1da585f701f5ab1d6c6210d92e53e87f18ba0a5a4e322e231",
+      "verdict": "pass",
+      "reason": "Asks learner to select one questionable line; does not name the correct line before selection.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s1.hint.0",
+      "sourceHash": "42136aa12adf9543ce81a69f6dd267ae1e35014471a6b583c3784171d3008c41",
+      "targetHash": "92456dbb645624f10ac10cf70aeb35821b16c0fe873b420d8a571dee58292d73",
+      "verdict": "pass",
+      "reason": "Asks to verify all three calculations first; no added answer cue.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s1.hint.1",
+      "sourceHash": "dc7ce9a82dc6395bc05e512b0824e969e7e1bc5e97538ad93c5374865c820001",
+      "targetHash": "423ff4bba94809bc8645288278f1f37bc6f5b65e62e69b9b31a422d12d005a43",
+      "verdict": "pass",
+      "reason": "Retains multiplier list4,2,6 and asks for commonality without stating threshold1.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s1.line.0",
+      "sourceHash": "4186251d92eef72bf776d95e623ed519d1329f17dfd37d73c781c2d0850bc190",
+      "targetHash": "231e7d35e0e6f53a64b0efe6423955d61a55e184f486bb9b6141fa7de30708d1",
+      "verdict": "pass",
+      "reason": "Correct product3×4=12 and comparison12>3 preserved.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s1.line.1",
+      "sourceHash": "6aea74481daac8f80c66e57ec19426c7f0c607d79aedc0ee6232246cd4851cf1",
+      "targetHash": "55651c647c5f74a35b93f89049be96d2ab636a1bcde22317e73bfa345cd659eb",
+      "verdict": "pass",
+      "reason": "Correct product5×2=10 and comparison10>5 preserved.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s1.line.2",
+      "sourceHash": "b2bfbe64c09a0f4e3f6e39b58f2177f3e583640bdd0948a20844125154df6285",
+      "targetHash": "f81273ff49002e98ed3c67a74165f9cab2d3dfeeb35d020606e908885bb9e242",
+      "verdict": "pass",
+      "reason": "Correct product7×6=42 and comparison42>7 preserved.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s1.line.3",
+      "sourceHash": "d6e03bce0d0a08f7097a3989a1c8a3d45cec435c6696c872b144ba405c55b663",
+      "targetHash": "b07f1218026e61ad7717da24cb169117d0e2869442dd8135422808a0bf6b9953",
+      "verdict": "pass",
+      "reason": "Preserves deliberately invalid universal statement, leaving this the unique unsupported line.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s1.explain",
+      "sourceHash": "3eecfeaba1b2589ffe4994ed6d93d746c58567e55c983bf0e44b07a01221c214",
+      "targetHash": "36d836678ddae8f2470bc155cf798a8f24bfb3bfff5dd0b45d2be54e6f5590f0",
+      "verdict": "pass",
+      "reason": "Distinguishes correct examples from invalid generalization, identifies last line only in explanation, and retains untested-number-types reasoning.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s2.prompt",
+      "sourceHash": "3e19d8681455f3f9f07bc93e3adfe1d5a11da790c03f78163bbc0580b956e458",
+      "targetHash": "0820645bb0cb49dd0bec3f87c2947f5ebf31451f10c0b335ac6c6884afeecf2a",
+      "verdict": "pass",
+      "reason": "Retains exactly two examples with different multipliers, initial natural a≥1, multiplier b>0, natural/decimal allowance and product≤initial condition. Does not tighten ≤ into <.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s2.hint.0",
+      "sourceHash": "b552ebb6dd42cc0a14b226438e78bc0d9dc5edf8f709e72438c26139e36cf9d7",
+      "targetHash": "0dfbc7104916e9094aa03e836005719c153ab1242b6496b7ee4d96eb91d8ede1",
+      "verdict": "pass",
+      "reason": "Asks for untested kinds of multiplier after4,2,6; no added zero or negative allowance.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s2.hint.1",
+      "sourceHash": "23566b6f7217ec83a2847cc535539b5df1138d3fe0c7413ff67d24a8a2fbf2cc",
+      "targetHash": "d8b4737b1d73d0963f782c09b17cc557297894f1e70f2da199bdf8db9e1449dc",
+      "verdict": "pass",
+      "reason": "Asks comparison while varying multiplier; non-increase preserved without leaking explicit valid choices.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s2.var.a",
+      "sourceHash": "92a38c212292639c3e4345488279c399319771de10d7953fe1ed55cb517d6f5f",
+      "targetHash": "e81ce3a7fe9d9f972c0e6498d3a2c921615e0ea7ebde18b6468e873a8061258e",
+      "verdict": "pass",
+      "reason": "Label identifies initial number as natural, not the multiplier.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s2.var.b",
+      "sourceHash": "360736d7604a19910a2c0d5744862fefef2df527260d689ceee8224d880cd295",
+      "targetHash": "d19b155250975b8c23e3c33f7cb33a00f29b7684c1861a44fa4c754da9687ce7",
+      "verdict": "pass",
+      "reason": "Label identifies multiplier and allows natural or decimal representation.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s2.ok.c1",
+      "sourceHash": "f1da90617a489ebd7c36af44babc247bbeb9eaf4569be96a76918035e3f7edbe",
+      "targetHash": "75a1d16f43ff0c7097c820d78ac357c179fd59d1ccf3965b588331872b7a8da8",
+      "verdict": "pass",
+      "reason": "Success confirms natural initial number at least1.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s2.fail.c1",
+      "sourceHash": "7af6f115778d2d66025577381f13a3ef43d86dcdf997149b170c33b1e9fe2498",
+      "targetHash": "1c0e2d8fe82c6c399dda234f9f2c08c19b58c607685f1bcab7490123d1f6cd5a",
+      "verdict": "pass",
+      "reason": "Failure asks for natural initial number at least1 rather than greater than1.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s2.ok.c2",
+      "sourceHash": "b184f14d8b941eaf564774b5d3d68013ee0eadd70f0fb458e1a8bcf8bdec65f8",
+      "targetHash": "c69808d93cef4355110299c4882d3d0c4ee18a9373f5303c207e97516a2107de",
+      "verdict": "pass",
+      "reason": "Confirms strict positive multiplier b>0, not b≥0.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s2.fail.c2",
+      "sourceHash": "535653d140ec44199082ee2e36c7eef4d21ad9a16ef969ab508649aefb170f32",
+      "targetHash": "7039d0f3704a02d3c13bb1ba544bc8de487c65bced62e6dc04ee393f46be95b6",
+      "verdict": "pass",
+      "reason": "Requests multiplier>0 and explicitly excludes0 for this activity.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s2.ok.c3",
+      "sourceHash": "3c44a3dd0d489ba99fd28ea6abeb1cd773525b70319311580dfd43de091ea881",
+      "targetHash": "2f6f0df414b045b122974f7fa4c2857c3be6209c276e65bb1e2a31c8946ac632",
+      "verdict": "pass",
+      "reason": "Accepts equality or decrease as counterexample; rejects universal claim without requiring strict decrease.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s2.fail.c3",
+      "sourceHash": "ee0ca3d36aeee4e725cb267c3f8e75c22ae407e76c35c7c068a8f8b8bcd68892",
+      "targetHash": "8c037aaeaf883ae2c49176ab55d4eff34e3ba21a90234898044f6ff340b447b3",
+      "verdict": "pass",
+      "reason": "Failure correctly means product exceeded initial and asks to compare with initial.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s2.explain",
+      "sourceHash": "931b0f788da7b9af41215676e515a1c0e9f511ac80bb6f48eb93792d09cfdbd5",
+      "targetHash": "c9520c5f4d64cc49e40e2ec508317efadef7c4340c3730c0038e819df0a3f6db",
+      "verdict": "pass",
+      "reason": "8×0.5=4<8 and6×1=6 equality are both valid non-increasing cases; one counterexample refutes always.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s3.prompt",
+      "sourceHash": "0d69e923a08ea7dcf815b9058f93bbcfa2d85c36feeece9593dbdac6ef7f24d6",
+      "targetHash": "a692ec10819a103ed45187c6d80e1af74d4ae864060151b48988109daaef841c",
+      "verdict": "pass",
+      "reason": "Retains positive initial number and complete-and-exact condition requirement, so b>2 is not a second correct answer despite being sufficient.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s3.hint.0",
+      "sourceHash": "9098208c4742e9292ca5cf87a5fab91d83c49e3498efd4cd8e9bf594c31a6660",
+      "targetHash": "a12350b73a5de197eb25fa2d39f4d1fad97185b9d6b39d412083fae874066406",
+      "verdict": "pass",
+      "reason": "Retains initial×multiplier table and variable multiplier, without supplying boundary.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s3.hint.1",
+      "sourceHash": "559e7ab337d10931833c29d62622b79c90c7a8da5cfada2e11fc9245e5c6d118",
+      "targetHash": "2843a6c003e260bf0f4625b7b132af7bbc671cb95484c2927e0584f523c5fa1e",
+      "verdict": "pass",
+      "reason": "Separates increasing and non-increasing rows and compares multipliers; no stronger threshold leaked.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s3.o.a",
+      "sourceHash": "5c9b270018b83c143e74b2143b119094df2b91f7c2b74348cb841da79f0559bf",
+      "targetHash": "4ad7bed4c09f538ff9bf44d76551b3e0af4f59a8ca76c863f9f54c24df222d5a",
+      "verdict": "pass",
+      "reason": "Correct exact condition multiplier>1 preserved, strict boundary intact.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s3.r.a",
+      "sourceHash": "6889449542bc4f84c8012a1f0aef0d7dd9e4a7d5a6a5558dae880cc3505e9c33",
+      "targetHash": "269b6c6f3bcbc4ad611dda06f17c49a974d9eb159b55268ea456c4028992d835",
+      "verdict": "pass",
+      "reason": "Distinguishes>1 growth,=1 equality,0<b<1 decrease; explanation precision preserved.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s3.o.b",
+      "sourceHash": "5ba4315cfff8d48aa131dbb85007dd0840337c60eee6555c93391f18efdd94c1",
+      "targetHash": "9a2744b3ac0256bc8a0e42c47dd77dad40750f2ea8dfd13f96910a2d1cedcbbd",
+      "verdict": "pass",
+      "reason": "Natural-number distractor preserved, including possibility1.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s3.r.b",
+      "sourceHash": "38e543cddc5508052bde6472c04b52194dae260f3910a1557c99631ed29687b6",
+      "targetHash": "1d24ea76c2e6f8f314c96bd0fd03f1e4769afcd38202dc34dc5ede2ca5e51588",
+      "verdict": "pass",
+      "reason": "Explains natural numbers include1 and8×1 does not grow.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s3.o.c",
+      "sourceHash": "1fdcf1ae365567a25d1d17c72a3415b6ea76d9a13456d0a4d0d6edde97c84b78",
+      "targetHash": "628b0ea5a51dcad2a90811bcc7675599fcc491ed69d4cbb0eea9321d976b7050",
+      "verdict": "pass",
+      "reason": "Decimal distractor preserved; does not incorrectly restrict decimals below1.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s3.r.c",
+      "sourceHash": "713bfea38056ea1298245dc09f4354dc311d693b76eb7f9d77cd6596073eda57",
+      "targetHash": "af31b04afe59ac74c83699af85d3b23a4946c1143ccd96c1ffc52850785ae155",
+      "verdict": "pass",
+      "reason": "Contrasts1.5>1 with0.5<1, preserving why decimal classification is insufficient.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s3.o.d",
+      "sourceHash": "f8e16fcc348de59699342680be6d3741af1596bfe29cd41b79722a43eda90436",
+      "targetHash": "b70c79b649399234f7a89d47d355730d9c6783a2fafd2a17738dd88aa69b1abf",
+      "verdict": "pass",
+      "reason": "Distractor multiplier>2 preserved, not changed to≥2 or>1.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s3.r.d",
+      "sourceHash": "141997d51c4224c0245d9b78091a0e9c5a387a63c6366fb2862f93e858789944",
+      "targetHash": "db15200b0286498d3a205e0481fddeb9e94059eef8f60188b0ed413670ab9eba",
+      "verdict": "pass",
+      "reason": "States>2 is sufficient but incomplete and1.5 supplies missing growth case; no claim that this option is mathematically false.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s3.o.e",
+      "sourceHash": "fdb3fbd1d97b798300055eb406f9da1db474d79dbd0fe66e9c88380b52903a85",
+      "targetHash": "85667ab4e02ce76d240f9d55dde290895132b6048dc101d8b4a0b9a9085c877a",
+      "verdict": "pass",
+      "reason": "Large-initial-number distractor preserved without changing the multiplier condition.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s3.r.e",
+      "sourceHash": "c1f74e0af65672159d16b5a9bb8d1da71748610b39201262c5be7c2dec10ebca",
+      "targetHash": "afe7a9333c21837a4c791a04e0b7a5857f393b1811ba9ce5a921647d2dd33dc1",
+      "verdict": "pass",
+      "reason": "0.5 shrinks even a large positive initial number; multiplier controls comparison.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s3.explain",
+      "sourceHash": "6aaf95b2d3b4b44d9c7bcb25e89a84ebe438963e2b604254e09cbfa361e15644",
+      "targetHash": "c037855c0436036ee24cbb444c18f554153f1e2269317ca06a5c92a9f83c4336",
+      "verdict": "pass",
+      "reason": "Preserves all three positive-multiplier regimes and correct replacement of always by multiplier>1.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s4.prompt",
+      "sourceHash": "3e359a6b07ba8950fd87de5304db724e52d29a9a24c6743e3830f558a9d9dc52",
+      "targetHash": "06ec3bd47d31761b13c741795ecf1c9c3f91be324485d00397c45ffb284c90aa",
+      "verdict": "pass",
+      "reason": "Requests explanation to Minji with self-created numeric examples, falsity reason and growth condition; no imposed gender.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s4.hint.0",
+      "sourceHash": "0a6a15a092f1f3e88f49a1dcf05f56f5f54117efe95c1499579dbece9b1c9b17",
+      "targetHash": "22c93fb5916c55ff272fa50335c6b29efd3814610fa79cb6817d6d7fe7f69502",
+      "verdict": "pass",
+      "reason": "Allows reuse of the two constructed examples without changing them.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s4.hint.1",
+      "sourceHash": "aa2c20370c0c64dab8ba51d21870fe3228b6dde3d3cd4baff88d7c22a36f62a7",
+      "targetHash": "a64cd631abf9e801df46ef082c439668849ac1cebf396c2a77b7e8fa401d8b89",
+      "verdict": "pass",
+      "reason": "Suggests addressing Minji, rejecting overgeneralized case and adding multiplier condition without giving threshold1 in the hint itself.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s4.placeholder",
+      "sourceHash": "7b7242396ed026d854d7c9a402720650aed5dd674a72fa3e84ecb0e729d4229d",
+      "targetHash": "9495ac3b9c0030bb071517b0b07cb876a274d42d57c74adfd9bc5f1021358018",
+      "verdict": "pass",
+      "reason": "Retains open example address to Minji; does not insert a complete answer.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s4.selfAssess.0",
+      "sourceHash": "a457b1f87927d4642c5c7a085840dfd862413a935ad503945ae11ec09e5c968c",
+      "targetHash": "bc16d296abda2258015a7ac80a9d5bbaf7280b3d514c7813582d74acda7bced9",
+      "verdict": "pass",
+      "reason": "Self-assessment checks explicit comparison of product with initial in learner examples.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s4.selfAssess.1",
+      "sourceHash": "12e04017e815eb49cf31a494dc5430db4978863da7d3a81f78f4c9630f1c6d82",
+      "targetHash": "dd64774113314f0bf35d25ebc3dacd7928e03374dc3a0308979e5d3250590dc9",
+      "verdict": "pass",
+      "reason": "Self-assessment checks understanding that one counterexample suffices to refute always.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s4.selfAssess.2",
+      "sourceHash": "9580c6a5be271da70fc52d42d91639dca5b7cfb91fb4c6af7cbc329c8b574185",
+      "targetHash": "d82e4e8f76e2d86944dc44979f72fe47d3af504db3f51fe85fb449d5c066cc4d",
+      "verdict": "pass",
+      "reason": "Self-assessment checks that explanation states multiplier condition for growth.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s4.model.0",
+      "sourceHash": "8793aa919c6c1966c4044dc3f2338bd34206313cb7f3959cd92ee13ace1394a7",
+      "targetHash": "cdcccee6a68e6f5309617ec6e73eba61924f278e4a9871dfa0d25d67683d7797",
+      "verdict": "pass",
+      "reason": "Preserves8×0.5=4<8 and necessary-and-sufficient multiplier>1 condition for positive initial number.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s4.model.1",
+      "sourceHash": "c2499d265166da8c890204b0b6b8225c008728831ee090250d9004e45a669299",
+      "targetHash": "899b28f4f3f610aa3163344d2eb94c61b14d6846133962d449297fb551da3b47",
+      "verdict": "pass",
+      "reason": "Preserves equality6×1=6 and decrease10×0.1=1, then states multiplier>1 for growth.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "meta.levelLabel",
+      "sourceHash": "2b35e448b26a7a66d31784ea648e252a3ee066fd9141a02a4fe0a9f03079e9ab",
+      "targetHash": "30006b95ab416e792132e0eea8b29da1462a95e004e942e82fa62e3ad074c4ee",
+      "verdict": "pass",
+      "reason": "Elementary-stage label retained; not a claim of official local curriculum equivalence.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s4.humanReview",
+      "sourceHash": "aa72bba6b7ff2d1280b7cf0135bfb444438d24f61cd90204142b0db4ab7d05e0",
+      "targetHash": "370089ec30fae498cd0f858a16e26d4b54785bdac20a68e5c63f689c54b71545",
+      "verdict": "pass",
+      "reason": "Requires a human to assess arithmetic and genuine understanding versus accidental mention of>1; no automatic-quality guarantee introduced.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s4.check.w1.label",
+      "sourceHash": "bbe58aa4dbe7865362be4df9e2defbfb7475f24191f9153916981ae0077d3747",
+      "targetHash": "d4a5275411be8d3675dd35da72c54e30b849519b65f6628664183427d3610905",
+      "verdict": "pass",
+      "reason": "Label describes presence of a concrete numeric example, not proof of its correctness.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s4.check.w2.label",
+      "sourceHash": "fc0c70424fe2972308d46769d6d40d55ee74ff5114a206a27cbab2dcda90cabd",
+      "targetHash": "7d7e6a99f7d288868320c1fba6865053bd426f1e9b5cffed041d3fcdbf4a77fe",
+      "verdict": "pass",
+      "reason": "Label describes not-always-growing conclusion, not denial of all growth.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s4.check.w3.label",
+      "sourceHash": "3482964980aaa28c203c6860b5a87d4d2c81264596b20c033f661de5f520663d",
+      "targetHash": "21d8710ca25e360f19866fe7c062bc8c07e44147c1af60fc8ff9fd82efc8832c",
+      "verdict": "pass",
+      "reason": "Label identifies stated threshold multiplier>1; does not claim validator understands prose.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "tl",
+      "task": "m-01",
+      "path": "s.s4.check.w4.label",
+      "sourceHash": "cd1179092c474cbfb717a9f29380abec75c9823a6615029ebf9978820f853dc4",
+      "targetHash": "fa0ec23e650ec12427e8b327ec0851a2d748b7e2bc6f5d13ae82e7d2c27a9cc9",
+      "verdict": "pass",
+      "reason": "Label requires not simply accepting Minji's claim; no new correctness clue inserted.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "title",
+      "sourceHash": "338ec55f70c99343de819bc0758c6fee9614fc8bbf19bf1854a7e3587d1b38d6",
+      "targetHash": "39c4d0c44deb2cbd1b147e2b4b16964b1f650ff7116a69693bfde98db1ba88da",
+      "verdict": "pass",
+      "reason": "Preserves the claim under examination as always increasing; does not present it as an accepted rule.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "goal",
+      "sourceHash": "7c5c525e3f677bb70e1782e0d6e32fe171ff34dd86384a9599d2a9a2e8eac363",
+      "targetHash": "dcd34eb4a35024139b9a813c69c92b9c8a19589a75abaaa9d14e2e1e1512c3ea",
+      "verdict": "pass",
+      "reason": "Retains limits of examples, learner-created non-increasing counterexamples and discovery of growth conditions.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "material",
+      "sourceHash": "785760db652204cc8720c3bbd17d3c19a50cbb728fc4bf1c3b2cf4dbd3326b8b",
+      "targetHash": "c3109a61f0cd3f68a08d06edb1343710709090f8894d5ffc99bafbeaa224aa99",
+      "verdict": "pass",
+      "reason": "Preserves Minji's three correct products3×4=12,5×2=10,7×6=42 and the deliberately false universal conclusion, without adding gender.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "thinking.0",
+      "sourceHash": "bb24fdaa5d3718cb7400c695505ae24b3176d529db065f855165108c449a39c9",
+      "targetHash": "99bdd0d0bb34401f32a0527e86d2d20facd39b69823331ddea7d6ddf7969deb5",
+      "verdict": "pass",
+      "reason": "Preserves scrutiny of overgeneralization despite several examples.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "thinking.1",
+      "sourceHash": "753f779ed75b42d2a62f6acf07f185f7251141818c69cfbe4dacaa92aceb5558",
+      "targetHash": "17f744894e370462221456ff1d4e9c55ca055ba72087fdaef897613981d2410b",
+      "verdict": "pass",
+      "reason": "Requires the learner to create counterexamples rather than merely repeat examples.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "thinking.2",
+      "sourceHash": "b22b840634943792d27148960a28dbc513003853ba9df796fd02b793e6d579d9",
+      "targetHash": "630388b4065d08c27f1ecc656e36472d85f06ebd7cff76d9023bcc4688e11bb0",
+      "verdict": "pass",
+      "reason": "Retains discovery of conditions under which the claim is valid.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "prereq.0",
+      "sourceHash": "6ff03f08899eb33c849c70d946b5ba54d5a69fc1f4c588ce090b83672115a307",
+      "targetHash": "9b7d372db1f819aa8ab5c4dae4ed563e591b6637e7a8934a6eca40f168dbbb51",
+      "verdict": "pass",
+      "reason": "Natural and decimal multiplication prerequisites, grade5~6 and8×0.5 example preserved.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s1.prompt",
+      "sourceHash": "314166613930147917baabc840a8d6183b898cb7eae738e930e7f2aa30eb513c",
+      "targetHash": "bd82e77661c08a1267f9bab161a3fbb1779b179b73576bc5845b84d5b900985a",
+      "verdict": "pass",
+      "reason": "Asks learner to select one questionable line; does not name the correct line before selection.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s1.hint.0",
+      "sourceHash": "42136aa12adf9543ce81a69f6dd267ae1e35014471a6b583c3784171d3008c41",
+      "targetHash": "2ac585839aaaa689abdd297c3a8543869eb71171335d4cab4538f1093a3dc6d8",
+      "verdict": "pass",
+      "reason": "Asks to verify all three calculations first; no added answer cue.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s1.hint.1",
+      "sourceHash": "dc7ce9a82dc6395bc05e512b0824e969e7e1bc5e97538ad93c5374865c820001",
+      "targetHash": "2c116f2e5e476d6dd8128c12ac46d637f24758a9bb8094e63e6917ba68c1e6e1",
+      "verdict": "pass",
+      "reason": "Retains multiplier list4,2,6 and asks for commonality without stating threshold1.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s1.line.0",
+      "sourceHash": "4186251d92eef72bf776d95e623ed519d1329f17dfd37d73c781c2d0850bc190",
+      "targetHash": "6bbdb53bdc6196042f752039739bf75801d1f73218acecae75a8c34237fbb590",
+      "verdict": "pass",
+      "reason": "Correct product3×4=12 and comparison12>3 preserved.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s1.line.1",
+      "sourceHash": "6aea74481daac8f80c66e57ec19426c7f0c607d79aedc0ee6232246cd4851cf1",
+      "targetHash": "6bb86750b0b0e08ff8f336a86bef868f641f4035e6a30625d03afbad14287285",
+      "verdict": "pass",
+      "reason": "Correct product5×2=10 and comparison10>5 preserved.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s1.line.2",
+      "sourceHash": "b2bfbe64c09a0f4e3f6e39b58f2177f3e583640bdd0948a20844125154df6285",
+      "targetHash": "b2d6bd86ec43d03196d2e7b917e425b0d2b38af13a4aee7c2b060c3ed105f6eb",
+      "verdict": "pass",
+      "reason": "Correct product7×6=42 and comparison42>7 preserved.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s1.line.3",
+      "sourceHash": "d6e03bce0d0a08f7097a3989a1c8a3d45cec435c6696c872b144ba405c55b663",
+      "targetHash": "05ff878b7cdc836fd9d1b1942a68d3ea6322d847bd853ebfff736f20935ba8af",
+      "verdict": "pass",
+      "reason": "Preserves deliberately invalid universal statement, leaving this the unique unsupported line.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s1.explain",
+      "sourceHash": "3eecfeaba1b2589ffe4994ed6d93d746c58567e55c983bf0e44b07a01221c214",
+      "targetHash": "43338da12f79ccffccd3eb0223265f4efe5226614b28f409c87cf038cb77256f",
+      "verdict": "pass",
+      "reason": "Distinguishes correct examples from invalid generalization, identifies last line only in explanation, and retains untested-number-types reasoning.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s2.prompt",
+      "sourceHash": "3e19d8681455f3f9f07bc93e3adfe1d5a11da790c03f78163bbc0580b956e458",
+      "targetHash": "e0e2c837a72ad559f49318434efa97a8b20082d9b0f744b3b3301deacaa9480a",
+      "verdict": "pass",
+      "reason": "Retains exactly two examples with different multipliers, initial natural a≥1, multiplier b>0, natural/decimal allowance and product≤initial condition. Does not tighten ≤ into <.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s2.hint.0",
+      "sourceHash": "b552ebb6dd42cc0a14b226438e78bc0d9dc5edf8f709e72438c26139e36cf9d7",
+      "targetHash": "50ecd74e07f870bc386d6a7d3a594dab5e4a94082f83aece4d4e4faec10b0ae6",
+      "verdict": "pass",
+      "reason": "Asks for untested kinds of multiplier after4,2,6; no added zero or negative allowance.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s2.hint.1",
+      "sourceHash": "23566b6f7217ec83a2847cc535539b5df1138d3fe0c7413ff67d24a8a2fbf2cc",
+      "targetHash": "043f38e36e71d103defa12a07e3e8880b5c96485383512e9ecb5f0e4f36f82a9",
+      "verdict": "pass",
+      "reason": "Asks comparison while varying multiplier; non-increase preserved without leaking explicit valid choices.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s2.var.a",
+      "sourceHash": "92a38c212292639c3e4345488279c399319771de10d7953fe1ed55cb517d6f5f",
+      "targetHash": "669a73078514aab7055ceef1a301fec1d805ff111bb033beb83da9c8b640bf7c",
+      "verdict": "pass",
+      "reason": "Label identifies initial number as natural, not the multiplier.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s2.var.b",
+      "sourceHash": "360736d7604a19910a2c0d5744862fefef2df527260d689ceee8224d880cd295",
+      "targetHash": "e82114697cf035583a460f0233c8d6d3379aeb52c46e1eeda11fb6ba7ac9f0b0",
+      "verdict": "pass",
+      "reason": "Label identifies multiplier and allows natural or decimal representation.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s2.ok.c1",
+      "sourceHash": "f1da90617a489ebd7c36af44babc247bbeb9eaf4569be96a76918035e3f7edbe",
+      "targetHash": "6d4ee1e34e10ff88fe70d444adae3af89a70cc4fe24ea74ef6044380d8cc53b8",
+      "verdict": "pass",
+      "reason": "Success confirms natural initial number at least1.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s2.fail.c1",
+      "sourceHash": "7af6f115778d2d66025577381f13a3ef43d86dcdf997149b170c33b1e9fe2498",
+      "targetHash": "188a56169b157bc2084ec240f6e35b6dd7140d0a9d744f16aa6b203c944c1d1d",
+      "verdict": "pass",
+      "reason": "Failure asks for natural initial number at least1 rather than greater than1.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s2.ok.c2",
+      "sourceHash": "b184f14d8b941eaf564774b5d3d68013ee0eadd70f0fb458e1a8bcf8bdec65f8",
+      "targetHash": "28a823a8c5fa762ccddd48e103029bbf03c7c2c1d20d4a19306fb7d6894133a4",
+      "verdict": "pass",
+      "reason": "Confirms strict positive multiplier b>0, not b≥0.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s2.fail.c2",
+      "sourceHash": "535653d140ec44199082ee2e36c7eef4d21ad9a16ef969ab508649aefb170f32",
+      "targetHash": "9b12d5c48bcf308b64e570ba5605c5a91200ad576d472c938f9c9d2f9289b41a",
+      "verdict": "pass",
+      "reason": "Requests multiplier>0 and explicitly excludes0 for this activity.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s2.ok.c3",
+      "sourceHash": "3c44a3dd0d489ba99fd28ea6abeb1cd773525b70319311580dfd43de091ea881",
+      "targetHash": "311ad1919b5ec11cf098987677968c9249868c5b4ce756a2a1b42e78624d54f0",
+      "verdict": "pass",
+      "reason": "Accepts equality or decrease as counterexample; rejects universal claim without requiring strict decrease.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s2.fail.c3",
+      "sourceHash": "ee0ca3d36aeee4e725cb267c3f8e75c22ae407e76c35c7c068a8f8b8bcd68892",
+      "targetHash": "5f4fd50b58980053bbcd3d8bb9357cda48f45ec13a2207c5326f6316a3ef62e4",
+      "verdict": "pass",
+      "reason": "Failure correctly means product exceeded initial and asks to compare with initial.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s2.explain",
+      "sourceHash": "931b0f788da7b9af41215676e515a1c0e9f511ac80bb6f48eb93792d09cfdbd5",
+      "targetHash": "0f5d5e85f539b1fc83b6ca57ba76389a26793e3181302a12b6cc599fc110287a",
+      "verdict": "pass",
+      "reason": "8×0.5=4<8 and6×1=6 equality are both valid non-increasing cases; one counterexample refutes always.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s3.prompt",
+      "sourceHash": "0d69e923a08ea7dcf815b9058f93bbcfa2d85c36feeece9593dbdac6ef7f24d6",
+      "targetHash": "dfb9d2ea60e4ec40db32110f5a837f6312a34a010d66904dd004d4c1c32d2741",
+      "verdict": "pass",
+      "reason": "Retains positive initial number and complete-and-exact condition requirement, so b>2 is not a second correct answer despite being sufficient.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s3.hint.0",
+      "sourceHash": "9098208c4742e9292ca5cf87a5fab91d83c49e3498efd4cd8e9bf594c31a6660",
+      "targetHash": "be4d3d047bd5fe0e350e4b52ce49e896b0eb01e2ded45de94a717a3cc0988912",
+      "verdict": "pass",
+      "reason": "Retains initial×multiplier table and variable multiplier, without supplying boundary.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s3.hint.1",
+      "sourceHash": "559e7ab337d10931833c29d62622b79c90c7a8da5cfada2e11fc9245e5c6d118",
+      "targetHash": "3edff15239f7b1e1595d8514b86fab3a8998f801586a8f2b92d9491aeb18a78f",
+      "verdict": "pass",
+      "reason": "Separates increasing and non-increasing rows and compares multipliers; no stronger threshold leaked.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s3.o.a",
+      "sourceHash": "5c9b270018b83c143e74b2143b119094df2b91f7c2b74348cb841da79f0559bf",
+      "targetHash": "00ed1d4f735ea9269afb3b43c90ebbf5b866d59686890be1a67e44da4c21bf75",
+      "verdict": "pass",
+      "reason": "Correct exact condition multiplier>1 preserved, strict boundary intact.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s3.r.a",
+      "sourceHash": "6889449542bc4f84c8012a1f0aef0d7dd9e4a7d5a6a5558dae880cc3505e9c33",
+      "targetHash": "22625ef56914f7a877d9b7da2acd230587062aa863d66d1d0011cb3a4ff836f0",
+      "verdict": "pass",
+      "reason": "Distinguishes>1 growth,=1 equality,0<b<1 decrease; explanation precision preserved.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s3.o.b",
+      "sourceHash": "5ba4315cfff8d48aa131dbb85007dd0840337c60eee6555c93391f18efdd94c1",
+      "targetHash": "dd701d885ffb9f239608f4dc22daed7c3450153737c92e4b9840f033024ece3d",
+      "verdict": "pass",
+      "reason": "Natural-number distractor preserved, including possibility1.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s3.r.b",
+      "sourceHash": "38e543cddc5508052bde6472c04b52194dae260f3910a1557c99631ed29687b6",
+      "targetHash": "da1bd335f76d7fe3a2f80be9b7e31e7e617718987a2cb1bd90dde661db030909",
+      "verdict": "pass",
+      "reason": "Explains natural numbers include1 and8×1 does not grow.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s3.o.c",
+      "sourceHash": "1fdcf1ae365567a25d1d17c72a3415b6ea76d9a13456d0a4d0d6edde97c84b78",
+      "targetHash": "0512d5a85d303d3362fe91ddec884c5f6858a43a0ea1be470c096cdb9ebe66fa",
+      "verdict": "pass",
+      "reason": "Decimal distractor preserved; does not incorrectly restrict decimals below1.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s3.r.c",
+      "sourceHash": "713bfea38056ea1298245dc09f4354dc311d693b76eb7f9d77cd6596073eda57",
+      "targetHash": "840cbf13d0171165cb1d661b95cf2ab08759e801f72fdb73dd15a7e03e4c6cab",
+      "verdict": "pass",
+      "reason": "Contrasts1.5>1 with0.5<1, preserving why decimal classification is insufficient.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s3.o.d",
+      "sourceHash": "f8e16fcc348de59699342680be6d3741af1596bfe29cd41b79722a43eda90436",
+      "targetHash": "8b397160a534b446c5b4398ac3c8a6a37b6b631a576a4273f9e3c8efc72a6841",
+      "verdict": "pass",
+      "reason": "Distractor multiplier>2 preserved, not changed to≥2 or>1.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s3.r.d",
+      "sourceHash": "141997d51c4224c0245d9b78091a0e9c5a387a63c6366fb2862f93e858789944",
+      "targetHash": "23947eacc7acd5c3b3bf6c88314bc6c7613bacee51b9bc27a6a78cc773feaaca",
+      "verdict": "pass",
+      "reason": "States>2 is sufficient but incomplete and1.5 supplies missing growth case; no claim that this option is mathematically false.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s3.o.e",
+      "sourceHash": "fdb3fbd1d97b798300055eb406f9da1db474d79dbd0fe66e9c88380b52903a85",
+      "targetHash": "506be5e1264147279830dfe6bc285a77fcbb443bac398deb7b9ffb498686e03a",
+      "verdict": "pass",
+      "reason": "Large-initial-number distractor preserved without changing the multiplier condition.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s3.r.e",
+      "sourceHash": "c1f74e0af65672159d16b5a9bb8d1da71748610b39201262c5be7c2dec10ebca",
+      "targetHash": "f774bc7ecaf291069b15e9deda19cff2a4407cf9ea614e08c07b162db3e6bd70",
+      "verdict": "pass",
+      "reason": "0.5 shrinks even a large positive initial number; multiplier controls comparison.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s3.explain",
+      "sourceHash": "6aaf95b2d3b4b44d9c7bcb25e89a84ebe438963e2b604254e09cbfa361e15644",
+      "targetHash": "2764a30ff9188cff7b9b0b4872d6a85a462dbafd7b421d101c694ad8e216bcea",
+      "verdict": "pass",
+      "reason": "Preserves all three positive-multiplier regimes and correct replacement of always by multiplier>1.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s4.prompt",
+      "sourceHash": "3e359a6b07ba8950fd87de5304db724e52d29a9a24c6743e3830f558a9d9dc52",
+      "targetHash": "d8bb9c3e4485d378389c920fb7da86d2e2e62c6fbc8ab8f6f6238dd12a924a63",
+      "verdict": "pass",
+      "reason": "Requests explanation to Minji with self-created numeric examples, falsity reason and growth condition; no imposed gender.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s4.hint.0",
+      "sourceHash": "0a6a15a092f1f3e88f49a1dcf05f56f5f54117efe95c1499579dbece9b1c9b17",
+      "targetHash": "c6207909f4174a281fc8ed8a2b996f148fddbd0ca9f9a4d62151dc4d11c3b386",
+      "verdict": "pass",
+      "reason": "Allows reuse of the two constructed examples without changing them.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s4.hint.1",
+      "sourceHash": "aa2c20370c0c64dab8ba51d21870fe3228b6dde3d3cd4baff88d7c22a36f62a7",
+      "targetHash": "4d23ce005fd8bcced6aedebdaa1a180861e038d6055b42ca155b453cd5a59254",
+      "verdict": "pass",
+      "reason": "Suggests addressing Minji, rejecting overgeneralized case and adding multiplier condition without giving threshold1 in the hint itself.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s4.placeholder",
+      "sourceHash": "7b7242396ed026d854d7c9a402720650aed5dd674a72fa3e84ecb0e729d4229d",
+      "targetHash": "a931f1fb82f6a505932bdee296a8e36a6b281e844a4b2cb3e398bc9d90a8905f",
+      "verdict": "pass",
+      "reason": "Retains open example address to Minji; does not insert a complete answer.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s4.selfAssess.0",
+      "sourceHash": "a457b1f87927d4642c5c7a085840dfd862413a935ad503945ae11ec09e5c968c",
+      "targetHash": "0d63ea923275e9c77b68d9a0d8c74db70eeacf5e1742e9af80fcdd450520e256",
+      "verdict": "language_review_suggested",
+      "reason": "Self-assessment checks explicit comparison of product with initial in learner examples. Question intent is understandable, but the declarative-form self-question may be made clearer in learner-facing Naijá; native register approval is not claimed.",
+      "proposedPatch": {
+        "op": "replace",
+        "path": "/m-01/s.s4.selfAssess.0",
+        "value": "I compare di product with di starting number clear for my examples?"
+      },
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s4.selfAssess.1",
+      "sourceHash": "12e04017e815eb49cf31a494dc5430db4978863da7d3a81f78f4c9630f1c6d82",
+      "targetHash": "72d41a751a7ba04caf494cd2a952b9f4ebd2ca721a3a2e6e8a54eda8db83a344",
+      "verdict": "language_review_suggested",
+      "reason": "Self-assessment checks understanding that one counterexample suffices to refute always. Question intent is understandable, but the declarative-form self-question may be made clearer in learner-facing Naijá; native register approval is not claimed.",
+      "proposedPatch": {
+        "op": "replace",
+        "path": "/m-01/s.s4.selfAssess.1",
+        "value": "I show say I understand say even one example fit break 'always'?"
+      },
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s4.selfAssess.2",
+      "sourceHash": "9580c6a5be271da70fc52d42d91639dca5b7cfb91fb4c6af7cbc329c8b574185",
+      "targetHash": "beac3ff3657ff7139c3763c4e2edccb63f7038f4fe347b5e22429f36b34865eb",
+      "verdict": "language_review_suggested",
+      "reason": "Self-assessment checks that explanation states multiplier condition for growth. Question intent is understandable, but the declarative-form self-question may be made clearer in learner-facing Naijá; native register approval is not claimed.",
+      "proposedPatch": {
+        "op": "replace",
+        "path": "/m-01/s.s4.selfAssess.2",
+        "value": "I also explain which kind of number person must multiply by before di product go big pass di starting number?"
+      },
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s4.model.0",
+      "sourceHash": "8793aa919c6c1966c4044dc3f2338bd34206313cb7f3959cd92ee13ace1394a7",
+      "targetHash": "eaa50c9d6e3d88f0438284ad818b1f28baa9ed08531b27b91093129accc587a8",
+      "verdict": "pass",
+      "reason": "Preserves8×0.5=4<8 and necessary-and-sufficient multiplier>1 condition for positive initial number.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s4.model.1",
+      "sourceHash": "c2499d265166da8c890204b0b6b8225c008728831ee090250d9004e45a669299",
+      "targetHash": "527300a06172f72d15536b679f7abb0ac3707d7ae4564b329bd9e0884f536525",
+      "verdict": "pass",
+      "reason": "Preserves equality6×1=6 and decrease10×0.1=1, then states multiplier>1 for growth.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "meta.levelLabel",
+      "sourceHash": "2b35e448b26a7a66d31784ea648e252a3ee066fd9141a02a4fe0a9f03079e9ab",
+      "targetHash": "de2954536887a013068fc29975535ddc6b4ccd80f06af6dede0511a96c37fea6",
+      "verdict": "pass",
+      "reason": "Elementary-stage label retained; not a claim of official local curriculum equivalence.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s4.humanReview",
+      "sourceHash": "aa72bba6b7ff2d1280b7cf0135bfb444438d24f61cd90204142b0db4ab7d05e0",
+      "targetHash": "93e7b944499438221b52d6208357aa63fee4268955140d310fb69822c320c0bc",
+      "verdict": "pass",
+      "reason": "Requires a human to assess arithmetic and genuine understanding versus accidental mention of>1; no automatic-quality guarantee introduced.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s4.check.w1.label",
+      "sourceHash": "bbe58aa4dbe7865362be4df9e2defbfb7475f24191f9153916981ae0077d3747",
+      "targetHash": "00e0828034e6ebdc8ca29972912691ff4506b210418b1762e28971f989e54f57",
+      "verdict": "pass",
+      "reason": "Label describes presence of a concrete numeric example, not proof of its correctness.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s4.check.w2.label",
+      "sourceHash": "fc0c70424fe2972308d46769d6d40d55ee74ff5114a206a27cbab2dcda90cabd",
+      "targetHash": "40b87e4c538ef0f0a9cf0ad38cba2810b0999c863f6ea7f145693b898548d3b3",
+      "verdict": "pass",
+      "reason": "Label describes not-always-growing conclusion, not denial of all growth.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s4.check.w3.label",
+      "sourceHash": "3482964980aaa28c203c6860b5a87d4d2c81264596b20c033f661de5f520663d",
+      "targetHash": "f206fe099a5e0077d99fe6c453f7881840ee8689cddd4a1149b2fb965068c969",
+      "verdict": "pass",
+      "reason": "Label identifies stated threshold multiplier>1; does not claim validator understands prose.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    },
+    {
+      "locale": "pcm",
+      "task": "m-01",
+      "path": "s.s4.check.w4.label",
+      "sourceHash": "cd1179092c474cbfb717a9f29380abec75c9823a6615029ebf9978820f853dc4",
+      "targetHash": "559cdf0a37cd501514b886a0375cb50ba7b682fc97fb5bf51b3ab758532c854e",
+      "verdict": "pass",
+      "reason": "Label requires not simply accepting Minji's claim; no new correctness clue inserted.",
+      "proposedPatch": null,
+      "supplementarySymbolicChecks": {
+        "numbers": true,
+        "placeholders": true,
+        "formulaOperators": true
+      }
+    }
+  ],
+  "summary": {
+    "pass": 164,
+    "language_review_suggested": 4
+  },
+  "method": "Read all168target strings and compare each to the56source rows, with full canonical task m-01 context (steps, correct option, positive-domain constraints, model rows, hints, rubric and review limitations). Per-field reasons record mathematical and instructional meaning. Structural checks are supplementary, not semantic approval.",
+  "mathematicalFindings": {
+    "s1": "First three arithmetic/comparison lines true; only universal last line unsupported, consistently retained.",
+    "s2": "All locales preserve a natural≥1,b>0,ab≤a and two distinct b values; equality atb=1 is correctly valid.",
+    "s3": "Complete-and-exact qualifier retained in all locales, keeping b>1 uniquely correct; b>2 is sufficient but incomplete and feedback says so.",
+    "hints": "No additional threshold1 or explicit counterexample values added to pre-answer hints. Explanations/models disclose answers as canonical does; actual runtime reveal timing not exercised."
+  },
+  "genderReview": {
+    "entity": "minji",
+    "gender": "unspecified",
+    "number": "singular",
+    "evidence": "Canonical Korean name 민지 with 말했어요 supplies no gender. All3targets use name/neutral reference; no name-based inference detected.",
+    "subjectRefs": [
+      "minji"
+    ],
+    "objectRefs": [
+      "universalMultiplicationClaim"
+    ],
+    "mathematicalEntities": {
+      "initialNumber": "not_applicable",
+      "multiplier": "not_applicable",
+      "product": "not_applicable"
+    }
+  },
+  "sourceIssues": [
+    {
+      "path": "rubric.0.full",
+      "sourceHash": "e71b0f49dc13c26728db4b890a42d146c3d13d12456b077cf337270b92ebfe1f",
+      "reason": "Canonical full-credit example mentions multiplying by a negative number while step2 requires b>0. This rubric field is outside56provided rows, not a translation defect and not changed.",
+      "verdict": "source_issue"
+    }
+  ],
+  "coverageLimitations": [
+    "Independent AI review, not native-speaker or teacher approval.",
+    "Reviewed56provided learner/display fields per locale only; no translation of omitted canonical rubric/cautions/alternative-answer fields evaluated.",
+    "Existing canonical writing checks are Korean regexes. No target-language free-response parser, natural-language grading accuracy or runtime UI behavior tested or approved.",
+    "No target or shared source files modified; proposed wording changes are suggestions only."
+  ]
+}

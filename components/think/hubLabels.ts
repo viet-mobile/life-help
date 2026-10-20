@@ -1,8 +1,17 @@
-import type { ThinkLang } from "@/lib/think/lang";
+import { EXPANDED_THINK_UI } from "./expandedUi";
+import type { ExpandedThinkLang, ThinkLang } from "@/lib/think/lang";
 
 /** Strings of the learning-site hub (the player itself uses labels.ts). */
 export interface HubLabels { title: string; intro: string; grade: string; electives: string; empty: string; done: string; open: string; of: string; notTranslated: string; allFields: string; field: string; tryOne: string; quick: string; allSemesters: string; enter: string }
 export const HUB: Record<ThinkLang, HubLabels> = {
+  pcm: EXPANDED_THINK_UI.pcm.hub,
+  tl: EXPANDED_THINK_UI.tl.hub,
+  ro: EXPANDED_THINK_UI.ro.hub,
+  fi: EXPANDED_THINK_UI.fi.hub,
+  cs: EXPANDED_THINK_UI.cs.hub,
+  hu: EXPANDED_THINK_UI.hu.hub,
+  af: EXPANDED_THINK_UI.af.hub,
+
   ko: { title: "사고력 도전", intro: "정답 하나를 찾는 문제가 아니라, 근거를 모아 추론하고, 비교하고, 오류를 고치고, 직접 만들어 보는 과제예요. 기본 레슨과 따로, 원할 때 도전해요.", grade: "학년·레벨", electives: "선택 과목", empty: "이 학년의 과제는 아직 없어요.", done: "해 봤어요", open: "열기", of: "/", notTranslated: "이 언어로 번역이 끝나지 않은 과제는 숨겼어요. 번역이 준비되면 열려요. 숨긴 과제 수", allFields: "모든 분야", field: "분야", tryOne: "바로 도전하기", quick: "바로 가기", allSemesters: "전체 학기", enter: "들어가기" },
   en: { title: "Thinking challenges", intro: "Not one-right-answer questions: tasks where you weigh evidence, compare, fix errors and make your own examples. Separate from the regular lessons - try them whenever you like.", grade: "Grade / level", electives: "Elective courses", empty: "There are no tasks for this level yet.", done: "Tried", open: "Open", of: "of", notTranslated: "Tasks that are not yet translated into your language are hidden and will open when their translation is ready. Hidden tasks", allFields: "All fields", field: "Field", tryOne: "Try one now", quick: "Jump straight in", allSemesters: "All semesters", enter: "Go" },
   "zh-Hans": { title: "思维力挑战", intro: "不是只找一个标准答案，而是收集依据进行推理、比较、纠错并亲手创造例子的任务。与常规课程分开，想做就做。", grade: "年级·水平", electives: "选修科目", empty: "该水平暂时还没有任务。", done: "已尝试", open: "打开", of: "/", notTranslated: "尚未翻译成你的语言的任务已隐藏，翻译完成后会开放。已隐藏的任务数", allFields: "全部领域", field: "领域", tryOne: "马上挑战", quick: "快速进入", allSemesters: "全部学期", enter: "进入" },
@@ -10,7 +19,7 @@ export const HUB: Record<ThinkLang, HubLabels> = {
   ja: { title: "思考力チャレンジ", intro: "正解を一つ探す問題ではなく、根拠を集めて推論し、比べ、誤りを直し、自分で例を作るタスクです。通常のレッスンとは別に、好きなときに挑戦できます。", grade: "学年・レベル", electives: "選択科目", empty: "このレベルのタスクはまだありません。", done: "挑戦済み", open: "開く", of: "/", notTranslated: "まだあなたの言語に翻訳されていないタスクは非表示です。翻訳が終わると開きます。非表示のタスク数", allFields: "すべての分野", field: "分野", tryOne: "さっそく挑戦", quick: "すぐに入る", allSemesters: "すべての学期", enter: "入る" },
   vi: { title: "Thử thách tư duy", intro: "Không phải câu hỏi chỉ có một đáp án đúng, mà là bài tập thu thập căn cứ để suy luận, so sánh, sửa lỗi và tự tạo ví dụ. Tách riêng khỏi bài học thường, em làm khi nào muốn.", grade: "Lớp / mức", electives: "Môn tự chọn", empty: "Mức này chưa có bài tập.", done: "Đã thử", open: "Mở", of: "/", notTranslated: "Các bài tập chưa được dịch sang ngôn ngữ của bạn đang bị ẩn và sẽ mở khi bản dịch sẵn sàng. Số bài đang ẩn", allFields: "Tất cả lĩnh vực", field: "Lĩnh vực", tryOne: "Thử ngay", quick: "Vào nhanh", allSemesters: "Tất cả học kỳ", enter: "Vào" },
 };
-export const ELECTIVE_NAMES: Record<string, Record<ThinkLang, string>> = {
+const CORE_ELECTIVE_NAMES: Record<string, Record<Exclude<ThinkLang, ExpandedThinkLang>, string>> = {
   "EL-econ": { ko: "경제 수학", en: "Economic Mathematics", "zh-Hans": "经济数学", "zh-Hant": "經濟數學", ja: "経済数学", vi: "Toán kinh tế" },
   "EL-ai": { ko: "인공지능 수학", en: "AI Mathematics", "zh-Hans": "人工智能数学", "zh-Hant": "人工智慧數學", ja: "人工知能数学", vi: "Toán trí tuệ nhân tạo" },
   "EL-job": { ko: "직무 수학", en: "Workplace Mathematics", "zh-Hans": "职业数学", "zh-Hant": "職務數學", ja: "職務数学", vi: "Toán nghề nghiệp" },
@@ -18,3 +27,5 @@ export const ELECTIVE_NAMES: Record<string, Record<ThinkLang, string>> = {
   "EL-sta": { ko: "실용 통계", en: "Practical Statistics", "zh-Hans": "实用统计", "zh-Hant": "實用統計", ja: "実用統計", vi: "Thống kê thực hành" },
   "EL-res": { ko: "수학과제 탐구", en: "Mathematical Inquiry Project", "zh-Hans": "数学课题探究", "zh-Hant": "數學課題探究", ja: "数学課題探究", vi: "Nghiên cứu đề tài toán học" },
 };
+
+export const ELECTIVE_NAMES = Object.fromEntries(Object.entries(CORE_ELECTIVE_NAMES).map(([id, names]) => [id, { ...names, ...Object.fromEntries(Object.entries(EXPANDED_THINK_UI).map(([locale, pack]) => [locale, pack.electives[id as keyof typeof pack.electives]])) }])) as Record<string, Record<ThinkLang, string>>;

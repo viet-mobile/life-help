@@ -1,3 +1,4 @@
+import { extendThinkLabels, formatThinkExtra, type CoreThinkLang } from "./expandedUiExtra";
 import type { ThinkLang } from "./lang";
 
 /** One thinking challenge is earned for every PER regular questions answered on a site. */
@@ -12,7 +13,7 @@ export function thinkCadence(answered: number, tried: number, per = REGULAR_PER_
   return { earned, owed: Math.max(0, earned - Math.max(0, tried)), toNext: per - (a % per) };
 }
 
-export const CADENCE_TEXT: Record<ThinkLang, { unlocked: (n: number) => string; toNext: (n: number) => string }> = {
+const CORE_CADENCE_TEXT: Record<CoreThinkLang, { unlocked: (n: number) => string; toNext: (n: number) => string }> = {
   ko: { unlocked: (n) => `일반 문제를 풀어서 중간 보스 ${n}명이 기다리고 있어요`, toNext: (n) => `일반 문제 ${n}개를 더 풀면 중간 보스가 나타나요` },
   en: { unlocked: (n) => `${n} mid-boss${n > 1 ? "es are" : " is"} waiting after your regular practice`, toNext: (n) => `${n} more regular question${n > 1 ? "s" : ""} until the next mid-boss` },
   "zh-Hans": { unlocked: (n) => `做完常规题，${n} 个中期首领在等你`, toNext: (n) => `再做 ${n} 道常规题，中期首领就会出现` },
@@ -20,3 +21,5 @@ export const CADENCE_TEXT: Record<ThinkLang, { unlocked: (n: number) => string; 
   ja: { unlocked: (n) => `通常の問題を解いて、中ボスが${n}体待っています`, toNext: (n) => `通常の問題をあと${n}問解くと中ボスが現れます` },
   vi: { unlocked: (n) => `${n} trùm giữa đang chờ sau phần luyện tập thường`, toNext: (n) => `Làm thêm ${n} câu thường để trùm giữa xuất hiện` },
 };
+
+export const CADENCE_TEXT = extendThinkLabels(CORE_CADENCE_TEXT,p=>({unlocked:(n:number)=>formatThinkExtra(p.cadence.unlocked,{n}),toNext:(n:number)=>formatThinkExtra(p.cadence.toNext,{n})}));
