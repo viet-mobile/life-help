@@ -167,8 +167,13 @@ export function LearnerProvider({
 
   // New students go through onboarding first.
   useEffect(() => {
-    if (ready && !state.profile && !pathname.endsWith("/onboarding")) router.replace(href("/onboarding"));
-  }, [ready, state.profile, pathname, router, href]);
+    if (ready && !state.profile && !pathname.endsWith("/onboarding")) {
+      // keep the deep link: after onboarding the learner returns to the page they asked for (validated again by safeReturnTo)
+      const inner = base && pathname.startsWith(base) ? pathname.slice(base.length) : pathname;
+      const back = safeReturnTo(inner);
+      router.replace(href("/onboarding") + (back && back !== "/" ? `?returnTo=${encodeURIComponent(back)}` : ""));
+    }
+  }, [ready, state.profile, pathname, router, href, base]);
 
   const plan = useMemo(() => buildAccessPlan(meta.catalog, meta.questions), [meta]);
   const value = useMemo<LearnerCtx>(
@@ -176,4 +181,11 @@ export function LearnerProvider({
     [site, base, locale, t, mode, accountsEnabled, ready, state, index, api, href, resetGuest, access, plan],
   );
   return <LearnerContext.Provider value={value}><JournalSender site={site} />{children}</LearnerContext.Provider>;
+}
+
+/** A same-site, in-app path ("/learn/..."): never a URL, protocol-relative or backslash form, and never the onboarding page itself. */
+export function safeReturnTo(value: string | null | undefined): string | null {
+  if (!value || value.length > 200 || !value.startsWith("/") || value.startsWith("//") || /[\\:\s\u0000-\u001f]/.test(value)) return null;
+  if (value.startsWith("/onboarding") || value.startsWith("/api")) return null;
+  return value;
 }

@@ -10,7 +10,7 @@ import { BANDS, bandLabel, courseTopic, bandOfLevel, isPublishedBand, startLevel
 import { GOALS, type Goal, type Grade } from "@/lib/learn/types";
 import { useEnterToContinue } from "./useEnterToContinue";
 import { LocaleSwitch } from "./LocaleSwitch";
-import { ApiError, useLearner } from "./LearnerProvider";
+import { ApiError, safeReturnTo, useLearner } from "./LearnerProvider";
 
 const TOTAL = 4;
 
@@ -61,7 +61,8 @@ export function Onboarding() {
     setError(null);
     try {
       await api("onboard", { nickname: nickname.trim(), grade, goal, avatar });
-      router.replace(href(state.diagnosticDone ? "/dashboard" : "/diagnostic"));
+      const back = safeReturnTo(new URLSearchParams(window.location.search).get("returnTo"));
+      router.replace(href(back ?? (state.diagnosticDone ? "/dashboard" : "/diagnostic")));
     } catch (e) {
       setSaving(false);
       setError(
