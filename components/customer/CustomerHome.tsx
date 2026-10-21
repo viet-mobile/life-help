@@ -341,7 +341,7 @@ export function CustomerHome() {
           <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0 min-w-0">
             <Link
               href="/"
-              className="inline-flex items-center shrink-0 transition-transform active:scale-95"
+              className="inline-flex min-h-11 min-w-11 items-center justify-center shrink-0 transition-transform active:scale-95"
               title="LIFE.HELP Home"
             >
               <BrandLogo size="sm" priority />
@@ -351,7 +351,7 @@ export function CustomerHome() {
             <button
               type="button"
               onClick={openModal}
-              className="droplet-pill inline-flex items-center gap-1 border border-slate-200/90 bg-white/90 px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] sm:text-xs font-bold text-slate-700 hover:bg-slate-100 transition cursor-pointer max-w-[100px] xs:max-w-[130px] sm:max-w-[180px] truncate shadow-2xs"
+              className="droplet-pill inline-flex min-h-11 items-center gap-1 border border-slate-200/90 bg-white/90 px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] sm:text-xs font-bold text-slate-700 hover:bg-slate-100 transition cursor-pointer max-w-[100px] xs:max-w-[130px] sm:max-w-[180px] truncate shadow-2xs"
               title={formatBilingual(getRegionUIText("changeLocation", locale, isBilingual), "지역 변경")}
             >
               <span className="text-xs shrink-0">📍</span>
@@ -365,7 +365,7 @@ export function CustomerHome() {
             {/* Live Chat Droplet Pill */}
             <Link
               href="/chat"
-              className="droplet-pill inline-flex items-center gap-1 border border-indigo-200 bg-indigo-50/90 hover:bg-indigo-100 px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] sm:text-xs font-bold text-indigo-700 transition shrink-0"
+              className="droplet-pill inline-flex min-h-11 min-w-11 items-center justify-center gap-1 border border-indigo-200 bg-indigo-50/90 hover:bg-indigo-100 px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] sm:text-xs font-bold text-indigo-700 transition shrink-0"
               title={formatBilingual(t("common.nativeConsultationCenter"), "모국어 상담 센터")}
             >
               <span className="shrink-0 text-xs">💬</span>
@@ -377,7 +377,7 @@ export function CustomerHome() {
             {/* Quick Emergency Droplet Pill */}
             <Link
               href="/request"
-              className="droplet-pill hidden md:inline-flex items-center gap-1 bg-slate-900 hover:bg-slate-800 px-3 py-1 text-xs font-bold text-white shadow-2xs transition shrink-0"
+              className="droplet-pill hidden md:inline-flex min-h-11 items-center gap-1 bg-slate-900 hover:bg-slate-800 px-3 py-1 text-xs font-bold text-white shadow-2xs transition shrink-0"
             >
               <span>🚨</span>
               <span>{locale === "ko" ? "빠른 신청" : t("request.title")}</span>
@@ -416,7 +416,7 @@ export function CustomerHome() {
             {/* One-Touch Instant Emergency Dispatch Droplet Button */}
             <Link
               href="/request"
-              className="droplet-btn-lg shrink-0 flex items-center justify-center gap-1.5 bg-linear-to-r from-red-600 via-rose-600 to-red-600 hover:from-red-700 hover:to-red-700 px-4 py-2 sm:py-2.5 text-white font-black shadow-md shadow-red-600/20 active:scale-98 transition text-center cursor-pointer"
+              className="droplet-btn-lg min-h-11 shrink-0 flex items-center justify-center gap-1.5 bg-linear-to-r from-red-600 via-rose-600 to-red-600 hover:from-red-700 hover:to-red-700 px-4 py-2 sm:py-2.5 text-white font-black shadow-md shadow-red-600/20 active:scale-98 transition text-center cursor-pointer"
             >
               <span className="text-sm">🚨</span>
               <span className="text-xs sm:text-sm leading-tight">{t("customer.emergency")}</span>
@@ -432,7 +432,7 @@ export function CustomerHome() {
               <button
                 type="button"
                 onClick={() => setActiveTab("all")}
-                className={`droplet-pill flex items-center justify-center gap-1 px-1 sm:px-3 py-1.5 text-[11px] sm:text-xs font-black transition-all cursor-pointer shadow-2xs min-w-0 ${
+                className={`droplet-pill flex min-h-11 items-center justify-center gap-1 px-1 sm:px-3 py-1.5 text-[11px] sm:text-xs font-black transition-all cursor-pointer shadow-2xs min-w-0 ${
                   activeTab === "all"
                     ? "bg-slate-900 text-white shadow-xs"
                     : "bg-white/80 text-slate-700 hover:bg-white border border-slate-200/80"
@@ -452,7 +452,7 @@ export function CustomerHome() {
               <button
                 type="button"
                 onClick={() => setActiveTab("repair")}
-                className={`droplet-pill flex items-center justify-center gap-1 px-1 sm:px-3 py-1.5 text-[11px] sm:text-xs font-black transition-all cursor-pointer shadow-2xs min-w-0 ${
+                className={`droplet-pill flex min-h-11 items-center justify-center gap-1 px-1 sm:px-3 py-1.5 text-[11px] sm:text-xs font-black transition-all cursor-pointer shadow-2xs min-w-0 ${
                   activeTab === "repair"
                     ? "bg-blue-600 text-white shadow-xs"
                     : "bg-white/80 text-slate-700 hover:bg-white border border-slate-200/80"
@@ -472,7 +472,7 @@ export function CustomerHome() {
               <button
                 type="button"
                 onClick={() => setActiveTab("support")}
-                className={`droplet-pill flex items-center justify-center gap-1 px-1 sm:px-3 py-1.5 text-[11px] sm:text-xs font-black transition-all cursor-pointer shadow-2xs min-w-0 ${
+                className={`droplet-pill flex min-h-11 items-center justify-center gap-1 px-1 sm:px-3 py-1.5 text-[11px] sm:text-xs font-black transition-all cursor-pointer shadow-2xs min-w-0 ${
                   activeTab === "support"
                     ? "bg-indigo-600 text-white shadow-xs"
                     : "bg-white/80 text-slate-700 hover:bg-white border border-slate-200/80"

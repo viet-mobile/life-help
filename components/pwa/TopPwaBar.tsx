@@ -149,7 +149,7 @@ export function TopPwaBar() {
             <button
               type="button"
               onClick={handleActionClick}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 px-3 py-1 text-xs font-black transition cursor-pointer shadow-sm active:scale-95"
+              className="inline-flex min-h-11 items-center gap-1.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 px-3 py-1 text-xs font-black transition cursor-pointer shadow-sm active:scale-95"
             >
               <span>{buttonLabel}</span>
             </button>
@@ -157,7 +157,7 @@ export function TopPwaBar() {
             <button
               type="button"
               onClick={handleDismiss}
-              className="text-slate-400 hover:text-white p-1 rounded-md transition cursor-pointer"
+              className="inline-flex min-h-11 min-w-11 items-center justify-center text-slate-400 hover:text-white p-1 rounded-md transition cursor-pointer"
               title={isKorean ? "닫기" : "Close"}
               aria-label="Close banner"
             >
@@ -205,7 +205,8 @@ export function TopPwaBar() {
               <button
                 type="button"
                 onClick={() => setIsModalOpen(false)}
-                className="rounded-full p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-700 transition cursor-pointer"
+                aria-label={isKorean ? "닫기" : "Close"}
+                className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-700 transition cursor-pointer"
               >
                 ✕
               </button>

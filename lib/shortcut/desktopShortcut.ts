@@ -5,6 +5,12 @@ import {
   COUNTRY_TO_LANGUAGE_MAP,
 } from "@/lib/i18n/siteMetadata";
 
+/** One physical line: CR/LF and other control characters can never start a new key in the generated .url (INI) file. */
+export function oneLine(value: string): string {
+  // eslint-disable-next-line no-control-regex
+  return value.replace(/[\u0000-\u001f\u007f\u2028\u2029]+/g, " ").trim();
+}
+
 export interface DomainShortcutDetails {
   host: string;
   portal: "tech" | "chat" | "sys" | "customer";
@@ -260,10 +266,10 @@ export function getDomainShortcutDetails(options?: {
   // 8. Generate Windows Internet Shortcut (.url) content without BOM to ensure Windows Shell compatibility
   const urlFileContent =
     "[InternetShortcut]\r\n" +
-    `URL=${canonicalUrl}\r\n` +
+    `URL=${oneLine(canonicalUrl)}\r\n` +
     `IconIndex=0\r\n` +
-    `IconFile=https://${canonicalDomain}${iconIcoUrl}\r\n` +
-    `Comment=${description}\r\n` +
+    `IconFile=${oneLine(`https://${canonicalDomain}${iconIcoUrl}`)}\r\n` +
+    `Comment=${oneLine(description)}\r\n` +
     "[{000214A0-0000-0000-C000-000000000046}]\r\n" +
     "Prop3=19,11\r\n";
 
