@@ -71,10 +71,10 @@ export default function PrivacyNotice() {
             <a href="/services/job-help?tab=provider" className="hover:text-slate-800">
               🛠️{" "}
               {isKorean
-                ? "공식 헬퍼 등록"
+                ? "헬퍼 등록"
                 : isBilingual
-                ? `${t("customer.partnerTitle")} · 헬퍼 등록`
-                : t("customer.partnerTitle")}
+                ? `${t("customer.helperRegisterBtn").replace(/\s*→\s*$/, "")} · 헬퍼 등록`
+                : t("customer.helperRegisterBtn").replace(/\s*→\s*$/, "")}
             </a>
           </div>
 

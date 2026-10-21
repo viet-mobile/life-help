@@ -284,7 +284,6 @@ const allServices: ServiceItem[] = [
 
 const benefits = [
   ["💬", "consultation"],
-  ["🛡️", "verified"],
   ["💳", "payment"],
   ["⭐", "review"],
 ] as const;
@@ -562,10 +561,6 @@ export function CustomerHome() {
 
           <div className="relative flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
-              <div className="droplet-pill inline-flex items-center gap-1.5 bg-amber-400/10 border border-amber-400/30 px-2.5 py-0.5 text-[10px] sm:text-xs font-black text-amber-300 mb-1">
-                <span>🎖️</span>
-                <span>{t("customer.partnerTitle") || "LIFE.HELP 공식 헬퍼 파트너십"}</span>
-              </div>
 
               <h2 className="text-sm sm:text-lg font-black text-white leading-tight">
                 {t("customer.helperMasterBanner")}
@@ -628,13 +623,11 @@ export function CustomerHome() {
 
       {/* ⑦ Core Trust Benefits (4 Compact Droplet Cards) */}
       <section className="border-t border-slate-200/70 bg-white/90">
-        <div className="mx-auto grid max-w-6xl grid-cols-2 lg:grid-cols-4 gap-2 px-3 py-5 sm:px-4 sm:py-6">
+        <div className="mx-auto grid max-w-6xl grid-cols-3 gap-2 px-3 py-5 sm:px-4 sm:py-6">
           {benefits.map(([icon, key]) => {
             const href =
               key === "consultation"
                 ? "/chat"
-                : key === "verified"
-                ? "/tech"
                 : key === "payment"
                 ? "/payment"
                 : key === "review"
