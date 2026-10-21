@@ -106,6 +106,9 @@ export function TopPwaBar() {
   };
 
   if (isDismissed || !details) return null;
+  // Mobile: no desktop "Add to Dock / .url shortcut" banner. Only show once the browser offers a real install prompt (beforeinstallprompt).
+  const isMobileOs = os === "ios" || os === "ipados" || os === "android";
+  if (isMobileOs && !hasPrompt) return null;
 
   const isKorean = locale === "ko";
   const buttonLabel = isKorean ? guide.buttonLabelKo : guide.buttonLabelEn;
