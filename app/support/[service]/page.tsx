@@ -1,4 +1,6 @@
+import type { Metadata } from "next";
 import { SupportServiceView } from "@/components/support/SupportServiceView";
+import { serviceMetadata } from "@/lib/i18n/serviceMetadata";
 
 export function generateStaticParams() {
   return [
@@ -8,6 +10,10 @@ export function generateStaticParams() {
     { service: "hospital-help" },
     { service: "mobile-help" },
   ];
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ service: string }> }): Promise<Metadata> {
+  return serviceMetadata((await params).service);
 }
 
 export default async function SupportPage({

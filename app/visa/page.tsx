@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { VisaFinder } from "@/components/visa/VisaFinder";
+import { pageMetadata } from "@/lib/i18n/serverText";
 
-export const metadata: Metadata = {
-  title: "LIFE.HELP · Visa document guide",
-  description: "Documents to prepare and official application links by country and visa type, in your language. Information only.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageMetadata("visa.title", "visa.subtitle");
+}
 
 export default function VisaPage() {
   return <VisaFinder />;
