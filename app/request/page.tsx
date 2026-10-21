@@ -230,7 +230,6 @@ function RequestPageContent() {
   };
 
   const [submitted, setSubmitted] = useState(false);
-  const [selectedFileNames, setSelectedFileNames] = useState<string[]>([]);
   const [address, setAddress] = useState<string>("");
   const [problemDescription, setProblemDescription] = useState<string>("");
   const [selectedProblemOptions, setSelectedProblemOptions] = useState<string[]>([]);
@@ -653,48 +652,8 @@ function RequestPageContent() {
               </div>
             </div>
           ) : (
-            <div>
-              <label className="block text-sm sm:text-base font-bold text-slate-900">
-                {formatBilingual(t("request.photosLabel"), "사진을 첨부해 주세요")}
-              </label>
-
-              <input
-                id="photos"
-                type="file"
-                accept="image/*"
-                multiple
-                className="sr-only"
-                onChange={({ target }) =>
-                  setSelectedFileNames(Array.from(target.files ?? [], ({ name }) => name))
-                }
-              />
-
-              <label
-                htmlFor="photos"
-                className="droplet-card mt-2.5 flex cursor-pointer items-center gap-3 border-2 border-slate-300 bg-white p-3 text-sm font-medium text-slate-900 transition hover:border-blue-400 shadow-2xs"
-              >
-                <span className="droplet-btn bg-slate-100 px-3 py-1.5 text-xs font-black text-slate-800 shadow-2xs border border-slate-200">
-                  {formatBilingual(t("request.chooseFile"), "파일 선택")}
-                </span>
-                <span className="truncate text-slate-500 text-xs sm:text-sm">
-                  {selectedFileNames.length > 0
-                    ? selectedFileNames.join(", ")
-                    : formatBilingual(t("request.noFileChosen"), "선택된 파일 없음")}
-                </span>
-              </label>
-
-              <div className="mt-1.5 text-xs font-medium text-slate-600">
-                {isBilingual ? (
-                  <>
-                    <span>{t("request.photosHint")}</span>
-                    <span className="block opacity-80 mt-0.5">
-                      {tKo("request.photoHintText") || "사진을 보내주시면 문제를 파악하는 데 도움이 됩니다."}
-                    </span>
-                  </>
-                ) : (
-                  <span>{isKorean ? "사진을 보내주시면 문제를 파악하는 데 도움이 됩니다." : t("request.photosHint")}</span>
-                )}
-              </div>
+            <div role="note" className="rounded-xl border border-amber-300 bg-amber-50 p-3 text-xs sm:text-sm font-medium text-amber-900">
+              {t("request.photosNotUploaded")}
             </div>
           )}
 
