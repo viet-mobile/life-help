@@ -70,7 +70,7 @@ export default function ReviewPage() {
 
       {/* Footer */}
       <footer className="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-400">
-        LIFE.HELP · {isKorean ? "관리자 문의 이메일" : "Admin Email"}: contact@life.help
+        LIFE.HELP · {t("review.adminEmail")}: contact@life.help
       </footer>
     </main>
   );

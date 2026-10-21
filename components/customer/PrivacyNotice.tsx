@@ -38,8 +38,8 @@ export default function PrivacyNotice() {
 
         <div className="mt-6 pt-5 border-t border-slate-200/80 flex flex-wrap items-center justify-between gap-3 text-xs font-semibold text-slate-500">
           <div className="flex flex-wrap items-center gap-4">
-            <a href="/privacy" className="hover:text-slate-800 font-bold">개인정보처리방침 · Privacy Policy</a>
-            <a href="/terms" className="hover:text-slate-800 font-bold">이용약관 · Terms</a>
+            <a href="/privacy" className="hover:text-slate-800 font-bold">{isKorean ? t("customer.privacyLink") : isBilingual ? `${t("customer.privacyLink")} · ${tKo("customer.privacyLink")}` : t("customer.privacyLink")}</a>
+            <a href="/terms" className="hover:text-slate-800 font-bold">{isKorean ? t("customer.termsLink") : isBilingual ? `${t("customer.termsLink")} · ${tKo("customer.termsLink")}` : t("customer.termsLink")}</a>
             <a href="/payment" className="text-blue-700 hover:text-blue-800 font-bold flex items-center gap-1">
               <span>💳</span>
               <span>
