@@ -9,13 +9,13 @@ import { fieldInfo, fieldList } from "@/lib/think/areas";
 import { hasThinkSemesters } from "@/lib/think/semesters";
 import { gradeLabel } from "@/lib/think/grades";
 import { KOREAN_LEVELS, isLevelCode, levelCode, levelName, priorLevelFor } from "@/lib/think/korean-levels";
-import { ELECTIVE_NAMES, HUB } from "./hubLabels";
+import { ELECTIVE_NAMES, hubLabels } from "./hubLabels";
 
 /** Main-screen shortcut into the thinking hub: pick grade, semester (math) and field, then go. The hub reads ?grade= &semester= &field=. */
 export function ThinkQuickEntry() {
   const { site, state, locale, href, t } = useLearner();
   const lang = thinkLangFor(locale, site);
-  const H = HUB[lang];
+  const H = hubLabels(t);
   const ownGrade = (state.profile?.grade ?? siteConfig(site).levels[0]) as string;
   const own = site === "korean" ? levelCode(priorLevelFor(ownGrade)) : ownGrade;
   const [grade, setGrade] = useState<string>(own);

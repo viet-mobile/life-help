@@ -15,7 +15,7 @@ const PLACEHOLDER = /(todo|tbd|fixme|lorem|xxx|\?\?\?|\{\{|\}\}|undefined|null|\
 const vi = viJson as Record<MessageKey, string>;
 const keys = Object.keys(ko) as MessageKey[];
 // Keys whose value is intentionally the same in every locale (brand names, units, a language's own name).
-const NEUTRAL = new Set<MessageKey>(["brand.math", "brand.english", "diag.progress", "dash.xp", "lesson.xp", "brand.korean"]);
+const NEUTRAL = new Set<MessageKey>(["brand.math", "brand.english", "diag.progress", "dash.xp", "lesson.xp", "brand.korean", "think.hub.of"]);
 const vars = (s: string) => [...s.matchAll(/\{(\w+)\}/g)].map((m) => m[1]).sort();
 
 describe("Vietnamese dictionary (locale vi)", () => {

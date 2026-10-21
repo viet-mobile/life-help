@@ -12,7 +12,7 @@ import { avatarEmoji } from "@/lib/learn/avatars";
 import { useLearner } from "./LearnerProvider";
 import { LevelUnavailable } from "./LevelUnavailable";
 import { thinkLangFor } from "@/lib/think/lang";
-import { HUB } from "@/components/think/hubLabels";
+import { hubLabels } from "@/components/think/hubLabels";
 import { CADENCE_TEXT } from "@/lib/think/cadence";
 import { flowView } from "@/lib/think/flow";
 import { ThinkQuickEntry } from "../think/ThinkQuickEntry";
@@ -25,7 +25,7 @@ import { MathMotionEntry } from "./MathMotion";
 export function Dashboard() {
   const { state, index, t, href, mode, accountsEnabled, site, locale } = useLearner();
   const thinkLang = thinkLangFor(locale, site);
-  const thinkText = HUB[thinkLang];
+  const thinkText = hubLabels(t);
   const cadence = flowView(readLedger(site)); // counted per distinct solved / revealed question, retries never count (lib/think/flow.ts)
   const coverage = coverageFor(site, locale);
   const now = new Date();

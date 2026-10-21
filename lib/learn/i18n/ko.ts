@@ -443,6 +443,23 @@ export const ko = {
   "pron.source": "출처: 표준 발음법 제{art}항(국립국어원).",
   "pron.note": "규칙을 설명하는 도움말이에요. 기기 음성은 소리만 들려주며, 이 앱은 내 발음을 평가하지 않아요.",
   "pron.hide": "발음 도움말 끄기",
+  "think.hub.title": "사고력 도전",
+  "think.hub.intro": "정답 하나를 찾는 문제가 아니라, 근거를 모아 추론하고, 비교하고, 오류를 고치고, 직접 만들어 보는 과제예요. 기본 레슨과 따로, 원할 때 도전해요.",
+  "think.hub.grade": "학년·레벨",
+  "think.hub.electives": "선택 과목",
+  "think.hub.empty": "이 학년의 과제는 아직 없어요.",
+  "think.hub.done": "해 봤어요",
+  "think.hub.open": "열기",
+  "think.hub.of": "/",
+  "think.hub.notTranslated": "이 언어로 번역이 끝나지 않은 과제는 숨겼어요. 번역이 준비되면 열려요. 숨긴 과제 수",
+  "think.hub.allFields": "모든 분야",
+  "think.hub.field": "분야",
+  "think.hub.tryOne": "바로 도전하기",
+  "think.hub.quick": "바로 가기",
+  "think.hub.allSemesters": "전체 학기",
+  "think.hub.enter": "들어가기",
+  "think.hub.koFirst.toggle": "{name}도 함께 보기",
+  "think.hub.koFirst.note": "",
 } as const;
 
 export type MessageKey = keyof typeof ko;
