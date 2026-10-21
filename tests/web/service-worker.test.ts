@@ -10,7 +10,7 @@ function load() {
   const puts: string[] = [];
   const caches = {
     open: async () => ({ addAll: async () => {}, put: async (r: Request) => { puts.push(new URL(r.url).pathname); }, keys: async () => [], delete: async () => true }),
-    match: async (r: Request | string) => store.get(typeof r === "string" ? r : new URL(r.url).pathname),
+    match: async (r: Request | string) => store.get(typeof r === "string" ? r : new URL(r.url).pathname)?.clone(),
     keys: async () => [],
     delete: async () => true,
   };
