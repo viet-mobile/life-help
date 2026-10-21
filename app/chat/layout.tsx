@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { LegalLinksFooter } from "@/components/shared/LegalLinksFooter";
 import { headers } from "next/headers";
 import { ChatProvider } from "@/lib/chat/ChatContext";
 import {
@@ -20,5 +21,5 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function ChatLayout({ children }: { children: React.ReactNode }) {
-  return <ChatProvider>{children}</ChatProvider>;
+  return <ChatProvider>{children}<LegalLinksFooter /></ChatProvider>;
 }
