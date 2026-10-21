@@ -17,7 +17,7 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
-      - run: npx tsc --noEmit
+      - run: npm run typecheck
       - run: npm test -- --run
       - run: node scripts/learn/build-content-assets.mjs --check
       - run: npm run build
