@@ -59,7 +59,7 @@ export const helperApi = {
     call<{ helper: SvcHelper; credential: string }>("POST", "/h/register", input),
   login: (credential: string) => call<{ helper: SvcHelper }>("POST", "/h/login", { credential }),
   logout: () => call<{ ok: true }>("POST", "/h/logout", {}),
-  me: () => call<{ helper: SvcHelper }>("GET", "/h/me").then((r) => r.helper),
+  me: () => call<{ helper: SvcHelper | null }>("GET", "/h/me").then((r) => r.helper),
   update: (patch: { name?: string; primaryLocale?: string; spokenLocales?: string[]; services?: string[]; regions?: Array<{ country: string; sido: string; gungu: string }> }) =>
     call<{ helper: SvcHelper }>("PATCH", "/h/me", patch).then((r) => r.helper),
   setAvailable: (available: boolean) => call<{ helper: SvcHelper }>("POST", "/h/available", { available }).then((r) => r.helper),

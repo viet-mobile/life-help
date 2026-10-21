@@ -166,7 +166,9 @@ describe("service API: three separate clients, one server", { timeout: 60_000 },
     expect((await forged.get("/h/requests")).status).toBe(403);
     const mixed = new Agent("mixed"); mixed.jar.set("lh_h", customer.jar.get("lh_c")!);
     expect((await mixed.get("/h/requests")).status).toBe(403);
-    expect((await new Agent("none").get("/h/me")).status).toBe(403);
+    const anon = await new Agent("none").get("/h/me");
+    expect(anon.status).toBe(200); // no cookie: anonymous visit, not an error
+    expect(anon.body).toMatchObject({ helper: null });
     // login with a credential that was never issued
     expect((await new Agent("x").post("/h/login", { credential: "b".repeat(64) })).status).toBe(403);
     expect((await new Agent("x").post("/h/login", { credential: "short" })).status).toBe(403);
