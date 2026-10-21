@@ -62,6 +62,8 @@ export async function POST(request: Request, ctx: RouteContext<"/api/learn/[acti
           await svc.requestHint(actor, site, {
             questionId: String(body.questionId ?? ""),
             level: Number(body.level),
+            sessionId: typeof body.sessionId === "string" ? body.sessionId.slice(0, 64) : undefined,
+            prevProof: typeof body.prevProof === "string" ? body.prevProof.slice(0, 128) : undefined,
           }),
         );
       case "attempt":
