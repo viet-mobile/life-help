@@ -158,6 +158,7 @@ const write = (rel, text) => {
 write("lib/learn/content/bank/math.json", JSON.stringify(bank) + "\n");
 
 // ---- the wording per language: the topic kit's templates, validated against the canonical ones
+const HS_BANK = JSON.parse(read("lib/learn/content/bank/math-hs.json"));
 const holes = (s) => [...new Set([...s.matchAll(/\{(\w+)\}/g)].map((m) => m[1]))].sort().join(",");
 const indentOf = (raw) => { const m = raw.match(/^\{\n( +)"/); return m ? m[1].length : null; };
 for (const loc of LOCALES) {
@@ -179,6 +180,22 @@ for (const loc of LOCALES) {
       if (HANGUL.test(a)) fail(`${loc}/${t}: Hangul in a translation`);
     }
     templates[t] = mine;
+  }
+  // the high-school tranche (lib/learn/content/bank/math-hs.json): its wording for this language, when scripts/learn/bank/hs/kit/<loc>.json exists (all templates or none)
+  const hsKitFile = path.join(root, `scripts/learn/bank/hs/kit/${loc}.json`);
+  if (fs.existsSync(hsKitFile)) {
+    const hsKit = JSON.parse(fs.readFileSync(hsKitFile, "utf8")).q;
+    for (const [t, c] of Object.entries(HS_BANK.templates)) {
+      const k = hsKit[t];
+      if (!k) fail(`${loc}: hs kit has no template ${t}`);
+      const mine = { prompt: k.prompt, hints: k.hints, explanation: k.expl };
+      if (mine.hints.length !== c.hints.length) fail(`${loc}/${t}: hint count`);
+      for (const [a, b] of [[mine.prompt, c.prompt], [mine.explanation, c.explanation], ...mine.hints.map((h, i) => [h, c.hints[i]])]) {
+        if (holes(a) !== holes(b)) fail(`${loc}/${t}: placeholders differ`);
+        if (HANGUL.test(a)) fail(`${loc}/${t}: Hangul in a translation`);
+      }
+      templates[t] = mine;
+    }
   }
   const texts = Object.fromEntries(usedTexts.map((k) => { const v = kit.text?.[k]; if (!v || HANGUL.test(v)) fail(`${loc}: text ${k}`); return [k, v]; }));
   const rel = loc === "vi" ? "lib/learn/content/vi/math.json" : `content/learn-overlays/${loc}/math.json`;
