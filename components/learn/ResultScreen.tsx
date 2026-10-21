@@ -72,7 +72,7 @@ export function ResultScreen({ result, nextLesson, onAgain }: { result: SessionR
       <div className="l-stack">
         {result.kind === "lesson" && nextLesson ? (
           <Link className="l-btn l-btn-block" href={href(`/lesson/${nextLesson.id}`)}>
-            ▶ {t("result.next", { title: nextLesson.title })}
+            <span className="l-arrow" aria-hidden="true">▶</span> {t("result.next", { title: nextLesson.title })}
           </Link>
         ) : result.kind === "lesson" ? (
           <p className="l-muted">{t("result.noNext")}</p>

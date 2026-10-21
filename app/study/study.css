@@ -160,3 +160,7 @@ a.l-card { display: block; }
 .l-tier[data-tier="premium"] { background: #ede9fe; color: #5b21b6; }
 .l-premium-gate { text-align: center; }
 .l-premium-gate .l-btn[disabled] { opacity: 0.6; cursor: not-allowed; }
+
+/* Directional glyphs (arrows / play) mirror in right-to-left locales */
+.l-arrow { display: inline-block; }
+[dir="rtl"] .l-arrow { transform: scaleX(-1); }
