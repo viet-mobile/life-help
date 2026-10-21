@@ -1,3 +1,4 @@
+import { SUPPORTED_LOCALE_COUNT } from "@/lib/i18n/localeCount";
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
@@ -56,7 +57,7 @@ describe("geometry lessons", () => {
   it("every overlay (all locales) carries the geometry questions, resolved and without Korean", () => {
     const dirs = fs.readdirSync(path.join(root, "content/learn-overlays")).filter((d) => fs.existsSync(path.join(root, "content/learn-overlays", d, "math.json")));
     const files = [...dirs.map((d) => `content/learn-overlays/${d}/math.json`), "lib/learn/content/vi/math.json", "lib/learn/content/vi/secondary-math.json"];
-    expect(dirs.length).toBeGreaterThanOrEqual(45);
+    expect(dirs.length).toBeGreaterThanOrEqual(SUPPORTED_LOCALE_COUNT - 2);
     const byLocale = new Map<string, Record<string, { prompt: string; hints: string[]; explanation: string; options?: Record<string, string> }>>();
     for (const f of files) {
       const loc = f.startsWith("content") ? f.split("/")[2] : "vi";

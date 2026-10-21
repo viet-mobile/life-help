@@ -1,3 +1,4 @@
+import { SUPPORTED_LOCALE_COUNT } from "@/lib/i18n/localeCount";
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
@@ -39,7 +40,7 @@ describe("english site world names are '<learner language> (English)'", () => {
   });
 
   const locales = fs.readdirSync(path.join(root, "content/learn-overlays")).filter((d) => fs.existsSync(path.join(root, "content/learn-overlays", d, "english.json")));
-  it("covers every overlay locale (all but ko and the generated vi)", () => expect(locales.length).toBeGreaterThanOrEqual(45));
+  it("covers every overlay locale (all but ko and the generated vi)", () => expect(locales.length).toBeGreaterThanOrEqual(SUPPORTED_LOCALE_COUNT - 2));
   for (const loc of locales) {
     it(`overlay ${loc}`, () => {
       const { courses } = readJson(`content/learn-overlays/${loc}/english.json`) as WorldBundle;

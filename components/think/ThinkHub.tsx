@@ -8,7 +8,7 @@ import { fieldInfo, fieldKeyOf, fieldList } from "@/lib/think/areas";
 import { hasThinkSemesters, inSemester } from "@/lib/think/semesters";
 import { gradeLabel } from "@/lib/think/grades";
 import { BOSS_TEXT, addTrophy, bossKey, bossKeyOf, bossProgress, finalBossFor, isFinalBoss, readTrophies, type Trophy } from "@/lib/think/bosses";
-import { KOREAN_FIRST_TEXT, KOREAN_LEVELS, isKoreanFirst, isLevelCode, koreanLevelOf, levelCode, levelFromCode, levelName, priorLevelFor } from "@/lib/think/korean-levels";
+import { KOREAN_LEVELS, isKoreanFirst, isLevelCode, koreanLevelOf, levelCode, levelFromCode, levelName, priorLevelFor } from "@/lib/think/korean-levels";
 import { LANG_NAMES, TASK_LANG_NAMES, taskLangFor, thinkLangFor, type TaskLang, type ThinkLang } from "@/lib/think/lang";
 import { checksOffFor, loadOverlay, loadOverlays, localize, localizeFor, mergeBilingual } from "@/lib/think/localize";
 import { siteConfig } from "@/lib/learn/sites";
@@ -16,7 +16,7 @@ import { schoolLevel, type Grade } from "@/lib/learn/types";
 import type { ThinkTask } from "@/lib/think/types";
 import { useLearner } from "../learn/LearnerProvider";
 import { flowKey, taskCompleted } from "@/lib/think/flow";
-import { ELECTIVE_NAMES, HUB } from "./hubLabels";
+import { ELECTIVE_NAMES, hubLabels } from "./hubLabels";
 import { readLedger } from "./ThinkOffer";
 import { labels } from "./labels";
 import { TaskPlayer } from "./ThinkPlayer";
@@ -54,7 +54,7 @@ export function ThinkHub() {
   const [won, setWon] = useState(false);
   const lang: ThinkLang = thinkLangFor(locale, site); // language of the screen text
   const taskLang = taskLangFor(locale); // language the task text is shown in when it is fully translated (else English, see localizeFor)
-  const H = HUB[lang];
+  const H = hubLabels(t);
   const L = labels(lang);
   const open = params.get("task");
 
@@ -113,15 +113,14 @@ export function ThinkHub() {
     const koItem = site === "korean" && lang !== "ko" && raw && isKoreanFirst(raw.id) ? localize(raw, "ko", overlayKo) : null;
     const koFirst = !!koItem?.translated;
     const playTask = koFirst ? (bilingual ? mergeBilingual(koItem!.task, current.task) : koItem!.task) : current.task;
-    const KF = KOREAN_FIRST_TEXT[lang];
     return (
       <div className="l-wrap l-stack" data-testid="think-player" style={{ whiteSpace: "pre-line" }}>
         {koFirst && (
           <div className="l-panel l-panel-hint" data-testid="korean-first-bar" style={{ whiteSpace: "normal" }}>
-            <p>{KF.note}</p>
+            <p>{t("think.hub.koFirst.note")}</p>
             <label style={{ display: "inline-flex", alignItems: "center", gap: 8, marginTop: 8, fontWeight: 700 }}>
               <input type="checkbox" data-testid="bilingual-toggle" checked={bilingual} onChange={(e) => { setBilingual(e.target.checked); try { window.localStorage.setItem("learn:think:bilingual", e.target.checked ? "1" : "0"); } catch { /* storage unavailable */ } }} />
-              {KF.toggle(TASK_LANG_NAMES[current.lang as TaskLang] ?? LANG_NAMES[lang])}
+              {t("think.hub.koFirst.toggle", { name: TASK_LANG_NAMES[current.lang as TaskLang] ?? LANG_NAMES[lang] })}
             </label>
           </div>
         )}

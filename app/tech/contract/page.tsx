@@ -149,7 +149,6 @@ export default function TechContractPage() {
 
     saveContract({
       name: name.trim(),
-      residentNumber: "AUTH-VERIFIED",
       email: helper.email || "",
       phone: helper.phone,
       services: selectedServices,

@@ -81,7 +81,6 @@ export default function TechWorkspacePage() {
 
   const contract: HelperContract = helper.contract || {
     name: helperDisplayName,
-    residentNumber: "AUTH-VERIFIED",
     email: helper.email || "helper@life.help",
     phone: helper.phone,
     services: ["toilet-clog", "sink-drain", "floor-drain"],
@@ -722,10 +721,6 @@ export default function TechWorkspacePage() {
                       <strong className="text-white">{contract.phone}</strong>
                     </div>
                   )}
-                  <div className="col-span-2">
-                    <span className="text-slate-400">{t("workspace.contractResidentId")}:</span>{" "}
-                    <strong className="text-white">{contract.residentNumber}</strong>
-                  </div>
                   <div className="col-span-2">
                     <span className="text-slate-400">{t("workspace.contractSignedAt")}:</span>{" "}
                     <span className="text-white">

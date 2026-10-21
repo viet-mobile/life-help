@@ -174,6 +174,15 @@ export const DEFAULT_COUNTRY_REGIONS: Record<string, RegionItem> = {
   AR: { country: "AR", sido: "Ciudad Autónoma de Buenos Aires", gungu: "Comuna 14", dong: "Palermo" },
 };
 
+/**
+ * Default selection for a country. Fails closed: a country without a vetted default gets an EMPTY selection (the visitor picks or types
+ * the place by hand) and never silently inherits the Korean default address.
+ */
+export function defaultRegionFor(country: CountryCode | string | null | undefined): RegionItem {
+  const code = (country || "").toUpperCase();
+  return DEFAULT_COUNTRY_REGIONS[code] ?? { country: code || undefined, sido: "", gungu: "", dong: "" };
+}
+
 export const koreanRegions: SidoData[] = [
 
   {
@@ -668,13 +677,7 @@ export function getCountryRegions(country: CountryCode = "KR"): SidoData[] {
       if (worldRegions[country]) {
         return worldRegions[country];
       }
-      return [
-        {
-          name: "Main District",
-          shortName: "Main",
-          gunguList: [{ name: "Central", dongs: ["Downtown", "Area 1", "Area 2"] }],
-        },
-      ];
+      return []; // no data: manual entry (fail closed, never a made-up placeholder district)
   }
 }
 

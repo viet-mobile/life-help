@@ -11,8 +11,7 @@ import { BrandLogo } from "./BrandLogo";
 import { LocaleSwitch } from "./LocaleSwitch";
 import { ThinkOffer } from "../think/ThinkOffer";
 import { useLearner } from "./LearnerProvider";
-import { HUB } from "../think/hubLabels";
-import { thinkLangFor } from "@/lib/think/lang";
+import { hubLabels } from "../think/hubLabels";
 
 const FOCUS_PATHS = ["/lesson/", "/onboarding", "/diagnostic", "/practice"]; // /think keeps the tab bar (its hub), the player is part of it
 
@@ -27,7 +26,7 @@ export function PlayShell({ children }: { children: ReactNode }) {
     { path: "/dashboard", icon: "🏠", label: t("nav.home") },
     { path: "/learn", icon: "🗺️", label: t("nav.learn") },
     { path: "/quest", icon: "📜", label: t("nav.quest") },
-    { path: "/think", icon: "🧠", label: HUB[thinkLangFor(locale, site)].title },
+    { path: "/think", icon: "🧠", label: hubLabels(t).title },
     { path: "/profile", icon: "🙂", label: t("nav.profile") },
   ];
 

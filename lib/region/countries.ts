@@ -102,70 +102,10 @@ export function getCountryInfo(code: CountryCode | undefined | null): CountryInf
 
 /**
  * Country names from CLDR for locales whose browser ICU build has no (or incomplete) region names: Chrome ships no
- * region data for sg, mn, ne, km, my, si and only partial data for pa, so these are kept as data instead of falling
+ * region data for mn, ne, km, my, si and only partial data for pa, so these are kept as data instead of falling
  * back to another language. (tet -> pt and arz -> ar use the fallback rule below.)
  */
 const CLDR_COUNTRY_NAMES: Readonly<Record<string, Readonly<Record<string, string>>>> = {
-  sg: {
-    KR: "Korëe tî Mbongo",
-    VN: "Vietnäm",
-    CN: "Shîna",
-    TW: "Tâiwâni",
-    JP: "Zapöon",
-    PH: "Filipîni",
-    ID: "Ênndonezïi",
-    RU: "Rusïi",
-    UZ: "Uzbekistäan",
-    NP: "Nëpâli",
-    IN: "Ênnde",
-    KH: "Kämbôzi",
-    TH: "Tailânde",
-    MM: "Myämâra",
-    LK: "Sirî-Lanka",
-    KZ: "Kazakisitäan",
-    FR: "Farânzi",
-    DE: "Zâmani",
-    TR: "Turukïi",
-    UA: "Ukrêni",
-    TL: "Timôro tî Tö",
-    AE: "Arâbo Emirâti Ôko",
-    IT: "Italùii",
-    EG: "Kâmitâ",
-    ES: "Espânye",
-    IR: "Iräan",
-    NL: "Holände",
-    PL: "Pölôni",
-    ET: "Etiopïi",
-    SE: "Suêde",
-    IL: "Israëli",
-    DK: "Danemêrke",
-    NO: "Nörvêzi",
-    MN: "Mongolïi",
-    MX: "Mekisîki",
-    BR: "Brezîli",
-    GR: "Gerêsi",
-    PT: "Pörtugäle",
-    ZA: "Mbongo-Afrîka",
-    CH: "Sûîsi",
-    PK: "Pakistäan",
-    SA: "Saûdi Arabïi",
-    YE: "Yëmêni",
-    IQ: "Irâki",
-    BD: "Bengladêshi",
-    US: "ÂLeaa-Ôko tî Amerika",
-    GB: "Ködörögbïä-Ôko",
-    CA: "Kanadäa",
-    AU: "Ostralïi",
-    NZ: "Finî Zelânde",
-    SG: "Sïngäpûru",
-    MY: "Malezïi",
-    NG: "Nizerïa",
-    SV: "Salvadöro",
-    CF: "Ködörösêse tî Bêafrîka",
-    VE: "Venezueläa",
-    KE: "Kenyäa",
-    AR: "Arzantîna",
-  },
   pa: {
     KR: "ਦੱਖਣੀ ਕੋਰੀਆ",
     VN: "ਵੀਅਤਨਾਮ",
@@ -528,8 +468,8 @@ const CLDR_COUNTRY_NAMES: Readonly<Record<string, Readonly<Record<string, string
   },
 };
 
-/** Locales without ICU region-name data, mapped to the closest locale that has it (tet: Portuguese is co-official in Timor-Leste; sg: French is co-official in the Central African Republic). */
-const DISPLAY_NAME_LOCALE_FALLBACKS: Record<string, readonly string[]> = { tet: ["pt"], arz: ["ar"], sg: ["fr"] };
+/** Locales without ICU region-name data, mapped to the closest locale that has it (tet: Portuguese is co-official in Timor-Leste). */
+const DISPLAY_NAME_LOCALE_FALLBACKS: Record<string, readonly string[]> = { tet: ["pt"], arz: ["ar"] };
 
 /**
  * Returns ONLY the localized country name (WITHOUT flag prepended),

@@ -152,14 +152,18 @@ describe("learner view shows only translated parts", () => {
 
 describe("Korean level 4+ shows Korean instructions, optionally beside the learner's language", async () => {
   const { mergeBilingual, localize } = await import("@/lib/think/localize");
-  const { isKoreanFirst, KOREAN_FIRST_LEVEL, KOREAN_FIRST_TEXT, koreanLevelOf } = await import("@/lib/think/korean-levels");
+  const { isKoreanFirst, KOREAN_FIRST_LEVEL, koreanLevelOf } = await import("@/lib/think/korean-levels");
   it("level 4+ tasks are Korean-first, levels 1-3 are not", async () => {
     expect(KOREAN_FIRST_LEVEL).toBe(4);
     let hi = 0, lo = 0;
     for (const m of FILE_META.filter((x) => x.subject === "korean")) for (const t of await TASK_LOADERS[m.key]()) { if (isKoreanFirst(t.id)) { hi++; expect(koreanLevelOf(t.id)!).toBeGreaterThanOrEqual(4); } else lo++; }
     expect(hi).toBeGreaterThan(50);
     expect(lo).toBeGreaterThan(50);
-    for (const l of ["en", "zh-Hans", "zh-Hant", "ja", "vi"] as const) { expect(KOREAN_FIRST_TEXT[l].toggle("X")).toContain("X"); expect(KOREAN_FIRST_TEXT[l].note.length).toBeGreaterThan(10); }
+    for (const l of ["en", "zh-Hans", "zh-Hant", "ja", "vi"]) {
+      const cat = (await import(`@/lib/learn/i18n/locales/${l}.json`)).default as Record<string, string>;
+      expect(cat["think.hub.koFirst.toggle"]).toContain("{name}");
+      expect(cat["think.hub.koFirst.note"].length).toBeGreaterThan(10);
+    }
   });
   it("a Korean-first task has a complete Korean version, and the merge puts Korean first and keeps shared text single", async () => {
     // overlay files read straight from disk (the app loads them as static assets)

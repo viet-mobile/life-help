@@ -27,7 +27,7 @@ export function DesktopShortcutButton({
   portal,
   className = "",
 }: DesktopShortcutButtonProps) {
-  const { locale, formatBilingual } = useLocale();
+  const { locale, t, formatBilingual } = useLocale();
   const { country } = useCountry();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -130,7 +130,7 @@ export function DesktopShortcutButton({
               type="button"
               onClick={() => setIsOpen(false)}
               className="absolute top-4 right-4 text-slate-400 hover:text-slate-700 font-bold text-lg cursor-pointer p-1 rounded-full transition"
-              title={isKorean ? "닫기" : "Close"}
+              title={t("shortcut.close")}
             >
               ✕
             </button>
@@ -164,7 +164,7 @@ export function DesktopShortcutButton({
             <div className="mt-4 space-y-2 rounded-2xl bg-slate-50 p-4 border border-slate-200 text-xs">
               <div>
                 <span className="text-slate-500 font-bold block text-[11px]">
-                  {isKorean ? "연결 대상 도메인 주소:" : "Target Domain URL:"}
+                  {t("shortcut.targetDomain")}
                 </span>
                 <span className="font-mono font-bold text-blue-800 text-sm break-all">
                   {details.canonicalUrl}
@@ -173,7 +173,7 @@ export function DesktopShortcutButton({
 
               <div className="pt-2 border-t border-slate-200">
                 <span className="text-slate-500 font-bold block text-[11px]">
-                  {isKorean ? "설명:" : "Description:"}
+                  {t("shortcut.description")}
                 </span>
                 <p className="mt-1 font-medium text-slate-800 leading-relaxed bg-white p-2.5 rounded-xl border border-slate-200/80">
                   {details.description}
@@ -183,14 +183,14 @@ export function DesktopShortcutButton({
 
             {copied && (
               <div className="mt-3 rounded-xl bg-emerald-50 border border-emerald-300 p-2.5 text-center text-xs font-bold text-emerald-800">
-                ✓ {isKorean ? "바로가기 파일이 다운로드 폴더에 안전하게 저장되었습니다." : "Shortcut file downloaded safely."}
+                ✓ {t("shortcut.savedSafely")}
               </div>
             )}
 
             {/* Step-by-Step Installation Instructions */}
             <div className="mt-5 space-y-2.5">
               <h4 className="text-xs font-black text-slate-800 uppercase tracking-wider">
-                {isKorean ? "운영체제별 바로가기 추가 절차:" : "Installation Instructions:"}
+                {t("shortcut.instructionsTitle")}
               </h4>
               <ol className="space-y-2 text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">
                 {(isKorean ? guide.stepsKo : guide.stepsEn).map((step, idx) => (
@@ -215,7 +215,7 @@ export function DesktopShortcutButton({
                   onClick={handlePwaInstall}
                   className="w-full rounded-2xl bg-blue-600 hover:bg-blue-700 py-3 text-sm font-black text-white shadow-md transition cursor-pointer"
                 >
-                  🚀 {isKorean ? "지금 1클릭 앱 설치하기" : "Install App Now"}
+                  🚀 {t("shortcut.installNow")}
                 </button>
               )}
 
@@ -225,7 +225,7 @@ export function DesktopShortcutButton({
                   onClick={handleDownload}
                   className="w-full rounded-2xl border border-slate-300 bg-white hover:bg-slate-50 py-2.5 text-xs font-bold text-slate-800 transition cursor-pointer"
                 >
-                  🖥️ {isKorean ? "Windows 전통 바로가기 파일 · .url 다운로드" : "Download Classic Windows .url File"}
+                  🖥️ {t("shortcut.downloadUrl")}
                 </button>
               )}
 
@@ -234,7 +234,7 @@ export function DesktopShortcutButton({
                 onClick={() => setIsOpen(false)}
                 className="w-full rounded-2xl bg-slate-100 hover:bg-slate-200 py-2.5 text-xs font-bold text-slate-600 transition cursor-pointer"
               >
-                {isKorean ? "닫기" : "Close"}
+                {t("shortcut.close")}
               </button>
             </div>
           </div>

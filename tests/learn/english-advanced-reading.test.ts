@@ -1,3 +1,4 @@
+import { SUPPORTED_LOCALE_COUNT } from "@/lib/i18n/localeCount";
 import { describe, expect, it } from "vitest";
 import { checkAnswer } from "@/lib/learn/domain/answers";
 import type { Question } from "@/lib/learn/types";
@@ -126,8 +127,8 @@ describe("English Advanced Reading Track (CEFR B1-B2 / College Preparatory)", ()
     }
   });
 
-  it("maintains 100% multi-locale overlay coverage across all 46 non-core locales with no Hangul leaks", () => {
-    expect(ADVANCED_READING_OVERLAY_LOCALES).toHaveLength(46);
+  it("maintains 100% multi-locale overlay coverage across every registry locale except ko with no Hangul leaks", () => {
+    expect(ADVANCED_READING_OVERLAY_LOCALES).toHaveLength(SUPPORTED_LOCALE_COUNT - 1);
 
     for (const locale of ADVANCED_READING_OVERLAY_LOCALES) {
       const overlay = getAdvancedReadingOverlay(locale);

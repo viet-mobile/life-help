@@ -12,7 +12,7 @@ import type { ThinkTask } from "../../lib/think/types";
 const root = path.resolve(__dirname, "../..");
 const SIX = ["en", "ja", "ko", "vi", "zh-Hans", "zh-Hant"] as const;
 /** The other 41 service languages: translated FROM ENGLISH (the English overlay of Korean-authored tasks, the authored text of Korean-subject tasks). */
-const EXTRA = ["am", "ar", "arz", "bn", "da", "de", "el", "es", "fa", "fr", "gu", "he", "hi", "id", "it", "kk", "km", "kn", "ml", "mn", "mr", "my", "ne", "nl", "no", "pa", "pl", "pt", "ru", "sg", "si", "sv", "sw", "ta", "te", "tet", "th", "tr", "uk", "ur", "uz"] as const;
+const EXTRA = ["am", "ar", "arz", "bn", "da", "de", "el", "es", "fa", "fr", "gu", "he", "hi", "id", "it", "kk", "km", "kn", "ml", "mn", "mr", "my", "ne", "nl", "no", "pa", "pl", "pt", "ru", "si", "sv", "sw", "ta", "te", "tet", "th", "tr", "uk", "ur", "uz"] as const;
 const LANGS = [...SIX, ...EXTRA] as const;
 const isExtra = (l: string) => (EXTRA as readonly string[]).includes(l);
 const ovPath = (lang: string, key: string) => path.join(root, "lib/think/i18n", lang, `${key}.json`);

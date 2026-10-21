@@ -12,7 +12,6 @@ export interface HelperRegionItem {
 export interface HelperContract {
   helperId?: string;
   name: string;
-  residentNumber: string;
   email: string;
   phone?: string;
   services: string[];
@@ -211,7 +210,6 @@ export function HelperProvider({ children }: { children: React.ReactNode }) {
       contract: {
         helperId: serverHelper.id,
         name: serverHelper.displayName,
-        residentNumber: "",
         email: "",
         services: serverHelper.capabilities,
         regions: serverHelper.regions.map((r) => ({ sido: r.sido ?? "", gungu: r.gungu ?? "" })),
