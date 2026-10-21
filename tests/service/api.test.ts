@@ -181,7 +181,9 @@ describe("service API: three separate clients, one server", { timeout: 60_000 },
     expect((await fresh.get("/h/me")).status).toBe(403);
     // logging out clears the cookie
     await good.post("/h/logout");
-    expect((await good.get("/h/me")).status).toBe(403);
+    const afterLogout = await good.get("/h/me");
+    expect(afterLogout.status).toBe(200);
+    expect(afterLogout.body.helper).toBeNull();
   });
 
   it("admin: unauthenticated denied everywhere; manual assignment is visible to customer and helper", async () => {
