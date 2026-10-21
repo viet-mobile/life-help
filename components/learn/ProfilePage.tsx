@@ -1,17 +1,41 @@
 "use client";
 
 import Link from "next/link";
-import { useTransition } from "react";
+import { useRef, useState, useTransition } from "react";
 import { ACHIEVEMENTS } from "@/lib/learn/domain/achievements";
 import { levelProgress } from "@/lib/learn/domain/level";
 import { avatarEmoji } from "@/lib/learn/avatars";
 import { OfficialGradeChip } from "./OfficialGradeChip";
 import { TtsSettingsPanel } from "./TtsSettings";
 import { useLearner } from "./LearnerProvider";
+import { learnConfig } from "@/lib/learn/config";
 
 export function ProfilePage({ signOutAction, signupEnabled = false }: { signOutAction?: () => Promise<void>; signupEnabled?: boolean }) {
   const { state, t, href, mode, accountsEnabled, resetGuest, site } = useLearner();
   const [pending, start] = useTransition();
+  const fileRef = useRef<HTMLInputElement>(null);
+  const [note, setNote] = useState("");
+  const storageKey = `${learnConfig.guestStorageKey}:${site}`;
+  const exportProgress = () => {
+    const blob = new Blob([JSON.stringify(state)], { type: "application/json" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = `${site}-progress.json`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+  };
+  const importProgress = async (file: File | undefined) => {
+    if (!file) return;
+    try {
+      const parsed = JSON.parse(await file.text());
+      if (!parsed || parsed.site !== site || file.size > 2_000_000) throw new Error("bad");
+      window.localStorage.setItem(storageKey, JSON.stringify(parsed));
+      setNote(t("profile.import.ok"));
+      window.location.reload();
+    } catch {
+      setNote(t("profile.import.bad"));
+    }
+  };
   const level = levelProgress(state.totalXp);
   const c = state.counters;
   return (
@@ -72,6 +96,11 @@ export function ProfilePage({ signOutAction, signupEnabled = false }: { signOutA
         {mode === "guest" ? (
           <>
             {accountsEnabled && <Link className="l-btn l-btn-block" href={href("/login")}>{t(signupEnabled ? "profile.login" : "auth.submit.login")}</Link>}
+            <p className="l-muted">{t("profile.backup.hint")}</p>
+            <button className="l-btn l-btn-ghost l-btn-block" onClick={exportProgress}>{t("profile.export")}</button>
+            <button className="l-btn l-btn-ghost l-btn-block" onClick={() => fileRef.current?.click()}>{t("profile.import")}</button>
+            <input ref={fileRef} type="file" accept="application/json,.json" hidden onChange={(e) => importProgress(e.target.files?.[0])} />
+            <p role="status" className="l-muted">{note}</p>
             <button className="l-btn l-btn-ghost l-btn-block" onClick={() => window.confirm(t("profile.reset.confirm")) && resetGuest()}>{t("profile.reset")}</button>
           </>
         ) : (

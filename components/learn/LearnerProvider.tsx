@@ -107,6 +107,8 @@ export function LearnerProvider({
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setStateRaw(loadGuest(site));
       setReady(true);
+      // ask the browser not to evict guest progress under storage pressure (best effort, no prompt on most browsers)
+      void navigator.storage?.persist?.().catch(() => undefined);
     }
   }, [mode, site]);
 

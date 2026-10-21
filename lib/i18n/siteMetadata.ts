@@ -1011,11 +1011,13 @@ export function getSiteMetadata(lang: string, country?: string | null): Metadata
       siteName: brandName(country),
       type: "website",
       locale: ogLocaleFor(lang, country),
+      images: [{ url: "/og.png", width: 1200, height: 630, alt: "LIFE.HELP" }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: ["/og.png"],
     },
   };
 }

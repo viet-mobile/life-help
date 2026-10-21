@@ -4,7 +4,7 @@ import { originFromHost } from "@/lib/i18n/seo";
 import { isJiuHost } from "@/lib/jiu/brand";
 
 /** Paths that are never meant to be crawled: staff/technician consoles, APIs, personal or token-bearing pages, the private journal. */
-export const PRIVATE_PATHS = ["/admin", "/api/", "/tech/workspace", "/tech/contract", "/jiu", "/chat", "/login", "/auth/", "/payment", "/sys", "/study", "/think-pilot"] as const;
+export const PRIVATE_PATHS = ["/admin", "/api/", "/tech/workspace", "/tech/contract", "/jiu", "/chat", "/login", "/auth/", "/payment", "/review", "/sys", "/study", "/think-pilot"] as const;
 
 export default async function robots(): Promise<MetadataRoute.Robots> {
   const h = await headers();

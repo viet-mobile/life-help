@@ -52,8 +52,10 @@ export async function generateMetadata(): Promise<Metadata> {
       ? `LIFE.HELP · ${countryBrandName(country)}`
       : "LIFE.HELP";
 
+  const origin = originFromHost(headersList.get("x-forwarded-host") ?? headersList.get("host"));
   return {
     ...baseMeta,
+    ...(origin ? { metadataBase: new URL(origin) } : {}),
     ...(alternates ? { alternates } : {}),
     icons,
     manifest: "/manifest.webmanifest",
@@ -84,6 +86,20 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
         <meta name="theme-color" content={jiu ? "#253b35" : "#000000"} />
       </head>
       <body>
+        {portalHeader !== "learn" && !jiu && ["", "customer"].includes(portalHeader) && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                name: "LIFE.HELP",
+                url: "https://life.help",
+                logo: "https://life.help/icon-512.png",
+              }),
+            }}
+          />
+        )}
         <CountryProvider initialCountry={country}>
           <LocaleProvider initialLocale={lang as any}>
             <RegionProvider initialCountry={country}>
