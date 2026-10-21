@@ -17,6 +17,7 @@ import { TopPwaBar } from "@/components/pwa/TopPwaBar";
 import { isJiuHost, jiuMetadata } from "@/lib/jiu/brand";
 import { PwaRegister } from "@/components/pwa/PwaRegister";
 import { directionForLocale } from "@/lib/i18n/direction";
+import { buildAlternates, countryBrandName, originFromHost } from "@/lib/i18n/seo";
 import { getLocale as getLearnLocale } from "@/lib/learn/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -33,6 +34,13 @@ export async function generateMetadata(): Promise<Metadata> {
 
   const icons = getIconMetadata(country, portal);
 
+  // canonical + hreflang for public customer pages (the proxy passes the public path and any language prefix of the requested URL)
+  const publicPath = headersList.get("x-life-path");
+  const alternates =
+    portal === "customer" && publicPath
+      ? buildAlternates(originFromHost(headersList.get("x-forwarded-host") ?? headersList.get("host")), publicPath, headersList.get("x-life-url-lang"))
+      : undefined;
+
   const appName =
     portal === "tech"
       ? "LIFE.HELP · TECH"
@@ -41,11 +49,12 @@ export async function generateMetadata(): Promise<Metadata> {
       : portal === "sys"
       ? "LIFE.HELP · SYS"
       : country
-      ? `LIFE.HELP · ${country.toUpperCase()}`
+      ? `LIFE.HELP · ${countryBrandName(country)}`
       : "LIFE.HELP";
 
   return {
     ...baseMeta,
+    ...(alternates ? { alternates } : {}),
     icons,
     manifest: "/manifest.webmanifest",
     applicationName: appName,
@@ -73,9 +82,6 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {!jiu && <link rel="manifest" href="/manifest.json" />}
         <meta name="theme-color" content={jiu ? "#253b35" : "#000000"} />
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       </head>
       <body>
         <CountryProvider initialCountry={country}>

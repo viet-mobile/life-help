@@ -1,6 +1,7 @@
 // lib/i18n/siteMetadata.ts
 import type { Metadata } from "next";
 import { COUNTRIES_WITH_GENERIC_BRANDING } from "@/lib/region/countryBranding";
+import { brandName, ogLocaleFor, countryBrandName } from "@/lib/i18n/seo";
 
 export interface PortalMeta {
   title: string;
@@ -995,7 +996,7 @@ export function getIconMetadata(country?: string | null, portal?: string | null)
  */
 export function getSiteMetadata(lang: string, country?: string | null): Metadata {
   const meta = SITE_METADATA[lang] || SITE_METADATA["ko"];
-  const countryUpper = country ? country.toUpperCase() : "";
+  const countryUpper = countryBrandName(country);
   const title = countryUpper
     ? `LIFE.HELP ${countryUpper} · ${meta.tagline}`
     : `LIFE.HELP · ${meta.tagline}`;
@@ -1007,9 +1008,9 @@ export function getSiteMetadata(lang: string, country?: string | null): Metadata
     openGraph: {
       title,
       description,
-      siteName: countryUpper ? `LIFE.HELP ${countryUpper}` : "LIFE.HELP",
+      siteName: brandName(country),
       type: "website",
-      locale: lang === "ko" ? "ko_KR" : lang,
+      locale: ogLocaleFor(lang, country),
     },
     twitter: {
       card: "summary_large_image",
@@ -1039,7 +1040,7 @@ export function getPortalMetadata(
         description,
         siteName: "LIFE.HELP CHAT",
         type: "website",
-        locale: lang === "ko" ? "ko_KR" : lang,
+        locale: ogLocaleFor(lang),
       },
       twitter: {
         card: "summary_large_image",
@@ -1060,7 +1061,7 @@ export function getPortalMetadata(
         description,
         siteName: "LIFE.HELP HELPER",
         type: "website",
-        locale: lang === "ko" ? "ko_KR" : lang,
+        locale: ogLocaleFor(lang),
       },
       twitter: {
         card: "summary_large_image",
@@ -1082,7 +1083,7 @@ export function getPortalMetadata(
         description,
         siteName: "LIFE.HELP HQ",
         type: "website",
-        locale: lang === "ko" ? "ko_KR" : lang,
+        locale: ogLocaleFor(lang),
       },
       twitter: {
         card: "summary_large_image",
