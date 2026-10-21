@@ -49,7 +49,7 @@ export function Flashcards() {
 
   return (
     <div className="l-wrap l-stack" data-testid="flashcards" onKeyDown={onKey}>
-      <Link className="l-link" href={href("/dashboard")}>← {t("lesson.exit")}</Link>
+      <Link className="l-link" href={href("/dashboard")}><span className="l-arrow">←</span> {t("lesson.exit")}</Link>
       <h1 className="l-h1">📇 {t("words.title")}</h1>
       <p className="l-muted" aria-live="polite">{t("words.saved.n", { n: all.length })}</p>
 
@@ -89,8 +89,8 @@ export function Flashcards() {
                   : <p className="l-muted" role="note">{t("listen.unavailable")}</p>}
               </div>
               <div style={{ display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap" }}>
-                <button type="button" className="l-btn l-btn-ghost" data-testid="flashcard-prev" onClick={() => move(-1)}>← {t("words.prev")}</button>
-                <button type="button" className="l-btn l-btn-ghost" data-testid="flashcard-next" onClick={() => move(1)}>{t("words.next")} →</button>
+                <button type="button" className="l-btn l-btn-ghost" data-testid="flashcard-prev" onClick={() => move(-1)}><span className="l-arrow">←</span> {t("words.prev")}</button>
+                <button type="button" className="l-btn l-btn-ghost" data-testid="flashcard-next" onClick={() => move(1)}>{t("words.next")} <span className="l-arrow">→</span></button>
               </div>
               <button type="button" className="l-link" data-testid="flashcard-remove" onClick={() => remove(card.id)}>{t("words.remove")}</button>
             </section>

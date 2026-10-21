@@ -18,7 +18,7 @@
   min-height: 100dvh;
   background: var(--l-bg);
   color: var(--l-ink);
-  font-family: "Pretendard", "Plus Jakarta Sans", "Noto Sans KR", system-ui, sans-serif;
+  font-family: "Pretendard", "Plus Jakarta Sans", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
   line-height: 1.55;
 }
 .study-root[data-site="english"] {
@@ -160,3 +160,11 @@ a.l-card { display: block; }
 .l-tier[data-tier="premium"] { background: #ede9fe; color: #5b21b6; }
 .l-premium-gate { text-align: center; }
 .l-premium-gate .l-btn[disabled] { opacity: 0.6; cursor: not-allowed; }
+
+/* Directional glyphs (arrows / play) mirror in right-to-left locales */
+.l-arrow { display: inline-block; }
+[dir="rtl"] .l-arrow { transform: scaleX(-1); }
+
+/* Common API-failure toast (components/learn/LearnerProvider.tsx) */
+.l-toast { position: fixed; inset-inline: 12px; bottom: 16px; z-index: 80; max-width: 480px; margin-inline: auto; display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 12px 16px; border-radius: 14px; background: #1f2937; color: #fff; box-shadow: 0 8px 24px rgba(0,0,0,.25); }
+.l-toast .l-link { color: #fff; text-decoration: underline; min-height: 44px; }

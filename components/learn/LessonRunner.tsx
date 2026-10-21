@@ -173,7 +173,7 @@ export function LessonRunner({ kind, lessonId, skillId, mode }: { kind: Kind; le
   if (phase === "intro" || phase === "loading") {
     return (
       <div className="l-wrap l-stack">
-        <Link className="l-link" href={href(kind === "lesson" ? "/learn" : "/dashboard")}>← {t("lesson.exit")}</Link>
+        <Link className="l-link" href={href(kind === "lesson" ? "/learn" : "/dashboard")}><span className="l-arrow">←</span> {t("lesson.exit")}</Link>
         {lesson ? (
           <>
             <h1 className="l-h1">{lesson.lesson.title}</h1>

@@ -18,7 +18,7 @@ export interface AttemptResponse {
   /** server-issued proof of the attempt counter (guests) */
   attemptProof?: string;
   revealed: boolean;
-  feedback: { hint?: string; hintLevel?: number; explanation?: string; answer?: string; /** canonical Korean of the passage, sent once the question is solved or revealed */ passageKo?: string[]; /** the correct Korean sentence for pick-the-Korean / fill-in questions, sent only once solved or revealed */ audioAnswer?: string };
+  feedback: { hint?: string; hintLevel?: number; /** server proof that this hint level was served (needed to ask for the next one) */ hintProof?: string; explanation?: string; answer?: string; /** canonical Korean of the passage, sent once the question is solved or revealed */ passageKo?: string[]; /** the correct Korean sentence for pick-the-Korean / fill-in questions, sent only once solved or revealed */ audioAnswer?: string };
   followUp: PublicQuestion | null;
   delta: EngineDelta;
   state: PlayerState;
@@ -62,6 +62,7 @@ export function QuestionCard({
   const [attempts, setAttempts] = useState(0);
   const [proof, setProof] = useState<string | undefined>(undefined);
   const [hints, setHints] = useState<string[]>([]);
+  const [hintProof, setHintProof] = useState<string | undefined>(undefined);
   const [feedback, setFeedback] = useState<AttemptResponse["feedback"]>({});
   const [followUp, setFollowUp] = useState<PublicQuestion | null>(null);
   const [floatXp, setFloatXp] = useState<number | null>(null);
@@ -111,7 +112,7 @@ export function QuestionCard({
         setProof(res.attemptProof);
         setStatus("wrong");
         const hint = res.feedback.hint;
-        if (hint && !hints.includes(hint)) setHints((h) => [...h, hint]);
+        if (hint && !hints.includes(hint)) { setHints((h) => [...h, hint]); setHintProof(res.feedback.hintProof); }
         setValue(isMulti ? [] : "");
       }
       window.setTimeout(() => feedbackRef.current?.focus(), 30);
@@ -126,8 +127,9 @@ export function QuestionCard({
 
   const askHint = async () => {
     try {
-      const res = await api<{ hint: string; level: number }>("hint", { questionId: q.id, level: hints.length + 1 });
+      const res = await api<{ hint: string; level: number; hintProof?: string }>("hint", { questionId: q.id, level: hints.length + 1, sessionId, prevProof: hintProof });
       setHints((h) => [...h, res.hint]);
+      setHintProof(res.hintProof);
     } catch {
       /* no more hints */
     }
@@ -175,7 +177,7 @@ export function QuestionCard({
       </div>
 
       {status === "answering" && hints.length > 0 && (
-        <div className="l-panel l-panel-hint">{hints.map((h, k) => <p key={k}><RichText text={h} /></p>)}</div>
+        <div className="l-panel l-panel-hint" aria-live="polite">{hints.map((h, k) => <p key={k}><RichText text={h} /></p>)}</div>
       )}
 
       <div className="l-stack">

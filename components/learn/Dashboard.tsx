@@ -65,7 +65,7 @@ export function Dashboard() {
       <section className="l-card l-card-accent l-stack" aria-labelledby="cta-h">
         <h2 id="cta-h" className="l-h2">{t("dash.continue")}</h2>
         <p>{ctaLabel}{site === "korean" && rec.kind === "lesson" && <> <BandChip lessonId={rec.lessonId} t={t} /></>}</p>
-        <Link className="l-btn l-btn-light l-btn-block" href={ctaHref}>▶ {t("dash.continue")}</Link>
+        <Link className="l-btn l-btn-light l-btn-block" href={ctaHref}><span className="l-arrow">▶</span> {t("dash.continue")}</Link>
         <Link className="l-btn l-btn-ghost l-btn-block" href={href("/modes")}>{t("modes.title")}</Link>
       </section>
 

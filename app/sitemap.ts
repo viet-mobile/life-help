@@ -5,14 +5,11 @@ import { isJiuHost } from "@/lib/jiu/brand";
 import { services } from "@/lib/services";
 import { locales } from "@/messages/registry";
 
-/** The five support landing slugs (app/support/[service]). */
-const SUPPORT_SLUGS = ["bank-help", "insurance-help", "job-help", "hospital-help", "mobile-help"] as const;
-
 /** Main public routes for the requesting host. services/* lists the current catalog (everything before the "legacy" block of lib/services.ts). */
 export function publicPaths(): string[] {
   const legacyStart = services.findIndex((s) => s.slug === "toilet-clog");
   const current = (legacyStart > 0 ? services.slice(0, legacyStart) : services).map((s) => s.slug);
-  return ["/", "/visa", "/privacy", "/terms", ...current.map((s) => `/services/${s}`), ...SUPPORT_SLUGS.map((s) => `/support/${s}`)];
+  return ["/", "/visa", "/privacy", "/terms", ...current.map((s) => `/services/${s}`)];
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

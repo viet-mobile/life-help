@@ -41,11 +41,20 @@ import { parsePlayerState } from "./stateCodec";
 /** Guests have no server-side attempt record, so the attempt counter is proven with an HMAC the server issued after the previous wrong answer
  *  (a client cannot claim "3rd attempt" to obtain the answer key). Without LEARN_ATTEMPT_SECRET (production) a guest is always treated as on attempt 1. */
 export async function attemptProof(questionId: string, sessionId: string, attemptNo: number): Promise<string> {
+  return hmacProof(`${questionId}|${sessionId}|${attemptNo}`);
+}
+async function hmacProof(message: string): Promise<string> {
   const secret = process.env.LEARN_ATTEMPT_SECRET ?? "";
   if (!secret) return "";
   const key = await crypto.subtle.importKey("raw", new TextEncoder().encode(secret), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
-  const mac = await crypto.subtle.sign("HMAC", key, new TextEncoder().encode(`${questionId}|${sessionId}|${attemptNo}`));
+  const mac = await crypto.subtle.sign("HMAC", key, new TextEncoder().encode(message));
   return Array.from(new Uint8Array(mac)).map((b) => b.toString(16).padStart(2, "0")).join("");
+}
+/** Proof that hint `level` of a question was served in a session (issued with the hint itself, by the hint call or by a wrong attempt).
+ *  Hint N+1 is only served against the proof of hint N, so a client cannot ask for hint 2 without having been given hint 1.
+ *  Like attemptProof it needs LEARN_ATTEMPT_SECRET; without it (local / test) the ladder is not enforced. */
+export async function hintProof(questionId: string, sessionId: string, level: number): Promise<string> {
+  return hmacProof(`hint|${questionId}|${sessionId}|${level}`);
 }
 import { cardBack, cardFront, isReviewMode, questionMode, type ReviewMode } from "@/lib/learn/reviewModes";
 
@@ -316,7 +325,7 @@ export class LearnService {
     return { back };
   }
 
-  async requestHint(actor: Actor, site: Site, body: { questionId: string; level: number }) {
+  async requestHint(actor: Actor, site: Site, body: { questionId: string; level: number; sessionId?: string; prevProof?: string }) {
     const { bundle: full } = await loadIndex(site, { locale: actor.locale ?? "ko", bankQuestionId: body.questionId });
     const [access, plan] = await Promise.all([this.getAccess(actor, site), this.accessPlan(site)]);
     if (plan.questionTier.get(body.questionId) === "PREMIUM" && access.tier !== "PREMIUM") this.premiumDenied(access);
@@ -325,7 +334,13 @@ export class LearnService {
     if (!q || q.status !== "PUBLISHED" || q.role === "diagnostic") throw new LearnError("unknown_question", 404);
     const level = Math.floor(body.level);
     if (!(level >= 1 && level <= q.hints.length)) throw new LearnError("no_more_hints", 409);
-    return { level, hint: q.hints[level - 1], hasMore: level < q.hints.length };
+    const sid = typeof body.sessionId === "string" && SESSION_ID_RE.test(body.sessionId) ? body.sessionId : "";
+    if (level >= 2 && process.env.LEARN_ATTEMPT_SECRET) {
+      // hint N needs the proof issued with hint N-1 (same question and session)
+      const expected = sid ? await hintProof(q.id, sid, level - 1) : "";
+      if (!expected || body.prevProof !== expected) throw new LearnError("hint_locked", 409);
+    }
+    return { level, hint: q.hints[level - 1], hasMore: level < q.hints.length, ...(sid ? { hintProof: await hintProof(q.id, sid, level) } : {}) };
   }
 
   async submitAttempt(
@@ -401,7 +416,7 @@ export class LearnService {
     }
 
     // Wrong answers escalate: small hint -> concrete hint -> worked explanation + similar question.
-    let feedback: { hint?: string; hintLevel?: number; explanation?: string; answer?: string; passageKo?: string[]; audioAnswer?: string } = {};
+    let feedback: { hint?: string; hintLevel?: number; hintProof?: string; explanation?: string; answer?: string; passageKo?: string[]; audioAnswer?: string } = {};
     // canonical Korean of an English reading passage: only once the question is solved or revealed (it would help answer it)
     const passage = q.site === "english" ? passageText(q.prompt) : null;
     const passageKo = passage ? PASSAGE_KO[passage] : undefined;
@@ -413,7 +428,7 @@ export class LearnService {
       followUp = this.pickFollowUp(bundle, index, q, body.seenIds ?? []);
     } else {
       const level = Math.min(attemptNo, q.hints.length);
-      if (level >= 1) feedback = { hint: q.hints[level - 1], hintLevel: level };
+      if (level >= 1) feedback = { hint: q.hints[level - 1], hintLevel: level, hintProof: (await hintProof(q.id, body.sessionId, level)) || undefined };
     }
 
     const attemptProofOut = !correct && !reveal && !(store && actor.userId) ? await attemptProof(q.id, body.sessionId, attemptNo) : undefined;
