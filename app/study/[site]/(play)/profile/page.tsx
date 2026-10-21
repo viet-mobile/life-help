@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ProfilePage } from "@/components/learn/ProfilePage";
 import { getServerT } from "@/lib/learn/i18n/server";
+import { SIGNUP_ENABLED } from "@/lib/learn/server/runtime";
 import { signOutAction } from "../../actions";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -9,5 +10,5 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Page({ params }: { params: Promise<{ site: string }> }) {
   const { site } = await params;
-  return <ProfilePage signOutAction={signOutAction.bind(null, site)} />;
+  return <ProfilePage signOutAction={signOutAction.bind(null, site)} signupEnabled={SIGNUP_ENABLED} />;
 }
