@@ -420,9 +420,7 @@ export function CustomerHome() {
             >
               <span className="text-sm">🚨</span>
               <span className="text-xs sm:text-sm leading-tight">{t("customer.emergency")}</span>
-              <span className="text-[10px] text-red-100 font-bold hidden xs:inline">
-                {locale === "ko" ? "· 1초 연결 →" : "→"}
-              </span>
+              <span className="text-[10px] text-red-100 font-bold hidden xs:inline" aria-hidden="true">→</span>
             </Link>
           </div>
 
@@ -506,7 +504,7 @@ export function CustomerHome() {
               >
                 {/* Top: Large Icon + Badge */}
                 <div>
-                  <div className="flex items-center justify-between gap-1 mb-2">
+                  <div className="flex items-center justify-between gap-1 mb-2 min-w-0">
                     <span
                       className={`droplet-icon flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center ${svc.iconBg} text-2xl sm:text-3xl shadow-2xs group-hover:scale-110 transition-transform shrink-0`}
                     >
@@ -515,7 +513,7 @@ export function CustomerHome() {
 
                     {/* Pastel Tag */}
                     <span
-                      className={`droplet-pill ${svc.badgeBg} ${svc.badgeText} px-2.5 py-0.5 text-[10px] sm:text-xs font-black shrink-0 tracking-wide`}
+                      className={`droplet-pill ${svc.badgeBg} ${svc.badgeText} px-2.5 py-0.5 text-[10px] sm:text-xs font-black tracking-wide min-w-0 max-w-[62%] truncate`}
                     >
                       {getBadgeText(svc.key, svc.badgeLabelKo)}
                     </span>
@@ -524,7 +522,7 @@ export function CustomerHome() {
                   {/* Title & Bilingual Subtitle */}
                   <div>
                     <h3
-                      className={`text-[15px] sm:text-[17px] font-black ${svc.textColor} leading-snug line-clamp-2 min-h-[42px] sm:min-h-[48px] flex items-center`}
+                      className={`text-[14px] sm:text-[16px] font-black ${svc.textColor} leading-snug min-h-[42px] sm:min-h-[48px] grid grid-cols-[minmax(0,1fr)] content-center min-w-0 break-words [overflow-wrap:anywhere] hyphens-auto`}
                     >
                       {t(`service.${svc.key}`)}
                     </h3>
@@ -607,7 +605,7 @@ export function CustomerHome() {
             {t("privacy.title") || "고객님의 개인 전화번호를 절대 수집하거나 저장하지 않습니다"}
           </h2>
 
-          <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-left">
+          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-left">
             <div className="droplet-card border border-slate-200/90 bg-white/90 p-3.5 shadow-2xs">
               <span className="text-xl">🚫</span>
               <h3 className="mt-1 text-xs sm:text-sm font-black text-slate-900">{t("privacy.cardZeroPhoneTitle") || "전화번호 수집 제로"}</h3>
@@ -624,13 +622,6 @@ export function CustomerHome() {
               </p>
             </div>
 
-            <div className="droplet-card border border-slate-200/90 bg-white/90 p-3.5 shadow-2xs">
-              <span className="text-xl">🛡️</span>
-              <h3 className="mt-1 text-xs sm:text-sm font-black text-slate-900">{t("privacy.cardVerifiedHelperTitle") || "신원 검증된 공식 헬퍼"}</h3>
-              <p className="mt-0.5 text-[11px] sm:text-xs text-slate-600 leading-relaxed font-medium">
-                {t("privacy.cardVerifiedHelperDesc") || "신원과 기술력이 철저히 검증된 지역 헬퍼만이 방문하여 안전하고 신뢰할 수 있습니다."}
-              </p>
-            </div>
           </div>
         </div>
       </section>
