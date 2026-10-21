@@ -25,7 +25,8 @@ export default async function manifest(): Promise<MetadataRoute.Manifest> {
   const learn = parseLearnHost(host);
   if (learn) {
     const cfg = siteConfig(learn.site);
-    const t = createTranslator(await loadMessages(cfg.defaultLocale));
+    // neutral (English) identity: a manifest is shared by every visitor of the host, so it must not be fixed to Korean
+    const t = createTranslator(await loadMessages("en"));
     return {
       name: t(cfg.brandKey),
       short_name: t(`site.${learn.site}.name`),
@@ -36,10 +37,11 @@ export default async function manifest(): Promise<MetadataRoute.Manifest> {
       display: "standalone",
       background_color: "#ffffff",
       theme_color: cfg.themeColor,
-      lang: cfg.defaultLocale,
+      lang: "en",
       icons: [
         { src: `/logos/favicon-${learn.site}.png`, sizes: "192x192", type: "image/png", purpose: "any" },
         { src: `/logos/logo-${learn.site}.png`, sizes: "512x512", type: "image/png", purpose: "any" },
+        { src: `/logos/maskable-${learn.site}.png`, sizes: "512x512", type: "image/png", purpose: "maskable" },
       ],
     };
   }
@@ -47,7 +49,10 @@ export default async function manifest(): Promise<MetadataRoute.Manifest> {
   const details = getDomainShortcutDetails({
     host,
     pathname: "/",
+    localeOverride: "en",
   });
+  // /logos/favicon-<slug>.png is 192px, logo-<slug>.png 512px, maskable-<slug>.png 512px with safe-zone padding (scripts/generate-maskable-icons.mjs)
+  const slug = /\/logos\/favicon-([a-z0-9-]+)\.png/.exec(details.iconPngUrl)?.[1] ?? "default";
 
   return {
     name: details.title,
@@ -61,24 +66,9 @@ export default async function manifest(): Promise<MetadataRoute.Manifest> {
     theme_color: "#000000",
     lang: details.lang,
     icons: [
-      {
-        src: details.iconPngUrl,
-        sizes: "192x192",
-        type: "image/png",
-        purpose: "any",
-      },
-      {
-        src: details.iconPngUrl,
-        sizes: "512x512",
-        type: "image/png",
-        purpose: "any",
-      },
-      {
-        src: details.iconPngUrl,
-        sizes: "512x512",
-        type: "image/png",
-        purpose: "maskable",
-      },
+      { src: `/logos/favicon-${slug}.png`, sizes: "192x192", type: "image/png", purpose: "any" },
+      { src: `/logos/logo-${slug}.png`, sizes: "512x512", type: "image/png", purpose: "any" },
+      { src: `/logos/maskable-${slug}.png`, sizes: "512x512", type: "image/png", purpose: "maskable" },
       {
         src: details.iconIcoUrl,
         sizes: "any",
