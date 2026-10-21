@@ -131,6 +131,8 @@ export interface Question {
   role: "core" | "variant" | "diagnostic";
   /** Optional audio for listening-style questions (spoken in the site's target language). */
   audioText?: string;
+  /** The correct Korean sentence, played only AFTER the learner has answered (pick-the-Korean and fill-in questions: playing it earlier would give the answer away). */
+  audioAnswer?: string;
   /**
    * Target-language text the question is about (study.korean: the Korean word / sentence), shown as its own block with an optional
    * romanization (Revised Romanization and an optional reviewed Vietnamese reading aid). Never part of the answer key.

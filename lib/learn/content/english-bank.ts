@@ -157,14 +157,17 @@ function localizeHint1(h1: string, kind: string, form: string, texts: Record<str
   return null;
 }
 
-export function localizeEnglishBankQuestion(q: Question, bankOv: BankOverlay | null | undefined, locale: string): Question | null {
+export function localizeEnglishBankQuestion(q: Question, bankOv: BankOverlay | null | undefined, locale: string, trace?: { reason?: string }): Question | null {
+  /** Why a question is not served (only recorded when a trace object is passed; used by scripts/learn/english-bank/audit-served.ts). */
+  const no = (reason: string): null => { if (trace) trace.reason = reason; return null; };
   const texts = bankOv?.texts;
-  if (!texts) return null;
+  if (!texts) return no("no-kit");
   const form = q.tags?.[2] ?? "";
   const kind = q.tags?.[3] ?? "";
   const itemId = q.id.split("-")[1] ?? "";
-  const h1 = localizeHint1(q.hints[0] ?? "", kind, form, texts);
-  if (!h1 || HANGUL.test(h1)) return null;
+  // hint 1: an individual translation (h:<id>) wins; otherwise the shared pattern templates (hints written for a single question cannot be templated)
+  const h1 = texts[`h:${q.id}`] ?? localizeHint1(q.hints[0] ?? "", kind, form, texts);
+  if (!h1 || HANGUL.test(h1)) return no("hint1-template-missing");
 
   let prompt: string | null = null;
   let options: QuestionOption[] | undefined = q.options;
@@ -172,25 +175,25 @@ export function localizeEnglishBankQuestion(q: Question, bankOv: BankOverlay | n
 
   if (kind === "w") {
     const m = q.explanation.match(/^“([^”]+)” → “([^”]+)”\. 예문: ([^\n]+?) \([^()]+\)(?: .*)?$/);
-    if (!m) return null;
+    if (!m) return no("w-explanation-format");
     const [, en, ko, ex] = m;
     const rawGloss = texts[`g:${itemId}`] ?? texts[`w:${ko}`];
     const gloss = rawGloss && !HANGUL.test(rawGloss) ? rawGloss : undefined;
     if (form === "cloze") {
       const stem = q.prompt.split("\n").slice(1).join("\n").trim();
-      if (!stem || HANGUL.test(stem)) return null;
+      if (!stem || HANGUL.test(stem)) return no("w-cloze-stem");
       prompt = fill(texts["t:w:cloze:prompt"], { stem });
       explanation = gloss ? fill(texts["t:w:expl"], { en, gloss, ex }) : fill(texts["t:w:cloze:expl_nomin"], { en, ex });
     } else {
-      if (!gloss) return null;
+      if (!gloss) return no("w-gloss-missing");
       explanation = fill(texts["t:w:expl"], { en, gloss, ex });
       if (form === "enko") {
         prompt = fill(texts["t:w:enko:prompt"], { en });
-        if (!q.options) return null;
+        if (!q.options) return no("w-options-missing");
         const mapped: QuestionOption[] = [];
         for (const o of q.options) {
           const t = texts[`wo:${q.id}:${o.id}`] ?? (o.text === ko ? gloss : texts[`w:${o.text}`]);
-          if (!t || HANGUL.test(t)) return null;
+          if (!t || HANGUL.test(t)) return no("w-option-gloss-missing");
           mapped.push({ id: o.id, text: t });
         }
         options = mapped;
@@ -199,7 +202,7 @@ export function localizeEnglishBankQuestion(q: Question, bankOv: BankOverlay | n
       } else if (form === "spell") {
         prompt = fill(texts["t:w:spell:prompt"], { gloss });
       } else {
-        return null;
+        return no("w-form-unsupported");
       }
     }
   } else if (kind === "s") {
@@ -208,13 +211,13 @@ export function localizeEnglishBankQuestion(q: Question, bankOv: BankOverlay | n
     const meaning = rawMeaning && !HANGUL.test(rawMeaning) && locale !== "en" ? rawMeaning : undefined;
     const rawRule = texts[`r:${itemId}`] ?? texts[`r:skill:${q.skillId}`];
     const rule = rawRule && !HANGUL.test(rawRule) ? rawRule : undefined;
-    if (!good || !rule) return null;
+    if (!good || !rule) return no("s-rule-missing");
     explanation = meaning ? fill(texts["t:s:expl"], { good, meaning, rule }) : fill(texts["t:s:expl_nomin"], { good, rule });
     if (form === "pick") {
       prompt = texts["t:s:pick:prompt"] ?? null;
     } else if (form === "cloze") {
       const st = q.prompt.split("\n")[1]?.trim();
-      if (!st || HANGUL.test(st)) return null;
+      if (!st || HANGUL.test(st)) return no("s-cloze-stem");
       prompt = meaning ? fill(texts["t:s:cloze:prompt"], { st, meaning }) : fill(texts["t:s:cloze:prompt_nomin"], { st });
     } else if (form === "dict") {
       prompt = texts["t:s:dict:prompt"] ?? null;
@@ -223,11 +226,31 @@ export function localizeEnglishBankQuestion(q: Question, bankOv: BankOverlay | n
     } else if (form === "order") {
       prompt = meaning ? fill(texts["t:s:order:prompt"], { meaning }) : (texts["t:s:order:prompt_nomin"] ?? null);
     } else {
-      return null;
+      return no("s-form-unsupported");
     }
   } else if (kind === "r" || kind === "d" || kind === "m") {
-    if (HANGUL.test(q.prompt) || (q.options ?? []).some((o) => HANGUL.test(o.text))) return null;
-    prompt = q.prompt;
+    // Reading / dialogue / mixed questions. The PASSAGE or DIALOGUE (everything before the last blank line) and any English answer choice are the learning
+    // target and stay exactly as authored. What the learner reads in their own language is the QUESTION (key q:<id>, also for questions written in Korean)
+    // and, only where an option is written in Korean, that option (key o:<id>:<optionId>). A missing key excludes the question (never a source-language fallback).
+    // Answers (option ids), audio text and ordering are untouched; hints 2+ stay hidden.
+    const cut = kind === "m" ? 0 : q.prompt.lastIndexOf("\n\n");
+    if (kind !== "m" && cut < 0) return no("rdm-no-question-part");
+    const passage = kind === "m" ? "" : q.prompt.slice(0, cut);
+    if (HANGUL.test(passage)) return no("rdm-korean-in-passage");
+    const qText = texts[`q:${q.id}`];
+    if (!qText || HANGUL.test(qText)) return no("rdm-question-untranslated");
+    prompt = kind === "m" ? qText : `${passage}\n\n${qText}`;
+    // Options: form-assessing English options stay as authored (no o: keys). Options that test understanding (meaning / content) may be localized: as soon as ANY option of the
+    // question has an o: key, EVERY option must have one (never a half-localized choice list); Korean options always need their key.
+    const hasAnyOptionKey = (q.options ?? []).some((o) => !HANGUL.test(o.text) && texts[`o:${q.id}:${o.id}`]); // keys on ENGLISH options switch the whole English list to localized
+    const mappedOptions: QuestionOption[] = [];
+    for (const o of q.options ?? []) {
+      const t = texts[`o:${q.id}:${o.id}`];
+      if (!t && !HANGUL.test(o.text) && !hasAnyOptionKey) { mappedOptions.push(o); continue; }
+      if (!t || HANGUL.test(t)) return no("rdm-option-untranslated");
+      mappedOptions.push({ id: o.id, text: t });
+    }
+    if (q.options) options = mappedOptions;
     const rawExpl = q.explanation.trim();
     if (texts[`why:${q.id}`]) {
       explanation = texts[`why:${q.id}`];
@@ -259,15 +282,15 @@ export function localizeEnglishBankQuestion(q: Question, bankOv: BankOverlay | n
       }
     }
   } else {
-    return null;
+    return no("kind-unsupported");
   }
 
-  if (!prompt || !explanation || HANGUL.test(prompt) || HANGUL.test(explanation)) return null;
+  if (!prompt || !explanation || HANGUL.test(prompt) || HANGUL.test(explanation)) return no("prompt-or-explanation-missing");
   if (options) {
-    if (options.some((o) => !o.text || !o.text.trim() || HANGUL.test(o.text))) return null;
+    if (options.some((o) => !o.text || !o.text.trim() || HANGUL.test(o.text))) return no("option-empty-or-korean");
     if (q.type === "multiple_choice") {
       const normSet = new Set(options.map((o) => o.text.trim().toLowerCase()));
-      if (normSet.size !== options.length) return null;
+      if (normSet.size !== options.length) return no("duplicate-options");
     }
   }
 

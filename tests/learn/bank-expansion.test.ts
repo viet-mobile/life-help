@@ -61,7 +61,7 @@ describe("Skill-Linked Practice Question Bank (Bank) Expansion", () => {
     it("serves the Korean bank (PUBLISHED) and K1..K10 from loadIndex", async () => {
       const fullKorean = await loadIndex("korean", { locale: "ko" });
       expect(fullKorean.bundle.questions.filter((q) => q.id.startsWith("kb-")).length).toBe(13445);
-      expect(fullKorean.bundle.questions.filter((q) => !q.id.startsWith("kb-")).length).toBe(718);
+      expect(fullKorean.bundle.questions.filter((q) => !q.id.startsWith("kb-")).length).toBe(722);
       const k7 = await loadIndex("korean", { grade: "K7", bank: false });
       expect(k7.bundle.catalog.courses.length).toBe(1);
       expect(k7.bundle.questions.length).toBeGreaterThan(0);

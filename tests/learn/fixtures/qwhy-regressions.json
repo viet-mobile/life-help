@@ -1,0 +1,14 @@
+{
+ "note": "Real defects found in the second independent review of the pilot dialogue translations (2026-10-20). 'lint' = detectable by string check (scripts/learn/english-bank/qwhy-lint.ts); 'semantic' = needs a reviewer who reads the passage. Source texts are in lib/learn/content/bank/english-draft.json.",
+ "cases": [
+  {"id":"eb-d512193c-q2","locale":"ja","defect":"二人 states two people, passage has Jun, his brother and Sora (three)","kind":"lint","srcQ":"Where will they fly kites?","srcWhy":"river park에서 연을 날릴 거예요.","trQ":"二人はどこで凧揚げをしますか。","trWhy":"river parkで凧を揚げる予定です。","expect":["count-added"]},
+  {"id":"eb-d512193c-q4","locale":"ja","defect":"二人 states two people who meet; three people are involved","kind":"lint","srcQ":"What time will they meet?","srcWhy":"두 시에 만나기로 했어요.","trQ":"二人は何時に会いますか。","trWhy":"二時に会うことにしています。","expect":["count-added"]},
+  {"id":"eb-d512193c-q1","locale":"en","defect":"'she' for Sora; the passage never states Sora's gender","kind":"lint","srcQ":"Why can't Sora meet Jun in the morning?","srcWhy":"오전에는 피아노 수업이 있다고 했어요.","trQ":"Why can't Sora meet Jun in the morning?","trWhy":"She said she has a piano lesson in the morning.","expect":["gender-added"]},
+  {"id":"eb-e6a4c5e4-q5","locale":"vi","defect":"'cô ấy' for Ella; not stated","kind":"lint","srcQ":"What will Noah probably do when he gets to the library?","srcWhy":"Ella가 'Text me when you arrive.'라고 부탁했으므로 도착하면 문자를 보낼 거예요.","trQ":"Noah có lẽ sẽ làm gì khi đến thư viện?","trWhy":"Ella đã nhờ: \"Text me when you arrive.\" nên cô ấy sẽ nhắn tin.","expect":["gender-added"]},
+  {"id":"eb-e6a4c5e4-q2","locale":"vi","defect":"NOT a defect: 'cậu ấy' in the QUESTION is licensed because the English question says 'he' (a pronoun in an explanation is always flagged: its referent is not string-checkable)","kind":"lint","srcQ":"What will Noah probably do when he gets to the library?","srcWhy":"Ella가 부탁했으므로 도착하면 문자를 보낼 거예요.","trQ":"Cậu ấy sẽ làm gì?","trWhy":"Noah sẽ nhắn tin.","expect":[]},
+  {"id":"eb-d512193c-q3","locale":"en","defect":"plural 'kites' where the passage has one kite (a big kite for you to try); number change alters the fact","kind":"semantic"},
+  {"id":"eb-d512193c-q2","locale":"ar","defect":"dual verb for 'they' (=Jun, his brother, Sora; three) and singular kite in the explanation; Arabic number marking is not string-checkable","kind":"semantic"},
+  {"id":"eb-1387413b-q3","locale":"ja","defect":"question ended as a finished sentence before the blank marker","kind":"semantic"},
+  {"id":"pilot8-review-1","locale":"all","defect":"first review file held bare 'ok' for 32 items with no per-item evidence (what trQ asks, which facts of why kept, number, gender); it could not have shown whether the passage was read. Decided by input/evidence, not duration.","kind":"process"}
+ ]
+}

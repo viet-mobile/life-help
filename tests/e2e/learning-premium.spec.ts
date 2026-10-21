@@ -1,4 +1,5 @@
 import { readFileSync } from "node:fs";
+import { pickLevel } from "./pickLevel";
 import { expect, test, type Page } from "@playwright/test";
 import { ko } from "../../lib/learn/i18n/ko";
 import { buildAccessPlan } from "../../lib/learn/domain/access";
@@ -45,7 +46,7 @@ async function onboardGuest(page: Page, site: Site) {
   await page.goto(`${HOST[site]}/onboarding`);
   await page.locator("#nick").fill("tester");
   await page.getByRole("button", { name: t["onboarding.next"] }).click();
-  await page.getByRole("radio", { name: t[`grade.${LEVEL[site]}`], exact: true }).click();
+  await pickLevel(page, site, LEVEL[site], t[`grade.${LEVEL[site]}`]);
   await page.getByRole("button", { name: t["onboarding.next"] }).click();
   await page.getByRole("radio", { name: t["goal.fill_gaps"] }).click();
   await page.getByRole("button", { name: t["onboarding.next"] }).click();

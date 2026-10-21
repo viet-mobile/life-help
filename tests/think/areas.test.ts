@@ -198,7 +198,7 @@ describe("hub wiring for Korean-first tasks", () => {
     expect(src).toContain("isKoreanFirst(raw.id)");
     expect(src).toContain('data-testid="bilingual-toggle"');
     expect(src).toContain("mergeBilingual(koItem!.task, current.task)");
-    expect(src).toContain("key={`${current.task.id}:${lang}`}"); // the key does not include the toggle: switching keeps the learner's progress in the task
+    expect(src).toContain("key={`${current.task.id}:${current.lang}`}"); // the key does not include the toggle: switching keeps the learner's progress in the task
   });
 });
 
