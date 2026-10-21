@@ -89,6 +89,8 @@ const COUNTRY_NAMES: Record<string, string> = {
   zambia: "ZAMBIA",
   uganda: "UGANDA",
   congo: "REPUBLIC OF THE CONGO",
+  ghana: "GHANA",
+  mozambique: "MOZAMBIQUE",
 };
 
 const PORTAL_DISPLAY_NAMES: Record<string, string> = {

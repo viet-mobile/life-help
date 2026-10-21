@@ -9,4 +9,6 @@ export const COUNTRIES_WITH_GENERIC_BRANDING = new Set([
   "centralafrica",
   "centralafrican",
   "czech",
+  "ghana",
+  "mozambique",
 ]);

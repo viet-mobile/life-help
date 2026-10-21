@@ -8,7 +8,7 @@ export type CountryCode =
   | "YE" | "IQ" | "BD" | "US" | "GB" | "CA" | "AU"
   | "NZ" | "SG" | "MY" | "NG" | "SV" | "CF" | "VE"
   | "KE" | "AR"
-  | "RO" | "FI" | "CZ" | "HU" | "ZM" | "UG" | "CG"
+  | "RO" | "FI" | "CZ" | "HU" | "ZM" | "UG" | "CG" | "GH" | "MZ"
   | string;
 
 export interface CountryInfo {
@@ -89,6 +89,8 @@ export const COUNTRIES: readonly CountryInfo[] = [
   { code: "ZM", slug: "zambia", flag: "🇿🇲", nameKo: "잠비아", nameEn: "Zambia", nameNative: "Zambia", level1Category: "Province", level2Category: "District", level3Category: "Town / Area" },
   { code: "UG", slug: "uganda", flag: "🇺🇬", nameKo: "우간다", nameEn: "Uganda", nameNative: "Uganda", level1Category: "Region", level2Category: "District / City", level3Category: "Town / Area" },
   { code: "CG", slug: "congo", flag: "🇨🇬", nameKo: "콩고공화국", nameEn: "Republic of the Congo", nameNative: "République du Congo", level1Category: "Département", level2Category: "District / Commune", level3Category: "Quartier / Village" },
+  { code: "GH", slug: "ghana", flag: "🇬🇭", nameKo: "가나", nameEn: "Ghana", nameNative: "Ghana", level1Category: "Region", level2Category: "District / Municipal", level3Category: "Town / Area" },
+  { code: "MZ", slug: "mozambique", flag: "🇲🇿", nameKo: "모잠비크", nameEn: "Mozambique", nameNative: "Moçambique", level1Category: "Província", level2Category: "Distrito", level3Category: "Posto Administrativo / Localidade" },
 ] as const;
 
 export function getCountryInfo(code: CountryCode | undefined | null): CountryInfo {

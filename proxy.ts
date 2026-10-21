@@ -85,6 +85,8 @@ const COUNTRIES = new Set([
   "zambia",
   "uganda",
   "congo",
+  "ghana",
+  "mozambique",
 ]);
 
 const COUNTRY_HOST_ALIASES: Readonly<Record<string, string>> = {
@@ -217,6 +219,8 @@ export const COUNTRY_TO_DEFAULT_LANGUAGE: Record<string, string> = {
   zambia: "en",
   uganda: "en",
   congo: "fr",
+  ghana: "en",
+  mozambique: "pt",
 };
 
 function getHost(request: NextRequest) {

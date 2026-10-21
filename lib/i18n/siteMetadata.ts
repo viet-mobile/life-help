@@ -83,6 +83,8 @@ export const COUNTRY_TO_LANGUAGE_MAP: Record<string, string> = {
   zambia: "en",
   uganda: "en",
   congo: "fr",
+  ghana: "en",
+  mozambique: "pt",
 };
 
 export const SITE_METADATA: Record<string, SiteMetaTranslation> = {

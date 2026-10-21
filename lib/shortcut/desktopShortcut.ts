@@ -88,6 +88,8 @@ export const COUNTRY_KOREAN_NAMES: Record<string, string> = {
   zambia: "잠비아",
   uganda: "우간다",
   congo: "콩고공화국",
+  ghana: "가나",
+  mozambique: "모잠비크",
 };
 
 /**

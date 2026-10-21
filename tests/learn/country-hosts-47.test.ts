@@ -10,6 +10,8 @@ const hdr = (res: Response, h: string) => res.headers.get(`x-middleware-request-
 describe("integrated host routing", () => {
   for (const [host, lang, country] of [
     ["pakistan.life.help", "ur", "pakistan"],
+    ["ghana.life.help", "en", "ghana"],
+    ["mozambique.life.help", "pt", "mozambique"],
     ["centralafrica.life.help", "fr", "centralafrica"],
     ["kenya.life.help", "sw", "kenya"],
     ["korea.life.help", "ko", "korea"],
