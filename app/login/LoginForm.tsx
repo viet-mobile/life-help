@@ -105,6 +105,10 @@ export function LoginForm({ message, error }: LoginFormProps) {
             </div>
           </form>
 
+          <p className="mt-5 rounded-xl bg-slate-50 border border-slate-200 p-3 text-center text-xs font-medium leading-5 text-slate-600" data-testid="login-learn-note">
+            {t("login.learnNote")}
+          </p>
+
           <div className="mt-6 text-center">
             <Link
               href="/"
