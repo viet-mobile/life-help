@@ -5,7 +5,7 @@ import { BrandLogo } from "@/components/learn/BrandLogo";
 import { LocaleSwitch } from "@/components/learn/LocaleSwitch";
 import { StartCta } from "@/components/learn/StartCta";
 import { getServerT } from "@/lib/learn/i18n/server";
-import { loadContent, accountsEnabled, getLearnService, getUserId } from "@/lib/learn/server/runtime";
+import { loadContent, accountsEnabled, SIGNUP_ENABLED, getLearnService, getUserId } from "@/lib/learn/server/runtime";
 import { learnHost, parseLearnHost } from "@/lib/learn/hosts";
 import { siteConfig } from "@/lib/learn/sites";
 import { SITES, isSite, schoolLevel } from "@/lib/learn/types";
@@ -37,7 +37,7 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
         <p style={{ fontWeight: 800 }}>{t("landing.eyebrow")}</p>
         <h1 className="l-h1">{t(`site.${site}.tagline` as never)}</h1>
         <p>{t(`site.${site}.description` as never)}</p>
-        <StartCta accountHasProfile={hasProfile} accountsEnabled={accountsEnabled()} />
+        <StartCta accountHasProfile={hasProfile} accountsEnabled={accountsEnabled()} signupEnabled={SIGNUP_ENABLED} />
         <Link className="l-btn l-btn-light l-btn-block" data-testid="landing-think" href={`${base}/think`}>🧠 {HUB[thinkLangFor(locale, site)].title}</Link>
         <p style={{ fontSize: "0.85rem", opacity: 0.9 }}>{t("landing.privacy")}</p>
         <p style={{ fontSize: "0.85rem", opacity: 0.9 }}>

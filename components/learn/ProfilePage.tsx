@@ -9,7 +9,7 @@ import { OfficialGradeChip } from "./OfficialGradeChip";
 import { TtsSettingsPanel } from "./TtsSettings";
 import { useLearner } from "./LearnerProvider";
 
-export function ProfilePage({ signOutAction }: { signOutAction?: () => Promise<void> }) {
+export function ProfilePage({ signOutAction, signupEnabled = false }: { signOutAction?: () => Promise<void>; signupEnabled?: boolean }) {
   const { state, t, href, mode, accountsEnabled, resetGuest, site } = useLearner();
   const [pending, start] = useTransition();
   const level = levelProgress(state.totalXp);
@@ -71,7 +71,7 @@ export function ProfilePage({ signOutAction }: { signOutAction?: () => Promise<v
         <p>{mode === "guest" ? t("profile.account.guest") : t("profile.account.user")}</p>
         {mode === "guest" ? (
           <>
-            {accountsEnabled && <Link className="l-btn l-btn-block" href={href("/login")}>{t("profile.login")}</Link>}
+            {accountsEnabled && <Link className="l-btn l-btn-block" href={href("/login")}>{t(signupEnabled ? "profile.login" : "auth.submit.login")}</Link>}
             <button className="l-btn l-btn-ghost l-btn-block" onClick={() => window.confirm(t("profile.reset.confirm")) && resetGuest()}>{t("profile.reset")}</button>
           </>
         ) : (

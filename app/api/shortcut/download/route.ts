@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { getDomainShortcutDetails } from "@/lib/shortcut/desktopShortcut";
 import { isLifeHelpHost, safeRelativePath } from "@/lib/security/guards";
+import { sanitizeShortcutParams } from "@/lib/shortcut/sanitize";
 
 export async function GET(request: NextRequest) {
   // The file points the user's desktop at a URL, so it may only ever point at a LIFE.HELP host (never a caller-chosen one).
@@ -10,14 +11,14 @@ export async function GET(request: NextRequest) {
     request.headers.get("host"),
   ];
   const host = candidates.find((h) => isLifeHelpHost(h))?.split(":")[0].toLowerCase() ?? "life.help";
-  const lang = request.nextUrl.searchParams.get("lang") || undefined;
+  const { lang, search } = sanitizeShortcutParams(request.nextUrl.searchParams);
   const path = safeRelativePath(request.nextUrl.searchParams.get("path"));
 
   const details = getDomainShortcutDetails({
     host,
     pathname: path,
     localeOverride: lang,
-    searchParams: request.nextUrl.searchParams,
+    searchParams: search,
   });
 
   const encodedFileName = encodeURIComponent(details.suggestedFileName);

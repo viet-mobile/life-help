@@ -124,6 +124,10 @@ export function formatLanguageName(meta: LanguageMeta, currentLocale?: Locale): 
     return meta.nativeName;
   }
   const native = currentLocale === "zh-Hant" && meta.code === "zh-Hans" ? "簡體中文" : meta.nativeName;
+  // Non-Korean UI: the endonym only (a Korean exonym beside every language is unreadable for them).
+  if (currentLocale && currentLocale !== "ko") {
+    return meta.dir === "rtl" ? `\u200E${native}\u200E` : native;
+  }
   if (meta.dir === "rtl") {
     return `\u200E${native}\u200E ${meta.name}\u200E`;
   }

@@ -116,7 +116,6 @@ const LANGUAGES = new Set([
   "hi",
   "si",
   "ta",
-  "lo",
   "tet",
   "ru",
   "uz",
@@ -358,6 +357,8 @@ function buildInternalPath(
     subpath === "/manifest.webmanifest" ||
     subpath === "/manifest.json" ||
     subpath === "/sw.js" ||
+    subpath === "/robots.txt" ||
+    subpath === "/sitemap.xml" ||
     subpath.startsWith("/icon-")
   ) {
     return {
@@ -667,6 +668,17 @@ export async function proxy(request: NextRequest) {
     getPortalFromHost(host),
   );
 
+  // Public path (without the language prefix) and the URL's language prefix: used server-side for canonical / hreflang.
+  // Always overwritten so a client-supplied value is never trusted.
+  if (getPortalFromHost(host) === "customer") {
+    requestHeaders.set("x-life-path", pathname);
+    if (language) requestHeaders.set("x-life-url-lang", request.nextUrl.pathname.split("/").filter(Boolean)[0].toLowerCase());
+    else requestHeaders.delete("x-life-url-lang");
+  } else {
+    requestHeaders.delete("x-life-path");
+    requestHeaders.delete("x-life-url-lang");
+  }
+
   const requestWithHeaders = NextResponse.next({
     request: {
       headers: requestHeaders,
@@ -742,7 +754,15 @@ export async function proxy(request: NextRequest) {
     return requestWithHeaders;
   }
 
-  return response;
+  // Bare life.help (no country, no language prefix): forward the routing headers too, keeping the refreshed session cookies.
+  const bareHeaders = new Headers(request.headers);
+  for (const h of ["x-life-path", "x-life-url-lang"]) {
+    const v = requestHeaders.get(h);
+    if (v) bareHeaders.set(h, v); else bareHeaders.delete(h);
+  }
+  const bare = NextResponse.next({ request: { headers: bareHeaders } });
+  response.cookies.getAll().forEach((c) => bare.cookies.set(c));
+  return bare;
 }
 
 export const config = {

@@ -508,13 +508,14 @@ function RequestPageContent() {
         <form className="mt-6 space-y-5" onSubmit={handleSubmit}>
           {/* Question 1: Problem description OR Housing requirements */}
           <div>
-            <label className="block text-sm sm:text-base font-bold text-slate-900 whitespace-pre-line">
+            <label htmlFor="request-description" className="block text-sm sm:text-base font-bold text-slate-900 whitespace-pre-line">
               {isHousing
                 ? formatBilingual(t("request.housingLabel"), "어떤 집을 찾으시나요?")
                 : formatBilingual(t("request.problemLabel"), "어떤 문제가 있나요?")}
             </label>
 
             <textarea
+              id="request-description"
               data-testid="request-description"
               required
               rows={4}
@@ -660,7 +661,7 @@ function RequestPageContent() {
           {/* Address with Region Auto-fill helper */}
           <div>
             <div className="flex items-center justify-between">
-              <label className="block text-sm sm:text-base font-bold text-slate-900">
+              <label htmlFor="request-address" className="block text-sm sm:text-base font-bold text-slate-900">
                 {formatBilingual(t("request.addressLabel"), "주소")}
               </label>
               <button
@@ -676,8 +677,10 @@ function RequestPageContent() {
             </div>
 
             <input
+              id="request-address"
               data-testid="request-address"
               required
+              autoComplete="street-address"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               className="droplet-card mt-2 w-full border-2 border-slate-300 bg-white p-3.5 text-sm sm:text-base font-medium text-slate-900 outline-none placeholder:text-slate-400 focus:border-blue-600 shadow-2xs"

@@ -312,7 +312,8 @@ export function LocaleProvider({
   }, [pathname]);
 
   useEffect(() => {
-    if (typeof document !== "undefined") {
+    // Learning sites set lang/dir on the server from their own locale source; do not overwrite it with the marketplace locale.
+    if (typeof document !== "undefined" && !document.documentElement.hasAttribute("data-learn")) {
       document.documentElement.lang = locale;
       const meta = languages.find((item) => item.code === locale);
       document.documentElement.dir = meta?.dir || "ltr";
