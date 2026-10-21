@@ -10,11 +10,11 @@ const root = path.resolve(__dirname, "../..");
 const registry = fs.readFileSync(path.join(root, "messages/registry.ts"), "utf8");
 const LOCALES = [...registry.match(/export const locales = \[([\s\S]*?)\] as const/)![1].matchAll(/"([^"]+)"/g)].map((m) => m[1]);
 
-describe("41 more task languages (the other service languages)", () => {
-  it("the six reviewed languages plus the 41 extra ones are exactly the 47 registry locales", () => {
+describe("40 more task languages (the other service languages)", () => {
+  it("the six reviewed languages plus the 40 extra ones are exactly the 46 active registry locales (Sango retired)", () => {
     expect([...TASK_LANGS].sort()).toEqual([...LOCALES].sort());
-    expect(EXTRA_TASK_LANGS.length).toBe(41);
-    expect(new Set(TASK_LANGS).size).toBe(47);
+    expect(EXTRA_TASK_LANGS.length).toBe(40);
+    expect(new Set(TASK_LANGS).size).toBe(46);
     for (const l of TASK_LANGS) expect(TASK_LANG_NAMES[l], l).toBeTruthy();
   });
   it("screen text stays in the six languages (English for the rest) while task text can follow the learner's language", () => {
