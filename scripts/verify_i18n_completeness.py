@@ -117,7 +117,7 @@ def english_signal(value, latin_locale, en_value, tokens):
     return "LATIN_TEXT_IN_NON_LATIN_LOCALE" if LATIN_RUN.search(rest) else None
 
 
-LEARN_SURFACES = (os.path.join("app", "study"), os.path.join("components", "learn"), os.path.join("lib", "learn"), os.path.join("app", "manifest.ts"))
+LEARN_SURFACES = (os.path.join("app", "study"), os.path.join("components", "learn"), os.path.join("components", "think"), os.path.join("lib", "learn"), os.path.join("lib", "think"), os.path.join("app", "manifest.ts"))
 
 
 def is_learn_file(rel):
@@ -215,6 +215,7 @@ def learning_audit(locales, add, result):
     korean = json.load(open(os.path.join(cdir, "korean", "korean.json"), encoding="utf-8"))
     hangul_run = re.compile(r"[가-힣ㄱ-ㆎ][가-힣ㄱ-ㆎ\s.,?!·]*")
     canon_text = json.dumps(korean, ensure_ascii=False)
+    allowed_fragments = set(json.load(open(ALLOWLIST_PATH, encoding="utf-8")).get("targetFragments", {}))
     for code in locales:
         if code in ("en", "ko"):
             continue
@@ -226,7 +227,7 @@ def learning_audit(locales, add, result):
                 w = word.strip(".,?!·")
                 if not w:
                     continue
-                if w in canon_text:
+                if w in canon_text or w in allowed_fragments:
                     target["KOREAN_TARGET_SPANS"] += 1
                 else:
                     add("TARGET_LANGUAGE_LEAK", f"[{code}] korean overlay has Korean not in the canonical target material: {w}")
@@ -272,7 +273,7 @@ def main():
         F.setdefault(cat, []).append(item)
 
     # ---- allowlist hygiene: every entry needs a known classification and a reason
-    for section in ("tokens", "hardcodedFiles", "hardcodedPatterns"):
+    for section in ("tokens", "hardcodedFiles", "hardcodedPatterns", "targetFragments"):
         for name, spec in allow.get(section, {}).items():
             if not isinstance(spec, dict) or spec.get("classification") not in ALLOWED_CLASSES or not str(spec.get("reason", "")).strip():
                 add("ALLOWLIST_ENTRY_WITHOUT_REASON", f"{section}: {name}")

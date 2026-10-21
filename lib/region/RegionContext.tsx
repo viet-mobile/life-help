@@ -12,7 +12,7 @@ import React, {
 import {
   type RegionItem,
   defaultRegion,
-  DEFAULT_COUNTRY_REGIONS,
+  defaultRegionFor,
   COUNTRY_SLUG_TO_CODE,
 } from "./regions";
 import { resolveCountryFromHost } from "@/lib/country/CountryContext";
@@ -72,7 +72,7 @@ export function getDomainCountryCode(initialCountry?: string | null): CountryCod
 }
 
 function getClientRegionSnapshot(domainCountry: CountryCode): RegionItem {
-  const fallback = DEFAULT_COUNTRY_REGIONS[domainCountry] || defaultRegion;
+  const fallback = defaultRegionFor(domainCountry);
   if (cachedRegion && cachedRegion.country === domainCountry) return cachedRegion;
   try {
     const countrySaved = localStorage.getItem(`${REGION_STORAGE_KEY}_${domainCountry}`);
@@ -112,7 +112,7 @@ export function RegionProvider({
     () => getDomainCountryCode(initialCountry),
     [initialCountry]
   );
-  const fallbackRegion = DEFAULT_COUNTRY_REGIONS[domainCountryCode] || defaultRegion;
+  const fallbackRegion = defaultRegionFor(domainCountryCode);
 
   const [selectedRegion, setSelectedRegion] = useState<RegionItem>(fallbackRegion);
 
@@ -246,7 +246,7 @@ function RegionSelectorModal({
         setGungu(currentRegion.gungu);
         setDong(currentRegion.dong);
       } else {
-        const def = DEFAULT_COUNTRY_REGIONS[initialCountry] || defaultRegion;
+        const def = defaultRegionFor(initialCountry);
         setSido(def.sido);
         setGungu(def.gungu);
         setDong(def.dong);
