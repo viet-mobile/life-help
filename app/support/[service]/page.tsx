@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+import { isKnownServiceSlug } from "@/lib/support/knownService";
 import { SupportServiceView } from "@/components/support/SupportServiceView";
 
 export function generateStaticParams() {
@@ -16,6 +18,7 @@ export default async function SupportPage({
   params: Promise<{ service: string }>;
 }) {
   const { service: slug } = await params;
+  if (!isKnownServiceSlug(slug)) notFound();
   return <SupportServiceView slug={slug} />;
 }
 
