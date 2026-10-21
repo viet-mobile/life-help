@@ -32,7 +32,7 @@ if (cookie) {
   r = await get("/study/korean/review", cookie);
   check("reviewer: start page with banner and language table", r.status === 200 && r.text.includes("REVIEW ENVIRONMENT") && r.text.includes('data-tier="complete"') && r.text.includes('data-tier="partial"'));
   const LEVELS = Array.from({ length: 10 }, (_, i) => `K${i + 1}`);
-  for (const lang of ["en", "ko", "vi", "ja", "zh-Hans", "sg"]) {
+  for (const lang of ["en", "ko", "vi", "ja", "zh-Hans", "fr"]) {
     for (const lv of LEVELS) {
       r = await get(`/study/korean/review/${lv}?lang=${lang}`, cookie);
       check(`reviewer: ${lv} ${lang} loads with ids and no load error`, r.status === 200 && r.text.includes("data-question-id") && !r.text.includes("review-load-error") && r.text.includes("DRAFT"), `status ${r.status}`);

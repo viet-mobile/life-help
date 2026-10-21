@@ -5,7 +5,7 @@ import { MATH_HS_DATA } from "@/lib/learn/content/bank";
 import { SITES, type ContentBundle, type Question, type Site } from "@/lib/learn/types";
 
 /**
- * Parity and semantic policy for every learner locale (registry-derived, 47): the localized bundle a learner receives must be the
+ * Parity and semantic policy for every learner locale (registry-derived, 46): the localized bundle a learner receives must be the
  * canonical bundle with only presentation text replaced.
  *   parity:    same ids, order, answer key, difficulty, skill, role, type, status, option ids, hint count; same catalog structure
  *   coverage:  math / english canonical text is Korean; no learner-facing string may still be Korean in any other locale (no fallback)
@@ -49,7 +49,7 @@ const fields = (q: Question): [string, string][] => [
 const HS_IDS = new Set(MATH_HS_DATA.sets.flatMap((s) => s.rows.map((_, i) => `${s.id}-${String(i + 1).padStart(3, "0")}`)));
 const bankOnly = (site: Site, id: string) => (site === "math" ? HS_IDS.has(id) : site === "english" ? id.startsWith("eb-") : id.startsWith("kb-"));
 
-describe.each(SITES)("%s: 47-locale parity and semantic policy", (site: Site) => {
+describe.each(SITES)("%s: 46-locale parity and semantic policy", (site: Site) => {
   it.each([...LOCALES])("%s", async (locale) => {
     const canon = (await loadIndex(site)).bundle;
     const loc = (await loadIndex(site, { locale })).bundle;

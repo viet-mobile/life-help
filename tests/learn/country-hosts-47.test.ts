@@ -8,7 +8,22 @@ const run = async (host: string, path = "/") => proxy(new NextRequest(`https://$
 const hdr = (res: Response, h: string) => res.headers.get(`x-middleware-request-${h}`);
 
 describe("integrated host routing", () => {
-  for (const [host, lang, country] of [["pakistan.life.help", "ur", "pakistan"], ["centralafrica.life.help", "sg", "centralafrica"], ["kenya.life.help", "sw", "kenya"], ["korea.life.help", "ko", "korea"]]) {
+  for (const [host, lang, country] of [
+    ["pakistan.life.help", "ur", "pakistan"],
+    ["centralafrica.life.help", "fr", "centralafrica"],
+    ["kenya.life.help", "sw", "kenya"],
+    ["korea.life.help", "ko", "korea"],
+    ["romania.life.help", "en", "romania"],
+    ["finland.life.help", "en", "finland"],
+    ["czech.life.help", "en", "czechia"],
+    ["czechia.life.help", "en", "czechia"],
+    ["hungary.life.help", "en", "hungary"],
+    ["zambia.life.help", "en", "zambia"],
+    ["uganda.life.help", "en", "uganda"],
+    ["centralafrican.life.help", "fr", "centralafrica"],
+    ["centralafrica.life.help", "fr", "centralafrica"],
+    ["congo.life.help", "fr", "congo"],
+  ]) {
     it(`${host} -> default language ${lang}, a registry locale, country ${country}`, async () => {
       const res = await run(host);
       expect(hdr(res, "x-life-language")).toBe(lang);
@@ -17,6 +32,24 @@ describe("integrated host routing", () => {
       expect(hdr(res, "x-life-site")).toBeNull();
     });
   }
+  it("does not offer retired or not-yet-launched locales", async () => {
+    for (const locale of ["sg", "pcm", "tl", "ro", "fi", "cs", "hu", "af"]) {
+      expect((locales as readonly string[]).includes(locale), locale).toBe(false);
+    }
+  });
+  it("redirects legacy Sangö URLs to French", async () => {
+    const response = await run("life.help", "/sg/about?from=legacy");
+    expect(response.status).toBe(308);
+    expect(response.headers.get("location")).toBe("https://life.help/fr/about?from=legacy");
+  });
+  it("serves unresolved canonical-domain aliases using the canonical country settings", async () => {
+    for (const [host, language, country] of [["czech.life.help", "en", "czechia"], ["centralafrican.life.help", "fr", "centralafrica"]]) {
+      const response = await run(host);
+      expect(response.status).toBe(200);
+      expect(hdr(response, "x-life-language")).toBe(language);
+      expect(hdr(response, "x-life-country")).toBe(country);
+    }
+  });
   it("the main site is not a learning site", async () => {
     const res = await run("life.help");
     expect(hdr(res, "x-life-portal")).not.toBe("learn");

@@ -12,7 +12,7 @@ describe("Korean review data", () => {
   it("covers every level and every language: loads, has rows, ids unique, every question has an answer and is not PUBLISHED-by-the-review", async () => {
     for (const level of reviewLevels) {
       for (const loc of LOCALES) {
-        if (level !== "K1" && level !== "K7" && !["en", "ko", "vi", "ja", "sg", "ar"].includes(loc)) continue; // the full matrix runs for K1 / K7, a spread of languages for the rest
+        if (level !== "K1" && level !== "K7" && !["en", "ko", "vi", "ja", "fr", "ar"].includes(loc)) continue; // the full matrix runs for K1 / K7, a spread of languages for the rest
         const page = await loadReviewLevel(level, loc, { limit: 100 });
         expect(page.error, `${level}/${loc}`).toBeUndefined();
         expect(page.total, `${level}/${loc}`).toBeGreaterThan(300);
@@ -28,7 +28,7 @@ describe("Korean review data", () => {
 
   it("ids and answers are the same in every language (only wording differs)", async () => {
     const en = await loadReviewLevel("K7", "en", { limit: 100 });
-    for (const loc of ["vi", "ja", "sg"] as const) {
+    for (const loc of ["vi", "ja", "ar"] as const) {
       const other = await loadReviewLevel("K7", loc, { limit: 100 });
       expect(other.total).toBe(en.total);
       expect(other.rows.map((r) => r.id)).toEqual(en.rows.map((r) => r.id));
@@ -36,16 +36,16 @@ describe("Korean review data", () => {
     }
   });
 
-  it("marks wording honestly: English is canonical, full languages are localized, the other 32 fall back for bank texts", async () => {
+  it("marks wording honestly: English is canonical, full languages are localized, and partial languages fall back for bank texts", async () => {
     const en = await loadReviewLevel("K2", "en", { limit: 100 });
     expect(new Set(en.rows.map((r) => r.wording))).toEqual(new Set(["canonical"]));
     const vi = await loadReviewLevel("K2", "vi", { skill: "k.k2.greetings", limit: 100 });
     expect(vi.rows.filter((r) => r.source === "bank").every((r) => r.wording === "localized")).toBe(true);
-    const sg = await loadReviewLevel("K2", "sg", { skill: "k.k2.greetings", limit: 100 });
-    const bank = sg.rows.filter((r) => r.source === "bank");
+    const ar = await loadReviewLevel("K2", "ar", { skill: "k.k2.greetings", limit: 100 });
+    const bank = ar.rows.filter((r) => r.source === "bank");
     expect(bank.length).toBeGreaterThan(0);
     expect(bank.every((r) => r.wording === "fallback" && r.fallback.length > 0)).toBe(true);
-    expect(sg.rows.filter((r) => r.source === "course").every((r) => r.wording === "localized")).toBe(true);
+    expect(ar.rows.filter((r) => r.source === "course").every((r) => r.wording === "localized")).toBe(true);
   });
 
   it("includes the K7-K10 course, the bridge and the whole bank (all published since 2026-10-15)", async () => {
@@ -70,12 +70,12 @@ describe("Korean review data", () => {
     expect(isLocale("xx")).toBe(false);
   });
 
-  it("the committed locale status is current and describes 1 canonical, 14 complete and 32 partial languages", () => {
+  it("the committed locale status is current and describes 1 canonical, 14 complete and 31 partial languages", () => {
     execFileSync("node", ["scripts/learn/korean/bank/review-status.mjs", "--check"], { cwd: root, stdio: "pipe" });
     const tiers = Object.values(status.locales).map((l) => l.tier);
     expect(tiers.filter((t) => t === "canonical")).toHaveLength(1);
     expect(tiers.filter((t) => t === "complete")).toHaveLength(14);
-    expect(tiers.filter((t) => t === "partial")).toHaveLength(32);
+    expect(tiers.filter((t) => t === "partial")).toHaveLength(31);
     expect(Object.keys(status.locales).sort()).toEqual([...LOCALES].sort());
   });
 });

@@ -9,6 +9,8 @@ import { createTranslator, type LearnLocale, type Messages, type Translator } fr
 import { FREE_ACCESS, buildAccessPlan, type Access, type AccessPlan } from "@/lib/learn/domain/access";
 import type { MetaBundle, PlayerState, Site } from "@/lib/learn/types";
 
+import { JournalSender } from "@/components/learn/JournalSender";
+
 export class ApiError extends Error {
   constructor(public code: string, public status: number) {
     super(code);
@@ -147,6 +149,7 @@ export function LearnerProvider({
       if (!res.ok) throw new ApiError(String(data?.error ?? "error"), res.status);
       // Only adopt state after a fully successful response: a failed request never alters progress.
       if (data.state) adopt(data.state as PlayerState);
+      if (["start", "attempt", "complete", "cards", "diagnostic"].includes(action)) window.dispatchEvent(new CustomEvent("jiu-activity", { detail: action }));
       return data as T & { state?: PlayerState };
     },
     [mode, site, locale, adopt],
@@ -172,5 +175,5 @@ export function LearnerProvider({
     () => ({ site, base, locale, t, mode, accountsEnabled, ready, state, index, api, href, resetGuest, access, plan }),
     [site, base, locale, t, mode, accountsEnabled, ready, state, index, api, href, resetGuest, access, plan],
   );
-  return <LearnerContext.Provider value={value}>{children}</LearnerContext.Provider>;
+  return <LearnerContext.Provider value={value}><JournalSender site={site} />{children}</LearnerContext.Provider>;
 }

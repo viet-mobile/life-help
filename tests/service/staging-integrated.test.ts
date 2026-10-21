@@ -131,14 +131,14 @@ describe("integrated staging specs", () => {
     const src = read("tests/staging/target.ts");
     const matrix = [...src.split("export const MATRIX = [")[1].split("]")[0].matchAll(/"([A-Za-z-]+)"/g)].map((m) => m[1]);
     for (const l of matrix) expect(locales as readonly string[], l).toContain(l);
-    for (const l of ["ko", "en", "vi", "ur", "ar", "sg", "sw", "mr", "gu", "pa", "te", "kn", "ml", "ja", "zh-Hans"]) expect(matrix).toContain(l);
+    for (const l of ["ko", "en", "vi", "ur", "ar", "fr", "sw", "mr", "gu", "pa", "te", "kn", "ml", "ja", "zh-Hans"]) expect(matrix).toContain(l);
   });
   it("country defaults tested on staging equal the proxy's configuration (and name the four required ones)", () => {
     const src = read("tests/staging/country-defaults.staging.spec.ts");
     const pairs = [...src.matchAll(/\["([a-z]+)\.life\.help", "([A-Za-z-]+)"\]/g)].map((m) => [m[1], m[2]]);
     expect(pairs.length).toBeGreaterThanOrEqual(13);
     for (const [slug, lang] of pairs) expect(COUNTRY_TO_DEFAULT_LANGUAGE[slug], slug).toBe(lang);
-    for (const need of [["pakistan", "ur"], ["centralafrica", "sg"], ["kenya", "sw"], ["korea", "ko"]]) expect(pairs).toContainEqual(need);
+    for (const need of [["pakistan", "ur"], ["centralafrica", "fr"], ["kenya", "sw"], ["korea", "ko"], ["romania", "en"], ["finland", "en"], ["czechia", "en"], ["hungary", "en"], ["zambia", "en"], ["uganda", "en"], ["congo", "fr"]]) expect(pairs).toContainEqual(need);
   });
   it("learning staging: all three sites, the required switching journeys, target-language and progress assertions", () => {
     const s = read("tests/staging/learning-locales.staging.spec.ts");

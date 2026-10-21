@@ -396,7 +396,7 @@ export const ADVANCED_READING_QUESTIONS: Question[] = bundle.questions as unknow
 
 export const ADVANCED_READING_OVERLAY_LOCALES = [
   "am", "ar", "arz", "bn", "da", "de", "el", "en", "es", "fa", "fr", "gu", "he", "hi", "id", "it",
-  "ja", "kk", "km", "kn", "ml", "mn", "mr", "my", "ne", "nl", "no", "pa", "pl", "pt", "ru", "sg",
+  "ja", "kk", "km", "kn", "ml", "mn", "mr", "my", "ne", "nl", "no", "pa", "pl", "pt", "ru",
   "si", "sv", "sw", "ta", "te", "tet", "th", "tr", "uk", "ur", "uz", "vi", "zh-Hans", "zh-Hant"
 ] as const;
 
@@ -418,4 +418,3 @@ console.log(`- Lessons: ${courses.flatMap(c => c.units[0].lessons).length}`);
 console.log(`- Questions: ${questions.length}`);
 
 export { COURSES, LESSON_DEFS };
-

@@ -19,6 +19,7 @@ import { coverageFor, hasGap } from "@/lib/learn/coverage";
 import { readLedger } from "../think/ThinkOffer";
 import { QuestList } from "./QuestList";
 import { SkillBars } from "./SkillBars";
+import { MathMotionEntry } from "./MathMotion";
 
 export function Dashboard() {
   const { state, index, t, href, mode, accountsEnabled, site, locale } = useLearner();
@@ -79,6 +80,7 @@ export function Dashboard() {
       </Link>
 
       <ThinkQuickEntry />
+      {site === "math" && <MathMotionEntry />}
 
       {!state.diagnosticDone && (
         <Link className="l-card" href={href("/diagnostic")} style={{ textDecoration: "none", color: "inherit", display: "block", borderColor: "var(--l-accent)" }}>

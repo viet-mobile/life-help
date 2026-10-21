@@ -1,22 +1,32 @@
+import { COUNTRY_TO_LANGUAGE_MAP } from "@/lib/i18n/siteMetadata";
+import { locales, type Locale } from "@/messages/registry";
+
 /**
- * Where the Study card sends the learner. Study lives on its own sub-domains (math.life.help, english.life.help); the main site never serves
- * /study/* routes on production hosts. The destination follows the environment the main site itself runs in:
- *
- *   production            https://math.life.help          https://english.life.help          https://korean.life.help
- *   staging               https://math-staging.life.help  https://english-staging.life.help
- *   local (localhost)     http://math.localhost:<port>    http://english.localhost:<port>
- *
- * Anything else (an unknown host, a preview URL) is treated as PRODUCTION-shaped only when it is life.help itself; otherwise it falls back to staging
- * hosts, never to production, so a preview deployment cannot send people into production learning by accident.
+ * Study destinations follow the source host, not the browser/OS or its saved preferences.
+ * Every registered country domain is production. Unknown/preview hosts stay on staging;
+ * localhost keeps local learning hosts and the development port.
+ * An explicit language path wins over the destination's default and any saved learning cookie.
  */
 export type StudySubject = "math" | "english" | "korean";
 export const STUDY_SUBJECTS: readonly StudySubject[] = ["math", "english", "korean"];
+const LOCALES = new Set<string>(locales);
 
-export function studyUrl(subject: StudySubject, hostname: string, port = ""): string {
-  const host = hostname.toLowerCase().split(":")[0];
-  if (host === "localhost" || host.endsWith(".localhost") || host === "127.0.0.1") return `http://${subject}.localhost${port ? `:${port}` : ""}`;
-  if (host === "life.help" || host === "www.life.help" || /^(korea|vietnam|japan|china|taiwan)\.life\.help$/.test(host)) return `https://${subject === "korean" ? "korean" : subject}.life.help`;
-  return `https://${subject === "korean" ? "study-korean" : subject}-staging.life.help`;
+function productionHost(host: string): boolean {
+  if (host === "life.help" || host === "www.life.help") return true;
+  const country = host.match(/^(?:(?:tech|chat|sys)\.)?([a-z]+)\.life\.help$/)?.[1];
+  return !!country && Object.hasOwn(COUNTRY_TO_LANGUAGE_MAP, country);
 }
 
-export const studyUrls = (hostname: string, port = ""): Record<StudySubject, string> => ({ math: studyUrl("math", hostname, port), english: studyUrl("english", hostname, port), korean: studyUrl("korean", hostname, port) });
+export function studyUrl(subject: StudySubject, hostname: string, port = "", locale?: Locale): string {
+  const host = hostname.toLowerCase().split(":")[0].trim();
+  const path = locale && LOCALES.has(locale) ? `/${locale}` : "";
+  if (host === "localhost" || host.endsWith(".localhost") || host === "127.0.0.1") return `http://${subject}.localhost${port ? `:${port}` : ""}${path}`;
+  if (productionHost(host)) return `https://${subject}.life.help${path}`;
+  return `https://${subject === "korean" ? "study-korean" : subject}-staging.life.help${path}`;
+}
+
+export const studyUrls = (hostname: string, port = "", locale?: Locale): Record<StudySubject, string> => ({
+  math: studyUrl("math", hostname, port, locale),
+  english: studyUrl("english", hostname, port, locale),
+  korean: studyUrl("korean", hostname, port, locale),
+});

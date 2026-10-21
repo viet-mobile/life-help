@@ -28,7 +28,7 @@ test.describe("Korean", () => {
     expect(await ids(page)).toEqual(["study", "jobHelp", "mobileHelp", "hospitalHelp", "bankHelp", "insuranceHelp"]);
   });
 
-  test("Study chooser: two links to the learning sub-domains, Escape closes and returns focus, no /study request on the main host", async ({ page }) => {
+  test("Study chooser: three links to the learning sub-domains, Escape closes and returns focus, no /study request on the main host", async ({ page }) => {
     const studyRequests: string[] = [];
     page.on("request", (r) => { const u = new URL(r.url()); if (u.hostname === "localhost" && /^\/(study|api\/learn)/.test(u.pathname)) studyRequests.push(u.pathname); });
     await page.goto(`${MAIN}/`);
@@ -38,9 +38,9 @@ test.describe("Korean", () => {
     await expect(dialog).toContainText("수학 공부");
     await expect(dialog).toContainText("영어 공부");
     await expect(dialog).toContainText("한국어 공부");
-    await expect(page.getByTestId("study-link-korean")).toHaveAttribute("href", `http://korean.localhost:${PORT}`);
-    await expect(page.getByTestId("study-link-math")).toHaveAttribute("href", `http://math.localhost:${PORT}`);
-    await expect(page.getByTestId("study-link-english")).toHaveAttribute("href", `http://english.localhost:${PORT}`);
+    await expect(page.getByTestId("study-link-korean")).toHaveAttribute("href", `http://korean.localhost:${PORT}/ko`);
+    await expect(page.getByTestId("study-link-math")).toHaveAttribute("href", `http://math.localhost:${PORT}/ko`);
+    await expect(page.getByTestId("study-link-english")).toHaveAttribute("href", `http://english.localhost:${PORT}/ko`);
     await expect(page.getByTestId("study-link-math")).toBeFocused();
     await page.keyboard.press("Escape");
     await expect(dialog).toHaveCount(0);

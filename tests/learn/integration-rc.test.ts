@@ -18,7 +18,7 @@ describe("integration: English hint gate covers the whole served bank (existing 
 });
 
 describe("integration: Korean bank per-language scope (a missing translation kit never removes the existing course)", () => {
-  it("all 47 languages keep the 718 existing Korean course questions; the bank is all-or-nothing per language; dict only where the dict template exists", async () => {
+  it("all 46 active languages keep the 718 existing Korean course questions; the bank is all-or-nothing per language; dict only where the dict template exists", async () => {
     const withBank: string[] = [];
     for (const l of LOCALES) {
       const { bundle } = await loadIndex("korean", { locale: l as never });
@@ -34,9 +34,9 @@ describe("integration: Korean bank per-language scope (a missing translation kit
 });
 
 describe("integration: unverified translations stay out of learners' sight", () => {
-  it("lit-d1 hint 1 in sg and tet (reviewer could not judge them) is served as the reviewed English text", () => {
+  it("lit-d1 hint 1 in Tetun (reviewer could not judge it) is served as the reviewed English text", () => {
     const get = (l: string) => JSON.parse(fs.readFileSync(`content/learn-overlays/${l}/english.json`, "utf8")).questions["e-h3e-lit-d1"].hints[0];
-    for (const l of ["sg", "tet"]) expect(get(l), l).toBe(get("en"));
+    expect(get("tet")).toBe(get("en"));
   });
   it("pronunciation help is hidden by default (expert review required)", () => {
     expect(pronTipsVisible()).toBe(false);

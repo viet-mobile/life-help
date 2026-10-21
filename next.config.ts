@@ -18,7 +18,13 @@ const SECURITY_HEADERS = [
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   async headers() {
-    return [{ source: "/:path*", headers: SECURITY_HEADERS }];
+    return [
+      { source: "/:path*", headers: SECURITY_HEADERS },
+      { source: "/jiu/bridge", headers: [
+        { key: "X-Frame-Options", value: "" },
+        { key: "Content-Security-Policy", value: "frame-ancestors 'self' https://math.life.help https://english.life.help https://korean.life.help https://study.korean.life.help; object-src 'none'; base-uri 'self'; form-action 'self'" },
+      ] },
+    ];
   },
   async rewrites() {
     return [

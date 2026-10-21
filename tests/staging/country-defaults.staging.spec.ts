@@ -7,7 +7,14 @@ import { BASE } from "./target";
  */
 const DEFAULTS: Array<[host: string, lang: string]> = [
   ["pakistan.life.help", "ur"],
-  ["centralafrica.life.help", "sg"],
+  ["centralafrica.life.help", "fr"],
+  ["romania.life.help", "en"],
+  ["finland.life.help", "en"],
+  ["czechia.life.help", "en"],
+  ["hungary.life.help", "en"],
+  ["zambia.life.help", "en"],
+  ["uganda.life.help", "en"],
+  ["congo.life.help", "fr"],
   ["kenya.life.help", "sw"],
   ["korea.life.help", "ko"],
   // existing defaults stay as they were

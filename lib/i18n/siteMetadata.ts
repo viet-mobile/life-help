@@ -1,5 +1,6 @@
 // lib/i18n/siteMetadata.ts
 import type { Metadata } from "next";
+import { COUNTRIES_WITH_GENERIC_BRANDING } from "@/lib/region/countryBranding";
 
 export interface PortalMeta {
   title: string;
@@ -69,10 +70,19 @@ export const COUNTRY_TO_LANGUAGE_MAP: Record<string, string> = {
   malaysia: "en",
   nigeria: "en",
   elsalvador: "es",
-  centralafrica: "sg",
+  centralafrican: "fr",
+  centralafrica: "fr",
   venezuela: "es",
   kenya: "sw",
   argentina: "es",
+  czech: "en",
+  romania: "en",
+  finland: "en",
+  czechia: "en",
+  hungary: "en",
+  zambia: "en",
+  uganda: "en",
+  congo: "fr",
 };
 
 export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
@@ -838,6 +848,7 @@ export function resolveLanguageFromHeaders(headersList: Headers): string {
   const rawLangHeader = headersList.get("x-life-language");
   if (rawLangHeader) {
     const lower = rawLangHeader.toLowerCase();
+    if (lower === "sg") return "fr";
     if (lower === "zt" || lower === "zh-hant") return "zh-Hant";
     if (lower === "zs" || lower === "zh" || lower === "zh-hans") return "zh-Hans";
     const found = Object.keys(SITE_METADATA).find((k) => k.toLowerCase() === lower);
@@ -962,7 +973,7 @@ export function getIconMetadata(country?: string | null, portal?: string | null)
   }
 
   const c = country?.toLowerCase();
-  const slug = c && COUNTRY_TO_LANGUAGE_MAP[c] ? c : "default";
+  const slug = c && COUNTRY_TO_LANGUAGE_MAP[c] && !COUNTRIES_WITH_GENERIC_BRANDING.has(c) ? c : "default";
 
   return {
     icon: [

@@ -66,7 +66,7 @@ const MATRIX: Array<{ locale: string; service: string; rtl?: boolean }> = [
   { locale: "ur", service: "housing", rtl: true },
   { locale: "ar", service: "bank-help", rtl: true },
   { locale: "sw", service: "insurance-help" },
-  { locale: "sg", service: "job-help" },
+  { locale: "fr", service: "job-help" },
   { locale: "mr", service: "hospital-help" },
   { locale: "te", service: "mobile-help" },
 ];

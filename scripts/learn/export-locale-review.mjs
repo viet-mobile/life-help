@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Exports the learner-facing texts of low-resource locales as review sheets for native speakers and teachers (CSV for spreadsheets, or JSON).
 //
-//   node scripts/learn/export-locale-review.mjs [--locales sg,tet,am,km,my,kk,kn,ml] [--scope new|all] [--format csv|json] [--out <dir>]
+//   node scripts/learn/export-locale-review.mjs [--locales tet,am,km,my,kk,kn,ml] [--scope new|all] [--format csv|json] [--out <dir>]
 //
 //   scope new (default)  the UI keys + the 17 topic lessons added from the curriculum mapping + the 4 newest Korean-course lessons
 //   scope all            the UI keys + every lesson / question / skill text of the three sites
@@ -14,7 +14,7 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const arg = (name, fallback) => { const i = process.argv.indexOf(name); return i >= 0 ? process.argv[i + 1] : fallback; };
-const LOCALES = arg("--locales", "sg,tet,am,km,my,kk,kn,ml").split(",").map((s) => s.trim()).filter(Boolean);
+const LOCALES = arg("--locales", "tet,am,km,my,kk,kn,ml").split(",").map((s) => s.trim()).filter(Boolean);
 const SCOPE = arg("--scope", "new");
 const FORMAT = arg("--format", "csv");
 const OUT = path.resolve(arg("--out", path.join(root, "locale-review-export")));

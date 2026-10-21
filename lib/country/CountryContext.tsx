@@ -7,6 +7,7 @@ import React, {
   useMemo,
   useState,
 } from "react";
+import { COUNTRIES_WITH_GENERIC_BRANDING } from "@/lib/region/countryBranding";
 
 export interface CountryContextType {
   country: string;
@@ -81,6 +82,13 @@ const COUNTRY_NAMES: Record<string, string> = {
   venezuela: "VENEZUELA",
   kenya: "KENYA",
   argentina: "ARGENTINA",
+  romania: "ROMANIA",
+  finland: "FINLAND",
+  czechia: "CZECHIA",
+  hungary: "HUNGARY",
+  zambia: "ZAMBIA",
+  uganda: "UGANDA",
+  congo: "REPUBLIC OF THE CONGO",
 };
 
 const PORTAL_DISPLAY_NAMES: Record<string, string> = {
@@ -128,11 +136,12 @@ export function getLogoForCountry(countryKey?: string | null) {
     };
   }
   if (c && COUNTRY_NAMES[c]) {
+    const logoSlug = COUNTRIES_WITH_GENERIC_BRANDING.has(c) ? "default" : c;
     return {
       country: c,
       countryDisplayName: COUNTRY_NAMES[c],
-      logoUrl: `/logos/logo-${c}.png`,
-      faviconUrl: `/logos/favicon-${c}.png`,
+      logoUrl: `/logos/logo-${logoSlug}.png`,
+      faviconUrl: `/logos/favicon-${logoSlug}.png`,
     };
   }
   return {
@@ -220,4 +229,3 @@ export function CountryProvider({
 export function useCountry() {
   return useContext(CountryContext);
 }
-

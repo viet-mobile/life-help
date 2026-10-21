@@ -1,4 +1,4 @@
-﻿import { NextResponse, type NextRequest } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 import { hasRole } from "@/lib/auth/roles";
 import { updateSession } from "@/utils/supabase/middleware";
 import { LOCALE_COOKIE, LOCALE_COOKIE_MAX_AGE } from "@/lib/learn/i18n";
@@ -78,7 +78,19 @@ const COUNTRIES = new Set([
   "venezuela",
   "kenya",
   "argentina",
+  "romania",
+  "finland",
+  "czechia",
+  "hungary",
+  "zambia",
+  "uganda",
+  "congo",
 ]);
+
+const COUNTRY_HOST_ALIASES: Readonly<Record<string, string>> = {
+  czech: "czechia",
+  centralafrican: "centralafrica",
+};
 
 /**
  * Supported user-facing language path codes.
@@ -103,7 +115,6 @@ const LANGUAGES = new Set([
   "si",
   "ta",
   "lo",
-  "tl",
   "tet",
   "ru",
   "uz",
@@ -113,6 +124,8 @@ const LANGUAGES = new Set([
   "tr",
   "uk",
   "ar",
+  "arz",
+  "bn",
   "it",
   "es",
   "fa",
@@ -127,7 +140,6 @@ const LANGUAGES = new Set([
   "pt",
   "el",
   "ur",
-  "sg",
   "sw",
   "mr",
   "gu",
@@ -194,10 +206,17 @@ export const COUNTRY_TO_DEFAULT_LANGUAGE: Record<string, string> = {
   malaysia: "en",
   nigeria: "en",
   elsalvador: "es",
-  centralafrica: "sg",
+  centralafrica: "fr",
   venezuela: "es",
   kenya: "sw",
   argentina: "es",
+  romania: "en",
+  finland: "en",
+  czechia: "en",
+  hungary: "en",
+  zambia: "en",
+  uganda: "en",
+  congo: "fr",
 };
 
 function getHost(request: NextRequest) {
@@ -223,7 +242,7 @@ function getCountryFromHost(host: string): string | null {
 
   // country.life.help
   if (parts.length === 3 && parts[2] === "help") {
-    const country = parts[0];
+    const country = COUNTRY_HOST_ALIASES[parts[0]] ?? parts[0];
 
     if (COUNTRIES.has(country)) {
       return country;
@@ -234,7 +253,7 @@ function getCountryFromHost(host: string): string | null {
   // chat.country.life.help
   // sys.country.life.help
   if (parts.length === 4 && parts[3] === "help") {
-    const country = parts[1];
+    const country = COUNTRY_HOST_ALIASES[parts[1]] ?? parts[1];
 
     if (COUNTRIES.has(country)) {
       return country;
@@ -436,6 +455,13 @@ function buildInternalPath(
 }
 
 export async function proxy(request: NextRequest) {
+  const retiredSangoPath = request.nextUrl.pathname.match(/^(\/study\/(?:math|english|korean))?\/sg(?=\/|$)/);
+  if (retiredSangoPath) {
+    const target = request.nextUrl.clone();
+    target.pathname = target.pathname.replace(/\/sg(?=\/|$)/, "/fr");
+    return NextResponse.redirect(target, 308);
+  }
+
   // Learning presentation overlays (hints, explanations) are server-side content read through the ASSETS binding only; they are never
   // served to a browser (wrangler.jsonc makes /learn-content/* worker-first, and this refuses it on every host, also under next start).
   if (request.nextUrl.pathname === "/learn-content" || request.nextUrl.pathname.startsWith("/learn-content/")) {
@@ -487,6 +513,9 @@ export async function proxy(request: NextRequest) {
    * Country-specific favicon.ico routing
    */
   if (request.nextUrl.pathname === "/favicon.ico") {
+    if (host === "jiu.life.help" || host === "jiu.localhost") {
+      return NextResponse.rewrite(new URL("/jiu/favicon.ico", request.url));
+    }
     // math.life.help / english.life.help: the site's own logo (LIFE.HELP with MATH / ENGLISH above it), served by a route handler.
     // The Worker runs first for /favicon.ico only (wrangler.jsonc assets.run_worker_first); public/ files are NOT reachable by a rewrite there.
     const learnFaviconSite = getLearnSiteFromHost(host);
@@ -495,6 +524,23 @@ export async function proxy(request: NextRequest) {
     }
     // Every existing host keeps the generic LIFE.HELP favicon (app/favicon.ico, byte-identical to public/favicon.ico) - what production has always served.
     return NextResponse.next();
+  }
+
+  if (host === "jiu.life.help" || host === "jiu.localhost") {
+    const path = request.nextUrl.pathname;
+    if (path === "/study" || path.startsWith("/study/") || path === "/api/learn" || path.startsWith("/api/learn/")) {
+      return new NextResponse("Not Found", { status: 404 });
+    }
+    const jiuHeaders = new Headers(request.headers);
+    jiuHeaders.set("x-life-portal", "jiu");
+    jiuHeaders.set("x-life-language", "ko");
+    jiuHeaders.delete("x-life-country");
+    const target = path === "/" ? "/jiu" : path;
+    const out = target !== path
+      ? NextResponse.rewrite(new URL(target + request.nextUrl.search, request.url), { request: { headers: jiuHeaders } })
+      : NextResponse.next({ request: { headers: jiuHeaders } });
+    out.headers.set("X-Robots-Tag", "noindex, nofollow");
+    return out;
   }
 
   /**

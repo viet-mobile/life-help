@@ -18,7 +18,7 @@ const attr = (html: string, re: RegExp) => html.match(re)?.[1]?.replace(/&amp;/g
 
 test.describe("metadata follows the language in the URL (no cookie, as a link preview sees it)", () => {
   for (const site of ["math", "english", "korean"] as Site[]) {
-    for (const loc of ["ko", "en", "vi", "ur", "ar", "sw", "sg", "mr", "te", "ja", "zh-Hans"]) {
+    for (const loc of ["ko", "en", "vi", "ur", "ar", "sw", "fr", "mr", "te", "ja", "zh-Hans"]) {
       test(`${site}/${loc}`, async ({ request }) => {
         const d = dict(loc);
         const res = await request.get(`${HOST[site]}/${loc}`); // APIRequestContext: no cookies
@@ -36,7 +36,7 @@ test.describe("metadata follows the language in the URL (no cookie, as a link pr
       });
     }
   }
-  test("every registry locale has its own link preview on every site (47 x 3, distinct titles)", async ({ request }) => {
+  test("every registry locale has its own link preview on every site (46 x 3, distinct titles)", async ({ request }) => {
     for (const site of ["math", "english", "korean"] as Site[]) {
       const titles = new Set<string>();
       for (const loc of REGISTRY) {

@@ -91,9 +91,25 @@ export const COUNTRY_SLUG_TO_CODE: Record<string, CountryCode> = {
   venezuela: "VE",
   kenya: "KE",
   argentina: "AR",
+  romania: "RO",
+  finland: "FI",
+  czechia: "CZ",
+  hungary: "HU",
+  zambia: "ZM",
+  uganda: "UG",
+  congo: "CG",
 };
 
+export const MANUAL_REGION_COUNTRIES = new Set(["RO", "FI", "CZ", "HU", "ZM", "UG", "CG"]);
+
 export const DEFAULT_COUNTRY_REGIONS: Record<string, RegionItem> = {
+  RO: { country: "RO", sido: "", gungu: "", dong: "" },
+  FI: { country: "FI", sido: "", gungu: "", dong: "" },
+  CZ: { country: "CZ", sido: "", gungu: "", dong: "" },
+  HU: { country: "HU", sido: "", gungu: "", dong: "" },
+  ZM: { country: "ZM", sido: "", gungu: "", dong: "" },
+  UG: { country: "UG", sido: "", gungu: "", dong: "" },
+  CG: { country: "CG", sido: "", gungu: "", dong: "" },
   KR: { country: "KR", sido: "전북특별자치도", gungu: "익산시", dong: "신동" },
   VN: { country: "VN", sido: "Thành phố Hồ Chí Minh", gungu: "Quận 1", dong: "Bến Nghé" },
   JP: { country: "JP", sido: "東京都", gungu: "新宿区", dong: "西新宿" },
@@ -628,6 +644,7 @@ export const koreanRegions: SidoData[] = [
 ];
 
 export function getCountryRegions(country: CountryCode = "KR"): SidoData[] {
+  if (MANUAL_REGION_COUNTRIES.has(country)) return [];
   switch (country) {
     case "VN":
       return vietnamRegions;
@@ -671,5 +688,4 @@ export function findGungu(sidoName: string, gunguName: string, country: CountryC
     (g) => g.name === gunguName || g.name.includes(gunguName) || gunguName.includes(g.name),
   );
 }
-
 

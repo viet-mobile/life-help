@@ -21,7 +21,7 @@ const FILES: Record<Site, string[]> = {
   korean: ["korean/korean"],
 };
 const LEVEL: Record<Site, string> = { math: "E3", english: "E3", korean: "K2" };
-const LOCALES = ["en", "ko", "vi", "ur", "ar", "he", "sg", "sw", "mr", "gu", "pa", "te", "kn", "ml", "ja", "zh-Hans"] as const;
+const LOCALES = ["en", "ko", "vi", "ur", "ar", "he", "fr", "sw", "mr", "gu", "pa", "te", "kn", "ml", "ja", "zh-Hans"] as const;
 const RTL = new Set(["ar", "arz", "fa", "he", "ur"]);
 const HANGUL = /[가-힣]/;
 

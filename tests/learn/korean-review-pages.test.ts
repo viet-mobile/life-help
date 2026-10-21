@@ -39,8 +39,8 @@ describe("Korean review pages (the gate is ReviewFrame; these exercise what is r
     expect(out).not.toMatch(/검토 완료|reviewed: true/);
   });
   it("a fallback row says so", async () => {
-    const page = await loadReviewLevel("K2", "sg", { skill: "k.k2.greetings", limit: 100 });
-    const out = html(createElement(ReviewList, { rows: page.rows, locale: "sg" }));
+    const page = await loadReviewLevel("K2", "ar", { skill: "k.k2.greetings", limit: 100 });
+    const out = html(createElement(ReviewList, { rows: page.rows, locale: "ar" }));
     expect(out).toContain("fallback to English");
   });
 });

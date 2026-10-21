@@ -1,3 +1,4 @@
+import { isJiuHost, jiuManifest } from "@/lib/jiu/brand";
 import type { MetadataRoute } from "next";
 import { headers } from "next/headers";
 import { getDomainShortcutDetails } from "@/lib/shortcut/desktopShortcut";
@@ -17,6 +18,8 @@ export default async function manifest(): Promise<MetadataRoute.Manifest> {
   } catch {
     // ignore
   }
+
+  if (isJiuHost(host)) return jiuManifest();
 
   // math.life.help / english.life.help / study.korean.life.help ship their own installable identity (in the site's default locale).
   const learn = parseLearnHost(host);

@@ -14,10 +14,12 @@ import {
 } from "@/lib/i18n/siteMetadata";
 
 import { TopPwaBar } from "@/components/pwa/TopPwaBar";
+import { isJiuHost, jiuMetadata } from "@/lib/jiu/brand";
 import { PwaRegister } from "@/components/pwa/PwaRegister";
 
 export async function generateMetadata(): Promise<Metadata> {
   const headersList = await headers();
+  if (isJiuHost(headersList.get("x-forwarded-host") ?? headersList.get("host") ?? "")) return jiuMetadata;
   const lang = resolveLanguageFromHeaders(headersList);
   const portal = resolvePortalFromHeaders(headersList);
   const country = resolveCountryFromHeaders(headersList);
@@ -58,13 +60,14 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
   const lang = resolveLanguageFromHeaders(headersList);
   const country = resolveCountryFromHeaders(headersList);
 
+  const jiu = isJiuHost(headersList.get("x-forwarded-host") ?? headersList.get("host") ?? "");
   return (
     <html lang={lang}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#000000" />
+        {!jiu && <link rel="manifest" href="/manifest.json" />}
+        <meta name="theme-color" content={jiu ? "#253b35" : "#000000"} />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -74,7 +77,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
           <LocaleProvider initialLocale={lang as any}>
             <RegionProvider initialCountry={country}>
               <PwaRegister />
-              {headersList.get("x-life-portal") !== "learn" && <TopPwaBar />}
+              {!["learn", "jiu"].includes(headersList.get("x-life-portal") ?? "") && <TopPwaBar />}
               {children}
             </RegionProvider>
           </LocaleProvider>

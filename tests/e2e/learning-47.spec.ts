@@ -3,7 +3,7 @@ import { expect, test, type Page } from "@playwright/test";
 import { ko } from "../../lib/learn/i18n/ko";
 
 /**
- * 47-locale learning (production build, guest mode, speech mocked):
+ * 46-locale learning (production build, guest mode, speech mocked):
  *   - representative matrix: 16 locales x math / english / study.korean x desktop / 390 px
  *   - locale switching inside a learner journey: math E3 en -> mr -> ur (RTL); English vi -> ur -> sw -> te; Korean "안녕하세요." in en / vi / ur / sw / mr
  * Expected texts come from the same files the server uses (dictionary + the locale's own overlay; no fallback layer), so the assertions
@@ -12,7 +12,7 @@ import { ko } from "../../lib/learn/i18n/ko";
 const PORT = 3100;
 const HOST = { math: `http://math.localhost:${PORT}`, english: `http://english.localhost:${PORT}`, korean: `http://korean.localhost:${PORT}` } as const;
 type Site = keyof typeof HOST;
-const MATRIX = ["ko", "en", "vi", "ur", "ar", "he", "sg", "sw", "mr", "gu", "pa", "te", "kn", "ml", "ja", "zh-Hans"] as const;
+const MATRIX = ["ko", "en", "vi", "ur", "ar", "he", "fr", "sw", "mr", "gu", "pa", "te", "kn", "ml", "ja", "zh-Hans"] as const;
 const RTL = new Set(["ar", "arz", "fa", "he", "ur"]);
 const HANGUL = /[가-힣]/;
 
