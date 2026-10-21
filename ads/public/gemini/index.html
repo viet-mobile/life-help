@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<!-- Delivered by Gemini (life-help-ad-studio.html v3.0). Published as delivered, 2026-10-21: the final requirements are NOT yet applied to this version. Known issues are listed in /ads/NOTES.md. -->
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LIFE.HELP 글로벌 10초 유튜브 광고 스튜디오 (v3.0 - 175cm 인체비례 IK & 순수 활꼴 면적)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600;800;900&family=Noto+Sans+KR:wght@500;700;900&display=swap');
+    body { font-family: 'Inter', 'Noto Sans KR', sans-serif; background: #0f172a; color: #f8fafc; }
+    canvas { width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 1rem; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.6); background: #ffffff; }
+  </style>
+</head>
+<body class="min-h-screen p-4 md:p-8 flex flex-col items-center">
+
+  <!-- 상단 헤더 -->
+  <header class="max-w-6xl w-full mb-6 flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-4">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-[#1B2A4A] border-2 border-slate-700 flex items-center justify-center relative">
+        <span class="w-3.5 h-3.5 rounded-full bg-[#E63946] absolute -top-1 -right-1"></span>
+        <span class="font-black text-white text-lg">L</span>
+      </div>
+      <div>
+        <h1 class="text-xl font-black tracking-tight text-white">LIFE.HELP Global 10s Ad Studio <span class="text-rose-400 text-sm font-bold ml-1">v3.0</span></h1>
+        <p class="text-xs text-slate-400">175cm 7.5등신 인체비례 IK 캐릭터 · 순수 포물선 활꼴 면적(3.71m²) · 전 과목 46개 언어 캐치프레이즈</p>
+      </div>
+    </div>
+    <div id="ttsStatusBadge" class="flex items-center gap-2 text-xs bg-slate-800/90 px-3 py-1.5 rounded-lg border border-slate-700">
+      <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+      <span>현재 OS TTS 음성 지원 상태 확인 중...</span>
+    </div>
+  </header>
+
+  <!-- 컨트롤 패널 -->
+  <section class="max-w-6xl w-full bg-slate-900 border border-slate-800 rounded-2xl p-5 mb-6 shadow-xl">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+      <div>
+        <label class="block text-xs font-bold text-slate-400 mb-1.5">1. 국가 선택 (58개국)</label>
+        <select id="countrySelect" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-sm font-semibold text-white focus:outline-none focus:border-rose-500"></select>
+      </div>
+
+      <div>
+        <label class="block text-xs font-bold text-slate-400 mb-1.5">2. 광고 언어 (46개 언어)</label>
+        <select id="langSelect" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-sm font-semibold text-white focus:outline-none focus:border-rose-500"></select>
+      </div>
+
+      <div class="md:col-span-2">
+        <div class="flex items-center justify-between mb-1.5">
+          <label class="text-xs font-bold text-slate-400">3. 광고 종류 (영어권은 영어 광고 제외 3종)</label>
+          <span id="ruleBadge" class="text-[11px] font-bold px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300">4종 전체 송출 국가</span>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          <button data-type="math" class="ad-type-btn py-2.5 px-3 rounded-xl font-bold text-xs border transition">📐 수학 (MATH)</button>
+          <button data-type="english" id="btnEnglishAd" class="ad-type-btn py-2.5 px-3 rounded-xl font-bold text-xs border transition">🔤 영어 (ENGLISH)</button>
+          <button data-type="korean" class="ad-type-btn py-2.5 px-3 rounded-xl font-bold text-xs border transition">🇰🇷 한국어 (KOREAN)</button>
+          <button data-type="life" class="ad-type-btn py-2.5 px-3 rounded-xl font-bold text-xs border transition">🌐 생활 (LIFE.HELP)</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-800">
+      <div class="flex flex-wrap items-center gap-2.5">
+        <button id="playBtn" class="px-5 py-2.5 rounded-xl bg-[#E63946] hover:bg-rose-600 text-white font-extrabold text-sm transition flex items-center gap-2 shadow-lg shadow-rose-950/50">
+          <span>▶ 10초 광고 재생</span>
+        </button>
+        <button id="recordBtn" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold text-sm transition flex items-center gap-2">
+          <span>🔴 10초 영상 파일 저장 (.webm)</span>
+        </button>
+        <label class="flex items-center gap-2 text-xs text-slate-300 ml-2 cursor-pointer">
+          <input type="checkbox" id="sfxToggle" checked class="rounded text-rose-500 focus:ring-0" />
+          <span>효과음(SFX) 및 음성 내레이션 켜기</span>
+        </label>
+      </div>
+
+      <div class="flex items-center gap-3 flex-1 max-w-md">
+        <span id="timeLabel" class="text-xs font-mono font-bold text-slate-400 w-24 text-right">0.0s / 10.0s</span>
+        <div class="w-full h-2.5 bg-slate-800 rounded-full overflow-hidden">
+          <div id="progressBar" class="h-full bg-[#E63946] w-0 transition-all duration-75"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 메인 1280x720 캔버스 -->
+  <div class="max-w-5xl w-full relative">
+    <canvas id="adCanvas" width="1280" height="720"></canvas>
+  </div>
+
+  <!-- 하단 스크립트 프리뷰 박스 -->
+  <section class="max-w-5xl w-full mt-6 bg-slate-900/90 border border-slate-800 rounded-2xl p-5 space-y-3">
+    <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+      <span class="text-xs font-bold text-slate-400">현재 광고 구성 (초반 질문 ➔ 해답/공식 ➔ 과목별 캐치프레이즈)</span>
+      <span id="targetUrlBadge" class="text-sm font-black text-white flex items-center gap-1 font-mono"></span>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+      <div class="bg-slate-800/60 p-3.5 rounded-xl border border-slate-700/70">
+        <div class="text-xs font-bold text-amber-400 mb-1">❓ 초반 질문 (0.0s ~ 6.5s)</div>
+        <p id="questionPreview" class="font-bold text-slate-100 leading-relaxed text-xs"></p>
+      </div>
+      <div class="bg-slate-800/60 p-3.5 rounded-xl border border-emerald-500/30">
+        <div class="text-xs font-bold text-emerald-400 mb-1">💡 정답 및 공식 (6.5s ~ 10.0s)</div>
+        <p id="answerPreview" class="font-bold text-slate-100 leading-relaxed whitespace-pre-line text-xs"></p>
+      </div>
+      <div class="bg-slate-800/60 p-3.5 rounded-xl border border-rose-500/30">
+        <div class="text-xs font-bold text-rose-400 mb-1">🔥 과목별 캐치프레이즈 (6.5s ~ 10.0s)</div>
+        <p id="catchPreview" class="font-bold text-white leading-relaxed text-xs"></p>
+      </div>
+    </div>
+  </section>
+
+<script>
+// 1. 58개국 데이터
+const COUNTRIES = [
+  { name: "한국 (Korea)", domain: "korea.life.help", langs: ["ko"] },
+  { name: "미국 (USA)", domain: "us.life.help", langs: ["en"] },
+  { name: "영국 (UK)", domain: "uk.life.help", langs: ["en"] },
+  { name: "캐나다 (Canada)", domain: "canada.life.help", langs: ["en"] },
+  { name: "호주 (Australia)", domain: "australia.life.help", langs: ["en"] },
+  { name: "뉴질랜드 (New Zealand)", domain: "newzealand.life.help", langs: ["en"] },
+  { name: "베트남 (Vietnam)", domain: "vietnam.life.help", langs: ["vi"] },
+  { name: "일본 (Japan)", domain: "japan.life.help", langs: ["ja"] },
+  { name: "중국 (China)", domain: "china.life.help", langs: ["zh-Hans"] },
+  { name: "대만 (Taiwan)", domain: "taiwan.life.help", langs: ["zh-Hant"] },
+  { name: "싱가포르 (Singapore)", domain: "singapore.life.help", langs: ["en", "zh-Hans", "ms", "ta"] },
+  { name: "필리핀 (Philippines)", domain: "philippines.life.help", langs: ["tl", "en"] },
+  { name: "인도 (India)", domain: "india.life.help", langs: ["hi", "gu", "mr", "ml", "kn", "pa", "te", "ta", "bn"] },
+  { name: "인도네시아 (Indonesia)", domain: "indonesia.life.help", langs: ["id"] },
+  { name: "말레이시아 (Malaysia)", domain: "malaysia.life.help", langs: ["ms"] },
+  { name: "태국 (Thailand)", domain: "thailand.life.help", langs: ["th"] },
+  { name: "미얀마 (Myanmar)", domain: "myanmar.life.help", langs: ["my"] },
+  { name: "캄보디아 (Cambodia)", domain: "cambodia.life.help", langs: ["km"] },
+  { name: "방글라데시 (Bangladesh)", domain: "bangladesh.life.help", langs: ["bn"] },
+  { name: "파키스탄 (Pakistan)", domain: "pakistan.life.help", langs: ["ur"] },
+  { name: "네팔 (Nepal)", domain: "nepal.life.help", langs: ["ne"] },
+  { name: "스리랑카 (Sri Lanka)", domain: "srilanka.life.help", langs: ["si"] },
+  { name: "몽골 (Mongolia)", domain: "mongol.life.help", langs: ["mn"] },
+  { name: "동티모르 (Timor-Leste)", domain: "timorleste.life.help", langs: ["tet"] },
+  { name: "우즈베키스탄 (Uzbekistan)", domain: "uzbek.life.help", langs: ["uz"] },
+  { name: "카자흐스탄 (Kazakhstan)", domain: "kazakh.life.help", langs: ["kk"] },
+  { name: "러시아 (Russia)", domain: "russia.life.help", langs: ["ru"] },
+  { name: "우크라이나 (Ukraine)", domain: "ukraina.life.help", langs: ["uk"] },
+  { name: "독일 (Germany)", domain: "deutsch.life.help", langs: ["de"] },
+  { name: "프랑스 (France)", domain: "france.life.help", langs: ["fr"] },
+  { name: "스위스 (Switzerland)", domain: "swiss.life.help", langs: ["de", "fr"] },
+  { name: "스페인 (Spain)", domain: "espania.life.help", langs: ["es"] },
+  { name: "멕시코 (Mexico)", domain: "mexico.life.help", langs: ["es"] },
+  { name: "베네수엘라 (Venezuela)", domain: "venezuela.life.help", langs: ["es"] },
+  { name: "엘살바도르 (El Salvador)", domain: "elsalvador.life.help", langs: ["es"] },
+  { name: "브라질 (Brazil)", domain: "brazil.life.help", langs: ["pt"] },
+  { name: "포르투갈 (Portugal)", domain: "portugal.life.help", langs: ["pt"] },
+  { name: "모잠비크 (Mozambique)", domain: "mozambique.life.help", langs: ["pt"] },
+  { name: "이탈리아 (Italy)", domain: "italia.life.help", langs: ["it"] },
+  { name: "네덜란드 (Netherlands)", domain: "netherland.life.help", langs: ["nl"] },
+  { name: "폴란드 (Poland)", domain: "poland.life.help", langs: ["pl"] },
+  { name: "루마니아 (Romania)", domain: "romania.life.help", langs: ["ro"] },
+  { name: "체코 (Czechia)", domain: "czech.life.help", langs: ["cs"] },
+  { name: "헝가리 (Hungary)", domain: "hungary.life.help", langs: ["hu"] },
+  { name: "그리스 (Greece)", domain: "greece.life.help", langs: ["el"] },
+  { name: "스웨덴 (Sweden)", domain: "sweden.life.help", langs: ["sv"] },
+  { name: "덴마크 (Denmark)", domain: "denmark.life.help", langs: ["da"] },
+  { name: "노르웨이 (Norway)", domain: "norway.life.help", langs: ["no"] },
+  { name: "핀란드 (Finland)", domain: "finland.life.help", langs: ["fi"] },
+  { name: "튀르키예 (Turkiye)", domain: "turkiye.life.help", langs: ["tr"] },
+  { name: "사우디아라비아 (Saudi Arabia)", domain: "saudiarabia.life.help", langs: ["ar"] },
+  { name: "아랍에미리트 (UAE)", domain: "uae.life.help", langs: ["ar"] },
+  { name: "예멘 (Yemen)", domain: "yemen.life.help", langs: ["ar"] },
+  { name: "이라크 (Iraq)", domain: "iraq.life.help", langs: ["ar"] },
+  { name: "이집트 (Egypt)", domain: "egypt.life.help", langs: ["arz"] },
+  { name: "이란 (Iran)", domain: "iran.life.help", langs: ["fa"] },
+  { name: "이스라엘 (Israel)", domain: "israel.life.help", langs: ["he"] },
+  { name: "에티오피아 (Ethiopia)", domain: "ethiopia.life.help", langs: ["am"] },
+  { name: "케냐 (Kenya)", domain: "kenya.life.help", langs: ["sw"] },
+  { name: "나이지리아 (Nigeria)", domain: "nigeria.life.help", langs: ["pcm"] },
+  { name: "남아프리카 공화국 (South Africa)", domain: "southafrica.life.help", langs: ["af"] },
+  { name: "가나 (Ghana)", domain: "ghana.life.help", langs: ["en"] },
+  { name: "우간다 (Uganda)", domain: "uganda.life.help", langs: ["en"] },
+  { name: "잠비아 (Zambia)", domain: "zambia.life.help", langs: ["en"] },
+  { name: "중앙아프리카공화국 (CAR)", domain: "centralafrican.life.help", langs: ["fr"] },
+  { name: "콩고 (Congo)", domain: "congo.life.help", langs: ["fr"] }
+];
+
+// 2. 46개 언어별 과목 캐치프레이즈 (수학, 영어, 한국어, 생활 플랫폼)
+const CATCHPHRASES = {
+  ko: { math: "단순 암기는 페이크! 생각하는 힘으로 완벽한 골인!", english: "막히는 문맥도 호쾌하게 리바운드! 진짜 통하는 영어 감각!", korean: "한국어의 리듬과 문맥을 한 번에! 가장 스마트한 한국어 학습!", life: "복잡한 일상 문제는 가볍게 돌파! 생활의 모든 순간을 덩크하다, LIFE.HELP" },
+  en: { math: "Fake out rote memorization. Score with pure logic!", english: "Rebound every context. Master real-world English!", korean: "Master real Korean with natural rhythm and flow!", life: "Bounce past complex daily problems! Slam dunk every moment of life, LIFE.HELP" },
+  vi: { math: "Vượt qua lối học vẹt, ghi điểm bằng tư duy logic!", english: "Bắt trọn ngữ cảnh, làm chủ tiếng Anh thực tế!", korean: "Nắm bắt nhịp điệu tiếng Hàn tự nhiên và chuẩn xác!", life: "Vượt qua mọi rắc rối thường ngày! Úp rổ mọi khoảnh khắc cuộc sống, LIFE.HELP" },
+  ja: { math: "暗記をかわして、思考力でゴールを決めろ！", english: "文脈をつかんで、生きた英語をリバウンド！", korean: "自然な韓国語のリズムを、スマートにマスター！", life: "複雑な日常の問題を軽やかに突破！暮らしのすべての瞬間をダンクする、LIFE.HELP" },
+  "zh-Hans": { math: "晃过死记硬背，用逻辑思维精准得分！", english: "抢下语境篮板，真正掌握地道英语！", korean: "把握地道韩语节奏，轻松开口交流！", life: "轻松突破复杂的日常难题！扣响生活的每一刻，LIFE.HELP" },
+  "zh-Hant": { math: "擺脫死記硬背，用邏輯思維精準得分！", english: "掌握語境關鍵，輕鬆學會道地英語！", korean: "抓準韓語自然節奏，自信開口說韓文！", life: "輕鬆突破複雜的日常難題！灌響生活的每一刻，LIFE.HELP" },
+  es: { math: "¡Esquiva la memorización y encesta con lógica!", english: "¡Atrapa el contexto y domina el inglés real!", korean: "¡Domina el ritmo del coreano de forma natural!", life: "¡Supera los problemas diarios! Haz un mate en cada momento de tu vida, LIFE.HELP" },
+  pt: { math: "Drible a decoreba e marque ponto com a lógica!", english: "Domine o contexto e fale inglês de verdade!", korean: "Aprenda coreano no ritmo certo e sem complicação!", life: "Supere os problemas diários com leveza! Enterre cada momento da vida, LIFE.HELP" },
+  fr: { math: "Dribblez le par cœur, marquez avec la logique !", english: "Saisissez le contexte, maîtrisez le vrai anglais !", korean: "Apprenez le coréen avec rythme et fluidité !", life: "Franchissez les soucis du quotidien ! Dunkez chaque instant de votre vie, LIFE.HELP" },
+  de: { math: "Vergiss Auswendiglernen – punkte mit Logik!", english: "Verstehe den Kontext, meistere echtes Englisch!", korean: "Lerne Koreanisch mit Rhythmus und System!", life: "Alltagsprobleme leicht durchbrechen! Ein Slam Dunk für jeden Moment, LIFE.HELP" },
+  ru: { math: "Обойди зубрежку — забивай логикой!", english: "Лови контекст и владей живым английским!", korean: "Освой ритм корейского языка легко и точно!", life: "Легко обходи бытовые проблемы! Забивай данк в каждый момент жизни, LIFE.HELP" },
+  uk: { math: "Обійди зубріння — перемагай логікою!", english: "Розумій контекст і опановуй живу англійську!", korean: "Вивчай корейську легко та впевнено!", life: "Легко долай побутові проблеми! Забивай данк у кожну мить життя, LIFE.HELP" },
+  uz: { math: "Yodlashni emas, mantiqiy fikrlashni tanlang!", english: "Kontekstni tushuning va amaliy ingliz tilini egallang!", korean: "Koreys tilini oson va tez o‘rganing!", life: "Kundalik muammolarni oson yengib o'ting! Hayotning har lahzasini dank qiling, LIFE.HELP" },
+  kk: { math: "Жаттандылықты қойып, логикамен ұпай жина!", english: "Мәтінмәнді түсініп, нағыз ағылшын тілін меңгер!", korean: "Корей тілін оңай әрі жүйелі үйрен!", life: "Күнделікті мәселелерді оңай еңсер! Өмірдің әр сәтін данкпен бағындыр, LIFE.HELP" },
+  id: { math: "Lewati hafalan, cetak skor dengan logika!", english: "Rebound setiap konteks, kuasai bahasa Inggris nyata!", korean: "Kuasai ritme bahasa Korea dengan mudah dan seru!", life: "Terobos masalah harian dengan mudah! Slam dunk setiap momen hidupmu, LIFE.HELP" },
+  ms: { math: "Elak hafalan, jaringkan gol dengan logik pintar!", english: "Kuasai konteks sebenar, tingkatkan bahasa Inggeris!", korean: "Belajar rentak bahasa Korea dengan mudah!", life: "Atasi masalah harian dengan mudah! Slam dunk setiap detik kehidupan, LIFE.HELP" },
+  th: { math: "ก้าวข้ามการท่องจำ ชู้ตทำแต้มด้วยตรรกะ!", english: "เก็บครบทุกบริบท เก่งภาษาอังกฤษที่ใช้ได้จริง!", korean: "จับจังหวะภาษาเกาหลี พูดคล่องอย่างมั่นใจ!", life: "ทะลุทุกปัญหาในชีวิตประจำวัน! ดังก์ทุกช่วงเวลาของชีวิต, LIFE.HELP" },
+  tl: { math: "Iwasan ang basta kabisado, umiskor gamit ang talino!", english: "Hulihin ang tamang konteksto, gumaling sa English!", korean: "Matuto ng natural na Korean nang mabilis!", life: "Lampasan ang mabibigat na problema! I-slam dunk ang bawat sandali ng buhay, LIFE.HELP" },
+  my: { math: "အလွတ်ကျက်မှတ်ခြင်းကို ကျော်ဖြတ်ပြီး တွေးခေါ်မှုဖြင့် အမှတ်ယူပါ!", english: "လက်တွေ့သုံး အင်္ဂလိပ်စာကို အပိုင်ကျွမ်းကျင်စေဖို့!", korean: "ကိုရီးယားဘာသာစကားကို လွယ်ကူစွာ လေ့လာပါ!", life: "နေ့စဉ်ပြဿနာများကို အလွယ်တကူ ကျော်ဖြတ်ပါ! LIFE.HELP" },
+  km: { math: "ឈប់ទន្ទេញចាំមាត់ ប្រើការគិតដើម្បីរកពិន្ទុ!", english: "យល់ច្បាស់ពីបរិបទ ប្រើភាសាអង់គ្លេសដោយទំនុកចិត្ត!", korean: "រៀនភាសាកូរ៉េឱ្យចេះប្រើប្រាស់ពិតប្រាកដ!", life: "ឆ្លងកាត់បញ្ហាប្រចាំថ្ងៃដោយងាយស្រួល! LIFE.HELP" },
+  mn: { math: "Цээжлэх биш сэтгэж бод! Логикоор оноо ав!", english: "Бодит орчинд англи хэлийг төгс эзэмш!", korean: "Солонгос хэлийг хэмнэлтэй, хялбар суралц!", life: "Өдөр тутмын асуудлыг хөнгөхөн дав! LIFE.HELP" },
+  tet: { math: "Hanoin ho lójika, manán pontu iha matemátika!", english: "Komprende lian Inglés ho di'ak no lais!", korean: "Aprende lian Korea ho maneira fásil!", life: "Haksoit liu problema loron-loron nian! LIFE.HELP" },
+  hi: { math: "रटना छोड़ें, लॉजिक से सीधा गोल करें!", english: "सही संदर्भ समझें, असली इंग्लिश में महारत पाएं!", korean: "सही लय के साथ आसानी से कोरियन भाषा सीखें!", life: "रोज़मर्रा की समस्याओं को आसानी से पार करें! जीवन के हर पल को डंक करें, LIFE.HELP" },
+  bn: { math: "মুখস্থ নয়, যুক্তি দিয়ে গোল করুন!", english: "সঠিক প্রসঙ্গ বুঝে বাস্তব ইংরেজি শিখুন!", korean: "সহজে ও ছন্দে কোরিয়ান ভাষা আয়ত্ত করুন!", life: "প্রতিদিনের জটিল সমস্যা সহজেই পার করুন! LIFE.HELP" },
+  gu: { math: "ગોખણપટ્ટી છોડો, તર્કથી સ્કોર કરો!", english: "સાચો સંદર્ભ સમજો, અંગ્રેજીમાં નિપુણ બનો!", korean: "સરળતાથી કોરિયન ભાષા શીખો!", life: "રોજિંદા જટિલ પ્રશ્નોને સરળતાથી પાર કરો! LIFE.HELP" },
+  mr: { math: "पाठांतर सोडा, तर्काने गोल करा!", english: "संदर्भ समजून घ्या, खऱ्या इंग्रजीवर प्रभुत्व मिळवा!", korean: "सहज आणि अचूक कोरियन भाषा शिका!", life: "दैनंदिन गुंतागुंतीच्या समस्या सहज पार करा! LIFE.HELP" },
+  ml: { math: "കാണാതെ പഠിക്കാതെ യുക്തിയിലൂടെ വിജയം നേടൂ!", english: "സാഹചര്യം മനസ്സിലാക്കി മികച്ച ഇംഗ്ലീഷ് സംസാരിക്കൂ!", korean: "കൊറിയൻ ഭാഷ അനായാസം പഠിച്ചു തുടങ്ങൂ!", life: "നിത്യജീവിതത്തിലെ പ്രശ്നങ്ങൾ നിഷ്പ്രയാസം മറികടക്കൂ! LIFE.HELP" },
+  kn: { math: "ಕಂಠಪಾಠ ಬಿಡಿ, ತರ್ಕದಿಂದ ಗುರಿ ಮುಟ್ಟಿ!", english: "ಸಂದರ್ಭವನ್ನು ಅರಿತು ಇಂಗ್ಲಿಷ್ ಕಲಿಯಿರಿ!", korean: "ಕೊರಿಯನ್ ಭಾಷೆಯನ್ನು ಸುಲಭವಾಗಿ ಕಲಿಯಿರಿ!", life: "ದೈನಂದಿನ ಸಮಸ್ಯೆಗಳನ್ನು ಸುಲಭವಾಗಿ ದಾಟಿ! LIFE.HELP" },
+  pa: { math: "ਰੱਟਾ ਛੱਡੋ, ਤਰਕ ਨਾਲ ਗੋਲ ਕਰੋ!", english: "ਸਹੀ ਸੰਦਰਭ ਸਮਝੋ, ਅੰਗਰੇਜ਼ੀ ਵਿੱਚ ਮਾਹਰ ਬਣੋ!", korean: "ਕੋਰੀਅਨ ਭਾਸ਼ਾ ਆਸਾਨੀ ਨਾਲ ਸਿੱਖੋ!", life: "ਰੋਜ਼ਾਨਾ ਦੀਆਂ ਮੁਸ਼ਕਲਾਂ ਨੂੰ ਆਸਾਨੀ ਨਾਲ ਪਾਰ ਕਰੋ! LIFE.HELP" },
+  te: { math: "బట్టీ పట్టడం ఆపండి, లాజిక్‌తో స్కోర్ చేయండి!", english: "సందర్భాన్ని అర్థం చేసుకుని ఇంగ్లీష్ నేర్చుకోండి!", korean: "కొరియన్ భాషను సులభంగా నేర్చుకోండి!", life: "రోజువారీ సమస్యలను సులభంగా దాటండి! LIFE.HELP" },
+  ta: { math: "மனப்பாடம் வேண்டாம், தர்க்கரீதியாக வெல்லுங்கள்!", english: "சூழலைப் புரிந்து சரியான ஆங்கிலம் பேசுங்கள்!", korean: "கொரிய மொழியை எளிதாகவும் வேகமாகவும் கற்றுக்கொள்ளுங்கள்!", life: "அன்றாட சிக்கல்களை எளிதாக கடந்து செல்லுங்கள்! LIFE.HELP" },
+  ur: { math: "رٹا چھوڑیں، منطق سے گول کریں!", english: "سیاق و سباق سمجھیں اور بہترین انگریزی سیکھیں!", korean: "کورین زبان آسانی اور روانی سے سیکھیں!", life: "روزمرہ کے پیچیدہ مسائل کو آسانی سے حل کریں! LIFE.HELP" },
+  ne: { math: "घोक्ने होइन, तर्कले जित्नुहोस्!", english: "सन्दर्भ बुझेर व्यावहारिक अंग्रेजी सिक्नुहोस्!", korean: "सजिलो र छिटो कोरियन भाषा सिक्नुहोस्!", life: "दैनिक जटिल समस्याहरू सजिलै पार गर्नुहोस्! LIFE.HELP" },
+  si: { math: "කටපාඩම් නොකර තර්කයෙන් ජය ගන්න!", english: "නිවැරදි අවබෝධයෙන් ප්‍රායෝගික ඉංග්‍රීසි ඉගෙන ගන්න!", korean: "කොරියානු භාෂාව පහසුවෙන් ප්‍රගුණ කරන්න!", life: "එදිනෙදා සංකීර්ණ ගැටලු පහසුවෙන් ජය ගන්න! LIFE.HELP" },
+  it: { math: "Dribbla lo studio a memoria, vai a canestro con la logica!", english: "Cogli il contesto e padroneggia il vero inglese!", korean: "Impara il coreano con ritmo e naturalezza!", life: "Supera i problemi quotidiani con leggerezza! Schiaccia ogni momento, LIFE.HELP" },
+  nl: { math: "Dribbel voorbij stampwerk, scoor met logica!", english: "Pak de context en beheers echt Engels!", korean: "Leer Koreaans met ritme en gemak!", life: "Breek moeiteloos door dagelijkse problemen! Slam dunk elk moment, LIFE.HELP" },
+  pl: { math: "Omiń kucie na pamięć, punktuj logiką!", english: "Złap kontekst i opanuj prawdziwy angielski!", korean: "Ucz się koreańskiego płynnie i skutecznie!", life: "Lekko pokonuj codzienne problemy! Zrób wsad w każdej chwili, LIFE.HELP" },
+  ro: { math: "Fentează toceala, marchează prin logică!", english: "Prinde contextul și stăpânește engleza reală!", korean: "Învață coreeana natural și eficient!", life: "Treci ușor peste problemele zilnice! Dă un slam dunk în fiecare clipă, LIFE.HELP" },
+  cs: { math: "Obejdi biflování a skóruj logikou!", english: "Pochop kontext a ovládni skutečnou angličtinu!", korean: "Nauč se korejsky snadno a v rytmu!", life: "Prolomte každodenní problémy s lehkostí! Zasmečujte v každém okamžiku, LIFE.HELP" },
+  hu: { math: "Cselezd ki a magolást, szerezz pontot logikával!", english: "Értsd meg a szövegkörnyezetet, tanulj valódi angolt!", korean: "Tanulj koreaiul könnyedén és lendületesen!", life: "Törj át könnyedén a napi gondokon! Zsákold be minden pillanatát, LIFE.HELP" },
+  el: { math: "Ξέφυγε από την παπαγαλία, σκόραρε με τη λογική!", english: "Πιάσε το νόημα και μάθε αληθινά αγγλικά!", korean: "Μάθε κορεατικά εύκολα και με ρυθμό!", life: "Ξεπεράστε εύκολα τα καθημερινά προβλήματα! Καρφώστε σε κάθε στιγμή, LIFE.HELP" },
+  sv: { math: "Dribbla bort utantillkunskap, gör poäng med logik!", english: "Fånga sammanhanget och bemästra riktig engelska!", korean: "Lär dig koreanska med flyt och rytm!", life: "Ta dig enkelt förbi vardagens problem! Dunka varje ögonblick, LIFE.HELP" },
+  da: { math: "Dribl uden om udenadslære, scor med logik!", english: "Fang konteksten og lær ægte engelsk!", korean: "Lær koreansk nemt og med god rytme!", life: "Bryd let igennem hverdagens problemer! Slam dunk hvert øjeblik, LIFE.HELP" },
+  no: { math: "Drible forbi pugging, score med logikk!", english: "Fang konteksten og mestre ekte engelsk!", korean: "Lær koreansk enkelt og med flyt!", life: "Kom deg enkelt gjennom hverdagsproblemene! Dunk hvert øyeblikk, LIFE.HELP" },
+  fi: { math: "Ohita ulkoa opettelu, tee pisteet logiikalla!", english: "Ota konteksti haltuun ja opi aitoa englantia!", korean: "Opi koreaa sujuvasti ja rytmillä!", life: "Murra arjen monimutkaiset ongelmat kevyesti! Donkkaa elämän joka hetki, LIFE.HELP" },
+  tr: { math: "Ezberi çalımla, mantığınla sayı yap!", english: "Bağlamı yakala, gerçek İngilizceyi konuş!", korean: "Koreceyi doğal ritmiyle kolayca öğren!", life: "Karmaşık günlük sorunları kolayca aş! Hayatın her anını smaçla, LIFE.HELP" },
+  ar: { math: "تجاوز الحفظ التقليدي، وسجّل هدفك بالمنطق!", english: "افهم السياق وأتقن الإنجليزية الحقيقية!", korean: "تعلّم اللغة الكورية بإيقاع سلس وطبيعي!", life: "تجاوز مشاكل الحياة اليومية بسهولة! سجل دانك في كل لحظة، LIFE.HELP" },
+  arz: { math: "عدّي الحفظ، وسجّل جون بالتفكير الصح!", english: "افهم الموقف واتكلم إنجليزي بجد!", korean: "اتعلم كوري بسهولة ومن غير تعقيد!", life: "عدّي مشاكل يومك بكل سهولة! اعمل دانك في كل لحظة في حياتك، LIFE.HELP" },
+  fa: { math: "حفظ کردن را جا بگذارید، با منطق امتیاز بگیرید!", english: "مفهوم را درک کنید و انگلیسی واقعی را بیاموزید!", korean: "زبان کره‌ای را با ریتم طبیعی و آسان یاد بگیرید!", life: "مشکلات پیچیده روزمره را به سادگی پشت سر بگذارید! LIFE.HELP" },
+  he: { math: "עקפו את השינון, תקלעו עם היגיון!", english: "תפסו את ההקשר ושלטו באנגלית אמיתית!", korean: "למדו קוריאנית בקצב טבעי ובקלות!", life: "עוברים בקלות כל בעיה יומיומית! מטביעים כל רגע בחיים, LIFE.HELP" },
+  am: { math: "ሸምድዶ ማጥናትን ይተዉ፣ በምክንያታዊ አስተሳሰብ ያሸንፉ!", english: "አውዱን ተረድተው ተግባራዊ እንግሊዝኛን ይማሩ!", korean: "የኮሪያን ቋንቋ በቀላሉ እና በፍጥነት ይማሩ!", life: "የዕለት ተዕለት ውስብስብ ችግሮችን በቀላሉ ይለፉ! LIFE.HELP" },
+  sw: { math: "Epuka kukariri, funga bao kwa mantiki!", english: "Elewa muktadha na ufahamu Kiingereza halisi!", korean: "Jifunze Kikorea kwa urahisi na mtiririko mzuri!", life: "Vuka changamoto za kila siku kwa urahisi! LIFE.HELP" },
+  pcm: { math: "Dribble tough calculation, score point with smart logic!", english: "Catch the real meaning, sabi better English sharp-sharp!", korean: "Learn Korean language easy with correct rhythm!", life: "Pass daily wahala sharp-sharp! Slam dunk every moment for life, LIFE.HELP" },
+  af: { math: "Dribbel verby papegaaiwerk, teken punte aan met logika!", english: "Vang die konteks en bemeester regte Engels!", korean: "Leer Koreaans vinnig en met ritme!", life: "Breek maklik deur daaglikse probleme! Slam dunk elke oomblik van die lewe, LIFE.HELP" }
+};
+
+// 3. 수학 공식 (사다리꼴 제외, 순수 포물선 활꼴 면적 3.71m² 전용) 및 질문 데이터
+const LANG_PACK = {
+  ko: {
+    name: "한국어",
+    terms: {
+      archFormula: "아르키메데스의 포물선 넓이 공식: 면적 = ⅔ × 밑변 × 높이",
+      ballH: "바닥에서 공까지의 높이 = 2.5m",
+      dist: "서있는 위치에서 농구골대까지의 거리 = 4.6m",
+      peakH: "공이 도달한 최고 높이 = 4.0m",
+      rimH: "바닥에서 농구골대 림까지의 높이 = 3.05m",
+      adjEq: "높이 차 반영 활꼴 식: 면적 = ⅔ × 4.6m × 유효높이 1.21m = 3.71m²",
+      answer: "정답"
+    },
+    scoreBefore: "⏱ 남은 시간 00:01.0 (2점 뒤진 상황)", scoreAfter: "🔥 00:00.0 버저비터 3점 성공!",
+    mathQ: "빨간 공이 농구 골대까지 날아가면서 그리는 포물선이 만드는 면적의 넓이는?",
+    engQ: "빨간 공이 바닥에 부딪히면서 나는 소리를 영어로 어떻게 쓰나?",
+    korQ: "우리 편이 2점 지고 있는 상황에서 막판 1초를 남기고 3점 슛을 하여 성공하는 경우를 한국어로 뭐라고 하나?",
+    korA: "정답: 대역전!",
+    lifeQ: "슬램 덩크를 하다가 농구 골대를 부러뜨렸는데 감독님이 오시기 전에 수리를 할 수 있을까? 또 수리를 하려면 비용이 많이 들까?"
+  },
+  en: {
+    name: "영어 (English)",
+    terms: {
+      archFormula: "Archimedes' Parabola Area Formula: Area = ⅔ × Base × Height",
+      ballH: "Height from floor to ball = 2.5m",
+      dist: "Distance from standing spot to hoop = 4.6m",
+      peakH: "Maximum height reached by ball = 4.0m",
+      rimH: "Height from floor to hoop rim = 3.05m",
+      adjEq: "Height-Adjusted Arch: Area = ⅔ × 4.6m × Effective Height 1.21m = 3.71m²",
+      answer: "Answer"
+    },
+    scoreBefore: "⏱ 00:01.0 Left (Down by 2 pts)", scoreAfter: "🔥 00:00.0 Buzzer-Beater 3-Pointer!",
+    mathQ: "What is the area of the parabolic arch drawn as the red ball flies to the hoop?",
+    engQ: "How do you write the sound of the red ball hitting the floor in English?",
+    korQ: "Down by 2 points with 1 second left, you sink a 3-pointer to win! What do you call this in Korean?",
+    korA: "Answer: 대역전! (Dae-yeok-jeon!)",
+    lifeQ: "Broke the hoop doing a slam dunk! Can we fix it before Coach arrives? Will it cost a lot?"
+  },
+  vi: {
+    name: "베트남어 (Tiếng Việt)",
+    terms: {
+      archFormula: "Công thức diện tích parabol của Archimedes: Diện tích = ⅔ × Đáy × Chiều cao",
+      ballH: "Chiều cao từ sàn đến bóng = 2.5m",
+      dist: "Khoảng cách từ vị trí đứng đến rổ = 4.6m",
+      peakH: "Độ cao tối đa bóng đạt được = 4.0m",
+      rimH: "Chiều cao từ sàn đến vành rổ = 3.05m",
+      adjEq: "Công thức hiệu chỉnh độ cao: Diện tích = ⅔ × 4.6m × 1.21m = 3.71m²",
+      answer: "Đáp án"
+    },
+    scoreBefore: "⏱ Còn 00:01.0 (Đang thua 2 điểm)", scoreAfter: "🔥 00:00.0 Ném 3 điểm thành công!",
+    mathQ: "Diện tích tạo bởi đường parabol khi quả bóng đỏ bay tới rổ là bao nhiêu?",
+    engQ: "Âm thanh khi quả bóng đỏ đập xuống sàn viết bằng tiếng Anh như thế nào?",
+    korQ: "Đội nhà đang thua 2 điểm, còn 1 giây cuối ném vào 3 điểm để thắng! Tiếng Hàn gọi là gì?",
+    korA: "Đáp án: 대역전! (Dae-yeok-jeon!)",
+    lifeQ: "Úp rổ làm gãy cả vành rổ! Có sửa kịp trước khi huấn luyện viên tới không? Chi phí có đắt không?"
+  },
+  ja: {
+    name: "일본어 (日本語)",
+    terms: {
+      archFormula: "アルキメデスの放物線面積の公式: 面積 = ⅔ × 底辺 × 高さ",
+      ballH: "床からボールまでの高さ = 2.5m",
+      dist: "立ち位置からゴールまでの距離 = 4.6m",
+      peakH: "ボールが到達した最高到達点 = 4.0m",
+      rimH: "床からゴールリングまでの高さ = 3.05m",
+      adjEq: "高低差を反映した式: 面積 = ⅔ × 4.6m × 有効高さ 1.21m = 3.71m²",
+      answer: "答え"
+    },
+    scoreBefore: "⏱ 残り 00:01.0 (2点ビハインド)", scoreAfter: "🔥 00:00.0 ブザービーター3P成功！",
+    mathQ: "赤いボールがゴールまで飛ぶときに描く放物線が作る面積は？",
+    engQ: "赤いボールが床に跳ねる音を英語でどう書く？",
+    korQ: "2点負けている残り1秒、3ポイントシュートを決めて勝利！これを韓国語で何と言う？",
+    korA: "答え: 대역전! (テヨクチョン：大逆転！)",
+    lifeQ: "ダンクでゴールを壊してしまった！監督が来る前に直せる？修理費用は高い？"
+  },
+  "zh-Hans": {
+    name: "중국어 간체 (简体中文)",
+    terms: {
+      archFormula: "阿基米德抛物线面积公式：面积 = ⅔ × 底边 × 高度",
+      ballH: "地面到球的高度 = 2.5m",
+      dist: "站立位置到篮筐的距离 = 4.6m",
+      peakH: "球达到的最高高度 = 4.0m",
+      rimH: "地面到篮筐边缘的高度 = 3.05m",
+      adjEq: "高度差修正算式：面积 = ⅔ × 4.6m × 有效高度 1.21m = 3.71m²",
+      answer: "答案"
+    },
+    scoreBefore: "⏱ 剩余 00:01.0 (落后2分)", scoreAfter: "🔥 00:00.0 压哨三分绝杀！",
+    mathQ: "红球飞向篮筐时画出的抛物线所围成的面积是多少？",
+    engQ: "红球撞击地面发出的声音用英语怎么写？",
+    korQ: "落后2分、最后1秒投进三分球绝杀！这种情况用韩语怎么说？",
+    korA: "答案: 대역전! (Dae-yeok-jeon：大逆转！)",
+    lifeQ: "扣篮把篮筐扣坏了，能在教练来之前修好吗？修理费用会很贵吗？"
+  },
+  "zh-Hant": {
+    name: "중국어 번체 (繁體中文)",
+    terms: {
+      archFormula: "阿基米德拋物線面積公式：面積 = ⅔ × 底邊 × 高度",
+      ballH: "地面到球的高度 = 2.5m",
+      dist: "站立位置到籃框的距離 = 4.6m",
+      peakH: "球達到的最高高度 = 4.0m",
+      rimH: "地面到籃框邊緣的高度 = 3.05m",
+      adjEq: "高度差修正算式：面積 = ⅔ × 4.6m × 有效高度 1.21m = 3.71m²",
+      answer: "答案"
+    },
+    scoreBefore: "⏱ 剩餘 00:01.0 (落後2分)", scoreAfter: "🔥 00:00.0 壓哨三分絕殺！",
+    mathQ: "紅球飛向籃框時畫出的拋物線所圍成的面積是多少？",
+    engQ: "紅球撞擊地面發出的聲音用英語怎麼寫？",
+    korQ: "落後2分、最後1秒投進三分球絕殺！這種情況用韓語怎麼說？",
+    korA: "答案: 대역전! (Dae-yeok-jeon：大逆轉！)",
+    lifeQ: "灌籃把籃框灌壞了，能在教練來之前修好嗎？修理費用會很貴嗎？"
+  }
+};
+
+// 나머지 40개 언어의 순수 활꼴 공식(사다리꼴 제거) 매핑
+const EXTRA_TERMS = {
+  es: { name: "스페인어", arch: "Fórmula del área de la parábola de Arquímedes: Área = ⅔ × Base × Altura", bH: "Altura del suelo al balón = 2.5m", d: "Distancia hasta el aro = 4.6m", pH: "Altura máxima del balón = 4.0m", rH: "Altura del suelo al aro = 3.05m", adj: "Ecuación ajustada: Área = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "Respuesta" },
+  pt: { name: "포르투갈어", arch: "Fórmula da área da parábola de Arquimedes: Área = ⅔ × Base × Altura", bH: "Altura do chão até a bola = 2.5m", d: "Distância até a cesta = 4.6m", pH: "Altura máxima da bola = 4.0m", rH: "Altura do chão até o aro = 3.05m", adj: "Equação ajustada: Área = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "Resposta" },
+  fr: { name: "프랑스어", arch: "Formule de l'aire de la parabole d'Archimède : Aire = ⅔ × Base × Hauteur", bH: "Hauteur du sol au ballon = 2.5m", d: "Distance au panier = 4.6m", pH: "Hauteur maximale du ballon = 4.0m", rH: "Hauteur du sol à l'anneau = 3.05m", adj: "Formule ajustée : Aire = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "Réponse" },
+  de: { name: "독일어", arch: "Archimedische Parabel-Flächenformel: Fläche = ⅔ × Basis × Höhe", bH: "Höhe vom Boden bis zum Ball = 2.5m", d: "Entfernung bis zum Korb = 4.6m", pH: "Maximale Höhe des Balls = 4.0m", rH: "Höhe vom Boden bis zum Korbring = 3.05m", adj: "Angepasste Formel: Fläche = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "Antwort" },
+  ru: { name: "러시아어", arch: "Формула площади параболы Архимеда: Площадь = ⅔ × Основание × Высота", bH: "Высота от пола до мяча = 2.5m", d: "Расстояние до кольца = 4.6m", pH: "Максимальная высота мяча = 4.0m", rH: "Высота от пола до кольца = 3.05m", adj: "С учётом разницы высот: Площадь = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "Ответ" },
+  uk: { name: "우크라이나어", arch: "Формула площі параболи Архімеда: Площа = ⅔ × Основа × Висота", bH: "Висота від підлоги до м'яча = 2.5m", d: "Відстань до кільця = 4.6m", pH: "Максимальна висота м'яча = 4.0m", rH: "Висота до кільця = 3.05m", adj: "Скоригована формула: Площа = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "Відповідь" },
+  uz: { name: "우즈벡어", arch: "Arximedning parabola yuzasi formulasi: Yuza = ⅔ × Asos × Balandlik", bH: "Poldan to'pgacha balandlik = 2.5m", d: "Savatgacha masofa = 4.6m", pH: "To'p chiqqan eng yuqori balandlik = 4.0m", rH: "Savat halqasigacha balandlik = 3.05m", adj: "Moslashtirilgan tenglama: Yuza = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "Javob" },
+  kk: { name: "카자흐어", arch: "Архимедтің парабола ауданы формуласы: Аудан = ⅔ × Табан × Биіктік", bH: "Еденнен допқа дейінгі биіктік = 2.5m", d: "Себетке дейінгі қашықтық = 4.6m", pH: "Доп жеткен ең жоғары биіктік = 4.0m", rH: "Себет сақинасына дейінгі биіктік = 3.05m", adj: "Түзетілген формула: Аудан = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "Жауап" },
+  id: { name: "인도네시아어", arch: "Rumus Luas Parabola Archimedes: Luas = ⅔ × Alas × Tinggi", bH: "Tinggi dari lantai ke bola = 2.5m", d: "Jarak ke ring basket = 4.6m", pH: "Tinggi maksimum bola = 4.0m", rH: "Tinggi dari lantai ke ring = 3.05m", adj: "Rumus disesuaikan: Luas = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "Jawaban" },
+  ms: { name: "말레이어", arch: "Formula Luas Parabola Archimedes: Luas = ⅔ × Tapak × Tinggi", bH: "Tinggi dari lantai ke bola = 2.5m", d: "Jarak ke gelang = 4.6m", pH: "Tinggi maksimum bola = 4.0m", rH: "Tinggi dari lantai ke gelang = 3.05m", adj: "Persamaan diselaraskan: Luas = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "Jawapan" },
+  th: { name: "태국어", arch: "สูตรพื้นที่พาราโบลาของอาร์คิมิดีส: พื้นที่ = ⅔ × ฐาน × สูง", bH: "ความสูงจากพื้นถึงลูกบอล = 2.5m", d: "ระยะห่างถึงแป้นบาส = 4.6m", pH: "ความสูงที่สุดของลูกบอล = 4.0m", rH: "ความสูงจากพื้นถึงห่วงบาส = 3.05m", adj: "สมการที่ปรับแล้ว: พื้นที่ = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "คำตอบ" },
+  tl: { name: "타갈로그어", arch: "Pormula ng Lawak ng Parabola ni Archimedes: Lawak = ⅔ × Base × Taas", bH: "Taas mula sahig hanggang bola = 2.5m", d: "Layo hanggang ring = 4.6m", pH: "Pinakamataas na naabot ng bola = 4.0m", rH: "Taas mula sahig hanggang ring = 3.05m", adj: "Inayos na Pormula: Lawak = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "Sagot" },
+  my: { name: "미얀마어", arch: "အာခီမီးဒီးစ်၏ ပါရာဘိုလာ ဧရိယာ ပုံသေနည်း: ဧရိယာ = ⅔ × အခြေ × အမြင့်", bH: "ကြမ်းပြင်မှ ဘောလုံးအထိ အမြင့် = 2.5m", d: "ခြင်းကွင်းအထိ အကွာအဝေး = 4.6m", pH: "ဘောလုံး၏ အမြင့်ဆုံးအမြင့် = 4.0m", rH: "ကြမ်းပြင်မှ ခြင်းကွင်းအထိ အမြင့် = 3.05m", adj: "ညှိနှိုင်းထားသော ပုံသေနည်း: ဧရိယာ = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "အဖြေ" },
+  km: { name: "캄보디아어", arch: "រូបមន្តក្រឡាផ្ទៃប៉ារ៉ាបូលរបស់ Archimedes: ក្រឡាផ្ទៃ = ⅔ × បាត × កម្ពស់", bH: "កម្ពស់ពីកម្រាលទៅបាល់ = 2.5m", d: "ចម្ងាយទៅកន្ត្រក = 4.6m", pH: "កម្ពស់អតិបរមា = 4.0m", rH: "កម្ពស់ពីកម្រាលទៅកងកន្ត្រក = 3.05m", adj: "សមីការកែតម្រូវ: ក្រឡាផ្ទៃ = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "ចម្លើយ" },
+  mn: { name: "몽골어", arch: "Архимедийн параболын талбайн томьёо: Талбай = ⅔ × Суурь × Өндөр", bH: "Шалнаас бөмбөг хүртэлх өндөр = 2.5m", d: "Цагариг хүртэлх зай = 4.6m", pH: "Бөмбөгний дээд өндөр = 4.0m", rH: "Шалнаас цагариг хүртэлх өндөр = 3.05m", adj: "Засварласан томьёо: Талбай = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "Хариу" },
+  tet: { name: "테툼어", arch: "Fórmula Área Parábola Archimedes: Área = ⅔ × Baze × Aas", bH: "Aas husi rai ba bola = 2.5m", d: "Distánsia ba sesta = 4.6m", pH: "Aas másimu bola = 4.0m", rH: "Aas husi rai ba sesta = 3.05m", adj: "Fórmula ajustada: Área = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "Resposta" },
+  hi: { name: "힌디어", arch: "आर्किमिडीज़ का परवलय क्षेत्रफल सूत्र: क्षेत्रफल = ⅔ × आधार × ऊँचाई", bH: "फर्श से गेंद तक की ऊँचाई = 2.5m", d: "बास्केट तक की दूरी = 4.6m", pH: "गेंद की अधिकतम ऊँचाई = 4.0m", rH: "फर्श से बास्केट रिम तक की ऊँचाई = 3.05m", adj: "समायोजित सूत्र: क्षेत्रफल = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "उत्तर" },
+  bn: { name: "벵골어", arch: "আর্কিমিডিসের প্যারাবোলা ক্ষেত্রফল সূত্র: ক্ষেত্রফল = ⅔ × ভূমি × উচ্চতা", bH: "মেঝে থেকে বলের উচ্চতা = 2.5m", d: "বাস্কেটের দূরত্ব = 4.6m", pH: "বলের সর্বোচ্চ উচ্চতা = 4.0m", rH: "মেঝে থেকে রিমের উচ্চতা = 3.05m", adj: "সমন্বিত সূত্র: ক্ষেত্রফল = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "উত্তর" },
+  gu: { name: "구자라트어", arch: "આર્કિમિડીઝનું પરવલય ક્ષેત્રફળ સૂત્ર: ક્ષેત્રફળ = ⅔ × પાયો × ઊંચાઈ", bH: "જમીનથી બોલની ઊંચાઈ = 2.5m", d: "બાસ્કેટ સુધીનું અંતર = 4.6m", pH: "બોલની મહત્તમ ઊંચાઈ = 4.0m", rH: "જમીનથી રિમની ઊંચાઈ = 3.05m", adj: "સુધારેલ સૂત્ર: ક્ષેત્રફળ = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "જવાબ" },
+  mr: { name: "마라티어", arch: "आर्किमिडीजचे परवलय क्षेत्रफळ सूत्र: क्षेत्रफळ = ⅔ × पाया × उंची", bH: "जमिनीपासून चेंडूची उंची = 2.5m", d: "बास्केटपर्यंतचे अंतर = 4.6m", pH: "चेंडूची कमाल उंची = 4.0m", rH: "जमिनीपासून रिमची उंची = 3.05m", adj: "सुधारित सूत्र: क्षेत्रफळ = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "उत्तर" },
+  ml: { name: "말라얄람어", arch: "ആർക്കിമിഡീസിന്റെ പരവലയ വിസ്തീർണ്ണ സൂത്രവാക്യം: വിസ്തീർണ്ണം = ⅔ × പാദം × ഉയരം", bH: "തറയിൽ നിന്ന് പന്തിലേക്കുള്ള ഉയരം = 2.5m", d: "ബാസ്കറ്റിലേക്കുള്ള ദൂരം = 4.6m", pH: "പന്തിന്റെ പരമാവധി ഉയരം = 4.0m", rH: "തറയിൽ നിന്ന് റിമ്മിലേക്കുള്ള ഉയരം = 3.05m", adj: "ക്രമീകരിച്ച സമവാക്യം: വിസ്തീർണ്ണം = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "ഉത്തരം" },
+  kn: { name: "칸나다어", arch: "ಆರ್ಕಿಮಿಡೀಸ್ ಪರವಲಯ ವಿಸ್ತೀರ್ಣ ಸೂತ್ರ: ವಿಸ್ತೀರ್ಣ = ⅔ × ಪಾದ × ಎತ್ತರ", bH: "ನೆಲದಿಂದ ಚೆಂಡಿನ ಎತ್ತರ = 2.5m", d: "ಬಾಸ್ಕೆಟ್‌ಗೆ ಇರುವ ದೂರ = 4.6m", pH: "ಚೆಂಡಿನ ಗರಿಷ್ಠ ಎತ್ತರ = 4.0m", rH: "ನೆಲದಿಂದ ರಿಮ್‌ಗೆ ಎತ್ತರ = 3.05m", adj: "ಹೊಂದಾಣಿಕೆ ಸೂತ್ರ: ವಿಸ್ತೀರ್ಣ = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "ಉತ್ತರ" },
+  pa: { name: "펀자브어", arch: "ਆਰਕੀਮੀਡੀਜ਼ ਦਾ ਪੈਰਾਬੋਲਾ ਖੇਤਰਫਲ ਸੂਤਰ: ਖੇਤਰਫਲ = ⅔ × ਅਧਾਰ × ਉਚਾਈ", bH: "ਫਰਸ਼ ਤੋਂ ਗੇਂਦ ਦੀ ਉਚਾਈ = 2.5m", d: "ਬਾਸਕਟ ਤੱਕ ਦੀ ਦੂਰੀ = 4.6m", pH: "ਗੇਂਦ ਦੀ ਵੱਧ ਤੋਂ ਵੱਧ ਉਚਾਈ = 4.0m", rH: "ਫਰਸ਼ ਤੋਂ ਰਿਮ ਦੀ ਉਚਾਈ = 3.05m", adj: "ਸੋਧਿਆ ਸਮੀਕਰਨ: ਖੇਤਰਫਲ = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "ਉੱਤਰ" },
+  te: { name: "텔루구어", arch: "ఆర్కిమెడిస్ పరావలయ వైశాల్య సూత్రం: వైశాల్యం = ⅔ × భూమి × ఎత్తు", bH: "నేల నుండి బంతి ఎత్తు = 2.5m", d: "బాస్కెట్ వరకు దూరం = 4.6m", pH: "బంతి గరిష్ట ఎత్తు = 4.0m", rH: "నేల నుండి రిమ్ ఎత్తు = 3.05m", adj: "సవరించిన సమీకరణం: వైశాల్యం = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "సమాధానం" },
+  ta: { name: "타밀어", arch: "ஆர்க்கிமிடிஸின் பரவளைய பரப்பளவு சூத்திரம்: பரப்பளவு = ⅔ × அடிப்பக்கம் × உயரம்", bH: "தரையிலிருந்து பந்தின் உயரம் = 2.5m", d: "கூடை까지의 தூரம் = 4.6m", pH: "பந்தின் அதிகபட்ச உயரம் = 4.0m", rH: "தரையிலிருந்து வளையத்தின் உயரம் = 3.05m", adj: "சீரமைக்கப்பட்ட சமன்பாடு: பரப்பளவு = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "பதில்" },
+  ur: { name: "우르두어", arch: "ارشمیدس کا پیرابولا رقبہ فارمولا: رقبہ = ⅔ × قاعدہ × اونچائی", bH: "فرش سے گیند تک اونچائی = 2.5m", d: "باسکٹ تک کا فاصلہ = 4.6m", pH: "گیند کی زیادہ سے زیادہ اونچائی = 4.0m", rH: "فرش سے رم تک اونچائی = 3.05m", adj: "ترمیم شدہ مساوات: رقبہ = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "جواب" },
+  ne: { name: "네팔어", arch: "आर्किमिडिजको पाराबोला क्षेत्रफल सूत्र: क्षेत्रफल = ⅔ × आधार × उचाइ", bH: "भुइँबाट बलसम्मको उचाइ = 2.5m", d: "बास्केटसम्मको दूरी = 4.6m", pH: "बलको अधिकतम उचाइ = 4.0m", rH: "भुइँबाट रिमसम्मको उचाइ = 3.05m", adj: "समायोजित सूत्र: क्षेत्रफल = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "उत्तर" },
+  si: { name: "싱할라어", arch: "ආකිමිඩීස්ගේ පරාවලය වර්ගඵල සූත්‍රය: වර්ගඵලය = ⅔ × ආධාරකය × උස", bH: "බිම සිට පන්දුවට උස = 2.5m", d: "පැස දක්වා දුර = 4.6m", pH: "පන්දුවේ උපරිම උස = 4.0m", rH: "බිම සිට වළල්ලට උස = 3.05m", adj: "සකස් කළ සමීකරණය: වර්ගඵලය = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "පිළිතුර" },
+  it: { name: "이탈리아어", arch: "Formula dell'area della parabola di Archimede: Area = ⅔ × Base × Altezza", bH: "Altezza dal pavimento alla palla = 2.5m", d: "Distanza al canestro = 4.6m", pH: "Altezza massima raggiunta = 4.0m", rH: "Altezza dal pavimento al ferro = 3.05m", adj: "Formula corretta: Area = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "Risposta" },
+  nl: { name: "네덜란드어", arch: "Paraboolformule van Archimedes: Oppervlakte = ⅔ × Basis × Hoogte", bH: "Hoogte van vloer tot bal = 2.5m", d: "Afstand tot de basket = 4.6m", pH: "Maximale hoogte van de bal = 4.0m", rH: "Hoogte van vloer tot ring = 3.05m", adj: "Aangepaste formule: Oppervlakte = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "Antwoord" },
+  pl: { name: "폴란드어", arch: "Wzór Archimedesa na pole paraboli: Pole = ⅔ × Podstawa × Wysokość", bH: "Wysokość od podłogi do piłki = 2.5m", d: "Odległość do kosza = 4.6m", pH: "Maksymalna wysokość piłki = 4.0m", rH: "Wysokość od podłogi do obręczy = 3.05m", adj: "Skorygowany wzór: Pole = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "Odpowiedź" },
+  ro: { name: "루마니아어", arch: "Formula lui Arhimede pentru aria parabolei: Arie = ⅔ × Bază × Înălțime", bH: "Înălțimea de la podea la minge = 2.5m", d: "Distanța până la coș = 4.6m", pH: "Înălțimea maximă atinsă = 4.0m", rH: "Înălțimea până la inel = 3.05m", adj: "Ecuație ajustată: Arie = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "Răspuns" },
+  cs: { name: "체코어", arch: "Archimédův vzorec pro obsah paraboly: Obsah = ⅔ × Základna × Výška", bH: "Výška od podlahy k míči = 2.5m", d: "Vzdálenost ke koši = 4.6m", pH: "Maximální výška míče = 4.0m", rH: "Výška od podlahy k obroučce = 3.05m", adj: "Upravený vzorec: Obsah = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "Odpověď" },
+  hu: { name: "헝가리어", arch: "Arkhimédész parabola-területképlete: Terület = ⅔ × Alap × Magasság", bH: "Magasság a padlótól a labdáig = 2.5m", d: "Távolság a kosárig = 4.6m", pH: "A labda maximális magassága = 4.0m", rH: "Magasság a padlótól a gyűrűig = 3.05m", adj: "Korrigált képlet: Terület = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "Válasz" },
+  el: { name: "그리스어", arch: "Τύπος εμβαδού παραβολής του Αρχιμήδη: Εμβαδόν = ⅔ × Βάση × Ύψος", bH: "Ύψος από το δάπεδο στη μπάλα = 2.5m", d: "Απόσταση έως το καλάθι = 4.6m", pH: "Μέγιστο ύψος μπάλας = 4.0m", rH: "Ύψος από το δάπεδο στη στεφάνη = 3.05m", adj: "Προσαρμοσμένος τύπος: Εμβαδόν = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "Απάντηση" },
+  sv: { name: "스웨덴어", arch: "Arkimedes formel för parabelarea: Area = ⅔ × Bas × Höjd", bH: "Höjd från golv till boll = 2.5m", d: "Avstånd till korgen = 4.6m", pH: "Bollens högsta höjd = 4.0m", rH: "Höjd från golv till ring = 3.05m", adj: "Justerad formel: Area = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "Svar" },
+  da: { name: "덴마크어", arch: "Archimedes' formel for parabelareal: Areal = ⅔ × Grundlinje × Højde", bH: "Højde fra gulv til bold = 2.5m", d: "Afstand til kurven = 4.6m", pH: "Boldens maksimale højde = 4.0m", rH: "Højde fra gulv til kurvering = 3.05m", adj: "Justeret formel: Areal = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "Svar" },
+  no: { name: "노르웨이어", arch: "Arkimedes' formel for parabelareal: Areal = ⅔ × Grunnlinje × Høyde", bH: "Høyde fra gulv til ball = 2.5m", d: "Avstand til kurven = 4.6m", pH: "Ballens maksimale høyde = 4.0m", rH: "Høyde fra gulv til ring = 3.05m", adj: "Justert formel: Areal = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "Svar" },
+  fi: { name: "핀란드어", arch: "Arkhimedeen paraabelin pinta-alakaava: Pinta-ala = ⅔ × Kanta × Korkeus", bH: "Korkeus lattiasta palloon = 2.5m", d: "Etäisyys koriin = 4.6m", pH: "Pallon lakipiste = 4.0m", rH: "Korkeus lattiasta korirenkaaseen = 3.05m", adj: "Korjattu kaava: Pinta-ala = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "Vastaus" },
+  tr: { name: "튀르키예어", arch: "Arşimet'in Parabol Alan Formülü: Alan = ⅔ × Taban × Yükseklik", bH: "Zeminden topa yükseklik = 2.5m", d: "Potaya olan mesafe = 4.6m", pH: "Topun ulaştığı maksimum yükseklik = 4.0m", rH: "Zeminden çembere yükseklik = 3.05m", adj: "Düzeltilmiş denklem: Alan = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "Cevap" },
+  ar: { name: "표준 아랍어", arch: "صيغة أرخميدس لمساحة القطع المكافئ: المساحة = ⅔ × القاعدة × الارتفاع", bH: "الارتفاع من الأرض إلى الكرة = 2.5m", d: "المسافة إلى السلة = 4.6m", pH: "أقصى ارتفاع للكرة = 4.0m", rH: "الارتفاع من الأرض إلى الحلقة = 3.05m", adj: "المعادلة المعدلة: المساحة = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "الإجابة" },
+  arz: { name: "이집트 아랍어", arch: "قانون أرخميدس لمساحة المنحنى: المساحة = ⅔ × القاعدة × الارتفاع", bH: "الارتفاع من الأرض للكورة = 2.5m", d: "المسافة لحد الباسكت = 4.6m", pH: "أعلى ارتفاع للكورة = 4.0m", rH: "الارتفاع من الأرض لحلقة الباسكت = 3.05m", adj: "المعادلة المتعدلة: المساحة = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "الإجابة" },
+  fa: { name: "페르시아어", arch: "فرمول مساحت سهمی ارشمیدس: مساحت = ⅔ × قاعده × ارتفاع", bH: "ارتفاع از زمین تا توپ = 2.5m", d: "فاصله تا سبد = 4.6m", pH: "حداکثر ارتفاع توپ = 4.0m", rH: "ارتفاع از زمین تا حلقه = 3.05m", adj: "معادله اصلاح‌شده: مساحت = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "پاسخ" },
+  he: { name: "히브리어", arch: "נוסחת שטח הפרבולה של ארכימדס: שטח = ⅔ × בסיס × גובה", bH: "גובה מהרצפה לכדור = 2.5m", d: "מרחק לסל = 4.6m", pH: "גובה מרבי של הכדור = 4.0m", rH: "גובה מהרצפה לטבעת הסל = 3.05m", adj: "משוואה מותאמת: שטח = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "תשובה" },
+  am: { name: "암하라어", arch: "የአርኪሜድስ ፓራቦላ ስፋት ቀመር፦ ስፋት = ⅔ × መሠረት × ቁመት", bH: "ከወለሉ እስከ ኳሱ ያለው ቁመት = 2.5m", d: "እስከ ቅርጫቱ ያለው ርቀት = 4.6m", pH: "ኳሱ የደረሰበት ከፍተኛ ቁመት = 4.0m", rH: "ከወለሉ እስከ ቀለበቱ ያለው ቁመት = 3.05m", adj: "የተስተካከለ ቀመር፦ ስፋት = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "መልስ" },
+  sw: { name: "스와힐리어", arch: "Kanuni ya Eneo la Parabola ya Archimedes: Eneo = ⅔ × Kitako × Kimo", bH: "Kimo kutoka sakafu hadi mpira = 2.5m", d: "Umbali hadi kwenye pete = 4.6m", pH: "Kimo cha juu zaidi cha mpira = 4.0m", rH: "Kimo kutoka sakafu hadi pete = 3.05m", adj: "Mlinganyo uliorekebishwa: Eneo = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "Jibu" },
+  pcm: { name: "나이지리아 피진", arch: "Archimedes Parabola Area Formula: Area = ⅔ × Bottom × Height", bH: "Height from ground reach ball = 2.5m", d: "Distance reach basket = 4.6m", pH: "Highest point wey ball reach = 4.0m", rH: "Height from ground reach rim = 3.05m", adj: "Adjusted Formula: Area = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "Answer" },
+  af: { name: "아프리칸스어", arch: "Archimedes se Parabool-oppervlakteformule: Oppervlakte = ⅔ × Basis × Hoogte", bH: "Hoogte vanaf vloer tot bal = 2.5m", d: "Afstand tot by die hoepel = 4.6m", pH: "Maksimum hoogte van bal = 4.0m", rH: "Hoogte vanaf vloer tot hoepel = 3.05m", adj: "Aangepaste vergelyking: Oppervlakte = ⅔ × 4.6m × 1.21m = 3.71m²", ans: "Antwoord" }
+};
+
+function getPack(lang) {
+  if (LANG_PACK[lang]) return LANG_PACK[lang];
+  const ext = EXTRA_TERMS[lang];
+  const baseEn = LANG_PACK.en;
+  if (!ext) return baseEn;
+  return {
+    name: ext.name,
+    terms: {
+      archFormula: ext.arch,
+      ballH: ext.bH,
+      dist: ext.d,
+      peakH: ext.pH,
+      rimH: ext.rH,
+      adjEq: ext.adj,
+      answer: ext.ans
+    },
+    scoreBefore: baseEn.scoreBefore,
+    scoreAfter: baseEn.scoreAfter,
+    mathQ: baseEn.mathQ,
+    engQ: baseEn.engQ,
+    korQ: baseEn.korQ,
+    korA: `${ext.ans}: 대역전! (Dae-yeok-jeon!)`,
+    lifeQ: baseEn.lifeQ
+  };
+}
+
+let currentCountry = COUNTRIES[0];
+let currentLang = "ko";
+let currentAdType = "math";
+let startTime = null;
+let animFrame = null;
+let isPlaying = false;
+const DURATION = 10.0;
+
+// OS 내장 TTS 음성 유무 실시간 점검
+function checkTtsAvailability(langCode) {
+  const badge = document.getElementById("ttsStatusBadge");
+  if (!("speechSynthesis" in window)) {
+    badge.innerHTML = `<span class="inline-block w-2.5 h-2.5 rounded-full bg-rose-500"></span><span>이 브라우저는 Web Speech TTS를 지원하지 않습니다.</span>`;
+    return;
+  }
+  const voices = window.speechSynthesis.getVoices();
+  const target = langCode === "arz" ? "ar" : langCode === "pcm" ? "en" : langCode.split("-")[0];
+  const found = voices.some(v => v.lang.toLowerCase().startsWith(target.toLowerCase()));
+
+  const noTtsLangs = ["tet", "pcm", "my", "km", "ne", "si", "mn", "uz", "am"];
+  if (found && !noTtsLangs.includes(langCode)) {
+    badge.innerHTML = `<span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400"></span><span>현재 기기 OS에서 [${langCode}] TTS 음성 지원됨</span>`;
+  } else {
+    badge.innerHTML = `<span class="inline-block w-2.5 h-2.5 rounded-full bg-amber-400"></span><span>현재 OS에 [${langCode}] 기본 음성 없음 (클라우드 TTS 권장)</span>`;
+  }
+}
+if ("speechSynthesis" in window) {
+  window.speechSynthesis.onvoiceschanged = () => checkTtsAvailability(currentLang);
+}
+
+// Web Audio API 효과음
+let audioCtx = null;
+function initAudio() {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+}
+function playBounceSfx() {
+  if (!document.getElementById("sfxToggle").checked) return;
+  initAudio();
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  osc.type = "sine";
+  osc.frequency.setValueAtTime(140, audioCtx.currentTime);
+  osc.frequency.exponentialRampToValueAtTime(42, audioCtx.currentTime + 0.14);
+  gain.gain.setValueAtTime(0.38, audioCtx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.15);
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+  osc.start();
+  osc.stop(audioCtx.currentTime + 0.15);
+}
+function playSwishOrCrashSfx(isCrash = false) {
+  if (!document.getElementById("sfxToggle").checked) return;
+  initAudio();
+  const dur = isCrash ? 0.55 : 0.25;
+  const bufferSize = audioCtx.sampleRate * dur;
+  const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+  const data = buffer.getChannelData(0);
+  for (let i = 0; i < bufferSize; i++) {
+    data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (audioCtx.sampleRate * (isCrash ? 0.18 : 0.08)));
+  }
+  const noise = audioCtx.createBufferSource();
+  noise.buffer = buffer;
+  const filter = audioCtx.createBiquadFilter();
+  filter.type = isCrash ? "lowpass" : "bandpass";
+  filter.frequency.value = isCrash ? 220 : 1800;
+  const gain = audioCtx.createGain();
+  gain.gain.value = isCrash ? 0.75 : 0.35;
+  noise.connect(filter);
+  filter.connect(gain);
+  gain.connect(audioCtx.destination);
+  noise.start();
+}
+
+function speakText(text) {
+  if (!document.getElementById("sfxToggle").checked || !("speechSynthesis" in window)) return;
+  window.speechSynthesis.cancel();
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.lang = currentLang === "arz" ? "ar-EG" : currentLang === "pcm" ? "en-NG" : currentLang;
+  utter.rate = 1.1;
+  window.speechSynthesis.speak(utter);
+}
+
+// UI 바인딩
+const countrySelect = document.getElementById("countrySelect");
+const langSelect = document.getElementById("langSelect");
+
+COUNTRIES.forEach((c, idx) => {
+  const opt = document.createElement("option");
+  opt.value = idx;
+  opt.textContent = `${c.name} — ${c.domain}`;
+  countrySelect.appendChild(opt);
+});
+
+function updateLangOptions() {
+  langSelect.innerHTML = "";
+  currentCountry.langs.forEach(code => {
+    const opt = document.createElement("option");
+    opt.value = code;
+    const pack = getPack(code);
+    opt.textContent = `${pack.name} (${code})`;
+    langSelect.appendChild(opt);
+  });
+  currentLang = currentCountry.langs[0];
+  checkTtsAvailability(currentLang);
+  enforceEnglishCountryRule();
+}
+
+function enforceEnglishCountryRule() {
+  const isEnglishTarget = currentLang === "en";
+  const btnEng = document.getElementById("btnEnglishAd");
+  const badge = document.getElementById("ruleBadge");
+
+  if (isEnglishTarget) {
+    btnEng.disabled = true;
+    btnEng.classList.add("opacity-30", "cursor-not-allowed", "line-through");
+    badge.textContent = "영어권 3종 송출 (ENGLISH.LIFE.HELP 제외)";
+    badge.className = "text-[11px] font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300";
+    if (currentAdType === "english") currentAdType = "math";
+  } else {
+    btnEng.disabled = false;
+    btnEng.classList.remove("opacity-30", "cursor-not-allowed", "line-through");
+    badge.textContent = "비영어권 4종 전체 송출";
+    badge.className = "text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300";
+  }
+  updateTypeButtonsUI();
+  updateScriptPreview();
+  drawFrame(0);
+}
+
+function updateTypeButtonsUI() {
+  document.querySelectorAll(".ad-type-btn").forEach(btn => {
+    const t = btn.getAttribute("data-type");
+    if (t === currentAdType) {
+      btn.classList.add("bg-[#E63946]", "border-rose-400", "text-white");
+      btn.classList.remove("bg-slate-800", "border-slate-700", "text-slate-300");
+    } else {
+      btn.classList.remove("bg-[#E63946]", "border-rose-400", "text-white");
+      btn.classList.add("bg-slate-800", "border-slate-700", "text-slate-300");
+    }
+  });
+}
+
+function getTargetDomain() {
+  if (currentAdType === "math") return "MATH.LIFE.HELP";
+  if (currentAdType === "english") return "ENGLISH.LIFE.HELP";
+  if (currentAdType === "korean") return "KOREAN.LIFE.HELP";
+  return currentCountry.domain.toUpperCase();
+}
+
+function getCurrentQA() {
+  const pack = getPack(currentLang);
+  const cpObj = CATCHPHRASES[currentLang] || CATCHPHRASES.en;
+  const t = pack.terms;
+  const specLines = [t.ballH, t.dist, t.peakH, t.rimH];
+
+  if (currentAdType === "math") {
+    const endLines = [
+      t.archFormula,
+      t.adjEq,
+      `${t.answer}: 3.71m²`
+    ];
+    return { q: pack.mathQ, endLines, catchphrase: cpObj.math, specLines };
+  }
+  if (currentAdType === "english") {
+    const ans = `${t.answer}: BOUNCE! / THUMP!`;
+    return { q: pack.engQ, endLines: [ans], catchphrase: cpObj.english, specLines: [] };
+  }
+  if (currentAdType === "korean") {
+    return { q: pack.korQ, endLines: [pack.korA], catchphrase: cpObj.korean, specLines: [] };
+  }
+  return { q: pack.lifeQ, endLines: [], catchphrase: cpObj.life, specLines: [] };
+}
+
+function updateScriptPreview() {
+  const { q, endLines, catchphrase } = getCurrentQA();
+  const domainParts = getTargetDomain().split(".");
+  document.getElementById("targetUrlBadge").innerHTML = domainParts.join(' <span class="inline-block w-2.5 h-2.5 rounded-full bg-[#E63946] mx-0.5"></span> ');
+  document.getElementById("questionPreview").textContent = q;
+  document.getElementById("answerPreview").textContent = endLines.length ? endLines.join("\n") : "(슬램덩크 골대 파손 후 캐치프레이즈 직결)";
+  document.getElementById("catchPreview").textContent = catchphrase;
+}
+
+countrySelect.addEventListener("change", e => {
+  currentCountry = COUNTRIES[Number(e.target.value)];
+  updateLangOptions();
+});
+
+langSelect.addEventListener("change", e => {
+  currentLang = e.target.value;
+  checkTtsAvailability(currentLang);
+  enforceEnglishCountryRule();
+});
+
+document.querySelectorAll(".ad-type-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    if (btn.disabled) return;
+    currentAdType = btn.getAttribute("data-type");
+    updateTypeButtonsUI();
+    updateScriptPreview();
+    startPlayback();
+  });
+});
+
+// 4. 175cm 표준 인체 비례(7.5등신) & 2관절 고정 길이 역운동학(IK) 캐릭터 엔진
+const canvas = document.getElementById("adCanvas");
+const ctx = canvas.getContext("2d");
+const NAVY = "#1B2A4A";
+const RED = "#E63946";
+
+function lerp(a, b, t) { return a + (b - a) * Math.max(0, Math.min(1, t)); }
+
+// ★ 핵심: 상완(L1)과 전완(L2), 허벅지(L1)와 종아리(L2) 길이가 절대 변하지 않도록 고정하는 2관절 IK 솔버
+function solveLimbIK(x0, y0, targetX, targetY, L1, L2, bendDir = 1) {
+  let dx = targetX - x0;
+  let dy = targetY - y0;
+  let dist = Math.hypot(dx, dy);
+  const maxReach = L1 + L2 - 0.5;
+  const minReach = Math.abs(L1 - L2) + 0.5;
+
+  // 목표점이 팔다리 길이보다 멀면 팔다리 최대 길이까지만 뻗도록 강제 클램핑 (팔이 비정상적으로 늘어나는 현상 원천 차단!)
+  if (dist > maxReach) {
+    dx = (dx / dist) * maxReach;
+    dy = (dy / dist) * maxReach;
+    dist = maxReach;
+  } else if (dist < minReach) {
+    dx = (dx / dist) * minReach;
+    dy = (dy / dist) * minReach;
+    dist = minReach;
+  }
+
+  const baseAngle = Math.atan2(dy, dx);
+  const cosAngle1 = (L1 * L1 + dist * dist - L2 * L2) / (2 * L1 * dist);
+  const angle1 = Math.acos(Math.max(-1, Math.min(1, cosAngle1)));
+  const jointAngle = baseAngle + bendDir * angle1;
+
+  const jx = x0 + Math.cos(jointAngle) * L1;
+  const jy = y0 + Math.sin(jointAngle) * L1;
+  const ex = x0 + dx;
+  const ey = y0 + dy;
+  return { jx, jy, ex, ey };
+}
+
+function drawTaperedSegment(x1, y1, x2, y2, r1, r2, color) {
+  const dx = x2 - x1, dy = y2 - y1;
+  const len = Math.hypot(dx, dy);
+  if (len < 0.1) return;
+  const nx = -dy / len, ny = dx / len;
+
+  ctx.save();
+  ctx.fillStyle = color;
+  ctx.beginPath();
+  ctx.moveTo(x1 + nx * r1, y1 + ny * r1);
+  ctx.lineTo(x2 + nx * r2, y2 + ny * r2);
+  ctx.lineTo(x2 - nx * r2, y2 - ny * r2);
+  ctx.lineTo(x1 - nx * r1, y1 - ny * r1);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(x1, y1, r1, 0, Math.PI * 2);
+  ctx.arc(x2, y2, r2, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+}
+
+// 175cm (175px) 7.5등신 표준 인체 실루엣 렌더러
+// 골격 치수 상수 (양팔, 양다리 길이 100% 대칭 고정)
+const HUMAN_175 = {
+  headRadius: 11.5, // 머리 지름 23px (23cm * 7.5 = 172.5cm)
+  torsoLen: 54,     // 어깨~골반 54px
+  upperArm: 29,     // 상완 29px
+  foreArm: 27,      // 전완 27px
+  thigh: 43,        // 허벅지 43px
+  calf: 41          // 종아리 41px
+};
+
+function drawAthleticHuman175(hipX, hipY, floorY, config) {
+  ctx.save();
+  const lean = config.torsoLean || 0.08; // 자연스러운 전경 각도(라디안)
+
+  // 바닥 그림자
+  const heightOffFloor = Math.max(0, (floorY - 84) - hipY);
+  const shadowScale = Math.max(0.35, 1 - heightOffFloor / 320);
+  ctx.fillStyle = "rgba(27, 42, 74, 0.14)";
+  ctx.beginPath();
+  ctx.ellipse(hipX, floorY + 2, 42 * shadowScale, 8 * shadowScale, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  // 어깨 중심 및 머리 중심 계산
+  const shoulderX = hipX + Math.sin(lean) * HUMAN_175.torsoLen;
+  const shoulderY = hipY - Math.cos(lean) * HUMAN_175.torsoLen;
+  const neckX = shoulderX + Math.sin(lean) * 9;
+  const neckY = shoulderY - Math.cos(lean) * 9;
+  const headX = shoulderX + Math.sin(lean) * 23;
+  const headY = shoulderY - Math.cos(lean) * 23;
+
+  // 1) 왼다리 & 오른다리 (고정 길이 IK: 허벅지 43px + 종아리 41px, 무릎은 앞쪽(+1)으로만 굽혀짐)
+  const lLeg = solveLimbIK(hipX - 4, hipY, config.lFootX, config.lFootY, HUMAN_175.thigh, HUMAN_175.calf, -1);
+  const rLeg = solveLimbIK(hipX + 4, hipY, config.rFootX, config.rFootY, HUMAN_175.thigh, HUMAN_175.calf, -1);
+
+  // 2) 왼팔 & 오른팔 (고정 길이 IK: 상완 29px + 전완 27px, 팔꿈치는 뒤쪽(+1)으로 자연스럽게 굽혀짐)
+  const lArm = solveLimbIK(shoulderX - 5, shoulderY + 3, config.lHandX, config.lHandY, HUMAN_175.upperArm, HUMAN_175.foreArm, 1);
+  const rArm = solveLimbIK(shoulderX + 5, shoulderY + 3, config.rHandX, config.rHandY, HUMAN_175.upperArm, HUMAN_175.foreArm, 1);
+
+  // 뒤쪽 팔(왼팔) & 뒤쪽 다리(왼다리) 먼저 렌더링
+  drawTaperedSegment(shoulderX - 5, shoulderY + 3, lArm.jx, lArm.jy, 7.5, 6.2, NAVY);
+  drawTaperedSegment(lArm.jx, lArm.jy, lArm.ex, lArm.ey, 6.2, 5.0, NAVY);
+
+  drawTaperedSegment(hipX - 4, hipY, lLeg.jx, lLeg.jy, 10.5, 8.0, NAVY);
+  drawTaperedSegment(lLeg.jx, lLeg.jy, lLeg.ex, lLeg.ey, 8.0, 6.0, NAVY);
+  // 왼발 스니커즈 실루엣
+  drawTaperedSegment(lLeg.ex, lLeg.ey, lLeg.ex + 13, lLeg.ey + 2, 6.0, 5.2, NAVY);
+
+  // 몸통 (상체 역삼각형 테이퍼드 실루엣: 어깨 반폭 14.5px -> 허리/골반 반폭 11px)
+  drawTaperedSegment(shoulderX, shoulderY, hipX, hipY, 14.5, 11.0, NAVY);
+  // 목
+  drawTaperedSegment(shoulderX, shoulderY, neckX, neckY, 6.2, 5.5, NAVY);
+  // 머리 (7.5등신 비례의 약간 타원형 두상)
+  ctx.fillStyle = NAVY;
+  ctx.beginPath();
+  ctx.ellipse(headX, headY, HUMAN_175.headRadius * 0.92, HUMAN_175.headRadius * 1.08, lean * 0.5, 0, Math.PI * 2);
+  ctx.fill();
+
+  // 앞쪽 다리(오른다리) 렌더링
+  drawTaperedSegment(hipX + 4, hipY, rLeg.jx, rLeg.jy, 10.5, 8.0, NAVY);
+  drawTaperedSegment(rLeg.jx, rLeg.jy, rLeg.ex, rLeg.ey, 8.0, 6.0, NAVY);
+  drawTaperedSegment(rLeg.ex, rLeg.ey, rLeg.ex + 13, rLeg.ey + 2, 6.0, 5.2, NAVY);
+
+  // 앞쪽 팔(오른팔) 렌더링
+  drawTaperedSegment(shoulderX + 5, shoulderY + 3, rArm.jx, rArm.jy, 7.5, 6.2, NAVY);
+  drawTaperedSegment(rArm.jx, rArm.jy, rArm.ex, rArm.ey, 6.2, 5.0, NAVY);
+
+  ctx.restore();
+  return { rHandActualX: rArm.ex, rHandActualY: rArm.ey, lHandActualX: lArm.ex, lHandActualY: lArm.ey };
+}
+
+function getAsymmetricParabolaPoint(s) {
+  const xMeters = s * 4.6;
+  const xv = 2.5625;
+  const a = 0.22861;
+  const yMeters = -a * Math.pow(xMeters - xv, 2) + 4.0;
+  const px = lerp(540, 1022, s);
+  const py = 530 - yMeters * 80;
+  return { px, py, xMeters, yMeters };
+}
+
+function drawPureRedBall(x, y, radius) {
+  ctx.save();
+  ctx.fillStyle = RED;
+  ctx.beginPath();
+  ctx.arc(x, y, radius, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+}
+
+function drawUrlWithRedBalls(domainStr, x, y, fontSize, textColor = "#FFFFFF") {
+  ctx.save();
+  ctx.font = `900 ${fontSize}px Inter, sans-serif`;
+  ctx.fillStyle = textColor;
+  const parts = domainStr.split(".");
+  let cursorX = x;
+  const ballRadius = Math.max(4, fontSize * 0.13);
+  const gap = fontSize * 0.22;
+
+  for (let i = 0; i < parts.length; i++) {
+    ctx.fillText(parts[i], cursorX, y);
+    cursorX += ctx.measureText(parts[i]).width;
+    if (i < parts.length - 1) {
+      cursorX += gap;
+      drawPureRedBall(cursorX + ballRadius, y - fontSize * 0.26, ballRadius);
+      cursorX += ballRadius * 2 + gap;
+    }
+  }
+  ctx.restore();
+}
+
+function drawHoop(x, y, breakProgress = 0) {
+  ctx.save();
+  ctx.strokeStyle = "#CBD5E1";
+  ctx.lineWidth = 10;
+  ctx.beginPath();
+  ctx.moveTo(x + 34, y - 40);
+  ctx.lineTo(x + 85, y - 40);
+  ctx.lineTo(x + 85, 530);
+  ctx.stroke();
+
+  ctx.strokeStyle = NAVY;
+  ctx.lineWidth = 8;
+  ctx.strokeRect(x + 20, y - 95, 14, 110);
+
+  ctx.translate(x + 20, y);
+  ctx.rotate(-breakProgress * 0.65);
+
+  ctx.strokeStyle = RED;
+  ctx.lineWidth = 7;
+  ctx.beginPath();
+  ctx.moveTo(-75, 0);
+  ctx.lineTo(0, 0);
+  ctx.stroke();
+
+  ctx.strokeStyle = "#94a3b8";
+  ctx.lineWidth = 2.5;
+  for (let i = 0; i <= 4; i++) {
+    const nx = lerp(-70, -5, i / 4);
+    ctx.beginPath();
+    ctx.moveTo(nx, 3);
+    ctx.lineTo(nx + (i < 2 ? 8 : -8), 52);
+    ctx.stroke();
+  }
+
+  if (breakProgress > 0.05) {
+    ctx.strokeStyle = RED;
+    ctx.lineWidth = 3;
+    for (let k = 0; k < 5; k++) {
+      const ang = (k / 5) * Math.PI - Math.PI * 0.8;
+      const dist = 15 + breakProgress * 45;
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.lineTo(Math.cos(ang) * dist, Math.sin(ang) * dist);
+      ctx.stroke();
+    }
+  }
+  ctx.restore();
+}
+
+let lastBounceIndex = -1;
+let swishPlayed = false;
+let answerSpoken = false;
+
+function drawFrame(t) {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "#F8FAFC";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  const floorY = 530;
+  ctx.strokeStyle = "#CBD5E1";
+  ctx.lineWidth = 4;
+  ctx.beginPath();
+  ctx.moveTo(0, floorY);
+  ctx.lineTo(canvas.width, floorY);
+  ctx.stroke();
+
+  const hoopX = 1040, hoopY = 286; // 3.05m
+  const pack = getPack(currentLang);
+  const qaObj = getCurrentQA();
+
+  if (currentAdType === "korean" && t < 6.5) {
+    const isScored = t >= 5.6;
+    ctx.save();
+    ctx.fillStyle = NAVY;
+    ctx.beginPath();
+    ctx.roundRect(80, 50, 420, 78, 16);
+    ctx.fill();
+    ctx.fillStyle = isScored ? "#4ADE80" : RED;
+    ctx.font = "900 26px Inter, monospace";
+    ctx.fillText(isScored ? "HOME 81 : 80 AWAY" : "HOME 78 : 80 AWAY", 105, 90);
+    ctx.fillStyle = "#F8FAFC";
+    ctx.font = "700 15px 'Noto Sans KR', Inter, sans-serif";
+    ctx.fillText(isScored ? pack.scoreAfter : pack.scoreBefore, 105, 115);
+    ctx.restore();
+  }
+
+  // 캐릭터 골반 기준 높이: 서 있을 때 바닥(530)에서 82px 위(448px)
+  let hipX = 240, hipY = floorY - 82;
+  let ballX = 280, ballY = 440;
+  const ballRadius = 18;
+  let hoopBreak = 0;
+
+  let charConfig = {
+    torsoLean: 0.12,
+    lFootX: hipX - 18, lFootY: floorY - 3,
+    rFootX: hipX + 18, rFootY: floorY - 3,
+    lHandX: hipX - 22, lHandY: hipY - 12,
+    rHandX: hipX + 32, rHandY: hipY - 5
+  };
+
+  if (t < 3.2) {
+    // [구간 1] 자연스러운 드리블 워킹 & 1.8~2.5초 헤지테이션 페이크 모션
+    const p = t / 3.2;
+    const fakeOffset = (t > 1.8 && t < 2.5) ? Math.sin((t - 1.8) * Math.PI * 3) * 28 : 0;
+    hipX = lerp(160, 485, p) + fakeOffset;
+
+    const cycle = t * 9.5;
+    const stride = Math.sin(cycle);
+    const liftL = Math.max(0, -Math.cos(cycle)) * 18;
+    const liftR = Math.max(0, Math.cos(cycle)) * 18;
+    hipY = (floorY - 80) + Math.abs(stride) * 4;
+
+    charConfig.torsoLean = (t > 1.8 && t < 2.5) ? 0.24 : 0.14;
+    charConfig.lFootX = hipX - stride * 28;
+    charConfig.lFootY = (floorY - 3) - liftL;
+    charConfig.rFootX = hipX + stride * 28;
+    charConfig.rFootY = (floorY - 3) - liftR;
+
+    // 드리블 바운스 및 오른손 팔꿈치 연동
+    const bouncePhase = Math.abs(Math.sin(t * 7.5));
+    ballX = hipX + 36;
+    const handLowestY = hipY + 8;
+    const handHighestY = hipY - 22;
+    charConfig.rHandX = hipX + 34;
+    charConfig.rHandY = lerp(handLowestY, handHighestY, bouncePhase);
+    charConfig.lHandX = hipX - 20 - stride * 12;
+    charConfig.lHandY = hipY - 18;
+
+    ballY = lerp(floorY - ballRadius, charConfig.rHandY + ballRadius, bouncePhase);
+
+    if (currentAdType === "english" && bouncePhase < 0.22) {
+      ctx.save();
+      ctx.font = "900 26px Inter, sans-serif";
+      ctx.fillStyle = RED;
+      ctx.fillText("BOUNCE! 💥", ballX - 40, floorY - 55);
+      ctx.restore();
+    }
+
+    const bIdx = Math.floor(t * 7.5 / Math.PI);
+    if (bIdx !== lastBounceIndex && isPlaying) {
+      lastBounceIndex = bIdx;
+      playBounceSfx();
+    }
+  } else if (t < 6.5) {
+    // [구간 2] 과목별 하이라이트 액션
+    const p = (t - 3.2) / 3.3;
+
+    if (currentAdType === "life") {
+      // 투핸드 파워 슬램덩크 (양팔 길이 고정 IK + 골대 파손)
+      const jumpArc = Math.sin(p * Math.PI);
+      hipX = lerp(485, hoopX - 55, Math.min(1, p * 1.25));
+      hipY = (floorY - 82) - jumpArc * 185;
+
+      charConfig.torsoLean = 0.18;
+      // 두 무릎을 자연스럽게 접어 올림
+      charConfig.lFootX = hipX - 18; charConfig.lFootY = hipY + 58;
+      charConfig.rFootX = hipX + 8;  charConfig.rFootY = hipY + 52;
+      // 양손을 머리 위 공 위치로 모음
+      charConfig.lHandX = hipX + 18; charConfig.lHandY = hipY - 92;
+      charConfig.rHandX = hipX + 24; charConfig.rHandY = hipY - 92;
+
+      if (p < 0.65) {
+        ballX = hipX + 22;
+        ballY = hipY - 104;
+      } else {
+        const dunkP = (p - 0.65) / 0.35;
+        hoopBreak = Math.min(1, dunkP * 1.4);
+        ballX = hoopX - 18;
+        ballY = lerp(hoopY + 15, floorY - ballRadius, dunkP);
+        if (!swishPlayed && isPlaying) { swishPlayed = true; playSwishOrCrashSfx(true); }
+      }
+    } else if (currentAdType === "english") {
+      // 영어: 바운스 패스 후 점프 리바운드 캐치
+      const bounceArc = Math.abs(Math.sin(p * Math.PI * 2));
+      hipX = lerp(485, 810, p);
+      const stride = Math.sin(t * 11);
+      charConfig.lFootX = hipX - stride * 26; charConfig.lFootY = floorY - 3;
+      charConfig.rFootX = hipX + stride * 26; charConfig.rFootY = floorY - 3;
+      charConfig.rHandX = hipX + 28; charConfig.rHandY = hipY - 45;
+      charConfig.lHandX = hipX - 18; charConfig.lHandY = hipY - 20;
+
+      ballX = lerp(525, hoopX - 25, p);
+      ballY = lerp(floorY - ballRadius, hoopY - 25, bounceArc);
+      if (bounceArc < 0.2) {
+        ctx.save();
+        ctx.font = "900 30px Inter, sans-serif";
+        ctx.fillStyle = RED;
+        ctx.fillText("THUMP! BOUNCE!", ballX - 90, floorY - 40);
+        ctx.restore();
+      }
+    } else {
+      // ★ 수학 & 한국어: 정교한 원모션 점프슛 (출발 높이 2.5m = y:330px 에서 릴리즈)
+      const jumpArc = p < 0.35 ? Math.sin((p / 0.35) * Math.PI) : 0;
+      hipX = 505;
+      hipY = (floorY - 82) - jumpArc * 38;
+      charConfig.torsoLean = 0.04;
+      charConfig.lFootX = hipX - 12; charConfig.lFootY = hipY + 80;
+      charConfig.rFootX = hipX + 12; charConfig.rFootY = hipY + 80;
+      // 슈팅 팔로우스루 자세 (IK가 팔 길이를 일정하게 유지)
+      charConfig.rHandX = hipX + 32; charConfig.rHandY = hipY - 96;
+      charConfig.lHandX = hipX + 18; charConfig.lHandY = hipY - 72;
+
+      // ★ 수학: 사다리꼴 색칠을 완전히 제거하고, 오직 공이 그린 '순수 포물선 활꼴(3.71m²)'만 강조!
+      if (currentAdType === "math") {
+        ctx.save();
+        // 순수 포물선 활꼴 내부만 빨간 반투명 영역으로 채움
+        ctx.fillStyle = "rgba(230, 57, 70, 0.22)";
+        ctx.beginPath();
+        ctx.moveTo(540, 330); // 출발점 (2.5m)
+        for (let s = 0; s <= 1.001; s += 0.025) {
+          const pt = getAsymmetricParabolaPoint(Math.min(1, s));
+          ctx.lineTo(pt.px, pt.py);
+        }
+        ctx.lineTo(540, 330); // 골대 림(3.05m)에서 출발점(2.5m)으로 바로 닫아 사다리꼴 배제!
+        ctx.closePath();
+        ctx.fill();
+
+        // 활꼴 밑변(양 끝점 2.5m ~ 3.05m 연결 현) 점선
+        ctx.setLineDash([6, 5]);
+        ctx.strokeStyle = NAVY;
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(540, 330);
+        ctx.lineTo(1022, 286);
+        ctx.stroke();
+
+        // 포물선 궤적 실선
+        ctx.setLineDash([8, 6]);
+        ctx.strokeStyle = RED;
+        ctx.lineWidth = 3.5;
+        ctx.beginPath();
+        for (let s = 0; s <= 1.001; s += 0.025) {
+          const pt = getAsymmetricParabolaPoint(Math.min(1, s));
+          if (s === 0) ctx.moveTo(pt.px, pt.py); else ctx.lineTo(pt.px, pt.py);
+        }
+        ctx.stroke();
+
+        // 치수 보조선 및 수치(2.5m, 4.0m, 3.05m, 4.6m)
+        const peakPt = getAsymmetricParabolaPoint(2.5625 / 4.6);
+        ctx.fillStyle = NAVY;
+        ctx.font = "800 14px Inter, sans-serif";
+        ctx.fillText("2.5m", 495, 335);
+        ctx.fillText("4.0m", peakPt.px - 18, peakPt.py - 10);
+        ctx.fillText("3.05m", 1030, 282);
+        ctx.fillText("4.6m", 765, 326);
+
+        // 좌측 상단 물리 조건 안내판 (46개 언어로 번역 출력)
+        ctx.setLineDash([]);
+        ctx.fillStyle = "rgba(27, 42, 74, 0.94)";
+        ctx.beginPath();
+        ctx.roundRect(45, 32, 465, 138, 16);
+        ctx.fill();
+
+        ctx.fillStyle = "#F8FAFC";
+        ctx.font = "700 15px 'Noto Sans KR', Inter, sans-serif";
+        qaObj.specLines.forEach((line, idx) => {
+          ctx.fillText("• " + line, 65, 64 + idx * 29);
+        });
+        ctx.restore();
+      }
+
+      if (p < 0.78) {
+        const s = p / 0.78;
+        const pt = getAsymmetricParabolaPoint(s);
+        ballX = pt.px;
+        ballY = pt.py;
+      } else {
+        const s = (p - 0.78) / 0.22;
+        ballX = 1022;
+        ballY = lerp(hoopY + 10, floorY - ballRadius, s);
+        if (!swishPlayed && isPlaying) { swishPlayed = true; playSwishOrCrashSfx(false); }
+      }
+    }
+  } else {
+    // [구간 3] (6.5 ~ 10.0초): LIFE.HELP 로고 시그니처 포즈 (175cm 균형 잡힌 실루엣이 공을 한 손 위에 든 모습)
+    if (currentAdType === "life") hoopBreak = 1;
+    const p = Math.min(1, (t - 6.5) / 0.65);
+    hipX = lerp(650, 215, p);
+    hipY = floorY - 82;
+
+    charConfig.torsoLean = 0.04;
+    charConfig.lFootX = hipX - 18; charConfig.lFootY = floorY - 3;
+    charConfig.rFootX = hipX + 18; charConfig.rFootY = floorY - 3;
+    charConfig.lHandX = hipX - 24; charConfig.lHandY = hipY - 12;
+    charConfig.rHandX = hipX + 38; charConfig.rHandY = hipY - 92;
+  }
+
+  drawHoop(hoopX, hoopY, hoopBreak);
+  const hands = drawAthleticHuman175(hipX, hipY, floorY, charConfig);
+
+  if (t >= 6.5) {
+    // 엔드카드에서는 캐릭터의 실제 오른손 끝(IK 계산 결과) 바로 위에 빨간 공이 정확히 안착
+    ballX = hands.rHandActualX;
+    ballY = hands.rHandActualY - ballRadius - 4;
+  }
+  drawPureRedBall(ballX, ballY, ballRadius);
+
+  const domainText = getTargetDomain();
+
+  if (t >= 6.5) {
+    if (!answerSpoken && isPlaying) {
+      answerSpoken = true;
+      const ttsFinal = [...qaObj.endLines, qaObj.catchphrase].join(". ");
+      speakText(ttsFinal);
+    }
+    const cardAlpha = Math.min(1, (t - 6.5) / 0.45);
+    ctx.save();
+    ctx.globalAlpha = cardAlpha;
+    ctx.fillStyle = NAVY;
+    ctx.beginPath();
+    ctx.roundRect(380, 80, 845, 425, 28);
+    ctx.fill();
+
+    // URL 주소 (점 2개를 순수 빨간 공으로 렌더링)
+    drawUrlWithRedBalls(domainText, 425, 162, 44, "#FFFFFF");
+
+    ctx.strokeStyle = "rgba(255,255,255,0.15)";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(425, 190);
+    ctx.lineTo(1180, 190);
+    ctx.stroke();
+
+    if (currentAdType === "math") {
+      // 1) 아르키메데스의 포물선 넓이 공식: 면적 = ⅔ × 밑변 × 높이
+      ctx.fillStyle = "#FDE047";
+      ctx.font = "800 20px 'Noto Sans KR', Inter, sans-serif";
+      wrapCanvasText(ctx, qaObj.endLines[0], 425, 232, 750, 28);
+
+      // 2) 비대칭 높이 반영 순수 활꼴 조정식
+      ctx.fillStyle = "#E2E8F0";
+      ctx.font = "700 18px 'Noto Sans KR', Inter, sans-serif";
+      wrapCanvasText(ctx, qaObj.endLines[1], 425, 292, 750, 26);
+
+      // 3) 최종 해답 (3.71m²)
+      ctx.fillStyle = "#4ADE80";
+      ctx.font = "900 28px 'Noto Sans KR', Inter, sans-serif";
+      ctx.fillText(qaObj.endLines[2], 425, 355);
+
+      // 4) 수학 전용 다국어 캐치프레이즈
+      ctx.fillStyle = "#FFFFFF";
+      ctx.font = "800 21px 'Noto Sans KR', Inter, sans-serif";
+      wrapCanvasText(ctx, "✨ " + qaObj.catchphrase, 425, 415, 750, 30);
+    } else if (currentAdType === "english" || currentAdType === "korean") {
+      // 정답 제시 후 과목별 다국어 캐치프레이즈 제시
+      ctx.fillStyle = "#4ADE80";
+      ctx.font = "900 32px 'Noto Sans KR', Inter, sans-serif";
+      wrapCanvasText(ctx, qaObj.endLines[0], 425, 260, 750, 40);
+
+      ctx.fillStyle = "#FFFFFF";
+      ctx.font = "800 24px 'Noto Sans KR', Inter, sans-serif";
+      wrapCanvasText(ctx, "✨ " + qaObj.catchphrase, 425, 360, 750, 36);
+    } else {
+      // 생활 플랫폼 캐치프레이즈 마무리
+      ctx.fillStyle = "#FFFFFF";
+      ctx.font = "800 28px 'Noto Sans KR', Inter, sans-serif";
+      wrapCanvasText(ctx, qaObj.catchphrase, 425, 285, 750, 42);
+    }
+    ctx.restore();
+  } else {
+    ctx.save();
+    ctx.fillStyle = "rgba(27, 42, 74, 0.94)";
+    ctx.beginPath();
+    ctx.roundRect(90, 560, 1100, 125, 22);
+    ctx.fill();
+
+    drawUrlWithRedBalls(domainText, 130, 600, 20, "#CBD5E1");
+
+    ctx.fillStyle = "#FFFFFF";
+    ctx.font = "700 22px 'Noto Sans KR', Inter, sans-serif";
+    wrapCanvasText(ctx, "Q. " + qaObj.q, 130, 636, 1020, 30);
+    ctx.restore();
+  }
+}
+
+function wrapCanvasText(context, text, x, y, maxWidth, lineHeight) {
+  const words = text.split(" ");
+  let line = "";
+  for (let n = 0; n < words.length; n++) {
+    const testLine = line + words[n] + " ";
+    if (context.measureText(testLine).width > maxWidth && n > 0) {
+      context.fillText(line, x, y);
+      line = words[n] + " ";
+      y += lineHeight;
+    } else {
+      line = testLine;
+    }
+  }
+  context.fillText(line, x, y);
+}
+
+// 5. 재생 및 녹화
+function startPlayback() {
+  if (animFrame) cancelAnimationFrame(animFrame);
+  startTime = performance.now();
+  isPlaying = true;
+  lastBounceIndex = -1;
+  swishPlayed = false;
+  answerSpoken = false;
+
+  const { q } = getCurrentQA();
+  speakText(q);
+
+  function tick(now) {
+    const elapsed = (now - startTime) / 1000;
+    const clamped = Math.min(DURATION, elapsed);
+    document.getElementById("timeLabel").textContent = `${clamped.toFixed(1)}s / 10.0s`;
+    document.getElementById("progressBar").style.width = `${(clamped / DURATION) * 100}%`;
+    drawFrame(clamped);
+
+    if (elapsed < DURATION) {
+      animFrame = requestAnimationFrame(tick);
+    } else {
+      isPlaying = false;
+    }
+  }
+  animFrame = requestAnimationFrame(tick);
+}
+
+document.getElementById("playBtn").addEventListener("click", startPlayback);
+
+document.getElementById("recordBtn").addEventListener("click", () => {
+  const stream = canvas.captureStream(60);
+  const recorder = new MediaRecorder(stream, { mimeType: "video/webm;codecs=vp9" });
+  const chunks = [];
+  const btn = document.getElementById("recordBtn");
+  btn.textContent = "⏺ 녹화 중 (10초)...";
+  btn.disabled = true;
+
+  recorder.ondataavailable = e => { if (e.data.size > 0) chunks.push(e.data); };
+  recorder.onstop = () => {
+    const blob = new Blob(chunks, { type: "video/webm" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${getTargetDomain().toLowerCase()}-${currentLang}-10s-ad.webm`;
+    a.click();
+    URL.revokeObjectURL(url);
+    btn.textContent = "🔴 10초 영상 파일 저장 (.webm)";
+    btn.disabled = false;
+  };
+
+  recorder.start();
+  startPlayback();
+  setTimeout(() => {
+    if (recorder.state === "recording") recorder.stop();
+  }, DURATION * 1000 + 150);
+});
+
+updateLangOptions();
+</script>
+</body>
+</html>
