@@ -1,19 +1,9 @@
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { isKnownServiceSlug } from "@/lib/support/knownService";
 import type { Metadata } from "next";
-import { SupportServiceView } from "@/components/support/SupportServiceView";
 import { serviceMetadata } from "@/lib/i18n/serviceMetadata";
 
-export function generateStaticParams() {
-  return [
-    { service: "bank-help" },
-    { service: "insurance-help" },
-    { service: "job-help" },
-    { service: "hospital-help" },
-    { service: "mobile-help" },
-  ];
-}
-
+/** /support/<slug> was a duplicate of /services/<slug>; it now redirects there (the single canonical service page). */
 export async function generateMetadata({ params }: { params: Promise<{ service: string }> }): Promise<Metadata> {
   return serviceMetadata((await params).service);
 }
@@ -25,6 +15,5 @@ export default async function SupportPage({
 }) {
   const { service: slug } = await params;
   if (!isKnownServiceSlug(slug)) notFound();
-  return <SupportServiceView slug={slug} />;
+  permanentRedirect(`/services/${slug}`);
 }
-

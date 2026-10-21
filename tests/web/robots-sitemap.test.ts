@@ -37,9 +37,9 @@ describe("sitemap.xml", () => {
     hdrs = { host: "korea.life.help" };
     const s = await sitemap();
     const urls = s.map((e) => e.url);
-    for (const p of ["/", "/visa", "/privacy", "/terms", "/services/boiler", "/support/bank-help"]) expect(urls).toContain(`https://korea.life.help${p}`);
+    for (const p of ["/", "/visa", "/privacy", "/terms", "/services/boiler", "/services/bank-help"]) expect(urls).toContain(`https://korea.life.help${p}`);
     expect(urls.every((u) => u.startsWith("https://korea.life.help"))).toBe(true);
-    expect(urls.some((u) => /toilet-clog|\/admin|\/tech|\/jiu|\/study/.test(u))).toBe(false);
+    expect(urls.some((u) => /\/support\/|toilet-clog|\/admin|\/tech|\/jiu|\/study/.test(u))).toBe(false);
     expect(Object.keys(s[1].alternates!.languages!)).toContain("vi");
     expect(publicPaths().length).toBe(urls.length);
   });
