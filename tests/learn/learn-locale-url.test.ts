@@ -10,6 +10,12 @@ const run = (host: string, path: string, headers: Record<string, string> = {}) =
 const hdr = (res: Response, h: string) => res.headers.get(`x-middleware-request-${h}`);
 const rewrite = (res: Response) => { const v = res.headers.get("x-middleware-rewrite"); return v ? new URL(v).pathname : null; };
 
+vi.mock("next/headers", () => {
+  const state = { headers: new Headers() };
+  (globalThis as { __learnHeaders?: typeof state }).__learnHeaders = state;
+  return { headers: async () => state.headers, cookies: async () => ({ get: () => undefined }) };
+});
+
 describe("language in the URL of a learning site", () => {
   it("every registry locale is a valid first segment (any case); aliases zs / zt / zh map to the Chinese variants; look-alikes are not locales", () => {
     for (const l of locales) { expect(localeFromSegment(l)).toBe(l); expect(localeFromSegment(l.toUpperCase())).toBe(l); }
@@ -107,11 +113,6 @@ describe("korean.life.help is the representative address", () => {
 });
 
 describe("metadata per language (title, description, social preview, hreflang)", () => {
-  vi.mock("next/headers", () => {
-    const state = { headers: new Headers() };
-    (globalThis as { __learnHeaders?: typeof state }).__learnHeaders = state;
-    return { headers: async () => state.headers, cookies: async () => ({ get: () => undefined }) };
-  });
   const set = (h: Record<string, string>) => { (globalThis as unknown as { __learnHeaders: { headers: Headers } }).__learnHeaders.headers = new Headers(h); };
 
   it("every site x every registry locale: its own language, distinct from the others, with hreflang alternates for all locales", async () => {
