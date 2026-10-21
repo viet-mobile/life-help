@@ -18,7 +18,7 @@ const homeOrder = (() => {
 
 describe("home grid (learning-only release): the existing ten services plus the Study card", () => {
   it("puts Study immediately before job help and leaves the ten existing cards in their order", () => {
-    expect(homeOrder).toEqual(["study", "jobHelp", "mobileHelp", "boiler", "housing", "cleaning", "hospitalHelp", "clog", "leakPlumbing", "bankHelp", "insuranceHelp"]);
+    expect(homeOrder).toEqual(["study", "jobHelp", "mobileHelp", "boiler", "housing", "cleaning", "hospitalHelp", "clog", "leakPlumbing", "bankHelp", "insuranceHelp", "visaDocs"]);
     expect(homeOrder.indexOf("study") + 1).toBe(homeOrder.indexOf("jobHelp"));
   });
   it("derives the tab counts from the list", () => {
