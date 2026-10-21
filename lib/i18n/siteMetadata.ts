@@ -489,22 +489,6 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
       description: "LIFE.HELP کا سرکاری مرکزی نگرانی اور آپریشنز کا نظام۔",
     },
   },
-  sg: {
-    tagline: "Plateforme ti aservice ti gigi na ayanga mingi",
-    description: "Plateforme ti aservice ti gigi teti azo ti kodro wande so ayeke na Corée. Mungo wango na yanga ti mo nga kangbi ndo na awakua so a tara ala awe.",
-    chat: {
-      title: "Kodoro ti ndérémbo na yângâ ti mo",
-      description: "Hunda ndérémbo ti gï fini lâ ti mo na Korëe na yângâ ti mo. Sara tënë 1:1 na zo ti ndérémbo; a kiri message ni na machine.",
-    },
-    tech: {
-      title: "Portail ti awakua ti LIFE.HELP",
-      description: "Portail ti kua ti LIFE.HELP ti azo ti ndérémbo so ayeke sara kua oko. Bâ lege ti ngoi ti mo na demande so a mû na mo.",
-    },
-    sys: {
-      title: "Système ti bängö kua ti kota ndo",
-      description: "Système ti bängö nga ti sarango kua ti kota ndo ti LIFE.HELP.",
-    },
-  },
   sw: {
     tagline: "Jukwaa la Huduma za Maisha kwa Lugha Nyingi",
     description: "Jukwaa la huduma za maisha kwa wakazi wa kigeni nchini Korea. Pata ushauri kwa lugha yako na uunganishwe na mafundi waliothibitishwa.",
