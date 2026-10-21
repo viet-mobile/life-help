@@ -66,6 +66,6 @@ describe("no fake success states", () => {
   });
   it("new notice strings exist in en and ko", () => {
     const keys: Array<[string, string]> = [["support", "notSentTitle"], ["support", "providerNoticeCta"], ["review", "pendingNotice"], ["review", "noReviewsYet"], ["request", "photosNotUploaded"], ["counselorPortal", "desc"]];
-    for (const d of [en, ko] as Array<Record<string, Record<string, string>>>) for (const [s, k] of keys) expect(d[s][k]).toBeTruthy();
+    for (const d of [en, ko] as unknown as Array<Record<string, Record<string, string>>>) for (const [s, k] of keys) expect(d[s][k]).toBeTruthy();
   });
 });
