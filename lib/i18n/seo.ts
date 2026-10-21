@@ -50,10 +50,11 @@ export function localePathSegment(locale: string): string {
 }
 
 export function originFromHost(rawHost: string | null | undefined): string {
-  const host = (rawHost ?? "").split(":")[0].toLowerCase();
-  if (!host) return "";
+  const full = (rawHost ?? "").trim().toLowerCase();
+  if (!/^[a-z0-9]([a-z0-9.-]*[a-z0-9])?(:\d{1,5})?$/.test(full)) return ""; // never echo an odd Host header into a URL
+  const host = full.split(":")[0];
   const local = host === "localhost" || host.endsWith(".localhost") || host.startsWith("127.");
-  return `${local ? "http" : "https"}://${(rawHost ?? "").toLowerCase()}`;
+  return `${local ? "http" : "https"}://${full}`;
 }
 
 /**

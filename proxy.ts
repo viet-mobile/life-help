@@ -357,6 +357,8 @@ function buildInternalPath(
     subpath === "/manifest.webmanifest" ||
     subpath === "/manifest.json" ||
     subpath === "/sw.js" ||
+    subpath === "/robots.txt" ||
+    subpath === "/sitemap.xml" ||
     subpath.startsWith("/icon-")
   ) {
     return {
