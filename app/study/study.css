@@ -164,3 +164,7 @@ a.l-card { display: block; }
 /* Directional glyphs (arrows / play) mirror in right-to-left locales */
 .l-arrow { display: inline-block; }
 [dir="rtl"] .l-arrow { transform: scaleX(-1); }
+
+/* Common API-failure toast (components/learn/LearnerProvider.tsx) */
+.l-toast { position: fixed; inset-inline: 12px; bottom: 16px; z-index: 80; max-width: 480px; margin-inline: auto; display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 12px 16px; border-radius: 14px; background: #1f2937; color: #fff; box-shadow: 0 8px 24px rgba(0,0,0,.25); }
+.l-toast .l-link { color: #fff; text-decoration: underline; min-height: 44px; }

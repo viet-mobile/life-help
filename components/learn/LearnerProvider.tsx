@@ -72,6 +72,31 @@ function loadGuest(site: Site): PlayerState {
   return createInitialState(site);
 }
 
+const IDEMPOTENT_ACTIONS = ["hint", "reveal", "cards", "state"];
+/** Actions whose caller already shows its own error panel; everything else gets the common toast. */
+const OWN_ERROR_UI = ["attempt", "onboard"];
+function notifyApiFailure(action: string) {
+  if (typeof window !== "undefined" && !OWN_ERROR_UI.includes(action)) window.dispatchEvent(new CustomEvent("learn:api-error", { detail: action }));
+}
+
+/** Common error toast: a failed server call (network down, 5xx) tells the learner once, politely, that progress is safe and to try again. */
+function ApiErrorToast({ message, closeLabel }: { message: string; closeLabel: string }) {
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    let timer: number | undefined;
+    const show = () => { setOpen(true); window.clearTimeout(timer); timer = window.setTimeout(() => setOpen(false), 8000); };
+    window.addEventListener("learn:api-error", show);
+    return () => { window.removeEventListener("learn:api-error", show); window.clearTimeout(timer); };
+  }, []);
+  if (!open) return null;
+  return (
+    <div role="alert" className="l-toast">
+      <span>{message}</span>
+      <button type="button" className="l-link" onClick={() => setOpen(false)}>{closeLabel}</button>
+    </div>
+  );
+}
+
 export function LearnerProvider({
   meta,
   initialState,
@@ -135,18 +160,31 @@ export function LearnerProvider({
       // API URLs have no /<locale> prefix: send the page's resolved presentation language explicitly.
       const payload: Record<string, unknown> = { ...body, site, locale };
       if (mode === "guest") payload.state = stateRef.current;
-      let res: Response;
-      try {
-        res = await fetch(`/api/learn/${action}`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        });
-      } catch {
+      // Read-only actions are safe to repeat: one automatic retry with a short backoff on a network failure or 5xx.
+      const attempts = IDEMPOTENT_ACTIONS.includes(action) ? 2 : 1;
+      let res: Response | null = null;
+      for (let i = 0; i < attempts; i++) {
+        try {
+          res = await fetch(`/api/learn/${action}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+        } catch {
+          res = null;
+        }
+        if (res && res.status < 500) break;
+        if (i + 1 < attempts) await new Promise((r) => setTimeout(r, 600));
+      }
+      if (!res) {
+        notifyApiFailure(action);
         throw new ApiError("network", 0);
       }
       const data = await res.json().catch(() => ({}));
-      if (!res.ok) throw new ApiError(String(data?.error ?? "error"), res.status);
+      if (!res.ok) {
+        if (res.status >= 500) notifyApiFailure(action);
+        throw new ApiError(String(data?.error ?? "error"), res.status);
+      }
       // Only adopt state after a fully successful response: a failed request never alters progress.
       if (data.state) adopt(data.state as PlayerState);
       if (["start", "attempt", "complete", "cards", "diagnostic"].includes(action)) window.dispatchEvent(new CustomEvent("jiu-activity", { detail: action }));
@@ -175,12 +213,14 @@ export function LearnerProvider({
     }
   }, [ready, state.profile, pathname, router, href, base]);
 
+  const toastMsg = t("lesson.error");
+  const toastClose = t("common.close");
   const plan = useMemo(() => buildAccessPlan(meta.catalog, meta.questions), [meta]);
   const value = useMemo<LearnerCtx>(
     () => ({ site, base, locale, t, mode, accountsEnabled, ready, state, index, api, href, resetGuest, access, plan }),
     [site, base, locale, t, mode, accountsEnabled, ready, state, index, api, href, resetGuest, access, plan],
   );
-  return <LearnerContext.Provider value={value}><JournalSender site={site} />{children}</LearnerContext.Provider>;
+  return <LearnerContext.Provider value={value}><JournalSender site={site} />{children}<ApiErrorToast message={toastMsg} closeLabel={toastClose} /></LearnerContext.Provider>;
 }
 
 /** A same-site, in-app path ("/learn/..."): never a URL, protocol-relative or backslash form, and never the onboarding page itself. */
