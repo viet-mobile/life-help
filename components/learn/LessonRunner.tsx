@@ -186,7 +186,7 @@ export function LessonRunner({ kind, lessonId, skillId, mode }: { kind: Kind; le
               <p><RichText text={lesson.lesson.example} /></p>
               {site === "english" && <ListeningPanel scope={`ex-${lesson.lesson.id}`} variant="list" segments={exampleSegments(`ex-${lesson.lesson.id}`, lesson.lesson.example, EXAMPLE_KO[lesson.lesson.id])} lesson={{ id: lesson.lesson.id, title: lesson.lesson.title }} />}
             </section>
-            {site === "math" && <LessonMotion skillIds={lesson.lesson.skillIds} locale={locale} />}
+            {site === "math" && <LessonMotion skillIds={lesson.lesson.skillIds} locale={locale} title={lesson.lesson.title} />}
           </>
         ) : (
           <h1 className="l-h1">{kind === "review" ? t("dash.continue.review") : t("dash.recommended")}</h1>
