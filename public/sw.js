@@ -1,73 +1,73 @@
-// Service Worker for LIFE.HELP PWA
-const CACHE_NAME = "life-help-pwa-v1";
-const OFFLINE_FALLBACK = [
-  "/",
-  "/manifest.json",
-  "/manifest.webmanifest",
-  "/icon-192.png",
-  "/icon-512.png"
-];
+// Service Worker for LIFE.HELP PWA.
+// Policy: HTML, APIs and anything personal or authenticated are NEVER stored. Only content-hashed build output and static icons are cached;
+// when a page navigation fails because the device is offline, a small localized /offline.html is shown (not the Korean home page).
+const VERSION = "v2";
+const STATIC_CACHE = `life-help-static-${VERSION}`;
+const OFFLINE_URL = "/offline.html";
+const PRECACHE = [OFFLINE_URL, "/icon-192.png", "/icon-512.png"];
+const MAX_STATIC_ENTRIES = 120;
 
-// Install Event
+// Same-origin paths that are never handled by the worker at all (always straight to the network).
+const BYPASS_PREFIXES = ["/api/", "/admin", "/tech", "/chat", "/login", "/auth", "/jiu", "/sys", "/payment", "/request", "/review", "/study", "/learn-content/"];
+
+function isCacheableStatic(url) {
+  return url.pathname.startsWith("/_next/static/") || url.pathname.startsWith("/logos/") || /^\/icon-\d+\.png$/.test(url.pathname);
+}
+
+async function trim(cache) {
+  const keys = await cache.keys();
+  for (let i = 0; i < keys.length - MAX_STATIC_ENTRIES; i++) await cache.delete(keys[i]);
+}
+
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(OFFLINE_FALLBACK).catch(() => {
-        // Continue even if some fallback assets fail to pre-cache
-      });
-    })
+    caches.open(STATIC_CACHE).then((cache) => cache.addAll(PRECACHE).catch(() => {})).then(() => self.skipWaiting()),
   );
-  self.skipWaiting();
 });
 
-// Activate Event
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((name) => {
-          if (name !== CACHE_NAME) {
-            return caches.delete(name);
-          }
-        })
-      );
-    }).then(() => self.clients.claim())
+    caches.keys()
+      // drops every older cache, including the v1 cache that held HTML pages
+      .then((names) => Promise.all(names.filter((n) => n !== STATIC_CACHE).map((n) => caches.delete(n))))
+      .then(() => self.clients.claim()),
   );
 });
 
-// Fetch Event (Network-first with cache fallback)
 self.addEventListener("fetch", (event) => {
-  if (event.request.method !== "GET") return;
+  const request = event.request;
+  if (request.method !== "GET") return;
+  const url = new URL(request.url);
+  if (url.origin !== self.location.origin) return;
+  if (BYPASS_PREFIXES.some((p) => url.pathname === p.replace(/\/$/, "") || url.pathname.startsWith(p))) return;
 
-  const url = new URL(event.request.url);
-
-  // Do not cache API requests or non-http protocols
-  if (url.pathname.startsWith("/api/") || !url.protocol.startsWith("http")) {
+  // Page navigations: always the network; offline -> the minimal offline page. The response is never cached.
+  if (request.mode === "navigate") {
+    event.respondWith(
+      fetch(request).catch(async () => {
+        const offline = await caches.match(OFFLINE_URL);
+        return offline || new Response("Offline", { status: 503, headers: { "Content-Type": "text/plain; charset=utf-8" } });
+      }),
+    );
     return;
   }
 
-  event.respondWith(
-    fetch(event.request)
-      .then((networkResponse) => {
-        if (networkResponse && networkResponse.status === 200) {
-          const responseClone = networkResponse.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, responseClone).catch(() => {});
-          });
-        }
-        return networkResponse;
-      })
-      .catch(async () => {
-        const cachedResponse = await caches.match(event.request);
-        if (cachedResponse) {
-          return cachedResponse;
-        }
-        if (event.request.mode === "navigate") {
-          const fallback = await caches.match("/");
-          if (fallback) return fallback;
-        }
-        return new Response("Offline", { status: 503, statusText: "Service Unavailable" });
-      })
-  );
+  // Static build output / icons: cache-first (content-hashed or rarely changing), only successful, non-private responses are stored.
+  if (isCacheableStatic(url)) {
+    event.respondWith(
+      caches.match(request).then(
+        (hit) =>
+          hit ||
+          fetch(request).then((response) => {
+            const cc = response.headers.get("Cache-Control") || "";
+            if (response.status === 200 && response.type === "basic" && !/no-store|private/i.test(cc) && !response.headers.has("Set-Cookie")) {
+              const copy = response.clone();
+              caches.open(STATIC_CACHE).then((cache) => cache.put(request, copy).then(() => trim(cache))).catch(() => {});
+            }
+            return response;
+          }),
+      ),
+    );
+  }
+  // everything else (RSC/data requests, other assets): not intercepted
 });
-
