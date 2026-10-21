@@ -15,6 +15,8 @@ import { passageSegments } from "@/lib/learn/listen/segments";
 export interface AttemptResponse {
   correct: boolean;
   attemptNo: number;
+  /** server-issued proof of the attempt counter (guests) */
+  attemptProof?: string;
   revealed: boolean;
   feedback: { hint?: string; hintLevel?: number; explanation?: string; answer?: string; /** canonical Korean of the passage, sent once the question is solved or revealed */ passageKo?: string[]; /** the correct Korean sentence for pick-the-Korean / fill-in questions, sent only once solved or revealed */ audioAnswer?: string };
   followUp: PublicQuestion | null;
@@ -58,6 +60,7 @@ export function QuestionCard({
   const [value, setValue] = useState<string | string[]>(isMulti ? [] : "");
   const [status, setStatus] = useState<QStatus>("answering");
   const [attempts, setAttempts] = useState(0);
+  const [proof, setProof] = useState<string | undefined>(undefined);
   const [hints, setHints] = useState<string[]>([]);
   const [feedback, setFeedback] = useState<AttemptResponse["feedback"]>({});
   const [followUp, setFollowUp] = useState<PublicQuestion | null>(null);
@@ -86,6 +89,7 @@ export function QuestionCard({
         sessionId,
         answer: value,
         attemptNo: attempts + 1,
+        attemptProof: proof,
         hintsUsed: hints.length,
         timeMs: Date.now() - startedAt,
         isReview,
@@ -104,6 +108,7 @@ export function QuestionCard({
         setFollowUp(res.followUp);
       } else {
         setAttempts(res.attemptNo);
+        setProof(res.attemptProof);
         setStatus("wrong");
         const hint = res.feedback.hint;
         if (hint && !hints.includes(hint)) setHints((h) => [...h, hint]);

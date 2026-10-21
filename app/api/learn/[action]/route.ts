@@ -71,6 +71,7 @@ export async function POST(request: Request, ctx: RouteContext<"/api/learn/[acti
             sessionId: String(body.sessionId ?? ""),
             answer: body.answer,
             attemptNo: typeof body.attemptNo === "number" ? body.attemptNo : undefined,
+            attemptProof: typeof body.attemptProof === "string" ? body.attemptProof.slice(0, 128) : undefined,
             hintsUsed: typeof body.hintsUsed === "number" ? body.hintsUsed : undefined,
             timeMs: typeof body.timeMs === "number" ? body.timeMs : undefined,
             isReview: body.isReview === true,

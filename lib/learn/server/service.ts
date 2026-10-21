@@ -37,6 +37,16 @@ import { isLevelOf } from "@/lib/learn/sites";
 import { LearnError } from "./errors";
 import type { LearnStore } from "./store";
 import { parsePlayerState } from "./stateCodec";
+
+/** Guests have no server-side attempt record, so the attempt counter is proven with an HMAC the server issued after the previous wrong answer
+ *  (a client cannot claim "3rd attempt" to obtain the answer key). Without LEARN_ATTEMPT_SECRET (production) a guest is always treated as on attempt 1. */
+export async function attemptProof(questionId: string, sessionId: string, attemptNo: number): Promise<string> {
+  const secret = process.env.LEARN_ATTEMPT_SECRET ?? "";
+  if (!secret) return "";
+  const key = await crypto.subtle.importKey("raw", new TextEncoder().encode(secret), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
+  const mac = await crypto.subtle.sign("HMAC", key, new TextEncoder().encode(`${questionId}|${sessionId}|${attemptNo}`));
+  return Array.from(new Uint8Array(mac)).map((b) => b.toString(16).padStart(2, "0")).join("");
+}
 import { cardBack, cardFront, isReviewMode, questionMode, type ReviewMode } from "@/lib/learn/reviewModes";
 
 /**
@@ -326,6 +336,8 @@ export class LearnService {
       sessionId: string;
       answer: unknown;
       attemptNo?: number;
+      /** HMAC issued with the previous wrong answer (guests only) */
+      attemptProof?: string;
       hintsUsed?: number;
       timeMs?: number;
       isReview?: boolean;
@@ -345,6 +357,12 @@ export class LearnService {
     const now = this.now();
     const store = this.requireStore(actor);
     let attemptNo = clampInt(body.attemptNo, 1, 3, 1);
+    if (!(store && actor.userId) && attemptNo > 1) {
+      // guest: the claimed attempt number only counts when the server itself issued the proof for the previous attempt
+      const expected = await attemptProof(body.questionId, body.sessionId, attemptNo - 1);
+      const trusted = process.env.NODE_ENV !== "production" && !process.env.LEARN_ATTEMPT_SECRET;
+      if (!trusted && (!expected || body.attemptProof !== expected)) attemptNo = 1;
+    }
     let sessionLessonId: string | null = null;
     if (store && actor.userId) {
       const session = await store.getSession(actor.userId, body.sessionId);
@@ -398,9 +416,11 @@ export class LearnService {
       if (level >= 1) feedback = { hint: q.hints[level - 1], hintLevel: level };
     }
 
+    const attemptProofOut = !correct && !reveal && !(store && actor.userId) ? await attemptProof(q.id, body.sessionId, attemptNo) : undefined;
     return {
       correct,
       attemptNo,
+      ...(attemptProofOut ? { attemptProof: attemptProofOut } : {}),
       revealed: reveal,
       feedback,
       followUp,
