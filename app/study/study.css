@@ -31,8 +31,8 @@
 .l-wrap { width: 100%; max-width: 720px; margin: 0 auto; padding: 16px; }
 .l-wrap-wide { max-width: 1040px; }
 .l-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-.l-skip { position: absolute; left: -9999px; }
-.l-skip:focus { left: 8px; top: 8px; z-index: 100; background: #fff; padding: 8px 12px; border-radius: 8px; }
+.l-skip { position: absolute; inset-inline-start: 0; top: 0; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+.l-skip:focus { inset-inline-start: 8px; top: 8px; width: auto; height: auto; overflow: visible; clip: auto; clip-path: none; z-index: 100; background: #fff; padding: 8px 12px; border-radius: 8px; }
 .l-muted { color: var(--l-muted); font-size: 0.9rem; }
 .l-h1 { font-size: clamp(1.6rem, 5vw, 2.4rem); font-weight: 900; letter-spacing: -0.02em; line-height: 1.2; }
 .l-h2 { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.01em; }

@@ -16,6 +16,8 @@ import {
 import { TopPwaBar } from "@/components/pwa/TopPwaBar";
 import { isJiuHost, jiuMetadata } from "@/lib/jiu/brand";
 import { PwaRegister } from "@/components/pwa/PwaRegister";
+import { directionForLocale } from "@/lib/i18n/direction";
+import { getLocale as getLearnLocale } from "@/lib/learn/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
   const headersList = await headers();
@@ -57,12 +59,15 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
   const headersList = await headers();
-  const lang = resolveLanguageFromHeaders(headersList);
+  const portalHeader = headersList.get("x-life-portal") ?? "";
+  const isLearn = portalHeader === "learn";
+  // Learning sites resolve their language from the URL / cookie (same source as the study layout); the marketplace from host + path.
+  const lang = isLearn ? await getLearnLocale() : resolveLanguageFromHeaders(headersList);
   const country = resolveCountryFromHeaders(headersList);
 
   const jiu = isJiuHost(headersList.get("x-forwarded-host") ?? headersList.get("host") ?? "");
   return (
-    <html lang={lang}>
+    <html lang={lang} dir={directionForLocale(lang)} data-learn={isLearn ? "1" : undefined}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
