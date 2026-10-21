@@ -175,7 +175,7 @@ export function QuestionCard({
       </div>
 
       {status === "answering" && hints.length > 0 && (
-        <div className="l-panel l-panel-hint">{hints.map((h, k) => <p key={k}><RichText text={h} /></p>)}</div>
+        <div className="l-panel l-panel-hint" aria-live="polite">{hints.map((h, k) => <p key={k}><RichText text={h} /></p>)}</div>
       )}
 
       <div className="l-stack">
