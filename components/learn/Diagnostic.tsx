@@ -132,7 +132,7 @@ export function Diagnostic() {
         <section className="l-card"><SkillBars skillIds={skillIds.length ? skillIds : undefined} /></section>
         {(result.delta?.xp ?? 0) > 0 && <p className="l-card" role="status">🎁 {t("diag.result.reward", { xp: result.delta?.xp ?? 0 })}</p>}
         {(result.placement?.placedOutLessonIds.length ?? 0) > 0 && <p className="l-muted">{t("diag.result.placed", { n: result.placement?.placedOutLessonIds.length ?? 0 })}</p>}
-        <Link className="l-btn l-btn-block" data-testid="diag-continue" href={studyHref()}><span className="l-arrow" aria-hidden="true">▶</span> {t("diag.result.cta")}</Link>
+        <Link className="l-btn l-btn-block" data-testid="diag-continue" href={studyHref()}><span className="l-arrow">▶</span> {t("diag.result.cta")}</Link>
         <Link className="l-link" href={href("/dashboard")}>{t("result.home")}</Link>
       </div>
     );

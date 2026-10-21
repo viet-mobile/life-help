@@ -25,7 +25,7 @@ export function StartCta({ accountHasProfile, accountsEnabled, signupEnabled = f
   return (
     <div className="l-stack">
       <Link className="l-btn l-btn-light l-btn-block" href={href(returning ? "/dashboard" : "/onboarding")}>
-        <span className="l-arrow" aria-hidden="true">▶</span> {returning ? t("landing.cta.continue") : t("landing.cta.start")}
+        <span className="l-arrow">▶</span> {returning ? t("landing.cta.continue") : t("landing.cta.start")}
       </Link>
       {accountsEnabled && !accountHasProfile && (
         <Link className="l-link" style={{ color: "#fff" }} href={href("/login")}>{t(signupEnabled ? "landing.cta.login" : "auth.submit.login")}</Link>
