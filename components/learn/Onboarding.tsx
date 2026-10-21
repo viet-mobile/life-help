@@ -89,7 +89,7 @@ export function Onboarding() {
       {step === 1 && (
         <section className="l-stack">
           <h1 className="l-h1">{t("onboarding.nickname.title")}</h1>
-          <label htmlFor="nick" className="l-muted">{t("onboarding.nickname.label")} · {t("onboarding.nickname.hint")}</label>
+          <label htmlFor="nick" className="l-muted">{t("onboarding.nickname.hint")}</label>
           <input id="nick" className="l-input" value={nickname} maxLength={16} autoComplete="off" onChange={(e) => setNickname(e.target.value)} onKeyDown={(e) => {
             if (e.key !== "Enter" || e.repeat || e.nativeEvent.isComposing || e.nativeEvent.keyCode === 229) return;
             if (e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) return;
