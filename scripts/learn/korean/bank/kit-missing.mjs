@@ -7,7 +7,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../../..");
 const dir = path.join(root, "scripts/learn/korean/bank/kit");
-const FULL = ["ko", "vi", "ja", "zh-Hans", "zh-Hant", "th", "id", "uz", "mn", "ru", "es", "fr", "de", "ne"];
+const FULL = process.env.LOCALES ? process.env.LOCALES.split(",") : ["ko", "vi", "ja", "zh-Hans", "zh-Hant", "th", "id", "uz", "mn", "ru", "es", "fr", "de", "ne"]; // LOCALES=bn,my,... to work on other locales
 const src = JSON.parse(fs.readFileSync(path.join(dir, "source.en.json"), "utf8")).texts;
 const arg = (n) => { const i = process.argv.indexOf(`--${n}`); return i < 0 ? null : process.argv[i + 1]; };
 const holes = (t) => [...new Set([...String(t).matchAll(/\{(\w+)\}/g)].map((m) => m[1]))].sort().join(",");

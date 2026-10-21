@@ -1,6 +1,6 @@
 import { isSite } from "@/lib/learn/types";
 import { LearnError } from "@/lib/learn/server/errors";
-import { assertSameOrigin, errorResponse, jsonResponse, rateLimit, readJson } from "@/lib/learn/server/http";
+import { assertSameOrigin, errorResponse, jsonResponse, edgeRateLimit, rateLimit, readJson } from "@/lib/learn/server/http";
 import { getLearnService, resolveActor } from "@/lib/learn/server/runtime";
 import { isLocale } from "@/lib/learn/i18n";
 import { isReviewMode } from "@/lib/learn/reviewModes";
@@ -26,6 +26,7 @@ export async function POST(request: Request, ctx: RouteContext<"/api/learn/[acti
     // Presentation only; the authenticated identity still comes exclusively from the session.
     if (isLocale(body.locale)) actor.locale = body.locale;
     const ip = request.headers.get("cf-connecting-ip") ?? request.headers.get("x-forwarded-for") ?? "local";
+    await edgeRateLimit(actor.userId ?? ip);
     rateLimit(`${actor.userId ?? ip}:${action}`, action === "attempt" ? 120 : 60, 60_000);
 
     const svc = getLearnService();
