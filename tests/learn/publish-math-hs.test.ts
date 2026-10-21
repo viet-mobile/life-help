@@ -18,9 +18,11 @@ describe("high-school math bank reaches the learner path", () => {
     expect(hs.length).toBe(6491);
     for (const q of hs) expect(q.prompt, q.id).not.toMatch(/[가-힣]/);
   });
-  it("a language without HS wording gets none of them (never another language), and the original bank is still served", async () => {
+  it("every language now carries the HS wording and gets all of the sets (since 2026-10-22); a language whose overlay lacked any HS template would get none, never another language", async () => {
     const { bundle } = await loadIndex("math", { locale: "vi" });
-    expect(bundle.questions.filter((q) => hsIds.has(q.id)).length).toBe(0);
-    expect(bundle.questions.filter((q) => q.id.startsWith("b-")).length).toBe(6672);
+    expect(bundle.questions.filter((q) => hsIds.has(q.id)).length).toBe(hsIds.size);
+    expect(bundle.questions.filter((q) => q.id.startsWith("b-") && !hsIds.has(q.id)).length).toBe(6672);
+    const { mathHsTemplates } = await import("@/lib/learn/content/bank");
+    expect(mathHsTemplates("vi", { templates: { only_one: { prompt: "x", hints: ["a", "b"], explanation: "y" } } })).toBeNull();
   });
 });
