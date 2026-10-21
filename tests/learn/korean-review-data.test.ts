@@ -36,7 +36,7 @@ describe("Korean review data", () => {
     }
   });
 
-  it("marks wording honestly: English is canonical, full languages are localized, and partial languages fall back for bank texts", async () => {
+  it("marks wording honestly: English is canonical, full languages are localized, and every language carries its bank texts (no fallback rows since 2026-10-21)", async () => {
     const en = await loadReviewLevel("K2", "en", { limit: 100 });
     expect(new Set(en.rows.map((r) => r.wording))).toEqual(new Set(["canonical"]));
     const vi = await loadReviewLevel("K2", "vi", { skill: "k.k2.greetings", limit: 100 });
@@ -44,7 +44,7 @@ describe("Korean review data", () => {
     const ar = await loadReviewLevel("K2", "ar", { skill: "k.k2.greetings", limit: 100 });
     const bank = ar.rows.filter((r) => r.source === "bank");
     expect(bank.length).toBeGreaterThan(0);
-    expect(bank.every((r) => r.wording === "fallback" && r.fallback.length > 0)).toBe(true);
+    expect(bank.every((r) => r.wording === "localized")).toBe(true);
     expect(ar.rows.filter((r) => r.source === "course").every((r) => r.wording === "localized")).toBe(true);
   });
 
@@ -70,12 +70,12 @@ describe("Korean review data", () => {
     expect(isLocale("xx")).toBe(false);
   });
 
-  it("the committed locale status is current and describes 1 canonical, 14 complete and 31 partial languages", () => {
+  it("the committed locale status is current and describes 1 canonical and 45 complete languages (no partial ones)", () => {
     execFileSync("node", ["scripts/learn/korean/bank/review-status.mjs", "--check"], { cwd: root, stdio: "pipe" });
     const tiers = Object.values(status.locales).map((l) => l.tier);
     expect(tiers.filter((t) => t === "canonical")).toHaveLength(1);
-    expect(tiers.filter((t) => t === "complete")).toHaveLength(14);
-    expect(tiers.filter((t) => t === "partial")).toHaveLength(31);
+    expect(tiers.filter((t) => t === "complete")).toHaveLength(45);
+    expect(tiers.filter((t) => t === "partial")).toHaveLength(0);
     expect(Object.keys(status.locales).sort()).toEqual([...LOCALES].sort());
   });
 });

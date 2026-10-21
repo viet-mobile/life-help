@@ -33,6 +33,6 @@ describe("language coverage table (the notice learners see)", () => {
     expect(hasGap(coverageFor("english", "ko"))).toBe(false);
     expect(hasGap(coverageFor("math", "ko"))).toBe(false);
     expect(hasGap(coverageFor("korean", "vi"))).toBe(false);
-    expect(hasGap(coverageFor("korean", "hi"))).toBe(true);
+    expect(hasGap(coverageFor("korean", "hi"))).toBe(false); // all 46 locales carry the full Korean bank since 2026-10-21
   });
 });

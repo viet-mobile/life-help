@@ -48,11 +48,11 @@ describe("Korean K1..K10 publication across the student pathways", () => {
     }
   });
 
-  it("4. a language whose overlay lacks the meanings gets the course but no bank (never English meanings under another language)", async () => {
+  it("4. every language now carries the meanings and gets the full bank (a missing kit would still keep the course only; never English meanings under another language)", async () => {
     for (const locale of ["am", "ar", "tr", "uk"] as const) {
       const { bundle } = await loadIndex("korean", { locale });
-      expect(bundle.questions.some((q) => q.id.startsWith("kb-")), locale).toBe(false);
-      expect(bundle.questions.length, locale).toBe(722);
+      expect(bundle.questions.filter((q) => q.id.startsWith("kb-")).length, locale).toBe(13445);
+      expect(bundle.questions.length, locale).toBe(722 + 13445);
     }
   });
 

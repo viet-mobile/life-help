@@ -38,15 +38,15 @@ describe("Korean dictation is on only where the language carries its template", 
       for (const h of q.hints) expect(h).not.toMatch(/\{\w+\}/);
     }
   });
-  it("the 15 complete languages get the bank; a partial language keeps its course and gets no bank and no dictation", async () => {
+  it("every language gets the bank (all 46 kits are complete since 2026-10-21)", async () => {
     for (const loc of COMPLETE) {
       const { bundle } = await loadIndex("korean", { locale: loc as never });
       expect(bundle.questions.filter((q) => q.id.startsWith("kb-")).length, loc).toBeGreaterThan(13000);
     }
     for (const loc of ["tr", "hi", "ar"]) {
       const { bundle } = await loadIndex("korean", { locale: loc as never });
-      expect(bundle.questions.length, loc).toBe(722);
-      expect(bundle.questions.some((q) => q.id.startsWith("kb-") || q.type === "short_answer"), loc).toBe(false);
+      expect(bundle.questions.filter((q) => q.id.startsWith("kb-")).length, loc).toBeGreaterThan(13000);
+      expect(bundle.questions.some((q) => q.type === "short_answer"), loc).toBe(true);
       expect(bundle.catalog.skills.length, loc).toBeGreaterThan(0);
     }
   });

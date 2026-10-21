@@ -15,7 +15,7 @@ import { SITES, type ContentBundle, type Question, type Site } from "@/lib/learn
  */
 const WON = /\d[\d,]*\s*원|만\s*원|원짜리/;
 const FOREIGN =
-  /रुपय|रुपये|रुपए|रूपये|रुपया|ರೂಪಾಯಿ|ಪೈಸೆ|രൂപ|ரூபாய்|రూపాయ|ਰੁਪਏ|રૂપિયા|روپ|\bfrancs?\b|\bdollars?\b|\beuros?\b|\byuan\b|(?<![韩韓])元(?!音)|\bpesos?\b|shilingi|\bbirr\b|ብር|টাকা|\blira\b|рубл|гривн|₹|€|£|¥|บาท|đồng|paise|पैस|पैश/i;
+  /रुपय|रुपये|रुपए|रूपये|रुपया|ರೂಪಾಯಿ|ಪೈಸೆ|രൂപ(?!ം|മ|ത്ത|ങ്ങ|വ)|ரூபாய்|రూపాయ|ਰੁਪਏ|રૂપિયા|روپ|\bfrancs?\b|\bdollars?\b|\beuros?\b|\byuan\b|(?<![韩韓])元(?!音)|\bpesos?\b|shilingi|\bbirr\b|ብር|টাকা|\blira\b|рубл|гривн|₹|€|£|¥|บาท|đồng|paise|पैस|पैश/i;
 const HANGUL = /[가-힣]/;
 const MATH = /\$[^$]+\$/g;
 const NUM = /\d+/g;

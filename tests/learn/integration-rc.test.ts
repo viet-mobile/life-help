@@ -25,11 +25,10 @@ describe("integration: Korean bank per-language scope (a missing translation kit
       const kb = bundle.questions.filter((q) => q.id.startsWith("kb-"));
       expect(bundle.questions.length - kb.length, l).toBe(722);
       const dict = kb.filter((q) => q.id.endsWith("-dict"));
-      expect([0, 13445], l).toContain(kb.length);
-      if (kb.length) { withBank.push(l); expect(dict.length, l).toBe(60); for (const q of dict) { expect(q.audioText, `${l} ${q.id}`).toBeTruthy(); expect(q.prompt.length, `${l} ${q.id}`).toBeGreaterThan(0); } }
-      else expect(dict.length, l).toBe(0);
+      expect(kb.length, l).toBe(13445);
+      withBank.push(l); expect(dict.length, l).toBe(60); for (const q of dict) { expect(q.audioText, `${l} ${q.id}`).toBeTruthy(); expect(q.prompt.length, `${l} ${q.id}`).toBeGreaterThan(0); }
     }
-    expect(withBank.sort()).toEqual(["de", "en", "es", "fr", "id", "ja", "ko", "mn", "ne", "ru", "th", "uz", "vi", "zh-Hans", "zh-Hant"]);
+    expect(withBank.sort()).toEqual([...LOCALES].sort()); // since 2026-10-21 every active language carries the full bank kit
   });
 });
 
