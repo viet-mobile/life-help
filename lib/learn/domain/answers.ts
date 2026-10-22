@@ -49,8 +49,20 @@ export function normalizeText(input: string, caseSensitive = false): string {
  * Parse "12", "-3.5", "3/4", "−2", "x = 4", "x=-3" into a number.
  * Returns null for anything that is not a plain number/fraction.
  */
+/** Zero digit of every decimal-digit script a learner's keyboard may produce (Arabic-Indic, Persian, Bengali, Devanagari, Gurmukhi, Gujarati, Tamil, Telugu, Kannada, Malayalam, Thai, Burmese, Khmer, Sinhala). */
+const DIGIT_ZEROS = [0x0660, 0x06f0, 0x0966, 0x09e6, 0x0a66, 0x0ae6, 0x0be6, 0x0c66, 0x0ce6, 0x0d66, 0x0e50, 0x1040, 0x17e0, 0x0de6];
+const toAsciiDigits = (t: string): string =>
+  t.replace(/\p{Nd}/gu, (ch) => {
+    const cp = ch.codePointAt(0)!;
+    const zero = DIGIT_ZEROS.find((z) => cp >= z && cp <= z + 9);
+    return zero === undefined ? ch : String(cp - zero);
+  });
+
 export function parseNumeric(input: string): number | null {
-  let s = input.normalize("NFKC").trim().toLowerCase().replace(/\s+/g, "");
+  let s = toAsciiDigits(input.normalize("NFKC")).trim().toLowerCase().replace(/\s+/g, "");
+  // decimal separator: Arabic decimal sign and a comma with 1-2 digits after it ("1,5"); "1,500" stays ambiguous and is rejected
+  s = s.replace(/٫/g, ",").replace(/٬/g, "");
+  s = s.replace(/(\d),(\d{1,2})(?!\d)/g, "$1.$2");
   s = s.replace(/^[a-z]=/, ""); // allow "x=4"
   s = s.replace(/[−–—]/g, "-");
   const frac = /^(-?\d+(?:\.\d+)?)\/(-?\d+(?:\.\d+)?)$/.exec(s);
