@@ -1,0 +1,86 @@
+name: Daily Thinking Questions Pipeline (89 Languages)
+
+on:
+  schedule:
+    # 매일 자정 00:00 KST (15:00 UTC) 자동 실행
+    - cron: '0 15 * * *'
+  workflow_dispatch:
+    inputs:
+      target_date:
+        description: '출제 기준 날짜 (YYYYMMDD 형식, 미입력 시 오늘 날짜)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  daily-thinking-pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Determine Target Date
+        id: date
+        run: |
+          if [ -n "${{ github.event.inputs.target_date }}" ]; then
+            echo "TARGET_DATE=${{ github.event.inputs.target_date }}" >> $GITHUB_ENV
+          else
+            # KST (UTC+9) 기준 당일 날짜 계산
+            echo "TARGET_DATE=$(TZ='Asia/Seoul' date +'%Y%m%d')" >> $GITHUB_ENV
+          fi
+
+      - name: 1. Author Daily 55 Questions (Ensemble: 덱 GPT-6-Luna + 클 Claude 5.5 Sonnet + 안 Gemini 3.8 Flash)
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          echo "Triggering 3-Model Ensemble Question Authoring for date: $TARGET_DATE"
+          python3 scripts/daily_thinking_author.py $TARGET_DATE
+
+      - name: 2. Validate Schema & KaTeX Formulas
+        run: |
+          python3 scripts/validate_daily_thinking.py questions/daily/$TARGET_DATE/source_55.json
+
+      - name: 3. Parallel 89-Language Translation & Sync (by Antigravity Engine)
+        run: |
+          python3 scripts/batch_translate_today.py $TARGET_DATE
+
+      - name: 4. Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: 'npm'
+
+      - name: 5. Verify TypeScript Build Integrity
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: https://placeholder-build-only.invalid
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: placeholder
+          NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: placeholder
+        run: |
+          npm ci
+          npm run typecheck
+
+      - name: 6. Commit and Push Daily Thinking Content
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          git add questions/daily/$TARGET_DATE/ lib/learn/content/daily/${TARGET_DATE}_all/
+          
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore(daily): publish 55 thinking questions in 89 languages [$TARGET_DATE]"
+            git push origin HEAD
+          fi
