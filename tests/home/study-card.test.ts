@@ -8,7 +8,7 @@ const dict = (l: string) => JSON.parse(read(`messages/${l}.json`)) as Record<str
 const get = (o: unknown, path: string): unknown => path.split(".").reduce<unknown>((c, k) => (c && typeof c === "object" ? (c as Record<string, unknown>)[k] : undefined), o);
 const ph = (s: string) => (s.match(/\{[A-Za-z0-9_]+\}/g) ?? []).sort().join(",");
 import { locales as REGISTRY_LOCALES } from "@/messages/registry";
-const LOCALES = readdirSync("messages").filter((f) => f.endsWith(".json")).map((f) => f.replace(".json", ""));
+const LOCALES = [...REGISTRY_LOCALES];
 
 const home = read("components/customer/CustomerHome.tsx");
 const homeOrder = (() => {
@@ -18,7 +18,7 @@ const homeOrder = (() => {
 
 describe("home grid (learning-only release): the existing ten services plus the Study card", () => {
   it("puts Study immediately before job help and leaves the ten existing cards in their order", () => {
-    expect(homeOrder).toEqual(["study", "jobHelp", "mobileHelp", "boiler", "housing", "cleaning", "hospitalHelp", "clog", "leakPlumbing", "bankHelp", "insuranceHelp"]);
+    expect(homeOrder).toEqual(["study", "jobHelp", "mobileHelp", "boiler", "housing", "cleaning", "hospitalHelp", "clog", "leakPlumbing", "bankHelp", "insuranceHelp", "visaDocs"]);
     expect(homeOrder.indexOf("study") + 1).toBe(homeOrder.indexOf("jobHelp"));
   });
   it("derives the tab counts from the list", () => {

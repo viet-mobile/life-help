@@ -1,0 +1,716 @@
+{
+ "packet": "H16-h-conv",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 8,
+  "questions": 150
+ },
+ "patches": [
+  {
+   "item": "6f772e7c",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why did the group not choose Eun-ha's first suggestion?",
+      "o": [
+       "Tomás wanted a calmer activity because of his knee.",
+       "Priya thought the weather on Saturday would be too hot for walking.",
+       "The river was closed to visitors on Saturday.",
+       "Nobody had a way to get to the mountain."
+      ],
+      "a": 0,
+      "why": "Tomás의 무릎이 아파서 더 차분한 활동을 원했어요."
+     },
+     {
+      "q": "How did the friends settle the problem of the food?",
+      "o": [
+       "They decided to buy lunch at a restaurant.",
+       "Eun-ha volunteered to prepare everything alone.",
+       "They asked a classmate to cook for them.",
+       "Each of them agreed to bring one item."
+      ],
+      "a": 3,
+      "why": "각자 한 가지씩 가져오기로 했어요."
+     },
+     {
+      "q": "Why did Priya ask to change her task?",
+      "o": [
+       "She was allergic to the fruit.",
+       "She wanted to cook a hot meal instead.",
+       "She felt fruit would be difficult to carry.",
+       "She disliked making sandwiches."
+      ],
+      "a": 2,
+      "why": "버스에서 과일 들고 가기가 무겁다고 해요."
+     },
+     {
+      "q": "What is the purpose of Eun-ha's last message?",
+      "o": [
+       "To cancel the picnic because of bad weather in the afternoon",
+       "To confirm where and when to meet and to give a reminder",
+       "To invite another friend to the trip",
+       "To ask who was bringing the drinks"
+      ],
+      "a": 1,
+      "why": "만나는 시간과 장소, 자외선 차단제 준비를 알려 주는 메시지예요."
+     },
+     {
+      "q": "Which sentence is a suggestion about where to go on Saturday?",
+      "o": [
+       "Could I bring snacks instead of fruit?",
+       "How about a picnic by the river?",
+       "I'll make sandwiches for everyone.",
+       "Tomás could bring drinks for the picnic."
+      ],
+      "a": 1,
+      "why": "'How about ...?'은 제안할 때 쓰는 표현이에요. Priya가 강가 소풍을 제안했어요."
+     }
+    ]
+   },
+   "why": "Q5 options quoted the sentences that are the keys of Q2 ('each bring one thing') and Q3 ('Fruit is so heavy'); rewritten to ask about the Saturday-plan suggestion with non-revealing options.",
+   "severity": "minor"
+  },
+  {
+   "item": "726cb845",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the main idea of the passage?",
+      "o": [
+       "Interviewers always prefer applicants with a long work experience.",
+       "Handshakes are more important than answers.",
+       "Nervous people should avoid applying for jobs.",
+       "Careful preparation can help a person succeed in an interview."
+      ],
+      "a": 3,
+      "why": "면접 준비의 구체적인 방법들을 안내하는 글이에요."
+     },
+     {
+      "q": "What does the writer suggest doing before the interview?",
+      "o": [
+       "Memorizing a long speech about your whole life and school record",
+       "Asking friends to answer the questions for you",
+       "Learning about the company and thinking of a question to ask",
+       "Sending the interviewer a gift"
+      ],
+      "a": 2,
+      "why": "회사를 조사하고 질문 하나를 생각해 두라고 해요."
+     },
+     {
+      "q": "What should you do if you do not understand a question?",
+      "o": [
+       "Answer something else and hope for the best",
+       "Politely ask the interviewer to say it in another way",
+       "Stay silent until the interviewer moves on",
+       "Ask the interviewer to skip the question"
+      ],
+      "a": 1,
+      "why": "Could you rephrase that, please?라고 물어도 괜찮다고 해요."
+     },
+     {
+      "q": "Why does the writer recommend sending a thank-you message?",
+      "o": [
+       "It shows consideration and interest in the position.",
+       "It guarantees that you will get the job within a few days.",
+       "It is required by law in most companies.",
+       "It helps you remember the interviewer's name."
+      ],
+      "a": 0,
+      "why": "배려심과 관심을 보여 준다고 마지막 문장에서 말해요."
+     },
+     {
+      "q": "In the passage, the word \"firm\" in \"a firm handshake\" is closest in meaning to",
+      "o": [
+       "gentle and weak",
+       "quick and short",
+       "strong and steady",
+       "friendly and warm"
+      ],
+      "a": 2,
+      "why": "firm handshake는 힘 있고 안정된 악수를 뜻해서 strong and steady와 가장 가까워요."
+     }
+    ]
+   },
+   "why": "Q5 asked the meaning of 'rephrase' while the Q3 key paraphrases it ('say it in another way'); replaced by 'firm' vocabulary question.",
+   "severity": "minor"
+  },
+  {
+   "item": "f880ea1b",
+   "op": "set",
+   "set": {
+    "text": "Dear Ms. Carter,\n\nI'm Jaehyun from apartment 304, right above you. I wanted to apologize in person, but I missed you in the hallway twice, so I am leaving this note. On Saturday night I had some friends over to study, and I realize we were far louder than we should have been, especially after ten o'clock. I can only imagine how tiring that must have been after a long day. I assure you it will not happen again; from now on, we will move to the library after nine. If anything else ever disturbs you, please feel free to knock on my door or leave a message. I would much rather hear about a problem early than have it grow into something bigger. I have left a small box of tea at your door as a token of my regret.\n\nBest wishes,\nJaehyun"
+   },
+   "why": "Original sentence 'wanted to write this note to apologize in person' is self-contradictory; the Q2 key still holds.",
+   "severity": "minor"
+  },
+  {
+   "item": "7509c774",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why did Mina go back to the store?",
+      "o": [
+       "The sweater had a large hole in the sleeve and a missing button.",
+       "The sweater she had bought did not fit her uncle.",
+       "The store had charged her twice.",
+       "She had lost the receipt on the way."
+      ],
+      "a": 1,
+      "why": "삼촌에게 너무 작아서 교환하러 갔어요."
+     },
+     {
+      "q": "Which choice did the clerk offer Mina?",
+      "o": [
+       "A discount coupon for her next visit",
+       "A refund or a different color from the same line",
+       "A larger size of the same sweater",
+       "A free gift-wrapping service"
+      ],
+      "a": 1,
+      "why": "큰 사이즈는 품절이라, 점원은 환불이나 같은 제품군의 다른 색을 제안했어요."
+     },
+     {
+      "q": "How did Mina decide which sweater to take?",
+      "o": [
+       "She asked her uncle by phone.",
+       "She tried several sweaters on in the shop.",
+       "She followed the clerk's firm advice.",
+       "She checked the store's website on her phone."
+      ],
+      "a": 3,
+      "why": "휴대폰으로 웹사이트에서 맞는 사이즈의 회색을 확인했어요."
+     },
+     {
+      "q": "The word \"examined\" is closest in meaning to",
+      "o": [
+       "threw away",
+       "changed the tag very quickly",
+       "looked at carefully",
+       "spoke about loudly"
+      ],
+      "a": 2,
+      "why": "examined는 '자세히 살펴보았다'는 뜻이에요."
+     }
+    ]
+   },
+   "why": "Q2 'NOT offered' had two correct options: the coupon AND the larger size (the clerk said it was sold out). Rewritten as a positive 'offered' question.",
+   "severity": "major"
+  },
+  {
+   "item": "bebc831d",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Who is probably speaking?",
+      "o": [
+       "A teacher at a school science club",
+       "A police officer",
+       "The organizer of a volunteer group",
+       "A park visitor"
+      ],
+      "a": 2,
+      "why": "자원봉사 팀 오리엔테이션에서 지침을 알리는 담당자예요."
+     },
+     {
+      "q": "What should volunteers do if they find something sharp?",
+      "o": [
+       "Put it into the black bag carefully",
+       "Call a team leader without touching it",
+       "Ask their partner to move it",
+       "Leave it and walk away from the park"
+      ],
+      "a": 1,
+      "why": "만지지 말고 팀 리더를 부르라고 해요."
+     },
+     {
+      "q": "Which color bag is for paper?",
+      "o": [
+       "Yellow",
+       "Blue",
+       "Black",
+       "Light green"
+      ],
+      "a": 0,
+      "why": "파란색은 플라스틱, 노란색은 종이, 검은색은 나머지예요."
+     },
+     {
+      "q": "Why does the speaker ask volunteers to be patient with passersby?",
+      "o": [
+       "Passersby might try to throw their own trash into the bags",
+       "The speaker wants the volunteers to finish the work faster",
+       "Passersby are supposed to join the team after the break",
+       "Talking with them can help spread the message about a clean park."
+      ],
+      "a": 3,
+      "why": "지나가는 사람에게 설명하는 것이 깨끗한 공원의 중요성을 알릴 기회예요."
+     }
+    ]
+   },
+   "why": "Q4 key was clearly the longest option (65 vs 38-45 chars); distractors lengthened with equally specific wrong content.",
+   "severity": "minor"
+  },
+  {
+   "item": "f60a11e4",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What problem did Hyunwoo face?",
+      "o": [
+       "The charger stopped working during the fair.",
+       "He forgot the title of his project.",
+       "A visitor did not understand a technical word.",
+       "His teacher asked him a difficult question."
+      ],
+      "a": 2,
+      "why": "방문객이 'panel'의 뜻을 몰랐어요."
+     },
+     {
+      "q": "What did Hyunwoo say a panel is?",
+      "o": [
+       "A battery that keeps power for the night",
+       "A flat piece that catches sunlight",
+       "A cable that connects a charger to a phone",
+       "A window that lets in the morning light"
+      ],
+      "a": 1,
+      "why": "Hyunwoo는 panel을 햇빛을 받는 납작한 조각이라고 설명했어요."
+     },
+     {
+      "q": "What did Hyunwoo learn from the experience?",
+      "o": [
+       "Describing or showing something can help when you lack the exact word.",
+       "Technical terms should never be used at fairs if visitors come from abroad.",
+       "Visitors always understand gestures better than words.",
+       "Exchange students should avoid science fairs."
+      ],
+      "a": 0,
+      "why": "정확한 단어가 없을 때도 설명, 예시, 손짓으로 뜻을 전할 수 있다는 것이에요."
+     },
+     {
+      "q": "The word \"panic\" in this passage is closest in meaning to",
+      "o": [
+       "start speaking another language",
+       "become extremely proud",
+       "lose interest completely",
+       "become suddenly very frightened"
+      ],
+      "a": 3,
+      "why": "panic은 갑자기 크게 당황하거나 겁먹는 것을 뜻해요."
+     },
+     {
+      "q": "Which phrase best describes Hyunwoo's behavior when the visitor looked puzzled?",
+      "o": [
+       "Impatient; he wanted the visitor to leave.",
+       "Ashamed; he refused to keep talking.",
+       "Resourceful; he found another way to explain.",
+       "Careless; he ignored the question."
+      ],
+      "a": 2,
+      "why": "당황하지 않고 설명과 손짓으로 다른 방법을 찾아 설명했어요."
+     }
+    ]
+   },
+   "why": "Q2 key and Q3 key stated the same idea (describe + gestures) and Q5 options listed the strategies from Q2/Q3; Q2 and Q5 rewritten to test other abilities (detail, inference).",
+   "severity": "minor"
+  },
+  {
+   "item": "eb6cc4c7",
+   "op": "set",
+   "set": {
+    "text": "Host: Good evening, Olive Tree Kitchen. How may I help you?\nCustomer: Hi, I'd like to reserve a table for six on Saturday evening, if you have one.\nHost: Let me check. What time were you thinking?\nCustomer: Around seven would be ideal. It's for my father's retirement dinner.\nHost: Congratulations to him! Unfortunately, seven is fully booked, but I can offer a table at six thirty or one at eight fifteen.\nCustomer: Hmm, my grandmother goes to bed early, so six thirty would be better. Is there a quiet corner?\nHost: Yes, there's a round table near the window, away from the kitchen. May I have your name and number?\nCustomer: It's Kim, and my number is 555-0142.\nHost: Thank you, Ms. Kim. One more thing: if you'd like a cake, you're welcome to bring one, and we will not charge a serving fee.\nCustomer: That's very thoughtful. Thank you so much.",
+    "qs": [
+     {
+      "q": "Why is the customer making the reservation?",
+      "o": [
+       "To hold a birthday party for her grandmother",
+       "To meet a friend after work",
+       "To thank the restaurant staff",
+       "To celebrate her father's retirement"
+      ],
+      "a": 3,
+      "why": "아버지의 은퇴 기념 저녁 식사 때문이에요."
+     },
+     {
+      "q": "Why does the customer choose six thirty?",
+      "o": [
+       "She prefers to eat before the restaurant gets crowded.",
+       "The later table was too far from the kitchen.",
+       "Her grandmother goes to bed early.",
+       "The host said that seven was cheaper."
+      ],
+      "a": 2,
+      "why": "할머니가 일찍 주무시기 때문이에요."
+     },
+     {
+      "q": "What does the host say about a cake?",
+      "o": [
+       "The restaurant will bake one for free if you order early.",
+       "The family may bring one without an extra charge.",
+       "Cakes are not permitted inside the restaurant.",
+       "A serving fee must be paid in advance."
+      ],
+      "a": 1,
+      "why": "케이크를 가져와도 서빙 요금이 없다고 해요."
+     },
+     {
+      "q": "What is the host's purpose in saying \"Congratulations to him!\"?",
+      "o": [
+       "To respond kindly to the personal news",
+       "To change the reservation date",
+       "To ask for the father's name and age",
+       "To end the call politely"
+      ],
+      "a": 0,
+      "why": "고객이 알려 준 개인적인 소식에 친절히 반응한 거예요."
+     },
+     {
+      "q": "Where is the table the host offers?",
+      "o": [
+       "Next to the kitchen door at the back",
+       "In the center of the large dining room",
+       "Outside on the patio under the trees",
+       "Near the window and away from the kitchen"
+      ],
+      "a": 3,
+      "why": "창가의 둥근 테이블이고 주방과 떨어져 있다고 해요."
+     }
+    ]
+   },
+   "why": "Text named a real restaurant brand ('Olive Garden'): changed to a fictional name (spec rule 5). Q5 key was the longest by far; distractors lengthened.",
+   "severity": "minor"
+  },
+  {
+   "item": "8bc89f68",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why does Jina need Marcus's notes?",
+      "o": [
+       "She lost her own notebook on the way to school and needs another.",
+       "She wants to compare answers on the quiz.",
+       "She missed a lecture because she was at the clinic.",
+       "She forgot which chapter was assigned."
+      ],
+      "a": 2,
+      "why": "어제 진료소에 가서 수업을 놓쳤어요."
+     },
+     {
+      "q": "What does Marcus offer to do?",
+      "o": [
+       "Give her his notebook for a week",
+       "Scan the pages and send them that night",
+       "Explain the lecture to her in person",
+       "Write a new summary for the class"
+      ],
+      "a": 1,
+      "why": "스캔해서 오늘 밤 보내 주겠다고 해요."
+     },
+     {
+      "q": "What useful information does Marcus add?",
+      "o": [
+       "The quiz will mostly cover the last two chapters.",
+       "The quiz has been moved to a later week by the teacher.",
+       "The teacher will let students use notes.",
+       "The lecture was recorded for absent students."
+      ],
+      "a": 0,
+      "why": "퀴즈가 마지막 두 단원에 집중될 거라고 알려 줘요."
+     },
+     {
+      "q": "What does \"You're a lifesaver\" express?",
+      "o": [
+       "A joke about a medical emergency at the clinic",
+       "Disappointment about a missed class",
+       "A refusal of the offer",
+       "Strong gratitude for very helpful advice"
+      ],
+      "a": 3,
+      "why": "'You're a lifesaver'는 큰 도움을 준 데 대한 고마움을 나타내요."
+     },
+     {
+      "q": "Why does Marcus say \"my handwriting is awful\"?",
+      "o": [
+       "He is politely refusing to lend his notes to her this week.",
+       "He wants her to practice her own writing before the quiz.",
+       "He is warning her that his notes might be hard to read.",
+       "He is asking her to rewrite the notes in neater handwriting."
+      ],
+      "a": 2,
+      "why": "글씨가 엉망이라 읽기 어려울 수 있다는 주의를 주는 말이에요."
+     }
+    ]
+   },
+   "why": "Q5 key was clearly the longest; distractors lengthened (key moved to position 2).",
+   "severity": "minor"
+  },
+  {
+   "item": "4e432e26",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What did the tourist ask Arman?",
+      "o": [
+       "Where he could buy a backpack",
+       "Which bus went to the airport",
+       "How he could reach the train station",
+       "What time the post office closed"
+      ],
+      "a": 2,
+      "why": "기차역에 가는 길을 물었어요."
+     },
+     {
+      "q": "What is the first thing Arman tells the tourist to do?",
+      "o": [
+       "Turn right at the post office near the bookstore",
+       "Go straight to the traffic light",
+       "Walk into the bookstore",
+       "Take a train to the airport"
+      ],
+      "a": 1,
+      "why": "신호등까지 직진한 다음 오른쪽으로 돌라고 해요."
+     },
+     {
+      "q": "Why did the tourist repeat the directions?",
+      "o": [
+       "To check that he had understood them",
+       "To thank Arman for his kindness and say goodbye",
+       "To ask for a map of the city",
+       "To practice a new language"
+      ],
+      "a": 0,
+      "why": "확인하려고 되풀이했고 Arman이 한 가지를 고쳐 줬어요."
+     },
+     {
+      "q": "What did Arman correct?",
+      "o": [
+       "The distance from the corner to the train station",
+       "The name of the street where the post office stood",
+       "The time of the next train to the airport",
+       "The side of the street on which the bookstore stood"
+      ],
+      "a": 3,
+      "why": "서점은 오른쪽이 아니라 왼쪽에 있다고 고쳤어요."
+     },
+     {
+      "q": "Why did Arman say, \"If you hurry, you'll make it\"?",
+      "o": [
+       "He wanted the tourist to leave him alone because he was in a hurry himself.",
+       "He thought the station was about to close.",
+       "He noticed the man seemed worried about catching his train.",
+       "He was late for his own appointment."
+      ],
+      "a": 2,
+      "why": "남자가 기차를 놓칠까 걱정하는 것을 알아차렸기 때문이에요."
+     }
+    ]
+   },
+   "why": "Q4 key (51 chars) was far longer than the distractors (22-33); distractors lengthened.",
+   "severity": "minor"
+  },
+  {
+   "item": "e3c4ad34",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the customer's problem?",
+      "o": [
+       "The jacket was the wrong size for the customer.",
+       "The zipper on a new jacket broke.",
+       "The store charged her too much.",
+       "The color faded after one wash."
+      ],
+      "a": 1,
+      "why": "새 재킷의 지퍼가 처음 사용할 때 고장 났어요."
+     },
+     {
+      "q": "Why does the customer accept a black jacket?",
+      "o": [
+       "She likes the style and the zipper works.",
+       "The navy one costs more than the black one.",
+       "She dislikes the color navy and prefers black.",
+       "The clerk insisted that she take the black one."
+      ],
+      "a": 0,
+      "why": "스타일이 마음에 들고 지퍼가 잘 작동하면 괜찮다고 해요."
+     },
+     {
+      "q": "What extra service does the clerk give?",
+      "o": [
+       "A discount on a future purchase at the store",
+       "Free delivery of the jacket",
+       "A refund of the original price",
+       "A card for another year of repairs"
+      ],
+      "a": 3,
+      "why": "수선 1년 추가 카드를 준다고 해요."
+     },
+     {
+      "q": "What does the clerk's last remark \"My pleasure\" show?",
+      "o": [
+       "An apology for the customer's trouble",
+       "A warning about the store's policy",
+       "A polite reply to the customer's thanks",
+       "A request for the customer to return later"
+      ],
+      "a": 2,
+      "why": "'My pleasure'는 감사 인사에 대한 공손한 응답이에요."
+     }
+    ]
+   },
+   "why": "Q2 key was the longest (41 vs 24-28); distractors lengthened.",
+   "severity": "minor"
+  },
+  {
+   "item": "361e7957",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which question did Ms. Kang NOT ask?",
+      "o": [
+       "When did the pain start?",
+       "Do you have a fever at home?",
+       "Is it sharp or dull?",
+       "Did you eat anything unusual?"
+      ],
+      "a": 1,
+      "why": "집에서 열이 있었는지는 묻지 않았어요."
+     },
+     {
+      "q": "What probably caused Dohyun's stomachache?",
+      "o": [
+       "Missing breakfast and drinking only something cold",
+       "A high fever from a cold that he caught earlier that week",
+       "An allergic reaction to some food",
+       "Eating a large meal too quickly"
+      ],
+      "a": 0,
+      "why": "아침을 거르고 찬 음료만 마셨다고 해요."
+     },
+     {
+      "q": "What did Ms. Kang recommend?",
+      "o": [
+       "Going home immediately to get some sleep",
+       "Taking a long walk outside in the fresh air",
+       "Eating a big lunch right away to feel strong",
+       "Resting for a while and drinking warm water"
+      ],
+      "a": 3,
+      "why": "20분간 쉬고 따뜻한 물을 마시라고 했어요."
+     },
+     {
+      "q": "What does \"it got worse\" refer to?",
+      "o": [
+       "The weather outside",
+       "The nurse's questions",
+       "Dohyun's stomachache",
+       "Dohyun's grade"
+      ],
+      "a": 2,
+      "why": "it은 Dohyun의 복통을 가리켜요."
+     }
+    ]
+   },
+   "why": "Q3 key was the longest by a margin (43 vs 22-29); distractors lengthened.",
+   "severity": "minor"
+  },
+  {
+   "item": "77936480",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What should a student do first?",
+      "o": [
+       "Log in with a student number and password",
+       "Search for a book by its title or author",
+       "Press the Reserve button on the book page",
+       "Download the library app to the phone"
+      ],
+      "a": 0,
+      "why": "첫 단계는 학번과 비밀번호로 로그인하는 거예요."
+     },
+     {
+      "q": "What does a red label mean in the passage?",
+      "o": [
+       "The book has been permanently removed.",
+       "The book can be read only on the computers inside the school library.",
+       "The student has already borrowed too many books.",
+       "The book is not available now, but it can be reserved."
+      ],
+      "a": 3,
+      "why": "빨간 표시일 때는 Reserve를 눌러 예약하라고 해요."
+     },
+     {
+      "q": "What happens after fourteen days?",
+      "o": [
+       "The student must pay a late fee.",
+       "The student must return the book to the desk.",
+       "The file closes automatically.",
+       "The app deletes the student's account."
+      ],
+      "a": 2,
+      "why": "기간이 끝나면 파일이 저절로 닫혀서 반납할 필요가 없어요."
+     },
+     {
+      "q": "When can a student NOT renew an e-book?",
+      "o": [
+       "When the book has a green label",
+       "When another student is waiting for it",
+       "When he or she has no Internet connection",
+       "When fourteen days have not yet passed"
+      ],
+      "a": 1,
+      "why": "다른 학생이 기다리고 있지 않은 한 한 번 연장할 수 있다고 해요."
+     }
+    ]
+   },
+   "why": "Q1 key (41) vs distractors (24-30): lengthened distractors.",
+   "severity": "minor"
+  },
+  {
+   "item": "167114e4",
+   "op": "set",
+   "set": {
+    "q": "Your friend says, \"I'm sorry, but I can't make it to your party on Saturday.\" Which reply is the most appropriate?",
+    "o": [
+     "Never mind. I wasn't going to invite you in the first place.",
+     "That's too bad. Maybe we can get together some other time.",
+     "Great, because I really wanted fewer people to come.",
+     "You can't? Then I'll cancel the whole party for you."
+    ],
+    "a": 1,
+    "why": "거절을 받아들이고 다음을 기약하는 응답이 적절해요."
+   },
+   "why": "Identity field q changed: original stem contained a bare 'B: \"___\"' blank which produced a garbled auto-hint (quote '\\nB: '); same options/key.",
+   "severity": "minor"
+  },
+  {
+   "item": "31aaccd0",
+   "op": "set",
+   "set": {
+    "q": "Your friend asks, \"Where should we eat tonight, pizza or noodles?\" You answer, \"It's up to you.\" What do you mean?",
+    "o": [
+     "I do not want to eat anything tonight, so choose nothing.",
+     "I would like to pick the restaurant myself.",
+     "Please ask someone else to decide.",
+     "You can decide; either choice is fine with me."
+    ],
+    "a": 3,
+    "why": "It's up to you는 '네가 정해'라는 뜻이에요."
+   },
+   "why": "Identity field q changed: original 'A: ... B: ...' inline format produced a garbled auto-hint (quote ' B: '); same options/key, point of view now consistent.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 130,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

@@ -1,0 +1,2285 @@
+[
+ {
+  "id": "x-k-k10-01",
+  "subject": "korean",
+  "grade": "K10",
+  "topic": "Idioms in context",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "One idiom, two feelings",
+  "uiLang": "en",
+  "format": "judge-evidence-explain",
+  "generative": false,
+  "goal": "Infer the shared figurative meaning of \uc190\uc774 \ud06c\ub2e4 from three sentences, decide where it carries a complaint, and explain with quoted evidence why the feeling differs.",
+  "thinking": [
+   "Inferring an idiom's meaning from several contexts",
+   "Separating core meaning from connotation",
+   "Quoting evidence"
+  ],
+  "differsFromPlain": "Plain practice asks which meaning a listed idiom has. Here the idiom is never glossed: you infer it from three uses and then judge why the same words sound warm in one sentence and worrying in another.",
+  "prerequisites": [
+   "Can read Korean sentences with -\uc544\uc11c/-\uc5b4\uc11c and -(\uc73c)\u3139 \ub54c\ub9c8\ub2e4",
+   "Knows that Korean has fixed expressions whose meaning is not the sum of their words"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "Three people talk about someone. The same expression \uc190\uc774 \ud06c\ub2e4 appears each time (it is NOT glossed here).\n(\uac00) \uc5c4\ub9c8\ub294 \uc190\uc774 \ucee4\uc11c \uae40\uc7a5\ud560 \ub54c\ub9c8\ub2e4 \uc774\uc6c3 \ubaab\uae4c\uc9c0 \ub109\ub109\ud558\uac8c \ub2f4\uadf8\uc138\uc694.\n(\ub098) \ub3d9\uc0dd\uc740 \uc190\uc774 \ucee4\uc11c \uc6d4\uae09\ub0a0\uc774\uba74 \uce5c\uad6c\ub4e4\uc5d0\uac8c \ubc25\uc744 \uc0ac\ub2e4\uac00 \uc6d4\ub9d0\uc5d0\ub294 \ub298 \ube60\ub4ef\ud574\uc694.\n(\ub2e4) \uc0c8 \uc694\ub9ac\uc0ac\ub294 \uc190\uc774 \ucee4\uc11c \ucc0c\uac1c\ub97c \ub053\uc774\uba74 \ub298 \uc5f4 \uba85 \ubd84\uc774 \ub098\uc640\uc11c \ub9e4\ubc88 \ubc18\uc774 \ub0a8\uc544\uc694.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which core meaning of \uc190\uc774 \ud06c\ub2e4 fits all three sentences?",
+    "hints": [
+     "Cover the idiom and ask what the three situations (\uae40\uc7a5, \uc6d4\uae09\ub0a0, \ucc0c\uac1c) have in common.",
+     "Test each option against all three sentences, not only the one that sounds easiest."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "The person has physically large hands that are useful in the kitchen.",
+      "reveals": "Taking the words literally. Check (\ub098): a paycheck and treating friends have nothing to do with hand size."
+     },
+     {
+      "id": "b",
+      "text": "The person is a skilled cook who makes tasty food in any situation.",
+      "reveals": "Anchoring on (\uac00) and (\ub2e4). Check (\ub098): there is no cooking in it, so the meaning must be wider than cooking."
+     },
+     {
+      "id": "c",
+      "text": "The person spends money without thinking about tomorrow.",
+      "reveals": "Fits (\ub098) only. Check (\uac00) and (\ub2e4): they are about the amount of food, not about careless spending."
+     },
+     {
+      "id": "d",
+      "text": "The person handles food, money or gifts in large, generous amounts.",
+      "reveals": "Building a meaning that survives all three contexts, not just the first one."
+     }
+    ],
+    "correct": [
+     "d"
+    ],
+    "explain": "In all three, \uc190\uc774 \ud06c\ub2e4 describes someone who uses, gives or makes things in big quantities. Cooking and money are only the settings."
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "In which sentences does the speaker treat \uc190\uc774 \ud06c\ub2e4 as at least a mild problem? Choose all that apply.",
+    "hints": [
+     "For each sentence, ask how the speaker sounds: pleased, neutral or worried?",
+     "Then find the words in the sentence that make you feel that."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "(\uac00) \uc5c4\ub9c8 ... \uc774\uc6c3 \ubaab\uae4c\uc9c0 \ub109\ub109\ud558\uac8c \ub2f4\uadf8\uc138\uc694",
+      "reveals": "Reading \ub109\ub109\ud558\uac8c / \uc774\uc6c3 \ubaab\uae4c\uc9c0 as a warm detail, not a complaint. The sentence has no negative result."
+     },
+     {
+      "id": "b",
+      "text": "(\ub098) \ub3d9\uc0dd ... \uc6d4\ub9d0\uc5d0\ub294 \ub298 \ube60\ub4ef\ud574\uc694",
+      "reveals": "Noticing the result clause \ube60\ub4ef\ud574\uc694 (money is tight) turns the same habit into a worry."
+     },
+     {
+      "id": "c",
+      "text": "(\ub2e4) \uc0c8 \uc694\ub9ac\uc0ac ... \ub9e4\ubc88 \ubc18\uc774 \ub0a8\uc544\uc694",
+      "reveals": "Noticing \ub9e4\ubc88 \ubc18\uc774 \ub0a8\uc544\uc694 (half is wasted every time) as the negative result."
+     }
+    ],
+    "correct": [
+     "b",
+     "c"
+    ],
+    "explain": "The idiom's core meaning is neutral. The feeling comes from the result clause: \ube60\ub4ef\ud574\uc694 and \ubc18\uc774 \ub0a8\uc544\uc694 signal a problem, while \ub109\ub109\ud558\uac8c in (\uac00) is friendly.",
+    "multi": true
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "In English or Korean, explain why the same idiom feels warm in (\uac00) but worrying in (\ub098). Quote at least one Korean phrase from the sentences as evidence.",
+    "hints": [
+     "Quote the result clause of each sentence.",
+     "State what is the same (the idiom) and what is different (the outcome)."
+    ],
+    "placeholder": "\uc608: ...",
+    "minChars": 30,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "quotes Korean evidence from the sentences",
+      "mode": "any",
+      "patterns": [
+       "\ube60\ub4ef",
+       "\uc6d4\ub9d0",
+       "\uc6d4\uae09",
+       "\uae40\uc7a5",
+       "\uc774\uc6c3",
+       "\ub109\ub109",
+       "\ubc25\uc744 \uc0ac",
+       "\ubc18\uc774 \ub0a8"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "links the feeling to the context or result",
+      "mode": "any",
+      "patterns": [
+       "context",
+       "result",
+       "outcome",
+       "because",
+       "whereas",
+       "while",
+       "\\bso\\b",
+       "therefore",
+       "\\bsince\\b",
+       "\\bas\\b",
+       "differ",
+       "contrast",
+       "instead",
+       "lead",
+       "end(s)? in",
+       "\\bthus\\b",
+       "depend",
+       "\uacb0\uacfc",
+       "\uadf8\ub798\uc11c",
+       "\ub54c\ubb38",
+       "\ud558\uc9c0\ub9cc",
+       "\ubc18\uba74"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I say what stays the same and what changes?",
+     "Did I point to the exact words that carry the feeling?",
+     "Could a classmate find my evidence in the text?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "In (\uac00) the clause \uc774\uc6c3 \ubaab\uae4c\uc9c0 \ub109\ub109\ud558\uac8c shows sharing, so being generous is praised. In (\ub098) the same habit leads to \uc6d4\ub9d0\uc5d0\ub294 \ub298 \ube60\ub4ef\ud574\uc694, so the outcome is a money problem. The idiom is the same; the result clause changes the feeling."
+     },
+     {
+      "text": "\uc190\uc774 \ud06c\ub2e4 only says that she or he uses things in large amounts. In (\uac00) that helps the neighbours, but in (\ub098) \ube60\ub4ef\ud574\uc694 shows it costs the brother money, so the speaker sounds worried."
+     },
+     {
+      "text": "(\uac00) \ub109\ub109\ud558\uac8c \ub2f4\uadf8\uc138\uc694 is a gift to the neighbours so it feels warm; (\ub098) \uc6d4\ub9d0\uc5d0\ub294 \ub298 \ube60\ub4ef\ud574\uc694 is a money problem so it feels worrying."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "It means that the person has big hands, so it is warm.",
+      "why": "No Korean evidence and a literal reading of the idiom."
+     },
+     {
+      "text": "It means big hands, but \uae40\uc7a5 is warm",
+      "why": "Quotes a Korean word but gives no link between the result and the feeling, and reads the idiom literally."
+     }
+    ],
+    "humanReview": "Whether the quoted phrase really supports the claimed feeling, and whether the learner treats connotation as coming from context."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Core meaning",
+    "full": "States a meaning that fits all three sentences (generous/large amounts)",
+    "partial": "Fits only cooking or only money",
+    "none": "Literal or unrelated meaning"
+   },
+   {
+    "criterion": "Evidence",
+    "full": "Quotes the result clauses and links them to the feeling",
+    "partial": "Quotes but does not connect",
+    "none": "No evidence"
+   }
+  ],
+  "alternatives": [
+   "Answers that call the core meaning 'spending freely' or 'making much' are both acceptable if they cover \uae40\uc7a5 and \uc6d4\uae09\ub0a0.",
+   "A learner may say (\ub2e4) is neutral; accept if \ubc18\uc774 \ub0a8\uc544\uc694 is discussed."
+  ],
+  "hardCases": [
+   "Some speakers use \uc190\uc774 \ud06c\ub2e4 as praise for generosity even when money gets tight; the judgement in s2 depends on the result clause, not on the idiom."
+  ],
+  "cautions": {
+   "language": "Idioms are shown unglossed on purpose; the options give English paraphrases only.",
+   "culture": "Kimchi-making (\uae40\uc7a5) and treating friends on payday are common Korean settings; the task does not assume every learner knows them, since the sentences explain the result.",
+   "accessibility": "No images. Text is plain; the numbered (\uac00)(\ub098)(\ub2e4) labels are read aloud by screen readers as gana, nada, dada: say 'sentence one, two, three' if needed."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choices in s1 and s2 against the key",
+    "Presence of quoted Korean and a context word in s3"
+   ],
+   "human": [
+    "Whether the explanation actually connects the result clause with the feeling"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k10-02",
+  "subject": "korean",
+  "grade": "K10",
+  "topic": "News headline vs. article",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Reading a headline against its numbers",
+  "uiLang": "en",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Find the sentence in a short news article that claims more than the evidence supports, and rewrite the headline so that it matches the data and notes a limit of the survey.",
+  "thinking": [
+   "Checking a claim against the numbers",
+   "Spotting an unrepresentative sample",
+   "Rewriting a headline accurately"
+  ],
+  "differsFromPlain": "Plain practice asks the meaning of news vocabulary such as \uacfc\ubc18 or \uc751\ub2f5\uc790. Here you must use those words to test whether a conclusion follows from the numbers and then write a corrected headline.",
+  "prerequisites": [
+   "Can read percentages and numbers in Korean news",
+   "Knows the words \ucc2c\uc131, \ubc18\ub300, \uc751\ub2f5\uc790",
+   "Knows \ub2e4\uc218 (many / most) and \uacfc\ubc18 (more than half)"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "Headline: \uc11c\uc6b8 \uc2dc\ubbfc \ub2e4\uc218, \ub300\uc911\uad50\ud1b5 \uc694\uae08 \uc778\uc0c1 \ucc2c\uc131\n(Read the headline first, then the four sentences of the article, numbered 1 to 4.)",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "One sentence claims more than the sentences before it support. Which one?",
+    "hints": [
+     "Compare the percentages in the second sentence with the conclusion drawn in the last one.",
+     "Ask who the 1,000 people actually were before deciding what they can speak for."
+    ],
+    "lines": [
+     "\uc11c\uc6b8\uc2dc\uac00 \uc2dc\ubbfc 1,000\uba85\uc5d0\uac8c \ub300\uc911\uad50\ud1b5 \uc694\uae08 \uc778\uc0c1\uc5d0 \ub300\ud55c \uc758\uacac\uc744 \ubb3c\uc5c8\ub2e4.",
+     "'\ucc2c\uc131' 48%, '\ubc18\ub300' 41%, '\uc798 \ubaa8\ub974\uaca0\ub2e4' 11%\uc600\ub2e4.",
+     "\uc870\uc0ac\ub294 \ud3c9\uc77c \ucd9c\uadfc \uc2dc\uac04\ub300 \uc9c0\ud558\ucca0\uc5ed \uc55e\uc5d0\uc11c \ub9cc\ub09c \uc2dc\ubbfc\ub9cc\uc744 \ub300\uc0c1\uc73c\ub85c \ud588\ub2e4.",
+     "\uc774\uc5d0 \ub530\ub77c \uc11c\uc6b8 \uc2dc\ubbfc \ub2e4\uc218\uac00 \uc694\uae08 \uc778\uc0c1\uc744 \uc9c0\uc9c0\ud558\ub294 \uac83\uc73c\ub85c \ub098\ud0c0\ub0ac\ub2e4."
+    ],
+    "wrong": [
+     3
+    ],
+    "explain": "Line 4 is the overreach. \ub2e4\uc218 sounds like 'most', but 48% is less than half and 41% opposed: \ucc2c\uc131 is the largest group (a plurality), not a majority. Line 3 also shows that only people met at subway stations at rush hour answered, so they cannot speak for all Seoul citizens."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Rewrite the headline in Korean so that it matches the numbers, and add one sentence (Korean or English) that names a limit of this survey.",
+    "hints": [
+     "Use the actual figures from line 2 instead of a vague word.",
+     "Look at line 3 for the limit."
+    ],
+    "placeholder": "\uc608: ...",
+    "minChars": 25,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "uses a figure from line 2 (48 or 41)",
+      "mode": "any",
+      "patterns": [
+       "48",
+       "41"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "does not claim that a majority supports the increase",
+      "mode": "none",
+      "patterns": [
+       "\ub2e4\uc218[\uac00\uc774]?\\s*(\uc694\uae08\\s*\uc778\uc0c1(\uc5d0)?\\s*)?(\ucc2c\uc131|\uc9c0\uc9c0)",
+       "\ub300\ub2e4\uc218",
+       "\uacfc\ubc18[\uc774\uac00]?\\s*(\uc694\uae08\\s*\uc778\uc0c1(\uc5d0)?\\s*)?(\ucc2c\uc131|\uc9c0\uc9c0)"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "names a limit of the sample",
+      "mode": "any",
+      "patterns": [
+       "\ucd9c\uadfc",
+       "\uc9c0\ud558\ucca0",
+       "\uc5ed \uc55e",
+       "\ud45c\ubcf8",
+       "\ub9cc\ub09c",
+       "\ubb3c\uc5c8",
+       "\ud55c\uc815",
+       "\ud55c\uacc4",
+       "\ub300\ud45c",
+       "\uc804\uccb4 \uc2dc\ubbfc",
+       "\uc77c\ubd80 \uc2dc\ubbfc",
+       "commut",
+       "sample",
+       "subway",
+       "station",
+       "biased",
+       "representative",
+       "rush hour",
+       "not all",
+       "limited"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my headline say only what 48% and 41% allow?",
+     "Is the limit I named about who was asked, not about the topic?",
+     "Would a reader of my headline be misled about 'all citizens'?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\uc11c\uc6b8 \uc2dc\ubbfc 48% \uc694\uae08 \uc778\uc0c1 \ucc2c\uc131\u2026\ubc18\ub300 41%\ub85c \uacfc\ubc18\uc5d4 \ubabb \ubbf8\uccd0. (\uc870\uc0ac\ub294 \ucd9c\uadfc \uc2dc\uac04\ub300 \uc9c0\ud558\ucca0\uc5ed \uc55e \uc2dc\ubbfc\ub9cc \ub300\uc0c1\uc774\ub77c \uc804\uccb4 \uc2dc\ubbfc\uc758 \uc758\uacac\uc73c\ub85c \ubcf4\uae30 \uc5b4\ub835\ub2e4.)"
+     },
+     {
+      "text": "\uc694\uae08 \uc778\uc0c1 \ucc2c\uc131 48%, \ubc18\ub300 41%\u2026 \ucc2c\uc131\uc774 \uac00\uc7a5 \ub9ce\uc9c0\ub9cc \uc808\ubc18\uc740 \uc548 \ub3fc. \uc870\uc0ac \ub300\uc0c1\uc774 \ucd9c\uadfc\uae38 \uc9c0\ud558\ucca0\uc5ed \uc774\uc6a9\uc790\ubfd0\uc774\ub77c\ub294 \ud55c\uacc4\uac00 \uc788\ub2e4."
+     },
+     {
+      "text": "\ucc2c\uc131 48%, \ubc18\ub300 41%\u2026 \ucc2c\uc131\uc774 \uac00\uc7a5 \ub9ce\uc9c0\ub9cc \uacfc\ubc18\uc740 \uc544\ub2c8\ub2e4. \ud3c9\uc77c \uc544\uce68\uc5d0 \ub9cc\ub09c \uc0ac\ub78c\ub9cc \ubb3c\uc5c8\ub2e4\ub294 \ud55c\uacc4\uac00 \uc788\ub2e4."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\uc11c\uc6b8 \uc2dc\ubbfc \ub2e4\uc218\uac00 \uc694\uae08 \uc778\uc0c1\uc5d0 \ucc2c\uc131",
+      "why": "Keeps the unsupported claim and gives no figure or limit."
+     },
+     {
+      "text": "\uc11c\uc6b8 \uc2dc\ubbfc \uc808\ubc18 \uc694\uae08 \uc778\uc0c1 \ucc2c\uc131, 48%",
+      "why": "Uses the figure but ignores the sampling limit."
+     },
+     {
+      "text": "\ucc2c\uc131 48% (\uc870\uc0ac \ub300\uc0c1: \uc2dc\ubbfc 1,000\uba85)",
+      "why": "Uses the figure and mentions who was asked, but names no limit of the sample."
+     }
+    ],
+    "humanReview": "Whether the rewritten headline is natural headline style and whether the limit named is really about representativeness."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Claim vs data",
+    "full": "Rewrite uses the figures and avoids 'majority'",
+    "partial": "Uses figures but still implies most citizens agree",
+    "none": "Keeps the original claim"
+   },
+   {
+    "criterion": "Sampling limit",
+    "full": "Names who was asked and why that limits the conclusion",
+    "partial": "Mentions the sample vaguely",
+    "none": "No limit"
+   }
+  ],
+  "alternatives": [
+   "A headline such as '\ucc2c\uc131 48%\u00b7\ubc18\ub300 41%\u2026\uc5c7\uac08\ub9b0 \uc2dc\ubbfc \uc758\uacac' is also good.",
+   "Pointing out that 11% had no opinion is a valid extra remark."
+  ],
+  "hardCases": [
+   "Some may argue 48% is 'about half' and the headline \uc808\ubc18 would be fine; the sampling limit still stops 'Seoul citizens' generalisations."
+  ],
+  "cautions": {
+   "language": "Newspaper headline style drops endings and uses '\u2026' and '\u00b7'; model answers imitate this, but plain sentences are accepted.",
+   "culture": "The survey is invented and no real organisation is meant; \uc11c\uc6b8\uc2dc appears only as a setting.",
+   "accessibility": "No images. Percent signs are read as 'percent' by most screen readers; the numbers are also spelled in the explanation."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Position of the unsupported line",
+    "Presence of the figure, absence of a majority claim, and a sample-limit word"
+   ],
+   "human": [
+    "Naturalness of the headline and quality of the stated limit"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k10-03",
+  "subject": "korean",
+  "grade": "K10",
+  "topic": "News claim and evidence",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Does the library cause the grades?",
+  "uiLang": "en",
+  "format": "choose-needed-info",
+  "generative": false,
+  "goal": "Decide which additional information would help test whether library use causes higher grades, spot a reversed-cause reading, and write one question for the researcher.",
+  "thinking": [
+   "Separating correlation from cause",
+   "Choosing the information that would settle a claim",
+   "Asking a precise question"
+  ],
+  "differsFromPlain": "Plain practice reads a news article for its main idea. Here you ask what the article does not tell you and which missing facts would change your judgement.",
+  "prerequisites": [
+   "Can read a short Korean news summary",
+   "Knows the words \uc131\uc801, \uc774\uc6a9, \ud3c9\uade0"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "News summary: \ud55c \uc5f0\uad6c\uc5d0\uc11c \ud55c \ub2ec\uc5d0 \ub3c4\uc11c\uad00\uc744 8\ubc88 \uc774\uc0c1 \uc774\uc6a9\ud55c \ud559\uc0dd\uc758 \ud3c9\uade0 \uc131\uc801\uc774 2\ubc88 \ubbf8\ub9cc \uc774\uc6a9\ud55c \ud559\uc0dd\ubcf4\ub2e4 \ub192\uc558\ub2e4. \uc5f0\uad6c\uc790\ub294 \"\ub3c4\uc11c\uad00 \uc774\uc6a9\uc774 \uc131\uc801\uc744 \uc62c\ub9b0\ub2e4\"\uace0 \ub9d0\ud588\ub2e4.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which extra facts would help you decide whether library use CAUSES higher grades? Choose all that apply.",
+    "hints": [
+     "For each option ask: would the answer change how likely it is that the library is the cause?",
+     "Ask what else could differ between frequent and rare library users."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "Whether the same students' grades were measured before and after they began to use the library often",
+      "reveals": "Looking for change over time in the same people, which a single comparison cannot show."
+     },
+     {
+      "id": "b",
+      "text": "Which kinds of books the students borrowed most often",
+      "reveals": "An interesting detail about use, but it does not tell you whether the use or something else produces the grades."
+     },
+     {
+      "id": "c",
+      "text": "Whether students who use the library a lot already study more or are more motivated",
+      "reveals": "Looking for a third factor that could explain both library use and grades."
+     },
+     {
+      "id": "d",
+      "text": "What the average grade of all students in the country is",
+      "reveals": "A national average shows whether these students are typical, not what causes their gap."
+     },
+     {
+      "id": "e",
+      "text": "Whether grades came from school records or from the students' own reports",
+      "reveals": "Checking how reliable the grade numbers are; this helps the whole claim, though it is not about cause itself."
+     }
+    ],
+    "correct": [
+     "a",
+     "c"
+    ],
+    "explain": "To test cause you need before/after data on the same students (a) and a check of other factors such as study time or motivation (c). Book types and a national average do not bear on the cause.",
+    "multi": true,
+    "acceptable": [
+     {
+      "ids": [
+       "a",
+       "c",
+       "e"
+      ],
+      "reason": "Checking how grades were measured (e) is reasonable because it tests the reliability of the data, even though it does not directly address cause."
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "A reader says: \"Maybe students with high grades like studying, so they go to the library more.\" Which idea does this show?",
+    "hints": [
+     "Compare what the study says with what the reader says: in each, which is the cause and which is the effect?",
+     "Check which option is about direction, not honesty or sampling."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "The study must have been dishonest.",
+      "reveals": "Jumping to accusing the study; the reader's idea is about direction, not honesty."
+     },
+     {
+      "id": "b",
+      "text": "Library use and grades are certainly unrelated.",
+      "reveals": "Overcorrecting: reversing the direction does not mean there is no link."
+     },
+     {
+      "id": "c",
+      "text": "The cause may run the other way: high grades (or studious habits) may lead to more library use.",
+      "reveals": "Considering the reverse direction of cause and effect."
+     },
+     {
+      "id": "d",
+      "text": "Only students who like reading were surveyed.",
+      "reveals": "Mixing in a sampling worry that the reader's sentence does not mention."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "The reader proposes reverse causation. The same numbers fit both directions, which is why the claim that library use raises grades goes beyond the data."
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "In Korean, write ONE question you would ask the researcher before accepting \"\ub3c4\uc11c\uad00 \uc774\uc6a9\uc774 \uc131\uc801\uc744 \uc62c\ub9b0\ub2e4\".",
+    "hints": [
+     "Choose a missing fact from step 1, or the reverse direction from step 2.",
+     "Think what you would need to know in order to rule out another explanation."
+    ],
+    "placeholder": "\uc608: ...",
+    "minChars": 10,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "is phrased as a question",
+      "mode": "any",
+      "patterns": [
+       "\\?",
+       "\uae4c\uc694",
+       "\ub098\uc694",
+       "\uac00\uc694",
+       "\uc2b5\ub2c8\uae4c",
+       "\u3142\ub2c8\uae4c",
+       "\uc785\ub2c8\uae4c"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "asks about change over time, other factors, the direction of cause, or how grades were measured",
+      "mode": "any",
+      "patterns": [
+       "\uc774\uc804",
+       "\uc804\uc5d0",
+       "\uc774\ud6c4",
+       "\uac19\uc740 \ud559\uc0dd",
+       "\ucd94\uc801",
+       "\ubcc0\ud654",
+       "\uc6d0\ub798",
+       "\uacf5\ubd80 \uc2dc\uac04",
+       "\uacf5\ubd80\ub97c",
+       "\uc758\uc695",
+       "\ub3d9\uae30",
+       "\ub2e4\ub978 \uc694\uc778",
+       "\uc778\uacfc",
+       "\ud559\uad50 \uae30\ub85d",
+       "\uae30\ub85d",
+       "\uc2a4\uc2a4\ub85c",
+       "\uc790\uae30 \ubcf4\uace0",
+       "\ubc18\ub300\ub85c",
+       "\uc624\ud788\ub824",
+       "\uc131\uc801\uc774 \ub192\uc740",
+       "\ub354 \uc790\uc8fc",
+       "before",
+       "over time",
+       "same students",
+       "other factor",
+       "motivat",
+       "study",
+       "\uc804\uacfc \ud6c4",
+       "\uc804\ud6c4",
+       "\ube44\uad50",
+       "\uc2dc\uac04\uc5d0 \ub530\ub77c",
+       "\uc2dc\uac04\uc774 \uc9c0\ub0a8\uc5d0 \ub530\ub77c",
+       "\uce21\uc815"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my question point to a missing fact, not just doubt?",
+     "Could the answer change my judgement?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\ub3c4\uc11c\uad00\uc744 \uc790\uc8fc \uc774\uc6a9\ud558\uae30 \uc804\uc5d0\ub294 \uac19\uc740 \ud559\uc0dd\ub4e4\uc758 \uc131\uc801\uc774 \uc5b4\ub560\ub098\uc694?"
+     },
+     {
+      "text": "\ub3c4\uc11c\uad00\uc744 \uc790\uc8fc \uac00\ub294 \ud559\uc0dd\ub4e4\uc774 \uc6d0\ub798 \uacf5\ubd80\ub97c \ub354 \uc5f4\uc2ec\ud788 \ud558\ub294 \ud559\uc0dd\uc740 \uc544\ub2cc\uac00\uc694?"
+     },
+     {
+      "text": "\uc131\uc801\uc774 \ub192\uc740 \ud559\uc0dd\uc774 \ub3c4\uc11c\uad00\uc5d0 \ub354 \uc790\uc8fc \uac00\ub294 \uac83\uc740 \uc544\ub2d0\uae4c\uc694?"
+     },
+     {
+      "text": "\ud559\uc0dd\ub4e4\uc758 \uc131\uc801\uc740 \ud559\uad50 \uae30\ub85d\uc5d0\uc11c \uac00\uc838\uc654\ub098\uc694?"
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\uc815\ub9d0 \uadf8\ub7f0\uac00\uc694?",
+      "why": "A question, but about nothing specific."
+     },
+     {
+      "text": "\ub3c4\uc11c\uad00\uc774 \uc88b\uc740 \uacf3\uc774\uc5d0\uc694.",
+      "why": "A statement, not a question."
+     },
+     {
+      "text": "\ub3c4\uc11c\uad00 \ub54c\ubb38\uc5d0 \uc131\uc801\uc774 \uc624\ub974\ub294 \uac8c \ub9de\ub098\uc694?",
+      "why": "A question, but it only repeats the claim and asks for no missing fact."
+     }
+    ],
+    "humanReview": "Whether the question is natural and genuinely probes cause."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Information choice",
+    "full": "Picks before/after data and other factors and rejects fame/brand",
+    "partial": "Picks one correct item",
+    "none": "Picks irrelevant items"
+   },
+   {
+    "criterion": "Question",
+    "full": "A specific question that could change the judgement",
+    "partial": "Specific topic but not a question",
+    "none": "Vague doubt"
+   }
+  ],
+  "alternatives": [
+   "Option e can be chosen with a and c.",
+   "Questions in English are not accepted for s3 on purpose; the aim is to produce Korean."
+  ],
+  "hardCases": [
+   "A student may say sample size is the missing fact; this is relevant but is not in the options, so it is a good extra in s3."
+  ],
+  "cautions": {
+   "language": "The summary uses '\ub54c\ubb38\uc5d0', the key cause marker, on purpose; the task points at this word.",
+   "culture": "Phones and school grades are common concerns, no real study or person is named.",
+   "accessibility": "No images. Numbers are written out in words (four hours, two hours) in the model answers where needed."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choices in s1 and s2",
+    "Question form and keyword presence in s3"
+   ],
+   "human": [
+    "Quality of the question"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k10-04",
+  "subject": "korean",
+  "grade": "K10",
+  "topic": "Tone and implication in chat",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Reading 'oh, okay\u2026'",
+  "uiLang": "en",
+  "format": "reveal-and-revise",
+  "generative": false,
+  "goal": "Revise your reading of a coworker's reply as more of the chat is revealed, and explain which Korean phrases changed your mind.",
+  "thinking": [
+   "Reading implication behind politeness",
+   "Revising a judgement with new evidence",
+   "Citing phrases as evidence"
+  ],
+  "differsFromPlain": "Plain practice translates short chat lines. Here the same few words are reread three times as more context arrives, and you track how and why your interpretation changes.",
+  "prerequisites": [
+   "Can read casual Korean chat",
+   "Knows that \uad1c\ucc2e\uc544 and \uc54c\uaca0\uc2b5\ub2c8\ub2e4 can be said without agreeing happily",
+   "Knows \ub9c9\ub0b4 (the youngest member) and \uc5b4\ucc28\ud53c (anyway)"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "A team chat at a Korean company. \uc9c0\ubbfc is the newest member. \uc120\ubc30 is a senior colleague. The chat is revealed in three steps.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "Read each piece of the chat. After each, pick the most reasonable reading of what \uc9c0\ubbfc feels.",
+    "hints": [
+     "Ask yourself what is said and what is only implied.",
+     "After each new piece, check whether your earlier reading still fits."
+    ],
+    "stages": [
+     {
+      "info": "\uc120\ubc30: \ub0b4\uc77c \ud68c\uc758 \uc790\ub8cc, \ub204\uac00 \uc815\ub9ac\ud574 \uc904 \uc218 \uc788\uc744\uae4c?\n\uc9c0\ubbfc: \uc544, \ub124\u2026",
+      "ask": "What does '\uc544, \ub124\u2026' most likely signal?",
+      "options": [
+       {
+        "id": "a",
+        "text": "She is glad to volunteer.",
+        "reveals": "Reading \ub124 as enthusiasm and ignoring the trailing '\uc544' and '\u2026'."
+       },
+       {
+        "id": "b",
+        "text": "She clearly refuses.",
+        "reveals": "Reading refusal into a word that literally means yes."
+       },
+       {
+        "id": "c",
+        "text": "She heard the question and is hesitating, without clearly volunteering.",
+        "reveals": "Noticing that \ub124 here answers 'I hear you', not 'I will do it'."
+       }
+      ],
+      "reasonable": [
+       "c"
+      ],
+      "after": "At this point only a hesitation is visible. \ub124 can mean 'I heard you', and the opening '\uc544' and the ending '\u2026' suggest unease."
+     },
+     {
+      "info": "\uc120\ubc30: \uadf8\ub7fc \uc9c0\ubbfc \uc528\uac00 \ud574 \uc904\ub798\uc694?\n\uc9c0\ubbfc: \uc81c\uac00\uc694? \uc544\u2026 \ub124, \uc54c\uaca0\uc2b5\ub2c8\ub2e4.",
+      "ask": "How should you now read her answer?",
+      "options": [
+       {
+        "id": "a",
+        "text": "She is delighted and thanking the senior.",
+        "reveals": "Treating the formal \uc54c\uaca0\uc2b5\ub2c8\ub2e4 as warmth."
+       },
+       {
+        "id": "b",
+        "text": "She will do it but is not happy about it.",
+        "reveals": "Seeing that '\uc54c\uaca0\uc2b5\ub2c8\ub2e4' is compliance while '\uc81c\uac00\uc694?' shows surprise."
+       },
+       {
+        "id": "c",
+        "text": "She said no politely.",
+        "reveals": "Missing that \uc54c\uaca0\uc2b5\ub2c8\ub2e4 is an acceptance."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "\uc54c\uaca0\uc2b5\ub2c8\ub2e4 accepts the job, while \uc81c\uac00\uc694? and the pause show surprise and reluctance. She complied; that is different from agreeing gladly."
+     },
+     {
+      "info": "Later, \uc9c0\ubbfc writes to a friend: \"\uc790\ub8cc \uc815\ub9ac? \ubb50, \uc5b4\ucc28\ud53c \ub0b4\uac00 \uc81c\uc77c \ub9c9\ub0b4\uc778\ub370 \uc5b4\uca4c\uaca0\uc5b4. \uad1c\ucc2e\uc544.\"",
+      "ask": "Suppose the senior learned what she wrote to her friend. What is the best next step?",
+      "options": [
+       {
+        "id": "a",
+        "text": "Offer to share the task or help, and check in with her.",
+        "reveals": "Treating \uc5b4\uca4c\uaca0\uc5b4 and \ub9c9\ub0b4 as signals of a one-sided burden."
+       },
+       {
+        "id": "b",
+        "text": "Thank her warmly in the team chat and leave it there.",
+        "reveals": "Kind, but it answers 'she is fine' and ignores the one-sided burden she describes with \uc5b4\uca4c\uaca0\uc5b4."
+       },
+       {
+        "id": "c",
+        "text": "Say nothing, because she accepted.",
+        "reveals": "Equating acceptance with agreement."
+       }
+      ],
+      "reasonable": [
+       "a"
+      ],
+      "after": "\uc5b4\uca4c\uaca0\uc5b4 means she saw no real choice, and \ub9c9\ub0b4 explains why. \uad1c\ucc2e\uc544 here sounds like a way to close the topic, not a statement of comfort."
+     }
+    ],
+    "reflect": "The same words, \ub124 and \uad1c\ucc2e\uc544, had different weight each time. Pausing marks like \uc544\u2026 and phrases like \uc5b4\uca4c\uaca0\uc5b4 carry what the polite words do not say."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "In English or Korean, explain how your reading changed from the first to the last piece. Quote at least two Korean phrases that moved you.",
+    "hints": [
+     "Name the first reading you had, then the phrase that made you revise it.",
+     "Pick phrases from different pieces of the chat."
+    ],
+    "placeholder": "\uc608: ...",
+    "minChars": 40,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "quotes at least TWO different Korean phrases from the chat",
+      "mode": "any",
+      "patterns": [
+       "(?=[\\s\\S]*\uc544[,\uff0c]?\\s*\ub124)(?=[\\s\\S]*\uc81c\uac00\uc694)",
+       "(?=[\\s\\S]*\uc544[,\uff0c]?\\s*\ub124)(?=[\\s\\S]*\uc54c\uaca0\uc2b5\ub2c8\ub2e4)",
+       "(?=[\\s\\S]*\uc544[,\uff0c]?\\s*\ub124)(?=[\\s\\S]*\uc5b4\uca4c\uaca0\uc5b4)",
+       "(?=[\\s\\S]*\uc544[,\uff0c]?\\s*\ub124)(?=[\\s\\S]*\ub9c9\ub0b4)",
+       "(?=[\\s\\S]*\uc544[,\uff0c]?\\s*\ub124)(?=[\\s\\S]*\uad1c\ucc2e\uc544)",
+       "(?=[\\s\\S]*\uc81c\uac00\uc694)(?=[\\s\\S]*\uc54c\uaca0\uc2b5\ub2c8\ub2e4)",
+       "(?=[\\s\\S]*\uc81c\uac00\uc694)(?=[\\s\\S]*\uc5b4\uca4c\uaca0\uc5b4)",
+       "(?=[\\s\\S]*\uc81c\uac00\uc694)(?=[\\s\\S]*\ub9c9\ub0b4)",
+       "(?=[\\s\\S]*\uc81c\uac00\uc694)(?=[\\s\\S]*\uad1c\ucc2e\uc544)",
+       "(?=[\\s\\S]*\uc54c\uaca0\uc2b5\ub2c8\ub2e4)(?=[\\s\\S]*\uc5b4\uca4c\uaca0\uc5b4)",
+       "(?=[\\s\\S]*\uc54c\uaca0\uc2b5\ub2c8\ub2e4)(?=[\\s\\S]*\ub9c9\ub0b4)",
+       "(?=[\\s\\S]*\uc54c\uaca0\uc2b5\ub2c8\ub2e4)(?=[\\s\\S]*\uad1c\ucc2e\uc544)",
+       "(?=[\\s\\S]*\uc5b4\uca4c\uaca0\uc5b4)(?=[\\s\\S]*\ub9c9\ub0b4)",
+       "(?=[\\s\\S]*\uc5b4\uca4c\uaca0\uc5b4)(?=[\\s\\S]*\uad1c\ucc2e\uc544)",
+       "(?=[\\s\\S]*\ub9c9\ub0b4)(?=[\\s\\S]*\uad1c\ucc2e\uc544)"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "describes a change of reading",
+      "mode": "any",
+      "patterns": [
+       "chang",
+       "revis",
+       "at first",
+       "first read",
+       "first thought",
+       "\\bthen\\b",
+       "\\blater\\b",
+       "instead",
+       "turned",
+       "realiz",
+       "at the end",
+       "\ubc14\ub00c",
+       "\ub2ec\ub77c",
+       "\ucc98\uc74c",
+       "\\bmoved\\b",
+       "\\bshift\\w*",
+       "\\bfrom\\b[^.]{0,40}\\bto\\b",
+       "\\bwent from\\b",
+       "\\bbecame\\b",
+       "\\bno longer\\b",
+       "\\brather than\\b",
+       "\ubc14\ub010",
+       "\ubcc0\ud588",
+       "\ubcc0\ud654",
+       "\ub2ec\ub790",
+       "\ub2e4\uc2dc \ubcf4"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I say what I first thought?",
+     "Did I tie the change to specific phrases?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "At first I read '\uc544, \ub124\u2026' as a plain yes, but '\uc81c\uac00\uc694?' showed surprise and reluctance, and later '\uc5b4\uca4c\uaca0\uc5b4' told me she accepted only because she is the youngest. So '\uad1c\ucc2e\uc544' does not mean she is fine."
+     },
+     {
+      "text": "My view changed after \uc81c\uac00\uc694? and \uc5b4\uca4c\uaca0\uc5b4. Polite words like \uc54c\uaca0\uc2b5\ub2c8\ub2e4 hid how she felt, and at the end \uad1c\ucc2e\uc544 was her way to end the topic."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "She is happy to help.",
+      "why": "No quoted Korean and no change of reading."
+     },
+     {
+      "text": "\uad1c\ucc2e\uc544 but she is happy",
+      "why": "Quotes only one phrase and shows no change of reading."
+     }
+    ],
+    "humanReview": "Whether the quoted phrases truly drive the revised reading."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Revision",
+    "full": "Describes first reading, the trigger phrase, and the new reading",
+    "partial": "Describes a change without naming a trigger",
+    "none": "No change described"
+   },
+   {
+    "criterion": "Evidence",
+    "full": "Quotes phrases from at least two pieces",
+    "partial": "Quotes one phrase",
+    "none": "No quote"
+   }
+  ],
+  "alternatives": [
+   "In stage 1, 'she has not decided yet' is also reasonable; the key is not reading it as enthusiasm.",
+   "In stage 3 a student may argue for gently asking \uc9c0\ubbfc first; this counts as option b."
+  ],
+  "hardCases": [
+   "Some readers hear \uad1c\ucc2e\uc544 as genuinely fine. The task asks for the best-supported reading, not certainty."
+  ],
+  "cautions": {
+   "language": "Ellipsis marks (\u2026) in chat carry tone; they are read as 'dot dot dot' by screen readers, so the stage text mentions the pause in words.",
+   "culture": "Hierarchy by age or rank (\ub9c9\ub0b4 = the youngest member) is typical of many Korean workplaces; not every workplace works this way.",
+   "accessibility": "No images. The chat is plain text with speaker names."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choices in the reveal stages",
+    "Quoted phrases and a change word in s2"
+   ],
+   "human": [
+    "Whether the reasoning is persuasive"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k10-05",
+  "subject": "korean",
+  "grade": "K10",
+  "topic": "Message to a professor",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Late homework, polite message",
+  "uiLang": "en",
+  "format": "rewrite-for-audience",
+  "generative": true,
+  "goal": "Judge what is off in a text to a professor, then rewrite it so that it asks permission, identifies the writer, and gives a reason.",
+  "thinking": [
+   "Evaluating a message for its audience",
+   "Moving from informing to asking",
+   "Rewriting in a respectful register"
+  ],
+  "differsFromPlain": "Plain practice conjugates -\uc2b5\ub2c8\ub2e4/-\uc5b4\uc694 endings. Here you decide which features of a real message misfire with a professor and then rewrite the whole message, not a single ending.",
+  "prerequisites": [
+   "Can write -\uc2b5\ub2c8\ub2e4 and -(\uc73c)\u3139\uae4c\uc694 sentences",
+   "Knows the words \uad50\uc218\ub2d8, \uacfc\uc81c, \uc81c\ucd9c"
+  ],
+  "minutes": 12,
+  "curriculum": null,
+  "material": "A student sends this KakaoTalk message to a professor at 11 p.m. (\u314e\u314e is a chat abbreviation for laughing, said 'hieut hieut'; ~ is a tilde that adds a light, friendly tone.)\n\n\"\uad50\uc218\ub2d8 \uacfc\uc81c \ub0b4\uc77c \ub0bc\uac8c\uc694 \u314e\u314e \ubab8\uc774 \uc880 \uc548 \uc88b\uc544\uc11c\uc694. \ud655\uc778 \ubd80\ud0c1\ud574\uc694~\"",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which features of this message would a Korean professor probably find inappropriate? Choose all that apply.",
+    "hints": [
+     "Imagine you are the professor reading it at 11 p.m. What would you need to know?",
+     "Separate what the message fails to DO (ask, identify the writer) from how it merely SOUNDS."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "It announces the new deadline ('\ub0bc\uac8c\uc694') instead of asking permission",
+      "reveals": "Seeing that the writer is deciding something that belongs to the professor."
+     },
+     {
+      "id": "b",
+      "text": "The laughing abbreviation and the tilde make the tone casual",
+      "reveals": "Noticing register markers that suit friends more than a professor."
+     },
+     {
+      "id": "c",
+      "text": "The writer does not say who they are or which class they attend",
+      "reveals": "Seeing that the professor may teach many students and cannot tell who writes."
+     },
+     {
+      "id": "d",
+      "text": "The message gives illness as the reason for the delay",
+      "reveals": "Treating a reason as a fault, although a reason is exactly what is expected."
+     },
+     {
+      "id": "e",
+      "text": "It uses the -\uc694 ending rather than the more formal -\uc2b5\ub2c8\ub2e4",
+      "reveals": "Judging endings: -\uc694 is polite; a formal ending is a plus, but not the main fault here."
+     }
+    ],
+    "correct": [
+     "a",
+     "c"
+    ],
+    "explain": "The core problems are that the writer announces rather than asks (a) and does not identify themselves (c). The casual markers (b) and the -\uc694 ending (e) are debatable, and giving a reason (d) is good practice.",
+    "multi": true,
+    "acceptable": [
+     {
+      "ids": [
+       "a",
+       "b",
+       "c"
+      ],
+      "reason": "Many readers also find the symbols too casual for a professor; this is a reasonable extra."
+     },
+     {
+      "ids": [
+       "a",
+       "c",
+       "e"
+      ],
+      "reason": "A more formal ending is expected in a written message to a professor, so noticing it is reasonable."
+     },
+     {
+      "ids": [
+       "a",
+       "b",
+       "c",
+       "e"
+      ],
+      "reason": "Noticing both the casual markers and the ending, besides the two core problems, is a reasonable extra."
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Rewrite the message in Korean (2-4 sentences) for the professor. Keep the reason, ask for permission, and say who you are.",
+    "hints": [
+     "Start with a greeting and your name or class.",
+     "Turn the deadline into a question."
+    ],
+    "placeholder": "\uc608: ...",
+    "minChars": 40,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "opens with a greeting",
+      "mode": "any",
+      "patterns": [
+       "\uc548\ub155\ud558\uc138\uc694",
+       "\uad50\uc218\ub2d8,?\\s*\uc548\ub155"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "asks permission or makes a request",
+      "mode": "any",
+      "patterns": [
+       "\uc5b4\ub824\uc6b8\uae4c\uc694",
+       "\ub420\uae4c\uc694",
+       "\uad1c\ucc2e\uc744\uae4c\uc694",
+       "\uac00\ub2a5\ud560\uae4c\uc694",
+       "\uc788\uc744\uae4c\uc694",
+       "\ub418\uaca0\uc2b5\ub2c8\uae4c",
+       "\ub418\ub294\uc9c0",
+       "\uc5ec\ucb59",
+       "\ubb38\uc758",
+       "\ud5c8\ub77d",
+       "\uc591\ud574",
+       "\ubd80\ud0c1\ub4dc",
+       "\ub4dc\ub824\ub3c4",
+       "\uc81c\ucd9c\ud574\ub3c4",
+       "\uad1c\ucc2e\uaca0\uc2b5\ub2c8\uae4c",
+       "\uac00\ub2a5\ud558\uaca0\uc2b5\ub2c8\uae4c"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "keeps a reason",
+      "mode": "any",
+      "patterns": [
+       "\ubab8",
+       "\uc544\ud504",
+       "\uc544\ud30c",
+       "\uc544\ud515",
+       "\ud3b8\ucc2e",
+       "\ucee8\ub514\uc158",
+       "\uac10\uae30",
+       "\ubcd1",
+       "\ubab8\uc0b4",
+       "\uac74\uac15",
+       "\uc5f4\uc774",
+       "\ud1b5\uc99d"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "avoids casual markers and announcing",
+      "mode": "none",
+      "patterns": [
+       "\u314e\u314e",
+       "\u314b\u314b",
+       "~",
+       "\ub0bc\uac8c\uc694",
+       "\ud560\uac8c\uc694"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "says who the writer is (name or class)",
+      "mode": "any",
+      "patterns": [
+       "\uc218\uc5c5",
+       "\uac15\uc758",
+       "\ud559\ubc88",
+       "\ud559\uacfc",
+       "\uacfc\ubaa9",
+       "\uad50\uc2dc",
+       "[\uac00-\ud7a3]{2,4}(\uc774?\ub77c\uace0 \ud569\ub2c8\ub2e4|\uc785\ub2c8\ub2e4)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does the professor know who I am?",
+     "Did I ask rather than tell?",
+     "Is the whole message in one respectful register?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\uad50\uc218\ub2d8, \uc548\ub155\ud558\uc138\uc694. \ud55c\uad6d\uc5b4\ubb38\ud559\uacfc \uc218\uc5c5\uc744 \ub4e3\ub294 \uc774\uc11c\uc5f0\uc785\ub2c8\ub2e4. \uc5b4\uc81c\ubd80\ud130 \ubab8\uc774 \uc88b\uc9c0 \uc54a\uc544 \uacfc\uc81c\ub97c \uc624\ub298\uae4c\uc9c0 \uc81c\ucd9c\ud558\uae30 \uc5b4\ub824\uc6b8 \uac83 \uac19\uc2b5\ub2c8\ub2e4. \ub0b4\uc77c\uae4c\uc9c0 \uc81c\ucd9c\ud574\ub3c4 \uad1c\ucc2e\uc744\uae4c\uc694? \uc591\ud574\ud574 \uc8fc\uc2dc\uba74 \uac10\uc0ac\ud558\uaca0\uc2b5\ub2c8\ub2e4."
+     },
+     {
+      "text": "\uc548\ub155\ud558\uc138\uc694, \uad50\uc218\ub2d8. \ubaa9\uc694\uc77c 3\uad50\uc2dc \uc218\uc5c5\uc758 \uae40\ubbfc\uc900\uc785\ub2c8\ub2e4. \uac10\uae30 \ubab8\uc0b4\ub85c \uacfc\uc81c\ub97c \ub9c8\ubb34\ub9ac\ud558\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4. \ud558\ub8e8\ub9cc \ub2a6\uac8c \uc81c\ucd9c\ud560 \uc218 \uc788\uc744\uae4c\uc694? \uc8c4\uc1a1\ud558\uc9c0\ub9cc \ud5c8\ub77d\ud574 \uc8fc\uc2dc\uba74 \uac10\uc0ac\ud558\uaca0\uc2b5\ub2c8\ub2e4."
+     },
+     {
+      "text": "\uad50\uc218\ub2d8, \uc548\ub155\ud558\uc138\uc694. \uc6d4\uc694\uc77c \uc218\uc5c5 \ubc15\uc11c\uc5f0\uc785\ub2c8\ub2e4. \uac74\uac15\uc774 \uc548 \uc88b\uc544 \uacfc\uc81c\ub97c \ud558\ub8e8 \ub2a6\uac8c \uc81c\ucd9c\ud574\ub3c4 \ub418\ub294\uc9c0 \uc5ec\ucb59\uace0 \uc2f6\uc2b5\ub2c8\ub2e4."
+     },
+     {
+      "text": "\uc548\ub155\ud558\uc138\uc694, \uad50\uc218\ub2d8. \ud654\uc694\uc77c \uc218\uc5c5\uc758 \ucd5c\ubbfc\ud638\uc785\ub2c8\ub2e4. \ubab8\uc774 \uc544\ud30c\uc11c \uacfc\uc81c\ub97c \ub0b4\uc77c \uc81c\ucd9c\ud574\ub3c4 \ub418\uaca0\uc2b5\ub2c8\uae4c? \uc8c4\uc1a1\ud569\ub2c8\ub2e4."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\uad50\uc218\ub2d8 \uacfc\uc81c \ub0b4\uc77c \ub0bc\uac8c\uc694 \u314e\u314e \ubab8\uc774 \uc548 \uc88b\uc544\uc11c\uc694",
+      "why": "The original message: casual, announces, no greeting."
+     },
+     {
+      "text": "\uc548\ub155\ud558\uc138\uc694 \uad50\uc218\ub2d8. \ubab8\uc774 \uc548 \uc88b\uc544\uc11c \uacfc\uc81c\ub294 \ub0b4\uc77c \ub0bc\uac8c\uc694.",
+      "why": "Has a greeting and a reason but still announces and does not ask or identify the writer."
+     }
+    ],
+    "humanReview": "Whether the register is consistent and the message sounds natural."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Function",
+    "full": "Greets, identifies, gives reason, asks permission",
+    "partial": "Misses one of these",
+    "none": "Still announces without asking"
+   },
+   {
+    "criterion": "Register",
+    "full": "Consistently formal (-\uc2b5\ub2c8\ub2e4/-\u3139\uae4c\uc694), no casual symbols",
+    "partial": "Mostly formal with a lapse",
+    "none": "Casual"
+   }
+  ],
+  "alternatives": [
+   "Using -\uc694 endings can be accepted if the other functions are present.",
+   "A message that offers a make-up plan (e.g. emailing a draft today) is an excellent extra."
+  ],
+  "hardCases": [
+   "Whether to add an apology word varies; both a short \uc8c4\uc1a1\ud569\ub2c8\ub2e4 and none can be fine."
+  ],
+  "cautions": {
+   "language": "Written messages to professors usually take -\uc2b5\ub2c8\ub2e4/-\u3139\uae4c\uc694 endings; -\uc694 is also widely used, so the checker does not demand a particular ending.",
+   "culture": "Norms about messaging a professor late at night differ between universities; many students send such messages the next morning.",
+   "accessibility": "No images. \u314e\u314e and ~ are explained in words so that a screen reader's reading is not required to understand them."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choices in s1",
+    "Greeting, request, reason and absence of casual markers in s2"
+   ],
+   "human": [
+    "Naturalness and register of the rewrite"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k10-06",
+  "subject": "korean",
+  "grade": "K10",
+  "topic": "Idioms misused",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "The idiom that contradicts its sentence",
+  "uiLang": "en",
+  "format": "find-error-fix",
+  "generative": false,
+  "goal": "Find the sentence where an idiom clashes with the rest of the sentence, choose a repair, and then repair a second clashing sentence yourself.",
+  "thinking": [
+   "Detecting a contradiction between an idiom and its context",
+   "Repairing a sentence",
+   "Making an idiom and its context agree"
+  ],
+  "differsFromPlain": "Plain practice matches idioms to meanings. Here the meanings are not asked; you detect which use fails and why, and then repair a second clashing sentence.",
+  "prerequisites": [
+   "Knows the idioms \ubc1c\ub4f1\uc5d0 \ubd88\uc774 \ub5a8\uc5b4\uc9c0\ub2e4, \ub204\uc6cc\uc11c \ub5a1 \uba39\uae30, \ubc1c\uc774 \ub113\ub2e4 as vocabulary items",
+   "Can read short learner essays"
+  ],
+  "minutes": 11,
+  "curriculum": null,
+  "material": "A learner wrote four sentences for a class blog and used an idiom in each. (Idioms: \ubc1c\ub4f1\uc5d0 \ubd88\uc774 \ub5a8\uc5b4\uc9c0\ub2e4 = to face an urgent problem; \ub204\uc6cc\uc11c \ub5a1 \uba39\uae30 = to be very easy; \ubc1c\uc774 \ub113\ub2e4 = to know many people; \uc18c\ubb38\ub09c \uc794\uce58\uc5d0 \uba39\uc744 \uac83 \uc5c6\ub2e4 = hype that exceeds the reality.)",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "One sentence uses an idiom in a way that contradicts the rest of the sentence. Which line?",
+    "hints": [
+     "Replace the idiom in each line with its meaning, then reread.",
+     "Look for a result that does not follow from the idiom."
+    ],
+    "lines": [
+     "\ubc1c\ud45c \uc804\ub0a0 \ubc24\uc5d0 \uc790\ub8cc\uac00 \uc0ac\ub77c\uc838\uc11c \uc815\ub9d0 \ubc1c\ub4f1\uc5d0 \ubd88\uc774 \ub5a8\uc5b4\uc84c\uc5b4\uc694.",
+     "\ud070\uc77c\uc778 \uc904 \uc54c\uc558\ub294\ub370 \ub9c9\uc0c1 \ud574 \ubcf4\ub2c8 \ub204\uc6cc\uc11c \ub5a1 \uba39\uae30\uc600\uc5b4\uc694.",
+     "\uc6b0\ub9ac \ud300\uc7a5\ub2d8\uc740 \ubc1c\uc774 \ub113\uc5b4\uc11c \ud558\ub8e8\ub3c4 \ubaa8\uc784\uc5d0 \uac00\uc9c0 \uc54a\uace0 \uc9d1\uc5d0\ub9cc \uacc4\uc138\uc694.",
+     "\uc18c\ubb38\ub09c \uc794\uce58\uc5d0 \uba39\uc744 \uac83 \uc5c6\ub2e4\ub354\ub2c8 \uadf8 \uc2dd\ub2f9\uc774 \ub531 \uadf8\ub7ac\uc5b4\uc694."
+    ],
+    "wrong": [
+     2
+    ],
+    "explain": "Line 3 is the problem. \ubc1c\uc774 \ub113\ub2e4 means to know many people, but the rest says the team leader stays home and goes to no gatherings. The other three idioms fit their contexts."
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Which repair of line 3 keeps the idiom and makes the sentence logical?",
+    "hints": [
+     "Ask which options still make sense if \ubc1c\uc774 \ub113\ub2e4 means 'knows many people'.",
+     "Eliminate options that stay on the literal meaning of feet."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "\uc6b0\ub9ac \ud300\uc7a5\ub2d8\uc740 \ubc1c\uc774 \ub113\uc5b4\uc11c \ud0a4\uac00 \ud070 \ud3b8\uc774\uc2dc\uace0 \uc2e0\ubc1c\uc744 \ub530\ub85c \ub9de\ucd94\uc138\uc694.",
+      "reveals": "Reading the idiom literally as wide feet."
+     },
+     {
+      "id": "b",
+      "text": "\uc6b0\ub9ac \ud300\uc7a5\ub2d8\uc740 \ubc1c\uc774 \ub113\uc5b4\uc11c \uc5ec\ub7ec \ubd80\uc11c \uc0ac\ub78c\ub4e4\uc744 \ub450\ub8e8 \uc544\uc2dc\uace0 \uc18c\uac1c\ub3c4 \uc798\ud574 \uc8fc\uc138\uc694.",
+      "reveals": "Keeping the idiom and giving it a result that matches 'knows many people'."
+     },
+     {
+      "id": "c",
+      "text": "\uc6b0\ub9ac \ud300\uc7a5\ub2d8\uc740 \ubc1c\uc774 \ub113\uc5b4\uc11c \uc694\uc998\uc740 \uc0ac\ub78c\ub4e4\uc744 \ud53c\ud574 \uc9d1\uc5d0\uc11c \uc26c\ub294 \ub0a0\uc774 \ub9ce\uc73c\uc138\uc694.",
+      "reveals": "Keeps the idiom, but the result still does not follow: knowing many people is not a reason to avoid people."
+     },
+     {
+      "id": "d",
+      "text": "\uc6b0\ub9ac \ud300\uc7a5\ub2d8\uc740 \ubc1c\uc774 \ub113\uc5b4\uc11c \uc2e0\ubc1c \uac00\uac8c\uc5d0\uc11c \uace0\ub974\ub294 \ub370 \uc2dc\uac04\uc774 \uc624\ub798 \uac78\ub824\uc694.",
+      "reveals": "Reading the idiom literally as wide feet and shoe shopping."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "A good repair keeps \ubc1c\uc774 \ub113\ub2e4 as 'knows many people' and adds a consequence, such as knowing people across departments. Literal readings (a, d) use the words, not the idiom, and c keeps the clash."
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Another learner wrote: \"\uadf8 \uc2dd\ub2f9\uc740 \uc18c\ubb38\ub09c \uc794\uce58\uc5d0 \uba39\uc744 \uac83 \uc5c6\ub2e4\ub354\ub2c8 \uc74c\uc2dd\uc774 \uc815\ub9d0 \ub9db\uc788\uace0 \uc904\ub3c4 \uae38\uc5b4\uc11c \ub9e4\uc77c \uac00\uc694.\" The idiom clashes with the rest. Rewrite it as ONE Korean sentence so that the idiom (or another expression) and the rest agree, changing as little as you can.",
+    "hints": [
+     "Decide what the idiom says about the restaurant, then check whether the rest of the sentence says the same thing.",
+     "You may change the rest of the sentence to match the idiom, or change the opening to match the rest."
+    ],
+    "placeholder": "\uc608: ...",
+    "minChars": 15,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "does not keep the idiom together with praise",
+      "mode": "none",
+      "patterns": [
+       "\uc18c\ubb38\ub09c \uc794\uce58.{0,30}(\ub9db\uc788\uace0|\ub9db\uc788\uc5b4\uc11c|\ub9db\uc788\uc5b4\uc694|\ub9db\uc788\uc5c8|\ud6cc\ub96d|\ucd5c\uace0|\ub9e4\uc77c \uac00)"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "has a word that agrees with the idiom or replaces it",
+      "mode": "any",
+      "patterns": [
+       "\ubcc4\ub85c",
+       "\uc2e4\ub9dd",
+       "\uae30\ub300",
+       "\ub9db\uc5c6",
+       "\ub9db\uc774 \uc5c6",
+       "\uc544\uc27d",
+       "\uadf8\uc800 \uadf8",
+       "\ud3c9\ubc94",
+       "\uc18c\ubb38\ub300\ub85c",
+       "\uc18c\ubb38\ucc98\ub7fc",
+       "\uacfc\uc5f0",
+       "\uc5ed\uc2dc",
+       "\uba85\uc131",
+       "\uc778\uae30"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "is a complete sentence about the restaurant",
+      "mode": "any",
+      "patterns": [
+       "\uc2dd\ub2f9",
+       "\uc74c\uc2dd",
+       "\ub9db",
+       "\uc9d1"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "If I kept the idiom, does the rest of my sentence say the same thing as the idiom?",
+     "Did I change only what was needed?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\uadf8 \uc2dd\ub2f9\uc740 \uc18c\ubb38\ub09c \uc794\uce58\uc5d0 \uba39\uc744 \uac83 \uc5c6\ub2e4\ub354\ub2c8 \uc904\ub9cc \uae38\uace0 \uc74c\uc2dd\uc740 \ubcc4\ub85c\uc5ec\uc11c \uc2e4\ub9dd\ud588\uc5b4\uc694."
+     },
+     {
+      "text": "\uadf8 \uc2dd\ub2f9\uc740 \uc18c\ubb38\ub300\ub85c \uc74c\uc2dd\uc774 \uc815\ub9d0 \ub9db\uc788\uace0 \uc904\ub3c4 \uae38\uc5b4\uc11c \ub9e4\uc77c \uac00\uc694."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\uadf8 \uc2dd\ub2f9\uc740 \uc18c\ubb38\ub09c \uc794\uce58\uc5d0 \uba39\uc744 \uac83 \uc5c6\ub2e4\ub354\ub2c8 \uc74c\uc2dd\uc774 \uc815\ub9d0 \ub9db\uc788\uace0 \uc904\ub3c4 \uae38\uc5b4\uc11c \ub9e4\uc77c \uac00\uc694.",
+      "why": "The original sentence: the idiom still clashes with the praise."
+     },
+     {
+      "text": "\uc800\ub294 \ud55c\uad6d\uc5b4\ub97c \uacf5\ubd80\ud574\uc694.",
+      "why": "Not a repair; says nothing about the restaurant."
+     }
+    ],
+    "humanReview": "Whether the repaired sentence reads naturally and the idiom and the rest of the sentence really agree."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Error detection",
+    "full": "Finds the line and says what clashes",
+    "partial": "Finds the line without a reason",
+    "none": "Wrong line"
+   },
+   {
+    "criterion": "Context clues",
+    "full": "Sentence with idiom and a clause that fits its meaning",
+    "partial": "Idiom with weak context",
+    "none": "No idiom or a clashing context"
+   }
+  ],
+  "alternatives": [
+   "Line 2 can be argued weak if the writer found it hard; the clash in line 3 is stronger.",
+   "In s3 a learner may keep the idiom and make the rest negative, or drop the idiom and keep the praise; both repair the clash."
+  ],
+  "hardCases": [
+   "Writing \uc18c\ubb38\ub09c \uc794\uce58 together with a mixed result (long queue but bad food) is fine; check that the result is not praise only."
+  ],
+  "cautions": {
+   "language": "Idioms are glossed in English in the material because the aim is to judge use, not to recall meanings.",
+   "culture": "Idioms like \ubc1c\uc774 \ub113\ub2e4 and \ub204\uc6cc\uc11c \ub5a1 \uba39\uae30 are everyday expressions; none refer to a particular group or religion.",
+   "accessibility": "No images. Idioms are written in plain Hangul."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The error line in s1",
+    "The repair choice in s2",
+    "No idiom + praise clash and an agreeing word in s3"
+   ],
+   "human": [
+    "Whether the repaired sentence is natural and consistent"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k10-07",
+  "subject": "korean",
+  "grade": "K10",
+  "topic": "News statistics",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Opposed, but not 'most'",
+  "uiLang": "en",
+  "format": "build-many-verify",
+  "generative": true,
+  "goal": "Find the headline that overreaches for given poll results, then build three poll result sets for which 'more opposed than in favour' is true but 'a majority opposes' is not.",
+  "thinking": [
+   "Checking a headline against counts",
+   "Constructing several examples under constraints",
+   "Explaining what a hidden group changes"
+  ],
+  "differsFromPlain": "Plain practice computes percentages. Here you invent several data sets that satisfy one claim but not another, which shows the gap between 'the most' and 'a majority'.",
+  "prerequisites": [
+   "Can add and compare whole numbers up to 200",
+   "Knows \ucc2c\uc131, \ubc18\ub300, \ubaa8\ub984, \uacfc\ubc18"
+  ],
+  "minutes": 11,
+  "curriculum": null,
+  "material": "A newspaper polled 200 people about a new policy. Each person answered \ucc2c\uc131 (in favour), \ubc18\ub300 (opposed) or \ubaa8\ub984 (not sure). In this task, \uacfc\ubc18 means more than half of ALL 200 people asked (so more than 100).",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "The poll found \ucc2c\uc131 60, \ubc18\ub300 90, \ubaa8\ub984 50. Which headline claims more than these counts support?",
+    "hints": [
+     "For each headline, write down the count or share it needs in order to be true.",
+     "Check each of them against 60, 90 and 50 out of 200."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "\uc0c8 \uc815\ucc45, \ubc18\ub300\uac00 \ucc2c\uc131\ubcf4\ub2e4 30\uba85 \ub9ce\uc544",
+      "reveals": "Reading the counts exactly: 90 - 60 = 30."
+     },
+     {
+      "id": "b",
+      "text": "\uc0c8 \uc815\ucc45 \ubc18\ub300 \uc751\ub2f5, \ucc2c\uc131\ubcf4\ub2e4 \ub9ce\uc544",
+      "reveals": "Comparing only the two answers and leaving out the third."
+     },
+     {
+      "id": "c",
+      "text": "\uad6d\ubbfc \uacfc\ubc18, \uc0c8 \uc815\ucc45 \ubc18\ub300",
+      "reveals": "Treating 'most' as 'more than any other group' and missing that 90 of 200 is under half."
+     },
+     {
+      "id": "d",
+      "text": "\uc0c8 \uc815\ucc45 \ubc18\ub300 45%\u00b7\ucc2c\uc131 30%\u00b7\ubaa8\ub984 25%",
+      "reveals": "Converting counts into shares of the whole group (90, 60, 50 out of 200)."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "\uacfc\ubc18 means more than half. Half of 200 is 100, and 90 is fewer, so the headline with \uacfc\ubc18 overreaches. The others report the counts correctly.",
+    "scaffold": true
+   },
+   {
+    "id": "s2",
+    "kind": "build",
+    "prompt": "Enter three different poll results (200 people in total) where opposed is the largest group (more than \ucc2c\uc131 and more than \ubaa8\ub984), but not more than 100, with at least 20 in favour and at least 20 answering \ubaa8\ub984.",
+    "hints": [
+     "Pick the number opposed first; keep it at 100 or below.",
+     "Then choose smaller numbers for in favour and for \ubaa8\ub984 so that all three add up to 200."
+    ],
+    "vars": [
+     {
+      "name": "a",
+      "label": "\ucc2c\uc131 (in favour)"
+     },
+     {
+      "name": "b",
+      "label": "\ubc18\ub300 (opposed)"
+     },
+     {
+      "name": "c",
+      "label": "\ubaa8\ub984 (not sure)"
+     }
+    ],
+    "constraints": [
+     {
+      "id": "c1",
+      "expr": "floor(a)==a && floor(b)==b && floor(c)==c && a>=0 && b>=0 && c>=0",
+      "ok": "Whole non-negative numbers.",
+      "fail": "Use whole numbers of people, not negative."
+     },
+     {
+      "id": "c2",
+      "expr": "a+b+c==200",
+      "ok": "The total is 200.",
+      "fail": "The three numbers must add up to 200."
+     },
+     {
+      "id": "c3",
+      "expr": "b>a",
+      "ok": "More opposed than in favour.",
+      "fail": "Opposed must be greater than in favour."
+     },
+     {
+      "id": "c4",
+      "expr": "b<=100",
+      "ok": "Opposition is not a majority.",
+      "fail": "Opposition is over half, so it IS a majority."
+     },
+     {
+      "id": "c5",
+      "expr": "c>=20",
+      "ok": "At least 20 were not sure.",
+      "fail": "At least 20 must answer \ubaa8\ub984."
+     },
+     {
+      "id": "c6",
+      "expr": "b>c",
+      "ok": "Opposed is larger than \ubaa8\ub984 too, so it is the largest group.",
+      "fail": "Opposed must be larger than \ubaa8\ub984, so that it is the largest group."
+     },
+     {
+      "id": "c7",
+      "expr": "a>=20",
+      "ok": "At least 20 in favour.",
+      "fail": "At least 20 must be in favour."
+     }
+    ],
+    "need": 3,
+    "distinctBy": "a*1000+b",
+    "modelRows": [
+     {
+      "a": 60,
+      "b": 90,
+      "c": 50
+     },
+     {
+      "a": 70,
+      "b": 100,
+      "c": 30
+     },
+     {
+      "a": 40,
+      "b": 85,
+      "c": 75
+     }
+    ],
+    "badRows": [
+     {
+      "a": 50,
+      "b": 110,
+      "c": 40
+     },
+     {
+      "a": 90,
+      "b": 60,
+      "c": 50
+     }
+    ],
+    "explain": "For example 60/90/50 and 70/100/30 both have more people opposed than in favour, yet opposition is not above 100. 100 is exactly half, which is not 'more than half'.",
+    "because": {
+     "id": "s2b",
+     "kind": "write",
+     "prompt": "In English or Korean, explain why 'opposed is the largest group' does not allow the headline '\uacfc\ubc18 \ubc18\ub300', and what role the other two groups play.",
+     "hints": [
+      "Think about how many people did not oppose.",
+      "Look at your own examples."
+     ],
+     "placeholder": "\uc608: ...",
+     "minChars": 20,
+     "checks": [
+      {
+       "id": "w1",
+       "label": "mentions majority / half",
+       "mode": "any",
+       "patterns": [
+        "\uacfc\ubc18",
+        "\uc808\ubc18",
+        "half",
+        "majority",
+        "plurality",
+        "100",
+        "50\\s*%",
+        "\ud569\uccd0",
+        "\ud569\uce58",
+        "together",
+        "combined",
+        "\ub098\uba38\uc9c0",
+        "110",
+        "not oppose"
+       ]
+      },
+      {
+       "id": "w2",
+       "label": "mentions the not-sure group or the others",
+       "mode": "any",
+       "patterns": [
+        "\ubaa8\ub984",
+        "\ubb34\uc751\ub2f5",
+        "undecided",
+        "don't know",
+        "not sure",
+        "unsure",
+        "others"
+       ]
+      }
+     ],
+     "selfAssess": [
+      "Did I use my own numbers?",
+      "Did I say who is not counted among the opposed?"
+     ],
+     "modelAnswers": [
+      {
+       "text": "\ubc18\ub300\uac00 \ucc2c\uc131\ubcf4\ub2e4 \ub9ce\uc544\ub3c4 100\uba85\uc744 \ub118\uc9c0 \uc54a\uc73c\uba74 \uacfc\ubc18\uc774 \uc544\ub2c8\uc5d0\uc694. \ubaa8\ub984\uc774\ub77c\uace0 \ub2f5\ud55c \uc0ac\ub78c\uc774 \ub9ce\uc73c\uba74 \ubc18\ub300 \ube44\uc728\uc740 \uc808\ubc18 \ubbf8\ub9cc\uc774\ub77c\uc11c '\uad6d\ubbfc \ubc18\ub300' \ud5e4\ub4dc\ub77c\uc778\uc774 \uacfc\uc7a5\uc77c \uc218 \uc788\uc5b4\uc694."
+      },
+      {
+       "text": "More opposed than in favour does not mean a majority: with 90 of 200 opposed, 110 people did not oppose, many answered \ubaa8\ub984 or in favour."
+      },
+      {
+       "text": "Largest group is only a plurality; the \ubaa8\ub984 and \ucc2c\uc131 together can be as big as or bigger than \ubc18\ub300."
+      }
+     ],
+     "badAnswers": [
+      {
+       "text": "\uc22b\uc790\ub97c \ub354\ud558\uba74 200\uc774\ub2e4.",
+       "why": "Restates the total; no reasoning about majority or the third group."
+      }
+     ],
+     "humanReview": "Whether the reasoning distinguishes the largest group from a majority."
+    }
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Constraint solving",
+    "full": "Three valid, different result sets",
+    "partial": "Two valid sets",
+    "none": "One or none"
+   },
+   {
+    "criterion": "Explanation",
+    "full": "Distinguishes largest group from majority and uses the not-sure group",
+    "partial": "Mentions only one of these",
+    "none": "No relevant reasoning"
+   }
+  ],
+  "alternatives": [
+   "Any triple with a < b <= 100, c >= 20 and sum 200 is valid, e.g. 20/100/80.",
+   "A student may also include \ubaa8\ub984 above 100 (e.g. 0/50/150); this is valid."
+  ],
+  "hardCases": [
+   "A set where \ubaa8\ub984 is large but \ucc2c\uc131 is tiny shows the same idea; both are valid."
+  ],
+  "cautions": {
+   "language": "\uacfc\ubc18 means more than half, exactly half is not \uacfc\ubc18; the explanation states this.",
+   "culture": "The poll is invented and describes no real policy or population.",
+   "accessibility": "No images. The counts are given as numbers; enter whole numbers in the three fields."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choices in s1",
+    "Validity of the three result sets and the keywords in the explanation"
+   ],
+   "human": [
+    "Whether the reasoning is clear"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k10-08",
+  "subject": "korean",
+  "grade": "K10",
+  "topic": "Tone and implication at work",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Is 'I'll think about it' a yes?",
+  "uiLang": "en",
+  "format": "choose-needed-info",
+  "generative": false,
+  "goal": "Decide which information would help read an ambiguous workplace reply and pick a follow-up message that finds out without pressuring or assuming.",
+  "thinking": [
+   "Recognising an indirect reply",
+   "Choosing evidence to resolve ambiguity",
+   "Evaluating follow-up messages"
+  ],
+  "differsFromPlain": "Plain practice translates '\uc0dd\uac01\ud574 \ubcf4\uaca0\uc2b5\ub2c8\ub2e4' as 'I will think about it'. Here you decide what that reply could mean in context and which facts would settle it.",
+  "prerequisites": [
+   "Can read a short workplace chat",
+   "Knows -\uaca0\uc2b5\ub2c8\ub2e4 as a polite ending"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "\ud604\uc6b0 sent a proposal to \ubc15 \ubd80\uc7a5\ub2d8 (a department head) by messenger. The reply: \"\uc88b\uc740 \uc544\uc774\ub514\uc5b4\ub124\uc694. \ud55c\ubc88 \uc0dd\uac01\ud574 \ubcf4\uaca0\uc2b5\ub2c8\ub2e4.\" \ud604\uc6b0 cannot tell if it is a yes, a no or a maybe.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which extra pieces of information would help \ud604\uc6b0 read the reply? Choose all that apply.",
+    "hints": [
+     "Which facts would a person who is really interested produce, but a person who is declining would not?",
+     "Which fact compares this reply with the same person's earlier replies?"
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "Whether \ubc15 \ubd80\uc7a5\ub2d8 asked follow-up questions about the budget or schedule",
+      "reveals": "Looking for signs of real interest, which a polite no rarely includes."
+     },
+     {
+      "id": "b",
+      "text": "Whether the message was sent in the morning or at night",
+      "reveals": "Using a detail that says little about the answer."
+     },
+     {
+      "id": "c",
+      "text": "Whether \ubc15 \ubd80\uc7a5\ub2d8 usually says this before approving or before declining",
+      "reveals": "Looking for the speaker's own habit, the best key to an indirect reply."
+     },
+     {
+      "id": "d",
+      "text": "Whether the reply used -\uc2b5\ub2c8\ub2e4 rather than -\uc5b4\uc694",
+      "reveals": "Treating the ending as the signal, although endings follow rank, not yes or no."
+     },
+     {
+      "id": "e",
+      "text": "Whether the reply came within minutes or only after several days",
+      "reveals": "Using speed as weak evidence of interest."
+     }
+    ],
+    "correct": [
+     "a",
+     "c"
+    ],
+    "explain": "Follow-up questions (a) and the speaker's habit (c) tell the most about whether the reply is a soft no. Time of day (b) and the ending (d) say little, and reply speed (e) is only weak evidence.",
+    "multi": true,
+    "acceptable": [
+     {
+      "ids": [
+       "a",
+       "c",
+       "e"
+      ],
+      "reason": "Reply speed (e) is weak but reasonable additional evidence."
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Which follow-up message from \ud604\uc6b0 best finds out the answer without pressure or assumption?",
+    "hints": [
+     "Imagine you are \ubc15 \ubd80\uc7a5\ub2d8: which message would you answer most easily?",
+     "Check each option for assuming, demanding or pressing."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "\uadf8\ub7fc \ub0b4\uc77c\ubd80\ud130 \ubc14\ub85c \uc9c4\ud589\ud558\uaca0\uc2b5\ub2c8\ub2e4. \uac10\uc0ac\ud569\ub2c8\ub2e4, \ubd80\uc7a5\ub2d8.",
+      "reveals": "Assuming a yes and acting on it."
+     },
+     {
+      "id": "b",
+      "text": "\uadf8\ub7fc \ud558\ub77c\ub294 \ub9d0\uc500\uc774\uc2e0\uac00\uc694, \ud558\uc9c0 \ub9d0\ub77c\ub294 \ub9d0\uc500\uc774\uc2e0\uac00\uc694? \ud655\uc2e4\ud788 \uc54c\uace0 \uc2f6\uc2b5\ub2c8\ub2e4.",
+      "reveals": "Asking bluntly and putting the senior on the spot."
+     },
+     {
+      "id": "c",
+      "text": "\ub9d0\uc500 \uac10\uc0ac\ud569\ub2c8\ub2e4. \uac80\ud1a0\uc5d0 \ud544\uc694\ud55c \uc790\ub8cc\ub098 \uc77c\uc815\uc774 \uc788\uc73c\uc2dc\uba74 \uc54c\ub824 \uc8fc\uc138\uc694.",
+      "reveals": "Offering help and opening the door to a clear answer without pressure."
+     },
+     {
+      "id": "d",
+      "text": "\uc0dd\uac01\ud574 \ubcf4\uc2e0\ub2e4\uace0 \ud558\uc168\uc73c\ub2c8 \uc774\ubc88 \uc8fc \uc548\uc73c\ub85c \uaf2d \ub2f5\uc744 \uc8fc\uc168\uc73c\uba74 \ud569\ub2c8\ub2e4.",
+      "reveals": "Setting a deadline, which can feel like pressure on a senior."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "Option c keeps the senior's face, offers help and invites more information. a assumes a yes, b is blunt and d pressures."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Information choice",
+    "full": "Picks follow-up questions and the speaker's habit",
+    "partial": "Picks one of them",
+    "none": "Picks irrelevant items"
+   },
+   {
+    "criterion": "Follow-up",
+    "full": "Chooses a message that offers help and does not assume or press",
+    "partial": "Chooses an acceptable but weaker message",
+    "none": "Chooses an assuming or pressing message"
+   }
+  ],
+  "alternatives": [
+   "Reply speed (e) is acceptable as extra evidence.",
+   "In s2 only c fully matches; d could be acceptable in workplaces with fixed deadlines."
+  ],
+  "hardCases": [
+   "In some workplaces '\uc0dd\uac01\ud574 \ubcf4\uaca0\uc2b5\ub2c8\ub2e4' simply means the manager will think; the task treats it as ambiguous, not as always a no."
+  ],
+  "cautions": {
+   "language": "-\uaca0\uc2b5\ub2c8\ub2e4 can mean future or polite resolve; here it is the latter.",
+   "culture": "Indirect refusal is common in many cultures; the claim that this phrase 'often means no' is a tendency, not a rule.",
+   "accessibility": "No images. Messages are single plain-text lines."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choices in s1 and s2"
+   ],
+   "human": [
+    "Open reflection is not included; discuss with a teacher if students disagree"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k10-09",
+  "subject": "korean",
+  "grade": "K10",
+  "topic": "Declining a team dinner",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Saying no to a \ud68c\uc2dd",
+  "uiLang": "en",
+  "format": "rewrite-for-audience",
+  "generative": true,
+  "goal": "Find the phrase in a reply to a team leader that is inappropriate by itself, then rewrite the whole reply to decline politely.",
+  "thinking": [
+   "Evaluating address forms and phrases",
+   "Declining with respect",
+   "Rewriting for a superior"
+  ],
+  "differsFromPlain": "Plain practice drills refusal sentences. Here you evaluate a real draft, find a phrase that is wrong whatever its meaning, and rewrite the message so that the refusal keeps the relationship.",
+  "prerequisites": [
+   "Can write -\uc2b5\ub2c8\ub2e4 sentences",
+   "Knows \ud68c\uc2dd (a team dinner), \uc120\uc57d, \uacf5\uc9c0"
+  ],
+  "minutes": 11,
+  "curriculum": null,
+  "material": "The team leader posted in the group chat: \"\uc774\ubc88 \uae08\uc694\uc77c 6\uc2dc \ud300 \ud68c\uc2dd\uc785\ub2c8\ub2e4. \ub2e4\ub4e4 \ucc38\uc11d \ubc14\ub78d\ub2c8\ub2e4.\" A new employee has a family appointment that evening. Their draft reply:",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "One phrase in the draft is a well-known problem when speaking to a superior, whatever the refusal is. Which line contains it?",
+    "hints": [
+     "Ask of each line: would it be a problem if said to a superior in ANY message, apart from the refusal?",
+     "Separate lines that are only blunt in this situation from a phrase that is wrong whatever the message is."
+    ],
+    "lines": [
+     "\ud300\uc7a5\ub2d8, \uae08\uc694\uc77c \ud68c\uc2dd \uacf5\uc9c0 \ud655\uc778\ud588\uc2b5\ub2c8\ub2e4.",
+     "\uadf8\ub0a0\uc740 \uc120\uc57d\uc774 \uc788\uc5b4\uc11c \ubabb \uac00\uc694.",
+     "\ub2e4\uc74c\uc5d0\ub294 \uaf2d \ucc38\uc11d\ud558\uace0 \uc2f6\uc2b5\ub2c8\ub2e4.",
+     "\uadf8\ub7fc \uc218\uace0\ud558\uc138\uc694."
+    ],
+    "wrong": [
+     3
+    ],
+    "explain": "Line 4 is the problem. \uc218\uace0\ud558\uc138\uc694 is said to someone of equal or lower rank; to a superior many Koreans prefer \uba3c\uc800 \uac00\ubcf4\uaca0\uc2b5\ub2c8\ub2e4 or \uace0\uc0dd\ud558\uc168\uc2b5\ub2c8\ub2e4. Line 2 is also blunt (\ubabb \uac00\uc694), but that can be fixed by wording the refusal more softly; \uc218\uace0\ud558\uc138\uc694 is wrong whatever the refusal says."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Rewrite the reply in Korean (2-4 sentences): acknowledge the notice, decline politely with a reason, and show goodwill.",
+    "hints": [
+     "Thank or acknowledge first, then apologise before the refusal.",
+     "Replace '\ubabb \uac00\uc694' with a softer expression of difficulty."
+    ],
+    "placeholder": "\uc608: ...",
+    "minChars": 40,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "acknowledges the notice",
+      "mode": "any",
+      "patterns": [
+       "\ud655\uc778\ud588\uc2b5\ub2c8\ub2e4",
+       "\uac10\uc0ac",
+       "\uacf5\uc9c0",
+       "\uc54c\ub824 \uc8fc\uc154\uc11c",
+       "\uc54c\uaca0\uc2b5\ub2c8\ub2e4"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "apologises or shows regret",
+      "mode": "any",
+      "patterns": [
+       "\uc8c4\uc1a1",
+       "\uc1a1\uad6c",
+       "\uc591\ud574",
+       "\uc544\uc27d"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "shows goodwill or an alternative",
+      "mode": "any",
+      "patterns": [
+       "\ub2e4\uc74c",
+       "\uc544\uc27d",
+       "\uc990\uac70\uc6b4 \uc2dc\uac04",
+       "\ud568\uaed8\ud558\uc9c0 \ubabb",
+       "\ucc38\uc11d\ud558\uc9c0 \ubabb"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "avoids the blunt phrases from the draft",
+      "mode": "none",
+      "patterns": [
+       "\uc218\uace0\ud558\uc138\uc694",
+       "\ubabb\\s*\uac00\uc694",
+       "\ub2e4\uc74c\uc5d0\\s*\uac00\uc694"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "gives a reason",
+      "mode": "any",
+      "patterns": [
+       "\uc120\uc57d",
+       "\uc77c\uc815",
+       "\uc57d\uc18d",
+       "\uc0ac\uc815",
+       "\uac00\uc871",
+       "\uc9d1\uc548",
+       "\uc77c\uc774 \uc788",
+       "\ud589\uc0ac"
+      ]
+     },
+     {
+      "id": "w6",
+      "label": "declines (says that attending is difficult / not possible)",
+      "mode": "any",
+      "patterns": [
+       "\uc5b4\ub835",
+       "\ubd88\ucc38",
+       "\ucc38\uc11d\ud558\uc9c0 \ubabb",
+       "\ucc38\uc11d\ud558\uae30 \uc5b4",
+       "\ucc38\uc11d\uc774 \uc5b4",
+       "\ubabb \uac08",
+       "\uac00\uc9c0 \ubabb",
+       "\ud568\uaed8\ud558\uc9c0 \ubabb",
+       "\ucc38\uc5ec\ud558\uc9c0 \ubabb",
+       "\ucc38\uc11d\ud560 \uc218 \uc5c6",
+       "\uac08 \uc218 \uc5c6",
+       "\uac00\uae30 \uc5b4"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does the refusal come with respect and a reason?",
+     "Did I avoid ending with \uc218\uace0\ud558\uc138\uc694?",
+     "Does it sound like someone who still values the team?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\ud300\uc7a5\ub2d8, \ud68c\uc2dd \uacf5\uc9c0 \ud655\uc778\ud588\uc2b5\ub2c8\ub2e4. \uc8c4\uc1a1\ud558\uc9c0\ub9cc \uadf8\ub0a0\uc740 \uac00\uc871\uacfc\uc758 \uc120\uc57d\uc774 \uc788\uc5b4 \ucc38\uc11d\ud558\uae30 \uc5b4\ub824\uc6b8 \uac83 \uac19\uc2b5\ub2c8\ub2e4. \ub2e4\uc74c \ud68c\uc2dd\uc5d0\ub294 \uaf2d \ucc38\uc11d\ud558\uaca0\uc2b5\ub2c8\ub2e4. \uc990\uac70\uc6b4 \uc2dc\uac04 \ubcf4\ub0b4\uc2dc\uae30 \ubc14\ub78d\ub2c8\ub2e4."
+     },
+     {
+      "text": "\ud300\uc7a5\ub2d8, \uc54c\ub824 \uc8fc\uc154\uc11c \uac10\uc0ac\ud569\ub2c8\ub2e4. \uc774\ubc88 \uae08\uc694\uc77c\uc5d0\ub294 \uc120\uc57d\uc774 \uc788\uc5b4 \ud568\uaed8\ud558\uc9c0 \ubabb\ud574 \uc544\uc27d\uc2b5\ub2c8\ub2e4. \uc591\ud574 \ubd80\ud0c1\ub4dc\ub9bd\ub2c8\ub2e4. \ub2e4\uc74c\uc5d0\ub294 \uaf2d \ud568\uaed8\ud558\uaca0\uc2b5\ub2c8\ub2e4."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\ud300\uc7a5\ub2d8, \uae08\uc694\uc77c \ud68c\uc2dd \uacf5\uc9c0 \ud655\uc778\ud588\uc2b5\ub2c8\ub2e4. \uadf8\ub0a0\uc740 \uc120\uc57d\uc774 \uc788\uc5b4\uc11c \ubabb \uac00\uc694. \ub2e4\uc74c\uc5d0\ub294 \uaf2d \ucc38\uc11d\ud558\uace0 \uc2f6\uc2b5\ub2c8\ub2e4. \uadf8\ub7fc \uc218\uace0\ud558\uc138\uc694.",
+      "why": "The original draft: blunt and ends with an inappropriate phrase."
+     },
+     {
+      "text": "\uae08\uc694\uc77c\uc5d0 \ubabb \uac00\uc694.",
+      "why": "Blunt, no acknowledgement, no apology."
+     },
+     {
+      "text": "\ud300\uc7a5\ub2d8, \uacf5\uc9c0 \ud655\uc778\ud588\uc2b5\ub2c8\ub2e4. \uc8c4\uc1a1\ud569\ub2c8\ub2e4. \ub2e4\uc74c\uc5d0 \ucc38\uc11d\ud558\uaca0\uc2b5\ub2c8\ub2e4.",
+      "why": "Polite, but gives no reason and never says that the writer cannot come on Friday."
+     }
+    ],
+    "humanReview": "Naturalness and whether the tone is neither servile nor curt."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Phrase evaluation",
+    "full": "Identifies \uc218\uace0\ud558\uc138\uc694 and says why",
+    "partial": "Identifies a line without a reason",
+    "none": "Misses it"
+   },
+   {
+    "criterion": "Polite refusal",
+    "full": "Acknowledges, apologises, gives a reason and shows goodwill",
+    "partial": "Misses one element",
+    "none": "Blunt refusal"
+   }
+  ],
+  "alternatives": [
+   "Declining with a vague reason ('\uac1c\uc778 \uc0ac\uc815\uc774 \uc788\uc5b4\uc11c') is acceptable.",
+   "A reply offering to join for the first hour is also a valid choice."
+  ],
+  "hardCases": [
+   "Acceptance of \uc218\uace0\ud558\uc138\uc694 to superiors varies by person and workplace; the task treats it as a common source of offence, not a universal rule."
+  ],
+  "cautions": {
+   "language": "\uc218\uace0\ud558\uc138\uc694 and \uc218\uace0\ud558\uc168\uc2b5\ub2c8\ub2e4 to superiors are debated; the task uses the more cautious norm.",
+   "culture": "Expectations about attending a \ud68c\uc2dd vary; many companies make it voluntary. The task does not say that skipping is wrong.",
+   "accessibility": "No images. The group chat is plain text."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The problem line in s1",
+    "Acknowledgement, apology, goodwill and avoidance of blunt phrases in s2"
+   ],
+   "human": [
+    "Tone and naturalness"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k10-10",
+  "subject": "korean",
+  "grade": "K10",
+  "topic": "Idioms and implication",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Write a sentence that explains the idiom",
+  "uiLang": "en",
+  "format": "make-your-own",
+  "generative": true,
+  "goal": "Choose the sentence whose context teaches an idiom, then write your own sentence for an idiom and name its clue and its possible misreading.",
+  "thinking": [
+   "Judging which context reveals meaning",
+   "Creating a self-explaining context",
+   "Anticipating a misreading"
+  ],
+  "differsFromPlain": "Plain practice asks for an idiom's meaning. Here you make the context that lets a reader infer it, and you identify the clue and the misreading risk yourself.",
+  "prerequisites": [
+   "Knows the three idioms from the glosses",
+   "Can write a two-clause Korean sentence"
+  ],
+  "minutes": 12,
+  "curriculum": null,
+  "material": "Idioms: \uadc0\uac00 \uc587\ub2e4 (to be easily swayed by what others say), \uc785\uc774 \ubb34\uac81\ub2e4 (to keep secrets), \ub208\uc774 \ub192\ub2e4 (to have high standards, to be picky). A good example sentence lets a reader infer the meaning from the situation.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which sentence best lets a reader infer the meaning of \uadc0\uac00 \uc587\ub2e4 without a gloss?",
+    "hints": [
+     "Cover the idiom and ask what a reader could still learn about \ubbfc\uc9c0.",
+     "Eliminate sentences that would be true if she simply had thin ears."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "\ubbfc\uc9c0\ub294 \uc5b4\ub9b4 \ub54c\ubd80\ud130 \uce5c\uad6c\uac00 \ub9ce\uace0 \ub298 \uc6c3\ub294 \uc5bc\uad74\uc778\ub370 \uadc0\uac00 \uc587\uc544\uc694.",
+      "reveals": "Adding facts that do not bear on the idiom, so the reader cannot infer anything."
+     },
+     {
+      "id": "b",
+      "text": "\ubbfc\uc9c0\ub294 \uadc0\uac00 \uc587\uc544\uc11c \uad11\uace0\uc5d0 \ub04c\ub824 \uc0ac\uace0 \uce5c\uad6c\uac00 \ub9d0\ub9ac\uba74 \uae08\ubc29 \ub9c8\uc74c\uc744 \ubc14\uafd4\uc694.",
+      "reveals": "Giving behaviours that show being swayed, and a reason clause that links them."
+     },
+     {
+      "id": "c",
+      "text": "\ub2e4\ub4e4 \uc54c\ub2e4\uc2dc\ud53c \ubbfc\uc9c0\ub294 \uc815\ub9d0\ub85c \uadc0\uac00 \uc587\uc740 \uc0ac\ub78c\uc774\ub77c\uc11c \uadf8 \uc810\uc774 \ub298 \ud654\uc81c\uc608\uc694.",
+      "reveals": "Repeating the idiom with no situation; it explains nothing."
+     },
+     {
+      "id": "d",
+      "text": "\ubbfc\uc9c0\ub294 \uadc0\uac00 \uc587\uc544\uc11c \uaca8\uc6b8\uc5d0 \uadc0\ub9c8\uac1c \uc5c6\uc774\ub294 \uae08\ubc29 \uadc0\uac00 \ube68\uac1c\uc838\uc694.",
+      "reveals": "Making a context that supports a literal reading of ears."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "Option b gives behaviour (buying because of an ad, changing mind when friends object) that reveals the meaning. a adds irrelevant detail, c is circular, and d supports the literal reading.",
+    "scaffold": true
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Choose ONE of the three idioms and write two Korean sentences so that a reader who has never seen it can infer its meaning from the situation.",
+    "hints": [
+     "Show what the person does or what happens, not a definition.",
+     "Connect the situation to the idiom with a reason clause."
+    ],
+    "placeholder": "\uc608: ...",
+    "minChars": 30,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "uses one of the idioms",
+      "mode": "any",
+      "patterns": [
+       "\uadc0\uac00\\s*\uc587",
+       "\uc785\uc774\\s*\ubb34(\uac81|\uac70)",
+       "\ub208\uc774\\s*\ub192"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "gives a reason, contrast or result",
+      "mode": "any",
+      "patterns": [
+       "\uadf8\ub798\uc11c",
+       "\uadf8\ub798\ub3c4",
+       "\ud558\uc9c0\ub9cc",
+       "\uadf8\ub7f0\ub370",
+       "\ub54c\ubb38",
+       "[\uc5b4\uc544\ud574\uc6cc\uc640\uc5ec\ub77c]\uc11c",
+       "\ub2c8\uae4c",
+       "\ub294\ub370",
+       "\uc9c0\ub9cc",
+       "\ub354\ub2c8",
+       "\uba74\\s"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "shows a behaviour or situation that fits the meaning of the idiom",
+      "mode": "any",
+      "patterns": [
+       "\uad11\uace0",
+       "\ub9d0\ub9ac",
+       "\ubc14\uafd4",
+       "\ubc14\uafe8",
+       "\ubc14\uafb8",
+       "\ubc14\uafbc",
+       "\ud718\ub458",
+       "\uc194\uae43",
+       "\ucd94\ucc9c",
+       "\ub0a8\uc758\\s*\ub9d0",
+       "\uce5c\uad6c\\s*\ub9d0",
+       "\uce5c\uad6c\uac00",
+       "\ube44\ubc00",
+       "\ub9d0\ud558\uc9c0",
+       "\uc598\uae30\ud558\uc9c0",
+       "\uc774\uc57c\uae30\ud558\uc9c0",
+       "\uc544\ubb34\uc5d0\uac8c",
+       "\uc544\ubb34\ud55c\ud14c",
+       "\ud37c\ub728",
+       "\ud138\uc5b4\ub193",
+       "\ub9c8\uc74c\uc5d0 \ub4dc\ub294",
+       "\uae4c\ub2e4",
+       "\ub530\uc9c0",
+       "\uae30\uc900",
+       "\ub208\uc5d0 \ucc28",
+       "\ub9cc\uc871",
+       "\ubbff",
+       "\ub530\ub974",
+       "\ub530\ub77c",
+       "\ud754\ub4e4",
+       "\uc811\uc5b4",
+       "\uc811\uace0",
+       "\ud3ec\uae30",
+       "\uc0ac\uace0\\s",
+       "\uc0c0",
+       "\uc0ac\ub824",
+       "\uace0\ub974",
+       "\uace8\ub790",
+       "\uc18c\uac1c\ud305",
+       "\uac00\ubccd",
+       "\uae08\ubc29",
+       "\uc27d\uac8c"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "does not just define the idiom (\ub73b\uc774\uc5d0\uc694, \ub77c\ub294 \ub73b, \uc989 ...)",
+      "mode": "none",
+      "patterns": [
+       "\ub73b(?:\uc774\uc5d0\uc694|\uc774\uc608\uc694|\uc774\ub2e4|\uc785\ub2c8\ub2e4|\uc774\uc57c|\uc774\ub77c\uace0|\uc774\uc8e0|\uc73c\ub85c)",
+       "\ub77c\ub294\\s*(?:\ub73b|\uc758\ubbf8)",
+       "\ub2e4\ub294\\s*(?:\uac74|\uac83\uc740|\uac83\uc774)",
+       "(?:\uac83|\ub9d0)\uc744\\s*(?:\ub73b|\uc758\ubbf8)",
+       "\uc758\ubbf8(?:\ud574\uc694|\ud569\ub2c8\ub2e4|\uc608\uc694|\uc5d0\uc694|\ud55c\ub2e4)",
+       "\uc989[,\\s]"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Would the reader guess the meaning if the idiom were hidden?",
+     "Could my sentences also fit a literal reading?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\uc218\uc9c0\ub294 \uc785\uc774 \ubb34\uac70\uc6cc\uc11c \ub0b4\uac00 \ub9d0\ud574 \uc900 \ube44\ubc00\uc744 \uc544\ubb34\uc5d0\uac8c\ub3c4 \uc598\uae30\ud558\uc9c0 \uc54a\uc558\ub2e4. \uadf8\ub798\uc11c \ub098\ub294 \uace0\ubbfc\uc774 \uc0dd\uae30\uba74 \uc218\uc9c0\uc5d0\uac8c \uc81c\uc77c \uba3c\uc800 \ub9d0\ud55c\ub2e4."
+     },
+     {
+      "text": "\uadf8 \uc0ac\ub78c\uc740 \ub208\uc774 \ub192\uc544\uc11c \uc18c\uac1c\ud305\uc744 \uc5f4 \ubc88 \ud574\ub3c4 \ub9c8\uc74c\uc5d0 \ub4dc\ub294 \uc0ac\ub78c\uc774 \uc5c6\ub300\uc694. \uc678\ubaa8\ubfd0 \uc544\ub2c8\ub77c \uc131\uaca9\uc774\ub098 \uc9c1\uc5c5\ub3c4 \uae4c\ub2e4\ub86d\uac8c \ub530\uc9c0\uac70\ub4e0\uc694."
+     },
+     {
+      "text": "\uadf8\ub294 \uc785\uc774 \ubb34\uac70\uc6cc\uc11c \ub0b4\uac00 \ub9d0\ud55c \ube44\ubc00\uc744 \uc544\ubb34\uc5d0\uac8c\ub3c4 \ub9d0\ud558\uc9c0 \uc54a\uc558\uc5b4\uc694."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\uc800\ub294 \ub208\uc774 \ub192\uc544\uc694.",
+      "why": "The idiom alone; no situation or clue."
+     },
+     {
+      "text": "\uc900\ud638\ub294 \ud0a4\uac00 \ucee4\uc694.",
+      "why": "Does not use any of the idioms."
+     },
+     {
+      "text": "\ubbfc\uc9c0\ub294 \uadc0\uac00 \uc587\uc740\ub370 \ud0a4\uac00 \ucee4\uc694.",
+      "why": "Uses the idiom and a connective, but nothing in the situation shows what \uadc0\uac00 \uc587\ub2e4 means."
+     },
+     {
+      "text": "\uadc0\uac00 \uc587\ub2e4\ub294 \uac83\uc740 \ub0a8\uc758 \ub9d0\uc744 \uc798 \ub4e3\ub294\ub2e4\ub294 \ub73b\uc774\uc5d0\uc694. \uadf8\ub798\uc11c \uadf8\ub798\uc694.",
+      "why": "A definition, not a situation from which the reader could infer the meaning."
+     }
+    ],
+    "humanReview": "Whether the situation really reveals the meaning and the Korean is natural."
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "In English, name the exact Korean words in your sentences that give the meaning away, and say how a reader could still misread the idiom (for example literally).",
+    "hints": [
+     "Quote the clause that carries the clue.",
+     "Think of the literal meaning of the body part."
+    ],
+    "placeholder": "\uc608: ...",
+    "minChars": 20,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "quotes the idiom or a Korean clue phrase from your sentences",
+      "mode": "any",
+      "patterns": [
+       "\uadc0\uac00\\s*\uc587",
+       "\uc785\uc774\\s*\ubb34(\uac81|\uac70)",
+       "\ub208\uc774\\s*\ub192",
+       "\uad11\uace0",
+       "\ub9d0\ub9ac",
+       "\ub9c8\uc74c\uc744 \ubc14\uafd4",
+       "\ud718\ub458",
+       "\uc194\uae43",
+       "\ube44\ubc00",
+       "\uc598\uae30\ud558\uc9c0",
+       "\uc774\uc57c\uae30\ud558\uc9c0",
+       "\ub9d0\ud558\uc9c0\\s*\uc54a",
+       "\uc544\ubb34\uc5d0\uac8c",
+       "\uc544\ubb34\ud55c\ud14c",
+       "\ud37c\ub728",
+       "\ud138\uc5b4\ub193",
+       "\ub9c8\uc74c\uc5d0 \ub4dc\ub294",
+       "\uae4c\ub2e4",
+       "\ub530\uc9c0",
+       "\uae30\uc900",
+       "\ub208\uc5d0 \ucc28",
+       "\ucd94\ucc9c",
+       "\ub0a8\uc758 \ub9d0",
+       "\uce5c\uad6c \ub9d0",
+       "[\"'\u201c\u2018\u300c][\uac00-\ud7a3\\s]{4,}[\"'\u201d\u2019\u300d]"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "names a possible misreading",
+      "mode": "any",
+      "patterns": [
+       "literal",
+       "misread",
+       "different meaning",
+       "ambigu",
+       "mistake",
+       "actual",
+       "body",
+       "physical",
+       "ears",
+       "eyes",
+       "mouth",
+       "thin",
+       "heavy",
+       "\ubb38\uc790\\s*\uadf8\ub300\ub85c",
+       "\uae00\uc790\\s*\uadf8\ub300\ub85c",
+       "\uc2e4\uc81c\\s*(\uadc0|\ub208|\uc785)",
+       "\uc2e0\uccb4"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I quote, not paraphrase?",
+     "Is my misreading a real alternative?",
+     "Is the phrase I quoted really in my own sentences?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "The clue is \uc544\ubb34\uc5d0\uac8c\ub3c4 \uc598\uae30\ud558\uc9c0 \uc54a\uc558\ub2e4; a reader could still take \uc785\uc774 \ubb34\uac81\ub2e4 literally as a heavy mouth, but the secret context makes that unlikely."
+     },
+     {
+      "text": "\ub208\uc774 \ub192\uc544\uc11c + \ub9c8\uc74c\uc5d0 \ub4dc\ub294 \uc0ac\ub78c\uc774 \uc5c6\ub300\uc694 are the clues. Someone might misread \ub208 as eyesight, but the dating context makes the standards reading clear."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "It is clear.",
+      "why": "No quoted words and no misreading."
+     },
+     {
+      "text": "The clue is \uc815\ub9d0 \uc88b\uc544\uc694 here, and a reader might misread the ears.",
+      "why": "Names a misreading but the quoted words are not a clue from the idiom sentences."
+     }
+    ],
+    "humanReview": "Whether the identified clue is the real one."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Context quality",
+    "full": "Situation reveals the meaning and a reason clause links it",
+    "partial": "Some situation but weak link",
+    "none": "Idiom alone or circular"
+   },
+   {
+    "criterion": "Self-evaluation",
+    "full": "Quotes the clue and names a realistic misreading",
+    "partial": "Quotes but no misreading",
+    "none": "Neither"
+   }
+  ],
+  "alternatives": [
+   "Any of the three idioms is acceptable; sentences about oneself or about a character are both fine.",
+   "A longer story with three sentences is also fine."
+  ],
+  "hardCases": [
+   "A sentence may reveal meaning only through a gloss ('\uadc0\uac00 \uc587\ub2e4, \uc989 ...'); treat as weaker, since the aim is inference."
+  ],
+  "cautions": {
+   "language": "The glosses are given in English; the task aims at creating context, not at recalling them.",
+   "culture": "Idioms with body parts exist in many languages, but their meanings differ; the task warns about literal readings.",
+   "accessibility": "No images. The checker looks for two or more Hangul characters in s3 and does not judge quality."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice in s1",
+    "Idiom use, connectors and quoted Korean in s2 and s3"
+   ],
+   "human": [
+    "Whether the clues truly reveal the idiom"
+   ]
+  },
+  "status": "draft"
+ }
+]

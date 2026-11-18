@@ -230,7 +230,6 @@ function RequestPageContent() {
   };
 
   const [submitted, setSubmitted] = useState(false);
-  const [selectedFileNames, setSelectedFileNames] = useState<string[]>([]);
   const [address, setAddress] = useState<string>("");
   const [problemDescription, setProblemDescription] = useState<string>("");
   const [selectedProblemOptions, setSelectedProblemOptions] = useState<string[]>([]);
@@ -509,13 +508,14 @@ function RequestPageContent() {
         <form className="mt-6 space-y-5" onSubmit={handleSubmit}>
           {/* Question 1: Problem description OR Housing requirements */}
           <div>
-            <label className="block text-sm sm:text-base font-bold text-slate-900 whitespace-pre-line">
+            <label htmlFor="request-description" className="block text-sm sm:text-base font-bold text-slate-900 whitespace-pre-line">
               {isHousing
                 ? formatBilingual(t("request.housingLabel"), "어떤 집을 찾으시나요?")
                 : formatBilingual(t("request.problemLabel"), "어떤 문제가 있나요?")}
             </label>
 
             <textarea
+              id="request-description"
               data-testid="request-description"
               required
               rows={4}
@@ -653,55 +653,15 @@ function RequestPageContent() {
               </div>
             </div>
           ) : (
-            <div>
-              <label className="block text-sm sm:text-base font-bold text-slate-900">
-                {formatBilingual(t("request.photosLabel"), "사진을 첨부해 주세요")}
-              </label>
-
-              <input
-                id="photos"
-                type="file"
-                accept="image/*"
-                multiple
-                className="sr-only"
-                onChange={({ target }) =>
-                  setSelectedFileNames(Array.from(target.files ?? [], ({ name }) => name))
-                }
-              />
-
-              <label
-                htmlFor="photos"
-                className="droplet-card mt-2.5 flex cursor-pointer items-center gap-3 border-2 border-slate-300 bg-white p-3 text-sm font-medium text-slate-900 transition hover:border-blue-400 shadow-2xs"
-              >
-                <span className="droplet-btn bg-slate-100 px-3 py-1.5 text-xs font-black text-slate-800 shadow-2xs border border-slate-200">
-                  {formatBilingual(t("request.chooseFile"), "파일 선택")}
-                </span>
-                <span className="truncate text-slate-500 text-xs sm:text-sm">
-                  {selectedFileNames.length > 0
-                    ? selectedFileNames.join(", ")
-                    : formatBilingual(t("request.noFileChosen"), "선택된 파일 없음")}
-                </span>
-              </label>
-
-              <div className="mt-1.5 text-xs font-medium text-slate-600">
-                {isBilingual ? (
-                  <>
-                    <span>{t("request.photosHint")}</span>
-                    <span className="block opacity-80 mt-0.5">
-                      {tKo("request.photoHintText") || "사진을 보내주시면 문제를 파악하는 데 도움이 됩니다."}
-                    </span>
-                  </>
-                ) : (
-                  <span>{isKorean ? "사진을 보내주시면 문제를 파악하는 데 도움이 됩니다." : t("request.photosHint")}</span>
-                )}
-              </div>
+            <div role="note" className="rounded-xl border border-amber-300 bg-amber-50 p-3 text-xs sm:text-sm font-medium text-amber-900">
+              {t("request.photosNotUploaded")}
             </div>
           )}
 
           {/* Address with Region Auto-fill helper */}
           <div>
             <div className="flex items-center justify-between">
-              <label className="block text-sm sm:text-base font-bold text-slate-900">
+              <label htmlFor="request-address" className="block text-sm sm:text-base font-bold text-slate-900">
                 {formatBilingual(t("request.addressLabel"), "주소")}
               </label>
               <button
@@ -717,8 +677,10 @@ function RequestPageContent() {
             </div>
 
             <input
+              id="request-address"
               data-testid="request-address"
               required
+              autoComplete="street-address"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               className="droplet-card mt-2 w-full border-2 border-slate-300 bg-white p-3.5 text-sm sm:text-base font-medium text-slate-900 outline-none placeholder:text-slate-400 focus:border-blue-600 shadow-2xs"

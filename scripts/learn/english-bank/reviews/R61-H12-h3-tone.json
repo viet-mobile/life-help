@@ -1,0 +1,129 @@
+{
+ "packet": "H12-h3-tone",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 61,
+  "questions": 46
+ },
+ "patches": [
+  {
+   "item": "ecb98846",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "How does the narrator react to the news?",
+      "o": [
+       "With quiet acceptance",
+       "With loud anger at the airline",
+       "With wild excitement",
+       "With sudden fear"
+      ],
+      "a": 0,
+      "why": "화내지 않고 조용히 받아들여요."
+     },
+     {
+      "q": "What is the tone of the last sentence?",
+      "o": [
+       "Triumphant",
+       "Sarcastic",
+       "Playful",
+       "Resigned"
+      ],
+      "a": 3,
+      "why": "체념했지만 내년을 기약하는 담담한 어조예요."
+     },
+     {
+      "q": "Why does the writer mention the sister kicking the suitcase?",
+      "o": [
+       "To show that the suitcase was broken before",
+       "To explain that she disliked the destination",
+       "To show how differently the two of them reacted",
+       "To suggest that she caused the cancellation"
+      ],
+      "a": 2,
+      "why": "언니/여동생이 화를 겉으로 드러낸 것과 화자의 담담한 반응이 서로 다르다는 것을 보여 주려는 거예요."
+     },
+     {
+      "q": "What does \"folding each shirt as if it were something fragile\" suggest?",
+      "o": [
+       "The shirts were made of very thin glass.",
+       "The narrator felt gently sad while unpacking.",
+       "The narrator was in a rush to finish unpacking.",
+       "The narrator wanted to sell the shirts."
+      ],
+      "a": 1,
+      "why": "조심스럽게 옷을 개는 행동에서 차분한 아쉬움을 알 수 있어요."
+     }
+    ]
+   },
+   "why": "Q3 key no longer reveals Q1; explanation Korean corrected",
+   "severity": "minor"
+  },
+  {
+   "item": "3344b3e8",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "How does the narrator's feeling change?",
+      "o": [
+       "From fear to relief and confidence",
+       "From great joy to deep boredom and then to sleep",
+       "From anger to sadness",
+       "From calm to panic"
+      ],
+      "a": 0,
+      "why": "무대 전의 두려움이 관객 반응 후 안도와 자신감으로 바뀌어요."
+     },
+     {
+      "q": "What caused the narrator's tension to loosen?",
+      "o": [
+       "Hyeri took over the narrator's lines.",
+       "The curtain was lifted earlier than planned.",
+       "The script was changed at the last minute.",
+       "A member of the audience laughed at the right moment."
+      ],
+      "a": 3,
+      "why": "관객의 웃음이 긴장을 풀어 줬어요."
+     },
+     {
+      "q": "What does \"my mouth felt as dry as paper\" show?",
+      "o": [
+       "The narrator was thirsty after a long walk.",
+       "The narrator was bored by the play.",
+       "The narrator was extremely nervous.",
+       "The narrator was ill with a cold."
+      ],
+      "a": 2,
+      "why": "긴장해서 입이 마른 상태를 비유한 표현이에요."
+     },
+     {
+      "q": "What does \"I nodded, though I did not believe her\" suggest about the narrator?",
+      "o": [
+       "The narrator was too anxious to be calmed by the advice.",
+       "The narrator was angry that Hyeri had interrupted the rehearsal.",
+       "The narrator had decided to leave the stage before the play began.",
+       "The narrator thought Hyeri's advice was clearly harmful."
+      ],
+      "a": 0,
+      "why": "고개는 끄덕였지만 믿지 못했다는 것은 조언만으로 불안이 가라앉지 않았다는 뜻이에요."
+     }
+    ]
+   },
+   "why": "Q4 key was speculative motive",
+   "severity": "major"
+  },
+  {
+   "item": "5e833663",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "alternative natural word order (to him more kindly)",
+   "severity": "minor"
+  }
+ ],
+ "ok": 43,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

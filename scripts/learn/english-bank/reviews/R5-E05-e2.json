@@ -3,97 +3,23 @@
  "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
  "scope": {
   "batch": 5,
-  "questions": 86
+  "questions": 16
  },
  "patches": [
   {
-   "item": "fa14ddcb",
+   "item": "edf0ba0a",
    "op": "set",
    "set": {
-    "o": [
-     "나는 너의 선생님이에요.",
-     "너는 나의 선생님이에요.",
-     "그녀는 나의 선생님이에요.",
-     "우리는 너의 선생님이에요."
-    ],
-    "a": 1,
-    "why": "You are는 ‘너는(당신은) ~이에요’, my는 ‘나의’라는 뜻이에요."
-   },
-   "why": "Equalise option length/structure to remove length cue; q/answer unchanged in meaning.",
-   "severity": "minor"
-  },
-  {
-   "item": "051362ff",
-   "op": "set",
-   "set": {
-    "q": "빈칸에 알맞은 말은? Ann and I are sisters. ___ are kind.",
-    "o": [
-     "They",
-     "He",
-     "We",
-     "She"
-    ],
-    "a": 2,
-    "why": "나(I)를 포함한 두 사람은 We로 말해요."
-   },
-   "why": "Identity field q/o changed: avoids restating reading item 64a0eb1d (Mina and Joon / They).",
-   "severity": "minor"
-  },
-  {
-   "item": "81905b54",
-   "op": "set",
-   "set": {
-    "qs": [
-     {
-      "q": "조이는 오늘 기분이 어떤가요?",
-      "o": [
-       "happy",
-       "angry",
-       "sad",
-       "tired"
-      ],
-      "a": 2,
-      "why": "I am sad today.라고 나와요."
-     },
-     {
-      "q": "조이는 지금 어디에 있나요?",
-      "o": [
-       "at school",
-       "at home",
-       "at the park",
-       "at the zoo"
-      ],
-      "a": 1,
-      "why": "I am at home.이라고 나와요."
-     },
-     {
-      "q": "조이가 이 글을 쓴 까닭은?",
-      "o": [
-       "벤에게 길을 물어보려고",
-       "벤에게 선물을 보내려고",
-       "벤에게 시험을 알려 주려고",
-       "벤에게 와 달라고 하려고"
-      ],
-      "a": 3,
-      "why": "Please come here.라고 벤에게 와 달라고 부탁해요."
-     },
-     {
-      "q": "벤은 조이에게 어떤 사람인가요?",
-      "o": [
-       "가장 좋은 선생님",
-       "가장 친한 친구",
-       "가장 친한 이웃",
-       "가장 어린 동생"
-      ],
-      "a": 1,
-      "why": "You are my best friend.라고 나와요."
-     }
+    "bad": [
+     "We have a dog and cat a.",
+     "We have a dog and a cats.",
+     "We have a dog and an cat."
     ]
    },
-   "why": "q3 key leaked q4 and q4 key was uniquely longest; rewrote both with parallel options.",
-   "severity": "major"
+   "why": "Make hint-1 position claim true; every distractor still wrong; cloze unaffected.",
+   "severity": "minor"
   }
  ],
- "ok": 82,
+ "ok": 14,
  "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
 }

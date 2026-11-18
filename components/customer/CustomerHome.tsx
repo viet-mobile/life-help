@@ -14,7 +14,9 @@ import { StudyChooser } from "@/components/customer/StudyChooser";
 export interface ServiceItem {
   id: string;
   /** "study" is a link card (chooser to the learning sub-domains), not a marketplace service */
-  kind?: "service" | "study";
+  kind?: "service" | "study" | "link";
+  /** link cards (information pages) open this path instead of /services/<slug> */
+  href?: string;
   category: "repair" | "support";
   icon: string;
   key: string;
@@ -256,11 +258,32 @@ const allServices: ServiceItem[] = [
     btnBg: "bg-purple-600 hover:bg-purple-700",
     badgeLabelKo: "보험·체류",
   },
+  // 11. 빨강 (Pastel Red) - 각국별 비자 신청 서류 정보 모음: an information page (not a service request), always the LAST card
+  {
+    id: "visaDocs",
+    kind: "link",
+    href: "/visa",
+    category: "support",
+    icon: "🛂",
+    key: "visaDocs",
+    slug: "visa",
+    pathPrefix: "support",
+    ko: "각국별 비자 신청 서류 정보 모음",
+    colorName: "빨강",
+    cardBg: "bg-red-50/85",
+    cardBorder: "border-red-200/90",
+    cardHover: "hover:border-red-400 hover:bg-red-100/90",
+    textColor: "text-red-950",
+    iconBg: "bg-red-100/80 text-red-700",
+    badgeBg: "bg-red-100/90",
+    badgeText: "text-red-900",
+    btnBg: "bg-red-700 hover:bg-red-800",
+    badgeLabelKo: "정보 안내",
+  },
 ];
 
 const benefits = [
   ["💬", "consultation"],
-  ["🛡️", "verified"],
   ["💳", "payment"],
   ["⭐", "review"],
 ] as const;
@@ -275,7 +298,7 @@ function CardShell({ svc, onStudy, className, children }: { svc: ServiceItem; on
     );
   }
   return (
-    <Link href={`/services/${svc.slug}`} data-testid={`home-card-${svc.id}`} data-service-id={svc.id} className={className}>
+    <Link href={svc.href ?? `/services/${svc.slug}`} data-testid={`home-card-${svc.id}`} data-service-id={svc.id} className={className}>
       {children}
     </Link>
   );
@@ -317,7 +340,7 @@ export function CustomerHome() {
           <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0 min-w-0">
             <Link
               href="/"
-              className="inline-flex items-center shrink-0 transition-transform active:scale-95"
+              className="inline-flex min-h-11 min-w-11 items-center justify-center shrink-0 transition-transform active:scale-95"
               title="LIFE.HELP Home"
             >
               <BrandLogo size="sm" priority />
@@ -327,7 +350,7 @@ export function CustomerHome() {
             <button
               type="button"
               onClick={openModal}
-              className="droplet-pill inline-flex items-center gap-1 border border-slate-200/90 bg-white/90 px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] sm:text-xs font-bold text-slate-700 hover:bg-slate-100 transition cursor-pointer max-w-[100px] xs:max-w-[130px] sm:max-w-[180px] truncate shadow-2xs"
+              className="droplet-pill inline-flex min-h-11 items-center gap-1 border border-slate-200/90 bg-white/90 px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] sm:text-xs font-bold text-slate-700 hover:bg-slate-100 transition cursor-pointer max-w-[100px] xs:max-w-[130px] sm:max-w-[180px] truncate shadow-2xs"
               title={formatBilingual(getRegionUIText("changeLocation", locale, isBilingual), "지역 변경")}
             >
               <span className="text-xs shrink-0">📍</span>
@@ -341,7 +364,7 @@ export function CustomerHome() {
             {/* Live Chat Droplet Pill */}
             <Link
               href="/chat"
-              className="droplet-pill inline-flex items-center gap-1 border border-indigo-200 bg-indigo-50/90 hover:bg-indigo-100 px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] sm:text-xs font-bold text-indigo-700 transition shrink-0"
+              className="droplet-pill inline-flex min-h-11 min-w-11 items-center justify-center gap-1 border border-indigo-200 bg-indigo-50/90 hover:bg-indigo-100 px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] sm:text-xs font-bold text-indigo-700 transition shrink-0"
               title={formatBilingual(t("common.nativeConsultationCenter"), "모국어 상담 센터")}
             >
               <span className="shrink-0 text-xs">💬</span>
@@ -353,7 +376,7 @@ export function CustomerHome() {
             {/* Quick Emergency Droplet Pill */}
             <Link
               href="/request"
-              className="droplet-pill hidden md:inline-flex items-center gap-1 bg-slate-900 hover:bg-slate-800 px-3 py-1 text-xs font-bold text-white shadow-2xs transition shrink-0"
+              className="droplet-pill hidden md:inline-flex min-h-11 items-center gap-1 bg-slate-900 hover:bg-slate-800 px-3 py-1 text-xs font-bold text-white shadow-2xs transition shrink-0"
             >
               <span>🚨</span>
               <span>{locale === "ko" ? "빠른 신청" : t("request.title")}</span>
@@ -392,13 +415,11 @@ export function CustomerHome() {
             {/* One-Touch Instant Emergency Dispatch Droplet Button */}
             <Link
               href="/request"
-              className="droplet-btn-lg shrink-0 flex items-center justify-center gap-1.5 bg-linear-to-r from-red-600 via-rose-600 to-red-600 hover:from-red-700 hover:to-red-700 px-4 py-2 sm:py-2.5 text-white font-black shadow-md shadow-red-600/20 active:scale-98 transition text-center cursor-pointer"
+              className="droplet-btn-lg min-h-11 shrink-0 flex items-center justify-center gap-1.5 bg-linear-to-r from-red-600 via-rose-600 to-red-600 hover:from-red-700 hover:to-red-700 px-4 py-2 sm:py-2.5 text-white font-black shadow-md shadow-red-600/20 active:scale-98 transition text-center cursor-pointer"
             >
               <span className="text-sm">🚨</span>
               <span className="text-xs sm:text-sm leading-tight">{t("customer.emergency")}</span>
-              <span className="text-[10px] text-red-100 font-bold hidden xs:inline">
-                {locale === "ko" ? "· 1초 연결 →" : "→"}
-              </span>
+              <span className="text-[10px] text-red-100 font-bold hidden xs:inline" aria-hidden="true">→</span>
             </Link>
           </div>
 
@@ -408,7 +429,7 @@ export function CustomerHome() {
               <button
                 type="button"
                 onClick={() => setActiveTab("all")}
-                className={`droplet-pill flex items-center justify-center gap-1 px-1 sm:px-3 py-1.5 text-[11px] sm:text-xs font-black transition-all cursor-pointer shadow-2xs min-w-0 ${
+                className={`droplet-pill flex min-h-11 items-center justify-center gap-1 px-1 sm:px-3 py-1.5 text-[11px] sm:text-xs font-black transition-all cursor-pointer shadow-2xs min-w-0 ${
                   activeTab === "all"
                     ? "bg-slate-900 text-white shadow-xs"
                     : "bg-white/80 text-slate-700 hover:bg-white border border-slate-200/80"
@@ -428,7 +449,7 @@ export function CustomerHome() {
               <button
                 type="button"
                 onClick={() => setActiveTab("repair")}
-                className={`droplet-pill flex items-center justify-center gap-1 px-1 sm:px-3 py-1.5 text-[11px] sm:text-xs font-black transition-all cursor-pointer shadow-2xs min-w-0 ${
+                className={`droplet-pill flex min-h-11 items-center justify-center gap-1 px-1 sm:px-3 py-1.5 text-[11px] sm:text-xs font-black transition-all cursor-pointer shadow-2xs min-w-0 ${
                   activeTab === "repair"
                     ? "bg-blue-600 text-white shadow-xs"
                     : "bg-white/80 text-slate-700 hover:bg-white border border-slate-200/80"
@@ -448,7 +469,7 @@ export function CustomerHome() {
               <button
                 type="button"
                 onClick={() => setActiveTab("support")}
-                className={`droplet-pill flex items-center justify-center gap-1 px-1 sm:px-3 py-1.5 text-[11px] sm:text-xs font-black transition-all cursor-pointer shadow-2xs min-w-0 ${
+                className={`droplet-pill flex min-h-11 items-center justify-center gap-1 px-1 sm:px-3 py-1.5 text-[11px] sm:text-xs font-black transition-all cursor-pointer shadow-2xs min-w-0 ${
                   activeTab === "support"
                     ? "bg-indigo-600 text-white shadow-xs"
                     : "bg-white/80 text-slate-700 hover:bg-white border border-slate-200/80"
@@ -472,7 +493,7 @@ export function CustomerHome() {
       {/* ④ 10 Pastel Services Mobile App Grid (Fit Above-The-Fold on Mobile Screen!) */}
       <section className="px-3 py-1 sm:px-4 sm:py-2">
         <div className="mx-auto max-w-6xl">
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3">
             {displayedServices.map((svc) => (
               <CardShell
                 key={svc.id}
@@ -482,7 +503,7 @@ export function CustomerHome() {
               >
                 {/* Top: Large Icon + Badge */}
                 <div>
-                  <div className="flex items-center justify-between gap-1 mb-2">
+                  <div className="flex items-center justify-between gap-1 mb-2 min-w-0">
                     <span
                       className={`droplet-icon flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center ${svc.iconBg} text-2xl sm:text-3xl shadow-2xs group-hover:scale-110 transition-transform shrink-0`}
                     >
@@ -491,7 +512,7 @@ export function CustomerHome() {
 
                     {/* Pastel Tag */}
                     <span
-                      className={`droplet-pill ${svc.badgeBg} ${svc.badgeText} px-2.5 py-0.5 text-[10px] sm:text-xs font-black shrink-0 tracking-wide`}
+                      className={`droplet-pill ${svc.badgeBg} ${svc.badgeText} px-2.5 py-0.5 text-[10px] sm:text-xs font-black tracking-wide min-w-0 max-w-[62%] truncate`}
                     >
                       {getBadgeText(svc.key, svc.badgeLabelKo)}
                     </span>
@@ -500,7 +521,7 @@ export function CustomerHome() {
                   {/* Title & Bilingual Subtitle */}
                   <div>
                     <h3
-                      className={`text-[15px] sm:text-[17px] font-black ${svc.textColor} leading-snug line-clamp-2 min-h-[42px] sm:min-h-[48px] flex items-center`}
+                      className={`text-[14px] sm:text-[16px] font-black ${svc.textColor} leading-snug min-h-[42px] sm:min-h-[48px] grid grid-cols-[minmax(0,1fr)] content-center min-w-0 break-words [overflow-wrap:anywhere] hyphens-auto`}
                     >
                       {t(`service.${svc.key}`)}
                     </h3>
@@ -540,10 +561,6 @@ export function CustomerHome() {
 
           <div className="relative flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
-              <div className="droplet-pill inline-flex items-center gap-1.5 bg-amber-400/10 border border-amber-400/30 px-2.5 py-0.5 text-[10px] sm:text-xs font-black text-amber-300 mb-1">
-                <span>🎖️</span>
-                <span>{t("customer.partnerTitle") || "LIFE.HELP 공식 헬퍼 파트너십"}</span>
-              </div>
 
               <h2 className="text-sm sm:text-lg font-black text-white leading-tight">
                 {t("customer.helperMasterBanner")}
@@ -583,7 +600,7 @@ export function CustomerHome() {
             {t("privacy.title") || "고객님의 개인 전화번호를 절대 수집하거나 저장하지 않습니다"}
           </h2>
 
-          <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-left">
+          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-left">
             <div className="droplet-card border border-slate-200/90 bg-white/90 p-3.5 shadow-2xs">
               <span className="text-xl">🚫</span>
               <h3 className="mt-1 text-xs sm:text-sm font-black text-slate-900">{t("privacy.cardZeroPhoneTitle") || "전화번호 수집 제로"}</h3>
@@ -600,26 +617,17 @@ export function CustomerHome() {
               </p>
             </div>
 
-            <div className="droplet-card border border-slate-200/90 bg-white/90 p-3.5 shadow-2xs">
-              <span className="text-xl">🛡️</span>
-              <h3 className="mt-1 text-xs sm:text-sm font-black text-slate-900">{t("privacy.cardVerifiedHelperTitle") || "신원 검증된 공식 헬퍼"}</h3>
-              <p className="mt-0.5 text-[11px] sm:text-xs text-slate-600 leading-relaxed font-medium">
-                {t("privacy.cardVerifiedHelperDesc") || "신원과 기술력이 철저히 검증된 지역 헬퍼만이 방문하여 안전하고 신뢰할 수 있습니다."}
-              </p>
-            </div>
           </div>
         </div>
       </section>
 
       {/* ⑦ Core Trust Benefits (4 Compact Droplet Cards) */}
       <section className="border-t border-slate-200/70 bg-white/90">
-        <div className="mx-auto grid max-w-6xl grid-cols-2 lg:grid-cols-4 gap-2 px-3 py-5 sm:px-4 sm:py-6">
+        <div className="mx-auto grid max-w-6xl grid-cols-3 gap-2 px-3 py-5 sm:px-4 sm:py-6">
           {benefits.map(([icon, key]) => {
             const href =
               key === "consultation"
                 ? "/chat"
-                : key === "verified"
-                ? "/tech"
                 : key === "payment"
                 ? "/payment"
                 : key === "review"

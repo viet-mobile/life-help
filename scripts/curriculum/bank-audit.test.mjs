@@ -45,7 +45,10 @@ test("loads all 6,672 bank questions in addition to 1,078 canonical questions", 
   assert.equal(content.bankSets.size, 194);
   assert.equal(content.questions.get("b-e3-ari1-addthree1-001").bank_source.row_number, 1);
   assert(contentSourceFiles(root, "mathematics").includes("lib/learn/content/bank/math.json"));
-  assert.equal(readContent(root, "english").questions.size, 628);
+  const english = readContent(root, "english");
+  assert.equal(english.questions.size, 670);
+  assert.equal([...english.questions.keys()].filter(id => id.startsWith("e-h3e-")).length, 42);
+  assert.equal(english.questions.size - 42, 628);
 });
 test("accepts published bank evidence linked to the same lesson skill", () => {
   validateMappings(

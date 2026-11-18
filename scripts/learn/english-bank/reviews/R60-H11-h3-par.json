@@ -1,0 +1,252 @@
+{
+ "packet": "H11-h3-par",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 60,
+  "questions": 54
+ },
+ "patches": [
+  {
+   "item": "b93473f4",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "Why growing vegetables is easier in the city than in the country",
+       "How the writer's grandmother became a famous gardener",
+       "Why the writer wants to move back to the old house",
+       "How a community garden helped the writer feel at home in a new city"
+      ],
+      "a": 3,
+      "why": "새 도시에 적응하지 못하던 글쓴이가 공동체 텃밭을 통해 소속감을 찾게 된 이야기예요.",
+      "std": [
+       "12영Ⅰ-01-02"
+      ]
+     },
+     {
+      "q": "What did Mr. Alvarez teach the writer?",
+      "o": [
+       "How to rent a plot from the city office or the park authority",
+       "How to sow carrots and care for tomato plants",
+       "How to cook a pumpkin for the family dinner party",
+       "How to build and repair the tools of the garden"
+      ],
+      "a": 1,
+      "why": "당근 심기, 토마토를 지지대에 묶기, 잡초와 모종 구별하기를 가르쳐 주었어요.",
+      "std": [
+       "12영Ⅰ-01-01"
+      ]
+     },
+     {
+      "q": "In the passage, \"plot\" is closest in meaning to",
+      "o": [
+       "the main events of a story",
+       "a small piece of land",
+       "a secret plan to cause harm",
+       "a long list of tasks"
+      ],
+      "a": 1,
+      "why": "가족마다 빌리는 작은 땅 한 구획을 뜻해요.",
+      "std": [
+       "12영Ⅰ-01-05"
+      ]
+     },
+     {
+      "q": "Why did the grandmother cry a little at the harvest?",
+      "o": [
+       "She was disappointed with the size of the first pumpkin",
+       "She missed the fields behind the old house they used to have",
+       "She was sad that summer was over and the nights were getting cold",
+       "The pumpkin showed that the family had begun to belong there"
+      ],
+      "a": 3,
+      "why": "첫 호박을 수확하며 가족이 이곳에 뿌리내리기 시작했음을 느꼈다는 흐름이에요.",
+      "std": [
+       "12영Ⅰ-01-03"
+      ]
+     },
+     {
+      "q": "What does the writer imply by mentioning \"a reason to leave my phone at home\"?",
+      "o": [
+       "The garden offered a more satisfying activity than the phone",
+       "The writer was forbidden to use a phone anywhere in the city",
+       "The phone was broken when the family moved to the new city",
+       "The grandmother disliked all modern technology in the house"
+      ],
+      "a": 0,
+      "why": "텃밭이 휴대전화를 두고 나올 만한 이유가 되었다는 뜻이에요.",
+      "std": [
+       "12영Ⅰ-01-05"
+      ]
+     }
+    ]
+   },
+   "why": "Distractors of one question lengthened to remove the length cue; key text and index unchanged (index recomputed unchanged).",
+   "severity": "minor"
+  },
+  {
+   "item": "27ef1599",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the writer's main message?",
+      "o": [
+       "Autocorrect should be removed from every phone and computer",
+       "Software can now read exactly what its users are thinking",
+       "Spelling skills no longer matter much in modern daily life",
+       "Autocorrect is useful, but users should still write carefully"
+      ],
+      "a": 3,
+      "why": "자동 고침이 유용하지만 신중한 글쓰기를 대체해서는 안 된다는 내용이에요.",
+      "std": [
+       "12영Ⅰ-01-02"
+      ]
+     },
+     {
+      "q": "According to the passage, how does autocorrect work?",
+      "o": [
+       "It compares typed words with a list and guesses the intended word",
+       "It asks the user to check each word one by one before it is sent",
+       "It copies the words that the user's friends have typed before",
+       "It sends the message to language experts and waits for approval"
+      ],
+      "a": 0,
+      "why": "입력한 단어를 단어 목록과 비교해 의도한 단어를 추정하고 오류를 바꿔요.",
+      "std": [
+       "12영Ⅰ-01-01"
+      ]
+     },
+     {
+      "q": "In the passage, \"it\" in \"people who rely on it completely\" refers to",
+      "o": [
+       "the message",
+       "the habit",
+       "autocorrect",
+       "the list"
+      ],
+      "a": 2,
+      "why": "자동 고침 기능에 완전히 의존하는 사람들을 말해요.",
+      "std": [
+       "12영Ⅰ-01-04"
+      ]
+     },
+     {
+      "q": "What is the function of the word \"Ironically\" in the last sentence?",
+      "o": [
+       "It shows that the writer is making fun of every expert mentioned",
+       "It signals that a new topic is about to begin in the next paragraph",
+       "It introduces a result that is the opposite of what one would expect",
+       "It repeats the same advice that was given in the previous sentence"
+      ],
+      "a": 2,
+      "why": "도움을 주는 도구에 의존하면 오히려 철자 실력이 약해질 수 있다는 반대되는 결과를 소개해요.",
+      "std": [
+       "12영Ⅰ-01-06"
+      ]
+     },
+     {
+      "q": "Why does autocorrect sometimes make mistakes?",
+      "o": [
+       "It cannot know exactly what the user means",
+       "It has no list of words to compare with",
+       "It forgets the names of the user's friends",
+       "It only works for messages that are short"
+      ],
+      "a": 0,
+      "why": "사용자의 마음을 읽을 수 없고 드문 단어를 실수로 착각하기도 해서예요.",
+      "std": [
+       "12영Ⅰ-01-04"
+      ]
+     }
+    ]
+   },
+   "why": "Distractors of one question lengthened to remove the length cue; key text and index unchanged (index recomputed unchanged).",
+   "severity": "minor"
+  },
+  {
+   "item": "3fb1ecd3",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "A small experiment on learning expressions through singing",
+       "The best songs for beginners to practise in English class",
+       "Why reading from a list is the worst possible way to study English",
+       "How teachers should choose students for a school class choir"
+      ],
+      "a": 0,
+      "why": "노래로 표현을 외우는 효과를 작은 학급 실험으로 살펴보는 글이에요.",
+      "std": [
+       "12영Ⅰ-01-02"
+      ]
+     },
+     {
+      "q": "How was the class divided in the experiment?",
+      "o": [
+       "Half studied at home and half studied in class",
+       "Half learned ten expressions and half learned twenty",
+       "Half read the expressions and half sang them",
+       "Half were beginners and half were advanced learners"
+      ],
+      "a": 2,
+      "why": "절반은 목록을 읽고 나머지 절반은 간단한 곡조에 맞춰 노래했어요.",
+      "std": [
+       "12영Ⅰ-01-01"
+      ]
+     },
+     {
+      "q": "Why does the teacher warn against large conclusions?",
+      "o": [
+       "The singers forgot most of the expressions after only one week",
+       "The experiment was stopped because the school did not allow it",
+       "Other factors may have influenced the results of one small class",
+       "The list readers actually did better in everyday conversation"
+      ],
+      "a": 2,
+      "why": "동기, 나이, 사전 지식의 차이가 결과에 영향을 줬을 수 있다고 말해요.",
+      "std": [
+       "12영Ⅰ-01-04"
+      ]
+     },
+     {
+      "q": "In the passage, \"them\" in \"connect them to emotions\" refers to",
+      "o": [
+       "phrases",
+       "learners",
+       "memories",
+       "melodies"
+      ],
+      "a": 0,
+      "why": "노래는 구절을 반복하고 리듬으로 묶으며 감정과 연결한다는 흐름이에요.",
+      "std": [
+       "12영Ⅰ-01-04"
+      ]
+     },
+     {
+      "q": "What is the teacher's attitude toward music in language study?",
+      "o": [
+       "Strongly opposed",
+       "Completely certain",
+       "Quite indifferent",
+       "Positive but careful"
+      ],
+      "a": 3,
+      "why": "음악을 여러 도구 중 하나로 권하지만 정규 연습의 대체는 아니라고 신중하게 말해요.",
+      "std": [
+       "12영Ⅰ-01-03"
+      ]
+     }
+    ]
+   },
+   "why": "Distractors of one question lengthened to remove the length cue; key text and index unchanged (index recomputed unchanged).",
+   "severity": "minor"
+  }
+ ],
+ "ok": 50,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

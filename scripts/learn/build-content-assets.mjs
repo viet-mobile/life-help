@@ -69,7 +69,7 @@ for (const [site, files] of Object.entries(CANON)) {
   const bank = bankFile ? JSON.parse(bankFile) : null;
   const kbank = site === "korean" && bank?.format === 2 ? bank : null; // the study.korean practice bank (korean-bank.ts): items + a presentation kit per locale
   const kitEn = kbank ? JSON.parse(read("lib/learn/content/bank/korean-kit.en.json")) : null;
-  const canonicalSha = sha(raw.join("\n") + (bankFile ?? ""));
+  const canonicalSha = sha(raw.join("\n") + (bankFile ?? "") + (site === "math" && fs.existsSync(path.join(root, "lib/learn/content/bank/math-hs.json")) ? "hs" : ""));
   const bundles = raw.map((t) => JSON.parse(t));
   const questions = new Map(bundles.flatMap((b) => b.questions).filter((q) => q.status === "PUBLISHED").map((q) => [q.id, q]));
   const ids = { skills: new Set(), courses: new Set(), units: new Set(), lessons: new Set() };
@@ -128,8 +128,21 @@ for (const [site, files] of Object.entries(CANON)) {
         for (const [x, y] of pairs) { if (typeof x !== "string" || !x.trim() || HANGUL.test(x)) fail(`${locale}/${site}: bank template ${tid} is empty or still Korean`); if (holes(x) !== holes(y)) fail(`${locale}/${site}: bank template ${tid}: placeholders differ`); }
       }
       for (const k of Object.keys(bank.texts)) if (typeof bankOv.texts[k] !== "string" || !bankOv.texts[k].trim() || HANGUL.test(bankOv.texts[k])) fail(`${locale}/${site}: bank text ${k} not localized`);
-      for (const k of Object.keys(bankOv.templates)) if (!bank.templates[k]) delete bankOv.templates[k];
+      // the high-school tranche (math-hs.json) ships its wording in the same overlay when the language has it; a partial set is refused (bank.ts serves the tranche only when ALL templates exist)
+      const hsT = site === "math" && fs.existsSync(path.join(root, "lib/learn/content/bank/math-hs.json")) ? JSON.parse(read("lib/learn/content/bank/math-hs.json")).templates : {};
+      const hsHave = Object.keys(hsT).filter((k) => bankOv.templates[k]).length;
+      if (locale !== "ko" && hsHave && hsHave !== Object.keys(hsT).length) fail(`${locale}/${site}: high-school bank wording is partial (${hsHave}/${Object.keys(hsT).length})`);
+      for (const k of Object.keys(hsT)) { const o = bankOv.templates[k]; if (o && (HANGUL.test(o.prompt) || HANGUL.test(o.explanation) || o.hints.some((h) => HANGUL.test(h)))) fail(`${locale}/${site}: high-school template ${k} still Korean`); }
+      for (const k of Object.keys(bankOv.templates)) if (!bank.templates[k] && !hsT[k]) delete bankOv.templates[k];
       for (const k of Object.keys(bankOv.texts)) if (!bank.texts[k]) delete bankOv.texts[k];
+    } else if (site === "english") {
+      const eKitPath = path.join(root, `scripts/learn/english-bank/kit/${locale}.json`);
+      if (!fs.existsSync(eKitPath)) fail(`${locale}/english: missing scripts/learn/english-bank/kit/${locale}.json`);
+      const eKit = JSON.parse(fs.readFileSync(eKitPath, "utf8"));
+      bankOv = { templates: {}, texts: Object.fromEntries(Object.entries(eKit.texts ?? {}).sort(([a], [b]) => (a < b ? -1 : 1))) };
+      for (const [k, v] of Object.entries(bankOv.texts)) {
+        if (typeof v !== "string" || !v.trim() || HANGUL.test(v)) fail(`${locale}/english: bank text ${k} is empty or still Korean`);
+      }
     }
 
     for (const [id, o] of Object.entries(ov.questions)) {

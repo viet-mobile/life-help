@@ -1,9 +1,10 @@
 import { readFileSync, existsSync } from "node:fs";
+import { pickLevel } from "./pickLevel";
 import { expect, test, type Page } from "@playwright/test";
 import { ko } from "../../lib/learn/i18n/ko";
 
 /**
- * 47-locale learning (production build, guest mode, speech mocked):
+ * 46-locale learning (production build, guest mode, speech mocked):
  *   - representative matrix: 16 locales x math / english / study.korean x desktop / 390 px
  *   - locale switching inside a learner journey: math E3 en -> mr -> ur (RTL); English vi -> ur -> sw -> te; Korean "안녕하세요." in en / vi / ur / sw / mr
  * Expected texts come from the same files the server uses (dictionary + the locale's own overlay; no fallback layer), so the assertions
@@ -12,7 +13,7 @@ import { ko } from "../../lib/learn/i18n/ko";
 const PORT = 3100;
 const HOST = { math: `http://math.localhost:${PORT}`, english: `http://english.localhost:${PORT}`, korean: `http://korean.localhost:${PORT}` } as const;
 type Site = keyof typeof HOST;
-const MATRIX = ["ko", "en", "vi", "ur", "ar", "he", "sg", "sw", "mr", "gu", "pa", "te", "kn", "ml", "ja", "zh-Hans"] as const;
+const MATRIX = ["ko", "en", "vi", "ur", "ar", "he", "fr", "sw", "mr", "gu", "pa", "te", "kn", "ml", "ja", "zh-Hans"] as const;
 const RTL = new Set(["ar", "arz", "fa", "he", "ur"]);
 const HANGUL = /[가-힣]/;
 
@@ -49,7 +50,7 @@ async function onboardGuest(page: Page, site: Site, loc: string, level: string) 
   await page.goto(`${HOST[site]}/onboarding`);
   await page.locator("#nick").fill("tester");
   await page.getByRole("button", { name: t["onboarding.next"] }).click();
-  await page.getByRole("radio", { name: t[`grade.${level}`], exact: true }).click();
+  await pickLevel(page, site, level, t[`grade.${level}`]);
   await page.getByRole("button", { name: t["onboarding.next"] }).click();
   await page.getByRole("radio", { name: t["goal.fill_gaps"] }).click();
   await page.getByRole("button", { name: t["onboarding.next"] }).click();
@@ -89,7 +90,7 @@ test.describe("representative matrix: 16 locales x 3 sites x desktop / 390 px", 
           await page.goto(`${HOST[site]}/onboarding`);
           await page.locator("#nick").fill("tester");
           await page.getByRole("button", { name: t["onboarding.next"] }).click();
-          await expect(page.getByRole("radio", { name: t[site === "korean" ? "grade.K1" : "grade.E1"], exact: true })).toBeVisible();
+          await expect(site === "korean" ? page.getByTestId("band-pick-intro") : page.getByRole("radio", { name: t["grade.E1"], exact: true })).toBeVisible();
           await expect(page.getByRole("heading", { level: 1 })).toHaveText(t[site === "korean" ? "onboarding.level.title" : "onboarding.grade.title"]);
         }
       });
@@ -132,6 +133,30 @@ test("English E3: vi -> ur -> sw -> te; the English target sentence never change
       if (span.split(" ").length >= 2) expect(q.prompt, `${loc}: English target "${span}" changed`).toContain(span);
     }
     await expect(page.locator(".study-root")).toHaveAttribute("dir", loc === "ur" ? "rtl" : "ltr");
+  }
+});
+
+test("English practice modes, flashcards, and 375px/RTL rendering across ko, en, vi, ja, zh-Hans, zh-Hant, ar, ur, fa, he", async ({ page }) => {
+  await page.addInitScript(mockSpeech);
+  await onboardGuest(page, "english", "en", "E3");
+  for (const loc of ["ko", "en", "vi", "ja", "zh-Hans", "zh-Hant", "ar", "ur", "fa", "he"] as const) {
+    await setLocale(page, "english", loc);
+    await page.setViewportSize({ width: 375, height: 812 });
+    await page.goto(`${HOST.english}/modes`);
+    const root = page.locator(".study-root");
+    await expect(root).toHaveAttribute("dir", RTL.has(loc) ? "rtl" : "ltr");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText(dict(loc)["modes.title"]);
+    const modesText = (await root.innerText()).replaceAll("한국어", "");
+    if (loc !== "ko") expect(HANGUL.test(modesText), `${loc} /modes Hangul leak`).toBe(false);
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+    expect(overflow, `${loc} /modes @375px overflow`).toBeLessThanOrEqual(1);
+
+    // Flashcards front + reveal back
+    await page.goto(`${HOST.english}/cards`);
+    await page.getByRole("button", { name: dict(loc)["cards.reveal"] }).click();
+    await expect(page.getByRole("button", { name: `${dict(loc)["cards.knew"]} (2)` })).toBeVisible();
+    const cardsText = (await root.innerText()).replaceAll("한국어", "");
+    if (loc !== "ko") expect(HANGUL.test(cardsText), `${loc} /cards Hangul leak`).toBe(false);
   }
 });
 

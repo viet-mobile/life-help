@@ -1,0 +1,1892 @@
+[
+ {
+  "id": "x-k-k6-01",
+  "subject": "korean",
+  "grade": "K6",
+  "topic": "Requests to a senior",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "title": "Which draft will the senior say yes to?",
+  "uiLang": "en",
+  "format": "judge-evidence-explain",
+  "generative": false,
+  "goal": "Judge four draft requests by their wording and explain which features make a request easy to grant and which polite-looking drafts still fail.",
+  "thinking": [
+   "Comparing drafts against evidence in the wording",
+   "Separating politeness level from effectiveness",
+   "Explaining a judgement"
+  ],
+  "differsFromPlain": "Plain practice asks you to turn a command into a polite form. Here every draft is already 'polite' in some way, and you must judge which is likely to work and why.",
+  "prerequisites": [
+   "Knows honorific -(\uc73c)\uc138\uc694 and the -\uc544/\uc5b4\uc694 style",
+   "Has seen -(\uc73c)\u3139 \uc218 \uc788\uc744\uae4c\uc694 in requests"
+  ],
+  "minutes": 12,
+  "curriculum": null,
+  "material": "You are a university first-year. \ubbfc\uc900 \uc120\ubc30 is a club senior, three years older; you have spoken to him only twice. He took good notes in last week's lecture. Your exam is tomorrow afternoon and you want to see the notes today. You wrote four draft messages:\n\nDraft A: \uc120\ubc30, \uc9c0\ub09c\uc8fc \ud544\uae30 \ubcf4\ub0b4 \uc918\uc694. \ub0b4\uc77c \uc2dc\ud5d8\uc774\uc5d0\uc694.\nDraft B: \uc120\ubc30\ub2d8, \ud639\uc2dc \uc9c0\ub09c\uc8fc \ud544\uae30\ub97c \uc0ac\uc9c4\uc73c\ub85c \ubcf4\ub0b4 \uc8fc\uc2e4 \uc218 \uc788\uc744\uae4c\uc694? \ub0b4\uc77c \uc2dc\ud5d8\uc774\ub77c\uc11c\uc694.\nDraft C: \uc120\ubc30\ub2d8, \ubc14\uc058\uc2dc\uaca0\uc9c0\ub9cc \uc2dc\uac04 \ub418\uc2e4 \ub54c \uc544\ubb34 \ub54c\ub098 \uc9c0\ub09c\uc8fc \ud544\uae30\ub97c \ubcf4\uc5ec \uc8fc\uc2dc\uba74 \uc815\ub9d0 \uac10\uc0ac\ud558\uaca0\uc2b5\ub2c8\ub2e4.\nDraft D: \uc120\ubc30\ub2d8, \ud544\uae30 \ubcf4\ub0b4 \uc8fc\uc138\uc694. \uc548 \ubcf4\ub0b4 \uc8fc\uc2dc\uba74 \uc800 \uc2dc\ud5d8 \ub9dd\ud574\uc694.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Judging only from the wording, which draft is most likely to get a willing 'yes' in time?",
+    "hints": [
+     "Compare who each draft sounds like it is written to.",
+     "Ask of each draft: does it give the senior a comfortable way to say no, and does he learn when you need it?"
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "Draft B",
+      "reveals": "You noticed a question form that leaves room for a no, together with a reason and a time pressure."
+     },
+     {
+      "id": "b",
+      "text": "Draft A",
+      "reveals": "This one sounds like talk between close friends or a command; the speaker has noticed the exam but not the relationship."
+     },
+     {
+      "id": "c",
+      "text": "Draft C",
+      "reveals": "You rated politeness highly; check whether a very polite message also tells the reader how soon it is needed."
+     },
+     {
+      "id": "d",
+      "text": "Draft D",
+      "reveals": "Honorific endings are present, but the second sentence pushes responsibility onto the senior. Check how it feels to receive."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "Draft B asks whether it is possible (\ud639\uc2dc + -(\uc73c)\u3139 \uc218 \uc788\uc744\uae4c\uc694), gives a reason, and the reason shows the time pressure. Draft C is very respectful but never says it is needed tomorrow, so the senior may answer next week. Draft A has no honorific closeness for a distant senior, and Draft D pressures him.",
+    "acceptable": [
+     {
+      "ids": [
+       "a"
+      ],
+      "reason": "Only B combines a softened question, a reason, and a visible deadline."
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "In 2-3 sentences (English or Korean) explain: (1) which words in Draft B make it a request rather than an order, and (2) why Draft C, although very polite, may still not get you the notes in time.",
+    "hints": [
+     "Quote the exact Korean words from Draft B that you mean.",
+     "For part 2, imagine you are the senior and read Draft C: what do you not know?"
+    ],
+    "placeholder": "\uc608: ...",
+    "minChars": 40,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "names a softening feature of Draft B",
+      "mode": "any",
+      "patterns": [
+       "\ud639\uc2dc",
+       "\uc218 \uc788\uc744\uae4c\uc694",
+       "\uc8fc\uc2e4 \uc218",
+       "question",
+       "ask(s|ing)? (if|whether)",
+       "could you",
+       "would it be possible",
+       "soften",
+       "indirect",
+       "permission",
+       "possib"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "connects Draft C to missing time pressure",
+      "mode": "any",
+      "patterns": [
+       "\ub0b4\uc77c",
+       "tomorrow",
+       "deadline",
+       "urgen",
+       "hurry",
+       "time ?(frame|limit)",
+       "how soon",
+       "by when",
+       "too late",
+       "when you need"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I quote Korean words from the draft, not only say 'it is polite'?",
+     "Did I explain the problem with C from the senior's point of view?",
+     "Could another reader tell my two points apart?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "The ending -(\uc73c)\u3139 \uc218 \uc788\uc744\uae4c\uc694 and \ud639\uc2dc turn the request into a question about possibility, so the senior can decline easily, and \uc2dc\ud5d8\uc774\ub77c\uc11c\uc694 gives the reason. Draft C never says tomorrow, so he cannot tell it is urgent and may reply next week."
+     },
+     {
+      "text": "In B the question '\ubcf4\ub0b4 \uc8fc\uc2e4 \uc218 \uc788\uc744\uae4c\uc694?' asks permission instead of ordering. C is respectful, but 'whenever you have time' tells him there is no hurry, which is the opposite of your situation: the deadline is tomorrow.",
+      "note": "Focuses on how the reader will read it."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "Draft C is better because it is more polite.",
+      "why": "No Korean evidence and no link to the deadline."
+     }
+    ],
+    "humanReview": "Whether the learner's explanation really uses the wording (not only the word 'polite') needs a person."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Evidence from the wording",
+    "full": "Names Korean expressions in B and links them to easy-to-decline requests",
+    "partial": "Says B is polite without naming expressions",
+    "none": "Chooses another draft with no wording evidence"
+   },
+   {
+    "criterion": "Politeness versus effectiveness",
+    "full": "Explains that C lacks any signal of the deadline",
+    "partial": "Notices C is very polite but cannot say what is missing",
+    "none": "Treats politeness level as the only criterion"
+   }
+  ],
+  "alternatives": [
+   "Some learners may rank C first because of the humble 'whenever'; this is acceptable only if they notice the exam is tomorrow (the reveal for c asks them to check).",
+   "A learner may write the explanation in English or Korean; both are fine."
+  ],
+  "hardCases": [
+   "Draft B without \ud639\uc2dc would still work; the learner may claim another feature as the main softener."
+  ],
+  "cautions": {
+   "language": "Korean honorific levels (-\uc138\uc694, -\u3142\ub2c8\ub2e4) and softeners (\ud639\uc2dc, -(\uc73c)\u3139 \uc218 \uc788\uc744\uae4c\uc694) are shown in context. The checks accept English or Korean explanations.",
+   "culture": "Seniors and juniors in clubs differ in status even at small age gaps; this is typical in Korean universities but not in every culture.",
+   "accessibility": "Drafts are plain text and can be read by screen readers; no images or colour cues."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of the key; presence of a Korean softener or a deadline remark in the explanation"
+   ],
+   "human": [
+    "Quality and accuracy of the explanation"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k6-02",
+  "subject": "korean",
+  "grade": "K6",
+  "topic": "Refusals and invitations",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "title": "Say no to a senior, then to a friend",
+  "uiLang": "en",
+  "format": "rewrite-for-audience",
+  "generative": true,
+  "goal": "Find the register slip in a refusal to a senior, then rewrite the refusal for a close friend while keeping thanks, a reason and an open door.",
+  "thinking": [
+   "Evaluating a draft for register and promises",
+   "Adapting the same message to a different audience",
+   "Combining thanks, reason and an open door"
+  ],
+  "differsFromPlain": "Plain practice drills -\u3139 \uc218 \uc5c6\uc5b4\uc694 patterns. Here you must spot why a nearly-correct refusal is wrong for its audience and rewrite it for another.",
+  "prerequisites": [
+   "Knows the difference between \uc874\ub313\ub9d0 and \ubc18\ub9d0",
+   "Knows how to say you cannot do something (\ubabb, -\u3139 \uc218 \uc5c6\ub2e4)"
+  ],
+  "minutes": 12,
+  "curriculum": null,
+  "material": "Both \uae40 \uc120\ubc30 (a club senior, five years older) and your close friend \uc9c0\uc544 (same age) have invited you to events on Saturday evening. You have a family dinner that evening. This is your draft refusal to the senior:",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "One line of the draft to \uae40 \uc120\ubc30 does not fit the audience. Which line?",
+    "hints": [
+     "Read how each line ends and ask which one would sound out of place addressed to someone five years older.",
+     "Ask what a senior hears when you promise something for the future."
+    ],
+    "lines": [
+     "\uc120\ubc30\ub2d8, \ucd08\ub300\ud574 \uc8fc\uc154\uc11c \uc815\ub9d0 \uac10\uc0ac\ud569\ub2c8\ub2e4.",
+     "\ud1a0\uc694\uc77c\uc5d0\ub294 \uac00\uc871 \uc800\ub141 \uc57d\uc18d\uc774 \uc788\uc5b4\uc11c \ubabb \uac08 \uac83 \uac19\uc2b5\ub2c8\ub2e4.",
+     "\uc8c4\uc1a1\ud558\uc9c0\ub9cc \uc774\ubc88\uc5d0\ub294 \uc5b4\ub824\uc6b8 \uac83 \uac19\uc2b5\ub2c8\ub2e4.",
+     "\ub2e4\uc74c\uc5d0\ub294 \uc81c\uac00 \uaf2d \uac00\uaca0\ub2e4\uace0 \uc57d\uc18d\ud560\uac8c, \uc120\ubc30!"
+    ],
+    "wrong": [
+     3
+    ],
+    "explain": "Line 4 switches to casual speech (\uc57d\uc18d\ud560\uac8c, \uc120\ubc30!) towards a senior and promises more than you can control. Lines 1-3 keep honorific endings, thank, give a reason and decline softly."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Now write the refusal to your close friend \uc9c0\uc544 (same age; casual speech is fine). Thank her, give the reason, and leave the door open. 2-3 short sentences in Korean.",
+    "hints": [
+     "Lines 1-3 of the senior draft thank, give a reason and decline. Do those three jobs in friend-style words, then add a fourth: leave the door open.",
+     "Keep it warm: say what you regret, not only what you cannot do."
+    ],
+    "placeholder": "\uc608: ...",
+    "minChars": 12,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "gives a reason or says you cannot go",
+      "mode": "any",
+      "patterns": [
+       "\uc788\uc5b4\uc11c",
+       "\uc788\ub294\ub370",
+       "\uc788\uac70\ub4e0",
+       "\ub54c\ubb38",
+       "\ubc14\ube60\uc11c",
+       "\ubc14\uc05c",
+       "\uc57d\uc18d",
+       "\uc77c\uc815",
+       "\uc0ac\uc815",
+       "\ubabb ?\uac08",
+       "\ubabb ?\uac00",
+       "\uc548 ?\ub420",
+       "\uc548 ?\ub3fc",
+       "\uc5b4\ub824\uc6b8"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "thanks or shows regret",
+      "mode": "any",
+      "patterns": [
+       "\uace0\ub9c8\uc6cc",
+       "\uace0\ub9d9",
+       "\uac10\uc0ac",
+       "\ubbf8\uc548",
+       "\uc544\uc27d",
+       "\uc544\uc26c\uc6cc",
+       "\uc8c4\uc1a1"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "leaves the door open",
+      "mode": "any",
+      "patterns": [
+       "\ub2e4\uc74c",
+       "\ub2f4\uc5d0",
+       "\ub098\uc911",
+       "\ub610 ",
+       "\ub610$",
+       "\ub2e4\ub978 \ub0a0",
+       "\uc5b8\uc81c"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "does not refuse rudely",
+      "mode": "none",
+      "patterns": [
+       "\uc2eb\uc5b4",
+       "\uadc0\ucc2e",
+       "\uad00\uc2ec\\s*\uc5c6",
+       "\ubcc4\ub85c",
+       "\ubd80\ub974\uc9c0 ?\ub9c8",
+       "\uc624\uc9c0 ?\ub9c8",
+       "\uc5f0\ub77d\ud558\uc9c0 ?\ub9c8"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I do all three jobs: thank, reason, open door?",
+     "Is my speech style natural for a close friend of the same age?",
+     "Would \uc9c0\uc544 feel invited again?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\ucd08\ub300\ud574 \uc918\uc11c \uace0\ub9c8\uc6cc! \uadf8\ub0a0 \uac00\uc871 \ubaa8\uc784\uc774 \uc788\uc5b4\uc11c \ubabb \uac08 \uac83 \uac19\uc544. \ub2e4\uc74c\uc5d0\ub294 \uaf2d \uac19\uc774 \uac00\uc790."
+     },
+     {
+      "text": "\uc640, \ubd88\ub7ec \uc918\uc11c \uace0\ub9c8\uc6cc. \uc544\uc27d\uc9c0\ub9cc \ud1a0\uc694\uc77c\uc5d4 \uc57d\uc18d\uc774 \uc788\uc5b4\uc11c \uc548 \ub420 \uac83 \uac19\uc544. \ub2f4\uc5d0 \ub610 \ubd88\ub7ec \uc918!",
+      "note": "Uses casual \ubc18\ub9d0 and the shortened \ub2f4\uc5d0."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\uc548 \uac00.",
+      "why": "No thanks, no reason, no open door."
+     },
+     {
+      "text": "\uac00\uae30 \uc2eb\uc5b4. \ub2e4\uc74c\uc5d0 \uac00\uc790.",
+      "why": "Gives a rude reason instead of a real one."
+     },
+     {
+      "text": "\uace0\ub9c8\uc6cc. \uac00\uc871 \uc800\ub141\uc774 \uc788\uc5b4\uc11c \ubabb \uac00. \ub2e4\uc74c\uc5d4 \ub098 \ubd80\ub974\uc9c0 \ub9c8.",
+      "why": "Closes the door instead of leaving it open."
+     }
+    ],
+    "humanReview": "Whether the tone feels natural for close friends, including slang and endings, needs a person."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Audience fit",
+    "full": "Identifies the casual line to the senior and writes the friend version in a consistent friendly style",
+    "partial": "Finds the line but the friend version mixes styles",
+    "none": "Cannot locate the slip"
+   },
+   {
+    "criterion": "Components of a refusal",
+    "full": "Contains thanks, a reason and an open door",
+    "partial": "Contains two of the three",
+    "none": "Only says no"
+   }
+  ],
+  "alternatives": [
+   "Using \ud574\uc694\uccb4 (polite casual) with a friend is also acceptable if friendly and consistent.",
+   "Line 3 may sound a little firm, but it keeps the honorific ending; the key still treats line 4 as the register slip."
+  ],
+  "hardCases": [
+   "A learner who writes a plausible but unusual reason (e.g. 'my cat is sick') is fine if the key components are present."
+  ],
+  "cautions": {
+   "language": "Mixing \ud569\uc1fc\uccb4 and \ud574\uc694\uccb4 within a message is usually fine; mixing \ubc18\ub9d0 into a message to a senior is not.",
+   "culture": "Declining invitations without a long excuse may feel abrupt in some cultures, while in Korea a short reason plus an open door is the norm.",
+   "accessibility": "Plain text only; no colour cues."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Position of the slip; presence of thanks, reason, open door, no rude wording"
+   ],
+   "human": [
+    "Naturalness and tone of the friend message"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k6-03",
+  "subject": "korean",
+  "grade": "K6",
+  "topic": "Invitations",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "title": "Before you say yes",
+  "uiLang": "en",
+  "format": "choose-needed-info",
+  "generative": true,
+  "goal": "Decide which questions are needed before accepting an invitation, given your own constraints, and write a reply that asks them politely.",
+  "thinking": [
+   "Judging which information is sufficient to decide",
+   "Linking personal constraints to questions",
+   "Writing a conditional acceptance"
+  ],
+  "differsFromPlain": "Plain practice asks you to accept or decline an invitation. Here you must find the missing information first.",
+  "prerequisites": [
+   "Can ask simple questions with \uba87 \uc2dc, \uc5b4\ub514, \ubb50",
+   "Knows -(\uc73c)\u3139 \uc218 \uc788\uc5b4\uc694"
+  ],
+  "minutes": 12,
+  "curriculum": null,
+  "material": "Your classmate \ud558\uc900, whom you have spoken to a few times, sent you this message:\n\n\ud558\uc900: \ud1a0\uc694\uc77c\uc5d0 \uc9d1\ub4e4\uc774 \ud574\uc694! \uc6b0\ub9ac \uc9d1\uc740 \ud559\uad50 \uc55e \uc11c\uc810 \uc606\uc774\uc5d0\uc694. \uc2dc\uac04 \ub418\uba74 \uc640\uc694~\n\n(\uc9d1\ub4e4\uc774 = housewarming party.) What you know about yourself: you work a part-time job until 7:00 p.m. on Saturdays. The last subway home leaves at midnight. You are allergic to shrimp and crab.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which questions do you need answered before you can decide whether to go? Choose all that are needed.",
+    "hints": [
+     "For each question, name one of your own facts that would change your decision.",
+     "The address is already given, so skip anything the message already answers."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "\uba87 \uc2dc\uc5d0 \uc2dc\uc791\ud574\uc694?",
+      "reveals": "You linked your 7 p.m. finish to the start time."
+     },
+     {
+      "id": "b",
+      "text": "\uc9d1\uc774 \uba87 \ud3c9\uc774\uc5d0\uc694?",
+      "reveals": "The size of the home would not change whether you can go or what you can eat."
+     },
+     {
+      "id": "c",
+      "text": "\uc74c\uc2dd\uc5d0 \uc0c8\uc6b0\ub098 \uac8c\uac00 \ub4e4\uc5b4\uac00\uc694?",
+      "reveals": "You linked the allergy to the menu."
+     },
+     {
+      "id": "d",
+      "text": "\uc120\ubb3c\uc740 \ubb58 \uc0ac \uac00\uba74 \ub3fc\uc694?",
+      "reveals": "Useful for etiquette, but it does not decide whether you can go; it can be asked after you accept."
+     },
+     {
+      "id": "e",
+      "text": "\uba87 \uc2dc\ucbe4 \ub05d\ub098\uc694?",
+      "reveals": "You linked the last subway at midnight to the end time."
+     },
+     {
+      "id": "f",
+      "text": "\ub204\uac00 \uc640\uc694?",
+      "reveals": "Often natural to ask, but none of your listed facts depends on it."
+     }
+    ],
+    "correct": [
+     "a",
+     "c",
+     "e"
+    ],
+    "explain": "The three facts that could stop you are the 7 p.m. finish (start time), the midnight last subway (end time) and the shrimp/crab allergy (menu). The address is given; gifts, house size and guest list do not change whether you can attend.",
+    "multi": true,
+    "acceptable": [
+     {
+      "ids": [
+       "a",
+       "c",
+       "e",
+       "f"
+      ],
+      "reason": "Asking who is coming is socially natural and does not hurt, even though none of your constraints depends on it."
+     },
+     {
+      "ids": [
+       "a",
+       "c",
+       "e",
+       "d"
+      ],
+      "reason": "Asking about a gift is polite and common, though it can wait until after you accept."
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write your reply to \ud558\uc900 in Korean (2-4 sentences): thank him, say you may come, and politely ask the questions you chose.",
+    "hints": [
+     "Start with thanks, then give the fact that makes the questions necessary.",
+     "Soften the questions with \ud639\uc2dc or -(\uc73c)\u3139 \uc218 \uc788\uc744\uae4c\uc694."
+    ],
+    "placeholder": "\uc608: ...",
+    "minChars": 25,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "thanks or shows interest",
+      "mode": "any",
+      "patterns": [
+       "\uace0\ub9c8\uc6cc",
+       "\uace0\ub9d9",
+       "\uac10\uc0ac",
+       "\ucd08\ub300",
+       "\uac00\uace0 \uc2f6",
+       "\uac00\uace0\uc2f6",
+       "\uac08\uac8c",
+       "\uac00\ubcfc\uac8c",
+       "\uac08 \uc218",
+       "\ucc38\uc11d"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "asks a question about time (start or end)",
+      "mode": "any",
+      "patterns": [
+       "\uba87 ?\uc2dc",
+       "\uc5b8\uc81c",
+       "(\uc2dc\uc791|\ub05d\ub098|\ub05d\ub0a0|\uae4c\uc9c0)[^.!]*(\\?|\uae4c\uc694|\ub098\uc694|\uac00\uc694|\uc138\uc694|\u3142\ub2c8\uae4c|\uc5b4\uc694\\?)"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "asks a question about the food or the allergy",
+      "mode": "any",
+      "patterns": [
+       "(\uc74c\uc2dd|\uba54\ub274|\ud574\uc0b0\ubb3c|\uc0c8\uc6b0|\uac8c\uac00|\uac8c\ub098|\uc54c\ub808\ub974\uae30|\uc54c\ub7ec\uc9c0|\ub4e4\uc5b4\uac00)[^.!]*(\\?|\uae4c\uc694|\ub098\uc694|\uac00\uc694|\uc138\uc694|\u3142\ub2c8\uae4c|\uc5b4\uc694\\?)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did my questions match my own constraints?",
+     "Is the tone suitable for a classmate I do not know well?",
+     "Do I make clear that I may come, not that I cannot?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\ucd08\ub300\ud574 \uc8fc\uc154\uc11c \uac10\uc0ac\ud574\uc694. \uc800\ub294 7\uc2dc\uc5d0 \uc77c\uc774 \ub05d\ub098\uc11c \uc870\uae08 \ub2a6\uac8c \uac08 \uc218 \uc788\ub294\ub370, \uba87 \uc2dc\uc5d0 \uc2dc\uc791\ud558\uace0 \uba87 \uc2dc\uae4c\uc9c0 \ud574\uc694? \uadf8\ub9ac\uace0 \uc81c\uac00 \ud574\uc0b0\ubb3c \uc54c\ub808\ub974\uae30\uac00 \uc788\ub294\ub370, \uc74c\uc2dd\uc5d0 \ud574\uc0b0\ubb3c\uc774 \ub4e4\uc5b4\uac00\ub098\uc694?"
+     },
+     {
+      "text": "\ucd08\ub300 \uace0\ub9c8\uc6cc\uc694! \uac00\uace0 \uc2f6\uc740\ub370 \ud1a0\uc694\uc77c 7\uc2dc\uae4c\uc9c0 \uc77c\ud574\uc11c\uc694. \ud30c\ud2f0\uac00 \uba87 \uc2dc\uae4c\uc9c0 \ud574\uc694? \uc0c8\uc6b0 \uc54c\ub808\ub974\uae30\uac00 \uc788\uc5b4\uc11c \uba54\ub274\ub3c4 \uc54c\ub824 \uc8fc\uc2e4 \uc218 \uc788\uc5b4\uc694?",
+      "note": "Shorter, uses \ud574\uc694\uccb4 and gives facts as reasons."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\ub124, \uac08\uac8c\uc694!",
+      "why": "Accepts without checking the facts and asks nothing."
+     },
+     {
+      "text": "\ucd08\ub300 \uace0\ub9c8\uc6cc\uc694! 7\uc2dc\uae4c\uc9c0 \uc77c\ud574\uc11c \ub2a6\uc744 \uac83 \uac19\uc544\uc694. \uc0c8\uc6b0 \uc54c\ub808\ub974\uae30\uac00 \uc788\uc5b4\uc694.",
+      "why": "States the facts but asks nothing, so \ud558\uc900 cannot answer."
+     }
+    ],
+    "humanReview": "Whether the questions are natural and polite enough needs a person."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Selecting needed information",
+    "full": "Chooses exactly the questions tied to the three personal facts",
+    "partial": "Chooses most but includes one unrelated question",
+    "none": "Chooses unrelated questions"
+   },
+   {
+    "criterion": "Reply quality",
+    "full": "Reply thanks, states the situation and asks the needed questions politely",
+    "partial": "Asks questions but without thanks or softening",
+    "none": "Accepts or declines without asking"
+   }
+  ],
+  "alternatives": [
+   "Asking who is coming or about a gift is acceptable (see acceptable sets).",
+   "A learner may ask the questions in a different order or with other words."
+  ],
+  "hardCases": [
+   "Is the end time really needed? Yes, because of the last subway; a learner who plans to leave early may still reasonably ask."
+  ],
+  "cautions": {
+   "language": "Learners must form questions; -\ub098\uc694/-\u3139\uae4c\uc694 as well as -\uc5b4\uc694 are fine.",
+   "culture": "Housewarming (\uc9d1\ub4e4\uc774) is a Korean custom where guests often bring gifts such as tissue or detergent; allergies may be less often mentioned than in some countries.",
+   "accessibility": "The facts are listed in text; no colour cues."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of questions; presence of thanks, a time question and a food question"
+   ],
+   "human": [
+    "Appropriateness and politeness of the reply"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k6-04",
+  "subject": "korean",
+  "grade": "K6",
+  "topic": "Shops",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "title": "The exchange that turned into a refund",
+  "uiLang": "en",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Find the line where a customer says the wrong thing at a shop counter and repair the misunderstanding politely.",
+  "thinking": [
+   "Reading a dialogue for inconsistent intent",
+   "Locating the source of a misunderstanding",
+   "Repairing in polite Korean"
+  ],
+  "differsFromPlain": "Plain practice asks you to learn shop vocabulary. Here you track what the customer wants from line to line and must explain why the clerk acts on the wrong request.",
+  "prerequisites": [
+   "Knows \uad50\ud658 (exchange) and \ud658\ubd88 (refund) as words",
+   "Can read short polite dialogue"
+  ],
+  "minutes": 12,
+  "curriculum": null,
+  "material": "You bought a jacket yesterday, but the size is too small. At the counter this conversation happens (line numbers start at 1):",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "The clerk starts a refund although you wanted an exchange. Which line of the dialogue starts the mix-up?",
+    "hints": [
+     "Write down in one phrase what the customer wants in line 1.",
+     "Find the first later line that wants something different."
+    ],
+    "lines": [
+     "\uc190\ub2d8: \uc5b4\uc81c \uc5ec\uae30\uc11c \uc0b0 \uc7ac\ud0b7\uc778\ub370\uc694, \uc0ac\uc774\uc988\uac00 \uc791\uc544\uc11c \ud070 \uac78\ub85c \ubc14\uafb8\uace0 \uc2f6\uc5b4\uc694.",
+     "\uc9c1\uc6d0: \uc601\uc218\uc99d \uac00\uc9c0\uace0 \uacc4\uc138\uc694?",
+     "\uc190\ub2d8: \uc601\uc218\uc99d\uc740 \uc9d1\uc5d0 \ub450\uace0 \uc654\ub294\ub370, \uce74\ub4dc\ub85c \uacc4\uc0b0\ud588\uc5b4\uc694.",
+     "\uc9c1\uc6d0: \uadf8\ub7fc \uce74\ub4dc \ub0b4\uc5ed\uc73c\ub85c \ud655\uc778\ud574 \ubcfc\uac8c\uc694. \uc0ac\uc774\uc988 \ub9d0\uace0 \ub2e4\ub978 \ubb38\uc81c\ub294 \uc5c6\uc73c\uc2dc\uc8e0?",
+     "\uc190\ub2d8: \ub124, \uc5c6\uc5b4\uc694. \uadf8\ub7fc \ud658\ubd88\ud574 \uc8fc\uc138\uc694.",
+     "\uc9c1\uc6d0: \ub124, \ud658\ubd88\ud574 \ub4dc\ub9ac\uaca0\uc2b5\ub2c8\ub2e4. \uce74\ub4dc \uc8fc\uc138\uc694."
+    ],
+    "wrong": [
+     4
+    ],
+    "explain": "Line 5 says \ud658\ubd88\ud574 \uc8fc\uc138\uc694 although line 1 asks for \ud070 \uac78\ub85c \ubc14\uafb8\uace0 \uc2f6\uc5b4\uc694 (an exchange for a bigger size). Line 6 follows what the clerk heard. Line 3 only says there is no receipt, which can be solved with the card record."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "After line 6 you notice the mix-up. Write what you say to the clerk to repair it (2 sentences, polite Korean).",
+    "hints": [
+     "Say clearly what you did not mean and what you meant.",
+     "Soften the correction with a short apology or a reason, then use \uad50\ud658/\ubc14\uafb8\ub2e4."
+    ],
+    "placeholder": "\uc608: ...",
+    "minChars": 15,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "signals a correction",
+      "mode": "any",
+      "patterns": [
+       "\uc544\ub2c8",
+       "\ub9d0\uace0",
+       "\uc798\ubabb",
+       "\ucc29\uac01",
+       "\uc8c4\uc1a1",
+       "\uc815\uc815",
+       "\ud5f7\uac08",
+       "\uc624\ud574"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "states the exchange / bigger size",
+      "mode": "any",
+      "patterns": [
+       "\uad50\ud658",
+       "\ubc14\uafb8",
+       "\ubc14\uafd4",
+       "\ud070\\s*(\uc0ac\uc774\uc988|\uac78|\uac83)",
+       "\uc0ac\uc774\uc988"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "[\uac00-\ud7a3]\uc694(?![\uac00-\ud7a3])|\uc2b5\ub2c8\ub2e4|[\uac11\ub0a9\ub78d\ub9bd\ubc09\uc2ed\uc785\uc7a1\ud569\ub429\uc635\ubd05\ub2d9\uc501]\ub2c8\ub2e4"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I say what I meant, not only what I did not mean?",
+     "Is my tone still polite after the error?",
+     "Could the clerk now act without asking again?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\uc8c4\uc1a1\ud574\uc694, \uc81c\uac00 \uc798\ubabb \ub9d0\ud588\uc5b4\uc694. \ud658\ubd88\uc774 \uc544\ub2c8\ub77c \ud070 \uc0ac\uc774\uc988\ub85c \uad50\ud658\ud558\uace0 \uc2f6\uc5b4\uc694."
+     },
+     {
+      "text": "\uc544, \uc544\ub2c8\uc5d0\uc694. \ud658\ubd88 \ub9d0\uace0 \ubc14\uafd4 \uc8fc\uc138\uc694. \ud070 \uc0ac\uc774\uc988\uac00 \uc788\uc73c\uba74 \uc88b\uaca0\uc5b4\uc694.",
+      "note": "Corrects with \uc544\ub2c8\uc5d0\uc694 and \ub9d0\uace0."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\uad50\ud658\ud574 \uc8fc\uc138\uc694.",
+      "why": "Does not signal that the earlier sentence was wrong, so the clerk may not know to stop the refund."
+     }
+    ],
+    "humanReview": "Politeness and naturalness of the repair need a person."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Locating the error",
+    "full": "Picks line 5 and links it to line 1",
+    "partial": "Picks line 6 (the clerk's reaction)",
+    "none": "Cannot say which line is inconsistent"
+   },
+   {
+    "criterion": "Repair",
+    "full": "Corrects the request, states the exchange, stays polite",
+    "partial": "Corrects without politeness or without stating the exchange",
+    "none": "Repeats the wrong request"
+   }
+  ],
+  "alternatives": [
+   "Some may argue line 6 is also an error by the clerk; it only follows line 5.",
+   "Using \ubc14\uafd4 \uc8fc\uc138\uc694 or \uad50\ud658\ud574 \uc8fc\uc138\uc694 are both fine."
+  ],
+  "hardCases": [
+   "A learner may repair with a question ('\uad50\ud658\uc740 \uc548 \ub418\ub098\uc694?'), which is acceptable if it states the exchange."
+  ],
+  "cautions": {
+   "language": "\uad50\ud658 and \ud658\ubd88 are different shop words; \ubc14\uafb8\ub2e4 is the everyday verb for exchange.",
+   "culture": "Receiptless returns with a card record are usual in Korea but shop policies differ.",
+   "accessibility": "Dialogue is plain text with line numbers; no images."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Position of the error line; presence of correction signal, exchange wording and polite ending"
+   ],
+   "human": [
+    "Naturalness of the repair"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k6-05",
+  "subject": "korean",
+  "grade": "K6",
+  "topic": "Public offices",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "title": "Where do I apply?",
+  "uiLang": "en",
+  "format": "reveal-and-revise",
+  "generative": false,
+  "goal": "Revise your reading of an official's replies as more of the exchange appears, then ask a sensible follow-up question.",
+  "thinking": [
+   "Inferring what an official's indirect reply means",
+   "Using times to test a plan",
+   "Revising a plan when new conditions appear"
+  ],
+  "differsFromPlain": "Plain practice reads one official reply and picks the meaning. Here the information arrives in pieces and each piece changes the plan.",
+  "prerequisites": [
+   "Can read times (4\uc2dc 20\ubd84)",
+   "Knows \uad6c\uccad and \uc8fc\ubbfc\uc13c\ud130 as offices"
+  ],
+  "minutes": 12,
+  "curriculum": null,
+  "material": "It is 4:20 p.m. You are at the neighbourhood \uc8fc\ubbfc\uc13c\ud130 (community service centre) counter. You want to apply for a passport. You are not sure whether you have your passport photo in your bag.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "Read each part, choose the most likely reading, then continue.",
+    "hints": [
+     "Decide using only what you have read so far.",
+     "In stage 2 compute the arrival time before choosing."
+    ],
+    "stages": [
+     {
+      "info": "\ub098: \uc800, \uc5ec\uae30\uc11c \uc5ec\uad8c \uc2e0\uccad\ud560 \uc218 \uc788\uc5b4\uc694?\n\uc9c1\uc6d0: \uc544, \uc5ec\uad8c\uc740 \uc5ec\uae30\uc11c\ub294 \uc548 \ub418\uace0, \uad6c\uccad \uc5ec\uad8c\uacfc\uc5d0\uc11c \ud574\uc694.",
+      "ask": "What does the clerk mean?",
+      "options": [
+       {
+        "id": "a",
+        "text": "This office cannot help you at all",
+        "reveals": "The clerk does help: the reply names where to go."
+       },
+       {
+        "id": "b",
+        "text": "Come back tomorrow",
+        "reveals": "There is no mention of tomorrow in the reply."
+       },
+       {
+        "id": "c",
+        "text": "Passport applications are handled at another office",
+        "reveals": "You read the place marker \uad6c\uccad \uc5ec\uad8c\uacfc as a direction."
+       },
+       {
+        "id": "d",
+        "text": "Wait here until a clerk is free",
+        "reveals": "No waiting is mentioned."
+       }
+      ],
+      "reasonable": [
+       "c"
+      ],
+      "after": "'\uc5ec\uae30\uc11c\ub294 \uc548 \ub418\uace0, \uad6c\uccad \uc5ec\uad8c\uacfc\uc5d0\uc11c \ud574\uc694' is a refusal for this office plus a direction to the right office."
+     },
+     {
+      "info": "\uc9c1\uc6d0: \uad6c\uccad\uc740 5\uc2dc\uae4c\uc9c0 \uc811\uc218\ub97c \ubc1b\uc544\uc694. \uc9c0\uae08 4\uc2dc 20\ubd84\uc774\uc8e0? \uc5ec\uae30\uc11c \uac78\uc5b4\uc11c 20\ubd84\ucbe4 \uac78\ub824\uc694.",
+      "ask": "What is the clerk hinting?",
+      "options": [
+       {
+        "id": "a",
+        "text": "Leave now and you arrive about 4:40, in time",
+        "reveals": "20 minutes added to 4:20 gives 4:40, before 5:00."
+       },
+       {
+        "id": "b",
+        "text": "It is already too late to apply today",
+        "reveals": "Arrival at 4:40 is before the 5:00 closing."
+       },
+       {
+        "id": "c",
+        "text": "You should take a bus because walking takes 20 minutes",
+        "reveals": "The clerk did not say you must take a bus; walking is a fine way to arrive in time."
+       },
+       {
+        "id": "d",
+        "text": "The district office has already closed",
+        "reveals": "Closing is at 5:00, still 40 minutes away."
+       }
+      ],
+      "reasonable": [
+       "a"
+      ],
+      "after": "The clerk is warning politely that time is limited but enough if you go now."
+     },
+     {
+      "info": "\uc9c1\uc6d0: \uc544, \uc0ac\uc9c4\uc740 \uac00\uc838\uc624\uc168\uc5b4\uc694? \uaddc\uaca9 \uc0ac\uc9c4\uc774 \uc5c6\uc73c\uba74 \uc811\uc218\uac00 \uc548 \ub3fc\uc694. \uae38 \uac74\ub108\uc5d0 \uc0ac\uc9c4\uad00\uc774 \uc788\ub294\ub370, \uac70\uae30\uc11c 10\ubd84\uc774\uba74 \ucc0d\uc5b4\uc694.",
+      "ask": "With the time left, what is a sensible plan?",
+      "options": [
+       {
+        "id": "a",
+        "text": "Walk to the district office and check the bag when you get there",
+        "reveals": "If the photo is missing you would have to return, which costs more than 20 minutes."
+       },
+       {
+        "id": "b",
+        "text": "Check the bag now; if it is missing, use the shop across the road",
+        "reveals": "You included the contingency: check first, then use the photo shop only if needed."
+       },
+       {
+        "id": "c",
+        "text": "Ask this office to accept a phone photo",
+        "reveals": "The clerk said the photo must meet a standard; this office is not the one that accepts it."
+       },
+       {
+        "id": "d",
+        "text": "Give up for today and return tomorrow",
+        "reveals": "Photo 10 min plus walk 20 min fits before 5:00, so giving up is unnecessary."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "If the photo is missing: 4:20 + 10 minutes for the photo + 20 minutes walking leaves you at the office before 5:00."
+     }
+    ],
+    "reflect": "Notice how each clause changed the plan: a place, then a deadline you could check with arithmetic, then a condition (photo). Indirect speech from officials often hides the key condition in a short extra sentence."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write what you say to the clerk before leaving: thank them and ask one polite question that helps you carry out your plan (2 sentences, Korean).",
+    "hints": [
+     "Which part of your plan are you still unsure about: the road, the photo shop or the time?",
+     "Close with a thank-you."
+    ],
+    "placeholder": "\uc608: ...",
+    "minChars": 10,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "thanks",
+      "mode": "any",
+      "patterns": [
+       "\uac10\uc0ac",
+       "\uace0\ub9d9",
+       "\uace0\ub9c8\uc6cc"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "asks a question",
+      "mode": "any",
+      "patterns": [
+       "[?\uff1f]",
+       "\uae4c\uc694",
+       "\ub098\uc694",
+       "\u3134\uac00\uc694",
+       "\uc2b5\ub2c8\uae4c",
+       "\uc5b4\ub514",
+       "\uc5b4\ub5bb\uac8c",
+       "\uba87",
+       "\uc54c\ub824 \uc8fc",
+       "\uac00\ub974\uccd0"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I ask about something I really still need to know?",
+     "Is the question polite enough for an official?",
+     "Would the clerk be able to answer in one sentence?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\uac10\uc0ac\ud569\ub2c8\ub2e4. \uad6c\uccad\uae4c\uc9c0 \uc5b4\ub5bb\uac8c \uac00\uba74 \uac00\uc7a5 \ube68\ub77c\uc694?"
+     },
+     {
+      "text": "\uace0\ub9d9\uc2b5\ub2c8\ub2e4. \uc0ac\uc9c4\uad00\uc774 \uc5b4\ub514\uc5d0 \uc788\ub294\uc9c0 \uc54c\ub824 \uc8fc\uc2e4 \uc218 \uc788\uc744\uae4c\uc694?"
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\ub124.",
+      "why": "No thanks and no question."
+     }
+    ],
+    "humanReview": "Appropriateness of the question for the plan needs a person."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Revising the reading",
+    "full": "Changes the reading when a new condition appears and checks the times",
+    "partial": "Follows the clerk but skips the arithmetic",
+    "none": "Ignores the new information"
+   },
+   {
+    "criterion": "Follow-up question",
+    "full": "Thanks and asks a polite, useful question",
+    "partial": "Question without thanks",
+    "none": "Neither"
+   }
+  ],
+  "alternatives": [
+   "Stage 3 admits only the 'check first' plan; another plan may be acceptable if it works within the time."
+  ],
+  "hardCases": [
+   "Real offices vary in closing time; the task fixes it at 5:00 to allow the calculation."
+  ],
+  "cautions": {
+   "language": "Official speech uses -\u3142\ub2c8\ub2e4 and honorific -(\uc73c)\uc2dc; the clerk's remarks are indirect but short.",
+   "culture": "Passport applications are handled at specific offices in Korea; other countries differ.",
+   "accessibility": "Times are written in words and numbers so a screen reader reads them clearly."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Reasonableness per stage; presence of thanks and a question"
+   ],
+   "human": [
+    "Quality of the follow-up question"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k6-06",
+  "subject": "korean",
+  "grade": "K6",
+  "topic": "Polite softening",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "title": "Two ways to soften a request",
+  "uiLang": "en",
+  "format": "make-your-own",
+  "generative": true,
+  "goal": "Identify which 'softened' sentence is still a command, then write two requests that use different softening strategies.",
+  "thinking": [
+   "Evaluating whether a sentence is really softened",
+   "Generating variants with different strategies",
+   "Giving a reason as a softener"
+  ],
+  "differsFromPlain": "Plain practice changes a command into -\uc138\uc694. Here you test which softening tools actually change how a request feels and then build two on your own.",
+  "prerequisites": [
+   "Knows \uc880 and -\uc138\uc694",
+   "Knows -\uc544/\uc5b4\ub3c4 \ub420\uae4c\uc694?"
+  ],
+  "minutes": 12,
+  "curriculum": null,
+  "material": "Situation 1 (a bus on a cold day): the person beside you has opened the window. You are a stranger to them. Four sentences you could say are shown in step 1.\n\nSituation 2 (a library reading room): the person at the next desk is on a speakerphone call. Same age, unknown to you.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "In Situation 1, three of the four sentences are really softened. Which one is still essentially a command?",
+    "hints": [
+     "Ask: could the other person say 'no' to this sentence without it sounding rude?",
+     "Compare the four sentences: for each one, decide whether it asks the other person or tells the other person."
+    ],
+    "lines": [
+     "\uc8c4\uc1a1\ud55c\ub370 \ucc3d\ubb38\uc744 \uc870\uae08\ub9cc \ub2eb\uc544 \uc8fc\uc2e4 \uc218 \uc788\uc744\uae4c\uc694?",
+     "\ud639\uc2dc \ucc3d\ubb38 \uc880 \ub2eb\uc544\ub3c4 \ub420\uae4c\uc694? \uc81c\uac00 \uc880 \ucd94\uc6cc\uc11c\uc694.",
+     "\ucc3d\ubb38 \uc880 \ub2eb\uc73c\uc138\uc694. \ucd94\uc6cc\uc694.",
+     "\ubc14\ub78c\uc774 \uc880 \ucc28\ub124\uc694. \ucc3d\ubb38\uc744 \ub2eb\uc544\ub3c4 \uad1c\ucc2e\uc73c\uc2e4\uae4c\uc694?"
+    ],
+    "wrong": [
+     2
+    ],
+    "explain": "Line 3 uses \uc880 and -(\uc73c)\uc138\uc694, but it is still a command with a reason added afterwards. Lines 1, 2 and 4 open with an apology, a permission question or a remark about the cold and ask rather than tell."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Situation 2: write TWO different sentences asking the person to lower their voice or take the call outside. Use two different softening strategies, such as an apology opener, a request question or giving your reason. Korean.",
+    "hints": [
+     "Look back at lines 1, 2 and 4 for strategies you could reuse.",
+     "Give a reason that is about you, not an accusation."
+    ],
+    "placeholder": "\uc608: ...",
+    "minChars": 20,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "two separate sentences",
+      "mode": "any",
+      "patterns": [
+       "[.?!\u3002]\\s*[\uac00-\ud7a3]",
+       "\\n\\s*[\uac00-\ud7a3]"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "contains a softener",
+      "mode": "any",
+      "patterns": [
+       "\ud639\uc2dc",
+       "\uc8c4\uc1a1",
+       "\uc2e4\ub840",
+       "\uad1c\ucc2e\uc73c",
+       "\uc218 \uc788\uc744\uae4c\uc694",
+       "\uc8fc\uc2dc\uba74",
+       "\ub420\uae4c\uc694",
+       "\ubd80\ud0c1"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "asks as a request (question form or \uc8fc\uc2dc\uba74), not only a command",
+      "mode": "any",
+      "patterns": [
+       "\uae4c\uc694",
+       "\uc8fc\uc2dc\uba74",
+       "\uc8fc\uc2e4\ub798\uc694",
+       "\uc8fc\uc2e4 \uc218",
+       "\ubd80\ud0c1"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "gives a reason",
+      "mode": "any",
+      "patterns": [
+       "[\uac00-\ud7a3]\uc11c\uc694",
+       "[\uac00-\ud7a3]\uc11c\\s*(\uadf8\ub7f0\ub370|\uc8c4\uc1a1|\ubd80\ud0c1)",
+       "\ub54c\ubb38",
+       "\uac70\ub4e0\uc694",
+       "\ub294\ub370\uc694",
+       "\uc778\ub370\uc694",
+       "\uc9d1\uc911",
+       "\uc2dc\ud5d8",
+       "\uacf5\ubd80",
+       "\uc77d\uace0",
+       "\uc77d\uc5b4"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Are my two sentences different strategies, not the same one reworded?",
+     "Would I be comfortable receiving them from a stranger?",
+     "Does either sentence sound like an order?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\uc8c4\uc1a1\ud55c\ub370, \ud639\uc2dc \uc870\uae08\ub9cc \uc791\uac8c \ub9d0\uc500\ud574 \uc8fc\uc2e4 \uc218 \uc788\uc744\uae4c\uc694? \uc81c\uac00 \uc2dc\ud5d8\uacf5\ubd80\ub97c \ud558\uace0 \uc788\uc5b4\uc11c\uc694."
+     },
+     {
+      "text": "\uc2e4\ub840\ud569\ub2c8\ub2e4. \uc804\ud654 \uc18c\ub9ac\uac00 \uc870\uae08 \ucee4\uc11c \uadf8\ub7f0\ub370, \ud1b5\ud654\ub294 \ubc16\uc5d0\uc11c \ud574 \uc8fc\uc2dc\uba74 \uac10\uc0ac\ud558\uaca0\uc2b5\ub2c8\ub2e4.",
+      "note": "Uses \uc2e4\ub840\ud569\ub2c8\ub2e4 and a polite request form."
+     },
+     {
+      "text": "\uc2e4\ub840\ud569\ub2c8\ub2e4. \uc81c\uac00 \ucc45\uc744 \uc77d\uace0 \uc788\uc5b4\uc11c \uadf8\ub7f0\ub370, \uc870\uae08\ub9cc \uc791\uac8c \ub9d0\uc500\ud574 \uc8fc\uc2e4 \uc218 \uc788\uc744\uae4c\uc694",
+      "note": "No final punctuation is fine."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\uc870\uc6a9\ud788 \uc880 \ud558\uc138\uc694.",
+      "why": "Only a command with \uc880; no second sentence, no reason."
+     },
+     {
+      "text": "\uc8c4\uc1a1\ud55c\ub370 \uc870\uae08\ub9cc \uc870\uc6a9\ud788 \ud574 \uc8fc\uc138\uc694. \uc8c4\uc1a1\ud55c\ub370 \ubc16\uc5d0\uc11c \ud1b5\ud654\ud574 \uc8fc\uc138\uc694.",
+      "why": "Two apologies but both are commands with the same strategy, and no reason."
+     },
+     {
+      "text": "\uc8c4\uc1a1\ud55c\ub370 \ubc16\uc5d0\uc11c \ud1b5\ud654\ud574 \uc8fc\uc2e4 \uc218 \uc788\uc744\uae4c\uc694? \ud639\uc2dc \uc870\uc6a9\ud788 \ud574 \uc8fc\uc2e4 \uc218 \uc788\uc744\uae4c\uc694?",
+      "why": "Two requests with the same strategy and no reason."
+     }
+    ],
+    "humanReview": "Whether the two sentences really use different strategies needs a person."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Spotting a hidden command",
+    "full": "Picks line 3 and says why \uc880/-\uc138\uc694 does not soften it",
+    "partial": "Picks line 3 without reasons",
+    "none": "Picks another line"
+   },
+   {
+    "criterion": "Two strategies",
+    "full": "Two sentences with different softeners and a reason",
+    "partial": "Two sentences but the same strategy",
+    "none": "A single sentence or a command"
+   }
+  ],
+  "alternatives": [
+   "Some may feel line 3 is acceptable between strangers on a bus; the key states it is a command with a reason attached.",
+   "Ending with \ubd80\ud0c1\ub4dc\ub9bd\ub2c8\ub2e4 is also a softener."
+  ],
+  "hardCases": [
+   "A request with good wording but a blaming reason ('your voice is annoying') may pass the checks but need human review."
+  ],
+  "cautions": {
+   "language": "\uc880 is a softener but never changes the sentence type; the real change comes from asking (-\u3139\uae4c\uc694?) or apologising.",
+   "culture": "Directly asking strangers to be quiet is often softened heavily in Korea.",
+   "accessibility": "All sentences are plain text; no tone-of-voice cues are required."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Position of the unsoftened line; presence of two sentences, a softener and a reason"
+   ],
+   "human": [
+    "Different strategies and politeness"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k6-07",
+  "subject": "korean",
+  "grade": "K6",
+  "topic": "Misunderstandings",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "title": "Why is the clerk confused?",
+  "uiLang": "en",
+  "format": "judge-evidence-explain",
+  "generative": true,
+  "goal": "Explain a misunderstanding caused by answering \ub124 to a negative question and give a reply that cannot be misunderstood.",
+  "thinking": [
+   "Inferring a cause from a short dialogue",
+   "Rejecting plausible but wrong explanations",
+   "Producing a clear reply"
+  ],
+  "differsFromPlain": "Plain practice drills \ub124/\uc544\ub2c8\uc694 answers. Here a dialogue shows the answers do not mean what the speaker intended and you must say why.",
+  "prerequisites": [
+   "Knows \ub124 and \uc544\ub2c8\uc694",
+   "Can read a short caf\u00e9 dialogue"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "At a caf\u00e9 counter:\n\n\uc9c1\uc6d0: \uc5ec\uae30\uc11c \uc548 \ub4dc\uc138\uc694?\n\uc190\ub2d8: \ub124, \uc5ec\uae30\uc11c \uba39\uace0 \uac08 \uac70\uc608\uc694.\n\uc9c1\uc6d0: \ub124? \ud3ec\uc7a5\uc774\uc138\uc694, \uc544\ub2c8\uc138\uc694?\n\nThe customer wanted to eat inside, the clerk heard something else.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "What most likely caused the clerk's confusion?",
+    "hints": [
+     "Reread the clerk's first question: is it asking about eating here or about not eating here?",
+     "Compare the clerk's first question with the first word of the customer's answer: do they point the same way as the rest of the answer?"
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "\ub124 can only answer questions about the future, so it did not fit the clerk's question",
+      "reveals": "\ub124 answers any yes/no question; the question here is about the present. Look at what \ub124 agrees with."
+     },
+     {
+      "id": "b",
+      "text": "The customer's ending -\u3139 \uac70\uc608\uc694 is too casual for caf\u00e9 staff, so the clerk asked again",
+      "reveals": "-\u3139 \uac70\uc608\uc694 is a normal polite plan ending; the clerk's confusion comes from elsewhere."
+     },
+     {
+      "id": "c",
+      "text": "The clerk asked a negative question, so \ub124 was heard as 'I am not eating here'",
+      "reveals": "You noticed that \ub124 confirmed the negative question and clashed with the next words."
+     },
+     {
+      "id": "d",
+      "text": "The customer said \uc5ec\uae30\uc11c where \uc5ec\uae30\uc5d0\uc11c is required, so the place was not understood",
+      "reveals": "\uc5ec\uae30\uc11c is the normal short form of \uc5ec\uae30\uc5d0\uc11c; the place was clear."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "The clerk asked 'You are not eating here?' and \ub124 means 'that is right', i.e. 'I am not'. Then 'I'll eat here' contradicts it, so the clerk asks again."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "The clerk repeats: \uc5ec\uae30\uc11c \uc548 \ub4dc\uc138\uc694? Write a Korean reply that cannot be misunderstood and shows you will eat inside.",
+    "hints": [
+     "Do not rely on a bare \ub124 or \uc544\ub2c8\uc694; say the full idea.",
+     "Mention \uc5ec\uae30\uc11c (or \uc548\uc5d0\uc11c) and an eating verb."
+    ],
+    "placeholder": "\uc608: ...",
+    "minChars": 6,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "says you will eat here",
+      "mode": "any",
+      "patterns": [
+       "\uc5ec\uae30\uc11c\\s*(\uba39|\ub4dc|\ub9c8\uc2dc|\ub9c8\uc2e4)",
+       "\uc548\uc5d0\uc11c",
+       "\ub9e4\uc7a5\uc5d0\uc11c",
+       "\uc5ec\uae30\uc5d0\uc11c\\s*(\uba39|\ub4dc|\ub9c8\uc2dc)",
+       "\uba39\uace0\\s*(\uac08|\uac11)"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "[\uac00-\ud7a3]\uc694(?![\uac00-\ud7a3])|\uc2b5\ub2c8\ub2e4|[\uac11\ub0a9\ub78d\ub9bd\ubc09\uc2ed\uc785\uc7a1\ud569\ub429\uc635\ubd05\ub2d9\uc501]\ub2c8\ub2e4"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "not only a bare \ub124",
+      "mode": "none",
+      "patterns": [
+       "^\\s*\ub124[.!]?\\s*$"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "does not start with \ub124",
+      "mode": "none",
+      "patterns": [
+       "^\\s*\ub124"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my reply state the action, not only \ub124/\uc544\ub2c8\uc694?",
+     "Does it avoid the possible clash with the clerk's negative question?",
+     "Is the ending polite?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\uc544\ub2c8\uc694, \uc5ec\uae30\uc11c \uba39\uc744 \uac70\uc608\uc694."
+     },
+     {
+      "text": "\uc5ec\uae30\uc11c \uba39\uace0 \uac08\uac8c\uc694."
+     },
+     {
+      "text": "\uc800\ub294 \uc548\uc5d0\uc11c \uba39\uc744 \uac70\uc608\uc694."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\ub124.",
+      "why": "A bare \ub124 repeats the confusion."
+     },
+     {
+      "text": "\ub124, \uba39\uc5b4\uc694.",
+      "why": "Does not say where, so the clash remains."
+     },
+     {
+      "text": "\ub124, \uc5ec\uae30\uc11c \uba39\uace0 \uac08 \uac70\uc608\uc694.",
+      "why": "This is the customer's original reply; starting with \ub124 repeats the clash."
+     },
+     {
+      "text": "\ub124, \uc5ec\uae30\uc11c \uba39\uc5b4\uc694.",
+      "why": "Still starts with \ub124 to a negative question."
+     }
+    ],
+    "humanReview": "Whether the reply is natural and unambiguous needs a person."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Cause of the misunderstanding",
+    "full": "States that \ub124 confirmed the negative question and clashed with the follow-up",
+    "partial": "Says the answer was wrong but not why",
+    "none": "Blames pronunciation or vocabulary"
+   },
+   {
+    "criterion": "Clear reply",
+    "full": "Gives a reply that states where you will eat",
+    "partial": "Gives a correct but ambiguous reply",
+    "none": "Bare \ub124 or \uc544\ub2c8\uc694"
+   }
+  ],
+  "alternatives": [
+   "\uc544\ub2c8\uc694, \uba39\uc744 \uac70\uc608\uc694 is also a good answer (denying the negative question); both \uc544\ub2c8\uc694 and an explicit statement work."
+  ],
+  "hardCases": [
+   "Answering a negative question with a bare \uc544\ub2c8\uc694 can also be misunderstood; the check only forbids a reply that starts with \ub124."
+  ],
+  "cautions": {
+   "language": "In Korean \ub124/\uc544\ub2c8\uc694 answer to the statement as asked, not to the facts.",
+   "culture": "Customers say 'for here' or 'take out' in English cafes; Korean clerks ask in both directions.",
+   "accessibility": "Dialogue is plain text, no sound required."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Key of the cause; presence of 'eating here' wording"
+   ],
+   "human": [
+    "Naturalness"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k6-08",
+  "subject": "korean",
+  "grade": "K6",
+  "topic": "Repairs",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "title": "The Monday that was two Mondays",
+  "uiLang": "en",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Find which repair attempts fail to remove the ambiguity and write a repair that cannot be misread.",
+  "thinking": [
+   "Evaluating repairs",
+   "Noticing that repeating an ambiguous phrase does not repair it",
+   "Writing an unambiguous correction"
+  ],
+  "differsFromPlain": "Plain practice drills date words. Here you judge why a repair fails and write one with unambiguous information.",
+  "prerequisites": [
+   "Knows \uc774\ubc88 \uc8fc / \ub2e4\uc74c \uc8fc",
+   "Can read dates written with \uc77c and \uc694\uc77c"
+  ],
+  "minutes": 12,
+  "curriculum": null,
+  "material": "Today is Sunday, the 1st. You and your colleague \uc9c0\uc218 are making plans. People differ on whether Sunday belongs to this week or the next, so '\ub2e4\uc74c \uc8fc \uc6d4\uc694\uc77c' can mean tomorrow (the 2nd) or the Monday after (the 9th). You meant the 9th. (Line numbers start at 1.)",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "Two of your own lines try to repair the misunderstanding but both fail. Pick one of them.",
+    "hints": [
+     "Look at which words the repair uses to name the day.",
+     "For each repair, ask what new information it gives \uc9c0\uc218 that she did not already have."
+    ],
+    "lines": [
+     "\ub098: \uadf8\ub7fc \ub2e4\uc74c \uc8fc \uc6d4\uc694\uc77c \uc624\ud6c4 2\uc2dc\uc5d0 \ub9cc\ub098\uc694.",
+     "\uc9c0\uc218: \ub124, \uadf8\ub7fc \ub0b4\uc77c \uc624\ud6c4 2\uc2dc\uc5d0 \uce74\ud398\uc5d0\uc11c \ubd2c\uc694!",
+     "\ub098: \uc544, \ub0b4\uc77c\uc774 \uc544\ub2c8\ub77c \ub2e4\uc74c \uc8fc \uc6d4\uc694\uc77c\uc774\uc5d0\uc694.",
+     "\uc9c0\uc218: \ub2e4\uc74c \uc8fc \uc6d4\uc694\uc77c\uc774\uba74 \ub0b4\uc77c \uc544\ub2c8\uc5d0\uc694?",
+     "\ub098: \uc544\ub2c8\uc694, \ub0b4\uc77c\uc740 \uc774\ubc88 \uc8fc \uc6d4\uc694\uc77c\uc774\uace0, \uc81c\uac00 \ub9d0\ud55c \uac74 \ub2e4\uc74c \uc8fc \uc6d4\uc694\uc77c\uc774\uc5d0\uc694."
+    ],
+    "wrong": [
+     2,
+     4
+    ],
+    "explain": "Lines 3 and 5 both repeat \ub2e4\uc74c \uc8fc \uc6d4\uc694\uc77c / \uc774\ubc88 \uc8fc and rely on the very week boundary the two do not share, so they cannot settle the difference. A date (9\uc77c) would."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write your repair message to \uc9c0\uc218 in Korean (2-3 sentences, polite) so that no confusion remains.",
+    "hints": [
+     "Use something that does not depend on who counts weeks differently.",
+     "Apologise briefly for the confusion and ask her to confirm."
+    ],
+    "placeholder": "\uc608: ...",
+    "minChars": 15,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "names the intended date (9\uc77c)",
+      "mode": "any",
+      "patterns": [
+       "(?<![0-9])9\\s*\uc77c",
+       "\uad6c\\s*\uc77c"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "apology or confirmation",
+      "mode": "any",
+      "patterns": [
+       "\uc8c4\uc1a1",
+       "\ubbf8\uc548",
+       "\ud5f7\uac08",
+       "\ud63c\ub780",
+       "\ud655\uc778",
+       "\ub9de",
+       "\uad1c\ucc2e"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "[\uac00-\ud7a3]\uc694(?![\uac00-\ud7a3])|\uc2b5\ub2c8\ub2e4|[\uac11\ub0a9\ub78d\ub9bd\ubc09\uc2ed\uc785\uc7a1\ud569\ub429\uc635\ubd05\ub2d9\uc501]\ub2c8\ub2e4"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my message contain information that cannot be read two ways?",
+     "Did I invite her to confirm?",
+     "Is it polite?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\ud63c\ub780\uc744 \ub4dc\ub824 \uc8c4\uc1a1\ud574\uc694. \uc81c\uac00 \ub9d0\ud55c \uac74 9\uc77c \uc6d4\uc694\uc77c\uc774\uc5d0\uc694. 9\uc77c \uc624\ud6c4 2\uc2dc\ub3c4 \uad1c\ucc2e\uc73c\uc138\uc694?"
+     },
+     {
+      "text": "\uc544, \ud5f7\uac08\ub9ac\uac8c \ub9d0\ud574\uc11c \ubbf8\uc548\ud574\uc694. \ub0b4\uc77c \ub9d0\uace0 9\uc77c \uc6d4\uc694\uc77c \uc624\ud6c4 2\uc2dc\uc608\uc694. \uad1c\ucc2e\uc544\uc694?",
+      "note": "Names the date and rejects tomorrow."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\uc544\ub2c8\uc694, \ub2e4\uc74c \uc8fc \uc6d4\uc694\uc77c\uc774\uc5d0\uc694.",
+      "why": "Repeats the ambiguous phrase and gives no date."
+     },
+     {
+      "text": "\uc8c4\uc1a1\ud574\uc694, \ub0b4\uc77c \ub9d0\uace0 5\uc77c \uc6d4\uc694\uc77c\uc774\uc5d0\uc694. \uad1c\ucc2e\uc73c\uc138\uc694?",
+      "why": "Names a date, but the wrong one (5\uc77c, not 9\uc77c)."
+     }
+    ],
+    "humanReview": "Tone and naturalness of the repair need a person."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Judging repairs",
+    "full": "Identifies that repeating \ub2e4\uc74c \uc8fc does not repair, and explains",
+    "partial": "Picks the right line without explaining",
+    "none": "Picks line 2 or 4"
+   },
+   {
+    "criterion": "Unambiguous repair",
+    "full": "Names a date, confirms with \uc9c0\uc218, polite",
+    "partial": "Names the date without confirmation",
+    "none": "No date"
+   }
+  ],
+  "alternatives": [
+   "The key allows line 3 or line 5.",
+   "Weekday plus date ('9\uc77c \uc6d4\uc694\uc77c') is the usual repair; 'Monday the 9th' in Korean order is fine."
+  ],
+  "hardCases": [
+   "Learners who write '9/9' or 'nine' need the check to be tolerant; the pattern accepts 9\uc77c or \uad6c\uc77c only. A human decides on other formats."
+  ],
+  "cautions": {
+   "language": "Numbers with \uc77c (days) are used; the pattern also accepts \uc6d4/\uc77c.",
+   "culture": "Whether the week starts on Sunday or Monday varies; dates avoid the issue.",
+   "accessibility": "Plain text, dates written in digits for screen readers."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Position of failed repair lines; presence of a date, apology or confirmation"
+   ],
+   "human": [
+    "Naturalness and tone"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k6-09",
+  "subject": "korean",
+  "grade": "K6",
+  "topic": "Invitations (indirect refusal)",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "title": "Is that a yes?",
+  "uiLang": "en",
+  "format": "reveal-and-revise",
+  "generative": false,
+  "goal": "Revise a reading of an indirect reply as more of the exchange appears and choose a gracious next move.",
+  "thinking": [
+   "Weighing partial evidence",
+   "Revising a judgement as hints build up",
+   "Choosing a response that respects the other person"
+  ],
+  "differsFromPlain": "Plain practice reads one reply as yes or no. Here the answer is gradually revealed and you must change your reading.",
+  "prerequisites": [
+   "Knows \ud55c\ubc88 \ubcfc\uac8c\uc694 and \uc2dc\uac04 \ub418\uba74 as phrases",
+   "Can read short dialogues"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "You invited a colleague, \uc9c0\uc218, to a film on Saturday. She did not answer 'yes' or 'no' directly. Read her replies one by one.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "Read each part, choose the most likely reading, then continue.",
+    "hints": [
+     "Answer only for what you have read so far.",
+     "Look at what she does not say."
+    ],
+    "stages": [
+     {
+      "info": "\ub098: \uc774\ubc88 \ud1a0\uc694\uc77c\uc5d0 \uac19\uc774 \uc601\ud654 \ubcfc\ub798\uc694?\n\uc9c0\uc218: \ud1a0\uc694\uc77c\uc774\uc694? \uc74c\u2026 \ud55c\ubc88 \ubcfc\uac8c\uc694.",
+      "ask": "What does she most likely mean?",
+      "options": [
+       {
+        "id": "a",
+        "text": "She has said yes and will come",
+        "reveals": "You treated \ud55c\ubc88 \ubcfc\uac8c\uc694 as an acceptance; later hints may change that."
+       },
+       {
+        "id": "b",
+        "text": "She is undecided and hedging",
+        "reveals": "You noticed the pause and the open wording."
+       },
+       {
+        "id": "c",
+        "text": "She has clearly said no",
+        "reveals": "There is no clear refusal word."
+       },
+       {
+        "id": "d",
+        "text": "She wants a different film",
+        "reveals": "She does not mention any film."
+       }
+      ],
+      "reasonable": [
+       "a",
+       "b"
+      ],
+      "after": "At this point it is ambiguous: \ud55c\ubc88 \ubcfc\uac8c\uc694 can mean 'I'll see' and the pause is a signal."
+     },
+     {
+      "info": "\uc9c0\uc218: \uc694\uc998 \uc880 \ubc14\ube60\uc11c\uc694\u2026 \uc77c\uc774 \ub9ce\uc544\uc11c \uc798 \ubaa8\ub974\uaca0\uc5b4\uc694.",
+      "ask": "How does your reading change?",
+      "options": [
+       {
+        "id": "a",
+        "text": "She is more likely to decline, softly",
+        "reveals": "You used the reason about being busy together with the earlier hesitation."
+       },
+       {
+        "id": "b",
+        "text": "She is still likely to say yes",
+        "reveals": "The reason given points towards trouble in coming."
+       },
+       {
+        "id": "c",
+        "text": "She wants you to choose the time",
+        "reveals": "She did not ask for a time."
+       },
+       {
+        "id": "d",
+        "text": "She is angry",
+        "reveals": "The tone is soft, not angry."
+       }
+      ],
+      "reasonable": [
+       "a"
+      ],
+      "after": "Giving a busy reason after hesitating is a typical way to decline without saying no."
+     },
+     {
+      "info": "\uc9c0\uc218: \ub2e4\uc74c\uc5d0 \uc2dc\uac04 \ub418\uba74 \uc81c\uac00 \uc5f0\ub77d\ud560\uac8c\uc694.",
+      "ask": "What is the situation now?",
+      "options": [
+       {
+        "id": "a",
+        "text": "She will contact you tomorrow",
+        "reveals": "There is no day mentioned; \ub2e4\uc74c\uc5d0 is vague."
+       },
+       {
+        "id": "b",
+        "text": "She is angry with you",
+        "reveals": "Nothing suggests anger."
+       },
+       {
+        "id": "c",
+        "text": "A soft no for this Saturday, leaving the next move to her",
+        "reveals": "You combined the hesitation, the busy reason and the vague later."
+       },
+       {
+        "id": "d",
+        "text": "She will definitely come on Saturday",
+        "reveals": "She does not say she will come."
+       }
+      ],
+      "reasonable": [
+       "c"
+      ],
+      "after": "All three hints point to a soft refusal, though she may also genuinely contact you later."
+     }
+    ],
+    "reflect": "Notice that one hedge is weak evidence but three hints in a row (pause, busy reason, vague later) make 'soft no' much more likely than 'yes'."
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "What is the best way to reply?",
+    "hints": [
+     "Think about how she can keep face and still feel invited.",
+     "Decide whether your reply pressures her."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "\uadf8\ub7fc \uc77c\uc694\uc77c\uc740 \uc5b4\ub54c\uc694? \uadf8\uac83\ub3c4 \uc548 \ub418\uba74 \ub9d0\ud574 \uc918\uc694.",
+      "reveals": "You offer an alternative day; reasonable but check that it does not pressure her."
+     },
+     {
+      "id": "b",
+      "text": "\uc54c\uaca0\uc5b4\uc694. \ubc14\uc058\uba74 \uc5b4\uca54 \uc218 \uc5c6\uc8e0. \uc2dc\uac04 \ub420 \ub54c \ud3b8\ud558\uac8c \ub9d0\ud574 \uc918\uc694.",
+      "reveals": "You accept her soft no without pressing."
+     },
+     {
+      "id": "c",
+      "text": "\uc65c \uc548 \ub3fc\uc694? \uc774\uc720\ub97c \ub9d0\ud574 \uc918\uc694.",
+      "reveals": "This demands an explanation she tried to avoid."
+     },
+     {
+      "id": "d",
+      "text": "\uc5f0\ub77d \uc548 \ud558\uba74 \uc11c\uc6b4\ud560 \uac70\uc608\uc694.",
+      "reveals": "This adds emotional pressure."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "A short, relaxed reply respects her soft no and keeps the door open. Offering another day can also be fine if it is light.",
+    "acceptable": [
+     {
+      "ids": [
+       "a"
+      ],
+      "reason": "Offering a different day is acceptable if it is light and you accept a no."
+     }
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Revising the reading",
+    "full": "Changes from undecided to soft no and cites the hints",
+    "partial": "Reaches the soft no without citing hints",
+    "none": "Stays with yes"
+   },
+   {
+    "criterion": "Gracious reply",
+    "full": "Accepts her soft no while keeping the door open",
+    "partial": "Offers another day but is a bit pushy",
+    "none": "Presses for a reason or guilt"
+   }
+  ],
+  "alternatives": [
+   "b in the last step is acceptable.",
+   "Stage 1 admits both 'yes' and 'undecided'."
+  ],
+  "hardCases": [
+   "She may truly contact you; the task asks for the most likely reading, not certainty."
+  ],
+  "cautions": {
+   "language": "\ud55c\ubc88 \ubcfc\uac8c\uc694 and \ub2e4\uc74c\uc5d0 are vague phrases often used to avoid saying no.",
+   "culture": "Indirect refusals are common in Korean and some other cultures; direct refusals may feel impolite.",
+   "accessibility": "Dialogue is plain text; no colour cues."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Per-stage reasonableness; key of the reply"
+   ],
+   "human": [
+    "Whether the learner's rationale matches the hints"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k6-10",
+  "subject": "korean",
+  "grade": "K6",
+  "topic": "Shops (delivery)",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "title": "Wrong dish, right words",
+  "uiLang": "en",
+  "format": "rewrite-for-audience",
+  "generative": true,
+  "goal": "Decide what a restaurant owner needs to know and rewrite a blunt complaint as a polite but clear message.",
+  "thinking": [
+   "Selecting needed information",
+   "Rewriting for an audience",
+   "Balancing politeness with clarity"
+  ],
+  "differsFromPlain": "Plain practice asks for a complaint sentence. Here you decide what information is needed and rewrite a blunt message for the owner.",
+  "prerequisites": [
+   "Knows \uc8fc\ubb38, \ubc30\ub2ec, \uad50\ud658, \ud658\ubd88",
+   "Knows polite requests with -\uc544/\uc5b4 \uc8fc\uc138\uc694"
+  ],
+  "minutes": 12,
+  "curriculum": null,
+  "material": "You ordered \uae40\uce58\ucc0c\uac1c through a delivery app but \ub41c\uc7a5\ucc0c\uac1c arrived. You wrote this blunt message: '\uc74c\uc2dd \ud2c0\ub838\uc5b4\uc694. \ud658\ubd88\ud574\uc694.' You will send a new message to the owner (an adult you do not know) through the app chat.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which pieces of information will help the owner fix the problem? Choose all that apply.",
+    "hints": [
+     "Think about what the owner needs in order to find and fix this particular order.",
+     "Add only what they need to act."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "Which dish you ordered and which one arrived",
+      "reveals": "You identified the core fact of the problem."
+     },
+     {
+      "id": "b",
+      "text": "Your complaints about the prices on their menu",
+      "reveals": "This is a different matter and would only bury the real problem."
+     },
+     {
+      "id": "c",
+      "text": "What you would like them to do (resend or refund)",
+      "reveals": "You named the outcome so the owner can choose quickly."
+     },
+     {
+      "id": "d",
+      "text": "When you placed the order",
+      "reveals": "You included the information that lets them find the order."
+     },
+     {
+      "id": "e",
+      "text": "A warning that you will write a bad review",
+      "reveals": "This adds pressure but no information they need to fix the order."
+     }
+    ],
+    "correct": [
+     "a",
+     "c",
+     "d"
+    ],
+    "explain": "The owner can fix the order if they know what is wrong, which order it is, and what you want. Threats and unrelated complaints do not help.",
+    "multi": true
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Rewrite your blunt message for the owner: say what happened, what you ask for, and be polite (2-3 sentences, Korean).",
+    "hints": [
+     "Start with a greeting or an apology for the trouble.",
+     "Replace \ud658\ubd88\ud574\uc694 with a polite question or request."
+    ],
+    "placeholder": "\uc608: ...",
+    "minChars": 20,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "states the problem",
+      "mode": "any",
+      "patterns": [
+       "\uc798\ubabb",
+       "\ub2e4\ub978",
+       "\uc548 ?\uc654",
+       "\ube60\uc84c",
+       "\ube60\uc838",
+       "\ub204\ub77d",
+       "\ubc14\ub00c\uc5b4",
+       "\ubc14\ub010",
+       "\ub300\uc2e0",
+       "\ud2c0\ub838",
+       "\ud2c0\ub9ac",
+       "\uc654\uc5b4\uc694",
+       "\uc654\ub294\ub370",
+       "\uc654\uc2b5\ub2c8\ub2e4",
+       "\ub3c4\ucc29",
+       "\ubc1b\uc558",
+       "\uc2dc\ucf30\ub294\ub370",
+       "\uc8fc\ubb38\ud588\ub294\ub370",
+       "\ubc30\ub2ec\ub410",
+       "\ubc30\ub2ec\ub418\uc5c8"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "states the request",
+      "mode": "any",
+      "patterns": [
+       "\uad50\ud658",
+       "\ud658\ubd88",
+       "\ub2e4\uc2dc \ubcf4\ub0b4",
+       "\uc7ac\ubc30\ub2ec",
+       "\ub2e4\uc2dc \ubc30\ub2ec",
+       "\ubcf4\ub0b4 \uc8fc",
+       "\ubc14\uafd4"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "softener or thanks",
+      "mode": "any",
+      "patterns": [
+       "\uc8c4\uc1a1",
+       "\ubc88\uac70\ub85c",
+       "\ubd80\ud0c1",
+       "\uac10\uc0ac",
+       "\uc2e4\ub840",
+       "\ud639\uc2dc",
+       "\uace0\ub9d9",
+       "\uc8fc\uc2dc\uaca0",
+       "\uc8fc\uc2e4 \uc218",
+       "\uc8fc\uc2dc\uba74",
+       "\uc548\ub155\ud558\uc138\uc694",
+       "\ubd88\ud3b8",
+       "\uc5ec\ucb64"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "no rude/threatening wording",
+      "mode": "none",
+      "patterns": [
+       "\uc9dc\uc99d",
+       "\ucd5c\uc545",
+       "\ud654\uac00",
+       "\ub2f9\uc7a5",
+       "\ucc45\uc784",
+       "\ub9d0\ub3c4 \uc548",
+       "\uc5b4\uc774\uc5c6",
+       "\ub9ac\ubdf0"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I give facts the owner can act on?",
+     "Did I ask rather than order?",
+     "Does the message stay calm?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\uc548\ub155\ud558\uc138\uc694, \ubc29\uae08 \uc8fc\ubb38\ud55c \uae40\uce58\ucc0c\uac1c \ub300\uc2e0 \ub41c\uc7a5\ucc0c\uac1c\uac00 \uc654\uc5b4\uc694. \ubc88\uac70\ub85c\uc6b0\uc2dc\uaca0\uc9c0\ub9cc \ub9de\ub294 \uba54\ub274\ub85c \ub2e4\uc2dc \ubcf4\ub0b4 \uc8fc\uc2e4 \uc218 \uc788\uc744\uae4c\uc694? \ubd80\ud0c1\ub4dc\ub9bd\ub2c8\ub2e4."
+     },
+     {
+      "text": "\uc8c4\uc1a1\ud558\uc9c0\ub9cc \uc8fc\ubb38\ud55c \uc74c\ub8cc\uac00 \ube60\uc838 \uc788\uc5c8\uc5b4\uc694. \ud639\uc2dc \ud658\ubd88\ud574 \uc8fc\uc2e4 \uc218 \uc788\uc744\uae4c\uc694? \uac10\uc0ac\ud569\ub2c8\ub2e4.",
+      "note": "Uses a different problem; same structure."
+     },
+     {
+      "text": "\uc548\ub155\ud558\uc138\uc694. \uae40\uce58\ucc0c\uac1c\ub97c \uc2dc\ucf30\ub294\ub370 \ub41c\uc7a5\ucc0c\uac1c\uac00 \uc654\uc5b4\uc694. \uc8c4\uc1a1\ud558\uc9c0\ub9cc \uad50\ud658\ud574 \uc8fc\uc2e4 \uc218 \uc788\uc744\uae4c\uc694?"
+     },
+     {
+      "text": "\uc548\ub155\ud558\uc138\uc694. \uc8fc\ubb38\ud55c \uae40\uce58\ucc0c\uac1c \ub300\uc2e0 \ub41c\uc7a5\ucc0c\uac1c\uac00 \ub3c4\ucc29\ud588\uc2b5\ub2c8\ub2e4. \ub2e4\uc2dc \ubcf4\ub0b4 \uc8fc\uc2dc\uaca0\uc5b4\uc694?"
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\uc74c\uc2dd \ud2c0\ub838\uc5b4\uc694! \ud658\ubd88\ud574\uc694!",
+      "why": "Blunt, no softener, no polite request."
+     }
+    ],
+    "humanReview": "Naturalness of tone and whether the facts are sufficient need a person."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Needed information",
+    "full": "Chooses the three useful pieces",
+    "partial": "Includes one unneeded piece",
+    "none": "Chooses mostly unneeded pieces"
+   },
+   {
+    "criterion": "Rewriting",
+    "full": "States the problem, asks politely, stays calm",
+    "partial": "Polite but unclear about the problem",
+    "none": "Blunt or threatening"
+   }
+  ],
+  "alternatives": [
+   "A learner may choose resend or refund; both are valid requests.",
+   "Mentioning the order number is also useful."
+  ],
+  "hardCases": [
+   "A message that mentions 'review' neutrally might be flagged by the none-check even though not a threat; human review decides."
+  ],
+  "cautions": {
+   "language": "Customers usually address owners politely with -\uc2dc and -\u3142\ub2c8\ub2e4; \uc0ac\uc7a5\ub2d8 is a common address.",
+   "culture": "Delivery apps with chat to owners are common in Korea.",
+   "accessibility": "Plain text, no images."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of information; problem, request, softener and absence of rude wording"
+   ],
+   "human": [
+    "Tone and sufficiency of the facts"
+   ]
+  },
+  "status": "reviewed-ai"
+ }
+]

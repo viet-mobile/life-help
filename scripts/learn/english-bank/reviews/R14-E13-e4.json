@@ -1,0 +1,66 @@
+{
+ "packet": "E13-e4",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 14,
+  "questions": 26
+ },
+ "patches": [
+  {
+   "item": "5435f4c1",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Where does the boy turn left?",
+      "o": [
+       "At the bank",
+       "At the school",
+       "At the flower shop",
+       "At the park"
+      ],
+      "a": 0,
+      "why": "Turn left at the bank."
+     },
+     {
+      "q": "What is next to the post office?",
+      "o": [
+       "A bookstore",
+       "A library",
+       "A flower shop",
+       "A bakery"
+      ],
+      "a": 2,
+      "why": "It is next to the flower shop. It은 우체국을 가리켜요."
+     },
+     {
+      "q": "How long does it take on foot?",
+      "o": [
+       "Two minutes",
+       "Five minutes",
+       "Ten minutes",
+       "Twenty minutes"
+      ],
+      "a": 1,
+      "why": "it takes five minutes on foot."
+     },
+     {
+      "q": "What does the girl say about the distance?",
+      "o": [
+       "It is very far.",
+       "It is too far to walk.",
+       "It is across the river.",
+       "It is not far."
+      ],
+      "a": 3,
+      "why": "Is it far? 질문에 No라고 답했어요."
+     }
+    ]
+   },
+   "why": "q2 distractor A bank replaced by A bookstore (option text only; no identity field changed)",
+   "severity": "minor"
+  }
+ ],
+ "ok": 25,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

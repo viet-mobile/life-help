@@ -5,16 +5,29 @@ import { ACHIEVEMENTS } from "@/lib/learn/domain/achievements";
 import { dayKey } from "@/lib/learn/domain/dates";
 import { levelProgress } from "@/lib/learn/domain/level";
 import { recommendNext, weakestSkills } from "@/lib/learn/domain/path";
+import { BandChip } from "./BandChip";
 import { ensureQuest } from "@/lib/learn/domain/quests";
 import { displayStreak } from "@/lib/learn/domain/streak";
 import { avatarEmoji } from "@/lib/learn/avatars";
 import { useLearner } from "./LearnerProvider";
 import { LevelUnavailable } from "./LevelUnavailable";
+import { thinkLangFor } from "@/lib/think/lang";
+import { hubLabels } from "@/components/think/hubLabels";
+import { CADENCE_TEXT } from "@/lib/think/cadence";
+import { flowView } from "@/lib/think/flow";
+import { ThinkQuickEntry } from "../think/ThinkQuickEntry";
+import { coverageFor, hasGap } from "@/lib/learn/coverage";
+import { readLedger } from "../think/ThinkOffer";
 import { QuestList } from "./QuestList";
 import { SkillBars } from "./SkillBars";
+import { MathMotionEntry } from "./MathMotion";
 
 export function Dashboard() {
-  const { state, index, t, href, mode, accountsEnabled, site } = useLearner();
+  const { state, index, t, href, mode, accountsEnabled, site, locale } = useLearner();
+  const thinkLang = thinkLangFor(locale, site);
+  const thinkText = hubLabels(t);
+  const cadence = flowView(readLedger(site)); // counted per distinct solved / revealed question, retries never count (lib/think/flow.ts)
+  const coverage = coverageFor(site, locale);
   const now = new Date();
   const level = levelProgress(state.totalXp);
   const rec = recommendNext(state, index, now);
@@ -51,10 +64,24 @@ export function Dashboard() {
 
       <section className="l-card l-card-accent l-stack" aria-labelledby="cta-h">
         <h2 id="cta-h" className="l-h2">{t("dash.continue")}</h2>
-        <p>{ctaLabel}</p>
-        <Link className="l-btn l-btn-light l-btn-block" href={ctaHref}>▶ {t("dash.continue")}</Link>
-        {site === "korean" && <Link className="l-btn l-btn-ghost l-btn-block" href={href("/modes")}>{t("modes.title")}</Link>}
+        <p>{ctaLabel}{site === "korean" && rec.kind === "lesson" && <> <BandChip lessonId={rec.lessonId} t={t} /></>}</p>
+        <Link className="l-btn l-btn-light l-btn-block" href={ctaHref}><span className="l-arrow">▶</span> {t("dash.continue")}</Link>
+        <Link className="l-btn l-btn-ghost l-btn-block" href={href("/modes")}>{t("modes.title")}</Link>
       </section>
+
+      {hasGap(coverage) && <div className="l-panel l-panel-hint" role="note" data-testid="coverage-notice">{t("dash.coverage", { served: coverage.served.toLocaleString(locale), total: coverage.total.toLocaleString(locale) })}</div>}
+
+      <Link className="l-card l-stack" data-testid="think-card" href={href("/think")} style={{ textDecoration: "none", color: "inherit" }}>
+        <h2 className="l-h2">🧠 {thinkText.title}</h2>
+        <p className="l-muted">{thinkText.intro}</p>
+        <p data-testid="think-cadence" style={cadence.owed > 0 ? { fontWeight: 600 } : undefined} className={cadence.owed > 0 ? undefined : "l-muted"}>
+          {cadence.owed > 0 ? CADENCE_TEXT[thinkLang].unlocked(cadence.owed) : CADENCE_TEXT[thinkLang].toNext(cadence.toNext)}
+        </p>
+        <span className="l-btn l-btn-ghost l-btn-block">{thinkText.tryOne}</span>
+      </Link>
+
+      <ThinkQuickEntry />
+      {site === "math" && <MathMotionEntry />}
 
       {!state.diagnosticDone && (
         <Link className="l-card" href={href("/diagnostic")} style={{ textDecoration: "none", color: "inherit", display: "block", borderColor: "var(--l-accent)" }}>

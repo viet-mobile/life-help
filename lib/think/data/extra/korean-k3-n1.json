@@ -1,0 +1,1269 @@
+[
+ {
+  "id": "n-k-k3-01",
+  "subject": "korean",
+  "grade": "K3",
+  "topic": "Frequency words: claim versus evidence",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "A weekend at home?",
+  "uiLang": "en",
+  "format": "judge-evidence-explain",
+  "generative": true,
+  "goal": "Compare a classmate's strong claim with a short diary, choose the frequency word that the evidence supports, and explain why 'always' is too much.",
+  "thinking": [
+   "Claim versus evidence",
+   "Counting before judging",
+   "One counter-example breaks 'always'"
+  ],
+  "differsFromPlain": "Plain practice asks the meaning of 항상, 보통 and 가끔. Here you count real diary days, decide which word the evidence supports, and use a counter-example to answer a claim.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows 항상 (always) and 아니에요 (is not); the other frequency words (보통, 가끔, 거의) are glossed in the hints and the explanation",
+   "Knows 주말 and place + -에서"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "A classmate says: \"세진은 주말에 항상 집에 있어요.\" You read 세진's weekend diary for four weeks:\n\n1주 토요일: 집에서 쉬었어요.\n1주 일요일: 집에서 책을 읽었어요.\n2주 토요일: 친구랑 극장에서 영화를 봤어요.\n2주 일요일: 집에서 쉬었어요.\n3주 토요일: 집에서 게임을 했어요.\n3주 일요일: 집에서 청소를 했어요.\n4주 토요일: 집에서 쉬었어요.\n4주 일요일: 공원에서 자전거를 탔어요.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which sentence about 세진 is best supported by the whole diary?",
+    "options": [
+     {
+      "id": "a",
+      "text": "세진은 주말에 항상 집에 있어요.",
+      "reveals": "Two of the eight days were spent outside (a cinema and a park), so 'always' goes further than the diary does."
+     },
+     {
+      "id": "b",
+      "text": "세진은 주말에 집에 한 번도 없어요.",
+      "reveals": "Six of the eight days were at home, so 'never at home' is the opposite of what the diary shows."
+     },
+     {
+      "id": "c",
+      "text": "세진은 주말에 보통 집에 있어요."
+     },
+     {
+      "id": "d",
+      "text": "세진은 주말에 가끔 집에 있어요.",
+      "reveals": "'가끔' means only now and then. The diary shows home on most days, which is more than 'sometimes'."
+     },
+     {
+      "id": "e",
+      "text": "세진은 주말에 집에 거의 없어요.",
+      "reveals": "'거의 없어요' means almost never at home, which is the reverse of six days out of eight at home."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "Count the days: 6 of 8 weekend days were at home, 2 were not. A word for 'most of the time' (보통) fits; a word for 'every time' (항상) is too strong, and 'sometimes' or 'hardly ever' is too weak.",
+    "hints": [
+     "Count how many of the 8 weekend days were spent at home and how many were not.",
+     "Match your two numbers to the words: 항상 = every time, 보통 = most of the time, 가끔 = now and then, 거의 없어요 = hardly ever."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "Your classmate says '세진은 주말에 항상 집에 있어요.' Which diary entries show that this claim is not true? Choose all that apply.",
+    "options": [
+     {
+      "id": "a",
+      "text": "1주 토요일: 집에서 쉬었어요.",
+      "reveals": "This day was at home, so it agrees with the claim. It cannot show the claim is wrong."
+     },
+     {
+      "id": "b",
+      "text": "2주 토요일: 친구랑 극장에서 영화를 봤어요."
+     },
+     {
+      "id": "c",
+      "text": "3주 일요일: 집에서 청소를 했어요.",
+      "reveals": "This day was at home too, so it agrees with the claim."
+     },
+     {
+      "id": "d",
+      "text": "4주 일요일: 공원에서 자전거를 탔어요."
+     }
+    ],
+    "correct": [
+     "b",
+     "d"
+    ],
+    "acceptable": [
+     {
+      "ids": [
+       "b"
+      ],
+      "reason": "One counter-example is already enough to break '항상'; the second one, 4주 일요일, shows it was not a one-off."
+     }
+    ],
+    "explain": "A claim with 'always' is broken by a single day that does not fit. Days spent at home only agree with the claim; they can never prove it, because the claim is about every day.",
+    "hints": [
+     "The claim is about EVERY weekend day. Which kind of day would break it: one that fits the claim or one that does not?",
+     "For each entry, decide: does it fit the claim or break it?"
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Answer your classmate in Korean (polite -요 speech). Say that '항상' is not right, and give one day from the diary as evidence.",
+    "placeholder": "예: ...",
+    "minChars": 10,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "points at an outside day or place (공원, 자전거, 영화, 극장, 2주 토요일, 4주 일요일 ...)",
+      "mode": "any",
+      "patterns": [
+       "공원",
+       "자전거",
+       "영화",
+       "극장",
+       "밖",
+       "2\\s*주\\s*(의\\s*)?토",
+       "4\\s*주\\s*(의\\s*)?일",
+       "park",
+       "cinema|movie|bike"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "does not simply agree with '항상'",
+      "mode": "none",
+      "patterns": [
+       "^\\s*(네|예|맞아요|맞습니다|맞네요)[,.! ]"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "limits the claim (항상 ... 아니, 보통, 대부분 ...)",
+      "mode": "any",
+      "patterns": [
+       "항상.{0,14}(아니|않|없|틀리|맞지)",
+       "아니(에요|예요|요)|아닙니다",
+       "보통",
+       "대부분",
+       "때도 있",
+       "날도 있",
+       "not always|isn't always|is not always"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I name one specific day or place from the diary?",
+     "Did I say 'not always' instead of 'never'?",
+     "Is my answer friendly and not harsh?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "항상은 아니에요. 4주 일요일에는 공원에서 자전거를 탔어요."
+     },
+     {
+      "text": "세진은 보통 집에 있지만 항상 집에 있는 건 아니에요. 2주 토요일에 극장에서 영화를 봤어요.",
+      "note": "Names the better word and gives evidence."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "맞아요. 세진은 항상 집에 있어요.",
+      "why": "Agrees with the claim that the diary contradicts."
+     },
+     {
+      "text": "항상 아니에요.",
+      "why": "Rejects the claim but gives no day from the diary and is too short."
+     },
+     {
+      "text": "세진은 주말에 집에 한 번도 없어요.",
+      "why": "Swings to the opposite extreme and does not point at a diary entry."
+     },
+     {
+      "text": "항상은 아니에요. 2주 일요일에 집에서 쉬었어요.",
+      "why": "Cites a day at home as evidence, but that day agrees with the claim."
+     },
+     {
+      "text": "세진은 가끔 집에 있어요. 극장에 갔어요.",
+      "why": "Gives a wrong frequency word and never says that 항상 is not right."
+     }
+    ],
+    "humanReview": "Whether the evidence the learner cites really matches the diary and the sentence is natural.",
+    "hints": [
+     "Start with the part that says 'not always', then add one entry from the diary.",
+     "Say where 세진 was on that day, using -에서."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Matching the word to the evidence",
+    "full": "Chooses 보통 after counting, and picks exactly the two entries outside the home",
+    "partial": "Picks one counter-example or a word that is only slightly too strong or too weak",
+    "none": "Accepts 항상 or picks entries that agree with the claim"
+   },
+   {
+    "criterion": "Answering the claim",
+    "full": "Polite reply says 'not always' and cites one specific diary entry",
+    "partial": "Says 'not always' without evidence, or gives evidence without limiting the claim",
+    "none": "Agrees or contradicts with no basis"
+   }
+  ],
+  "alternatives": [
+   "A learner who says '대부분 집에 있어요' (mostly at home) is giving the same judgement as 보통.",
+   "A learner may cite both outside days; that is fine."
+  ],
+  "hardCases": [
+   "Is 6 of 8 days 'usually' or 'often'? The task accepts 보통 as the clearest, because the other options are clearly too strong or too weak."
+  ],
+  "cautions": {
+   "language": "Short diary sentences. Frequency words and -에서 are the only new points and they are explained in the hints.",
+   "culture": "Spending weekends at home or outdoors is a personal choice and carries no judgement; the diary is made up.",
+   "accessibility": "All material is text; nothing depends on colour or pictures, and every table is written out line by line. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of the supported sentence",
+    "Which entries are counter-examples",
+    "Polite ending, a diary evidence word, a limiting word, no plain agreement"
+   ],
+   "human": [
+    "Whether the cited day matches the diary and the wording is natural"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-k3-02",
+  "subject": "korean",
+  "grade": "K3",
+  "topic": "Time and place conflicts between a plan and a notice",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "하나's plan and the library notice",
+  "uiLang": "en",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Check a friend's weekly plan against a notice, find the one line that conflicts, say what kind of conflict it is, and repair the plan.",
+  "thinking": [
+   "Checking a plan against a source",
+   "Time and place conflicts",
+   "Repairing without losing the aim"
+  ],
+  "differsFromPlain": "Plain practice asks which days the library is open. Here you check several plan lines against a notice, find the single conflict, and fix it without creating a new one.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows days of the week and 오전/오후 + number + 시",
+   "Knows 쉬어요 (is closed / takes a rest)"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "하나 sends you her plan for this week. The school library posted this notice:\n\n[학교 도서관 안내]\n- 문을 열어요: 화요일~일요일, 오전 9시~오후 6시\n- 월요일은 쉬어요.\n- 책은 2주 동안 빌릴 수 있어요.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "하나's plan for this week does not fit the library notice in one line. Pick that line.",
+    "lines": [
+     "하나: 이번 주 계획이에요.",
+     "월요일 오전 10시: 도서관에서 책을 빌려요.",
+     "화요일 오후 4시: 학교 앞 카페에서 숙제를 해요.",
+     "목요일 저녁 7시: 우리 집에서 저녁을 먹어요.",
+     "일요일 오후 5시: 도서관에서 책을 반납해요."
+    ],
+    "wrong": [
+     1
+    ],
+    "explain": "Line 2 says the library on Monday, but the notice says the library is closed on Mondays. Line 5 (Sunday, 5 p.m.) is fine because the library is open on Sundays until 6 p.m.",
+    "hints": [
+     "First list the days and hours when the library is open, using only the notice.",
+     "Check every line that mentions the library: does the day AND the hour fit your list?"
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "What exactly is wrong with that line?",
+    "options": [
+     {
+      "id": "a",
+      "text": "하나 plans to go before the library opens.",
+      "reveals": "The opening hour is 9 a.m., so 10 a.m. is inside the opening hours; the problem is another detail."
+     },
+     {
+      "id": "b",
+      "text": "하나 plans to go on a day when her plan clashes with another line.",
+      "reveals": "No other line of her plan falls on that day, so this is not the problem."
+     },
+     {
+      "id": "c",
+      "text": "하나 plans to go at a time after the library has closed.",
+      "reveals": "The hour (10 a.m.) is inside the opening hours; the problem is another detail."
+     },
+     {
+      "id": "d",
+      "text": "하나 plans to go on a day when the library is closed."
+     }
+    ],
+    "correct": [
+     "d"
+    ],
+    "explain": "The hour is fine, but a closed day makes the whole visit impossible. Checking a plan against a notice means checking every detail (day, hour, place), and one detail is enough to break it.",
+    "hints": [
+     "Compare the day in the line with the notice, then compare the hour.",
+     "Say which of the two (day, hour), if either, does not fit the notice."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Rewrite the wrong line in Korean (polite speech) so the plan works. Keep the aim (borrowing books), but change the day or time.",
+    "placeholder": "예: ...",
+    "minChars": 10,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "names a day when the library is open (화, 수, 목, 금, 토, 일)",
+      "mode": "any",
+      "patterns": [
+       "(화|수|목|금|토|일)요일"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "still about borrowing books at the library",
+      "mode": "any",
+      "patterns": [
+       "도서관",
+       "책",
+       "빌려",
+       "빌릴",
+       "빌리"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "names an hour inside the opening hours (오전 9-11시, 오후 12-5시)",
+      "mode": "any",
+      "patterns": [
+       "오전\\s*(9|10|11|아홉|열|열한)\\s*시",
+       "오후\\s*(12|1|2|3|4|5|열두|한|두|세|네|다섯)\\s*시"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "no hour outside 9 a.m. - 6 p.m., not in the past tense",
+      "mode": "none",
+      "patterns": [
+       "오후\\s*(6|7|8|9|10|11)\\s*시",
+       "오후\\s*(여섯|일곱|여덟|아홉|열|열한)\\s*시",
+       "오전\\s*[1-8]\\s*시",
+       "오전\\s*(한|두|세|네|다섯|여섯|일곱|여덟)\\s*시",
+       "빌렸"
+      ]
+     },
+     {
+      "id": "w6",
+      "label": "does not clash with another line (화 오후 4시 cafe, 일 오후 5시 return)",
+      "mode": "none",
+      "patterns": [
+       "화요일.{0,6}오후\\s*(4|네)\\s*시",
+       "일요일.{0,6}오후\\s*(5|다섯)\\s*시"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Is the new day one when the library is open?",
+     "Does my new time fit the opening hours (9 a.m. to 6 p.m.)?",
+     "Does the new day clash with another line in 하나's plan?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "수요일 오전 10시: 도서관에서 책을 빌려요."
+     },
+     {
+      "text": "월요일은 도서관이 쉬어서 금요일 오후 2시에 도서관에서 책을 빌릴 거예요.",
+      "note": "Explains why the day was changed."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "월요일 오전 10시에 도서관에서 책을 빌려요.",
+      "why": "Keeps the closed day."
+     },
+     {
+      "text": "도서관에서 책을 빌려요.",
+      "why": "No day is named, so the plan is not fixed."
+     },
+     {
+      "text": "수요일 오전 10시에 도서관에서 책을 빌려.",
+      "why": "Casual ending where polite speech was asked."
+     },
+     {
+      "text": "수요일에 도서관에서 책을 빌려요.",
+      "why": "No hour is given, so the plan is not fully repaired."
+     },
+     {
+      "text": "화요일 오후 7시에 도서관에서 책을 빌려요.",
+      "why": "7 p.m. is after the library closes at 6 p.m."
+     }
+    ],
+    "humanReview": "Whether the new day and time really avoid the closing time and the other lines of the plan, and whether the sentence is natural.",
+    "hints": [
+     "Choose a day from the notice's open days; then choose an hour between opening and closing.",
+     "Keep the pattern day + time: place + object + verb, as in the other lines."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finding the conflict",
+    "full": "Picks line 2 and says the day is a closed day",
+    "partial": "Picks the right line but names the wrong kind of problem",
+    "none": "Picks a line that fits the notice"
+   },
+   {
+    "criterion": "Repair",
+    "full": "Polite sentence with an open day, a fitting time and the library aim",
+    "partial": "Open day but missing time, or a casual ending",
+    "none": "Closed day kept or no day"
+   }
+  ],
+  "alternatives": [
+   "Any open day and any hour from 9 to 5 is fine, as long as it does not clash with another line (Tuesday at 4 p.m. is taken by the cafe).",
+   "A learner may simply move the plan to the next morning and keep the same hour."
+  ],
+  "hardCases": [
+   "Tuesday at 4 p.m. clashes with the cafe; the self-check asks about it, but a learner who writes it is only warned, not marked wrong automatically."
+  ],
+  "cautions": {
+   "language": "Plan lines use noun + time + place + verb. The notice uses simple verbs. 반납해요 (return a book) is glossed in the explanation.",
+   "culture": "Libraries closing on one weekday is common in Korea, but the closing day differs by library; the notice is made up.",
+   "accessibility": "All material is text; nothing depends on colour or pictures, and every table is written out line by line. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Picking the conflicting line",
+    "Choice of the kind of conflict",
+    "Polite ending, an open day, a library or book word"
+   ],
+   "human": [
+    "Whether the new time fits the opening hours and the sentence is natural"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-k3-03",
+  "subject": "korean",
+  "grade": "K3",
+  "topic": "Several conditions with a hidden one",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "A movie date with limits",
+  "uiLang": "en",
+  "format": "build-many-verify",
+  "generative": true,
+  "goal": "Turn a friend's text with several limits (days out, earliest hour, a fixed end time) into valid plans, find more than one, and report one in Korean.",
+  "thinking": [
+   "A hidden condition: length of the movie changes the start time",
+   "Satisfying several rules at once",
+   "More than one answer"
+  ],
+  "differsFromPlain": "Plain practice asks to say a time or a weekday. Here a message with several limits hides one more rule (the movie takes 2 hours), and you must find every kind of plan that fits.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows weekdays and 오후 + number + 시",
+   "Has met -까지 (by, until), 이후 (after) and 전에 (before); they are explained in the hints"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "지호 texts you:\n\n\"이번 주 평일에 같이 영화를 봐요! 월요일이랑 수요일에는 학원이 있어서 안 돼요. 다른 날은 오후 3시 이후에 시간이 있어요. 영화는 두 시간이에요. 오후 6시까지는 끝나야 해요.\"",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "scaffold": true,
+    "prompt": "The movie is 2 hours long and must end by 6 p.m. What is the LATEST start time that works?",
+    "options": [
+     {
+      "id": "a",
+      "text": "오후 4시"
+     },
+     {
+      "id": "b",
+      "text": "오후 6시",
+      "reveals": "That is the time the movie must be finished, not the time it can start."
+     },
+     {
+      "id": "c",
+      "text": "오후 5시",
+      "reveals": "Starting at 5 p.m. means the movie ends at 7 p.m., which is after 6."
+     },
+     {
+      "id": "d",
+      "text": "오후 3시",
+      "reveals": "3 p.m. works, but it is the earliest start your friend allowed, not the latest."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "Start + 2 hours must be 6 or earlier, so the start is 4 at the latest. Together with 'after 3 p.m.' only 3 and 4 are possible.",
+    "hints": [
+     "Take 6 o'clock and subtract the length of the movie.",
+     "Check your answer by adding 2 hours to it. Is the result 6 or earlier?"
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "build",
+    "prompt": "Find 3 plans that fit every condition in 지호's message, each on a different day or at a different time. d = day number (월=1, 화=2, 수=3, 목=4, 금=5); h = the hour the movie starts, in the afternoon (3 means 3 p.m.).",
+    "vars": [
+     {
+      "name": "d",
+      "label": "day (월=1 ... 금=5)"
+     },
+     {
+      "name": "h",
+      "label": "start hour in the afternoon (3 = 3 p.m.)"
+     }
+    ],
+    "constraints": [
+     {
+      "id": "c0",
+      "expr": "d==floor(d) && h==floor(h)",
+      "ok": "Whole numbers.",
+      "fail": "Use a whole day number and a whole hour."
+     },
+     {
+      "id": "c1",
+      "expr": "d>=1 && d<=5",
+      "ok": "A weekday.",
+      "fail": "지호 wants a weekday, so d is 1 to 5."
+     },
+     {
+      "id": "c2",
+      "expr": "d!=1 && d!=3",
+      "ok": "Not a 학원 day.",
+      "fail": "지호 has 학원 on 월요일 (1) and 수요일 (3)."
+     },
+     {
+      "id": "c3",
+      "expr": "h>=3",
+      "ok": "After 3 p.m.",
+      "fail": "지호 is free only from 3 p.m."
+     },
+     {
+      "id": "c4",
+      "expr": "h+2<=6",
+      "ok": "The movie ends by 6 p.m.",
+      "fail": "A 2-hour movie that starts this late ends after 6 p.m."
+     }
+    ],
+    "need": 3,
+    "modelRows": [
+     {
+      "d": 2,
+      "h": 3
+     },
+     {
+      "d": 4,
+      "h": 4
+     },
+     {
+      "d": 5,
+      "h": 3
+     }
+    ],
+    "badRows": [
+     {
+      "d": 1,
+      "h": 3
+     },
+     {
+      "d": 2,
+      "h": 5
+     },
+     {
+      "d": 4,
+      "h": 2
+     }
+    ],
+    "distinctBy": "d*10+h",
+    "explain": "The days can be 화, 목 or 금, and the start can be 3 or 4 p.m., so there are 6 plans. The message gives limits, not one exact appointment.",
+    "hints": [
+     "이후 = after (counting from) that time; -까지 = until / by that time.",
+     "Write the message in your own words as separate rules: which days are out, from which hour, and by which hour the movie ends.",
+     "Do the days first: cross out 월 and 수. Then try each start hour and add 2.",
+     "If one of your plans is rejected, read the message under the table: it says which rule failed."
+    ],
+    "because": {
+     "id": "s2b",
+     "kind": "write",
+     "prompt": "Pick ONE of your plans and send 지호 a short text in Korean (polite -요) with the day, the start time and the movie.",
+     "placeholder": "예: ...",
+     "minChars": 8,
+     "checks": [
+      {
+       "id": "w1",
+       "label": "polite ending",
+       "mode": "any",
+       "patterns": [
+        "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
+       ]
+      },
+      {
+       "id": "w2",
+       "label": "names a day when 지호 is free (화, 목, 금)",
+       "mode": "any",
+       "patterns": [
+        "(화|목|금)요일"
+       ]
+      },
+      {
+       "id": "w3",
+       "label": "names a time (3시, 4시, 세 시, 네 시 ...)",
+       "mode": "any",
+       "patterns": [
+        "(?<![0-9])[34]\\s*시",
+        "세\\s*시",
+        "네\\s*시",
+        "(?<![0-9])[34]:"
+       ]
+      },
+      {
+       "id": "w4",
+       "label": "mentions the movie (영화) or meeting",
+       "mode": "any",
+       "patterns": [
+        "영화",
+        "극장",
+        "만나",
+        "봐요",
+        "볼까요",
+        "봐도"
+       ]
+      }
+     ],
+     "selfAssess": [
+      "Do my day and hour match one plan I built?",
+      "Would 지호's rules be respected if he said yes?"
+     ],
+     "modelAnswers": [
+      {
+       "text": "화요일 오후 3시에 영화를 봐요."
+      },
+      {
+       "text": "목요일 4시에 만나서 영화 볼까요?",
+       "note": "A suggestion in question form."
+      }
+     ],
+     "badAnswers": [
+      {
+       "text": "영화를 봐요.",
+       "why": "No day and no time."
+      },
+      {
+       "text": "화요일에 봐.",
+       "why": "Casual ending and no time."
+      },
+      {
+       "text": "월요일 3시에 영화를 봐요.",
+       "why": "Monday is a 학원 day."
+      },
+      {
+       "text": "수요일 오후 3시에 영화를 봐요.",
+       "why": "Wednesday is a 학원 day."
+      }
+     ],
+     "humanReview": "Whether the day and time in the text really belong to a valid plan (the checker only sees that a day and a time are present).",
+     "hints": [
+      "Use one plan from above: which day and which hour?",
+      "Say the day, then the time, then the movie, and end with -요."
+     ]
+    }
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Reading the limits",
+    "full": "Notices the hidden effect of the 2-hour length and builds valid plans on different days or hours",
+    "partial": "Builds some valid plans but ignores the end time once",
+    "none": "Plans break several rules"
+   },
+   {
+    "criterion": "Reporting",
+    "full": "Text names a weekday, a time and the movie, politely",
+    "partial": "Missing one element",
+    "none": "Not a report"
+   }
+  ],
+  "alternatives": [
+   "Any of the 6 plans (화/목/금 at 3 or 4 p.m.) is correct.",
+   "A learner may suggest meeting at 3 and going to a 3:30 film; the task only uses whole hours."
+  ],
+  "hardCases": [
+   "'오후 3시 이후' could be read as 'after 3 sharp' (3:01) by some; the task counts 3 p.m. as allowed, as the message says the friend is free from then."
+  ],
+  "cautions": {
+   "language": "Rules are written in separate short sentences with 학원, 평일, 이후 and -까지; the unusual ones are glossed in the hints.",
+   "culture": "After-school academies (학원) are common for students in Korea; schedules are made up.",
+   "accessibility": "All material is text; nothing depends on colour or pictures, and every table is written out line by line. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Each plan against the five rules",
+    "Polite ending, weekday, hour and movie word in the text"
+   ],
+   "human": [
+    "Whether the text matches one valid plan and sounds natural"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-k3-04",
+  "subject": "korean",
+  "grade": "K3",
+  "topic": "Certainty and source of a message",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Is 민수 coming to the picnic?",
+  "uiLang": "en",
+  "format": "reveal-and-revise",
+  "generative": true,
+  "goal": "Update a judgement about whether a classmate comes as new messages arrive, recognise guess words, and report the news with the right amount of certainty.",
+  "thinking": [
+   "Certainty of a message",
+   "Who said it (a friend's guess versus the person himself)",
+   "Changing a conclusion when new information comes"
+  ],
+  "differsFromPlain": "Plain practice asks the meaning of 아마 or -ㄹ 것 같아요 in one sentence. Here you rate how sure the speaker is across three messages and keep a guess a guess in your own report.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Has met 아마 (probably) and -ㄹ 것 같아요 (it seems); they are explained in the hints",
+   "Knows -(으)ㄹ 수 있어요"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "You are collecting names for a class picnic on Saturday and need to know how much food to buy. You wonder whether 민수 comes. Messages arrive one at a time.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "Read each message in order, choose the reading that seems most likely, and then continue.",
+    "hints": [
+     "Decide using only what you have read so far.",
+     "Notice who is speaking in each message, and which words soften a sentence (아마, -ㄹ 것 같아요)."
+    ],
+    "stages": [
+     {
+      "info": "지아 (반 친구): 민수는 아마 올 거예요.",
+      "ask": "How sure is 지아 that 민수 will come on Saturday?",
+      "options": [
+       {
+        "id": "a",
+        "text": "She is completely sure that he will come.",
+        "reveals": "'아마' means 'probably'. A speaker who is completely sure would not need it."
+       },
+       {
+        "id": "b",
+        "text": "She has decided that he will not come.",
+        "reveals": "Nothing in the sentence says he will not come; '올 거예요' points toward coming."
+       },
+       {
+        "id": "c",
+        "text": "She thinks he will probably come, but she is not certain."
+       },
+       {
+        "id": "d",
+        "text": "She does not know who 민수 is.",
+        "reveals": "She talks about him as someone she knows; the sentence is about whether he comes."
+       }
+      ],
+      "reasonable": [
+       "c"
+      ],
+      "after": "아마 marks a guess. At this point 'probably coming' is the reasonable reading, not 'surely coming'."
+     },
+     {
+      "info": "민수 (목요일, 지아에게): 금요일에 병원에 갈 것 같아요. 토요일에 올 수 있을지 아직 몰라요.",
+      "ask": "Now 민수 himself speaks. What does the picture look like?",
+      "options": [
+       {
+        "id": "a",
+        "text": "It is not settled: he may have a hospital visit, so he may not be able to come."
+       },
+       {
+        "id": "b",
+        "text": "He will probably come, because 지아 said so.",
+        "reveals": "Now the person himself says he is not sure, so 지아's guess carries less weight."
+       },
+       {
+        "id": "c",
+        "text": "He probably went to the hospital already.",
+        "reveals": "'갈 것 같아요' is about a possible future visit, not something that already happened."
+       },
+       {
+        "id": "d",
+        "text": "He has probably decided that he will not come.",
+        "reveals": "'아직 몰라요' means he has not decided yet, so you cannot say that he will not come."
+       }
+      ],
+      "reasonable": [
+       "a"
+      ],
+      "after": "-ㄹ 것 같아요 and 아직 몰라요 show an open question. What the person himself says counts more than a friend's guess."
+     },
+     {
+      "info": "민수 (토요일 아침 문자): 병원은 어제 다녀왔어요. 오늘은 갈 수 있어요! 조금 늦을 것 같아요.",
+      "ask": "What can you now say when you plan the picnic?",
+      "options": [
+       {
+        "id": "a",
+        "text": "민수 probably cannot come because of the hospital.",
+        "reveals": "The hospital visit is already over (다녀왔어요), and he says he can come."
+       },
+       {
+        "id": "b",
+        "text": "민수 will probably come on time.",
+        "reveals": "He says he will be a little late, so you should not plan for on time."
+       },
+       {
+        "id": "c",
+        "text": "It is still impossible to know whether he comes.",
+        "reveals": "He now says clearly that he can go on Saturday; the open question from yesterday is answered."
+       },
+       {
+        "id": "d",
+        "text": "민수 can come on Saturday, probably a little late."
+       }
+      ],
+      "reasonable": [
+       "d"
+      ],
+      "after": "The new message replaces the old guess: coming is now fairly clear, while 'a little late' is still a guess (-ㄹ 것 같아요)."
+     }
+    ],
+    "reflect": "Your idea about 민수 changed with each message. A friend's guess (아마) was replaced by his own unsure words, and then by his own clearer words. Words like 아마 and -ㄹ 것 같아요 mark guesses, and the newest message from the person himself is the best source."
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "Which of these phrases from the three messages show that the speaker is not completely sure? Choose all that apply.",
+    "options": [
+     {
+      "id": "a",
+      "text": "아마"
+     },
+     {
+      "id": "b",
+      "text": "병원은 어제 다녀왔어요",
+      "reveals": "This is a plain statement of something that already happened, so it is a fact, not a guess."
+     },
+     {
+      "id": "c",
+      "text": "갈 것 같아요"
+     },
+     {
+      "id": "d",
+      "text": "아직 몰라요"
+     }
+    ],
+    "correct": [
+     "a",
+     "c",
+     "d"
+    ],
+    "explain": "아마 means probably, -ㄹ 것 같아요 means 'it seems that', and 아직 몰라요 means 'I do not know yet'. A past-tense statement like 다녀왔어요 reports a fact.",
+    "hints": [
+     "Ask of each phrase: is the speaker reporting something that happened, or guessing about something that may happen?",
+     "Try replacing the phrase with 'for sure'. Does the sentence still make sense?"
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Write the news to the picnic group chat in Korean (polite speech): say that 민수 is coming, and mark the one thing that is still only a guess.",
+    "placeholder": "예: ...",
+    "minChars": 12,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "mentions 민수 and coming (오, 와, 참석, 가)",
+      "mode": "all",
+      "patterns": [
+       "민수",
+       "(올|와요|오고|온대요|온다고|옵니다|오는|참석|갈 수|가요|갑니다)"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "marks the lateness as a guess (늦을 것 같아요, 아마 ..., 늦을지도 몰라요)",
+      "mode": "any",
+      "patterns": [
+       "(아마|것 같|수도|지도 몰)[^\\n.?!]{0,14}(늦|도착|쯤)",
+       "(늦|도착|쯤)[^\\n.?!]{0,10}(것 같|수도|지도 몰|듯)"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "does not say he is not coming (못 와요, 올 수 없어요 ...)",
+      "mode": "none",
+      "patterns": [
+       "못 와",
+       "안 와",
+       "못 가",
+       "안 가",
+       "못 올",
+       "안 올",
+       "오지 못",
+       "오지 않",
+       "못 옵",
+       "안 옵",
+       "올 수 없",
+       "갈 수 없",
+       "오기 어려",
+       "참석할 수 없",
+       "참석 못"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I say clearly that he is coming?",
+     "Did I keep the 'a little late' part as a guess and not as a fact?",
+     "Would the group know how many people to count?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "민수는 토요일에 올 수 있어요. 조금 늦을 것 같아요."
+     },
+     {
+      "text": "민수가 온대요! 아마 12시쯤 도착할 거예요.",
+      "note": "Uses 아마 and 쯤 for the guess."
+     },
+     {
+      "text": "민수는 토요일에 올 수 있어요. 늦을지도 몰라요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "민수는 못 와요.",
+      "why": "Says the opposite of the latest message."
+     },
+     {
+      "text": "민수는 올 거예요.",
+      "why": "Says he is coming but marks nothing as a guess."
+     },
+     {
+      "text": "민수가 와.",
+      "why": "Casual ending, no guess word."
+     },
+     {
+      "text": "민수는 올 수 없을 것 같아요.",
+      "why": "Says he is not coming, the opposite of the latest message."
+     },
+     {
+      "text": "민수는 올 수 없어요. 아마 병원에 갈 것 같아요.",
+      "why": "Wrong news; the hospital visit is already over."
+     },
+     {
+      "text": "민수는 올 것 같아요. 조금 늦어요.",
+      "why": "Marks the coming as a guess and states the lateness as a fact; it should be the other way round."
+     }
+    ],
+    "humanReview": "Whether the guess is attached to the lateness and not to the coming, and whether the sentence is natural.",
+    "hints": [
+     "Write two short sentences: one for what is clear, one for what is not.",
+     "For the unclear part, use a word or ending you met in the messages."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Judging certainty",
+    "full": "Chooses the reasonable reading at every stage and marks the three hedging phrases",
+    "partial": "Misreads one stage or misses one hedge",
+    "none": "Treats guesses as facts or the reverse"
+   },
+   {
+    "criterion": "Reporting",
+    "full": "Polite message says he comes and keeps the lateness as a guess",
+    "partial": "Says he comes without a guess marker, or only a guess",
+    "none": "Wrong news"
+   }
+  ],
+  "alternatives": [
+   "'조금 늦을 수도 있어요' (might be a little late) is as good as '-ㄹ 것 같아요'.",
+   "At stage 1 a learner may reasonably read 올 거예요 as quite sure; the task accepts 'probably' as the reading, because of 아마."
+  ],
+  "hardCases": [
+   "'올 거예요' alone expresses a prediction that can sound firm; with 아마 it is clearly a guess."
+  ],
+  "cautions": {
+   "language": "Short chat messages. 아마, -ㄹ 것 같아요 and 아직 몰라요 are the key expressions and are glossed in the hints and explanations.",
+   "culture": "Class picnics and checking who comes are normal school events; the names and messages are made up.",
+   "accessibility": "All material is text; nothing depends on colour or pictures, and every table is written out line by line. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Reasonable reading at each stage",
+    "Which phrases are hedges",
+    "Polite ending, 민수, a coming word, a guess word, no 'not coming'"
+   ],
+   "human": [
+    "Whether the report keeps the right part as a guess and sounds natural"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-k3-05",
+  "subject": "korean",
+  "grade": "K3",
+  "topic": "Who said what: an answer that depends on the line before",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Who does 하준 mean by '저도요'?",
+  "uiLang": "en",
+  "format": "choose-needed-info",
+  "generative": true,
+  "goal": "Work out who and what a short 'me too' refers to in a group chat, decide which facts are still missing for a group decision, and ask for one of them.",
+  "thinking": [
+   "Who said what, and what an answer refers to",
+   "Deciding what information is still needed",
+   "Asking instead of assuming"
+  ],
+  "differsFromPlain": "Plain practice asks for the meaning of -도 in one sentence. Here the word's meaning depends on which line comes before it, and you decide which facts are missing before the group can choose.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows -도 (also) and 못 + verb (cannot)",
+   "Knows 맵다 (spicy) in the form 매운 / 안 매워요"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "Three friends are choosing lunch in a group chat. The restaurant's 비빔밥 usually comes with spicy red-pepper sauce (고추장).\n\n지아: 저는 비빔밥을 먹을래요.\n하준: 저도 비빔밥이 좋아요.\n서윤: 저는 매운 음식을 못 먹어요.\n하준: 저도요.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Read the chat. In the last line, what does 하준 mean by '저도요'?",
+    "options": [
+     {
+      "id": "a",
+      "text": "He also wants to eat 비빔밥, like 지아.",
+      "reveals": "'저도요' answers the line right before it. That line is 서윤's, not 지아's."
+     },
+     {
+      "id": "b",
+      "text": "He also wants to have lunch with 서윤.",
+      "reveals": "The line before is about food, not about eating together."
+     },
+     {
+      "id": "c",
+      "text": "He also thinks 비빔밥 is too spicy.",
+      "reveals": "서윤 only says she cannot eat spicy food. 하준 is answering that line and says nothing about 비빔밥 here."
+     },
+     {
+      "id": "d",
+      "text": "He also cannot eat spicy food, like 서윤."
+     }
+    ],
+    "correct": [
+     "d"
+    ],
+    "explain": "'-도' (also) joins what is said now to what was just said. The line right before 하준's is 서윤's: she cannot eat spicy food. So 하준 cannot either. Two lines earlier he said he likes 비빔밥, so he must think 비빔밥 can be mild.",
+    "hints": [
+     "Find the line directly above '저도요'. That is what he is agreeing with.",
+     "Ask yourself: 'also' means the same as whom, and about what?"
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "Can all three friends have 비빔밥 together? Choose ALL the things you still need to find out before you can answer.",
+    "options": [
+     {
+      "id": "a",
+      "text": "Whether the restaurant can make 비빔밥 that is not spicy"
+     },
+     {
+      "id": "b",
+      "text": "Whether 하준 really cannot eat spicy food",
+      "reveals": "He has just said so with 저도요, so you already know it."
+     },
+     {
+      "id": "c",
+      "text": "Whether 지아 ate 비빔밥 yesterday",
+      "reveals": "What 지아 ate yesterday does not decide what the three can eat today."
+     },
+     {
+      "id": "d",
+      "text": "Whether 서윤 is willing to have 비빔밥 if it is not spicy"
+     },
+     {
+      "id": "e",
+      "text": "Whether 지아 likes spicy food",
+      "reveals": "지아 wants 비빔밥 either way; her taste in spice does not stop the others from eating it."
+     }
+    ],
+    "correct": [
+     "a",
+     "d"
+    ],
+    "explain": "Two things are open. The food must be possible without spice, and 서윤 has said only what she cannot eat, not what she wants. The other facts do not change the answer.",
+    "hints": [
+     "Make a list of what each person has said, and mark what is still missing for each.",
+     "Cross out facts that would not change the answer, whatever they turn out to be."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Write a question to the group chat in Korean (polite speech) that gets you one of the missing facts. Do not just decide for them.",
+    "placeholder": "예: ...",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "is a question",
+      "mode": "any",
+      "patterns": [
+       "[?？]",
+       "까요",
+       "나요",
+       "니까",
+       "어때요",
+       "뭐예요",
+       "무엇을"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "targets a missing fact (spice, or what 서윤 will eat)",
+      "mode": "any",
+      "patterns": [
+       "맵|매운|매워|고추장|spic",
+       "서윤.{0,15}(뭐|무엇|무슨|어떤|괜찮|먹을|먹고 싶|좋아|싫|먹어도)"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "does not just decide for the group",
+      "mode": "none",
+      "patterns": [
+       "^\\s*(다 같이|우리|모두)[^?？]*먹어요\\.?\\s*$"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Would the answer give me one of the two missing facts?",
+     "Is my question polite and easy to answer with one short sentence?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "비빔밥을 안 맵게 만들 수 있어요?"
+     },
+     {
+      "text": "서윤 씨는 안 매운 비빔밥도 괜찮아요?",
+      "note": "Asks the other missing fact."
+     },
+     {
+      "text": "식당에서 안 맵게 만들 수 있어요?"
+     },
+     {
+      "text": "서윤은 무엇을 먹을래요?"
+     },
+     {
+      "text": "안 매운 음식은 뭐가 있어요?"
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "다 같이 비빔밥 먹어요.",
+      "why": "Decides for the group and asks nothing."
+     },
+     {
+      "text": "점심은 몇 시에 먹어요?",
+      "why": "A question, but not about the missing facts."
+     },
+     {
+      "text": "서윤은 비빔밥이 괜찮아요.",
+      "why": "A statement, not a question; it asks for no missing fact."
+     }
+    ],
+    "humanReview": "Whether the question is polite and clear, and which missing fact it targets.",
+    "hints": [
+     "Pick one of the missing facts you found.",
+     "Turn it into a question with -요? or -ㄹ까요?"
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Resolving the reference",
+    "full": "Reads '저도요' as referring to the line just before and chooses both missing facts",
+    "partial": "Gets the reference right but misses one missing fact",
+    "none": "Takes '저도요' as agreeing with 지아 or picks irrelevant facts"
+   },
+   {
+    "criterion": "Question",
+    "full": "Polite question about 비빔밥 and spice or 서윤, answerable in one sentence",
+    "partial": "A question that only partly targets the missing facts",
+    "none": "No question or decides for the group"
+   }
+  ],
+  "alternatives": [
+   "A question to 지아 or to the restaurant about mild 비빔밥 is as good as a question to 서윤.",
+   "Some learners write '고추장을 빼 주세요' as a request; that targets the same fact."
+  ],
+  "hardCases": [
+   "In real chats '저도요' can refer to an earlier line when the chat is busy; here the line directly before is clear."
+  ],
+  "cautions": {
+   "language": "Very short lines; -도 and 못 are the key points. 매운 음식 is used instead of rarer words.",
+   "culture": "Many Korean dishes can be ordered mild; 비빔밥 with the sauce on the side is common. The chat is made up.",
+   "accessibility": "All material is text; nothing depends on colour or pictures, and every table is written out line by line. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of the reference",
+    "Which facts are missing",
+    "Question form, 비빔밥, spice or 서윤 present"
+   ],
+   "human": [
+    "Naturalness and politeness of the question"
+   ]
+  },
+  "status": "draft"
+ }
+]

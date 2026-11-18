@@ -1,0 +1,142 @@
+{
+ "packet": "H21-h-debate",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 19,
+  "questions": 35
+ },
+ "patches": [
+  {
+   "item": "79df5763",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the main point of the passage?",
+      "o": [
+       "Bar charts are always better than other kinds of graphs.",
+       "Charts need checking before they are trusted.",
+       "Companies should publish their profits.",
+       "Designers must always start axes at ninety."
+      ],
+      "a": 1,
+      "why": "글은 그래프가 정확해도 오해를 부를 수 있으니 세 가지 질문으로 확인하라고 말해요."
+     },
+     {
+      "q": "In the example, about how large is the real increase from 92 to 96?",
+      "o": [
+       "About four percent",
+       "About forty percent",
+       "About ninety percent",
+       "About ninety-six percent"
+      ],
+      "a": 0,
+      "why": "92에서 96으로는 약 4퍼센트 올랐어요."
+     },
+     {
+      "q": "The word \"deliberately\" is closest in meaning to ___.",
+      "o": [
+       "slowly",
+       "carelessly",
+       "on purpose",
+       "by chance"
+      ],
+      "a": 2,
+      "why": "deliberately는 일부러, 고의로라는 뜻이에요."
+     },
+     {
+      "q": "What can be inferred about a chart that has no source?",
+      "o": [
+       "It must be a bar chart about profits.",
+       "Its numbers are always completely false.",
+       "It was most likely made for school.",
+       "Its reliability is hard to judge."
+      ],
+      "a": 3,
+      "why": "출처가 없으면 누가 왜 만들었는지 알 수 없어 믿을 만한지 판단하기 어려워요."
+     },
+     {
+      "q": "In \"speakers who want to exaggerate their case can use the same trick deliberately,\" what is \"the same trick\"?",
+      "o": [
+       "Leaving out the units of a chart",
+       "Using too many bars in one chart",
+       "Starting the vertical axis above zero",
+       "Hiding who produced the data"
+      ],
+      "a": 2,
+      "why": "앞 문장에서 설명한 수법, 즉 세로축을 0이 아닌 값에서 시작해 작은 증가를 크게 보이게 하는 것을 가리켜요."
+     }
+    ]
+   },
+   "why": "Replace Q5 with a reference question; other questions unchanged.",
+   "severity": "major"
+  },
+  {
+   "item": "6c1bb8fa",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the passage mainly about?",
+      "o": [
+       "Why teenagers should avoid all screens",
+       "Several likely causes of teenagers' short sleep",
+       "A new alarm clock designed for students",
+       "How to teach lessons late in the evening"
+      ],
+      "a": 1,
+      "why": "글은 사춘기의 신체 변화, 이른 등교 시간, 화면 사용 등 여러 원인을 설명해요."
+     },
+     {
+      "q": "What happened at schools that started an hour later?",
+      "o": [
+       "Students came to class more regularly.",
+       "Students were given less homework.",
+       "Lessons became an hour longer.",
+       "Teachers began to sleep much more at night."
+      ],
+      "a": 0,
+      "why": "시작 시간을 늦춘 학교에서 학생 출석이 더 규칙적이었고 수업 중 졸음이 줄었어요."
+     },
+     {
+      "q": "What do the authors mean by \"association rather than proof of cause\"?",
+      "o": [
+       "The results are completely false and cannot be trusted.",
+       "The two facts go together without proof of cause.",
+       "The studies were too expensive for schools to repeat.",
+       "Every family reached the same result in the review."
+      ],
+      "a": 1,
+      "why": "연관성은 함께 나타난다는 뜻일 뿐 한쪽이 원인이라는 증명은 아니라는 뜻이에요."
+     },
+     {
+      "q": "The phrase \"stress that\" in the passage is closest in meaning to ___.",
+      "o": [
+       "completely forget that",
+       "deny that",
+       "emphasize that",
+       "guess that"
+      ],
+      "a": 2,
+      "why": "stress는 여기서 강조하다라는 뜻이에요."
+     },
+     {
+      "q": "How do the authors treat the evidence about screen use?",
+      "o": [
+       "As the strongest proof in the review",
+       "As weaker than the headlines suggest",
+       "As the only cause of the problem",
+       "As unrelated to sleep"
+      ],
+      "a": 1,
+      "why": "화면 사용 증거는 많은 기사 제목이 시사하는 것보다 약하다고 했어요."
+     }
+    ]
+   },
+   "why": "Lengthen distractors of Q3; key and position unchanged.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 33,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

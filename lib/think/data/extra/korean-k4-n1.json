@@ -1,0 +1,1341 @@
+[
+ {
+  "id": "n-k-k4-01",
+  "subject": "korean",
+  "grade": "K4",
+  "topic": "notices",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "The shortened notice",
+  "uiLang": "en",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Compare a classmate's short summary with the library notice, find the lines that change what the notice says, and repair one of them.",
+  "thinking": [
+   "Summarising without distorting",
+   "Comparing a copy with its source line by line",
+   "Noticing a dropped condition"
+  ],
+  "differsFromPlain": "Plain practice asks you to read a notice and answer a question. Here a summary already exists, and you must check it against the source and find where it quietly changed the rules.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows 평일, 토요일, 일요일, 빌리다 and 돌려주다",
+   "Knows 뚜껑 (lid) and 물병 (water bottle)"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "A new classmate asks 현우 what the school library rules are. 현우 reads the notice below and writes a short summary for her.\n\n[도서관 이용 안내]\n- 이용 시간: 평일 오전 9시~오후 5시 / 토요일 오전 9시~낮 12시 / 일요일은 쉽니다.\n- 책은 한 번에 5권까지, 2주 동안 빌릴 수 있어요.\n- 늦게 반납하면 늦은 날 수만큼 책을 빌릴 수 없어요.\n- 음료는 뚜껑이 있는 물병만 가지고 들어갈 수 있어요.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "현우's summary is below. Some lines say something different from the notice. Pick one of them.",
+    "lines": [
+     "도서관은 평일과 토요일에 열어요.",
+     "일요일에도 오후 5시까지 열어요.",
+     "책은 한 번에 5권까지 빌릴 수 있어요.",
+     "2주 안에 돌려주면 돼요.",
+     "늦게 반납하면 책을 한 달 동안 빌릴 수 없어요.",
+     "음료는 아무거나 가지고 들어갈 수 있어요."
+    ],
+    "wrong": [
+     1,
+     4,
+     5
+    ],
+    "explain": "Lines 2, 5 and 6 are wrong. The notice says 일요일은 쉽니다 (closed on Sunday), the borrowing ban lasts only as many days as the book was late, and only a water bottle with a lid is allowed. Lines 1, 3 and 4 match the notice.",
+    "hints": [
+     "Take the summary one line at a time and find the matching line in the notice.",
+     "For each line ask: does the notice say exactly this, or did the summary change a day, a length of time or a condition?",
+     "Check the lines that contain a day, a number of days or the word for 'any'."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "The last line of the summary sounds short and friendly. Why is it a problem for the new classmate?",
+    "options": [
+     {
+      "id": "a",
+      "text": "She will think she may not bring any drink at all.",
+      "reveals": "The summary does not forbid drinks; it allows every drink, which is the opposite mistake."
+     },
+     {
+      "id": "b",
+      "text": "She will think drinks are allowed only on weekdays.",
+      "reveals": "The summary says nothing about days for drinks. The problem is a missing condition on which drink."
+     },
+     {
+      "id": "c",
+      "text": "She may bring a drink that is not allowed, because a condition was dropped."
+     },
+     {
+      "id": "d",
+      "text": "She will think the library lets her bring food as well as drinks.",
+      "reveals": "The line is only about drinks; food is not mentioned in it."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "A summary can be wrong without a single wrong word: 아무거나 removed the condition (뚜껑이 있는 물병만). Dropped conditions are a common way to change a rule.",
+    "hints": [
+     "Put line 6 next to the last line of the notice.",
+     "Find the small word in the notice that limits which drinks are allowed, and see whether the summary kept it."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Rewrite the drink line (the last line of the summary) in Korean so that it says the same as the notice. Use polite -요 speech.",
+    "placeholder": "예: ...",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "keeps the lid condition (뚜껑)",
+      "mode": "any",
+      "patterns": [
+       "뚜껑",
+       "lid",
+       "cap"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "mentions the water bottle / drink (물병, 물, 음료)",
+      "mode": "any",
+      "patterns": [
+       "물병",
+       "물",
+       "음료",
+       "water",
+       "bottle",
+       "drink"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "does not say any drink is fine",
+      "mode": "none",
+      "patterns": [
+       "아무거나",
+       "아무 음료",
+       "어떤 음료(나|든)",
+       "모든 음료",
+       "다 괜찮",
+       "다 돼요",
+       "다 들어",
+       "everything is",
+       "물병[^.!?\\n]*(수 없|못 (가지고|들어)|안 (돼|되))",
+       "물[^.!?\\n]*(수 없|못 (가지고|들어))",
+       "뚜껑 ?(이|은)? ?없",
+       "뚜껑 없"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my line keep both the lid and the water bottle?",
+     "Would a new student who reads only my line bring the right thing?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "음료는 뚜껑이 있는 물병만 가지고 들어갈 수 있어요.",
+      "note": "Copies the condition closely."
+     },
+     {
+      "text": "뚜껑이 있는 물만 괜찮아요. 다른 음료는 안 돼요.",
+      "note": "Different words, same rule."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "음료는 아무거나 괜찮아요.",
+      "why": "Keeps the mistake: no condition."
+     },
+     {
+      "text": "음료는 못 가지고 들어가요.",
+      "why": "Forbids all drinks and loses the lid exception."
+     }
+    ],
+    "humanReview": "Whether the rewritten line is natural and fully faithful to the notice (for example if the learner adds a new rule).",
+    "hints": [
+     "Go back to the last line of the notice and find which drinks are allowed.",
+     "Which condition did the summary line lose? Put it back."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finding the changed lines",
+    "full": "Finds all three changed lines and can say what changed",
+    "partial": "Finds one or two",
+    "none": "Marks lines that match the notice"
+   },
+   {
+    "criterion": "Repairing the line",
+    "full": "Rewritten line keeps the lid condition and the water bottle, polite",
+    "partial": "Keeps one of them",
+    "none": "Still says any drink is allowed"
+   }
+  ],
+  "alternatives": [
+   "Any of lines 2, 5 or 6 may be chosen in the first step; all are listed in the feedback.",
+   "Learners may repair line 2 or 5 mentally; the written step asks only about line 6."
+  ],
+  "hardCases": [
+   "Line 1 is true but incomplete (Saturday hours are shorter); it is not wrong, it just leaves out a detail.",
+   "A learner may call line 4 wrong because the notice says '2주 동안'; '2주 안에' means the same."
+  ],
+  "cautions": {
+   "language": "Uses 평일/토요일/일요일, -까지 and -만. 아무거나 is explained only through the contrast with 뚜껑이 있는 물병만.",
+   "culture": "School libraries that limit books and drinks are common; the times are made up.",
+   "accessibility": "All material is plain text; nothing depends on colour or images."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Which line is picked",
+    "Whether the repaired line mentions the lid and does not say 'any drink'"
+   ],
+   "human": [
+    "Whether the repaired sentence is natural and faithful"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-k4-02",
+  "subject": "korean",
+  "grade": "K4",
+  "topic": "messages",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Free cake for the birthday?",
+  "uiLang": "en",
+  "format": "choose-needed-info",
+  "generative": true,
+  "goal": "Combine a flyer with a friend's text, work out which facts decide whether the plan works, and tell your friend what to do.",
+  "thinking": [
+   "Selecting the facts that decide a plan",
+   "Applying a rule to dates",
+   "Noticing a deadline hidden in a flyer"
+  ],
+  "differsFromPlain": "Plain practice asks you to read a flyer for its details. Here you must choose which details actually matter for one plan and use a date rule on them.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows days of the week, 전화, 예약"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "Today is 수요일. Your friend 하나 sent a text, and she also gave you the flyer of the cafe.\n\n[카페 봄날 생일 이벤트]\n- 생일인 손님은 케이크 한 조각이 무료예요.\n- 생일 3일 전까지 전화로 예약해 주세요. (예: 생일이 금요일이면 화요일까지)\n- 일요일은 이벤트를 하지 않아요.\n- 신분증을 가지고 오세요.\n\n하나의 문자: \"내 생일이 이번 주 토요일이야! 카페 봄날에서 무료 케이크 먹자. 예약은 나중에 할게.\"",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which TWO pieces of information decide whether 하나's plan works? Choose both.",
+    "options": [
+     {
+      "id": "a",
+      "text": "\"생일 3일 전까지 전화로 예약해 주세요.\""
+     },
+     {
+      "id": "b",
+      "text": "\"일요일은 이벤트를 하지 않아요.\"",
+      "reveals": "하나's birthday is on Saturday, so the Sunday rule does not matter for this plan."
+     },
+     {
+      "id": "c",
+      "text": "\"내 생일이 이번 주 토요일이야!\""
+     },
+     {
+      "id": "d",
+      "text": "\"신분증을 가지고 오세요.\"",
+      "reveals": "This must be done at the cafe, but it does not decide whether the plan can still work."
+     },
+     {
+      "id": "e",
+      "text": "\"케이크 한 조각이 무료예요.\"",
+      "reveals": "This is the reason for the plan, not a rule you have to check."
+     }
+    ],
+    "correct": [
+     "a",
+     "c"
+    ],
+    "explain": "The reservation rule and the birthday day have to be put together: a Saturday birthday plus 'by 3 days before' gives a deadline, and the deadline may be close.",
+    "hints": [
+     "Which facts, taken together, give you a date?",
+     "Check each fact: could it make the plan fail before 하나 even reaches the cafe?"
+    ],
+    "multi": true
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Apply the flyer's example. Today is 수요일. For a birthday on Saturday, what is the last day to make the reservation?",
+    "options": [
+     {
+      "id": "a",
+      "text": "목요일",
+      "reveals": "Thursday is only 2 days before Saturday, so it is already too late."
+     },
+     {
+      "id": "b",
+      "text": "수요일"
+     },
+     {
+      "id": "c",
+      "text": "화요일",
+      "reveals": "Tuesday is 4 days before Saturday. Count with the example: Friday birthday gives Tuesday."
+     },
+     {
+      "id": "d",
+      "text": "월요일",
+      "reveals": "Monday is 5 days before Saturday; the flyer's example (Friday birthday, Tuesday) shows 3 days before."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "Friday to Tuesday is 3 days before, so Saturday to Wednesday is the same distance. Today is Wednesday, so today is the last day.",
+    "hints": [
+     "Use the example in the flyer as a pattern: from the birthday, count back the same number of days.",
+     "Write the days in order Saturday, Friday, Thursday, ... and stop at the right number."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Write a short text to 하나 in Korean (friendly -요 speech). Tell her what to do and by when, and why.",
+    "placeholder": "예: ...",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "says today (오늘)",
+      "mode": "any",
+      "patterns": [
+       "오늘",
+       "지금",
+       "수요일",
+       "today",
+       "now"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "mentions the reservation or the phone call",
+      "mode": "any",
+      "patterns": [
+       "예약",
+       "전화",
+       "reserv",
+       "call"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "gives the reason: it is the last day / the deadline",
+      "mode": "any",
+      "patterns": [
+       "마지막",
+       "3일 전",
+       "삼일 전",
+       "늦으면",
+       "늦어",
+       "늦기 전",
+       "기한",
+       "안 하면",
+       "안 그러면",
+       "그렇지 않으면",
+       "못 (받아|받게|받을|먹어|먹게|먹을)",
+       "까지[^.?!]{0,12}(해야|하셔야|해 줘|해줘)",
+       "last",
+       "deadline",
+       "too late"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "does not push the reservation to tomorrow",
+      "mode": "none",
+      "patterns": [
+       "내일[^.?!\\n]{0,8}(예약|전화)",
+       "나중에 (예약|해)",
+       "하지 ?마",
+       "말고",
+       "내일까지"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "friendly polite ending",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my text say today, what to do and why?",
+     "Would 하나 know what to do after reading it?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "하나야, 오늘이 예약 마지막 날이에요! 오늘 카페에 전화해요.",
+      "note": "Names today, the call and the reason."
+     },
+     {
+      "text": "오늘까지 전화로 예약해야 해요. 내일은 늦어요.",
+      "note": "Shorter, same content."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "나중에 예약해요.",
+      "why": "Pushes the reservation to later and gives no reason."
+     },
+     {
+      "text": "케이크 먹고 싶어요!",
+      "why": "Says nothing about the deadline or the call."
+     }
+    ],
+    "humanReview": "Whether the text is natural and clear enough for 하나 to act on, and whether the tone fits a friend.",
+    "hints": [
+     "Start with the day: when must she act?",
+     "Say what she must do (what, how) and add the reason with -아서/-어서 or -니까."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Choosing the deciding facts",
+    "full": "Chooses the birthday day and the reservation rule and rejects the others",
+    "partial": "Chooses one of them",
+    "none": "Chooses facts that do not affect the plan"
+   },
+   {
+    "criterion": "Using the rule",
+    "full": "Finds Wednesday as the last day and tells 하나 to call today with the reason",
+    "partial": "Finds the day but gives no reason or action",
+    "none": "Leaves the reservation for later"
+   }
+  ],
+  "alternatives": [
+   "A learner may add '신분증' as a reminder in the text; that is fine as long as the deadline is clear.",
+   "The reply may be written in 반말 if the learner uses 반말 with 하나, but the task asks for friendly -요."
+  ],
+  "hardCases": [
+   "Some learners count 3 days as 'Wednesday, Thursday, Friday'. The flyer's example (Friday birthday, Tuesday deadline) is there to settle the counting."
+  ],
+  "cautions": {
+   "language": "Uses -(으)ㄹ게, -까지 and a date-counting phrase (3일 전까지). The example in the flyer teaches the counting.",
+   "culture": "Birthday perks that need a reservation are common in cafes; 봄날 is an invented name.",
+   "accessibility": "All text; days are written in Hangul words, no calendar image."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The two key facts and the last reservation day",
+    "Whether the text names today, the reservation and a reason"
+   ],
+   "human": [
+    "Naturalness and clarity of the text"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-k4-03",
+  "subject": "korean",
+  "grade": "K4",
+  "topic": "conditions",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Tickets for the group",
+  "uiLang": "en",
+  "format": "build-many-verify",
+  "generative": true,
+  "goal": "Turn a friend's message with a hidden ratio rule into exact conditions, build several groups that fit, and report one in Korean.",
+  "thinking": [
+   "Reading a rule that links two numbers",
+   "Satisfying several conditions at once",
+   "Finding more than one solution"
+  ],
+  "differsFromPlain": "Plain practice asks the price of tickets. Here the message holds a rule between two groups of people, and you must build several groups that obey every rule.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows numbers, 명, 어른, 어린이 and -까지",
+   "Knows 만 (10,000) in prices such as 3만 8천 원"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "Your friend 서연 texts you before you buy tickets for the amusement park:\n\n\"놀이공원에 같이 가요. 어른 한 명이 어린이 두 명까지 데리고 갈 수 있대요. 어린이도 한 명은 가야 해요. 모두 5명 이상 가고 싶어요. 표값은 모두 합쳐서 6만 원까지 쓸 수 있어요.\"\n\n(1만 원 = 10,000원, so 6만 원 = 60,000원. The group is only the adults and children you list.)\n\n[표값]\n어른 한 명: 10,000원\n어린이 한 명: 6,000원",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "What does '어른 한 명이 어린이 두 명까지 데리고 갈 수 있대요' tell you?",
+    "options": [
+     {
+      "id": "a",
+      "text": "One adult can take up to two children."
+     },
+     {
+      "id": "b",
+      "text": "Each adult must take exactly two children.",
+      "reveals": "'까지' gives an upper limit, not a required number."
+     },
+     {
+      "id": "c",
+      "text": "There can be only as many children as adults.",
+      "reveals": "The rule says two children for each adult, not one."
+     },
+     {
+      "id": "d",
+      "text": "Each child needs two adults to go with.",
+      "reveals": "That reverses the rule: here one adult can take two children."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "'-까지' sets a limit: one adult takes up to two children, so with 2 adults at most 4 children can go.",
+    "hints": [
+     "Try the rule with one adult first: how many children can come?",
+     "Then try two adults and see how the number grows."
+    ],
+    "scaffold": true
+   },
+   {
+    "id": "s2",
+    "kind": "build",
+    "prompt": "Find 3 groups that fit every condition in the message, each with a different number of adults. a = adults, c = children.",
+    "vars": [
+     {
+      "name": "a",
+      "label": "adults (어른)"
+     },
+     {
+      "name": "c",
+      "label": "children (어린이)"
+     }
+    ],
+    "constraints": [
+     {
+      "id": "c0",
+      "expr": "a==floor(a) && c==floor(c)",
+      "ok": "Whole people.",
+      "fail": "People are whole numbers."
+     },
+     {
+      "id": "c1",
+      "expr": "a>=1 && c>=1",
+      "ok": "At least one adult and one child.",
+      "fail": "You need at least one adult, and the message says at least one child (어린이도 한 명은)."
+     },
+     {
+      "id": "c2",
+      "expr": "c<=2*a",
+      "ok": "No more than two children for each adult.",
+      "fail": "Too many children: each adult can take up to two (어린이 두 명까지)."
+     },
+     {
+      "id": "c3",
+      "expr": "a+c>=5",
+      "ok": "5 people or more.",
+      "fail": "The message wants 5 people or more (모두 5명 이상)."
+     },
+     {
+      "id": "c4",
+      "expr": "10000*a+6000*c<=60000",
+      "ok": "Within 60,000 won.",
+      "fail": "The tickets cost more than 60,000 won."
+     }
+    ],
+    "need": 3,
+    "distinctBy": "a",
+    "modelRows": [
+     {
+      "a": 2,
+      "c": 3
+     },
+     {
+      "a": 3,
+      "c": 3
+     },
+     {
+      "a": 4,
+      "c": 2
+     }
+    ],
+    "badRows": [
+     {
+      "a": 1,
+      "c": 3
+     },
+     {
+      "a": 4,
+      "c": 4
+     },
+     {
+      "a": 2,
+      "c": 2
+     }
+    ],
+    "explain": "For example 2 adults + 3 children = 38,000 won; 3 + 3 = 48,000 won; 4 + 2 = 52,000 won. Many groups fit because the message gives limits, not one exact group.",
+    "hints": [
+     "Write the conditions in your own words first, one line each.",
+     "Start with a = 2 and look for the numbers of children that satisfy the child rule and the 5 people rule.",
+     "Check the money last: 10,000 × a + 6,000 × c."
+    ],
+    "because": {
+     "id": "s2b",
+     "kind": "write",
+     "prompt": "Pick ONE of your groups and send 서연 a short text in Korean (polite -요): first the adults, then the children, then the total price. Write the numbers as digits or Korean number words.",
+     "placeholder": "예: ...",
+     "minChars": 8,
+     "checks": [
+      {
+       "id": "w1",
+       "label": "polite ending",
+       "mode": "any",
+       "patterns": [
+        "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
+       ]
+      },
+      {
+       "id": "w2",
+       "label": "gives the number of adults",
+       "mode": "any",
+       "patterns": [
+        "어른[^어]{0,8}(\\d|한|두|세|네|다섯|여섯|일곱|하나|둘|셋|넷)",
+        "(\\d|한|두|세|네|다섯|여섯|일곱)\\s*명(의|이랑|하고|과|와)?\\s*어른"
+       ]
+      },
+      {
+       "id": "w3",
+       "label": "gives the number of children",
+       "mode": "any",
+       "patterns": [
+        "어린이[^어]{0,8}(\\d|한|두|세|네|다섯|여섯|일곱|하나|둘|셋|넷)",
+        "(\\d|한|두|세|네|다섯|여섯|일곱)\\s*명(의|이랑|하고|과|와)?\\s*어린이"
+       ]
+      },
+      {
+       "id": "w4",
+       "label": "says the total price (원)",
+       "mode": "any",
+       "patterns": [
+        "원"
+       ]
+      },
+      {
+       "id": "w5",
+       "label": "adults, children and total match one group that fits all the rules",
+       "mode": "any",
+       "patterns": [
+        "어른[^어린0-9]{0,6}?(?<![0-9])(?:2|두|둘)(?![0-9])[^어린]{0,10}?어린이[^어린0-9]{0,6}?(?<![0-9])(?:3|세|셋)(?![0-9])[\\s\\S]{0,30}?(?<![0-9])(?:3만 ?8천|38,?000)",
+        "어른[^어린0-9]{0,6}?(?<![0-9])(?:2|두|둘)(?![0-9])[^어린]{0,10}?어린이[^어린0-9]{0,6}?(?<![0-9])(?:4|네|넷)(?![0-9])[\\s\\S]{0,30}?(?<![0-9])(?:4만 ?4천|44,?000)",
+        "어른[^어린0-9]{0,6}?(?<![0-9])(?:3|세|셋)(?![0-9])[^어린]{0,10}?어린이[^어린0-9]{0,6}?(?<![0-9])(?:2|두|둘)(?![0-9])[\\s\\S]{0,30}?(?<![0-9])(?:4만 ?2천|42,?000)",
+        "어른[^어린0-9]{0,6}?(?<![0-9])(?:3|세|셋)(?![0-9])[^어린]{0,10}?어린이[^어린0-9]{0,6}?(?<![0-9])(?:3|세|셋)(?![0-9])[\\s\\S]{0,30}?(?<![0-9])(?:4만 ?8천|48,?000)",
+        "어른[^어린0-9]{0,6}?(?<![0-9])(?:3|세|셋)(?![0-9])[^어린]{0,10}?어린이[^어린0-9]{0,6}?(?<![0-9])(?:4|네|넷)(?![0-9])[\\s\\S]{0,30}?(?<![0-9])(?:5만 ?4천|54,?000)",
+        "어른[^어린0-9]{0,6}?(?<![0-9])(?:3|세|셋)(?![0-9])[^어린]{0,10}?어린이[^어린0-9]{0,6}?(?<![0-9])(?:5|다섯)(?![0-9])[\\s\\S]{0,30}?(?<![0-9])(?:6만|60,?000)",
+        "어른[^어린0-9]{0,6}?(?<![0-9])(?:4|네|넷)(?![0-9])[^어린]{0,10}?어린이[^어린0-9]{0,6}?(?<![0-9])(?:1|한|하나)(?![0-9])[\\s\\S]{0,30}?(?<![0-9])(?:4만 ?6천|46,?000)",
+        "어른[^어린0-9]{0,6}?(?<![0-9])(?:4|네|넷)(?![0-9])[^어린]{0,10}?어린이[^어린0-9]{0,6}?(?<![0-9])(?:2|두|둘)(?![0-9])[\\s\\S]{0,30}?(?<![0-9])(?:5만 ?2천|52,?000)",
+        "어른[^어린0-9]{0,6}?(?<![0-9])(?:4|네|넷)(?![0-9])[^어린]{0,10}?어린이[^어린0-9]{0,6}?(?<![0-9])(?:3|세|셋)(?![0-9])[\\s\\S]{0,30}?(?<![0-9])(?:5만 ?8천|58,?000)",
+        "어른[^어린0-9]{0,6}?(?<![0-9])(?:5|다섯)(?![0-9])[^어린]{0,10}?어린이[^어린0-9]{0,6}?(?<![0-9])(?:1|한|하나)(?![0-9])[\\s\\S]{0,30}?(?<![0-9])(?:5만 ?6천|56,?000)"
+       ]
+      }
+     ],
+     "selfAssess": [
+      "Do the counts in my text match one group I built?",
+      "Is the total 10,000 × adults + 6,000 × children?"
+     ],
+     "modelAnswers": [
+      {
+       "text": "어른 3명이랑 어린이 3명이 가요. 모두 48,000원이에요.",
+       "note": "Both counts and the total."
+      },
+      {
+       "text": "어른은 두 명, 어린이는 세 명이에요. 합쳐서 3만 8천 원이에요.",
+       "note": "Words for numbers and the total."
+      }
+     ],
+     "badAnswers": [
+      {
+       "text": "같이 가요.",
+       "why": "No numbers or price."
+      },
+      {
+       "text": "어른 3명, 어린이 3명 가.",
+       "why": "Casual ending and no total."
+      }
+     ],
+     "humanReview": "Whether the numbers in the text really match a group that fits and the total is right (the checker only sees that numbers appear).",
+     "hints": [
+      "Use one group from above: which two numbers?",
+      "Say the adults, then the children, then the total in won."
+     ]
+    }
+   },
+   {
+    "id": "s3",
+    "kind": "choose",
+    "prompt": "서연's cousin suggests: '어른 5명이랑 어린이 2명이 가요. 모두 7명이고 5만 8천 원이에요.' Which condition does this plan break?",
+    "options": [
+     {
+      "id": "a",
+      "text": "There are more children than the rule allows.",
+      "reveals": "Five adults can take up to ten children, and the plan has only two."
+     },
+     {
+      "id": "b",
+      "text": "Fewer than 5 people go.",
+      "reveals": "There are 7 people, so the 5-people rule is met."
+     },
+     {
+      "id": "c",
+      "text": "There is no child in the group.",
+      "reveals": "The plan has 2 children, so the at-least-one-child rule is met."
+     },
+     {
+      "id": "d",
+      "text": "The tickets really cost 62,000 won, more than the limit."
+     }
+    ],
+    "correct": [
+     "d"
+    ],
+    "explain": "Five adults cost 50,000 won and two children cost 12,000 won, which is 62,000 won, more than 60,000. The number in the plan was wrong. Always recompute a total yourself instead of copying it.",
+    "hints": [
+     "Test the plan against every condition in the message, one at a time.",
+     "Do each calculation yourself; do not rely on the numbers written in the plan."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Reading the conditions",
+    "full": "Understands the ratio rule and all other limits and builds valid groups",
+    "partial": "Builds some valid groups",
+    "none": "Groups break the ratio rule or the budget"
+   },
+   {
+    "criterion": "Reporting",
+    "full": "Text gives adults, children, total, polite",
+    "partial": "Missing one element",
+    "none": "Not a report"
+   }
+  ],
+  "alternatives": [
+   "Any group that satisfies all five conditions is correct, e.g. (3, 2), (4, 3) or (5, 1).",
+   "A different polite wording of the report is fine."
+  ],
+  "hardCases": [
+   "A learner may read '두 명까지' as 'exactly two'; the first step handles this.",
+   "Zero children is excluded by '어린이도 한 명은 가야 해요'."
+  ],
+  "cautions": {
+   "language": "Uses 명 counting and -까지/-이상. Prices use digits; Korean number words appear only where the learner writes them.",
+   "culture": "Child-to-adult ratios for tickets and tours are common; prices are made up.",
+   "accessibility": "All material is text; the price list is written out as lines."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Each group against the five conditions",
+    "The text has a polite ending, both counts and a price"
+   ],
+   "human": [
+    "Whether the report matches the group built"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-k4-04",
+  "subject": "korean",
+  "grade": "K4",
+  "topic": "conversation",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "The snack offer",
+  "uiLang": "en",
+  "format": "reveal-and-revise",
+  "generative": true,
+  "goal": "Read a short exchange in stages, change your reading as new sentences arrive, then reply so that nobody has to guess.",
+  "thinking": [
+   "Ambiguity in a short answer",
+   "Updating an interpretation as evidence arrives",
+   "Writing a reply that cannot be misread"
+  ],
+  "differsFromPlain": "Plain practice teaches the meaning of one expression. Here the same short answer is read in three stages, and you see how its meaning is fixed only by what comes next.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows 괜찮아요, 과자 and -(으)ㄹ래요?"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "You are at the school cafeteria with your classmate 지우. You take out a bag of crackers.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "Read each part, choose the reading that seems most likely, then continue.",
+    "hints": [
+     "Decide using only what you have read so far.",
+     "Look for words that give a reason or a time after the first answer."
+    ],
+    "reflect": "괜찮아요 can mean 'yes, fine' or 'no thanks'. The words that come after it (a reason, a time) decide which one it is. A polite answer can still be an unclear one.",
+    "stages": [
+     {
+      "info": "나: 이 과자 먹을래요?\n지우: 괜찮아요.",
+      "ask": "What does 지우 most likely mean?",
+      "options": [
+       {
+        "id": "a",
+        "text": "She would like some crackers."
+       },
+       {
+        "id": "b",
+        "text": "She does not want any crackers."
+       },
+       {
+        "id": "c",
+        "text": "She wants a different snack instead.",
+        "reveals": "Nothing mentions another snack; she is only answering your offer."
+       },
+       {
+        "id": "d",
+        "text": "She is asking what the crackers are.",
+        "reveals": "Her answer is short and polite, not a question."
+       }
+      ],
+      "reasonable": [
+       "a",
+       "b"
+      ],
+      "after": "Both readings are possible: 괜찮아요 can accept or decline an offer. One short answer is not enough."
+     },
+     {
+      "info": "지우: 괜찮아요. 점심을 많이 먹어서요.",
+      "ask": "Now what does 지우 most likely mean?",
+      "options": [
+       {
+        "id": "a",
+        "text": "She would like some crackers, because she ate a lot at lunch.",
+        "reveals": "A big lunch is a reason not to eat more, so it points to a refusal."
+       },
+       {
+        "id": "b",
+        "text": "She is politely saying no, because she is full."
+       },
+       {
+        "id": "c",
+        "text": "She wants a different snack.",
+        "reveals": "She does not mention another snack."
+       },
+       {
+        "id": "d",
+        "text": "She did not hear the offer.",
+        "reveals": "She answers with a reason connected to eating, so she heard it."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "'-아서요' gives the reason. Eating a lot at lunch makes 'no thanks' the better reading."
+     },
+     {
+      "info": "지우: 괜찮아요. 점심을 많이 먹어서요. 그런데 이따가 배고프면 하나 줄래요?",
+      "ask": "What does 지우 want?",
+      "options": [
+       {
+        "id": "a",
+        "text": "Not now, but maybe one cracker later."
+       },
+       {
+        "id": "b",
+        "text": "Never any crackers.",
+        "reveals": "She asks for one later, so she is not refusing for good."
+       },
+       {
+        "id": "c",
+        "text": "Two crackers now.",
+        "reveals": "She says 이따가 (later), not now."
+       },
+       {
+        "id": "d",
+        "text": "She wants you to put the crackers away.",
+        "reveals": "She asks you for one later, so she wants you to keep them."
+       }
+      ],
+      "reasonable": [
+       "a"
+      ],
+      "after": "Now the whole picture is clear: no for now, a possible yes for later. The first 괜찮아요 alone could not show that."
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Your friend 민호 offers you a snack. Which reply could 민호 most easily misunderstand?",
+    "options": [
+     {
+      "id": "a",
+      "text": "고마워요, 지금은 안 먹을게요.",
+      "reveals": "This clearly refuses for now."
+     },
+     {
+      "id": "b",
+      "text": "고마워요, 하나 주세요.",
+      "reveals": "This clearly accepts."
+     },
+     {
+      "id": "c",
+      "text": "고마워요, 괜찮아요."
+     },
+     {
+      "id": "d",
+      "text": "고마워요, 이따가 먹을게요.",
+      "reveals": "This clearly says 'later'."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "A bare 괜찮아요 can be heard as yes or no. A refusal or acceptance with a clear word (안 먹을게요, 주세요) cannot.",
+    "hints": [
+     "Ask for each reply: after reading it, would 민호 know whether to hand you the snack now?",
+     "Imagine each reply in a text message with no tone of voice: could 민호 read it in two opposite ways?"
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "민호 offers you a snack. You do not want one now, but you may want one later. Reply in Korean (polite -요 speech) so that 민호 cannot misunderstand.",
+    "placeholder": "예: ...",
+    "minChars": 10,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "makes clear that you decline for now (지금은 안, 안 먹을게요, 배불러서 ...)",
+      "mode": "any",
+      "patterns": [
+       "지금은? ?(안|배|못)",
+       "지금 (은 )?안",
+       "안 먹을(게|래|거)",
+       "안 먹어요",
+       "안 먹겠",
+       "먹고 싶지 않",
+       "먹고 싶지는 않",
+       "배(가)? ?(불러|부르|불렀)",
+       "배불",
+       "아니요",
+       "not now",
+       "no thanks"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "mentions later (이따가, 나중에, 배고프면 ...)",
+      "mode": "any",
+      "patterns": [
+       "이따가?",
+       "나중",
+       "있다가",
+       "배고프면",
+       "배가 고프면",
+       "먹고 싶으면",
+       "생각나면",
+       "다음에",
+       "later"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "is not only 괜찮아요",
+      "mode": "none",
+      "patterns": [
+       "^\\s*괜찮아요\\W*$"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "does not say you are hungry now or skipped a meal",
+      "mode": "none",
+      "patterns": [
+       "안 먹었",
+       "배고파요",
+       "배가 고파요",
+       "배고픕니다"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Would 민호 know that I say no now?",
+     "Would 민호 know that I may say yes later?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "고마워요. 지금은 배가 불러서 안 먹을게요. 이따가 배고프면 하나 주세요.",
+      "note": "Refuses now, gives the reason, asks for later."
+     },
+     {
+      "text": "아까 먹어서 지금은 안 먹을래요. 나중에 먹고 싶으면 말할게요.",
+      "note": "Same content, different wording."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "괜찮아요.",
+      "why": "Can be heard as yes or no; no time given."
+     },
+     {
+      "text": "지금은 안 먹을게요.",
+      "why": "Clear refusal, but says nothing about later."
+     }
+    ],
+    "humanReview": "Whether the reply is natural, kind and clear for 민호 (the checker only looks for the 'now' and 'later' parts).",
+    "hints": [
+     "Say clearly that you will not eat now and give a short reason.",
+     "Add one more sentence about what you may do later."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Updating the reading",
+    "full": "Chooses reasonable readings at each stage and notices that the later words decide the meaning",
+    "partial": "Reasonable at some stages",
+    "none": "Keeps one reading regardless of new words"
+   },
+   {
+    "criterion": "Clear reply",
+    "full": "Declines for now, says later is possible, polite",
+    "partial": "Only one of the two",
+    "none": "Only 괜찮아요"
+   }
+  ],
+  "alternatives": [
+   "At the first stage both 'accepts' and 'declines' are accepted.",
+   "The reply can use -(으)ㄹ게요 or -고 싶어요; wording is free."
+  ],
+  "hardCases": [
+   "In many contexts 괜찮아요 alone is understood from the speaker's tone and gesture; a text-only exchange has no tone, which is why the task treats it as ambiguous."
+  ],
+  "cautions": {
+   "language": "괜찮아요 is the target word; the reasons are -아서요 and 이따가.",
+   "culture": "Politely refusing an offer often starts with 괜찮아요; the learner is shown a clearer alternative, not told never to use it.",
+   "accessibility": "All text; no tone of voice is needed because the exchange is written out."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Reasonable readings at each stage",
+    "The reply has a polite ending, a 'now' part and a 'later' part"
+   ],
+   "human": [
+    "Natural tone and kindness"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-k4-05",
+  "subject": "korean",
+  "grade": "K4",
+  "topic": "messages",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Home late: one plan, two readers",
+  "uiLang": "en",
+  "format": "rewrite-for-audience",
+  "generative": true,
+  "goal": "Say the same news to your grandmother and to your younger brother, changing the Korean speech level for each.",
+  "thinking": [
+   "Choosing speech level for the reader",
+   "Keeping the same news in two registers",
+   "Noticing the speech-level words that differ"
+  ],
+  "differsFromPlain": "Plain practice asks for the polite form of one sentence. Here you must write the same news twice for two different people.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows -요 speech and 반말",
+   "Has met 드세요 and 할머니"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "You have club practice today and will be home at 7:00, later than usual. You will leave a note for your grandmother (할머니), and a message for your younger brother (동생), to whom you use 반말.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which message fits 할머니 best?",
+    "options": [
+     {
+      "id": "a",
+      "text": "할머니, 오늘 동아리 때문에 7시에 가. 저녁 먼저 먹어.",
+      "reveals": "Both sentences end the way you speak to a friend or a younger person, not to 할머니."
+     },
+     {
+      "id": "b",
+      "text": "할머니, 오늘은 동아리 때문에 7시에 집에 올게요. 저녁 먼저 드세요."
+     },
+     {
+      "id": "c",
+      "text": "할머니, 오늘은 7시에 집에 올게. 먼저 저녁 드세요.",
+      "reveals": "The first sentence slips into casual speech (올게); the two sentences do not match."
+     },
+     {
+      "id": "d",
+      "text": "할머니, 오늘은 7시에 집에 갈게요. 저녁 먼저 먹어요.",
+      "reveals": "It is polite, but 먹어요 does not honour 할머니 the way 드세요 does for her meal."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "To 할머니 every sentence needs -요 or a respectful ending, and her meal takes the respectful verb 드세요. Casual endings (가, 먹어, 올게) are for friends and younger people, and mixing levels in one note sounds careless.",
+    "hints": [
+     "Read the messages one sentence at a time and check how each sentence ends.",
+     "Check the verb used for 할머니's dinner as well as the endings."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write your note to 할머니 in Korean. Say that you will be home at 7:00 and why.",
+    "placeholder": "예: ...",
+    "minChars": 12,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "addresses 할머니",
+      "mode": "any",
+      "patterns": [
+       "할머니"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "says the time or lateness",
+      "mode": "any",
+      "patterns": [
+       "7\\s*시",
+       "일곱\\s*시",
+       "늦",
+       "7:00",
+       "7시"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "gives a reason (동아리, 때문에, -서 ...)",
+      "mode": "any",
+      "patterns": [
+       "동아리",
+       "때문",
+       "라서",
+       "해서",
+       "어서",
+       "아서",
+       "연습",
+       "활동",
+       "수업",
+       "숙제",
+       "학원",
+       "약속",
+       "일이"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "no casual sentence ending",
+      "mode": "none",
+      "patterns": [
+       "(먹어|가|와|해|줘|할게|갈게|올게|있어|할래|갈래|먹자|가자|늦어)\\s*[.!?~]*\\s*(\\n|$)",
+       "(먹어|가|와|해|줘|할게|갈게|올게|있어|할래|갈래|먹자|가자|늦어|왔어|했어)\\s*[.!?~]+\\s"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I address 할머니 and end every sentence politely?",
+     "Is the news (7:00 and why) all there?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "할머니, 오늘은 동아리 때문에 7시에 집에 올게요. 먼저 저녁 드세요.",
+      "note": "Polite, reason, time and a caring line."
+     },
+     {
+      "text": "할머니, 오늘 동아리 연습이 있어서 7시쯤 집에 와요.",
+      "note": "Shorter, still polite."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "할머니, 오늘 7시에 가.",
+      "why": "Casual ending to 할머니."
+     },
+     {
+      "text": "저 7시에 와요.",
+      "why": "Polite but does not address 할머니 and gives no reason."
+     }
+    ],
+    "humanReview": "Whether the note sounds warm and respectful, and whether the reason is clear.",
+    "hints": [
+     "Start by calling 할머니, then tell the time and the reason.",
+     "Finish each sentence with a -요 or -세요 ending."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Now write the message to your younger brother (동생), with 반말. Say the same news: you will be home at 7:00. Add one thing you want him to do.",
+    "placeholder": "예: ...",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "says the time or lateness",
+      "mode": "any",
+      "patterns": [
+       "7\\s*시",
+       "일곱\\s*시",
+       "늦",
+       "7시"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "no 요 / formal endings",
+      "mode": "none",
+      "patterns": [
+       "[가-힣]요(?![가-힣])",
+       "습니다",
+       "니다(?![가-힣])"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "no 할머니-level words (드세요, 께서, ~세요)",
+      "mode": "none",
+      "patterns": [
+       "드세요",
+       "드시",
+       "께서",
+       "세요(?![가-힣])"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "a casual ending (어, 야, 지, 게, 자 ...)",
+      "mode": "any",
+      "patterns": [
+       "[어아야지게자해줘와가래니마려워봐라겨둬써켜꺼]\\s*[.!?~ㅎㅋ]*\\s*(\\n|$)"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "asks him to do something (먹어, 해, 기다려, 줘 ...)",
+      "mode": "any",
+      "patterns": [
+       "(먹어|해|줘|기다려|드려|있어|자|해라|봐|챙겨|놔|씻어|써|켜|꺼|닫아|열어|가져와|나와|들어와|마|말고|둬|줄래|할래|먹을래)\\s*[.!?~ㅎㅋ]*(\\s|$)",
+       "하지 ?마",
+       "해 ?줘"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Are all my endings casual?",
+     "Does it carry the same news as the note to 할머니?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "나 오늘 동아리 때문에 7시에 가. 먼저 저녁 먹어.",
+      "note": "Same news, casual, with a request."
+     },
+     {
+      "text": "오늘 동아리라서 늦어. 7시에 갈 거야. 숙제 먼저 해!",
+      "note": "Casual, with a request."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "저 오늘 7시에 가요. 저녁 드세요.",
+      "why": "Polite and respectful, not the way you speak to 동생."
+     },
+     {
+      "text": "나 7시에 가요.",
+      "why": "Mixes 요 into a message to a younger brother."
+     }
+    ],
+    "humanReview": "Whether the tone sounds natural between siblings and whether the request is clear.",
+    "hints": [
+     "Say the same time, but use the endings you use with 동생.",
+     "Add one short request (먹어, 해 줘, 기다려 ...)."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Choosing the speech level",
+    "full": "Recognises the casual message as unsuitable and writes both messages in the right level",
+    "partial": "One of the two messages is right",
+    "none": "Same level for both readers"
+   },
+   {
+    "criterion": "Keeping the news",
+    "full": "Both messages contain the time; the note to 할머니 gives the reason",
+    "partial": "Missing one element",
+    "none": "News unclear"
+   }
+  ],
+  "alternatives": [
+   "The note to 할머니 may use 드세요 or may only report the news; both are fine.",
+   "The message to 동생 may leave out a reason."
+  ],
+  "hardCases": [
+   "Some families use 요-speech to a younger sibling or 반말 to a grandmother; the task follows the speech levels stated in the situation."
+  ],
+  "cautions": {
+   "language": "-요 versus 반말 endings; 드세요 is the only honorific verb used.",
+   "culture": "Speech levels depend on age and relationship; 할머니 is addressed with respect while a younger sibling gets 반말 in many families.",
+   "accessibility": "All material is text."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Which message is unsuitable",
+    "Surface features: addressee, ending type, time"
+   ],
+   "human": [
+    "Natural tone for each reader"
+   ]
+  },
+  "status": "draft"
+ }
+]

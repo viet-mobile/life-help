@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 import { useLocale } from "@/lib/i18n/LocaleContext";
 import { studyUrls } from "@/lib/home/studyHosts";
 
@@ -8,14 +8,21 @@ import { studyUrls } from "@/lib/home/studyHosts";
  * The Study card's chooser: three plain links to the learning sub-domains (a real navigation, not a route of this site).
  * Accessible dialog: labelled, Escape and backdrop close, focus moves in and returns to the card.
  */
+// The host is constant for this document. Read it before rendering actionable links;
+// there is no post-open effect that can replace production links with different destinations.
+const subscribeHost = () => () => {};
+const browserHost = () => window.location.host;
+const serverHost = () => "life.help";
+
 export function StudyChooser({ open, onClose }: { open: boolean; onClose: () => void }) {
-  const { t } = useLocale();
-  const [urls, setUrls] = useState(() => studyUrls("life.help"));
+  const { t, locale } = useLocale();
+  const locationHost = useSyncExternalStore(subscribeHost, browserHost, serverHost);
+  const [hostname, port = ""] = locationHost.split(":");
+  const urls = studyUrls(hostname, port, locale);
   const firstLink = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     if (!open) return;
-    setUrls(studyUrls(window.location.hostname, window.location.port));
     firstLink.current?.focus();
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
     window.addEventListener("keydown", onKey);

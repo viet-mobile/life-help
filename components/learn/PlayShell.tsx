@@ -9,12 +9,14 @@ import { displayStreak } from "@/lib/learn/domain/streak";
 import { siteConfig } from "@/lib/learn/sites";
 import { BrandLogo } from "./BrandLogo";
 import { LocaleSwitch } from "./LocaleSwitch";
+import { ThinkOffer } from "../think/ThinkOffer";
 import { useLearner } from "./LearnerProvider";
+import { hubLabels } from "../think/hubLabels";
 
-const FOCUS_PATHS = ["/lesson/", "/onboarding", "/diagnostic", "/practice"];
+const FOCUS_PATHS = ["/lesson/", "/onboarding", "/diagnostic", "/practice"]; // /think keeps the tab bar (its hub), the player is part of it
 
 export function PlayShell({ children }: { children: ReactNode }) {
-  const { t, href, site, state, ready } = useLearner();
+  const { t, href, site, state, ready, locale } = useLearner();
   const pathname = usePathname();
   const focus = FOCUS_PATHS.some((p) => pathname.includes(p));
   const level = levelProgress(state.totalXp);
@@ -24,10 +26,11 @@ export function PlayShell({ children }: { children: ReactNode }) {
     { path: "/dashboard", icon: "🏠", label: t("nav.home") },
     { path: "/learn", icon: "🗺️", label: t("nav.learn") },
     { path: "/quest", icon: "📜", label: t("nav.quest") },
+    { path: "/think", icon: "🧠", label: hubLabels(t).title },
     { path: "/profile", icon: "🙂", label: t("nav.profile") },
   ];
 
-  if (focus) return <main id="main" className="l-main">{children}</main>;
+  if (focus) return <><main id="main" className="l-main">{children}</main><ThinkOffer /></>;
 
   return (
     <>
@@ -52,6 +55,7 @@ export function PlayShell({ children }: { children: ReactNode }) {
         ))}
       </nav>
       <main id="main" className="l-main">{ready ? children : <div className="l-wrap" role="status">{t("common.loading")}</div>}</main>
+      <ThinkOffer />
     </>
   );
 }

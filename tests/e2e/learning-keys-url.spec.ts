@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { expect, test, type Page } from "@playwright/test";
 import { ko } from "../../lib/learn/i18n/ko";
+import { pickLevel } from "./pickLevel";
 
 /**
  * 1. Language in the URL: https://<learning host>/<locale> serves that language's metadata (title, description, social preview, <html lang>)
@@ -18,7 +19,7 @@ const attr = (html: string, re: RegExp) => html.match(re)?.[1]?.replace(/&amp;/g
 
 test.describe("metadata follows the language in the URL (no cookie, as a link preview sees it)", () => {
   for (const site of ["math", "english", "korean"] as Site[]) {
-    for (const loc of ["ko", "en", "vi", "ur", "ar", "sw", "sg", "mr", "te", "ja", "zh-Hans"]) {
+    for (const loc of ["ko", "en", "vi", "ur", "ar", "sw", "fr", "mr", "te", "ja", "zh-Hans"]) {
       test(`${site}/${loc}`, async ({ request }) => {
         const d = dict(loc);
         const res = await request.get(`${HOST[site]}/${loc}`); // APIRequestContext: no cookies
@@ -36,7 +37,7 @@ test.describe("metadata follows the language in the URL (no cookie, as a link pr
       });
     }
   }
-  test("every registry locale has its own link preview on every site (47 x 3, distinct titles)", async ({ request }) => {
+  test("every registry locale has its own link preview on every site (46 x 3, distinct titles)", async ({ request }) => {
     for (const site of ["math", "english", "korean"] as Site[]) {
       const titles = new Set<string>();
       for (const loc of REGISTRY) {
@@ -75,7 +76,7 @@ async function onboardGuest(page: Page, site: Site, level: string) {
   await page.goto(`${HOST[site]}/onboarding`);
   await page.locator("#nick").fill("tester");
   await page.getByRole("button", { name: t["onboarding.next"] }).click();
-  await page.getByRole("radio", { name: t[`grade.${level}`], exact: true }).click();
+  await pickLevel(page, site, level, t[`grade.${level}`]);
   await page.getByRole("button", { name: t["onboarding.next"] }).click();
   await page.getByRole("radio", { name: t["goal.fill_gaps"] }).click();
   await page.getByRole("button", { name: t["onboarding.next"] }).click();

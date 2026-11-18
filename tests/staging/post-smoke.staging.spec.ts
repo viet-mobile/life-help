@@ -25,5 +25,5 @@ for (const site of SITES) {
 }
 test("the service API answers (not unavailable) and refuses an unauthenticated admin call", async ({ request }) => {
   expect((await request.get(`${BASE}/api/svc/a/requests`)).status()).toBe(401);
-  expect((await request.get(`${BASE}/api/svc/h/me`)).status()).toBe(403);
+  expect((await request.get(`${BASE}/api/svc/h/me`)).status()).toBe(200);
 });

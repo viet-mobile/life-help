@@ -43,7 +43,6 @@ export const locales = [
   "el",
   "pt",
   "ur",
-  "sg",
   "sw",
   "mr",
   "gu",
@@ -82,7 +81,6 @@ export const languages: readonly LanguageMeta[] = [
   { code: "mn", name: "몽골어", nativeName: "Монгол" },
   { code: "my", name: "미얀마어", nativeName: "မြန်မာဘာသာ" },
   { code: "bn", name: "벵골어", nativeName: "বাংলা" },
-  { code: "sg", name: "상고어", nativeName: "Sängö" },
   { code: "sw", name: "스와힐리어", nativeName: "Kiswahili" },
   { code: "sv", name: "스웨덴어", nativeName: "Svenska" },
   { code: "es", name: "스페인어", nativeName: "Español" },
@@ -126,6 +124,10 @@ export function formatLanguageName(meta: LanguageMeta, currentLocale?: Locale): 
     return meta.nativeName;
   }
   const native = currentLocale === "zh-Hant" && meta.code === "zh-Hans" ? "簡體中文" : meta.nativeName;
+  // Non-Korean UI: the endonym only (a Korean exonym beside every language is unreadable for them).
+  if (currentLocale && currentLocale !== "ko") {
+    return meta.dir === "rtl" ? `\u200E${native}\u200E` : native;
+  }
   if (meta.dir === "rtl") {
     return `\u200E${native}\u200E ${meta.name}\u200E`;
   }

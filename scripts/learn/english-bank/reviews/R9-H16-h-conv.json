@@ -1,0 +1,29 @@
+{
+ "packet": "H16-h-conv",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 9,
+  "questions": 42
+ },
+ "patches": [
+  {
+   "item": "92e90cce",
+   "op": "set",
+   "set": {
+    "cz": {
+     "st": "Do you happen to know what time the library ___?",
+     "ok": "closes",
+     "wr": [
+      "close",
+      "closing",
+      "to close"
+     ]
+    }
+   },
+   "why": "Replace distractor 'does close' (possible emphatic does) with 'to close'; 'closed'/'is closing' were avoided because they are also grammatical.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 41,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

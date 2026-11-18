@@ -30,12 +30,16 @@ export const NEEDS_AUDIO: readonly ReviewMode[] = ["listening", "dictation"];
  * form is a plain word -> meaning lookup (Korean "meaning", English "enko"), so the card never mixes the two languages on one side.
  * Cards carry no XP, mastery or SRS effect on the server: the learner's own rating stays on the device.
  */
-export function cardFront(q: Pick<Question, "prompt" | "target" | "tags">): string | null {
+export function cardFront(q: Pick<Question, "prompt" | "target" | "tags" | "options" | "answer">): string | null {
   const form = q.tags?.[2];
   if (form === "meaning" && q.target?.text) return q.target.text;
   if (form === "enko") return q.prompt.match(/“([^”]+)”/)?.[1] ?? null;
+  if (form === "koen" && q.answer.kind === "choice") {
+    return q.options?.find((o) => o.id === (q.answer as { id: string }).id)?.text ?? null;
+  }
   return null;
 }
-export function cardBack(q: Pick<Question, "options" | "answer">): string | null {
+export function cardBack(q: Pick<Question, "prompt" | "tags" | "options" | "answer">): string | null {
+  if (q.tags?.[2] === "koen") return q.prompt.match(/“([^”]+)”/)?.[1] ?? null;
   return q.answer.kind === "choice" ? (q.options?.find((o) => o.id === (q.answer as { id: string }).id)?.text ?? null) : null;
 }

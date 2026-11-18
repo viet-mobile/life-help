@@ -6,7 +6,7 @@ import type { NextConfig } from "next";
  * app (no script-src/style-src yet: the Next runtime needs nonces or hashes for that, to be done together with report-only testing).
  */
 const SECURITY_HEADERS = [
-  { key: "Strict-Transport-Security", value: "max-age=31536000" },
+  { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains" },
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   { key: "X-Frame-Options", value: "SAMEORIGIN" },
@@ -18,7 +18,13 @@ const SECURITY_HEADERS = [
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   async headers() {
-    return [{ source: "/:path*", headers: SECURITY_HEADERS }];
+    return [
+      { source: "/:path*", headers: SECURITY_HEADERS },
+      { source: "/jiu/bridge", headers: [
+        { key: "X-Frame-Options", value: "" },
+        { key: "Content-Security-Policy", value: "frame-ancestors 'self' https://math.life.help https://english.life.help https://korean.life.help https://study.korean.life.help; object-src 'none'; base-uri 'self'; form-action 'self'" },
+      ] },
+    ];
   },
   async rewrites() {
     return [

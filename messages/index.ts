@@ -37,7 +37,6 @@ import no from "./no.json";
 import el from "./el.json";
 import pt from "./pt.json";
 import ur from "./ur.json";
-import sg from "./sg.json";
 import sw from "./sw.json";
 import mr from "./mr.json";
 import gu from "./gu.json";
@@ -89,7 +88,6 @@ export const dictionaries = {
   el,
   pt,
   ur,
-  sg,
   sw,
   mr,
   gu,

@@ -55,6 +55,23 @@ export function rateLimit(key: string, limit: number, windowMs: number, now = Da
   if (b.count > limit) throw new LearnError("rate_limited", 429);
 }
 
+/**
+ * Distributed limiter (Cloudflare Workers Rate Limiting binding LEARN_RATE: one shared counter across isolates).
+ * No-op where the binding is absent (local dev, tests). The in-memory limiter above stays as a second, finer per-action layer.
+ */
+export async function edgeRateLimit(key: string): Promise<void> {
+  try {
+    const { getCloudflareContext } = await import("@opennextjs/cloudflare");
+    const { env } = await getCloudflareContext({ async: true });
+    const rl = (env as { LEARN_RATE?: { limit(o: { key: string }): Promise<{ success: boolean }> } }).LEARN_RATE;
+    if (!rl) return;
+    const { success } = await rl.limit({ key });
+    if (!success) throw new LearnError("rate_limited", 429);
+  } catch (e) {
+    if (e instanceof LearnError) throw e; // anything else (no Cloudflare context): do not block learners
+  }
+}
+
 export function errorResponse(err: unknown): Response {
   if (err instanceof LearnError) {
     return Response.json({ error: err.code }, { status: err.status, headers: { "Cache-Control": "no-store" } });

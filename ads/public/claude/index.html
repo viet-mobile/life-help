@@ -1,0 +1,1346 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LIFE.HELP 10초 광고 스튜디오 · Claude 버전</title>
+<style>
+:root{--navy:#0B1E4C;--red:#AF1D30;--paper:#FBF6EC;--ink:#1B1B1F;--line:#5A6B85;--bg:#F4F1EA;--card:#FFFFFF;--muted:#4A5468;--warn:#7A4A00;--warnbg:#FFF4D6;--focus:#1D4ED8}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR","Noto Sans",sans-serif;line-height:1.45}
+a{color:var(--navy)}
+.wrap{max-width:1240px;margin:0 auto;padding:16px}
+header h1{font-size:1.35rem;margin:4px 0 2px;color:var(--navy)}
+header p{margin:0;color:var(--muted);font-size:.9rem}
+.notice{background:var(--warnbg);border:1px solid #E7C873;color:var(--warn);border-radius:10px;padding:10px 12px;margin:12px 0;font-size:.88rem}
+.notice strong{color:#5A3600}
+.grid{display:grid;grid-template-columns:330px 1fr;gap:16px;align-items:start}
+.card{background:var(--card);border:1px solid #E2DDD2;border-radius:14px;padding:14px}
+.ctl{display:flex;flex-direction:column;gap:12px}
+label.lbl{font-weight:700;font-size:.82rem;color:var(--muted);display:block;margin-bottom:4px}
+select,button,input[type=range]{font:inherit}
+select{width:100%;padding:8px 10px;border-radius:9px;border:1px solid #C9C2B4;background:#fff;color:var(--ink);min-height:40px}
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+button{min-height:40px;padding:8px 10px;border-radius:9px;border:1px solid #C9C2B4;background:#fff;color:var(--ink);cursor:pointer;font-weight:650}
+button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+button:disabled{opacity:.45;cursor:not-allowed;text-decoration:line-through}
+button.primary{background:var(--navy);color:#fff;border-color:var(--navy)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.reason{font-size:.78rem;color:var(--muted);margin-top:4px;min-height:1em}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.row label{font-size:.88rem}
+.badge{display:inline-block;font-size:.78rem;padding:3px 8px;border-radius:999px;border:1px solid #C9C2B4;background:#fff}
+.badge.ok{border-color:#2E7D5B;color:#1F5A41}
+.badge.part{border-color:#B07800;color:#6A4800}
+.badge.no{border-color:#9AA3B2;color:#4A5468}
+.stagebox{display:flex;flex-direction:column;gap:10px}
+.canvaswrap{background:#E9E4D9;border-radius:14px;padding:10px;display:flex;justify-content:center}
+canvas{display:block;background:var(--paper);border-radius:8px;max-width:100%;height:auto;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+canvas.v{max-height:78vh;width:auto}
+canvas.h{width:100%}
+.transport{display:flex;gap:10px;align-items:center}
+.transport input[type=range]{flex:1;min-width:0;accent-color:var(--navy);height:32px}
+.time{font-variant-numeric:tabular-nums;font-size:.9rem;min-width:84px;text-align:right}
+.preview{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.preview div{background:#FAF8F3;border:1px solid #E2DDD2;border-radius:10px;padding:8px 10px;font-size:.88rem}
+.preview b{display:block;font-size:.75rem;color:var(--muted)}
+details{font-size:.86rem}
+details summary{cursor:pointer;font-weight:700}
+ul.small{margin:6px 0 0 18px;padding:0}
+.status{font-size:.85rem;color:var(--muted);min-height:1.2em}
+@media (max-width:860px){.grid{grid-template-columns:1fr}.preview{grid-template-columns:1fr}canvas.v{max-height:70vh}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <p><a href="/">← 광고 모음</a></p>
+  <h1>LIFE.HELP 10초 글로벌 광고 스튜디오 — Claude 버전</h1>
+  <p>4종(수학·영어·한국어·생활) × 10.0초. 그림·소리 모두 코드로 생성(외부 글꼴·이미지·음원 없음).</p>
+</header>
+<div class="notice" role="note">
+  <strong>정직한 표기:</strong> 화면의 모든 외국어 문구는 AI가 작성했고 <strong>아직 원어민 검수를 받지 않았습니다</strong>(캐치프레이즈·용어는 Gemini 초안을 재사용·수정, 질문 문장은 Claude 작성). 실제 송출 전 언어별 원어민 검수가 필요합니다.
+  지원 언어는 사용자 표의 54개 코드(요청서의 "46개 활성" 표기와 수가 다름)이며, 일부는 앱에 아직 출시되지 않은 언어입니다. 상고어(Sango) 등 신규 미출시 언어는 제외했습니다. 마스코트 이름·법적 상표 검토는 미완료입니다.
+</div>
+<div class="grid">
+  <section class="card ctl" aria-label="광고 설정">
+    <div><label class="lbl" for="country">국가 (66개국)</label><select id="country"></select></div>
+    <div><label class="lbl" for="lang">언어 (선택한 국가의 언어만)</label><select id="lang"></select></div>
+    <div>
+      <span class="lbl" id="adlbl">광고 종류</span>
+      <div class="btns" role="group" aria-labelledby="adlbl">
+        <button type="button" data-ad="math" aria-pressed="true">수학 MATH</button>
+        <button type="button" data-ad="english" aria-pressed="false">영어 ENGLISH</button>
+        <button type="button" data-ad="korean" aria-pressed="false">한국어 KOREAN</button>
+        <button type="button" data-ad="life" aria-pressed="false">생활 LIFE</button>
+      </div>
+      <div class="reason" id="adReason" aria-live="polite"></div>
+    </div>
+    <div>
+      <span class="lbl" id="asplbl">미리보기 화면비</span>
+      <div class="btns" role="group" aria-labelledby="asplbl">
+        <button type="button" data-asp="16:9" aria-pressed="true">16:9 (1280×720)</button>
+        <button type="button" data-asp="9:16" aria-pressed="false">9:16 (720×1280)</button>
+      </div>
+    </div>
+    <div><label class="lbl" for="domainMode">엔드카드 도메인</label>
+      <select id="domainMode"><option value="auto">자동 (수학·영어·한국어 = 과목 도메인, 생활 = 국가 도메인)</option><option value="subject">과목 도메인 (MATH/ENGLISH/KOREAN.LIFE.HELP)</option><option value="country">국가 도메인</option></select></div>
+    <div class="row"><input type="checkbox" id="sfx" checked><label for="sfx">효과음 (코드 합성)</label></div>
+    <div class="row"><input type="checkbox" id="narr"><label for="narr">내레이션 (OS 음성 합성)</label> <span id="ttsBadge" class="badge no">확인 중</span></div>
+    <div class="row"><input type="checkbox" id="rm"><label for="rm">움직임 줄이기 (정지 장면 4장)</label></div>
+    <div>
+      <span class="lbl">영상 저장 (.webm, 실시간 10초 녹화)</span>
+      <div class="btns"><button type="button" id="exp169">16:9 저장</button><button type="button" id="exp916">9:16 저장</button></div>
+      <div class="status" id="expStatus" role="status" aria-live="polite"></div>
+    </div>
+  </section>
+  <section class="stagebox" aria-label="광고 미리보기">
+    <div class="canvaswrap"><canvas id="cv" width="1280" height="720" class="h" tabindex="0" role="img" aria-label="광고 미리보기 캔버스"></canvas></div>
+    <div class="card transport">
+      <button type="button" id="play" class="primary" aria-label="재생">▶ 재생</button>
+      <input type="range" id="scrub" min="0" max="10000" step="10" value="0" aria-label="재생 위치 (초)">
+      <span class="time" id="time" aria-hidden="true">0.0 / 10.0초</span>
+    </div>
+    <div class="card">
+      <div class="preview" id="preview" aria-label="광고 문구 (텍스트 대체)">
+        <div><b>질문</b><span id="pvQ"></span></div>
+        <div><b>답·공식</b><span id="pvA"></span></div>
+        <div><b>캐치프레이즈 · 도메인</b><span id="pvC"></span></div>
+      </div>
+    </div>
+    <div class="card">
+      <details>
+        <summary>검증·한계 메모</summary>
+        <ul class="small">
+          <li>수학: 공의 경로 y = 4.0 − 0.22861(x − 2.5625)², 시작 (0, 2.5 m) → 림 (4.6 m, 3.05 m). 현과 포물선 사이 활꼴만 색칠. 활꼴 높이 h = 0.22861 × 4.6² / 4 = 1.2094 m, 넓이 = ⅔ × 4.6 × 1.2094 ≈ 3.71 m².</li>
+          <li>마스코트: 팔 12u+20u, 다리 18u+18u 고정 길이 2마디 IK(도달 거리 초과 시 손·발이 목표 앞에서 멈춤). 얼굴 없음. 덩크는 제자리 수직 점프, 두 무릎을 함께 접고 두 손으로 넣는 자세.</li>
+          <li>Gemini 초안에서 고친 것: 타밀어 거리 문구의 한글 혼입 제거, 단위 표기 "2.5 m" 통일, 48개 언어 질문 신규 작성(초안은 영어로 대체되어 있었음), 수학 질문을 색칠한 활꼴로 명확화.</li>
+          <li>영어 광고는 영어권 청중(언어 en, 나이지리아 피진 pcm)에서 비활성. 한국어 광고는 한국(ko)에서 비활성.</li>
+          <li>내레이션은 브라우저/OS 음성에 의존하며 저장 영상에는 들어가지 않습니다(효과음만 녹음). arz → ar-EG, pcm → en-NG 음성을 찾고, 없으면 같은 언어의 다른 지역 음성으로 대체합니다.</li>
+          <li id="noVoices">OS 음성이 없는 언어: 확인 중…</li>
+        </ul>
+      </details>
+    </div>
+  </section>
+</div>
+</div>
+<script>
+'use strict';
+const COPY = {"version":"claude-ad-copy-1 (2026-10-21)","status":"AI-written copy (Gemini catchphrases/terms + Claude questions). NOT native-reviewed. Do not ship to audiences before native review.","scope":"Languages listed in the user table (54 codes). Sango and other new/unlaunched languages are excluded.","activeLanguages":["ko","en","vi","ja","zh-Hans","zh-Hant","es","pt","fr","de","ru","uk","uz","kk","id","ms","th","tl","my","km","mn","tet","hi","bn","gu","mr","ml","kn","pa","te","ta","ur","ne","si","it","nl","pl","ro","cs","hu","el","sv","da","no","fi","tr","ar","arz","fa","he","am","sw","pcm","af"],"changesFromGemini":["ta terms.dist: Hangul \"까지의\" removed -> \"கூடை வரையிலான தூரம்\"","units normalized \"2.5m\" -> \"2.5 m\"","questions for 48 languages written (Gemini fell back to English for them)","math question for ko/en/vi/ja/zh rewritten to name the shaded segment between the arc and the chord","life question in the 48 new languages avoids a gendered person noun (rim is the subject; \"before practice\")","\"adjusted/effective height\" formula lines dropped; the numeric formula is built from data: ⅔ × 4.6 × 1.2094 ≈ 3.71 m²"],"authoringContext":{"note":"Internal metadata; never shown in the ad.","entities":{"hero":{"kind":"fictional_person","gender":"unspecified","number":"singular","evidence":{"kind":"unspecified","scope":"LIFE.HELP logo figure, STYLE-BIBLE v0.2"}},"coach":{"kind":"fictional_person","gender":"unspecified","number":"singular","evidence":{"kind":"unspecified","scope":"life question in ko/en/vi/ja/zh (existing Gemini copy); not used in other languages"}},"team":{"kind":"group","gender":"not_applicable","number":"plural","evidence":{"kind":"not_applicable"}},"ball":{"kind":"object","gender":"not_applicable","number":"singular","evidence":{"kind":"not_applicable"}},"rim":{"kind":"object","gender":"not_applicable","number":"singular","evidence":{"kind":"not_applicable"}}},"sentences":{"q.math":{"subjectRefs":["ball"]},"q.english":{"subjectRefs":["ball"]},"q.korean":{"subjectRefs":["team"],"note":"ko: 우리 편 = team (plural group)"},"q.life":{"subjectRefs":["rim","hero"],"objectRefs":["rim"],"recipientRefs":["coach"],"note":"ko original: omitted subject = hero; 감독님 = coach (gender unspecified, honorific)"}}},"math":{"a":0.22861,"h":2.5625,"k":4,"start":[0,2.5],"rim":[4.6,3.05],"segmentHeight":1.2094,"area":3.71},"countries":[{"ko":"한국","en":"Korea","domain":"korea.life.help","langs":["ko"]},{"ko":"미국","en":"USA","domain":"us.life.help","langs":["en"]},{"ko":"영국","en":"UK","domain":"uk.life.help","langs":["en"]},{"ko":"캐나다","en":"Canada","domain":"canada.life.help","langs":["en"]},{"ko":"호주","en":"Australia","domain":"australia.life.help","langs":["en"]},{"ko":"뉴질랜드","en":"New Zealand","domain":"newzealand.life.help","langs":["en"]},{"ko":"베트남","en":"Vietnam","domain":"vietnam.life.help","langs":["vi"]},{"ko":"일본","en":"Japan","domain":"japan.life.help","langs":["ja"]},{"ko":"중국","en":"China","domain":"china.life.help","langs":["zh-Hans"]},{"ko":"대만","en":"Taiwan","domain":"taiwan.life.help","langs":["zh-Hant"]},{"ko":"싱가포르","en":"Singapore","domain":"singapore.life.help","langs":["en","zh-Hans","ms","ta"]},{"ko":"필리핀","en":"Philippines","domain":"philippines.life.help","langs":["tl","en"]},{"ko":"인도","en":"India","domain":"india.life.help","langs":["hi","gu","mr","ml","kn","pa","te","ta","bn"]},{"ko":"인도네시아","en":"Indonesia","domain":"indonesia.life.help","langs":["id"]},{"ko":"말레이시아","en":"Malaysia","domain":"malaysia.life.help","langs":["ms"]},{"ko":"태국","en":"Thailand","domain":"thailand.life.help","langs":["th"]},{"ko":"미얀마","en":"Myanmar","domain":"myanmar.life.help","langs":["my"]},{"ko":"캄보디아","en":"Cambodia","domain":"cambodia.life.help","langs":["km"]},{"ko":"방글라데시","en":"Bangladesh","domain":"bangladesh.life.help","langs":["bn"]},{"ko":"파키스탄","en":"Pakistan","domain":"pakistan.life.help","langs":["ur"]},{"ko":"네팔","en":"Nepal","domain":"nepal.life.help","langs":["ne"]},{"ko":"스리랑카","en":"Sri Lanka","domain":"srilanka.life.help","langs":["si"]},{"ko":"몽골","en":"Mongolia","domain":"mongol.life.help","langs":["mn"]},{"ko":"동티모르","en":"Timor-Leste","domain":"timorleste.life.help","langs":["tet"]},{"ko":"우즈베키스탄","en":"Uzbekistan","domain":"uzbek.life.help","langs":["uz"]},{"ko":"카자흐스탄","en":"Kazakhstan","domain":"kazakh.life.help","langs":["kk"]},{"ko":"러시아","en":"Russia","domain":"russia.life.help","langs":["ru"]},{"ko":"우크라이나","en":"Ukraine","domain":"ukraina.life.help","langs":["uk"]},{"ko":"독일","en":"Germany","domain":"deutsch.life.help","langs":["de"]},{"ko":"프랑스","en":"France","domain":"france.life.help","langs":["fr"]},{"ko":"스위스","en":"Switzerland","domain":"swiss.life.help","langs":["de","fr"]},{"ko":"스페인","en":"Spain","domain":"espania.life.help","langs":["es"]},{"ko":"멕시코","en":"Mexico","domain":"mexico.life.help","langs":["es"]},{"ko":"베네수엘라","en":"Venezuela","domain":"venezuela.life.help","langs":["es"]},{"ko":"엘살바도르","en":"El Salvador","domain":"elsalvador.life.help","langs":["es"]},{"ko":"브라질","en":"Brazil","domain":"brazil.life.help","langs":["pt"]},{"ko":"포르투갈","en":"Portugal","domain":"portugal.life.help","langs":["pt"]},{"ko":"모잠비크","en":"Mozambique","domain":"mozambique.life.help","langs":["pt"]},{"ko":"이탈리아","en":"Italy","domain":"italia.life.help","langs":["it"]},{"ko":"네덜란드","en":"Netherlands","domain":"netherland.life.help","langs":["nl"]},{"ko":"폴란드","en":"Poland","domain":"poland.life.help","langs":["pl"]},{"ko":"루마니아","en":"Romania","domain":"romania.life.help","langs":["ro"]},{"ko":"체코","en":"Czechia","domain":"czech.life.help","langs":["cs"]},{"ko":"헝가리","en":"Hungary","domain":"hungary.life.help","langs":["hu"]},{"ko":"그리스","en":"Greece","domain":"greece.life.help","langs":["el"]},{"ko":"스웨덴","en":"Sweden","domain":"sweden.life.help","langs":["sv"]},{"ko":"덴마크","en":"Denmark","domain":"denmark.life.help","langs":["da"]},{"ko":"노르웨이","en":"Norway","domain":"norway.life.help","langs":["no"]},{"ko":"핀란드","en":"Finland","domain":"finland.life.help","langs":["fi"]},{"ko":"튀르키예","en":"Turkiye","domain":"turkiye.life.help","langs":["tr"]},{"ko":"사우디아라비아","en":"Saudi Arabia","domain":"saudiarabia.life.help","langs":["ar"]},{"ko":"아랍에미리트","en":"UAE","domain":"uae.life.help","langs":["ar"]},{"ko":"예멘","en":"Yemen","domain":"yemen.life.help","langs":["ar"]},{"ko":"이라크","en":"Iraq","domain":"iraq.life.help","langs":["ar"]},{"ko":"이집트","en":"Egypt","domain":"egypt.life.help","langs":["arz"]},{"ko":"이란","en":"Iran","domain":"iran.life.help","langs":["fa"]},{"ko":"이스라엘","en":"Israel","domain":"israel.life.help","langs":["he"]},{"ko":"에티오피아","en":"Ethiopia","domain":"ethiopia.life.help","langs":["am"]},{"ko":"케냐","en":"Kenya","domain":"kenya.life.help","langs":["sw"]},{"ko":"나이지리아","en":"Nigeria","domain":"nigeria.life.help","langs":["pcm"]},{"ko":"남아프리카 공화국","en":"South Africa","domain":"southafrica.life.help","langs":["af"]},{"ko":"가나","en":"Ghana","domain":"ghana.life.help","langs":["en"]},{"ko":"우간다","en":"Uganda","domain":"uganda.life.help","langs":["en"]},{"ko":"잠비아","en":"Zambia","domain":"zambia.life.help","langs":["en"]},{"ko":"중앙아프리카공화국","en":"CAR","domain":"centralafrican.life.help","langs":["fr"]},{"ko":"콩고","en":"Congo","domain":"congo.life.help","langs":["fr"]}],"langs":{"ko":{"native":"한국어","ko":"한국어","dir":"ltr","tts":"ko-KR","areaWord":"면적","archTitle":"아르키메데스의 포물선 넓이 공식","terms":{"arch":"아르키메데스의 포물선 넓이 공식: 면적 = ⅔ × 밑변 × 높이","ballH":"바닥에서 공까지의 높이 = 2.5 m","dist":"서있는 위치에서 농구골대까지의 거리 = 4.6 m","peakH":"공이 도달한 최고 높이 = 4.0 m","rimH":"바닥에서 농구골대 림까지의 높이 = 3.05 m","answer":"정답"},"q":{"math":"빨간 공이 그린 포물선과 직선 사이, 색칠한 부분의 넓이는?","english":"빨간 공이 바닥에 부딪히면서 나는 소리를 영어로 어떻게 쓰나?","korean":"우리 편이 2점 지고 있는 상황에서 막판 1초를 남기고 3점 슛을 하여 성공하는 경우를 한국어로 뭐라고 하나?","life":"슬램 덩크를 하다가 농구 골대를 부러뜨렸는데 감독님이 오시기 전에 수리를 할 수 있을까? 또 수리를 하려면 비용이 많이 들까?"},"korGloss":null,"catch":{"math":"단순 암기는 페이크! 생각하는 힘으로 완벽한 골인!","english":"막히는 문맥도 호쾌하게 리바운드! 진짜 통하는 영어 감각!","korean":"한국어의 리듬과 문맥을 한 번에! 가장 스마트한 한국어 학습!","life":"복잡한 일상 문제는 가볍게 돌파! 생활의 모든 순간을 덩크하다, LIFE.HELP"}},"en":{"native":"English","ko":"영어","dir":"ltr","tts":"en-US","areaWord":"Area","archTitle":"Archimedes' Parabola Area Formula","terms":{"arch":"Archimedes' Parabola Area Formula: Area = ⅔ × Base × Height","ballH":"Height from floor to ball = 2.5 m","dist":"Distance from standing spot to hoop = 4.6 m","peakH":"Maximum height reached by ball = 4.0 m","rimH":"Height from floor to hoop rim = 3.05 m","answer":"Answer"},"q":{"math":"What is the area of the shaded region between the ball's arc and the straight line?","english":"How do you write the sound of the red ball hitting the floor in English?","korean":"Down by 2 points with 1 second left, you sink a 3-pointer to win! What do you call this in Korean?","life":"Broke the hoop doing a slam dunk! Can we fix it before Coach arrives? Will it cost a lot?"},"korGloss":null,"catch":{"math":"Fake out rote memorization. Score with pure logic!","english":"Rebound every context. Master real-world English!","korean":"Master real Korean with natural rhythm and flow!","life":"Bounce past complex daily problems! Slam dunk every moment of life, LIFE.HELP"}},"vi":{"native":"Tiếng Việt","ko":"베트남어","dir":"ltr","tts":"vi-VN","areaWord":"Diện tích","archTitle":"Công thức diện tích parabol của Archimedes","terms":{"arch":"Công thức diện tích parabol của Archimedes: Diện tích = ⅔ × Đáy × Chiều cao","ballH":"Chiều cao từ sàn đến bóng = 2.5 m","dist":"Khoảng cách từ vị trí đứng đến rổ = 4.6 m","peakH":"Độ cao tối đa bóng đạt được = 4.0 m","rimH":"Chiều cao từ sàn đến vành rổ = 3.05 m","answer":"Đáp án"},"q":{"math":"Diện tích phần tô màu giữa đường parabol của bóng và đoạn thẳng là bao nhiêu?","english":"Âm thanh khi quả bóng đỏ đập xuống sàn viết bằng tiếng Anh như thế nào?","korean":"Đội nhà đang thua 2 điểm, còn 1 giây cuối ném vào 3 điểm để thắng! Tiếng Hàn gọi là gì?","life":"Úp rổ làm gãy cả vành rổ! Có sửa kịp trước khi huấn luyện viên tới không? Chi phí có đắt không?"},"korGloss":null,"catch":{"math":"Vượt qua lối học vẹt, ghi điểm bằng tư duy logic!","english":"Bắt trọn ngữ cảnh, làm chủ tiếng Anh thực tế!","korean":"Nắm bắt nhịp điệu tiếng Hàn tự nhiên và chuẩn xác!","life":"Vượt qua mọi rắc rối thường ngày! Úp rổ mọi khoảnh khắc cuộc sống, LIFE.HELP"}},"ja":{"native":"日本語","ko":"일본어","dir":"ltr","tts":"ja-JP","areaWord":"面積","archTitle":"アルキメデスの放物線面積の公式","terms":{"arch":"アルキメデスの放物線面積の公式: 面積 = ⅔ × 底辺 × 高さ","ballH":"床からボールまでの高さ = 2.5 m","dist":"立ち位置からゴールまでの距離 = 4.6 m","peakH":"ボールが到達した最高到達点 = 4.0 m","rimH":"床からゴールリングまでの高さ = 3.05 m","answer":"答え"},"q":{"math":"赤いボールの放物線と直線の間、色をぬった部分の面積は？","english":"赤いボールが床に跳ねる音を英語でどう書く？","korean":"2点負けている残り1秒、3ポイントシュートを決めて勝利！これを韓国語で何と言う？","life":"ダンクでゴールを壊してしまった！監督が来る前に直せる？修理費用は高い？"},"korGloss":"テヨクチョン（大逆転）","catch":{"math":"暗記をかわして、思考力でゴールを決めろ！","english":"文脈をつかんで、生きた英語をリバウンド！","korean":"自然な韓国語のリズムを、スマートにマスター！","life":"複雑な日常の問題を軽やかに突破！暮らしのすべての瞬間をダンクする、LIFE.HELP"}},"zh-Hans":{"native":"简体中文","ko":"중국어 간체","dir":"ltr","tts":"zh-CN","areaWord":"面积","archTitle":"阿基米德抛物线面积公式","terms":{"arch":"阿基米德抛物线面积公式：面积 = ⅔ × 底边 × 高度","ballH":"地面到球的高度 = 2.5 m","dist":"站立位置到篮筐的距离 = 4.6 m","peakH":"球达到的最高高度 = 4.0 m","rimH":"地面到篮筐边缘的高度 = 3.05 m","answer":"答案"},"q":{"math":"红球的抛物线与直线之间，阴影部分的面积是多少？","english":"红球撞击地面发出的声音用英语怎么写？","korean":"落后2分、最后1秒投进三分球绝杀！这种情况用韩语怎么说？","life":"扣篮把篮筐扣坏了，能在教练来之前修好吗？修理费用会很贵吗？"},"korGloss":"大逆转","catch":{"math":"晃过死记硬背，用逻辑思维精准得分！","english":"抢下语境篮板，真正掌握地道英语！","korean":"把握地道韩语节奏，轻松开口交流！","life":"轻松突破复杂的日常难题！扣响生活的每一刻，LIFE.HELP"}},"zh-Hant":{"native":"繁體中文","ko":"중국어 번체","dir":"ltr","tts":"zh-TW","areaWord":"面積","archTitle":"阿基米德拋物線面積公式","terms":{"arch":"阿基米德拋物線面積公式：面積 = ⅔ × 底邊 × 高度","ballH":"地面到球的高度 = 2.5 m","dist":"站立位置到籃框的距離 = 4.6 m","peakH":"球達到的最高高度 = 4.0 m","rimH":"地面到籃框邊緣的高度 = 3.05 m","answer":"答案"},"q":{"math":"紅球的拋物線與直線之間，陰影部分的面積是多少？","english":"紅球撞擊地面發出的聲音用英語怎麼寫？","korean":"落後2分、最後1秒投進三分球絕殺！這種情況用韓語怎麼說？","life":"灌籃把籃框灌壞了，能在教練來之前修好嗎？修理費用會很貴嗎？"},"korGloss":"大逆轉","catch":{"math":"擺脫死記硬背，用邏輯思維精準得分！","english":"掌握語境關鍵，輕鬆學會道地英語！","korean":"抓準韓語自然節奏，自信開口說韓文！","life":"輕鬆突破複雜的日常難題！灌響生活的每一刻，LIFE.HELP"}},"es":{"native":"Español","ko":"스페인어","dir":"ltr","tts":"es-ES","areaWord":"Área","archTitle":"Fórmula del área de la parábola de Arquímedes","terms":{"arch":"Fórmula del área de la parábola de Arquímedes: Área = ⅔ × Base × Altura","ballH":"Altura del suelo al balón = 2.5 m","dist":"Distancia hasta el aro = 4.6 m","peakH":"Altura máxima del balón = 4.0 m","rimH":"Altura del suelo al aro = 3.05 m","answer":"Respuesta"},"q":{"math":"¿Cuál es el área de la región sombreada entre el arco del balón y la línea recta?","english":"¿Cómo se escribe en inglés el sonido del balón al chocar con el suelo?","korean":"78:80, queda 1 segundo y un triple lo deja 81:80. ¿Cómo se dice esto en coreano?","life":"¡El aro se dobló con el mate! ¿Se puede arreglar antes del entrenamiento? ¿Saldrá caro?"},"korGloss":null,"catch":{"math":"¡Esquiva la memorización y encesta con lógica!","english":"¡Atrapa el contexto y domina el inglés real!","korean":"¡Domina el ritmo del coreano de forma natural!","life":"¡Supera los problemas diarios! Haz un mate en cada momento de tu vida, LIFE.HELP"}},"pt":{"native":"Português","ko":"포르투갈어","dir":"ltr","tts":"pt-BR","areaWord":"Área","archTitle":"Fórmula da área da parábola de Arquimedes","terms":{"arch":"Fórmula da área da parábola de Arquimedes: Área = ⅔ × Base × Altura","ballH":"Altura do chão até a bola = 2.5 m","dist":"Distância até a cesta = 4.6 m","peakH":"Altura máxima da bola = 4.0 m","rimH":"Altura do chão até o aro = 3.05 m","answer":"Resposta"},"q":{"math":"Qual é a área da região sombreada entre o arco da bola e a linha reta?","english":"Como se escreve em inglês o som da bola batendo no chão?","korean":"78:80, falta 1 segundo e uma cesta de 3 vira para 81:80! Como se diz isso em coreano?","life":"O aro entortou com a enterrada! Dá para consertar antes do treino? Vai custar caro?"},"korGloss":null,"catch":{"math":"Drible a decoreba e marque ponto com a lógica!","english":"Domine o contexto e fale inglês de verdade!","korean":"Aprenda coreano no ritmo certo e sem complicação!","life":"Supere os problemas diários com leveza! Enterre cada momento da vida, LIFE.HELP"}},"fr":{"native":"Français","ko":"프랑스어","dir":"ltr","tts":"fr-FR","areaWord":"Aire","archTitle":"Formule de l'aire de la parabole d'Archimède","terms":{"arch":"Formule de l'aire de la parabole d'Archimède : Aire = ⅔ × Base × Hauteur","ballH":"Hauteur du sol au ballon = 2.5 m","dist":"Distance au panier = 4.6 m","peakH":"Hauteur maximale du ballon = 4.0 m","rimH":"Hauteur du sol à l'anneau = 3.05 m","answer":"Réponse"},"q":{"math":"Quelle est l'aire de la zone ombrée entre l'arc du ballon et la ligne droite ?","english":"Comment écrit-on en anglais le bruit du ballon qui touche le sol ?","korean":"78:80, il reste 1 seconde, un panier à 3 points fait 81:80 ! Comment dit-on cela en coréen ?","life":"Le cercle s'est tordu avec le dunk ! Peut-on le réparer avant l'entraînement ? Ça coûtera cher ?"},"korGloss":null,"catch":{"math":"Dribblez le par cœur, marquez avec la logique !","english":"Saisissez le contexte, maîtrisez le vrai anglais !","korean":"Apprenez le coréen avec rythme et fluidité !","life":"Franchissez les soucis du quotidien ! Dunkez chaque instant de votre vie, LIFE.HELP"}},"de":{"native":"Deutsch","ko":"독일어","dir":"ltr","tts":"de-DE","areaWord":"Fläche","archTitle":"Archimedische Parabel-Flächenformel","terms":{"arch":"Archimedische Parabel-Flächenformel: Fläche = ⅔ × Basis × Höhe","ballH":"Höhe vom Boden bis zum Ball = 2.5 m","dist":"Entfernung bis zum Korb = 4.6 m","peakH":"Maximale Höhe des Balls = 4.0 m","rimH":"Höhe vom Boden bis zum Korbring = 3.05 m","answer":"Antwort"},"q":{"math":"Wie groß ist die schattierte Fläche zwischen Ballbogen und gerader Linie?","english":"Wie schreibt man auf Englisch das Geräusch, wenn der Ball auf den Boden prallt?","korean":"78:80, noch 1 Sekunde – ein Dreier macht 81:80! Wie heißt das auf Koreanisch?","life":"Der Ring hat sich beim Dunk verbogen! Lässt er sich vor dem Training reparieren? Wird das teuer?"},"korGloss":null,"catch":{"math":"Vergiss Auswendiglernen – punkte mit Logik!","english":"Verstehe den Kontext, meistere echtes Englisch!","korean":"Lerne Koreanisch mit Rhythmus und System!","life":"Alltagsprobleme leicht durchbrechen! Ein Slam Dunk für jeden Moment, LIFE.HELP"}},"ru":{"native":"Русский","ko":"러시아어","dir":"ltr","tts":"ru-RU","areaWord":"Площадь","archTitle":"Формула площади параболы Архимеда","terms":{"arch":"Формула площади параболы Архимеда: Площадь = ⅔ × Основание × Высота","ballH":"Высота от пола до мяча = 2.5 m","dist":"Расстояние до кольца = 4.6 m","peakH":"Максимальная высота мяча = 4.0 m","rimH":"Высота от пола до кольца = 3.05 m","answer":"Ответ"},"q":{"math":"Какова площадь закрашенной области между дугой мяча и прямой линией?","english":"Как по-английски пишется звук удара мяча об пол?","korean":"78:80, осталась 1 секунда — трёхочковый, и счёт 81:80! Как это называется по-корейски?","life":"Кольцо погнулось от данка! Можно ли починить его до тренировки? Это дорого?"},"korGloss":null,"catch":{"math":"Обойди зубрежку — забивай логикой!","english":"Лови контекст и владей живым английским!","korean":"Освой ритм корейского языка легко и точно!","life":"Легко обходи бытовые проблемы! Забивай данк в каждый момент жизни, LIFE.HELP"}},"uk":{"native":"Українська","ko":"우크라이나어","dir":"ltr","tts":"uk-UA","areaWord":"Площа","archTitle":"Формула площі параболи Архімеда","terms":{"arch":"Формула площі параболи Архімеда: Площа = ⅔ × Основа × Висота","ballH":"Висота від підлоги до м'яча = 2.5 m","dist":"Відстань до кільця = 4.6 m","peakH":"Максимальна висота м'яча = 4.0 m","rimH":"Висота до кільця = 3.05 m","answer":"Відповідь"},"q":{"math":"Яка площа зафарбованої області між дугою м'яча та прямою лінією?","english":"Як англійською пишеться звук удару м'яча об підлогу?","korean":"78:80, лишилася 1 секунда — триочковий, і рахунок 81:80! Як це називається корейською?","life":"Кільце погнулося від данку! Чи можна полагодити його до тренування? Це дорого?"},"korGloss":null,"catch":{"math":"Обійди зубріння — перемагай логікою!","english":"Розумій контекст і опановуй живу англійську!","korean":"Вивчай корейську легко та впевнено!","life":"Легко долай побутові проблеми! Забивай данк у кожну мить життя, LIFE.HELP"}},"uz":{"native":"Oʻzbekcha","ko":"우즈베크어","dir":"ltr","tts":"uz-UZ","areaWord":"Yuza","archTitle":"Arximedning parabola yuzasi formulasi","terms":{"arch":"Arximedning parabola yuzasi formulasi: Yuza = ⅔ × Asos × Balandlik","ballH":"Poldan to'pgacha balandlik = 2.5 m","dist":"Savatgacha masofa = 4.6 m","peakH":"To'p chiqqan eng yuqori balandlik = 4.0 m","rimH":"Savat halqasigacha balandlik = 3.05 m","answer":"Javob"},"q":{"math":"To'p yoyi va to'g'ri chiziq orasidagi bo'yalgan sohaning yuzi qancha?","english":"To'pning polga urilgan ovozi ingliz tilida qanday yoziladi?","korean":"78:80, 1 soniya qoldi — uch ochkolik to'p hisobni 81:80 qildi! Bu koreyscha nima deyiladi?","life":"Dankdan halqa egilib qoldi! Uni mashg'ulotdan oldin tuzatsa bo'ladimi? Qimmatga tushadimi?"},"korGloss":null,"catch":{"math":"Yodlashni emas, mantiqiy fikrlashni tanlang!","english":"Kontekstni tushuning va amaliy ingliz tilini egallang!","korean":"Koreys tilini oson va tez o‘rganing!","life":"Kundalik muammolarni oson yengib o'ting! Hayotning har lahzasini dank qiling, LIFE.HELP"}},"kk":{"native":"Қазақ тілі","ko":"카자흐어","dir":"ltr","tts":"kk-KZ","areaWord":"Аудан","archTitle":"Архимедтің парабола ауданы формуласы","terms":{"arch":"Архимедтің парабола ауданы формуласы: Аудан = ⅔ × Табан × Биіктік","ballH":"Еденнен допқа дейінгі биіктік = 2.5 m","dist":"Себетке дейінгі қашықтық = 4.6 m","peakH":"Доп жеткен ең жоғары биіктік = 4.0 m","rimH":"Себет сақинасына дейінгі биіктік = 3.05 m","answer":"Жауап"},"q":{"math":"Доптың доғасы мен түзу сызық арасындағы боялған аймақтың ауданы қанша?","english":"Доптың еденге соғылған дыбысы ағылшынша қалай жазылады?","korean":"78:80, 1 секунд қалды — үш ұпайлық лақтырыс есепті 81:80 етті! Мұны корейше қалай атайды?","life":"Данктан сақина майысып қалды! Оны жаттығуға дейін жөндеуге бола ма? Қымбатқа түсе ме?"},"korGloss":null,"catch":{"math":"Жаттандылықты қойып, логикамен ұпай жина!","english":"Мәтінмәнді түсініп, нағыз ағылшын тілін меңгер!","korean":"Корей тілін оңай әрі жүйелі үйрен!","life":"Күнделікті мәселелерді оңай еңсер! Өмірдің әр сәтін данкпен бағындыр, LIFE.HELP"}},"id":{"native":"Bahasa Indonesia","ko":"인도네시아어","dir":"ltr","tts":"id-ID","areaWord":"Luas","archTitle":"Rumus Luas Parabola Archimedes","terms":{"arch":"Rumus Luas Parabola Archimedes: Luas = ⅔ × Alas × Tinggi","ballH":"Tinggi dari lantai ke bola = 2.5 m","dist":"Jarak ke ring basket = 4.6 m","peakH":"Tinggi maksimum bola = 4.0 m","rimH":"Tinggi dari lantai ke ring = 3.05 m","answer":"Jawaban"},"q":{"math":"Berapa luas daerah yang diarsir antara lintasan bola dan garis lurus?","english":"Bagaimana bunyi bola memantul di lantai ditulis dalam bahasa Inggris?","korean":"78:80, sisa 1 detik, tembakan tiga angka membuat skor 81:80! Apa sebutannya dalam bahasa Korea?","life":"Ringnya bengkok karena dunk! Bisa diperbaiki sebelum latihan? Mahal tidak?"},"korGloss":null,"catch":{"math":"Lewati hafalan, cetak skor dengan logika!","english":"Rebound setiap konteks, kuasai bahasa Inggris nyata!","korean":"Kuasai ritme bahasa Korea dengan mudah dan seru!","life":"Terobos masalah harian dengan mudah! Slam dunk setiap momen hidupmu, LIFE.HELP"}},"ms":{"native":"Bahasa Melayu","ko":"말레이어","dir":"ltr","tts":"ms-MY","areaWord":"Luas","archTitle":"Formula Luas Parabola Archimedes","terms":{"arch":"Formula Luas Parabola Archimedes: Luas = ⅔ × Tapak × Tinggi","ballH":"Tinggi dari lantai ke bola = 2.5 m","dist":"Jarak ke gelang = 4.6 m","peakH":"Tinggi maksimum bola = 4.0 m","rimH":"Tinggi dari lantai ke gelang = 3.05 m","answer":"Jawapan"},"q":{"math":"Berapakah luas kawasan berlorek antara lengkungan bola dan garis lurus?","english":"Bagaimanakah bunyi bola melantun di lantai ditulis dalam bahasa Inggeris?","korean":"78:80, tinggal 1 saat, jaringan tiga mata menjadikan 81:80! Apakah sebutannya dalam bahasa Korea?","life":"Gelang bengkok kerana dunk! Boleh dibaiki sebelum latihan? Mahalkah kosnya?"},"korGloss":null,"catch":{"math":"Elak hafalan, jaringkan gol dengan logik pintar!","english":"Kuasai konteks sebenar, tingkatkan bahasa Inggeris!","korean":"Belajar rentak bahasa Korea dengan mudah!","life":"Atasi masalah harian dengan mudah! Slam dunk setiap detik kehidupan, LIFE.HELP"}},"th":{"native":"ไทย","ko":"태국어","dir":"ltr","tts":"th-TH","areaWord":"พื้นที่","archTitle":"สูตรพื้นที่พาราโบลาของอาร์คิมิดีส","terms":{"arch":"สูตรพื้นที่พาราโบลาของอาร์คิมิดีส: พื้นที่ = ⅔ × ฐาน × สูง","ballH":"ความสูงจากพื้นถึงลูกบอล = 2.5 m","dist":"ระยะห่างถึงแป้นบาส = 4.6 m","peakH":"ความสูงที่สุดของลูกบอล = 4.0 m","rimH":"ความสูงจากพื้นถึงห่วงบาส = 3.05 m","answer":"คำตอบ"},"q":{"math":"พื้นที่ส่วนที่แรเงาระหว่างเส้นโค้งของลูกบอลกับเส้นตรงเท่ากับเท่าไร?","english":"เสียงลูกบอลกระทบพื้นเขียนเป็นภาษาอังกฤษว่าอย่างไร?","korean":"78:80 เหลือ 1 วินาที ชู้ต 3 แต้มเป็น 81:80! ภาษาเกาหลีเรียกว่าอะไร?","life":"ห่วงงอเพราะดังก์! ซ่อมทันก่อนซ้อมไหม? แพงไหม?"},"korGloss":null,"catch":{"math":"ก้าวข้ามการท่องจำ ชู้ตทำแต้มด้วยตรรกะ!","english":"เก็บครบทุกบริบท เก่งภาษาอังกฤษที่ใช้ได้จริง!","korean":"จับจังหวะภาษาเกาหลี พูดคล่องอย่างมั่นใจ!","life":"ทะลุทุกปัญหาในชีวิตประจำวัน! ดังก์ทุกช่วงเวลาของชีวิต, LIFE.HELP"}},"tl":{"native":"Tagalog","ko":"타갈로그어","dir":"ltr","tts":"fil-PH","areaWord":"Lawak","archTitle":"Pormula ng Lawak ng Parabola ni Archimedes","terms":{"arch":"Pormula ng Lawak ng Parabola ni Archimedes: Lawak = ⅔ × Base × Taas","ballH":"Taas mula sahig hanggang bola = 2.5 m","dist":"Layo hanggang ring = 4.6 m","peakH":"Pinakamataas na naabot ng bola = 4.0 m","rimH":"Taas mula sahig hanggang ring = 3.05 m","answer":"Sagot"},"q":{"math":"Ano ang lawak ng may-kulay na bahagi sa pagitan ng arko ng bola at ng tuwid na linya?","english":"Paano isinusulat sa English ang tunog ng bolang tumatama sa sahig?","korean":"78:80, 1 segundo na lang, isang 3-pointer at 81:80 na! Ano ang tawag dito sa Korean?","life":"Nabaluktot ang ring sa dunk! Maaayos ba ito bago ang ensayo? Mahal ba?"},"korGloss":null,"catch":{"math":"Iwasan ang basta kabisado, umiskor gamit ang talino!","english":"Hulihin ang tamang konteksto, gumaling sa English!","korean":"Matuto ng natural na Korean nang mabilis!","life":"Lampasan ang mabibigat na problema! I-slam dunk ang bawat sandali ng buhay, LIFE.HELP"}},"my":{"native":"မြန်မာ","ko":"미얀마어","dir":"ltr","tts":"my-MM","areaWord":"ဧရိယာ","archTitle":"အာခီမီးဒီးစ်၏ ပါရာဘိုလာ ဧရိယာ ပုံသေနည်း","terms":{"arch":"အာခီမီးဒီးစ်၏ ပါရာဘိုလာ ဧရိယာ ပုံသေနည်း: ဧရိယာ = ⅔ × အခြေ × အမြင့်","ballH":"ကြမ်းပြင်မှ ဘောလုံးအထိ အမြင့် = 2.5 m","dist":"ခြင်းကွင်းအထိ အကွာအဝေး = 4.6 m","peakH":"ဘောလုံး၏ အမြင့်ဆုံးအမြင့် = 4.0 m","rimH":"ကြမ်းပြင်မှ ခြင်းကွင်းအထိ အမြင့် = 3.05 m","answer":"အဖြေ"},"q":{"math":"ဘောလုံး၏ မျဉ်းကွေးနှင့် မျဉ်းဖြောင့်ကြား အရိပ်ခြယ်ထားသော ဧရိယာ ဘယ်လောက်လဲ?","english":"ဘောလုံး ကြမ်းပြင်ကို ထိသံကို အင်္ဂလိပ်လို ဘယ်လိုရေးသလဲ?","korean":"78:80၊ 1 စက္ကန့်သာ ကျန်တော့သည် — 3 မှတ်ပစ်ချက်ကြောင့် 81:80! ဒါကို ကိုရီးယားလို ဘယ်လိုခေါ်သလဲ?","life":"ဒန့်ခ်ကြောင့် ကွင်း ကွေးသွားပြီ! လေ့ကျင့်ချိန်မတိုင်ခင် ပြင်လို့ရမလား? စရိတ်များမလား?"},"korGloss":null,"catch":{"math":"အလွတ်ကျက်မှတ်ခြင်းကို ကျော်ဖြတ်ပြီး တွေးခေါ်မှုဖြင့် အမှတ်ယူပါ!","english":"လက်တွေ့သုံး အင်္ဂလိပ်စာကို အပိုင်ကျွမ်းကျင်စေဖို့!","korean":"ကိုရီးယားဘာသာစကားကို လွယ်ကူစွာ လေ့လာပါ!","life":"နေ့စဉ်ပြဿနာများကို အလွယ်တကူ ကျော်ဖြတ်ပါ! LIFE.HELP"}},"km":{"native":"ខ្មែរ","ko":"크메르어","dir":"ltr","tts":"km-KH","areaWord":"ក្រឡាផ្ទៃ","archTitle":"រូបមន្តក្រឡាផ្ទៃប៉ារ៉ាបូលរបស់ Archimedes","terms":{"arch":"រូបមន្តក្រឡាផ្ទៃប៉ារ៉ាបូលរបស់ Archimedes: ក្រឡាផ្ទៃ = ⅔ × បាត × កម្ពស់","ballH":"កម្ពស់ពីកម្រាលទៅបាល់ = 2.5 m","dist":"ចម្ងាយទៅកន្ត្រក = 4.6 m","peakH":"កម្ពស់អតិបរមា = 4.0 m","rimH":"កម្ពស់ពីកម្រាលទៅកងកន្ត្រក = 3.05 m","answer":"ចម្លើយ"},"q":{"math":"តើក្រឡាផ្ទៃនៃផ្នែកដែលដាក់ស្រមោល រវាងខ្សែកោងរបស់បាល់ និងបន្ទាត់ត្រង់ ស្មើប៉ុន្មាន?","english":"តើសំឡេងបាល់ប៉ះកម្រាលឥដ្ឋ សរសេរជាភាសាអង់គ្លេសយ៉ាងដូចម្ដេច?","korean":"78:80 នៅសល់ 1 វិនាទី គ្រាប់ 3 ពិន្ទុធ្វើឱ្យទៅជា 81:80! តើភាសាកូរ៉េហៅថាអ្វី?","life":"កងកន្ត្រកកោងដោយសារការដាំបាល់! តើអាចជួសជុលបានមុនពេលហាត់ទេ? ថ្លៃទេ?"},"korGloss":null,"catch":{"math":"ឈប់ទន្ទេញចាំមាត់ ប្រើការគិតដើម្បីរកពិន្ទុ!","english":"យល់ច្បាស់ពីបរិបទ ប្រើភាសាអង់គ្លេសដោយទំនុកចិត្ត!","korean":"រៀនភាសាកូរ៉េឱ្យចេះប្រើប្រាស់ពិតប្រាកដ!","life":"ឆ្លងកាត់បញ្ហាប្រចាំថ្ងៃដោយងាយស្រួល! LIFE.HELP"}},"mn":{"native":"Монгол","ko":"몽골어","dir":"ltr","tts":"mn-MN","areaWord":"Талбай","archTitle":"Архимедийн параболын талбайн томьёо","terms":{"arch":"Архимедийн параболын талбайн томьёо: Талбай = ⅔ × Суурь × Өндөр","ballH":"Шалнаас бөмбөг хүртэлх өндөр = 2.5 m","dist":"Цагариг хүртэлх зай = 4.6 m","peakH":"Бөмбөгний дээд өндөр = 4.0 m","rimH":"Шалнаас цагариг хүртэлх өндөр = 3.05 m","answer":"Хариу"},"q":{"math":"Бөмбөгний нумын шугам ба шулуун шугамын хоорондох будсан хэсгийн талбай хэд вэ?","english":"Бөмбөг шалыг цохих дууг англиар яаж бичдэг вэ?","korean":"78:80, 1 секунд үлдсэн — 3 онооны шидэлтээр 81:80! Үүнийг солонгосоор юу гэдэг вэ?","life":"Данкаас болж цагариг нугаларчээ! Бэлтгэлийн өмнө засаж болох уу? Үнэтэй юу?"},"korGloss":null,"catch":{"math":"Цээжлэх биш сэтгэж бод! Логикоор оноо ав!","english":"Бодит орчинд англи хэлийг төгс эзэмш!","korean":"Солонгос хэлийг хэмнэлтэй, хялбар суралц!","life":"Өдөр тутмын асуудлыг хөнгөхөн дав! LIFE.HELP"}},"tet":{"native":"Tetun","ko":"테툼어","dir":"ltr","tts":"tet-TL","areaWord":"Área","archTitle":"Fórmula Área Parábola Archimedes","terms":{"arch":"Fórmula Área Parábola Archimedes: Área = ⅔ × Baze × Aas","ballH":"Aas husi rai ba bola = 2.5 m","dist":"Distánsia ba sesta = 4.6 m","peakH":"Aas másimu bola = 4.0 m","rimH":"Aas husi rai ba sesta = 3.05 m","answer":"Resposta"},"q":{"math":"Área husi parte ne'ebé pinta entre arku bola nian no liña los mak hira?","english":"Oinsá hakerek iha lian Inglés lian husi bola ne'ebé baku rai?","korean":"78:80, segundu 1 de'it — tiru pontu 3 halo 81:80! Iha lian Korea naran saida?","life":"Arku sesta kurva tanba dunk! Bele hadia molok treinu? Karun ka lae?"},"korGloss":null,"catch":{"math":"Hanoin ho lójika, manán pontu iha matemátika!","english":"Komprende lian Inglés ho di'ak no lais!","korean":"Aprende lian Korea ho maneira fásil!","life":"Haksoit liu problema loron-loron nian! LIFE.HELP"}},"hi":{"native":"हिन्दी","ko":"힌디어","dir":"ltr","tts":"hi-IN","areaWord":"क्षेत्रफल","archTitle":"आर्किमिडीज़ का परवलय क्षेत्रफल सूत्र","terms":{"arch":"आर्किमिडीज़ का परवलय क्षेत्रफल सूत्र: क्षेत्रफल = ⅔ × आधार × ऊँचाई","ballH":"फर्श से गेंद तक की ऊँचाई = 2.5 m","dist":"बास्केट तक की दूरी = 4.6 m","peakH":"गेंद की अधिकतम ऊँचाई = 4.0 m","rimH":"फर्श से बास्केट रिम तक की ऊँचाई = 3.05 m","answer":"उत्तर"},"q":{"math":"गेंद के चाप और सीधी रेखा के बीच छायांकित भाग का क्षेत्रफल कितना है?","english":"फर्श पर गेंद टकराने की आवाज़ अंग्रेज़ी में कैसे लिखी जाती है?","korean":"78:80, 1 सेकंड बाकी — तीन अंकों का शॉट और स्कोर 81:80! इसे कोरियन में क्या कहते हैं?","life":"डंक से रिंग मुड़ गई! क्या इसे प्रैक्टिस से पहले ठीक किया जा सकता है? क्या खर्च ज़्यादा होगा?"},"korGloss":null,"catch":{"math":"रटना छोड़ें, लॉजिक से सीधा गोल करें!","english":"सही संदर्भ समझें, असली इंग्लिश में महारत पाएं!","korean":"सही लय के साथ आसानी से कोरियन भाषा सीखें!","life":"रोज़मर्रा की समस्याओं को आसानी से पार करें! जीवन के हर पल को डंक करें, LIFE.HELP"}},"bn":{"native":"বাংলা","ko":"벵골어","dir":"ltr","tts":"bn-BD","areaWord":"ক্ষেত্রফল","archTitle":"আর্কিমিডিসের প্যারাবোলা ক্ষেত্রফল সূত্র","terms":{"arch":"আর্কিমিডিসের প্যারাবোলা ক্ষেত্রফল সূত্র: ক্ষেত্রফল = ⅔ × ভূমি × উচ্চতা","ballH":"মেঝে থেকে বলের উচ্চতা = 2.5 m","dist":"বাস্কেটের দূরত্ব = 4.6 m","peakH":"বলের সর্বোচ্চ উচ্চতা = 4.0 m","rimH":"মেঝে থেকে রিমের উচ্চতা = 3.05 m","answer":"উত্তর"},"q":{"math":"বলের বাঁকা পথ ও সরলরেখার মাঝের ছায়াযুক্ত অংশের ক্ষেত্রফল কত?","english":"মেঝেতে বল পড়ার শব্দ ইংরেজিতে কীভাবে লেখা হয়?","korean":"78:80, বাকি 1 সেকেন্ড — তিন পয়েন্টের শটে 81:80! কোরিয়ান ভাষায় একে কী বলে?","life":"ডাঙ্কে রিং বেঁকে গেছে! অনুশীলনের আগে কি সারানো যাবে? খরচ কি বেশি হবে?"},"korGloss":null,"catch":{"math":"মুখস্থ নয়, যুক্তি দিয়ে গোল করুন!","english":"সঠিক প্রসঙ্গ বুঝে বাস্তব ইংরেজি শিখুন!","korean":"সহজে ও ছন্দে কোরিয়ান ভাষা আয়ত্ত করুন!","life":"প্রতিদিনের জটিল সমস্যা সহজেই পার করুন! LIFE.HELP"}},"gu":{"native":"ગુજરાતી","ko":"구자라트어","dir":"ltr","tts":"gu-IN","areaWord":"ક્ષેત્રફળ","archTitle":"આર્કિમિડીઝનું પરવલય ક્ષેત્રફળ સૂત્ર","terms":{"arch":"આર્કિમિડીઝનું પરવલય ક્ષેત્રફળ સૂત્ર: ક્ષેત્રફળ = ⅔ × પાયો × ઊંચાઈ","ballH":"જમીનથી બોલની ઊંચાઈ = 2.5 m","dist":"બાસ્કેટ સુધીનું અંતર = 4.6 m","peakH":"બોલની મહત્તમ ઊંચાઈ = 4.0 m","rimH":"જમીનથી રિમની ઊંચાઈ = 3.05 m","answer":"જવાબ"},"q":{"math":"બોલના વક્ર માર્ગ અને સીધી રેખા વચ્ચેના છાયાંકિત ભાગનું ક્ષેત્રફળ કેટલું છે?","english":"જમીન પર બોલ અથડાવાનો અવાજ અંગ્રેજીમાં કેવી રીતે લખાય?","korean":"78:80, 1 સેકન્ડ બાકી — ત્રણ પોઇન્ટના શૉટથી 81:80! કોરિયનમાં આને શું કહેવાય?","life":"ડંકથી રિંગ વળી ગઈ! શું પ્રેક્ટિસ પહેલાં તેને સુધારી શકાય? ખર્ચ વધુ થશે?"},"korGloss":null,"catch":{"math":"ગોખણપટ્ટી છોડો, તર્કથી સ્કોર કરો!","english":"સાચો સંદર્ભ સમજો, અંગ્રેજીમાં નિપુણ બનો!","korean":"સરળતાથી કોરિયન ભાષા શીખો!","life":"રોજિંદા જટિલ પ્રશ્નોને સરળતાથી પાર કરો! LIFE.HELP"}},"mr":{"native":"मराठी","ko":"마라티어","dir":"ltr","tts":"mr-IN","areaWord":"क्षेत्रफळ","archTitle":"आर्किमिडीजचे परवलय क्षेत्रफळ सूत्र","terms":{"arch":"आर्किमिडीजचे परवलय क्षेत्रफळ सूत्र: क्षेत्रफळ = ⅔ × पाया × उंची","ballH":"जमिनीपासून चेंडूची उंची = 2.5 m","dist":"बास्केटपर्यंतचे अंतर = 4.6 m","peakH":"चेंडूची कमाल उंची = 4.0 m","rimH":"जमिनीपासून रिमची उंची = 3.05 m","answer":"उत्तर"},"q":{"math":"चेंडूचा वक्र मार्ग आणि सरळ रेषा यांच्यामधील छायांकित भागाचे क्षेत्रफळ किती?","english":"जमिनीवर चेंडू आपटण्याचा आवाज इंग्रजीत कसा लिहितात?","korean":"78:80, 1 सेकंद बाकी — तीन गुणांचा शॉट आणि 81:80! याला कोरियनमध्ये काय म्हणतात?","life":"डंकमुळे रिंग वाकली! सरावाआधी ती दुरुस्त करता येईल का? खर्च जास्त येईल का?"},"korGloss":null,"catch":{"math":"पाठांतर सोडा, तर्काने गोल करा!","english":"संदर्भ समजून घ्या, खऱ्या इंग्रजीवर प्रभुत्व मिळवा!","korean":"सहज आणि अचूक कोरियन भाषा शिका!","life":"दैनंदिन गुंतागुंतीच्या समस्या सहज पार करा! LIFE.HELP"}},"ml":{"native":"മലയാളം","ko":"말라얄람어","dir":"ltr","tts":"ml-IN","areaWord":"വിസ്തീർണ്ണം","archTitle":"ആർക്കിമിഡീസിന്റെ പരവലയ വിസ്തീർണ്ണ സൂത്രവാക്യം","terms":{"arch":"ആർക്കിമിഡീസിന്റെ പരവലയ വിസ്തീർണ്ണ സൂത്രവാക്യം: വിസ്തീർണ്ണം = ⅔ × പാദം × ഉയരം","ballH":"തറയിൽ നിന്ന് പന്തിലേക്കുള്ള ഉയരം = 2.5 m","dist":"ബാസ്കറ്റിലേക്കുള്ള ദൂരം = 4.6 m","peakH":"പന്തിന്റെ പരമാവധി ഉയരം = 4.0 m","rimH":"തറയിൽ നിന്ന് റിമ്മിലേക്കുള്ള ഉയരം = 3.05 m","answer":"ഉത്തരം"},"q":{"math":"പന്തിന്റെ വക്രപാതയ്ക്കും നേർരേഖയ്ക്കും ഇടയിലെ ഷേഡ് ചെയ്ത ഭാഗത്തിന്റെ വിസ്തീർണ്ണം എത്ര?","english":"തറയിൽ പന്ത് തട്ടുന്ന ശബ്ദം ഇംഗ്ലീഷിൽ എങ്ങനെ എഴുതും?","korean":"78:80, 1 സെക്കൻഡ് ബാക്കി — മൂന്ന് പോയിന്റ് ഷോട്ടിൽ 81:80! ഇതിനെ കൊറിയനിൽ എന്ത് പറയും?","life":"ഡങ്ക് കാരണം റിം വളഞ്ഞു! പരിശീലനത്തിന് മുമ്പ് നന്നാക്കാൻ പറ്റുമോ? ചെലവ് കൂടുമോ?"},"korGloss":null,"catch":{"math":"കാണാതെ പഠിക്കാതെ യുക്തിയിലൂടെ വിജയം നേടൂ!","english":"സാഹചര്യം മനസ്സിലാക്കി മികച്ച ഇംഗ്ലീഷ് സംസാരിക്കൂ!","korean":"കൊറിയൻ ഭാഷ അനായാസം പഠിച്ചു തുടങ്ങൂ!","life":"നിത്യജീവിതത്തിലെ പ്രശ്നങ്ങൾ നിഷ്പ്രയാസം മറികടക്കൂ! LIFE.HELP"}},"kn":{"native":"ಕನ್ನಡ","ko":"칸나다어","dir":"ltr","tts":"kn-IN","areaWord":"ವಿಸ್ತೀರ್ಣ","archTitle":"ಆರ್ಕಿಮಿಡೀಸ್ ಪರವಲಯ ವಿಸ್ತೀರ್ಣ ಸೂತ್ರ","terms":{"arch":"ಆರ್ಕಿಮಿಡೀಸ್ ಪರವಲಯ ವಿಸ್ತೀರ್ಣ ಸೂತ್ರ: ವಿಸ್ತೀರ್ಣ = ⅔ × ಪಾದ × ಎತ್ತರ","ballH":"ನೆಲದಿಂದ ಚೆಂಡಿನ ಎತ್ತರ = 2.5 m","dist":"ಬಾಸ್ಕೆಟ್‌ಗೆ ಇರುವ ದೂರ = 4.6 m","peakH":"ಚೆಂಡಿನ ಗರಿಷ್ಠ ಎತ್ತರ = 4.0 m","rimH":"ನೆಲದಿಂದ ರಿಮ್‌ಗೆ ಎತ್ತರ = 3.05 m","answer":"ಉತ್ತರ"},"q":{"math":"ಚೆಂಡಿನ ವಕ್ರ ಪಥ ಮತ್ತು ನೇರ ರೇಖೆಯ ನಡುವಿನ ಛಾಯೆಗೊಳಿಸಿದ ಭಾಗದ ವಿಸ್ತೀರ್ಣ ಎಷ್ಟು?","english":"ನೆಲಕ್ಕೆ ಚೆಂಡು ಬಡಿಯುವ ಶಬ್ದವನ್ನು ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಹೇಗೆ ಬರೆಯುತ್ತಾರೆ?","korean":"78:80, 1 ಸೆಕೆಂಡ್ ಬಾಕಿ — ಮೂರು ಅಂಕದ ಶಾಟ್‌ನಿಂದ 81:80! ಇದನ್ನು ಕೊರಿಯನ್‌ನಲ್ಲಿ ಏನೆಂದು ಕರೆಯುತ್ತಾರೆ?","life":"ಡಂಕ್‌ನಿಂದ ರಿಂಗ್ ಬಾಗಿದೆ! ಅಭ್ಯಾಸಕ್ಕೆ ಮುಂಚೆ ಸರಿಪಡಿಸಬಹುದೇ? ಖರ್ಚು ಹೆಚ್ಚಾಗುತ್ತದೆಯೇ?"},"korGloss":null,"catch":{"math":"ಕಂಠಪಾಠ ಬಿಡಿ, ತರ್ಕದಿಂದ ಗುರಿ ಮುಟ್ಟಿ!","english":"ಸಂದರ್ಭವನ್ನು ಅರಿತು ಇಂಗ್ಲಿಷ್ ಕಲಿಯಿರಿ!","korean":"ಕೊರಿಯನ್ ಭಾಷೆಯನ್ನು ಸುಲಭವಾಗಿ ಕಲಿಯಿರಿ!","life":"ದೈನಂದಿನ ಸಮಸ್ಯೆಗಳನ್ನು ಸುಲಭವಾಗಿ ದಾಟಿ! LIFE.HELP"}},"pa":{"native":"ਪੰਜਾਬੀ","ko":"펀자브어","dir":"ltr","tts":"pa-IN","areaWord":"ਖੇਤਰਫਲ","archTitle":"ਆਰਕੀਮੀਡੀਜ਼ ਦਾ ਪੈਰਾਬੋਲਾ ਖੇਤਰਫਲ ਸੂਤਰ","terms":{"arch":"ਆਰਕੀਮੀਡੀਜ਼ ਦਾ ਪੈਰਾਬੋਲਾ ਖੇਤਰਫਲ ਸੂਤਰ: ਖੇਤਰਫਲ = ⅔ × ਅਧਾਰ × ਉਚਾਈ","ballH":"ਫਰਸ਼ ਤੋਂ ਗੇਂਦ ਦੀ ਉਚਾਈ = 2.5 m","dist":"ਬਾਸਕਟ ਤੱਕ ਦੀ ਦੂਰੀ = 4.6 m","peakH":"ਗੇਂਦ ਦੀ ਵੱਧ ਤੋਂ ਵੱਧ ਉਚਾਈ = 4.0 m","rimH":"ਫਰਸ਼ ਤੋਂ ਰਿਮ ਦੀ ਉਚਾਈ = 3.05 m","answer":"ਉੱਤਰ"},"q":{"math":"ਗੇਂਦ ਦੇ ਵਕਰ ਰਸਤੇ ਅਤੇ ਸਿੱਧੀ ਰੇਖਾ ਵਿਚਕਾਰ ਛਾਇਆ ਵਾਲੇ ਹਿੱਸੇ ਦਾ ਖੇਤਰਫਲ ਕਿੰਨਾ ਹੈ?","english":"ਫਰਸ਼ 'ਤੇ ਗੇਂਦ ਵੱਜਣ ਦੀ ਆਵਾਜ਼ ਅੰਗਰੇਜ਼ੀ ਵਿੱਚ ਕਿਵੇਂ ਲਿਖੀ ਜਾਂਦੀ ਹੈ?","korean":"78:80, 1 ਸਕਿੰਟ ਬਾਕੀ — ਤਿੰਨ ਅੰਕਾਂ ਦੇ ਸ਼ਾਟ ਨਾਲ 81:80! ਇਸ ਨੂੰ ਕੋਰੀਅਨ ਵਿੱਚ ਕੀ ਕਹਿੰਦੇ ਹਨ?","life":"ਡੰਕ ਨਾਲ ਰਿੰਗ ਮੁੜ ਗਈ! ਕੀ ਇਹ ਅਭਿਆਸ ਤੋਂ ਪਹਿਲਾਂ ਠੀਕ ਹੋ ਸਕਦੀ ਹੈ? ਕੀ ਖਰਚਾ ਜ਼ਿਆਦਾ ਹੋਵੇਗਾ?"},"korGloss":null,"catch":{"math":"ਰੱਟਾ ਛੱਡੋ, ਤਰਕ ਨਾਲ ਗੋਲ ਕਰੋ!","english":"ਸਹੀ ਸੰਦਰਭ ਸਮਝੋ, ਅੰਗਰੇਜ਼ੀ ਵਿੱਚ ਮਾਹਰ ਬਣੋ!","korean":"ਕੋਰੀਅਨ ਭਾਸ਼ਾ ਆਸਾਨੀ ਨਾਲ ਸਿੱਖੋ!","life":"ਰੋਜ਼ਾਨਾ ਦੀਆਂ ਮੁਸ਼ਕਲਾਂ ਨੂੰ ਆਸਾਨੀ ਨਾਲ ਪਾਰ ਕਰੋ! LIFE.HELP"}},"te":{"native":"తెలుగు","ko":"텔루구어","dir":"ltr","tts":"te-IN","areaWord":"వైశాల్యం","archTitle":"ఆర్కిమెడిస్ పరావలయ వైశాల్య సూత్రం","terms":{"arch":"ఆర్కిమెడిస్ పరావలయ వైశాల్య సూత్రం: వైశాల్యం = ⅔ × భూమి × ఎత్తు","ballH":"నేల నుండి బంతి ఎత్తు = 2.5 m","dist":"బాస్కెట్ వరకు దూరం = 4.6 m","peakH":"బంతి గరిష్ట ఎత్తు = 4.0 m","rimH":"నేల నుండి రిమ్ ఎత్తు = 3.05 m","answer":"సమాధానం"},"q":{"math":"బంతి వక్ర మార్గం మరియు సరళ రేఖ మధ్య షేడ్ చేసిన భాగం వైశాల్యం ఎంత?","english":"నేలను బంతి తాకే శబ్దాన్ని ఇంగ్లీషులో ఎలా రాస్తారు?","korean":"78:80, 1 సెకను మిగిలి ఉంది — మూడు పాయింట్ల షాట్‌తో 81:80! దీన్ని కొరియన్‌లో ఏమంటారు?","life":"డంక్‌తో రింగ్ వంగిపోయింది! ప్రాక్టీస్‌కు ముందే బాగు చేయవచ్చా? ఖర్చు ఎక్కువ అవుతుందా?"},"korGloss":null,"catch":{"math":"బట్టీ పట్టడం ఆపండి, లాజిక్‌తో స్కోర్ చేయండి!","english":"సందర్భాన్ని అర్థం చేసుకుని ఇంగ్లీష్ నేర్చుకోండి!","korean":"కొరియన్ భాషను సులభంగా నేర్చుకోండి!","life":"రోజువారీ సమస్యలను సులభంగా దాటండి! LIFE.HELP"}},"ta":{"native":"தமிழ்","ko":"타밀어","dir":"ltr","tts":"ta-IN","areaWord":"பரப்பளவு","archTitle":"ஆர்க்கிமிடிஸின் பரவளைய பரப்பளவு சூத்திரம்","terms":{"arch":"ஆர்க்கிமிடிஸின் பரவளைய பரப்பளவு சூத்திரம்: பரப்பளவு = ⅔ × அடிப்பக்கம் × உயரம்","ballH":"தரையிலிருந்து பந்தின் உயரம் = 2.5 m","dist":"கூடை வரையிலான தூரம் = 4.6 m","peakH":"பந்தின் அதிகபட்ச உயரம் = 4.0 m","rimH":"தரையிலிருந்து வளையத்தின் உயரம் = 3.05 m","answer":"பதில்"},"q":{"math":"பந்தின் வளைவுப் பாதைக்கும் நேர்கோட்டுக்கும் இடையே நிழலிட்ட பகுதியின் பரப்பளவு என்ன?","english":"தரையில் பந்து மோதும் ஒலியை ஆங்கிலத்தில் எப்படி எழுதுவது?","korean":"78:80, 1 வினாடி மீதம் — மூன்று புள்ளி ஷாட்டில் 81:80! இதைக் கொரிய மொழியில் என்ன சொல்வார்கள்?","life":"டங்கால் வளையம் வளைந்துவிட்டது! பயிற்சிக்கு முன் சரிசெய்ய முடியுமா? செலவு அதிகமா?"},"korGloss":null,"catch":{"math":"மனப்பாடம் வேண்டாம், தர்க்கரீதியாக வெல்லுங்கள்!","english":"சூழலைப் புரிந்து சரியான ஆங்கிலம் பேசுங்கள்!","korean":"கொரிய மொழியை எளிதாகவும் வேகமாகவும் கற்றுக்கொள்ளுங்கள்!","life":"அன்றாட சிக்கல்களை எளிதாக கடந்து செல்லுங்கள்! LIFE.HELP"}},"ur":{"native":"اردو","ko":"우르두어","dir":"rtl","tts":"ur-PK","areaWord":"رقبہ","archTitle":"ارشمیدس کا پیرابولا رقبہ فارمولا","terms":{"arch":"ارشمیدس کا پیرابولا رقبہ فارمولا: رقبہ = ⅔ × قاعدہ × اونچائی","ballH":"فرش سے گیند تک اونچائی = 2.5 m","dist":"باسکٹ تک کا فاصلہ = 4.6 m","peakH":"گیند کی زیادہ سے زیادہ اونچائی = 4.0 m","rimH":"فرش سے رم تک اونچائی = 3.05 m","answer":"جواب"},"q":{"math":"گیند کے قوس اور سیدھی لکیر کے درمیان سایہ دار حصے کا رقبہ کتنا ہے؟","english":"فرش پر گیند ٹکرانے کی آواز انگریزی میں کیسے لکھی جاتی ہے؟","korean":"78:80، صرف 1 سیکنڈ باقی — تین پوائنٹ شاٹ سے 81:80! اسے کوریائی میں کیا کہتے ہیں؟","life":"ڈنک سے رِنگ مڑ گیا! کیا اسے پریکٹس سے پہلے ٹھیک کیا جا سکتا ہے؟ کیا خرچہ زیادہ ہوگا؟"},"korGloss":null,"catch":{"math":"رٹا چھوڑیں، منطق سے گول کریں!","english":"سیاق و سباق سمجھیں اور بہترین انگریزی سیکھیں!","korean":"کورین زبان آسانی اور روانی سے سیکھیں!","life":"روزمرہ کے پیچیدہ مسائل کو آسانی سے حل کریں! LIFE.HELP"}},"ne":{"native":"नेपाली","ko":"네팔어","dir":"ltr","tts":"ne-NP","areaWord":"क्षेत्रफल","archTitle":"आर्किमिडिजको पाराबोला क्षेत्रफल सूत्र","terms":{"arch":"आर्किमिडिजको पाराबोला क्षेत्रफल सूत्र: क्षेत्रफल = ⅔ × आधार × उचाइ","ballH":"भुइँबाट बलसम्मको उचाइ = 2.5 m","dist":"बास्केटसम्मको दूरी = 4.6 m","peakH":"बलको अधिकतम उचाइ = 4.0 m","rimH":"भुइँबाट रिमसम्मको उचाइ = 3.05 m","answer":"उत्तर"},"q":{"math":"बलको वक्र बाटो र सीधा रेखाबीचको छायांकित भागको क्षेत्रफल कति हो?","english":"भुइँमा बल ठोकिँदाको आवाज अंग्रेजीमा कसरी लेखिन्छ?","korean":"78:80, 1 सेकेन्ड बाँकी — तीन अङ्कको सटले 81:80! यसलाई कोरियालीमा के भनिन्छ?","life":"डंकले रिङ बाङ्गियो! अभ्यासअघि यसलाई बनाउन सकिन्छ? खर्च धेरै लाग्छ?"},"korGloss":null,"catch":{"math":"घोक्ने होइन, तर्कले जित्नुहोस्!","english":"सन्दर्भ बुझेर व्यावहारिक अंग्रेजी सिक्नुहोस्!","korean":"सजिलो र छिटो कोरियन भाषा सिक्नुहोस्!","life":"दैनिक जटिल समस्याहरू सजिलै पार गर्नुहोस्! LIFE.HELP"}},"si":{"native":"සිංහල","ko":"싱할라어","dir":"ltr","tts":"si-LK","areaWord":"වර්ගඵලය","archTitle":"ආකිමිඩීස්ගේ පරාවලය වර්ගඵල සූත්‍රය","terms":{"arch":"ආකිමිඩීස්ගේ පරාවලය වර්ගඵල සූත්‍රය: වර්ගඵලය = ⅔ × ආධාරකය × උස","ballH":"බිම සිට පන්දුවට උස = 2.5 m","dist":"පැස දක්වා දුර = 4.6 m","peakH":"පන්දුවේ උපරිම උස = 4.0 m","rimH":"බිම සිට වළල්ලට උස = 3.05 m","answer":"පිළිතුර"},"q":{"math":"පන්දුවේ වක්‍ර මාර්ගය සහ සරල රේඛාව අතර සෙවන කළ කොටසේ වර්ගඵලය කීයද?","english":"බිමේ පන්දුව වදින ශබ්දය ඉංග්‍රීසියෙන් ලියන්නේ කෙසේද?","korean":"78:80, තත්පර 1ක් ඉතිරියි — ලකුණු තුනේ විදුමකින් 81:80! මෙයට කොරියානු භාෂාවෙන් කියන්නේ මොකක්ද?","life":"ඩන්ක් එකෙන් වළල්ල නැමුණා! පුහුණුවට පෙර එය හදන්න පුළුවන්ද? වියදම වැඩිද?"},"korGloss":null,"catch":{"math":"කටපාඩම් නොකර තර්කයෙන් ජය ගන්න!","english":"නිවැරදි අවබෝධයෙන් ප්‍රායෝගික ඉංග්‍රීසි ඉගෙන ගන්න!","korean":"කොරියානු භාෂාව පහසුවෙන් ප්‍රගුණ කරන්න!","life":"එදිනෙදා සංකීර්ණ ගැටලු පහසුවෙන් ජය ගන්න! LIFE.HELP"}},"it":{"native":"Italiano","ko":"이탈리아어","dir":"ltr","tts":"it-IT","areaWord":"Area","archTitle":"Formula dell'area della parabola di Archimede","terms":{"arch":"Formula dell'area della parabola di Archimede: Area = ⅔ × Base × Altezza","ballH":"Altezza dal pavimento alla palla = 2.5 m","dist":"Distanza al canestro = 4.6 m","peakH":"Altezza massima raggiunta = 4.0 m","rimH":"Altezza dal pavimento al ferro = 3.05 m","answer":"Risposta"},"q":{"math":"Qual è l'area della zona ombreggiata tra l'arco della palla e la linea retta?","english":"Come si scrive in inglese il rumore della palla che colpisce il pavimento?","korean":"78:80, manca 1 secondo e una tripla porta a 81:80! Come si dice in coreano?","life":"Il ferro si è piegato con la schiacciata! Si può riparare prima dell'allenamento? Costerà tanto?"},"korGloss":null,"catch":{"math":"Dribbla lo studio a memoria, vai a canestro con la logica!","english":"Cogli il contesto e padroneggia il vero inglese!","korean":"Impara il coreano con ritmo e naturalezza!","life":"Supera i problemi quotidiani con leggerezza! Schiaccia ogni momento, LIFE.HELP"}},"nl":{"native":"Nederlands","ko":"네덜란드어","dir":"ltr","tts":"nl-NL","areaWord":"Oppervlakte","archTitle":"Paraboolformule van Archimedes","terms":{"arch":"Paraboolformule van Archimedes: Oppervlakte = ⅔ × Basis × Hoogte","ballH":"Hoogte van vloer tot bal = 2.5 m","dist":"Afstand tot de basket = 4.6 m","peakH":"Maximale hoogte van de bal = 4.0 m","rimH":"Hoogte van vloer tot ring = 3.05 m","answer":"Antwoord"},"q":{"math":"Wat is de oppervlakte van het gearceerde deel tussen de boog van de bal en de rechte lijn?","english":"Hoe schrijf je in het Engels het geluid van een bal die op de vloer stuitert?","korean":"78:80, nog 1 seconde – een driepunter maakt 81:80! Hoe heet dit in het Koreaans?","life":"De ring is verbogen door de dunk! Kan hij vóór de training gerepareerd worden? Wordt het duur?"},"korGloss":null,"catch":{"math":"Dribbel voorbij stampwerk, scoor met logica!","english":"Pak de context en beheers echt Engels!","korean":"Leer Koreaans met ritme en gemak!","life":"Breek moeiteloos door dagelijkse problemen! Slam dunk elk moment, LIFE.HELP"}},"pl":{"native":"Polski","ko":"폴란드어","dir":"ltr","tts":"pl-PL","areaWord":"Pole","archTitle":"Wzór Archimedesa na pole paraboli","terms":{"arch":"Wzór Archimedesa na pole paraboli: Pole = ⅔ × Podstawa × Wysokość","ballH":"Wysokość od podłogi do piłki = 2.5 m","dist":"Odległość do kosza = 4.6 m","peakH":"Maksymalna wysokość piłki = 4.0 m","rimH":"Wysokość od podłogi do obręczy = 3.05 m","answer":"Odpowiedź"},"q":{"math":"Jakie jest pole zacieniowanego obszaru między łukiem piłki a linią prostą?","english":"Jak po angielsku zapisuje się dźwięk piłki uderzającej o podłogę?","korean":"78:80, została 1 sekunda — rzut za trzy i 81:80! Jak to się nazywa po koreańsku?","life":"Obręcz wygięła się od wsadu! Czy da się ją naprawić przed treningiem? Czy to drogo kosztuje?"},"korGloss":null,"catch":{"math":"Omiń kucie na pamięć, punktuj logiką!","english":"Złap kontekst i opanuj prawdziwy angielski!","korean":"Ucz się koreańskiego płynnie i skutecznie!","life":"Lekko pokonuj codzienne problemy! Zrób wsad w każdej chwili, LIFE.HELP"}},"ro":{"native":"Română","ko":"루마니아어","dir":"ltr","tts":"ro-RO","areaWord":"Arie","archTitle":"Formula lui Arhimede pentru aria parabolei","terms":{"arch":"Formula lui Arhimede pentru aria parabolei: Arie = ⅔ × Bază × Înălțime","ballH":"Înălțimea de la podea la minge = 2.5 m","dist":"Distanța până la coș = 4.6 m","peakH":"Înălțimea maximă atinsă = 4.0 m","rimH":"Înălțimea până la inel = 3.05 m","answer":"Răspuns"},"q":{"math":"Care este aria zonei hașurate dintre arcul mingii și linia dreaptă?","english":"Cum se scrie în engleză sunetul mingii care lovește podeaua?","korean":"78:80, mai e 1 secundă — un coș de 3 puncte face 81:80! Cum se spune asta în coreeană?","life":"Inelul s-a îndoit de la slam dunk! Se poate repara înainte de antrenament? Va costa mult?"},"korGloss":null,"catch":{"math":"Fentează toceala, marchează prin logică!","english":"Prinde contextul și stăpânește engleza reală!","korean":"Învață coreeana natural și eficient!","life":"Treci ușor peste problemele zilnice! Dă un slam dunk în fiecare clipă, LIFE.HELP"}},"cs":{"native":"Čeština","ko":"체코어","dir":"ltr","tts":"cs-CZ","areaWord":"Obsah","archTitle":"Archimédův vzorec pro obsah paraboly","terms":{"arch":"Archimédův vzorec pro obsah paraboly: Obsah = ⅔ × Základna × Výška","ballH":"Výška od podlahy k míči = 2.5 m","dist":"Vzdálenost ke koši = 4.6 m","peakH":"Maximální výška míče = 4.0 m","rimH":"Výška od podlahy k obroučce = 3.05 m","answer":"Odpověď"},"q":{"math":"Jaký je obsah vybarvené oblasti mezi obloukem míče a přímkou?","english":"Jak se anglicky píše zvuk míče, který dopadne na podlahu?","korean":"78:80, zbývá 1 sekunda — trojka a je to 81:80! Jak se tomu říká korejsky?","life":"Obroučka se po smeči ohnula! Dá se opravit před tréninkem? Bude to drahé?"},"korGloss":null,"catch":{"math":"Obejdi biflování a skóruj logikou!","english":"Pochop kontext a ovládni skutečnou angličtinu!","korean":"Nauč se korejsky snadno a v rytmu!","life":"Prolomte každodenní problémy s lehkostí! Zasmečujte v každém okamžiku, LIFE.HELP"}},"hu":{"native":"Magyar","ko":"헝가리어","dir":"ltr","tts":"hu-HU","areaWord":"Terület","archTitle":"Arkhimédész parabola-területképlete","terms":{"arch":"Arkhimédész parabola-területképlete: Terület = ⅔ × Alap × Magasság","ballH":"Magasság a padlótól a labdáig = 2.5 m","dist":"Távolság a kosárig = 4.6 m","peakH":"A labda maximális magassága = 4.0 m","rimH":"Magasság a padlótól a gyűrűig = 3.05 m","answer":"Válasz"},"q":{"math":"Mekkora a labda íve és az egyenes közötti satírozott terület?","english":"Hogyan írjuk angolul a padlóra csapódó labda hangját?","korean":"78:80, 1 másodperc van hátra — egy hárompontos, és 81:80! Hogy mondják ezt koreaiul?","life":"A gyűrű elgörbült a zsákolástól! Megjavítható edzés előtt? Sokba fog kerülni?"},"korGloss":null,"catch":{"math":"Cselezd ki a magolást, szerezz pontot logikával!","english":"Értsd meg a szövegkörnyezetet, tanulj valódi angolt!","korean":"Tanulj koreaiul könnyedén és lendületesen!","life":"Törj át könnyedén a napi gondokon! Zsákold be minden pillanatát, LIFE.HELP"}},"el":{"native":"Ελληνικά","ko":"그리스어","dir":"ltr","tts":"el-GR","areaWord":"Εμβαδόν","archTitle":"Τύπος εμβαδού παραβολής του Αρχιμήδη","terms":{"arch":"Τύπος εμβαδού παραβολής του Αρχιμήδη: Εμβαδόν = ⅔ × Βάση × Ύψος","ballH":"Ύψος από το δάπεδο στη μπάλα = 2.5 m","dist":"Απόσταση έως το καλάθι = 4.6 m","peakH":"Μέγιστο ύψος μπάλας = 4.0 m","rimH":"Ύψος από το δάπεδο στη στεφάνη = 3.05 m","answer":"Απάντηση"},"q":{"math":"Πόσο είναι το εμβαδόν της σκιασμένης περιοχής ανάμεσα στο τόξο της μπάλας και την ευθεία;","english":"Πώς γράφεται στα αγγλικά ο ήχος της μπάλας που χτυπά στο πάτωμα;","korean":"78:80, απομένει 1 δευτερόλεπτο — ένα τρίποντο και 81:80! Πώς λέγεται αυτό στα κορεατικά;","life":"Η στεφάνη λύγισε από το κάρφωμα! Μπορεί να φτιαχτεί πριν από την προπόνηση; Θα κοστίσει ακριβά;"},"korGloss":null,"catch":{"math":"Ξέφυγε από την παπαγαλία, σκόραρε με τη λογική!","english":"Πιάσε το νόημα και μάθε αληθινά αγγλικά!","korean":"Μάθε κορεατικά εύκολα και με ρυθμό!","life":"Ξεπεράστε εύκολα τα καθημερινά προβλήματα! Καρφώστε σε κάθε στιγμή, LIFE.HELP"}},"sv":{"native":"Svenska","ko":"스웨덴어","dir":"ltr","tts":"sv-SE","areaWord":"Area","archTitle":"Arkimedes formel för parabelarea","terms":{"arch":"Arkimedes formel för parabelarea: Area = ⅔ × Bas × Höjd","ballH":"Höjd från golv till boll = 2.5 m","dist":"Avstånd till korgen = 4.6 m","peakH":"Bollens högsta höjd = 4.0 m","rimH":"Höjd från golv till ring = 3.05 m","answer":"Svar"},"q":{"math":"Hur stor är den skuggade ytan mellan bollens båge och den raka linjen?","english":"Hur skriver man på engelska ljudet när bollen studsar i golvet?","korean":"78:80, 1 sekund kvar – en trepoängare gör 81:80! Vad heter det på koreanska?","life":"Ringen böjdes av dunken! Kan den lagas före träningen? Blir det dyrt?"},"korGloss":null,"catch":{"math":"Dribbla bort utantillkunskap, gör poäng med logik!","english":"Fånga sammanhanget och bemästra riktig engelska!","korean":"Lär dig koreanska med flyt och rytm!","life":"Ta dig enkelt förbi vardagens problem! Dunka varje ögonblick, LIFE.HELP"}},"da":{"native":"Dansk","ko":"덴마크어","dir":"ltr","tts":"da-DK","areaWord":"Areal","archTitle":"Archimedes' formel for parabelareal","terms":{"arch":"Archimedes' formel for parabelareal: Areal = ⅔ × Grundlinje × Højde","ballH":"Højde fra gulv til bold = 2.5 m","dist":"Afstand til kurven = 4.6 m","peakH":"Boldens maksimale højde = 4.0 m","rimH":"Højde fra gulv til kurvering = 3.05 m","answer":"Svar"},"q":{"math":"Hvor stort er det skraverede område mellem boldens bue og den rette linje?","english":"Hvordan skriver man på engelsk lyden af en bold, der rammer gulvet?","korean":"78:80, 1 sekund tilbage – en trepointer gør det 81:80! Hvad hedder det på koreansk?","life":"Ringen blev bøjet af dunket! Kan den repareres før træningen? Bliver det dyrt?"},"korGloss":null,"catch":{"math":"Dribl uden om udenadslære, scor med logik!","english":"Fang konteksten og lær ægte engelsk!","korean":"Lær koreansk nemt og med god rytme!","life":"Bryd let igennem hverdagens problemer! Slam dunk hvert øjeblik, LIFE.HELP"}},"no":{"native":"Norsk","ko":"노르웨이어","dir":"ltr","tts":"nb-NO","areaWord":"Areal","archTitle":"Arkimedes' formel for parabelareal","terms":{"arch":"Arkimedes' formel for parabelareal: Areal = ⅔ × Grunnlinje × Høyde","ballH":"Høyde fra gulv til ball = 2.5 m","dist":"Avstand til kurven = 4.6 m","peakH":"Ballens maksimale høyde = 4.0 m","rimH":"Høyde fra gulv til ring = 3.05 m","answer":"Svar"},"q":{"math":"Hvor stort er det skraverte området mellom ballens bue og den rette linjen?","english":"Hvordan skriver man på engelsk lyden av en ball som treffer gulvet?","korean":"78:80, 1 sekund igjen – en trepoenger gjør det 81:80! Hva heter dette på koreansk?","life":"Ringen ble bøyd av dunken! Kan den repareres før treningen? Blir det dyrt?"},"korGloss":null,"catch":{"math":"Drible forbi pugging, score med logikk!","english":"Fang konteksten og mestre ekte engelsk!","korean":"Lær koreansk enkelt og med flyt!","life":"Kom deg enkelt gjennom hverdagsproblemene! Dunk hvert øyeblikk, LIFE.HELP"}},"fi":{"native":"Suomi","ko":"핀란드어","dir":"ltr","tts":"fi-FI","areaWord":"Pinta-ala","archTitle":"Arkhimedeen paraabelin pinta-alakaava","terms":{"arch":"Arkhimedeen paraabelin pinta-alakaava: Pinta-ala = ⅔ × Kanta × Korkeus","ballH":"Korkeus lattiasta palloon = 2.5 m","dist":"Etäisyys koriin = 4.6 m","peakH":"Pallon lakipiste = 4.0 m","rimH":"Korkeus lattiasta korirenkaaseen = 3.05 m","answer":"Vastaus"},"q":{"math":"Mikä on pallon kaaren ja suoran väliin jäävän varjostetun alueen pinta-ala?","english":"Miten lattiaan osuvan pallon ääni kirjoitetaan englanniksi?","korean":"78:80, 1 sekunti jäljellä – kolmonen ja 81:80! Mitä tämä on koreaksi?","life":"Rengas taipui donkista! Voiko sen korjata ennen treenejä? Tuleeko siitä kallista?"},"korGloss":null,"catch":{"math":"Ohita ulkoa opettelu, tee pisteet logiikalla!","english":"Ota konteksti haltuun ja opi aitoa englantia!","korean":"Opi koreaa sujuvasti ja rytmillä!","life":"Murra arjen monimutkaiset ongelmat kevyesti! Donkkaa elämän joka hetki, LIFE.HELP"}},"tr":{"native":"Türkçe","ko":"튀르키예어","dir":"ltr","tts":"tr-TR","areaWord":"Alan","archTitle":"Arşimet'in Parabol Alan Formülü","terms":{"arch":"Arşimet'in Parabol Alan Formülü: Alan = ⅔ × Taban × Yükseklik","ballH":"Zeminden topa yükseklik = 2.5 m","dist":"Potaya olan mesafe = 4.6 m","peakH":"Topun ulaştığı maksimum yükseklik = 4.0 m","rimH":"Zeminden çembere yükseklik = 3.05 m","answer":"Cevap"},"q":{"math":"Topun yayı ile doğru arasındaki taralı bölgenin alanı nedir?","english":"Topun yere çarpma sesi İngilizcede nasıl yazılır?","korean":"78:80, 1 saniye kala üçlük ve skor 81:80! Buna Korecede ne denir?","life":"Smaçla çember eğildi! Antrenmandan önce tamir edilebilir mi? Pahalıya patlar mı?"},"korGloss":null,"catch":{"math":"Ezberi çalımla, mantığınla sayı yap!","english":"Bağlamı yakala, gerçek İngilizceyi konuş!","korean":"Koreceyi doğal ritmiyle kolayca öğren!","life":"Karmaşık günlük sorunları kolayca aş! Hayatın her anını smaçla, LIFE.HELP"}},"ar":{"native":"العربية","ko":"표준 아랍어","dir":"rtl","tts":"ar-SA","areaWord":"المساحة","archTitle":"صيغة أرخميدس لمساحة القطع المكافئ","terms":{"arch":"صيغة أرخميدس لمساحة القطع المكافئ: المساحة = ⅔ × القاعدة × الارتفاع","ballH":"الارتفاع من الأرض إلى الكرة = 2.5 m","dist":"المسافة إلى السلة = 4.6 m","peakH":"أقصى ارتفاع للكرة = 4.0 m","rimH":"الارتفاع من الأرض إلى الحلقة = 3.05 m","answer":"الإجابة"},"q":{"math":"ما مساحة المنطقة المظللة بين قوس الكرة والخط المستقيم؟","english":"كيف يُكتب صوت ارتطام الكرة بالأرض باللغة الإنجليزية؟","korean":"78:80، تبقّت ثانية واحدة — رمية ثلاثية تجعلها 81:80! ماذا يُسمّى هذا بالكورية؟","life":"انحنت الحلقة من الدنك! هل يمكن إصلاحها قبل التدريب؟ هل ستكون التكلفة كبيرة؟"},"korGloss":null,"catch":{"math":"تجاوز الحفظ التقليدي، وسجّل هدفك بالمنطق!","english":"افهم السياق وأتقن الإنجليزية الحقيقية!","korean":"تعلّم اللغة الكورية بإيقاع سلس وطبيعي!","life":"تجاوز مشاكل الحياة اليومية بسهولة! سجل دانك في كل لحظة، LIFE.HELP"}},"arz":{"native":"المصرية","ko":"이집트 아랍어","dir":"rtl","tts":"ar-EG","areaWord":"المساحة","archTitle":"قانون أرخميدس لمساحة المنحنى","terms":{"arch":"قانون أرخميدس لمساحة المنحنى: المساحة = ⅔ × القاعدة × الارتفاع","ballH":"الارتفاع من الأرض للكورة = 2.5 m","dist":"المسافة لحد الباسكت = 4.6 m","peakH":"أعلى ارتفاع للكورة = 4.0 m","rimH":"الارتفاع من الأرض لحلقة الباسكت = 3.05 m","answer":"الإجابة"},"q":{"math":"مساحة الحتة المتظللة بين قوس الكورة والخط المستقيم قد إيه؟","english":"صوت الكورة وهي بتخبط في الأرض بيتكتب إزاي بالإنجليزي؟","korean":"78:80، فاضل ثانية واحدة — تلاتة تخليها 81:80! ده اسمه إيه بالكوري؟","life":"الطوق اتعوّج من الدانك! ينفع يتصلّح قبل التمرين؟ هيتكلف كتير؟"},"korGloss":null,"catch":{"math":"عدّي الحفظ، وسجّل جون بالتفكير الصح!","english":"افهم الموقف واتكلم إنجليزي بجد!","korean":"اتعلم كوري بسهولة ومن غير تعقيد!","life":"عدّي مشاكل يومك بكل سهولة! اعمل دانك في كل لحظة في حياتك، LIFE.HELP"}},"fa":{"native":"فارسی","ko":"페르시아어","dir":"rtl","tts":"fa-IR","areaWord":"مساحت","archTitle":"فرمول مساحت سهمی ارشمیدس","terms":{"arch":"فرمول مساحت سهمی ارشمیدس: مساحت = ⅔ × قاعده × ارتفاع","ballH":"ارتفاع از زمین تا توپ = 2.5 m","dist":"فاصله تا سبد = 4.6 m","peakH":"حداکثر ارتفاع توپ = 4.0 m","rimH":"ارتفاع از زمین تا حلقه = 3.05 m","answer":"پاسخ"},"q":{"math":"مساحت ناحیهٔ سایه‌خورده بین کمان توپ و خط راست چقدر است؟","english":"صدای برخورد توپ به زمین به انگلیسی چگونه نوشته می‌شود؟","korean":"78:80، فقط 1 ثانیه مانده — یک پرتاب سه‌امتیازی و 81:80! این را به کره‌ای چه می‌گویند؟","life":"حلقه از دانک خم شد! می‌شود قبل از تمرین تعمیرش کرد؟ هزینه‌اش زیاد است؟"},"korGloss":null,"catch":{"math":"حفظ کردن را جا بگذارید، با منطق امتیاز بگیرید!","english":"مفهوم را درک کنید و انگلیسی واقعی را بیاموزید!","korean":"زبان کره‌ای را با ریتم طبیعی و آسان یاد بگیرید!","life":"مشکلات پیچیده روزمره را به سادگی پشت سر بگذارید! LIFE.HELP"}},"he":{"native":"עברית","ko":"히브리어","dir":"rtl","tts":"he-IL","areaWord":"שטח","archTitle":"נוסחת שטח הפרבולה של ארכימדס","terms":{"arch":"נוסחת שטח הפרבולה של ארכימדס: שטח = ⅔ × בסיס × גובה","ballH":"גובה מהרצפה לכדור = 2.5 m","dist":"מרחק לסל = 4.6 m","peakH":"גובה מרבי של הכדור = 4.0 m","rimH":"גובה מהרצפה לטבעת הסל = 3.05 m","answer":"תשובה"},"q":{"math":"מה שטח האזור המוצלל בין קשת הכדור לקו הישר?","english":"איך כותבים באנגלית את הקול של כדור שפוגע ברצפה?","korean":"78:80, נותרה שנייה אחת — זריקת שלוש והתוצאה 81:80! איך קוראים לזה בקוריאנית?","life":"הטבעת התעקמה מההטבעה! אפשר לתקן אותה לפני האימון? זה יעלה הרבה?"},"korGloss":null,"catch":{"math":"עקפו את השינון, תקלעו עם היגיון!","english":"תפסו את ההקשר ושלטו באנגלית אמיתית!","korean":"למדו קוריאנית בקצב טבעי ובקלות!","life":"עוברים בקלות כל בעיה יומיומית! מטביעים כל רגע בחיים, LIFE.HELP"}},"am":{"native":"አማርኛ","ko":"암하라어","dir":"ltr","tts":"am-ET","areaWord":"ስፋት","archTitle":"የአርኪሜድስ ፓራቦላ ስፋት ቀመር","terms":{"arch":"የአርኪሜድስ ፓራቦላ ስፋት ቀመር፦ ስፋት = ⅔ × መሠረት × ቁመት","ballH":"ከወለሉ እስከ ኳሱ ያለው ቁመት = 2.5 m","dist":"እስከ ቅርጫቱ ያለው ርቀት = 4.6 m","peakH":"ኳሱ የደረሰበት ከፍተኛ ቁመት = 4.0 m","rimH":"ከወለሉ እስከ ቀለበቱ ያለው ቁመት = 3.05 m","answer":"መልስ"},"q":{"math":"በኳሱ ቅስት እና በቀጥታ መስመሩ መካከል ያለው የተጠቆረ ክፍል ስፋት ስንት ነው?","english":"ኳስ ወለል ላይ ሲመታ የሚሰማው ድምፅ በእንግሊዝኛ እንዴት ይጻፋል?","korean":"78:80፣ 1 ሰከንድ ቀርቷል — በሶስት ነጥብ ውርወራ 81:80! ይህ በኮሪያኛ ምን ይባላል?","life":"በዳንኩ ቀለበቱ ተጣመመ! ከልምምድ በፊት ሊጠገን ይችላል? ወጪው ብዙ ይሆናል?"},"korGloss":null,"catch":{"math":"ሸምድዶ ማጥናትን ይተዉ፣ በምክንያታዊ አስተሳሰብ ያሸንፉ!","english":"አውዱን ተረድተው ተግባራዊ እንግሊዝኛን ይማሩ!","korean":"የኮሪያን ቋንቋ በቀላሉ እና በፍጥነት ይማሩ!","life":"የዕለት ተዕለት ውስብስብ ችግሮችን በቀላሉ ይለፉ! LIFE.HELP"}},"sw":{"native":"Kiswahili","ko":"스와힐리어","dir":"ltr","tts":"sw-KE","areaWord":"Eneo","archTitle":"Kanuni ya Eneo la Parabola ya Archimedes","terms":{"arch":"Kanuni ya Eneo la Parabola ya Archimedes: Eneo = ⅔ × Kitako × Kimo","ballH":"Kimo kutoka sakafu hadi mpira = 2.5 m","dist":"Umbali hadi kwenye pete = 4.6 m","peakH":"Kimo cha juu zaidi cha mpira = 4.0 m","rimH":"Kimo kutoka sakafu hadi pete = 3.05 m","answer":"Jibu"},"q":{"math":"Eneo la sehemu iliyotiwa kivuli kati ya tao la mpira na mstari ulionyooka ni kiasi gani?","english":"Sauti ya mpira ukigonga sakafu huandikwaje kwa Kiingereza?","korean":"78:80, imebaki sekunde 1 — mtupo wa pointi tatu unafanya 81:80! Hii inaitwaje kwa Kikorea?","life":"Pete imepinda kwa sababu ya dunk! Inaweza kurekebishwa kabla ya mazoezi? Itagharimu sana?"},"korGloss":null,"catch":{"math":"Epuka kukariri, funga bao kwa mantiki!","english":"Elewa muktadha na ufahamu Kiingereza halisi!","korean":"Jifunze Kikorea kwa urahisi na mtiririko mzuri!","life":"Vuka changamoto za kila siku kwa urahisi! LIFE.HELP"}},"pcm":{"native":"Naijá","ko":"나이지리아 피진","dir":"ltr","tts":"en-NG","areaWord":"Area","archTitle":"Archimedes Parabola Area Formula","terms":{"arch":"Archimedes Parabola Area Formula: Area = ⅔ × Bottom × Height","ballH":"Height from ground reach ball = 2.5 m","dist":"Distance reach basket = 4.6 m","peakH":"Highest point wey ball reach = 4.0 m","rimH":"Height from ground reach rim = 3.05 m","answer":"Answer"},"q":{"math":"How big be the shaded area wey dey between the ball curve and the straight line?","english":"How dem dey write the sound wey ball make when e hit floor for English?","korean":"78:80, na only 1 second remain — three-pointer make am 81:80! Wetin dem dey call am for Korean?","life":"Dunk don bend the ring! E fit fix before training? E go cost plenty?"},"korGloss":null,"catch":{"math":"Dribble tough calculation, score point with smart logic!","english":"Catch the real meaning, sabi better English sharp-sharp!","korean":"Learn Korean language easy with correct rhythm!","life":"Pass daily wahala sharp-sharp! Slam dunk every moment for life, LIFE.HELP"}},"af":{"native":"Afrikaans","ko":"아프리칸스어","dir":"ltr","tts":"af-ZA","areaWord":"Oppervlakte","archTitle":"Archimedes se Parabool-oppervlakteformule","terms":{"arch":"Archimedes se Parabool-oppervlakteformule: Oppervlakte = ⅔ × Basis × Hoogte","ballH":"Hoogte vanaf vloer tot bal = 2.5 m","dist":"Afstand tot by die hoepel = 4.6 m","peakH":"Maksimum hoogte van bal = 4.0 m","rimH":"Hoogte vanaf vloer tot hoepel = 3.05 m","answer":"Antwoord"},"q":{"math":"Wat is die oppervlakte van die geskakeerde deel tussen die bal se boog en die reguit lyn?","english":"Hoe skryf mens in Engels die geluid van 'n bal wat die vloer tref?","korean":"78:80, 1 sekonde oor – 'n driepunter maak dit 81:80! Wat noem mens dit in Koreaans?","life":"Die ring het van die dunk gebuig! Kan dit voor oefening reggemaak word? Gaan dit duur wees?"},"korGloss":null,"catch":{"math":"Dribbel verby papegaaiwerk, teken punte aan met logika!","english":"Vang die konteks en bemeester regte Engels!","korean":"Leer Koreaans vinnig en met ritme!","life":"Breek maklik deur daaglikse probleme! Slam dunk elke oomblik van die lewe, LIFE.HELP"}}}};
+
+// ---------------------------------------------------------------- constants
+const NAVY = '#0B1E4C', RED = '#AF1D30', PAPER = '#FBF6EC', INK = '#1B1B1F', LINE = '#5A6B85', GRID = '#E8DFCF';
+const OBJ = { green: '#009E73', plum: '#9E4F7E', teal: '#007F8C', amber: '#B07800' };
+const DUR = 10, FPS = 30, G = 450;              // g in rig units (u) per s^2; u = hero height / 100
+const MPU = 0.019, UPM = 1 / MPU;               // metres per u (hero 1.9 m tall)
+const LEN = { ua: 12, fa: 20, th: 18, sh: 18 }; // fixed bone lengths (u)
+const BALL_R = 16;
+const ADS = ['math', 'english', 'korean', 'life'];
+const ENGLISH_AUDIENCE = new Set(['en', 'pcm']);
+
+// ---------------------------------------------------------------- math utils
+const clamp = (v, a, b) => v < a ? a : v > b ? b : v;
+const lerp = (a, b, k) => a + (b - a) * k;
+const seg = (t, a, b) => clamp((t - a) / (b - a), 0, 1);
+const frac = x => x - Math.floor(x);
+const D2R = Math.PI / 180;
+const EZ = {
+  sine: k => -(Math.cos(Math.PI * k) - 1) / 2,
+  outC: k => 1 - Math.pow(1 - k, 3),
+  inC: k => k * k * k,
+  inOutC: k => k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2,
+  outQ: k => 1 - Math.pow(1 - k, 4),
+  outBack: k => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(k - 1, 3) + c1 * Math.pow(k - 1, 2); },
+};
+const V = (x, y) => ({ x, y });
+const lerpV = (a, b, k) => V(lerp(a.x, b.x, k), lerp(a.y, b.y, k));
+const dist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
+
+// two-bone IK with fixed lengths; the end point is clamped to the reachable annulus.
+function ik2(S, T, L1, L2, hint) {
+  let dx = T.x - S.x, dy = T.y - S.y, d = Math.hypot(dx, dy);
+  const dmin = Math.abs(L1 - L2) + 0.05, dmax = L1 + L2 - 0.05;
+  let ux, uy;
+  if (d < 1e-6) { const n = Math.hypot(hint.x, hint.y) || 1; ux = hint.x / n; uy = hint.y / n; } else { ux = dx / d; uy = dy / d; }
+  const dc = clamp(d, dmin, dmax);
+  const ca = clamp((L1 * L1 + dc * dc - L2 * L2) / (2 * L1 * dc), -1, 1);
+  const a = Math.acos(ca), base = Math.atan2(uy, ux);
+  const j1 = V(S.x + L1 * Math.cos(base + a), S.y + L1 * Math.sin(base + a));
+  const j2 = V(S.x + L1 * Math.cos(base - a), S.y + L1 * Math.sin(base - a));
+  const s1 = (j1.x - S.x) * hint.x + (j1.y - S.y) * hint.y, s2 = (j2.x - S.x) * hint.x + (j2.y - S.y) * hint.y;
+  return { J: s1 >= s2 ? j1 : j2, E: V(S.x + ux * dc, S.y + uy * dc) };
+}
+
+// ---------------------------------------------------------------- poses
+// Pose: root (x,y) = pelvis in world u (standing y = 44); turn 0 = front, 1 = side (facing +x).
+// hand[0]/foot[0] = screen-left (front) or far side (side view); [1] = right / near side.
+function P0(x, y = 44, turn = 0) {
+  const side = turn > 0.5;
+  return { x, y, turn, lean: 0, tilt: 0,
+    hand: side ? [V(x - 1, y + 7), V(x + 3, y + 7)] : [V(x - 15, y + 7), V(x + 15, y + 7)],
+    foot: side ? [V(x - 6, 6), V(x + 7, 6)] : [V(x - 7.7, 6), V(x + 7.7, 6)],
+    footAng: [0, 0], ball: null };
+}
+function mixBall(a, b, k) { if (!a) return b; if (!b) return a; if (k <= 0) return a; if (k >= 1) return b; return { mode: 'mix', a, b, k }; }
+function mixP(A, B, k) {
+  if (k <= 0) return A; if (k >= 1) return B;
+  return { x: lerp(A.x, B.x, k), y: lerp(A.y, B.y, k), turn: lerp(A.turn, B.turn, k), lean: lerp(A.lean, B.lean, k), tilt: lerp(A.tilt, B.tilt, k),
+    hand: [lerpV(A.hand[0], B.hand[0], k), lerpV(A.hand[1], B.hand[1], k)],
+    foot: [lerpV(A.foot[0], B.foot[0], k), lerpV(A.foot[1], B.foot[1], k)],
+    footAng: [lerp(A.footAng[0], B.footAng[0], k), lerp(A.footAng[1], B.footAng[1], k)],
+    eh: B.eh || A.eh, kh: B.kh || A.kh, ball: mixBall(A.ball, B.ball, k) };
+}
+function setHands(P, B, offs) { P.hand = [V(B.x - offs[0].x, B.y - offs[0].y), V(B.x - offs[1].x, B.y - offs[1].y)]; P.ball = { mode: 'held', off: offs }; return P; }
+const OFF_CHEST = [V(11, 5), V(6, 11)];   // side view, ball in front of chest
+const OFF_SET = [V(7, 16), V(4, 17)];     // side view, ball above forehead
+function frontHold(P, gx, hy) { P.hand = [V(P.x - gx, hy), V(P.x + gx, hy)]; P.ball = { mode: 'held2f' }; P.eh = [V(-1, -0.2), V(1, -0.2)]; return P; }
+
+function ballFrom(spec, hands) {
+  if (!spec) return null;
+  if (spec.mode === 'free') return spec;
+  if (spec.mode === 'held') {
+    let n = 0, x = 0, y = 0;
+    spec.off.forEach((o, i) => { if (o) { x += hands[i].x + o.x; y += hands[i].y + o.y; n++; } });
+    return { x: x / n, y: y / n, rot: spec.rot || 0, seam: !!spec.seam };
+  }
+  if (spec.mode === 'held2f') {
+    const m = lerpV(hands[0], hands[1], 0.5), g = dist(hands[0], hands[1]) / 2;
+    return { x: m.x, y: m.y + Math.sqrt(Math.max(0, 17.3 * 17.3 - g * g)), rot: 0 };
+  }
+  if (spec.mode === 'finger') { const h = hands[spec.i]; return { x: h.x, y: h.y + 19.2, rot: spec.rot, seam: true, axis: spec.axis || 0, spin: true }; }
+  if (spec.mode === 'mix') {
+    const a = ballFrom(spec.a, hands), b = ballFrom(spec.b, hands);
+    return { x: lerp(a.x, b.x, spec.k), y: lerp(a.y, b.y, spec.k), rot: lerp(a.rot || 0, b.rot || 0, spec.k), seam: spec.k < .5 ? a.seam : b.seam,
+      sx: lerp(a.sx || 1, b.sx || 1, spec.k), sy: lerp(a.sy || 1, b.sy || 1, spec.k), axis: b.axis || a.axis || 0 };
+  }
+  return null;
+}
+
+const TORSO_F = [[-18, 39], [-10.5, 15], [-12, 2], [0, -3.5], [12, 2], [10.5, 15], [18, 39]];
+const TORSO_S = [[-7.6, 38], [-6.6, 16], [-8.6, 2], [0, -3.5], [8.4, 2], [7.4, 16], [9.6, 37]];
+function solve(P) {
+  const tw = clamp(P.turn, 0, 1), L = P.lean * D2R, c = Math.cos(L), s = Math.sin(L);
+  const T = (dx, dy) => V(P.x + dx * c + dy * s, P.y - dx * s + dy * c);
+  const shx = lerp(18, 1.6, tw);
+  const sh = [T(-shx, lerp(39, 38.5, tw)), T(shx, 39)];
+  const hx = lerp(6.6, 1.4, tw);
+  const hip = [V(P.x - hx, P.y - 2), V(P.x + hx, P.y - 2)];
+  const side = tw > 0.5;
+  const eh = P.eh || (side ? [V(-0.5, -1), V(-0.5, -1)] : [V(-1, -0.25), V(1, -0.25)]);
+  const kh = P.kh || (side ? [V(1, 0.15), V(1, 0.15)] : [V(-1, 0.05), V(1, 0.05)]);
+  const arms = [0, 1].map(i => ik2(sh[i], P.hand[i], LEN.ua, LEN.fa, eh[i]));
+  const legs = [0, 1].map(i => ik2(hip[i], P.foot[i], LEN.th, LEN.sh, kh[i]));
+  const neck = T(0, 40), ha = (P.lean + P.tilt) * D2R;
+  const head = V(neck.x + 8 * Math.sin(ha), neck.y + 8 * Math.cos(ha));
+  const torso = TORSO_F.map((f, i) => T(lerp(f[0], TORSO_S[i][0], tw), lerp(f[1], TORSO_S[i][1], tw)));
+  const hands = arms.map(a => a.E);
+  return { P, tw, side, sh, hip, elbow: arms.map(a => a.J), hand: hands, knee: legs.map(l => l.J), ankle: legs.map(l => l.E),
+    neck, neckBase: T(0, 35.5), head, headAng: ha, torso, footAng: P.footAng, ball: ballFrom(P.ball, hands) };
+}
+
+// ---------------------------------------------------------------- drawing primitives
+let RIG_LOG = null; // test hook: collects joints per rendered rig
+function capsule(ctx, a, b, ra, rb) {
+  const dx = b.x - a.x, dy = b.y - a.y, d = Math.hypot(dx, dy) || 1e-6, nx = -dy / d, ny = dx / d;
+  ctx.beginPath();
+  ctx.moveTo(a.x + nx * ra, a.y + ny * ra); ctx.lineTo(b.x + nx * rb, b.y + ny * rb);
+  ctx.lineTo(b.x - nx * rb, b.y - ny * rb); ctx.lineTo(a.x - nx * ra, a.y - ny * ra); ctx.closePath(); ctx.fill();
+  ctx.beginPath(); ctx.arc(a.x, a.y, ra, 0, 7); ctx.fill();
+  ctx.beginPath(); ctx.arc(b.x, b.y, rb, 0, 7); ctx.fill();
+}
+function camXY(cam, p) { return V(cam.ox + p.x * cam.s, cam.oy - p.y * cam.s); }
+
+function drawHero(ctx, R, cam, ballDrawer) {
+  if (RIG_LOG) RIG_LOG.push({ sh: R.sh, el: R.elbow, ha: R.hand, hip: R.hip, kn: R.knee, an: R.ankle });
+  const s = cam.s, C = p => camXY(cam, p);
+  const halo = 1.3 * s;
+  // floor shadow
+  const groundY = cam.oy, h = Math.max(0, Math.min(R.ankle[0].y, R.ankle[1].y) - 6);
+  ctx.save(); ctx.globalAlpha = 0.12 * Math.max(0.25, 1 - h / 120); ctx.fillStyle = LINE;
+  ctx.beginPath(); ctx.ellipse(cam.ox + R.P.x * s, groundY + 2, (R.side ? 20 : 22) * s * Math.max(.5, 1 - h / 200), 2.2 * s, 0, 0, 7); ctx.fill(); ctx.restore();
+
+  const leg = (i, hl) => {
+    const H = C(R.hip[i]), K = C(R.knee[i]), A = C(R.ankle[i]);
+    const draw = (e) => { capsule(ctx, H, K, (5.2 + e) * s, (4.1 + e) * s); capsule(ctx, K, A, (4.0 + e) * s, (2.9 + e) * s); foot(i, e); };
+    if (hl) { ctx.fillStyle = PAPER; draw(halo / s); }
+    ctx.fillStyle = NAVY; draw(0);
+  };
+  const foot = (i, e) => {
+    const A = C(R.ankle[i]); let dir, ang;
+    if (R.side) { dir = 1; ang = -(R.footAng[i] || 0) * D2R; } else { dir = i ? 1 : -1; ang = 0; }
+    ctx.save(); ctx.translate(A.x, A.y); ctx.rotate(ang * (R.side ? 1 : 0));
+    ctx.beginPath(); ctx.ellipse(dir * (R.side ? 3.4 : 3.6) * s, 3.5 * s, (R.side ? 6.3 : 5.6) * s + e * s, 2.6 * s + e * s, 0, 0, 7); ctx.fill();
+    ctx.beginPath(); ctx.arc(0, 0, (3.0 + e) * s, 0, 7); ctx.fill();
+    ctx.restore();
+  };
+  const arm = (i, hl) => {
+    const S = C(R.sh[i]), E = C(R.elbow[i]), H = C(R.hand[i]);
+    const draw = (e) => { capsule(ctx, S, E, (3.7 + e) * s, (3.2 + e) * s); capsule(ctx, E, H, (3.1 + e) * s, (2.5 + e) * s); };
+    if (hl) { ctx.fillStyle = PAPER; draw(halo / s); }
+    ctx.fillStyle = NAVY; draw(0);
+  };
+  const handDot = (i, hl) => {
+    const H = C(R.hand[i]);
+    if (hl) { ctx.fillStyle = PAPER; ctx.beginPath(); ctx.arc(H.x, H.y, 3.2 * s + halo * 0.8, 0, 7); ctx.fill(); }
+    ctx.fillStyle = NAVY; ctx.beginPath(); ctx.arc(H.x, H.y, 3.3 * s, 0, 7); ctx.fill();
+  };
+  const torso = () => {
+    const pts = R.torso.map(C), n = pts.length, rad = [4.5, 14, 6, 3, 6, 14, 4.5];
+    ctx.fillStyle = NAVY; ctx.beginPath();
+    const m = (a, b) => V((a.x + b.x) / 2, (a.y + b.y) / 2);
+    const st = m(pts[n - 1], pts[0]); ctx.moveTo(st.x, st.y);
+    for (let i = 0; i < n; i++) ctx.arcTo(pts[i].x, pts[i].y, pts[(i + 1) % n].x, pts[(i + 1) % n].y, rad[i] * s);
+    ctx.closePath(); ctx.fill();
+    // shoulder caps and hip joints keep the outline full and rounded
+    R.sh.forEach(p => { const q = C(p); ctx.beginPath(); ctx.arc(q.x, q.y, 4.4 * s, 0, 7); ctx.fill(); });
+    R.hip.forEach(p => { const q = C(p); ctx.beginPath(); ctx.arc(q.x, q.y, 5.0 * s, 0, 7); ctx.fill(); });
+    const nb = C(R.neckBase), hd = C(R.head);
+    capsule(ctx, nb, lerpV(nb, hd, 0.7), 3.3 * s, 2.9 * s);
+  };
+  const head = () => {
+    const hd = C(R.head); ctx.fillStyle = NAVY; ctx.beginPath();
+    ctx.ellipse(hd.x, hd.y, lerp(5.6, 6.3, R.tw) * s, 8 * s, R.headAng, 0, 7); ctx.fill();
+  };
+  if (R.side) {
+    leg(0, false); arm(0, false); handDot(0, false); torso(); head(); leg(1, true); arm(1, true);
+    if (ballDrawer) ballDrawer(); handDot(1, true);
+  } else {
+    leg(0, false); leg(1, false); torso(); head(); arm(0, false); arm(1, false);
+    if (ballDrawer) ballDrawer(); handDot(0, false); handDot(1, false);
+  }
+}
+
+function drawBall(ctx, b, cam, scale = 1) {
+  if (!b) return;
+  const p = camXY(cam, b), r = BALL_R * cam.s * scale;
+  ctx.save(); ctx.translate(p.x, p.y);
+  const ax = -(b.axis || 0) * D2R;
+  if (b.sx && b.sy && (b.sx !== 1 || b.sy !== 1)) { ctx.rotate(ax); ctx.scale(b.sy, b.sx); ctx.rotate(-ax); } // sy = factor along the axis, sx = across
+  ctx.fillStyle = RED; ctx.beginPath(); ctx.arc(0, 0, r, 0, 7); ctx.fill();
+  ctx.lineWidth = 1.2 * cam.s * scale; ctx.strokeStyle = PAPER; ctx.stroke();
+  if (b.seam) {
+    ctx.rotate(-(b.rot || 0) * D2R); ctx.globalAlpha = 0.45; ctx.lineWidth = 1.1 * cam.s * scale;
+    ctx.beginPath(); ctx.ellipse(0, 0, r * 0.98, r * 0.42, 0, 0, Math.PI); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0, -r * 0.98); ctx.lineTo(0, r * 0.98); ctx.stroke();
+  }
+  ctx.restore();
+}
+
+// Hoop seen from the side. H = {x: rim centre, y: rim height, bend: deg (negative = bent down), net: stretch, wob}
+function hoopGeom(H) {
+  const r = 24, bx = H.x + r + 4, A = V(bx - 1.6, H.y), b = (H.bend || 0) * D2R;
+  const C = V(A.x - (r + 2.4) * Math.cos(b), A.y + (r + 2.4) * Math.sin(b));
+  return { r, bx, A, b, C };
+}
+function rimPt(g, phi) { // phi param on ellipse, rotated by bend about centre
+  const ex = g.r * Math.cos(phi), ey = 0.28 * g.r * Math.sin(phi);
+  return V(g.C.x + ex * Math.cos(g.b) + ey * Math.sin(g.b), g.C.y - ex * Math.sin(g.b) + ey * Math.cos(g.b));
+}
+function drawHoop(ctx, cam, H, layer) {
+  const g = hoopGeom(H), s = cam.s, C = p => camXY(cam, p);
+  ctx.save(); ctx.strokeStyle = LINE; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  if (layer === 'back') {
+    // stanchion + arm + base
+    ctx.lineWidth = 3.2 * s; ctx.beginPath();
+    let p = C(V(g.bx + 2, 176)); ctx.moveTo(p.x, p.y); p = C(V(g.bx + 22, 176)); ctx.lineTo(p.x, p.y); p = C(V(g.bx + 22, 0)); ctx.lineTo(p.x, p.y); ctx.stroke();
+    ctx.lineWidth = 2.2 * s; p = C(V(g.bx + 12, 0)); const q = C(V(g.bx + 32, 0)); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
+    // backboard edge-on
+    ctx.lineWidth = 2.8 * s; p = C(V(g.bx, 146)); const q2 = C(V(g.bx, 206)); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q2.x, q2.y); ctx.stroke();
+    // bracket
+    ctx.lineWidth = 2 * s; p = C(g.A); const q3 = C(V(g.bx, H.y)); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q3.x, q3.y); ctx.stroke();
+    // back half of rim
+    ctx.lineWidth = 2.4 * s; ctx.beginPath();
+    for (let k = 0; k <= 24; k++) { const pt = C(rimPt(g, Math.PI * k / 24)); k ? ctx.lineTo(pt.x, pt.y) : ctx.moveTo(pt.x, pt.y); }
+    ctx.stroke();
+  } else {
+    // net (crossing strands), drawn before the front rim
+    const st = H.net || 1, bc = V(g.C.x, g.C.y - 28 * st), br = g.r * 0.55, N = 8;
+    ctx.lineWidth = 1.2 * s; ctx.globalAlpha = 0.85;
+    const top = k => rimPt(g, Math.PI + Math.PI * 2 * k / N);
+    const bot = k => V(bc.x + br * Math.cos(Math.PI + Math.PI * 2 * k / N) + (H.netSway || 0), bc.y + 0.28 * br * Math.sin(Math.PI + Math.PI * 2 * k / N));
+    for (let k = 0; k < N; k++) {
+      for (const d of [-1, 1]) { const a = C(top(k)), b = C(bot(k + d)); ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); }
+    }
+    ctx.beginPath();
+    for (let k = 0; k <= 24; k++) { const pt = C(bot(k * N / 24)); k ? ctx.lineTo(pt.x, pt.y) : ctx.moveTo(pt.x, pt.y); }
+    ctx.stroke(); ctx.globalAlpha = 1;
+    ctx.lineWidth = 2.6 * s; ctx.beginPath();
+    for (let k = 0; k <= 24; k++) { const pt = C(rimPt(g, Math.PI + Math.PI * k / 24)); k ? ctx.lineTo(pt.x, pt.y) : ctx.moveTo(pt.x, pt.y); }
+    ctx.stroke();
+  }
+  ctx.restore();
+}
+
+// ---------------------------------------------------------------- text (system fonts only)
+const SCRIPT_FONTS = {
+  ko: '"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR","Noto Sans CJK KR"',
+  ja: '"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo","Noto Sans JP","Noto Sans CJK JP"',
+  'zh-Hans': '"PingFang SC","Microsoft YaHei","Noto Sans SC","Noto Sans CJK SC"',
+  'zh-Hant': '"PingFang TC","Microsoft JhengHei","Noto Sans TC","Noto Sans CJK TC"',
+  th: '"Thonburi","Leelawadee UI","Noto Sans Thai"', my: '"Myanmar Sangam MN","Myanmar Text","Noto Sans Myanmar"',
+  km: '"Khmer Sangam MN","Khmer UI","Noto Sans Khmer"',
+  hi: '"Kohinoor Devanagari","Devanagari Sangam MN","Nirmala UI","Noto Sans Devanagari"',
+  bn: '"Kohinoor Bangla","Bangla Sangam MN","Nirmala UI","Noto Sans Bengali"',
+  gu: '"Kohinoor Gujarati","Gujarati Sangam MN","Nirmala UI","Noto Sans Gujarati"',
+  pa: '"Gurmukhi Sangam MN","Gurmukhi MN","Nirmala UI","Noto Sans Gurmukhi"',
+  ml: '"Malayalam Sangam MN","Nirmala UI","Noto Sans Malayalam"', kn: '"Kannada Sangam MN","Nirmala UI","Noto Sans Kannada"',
+  te: '"Kohinoor Telugu","Telugu Sangam MN","Nirmala UI","Noto Sans Telugu"', ta: '"Tamil Sangam MN","Nirmala UI","Noto Sans Tamil"',
+  si: '"Sinhala Sangam MN","Nirmala UI","Noto Sans Sinhala"',
+  ar: '"Geeza Pro","SF Arabic","Segoe UI","Noto Sans Arabic","Tahoma"', fa: '"SF Arabic","Geeza Pro","Segoe UI","Noto Sans Arabic","Tahoma"',
+  ur: '"SF Arabic","Geeza Pro","Segoe UI","Noto Sans Arabic","Tahoma"', he: '"Arial Hebrew","SF Hebrew","Segoe UI","Noto Sans Hebrew"',
+  am: '"Kefa","Ebrima","Nyala","Noto Sans Ethiopic"',
+};
+SCRIPT_FONTS.mr = SCRIPT_FONTS.ne = SCRIPT_FONTS.hi; SCRIPT_FONTS.arz = SCRIPT_FONTS.ar;
+const BASE_FONT = 'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans"';
+const TAIL_FONT = '"Apple SD Gothic Neo","Hiragino Sans","PingFang SC","Malgun Gothic","Nirmala UI","Noto Sans CJK KR",sans-serif';
+const MONO = 'ui-monospace,"SF Mono",Menlo,Consolas,"Roboto Mono",monospace';
+function fontFor(lang, size, weight = 700) {
+  const sf = SCRIPT_FONTS[lang];
+  return `${weight} ${size.toFixed(1)}px ${sf ? sf + ',' : ''}${BASE_FONT},${TAIL_FONT}`;
+}
+const TALL = new Set(['my', 'km', 'si', 'th', 'ta', 'ml', 'kn', 'te', 'ur', 'ar', 'arz', 'fa', 'bn', 'gu', 'pa', 'hi', 'mr', 'ne', 'am']);
+const NO_SPACE = /^(ja|zh|th|my|km)/;
+const segCache = new Map();
+function tokens(text, lang) {
+  const key = lang + '\u0001' + text; if (segCache.has(key)) return segCache.get(key);
+  const words = text.split(/\s+/).filter(Boolean); let out = [];
+  if (!NO_SPACE.test(lang)) out = words.map((w, i) => ({ t: w, sp: i > 0 }));
+  else {
+    const S = (typeof Intl !== 'undefined' && Intl.Segmenter) ? new Intl.Segmenter(lang, { granularity: 'word' }) : null;
+    words.forEach((w, wi) => {
+      let first = true;
+      const parts = S ? Array.from(S.segment(w), x => ({ s: x.segment, word: x.isWordLike })) : Array.from(w, ch => ({ s: ch, word: true }));
+      for (const p of parts) {
+        const punct = !p.word && /^[\p{P}\p{S}]+$/u.test(p.s) && !/^[（「『(“‘《]+$/u.test(p.s);
+        const prevOpen = out.length && /[（「『(“‘《]$/u.test(out[out.length - 1].t) && !first;
+        if ((punct || prevOpen || /^\p{M}/u.test(p.s)) && out.length && !first) out[out.length - 1].t += p.s;
+        else out.push({ t: p.s, sp: first && wi > 0 });
+        first = false;
+      }
+    });
+  }
+  segCache.set(key, out); return out;
+}
+function graphemes(s, lang) {
+  if (typeof Intl !== 'undefined' && Intl.Segmenter) return Array.from(new Intl.Segmenter(lang, { granularity: 'grapheme' }).segment(s), x => x.segment);
+  return Array.from(s);
+}
+function wrap(ctx, toks, maxW, lang) {
+  const lines = []; let cur = '';
+  const push = () => { if (cur) lines.push(cur); cur = ''; };
+  for (const tk of toks) {
+    const cand = cur ? cur + (tk.sp ? ' ' : '') + tk.t : tk.t;
+    if (ctx.measureText(cand).width <= maxW) { cur = cand; continue; }
+    if (cur) { push(); }
+    if (ctx.measureText(tk.t).width <= maxW) { cur = tk.t; continue; }
+    // single token wider than the box: break by grapheme
+    for (const g of graphemes(tk.t, lang)) { const c2 = cur + g; if (ctx.measureText(c2).width <= maxW || !cur) cur = c2; else { push(); cur = g; } }
+  }
+  push(); return lines;
+}
+const fitCache = new Map();
+const OVERFLOW = [];
+function fitText(ctx, text, box, o) {
+  const lang = o.lang || 'en', weight = o.weight || 700, maxLines = o.maxLines || 3;
+  const lhF = o.lh || (TALL.has(lang) ? 1.45 : 1.22);
+  const key = [text, lang, weight, box.w | 0, box.h | 0, o.max, o.min, maxLines, lhF, o.mono ? 1 : 0].join('\u0001');
+  let f = fitCache.get(key);
+  if (!f) {
+    const toks = tokens(text, lang);
+    let size = o.max;
+    for (let guard = 0; guard < 200; guard++) {
+      ctx.font = o.mono ? `${weight} ${size}px ${MONO}` : fontFor(lang, size, weight);
+      const lines = wrap(ctx, toks, box.w, lang), lh = size * lhF;
+      const okLines = lines.length <= maxLines || size <= o.min;
+      if (okLines && lines.length * lh <= box.h + 0.5) { f = { size, lines, lh }; break; }
+      size = size * 0.94; if (size < 5) { f = { size: 5, lines, lh: 5 * lhF }; break; }
+    }
+    fitCache.set(key, f);
+  }
+  return f;
+}
+// draw fitted text, centred (RTL-safe); returns the fit
+function drawText(ctx, text, box, o) {
+  if (!text) return null;
+  // keep "2.5 m" / "3.71 m²" as one left-to-right unit inside right-to-left sentences
+  if (o.dir === 'rtl') text = text.replace(/(\d+(?:\.\d+)?\s?m²?)(?![A-Za-z])/g, '\u2066$1\u2069');
+  const f = fitText(ctx, text, box, o), lang = o.lang || 'en', dir = o.dir || 'ltr';
+  ctx.save();
+  ctx.font = o.mono ? `${o.weight || 700} ${f.size}px ${MONO}` : fontFor(lang, f.size, o.weight || 700);
+  ctx.fillStyle = o.color || INK; ctx.textBaseline = 'middle'; ctx.direction = dir;
+  const align = o.align || 'center'; ctx.textAlign = align;
+  const x = align === 'center' ? box.x + box.w / 2 : (align === 'right' || (align === 'start' && dir === 'rtl')) ? box.x + box.w : box.x;
+  const total = f.lines.length * f.lh;
+  const y0 = (o.valign === 'top') ? box.y : (o.valign === 'bottom') ? box.y + box.h - total : box.y + (box.h - total) / 2;
+  if (o.alpha !== undefined) ctx.globalAlpha *= o.alpha;
+  f.lines.forEach((ln, i) => {
+    const y = y0 + f.lh * (i + 0.5);
+    ctx.fillText(ln, x, y);
+    if (window.__TEST__) {
+      const m = ctx.measureText(ln), tf = ctx.getTransform();
+      const l = x - m.actualBoundingBoxLeft, r = x + m.actualBoundingBoxRight;
+      const bad = l < box.x - 2 || r > box.x + box.w + 2;
+      const top = y - m.actualBoundingBoxAscent, bot = y + m.actualBoundingBoxDescent;
+      const P1 = tf.transformPoint(new DOMPoint(l, top)), P2 = tf.transformPoint(new DOMPoint(r, bot));
+      const cl = Math.min(P1.x, P2.x), cr = Math.max(P1.x, P2.x), ct = Math.min(P1.y, P2.y), cb = Math.max(P1.y, P2.y);
+      if (bad || cl < -1 || cr > ctx.canvas.width + 1 || ct < -1 || cb > ctx.canvas.height + 1) OVERFLOW.push({ text: ln, lang, l: cl, r: cr, top: ct, bot: cb, box, bad });
+    }
+  });
+  ctx.restore(); return f;
+}
+
+// ---------------------------------------------------------------- layout
+function layout(asp) {
+  if (asp === '9:16') return { W: 720, H: 1280, q: { x: 28, y: 34, w: 664, h: 178 }, stage: { x: 12, y: 222, w: 696, h: 612 }, floorM: 50,
+    panel: { x: 36, y: 846, w: 648, h: 404 }, end: { cx: 360, floor: 760, s: 3.75, dom: { x: 22, y: 800, w: 676, h: 130 }, cat: { x: 40, y: 956, w: 640, h: 270 } }, label: 22 };
+  return { W: 1280, H: 720, q: { x: 40, y: 18, w: 1200, h: 94 }, stage: { x: 18, y: 116, w: 820, h: 588 }, floorM: 50,
+    panel: { x: 856, y: 128, w: 400, h: 560 }, end: { cx: 640, floor: 392, s: 2.6, dom: { x: 50, y: 414, w: 1180, h: 122 }, cat: { x: 90, y: 546, w: 1100, h: 150 } }, label: 18 };
+}
+function fitCam(L, world) {
+  const st = L.stage, avail = st.h - L.floorM - 8;
+  const s = Math.min(st.w / (world.x1 - world.x0), avail / world.y1);
+  const ox = st.x + (st.w - (world.x1 - world.x0) * s) / 2 - world.x0 * s;
+  const spare = Math.max(0, avail - world.y1 * s);   // centre the scene vertically when width-limited
+  return { s, ox, oy: st.y + st.h - L.floorM - spare / 2 };
+}
+
+// ---------------------------------------------------------------- ball physics helpers
+function launch(p0, p1, T) { return V((p1.x - p0.x) / T, (p1.y - p0.y + 0.5 * G * T * T) / T); }
+function flight(p0, v, t) { return V(p0.x + v.x * t, p0.y + v.y * t - 0.5 * G * t * t); }
+// free fall with floor bounces (centre min y = 16). Returns {p, v, hits:[times]}; xmax clamps (bounces off a wall)
+function bounceSim(p0, v0, t, e = 0.6, xmax = 1e9, fr = 0.8) {
+  let p = V(p0.x, p0.y), v = V(v0.x, v0.y), tt = 0; const hits = [];
+  for (let n = 0; n < 12; n++) {
+    const a = -0.5 * G, b = v.y, c = p.y - 16; const disc = b * b - 4 * a * c;
+    const th = disc < 0 ? 1e9 : (-b - Math.sqrt(disc)) / (2 * a);
+    const resting = p.y <= 16.5 && Math.abs(v.y) < 30;
+    if (tt + th > t || resting) {
+      const dt = t - tt; let x = p.x + v.x * dt; if (x > xmax) x = 2 * xmax - x;
+      const y = resting ? 16 : Math.max(16, p.y + v.y * dt - 0.5 * G * dt * dt);
+      return { p: V(x, y), v: V(v.x, v.y - G * dt), hits };
+    }
+    p = V(p.x + v.x * th, 16); v = V(v.x * fr, -(v.y - G * th) * e); tt += th; hits.push({ t: tt, vn: Math.abs(v.y / e) });
+  }
+  return { p, v, hits };
+}
+function squashNear(hitTimes, t, axis = 90) { for (const h of hitTimes) { const d = Math.abs(t - h.t); if (d < 0.06) { const sy = lerp(0.8, 1, d / 0.06); return { sx: 1 / sy, sy, axis }; } } return { sx: 1, sy: 1, axis }; }
+
+// ---------------------------------------------------------------- shared motion pieces
+// walking (side view) with an optional dribble in the near hand. dist = distance travelled since start.
+function walkPose(x, d, stride, o = {}) {
+  const P = P0(x, 40, 1), base = o.y || 40;
+  P.lean = o.lean ?? 4; P.y = base - 1.2 * Math.cos(2 * Math.PI * d / stride);
+  const ph = d / (2 * stride);
+  for (let i = 0; i < 2; i++) {
+    const p = frac(ph + (i ? 0.5 : 0)); let rel, y = 6, ang = 0;
+    if (p < 0.5) { const q = p / 0.5; rel = stride / 2 - stride * q; ang = q > 0.8 ? -14 * (q - 0.8) / 0.2 : 0; }
+    else { const q = (p - 0.5) / 0.5; rel = -stride / 2 + stride * EZ.sine(q); y = 6 + (o.lift || 7) * Math.sin(Math.PI * q); ang = -14 * Math.sin(Math.PI * q) * (1 - q); }
+    P.foot[i] = V(x + 2 + rel, y); P.footAng[i] = ang;
+  }
+  const swing = (265 + 18 * Math.sin(2 * Math.PI * ph + Math.PI)) * D2R;
+  const shF = V(x + 1, P.y + 38.5);
+  P.hand[0] = V(shF.x + 31 * Math.cos(swing), shF.y + 31 * Math.sin(swing));
+  if (o.dribble) {
+    const f = 24 * frac(d / stride);                 // f = 0 ball in hand, 12 = floor contact
+    const by = 52 - 0.25 * Math.pow(Math.min(f, 24 - f), 2);
+    const bx = x + 13;
+    const sq = Math.abs(f - 12) < 1.2 ? lerp(0.8, 1, Math.abs(f - 12) / 1.2) : 1;
+    P.ball = { mode: 'free', x: bx, y: by, rot: 0, sx: 1 / sq, sy: sq, axis: 90 };
+    P.hand[1] = V(bx - 1, Math.max(by + 19, 61));
+  } else {
+    const sw2 = (265 + 18 * Math.sin(2 * Math.PI * ph)) * D2R; const shN = V(x + 2, P.y + 39);
+    P.hand[1] = V(shN.x + 31 * Math.cos(sw2), shN.y + 31 * Math.sin(sw2));
+  }
+  return P;
+}
+// times (s) of dribble floor contacts for a walk from t0 at speed v (u/s)
+function dribbleHits(t0, t1, v, stride) { const out = []; for (let k = 0; k < 40; k++) { const d = stride * (k + 0.5); const t = t0 + d / v; if (t > t1) break; out.push(t); } return out; }
+function standSide(x, o = {}) { const P = P0(x, o.y || 44, 1); P.foot = [V(x - 6, 6), V(x + 7, 6)]; P.lean = o.lean || 0; P.tilt = o.tilt || 0; return P; }
+function standFront(x, o = {}) { const P = P0(x, o.y || 44, 0); P.lean = o.lean || 0; P.tilt = o.tilt || 0; return P; }
+// a vertical jump: y(t) for takeoff time t0 with apex height h above y0
+function jumpY(t, t0, y0, h) { const v0 = Math.sqrt(2 * G * h), tt = t - t0; return Math.max(y0, y0 + v0 * tt - 0.5 * G * tt * tt); }
+
+// release follow-through: hands continue from their release positions up-forward, then drop to rest
+function followThrough(t, T0, HX, B0, P, dropAt) {
+  const r0 = V(B0.x - OFF_SET[0].x, B0.y - OFF_SET[0].y), r1 = V(B0.x - OFF_SET[1].x, B0.y - OFF_SET[1].y);
+  const k = EZ.outC(seg(t, T0, T0 + 0.25)), dn = EZ.inOutC(seg(t, dropAt, dropAt + 0.45));
+  const up0 = lerpV(r0, V(HX + 11, 121), k), up1 = lerpV(r1, V(HX + 14, 119), k);
+  P.hand = [lerpV(up0, V(HX - 1, 51), dn), lerpV(up1, V(HX + 3, 51), dn)]; return P;
+}
+// ---------------------------------------------------------------- AD: MATH (set shot, parabola segment)
+const MATH = (() => {
+  const a = 0.22861, xv = 2.5625, k = 4.0, X1 = 4.6;
+  const yAt = xm => k - a * (xm - xv) * (xm - xv);
+  const H = { x: X1 * UPM, y: 3.05 * UPM };          // rim centre (u)
+  const B0 = V(0, 2.5 * UPM);                        // release = (0, 2.5 m)
+  const T0 = 3.0, T1 = 4.6, HX = -9;                 // release, rim arrival, hero x
+  const walkV = 37.5, walkD = 75, stride = 25;
+  const vRim = V(X1 * UPM / (T1 - T0), -2 * a * (X1 - xv) * (X1 * UPM / (T1 - T0)));
+  const after = (t) => bounceSim(V(H.x, H.y - 4), V(vRim.x * 0.22, vRim.y * 0.55), t, 0.55, H.x + 6, 0.7);
+  const postHits = after(9).hits.map(h => ({ t: T1 + h.t, vn: h.vn }));
+  function ballFree(t) {
+    if (t < T1) { const sx = (t - T0) / (T1 - T0) * X1; return { mode: 'free', x: sx * UPM, y: yAt(sx) * UPM, rot: -400 * (t - T0), seam: true }; }
+    const r = after(t - T1); const sq = squashNear(postHits, t);
+    return { mode: 'free', x: r.p.x, y: r.p.y, rot: -400 * (T1 - T0) - 200 * (t - T1), seam: true, ...sq };
+  }
+  function pose(t) {
+    const x0 = HX - walkD;
+    if (t < 2.0) return walkPose(x0 + walkV * t, walkV * t, stride, { dribble: true });
+    const chest = setHands(standSide(HX, { y: 43, lean: 2 }), V(HX + 13, 76), OFF_CHEST);
+    if (t < 2.4) return mixP(walkPose(x0 + walkD, walkD, stride, { dribble: true }), chest, EZ.inOutC(seg(t, 2.0, 2.4)));
+    if (t < T0) {
+      const k1 = seg(t, 2.4, 2.72), k2 = seg(t, 2.72, T0);
+      const B = k2 > 0 ? lerpV(V(HX + 7, 114), B0, EZ.outC(k2)) : lerpV(V(HX + 13, 76), V(HX + 7, 114), EZ.inOutC(k1));
+      const y = k2 > 0 ? lerp(37, 47, EZ.outC(k2)) : lerp(43, 37, EZ.sine(k1));
+      const P = standSide(HX, { y, lean: 3, tilt: lerp(0, 6, k1) });
+      const offs = [lerpV(OFF_CHEST[0], OFF_SET[0], EZ.inOutC(seg(t, 2.4, 2.8))), lerpV(OFF_CHEST[1], OFF_SET[1], EZ.inOutC(seg(t, 2.4, 2.8)))];
+      setHands(P, B, offs); P.footAng = [0, k2 > 0.5 ? -10 : 0]; return P;
+    }
+    // release + follow-through, then watch the ball (curious)
+    const P = standSide(HX, {});
+    P.y = t < 3.3 ? lerp(47, 44, EZ.sine(seg(t, T0, 3.3))) : 44;
+    followThrough(t, T0, HX, B0, P, 3.45);
+    P.lean = lerp(3, 5, seg(t, 3.9, 4.3)); P.tilt = lerp(6, 9, seg(t, 3.9, 4.3)) + (t > 4.3 ? 1.5 * Math.sin((t - 4.3) * 5) : 0);
+    P.ball = ballFree(t); return P;
+  }
+  const events = () => {
+    const ev = dribbleHits(0, 2.0, walkV, stride).map(t => ({ t, k: 'dribble', v: 1 }));
+    ev.push({ t: 2.02, k: 'squeak' }, { t: 2.3, k: 'catch' }, { t: T0, k: 'release' }, { t: T1, k: 'swish' }, { t: T1 + 0.05, k: 'net' });
+    postHits.forEach(h => h.t < 7 && ev.push({ t: h.t, k: 'dribble', v: h.vn / 330 }));
+    return ev;
+  };
+  const world = { x0: -114, x1: 305, y1: 236 };
+  function drawWorld(ctx, t, cam, L, lang) {
+    const C = p => camXY(cam, p), s = cam.s, M = p => C(V(p[0] * UPM, p[1] * UPM));
+    const fs = Math.max(12, L.label);
+    // faint court grid (0.25 m)
+    ctx.save(); ctx.strokeStyle = GRID; ctx.lineWidth = 1; ctx.globalAlpha = 0.8;
+    for (let xm = -1.5; xm <= 5.5; xm += 0.5) { const p = M([xm, 0]), q = M([xm, 4.4]); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke(); }
+    for (let ym = 0.5; ym <= 4.4; ym += 0.5) { const p = M([-1.6, ym]), q = M([5.6, ym]); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke(); }
+    ctx.restore();
+    // shaded parabolic segment (only between chord and arc)
+    const shade = seg(t, 4.85, 5.3);
+    if (shade > 0) {
+      ctx.save(); ctx.beginPath();
+      for (let i = 0; i <= 80; i++) { const xm = X1 * i / 80, p = M([xm, yAt(xm)]); i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y); }
+      const pc = M([0, 2.5]); ctx.lineTo(pc.x, pc.y); ctx.closePath();
+      ctx.globalAlpha = 0.22 * shade; ctx.fillStyle = OBJ.green; ctx.fill();
+      ctx.clip(); ctx.globalAlpha = 0.45 * shade; ctx.strokeStyle = OBJ.green; ctx.lineWidth = 1.4;
+      const p0 = M([0, 2.4]); for (let x = p0.x - 300; x < p0.x + 700; x += 9) { ctx.beginPath(); ctx.moveTo(x, p0.y + 40); ctx.lineTo(x + 140, p0.y - 220); ctx.stroke(); }
+      ctx.restore();
+    }
+    // arc trace up to the ball
+    const tr = clamp((t - T0) / (T1 - T0), 0, 1);
+    if (tr > 0) {
+      ctx.save(); ctx.strokeStyle = LINE; ctx.lineWidth = 2.4; ctx.beginPath();
+      const n = Math.max(2, Math.ceil(80 * tr));
+      for (let i = 0; i <= n; i++) { const xm = X1 * tr * i / n, p = M([xm, yAt(xm)]); i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y); }
+      ctx.stroke(); ctx.restore();
+    }
+    // chord
+    const ch = seg(t, 4.65, 4.95);
+    if (ch > 0) {
+      ctx.save(); ctx.strokeStyle = INK; ctx.lineWidth = 2; ctx.setLineDash([10, 7]);
+      const p = M([0, 2.5]), q = M([X1 * ch, 2.5 + 0.55 * ch]); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke(); ctx.restore();
+    }
+    // height axis with the conditions (2.5, 3.05, 4.0) and the 4.6 m distance
+    const axX = -1.15;
+    const tick = (ym, col, label, a, toX) => {
+      if (a <= 0) return; ctx.save(); ctx.globalAlpha = a;
+      const p = M([axX, ym]); const q = M([toX, ym]);
+      ctx.strokeStyle = col; ctx.lineWidth = 1.5; ctx.setLineDash([4, 5]); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
+      ctx.setLineDash([]); ctx.lineWidth = 2.5; ctx.beginPath(); ctx.moveTo(p.x - 6, p.y); ctx.lineTo(p.x + 6, p.y); ctx.stroke();
+      ctx.restore();
+      drawText(ctx, label, { x: p.x - 8 - fs * 3.6, y: p.y - fs * 0.7, w: fs * 3.5, h: fs * 1.4 }, { lang: 'en', max: fs, min: 9, weight: 700, align: 'right', alpha: a, maxLines: 1 });
+    };
+    ctx.save(); ctx.strokeStyle = LINE; ctx.lineWidth = 2; const a0 = M([axX, 0]), a1 = M([axX, 4.25]);
+    ctx.globalAlpha = seg(t, 3.0, 3.3); ctx.beginPath(); ctx.moveTo(a0.x, a0.y); ctx.lineTo(a1.x, a1.y); ctx.stroke(); ctx.restore();
+    tick(2.5, OBJ.green, '2.5 m', seg(t, 3.0, 3.3), 0);
+    tick(4.0, OBJ.teal, '4.0 m', seg(t, 3.85, 4.15), xv);
+    tick(3.05, OBJ.amber, '3.05 m', seg(t, 4.55, 4.85), X1 - 0.46);
+    // 4.6 m dimension below the floor
+    const dA = seg(t, 3.25, 3.55);
+    if (dA > 0) {
+      ctx.save(); ctx.globalAlpha = dA; ctx.strokeStyle = OBJ.plum; ctx.lineWidth = 2;
+      const y = cam.oy + 14, p = M([0, 0]), q = M([X1, 0]);
+      ctx.beginPath(); ctx.moveTo(p.x, y); ctx.lineTo(q.x, y); ctx.moveTo(p.x, y - 7); ctx.lineTo(p.x, y + 7); ctx.moveTo(q.x, y - 7); ctx.lineTo(q.x, y + 7); ctx.stroke(); ctx.restore();
+      drawText(ctx, '4.6 m', { x: (p.x + q.x) / 2 - 80, y: cam.oy + 20, w: 160, h: fs * 1.5 }, { lang: 'en', max: fs, min: 9, alpha: dA, maxLines: 1 });
+    }
+    // segment height h at the chord midpoint (x = 2.3 m)
+    const hA = seg(t, 5.3, 5.6);
+    if (hA > 0) {
+      const p = M([2.3, 2.775]), q = M([2.3, yAt(2.3)]);
+      ctx.save(); ctx.globalAlpha = hA; ctx.strokeStyle = INK; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.moveTo(p.x - 5, p.y); ctx.lineTo(p.x + 5, p.y); ctx.moveTo(q.x - 5, q.y); ctx.lineTo(q.x + 5, q.y); ctx.stroke(); ctx.restore();
+      drawText(ctx, 'h = 1.2094 m', { x: p.x + 8, y: (p.y + q.y) / 2 - fs * 0.75, w: fs * 7.5, h: fs * 1.5 }, { lang: 'en', max: fs * 0.95, min: 9, align: 'left', alpha: hA, maxLines: 1 });
+    }
+    const sA = seg(t, 6.0, 6.3);
+    if (sA > 0) { const p = M([1.25, 2.95]); drawText(ctx, '≈ 3.71 m²', { x: p.x - 70, y: p.y - fs * 0.8, w: 140, h: fs * 1.6 }, { lang: 'en', max: fs * 1.1, min: 9, alpha: sA, maxLines: 1 }); }
+  }
+  function drawPanel(ctx, t, L, lang, C) {
+    const p = L.panel, T = C.terms, dir = C.dir, fs = L.W > L.H ? 22 : 24;
+    const rows = [[T.ballH, OBJ.green, 3.0], [T.dist, OBJ.plum, 3.25], [T.peakH, OBJ.teal, 3.85], [T.rimH, OBJ.amber, 4.55]];
+    const rh = p.h * 0.118; let y = p.y;
+    rows.forEach(([txt, col, t0]) => {
+      const a = seg(t, t0, t0 + 0.3); if (a > 0) {
+        const mx = dir === 'rtl' ? p.x + p.w - 8 : p.x + 8;
+        ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = col; ctx.beginPath(); ctx.arc(mx, y + rh / 2, 6, 0, 7); ctx.fill(); ctx.restore();
+        drawText(ctx, txt, { x: p.x + 22, y: y + 2, w: p.w - 44, h: rh - 4 }, { lang, dir, max: fs, min: 10, maxLines: 2, weight: 600, alpha: a });
+      }
+      y += rh + p.h * 0.012;
+    });
+    y += p.h * 0.02;
+    const fa = seg(t, 5.3, 5.6), na = seg(t, 5.6, 5.9), ans = seg(t, 6.0, 6.3);
+    if (fa > 0) {
+      ctx.save(); ctx.globalAlpha = fa; ctx.strokeStyle = LINE; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(p.x + 20, y - 4); ctx.lineTo(p.x + p.w - 20, y - 4); ctx.stroke(); ctx.restore();
+      drawText(ctx, C.archTitle, { x: p.x, y, w: p.w, h: p.h * 0.11 }, { lang, dir, max: fs * 0.95, min: 10, maxLines: 2, weight: 600, alpha: fa });
+      drawText(ctx, `\u2068${C.areaWord}\u2069 = ⅔ × 4.6 m × 1.2094 m`, { x: p.x, y: y + p.h * 0.115, w: p.w, h: p.h * 0.085 }, { lang, dir: 'ltr', max: fs * 1.05, min: 10, maxLines: 1, weight: 700, alpha: fa });
+    }
+    if (na > 0) drawText(ctx, '= 3.709… ≈ 3.71 m²', { x: p.x, y: y + p.h * 0.2, w: p.w, h: p.h * 0.075 }, { lang: 'en', max: fs * 1.05, min: 10, maxLines: 1, weight: 700, alpha: na });
+    if (ans > 0) {
+      const by = y + p.h * 0.29, bh = Math.min(p.h * 0.13, p.y + p.h - by);
+      ctx.save(); ctx.globalAlpha = ans; ctx.fillStyle = '#F0E442'; ctx.strokeStyle = INK; ctx.lineWidth = 2;
+      roundRect(ctx, p.x + 30, by, p.w - 60, bh, 12); ctx.fill(); ctx.stroke(); ctx.restore();
+      drawText(ctx, `${T.answer}: 3.71 m²`, { x: p.x + 40, y: by + 4, w: p.w - 80, h: bh - 8 }, { lang, dir, max: fs * 1.45, min: 12, maxLines: 1, weight: 800, alpha: ans });
+    }
+  }
+  return { pose, events, world, drawWorld, drawPanel, hoops: t => [{ x: H.x, y: H.y, net: netStretch(t, T1) }], ballFree, keyT: [1.2, 4.3, 6.4, 9.9] };
+})();
+
+function netStretch(t, tp) { const d = t - tp; if (d < 0 || d > 0.6) return 1; if (d < 0.13) return lerp(1, 1.25, d / 0.13); if (d < 0.33) return lerp(1.25, 0.95, (d - 0.13) / 0.2); return lerp(0.95, 1, (d - 0.33) / 0.27); }
+function roundRect(ctx, x, y, w, h, r) { ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); }
+
+// ---------------------------------------------------------------- AD: ENGLISH (fake, miss, rebound, tip-in, BOUNCE/THUMP)
+const ENGLISH = (() => {
+  const H = V(200, 160), HX = -8, walkV = 37.5, stride = 25, walkD = 52.5;
+  const T0 = 3.0, Thit = 3.6, B0 = V(HX + 6, 129);
+  const P1 = V(211, 171);                       // ball centre when it strikes the back of the rim
+  const v1 = launch(B0, P1, Thit - T0);
+  const v2 = V(-95, 172);                       // rebound velocity
+  const Tc = 4.4, Ttake = 3.95, apexH = 44, JX = 128; // catch time, takeoff, jump height, jump x
+  const Trel = 4.52, Tin = 4.86;
+  const catchPt = flight(P1, v2, Tc - Thit);
+  const jy = t => jumpY(t, Ttake, 37, apexH);
+  const OFF_TIP = [V(4, 15), V(1, 16)];
+  const handsAt = (t) => { // hands holding the ball during catch→tip
+    const y = jy(t), k = seg(t, Tc, Trel);
+    return lerpV(V(catchPt.x, catchPt.y), V(JX + 14, y + 76), EZ.outC(k));
+  };
+  let relPt = null, vIn = null;
+  const ensure = () => { if (!relPt) { relPt = handsAt(Trel); vIn = launch(relPt, V(H.x, H.y + 2), Tin - Trel); } };
+  ensure();
+  const vAfterNet = V(vIn.x * 0.2, (vIn.y - G * (Tin - Trel)) * 0.55);
+  const drop = (tt) => bounceSim(V(H.x, H.y - 6), vAfterNet, tt, 0.62, H.x + 8, 0.7);
+  const hitsDrop = drop(9).hits.map(h => ({ t: Tin + h.t, vn: h.vn }));
+  function ballFree(t) {
+    if (t < Thit) { const p = flight(B0, v1, t - T0); return { mode: 'free', x: p.x, y: p.y, rot: -500 * (t - T0), seam: true }; }
+    if (t < Tc) { const p = flight(P1, v2, t - Thit); const sq = t - Thit < 0.05 ? { sx: 1.18, sy: 0.85, axis: 0 } : {}; return { mode: 'free', x: p.x, y: p.y, rot: 300 * (t - Thit), seam: true, ...sq }; }
+    if (t < Tin) { const p = flight(relPt, vIn, t - Trel); return { mode: 'free', x: p.x, y: p.y, rot: -300 * (t - Trel), seam: true }; }
+    const r = drop(t - Tin); return { mode: 'free', x: r.p.x, y: r.p.y, rot: -200 * (t - Tin), seam: true, ...squashNear(hitsDrop, t) };
+  }
+  function pose(t) {
+    const x0 = HX - walkD;
+    if (t < 1.4) return walkPose(x0 + walkV * t, walkV * t, stride, { dribble: true });
+    const chestAt = (y = 43, tilt = 0, lean = 2) => setHands(standSide(HX, { y, lean, tilt }), V(HX + 13, y + 32), OFF_CHEST);
+    if (t < 1.7) return mixP(walkPose(x0 + walkD, walkD, stride, { dribble: true }), chestAt(), EZ.inOutC(seg(t, 1.4, 1.7)));
+    if (t < T0) {
+      // shot fake: ball up to the set point, freeze, back to the chest, then the real set
+      let B, y, tilt = 0, lean = 3, offk;
+      if (t < 2.05) { const k = EZ.inOutC(seg(t, 1.7, 2.05)); B = lerpV(V(HX + 13, 75), V(HX + 7, 116), k); y = lerp(43, 39, k); tilt = 8 * k; offk = k; }
+      else if (t < 2.3) { B = V(HX + 7, 116); y = 39; tilt = 8; offk = 1; }
+      else if (t < 2.55) { const k = EZ.inOutC(seg(t, 2.3, 2.55)); B = lerpV(V(HX + 7, 116), V(HX + 13, 75), k); y = lerp(39, 41, k); tilt = lerp(8, -6, k); offk = 1 - k; }
+      else { const k = EZ.inOutC(seg(t, 2.55, T0)); B = lerpV(V(HX + 13, 75), B0, k); y = lerp(41, 46, EZ.outC(seg(t, 2.75, T0))); tilt = lerp(-6, 5, k); offk = k; }
+      const P = standSide(HX, { y, lean, tilt });
+      setHands(P, B, [lerpV(OFF_CHEST[0], OFF_SET[0], offk), lerpV(OFF_CHEST[1], OFF_SET[1], offk)]); return P;
+    }
+    if (t < 3.3) { // follow through + small hop
+      const P = standSide(HX, { y: lerp(46, 44, seg(t, T0, 3.3)), lean: 3, tilt: 5 });
+      followThrough(t, T0, HX, B0, P, 9); P.ball = ballFree(t); return P;
+    }
+    if (t < 3.86) { // sprint to the rebound spot
+      const k = seg(t, 3.3, 3.86), x = lerp(HX, JX, EZ.sine(k)); const d = (x - HX);
+      const P = walkPose(x, d, 40, { y: 36, lift: 10, lean: 7 });
+      const up = 1 - EZ.outC(seg(t, 3.3, 3.5));
+      P.hand = [lerpV(P.hand[0], V(x + 11, 121), up), lerpV(P.hand[1], V(x + 14, 119), up)];
+      P.ball = ballFree(t); return P;
+    }
+    if (t < Ttake) { // load
+      const k = EZ.inOutC(seg(t, 3.86, Ttake)); const P = standSide(JX, { y: lerp(40, 37, k), lean: 2, tilt: 10 });
+      P.foot = [V(JX - 5, 6), V(JX + 6, 6)]; P.hand = [V(JX - 3, 50), V(JX + 2, 50)]; P.ball = ballFree(t); return P;
+    }
+    // jump: arms up to catch, tip, land
+    const y = jy(t); const P = standSide(JX, { y, lean: 0, tilt: 10 });
+    const air = y > 44.5; const tuck = air ? Math.min(1, (y - 44) / 20) : 0;
+    P.foot = [V(JX - 4, Math.min(6 + (y - 44), 6 + (y - 44) * 0.9) - 3 * tuck), V(JX + 3, 6 + (y - 44) * 0.9 - 3 * tuck)];
+    P.footAng = [-25 * tuck, -25 * tuck];
+    if (t < Tc) {
+      const k = EZ.outC(seg(t, Ttake, Tc - 0.05)); const b = ballFree(Tc);
+      P.hand = [lerpV(V(JX - 3, y + 6), V(b.x - OFF_TIP[0].x, b.y - OFF_TIP[0].y), k), lerpV(V(JX + 2, y + 6), V(b.x - OFF_TIP[1].x, b.y - OFF_TIP[1].y), k)];
+      P.ball = ballFree(t);
+    } else if (t < Trel) {
+      setHands(P, handsAt(t), OFF_TIP);
+    } else {
+      const k = EZ.inOutC(seg(t, Trel + 0.12, 5.1));
+      const up = [V(JX + 15, y + 68), V(JX + 18, y + 67)];
+      P.hand = [lerpV(up[0], V(JX - 1, 51), k), lerpV(up[1], V(JX + 3, 51), k)];
+      P.ball = ballFree(t);
+      if (!air) { const land = seg(t, 4.78, 5.0); P.y = 44 - 5 * Math.sin(Math.PI * land); P.foot = [V(JX - 6, 6), V(JX + 7, 6)]; P.footAng = [0, 0]; }
+      P.tilt = lerp(10, 4, seg(t, 5.0, 5.5)); P.lean = 2;
+      if (t > 5.0) { // back-pedal to make room under the hoop
+        const k = EZ.inOutC(seg(t, 5.0, 5.7)), x = lerp(JX, BACK, k);
+        const W = walkPose(x, x - JX, 22, { lean: -2 }); W.hand = [V(x - 1, 51), V(x + 3, 51)]; W.tilt = P.tilt; W.ball = P.ball;
+        const S = standSide(BACK, { tilt: 4, lean: 2 }); S.hand = [V(BACK - 1, 51), V(BACK + 3, 51)]; S.ball = P.ball;
+        return t < 5.7 ? mixP(P, W, EZ.sine(seg(t, 5.0, 5.12))) : mixP(W, S, EZ.sine(seg(t, 5.7, 5.85)));
+      }
+    }
+    return P;
+  }
+  const events = () => {
+    const ev = dribbleHits(0, 1.4, walkV, stride).map(t => ({ t, k: 'dribble', v: 1 }));
+    ev.push({ t: 1.42, k: 'squeak' }, { t: 1.62, k: 'catch' }, { t: T0, k: 'release' }, { t: Thit, k: 'rim' }, { t: Thit + 0.02, k: 'board' },
+      { t: 3.32, k: 'squeak' }, { t: Tc, k: 'catch' }, { t: Trel, k: 'release' }, { t: Tin, k: 'swish' }, { t: Tin + 0.04, k: 'net' }, { t: 4.8, k: 'dribble', v: 0.5 });
+    hitsDrop.forEach(h => h.t < 7 && ev.push({ t: h.t, k: 'dribble', v: Math.min(1.4, h.vn / 300) }));
+    return ev;
+  };
+  const world = { x0: -95, x1: 262, y1: 240 }, BACK = 86;
+  function drawWorld(ctx, t, cam, L, lang) {
+    const h1 = hitsDrop[0], h2 = hitsDrop[1];
+    const pop = (txt, p, t0, sz) => {
+      const a = seg(t, t0, t0 + 0.12) * (1 - seg(t, t0 + 1.6, t0 + 1.9)); if (a <= 0) return;
+      const sc = EZ.outBack(seg(t, t0, t0 + 0.25)); const q = camXY(cam, p), w = sz * 6;
+      ctx.save(); ctx.translate(q.x, q.y); ctx.scale(sc, sc); ctx.rotate(-0.08);
+      drawText(ctx, txt, { x: -w / 2, y: -sz, w, h: sz * 2 }, { lang: 'en', max: sz, min: 10, weight: 900, alpha: a, maxLines: 1 });
+      ctx.restore();
+    };
+    const fs = L.W > L.H ? 30 : 28;
+    if (h1) { const x = clamp(ballFree(h1.t).x, 175, 215); pop('THUMP!', V(x - 44, 26), h1.t, fs); pop('BOUNCE!', V(x, 114), h1.t + 0.35, fs); }
+  }
+  function drawPanel(ctx, t, L, lang, C) {
+    const p = L.panel, a = seg(t, 5.75, 6.05); if (a <= 0) return;
+    const fs = L.W > L.H ? 30 : 30;
+    drawText(ctx, C.terms.answer, { x: p.x, y: p.y + p.h * 0.18, w: p.w, h: p.h * 0.12 }, { lang, dir: C.dir, max: fs, min: 12, maxLines: 1, weight: 700, alpha: a });
+    const by = p.y + p.h * 0.32, bh = p.h * 0.3;
+    ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = '#F0E442'; ctx.strokeStyle = INK; ctx.lineWidth = 2; roundRect(ctx, p.x + 16, by, p.w - 32, bh, 14); ctx.fill(); ctx.stroke(); ctx.restore();
+    drawText(ctx, 'BOUNCE! / THUMP!', { x: p.x + 28, y: by + 8, w: p.w - 56, h: bh - 16 }, { lang: 'en', max: 64, min: 14, maxLines: 2, weight: 900, alpha: a });
+  }
+  return { pose, events, world, drawWorld: () => {}, drawOver: drawWorld, drawPanel, hoops: t => [{ x: H.x, y: H.y, net: netStretch(t, Tin) }], ballFree, keyT: [1.2, 4.42, 6.0, 9.9] };
+})();
+
+// ---------------------------------------------------------------- AD: KOREAN (crossover, buzzer-beater three, 78:80 -> 81:80)
+const KOREAN = (() => {
+  const H = V(355, 160), HX = 20, T0 = 3.5, T1 = 4.75, Tbuzz = 4.5;
+  const B0 = V(HX + 7, 130), v = launch(B0, V(H.x, H.y + 1), T1 - T0);
+  const vRim = V(v.x, v.y - G * (T1 - T0));
+  const drop = tt => bounceSim(V(H.x, H.y - 6), V(vRim.x * 0.18, vRim.y * 0.5), tt, 0.6, H.x + 8, 0.7);
+  const hitsDrop = drop(9).hits.map(h => ({ t: T1 + h.t, vn: h.vn }));
+  const XO = 0.4, NX = 6;   // crossover period, count (0 .. 2.4 s)
+  function cross(t) {
+    const k = Math.min(NX - 1, Math.floor(t / XO)), u = t >= NX * XO ? 1 : frac(t / XO);
+    const A = (k % 2 === 0) ? 1 : -1, Bs = -A, sway = 2.5 * Math.sin(Math.PI * t / XO);
+    const x = HX + sway, top = s => V(x + s * 15, 44), F = V(x, 16);
+    let b;
+    if (u < 0.5) { const q = u / 0.5; b = V(lerp(top(A).x, F.x, q), 44 - 28 * q * q); }
+    else { const q = (u - 0.5) / 0.5; b = V(lerp(F.x, top(Bs).x, q), 16 + 28 * (1 - (1 - q) * (1 - q))); }
+    const P = standFront(x, { y: 40.5, lean: 1.5 * A * (1 - u) + 1.5 * Bs * u, tilt: -3 * A * (1 - u) - 3 * Bs * u });
+    P.foot = [V(HX - 11, 6), V(HX + 11, 6)];
+    P.kh = [V(-1, 0.1), V(1, 0.1)]; P.eh = [V(-0.6, -1), V(0.6, -1)];
+    const follow = V(b.x, Math.max(b.y + 19, 56));
+    const restA = V(x + A * 21, 50), restB = V(x + Bs * 21, 50);
+    const hA = lerpV(follow, restA, EZ.sine(seg(u, 0.12, 0.38))), hB = lerpV(restB, follow, EZ.sine(seg(u, 0.62, 0.92)));
+    const iA = A > 0 ? 1 : 0; P.hand[iA] = hA; P.hand[1 - iA] = hB;
+    const contact = Math.abs(u - 0.5) < 0.06 ? lerp(0.8, 1, Math.abs(u - 0.5) / 0.06) : 1;
+    P.ball = { mode: 'free', x: b.x, y: b.y, rot: 0, sx: 1 / contact, sy: contact, axis: 90 };
+    return P;
+  }
+  function ballFree(t) {
+    if (t < T1) { const p = flight(B0, v, t - T0); return { mode: 'free', x: p.x, y: p.y, rot: -420 * (t - T0), seam: true }; }
+    const r = drop(t - T1); return { mode: 'free', x: r.p.x, y: r.p.y, rot: -150 * (t - T1), seam: true, ...squashNear(hitsDrop, t) };
+  }
+  function pose(t) {
+    if (t < NX * XO) return cross(t);
+    const chestF = frontHold(standFront(HX, { y: 43 }), 13, 70);
+    if (t < 2.75) return mixP(cross(NX * XO - 1e-4), chestF, EZ.inOutC(seg(t, NX * XO, 2.75)));
+    const chestS = setHands(standSide(HX, { y: 43, lean: 2 }), V(HX + 13, 75), OFF_CHEST);
+    if (t < 3.05) return mixP(chestF, chestS, EZ.inOutC(seg(t, 2.75, 3.05)));
+    if (t < T0) {
+      const k1 = seg(t, 3.05, 3.3), k2 = seg(t, 3.3, T0);
+      const B = k2 > 0 ? lerpV(V(HX + 7, 112), B0, EZ.outC(k2)) : lerpV(V(HX + 13, 75), V(HX + 7, 112), EZ.inOutC(k1));
+      const y = k2 > 0 ? lerp(36, 47, EZ.outC(k2)) : lerp(43, 36, EZ.sine(k1));
+      const P = standSide(HX, { y, lean: 3, tilt: 6 * k1 });
+      const ok = EZ.inOutC(seg(t, 3.05, 3.35)); setHands(P, B, [lerpV(OFF_CHEST[0], OFF_SET[0], ok), lerpV(OFF_CHEST[1], OFF_SET[1], ok)]); return P;
+    }
+    const P = standSide(HX, { y: t < 3.8 ? lerp(47, 44, seg(t, T0, 3.8)) : 44, lean: 3, tilt: 6 });
+    followThrough(t, T0, HX, B0, P, 4.9);
+    P.ball = ballFree(t); return P;
+  }
+  const events = () => {
+    const ev = [];
+    for (let k = 0; k < NX; k++) ev.push({ t: k * XO + XO / 2, k: 'dribble', v: 1 });
+    ev.push({ t: 0.82, k: 'squeak' }, { t: 1.62, k: 'squeak' }, { t: 2.6, k: 'catch' }, { t: T0, k: 'release' }, { t: Tbuzz, k: 'buzzer' }, { t: T1, k: 'swish' }, { t: T1 + 0.05, k: 'net' });
+    hitsDrop.forEach(h => h.t < 7 && ev.push({ t: h.t, k: 'dribble', v: Math.min(1.3, h.vn / 300) }));
+    return ev;
+  };
+  const world = { x0: -40, x1: 420, y1: 262 };
+  function drawWorld() {}
+  function drawPanel(ctx, t, L, lang, C) {
+    const p = L.panel, wide = L.W > L.H;
+    // scoreboard: plain outline, digits only
+    const sb = { x: p.x + 10, y: p.y, w: p.w - 20, h: p.h * (wide ? 0.4 : 0.5) };
+    ctx.save(); ctx.strokeStyle = LINE; ctx.lineWidth = 2.5; ctx.fillStyle = '#FFFFFF'; roundRect(ctx, sb.x, sb.y, sb.w, sb.h, 16); ctx.fill(); ctx.stroke(); ctx.restore();
+    const left = Math.max(0, Tbuzz - t), clock = `0:${String(Math.floor(left)).padStart(2, '0')}.${Math.floor((left % 1) * 10)}`;
+    const zero = left <= 0;
+    drawText(ctx, zero ? '0:00.0' : clock, { x: sb.x, y: sb.y + sb.h * 0.06, w: sb.w, h: sb.h * 0.36 }, { mono: true, lang: 'en', max: 56, min: 14, maxLines: 1, weight: 800, color: zero ? INK : LINE });
+    const scored = t >= T1 + 0.04, pop = scored ? EZ.outBack(seg(t, T1 + 0.04, T1 + 0.34)) : 0;
+    const sL = scored ? '81' : '78';
+    drawText(ctx, `${sL} : 80`, { x: sb.x, y: sb.y + sb.h * 0.44, w: sb.w, h: sb.h * 0.48 }, { mono: true, lang: 'en', max: 84, min: 16, maxLines: 1, weight: 900 });
+    if (scored) {
+      ctx.save(); const q = V(sb.x + sb.w * 0.14, sb.y + sb.h * 0.24); ctx.translate(q.x, q.y); ctx.scale(pop, pop);
+      drawText(ctx, '+3', { x: -50, y: -26, w: 100, h: 52 }, { lang: 'en', max: 40, min: 12, maxLines: 1, weight: 900, color: OBJ.green, alpha: 1 - seg(t, 6.4, 6.9) });
+      ctx.restore();
+    }
+    const a = seg(t, 5.15, 5.45); if (a <= 0) return;
+    const y0 = sb.y + sb.h + p.h * 0.04;
+    drawText(ctx, C.terms.answer, { x: p.x, y: y0, w: p.w, h: p.h * 0.08 }, { lang, dir: C.dir, max: 26, min: 11, maxLines: 1, weight: 700, alpha: a });
+    const by = y0 + p.h * 0.09, bh = p.h * (wide ? 0.22 : 0.18);
+    ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = '#F0E442'; ctx.strokeStyle = INK; ctx.lineWidth = 2; roundRect(ctx, p.x + 30, by, p.w - 60, bh, 14); ctx.fill(); ctx.stroke(); ctx.restore();
+    drawText(ctx, '대역전!', { x: p.x + 40, y: by + 6, w: p.w - 80, h: bh - 12 }, { lang: 'ko', max: 72, min: 14, maxLines: 1, weight: 900, alpha: a });
+    const sub = 'dae-yeokjeon' + (C.korGloss ? ' · ' + C.korGloss : '');
+    drawText(ctx, sub, { x: p.x, y: by + bh + 6, w: p.w, h: p.h * 0.07 }, { lang: C.korGloss ? lang : 'en', max: 24, min: 10, maxLines: 1, weight: 600, alpha: a });
+  }
+  return { pose, events, world, drawWorld, drawPanel, hoops: t => [{ x: H.x, y: H.y, net: netStretch(t, T1) }], ballFree, keyT: [1.0, 4.3, 6.0, 9.9] };
+})();
+
+// ---------------------------------------------------------------- AD: LIFE (no-look spin, two-hand tuck dunk that bends the rim)
+const LIFE = (() => {
+  const H = V(160, 160), X0 = -40, XS = 5, walkV = 37.5, stride = 22.5;
+  const JX = 140, Tload = 3.62, Ttake = 3.82, Tapex = 4.37, Tslam = 4.52, Tgrab = 4.62, Tlet = 5.25;
+  const apexY = 100, y0 = 32, hJ = apexY - y0;
+  const OFF_DUNK = [V(10, 13), V(3, 18)];
+  const bendAt = t => { if (t < Tgrab) return 0; const k = EZ.outC(seg(t, Tgrab, 4.95)); const w = t > 4.95 ? 2.5 * Math.sin((t - 4.95) * 14) * Math.exp(-(t - 4.95) * 3) : 0; return -24 * k + w; };
+  const hoopAt = t => ({ x: H.x, y: H.y, bend: bendAt(t), net: netStretch(t, Tslam), netSway: t > Tslam ? 3 * Math.sin((t - Tslam) * 9) * Math.exp(-(t - Tslam) * 2) : 0 });
+  const rimFront = t => rimPt(hoopGeom(hoopAt(t)), 0 + Math.PI);
+  const jy = t => jumpY(t, Ttake, y0, hJ);
+  const slamBall = V(JX + 20, jumpY(Tslam, Ttake, y0, hJ) + 79 - 24 - 1.5), vSlam = V(30, -230);
+  const drop = tt => bounceSim(slamBall, vSlam, tt, 0.62, H.x + 30, 0.75);
+  const hitsDrop = drop(9).hits.map(h => ({ t: Tslam + h.t, vn: h.vn }));
+  const dribbleDrive = { t0: 3.0, t1: 3.55, x0: XS, x1: JX - 6 };
+  const dV = (dribbleDrive.x1 - dribbleDrive.x0) / (dribbleDrive.t1 - dribbleDrive.t0), dStride = 36;
+  function ballFree(t) { const r = drop(t - Tslam); return { mode: 'free', x: r.p.x, y: r.p.y, rot: -250 * (t - Tslam), seam: true, ...squashNear(hitsDrop, t) }; }
+  function pose(t) {
+    if (t < 1.2) return walkPose(X0 + walkV * t, walkV * t, stride, { dribble: true });
+    const xs = X0 + walkV * 1.2; // = 5
+    const chestF = frontHold(standFront(xs, { y: 43 }), 13, 70);
+    if (t < 1.5) return mixP(walkPose(xs, walkV * 1.2, stride, { dribble: true }), chestF, EZ.inOutC(seg(t, 1.2, 1.5)));
+    // no-look fingertip spin: ball tossed onto the right fingertip, head turned away
+    const spinP = (tt) => {
+      const P = standFront(xs, { y: 44, lean: -3, tilt: -12 });
+      P.hand[1] = V(xs + 12, 100); P.hand[0] = V(xs - 15, 51); P.eh = [V(-1, -0.2), V(1, -0.6)];
+      P.ball = { mode: 'finger', i: 1, rot: -720 * (tt - 1.7), axis: 2.5 * Math.sin(tt * 2 * Math.PI * 1.67) };
+      return P;
+    };
+    if (t < 1.75) return mixP(chestF, spinP(t), EZ.inOutC(seg(t, 1.5, 1.75)));
+    if (t < 2.75) return spinP(t);
+    const chestS = setHands(standSide(xs, { y: 43, lean: 3 }), V(xs + 13, 75), OFF_CHEST);
+    if (t < 3.0) return mixP(spinP(2.75), chestS, EZ.inOutC(seg(t, 2.75, 3.0)));
+    if (t < dribbleDrive.t1) { const d = (t - 3.0) * dV; return mixP(chestS, walkPose(xs + d, d, dStride, { dribble: true, y: 37, lift: 9, lean: 7 }), EZ.sine(seg(t, 3.0, 3.12))); }
+    const load = setHands(standSide(JX, { y: y0, lean: 2, tilt: 8 }), V(JX + 13, y0 + 32), OFF_CHEST); load.foot = [V(JX - 6, 6), V(JX + 8, 6)];
+    if (t < Ttake) { const end = walkPose(dribbleDrive.x1, (dribbleDrive.t1 - 3.0) * dV, dStride, { dribble: true, y: 37, lift: 9, lean: 7 }); return mixP(end, load, EZ.inOutC(seg(t, dribbleDrive.t1, Ttake))); }
+    // airborne: root.x fixed at JX, torso upright, both knees tucked together, both hands on the ball
+    const air = t < 5.62;
+    let y = jy(t);
+    const P = standSide(JX, { y, lean: 0, tilt: 6 });
+    const tk = EZ.inOutC(seg(t, Ttake + 0.06, Ttake + 0.32)) * (1 - EZ.inOutC(seg(t, Tgrab, Tlet)));
+    const anklesRel = V(-1.5, -lerp(36, 21, tk));
+    if (t < Tslam) {
+      const up = EZ.outC(seg(t, Ttake, Tapex - 0.08));
+      const B = lerpV(V(JX + 13, y + 32), V(JX + 20, y + 79), up);
+      const push = EZ.inC(seg(t, Tapex, Tslam));
+      setHands(P, V(B.x, B.y - 24 * push), OFF_DUNK);
+    } else if (t < Tlet) {
+      // grab the front of the rim and hang; the rim bends down
+      const f = rimFront(t), k = EZ.outC(seg(t, Tslam, Tgrab));
+      const hy = f.y + 1, hangY = hy - 39 - 30;
+      y = Math.max(lerp(jy(t), hangY, k), hangY); P.y = y;
+      P.hand = [V(f.x - 1, hy), V(f.x + 2, hy)];
+      P.tilt = -4; P.ball = ballFree(t);
+    } else {
+      // let go: drop to the floor, land, recover
+      const f = rimFront(Tlet), hy0 = f.y + 1 - 69, tt = t - Tlet;
+      y = Math.max(44, hy0 - 0.5 * G * tt * tt);
+      const landT = Tlet + Math.sqrt(Math.max(0, 2 * (hy0 - 44) / G));
+      const land = seg(t, landT, landT + 0.4);
+      P.y = land > 0 ? 44 - 7 * Math.sin(Math.PI * Math.min(1, land * 1.0)) : y;
+      const dn = EZ.inOutC(seg(t, Tlet, Tlet + 0.3));
+      P.hand = [lerpV(V(f.x - 1, f.y + 1), V(JX - 1, 51), dn), lerpV(V(f.x + 2, f.y + 1), V(JX + 3, 51), dn)];
+      P.tilt = lerp(-4, 10, seg(t, 5.7, 6.1)); P.lean = lerp(0, -3, seg(t, 5.7, 6.1));
+      P.ball = ballFree(t);
+    }
+    const yy = P.y;
+    if (yy > 44.5 || t < Tlet) {
+      const sway = (t > Tgrab && t < Tlet) ? 2 * Math.sin((t - Tgrab) * 7) : 0;
+      P.foot = [V(JX + anklesRel.x - 1 + sway, yy + anklesRel.y), V(JX + anklesRel.x + 1 + sway, yy + anklesRel.y)];
+      P.footAng = [-30 * tk - 10, -30 * tk - 10];
+      if (yy < 44.5 && t < Ttake + 0.05) { P.foot = [V(JX - 6, 6), V(JX + 8, 6)]; P.footAng = [0, 0]; }
+    } else { P.foot = [V(JX - 6, 6), V(JX + 8, 6)]; P.footAng = [0, 0]; }
+    return P;
+  }
+  const events = () => {
+    const ev = dribbleHits(0, 1.2, walkV, stride).map(t => ({ t, k: 'dribble', v: 1 }));
+    ev.push({ t: 1.45, k: 'catch' }, { t: 2.8, k: 'catch' }, { t: 3.0, k: 'squeak' });
+    for (let n = 0; n < 8; n++) { const tt = 3.0 + (n + 0.5) * dStride / dV; if (tt > 3.05 && tt < dribbleDrive.t1) ev.push({ t: tt, k: 'dribble', v: 1.1 }); }
+    ev.push({ t: 3.6, k: 'squeak' }, { t: 3.66, k: 'catch' }, { t: Tslam - 0.06, k: 'rim', v: 0.5 }, { t: Tslam, k: 'net' }, { t: Tgrab + 0.05, k: 'rim', v: 0.35, low: true }, { t: Tgrab + 0.08, k: 'board' });
+    hitsDrop.forEach(h => h.t < 7 && ev.push({ t: h.t, k: 'dribble', v: Math.min(1.3, h.vn / 300) }));
+    ev.push({ t: 5.62, k: 'dribble', v: 0.4 });
+    return ev;
+  };
+  const world = { x0: -88, x1: 232, y1: 238 };
+  function drawWorld() {}
+  function drawPanel(ctx, t, L, lang, C) {
+    const p = L.panel, a = seg(t, 5.3, 5.6); if (a <= 0) return;
+    // wrench + question mark, drawn in code
+    const cx = p.x + p.w / 2, cy = p.y + p.h * 0.42, s = Math.min(p.w, p.h) / 300;
+    ctx.save(); ctx.globalAlpha = a; ctx.translate(cx - 40 * s, cy); ctx.rotate(-0.7); ctx.fillStyle = LINE;
+    roundRect(ctx, -10 * s, -10 * s, 120 * s, 20 * s, 10 * s); ctx.fill();
+    ctx.beginPath(); ctx.arc(120 * s, 0, 28 * s, 0, 7); ctx.fill(); ctx.globalCompositeOperation = 'destination-out';
+    roundRect(ctx, 118 * s, -11 * s, 40 * s, 22 * s, 4 * s); ctx.fill(); ctx.restore();
+    drawText(ctx, '?', { x: cx + 20 * s, y: cy - 110 * s, w: 140 * s, h: 220 * s }, { lang: 'en', max: 200 * s, min: 20, maxLines: 1, weight: 900, alpha: a });
+  }
+  return { pose, events, world, drawWorld, drawPanel, hoops: t => [hoopAt(t)], ballFree, keyT: [2.2, 4.8, 6.2, 9.9], questionFrom: 4.95, heroFront: t => t > Ttake + 0.1 && t < Tlet + 0.25, ballBehindNet: t => t >= Tapex - 0.04 };
+})();
+const AD = { math: MATH, english: ENGLISH, korean: KOREAN, life: LIFE };
+
+// ---------------------------------------------------------------- end card (7-10 s)
+function domainFor(state) {
+  const subj = { math: 'MATH.LIFE.HELP', english: 'ENGLISH.LIFE.HELP', korean: 'KOREAN.LIFE.HELP' };
+  const country = state.country.domain.toUpperCase();
+  if (state.domainMode === 'country') return country;
+  if (state.domainMode === 'subject') return subj[state.ad] || country;
+  return state.ad === 'life' ? country : subj[state.ad];
+}
+function drawEndCard(ctx, t, L, state, C) {
+  const E = L.end, cam = { s: E.s, ox: E.cx, oy: E.floor };
+  // baseline under the feet
+  ctx.save(); ctx.strokeStyle = GRID; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(E.cx - 120 * E.s / 2.6, E.floor + 1); ctx.lineTo(E.cx + 120 * E.s / 2.6, E.floor + 1); ctx.stroke(); ctx.restore();
+  // hero: chest hold -> logo hold (hands (±14.5, 112), ball centre (0, 121.5))
+  const k = EZ.outC(seg(t, 7.1, 7.75));
+  const P = frontHold(standFront(0, { y: 44 }), lerp(13, 14.5, k), lerp(70, 112, k));
+  const R = solve(P);
+  drawHero(ctx, R, cam, () => drawBall(ctx, R.ball, cam));
+  // domain with red-ball periods that bounce in and land on the baseline
+  const dom = domainFor(state), parts = dom.split('.');
+  const box = E.dom;
+  let size = box.h * 0.78; ctx.save();
+  const meas = sz => { ctx.font = `900 ${sz}px ${BASE_FONT},${TAIL_FONT}`; const r = sz * 0.13, gap = sz * 0.12; let w = 0; parts.forEach((pt, i) => { w += ctx.measureText(pt).width; if (i < parts.length - 1) w += 2 * r + 2 * gap; }); return { w, r, gap }; };
+  let m = meas(size); while (m.w > box.w && size > 8) { size *= 0.96; m = meas(size); }
+  const la = seg(t, 7.3, 7.7), base = box.y + box.h * 0.5 + size * 0.36;
+  let x = box.x + (box.w - m.w) / 2; ctx.textBaseline = 'alphabetic'; ctx.textAlign = 'left'; ctx.direction = 'ltr'; ctx.fillStyle = NAVY;
+  const dots = [];
+  parts.forEach((pt, i) => {
+    ctx.globalAlpha = la; ctx.fillText(pt, x, base + (1 - EZ.outC(la)) * size * 0.25);
+    if (window.__TEST__) { const mm = ctx.measureText(pt); if (x < -1 || x + mm.width > L.W + 1) OVERFLOW.push({ text: pt, l: x, r: x + mm.width }); }
+    x += ctx.measureText(pt).width;
+    if (i < parts.length - 1) { dots.push(V(x + m.gap + m.r, base - m.r)); x += 2 * m.r + 2 * m.gap; }
+  });
+  ctx.globalAlpha = 1; ctx.restore();
+  dots.forEach((d, i) => {
+    const tl = 8.05 + 0.2 * i, h0 = size * 1.9;
+    let y = d.y, sy = 1;
+    if (t < tl) { const fall = Math.sqrt(2 * h0 / 2600), tt = t - (tl - fall); if (tt < 0) return; y = d.y - h0 + 0.5 * 2600 * tt * tt; }
+    else { // two small bounces then rest
+      const b1 = 0.22, b2 = 0.12, tt = t - tl;
+      if (tt < b1) y = d.y - (h0 * 0.12) * 4 * (tt / b1) * (1 - tt / b1);
+      else if (tt < b1 + b2) { const u = (tt - b1) / b2; y = d.y - (h0 * 0.035) * 4 * u * (1 - u); }
+      const near = Math.min(Math.abs(tt), Math.abs(tt - b1), Math.abs(tt - b1 - b2)); if (near < 0.03) sy = lerp(0.82, 1, near / 0.03);
+    }
+    ctx.save(); ctx.translate(d.x, y + m.r * (1 - sy)); ctx.scale(1 / sy, sy); ctx.fillStyle = RED; ctx.beginPath(); ctx.arc(0, 0, m.r, 0, 7); ctx.fill();
+    ctx.lineWidth = Math.max(1, m.r * 0.08); ctx.strokeStyle = PAPER; ctx.stroke(); ctx.restore();
+  });
+  const ca = seg(t, 8.45, 8.85);
+  if (ca > 0) drawText(ctx, C.catch[state.ad], E.cat, { lang: state.lang, dir: C.dir, max: L.W > L.H ? 42 : 44, min: 12, maxLines: 3, weight: 750, alpha: ca, valign: 'top' });
+}
+
+// ---------------------------------------------------------------- frame renderer
+function questionText(state, C) { return C.q[state.ad]; }
+function renderFrame(ctx, t, state) {
+  const L = layout(state.aspect), C = COPY.langs[state.lang], A = AD[state.ad];
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.fillStyle = PAPER; ctx.fillRect(0, 0, L.W, L.H);
+  try { ctx.lang = state.lang; } catch (e) { }
+  const xf = seg(t, 7.0, 7.35);
+  if (xf < 1) {
+    const tt = Math.min(t, 7.0 + 0.35);
+    ctx.save(); ctx.globalAlpha = 1 - xf;
+    const cam = fitCam(L, A.world);
+    // stage
+    ctx.save(); ctx.beginPath(); ctx.rect(L.stage.x, L.stage.y - 4, L.stage.w, L.stage.h + 4); ctx.clip();
+    ctx.strokeStyle = LINE; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(L.stage.x, cam.oy + 1); ctx.lineTo(L.stage.x + L.stage.w, cam.oy + 1); ctx.stroke();
+    A.drawWorld(ctx, tt, cam, L, state.lang);
+    const hoops = A.hoops(tt);
+    hoops.forEach(h => drawHoop(ctx, cam, h, 'back'));
+    const P = A.pose(tt), R = solve(P);
+    const b = R.ball, g = hoops[0], free = b && P.ball && P.ball.mode === 'free';
+    // a free ball inside the net is drawn over the net, then the net is re-drawn translucent on top
+    const inNet = free && g && Math.abs(b.x - g.x) < 30 && b.y < g.y + 4 && b.y > g.y - 44;
+    if (A.heroFront && A.heroFront(tt)) {
+      // hero in front of the hoop plane: ball, then rim front + net, then the silhouette on top
+      const behind = !A.ballBehindNet || A.ballBehindNet(tt);
+      if (b && behind) drawBall(ctx, b, cam); hoops.forEach(h => drawHoop(ctx, cam, h, 'front')); if (b && !behind) drawBall(ctx, b, cam); drawHero(ctx, R, cam, null);
+    } else {
+      drawHero(ctx, R, cam, (b && !inNet) ? () => drawBall(ctx, b, cam) : null);
+      hoops.forEach(h => drawHoop(ctx, cam, h, 'front'));
+    }
+    if (inNet) { drawBall(ctx, b, cam); ctx.save(); ctx.globalAlpha = 0.6; drawHoop(ctx, cam, g, 'front'); ctx.restore(); }
+    if (A.drawOver) A.drawOver(ctx, tt, cam, L, state.lang);
+    ctx.restore();
+    // question band + panel
+    const qFrom = A.questionFrom ?? 0.15;
+    const qa = seg(tt, qFrom, qFrom + 0.3);
+    if (qa > 0) {
+      const big = A.questionFrom ? 1.12 : 1;
+      drawText(ctx, questionText(state, C), L.q, { lang: state.lang, dir: C.dir, max: (L.W > L.H ? 38 : 44) * big, min: 12, maxLines: L.W > L.H ? 2 : 3, weight: 750, alpha: qa });
+    }
+    A.drawPanel(ctx, tt, L, state.lang, C);
+    ctx.restore();
+  }
+  if (xf > 0) { ctx.save(); ctx.globalAlpha = xf; drawEndCard(ctx, Math.max(t, 7.0), L, state, C); ctx.restore(); }
+}
+
+// reduced motion: four held key frames with short cross-fades
+function stillTime(t, A) { const K = A.keyT, edges = [0, 2.5, 5.0, 7.0, 10.01]; for (let i = 0; i < 4; i++) if (t < edges[i + 1]) return { i, k: K[i], next: K[i + 1], fade: i < 3 ? seg(t, edges[i + 1] - 0.2, edges[i + 1]) : 0 }; return { i: 3, k: K[3], fade: 0 }; }
+function renderAt(ctx, t, state) {
+  if (!state.reduced) return renderFrame(ctx, t, state);
+  const A = AD[state.ad], s = stillTime(t, A);
+  renderFrame(ctx, s.k, state);
+  if (s.fade > 0 && s.next !== undefined) {
+    const L = layout(state.aspect), off = getScratch(L.W, L.H); renderFrame(off.getContext('2d'), s.next, state);
+    ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = s.fade; ctx.drawImage(off, 0, 0); ctx.restore();
+  }
+}
+let _scratch = null;
+function getScratch(w, h) { if (!_scratch) _scratch = document.createElement('canvas'); if (_scratch.width !== w || _scratch.height !== h) { _scratch.width = w; _scratch.height = h; } return _scratch; }
+
+// ---------------------------------------------------------------- audio (all synthesised)
+const SFX = {
+  ac: null, out: null, rec: null, buffers: null,
+  init() {
+    if (this.ac) return this.ac;
+    const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return null;
+    const ac = this.ac = new AC({ sampleRate: 48000 });
+    const comp = ac.createDynamicsCompressor(); comp.threshold.value = -14; comp.ratio.value = 4;
+    const shelf = ac.createBiquadFilter(); shelf.type = 'highshelf'; shelf.frequency.value = 6000; shelf.gain.value = -12;
+    this.out = ac.createGain(); this.out.gain.value = 0.9; this.out.connect(shelf); shelf.connect(comp); comp.connect(ac.destination);
+    this.rec = ac.createMediaStreamDestination(); comp.connect(this.rec);
+    // seeded noise buffers (white / pink / brown)
+    let seed = 1234567; const rnd = () => ((seed = (seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff) * 2 - 1;
+    const n = ac.sampleRate; const mk = () => ac.createBuffer(1, n, ac.sampleRate);
+    const W = mk(), P = mk(), B = mk(); const w = W.getChannelData(0), p = P.getChannelData(0), b = B.getChannelData(0);
+    let b0 = 0, b1 = 0, b2 = 0, br = 0;
+    for (let i = 0; i < n; i++) { const x = rnd(); w[i] = x; b0 = 0.99765 * b0 + x * 0.099046; b1 = 0.963 * b1 + x * 0.2965164; b2 = 0.57 * b2 + x * 1.0526913; p[i] = (b0 + b1 + b2 + x * 0.1848) * 0.2; br = (br + 0.02 * x) / 1.02; b[i] = br * 3.5; }
+    this.buffers = { white: W, pink: P, brown: B };
+    return ac;
+  },
+  env(g, t, peak, a, d) { g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(peak, t + a); g.gain.exponentialRampToValueAtTime(0.0001, t + a + d); },
+  noise(kind, t, dur, filt, peak, a, d, extra) {
+    const ac = this.ac, src = ac.createBufferSource(); src.buffer = this.buffers[kind];
+    const f = ac.createBiquadFilter(); f.type = filt.type; f.frequency.setValueAtTime(filt.f, t); if (filt.f1) f.frequency.exponentialRampToValueAtTime(filt.f1, t + dur); f.Q.value = filt.q || 0.7;
+    const g = ac.createGain(); this.env(g, t, peak, a, d); src.connect(f); f.connect(g);
+    if (extra) extra(g, t); g.connect(this.out); src.start(t, Math.random() * 0.5); src.stop(t + dur + 0.05);
+  },
+  tone(type, t, f0, f1, dur, peak, a, d) {
+    const ac = this.ac, o = ac.createOscillator(); o.type = type; o.frequency.setValueAtTime(f0, t); if (f1 !== f0) o.frequency.exponentialRampToValueAtTime(f1, t + dur);
+    const g = ac.createGain(); this.env(g, t, peak, a, d); o.connect(g); g.connect(this.out); o.start(t); o.stop(t + a + d + 0.05); return o;
+  },
+  play(e) {
+    const ac = this.ac; if (!ac) return; const t = ac.currentTime + 0.005, v = e.v ?? 1;
+    switch (e.k) {
+      case 'dribble': { const f0 = 120 + 40 * Math.min(1.5, v); const lv = 0.32 * Math.min(1, 0.35 + 0.65 * v); this.tone('sine', t, f0, f0 * 0.45, 0.09, lv, 0.001, 0.09); this.noise('pink', t, 0.03, { type: 'lowpass', f: 900 }, lv * 0.5, 0.001, 0.025); break; }
+      case 'swish': this.noise('white', t, 0.17, { type: 'bandpass', f: 2500, f1: 1200, q: 1.2 }, 0.22, 0.01, 0.15); this.noise('white', t, 0.02, { type: 'highpass', f: 6000 }, 0.05, 0.001, 0.02); break;
+      case 'rim': { const lv = 0.13 * v, m = e.low ? 0.55 : 1; [[820, 1, 0.18], [1230, 0.6, 0.12], [2090, 0.35, 0.08]].forEach(([f, a, d]) => this.tone('sine', t, f * m, f * m, d, lv * a, 0.001, d)); this.noise('white', t, 0.01, { type: 'bandpass', f: 3000, q: 3 }, lv * 0.6, 0.001, 0.008); break; }
+      case 'net': this.noise('pink', t, 0.22, { type: 'bandpass', f: 1500, q: 0.8 }, 0.12, 0.015, 0.2, (g, tt) => { const lfo = ac.createOscillator(), lg = ac.createGain(); lfo.frequency.value = 18; lg.gain.value = 0.05; lfo.connect(lg); lg.connect(g.gain); lfo.start(tt); lfo.stop(tt + 0.3); }); break;
+      case 'board': this.tone('sine', t, 210, 190, 0.12, 0.25, 0.001, 0.12); this.noise('white', t, 0.01, { type: 'bandpass', f: 1000, q: 2 }, 0.1, 0.001, 0.01); break;
+      case 'catch': this.noise('brown', t, 0.03, { type: 'lowpass', f: 500 }, 0.35, 0.001, 0.03); break;
+      case 'release': this.tone('sine', t, 900, 750, 0.04, 0.05, 0.001, 0.04); break;
+      case 'squeak': { const o = this.tone('triangle', t, 2300, 3100, 0.12, 0.035, 0.01, 0.12); const l = ac.createOscillator(), lg = ac.createGain(); l.frequency.value = 38; lg.gain.value = 140; l.connect(lg); lg.connect(o.frequency); l.start(t); l.stop(t + 0.15); break; }
+      case 'buzzer': { [415, 420].forEach(f => { const o = ac.createOscillator(); o.type = 'sawtooth'; o.frequency.value = f; const lp = ac.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 1400; const g = ac.createGain(); g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(0.05, t + 0.02); g.gain.setValueAtTime(0.05, t + 0.5); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.6); o.connect(lp); lp.connect(g); g.connect(this.out); o.start(t); o.stop(t + 0.65); }); break; }
+      case 'chime': [880, 1318.5].forEach((f, i) => this.tone('sine', t + i * 0.09, f, f, 0.5, 0.06, 0.005, 0.5)); break;
+      case 'tick': this.tone('sine', t, 1800, 1500, 0.04, 0.05, 0.001, 0.04); break;
+    }
+  },
+};
+const EVENTS = {};
+function eventsFor(ad) {
+  if (!EVENTS[ad]) {
+    const ev = AD[ad].events().filter(e => e.t < 7.0);
+    ev.push({ t: 7.75, k: 'catch' }, { t: 8.05, k: 'dribble', v: 0.5 }, { t: 8.25, k: 'dribble', v: 0.5 }, { t: 8.7, k: 'chime' }, { t: 9.93, k: 'tick' });
+    EVENTS[ad] = ev.sort((a, b) => a.t - b.t);
+  }
+  return EVENTS[ad];
+}
+
+// ---------------------------------------------------------------- speech (OS voices)
+function voiceFor(code) {
+  if (!('speechSynthesis' in window)) return null;
+  const want = COPY.langs[code].tts.toLowerCase(), vs = speechSynthesis.getVoices(); if (!vs.length) return null;
+  const norm = s => (s || '').toLowerCase().replace('_', '-');
+  let v = vs.find(x => norm(x.lang) === want); if (v) return { v, exact: true };
+  const prim = want.split('-')[0], alts = { nb: ['nb', 'no', 'nn'], fil: ['fil', 'tl'], he: ['he', 'iw'] }[prim] || [prim];
+  v = vs.find(x => alts.includes(norm(x.lang).split('-')[0])); return v ? { v, exact: false } : null;
+}
+function speak(text, code) {
+  if (!('speechSynthesis' in window) || !ui.narr.checked) return;
+  const f = voiceFor(code); if (!f) return;
+  const u = new SpeechSynthesisUtterance(text); u.voice = f.v; u.lang = f.v.lang; u.rate = 1.05; speechSynthesis.speak(u);
+}
+
+// ---------------------------------------------------------------- UI + playback
+const state = { country: null, lang: 'ko', ad: 'math', aspect: '16:9', domainMode: 'auto', reduced: false };
+const ui = {};
+let playing = false, t0 = 0, cur = 0, lastT = 0, raf = 0, exporting = false;
+function adDisabled(ad, lang) {
+  if (ad === 'english' && ENGLISH_AUDIENCE.has(lang)) return '영어권 청중(en/pcm)에는 영어 광고를 내보내지 않습니다.';
+  if (ad === 'korean' && lang === 'ko') return '한국(ko) 청중에는 한국어 광고를 내보내지 않습니다.';
+  return '';
+}
+function fillCountries() {
+  COPY.countries.forEach((c, i) => { const o = document.createElement('option'); o.value = i; o.textContent = `${c.ko} (${c.en}) — ${c.domain}`; ui.country.appendChild(o); });
+}
+function fillLangs() {
+  ui.lang.innerHTML = '';
+  state.country.langs.forEach(code => { const L = COPY.langs[code]; const o = document.createElement('option'); o.value = code; o.textContent = `${L.native} · ${L.ko} (${code})`; o.lang = code; ui.lang.appendChild(o); });
+  if (!state.country.langs.includes(state.lang)) state.lang = state.country.langs[0];
+  ui.lang.value = state.lang;
+}
+function refreshAds() {
+  let reason = '';
+  ui.adBtns.forEach(b => { const r = adDisabled(b.dataset.ad, state.lang); b.disabled = !!r; if (r) reason = r; b.setAttribute('aria-pressed', String(b.dataset.ad === state.ad)); b.title = r; });
+  if (adDisabled(state.ad, state.lang)) { state.ad = 'math'; ui.adBtns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.ad === state.ad))); }
+  ui.adReason.textContent = reason;
+}
+function refreshTTS() {
+  const b = ui.badge;
+  if (!('speechSynthesis' in window)) { b.className = 'badge no'; b.textContent = '음성 합성 미지원 브라우저'; return; }
+  const f = voiceFor(state.lang), want = COPY.langs[state.lang].tts;
+  if (!f) { b.className = 'badge no'; b.textContent = `OS 음성 없음 (${want})`; }
+  else if (f.exact) { b.className = 'badge ok'; b.textContent = `OS 음성 있음 (${f.v.lang})`; }
+  else { b.className = 'badge part'; b.textContent = `${want} 없음 → ${f.v.lang}로 대체`; }
+  const vs = speechSynthesis.getVoices();
+  if (vs.length) {
+    const none = COPY.activeLanguages.filter(c => !voiceFor(c));
+    const part = COPY.activeLanguages.filter(c => { const f2 = voiceFor(c); return f2 && !f2.exact; });
+    ui.noVoices.textContent = `이 기기에서 OS 음성이 없는 언어(${none.length}): ${none.join(', ') || '없음'} · 다른 지역 음성으로 대체(${part.length}): ${part.join(', ') || '없음'}`;
+  } else ui.noVoices.textContent = '이 브라우저는 아직 음성 목록을 제공하지 않았습니다(목록이 오면 자동 갱신).';
+}
+function refreshPreview() {
+  const C = COPY.langs[state.lang];
+  const setT = (el, txt, lang, dir) => { el.textContent = txt; el.lang = lang; el.dir = dir; };
+  setT(ui.pvQ, C.q[state.ad], state.lang, C.dir);
+  const ans = { math: `${C.terms.ballH} · ${C.terms.dist} · ${C.terms.peakH} · ${C.terms.rimH} → ${C.archTitle}: ${C.areaWord} = ⅔ × 4.6 m × 1.2094 m ≈ 3.71 m²`, english: `${C.terms.answer}: BOUNCE! / THUMP!`, korean: `${C.terms.answer}: 대역전! (dae-yeokjeon) · 78:80 → 81:80`, life: '—' }[state.ad];
+  setT(ui.pvA, ans, state.lang, C.dir);
+  setT(ui.pvC, `${C.catch[state.ad]} — ${domainFor(state)}`, state.lang, C.dir);
+  ui.cv.setAttribute('aria-label', `${state.ad} 광고 (${C.native}): ${C.q[state.ad]}`);
+}
+function setAspect(a) {
+  state.aspect = a; const L = layout(a); ui.cv.width = L.W; ui.cv.height = L.H; ui.cv.className = a === '9:16' ? 'v' : 'h';
+  ui.aspBtns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.asp === a))); fitCache.clear(); draw();
+}
+function draw() { renderAt(ui.ctx, cur, state); ui.time.textContent = `${cur.toFixed(1)} / 10.0초`; ui.scrub.value = Math.round(cur * 1000); ui.scrub.setAttribute('aria-valuetext', `${cur.toFixed(1)}초`); }
+function fireEvents(a, b) { if (!ui.sfx.checked || !SFX.ac) return; for (const e of eventsFor(state.ad)) if (e.t > a && e.t <= b && b - e.t < 0.25) SFX.play(e); }
+function loop(now) {
+  if (!playing) return;
+  const t = (now - t0) / 1000;
+  const prev = cur; cur = Math.min(DUR, t);
+  fireEvents(prev, cur);
+  if (prev < 7.0 && cur >= 7.0) speak(COPY.langs[state.lang].catch[state.ad], state.lang);
+  draw();
+  if (cur >= DUR) { stop(); return; }
+  raf = requestAnimationFrame(loop);
+}
+function play() {
+  if (exporting) return;
+  SFX.init(); if (SFX.ac && SFX.ac.state !== 'running') SFX.ac.resume();
+  if (cur >= DUR - 0.01) cur = 0;
+  playing = true; t0 = performance.now() - cur * 1000; ui.play.textContent = '❚❚ 일시정지'; ui.play.setAttribute('aria-label', '일시정지');
+  if (cur < 0.5 && 'speechSynthesis' in window) { speechSynthesis.cancel(); const A = AD[state.ad]; setTimeout(() => playing && speak(COPY.langs[state.lang].q[state.ad], state.lang), ((A.questionFrom || 0.2) - cur) * 1000); }
+  raf = requestAnimationFrame(loop);
+}
+function stop() { playing = false; cancelAnimationFrame(raf); ui.play.textContent = '▶ 재생'; ui.play.setAttribute('aria-label', '재생'); }
+function toggle() { playing ? (stop(), ('speechSynthesis' in window) && speechSynthesis.cancel()) : play(); }
+
+async function exportVideo(asp) {
+  if (exporting) return; if (!window.MediaRecorder || !HTMLCanvasElement.prototype.captureStream) { ui.exp.textContent = '이 브라우저는 캔버스 녹화를 지원하지 않습니다.'; return; }
+  stop(); exporting = true;
+  const L = layout(asp), off = document.createElement('canvas'); off.width = L.W; off.height = L.H;
+  const st = { ...state, aspect: asp }, octx = off.getContext('2d');
+  renderAt(octx, 0, st);
+  const stream = off.captureStream(30);
+  SFX.init(); if (SFX.ac) { await SFX.ac.resume(); if (ui.sfx.checked) SFX.rec.stream.getAudioTracks().forEach(tr => stream.addTrack(tr)); }
+  const mime = ['video/webm;codecs=vp9,opus', 'video/webm;codecs=vp8,opus', 'video/webm'].find(m => MediaRecorder.isTypeSupported(m)) || '';
+  const rec = new MediaRecorder(stream, mime ? { mimeType: mime, videoBitsPerSecond: 6e6 } : undefined); const chunks = [];
+  rec.ondataavailable = e => e.data.size && chunks.push(e.data);
+  const done = new Promise(r => rec.onstop = r);
+  rec.start(250); const start = performance.now(); let prev = -1;
+  ui.exp.textContent = `${asp} 녹화 중… (10초)`;
+  await new Promise(res => {
+    const step = () => {
+      const t = Math.min(DUR, (performance.now() - start) / 1000);
+      if (ui.sfx.checked && SFX.ac) for (const e of eventsFor(st.ad)) if (e.t > prev && e.t <= t) SFX.play(e);
+      prev = t; renderAt(octx, t, st); cur = t; renderAt(ui.ctx, t, state);
+      ui.exp.textContent = `${asp} 녹화 중… ${t.toFixed(1)} / 10.0초`;
+      if (t >= DUR) { setTimeout(res, 250); return; } requestAnimationFrame(step);
+    }; requestAnimationFrame(step);
+  });
+  rec.stop(); await done;
+  const blob = new Blob(chunks, { type: 'video/webm' }), url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = `life-help-${st.ad}-${st.lang}-${asp.replace(':', 'x')}.webm`; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 60000);
+  ui.exp.textContent = `저장 완료: ${a.download} (${(blob.size / 1e6).toFixed(1)} MB, 내레이션 제외)`; exporting = false; draw();
+}
+
+function init() {
+  ui.cv = document.getElementById('cv'); ui.ctx = ui.cv.getContext('2d');
+  ui.country = document.getElementById('country'); ui.lang = document.getElementById('lang');
+  ui.adBtns = [...document.querySelectorAll('[data-ad]')]; ui.aspBtns = [...document.querySelectorAll('[data-asp]')];
+  ui.adReason = document.getElementById('adReason'); ui.play = document.getElementById('play'); ui.scrub = document.getElementById('scrub'); ui.time = document.getElementById('time');
+  ui.sfx = document.getElementById('sfx'); ui.narr = document.getElementById('narr'); ui.badge = document.getElementById('ttsBadge'); ui.rm = document.getElementById('rm');
+  ui.exp = document.getElementById('expStatus'); ui.noVoices = document.getElementById('noVoices');
+  ui.pvQ = document.getElementById('pvQ'); ui.pvA = document.getElementById('pvA'); ui.pvC = document.getElementById('pvC');
+  ui.domain = document.getElementById('domainMode');
+  fillCountries(); state.country = COPY.countries[0]; ui.country.value = 0; fillLangs();
+  const mq = window.matchMedia ? matchMedia('(prefers-reduced-motion: reduce)') : null;
+  state.reduced = !!(mq && mq.matches); ui.rm.checked = state.reduced;
+  if (mq && mq.addEventListener) mq.addEventListener('change', e => { state.reduced = ui.rm.checked = e.matches; draw(); });
+  ui.country.addEventListener('change', () => { state.country = COPY.countries[+ui.country.value]; fillLangs(); refreshAds(); refreshTTS(); refreshPreview(); fitCache.clear(); draw(); });
+  ui.lang.addEventListener('change', () => { state.lang = ui.lang.value; refreshAds(); refreshTTS(); refreshPreview(); draw(); });
+  ui.adBtns.forEach(b => b.addEventListener('click', () => { if (b.disabled) return; state.ad = b.dataset.ad; stop(); cur = 0; refreshAds(); refreshPreview(); draw(); }));
+  ui.aspBtns.forEach(b => b.addEventListener('click', () => setAspect(b.dataset.asp)));
+  ui.domain.addEventListener('change', () => { state.domainMode = ui.domain.value; refreshPreview(); draw(); });
+  ui.rm.addEventListener('change', () => { state.reduced = ui.rm.checked; draw(); });
+  ui.play.addEventListener('click', toggle);
+  ui.scrub.addEventListener('input', () => { stop(); cur = +ui.scrub.value / 1000; draw(); });
+  document.getElementById('exp169').addEventListener('click', () => exportVideo('16:9'));
+  document.getElementById('exp916').addEventListener('click', () => exportVideo('9:16'));
+  document.addEventListener('keydown', e => {
+    const tag = (e.target.tagName || '').toLowerCase(); if (['input', 'select', 'textarea', 'button'].includes(tag) && e.target !== ui.scrub) return;
+    if (e.target === ui.scrub && e.key !== ' ' && e.key !== 'k') return;
+    if (e.key === ' ' || e.key === 'k') { e.preventDefault(); toggle(); }
+    else if (e.key === 'ArrowRight') { stop(); cur = Math.min(DUR, cur + 0.5); draw(); }
+    else if (e.key === 'ArrowLeft') { stop(); cur = Math.max(0, cur - 0.5); draw(); }
+    else if (e.key === 'Home') { stop(); cur = 0; draw(); } else if (e.key === 'End') { stop(); cur = DUR; draw(); }
+  });
+  if ('speechSynthesis' in window) speechSynthesis.onvoiceschanged = refreshTTS;
+  refreshAds(); refreshTTS(); refreshPreview(); setAspect('16:9');
+}
+
+// test hooks (headless verification)
+window.LH = {
+  COPY, AD, solve, layout, renderAt, renderFrame, state, OVERFLOW, LEN,
+  set(o) { Object.assign(state, o); if (o.countryDomain) state.country = COPY.countries.find(c => c.domain === o.countryDomain); if (o.aspect) setAspect(o.aspect); fitCache.clear(); refreshAds(); if (o.ad) state.ad = o.ad; },
+  rigSample(ad, step = 1 / 30) { const out = []; for (let t = 0; t <= 7.0001; t += step) { const R = solve(AD[ad].pose(t)); out.push({ t, sh: R.sh, el: R.elbow, ha: R.hand, hip: R.hip, kn: R.knee, an: R.ankle }); } return out; },
+  startLog() { RIG_LOG = []; }, stopLog() { const r = RIG_LOG; RIG_LOG = null; return r; },
+  events: eventsFor, adDisabled,
+};
+init();
+</script>
+</body>
+</html>

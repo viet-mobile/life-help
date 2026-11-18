@@ -1,0 +1,66 @@
+{
+ "packet": "H13-h3-ins",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 63,
+  "questions": 106
+ },
+ "patches": [
+  {
+   "item": "5b0ec109",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What happens to the extra vegetables from the garden?",
+      "o": [
+       "They are given to older neighbors.",
+       "They are sold at a market run by the city.",
+       "They are sent to the school cafeteria nearby.",
+       "They are kept by the families who water the plants."
+      ],
+      "a": 0,
+      "why": "남은 채소는 나이 든 이웃들에게 나누어 주었다고 글에 나와 있어요."
+     },
+     {
+      "q": "What does \"it\" in the second sentence refer to?",
+      "o": [
+       "the apartment block",
+       "the city office",
+       "the empty lot",
+       "the shared garden"
+      ],
+      "a": 2,
+      "why": "‘turn it into a garden’에서 it은 빈 땅이에요."
+     },
+     {
+      "q": "Why do some residents feel safer?",
+      "o": [
+       "The lot is full of people in the evening.",
+       "The city has put up a tall fence.",
+       "The weeds have been cut every week.",
+       "Older neighbors guard the garden."
+      ],
+      "a": 0,
+      "why": "여섯 번째 문장이 저녁마다 사람들로 가득 차기 때문이라고 해요."
+     },
+     {
+      "q": "Where does the following sentence best fit in the passage?\n\"The city agreed, but only on the condition that the neighbors would look after the land themselves.\"",
+      "o": [
+       "[1]",
+       "[2]",
+       "[3]",
+       "[4]"
+      ],
+      "a": 1,
+      "why": "‘that condition’이 가리키는 조건이 앞 문장에 나와야 해요. 시의 허락과 조건이 [2]에 들어가야 일정표가 그 조건을 충족해요."
+     }
+    ]
+   },
+   "why": "Q1 and Q4 revealed each other",
+   "severity": "minor"
+  }
+ ],
+ "ok": 103,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

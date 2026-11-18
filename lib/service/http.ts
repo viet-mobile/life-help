@@ -160,7 +160,11 @@ export function createServiceHandler(deps: HttpDeps) {
           return json({ helper }, 200, [setCookieHeader(HELPER_COOKIE, credential, { maxAgeSec: 90 * 86_400, secure })]);
         }
         if (route === "/h/logout" && method === "POST") return json({ ok: true }, 200, [clearCookieHeader(HELPER_COOKIE, secure)]);
-        if (route === "/h/me" && method === "GET") return json({ helper: await core.helperMe(cred) });
+        if (route === "/h/me" && method === "GET") {
+          // no helper cookie at all = a normal anonymous visit: 200 {helper:null} (no console error). A present but invalid / expired / disabled credential stays 403.
+          if (!cred) return json({ helper: null });
+          return json({ helper: await core.helperMe(cred) });
+        }
         if (route === "/h/me" && method === "PATCH") return json({ helper: await core.updateHelperProfile(cred, await readBody(request)) });
         if (route === "/h/available" && method === "POST") return json({ helper: await core.setAvailable(cred, (await readBody(request)).available === true) });
         if (route === "/h/requests" && method === "GET") return json(await core.listHelperRequests(cred));

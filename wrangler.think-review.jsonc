@@ -1,0 +1,17 @@
+// THINKING-TASK REVIEW Worker: only for reviewers of the pilot at /think-pilot (noindex). Never used for production, no database, no secrets.
+//   Deploy:  npx opennextjs-cloudflare build && npx wrangler deploy --config wrangler.think-review.jsonc
+// Its own Worker name on workers.dev (no routes, no custom domain); it does not touch life-help, life-help-staging or any other Worker.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "main": ".open-next/worker.js",
+  "name": "life-help-think-review",
+  "compatibility_date": "2024-09-23",
+  "compatibility_flags": ["nodejs_compat", "nodejs_compat_populate_process_env"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS",
+    "run_worker_first": ["/favicon.ico", "/learn-content/*"]
+  },
+  "vars": { "APP_ENV": "staging" },
+  "observability": { "enabled": true, "head_sampling_rate": 1 }
+}

@@ -1,0 +1,97 @@
+{
+ "packet": "H19-h-world",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 15,
+  "questions": 34
+ },
+ "patches": [
+  {
+   "item": "c0726533",
+   "op": "set",
+   "set": {
+    "q": "What does \"assimilate\" mean?",
+    "o": [
+     "to leave a country without telling anyone in the community",
+     "to teach a foreign language to children in a new school",
+     "to sell traditional goods to tourists at a local market",
+     "to adopt the ways of a new society and become part of it"
+    ],
+    "a": 3,
+    "why": "assimilate는 새로운 사회에 동화되는 것이에요."
+   },
+   "why": "Lengthen distractors.",
+   "severity": "minor"
+  },
+  {
+   "item": "0ccd5eee",
+   "op": "set",
+   "set": {
+    "q": "What does \"culture shock\" mean?",
+    "o": [
+     "the confusion a person feels in an unfamiliar way of life",
+     "a loud noise that surprises people at a cultural festival",
+     "a sudden fall in the price of tickets for foreign travel",
+     "the pride a person feels in their own traditions"
+    ],
+    "a": 0,
+    "why": "culture shock는 낯선 문화에서 느끼는 혼란이에요."
+   },
+   "why": "Lengthen distractors.",
+   "severity": "minor"
+  },
+  {
+   "item": "1f1ae720",
+   "op": "set",
+   "set": {
+    "q": "What is a \"lingua franca\"?",
+    "o": [
+     "a language spoken by only one family in a village",
+     "a language used by people who have different mother tongues",
+     "a language that is written without any letters at all",
+     "a language taught only in universities abroad"
+    ],
+    "a": 1,
+    "why": "lingua franca는 모국어가 서로 다른 사람들이 공통으로 쓰는 언어예요."
+   },
+   "why": "Lengthen distractors.",
+   "severity": "minor"
+  },
+  {
+   "item": "d541ff5a",
+   "op": "set",
+   "set": {
+    "q": "Which is an example of intangible cultural heritage?",
+    "o": [
+     "A stone bridge built by the river long ago",
+     "A palace with a large garden in the capital",
+     "A folk song passed down by singing from parents to children",
+     "An ancient coin kept in a museum case"
+    ],
+    "a": 2,
+    "why": "무형 유산은 형태가 없는 전승 문화예요."
+   },
+   "why": "Lengthen distractors.",
+   "severity": "minor"
+  },
+  {
+   "item": "52bbf8b2",
+   "op": "set",
+   "set": {
+    "q": "Which sentence is the most culturally sensitive way to describe another culture?",
+    "o": [
+     "Their customs are different from ours, and I would like to learn why.",
+     "Their customs are strange and backward, so they should be avoided.",
+     "Their customs are wrong and should be changed by outsiders.",
+     "They all behave exactly the same way, so we need not ask them."
+    ],
+    "a": 0,
+    "why": "판단하지 않고 호기심을 보이는 표현이 가장 적절해요."
+   },
+   "why": "Lengthen distractors.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 29,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

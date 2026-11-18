@@ -110,7 +110,7 @@ describe("browser identity, server authority, caching, environment (source facts
     const walk = (d: string, out: string[] = []): string[] => { for (const n of readdirSync(d)) { const p = join(d, n); if (statSync(p).isDirectory()) walk(p, out); else if (/\.(ts|tsx)$/.test(n)) out.push(p); } return out; };
     const names = new Set<string>();
     for (const f of [...walk("lib/learn/server"), "lib/env.ts"]) for (const m of src(f).matchAll(/(?:process\.env|env)\.([A-Z][A-Z0-9_]+)/g)) names.add(m[1]);
-    const allowed = new Set(["LEARN_SUPABASE_URL", "LEARN_SUPABASE_PUBLISHABLE_KEY", "LEARN_SUPABASE_SECRET_KEY", "EXPECTED_LEARN_SUPABASE_REF", "LEARN_CONTENT_SOURCE", "APP_ENV", "NODE_ENV", "VITEST"]);
+    const allowed = new Set(["LEARN_SUPABASE_URL", "LEARN_SUPABASE_PUBLISHABLE_KEY", "LEARN_SUPABASE_SECRET_KEY", "EXPECTED_LEARN_SUPABASE_REF", "LEARN_CONTENT_SOURCE", "LEARN_ATTEMPT_SECRET", "APP_ENV", "NODE_ENV", "VITEST"]);
     for (const n of names) expect(allowed.has(n), `${n} is read by the learning server`).toBe(true);
     for (const forbidden of ["SUPABASE_URL", "SUPABASE_SERVICE_ROLE_KEY", "SUPABASE_SECRET_KEY", "NEXT_PUBLIC_SUPABASE_URL", "NEXT_PUBLIC_SUPABASE_ANON_KEY"]) expect(names.has(forbidden), forbidden).toBe(false);
     expect(src("lib/learn/server/supabase/config.ts")).toContain("return null; // cross-wired project");

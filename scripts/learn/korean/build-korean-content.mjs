@@ -88,11 +88,11 @@ function render(kit, locale = "en") {
           need(new Set(q.options.map((o) => o.text)).size === q.options.length, `${id}: distinct readings`);
           q.target = { text: it.ko }; q.audioText = it.ko; break;
         case "meaning": choice([it.g, ...it.wrong].map(gloss), true); q.target = { text: it.ko, romanization: it.rr, romanizationVi: pv(it.ko, it.rr) }; q.audioText = it.ko; break;
-        case "toko": choice([it.ko, ...it.wrong], false); break;
+        case "toko": choice([it.ko, ...it.wrong], false); q.audioAnswer = it.ko; break;
         case "listen": choice([it.ko, ...it.wrong], false); q.audioText = it.ko; break;
-        case "choose": choice(it.options, false); break;
+        case "choose": choice(it.options, false); if (HANGUL.test(it.options[0])) q.audioAnswer = it.options[0]; break;
         case "tf": q.type = "true_false"; q.answer = { kind: "choice", id: it.claim === it.g ? "true" : "false" }; q.target = { text: it.ko, romanization: it.rr, romanizationVi: pv(it.ko, it.rr) }; q.audioText = it.ko; vars.gloss = gloss(it.claim); break;
-        case "fill": q.type = "fill_blank"; q.answer = { kind: "text", accepted: it.answers }; q.target = { text: it.blank }; vars.rr = reading(it.answers[0], it.ans_rr); break;
+        case "fill": q.type = "fill_blank"; q.answer = { kind: "text", accepted: it.answers }; q.target = { text: it.blank }; q.audioAnswer = it.ko; vars.rr = reading(it.answers[0], it.ans_rr); break;
         case "order": {
           q.type = "ordering";
           const ids = it.parts.map((_, i) => `w${i + 1}`);
@@ -185,4 +185,4 @@ for (const [rel, data] of Object.entries(outputs)) {
   }
 }
 if (stale) { console.error("korean content is out of date: run node scripts/learn/korean/build-korean-content.mjs"); process.exit(1); }
-console.log(`${check ? "checked" : "wrote"} korean course: ${bundle.catalog.courses.length} levels, ${bundle.questions.length} questions, ${Object.keys(outputs).length - 1} overlays`);
+console.log(`${check ? "checked" : "wrote"} korean course: ${bundle.catalog.courses.length} courses, ${bundle.questions.length} questions, ${Object.keys(outputs).length - 1} overlays`);

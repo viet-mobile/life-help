@@ -1,0 +1,86 @@
+{
+ "packet": "M05-order",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 31,
+  "questions": 42
+ },
+ "patches": [
+  {
+   "item": "27b3840f",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "Alternative valid word order (flour and the eggs) makes the ordering key non-unique.",
+   "severity": "minor"
+  },
+  {
+   "item": "442bcf93",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the story mainly about?",
+      "o": [
+       "How the writer lost a bike on the way to school",
+       "How the writer learned to ride a bike",
+       "How the writer's brother won a big race",
+       "How the writer fixed a broken bike"
+      ],
+      "a": 1,
+      "why": "Seho의 도움으로 자전거 타는 법을 배운 이야기예요."
+     },
+     {
+      "q": "What did Seho do on the first day?",
+      "o": [
+       "He rode ahead of the writer.",
+       "He bought a new bike.",
+       "He took the writer to the corner.",
+       "He held the back of the seat."
+      ],
+      "a": 3,
+      "why": "첫날 Seho가 안장 뒤를 잡아 주었어요."
+     },
+     {
+      "q": "When could the writer ride to the corner without falling?",
+      "o": [
+       "By the end of the week",
+       "On the first day",
+       "On the second day",
+       "A month later"
+      ],
+      "a": 0,
+      "why": "주말 무렵에는 넘어지지 않고 모퉁이까지 갔어요."
+     },
+     {
+      "q": "Why does the writer thank Seho?",
+      "o": [
+       "Seho gave the writer a new bike.",
+       "Seho takes the writer to school.",
+       "Seho helped the writer learn to ride.",
+       "Seho fixed the writer's knee."
+      ],
+      "a": 2,
+      "why": "Seho가 자전거 타는 법을 배우도록 도와주었기 때문이에요."
+     },
+     {
+      "q": "In the passage, “pedaled” means ...",
+      "o": [
+       "pulled the brakes very hard",
+       "turned the handlebars left and right",
+       "rang the bell again and again",
+       "pushed the pedals"
+      ],
+      "a": 3,
+      "why": "pedal은 발로 페달을 밟는 동작이에요."
+     }
+    ]
+   },
+   "why": "Neutral Korean explanations; no 형 assumption.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 38,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

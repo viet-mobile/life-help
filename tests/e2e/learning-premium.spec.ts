@@ -1,4 +1,5 @@
 import { readFileSync } from "node:fs";
+import { pickLevel } from "./pickLevel";
 import { expect, test, type Page } from "@playwright/test";
 import { ko } from "../../lib/learn/i18n/ko";
 import { buildAccessPlan } from "../../lib/learn/domain/access";
@@ -21,7 +22,7 @@ const FILES: Record<Site, string[]> = {
   korean: ["korean/korean"],
 };
 const LEVEL: Record<Site, string> = { math: "E3", english: "E3", korean: "K2" };
-const LOCALES = ["en", "ko", "vi", "ur", "ar", "he", "sg", "sw", "mr", "gu", "pa", "te", "kn", "ml", "ja", "zh-Hans"] as const;
+const LOCALES = ["en", "ko", "vi", "ur", "ar", "he", "fr", "sw", "mr", "gu", "pa", "te", "kn", "ml", "ja", "zh-Hans"] as const;
 const RTL = new Set(["ar", "arz", "fa", "he", "ur"]);
 const HANGUL = /[가-힣]/;
 
@@ -45,7 +46,7 @@ async function onboardGuest(page: Page, site: Site) {
   await page.goto(`${HOST[site]}/onboarding`);
   await page.locator("#nick").fill("tester");
   await page.getByRole("button", { name: t["onboarding.next"] }).click();
-  await page.getByRole("radio", { name: t[`grade.${LEVEL[site]}`], exact: true }).click();
+  await pickLevel(page, site, LEVEL[site], t[`grade.${LEVEL[site]}`]);
   await page.getByRole("button", { name: t["onboarding.next"] }).click();
   await page.getByRole("radio", { name: t["goal.fill_gaps"] }).click();
   await page.getByRole("button", { name: t["onboarding.next"] }).click();

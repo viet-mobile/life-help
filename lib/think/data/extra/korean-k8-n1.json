@@ -1,0 +1,1260 @@
+[
+ {
+  "subject": "korean",
+  "grade": "K8",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "uiLang": "en",
+  "curriculum": null,
+  "generative": true,
+  "id": "n-k-k8-01",
+  "topic": "notices: boundary words (이상/이하/초과/미만)",
+  "title": "Who fits inside the notice's limits?",
+  "format": "build-many-verify",
+  "goal": "Read the number words in a formal volunteer notice, build several sign-ups that satisfy every limit, and explain in your own words why one borderline person is in or out.",
+  "thinking": [
+   "Reading boundary words: does the limit include the number itself?",
+   "Satisfying several conditions at once",
+   "Finding more than one valid case",
+   "Explaining a borderline case"
+  ],
+  "differsFromPlain": "Plain practice asks you to translate 이상 or 미만 on its own. Here a whole notice sets five limits at once, and you must build valid sign-ups and test the edges.",
+  "prerequisites": [
+   "Knows the pairs 이상/이하 (includes the number) and 초과/미만 (does not)",
+   "Can read a numbered formal notice"
+  ],
+  "minutes": 11,
+  "material": "A town posts this notice. 만 N세 means 'N years old by the Korean legal count'. Treat every number as a whole number.\n\n청소년 봉사단 '이웃' 참가자 모집 안내\n1. 대상: 만 13세 이상, 만 18세 미만 청소년\n2. 팀 구성: 한 팀은 3명 이상 5명 이하\n3. 하루 활동 시간: 최소 1시간 이상, 4시간을 초과할 수 없음\n4. 활동 일수: 5일 미만\n5. 인증서: 총 활동 시간(하루 활동 시간 × 활동 일수)이 10시간 이상이어야 받을 수 있음",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "scaffold": true,
+    "prompt": "Clause 3 says '4시간을 초과할 수 없음'. May a participant work exactly 4 hours in one day?",
+    "options": [
+     {
+      "id": "a",
+      "text": "No: 초과 includes the number itself, so exactly 4 hours is banned.",
+      "reveals": "초과 means 'more than' and does not include the number. Compare it with 이상, which does include it."
+     },
+     {
+      "id": "b",
+      "text": "Yes: the ban is on the total hours, not on the hours of one day.",
+      "reveals": "The clause says it is about 하루 (one day); the total is limited separately in clause 5."
+     },
+     {
+      "id": "c",
+      "text": "Yes, but only for a team that has five members.",
+      "reveals": "Nothing in clause 3 depends on team size; the team is a different clause."
+     },
+     {
+      "id": "d",
+      "text": "Yes: 4 hours is the limit itself; only more than 4 is banned."
+     }
+    ],
+    "correct": [
+     "d"
+    ],
+    "explain": "초과 means 'more than' and leaves the number out, so 4 hours is allowed and 5 hours is not. 이상/이하 include the number; 초과/미만 do not.",
+    "hints": [
+     "Say the clause aloud in your own words: what is forbidden, 4 hours or something else?",
+     "Picture a person who works exactly 4 hours and ask whether the clause is broken."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "build",
+    "prompt": "Fill in ONE possible sign-up that the notice allows and that earns the certificate. Make 3 different sign-ups with 3 different ages. a = age (만 나이), n = team size, h = hours per day, d = number of days.",
+    "vars": [
+     {
+      "name": "a",
+      "label": "age (만 나이)"
+     },
+     {
+      "name": "n",
+      "label": "people in the team (팀 인원)"
+     },
+     {
+      "name": "h",
+      "label": "hours per day (하루 활동 시간)"
+     },
+     {
+      "name": "d",
+      "label": "number of days (활동 일수)"
+     }
+    ],
+    "constraints": [
+     {
+      "id": "c0",
+      "expr": "a==floor(a) && n==floor(n) && h==floor(h) && d==floor(d)",
+      "ok": "All whole numbers.",
+      "fail": "Use whole numbers only."
+     },
+     {
+      "id": "c1",
+      "expr": "a>=13 && a<18",
+      "ok": "Age fits clause 1.",
+      "fail": "Clause 1: 만 13세 이상, 만 18세 미만."
+     },
+     {
+      "id": "c2",
+      "expr": "n>=3 && n<=5",
+      "ok": "Team size fits clause 2.",
+      "fail": "Clause 2: 3명 이상 5명 이하."
+     },
+     {
+      "id": "c3",
+      "expr": "h>=1 && h<=4",
+      "ok": "Daily hours fit clause 3.",
+      "fail": "Clause 3: at least 1 hour and not more than 4 hours a day."
+     },
+     {
+      "id": "c4",
+      "expr": "d>=1 && d<5",
+      "ok": "Days fit clause 4.",
+      "fail": "Clause 4: 5일 미만."
+     },
+     {
+      "id": "c5",
+      "expr": "h*d>=10",
+      "ok": "Total hours are 10 or more.",
+      "fail": "Clause 5: hours per day x days must be 10 or more."
+     }
+    ],
+    "need": 3,
+    "distinctBy": "a",
+    "modelRows": [
+     {
+      "a": 13,
+      "n": 3,
+      "h": 4,
+      "d": 3
+     },
+     {
+      "a": 15,
+      "n": 5,
+      "h": 3,
+      "d": 4
+     },
+     {
+      "a": 17,
+      "n": 4,
+      "h": 4,
+      "d": 4
+     }
+    ],
+    "badRows": [
+     {
+      "a": 18,
+      "n": 4,
+      "h": 3,
+      "d": 4
+     },
+     {
+      "a": 15,
+      "n": 6,
+      "h": 3,
+      "d": 4
+     },
+     {
+      "a": 15,
+      "n": 4,
+      "h": 5,
+      "d": 3
+     },
+     {
+      "a": 15,
+      "n": 4,
+      "h": 2,
+      "d": 4
+     },
+     {
+      "a": 15,
+      "n": 4,
+      "h": 3,
+      "d": 5
+     }
+    ],
+    "explain": "Edges: age 13 is in and 18 is out; teams of 3 and 5 are both in; 4 hours a day is in; 5 days is out; a total of exactly 10 hours is enough. Many sign-ups fit because the notice gives limits, not one exact plan.",
+    "hints": [
+     "Turn each numbered clause into a short rule about one number before you choose values.",
+     "Start with the age, then pick the hours and days together, because clause 5 links them.",
+     "Test a value right at each edge (the smallest and largest number each clause seems to allow) and read the messages that appear."
+    ],
+    "because": {
+     "id": "s2b",
+     "kind": "write",
+     "prompt": "A friend is exactly 만 18세 today and wants to join. In one or two sentences (Korean or English), tell the friend whether she can join and why, using the notice's wording.",
+     "placeholder": "예: ... / She ...",
+     "minChars": 12,
+     "checks": [
+      {
+       "id": "w1",
+       "label": "says she cannot join",
+       "mode": "any",
+       "patterns": [
+        "안 (돼|됩|되)",
+        "안돼",
+        "없(어|습|다)",
+        "불가",
+        "어렵",
+        "못 ",
+        "not (eligible|allowed|able)",
+        "cannot",
+        "can't",
+        "can not",
+        "isn't",
+        "is not",
+        "ineligible",
+        "too old"
+       ]
+      },
+      {
+       "id": "w2",
+       "label": "gives the reason: 미만 leaves 18 out",
+       "mode": "any",
+       "patterns": [
+        "미만",
+        "under 18",
+        "less than 18",
+        "below 18",
+        "younger than 18",
+        "not (included|counted)",
+        "포함(되지|하지|이 안|은 안)",
+        "해당하지",
+        "제외",
+        "exclude",
+        "(doesn't|does not) include"
+       ]
+      },
+      {
+       "id": "w3",
+       "label": "does not claim she is eligible",
+       "mode": "none",
+       "patterns": [
+        "(18|열여덟|she|her)[^,.，。\\n]{0,10}(신청할 수 있|(?<!불)가능해|(?<!불)가능합|can join|can apply|is eligible|are eligible|참여할 수 있)"
+       ]
+      }
+     ],
+     "selfAssess": [
+      "Did I say clearly that 18 itself is not allowed?",
+      "Did I use the word 미만 or explain what it leaves out?"
+     ],
+     "modelAnswers": [
+      {
+       "text": "그 친구는 만 18세라서 신청할 수 없어요. '18세 미만'에는 18세가 포함되지 않거든요."
+      },
+      {
+       "text": "She cannot join. The notice says under 18 (미만), and 미만 does not include 18 itself."
+      }
+     ],
+     "badAnswers": [
+      {
+       "text": "She can join because 18 is included in the age range.",
+       "why": "Treats 미만 as if it included the number."
+      },
+      {
+       "text": "Yes, 만 18세 is allowed.",
+       "why": "Wrong verdict and no reason."
+      }
+     ],
+     "humanReview": "Whether the reason is stated in the learner's own words and fits the notice.",
+     "hints": [
+      "First decide the verdict for exactly 18, then name the clause word that decides it.",
+      "Compare how 이상 and 미만 treat the number written next to them."
+     ]
+    }
+   },
+   {
+    "id": "s3",
+    "kind": "pickLine",
+    "prompt": "A staff member replies to questions about the same notice. Two lines misread an edge of the limits. Pick one of them.",
+    "lines": [
+     "만 13세 학생은 신청하실 수 있습니다.",
+     "한 팀이 5명이면 정원을 넘으므로 신청하실 수 없습니다.",
+     "하루 4시간 활동은 가능합니다.",
+     "5일 활동은 '5일 미만'이 아니므로 신청하실 수 없습니다.",
+     "총 활동 시간이 정확히 10시간이면 인증서를 받으실 수 없습니다."
+    ],
+    "wrong": [
+     1,
+     4
+    ],
+    "explain": "Lines 2 and 5 are wrong. '5명 이하' includes 5, so a team of five is allowed. '10시간 이상' includes 10, so exactly 10 hours earns the certificate. Lines 1, 3 and 4 read the edges correctly.",
+    "hints": [
+     "For each line, find the matching clause and the boundary word it uses.",
+     "Ask of each line: does that boundary word count the number written beside it?"
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Reading boundary words",
+    "full": "All built sign-ups satisfy every limit and the edge cases are read correctly",
+    "partial": "Most sign-ups valid, but one boundary is misread",
+    "none": "Treats 초과/미만 like 이상/이하 or ignores limits"
+   },
+   {
+    "criterion": "Explaining an edge case",
+    "full": "Says 18 is out and links it to 미만",
+    "partial": "Right verdict without the reason",
+    "none": "Wrong verdict"
+   }
+  ],
+  "alternatives": [
+   "Any sign-up meeting all limits is fine, e.g. 14 years old, team of 4, 3 hours a day for 4 days (12 hours in total).",
+   "A learner may explain the 18-year-old case in Korean or English; either is accepted."
+  ],
+  "hardCases": [
+   "In daily life 만 18세 can be confused with 'Korean age' counting; the notice says 만, the legal count."
+  ],
+  "cautions": {
+   "language": "이상/이하/초과/미만 appear in many notices; the hints point to them without giving the verdicts.",
+   "culture": "Boundary words are used precisely in official notices, so reading them carefully matters. The notice is invented.",
+   "accessibility": "All material is text; the notice is written out as numbered lines and nothing depends on colour. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Each sign-up against the five clauses",
+    "The edge-case reply: verdict and reason words",
+    "The misread staff lines"
+   ],
+   "human": [
+    "Whether the explanation is clear and in the learner's own words"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "subject": "korean",
+  "grade": "K8",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "uiLang": "en",
+  "curriculum": null,
+  "generative": true,
+  "id": "n-k-k8-02",
+  "topic": "news: attribution and who stands behind a claim",
+  "title": "Whose words are these?",
+  "format": "judge-evidence-explain",
+  "goal": "Tell apart what a news article reports as someone's claim or forecast from what it counts as data, and spot a summary that turns a claim into a fact.",
+  "thinking": [
+   "Who is the source of each statement",
+   "Claim versus evidence",
+   "Summarising without distortion",
+   "Explaining the difference with the article's own words"
+  ],
+  "differsFromPlain": "Plain practice asks for the main idea of an article. Here every sentence has a different speaker, and you must judge whose word a statement is before you can use it.",
+  "prerequisites": [
+   "Can read a short news article",
+   "Knows reporting verbs such as 밝혔다, 주장했다, 설명했다"
+  ],
+  "minutes": 11,
+  "material": "Read this short (invented) article.\n\n□□시, 막차 1시간 늦춘다\n\n□□시는 다음 달부터 시내버스 막차 시간을 1시간 늦춘다고 밝혔다. 시 관계자는 \"이용객이 늘어난 노선부터 차례로 넓혀 갈 계획\"이라고 설명했다. 지난해 밤 10시 이후 버스 이용객은 전년보다 12% 늘어난 것으로 집계됐다. 한 시민단체는 막차가 늦어지면 귀갓길 사고가 줄어들 것이라고 주장했다. 버스 노조는 운전기사가 부족해 계획대로 시행하기 어려울 것으로 보인다는 입장을 내놓았다.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "Choose ALL the statements the article only passes on as an outsider's opinion or forecast, without saying that it is true.",
+    "options": [
+     {
+      "id": "a",
+      "text": "시는 다음 달부터 막차 시간을 1시간 늦춘다고 밝혔다.",
+      "reveals": "This is the city announcing its own decision about its own buses; the article reports what the city did say."
+     },
+     {
+      "id": "b",
+      "text": "막차가 늦어지면 귀갓길 사고가 줄어들 것이라는 시민단체의 말"
+     },
+     {
+      "id": "c",
+      "text": "운전기사가 부족해 시행하기 어려울 것이라는 노조의 입장"
+     },
+     {
+      "id": "d",
+      "text": "지난해 밤 10시 이후 이용객이 12% 늘어난 것으로 집계됐다는 내용",
+      "reveals": "This is reported as a counted figure, not as someone's opinion or forecast."
+     },
+     {
+      "id": "e",
+      "text": "이용객이 늘어난 노선부터 넓혀 가겠다는 시 관계자의 설명",
+      "reveals": "This is the city's own plan, stated by its official; it is not an outsider's forecast."
+     }
+    ],
+    "correct": [
+     "b",
+     "c"
+    ],
+    "explain": "Both b and c are forecasts attributed to a group ('주장했다', '어려울 것으로 보인다는 입장'). The article reports that they said it; it does not say that it will really happen. a and e are the city's own decision and plan, and d is a counted figure.",
+    "hints": [
+     "For each statement ask: who is speaking, and is it already done, or only expected?",
+     "Look at the verbs that end the sentences: some say 'announced' or 'counted', others say 'argued' or 'position'."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "pickLine",
+    "prompt": "A classmate summarises the article in five lines. Two lines turn someone's claim or forecast into a plain fact. Pick one of them.",
+    "lines": [
+     "□□시는 다음 달부터 막차 시간을 1시간 늦추기로 했다.",
+     "시는 이용객이 늘어난 노선부터 확대할 계획이다.",
+     "막차가 늦어지면서 귀갓길 사고가 줄어들 것이다.",
+     "버스 노조는 운전기사 부족으로 시행이 어려울 것으로 본다.",
+     "운전기사가 부족해서 막차 연장은 결국 어려워졌다."
+    ],
+    "wrong": [
+     2,
+     4
+    ],
+    "explain": "Lines 3 and 5 are wrong. In the article a civic group argues that accidents will fall, and the union only expects difficulty. Lines 3 and 5 drop the speakers and present these as facts. Lines 1, 2 and 4 keep the speaker.",
+    "hints": [
+     "Underline the speaker of each article sentence, then check that each summary line keeps it.",
+     "Look for lines in which a forecast has become a statement of what happened or what is certain."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Another student writes: '막차를 늦추면 사고가 줄어든다.' In English or Korean, explain what is wrong with this sentence, using the article's own words.",
+    "placeholder": "예: The article says ...",
+    "minChars": 20,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "names the civic group (or says it was one group's view)",
+      "mode": "any",
+      "patterns": [
+       "시민\\s*단체",
+       "civic",
+       "citizen",
+       "(a|one|the) group",
+       "NGO",
+       "단체"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "says it is a claim or forecast, not confirmed",
+      "mode": "any",
+      "patterns": [
+       "주장",
+       "claim",
+       "argu",
+       "assert",
+       "예상",
+       "예측",
+       "predict",
+       "forecast",
+       "will (reduce|fall|decrease)",
+       "줄어들 것",
+       "not (yet )?(confirmed|proven|shown|certain)",
+       "unproven",
+       "확인(되지|이 안|된 게 아)",
+       "아직",
+       "only (says|said|thinks|believes)",
+       "근거"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "does not say the sentence is correct",
+      "mode": "none",
+      "patterns": [
+       "nothing is wrong",
+       "no problem",
+       "the sentence is (right|correct|fine)",
+       "문제(가)? 없",
+       "맞아요",
+       "맞습니다"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I say who made the claim?",
+     "Did I say it is a prediction or claim, not something the article confirms?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "The article only says a civic group argued (주장했다) that accidents would fall. It is their forecast, not a confirmed result, so the sentence states it as a fact."
+     },
+     {
+      "text": "시민단체가 사고가 줄어들 것이라고 주장했을 뿐이에요. 아직 확인된 결과가 아니라 예상인데 사실처럼 썼어요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "The sentence is too short and has no subject.",
+      "why": "Misses the point: the speaker and the claim status."
+     },
+     {
+      "text": "The city said so, so it is a fact.",
+      "why": "Attributes the claim to the wrong source and calls it a fact."
+     }
+    ],
+    "humanReview": "Whether the explanation uses the article's wording correctly and states the difference clearly.",
+    "hints": [
+     "Find in the article who actually said accidents would decrease.",
+     "Say what kind of statement that is (a decision, a count, or something else) and what the classmate's sentence did to it."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Identifying the speaker",
+    "full": "Correctly separates the city's decision and the figure from the group's forecast and the union's expectation",
+    "partial": "Separates one of them",
+    "none": "Treats all statements as the article's own facts"
+   },
+   {
+    "criterion": "Explaining the distortion",
+    "full": "Names the civic group and says it is a claim or forecast, not a result",
+    "partial": "Names one of the two",
+    "none": "Gives no reason about the speaker or status"
+   }
+  ],
+  "alternatives": [
+   "A learner may argue that the figure '12% 늘어난 것으로 집계됐다' also has no named source; this is a fair remark, but the article presents it as data, not as an opinion."
+  ],
+  "hardCases": [
+   "'계획이다' (plan) is the city's own intention. Whether a plan counts as 'fact' is debatable; the task only asks about outsiders' opinions and forecasts."
+  ],
+  "cautions": {
+   "language": "The reporting verbs 밝혔다, 설명했다, 주장했다 differ in how strongly the article stands behind the speaker; the task asks only about the claims in this article.",
+   "culture": "Korean news articles often attach speakers with these verbs; the article, city and groups are invented.",
+   "accessibility": "All material is text and nothing depends on colour. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The statements marked as outside opinions",
+    "The summary lines that drop the speaker",
+    "The explanation mentions the group and a claim or forecast"
+   ],
+   "human": [
+    "Clarity and accuracy of the explanation"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "subject": "korean",
+  "grade": "K8",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "uiLang": "en",
+  "curriculum": null,
+  "generative": true,
+  "id": "n-k-k8-03",
+  "topic": "grammar rules and counter-examples (-는데)",
+  "title": "Testing a classmate's grammar note",
+  "format": "make-your-own",
+  "goal": "Test a classmate's grammar rule against examples, decide how to correct it, and write your own counter-example sentence.",
+  "thinking": [
+   "Testing a rule with examples",
+   "Finding a counter-example",
+   "Revising a rule instead of keeping it",
+   "Making your own example"
+  ],
+  "differsFromPlain": "Plain practice asks for sentences with -는데. Here a general rule is on the table, and your job is to test it and break it with a sentence of your own.",
+  "prerequisites": [
+   "Has met -(으)ㄴ/는데 in several uses",
+   "Can write a simple Korean sentence in the past or present"
+  ],
+  "minutes": 11,
+  "material": "A classmate wrote this in a notebook.\n\n  규칙: -(으)ㄴ/는데 = 'but'. 앞의 내용과 뒤의 내용이 서로 반대일 때 쓴다.\n\nThe classmate asks you: 'Is my rule always right?' Test it.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which sentence is a counter-example, one where -(으)ㄴ/는데 is correct but the two parts do NOT go against each other?",
+    "options": [
+     {
+      "id": "a",
+      "text": "이 가방은 예쁜데 너무 비싸요.",
+      "reveals": "Here the second part goes against what 'pretty' leads you to expect, so it fits the rule and is not a counter-example."
+     },
+     {
+      "id": "b",
+      "text": "그 가수는 나이가 많은데 춤을 아주 잘 춰요.",
+      "reveals": "The second part is surprising given the first, so it fits the rule."
+     },
+     {
+      "id": "c",
+      "text": "어제 마트에 갔는데 사과가 아주 쌌어요."
+     },
+     {
+      "id": "d",
+      "text": "열심히 공부했는데 시험을 못 봤어요.",
+      "reveals": "The result goes against the effort, so it fits the rule."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "In c the first part only gives the scene (I went to the mart) and the second part says what I found. Nothing is opposed.",
+    "hints": [
+     "Read each sentence and try to put 'but' between its two parts: does it sound natural in every case?",
+     "Ask whether the second part is surprising or opposite to the first, or simply the next piece of the story."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "What is the best way to correct the note?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Keep the rule as it is, because most -는데 sentences do contrast.",
+      "reveals": "A rule that says 'always' is broken by one clear counter-example, however many other sentences fit it."
+     },
+     {
+      "id": "b",
+      "text": "Say that -는데 often contrasts but can also set a scene for what follows."
+     },
+     {
+      "id": "c",
+      "text": "Say that -는데 mostly sets a scene, and the contrast examples are the mistakes.",
+      "reveals": "The contrast sentences are normal Korean; the rule is too narrow, but it is not completely wrong."
+     },
+     {
+      "id": "d",
+      "text": "Say that -는데 contrasts in writing, but in speech it does not.",
+      "reveals": "Nothing in the examples depends on speech versus writing."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "A rule that says 'only contrast' is broken by one good counter-example. The fix keeps what is true (contrast is one use) and adds the missing use (setting the scene for the next part).",
+    "hints": [
+     "Decide whether to throw the rule away or to change how much it claims.",
+     "Check that your fix still explains the contrast sentences and also the counter-example."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Write your own Korean sentence with -(으)ㄴ/는데 where the two parts do NOT contrast. Then add a short note (English or Korean) saying what the first part does for the second part.",
+    "placeholder": "예: ...는데 ... (note: ...)",
+    "minChars": 20,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "has a Korean sentence with -(으)ㄴ/는데",
+      "mode": "any",
+      "patterns": [
+       "[가-힣](?<![그이저]런)(?<!(^|\\s)근)데(요|[,?.!？]|\\s|$)"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "the sentence has no contrast marker (하지만, -지만 ...)",
+      "mode": "none",
+      "patterns": [
+       "하지만",
+       "그러나",
+       "그렇지만",
+       "반면",
+       "그래도",
+       "지만",
+       "는데도",
+       "인데도",
+       "은데도",
+       "(예쁜|좋은|싼|맛있는|재미있는|잘생긴|빠른|쉬운|큰|많은)데\\s*(너무\\s*|좀\\s*|조금\\s*|아주\\s*)?(비싸|싫|안|못|나빠|맛없|재미없|느려|어려|작|적|없|힘들)"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "the note says what the first part does (scene, background, reason for asking ...)",
+      "mode": "any",
+      "patterns": [
+       "background",
+       "context",
+       "scene",
+       "setting",
+       "set(s)? up",
+       "introduc",
+       "lead(s)? (in|up|to)",
+       "prepar",
+       "situation",
+       "reason",
+       "suggest",
+       "request",
+       "invit",
+       "offer",
+       "ask(s|ing)? (for|about|whether|if|a question|him|her|you)",
+       "question",
+       "배경",
+       "상황",
+       "소개",
+       "도입",
+       "제안",
+       "부탁",
+       "초대",
+       "질문",
+       "설명",
+       "이유",
+       "앞부분",
+       "앞\\s*부분",
+       "앞\\s*문장",
+       "말해\\s*줘",
+       "알려\\s*줘",
+       "묻기\\s*전",
+       "not (a )?contrast",
+       "no contrast",
+       "대조(가)? 아",
+       "반대(가)? 아"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Would 'but' be wrong between the two parts of my sentence?",
+     "Does my note say what the first part does (for example it gives the scene or the reason for asking)?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "내일 시간이 있는데 같이 영화 볼래요? (The first part gives the situation, then I invite.)"
+     },
+     {
+      "text": "어제 도서관에 갔는데 새 책이 많이 들어와 있었어요. 앞부분은 배경이고 뒷부분이 새로 알게 된 내용이에요."
+     },
+     {
+      "text": "어제 시장에 갔는데 사과가 쌌어요. 첫 부분은 어디 갔는지 말해 줘요.",
+      "note": "The note may be in Korean."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "맛있지만 비싸요. (it means but)",
+      "why": "Uses -지만, not -는데, and it is a contrast."
+     },
+     {
+      "text": "이 옷은 예쁜데 하지만 비싸요. The first part is the reason.",
+      "why": "Contrast marker and a contrast meaning."
+     }
+    ],
+    "humanReview": "Whether the sentence really has no contrast and is natural, and whether the note is accurate.",
+    "hints": [
+     "Think of a moment when you set the scene before asking or telling something: where, when, what you saw.",
+     "After writing, try to put 'but' between your two parts; if it sounds wrong, you have a counter-example."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Testing the rule",
+    "full": "Finds the counter-example and chooses a fix that keeps the true part of the rule",
+    "partial": "Finds the counter-example but keeps or throws away the whole rule",
+    "none": "Cannot tell which sentence breaks the rule"
+   },
+   {
+    "criterion": "Own counter-example",
+    "full": "A natural -는데 sentence without contrast plus an accurate note",
+    "partial": "A correct sentence with no note, or a note without a clear example",
+    "none": "A sentence that still contrasts"
+   }
+  ],
+  "alternatives": [
+   "Other uses count too: -는데 can introduce a question (시간 있는데 볼래요?), a background for a request, or an explanation that comes next.",
+   "A note written in Korean or in English is equally acceptable."
+  ],
+  "hardCases": [
+   "Some sentences are open: '마트에 갔는데 문이 닫혀 있었어요' has background and a mild contrast with what the speaker expected."
+  ],
+  "cautions": {
+   "language": "-(으)ㄴ/는데 has several uses; only a few appear here.",
+   "culture": "The examples are everyday situations. The classmate's note is invented.",
+   "accessibility": "All material is text and nothing depends on colour. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The counter-example choice",
+    "The best correction of the rule",
+    "The learner's sentence has -는데 form, no contrast marker and a note"
+   ],
+   "human": [
+    "Whether the learner's sentence truly has no contrast",
+    "Naturalness of the Korean sentence"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "subject": "korean",
+  "grade": "K8",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "uiLang": "en",
+  "curriculum": null,
+  "generative": true,
+  "id": "n-k-k8-04",
+  "topic": "terms and conditions: rule, exception, exception to the exception",
+  "title": "The refund clause that keeps changing",
+  "format": "reveal-and-revise",
+  "goal": "Revise a refund decision as more clauses of a ticket's terms appear, apply the clauses to a second customer, and explain why the answer changed.",
+  "thinking": [
+   "Revising a reading as conditions are added",
+   "Rule, exception and exception to the exception",
+   "Applying a rule to a new case",
+   "Explaining a changed answer"
+  ],
+  "differsFromPlain": "Plain practice reads a whole notice at once. Here the terms appear clause by clause, and each new clause can turn the answer around.",
+  "prerequisites": [
+   "Knows 다만 (however) and -(으)면 (if)",
+   "Can read a numbered formal clause"
+  ],
+  "minutes": 12,
+  "material": "Mina bought a concert ticket 5 days ago. The concert is 10 days from today. She cannot go, so today she applies for a refund. The terms of the ticket appear one clause at a time.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "Read each clause in order and choose the best answer to 'What refund can Mina get?' using only the clauses shown so far.",
+    "hints": [
+     "Use only the clauses you can see; do not guess what is coming.",
+     "Each time, check Mina's dates (5 days since purchase, 10 days until the concert) against every clause shown."
+    ],
+    "reflect": "The first rule gave 'no', the exception turned it into 'yes, minus a fee', and the last clause limited that exception again. The wording 다만 and 제2항은 ... 경우에만 marks such steps. Read all clauses before you decide.",
+    "stages": [
+     {
+      "info": "제5조(환불)\n① 구매한 입장권은 환불하지 않습니다.",
+      "ask": "What refund can Mina get?",
+      "options": [
+       {
+        "id": "a",
+        "text": "No refund."
+       },
+       {
+        "id": "b",
+        "text": "Full refund.",
+        "reveals": "Nothing in this clause offers any money back."
+       },
+       {
+        "id": "c",
+        "text": "Refund minus a 10% fee.",
+        "reveals": "This clause says nothing about a fee or any refund."
+       },
+       {
+        "id": "d",
+        "text": "Not sure yet: more clauses may follow."
+       }
+      ],
+      "reasonable": [
+       "a",
+       "d"
+      ],
+      "after": "The clause states a rule with no exception so far. 'No refund' is the sensible answer, though a careful reader keeps in mind that exceptions may follow."
+     },
+     {
+      "info": "② 다만, 공연일 7일 전까지 신청하면 취소 수수료 10%를 뺀 금액을 환불합니다.",
+      "ask": "With this clause added, what refund can Mina get?",
+      "options": [
+       {
+        "id": "a",
+        "text": "No refund.",
+        "reveals": "Clause ② is an exception ('다만') to ①, and Mina applies 10 days before the concert, so ② seems to apply."
+       },
+       {
+        "id": "b",
+        "text": "Full refund.",
+        "reveals": "The 10% fee is taken off, so it is not a full refund."
+       },
+       {
+        "id": "c",
+        "text": "Refund minus a 10% fee."
+       },
+       {
+        "id": "d",
+        "text": "Not sure yet: more clauses may follow."
+       }
+      ],
+      "reasonable": [
+       "c",
+       "d"
+      ],
+      "after": "Mina applies 10 days before the concert, which is earlier than '7일 전', so clause ② looks like it gives her a refund minus the fee. But a new clause could still limit it."
+     },
+     {
+      "info": "③ 제2항(= ②)은 구매일부터 3일 이내에 신청한 경우에만 적용합니다.",
+      "ask": "With all three clauses, what refund can Mina get?",
+      "options": [
+       {
+        "id": "a",
+        "text": "Refund minus a 10% fee.",
+        "reveals": "She bought 5 days ago, which is more than 3 days, so ② no longer applies to her."
+       },
+       {
+        "id": "b",
+        "text": "No refund."
+       },
+       {
+        "id": "c",
+        "text": "Full refund.",
+        "reveals": "No clause gives a full refund in her case."
+       },
+       {
+        "id": "d",
+        "text": "Not sure yet: more clauses may follow.",
+        "reveals": "These three clauses already settle Mina's dates; you can still say 'subject to other terms', but a decision rests on what you have."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "Clause ③ adds a second condition to ②: the request must come within 3 days of purchase. Mina bought 5 days ago, so ② does not apply and clause ① decides: no refund."
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Now apply the same three clauses to Jun. Jun bought a ticket yesterday. The concert is 4 days from today. He applies today. What refund can he get?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Refund minus a 10% fee, because he applied within 3 days.",
+      "reveals": "Clause ② has a second condition: the application must come at least 7 days before the concert."
+     },
+     {
+      "id": "b",
+      "text": "No refund, because the 7-day deadline of ② has passed."
+     },
+     {
+      "id": "c",
+      "text": "Full refund, because he bought the ticket only yesterday.",
+      "reveals": "Nothing in the clauses gives a full refund for a recent purchase."
+     },
+     {
+      "id": "d",
+      "text": "No refund, because ② is only for tickets bought 3 or more days ago.",
+      "reveals": "Clause ③ says the opposite: ② applies only within 3 days of purchase."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "Jun meets the 3-day condition of ③, but clause ② also needs the application 7 days before the concert, and only 4 days remain. So ② does not apply, and ① says no refund.",
+    "hints": [
+     "Check Jun against each condition one at a time: the date of purchase and the days left before the concert.",
+     "A clause that gives an exception works only when all of its conditions are met."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Mina asks: 'Clause ② says I get a refund, so why did my answer change?' In English or Korean, explain in two or three sentences.",
+    "placeholder": "예: Clause ③ says ...",
+    "minChars": 25,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "mentions the 3-day limit",
+      "mode": "any",
+      "patterns": [
+       "3\\s*일",
+       "3\\s*days",
+       "three\\s*days",
+       "삼\\s*일",
+       "사흘",
+       "3-day",
+       "제?3항",
+       "clause\\s*(3|③|three)",
+       "③"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "says her purchase is too old / outside the limit",
+      "mode": "any",
+      "patterns": [
+       "5\\s*(일|days)",
+       "five",
+       "다섯",
+       "too late",
+       "late",
+       "passed",
+       "past",
+       "older",
+       "over",
+       "beyond",
+       "outside",
+       "exceed",
+       "지났",
+       "지나",
+       "늦",
+       "넘",
+       "more than (3|three)",
+       "wait",
+       "구매\\s*후",
+       "bought",
+       "샀"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "does not say she gets a refund",
+      "mode": "none",
+      "patterns": [
+       "(you|she|mina)\\s+(do|does|will|should|can)\\s+get\\s+(a|the)\\s+refund",
+       "환불(을)?\\s*받을 수 있",
+       "환불해 드립니다",
+       "(she|mina|you)\\s+(still\\s+|also\\s+|actually\\s+)?(gets?|receives?)\\s+(a |the |an |her |some |back|money|\\d|ninety)",
+       "환불(을)?\\s*받(아요|습니다)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I mention the 3-day condition of clause ③?",
+     "Did I say why Mina's purchase date does not meet it?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "Clause ③ says clause ② applies only if you apply within 3 days of buying. Mina bought 5 days ago, so ② does not apply to her and the basic rule ① (no refund) holds."
+     },
+     {
+      "text": "③번 조항이 '구매 후 3일 이내'일 때만 ②가 적용된다고 해요. 미나 씨는 5일 전에 샀으니까 3일을 넘어서 ②를 못 써요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "The terms are complicated and can change at any time.",
+      "why": "Gives no reason from the clauses."
+     },
+     {
+      "text": "Clause ② gives her a refund, so she does get a refund of 90%.",
+      "why": "Ignores clause ③ and gives the wrong verdict."
+     }
+    ],
+    "humanReview": "Whether the explanation correctly links the added condition to her dates.",
+    "hints": [
+     "Find the clause that was added last and say what extra condition it brings.",
+     "Compare that condition with the number of days since Mina bought the ticket."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Revising the reading",
+    "full": "Moves from no, to yes minus a fee, to no again, and can say why",
+    "partial": "Reaches the final answer but not the middle step",
+    "none": "Keeps the first answer or jumps to a full refund"
+   },
+   {
+    "criterion": "Applying and explaining",
+    "full": "Applies all conditions to Jun and explains the change with the 3-day condition",
+    "partial": "One of the two is correct",
+    "none": "Applies only one clause"
+   }
+  ],
+  "alternatives": [
+   "At the first two stages 'not sure yet' is also a reasonable answer.",
+   "In the explanation, learners may call ① the rule, ② the exception and ③ the limit on the exception; any clear wording is fine."
+  ],
+  "hardCases": [
+   "Real ticket terms vary; some count days differently (the day of purchase, business days). Here the days are counted as plain calendar days."
+  ],
+  "cautions": {
+   "language": "Formal legal-style phrases: 제5조, ①, 제2항, 다만, -에 한하여/-에만. They are glossed through the questions, not translated word by word.",
+   "culture": "Clause-by-clause terms with exceptions are common in tickets and contracts. The terms and names here are invented and not real policy.",
+   "accessibility": "All material is text; numbered clauses are written out. Nothing depends on colour. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Reasonable readings at each stage",
+    "Jun's case",
+    "Explanation mentions the 3-day condition and that her purchase is too old"
+   ],
+   "human": [
+    "Clarity of the explanation"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "subject": "korean",
+  "grade": "K8",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "uiLang": "en",
+  "curriculum": null,
+  "generative": true,
+  "id": "n-k-k8-05",
+  "topic": "time expressions: 정각, 반, 정오, 자정; conflict inside a schedule",
+  "title": "Nine o'clock plus two and a half hours",
+  "format": "find-error-fix",
+  "goal": "Find the two lines of a retreat schedule that cannot both be true, repair them, and judge whether the notice alone shows which line was the slip.",
+  "thinking": [
+   "Checking a schedule with time arithmetic",
+   "Reading 정각, 반, 정오 and 자정",
+   "Finding a conflict between two lines",
+   "Knowing what the text cannot tell you"
+  ],
+  "differsFromPlain": "Plain practice asks you to read single clock times aloud. Here several times and durations must agree with each other, and one pair does not.",
+  "prerequisites": [
+   "Can read clock times such as 11시 30분 and 두 시간 반",
+   "Knows 정각, 정오 and 자정"
+  ],
+  "minutes": 10,
+  "material": "A school sends this schedule for an overnight retreat to parents. Read it as a whole.\n\n수련회 일정 안내 (6월 14일)\n※ 정각 = exactly on the hour, 정오 = noon, 자정 = midnight.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "Two lines of the schedule cannot both be true. Pick either one of them.",
+    "lines": [
+     "오전 9시 정각에 학교 앞에서 버스로 출발합니다. 이동에는 두 시간 반이 걸립니다.",
+     "오전 11시에 수련원에 도착해 입소식을 합니다.",
+     "정오부터 한 시간 동안 점심 식사를 합니다.",
+     "낮 1시부터 세 시간 동안 반별 활동을 하고 오후 4시에 마칩니다.",
+     "저녁 식사는 오후 6시에 하고, 그 한 시간 반 뒤인 오후 7시 30분에 캠프파이어를 시작합니다.",
+     "밤 12시, 즉 자정까지 모두 취침합니다."
+    ],
+    "wrong": [
+     0,
+     1
+    ],
+    "explain": "Lines 1 and 2 conflict: leaving at 9:00 with a 2-and-a-half-hour ride means arriving at 11:30, not 11:00. Lines 3 to 6 are consistent (12:00 + 1 hour; 1:00 + 3 hours = 4:00; 6:00 + 1.5 hours = 7:30).",
+    "hints": [
+     "Check each line that gives a start time and a length against the time it says it ends.",
+     "Pay attention to the lines that depend on the line before them."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Rewrite ONE of the two conflicting lines in Korean (or write the corrected time in English) so that the two lines agree.",
+    "placeholder": "예: ...",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "gives times that agree (a 11:30 arrival, a 2-hour ride, or an 8:30 departure)",
+      "mode": "any",
+      "patterns": [
+       "(도착|입소)[^.?!\\n]{0,20}(11\\s*시\\s*30\\s*분|11\\s*시\\s*반|열한\\s*시\\s*반|열한\\s*시\\s*삼십\\s*분|십일\\s*시\\s*반|11[:.]30)",
+       "(11\\s*시\\s*30\\s*분|11\\s*시\\s*반|열한\\s*시\\s*반|열한\\s*시\\s*삼십\\s*분|십일\\s*시\\s*반|11[:.]30)[^.?!\\n]{0,20}(도착|입소)",
+       "이동[^.?!\\n]{0,15}(두\\s*시간|2\\s*시간)(?!\\s*(반|30))",
+       "출발[^.?!\\n]{0,15}(8\\s*시\\s*30\\s*분|8\\s*시\\s*반|여덟\\s*시\\s*반|8[:.]30)",
+       "(8\\s*시\\s*30\\s*분|8\\s*시\\s*반|여덟\\s*시\\s*반|8[:.]30)[^.?!\\n]{0,15}출발",
+       "(arriv\\w*)[^.?!\\n]{0,25}(11[:.]30|half past (11|eleven)|eleven[- ]thirty)",
+       "(ride|trip|travel\\w*|journey|takes?)[^.?!\\n]{0,20}(two hours|2 hours)(?!\\s*(and a half|30))",
+       "depart\\w*[^.?!\\n]{0,25}(8[:.]30|half past (8|eight)|eight[- ]thirty)"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "does not keep the original 'two and a half hours ... arrival at 11:00' pair, and does not give a wrong evening time",
+      "mode": "none",
+      "patterns": [
+       "두\\s*시간\\s*반[^\\n]*오전\\s*11시(?!\\s*(30|반))에",
+       "오후\\s*(11\\s*시|8\\s*시)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Do the departure time, the ride length and the arrival time now add up?",
+     "Did I change only what was needed?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "오전 11시 30분에 수련원에 도착해 입소식을 합니다."
+     },
+     {
+      "text": "오전 9시 정각에 출발합니다. 이동에는 두 시간이 걸립니다.",
+      "note": "Fixes the ride length instead of the arrival time."
+     },
+     {
+      "text": "Arrival at half past eleven (11:30)",
+      "note": "An English answer is accepted."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "오전 9시 정각에 출발해서 두 시간 반 뒤인 오전 11시에 도착합니다.",
+      "why": "Still says 9:00 + 2.5 hours = 11:00."
+     },
+     {
+      "text": "오전 11시에 수련원에 도착해 입소식을 합니다.",
+      "why": "Unchanged line."
+     }
+    ],
+    "humanReview": "Whether the repaired line is natural Korean and fits the other lines.",
+    "hints": [
+     "Add the ride length to the departure time and write the result.",
+     "You may change the arrival time, the ride length or the departure time, but all three must agree."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "choose",
+    "prompt": "A classmate says: 'Obviously the arrival time is the typo.' Is that safe to conclude from the schedule alone?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Yes: the arrival time comes last in the chain, so it is the one typed wrongly.",
+      "reveals": "The order of the lines does not show which number is wrong; an earlier number can be the slip just as easily."
+     },
+     {
+      "id": "b",
+      "text": "Yes: parents will check the arrival time, so the school must have got it wrong.",
+      "reveals": "What parents check does not show which number is wrong."
+     },
+     {
+      "id": "c",
+      "text": "No: the two lines already agree, so nothing needs to be fixed.",
+      "reveals": "9:00 plus 2 hours 30 minutes is 11:30, which does not agree with 11:00."
+     },
+     {
+      "id": "d",
+      "text": "No: any of the three numbers could be the slip, so the school should confirm."
+     }
+    ],
+    "correct": [
+     "d"
+    ],
+    "explain": "The text shows only that the three numbers (departure, ride length, arrival) do not fit together. Any one may be wrong, so the school must say which is firm. The fix you wrote is a reasonable guess, not proof.",
+    "hints": [
+     "List the three numbers that must fit together and ask which one the text proves is wrong.",
+     "Ask what extra information would let you be sure."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finding the conflict",
+    "full": "Picks one of the two conflicting lines and reads 두 시간 반 correctly",
+    "partial": "Picks a different line, or reads 반 loosely",
+    "none": "Cannot find any conflict"
+   },
+   {
+    "criterion": "Repair and limits",
+    "full": "Repairs the times so they agree and sees that the schedule cannot show which number was the slip",
+    "partial": "Repairs but assumes the arrival is wrong",
+    "none": "Changes unrelated times"
+   }
+  ],
+  "alternatives": [
+   "Any repair that makes departure, ride length and arrival agree is correct: arrival 11:30, ride two hours, or departure 8:30.",
+   "A learner may write the repaired time in English digits."
+  ],
+  "hardCases": [
+   "In daily speech 오전 12시 and 오후 12시 can both be misread; the schedule avoids them by using 정오 and 자정."
+  ],
+  "cautions": {
+   "language": "반 means 'half'; 두 시간 반 is 2.5 hours and 11시 반 is 11:30. 정각, 정오 and 자정 are glossed in the material.",
+   "culture": "Schools commonly send schedules like this to parents. The school and the schedule are invented.",
+   "accessibility": "All material is text; the schedule is a numbered list of lines. Nothing depends on colour. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The conflicting lines",
+    "The repaired line gives times that agree",
+    "The choice about what the text cannot show"
+   ],
+   "human": [
+    "Naturalness of the rewritten line"
+   ]
+  },
+  "status": "draft"
+ }
+]

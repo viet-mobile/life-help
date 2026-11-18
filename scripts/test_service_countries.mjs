@@ -70,7 +70,7 @@ for (const l of locales) for (const code of Object.keys(NEW)) {
 }
 check(`SV/CF/VE/KE/AR/SG have a localized name in all ${locales.length} registry locales without English fallback`, unresolved.length === 0, unresolved.join(", "));
 const cldrBlock = countriesSrc.slice(countriesSrc.indexOf("CLDR_COUNTRY_NAMES: Readonly"), countriesSrc.indexOf("\n};", countriesSrc.indexOf("CLDR_COUNTRY_NAMES: Readonly")));
-const BROWSER_ICU_GAPS = ["sg", "pa", "mn", "ne", "km", "my", "si"];
+const BROWSER_ICU_GAPS = ["pa", "mn", "ne", "km", "my", "si"];
 const cldrMissing = BROWSER_ICU_GAPS.flatMap((l) => { const b = cldrBlock.slice(cldrBlock.indexOf(`\n  ${l}: {`)); const blk = b.slice(0, b.indexOf("\n  },")); return countries.filter((c) => !new RegExp(`\\n    ${c.code}: "[^"]+",`).test(blk)).map((c) => `${l}:${c.code}`); });
 check(`locales without (complete) browser region data (${BROWSER_ICU_GAPS.join(", ")}) have a CLDR name for every registry country`, cldrMissing.length === 0 && /CLDR_COUNTRY_NAMES\[locale\]\?\.\[country\.code\]/.test(countriesSrc), cldrMissing.join());
 check("getCountryDisplayName never shows the bare region code (fallback: none + code check)", /fallback: "none"/.test(countriesSrc) && /name !== country\.code/.test(countriesSrc));

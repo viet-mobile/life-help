@@ -1,0 +1,1695 @@
+[
+ {
+  "id": "x-k-fill-01",
+  "subject": "korean",
+  "grade": "K4",
+  "topic": "Evaluating claims and evidence: what a sign says and does not say",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "What does the library sign really tell us?",
+  "uiLang": "en",
+  "format": "choose-needed-info",
+  "generative": true,
+  "goal": "Decide what a short Korean sign does and does not tell you, and ask a Korean question about something it leaves out.",
+  "thinking": [
+   "Checking a claim against the exact words of a sign",
+   "Separating 'the sign says' from 'the sign does not say'",
+   "Choosing a question that fills a gap"
+  ],
+  "differsFromPlain": "Plain practice asks you to read opening times aloud or find a number on a sign. Here you test a friend's plan against the sign and decide which information is missing.",
+  "prerequisites": [
+   "Can read simple Korean times such as \uc624\uc804 9\uc2dc and \uc624\ud6c4 1\uc2dc",
+   "Knows \ud3c9\uc77c (weekdays), \ud1a0\uc694\uc77c and \uc77c\uc694\uc77c"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "\uc791\uc740\ube5b\ub3c4\uc11c\uad00 \uc548\ub0b4\n\ud3c9\uc77c(\uc6d4~\uae08): \uc624\uc804 9\uc2dc ~ \uc624\ud6c4 6\uc2dc\n\ud1a0\uc694\uc77c: \uc624\uc804 9\uc2dc ~ \uc624\ud6c4 1\uc2dc\n\uc77c\uc694\uc77c, \uacf5\ud734\uc77c: \uc27d\ub2c8\ub2e4.\n\ucc45\uc740 \ud55c \uc0ac\ub78c\uc774 5\uad8c\uae4c\uc9c0 \ube4c\ub9b4 \uc218 \uc788\uc5b4\uc694. 14\uc77c \uc548\uc5d0 \ub3cc\ub824\uc8fc\uc138\uc694.\n\nYour friend \uc18c\uc724 says in Korean: \"\uc774\ubc88 \ud1a0\uc694\uc77c \uc624\ud6c4 3\uc2dc\uc5d0 \uac00\uc11c \ucc45\uc744 \ube4c\ub9b4 \uac70\uc57c.\" You are reading the sign next to her.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Does the sign agree with \uc18c\uc724's plan?",
+    "hints": [
+     "Find the line for \ud1a0\uc694\uc77c and read the closing time.",
+     "Compare \uc624\ud6c4 3\uc2dc with the closing time. Which is later?"
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "No, her plan does not work, because on Saturday the library closes at 1 p.m.",
+      "reveals": "You compared her time with the hours written for that day."
+     },
+     {
+      "id": "b",
+      "text": "We cannot tell, because the sign says nothing about Saturday.",
+      "reveals": "The sign does have a Saturday line; look again at each line before saying something is missing."
+     },
+     {
+      "id": "c",
+      "text": "Yes, her plan works, because the library is open on Saturday.",
+      "reveals": "This looks at the day only; the sign also gives hours, and a plan has to fit both."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "The Saturday line says \uc624\uc804 9\uc2dc ~ \uc624\ud6c4 1\uc2dc. 3 p.m. is after 1 p.m., so the sign does not support her plan."
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "Select ALL the things this sign does NOT tell you.",
+    "hints": [
+     "For each option, try to find the exact line on the sign. If you cannot find one, it is not told.",
+     "Do not use what you guess about libraries in general; use only the words on the sign."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "What happens if you return a book after 14 days",
+      "reveals": "Something that sounds normal is not the same as something the sign says."
+     },
+     {
+      "id": "b",
+      "text": "How many books one person can borrow",
+      "reveals": "The sign says 5\uad8c\uae4c\uc9c0; you found it in the words."
+     },
+     {
+      "id": "c",
+      "text": "What time the library closes on weekdays",
+      "reveals": "The sign says \uc624\ud6c4 6\uc2dc; you found it in the words."
+     },
+     {
+      "id": "d",
+      "text": "Whether the library has a parking lot",
+      "reveals": "A real question, but nothing on the sign speaks to it."
+     }
+    ],
+    "correct": [
+     "a",
+     "d"
+    ],
+    "explain": "The sign says to return books within 14 days but not what happens later, and it never mentions parking. Number of books and weekday closing time are written on it."
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Pick one thing from the previous step that the sign does not tell you. Write ONE Korean question you could ask the staff.",
+    "hints": [
+     "Look back at the lines you found on the sign and at the topics you marked as missing; name one of the missing topics first.",
+     "End with a question form, for example ...\uc788\uc5b4\uc694? or ...\ub3fc\uc694?"
+    ],
+    "placeholder": "\uc608: ...",
+    "minChars": 6,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "does not ask about something the sign already states (5\uad8c, 9\uc2dc / 6\uc2dc / 1\uc2dc, 14\uc77c, opening days)",
+      "mode": "none",
+      "patterns": [
+       "(\uba87\\s*\uad8c|5\\s*\uad8c|\ub2e4\uc12f\\s*\uad8c)",
+       "14\\s*\uc77c|\uc5f4\ub098\ud758|2\\s*\uc8fc",
+       "(\ud3c9\uc77c|\ud1a0\uc694\uc77c)[^.?\uff1f]*(\uba87\\s*\uc2dc|\uc5f4|\ub2eb|\ubb38)",
+       "(\uc77c\uc694\uc77c|\uacf5\ud734\uc77c)[^.?\uff1f]*(\uc5f4\uc5b4|\uc5ec\ub098|\uc26c\ub098|\uc26c\uc5b4)",
+       "\uba87\\s*\uc2dc[^.?\uff1f]*(\uc5f4|\ub2eb|\uae4c\uc9c0|\ubd80\ud130)"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "is written as a question",
+      "mode": "any",
+      "patterns": [
+       "[?\uff1f]",
+       "\uae4c\uc694",
+       "\ub098\uc694",
+       "\ub2c8\uae4c",
+       "(\uc788\uc5b4\uc694|\ub3fc\uc694|\uac00\ub2a5\ud574\uc694|\uc5b4\ub54c\uc694)\\s*$"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "asks about something (\uc788\uc5b4\uc694 / \ub3fc\uc694 / \uc5b4\ub5bb\uac8c / \uc5bc\ub9c8 ...)",
+      "mode": "any",
+      "patterns": [
+       "\uc788",
+       "\uc5c6",
+       "\ub418",
+       "\ub3fc",
+       "\uc5b4\ub5bb\uac8c",
+       "\uc5bc\ub9c8",
+       "\uc5b4\ub514",
+       "\uc5b8\uc81c",
+       "\ub204\uad6c",
+       "\ubb34\uc5c7",
+       "\ubb50",
+       "\uac00\ub2a5",
+       "\uc218 \uc788",
+       "\ud574\uc57c",
+       "\ud560\uae4c",
+       "\uac00\uc694",
+       "\ub098\uc694"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my question ask about something I could NOT find on the sign?",
+     "Would the staff be able to answer it with a short answer?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\ucc45\uc744 \ub2a6\uac8c \ub3cc\ub824\uc8fc\uba74 \uc5b4\ub5bb\uac8c \ub3fc\uc694?"
+     },
+     {
+      "text": "\uc8fc\ucc28\uc7a5\uc774 \uc788\uc5b4\uc694?"
+     },
+     {
+      "text": "\ud654\uc7a5\uc2e4\uc774 \uc788\uc5b4\uc694?"
+     },
+     {
+      "text": "\ucc45\uc744 \ub450\uace0 \uac00\ub3c4 \ub3fc\uc694?"
+     },
+     {
+      "text": "\uacf5\ubd80\ud560 \uc790\ub9ac\uac00 \uc788\uc5b4\uc694?"
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\ucc45\uc740 5\uad8c\uae4c\uc9c0 \ube4c\ub9b4 \uc218 \uc788\uc5b4\uc694.",
+      "why": "It repeats what the sign already says; it is not a question about a gap."
+     },
+     {
+      "text": "\ub3c4\uc11c\uad00 \uc548\ub155\ud558\uc138\uc694.",
+      "why": "Not a question and not about missing information."
+     },
+     {
+      "text": "14\uc77c \uc548\uc5d0 \ubc18\ub0a9\ud574\uc57c \ub3fc\uc694?",
+      "why": "It is a question, but the sign already says 14\uc77c."
+     },
+     {
+      "text": "\ud1a0\uc694\uc77c\uc5d0 \uba87 \uc2dc\uc5d0 \ub2eb\uc544\uc694?",
+      "why": "The Saturday closing time is written on the sign."
+     }
+    ],
+    "humanReview": "Whether the asked-for topic really is absent from the sign, and whether the Korean sentence is natural, need a person. The checks only reject topics the sign states."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Compares a plan with the exact words of the sign",
+    "full": "Uses the Saturday hours to reject the plan",
+    "partial": "Says the plan is wrong without the hours",
+    "none": "Accepts the plan from the day only"
+   },
+   {
+    "criterion": "Separates told from not told",
+    "full": "Picks items with no line on the sign and avoids guessing from experience",
+    "partial": "Picks one correct item only",
+    "none": "Picks items the sign states"
+   }
+  ],
+  "alternatives": [
+   "Asking about weekday closing time in a new way is not valid, since it is written on the sign.",
+   "Questions about fees, rules for late books or other services are all acceptable if the sign is silent on them."
+  ],
+  "hardCases": [
+   "Sunday: the sign says \uc27d\ub2c8\ub2e4, but whether a book-return box exists is not told. Learners may ask this; it is a good question."
+  ],
+  "cautions": {
+   "language": "Only simple Korean (times, days, 5\uad8c, 14\uc77c). Counters and \uc624\uc804/\uc624\ud6c4 are the only new forms.",
+   "culture": "Closed on public holidays and on Sunday is normal for small libraries in Korea, but hours differ by place.",
+   "accessibility": "No picture is needed: the sign is given as plain lines of text. Times are written with Korean numbers that a screen reader reads as digits."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice keys in steps 1 and 2",
+    "Whether the question contains a topic not on the sign and a question form"
+   ],
+   "human": [
+    "Naturalness of the Korean question",
+    "Whether the chosen gap is honest"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-fill-02",
+  "subject": "korean",
+  "grade": "K5",
+  "topic": "Evaluating claims and evidence: a friend's message against a notice",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "title": "Does \uc9c0\ud638's message match the notice?",
+  "uiLang": "en",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Compare a friend's four-line message with a written notice, find the line that does not match and rewrite it so it is true.",
+  "thinking": [
+   "Checking each statement against evidence",
+   "Finding the one statement that conflicts with the evidence",
+   "Repairing a statement and naming its source"
+  ],
+  "differsFromPlain": "Plain practice asks you to read a notice and answer questions. Here the message is somebody else's claim, and you check it line by line before correcting it.",
+  "prerequisites": [
+   "Knows past-tense endings such as -\uc558/\uc5c8\uc5b4 and -(\uc73c)\u3134",
+   "Can read school-day vocabulary like \uccb4\uc721\ub300\ud68c, \ub2ec\ub9ac\uae30, \uc54c\ub9bc\uc7a5"
+  ],
+  "minutes": 12,
+  "curriculum": null,
+  "material": "\uc5b4\uc81c\ub294 5\uc6d4 12\uc77c\uc774\uc5c8\uc5b4\uc694. \uc624\ub298 \uc544\uce68\uc5d0 \uc9c0\ud638\uac00 \ubc18 \ub2e8\ud1a1\ubc29\uc5d0 \uc774\ub807\uac8c \uc37c\uc5b4\uc694.\n\n\uc5b4\uc81c \uc624\uc804\uc5d0\ub294 \ube44\uac00 \uc654\uc5b4.\n\uc810\uc2ec\uc2dc\uac04\uc5d0\ub294 \ube44\uac00 \uadf8\ucce4\uc5b4.\n\uadf8\ub798\uc11c \uccb4\uc721\ub300\ud68c\ub97c \ubabb \ud588\uc5b4.\n\uc6b0\ub9ac \ubc18\uc740 \ub2ec\ub9ac\uae30\uc5d0\uc11c 1\ub4f1\uc744 \ud588\uc5b4.\n\n5\uc6d4 12\uc77c\uc758 \uc54c\ub9bc\uc7a5\uc5d0\ub294 \uc774\ub807\uac8c \uc4f0\uc5ec \uc788\uc5b4\uc694.\n\"\uc624\uc804\uc5d0\ub294 \ube44\uac00 \uc654\uc9c0\ub9cc, \uc810\uc2ec\uc2dc\uac04\uc5d0 \uadf8\ucce4\uc2b5\ub2c8\ub2e4. \uccb4\uc721\ub300\ud68c\ub294 \uc624\ud6c4 2\uc2dc\uc5d0 \uc6b4\ub3d9\uc7a5\uc5d0\uc11c \uc5f4\ub838\uc2b5\ub2c8\ub2e4. \ub2ec\ub9ac\uae30 \uacb0\uacfc: 1\ub4f1 3\ubc18, 2\ub4f1 1\ubc18, 3\ub4f1 4\ubc18.\" (Our class is 3\ubc18.)",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "Read \uc9c0\ud638's four lines (shown below) and the notice in the material. Which line does the notice NOT support?",
+    "hints": [
+     "Take one line at a time and look for the matching words in the notice.",
+     "Check the time of the sports day and what happened to the rain."
+    ],
+    "lines": [
+     "\uc5b4\uc81c \uc624\uc804\uc5d0\ub294 \ube44\uac00 \uc654\uc5b4.",
+     "\uc810\uc2ec\uc2dc\uac04\uc5d0\ub294 \ube44\uac00 \uadf8\ucce4\uc5b4.",
+     "\uadf8\ub798\uc11c \uccb4\uc721\ub300\ud68c\ub97c \ubabb \ud588\uc5b4.",
+     "\uc6b0\ub9ac \ubc18\uc740 \ub2ec\ub9ac\uae30\uc5d0\uc11c 1\ub4f1\uc744 \ud588\uc5b4."
+    ],
+    "wrong": [
+     2
+    ],
+    "explain": "Line 3 says the sports day was not held. The notice says it was held at 2 p.m. Lines 1, 2 and 4 match the notice (our class is 3\ubc18, which came first)."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Rewrite line 3 in Korean so it matches the notice. Then add one short Korean sentence that says where you got your information.",
+    "hints": [
+     "Look at what the notice says happened at \uc624\ud6c4 2\uc2dc and use that word.",
+     "To show your source, you can start with \uc54c\ub9bc\uc7a5\uc5d0 ..."
+    ],
+    "placeholder": "\uc608: ...",
+    "minChars": 6,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "says the sports day took place",
+      "mode": "any",
+      "patterns": [
+       "\uc5f4\ub838",
+       "\ud588\uc5b4",
+       "\ud588\ub2e4",
+       "\ud588\uc2b5\ub2c8\ub2e4",
+       "\uc9c4\ud589",
+       "\uc2dc\uc791",
+       "\uc5f4\ub824"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "does not say it was cancelled or could not be held",
+      "mode": "none",
+      "patterns": [
+       "\ubabb\\s*\ud588",
+       "\uc548\\s*\ud588",
+       "\ucde8\uc18c",
+       "\ubabb\\s*\uc5f4",
+       "\uc5c6\uc5c8"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "names the source",
+      "mode": "any",
+      "patterns": [
+       "\uc54c\ub9bc\uc7a5",
+       "\uacf5\uc9c0",
+       "\uc4f0\uc5ec",
+       "\uc801\ud600",
+       "\ub098\uc640"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my sentence say the same thing as the notice, not as \uc9c0\ud638?",
+     "Did I name the notice as my evidence?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\ube44\uac00 \uadf8\uccd0\uc11c \uccb4\uc721\ub300\ud68c\ub294 \uc624\ud6c4 2\uc2dc\uc5d0 \uc5f4\ub838\uc5b4. \uc54c\ub9bc\uc7a5\uc5d0 \uadf8\ub807\uac8c \uc4f0\uc5ec \uc788\uc5b4."
+     },
+     {
+      "text": "\uccb4\uc721\ub300\ud68c\ub97c \ud588\uc5b4. \uc54c\ub9bc\uc7a5\uc5d0 \uc624\ud6c4 2\uc2dc\uc5d0 \ud55c\ub2e4\uace0 \ub098\uc640 \uc788\uc5b4."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\uccb4\uc721\ub300\ud68c\ub97c \ubabb \ud588\uc5b4.",
+      "why": "It repeats the error."
+     },
+     {
+      "text": "\uccb4\uc721\ub300\ud68c\ub97c \ud588\uc5b4.",
+      "why": "Correct fact but no source, so a friend cannot check it."
+     }
+    ],
+    "humanReview": "Whether the corrected fact, not just the right words, is stated naturally, needs a person."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finds the mismatch with evidence",
+    "full": "Picks line 3 by comparing it with the notice",
+    "partial": "Notices something is wrong but picks another line",
+    "none": "Accepts all four lines"
+   },
+   {
+    "criterion": "Repairs the claim",
+    "full": "Writes the true event and the source",
+    "partial": "Writes the true event only",
+    "none": "Repeats or only denies the claim"
+   }
+  ],
+  "alternatives": [
+   "Rewriting the line as \ube44\uac00 \uadf8\uccd0\uc11c \uc624\ud6c4 2\uc2dc\uc5d0 \uccb4\uc721\ub300\ud68c\ub97c \ud588\uc5b4 is equally good.",
+   "A learner may also add that the morning rain is the likely reason \uc9c0\ud638 got confused; this is a reasonable guess but is not stated in the notice."
+  ],
+  "hardCases": [
+   "Line 1 is correct but could mislead: it is easy to read 'rain in the morning' as 'rain all day'."
+  ],
+  "cautions": {
+   "language": "Plain short sentences. \ubabb + verb means 'could not'; learners must not read \uadf8\ub798\uc11c as proof.",
+   "culture": "Sports day (\uccb4\uc721\ub300\ud68c) is a common school event in Korea; the notice book (\uc54c\ub9bc\uc7a5) is a normal way for teachers to tell parents about the day.",
+   "accessibility": "All information is in text. The dates are written out, and the class number 3\ubc18 is given in parentheses."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Which line is the wrong one",
+    "Whether the rewrite says the event happened, avoids denial and names a source"
+   ],
+   "human": [
+    "Accuracy and naturalness of the rewrite"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-fill-03",
+  "subject": "korean",
+  "grade": "K6",
+  "topic": "Evaluating claims and evidence: exaggeration in an advertisement",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "title": "Which parts of the gimbap ad can be checked?",
+  "uiLang": "en",
+  "format": "rewrite-for-audience",
+  "generative": true,
+  "goal": "Separate ad phrases that can be checked from phrases that cannot, then rewrite the ad for a careful customer.",
+  "thinking": [
+   "Telling checkable claims from unprovable ones",
+   "Judging what evidence would be needed",
+   "Rewriting for an audience that wants facts"
+  ],
+  "differsFromPlain": "Plain practice asks you to find adjectives or hard words in an ad. Here you decide which claims a person could test with records or labels, and rewrite so the text only contains what could be tested.",
+  "prerequisites": [
+   "Knows \uac00\uc7a5, \ub204\uad6c\ub098 and percent expressions in Korean",
+   "Can read \ud558\ub8e8\uc5d0 ...\uc904 (per day, ...rolls)"
+  ],
+  "minutes": 12,
+  "curriculum": null,
+  "material": "\uc0c8\ub85c \ubb38\uc744 \uc5f0 '\ubd04\uc774\ub124 \uae40\ubc25'\uc758 \uad11\uace0\uc608\uc694.\n\"\uc138\uc0c1\uc5d0\uc11c \uac00\uc7a5 \ub9db\uc788\ub294 \uae40\ubc25! \ud558\ub8e8\uc5d0 1,000\uc904\uc774\ub098 \ud314\ub824\uc694! \uc300\uacfc \uae40\uc740 100% \uad6d\ub0b4\uc0b0! \ud55c \ubc88 \uba39\uc73c\uba74 \ub204\uad6c\ub098 \ud589\ubcf5\ud574\uc838\uc694!\"",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "Select the TWO phrases that nobody could check, even with the shop's sales records and ingredient labels.",
+    "hints": [
+     "For each phrase, ask: what record, label or number would prove it right or wrong?",
+     "If you imagine two people disagreeing, could one of them show proof?"
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "\uc300\uacfc \uae40\uc740 100% \uad6d\ub0b4\uc0b0",
+      "reveals": "A label or invoice can show where the rice and seaweed came from, so it can be tested even though it might be false."
+     },
+     {
+      "id": "b",
+      "text": "\uc138\uc0c1\uc5d0\uc11c \uac00\uc7a5 \ub9db\uc788\ub294 \uae40\ubc25",
+      "reveals": "'Most delicious' depends on taste and compares with every shop in the world; no record can settle it."
+     },
+     {
+      "id": "c",
+      "text": "\ud558\ub8e8\uc5d0 1,000\uc904\uc774\ub098 \ud314\ub824\uc694",
+      "reveals": "Sales records could confirm or refute the number, although the ad gives no source."
+     },
+     {
+      "id": "d",
+      "text": "\ud55c \ubc88 \uba39\uc73c\uba74 \ub204\uad6c\ub098 \ud589\ubcf5\ud574\uc838\uc694",
+      "reveals": "'Everyone' and a feeling cannot be checked; one unhappy customer would disprove it, yet nobody can measure it in advance."
+     }
+    ],
+    "correct": [
+     "b",
+     "d"
+    ],
+    "explain": "Taste and 'everyone will be happy' cannot be tested with records. Origin of ingredients and the number sold can be tested, though the ad does not show proof for either."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "A careful customer wants facts only. Rewrite the ad in two short Korean sentences. Keep only what could be checked, and drop or change the rest.",
+    "hints": [
+     "Keep the phrases you did NOT choose in step 1, and think about which of them could be proven with a label or a sales record.",
+     "You may say who told you the number, for example \uac00\uac8c \uc8fc\uc778\uc774 \ub9d0\ud588\uc5b4\uc694."
+    ],
+    "placeholder": "\uc608: ...",
+    "minChars": 15,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "keeps at least one checkable fact",
+      "mode": "any",
+      "patterns": [
+       "\uad6d\ub0b4\uc0b0",
+       "1,?000",
+       "\ud558\ub8e8",
+       "\uc904"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "drops the unprovable words",
+      "mode": "none",
+      "patterns": [
+       "\uac00\uc7a5",
+       "\uc81c\uc77c",
+       "\ucd5c\uace0",
+       "\uc138\uc0c1\uc5d0\uc11c",
+       "\ub204\uad6c\ub098",
+       "\ubb34\uc870\uac74",
+       "\ub9db\uc788",
+       "\ud589\ubcf5",
+       "\ub9db\uc9d1",
+       "\ud6cc\ub96d",
+       "\uc815\ub9d0",
+       "\uc9c4\uc9dc",
+       "1\ub4f1",
+       "\ucd5c\uc0c1",
+       "\uc644\ubcbd"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "still talks about the shop or its food",
+      "mode": "any",
+      "patterns": [
+       "\uae40\ubc25",
+       "\ubd04\uc774\ub124",
+       "\uac00\uac8c",
+       "\uc300",
+       "\uae40\uc740",
+       "\uae40\uc774"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Could someone with records or labels prove my sentences wrong?",
+     "Did I keep the shop name or the food so the ad still makes sense?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\ubd04\uc774\ub124 \uae40\ubc25\uc740 \uc300\uacfc \uae40\uc774 100% \uad6d\ub0b4\uc0b0\uc774\uc5d0\uc694. \ud558\ub8e8\uc5d0 1,000\uc904 \uc815\ub3c4 \ud314\ub9b0\ub2e4\uace0 \ud574\uc694."
+     },
+     {
+      "text": "\ubd04\uc774\ub124 \uae40\ubc25\uc5d0\ub294 \uad6d\ub0b4\uc0b0 \uc300\uacfc \uae40\uc744 \uc368\uc694. \ud558\ub8e8\uc5d0 1,000\uc904 \uac00\uae4c\uc774 \ud314\ub838\ub2e4\uace0 \uac00\uac8c \uc8fc\uc778\uc774 \ub9d0\ud588\uc5b4\uc694."
+     },
+     {
+      "text": "\uac00\uac8c \uc8fc\uc778\uc774 \ud558\ub8e8\uc5d0 1,000\uc904\ucbe4 \ud314\ub9b0\ub2e4\uace0 \ub9d0\ud588\uc5b4\uc694. \uc300\uacfc \uae40\uc740 \uad6d\ub0b4\uc0b0\uc774\ub77c\uace0 \ud574\uc694.",
+      "note": "Names the source and does not need the word \uae40\ubc25."
+     },
+     {
+      "text": "\uc774 \uac00\uac8c\ub294 \ud558\ub8e8\uc5d0 1,000\uc904\ucbe4 \ud314\ub824\uc694. \uc300\uacfc \uae40\uc740 \ubaa8\ub450 \uad6d\ub0b4\uc0b0\uc774\uc5d0\uc694.",
+      "note": "\ubaa8\ub450 here paraphrases 100%, a checkable claim, so it is allowed."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\uc138\uc0c1\uc5d0\uc11c \uac00\uc7a5 \ub9db\uc788\ub294 \uae40\ubc25\uc774\uc5d0\uc694.",
+      "why": "Keeps the unprovable claim and contains no checkable fact."
+     },
+     {
+      "text": "\uae40\ubc25\uc744 \ud314\uc544\uc694.",
+      "why": "Nothing is claimed that anyone could check."
+     },
+     {
+      "text": "\uae40\ubc25\uc774 \uc815\ub9d0 \ub9db\uc788\uc5b4\uc694. \ud558\ub8e8\uc5d0 1000\uc904 \ud314\ub824\uc694. \ud55c \ubc88 \uba39\uc73c\uba74 \ud589\ubcf5\ud574\uc838\uc694.",
+      "why": "Keeps taste and happiness claims that nobody can check."
+     },
+     {
+      "text": "\ubd04\uc774\ub124 \uae40\ubc25\uc740 \uc81c\uc77c \ub9db\uc788\uc5b4\uc694. \uac00\uac8c\uac00 \uc0c8\ub85c \ubb38\uc744 \uc5f4\uc5c8\uc5b4\uc694.",
+      "why": "Keeps an unprovable superlative."
+     }
+    ],
+    "humanReview": "A person has to decide whether the rewritten sentences are natural, and whether '\uc815\ub3c4' or '\ub2e4\uace0 \ud574\uc694' correctly softens an unproven number."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Separates checkable from unprovable",
+    "full": "Identifies taste and 'everyone' as unprovable and explains why in the choice",
+    "partial": "Finds one of the two",
+    "none": "Treats all phrases the same"
+   },
+   {
+    "criterion": "Rewrites for a facts-only reader",
+    "full": "Keeps checkable facts and drops superlatives",
+    "partial": "Drops superlatives but adds nothing checkable",
+    "none": "Keeps the exaggerations"
+   }
+  ],
+  "alternatives": [
+   "A learner may argue that 1,000\uc904 is also doubtful because no source is shown; this is reasonable when they say it needs proof but is still checkable.",
+   "Writing the shop name and the price is acceptable if stated as facts that were given."
+  ],
+  "hardCases": [
+   "'100% \uad6d\ub0b4\uc0b0' may be false, but it is still a claim that can be tested; the task asks about what can be checked, not what is true."
+  ],
+  "cautions": {
+   "language": "\uac00\uc7a5/\uc81c\uc77c/\ucd5c\uace0 (the most) and \ub204\uad6c\ub098 (everyone) are the key signal words; 100% and numbers are not.",
+   "culture": "Gimbap is everyday Korean food; superlative advertising is common in shop signs.",
+   "accessibility": "The ad is plain text. The percent sign should be read as 'percent' by a screen reader."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The two unprovable phrases",
+    "Checkable fact present, superlatives absent, topic kept"
+   ],
+   "human": [
+    "Naturalness and honesty of the rewritten ad"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-fill-04",
+  "subject": "korean",
+  "grade": "K7",
+  "topic": "Evaluating claims and evidence: how far a reported statement can be trusted",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "title": "Is Saturday's meeting cancelled?",
+  "uiLang": "en",
+  "format": "reveal-and-revise",
+  "generative": true,
+  "goal": "Judge how reliable chains of reported speech (-\ub300\uc694, \ub4e4\uc5c8\uc5b4\uc694) are, and revise a judgement when a first-hand notice appears.",
+  "thinking": [
+   "Counting how many people a message passed through",
+   "Separating repeated news from independent sources",
+   "Revising a judgement with better evidence"
+  ],
+  "differsFromPlain": "Plain practice asks you to change a sentence into reported speech. Here the reported speech is the evidence, and you decide how much it proves.",
+  "prerequisites": [
+   "Knows the reported-speech endings -\ub300\uc694/-\ub798\uc694 (reporting what somebody said)",
+   "Knows \uacf5\uc9c0 (notice) and \ud68c\uc7a5 (club president)"
+  ],
+  "minutes": 12,
+  "curriculum": null,
+  "material": "You joined a club. Three messages appear in the group chat.\n\n\uc9c0\uc218: \ubbfc\uc7ac\uac00 \uadf8\ub7ec\ub294\ub370 \ud1a0\uc694\uc77c \ubaa8\uc784\uc774 \ucde8\uc18c\ub410\ub300.\n\ud558\uc740: \ub098\ub3c4 \ucde8\uc18c\ub410\ub2e4\uace0 \ub4e4\uc5c8\uc5b4. \ub204\uac00 \uadf8\ub7ec\ub358\ub370.\n\uacf5\uc9c0(\uac8c\uc2dc\ud310, \ud68c\uc7a5): \ud1a0\uc694\uc77c \ubaa8\uc784\uc740 \ube44\uac00 \uc624\uc9c0 \uc54a\uc73c\uba74 \uc608\uc815\ub300\ub85c \ud569\ub2c8\ub2e4.\n\nAt first you see only the first two messages.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Look at the first two messages (\uc9c0\uc218 and \ud558\uc740) as evidence. Which reading is best?",
+    "hints": [
+     "Look at who each message says the news came from.",
+     "Ask whether either speaker says she saw or decided the cancellation herself."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "They are two independent witnesses, so the news is almost certainly true",
+      "reveals": "Neither says she saw or decided it, and \ud558\uc740's '\ub204\uac00' could be the same person \uc9c0\uc218 heard it from."
+     },
+     {
+      "id": "b",
+      "text": "\uc9c0\uc218 is first-hand, because \uc9c0\uc218 names \ubbfc\uc7ac as the source",
+      "reveals": "\uc9c0\uc218 only repeats what \ubbfc\uc7ac said (\ubbfc\uc7ac\uac00 \uadf8\ub7ec\ub294\ub370); naming a source does not make it first-hand."
+     },
+     {
+      "id": "c",
+      "text": "Both may be passing on the same unnamed rumour, so they are not two proofs",
+      "reveals": "You noticed that two people repeating -\ub300/-\ub358\ub370 may only be passing on the same source."
+     },
+     {
+      "id": "d",
+      "text": "\ud558\uc740 is first-hand, because she writes \ub4e4\uc5c8\uc5b4 herself",
+      "reveals": "\ub4e4\uc5c8\uc5b4 says she heard it from someone; she did not see or decide it."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "\uc9c0\uc218 heard it from \ubbfc\uc7ac, and \ud558\uc740 heard it from '\ub204\uac00' (somebody). They may be the same rumour told twice, which is not two independent proofs."
+   },
+   {
+    "id": "s2",
+    "kind": "reveal",
+    "prompt": "Read each new piece of information in order. After each, choose how sure you are that Saturday's meeting is cancelled.",
+    "hints": [
+     "After each stage, ask: who actually saw or decided this?",
+     "You are allowed to change your answer; changing it is the point."
+    ],
+    "stages": [
+     {
+      "info": "\uc9c0\uc218: \ubbfc\uc7ac\uac00 \uadf8\ub7ec\ub294\ub370 \ud1a0\uc694\uc77c \ubaa8\uc784\uc774 \ucde8\uc18c\ub410\ub300.\n\ud558\uc740: \ub098\ub3c4 \ucde8\uc18c\ub410\ub2e4\uace0 \ub4e4\uc5c8\uc5b4. \ub204\uac00 \uadf8\ub7ec\ub358\ub370.",
+      "ask": "How sure are you that the meeting is cancelled?",
+      "options": [
+       {
+        "id": "a",
+        "text": "Sure: it is cancelled.",
+        "reveals": "Two messages feel stronger than one, but both are second-hand."
+       },
+       {
+        "id": "b",
+        "text": "Probably cancelled, but I want to know who decided.",
+        "reveals": "You accepted the news and asked for a source."
+       },
+       {
+        "id": "c",
+        "text": "I cannot tell yet: nobody says they decided it.",
+        "reveals": "You noticed that nobody named is the decider."
+       },
+       {
+        "id": "d",
+        "text": "Probably not cancelled.",
+        "reveals": "There is no evidence yet for this either."
+       }
+      ],
+      "reasonable": [
+       "b",
+       "c"
+      ],
+      "after": "Both messages are reported speech with no person who saw the decision. 'Probably' is fine; 'sure' is too strong."
+     },
+     {
+      "info": "You ask \ubbfc\uc7ac. He answers: \"\ub098\ub294 \uc11c\uc5f0\uc774\ud55c\ud14c '\ube44\uac00 \ub9ce\uc774 \uc624\uba74 \ucde8\uc18c\ub420 \uc218\ub3c4 \uc788\ub300'\ub77c\uace0 \ub4e4\uc5c8\uc5b4. \ud655\uc815\uc740 \uc544\ub2c8\uc57c.\"",
+      "ask": "Now how sure are you?",
+      "options": [
+       {
+        "id": "a",
+        "text": "Still sure it is cancelled.",
+        "reveals": "The new message turns 'cancelled' into 'may be cancelled if it rains a lot'."
+       },
+       {
+        "id": "b",
+        "text": "Cancelled, but only if it rains a lot.",
+        "reveals": "You kept what the new message says and the condition."
+       },
+       {
+        "id": "c",
+        "text": "I cannot tell yet; the news changed on the way.",
+        "reveals": "You noticed the sentence became weaker as it passed on."
+       },
+       {
+        "id": "d",
+        "text": "Not cancelled at all.",
+        "reveals": "The new message is also not first-hand, so it does not prove this."
+       }
+      ],
+      "reasonable": [
+       "b",
+       "c"
+      ],
+      "after": "The first message said 'cancelled (\ub410\ub300)'. The original only said 'maybe, if it rains much (\ub420 \uc218\ub3c4 \uc788\ub300)'. Each retelling made it stronger."
+     },
+     {
+      "info": "\uacf5\uc9c0(\uac8c\uc2dc\ud310, \ud68c\uc7a5): \ud1a0\uc694\uc77c \ubaa8\uc784\uc740 \ube44\uac00 \uc624\uc9c0 \uc54a\uc73c\uba74 \uc608\uc815\ub300\ub85c \ud569\ub2c8\ub2e4.",
+      "ask": "Now how sure are you that the meeting is cancelled?",
+      "options": [
+       {
+        "id": "a",
+        "text": "Cancelled; the notice is not important.",
+        "reveals": "A notice from the president is the strongest piece of evidence so far."
+       },
+       {
+        "id": "b",
+        "text": "Not decided: it depends on the rain.",
+        "reveals": "You used the notice's condition."
+       },
+       {
+        "id": "c",
+        "text": "Probably still on, unless it rains.",
+        "reveals": "You trusted the person who decides and kept the condition."
+       },
+       {
+        "id": "d",
+        "text": "Cancelled, because two friends said so.",
+        "reveals": "Counting how many people repeat news is weaker than the decider's own words."
+       }
+      ],
+      "reasonable": [
+       "b",
+       "c"
+      ],
+      "after": "The decider (\ud68c\uc7a5) wrote the plan: it is on if it does not rain. The earlier 'cancelled' was not what the source said."
+     }
+    ],
+    "reflect": "Notice that your answer moved from 'cancelled' to 'on, if it does not rain' without any friend lying. Reported speech can get stronger as it is retold; first-hand notices from the decider beat any number of retellings."
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Write ONE Korean sentence to tell \uc9c0\uc218 what the notice says. Use the word \uacf5\uc9c0 (or \ud68c\uc7a5\ub2d8 / \uac8c\uc2dc\ud310).",
+    "hints": [
+     "Say who wrote it before you say what it says.",
+     "Include whether the meeting is held and under what condition, if you can."
+    ],
+    "placeholder": "\uc608: ...",
+    "minChars": 6,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "names the notice as the source",
+      "mode": "any",
+      "patterns": [
+       "\uacf5\uc9c0",
+       "\ud68c\uc7a5",
+       "\uac8c\uc2dc",
+       "\uc548\ub0b4"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "says the meeting goes ahead as planned",
+      "mode": "any",
+      "patterns": [
+       "\uc608\uc815\ub300\ub85c",
+       "\uadf8\ub300\ub85c",
+       "\ud55c\ub300",
+       "\ud55c\ub2e4\uace0",
+       "\ud569\ub2c8\ub2e4",
+       "\ud574\uc694",
+       "\uc9c4\ud589",
+       "\uc5f4[\uc5b4\ub824]",
+       "\uc5f0\ub2e4",
+       "\uc788\ub300",
+       "\ud558\uae30\ub85c",
+       "\ubaa8\uc5ec",
+       "\ubaa8\uc785"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "does not say it is cancelled or not held",
+      "mode": "none",
+      "patterns": [
+       "\ucde8\uc18c\\s*(\ud55c\ub300|\ud55c\ub2e4|\ub410|\ub418\uc5c8|\ub77c\uace0|\uc57c|\uc608\uc694)",
+       "(?<!\uc624\uba74\\s)(\uc548|\ubabb)\\s*(\ud55c|\ud558|\ud574|\ud569|\uc5f4)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my sentence say who the source is?",
+     "Did I keep the condition (\ube44\uac00 \uc624\uc9c0 \uc54a\uc73c\uba74) if I mention it?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\ud68c\uc7a5\ub2d8 \uacf5\uc9c0\uc5d0 \ud1a0\uc694\uc77c \ubaa8\uc784\uc740 \ube44\uac00 \uc548 \uc624\uba74 \uc608\uc815\ub300\ub85c \ud55c\ub2e4\uace0 \ub098\uc640 \uc788\uc5b4."
+     },
+     {
+      "text": "\uacf5\uc9c0\ub97c \ubcf4\ub2c8\uae4c \ud1a0\uc694\uc77c \ubaa8\uc784\uc740 \uc608\uc815\ub300\ub85c \ud55c\ub300. \ube44\ub9cc \uc548 \uc624\uba74 \ub9d0\uc774\uc57c."
+     },
+     {
+      "text": "\uacf5\uc9c0\uc5d0 \ub530\ub974\uba74 \ube44\uac00 \uc548 \uc624\uba74 \ud1a0\uc694\uc77c \ubaa8\uc784\uc744 \uc5f4\uc5b4\uc694."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\ucde8\uc18c\ub410\ub300.",
+      "why": "No source, and it is not what the notice says."
+     },
+     {
+      "text": "\uacf5\uc9c0\uc5d0 \ucde8\uc18c\ub77c\uace0 \ub098\uc640 \uc788\uc5b4.",
+      "why": "Names the source but says the opposite."
+     },
+     {
+      "text": "\uacf5\uc9c0\uc5d0 \ub530\ub974\uba74 \ud1a0\uc694\uc77c \ubaa8\uc784\uc740 \uc548 \ud55c\ub300\uc694.",
+      "why": "Names the notice but reports that the meeting is not held, which is not what it says."
+     }
+    ],
+    "humanReview": "Whether the reported speech is used correctly and whether the sentence faithfully reports the condition need a person."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Judges reliability",
+    "full": "Explains that second-hand messages are not independent and gives weight to the decider",
+    "partial": "Sees that something is second-hand",
+    "none": "Counts how many people said it"
+   },
+   {
+    "criterion": "Revises a judgement",
+    "full": "Moves from 'cancelled' to 'depends on rain' with a reason",
+    "partial": "Changes the answer without a reason",
+    "none": "Never changes"
+   }
+  ],
+  "alternatives": [
+   "At stage 1, 'probably cancelled' is reasonable if the learner asks for a source.",
+   "At stage 3, either 'not decided' or 'probably on' is acceptable."
+  ],
+  "hardCases": [
+   "Learners may feel that \ubbfc\uc7ac's answer is also first-hand; he was asked directly but he only repeated what \uc11c\uc5f0 said."
+  ],
+  "cautions": {
+   "language": "-\ub300\uc694/-\ub798\uc694 report what somebody said; -\ub358\ub370 and \ub4e4\uc5c8\uc5b4 mark that the speaker was not there. Learners may confuse -\ub300 with -\ub370.",
+   "culture": "Messaging groups for clubs and classes are normal; president (\ud68c\uc7a5) notices are usually trusted.",
+   "accessibility": "All messages are text. The three messages are labelled with who says them."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice keys and the reasonable options at each stage",
+    "The condition and the source check in the final sentence"
+   ],
+   "human": [
+    "Whether the final sentence reports the notice faithfully"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-fill-05",
+  "subject": "korean",
+  "grade": "K8",
+  "topic": "Evaluating claims and evidence: rumour versus confirmed fact",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Which lines are confirmed, which are rumour?",
+  "uiLang": "en",
+  "format": "make-your-own",
+  "generative": true,
+  "goal": "Sort statements into confirmed facts and rumours, then write a short Korean post that keeps them apart.",
+  "thinking": [
+   "Classifying statements by evidence",
+   "Spotting rumours that are presented as facts",
+   "Writing a post that marks the status of information"
+  ],
+  "differsFromPlain": "Plain practice asks you to turn a statement into reported speech. Here you decide which statements deserve to be called facts at all, and write something that keeps the difference visible.",
+  "prerequisites": [
+   "Knows the reported endings -\ub300\uc694/-\ub2e4\uace0 \ud574\uc694",
+   "Can read \uacf5\uc9c0 and \uc18c\ubb38 (rumour)"
+  ],
+  "minutes": 14,
+  "curriculum": null,
+  "material": "\ud559\uad50 \ub2e8\uccb4 \ucc44\ud305\ubc29\uacfc \uacf5\uc9c0\uc608\uc694.\n\n\uac00\uc628: \uc57c, \ub9e4\uc810 \ub2e4\uc74c \ub2ec\ubd80\ud130 \ubb38 \ub2eb\ub294\ub300!\n\ub098\ub798: \ub9de\uc544, \uc9c1\uc6d0 \uc544\uc8fc\uba38\ub2c8\uac00 \uadf8\ub9cc\ub450\uc2e0\ub300. \uadf8\ub798\uc11c \ub2eb\ub294 \uac70\ub798.\n\n\uacf5\uc9c0(\uad50\ubb34\uc2e4, 10\uc6d4 14\uc77c): 11\uc6d4 1\uc77c\ubd80\ud130 \ub9e4\uc810 \uc6b4\uc601 \uc2dc\uac04\uc774 \uc624\uc804 8\uc2dc~\uc624\ud6c4 4\uc2dc\ub85c \ubc14\ub01d\ub2c8\ub2e4. \uc790\uc138\ud55c \ub0b4\uc6a9\uc740 \ucd94\ud6c4 \uc548\ub0b4\ud558\uaca0\uc2b5\ub2c8\ub2e4.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "A student made this list of 'confirmed facts' about the shop. Some lines do not belong because the notice does not confirm them. Pick one of them.",
+    "hints": [
+     "For each line, look for the same words in the notice.",
+     "Notice which lines only appear in the chat."
+    ],
+    "lines": [
+     "11\uc6d4 1\uc77c\ubd80\ud130 \ub9e4\uc810 \uc6b4\uc601 \uc2dc\uac04\uc774 \ubc14\ub010\ub2e4.",
+     "\ubc14\ub010 \uc6b4\uc601 \uc2dc\uac04\uc740 \uc624\uc804 8\uc2dc\ubd80\ud130 \uc624\ud6c4 4\uc2dc\uae4c\uc9c0\uc774\ub2e4.",
+     "\ub9e4\uc810\uc740 \ub2e4\uc74c \ub2ec\ubd80\ud130 \ubb38\uc744 \ub2eb\ub294\ub2e4.",
+     "\uc9c1\uc6d0\uc774 \uadf8\ub9cc\ub450\uae30 \ub54c\ubb38\uc5d0 \ub9e4\uc810\uc774 \ubb38\uc744 \ub2eb\ub294\ub2e4."
+    ],
+    "wrong": [
+     2,
+     3
+    ],
+    "explain": "Lines 3 and 4 appear only in the chat as '-\ub300\uc694' reports. The notice confirms only that the opening hours change (lines 1 and 2). Either line 3 or line 4 is a correct pick."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write TWO short Korean sentences for the class notice board. The first gives one confirmed fact and its source. The second shows that the shop closing is only a rumour.",
+    "hints": [
+     "For the first sentence, you can start with \uacf5\uc9c0\uc5d0 \ub530\ub974\uba74 ...",
+     "For the second, use a rumour marker such as ...\ub300\uc694, ...\ub2e4\uace0 \ud574\uc694 or \uc18c\ubb38."
+    ],
+    "placeholder": "\uc608: ...",
+    "minChars": 25,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "names a source for the fact",
+      "mode": "any",
+      "patterns": [
+       "\uacf5\uc9c0",
+       "\uc548\ub0b4",
+       "\uc5d0 \ub530\ub974\uba74",
+       "\ub098\uc640 \uc788",
+       "\uc801\ud600"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "marks the closing (\ub2eb/\ud3d0\uc810/\uadf8\ub9cc) as a rumour or unconfirmed",
+      "mode": "any",
+      "patterns": [
+       "(\ub2eb|\ud3d0\uc810|\uadf8\ub9cc)[^.!?]*(\uc18c\ubb38|[\uac00-\ud7a3]\ub300(\uc694|[.!\\s]|$)|[\uac00-\ud7a3]\ub798(\uc694|[.!\\s]|$)|\ub2e4\uace0 \ud574\uc694|\ub77c\uace0 \ud574\uc694|\ub2e4\ub358\ub370|\ud655\uc2e4\ud558\uc9c0|\ud655\uc778\ub418\uc9c0|\uc54c\ub824\uc9c0\uc9c0|\uc544\uc9c1)",
+       "(\uc18c\ubb38|[\uac00-\ud7a3]\ub300(\uc694|[.!\\s]|$)|[\uac00-\ud7a3]\ub798(\uc694|[.!\\s]|$)|\ub2e4\uace0 \ud574\uc694|\ub77c\uace0 \ud574\uc694|\ub2e4\ub358\ub370|\ud655\uc2e4\ud558\uc9c0|\ud655\uc778\ub418\uc9c0|\uc54c\ub824\uc9c0\uc9c0|\uc544\uc9c1)[^.!?]*(\ub2eb|\ud3d0\uc810|\uadf8\ub9cc)"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "uses a fact from the notice",
+      "mode": "any",
+      "patterns": [
+       "11\uc6d4",
+       "\uc6b4\uc601 \uc2dc\uac04",
+       "\uc624\ud6c4 4\uc2dc",
+       "\uc624\uc804 8\uc2dc"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Would a reader know which sentence is checked and which is not?",
+     "Did I avoid writing the rumour as plain fact?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\uacf5\uc9c0\uc5d0 \ub530\ub974\uba74 11\uc6d4 1\uc77c\ubd80\ud130 \ub9e4\uc810 \uc6b4\uc601 \uc2dc\uac04\uc774 \ubc14\ub01d\ub2c8\ub2e4. \ub9e4\uc810\uc774 \ubb38\uc744 \ub2eb\ub294\ub2e4\ub294 \uc774\uc57c\uae30\ub294 \uc18c\ubb38\uc774\ub77c\uc11c \uc544\uc9c1 \ud655\uc778\ub418\uc9c0 \uc54a\uc558\uc5b4\uc694."
+     },
+     {
+      "text": "\uad50\ubb34\uc2e4 \uc548\ub0b4\uc5d0 \ub098\uc640 \uc788\uc5b4\uc694. 11\uc6d4 1\uc77c\ubd80\ud130 \uc624\uc804 8\uc2dc~\uc624\ud6c4 4\uc2dc\uc5d0 \ub9e4\uc810\uc744 \uc5f4\uc5b4\uc694. \uc9c1\uc6d0\uc774 \uadf8\ub9cc\ub450\uc2e0\ub300\uc694. \uc544\uc9c1 \ud655\uc2e4\ud558\uc9c0 \uc54a\uc544\uc694."
+     },
+     {
+      "text": "\uacf5\uc9c0\uc5d0 \ub530\ub974\uba74 11\uc6d4 1\uc77c\ubd80\ud130 \ub9e4\uc810 \uc6b4\uc601 \uc2dc\uac04\uc774 \ubc14\ub01d\ub2c8\ub2e4. \ub9e4\uc810\uc774 \ubb38\uc744 \ub2eb\ub294\uc9c0\ub294 \uc544\uc9c1 \ud655\uc2e4\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\ub9e4\uc810\uc774 \ubb38\uc744 \ub2eb\ub294\ub300\uc694.",
+      "why": "The rumour has no source and no fact at all."
+     },
+     {
+      "text": "\ub9e4\uc810\uc740 11\uc6d4 1\uc77c\ubd80\ud130 \uc624\ud6c4 4\uc2dc\uae4c\uc9c0 \uc5f4\uc5b4\uc694.",
+      "why": "A fact, but no source and no rumour sentence."
+     },
+     {
+      "text": "\uacf5\uc9c0\uc5d0 \ub530\ub974\uba74 11\uc6d4 1\uc77c\ubd80\ud130 \ub9e4\uc810 \uc6b4\uc601 \uc2dc\uac04\uc774 \ubc14\ub010\ub300\uc694.",
+      "why": "Reports the notice but has no sentence about the closing rumour."
+     }
+    ],
+    "humanReview": "Whether the second sentence really marks the rumour as unconfirmed rather than as a fact needs a person."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Sorts by evidence",
+    "full": "Rejects both unconfirmed lines and says why",
+    "partial": "Rejects one",
+    "none": "Accepts all as facts"
+   },
+   {
+    "criterion": "Keeps status visible in writing",
+    "full": "Fact with source and rumour with a marker",
+    "partial": "One of the two is present",
+    "none": "Mixes them as plain statements"
+   }
+  ],
+  "alternatives": [
+   "Lines 3 and 4 are both acceptable picks.",
+   "Learners may write the rumour using \uc18c\ubb38\uc5d0 \ub530\ub974\uba74 or ...\ub77c\ub294 \ub9d0\uc774 \uc788\uc5b4\uc694; both are fine."
+  ],
+  "hardCases": [
+   "The notice says the hours change; it does not say the shop will stay open. 'Not confirmed' differs from 'false'."
+  ],
+  "cautions": {
+   "language": "Learners often hear -\ub300\uc694 as part of the verb; it signals that the speaker is repeating someone.",
+   "culture": "School chat groups spread rumours quickly; official notices (\uacf5\uc9c0) are the usual way schools confirm changes.",
+   "accessibility": "Texts are short; chat lines are labelled with the speaker's name."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Which lines are unconfirmed",
+    "Source marker, rumour marker and notice fact in the post"
+   ],
+   "human": [
+    "Whether the post is natural and does not state the rumour as a fact"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-fill-06",
+  "subject": "korean",
+  "grade": "K9",
+  "topic": "Evaluating claims and evidence: numbers in a work report",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Is '50% growth' good news?",
+  "uiLang": "en",
+  "format": "build-many-verify",
+  "generative": true,
+  "goal": "Show that a percent increase in a report can be true and still small, and rewrite the report line so the reader can see the base numbers.",
+  "thinking": [
+   "Asking which number is missing",
+   "Building examples under constraints",
+   "Rewriting a claim so it can be evaluated"
+  ],
+  "differsFromPlain": "Plain practice asks you to calculate a percent change. Here the percent is already given, and you test what it hides.",
+  "prerequisites": [
+   "Knows \uc9c0\ub09c\ub2ec, \uc774\ubc88 \ub2ec, \uc99d\uac00 and the % sign",
+   "Can read business-style endings like -\ud588\uc2b5\ub2c8\ub2e4"
+  ],
+  "minutes": 14,
+  "curriculum": null,
+  "material": "[\uc774\ubc88 \ub2ec \uc5c5\ubb34 \ubcf4\uace0] \uc2e0\uaddc \uc571 \uac00\uc785\uc790\uac00 \uc9c0\ub09c\ub2ec\ubcf4\ub2e4 50% \uc99d\uac00\ud588\uc2b5\ub2c8\ub2e4. \ub9c8\ucf00\ud305 \ud6a8\uacfc\uac00 \ud655\uc2e4\ud569\ub2c8\ub2e4.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which question helps you most to decide whether the report supports '\ub9c8\ucf00\ud305 \ud6a8\uacfc\uac00 \ud655\uc2e4\ud569\ub2c8\ub2e4'?",
+    "hints": [
+     "Imagine two companies that both report 50% growth. What would you need to know to tell them apart?",
+     "Test each option: would the answer change how big the increase really is?"
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "Who wrote this report?",
+      "reveals": "A good question about trust, but it does not tell you the size of the change."
+     },
+     {
+      "id": "b",
+      "text": "How many people were on the marketing team?",
+      "reveals": "This is not connected to what the 50% hides."
+     },
+     {
+      "id": "c",
+      "text": "Is 50% a big number in general?",
+      "reveals": "A percent's meaning depends on the number it comes from."
+     },
+     {
+      "id": "d",
+      "text": "How many sign-ups were there last month?",
+      "reveals": "You asked for the base number that turns a percent into real people."
+     }
+    ],
+    "correct": [
+     "d"
+    ],
+    "explain": "A percent change says nothing about size without the base: 50% of 4 is 2 people, 50% of 4,000 is 2,000."
+   },
+   {
+    "id": "s2",
+    "kind": "build",
+    "prompt": "The report is true: this month's sign-ups (b) are exactly 50% more than last month's (a), counted in whole people. Give TWO different examples in which the increase is at most 10 people.",
+    "hints": [
+     "If this month is 50% more, then this month is 1.5 times last month. Which numbers of people stay whole?",
+     "Check your example: is b - a at most 10?"
+    ],
+    "vars": [
+     {
+      "name": "a",
+      "label": "last month's sign-ups (people)"
+     },
+     {
+      "name": "b",
+      "label": "this month's sign-ups (people)"
+     }
+    ],
+    "constraints": [
+     {
+      "id": "c1",
+      "expr": "floor(a)==a && floor(b)==b && a>=1",
+      "ok": "Whole numbers of people.",
+      "fail": "Use whole numbers of people, at least 1 last month."
+     },
+     {
+      "id": "c2",
+      "expr": "2*b==3*a",
+      "ok": "This month is exactly 50% more.",
+      "fail": "This month is not exactly 50% more than last month."
+     },
+     {
+      "id": "c3",
+      "expr": "b-a<=10",
+      "ok": "The increase is at most 10 people.",
+      "fail": "The increase is more than 10 people."
+     }
+    ],
+    "need": 2,
+    "distinctBy": "a",
+    "modelRows": [
+     {
+      "a": 4,
+      "b": 6
+     },
+     {
+      "a": 10,
+      "b": 15
+     },
+     {
+      "a": 20,
+      "b": 30
+     }
+    ],
+    "badRows": [
+     {
+      "a": 100,
+      "b": 150
+     },
+     {
+      "a": 10,
+      "b": 12
+     }
+    ],
+    "explain": "4 to 6, 10 to 15 and 20 to 30 all give 50% more, and the increase (2, 5, 10 people) is small. The same percent from 1,000 to 1,500 would be 500 people.",
+    "because": {
+     "id": "s2b",
+     "kind": "write",
+     "prompt": "Rewrite the report sentence in ONE Korean sentence so a reader can see the real numbers behind the percent (use the two numbers of one of your examples, as digits or Korean number words).",
+     "hints": [
+      "Put both numbers (last month and this month) in the sentence.",
+      "Keep a word for the increase, such as \ub298\uc5c8\uc2b5\ub2c8\ub2e4 or \uc99d\uac00\ud588\uc2b5\ub2c8\ub2e4."
+     ],
+     "placeholder": "\uc608: ...",
+     "minChars": 8,
+     "checks": [
+      {
+       "id": "w1",
+       "label": "shows last month's and this month's numbers from a 50% example",
+       "mode": "any",
+       "patterns": [
+        "(?<!\\d)2(?!\\d)[^\\d]{0,25}(?<!\\d)3(?!\\d)",
+        "(?<!\\d)4(?!\\d)[^\\d]{0,25}(?<!\\d)6(?!\\d)",
+        "(?<!\\d)6(?!\\d)[^\\d]{0,25}(?<!\\d)9(?!\\d)",
+        "(?<!\\d)8(?!\\d)[^\\d]{0,25}(?<!\\d)12(?!\\d)",
+        "(?<!\\d)10(?!\\d)[^\\d]{0,25}(?<!\\d)15(?!\\d)",
+        "(?<!\\d)12(?!\\d)[^\\d]{0,25}(?<!\\d)18(?!\\d)",
+        "(?<!\\d)14(?!\\d)[^\\d]{0,25}(?<!\\d)21(?!\\d)",
+        "(?<!\\d)16(?!\\d)[^\\d]{0,25}(?<!\\d)24(?!\\d)",
+        "(?<!\\d)18(?!\\d)[^\\d]{0,25}(?<!\\d)27(?!\\d)",
+        "(?<!\\d)20(?!\\d)[^\\d]{0,25}(?<!\\d)30(?!\\d)",
+        "(?<![\uac00-\ud7a3])\ub450\\s?(\uba85|\uc0ac\ub78c)[^\\d]{0,25}(?<![\uac00-\ud7a3])\uc138\\s?(\uba85|\uc0ac\ub78c)",
+        "(?<![\uac00-\ud7a3])\ub124\\s?(\uba85|\uc0ac\ub78c)[^\\d]{0,25}(?<![\uac00-\ud7a3])\uc5ec\uc12f\\s?(\uba85|\uc0ac\ub78c)",
+        "(?<![\uac00-\ud7a3])\uc5ec\uc12f\\s?(\uba85|\uc0ac\ub78c)[^\\d]{0,25}(?<![\uac00-\ud7a3])\uc544\ud649\\s?(\uba85|\uc0ac\ub78c)",
+        "(?<![\uac00-\ud7a3])\uc5ec\ub35f\\s?(\uba85|\uc0ac\ub78c)[^\\d]{0,25}(?<![\uac00-\ud7a3])\uc5f4\ub450\\s?(\uba85|\uc0ac\ub78c)",
+        "(?<![\uac00-\ud7a3])\uc5f4\\s?(\uba85|\uc0ac\ub78c)[^\\d]{0,25}(?<![\uac00-\ud7a3])\uc5f4\ub2e4\uc12f\\s?(\uba85|\uc0ac\ub78c)"
+       ]
+      },
+      {
+       "id": "w2",
+       "label": "says the number rose",
+       "mode": "any",
+       "patterns": [
+        "\ub298",
+        "\uc99d\uac00",
+        "\uc62c"
+       ]
+      }
+     ],
+     "selfAssess": [
+      "Can a reader see how many people the increase is?",
+      "Did I use my own numbers, not just the percent?"
+     ],
+     "modelAnswers": [
+      {
+       "text": "\uc9c0\ub09c\ub2ec 4\uba85\uc5d0\uc11c \uc774\ubc88 \ub2ec 6\uba85\uc73c\ub85c \ub298\uc5b4 50% \uc99d\uac00\ud588\uc2b5\ub2c8\ub2e4."
+      },
+      {
+       "text": "\uac00\uc785\uc790\uac00 10\uba85\uc5d0\uc11c 15\uba85\uc73c\ub85c \ub298\uc5b4, \uc99d\uac00\uc728\uc740 50%\uc785\ub2c8\ub2e4."
+      },
+      {
+       "text": "\uc9c0\ub09c\ub2ec \ub124 \uba85\uc5d0\uc11c \uc774\ubc88 \ub2ec \uc5ec\uc12f \uba85\uc73c\ub85c \ub298\uc5b4 50% \uc99d\uac00\ud588\uc2b5\ub2c8\ub2e4."
+      }
+     ],
+     "badAnswers": [
+      {
+       "text": "\uac00\uc785\uc790\uac00 50% \ub298\uc5c8\uc2b5\ub2c8\ub2e4.",
+       "why": "Only the percent, with no base number."
+      },
+      {
+       "text": "\uac00\uc785\uc790\uac00 \ud06c\uac8c \ub298\uc5c8\uc2b5\ub2c8\ub2e4.",
+       "why": "No numbers at all."
+      },
+      {
+       "text": "\uc9c0\ub09c\ub2ec 4\uba85\uc5d0\uc11c \uc774\ubc88 \ub2ec 9\uba85\uc73c\ub85c \ub298\uc5c8\uc2b5\ub2c8\ub2e4.",
+       "why": "The two numbers are not a 50% increase."
+      },
+      {
+       "text": "\uac00\uc785\uc790\uac00 \uc9c0\ub09c\ub2ec\ubcf4\ub2e4 50% \ub298\uc5b4 4\uba85\uc774 \ub418\uc5c8\uc2b5\ub2c8\ub2e4.",
+       "why": "Gives only one base number, so the real increase stays hidden."
+      }
+     ],
+     "humanReview": "A person has to judge whether the sentence is natural; the check only accepts number pairs that really are 50% more, but cannot judge the wording."
+    }
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Asks for the base",
+    "full": "Asks for last month's number and links it to the percent",
+    "partial": "Asks something nearby",
+    "none": "Asks about trust or a person"
+   },
+   {
+    "criterion": "Builds examples",
+    "full": "Two different whole-number pairs with exactly 50% and a small increase",
+    "partial": "One valid pair",
+    "none": "Pairs that break the percent"
+   }
+  ],
+  "alternatives": [
+   "Any pair (a, 1.5a) with a even and a up to 20 is valid, for example 2 to 3 or 6 to 9.",
+   "A learner may also point out that 'certain marketing effect' needs a comparison group; this is a good addition."
+  ],
+  "hardCases": [
+   "Learners may think 150% is meant; 50% more is 1.5 times, not 0.5 times."
+  ],
+  "cautions": {
+   "language": "\uc99d\uac00\ud588\uc2b5\ub2c8\ub2e4 is the formal report style; '\uc9c0\ub09c\ub2ec\ubcf4\ub2e4 50%' means compared with last month.",
+   "culture": "Work reports in Korea often use formal -\uc2b5\ub2c8\ub2e4 style and percent growth as a headline.",
+   "accessibility": "The % sign may be read as 'percent'; numbers are also written as words in the instruction."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice key",
+    "Constraint verification of the number pairs",
+    "Presence of two numbers in the rewritten sentence"
+   ],
+   "human": [
+    "Naturalness of the report sentence",
+    "Whether the numbers match the percent"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-fill-07",
+  "subject": "korean",
+  "grade": "K10",
+  "topic": "Evaluating claims and evidence: a news headline against its article",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "Does the headline say more than the article?",
+  "uiLang": "en",
+  "format": "judge-evidence-explain",
+  "generative": true,
+  "goal": "Break a headline into separate claims, check each against the article, and rewrite the headline so that it does not claim more than the evidence.",
+  "thinking": [
+   "Splitting a headline into claims",
+   "Comparing a claim with comparison-group evidence",
+   "Rewriting a claim to match its support"
+  ],
+  "differsFromPlain": "Plain practice asks you to find the main idea of an article. Here the headline is a claim and the article is the evidence, and you check how far the support goes.",
+  "prerequisites": [
+   "Can read news-style Korean (-\ud588\ub2e4, nominal headline style)",
+   "Knows \ud3c9\uade0, \ud559\uae09, \ud6a8\uacfc",
+   "Knows \uc785\uc99d(\ub418\ub2e4) (to be proven), \uc2dc\ubc94 \uc6b4\uc601 (trial run) and \ubcf4\uad00 (keeping/storing)"
+  ],
+  "minutes": 15,
+  "curriculum": null,
+  "material": "[\uc81c\ubaa9] \uc2a4\ub9c8\ud2b8\ud3f0 \ubcf4\uad00\ud558\ub2c8 \uc131\uc801 \uc62c\ub790\ub2e4\u2026 \ud559\uc0dd \uc131\uc801 \ud5a5\uc0c1 \ud6a8\uacfc \uc785\uc99d\n\n[\ubcf8\ubb38] A\uc911\ud559\uad50\ub294 3\uac1c\uc6d4 \ub3d9\uc548 1\ud559\ub144 \ud55c \ud559\uae09(28\uba85)\uc5d0\uc11c \uc810\uc2ec\uc2dc\uac04 \uc2a4\ub9c8\ud2b8\ud3f0 \ubcf4\uad00 \uc81c\ub3c4\ub97c \uc2dc\ubc94 \uc6b4\uc601\ud588\ub2e4. \uc774 \ud559\uae09\uc758 \ud3c9\uade0 \uc810\uc218\ub294 71.2\uc810\uc5d0\uc11c 73.5\uc810\uc73c\ub85c \uc62c\ub790\ub2e4. \uac19\uc740 \uae30\uac04 \uc2a4\ub9c8\ud2b8\ud3f0\uc744 \ubcf4\uad00\ud558\uc9c0 \uc54a\uc740 \ub2e4\ub978 \ud559\uae09\uc758 \ud3c9\uade0\ub3c4 70.8\uc810\uc5d0\uc11c 72.6\uc810\uc73c\ub85c \uc62c\ub790\ub2e4. \ud559\uad50 \uad00\uacc4\uc790\ub294 \"\ud6a8\uacfc\uac00 \uc788\ub294\uc9c0\ub294 \ub354 \uc9c0\ucf1c\ubd10\uc57c \ud55c\ub2e4\"\uace0 \ub9d0\ud588\ub2e4.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "The headline can be split into four claims (shown as lines). Two of them are NOT supported by the article. Pick either one of the two.",
+    "hints": [
+     "For each claim, look for a sentence in the article that backs it and for a sentence that argues against it.",
+     "Do not forget the people quoted in the article as well as the numbers."
+    ],
+    "lines": [
+     "\uc77c\ubd80 \ud559\uae09\uc774 \uc810\uc2ec\uc2dc\uac04\uc5d0 \uc2a4\ub9c8\ud2b8\ud3f0\uc744 \ubcf4\uad00\ud588\ub2e4.",
+     "\uadf8 \ud559\uae09\uc758 \ud3c9\uade0 \uc810\uc218\uac00 \uc62c\ub790\ub2e4.",
+     "\uc2a4\ub9c8\ud2b8\ud3f0 \ubcf4\uad00\uc774 \uc131\uc801\uc744 \uc62c\ub838\ub2e4.",
+     "\uc131\uc801 \ud5a5\uc0c1 \ud6a8\uacfc\uac00 \uc785\uc99d\ub410\ub2e4."
+    ],
+    "wrong": [
+     2,
+     3
+    ],
+    "explain": "Lines 1 and 2 are in the article. Line 3 is not supported because the class without phone storage also rose. Line 4 is not supported either: the school official says it must be watched longer. Finding either one was enough."
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Which single sentence of the article most weakens '\uc2a4\ub9c8\ud2b8\ud3f0 \ubcf4\uad00\uc774 \uc131\uc801\uc744 \uc62c\ub838\ub2e4'?",
+    "hints": [
+     "The claim is about cause. Ask yourself: what else could have raised the scores?",
+     "Mark, for each sentence, which group of students it is about."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "\uc774 \ud559\uae09\uc758 \ud3c9\uade0 \uc810\uc218\ub294 71.2\uc810\uc5d0\uc11c 73.5\uc810\uc73c\ub85c \uc62c\ub790\ub2e4.",
+      "reveals": "This is the evidence for the rise, not against the cause."
+     },
+     {
+      "id": "b",
+      "text": "1\ud559\ub144 \ud55c \ud559\uae09(28\uba85)\uc5d0\uc11c \uc2dc\ubc94 \uc6b4\uc601\ud588\ub2e4.",
+      "reveals": "A small group limits the claim, but it does not show another explanation."
+     },
+     {
+      "id": "c",
+      "text": "\uac19\uc740 \uae30\uac04 \uc2a4\ub9c8\ud2b8\ud3f0\uc744 \ubcf4\uad00\ud558\uc9c0 \uc54a\uc740 \ub2e4\ub978 \ud559\uae09\uc758 \ud3c9\uade0\ub3c4 70.8\uc810\uc5d0\uc11c 72.6\uc810\uc73c\ub85c \uc62c\ub790\ub2e4.",
+      "reveals": "You saw that scores rose without the rule too."
+     },
+     {
+      "id": "d",
+      "text": "\ud559\uad50 \uad00\uacc4\uc790\ub294 \ub354 \uc9c0\ucf1c\ubd10\uc57c \ud55c\ub2e4\uace0 \ub9d0\ud588\ub2e4.",
+      "reveals": "A cautious quote, but it does not give evidence about the cause."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "If another class without the rule also improved (by 1.8 points against 2.3), the rise is not clearly due to the rule."
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Rewrite the headline in ONE Korean line (news style is fine) so it does not claim more than the article shows.",
+    "hints": [
+     "Keep what is true (the class's score rose) and add what the article does not allow you to say.",
+     "Do not use a word that says the effect is already proven."
+    ],
+    "placeholder": "\uc608: ...",
+    "minChars": 15,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "adds a limit or caution about the EFFECT",
+      "mode": "any",
+      "patterns": [
+       "\ub354 \uc9c0\ucf1c",
+       "\uc544\uc9c1",
+       "\ub2e8\uc815",
+       "\ubd88\ubd84\uba85",
+       "\ubd88\ud655\uc2e4",
+       "\ubd88\ud22c\uba85",
+       "\uc778\uacfc",
+       "\uc6d0\uc778(\uc740|\uc774)?\\s*(\ubd88|\uc54c|\ub2e8\uc815|\uc5b4\ub835|\uc544\uc9c1)",
+       "\ud655\uc778\ub418\uc9c0",
+       "\uc54c \uc218 \uc5c6",
+       "\uc18d\ub2e8",
+       "\ubbf8\uc9c0\uc218",
+       "\ud655\uc778\ud558\uae30 \uc5b4\ub835",
+       "\uc54c\uae30 \uc5b4\ub835",
+       "\ub9d0\ud558\uae30 \uc5b4\ub835",
+       "\ubcf4\uad00\\s*(?:\uc548\\s*\ud55c|\ud558\uc9c0\\s*\uc54a\uc740|\uc54a\uc740)\\s*\ud559\uae09",
+       "\uac00\ub2a5\uc131",
+       "\ub2e4\ub978\\s*\ud559\uae09(?:\ub3c4|\uc5d0\uc11c\ub3c4|\ub4e4\ub3c4)",
+       "\ub2e4\ub978\\s*\ud559\uae09[^.!?]{0,12}(?:\uc62c\ub790|\uc0c1\uc2b9|\ub192\uc544)",
+       "(?:\uac83\uc740|\uac74|\uac8c)\\s*\uc544\ub2c8"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "does not say the effect is proven",
+      "mode": "none",
+      "patterns": [
+       "\uc785\uc99d(?:\ub410|\ub418\uc5c8|\ud588|\ub41c)(?!\\s*(?:\uac83\uc740|\uac74|\uac8c)\\s*\uc544\ub2c8)(?!\ub2e4\uace0\\s*(?:\ubcf4|\ub9d0|\ub2e8\uc815|\ud560))",
+       "\uc99d\uba85(?:\ub410|\ub418\uc5c8|\ud588|\ub41c)(?!\\s*(?:\uac83\uc740|\uac74|\uac8c)\\s*\uc544\ub2c8)(?!\ub2e4\uace0\\s*(?:\ubcf4|\ub9d0|\ub2e8\uc815|\ud560))",
+       "\ud655\uc2e4\ud788\\s*(\uc62c|\ud6a8\uacfc|\ubc1d)"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "does not say the phone storage caused the rise",
+      "mode": "none",
+      "patterns": [
+       "\ub355\ubd84",
+       "\ud798\uc785\uc5b4",
+       "(?:\uc2a4\ub9c8\ud2b8\ud3f0|\ud3f0|\ubcf4\uad00)\\S*\\s*\ub54c\ubb38\uc5d0",
+       "(\uc904\uc774\ub2c8|\ud558\ub2c8|\ubcf4\uad00\ud558\ub2c8)\\s*(\uc131\uc801|\uc810\uc218)",
+       "\ud6a8\uacfc(?:\uac00|\ub294)?\\s*(?:\uc788\uc5c8|\uc788\ub2e4|\uc788\uc5b4|\uc788\uc74c|\ucef8|\ub098\ud0c0\ub0ac|\ud655\uc778\ub410|\ud655\uc778\ub418\uc5c8|\ud655\uc778\ub41c\ub2e4)(?!\ub294\\s*(?:\uadfc\uac70|\uc99d\uac70|\uacb0\ub860))"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Could someone hold me to this headline after reading the article?",
+     "Did I mention the other class or the small trial?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\uc810\uc2ec\uc2dc\uac04 \uc2a4\ub9c8\ud2b8\ud3f0 \ubcf4\uad00 \ud559\uae09 \uc131\uc801 \uc18c\ud3ed \uc0c1\uc2b9\u2026\ud6a8\uacfc\ub294 \ub354 \uc9c0\ucf1c\ubd10\uc57c"
+     },
+     {
+      "text": "\uc2dc\ubc94 \uc6b4\uc601 \ud55c \ud559\uae09 \ud3c9\uade0 2.3\uc810 \uc62c\ub790\uc9c0\ub9cc \ub2e4\ub978 \ud559\uae09\ub3c4 \uc62c\ub77c \uc6d0\uc778\uc740 \ub2e8\uc815 \uc5b4\ub824\uc6cc"
+     },
+     {
+      "text": "\uc2a4\ub9c8\ud2b8\ud3f0 \ubcf4\uad00 \ud559\uae09 \uc131\uc801 \uc62c\ub790\uc9c0\ub9cc \ud6a8\uacfc\ub294 \uc544\uc9c1 \uc99d\uba85\ub418\uc9c0 \uc54a\uc544"
+     },
+     {
+      "text": "\uc810\uc2ec\uc2dc\uac04 \uc2a4\ub9c8\ud2b8\ud3f0 \ubcf4\uad00 \ud559\uae09 \uc131\uc801 2.3\uc810 \uc0c1\uc2b9\u2026\uc778\uacfc \uad00\uacc4\ub294 \ubd88\uba85\ud655"
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\uc2a4\ub9c8\ud2b8\ud3f0 \uc904\uc774\ub2c8 \uc131\uc801 \uc62c\ub790\ub2e4\u2026 \ud6a8\uacfc \uc785\uc99d\ub410\ub2e4",
+      "why": "Repeats the overclaim."
+     },
+     {
+      "text": "\uc131\uc801\uc774 \uc62c\ub790\ub2e4",
+      "why": "True but gives no limit, and it is not a headline that qualifies the cause."
+     },
+     {
+      "text": "\uc2a4\ub9c8\ud2b8\ud3f0 \ubcf4\uad00 \ub355\ubd84\uc5d0 \uc131\uc801 \uc62c\ub790\ub2e4\u2026 \uc77c\ubd80 \ud559\uae09 \uc2dc\ubc94",
+      "why": "Names the small trial but still claims the phone storage caused the rise."
+     }
+    ],
+    "humanReview": "Whether the headline stays close to the data and sounds natural needs a person."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Splits and checks claims",
+    "full": "Picks an unsupported claim and says why",
+    "partial": "Picks a claim for a weak reason",
+    "none": "Accepts the headline"
+   },
+   {
+    "criterion": "Finds the weakness in cause",
+    "full": "Chooses the control-class sentence",
+    "partial": "Chooses the small sample",
+    "none": "Chooses the cause's supporting number"
+   },
+   {
+    "criterion": "Rewrites to match evidence",
+    "full": "Keeps the true part and states the limit",
+    "partial": "Only adds a caution word",
+    "none": "Repeats the overclaim"
+   }
+  ],
+  "alternatives": [
+   "A learner may also note that 28 students and 3 months is a small trial.",
+   "Several different headlines are acceptable if they state the rise and the limit."
+  ],
+  "hardCases": [
+   "Both classes rose; a small extra rise (0.5 points) might be chance, which the article does not say."
+  ],
+  "cautions": {
+   "language": "Headline style drops endings (\uc62c\ub790\ub2e4, \uc785\uc99d); '\uc785\uc99d' means 'proved by evidence'.",
+   "culture": "School phone rules are a common news topic; names and schools are invented.",
+   "accessibility": "Scores are written with the word \uc810 so a screen reader reads them as numbers with units."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice keys and the pickLine",
+    "Overclaim words in the rewritten headline"
+   ],
+   "human": [
+    "Fit of the rewritten headline to the evidence"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "x-k-fill-08",
+  "subject": "korean",
+  "grade": "K10",
+  "topic": "Evaluating claims and evidence: limits of a poll sentence",
+  "level": 3,
+  "levelLabel": "Advanced",
+  "title": "How far can '60% support' go?",
+  "uiLang": "en",
+  "format": "choose-needed-info",
+  "generative": true,
+  "goal": "Decide which details of a poll limit its conclusion about all citizens, and write a Korean sentence that reports the result honestly.",
+  "thinking": [
+   "Deciding what information limits a claim",
+   "Separating sample size from sample quality",
+   "Writing a result with its limits"
+  ],
+  "differsFromPlain": "Plain practice asks you to read a percent from a chart. Here you decide who the percent represents and what the result does not tell you.",
+  "prerequisites": [
+   "Knows \ucc2c\uc131/\ubc18\ub300, \uc751\ub2f5\ub960, \ud45c\ubcf8\uc624\ucc28 as terms",
+   "Can read percentages in Korean news"
+  ],
+  "minutes": 14,
+  "curriculum": null,
+  "material": "\ub274\uc2a4 \ubb38\uc7a5: \"\uc2dc\ubbfc 10\uba85 \uc911 6\uba85\uc774 \uc0c8 \ub3c4\uc11c\uad00 \uac74\ub9bd\uc5d0 \ucc2c\uc131\ud588\ub2e4.\"\n\n\uc870\uc0ac \uac1c\uc694: \uc804\ud654\uc870\uc0ac, \ud3c9\uc77c \uc624\ud6c4 2~4\uc2dc, \uc720\uc120\uc804\ud654 \uc751\ub2f5\uc790 1,000\uba85, \uc751\ub2f5\ub960 8%, \ud45c\ubcf8\uc624\ucc28 \u00b13.1%p(95% \uc2e0\ub8b0\uc218\uc900), \ucc2c\uc131 60%.\n\nA reader says: \"\uadf8\ub7ec\uba74 \uc6b0\ub9ac \uc2dc\uc758 \uc2dc\ubbfc \ub300\ubd80\ubd84\uc774 \ucc2c\uc131\ud558\ub294\uad6c\ub098.\"",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "Select the TWO details that make 'most citizens support' less sure than the news sentence sounds.",
+    "hints": [
+     "Go through the \uc870\uc0ac \uac1c\uc694 item by item and write next to each one what it tells you about the 1,000 answers.",
+     "For each item ask: does it change WHO ends up among the answers, or only how precisely the opinion of that group is measured?"
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "\ud45c\ubcf8\uc774 1,000\uba85\uc774\ub2e4",
+      "reveals": "1,000 people is a normal size for a poll; the number alone is not the problem."
+     },
+     {
+      "id": "b",
+      "text": "\ud3c9\uc77c \uc624\ud6c4 2~4\uc2dc\uc5d0 \uc720\uc120\uc804\ud654\ub85c\ub9cc \uc870\uc0ac\ud588\ub2e4",
+      "reveals": "People who work in the afternoon or have only a mobile phone were less likely to be reached."
+     },
+     {
+      "id": "c",
+      "text": "\ud45c\ubcf8\uc624\ucc28\uac00 \u00b13.1%p\uc774\ub2e4",
+      "reveals": "The margin of error is already included in the reported result; the range 56.9 to 63.1 is still above 50%."
+     },
+     {
+      "id": "d",
+      "text": "\uc751\ub2f5\ub960\uc774 8%\uc774\ub2e4",
+      "reveals": "92 of 100 people called did not answer, and they might differ from those who did."
+     }
+    ],
+    "correct": [
+     "b",
+     "d"
+    ],
+    "explain": "The method (weekday afternoon, landline) and the low response rate raise doubts about whether the 1,000 answers represent all citizens. The size and the margin of error are normal and already reported."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write ONE Korean sentence that reports the result of this poll without saying more than it shows.",
+    "hints": [
+     "Say who answered (the people who answered the phone) before you give the number.",
+     "Include one limit such as the way of calling or the low response rate."
+    ],
+    "placeholder": "\uc608: ...",
+    "minChars": 15,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "includes a limit of the poll (not just the word \uc804\ud654)",
+      "mode": "any",
+      "patterns": [
+       "\uc720\uc120",
+       "\ud3c9\uc77c",
+       "\uc751\ub2f5\ub960",
+       "(?<!\\d)8\\s*%",
+       "\ub300\ud45c",
+       "\ud45c\ubcf8",
+       "\ud55c\uacc4",
+       "\uc5b4\ub835",
+       "\uc804\uccb4 \uc2dc\ubbfc",
+       "\ubaa8\ub4e0 \uc2dc\ubbfc",
+       "\uc2dc\ubbfc \uc804\uccb4",
+       "\ub2e8\uc815",
+       "\ubcfc \uc218(\ub294)?\\s*\uc5c6"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "speaks about the people who answered",
+      "mode": "any",
+      "patterns": [
+       "\uc751\ub2f5\uc790",
+       "\uc751\ub2f5\ud55c",
+       "\uc870\uc0ac\uc5d0 \ucc38\uc5ec",
+       "\uc870\uc0ac \ub300\uc0c1",
+       "\uc804\ud654\ub97c \ubc1b\uc740",
+       "\uc804\ud654\\s*\uc870\uc0ac",
+       "\uc804\ud654\uc870\uc0ac",
+       "\uc804\ud654 \uc751\ub2f5"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "does not claim that (most) citizens support it",
+      "mode": "none",
+      "patterns": [
+       "\uc2dc\ubbfc(?:\uc758)?\\s*(\ubaa8\ub450|\uc804\uccb4|\ub300\ubd80\ubd84|\ub300\ub2e4\uc218|\ub2e4\uc218|\uacfc\ubc18\\S*|\uc808\ubc18\\s*\uc774\uc0c1)\\S*[^.!?\\n]{0,20}?\ucc2c\uc131(?:\ud588|\ud55c\ub2e4|\ud569\ub2c8\ub2e4|\ud558\ub294|\ud568|\ud574\uc694|\ud558\uace0 \uc788)(?!\ub2e4\uace0|\ub2e4\ub294|\uace0 (?:\ubcfc|\ub2e8\uc815|\ub9d0|\uc0dd\uac01))",
+       "\uc2dc\ubbfc(?:\uc758)?\\s*(10\uba85\\s*\uc911\\s*6\uba85|60\\s*%)\\S*[^.!?\\n]{0,20}?\ucc2c\uc131(?:\ud588|\ud55c)(?!\ub2e4\uace0|\ub2e4\ub294|\uace0 (?:\ubcfc|\ub2e8\uc815|\ub9d0|\uc0dd\uac01))"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my sentence say 'respondents' instead of 'citizens'?",
+     "Would a careful reader know the result's limit from my sentence?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\uc720\uc120\uc804\ud654\ub85c \uc870\uc0ac\uc5d0 \uc751\ub2f5\ud55c \uc0ac\ub78c \uc911 \uc57d 60%\uac00 \ucc2c\uc131\ud588\ub2e4(\uc751\ub2f5\ub960 8%)."
+     },
+     {
+      "text": "\ud3c9\uc77c \ub0ae\uc5d0 \uc804\ud654\ub97c \ubc1b\uc740 \uc751\ub2f5\uc790 1,000\uba85 \uc911 60%\uac00 \ucc2c\uc131\ud588\uc9c0\ub9cc, \uc751\ub2f5\ub960\uc774 \ub0ae\uc544 \uc2dc\ubbfc \uc804\uccb4\uc758 \uc758\uacac\uc73c\ub85c \ubcf4\uae30\ub294 \uc5b4\ub835\ub2e4."
+     },
+     {
+      "text": "\uc870\uc0ac\uc5d0 \uc751\ub2f5\ud55c 60%\uac00 \ucc2c\uc131\ud588\uc9c0\ub9cc \uc2dc\ubbfc \uc804\uccb4\ub97c \ub300\ud45c\ud55c\ub2e4\uace0 \ubcf4\uae30 \uc5b4\ub835\ub2e4."
+     },
+     {
+      "text": "\uc2dc\ubbfc \ub300\ubd80\ubd84\uc774 \ucc2c\uc131\ud588\ub2e4\uace0 \ubcfc \uc218\ub294 \uc5c6\ub2e4. \uc804\ud654\uc870\uc0ac \uc751\ub2f5\uc790\uc758 60%\uac00 \ucc2c\uc131\ud588\ub2e4."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\uc2dc\ubbfc \ub300\ubd80\ubd84\uc774 \ucc2c\uc131\ud588\ub2e4.",
+      "why": "Treats the sample as all citizens."
+     },
+     {
+      "text": "60%\uac00 \ucc2c\uc131\ud588\ub2e4.",
+      "why": "Gives the number but names neither who answered nor any limit."
+     },
+     {
+      "text": "\uc804\ud654 \uc870\uc0ac\uc5d0\uc11c 60%\uac00 \ucc2c\uc131\ud588\ub2e4.",
+      "why": "Says it was a phone poll but names no limit of the poll."
+     }
+    ],
+    "humanReview": "Whether the sentence states the limit accurately and naturally needs a person."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Identifies limiting details",
+    "full": "Picks method and response rate and gives the reason",
+    "partial": "Picks one",
+    "none": "Picks size or margin of error"
+   },
+   {
+    "criterion": "Reports honestly",
+    "full": "Names the respondents and a limit",
+    "partial": "Names the respondents only",
+    "none": "Generalises to all citizens"
+   }
+  ],
+  "alternatives": [
+   "A learner may say that the margin of error still allows a majority; that is correct if the sample is random, and the limit is about whether it is.",
+   "Mentioning that the question wording is not shown is a good extra point."
+  ],
+  "hardCases": [
+   "Whether 8% response is 'bad' depends on whether non-respondents differ; the poll alone cannot say."
+  ],
+  "cautions": {
+   "language": "\ud45c\ubcf8\uc624\ucc28 (margin of error) and \uc751\ub2f5\ub960 (response rate) are fixed news terms; \u00b13.1%p reads 'plus or minus 3.1 percentage points'.",
+   "culture": "Poll descriptions with \ud45c\ubcf8\uc624\ucc28 and \uc2e0\ub8b0\uc218\uc900 appear in nearly all Korean news polls; the city and library are fictional.",
+   "accessibility": "Symbols are written out: \u00b1 = plus or minus, %p = percentage points."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice key",
+    "Respondent word, limit word, and absence of 'all citizens support'"
+   ],
+   "human": [
+    "Accuracy and naturalness of the reported sentence"
+   ]
+  },
+  "status": "draft"
+ }
+]

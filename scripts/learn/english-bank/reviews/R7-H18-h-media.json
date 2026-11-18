@@ -1,0 +1,66 @@
+{
+ "packet": "H18-h-media",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 7,
+  "questions": 80
+ },
+ "patches": [
+  {
+   "item": "9350c1b3",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What does the \"25% Less Sugar!\" claim actually compare?",
+      "o": [
+       "The cereal with all of the other cereals on the market",
+       "The cereal with fresh fruit",
+       "The new recipe with the company's earlier recipe",
+       "The amount of sugar in one box and in one bowl"
+      ],
+      "a": 2,
+      "why": "뒷면 작은 글씨에 자사의 이전 제품과 비교한 것이라고 나와요."
+     },
+     {
+      "q": "What is the main point made about the packaging?",
+      "o": [
+       "It breaks the official rules on how food must be labeled",
+       "It contains no information about the sugar in the cereal",
+       "It is aimed at adults who count the calories they eat",
+       "Its prominent claims can suggest more than the facts support"
+      ],
+      "a": 3,
+      "why": "규정 위반은 아니지만 소비자가 실제보다 건강하다고 생각하게 만든다는 지적이에요."
+     },
+     {
+      "q": "Which feature is a visual cue meant to attract families?",
+      "o": [
+       "The nutrition panel",
+       "The smiling child and golden field",
+       "The ingredient list",
+       "The small print on the back of the box"
+      ],
+      "a": 1,
+      "why": "웃는 아이와 황금빛 들판은 시각적 연출이에요."
+     },
+     {
+      "q": "Which detail most clearly weakens the \"Made With Whole Grains\" banner?",
+      "o": [
+       "The banner is printed in a bright green color",
+       "The box shows a smiling child next to the banner",
+       "Whole grains are only 14 percent of the contents",
+       "The words \"Natural Energy For Active Kids\" appear above the banner"
+      ],
+      "a": 2,
+      "why": "통곡물이 14%에 불과하다는 점이 문구의 인상을 약화시켜요."
+     }
+    ]
+   },
+   "why": "Strengthen q4 distractors; key unchanged at index 2.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 79,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

@@ -5,9 +5,9 @@ import { expect, test } from "@playwright/test";
  * translated copy. The main site runs on `localhost`; the learning sites on `math.localhost` / `english.localhost` (Chromium resolves *.localhost
  * to loopback). The Aircon service is NOT part of this release: the page must not offer it.
  */
-const PORT = 3100;
+const PORT = Number(process.env.PW_PORT ?? 3100);
 const MAIN = `http://localhost:${PORT}`;
-const ORDER = ["study", "jobHelp", "mobileHelp", "boiler", "housing", "cleaning", "hospitalHelp", "clog", "leakPlumbing", "bankHelp", "insuranceHelp"];
+const ORDER = ["study", "jobHelp", "mobileHelp", "boiler", "housing", "cleaning", "hospitalHelp", "clog", "leakPlumbing", "bankHelp", "insuranceHelp", "visaDocs"];
 const ids = (page: import("@playwright/test").Page) => page.locator("[data-service-id]").evaluateAll((els) => els.map((e) => e.getAttribute("data-service-id")));
 
 test.describe("Korean", () => {
@@ -21,14 +21,14 @@ test.describe("Korean", () => {
     await expect(page.getByTestId("home-card-aircon")).toHaveCount(0);
     expect(await page.getByTestId("home-card-study").evaluate((e) => e.tagName)).toBe("BUTTON");
     const tabs = page.locator("button.droplet-pill").filter({ hasText: /^(🌈|🔧|🤝)/ });
-    expect((await tabs.allTextContents()).map((t) => Number(t.match(/(\d+)\s*$/)?.[1]))).toEqual([11, 5, 6]);
+    expect((await tabs.allTextContents()).map((t) => Number(t.match(/(\d+)\s*$/)?.[1]))).toEqual([12, 5, 7]);
     await tabs.nth(1).click();
     expect(await ids(page)).toEqual(["boiler", "housing", "cleaning", "clog", "leakPlumbing"]);
     await tabs.nth(2).click();
-    expect(await ids(page)).toEqual(["study", "jobHelp", "mobileHelp", "hospitalHelp", "bankHelp", "insuranceHelp"]);
+    expect(await ids(page)).toEqual(["study", "jobHelp", "mobileHelp", "hospitalHelp", "bankHelp", "insuranceHelp", "visaDocs"]);
   });
 
-  test("Study chooser: two links to the learning sub-domains, Escape closes and returns focus, no /study request on the main host", async ({ page }) => {
+  test("Study chooser: three links to the learning sub-domains, Escape closes and returns focus, no /study request on the main host", async ({ page }) => {
     const studyRequests: string[] = [];
     page.on("request", (r) => { const u = new URL(r.url()); if (u.hostname === "localhost" && /^\/(study|api\/learn)/.test(u.pathname)) studyRequests.push(u.pathname); });
     await page.goto(`${MAIN}/`);
@@ -38,9 +38,9 @@ test.describe("Korean", () => {
     await expect(dialog).toContainText("수학 공부");
     await expect(dialog).toContainText("영어 공부");
     await expect(dialog).toContainText("한국어 공부");
-    await expect(page.getByTestId("study-link-korean")).toHaveAttribute("href", `http://korean.localhost:${PORT}`);
-    await expect(page.getByTestId("study-link-math")).toHaveAttribute("href", `http://math.localhost:${PORT}`);
-    await expect(page.getByTestId("study-link-english")).toHaveAttribute("href", `http://english.localhost:${PORT}`);
+    await expect(page.getByTestId("study-link-korean")).toHaveAttribute("href", `http://korean.localhost:${PORT}/ko`);
+    await expect(page.getByTestId("study-link-math")).toHaveAttribute("href", `http://math.localhost:${PORT}/ko`);
+    await expect(page.getByTestId("study-link-english")).toHaveAttribute("href", `http://english.localhost:${PORT}/ko`);
     await expect(page.getByTestId("study-link-math")).toBeFocused();
     await page.keyboard.press("Escape");
     await expect(dialog).toHaveCount(0);

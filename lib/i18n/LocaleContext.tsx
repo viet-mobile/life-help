@@ -100,6 +100,7 @@ export function resolveLocaleFromPath(pathname?: string | null): Locale | null {
   const lower = firstSegment.toLowerCase();
 
   // Explicit mappings required by LIFE.HELP routing
+  if (lower === "sg") return "fr";
   if (lower === "zt") return "zh-Hant";
   if (lower === "zs" || lower === "zh") return "zh-Hans";
 
@@ -175,6 +176,12 @@ function getClientLocaleSnapshot(): Locale {
   //    navigation and across country domains: the domain default never resets a manual choice.
   try {
     const saved = localStorage.getItem(STORAGE_KEY) || localStorage.getItem(LEGACY_STORAGE_KEY);
+    if (saved === "sg") {
+      localStorage.setItem(STORAGE_KEY, "fr");
+      localStorage.removeItem(LEGACY_STORAGE_KEY);
+      cachedLocale = "fr";
+      return "fr";
+    }
     if (saved && isValidLocale(saved)) {
       cachedLocale = saved;
       return saved;
@@ -305,7 +312,8 @@ export function LocaleProvider({
   }, [pathname]);
 
   useEffect(() => {
-    if (typeof document !== "undefined") {
+    // Learning sites set lang/dir on the server from their own locale source; do not overwrite it with the marketplace locale.
+    if (typeof document !== "undefined" && !document.documentElement.hasAttribute("data-learn")) {
       document.documentElement.lang = locale;
       const meta = languages.find((item) => item.code === locale);
       document.documentElement.dir = meta?.dir || "ltr";

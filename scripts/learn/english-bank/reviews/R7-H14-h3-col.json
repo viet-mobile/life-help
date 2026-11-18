@@ -1,0 +1,29 @@
+{
+ "packet": "H14-h3-col",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 7,
+  "questions": 46
+ },
+ "patches": [
+  {
+   "item": "18f6d69c",
+   "op": "set",
+   "set": {
+    "q": "Choose the word that best completes the sentence.\nThe mayor was under heavy ___ to resign after the scandal.",
+    "o": [
+     "pressure",
+     "weight",
+     "force",
+     "pillow"
+    ],
+    "a": 0,
+    "why": "under pressure는 '압박을 받는'이라는 뜻의 짝이에요. weight, force, pillow는 이 문맥에서 자연스럽지 않아요."
+   },
+   "why": "Explanation mismatch with options.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 45,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

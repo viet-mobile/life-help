@@ -212,7 +212,7 @@ export function ListenButton({ text }: { text: string }) {
   if (!voice) return (
     <>
       <p className="l-target-note" role="note" data-testid="no-voice">{t("listen.noVoice", { lang })}</p>
-      {target.code === "ko" && <TtsSettingsPanel t={t} code="ko" speech={target.speech} />}
+      <TtsSettingsPanel t={t} code={target.code === "ko" ? "ko" : "en"} speech={target.speech} />
     </>
   );
   return (
@@ -231,7 +231,7 @@ export function ListenButton({ text }: { text: string }) {
     >
       🔊 {site === "english" ? t("lesson.listen") : t("target.listen", { lang })}
     </button>
-    {target.code === "ko" && <TtsSettingsPanel t={t} code="ko" speech={target.speech} />}
+    <TtsSettingsPanel t={t} code={target.code === "ko" ? "ko" : "en"} speech={target.speech} />
     </>
   );
 }

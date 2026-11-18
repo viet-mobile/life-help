@@ -11,12 +11,14 @@ const scope = arg("scope", "all"), group = arg("group", null), onlyPacket = arg(
 const read = (p) => JSON.parse(fs.readFileSync(p, "utf8"));
 const served = read(path.join(root, "lib/learn/content/bank/english-draft.json")).questions;
 const pending = read(path.join(root, "lib/learn/content/bank/english-pending.json")).questions;
+const unlinkedPath = path.join(root, "lib/learn/content/bank/english-unlinked.json");
+const unlinked = fs.existsSync(unlinkedPath) ? read(unlinkedPath).questions : []; // reviewed but not in the catalog (e.h.*): still re-checkable
 const ledger = read(path.join(here, "ledger.json"));
 const sha = (s) => crypto.createHash("sha1").update(s).digest("hex").slice(0, 8);
 const idOf = (skill, it) => sha(`${skill}|${it.k}|${it.k === "m" ? `${it.q}|${it.o.join("|")}` : (it.en ?? it.good ?? it.title)}`);
 const items = new Map();
 for (const f of fs.readdirSync(path.join(here, "pools"))) { const pool = read(path.join(here, "pools", f)); for (const sec of pool.sections ?? [{ skill: pool.skill, items: pool.items }]) for (const it of sec.items) items.set(idOf(sec.skill, it), { packet: pool.packet ?? f.replace(/\.json$/, ""), skill: sec.skill, item: it }); }
-let qs = scope === "served" ? served : scope === "pending" ? pending : [...served, ...pending];
+let qs = scope === "served" ? served : scope === "pending" ? pending : [...served, ...unlinked, ...pending];
 const itemOf = (q) => q.id.split("-")[1];
 const rereview = process.argv.includes("--rereview"); // second look at items a reviewer patched (ledger verdict "patched")
 qs = qs.filter((q) => (rereview ? ledger.reviewed[itemOf(q)]?.verdict === "patched" : !ledger.reviewed[itemOf(q)]) && (!group || q.packet[0] === group) && (!onlyPacket || (onlyPacket.endsWith("*") ? q.packet.startsWith(onlyPacket.slice(0, -1)) : q.packet === onlyPacket)));

@@ -33,14 +33,15 @@ describe("Korean review pages (the gate is ReviewFrame; these exercise what is r
   it("start page lists every level, every language with its status, and the unreviewed notice", async () => {
     const out = html(await body(await StartPage({ params: Promise.resolve({ site: "korean" }) })));
     for (const l of ["K1", "K5", "K10"]) expect(out).toContain(`/review/${l}?lang=vi`);
-    expect(out).toContain('data-tier="partial"');
     expect(out).toContain('data-tier="complete"');
     expect(out).toContain("AI 번역");
     expect(out).not.toMatch(/검토 완료|reviewed: true/);
   });
   it("a fallback row says so", async () => {
-    const page = await loadReviewLevel("K2", "sg", { skill: "k.k2.greetings", limit: 100 });
-    const out = html(createElement(ReviewList, { rows: page.rows, locale: "sg" }));
+    const page = await loadReviewLevel("K2", "ar", { skill: "k.k2.greetings", limit: 100 });
+    // every language is complete now; a synthetic fallback row still has to be flagged honestly
+    const rows = page.rows.map((r, i) => (i === 0 ? { ...r, wording: "fallback" as const, fallback: ["g:test"] } : r));
+    const out = html(createElement(ReviewList, { rows, locale: "ar" }));
     expect(out).toContain("fallback to English");
   });
 });

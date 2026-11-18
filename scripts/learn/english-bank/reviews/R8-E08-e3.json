@@ -1,0 +1,51 @@
+{
+ "packet": "E08-e3",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 8,
+  "questions": 19
+ },
+ "patches": [
+  {
+   "item": "d5e52f6e",
+   "op": "set",
+   "set": {
+    "z": [
+     "wash their faces",
+     "brush their teeth",
+     "tie their shoes"
+    ]
+   },
+   "why": "Cloze 'Students ____ to learn.': all three distractors contained 'my', which clashes with the plural subject, so the key was the only option without 'my' (answer cue). Distractors now fit grammatically but not in meaning.",
+   "severity": "minor"
+  },
+  {
+   "item": "59df8e01",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "Ordering question: 'I brush my teeth and wash my face.' uses the same words and is an equally valid arrangement.",
+   "severity": "minor"
+  },
+  {
+   "item": "e21968be",
+   "op": "set",
+   "set": {
+    "q": "It is nine at night. What do you do before bed?",
+    "o": [
+     "I eat breakfast.",
+     "I brush my teeth.",
+     "I go to school.",
+     "I get up."
+    ],
+    "a": 1,
+    "why": "밤에 자기 전에는 이를 닦아요. 아침 식사, 등교, 일어나기는 아침에 하는 일이에요."
+   },
+   "why": "Item was a restatement of vocab item b86679e4's cloze (same stem idea and same distractors); replaced by a different routine question (identity q/o changed).",
+   "severity": "minor"
+  }
+ ],
+ "ok": 12,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

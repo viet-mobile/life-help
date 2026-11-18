@@ -8,6 +8,7 @@ export type CountryCode =
   | "YE" | "IQ" | "BD" | "US" | "GB" | "CA" | "AU"
   | "NZ" | "SG" | "MY" | "NG" | "SV" | "CF" | "VE"
   | "KE" | "AR"
+  | "RO" | "FI" | "CZ" | "HU" | "ZM" | "UG" | "CG" | "GH" | "MZ"
   | string;
 
 export interface CountryInfo {
@@ -77,10 +78,19 @@ export const COUNTRIES: readonly CountryInfo[] = [
   { code: "MY", slug: "malaysia", flag: "🇲🇾", nameKo: "말레이시아", nameEn: "Malaysia", nameNative: "Malaysia", level1Category: "Negeri", level2Category: "Daerah", level3Category: "Mukim" },
   { code: "NG", slug: "nigeria", flag: "🇳🇬", nameKo: "나이지리아", nameEn: "Nigeria", nameNative: "Nigeria", level1Category: "State", level2Category: "LGA", level3Category: "Ward" },
   { code: "SV", slug: "elsalvador", flag: "🇸🇻", nameKo: "엘살바도르", nameEn: "El Salvador", nameNative: "El Salvador", level1Category: "Departamento", level2Category: "Municipio", level3Category: "Distrito / Colonia" },
-  { code: "CF", slug: "centralafrica", flag: "🇨🇫", nameKo: "중앙아프리카공화국", nameEn: "Central African Republic", nameNative: "Ködörösêse tî Bêafrîka", level1Category: "Préfecture", level2Category: "Sous-préfecture", level3Category: "Quartier" },
+  { code: "CF", slug: "centralafrica", flag: "🇨🇫", nameKo: "중앙아프리카공화국", nameEn: "Central African Republic", nameNative: "République centrafricaine", level1Category: "Préfecture", level2Category: "Sous-préfecture", level3Category: "Quartier" },
   { code: "VE", slug: "venezuela", flag: "🇻🇪", nameKo: "베네수엘라", nameEn: "Venezuela", nameNative: "Venezuela", level1Category: "Estado", level2Category: "Municipio", level3Category: "Parroquia / Sector" },
   { code: "KE", slug: "kenya", flag: "🇰🇪", nameKo: "케냐", nameEn: "Kenya", nameNative: "Kenya", level1Category: "County", level2Category: "Sub-county / Town", level3Category: "Ward / Area" },
   { code: "AR", slug: "argentina", flag: "🇦🇷", nameKo: "아르헨티나", nameEn: "Argentina", nameNative: "Argentina", level1Category: "Provincia", level2Category: "Departamento / Partido / Comuna", level3Category: "Localidad / Barrio" },
+  { code: "RO", slug: "romania", flag: "🇷🇴", nameKo: "루마니아", nameEn: "Romania", nameNative: "România", level1Category: "Județ", level2Category: "Municipiu / Oraș", level3Category: "Cartier / Sat" },
+  { code: "FI", slug: "finland", flag: "🇫🇮", nameKo: "핀란드", nameEn: "Finland", nameNative: "Suomi", level1Category: "Maakunta", level2Category: "Kunta / Kaupunki", level3Category: "Kaupunginosa / Kylä" },
+  { code: "CZ", slug: "czechia", flag: "🇨🇿", nameKo: "체코", nameEn: "Czechia", nameNative: "Česko", level1Category: "Kraj", level2Category: "Okres / Obec", level3Category: "Část obce" },
+  { code: "HU", slug: "hungary", flag: "🇭🇺", nameKo: "헝가리", nameEn: "Hungary", nameNative: "Magyarország", level1Category: "Vármegye", level2Category: "Járás / Település", level3Category: "Városrész" },
+  { code: "ZM", slug: "zambia", flag: "🇿🇲", nameKo: "잠비아", nameEn: "Zambia", nameNative: "Zambia", level1Category: "Province", level2Category: "District", level3Category: "Town / Area" },
+  { code: "UG", slug: "uganda", flag: "🇺🇬", nameKo: "우간다", nameEn: "Uganda", nameNative: "Uganda", level1Category: "Region", level2Category: "District / City", level3Category: "Town / Area" },
+  { code: "CG", slug: "congo", flag: "🇨🇬", nameKo: "콩고공화국", nameEn: "Republic of the Congo", nameNative: "République du Congo", level1Category: "Département", level2Category: "District / Commune", level3Category: "Quartier / Village" },
+  { code: "GH", slug: "ghana", flag: "🇬🇭", nameKo: "가나", nameEn: "Ghana", nameNative: "Ghana", level1Category: "Region", level2Category: "District / Municipal", level3Category: "Town / Area" },
+  { code: "MZ", slug: "mozambique", flag: "🇲🇿", nameKo: "모잠비크", nameEn: "Mozambique", nameNative: "Moçambique", level1Category: "Província", level2Category: "Distrito", level3Category: "Posto Administrativo / Localidade" },
 ] as const;
 
 export function getCountryInfo(code: CountryCode | undefined | null): CountryInfo {
@@ -92,70 +102,10 @@ export function getCountryInfo(code: CountryCode | undefined | null): CountryInf
 
 /**
  * Country names from CLDR for locales whose browser ICU build has no (or incomplete) region names: Chrome ships no
- * region data for sg, mn, ne, km, my, si and only partial data for pa, so these are kept as data instead of falling
+ * region data for mn, ne, km, my, si and only partial data for pa, so these are kept as data instead of falling
  * back to another language. (tet -> pt and arz -> ar use the fallback rule below.)
  */
 const CLDR_COUNTRY_NAMES: Readonly<Record<string, Readonly<Record<string, string>>>> = {
-  sg: {
-    KR: "Korëe tî Mbongo",
-    VN: "Vietnäm",
-    CN: "Shîna",
-    TW: "Tâiwâni",
-    JP: "Zapöon",
-    PH: "Filipîni",
-    ID: "Ênndonezïi",
-    RU: "Rusïi",
-    UZ: "Uzbekistäan",
-    NP: "Nëpâli",
-    IN: "Ênnde",
-    KH: "Kämbôzi",
-    TH: "Tailânde",
-    MM: "Myämâra",
-    LK: "Sirî-Lanka",
-    KZ: "Kazakisitäan",
-    FR: "Farânzi",
-    DE: "Zâmani",
-    TR: "Turukïi",
-    UA: "Ukrêni",
-    TL: "Timôro tî Tö",
-    AE: "Arâbo Emirâti Ôko",
-    IT: "Italùii",
-    EG: "Kâmitâ",
-    ES: "Espânye",
-    IR: "Iräan",
-    NL: "Holände",
-    PL: "Pölôni",
-    ET: "Etiopïi",
-    SE: "Suêde",
-    IL: "Israëli",
-    DK: "Danemêrke",
-    NO: "Nörvêzi",
-    MN: "Mongolïi",
-    MX: "Mekisîki",
-    BR: "Brezîli",
-    GR: "Gerêsi",
-    PT: "Pörtugäle",
-    ZA: "Mbongo-Afrîka",
-    CH: "Sûîsi",
-    PK: "Pakistäan",
-    SA: "Saûdi Arabïi",
-    YE: "Yëmêni",
-    IQ: "Irâki",
-    BD: "Bengladêshi",
-    US: "ÂLeaa-Ôko tî Amerika",
-    GB: "Ködörögbïä-Ôko",
-    CA: "Kanadäa",
-    AU: "Ostralïi",
-    NZ: "Finî Zelânde",
-    SG: "Sïngäpûru",
-    MY: "Malezïi",
-    NG: "Nizerïa",
-    SV: "Salvadöro",
-    CF: "Ködörösêse tî Bêafrîka",
-    VE: "Venezueläa",
-    KE: "Kenyäa",
-    AR: "Arzantîna",
-  },
   pa: {
     KR: "ਦੱਖਣੀ ਕੋਰੀਆ",
     VN: "ਵੀਅਤਨਾਮ",
@@ -518,8 +468,8 @@ const CLDR_COUNTRY_NAMES: Readonly<Record<string, Readonly<Record<string, string
   },
 };
 
-/** Locales without ICU region-name data, mapped to the closest locale that has it (tet: Portuguese is co-official in Timor-Leste; sg: French is co-official in the Central African Republic). */
-const DISPLAY_NAME_LOCALE_FALLBACKS: Record<string, readonly string[]> = { tet: ["pt"], arz: ["ar"], sg: ["fr"] };
+/** Locales without ICU region-name data, mapped to the closest locale that has it (tet: Portuguese is co-official in Timor-Leste). */
+const DISPLAY_NAME_LOCALE_FALLBACKS: Record<string, readonly string[]> = { tet: ["pt"], arz: ["ar"] };
 
 /**
  * Returns ONLY the localized country name (WITHOUT flag prepended),

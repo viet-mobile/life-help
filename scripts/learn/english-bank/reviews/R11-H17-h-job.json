@@ -1,0 +1,60 @@
+{
+ "packet": "H17-h-job",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 11,
+  "questions": 36
+ },
+ "patches": [
+  {
+   "item": "c0f73bf4",
+   "op": "set",
+   "set": {
+    "q": "Choose the correct word: “Her valuable ___ to the team meeting surprised everyone.”",
+    "o": [
+     "contribution",
+     "contribute",
+     "contributed",
+     "contributing"
+    ],
+    "a": 0,
+    "why": "소유격 her와 형용사 valuable 뒤에는 명사가 와야 하므로 contribution이에요."
+   },
+   "why": "Identity field q changed: the old stem allowed possessive + gerund 'Her contributing ...'; an adjective now forces a noun.",
+   "severity": "major"
+  },
+  {
+   "item": "600b06cb",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "Alternative natural order ('whose résumé most impressed us') -> no ordering question.",
+   "severity": "major"
+  },
+  {
+   "item": "244531af",
+   "op": "set",
+   "set": {
+    "bad": [
+     "She is interested on working for an international company.",
+     "She is interested in to work for an international company.",
+     "She is interested in worked for an international company."
+    ],
+    "cz": {
+     "st": "She is interested in ___ for an international company.",
+     "ok": "working",
+     "wr": [
+      "to work",
+      "worked",
+      "to working"
+     ]
+    }
+   },
+   "why": "Old distractor/wrong form 'work' (noun) gives a grammatical sentence; replaced with clearly wrong forms.",
+   "severity": "major"
+  }
+ ],
+ "ok": 32,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

@@ -1,0 +1,486 @@
+{
+ "reviewer": "AI independent reviewer (not teacher, not learner)",
+ "tasks": [
+  {
+   "id": "m-01",
+   "Q1": {
+    "v": "concern",
+    "e": "s3 correct option 'a' is the only threshold statement and the longest; hint 2 of s2 ('곱하는 수를 1일 때, 1보다 작은 소수일 때') and hint 2 of s3 ('1.2, 1, 0.9') hand over the whole idea (the number 1), so s3 is solvable from hints/cues; s1 is the only 'conclusion' sentence (그러므로/항상). The counterexample build step (s2) itself needs real reasoning."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "Build checker is right (8x0.5, 6x1 pass; 0, negative, non-integer a, same b rejected; run through checkBuild). But s4 write checks pass wrong answers: '맞아요 항상 커져요 ... 3×4=12는 3보다 크고 1보다 크니까' and '소수를 곱하면 항상 작아져 ... 1보다 작은 수만 곱해야 커져' tick all three boxes (w2 matches '작아/같은', w3 matches '1보다'). Also a*b<=a uses 1e-9 tolerance so b=1.0000000001 is accepted as 'not bigger'."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Short text, decimals only; 5-6 grade multiplication is enough. Minor: the build asks decimals only, so b=1 (an integer) may feel disallowed."
+   },
+   "Q4": {
+    "v": "concern",
+    "e": "s3 wrong options have good 'reveals' (자연수에는 1도 있어요 etc.). But pickLine s1 gives no message on a wrong pick (checkPickLine returns ''), and hints 2 of s2/s3 are near-answers rather than actions (they name 1 and 0.9)."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "'Examples cannot prove always; look for the kind of case not tested; find the condition' transfers to any universal claim (e.g. 'division makes smaller')."
+   },
+   "defects": [
+    "Hint text 'm-01 s2 h2: 곱하는 수를 1일 때, ...' is ungrammatical (should be '곱하는 수가 1일 때') and gives away the threshold."
+   ],
+   "suggestedFixes": [
+    "Make s2 hint 2 'try a multiplier you have not tried yet, e.g. something not whole'; make s3 hint 2 ask to tabulate 8×(several multipliers) without naming 1.",
+    "Add a negation/claim check to s4: require both a number AND a sentence containing 아니/않 together with 항상, or drop w2's bare '작은/같은' alternatives.",
+    "Show a message for wrong pickLine picks (e.g. 'this line is a correct calculation')."
+   ],
+   "cueSolvableSteps": [
+    "s3 (partial: only option naming 1; also longest)",
+    "s1 (partial: only conclusion line)"
+   ],
+   "blindResult": "All 4 steps matched the key (s1 idx3, s2 rows pass, s3 a, s4 comparable to model). s3 was reachable by cue."
+  },
+  {
+   "id": "m-02",
+   "Q1": {
+    "v": "concern",
+    "e": "s1 needs real reading (나 has a distractor, 다 lacks 학생 수). s2 is easy by elimination: c repeats a fact in 다), b asks for the answer itself, d is rental fee; correct 'a' is the only option about the missing quantity. s3/s4 need reasoning."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "s3 build verified (19..27 pass, 18/28/20.5 and duplicates rejected). s4 w1/w2 false rejections: '3대로는 28명을 다 못 태워요. 꽉 채워도 27명이니까 하나 더 있어야 해요.' fails both checks; '28을 9로 나누면 3이고 1이 남는데 남은 사람도 타야 하니까 차가 더 있어야 돼요' fails w2 (no '4대/한 대 더/더 필요'). False acceptances: '3.11이니까 반올림하면 3대인데 남는 사람이 없으니 3대면 돼요 4대는 필요 없어요' (wrong) passes both because it contains 남 and 4대; 'vague 남는 사람이 있으니까 4대인 것 같은데 이유는 모르겠어요' passes. s1 key: 나) is solvable (56000) - a student excluding 나) because 'rental fee is the unknown' is plausible but covered in alternatives."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Three short parallel stems; 3-4 grade division with remainder. The 가)/나)/다) text-labelled options work in the UI (ids are not displayed, but the labels are the text)."
+   },
+   "Q4": {
+    "v": "concern",
+    "e": "Only option c of s1 has a reveal. Under-selection ([a] only, i.e. excluding 나) returns an EMPTY message (verified) although it is the likeliest error (thinking a problem with a distractor is unsolvable). s2 reveals are good."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "'What quantity is asked / is every needed quantity given; round up when leftover must still be handled' transfers well (ceil in packing problems)."
+   },
+   "defects": [
+    "s1 gives no feedback for omitting 나) (the distractor-tolerance idea is the core of the task)."
+   ],
+   "suggestedFixes": [
+    "Add an explicit message when a correct id is missing (e.g. checkChoose: list which correct options were not chosen)  or reveals on 나) tied to 'extra info does not make it unsolvable'.",
+    "Loosen s4 w1/w2: add '못\\s*태|다\\s*못|더\\s*있|27' to w1 and '더\\s*있|차가\\s*더|한\\s*대' to w2; add a check that rejects '4대는 필요 없' style (mode none on '필요\\s*없')."
+   ],
+   "cueSolvableSteps": [
+    "s2 (partial: elimination)"
+   ],
+   "blindResult": "All steps matched key (s1 a,b; s2 a; s3 19..27; s4 27/leftover reasoning)."
+  },
+  {
+   "id": "m-03",
+   "Q1": {
+    "v": "defect",
+    "e": "Stage 1 and 2: the correct option is always the long hedged sentence (33 vs 22/23/18 chars; 45 vs 30/12) and is option b both times; the other options are overclaims, gambler's fallacy or 'nothing can be known'. A test-wise student gets both without looking at the numbers. Only stage 3 needs the ratio, and hint 2 ('0.4이면 4개') hands over the mapping."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "Stage 3 asks for the 'most probable' count but reasonable=['c','b']; 5/5 (p=.5, 19/50 is ~1.7 sd away) is accepted as reasonable, so the question wording ('가장') and the key disagree. Stage 1 option d ('5번으로는 아무것도 알 수 없다') is rejected although a cautious student may defend it. s2 w1 false rejections: '50번 한 결과를 보면 파랑이 많았으니까 5번 결과는 믿기 어려워' and '표본이 작으니 결과를 확신하면 안 돼. 반복하면 더 믿을 만해져' fail w1; false accepts: '빨강이 많은 것 같지만 조금 불안해', '확실히 빨강이 더 많아 아직 모르는 건 없어', '이제 파랑이 나올 차례니까 ... 적은 횟수 때문이야' (gambler's fallacy) all pass (w1 matches 조금/아직/적)."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Short; percentages/decimal comparison at 5-6 grade; sentences instead of table."
+   },
+   "Q4": {
+    "v": "ok",
+    "e": "Wrong options carry specific reveals (gambler's fallacy, anchoring on first 5 draws, 'hardly any info'); 'after' text compares stages; reflect prompt asks about changed judgement. Hints are actions (compute ratio) though hint 2 gives the 0.4-4 mapping."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "'Confidence should scale with sample size; update when data grows; don't expect alternation' transfers to polls, experiments."
+   },
+   "defects": [
+    "Stage 1/2 solvable by 'longest hedged option' cue (authoring rule 2 violated).",
+    "Stage 3 question says 가장 높은 but accepts two answers."
+   ],
+   "suggestedFixes": [
+    "Rewrite stage 1/2 so every option is a hedged, similar-length claim and differ in what they weigh (e.g. 'likely red but 5 draws may be luck' vs 'likely blue because 4 reds already came, blue is due' with equal length), and randomise position.",
+    "Change the stage-3 ask to 'which counts are plausible' (multi) or drop 'b' from reasonable.",
+    "Remove '0.4이면 4개' from hint 2; ask 'what fraction of 10 would be red if ratio were 0.4/0.5/0.3?'.",
+    "Loosen w1 with 표본|반복|믿|근거 and add a none-check on 확실히|맞아."
+   ],
+   "cueSolvableSteps": [
+    "s1 stage 1 (length+hedge)",
+    "s1 stage 2 (length+hedge)",
+    "s1 stage 3 (partial via hint 2)"
+   ],
+   "blindResult": "All matched key (b, b, c). Stage 1-2 were answerable by cue alone."
+  },
+  {
+   "id": "m-04",
+   "Q1": {
+    "v": "defect",
+    "e": "s2: the correct option is the longest (45 vs 38/31/34) and the only methodical one; c and d are straw men ('다른 방법은 없다고 보고 곧바로 마친다', '세 종류의 개수를 똑같이 줄이고'). It is solvable from the word '빠짐없이/차례로' alone. s1 and s3 are genuine reasoning."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "Build verified: exactly 6 valid rows exist (enumerated with the real checker: (2,7,2),(4,4,2),(1,6,4),(3,3,4),(2,2,6),(1,1,8)); (6,1,2) correctly rejected by >=10; duplicates rejected. s3 w1 requires the literal words 짝수|홀수: valid arguments via multiples fail, e.g. '600과 400은 둘 다 200의 배수라서 합도 200의 배수야. 5000-500=4500은 200의 배수가 아니니까 음료 1병은 안 돼' fails w1; a table-based argument ('음료 1병이면 남은 돈 4500원인데 600a+400b는 200으로 나누어 떨어져야...') fails w1+w2. Wrong claims pass: '홀수 병은 있어요. 짝수 홀수는 상관없고 더하면 5000원 돼요 홀수 가능해요' passes both checks."
+   },
+   "Q3": {
+    "v": "concern",
+    "e": "Level 1 (3-4 grade prerequisite) but s1 needs three unknowns with an equality and a >= condition, and s3 needs a parity argument over a sum of multiples; many 초등 students will only reach 'try and see'. Material is long (4 numbers + 3 conditions) for the age."
+   },
+   "Q4": {
+    "v": "ok",
+    "e": "s2 wrong options have reveals that explain why each method fails; build constraint messages (fail text) tell which condition broke. Hints are actions (fix one kind, vary by one)."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "'Systematic enumeration by fixing one variable' and 'parity/divisibility rules out whole cases' transfer to many constraint problems."
+   },
+   "defects": [
+    "s2 correct option is longest and the only systematic one (cue-solvable).",
+    "s3 write check rejects valid divisibility-by-200 arguments and accepts a statement that denies the claim."
+   ],
+   "suggestedFixes": [
+    "Make s2 options equal length and each plausible: e.g. 'fix 음료 병 수 and vary', 'fix 과자 and vary', 'try random', all with different completeness; ask which finds all.",
+    "Replace s3 w1 with patterns for 짝수|홀수|배수|나누어|200|나머지; add a mode-none check on '가능해|있어요' conclusions.",
+    "Consider moving the parity challenge to level 2 or marking it optional (scaffold false/optional)."
+   ],
+   "cueSolvableSteps": [
+    "s2 (strong: longest, only systematic wording)"
+   ],
+   "blindResult": "All matched key (6 solutions; s2 a; parity reasoning). s2 was answerable by cue."
+  },
+  {
+   "id": "m-05",
+   "Q1": {
+    "v": "concern",
+    "e": "s2: correct 'c' is the longest (44 vs 31/26/21) and the only 'it depends' answer; with the flip visible in the table it is a one-glance step. s1 (5 statements, 3 true) needs row-by-row reading; e (4000 vs 6000 per 4GB) needs a computation. s3 needs arithmetic only (19000 vs 18000)."
+   },
+   "Q2": {
+    "v": "defect",
+    "e": "s3 check w1 ('B가 더 싸다는 결론을 말했다') ticks for answers recommending A: 'A를 추천해요. 10GB에서 B는 비싸서 A가 19000원으로 싸요' and 'A가 더 싸요. 10GB면 A는 1000원씩이고 B는 1500원씩이라 1000이 더 싸요' both pass all three checks (B ... 싸/비싸 is matched, '비싸' contains '싸'). Also w2 rejects valid answers without 'GB' ('10을 쓰면 B가 싸요. 8과 12 사이...', '열 기가면 ...'). Choose steps are fine (key a,b,d / c verified by recomputation: A(12)=21000=B(12))."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Pipe-delimited table is plain text (screen-reader OK), 2 plans, plain arithmetic; level-2 prerequisite (linear expressions) is needed only to compute, not to read."
+   },
+   "Q4": {
+    "v": "ok",
+    "e": "s1/s2 wrong options have reveals that point to the exact table cell to re-inspect (0GB, 16GB, 20GB); good diagnostic of single-condition thinking (단가만/기본요금만)."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "'Compare two linear costs: who wins depends on where the lines cross; reading a table gives evidence only at listed points' transfers to any plan/price comparison."
+   },
+   "defects": [
+    "s3 w1 conclusion check can tick for the wrong plan (A).",
+    "s2 correct option is the longest and only conditional answer."
+   ],
+   "suggestedFixes": [
+    "Make w1 anchored on a recommendation phrase: e.g. patterns '(?<![A-Za-z])B(?![A-Za-z])\\s*(요금제)?\\s*(를|가|이|을)?\\s*(추천|더\\s*싸|유리|선택)' and add a none-check for '(?<![A-Za-z])A(?![A-Za-z])\\s*(요금제)?\\s*(를|가|이)?\\s*(추천|더\\s*싸|유리)'.",
+    "Allow '10' without GB in w2 ('10\\s*(gb|g|기가|지비)?' or '열\\s*기가').",
+    "Give s2 options equal length (pad jisu/minho with the numbers they would cite)."
+   ],
+   "cueSolvableSteps": [
+    "s2 (partial: only conditional claim, longest)"
+   ],
+   "blindResult": "All matched key (a,b,d; c; B at 10GB 19000 vs 18000)."
+  },
+  {
+   "id": "m-06",
+   "Q1": {
+    "v": "concern",
+    "e": "The task title ('양변을 x로 나누었더니 해가 하나 사라졌다') and material ('해가 모두 구해지지 않았어요') announce the error before the student looks; s1 reduces to 'find the only line with an operation applied', hint 2 tells to substitute x=0. s2 is mostly dictated. The real reasoning is in s3 (derive c=0, b!=0)."
+   },
+   "Q2": {
+    "v": "defect",
+    "e": "s1 prompt parenthetical is self-contradictory: '여러 줄이 틀려 보이면 가장 먼저 틀린 줄이 아니라 원인이 되는 줄을 골라도 돼요' - the cause line (2nd line) IS the first wrong line; the key accepts [1,3] (cause and the wrong conclusion) so the sentence should say 'the conclusion line also counts'. s2 write: w2 false rejections for valid explanations without 나누/나눌/나눈: '해는 0과 3이야. x가 0인 경우를 약분해서 없애 버렸기 때문에...', '양변의 x를 지워서 소거하면 x=0일 때를 무시하게 돼'. False acceptances: '해는 3 하나뿐이고 0으로 나눌 수 없으니 0은 해가 아니에요 그래서 서연이 맞아요' and '해는 0이야. 3은 아니야. 나누기를 하면 안 돼서 3은 틀려' pass (w1 'all' of the characters 0 and 3 is trivially satisfied). s3 build verified, incl. float cases (1/3 vs 2/6, 1/7 vs 2/14 correctly deduped; (1,-3,0)/(2,-6,0)/(-1,3,0) same equation; b=0 and a=0 rejected)."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Short; unicode '²' in text. Requires middle-3 factoring but task notes it. Single sentence prompts."
+   },
+   "Q4": {
+    "v": "concern",
+    "e": "pickLine returns an empty message for a wrong pick, so picking line 3 ('x=3을 대입...') - the revealing misconception that checking one root proves completeness - gets no diagnostic until a correct pick (explain mentions it only in the match message). Other steps fine."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "'Never divide by an expression that can be 0; factor instead' and 'a check of one root does not prove no other roots' transfer to many equations (|x|, x^3=x, trigonometric)."
+   },
+   "defects": [
+    "s1 prompt parenthetical is logically wrong/confusing Korean.",
+    "Title + material leak the error and its cause."
+   ],
+   "suggestedFixes": [
+    "Replace the parenthetical with '(마지막 줄처럼 틀린 결론이 나온 줄을 골라도 돼요. 원인이 되는 줄도 정답이에요.)' or ask 'which line first goes wrong?'.",
+    "Retitle: '서연이의 풀이를 점검해 보자'; remove '해가 모두 구해지지 않았어요' from material or keep it only in the teacher quote after s1.",
+    "Add reveals for pickLine wrong picks (per-line message) in the data model.",
+    "w2: add 약분|소거|지우|없애|x로\\s*(나|묶) to patterns; make w1 stricter (x\\s*=?\\s*0 and x\\s*=?\\s*3 or '0\\s*(과|또는|,|이랑)\\s*3')."
+   ],
+   "cueSolvableSteps": [
+    "s1 (title leak; only line with an operation)"
+   ],
+   "blindResult": "s1 idx1 (key [1,3]) ok; s2 x=0,3 with division-by-zero explanation ok; s3 rows pass the checker."
+  },
+  {
+   "id": "m-07",
+   "Q1": {
+    "v": "concern",
+    "e": "s1 is trivial: a and c are absolute claims ('같으면 ... 같다'), b is the only 'may differ' sentence; premise sentence is a strawman. s2 is a real construction (sum 210 and range gap >= 20 need reasoning). s3 is open generation."
+   },
+   "Q2": {
+    "v": "defect",
+    "e": "s2 'two different combinations' is checked by the whole 6-tuple, so permuting the same scores counts as a new example: [{70,70,70,40,70,100},{70,70,70,100,70,40}] and [{...,40,70,100},{...,70,40,100}] return done=true (verified). The goal 'serve as two different examples' is not met. s3: w1 matches '까' (e.g. 그러니까) so non-questions pass: '평균이 같으니까 점수도 같아요. 정답 70 이에요 둘 다.' passes all; '질문: 1반이 더 잘해요?? 정답: 1반 70점이 더 잘하는 것 같아요' passes (the model's own bad answer is different so tests do not catch it); a wrong answer to the student's own question ('최고점이 높은 반은? 정답: 1반 (70)') passes. False rejections: '두 반 중 최저점이 더 낮은 반은 어디? → 2반 (40점)' and 'Q. ... A. 60점' fail w3 (needs 정답/답)."
+   },
+   "Q3": {
+    "v": "concern",
+    "e": "Six numeric inputs labelled '1반 학생1..2반 학생3' with constraints inferred from prose (sum 210 requires knowing mean x 3); material says '두 모둠' while the prompt says '두 반' (inconsistent). Otherwise light."
+   },
+   "Q4": {
+    "v": "ok",
+    "e": "s1 reveals explain why a/c fail using concrete 70,70,70 vs 40,70,100 (although that example also gives away s2's solution); build fail messages are specific (합이 210이 아니에요...)."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "'Same mean, different spread; a summary statistic hides distribution' transfers; making a question whose answer is determined by data is a transferable skill."
+   },
+   "defects": [
+    "s2 distinctness is by tuple so permutations count as different examples.",
+    "s3 w1/w3 accept non-questions and wrong answers (surface check ticks '질문의 형태이다' for the word 그러니까).",
+    "Teacher's quote '점수는 똑같네요' is an artificial strawman and '모둠/반' inconsistent."
+   ],
+   "suggestedFixes": [
+    "Use distinctBy such as 'min(d,e,f)*1000000+max(d,e,f)*1000+min(a,b,c)' combined with sums (or require the (min,max) pair of both classes to differ), i.e. compare sorted values; or add a constraint that the two examples differ in max(d,e,f)-min(d,e,f).",
+    "Change w1 to require '\\?' or '(일까|인가|무엇|어느|누구|몇)' only, drop '까'; accept 'A\\.|→|=>' in w3.",
+    "Unify to '두 반'."
+   ],
+   "cueSolvableSteps": [
+    "s1 (strong: only non-absolute claim)"
+   ],
+   "blindResult": "All matched key (s1 b; s2 rows pass; s3 my question+answer plausible). s1 is cue-solvable."
+  },
+  {
+   "id": "m-08",
+   "Q1": {
+    "v": "ok",
+    "e": "s1 needs the actual inequality check; s2 needs all three (need=3 equals the full solution set, verified by enumeration) so guessing cannot succeed; s3 asks for a method. Only mild issue: s1 option c ('직접 그려 보기 전에는 알 수 없다') is a throwaway distractor."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "Build verified: [(2,5,5),(3,4,5),(4,4,4)] done; permutations count as duplicates (distinctBy a*b*c); (3,3,6),(1,5,6) rejected; no product collision among valid triangles. s3 w1 is too loose: '그냥 이것저것 해 보았는데 경우가 3개 나온 것 같아요 더 있을 수도 있어요' and '경우가 많아서 못 세어요 아마 7가지쯤' pass (w1 matches 경우, w2 any digit). Valid explanation without trigger words fails: '변 하나를 정하고 나머지 합을 쪼갰어 3,4,5를 먼저 찾고 5,5,2 4,4,4 모두 3개 확인함' fails w1."
+   },
+   "Q3": {
+    "v": "ok",
+    "e": "Material is two sentences; 'perimeter 12' small numbers; triangle inequality is discovered in s1 (hint gives physical model)."
+   },
+   "Q4": {
+    "v": "ok",
+    "e": "s1 reveals separate 'perimeter matches' from 'triangle closes'; build fail message points to compare longest side with the other two; hints are actions."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "Strong: 'order the cases by the largest element, bound it (>= perimeter/3, < perimeter/2), enumerate' transfers to integer-partition problems."
+   },
+   "defects": [],
+   "suggestedFixes": [
+    "Strengthen s3 w1 with required co-occurrence of a case-split word and a bound (e.g. mode all: (가장\\s*(긴|짧)|제일|순서|차례|경우) AND (\\d)) and a none-check for '것\\s*같|아마|더\\s*있을'.",
+    "Add 'first row' scaffolding message when the student enters fewer than 3 (e.g. 'there are more; how can you be sure?')."
+   ],
+   "cueSolvableSteps": [],
+   "blindResult": "All matched key (s1 b; the three triangles; systematic explanation)."
+  },
+  {
+   "id": "m-09",
+   "Q1": {
+    "v": "concern",
+    "e": "Stage 1/2/3 answers are intervals; the unique moderate interval is correct in stages 1 and 3 ('약 20~35%'/ '약 40%' vs extremes 90+/5/1/85), and stage 1's wrong 'a' is the textbook base-rate trap, so a student who knows 'the answer is lower than you think' gets 2 of 3 without computing. Stage 1 correct is also the longest option. Real computation is needed to be sure of stages 2-3; the hint (1000 items) makes it feasible."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "Keys recomputed: P(불량|양성)=18/67=26.9%; two positives 16.2/18.65=86.9%; ++- 1.62/3.9475=41.0% - all correct. Write s2: w2 requires a digit, so a correct purely conceptual explanation ('불량은 아주 적어서 양성이 나와도 정상품일 가능성이 더 크다 ... 정상 제품이 많거든') fails w2; w1 matches 'wrong' answers: '검사기 정확도 90%니까 양성이면 불량일 확률이 90%야 정상은 훨씬 많아도 상관없어 98개 1000개' passes. The sentence '같은 제품을 여러 번 검사해도 각 검사의 결과는 서로 영향을 주지 않는다고 가정(독립)' reads as unconditional independence, which is false here (results are correlated through the product's true state) and contradicts the updating in stages 2-3; it must say 'given whether the product is defective'."
+   },
+   "Q3": {
+    "v": "concern",
+    "e": "Level 3 but dense: four probabilities, three stages, vocabulary 양성/음성/독립 in a 5-line paragraph; each stage needs a multi-step natural-frequency computation (stage 3 needs 0.9x0.9x0.1 vs 0.05x0.05x0.95). 15 min is tight if the student computes all three stages."
+   },
+   "Q4": {
+    "v": "ok",
+    "e": "Every wrong option has a targeted reveal (confusing P(양성|불량) with P(불량|양성); 'testing again is useless'; ignoring the miss rate), 'after' texts show the 1000-item counts, reflect prompt asks for the 27->87->41 path. Hints are actions."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "Base-rate neglect and sequential updating transfer to screening, spam filters, etc. Factory (not medical) context is a deliberate choice."
+   },
+   "defects": [
+    "Independence sentence is mathematically imprecise (needs 'conditional on the true status')."
+   ],
+   "suggestedFixes": [
+    "Reword: '불량인지 정상인지가 정해져 있을 때, 같은 제품의 각 검사 결과는 서로 영향을 주지 않는다고 가정해요.'",
+    "Randomise option order / make interval widths comparable so the moderate-option heuristic does not work; add a decoy interval near 40-60 in stage 1 (e.g. 40-55%).",
+    "w2: accept 비율|배|많|적 as numeric-free evidence; w1: add a none-check for '상관없'."
+   ],
+   "cueSolvableSteps": [
+    "s1 stage 1 (partial: intuition trap + longest)",
+    "s1 stage 3 (partial: only intermediate value)"
+   ],
+   "blindResult": "All matched key (c, c, b; ~27%, ~87%, ~41%)."
+  },
+  {
+   "id": "m-10",
+   "Q1": {
+    "v": "concern",
+    "e": "s1 is plain sign reading. s2: correct 'b' is the longest (34) and the only 'false' answer whose reason points to the table; hint 2 says 'f'(0)=0인데 극값이 아닌 함수가 있는지 찾아보세요' (= the answer). s3 hint 2 and s4 hint 2 almost dictate the final sentence; s3 is solvable by deriving f'(0)=c and f'=x(3ax+2b)."
+   },
+   "Q2": {
+    "v": "defect",
+    "e": "s4 w1/w2 accept the opposite condition: 'f'(x)의 부호가 x=a의 앞뒤에서 바뀌지 않는다' passes both checks (바뀌 matches 바뀌지) and a long 'no sign change' sentence passes too. Valid answers are rejected: 'x=a의 좌우에서 f'(x)가 +에서 -로 또는 -에서 +로 바뀐다' (w1 fails), 'f''(a)≠0' (both fail, humanReview concedes it is valid), 'x=a 왼쪽과 오른쪽에서 f' 값의 부호가 서로 다르다' (w2 fails), 'f'이 x=a에서 + 에서 − (또는 반대)로 변한다' (w1 fails). s3 verified: c=0 and b=0 are necessary and sufficient for f'(x)=3ax^2+2bx+c to have no sign change at 0 (b!=0 => x(3ax+2b) changes sign); rows (1,0,0,0),(-2,0,0,5) pass; same a deduped; b!=0 rejected. s1 [a,c] / s2 b match key."
+   },
+   "Q3": {
+    "v": "concern",
+    "e": "Level 3 calculus prerequisites are declared. Table is pipe text with 7 columns and unicode superscripts (x², −x⁴); the caution about screen readers is only a note, not implemented. The instruction to read '+/−' as the sign of f' is given in one parenthesis."
+   },
+   "Q4": {
+    "v": "ok",
+    "e": "s1 reveals the sign-pattern misconception (b); s2 reveals each wrong judgement (대부분 성립, 판단할 수 없음); s3 fail messages tell which of c/b broke and how."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "'A necessary condition is not sufficient; one counterexample kills a universal claim; find the added condition' transfers (e.g. f''=0 inflection, critical points). s3's template (c=0,b=0) is narrow though: all counterexamples are ax^3+d."
+   },
+   "defects": [
+    "s4 write checks accept the negated condition ('부호가 바뀌지 않는다') as satisfying 'x=a 앞뒤에서 바뀐다'.",
+    "s4 rejects the valid second-derivative and +/- notations."
+   ],
+   "suggestedFixes": [
+    "Add a mode:none check for '바뀌지\\s*않|안\\s*바뀌|같다|같은|변하지\\s*않'; add 부호\\s*가?\\s*(서로\\s*)?다르|[+＋]\\s*에서|양\\s*에서|f''\\s*\\(.*\\)\\s*(≠|>|<) to patterns.",
+    "Make s2 options equal in length and give 'c/d' the same grammatical form as b; delete the explicit counterexample in s2 hint 2.",
+    "Let s3 also accept non-cubic counterexamples by switching to a generic degree-4 template, or accept that 'transfer' is narrow."
+   ],
+   "cueSolvableSteps": [
+    "s2 (partial: longest, only false verdict with reason)",
+    "s4 (via hint 2)"
+   ],
+   "blindResult": "All matched key (a,c; b; (1,0,0,d),(2,0,0,d); sign-change condition)."
+  },
+  {
+   "id": "m-11",
+   "Q1": {
+    "v": "defect",
+    "e": "s1: the three longest options (e 37, c 29, a 24 chars) are exactly the three correct ones; the three wrong ones are the shortest (f 13, d 15, b 18). Counting conditions works as a shortcut ('three pieces of info'), but length alone gets full marks. The cautions field claims this was avoided ('길이로 정답을 추측하지 않도록'), which is false. s2/s3 are genuine."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "s1 key a,c,e verified; [a,c] gets an EMPTY message. s2 build verified (c=1,b=-4a; decimal floats such as a=0.1,b=-0.4 and a=0.7,b=-2.8 pass; duplicate a rejected). s3 w1 rejects valid asks without the listed words: 'x²의 계수를 알려 달라고 합니다. 그러면 b와 c는 이미 정해져 있으므로 식이 하나로 정해져요' and '최고차항의 계수를 알려 주세요...' fail w1; w1 accepts non-informative asks: asking for the point (0,1) (already known, the y-intercept), asking whether the parabola opens upward, and asking for the point (4,1) (mirror of the y-intercept) all pass both checks even though none determines a. The model answer 1 ('다른 점 하나를 알려 달라고 한다') is itself false for x=0 and x=4; humanReview names only x=0."
+   },
+   "Q3": {
+    "v": "defect",
+    "e": "s2 and s3 refer to '보기 f)' and hardCases to 'g)', but the UI renders options as text only (ThinkPilot.tsx line 159 prints o.text, not o.id) and the cautions field states the options have no symbols; the student cannot see which option is 'f)'. s2 repeats the content, so it is survivable, but s3 'f)에 정보를 하나 더' is not self-contained. Heavy prerequisites (three quadratic forms, vertex, axis) and unicode x²."
+   },
+   "Q4": {
+    "v": "concern",
+    "e": "Reveals exist for b, d, f (good: 'a를 바꿔 가며...', '(x−1)(x−3)에 2나 −5를 곱해 보세요') but none for under-selecting or for choosing a wrong set missing e; the build fail messages are good; write step has humanReview only."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "'Count the independent conditions against unknowns; show insufficiency by building two functions; ask for the missing piece' is a strong transferable idea (systems of equations, circles, sequences)."
+   },
+   "defects": [
+    "s1 correct options are the three longest (length cue).",
+    "'보기 f)' / 'g)' labels are not displayed to the student; s3 depends on them.",
+    "s3 model answer 'any other point' is false for x=0 and x=4.",
+    "cautions claim about length cue is incorrect."
+   ],
+   "suggestedFixes": [
+    "Rewrite options with equal length and similar structure (e.g. 'vertex and one other point' vs 'vertex and axis'); keep a 3-correct/3-wrong mix of lengths.",
+    "Replace '보기 f)' with the quoted condition ('y절편이 1이고 대칭축이 x=2'), or render ids in the UI.",
+    "Add to s3 w1: 계수|최고차항|x²\\s*의; add a none-check for '\\(?\\s*0\\s*,\\s*1\\s*\\)?|위로\\s*볼록|아래로\\s*볼록'; state in model answer 'x=0, 4 제외'.",
+    "Add a message when [a,c] chosen (missing e), e.g. via reveals on omitted-correct options."
+   ],
+   "cueSolvableSteps": [
+    "s1 (strong: longest-three = correct)"
+   ],
+   "blindResult": "All matched key (a,c,e; c=1,b=-4a; ask for an extra point/value)."
+  },
+  {
+   "id": "m-12",
+   "Q1": {
+    "v": "concern",
+    "e": "s2: the task title ('모르는 값이 둘인데 답은 하나?'), the printed hint (a₅=a+4d), hint 2 ('변하지 않는 부분') and the options (only one says 'all equal') give the answer away; actually computing a+4d for the student's own rows is needed only to confirm. s3: correct a,b,c are the symmetric pairs around 5 (1+9, 2+8, 4+6) and match the shown 3+7 pattern, so 'm+n=10' can be pattern-matched without the algebra. s1 and s4 are genuine."
+   },
+   "Q2": {
+    "v": "concern",
+    "e": "s1 verified incl. decimals (a=3.3,d=1.675 etc. pass; duplicates by d rejected). s3 key m+n=10 verified. s4 w2-w4 accept bad problems: '등차수열 {a_n}에서 a_2+a_6=20일 때 a_5의 값은? 답은 10이다' (index sum 8!=10, not solvable) and '등차수열 {a_n}에서 a_1 = 3, d = 2일 때 a_5의 값은? 답은 11이다' (needs both a and d; defeats the task goal) both pass all four checks (task data admits this). w1 requires the literal '등차수열': '첫째항이 a이고 공차가 d인 수열 {a_n}에서 a_4 + a_8 = 30이면 a_6은 얼마일까? 답은 15야' fails w1. Valid inputs with unicode subscripts and 제k항 pass."
+   },
+   "Q3": {
+    "v": "concern",
+    "e": "Typing subscripts (a₃) is hard: the placeholder suggests unicode but the cautions say 'a_2' style is accepted; both are accepted by w2 but the student is not told. Dense notation (aₘ+aₙ, m+n-2) for level 3 is appropriate but the s4 prompt expects the student to type a full problem plus answer plus reasoning in 25+ chars."
+   },
+   "Q4": {
+    "v": "ok",
+    "e": "s2/s3 wrong options carry reveals that compute the d-coefficient of each wrong pair (2a+7d, 2a+12d) - strong diagnostic. Hints are actions, except s4 hint 1 which states the construction method."
+   },
+   "Q5": {
+    "v": "ok",
+    "e": "Best transfer of the set: 'a_m+a_n depends only on m+n; a hidden invariant makes an under-determined problem solvable' applies to arithmetic sequences, symmetric functions, averages."
+   },
+   "defects": [
+    "Title + visible a₅=a+4d + option wording leak s2.",
+    "s4 surface checks cannot reject a wrong problem (acknowledged in hardCases) and are tied to the literal word '등차수열'."
+   ],
+   "suggestedFixes": [
+    "Retitle neutrally ('등차수열 문제 살펴보기'); drop '(a₅=a+4d)' from s2 and make options equal-length: e.g. 'a₅는 수열마다 10, 12, 14 ...로 다르다' vs. 'a₅는 항상 같다'. ",
+    "Make s3 include a decoy symmetric-looking pair with the wrong center (e.g. a₃+a₈) and a non-symmetric pair with sum 10 (e.g. a₃+a₇ is given; a₂+a₉ index sum 11).",
+    "Add to w1 첫째항|공차|수열; add a self-check hint 'verify with a=?, d=?'."
+   ],
+   "cueSolvableSteps": [
+    "s2 (strong: title+hint)",
+    "s3 (partial: pattern from 3+7)"
+   ],
+   "blindResult": "All matched key (a+4d=10 rows; a; a,b,c; a problem with index sum = 2x target)."
+  }
+ ],
+ "summary": {
+  "defects": 22,
+  "defectVerdicts": 8,
+  "concerns": 25,
+  "themes": [
+   "Length/position cues: no shuffling in the UI; the correct choice is the longest option in m-03 (stages 1,2), m-04 s2, m-05 s2, m-10 s2, m-11 s1 (3 longest = 3 correct), m-01 s3.",
+   "Titles/hints leak the idea (m-06 title, m-12 title + printed a5=a+4d, m-01 hint 2, m-10 s2 hint 2, m-03 hint 2).",
+   "Write-step regex checks are asymmetric: many valid answers get an unticked box, and wrong answers tick all boxes (m-05 w1 ticks for the wrong plan; m-10 w2 accepts the negation; m-07, m-08, m-09, m-11, m-12 accept wrong content). Since the UI only shows them as a checklist, harm is limited, but m-05/m-10 mislead.",
+   "Choose/pickLine give no feedback when a correct item is omitted or a wrong line is picked (empty message): m-02 s1, m-11 s1, m-01 s1, m-06 s1.",
+   "Build steps are the strongest part: all verified correct with real checker (m-01,02,04,06,08,10,11,12 no false accept/reject on integer/decimal inputs); only m-07 permutation duplicates are a real gap.",
+   "UI/data mismatch: option ids never displayed but m-11 refers to 'f)'; no shuffle of options.",
+   "Level calibration: m-04 (초등) parity argument and 3-unknown search is heavy; m-09 is dense; m-05/m-07 are light for 중등.",
+   "Content safety/bias: names balanced, no real persons, factory context for m-09, nothing unsafe found; culture notes accurate."
+  ]
+ },
+ "checkerFindings": {
+  "falseRejections": [
+   "m-02 s4 (good4, good5)",
+   "m-03 s2 (50번 한 결과..., 표본이 작으니...)",
+   "m-04 s3 (200의 배수 논증, 표/나머지 논증)",
+   "m-05 s3 (10 without GB; '열 기가')",
+   "m-06 s2 (약분/소거 wording)",
+   "m-07 s3 (→/Q.A. answer markers)",
+   "m-08 s3 (set-of-triples explanation without trigger words)",
+   "m-09 s2 (no-digit conceptual answer)",
+   "m-10 s4 (+/- notation, f''(a)≠0, '부호가 서로 다르다')",
+   "m-11 s3 (x²의 계수 / 최고차항의 계수)",
+   "m-12 s4 (no '등차수열' wording)"
+  ],
+  "falseAcceptances": [
+   "m-05 s3 w1 ticks 'B가 더 싸다' for answers recommending A (via '비싸')",
+   "m-10 s4 accepts '부호가 바뀌지 않는다'",
+   "m-07 s2 build: permutations count as 2 different examples (checkBuild done=true)",
+   "m-01 s2: b=1.0000000001 accepted by 1e-9 tolerance (negligible)",
+   "m-01/02/03/04/06/07/08/09/11/12 write checks pass at least one clearly wrong text each (e.g. m-02 round-down answer, m-11 point (0,1) as 'new info', m-12 a_2+a_6=20 problem)"
+  ],
+  "buildCheckerNoProblem": [
+   "m-01 s2",
+   "m-02 s3",
+   "m-04 s1 (exactly 6 valid rows)",
+   "m-06 s3 (float dedupe ok)",
+   "m-08 s2",
+   "m-10 s3",
+   "m-11 s2 (decimal floats ok)",
+   "m-12 s1 (decimal floats ok)"
+  ]
+ }
+}

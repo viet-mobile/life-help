@@ -14,10 +14,15 @@ import {
 } from "@/lib/i18n/siteMetadata";
 
 import { TopPwaBar } from "@/components/pwa/TopPwaBar";
+import { isJiuHost, jiuMetadata } from "@/lib/jiu/brand";
 import { PwaRegister } from "@/components/pwa/PwaRegister";
+import { directionForLocale } from "@/lib/i18n/direction";
+import { buildAlternates, countryBrandName, originFromHost } from "@/lib/i18n/seo";
+import { getLocale as getLearnLocale } from "@/lib/learn/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
   const headersList = await headers();
+  if (isJiuHost(headersList.get("x-forwarded-host") ?? headersList.get("host") ?? "")) return jiuMetadata;
   const lang = resolveLanguageFromHeaders(headersList);
   const portal = resolvePortalFromHeaders(headersList);
   const country = resolveCountryFromHeaders(headersList);
@@ -29,6 +34,13 @@ export async function generateMetadata(): Promise<Metadata> {
 
   const icons = getIconMetadata(country, portal);
 
+  // canonical + hreflang for public customer pages (the proxy passes the public path and any language prefix of the requested URL)
+  const publicPath = headersList.get("x-life-path");
+  const alternates =
+    portal === "customer" && publicPath
+      ? buildAlternates(originFromHost(headersList.get("x-forwarded-host") ?? headersList.get("host")), publicPath, headersList.get("x-life-url-lang"))
+      : undefined;
+
   const appName =
     portal === "tech"
       ? "LIFE.HELP · TECH"
@@ -37,11 +49,14 @@ export async function generateMetadata(): Promise<Metadata> {
       : portal === "sys"
       ? "LIFE.HELP · SYS"
       : country
-      ? `LIFE.HELP · ${country.toUpperCase()}`
+      ? `LIFE.HELP · ${countryBrandName(country)}`
       : "LIFE.HELP";
 
+  const origin = originFromHost(headersList.get("x-forwarded-host") ?? headersList.get("host"));
   return {
     ...baseMeta,
+    ...(origin ? { metadataBase: new URL(origin) } : {}),
+    ...(alternates ? { alternates } : {}),
     icons,
     manifest: "/manifest.webmanifest",
     applicationName: appName,
@@ -55,26 +70,41 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
   const headersList = await headers();
-  const lang = resolveLanguageFromHeaders(headersList);
+  const portalHeader = headersList.get("x-life-portal") ?? "";
+  const isLearn = portalHeader === "learn";
+  // Learning sites resolve their language from the URL / cookie (same source as the study layout); the marketplace from host + path.
+  const lang = isLearn ? await getLearnLocale() : resolveLanguageFromHeaders(headersList);
   const country = resolveCountryFromHeaders(headersList);
 
+  const jiu = isJiuHost(headersList.get("x-forwarded-host") ?? headersList.get("host") ?? "");
   return (
-    <html lang={lang}>
+    <html lang={lang} dir={directionForLocale(lang)} data-learn={isLearn ? "1" : undefined}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#000000" />
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        {!jiu && <link rel="manifest" href="/manifest.json" />}
+        <meta name="theme-color" content={jiu ? "#253b35" : "#000000"} />
       </head>
       <body>
+        {portalHeader !== "learn" && !jiu && ["", "customer"].includes(portalHeader) && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                name: "LIFE.HELP",
+                url: "https://life.help",
+                logo: "https://life.help/icon-512.png",
+              }),
+            }}
+          />
+        )}
         <CountryProvider initialCountry={country}>
           <LocaleProvider initialLocale={lang as any}>
             <RegionProvider initialCountry={country}>
               <PwaRegister />
-              {headersList.get("x-life-portal") !== "learn" && <TopPwaBar />}
+              {!["learn", "jiu"].includes(headersList.get("x-life-portal") ?? "") && <TopPwaBar />}
               {children}
             </RegionProvider>
           </LocaleProvider>

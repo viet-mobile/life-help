@@ -1,0 +1,207 @@
+{
+ "packet": "H22-h-write",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 21,
+  "questions": 42
+ },
+ "patches": [
+  {
+   "item": "b9de16d9",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the writer's main point?",
+      "o": [
+       "Tablets are harmful and should be removed from every classroom immediately.",
+       "Typing is too slow to be useful for students who take notes in class.",
+       "Handwriting aids learning, so schools should combine it with typing.",
+       "Teachers should stop asking students to edit and correct their drafts."
+      ],
+      "a": 2,
+      "why": "필자는 손글씨의 학습 효과를 말하며 두 방법을 함께 쓰자고 제안해요."
+     },
+     {
+      "q": "According to the passage, why does writing by hand help memory?",
+      "o": [
+       "Pens make students feel calmer during long lectures.",
+       "Students must pick key ideas and put them in their own words.",
+       "Students can copy the lecture word for word and read it later.",
+       "Notebooks are lighter and easier to carry around than tablets."
+      ],
+      "a": 1,
+      "why": "손으로 쓰면 모든 말을 받아 적을 수 없어 중요한 것을 골라 자기 말로 바꾸게 돼요."
+     },
+     {
+      "q": "Why does the writer mention that typing is faster?",
+      "o": [
+       "To prove that handwriting is actually the quicker method",
+       "To admit a point in favor of the opposing view",
+       "To explain why tablets are cheaper for most schools",
+       "To show that teachers dislike the use of notebooks"
+      ],
+      "a": 1,
+      "why": "반대 입장의 장점을 인정한 뒤 However로 자신의 주장을 이어 가요."
+     },
+     {
+      "q": "The word “obsolete” in the first sentence is closest in meaning to",
+      "o": [
+       "outdated",
+       "fragile",
+       "valuable",
+       "illegal"
+      ],
+      "a": 0,
+      "why": "obsolete는 ‘더 이상 쓰이지 않는, 구식의’라는 뜻이에요."
+     },
+     {
+      "q": "What does the writer imply about a student who types a whole lecture?",
+      "o": [
+       "The student will always earn lower scores than classmates.",
+       "The student probably cannot read his own handwriting.",
+       "The student is likely to finish editing sooner than others.",
+       "The student may not have thought deeply about the content."
+      ],
+      "a": 3,
+      "why": "‘완벽한 기록이지만 이해는 적을 수 있다’는 말에서 내용을 깊이 처리하지 않았음을 추론할 수 있어요."
+     }
+    ]
+   },
+   "why": "Replace unreliable line reference with sentence reference (q4 stem only).",
+   "severity": "minor"
+  },
+  {
+   "item": "564ce16d",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the writer's position on the issue?",
+      "o": [
+       "The writer fully supports a complete ban on phones throughout the school day.",
+       "The writer suggests a compromise that considers both sides.",
+       "The writer believes teachers should watch every table.",
+       "The writer thinks lunch should be shorter for everyone."
+      ],
+      "a": 1,
+      "why": "양쪽 입장을 소개한 뒤 일부 구역만 휴대폰 금지로 하는 절충안을 제안해요."
+     },
+     {
+      "q": "Which argument do supporters of phone use give?",
+      "o": [
+       "Phones are useful for taking notes during lunch.",
+       "Screens make it easier for students to talk to friends.",
+       "A ban would save the school money on equipment.",
+       "Lunchtime is free time, and phones help students relax."
+      ],
+      "a": 3,
+      "why": "점심시간은 자유 시간이고 휴대폰이 긴장을 풀어 준다는 것이 찬성 측 논거예요."
+     },
+     {
+      "q": "What does “This” refer to in “This would respect the freedom of those who want to relax with their devices”?",
+      "o": [
+       "Banning phones from the whole lunchroom",
+       "Explaining the new rule to all students",
+       "Setting aside some tables as phone-free zones",
+       "Letting everyone use phones at every table"
+      ],
+      "a": 2,
+      "why": "This는 바로 앞 문장의 절충안, 즉 일부 테이블을 휴대폰 금지 구역으로 정하는 것을 가리켜요."
+     },
+     {
+      "q": "What does the phrase “a shared meal” suggest about the opponents' view?",
+      "o": [
+       "Meals are best eaten quickly and alone.",
+       "Lunch should be a time for people to interact.",
+       "Food should be served by the students themselves.",
+       "Everyone should eat the same dishes at lunch."
+      ],
+      "a": 1,
+      "why": "함께 먹는 식사의 목적은 대화와 교류라는 의미를 담고 있어요."
+     },
+     {
+      "q": "Why does the writer say the rule should be explained clearly?",
+      "o": [
+       "So that students understand the reasons instead of just obeying",
+       "So that teachers have much less work to do during the long lunch break",
+       "So that parents can send messages during lunch",
+       "So that students stop using phones at home"
+      ],
+      "a": 0,
+      "why": "학생들이 이유를 이해하고 규칙을 받아들이게 하기 위해서예요."
+     }
+    ]
+   },
+   "why": "q3 replaced with a reference question; q2 option order changed so key positions vary (1,3,2,1,0).",
+   "severity": "major"
+  },
+  {
+   "item": "64f653b1",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "How is the passage organized?",
+      "o": [
+       "Advantages, then drawbacks, then a recommendation",
+       "A personal story followed by a list of rules",
+       "A history of roofs from ancient times to the modern day",
+       "Two opinions followed by the writer's complaint"
+      ],
+      "a": 0,
+      "why": "장점, 단점, 전문가의 권고 순으로 전개돼요."
+     },
+     {
+      "q": "Why does less rainwater rush into the drains during storms?",
+      "o": [
+       "Plants release water vapor into the drains.",
+       "Roofs of concrete and tar hold rain for a long time.",
+       "The soil of a green roof absorbs part of the water.",
+       "Building owners cover the drains in heavy weather."
+      ],
+      "a": 2,
+      "why": "흙이 빗물을 흡수해 배수구로 흘러드는 양이 줄어요."
+     },
+     {
+      "q": "In the passage, the layer of plants “acts like a blanket” means that it",
+      "o": [
+       "makes the building look soft and warm",
+       "covers the building to protect it from rain",
+       "hides ugly surfaces from people on the street",
+       "keeps the temperature inside more stable"
+      ],
+      "a": 3,
+      "why": "담요처럼 겨울에는 따뜻하게, 여름에는 시원하게 해 주는 단열 효과를 비유한 거예요."
+     },
+     {
+      "q": "Which word signals a change from advantages to disadvantages?",
+      "o": [
+       "In addition",
+       "Still",
+       "Also",
+       "As"
+      ],
+      "a": 1,
+      "why": "Still은 앞의 장점과 대조되는 단점을 소개할 때 써요."
+     },
+     {
+      "q": "Why do many experts recommend green roofs for new buildings?",
+      "o": [
+       "Old buildings do not have any roofs at all.",
+       "New buildings need fewer plants than old ones do, so they cost less.",
+       "New buildings can be designed to carry the extra weight.",
+       "Green roofs are cheaper to remove from new buildings."
+      ],
+      "a": 2,
+      "why": "녹화 지붕은 무거워서 건물이 이를 지탱하도록 설계되어야 하기 때문이에요."
+     }
+    ]
+   },
+   "why": "Option order only; keys now at indexes 0,2,3,1,2.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 36,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

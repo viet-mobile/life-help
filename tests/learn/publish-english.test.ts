@@ -44,10 +44,17 @@ describe("Claude English practice bank reaches the learner path", () => {
       seen.add(k);
     }
   });
-  it("a language other than the site's own receives none of them (the wording is Korean)", async () => {
+  it("a language other than the site's own receives localized, Hangul-free bank questions that pass the per-question completeness gate", async () => {
     for (const locale of ["en", "vi", "ja", "zh-Hans"] as const) {
       const { bundle } = await loadIndex("english", { locale });
-      expect(bundle.questions.some((q) => q.id.startsWith("eb-")), locale).toBe(false);
+      const eb = bundle.questions.filter((q) => q.id.startsWith("eb-"));
+      expect(eb.length, locale).toBeGreaterThan(6000);
+      for (const q of eb.slice(0, 200)) {
+        expect(q.prompt, `${locale}:${q.id}`).not.toMatch(/[가-힣ㄱ-ㆎ]/);
+        expect(q.explanation, `${locale}:${q.id}`).not.toMatch(/[가-힣ㄱ-ㆎ]/);
+        expect(q.hints[0], `${locale}:${q.id}`).not.toMatch(/[가-힣ㄱ-ㆎ]/);
+        expect(checkAnswer(q, key(q)), `${locale}:${q.id}`).toBe(true);
+      }
     }
   });
   it("an ordering with a repeated word accepts either tile for the repeated word", () => {

@@ -1,0 +1,1285 @@
+[
+ {
+  "id": "n-k-k7-01",
+  "subject": "korean",
+  "grade": "K7",
+  "topic": "Hidden conditions in a shop notice",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "title": "Free shipping, for whom?",
+  "uiLang": "en",
+  "format": "judge-evidence-explain",
+  "generative": true,
+  "goal": "Test several shoppers' claims against a delivery notice, find which claims the notice does not support, and warn a friend about what to check.",
+  "thinking": [
+   "Finding conditions hidden inside a rule",
+   "Checking a claim against the exact wording of the evidence",
+   "Explaining a condition to someone else"
+  ],
+  "differsFromPlain": "Plain practice asks you to read a notice and answer one detail question. Here several people make claims from the same notice and you must test each claim against every sentence, then warn a friend in your own words.",
+  "prerequisites": [
+   "Can read a short notice with numbers and 원",
+   "Knows -이면, -(으)ㄴ 경우, 이상 and 이전"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "A friend is shopping online and shows you the delivery notice of the shop. Several shoppers have said what they think it means.\n\n[배송 안내]\n1. 구매 금액이 30,000원 이상이면 배송비는 무료입니다. 단, 쿠폰으로 할인을 받으신 경우에는 할인된 금액을 기준으로 합니다.\n2. 제주도와 섬 지역은 배송비 3,000원이 추가됩니다.\n3. 오후 2시 이전에 결제하시면 당일에 출고됩니다.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Four shoppers each bought one thing. Which shopper will certainly pay no shipping fee at all?",
+    "options": [
+     {
+      "id": "a",
+      "text": "소라 (Seoul): list price 33,000원, used a 5,000원 coupon",
+      "reveals": "The coupon lowers the amount that counts. 33,000 - 5,000 = 28,000, which is under 30,000."
+     },
+     {
+      "id": "b",
+      "text": "준호 (Jeju Island): list price 40,000원, no coupon",
+      "reveals": "His amount is high enough, but the notice adds a separate charge for his region, so he still pays something."
+     },
+     {
+      "id": "c",
+      "text": "민지 (Seoul): list price 36,000원, used a 5,000원 coupon"
+     },
+     {
+      "id": "d",
+      "text": "태민 (Busan): list price 29,000원, no coupon",
+      "reveals": "29,000 is below 30,000 and no condition changes that."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "민지 pays 36,000 - 5,000 = 31,000원, which is 30,000 or more, and Seoul has no extra charge. 소라's amount after the coupon is 28,000. 준호 gets free base shipping but the notice adds 3,000원 for Jeju. 태민 is under the limit.",
+    "hints": [
+     "Do not compare the list price with 30,000 straight away. Go through every numbered sentence of the notice and note anything that changes the amount that is compared or adds a cost.",
+     "Work out, for each shopper, the amount that counts, and list everything else in the notice that could apply to that shopper."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "pickLine",
+    "prompt": "Shoppers talk about what they bought. Pick one line whose claim is NOT supported by the notice (there may be more than one such line; any one counts).",
+    "lines": [
+     "나: 서울에 사는데 정가 31,000원짜리를 쿠폰 없이 샀더니 배송비가 무료였어.",
+     "친구: 나는 서울에서 정가 32,000원짜리를 4,000원 쿠폰으로 샀는데 무료였대.",
+     "나: 제주도에 사는 언니는 35,000원짜리를 사고 배송비로 3,000원을 냈어.",
+     "동생: 나는 오후 3시에 결제했는데 오늘 바로 출고될 거야.",
+     "언니: 부산에서 정가 30,000원짜리를 쿠폰 없이 샀는데 무료였어."
+    ],
+    "wrong": [
+     1,
+     3
+    ],
+    "explain": "Lines 2 and 4 are not supported. Line 2: 32,000 - 4,000 = 28,000, under the limit. Line 4: same-day shipping needs payment before 2 p.m. Line 1 is fine (31,000, no coupon), line 3 matches the Jeju charge, and line 5 is exactly 30,000, which counts as '이상'.",
+    "hints": [
+     "For each line, recompute the amount the shop would use, then check the time or region if the line mentions one.",
+     "Look at the number words in the notice: which ones set a limit, and which side of the limit is allowed?"
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "A friend in 제주도 asks you: '3만 원 넘게 사면 무료배송이지?' Answer in 1-2 Korean sentences (polite -요 is fine; a few English words are tolerated) and tell her the two things in the notice she should check before she expects free shipping.",
+    "placeholder": "예: ...",
+    "minChars": 20,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "mentions her region (제주도 / 섬) and the extra charge",
+      "mode": "any",
+      "patterns": [
+       "(제주|섬)[^.?!\\n]{0,40}(추가|3,?000|삼천|더 내|더 들|더 붙|따로|별도)",
+       "(추가|3,?000|삼천|별도)[^.?!\\n]{0,30}(제주|섬)",
+       "Jeju[^.?!\\n]{0,40}(extra|additional|3,?000|fee)",
+       "(extra|additional)[^.?!\\n]{0,30}Jeju"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "mentions the coupon / discount (the amount after the discount counts)",
+      "mode": "any",
+      "patterns": [
+       "쿠폰",
+       "할인",
+       "coupon",
+       "discount"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "does not say that there is no extra charge for her",
+      "mode": "none",
+      "patterns": [
+       "추가\\s*(요금|비용|배송비)?\\s*(은|는|이|가|도)?\\s*(없|안\\s*(들|내|붙))",
+       "추가\\s*(요금|비용)?\\s*없이",
+       "no extra"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "does not say that shipping to her region is free",
+      "mode": "none",
+      "patterns": [
+       "(제주|섬)[^.?!\\n]{0,15}(무료|공짜)(?![^.?!\\n]{0,6}(아니|않|안\\s))"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "is written (at least partly) in Korean",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]{2,}"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I mention both things: her region and the discount?",
+     "Does my answer correct her belief instead of just repeating the rule?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "제주도는 배송비 3,000원이 추가돼요. 그리고 쿠폰을 쓰면 할인된 금액이 3만 원 이상이어야 해요."
+     },
+     {
+      "text": "그냥 3만 원 넘는다고 무료는 아니야. 제주도라서 3,000원이 더 붙고, 쿠폰으로 할인받으면 그 금액이 기준이래.",
+      "note": "Casual register, also fine for a close friend."
+     },
+     {
+      "text": "Since you live in 제주도, there is an extra 3,000원, and if you use a 쿠폰 the discounted price is what counts.",
+      "note": "A mixed English answer still passes the surface checks."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "네, 3만 원 넘으면 무료예요.",
+      "why": "Repeats the first rule and mentions neither the region nor the discount."
+     },
+     {
+      "text": "제주도도 추가 요금 없이 쿠폰 쓰면 무료예요.",
+      "why": "Names both words but claims there is no extra charge."
+     }
+    ],
+    "humanReview": "Whether the explanation is natural and whether the learner really understood that the discounted amount is compared, not only that the word 쿠폰 appears.",
+    "hints": [
+     "Reread each numbered sentence of the notice and ask which one could change what your friend pays.",
+     "Write the answer to her question first, then add the two conditions with 그런데 or 그리고."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Testing claims against the notice",
+    "full": "Gets the right shopper and finds the unsupported claims by recomputing amounts",
+    "partial": "Gets one of the two tasks right",
+    "none": "Judges by list price or by feeling"
+   },
+   {
+    "criterion": "Warning the friend",
+    "full": "Corrects the belief and names both conditions",
+    "partial": "Names only one condition",
+    "none": "Repeats the headline rule"
+   }
+  ],
+  "alternatives": [
+   "In the last step the two things may be ordered either way, and the answer may also mention the 2 p.m. rule if it is clearly marked as a separate matter.",
+   "A learner may say 준호's shipping is 'free but 3,000원 extra'. Both wordings describe the same payment."
+  ],
+  "hardCases": [
+   "'30,000원 이상' includes exactly 30,000; some learners read it as 'more than 30,000'.",
+   "The notice does not say whether the coupon amount can bring a Jeju order below the limit; the task only asks about what is written."
+  ],
+  "cautions": {
+   "language": "Notice style (-ㅂ니다, -시-) is used for the notice only; the learner answers in ordinary polite or casual speech. Terms such as 단 and 기준 are met in context.",
+   "culture": "Online shops in Korea often charge extra shipping for Jeju and island regions; amounts here are invented.",
+   "accessibility": "All material is text; nothing depends on colour or images. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of the shopper",
+    "Which lines are unsupported",
+    "Region, discount and no 'no extra charge' in the written answer"
+   ],
+   "human": [
+    "Naturalness and accuracy of the learner's explanation"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-k7-02",
+  "subject": "korean",
+  "grade": "K7",
+  "topic": "Time conflicts in a plan chat",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "title": "One slot for three schedules",
+  "uiLang": "en",
+  "format": "build-many-verify",
+  "generative": true,
+  "goal": "Turn three people's partly implicit availability into exact conditions, build several meeting times that satisfy all of them, and see how one change alters the options.",
+  "thinking": [
+   "Satisfying several conditions at once",
+   "Reading an exception ('except Tuesday')",
+   "Finding more than one solution and predicting a change"
+  ],
+  "differsFromPlain": "Plain practice asks you to read one schedule and say when someone is free. Here the chat gives different kinds of limits and you must find several times that fit all of them, then predict what a change does.",
+  "prerequisites": [
+   "Knows weekday names and clock times",
+   "Knows -부터, -까지, 말고는 and 이후"
+  ],
+  "minutes": 11,
+  "curriculum": null,
+  "material": "Three classmates plan one study meeting this week. The meeting takes two hours.\n\n민수: 이번 주에 스터디를 한 번 하면 어때요? 두 시간쯤 걸려요.\n지연: 저는 월요일은 아르바이트가 있어서 안 돼요. 다른 날은 오후 4시부터 괜찮아요.\n민수: 저는 수요일은 안 돼요. 그리고 화요일 말고는 수업이 6시에 끝나서 6시 이후에만 가능해요.\n수진: 저는 금요일은 안 돼요. 그리고 9시까지는 모임이 끝나야 해요.\n\n(All times are p.m. unless a time says otherwise. '6시 이후' includes 6 o'clock, and '9시까지 끝나야 해요' allows the meeting to end exactly at 9.)",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "scaffold": true,
+    "prompt": "What does 민수 mean by '화요일 말고는 수업이 6시에 끝나서 6시 이후에만 가능해요'?",
+    "options": [
+     {
+      "id": "a",
+      "text": "He can meet only on Tuesday, never on other days.",
+      "reveals": "'말고는' sets Tuesday apart from the other days; it does not say Tuesday is the only day."
+     },
+     {
+      "id": "b",
+      "text": "He can meet on any day after 6, but on Tuesday not before 6.",
+      "reveals": "If Tuesday were the same as the other days, there would be no reason to mention it separately."
+     },
+     {
+      "id": "c",
+      "text": "On Tuesday he has no such limit; on other days only after 6."
+     },
+     {
+      "id": "d",
+      "text": "His classes end at 6 on every day, Tuesday included.",
+      "reveals": "Then '화요일 말고는' would make no sense; Tuesday is the exception."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "'A 말고는 B' means 'except for A, B'. For every day except Tuesday the after-6 limit holds; Tuesday is the exception. (Wednesday is ruled out by his earlier sentence.)",
+    "hints": [
+     "Find the word that separates Tuesday from the other days, and ask what it takes away from Tuesday.",
+     "Say the sentence in your own words twice: once for Tuesday and once for the other days."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "build",
+    "prompt": "Find 3 different meeting times that suit everybody. d = weekday number (1 = Monday ... 5 = Friday), h = start time in whole hours on a 24-hour clock (for example 16 means 4 p.m.). The meeting lasts two hours.",
+    "vars": [
+     {
+      "name": "d",
+      "label": "weekday (1 = 월 ... 5 = 금)"
+     },
+     {
+      "name": "h",
+      "label": "start hour (24-hour clock)"
+     }
+    ],
+    "constraints": [
+     {
+      "id": "c0",
+      "expr": "d==floor(d) && h==floor(h) && d>=1 && d<=5",
+      "ok": "A weekday number from 1 to 5 and a whole hour.",
+      "fail": "Use a whole weekday number from 1 to 5 and a whole start hour."
+     },
+     {
+      "id": "c1",
+      "expr": "d!=1",
+      "ok": "지연 can come that day.",
+      "fail": "지연 has a part-time job on Monday."
+     },
+     {
+      "id": "c2",
+      "expr": "h>=16",
+      "ok": "지연 is free from 4 p.m.",
+      "fail": "지연 is free only from 4 p.m."
+     },
+     {
+      "id": "c3",
+      "expr": "d!=3",
+      "ok": "민수 can come that day.",
+      "fail": "민수 cannot come on Wednesday."
+     },
+     {
+      "id": "c4",
+      "expr": "d==2 || h>=18",
+      "ok": "민수's class limit is respected.",
+      "fail": "Except on Tuesday, 민수 can meet only after 6 p.m."
+     },
+     {
+      "id": "c5",
+      "expr": "d!=5",
+      "ok": "수진 can come that day.",
+      "fail": "수진 cannot come on Friday."
+     },
+     {
+      "id": "c6",
+      "expr": "h+2<=21",
+      "ok": "The meeting ends by 9 p.m.",
+      "fail": "The meeting is two hours long and must end by 9 p.m."
+     }
+    ],
+    "need": 3,
+    "distinctBy": "d*100+h",
+    "modelRows": [
+     {
+      "d": 2,
+      "h": 16
+     },
+     {
+      "d": 2,
+      "h": 18
+     },
+     {
+      "d": 4,
+      "h": 19
+     }
+    ],
+    "badRows": [
+     {
+      "d": 3,
+      "h": 19
+     },
+     {
+      "d": 4,
+      "h": 16
+     },
+     {
+      "d": 2,
+      "h": 20
+     },
+     {
+      "d": 1,
+      "h": 17
+     }
+    ],
+    "explain": "Only Tuesday and Thursday remain after the three day limits. On Tuesday any start from 4 p.m. to 7 p.m. works; on Thursday the start must be 6 or 7 p.m. (the end must be by 9).",
+    "hints": [
+     "Cross out the days nobody can come first, then decide the earliest and latest start time for each remaining day.",
+     "The end time is the start time plus two hours; check it against 수진's limit last."
+    ],
+    "because": {
+     "id": "s2b",
+     "kind": "write",
+     "prompt": "Pick ONE of your times and propose it in the group chat in Korean (polite -요): say the weekday and the start time.",
+     "placeholder": "예: ...",
+     "minChars": 10,
+     "checks": [
+      {
+       "id": "w1",
+       "label": "names a weekday that works (화요일 or 목요일)",
+       "mode": "any",
+       "patterns": [
+        "화요일",
+        "목요일",
+        "화\\s*요",
+        "목\\s*요"
+       ]
+      },
+      {
+       "id": "w2",
+       "label": "gives a start time",
+       "mode": "any",
+       "patterns": [
+        "\\d+\\s*시",
+        "(네|다섯|여섯|일곱|여덟|세|두|한)\\s*시(?!간)"
+       ]
+      },
+      {
+       "id": "w3",
+       "label": "polite ending",
+       "mode": "any",
+       "patterns": [
+        "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다|[가-힣]요[.!?]?$"
+       ]
+      },
+      {
+       "id": "w4",
+       "label": "does not propose an excluded weekday",
+       "mode": "none",
+       "patterns": [
+        "(월|수|금)요일\\s*(에|에는|로)(?!\\s*말고)"
+       ]
+      },
+      {
+       "id": "w5",
+       "label": "the weekday and the start time fit together (Tuesday from 4 to 7 p.m., Thursday at 6 or 7 p.m.)",
+       "mode": "any",
+       "patterns": [
+        "(화요일|화\\s*요)[^.?!\\n]{0,12}(?<![0-9])(4|5|6|7|16|17|18|19|네|다섯|여섯|일곱)\\s*시(?!간)",
+        "(?<![0-9])(4|5|6|7|16|17|18|19|네|다섯|여섯|일곱)\\s*시(?!간)[^.?!\\n]{0,10}(화요일|화\\s*요)",
+        "(목요일|목\\s*요)[^.?!\\n]{0,12}(?<![0-9])(6|7|18|19|여섯|일곱)\\s*시(?!간)",
+        "(?<![0-9])(6|7|18|19|여섯|일곱)\\s*시(?!간)[^.?!\\n]{0,10}(목요일|목\\s*요)"
+       ]
+      }
+     ],
+     "selfAssess": [
+      "Does the day and time I wrote match one of the times I built?",
+      "Did I check that nobody's limit is broken?"
+     ],
+     "modelAnswers": [
+      {
+       "text": "화요일 오후 5시에 하면 어때요?"
+      },
+      {
+       "text": "목요일 저녁 6시에 시작해요. 8시에 끝나요."
+      },
+      {
+       "text": "화요일 저녁 6시에 해요, 수요일 말고요.",
+       "note": "Mentions an excluded day only to rule it out; this is fine."
+      }
+     ],
+     "badAnswers": [
+      {
+       "text": "수요일 7시에 해요.",
+       "why": "Wednesday is ruled out by 민수."
+      },
+      {
+       "text": "화요일에 해요.",
+       "why": "No start time."
+      },
+      {
+       "text": "목요일 오후 4시에 해요.",
+       "why": "Thursday needs a start at 6 p.m. or later."
+      },
+      {
+       "text": "화요일 오후 두 시에 해요.",
+       "why": "Tuesday starts only from 4 p.m."
+      },
+      {
+       "text": "화요일 20시에 해요.",
+       "why": "A start at 20:00 ends at 22:00, after 9 p.m."
+      }
+     ],
+     "humanReview": "Whether the proposed time really satisfies every limit, and whether the message sounds natural.",
+     "hints": [
+      "Take one row from above and say its weekday and time in Korean.",
+      "Add a question ending such as -어때요? or a plain proposal with -해요."
+     ]
+    }
+   },
+   {
+    "id": "s3",
+    "kind": "choose",
+    "prompt": "Now 수진 changes her mind: '금요일도 괜찮아요. 대신 8시까지는 끝나야 해요.' The other two do not change. What happens to the possible times?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Friday at 6 p.m. opens, and the late starts on Tuesday and Thursday shrink."
+     },
+     {
+      "id": "b",
+      "text": "Nothing new opens, because 민수 still cannot meet on Friday.",
+      "reveals": "민수 ruled out Wednesday, not Friday."
+     },
+     {
+      "id": "c",
+      "text": "Friday opens up from 4 p.m. on, just like Tuesday.",
+      "reveals": "Friday is not Tuesday: 민수 can meet on Friday only after 6 p.m."
+     },
+     {
+      "id": "d",
+      "text": "Friday opens, and the Thursday times stay exactly as before.",
+      "reveals": "The earlier end time cuts the latest start for every day, Thursday included."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "The new rule is: end by 8 p.m., so the start is at most 6 p.m. Friday now needs a start of exactly 6 p.m. (민수 needs 6 or later, 수진 now needs 6 or earlier). Tuesday loses 7 p.m. and Thursday keeps only 6 p.m.",
+    "hints": [
+     "Redo the conditions with the new rule: what is the latest start now if the meeting must end by 8?",
+     "Check Friday against each person in turn, then compare the Tuesday and Thursday lists with your earlier ones."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Reading the conditions",
+    "full": "Understands the Tuesday exception and builds three valid times",
+    "partial": "Builds some valid times",
+    "none": "Times break the limits"
+   },
+   {
+    "criterion": "Predicting a change",
+    "full": "Finds both the new slot and the narrower old ones",
+    "partial": "Sees only one effect",
+    "none": "Guesses without recomputing"
+   }
+  ],
+  "alternatives": [
+   "Any start (d, h) in the set {(2,16..19), (4,18..19)} is correct.",
+   "A learner may write times such as 오후 5시; the written message does not need a 24-hour clock."
+  ],
+  "hardCases": [
+   "'9시까지는 끝나야 해요' is read as 'ending at exactly 9 is allowed'.",
+   "'말고는' may be read as 'only'; the first step is meant to bring out the exception reading."
+  ],
+  "cautions": {
+   "language": "Uses 말고는, -부터 and -까지. The 24-hour clock is only a tool for the build step.",
+   "culture": "Student study groups often work around part-time jobs and class hours; names are invented.",
+   "accessibility": "All material is text; nothing depends on colour or images. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Each meeting time against the six limits",
+    "The weekday, time and polite ending in the proposal",
+    "Choice about the exception and about the changed rule"
+   ],
+   "human": [
+    "Naturalness of the proposal message"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-k7-03",
+  "subject": "korean",
+  "grade": "K7",
+  "topic": "Weighing a review that has both good and bad parts",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "title": "Where does the review land?",
+  "uiLang": "en",
+  "format": "reveal-and-revise",
+  "generative": true,
+  "goal": "Revise your reading of a cafe review as each part arrives, notice which sentence carries the writer's point, and write advice that keeps both sides.",
+  "thinking": [
+   "Updating a judgement as evidence arrives",
+   "Seeing which part of a sentence carries the opinion",
+   "Summarising without dropping a side"
+  ],
+  "differsFromPlain": "Plain practice asks whether a review is positive or negative. Here the review arrives in three parts and each part changes what the writer would advise, so you practise summarising a mixed opinion fairly.",
+  "prerequisites": [
+   "Knows -지만 / 하지만 and -기 힘들다",
+   "Can read a short blog review"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "A student wrote an online review of a cafe near the university. Your friend wants to study there for four hours on Saturday. You will read the review part by part. (일부러 = on purpose, 콘센트 = power outlet, -(으)ㄹ 만하다 = is worth doing)",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "Read each part, choose the answer that seems most reasonable, then continue.",
+    "hints": [
+     "Decide using only the part you have read so far.",
+     "In each part, look at which sentence the writer seems to care about most."
+    ],
+    "reflect": "Notice how your advice changed. The sentence after 하지만 and 그래도 usually shows what the writer wants you to remember, and a fair summary has to keep the first praise and the later limit together with the condition (how long you stay).",
+    "stages": [
+     {
+      "info": "이 카페는 분위기가 정말 좋아요. 인테리어도 예쁘고 음악도 조용해서 공부하기 좋아요.",
+      "ask": "What would the writer most likely tell a friend who wants a place to study?",
+      "options": [
+       {
+        "id": "a",
+        "text": "Go there; it is a good place to study."
+       },
+       {
+        "id": "b",
+        "text": "Do not go there; it is too noisy.",
+        "reveals": "The writer says the music is 조용해서, which means quiet."
+       },
+       {
+        "id": "c",
+        "text": "Go there only if you like crowds.",
+        "reveals": "Nothing is said about crowds."
+       },
+       {
+        "id": "d",
+        "text": "Maybe go, but check the details first."
+       }
+      ],
+      "reasonable": [
+       "a",
+       "d"
+      ],
+      "after": "So far there is only praise, so recommending it is natural. A careful reader may still wait for more details."
+     },
+     {
+      "info": "하지만 콘센트가 거의 없고 의자가 딱딱해서 오래 앉아 있기는 힘들어요.",
+      "ask": "Now what would the writer tell a friend who wants to study there all afternoon?",
+      "options": [
+       {
+        "id": "a",
+        "text": "Go there; it is the best place for a long study.",
+        "reveals": "After 하지만 the writer names problems that matter for sitting a long time."
+       },
+       {
+        "id": "b",
+        "text": "Do not go there at all.",
+        "reveals": "The writer still praised the place; the complaint is about sitting for a long time."
+       },
+       {
+        "id": "c",
+        "text": "Find another place for a long study; this one is better for a short stay."
+       },
+       {
+        "id": "d",
+        "text": "Go there for a long study, but bring your own charger.",
+        "reveals": "The review says sitting for a long time is hard; a charger would not fix the chairs."
+       }
+      ],
+      "reasonable": [
+       "c"
+      ],
+      "after": "The problem part is about staying long: few outlets, hard chairs. The praise is still true, but the advice depends on how long you stay."
+     },
+     {
+      "info": "그래도 한두 시간 책을 읽을 거라면 일부러 찾아올 만해요.",
+      "ask": "Which sentence describes the whole review most fairly?",
+      "options": [
+       {
+        "id": "a",
+        "text": "A cafe whose main point is its problems, with the praise only mentioned in passing.",
+        "reveals": "The last sentence says it is worth a special trip for short reading, so the praise is not a side note."
+       },
+       {
+        "id": "b",
+        "text": "A pretty, quiet cafe that is worth visiting for a short reading stay, not a long one."
+       },
+       {
+        "id": "c",
+        "text": "A perfect cafe for every kind of studying.",
+        "reveals": "The second part names real limits for long sessions."
+       },
+       {
+        "id": "d",
+        "text": "A cafe that suits a four-hour session despite the chairs.",
+        "reveals": "The writer says sitting long is hard, so this contradicts the review."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "The ending repeats the praise but ties it to a condition: one or two hours. A fair summary keeps the praise and the limit."
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Your friend plans four hours of study there on Saturday. Tell her in Korean (any polite or casual style) what you would advise, using what the review says.",
+    "placeholder": "예: ...",
+    "minChars": 15,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "advises against or questions a long stay (오래, 네 시간 ...)",
+      "mode": "any",
+      "patterns": [
+       "오래",
+       "네\\s*시간",
+       "4\\s*시간",
+       "긴\\s*시간",
+       "장시간",
+       "다른\\s*(곳|카페|데)",
+       "힘들",
+       "불편",
+       "not (for|good)",
+       "another",
+       "elsewhere",
+       "too long"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "uses the review: hard chairs, few outlets, or 'good only for a short stay'",
+      "mode": "any",
+      "patterns": [
+       "의자",
+       "콘센트",
+       "딱딱",
+       "짧게",
+       "한두\\s*시간",
+       "1\\s*-?\\s*2\\s*시간",
+       "잠깐",
+       "chair",
+       "outlet",
+       "socket",
+       "plug",
+       "short"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "does not recommend it without a condition",
+      "mode": "none",
+      "patterns": [
+       "무조건",
+       "꼭\\s*가",
+       "최고(의|예요|야)",
+       "perfect",
+       "best place"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "does not say that a four-hour stay is fine or comfortable",
+      "mode": "none",
+      "patterns": [
+       "(네|4)\\s*시간[^.?!\\n]{0,12}(좋|괜찮|편)",
+       "의자[^.?!\\n]{0,6}(?<!불)편(해|안|하)(?!지)"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "is written (at least partly) in Korean",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]{2,}"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my advice depend on how long she will stay?",
+     "Did I keep the good side of the review as well as the problem?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "네 시간은 좀 힘들 것 같아요. 의자가 딱딱하고 콘센트도 거의 없대요. 한두 시간만 있다 올 거면 괜찮아요."
+     },
+     {
+      "text": "거기서 오래 공부하려면 다른 데가 나아. 분위기는 좋은데 의자가 불편하고 콘센트가 없대.",
+      "note": "Casual and fine."
+     },
+     {
+      "text": "For four hours I'd pick another place: the 의자 are hard and there is almost no 콘센트. It's nice for an hour of reading.",
+      "note": "Mixed English still passes the surface checks."
+     },
+     {
+      "text": "오래 공부할 거면 다른 카페를 찾아보세요. 여기는 짧게 쉬기에 좋아요.",
+      "note": "Gives the review's conclusion (short stay only) instead of naming the chairs."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "분위기가 좋고 조용하니까 꼭 가요!",
+      "why": "Repeats only the first praise and recommends it with no condition."
+     },
+     {
+      "text": "그 카페는 별로예요.",
+      "why": "Drops the praise and gives no reason."
+     }
+    ],
+    "humanReview": "Whether the advice is natural and honestly keeps both sides of the review.",
+    "hints": [
+     "Start with the part of the review that matters most for four hours.",
+     "Add one short sentence about what the place is good for."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Revising the reading",
+    "full": "Reasonable choices at each stage and can say why the second part changed the advice",
+    "partial": "Reasonable at some stages",
+    "none": "Keeps the first impression regardless"
+   },
+   {
+    "criterion": "Fair advice",
+    "full": "Advises on the four-hour plan, gives the reason, keeps the praise",
+    "partial": "Gives only the problem or only the praise",
+    "none": "Unrelated to the review"
+   }
+  ],
+  "alternatives": [
+   "A learner may advise bringing a cushion and a charger; that still uses the review and is fine.",
+   "At the first stage some learners prefer to wait for more information; that is reasonable."
+  ],
+  "hardCases": [
+   "'일부러 찾아올 만해요' is a recommendation with a condition; learners who read it as unconditional praise should compare it with the 'one or two hours' part."
+  ],
+  "cautions": {
+   "language": "Contains -기는 힘들어요 and -ㄹ 만해요 in short, context-supported sentences.",
+   "culture": "Students often study in cafes in Korea; reviews often praise 분위기 and mention outlets and seats.",
+   "accessibility": "All material is text; nothing depends on colour or images. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Whether each reveal choice was reasonable",
+    "Reason and caution in the written advice"
+   ],
+   "human": [
+    "Whether the advice stays faithful to both sides of the review"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-k7-04",
+  "subject": "korean",
+  "grade": "K7",
+  "topic": "Sufficiency of information in a complaint message",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "title": "What does the shop need to know?",
+  "uiLang": "en",
+  "format": "choose-needed-info",
+  "generative": true,
+  "goal": "Decide which pieces of information a first complaint message needs, pick the request that cannot be misunderstood, and write the message.",
+  "thinking": [
+   "Deciding what information is sufficient",
+   "Spotting an ambiguous request",
+   "Writing for a reader who cannot ask back"
+  ],
+  "differsFromPlain": "Plain practice asks for polite complaint phrases. Here you decide which facts the reader needs in order to act, notice a request with two possible meanings, and then write the whole message.",
+  "prerequisites": [
+   "Knows polite -(으)ㅂ니다/-어요 requests",
+   "Knows 교환, 환불, 사이즈, 주문번호"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "You ordered a jacket online. You ordered size L but a size M jacket arrived yesterday, and you cannot wear it. You will send a first message to the shop's customer centre (고객센터) in writing. The staff member does not know you and answers only after reading your message.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "Which pieces of information must your first message contain so that the shop can solve the problem without writing back to ask you? Choose all that apply.",
+    "options": [
+     {
+      "id": "a",
+      "text": "A short apology for bothering the staff",
+      "reveals": "Politeness is good, but an apology is not information the shop needs to act on."
+     },
+     {
+      "id": "b",
+      "text": "The order number"
+     },
+     {
+      "id": "c",
+      "text": "Your full home address",
+      "reveals": "The shop already has the address from the order, and the order number lets them find it."
+     },
+     {
+      "id": "d",
+      "text": "Which item arrived and what is wrong with it"
+     },
+     {
+      "id": "e",
+      "text": "Whether you want an exchange or a refund"
+     },
+     {
+      "id": "f",
+      "text": "How many days the delivery took",
+      "reveals": "The delay is not the problem here; the wrong size is."
+     }
+    ],
+    "correct": [
+     "b",
+     "d",
+     "e"
+    ],
+    "explain": "The shop must be able to find the order (order number), understand what went wrong (item and size), and know what you want done (exchange or refund). The apology, your address and the delivery time do not help them act.",
+    "hints": [
+     "Imagine you are the staff member: which facts would you have to ask about before you could do anything?",
+     "Cross out what the shop already has or what does not change what they do next."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Which request sentence tells the shop exactly what to do?",
+    "options": [
+     {
+      "id": "a",
+      "text": "다른 상품으로 바꿔 주세요.",
+      "reveals": "This could mean another size, another colour or a different jacket; the shop cannot tell."
+     },
+     {
+      "id": "b",
+      "text": "빨리 좀 해결해 주세요.",
+      "reveals": "It says how fast, not what to do."
+     },
+     {
+      "id": "c",
+      "text": "알아서 잘 처리해 주세요.",
+      "reveals": "It leaves the choice completely to the shop."
+     },
+     {
+      "id": "d",
+      "text": "L 사이즈로 교환해 주세요."
+     }
+    ],
+    "correct": [
+     "d"
+    ],
+    "explain": "'L 사이즈로 교환해 주세요' names the action (교환) and the result (size L). The other requests leave the shop guessing what you want.",
+    "hints": [
+     "For each sentence, ask what the staff member could still wonder after reading it.",
+     "A good request answers 'do what, to get what?'"
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Write your message to the 고객센터 in Korean (polite or formal register, 2-4 sentences). Invent an order number.",
+    "placeholder": "예: 안녕하세요. ...",
+    "minChars": 30,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "gives an order number",
+      "mode": "any",
+      "patterns": [
+       "주문\\s*번호",
+       "주문\\s*내역",
+       "\\d{5,}",
+       "order\\s*(number|no)"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "says what is wrong (the size / wrong item)",
+      "mode": "any",
+      "patterns": [
+       "사이즈",
+       "치수",
+       "잘못",
+       "M\\b",
+       "맞지\\s*않",
+       "안\\s*맞",
+       "size",
+       "wrong"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "says what you want (exchange / refund)",
+      "mode": "any",
+      "patterns": [
+       "교환",
+       "바꿔",
+       "바꾸",
+       "환불",
+       "반품",
+       "다시\\s*보내",
+       "exchange",
+       "refund"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "polite or formal ending",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다|[가-힣]요[.!?]?$"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "no casual sentence ending",
+      "mode": "none",
+      "patterns": [
+       "(줘|바꿔|교환해|해줘)[.!?\\s]*$",
+       "(야|어|지)[.!?]\\s*$"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Could the staff member act on my message without writing back?",
+     "Is my request clear about what I want?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "안녕하세요. 어제 받은 재킷 때문에 문의드립니다. 주문번호는 20261015-3347입니다. L 사이즈를 주문했는데 M 사이즈가 와서 입을 수가 없습니다. L 사이즈로 교환해 주시면 감사하겠습니다."
+     },
+     {
+      "text": "안녕하세요, 주문번호 55871234 고객입니다. 주문한 재킷이 L인데 M이 잘못 왔어요. 교환 부탁드려요.",
+      "note": "Shorter, polite -요; still contains the three needed facts."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "안녕하세요. 어제 옷을 받았는데 잘못 왔어요. 빨리 해결해 주세요.",
+      "why": "No order number, no size, and the request does not say exchange or refund."
+     },
+     {
+      "text": "주문번호 3345678 재킷 사이즈가 잘못 왔어. 교환해줘.",
+      "why": "Casual ending toward a shop."
+     }
+    ],
+    "humanReview": "Whether the register and wording sound natural to a customer-centre reader.",
+    "hints": [
+     "Open with a greeting and one clause on why you are writing.",
+     "Then put the three facts in order: which order, what is wrong, what you want."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Choosing needed information",
+    "full": "Selects exactly the order number, the problem and the request, and rejects the others",
+    "partial": "Selects two of the three or adds one unneeded item",
+    "none": "Selects mostly unneeded items"
+   },
+   {
+    "criterion": "The message",
+    "full": "Order number, problem and a specific request in polite Korean",
+    "partial": "One of the three missing",
+    "none": "Casual or no usable facts"
+   }
+  ],
+  "alternatives": [
+   "A message may add a photo of the label; this is useful but not required for a first message.",
+   "A learner may choose a refund instead of an exchange; any clear choice is fine."
+  ],
+  "hardCases": [
+   "Some shops want a photo for a wrong-size claim; the task treats it as an extra, not as a requirement of the message itself."
+  ],
+  "cautions": {
+   "language": "Uses 문의드립니다 and 교환/환불 vocabulary; the hints explain what the request must contain, not how to word it.",
+   "culture": "Customer-centre messages in Korea are normally written politely and directly; order numbers are invented.",
+   "accessibility": "All material is text; nothing depends on colour or images. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The set of needed facts",
+    "The choice of the unambiguous request",
+    "Order number, problem, request and polite ending in the message"
+   ],
+   "human": [
+    "Naturalness and register of the message"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "n-k-k7-05",
+  "subject": "korean",
+  "grade": "K7",
+  "topic": "Counter-examples and partial negation",
+  "level": 2,
+  "levelLabel": "Intermediate",
+  "title": "Everyone? Not everyone",
+  "uiLang": "en",
+  "format": "make-your-own",
+  "generative": true,
+  "goal": "Tell apart 'not everyone' from 'no one', pick evidence that really breaks an 'everyone' claim, and write your own claim and polite counter-example.",
+  "thinking": [
+   "Finding a counter-example",
+   "Telling 'not all' from 'none'",
+   "Correcting a claim without overcorrecting"
+  ],
+  "differsFromPlain": "Plain practice asks you to make a negative sentence with 안/-지 않다. Here you decide what evidence disproves a claim about everyone, and write a correction that is exactly as strong as the evidence.",
+  "prerequisites": [
+   "Knows 모두, 다, 항상 and -지 않다",
+   "Has seen -는 것은 아니다"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "At a language exchange, a visitor says: \"한국 사람은 모두 매운 음식을 좋아해요.\" You and your classmates want to answer politely and accurately.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "scaffold": true,
+    "prompt": "Of ten Korean friends you know, five like spicy food and five do not. Which statement is true?",
+    "options": [
+     {
+      "id": "a",
+      "text": "모두 싫어해요.",
+      "reveals": "That would mean all ten dislike it."
+     },
+     {
+      "id": "b",
+      "text": "모두 좋아하는 것은 아니에요."
+     },
+     {
+      "id": "c",
+      "text": "아무도 좋아하지 않아요.",
+      "reveals": "Five of them do like it, so 'nobody' is false."
+     },
+     {
+      "id": "d",
+      "text": "모두 좋아해요.",
+      "reveals": "That would mean all ten like it."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "'모두 ...는 것은 아니에요' says that 'everyone' is not true, but it still allows some people to like it. 'Nobody' would be a stronger claim than the facts support.",
+    "hints": [
+     "Count how many of the ten each sentence is about.",
+     "Ask whether the sentence still allows the five who like it."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Which one piece of evidence is enough to show that '한국 사람은 모두 매운 음식을 좋아해요' is wrong?",
+    "options": [
+     {
+      "id": "a",
+      "text": "우리 할머니는 매운 음식을 아주 좋아하세요.",
+      "reveals": "This is a person who does like spicy food, which fits the claim."
+     },
+     {
+      "id": "b",
+      "text": "한국에는 매운 음식이 정말 많아요.",
+      "reveals": "Many spicy dishes exist, but that says nothing about every person liking them."
+     },
+     {
+      "id": "c",
+      "text": "저는 매운 음식을 좋아하지만 가끔만 먹어요.",
+      "reveals": "Liking spicy food and eating it rarely does not break the claim, because the claim is about liking."
+     },
+     {
+      "id": "d",
+      "text": "제 친구 민아는 매운 음식을 싫어해요."
+     }
+    ],
+    "correct": [
+     "d"
+    ],
+    "explain": "A claim about everyone can be broken by one person who does not fit. 민아 is a Korean who dislikes spicy food. You do not need to show that most people dislike it.",
+    "hints": [
+     "The claim is about all Korean people and about liking. Ask what each option says about liking, and about whom.",
+     "Test each option: would it still be true if the claim were true?"
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Make your own pair of lines in Korean (polite). A says something too strong about a group, using a word such as 모두, 다 or 항상 (for example about students, a city or a food). B answers politely with a specific counter-example and says that it is not true of everyone.",
+    "placeholder": "A: ...\nB: ...",
+    "minChars": 30,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "A's claim uses a 'all / always' word (모두, 다, 항상, 전부, 누구나 ...)",
+      "mode": "any",
+      "patterns": [
+       "(A|가)\\s*[:：][^\\n]*(모두|다 |항상|전부|누구나|언제나|늘 |꼭 |everyone|always)"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "B says it is not true of everyone (-는 것은 아니에요, -지는 않아요, ...도 있어요)",
+      "mode": "any",
+      "patterns": [
+       "(것|건|게)(은|이|도)?\\s*아니",
+       "지는\\s*(않|못)",
+       "지\\s*않은\\s*[가-힣]+도\\s*있",
+       "그렇지\\s*않은",
+       "도\\s*있(어요|습니다|지요|죠)",
+       "not (all|everyone)"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "B gives a specific example (a person, a place or a case)",
+      "mode": "any",
+      "patterns": [
+       "(B|나)\\s*[:：][^\\n]*(제 |우리 |저희 |예를 들|예를|친구|언니|오빠|형|누나|동생|엄마|아빠|부모|할머니|할아버지|선생님|이모|삼촌|[가-힣]{1,3}(씨는|씨가|이는|이가))"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "B does not overcorrect to 'no one / not at all'",
+      "mode": "none",
+      "patterns": [
+       "아무도",
+       "한\\s*명도",
+       "누구도",
+       "전혀",
+       "절대",
+       "nobody",
+       "no one"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다|[가-힣]요[.!?]?$"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Is A's claim really about everyone, so that one example breaks it?",
+     "Is B's answer exactly as strong as the example, not stronger?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "A: 대학생은 모두 방학에 여행을 가요.\nB: 모두 가는 것은 아니에요. 제 친구 수진이는 방학마다 아르바이트를 해요."
+     },
+     {
+      "text": "A: 서울 사람들은 항상 바빠요.\nB: 항상 바쁜 건 아니에요. 우리 이모는 서울에 사시지만 주말에는 여유롭게 지내세요.",
+      "note": "Uses -건 아니에요."
+     },
+     {
+      "text": "A: 부산에서는 다 사투리를 써요.\nB: 그렇지 않은 사람도 있어요. 저희 반 친구 하나는 부산 출신인데 표준어로 말해요.",
+      "note": "Uses 그렇지 않은 사람도 있어요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "A: 대학생은 모두 여행을 가요.\nB: 아무도 안 가요.",
+      "why": "Overcorrects to 'nobody' and gives no example."
+     },
+     {
+      "text": "A: 대학생은 모두 여행을 가요.\nB: 네, 맞아요.",
+      "why": "Agrees instead of correcting, and has no example."
+     }
+    ],
+    "humanReview": "Whether A's claim is truly general, B's example is realistic, and the Korean is natural.",
+    "hints": [
+     "Pick a group you know well, then write A's sentence with one 'all / always' word.",
+     "For B, think of one real person or case that does not fit, and say 'not everyone' rather than 'no one'."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Choosing the counter-example",
+    "full": "Picks the person who does not fit and can say why the other options do not break the claim",
+    "partial": "Picks it without a reason",
+    "none": "Picks supporting evidence"
+   },
+   {
+    "criterion": "Own lines",
+    "full": "A over-generalises; B gives one example and a 'not everyone' correction in polite Korean",
+    "partial": "Example or correction missing",
+    "none": "Agrees or overcorrects"
+   }
+  ],
+  "alternatives": [
+   "B may begin with 'Actually' (사실은) or ask a question such as '모두 그럴까요?'; the correction is still fine if it gives an example.",
+   "Total negation such as 모두 안 가요 is genuinely ambiguous in Korean; this task uses clearer forms."
+  ],
+  "hardCases": [
+   "'모두 ~지 않아요' can mean 'not all' or 'none', so learners should not be marked wrong for noticing that.",
+   "An example about oneself ('저는 ...') also works if it is a real counter-example."
+  ],
+  "cautions": {
+   "language": "Patterns such as -는 것은 아니에요 are shown in the options; the learner is not required to use one specific pattern.",
+   "culture": "Statements about 'Koreans' are generalisations; the task treats spicy food only as a neutral example and avoids judging any group.",
+   "accessibility": "All material is text; nothing depends on colour or images. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of the not-all sentence",
+    "Choice of the counter-example",
+    "Universal word, partial negation, example and polite ending in the learner's lines"
+   ],
+   "human": [
+    "Realism and naturalness of the lines"
+   ]
+  },
+  "status": "draft"
+ }
+]

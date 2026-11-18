@@ -4,6 +4,7 @@ import { indexContent, publishedOnly, scopeToGrade, type ContentIndex } from "./
 import { localizedBundle, overlayFor } from "./localize";
 import { bankQuestions, hasBank } from "./bank";
 import { loadEnglishBank, loadEnglishBankIndex } from "./assets";
+import { localizeEnglishBank } from "./english-bank";
 import { gateAll } from "../hintGate";
 import { siteConfig } from "@/lib/learn/sites";
 import mathDemo from "./demo/math.json";
@@ -72,14 +73,15 @@ export async function loadIndex(site: Site, opts: { grade?: Grade; locale?: Lear
     const ov = locale === siteConfig(site).presentationLocale ? null : await overlayFor(locale, site);
     const skills = new Set(bundle.catalog.skills.map((s) => s.id));
     let extra = bankQuestions(site, locale, ov?.bank, skills, `${skills.size}`);
-    if (site === "english" && locale === siteConfig("english").presentationLocale) {
+    if (site === "english") {
       // English practice bank: server-only assets, read for the skills this request can reach (one question's skill, the learner's grade scope, or all)
       let wanted: ReadonlySet<string> = skills;
       if (opts.bankQuestionId) {
         const sk = (await loadEnglishBankIndex()).get(opts.bankQuestionId);
         wanted = new Set(sk && skills.has(sk) ? [sk] : []);
       } else if (opts.grade) wanted = new Set(scopeToGrade(bundle, opts.grade).catalog.skills.map((s) => s.id));
-      extra = await loadEnglishBank(wanted);
+      const raw = await loadEnglishBank(wanted);
+      extra = locale === siteConfig("english").presentationLocale ? raw : localizeEnglishBank(raw, ov?.bank, locale);
     }
     if (extra.length) bundle = { ...bundle, questions: [...bundle.questions, ...extra] };
   }

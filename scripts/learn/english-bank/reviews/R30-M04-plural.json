@@ -1,0 +1,78 @@
+{
+ "packet": "M04-plural",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 30,
+  "questions": 40
+ },
+ "patches": [
+  {
+   "item": "b490a50a",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Why can giraffes reach leaves on tall trees?",
+      "o": [
+       "They can climb the branches",
+       "They have very long necks",
+       "They are taller than the zookeeper",
+       "They jump very high"
+      ],
+      "why": "기린은 목이 아주 길어서 높은 나무의 잎에 닿을 수 있어요.",
+      "std": [
+       "9영01-04"
+      ],
+      "a": 1
+     },
+     {
+      "q": "What did Yuna do at the zoo?",
+      "o": [
+       "She drew pictures of animals",
+       "She wrote a letter to the zookeeper",
+       "She fed bananas to the monkeys",
+       "She bought a toy giraffe"
+      ],
+      "why": "유나는 공책에 동물 그림을 그렸어요.",
+      "std": [
+       "9영01-02"
+      ],
+      "a": 0
+     },
+     {
+      "q": "Which sentence about penguins is true?",
+      "o": [
+       "They fly higher than other birds",
+       "They eat leaves and insects",
+       "They live in the gift shop",
+       "They cannot fly but swim fast"
+      ],
+      "why": "펭귄은 날지 못하지만 빠르게 헤엄친다고 했어요.",
+      "std": [
+       "9영01-02"
+      ],
+      "a": 3
+     },
+     {
+      "q": "How did everyone feel on the bus home?",
+      "o": [
+       "Bored and hungry",
+       "Excited and noisy",
+       "Tired but happy",
+       "Afraid and angry"
+      ],
+      "why": "버스에서 모두 피곤했지만 행복했다고 했어요.",
+      "std": [
+       "9영01-05"
+      ],
+      "a": 2
+     }
+    ]
+   },
+   "why": "Q4 stem wording changed from 'the students' to 'everyone' to match the passage; options/key unchanged.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 39,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

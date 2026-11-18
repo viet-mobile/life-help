@@ -17,7 +17,7 @@ import {
 } from "@/lib/shortcut/desktopShortcut";
 
 export function TopPwaBar() {
-  const { locale, formatBilingual } = useLocale();
+  const { locale, t, formatBilingual } = useLocale();
   const { country } = useCountry();
 
   const [os, setOs] = useState<UserOS>("windows");
@@ -106,6 +106,9 @@ export function TopPwaBar() {
   };
 
   if (isDismissed || !details) return null;
+  // Mobile: no desktop "Add to Dock / .url shortcut" banner. Only show once the browser offers a real install prompt (beforeinstallprompt).
+  const isMobileOs = os === "ios" || os === "ipados" || os === "android";
+  if (isMobileOs && !hasPrompt) return null;
 
   const isKorean = locale === "ko";
   const buttonLabel = isKorean ? guide.buttonLabelKo : guide.buttonLabelEn;
@@ -149,7 +152,7 @@ export function TopPwaBar() {
             <button
               type="button"
               onClick={handleActionClick}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 px-3 py-1 text-xs font-black transition cursor-pointer shadow-sm active:scale-95"
+              className="inline-flex min-h-11 items-center gap-1.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 px-3 py-1 text-xs font-black transition cursor-pointer shadow-sm active:scale-95"
             >
               <span>{buttonLabel}</span>
             </button>
@@ -157,8 +160,8 @@ export function TopPwaBar() {
             <button
               type="button"
               onClick={handleDismiss}
-              className="text-slate-400 hover:text-white p-1 rounded-md transition cursor-pointer"
-              title={isKorean ? "닫기" : "Close"}
+              className="inline-flex min-h-11 min-w-11 items-center justify-center text-slate-400 hover:text-white p-1 rounded-md transition cursor-pointer"
+              title={t("shortcut.close")}
               aria-label="Close banner"
             >
               ✕
@@ -205,7 +208,8 @@ export function TopPwaBar() {
               <button
                 type="button"
                 onClick={() => setIsModalOpen(false)}
-                className="rounded-full p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-700 transition cursor-pointer"
+                aria-label={t("shortcut.close")}
+                className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-700 transition cursor-pointer"
               >
                 ✕
               </button>
@@ -215,7 +219,7 @@ export function TopPwaBar() {
             <div className="mt-4 rounded-2xl bg-slate-50 p-3.5 border border-slate-200 flex items-center justify-between text-xs">
               <div>
                 <span className="text-[11px] font-bold text-slate-500 block">
-                  {isKorean ? "연결 대상 사이트 주소:" : "Target Website URL:"}
+                  {t("shortcut.targetSite")}
                 </span>
                 <span className="font-mono font-bold text-blue-700 text-xs sm:text-sm">
                   {details.canonicalUrl}
@@ -229,7 +233,7 @@ export function TopPwaBar() {
             {/* Step-by-Step Installation Instructions */}
             <div className="mt-5 space-y-3">
               <h4 className="text-xs font-black text-slate-800 uppercase tracking-wider">
-                {isKorean ? "설치 및 바로가기 생성 단계:" : "Installation Steps:"}
+                {t("shortcut.stepsTitle")}
               </h4>
               <ol className="space-y-2.5 text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">
                 {(isKorean ? guide.stepsKo : guide.stepsEn).map((step, idx) => (
@@ -254,7 +258,7 @@ export function TopPwaBar() {
                   onClick={handleActionClick}
                   className="w-full rounded-2xl bg-blue-600 py-3 text-sm font-black text-white shadow-md hover:bg-blue-700 transition cursor-pointer"
                 >
-                  🚀 {isKorean ? "지금 1클릭 앱 설치하기" : "Install App Now"}
+                  🚀 {t("shortcut.installNow")}
                 </button>
               )}
 
@@ -265,8 +269,8 @@ export function TopPwaBar() {
                   className="w-full rounded-2xl border border-slate-300 bg-white py-2.5 text-xs font-bold text-slate-800 hover:bg-slate-50 transition cursor-pointer"
                 >
                   {downloadSuccess
-                    ? (isKorean ? "✓ 바로가기 파일 다운로드 완료" : "✓ Shortcut File Downloaded")
-                    : (isKorean ? "🖥️ Windows 전통 바로가기 파일 · .url 다운로드" : "Download Classic Windows .url File")}
+                    ? `✓ ${t("shortcut.urlDownloaded")}`
+                    : `🖥️ ${t("shortcut.downloadUrl")}`}
                 </button>
               )}
 
@@ -275,7 +279,7 @@ export function TopPwaBar() {
                 onClick={() => setIsModalOpen(false)}
                 className="w-full rounded-2xl bg-slate-100 py-2.5 text-xs font-bold text-slate-600 hover:bg-slate-200 transition cursor-pointer"
               >
-                {isKorean ? "닫기" : "Close"}
+                {t("shortcut.close")}
               </button>
             </div>
           </div>

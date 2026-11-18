@@ -1,0 +1,219 @@
+{
+ "packet": "H19-h-world",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 14,
+  "questions": 150
+ },
+ "patches": [
+  {
+   "item": "240aaca1",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Which of the following best describes the main point of the passage?",
+      "o": [
+       "Handshakes are the only polite greeting in the whole modern world today.",
+       "Bowing has replaced kissing in most communities today.",
+       "Travelers should avoid greeting strangers in foreign places.",
+       "Greetings differ widely, so observing locals is a wise approach."
+      ],
+      "a": 3,
+      "why": "다양한 인사 방식을 소개하고 현지인을 관찰하라는 조언으로 끝나요."
+     },
+     {
+      "q": "What can be inferred about hosts who meet foreign visitors?",
+      "o": [
+       "They usually appreciate sincere attempts to follow local customs.",
+       "They expect visitors to know every local greeting perfectly.",
+       "They feel deeply insulted whenever a visitor makes a small mistake.",
+       "They prefer visitors who never try the local language."
+      ],
+      "a": 0,
+      "why": "most hosts are forgiving when a visitor makes an honest effort에서 추론할 수 있어요."
+     },
+     {
+      "q": "According to the passage, the depth of a bow may depend on",
+      "o": [
+       "the season of the year",
+       "the language spoken by the guest",
+       "the age or position of the people",
+       "the weather on the day of the visit"
+      ],
+      "a": 2,
+      "why": "the depth of the bow may depend on age or position."
+     },
+     {
+      "q": "What does \"follow their lead\" most likely mean?",
+      "o": [
+       "walk in front of local people",
+       "ask local people for money",
+       "teach local people your habits",
+       "copy what local people do"
+      ],
+      "a": 3,
+      "why": "follow someone's lead는 '그 사람이 하는 대로 따라 하다'라는 뜻이에요."
+     }
+    ]
+   },
+   "why": "Replace with distinct plausible wrong options.",
+   "severity": "minor"
+  },
+  {
+   "item": "7212ccd1",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the main message of the passage?",
+      "o": [
+       "Expensive presents are always better than simple ones.",
+       "A gift should show care for the receiver's own customs and feelings.",
+       "Every culture in the world follows exactly the same gift rules every time.",
+       "Travelers should stop bringing gifts to their hosts."
+      ],
+      "a": 1,
+      "why": "마지막 문장에서 선물의 진짜 의미는 상대방의 감정을 배려하는 것이라고 말해요."
+     },
+     {
+      "q": "According to the passage, why might a guest NOT open a gift at once?",
+      "o": [
+       "Doing so could look greedy in some cultures.",
+       "The wrapping paper is usually too expensive to tear.",
+       "The host would have no time to enjoy the present.",
+       "The gift is meant to be shared with strangers."
+      ],
+      "a": 0,
+      "why": "opening it at once would seem greedy."
+     },
+     {
+      "q": "The word \"rigid\" in the passage is closest in meaning to",
+      "o": [
+       "short and simple",
+       "old and extremely valuable",
+       "strict and unchangeable",
+       "new and fashionable"
+      ],
+      "a": 2,
+      "why": "rigid rulebook은 '엄격하고 융통성 없는 규칙집'이라는 뜻이에요."
+     },
+     {
+      "q": "What does the writer suggest experienced travelers do before buying a gift?",
+      "o": [
+       "Get advice from someone who knows the local culture",
+       "Search for the cheapest possible gift in the local market",
+       "Choose a set with the largest number of items",
+       "Wrap the present in their favorite color"
+      ],
+      "a": 0,
+      "why": "many experienced travelers ask a local friend for advice."
+     },
+     {
+      "q": "What can be inferred from the sentence about wrapping paper?",
+      "o": [
+       "Paper of any color is rarely used for wrapping gifts anywhere.",
+       "Sadness is the main purpose of wrapping a gift.",
+       "Colors do not carry the same meaning everywhere.",
+       "People in all cultures prefer the same color."
+      ],
+      "a": 2,
+      "why": "같은 색이 문화에 따라 축하 또는 슬픔을 뜻할 수 있다고 했어요."
+     }
+    ]
+   },
+   "why": "Replace duplicate with distinct wrong option.",
+   "severity": "minor"
+  },
+  {
+   "item": "7b63b136",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the writer's attitude toward differences in personal space and eye contact?",
+      "o": [
+       "Critical, strict and impatient",
+       "Understanding and open-minded",
+       "Amused and careless",
+       "Doubtful and fearful"
+      ],
+      "a": 1,
+      "why": "상대를 빨리 판단하기보다 다른 규칙일 수 있다고 열린 태도를 권해요."
+     },
+     {
+      "q": "According to the passage, why might a student avoid looking directly at a teacher?",
+      "o": [
+       "The teacher usually asks students to look away.",
+       "It can be seen as a lack of respect in some cultures.",
+       "Eye contact is difficult for people who speak English.",
+       "Students are afraid of becoming too honest."
+      ],
+      "a": 1,
+      "why": "looking directly at an older person or a teacher may be considered impolite."
+     },
+     {
+      "q": "The phrase \"pushy\" in the passage most likely means",
+      "o": [
+       "quietly friendly",
+       "pleasantly generous toward others",
+       "slightly confused",
+       "too forceful toward others"
+      ],
+      "a": 3,
+      "why": "a closer step feels pushy는 '밀어붙이는 듯 불편하다'는 뜻이에요."
+     },
+     {
+      "q": "Why can these habits cause awkward moments between strangers?",
+      "o": [
+       "They are rarely talked about openly.",
+       "Strangers usually refuse to speak to each other.",
+       "They only appear when people are adults.",
+       "They are written in different languages."
+      ],
+      "a": 0,
+      "why": "learned in childhood and rarely discussed."
+     }
+    ]
+   },
+   "why": "Reword key to \"rarely talked about openly\" matching the passage.",
+   "severity": "minor"
+  },
+  {
+   "item": "a60a1957",
+   "op": "set",
+   "set": {
+    "q": "Which word is the usual British English word for the American \"french fries\"?",
+    "o": [
+     "crisps",
+     "chips",
+     "sweets",
+     "scones"
+    ],
+    "a": 1,
+    "why": "영국식 영어에서 french fries는 chips라고 해요. crisps는 미국의 potato chips예요."
+   },
+   "why": "Change the item to a different BrE/AmE pair not exposed elsewhere (identity field q/o changed).",
+   "severity": "minor"
+  },
+  {
+   "item": "9a0fd626",
+   "op": "set",
+   "set": {
+    "q": "What does the idiom \"break the ice\" mean?",
+    "o": [
+     "to damage something during cold weather",
+     "to refuse a request from a new colleague at the start of a meeting",
+     "to make people feel comfortable at the start of a meeting",
+     "to end a long conversation suddenly after an argument"
+    ],
+    "a": 2,
+    "why": "break the ice는 어색한 분위기를 풀다라는 뜻이에요."
+   },
+   "why": "Lengthen distractors to equal specificity.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 145,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

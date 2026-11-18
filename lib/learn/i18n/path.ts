@@ -12,6 +12,7 @@ const BY_LOWER = new Map<string, Locale>(locales.map((l) => [l.toLowerCase(), l]
 export function localeFromSegment(segment: string | undefined): Locale | null {
   if (!segment) return null;
   const s = segment.toLowerCase();
+  if (s === "sg") return "fr";
   return BY_LOWER.get(s) ?? ALIASES[s] ?? null;
 }
 

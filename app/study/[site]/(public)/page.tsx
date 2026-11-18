@@ -5,10 +5,11 @@ import { BrandLogo } from "@/components/learn/BrandLogo";
 import { LocaleSwitch } from "@/components/learn/LocaleSwitch";
 import { StartCta } from "@/components/learn/StartCta";
 import { getServerT } from "@/lib/learn/i18n/server";
-import { loadContent, accountsEnabled, getLearnService, getUserId } from "@/lib/learn/server/runtime";
+import { loadContent, accountsEnabled, SIGNUP_ENABLED, getLearnService, getUserId } from "@/lib/learn/server/runtime";
 import { learnHost, parseLearnHost } from "@/lib/learn/hosts";
 import { siteConfig } from "@/lib/learn/sites";
 import { SITES, isSite, schoolLevel } from "@/lib/learn/types";
+import { hubLabels } from "@/components/think/hubLabels";
 
 export default async function Landing({ params }: { params: Promise<{ site: string }> }) {
   const { site } = await params;
@@ -25,17 +26,20 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
 
   return (
     <div className="l-wrap l-wrap-wide l-stack">
+      <a className="l-skip" href="#main">{t("nav.skip")}</a>
       <header className="l-landing-head">
         <span className="l-brand"><BrandLogo site={site} name={t(siteConfig(site).brandKey)} size={56} /></span>
         <LocaleSwitch />
         {others.map((o) => <Link key={o.site} className="l-link" href={o.href} data-testid={`other-site-${o.site}`}>{t("site.other", { name: t(`site.${o.site}.name` as never) })}</Link>)}
       </header>
 
+      <main id="main" className="l-stack">
       <section className="l-card l-card-accent l-stack" style={{ padding: 28 }}>
         <p style={{ fontWeight: 800 }}>{t("landing.eyebrow")}</p>
         <h1 className="l-h1">{t(`site.${site}.tagline` as never)}</h1>
         <p>{t(`site.${site}.description` as never)}</p>
-        <StartCta accountHasProfile={hasProfile} accountsEnabled={accountsEnabled()} />
+        <StartCta accountHasProfile={hasProfile} accountsEnabled={accountsEnabled()} signupEnabled={SIGNUP_ENABLED} />
+        <Link className="l-btn l-btn-light l-btn-block" data-testid="landing-think" href={`${base}/think`}>🧠 {hubLabels(t).title}</Link>
         <p style={{ fontSize: "0.85rem", opacity: 0.9 }}>{t("landing.privacy")}</p>
         <p style={{ fontSize: "0.85rem", opacity: 0.9 }}>
           <Link className="l-link" href={`${base}/privacy`}>{t("legal.privacy")}</Link> · <Link className="l-link" href={`${base}/terms`}>{t("legal.terms")}</Link>
@@ -75,6 +79,7 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
           );
         })}
       </section>
+      </main>
       <span hidden data-base={base} />
     </div>
   );

@@ -4,7 +4,6 @@
     "emergency": "Be om akutthjelp nå",
     "servicesTitle": "Hvilken tjeneste trenger du?",
     "consultation": "Rådgivning på ditt morsmål",
-    "verified": "Kobling med verifiserte håndverkere",
     "payment": "Trygg betaling",
     "review": "Vurderinger etter utført arbeid",
     "helperMasterBanner": "Vi søker dyktige teknikere og fagfolk som håndverkere i regionen",
@@ -18,10 +17,11 @@
     "allView": "Se alle",
     "repairView": "Akutte reparasjoner",
     "supportView": "Hverdagshjelp",
-    "partnerTitle": "Offisielt håndverkerpartnerskap med LIFE.HELP",
     "partnerDesc": "Jobb fleksibelt etter din egen timeplan i områdene du ønsker, med åpen og tydelig inntjening.",
     "lifeSupportDesc": "Vi ber ikke om telefonnummeret ditt. Du snakker med hjelperen din i en 1:1-chat på dette nettstedet.",
-    "safe050Badge": "🔒 Privat 1:1-chat med oversettelse"
+    "safe050Badge": "🔒 Privat 1:1-chat med oversettelse",
+    "privacyLink": "Personvernerklæring",
+    "termsLink": "Bruksvilkår"
   },
   "service": {
     "toilet": "Tett toalett",
@@ -41,7 +41,8 @@
     "jobHelp": "Bistand til jobbsøking og rekruttering",
     "hospitalHelp": "Sykehusledsagelse og medisinsk tolking",
     "mobileHelp": "Tegning av mobilabonnement og SIM-kort",
-    "study": "Engelsk og matematikkstudier / Koreansk"
+    "study": "Engelsk og matematikkstudier / Koreansk",
+    "visaDocs": "Visumdokumentguide per land"
   },
   "tech": {
     "title": "Teknikerportal",
@@ -303,9 +304,7 @@
     "cardZeroPhoneTitle": "Ingen innsamling av telefonnumre",
     "cardZeroPhoneDesc": "Ditt ekte telefonnummer blir verken samlet inn eller lagret, så du slipper spam og lekkasjer.",
     "cardRealtimeChatTitle": "1:1-chat med oversettelse med din hjelper",
-    "cardRealtimeChatDesc": "Skriv på ditt eget språk – meldingene oversettes automatisk til koreansk for håndverkeren.",
-    "cardVerifiedHelperTitle": "Verifiserte, offisielle håndverkere",
-    "cardVerifiedHelperDesc": "Bare grundig kontrollerte lokale håndverkere med bekreftet identitet og fagkunnskap kommer hjem til deg."
+    "cardRealtimeChatDesc": "Skriv på ditt eget språk – meldingene oversettes automatisk til koreansk for håndverkeren."
   },
   "request": {
     "title": "Tjenesteforespørsel",
@@ -345,7 +344,8 @@
     "privacyNoPhoneNote": "Vi ber ikke om telefonnummeret ditt. Du snakker med hjelperen din i en 1:1-chat på dette nettstedet.",
     "privacyGuaranteeTitle": "Fullt personvern",
     "translatingAndSubmitting": "Oversetter og sender inn …",
-    "startLiveChat": "Åpne 1:1-chat"
+    "startLiveChat": "Åpne 1:1-chat",
+    "photosNotUploaded": "Opplasting av bilder er ikke tilgjengelig ennå. Bilder lastes ikke opp eller sendes. Beskriv problemet med ord i stedet."
   },
   "serviceDetail": {
     "notFound": "Tjenesten ble ikke funnet.",
@@ -394,7 +394,6 @@
     "guideTitle": "Om rådgivningssenteret",
     "guide1": "Vi hjelper med alt i hverdagen i Korea: rør, reparasjoner, boligsøk, rengjøring og mer.",
     "guide2": "Snakk trygt og komfortabelt på ditt eget morsmål.",
-    "guide3": "Gjennom rådgivningen kobler vi deg direkte til en verifisert håndverker i nærheten.",
     "counselorRecruit": "Er du profesjonell flerspråklig rådgiver?",
     "counselorRecruitDesc": "Registrer deg enkelt med mobilnummeret ditt og begynn å hjelpe utenlandske innbyggere.",
     "counselorPortalBtn": "Gå til rådgiverportalen →",
@@ -458,7 +457,6 @@
     "inquiryDefault": "Henvendelse",
     "chatStarted": "Samtalen er startet",
     "quickHelloText": "Hei! Jeg er rådgiveren din hos LIFE.HELP. Hva kan jeg hjelpe deg med i dag?",
-    "quickTechText": "Vi har bekreftet adressen. Vi tildeler deg en verifisert håndverker i nærheten.",
     "quickHousingText": "Jeg forklarer deg grundig hvordan du finner bolig, og hva du bør passe på når du skriver leiekontrakt.",
     "counselorRole": "Rådgiver",
     "nativeConsultation": "Rådgivning på morsmål",
@@ -623,7 +621,6 @@
     "submitBtn": "Send anmeldelse (til contact@life.help)",
     "submittingBtn": "Sender …",
     "successTitle": "Anmeldelsen er sendt!",
-    "successDesc": "Tilbakemeldingen din er sendt trygt til administratoren på contact@life.help. Den hjelper oss å gjøre tjenesten bedre – tusen takk!",
     "writeAnotherBtn": "Skriv en ny anmeldelse",
     "homeBtn": "Tilbake til forsiden",
     "allServices": "Alle tjenester",
@@ -642,7 +639,11 @@
     "rating_2": "Under middels",
     "rating_1": "Misfornøyd (bør forbedres)",
     "backHome": "LIFE.HELP Hjem",
-    "recentReviewsTitle": "Nylige anonyme anmeldelser"
+    "recentReviewsTitle": "Nylige anonyme anmeldelser",
+    "pendingNotice": "Innsending av anmeldelser er under forberedelse. Anmeldelser kan ikke sendes inn ennå, og det du skriver her blir ikke lagret eller levert.",
+    "noReviewsYet": "Ingen anmeldelser er publisert ennå.",
+    "submitUnavailable": "Innsending av anmeldelser er under forberedelse",
+    "adminEmail": "E-post til administrator"
   },
   "login": {
     "title": "Logg inn og registrer deg",
@@ -651,7 +652,8 @@
     "passwordLabel": "Passord",
     "signInBtn": "Logg inn",
     "signUpBtn": "Registrer deg",
-    "backHome": "← Tilbake til forsiden"
+    "backHome": "← Tilbake til forsiden",
+    "learnNote": "Leter du etter læringssidene (matematikk, engelsk, koreansk)? De har egne kontoer og egne innloggingssider; denne innloggingen følger ikke med."
   },
   "serviceDesc": {
     "clog": "Tilbakeslag i toalett/vask/sluk, høytrykksspyling, rørinspeksjon med kamera",
@@ -670,7 +672,6 @@
     "requestTab": "Be om hjelp",
     "partnerTab": "Registrer deg som håndverker",
     "successTitle": "Forespørselen er mottatt!",
-    "successDesc": "Forespørselen din er sendt trygt og umiddelbart til en verifisert håndverker i nærheten.",
     "safePhoneLabel": "Direkte chattforbindelse",
     "privacyBadge": "Mottatt",
     "serviceLabel": "Valgt tjeneste",
@@ -709,7 +710,14 @@
     "providerSuccessDesc": "Håndverkerprofilen din er registrert. Du kan administrere status og timeplan i arbeidsområdet ditt.",
     "helperPortal": "Gå til håndverkerportalen",
     "safe050Tag": "🔒 Trygg kobling",
-    "submitBtn": "Åpne 1:1-chat"
+    "submitBtn": "Åpne 1:1-chat",
+    "notSentTitle": "Forespørselen din er IKKE sendt ennå",
+    "notSentDesc": "Denne siden sender ikke forespørsler, og ingenting du valgte her er lagret eller levert. Fortsett på forespørselssiden for å faktisk be om hjelp.",
+    "notSentCta": "Gå til forespørselssiden",
+    "notSentBack": "Tilbake til skjemaet",
+    "providerNoticeTitle": "Registrering av hjelpere er ikke tilgjengelig på denne siden",
+    "providerNoticeDesc": "Ingenting som fylles ut på denne siden blir registrert. Hjelpere registrerer seg på registreringssiden for hjelpere.",
+    "providerNoticeCta": "Gå til registrering av hjelpere"
   },
   "supportChecklist": {
     "bankHelp": [
@@ -787,7 +795,8 @@
     "leakPlumbing": "Lekkasjesøk",
     "bankHelp": "Bankkonto",
     "insuranceHelp": "Forsikring",
-    "study": "Skolefag"
+    "study": "Skolefag",
+    "visaDocs": "Infoguide"
   },
   "trustMetrics": {
     "languages": "Tilgjengelig på {count} språk · maskinoversatt chat",
@@ -969,5 +978,89 @@
       "WAITING": "Venter på hjelper",
       "steps": "Framdrift"
     }
+  },
+  "visa": {
+    "title": "Visumdokumentguide",
+    "subtitle": "Finn dokumentene du må forberede og de offisielle søknadslenkene for visumtypen din, på ditt eget språk.",
+    "disclaimer": "Kun informasjon. Innvandringsregler endres ofte: bekreft alltid på det offisielle nettstedet som er lenket her før du søker. LIFE.HELP tar ikke imot eller behandler visumsøknader.",
+    "destination": "Landet du vil reise inn i eller søke til",
+    "nationality": "Ditt statsborgerskap",
+    "purpose": "Visumtypen du trenger",
+    "select": "Velg…",
+    "purposes": {
+      "marriage": "Ekteskap / familie",
+      "work": "Arbeid",
+      "travel": "Reise",
+      "study": "Studier",
+      "business": "Forretning",
+      "visit": "Besøk",
+      "other": "Annet"
+    },
+    "entry": {
+      "title": "Kan du reise inn uten visum?",
+      "visa_free": "Visumfri innreise",
+      "eta_or_evisa": "Elektronisk tillatelse eller e-Visa kreves",
+      "visa_required": "Visum kreves før reisen",
+      "unknown": "Finnes ikke i våre kontrollerte data: se den offisielle siden",
+      "days": "Opptil {days} dager",
+      "pick": "Velg statsborgerskapet ditt for å se innreisevilkårene.",
+      "own": "Dette er ditt eget land.",
+      "source": "Offisiell kilde",
+      "listSource": "Offisiell liste over statsborgerskap med visumfritak"
+    },
+    "docs": {
+      "title": "Dokumenter å forberede",
+      "none": "Ingen sjekkliste er kontrollert for denne visumtypen ennå. Bruk de offisielle lenkene under."
+    },
+    "links": {
+      "title": "Offisielle lenker",
+      "info": "Informasjon",
+      "form": "Søknadsskjema",
+      "evisa": "e-Visa / elektronisk søknad",
+      "checklist": "Dokumentsjekkliste",
+      "fee": "Gebyrer",
+      "appointment": "Timeavtale"
+    },
+    "types": {
+      "title": "Offisielle visumtyper"
+    },
+    "pending": "Vi samler fortsatt inn og kontrollerer informasjon for dette landet. Offisielle portaler vises her så snart de er verifisert.",
+    "partial": "Noe informasjon for dette landet kontrolleres fortsatt.",
+    "verifiedAt": "Kontrollert {date}",
+    "portals": "Offisielle innvandringsportaler",
+    "pageLang": "Sidespråk: {langs}",
+    "noPurpose": "Ingen verifisert informasjon for denne visumtypen ennå.",
+    "back": "Tilbake til forsiden",
+    "loading": "Laster…",
+    "error": "Dataene kunne ikke lastes. Prøv igjen."
+  },
+  "counselorPortal": {
+    "title": "Rådgiverportalen er under forberedelse",
+    "desc": "Rådgiverportalen er ikke åpnet ennå. Det utstedes ingen tilgangskoder her. Bruk kundechatten for å snakke med oss.",
+    "cta": "Gå til chat"
+  },
+  "system": {
+    "goHome": "Tilbake til forsiden",
+    "notFoundTitle": "Siden ble ikke funnet",
+    "notFoundDesc": "Siden du leter etter finnes ikke eller er flyttet.",
+    "errorTitle": "Noe gikk galt",
+    "errorDesc": "Det oppstod et midlertidig problem. Prøv igjen.",
+    "retry": "Prøv igjen",
+    "offlineTitle": "Du er frakoblet",
+    "offlineDesc": "Sjekk internettforbindelsen din og prøv igjen.",
+    "requestDesc": "Beskriv problemet ditt og be om hjelp fra en hjelper i nærheten.",
+    "servicesDesc": "Flerspråklige tjenester for hverdagen i Korea."
+  },
+  "shortcut": {
+    "close": "Lukk",
+    "targetDomain": "URL for måldomene:",
+    "targetSite": "URL for målnettsted:",
+    "description": "Beskrivelse:",
+    "savedSafely": "Snarveisfilen ble lastet ned på en trygg måte.",
+    "instructionsTitle": "Installasjonsinstruksjoner:",
+    "stepsTitle": "Installasjonstrinn:",
+    "installNow": "Installer appen nå",
+    "downloadUrl": "Last ned klassisk Windows .url-fil",
+    "urlDownloaded": "Snarveisfil lastet ned"
   }
 }

@@ -15,8 +15,10 @@ import { passageSegments } from "@/lib/learn/listen/segments";
 export interface AttemptResponse {
   correct: boolean;
   attemptNo: number;
+  /** server-issued proof of the attempt counter (guests) */
+  attemptProof?: string;
   revealed: boolean;
-  feedback: { hint?: string; hintLevel?: number; explanation?: string; answer?: string; /** canonical Korean of the passage, sent once the question is solved or revealed */ passageKo?: string[] };
+  feedback: { hint?: string; hintLevel?: number; /** server proof that this hint level was served (needed to ask for the next one) */ hintProof?: string; explanation?: string; answer?: string; /** canonical Korean of the passage, sent once the question is solved or revealed */ passageKo?: string[]; /** the correct Korean sentence for pick-the-Korean / fill-in questions, sent only once solved or revealed */ audioAnswer?: string };
   followUp: PublicQuestion | null;
   delta: EngineDelta;
   state: PlayerState;
@@ -58,7 +60,9 @@ export function QuestionCard({
   const [value, setValue] = useState<string | string[]>(isMulti ? [] : "");
   const [status, setStatus] = useState<QStatus>("answering");
   const [attempts, setAttempts] = useState(0);
+  const [proof, setProof] = useState<string | undefined>(undefined);
   const [hints, setHints] = useState<string[]>([]);
+  const [hintProof, setHintProof] = useState<string | undefined>(undefined);
   const [feedback, setFeedback] = useState<AttemptResponse["feedback"]>({});
   const [followUp, setFollowUp] = useState<PublicQuestion | null>(null);
   const [floatXp, setFloatXp] = useState<number | null>(null);
@@ -86,12 +90,15 @@ export function QuestionCard({
         sessionId,
         answer: value,
         attemptNo: attempts + 1,
+        attemptProof: proof,
         hintsUsed: hints.length,
         timeMs: Date.now() - startedAt,
         isReview,
         seenIds,
       });
       onAttempt(res);
+      // a solved or revealed regular question counts toward the thinking-challenge offer (once per question; see lib/think/flow.ts)
+      if (res.correct || res.revealed) window.dispatchEvent(new CustomEvent("learn:q-complete", { detail: { site, questionId: q.id } }));
       setFeedback(res.feedback);
       if (res.correct) {
         setStatus("correct");
@@ -102,9 +109,10 @@ export function QuestionCard({
         setFollowUp(res.followUp);
       } else {
         setAttempts(res.attemptNo);
+        setProof(res.attemptProof);
         setStatus("wrong");
         const hint = res.feedback.hint;
-        if (hint && !hints.includes(hint)) setHints((h) => [...h, hint]);
+        if (hint && !hints.includes(hint)) { setHints((h) => [...h, hint]); setHintProof(res.feedback.hintProof); }
         setValue(isMulti ? [] : "");
       }
       window.setTimeout(() => feedbackRef.current?.focus(), 30);
@@ -119,8 +127,9 @@ export function QuestionCard({
 
   const askHint = async () => {
     try {
-      const res = await api<{ hint: string; level: number }>("hint", { questionId: q.id, level: hints.length + 1 });
+      const res = await api<{ hint: string; level: number; hintProof?: string }>("hint", { questionId: q.id, level: hints.length + 1, sessionId, prevProof: hintProof });
       setHints((h) => [...h, res.hint]);
+      setHintProof(res.hintProof);
     } catch {
       /* no more hints */
     }
@@ -153,6 +162,7 @@ export function QuestionCard({
           <div className="l-panel l-panel-good l-pop">
             <div className="l-panel-title">✅ {attempts > 0 ? t("lesson.correct.after") : t("lesson.correct")}</div>
             {feedback.explanation && <p><strong>{t("lesson.explain")}</strong> · <RichText text={feedback.explanation} /></p>}
+            {feedback.audioAnswer && <ListenButton text={feedback.audioAnswer} />}
             {floatXp ? <p className="l-rise" aria-hidden="true">{t("lesson.xp", { n: floatXp })}</p> : null}
           </div>
         )}
@@ -161,12 +171,13 @@ export function QuestionCard({
             <div className="l-panel-title">🧭 {t("lesson.reveal")}</div>
             {feedback.answer && <p><strong>{t("lesson.answerIs")}</strong> · <RichText text={feedback.answer} /></p>}
             {feedback.explanation && <p><strong>{t("lesson.explain")}</strong> · <RichText text={feedback.explanation} /></p>}
+            {feedback.audioAnswer && <ListenButton text={feedback.audioAnswer} />}
           </div>
         )}
       </div>
 
       {status === "answering" && hints.length > 0 && (
-        <div className="l-panel l-panel-hint">{hints.map((h, k) => <p key={k}><RichText text={h} /></p>)}</div>
+        <div className="l-panel l-panel-hint" aria-live="polite">{hints.map((h, k) => <p key={k}><RichText text={h} /></p>)}</div>
       )}
 
       <div className="l-stack">

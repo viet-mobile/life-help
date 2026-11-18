@@ -14,10 +14,11 @@
     "start": "next start",
     "lint": "next lint",
     "preview": "node scripts/learn/build-content-assets.mjs && opennextjs-cloudflare build && wrangler dev",
-    "deploy": "node scripts/learn/build-content-assets.mjs && opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "deploy": "node scripts/release/preflight.mjs && node scripts/learn/build-content-assets.mjs && opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "typecheck": "next typegen && tsc --noEmit",
+    "release:preflight": "node scripts/release/preflight.mjs",
     "test": "vitest run",
     "test:learn": "vitest run",
     "test:learn:db": "node scripts/test_learning_migration_db.mjs",
@@ -41,17 +42,20 @@
     "@playwright/test": "^1.63.0",
     "@tailwindcss/postcss": "^4",
     "@types/katex": "^0.16.8",
-    "@types/node": "^20",
+    "@types/node": "^24.19.2",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.3.5",
+    "eslint-config-next": "^16.3.8",
     "opencc-js": "^1.4.2",
     "prettier": "^3.9.6",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^4",
     "typescript": "^5",
-    "vitest": "^3.2.7",
-    "wrangler": "^4.131.1"
+    "vitest": "^5.0.5",
+    "wrangler": "^4.151.3"
+  },
+  "overrides": {
+    "fast-glob": "npm:tinyglobby@0.2.17"
   }
 }

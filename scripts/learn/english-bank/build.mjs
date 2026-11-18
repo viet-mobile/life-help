@@ -49,6 +49,13 @@ for (const f of files) {
 const wordsSeen = new Map(); // en|pos -> first skill (a word is one learning item across levels)
 const dropped = { frameDuplicate: 0, vocabRepeat: 0, duplicateQuestion: 0, clozeBroken: 0, badItem: 0 };
 const skillOrder = (s) => plan.skills.findIndex((x) => x.id === s);
+// Authored step-by-step hints (scripts/learn/english-bank/hints/*.json: itemId -> {m:[h1,h2]} | {s:"h"} | {q:{"n":[h1,h2]}}) replace the rule-generated ones.
+// A hint that names the key (or a word only the key contains) is ignored here and counted as rejected.
+const HINTS = {};
+const HINT_DIR = path.join(here, "hints");
+for (const f of fs.existsSync(HINT_DIR) ? fs.readdirSync(HINT_DIR).filter((x) => x.endsWith(".json")).sort() : []) Object.assign(HINTS, JSON.parse(fs.readFileSync(path.join(HINT_DIR, f), "utf8")));
+const hintStats = { used: 0, rejected: 0 };
+const okHint = (h, key, options) => (h === undefined ? undefined : typeof h === "string" && /[가-힣]/.test(h) && h.length <= 160 && safeHint(h, key, options) !== undefined ? (hintStats.used++, h) : (hintStats.rejected++, undefined));
 // Reviewed items keep their place when a newer (unreviewed) item duplicates them: the first-seen copy survives de-duplication.
 const reviewedIds = JSON.parse(fs.readFileSync(path.join(here, "ledger.json"), "utf8")).reviewed;
 items.sort((a, b) => (reviewedIds[itemId(a.skill, a.item)] ? 0 : 1) - (reviewedIds[itemId(b.skill, b.item)] ? 0 : 1) || skillOrder(a.skill) - skillOrder(b.skill));
@@ -105,16 +112,14 @@ const seenKeys = new Map(); // normalised prompt+answer -> id
 const seenSets = new Set();
 const seenFrames = new Set();
 const byKind = {};
-const PROMOTED = new Set(JSON.parse(fs.readFileSync(path.join(here, "electives-core.json"), "utf8")).questionIds); // now core questions of the electives course
 const push = (skill, packet, item, form, q) => {
-  if (PROMOTED.has(q.id)) { dropped.promotedToCatalog = (dropped.promotedToCatalog ?? 0) + 1; return; }
-  const answerText = q.answer.kind === "order" ? q.answer.ids.map((id) => q.options.find((o) => o.id === id)?.text).join(" ") : q.options.find((o) => o.id === q.answer.id)?.text;
+  const answerText = q.answer.kind === "text" ? q.answer.accepted[0] : q.answer.kind === "order" ? q.answer.ids.map((id) => q.options.find((o) => o.id === id)?.text).join(" ") : q.options.find((o) => o.id === q.answer.id)?.text;
   if (form === "cloze") q = { ...q, prompt: q.prompt.replace(/\b(a|an)(\s+)(_{2,})/gi, (_m, art, sp, bl) => `${art[0] === "A" ? "A" : "a"}(n)${sp}${bl}`) }; // the article would single out the one option that starts with the matching sound
   const k1 = `${norm(q.prompt)}|${norm(answerText ?? "")}`;
-  const k2 = `${norm(q.prompt)}|${q.options.map((o) => norm(o.text)).sort().join("|")}`;
+  const k2 = `${norm(q.prompt)}|${(q.options ?? [{ text: q.audioText ?? "" }]).map((o) => norm(o.text)).sort().join("|")}`;
   // name-masked frame (prompt + options, capitalised words masked): the same item with only a name / pronoun swapped is a substitution duplicate (docs/english-bank/dedup-policy.md)
   const mk3 = (t) => norm(t.replace(/\b[A-Z][a-z]+\b/g, "<N>"));
-  const k3 = `${mk3(q.prompt)}|${q.options.map((o) => mk3(o.text)).sort().join("|")}`;
+  const k3 = `${mk3(q.prompt)}|${(q.options ?? [{ text: q.audioText ?? "" }]).map((o) => mk3(o.text)).sort().join("|")}`;
   if (seenKeys.has(k1) || seenSets.has(k2)) { dropped.duplicateQuestion++; return; }
   if (seenFrames.has(k3)) { dropped.frameDuplicate++; return; }
   seenKeys.set(k1, q.id); seenSets.add(k2); seenFrames.add(k3);
@@ -152,10 +157,24 @@ for (const { skill, packet, item } of valid) {
   } else if (item.k === "s") {
     let qid = `eb-${id}-pick`; let r = shuffled(qid, [item.good, ...item.bad]);
     const expl = `정답: “${item.good}” (${item.ko}) ${item.rule}`;
-    push(skill, packet, item, "pick", mk(skill, qid, { difficulty: d, prompt: "다음 중 문법적으로 옳은 문장은?", options: r.options, answer: { kind: "choice", id: r.answerId }, hints: [pickHint1(item.good, item.bad), ruleHint(item)], explanation: expl }));
+    push(skill, packet, item, "pick", mk(skill, qid, { difficulty: d, prompt: "다음 중 문법적으로 옳은 문장은?", options: r.options, answer: { kind: "choice", id: r.answerId }, hints: [pickHint1(item.good, item.bad), ruleHint({ ...item, hint: item.hint ?? okHint(HINTS[id]?.s, item.good, item.bad) })], explanation: expl }));
     qid = `eb-${id}-cloze`; r = shuffled(qid, [item.cz.ok, ...item.cz.wr]);
-    push(skill, packet, item, "cloze", mk(skill, qid, { difficulty: clamp(d + 1), prompt: `빈칸에 알맞은 말은?\n${item.cz.st}\n(${item.ko})`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: [clozeHint1(item.cz.st), ruleHint(item)], explanation: expl }));
+    push(skill, packet, item, "cloze", mk(skill, qid, { difficulty: clamp(d + 1), prompt: `빈칸에 알맞은 말은?\n${item.cz.st}\n(${item.ko})`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: [clozeHint1(item.cz.st), ruleHint({ ...item, hint: item.hint ?? okHint(HINTS[id]?.s, item.cz.ok, item.cz.wr) })], explanation: expl }));
     const toks = item.good.split(/\s+/);
+    // review modes (docs/learn/review-modes.md): dictation and listening are derived from the already-reviewed sentence, so they inherit its review state.
+    // Sample review (2026-10-16, 120 samples, 20% defects) -> rules below: no dictation where speech cannot fix the spelling, no listening where options differ only in spelling.
+    const spokenAmbiguous = /[0-9'’\-:]|\b(zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|thousand|first|second|third|fourth|fifth|cannot|email|to|too|two|there|their|its|your|whose|write|right|hear|here|by|buy|bye|knew|new|no|know|one|won|weather|whether|sea|see|son|sun|meet|meat|week|weak)\b/i;
+    const sk = (w) => w.toLowerCase().replace(/[^a-z]/g, "").replace(/ie/g, "i").replace(/y/g, "i").replace(/(.)\1+/g, "$1").replace(/e(?=[sd]$)/, "");
+    const soundsSame = (a, b) => { const x = a.split(/\s+/), y = b.split(/\s+/); return x.length === y.length && x.every((w, i) => w.toLowerCase().replace(/[^a-z]/g, "") === y[i].toLowerCase().replace(/[^a-z]/g, "") || sk(w) === sk(y[i])) ; };
+    const properMid = toks.slice(1).some((w) => /^[A-Z]/.test(w) && w !== "I");
+    if (toks.length >= 3 && toks.length <= 12 && !spokenAmbiguous.test(item.good) && !properMid) {
+      qid = `eb-${id}-dict`;
+      push(skill, packet, item, "dict", { id: qid, site: "english", type: "short_answer", family: `eb-${skill.replace(/^e\./, "").replace(/\./g, "-")}`, role: "variant", expectedSeconds: 60, status: "DRAFT", difficulty: clamp(d + 1), prompt: "들려주는 영어 문장을 듣고 그대로 쓰세요. (대소문자·문장부호·띄어쓰기 여분은 봐줘요. 철자는 정확해야 해요.)", audioText: item.good, answer: { kind: "text", accepted: [item.good], dictation: "en" }, hints: [`모두 ${toks.length}단어예요. 다시 들어 보세요(느리게 듣기도 가능).`, `첫 단어: “${toks[0]}”`], explanation: expl });
+    }
+    if (toks.length >= 3 && toks.length <= 12 && !item.bad.some((b) => soundsSame(item.good, b))) {
+      qid = `eb-${id}-listen`; r = shuffled(qid, [item.good, ...item.bad]);
+      push(skill, packet, item, "listen", mk(skill, qid, { difficulty: d, prompt: "들려주는 문장과 같은 것을 고르세요.", audioText: item.good, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: ["소리를 다시 듣고(느리게 듣기도 가능), 보기 문장을 한 낱말씩 비교해 보세요.", "낱말 끝소리(-s, -ed 등)와 빠진 낱말이 있는지 들어 보세요."], explanation: expl }));
+    }
     if (item.ord !== false && toks.length >= 3 && toks.length <= 12) {
       qid = `eb-${id}-order`;
       const ids = toks.map((_, i) => `w${i + 1}`); const rot = 1 + (hash(qid) % (ids.length - 1));
@@ -166,11 +185,11 @@ for (const { skill, packet, item } of valid) {
     item.qs.forEach((q, i) => {
       const qid = `eb-${id}-q${i + 1}`;
       const texts = [q.o[q.a], ...q.o.filter((_, j) => j !== q.a)]; const r = shuffled(qid, texts);
-      push(skill, packet, item, `${item.k}q`, mk(skill, qid, { difficulty: clamp(d + (i >= 3 ? 1 : 0)), prompt: `${item.text}\n\n${q.q}`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: readingHints(item, q), explanation: q.why }));
+      push(skill, packet, item, `${item.k}q`, mk(skill, qid, { difficulty: clamp(d + (i >= 3 ? 1 : 0)), prompt: `${item.text}\n\n${q.q}`, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: (() => { const a = HINTS[id]?.q?.[String(i + 1)]; const ok = Array.isArray(a) && a.length === 2 && a.every((h) => okHint(h, q.o[q.a], q.o) !== undefined); return ok ? a : readingHints(item, q); })(), explanation: q.why }));
     });
   } else if (item.k === "m") {
     const qid = `eb-${id}-m`; const texts = [item.o[item.a], ...item.o.filter((_, j) => j !== item.a)]; const r = shuffled(qid, texts);
-    push(skill, packet, item, "m", mk(skill, qid, { difficulty: d, prompt: item.q, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: mHints(item), explanation: item.why }));
+    push(skill, packet, item, "m", mk(skill, qid, { difficulty: d, prompt: item.q, options: r.options, answer: { kind: "choice", id: r.answerId }, hints: (() => { const a = HINTS[id]?.m; const ok = Array.isArray(a) && a.length === 2 && a.every((h) => okHint(h, item.o[item.a], item.o) !== undefined); return ok ? a : mHints(item); })(), explanation: item.why }));
   }
 }
 if (errors.length) { console.error(`${errors.length} problem(s):`); for (const e of errors.slice(0, 40)) console.error("  " + e); }
@@ -212,18 +231,23 @@ const ledger = JSON.parse(fs.readFileSync(path.join(here, "ledger.json"), "utf8"
 const itemOfQuestion = (q) => q.id.split("-")[1];
 const carryQ = new Set(ledger.carryOverQuestions);
 const stateOf = (q) => (ledger.reviewed[itemOfQuestion(q)] ? "reviewed" : carryQ.has(q.id) ? "carryOver" : "pending");
-const served = questions.filter((q) => stateOf(q) !== "pending");
+const catalogSkills = new Set(["elementary", "demo", "secondary"].flatMap((d) => JSON.parse(fs.readFileSync(path.join(root, `lib/learn/content/${d}/english.json`), "utf8")).catalog.skills.map((x) => x.id)));
+const reviewedQs = questions.filter((q) => stateOf(q) !== "pending");
+const served = reviewedQs.filter((q) => catalogSkills.has(q.skillId)); // reviewed AND reachable by a learner (its skill is in the shared catalog)
+const unlinked = reviewedQs.filter((q) => !catalogSkills.has(q.skillId)); // reviewed but no catalog skill yet: never served, never counted as publishable
 const pending = questions.filter((q) => stateOf(q) === "pending");
 const byState = cnt(questions, stateOf);
 const NOTE = "English practice bank (scripts/learn/english-bank). AI-made; imported by lib/learn/content/bank.ts. Only items in ledger.json (independently AI-reviewed, or carried over from the 2026-10-15 release) are in this file; the rest is in english-pending.json (not loaded). No teacher or native-speaker review.";
 const out = { format: "english-draft-1", site: "english", status: "DRAFT", note: NOTE, questions: served };
+const outUnlinked = { format: "english-draft-1", site: "english", status: "REVIEWED_UNLINKED", note: "Independently AI-reviewed but their skills (e.h.*) are not in the shared catalog: NOT loaded by the runtime and NOT counted as publishable until the catalog links them.", questions: unlinked };
 const outPending = { format: "english-draft-1", site: "english", status: "PENDING", note: "Authored but not yet independently reviewed: NOT loaded by the runtime.", questions: pending };
-if (!noWrite) { fs.writeFileSync(path.join(root, "lib/learn/content/bank/english-draft.json"), JSON.stringify(out) + "\n"); fs.writeFileSync(path.join(root, "lib/learn/content/bank/english-pending.json"), JSON.stringify(outPending) + "\n"); }
-console.log(`english-draft: ${questions.length} questions from ${valid.length} learning items (${items.length - valid.length} items rejected/skipped); served ${served.length}, pending ${pending.length}`, byState);
+if (!noWrite) { fs.writeFileSync(path.join(root, "lib/learn/content/bank/english-draft.json"), JSON.stringify(out) + "\n"); fs.writeFileSync(path.join(root, "lib/learn/content/bank/english-pending.json"), JSON.stringify(outPending) + "\n"); fs.writeFileSync(path.join(root, "lib/learn/content/bank/english-unlinked.json"), JSON.stringify(outUnlinked) + "\n"); }
+console.log(`english-draft: ${questions.length} questions from ${valid.length} learning items (${items.length - valid.length} items rejected/skipped); served ${served.length}, reviewed-but-unlinked ${unlinked.length}, pending ${pending.length}`, byState);
 console.log("by group:", byGroup, "items by group:", itemsByGroup);
 console.log("by form:", byForm);
 console.log("longest-correct rate (reading/dialogue/standalone) by packet:", Object.fromEntries(Object.entries(longest).map(([k, v]) => [k, `${Math.round((100 * v.longestCorrect) / v.n)}% of ${v.n}`])));
 console.log("passages below the minimum length:", Object.fromEntries(Object.entries(wordsShort).map(([k, v]) => [k, v.length])));
+console.log("authored hints used/rejected:", hintStats, "units:", Object.keys(HINTS).length);
 console.log("dropped:", dropped, `${errors.length ? errors.length + " validation errors" : "no validation errors"}`);
 if (!noWrite) fs.writeFileSync(path.join(here, "report.json"), JSON.stringify({ total: questions.length, items: valid.length, served: served.length, pending: pending.length, byState, byGroup, itemsByGroup, byForm, bySkill, dropped }, null, 1) + "\n");
 process.exit(errors.length ? 1 : 0);

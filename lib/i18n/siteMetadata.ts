@@ -1,5 +1,7 @@
 // lib/i18n/siteMetadata.ts
 import type { Metadata } from "next";
+import { COUNTRIES_WITH_GENERIC_BRANDING } from "@/lib/region/countryBranding";
+import { brandName, ogLocaleFor, countryBrandName } from "@/lib/i18n/seo";
 
 export interface PortalMeta {
   title: string;
@@ -69,10 +71,21 @@ export const COUNTRY_TO_LANGUAGE_MAP: Record<string, string> = {
   malaysia: "en",
   nigeria: "en",
   elsalvador: "es",
-  centralafrica: "sg",
+  centralafrican: "fr",
+  centralafrica: "fr",
   venezuela: "es",
   kenya: "sw",
   argentina: "es",
+  czech: "en",
+  romania: "en",
+  finland: "en",
+  czechia: "en",
+  hungary: "en",
+  zambia: "en",
+  uganda: "en",
+  congo: "fr",
+  ghana: "en",
+  mozambique: "pt",
 };
 
 export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
@@ -476,22 +489,6 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
       description: "LIFE.HELP کا سرکاری مرکزی نگرانی اور آپریشنز کا نظام۔",
     },
   },
-  sg: {
-    tagline: "Plateforme ti aservice ti gigi na ayanga mingi",
-    description: "Plateforme ti aservice ti gigi teti azo ti kodro wande so ayeke na Corée. Mungo wango na yanga ti mo nga kangbi ndo na awakua so a tara ala awe.",
-    chat: {
-      title: "Kodoro ti ndérémbo na yângâ ti mo",
-      description: "Hunda ndérémbo ti gï fini lâ ti mo na Korëe na yângâ ti mo. Sara tënë 1:1 na zo ti ndérémbo; a kiri message ni na machine.",
-    },
-    tech: {
-      title: "Portail ti awakua ti LIFE.HELP",
-      description: "Portail ti kua ti LIFE.HELP ti azo ti ndérémbo so ayeke sara kua oko. Bâ lege ti ngoi ti mo na demande so a mû na mo.",
-    },
-    sys: {
-      title: "Système ti bängö kua ti kota ndo",
-      description: "Système ti bängö nga ti sarango kua ti kota ndo ti LIFE.HELP.",
-    },
-  },
   sw: {
     tagline: "Jukwaa la Huduma za Maisha kwa Lugha Nyingi",
     description: "Jukwaa la huduma za maisha kwa wakazi wa kigeni nchini Korea. Pata ushauri kwa lugha yako na uunganishwe na mafundi waliothibitishwa.",
@@ -838,6 +835,7 @@ export function resolveLanguageFromHeaders(headersList: Headers): string {
   const rawLangHeader = headersList.get("x-life-language");
   if (rawLangHeader) {
     const lower = rawLangHeader.toLowerCase();
+    if (lower === "sg") return "fr";
     if (lower === "zt" || lower === "zh-hant") return "zh-Hant";
     if (lower === "zs" || lower === "zh" || lower === "zh-hans") return "zh-Hans";
     const found = Object.keys(SITE_METADATA).find((k) => k.toLowerCase() === lower);
@@ -962,7 +960,7 @@ export function getIconMetadata(country?: string | null, portal?: string | null)
   }
 
   const c = country?.toLowerCase();
-  const slug = c && COUNTRY_TO_LANGUAGE_MAP[c] ? c : "default";
+  const slug = c && COUNTRY_TO_LANGUAGE_MAP[c] && !COUNTRIES_WITH_GENERIC_BRANDING.has(c) ? c : "default";
 
   return {
     icon: [
@@ -982,7 +980,7 @@ export function getIconMetadata(country?: string | null, portal?: string | null)
  */
 export function getSiteMetadata(lang: string, country?: string | null): Metadata {
   const meta = SITE_METADATA[lang] || SITE_METADATA["ko"];
-  const countryUpper = country ? country.toUpperCase() : "";
+  const countryUpper = countryBrandName(country);
   const title = countryUpper
     ? `LIFE.HELP ${countryUpper} · ${meta.tagline}`
     : `LIFE.HELP · ${meta.tagline}`;
@@ -994,14 +992,16 @@ export function getSiteMetadata(lang: string, country?: string | null): Metadata
     openGraph: {
       title,
       description,
-      siteName: countryUpper ? `LIFE.HELP ${countryUpper}` : "LIFE.HELP",
+      siteName: brandName(country),
       type: "website",
-      locale: lang === "ko" ? "ko_KR" : lang,
+      locale: ogLocaleFor(lang, country),
+      images: [{ url: "/og.png", width: 1200, height: 630, alt: "LIFE.HELP" }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: ["/og.png"],
     },
   };
 }
@@ -1026,7 +1026,7 @@ export function getPortalMetadata(
         description,
         siteName: "LIFE.HELP CHAT",
         type: "website",
-        locale: lang === "ko" ? "ko_KR" : lang,
+        locale: ogLocaleFor(lang),
       },
       twitter: {
         card: "summary_large_image",
@@ -1047,7 +1047,7 @@ export function getPortalMetadata(
         description,
         siteName: "LIFE.HELP HELPER",
         type: "website",
-        locale: lang === "ko" ? "ko_KR" : lang,
+        locale: ogLocaleFor(lang),
       },
       twitter: {
         card: "summary_large_image",
@@ -1069,7 +1069,7 @@ export function getPortalMetadata(
         description,
         siteName: "LIFE.HELP HQ",
         type: "website",
-        locale: lang === "ko" ? "ko_KR" : lang,
+        locale: ogLocaleFor(lang),
       },
       twitter: {
         card: "summary_large_image",

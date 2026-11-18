@@ -17,7 +17,7 @@ function deviceHasProfile(site: Site): boolean {
 }
 
 /** Landing CTA: "start" for newcomers, "continue" when a profile already exists (account or this device). */
-export function StartCta({ accountHasProfile, accountsEnabled }: { accountHasProfile: boolean; accountsEnabled: boolean }) {
+export function StartCta({ accountHasProfile, accountsEnabled, signupEnabled = false }: { accountHasProfile: boolean; accountsEnabled: boolean; signupEnabled?: boolean }) {
   const { site, t, href } = useSite();
   const onDevice = useSyncExternalStore(subscribe, () => deviceHasProfile(site), () => false);
   const returning = accountHasProfile || onDevice;
@@ -25,10 +25,10 @@ export function StartCta({ accountHasProfile, accountsEnabled }: { accountHasPro
   return (
     <div className="l-stack">
       <Link className="l-btn l-btn-light l-btn-block" href={href(returning ? "/dashboard" : "/onboarding")}>
-        ▶ {returning ? t("landing.cta.continue") : t("landing.cta.start")}
+        <span className="l-arrow">▶</span> {returning ? t("landing.cta.continue") : t("landing.cta.start")}
       </Link>
       {accountsEnabled && !accountHasProfile && (
-        <Link className="l-link" style={{ color: "#fff" }} href={href("/login")}>{t("landing.cta.login")}</Link>
+        <Link className="l-link" style={{ color: "#fff" }} href={href("/login")}>{t(signupEnabled ? "landing.cta.login" : "auth.submit.login")}</Link>
       )}
     </div>
   );

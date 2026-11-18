@@ -12,7 +12,6 @@ export interface HelperRegionItem {
 export interface HelperContract {
   helperId?: string;
   name: string;
-  residentNumber: string;
   email: string;
   phone?: string;
   services: string[];
@@ -110,8 +109,8 @@ export function HelperProvider({ children }: { children: React.ReactNode }) {
     try {
       const me = await helperApi.me();
       if (!alive.current) return;
-      setServerHelper(me);
-      setSessionState("ready");
+      setServerHelper(me); // null = not signed in (200 {helper:null})
+      setSessionState(me ? "ready" : "anonymous");
     } catch (e) {
       if (!alive.current) return;
       // FORBIDDEN = no valid credential (never logged in, expired, disabled); a network blip keeps what we know
@@ -211,7 +210,6 @@ export function HelperProvider({ children }: { children: React.ReactNode }) {
       contract: {
         helperId: serverHelper.id,
         name: serverHelper.displayName,
-        residentNumber: "",
         email: "",
         services: serverHelper.capabilities,
         regions: serverHelper.regions.map((r) => ({ sido: r.sido ?? "", gungu: r.gungu ?? "" })),

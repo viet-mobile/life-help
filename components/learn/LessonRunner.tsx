@@ -10,6 +10,7 @@ import { ApiError, useLearner } from "./LearnerProvider";
 import { QuestionCard, type AttemptResponse, type QuestionOutcome } from "./QuestionCard";
 import { RichText } from "./RichText";
 import { ListeningPanel } from "./Listening";
+import { LessonMotion } from "./LessonMotion";
 import { exampleSegments } from "@/lib/learn/listen/segments";
 import { EXAMPLE_KO } from "@/lib/learn/content/listening/examples-ko";
 import { ResultScreen, type SessionResult } from "./ResultScreen";
@@ -40,7 +41,7 @@ interface Totals {
 }
 
 export function LessonRunner({ kind, lessonId, skillId, mode }: { kind: Kind; lessonId?: string; skillId?: string; mode?: ReviewMode }) {
-  const { api, index, t, href, state, site, access } = useLearner();
+  const { api, index, t, href, state, site, access, locale } = useLearner();
   const lesson = lessonId ? index.lessons.get(lessonId) : undefined;
 
   const [phase, setPhase] = useState<"intro" | "loading" | "play" | "finishing" | "result" | "premium" | "error">("intro");
@@ -172,7 +173,7 @@ export function LessonRunner({ kind, lessonId, skillId, mode }: { kind: Kind; le
   if (phase === "intro" || phase === "loading") {
     return (
       <div className="l-wrap l-stack">
-        <Link className="l-link" href={href(kind === "lesson" ? "/learn" : "/dashboard")}>← {t("lesson.exit")}</Link>
+        <Link className="l-link" href={href(kind === "lesson" ? "/learn" : "/dashboard")}><span className="l-arrow">←</span> {t("lesson.exit")}</Link>
         {lesson ? (
           <>
             <h1 className="l-h1">{lesson.lesson.title}</h1>
@@ -185,6 +186,7 @@ export function LessonRunner({ kind, lessonId, skillId, mode }: { kind: Kind; le
               <p><RichText text={lesson.lesson.example} /></p>
               {site === "english" && <ListeningPanel scope={`ex-${lesson.lesson.id}`} variant="list" segments={exampleSegments(`ex-${lesson.lesson.id}`, lesson.lesson.example, EXAMPLE_KO[lesson.lesson.id])} lesson={{ id: lesson.lesson.id, title: lesson.lesson.title }} />}
             </section>
+            {site === "math" && <LessonMotion skillIds={lesson.lesson.skillIds} locale={locale} title={lesson.lesson.title} />}
           </>
         ) : (
           <h1 className="l-h1">{kind === "review" ? t("dash.continue.review") : t("dash.recommended")}</h1>

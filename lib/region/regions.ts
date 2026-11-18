@@ -91,9 +91,29 @@ export const COUNTRY_SLUG_TO_CODE: Record<string, CountryCode> = {
   venezuela: "VE",
   kenya: "KE",
   argentina: "AR",
+  romania: "RO",
+  finland: "FI",
+  czechia: "CZ",
+  hungary: "HU",
+  zambia: "ZM",
+  uganda: "UG",
+  congo: "CG",
+  ghana: "GH",
+  mozambique: "MZ",
 };
 
+export const MANUAL_REGION_COUNTRIES = new Set(["RO", "FI", "CZ", "HU", "ZM", "UG", "CG", "GH", "MZ"]);
+
 export const DEFAULT_COUNTRY_REGIONS: Record<string, RegionItem> = {
+  RO: { country: "RO", sido: "", gungu: "", dong: "" },
+  FI: { country: "FI", sido: "", gungu: "", dong: "" },
+  CZ: { country: "CZ", sido: "", gungu: "", dong: "" },
+  HU: { country: "HU", sido: "", gungu: "", dong: "" },
+  ZM: { country: "ZM", sido: "", gungu: "", dong: "" },
+  UG: { country: "UG", sido: "", gungu: "", dong: "" },
+  CG: { country: "CG", sido: "", gungu: "", dong: "" },
+  GH: { country: "GH", sido: "", gungu: "", dong: "" },
+  MZ: { country: "MZ", sido: "", gungu: "", dong: "" },
   KR: { country: "KR", sido: "전북특별자치도", gungu: "익산시", dong: "신동" },
   VN: { country: "VN", sido: "Thành phố Hồ Chí Minh", gungu: "Quận 1", dong: "Bến Nghé" },
   JP: { country: "JP", sido: "東京都", gungu: "新宿区", dong: "西新宿" },
@@ -153,6 +173,15 @@ export const DEFAULT_COUNTRY_REGIONS: Record<string, RegionItem> = {
   KE: { country: "KE", sido: "Nairobi City", gungu: "Westlands", dong: "Westlands" },
   AR: { country: "AR", sido: "Ciudad Autónoma de Buenos Aires", gungu: "Comuna 14", dong: "Palermo" },
 };
+
+/**
+ * Default selection for a country. Fails closed: a country without a vetted default gets an EMPTY selection (the visitor picks or types
+ * the place by hand) and never silently inherits the Korean default address.
+ */
+export function defaultRegionFor(country: CountryCode | string | null | undefined): RegionItem {
+  const code = (country || "").toUpperCase();
+  return DEFAULT_COUNTRY_REGIONS[code] ?? { country: code || undefined, sido: "", gungu: "", dong: "" };
+}
 
 export const koreanRegions: SidoData[] = [
 
@@ -628,6 +657,7 @@ export const koreanRegions: SidoData[] = [
 ];
 
 export function getCountryRegions(country: CountryCode = "KR"): SidoData[] {
+  if (MANUAL_REGION_COUNTRIES.has(country)) return [];
   switch (country) {
     case "VN":
       return vietnamRegions;
@@ -647,13 +677,7 @@ export function getCountryRegions(country: CountryCode = "KR"): SidoData[] {
       if (worldRegions[country]) {
         return worldRegions[country];
       }
-      return [
-        {
-          name: "Main District",
-          shortName: "Main",
-          gunguList: [{ name: "Central", dongs: ["Downtown", "Area 1", "Area 2"] }],
-        },
-      ];
+      return []; // no data: manual entry (fail closed, never a made-up placeholder district)
   }
 }
 
@@ -671,5 +695,3 @@ export function findGungu(sidoName: string, gunguName: string, country: CountryC
     (g) => g.name === gunguName || g.name.includes(gunguName) || gunguName.includes(g.name),
   );
 }
-
-

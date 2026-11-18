@@ -18,7 +18,7 @@
   min-height: 100dvh;
   background: var(--l-bg);
   color: var(--l-ink);
-  font-family: "Pretendard", "Plus Jakarta Sans", "Noto Sans KR", system-ui, sans-serif;
+  font-family: "Pretendard", "Plus Jakarta Sans", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
   line-height: 1.55;
 }
 .study-root[data-site="english"] {
@@ -31,13 +31,14 @@
 .l-wrap { width: 100%; max-width: 720px; margin: 0 auto; padding: 16px; }
 .l-wrap-wide { max-width: 1040px; }
 .l-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-.l-skip { position: absolute; left: -9999px; }
-.l-skip:focus { left: 8px; top: 8px; z-index: 100; background: #fff; padding: 8px 12px; border-radius: 8px; }
+.l-skip { position: absolute; inset-inline-start: 0; top: 0; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+.l-skip:focus { inset-inline-start: 8px; top: 8px; width: auto; height: auto; overflow: visible; clip: auto; clip-path: none; z-index: 100; background: #fff; padding: 8px 12px; border-radius: 8px; }
 .l-muted { color: var(--l-muted); font-size: 0.9rem; }
 .l-h1 { font-size: clamp(1.6rem, 5vw, 2.4rem); font-weight: 900; letter-spacing: -0.02em; line-height: 1.2; }
 .l-h2 { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.01em; }
 
 .l-card { background: var(--l-card); border: 2px solid var(--l-line); border-radius: 20px; padding: 16px; }
+a.l-card { display: block; }
 .l-card-accent { background: linear-gradient(135deg, var(--l-accent), var(--l-accent-dark)); color: var(--l-accent-ink); border-color: transparent; }
 .l-stack > * + * { margin-top: 14px; }
 .l-grid { display: grid; gap: 14px; }
@@ -92,8 +93,11 @@
 .l-stats { display: flex; gap: 8px; align-items: center; }
 /* Korean site only (Math / English layouts stay as released): the status chips fit 320-390px screens */
 .study-root[data-site="korean"] .l-stats { flex: 0 0 auto; }
-.study-root[data-site="korean"] .l-topbar-inner > .l-locale { flex: 1 1 0; min-width: 0; }
-.study-root[data-site="korean"] .l-topbar-inner > .l-locale .l-locale-select { min-width: 0; width: 100%; max-width: 100%; }
+/* the language picker takes the free space only on narrow screens (so the chips fit); from 561px it keeps the same natural width as Math / English */
+@media (max-width: 560px) {
+  .study-root[data-site="korean"] .l-topbar-inner > .l-locale { flex: 1 1 0; min-width: 0; }
+  .study-root[data-site="korean"] .l-topbar-inner > .l-locale .l-locale-select { min-width: 0; width: 100%; max-width: 100%; }
+}
 @media (max-width: 420px) { .study-root[data-site="korean"] .l-topbar-inner { gap: 6px; padding: 8px 10px; } .study-root[data-site="korean"] .l-stats { gap: 4px; } .study-root[data-site="korean"] .l-stat { padding: 4px 8px; font-size: 0.8rem; gap: 2px; } }
 .l-stat { display: inline-flex; align-items: center; gap: 4px; font-weight: 800; padding: 6px 10px; border-radius: 999px; background: #fff; border: 2px solid var(--l-line); font-size: 0.9rem; }
 
@@ -156,3 +160,11 @@
 .l-tier[data-tier="premium"] { background: #ede9fe; color: #5b21b6; }
 .l-premium-gate { text-align: center; }
 .l-premium-gate .l-btn[disabled] { opacity: 0.6; cursor: not-allowed; }
+
+/* Directional glyphs (arrows / play) mirror in right-to-left locales */
+.l-arrow { display: inline-block; }
+[dir="rtl"] .l-arrow { transform: scaleX(-1); }
+
+/* Common API-failure toast (components/learn/LearnerProvider.tsx) */
+.l-toast { position: fixed; inset-inline: 12px; bottom: 16px; z-index: 80; max-width: 480px; margin-inline: auto; display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 12px 16px; border-radius: 14px; background: #1f2937; color: #fff; box-shadow: 0 8px 24px rgba(0,0,0,.25); }
+.l-toast .l-link { color: #fff; text-decoration: underline; min-height: 44px; }

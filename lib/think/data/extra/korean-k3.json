@@ -1,0 +1,1886 @@
+[
+ {
+  "id": "x-k-k3-01",
+  "subject": "korean",
+  "grade": "K3",
+  "topic": "Omitted subjects: who is meant",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Who gave the pocket money?",
+  "uiLang": "en",
+  "format": "judge-evidence-explain",
+  "generative": false,
+  "goal": "Infer who an omitted subject refers to, point to the evidence in the text, and say how the inference changes when one clue is removed.",
+  "thinking": [
+   "Inferring an unstated subject from several clues",
+   "Choosing evidence that supports the inference",
+   "Revising the inference when a clue is removed"
+  ],
+  "differsFromPlain": "Plain practice asks you to translate a sentence or name the honorific ending. Here the subject is missing and you must decide who it is from the whole chat and test which clues really carry the weight.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Has seen -\uc694 endings and the words \ud560\uba38\ub2c8, \uce5c\uad6c, \uc6a9\ub3c8"
+  ],
+  "minutes": 7,
+  "curriculum": null,
+  "material": "Two classmates, \uc9c0\uc6b0 and \ud558\ub098, chat in polite -\uc694 speech. Korean often leaves out the subject (who does the action). (\ub301 = a respectful word for someone's home.)\n\n\uc9c0\uc6b0: \uc5b4\uc81c \ubb50 \ud588\uc5b4\uc694?\n\ud558\ub098: \ud560\uba38\ub2c8 \ub301\uc5d0 \uac14\uc5b4\uc694. \ub9db\uc788\ub294 \ubc25\uc744 \uba39\uc5c8\uc5b4\uc694. \uc6a9\ub3c8\ub3c4 \uc8fc\uc168\uc5b4\uc694.\n\uc9c0\uc6b0: \uc88b\uc558\uaca0\uc5b4\uc694!",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Who gave \ud558\ub098 the pocket money (\uc6a9\ub3c8\ub3c4 \uc8fc\uc168\uc5b4\uc694)?",
+    "hints": [
+     "Look at the ending of \uc8fc\uc168\uc5b4\uc694 and compare it with \uba39\uc5c8\uc5b4\uc694 in the line before.",
+     "List every person who appears in \ud558\ub098's three sentences."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "\ud558\ub098 herself",
+      "reveals": "She is the one who received the money, and a verb that honors the doer is not used for oneself."
+     },
+     {
+      "id": "b",
+      "text": "Her grandmother, probably"
+     },
+     {
+      "id": "c",
+      "text": "\uc9c0\uc6b0, the friend who asks",
+      "reveals": "\uc9c0\uc6b0 only asks and reacts; nothing in the text says he gave anything."
+     },
+     {
+      "id": "d",
+      "text": "A classmate of the same age",
+      "reveals": "The form of the verb points to someone she looks up to, not a same-age classmate."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "The text names no subject, but the verb form shows the giver is someone to be respected, and the only such person in the story is \ud560\uba38\ub2c8, whose home \ud558\ub098 visited. 'Probably' is right: the text does not say it outright."
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Which pieces of evidence support your answer? Choose all that apply.",
+    "hints": [
+     "For each option ask: does it tell me WHO, or only WHAT?",
+     "Find a clue about the verb and a clue about the place."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "\uc6a9\ub3c8 means pocket money, so the giver must be from the family.",
+      "reveals": "The word names what was given, not who gave it."
+     },
+     {
+      "id": "b",
+      "text": "\ub9db\uc788\ub294 \ubc25 shows the giver also cooked the meal.",
+      "reveals": "Food and money are different actions; nothing links the two to one person."
+     },
+     {
+      "id": "c",
+      "text": "\uc8fc\uc168\uc5b4\uc694 is in a form that shows respect for the doer."
+     },
+     {
+      "id": "d",
+      "text": "\ud558\ub098 had just been at \ud560\uba38\ub2c8's home and no one else is mentioned there."
+     }
+    ],
+    "correct": [
+     "c",
+     "d"
+    ],
+    "explain": "Two clues work together: the verb form tells what kind of person the giver is, and the story tells who is there. Pocket money and food say nothing about the giver.",
+    "multi": true,
+    "acceptable": [
+     {
+      "ids": [
+       "c"
+      ],
+      "reason": "The verb form is the strongest single clue; d adds that the story context fits it."
+     }
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "choose",
+    "prompt": "Suppose \ud558\ub098 had said '\uc6a9\ub3c8\ub3c4 \uc92c\uc5b4\uc694' instead of '\uc6a9\ub3c8\ub3c4 \uc8fc\uc168\uc5b4\uc694'. What changes?",
+    "hints": [
+     "Take away the clue from s2 you found strongest and see what is left.",
+     "Ask which people could still fit."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "Nothing changes; the giver is still clearly \ud560\uba38\ub2c8.",
+      "reveals": "The honoring form was one of the clues that narrowed the giver; without it the clue is gone."
+     },
+     {
+      "id": "b",
+      "text": "The giver could now also be a friend or someone younger."
+     },
+     {
+      "id": "c",
+      "text": "The giver must be \uc9c0\uc6b0.",
+      "reveals": "Nothing in the text points to \uc9c0\uc6b0 either way."
+     },
+     {
+      "id": "d",
+      "text": "The sentence would be wrong Korean.",
+      "reveals": "'\uc92c\uc5b4\uc694' is a normal polite sentence; it just carries less information about the giver."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "Without the honoring form the story still fits \ud560\uba38\ub2c8, but it no longer rules out other people. Your confidence in the first answer should drop."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Inference",
+    "full": "Names the giver as the respected relative and explains it with the verb form plus the story context",
+    "partial": "Names the giver but gives only one clue or only a weak clue",
+    "none": "Names the wrong person or gives no clue"
+   },
+   {
+    "criterion": "Revising",
+    "full": "Sees that dropping the honoring form makes other givers possible",
+    "partial": "Sees a change but not what it is",
+    "none": "Says nothing changes"
+   }
+  ],
+  "alternatives": [
+   "Her grandfather, if he lives there too, also fits; the text only says \ud560\uba38\ub2c8 \ub301, so 'probably \ud560\uba38\ub2c8' is a reasonable answer."
+  ],
+  "hardCases": [
+   "A very polite learner might say it is 'certain' it is \ud560\uba38\ub2c8; the text allows other respected persons in the house."
+  ],
+  "cautions": {
+   "language": "The honorific -\uc2dc- is used for the person being respected, so it is a clue, not proof; the key avoids saying it is certain.",
+   "culture": "Visiting grandparents and receiving pocket money is common in Korea but is not universal; other families may differ.",
+   "accessibility": "No images. Use a screen reader that reads Korean text; \uc8fc\uc168\uc5b4\uc694 and \uc92c\uc5b4\uc694 are read differently, so ask the learner to read both aloud."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice against the key in each step"
+   ],
+   "human": [
+    "Whether a learner's own reasoning about the grandmother vs. other relatives is sound"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k3-02",
+  "subject": "korean",
+  "grade": "K3",
+  "topic": "Introductions: self-introduction to the class",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "One odd line in a self-introduction",
+  "uiLang": "en",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Find the line in a self-introduction that sounds odd, say why, and rewrite it so that it sounds natural.",
+  "thinking": [
+   "Locating the one odd line",
+   "Explaining why it is odd",
+   "Producing a corrected version"
+  ],
+  "differsFromPlain": "Plain practice asks you to copy a model self-introduction. Here you inspect someone else's introduction, find the problem yourself and repair it.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows the pattern \uc800\ub294 ___\uc608\uc694/\uc774\uc5d0\uc694 for saying a name"
+  ],
+  "minutes": 7,
+  "curriculum": null,
+  "material": "A new student, \uc774\ubbfc\uc218, introduces himself to the class. Five lines are shown. One line sounds odd to a Korean listener.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "Which line sounds odd?",
+    "lines": [
+     "\uc548\ub155\ud558\uc138\uc694?",
+     "\uc81c \uc774\ub984\uc740 \uc774\ubbfc\uc218\ub2d8\uc774\uc5d0\uc694.",
+     "\uc800\ub294 \uc5f4\ub450 \uc0b4\uc774\uc5d0\uc694.",
+     "\uc6b0\ub9ac \uac00\uc871\uc740 \ub124 \uba85\uc774\uc5d0\uc694.",
+     "\ub9cc\ub098\uc11c \ubc18\uac11\uc2b5\ub2c8\ub2e4."
+    ],
+    "wrong": [
+     1
+    ],
+    "explain": "Line 2 is odd. \ub2d8 is a title added to other people's names to show respect. Putting it on your own name sounds as if you are praising yourself. The other lines are fine for a class introduction.",
+    "hints": [
+     "Read each line aloud as if you were speaking to your class. Which one would make listeners smile?",
+     "Look at what comes right after the name."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Why is that line odd?",
+    "hints": [
+     "Think about when you add \ub2d8: \uc120\uc0dd\ub2d8? \uce5c\uad6c? yourself?",
+     "Compare with how line 3 talks about the speaker."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "A title that shows respect is attached to the speaker's own name."
+     },
+     {
+      "id": "b",
+      "text": "Names can only be followed by \uc740/\ub294, never by \uc774\uc5d0\uc694.",
+      "reveals": "\uc774\uc5d0\uc694 after a name is the normal way to say 'I am ___'; this is not the problem."
+     },
+     {
+      "id": "c",
+      "text": "An introduction must use \uc785\ub2c8\ub2e4, never \uc774\uc5d0\uc694.",
+      "reveals": "Both are polite; line 5 uses \uc2b5\ub2c8\ub2e4 and line 1 uses \uc694, and a mix is normal."
+     },
+     {
+      "id": "d",
+      "text": "A self-introduction must not include a family name.",
+      "reveals": "Giving a full name is normal; the part after the name is the issue."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "The title \ub2d8 is for showing respect to someone else. Use your own name without it."
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Rewrite line 2 so that it sounds natural. Write it in Korean in a polite style.",
+    "hints": [
+     "Keep \uc774\ubbfc\uc218 as the name and say 'my name is ...' or 'I am ...'.",
+     "Check the end of your sentence: it should still be polite (\uc694 or \uc2b5\ub2c8\ub2e4)."
+    ],
+    "placeholder": "\uc81c \uc774\ub984\uc740 ...",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "says 'my name'/'I am'",
+      "mode": "any",
+      "patterns": [
+       "(\uc81c \uc774\ub984\uc740|\uc800\uc758 \uc774\ub984\uc740|\uc774\ub984\uc740|\uc800\ub294)"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "no \ub2d8 attached to the speaker's own name",
+      "mode": "none",
+      "patterns": [
+       "(\uc774\ub984\uc740|\uc800\ub294)\\s*[\uac00-\ud7a3 ]{1,6}\ub2d8(\uc774|\uc785)"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "(\uc774\uc5d0\uc694|\uc608\uc694|\uc785\ub2c8\ub2e4|\uc774\ub77c\uace0 \ud574\uc694|\ub77c\uace0 \ud574\uc694|\uc774\ub77c\uace0 \ud569\ub2c8\ub2e4|\ub77c\uace0 \ud569\ub2c8\ub2e4)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I keep the polite ending?",
+     "Did I leave out the respect title on my own name?",
+     "Would a classmate understand 'who' I am?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\uc81c \uc774\ub984\uc740 \uc774\ubbfc\uc218\uc608\uc694."
+     },
+     {
+      "text": "\uc800\ub294 \uc774\ubbfc\uc218\ub77c\uace0 \ud574\uc694.",
+      "note": "A different good wording that avoids the problem."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\uc81c \uc774\ub984\uc740 \uc774\ubbfc\uc218\ub2d8\uc774\uc5d0\uc694.",
+      "why": "Still has \ub2d8 on the speaker's own name."
+     },
+     {
+      "text": "\uc81c \uc774\ub984\uc740 \uc774\ubbfc\uc218\uc57c.",
+      "why": "Drops the polite ending in front of the class."
+     }
+    ],
+    "humanReview": "Whether the rewritten sentence sounds natural and keeps the right level of politeness."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finding the error",
+    "full": "Picks line 2 and says \ub2d8 is for others",
+    "partial": "Picks line 2 without a reason",
+    "none": "Picks another line"
+   },
+   {
+    "criterion": "Repair",
+    "full": "Natural polite sentence without \ub2d8 on own name",
+    "partial": "Removes \ub2d8 but the ending is no longer polite",
+    "none": "Repeats the error"
+   }
+  ],
+  "alternatives": [
+   "'\uc800\ub294 \uc774\ubbfc\uc218\uc785\ub2c8\ub2e4.' and '\uc81c \uc774\ub984\uc740 \uc774\ubbfc\uc218\ub77c\uace0 \ud569\ub2c8\ub2e4.' are also good."
+  ],
+  "hardCases": [
+   "A teacher introducing herself with a title ('\uc800\ub294 \ubc15 \uc120\uc0dd\ub2d8\uc774\uc5d0\uc694') is possible but is a different context; the check would flag it as a false alarm."
+  ],
+  "cautions": {
+   "language": "The pattern check looks for a title attached to the speaker's own name after \uc800\ub294 or \uc774\ub984\uc740. Please read answers that use titles for a legitimate reason.",
+   "culture": "Using \ub2d8 for oneself is an error in Korean but may exist in other languages' honorific habits; the sentence is not rude, only odd.",
+   "accessibility": "No images; all lines can be read by a screen reader. Each line is a separate item."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The picked line",
+    "The choice in s2",
+    "Surface checks in s3"
+   ],
+   "human": [
+    "Naturalness of the rewrite"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k3-03",
+  "subject": "korean",
+  "grade": "K3",
+  "topic": "Titles and speech levels: writing to a grandparent",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "From a friend text to a grandmother text",
+  "uiLang": "en",
+  "format": "rewrite-for-audience",
+  "generative": true,
+  "goal": "Decide which parts of a casual message must change for a grandmother, and rewrite it with polite forms and suitable words for 'I', 'you' and the home.",
+  "thinking": [
+   "Analysing what the audience changes",
+   "Choosing polite forms for one's own and another's side",
+   "Rewriting for a new audience"
+  ],
+  "differsFromPlain": "Plain practice asks you to convert one verb at a time. Here you decide which words need to change when the listener changes, then rewrite the whole short message.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Has seen both -\uc5b4/\uc544 and -\uc5b4\uc694/\uc544\uc694 endings"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "\ud558\ub098 sent this to a close friend:\n\n\ub098 \ub0b4\uc77c \ud559\uad50 \ub05d\ub098\uace0 \ub108\ub124 \uc9d1\uc5d0 \uac00. \uac19\uc774 \ubc25 \uba39\uc5b4.\n\n(\ub098 = I, \ub108\ub124 \uc9d1 = your family's home, \uac00 and \uba39\uc5b4 are casual endings.) She wants to send almost the same news to her \ud560\uba38\ub2c8, whose house she will visit tomorrow.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which parts of the friend message must change for \ud560\uba38\ub2c8? Choose all that apply.",
+    "hints": [
+     "Ask: if I replace the friend by \ud560\uba38\ub2c8, which words still make sense?",
+     "Check three kinds of words: 'I', 'your home', and the way sentences end."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "\ud559\uad50 \ub05d\ub098\uace0",
+      "reveals": "This part names a time and does not depend on who is listening."
+     },
+     {
+      "id": "b",
+      "text": "\ub098"
+     },
+     {
+      "id": "c",
+      "text": "\ub108\ub124 \uc9d1"
+     },
+     {
+      "id": "d",
+      "text": "\uac00. / \uba39\uc5b4. (the endings)"
+     }
+    ],
+    "correct": [
+     "b",
+     "c",
+     "d"
+    ],
+    "explain": "The word for 'I', the word for the other person's home and the sentence endings all depend on the listener. The time phrase does not.",
+    "multi": true
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Rewrite the message for \ud560\uba38\ub2c8 in Korean. Start by calling her \ud560\uba38\ub2c8.",
+    "hints": [
+     "Use the humble word for 'I' and polite endings.",
+     "Replace \ub108\ub124 \uc9d1 with a phrase that names the person whose house it is."
+    ],
+    "placeholder": "\ud560\uba38\ub2c8, ...",
+    "minChars": 15,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "addresses her as \ud560\uba38\ub2c8",
+      "mode": "any",
+      "patterns": [
+       "\ud560\uba38\ub2c8"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "uses \uc800/\uc81c for 'I'",
+      "mode": "any",
+      "patterns": [
+       "(^|[\\s,.!?])(\uc800|\uc81c|\uc800\ud76c)(\ub294|\ub3c4|\uac00|\ub97c|\uc758)?(?![\uac00-\ud7a3])"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "polite endings",
+      "mode": "any",
+      "patterns": [
+       "(\uc694|\ub2c8\ub2e4)(?![\uac00-\ud7a3])"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "no casual \ub098/\ub108 and no casual endings",
+      "mode": "none",
+      "patterns": [
+       "(^|[\\s,.!?])(\ub098|\ub108|\ub108\ud76c|\ub108\ub124)(\ub294|\ub3c4|\uac00|\ub97c|\uc758)?(?![\uac00-\ud7a3])",
+       "(\uba39\uc790|\uac08\uac8c|\uc918|\uac00|\uba39\uc5b4|\ud574|\uc640|\ubd10)(?=\\s*[.!?~]|\\s*$)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I replace every casual ending?",
+     "Did I change the word for 'I' and for the home?",
+     "Would \ud560\uba38\ub2c8 feel respected reading this?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\ud560\uba38\ub2c8, \uc800 \ub0b4\uc77c \ud559\uad50 \ub05d\ub098\uace0 \ud560\uba38\ub2c8 \ub301\uc5d0 \uac00\uc694. \uac19\uc774 \uc2dd\uc0ac\ud574\uc694."
+     },
+     {
+      "text": "\ud560\uba38\ub2c8, \uc800\ub294 \ub0b4\uc77c \ud559\uad50\uac00 \ub05d\ub098\uba74 \ud560\uba38\ub2c8 \uc9d1\uc5d0 \uac08\uac8c\uc694. \uac19\uc774 \ubc25 \uba39\uc5b4\uc694.",
+      "note": "Uses \uc9d1 and \ubc25, which are fine at this level."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\ud560\uba38\ub2c8, \ub098 \ub0b4\uc77c \ud559\uad50 \ub05d\ub098\uace0 \ud560\uba38\ub2c8 \uc9d1\uc5d0 \uac00. \uac19\uc774 \ubc25 \uba39\uc5b4.",
+      "why": "Still has the casual 'I' and casual endings."
+     },
+     {
+      "text": "\uc800 \ub0b4\uc77c \ud559\uad50 \ub05d\ub098\uace0 \uac00\uc694.",
+      "why": "Polite, but \ud560\uba38\ub2c8 is missing and the home is not named."
+     }
+    ],
+    "humanReview": "Naturalness, how respectful it sounds, and whether the home is named correctly."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Analysing the audience",
+    "full": "Finds all three kinds of words that change and none that stays",
+    "partial": "Finds one or two",
+    "none": "Picks the unchanged phrase"
+   },
+   {
+    "criterion": "Rewrite",
+    "full": "Polite message, correct 'I', home named, sounds natural",
+    "partial": "Mostly polite but one casual form remains",
+    "none": "Still casual"
+   }
+  ],
+  "alternatives": [
+   "Using \uc9d1 instead of \ub301 and \ubc25 instead of \uc2dd\uc0ac is acceptable at this level."
+  ],
+  "hardCases": [
+   "A close grandmother may allow warmer, shorter speech; here the task asks for a respectful style."
+  ],
+  "cautions": {
+   "language": "Casual endings like \uac00. and \uba39\uc5b4. are detected only when they end the sentence; a hard case is a learner who writes a mix.",
+   "culture": "Level of respect toward grandparents is typical of Korean families but varies by family and region.",
+   "accessibility": "All sentences are plain text; read aloud with screen readers works. \ub108\ub124 is a casual word that some readers may find unfamiliar."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice in s1",
+    "Surface checks of the rewrite"
+   ],
+   "human": [
+    "Naturalness and warmth of the message"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k3-04",
+  "subject": "korean",
+  "grade": "K3",
+  "topic": "Writing a short family message",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Reply to a pen pal about your family",
+  "uiLang": "en",
+  "format": "make-your-own",
+  "generative": true,
+  "goal": "Compare short replies for how much they tell, then write your own 4-5 sentence message that gives your name, age, family members and one age comparison.",
+  "thinking": [
+   "Evaluating which reply answers the question best",
+   "Selecting what information a reader needs",
+   "Producing a self/family message"
+  ],
+  "differsFromPlain": "Plain practice asks you to fill in blanks of a model. Here you judge what a reply must contain, then write your own that includes a comparison between two people.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows words for family members such as \uc544\ubc84\uc9c0, \uc5b4\uba38\ub2c8, \ub3d9\uc0dd",
+   "Has seen the word \uc0b4 for age"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "A pen pal, \uc11c\uc900, wrote to you:\n\n\uc548\ub155\ud558\uc138\uc694! \uc800\ub294 \uc11c\uc900\uc774\uc5d0\uc694. \uc5f4\ub450 \uc0b4\uc774\uc5d0\uc694. \uc6b0\ub9ac \uac00\uc871\uc740 \ub2e4\uc12f \uba85\uc774\uc5d0\uc694. \ud615\uc740 \uc800\ubcf4\ub2e4 \uc138 \uc0b4 \ub9ce\uc544\uc694. \uac00\uc871\uc744 \uc18c\uac1c\ud574 \uc8fc\uc138\uc694.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "\uc11c\uc900 wants to know about you and your family. Which reply gives him the clearest picture?",
+    "hints": [
+     "Make a list of what \uc11c\uc900 told you and what he asked about.",
+     "Check each reply against that list."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "\uc548\ub155\ud558\uc138\uc694! \uc800\ub294 \ud558\ub098\uc608\uc694. \ud55c\uad6d\uc5b4\ub97c \uacf5\ubd80\ud574\uc694. \ud55c\uad6d \uc74c\uc2dd\uc744 \uc88b\uc544\ud574\uc694. \ub9cc\ub098\uc11c \ubc18\uac00\uc6cc\uc694.",
+      "reveals": "Friendly, but it says nothing about her age or her family, which is what \uc11c\uc900 asked about."
+     },
+     {
+      "id": "b",
+      "text": "\uc6b0\ub9ac \uac00\uc871\uc740 \uc138 \uba85\uc774\uc5d0\uc694. \uc5b4\uba38\ub2c8\ub294 \uc120\uc0dd\ub2d8\uc774\uc5d0\uc694. \uc544\ubc84\uc9c0\ub294 \uc758\uc0ac\uc608\uc694. \uc800\ub294 \ud559\uc0dd\uc774\uc5d0\uc694.",
+      "reveals": "It describes the parents' jobs but leaves out the writer's name, age and any comparison like \uc11c\uc900's."
+     },
+     {
+      "id": "c",
+      "text": "\uc800\ub294 \ud558\ub098\uc608\uc694. \uc5f4 \uc0b4\uc774\uc5d0\uc694. \uc5b4\uba38\ub2c8, \uc544\ubc84\uc9c0, \ub3d9\uc0dd\uc774 \uc788\uc5b4\uc694. \ub3d9\uc0dd\uc740 \uc800\ubcf4\ub2e4 \ub450 \uc0b4 \uc5b4\ub824\uc694."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "Reply c gives a name, an age, the family members and a comparison, which matches \uc11c\uc900's own message. The other replies are friendly or detailed but miss what he asked."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write your own reply in Korean (4-5 short sentences). Include your name, your age, at least one family member, and one comparison with \ubcf4\ub2e4 (for example, who is older or younger than you). Use polite style.",
+    "hints": [
+     "Start with \uc800\ub294 ___\uc608\uc694 and then say your age with \uc0b4.",
+     "For the comparison, copy the shape of \uc11c\uc900's sentence: ___\uc740/\ub294 \uc800\ubcf4\ub2e4 ... \uc0b4 \ub9ce\uc544\uc694/\uc5b4\ub824\uc694."
+    ],
+    "placeholder": "\uc548\ub155\ud558\uc138\uc694! \uc800\ub294 ...",
+    "minChars": 25,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "(\uc694|\ub2c8\ub2e4)(?![\uac00-\ud7a3])"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "says who you are",
+      "mode": "any",
+      "patterns": [
+       "(\uc800\ub294|\uc81c \uc774\ub984\uc740|\uc800\uc758 \uc774\ub984\uc740)"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "gives an age",
+      "mode": "any",
+      "patterns": [
+       "\\d+\\s*\uc0b4",
+       "[\uac00-\ud7a3]+\\s*\uc0b4(\uc774\uc5d0\uc694|\uc785\ub2c8\ub2e4|\uc774\uc57c|\uc774\ub2e4)",
+       "\ud559\ub144"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "mentions a family member",
+      "mode": "any",
+      "patterns": [
+       "(\uc544\ubc84\uc9c0|\uc5b4\uba38\ub2c8|\uc544\ube60|\uc5c4\ub9c8|\ub3d9\uc0dd|\ud615|\ub204\ub098|\uc624\ube60|\uc5b8\ub2c8|\ud560\uba38\ub2c8|\ud560\uc544\ubc84\uc9c0|\uac00\uc871)"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "makes a comparison with \ubcf4\ub2e4",
+      "mode": "any",
+      "patterns": [
+       "\ubcf4\ub2e4\\s*[^.!?]*(\ub9ce|\uc5b4\ub9ac|\uc5b4\ub824|\uc0b4)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my message tell \uc11c\uc900 my name and age?",
+     "Is the comparison true for my real or imagined family?",
+     "Is every sentence polite?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\uc548\ub155\ud558\uc138\uc694! \uc800\ub294 \ud558\ub098\uc608\uc694. \uc5f4 \uc0b4\uc774\uc5d0\uc694. \uc6b0\ub9ac \uac00\uc871\uc740 \ub124 \uba85\uc774\uc5d0\uc694. \uc5b4\uba38\ub2c8, \uc544\ubc84\uc9c0, \ub3d9\uc0dd\uc774 \uc788\uc5b4\uc694. \ub3d9\uc0dd\uc740 \uc800\ubcf4\ub2e4 \ub450 \uc0b4 \uc5b4\ub824\uc694."
+     },
+     {
+      "text": "\uc800\ub294 \uc9c0\ubbfc\uc774\uc5d0\uc694. \uc5f4\ud55c \uc0b4\uc774\uc5d0\uc694. \uac00\uc871\uc740 \uc544\ubc84\uc9c0, \uc5b4\uba38\ub2c8, \uc624\ube60, \uc800\uc608\uc694. \uc624\ube60\ub294 \uc800\ubcf4\ub2e4 \ub124 \uc0b4 \ub9ce\uc544\uc694.",
+      "note": "Uses \uc624\ube60, which a girl uses for her older brother."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\uc548\ub155\ud558\uc138\uc694. \ub9cc\ub098\uc11c \ubc18\uac00\uc6cc\uc694.",
+      "why": "Polite, but no name, age, family or comparison."
+     },
+     {
+      "text": "\uc800\ub294 \ud558\ub098\uc608\uc694. \uc5f4 \uc0b4\uc774\uc5d0\uc694.",
+      "why": "Gives name and age, but nothing about the family."
+     }
+    ],
+    "humanReview": "Whether the comparison is true and natural, and whether the family words fit the writer's own situation."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Evaluating replies",
+    "full": "Chooses the reply that matches \uc11c\uc900's questions and says why",
+    "partial": "Chooses it with a reason that is only about length or friendliness",
+    "none": "Chooses a reply that misses what he asked"
+   },
+   {
+    "criterion": "Own message",
+    "full": "All four items present, polite, comparison correct",
+    "partial": "One item missing or one casual sentence",
+    "none": "Several items missing"
+   }
+  ],
+  "alternatives": [
+   "A learner without a sibling may write a comparison with a cousin, parent or friend; that still meets the task."
+  ],
+  "hardCases": [
+   "Children with no siblings, single-parent families or unusual families are fine; the task works with any family."
+  ],
+  "cautions": {
+   "language": "\ud615/\uc624\ube60 and \ub204\ub098/\uc5b8\ub2c8 depend on the speaker's gender, so a learner may need to look them up; \ub3d9\uc0dd works for everyone.",
+   "culture": "Family structures differ; a learner may describe an imagined or a different family. Do not require a 'typical' family.",
+   "accessibility": "All text is plain Korean; no images needed. The word \uc0b4 may be read in more than one way by screen readers."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice in s1",
+    "Surface checks of the message"
+   ],
+   "human": [
+    "Whether the message is true to the learner's situation and warm in tone"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k3-05",
+  "subject": "korean",
+  "grade": "K3",
+  "topic": "Ages and relationships: what information is missing",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "What would you ask \ubbfc\ud638 to find out?",
+  "uiLang": "en",
+  "format": "choose-needed-info",
+  "generative": true,
+  "goal": "Decide whether a short family description is enough to answer a question, find the missing piece, and ask for it in a polite Korean question.",
+  "thinking": [
+   "Judging sufficiency of information",
+   "Separating needed from irrelevant facts",
+   "Asking a precise polite question"
+  ],
+  "differsFromPlain": "Plain practice gives all numbers and asks you to compute. Here the information is deliberately incomplete and you decide what is missing and ask for it.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows \ub098\uc774, \uc0b4 and the family words in the text"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "\ubbfc\ud638 wrote:\n\n\uc800\ub294 \uc5f4 \uc0b4\uc774\uc5d0\uc694. \uc6b0\ub9ac \uac00\uc871\uc740 \ub2e4\uc12f \uba85\uc774\uc5d0\uc694. \ud560\uba38\ub2c8, \uc544\ubc84\uc9c0, \uc5b4\uba38\ub2c8, \ub204\ub098, \uadf8\ub9ac\uace0 \uc800\uc608\uc694. \ub204\ub098\ub294 \uc800\ubcf4\ub2e4 \ub098\uc774\uac00 \ub9ce\uc544\uc694.\n\nYou want to know exactly how old \ub204\ub098 is.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Is the message enough to know \ub204\ub098's age exactly?",
+    "hints": [
+     "List a few ages that would fit 'older than 10'. Is there only one?",
+     "Which fact would shrink that list to one number?"
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "No. I need to know how many years older she is."
+     },
+     {
+      "id": "b",
+      "text": "Yes. She is older than 10, so she is 11.",
+      "reveals": "'Older' only gives a lower limit; she could be 11, 15 or 17."
+     },
+     {
+      "id": "c",
+      "text": "No. I need \uc544\ubc84\uc9c0's age.",
+      "reveals": "The father's age does not decide a sibling's age."
+     },
+     {
+      "id": "d",
+      "text": "No. I need \ubbfc\ud638's birthday.",
+      "reveals": "His own birthday would not tell you about \ub204\ub098."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "The text only says she is older than \ubbfc\ud638, which allows many ages. The missing piece is how much older (or her age itself)."
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "\ubbfc\ud638's friend also wants to know whether \ud560\uba38\ub2c8 is \uc544\ubc84\uc9c0's mother or \uc5b4\uba38\ub2c8's mother. Which new sentence from \ubbfc\ud638 would settle it? Choose all that apply.",
+    "hints": [
+     "Which sentences mention \uc544\ubc84\uc9c0 or \uc5b4\uba38\ub2c8?",
+     "If the answer could be the same for both grandmothers, the sentence does not settle it."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "\ud560\uba38\ub2c8\ub294 70\uc138\uc608\uc694.",
+      "reveals": "Her age says nothing about which side of the family she is on."
+     },
+     {
+      "id": "b",
+      "text": "\ud560\uba38\ub2c8\ub294 \uc544\ubc84\uc9c0\uc758 \uc5b4\uba38\ub2c8\uc608\uc694."
+     },
+     {
+      "id": "c",
+      "text": "\ud560\uba38\ub2c8\ub294 \uc5b4\uba38\ub2c8\uc758 \uc5b4\uba38\ub2c8\uc608\uc694."
+     },
+     {
+      "id": "d",
+      "text": "\ud560\uba38\ub2c8\ub294 \uc6b0\ub9ac \uc9d1\uc5d0\uc11c \uac19\uc774 \uc0b4\uc544\uc694.",
+      "reveals": "Both grandmothers could live with the family; this does not tell which one."
+     }
+    ],
+    "correct": [
+     "b",
+     "c"
+    ],
+    "explain": "Either sentence names the side directly, so it settles the question (with opposite answers). Age and living together fit both sides.",
+    "multi": true,
+    "acceptable": [
+     {
+      "ids": [
+       "b"
+      ],
+      "reason": "Naming one side settles it; c would settle it the other way."
+     },
+     {
+      "ids": [
+       "c"
+      ],
+      "reason": "Naming one side settles it; b would settle it the other way."
+     }
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Write one polite Korean question you could send to \ubbfc\ud638 to learn how old \ub204\ub098 is.",
+    "hints": [
+     "Use \ub204\ub098 in the question and a word for age or years (\uba87 \uc0b4, \ub098\uc774).",
+     "End with a polite question ending."
+    ],
+    "placeholder": "\ub204\ub098\ub294 ...?",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "asks a question or asks for the information",
+      "mode": "any",
+      "patterns": [
+       "[?\uff1f]",
+       "(\uae4c\uc694|\ub098\uc694|\ub2c8\uae4c)",
+       "\uc54c\ub824 (\uc8fc|\uc904)",
+       "\uac00\ub974\uccd0 (\uc8fc|\uc904)"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "mentions \ub204\ub098",
+      "mode": "any",
+      "patterns": [
+       "\ub204\ub098"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "asks about age (\uba87 \uc0b4 / \ub098\uc774)",
+      "mode": "any",
+      "patterns": [
+       "\uba87\\s*\uc0b4",
+       "\uba87\\s*\uc138",
+       "\uba87\\s*\ub144",
+       "\ub098\uc774"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "(\uc694|\ub2c8\uae4c)(?![\uac00-\ud7a3])"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does the question ask about \ub204\ub098, not someone else?",
+     "Would a single answer from \ubbfc\ud638 settle it?",
+     "Is it polite?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\ub204\ub098\ub294 \ubbfc\ud638 \uc528\ubcf4\ub2e4 \uba87 \uc0b4 \ub9ce\uc544\uc694?"
+     },
+     {
+      "text": "\ub204\ub098\ub294 \uba87 \uc0b4\uc774\uc5d0\uc694?",
+      "note": "Directly asks for the age."
+     },
+     {
+      "text": "\ub204\ub098\uac00 \uba87 \uc0b4\uc778\uc9c0 \uc54c\ub824 \uc8fc\uc138\uc694.",
+      "note": "A polite request instead of a question."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\ub204\ub098\uac00 \uc88b\uc544\uc694.",
+      "why": "Not a question and not about age."
+     },
+     {
+      "text": "\ubbfc\ud638\ub294 \uba87 \uc0b4\uc774\uc57c?",
+      "why": "Asks about the wrong person and drops the polite ending."
+     },
+     {
+      "text": "\ub204\ub098\ub294 \uc5b4\ub514\uc5d0 \uc0b4\uc544\uc694?",
+      "why": "Asks where \ub204\ub098 lives, not how old she is."
+     }
+    ],
+    "humanReview": "Whether the question is natural and precise."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Sufficiency",
+    "full": "Sees that 'older' is not enough and names what is missing",
+    "partial": "Says it is not enough but picks an irrelevant fact",
+    "none": "Treats it as enough"
+   },
+   {
+    "criterion": "Question",
+    "full": "Polite question that targets \ub204\ub098's age",
+    "partial": "Question about age but not about \ub204\ub098, or not polite",
+    "none": "No question"
+   }
+  ],
+  "alternatives": [
+   "'\ub204\ub098\ub294 \uba87 \uc0b4\uc774\uc5d0\uc694?' and '\ub204\ub098\ub294 \uc800\ubcf4\ub2e4 \uba87 \uc0b4 \ub9ce\uc544\uc694?' both work."
+  ],
+  "hardCases": [
+   "The word \ud560\uba38\ub2c8 can be either grandmother; a learner might say 'ask for \uce5c\ud560\uba38\ub2c8 or \uc678\ud560\uba38\ub2c8' using vocabulary beyond this level, which is fine."
+  ],
+  "cautions": {
+   "language": "The question uses \uba87 \uc0b4 and \ub098\uc774; check that a learner who writes \uba87 \ub144 or \ub098\uc774\uac00 \uc5b4\ub5bb\uac8c \ub3fc\uc694 is also accepted by the surface pattern.",
+   "culture": "In Korean families, \ud560\uba38\ub2c8 can mean either grandmother and a more exact word may be needed; this is a normal ambiguity.",
+   "accessibility": "Use plain text; \ubbfc\ud638 is read as a name. The question mark may be skipped by learners; the \uc694/\uae4c\uc694 endings are accepted too."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choices in s1 and s2",
+    "Surface checks of the question"
+   ],
+   "human": [
+    "Naturalness and precision of the learner's question"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k3-06",
+  "subject": "korean",
+  "grade": "K3",
+  "topic": "Omitted subjects: who is meant, stage by stage",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "The person in the living room",
+  "uiLang": "en",
+  "format": "reveal-and-revise",
+  "generative": false,
+  "goal": "Predict who an omitted subject is, then revise the guess as more of \ubbfc\uc9c0's story appears.",
+  "thinking": [
+   "Making and revising a guess about an omitted subject",
+   "Using several clues together",
+   "Noticing how added information narrows a guess"
+  ],
+  "differsFromPlain": "Plain practice gives the whole text at once and asks one question. Here the story is shown in three parts and you update your judgement after each.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Has seen -\uc694 endings and family words"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "\ubbfc\uc9c0 is telling a friend about her afternoon. We read it one part at a time. Korean often leaves out who does the action.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "Read each part and choose who you think is meant. Your guess may change.",
+    "stages": [
+     {
+      "info": "\ubbfc\uc9c0: \ud559\uad50 \ub05d\ub098\uace0 \uc9d1\uc5d0 \uac14\uc5b4\uc694. \uac70\uc2e4\uc5d0 \uacc4\uc168\uc5b4\uc694.",
+      "ask": "Who was in the living room?",
+      "options": [
+       {
+        "id": "a",
+        "text": "\ubbfc\uc9c0 herself",
+        "reveals": "The verb form is one that honors the doer, which people do not use for themselves."
+       },
+       {
+        "id": "b",
+        "text": "Someone she looks up to, like a grandparent or a parent"
+       },
+       {
+        "id": "c",
+        "text": "Her younger brother",
+        "reveals": "A younger brother would not usually be spoken of in this way."
+       },
+       {
+        "id": "d",
+        "text": "A classmate her age",
+        "reveals": "The form does not fit a same-age classmate."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "The ending shows respect for the person, so a family elder or similar fits. At this point a parent or a grandparent both remain possible."
+     },
+     {
+      "info": "\ubbfc\uc9c0: \uc800\ub97c \ubcf4\uace0 \uc6c3\uc73c\uc2dc\uba74\uc11c '\uc6b0\ub9ac \uac15\uc544\uc9c0, \uc654\uc5b4?' \ud558\uc168\uc5b4\uc694.",
+      "ask": "Who is '\uc6b0\ub9ac \uac15\uc544\uc9c0' here?",
+      "options": [
+       {
+        "id": "a",
+        "text": "A real puppy",
+        "reveals": "A real puppy does not 'come' or answer; \ubbfc\uc9c0 is the one just arriving."
+       },
+       {
+        "id": "b",
+        "text": "\ubbfc\uc9c0 herself, as a loving nickname"
+       },
+       {
+        "id": "c",
+        "text": "Her younger brother",
+        "reveals": "The person is looking at \ubbfc\uc9c0 when saying it."
+       },
+       {
+        "id": "d",
+        "text": "Nobody; it is a mistake",
+        "reveals": "Calling a loved child '\uac15\uc544\uc9c0' is a common warm nickname."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "The person looks at \ubbfc\uc9c0 and asks if she has come. \uc6b0\ub9ac \uac15\uc544\uc9c0 is a warm nickname for a child, so it points to \ubbfc\uc9c0."
+     },
+     {
+      "info": "\ubbfc\uc9c0: \uadf8\ub9ac\uace0 \uc544\ubc84\uc9c0\uaed8 \uc804\ud654\ud574\uc11c '\uc544\ub4e4, \ubbfc\uc9c0 \uc654\ub2e4.' \ud558\uc168\uc5b4\uc694.",
+      "ask": "Who is the person in the living room now?",
+      "options": [
+       {
+        "id": "a",
+        "text": "\ubbfc\uc9c0's mother",
+        "reveals": "Her mother would not call \uc544\ubc84\uc9c0 '\uc544\ub4e4'."
+       },
+       {
+        "id": "b",
+        "text": "\ubbfc\uc9c0's teacher",
+        "reveals": "A teacher is not likely to call her father '\uc544\ub4e4'."
+       },
+       {
+        "id": "c",
+        "text": "A parent of \ubbfc\uc9c0's father, such as a grandmother or a grandfather"
+       },
+       {
+        "id": "d",
+        "text": "\ubbfc\uc9c0's older sister",
+        "reveals": "An older sister would not call \uc544\ubc84\uc9c0 '\uc544\ub4e4'."
+       }
+      ],
+      "reasonable": [
+       "c"
+      ],
+      "after": "Only a parent can call a grown man '\uc544\ub4e4'. So the person is \ubbfc\uc9c0's father's parent: her grandmother or grandfather on the father's side."
+     }
+    ],
+    "reflect": "At first 'someone respected' was enough, but each new clue removed some options. The last clue showed that the earlier 'parent' possibility also had to go. Notice that you changed your guess because of evidence, not because of a hunch.",
+    "hints": [
+     "After each part, ask yourself which options the new part rules out.",
+     "Do not keep a guess just because you chose it earlier."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Why can \ubbfc\uc9c0 leave out the subject without confusing her friend?",
+    "hints": [
+     "Look at which parts of the three messages you used to guess.",
+     "Ask when you think a speaker would say the subject out loud."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "Because Korean sentences never have a subject.",
+      "reveals": "Subjects are often omitted but they exist; they can be added when it would be unclear."
+     },
+     {
+      "id": "b",
+      "text": "Because her friend knows everything about her family.",
+      "reveals": "If that were the whole reason, the clues in the verbs would not matter."
+     },
+     {
+      "id": "c",
+      "text": "Because the verb form and the story already show who is meant."
+     },
+     {
+      "id": "d",
+      "text": "Because she was not sure who was in the living room.",
+      "reveals": "She clearly knows; she tells the story in order."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "Korean listeners use forms of the verb and context to recover the subject. If it were truly unclear, a speaker would add it."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Updating a guess",
+    "full": "Changes the guess in a stage after a new clue and ends with a grandparent on the father's side",
+    "partial": "Narrows only partly",
+    "none": "Keeps one guess regardless of clues"
+   },
+   {
+    "criterion": "Explaining",
+    "full": "Says the verb form and context make the subject clear",
+    "partial": "Says subjects are not needed",
+    "none": "No answer"
+   }
+  ],
+  "alternatives": [
+   "A learner may reason that the grandparent could also be on the mother's side; the text \uc544\ubc84\uc9c0\uaed8 '\uc544\ub4e4' excludes that."
+  ],
+  "hardCases": [
+   "If a learner does not know \uc544\ub4e4, the third stage becomes harder; a hint may be needed."
+  ],
+  "cautions": {
+   "language": "The honoring form (-\uc2dc-) is the clue; the nickname \uc6b0\ub9ac \uac15\uc544\uc9c0 is a typical expression and does not call \ubbfc\uc9c0 an animal.",
+   "culture": "Calling a child \uac15\uc544\uc9c0 is a warm habit in some families and may sound strange to others; it is not an insult.",
+   "accessibility": "No images. Stages appear one at a time; screen readers can read each stage. Quote marks may be read aloud."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The reasonable options in each stage"
+   ],
+   "human": [
+    "Quality of the learner's reflection if it is asked in class"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k3-07",
+  "subject": "korean",
+  "grade": "K3",
+  "topic": "Relationships: family words that depend on who speaks",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Brother or sister? Check the words",
+  "uiLang": "en",
+  "format": "find-error-fix",
+  "generative": false,
+  "goal": "Find the family word that does not fit the speaker, choose the right word, and test what changes if the speaker is someone else.",
+  "thinking": [
+   "Locating an odd word using information about the speaker",
+   "Choosing the corrected word",
+   "Checking how a change in the speaker changes the judgement"
+  ],
+  "differsFromPlain": "Plain practice asks you to match family words to pictures. Here the right word depends on who is speaking, so you have to check a text against that information.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows that Korean has more than one word for older brother and older sister"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "\ud558\ub098 is a girl. She has one older brother (15 years old) and one older sister (17 years old). She introduces her family to her class.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "Which line has a family word that does not fit \ud558\ub098?",
+    "lines": [
+     "\uc548\ub155\ud558\uc138\uc694? \uc800\ub294 \ud558\ub098\uc608\uc694.",
+     "\uc800\ub294 \uc5f4\ub450 \uc0b4\uc774\uc5d0\uc694.",
+     "\uc6b0\ub9ac \ud615\uc740 \uc5f4\ub2e4\uc12f \uc0b4\uc774\uc5d0\uc694.",
+     "\uc5b8\ub2c8\ub294 \uc5f4\uc77c\uacf1 \uc0b4\uc774\uc5d0\uc694.",
+     "\uc544\ubc84\uc9c0\uc640 \uc5b4\uba38\ub2c8\ub3c4 \uacc4\uc138\uc694."
+    ],
+    "wrong": [
+     2
+    ],
+    "explain": "Line 3 is the odd one. A girl calls her older brother \uc624\ube60, not \ud615. A boy would use \ud615. Line 4 is fine because a girl calls her older sister \uc5b8\ub2c8.",
+    "hints": [
+     "Mark who is a boy or a girl in the story. Which family words depend on that?",
+     "Compare the two lines that name an older sibling."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Which word should replace \ud615 in line 3?",
+    "hints": [
+     "Is the person older or younger than \ud558\ub098?",
+     "Is the speaker a girl or a boy?"
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "\ub204\ub098",
+      "reveals": "\ub204\ub098 is the word a boy uses for his older sister; here the sibling is a brother."
+     },
+     {
+      "id": "b",
+      "text": "\ub3d9\uc0dd",
+      "reveals": "\ub3d9\uc0dd means a younger sibling, but he is 15 and older than \ud558\ub098."
+     },
+     {
+      "id": "c",
+      "text": "\uc624\ube60"
+     },
+     {
+      "id": "d",
+      "text": "\uc544\ubc84\uc9c0",
+      "reveals": "\uc544\ubc84\uc9c0 is the father; the line is about a brother."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "A girl calls her older brother \uc624\ube60. The line becomes \uc6b0\ub9ac \uc624\ube60\ub294 \uc5f4\ub2e4\uc12f \uc0b4\uc774\uc5d0\uc694."
+   },
+   {
+    "id": "s3",
+    "kind": "choose",
+    "prompt": "Now imagine \ud558\ub098 is a boy with the same family (one older brother and one older sister). Which lines would need changing?",
+    "hints": [
+     "Test line 3 and line 4 separately with the new speaker.",
+     "Write the right word for a boy for each sibling."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "Line 4 only"
+     },
+     {
+      "id": "b",
+      "text": "Line 3 only",
+      "reveals": "For a boy \ud615 is the right word, so line 3 would be fine."
+     },
+     {
+      "id": "c",
+      "text": "Both lines 3 and 4",
+      "reveals": "Only one of the two words would stop fitting."
+     },
+     {
+      "id": "d",
+      "text": "Neither line",
+      "reveals": "Check each word against the new speaker."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "For a boy, \ud615 (older brother) is correct, but an older sister is \ub204\ub098, not \uc5b8\ub2c8. So line 4 would change."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finding the error",
+    "full": "Picks line 3 and says the word depends on the speaker being a girl",
+    "partial": "Picks line 3 without a reason",
+    "none": "Picks another line"
+   },
+   {
+    "criterion": "Transfer",
+    "full": "Correctly says only line 4 would change for a boy",
+    "partial": "Sees one change but wrong line",
+    "none": "Says nothing or both"
+   }
+  ],
+  "alternatives": [
+   "Some families use other words (for example the sibling's name); in a class introduction \uc624\ube60/\uc5b8\ub2c8 and \ud615/\ub204\ub098 are expected."
+  ],
+  "hardCases": [
+   "Learners from a language with a single word for 'brother' or 'sister' may find the speaker-dependent words surprising; this is not a mistake of logic."
+  ],
+  "cautions": {
+   "language": "Terms that change by the speaker's gender are \ud615/\uc624\ube60 and \ub204\ub098/\uc5b8\ub2c8; \ub3d9\uc0dd is the same for all.",
+   "culture": "This is a Korean convention and is not about status; someone may use a name instead.",
+   "accessibility": "No images; all lines can be read separately by a screen reader."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "All three steps against their keys"
+   ],
+   "human": [
+    "Whether a learner can explain the pattern in their own words"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k3-08",
+  "subject": "korean",
+  "grade": "K3",
+  "topic": "Titles and speech levels with family",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Can you speak casually to family?",
+  "uiLang": "en",
+  "format": "judge-evidence-explain",
+  "generative": true,
+  "goal": "Judge a claim about speech to family members, find which parts hold and which do not, and write one sentence for a sibling and one for a grandparent.",
+  "thinking": [
+   "Evaluating a general claim with a counterexample",
+   "Seeing that one counterexample breaks 'always' but not 'sometimes'",
+   "Producing two sentences for two audiences"
+  ],
+  "differsFromPlain": "Plain practice asks which ending is polite. Here you decide how far a general claim goes and then apply your judgement in writing for two people.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Has seen both casual and polite endings",
+   "Can use the respectful words \ub4dc\uc2dc\ub2e4, \uc9c4\uc9c0, \uc2dd\uc0ac\ud558\uc2dc\ub2e4 for a grandparent"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "Two friends discuss how to speak to family.\n\n\ud558\ub098: \uac00\uc871\ud55c\ud14c\ub294 \ud56d\uc0c1 \ubc18\ub9d0\uc744 \uc368\ub3c4 \ub3fc. \uc6b0\ub9ac \uac00\uc871\uc774\uc796\uc544.\n\uc900: \uc544\ub2c8\uc57c. \ud560\uba38\ub2c8\ud55c\ud14c '\ubc25 \uba39\uc5c8\uc5b4?' \ud558\uba74 \uc548 \ub3fc.\n(\ubc18\ub9d0 = casual speech without the polite -\uc694.)\n(Respectful words for eating: \ub4dc\uc2dc\ub2e4, \uc9c4\uc9c0, \uc2dd\uc0ac\ud558\uc2dc\ub2e4.)",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which statements about this argument are fair? Choose all that apply.",
+    "hints": [
+     "What would a single counterexample prove, and what would it not prove?",
+     "Think about whom a person usually speaks casually to at home."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "'\ud56d\uc0c1' is too strong: one example like \ud560\uba38\ub2c8 is enough to question it."
+     },
+     {
+      "id": "b",
+      "text": "Families differ: some use casual speech with parents, others do not, so no single rule fits every family."
+     },
+     {
+      "id": "c",
+      "text": "Family members are close, so there is no need to think about politeness at home.",
+      "reveals": "This repeats \ud558\ub098's claim instead of testing it."
+     },
+     {
+      "id": "d",
+      "text": "\uc900's example shows that casual speech to family members is wrong.",
+      "reveals": "One example about \ud560\uba38\ub2c8 does not cover a younger sibling or every family; it only breaks 'always'."
+     }
+    ],
+    "correct": [
+     "a",
+     "b"
+    ],
+    "explain": "The claim 'always casual' is broken by a single counterexample, but that does not mean 'never casual'. Real families differ, and the relationship decides.",
+    "multi": true,
+    "acceptable": [
+     {
+      "ids": [
+       "a"
+      ],
+      "reason": "Spotting the weakness of '\ud56d\uc0c1' is the key point; b adds that families differ."
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write two short questions in Korean asking if the person has eaten: one to your younger sibling and one to your grandmother or grandfather.",
+    "hints": [
+     "Use a casual ending for the younger sibling. For the grandparent use a polite ending and one of the respectful words for 'eat' from the note above.",
+     "Put \ud560\uba38\ub2c8 or \ud560\uc544\ubc84\uc9c0 in the second sentence."
+    ],
+    "placeholder": "\ub3d9\uc0dd\uc544, ... \ud560\uba38\ub2c8, ...",
+    "minChars": 12,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "one sentence with polite -\uc694",
+      "mode": "any",
+      "patterns": [
+       "(\uc694|\ub2c8\uae4c)(?![\uac00-\ud7a3])"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "one casual eating question for the younger sibling",
+      "mode": "any",
+      "patterns": [
+       "(\uba39|\ubc25|\uc2dd\uc0ac|\uc810\uc2ec|\uc544\uce68|\uc800\ub141)[^.?!\uff1f]*(\uc5b4|\ub2c8|\ub0d0|\uc9c0|\ub798)(?![\uac00-\ud7a3])\\s*[?\uff1f]"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "names the grandparent and uses a respectful word for eating in the polite question",
+      "mode": "any",
+      "patterns": [
+       "(\ud560\uba38\ub2c8|\ud560\uc544\ubc84\uc9c0)[^.?!\uff1f]*(?:\ub4dc\uc168|\ub4dc\uc138|\ub4dc\uc2e4|\ub4dc\uc2dc|\uc2dd\uc0ac\ud558\uc168|\uc2dd\uc0ac\ud558\uc138|\uc7a1\uc218\uc168|\uc7a1\uc218\uc138|\uc9c4\uc9c0)[\uac00-\ud7a3]*\uc694\\s*[?\uff1f]",
+       "(?:\ub4dc\uc168|\ub4dc\uc138|\ub4dc\uc2e4|\ub4dc\uc2dc|\uc2dd\uc0ac\ud558\uc168|\uc2dd\uc0ac\ud558\uc138|\uc7a1\uc218\uc168|\uc7a1\uc218\uc138|\uc9c4\uc9c0)[\uac00-\ud7a3]*\uc694[^.?!\uff1f]*(\ud560\uba38\ub2c8|\ud560\uc544\ubc84\uc9c0)[^.?!\uff1f]*[?\uff1f]"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "the polite sentence asks about eating",
+      "mode": "any",
+      "patterns": [
+       "(\ub4dc\uc168|\ub4dc\uc138\uc694|\ub4dc\uc2e4|\uc7a1\uc218|\uc9c4\uc9c0|\uba39\uc5c8|\uba39\uc5b4|\uc2dd\uc0ac|\ubc25|\uc810\uc2ec|\uc544\uce68|\uc800\ub141)[^.?!\uff1f]*\uc694[^.?!\uff1f]*[?\uff1f]"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I use different endings for the two people?",
+     "Does the grandparent sentence sound respectful?",
+     "Is each question really about eating?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\ub3d9\uc0dd\uc544, \ubc25 \uba39\uc5c8\uc5b4? \ud560\uba38\ub2c8, \ubc25 \ub4dc\uc168\uc5b4\uc694?"
+     },
+     {
+      "text": "\ub108 \ubc25 \uba39\uc5c8\ub2c8? \ud560\uc544\ubc84\uc9c0, \uc2dd\uc0ac\ud558\uc168\uc5b4\uc694?",
+      "note": "Uses the honorific verb \uc2dd\uc0ac\ud558\uc168\uc5b4\uc694."
+     },
+     {
+      "text": "\ub3d9\uc0dd\uc544, \uc2dd\uc0ac\ud588\uc5b4? \ud560\uba38\ub2c8, \uc2dd\uc0ac\ud558\uc168\uc5b4\uc694?",
+      "note": "Another casual and polite pair."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\ud560\uba38\ub2c8, \ubc25 \uba39\uc5c8\uc5b4? \ub3d9\uc0dd\uc544, \ubc25 \uba39\uc5c8\uc5b4?",
+      "why": "Both sentences are casual."
+     },
+     {
+      "text": "\ud560\uba38\ub2c8, \uc2dd\uc0ac\ud558\uc168\uc5b4\uc694? \ud560\uc544\ubc84\uc9c0, \ub4dc\uc168\uc5b4\uc694?",
+      "why": "Both sentences are polite; no casual sentence for the sibling."
+     },
+     {
+      "text": "\ub3d9\uc0dd\uc544, \ubc25 \uba39\uc5c8\uc5b4? \ud560\uba38\ub2c8, \uc548\ub155\ud558\uc138\uc694?",
+      "why": "The grandparent sentence is polite but does not ask about eating."
+     },
+     {
+      "text": "\ud560\uba38\ub2c8, \ubc25 \uba39\uc5c8\uc5b4? \ub3d9\uc0dd\uc544, \ubc25 \ub4dc\uc168\uc5b4\uc694?",
+      "why": "The endings are swapped: casual to the grandparent, polite to the sibling."
+     },
+     {
+      "text": "\ud560\uba38\ub2c8 \ubc25 \ub4dc\uc168\uc5b4? \ub3d9\uc0dd\uc544, \ubc25 \uba39\uc5c8\uc5b4\uc694?",
+      "why": "The registers are swapped: casual to the grandmother, polite to the sibling."
+     }
+    ],
+    "humanReview": "Whether the casual sentence is natural, and whether the grandparent sentence has suitable respect words."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Evaluating the claim",
+    "full": "Sees that 'always' is too strong and that families differ",
+    "partial": "Sees one of the two",
+    "none": "Accepts \ud558\ub098's claim"
+   },
+   {
+    "criterion": "Applying",
+    "full": "Casual question to sibling and polite question to grandparent",
+    "partial": "One sentence fits, the other does not",
+    "none": "Same level in both"
+   }
+  ],
+  "alternatives": [
+   "Some families use polite speech with older siblings or even with parents; the task does not call that wrong."
+  ],
+  "hardCases": [
+   "A learner with no grandparents may use a different older relative or neighbor; the check accepts \ud560\uba38\ub2c8 or \ud560\uc544\ubc84\uc9c0 only, so adjust the check or review by hand."
+  ],
+  "cautions": {
+   "language": "Casual forms (\uba39\uc5c8\uc5b4) are only appropriate to someone younger or very close; polite forms (\uba39\uc5c8\uc5b4\uc694, \ub4dc\uc168\uc5b4\uc694) are the safe choice for elders.",
+   "culture": "Family speech habits differ by region, family and generation; do not treat one pattern as the correct one.",
+   "accessibility": "The prompt uses plain text. The ? sign may be read aloud as a question mark; this is fine."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choices in s1",
+    "Surface checks in s2"
+   ],
+   "human": [
+    "Naturalness of the two sentences and the learner's reasoning"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "x-k-k3-09",
+  "subject": "korean",
+  "grade": "K3",
+  "topic": "Ages and relationships: several families fit",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "How old could the family be?",
+  "uiLang": "en",
+  "format": "build-many-verify",
+  "generative": true,
+  "goal": "Read age clues in Korean, see that they leave several possibilities, and build different families that satisfy all clues.",
+  "thinking": [
+   "Reading comparisons of ages",
+   "Seeing that some clues allow a range, not one answer",
+   "Building and checking several solutions under constraints"
+  ],
+  "differsFromPlain": "Plain practice asks for one calculated age. Here the clues allow many answers and you must build several correct families, each checked against every clue.",
+  "prerequisites": [
+   "Can read Hangul and Arabic numerals",
+   "Knows \uc0b4 (years old), \ub9ce\uc544\uc694, \uc5b4\ub824\uc694 and \ubcf4\ub2e4"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "\ubbfc\uc218 describes his family:\n\n\uc800\ub294 12\uc0b4\uc774\uc5d0\uc694.\n\ud615\uc740 \uc800\ubcf4\ub2e4 2\uc0b4\uc774\ub098 3\uc0b4 \ub9ce\uc544\uc694.\n\uc544\ubc84\uc9c0\ub294 \ud615\ubcf4\ub2e4 28\uc0b4\uc5d0\uc11c 32\uc0b4 \ub9ce\uc544\uc694.\n\ud560\uba38\ub2c8\ub294 \uc544\ubc84\uc9c0\ubcf4\ub2e4 25\uc0b4\uc5d0\uc11c 32\uc0b4 \ub9ce\uc544\uc694.\n\ud560\uba38\ub2c8\ub294 75\uc0b4\ubcf4\ub2e4 \uc5b4\ub824\uc694.\n\n(All ages are whole numbers.)",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Can you tell \ud615's age exactly from the text?",
+    "hints": [
+     "Work out the lowest and highest age the first clue allows.",
+     "Check whether any other clue gives \ud615's age."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "Yes: 14",
+      "reveals": "This ignores the other possibility that fits '2\uc0b4\uc774\ub098 3\uc0b4'."
+     },
+     {
+      "id": "b",
+      "text": "Yes: 15",
+      "reveals": "This ignores the other possibility that fits '2\uc0b4\uc774\ub098 3\uc0b4'."
+     },
+     {
+      "id": "c",
+      "text": "No: 14 and 15 both fit"
+     },
+     {
+      "id": "d",
+      "text": "No: the clues contradict each other",
+      "reveals": "They are consistent; check them one by one."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "'2\uc0b4\uc774\ub098 3\uc0b4' means 12+2 = 14 or 12+3 = 15, so two ages fit.",
+    "scaffold": true
+   },
+   {
+    "id": "s2",
+    "kind": "build",
+    "prompt": "Build three different families: enter \ud615's age (h), \uc544\ubc84\uc9c0's age (f) and \ud560\uba38\ub2c8's age (g) so that every clue is true.",
+    "hints": [
+     "Pick \ud615's age first, then add a number between 28 and 32 for \uc544\ubc84\uc9c0.",
+     "Then add a number between 25 and 32 for \ud560\uba38\ub2c8 and check that she is under 75."
+    ],
+    "vars": [
+     {
+      "name": "h",
+      "label": "\ud615's age"
+     },
+     {
+      "name": "f",
+      "label": "\uc544\ubc84\uc9c0's age"
+     },
+     {
+      "name": "g",
+      "label": "\ud560\uba38\ub2c8's age"
+     }
+    ],
+    "constraints": [
+     {
+      "id": "c0",
+      "expr": "h==floor(h) && f==floor(f) && g==floor(g)",
+      "ok": "All ages are whole numbers.",
+      "fail": "Ages must be whole numbers."
+     },
+     {
+      "id": "c1",
+      "expr": "h>=14 && h<=15",
+      "ok": "\ud615 is 2 or 3 years older than 12.",
+      "fail": "\ud615 should be 14 or 15."
+     },
+     {
+      "id": "c2",
+      "expr": "f-h>=28 && f-h<=32",
+      "ok": "\uc544\ubc84\uc9c0 is 28-32 years older than \ud615.",
+      "fail": "\uc544\ubc84\uc9c0's age minus \ud615's age should be 28 to 32."
+     },
+     {
+      "id": "c3",
+      "expr": "g-f>=25 && g-f<=32",
+      "ok": "\ud560\uba38\ub2c8 is 25-32 years older than \uc544\ubc84\uc9c0.",
+      "fail": "\ud560\uba38\ub2c8's age minus \uc544\ubc84\uc9c0's age should be 25 to 32."
+     },
+     {
+      "id": "c4",
+      "expr": "g<75",
+      "ok": "\ud560\uba38\ub2c8 is younger than 75.",
+      "fail": "\ud560\uba38\ub2c8 must be younger than 75."
+     }
+    ],
+    "need": 3,
+    "distinctBy": "h*10000+f*100+g",
+    "modelRows": [
+     {
+      "h": 14,
+      "f": 42,
+      "g": 67
+     },
+     {
+      "h": 15,
+      "f": 45,
+      "g": 70
+     },
+     {
+      "h": 14,
+      "f": 44,
+      "g": 72
+     },
+     {
+      "h": 15,
+      "f": 47,
+      "g": 74
+     }
+    ],
+    "badRows": [
+     {
+      "h": 16,
+      "f": 46,
+      "g": 70
+     },
+     {
+      "h": 14,
+      "f": 40,
+      "g": 66
+     },
+     {
+      "h": 14,
+      "f": 44,
+      "g": 60
+     }
+    ],
+    "explain": "For example 14 / 42 / 67 works: 14-12 = 2, 42-14 = 28, 67-42 = 25 and 67 is under 75. Many other combinations also work, so the text does not give one single family."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Reading the clues",
+    "full": "Finds the allowed ranges and sees more than one answer",
+    "partial": "Finds one answer only",
+    "none": "Misreads the comparisons"
+   },
+   {
+    "criterion": "Checking",
+    "full": "All three families satisfy every clue",
+    "partial": "Two of three correct",
+    "none": "Most violate a clue"
+   }
+  ],
+  "alternatives": [
+   "Any three different valid triples are correct; there are many."
+  ],
+  "hardCases": [
+   "A learner may treat '28\uc0b4\uc5d0\uc11c 32\uc0b4' as exclusive of 28 or 32; the text means including both."
+  ],
+  "cautions": {
+   "language": "Numbers are written with digits so the focus is on the comparison words \ub9ce\uc544\uc694/\uc5b4\ub824\uc694/\ubcf4\ub2e4 and the range \uc5d0\uc11c.",
+   "culture": "Ages and generations may vary in real families; the numbers are made up.",
+   "accessibility": "Digits and short sentences work with screen readers; the clues are listed on separate lines."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice in s1",
+    "Every example against the constraints in s2"
+   ],
+   "human": [
+    "None needed beyond a quick look at the learner's reasoning, if asked"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k3-10",
+  "subject": "korean",
+  "grade": "K3",
+  "topic": "Relationships: who is meant by a clue",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Describe a family member so only one fits",
+  "uiLang": "en",
+  "format": "make-your-own",
+  "generative": true,
+  "goal": "Find which clue pair points to exactly one family member, then write your own clue pair for another member.",
+  "thinking": [
+   "Testing clue pairs against a list of people",
+   "Seeing that a clue pair can fit more than one person",
+   "Making a clue pair that fits exactly one person"
+  ],
+  "differsFromPlain": "Plain practice asks you to name the relationship word for a person. Here you test descriptions against a family and write clues that single out one person.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows the family words and \ub0a8\uc790/\uc5ec\uc790, \ub098\uc774, \uc0b4"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "\ubbfc\uc218's family (all in the same house):\n\n\ubbfc\uc218 (12 years old, boy)\n\ub0a8\ub3d9\uc0dd (8, boy)\n\ub204\ub098 (15, girl)\n\uc544\ubc84\uc9c0 (45)\n\uc5b4\uba38\ub2c8 (42)\n\ud560\uba38\ub2c8 (70, \uc544\ubc84\uc9c0's mother)\n\nA clue pair is a description of one person, for a guessing game.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which clue pair points to exactly one person?",
+    "hints": [
+     "Test the clue pair on each person in the list, one by one.",
+     "Count how many people fit each pair."
+    ],
+    "options": [
+     {
+      "id": "a",
+      "text": "\uc5ec\uc790\uc608\uc694. \ubbfc\uc218\ubcf4\ub2e4 \ub098\uc774\uac00 \ub9ce\uc544\uc694.",
+      "reveals": "This fits \ub204\ub098, \uc5b4\uba38\ub2c8 and \ud560\uba38\ub2c8, so it does not single out one person."
+     },
+     {
+      "id": "b",
+      "text": "\ubbfc\uc218\uc758 \uac00\uc871\uc774\uc5d0\uc694. \uc5b4\ub978\uc774\uc5d0\uc694.",
+      "reveals": "This fits \uc544\ubc84\uc9c0, \uc5b4\uba38\ub2c8 and \ud560\uba38\ub2c8."
+     },
+     {
+      "id": "c",
+      "text": "\uc5ec\uc790\uc608\uc694. \uc544\ubc84\uc9c0\uc758 \uc5b4\uba38\ub2c8\uac00 \uc544\ub2c8\uc5d0\uc694.",
+      "reveals": "This leaves \ub204\ub098 and \uc5b4\uba38\ub2c8."
+     },
+     {
+      "id": "d",
+      "text": "\ub0a8\uc790\uc608\uc694. \ubbfc\uc218\ubcf4\ub2e4 \ub098\uc774\uac00 \ub9ce\uc544\uc694."
+     }
+    ],
+    "correct": [
+     "d"
+    ],
+    "explain": "Only \uc544\ubc84\uc9c0 is a man older than \ubbfc\uc218. The other pairs leave two or three people."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Choose \ub204\ub098, \ub0a8\ub3d9\uc0dd or \ud560\uba38\ub2c8 and write two Korean clue sentences that fit only that person. Use positive clues only (no \uc544\ub2c8\uc5d0\uc694 / \uc548), and do not use the word for that person (\ub204\ub098, \ub3d9\uc0dd, \ud560\uba38\ub2c8).",
+    "hints": [
+     "Combine two kinds of clue, like \ub0a8\uc790/\uc5ec\uc790 with an age comparison or a number of years.",
+     "Test your two sentences on all six people before you finish."
+    ],
+    "placeholder": "...\uc608\uc694. ...\uc608\uc694.",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "two sentences ending in polite -\uc694",
+      "mode": "any",
+      "patterns": [
+       "\uc694[.!]?\\s+[^.!?]*\uc694"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "gives a clue combination that fits only one of the three people (gender plus an age or family clue, or a number only that person has)",
+      "mode": "any",
+      "patterns": [
+       "^(?=[\\s\\S]*\ub0a8\uc790)(?=[\\s\\S]*(\ubbfc\uc218\ubcf4\ub2e4\\s*(\ub098\uc774\uac00\\s*)?(\uc5b4\ub824|\uc801)|(8|\uc5ec\ub35f)\\s*\uc0b4|\uac00\uc7a5\\s*\uc5b4\ub824|\uc81c\uc77c\\s*\uc5b4\ub824|\ub9c9\ub0b4))",
+       "^(?=[\\s\\S]*\uc5ec\uc790)(?=[\\s\\S]*((?<![\\d0-9])15\\s*\uc0b4|\uc5f4\ub2e4\uc12f\\s*\uc0b4|\ub538|\ubbfc\uc218\ubcf4\ub2e4\\s*(3|\uc138)\\s*\uc0b4))",
+       "^(?=[\\s\\S]*\uc5ec\uc790)(?=[\\s\\S]*(70\\s*\uc0b4|\uce60\uc2ed\\s*\uc0b4|\uc77c\ud754\\s*\uc0b4|\uc544\ubc84\uc9c0\uc758\\s*\uc5b4\uba38\ub2c8|(\uac00\uc7a5|\uc81c\uc77c)\\s*(\ub098\uc774\uac00\\s*)?\ub9ce))",
+       "(?<![\\d])15\\s*\uc0b4|\uc5f4\ub2e4\uc12f\\s*\uc0b4|(?<![\\d])70\\s*\uc0b4|\uc77c\ud754\\s*\uc0b4|\uc544\ubc84\uc9c0\uc758\\s*\uc5b4\uba38\ub2c8|(?<![\\d])8\\s*\uc0b4|\uc5ec\ub35f\\s*\uc0b4"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "uses positive clues only (no \uc544\ub2c8\uc5d0\uc694 / \uc548 / \uc54a)",
+      "mode": "none",
+      "patterns": [
+       "\uc544\ub2c8",
+       "(?<![\uac00-\ud7a3])\uc548\\s",
+       "\uc54a"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "does not use the word for the person (\ub204\ub098 / \ub3d9\uc0dd / \ud560\uba38\ub2c8)",
+      "mode": "none",
+      "patterns": [
+       "\ub204\ub098",
+       "\ub3d9\uc0dd",
+       "\ud560\uba38\ub2c8"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "does not give both \ub0a8\uc790 and \uc5ec\uc790",
+      "mode": "none",
+      "patterns": [
+       "\ub0a8\uc790[\\s\\S]*\uc5ec\uc790",
+       "\uc5ec\uc790[\\s\\S]*\ub0a8\uc790"
+      ]
+     },
+     {
+      "id": "w6",
+      "label": "does not mix a gender with an age or relation that belongs to the other gender",
+      "mode": "none",
+      "patterns": [
+       "\ub0a8\uc790[\\s\\S]*(15\\s*\uc0b4|\uc5f4\ub2e4\uc12f|70\\s*\uc0b4|\uc77c\ud754|\uce60\uc2ed|\ub538|\uc544\ubc84\uc9c0\uc758\\s*\uc5b4\uba38\ub2c8)",
+       "\uc5ec\uc790[\\s\\S]*(8\\s*\uc0b4|\uc5ec\ub35f\\s*\uc0b4|\ubbfc\uc218\ubcf4\ub2e4\\s*(\ub098\uc774\uac00\\s*)?(\uc5b4\ub824|\uc801)|\uac00\uc7a5\\s*\uc5b4\ub824|\uc81c\uc77c\\s*\uc5b4\ub824|\ub9c9\ub0b4)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my clue pair fit only one person when I check all six?",
+     "Did I avoid the word for the person (\ub204\ub098, \ub3d9\uc0dd or \ud560\uba38\ub2c8)?",
+     "Are both sentences polite?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\ub0a8\uc790\uc608\uc694. \ubbfc\uc218\ubcf4\ub2e4 \uc5b4\ub824\uc694.",
+      "note": "Fits only \ub0a8\ub3d9\uc0dd."
+     },
+     {
+      "text": "\uc5ec\uc790\uc608\uc694. 15\uc0b4\uc774\uc5d0\uc694.",
+      "note": "Fits only \ub204\ub098."
+     },
+     {
+      "text": "\uc5ec\uc790\uc608\uc694. \uc544\ubc84\uc9c0\uc758 \uc5b4\uba38\ub2c8\uc608\uc694.",
+      "note": "Fits only \ud560\uba38\ub2c8."
+     },
+     {
+      "text": "70\uc0b4\uc774\uc5d0\uc694. \uc544\ubc84\uc9c0\uc758 \uc5b4\uba38\ub2c8\uc608\uc694.",
+      "note": "Each clue alone fits only \ud560\uba38\ub2c8."
+     },
+     {
+      "text": "\uc5ec\uc790\uc608\uc694. \uc544\ubc84\uc9c0\uc758 \ub538\uc774\uc5d0\uc694.",
+      "note": "Fits only \ub204\ub098."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\uc544\ubc84\uc9c0\uc608\uc694.",
+      "why": "Only one sentence, and \uc544\ubc84\uc9c0 is not one of the three people to describe."
+     },
+     {
+      "text": "\ub204\uad6c\uc77c\uae4c\uc694? \ub9de\ud600 \ubcf4\uc138\uc694.",
+      "why": "No clue about the person."
+     },
+     {
+      "text": "\ub0a8\uc790\uc608\uc694. \uc5ec\uc790\uc608\uc694.",
+      "why": "The two clues contradict each other and fit nobody."
+     },
+     {
+      "text": "\ub204\ub098\uc608\uc694. 15\uc0b4\uc774\uc5d0\uc694.",
+      "why": "Says the family word of the answer."
+     },
+     {
+      "text": "\uc5ec\uc790\uc608\uc694. \uc9d1\uc5d0 \uc0b4\uc544\uc694.",
+      "why": "Fits \ub204\ub098, \uc5b4\uba38\ub2c8 and \ud560\uba38\ub2c8: both clues are true of several people."
+     },
+     {
+      "text": "\uc5ec\uc790\uc608\uc694. \uc5b4\ub978\uc774\uc5d0\uc694.",
+      "why": "Fits \uc5b4\uba38\ub2c8 and \ud560\uba38\ub2c8, so it does not single out one person."
+     },
+     {
+      "text": "\ub0a8\uc790\uc608\uc694. 15\uc0b4\uc774\uc5d0\uc694.",
+      "why": "The clues contradict each other (no boy is 15) and fit nobody."
+     }
+    ],
+    "humanReview": "The checks only look for clue combinations that fit one person; a person should still test the pair against all six people."
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Testing clues",
+    "full": "Counts who fits each pair and finds the unique one",
+    "partial": "Finds it but cannot say why the others fail",
+    "none": "Chooses a pair that fits several people"
+   },
+   {
+    "criterion": "Own clue pair",
+    "full": "Two clues that fit exactly one person, polite",
+    "partial": "Fits two people or one clue is weak",
+    "none": "No usable clue"
+   }
+  ],
+  "alternatives": [
+   "Mixed clues such as '70\uc0b4\uc774\uc5d0\uc694. \uc544\ubc84\uc9c0\uc758 \uc5b4\uba38\ub2c8\uc608\uc694.' are valid but give the same information twice."
+  ],
+  "hardCases": [
+   "A learner may write '\uc5ec\uc790\uc608\uc694. \ubbfc\uc218\ubcf4\ub2e4 \ub9ce\uc544\uc694.' without thinking that 3 people fit; self-assessment is needed."
+  ],
+  "cautions": {
+   "language": "Check that learners understand \ub0a8\uc790/\uc5ec\uc790 as 'male/female'; the family list in English labels (boy, girl) helps.",
+   "culture": "The family is made up; the family terms (\uc544\ubc84\uc9c0, \uc5b4\uba38\ub2c8, \ud560\uba38\ub2c8) assume a two-parent household for convenience and do not assume this for all learners.",
+   "accessibility": "The list is a plain text list, not a picture, so it works with screen readers."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice in s1",
+    "Surface checks of clues"
+   ],
+   "human": [
+    "Whether the written clues identify exactly one person"
+   ]
+  },
+  "status": "reviewed-ai"
+ }
+]

@@ -1,0 +1,77 @@
+{
+ "packet": "S13-h1-main",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 53,
+  "questions": 20
+ },
+ "patches": [
+  {
+   "item": "ac158257",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the main idea of the passage?",
+      "o": [
+       "Sofia met her deadline by changing her usual way of working.",
+       "Sofia lost her science report somewhere on the way to school that morning.",
+       "Leo wanted to borrow Sofia's printer to finish his own homework.",
+       "The teacher refused to accept an email and demanded a paper copy."
+      ],
+      "a": 0,
+      "why": "프린터가 고장 나자 평소 방식을 바꿔 기한 안에 보고서를 제출한 이야기예요."
+     },
+     {
+      "q": "What can be inferred about Sofia before the printer broke?",
+      "o": [
+       "She usually preferred paper copies for important work.",
+       "She had not started working on the report yet.",
+       "She did not know Leo.",
+       "She often handed in assignments late."
+      ],
+      "a": 0,
+      "why": "'always insisted on handing in paper copies'에서 알 수 있어요."
+     },
+     {
+      "q": "Which word best fills the blank?",
+      "o": [
+       "flexible",
+       "helpful",
+       "thankful",
+       "strict"
+      ],
+      "a": 3,
+      "why": "유연함이 더 중요하다는 대조이므로 '엄격한, 고집스러운'이 와야 해요."
+     },
+     {
+      "q": "In the passage, \"hesitated\" is closest in meaning to",
+      "o": [
+       "jumped up with great joy",
+       "spoke very loudly to the class",
+       "left the room",
+       "paused because she was unsure"
+      ],
+      "a": 3,
+      "why": "hesitate는 확신이 없어 망설이는 것을 뜻해요."
+     },
+     {
+      "q": "In the passage, \"which\" in \"which blinked a red light\" refers to",
+      "o": [
+       "the science report",
+       "the red light",
+       "the clock",
+       "the school printer"
+      ],
+      "a": 3,
+      "why": "관계대명사 which는 앞의 'the school printer'를 가리켜요."
+     }
+    ]
+   },
+   "why": "Q1 key rewritten so it no longer gives away the cloze answer. No identity field changed.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 19,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

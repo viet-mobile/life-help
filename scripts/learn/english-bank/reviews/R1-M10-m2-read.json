@@ -1,0 +1,38 @@
+{
+ "packet": "M10-m2-read",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 1,
+  "questions": 10
+ },
+ "patches": [
+  {
+   "item": "15baaf67",
+   "op": "set",
+   "set": {
+    "bad": [
+     "This lake is the deeper in the country.",
+     "This lake is the most deep in the country.",
+     "This lake is deepest than the country."
+    ]
+   },
+   "why": "First distractor was grammatical; new one is wrong for every reading.",
+   "severity": "minor"
+  },
+  {
+   "item": "0d67e909",
+   "op": "set",
+   "set": {
+    "bad": [
+     "I forgot to bringing my umbrella, so I got wet.",
+     "I forgot to bring my umbrella, but so I got wet.",
+     "I forgot to bring my umbrella, so I getting wet."
+    ]
+   },
+   "why": "Remove grammatical-but-illogical distractors (forgot bringing; because) so exactly one sentence is grammatical.",
+   "severity": "major"
+  }
+ ],
+ "ok": 8,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

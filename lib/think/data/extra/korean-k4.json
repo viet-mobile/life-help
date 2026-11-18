@@ -1,0 +1,1730 @@
+[
+ {
+  "id": "x-k-k4-01",
+  "subject": "korean",
+  "grade": "K4",
+  "topic": "time",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Too late for the pool?",
+  "uiLang": "en",
+  "format": "judge-evidence-explain",
+  "generative": false,
+  "goal": "Combine a notice and a friend's message to judge whether the planned arrival time works, name the lines that decide it, and write a reply that gives the real deadline.",
+  "thinking": [
+   "Combining two sources",
+   "Finding which rules decide the case",
+   "Giving a reason, not only a verdict"
+  ],
+  "differsFromPlain": "Plain practice reads one clock time or says when a class starts. Here a rule inside the notice (what happens after the start) changes the answer, and you must find it and tell the friend the real deadline.",
+  "prerequisites": [
+   "Can read Hangul and clock times written with \uc2dc and \ubd84",
+   "Knows \uc624\ud6c4, weekday names and basic -\uc544\uc694/\uc5b4\uc694 endings"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "A notice is on the door of the swimming pool, and your friend \ubbfc\uc9c0 sends you a message.\n\n[\uc218\uc601 \uc218\uc5c5 \uc548\ub0b4]\n- \uc218\uc5c5: \ud654\uc694\uc77c, \ubaa9\uc694\uc77c \uc624\ud6c4 4\uc2dc 30\ubd84 ~ 5\uc2dc 30\ubd84\n- \uc218\uc5c5 \uc2dc\uc791 10\ubd84 \uc804\uae4c\uc9c0 \uc218\uc601\uc7a5 \uc55e\uc73c\ub85c \uc624\uc138\uc694.\n- \uc218\uc5c5\uc774 \uc2dc\uc791\ub418\uba74 \ubb38\uc744 \ub2eb\uc544\uc694. \ub2a6\uc73c\uba74 \ub4e4\uc5b4\uac08 \uc218 \uc5c6\uc5b4\uc694.\n\n\ubbfc\uc9c0: \ubaa9\uc694\uc77c \uc218\uc601 \uc218\uc5c5, 4\uc2dc 40\ubd84\uae4c\uc9c0 \uac00\uba74 \ub3fc\uc694?",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Can \ubbfc\uc9c0 go at 4\uc2dc 40\ubd84 on Thursday? Decide using the notice.",
+    "options": [
+     {
+      "id": "a",
+      "text": "Yes. The class lasts until 5:30, so she can still join.",
+      "reveals": "You used the end of the class. Look for what the notice says happens once the class has started."
+     },
+     {
+      "id": "b",
+      "text": "Yes, if she tells the teacher that she will be late.",
+      "reveals": "You assumed there is a way to enter late. Look for what the notice says about arriving late."
+     },
+     {
+      "id": "c",
+      "text": "Cannot tell: the notice does not say what time the pool opens.",
+      "reveals": "The opening time of the pool does not decide it: the notice gives the start of the \ubaa9\uc694\uc77c class and says what happens once it has started."
+     },
+     {
+      "id": "d",
+      "text": "No. The door closes when the class starts at 4:30.",
+      "reveals": "You linked the start time with the door rule and checked 4:40 against both."
+     }
+    ],
+    "correct": [
+     "d"
+    ],
+    "explain": "On \ubaa9\uc694\uc77c there is a class at 4:30. The door closes when it starts, and the notice asks people to come 10 minutes earlier (4:20). 4:40 is after both times.",
+    "hints": [
+     "Find \ubaa9\uc694\uc77c in the notice and read the start time of the class.",
+     "Put 4\uc2dc 40\ubd84 next to the start time and next to the line about the door."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Which facts from the notice prove that 4\uc2dc 40\ubd84 is too late? Choose all that you need.",
+    "options": [
+     {
+      "id": "a",
+      "text": "The class starts at 4:30.",
+      "reveals": "This is a basic fact: it is the time that 4:40 must be compared with."
+     },
+     {
+      "id": "b",
+      "text": "The class ends at 5:30.",
+      "reveals": "The end time says when the class is over, but not when people can no longer enter."
+     },
+     {
+      "id": "c",
+      "text": "People should arrive 10 minutes before the start.",
+      "reveals": "This gives a safe arrival time, which is stricter than the start time."
+     },
+     {
+      "id": "d",
+      "text": "There are classes on \ud654\uc694\uc77c and \ubaa9\uc694\uc77c.",
+      "reveals": "This shows that a class exists on that day, but not whether 4:40 is late."
+     },
+     {
+      "id": "e",
+      "text": "The door closes once the class has started.",
+      "reveals": "This is the rule that turns a late arrival into a closed door."
+     }
+    ],
+    "correct": [
+     "a",
+     "c",
+     "e"
+    ],
+    "explain": "The start time (4:30), the door rule and the 10-minute request together show that 4:40 is too late. The end time and the days do not decide it.",
+    "hints": [
+     "Ask of each fact: does it help me compare 4:40 with a limit?",
+     "Facts that only tell you a class exists, or when it ends, do not set a limit for arriving."
+    ],
+    "multi": true,
+    "acceptable": [
+     {
+      "ids": [
+       "a",
+       "e"
+      ],
+      "reason": "The start time and the door rule already settle the case; the 10-minute line only adds the recommended earlier time."
+     }
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Reply to \ubbfc\uc9c0 in Korean (polite -\uc694). Tell her by what time she must be there and give the reason from the notice.",
+    "placeholder": "\uc608: ...",
+    "minChars": 6,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "[\uac00-\ud7a3]\uc694(?![\uac00-\ud7a3])|\uc2b5\ub2c8\ub2e4|[\uac11\ub0a9\ub78d\ub9bd\ubc09\uc2ed\uc785\uc7a1\ud569\ub429\uc635\ubd05\ub2d9\uc501]\ub2c8\ub2e4"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "names an arrival limit (4\uc2dc 20\ubd84 / 4\uc2dc 30\ubd84 / \uc2dc\uc791 \uc804 / 10\ubd84 \uc804)",
+      "mode": "any",
+      "patterns": [
+       "4\\s*\uc2dc\\s*(20|30|15|10)\\s*\ubd84",
+       "4\\s*\uc2dc\\s*\ubc18",
+       "10\\s*\ubd84\\s*\uc804",
+       "\uc2dc\uc791(\ud558\uae30)?\\s*\uc804",
+       "\ub124\\s*\uc2dc\\s*(\uc774\uc2ed|\uc0bc\uc2ed|\uc2ed\uc624|\uc2ed)\\s*\ubd84",
+       "\ub124\\s*\uc2dc\\s*\ubc18",
+       "4:(20|30)"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "gives a reason (late / door closed / start)",
+      "mode": "any",
+      "patterns": [
+       "\ub2a6",
+       "\ubabb \ub4e4\uc5b4",
+       "\ubb38\uc744 \ub2eb",
+       "\ub4e4\uc5b4\uac08 \uc218 \uc5c6",
+       "\uc2dc\uc791"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my reply tell \ubbfc\uc9c0 one clear time?",
+     "Does my reason come from the notice (door closes, start time)?",
+     "Would \ubbfc\uc9c0 know what to do on Thursday?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\uc544\ub2c8\uc694, 4\uc2dc 20\ubd84\uae4c\uc9c0 \uac00\uc57c \ud574\uc694. 4\uc2dc 40\ubd84\uc740 \ub2a6\uc5b4\uc11c \ub4e4\uc5b4\uac08 \uc218 \uc5c6\uc5b4\uc694.",
+      "note": "Says no, gives the limit and the reason."
+     },
+     {
+      "text": "\uc218\uc5c5 10\ubd84 \uc804\uc778 4\uc2dc 20\ubd84\uae4c\uc9c0 \uc624\uc138\uc694. \uc218\uc5c5\uc774 \uc2dc\uc791\ub418\uba74 \ubb38\uc744 \ub2eb\uc544\uc694.",
+      "note": "Gives the limit by explaining the notice."
+     },
+     {
+      "text": "4\uc2dc 30\ubd84 \uc804\uc5d0 \uc640\uc57c \ud574\uc694. \uc218\uc5c5\uc774 \uc2dc\uc791\ub418\uba74 \ub4e4\uc5b4\uac08 \uc218 \uc5c6\uc5b4\uc694.",
+      "note": "Gives the hard limit (the start) instead of the 10-minute request."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\ub124, 4\uc2dc 40\ubd84\uae4c\uc9c0 \uc624\uc138\uc694.",
+      "why": "Accepts the wrong time and gives no reason."
+     },
+     {
+      "text": "\ub2a6\uc73c\uba74 \uc548 \ub3fc\uc694.",
+      "why": "Gives a vague reason but no time."
+     }
+    ],
+    "humanReview": "Whether the Korean is natural and whether the limit and the reason really match the notice.",
+    "hints": [
+     "Start with \uc544\ub2c8\uc694 or \uc548 \ub3fc\uc694, because the plan does not work.",
+     "Write the time with \uc2dc and \ubd84, then add a short reason with \uc11c or \ub2c8\uae4c."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Using both sources",
+    "full": "Uses the day, the start time and the door rule to reach 'no' and names the deciding facts",
+    "partial": "Reaches 'no' but without naming the deciding facts",
+    "none": "Says yes or gives no reason"
+   },
+   {
+    "criterion": "Useful reply",
+    "full": "Gives the 4:20 limit (or 10 minutes before) with a reason in polite Korean",
+    "partial": "Says it is too late but gives no clear time",
+    "none": "Reply accepts 4:40"
+   }
+  ],
+  "alternatives": [
+   "Telling \ubbfc\uc9c0 to arrive 'by 4\uc2dc 15\ubd84' or 'around 4\uc2dc' is also fine, as long as it is before the class starts at 4:30.",
+   "A student may say 'no' only because 4:40 is after 4:30; that is already correct, the 10-minute line is extra."
+  ],
+  "hardCases": [
+   "A reply that names 4\uc2dc 30\ubd84 (the start) instead of 4\uc2dc 20\ubd84 is not wrong against the door rule but is looser than the notice's 10-minute request; a teacher decides."
+  ],
+  "cautions": {
+   "language": "\uc2dc (o'clock) and \uc2dc\uac04 (length of time) are easy to mix up; the checks only accept digits or spoken forms followed by \uc2dc/\ubd84. 'Late' is \ub2a6\ub2e4: \ub2a6\uc73c\uba74 = if (she is) late.",
+   "culture": "Community pools and centers in Korea often close the door at the start of a class; this notice states the rule, so no cultural knowledge is assumed.",
+   "accessibility": "All times are written out with \uc2dc and \ubd84 (not 4:30), so screen readers read them in Korean. The notice is a plain text list; no images or colors carry meaning."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of the verdict and of the deciding facts",
+    "Presence of the time limit, a polite ending and a reason in the reply"
+   ],
+   "human": [
+    "Quality and naturalness of the reply"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k4-02",
+  "subject": "korean",
+  "grade": "K4",
+  "topic": "places",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "The wrong floor",
+  "uiLang": "en",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Compare a text message with a floor guide, find the line that sends someone to the wrong place, and rewrite it correctly in matching casual speech.",
+  "thinking": [
+   "Checking a message against a notice line by line",
+   "Spotting a detail that does not match",
+   "Repairing the line while keeping the register"
+  ],
+  "differsFromPlain": "Plain practice asks which floor a place is on. Here the guide is right, a friend's message mixes in one wrong detail, and you must notice it and fix the sentence.",
+  "prerequisites": [
+   "Can read Hangul and floor numbers written like 3\uce35",
+   "Knows that casual speech to a younger sibling can drop \uc694"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "Your classmate \uc9c0\uc6b0 is explaining to her younger brother \ud558\ub098 how to find the library. First read the floor guide on the library door, then check \uc9c0\uc6b0's text message.\n\n[\ub3c4\uc11c\uad00 \uc548\ub0b4]\n1\uce35: \uc548\ub0b4 \ub370\uc2a4\ud06c, \uce74\ud398\n2\uce35: \uc5b4\ub9b0\uc774 \ucc45\ubc29\n3\uce35: \uc5f4\ub78c\uc2e4 (\uc870\uc6a9\ud788 \uacf5\ubd80\ud558\ub294 \uacf3)\n4\uce35: \uac15\ub2f9 (\ud589\uc0ac\uac00 \uc788\uc744 \ub54c\ub9cc \uc5f4\uc5b4\uc694)\n\uc5d8\ub9ac\ubca0\uc774\ud130: 1\uce35 \uc785\uad6c \uc67c\ucabd",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "One line of \uc9c0\uc6b0's text would send \ud558\ub098 to the wrong place. Which line is it?",
+    "lines": [
+     "\ud558\ub098\uc57c, \ub0b4\uc77c \ub3c4\uc11c\uad00\uc5d0\uc11c \uac19\uc774 \uacf5\ubd80\ud558\uc790.",
+     "\ub3c4\uc11c\uad00\uc5d0 \uac00\uba74 \uba3c\uc800 1\uce35 \uc548\ub0b4 \ub370\uc2a4\ud06c\ub85c \uc640.",
+     "\uacf5\ubd80\ud558\ub294 \uc5f4\ub78c\uc2e4\uc740 2\uce35\uc5d0 \uc788\uc5b4.",
+     "\uc5d8\ub9ac\ubca0\uc774\ud130\ub294 \uc785\uad6c \uc67c\ucabd\uc5d0 \uc788\uc5b4."
+    ],
+    "wrong": [
+     2
+    ],
+    "explain": "Line 3 is wrong: in the guide the \uc5f4\ub78c\uc2e4 is on the 3\uce35, while the 2\uce35 is the children's bookroom. The other lines match the guide (\uc548\ub0b4 \ub370\uc2a4\ud06c on 1\uce35, elevator at the left of the entrance).",
+    "hints": [
+     "Compare the lines one at a time with the matching entry in the guide.",
+     "Check the floor number and what the guide says is on that floor."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Rewrite line 3 so that \ud558\ub098 goes to the right floor. Keep casual speech (\ubc18\ub9d0) like \uc9c0\uc6b0's other lines.",
+    "placeholder": "\uc608: ...",
+    "minChars": 6,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "names the \uc5f4\ub78c\uc2e4",
+      "mode": "any",
+      "patterns": [
+       "\uc5f4\ub78c\uc2e4"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "gives the right floor (3\uce35)",
+      "mode": "any",
+      "patterns": [
+       "3\\s*\uce35",
+       "\uc0bc\\s*\uce35"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "no polite -\uc694 and no stiff notice-style ending (-\u3142\ub2c8\ub2e4)",
+      "mode": "none",
+      "patterns": [
+       "\ub2c8\ub2e4(?![\uac00-\ud7a3])|\uc2ed\uc2dc\uc624|\uc694(?![\uac00-\ud7a3])"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "ends with a casual ending (\uc5b4 / \uc57c / \uc544 / \uc9c0 / \uc640 ...)",
+      "mode": "any",
+      "patterns": [
+       "(\uc5b4|\uc57c|\uc544|\uc9c0|\uc790|\ub77c|\uc640|\ud574|\ub124|\uac70\ub4e0|\uc796\uc544)\\s*[.!?\uff1f~]*\\s*$"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my sentence say the correct floor for the \uc5f4\ub78c\uc2e4?",
+     "Does it still sound like talking to a younger brother?",
+     "Is it a complete sentence?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\uacf5\ubd80\ud558\ub294 \uc5f4\ub78c\uc2e4\uc740 3\uce35\uc5d0 \uc788\uc5b4.",
+      "note": "Direct fix of the wrong number."
+     },
+     {
+      "text": "\uc5f4\ub78c\uc2e4\uc740 3\uce35\uc774\uc57c. \uc5d8\ub9ac\ubca0\uc774\ud130 \ud0c0\uace0 \uc62c\ub77c\uc640.",
+      "note": "Fixes the floor and adds a helpful action."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\uacf5\ubd80\ud558\ub294 \uc5f4\ub78c\uc2e4\uc740 2\uce35\uc5d0 \uc788\uc5b4.",
+      "why": "Repeats the wrong floor."
+     },
+     {
+      "text": "\uc5f4\ub78c\uc2e4\uc740 3\uce35\uc5d0 \uc788\uc2b5\ub2c8\ub2e4.",
+      "why": "Right floor, but the stiff ending does not fit a message to a little brother."
+     },
+     {
+      "text": "\uc5f4\ub78c\uc2e4\uc740 3\uce35\uc5d0 \uc788\uc5b4\uc694.",
+      "why": "Right floor, but polite -\uc694 instead of casual speech to a younger brother."
+     }
+    ],
+    "humanReview": "Whether the casual register is natural and the sentence is complete.",
+    "hints": [
+     "Find \uc5f4\ub78c\uc2e4 in the guide and read its floor.",
+     "Keep the ending like \uc788\uc5b4 or \uc774\uc57c, not \uc788\uc2b5\ub2c8\ub2e4 or \uc788\uc5b4\uc694."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finding the mismatch",
+    "full": "Picks the line that contradicts the guide",
+    "partial": "Picks a nearby line",
+    "none": "Picks a line that matches the guide"
+   },
+   {
+    "criterion": "Repair",
+    "full": "Right floor, \uc5f4\ub78c\uc2e4 named, casual ending kept",
+    "partial": "Right floor but the register or the place name is lost",
+    "none": "Floor still wrong"
+   }
+  ],
+  "alternatives": [
+   "Writing 3\uce35 as \uc0bc\uce35 or '\uc138 \ubc88\uc9f8 \uce35' is acceptable.",
+   "A fix that also mentions the elevator is fine."
+  ],
+  "hardCases": [
+   "A student may think line 4 is wrong because the elevator is not mentioned by floor; the guide only gives its position, so it is correct."
+  ],
+  "cautions": {
+   "language": "Floor numbers use Sino-Korean numbers + \uce35 (3\uce35 is \uc0bc\uce35, said 'sam-cheung'); the casual endings -\uc5b4 / -\uc774\uc57c are for close friends or younger people.",
+   "culture": "Libraries in Korea often put a children's room on a lower floor and a quiet study room higher up; the guide states this, so no knowledge is assumed.",
+   "accessibility": "The guide is a plain text list. Floor numbers are written as digits + \uce35 so a screen reader reads them in Korean."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Which line is picked; presence of \uc5f4\ub78c\uc2e4, 3\uce35 and the casual ending"
+   ],
+   "human": [
+    "Naturalness of the fixed sentence"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k4-03",
+  "subject": "korean",
+  "grade": "K4",
+  "topic": "schedules",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Which question do I need?",
+  "uiLang": "en",
+  "format": "choose-needed-info",
+  "generative": true,
+  "goal": "Decide which pieces of information are missing before you can answer an invitation, and ask for them in a short polite message.",
+  "thinking": [
+   "Seeing what is already known and what is missing",
+   "Choosing questions that settle the decision",
+   "Asking politely in Korean"
+  ],
+  "differsFromPlain": "Plain practice answers an invitation with yes or no. Here you cannot answer yet; you decide which unknowns matter for your own schedule and ask only those.",
+  "prerequisites": [
+   "Can read Hangul and times written with \uc2dc",
+   "Knows polite -\uc544\uc694/\uc5b4\uc694 endings and question forms like \uba87 \uc2dc\uc5d0 ...?"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "Today is Friday. This is your plan for Sunday, and then a message from your friend \uc218\uc544. \ud560\uba38\ub2c8 \ub301 is far from where you live, and you do not know the cinema, so you do not know how long it takes to get from the cinema to \ud560\uba38\ub2c8 \ub301.\n\n[\ub0b4 \uc77c\uc694\uc77c \uacc4\ud68d]\n- \uc624\uc804 10\uc2dc ~ 11\uc2dc: \uac00\uc871 \uc0b0\ucc45\n- \uc624\ud6c4 6\uc2dc: \ud560\uba38\ub2c8 \ub301\uc5d0\uc11c \uac00\uc871 \uc800\ub141 \uc2dd\uc0ac\n\n\uc218\uc544: \uc77c\uc694\uc77c \uc624\ud6c4\uc5d0 \uc601\ud654 \ubcfc\ub798\uc694? \uc601\ud654\uad00 \uc55e\uc5d0\uc11c \ub9cc\ub098\uc694.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "You want to say yes if you can still be on time for dinner. Which questions do you NEED to ask \uc218\uc544 first? Choose all that apply.",
+    "options": [
+     {
+      "id": "a",
+      "text": "\uc601\ud654\uac00 \uc624\ud6c4 \uba87 \uc2dc\uc5d0 \uc2dc\uc791\ud574\uc694?",
+      "reveals": "A start time is handy for planning, but your only fixed event is dinner at 6, so the end of the film matters more."
+     },
+     {
+      "id": "b",
+      "text": "\uadf8 \uc601\ud654\uc758 \uc8fc\uc778\uacf5\uc774 \ub204\uad6c\uc608\uc694?",
+      "reveals": "This is about the film, not about your time."
+     },
+     {
+      "id": "c",
+      "text": "\uc601\ud654\uac00 \uba87 \uc2dc\uc5d0 \ub05d\ub098\uc694?",
+      "reveals": "You looked for the moment you are free again."
+     },
+     {
+      "id": "d",
+      "text": "\uc601\ud654\uad00\uc774 \uc5b4\ub514\uc5d0 \uc788\uc5b4\uc694?",
+      "reveals": "You thought about getting from the cinema to the dinner, which takes time you do not know yet."
+     },
+     {
+      "id": "e",
+      "text": "\uc601\ud654\ud45c\ub294 \ud55c \uc7a5\uc5d0 \uc5bc\ub9c8\uc608\uc694?",
+      "reveals": "Price is a different kind of question from time."
+     }
+    ],
+    "correct": [
+     "c",
+     "d"
+    ],
+    "explain": "Your only fixed event in the afternoon is dinner at 6 at \ud560\uba38\ub2c8 \ub301. To decide, you need the time the film ends and where the cinema is, because the trip from there to \ud560\uba38\ub2c8 \ub301 takes time you do not know yet. The film's cast or the price do not change your time.",
+    "hints": [
+     "List what you already know about Sunday afternoon, then list what is still unknown.",
+     "Ask of each question: could its answer make me late for 6 o'clock?"
+    ],
+    "multi": true,
+    "acceptable": [
+     {
+      "ids": [
+       "a",
+       "c",
+       "d"
+      ],
+      "reason": "Start, end and place together give a complete picture, although the start time is not strictly needed."
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write a short polite reply (-\uc694) to \uc218\uc544: say that you want to go, mention what you have in the evening, and ask for the information you need.",
+    "placeholder": "\uc608: ...",
+    "minChars": 6,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "[\uac00-\ud7a3]\uc694(?![\uac00-\ud7a3])|\uc2b5\ub2c8\ub2e4|[\uac11\ub0a9\ub78d\ub9bd\ubc09\uc2ed\uc785\uc7a1\ud569\ub429\uc635\ubd05\ub2d9\uc501]\ub2c8\ub2e4"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "mentions the dinner / family plan",
+      "mode": "any",
+      "patterns": [
+       "\uc800\ub141",
+       "\uac00\uc871",
+       "\ud560\uba38\ub2c8",
+       "6\\s*\uc2dc",
+       "\uc5ec\uc12f\\s*\uc2dc",
+       "\uc57d\uc18d",
+       "\uc77c\uc815"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "asks for the end time or the place",
+      "mode": "any",
+      "patterns": [
+       "\ub05d",
+       "\ub9c8\uce58",
+       "\uc5b4\ub514",
+       "\uc704\uce58",
+       "\uba40",
+       "\uac78\ub824",
+       "\uba87 \uc2dc\uc5d0 \ub05d"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "is a question",
+      "mode": "any",
+      "patterns": [
+       "\\?",
+       "\uff1f",
+       "\uae4c\uc694",
+       "\ub098\uc694"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Do I say what limits me (dinner at 6)?",
+     "Does my question ask for something that decides my answer?",
+     "Is the message short and polite?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\uac00\uace0 \uc2f6\uc5b4\uc694! \uadf8\ub7f0\ub370 6\uc2dc\uc5d0 \uac00\uc871 \uc800\ub141\uc774 \uc788\uc5b4\uc694. \uc601\ud654\uac00 \uba87 \uc2dc\uc5d0 \ub05d\ub098\uc694?",
+      "note": "Wants to go, names the limit, asks for the end time."
+     },
+     {
+      "text": "\uc88b\uc544\uc694. \uc800\ub141\uc5d0 \ud560\uba38\ub2c8 \ub301\uc5d0 \uac00\uc57c \ud574\uc11c\uc694. \uc601\ud654\uad00\uc774 \uc5b4\ub514\uc5d0 \uc788\uc5b4\uc694?",
+      "note": "Gives the reason and asks for the place."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\uc88b\uc544\uc694! \uac19\uc774 \ubd10\uc694!",
+      "why": "Says yes without checking the dinner and asks nothing."
+     },
+     {
+      "text": "\uc601\ud654\uac00 \uba87 \uc2dc\uc5d0 \uc2dc\uc791\ud574\uc694?",
+      "why": "Asks a question, but not about what limits the evening, and gives no reason."
+     }
+    ],
+    "humanReview": "Whether the questions are natural and really tied to the evening plan.",
+    "hints": [
+     "Start with a short yes-wish, then say what you have at 6.",
+     "End with one question that uses \ub05d\ub098\uc694 or \uc5b4\ub514\uc5d0 \uc788\uc5b4\uc694."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Choosing the needed information",
+    "full": "Picks the end time and the place (or defends the end time alone)",
+    "partial": "Picks one needed item plus an unnecessary one",
+    "none": "Picks only unrelated questions"
+   },
+   {
+    "criterion": "Message",
+    "full": "Polite message that states the limit and asks a deciding question",
+    "partial": "Asks a question but does not state the limit, or the reverse",
+    "none": "Only says yes"
+   }
+  ],
+  "alternatives": [
+   "Asking how far the cinema is from \ud560\uba38\ub2c8 \ub301 instead of where it is works too.",
+   "A student may ask 'how long is the film?' (\uc601\ud654\uac00 \uba87 \uc2dc\uac04\uc774\uc5d0\uc694?); this is also a good question."
+  ],
+  "hardCases": [
+   "Whether the start time is 'needed': if the start time is unknown the end cannot be guessed, so a student who asks for it is not wrong."
+  ],
+  "cautions": {
+   "language": "\uba87 \uc2dc\uc5d0 = at what time; \ub05d\ub098\uc694 = it ends. -\u3139\ub798\uc694 and -\u3139\uae4c\uc694 are both used to invite; here -\u3139\ub798\uc694 is the friend's invitation.",
+   "culture": "Sunday family meals at a grandparent's home are common in Korea but not universal; the plan only sets a time limit and does not depend on the custom.",
+   "accessibility": "Times are written with \uc2dc, no calendar table or image. The questions are full Korean sentences, so a screen reader reads them as text."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Which questions are chosen; polite ending, limit mention and question form in the reply"
+   ],
+   "human": [
+    "Whether the questions are natural and relevant"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k4-04",
+  "subject": "korean",
+  "grade": "K4",
+  "topic": "schedules",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Book the room",
+  "uiLang": "en",
+  "format": "build-many-verify",
+  "generative": true,
+  "goal": "Combine room rules from a notice with a teammate's message and find several different booking plans that satisfy every condition.",
+  "thinking": [
+   "Turning text conditions into limits",
+   "Finding several solutions under constraints",
+   "Testing a plan against every rule"
+  ],
+  "differsFromPlain": "Plain practice asks for one time from a timetable. Here several rules and a teammate's limit apply together, many plans work, and you must find three different ones.",
+  "prerequisites": [
+   "Can read hour times written with \uc2dc and the words \ubd80\ud130 and \uae4c\uc9c0",
+   "Can compare clock hours"
+  ],
+  "minutes": 12,
+  "curriculum": null,
+  "material": "Your team wants to use the after-school room. Read the notice and the message from your teammate \uc11c\uc900.\n\n[\ubc29\uacfc \ud6c4 \uad50\uc2e4 \uc774\uc6a9 \uc548\ub0b4]\n- \uc774\uc6a9 \uc2dc\uac04: \uc624\ud6c4 1\uc2dc ~ 6\uc2dc\n- \ud55c \ubc88\uc5d0 1\uc2dc\uac04\uc774\ub098 2\uc2dc\uac04 \uc4f8 \uc218 \uc788\uc5b4\uc694.\n- \uc624\ud6c4 3\uc2dc ~ 4\uc2dc\ub294 \uccad\uc18c \uc2dc\uac04\uc774\ub77c \uc4f8 \uc218 \uc5c6\uc5b4\uc694.\n\n\uc11c\uc900: \uc800\ub294 \uc218\uc5c5\uc774 2\uc2dc\uc5d0 \ub05d\ub098\uc11c 2\uc2dc \uc804\uc5d0\ub294 \uac08 \uc218 \uc5c6\uc5b4\uc694. \uc2dc\uc791 \uc2dc\uac04\uc740 \uc815\uac01\uc73c\ub85c \ud574 \uc8fc\uc138\uc694.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Warm-up: \uc11c\uc900 suggests using the room from \uc624\ud6c4 2\uc2dc to 4\uc2dc. Why does this plan fail?",
+    "options": [
+     {
+      "id": "a",
+      "text": "It runs into the cleaning time.",
+      "reveals": "You compared the whole time span of the plan, not only its start, with the cleaning hour."
+     },
+     {
+      "id": "b",
+      "text": "It starts before \uc11c\uc900 is free.",
+      "reveals": "\uc11c\uc900 is free from 2 o'clock, so check the start against his message again."
+     },
+     {
+      "id": "c",
+      "text": "It lasts longer than the room allows.",
+      "reveals": "Two hours is allowed; count the hours again."
+     },
+     {
+      "id": "d",
+      "text": "It ends after the room closes.",
+      "reveals": "The room is open until 6 o'clock, so check the end time again."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "2\uc2dc ~ 4\uc2dc includes 3\uc2dc ~ 4\uc2dc, when the room is being cleaned. Every plan must be checked for its whole time span, not just for its start.",
+    "hints": [
+     "Write the start hour and the end hour of the plan.",
+     "Compare the plan's hours with each line of the notice."
+    ],
+    "scaffold": true
+   },
+   {
+    "id": "s2",
+    "kind": "build",
+    "prompt": "Find 3 different booking plans that follow the notice and \uc11c\uc900's message. s = start (\uc624\ud6c4 s\uc2dc), h = hours you use the room.",
+    "vars": [
+     {
+      "name": "s",
+      "label": "start hour (\uc624\ud6c4 s\uc2dc)"
+     },
+     {
+      "name": "h",
+      "label": "hours of use"
+     }
+    ],
+    "constraints": [
+     {
+      "id": "c0",
+      "expr": "s==floor(s) && h==floor(h)",
+      "ok": "Whole hours.",
+      "fail": "Use a whole hour for the start and for the length."
+     },
+     {
+      "id": "c1",
+      "expr": "h==1 || h==2",
+      "ok": "1 or 2 hours.",
+      "fail": "The room can be used for 1 hour or 2 hours at a time."
+     },
+     {
+      "id": "c2",
+      "expr": "s>=2",
+      "ok": "Not before 2 o'clock.",
+      "fail": "\uc11c\uc900 cannot come before 2 o'clock (and the room opens at 1)."
+     },
+     {
+      "id": "c3",
+      "expr": "s+h<=6",
+      "ok": "Done by 6 o'clock.",
+      "fail": "The room is open only until 6 o'clock."
+     },
+     {
+      "id": "c4",
+      "expr": "s+h<=3 || s>=4",
+      "ok": "Does not touch the cleaning time.",
+      "fail": "Your plan overlaps the cleaning time (3\uc2dc ~ 4\uc2dc)."
+     }
+    ],
+    "need": 3,
+    "distinctBy": "s*10+h",
+    "modelRows": [
+     {
+      "s": 2,
+      "h": 1
+     },
+     {
+      "s": 4,
+      "h": 1
+     },
+     {
+      "s": 4,
+      "h": 2
+     },
+     {
+      "s": 5,
+      "h": 1
+     }
+    ],
+    "badRows": [
+     {
+      "s": 2,
+      "h": 2
+     },
+     {
+      "s": 1,
+      "h": 1
+     },
+     {
+      "s": 3,
+      "h": 1
+     },
+     {
+      "s": 5,
+      "h": 2
+     }
+    ],
+    "explain": "Four plans work: \uc624\ud6c4 2\uc2dc~3\uc2dc, 4\uc2dc~5\uc2dc, 4\uc2dc~6\uc2dc and 5\uc2dc~6\uc2dc. A plan fails if it starts before 2, runs past 6, uses 3 hours, or touches 3\uc2dc~4\uc2dc.",
+    "hints": [
+     "Write each rule as a limit on the start hour or on the end hour.",
+     "Try a start hour, add 1 or 2 hours, and check the end hour against the cleaning time.",
+     "After you find a plan, change only the length and check it again."
+    ],
+    "because": {
+     "id": "s2b",
+     "kind": "write",
+     "prompt": "Pick ONE of your plans and send \uc11c\uc900 a short message in Korean saying when you will use the room.",
+     "placeholder": "\uc608: ...",
+     "minChars": 6,
+     "checks": [
+      {
+       "id": "w1",
+       "label": "polite ending",
+       "mode": "any",
+       "patterns": [
+        "[\uac00-\ud7a3]\uc694(?![\uac00-\ud7a3])|\uc2b5\ub2c8\ub2e4|[\uac11\ub0a9\ub78d\ub9bd\ubc09\uc2ed\uc785\uc7a1\ud569\ub429\uc635\ubd05\ub2d9\uc501]\ub2c8\ub2e4"
+       ]
+      },
+      {
+       "id": "w2",
+       "label": "gives a clock time",
+       "mode": "any",
+       "patterns": [
+        "\\d\\s*\uc2dc(?!\uac04)",
+        "[\ud55c\ub450\uc138\ub124]\\s*\uc2dc",
+        "\ub2e4\uc12f\\s*\uc2dc",
+        "\uc5ec\uc12f\\s*\uc2dc"
+       ]
+      },
+      {
+       "id": "w3",
+       "label": "says from when / until when or how long",
+       "mode": "any",
+       "patterns": [
+        "\ubd80\ud130",
+        "\uae4c\uc9c0",
+        "\uc2dc\uac04",
+        "\uc5d0\uc11c"
+       ]
+      }
+     ],
+     "selfAssess": [
+      "Do the times in my message match one plan that works?",
+      "Does my plan avoid 3\uc2dc ~ 4\uc2dc?"
+     ],
+     "modelAnswers": [
+      {
+       "text": "4\uc2dc\ubd80\ud130 6\uc2dc\uae4c\uc9c0 \ubc29\uacfc \ud6c4 \uad50\uc2e4\uc744 \uc368\uc694.",
+       "note": "A two-hour plan after the cleaning."
+      },
+      {
+       "text": "2\uc2dc\ubd80\ud130 3\uc2dc\uae4c\uc9c0 \ud55c \uc2dc\uac04 \uc4f0\ub294 \uac74 \uc5b4\ub54c\uc694?",
+       "note": "A one-hour plan before the cleaning; asks politely."
+      }
+     ],
+     "badAnswers": [
+      {
+       "text": "\uc88b\uc544\uc694.",
+       "why": "Agrees but names no time."
+      },
+      {
+       "text": "1\uc2dc\uac04 \uc4f0\uc790.",
+       "why": "Only a length, no clock time and no polite ending."
+      }
+     ],
+     "humanReview": "Whether the times in the message really match a valid plan (the check only finds that a clock time is present).",
+     "hints": [
+      "Use one start time and one end time from your list.",
+      "Use ~\ubd80\ud130 ~\uae4c\uc9c0 to say from when until when."
+     ]
+    }
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Valid plans",
+    "full": "Finds three different plans that satisfy every rule",
+    "partial": "Finds one or two valid plans",
+    "none": "Plans break rules (cleaning time, 2 o'clock, 6 o'clock)"
+   },
+   {
+    "criterion": "Message",
+    "full": "Polite message with times of one valid plan",
+    "partial": "Message with a time that does not match a valid plan",
+    "none": "No time in the message"
+   }
+  ],
+  "alternatives": [
+   "Any three of the four valid plans are fine.",
+   "A student may give the plan as '2\uc2dc ~ 3\uc2dc' in Korean words only; the message check allows that."
+  ],
+  "hardCases": [
+   "A plan that ends exactly at 3\uc2dc or starts exactly at 4\uc2dc may look like it touches the cleaning time; it does not."
+  ],
+  "cautions": {
+   "language": "~\ubd80\ud130 ~\uae4c\uc9c0 = from ... until ...; \uc815\uac01 = exactly on the hour; 'hour' as a point is \uc2dc and as a length is \uc2dc\uac04.",
+   "culture": "After-school rooms and sign-up rules are typical for Korean schools but the notice explains all rules.",
+   "accessibility": "All conditions are given as text with hour numbers; the build step uses two number fields and no image."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Whether each plan satisfies every rule, and that the three plans differ"
+   ],
+   "human": [
+    "Naturalness of the message and its match with the chosen plan"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k4-05",
+  "subject": "korean",
+  "grade": "K4",
+  "topic": "places",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Where is \uc720\ub098?",
+  "uiLang": "en",
+  "format": "reveal-and-revise",
+  "generative": false,
+  "goal": "Locate a friend from clues that arrive one at a time and change your answer when a new notice changes what a clue means.",
+  "thinking": [
+   "Using a clue as evidence",
+   "Updating a guess when new information arrives",
+   "Noticing that a clue can stop being unique"
+  ],
+  "differsFromPlain": "Plain practice asks where a shop is on a map. Here the clues come one by one, and a later notice changes what an earlier clue proves.",
+  "prerequisites": [
+   "Can read place words such as \uc815\ubb38, \ud6c4\ubb38, \ud3b8\uc758\uc810, \uc740\ud589, \uaf43\uc9d1",
+   "Knows how to read a short text message"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "You are going to meet your friend \uc720\ub098 near school, but you cannot see her. This is the map on the school notice board, and then \uc720\ub098 sends messages one by one.\n\n[\ud559\uad50 \uc8fc\ubcc0 \uc548\ub0b4]\n\uc815\ubb38 \uc55e: \ud3b8\uc758\uc810, \uc740\ud589\n\ud6c4\ubb38 \uc55e: \ud3b8\uc758\uc810, \uaf43\uc9d1\n\uacf5\uc6d0 \uc55e: \uce74\ud398",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "Decide where \uc720\ub098 is after each new clue.",
+    "hints": [
+     "Compare each clue with the shops on the map.",
+     "Ask whether the clue appears at only one place."
+    ],
+    "stages": [
+     {
+      "info": "\uc720\ub098: \ub3c4\ucc29\ud588\uc5b4\uc694. \ud3b8\uc758\uc810 \uc55e\uc774\uc5d0\uc694.",
+      "ask": "Where do you think \uc720\ub098 is?",
+      "options": [
+       {
+        "id": "a",
+        "text": "\uc815\ubb38 \uc55e",
+        "reveals": "A guess that rests on one shop which also exists at the other gate."
+       },
+       {
+        "id": "b",
+        "text": "\ud6c4\ubb38 \uc55e",
+        "reveals": "A guess that rests on one shop which also exists at the other gate."
+       },
+       {
+        "id": "c",
+        "text": "\uc544\uc9c1 \uc54c \uc218 \uc5c6\uc5b4\uc694. \ub2e8\uc11c\uac00 \ub354 \ud544\uc694\ud574\uc694.",
+        "reveals": "You noticed that the clue fits two places."
+       },
+       {
+        "id": "d",
+        "text": "\uacf5\uc6d0 \uc55e",
+        "reveals": "The park has only a \uce74\ud398 on the map, no \ud3b8\uc758\uc810."
+       }
+      ],
+      "reasonable": [
+       "a",
+       "b",
+       "c"
+      ],
+      "after": "Both gates have a \ud3b8\uc758\uc810, so this clue fits two places. Any of these answers is reasonable if you stay ready to change it."
+     },
+     {
+      "info": "\uc720\ub098: \uc55e\uc5d0 \uc740\ud589\uc774 \ubcf4\uc5ec\uc694.",
+      "ask": "Where do you think \uc720\ub098 is now?",
+      "options": [
+       {
+        "id": "a",
+        "text": "\ud6c4\ubb38 \uc55e",
+        "reveals": "On the map, the \ud6c4\ubb38 has a \uaf43\uc9d1 but no \uc740\ud589."
+       },
+       {
+        "id": "b",
+        "text": "\uacf5\uc6d0 \uc55e",
+        "reveals": "On the map, the park has only a \uce74\ud398."
+       },
+       {
+        "id": "c",
+        "text": "\uc815\ubb38 \uc55e",
+        "reveals": "You used the clue that only one place has both a \ud3b8\uc758\uc810 and a \uc740\ud589."
+       }
+      ],
+      "reasonable": [
+       "c"
+      ],
+      "after": "On the map, only the \uc815\ubb38 has both a \ud3b8\uc758\uc810 and a \uc740\ud589, so \uc815\ubb38 is the best answer so far."
+     },
+     {
+      "info": "[\ud559\uad50 \uc54c\ub9bc] \uc9c0\ub09c\ub2ec\uc5d0 \ud6c4\ubb38 \uc55e\uc5d0\ub3c4 \uc740\ud589\uc774 \uc0c8\ub85c \uc0dd\uacbc\uc5b4\uc694.\n\uc720\ub098: \uc740\ud589 \uc606\uc5d0 \uaf43\uc9d1\ub3c4 \ubcf4\uc5ec\uc694.",
+      "ask": "Now where do you think \uc720\ub098 is?",
+      "options": [
+       {
+        "id": "a",
+        "text": "\ud6c4\ubb38 \uc55e",
+        "reveals": "You noticed that the new notice means \uc740\ud589 no longer separates the gates and that \uaf43\uc9d1 does."
+       },
+       {
+        "id": "b",
+        "text": "\uc815\ubb38 \uc55e",
+        "reveals": "You kept your earlier answer. Check whether the \uc740\ud589 clue is still unique after the new notice."
+       },
+       {
+        "id": "c",
+        "text": "\uacf5\uc6d0 \uc55e",
+        "reveals": "The park has only a \uce74\ud398, and \uc720\ub098 sees neither a \uc740\ud589 nor a \uce74\ud398."
+       }
+      ],
+      "reasonable": [
+       "a"
+      ],
+      "after": "The new bank means \uc740\ud589 is at both gates now. The \uaf43\uc9d1 is still only at the \ud6c4\ubb38, so \uc720\ub098 is at the \ud6c4\ubb38."
+     }
+    ],
+    "reflect": "The \uc740\ud589 clue was strong until a notice changed the facts; the \uaf43\uc9d1 clue stayed unique. A good guess depends on which clues still point to only one place."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "You are at the \uc815\ubb38 and \uc720\ub098 is at the \ud6c4\ubb38. Write a short Korean message to \uc720\ub098 in polite style (-\uc694): say where you are and what you will do (or ask her to do).",
+    "placeholder": "\uc608: ...",
+    "minChars": 6,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "[\uac00-\ud7a3]\uc694(?![\uac00-\ud7a3])|\uc2b5\ub2c8\ub2e4|[\uac11\ub0a9\ub78d\ub9bd\ubc09\uc2ed\uc785\uc7a1\ud569\ub429\uc635\ubd05\ub2d9\uc501]\ub2c8\ub2e4"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "names a gate",
+      "mode": "any",
+      "patterns": [
+       "\uc815\ubb38",
+       "\ud6c4\ubb38"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "says what to do (go / come / wait)",
+      "mode": "any",
+      "patterns": [
+       "\uac00\uc694",
+       "\uac08\uac8c",
+       "\uc62c\uac8c",
+       "\uc62c\ub798",
+       "\uc624\uc138\uc694",
+       "\uae30\ub2e4\ub824",
+       "\uac78\uc5b4",
+       "\uc774\ub3d9",
+       "\uac08\uae4c\uc694",
+       "\uc640\uc694",
+       "\uac08 \uac70",
+       "\uc62c \uac70",
+       "\uac08 \uac74",
+       "\uc62c \uac74",
+       "\uc640 \uc8fc",
+       "\uac00 \uc904",
+       "\ub3c4\ucc29",
+       "\uae30\ub2e4\ub9b4",
+       "\ub9cc\ub098\uc694"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does \uc720\ub098 know where I am?",
+     "Does she know who moves?",
+     "Is the message short and clear?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\uc800\ub294 \uc815\ubb38 \uc55e\uc5d0 \uc788\uc5b4\uc694. \uc9c0\uae08 \ud6c4\ubb38\uc73c\ub85c \uac08\uac8c\uc694.",
+      "note": "Says where you are and that you will move."
+     },
+     {
+      "text": "\ud6c4\ubb38 \uc55e\uc5d0\uc11c \uae30\ub2e4\ub824 \uc8fc\uc138\uc694. \uc81c\uac00 \uac78\uc5b4\uc11c \uac08\uac8c\uc694!",
+      "note": "Asks her to wait and says you will come."
+     },
+     {
+      "text": "\uc815\ubb38\uc5d0 \uc788\uc5b4\uc694. \uc81c\uac00 \ud6c4\ubb38\uc73c\ub85c \uac08 \uac70\uc608\uc694."
+     },
+     {
+      "text": "\uc800\ub294 \uc815\ubb38\uc774\uc5d0\uc694. \uc720\ub098 \uc528\uac00 \uc815\ubb38\uc73c\ub85c \uc640 \uc8fc\uc138\uc694."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\uc5b4\ub514\uc608\uc694?",
+      "why": "A question only; it neither says where you are nor what to do."
+     },
+     {
+      "text": "\ube68\ub9ac \uc640.",
+      "why": "Casual, no gate named, no polite ending."
+     }
+    ],
+    "humanReview": "Whether the plan is clear (who moves where) and the Korean is natural.",
+    "hints": [
+     "Name the gate where you stand.",
+     "Add one verb that says who moves: for example \uac08\uac8c\uc694 (I will go), \uae30\ub2e4\ub824 \uc8fc\uc138\uc694 (please wait) or \uc640 \uc8fc\uc138\uc694 (please come)."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Updating the guess",
+    "full": "Gives reasonable answers at each stage and changes the last one because of the notice",
+    "partial": "Updates at the second stage but keeps the old answer at the third",
+    "none": "Does not use the clues"
+   },
+   {
+    "criterion": "Message",
+    "full": "Names a gate, says who moves, polite",
+    "partial": "Names a gate or an action but not both",
+    "none": "Neither a place nor an action"
+   }
+  ],
+  "alternatives": [
+   "At the first stage, guessing \uc815\ubb38 or \ud6c4\ubb38 is reasonable if the student knows it is only a guess."
+  ],
+  "hardCases": [
+   "A student may say the new \uc740\ud589 at the \ud6c4\ubb38 could mean the old \uc815\ubb38 clue was a mistake; it was not, it was true at that time."
+  ],
+  "cautions": {
+   "language": "\uc815\ubb38 = front gate, \ud6c4\ubb38 = back gate; \uc55e here means 'in front of'; -\uc5d0\uc11c \uae30\ub2e4\ub824 \uc8fc\uc138\uc694 = please wait at ...",
+   "culture": "Korean schools commonly have a front gate and a back gate with shops outside; the map states the facts so no local knowledge is needed.",
+   "accessibility": "The map is a text list instead of an image; each stage is read as plain text."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Reasonable answers at each stage; gate, action and polite ending in the message"
+   ],
+   "human": [
+    "Clarity and naturalness of the message"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k4-06",
+  "subject": "korean",
+  "grade": "K4",
+  "topic": "simple notices",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "From notice to text to a friend",
+  "uiLang": "en",
+  "format": "rewrite-for-audience",
+  "generative": true,
+  "goal": "Decide which facts of a school notice a classmate must receive, then rewrite them in a friendly casual message without losing a fact.",
+  "thinking": [
+   "Selecting essential facts",
+   "Changing register for a new reader",
+   "Keeping facts while changing the style"
+  ],
+  "differsFromPlain": "Plain practice translates or copies a notice. Here you choose what the reader needs and rewrite it in a different register for a close classmate.",
+  "prerequisites": [
+   "Can read Hangul and a short school notice",
+   "Knows that casual speech (\ubc18\ub9d0) is used with close friends"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "Your classmate \ud558\uc900 was absent today. You want to send him a text about this notice from your teacher.\n\n[\uc54c\ub9bc] \ub0b4\uc77c\uc740 \ube44\uac00 \uc628\ub2e4\uace0 \ud569\ub2c8\ub2e4. 3\uad50\uc2dc \uccb4\uc721 \uc218\uc5c5\uc740 \uc6b4\ub3d9\uc7a5\uc774 \uc544\ub2c8\ub77c \uac15\ub2f9\uc5d0\uc11c \ud569\ub2c8\ub2e4. \uc2e4\ub0b4\ud654\ub97c \uac00\uc838\uc624\uc138\uc694.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which things MUST stay in your text to \ud558\uc900? Choose all that apply.",
+    "options": [
+     {
+      "id": "a",
+      "text": "The heading [\uc54c\ub9bc]",
+      "reveals": "A heading belongs to the notice's form, not to what the reader needs to do."
+     },
+     {
+      "id": "b",
+      "text": "The place of the class (\uac15\ub2f9, not the field)",
+      "reveals": "You kept the fact that changes where he has to go."
+     },
+     {
+      "id": "c",
+      "text": "The stiff endings such as -\u3142\ub2c8\ub2e4",
+      "reveals": "The ending belongs to the notice's style; a friend does not need it."
+     },
+     {
+      "id": "d",
+      "text": "The class period (3\uad50\uc2dc)",
+      "reveals": "You kept the fact that tells him when the change matters."
+     },
+     {
+      "id": "e",
+      "text": "What to bring (\uc2e4\ub0b4\ud654)",
+      "reveals": "You kept the fact that tells him what to do."
+     }
+    ],
+    "correct": [
+     "b",
+     "d",
+     "e"
+    ],
+    "explain": "\ud558\uc900 needs the place (\uac15\ub2f9), the period (3\uad50\uc2dc) and what to bring (\uc2e4\ub0b4\ud654). The heading and the stiff endings belong to the form of the notice.",
+    "hints": [
+     "Imagine \ud558\uc900 tomorrow morning: what does he need to know to be in the right place with the right things?",
+     "Ask of each option: would \ud558\uc900 miss something he needs to do if it were left out?"
+    ],
+    "multi": true,
+    "acceptable": [
+     {
+      "ids": [
+       "b",
+       "d",
+       "e"
+      ],
+      "reason": "The three facts are the core."
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write a text to \ud558\uc900 in casual speech (\ubc18\ub9d0) that keeps those facts. You may add the reason (it will rain).",
+    "placeholder": "\uc608: ...",
+    "minChars": 6,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "names the place (\uac15\ub2f9)",
+      "mode": "any",
+      "patterns": [
+       "\uac15\ub2f9"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "names what to bring (\uc2e4\ub0b4\ud654)",
+      "mode": "any",
+      "patterns": [
+       "\uc2e4\ub0b4\ud654"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "names the period (3\uad50\uc2dc)",
+      "mode": "any",
+      "patterns": [
+       "3\\s*\uad50\uc2dc",
+       "\uc0bc\\s*\uad50\uc2dc",
+       "\uc138\\s*\ubc88\uc9f8\\s*\uc218\uc5c5"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "no polite -\uc694 and no stiff notice-style ending",
+      "mode": "none",
+      "patterns": [
+       "\ub2c8\ub2e4(?![\uac00-\ud7a3])|\uc2ed\uc2dc\uc624|\uc694(?![\uac00-\ud7a3])"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "says when (\ub0b4\uc77c)",
+      "mode": "any",
+      "patterns": [
+       "\ub0b4\uc77c",
+       "\ub0bc"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Are all three facts in my text?",
+     "Does it sound like me writing to a classmate, not like a notice?",
+     "Is it short?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\ub0b4\uc77c \ube44 \uc628\ub300. 3\uad50\uc2dc \uccb4\uc721\uc740 \uac15\ub2f9\uc5d0\uc11c \ud574! \uc2e4\ub0b4\ud654 \ucc59\uaca8 \uc640.",
+      "note": "Keeps all facts and adds the reason."
+     },
+     {
+      "text": "\ud558\uc900\uc544, \ub0b4\uc77c 3\uad50\uc2dc \uccb4\uc721 \uac15\ub2f9\uc5d0\uc11c \ud55c\ub300. \uc2e4\ub0b4\ud654 \uac00\uc838\uc640\uc57c \ub3fc!",
+      "note": "Friendly, casual, all facts present."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\ub0b4\uc77c 3\uad50\uc2dc \uccb4\uc721\uc740 \uac15\ub2f9\uc5d0\uc11c \ud569\ub2c8\ub2e4. \uc2e4\ub0b4\ud654\ub97c \uac00\uc838\uc624\uc138\uc694.",
+      "why": "All facts, but copies the stiff notice style."
+     },
+     {
+      "text": "\ub0b4\uc77c \uccb4\uc721 \uc788\uc5b4.",
+      "why": "Casual but loses the place, period and what to bring."
+     },
+     {
+      "text": "\ud558\uc900\uc544, \ub0b4\uc77c \ube44 \uc640\uc11c 3\uad50\uc2dc \uccb4\uc721\uc744 \uac15\ub2f9\uc5d0\uc11c \ud574\uc694. \uc2e4\ub0b4\ud654 \uac00\uc838\uc624\uc138\uc694.",
+      "why": "All facts, but polite -\uc694 instead of casual speech."
+     }
+    ],
+    "humanReview": "Whether the casual register is natural and no fact is changed.",
+    "hints": [
+     "Write the three facts as three short pieces: when, where, what to bring.",
+     "End each piece with -\uc5b4/\uc544 or -\ub300 instead of -\u3142\ub2c8\ub2e4."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Choosing facts",
+    "full": "Chooses place, period and what to bring and leaves out form details",
+    "partial": "Chooses two of the three facts",
+    "none": "Chooses form details only"
+   },
+   {
+    "criterion": "Rewrite",
+    "full": "All three facts, casual register, natural",
+    "partial": "Facts present but register is stiff",
+    "none": "Facts missing"
+   }
+  ],
+  "alternatives": [
+   "Adding the reason (it will rain) is allowed and good.",
+   "A polite -\uc694 ending could suit a classmate you do not know well, but this task asks for \ubc18\ub9d0, so the checks reject -\uc694 and -\u3142\ub2c8\ub2e4."
+  ],
+  "hardCases": [
+   "Whether 'bring \uc2e4\ub0b4\ud654 instead of \uc6b4\ub3d9\ud654' counts as an extra fact; it is not in the notice, so do not require it."
+  ],
+  "cautions": {
+   "language": "-\ub300 / -\u3134\ub300 reports what someone said (\ube44 \uc628\ub300 = they say it will rain); \ubc18\ub9d0 = casual speech, -\uc5b4/\uc544 endings without \uc694.",
+   "culture": "Korean students switch from -\u3142\ub2c8\ub2e4 style notices to casual speech with classmates; some groups of students use -\uc694 even among friends.",
+   "accessibility": "The notice is plain text, with no image or color. 3\uad50\uc2dc is written with digits + \uad50\uc2dc so screen readers read it in Korean."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Which facts are chosen; presence of \uac15\ub2f9, \uc2e4\ub0b4\ud654, 3\uad50\uc2dc and absence of -\u3142\ub2c8\ub2e4 endings"
+   ],
+   "human": [
+    "Naturalness of the casual register, whether it fits the writer's relationship"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k4-07",
+  "subject": "korean",
+  "grade": "K4",
+  "topic": "writing a short plan",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Plan a Saturday",
+  "uiLang": "en",
+  "format": "make-your-own",
+  "generative": true,
+  "goal": "Test which plan fits a center's timetable and a friend's wishes, then write your own short plan that fills the gaps in the day.",
+  "thinking": [
+   "Checking a plan against two sources",
+   "Making choices in the free time",
+   "Writing an ordered plan"
+  ],
+  "differsFromPlain": "Plain practice asks for the time of one class. Here you must find a plan that satisfies a timetable and a wish together, and then write your own plan, deciding what to do in the free time.",
+  "prerequisites": [
+   "Can read times written with \uc2dc and \ubd84",
+   "Knows to suggest an activity with -\uc790 or -\u3139\uae4c"
+  ],
+  "minutes": 12,
+  "curriculum": null,
+  "material": "You and your friend \ud558\uc740 want to spend Saturday at the neighborhood culture center. Read the center's notice and the message.\n\n[\ubb38\ud654\uc13c\ud130 \ud1a0\uc694\uc77c \uc548\ub0b4]\n- \uadf8\ub9bc \uad50\uc2e4: \uc624\uc804 10\uc2dc ~ 11\uc2dc 30\ubd84\n- \ubb38\ud654\uc13c\ud130 \uc2dd\ub2f9: \ub0ae 12\uc2dc ~ 1\uc2dc (\uc810\uc2ec\ub9cc)\n- \uc694\ub9ac \uad50\uc2e4: \uc624\ud6c4 2\uc2dc ~ 4\uc2dc\n\n\ud558\uc740: \ud1a0\uc694\uc77c\uc5d0 \ubb38\ud654\uc13c\ud130\uc5d0\uc11c \uac19\uc774 \ub180\uc790! \ub098\ub294 \uadf8\ub9bc \uad50\uc2e4\uc774\ub791 \uc694\ub9ac \uad50\uc2e4 \ub458 \ub2e4 \ud558\uace0 \uc2f6\uc5b4. \uc810\uc2ec\ub3c4 \uaf2d \uba39\uace0 \uc2f6\uc5b4.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which plan satisfies the notice AND what \ud558\uc740 wants?",
+    "options": [
+     {
+      "id": "a",
+      "text": "\uadf8\ub9bc \uad50\uc2e4 10\uc2dc \u2192 \uc694\ub9ac \uad50\uc2e4 2\uc2dc \u2192 \uc810\uc2ec 4\uc2dc",
+      "reveals": "Lunch at 4\uc2dc does not fit the times of the center's restaurant."
+     },
+     {
+      "id": "b",
+      "text": "\uadf8\ub9bc \uad50\uc2e4 10\uc2dc \u2192 \uc810\uc2ec 12\uc2dc \u2192 \uc694\ub9ac \uad50\uc2e4 2\uc2dc",
+      "reveals": "You matched each activity to its time on the notice."
+     },
+     {
+      "id": "c",
+      "text": "\uc810\uc2ec 12\uc2dc \u2192 \uadf8\ub9bc \uad50\uc2e4 1\uc2dc \u2192 \uc694\ub9ac \uad50\uc2e4 2\uc2dc",
+      "reveals": "The \uadf8\ub9bc \uad50\uc2e4 is not open at 1\uc2dc; check when it runs."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "Only plan b follows the notice: \uadf8\ub9bc \uad50\uc2e4 10\uc2dc ~ 11\uc2dc 30\ubd84, \uc810\uc2ec 12\uc2dc ~ 1\uc2dc and \uc694\ub9ac \uad50\uc2e4 2\uc2dc ~ 4\uc2dc.",
+    "hints": [
+     "Put the three activities in order of their times on the notice.",
+     "Check each activity of a plan against its own line in the notice."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Now write YOUR plan to \ud558\uc740 in Korean. Use the order of the day, give at least three clock times, and add one thing of your own in a free gap (for example where to meet or what to do between the classes).",
+    "placeholder": "\uc608: ...",
+    "minChars": 20,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "mentions both \uadf8\ub9bc \uad50\uc2e4 and \uc694\ub9ac \uad50\uc2e4",
+      "mode": "all",
+      "patterns": [
+       "\uadf8\ub9bc",
+       "\uc694\ub9ac"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "mentions lunch",
+      "mode": "any",
+      "patterns": [
+       "\uc810\uc2ec",
+       "\uc2dd\ub2f9"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "gives at least three clock times",
+      "mode": "any",
+      "patterns": [
+       "((\\d+|\uc5f4\ub450|\uc5f4\ud55c|\uc5f4|\ud55c|\ub450|\uc138|\ub124|\ub2e4\uc12f|\uc5ec\uc12f|\uc77c\uacf1|\uc5ec\ub35f|\uc544\ud649)\\s*\uc2dc(?!\uac04)[\\s\\S]*){3}"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "puts \uadf8\ub9bc \uad50\uc2e4 at 10\uc2dc",
+      "mode": "any",
+      "patterns": [
+       "\uadf8\ub9bc[^.!?,\uace0]*((?<![0-9])10\\s*\uc2dc|\uc5f4\\s*\uc2dc)",
+       "((?<![0-9])10\\s*\uc2dc|\uc5f4\\s*\uc2dc)[^.!?,\uace0]*\uadf8\ub9bc"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "puts \uc694\ub9ac \uad50\uc2e4 at 2\uc2dc",
+      "mode": "any",
+      "patterns": [
+       "\uc694\ub9ac[^.!?,\uace0]*((?<![0-9])(2|14)\\s*\uc2dc|\ub450\\s*\uc2dc)",
+       "((?<![0-9])(2|14)\\s*\uc2dc|\ub450\\s*\uc2dc)[^.!?,\uace0]*\uc694\ub9ac"
+      ]
+     },
+     {
+      "id": "w6",
+      "label": "puts lunch at 12\uc2dc",
+      "mode": "any",
+      "patterns": [
+       "(\uc810\uc2ec|\uc2dd\ub2f9)[^.!?,\uace0]*((?<![0-9])12\\s*\uc2dc|\uc5f4\ub450\\s*\uc2dc|\ub0ae\\s*12)",
+       "((?<![0-9])12\\s*\uc2dc|\uc5f4\ub450\\s*\uc2dc)[^.!?,\uace0]*(\uc810\uc2ec|\uc2dd\ub2f9)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my order follow the notice?",
+     "Did I add something of my own in a free gap?",
+     "Would \ud558\uc740 know where to go and when?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "10\uc2dc\uc5d0 \uadf8\ub9bc \uad50\uc2e4\uc5d0 \uac00\uc790. 11\uc2dc 30\ubd84\uc5d0 \ub05d\ub098\uba74 12\uc2dc\uc5d0 \uc2dd\ub2f9\uc5d0\uc11c \uc810\uc2ec \uba39\uc790. 2\uc2dc\uc5d0 \uc694\ub9ac \uad50\uc2e4 \uac00\uc790!",
+      "note": "Follows the notice; uses the gap before lunch."
+     },
+     {
+      "text": "9\uc2dc 50\ubd84\uc5d0 \ubb38\ud654\uc13c\ud130 \uc55e\uc5d0\uc11c \ub9cc\ub098\uc790. 10\uc2dc \uadf8\ub9bc \uad50\uc2e4, 12\uc2dc \uc810\uc2ec, 2\uc2dc \uc694\ub9ac \uad50\uc2e4 \uc21c\uc11c\ub85c \ud558\uc790. 1\uc2dc\uc5d0\ub294 \uacf5\uc6d0\uc5d0\uc11c \uc26c\uc790.",
+      "note": "Adds a meeting time and a rest in the gap."
+     },
+     {
+      "text": "\uc694\ub9ac \uad50\uc2e4\uc740 2\uc2dc\uc5d0, \uadf8\ub9bc \uad50\uc2e4\uc740 10\uc2dc\uc5d0 \uac00\uc790. 12\uc2dc\uc5d0 \uc810\uc2ec \uba39\uc790."
+     },
+     {
+      "text": "\uc5f4 \uc2dc\uc5d0 \uadf8\ub9bc \uad50\uc2e4 \uac00\uc790. \uc5f4\ub450 \uc2dc\uc5d0 \uc810\uc2ec \uba39\uc790. \ub450 \uc2dc\uc5d0 \uc694\ub9ac \uad50\uc2e4 \uac00\uc790."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\uadf8\ub9bc \uad50\uc2e4\uc774\ub791 \uc694\ub9ac \uad50\uc2e4 \uac00\uc790.",
+      "why": "No times and no lunch."
+     },
+     {
+      "text": "2\uc2dc\uc5d0 \uc694\ub9ac \uad50\uc2e4, 3\uc2dc\uc5d0 \uadf8\ub9bc \uad50\uc2e4, 4\uc2dc\uc5d0 \uc810\uc2ec \uba39\uc790.",
+      "why": "Order and times do not follow the notice."
+     },
+     {
+      "text": "10\uc2dc\uc5d0 \uadf8\ub9bc \uad50\uc2e4 \uac00\uace0 4\uc2dc\uc5d0 \uc810\uc2ec \uba39\uace0 2\uc2dc\uc5d0 \uc694\ub9ac \uad50\uc2e4 \uac00\uc790.",
+      "why": "Lunch at 4\uc2dc does not fit the restaurant's hours (12\uc2dc ~ 1\uc2dc)."
+     },
+     {
+      "text": "10\uc2dc\uc5d0 \uc694\ub9ac \uad50\uc2e4 \uac00\uace0 2\uc2dc\uc5d0 \uadf8\ub9bc \uad50\uc2e4 \uac00\uace0 12\uc2dc\uc5d0 \uc810\uc2ec \uba39\uc790.",
+      "why": "The two classes are at each other's times."
+     }
+    ],
+    "humanReview": "Whether the plan is realistic (the free gaps are used sensibly) and the Korean is natural.",
+    "hints": [
+     "Write the day in order, from morning to afternoon, with a clock time for each part.",
+     "Look for the free time between 11\uc2dc 30\ubd84 and 12\uc2dc, and between 1\uc2dc and 2\uc2dc."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Plan fits the sources",
+    "full": "Order and times follow the notice and include lunch",
+    "partial": "Mostly follows the notice but one time is off",
+    "none": "Plan ignores the notice"
+   },
+   {
+    "criterion": "Own addition",
+    "full": "Adds a sensible own choice in a free gap",
+    "partial": "Plan only repeats the notice",
+    "none": "Addition makes the plan impossible"
+   }
+  ],
+  "alternatives": [
+   "Moving lunch to 12\uc2dc 30\ubd84 is valid because the restaurant is open from 12\uc2dc to 1\uc2dc.",
+   "A plan that skips the gap activity but is correct otherwise still passes the main checks."
+  ],
+  "hardCases": [
+   "Meeting at 9\uc2dc 50\ubd84 is not in the notice but is a reasonable own addition; a teacher decides whether it fits the friends' routine."
+  ],
+  "cautions": {
+   "language": "Suggestions to a friend use -\uc790 (let's) or -\u3139\uae4c?; ~\uc5d0 means 'at (a time)'. \uc810\uc2ec = lunch, \uc2dd\ub2f9 = restaurant.",
+   "culture": "Neighborhood culture centers with art and cooking classes are common in Korea but the notice states all the facts.",
+   "accessibility": "The timetable is a text list, with no table or color. Times are written with \uc2dc and \ubd84."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of the plan; presence of the activities, lunch, three clock times and their order"
+   ],
+   "human": [
+    "Whether the own addition is sensible and the Korean natural"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "x-k-k4-10",
+  "subject": "korean",
+  "grade": "K4",
+  "topic": "schedules",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "The message that changed, then changed back",
+  "uiLang": "en",
+  "format": "reveal-and-revise",
+  "generative": false,
+  "goal": "Track when a friend will arrive at a party as schedule messages change, and send a helpful message based on the final facts.",
+  "thinking": [
+   "Updating a prediction after new information",
+   "Recognizing when a correction cancels an earlier message",
+   "Sending an accurate update"
+  ],
+  "differsFromPlain": "Plain practice calculates one arrival time. Here the facts change twice, the second change cancels the first, and your judgement must follow the latest facts.",
+  "prerequisites": [
+   "Can read clock times written with \uc2dc and \ubd84",
+   "Can read a short message about a schedule"
+  ],
+  "minutes": 11,
+  "curriculum": null,
+  "material": "\ud558\ub9b0 goes to English class on Wednesday and then walks 10 minutes to her friend \uc18c\ubbf8's birthday party at 4\uc2dc. \ud558\ub9b0 wants to know when she will arrive.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "Decide when \ud558\ub9b0 will probably arrive after each new message.",
+    "hints": [
+     "Find the time class ends in the latest message, then add the walk.",
+     "Check whether a newer message replaces an older one."
+    ],
+    "stages": [
+     {
+      "info": "\ubcbd \uc2dc\uac04\ud45c: \uc218\uc694\uc77c \uc601\uc5b4 \ud559\uc6d0 3\uc2dc ~ 4\uc2dc.",
+      "ask": "When will \ud558\ub9b0 probably arrive at \uc18c\ubbf8's house?",
+      "options": [
+       {
+        "id": "a",
+        "text": "3\uc2dc 40\ubd84\ucbe4",
+        "reveals": "That would be right if the class ended at 3\uc2dc 30\ubd84."
+       },
+       {
+        "id": "b",
+        "text": "4\uc2dc 10\ubd84\ucbe4",
+        "reveals": "You added the 10-minute walk to the end of the class."
+       },
+       {
+        "id": "c",
+        "text": "4\uc2dc 30\ubd84\ucbe4",
+        "reveals": "That is longer than class end plus the walk."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "Class ends at 4\uc2dc, and the walk takes 10 minutes, so about 4\uc2dc 10\ubd84. She will be 10 minutes late."
+     },
+     {
+      "info": "\ud559\uc6d0 \ubb38\uc790: \uc774\ubc88 \uc8fc \uc218\uc694\uc77c\uc740 \uc2dc\ud5d8\uc774\ub77c \uc218\uc5c5\uc774 3\uc2dc 30\ubd84\uc5d0 \ub05d\ub098\uc694.",
+      "ask": "When will \ud558\ub9b0 probably arrive now?",
+      "options": [
+       {
+        "id": "a",
+        "text": "4\uc2dc 10\ubd84\ucbe4",
+        "reveals": "You kept the first answer. Check the new end time of the class."
+       },
+       {
+        "id": "b",
+        "text": "4\uc2dc 30\ubd84\ucbe4",
+        "reveals": "That is later than both the old and the new class end plus the walk."
+       },
+       {
+        "id": "c",
+        "text": "3\uc2dc 40\ubd84\ucbe4",
+        "reveals": "You used the new end time (3\uc2dc 30\ubd84) and added the walk."
+       }
+      ],
+      "reasonable": [
+       "c"
+      ],
+      "after": "The newest message says class ends at 3\uc2dc 30\ubd84, so \ud558\ub9b0 arrives about 3\uc2dc 40\ubd84, before the party."
+     },
+     {
+      "info": "\ud559\uc6d0 \ubb38\uc790: \uc8c4\uc1a1\ud569\ub2c8\ub2e4. \uc55e\uc758 \ubb38\uc790\ub97c \uc798\ubabb \ubcf4\ub0c8\uc5b4\uc694. \uc2dc\ud5d8\uc740 \ub2e4\uc74c \uc8fc\uc608\uc694. \uc774\ubc88 \uc8fc\ub294 \ud3c9\uc18c\uc640 \uac19\uc544\uc694.",
+      "ask": "When will \ud558\ub9b0 probably arrive now?",
+      "options": [
+       {
+        "id": "a",
+        "text": "4\uc2dc 10\ubd84\ucbe4",
+        "reveals": "You noticed that the correction cancels the exam message and the normal timetable applies."
+       },
+       {
+        "id": "b",
+        "text": "3\uc2dc 40\ubd84\ucbe4",
+        "reveals": "You kept the exam message. Check what the correction says about this week."
+       },
+       {
+        "id": "c",
+        "text": "4\uc2dc 40\ubd84\ucbe4",
+        "reveals": "That is too late even for the normal class plus the walk."
+       }
+      ],
+      "reasonable": [
+       "a"
+      ],
+      "after": "The correction cancels the exam message, so the normal class (to 4\uc2dc) applies and \ud558\ub9b0 arrives about 4\uc2dc 10\ubd84."
+     }
+    ],
+    "reflect": "Your answer moved away from the first message and then came back. The latest message about the same thing is the one to trust, and a correction can cancel an earlier change."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write a short message from \ud558\ub9b0 to \uc18c\ubbf8 in Korean: say that she will be a little late and when she will arrive.",
+    "placeholder": "\uc608: ...",
+    "minChars": 6,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "says she will be late (\ub2a6)",
+      "mode": "any",
+      "patterns": [
+       "\ub2a6"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "gives the final arrival time (about 4\uc2dc 10\ubd84) or 10\ubd84 late",
+      "mode": "any",
+      "patterns": [
+       "(?<![0-9])4\\s*\uc2dc(?!\\s*[2-5][0-9]\\s*\ubd84)",
+       "\ub124\\s*\uc2dc(?!\\s*(\uc774\uc2ed|\uc0bc\uc2ed|\uc0ac\uc2ed|\uc624\uc2ed))",
+       "(?<![0-9])10\\s*\ubd84\\s*(\ucbe4|\uc815\ub3c4)?\\s*(\ub2a6|\ub4a4|\ud6c4)",
+       "\uc2ed\\s*\ubd84\\s*(\ucbe4|\uc815\ub3c4)?\\s*(\ub2a6|\ub4a4|\ud6c4)"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "apologises or softens (\ubbf8\uc548/\uc8c4\uc1a1/\uc870\uae08/\uc880)",
+      "mode": "any",
+      "patterns": [
+       "\ubbf8\uc548",
+       "\uc8c4\uc1a1",
+       "\uc870\uae08",
+       "\uc880",
+       "\uc57d\uac04"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "does not give a wrong time (3\uc2dc 30\ubd84 / 3\uc2dc 40\ubd84 / 4\uc2dc 20\ubd84 or later)",
+      "mode": "none",
+      "patterns": [
+       "(?<![0-9])3\\s*\uc2dc\\s*(30|40|45|50)\\s*\ubd84",
+       "(?<![0-9])3\\s*\uc2dc\\s*\ubc18",
+       "(?<![0-9])4\\s*\uc2dc\\s*[2-5][0-9]\\s*\ubd84",
+       "\uc138\\s*\uc2dc"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does the message say she will be late?",
+     "Does it give a time that matches the final facts?",
+     "Is the tone friendly?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "\uc18c\ubbf8\uc57c, \ubbf8\uc548\ud574! \ud559\uc6d0\uc774 4\uc2dc\uc5d0 \ub05d\ub098\uc11c 10\ubd84\ucbe4 \ub2a6\uc744 \uac83 \uac19\uc544.",
+      "note": "Gives the reason and the delay."
+     },
+     {
+      "text": "\uc870\uae08 \ub2a6\uc5b4\uc694. 4\uc2dc 10\ubd84\ucbe4 \ub3c4\ucc29\ud574\uc694.",
+      "note": "Short and polite; gives the time."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "\uae08\ubc29 \uac08\uac8c.",
+      "why": "No lateness and no time."
+     },
+     {
+      "text": "\ud30c\ud2f0 \uc7ac\ubbf8\uc788\uaca0\ub2e4.",
+      "why": "Does not answer the question."
+     },
+     {
+      "text": "\uc870\uae08 \ub2a6\uc744 \uac83 \uac19\uc544. 3\uc2dc 40\ubd84\uc5d0 \ub3c4\ucc29\ud574.",
+      "why": "Says late, but gives the arrival time of the cancelled exam message."
+     },
+     {
+      "text": "\ubbf8\uc548\ud574, \uc870\uae08 \ub2a6\uc5b4. 4\uc2dc 40\ubd84\ucbe4 \ub3c4\ucc29\ud560 \uac70\uc57c.",
+      "why": "The time is too late; the final facts give about 4\uc2dc 10\ubd84."
+     }
+    ],
+    "humanReview": "Whether the time matches the final message (about 4\uc2dc 10\ubd84).",
+    "hints": [
+     "Say you will be late, then add the time or the number of minutes.",
+     "Add \ubbf8\uc548\ud574 or \uc870\uae08 to make it friendly."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Updating",
+    "full": "Follows each newest message and returns to the first answer after the correction",
+    "partial": "Updates once but misses that the correction cancels the change",
+    "none": "Does not update"
+   },
+   {
+    "criterion": "Message",
+    "full": "Says she will be late and when, in friendly Korean",
+    "partial": "Gives a time without saying late, or the reverse",
+    "none": "Neither"
+   }
+  ],
+  "alternatives": [
+   "At stage 3 an answer such as '4\uc2dc 10\ubd84\ucbe4' is the only one that follows the correction; at stages 1 and 2 only one answer is reasonable."
+  ],
+  "hardCases": [
+   "A student who reads the walk as 10 minutes before the party may compute a different time; the material says the walk is after class."
+  ],
+  "cautions": {
+   "language": "\ub2a6\ub2e4 = to be late (\ub2a6\uc744 \uac83 \uac19\uc544 = I think I will be late); \uc55e\uc758 \ubb38\uc790 = the earlier message; \ud3c9\uc18c\uc640 \uac19\uc544\uc694 = it is as usual.",
+   "culture": "Birthday parties after cram school (\ud559\uc6d0) are common; no special knowledge is required.",
+   "accessibility": "All times are written with \uc2dc and \ubd84, and the stages are plain text."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Whether the stage answers are reasonable; presence of lateness, a time and a soft tone in the message"
+   ],
+   "human": [
+    "Naturalness of the message"
+   ]
+  },
+  "status": "reviewed-ai"
+ }
+]

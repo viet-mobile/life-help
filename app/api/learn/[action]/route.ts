@@ -1,6 +1,6 @@
 import { isSite } from "@/lib/learn/types";
 import { LearnError } from "@/lib/learn/server/errors";
-import { assertSameOrigin, errorResponse, jsonResponse, rateLimit, readJson } from "@/lib/learn/server/http";
+import { assertSameOrigin, errorResponse, jsonResponse, edgeRateLimit, rateLimit, readJson } from "@/lib/learn/server/http";
 import { getLearnService, resolveActor } from "@/lib/learn/server/runtime";
 import { isLocale } from "@/lib/learn/i18n";
 import { isReviewMode } from "@/lib/learn/reviewModes";
@@ -26,6 +26,7 @@ export async function POST(request: Request, ctx: RouteContext<"/api/learn/[acti
     // Presentation only; the authenticated identity still comes exclusively from the session.
     if (isLocale(body.locale)) actor.locale = body.locale;
     const ip = request.headers.get("cf-connecting-ip") ?? request.headers.get("x-forwarded-for") ?? "local";
+    await edgeRateLimit(actor.userId ?? ip);
     rateLimit(`${actor.userId ?? ip}:${action}`, action === "attempt" ? 120 : 60, 60_000);
 
     const svc = getLearnService();
@@ -49,7 +50,7 @@ export async function POST(request: Request, ctx: RouteContext<"/api/learn/[acti
             kind,
             lessonId: typeof body.lessonId === "string" ? body.lessonId : undefined,
             skillId: typeof body.skillId === "string" ? body.skillId : undefined,
-            mode: site === "korean" && isReviewMode(body.mode) ? body.mode : undefined, // review modes are Korean-only in this release
+            mode: isReviewMode(body.mode) ? body.mode : undefined,
           }),
         );
       }
@@ -62,6 +63,8 @@ export async function POST(request: Request, ctx: RouteContext<"/api/learn/[acti
           await svc.requestHint(actor, site, {
             questionId: String(body.questionId ?? ""),
             level: Number(body.level),
+            sessionId: typeof body.sessionId === "string" ? body.sessionId.slice(0, 64) : undefined,
+            prevProof: typeof body.prevProof === "string" ? body.prevProof.slice(0, 128) : undefined,
           }),
         );
       case "attempt":
@@ -71,6 +74,7 @@ export async function POST(request: Request, ctx: RouteContext<"/api/learn/[acti
             sessionId: String(body.sessionId ?? ""),
             answer: body.answer,
             attemptNo: typeof body.attemptNo === "number" ? body.attemptNo : undefined,
+            attemptProof: typeof body.attemptProof === "string" ? body.attemptProof.slice(0, 128) : undefined,
             hintsUsed: typeof body.hintsUsed === "number" ? body.hintsUsed : undefined,
             timeMs: typeof body.timeMs === "number" ? body.timeMs : undefined,
             isReview: body.isReview === true,

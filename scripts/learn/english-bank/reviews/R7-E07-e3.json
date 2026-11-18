@@ -1,0 +1,139 @@
+{
+ "packet": "E07-e3",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 7,
+  "questions": 35
+ },
+ "patches": [
+  {
+   "item": "7b531059",
+   "op": "set",
+   "set": {
+    "bad": [
+     "My brother is tall, and him plays basketball.",
+     "My brother is tall, and he play basketball.",
+     "My brother is tall, and his plays basketball."
+    ],
+    "cz": {
+     "st": "My brother is tall, and ___ plays basketball.",
+     "ok": "he",
+     "wr": [
+      "him",
+      "his",
+      "they"
+     ]
+    },
+    "ko": "내 남자 형제는 키가 크고, 농구를 해요.",
+    "ord": false
+   },
+   "why": "Pick-form distractors 'she plays' and 'it plays' are grammatical sentences (another person/thing) and the pick prompt gives no Korean, so more than one grammatical answer; replaced with truly ungrammatical forms. ko '형' assumed speaker gender; neutralised. ord:false (two clauses).",
+   "severity": "major"
+  },
+  {
+   "item": "2a540a2d",
+   "op": "set",
+   "set": {
+    "bad": [
+     "My parents are kind. Its help me.",
+     "My parents are kind. They helps me.",
+     "My parents are kind. Them help me."
+    ]
+   },
+   "why": "'He helps me.' is a grammatical sentence (another person) so pick form had a second grammatical option; replaced with ungrammatical option.",
+   "severity": "major"
+  },
+  {
+   "item": "adbb0e09",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "Two-sentence order question: swapped sentence order is also valid English; sibling items already set ord:false.",
+   "severity": "minor"
+  },
+  {
+   "item": "c39d7732",
+   "op": "set",
+   "set": {
+    "ord": false,
+    "cz": {
+     "st": "The cookies are sweet. I like ___.",
+     "ok": "them",
+     "wr": [
+      "they",
+      "he",
+      "she"
+     ]
+    }
+   },
+   "why": "Order question allows swapped sentences; cloze distractor 'him' is grammatical (second reading) replaced.",
+   "severity": "minor"
+  },
+  {
+   "item": "c19412cd",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "Two-sentence order question allows swapped sentences.",
+   "severity": "minor"
+  },
+  {
+   "item": "9fd039a9",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Where is Ana's brother?",
+      "o": [
+       "In the garden",
+       "In the kitchen",
+       "In his room",
+       "At school"
+      ],
+      "a": 2,
+      "why": "'He is in his room.'에서 He는 Ana의 오빠(남동생)예요."
+     },
+     {
+      "q": "In 'They are in the garden', who are 'they'?",
+      "o": [
+       "Ana's sisters",
+       "Ana and Mom",
+       "Ana's brother and Mom",
+       "The cat and the fish"
+      ],
+      "a": 0,
+      "why": "엄마가 'your sisters'를 물었고, They는 그 자매들이에요."
+     },
+     {
+      "q": "In 'Is it hungry?', what does 'it' mean?",
+      "o": [
+       "The room",
+       "The map",
+       "The garden",
+       "The cat"
+      ],
+      "a": 3,
+      "why": "바로 앞에서 고양이와 노는 이야기가 나왔으니 it은 고양이예요."
+     },
+     {
+      "q": "What food can Ana give?",
+      "o": [
+       "Some milk",
+       "Some fish",
+       "Some bread",
+       "A toy"
+      ],
+      "a": 1,
+      "why": "'I can give it some fish.'라고 말해요."
+     }
+    ]
+   },
+   "why": "q4 stem 'give the cat' revealed the answer to q3 (it = the cat); stem reworded.",
+   "severity": "major"
+  }
+ ],
+ "ok": 18,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

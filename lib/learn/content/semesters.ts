@@ -7,7 +7,7 @@ import type { Site } from "@/lib/learn/types";
  * Source: the 2022 revised national curriculum (2022 개정 교육과정) fixes achievement standards per grade band (1-2, 3-4, 5-6 / middle / high),
  * not per semester; the semester of a topic follows the order of the 2022-revised textbooks (e.g. Math 3-1: shapes, division, multiplication,
  * length and time, fractions and decimals; 3-2: multiplication, division, circles, fractions, volume and weight, data). High-school
- * subjects are credit-based, so their split is the usual school ordering. English has no official semester table: lessons are split by the
+ * subjects are credit-based, so their split is the usual school ordering. Middle school (M1-M3) follows the 2022-revision textbook table the user supplied 2026-10-19: semester 1 = numbers and operations + change and relationships (functions, graphs, equations), semester 2 = shapes and measurement + data and probability. English has no official semester table: lessons are split by the
  * usual textbook order (structure first, then use and reading). These assignments are this site's own scheduling judgement, not a semester fixed by the Ministry of Education; review them with a teacher before relying on them.
  */
 const MATH: Record<string, 0 | 1 | 2> = {
@@ -26,11 +26,11 @@ const MATH: Record<string, 0 | 1 | 2> = {
   // H3 electives
   "en-h3e-l1": 0, "en-h3e-l2": 0, "en-h3e-l3": 0, "en-h3e-l4": 0, "en-h3e-l5": 0, "en-h3e-l6": 0, "en-h3e-l7": 0,
   // M1
-  "math-l1": 1, "math-l2": 1, "math-l3": 1, "math-l4": 1, "math-m1-geo1": 2, "math-m1-geo2": 2, "math-m1-neg1": 1, "math-m1-fac1": 1, "math-m1-crd1": 2, "math-m1-prp1": 2, "math-m1-sta1": 2,
+  "math-l1": 1, "math-l2": 1, "math-l3": 1, "math-l4": 1, "math-m1-geo1": 2, "math-m1-geo2": 2, "math-m1-neg1": 1, "math-m1-fac1": 1, "math-m1-crd1": 1, "math-m1-prp1": 1, "math-m1-sta1": 2,
   // M2
-  "math-m2-l1": 1, "math-m2-l2": 1, "math-m2-l3": 1, "math-m2-l4": 2, "math-m2-l5": 2, "math-m2-geo1": 2, "math-m2-geo2": 2, "math-m2-rec1": 1, "math-m2-lfn1": 2,
+  "math-m2-l1": 1, "math-m2-l2": 1, "math-m2-l3": 1, "math-m2-l4": 1, "math-m2-l5": 2, "math-m2-geo1": 2, "math-m2-geo2": 2, "math-m2-rec1": 1, "math-m2-lfn1": 1,
   // M3
-  "math-m3-l1": 1, "math-m3-l2": 1, "math-m3-l3": 1, "math-m3-l4": 2, "math-m3-l5": 2, "math-m3-geo1": 2, "math-m3-geo2": 2, "math-m3-sta1": 2,
+  "math-m3-l1": 1, "math-m3-l2": 1, "math-m3-l3": 1, "math-m3-l4": 1, "math-m3-l5": 2, "math-m3-geo1": 2, "math-m3-geo2": 2, "math-m3-sta1": 2,
   // H1
   "math-h1-l1": 1, "math-h1-l2": 1, "math-h1-l3": 1, "math-h1-l4": 1, "math-h1-l5": 2, "math-h1-geo1": 2, "math-h1-geo2": 2, "math-h1-mat1": 1, "math-h1-pol1": 1, "math-h1-set1": 2, "math-h1-fnc1": 2,
   // H2

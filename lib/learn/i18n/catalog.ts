@@ -45,7 +45,6 @@ const LOADERS: Record<Exclude<LearnLocale, "ko">, () => Promise<{ default: Messa
   el: () => import("./locales/el.json"),
   pt: () => import("./locales/pt.json"),
   ur: () => import("./locales/ur.json"),
-  sg: () => import("./locales/sg.json"),
   sw: () => import("./locales/sw.json"),
   mr: () => import("./locales/mr.json"),
   gu: () => import("./locales/gu.json"),

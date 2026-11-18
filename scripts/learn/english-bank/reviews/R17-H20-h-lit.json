@@ -1,0 +1,72 @@
+{
+ "packet": "H20-h-lit",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 17,
+  "questions": 23
+ },
+ "patches": [
+  {
+   "item": "5c23b055",
+   "op": "set",
+   "set": {
+    "q": "In a play, a character alone on stage speaks his thoughts aloud so that the audience can hear them. This speech is a",
+    "o": [
+     "soliloquy",
+     "narrative prologue",
+     "stanza",
+     "caption"
+    ],
+    "a": 0,
+    "why": "A soliloquy is a speech by a lone character revealing inner thoughts."
+   },
+   "why": "Identity field o changed: option \"a narrative prologue\" produced \"is a a narrative prologue\"",
+   "severity": "minor"
+  },
+  {
+   "item": "b8c1c24a",
+   "op": "set",
+   "set": {
+    "q": "In a script, the line \"(She slams the door.)\" is a",
+    "o": [
+     "stage direction",
+     "title of the play",
+     "theme",
+     "rhyme"
+    ],
+    "a": 0,
+    "why": "Words in brackets that describe action are stage directions."
+   },
+   "why": "Identity field o changed: \"is a the play's title\" is ungrammatical and so eliminable",
+   "severity": "minor"
+  },
+  {
+   "item": "c3efa362",
+   "op": "set",
+   "set": {
+    "good": "Not only does the poem rhyme, but it also tells a story.",
+    "ko": "그 시는 운을 맞출 뿐만 아니라 이야기도 들려줘요.",
+    "bad": [
+     "Not only the poem does rhyme, but it also tells a story.",
+     "Not only the poem to rhyme, but it also tells a story.",
+     "Not only does the poem rhymes, but it also tells a story."
+    ],
+    "cz": {
+     "st": "Not only ___ the poem rhyme, but it also tells a story.",
+     "ok": "does",
+     "wr": [
+      "do",
+      "is",
+      "has"
+     ]
+    },
+    "rule": "Not only가 문장 앞에 오면 'does + 주어 + 동사원형'처럼 도치되고, does 뒤의 동사는 원형이에요.",
+    "ord": false
+   },
+   "why": "Distractor \"Not only the poem rhymes, but...\" is accepted by many speakers in informal English (inversion not strictly required when Not only modifies the subject), so not definitely wrong",
+   "severity": "minor"
+  }
+ ],
+ "ok": 20,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

@@ -1,0 +1,57 @@
+{
+ "packet": "H22-h-write",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 20,
+  "questions": 150
+ },
+ "patches": [
+  {
+   "item": "b7df156a",
+   "op": "set",
+   "set": {
+    "syn": [
+     "clarify",
+     "explain",
+     "expand"
+    ]
+   },
+   "why": "Block near-synonym glosses (명확히 하다 etc.) from appearing as wrong options in the en->ko question.",
+   "severity": "minor"
+  },
+  {
+   "item": "252ebfd0",
+   "op": "set",
+   "set": {
+    "good": "The more you practice, the better you become.",
+    "bad": [
+     "The more you practice, the more better you become.",
+     "More you practice, better you become.",
+     "The more you practice, the best you become."
+    ],
+    "cz": {
+     "st": "The more you practice, the ___ you become.",
+     "ok": "better",
+     "wr": [
+      "best",
+      "more good",
+      "well"
+     ]
+    }
+   },
+   "why": "US spelling; identity field good changed (spelling only).",
+   "severity": "minor"
+  },
+  {
+   "item": "3f354a48",
+   "op": "set",
+   "set": {
+    "ord": false
+   },
+   "why": "Word order of the list items is not unique.",
+   "severity": "minor"
+  }
+ ],
+ "ok": 145,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

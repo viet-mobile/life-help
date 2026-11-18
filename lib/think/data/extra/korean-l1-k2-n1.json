@@ -1,0 +1,4792 @@
+[
+ {
+  "id": "n-k-l1e-01",
+  "subject": "korean",
+  "grade": "K2",
+  "topic": "greetings, introductions and etiquette",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Name, job ... and country?",
+  "uiLang": "en",
+  "format": "choose-needed-info",
+  "generative": true,
+  "goal": "Notice that two self-introduction cards do not contain the fact a question asks for, decide what is still missing, and ask for it in Korean.",
+  "thinking": [
+   "Sufficiency of information",
+   "A name is a clue, not proof",
+   "Asking for the one missing fact"
+  ],
+  "differsFromPlain": "Plain practice asks learners to read a card and answer from it. Here the question cannot be answered from the cards, and you must see why and ask.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows 이름, 학생, 선생님, 사람 and country names"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "First day of class. Your teacher hands out two self-introduction cards (made up for this task).\n\n[카드 1]\n안녕하세요? 저는 수진이에요. 학생이에요.\n\n[카드 2]\n안녕하세요? 저는 마이클이에요. 선생님이에요.\n\nThe teacher points at card 1 and asks: \"수진 씨는 한국 사람이에요?\"",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Your teacher asks: '수진 씨는 한국 사람이에요?' Using only the two cards, what is the best answer?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Yes. 수진 is a Korean name, so she is from Korea.",
+      "reveals": "A name is a hint, not proof: people of many countries have Korean names, and Korean people have other names. Look for a sentence that names a country."
+     },
+     {
+      "id": "b",
+      "text": "No. 학생 means she studies abroad, so she is not Korean.",
+      "reveals": "학생 only means 'student'. It says nothing about where she is from."
+     },
+     {
+      "id": "c",
+      "text": "Not yet. The cards give her name and job, but no country."
+     },
+     {
+      "id": "d",
+      "text": "Not yet. Card 1 has no name, so nobody can say.",
+      "reveals": "The name is on the card: 수진. The missing piece is a different one."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "Card 1 gives a name (수진) and a job (학생) but never a country. Card 2 does not help: it is about 마이클. The answer is 'unknown yet', and you need one more fact.",
+    "hints": [
+     "List what each sentence on card 1 tells you: a name, a job ... anything else?",
+     "Ask yourself whether the cards contain any word for a country or '-사람'."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "Imagine 수진 adds ONE sentence to her card. Which added sentences would settle the teacher's question? Choose all that settle it (a 'yes' or a 'no' both count).",
+    "options": [
+     {
+      "id": "a",
+      "text": "저는 한국어를 공부해요.",
+      "reveals": "Many people from many countries study Korean, so this does not tell her country."
+     },
+     {
+      "id": "b",
+      "text": "저는 호주 사람이에요."
+     },
+     {
+      "id": "c",
+      "text": "저는 한국 사람이에요."
+     },
+     {
+      "id": "d",
+      "text": "저는 커피를 좋아해요.",
+      "reveals": "Liking coffee has nothing to do with a country."
+     }
+    ],
+    "correct": [
+     "b",
+     "c"
+    ],
+    "explain": "A sentence with '-사람이에요' names the country. 호주 사람 answers 'no', 한국 사람 answers 'yes'. Studying Korean or liking coffee does not decide it.",
+    "hints": [
+     "Look for the sentences that name a person's country, not a hobby or a study.",
+     "Test each sentence: after reading it, could you say 'yes' or 'no' for sure?"
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Write your question to 수진 in Korean (polite -요 speech) to find out the missing fact.",
+    "placeholder": "예: ...",
+    "minChars": 4,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "is a question",
+      "mode": "any",
+      "patterns": [
+       "[?？]",
+       "이에요",
+       "예요",
+       "까요",
+       "나라",
+       "어디",
+       "어느",
+       "[Ww]hat",
+       "[Ww]here",
+       "\\?"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "asks about her country or nationality",
+      "mode": "any",
+      "patterns": [
+       "나라",
+       "[가-힣]+ ?사람",
+       "국적",
+       "어디.{0,5}(왔|살|사람)",
+       "[Cc]ountr",
+       "[Nn]ationality",
+       "[Ww]here.{0,15}from"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my question ask for the missing fact (the country) and not something the cards already say?",
+     "Is it polite (-요) and short enough to answer in one sentence?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "수진 씨는 어느 나라 사람이에요?"
+     },
+     {
+      "text": "수진 씨는 한국 사람이에요?"
+     },
+     {
+      "text": "어느 나라에서 왔어요?"
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "수진 씨는 학생이에요?",
+      "why": "Asks something the card already says."
+     },
+     {
+      "text": "이름이 뭐예요?",
+      "why": "The name is already on the card; the missing fact is the country."
+     },
+     {
+      "text": "안녕하세요.",
+      "why": "Not a question; asks nothing."
+     }
+    ],
+    "humanReview": "Whether the question is natural and polite (e.g. 씨 after the name) needs a person.",
+    "hints": [
+     "Decide first which fact is missing, then ask only about that.",
+     "End your sentence with a question form (-이에요? / -예요?)."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Sufficiency",
+    "full": "Sees that the cards give no country and that a name does not prove one",
+    "partial": "Says 'not sure' without a reason",
+    "none": "Answers yes or no from the name or the job"
+   },
+   {
+    "criterion": "Question",
+    "full": "Polite question that asks only for the missing fact",
+    "partial": "Understandable but asks something already known",
+    "none": "Not a question or agrees without asking"
+   }
+  ],
+  "alternatives": [
+   "'수진 씨는 한국 사람이에요?' is as good as 'which country' because the answer settles it.",
+   "Asking '어디에서 왔어요?' also targets the country."
+  ],
+  "hardCases": [
+   "A learner may say a Korean-looking name is 'good evidence'. The task treats it as a hint only; a correct 'not yet' is based on the missing sentence."
+  ],
+  "cautions": {
+   "language": "Only 1급 words and the endings -이에요/예요, -아요/어요, -ㅂ니다; no romanization.",
+   "culture": "Names do not decide nationality: people of any background may have a Korean or a foreign name. Honorific and politeness norms vary by region, workplace, age and personal preference; this task reflects common standard-Korean usage, not a rule for every situation.",
+   "accessibility": "All material is text; nothing depends on colour or pictures. Names, countries and ages are made up."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of what the cards do and do not say",
+    "The question form and a mention of country or 사람"
+   ],
+   "human": [
+    "Naturalness and politeness of the question"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "n-k-l1e-02",
+  "subject": "korean",
+  "grade": "K2",
+  "topic": "greetings, introductions and etiquette",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Rina's tag and Rina's words",
+  "uiLang": "en",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Check a spoken self-introduction against a name tag, find the one line whose fact is wrong, name the kind of mistake, and repair it.",
+  "thinking": [
+   "Checking a text against a source",
+   "Separating a grammar error from a wrong fact",
+   "Repairing only what is wrong"
+  ],
+  "differsFromPlain": "Plain practice corrects the grammar of a sentence. Here every sentence is correct Korean, and the error is a fact that disagrees with another source.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows 선생님, 학생, 일본 사람 and -이에요/예요"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "Rina is a visitor. She wears a name tag and introduces herself to the class.\n\n[이름표]\n이름: 리나\n나라: 일본\n직업: 선생님\n\nShe says the five lines below.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "Rina reads her self-introduction aloud. Compare it with her name tag. Exactly one line does not match the tag. Which line is it?",
+    "lines": [
+     "안녕하세요?",
+     "저는 리나예요.",
+     "저는 일본 사람이에요.",
+     "저는 학생이에요.",
+     "만나서 반가워요."
+    ],
+    "wrong": [
+     3
+    ],
+    "explain": "Line 4 says 학생이에요 ('I am a student'), but the tag says 선생님 (teacher). The Korean in line 4 is grammatically fine; the fact is wrong. Lines 2 and 3 match the tag, and lines 1 and 5 are greetings that carry no facts.",
+    "hints": [
+     "Some lines are greetings and carry no facts. Mark the lines that do carry a fact.",
+     "Take the tag fact by fact (name, country, job) and find the line that says each one."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "What kind of mistake is the line you picked?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Wrong ending: it should be -예요, not -이에요.",
+      "reveals": "The ending -이에요 is correct after a syllable with a final consonant (생). The sentence is grammatical."
+     },
+     {
+      "id": "b",
+      "text": "The grammar is fine, but the fact disagrees with the name tag."
+     },
+     {
+      "id": "c",
+      "text": "Too casual for a first meeting.",
+      "reveals": "The ending -요 is already polite, so the register is fine."
+     },
+     {
+      "id": "d",
+      "text": "저는 should be 나는.",
+      "reveals": "저는 is the polite word for 'I' and fits a first meeting; 나는 would be the casual one."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "A line can be correct Korean and still be wrong for the situation. Here the sentence is fine, but it does not match the tag.",
+    "hints": [
+     "Read the line aloud as grammar only: does it break any rule?",
+     "Then compare its meaning, not its form, with the tag."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Rewrite the wrong line in Korean so that it matches the name tag. Keep polite -요 speech.",
+    "placeholder": "예: ...",
+    "minChars": 4,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "gives the job from the tag",
+      "mode": "any",
+      "patterns": [
+       "선생님",
+       "[Tt]eacher"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다",
+       "[Tt]eacher"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "does not repeat 'I am a student'",
+      "mode": "none",
+      "patterns": [
+       "학생이에요",
+       "학생입니다",
+       "학생이야",
+       "[Ss]tudent"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my line say the job that is on the tag?",
+     "Did I keep the ending polite?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "저는 선생님이에요."
+     },
+     {
+      "text": "저는 학생이 아니에요. 선생님이에요."
+     },
+     {
+      "text": "선생님이에요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "저는 학생이에요.",
+      "why": "Repeats the wrong fact."
+     },
+     {
+      "text": "저는 선생님이야.",
+      "why": "Casual ending in a first-meeting introduction."
+     },
+     {
+      "text": "저는 일본 사람이에요.",
+      "why": "Says the country, not the job."
+     }
+    ],
+    "humanReview": "Whether the corrected line sounds natural in the speech needs a person.",
+    "hints": [
+     "Put the correct job word from the tag into the same sentence pattern.",
+     "Check the ending: does the job word end in a consonant or a vowel?"
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finding the line",
+    "full": "Picks the line whose fact disagrees and says why",
+    "partial": "Picks the right line without a reason",
+    "none": "Picks a line with correct information or a greeting"
+   },
+   {
+    "criterion": "Repair",
+    "full": "Polite sentence with the job from the tag",
+    "partial": "Right job but not polite",
+    "none": "Repeats the error or changes another fact"
+   }
+  ],
+  "alternatives": [
+   "Rewriting as '저는 학생이 아니에요. 선생님이에요.' is also fine.",
+   "Using 직업은 선생님이에요 also repairs the line."
+  ],
+  "hardCases": [
+   "If the tag itself were misprinted, the line might be right. The task fixes the tag as the reliable source; in real life you would ask Rina."
+  ],
+  "cautions": {
+   "language": "Only 1급 words and the endings -이에요/예요, -아요/어요, -ㅂ니다; no romanization.",
+   "culture": "Name tags and self-introductions often give name, country and job in that order. Honorific and politeness norms vary by region, workplace, age and personal preference; this task reflects common standard-Korean usage, not a rule for every situation.",
+   "accessibility": "All material is text; nothing depends on colour or pictures. Names, countries and ages are made up."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "The wrong line",
+    "The kind of mistake",
+    "The job word and a polite ending in the repair"
+   ],
+   "human": [
+    "Naturalness of the repaired line"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "n-k-l1e-03",
+  "subject": "korean",
+  "grade": "K2",
+  "topic": "greetings, introductions and etiquette",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "One word, three scenes",
+  "uiLang": "en",
+  "format": "reveal-and-revise",
+  "generative": true,
+  "goal": "Read the same Korean word in three growing scenes, revise its meaning as the situation changes, say what decided it, and use it correctly yourself.",
+  "thinking": [
+   "Meaning depends on context",
+   "Revising an interpretation with new information",
+   "Reading the line before"
+  ],
+  "differsFromPlain": "Plain practice lists one meaning of 아니에요. Here the meaning changes in each scene and you must justify it from the context.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows 고마워요, 죄송해요 and 선생님"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "Three short scenes between the classmates 하나 and 민수 (made up). They use polite -요 speech. Each scene is shown one at a time.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "The same word appears in three small scenes. Read each scene and decide what it means there before you see the next.",
+    "stages": [
+     {
+      "info": "Scene 1. 하나 introduces her friend to 민수.\n\n하나: 민수 씨, 이 사람은 지우 씨예요.\n민수: 지우 씨는 선생님이에요?\n하나: 아니에요.",
+      "ask": "What does 하나's 아니에요 mean here?",
+      "options": [
+       {
+        "id": "a",
+        "text": "No, 지우 is not a teacher."
+       },
+       {
+        "id": "b",
+        "text": "You're welcome.",
+        "reveals": "Nobody has thanked her, so 'you're welcome' has no reason to be said."
+       },
+       {
+        "id": "c",
+        "text": "I'm sorry.",
+        "reveals": "Nobody has done anything wrong in this scene."
+       },
+       {
+        "id": "d",
+        "text": "Never mind; it is okay.",
+        "reveals": "Nothing needs forgiving here; 민수 asked a question."
+       }
+      ],
+      "reasonable": [
+       "a"
+      ],
+      "after": "Answering a yes/no question, 아니에요 means 'no'."
+     },
+     {
+      "info": "Scene 2. Later, 민수 lends 하나 a pen.\n\n하나: 고마워요!\n민수: 아니에요.",
+      "ask": "What does 민수's 아니에요 mean now?",
+      "options": [
+       {
+        "id": "a",
+        "text": "No, I did not lend you a pen.",
+        "reveals": "He is holding out the pen. This reads the word the same way as in Scene 1 and ignores what 하나 just said."
+       },
+       {
+        "id": "b",
+        "text": "It was nothing; you're welcome."
+       },
+       {
+        "id": "c",
+        "text": "No, I am not 민수.",
+        "reveals": "No one asked who he is."
+       },
+       {
+        "id": "d",
+        "text": "I am sorry.",
+        "reveals": "He has nothing to apologise for."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "After 고마워요, 아니에요 is a modest reply: 'It's nothing.' The same word now answers thanks, not a question."
+     },
+     {
+      "info": "Scene 3. In the hallway 민수 bumps into 하나's arm.\n\n민수: 죄송해요!\n하나: 아니에요.",
+      "ask": "What does 하나 mean?",
+      "options": [
+       {
+        "id": "a",
+        "text": "No, you are not sorry.",
+        "reveals": "Nothing in the scene says she doubts him; after an apology, the word gives comfort."
+       },
+       {
+        "id": "b",
+        "text": "I'm not angry; it's all right."
+       },
+       {
+        "id": "c",
+        "text": "No, I am not 하나.",
+        "reveals": "No one asked who she is."
+       },
+       {
+        "id": "d",
+        "text": "You're welcome.",
+        "reveals": "He did not thank her; he apologised."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "After an apology, 아니에요 means 'It's fine, don't worry.' One word, three jobs: the line before it decides."
+     }
+    ],
+    "reflect": "Did your reading of 아니에요 change from scene to scene? What did you look at to decide each time?",
+    "hints": [
+     "Before you choose, read the line just before the word.",
+     "Ask what the other person has just done: asked, thanked or apologised?"
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Looking back at the three scenes, what decided the meaning of 아니에요 each time?",
+    "options": [
+     {
+      "id": "a",
+      "text": "The sound of the word 아니에요.",
+      "reveals": "The word was identical every time, so it cannot be what changed the meaning."
+     },
+     {
+      "id": "b",
+      "text": "The line spoken just before it, and what had just happened."
+     },
+     {
+      "id": "c",
+      "text": "Whether the speaker was a man or a woman.",
+      "reveals": "Both men and women use the word in all three ways."
+     },
+     {
+      "id": "d",
+      "text": "How loudly the word was said.",
+      "reveals": "This task is about written text; the meaning here comes from the words before."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "The word never changed. The meaning came from the previous line: a question (no), thanks (it's nothing) or an apology (it's fine).",
+    "hints": [
+     "Compare what stayed the same and what changed across the three scenes.",
+     "Look at the thing that came right before the word each time."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "A classmate says '고마워요!' to you because you lent a pen. Reply in Korean (polite -요 speech) with a modest 'It's nothing'.",
+    "placeholder": "예: ...",
+    "minChars": 3,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "a modest 'it's nothing' reply",
+      "mode": "any",
+      "patterns": [
+       "아니에요",
+       "괜찮아요",
+       "천만에요",
+       "별말씀",
+       "뭘요",
+       "[Yy]ou.?re welcome",
+       "[Nn]o problem",
+       "[Ii]t.?s nothing"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "polite",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다",
+       "[Yy]ou.?re welcome",
+       "[Nn]o problem",
+       "[Ii]t.?s nothing"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my reply play down the favour instead of repeating the thanks?",
+     "Is the ending polite?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "아니에요."
+     },
+     {
+      "text": "아니에요, 괜찮아요."
+     },
+     {
+      "text": "천만에요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "고마워요.",
+      "why": "Repeats the thanks instead of answering it."
+     },
+     {
+      "text": "안녕히 가세요.",
+      "why": "A goodbye, not a reply to thanks."
+     },
+     {
+      "text": "죄송해요.",
+      "why": "An apology; nothing needs forgiving here."
+     }
+    ],
+    "humanReview": "Whether the reply feels natural for the classmate relationship needs a person.",
+    "hints": [
+     "Think of the line you saw after 고마워요 in scene 2.",
+     "Keep the ending polite (-요); a short reply is fine."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Revising",
+    "full": "Chooses a reasonable reading in each scene and sees that the word did not change",
+    "partial": "Gets some scenes right",
+    "none": "Gives 'no' for every scene"
+   },
+   {
+    "criterion": "Reply",
+    "full": "Modest, polite reply to thanks",
+    "partial": "Modest but not polite",
+    "none": "Repeats thanks or answers something else"
+   }
+  ],
+  "alternatives": [
+   "'괜찮아요' is also a natural answer to 고마워요.",
+   "'천만에요' is a bit more formal but also correct."
+  ],
+  "hardCases": [
+   "Some learners hear 아니에요 after thanks as a real 'no'. The scene (he lends the pen) shows it is modesty."
+  ],
+  "cautions": {
+   "language": "Only 1급 words and the endings -이에요/예요, -아요/어요, -ㅂ니다; no romanization.",
+   "culture": "Modest replies to thanks and apologies are common in Korean everyday talk, but how often people use them varies. Honorific and politeness norms vary by region, workplace, age and personal preference; this task reflects common standard-Korean usage, not a rule for every situation.",
+   "accessibility": "All material is text; nothing depends on colour or pictures. Names, countries and ages are made up."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Reasonable readings in each scene",
+    "Which clue decided the meaning",
+    "Reply contains a modest phrase and a polite ending"
+   ],
+   "human": [
+    "Naturalness of the reply"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "n-k-l1e-04",
+  "subject": "korean",
+  "grade": "K2",
+  "topic": "greetings, introductions and etiquette",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Who is younger? Only comparisons",
+  "uiLang": "en",
+  "format": "build-many-verify",
+  "generative": true,
+  "goal": "Turn four ordinary self-introductions that only compare ages into a rule, build several valid age sets, greet politely with one, and find what is true in all of them.",
+  "thinking": [
+   "Comparisons are not numbers",
+   "Finding several solutions",
+   "What holds in every case"
+  ],
+  "differsFromPlain": "Plain practice reads one age from one sentence. Here nobody says a number except 민아, so you must work with 'younger' and 'older' and see what is certain.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows -살 and numbers up to 60",
+   "Has met -보다 (than); it is glossed under the material"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "Four people meet in a Korean class (all made up). 민아 says her age. The others only compare.\n\n민아: 저는 20살이에요.\n하나: 저는 민아 씨보다 어려요. 지호 씨보다 나이가 많아요.\n선생님: 저는 민아 씨보다 나이가 많아요.\n(지호 says nothing about age.)\n\nWords: 어려요 = is young (younger); 나이가 많아요 = is older; A보다 = than A.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "scaffold": true,
+    "prompt": "Hana says: '저는 민아 씨보다 어려요.' What does that tell you about Hana?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Hana is 19, so she is one year younger than 민아.",
+      "reveals": "The sentence says 'younger' but no number. 19 is only one of many possible ages."
+     },
+     {
+      "id": "b",
+      "text": "Hana is younger than 민아; the sentence gives no number."
+     },
+     {
+      "id": "c",
+      "text": "Hana is older than 민아.",
+      "reveals": "어려요 means 'young'. -보다 means 'than', so Hana is younger, not older."
+     },
+     {
+      "id": "d",
+      "text": "Hana and 민아 are the same age.",
+      "reveals": "If they were the same age, nobody would say '어려요'."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "'-보다 어려요' sets a comparison, not a number. Many ages fit.",
+    "hints": [
+     "Find 보다 in the sentence and see which two people it connects.",
+     "Ask whether any number appears in her sentence."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "build",
+    "prompt": "Everyone in the class is between 10 and 60. 민아 is 20. Build 3 different examples (j = 지호, h = 하나, t = 선생님) in which every sentence is true, and use a different age for 하나 in each.",
+    "vars": [
+     {
+      "name": "j",
+      "label": "지호's age"
+     },
+     {
+      "name": "h",
+      "label": "하나's age"
+     },
+     {
+      "name": "t",
+      "label": "선생님's age"
+     }
+    ],
+    "constraints": [
+     {
+      "id": "c0",
+      "expr": "j==floor(j) && h==floor(h) && t==floor(t)",
+      "ok": "Whole numbers.",
+      "fail": "Ages are whole numbers."
+     },
+     {
+      "id": "c1",
+      "expr": "j>=10 && t<=60",
+      "ok": "Within 10 to 60.",
+      "fail": "Nobody in the class is under 10 or over 60."
+     },
+     {
+      "id": "c2",
+      "expr": "h<20",
+      "ok": "하나 is younger than 민아 (20).",
+      "fail": "하나 says she is younger than 민아, who is 20."
+     },
+     {
+      "id": "c3",
+      "expr": "j<h",
+      "ok": "지호 is younger than 하나.",
+      "fail": "하나 says she is older than 지호."
+     },
+     {
+      "id": "c4",
+      "expr": "t>20",
+      "ok": "선생님 is older than 민아.",
+      "fail": "선생님 says he or she is older than 민아, who is 20."
+     }
+    ],
+    "need": 3,
+    "distinctBy": "h",
+    "modelRows": [
+     {
+      "j": 12,
+      "h": 15,
+      "t": 35
+     },
+     {
+      "j": 10,
+      "h": 18,
+      "t": 45
+     },
+     {
+      "j": 14,
+      "h": 19,
+      "t": 60
+     }
+    ],
+    "badRows": [
+     {
+      "j": 15,
+      "h": 15,
+      "t": 30
+     },
+     {
+      "j": 12,
+      "h": 15,
+      "t": 18
+     },
+     {
+      "j": 12,
+      "h": 22,
+      "t": 40
+     }
+    ],
+    "explain": "The sentences give only comparisons, so many ages fit: for example 12 < 15 < 20 < 35. Any numbers in the right order work.",
+    "hints": [
+     "Put the four people in order from youngest to oldest first.",
+     "Pick 하나's age, then choose a younger 지호 and an older 선생님.",
+     "Check each Korean sentence against your numbers one by one."
+    ],
+    "because": {
+     "id": "s2b",
+     "kind": "write",
+     "prompt": "Choose one of your examples. Write in Korean what 지호 says when he meets 선생님 for the first time: a polite greeting and his age.",
+     "placeholder": "예: ...",
+     "minChars": 6,
+     "checks": [
+      {
+       "id": "w1",
+       "label": "polite greeting",
+       "mode": "any",
+       "patterns": [
+        "안녕하세요",
+        "안녕하십니까"
+       ]
+      },
+      {
+       "id": "w2",
+       "label": "says an age with 살",
+       "mode": "any",
+       "patterns": [
+        "\\d+ ?살",
+        "(한|두|세|네|다섯|여섯|일곱|여덟|아홉|열|열한|열두|열세|열네|열다섯|열여섯|열일곱|열여덟|열아홉) ?살"
+       ]
+      }
+     ],
+     "selfAssess": [
+      "Does the age I wrote match the 지호 number in my example?",
+      "Is the whole text polite?"
+     ],
+     "modelAnswers": [
+      {
+       "text": "안녕하세요? 저는 지호예요. 12살이에요."
+      },
+      {
+       "text": "안녕하세요, 선생님! 저는 열두 살이에요."
+      }
+     ],
+     "badAnswers": [
+      {
+       "text": "안녕! 나는 12살이야.",
+       "why": "Casual greeting and ending for a first meeting with a teacher."
+      },
+      {
+       "text": "안녕하세요?",
+       "why": "Greets but gives no age."
+      }
+     ],
+     "humanReview": "Whether the age matches the example and the text sounds natural needs a person.",
+     "hints": [
+      "Start with the polite greeting you know from the first day of class.",
+      "Use your 지호 number plus 살 for the age."
+     ]
+    }
+   },
+   {
+    "id": "s3",
+    "kind": "choose",
+    "prompt": "Which statement is true in EVERY correct example, not just in yours?",
+    "options": [
+     {
+      "id": "a",
+      "text": "하나 is two years younger than 민아.",
+      "reveals": "The sentences only say 하나 is younger. In your examples the gap changes (15, 18, 19 ...)."
+     },
+     {
+      "id": "b",
+      "text": "선생님 is older than 민아 by 10 years.",
+      "reveals": "The sentences say 선생님 is older than 민아 but never say by how many years."
+     },
+     {
+      "id": "c",
+      "text": "선생님 is older than 지호."
+     },
+     {
+      "id": "d",
+      "text": "지호 is older than 하나.",
+      "reveals": "Check 하나's sentence again: 지호 is the younger one of the two."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "지호 < 하나 < 민아 (20) < 선생님, so 선생님 is older than 지호 in every example, even though no sentence says it directly.",
+    "hints": [
+     "Write your three examples next to each other and see what never changes.",
+     "Follow the chain from the youngest to the oldest person."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Reading comparisons",
+    "full": "Builds valid age sets and sees that the order is fixed but numbers are free",
+    "partial": "Builds some valid sets",
+    "none": "Sets break the order"
+   },
+   {
+    "criterion": "Greeting",
+    "full": "Polite greeting with an age",
+    "partial": "Greeting or age missing",
+    "none": "Casual or unrelated"
+   }
+  ],
+  "alternatives": [
+   "Any ages in the right order are correct, e.g. 11 < 14 < 20 < 40.",
+   "Reading '나이가 많아요' as 'older' is the intended meaning."
+  ],
+  "hardCases": [
+   "Some learners add that the youngest must greet first. That is a common custom, but it is not part of the sentences."
+  ],
+  "cautions": {
+   "language": "Only 1급 words and the endings -이에요/예요, -아요/어요, -ㅂ니다; no romanization.",
+   "culture": "In Korea, age often shapes who uses which speech level; customs differ by place and person. Honorific and politeness norms vary by region, workplace, age and personal preference; this task reflects common standard-Korean usage, not a rule for every situation.",
+   "accessibility": "All material is text; nothing depends on colour or pictures. Names, countries and ages are made up."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Each example against the five conditions",
+    "The greeting and an age with 살"
+   ],
+   "human": [
+    "Whether the age in the text matches the example"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-l1e-05",
+  "subject": "korean",
+  "grade": "K2",
+  "topic": "greetings, introductions and etiquette",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "A self-introduction a stranger can use",
+  "uiLang": "en",
+  "format": "make-your-own",
+  "generative": true,
+  "goal": "Write a three-sentence self-introduction for a given person, choosing the right form of 'to be' after each word, and answer a greeting in kind.",
+  "thinking": [
+   "Giving a stranger the facts they need",
+   "Choosing a form by the last sound",
+   "Answering a greeting in kind"
+  ],
+  "differsFromPlain": "Plain practice fills in blanks in a model. Here you write your own sentences and the forms depend on the last sound of each word.",
+  "prerequisites": [
+   "Can read Hangul and batchim",
+   "Knows -이에요/예요 and 저는"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "You play 벤 (a made-up person) at your first Korean class. Here is his card.\n\n[카드]\n이름: 벤\n나라: 호주\n직업: 의사\n\nThe teacher is older than you.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "scaffold": true,
+    "prompt": "Your name is 벤 (it ends in a consonant, ㄴ). How do you say 'I am Ben'?",
+    "options": [
+     {
+      "id": "a",
+      "text": "저는 벤예요.",
+      "reveals": "-예요 follows a syllable that ends in a vowel (e.g. 안나예요). 벤 ends in a consonant."
+     },
+     {
+      "id": "b",
+      "text": "저는 벤에요.",
+      "reveals": "-에요 is not the form for names; use -이에요 or -예요."
+     },
+     {
+      "id": "c",
+      "text": "저는 벤이예요.",
+      "reveals": "-이예요 is a common misspelling. The correct forms are -이에요 and -예요."
+     },
+     {
+      "id": "d",
+      "text": "저는 벤이에요."
+     }
+    ],
+    "correct": [
+     "d"
+    ],
+    "explain": "After a final consonant use -이에요 (벤이에요, 사람이에요); after a vowel use -예요 (의사예요, 안나예요).",
+    "hints": [
+     "Look at the last sound of 벤: does it end in a vowel or a consonant?",
+     "Remember the two forms of 'to be': one after a vowel, one after a consonant."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Make your own introduction in Korean for this made-up person: 이름 벤 / 나라 호주 / 직업 의사. Greet first, then give name, country and job in 3 short sentences. Use polite speech.",
+    "placeholder": "예: ...",
+    "minChars": 10,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "gives the name 벤",
+      "mode": "any",
+      "patterns": [
+       "벤"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "gives the country 호주",
+      "mode": "any",
+      "patterns": [
+       "호주"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "gives the job 의사",
+      "mode": "any",
+      "patterns": [
+       "의사"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "no wrong -이에요/예요 form",
+      "mode": "none",
+      "patterns": [
+       "벤 ?예요",
+       "벤 ?에요",
+       "의사 ?이에요",
+       "의사 ?에요",
+       "사람 ?예요",
+       "사람 ?에요",
+       "호주 ?이에요",
+       "호주 ?에요",
+       "아니"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my text give name, country and job?",
+     "Did I choose 이에요 or 예요 correctly after each word?",
+     "Could a stranger understand who I am from it?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "안녕하세요? 저는 벤이에요. 호주 사람이에요. 의사예요."
+     },
+     {
+      "text": "안녕하세요, 제 이름은 벤이에요. 저는 호주 사람이에요. 의사예요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "안녕하세요? 저는 벤예요. 호주 사람이에요. 의사예요.",
+      "why": "Wrong form: 벤 ends in a consonant, so it is 벤이에요."
+     },
+     {
+      "text": "안녕. 나는 벤이야. 호주 사람. 의사.",
+      "why": "Casual style, not polite."
+     },
+     {
+      "text": "안녕하세요? 저는 벤이에요.",
+      "why": "Name only; country and job are missing."
+     }
+    ],
+    "humanReview": "Whether the text sounds like a natural self-introduction needs a person.",
+    "hints": [
+     "Start with the greeting you know, then add one fact per sentence.",
+     "Check each word before -이에요/예요: does it end in a consonant or a vowel?"
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "After your introduction, the teacher says '만나서 반가워요.' Reply in Korean (polite). Show that you feel the same.",
+    "placeholder": "예: ...",
+    "minChars": 3,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "answers with the same feeling",
+      "mode": "any",
+      "patterns": [
+       "반가",
+       "반갑",
+       "저도",
+       "[Nn]ice to meet",
+       "[Gg]lad",
+       "[Pp]leased"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "polite",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다",
+       "[Nn]ice to meet",
+       "[Gg]lad",
+       "[Pp]leased"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "not negated (no 안 반가워요 / 반갑지 않아요)",
+      "mode": "none",
+      "patterns": [
+       "안 ?반가",
+       "안 ?반갑",
+       "반갑지 ?않",
+       "반가워 ?하지",
+       "not ",
+       "n't"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my reply mirror the teacher's feeling?",
+     "Is it polite?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "저도 반가워요."
+     },
+     {
+      "text": "저도 만나서 반가워요."
+     },
+     {
+      "text": "만나서 반갑습니다."
+     },
+     {
+      "text": "저도요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "안녕히 가세요.",
+      "why": "A goodbye, not a reply."
+     },
+     {
+      "text": "감사합니다.",
+      "why": "Thanks; the teacher did not give anything."
+     },
+     {
+      "text": "몰라요.",
+      "why": "Means 'I don't know'."
+     },
+     {
+      "text": "안 반가워요.",
+      "why": "Says the opposite: not glad to meet."
+     }
+    ],
+    "humanReview": "Natural use of 저도 and the warmth of the reply need a person.",
+    "hints": [
+     "Read what the teacher says: what feeling does it express?",
+     "Reply so that the teacher hears you feel the same way, in polite speech."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Content",
+    "full": "Greeting, name, country and job in polite speech",
+    "partial": "One fact missing",
+    "none": "Facts missing or not polite"
+   },
+   {
+    "criterion": "Forms",
+    "full": "Correct 이에요/예요 after every word",
+    "partial": "One slip",
+    "none": "Several wrong forms"
+   }
+  ],
+  "alternatives": [
+   "제 이름은 벤이에요 is as good as 저는 벤이에요.",
+   "Ending with -입니다 is also polite."
+  ],
+  "hardCases": [
+   "Colloquial writing such as '벤에요' is heard in speech; this task treats the standard forms."
+  ],
+  "cautions": {
+   "language": "Only 1급 words and the endings -이에요/예요, -아요/어요, -ㅂ니다; no romanization.",
+   "culture": "A greeting with a bow or a nod is usual when meeting a teacher; the amount varies by person. Honorific and politeness norms vary by region, workplace, age and personal preference; this task reflects common standard-Korean usage, not a rule for every situation.",
+   "accessibility": "All material is text; nothing depends on colour or pictures. Names, countries and ages are made up."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Which form of 'to be' fits",
+    "Name, country, job, polite ending and no wrong form"
+   ],
+   "human": [
+    "Naturalness and warmth"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-l1f-01",
+  "subject": "korean",
+  "grade": "K2",
+  "topic": "Ordering food: menus with hidden conditions",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Can we order the lunch set?",
+  "uiLang": "en",
+  "format": "choose-needed-info",
+  "generative": true,
+  "goal": "Read a short menu sign, pick the facts that decide whether an order is possible, apply them to a real case, and ask the clerk a polite question about what is still available.",
+  "thinking": [
+   "Telling relevant from irrelevant information",
+   "Checking that all conditions hold at once",
+   "Asking a clarifying question"
+  ],
+  "differsFromPlain": "Plain practice reads the price off a sign. Here the sign hides conditions, and you must decide which facts to check before ordering.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows numbers + 시, 분 and 명",
+   "Knows 주문 and 세트 from the sign"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "At a restaurant door you read this sign. The set is a Korean lunch special.\n\n[점심 세트]\n김치찌개 세트: 8,000원 (밥, 김치찌개, 음료)\n시간: 12시 ~ 2시\n두 명부터 주문해요.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "You and a friend want to eat the 김치찌개 세트 for lunch. Before you leave, which facts must you check against the sign to know whether you can order it? Choose all that apply.",
+    "options": [
+     {
+      "id": "a",
+      "text": "The price per person (8,000원)",
+      "reveals": "The price is printed on the sign, but it does not limit who may order or when."
+     },
+     {
+      "id": "b",
+      "text": "What comes with the set (밥, 김치찌개, 음료)",
+      "reveals": "This tells you what you get. It is not a rule for ordering."
+     },
+     {
+      "id": "c",
+      "text": "How many people eat together"
+     },
+     {
+      "id": "d",
+      "text": "Which day of the week it is",
+      "reveals": "The sign names no day."
+     },
+     {
+      "id": "e",
+      "text": "What time you will arrive"
+     }
+    ],
+    "correct": [
+     "c",
+     "e"
+    ],
+    "explain": "The sign sets two conditions: the time (12 to 2) and the group size (two people or more). The drink, the money and the seat are not conditions.",
+    "hints": [
+     "Read the sign line by line. Mark each line that sets a rule for ordering, and skip the lines that only list a price or an item.",
+     "Ask for each option: does the sign contain a rule about it?"
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "You and one friend arrive at the restaurant at 두 시 십 분 (2:10). Can you order the 김치찌개 세트?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Yes. You are two people, so the group condition is met.",
+      "reveals": "Both conditions must be met. Check the time as well."
+     },
+     {
+      "id": "b",
+      "text": "No. You are two people, but the set time ended at 2:00."
+     },
+     {
+      "id": "c",
+      "text": "No. It is only for a single person, and you are two.",
+      "reveals": "The sign says the opposite: it is for two people or more."
+     },
+     {
+      "id": "d",
+      "text": "Yes. Lunch sets usually run a few minutes longer, so you can still order it.",
+      "reveals": "The sign gives 2 o'clock as the end. Do not assume extra time."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "The group condition is met (two people), but the time condition is not: the sign says 12:00 to 2:00, and it is already 2:10. Both rules must hold.",
+    "hints": [
+     "Check the two conditions one at a time and write 'yes' or 'no' for each.",
+     "Compare 두 시 십 분 with the time written on the sign."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "The set time is over. Ask the clerk politely in Korean (one short question): what can you order now, or is there another menu?",
+    "placeholder": "예: ...",
+    "minChars": 5,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "is a question",
+      "mode": "any",
+      "patterns": [
+       "[?？]",
+       "까요",
+       "나요",
+       "뭐",
+       "무슨",
+       "어떤"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "asks what is available / another menu",
+      "mode": "any",
+      "patterns": [
+       "메뉴",
+       "다른",
+       "단품",
+       "뭐",
+       "무슨",
+       "어떤",
+       "먹을"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "not casual 반말",
+      "mode": "none",
+      "patterns": [
+       "돼\\?",
+       "되니",
+       "있어\\?",
+       "줘(?!요)",
+       "할래",
+       "뭐야"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my question end politely (-요)?",
+     "Does it ask what I can order now, or about another menu?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "지금 뭐 있어요?"
+     },
+     {
+      "text": "다른 메뉴 있어요?",
+      "note": "Asks for another menu."
+     },
+     {
+      "text": "단품은 돼요?",
+      "note": "Asks about single dishes."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "세트 줘.",
+      "why": "Casual and not a question."
+     },
+     {
+      "text": "안녕.",
+      "why": "Does not ask about the menu."
+     },
+     {
+      "text": "세트는 얼마예요?",
+      "why": "Asks the price, not what you can order now."
+     }
+    ],
+    "humanReview": "Whether the question is natural; learners may mix English words.",
+    "hints": [
+     "Ask about what is available now and end with -요?",
+     "Useful words: 뭐 (what), 다른 (other), 메뉴 (menu)."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finding the conditions",
+    "full": "Picks time and group size and applies both",
+    "partial": "Finds only one condition",
+    "none": "Picks drink, money or seat"
+   },
+   {
+    "criterion": "Question",
+    "full": "Polite, clear question about ordering now",
+    "partial": "Understandable but casual or vague",
+    "none": "Not a question"
+   }
+  ],
+  "alternatives": [
+   "'지금 뭐 먹어요?' or '다른 거 있어요?' are both fine.",
+   "Asking '단품은 돼요?' (can we order single dishes?) is also a good next step."
+  ],
+  "hardCases": [
+   "Some restaurants are flexible and would serve the set at 2:10. The task treats the sign as the rule."
+  ],
+  "cautions": {
+   "language": "Very short sentences. 세트 and 주문 are in the sign and the prerequisites.",
+   "culture": "Lunch sets with time limits are common in Korean restaurants; prices are made up. Honorific and politeness norms vary by region, workplace, age and personal preference; this task reflects common standard-Korean usage, not a rule for every situation.",
+   "accessibility": "All material is text; any scene is described in words, nothing depends on colour. Romanization is not provided. Signs and menus are written out as text."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Selection of the needed facts",
+    "Application of the two conditions",
+    "Question form, polite ending, mention of set or time"
+   ],
+   "human": [
+    "Naturalness of the question"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-l1f-02",
+  "subject": "korean",
+  "grade": "K2",
+  "topic": "Shopping: quantities and prices",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Five cups for the office",
+  "uiLang": "en",
+  "format": "build-many-verify",
+  "generative": true,
+  "goal": "Turn a short message into exact conditions, find several orders that satisfy all of them, and report one in Korean.",
+  "thinking": [
+   "Reading 모두 and 커피도 주스도 precisely",
+   "Treating the money you have as a limit",
+   "Finding more than one solution"
+  ],
+  "differsFromPlain": "Plain practice adds up the price of one given order. Here the message gives conditions and you build several orders yourself.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows numbers, 잔, 원",
+   "Knows 모두 and 커피도 주스도 (glossed under the message)"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "Your friend texts you before you go to the café:\n\n\"커피도 주스도 사 와요. 모두 다섯 잔이에요. 돈은 만 삼천 원 있어요.\"\n\nWords: 커피도 주스도 = both coffee and juice (some of each); 모두 = all together; 돈 = money; 있어요 = you have.\n\n[가격표]\n커피 한 잔: 3,000원\n주스 한 잔: 2,000원",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "scaffold": true,
+    "prompt": "What does '모두 다섯 잔이에요' mean in your friend's message?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Five cups of coffee and five cups of juice",
+      "reveals": "'모두' here counts everything together; separate counts would need words like '각각' or '다섯 잔씩'."
+     },
+     {
+      "id": "b",
+      "text": "Five cups in total, coffee and juice together"
+     },
+     {
+      "id": "c",
+      "text": "Five different kinds of drinks",
+      "reveals": "잔 counts cups, not kinds."
+     },
+     {
+      "id": "d",
+      "text": "At least five cups, more is fine",
+      "reveals": "'이에요' states the number; it does not say 'or more'."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "'모두' means 'altogether'. The coffee cups and the juice cups together are five.",
+    "hints": [
+     "Look at what 모두 counts: each drink separately, or everything at once?",
+     "Count what you will carry home, not each drink separately."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "build",
+    "prompt": "Find 3 different orders that fit everything in the message. c = cups of coffee, j = cups of juice.",
+    "vars": [
+     {
+      "name": "c",
+      "label": "coffee cups (커피)"
+     },
+     {
+      "name": "j",
+      "label": "juice cups (주스)"
+     }
+    ],
+    "constraints": [
+     {
+      "id": "c0",
+      "expr": "c==floor(c) && j==floor(j)",
+      "ok": "Whole cups.",
+      "fail": "Buy whole cups only."
+     },
+     {
+      "id": "c1",
+      "expr": "c>=1 && j>=1",
+      "ok": "You bought both coffee and juice.",
+      "fail": "커피도 주스도: at least one cup of each."
+     },
+     {
+      "id": "c2",
+      "expr": "c+j==5",
+      "ok": "Five cups altogether.",
+      "fail": "모두 다섯 잔이에요: the cups add up to exactly five."
+     },
+     {
+      "id": "c3",
+      "expr": "3000*c+2000*j<=13000",
+      "ok": "Within 13,000 won.",
+      "fail": "The total is more than 13,000 won."
+     }
+    ],
+    "need": 3,
+    "distinctBy": "c",
+    "modelRows": [
+     {
+      "c": 1,
+      "j": 4
+     },
+     {
+      "c": 2,
+      "j": 3
+     },
+     {
+      "c": 3,
+      "j": 2
+     }
+    ],
+    "badRows": [
+     {
+      "c": 4,
+      "j": 1
+     },
+     {
+      "c": 0,
+      "j": 5
+     },
+     {
+      "c": 2,
+      "j": 2
+     },
+     {
+      "c": 3,
+      "j": 3
+     }
+    ],
+    "explain": "1 coffee + 4 juice = 11,000 won; 2 + 3 = 12,000 won; 3 + 2 = 13,000 won. All are within 13,000 won. 4 coffee + 1 juice = 14,000 won is too much. The money is a limit, not the price you must pay.",
+    "hints": [
+     "List the conditions in your own words first, one per line.",
+     "Start with c = 1 and find j so that the cups add up to the total; then try c = 2, and so on.",
+     "Check the money last: 3,000 x c + 2,000 x j. Is it still within what you have?"
+    ],
+    "because": {
+     "id": "s2b",
+     "kind": "write",
+     "prompt": "Pick ONE of your orders and text your friend in Korean (polite -요): how many cups of each you ordered and the total price.",
+     "placeholder": "예: ...",
+     "minChars": 8,
+     "checks": [
+      {
+       "id": "w1",
+       "label": "polite ending",
+       "mode": "any",
+       "patterns": [
+        "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
+       ]
+      },
+      {
+       "id": "w2",
+       "label": "says the coffee count",
+       "mode": "any",
+       "patterns": [
+        "커피[은는을를도만이가]?\\s*(?<![0-9])([1-3](?![0-9])|한|두|세|하나|둘|셋)|(?<![0-9])([1-3]|한|두|세)\\s*잔[은는이가]?\\s*커피"
+       ]
+      },
+      {
+       "id": "w3",
+       "label": "says the juice count",
+       "mode": "any",
+       "patterns": [
+        "주스[은는을를도만이가]?\\s*(?<![0-9])([2-4](?![0-9])|두|세|네|둘|셋|넷)|(?<![0-9])([2-4]|두|세|네)\\s*잔[은는이가]?\\s*주스"
+       ]
+      },
+      {
+       "id": "w4",
+       "label": "says the total (11,000 / 12,000 / 13,000 won)",
+       "mode": "any",
+       "patterns": [
+        "1[123],?000\\s*원",
+        "만\\s*(일천|천|이천|삼천)\\s*원"
+       ]
+      }
+     ],
+     "selfAssess": [
+      "Do my numbers match one order I built?",
+      "Is the total correct?"
+     ],
+     "modelAnswers": [
+      {
+       "text": "커피 두 잔, 주스 세 잔이에요. 모두 만 이천 원이에요."
+      },
+      {
+       "text": "커피는 세 잔이랑 주스는 두 잔이에요. 만 삼천 원이에요."
+      },
+      {
+       "text": "두 잔은 커피예요. 세 잔은 주스예요. 만 이천 원이에요."
+      }
+     ],
+     "badAnswers": [
+      {
+       "text": "샀어.",
+       "why": "Casual and no numbers."
+      },
+      {
+       "text": "음료 많이 샀어요.",
+       "why": "Does not say which drinks, how many, or the price."
+      },
+      {
+       "text": "커피 한 잔, 주스 한 잔이에요. 이천 원이에요.",
+       "why": "The cups do not add up to five and the total does not fit."
+      }
+     ],
+     "humanReview": "Whether the counts and total in the text match a valid order.",
+     "hints": [
+      "Use one of your rows: which two numbers?",
+      "Say the coffee count, the juice count, then the total in won."
+     ]
+    }
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Reading the conditions",
+    "full": "Builds valid orders using all four conditions",
+    "partial": "Some valid orders",
+    "none": "Orders break the conditions"
+   },
+   {
+    "criterion": "Reporting",
+    "full": "Polite text with both drinks, numbers and total",
+    "partial": "Missing one element",
+    "none": "Not a report"
+   }
+  ],
+  "alternatives": [
+   "Any order that satisfies all four conditions is correct.",
+   "A different polite report such as '합계 만 이천 원이에요' is fine."
+  ],
+  "hardCases": [
+   "A learner may think the 13,000 won must be spent in full; only one order (3 coffee, 2 juice) does that, and the orders at 11,000 and 12,000 won are also correct."
+  ],
+  "cautions": {
+   "language": "Prices use digits; the number words in the message are short.",
+   "culture": "Café orders for colleagues or friends are common; prices are made up. Honorific and politeness norms vary by region, workplace, age and personal preference; this task reflects common standard-Korean usage, not a rule for every situation.",
+   "accessibility": "All material is text; any scene is described in words, nothing depends on colour. Romanization is not provided. Signs and menus are written out as text."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Each order against the four conditions",
+    "The report has a polite ending, both drinks with a plausible number and a total of 11,000-13,000 won"
+   ],
+   "human": [
+    "Whether the report matches the chosen order"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-l1f-03",
+  "subject": "korean",
+  "grade": "K2",
+  "topic": "Shopping: prices and quantities",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Three oranges, a good deal?",
+  "uiLang": "en",
+  "format": "judge-evidence-explain",
+  "generative": true,
+  "goal": "Test a shopper's claim against a price sign, separate the price per item from the total, and give advice with numbers.",
+  "thinking": [
+   "Claim versus evidence",
+   "Per-item price versus total price",
+   "Fitting advice to the person's actual need"
+  ],
+  "differsFromPlain": "Plain practice reads one price. Here a friend's claim sounds true, and you must test it against what the buyer needs.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows 개 and Sino-Korean numbers for prices",
+   "Can multiply by 2 and 3"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "At a fruit stand, Jisu and her friend Minsu read the sign:\n\n[귤]\n한 개: 1,000원\n세 개: 2,500원\n\nJisu: 저는 귤 두 개만 필요해요.\nMinsu: 세 개에 이천오백 원이에요! 싸요! 세 개 사요!",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Read the sign. Which statement does the sign support?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Three oranges cost less than two oranges.",
+      "reveals": "3 oranges cost 2,500 won; 2 oranges cost 2,000 won."
+     },
+     {
+      "id": "b",
+      "text": "Two oranges from the single price cost more than the pack of three.",
+      "reveals": "2 x 1,000 = 2,000 won, which is less than 2,500 won."
+     },
+     {
+      "id": "c",
+      "text": "Each orange in the pack of three costs less than a single orange."
+     },
+     {
+      "id": "d",
+      "text": "The pack of three costs the same as three single oranges.",
+      "reveals": "3 singles cost 3,000 won, not 2,500 won."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "The pack costs 2,500 won for three, about 833 won each, while a single costs 1,000 won. So each orange is cheaper in the pack, but the pack costs more in total than two singles.",
+    "hints": [
+     "Compare the price of three single oranges with the price of the pack of three.",
+     "Then compare totals for the same number of oranges."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Jisu needs only two oranges for tomorrow. Is Minsu's advice '세 개 사요, 싸요!' good for her wallet?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Yes. Each orange is cheaper in the pack, so the pack is cheaper for her.",
+      "reveals": "Cheaper per orange does not mean cheaper in total. She would pay 2,500 won, not 2,000 won."
+     },
+     {
+      "id": "b",
+      "text": "No. Two singles cost 2,000 won, and the pack costs more."
+     },
+     {
+      "id": "c",
+      "text": "Yes. 2,500 won is less than 3,000 won.",
+      "reveals": "3,000 won is the price of three singles, but she only needs two oranges."
+     },
+     {
+      "id": "d",
+      "text": "It cannot be decided because the sign has no price for two oranges.",
+      "reveals": "Two singles cost 2 x 1,000 = 2,000 won; the sign gives enough."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "For two oranges, two singles (2,000 won) are cheaper than the pack (2,500 won). Minsu's claim is true per orange, but it does not fit what Jisu needs.",
+    "hints": [
+     "Write down how many oranges Jisu needs, then work out the cost of exactly that many in each way.",
+     "Ask whether 'cheap' in Minsu's sentence means per orange or in total."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Write 1-2 sentences of advice to Jisu (English or Korean). Use numbers from the sign as evidence.",
+    "placeholder": "예: ...",
+    "minChars": 10,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "uses the price of two singles (2,000)",
+      "mode": "any",
+      "patterns": [
+       "2,?000",
+       "이천\\s*원",
+       "2천",
+       "이천(?!오백)",
+       "two thousand"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "uses the pack price (2,500)",
+      "mode": "any",
+      "patterns": [
+       "2,?500",
+       "이천\\s*오백",
+       "2천\\s*5백",
+       "two thousand five"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "recommends buying two as singles (not the pack)",
+      "mode": "any",
+      "patterns": [
+       "single",
+       "separately",
+       "one by one",
+       "individually",
+       "한\\s*개씩",
+       "하나씩",
+       "낱개",
+       "따로",
+       "buy (only |just )?(2|two)\\b",
+       "두\\s*개(만)?\\s*(만\\s*)?(사|구매|살)"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "gives a reason or comparison",
+      "mode": "any",
+      "patterns": [
+       "싸",
+       "비싸",
+       "so ",
+       "because",
+       "than",
+       "보다",
+       "라서",
+       "니까",
+       "서요",
+       "므로",
+       "cost",
+       "less",
+       "cheaper",
+       "more",
+       "expensive",
+       "낫",
+       "저렴",
+       "필요",
+       "(^|\\s)더\\s",
+       "need"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Do I give two numbers, not only 'it is cheaper'?",
+     "Does my advice fit that Jisu needs two oranges?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "두 개만 필요하면 한 개씩 두 개 사요. 이천 원이에요. 세 개는 이천오백 원이라서 더 비싸요."
+     },
+     {
+      "text": "For two oranges, buy two singles: 2,000 won. The pack of three is 2,500 won, so it costs more even if each orange is cheaper."
+     },
+     {
+      "text": "두 개만 필요하면 한 개씩 사세요. 이천 원이에요. 세 개는 이천오백 원이에요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "세 개 사요. 싸요.",
+      "why": "Repeats the claim without evidence."
+     },
+     {
+      "text": "Minsu is right.",
+      "why": "No numbers and ignores that Jisu needs two."
+     }
+    ],
+    "humanReview": "Whether the reasoning separates the price per orange from the total price.",
+    "hints": [
+     "Say what Jisu needs, then give the total for each way of buying.",
+     "End with which way costs less for her."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Testing the claim",
+    "full": "Separates per-orange price from total and applies it to two oranges",
+    "partial": "Sees the pack is cheaper per orange only",
+    "none": "Accepts the claim as it stands"
+   },
+   {
+    "criterion": "Advice with evidence",
+    "full": "Two numbers and a clear conclusion",
+    "partial": "One number or no conclusion",
+    "none": "No evidence"
+   }
+  ],
+  "alternatives": [
+   "If Jisu would really eat a third orange, buying the pack can be reasonable.",
+   "Advice in Korean or English is fine."
+  ],
+  "hardCases": [
+   "Prices ending in 833 are not shown on signs; the task computes about 833 won only in the explanation."
+  ],
+  "cautions": {
+   "language": "Short dialogue; prices are written in digits on the sign.",
+   "culture": "Fruit sold in bundles is common at Korean markets; prices are made up. Honorific and politeness norms vary by region, workplace, age and personal preference; this task reflects common standard-Korean usage, not a rule for every situation.",
+   "accessibility": "All material is text; any scene is described in words, nothing depends on colour. Romanization is not provided. Signs and menus are written out as text."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of the supported statement",
+    "Choice about Jisu's need",
+    "Numbers and a comparison in the answer"
+   ],
+   "human": [
+    "Quality of the reasoning in the advice"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-l1f-04",
+  "subject": "korean",
+  "grade": "K2",
+  "topic": "Ordering food: counting words and money",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Which number goes with which?",
+  "uiLang": "en",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Find number mistakes in an order dialogue, say why the numbers fail, and repair them.",
+  "thinking": [
+   "Using a model (the clerk's lines) to check one's own",
+   "Noticing a rule with two systems",
+   "Explaining an error and repairing it"
+  ],
+  "differsFromPlain": "Plain practice drills number lists. Here you check numbers inside a real order and use the clerk's lines as evidence.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows native numbers (한, 두, 세) and Sino-Korean numbers (일, 이, 삼)",
+   "Knows 잔, 개, 원"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "At a snack café. The menu: 토스트 한 개 2,000원, 주스 한 잔 2,000원. A customer orders one toast and three juices.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "This customer makes mistakes with numbers when ordering and paying. Pick one line that has a number mistake.",
+    "lines": [
+     "점원: 어서 오세요.",
+     "손님: 토스트 한 개 주세요.",
+     "손님: 주스는 삼 잔 주세요.",
+     "점원: 토스트 한 개, 주스 세 잔이에요.",
+     "손님: 네. 얼마예요?",
+     "점원: 팔천 원이에요.",
+     "손님: 여기 여덟 천 원 있어요."
+    ],
+    "wrong": [
+     2,
+     6
+    ],
+    "explain": "Line 3 ('삼 잔') uses the Sino-Korean number with 잔; cups are counted with native numbers: 세 잔. Line 7 ('여덟 천 원') uses a native number with money; money uses Sino-Korean numbers: 팔천 원. (The clerk's lines 4 and 6 show the correct forms.)",
+    "hints": [
+     "Compare the customer's numbers with the numbers the clerk says for the same things.",
+     "Look at each number word and ask: is it for counting things or for money?"
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "In the line '주스는 삼 잔 주세요', what exactly is wrong?",
+    "options": [
+     {
+      "id": "a",
+      "text": "주스 cannot be counted with 잔; one must say 개.",
+      "reveals": "잔 is the correct counter for drinks in cups."
+     },
+     {
+      "id": "b",
+      "text": "주세요 is not the right word for ordering.",
+      "reveals": "주세요 is exactly right for asking for something."
+     },
+     {
+      "id": "c",
+      "text": "Counting cups uses native numbers (한, 두, 세, 네), and 삼 is a Sino-Korean number."
+     },
+     {
+      "id": "d",
+      "text": "삼 is too casual; 세 is just its polite form.",
+      "reveals": "The difference is not politeness. Korean has two number systems."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "Korean has two number systems. Things you count with 개, 잔, 명 use native numbers (한, 두, 세, 네...). Money, minutes and dates use Sino-Korean numbers (일, 이, 삼...).",
+    "hints": [
+     "Compare the number the clerk uses before 잔 with the customer's number.",
+     "Think about which number system you use for 원."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Rewrite the two wrong lines correctly: '주스는 삼 잔 주세요.' and '여기 여덟 천 원 있어요.'",
+    "placeholder": "예: ...",
+    "minChars": 10,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "cups with a native number (세 잔)",
+      "mode": "any",
+      "patterns": [
+       "세\\s*잔",
+       "3\\s*잔",
+       "석\\s*잔"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "money as 팔천 원 (8,000)",
+      "mode": "any",
+      "patterns": [
+       "팔\\s*천",
+       "8,?000",
+       "8\\s*천"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "no 삼 잔",
+      "mode": "none",
+      "patterns": [
+       "삼\\s*잔"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "no 여덟 천",
+      "mode": "none",
+      "patterns": [
+       "여덟\\s*천",
+       "여덜\\s*천",
+       "팔\\s*잔"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I use a native number for cups?",
+     "Did I use a Sino-Korean number for money?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "주스는 세 잔 주세요. 여기 팔천 원 있어요."
+     },
+     {
+      "text": "주스 세 잔 주세요. 여기 팔천 원이에요.",
+      "note": "Also fine."
+     },
+     {
+      "text": "주스는 3잔 주세요. 여기 8,000원 있어요.",
+      "note": "Digits are fine."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "주스는 삼 잔 주세요. 여기 팔천 원 있어요.",
+      "why": "Only the money line was fixed."
+     },
+     {
+      "text": "주스는 세 잔 주세요. 여기 여덟 천 원 있어요.",
+      "why": "Only the cups line was fixed."
+     }
+    ],
+    "humanReview": "Whether alternative wording is natural.",
+    "hints": [
+     "Fix the cups line first: which number word comes before 잔?",
+     "Then say 8,000 with the number system you use for money."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finding the mistake",
+    "full": "Picks a wrong line and gives the number-system reason",
+    "partial": "Picks a wrong line only",
+    "none": "Picks a correct line"
+   },
+   {
+    "criterion": "Repair",
+    "full": "Both lines corrected",
+    "partial": "One line corrected",
+    "none": "Not corrected"
+   }
+  ],
+  "alternatives": [
+   "'주스 세 잔 주세요' and '주스는 세 잔이요' are both fine.",
+   "Digits (3잔, 8,000원) are accepted in the repair."
+  ],
+  "hardCases": [
+   "Some learners hear '삼 잔' as understandable. It is understood but not natural."
+  ],
+  "cautions": {
+   "language": "Number words are the point of the task and are explained in the explanation.",
+   "culture": "Ordering in cafés by counting is routine; prices are made up. Honorific and politeness norms vary by region, workplace, age and personal preference; this task reflects common standard-Korean usage, not a rule for every situation.",
+   "accessibility": "All material is text; any scene is described in words, nothing depends on colour. Romanization is not provided. Signs and menus are written out as text."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Picking a wrong line",
+    "Choice about the two number systems",
+    "Cups and money forms present, wrong forms absent"
+   ],
+   "human": [
+    "Naturalness of the rewritten lines"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "n-k-l1f-05",
+  "subject": "korean",
+  "grade": "K2",
+  "topic": "Ordering food: what the clerk can and cannot serve",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "The order that changes",
+  "uiLang": "en",
+  "format": "reveal-and-revise",
+  "generative": true,
+  "goal": "Revise what an order will turn into as a clerk adds limits and times, then summarise the final result.",
+  "thinking": [
+   "Updating a reading when new information arrives",
+   "Tracking a number and a time condition",
+   "Summarising without distortion"
+  ],
+  "differsFromPlain": "Plain practice reads a finished order. Here the order changes line by line.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows 한 줄, 한 그릇, 시 and 반",
+   "Knows 죄송해요 and ~부터"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "A small noodle shop. The clock on the wall says 열한 시 반 (11:30). A customer talks with the clerk.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "Read each part of the conversation, choose the most likely result, then continue.",
+    "hints": [
+     "Decide using only what has been said so far.",
+     "Check each number and each time against the clock in the material."
+    ],
+    "reflect": "Each new line changed what the customer can get and when. A polite refusal ('죄송해요') limits the order, and a time word ('열두 시부터') changes the answer from 'no' to 'later'.",
+    "stages": [
+     {
+      "info": "손님: 김밥 두 줄 주세요.\n점원: 죄송해요. 김밥은 한 줄 있어요.",
+      "ask": "How many rolls can the customer get now?",
+      "options": [
+       {
+        "id": "a",
+        "text": "Two rolls, as ordered",
+        "reveals": "The clerk said there is only one roll."
+       },
+       {
+        "id": "b",
+        "text": "One roll"
+       },
+       {
+        "id": "c",
+        "text": "No rolls at all",
+        "reveals": "The clerk said there is one roll, so it is not zero."
+       },
+       {
+        "id": "d",
+        "text": "Two rolls, but later",
+        "reveals": "The clerk gave no sign of waiting; she said how many there are now."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "'한 줄 있어요' means there is one roll. The order of two cannot be filled."
+     },
+     {
+      "info": "손님: 그럼 라면은요? 라면 한 그릇 주세요.\n점원: 라면은 열두 시부터예요. 지금은 열한 시 반이에요.",
+      "ask": "Can the customer eat ramen right now?",
+      "options": [
+       {
+        "id": "a",
+        "text": "Yes, the clerk will bring it at once",
+        "reveals": "'열두 시부터' means it starts at 12:00; it is 11:30 now."
+       },
+       {
+        "id": "b",
+        "text": "No, ramen starts in half an hour"
+       },
+       {
+        "id": "c",
+        "text": "No, ramen is sold out for today",
+        "reveals": "'부터' means 'from', so ramen will come later today; it is not sold out."
+       },
+       {
+        "id": "d",
+        "text": "Yes, but only half a bowl",
+        "reveals": "Nothing says half a bowl."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "'열두 시부터' means 'from 12:00'. At 11:30 the ramen has to wait for 30 minutes."
+     },
+     {
+      "info": "손님: 그럼 김밥 한 줄 주세요. 라면은 열두 시에 주세요.\n점원: 네, 알겠어요. 김밥은 지금, 라면은 열두 시에 드려요.",
+      "ask": "What will the customer get, and when?",
+      "options": [
+       {
+        "id": "a",
+        "text": "One kimbap now and one ramen at 12:00"
+       },
+       {
+        "id": "b",
+        "text": "Two kimbap now and ramen at 12:00",
+        "reveals": "The clerk had only one roll."
+       },
+       {
+        "id": "c",
+        "text": "One kimbap and one ramen, both at 12:00",
+        "reveals": "The clerk said kimbap now and ramen at 12:00."
+       },
+       {
+        "id": "d",
+        "text": "One ramen now and one kimbap at 12:00",
+        "reveals": "The clerk said the opposite order."
+       }
+      ],
+      "reasonable": [
+       "a"
+      ],
+      "after": "The customer accepts the limit (one roll) and the wait (ramen at 12:00). The order is now clear: kimbap now, ramen later."
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "In 1-2 sentences (English or Korean), tell a friend what this customer gets and when.",
+    "placeholder": "예: ...",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "mentions kimbap",
+      "mode": "any",
+      "patterns": [
+       "김밥",
+       "kimbap",
+       "gimbap",
+       "roll"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "mentions ramen",
+      "mode": "any",
+      "patterns": [
+       "라면",
+       "ramen",
+       "noodle"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "gives the later time or the wait for ramen",
+      "mode": "any",
+      "patterns": [
+       "12",
+       "열두",
+       "noon",
+       "12:00",
+       "30\\s*분",
+       "삼십\\s*분",
+       "half an hour",
+       "half hour",
+       "later",
+       "나중",
+       "이따"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "says kimbap comes now (not ramen)",
+      "mode": "any",
+      "patterns": [
+       "(김밥|kimbap|gimbap|roll)[^.!?]*(지금|now|먼저|first|right away|at once|immediately)"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "gives one roll (not two)",
+      "mode": "any",
+      "patterns": [
+       "한 ?줄",
+       "하나",
+       "일 ?줄",
+       "\\bone\\b",
+       "\\b1\\b",
+       "a (kimbap )?roll",
+       "a single"
+      ]
+     },
+     {
+      "id": "w6",
+      "label": "does not give two rolls",
+      "mode": "none",
+      "patterns": [
+       "두 ?줄",
+       "이 ?줄",
+       "\\btwo\\b",
+       "\\b2\\b ?(rolls?|kimbap|gimbap|줄)"
+      ]
+     },
+     {
+      "id": "w7",
+      "label": "does not swap the order (ramen now, kimbap later)",
+      "mode": "none",
+      "patterns": [
+       "(라면|ramen|noodle)[^.!?,]{0,20}(지금|now|먼저|first)[^.!?]{0,25}(김밥|kimbap|gimbap)[^.!?]*(12|열두|noon|later|나중|이따)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Do I say which food comes now and which later?",
+     "Do I give the number of rolls (one)?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "김밥 한 줄은 지금 먹어요. 라면은 열두 시에 먹어요."
+     },
+     {
+      "text": "He gets one kimbap roll now and the ramen at 12:00, because ramen starts then."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "김밥 두 줄이랑 라면을 받아요.",
+      "why": "Wrong number of rolls and no timing."
+     },
+     {
+      "text": "He cannot eat anything.",
+      "why": "Contradicts the conversation."
+     },
+     {
+      "text": "김밥 두 줄은 지금, 라면은 열두 시에 먹어요.",
+      "why": "Wrong number of rolls (two instead of one)."
+     },
+     {
+      "text": "Ramen now and kimbap at 12:00.",
+      "why": "Swaps which food comes now and which later."
+     }
+    ],
+    "humanReview": "Whether the summary has the right numbers and order.",
+    "hints": [
+     "Say the first food and its time, then the second food and its time.",
+     "Use the number the clerk allowed for the roll."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Revising the reading",
+    "full": "Updates the answer at each stage",
+    "partial": "Correct only at the end",
+    "none": "Keeps the first idea"
+   },
+   {
+    "criterion": "Summary",
+    "full": "Both foods, number and times correct",
+    "partial": "One element missing",
+    "none": "Wrong or missing"
+   }
+  ],
+  "alternatives": [
+   "At stage 2 the answer 'ramen later' is the only fit; both 'not now' wordings are fine in the write step.",
+   "Korean or English summary is accepted."
+  ],
+  "hardCases": [
+   "Some learners read 한 줄 as 'one line'; the explanation says it counts rolls."
+  ],
+  "cautions": {
+   "language": "Short dialogue; 부터 is explained after stage 2.",
+   "culture": "Kimbap is sold by the roll (줄); noodle shops may serve some dishes only at set times. Honorific and politeness norms vary by region, workplace, age and personal preference; this task reflects common standard-Korean usage, not a rule for every situation.",
+   "accessibility": "All material is text; any scene is described in words, nothing depends on colour. Romanization is not provided. Signs and menus are written out as text."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice at each stage",
+    "Presence of both foods, kimbap now and ramen at 12:00 in the summary"
+   ],
+   "human": [
+    "Accuracy of the summary"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "subject": "korean",
+  "grade": "K2",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "uiLang": "en",
+  "curriculum": null,
+  "id": "n-k-l1g-01",
+  "topic": "Asking the way: 여기 / 거기 / 저기",
+  "title": "Here, there, over there: whose place?",
+  "format": "choose-needed-info",
+  "generative": true,
+  "goal": "Work out whose place 여기 and 거기 point to, see why a text with 여기 can leave the reader lost, and rewrite it with a real place name.",
+  "thinking": [
+   "A word that points (here/there) depends on who says it and where",
+   "Deciding which missing fact is really needed",
+   "Replacing a pointing word with a fixed name"
+  ],
+  "differsFromPlain": "Plain practice asks you to fill in 여기/거기/저기 by distance. Here you track whose place each word means in a real conversation and a text message, and repair a message that cannot be understood without knowing where the writer stood.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows 여기, 거기, 어디예요?, 앞"
+  ],
+  "minutes": 7,
+  "material": "Mina and Jun are friends. After class they want to meet, but they are in different places. Mina is in front of the school (학교 앞). Jun is in front of the library (도서관 앞). They talk on the phone.\n\n민아: 준, 지금 어디예요?\n준: 저는 도서관 앞이에요. 민아는요?\n민아: 저는 학교 앞이에요.\n준: 거기에서 기다려요. 제가 가요.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "In Jun's last line, '거기에서 기다려요', which place does 거기 mean?",
+    "options": [
+     {
+      "id": "a",
+      "text": "도서관 앞, the place where Jun is",
+      "reveals": "Jun would use 여기 for the place where he himself stands."
+     },
+     {
+      "id": "b",
+      "text": "학교 앞, the place where Mina is"
+     },
+     {
+      "id": "c",
+      "text": "A third place that is far from both of them",
+      "reveals": "A place far from both people would be 저기. Here Jun points to the place the listener has just named."
+     },
+     {
+      "id": "d",
+      "text": "Any place; 거기 has no fixed meaning",
+      "reveals": "The meaning of 거기 is not fixed, but in each conversation it points to a particular place: near the listener."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "여기 is near the speaker, 거기 is near the listener (or a place just mentioned by the listener), and 저기 is away from both. Jun tells Mina to wait where she already is: 학교 앞.",
+    "hints": [
+     "Ask who is speaking and who is listening in that line.",
+     "Where did the listener say she was one line earlier?"
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Next day Mina sends Jun a text: '준, 여기 카페에서 만나요.' Jun is at home and does not know which café she means. What ONE fact does he need to understand 여기?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Where Mina was when she wrote the text"
+     },
+     {
+      "id": "b",
+      "text": "What time Jun reads the text",
+      "reveals": "The time does not tell which place 여기 is."
+     },
+     {
+      "id": "c",
+      "text": "Where Jun is standing when he reads the text",
+      "reveals": "A text's 여기 never points to the reader's place; for the reader's place Mina would write 거기."
+     },
+     {
+      "id": "d",
+      "text": "How many cafés are on the street",
+      "reveals": "The number of cafés does not tell which one Mina was in when she wrote it."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "여기 means the place of the person who says or writes it. A text has no pointing finger, so the reader needs to know where the writer stood. Naming the place avoids the problem.",
+    "hints": [
+     "Whose point of view does 여기 take, the writer's or the reader's?",
+     "Imagine the same text forwarded to a third person. What would change?"
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Mina is at the café in front of the school (학교 앞 카페). Rewrite her text in Korean (polite -요) so that Jun can find the place wherever he reads it. Do not use 여기, 거기 or 저기.",
+    "placeholder": "예: ...",
+    "minChars": 6,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "names the place (학교 ...)",
+      "mode": "any",
+      "patterns": [
+       "학교"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "says café (카페)",
+      "mode": "any",
+      "patterns": [
+       "카페"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "polite ending (-요)",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|습니다|니다"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "no pointing word (여기 / 거기 / 저기)",
+      "mode": "none",
+      "patterns": [
+       "(?<![가-힣])(여기|거기|저기)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Could a stranger find the café from my text alone?",
+     "Did I name the place instead of pointing at it?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "학교 앞 카페에서 만나요."
+     },
+     {
+      "text": "저는 학교 앞 카페에 있어요. 학교 앞 카페로 와요."
+     },
+     {
+      "text": "준, 학교 앞 카페에서 기다려요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "여기 카페에서 만나요.",
+      "why": "Still uses 여기 and names no place."
+     },
+     {
+      "text": "카페에서 기다려요.",
+      "why": "Does not say which café."
+     }
+    ],
+    "humanReview": "Whether the learner's wording is natural and the place name is clear to the reader.",
+    "hints": [
+     "Replace the pointing word with the name of the place from the situation.",
+     "Keep the shape of Mina's text: place + 에서 + a verb ending in -요."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Reading the pointing words",
+    "full": "Says 거기 = the listener's place and 여기 = the writer's place",
+    "partial": "Chooses the right place once but cannot say why",
+    "none": "Treats the words as fixed places"
+   },
+   {
+    "criterion": "Repairing the text",
+    "full": "Names 학교 앞 카페, polite, no pointing word",
+    "partial": "Names a place but keeps a pointing word, or no polite ending",
+    "none": "Still depends on 여기"
+   }
+  ],
+  "alternatives": [
+   "'학교 앞 카페' can be written '학교 앞에 있는 카페'.",
+   "Any ending in -요 (만나요, 기다려요, 있어요) is fine."
+  ],
+  "hardCases": [
+   "On the phone both people can hear the other's position, so 거기 and 여기 swap between the two speakers; the learner may find it hard to track this on a line-by-line basis."
+  ],
+  "cautions": {
+   "language": "Very short sentences. 여기/거기/저기 are glossed in the explanations. In real speech 그기 is not used; 거기 is standard.",
+   "culture": "Koreans often add a place name to a meeting text for exactly this reason; sharing a map link is also common but is not part of this task.",
+   "accessibility": "All material is text. Nothing depends on colour or pictures."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of the place a pointing word means",
+    "Choice of the needed fact",
+    "Place name present, polite ending present, pointing words absent"
+   ],
+   "human": [
+    "Naturalness of the learner's sentence"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "subject": "korean",
+  "grade": "K2",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "uiLang": "en",
+  "curriculum": null,
+  "id": "n-k-l1g-02",
+  "topic": "Places in a town: 옆, 왼쪽, 오른쪽",
+  "title": "Whose neighbour is the post office?",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Check a written route against a map, find which lines do not match, understand what 옆 really says, and fix one line.",
+  "thinking": [
+   "Checking a message against a source (the map)",
+   "Telling 'next to' from 'on the same side'",
+   "Repairing a faulty claim"
+  ],
+  "differsFromPlain": "Plain practice asks you to say where a place is from a picture. Here a route is already written, and you act as the checker: compare each line with the map and decide which lines fail and why.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows 왼쪽, 오른쪽, 옆, 에 있어요 and the place words on the map"
+  ],
+  "minutes": 8,
+  "material": "Mina writes a route for Jun. The street goes straight from the school gate.\nLeft side, in order from the gate: 은행 (bank), 편의점 (convenience store), 우체국 (post office).\nRight side, in order from the gate: 병원 (hospital), 약국 (pharmacy), 카페 (café).\n\nMina's six lines are below. Some do not match the map.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "Pick one line that does NOT match the map.",
+    "lines": [
+     "학교 문에서 쭉 가요.",
+     "은행은 왼쪽에 있어요.",
+     "편의점은 은행 옆에 있어요.",
+     "우체국은 은행 옆에 있어요.",
+     "병원은 왼쪽에 있어요.",
+     "약국은 병원 옆에 있어요."
+    ],
+    "wrong": [
+     3,
+     4
+    ],
+    "explain": "Line 4 is wrong: the post office is beside the 편의점, not beside the bank (the 편의점 is between them). Line 5 is wrong: the hospital is on the right side. Lines 1, 2, 3 and 6 match the map.",
+    "hints": [
+     "Check the lines one at a time against the map: first the side, then the neighbour.",
+     "For each line with 옆, name the two neighbours of that place on its side of the street."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Which of these sentences is TRUE for the map?",
+    "options": [
+     {
+      "id": "a",
+      "text": "약국은 편의점 옆에 있어요.",
+      "reveals": "The pharmacy and the convenience store are on opposite sides of the street; 옆 does not cross the street."
+     },
+     {
+      "id": "b",
+      "text": "병원은 카페 옆에 있어요.",
+      "reveals": "The pharmacy is between the hospital and the café; 옆 means the very next place."
+     },
+     {
+      "id": "c",
+      "text": "약국은 카페 옆에 있어요."
+     },
+     {
+      "id": "d",
+      "text": "은행은 우체국 옆에 있어요.",
+      "reveals": "The convenience store is between the bank and the post office; being on the same side is not enough for 옆."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "옆 means the very next place on the same side. The pharmacy and the café are neighbours on the right side.",
+    "hints": [
+     "For each sentence find both places on the map, then count the places between them.",
+     "Also check which side of the street each place is on."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Rewrite line 4 in Korean so that it matches the map.",
+    "placeholder": "예: ...",
+    "minChars": 6,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "talks about 우체국",
+      "mode": "any",
+      "patterns": [
+       "우체국"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "names the right neighbour with 옆 (or 다음)",
+      "mode": "any",
+      "patterns": [
+       "편의점[^.]{0,6}(옆|다음)",
+       "(옆|다음)[^.]{0,6}편의점"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "does not say the post office is next to the bank",
+      "mode": "none",
+      "patterns": [
+       "우체국(은|이|도)?\\s*은행\\s*(옆|다음)",
+       "은행\\s*옆에\\s*우체국"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my sentence name the place that is really next to the post office?",
+     "Does it still end like Mina's other lines (…에 있어요)?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "우체국은 편의점 옆에 있어요."
+     },
+     {
+      "text": "편의점 옆에 우체국이 있어요."
+     },
+     {
+      "text": "우체국은 왼쪽에 있어요. 편의점 옆이에요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "우체국은 은행 옆에 있어요.",
+      "why": "Same mistake: the bank is not next to the post office."
+     },
+     {
+      "text": "우체국은 오른쪽에 있어요.",
+      "why": "Does not give the right neighbour."
+     }
+    ],
+    "humanReview": "Whether another correct description (for example with 끝 or 세 번째) is also acceptable.",
+    "hints": [
+     "Look at the map: which place is right beside the post office?",
+     "Keep the shape of the other lines: place + 은/는 + place + 옆에 있어요."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finding wrong lines",
+    "full": "Picks line 4 or 5 and says why it contradicts the map",
+    "partial": "Picks a wrong line without a reason",
+    "none": "Picks a correct line"
+   },
+   {
+    "criterion": "Understanding 옆",
+    "full": "Says 옆 means the very next place on the same side",
+    "partial": "Says only 'same side'",
+    "none": "Treats 옆 as anywhere on the street"
+   }
+  ],
+  "alternatives": [
+   "Line 5 can also be fixed: '병원은 오른쪽에 있어요.'",
+   "'우체국은 맨 끝에 있어요' (맨 끝 = very end) is also true but goes beyond 1급 words."
+  ],
+  "hardCases": [
+   "In daily speech 옆 is sometimes used loosely for 'near'; the task uses the strict 'next one' reading."
+  ],
+  "cautions": {
+   "language": "Only simple location sentences. 왼쪽/오른쪽 are viewed from someone walking from the school gate.",
+   "culture": "Korean streets often have a row of shops on each side, so 'next to' is a common way to give directions.",
+   "accessibility": "The map is given in words; no picture is needed. Colour is not used."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Picking a line that contradicts the map",
+    "Choice of the true sentence",
+    "Rewritten line names 우체국 and 편의점 with 옆 and avoids the bank claim"
+   ],
+   "human": [
+    "Other valid ways to describe the position"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "subject": "korean",
+  "grade": "K2",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "uiLang": "en",
+  "curriculum": null,
+  "id": "n-k-l1g-03",
+  "topic": "Places in a town: 번, 옆, 오른쪽",
+  "title": "Three notes, more than one street",
+  "format": "build-many-verify",
+  "generative": true,
+  "goal": "Build several different street arrangements that fit short Korean notes, and see that the notes do not decide one answer.",
+  "thinking": [
+   "Several answers can fit the same conditions",
+   "Reading each condition exactly",
+   "Not generalising from one example"
+  ],
+  "differsFromPlain": "Plain practice gives one picture and asks where a place is. Here the notes allow several streets, so you must test your own arrangements against every note and notice what is still undecided.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows Sino-Korean numbers 일 to 오, 번, 옆, 오른쪽"
+  ],
+  "minutes": 9,
+  "material": "A short street has 5 spots in a row, numbered 1 to 5 from the LEFT end. The 은행 (bank), the 병원 (hospital) and the 약국 (pharmacy) each stand on one spot. No two share a spot, and two spots stay empty. Jun's notes:\n\n1. 병원은 은행 오른쪽에 있어요.\n2. 약국은 병원 옆에 있어요.\n3. 은행은 일 번이 아니에요.\n\n(오른쪽 = somewhere to the right, not necessarily right next to it.)",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Ignore the bank for a moment. The 병원 is on spot 4. By note 2, where can the 약국 be?",
+    "options": [
+     {
+      "id": "a",
+      "text": "On spot 3 only",
+      "reveals": "옆 means either neighbour, left or right."
+     },
+     {
+      "id": "b",
+      "text": "On spot 2 or spot 5",
+      "reveals": "Spot 2 is two steps away; 옆 means the very next spot."
+     },
+     {
+      "id": "c",
+      "text": "On spot 5 only",
+      "reveals": "옆 means either neighbour, left or right."
+     },
+     {
+      "id": "d",
+      "text": "On spot 3 or spot 5"
+     }
+    ],
+    "correct": [
+     "d"
+    ],
+    "explain": "옆 means a next spot, on either side: spot 3 or spot 5.",
+    "hints": [
+     "Draw five spots in a row and mark spot 4. Look at the spots that touch it.",
+     "Read note 2 again and check whether it names a side."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "build",
+    "prompt": "Find 3 different arrangements that fit all three notes. b = spot of the 은행, h = spot of the 병원, p = spot of the 약국.",
+    "vars": [
+     {
+      "name": "b",
+      "label": "spot of 은행 (1-5)"
+     },
+     {
+      "name": "h",
+      "label": "spot of 병원 (1-5)"
+     },
+     {
+      "name": "p",
+      "label": "spot of 약국 (1-5)"
+     }
+    ],
+    "constraints": [
+     {
+      "id": "c0",
+      "expr": "b==floor(b) && h==floor(h) && p==floor(p) && b>=1 && b<=5 && h>=1 && h<=5 && p>=1 && p<=5",
+      "ok": "All spots are between 1 and 5.",
+      "fail": "Each spot must be a whole number from 1 to 5."
+     },
+     {
+      "id": "c1",
+      "expr": "b!=h && b!=p && h!=p",
+      "ok": "Three different spots.",
+      "fail": "Two places share a spot."
+     },
+     {
+      "id": "c2",
+      "expr": "h>b",
+      "ok": "병원 is to the right of 은행 (note 1).",
+      "fail": "Note 1: 병원 must be to the right of 은행, so its number is bigger."
+     },
+     {
+      "id": "c3",
+      "expr": "abs(p-h)==1",
+      "ok": "약국 is next to 병원 (note 2).",
+      "fail": "Note 2: 약국 must be on the spot right beside 병원."
+     },
+     {
+      "id": "c4",
+      "expr": "b!=1",
+      "ok": "은행 is not on spot 1 (note 3).",
+      "fail": "Note 3: 은행 is not 일 번."
+     }
+    ],
+    "need": 3,
+    "modelRows": [
+     {
+      "b": 2,
+      "h": 3,
+      "p": 4
+     },
+     {
+      "b": 2,
+      "h": 4,
+      "p": 5
+     },
+     {
+      "b": 3,
+      "h": 5,
+      "p": 4
+     }
+    ],
+    "badRows": [
+     {
+      "b": 1,
+      "h": 3,
+      "p": 4
+     },
+     {
+      "b": 3,
+      "h": 2,
+      "p": 1
+     },
+     {
+      "b": 2,
+      "h": 3,
+      "p": 5
+     }
+    ],
+    "explain": "For example: bank 2, hospital 3, pharmacy 4; or bank 2, hospital 4, pharmacy 5; or bank 3, hospital 5, pharmacy 4. There are six arrangements in all. The notes give limits, not one exact street.",
+    "hints": [
+     "Start with note 3 and note 1: choose a spot for the bank, then a spot to its right for the hospital.",
+     "Then place the pharmacy right beside the hospital on a free spot.",
+     "Check each note one by one for your row."
+    ],
+    "distinctBy": "b*100+h*10+p",
+    "because": {
+     "id": "s2b",
+     "kind": "write",
+     "prompt": "Take ONE of your arrangements. Write one Korean sentence (polite -요) that says where the 약국 is, using 옆.",
+     "placeholder": "예: ...",
+     "minChars": 6,
+     "checks": [
+      {
+       "id": "w1",
+       "label": "talks about 약국",
+       "mode": "any",
+       "patterns": [
+        "약국"
+       ]
+      },
+      {
+       "id": "w2",
+       "label": "uses 옆",
+       "mode": "any",
+       "patterns": [
+        "옆"
+       ]
+      },
+      {
+       "id": "w3",
+       "label": "names a neighbour (병원 / 은행)",
+       "mode": "any",
+       "patterns": [
+        "병원",
+        "은행"
+       ]
+      },
+      {
+       "id": "w4",
+       "label": "polite ending (-요)",
+       "mode": "any",
+       "patterns": [
+        "[가-힣]요(?![가-힣])|습니다|니다"
+       ]
+      },
+      {
+       "id": "w5",
+       "label": "names the neighbour directly before 옆 (병원 옆 / 은행 옆)",
+       "mode": "any",
+       "patterns": [
+        "(병원|은행)(과|하고|이랑)?\\s*(바로\\s*)?옆"
+       ]
+      }
+     ],
+     "selfAssess": [
+      "Does my sentence match the row I built?",
+      "Did I name the real neighbour of the 약국 in my row?"
+     ],
+     "modelAnswers": [
+      {
+       "text": "약국은 병원 옆에 있어요."
+      },
+      {
+       "text": "병원 옆에 약국이 있어요. 약국은 사 번이에요."
+      }
+     ],
+     "badAnswers": [
+      {
+       "text": "약국이 있어요.",
+       "why": "No neighbour and no 옆."
+      },
+      {
+       "text": "병원은 오른쪽이에요.",
+       "why": "Does not describe the 약국."
+      },
+      {
+       "text": "약국은 옆에 있어요 병원.",
+       "why": "Word order is wrong: the neighbour must come before 옆."
+      }
+     ],
+     "humanReview": "Whether the named neighbour is the real neighbour in the learner's own row (the checker cannot see the row).",
+     "hints": [
+      "Look at your row: which place stands right beside the 약국?",
+      "Use the pattern: place + 은/는 + place + 옆에 있어요."
+     ]
+    }
+   },
+   {
+    "id": "s3",
+    "kind": "choose",
+    "prompt": "Jun's friend looks only at the row bank 2, hospital 3, pharmacy 4 and says: 'So the 약국 must be on spot 4.' What is true about the three notes?",
+    "options": [
+     {
+      "id": "a",
+      "text": "The notes fit only one row, so the 약국 is on spot 4.",
+      "reveals": "The notes fit six rows. Spot 4 is only one of the possible places."
+     },
+     {
+      "id": "b",
+      "text": "The notes fit several rows, but the 약국 must always be next to the 은행.",
+      "reveals": "Only two of the six rows have the 약국 next to the 은행; no note says so."
+     },
+     {
+      "id": "c",
+      "text": "The notes fit several rows, and the 약국 can be on spot 3, 4 or 5."
+     },
+     {
+      "id": "d",
+      "text": "The notes fit several rows, but the 약국 can only be on spot 3 or 4.",
+      "reveals": "Spot 5 also works, for example bank 2, hospital 4, pharmacy 5."
+     },
+     {
+      "id": "e",
+      "text": "The notes fit several rows, but the 약국 must always be on spot 5.",
+      "reveals": "Some rows have the 약국 on spot 3 or 4, so it is not always on spot 5."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "The notes fit six rows and the pharmacy is on spot 3 in one row, on spot 4 in three rows and on spot 5 in two rows. One example is never enough to say what must be true.",
+    "hints": [
+     "Look at the rows you built: do they all have the 약국 on the same spot?",
+     "A statement with 'must' needs to be true in every row that fits."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Building valid rows",
+    "full": "Three different rows that pass every note",
+    "partial": "One or two valid rows",
+    "none": "No valid row"
+   },
+   {
+    "criterion": "Seeing what is undecided",
+    "full": "Says the notes allow several spots for the 약국",
+    "partial": "Notices more than one row but not what varies",
+    "none": "Believes there is one answer"
+   }
+  ],
+  "alternatives": [
+   "Six rows fit in all: (bank, hospital, pharmacy) = (2,3,4), (2,4,3), (2,4,5), (2,5,4), (3,4,5), (3,5,4).",
+   "Any three of the six are accepted."
+  ],
+  "hardCases": [
+   "Some learners read 오른쪽 as 'right next to'. The material states that it means 'somewhere to the right'."
+  ],
+  "cautions": {
+   "language": "Sino-Korean numbers with 번 (일 번, 이 번 ...) are used for spot numbers.",
+   "culture": "Numbering shop spots in a row is common on Korean shopping streets.",
+   "accessibility": "The street is described in words and numbers; no picture is needed."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Every built row is checked against all notes",
+    "Number of different rows",
+    "Choice about what the notes decide",
+    "Presence of 약국, 옆, a neighbour and a polite ending"
+   ],
+   "human": [
+    "Whether the sentence matches the learner's own row"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "subject": "korean",
+  "grade": "K2",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "uiLang": "en",
+  "curriculum": null,
+  "id": "n-k-l1g-04",
+  "topic": "Asking the way: subway station and exits",
+  "title": "Are they in the same place yet?",
+  "format": "reveal-and-revise",
+  "generative": true,
+  "goal": "Revise your judgement about whether two friends are in the same place as more details arrive, then write the message that fixes it.",
+  "thinking": [
+   "How much a place name really pins down",
+   "Revising a judgement when new information arrives",
+   "Giving an exact meeting place"
+  ],
+  "differsFromPlain": "Plain practice names places on a subway line. Here the same two sentences become more exact in three steps, and you decide after each step whether 'same place' is already true.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows 역, 출구, Sino-Korean numbers 일 to 오"
+  ],
+  "minutes": 8,
+  "material": "Hana and Jun are going to meet at the subway. They talk on the phone. Read each part and decide what you can say so far.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "Read each part and choose the most reasonable reading of where they are.",
+    "hints": [
+     "Decide using only the lines you have read so far.",
+     "Ask yourself: is there still more than one place that fits both sentences?"
+    ],
+    "reflect": "A place word can fit many places at first. Each new detail (the station name, then the exit) makes the place smaller. Meeting works only when the detail is exact enough.",
+    "stages": [
+     {
+      "info": "하나: 준, 지금 어디예요?\n준: 저는 역에 있어요.\n하나: 저도 역에 있어요!",
+      "ask": "Are Hana and Jun in the same place?",
+      "options": [
+       {
+        "id": "a",
+        "text": "Yes. Both are at the station, so they are together.",
+        "reveals": "Each only said 역 (a station). There are many stations in a city."
+       },
+       {
+        "id": "b",
+        "text": "No. They said the same word, so they must be at different stations.",
+        "reveals": "The same word does not show different stations; the lines simply do not say which station."
+       },
+       {
+        "id": "c",
+        "text": "Maybe. Both said 역, but there are many stations."
+       },
+       {
+        "id": "d",
+        "text": "Yes. Hana said 저도, so she is at Jun's station.",
+        "reveals": "저도 means 'me too' (also at a station), not 'at the same one'."
+       }
+      ],
+      "reasonable": [
+       "c"
+      ],
+      "after": "'역' only says what kind of place. Without a name, we cannot know whether it is the same station."
+     },
+     {
+      "info": "하나: 무슨 역이에요?\n준: 시청역이에요.\n하나: 저도 시청역이에요!",
+      "ask": "What can you say now?",
+      "options": [
+       {
+        "id": "a",
+        "text": "They are in the same station, but we cannot yet say they stand in the same spot."
+       },
+       {
+        "id": "b",
+        "text": "They are on different lines, so they must be far away.",
+        "reveals": "Both said 시청역. Nothing here shows different stations."
+       },
+       {
+        "id": "c",
+        "text": "They are together at exactly the same spot.",
+        "reveals": "A station can be big with several exits; the same station is not yet the same spot."
+       },
+       {
+        "id": "d",
+        "text": "We still know nothing, because 시청역 can be anywhere.",
+        "reveals": "The station name 시청역 does fix the station; what is open is the spot inside it."
+       }
+      ],
+      "reasonable": [
+       "a"
+      ],
+      "after": "The station is the same, but a big station has several exits. The exact spot is still open."
+     },
+     {
+      "info": "준: 저는 이 번 출구 앞이에요.\n하나: 어? 저는 일 번 출구 앞이에요.",
+      "ask": "What is the situation now?",
+      "options": [
+       {
+        "id": "a",
+        "text": "They are together; the exit does not matter.",
+        "reveals": "Exit 1 and exit 2 can be far apart on the street."
+       },
+       {
+        "id": "b",
+        "text": "They are in different stations.",
+        "reveals": "Both said 시청역; only the exits are different."
+       },
+       {
+        "id": "c",
+        "text": "They are at the same exit; 일 and 이 sound alike.",
+        "reveals": "일 (1) and 이 (2) are different numbers, so they said different exits."
+       },
+       {
+        "id": "d",
+        "text": "Same station, but at different exits. They are not in the same spot yet."
+       }
+      ],
+      "reasonable": [
+       "d"
+      ],
+      "after": "Both sentences are true at the same time: one station, two exits. They still have to choose one exit."
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Now Hana and Jun need to meet. Who should walk to the other person's exit?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Either one; they only need to agree on one exit"
+     },
+     {
+      "id": "b",
+      "text": "Hana, because Jun spoke first",
+      "reveals": "Who spoke first does not decide it."
+     },
+     {
+      "id": "c",
+      "text": "Neither, because they are in the same station and can already see each other",
+      "reveals": "A big station has several exits; the same station is not the same spot."
+     },
+     {
+      "id": "d",
+      "text": "Both should stay where they are and wait",
+      "reveals": "If both wait at different exits, they never meet."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "Either can walk, or both can go to a third exit. What matters is that they name one exit and agree on it.",
+    "hints": [
+     "Is there any rule that says one of them must move?",
+     "What would make both of them end up at the same exit?"
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Write Jun's next message in Korean (polite -요) so they will meet. Name one exit.",
+    "placeholder": "예: ...",
+    "minChars": 6,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "names exit 1 or exit 2 (… 번 출구)",
+      "mode": "any",
+      "patterns": [
+       "(?<![0-9])(1|2|일|이)\\s*번\\s*출구"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "polite ending (-요)",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|습니다|니다"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "names only one exit",
+      "mode": "none",
+      "patterns": [
+       "(?<![0-9])(1|일)\\s*번\\s*출구[^.!?]*(?<![0-9])(2|이)\\s*번\\s*출구",
+       "(?<![0-9])(2|이)\\s*번\\s*출구[^.!?]*(?<![0-9])(1|일)\\s*번\\s*출구"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my message give one exit only?",
+     "Would Hana know exactly where to stand?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "일 번 출구 앞에서 만나요."
+     },
+     {
+      "text": "제가 일 번 출구로 가요."
+     },
+     {
+      "text": "하나, 이 번 출구 앞에서 기다려요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "시청역에서 만나요.",
+      "why": "Names the station but no exit; that is what went wrong."
+     },
+     {
+      "text": "저는 역에 있어요.",
+      "why": "Does not say where to meet and names no exit."
+     },
+     {
+      "text": "삼 번 출구에서 만나요.",
+      "why": "There is no exit 3; only exit 1 and exit 2 exist."
+     },
+     {
+      "text": "일 번 출구에서 만나요 이 번 출구에서도 만나요.",
+      "why": "Names two exits, so the place is still not exact."
+     }
+    ],
+    "humanReview": "Whether the message is natural and unambiguous (for example, whether a plan to move is clear).",
+    "hints": [
+     "What was the detail that was missing in the end?",
+     "Choose one of the two exits and put its number into the place of the meeting."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Revising the judgement",
+    "full": "Moves from 'maybe' to 'same station' to 'different exits' with reasons",
+    "partial": "Changes the answer but without a reason",
+    "none": "Keeps 'same place' throughout"
+   },
+   {
+    "criterion": "Giving an exact place",
+    "full": "Message names one exit and is polite",
+    "partial": "Names the station only",
+    "none": "No place named"
+   }
+  ],
+  "alternatives": [
+   "At stage 2, 'same station, maybe different exits' is the best reading, but a learner who says 'probably together' should still read the next stage.",
+   "Any exit number may be chosen in the last step."
+  ],
+  "hardCases": [
+   "Stations also have names with line numbers (이 호선) that are not used here."
+  ],
+  "cautions": {
+   "language": "Only 역 and 출구 plus numbers. 일 번 / 이 번 are Sino-Korean numbers.",
+   "culture": "Korean subway stations are large and have numbered exits; meeting at 'N번 출구' is a very common habit.",
+   "accessibility": "No pictures needed; all information is text."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Stage choices are compared with reasonable readings",
+    "Choice about who moves",
+    "Exit number and polite ending present"
+   ],
+   "human": [
+    "Naturalness and clarity of the message"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "subject": "korean",
+  "grade": "K2",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "uiLang": "en",
+  "curriculum": null,
+  "id": "n-k-l1g-05",
+  "topic": "Simple transport: reading a bus sign",
+  "title": "What the bus sign really says",
+  "format": "judge-evidence-explain",
+  "generative": true,
+  "goal": "Decide which statements about a bus are supported by a sign, apply the sign to a particular day and time, and correct a claim that goes too far.",
+  "thinking": [
+   "A general claim fails when one case breaks it",
+   "Matching a claim to the evidence (a sign) day by day",
+   "Correcting a claim with a precise statement"
+  ],
+  "differsFromPlain": "Plain practice reads a timetable aloud. Here friends make claims about it and you judge which ones the sign supports, then apply it to one morning and correct a claim.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows days of the week, 버스, 있어요/없어요, clock times in digits"
+  ],
+  "minutes": 9,
+  "material": "The sign at the bus stop in front of the hospital:\n\n10번 버스\n월~금  06:00 ~ 22:00\n토  08:00 ~ 20:00\n일  없어요\n\n(월~금 = Monday to Friday.) Four friends talk about bus 10.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "Which friends' sentences does the sign support? Choose all.",
+    "options": [
+     {
+      "id": "a",
+      "text": "민수: 십 번 버스는 매일 있어요.",
+      "reveals": "The sign says 일 없어요, so there is no bus on Sunday."
+     },
+     {
+      "id": "b",
+      "text": "수지: 십 번 버스는 일요일에 없어요."
+     },
+     {
+      "id": "c",
+      "text": "하나: 십 번 버스는 토요일 아침 여섯 시에 있어요.",
+      "reveals": "On Saturday the first bus is at 08:00, not at 06:00."
+     },
+     {
+      "id": "d",
+      "text": "준: 십 번 버스는 수요일 저녁 아홉 시에 있어요."
+     }
+    ],
+    "correct": [
+     "b",
+     "d"
+    ],
+    "explain": "수지 is right (Sunday: 없어요). 준 is right (Wednesday 21:00 is between 06:00 and 22:00). 민수's 매일 is broken by Sunday, and 하나 uses the weekday start time for Saturday.",
+    "hints": [
+     "Check each sentence against the line of the sign for that day.",
+     "For a time, compare it with the start and the end times of that line. Remember 아침 여섯 시 = 06:00 and 저녁 아홉 시 = 21:00."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "It is Saturday, 7:00 in the morning (아침 일곱 시). Jun wants to take bus 10 to the hospital. What should he do?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Take it now, because buses start at 06:00",
+      "reveals": "06:00 is the weekday start. Saturday has its own times."
+     },
+     {
+      "id": "b",
+      "text": "Use another way, because there is no bus today",
+      "reveals": "Only Sunday has no bus."
+     },
+     {
+      "id": "c",
+      "text": "Wait until Monday, because buses do not run on weekends",
+      "reveals": "Saturday has a bus from 08:00."
+     },
+     {
+      "id": "d",
+      "text": "Wait one hour, because Saturday buses start at 08:00"
+     }
+    ],
+    "correct": [
+     "d"
+    ],
+    "explain": "The Saturday line says 08:00 ~ 20:00, so at 07:00 there is no bus yet but there will be in one hour.",
+    "hints": [
+     "Find the line for Saturday first.",
+     "Compare 07:00 with the start time of that line."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "민수 said: '십 번 버스는 매일 있어요.' Write one Korean sentence (polite -요) that corrects him.",
+    "placeholder": "예: ...",
+    "minChars": 6,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "mentions Sunday (일요일)",
+      "mode": "any",
+      "patterns": [
+       "일요일"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "says there is no bus (없어요 / 안 와요 / 안 다녀요)",
+      "mode": "any",
+      "patterns": [
+       "없어요",
+       "없습니다",
+       "안\\s*(와요|가요|다녀요|다닙니다|옵니다)"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "does not say there is a bus on Sunday",
+      "mode": "none",
+      "patterns": [
+       "일요일[^.?!,]{0,9}(?<!안\\s)있어요"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my sentence say which day breaks his claim?",
+     "Is my sentence true for the sign?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "일요일에는 십 번 버스가 없어요."
+     },
+     {
+      "text": "아니에요. 일요일에 버스가 안 와요."
+     },
+     {
+      "text": "매일 있어요? 일요일은 없어요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "십 번 버스는 매일 있어요.",
+      "why": "Repeats the wrong claim."
+     },
+     {
+      "text": "토요일에는 버스가 없어요.",
+      "why": "Saturday has a bus; the day is wrong."
+     }
+    ],
+    "humanReview": "Whether the correction is clear and polite.",
+    "hints": [
+     "Find the line of the sign that does not fit '매일'.",
+     "Name that day and use 없어요."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Judging claims against the sign",
+    "full": "Chooses 수지 and 준 and says why 민수 and 하나 fail",
+    "partial": "Chooses one correct sentence",
+    "none": "Accepts 민수's 'every day'"
+   },
+   {
+    "criterion": "Correcting the claim",
+    "full": "Names Sunday and says there is no bus",
+    "partial": "Says the claim is wrong without the day",
+    "none": "Repeats the claim"
+   }
+  ],
+  "alternatives": [
+   "'일요일에는 버스가 안 다녀요' is also a natural correction.",
+   "A learner may add the Saturday times; that is fine."
+  ],
+  "hardCases": [
+   "Real timetables use 'every 10 minutes' etc.; this sign gives only the first and last time."
+  ],
+  "cautions": {
+   "language": "Numbers: 10번 on the sign, 십 번 in speech. Clock times on the sign are in digits; the spoken forms (여섯 시) appear in the options.",
+   "culture": "Some Korean bus lines run less on Saturday and not on Sunday or holidays; signs and apps show the exact days.",
+   "accessibility": "The sign is written as plain text; no colours or symbols carry meaning."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Which claims the sign supports",
+    "Choice for Saturday 07:00",
+    "Sunday and no-bus wording present, no 'bus on Sunday' claim"
+   ],
+   "human": [
+    "Clarity and politeness of the correction"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "n-k-l1h-01",
+  "subject": "korean",
+  "grade": "K2",
+  "topic": "daily routine",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Sora's claim about Minsu's mornings",
+  "uiLang": "en",
+  "format": "judge-evidence-explain",
+  "generative": true,
+  "goal": "Check a short claim about a weekly routine against the note it comes from, find the sentence that is the real evidence, and correct the claim with the days and times that belong together.",
+  "thinking": [
+   "Testing a general claim ('every day') against the evidence",
+   "Finding the sentence that settles it",
+   "Keeping each time attached to the right days"
+  ],
+  "differsFromPlain": "Plain practice asks you to read a daily routine and answer 'what time does he get up?'. Here a classmate makes a claim that sounds natural, and you must check whether the note really supports it before you correct it.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows days of the week, 시 with native numbers, and -아요/어요",
+   "Knows 매일 (every day); it is glossed in the hints"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "Minsu wrote about his week for his Korean class. His classmate Sora read it and made a claim.\n\n민수의 일주일\n월요일부터 금요일까지 학교에 가요.\n그래서 아침 여섯 시에 일어나요.\n토요일과 일요일에는 열 시에 일어나요.\n그리고 저녁 열한 시에 자요.\n\n소라: 민수는 매일 여섯 시에 일어나요.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Does Minsu's note support Sora's claim? (매일 = every day)",
+    "options": [
+     {
+      "id": "a",
+      "text": "Yes. The note says he gets up at six, and the note is about his week.",
+      "reveals": "The note is about his whole week, but it gives more than one time. A claim about every day needs every day to fit."
+     },
+     {
+      "id": "b",
+      "text": "No. The note gives two different get-up times for different days."
+     },
+     {
+      "id": "c",
+      "text": "Yes. 그래서 shows six o'clock is his rule for the whole week.",
+      "reveals": "그래서 gives the reason for six o'clock (school), so it only covers the days that have school."
+     },
+     {
+      "id": "d",
+      "text": "We cannot tell. The note says nothing about Saturday and Sunday.",
+      "reveals": "The note does say something about Saturday and Sunday: look at which sentence names them."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "The note names two groups of days: Monday to Friday (six o'clock, because of school) and Saturday and Sunday (ten o'clock). 'Every day at six' only matches the first group.",
+    "hints": [
+     "Make a small list: which days does each sentence talk about?",
+     "Put Sora's time next to every time you find in the note.",
+     "Ask: if one day had a different time, would '매일' still be true?"
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Which sentence of the note is the strongest evidence against Sora's claim?",
+    "options": [
+     {
+      "id": "a",
+      "text": "월요일부터 금요일까지 학교에 가요.",
+      "reveals": "This sentence names the school days, but it says nothing that contradicts 'six o'clock'. It is the reason for the next sentence."
+     },
+     {
+      "id": "b",
+      "text": "그래서 아침 여섯 시에 일어나요.",
+      "reveals": "This sentence supports Sora for Monday to Friday. Evidence against the claim must show a different time."
+     },
+     {
+      "id": "c",
+      "text": "토요일과 일요일에는 열 시에 일어나요."
+     },
+     {
+      "id": "d",
+      "text": "그리고 저녁 열한 시에 자요.",
+      "reveals": "Going to bed is a different habit. It does not change when he gets up."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "Only this sentence names other days with another get-up time (ten o'clock). A claim about 'every day' fails as soon as one day has a different time.",
+    "hints": [
+     "Evidence against a claim has to say something different from the claim.",
+     "Look for the sentence about getting up (일어나요) on other days."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Rewrite Sora's sentence so that it matches the note. Say which days go with which time. Write in Korean (English is also accepted).",
+    "placeholder": "예: 민수는 ...",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "Monday-Friday (school days) are paired with six o'clock",
+      "mode": "any",
+      "patterns": [
+       "(월요일|금요일|평일|학교|weekdays?|monday|mon\\b|fri\\b|friday|school)(?:(?!토요일|일요일|주말|weekends?|saturday|sunday|sat\\b|sun\\b).){0,40}?(여섯|\\b6\\b|육|six)",
+       "(여섯|\\b6\\b|육|six)\\s*(시|o'clock|am|a\\.m\\.)?\\s*(에|on|for|during|in|from)?\\s*(the )?(월요일|금요일|평일|학교|weekdays?|monday|mon\\b|fri\\b|friday|school)"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "Saturday-Sunday (weekend) are paired with ten o'clock",
+      "mode": "any",
+      "patterns": [
+       "(토요일|일요일|주말|weekends?|saturday|sunday|sat\\b|sun\\b)(?:(?!월요일|금요일|평일|학교|weekdays?|monday|mon\\b|fri\\b|friday|school).){0,40}?(열 ?시|\\b10\\b|십 ?시|\\bten\\b)",
+       "(열 ?시|\\b10\\b|십 ?시|\\bten\\b)\\s*(시|o'clock|am|a\\.m\\.)?\\s*(에|on|for|during|in|from)?\\s*(the )?(토요일|일요일|주말|weekends?|saturday|sunday|sat\\b|sun\\b)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my sentence give two groups of days?",
+     "Is each time next to the right days (six for school days, ten for the weekend)?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "민수는 월요일부터 금요일까지 여섯 시에 일어나요. 토요일과 일요일에는 열 시에 일어나요."
+     },
+     {
+      "text": "평일에는 6시에, 주말에는 10시에 일어나요."
+     },
+     {
+      "text": "He gets up at 6 on weekdays and at 10 on Saturday and Sunday."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "민수는 매일 여섯 시에 일어나요.",
+      "why": "Repeats the claim: no second group of days and no ten o'clock."
+     },
+     {
+      "text": "월요일부터 금요일까지 열 시에 일어나요. 토요일과 일요일에는 여섯 시에 일어나요.",
+      "why": "Both times are mentioned but they are attached to the wrong days."
+     }
+    ],
+    "humanReview": "Whether the Korean sentence is natural, and cases where the learner pairs times and days in an unusual order or style that the pattern checks cannot read.",
+    "hints": [
+     "Your sentence needs two parts, one for each group of days.",
+     "Check the note again: which time belongs to Monday to Friday, and which to Saturday and Sunday?",
+     "Use the same ending as the note (-아요/어요)."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Judging the claim",
+    "full": "Sees that the claim does not fit and points to the weekend sentence as the evidence",
+    "partial": "Sees that the claim is wrong but cannot say which sentence shows it",
+    "none": "Accepts the claim"
+   },
+   {
+    "criterion": "Correcting it",
+    "full": "Two groups of days, each with the right time",
+    "partial": "Only one group, or the times are mixed up",
+    "none": "Repeats the claim"
+   }
+  ],
+  "alternatives": [
+   "평일 / 주말 are not in the note but are accepted as a summary of the days.",
+   "A correction in English is accepted at this level."
+  ],
+  "hardCases": [
+   "If a learner writes '보통 여섯 시에 일어나요', the claim is softened with 보통 (usually). It is better, but it still hides the weekend time."
+  ],
+  "cautions": {
+   "language": "Only -아요/어요 and native numbers for clock hours (여섯 시, 열 시). 매일 is explained in the hints and options.",
+   "culture": "Waking later on the weekend is shown here as one person's habit, not as a rule about Korean people.",
+   "accessibility": "All material is plain text; no pictures, colours or sounds are needed. Times are written in words and digits."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of verdict and of the evidence sentence",
+    "Each time paired with the right days in the rewrite"
+   ],
+   "human": [
+    "Naturalness of the learner's Korean",
+    "Unusual but valid wording"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "n-k-l1h-02",
+  "subject": "korean",
+  "grade": "K2",
+  "topic": "daily routine",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Hana's diary: when did it happen?",
+  "uiLang": "en",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Find the diary sentences where the time word and the verb ending point to different times, say what is wrong, and fix one sentence in two possible ways.",
+  "thinking": [
+   "Matching time words with verb endings (past, present, future)",
+   "Explaining a mismatch, not only spotting it",
+   "Repairing a sentence in more than one way"
+  ],
+  "differsFromPlain": "Plain practice asks you to change a verb into the past. Here the verbs are already conjugated, and you must notice that two sentences contradict their own time word.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows 어제, 오늘, 내일",
+   "Has met -았어요/-었어요 (past) and -(으)ㄹ 거예요 (future); they are explained in the hints"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "Hana writes a short diary on Wednesday morning. Two of her sentences have a time word that does not fit the verb ending.\n\n(Wednesday = 수요일, yesterday = 어제, today = 오늘, tomorrow = 내일)",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "Pick one line where the time word and the verb ending point to different times.",
+    "lines": [
+     "1. 오늘은 수요일이에요.",
+     "2. 어제 저는 학교에 갔어요.",
+     "3. 어제 친구를 만날 거예요.",
+     "4. 오늘 저녁에 한국어를 공부해요.",
+     "5. 내일 도서관에 갔어요.",
+     "6. 오늘은 열 시에 잘 거예요."
+    ],
+    "wrong": [
+     2,
+     4
+    ],
+    "explain": "Lines 3 and 5. In line 3, 어제 (yesterday) goes with 만날 거예요 (future). In line 5, 내일 (tomorrow) goes with 갔어요 (past). Line 4 is fine: for a plan later today Korean often uses the plain present (-아요/어요), and line 6 uses the future on purpose.",
+    "hints": [
+     "Read each line and say when it happened: before today, today, or after today.",
+     "Underline the time word, then look at the ending of the verb: -았어요/-었어요 = already happened, -ㄹ 거예요 = has not happened yet.",
+     "Compare the two clues in each line. Do they agree?"
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Look at line 3: '어제 친구를 만날 거예요.' Why is it wrong?",
+    "options": [
+     {
+      "id": "a",
+      "text": "친구를 should be 친구가, because the friend is the one who meets.",
+      "reveals": "The particle 를 marks the thing that is met (the friend). The mismatch is somewhere else."
+     },
+     {
+      "id": "b",
+      "text": "어제 needs 에, so it should be 어제에.",
+      "reveals": "Words like 어제, 오늘, 내일 do not need 에 here. The mismatch is somewhere else."
+     },
+     {
+      "id": "c",
+      "text": "어제 points to the past, but -ㄹ 거예요 points to the future."
+     },
+     {
+      "id": "d",
+      "text": "만날 거예요 is a wrong form, because 만나다 cannot take -ㄹ 거예요.",
+      "reveals": "-ㄹ 거예요 can follow this verb; the form is fine. The mismatch is somewhere else."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "The two clues disagree: yesterday (past) and 'will meet' (future). Both parts can be correct on their own, but not in the same sentence.",
+    "hints": [
+     "Check the particle and the verb form on their own: are they fine?",
+     "Then ask what 어제 tells you about the time, and what -ㄹ 거예요 tells you."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Fix line 5: '내일 도서관에 갔어요.' Keep the sentence about going to the library. You may change the verb OR the time word. Write the new sentence.",
+    "placeholder": "예: ...",
+    "minChars": 6,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "time word and verb now agree (future/present with 내일, 오늘 or 다음 주; past with 어제, 오늘 or 지난주)",
+      "mode": "any",
+      "patterns": [
+       "(내일|모레|다음 ?주|이따)[^.!?]*(갈 ?거|가요|가겠|갈게|가려|갑니다|갈래|가고 싶|가야|갈까|갈 수)",
+       "(어제|그저께|지난 ?주|지난 ?달)[^.!?]*(갔|다녀)",
+       "오늘[^.!?]*(갔|다녀|갈 ?거|가요|가겠|갈게|가려|갈래|가고 싶|가야)",
+       "tomorrow[^.!?]*(will|going|go)",
+       "yesterday[^.!?]*went",
+       "today[^.!?]*(went|go|will|going)"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "no 'tomorrow + past' and no 'yesterday + future'",
+      "mode": "none",
+      "patterns": [
+       "내일[^.!?]*(갔|다녀왔)",
+       "(어제|그저께|지난 ?주|지난 ?달)[^.!?]*(갈 ?거|가요|가겠|갈게|가려|갑니다|갈래|가고 싶|가야|갈까|갈 수)",
+       "tomorrow[^.!?]*went",
+       "yesterday[^.!?]*(will|going to|\\bgo\\b)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Do my time word and my verb ending point to the same time?",
+     "Does my sentence still talk about going to the library?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "내일 도서관에 갈 거예요."
+     },
+     {
+      "text": "어제 도서관에 갔어요."
+     },
+     {
+      "text": "내일 도서관에 가요.",
+      "note": "Plain present is also used for a near plan."
+     },
+     {
+      "text": "오늘 도서관에 갔어요."
+     },
+     {
+      "text": "내일 도서관에 가고 싶어요."
+     },
+     {
+      "text": "지난주에 도서관에 갔어요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "내일 도서관에 갔어요.",
+      "why": "The original mistake: tomorrow with a past ending."
+     },
+     {
+      "text": "어제 도서관에 갈 거예요.",
+      "why": "A new mismatch: yesterday with a future ending."
+     }
+    ],
+    "humanReview": "Naturalness of the learner's wording, and sentences that the checks cannot read, for example ones with the time word in another position.",
+    "hints": [
+     "Decide first: do you want the library visit to be in the future or in the past?",
+     "Keep the time word and change the ending, or keep the ending and change the time word.",
+     "Past: -았어요/-었어요. Future: -ㄹ 거예요 (or the plain present for a near plan)."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finding the mismatch",
+    "full": "Picks line 3 or 5 and explains that the time word and the ending disagree",
+    "partial": "Picks a correct line without a reason",
+    "none": "Picks a line that is fine"
+   },
+   {
+    "criterion": "Fixing it",
+    "full": "A new sentence where the time word and the ending agree",
+    "partial": "Changes the sentence but leaves another mismatch",
+    "none": "Same mistake"
+   }
+  ],
+  "alternatives": [
+   "Changing either the verb or the time word is a valid repair.",
+   "Present tense for a near plan (내일 도서관에 가요) is natural and accepted."
+  ],
+  "hardCases": [
+   "Line 4 (오늘 저녁에 공부해요) looks like a mismatch to some learners; it is correct because present tense can be used for a plan today."
+  ],
+  "cautions": {
+   "language": "Only four verbs (가요, 만나요, 공부해요, 자요) in past, present and future. The endings are explained in the hints.",
+   "culture": "Writing a diary in polite 해요체 is a common choice for learners; a diary for oneself could also use plain style.",
+   "accessibility": "All material is plain text; no pictures, colours or sounds are needed. Times are written in words and digits."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Position of a mismatching line",
+    "Choice of the reason",
+    "Time word and verb agree in the fix"
+   ],
+   "human": [
+    "Naturalness of the rewritten sentence"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-l1h-03",
+  "subject": "korean",
+  "grade": "K2",
+  "topic": "daily routine",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Can you be at the cinema at one o'clock?",
+  "uiLang": "en",
+  "format": "choose-needed-info",
+  "generative": true,
+  "goal": "Decide which facts about your week you need before answering a friend's invitation, notice that two facts must be combined, and answer in Korean.",
+  "thinking": [
+   "Sufficiency of information: which facts are needed",
+   "Combining two facts (end time + travel time)",
+   "Ignoring true but irrelevant facts"
+  ],
+  "differsFromPlain": "Plain practice asks you to read one schedule line. Here you have a pile of true facts about your week and must decide which ones decide the answer.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows days of the week and clock times (열두 시, 한 시)",
+   "Knows 걸려요 (it takes time); it is explained in the hints"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "Your friend Jina sends you a message.\n\n지나: 토요일 한 시에 영화를 봐요. 같이 가요?\n\nYou look at your week. Here is what you know:\n\n- 토요일 수업이 오전 아홉 시에 시작해요.\n- 토요일 수업이 열두 시에 끝나요.\n- 학교에서 영화관까지 삼십 분 걸려요.\n- 일요일 저녁에 가족 식사가 있어요.\n- 월요일부터 금요일까지 회사에 가요.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "You want to know if you can be at the cinema by one o'clock on Saturday. Which facts do you need? Tick every fact you need. (삼십 분 = 30 minutes)",
+    "options": [
+     {
+      "id": "a",
+      "text": "토요일 수업이 오전 아홉 시에 시작해요.",
+      "reveals": "When the class starts does not change when you are free. Look for facts about the end of class and the way to the cinema."
+     },
+     {
+      "id": "b",
+      "text": "토요일 수업이 열두 시에 끝나요."
+     },
+     {
+      "id": "c",
+      "text": "학교에서 영화관까지 삼십 분 걸려요."
+     },
+     {
+      "id": "d",
+      "text": "일요일 저녁에 가족 식사가 있어요.",
+      "reveals": "Sunday is another day. It does not affect Saturday at one."
+     },
+     {
+      "id": "e",
+      "text": "월요일부터 금요일까지 회사에 가요.",
+      "reveals": "Monday to Friday are other days. It does not affect Saturday."
+     }
+    ],
+    "correct": [
+     "b",
+     "c"
+    ],
+    "explain": "You need the time you are free (class ends at 12:00) and the time you need to get there (30 minutes). With only one of them you cannot decide. The other three facts are true, but they are about other times.",
+    "hints": [
+     "Imagine you are at school when class ends. What two things do you need to know to say when you arrive?",
+     "Cross out facts about other days first.",
+     "Ask of each fact: does it tell me when I am free, or how long the way takes?"
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Now use your two facts. Can you be at the cinema by one o'clock?",
+    "options": [
+     {
+      "id": "a",
+      "text": "No. You must leave school by 12:30, but class ends at twelve, so you are too late.",
+      "reveals": "Leaving at 12:00 is earlier than 12:30, so you are not late; you have time to spare."
+     },
+     {
+      "id": "b",
+      "text": "No. You arrive at 1:30, because 12:00 plus thirty minutes is 1:30.",
+      "reveals": "12:00 plus 30 minutes is 12:30, not 1:30."
+     },
+     {
+      "id": "c",
+      "text": "Yes. You arrive at 12:30, before one o'clock."
+     },
+     {
+      "id": "d",
+      "text": "We cannot tell. We also need to know how long the film is.",
+      "reveals": "The film length matters for when it ends, not for whether you arrive on time."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "Class ends at 12:00. The way takes 30 minutes. So you arrive at 12:30, thirty minutes before the film.",
+    "hints": [
+     "Start at the end of class and add the travel time.",
+     "Compare the arrival time with the time of the film."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Answer Jina in short, polite Korean: say that you can come and what time you will arrive (or that you will be there before one).",
+    "placeholder": "예: ...",
+    "minChars": 6,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "says yes / can come",
+      "mode": "any",
+      "patterns": [
+       "갈 수 있어요",
+       "갈게요",
+       "같이 가요",
+       "좋아요",
+       "괜찮아요",
+       "(^|[\\s,.!])네(?![가-힣])",
+       "\\byes\\b",
+       "\\bcan\\b"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "does not say no",
+      "mode": "none",
+      "patterns": [
+       "못 ?가",
+       "갈 수 없",
+       "안 ?돼요",
+       "안 ?가",
+       "안 갈",
+       "can't",
+       "cannot",
+       "미안"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "gives an arrival time of 12:30 or 'before one'",
+      "mode": "any",
+      "patterns": [
+       "열두 ?시 ?(반|[이삼사오]?십|오 ?분)",
+       "12 ?(:|시|\\.) ?(반|[1-5][0-9])",
+       "한 ?시 ?(전|까지|쯤|정각)",
+       "한 ?시에 (영화관|도착|만나|거기|있)",
+       "(^|[^0-9])1 ?시 ?(전|까지)",
+       "before (1|one)",
+       "by (1|one)\\b",
+       "twelve[- ](thirty|forty|fifty|twenty|ten|fifteen)",
+       "12[: ]?(15|20|30|40|45|50)",
+       "half past twelve"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])",
+       "[가-힣]니다"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Do I say clearly that I can come?",
+     "Is my arrival time before one o'clock?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "네, 갈 수 있어요. 열두 시 반에 도착해요."
+     },
+     {
+      "text": "좋아요! 한 시 전에 영화관에 갈게요."
+     },
+     {
+      "text": "네, 같이 가요. 수업이 열두 시에 끝나요. 열두 시 반에 가요."
+     },
+     {
+      "text": "네, 가요. 열두 시 사십 분에 도착해요."
+     },
+     {
+      "text": "네, 같이 가요. 한 시에 영화관에서 만나요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "네, 좋아요.",
+      "why": "No arrival time."
+     },
+     {
+      "text": "미안해요. 못 가요.",
+      "why": "Says no, although the facts show you can come."
+     }
+    ],
+    "humanReview": "Whether the Korean is natural, and answers that give a different but still correct time (for example 열두 시 사십 분).",
+    "hints": [
+     "Start with one short sentence for yes.",
+     "Add the time you arrive, using native hours + 시 (and 반 for half past).",
+     "End your sentences with -요."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Choosing the facts",
+    "full": "Picks exactly the end of class and the travel time",
+    "partial": "Picks one of them",
+    "none": "Picks irrelevant facts"
+   },
+   {
+    "criterion": "Answering",
+    "full": "Says yes and gives a time that fits (12:30 or before one)",
+    "partial": "Says yes without a time",
+    "none": "Says no or gives a time after one"
+   }
+  ],
+  "alternatives": [
+   "Any reply that says yes and gives an arrival time between 12:30 and one is valid.",
+   "Leaving earlier than necessary is also fine."
+  ],
+  "hardCases": [
+   "Some learners add lunch time. The task gives no lunch fact, so the answer uses only the facts stated."
+  ],
+  "cautions": {
+   "language": "Clock times use native hours + 시 (열두 시, 한 시) and 반 (half). 걸려요 is explained in the hints.",
+   "culture": "Classes on Saturday are normal in many language institutes; a friend inviting you on short notice is common.",
+   "accessibility": "All material is plain text; no pictures, colours or sounds are needed. Times are written in words and digits."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of the two needed facts",
+    "Choice about arriving in time",
+    "Yes, no 'no', a time and a polite ending in the reply"
+   ],
+   "human": [
+    "Naturalness of the reply"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-l1h-04",
+  "subject": "korean",
+  "grade": "K2",
+  "topic": "daily routine",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Seven o'clock: morning or evening?",
+  "uiLang": "en",
+  "format": "reveal-and-revise",
+  "generative": true,
+  "goal": "Follow three short messages, say what 'seven o'clock' most likely means at each point, and revise your reading as new information arrives. Then write a reply that removes the doubt.",
+  "thinking": [
+   "Ambiguity in a message (morning or evening?)",
+   "Revising a reading when new information arrives",
+   "Making your own message unambiguous"
+  ],
+  "differsFromPlain": "Plain practice gives the answer inside the sentence. Here the first message is incomplete, and you must hold two readings until later messages settle it.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows 일곱 시, 아침, 저녁, 내일, 같이",
+   "Knows the polite -아요/어요 ending"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "You and your friend Sujin plan to meet. You read her messages one at a time.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "Read each message, choose the reading that fits what you know so far, then continue.",
+    "hints": [
+     "Decide using only what you have read so far.",
+     "Ask what the message does NOT say.",
+     "When new information comes, ask if it supports one reading or only makes it more likely."
+    ],
+    "reflect": "A time like 일곱 시 can be morning or evening. A reading that was reasonable at first may become likely or unlikely with new information, and a habit (아침에 일찍 일어나요) is weaker evidence than a plan (저녁을 같이 먹어요).",
+    "stages": [
+     {
+      "info": "수진: 내일 일곱 시에 만나요.",
+      "ask": "When are you meeting?",
+      "options": [
+       {
+        "id": "a",
+        "text": "Tomorrow at seven, but morning or evening is not clear yet."
+       },
+       {
+        "id": "b",
+        "text": "Tomorrow at seven in the morning.",
+        "reveals": "Nothing in the message says morning. It is a guess."
+       },
+       {
+        "id": "c",
+        "text": "Tomorrow at seven in the evening.",
+        "reveals": "Nothing in the message says evening. It is a guess."
+       },
+       {
+        "id": "d",
+        "text": "Today at seven.",
+        "reveals": "내일 means tomorrow, not today."
+       }
+      ],
+      "reasonable": [
+       "a"
+      ],
+      "after": "The message names the day (tomorrow) and the hour (seven), but not whether it is morning or evening. Both readings are possible."
+     },
+     {
+      "info": "수진: 저는 아침 여섯 시에 일어나요. 일찍 일어나요.",
+      "ask": "Now what do you think?",
+      "options": [
+       {
+        "id": "a",
+        "text": "Probably morning, because she gets up early, but it is not certain."
+       },
+       {
+        "id": "b",
+        "text": "Surely morning, because she gets up at six.",
+        "reveals": "She gets up early, but that is a habit. It does not say what the meeting time is."
+       },
+       {
+        "id": "c",
+        "text": "Surely evening, because seven is late.",
+        "reveals": "Nothing here says evening."
+       },
+       {
+        "id": "d",
+        "text": "Still not clear; the new message does not decide between them."
+       }
+      ],
+      "reasonable": [
+       "a",
+       "d"
+      ],
+      "after": "Getting up early makes a morning meeting a bit more likely, but a habit does not decide the plan. Staying a little unsure is sensible."
+     },
+     {
+      "info": "수진: 학교 앞 식당에서 저녁을 같이 먹어요.",
+      "ask": "What is the meeting now?",
+      "options": [
+       {
+        "id": "a",
+        "text": "Tomorrow at seven in the evening, at a restaurant in front of the school."
+       },
+       {
+        "id": "b",
+        "text": "Tomorrow at seven in the morning, at a restaurant in front of the school.",
+        "reveals": "저녁 means dinner/evening. You do not eat 저녁 at seven in the morning."
+       },
+       {
+        "id": "c",
+        "text": "Today at seven in the evening.",
+        "reveals": "The day is still 내일 from the first message."
+       },
+       {
+        "id": "d",
+        "text": "Still not clear; morning and evening are both possible.",
+        "reveals": "Eating 저녁 together settles it as evening."
+       }
+      ],
+      "reasonable": [
+       "a"
+      ],
+      "after": "저녁 is the evening meal, so seven o'clock is seven in the evening. The new information replaced your first guess."
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Which part of the last message settled the question?",
+    "options": [
+     {
+      "id": "a",
+      "text": "학교 앞",
+      "reveals": "The place does not tell you the time of day."
+     },
+     {
+      "id": "b",
+      "text": "식당에서",
+      "reveals": "Restaurants can be open in the morning too, so the place does not decide."
+     },
+     {
+      "id": "c",
+      "text": "같이",
+      "reveals": "같이 means 'together'. It tells you about people, not about time."
+     },
+     {
+      "id": "d",
+      "text": "저녁을"
+     }
+    ],
+    "correct": [
+     "d"
+    ],
+    "explain": "저녁 names the part of the day (and the meal). The other words give the place or the company.",
+    "hints": [
+     "Look for a word about a part of the day.",
+     "Cross out the words that only tell you where or with whom."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Write a short polite reply to Sujin's first message ('내일 일곱 시에 만나요.') that removes any doubt about the time. A question or a statement is fine.",
+    "placeholder": "예: ...",
+    "minChars": 6,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "says morning or evening/pm",
+      "mode": "any",
+      "patterns": [
+       "오전",
+       "오후",
+       "아침",
+       "저녁",
+       "밤",
+       "\\ba\\.?m\\b",
+       "\\bp\\.?m\\b",
+       "morning",
+       "evening",
+       "night"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "mentions seven",
+      "mode": "any",
+      "patterns": [
+       "일곱",
+       "7 ?시",
+       "\\b7\\b",
+       "seven"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])",
+       "[가-힣]까요",
+       "[가-힣]니다",
+       "\\?"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my reply contain a word for morning or evening?",
+     "Would Sujin know exactly when to come?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "내일 저녁 일곱 시에 만나요?"
+     },
+     {
+      "text": "아침 일곱 시예요, 저녁 일곱 시예요?"
+     },
+     {
+      "text": "오후 일곱 시에 만나요. 괜찮아요?"
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "네, 내일 일곱 시에 만나요.",
+      "why": "Repeats the doubt: no morning or evening."
+     },
+     {
+      "text": "네, 좋아요.",
+      "why": "Does not mention the time at all."
+     }
+    ],
+    "humanReview": "Whether the reply is natural, and replies that remove the doubt in another way (for example '해가 지고' or a 24-hour time such as 열아홉 시).",
+    "hints": [
+     "What single word do you need to add to 일곱 시?",
+     "Words for parts of the day: 아침, 오전, 오후, 저녁, 밤.",
+     "You can ask a question or confirm the time."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Reading the messages",
+    "full": "Holds both readings at first and moves to evening after the last message",
+    "partial": "Chooses a reading too early but corrects it",
+    "none": "Keeps the first guess against the evidence"
+   },
+   {
+    "criterion": "Reply",
+    "full": "A clear reply with a word for morning or evening and the hour",
+    "partial": "Mentions the hour only",
+    "none": "Does not mention the time"
+   }
+  ],
+  "alternatives": [
+   "Stage 2: both 'probably morning' and 'still not clear' are reasonable.",
+   "The reply may ask a question or confirm a time."
+  ],
+  "hardCases": [
+   "Some learners treat 'early riser' as proof of morning. The task shows that it is only a weak clue."
+  ],
+  "cautions": {
+   "language": "Uses 해요체 only. 아침, 오전, 오후, 저녁 are listed in the hints. 오전/오후 are the formal words for a.m./p.m.",
+   "culture": "Many Korean speakers add 오전/오후 or 아침/저녁 when a time could be misunderstood.",
+   "accessibility": "All material is plain text; no pictures, colours or sounds are needed. Times are written in words and digits."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Reasonable reading at each stage",
+    "Choice of the deciding word",
+    "Words for part of the day and seven in the reply"
+   ],
+   "human": [
+    "Naturalness of the reply"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "n-k-l1h-05",
+  "subject": "korean",
+  "grade": "K2",
+  "topic": "daily routine",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "A time for the study group",
+  "uiLang": "en",
+  "format": "build-many-verify",
+  "generative": true,
+  "goal": "Turn four short messages from friends into exact conditions, find three different day-and-time choices that satisfy all of them, and write the plan in Korean.",
+  "thinking": [
+   "Combining several conditions",
+   "A condition that hides another (end time from start time)",
+   "A condition that does not matter (morning swimming vs afternoon meeting)",
+   "Finding more than one solution"
+  ],
+  "differsFromPlain": "Plain practice asks you to say one meeting time. Here each friend gives only a limit, and the answer is a set of times that fit everyone.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows days of the week, native hours (세 시, 네 시) and 두 시간",
+   "Knows 오전 (before noon) and 오후 (after noon)"
+  ],
+  "minutes": 11,
+  "curriculum": null,
+  "material": "Four friends meet once a week to study Korean. They study in the afternoon for two hours.\n\n민호: 월요일하고 금요일에는 일해요.\n지아: 토요일 오전에는 수영해요. 일요일에는 안 와요.\n수아: 오후 세 시 전에는 안 돼요. 여섯 시에는 집에 가요.\n유나: 수요일 오후 네 시에 한국어 수업이 있어요.\n\n(Monday = 월요일, Tuesday = 화요일, Wednesday = 수요일, Thursday = 목요일, Friday = 금요일, Saturday = 토요일, Sunday = 일요일)\n(안 와요 = does not come, 안 돼요 = cannot / is not possible, 전 = before)",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "scaffold": true,
+    "prompt": "Suah says '여섯 시에는 집에 가요.' The study time is two hours. What is the LATEST starting time that works?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Five o'clock.",
+      "reveals": "If you start at five, you study until seven. Suah has already gone home at six."
+     },
+     {
+      "id": "b",
+      "text": "Four o'clock."
+     },
+     {
+      "id": "c",
+      "text": "Three o'clock.",
+      "reveals": "Three is the earliest she can come, not the latest. A later start might still work."
+     },
+     {
+      "id": "d",
+      "text": "Six o'clock.",
+      "reveals": "Starting at six is after she leaves."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "Two hours from four o'clock end at six, just when she goes home. A later start would end after six.",
+    "hints": [
+     "Count two hours forward from a possible start time.",
+     "The study time must be finished when she leaves."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "build",
+    "prompt": "Find 3 different choices (day and start time) that fit all four friends. d = the day (1 = Monday, 2 = Tuesday, 3 = Wednesday, 4 = Thursday, 5 = Friday, 6 = Saturday, 7 = Sunday). h = the starting hour in the afternoon (3 = 오후 세 시).",
+    "vars": [
+     {
+      "name": "d",
+      "label": "day (1 = Mon ... 7 = Sun)"
+     },
+     {
+      "name": "h",
+      "label": "start hour in the afternoon"
+     }
+    ],
+    "constraints": [
+     {
+      "id": "c0",
+      "expr": "d==floor(d) && h==floor(h) && d>=1 && d<=7 && h>=1 && h<=11",
+      "ok": "A real day and a whole afternoon hour.",
+      "fail": "Use a day number 1 to 7 and a whole hour of the afternoon."
+     },
+     {
+      "id": "c1",
+      "expr": "d!=1 && d!=5",
+      "ok": "Minho does not work that day.",
+      "fail": "민호 works on Monday and Friday."
+     },
+     {
+      "id": "c2",
+      "expr": "d!=7",
+      "ok": "Not Sunday.",
+      "fail": "지아 does not come on Sunday."
+     },
+     {
+      "id": "c3",
+      "expr": "h>=3",
+      "ok": "Suah can come (after three).",
+      "fail": "수아 cannot come before three o'clock."
+     },
+     {
+      "id": "c4",
+      "expr": "h+2<=6",
+      "ok": "Study ends by six.",
+      "fail": "The two hours must end by six, when 수아 goes home."
+     },
+     {
+      "id": "c5",
+      "expr": "!(d==3 && h<=4 && h+2>4)",
+      "ok": "No clash with Yuna's class.",
+      "fail": "On Wednesday 유나 has class at four, which clashes with your two hours."
+     }
+    ],
+    "need": 3,
+    "distinctBy": "d*10+h",
+    "modelRows": [
+     {
+      "d": 2,
+      "h": 3
+     },
+     {
+      "d": 4,
+      "h": 4
+     },
+     {
+      "d": 6,
+      "h": 3
+     }
+    ],
+    "badRows": [
+     {
+      "d": 1,
+      "h": 3
+     },
+     {
+      "d": 3,
+      "h": 4
+     },
+     {
+      "d": 2,
+      "h": 5
+     },
+     {
+      "d": 6,
+      "h": 2
+     }
+    ],
+    "explain": "Possible days: Tuesday, Thursday, Saturday (Monday and Friday are out, Sunday is out, Wednesday clashes with the class). Possible starts: three or four o'clock. Jia's morning swimming on Saturday does not matter because the meeting is in the afternoon. That gives six choices; any three are fine.",
+    "hints": [
+     "First cross out whole days, then handle the hours.",
+     "Not every friend's sentence has to change your answer: ask if it touches the afternoon.",
+     "Some days have a limit only at certain hours. For each day that is not crossed out, check your two hours against every limit."
+    ],
+    "because": {
+     "id": "s2b",
+     "kind": "write",
+     "prompt": "Pick ONE of your choices and write the plan for the group in Korean, with the day, 오후 and the hour.",
+     "placeholder": "예: ...",
+     "minChars": 8,
+     "checks": [
+      {
+       "id": "w1",
+       "label": "names a possible day (Tue, Thu or Sat)",
+       "mode": "any",
+       "patterns": [
+        "화요일",
+        "목요일",
+        "토요일",
+        "\\btue(sday)?\\b",
+        "\\bthu(rsday)?\\b",
+        "\\bsat(urday)?\\b"
+       ]
+      },
+      {
+       "id": "w2",
+       "label": "says afternoon (오후) and a start hour of three or four",
+       "mode": "any",
+       "patterns": [
+        "오후 ?(세|네|3|4) ?시"
+       ]
+      },
+      {
+       "id": "w3",
+       "label": "polite ending",
+       "mode": "any",
+       "patterns": [
+        "[가-힣]요(?![가-힣])",
+        "[가-힣]니다"
+       ]
+      }
+     ],
+     "selfAssess": [
+      "Is my day one of Tuesday, Thursday or Saturday?",
+      "Is my hour three or four in the afternoon?"
+     ],
+     "modelAnswers": [
+      {
+       "text": "화요일 오후 세 시에 만나요."
+      },
+      {
+       "text": "우리는 토요일 오후 네 시에 공부해요."
+      }
+     ],
+     "badAnswers": [
+      {
+       "text": "금요일 오후 세 시에 만나요.",
+       "why": "Minho works on Friday."
+      },
+      {
+       "text": "좋아요.",
+       "why": "No day and no hour."
+      },
+      {
+       "text": "토요일 오전 세 시에 만나요.",
+       "why": "Says morning (오전), but the group studies in the afternoon."
+      }
+     ],
+     "humanReview": "Whether the day and the hour fit the choice the learner built (the checker only reads the words), and natural wording.",
+     "hints": [
+      "Use one row from your list: which day, which hour?",
+      "Pattern: day + 오후 + hour + 시에 만나요."
+     ]
+    }
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Reading the conditions",
+    "full": "Sees that Wednesday is out, Saturday is in, and that the end time limits the start time",
+    "partial": "Builds some valid choices",
+    "none": "Choices break the conditions"
+   },
+   {
+    "criterion": "Reporting",
+    "full": "A Korean sentence with the day, 오후 and hour that matches one choice",
+    "partial": "Missing the day or the hour",
+    "none": "No plan"
+   }
+  ],
+  "alternatives": [
+   "Any three of the six valid choices are correct (Tue/Thu/Sat at 3 or 4).",
+   "Starting times in half hours are outside this task."
+  ],
+  "hardCases": [
+   "A learner may also exclude Saturday because of the swimming. It is allowed only in the morning, so Saturday afternoon is possible."
+  ],
+  "cautions": {
+   "language": "Days and clock hours only. 오전 and 오후 are glossed. Numbers in the build use digits.",
+   "culture": "Study groups arranged by messages among friends are common.",
+   "accessibility": "All material is plain text; no pictures, colours or sounds are needed. Times are written in words and digits."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Every valid choice is checked against all conditions",
+    "Choice of the latest start",
+    "Day and hour words in the plan"
+   ],
+   "human": [
+    "Naturalness of the plan sentence"
+   ]
+  },
+  "status": "draft"
+ }
+]

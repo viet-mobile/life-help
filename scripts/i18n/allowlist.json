@@ -1,5 +1,5 @@
 {
-  "_doc": "Reviewed classifications for scripts/verify_i18n_completeness.py. Every entry: classification (one of the audit's ALLOWED_CLASSES) + reason. tokens: substrings ignored when judging a value. entries: {locale ('*' = every locale), key, classification, reason} for whole values that legitimately stay identical / bilingual. hardcodedFiles / hardcodedPatterns: classify hard-coded literals (reported metric on this branch).",
+  "_doc": "Reviewed classifications for scripts/verify_i18n_completeness.py. Every entry: classification (one of the audit's ALLOWED_CLASSES) + reason. tokens: substrings ignored when judging a value. entries: {locale ('*' = every locale), key, classification, reason} for whole values that legitimately stay identical / bilingual. hardcodedFiles / hardcodedPatterns: classify hard-coded literals (reported metric on this branch). targetFragments: Korean fragments allowed inside the per-locale Korean overlays (grammar endings and register terms that the lessons talk about).",
   "tokens": {
     "LIFE.HELP": {
       "classification": "BRAND_OR_PROPER_NOUN",
@@ -362,6 +362,18 @@
       "key": "admin.statMessages",
       "classification": "LEGITIMATELY_IDENTICAL",
       "reason": "'Messages' is the same word in several languages (e.g. French)"
+    },
+    {
+      "locale": "sv",
+      "key": "visa.links.info",
+      "classification": "LEGITIMATELY_IDENTICAL",
+      "reason": "'Information' is the native Swedish word (same spelling as English) for an information link label"
+    },
+    {
+      "locale": "da",
+      "key": "visa.links.info",
+      "classification": "LEGITIMATELY_IDENTICAL",
+      "reason": "'Information' is the native Danish word (same spelling as English) for an information link label"
     }
   ],
   "hardcodedFiles": {
@@ -438,6 +450,208 @@
     "/logos/[-a-z]+ \\.png": {
       "classification": "NON_UI",
       "reason": "static asset path template"
+    }
+  },
+  "targetFragments": {
+    "ㄴ데": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "ㄴ데도": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "ㄹ까요": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "ㄹ수록": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "거냐고": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "거라고": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "겁니다": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "것으로": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "결과적으로": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "경우에는": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "계시다": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "기록했다": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "다는": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "대한": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "던": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "뒷받침하고": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "때": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "라더니": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "리라는": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "말라고": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "말자고": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "모르다": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "못하다": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "밝혔다": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "보겠습니다": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "보고드리다": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "보니": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "분석했다": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "사원": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "서술하고": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "않는": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "않다": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "알다": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "어렵다": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "어렵습니다": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "었는데도": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "었니": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "었다고": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "오다": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "요약된다": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "으라고": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "자마자": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "적이": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "전에": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "정리되었습니다": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "주시겠습니까": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "판단됩니다": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "합쇼체": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "했잖아": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
+    },
+    "후에": {
+      "classification": "TARGET_LANGUAGE_CONTENT",
+      "reason": "Korean grammar ending / register term or example fragment that the Korean course overlays teach about in the learner's language (reviewed: grammar-lesson material, not an untranslated UI leak)"
     }
   }
 }

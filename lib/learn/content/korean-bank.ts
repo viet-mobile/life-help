@@ -202,7 +202,8 @@ export function expandItem(skillId: string, item: KItem, pool: KItem[], notes: R
       answer = { kind: "text", accepted: [item.ko], dictation: "ko" }; audioText = item.ko; vars.n = item.ko.replace(/\s+/g, "").length; vars.first = item.od![0]; difficulty = Math.min(5, base + 2); break;
     }
     case "passage": {
-      choice([item.rd!.t, ...item.rd!.f]); target = { text: item.ko }; audioText = item.ko.replace(/(^|\s)[A-Z가-힣]:\s*/g, "$1").replace(/\n/g, " ").replace(/\s+/g, " ").trim(); // every "A:" / "B:" label, also on one line vars.gloss = gl(item); difficulty = Math.min(5, base + 1); break;
+      choice([item.rd!.t, ...item.rd!.f]); target = { text: item.ko }; audioText = item.ko.replace(/(^|\s)[A-Z가-힣]:\s*/g, "$1").replace(/\n/g, " ").replace(/\s+/g, " ").trim(); // every "A:" / "B:" label, also on one line
+      vars.gloss = gl(item); difficulty = Math.min(5, base + 1); break;
     }
   }
   prompt = fill(tpl.prompt, vars);

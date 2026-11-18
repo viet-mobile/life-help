@@ -1,0 +1,1146 @@
+[
+ {
+  "id": "n-k-k1-01",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Reading very short messages",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Four notes, one claim",
+  "uiLang": "en",
+  "format": "judge-evidence-explain",
+  "generative": true,
+  "goal": "Decide which class notes really support a claim about a schedule, and say what is different in a note that does not.",
+  "thinking": [
+   "Claim versus evidence",
+   "Checking day, time and subject one by one",
+   "Reading a negative sentence (없어요)"
+  ],
+  "differsFromPlain": "Plain practice asks you to read one timetable line. Here you hold a claim and test several notes against it, including a note that contains the right words but says the opposite.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows days of the week and 수업, 있어요/없어요, 오전/오후"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "In the class chat, Minho wrote: \"저는 화요일 오후에 한국어 수업이 있어요.\" (I have a Korean class on Tuesday afternoon.) Jina wants to check it, so she looks at the notes below. A note is evidence only if it matches the claim in day, time of day and subject.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "Which notes support Minho's claim? Select all that do.",
+    "options": [
+     {
+      "id": "a",
+      "text": "화요일 오후 두 시 - 한국어 수업"
+     },
+     {
+      "id": "b",
+      "text": "화요일 오전 열 시 - 영어 수업",
+      "reveals": "Only the day matches. The time of day and the subject are different, so this note says nothing about a Korean class in the afternoon."
+     },
+     {
+      "id": "c",
+      "text": "수요일 오후 두 시 - 한국어 수업",
+      "reveals": "Time and subject match, but the day is 수요일 (Wednesday), not 화요일."
+     },
+     {
+      "id": "d",
+      "text": "화요일 오후, 목요일 오후 - 한국어 수업"
+     }
+    ],
+    "correct": [
+     "a",
+     "d"
+    ],
+    "explain": "A supports the claim fully (Tuesday, afternoon, Korean). D also supports it because Tuesday afternoon is one of the two days listed. B matches only the day, and C matches everything except the day, so neither is evidence.",
+    "hints": [
+     "Take the claim apart into three pieces: day, morning or afternoon, subject.",
+     "Check every note against all three pieces, not only the one that looks familiar."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Pick ONE note that does not support the claim (B or C). Say in a sentence (English is fine) what is different between that note and the claim.",
+    "placeholder": "e.g. The note ...",
+    "minChars": 15,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "names what differs (day, time of day or subject)",
+      "mode": "any",
+      "patterns": [
+       "wednesday",
+       "수요일",
+       "morning",
+       "오전",
+       "english",
+       "영어",
+       "\\bday\\b",
+       "\\bdate\\b",
+       "\\bsubject\\b",
+       "요일",
+       "과목",
+       "not tuesday",
+       "화요일이 아니"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I name the exact piece that is different?",
+     "Did I say what the claim has and what the note has instead?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "Note C is for Wednesday, but the claim says Tuesday, so the day is different."
+     },
+     {
+      "text": "수요일이에요. Minho said 화요일, so the day does not match."
+     },
+     {
+      "text": "Note B is an English class in the morning, but the claim is about a Korean class in the afternoon."
+     },
+     {
+      "text": "In note C the day is different from the claim."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "It is wrong.",
+      "why": "Does not say what is different."
+     },
+     {
+      "text": "I do not like it.",
+      "why": "Gives an opinion, not a comparison with the claim."
+     }
+    ],
+    "humanReview": "Whether the named difference is really a difference between that note and the claim.",
+    "hints": [
+     "Put the note and the claim side by side and read them piece by piece.",
+     "Say what the note has, and what the claim has instead."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "choose",
+    "prompt": "Later Jina finds one more note: \"화요일에는 한국어 수업이 없어요.\" It contains the words 화요일 and 한국어 수업. What does it do to the claim?",
+    "options": [
+     {
+      "id": "a",
+      "text": "It says nothing about the claim, because it gives no time of day.",
+      "reveals": "The note speaks about the whole day of Tuesday, so it does cover the afternoon."
+     },
+     {
+      "id": "b",
+      "text": "It supports the claim, because 화요일 and 한국어 수업 both appear.",
+      "reveals": "Matching words are not enough. 없어요 means 'there is none', so the meaning is the opposite."
+     },
+     {
+      "id": "c",
+      "text": "It goes against the claim: the note says there is no Korean class on Tuesday."
+     },
+     {
+      "id": "d",
+      "text": "It only shows that the class is at a different time.",
+      "reveals": "The note says there is no Korean class on Tuesday at all, not a different time."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "Evidence is judged by what a note says, not by which words it contains. 있어요 means 'there is', 없어요 means 'there is not', so this note contradicts the claim.",
+    "hints": [
+     "Does the note agree with the claim, or does it disagree?",
+     "Ask whether the note could still be true if the claim were true."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Matching a claim to evidence",
+    "full": "Selects exactly the two supporting notes",
+    "partial": "Selects one supporting note or adds one wrong note",
+    "none": "Selects by familiar words only"
+   },
+   {
+    "criterion": "Explaining a mismatch",
+    "full": "Names the specific piece that differs",
+    "partial": "Says a note is wrong without saying why",
+    "none": "No comparison made"
+   }
+  ],
+  "alternatives": [
+   "A learner may say note D is weaker because it lists two days; it still contains Tuesday, so it supports the claim.",
+   "The explanation in step 2 may be in Korean, English or a mix."
+  ],
+  "hardCases": [
+   "If a note said '화요일 오후 두 시 - 한국어 수업 (취소)' the class is cancelled, so it would not support the claim, but the word 취소 is beyond this level."
+  ],
+  "cautions": {
+   "language": "Short notes with common words. 있어요 and 없어요 are the key contrast.",
+   "culture": "Class schedules differ by school; the task uses a simple weekly pattern.",
+   "accessibility": "All material is text; nothing depends on colour or sound. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of supporting notes",
+    "Choice about the meaning of 없어요",
+    "The explanation names a day, time or subject"
+   ],
+   "human": [
+    "Whether the explanation compares the note with the claim correctly"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-k1-02",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Matching text to a situation",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "A summary that says too much",
+  "uiLang": "en",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Compare a short summary with the original notice, find the lines that change what it says, and correct them.",
+  "thinking": [
+   "Summarising without distortion",
+   "Comparing a summary line by line with the source",
+   "Telling 'left out' from 'changed'"
+  ],
+  "differsFromPlain": "Plain practice asks you to read a notice and answer questions. Here a classmate's summary is given and you check it against the notice, line by line.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows 집, 학교, 점심, 물, 비가 오면"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "A school trip notice is below, followed by a classmate's summary for a friend who was absent.\n\n[Notice]\n소풍 안내\n- 날짜: 다음 주 금요일\n- 장소: 한강 공원\n- 점심: 집에서 가져와요.\n- 물: 학교에서 줘요.\n- 비가 오면: 학교에서 영화를 봐요.\n\n[The classmate's summary is in the next step.]",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "The summary is for a friend who was absent. Which lines say something different from the notice? Pick one of them.",
+    "lines": [
+     "1. 소풍은 다음 주 금요일이에요.",
+     "2. 한강 공원에서 소풍을 해요.",
+     "3. 점심은 학교에서 줘요.",
+     "4. 물은 학교에서 줘요.",
+     "5. 비가 오면 집에 있어요."
+    ],
+    "wrong": [
+     2,
+     4
+    ],
+    "explain": "Line 3 and line 5 are wrong. The notice says to bring lunch from home (집에서 가져와요), and when it rains the class watches a film at school (학교에서 영화를 봐요). Lines 1, 2 and 4 match the notice.",
+    "hints": [
+     "Go through the summary one line at a time and find the matching bullet in the notice.",
+     "For each line, ask: who gives it, where, and when? Compare those details."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Rewrite the summary lines that were wrong so that they match the notice. Use Korean.",
+    "placeholder": "예: ...",
+    "minChars": 14,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "lunch: you bring it from home",
+      "mode": "any",
+      "patterns": [
+       "집에서[^.!?\\n]{0,8}(가져|갖고|가지고|싸|들고)",
+       "도시락\\s*을?\\s*(준비|싸|가져|가지고|들고)"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "rain plan: a film at school",
+      "mode": "any",
+      "patterns": [
+       "비가?\\s*오면[^.!?\\n]*학교[^.!?\\n]{0,6}에서[^.!?\\n]*영화",
+       "학교[^.!?\\n]{0,6}에서[^.!?\\n]*영화[^.!?\\n]*비가?\\s*오면"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "lunch is not given or brought from school",
+      "mode": "none",
+      "patterns": [
+       "점심[^.!?\\n]{0,10}학교에서\\s*(줘|주|먹|가져|갖고|가지고|싸)",
+       "도시락[^.!?\\n]{0,6}학교에서\\s*(줘|주)"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "does not say the film is cancelled",
+      "mode": "none",
+      "patterns": [
+       "영화[^.!?\\n]{0,4}(안|못)\\s*(봐|보)",
+       "영화[^.!?\\n]{0,4}안 해"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my lunch line say who brings the lunch and from where?",
+     "Does my rain line say where and what they do?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "점심은 집에서 가져와요. 비가 오면 학교에서 영화를 봐요."
+     },
+     {
+      "text": "점심은 집에서 가지고 와요. 비가 오면 학교에서 영화를 보고요."
+     },
+     {
+      "text": "점심은 집에서 가져와야 해요. 그리고 비가 오면 학교에서 영화를 봐요."
+     },
+     {
+      "text": "점심은 도시락을 준비해요. 비가 오면 학교에서 영화를 봐요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "점심은 학교에서 줘요. 비가 오면 집에 있어요.",
+      "why": "Both lines are unchanged."
+     },
+     {
+      "text": "점심은 집에서 가져와요. 비가 오면 소풍을 안 가요.",
+      "why": "The lunch is fixed, but the rain line still does not say what the notice says."
+     }
+    ],
+    "humanReview": "Naturalness of the learner's wording and spacing.",
+    "hints": [
+     "Find the matching bullet in the notice for each wrong line and compare the details.",
+     "Write each corrected line as one short sentence, copying the details from the notice."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "choose",
+    "prompt": "The classmate wants a shorter summary and leaves out the line about water. Is that a mistake like the wrong lines you found?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Yes, because a summary must repeat every line of the notice.",
+      "reveals": "A summary may be shorter than the notice. Leaving something out is not the same as changing it."
+     },
+     {
+      "id": "b",
+      "text": "No. Leaving a detail out makes it shorter; it only becomes wrong if it says something different."
+     },
+     {
+      "id": "c",
+      "text": "Yes, because water is important on a trip.",
+      "reveals": "Importance does not matter here. The question is whether the summary says something that the notice does not say."
+     },
+     {
+      "id": "d",
+      "text": "No, because the water line was one of the wrong lines anyway.",
+      "reveals": "The water line matched the notice; it was not one of the wrong lines."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "A good short summary may drop details, but it must not change them. The lunch and rain lines are distortions because they say something different from the notice; dropping the water line only loses a detail.",
+    "hints": [
+     "Ask what is different between leaving a fact out and stating a different fact.",
+     "Reread the water line of the summary against the notice before deciding."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finding changed lines",
+    "full": "Finds both lines 3 and 5 using the notice",
+    "partial": "Finds one line",
+    "none": "Picks a line that matches the notice"
+   },
+   {
+    "criterion": "Correcting the summary",
+    "full": "Both lines now match the notice",
+    "partial": "One line corrected",
+    "none": "No change in meaning"
+   }
+  ],
+  "alternatives": [
+   "'점심은 집에서 싸 와요' and '도시락을 가져와요' also fit the lunch line.",
+   "'비가 오면 학교에서 영화를 봐요' may be reworded, for example with '학교에서 영화를 보고요'."
+  ],
+  "hardCases": [
+   "A learner may write '집에서 점심을 먹어요', which sounds close but means eating at home, not bringing lunch to the trip."
+  ],
+  "cautions": {
+   "language": "Short bullet-style notice with basic place words.",
+   "culture": "School trip rules differ; the notice is invented for the task.",
+   "accessibility": "All material is text; nothing depends on colour or sound. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Position of the first wrong line",
+    "Choice about leaving out versus changing",
+    "Rewrite contains the key ideas"
+   ],
+   "human": [
+    "Naturalness of the rewritten lines"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-k1-03",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Matching text to a situation",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "What time can the movie start?",
+  "uiLang": "en",
+  "format": "build-many-verify",
+  "generative": true,
+  "goal": "Find several movie start times that satisfy every condition in a message, including a condition that is only implied.",
+  "thinking": [
+   "Collecting all conditions in a message",
+   "Testing examples against every condition",
+   "Noticing a hidden condition (travel time)"
+  ],
+  "differsFromPlain": "Plain practice asks for the time in a message. Here the message gives limits instead of one answer, so you build several start times and check each against all the limits.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows Korean clock hours (한 시, 두 시, ... 여섯 시) and 시간"
+  ],
+  "minutes": 10,
+  "curriculum": null,
+  "material": "Minjun sends a message after school:\n\n\"수업이 두 시에 끝나요. 같이 영화 봐요! 영화는 두 시간이에요. 극장은 학교 옆에 있어요. 영화가 끝나면 집까지 한 시간 걸려요. 저는 여섯 시까지 집에 가야 해요.\"\n\nIn this task, a time is written as decimal hours on the afternoon clock: 2.5 means 2:30 and 3 means 3:00 (all times are in the afternoon). Use only whole and half hours.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "scaffold": true,
+    "prompt": "What does '여섯 시까지 집에 가야 해요' tell you about the time?",
+    "options": [
+     {
+      "id": "a",
+      "text": "He must leave for home at exactly six o'clock.",
+      "reveals": "'까지' marks a limit, not the moment of leaving."
+     },
+     {
+      "id": "b",
+      "text": "He must be home by six o'clock at the latest."
+     },
+     {
+      "id": "c",
+      "text": "He goes home when the movie starts.",
+      "reveals": "The sentence is about a time he has to be home, not about the movie start."
+     },
+     {
+      "id": "d",
+      "text": "He must be home after six o'clock.",
+      "reveals": "That would be the opposite: a minimum instead of a limit."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "'-까지' marks the end of a range: up to six o'clock. Arriving at home earlier is fine, later is not.",
+    "hints": [
+     "Think of '까지' as 'by' or 'until'.",
+     "Test your reading with two arrival times (earlier and later) and see which reading allows them."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "build",
+    "prompt": "Find 3 different movie start times that work. s = the start time of the movie.",
+    "vars": [
+     {
+      "name": "s",
+      "label": "movie start time (e.g. 2.5 = 2:30)"
+     }
+    ],
+    "constraints": [
+     {
+      "id": "c0",
+      "expr": "2*s==floor(2*s)",
+      "ok": "A whole or half hour.",
+      "fail": "Use a whole or half hour only (for example 3 or 3.5)."
+     },
+     {
+      "id": "c1",
+      "expr": "s>=2",
+      "ok": "The movie starts after class ends.",
+      "fail": "수업이 두 시에 끝나요: the movie cannot start before class ends."
+     },
+     {
+      "id": "c2",
+      "expr": "s+2+1<=6",
+      "ok": "He is home by six.",
+      "fail": "Add the movie (2 hours) and the trip home (1 hour): he would arrive after six."
+     }
+    ],
+    "need": 3,
+    "distinctBy": "s",
+    "modelRows": [
+     {
+      "s": 2
+     },
+     {
+      "s": 2.5
+     },
+     {
+      "s": 3
+     }
+    ],
+    "badRows": [
+     {
+      "s": 1.5
+     },
+     {
+      "s": 3.5
+     },
+     {
+      "s": 4
+     }
+    ],
+    "explain": "The movie takes 2 hours and the trip home takes 1 hour, so the start time plus 3 hours must be at most 6. With class ending at 2, the possible start times are 2, 2.5 and 3.",
+    "hints": [
+     "List every condition in the message in your own words: a start limit, a length, a trip, a deadline.",
+     "Pick a start time, add the movie length, then add the trip home, and compare with the deadline.",
+     "Try a start time one half hour later than the last one that worked."
+    ],
+    "because": {
+     "id": "s2b",
+     "kind": "write",
+     "prompt": "Explain in a sentence (English is fine) why a movie that starts at 3:30 does not work.",
+     "placeholder": "e.g. Because ...",
+     "minChars": 15,
+     "checks": [
+      {
+       "id": "w1",
+       "label": "uses the movie length or the trip home",
+       "mode": "any",
+       "patterns": [
+        "home",
+        "trip",
+        "travel",
+        "commut",
+        "(movie|film)[^.!?\\n]*(hour|end|finish|long)",
+        "집",
+        "걸려",
+        "한 시간",
+        "두 시간",
+        "끝나"
+       ]
+      },
+      {
+       "id": "w2",
+       "label": "shows the result: he arrives home after six",
+       "mode": "any",
+       "patterns": [
+        "(after|past) (six|6)",
+        "6[:.]?30",
+        "six[- ]thirty",
+        "half past six",
+        "6\\.5",
+        "여섯 ?시 ?반",
+        "(home|arrive)[^.!?\\n]*late",
+        "late[^.!?\\n]*(home|six|6)",
+        "늦",
+        "못 ?(가|도착)",
+        "넘"
+       ]
+      }
+     ],
+     "selfAssess": [
+      "Did I use the trip home in my reasoning?",
+      "Did I show the sum (start + movie + trip) or say that he would get home too late?"
+     ],
+     "modelAnswers": [
+      {
+       "text": "3:30 plus 2 hours is 5:30, and the trip home takes 1 more hour, so he gets home at 6:30, after six."
+      },
+      {
+       "text": "영화가 다섯 시 반에 끝나요. 집까지 한 시간 걸려서 여섯 시까지 집에 못 가요."
+      }
+     ],
+     "badAnswers": [
+      {
+       "text": "Because it does not work.",
+       "why": "Gives no reason."
+      },
+      {
+       "text": "I like 3:00 better.",
+       "why": "A preference, not a reason."
+      }
+     ],
+     "humanReview": "Whether the arithmetic in the explanation is correct.",
+     "hints": [
+      "Add up the movie and the way home, starting from 3:30.",
+      "Compare the arrival time with the deadline in the message."
+     ]
+    }
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Using all the conditions",
+    "full": "All three start times satisfy the start limit, the deadline and the trip home",
+    "partial": "Times respect the deadline but ignore the trip home",
+    "none": "Times chosen without checking"
+   },
+   {
+    "criterion": "Explaining the failure",
+    "full": "Adds movie length and trip home to the start time",
+    "partial": "Says it is too late without a calculation",
+    "none": "No reason"
+   }
+  ],
+  "alternatives": [
+   "A learner may count the trip as part of the movie time; as long as the total is at most 6 the result is the same.",
+   "Starting exactly at 2:00 is accepted because class ends at 2:00 and the cinema is next to the school."
+  ],
+  "hardCases": [
+   "Real cinemas start at fixed times such as 2:10; the task simplifies to half hours."
+  ],
+  "cautions": {
+   "language": "Clock hours are written in the Korean number system plus 시; the task gives the 24-hour number format for the answers.",
+   "culture": "Cinema and school times are simplified.",
+   "accessibility": "All material is text; nothing depends on colour or sound. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Each example is checked against all three conditions",
+    "Three different start times are required",
+    "Explanation mentions the trip, the length or the deadline"
+   ],
+   "human": [
+    "Whether the explanation arithmetic is correct"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-k1-04",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Reading very short messages",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Two stories about one phone call",
+  "uiLang": "en",
+  "format": "reveal-and-revise",
+  "generative": true,
+  "goal": "Work out who did what from the particles in short sentences, and update your judgement when a second speaker disagrees.",
+  "thinking": [
+   "Who did what to whom",
+   "Revising a judgement when new statements arrive",
+   "Trusting particles rather than word order"
+  ],
+  "differsFromPlain": "Plain practice asks you to fill in 이/가 and 을/를. Here you read what the particles tell you about the roles and compare conflicting statements from different speakers.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows 이/가 and 을/를 as simple markers, and 아니에요",
+   "제가 = 'I' (the one who does the action)"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "Three classmates talk about yesterday. Sujin, Minsu and Jiyeon are friends. 불렀어요 means 'called (someone over)'. Someone called someone, but the three do not agree. 제가 means 'I' (the one who does the action). 안 와서요 means 'because he/she did not come'. Read each message and answer; the next message will arrive after you answer.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "Read each message, choose the reading that seems most likely, then continue.",
+    "hints": [
+     "Find who is marked with 이/가 and who with 을/를 in each sentence.",
+     "Do not use the order of the words alone; look at the little markers after the names."
+    ],
+    "reflect": "The marker after the name tells the role: 이/가 marks the one who does the action, 을/를 marks the one it is done to. Word order can change, but the roles stay the same. When two speakers disagree, compare who is placed in which role.",
+    "stages": [
+     {
+      "info": "수진: 어제 지영이 민수를 불렀어요.",
+      "ask": "Who called whom?",
+      "options": [
+       {
+        "id": "a",
+        "text": "지영 called 민수."
+       },
+       {
+        "id": "b",
+        "text": "민수 called 지영.",
+        "reveals": "The one with 이/가 (지영이) does the calling. 민수를 is the person who was called."
+       },
+       {
+        "id": "c",
+        "text": "수진 called both of them.",
+        "reveals": "수진 is only the person telling the story here; no sentence says 수진 called anyone."
+       },
+       {
+        "id": "d",
+        "text": "지영 and 민수 called each other.",
+        "reveals": "Nothing in the sentence says they called each other; it names one caller."
+       }
+      ],
+      "reasonable": [
+       "a"
+      ],
+      "after": "지영이 is the one who called, and 민수를 is the one who was called. This is Sujin's version."
+     },
+     {
+      "info": "민수: 아니에요. 제가 지영을 불렀어요.",
+      "ask": "How do the two messages relate?",
+      "options": [
+       {
+        "id": "a",
+        "text": "They agree about what happened.",
+        "reveals": "They name different callers: in 수진's message 지영 calls, in 민수's message 민수 calls."
+       },
+       {
+        "id": "b",
+        "text": "They disagree: the caller and the person called are reversed."
+       },
+       {
+        "id": "c",
+        "text": "민수 only says he is not angry.",
+        "reveals": "'아니에요' here means 'no, that is not so', and the next sentence gives his own version."
+       },
+       {
+        "id": "d",
+        "text": "They are about two different days.",
+        "reveals": "Nothing says the days differ; 민수 answers 수진 directly with '아니에요'."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "민수 (제가) says that he called 지영. That is the reverse of Sujin's story, so one of them has it wrong, or the call happened twice."
+     },
+     {
+      "info": "지영: 민수를 제가 불렀어요. 민수가 안 와서요.",
+      "ask": "Whose story does 지영's message support? (The word order is different, but look at the markers.)",
+      "options": [
+       {
+        "id": "a",
+        "text": "민수's story: 민수 called 지영.",
+        "reveals": "In '민수를 제가 불렀어요', 민수를 is the person called and 제가 is the caller (지영 herself)."
+       },
+       {
+        "id": "b",
+        "text": "Neither story, because the word order has changed.",
+        "reveals": "Word order does not change the roles. The markers 를 and 가 still show who called whom."
+       },
+       {
+        "id": "c",
+        "text": "수진's story: 지영 called 민수."
+       },
+       {
+        "id": "d",
+        "text": "Both stories at the same time.",
+        "reveals": "The two stories give opposite roles, so a message cannot support both."
+       }
+      ],
+      "reasonable": [
+       "c"
+      ],
+      "after": "지영 says 제가 (I) called 민수를. That supports Sujin's version. Two speakers (수진, 지영) now say 지영 called, and only 민수 says the opposite."
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Now you tell a friend what Jiyeon says happened. Write one polite Korean sentence: 지영 called 민수. Put 민수 first in the sentence this time, and use the right markers.",
+    "placeholder": "예: ...",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "지영 marked as the caller (지영이 / 지영 씨가 ...)",
+      "mode": "any",
+      "patterns": [
+       "지영\\s*(이|이가|씨가|씨께서)"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "민수 marked as the one called (민수를 ...), or as the topic (민수는 ...)",
+      "mode": "any",
+      "patterns": [
+       "민수\\s*(를|씨를|은|는|씨는)"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "the verb 불렀어요 (불렀 / 불러)",
+      "mode": "any",
+      "patterns": [
+       "불렀",
+       "불러"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "민수 is not the caller",
+      "mode": "none",
+      "patterns": [
+       "민수\\s*(가|는|은|씨가|씨는)[^.!?]{0,12}지영\\s*(을|를|씨를)"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "민수 comes first in the sentence",
+      "mode": "any",
+      "patterns": [
+       "^\\s*민수\\s*(를|씨를|은|는|씨는)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Which name has 가/이 in my sentence and which has 를/을?",
+     "Did the roles stay the same even though 민수 comes first?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "민수를 지영이 불렀어요."
+     },
+     {
+      "text": "민수를 지영 씨가 불렀어요."
+     },
+     {
+      "text": "민수를 지영이 불렀어요. 민수가 안 와서요."
+     },
+     {
+      "text": "민수는 지영이 불렀어요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "민수가 지영을 불렀어요.",
+      "why": "The roles are reversed: here 민수 is the caller."
+     },
+     {
+      "text": "민수 지영 불렀어요.",
+      "why": "No markers, so the roles are unclear."
+     },
+     {
+      "text": "지영이 민수를 불렀어요.",
+      "why": "The roles are right, but 민수 is not first in the sentence."
+     }
+    ],
+    "humanReview": "Naturalness of the sentence and spacing.",
+    "hints": [
+     "Decide who is the caller and who was called, then choose a marker for each name.",
+     "Which marker shows the one who was called? Put that name at the start of the sentence."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Reading roles from markers",
+    "full": "Chooses the right caller in each stage",
+    "partial": "Right in the first stage but loses the roles when the word order changes",
+    "none": "Chooses by word order only"
+   },
+   {
+    "criterion": "Updating the judgement",
+    "full": "Notices the disagreement and weighs the third message",
+    "partial": "Notices the disagreement but does not use the third message",
+    "none": "Does not notice the conflict"
+   }
+  ],
+  "alternatives": [
+   "Stage 2 reasonable answer: they disagree. Stage 3 learners may say it is still possible that both phone calls happened; the evidence here only supports 수진's version for the call that 지영 describes.",
+   "Learners may note that three speakers is not proof; this is a fair comment."
+  ],
+  "hardCases": [
+   "It is possible that two different calls happened; Korean sentences without a time word do not rule this out."
+  ],
+  "cautions": {
+   "language": "Only 이/가 and 을/를 are needed; 제가 means 'I' as the doer.",
+   "culture": "In real life, a speaker's own statement is usually trusted about what they themselves did; the task asks you to compare, not to decide who lies.",
+   "accessibility": "All material is text; nothing depends on colour or sound. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Answer at each stage compared with the reasonable set"
+   ],
+   "human": [
+    "Whether the learner's reflection compares who is in which role"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-k1-05",
+  "subject": "korean",
+  "grade": "K1",
+  "topic": "Matching text to a situation",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Test a classmate's rule",
+  "uiLang": "en",
+  "format": "make-your-own",
+  "generative": true,
+  "goal": "Test a classmate's general rule by finding your own counter-example and explain how to tell the two cases apart.",
+  "thinking": [
+   "Testing a rule with a counter-example",
+   "Producing your own example",
+   "Separating politeness from question form"
+  ],
+  "differsFromPlain": "Plain practice asks you to turn a statement into a polite form. Here a classmate's rule is given as a claim and you try to break it with a sentence you write yourself.",
+  "prerequisites": [
+   "Can read Hangul",
+   "Knows basic -요 sentences and question words 뭐, 어디"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "Hana is learning Korean. She wrote in her notebook:\n\n\"If a Korean sentence ends in -요, it is a question.\"\n\nShe saw these sentences in a dialogue: \"뭐 해요?\", \"어디 가요?\" and \"이거 얼마예요?\" Every one of them ends in -요 and is a question. Now you test her rule.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "Which sentence below is a counter-example, that is, a sentence that ends in -요 but is NOT a question?",
+    "options": [
+     {
+      "id": "a",
+      "text": "뭐 해요?",
+      "reveals": "This is a question with the word 뭐 (what), so it fits Hana's rule."
+     },
+     {
+      "id": "b",
+      "text": "저는 학생입니다.",
+      "reveals": "This is a statement, but it ends in -니다, not -요, so it does not break a rule about -요."
+     },
+     {
+      "id": "c",
+      "text": "저는 학생이에요."
+     },
+     {
+      "id": "d",
+      "text": "어디 가요?",
+      "reveals": "This is a question with the word 어디 (where), so it fits Hana's rule."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "'저는 학생이에요.' means 'I am a student'. It ends in -요 but it is a statement. One counter-example is enough to show a general rule is false.",
+    "hints": [
+     "A counter-example must end in -요 and also break the rule.",
+     "Read each sentence's meaning, not only its ending."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Write your own counter-example: one Korean sentence about YOUR OWN day or life (do not reuse a sentence from above) that ends in -요 and tells something, not asks and not invites.",
+    "placeholder": "예: ...",
+    "minChars": 4,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "ends in -요",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요[\\s.!~]*$"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "has no question mark",
+      "mode": "none",
+      "patterns": [
+       "\\?",
+       "？"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "has no question word (뭐, 어디, 누구 ...)",
+      "mode": "none",
+      "patterns": [
+       "뭐",
+       "뭘",
+       "무엇",
+       "어디",
+       "누구",
+       "언제",
+       "어떻게"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "is not a copy of the example, a command or an invitation",
+      "mode": "none",
+      "patterns": [
+       "학생이에요",
+       "세요",
+       "^\\s*(우리\\s*)?같이",
+       "함께",
+       "(자|ㅂ시다)\\s*[.!]?$",
+       "모르겠",
+       "그냥 그래",
+       "^\\s*(맞|좋|괜찮|싫|아니)[가-힣]{0,2}요[.!\\s]*$"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does my sentence tell something instead of asking?",
+     "Could a Korean speaker answer it with 'I see' rather than a reply?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "저는 커피를 좋아해요."
+     },
+     {
+      "text": "오늘 학교에 가요."
+     },
+     {
+      "text": "우리 집은 서울에 있어요."
+     },
+     {
+      "text": "얼마 전에 한국에 왔어요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "뭐 해요?",
+      "why": "This is a question."
+     },
+     {
+      "text": "저는 학생입니다.",
+      "why": "It does not end in -요."
+     },
+     {
+      "text": "I am a student.",
+      "why": "Not Korean."
+     },
+     {
+      "text": "저는 학생이에요.",
+      "why": "Copied from the exercise above, not your own sentence."
+     },
+     {
+      "text": "여기 앉으세요.",
+      "why": "This is a request, not a statement."
+     }
+    ],
+    "humanReview": "Whether the sentence is natural and clearly a statement.",
+    "hints": [
+     "Think of something you do, like, or have, and say it politely.",
+     "Finish your sentence with a polite -요 ending but do not use a question word."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "So how can a listener or reader tell a question from a statement when both end in -요? Give two clues (English is fine).",
+    "placeholder": "e.g. One clue is ...",
+    "minChars": 25,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "a clue about writing or voice (question mark, rising voice)",
+      "mode": "any",
+      "patterns": [
+       "question mark",
+       "intonation",
+       "rising",
+       "rise",
+       "pitch",
+       "voice",
+       "올라",
+       "억양",
+       "물음표"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "a clue about situation or expected reply (context, meaning)",
+      "mode": "any",
+      "patterns": [
+       "context",
+       "situation",
+       "meaning",
+       "expects? (a|an|the) (answer|reply|response)",
+       "wants? (a|an|the)? ?(answer|reply|response)",
+       "(answer|reply|response)[^.!?\\n]*expect",
+       "대답",
+       "상황",
+       "문맥",
+       "뜻"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I give two different clues?",
+     "Would each clue work in speech and in writing?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "In writing there is a question mark, and in speech the voice goes up at the end. Also the situation shows it: the speaker expects an answer."
+     },
+     {
+      "text": "A rising voice shows a question, and the situation or the meaning of the whole sentence shows whether it asks or tells."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "They are the same.",
+      "why": "Gives no clue."
+     },
+     {
+      "text": "Ask the teacher.",
+      "why": "Does not name a clue."
+     }
+    ],
+    "humanReview": "Whether the two clues are different and correct.",
+    "hints": [
+     "Think about what a speaker or writer does differently when asking.",
+     "Think about what the situation tells you and what reply the speaker expects."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Counter-example",
+    "full": "Writes a clear -요 statement with no question word",
+    "partial": "Writes a -요 sentence that is not clearly a statement",
+    "none": "Writes a question"
+   },
+   {
+    "criterion": "Telling the cases apart",
+    "full": "Gives two different, correct clues (for example voice or question mark, and situation or expected reply)",
+    "partial": "Gives one clue",
+    "none": "No clue"
+   }
+  ],
+  "alternatives": [
+   "Any polite -요 statement is accepted, for example 해요체 verbs or 이에요/예요 sentences.",
+   "Clues may mention 억양, a question mark, question words, or the situation."
+  ],
+  "hardCases": [
+   "Some -요 sentences can be either a statement or a question depending only on intonation (for example '비가 와요.' and '비가 와요?'); in writing, the question mark decides."
+  ],
+  "cautions": {
+   "language": "Uses only polite -요 sentences with common words.",
+   "culture": "This task treats -요 as polite speech in general; it also appears in questions, statements, and suggestions.",
+   "accessibility": "All material is text; nothing depends on colour or sound. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Counter-example choice",
+    "Own sentence ends in -요 with no question mark or question word",
+    "Two clue categories present (voice or writing, situation or expected reply)"
+   ],
+   "human": [
+    "Naturalness of the learner's sentence and quality of the clues"
+   ]
+  },
+  "status": "draft"
+ }
+]

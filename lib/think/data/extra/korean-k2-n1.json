@@ -1,0 +1,1222 @@
+[
+ {
+  "id": "n-k-k2-01",
+  "subject": "korean",
+  "grade": "K2",
+  "topic": "self-introduction",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "A claim about the whole class",
+  "uiLang": "en",
+  "format": "judge-evidence-explain",
+  "generative": true,
+  "goal": "Use the self-introductions as evidence to decide whether a sentence about everybody is true, see how many exceptions break it, and write a sentence that fits the evidence.",
+  "thinking": [
+   "Claim against evidence",
+   "One counter-example breaks 'all'",
+   "Telling 'dislike' from other details"
+  ],
+  "differsFromPlain": "Plain practice asks you to say what you like and dislike. Here you test someone else's claim against four short introductions and repair it.",
+  "prerequisites": [
+   "Knows 좋아해요 / 안 좋아해요",
+   "Can read short self-introductions"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "Your class has a chat group. The class has four students. Each wrote a short self-introduction about food. Then 수진 wrote a sentence about the class.\n\n민호: 저는 김치를 좋아해요. 매일 먹어요.\n에밀리: 저는 김치를 안 좋아해요. 불고기를 좋아해요.\n지아: 저는 김치를 좋아해요. 그런데 매운 김치는 못 먹어요.\n토마스: 저는 김치를 좋아해요. 지난주에 처음 먹었어요.\n\n수진: 우리 반 네 명은 모두 김치를 좋아해요.\n\n(모두 = all.)",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "수진 claims that ALL four classmates like kimchi. Which classmate's sentence shows that her claim is not true?",
+    "options": [
+     {
+      "id": "a",
+      "text": "민호: 매일 먹어요.",
+      "reveals": "Eating it every day supports the claim; it cannot show that someone dislikes kimchi."
+     },
+     {
+      "id": "b",
+      "text": "지아: 매운 김치는 못 먹어요.",
+      "reveals": "Look at the whole introduction: 지아 also says she likes kimchi. She cannot eat the spicy kind, which is not the same as disliking kimchi."
+     },
+     {
+      "id": "c",
+      "text": "에밀리: 김치를 안 좋아해요."
+     },
+     {
+      "id": "d",
+      "text": "토마스: 지난주에 처음 먹었어요.",
+      "reveals": "Eating it for the first time last week says nothing about whether he likes it."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "Only 에밀리 answers 'Do you like kimchi?' with no. A claim about everybody is broken by a single person who disagrees. The other sentences are about how much, how spicy or when, not about liking.",
+    "hints": [
+     "For each classmate, decide whether the sentence tells you if he or she likes kimchi.",
+     "Keep only the sentences that answer 'Does this person like kimchi?' directly, and compare them with 수진's sentence."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "수진's sentence says 모두 (all). How many of the four classmates would have to disagree for her sentence to be false?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Two of them",
+      "reveals": "Two is more than needed. 'All' makes a promise about each single person."
+     },
+     {
+      "id": "b",
+      "text": "One of them"
+     },
+     {
+      "id": "c",
+      "text": "Three of them",
+      "reveals": "Three is more than needed. 'All' makes a promise about each single person."
+     },
+     {
+      "id": "d",
+      "text": "Four of them",
+      "reveals": "Four is far more than needed. 'All like it' already fails as soon as one person does not."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "'All' promises something about every single person, so one exception is enough to break it. A sentence such as '대부분' (most) can survive a few exceptions.",
+    "hints": [
+     "Imagine the class has 100 students. How many people who dislike kimchi would you need to find?",
+     "'All of them like it' is true only if nobody is left out. Count how many exceptions break that."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Write ONE polite Korean sentence about kimchi and the four classmates that is true for the four introductions.",
+    "placeholder": "예: ...",
+    "minChars": 8,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "is about kimchi (김치)",
+      "mode": "any",
+      "patterns": [
+       "김치",
+       "kimchi"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "polite ending (-요 / -습니다)",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "limits the claim truthfully (most, three people, naming 에밀리 as the exception ...)",
+      "mode": "any",
+      "patterns": [
+       "대부분",
+       "(세|3) ?명",
+       "에밀리[^.!?\\n]*(안 ?좋아|싫어|좋아하지 않|빼고|제외|말고)",
+       "한 ?명(은|만)?[^.!?\\n]*(안 ?좋아|싫어|좋아하지 않)",
+       "민호[^.!?\\n]*지아[^.!?\\n]*토마스[^.!?\\n]*좋아(해|합)"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "does not say that nobody likes kimchi",
+      "mode": "none",
+      "patterns": [
+       "아무도",
+       "모두 안",
+       "다 안",
+       "모두 싫",
+       "nobody",
+       "no one"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "does not give a wrong count or a wrong exception",
+      "mode": "none",
+      "patterns": [
+       "대부분[^.!?\\n]*(안 ?좋아|싫어|좋아하지 않)",
+       "(두|2) ?명",
+       "(세|3) ?명[^.!?\\n]*(안 ?좋아|싫어|좋아하지 않)",
+       "한 ?명(이|만)\\s*김치를\\s*좋아",
+       "에밀리\\s*(씨)?\\s*(만|는|은|가|이)?\\s*(김치를\\s*)?(좋아해|좋아합)"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Is my sentence true for ALL four introductions, including 에밀리's?",
+     "Did I avoid 'all' unless I named the exception?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "대부분 친구가 김치를 좋아해요."
+     },
+     {
+      "text": "에밀리 씨만 김치를 안 좋아해요.",
+      "note": "Names the exception."
+     },
+     {
+      "text": "네 명 중에 세 명이 김치를 좋아해요.",
+      "note": "Counts instead of saying 'all'."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "우리 반 친구들은 모두 김치를 좋아해요.",
+      "why": "Repeats the claim that 에밀리's sentence breaks."
+     },
+     {
+      "text": "아무도 김치를 좋아하지 않아요.",
+      "why": "Overcorrects: three classmates do like kimchi."
+     }
+    ],
+    "humanReview": "Whether the sentence is really true for the four introductions and sounds natural.",
+    "hints": [
+     "Decide first how many of the four like kimchi, then write a sentence that is true for exactly that group.",
+     "Check your sentence against 에밀리's introduction before you finish."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Testing a claim",
+    "full": "Finds the sentence that contradicts the claim and says one exception is enough",
+    "partial": "Finds the contradiction but thinks several exceptions are needed",
+    "none": "Picks a sentence that is not about liking kimchi"
+   },
+   {
+    "criterion": "Repairing the claim",
+    "full": "Writes a true sentence that names the exception or uses 'most'",
+    "partial": "Hedged but not true for all four, or no clear Korean sentence",
+    "none": "Repeats 'all' or says nobody likes it"
+   }
+  ],
+  "alternatives": [
+   "'지아 is the exception' is not supported: she says she likes kimchi, only not the spicy kind.",
+   "A sentence that keeps 모두 but names the exception ('에밀리 씨 빼고 모두 ...') is also correct."
+  ],
+  "hardCases": [
+   "Whether '매일 먹어요' proves liking (it strongly suggests it, but the task does not rely on it).",
+   "Learners may write 'Most' in English; the Korean ending check will say it is not a Korean sentence."
+  ],
+  "cautions": {
+   "language": "Beginner Korean only (해요체, basic particles, numbers up to the thousands). English glosses are given for the few harder words.",
+   "culture": "Introductions about food are personal; the task treats them only as short texts to check a claim against.",
+   "accessibility": "All material is text; nothing depends on colour or sound. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of the contradicting sentence",
+    "Choice of how many exceptions break 'all'",
+    "Kimchi, polite ending, a limited claim and no 'nobody' in the written sentence"
+   ],
+   "human": [
+    "Whether the written sentence is true and natural"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-k2-02",
+  "subject": "korean",
+  "grade": "K2",
+  "topic": "dates and times",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Does the note match the chat?",
+  "uiLang": "en",
+  "format": "find-error-fix",
+  "generative": true,
+  "goal": "Compare a written summary with the original chat, find the lines that changed a detail, say what kind of detail changed, and write a corrected summary.",
+  "thinking": [
+   "Checking a summary against its source",
+   "Spotting changed places and times",
+   "Copying details accurately"
+  ],
+  "differsFromPlain": "Plain practice asks you to read times aloud. Here you must check each detail of a retold plan against what was really said.",
+  "prerequisites": [
+   "Knows Korean time words (두 시, 아홉 시)",
+   "Knows 앞 (in front of)"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "민수 and 지나 plan Saturday by chat. Then 지나 writes a note to her mother.\n\n민수: 지나 씨, 토요일 오후 두 시에 학교 앞에서 만나요.\n민수: 영화는 세 시 반에 시작해요. 영화를 보고 저녁을 먹어요.\n민수: 저녁을 먹고 아홉 시에 집에 가요.\n지나: 네, 좋아요!\n\n(앞 = in front of. 집에 가요 = go home.)",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "pickLine",
+    "prompt": "지나 writes a note to her mother. Some lines do not match the chat. Pick one line of the note that does not match the chat.",
+    "lines": [
+     "엄마, 저 토요일에 민수 씨를 만나요.",
+     "오후 두 시에 영화관 앞에서 만나요.",
+     "영화는 세 시 반에 시작해요.",
+     "영화를 보고 같이 저녁을 먹어요.",
+     "저는 여덟 시에 집에 가요."
+    ],
+    "wrong": [
+     1,
+     4
+    ],
+    "explain": "Two lines do not match the chat. Line 2 says they meet in front of the cinema, but 민수 wrote 학교 앞 (in front of the school). Line 5 says 여덟 시 (8 o'clock), but 민수 wrote 아홉 시 (9 o'clock). Lines 1, 3 and 4 match.",
+    "hints": [
+     "Go through the note line by line and find the same detail in the chat: who, which day, where, what time.",
+     "For each line, say whether the chat gives a place or a time for it, and compare the words one by one."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "The wrong lines of the note differ from the chat in two different ways. Which pair is it?",
+    "options": [
+     {
+      "id": "a",
+      "text": "A wrong day and a wrong place",
+      "reveals": "The day (토요일) is the same in the chat and in the note."
+     },
+     {
+      "id": "b",
+      "text": "A wrong person and a wrong day",
+      "reveals": "The person (민수) and the day (토요일) are the same in the chat and in the note."
+     },
+     {
+      "id": "c",
+      "text": "A wrong place and a wrong time"
+     },
+     {
+      "id": "d",
+      "text": "A wrong time and a wrong person",
+      "reveals": "The person (민수) is the same in the chat and in the note."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "The note changes where they meet (영화관 instead of 학교) and when they go home (여덟 시 instead of 아홉 시). Who and which day are right.",
+    "hints": [
+     "Sort the details of the plan into groups: who, which day, where, what time.",
+     "Which two groups contain the details that changed between the chat and the note?"
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Write the note to the mother again in correct polite Korean (2 or 3 short sentences). Use the chat to give the meeting place, the meeting time and the time she goes home.",
+    "placeholder": "예: 엄마, ...",
+    "minChars": 15,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "meeting place: in front of the school",
+      "mode": "any",
+      "patterns": [
+       "학교 ?앞에서[^.!?\\n]{0,15}만나",
+       "(만나|만날)[^.!?\\n]{0,15}학교 ?앞"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "meeting time: two o'clock, tied to the meeting",
+      "mode": "any",
+      "patterns": [
+       "(두 ?시|(?<![0-9])2 ?시|2:00)(에|쯤에|에는)?\\s*(학교|민수|친구|[가-힣]{0,4}\\s*만나)"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "going home: nine o'clock, tied to going home",
+      "mode": "any",
+      "patterns": [
+       "(아홉 ?시|(?<![0-9])9 ?시|9:00)(에|쯤에|에는)?\\s*집",
+       "집에\\s*(아홉 ?시|(?<![0-9])9 ?시)에?\\s*가"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "does not keep the wrong details",
+      "mode": "none",
+      "patterns": [
+       "영화관 ?앞에서 만",
+       "(?<![0-9])(여덟 ?시|8 ?시)(?!\\s*(아니|말고|가 아니))"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Does every place and time in my note match the chat?",
+     "Would my mother know where and when to expect me?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "엄마, 저 토요일 두 시에 학교 앞에서 민수 씨를 만나요. 영화를 보고 저녁을 먹어요. 아홉 시에 집에 가요."
+     },
+     {
+      "text": "엄마, 토요일 오후 2시에 학교 앞에서 친구를 만나요. 영화랑 저녁을 먹고 9시에 집에 가요.",
+      "note": "Numerals and 랑 are fine."
+     },
+     {
+      "text": "엄마, 두 시에 학교 앞에서 민수 씨를 만나요. 여덟 시 아니고 아홉 시에 집에 가요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "엄마, 영화관 앞에서 만나요. 여덟 시에 집에 가요.",
+      "why": "Keeps the wrong place and the wrong time."
+     },
+     {
+      "text": "엄마, 저 민수 씨를 만나요.",
+      "why": "No place or time at all."
+     },
+     {
+      "text": "두 시에 집에 가요. 아홉 시에 학교 앞에서 만나요.",
+      "why": "The times are swapped between the two plans."
+     }
+    ],
+    "humanReview": "Whether the sentences are natural and the details are really consistent with the chat.",
+    "hints": [
+     "List the three details first: where they meet, when they meet, when she goes home.",
+     "Copy each detail from 민수's messages and keep each time with its own plan, then add polite endings (-요)."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Finding the mismatch",
+    "full": "Picks a wrong line and can say both wrong details",
+    "partial": "Finds one wrong line only",
+    "none": "Picks a line that matches the chat"
+   },
+   {
+    "criterion": "Correct retelling",
+    "full": "Place and both times are correct and polite",
+    "partial": "One detail missing or wrong",
+    "none": "Keeps the wrong details"
+   }
+  ],
+  "alternatives": [
+   "Writing times as numerals (2시, 9시) is fine.",
+   "A learner may pick line 5 first or line 2 first; both are wrong lines."
+  ],
+  "hardCases": [
+   "Line 4 says 같이 (together); the chat says 'we eat dinner' so this is acceptable.",
+   "'오후 두 시' versus 'two o'clock' is the same time here."
+  ],
+  "cautions": {
+   "language": "Beginner Korean only (해요체, basic particles, numbers up to the thousands). English glosses are given for the few harder words.",
+   "culture": "Telling parents your plans is common for younger people in many families; the task only uses it as a reason to be accurate.",
+   "accessibility": "All material is text; nothing depends on colour or sound. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Choice of a mismatching line",
+    "Choice of the kind of change",
+    "Place, times and polite ending in the rewritten note"
+   ],
+   "human": [
+    "Naturalness and consistency of the rewritten note"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-k2-03",
+  "subject": "korean",
+  "grade": "K2",
+  "topic": "invitations",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "An invitation with gaps",
+  "uiLang": "en",
+  "format": "choose-needed-info",
+  "generative": true,
+  "goal": "Decide which facts are missing from a short invitation, notice that a vague answer is still not enough, and ask for what you need.",
+  "thinking": [
+   "Sufficiency of information",
+   "Telling needed from nice-to-know",
+   "Vague answers that look like answers"
+  ],
+  "differsFromPlain": "Plain practice asks you to accept or refuse an invitation. Here you first check whether you have enough facts to accept at all.",
+  "prerequisites": [
+   "Knows basic question words (몇 시, 어디)",
+   "Knows -세요 invitations",
+   "Can say 'I will go' and 'thank you' in simple polite Korean (갈게요, 고마워요), glossed in the hints"
+  ],
+  "minutes": 8,
+  "curriculum": null,
+  "material": "Last week you met 지호 in a language class. Today he sent you a message. You have never been to his home.\n\n지호: 토요일에 우리 집에서 파티를 해요. 꼭 오세요!\n\n(꼭 = please be sure to.)",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "multi": true,
+    "prompt": "You want to go. Which questions must you ask before you can actually get to the party? Choose all that you really need.",
+    "options": [
+     {
+      "id": "a",
+      "text": "몇 시에 시작해요?"
+     },
+     {
+      "id": "b",
+      "text": "친구가 몇 명 와요?",
+      "reveals": "How many guests come does not change whether you can find the place or arrive on time."
+     },
+     {
+      "id": "c",
+      "text": "집이 어디예요?"
+     },
+     {
+      "id": "d",
+      "text": "뭘 가져가요?",
+      "reveals": "Useful and polite to ask, but you can arrive without knowing it. It is not needed to get there."
+     },
+     {
+      "id": "e",
+      "text": "생일 파티예요?",
+      "reveals": "Knowing the occasion may help you choose a gift, but it does not tell you when or where to go."
+     }
+    ],
+    "correct": [
+     "a",
+     "c"
+    ],
+    "acceptable": [
+     {
+      "ids": [
+       "a",
+       "c",
+       "d"
+      ],
+      "reason": "Asking what to bring is considerate and fine. It is just not needed to arrive at the right place and time."
+     }
+    ],
+    "explain": "The message gives the day (토요일) but no time, and 우리 집 does not tell you the address of someone you have never visited. Time and place are the two facts you need to arrive.",
+    "hints": [
+     "Imagine it is Saturday morning and you want to leave. What would stop you from leaving?",
+     "Sort the questions: which ones help you arrive, and which ones are only nice to know?"
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "지호 answers your questions with only one line: '저녁에 오세요.' Do you now know enough about the time?",
+    "options": [
+     {
+      "id": "a",
+      "text": "Yes. 저녁 is a time, so I can come at any point in the evening.",
+      "reveals": "저녁 (evening) covers several hours. If you arrive late, you may miss the start; if you arrive early, nobody may be ready."
+     },
+     {
+      "id": "b",
+      "text": "Not yet. 저녁 covers several hours, so I still need the exact hour."
+     },
+     {
+      "id": "c",
+      "text": "Yes. I know the day and the part of the day, so I can plan my arrival.",
+      "reveals": "A day and a part of the day are still not an exact time of arrival."
+     },
+     {
+      "id": "d",
+      "text": "Not yet. 저녁 means 'dinner', so I should ask whether food is served.",
+      "reveals": "저녁 can mean 'evening' or 'dinner'. Here it is a time word because of 에 and 오세요, and food would not tell you when to arrive."
+     }
+    ],
+    "correct": [
+     "b"
+    ],
+    "explain": "저녁 only names a part of the day. To arrive at the right moment you still need the hour, for example 여섯 시.",
+    "hints": [
+     "Think about how many hours the word 저녁 can cover.",
+     "Ask yourself: could two guests read this sentence and arrive three hours apart?"
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "write",
+    "prompt": "Reply to 지호 in polite Korean.",
+    "placeholder": "예: ...",
+    "minChars": 10,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "asks about the time (몇 시, 언제 ...)",
+      "mode": "any",
+      "patterns": [
+       "몇 ?시",
+       "언제",
+       "시간",
+       "what time",
+       "when"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "asks about the place (어디, 주소, 장소 ...)",
+      "mode": "any",
+      "patterns": [
+       "어디",
+       "주소",
+       "위치",
+       "장소",
+       "where",
+       "address"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다|니까"
+      ]
+     },
+     {
+      "id": "w4",
+      "label": "no casual question ending (야? / 니?)",
+      "mode": "none",
+      "patterns": [
+       "(시|어디|주소|언제)(야|니)\\s*[?？]"
+      ]
+     },
+     {
+      "id": "w5",
+      "label": "says yes / thanks (갈게요, 고마워요, 고맙습니다, 감사 ...)",
+      "mode": "any",
+      "patterns": [
+       "갈게",
+       "갈 수",
+       "가고 싶",
+       "가겠",
+       "올게",
+       "감사",
+       "고마",
+       "고맙",
+       "초대",
+       "좋아요",
+       "참석"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Did I ask about BOTH time and place?",
+     "Is my reply polite enough for someone I met only last week?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "초대해 줘서 고마워요. 몇 시에 시작해요? 집 주소도 알려 주세요."
+     },
+     {
+      "text": "네, 갈게요! 파티는 몇 시예요? 집이 어디예요?",
+      "note": "Two short questions."
+     },
+     {
+      "text": "고맙습니다. 몇 시에 가면 됩니까? 어디입니까?",
+      "note": "Formal endings are fine."
+     },
+     {
+      "text": "네 좋아요. 시간과 장소를 알려 주세요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "알겠어요.",
+      "why": "Agrees but asks nothing, so the missing facts stay missing."
+     },
+     {
+      "text": "몇 시야? 어디야?",
+      "why": "Casual endings to someone you hardly know, and no thanks or yes."
+     },
+     {
+      "text": "가요. 언제 어디예요",
+      "why": "No clear yes or thanks, and the ending is abrupt for a new acquaintance."
+     }
+    ],
+    "humanReview": "Whether the tone suits a new acquaintance and the questions are clear.",
+    "hints": [
+     "Start by thanking him or saying you will come (고마워요 = thank you, 갈게요 = I will go).",
+     "Which facts from your earlier question list does a person need before leaving home? Ask for them with a polite ending (-요)."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Needed information",
+    "full": "Picks time and place and leaves out the nice-to-know questions",
+    "partial": "Picks only one of time and place, or adds only the considerate question",
+    "none": "Picks questions that do not help you arrive"
+   },
+   {
+    "criterion": "The reply",
+    "full": "Says yes politely and asks for both time and place",
+    "partial": "Asks about only one of them or is not polite",
+    "none": "No question or casual endings"
+   }
+  ],
+  "alternatives": [
+   "Asking what to bring in addition to time and place is accepted.",
+   "A learner may think 'my friend will pick me up' makes the address unnecessary; ask for such an assumption to be written."
+  ],
+  "hardCases": [
+   "If 지호 had told you the address in an earlier chat, the place question would not be needed; the material says you have never been there."
+  ],
+  "cautions": {
+   "language": "Beginner Korean only (해요체, basic particles, numbers up to the thousands). English glosses are given for the few harder words.",
+   "culture": "Bringing a small gift to a home party is common but not required; the task does not test it.",
+   "accessibility": "All material is text; nothing depends on colour or sound. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Multi-choice of needed questions",
+    "Judgement of the vague answer",
+    "Time and place questions and polite ending in the reply"
+   ],
+   "human": [
+    "Naturalness of the reply"
+   ]
+  },
+  "status": "draft"
+ },
+ {
+  "id": "n-k-k2-04",
+  "subject": "korean",
+  "grade": "K2",
+  "topic": "numbers and prices",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "A basket with rules",
+  "uiLang": "en",
+  "format": "build-many-verify",
+  "generative": true,
+  "goal": "Read several conditions in a short shopping chat, then build more than one basket that meets all of them and report one basket in Korean.",
+  "thinking": [
+   "Reading every condition",
+   "Checking an example against all conditions",
+   "Seeing that limits allow many answers"
+  ],
+  "differsFromPlain": "Plain practice asks you to say prices. Here you use numbers, comparison and 'at least' and 'not more than' together to find baskets that fit.",
+  "prerequisites": [
+   "Knows numbers up to thousands (천, 오백)",
+   "Knows counting with 개"
+  ],
+  "minutes": 12,
+  "curriculum": null,
+  "material": "민지: 오늘 시장에서 과일을 사요. 사과는 한 개에 천 원, 귤은 한 개에 오백 원이에요.\n민지: 사과도 사고 귤도 사요. 그런데 사과가 귤보다 적어요.\n민지: 과일은 모두 일곱 개 이상 사요. 오천 원을 넘으면 안 돼요.\n\n(이상 = this number or more. 넘으면 안 돼요 = must not go over. -보다 = than.)",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "choose",
+    "prompt": "In 민지's second message, what does '사과가 귤보다 적어요' tell you about the basket?",
+    "options": [
+     {
+      "id": "a",
+      "text": "There are more apples than tangerines.",
+      "reveals": "적어요 means 'few / less'. -보다 marks the thing you compare with, so the apples are the smaller number."
+     },
+     {
+      "id": "b",
+      "text": "There are as many apples as tangerines.",
+      "reveals": "The sentence compares two amounts and says one is smaller; it does not say they are equal."
+     },
+     {
+      "id": "c",
+      "text": "There are fewer apples than tangerines."
+     },
+     {
+      "id": "d",
+      "text": "There are no apples in the basket.",
+      "reveals": "The line before says 사과도 사고, so apples are in the basket; 적어요 says 'fewer', not 'none'."
+     }
+    ],
+    "correct": [
+     "c"
+    ],
+    "explain": "A (사과가) B (귤보다) 적어요 = A is fewer than B. So the number of apples is smaller than the number of tangerines.",
+    "hints": [
+     "Find which fruit is the subject (marked with 가) and which fruit is the thing compared with (marked with 보다).",
+     "Read 적어요 as 'is a small amount' and decide which fruit has the smaller amount."
+    ]
+   },
+   {
+    "id": "s2",
+    "kind": "choose",
+    "prompt": "Someone suggests 3 apples and 5 tangerines. Which of 민지's conditions does this basket break?",
+    "options": [
+     {
+      "id": "a",
+      "text": "오천 원을 넘으면 안 돼요"
+     },
+     {
+      "id": "b",
+      "text": "사과가 귤보다 적어요",
+      "reveals": "3 apples are fewer than 5 tangerines, so this condition is fine."
+     },
+     {
+      "id": "c",
+      "text": "일곱 개 이상 사요",
+      "reveals": "3 + 5 = 8 pieces of fruit, which is 7 or more, so this is fine."
+     },
+     {
+      "id": "d",
+      "text": "사과도 사고 귤도 사요",
+      "reveals": "The basket has both apples and tangerines, so this is fine."
+     }
+    ],
+    "correct": [
+     "a"
+    ],
+    "explain": "3 apples cost 3,000 won and 5 tangerines cost 2,500 won, together 5,500 won. That is over 5,000. The other three conditions are met.",
+    "hints": [
+     "Check the conditions one at a time with the numbers 3 and 5.",
+     "For the money condition, work out the price of the apples and of the tangerines separately, then add."
+    ]
+   },
+   {
+    "id": "s3",
+    "kind": "build",
+    "prompt": "Find 3 different baskets that satisfy EVERY condition in 민지's messages. a = number of apples (사과), t = number of tangerines (귤).",
+    "vars": [
+     {
+      "name": "a",
+      "label": "apples (사과)"
+     },
+     {
+      "name": "t",
+      "label": "tangerines (귤)"
+     }
+    ],
+    "constraints": [
+     {
+      "id": "c0",
+      "expr": "a==floor(a) && t==floor(t)",
+      "ok": "Whole pieces of fruit.",
+      "fail": "Buy whole pieces of fruit only (a whole number of 개)."
+     },
+     {
+      "id": "c1",
+      "expr": "a>=1 && t>=1",
+      "ok": "Both apples and tangerines.",
+      "fail": "사과도 사고 귤도 사요: at least one of each."
+     },
+     {
+      "id": "c2",
+      "expr": "a<t",
+      "ok": "Fewer apples than tangerines.",
+      "fail": "사과가 귤보다 적어요: apples must be fewer than tangerines."
+     },
+     {
+      "id": "c3",
+      "expr": "a+t>=7",
+      "ok": "7 or more pieces in total.",
+      "fail": "일곱 개 이상: at least 7 pieces of fruit in total."
+     },
+     {
+      "id": "c4",
+      "expr": "1000*a+500*t<=5000",
+      "ok": "Within 5,000 won.",
+      "fail": "The total is over 5,000 won (apple 1,000 each, tangerine 500 each)."
+     }
+    ],
+    "need": 3,
+    "modelRows": [
+     {
+      "a": 1,
+      "t": 7
+     },
+     {
+      "a": 2,
+      "t": 5
+     },
+     {
+      "a": 3,
+      "t": 4
+     }
+    ],
+    "badRows": [
+     {
+      "a": 3,
+      "t": 5
+     },
+     {
+      "a": 0,
+      "t": 8
+     },
+     {
+      "a": 4,
+      "t": 3
+     }
+    ],
+    "explain": "For example 1 apple + 7 tangerines = 4,500 won; 2 + 5 = 4,500 won; 3 + 4 = 5,000 won. Many baskets fit because the messages give limits, not one exact order.",
+    "hints": [
+     "Put the conditions into your own words first: fewer apples than tangerines, at least 7 pieces, at most 5,000 won.",
+     "Try 1 apple and find a number of tangerines that makes at least 7 pieces; then check the price.",
+     "Check the money last: 1,000 x apples + 500 x tangerines, then change the number of apples."
+    ],
+    "because": {
+     "id": "s3b",
+     "kind": "write",
+     "prompt": "Pick ONE of your baskets and tell 민지 in a short polite message how many apples and tangerines you will buy and the total price.",
+     "placeholder": "예: ...",
+     "minChars": 8,
+     "checks": [
+      {
+       "id": "w1",
+       "label": "polite ending",
+       "mode": "any",
+       "patterns": [
+        "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다"
+       ]
+      },
+      {
+       "id": "w2",
+       "label": "gives the apple count",
+       "mode": "any",
+       "patterns": [
+        "사과[^귤]{0,8}(\\d|한|두|세|네|다섯|여섯|일곱|하나|둘|셋|넷)"
+       ]
+      },
+      {
+       "id": "w3",
+       "label": "gives the tangerine count",
+       "mode": "any",
+       "patterns": [
+        "귤[^사]{0,8}(\\d|한|두|세|네|다섯|여섯|일곱|여덟|아홉|열|하나|둘|셋|넷)"
+       ]
+      },
+      {
+       "id": "w4",
+       "label": "says the total in won (원)",
+       "mode": "any",
+       "patterns": [
+        "원"
+       ]
+      }
+     ],
+     "selfAssess": [
+      "Do the numbers in my message match one basket I built?",
+      "Is the total right (1,000 x apples + 500 x tangerines)?"
+     ],
+     "modelAnswers": [
+      {
+       "text": "사과 2개랑 귤 6개를 사요. 모두 5,000원이에요."
+      },
+      {
+       "text": "사과는 한 개, 귤은 일곱 개 살게요. 4,500원이에요.",
+       "note": "Native numbers are fine."
+      }
+     ],
+     "badAnswers": [
+      {
+       "text": "많이 사요.",
+       "why": "No fruit and no numbers."
+      },
+      {
+       "text": "사과 샀어.",
+       "why": "Casual, no counts, no price."
+      }
+     ],
+     "humanReview": "Whether the counts and the total in the message really belong to one valid basket.",
+     "hints": [
+      "Take one basket from the list above and write down its two numbers.",
+      "Say the apples, then the tangerines, then the total in won."
+     ]
+    }
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Reading the conditions",
+    "full": "Understands the comparison and checks the price condition correctly",
+    "partial": "Understands one of them",
+    "none": "Reverses the comparison and miscounts the price"
+   },
+   {
+    "criterion": "Building examples",
+    "full": "Three different valid baskets and a correct report in Korean",
+    "partial": "Valid baskets but a report with wrong numbers",
+    "none": "Baskets break a condition"
+   }
+  ],
+  "alternatives": [
+   "Exactly 5,000 won is allowed because the message says it must not go over 5,000.",
+   "Other baskets also work: for example 1 apple + 8 tangerines, 2 + 6."
+  ],
+  "hardCases": [
+   "A learner may read '일곱 개 이상' as 'more than seven'. The task counts 7 as allowed."
+  ],
+  "cautions": {
+   "language": "Beginner Korean only (해요체, basic particles, numbers up to the thousands). English glosses are given for the few harder words.",
+   "culture": "Prices and market habits vary; the prices here are invented.",
+   "accessibility": "All material is text; nothing depends on colour or sound. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Both choice steps",
+    "Checking every basket against all conditions",
+    "Counts, total and polite ending in the report"
+   ],
+   "human": [
+    "Naturalness of the report message"
+   ]
+  },
+  "status": "reviewed-ai"
+ },
+ {
+  "id": "n-k-k2-05",
+  "subject": "korean",
+  "grade": "K2",
+  "topic": "short dialogues",
+  "level": 1,
+  "levelLabel": "Beginner",
+  "title": "Who did it? The sentence doesn't say",
+  "uiLang": "en",
+  "format": "reveal-and-revise",
+  "generative": true,
+  "goal": "Follow a short chat that leaves out subjects, notice how your reading of who did what changes, and rewrite a sentence so that nobody can misread it.",
+  "thinking": [
+   "Dropped subjects",
+   "Revising a reading as information arrives",
+   "Making a message unambiguous"
+  ],
+  "differsFromPlain": "Plain practice asks you to fill in 이/가 or 은/는. Here you see why a missing subject can mislead and how to repair the sentence.",
+  "prerequisites": [
+   "Knows 이/가 and 은/는",
+   "Knows past tense -았/었어요"
+  ],
+  "minutes": 9,
+  "curriculum": null,
+  "material": "하나 talks with her friend 준호 about last weekend. In Korean the subject is often left out when it seems clear. Read slowly: the story comes in three parts.",
+  "steps": [
+   {
+    "id": "s1",
+    "kind": "reveal",
+    "prompt": "Read each part, choose the reading that seems most likely, then continue. Your answer may change as you read more.",
+    "hints": [
+     "Decide using only what you have read so far.",
+     "Look at which words name a person and which verbs have no person attached to them."
+    ],
+    "stages": [
+     {
+      "info": "하나: 어제 동생이 우리 집에 왔어요. 비빔밥을 만들었어요.",
+      "ask": "Who made the bibimbap?",
+      "options": [
+       {
+        "id": "a",
+        "text": "하나's younger sibling"
+       },
+       {
+        "id": "b",
+        "text": "하나 herself"
+       },
+       {
+        "id": "c",
+        "text": "하나 and her sibling together"
+       },
+       {
+        "id": "d",
+        "text": "Someone who is not mentioned",
+        "reveals": "The sentence says 만들었어요, so someone did it, but the only people in the story are 하나 and her younger sibling."
+       }
+      ],
+      "reasonable": [
+       "a",
+       "b",
+       "c"
+      ],
+      "after": "The second sentence has no subject. Korean often leaves out a subject that is clear from the context, but here the sibling (동생이) is the last person named and 하나 is the speaker, so at this point you cannot be sure."
+     },
+     {
+      "info": "준호: 동생이 요리를 잘해요?\n하나: 아니요. 동생은 요리를 못해요.",
+      "ask": "Who most likely made the bibimbap now?",
+      "options": [
+       {
+        "id": "a",
+        "text": "The younger sibling",
+        "reveals": "하나 says her sibling cannot cook, so this is unlikely, but she has not said who cooked yet."
+       },
+       {
+        "id": "b",
+        "text": "하나 herself"
+       },
+       {
+        "id": "c",
+        "text": "Nobody; the bibimbap was bought",
+        "reveals": "The first part says 만들었어요 (made), so someone cooked it."
+       },
+       {
+        "id": "d",
+        "text": "Both of them, equally",
+        "reveals": "Her answer is about the sibling's skill. It does not say that she shared the cooking."
+       }
+      ],
+      "reasonable": [
+       "b"
+      ],
+      "after": "하나 probably made it herself, but she answered a question about her sibling's skill, so it is still only a likely reading."
+     },
+     {
+      "info": "하나: 그래서 제가 만들었어요. 맛있게 먹었어요. 설거지는 동생이 했어요.",
+      "ask": "Who ate the bibimbap?",
+      "options": [
+       {
+        "id": "a",
+        "text": "Only 하나"
+       },
+       {
+        "id": "b",
+        "text": "Only the younger sibling",
+        "reveals": "하나 is the one who said 제가 만들었어요; nothing marks the sibling alone as the one who ate. 설거지는 동생이 has a marker, but 먹었어요 does not."
+       },
+       {
+        "id": "c",
+        "text": "하나 and her sibling"
+       },
+       {
+        "id": "d",
+        "text": "Nobody",
+        "reveals": "맛있게 먹었어요 says that it was eaten and enjoyed."
+       }
+      ],
+      "reasonable": [
+       "a",
+       "c"
+      ],
+      "after": "먹었어요 again has no subject. It is most naturally 하나, maybe with her sibling. When a person is clearly marked (동생이 했어요), the marker tells you who; when nothing is marked, you must use context and sometimes ask."
+     }
+    ],
+    "reflect": "Korean often drops the subject when context supplies it, but the last person you read about is not always the one doing the next action. Look for markers (이/가, 은/는, 제가) and keep the reading open when nothing is marked. If it matters, ask."
+   },
+   {
+    "id": "s2",
+    "kind": "write",
+    "prompt": "Rewrite 하나's first two sentences in polite Korean so that nobody can misread who made the bibimbap: it was 하나 herself, as you learned in the chat. Original: 어제 동생이 우리 집에 왔어요. 비빔밥을 만들었어요.",
+    "placeholder": "예: 어제 ...",
+    "minChars": 15,
+    "checks": [
+     {
+      "id": "w1",
+      "label": "says that 하나 herself made / cooked it, in the past (제가 만들었 / 제가 요리했 ...)",
+      "mode": "any",
+      "patterns": [
+       "(제가|내가|저는|나는|하나가|하나는)[^\\n.?!,]{0,24}(만들었|만들어 먹었|요리했|요리를 했)",
+       "I made|I cooked"
+      ]
+     },
+     {
+      "id": "w2",
+      "label": "does not say that the sibling made it",
+      "mode": "none",
+      "patterns": [
+       "동생(이|은)(?! ?아니)[^\\n.?!,]{0,14}(만들|요리)",
+       "동생(이|은)?\\s*비빔밥[을는은]?\\s*(만들|요리)",
+       "my (younger )?(brother|sister|sibling) made"
+      ]
+     },
+     {
+      "id": "w3",
+      "label": "polite ending",
+      "mode": "any",
+      "patterns": [
+       "[가-힣]요(?![가-힣])|습니다|[갑납랍립밉십입잡합됩옵봅닙씁]니다|니까"
+      ]
+     }
+    ],
+    "selfAssess": [
+     "Can a reader tell who made the bibimbap without looking at the chat?",
+     "Did I still say that the sibling came to my home?"
+    ],
+    "modelAnswers": [
+     {
+      "text": "어제 동생이 우리 집에 왔어요. 제가 비빔밥을 만들었어요."
+     },
+     {
+      "text": "어제 동생이 왔어요. 비빔밥은 동생이 아니라 제가 만들었어요.",
+      "note": "Names the person who did NOT make it as well."
+     },
+     {
+      "text": "어제 동생이 우리 집에 왔어요. 제가 요리했어요."
+     },
+     {
+      "text": "어제 동생이 우리 집에 왔어요. 제가 만들었어요."
+     }
+    ],
+    "badAnswers": [
+     {
+      "text": "어제 동생이 우리 집에 왔어요. 비빔밥을 만들었어요.",
+      "why": "Same as the original: no one is named for 만들었어요."
+     },
+     {
+      "text": "비빔밥 맛있어요.",
+      "why": "Does not say who made it."
+     },
+     {
+      "text": "어제 동생이 우리 집에 왔어요. 동생이 비빔밥을 만들었어요.",
+      "why": "Names the wrong person: the chat says the sibling cannot cook and 하나 made it."
+     },
+     {
+      "text": "어제 동생이 우리 집에 왔어요. 제가 비빔밥을 만들어요.",
+      "why": "Present tense, but the cooking already happened."
+     }
+    ],
+    "humanReview": "Whether the new sentence is natural and really removes the ambiguity.",
+    "hints": [
+     "Compare your sentence with the original: which information is missing for the second sentence?",
+     "A particle after a person word (-가 / -이) shows that this person did the action."
+    ]
+   }
+  ],
+  "rubric": [
+   {
+    "criterion": "Reading with missing subjects",
+    "full": "Keeps more than one reading open at first and moves to the best one as clues appear",
+    "partial": "Commits too early but corrects later",
+    "none": "Picks a reading that the text contradicts"
+   },
+   {
+    "criterion": "Repair",
+    "full": "Names the doer clearly in polite Korean",
+    "partial": "Names the doer but with wrong particle or no polite ending",
+    "none": "Still ambiguous"
+   }
+  ],
+  "alternatives": [
+   "'하나 and her sibling together' is a fair reading at stage 1.",
+   "Different wording such as '제가 요리했어요' is fine if it names the person (the automatic check only looks for 만들)."
+  ],
+  "hardCases": [
+   "The chat never says who ate in stage 3 with a marker, so two readings stay possible."
+  ],
+  "cautions": {
+   "language": "Beginner Korean only (해요체, basic particles, numbers up to the thousands). English glosses are given for the few harder words.",
+   "culture": "Home cooking and visiting siblings are everyday topics; no cultural background is needed.",
+   "accessibility": "All material is text; nothing depends on colour or sound. Romanization is not provided."
+  },
+  "autoVsHuman": {
+   "auto": [
+    "Stage choices are compared with a set of reasonable readings",
+    "비빔밥, a named doer before 만들, polite ending in the rewrite"
+   ],
+   "human": [
+    "Naturalness of the rewrite",
+    "Whether the learner still sees the second reading afterwards"
+   ]
+  },
+  "status": "draft"
+ }
+]

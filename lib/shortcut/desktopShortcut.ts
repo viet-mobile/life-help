@@ -1,8 +1,15 @@
+import { isJiuHost, JIU_TITLE, JIU_DESCRIPTION, JIU_ORIGIN } from "@/lib/jiu/brand";
 // lib/shortcut/desktopShortcut.ts
 import {
   SITE_METADATA,
   COUNTRY_TO_LANGUAGE_MAP,
 } from "@/lib/i18n/siteMetadata";
+
+/** One physical line: CR/LF and other control characters can never start a new key in the generated .url (INI) file. */
+export function oneLine(value: string): string {
+  // eslint-disable-next-line no-control-regex
+  return value.replace(/[\u0000-\u001f\u007f\u2028\u2029]+/g, " ").trim();
+}
 
 export interface DomainShortcutDetails {
   host: string;
@@ -80,6 +87,15 @@ export const COUNTRY_KOREAN_NAMES: Record<string, string> = {
   venezuela: "베네수엘라",
   kenya: "케냐",
   argentina: "아르헨티나",
+  romania: "루마니아",
+  finland: "핀란드",
+  czechia: "체코",
+  hungary: "헝가리",
+  zambia: "잠비아",
+  uganda: "우간다",
+  congo: "콩고공화국",
+  ghana: "가나",
+  mozambique: "모잠비크",
 };
 
 /**
@@ -95,6 +111,19 @@ export function getDomainShortcutDetails(options?: {
   const host = (options?.host || "").split(":")[0].toLowerCase().trim();
   const pathname = options?.pathname || "/";
   const searchParams = options?.searchParams;
+
+  if (isJiuHost(host)) {
+    const canonicalDomain = "jiu.life.help";
+    const canonicalUrl = `${JIU_ORIGIN}${pathname.startsWith("/") ? pathname : "/"}`;
+    const iconIcoUrl = "/logos/favicon-jiu.ico?v=jiu-1";
+    return {
+      host, portal: "customer", country: null, countryDisplayName: "JIU", lang: "ko",
+      canonicalDomain, canonicalUrl, title: JIU_TITLE, shortName: "JIU", description: JIU_DESCRIPTION,
+      iconPngUrl: "/logos/favicon-jiu.png?v=jiu-1", iconIcoUrl,
+      urlFileContent: `[InternetShortcut]\r\nURL=${canonicalUrl}\r\nIconIndex=0\r\nIconFile=${JIU_ORIGIN}${iconIcoUrl}\r\nComment=${JIU_DESCRIPTION}\r\n`,
+      suggestedFileName: "jiu.life.help.url",
+    };
+  }
 
   // 1. Detect Portal
   let portal: "tech" | "chat" | "sys" | "customer" = "customer";
@@ -237,10 +266,10 @@ export function getDomainShortcutDetails(options?: {
   // 8. Generate Windows Internet Shortcut (.url) content without BOM to ensure Windows Shell compatibility
   const urlFileContent =
     "[InternetShortcut]\r\n" +
-    `URL=${canonicalUrl}\r\n` +
+    `URL=${oneLine(canonicalUrl)}\r\n` +
     `IconIndex=0\r\n` +
-    `IconFile=https://${canonicalDomain}${iconIcoUrl}\r\n` +
-    `Comment=${description}\r\n` +
+    `IconFile=${oneLine(`https://${canonicalDomain}${iconIcoUrl}`)}\r\n` +
+    `Comment=${oneLine(description)}\r\n` +
     "[{000214A0-0000-0000-C000-000000000046}]\r\n" +
     "Prop3=19,11\r\n";
 

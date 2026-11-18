@@ -3,75 +3,9 @@
  "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
  "scope": {
   "batch": 6,
-  "questions": 111
+  "questions": 5
  },
- "patches": [
-  {
-   "item": "d0944994",
-   "op": "set",
-   "set": {
-    "qs": [
-     {
-      "q": "Sam은 지금 무엇을 하고 있나요?",
-      "o": [
-       "reading a book",
-       "drawing a picture",
-       "eating lunch",
-       "playing soccer"
-      ],
-      "a": 1,
-      "why": "Sam은 “I am drawing a picture.”라고 말해요."
-     },
-     {
-      "q": "Sam의 그림은 무엇인가요?",
-      "o": [
-       "his cat",
-       "his bag",
-       "his mom",
-       "his dog"
-      ],
-      "a": 3,
-      "why": "“It is my dog.”라고 했어요."
-     },
-     {
-      "q": "개의 이름은 무엇인가요?",
-      "o": [
-       "Cookie",
-       "Coco",
-       "Cora",
-       "Max"
-      ],
-      "a": 1,
-      "why": "“His name is Coco.”라고 했어요."
-     },
-     {
-      "q": "A는 Sam에게 무엇을 묻나요?",
-      "o": [
-       "개를 만져 봐도 되는지",
-       "집에 같이 가도 되는지",
-       "공을 빌려도 되는지",
-       "자기도 그려도 되는지"
-      ],
-      "a": 3,
-      "why": "A는 “Can I draw a picture, too?”라고 물어요."
-     },
-     {
-      "q": "Sam은 A에게 무엇을 주나요?",
-      "o": [
-       "a pencil",
-       "a book",
-       "a ball",
-       "a cup"
-      ],
-      "a": 0,
-      "why": "Sam은 “Here is a pencil.”이라고 말해요."
-     }
-    ]
-   },
-   "why": "Remove pencil cue that leaks q5 answer; make stem/options grammatical (kind d, qs only; identity unchanged).",
-   "severity": "minor"
-  }
- ],
- "ok": 110,
+ "patches": [],
+ "ok": 5,
  "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
 }

@@ -1,0 +1,37 @@
+{
+ "packet": "H08-h2-wh",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 55,
+  "questions": 25
+ },
+ "patches": [
+  {
+   "item": "762de29a",
+   "op": "set",
+   "set": {
+    "good": "Wherever there is water, plants can grow.",
+    "bad": [
+     "Wherever is there water, plants can grow.",
+     "Wherever there are water, plants can grow.",
+     "Wherever has water, plants can grow."
+    ],
+    "cz": {
+     "st": "Wherever there ___ water, plants can grow.",
+     "ok": "is",
+     "wr": [
+      "are",
+      "has",
+      "been"
+     ]
+    },
+    "rule": "'There is + 단수/셀 수 없는 명사'이므로 water 앞에는 is를 써요. wherever 뒤에도 there is 구문이 올 수 있고, 절 안에서는 의문문 어순(is there)이 아니라 there is 어순을 써요.",
+    "ord": false
+   },
+   "why": "bad[0] 'it is water' is arguably acceptable; replaced with clearly wrong inversion (identity field good unchanged).",
+   "severity": "minor"
+  }
+ ],
+ "ok": 24,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}

@@ -1,0 +1,120 @@
+{
+ "packet": "H20-h-lit",
+ "reviewer": "AI (Claude) independent reviewers (blind solve + informed review), separate from the author; not a native-speaker or teacher review",
+ "scope": {
+  "batch": 9,
+  "questions": 35
+ },
+ "patches": [
+  {
+   "item": "367b1a4e",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "What is the humour in the story based on?",
+      "o": [
+       "A creature repeats what was meant to be private.",
+       "A guest forgets his own name.",
+       "A servant breaks an expensive plate in the kitchen.",
+       "A host is late for her own party."
+      ],
+      "a": 0,
+      "why": "The parrot repeats Madame's private insult at the worst possible time, which creates comic embarrassment."
+     },
+     {
+      "q": "Why did the neighbour laugh?",
+      "o": [
+       "He valued honesty more than polite flattery.",
+       "He did not understand a single word that the parrot said.",
+       "He wanted to hide his anger.",
+       "He planned to take the bird home."
+      ],
+      "a": 0,
+      "why": "He called it \"an honest voice\", showing that he appreciated plain truth."
+     },
+     {
+      "q": "What is the likely message of the story?",
+      "o": [
+       "Honesty can build a deeper friendship than flattery.",
+       "Parrots should never be kept as pets.",
+       "Dinner parties are always dangerous.",
+       "Rich people prefer to be insulted by their closest friends."
+      ],
+      "a": 0,
+      "why": "The friendship that results from the honest remark shows the value of sincerity."
+     },
+     {
+      "q": "The phrase \"Madame turned the colour of her white tablecloth\" suggests that she",
+      "o": [
+       "went pale with shock",
+       "felt very proud",
+       "became extremely angry",
+       "began to feel sleepy"
+      ],
+      "a": 0,
+      "why": "A white tablecloth suggests she went pale from embarrassment or shock."
+     }
+    ]
+   },
+   "why": "Stem misquoted the text (omitted 'white'); quote now matches the passage",
+   "severity": "minor"
+  },
+  {
+   "item": "c6ca8ce6",
+   "op": "set",
+   "set": {
+    "qs": [
+     {
+      "q": "Where did most of Leila's poems begin?",
+      "o": [
+       "On bus tickets while she was commuting",
+       "In a university classroom during the long winter term",
+       "During a stay in a mountain cabin",
+       "At the radio station"
+      ],
+      "a": 0,
+      "why": "She says most of the poems began on bus tickets during her daily commute."
+     },
+     {
+      "q": "What does Leila mean when she compares a short poem to a small window?",
+      "o": [
+       "The poet must choose carefully what to show.",
+       "Short poems are easier to write.",
+       "Poems are best written while sitting near a bright window.",
+       "A poem needs a frame made of glass."
+      ],
+      "a": 0,
+      "why": "A small window shows only part of the house, so the poet selects what the reader will see."
+     },
+     {
+      "q": "What is Leila's hope for her readers?",
+      "o": [
+       "That a poem changes how they notice small things",
+       "That they will memorise every line",
+       "That they will learn one clear moral from every poem she wrote",
+       "That they will buy several copies"
+      ],
+      "a": 0,
+      "why": "She wants a reader to look out of a bus window differently after reading, rather than receive a lesson."
+     },
+     {
+      "q": "Why does she describe her own handwriting as \"a stranger's\"?",
+      "o": [
+       "The line looks unfamiliar to her when she finds it later.",
+       "She is quoting a poem by another writer.",
+       "Someone else copies her notes onto fresh bus tickets at night.",
+       "She cannot read English."
+      ],
+      "a": 0,
+      "why": "주머니에서 나중에 발견한 글귀는 쓴 순간과 떨어져 있어 낯선 사람이 쓴 것처럼 느껴진다는 뜻이에요."
+     }
+    ]
+   },
+   "why": "Key claimed she had 'forgotten writing it', which the dialogue never says; reworded to what the text supports (looks unfamiliar when found later)",
+   "severity": "minor"
+  }
+ ],
+ "ok": 33,
+ "criteria": "single defensible answer (blind solve), natural English, level, distractor validity, hint and explanation"
+}
