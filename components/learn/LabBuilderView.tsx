@@ -411,7 +411,7 @@ export function LabBuilderView({
   const isEn = locale.startsWith("en");
 
   // Subject distinction
-  const isScience = site === ("science" as Site);
+  const isScience = site === "physics" || site === "chemistry";
   const isMath = site === "math";
   const isEnglish = site === "english";
   const isKorean = site === "korean";

@@ -35,7 +35,7 @@ export function StudyChooser({ open, onClose }: { open: boolean; onClose: () => 
     { id: "korean", href: urls.korean, site: "korean.life.help", icon: "🇰🇷", title: t("study.chooser.korean"), desc: t("study.chooser.koreanDesc"), ring: "border-violet-300 hover:border-violet-500 hover:bg-violet-50" },
     { id: "english", href: urls.english, site: "english.life.help", icon: "🔤", title: t("study.chooser.english"), desc: t("study.chooser.englishDesc"), ring: "border-sky-300 hover:border-sky-500 hover:bg-sky-50" },
     { id: "math", href: urls.math, site: "math.life.help", icon: "➗", title: t("study.chooser.math"), desc: t("study.chooser.mathDesc"), ring: "border-emerald-300 hover:border-emerald-500 hover:bg-emerald-50" },
-    { id: "physics", href: urls.physics, site: "physics.life.help", icon: "⚡", title: t("study.chooser.physics"), desc: t("study.chooser.physicsDesc"), ring: "border-indigo-300 hover:border-indigo-500 hover:bg-indigo-50" },
+    { id: "physics", href: urls.physics, site: "physics.life.help", icon: "🔬", title: t("study.chooser.physics"), desc: t("study.chooser.physicsDesc"), ring: "border-indigo-300 hover:border-indigo-500 hover:bg-indigo-50" },
     { id: "chemistry", href: urls.chemistry, site: "chemistry.life.help", icon: "🧪", title: t("study.chooser.chemistry"), desc: t("study.chooser.chemistryDesc"), ring: "border-teal-300 hover:border-teal-500 hover:bg-teal-50" },
   ] as const;
 

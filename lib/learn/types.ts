@@ -1,6 +1,6 @@
 /** Shared type definitions for the LIFE.HELP learning platform (math, english, study.korean). */
 
-export const SITES = ["math", "english", "korean", "science", "physics", "chemistry"] as const;
+export const SITES = ["korean", "english", "math", "physics", "chemistry"] as const;
 /** The school-curriculum sites (grades E1..H3); study.korean is a language course with its own levels. */
 export const SCHOOL_SITES = ["math", "english"] as const;
 export type Site = (typeof SITES)[number];

@@ -7,8 +7,8 @@ import { locales, type Locale } from "@/messages/registry";
  * localhost keeps local learning hosts and the development port.
  * An explicit language path wins over the destination's default and any saved learning cookie.
  */
-export type StudySubject = "math" | "english" | "korean" | "science" | "physics" | "chemistry";
-export const STUDY_SUBJECTS: readonly StudySubject[] = ["math", "english", "korean", "science", "physics", "chemistry"];
+export type StudySubject = "korean" | "english" | "math" | "physics" | "chemistry";
+export const STUDY_SUBJECTS: readonly StudySubject[] = ["korean", "english", "math", "physics", "chemistry"];
 const LOCALES = new Set<string>(locales);
 
 function productionHost(host: string): boolean {
@@ -29,10 +29,9 @@ export function studyUrl(subject: StudySubject, hostname: string, port = "", loc
 }
 
 export const studyUrls = (hostname: string, port = "", locale?: Locale): Record<StudySubject, string> => ({
-  math: studyUrl("math", hostname, port, locale),
-  english: studyUrl("english", hostname, port, locale),
   korean: studyUrl("korean", hostname, port, locale),
-  science: studyUrl("science", hostname, port, locale),
+  english: studyUrl("english", hostname, port, locale),
+  math: studyUrl("math", hostname, port, locale),
   physics: studyUrl("physics", hostname, port, locale),
   chemistry: studyUrl("chemistry", hostname, port, locale),
 });

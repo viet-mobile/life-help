@@ -2,6 +2,7 @@ import { DailyInsight, DomainType } from "./types";
 import { INSIGHT_MAP } from "./data";
 import { DAILY_INSIGHT_LOCALES, getInsightLocaleData } from "./localesData";
 import { resolveLifeTopicI18n } from "./lifeTopicsI18n";
+import { resolveKoreanTopicI18n } from "./koreanTopicsI18n";
 
 /**
  * Returns the deterministic day index (0 ~ 365) based on month and day,
@@ -63,6 +64,19 @@ export function getDailyInsight(domain: DomainType | string, date: Date = new Da
         if (topicTrans.principle) item.principle = topicTrans.principle;
         if (topicTrans.example) item.example = topicTrans.example;
         if (topicTrans.actionItem) item.actionItem = topicTrans.actionItem;
+      }
+    }
+
+    // 1-1. Resolve domain="korean" topics across all 366 days
+    if (domain === "korean") {
+      const topicTrans = resolveKoreanTopicI18n(item, locale);
+      if (topicTrans) {
+        if (topicTrans.title) item.title = topicTrans.title;
+        if (topicTrans.summary) item.summary = topicTrans.summary;
+        if (topicTrans.principle) item.principle = topicTrans.principle;
+        if (topicTrans.example) item.example = topicTrans.example;
+        if (topicTrans.actionItem) item.actionItem = topicTrans.actionItem;
+        if (topicTrans.categoryLabel) item.categoryLabel = topicTrans.categoryLabel;
       }
     }
 

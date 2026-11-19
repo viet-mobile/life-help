@@ -3,8 +3,7 @@ export const SERVICES = [
   { id: "math", name: "수학", host: "math.life.help", icon: "∑", description: "한 문제씩, 생각하는 힘을 키워요", color: "#e7efff" },
   { id: "english", name: "영어", host: "english.life.help", icon: "Aa", description: "매일 만나는 새로운 영어", color: "#e5f3eb" },
   { id: "korean", name: "한국어", host: "korean.life.help", icon: "가", description: "읽고 쓰며 넓히는 나의 언어", color: "#fff0dc" },
-  { id: "science", name: "과학", host: "science.life.help", icon: "🔬", description: "원리와 법칙으로 세상을 탐구해요", color: "#fef3c7" },
-  { id: "physics", name: "물리", host: "physics.life.help", icon: "⚡", description: "힘과 에너지의 법칙을 이해해요", color: "#e0e7ff" },
+  { id: "physics", name: "물리", host: "physics.life.help", icon: "🔬", description: "힘과 에너지의 법칙을 이해해요", color: "#e0e7ff" },
   { id: "chemistry", name: "화학", host: "chemistry.life.help", icon: "🧪", description: "물질과 반응의 신비를 배워요", color: "#ccfbf1" },
   { id: "life", name: "LIFE.HELP", host: "life.help", icon: "↗", description: "생활에 필요한 도움을 만나요", color: "#f0e9fc" },
 ] as const;

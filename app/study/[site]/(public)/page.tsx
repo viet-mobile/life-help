@@ -75,13 +75,38 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
             <div key={level} className="l-stack">
               <h3 className="l-h2">{t(`grade.group.${level}` as never)}</h3>
               <div className="l-grid l-grid-2">
-                {courses.map((c) => (
-                  <div key={c.id} className="l-card">
-                    <div style={{ fontSize: "2rem" }} aria-hidden="true">{c.world.emoji}</div>
-                    <h3 className="l-h2">{c.world.name}</h3>
-                    <p className="l-muted">{c.title}</p>
-                  </div>
-                ))}
+                {courses.map((c) => {
+                  const isSpecial = c.id.includes("situational");
+                  return (
+                    <Link
+                      key={c.id}
+                      href={`${base}/course/${c.id}`}
+                      className={`l-card ${isSpecial ? "l-card-accent" : ""}`}
+                      style={{
+                        textDecoration: "none",
+                        color: "inherit",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "space-between",
+                        cursor: "pointer",
+                        transition: "transform 0.15s ease, box-shadow 0.15s ease",
+                      }}
+                      data-testid={`world-card-${c.id}`}
+                    >
+                      <div>
+                        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
+                          <span style={{ fontSize: "2.2rem" }} aria-hidden="true">{c.world.emoji}</span>
+                          <span className="l-btn l-btn-light" style={{ fontSize: "0.8rem", padding: "4px 10px", pointerEvents: "none" }}>
+                            {t("nav.learn")} →
+                          </span>
+                        </div>
+                        <h3 className="l-h2" style={{ margin: "4px 0" }}>{c.world.name}</h3>
+                        <p className="l-muted" style={{ fontWeight: 600 }}>{c.title}</p>
+                        {c.world.tagline && <p style={{ fontSize: "0.85rem", opacity: 0.85, marginTop: 4 }}>{c.world.tagline}</p>}
+                      </div>
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           );

@@ -9,7 +9,7 @@ export function getMainHomeHref(): string {
   const portStr = port ? `:${port}` : "";
 
   // Handle subdomain navigation (e.g., tech.life.help -> life.help, science.life.help -> life.help)
-  const SUBDOMAINS = /^(tech|chat|admin|math|english|korean|science|physics|chemistry)\./;
+  const SUBDOMAINS = /^(tech|chat|admin|math|english|korean|physics|chemistry)\./;
   if (SUBDOMAINS.test(hostname)) {
     const mainHost = hostname.replace(SUBDOMAINS, "");
     return `${protocol}//${mainHost}${portStr}/`;
@@ -24,7 +24,7 @@ export function navigateToMainHome(e?: React.MouseEvent) {
   const { hostname, protocol, port } = window.location;
   const portStr = port ? `:${port}` : "";
 
-  const SUBDOMAINS = /^(tech|chat|admin|math|english|korean|science|physics|chemistry)\./;
+  const SUBDOMAINS = /^(tech|chat|admin|math|english|korean|physics|chemistry)\./;
   if (SUBDOMAINS.test(hostname)) {
     if (e) {
       e.preventDefault();
