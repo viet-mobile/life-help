@@ -291,19 +291,6 @@ export function resolveLifeTopicI18n(
   let example = entry.example?.[normLocale] || (isHant ? entry.example?.["zh-Hans"] : undefined) || entry.example?.en;
   let actionItem = entry.actionItem?.[normLocale] || (isHant ? entry.actionItem?.["zh-Hans"] : undefined) || entry.actionItem?.en;
 
-  if (isHant) {
-    try {
-      const OpenCC = require("opencc-js");
-      const converter = OpenCC.Converter({ from: "cn", to: "tw" });
-      if (title) title = converter(title);
-      if (summary) summary = converter(summary);
-      if (principle) principle = converter(principle);
-      if (example) example = converter(example);
-      if (actionItem) actionItem = converter(actionItem);
-    } catch {
-      // fallback to simplified if opencc not loaded
-    }
-  }
-
+  // zh-Hant / zh-Hans handled directly without embedding massive opencc dictionary in Worker bundle
   return { title, summary, principle, example, actionItem };
 }
