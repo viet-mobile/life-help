@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { locales } from "@/messages";
+import { locales } from "@/messages/registry";
 import { resolveTranslator } from "@/lib/service/runtime";
 import { clientIp, createLimiter, isSameOrigin } from "@/lib/security/guards";
 

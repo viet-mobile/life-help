@@ -17,7 +17,7 @@ import {
 } from "@/lib/region/regionLocalization";
 import { ApiError, customerApi } from "@/lib/service/client";
 import { getProblemOptionsForService } from "@/lib/request/problemChecklists";
-import { languages } from "@/messages";
+import { languages } from "@/messages/registry";
 
 // 10 Services in exact requested order: 자주-분홍-주황-노랑-연두-민트-하늘-파랑-네이비-보라
 const ORDERED_SERVICE_SLUGS = [

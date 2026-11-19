@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { locales } from "@/messages";
+import { locales } from "@/messages/registry";
 import { SYS_SESSION_COOKIE, verifySysSessionToken } from "@/lib/auth/sysSession";
 import { createServiceHandler } from "@/lib/service/http";
 import { getServiceCore } from "@/lib/service/runtime";

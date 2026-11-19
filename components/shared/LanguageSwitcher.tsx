@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useLocale, resolveLocaleFromPath } from "@/lib/i18n/LocaleContext";
-import { type Locale, languages, isValidLocale, formatLanguageName } from "@/messages";
+import { type Locale, languages, isValidLocale, formatLanguageName } from "@/messages/registry";
 import { isDualScriptLocale, DUAL_SCRIPT_LANGUAGES } from "@/lib/i18n/scriptConverter";
 
 interface LanguageSwitcherProps {

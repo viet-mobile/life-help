@@ -1,4 +1,4 @@
-import { locales } from "@/messages";
+import { locales } from "@/messages/registry";
 
 /** Number of supported UI languages, always derived from the canonical registry (messages/index.ts). */
 export const SUPPORTED_LOCALE_COUNT = locales.length;
