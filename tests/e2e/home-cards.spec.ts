@@ -41,7 +41,7 @@ test.describe("Korean", () => {
     await expect(page.getByTestId("study-link-korean")).toHaveAttribute("href", `http://korean.localhost:${PORT}/ko`);
     await expect(page.getByTestId("study-link-math")).toHaveAttribute("href", `http://math.localhost:${PORT}/ko`);
     await expect(page.getByTestId("study-link-english")).toHaveAttribute("href", `http://english.localhost:${PORT}/ko`);
-    await expect(page.getByTestId("study-link-math")).toBeFocused();
+    await expect(page.getByTestId("study-link-korean")).toBeFocused();
     await page.keyboard.press("Escape");
     await expect(dialog).toHaveCount(0);
     await expect(page.getByTestId("home-card-study")).toBeFocused();

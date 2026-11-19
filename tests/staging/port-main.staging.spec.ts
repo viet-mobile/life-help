@@ -76,7 +76,7 @@ test.describe.serial("learning-only port on the staging Worker", () => {
     await expect(dialog).toBeVisible();
     await expect(page.getByTestId("study-link-math")).toHaveAttribute("href", "https://math-staging.life.help");
     await expect(page.getByTestId("study-link-english")).toHaveAttribute("href", "https://english-staging.life.help");
-    await expect(page.getByTestId("study-link-math")).toBeFocused();
+    await expect(page.getByTestId("study-link-korean")).toBeFocused();
     await page.keyboard.press("Escape");
     await expect(dialog).toHaveCount(0);
     await expect(page.getByTestId("home-card-study")).toBeFocused();
