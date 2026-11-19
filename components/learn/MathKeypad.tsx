@@ -69,9 +69,9 @@ export function MathKeypad({ onInsert, onBackspace, onClear, onSubmit, disabled 
   const ariaLabelText = t ? t("keypad.ariaLabel") : (isNonKorean ? "Math Keypad" : "수학 키패드");
 
   return (
-    <div className="mt-3 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/60 shadow-sm transition-all">
-      <div className="flex items-center justify-between px-3 py-1.5 bg-slate-100 dark:bg-slate-800/80 border-b border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-300">
-        <span className="font-medium flex items-center gap-1.5">
+    <div className="mt-3 w-full max-w-xl mx-auto border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/60 shadow-sm transition-all">
+      <div className="flex items-center justify-between px-2.5 xs:px-3 py-1 xs:py-1.5 bg-slate-100 dark:bg-slate-800/80 border-b border-slate-200 dark:border-slate-800 text-[11px] xs:text-xs text-slate-600 dark:text-slate-300">
+        <span className="font-semibold flex items-center gap-1 xs:gap-1.5 truncate min-w-0">
           <span>🧮</span> {titleText}
         </span>
         <div className="flex items-center gap-2">
@@ -94,9 +94,9 @@ export function MathKeypad({ onInsert, onBackspace, onClear, onSubmit, disabled 
       </div>
 
       {isOpen && (
-        <div className="p-2 space-y-1.5 select-none" role="region" aria-label={ariaLabelText}>
+        <div className="p-1.5 xs:p-2 sm:p-2.5 space-y-1 xs:space-y-1.5 select-none" role="region" aria-label={ariaLabelText}>
           {keyRows.map((row, rIdx) => (
-            <div key={rIdx} className="grid grid-cols-6 gap-1.5">
+            <div key={rIdx} className="grid grid-cols-6 gap-1 xs:gap-1.5 sm:gap-2">
               {row.map((k, cIdx) => (
                 <button
                   key={cIdx}
@@ -109,7 +109,7 @@ export function MathKeypad({ onInsert, onBackspace, onClear, onSubmit, disabled 
                       onInsert(k.val);
                     }
                   }}
-                  className={`h-10 rounded-lg text-base font-semibold flex items-center justify-center transition-all active:scale-95 shadow-xs ${
+                  className={`h-9 xs:h-10 sm:h-11 rounded-lg text-sm xs:text-base sm:text-lg font-semibold flex items-center justify-center transition-all active:scale-95 shadow-xs ${
                     k.cls
                       ? k.cls
                       : "bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/80 border border-slate-200/80 dark:border-slate-700 text-slate-800 dark:text-slate-100"
@@ -126,7 +126,7 @@ export function MathKeypad({ onInsert, onBackspace, onClear, onSubmit, disabled 
               type="button"
               disabled={disabled}
               onClick={onSubmit}
-              className="w-full h-10 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm tracking-wide shadow-sm transition-all active:scale-[0.99] flex items-center justify-center gap-1.5 disabled:opacity-50"
+              className="w-full h-10 sm:h-12 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs xs:text-sm sm:text-base tracking-wide shadow-sm transition-all active:scale-[0.99] flex items-center justify-center gap-1.5 disabled:opacity-50"
             >
               <span>{submitText}</span>
               <span>↵</span>

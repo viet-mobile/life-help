@@ -63,7 +63,7 @@ function ChoiceRenderer({ q, value, onChange, disabled }: RendererProps) {
     return () => window.removeEventListener("keydown", onKey);
   }, [q.id, q.type]);
   return (
-    <div role="radiogroup" aria-label={q.prompt} className="l-options">
+    <div role="radiogroup" aria-label={q.prompt} className={`l-options ${q.type === "true_false" ? "grid grid-cols-2 gap-2.5 sm:gap-3.5" : ""}`}>
       {options.map((o, i) => {
         const selected = value === o.id;
         return (

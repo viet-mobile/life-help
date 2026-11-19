@@ -180,7 +180,7 @@ export function QuestionCard({
         <div className="l-panel l-panel-hint" aria-live="polite">{hints.map((h, k) => <p key={k}><RichText text={h} /></p>)}</div>
       )}
 
-      <div className="l-stack">
+      <div className="l-stack w-full max-w-xl mx-auto">
         {resolved ? (
           <button className="l-btn l-btn-block" onClick={goNext}>
             {status === "revealed" && followUp ? t("lesson.similar.go") : isLast ? t("lesson.finish") : t("lesson.next")}

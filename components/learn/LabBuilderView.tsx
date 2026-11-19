@@ -599,7 +599,7 @@ export function LabBuilderView({
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          padding: "10px 14px",
+          padding: "clamp(8px, 1.8vw, 14px) clamp(10px, 2.2vw, 18px)",
           gap: 10,
           borderBottom: isExpanded ? "1px solid rgba(148, 163, 184, 0.15)" : "none",
         }}
@@ -607,13 +607,13 @@ export function LabBuilderView({
         <div style={{ display: "flex", alignItems: "center", gap: 10, flex: 1, minWidth: 0 }}>
           <div
             style={{
-              width: 36,
-              height: 36,
+              width: "clamp(30px, 5.5vw, 40px)",
+              height: "clamp(30px, 5.5vw, 40px)",
               borderRadius: 10,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              fontSize: "1.25rem",
+              fontSize: "clamp(1.05rem, 2.2vw, 1.35rem)",
               background: themeStyles.iconBg,
               boxShadow: "0 2px 8px rgba(0,0,0,0.3)",
               flexShrink: 0,
@@ -655,7 +655,7 @@ export function LabBuilderView({
 
             <div
               style={{
-                fontSize: "0.92rem",
+                fontSize: "clamp(0.82rem, 1.9vw, 1rem)",
                 fontWeight: 700,
                 color: "#f1f5f9",
                 overflow: "hidden",
@@ -718,7 +718,7 @@ export function LabBuilderView({
       </div>
 
       {/* Assembly Progress Track & Blocks */}
-      <div style={{ padding: "8px 14px 10px" }}>
+      <div style={{ padding: "clamp(6px, 1.5vw, 10px) clamp(10px, 2.2vw, 18px) clamp(8px, 1.8vw, 14px)" }}>
         {/* Assembly Blocks Grid */}
         <div
           style={{
@@ -860,8 +860,8 @@ export function LabBuilderView({
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(5, 1fr)",
-              gap: 4,
-              padding: "6px 8px",
+              gap: "clamp(2px, 1vw, 6px)",
+              padding: "clamp(4px, 1.2vw, 8px) clamp(5px, 1.5vw, 10px)",
               backgroundColor: "rgba(30, 41, 59, 0.6)",
               borderRadius: 8,
               border: "1px solid rgba(148, 163, 184, 0.1)",
@@ -884,7 +884,7 @@ export function LabBuilderView({
                         ? "rgba(59, 130, 246, 0.2)"
                         : "transparent",
                     color: isPhaseDone ? "#4ade80" : isPhaseCurrent ? "#60a5fa" : "#64748b",
-                    fontSize: "0.7rem",
+                    fontSize: "clamp(0.62rem, 1.5vw, 0.78rem)",
                     fontWeight: isPhaseDone || isPhaseCurrent ? 700 : 400,
                   }}
                 >

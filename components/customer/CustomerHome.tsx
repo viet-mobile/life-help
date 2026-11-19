@@ -541,9 +541,9 @@ export function CustomerHome() {
       </section>
 
       {/* ④ 10 Pastel Services Mobile App Grid (Fit Above-The-Fold on Mobile Screen!) */}
-      <section id="services" className="px-3 py-1 sm:px-4 sm:py-2 scroll-mt-14">
-        <div className="mx-auto max-w-6xl">
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3">
+      <section id="services" className="px-2.5 py-1 sm:px-4 sm:py-2 scroll-mt-14">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 xs:gap-2.5 sm:gap-3 md:gap-3.5 lg:gap-4">
             {displayedServices.map((svc) => (
               <CardShell
                 key={svc.id}

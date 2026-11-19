@@ -82,7 +82,7 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
       </header>
 
       <main id="main" className="l-stack">
-      <section className="l-card l-card-accent l-stack" style={{ padding: 28 }}>
+      <section className="l-card l-card-accent l-stack" style={{ padding: "clamp(18px, 4vw, 32px)" }}>
         <p style={{ fontWeight: 800 }}>{t("landing.eyebrow")}</p>
         <h1 className="l-h1">{t(`site.${site}.tagline` as never)}</h1>
         <p>{t(`site.${site}.description` as never)}</p>
@@ -101,7 +101,7 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
 
       <section className="l-stack" aria-labelledby="how-h">
         <h2 id="how-h" className="l-h2">{t("landing.howTitle")}</h2>
-        <div className="l-grid l-grid-2">
+        <div className="l-grid-how">
           {(["1", "2", "3"] as const).map((n) => (
             <div key={n} className="l-card">
               <h3 className="l-h2">{t(`landing.how${n}.title` as never)}</h3>
@@ -119,7 +119,7 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
           return (
             <div key={level} className="l-stack">
               <h3 className="l-h2">{t(`grade.group.${level}` as never)}</h3>
-              <div className="l-grid l-grid-2">
+              <div className="l-grid-courses">
                 {courses.map((c) => {
                   const isSpecial = c.id.includes("situational");
                   return (
