@@ -419,12 +419,13 @@ export function LabBuilderView({
   const collapseText = t ? t("lab.collapse") : (isNonKorean ? "Collapse" : "접기");
   const netViewAriaText = t ? t("lab.netViewAria") : (isNonKorean ? "View Net Diagram" : "전개도 보기");
   const collapseAriaText = t ? t("lab.collapseAria") : (isNonKorean ? "Collapse Details" : "상세 접기");
-
   // Subject distinction
   const isScience = site === "physics" || site === "chemistry";
   const isMath = site === "math";
   const isEnglish = site === "english";
   const isKorean = site === "korean";
+
+  const drawerButtonLabel = isScience ? (isNonKorean ? "Calibration" : "정밀 계측도") : netViewText;
 
   // Category detection for situational dialogues
   const matchedCat = useMemo(() => {
@@ -710,9 +711,9 @@ export function LabBuilderView({
               cursor: "pointer",
             }}
             aria-expanded={isExpanded}
-            aria-label={isExpanded ? collapseAriaText : netViewAriaText}
+            aria-label={isExpanded ? collapseAriaText : (isScience ? (isNonKorean ? "View Apparatus Calibration" : "정밀 계측도 보기") : netViewAriaText)}
           >
-            {isExpanded ? `▲ ${collapseText}` : `▼ ${netViewText}`}
+            {isExpanded ? `▲ ${collapseText}` : `▼ ${drawerButtonLabel}`}
           </button>
         </div>
       </div>
@@ -747,7 +748,7 @@ export function LabBuilderView({
                     : "none",
                 transform: isCurrent ? "scaleY(1.3)" : "none",
               }}
-              title={`공정 ${idx + 1}`}
+              title={isNonKorean ? `Phase ${idx + 1}` : `공정 ${idx + 1}`}
             />
           ))}
         </div>
@@ -817,7 +818,9 @@ export function LabBuilderView({
               {currentStreak > 0
                 ? isEn
                   ? `${maxStreak - currentStreak} more in a row`
-                  : `${maxStreak - currentStreak}연속 추가 정답 시 보너스`
+                  : isNonKorean
+                    ? `${maxStreak - currentStreak} more in a row`
+                    : `${maxStreak - currentStreak}연속 추가 정답 시 보너스`
                 : themeStyles.streakHint}
             </span>
           )}
