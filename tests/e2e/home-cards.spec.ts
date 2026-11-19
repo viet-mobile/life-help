@@ -17,7 +17,7 @@ test.describe("Korean", () => {
     await page.goto(`${MAIN}/`);
     await page.getByTestId("home-card-study").waitFor();
     expect(await ids(page)).toEqual(ORDER);
-    await expect(page.getByTestId("home-card-study")).toContainText("영어/수학/한국어 공부");
+    await expect(page.getByTestId("home-card-study")).toContainText("한국어/영어/수학/물리/화학 공부");
     await expect(page.getByTestId("home-card-aircon")).toHaveCount(0);
     expect(await page.getByTestId("home-card-study").evaluate((e) => e.tagName)).toBe("BUTTON");
     const tabs = page.locator("button.droplet-pill").filter({ hasText: /^(🌈|🔧|🤝)/ });

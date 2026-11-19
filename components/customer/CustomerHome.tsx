@@ -49,7 +49,7 @@ const allServices: ServiceItem[] = [
     key: "study",
     slug: "study",
     pathPrefix: "support",
-    ko: "영어/수학/한국어 공부",
+    ko: "한국어/영어/수학/물리/화학 공부",
     colorName: "에메랄드",
     cardBg: "bg-emerald-50/85",
     cardBorder: "border-emerald-200/90",
