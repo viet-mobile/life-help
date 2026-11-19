@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useOptionalSite } from "./LearnerProvider";
 import type { BuildMeta, Site } from "@/lib/learn/types";
 
 export interface LabBuilderViewProps {
@@ -408,7 +409,16 @@ export function LabBuilderView({
   totalQuestions,
 }: LabBuilderViewProps) {
   const [isExpanded, setIsExpanded] = useState(false);
-  const isEn = locale.startsWith("en");
+  const siteCtx = useOptionalSite();
+  const t = siteCtx?.t;
+  const activeLocale = siteCtx?.locale || locale;
+  const isEn = activeLocale.startsWith("en");
+  const isNonKorean = activeLocale !== "ko";
+
+  const netViewText = t ? t("lab.netView") : (isNonKorean ? "Net View" : "전개도");
+  const collapseText = t ? t("lab.collapse") : (isNonKorean ? "Collapse" : "접기");
+  const netViewAriaText = t ? t("lab.netViewAria") : (isNonKorean ? "View Net Diagram" : "전개도 보기");
+  const collapseAriaText = t ? t("lab.collapseAria") : (isNonKorean ? "Collapse Details" : "상세 접기");
 
   // Subject distinction
   const isScience = site === "physics" || site === "chemistry";
@@ -504,70 +514,70 @@ export function LabBuilderView({
   const themeStyles = useMemo(() => {
     if (isKorean) {
       return {
-        badgeText: isEn ? "K-HERITAGE" : "전통 한옥 풍류원",
+        badgeText: isNonKorean ? "K-HERITAGE" : "전통 한옥 풍류원",
         badgeBg: "rgba(16, 185, 129, 0.25)",
         badgeColor: "#34d399",
         iconBg: "linear-gradient(135deg, #059669 0%, #047857 50%, #064e3b 100%)",
         accentColor: "#34d399",
         blockGradient: "linear-gradient(180deg, #34d399 0%, #059669 100%)",
-        streakTitle: isEn ? "Pungnyu Rhythm:" : "풍류와 흥(興) 가락:",
-        streakHint: isEn ? "3 in a row for +1 Dancheong piece" : "3연속 정답 시 오색 단청 조각 채색",
-        streakBonusText: isEn ? "Pungnyu Harmony Active!" : "풍류 가락 신명 하모니 발동!",
-        currentProgressLabel: isEn ? `Dancheong & Roof Eaves: ${effectivePieces}/${totalPieces}` : `오색 단청과 처마 결구: ${effectivePieces}/${totalPieces}`,
+        streakTitle: isNonKorean ? "Pungnyu Rhythm:" : "풍류와 흥(興) 가락:",
+        streakHint: isNonKorean ? "3 in a row for +1 Dancheong piece" : "3연속 정답 시 오색 단청 조각 채색",
+        streakBonusText: isNonKorean ? "Pungnyu Harmony Active!" : "풍류 가락 신명 하모니 발동!",
+        currentProgressLabel: isNonKorean ? `Dancheong & Roof Eaves: ${effectivePieces}/${totalPieces}` : `오색 단청과 처마 결구: ${effectivePieces}/${totalPieces}`,
         cardBorder: "1px solid rgba(16, 185, 129, 0.3)",
         containerBg: "linear-gradient(135deg, #091a18 0%, #11221f 50%, #162c28 100%)",
       };
     }
     if (isEnglish) {
       return {
-        badgeText: isEn ? "GLOBAL ODYSSEY" : "세계 비행 항로",
+        badgeText: isNonKorean ? "GLOBAL ODYSSEY" : "세계 비행 항로",
         badgeBg: "rgba(99, 102, 241, 0.25)",
         badgeColor: "#818cf8",
         iconBg: "linear-gradient(135deg, #4f46e5 0%, #4338ca 50%, #312e81 100%)",
         accentColor: "#818cf8",
         blockGradient: "linear-gradient(180deg, #818cf8 0%, #4f46e5 100%)",
-        streakTitle: isEn ? "Jetstream Flow:" : "제트기류 순항 하모니:",
-        streakHint: isEn ? "3 in a row for +1 cruising altitude" : "3연속 정답 시 비행 순항 고도 급상승",
-        streakBonusText: isEn ? "Jetstream Boost Active!" : "제트기류 부스터 가동!",
-        currentProgressLabel: isEn ? `Cruising Altitude: ${effectivePieces * 1000} ft` : `비행 순항 고도: ${effectivePieces * 1000} ft`,
+        streakTitle: isNonKorean ? "Jetstream Flow:" : "제트기류 순항 하모니:",
+        streakHint: isNonKorean ? "3 in a row for +1 cruising altitude" : "3연속 정답 시 비행 순항 고도 급상승",
+        streakBonusText: isNonKorean ? "Jetstream Boost Active!" : "제트기류 부스터 가동!",
+        currentProgressLabel: isNonKorean ? `Cruising Altitude: ${effectivePieces * 1000} ft` : `비행 순항 고도: ${effectivePieces * 1000} ft`,
         cardBorder: "1px solid rgba(99, 102, 241, 0.3)",
         containerBg: "linear-gradient(135deg, #111428 0%, #181c3a 50%, #1f254e 100%)",
       };
     }
     if (isScience) {
       return {
-        badgeText: isEn ? "SCIENCE LAB" : "과학 랩 장비",
+        badgeText: isNonKorean ? "SCIENCE LAB" : "과학 랩 장비",
         badgeBg: "rgba(14, 165, 233, 0.25)",
         badgeColor: "#38bdf8",
         iconBg: "linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%)",
         accentColor: "#38bdf8",
         blockGradient: "linear-gradient(180deg, #38bdf8 0%, #0284c7 100%)",
-        streakTitle: isEn ? "Resonance Flow:" : "정밀 실험 공명 하모니:",
-        streakHint: isEn ? "3 in a row for +1 sensor piece" : "3연속 정답 시 보너스 센서 교정",
-        streakBonusText: isEn ? "Resonance Tuning Active!" : "양자 공명 튜닝 발동!",
-        currentProgressLabel: isEn ? `Sensor Calibration: ${effectivePieces}/${totalPieces}` : `센서 캘리브레이션: ${effectivePieces}/${totalPieces}`,
+        streakTitle: isNonKorean ? "Resonance Flow:" : "정밀 실험 공명 하모니:",
+        streakHint: isNonKorean ? "3 in a row for +1 sensor piece" : "3연속 정답 시 보너스 센서 교정",
+        streakBonusText: isNonKorean ? "Resonance Tuning Active!" : "양자 공명 튜닝 발동!",
+        currentProgressLabel: isNonKorean ? `Sensor Calibration: ${effectivePieces}/${totalPieces}` : `센서 캘리브레이션: ${effectivePieces}/${totalPieces}`,
         cardBorder: "1px solid rgba(14, 165, 233, 0.3)",
         containerBg: "linear-gradient(135deg, #0b1526 0%, #0f2038 50%, #132b4d 100%)",
       };
     }
     // Math default
     return {
-      badgeText: isEn ? "SMART BUILDER" : "스마트 건축",
+      badgeText: isNonKorean ? "SMART BUILDER" : "스마트 건축",
       badgeBg: "rgba(245, 158, 11, 0.25)",
       badgeColor: "#fbbf24",
       iconBg: "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)",
       accentColor: "#fbbf24",
       blockGradient: "linear-gradient(180deg, #fbbf24 0%, #d97706 100%)",
-      streakTitle: isEn ? "Harmony Flow:" : "무결점 계산 하모니:",
-      streakHint: isEn ? "3 in a row for +1 structural piece" : "3연속 정답 시 보너스 내진 조각 축조",
-      streakBonusText: isEn ? "Harmony Combo Active!" : "하모니 콤보 발동!",
-      currentProgressLabel: isEn ? `Structural Safety: ${effectivePieces}/${totalPieces}` : `구조 안전율: ${effectivePieces}/${totalPieces}`,
+      streakTitle: isNonKorean ? "Harmony Flow:" : "무결점 계산 하모니:",
+      streakHint: isNonKorean ? "3 in a row for +1 structural piece" : "3연속 정답 시 보너스 내진 조각 축조",
+      streakBonusText: isNonKorean ? "Harmony Combo Active!" : "하모니 콤보 발동!",
+      currentProgressLabel: isNonKorean ? `Structural Safety: ${effectivePieces}/${totalPieces}` : `구조 안전율: ${effectivePieces}/${totalPieces}`,
       cardBorder: "1px solid rgba(245, 158, 11, 0.3)",
       containerBg: "linear-gradient(135deg, #1b160d 0%, #261e12 50%, #332817 100%)",
     };
-  }, [isKorean, isEnglish, isScience, isEn, effectivePieces, totalPieces]);
+  }, [isKorean, isEnglish, isScience, isNonKorean, effectivePieces, totalPieces]);
 
-  const displayName = isEn ? landmarkInfo.nameEn : landmarkInfo.nameKo;
+  const displayName = isNonKorean ? landmarkInfo.nameEn : landmarkInfo.nameKo;
 
   return (
     <section
@@ -700,9 +710,9 @@ export function LabBuilderView({
               cursor: "pointer",
             }}
             aria-expanded={isExpanded}
-            aria-label={isExpanded ? "상세 접기" : "전개도 보기"}
+            aria-label={isExpanded ? collapseAriaText : netViewAriaText}
           >
-            {isExpanded ? "▲ 접기" : "▼ 전개도"}
+            {isExpanded ? `▲ ${collapseText}` : `▼ ${netViewText}`}
           </button>
         </div>
       </div>
@@ -796,7 +806,7 @@ export function LabBuilderView({
                 gap: 4,
               }}
             >
-              🎉 +{bonusPieces} {isEn ? "Bonus Piece Active" : "보너스 조각 축조"}
+              🎉 +{bonusPieces} {isNonKorean ? "Bonus Piece Active" : "보너스 조각 축조"}
             </span>
           ) : isHarmonyActive ? (
             <span style={{ color: themeStyles.accentColor, fontWeight: 700 }}>
@@ -829,12 +839,12 @@ export function LabBuilderView({
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
             <span style={{ fontWeight: 700, color: themeStyles.accentColor }}>
               {isKorean
-                ? "📜 훈민정음 서화 두루마리와 한옥 결구도"
+                ? (t ? t("lab.blueprint.korean") : "📜 훈민정음 서화 두루마리와 한옥 결구도")
                 : isEnglish
-                  ? "🗺️ 글로벌 항로 & 보딩패스 (World Flight Route)"
+                  ? (t ? t("lab.blueprint.english") : (isNonKorean ? "🗺️ World Flight Route & Boarding Pass" : "🗺️ 글로벌 항로 & 보딩패스 (World Flight Route)"))
                   : isScience
-                    ? "🔬 양자·분자 정밀 계측도 (Apparatus Calibration)"
-                    : "📐 구조 역학 청사진 (Structural Blueprint)"}
+                    ? (t ? t("lab.calibration") : (isNonKorean ? "🔬 Apparatus Calibration (Quantum & Molecular)" : "🔬 양자·분자 정밀 계측도 (Apparatus Calibration)"))
+                    : (t ? t("lab.blueprint.math") : (isNonKorean ? "📐 Structural Blueprint (Dynamics & Geometry)" : "📐 구조 역학 청사진 (Structural Blueprint)"))}
             </span>
             <span style={{ fontSize: "0.72rem", color: "#94a3b8" }}>
               {themeStyles.currentProgressLabel}
@@ -842,7 +852,7 @@ export function LabBuilderView({
           </div>
 
           <p style={{ margin: "0 0 10px 0", fontSize: "0.78rem", color: "#94a3b8" }}>
-            {isEn ? landmarkInfo.blueprintEn : landmarkInfo.blueprintKo}
+            {isNonKorean ? landmarkInfo.blueprintEn : landmarkInfo.blueprintKo}
           </p>
 
           {/* Phase Steps Indicator */}
@@ -857,7 +867,7 @@ export function LabBuilderView({
               border: "1px solid rgba(148, 163, 184, 0.1)",
             }}
           >
-            {(isEn ? landmarkInfo.phaseEn : landmarkInfo.phaseKo).map((phase, pIdx) => {
+            {(isNonKorean ? landmarkInfo.phaseEn : landmarkInfo.phaseKo).map((phase, pIdx) => {
               const phaseThreshold = ((pIdx + 1) / 5) * 100;
               const isPhaseDone = progressPct >= phaseThreshold;
               const isPhaseCurrent = !isPhaseDone && progressPct >= ((pIdx) / 5) * 100;

@@ -477,6 +477,20 @@ export const ko = {
   "think.hub.enter": "들어가기",
   "think.hub.koFirst.toggle": "{name}도 함께 보기",
   "think.hub.koFirst.note": "",
+  "keypad.title": "수학 전용 스마트 키패드",
+  "keypad.clear": "전체지우기",
+  "keypad.collapse": "접기",
+  "keypad.expand": "키패드 열기",
+  "keypad.submit": "입력 완료 및 정답 제출",
+  "keypad.ariaLabel": "수학 키패드",
+  "lab.netView": "전개도",
+  "lab.collapse": "접기",
+  "lab.netViewAria": "전개도 보기",
+  "lab.collapseAria": "상세 접기",
+  "lab.calibration": "양자·분자 정밀 계측도 (Apparatus Calibration)",
+  "lab.blueprint.math": "구조 역학 청사진 (Structural Blueprint)",
+  "lab.blueprint.korean": "훈민정음 서화 두루마리와 한옥 결구도",
+  "lab.blueprint.english": "글로벌 항로 & 보딩패스 (World Flight Route)",
 } as const;
 
 export type MessageKey = keyof typeof ko;

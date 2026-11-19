@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useOptionalSite } from "./LearnerProvider";
 
 interface MathKeypadProps {
   onInsert: (char: string) => void;
@@ -12,6 +13,9 @@ interface MathKeypadProps {
 
 export function MathKeypad({ onInsert, onBackspace, onClear, onSubmit, disabled }: MathKeypadProps) {
   const [isOpen, setIsOpen] = useState(true);
+  const siteCtx = useOptionalSite();
+  const t = siteCtx?.t;
+  const isNonKorean = siteCtx?.locale && siteCtx.locale !== "ko";
 
   // Groups of keys for elementary through high school math
   const keyRows = [
@@ -57,11 +61,18 @@ export function MathKeypad({ onInsert, onBackspace, onClear, onSubmit, disabled 
     ],
   ];
 
+  const titleText = t ? t("keypad.title") : (isNonKorean ? "Smart Math Keypad" : "수학 전용 스마트 키패드");
+  const clearText = t ? t("keypad.clear") : (isNonKorean ? "Clear All" : "전체지우기");
+  const collapseText = t ? t("keypad.collapse") : (isNonKorean ? "Collapse" : "접기");
+  const expandText = t ? t("keypad.expand") : (isNonKorean ? "Open Keypad" : "키패드 열기");
+  const submitText = t ? t("keypad.submit") : (isNonKorean ? "Submit Answer" : "입력 완료 및 정답 제출");
+  const ariaLabelText = t ? t("keypad.ariaLabel") : (isNonKorean ? "Math Keypad" : "수학 키패드");
+
   return (
     <div className="mt-3 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/60 shadow-sm transition-all">
       <div className="flex items-center justify-between px-3 py-1.5 bg-slate-100 dark:bg-slate-800/80 border-b border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-300">
         <span className="font-medium flex items-center gap-1.5">
-          <span>🧮</span> 수학 전용 스마트 키패드
+          <span>🧮</span> {titleText}
         </span>
         <div className="flex items-center gap-2">
           <button
@@ -70,20 +81,20 @@ export function MathKeypad({ onInsert, onBackspace, onClear, onSubmit, disabled 
             disabled={disabled}
             className="hover:text-red-500 transition-colors px-1"
           >
-            전체지우기
+            {clearText}
           </button>
           <button
             type="button"
             onClick={() => setIsOpen(!isOpen)}
             className="text-slate-500 hover:text-slate-700 dark:hover:text-slate-200 transition-colors font-medium px-1"
           >
-            {isOpen ? "접기 ▲" : "키패드 열기 ▼"}
+            {isOpen ? `${collapseText} ▲` : `${expandText} ▼`}
           </button>
         </div>
       </div>
 
       {isOpen && (
-        <div className="p-2 space-y-1.5 select-none" role="region" aria-label="수학 키패드">
+        <div className="p-2 space-y-1.5 select-none" role="region" aria-label={ariaLabelText}>
           {keyRows.map((row, rIdx) => (
             <div key={rIdx} className="grid grid-cols-6 gap-1.5">
               {row.map((k, cIdx) => (
@@ -117,7 +128,7 @@ export function MathKeypad({ onInsert, onBackspace, onClear, onSubmit, disabled 
               onClick={onSubmit}
               className="w-full h-10 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm tracking-wide shadow-sm transition-all active:scale-[0.99] flex items-center justify-center gap-1.5 disabled:opacity-50"
             >
-              <span>입력 완료 및 정답 제출</span>
+              <span>{submitText}</span>
               <span>↵</span>
             </button>
           </div>
@@ -126,4 +137,3 @@ export function MathKeypad({ onInsert, onBackspace, onClear, onSubmit, disabled 
     </div>
   );
 }
-

@@ -38,6 +38,9 @@ export function useSite(): SiteCtx {
   if (!v) throw new Error("SiteProvider missing");
   return v;
 }
+export function useOptionalSite(): SiteCtx | null {
+  return useContext(SiteContext);
+}
 
 interface LearnerCtx extends SiteCtx {
   /** Free / Premium as decided by the server for this page (display only: every payload is authorised again on the server). */
