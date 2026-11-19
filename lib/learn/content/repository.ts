@@ -105,8 +105,18 @@ export function getContentRepository(): ContentRepository {
  * or answer keys.
  */
 export async function loadIndex(site: Site, opts: { grade?: Grade; locale?: LearnLocale; bank?: boolean; bankQuestionId?: string } = {}): Promise<{ bundle: ContentBundle; index: ContentIndex }> {
-  // study.korean is code-reviewed bundled content only (the database content source holds math / english): never a DB round trip.
-  let bundle = await (site === "korean" ? demoContentRepository : getContentRepository()).getBundle(site);
+  // study.korean, physics, chemistry are code-reviewed bundled content (the database content source holds math / english): never a DB round trip.
+  let bundle: ContentBundle;
+  if (site === "korean" || site === "physics" || site === "chemistry") {
+    bundle = await demoContentRepository.getBundle(site);
+  } else {
+    try {
+      bundle = await getContentRepository().getBundle(site);
+    } catch (err) {
+      console.error(`[learn] getContentRepository failed for ${site}, falling back to bundled demo content:`, err);
+      bundle = await demoContentRepository.getBundle(site);
+    }
+  }
   if (opts.locale) bundle = await localizedBundle(bundle, opts.locale);
   // The parametric practice bank (bank.ts) joins the server-side bundle only: pages and the browser's metadata ask with bank:false.
   if (opts.bank !== false && hasBank(site)) {

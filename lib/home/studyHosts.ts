@@ -24,7 +24,7 @@ export function studyUrl(subject: StudySubject, hostname: string, port = "", loc
     return `http://${hostname}${port ? `:${port}` : ""}/study/${subject}${path}`;
   }
   if (host === "localhost" || host.endsWith(".localhost") || host === "127.0.0.1") return `http://${subject}.localhost${port ? `:${port}` : ""}${path}`;
-  if (productionHost(host)) return `https://${subject}.life.help${path}`;
+  if (productionHost(host) || host.endsWith(".workers.dev")) return `https://${subject}.life.help${path}`;
   return `https://${subject === "korean" ? "study-korean" : subject}-staging.life.help${path}`;
 }
 
