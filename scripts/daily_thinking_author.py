@@ -28,7 +28,7 @@ from datetime import datetime
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-QUESTIONS_DIR = BASE_DIR.parent / "questions" / "daily"
+QUESTIONS_DIR = BASE_DIR / "questions" / "daily"
 
 # Model specifications
 OPENAI_MODEL = "gpt-6-luna"           # 덱 (Codex / OpenAI)
@@ -230,6 +230,15 @@ def author_ensemble_questions(date_str=None):
         json.dump(questions, f, ensure_ascii=False, indent=2)
         
     print(f"📁 저장 완료: {out_file}")
+
+    # 로컬 상위 questions/daily 폴더가 존재하면 상위에도 동기화
+    parent_q_dir = BASE_DIR.parent / "questions" / "daily" / date_str
+    if parent_q_dir.parent.exists():
+        parent_q_dir.mkdir(parents=True, exist_ok=True)
+        with open(parent_q_dir / "source_55.json", "w", encoding="utf-8") as f:
+            json.dump(questions, f, ensure_ascii=False, indent=2)
+        print(f"📁 로컬 상위 동기화 완료: {parent_q_dir / 'source_55.json'}")
+
     return out_file
 
 if __name__ == "__main__":
