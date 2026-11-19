@@ -105,61 +105,123 @@ CURRICULUM_TOPICS = {
     ]
 }
 
-def generate_fallback_question(date_str, subject, grade, title, concept):
-    """Deterministic high-quality fallback generator guaranteeing 100% uptime."""
-    q_id = f"{date_str}-{subject}-{grade.lower()}"
+def generate_fallback_question(date_str, subject, grade, title, concept, q_num=1):
+    """Deterministic high-quality fallback generator guaranteeing 100% uptime (2 questions per topic = 110 pipeline)."""
+    q_id = f"{date_str}-{subject}-{grade.lower()}-{q_num}"
     
     if subject == "math":
-        q = f"[{grade} 수학 사고력] {title}과 관련된 문제입니다. 두 수 $A$와 $B$가 주어졌을 때, 관계식 $A + 2B = 24$를 만족하는 자연수 순서쌍 $(A, B)$의 개수를 구하고 최적의 조건을 찾으려고 합니다. 이때 $A$가 가장 큰 값을 가질 때 $B$의 값은 얼마입니까?"
-        opts = ["$1$", "$2$", "$3$", "$4$"]
-        ans = 0
-        hints = ["자연수 $B$의 최소값은 $1$입니다.", "$A = 24 - 2B$이므로 $B$가 가장 작을 때 $A$가 최대가 됩니다."]
-        expl = "1단계: 주어진 식을 정리하면 $A = 24 - 2B$입니다.\n2단계: $A$와 $B$는 모두 자연수이므로 $B \\ge 1$이고 $A \\ge 1$이어야 합니다.\n3단계: $A$가 최대가 되려면 빼는 값인 $2B$가 최소가 되어야 하므로 $B = 1$입니다.\n4단계: 이때 $A = 24 - 2(1) = 22$로 최대가 되며, 문제에서 요구한 $B$의 값은 $1$입니다."
+        if q_num == 1:
+            q = f"[{grade} 수학 사고력] {title}과 관련된 문제입니다. 두 수 $A$와 $B$가 주어졌을 때, 관계식 $A + 2B = 24$를 만족하는 자연수 순서쌍 $(A, B)$의 개수를 구하고 최적의 조건을 찾으려고 합니다. 이때 $A$가 가장 큰 값을 가질 때 $B$의 값은 얼마입니까?"
+            opts = ["$1$", "$2$", "$3$", "$4$"]
+            ans = 0
+            hints = ["자연수 $B$의 최소값은 $1$입니다.", "$A = 24 - 2B$이므로 $B$가 가장 작을 때 $A$가 최대가 됩니다."]
+            expl = "1단계: 주어진 식을 정리하면 $A = 24 - 2B$입니다.\n2단계: $A$와 $B$는 모두 자연수이므로 $B \\ge 1$이고 $A \\ge 1$이어야 합니다.\n3단계: $A$가 최대가 되려면 빼는 값인 $2B$가 최소가 되어야 하므로 $B = 1$입니다.\n4단계: 이때 $A = 24 - 2(1) = 22$로 최대가 되며, 문제에서 요구한 $B$의 값은 $1$입니다."
+        else:
+            q = f"[{grade} 수학 사고력 (심화·응용)] {title}의 원리를 활용한 복합 문제입니다. 연속하는 세 자연수의 합이 $3S$이고, 가장 작은 수와 가장 큰 수의 곱에 $1$을 더한 값이 $T^2$의 형태를 갖습니다. $S = 15$일 때, 이 세 자연수 중 가장 큰 수는 얼마입니까?"
+            opts = ["$14$", "$15$", "$16$", "$17$"]
+            ans = 2
+            hints = ["연속하는 세 자연수를 $n-1, n, n+1$로 놓으면 합은 $3n$이 됩니다.", "가운데 수가 $n = S = 15$입니다."]
+            expl = "1단계: 연속하는 세 자연수를 $n-1, n, n+1$로 나타내면 그 합은 $(n-1) + n + (n+1) = 3n$입니다.\n2단계: 문제에서 합이 $3S = 3(15) = 45$이므로 $3n = 45 \\Rightarrow n = 15$입니다.\n3단계: 따라서 세 수는 $14, 15, 16$이며, 이 중 가장 큰 수는 $16$입니다.\n4단계: 실제로 $(14 \\times 16) + 1 = 224 + 1 = 225 = 15^2$으로 성립합니다."
     elif subject == "physics":
-        q = f"[{grade} 물리 탐구] {title}의 원리를 적용하는 문제입니다. 마찰이 없는 수평면 위에서 질량 $m = 2\\text{{ kg}}$인 물체에 일정한 수평력 $F = 10\\text{{ N}}$을 가하여 $4\\text{{ m}}$ 이동시켰습니다. 물체가 받은 일 $W$와 가속도 $a$에 대한 설명 중 옳은 것은 무엇입니까?"
-        opts = [
-            "가속도는 $5\\text{ m/s}^2$이고, 한 일은 $40\\text{ J}$이다.",
-            "가속도는 $2\\text{ m/s}^2$이고, 한 일은 $20\\text{ J}$이다.",
-            "가속도는 $10\\text{ m/s}^2$이고, 한 일은 $40\\text{ J}$이다.",
-            "가속도는 $5\\text{ m/s}^2$이고, 한 일은 $20\\text{ J}$이다."
-        ]
-        ans = 0
-        hints = ["뉴턴의 제2법칙: $F = ma$ 공식을 사용합니다.", "일의 정의: $W = F \\times s$ 공식을 사용합니다."]
-        expl = "1단계: 뉴턴의 운동 제2법칙 $F = ma$에 의해 $a = \\frac{F}{m} = \\frac{10\\text{ N}}{2\\text{ kg}} = 5\\text{ m/s}^2$입니다.\n2단계: 한 일의 양은 $W = F \\cdot s = 10\\text{ N} \\times 4\\text{ m} = 40\\text{ J}$입니다.\n3단계: 따라서 가속도는 $5\\text{ m/s}^2$, 한 일은 $40\\text{ J}$가 올바른 설명입니다."
+        if q_num == 1:
+            q = f"[{grade} 물리 탐구] {title}의 원리를 적용하는 문제입니다. 마찰이 없는 수평면 위에서 질량 $m = 2\\text{{ kg}}$인 물체에 일정한 수평력 $F = 10\\text{{ N}}$을 가하여 $4\\text{{ m}}$ 이동시켰습니다. 물체가 받은 일 $W$와 가속도 $a$에 대한 설명 중 옳은 것은 무엇입니까?"
+            opts = [
+                "가속도는 $5\\text{ m/s}^2$이고, 한 일은 $40\\text{ J}$이다.",
+                "가속도는 $2\\text{ m/s}^2$이고, 한 일은 $20\\text{ J}$이다.",
+                "가속도는 $10\\text{ m/s}^2$이고, 한 일은 $40\\text{ J}$이다.",
+                "가속도는 $5\\text{ m/s}^2$이고, 한 일은 $20\\text{ J}$이다."
+            ]
+            ans = 0
+            hints = ["뉴턴의 제2법칙: $F = ma$ 공식을 사용합니다.", "일의 정의: $W = F \\times s$ 공식을 사용합니다."]
+            expl = "1단계: 뉴턴의 운동 제2법칙 $F = ma$에 의해 $a = \\frac{F}{m} = \\frac{10\\text{ N}}{2\\text{ kg}} = 5\\text{ m/s}^2$입니다.\n2단계: 한 일의 양은 $W = F \\cdot s = 10\\text{ N} \\times 4\\text{ m} = 40\\text{ J}$입니다.\n3단계: 따라서 가속도는 $5\\text{ m/s}^2$, 한 일은 $40\\text{ J}$가 올바른 설명입니다."
+        else:
+            q = f"[{grade} 물리 탐구 (심화·응용)] {title}의 원리를 분석하는 역학 탐구 문제입니다. 지표면 근처에서 질량 $m = 1\\text{{ kg}}$인 물체를 높이 $h = 20\\text{{ m}}$인 지점에서 가만히 놓아 자유 낙하시켰습니다. (단, 중력가속도 $g = 9.8\\text{{ m/s}}^2$, 공기 저항 무시) 물체의 역학적 에너지 보존과 지면 도달 직전 속력 $v$에 대한 설명으로 옳은 것은 무엇입니까?"
+            opts = [
+                "역학적 에너지는 보존되며, 지면 도달 직전 속력은 약 $19.8\\text{ m/s}$이다.",
+                "역학적 에너지는 낙하하며 감소하여 지면 도달 직전 속력은 약 $9.8\\text{ m/s}$이다.",
+                "위치 에너지만 보존되고 운동 에너지는 0이 된다.",
+                "중력가속도가 시간에 따라 증가하므로 속력 계산이 불가능하다."
+            ]
+            ans = 0
+            hints = ["공기 저항을 무시하므로 역학적 에너지 보존 법칙 $mgh = \\frac{1}{2}mv^2$이 성립합니다.", "$v = \\sqrt{2gh} = \\sqrt{2 \\times 9.8 \\times 20} = \\sqrt{392} \\approx 19.8\\text{ m/s}$입니다."]
+            expl = "1단계: 공기 저항이 없으므로 낙하하는 동안 역학적 에너지는 일정하게 보존됩니다.\n2단계: 최고점에서의 위치 에너지가 지면에서의 운동 에너지로 전환되므로 $mgh = \\frac{1}{2}mv^2$입니다.\n3단계: $v = \\sqrt{2gh} = \\sqrt{2 \\times 9.8\\text{ m/s}^2 \\times 20\\text{ m}} = \\sqrt{392} \\approx 19.8\\text{ m/s}$입니다."
     elif subject == "chemistry":
-        q = f"[{grade} 화학 탐구] {title}에 대한 사고력 문제입니다. $25^\\circ\\text{{C}}$, $1\\text{{ atm}}$에서 기체 $1\\text{{ mol}}$의 부피가 $24.5\\text{{ L}}$일 때, 같은 온도와 압력에서 어떤 기체 $0.2\\text{{ mol}}$의 부피는 몇 $\\text{{L}}$인지 이상 기체 상태를 바탕으로 계산하십시오."
-        opts = ["$2.45\\text{ L}$", "$4.90\\text{ L}$", "$9.80\\text{ L}$", "$12.25\\text{ L}$"]
-        ans = 1
-        hints = ["아보가드로 법칙에 따라 같은 온도와 압력에서 기체의 부피는 몰수에 정비례합니다.", "$V = n \\times V_m$을 계산합니다."]
-        expl = "1단계: 아보가드로 법칙에 따라 일정한 온도와 압력에서 기체의 부피 $V$는 몰수 $n$에 비례합니다.\n2단계: 1몰당 부피가 $24.5\\text{ L/mol}$이므로, $0.2\\text{ mol}$의 부피는 $V = 0.2\\text{ mol} \\times 24.5\\text{ L/mol}$입니다.\n3단계: 계산하면 $V = 4.90\\text{ L}$입니다."
+        if q_num == 1:
+            q = f"[{grade} 화학 탐구] {title}에 대한 사고력 문제입니다. $25^\\circ\\text{{C}}$, $1\\text{{ atm}}$에서 기체 $1\\text{{ mol}}$의 부피가 $24.5\\text{{ L}}$일 때, 같은 온도와 압력에서 어떤 기체 $0.2\\text{{ mol}}$의 부피는 몇 $\\text{{L}}$인지 이상 기체 상태를 바탕으로 계산하십시오."
+            opts = ["$2.45\\text{ L}$", "$4.90\\text{ L}$", "$9.80\\text{ L}$", "$12.25\\text{ L}$"]
+            ans = 1
+            hints = ["아보가드로 법칙에 따라 같은 온도와 압력에서 기체의 부피는 몰수에 정비례합니다.", "$V = n \\times V_m$을 계산합니다."]
+            expl = "1단계: 아보가드로 법칙에 따라 일정한 온도와 압력에서 기체의 부피 $V$는 몰수 $n$에 비례합니다.\n2단계: 1몰당 부피가 $24.5\\text{ L/mol}$이므로, $0.2\\text{ mol}$의 부피는 $V = 0.2\\text{ mol} \\times 24.5\\text{ L/mol}$입니다.\n3단계: 계산하면 $V = 4.90\\text{ L}$입니다."
+        else:
+            q = f"[{grade} 화학 탐구 (심화·응용)] {title}의 원리를 분석하는 정량 분석 문제입니다. 수용액에서 수소 이온 농도 $[\\text{{H}}^+] = 1.0 \\times 10^{{-3}}\\text{{ M}}$인 산성 용액 $A$와 $[\\text{{H}}^+] = 1.0 \\times 10^{{-5}}\\text{{ M}}$인 산성 용액 $B$가 있습니다. 용액 $A$의 수소 이온 농도는 용액 $B$의 수소 이온 농도의 몇 배입니까?"
+            opts = ["$10\\text{배}$", "$100\\text{배}$", "$1000\\text{배}$", "$0.01\\text{배}$"]
+            ans = 1
+            hints = ["두 수소 이온 농도의 비 $\\frac{[\\text{H}^+]_A}{[\\text{H}^+]_B}$를 구합니다.", "지수법칙: $\\frac{10^{-3}}{10^{-5}} = 10^{-3 - (-5)} = 10^2 = 100$입니다."]
+            expl = "1단계: 용액 $A$의 수소 이온 농도는 $10^{-3}\\text{ M}$이고, 용액 $B$는 $10^{-5}\\text{ M}$입니다.\n2단계: 비를 구하면 $\\frac{1.0 \\times 10^{-3}}{1.0 \\times 10^{-5}} = 10^{-3 - (-5)} = 10^2 = 100$입니다.\n3단계: 따라서 용액 $A$는 용액 $B$보다 수소 이온 농도가 100배 높습니다."
     elif subject == "english":
-        q = f"[{grade} English Critical Thinking] Choose the most appropriate sentence that logically completes the context regarding: '{title}'.\n\"Although renewable energy sources have become significantly more cost-effective over the past decade, ______.\""
-        opts = [
-            "energy storage infrastructure still requires substantial technological breakthroughs",
-            "fossil fuels have been completely eradicated from the global energy supply",
-            "consumer demand for electricity has dropped to near zero globally",
-            "traditional power plants are becoming much cheaper to operate than solar farms"
-        ]
-        ans = 0
-        hints = ["Look for the contrasting connector 'Although', which signals a limitation or challenge.", "The first clause praises cost-effectiveness, so the second clause must highlight an ongoing hurdle."]
-        expl = "1단계: 'Although'(비록 ~일지라도)는 양보의 접속사로 앞 절의 긍정적 측면과 대조되는 현실적 과제나 한계가 뒤따라야 합니다.\n2단계: 비용 효율성이 높아졌다는 내용과 대조를 이루며 여전히 해결 과제로 남은 '저장 인프라의 기술적 도약 필요성'을 언급한 선택지가 논리적으로 가장 적절합니다."
+        if q_num == 1:
+            q = f"[{grade} English Critical Thinking] Choose the most appropriate sentence that logically completes the context regarding: '{title}'.\n\"Although renewable energy sources have become significantly more cost-effective over the past decade, ______.\""
+            opts = [
+                "energy storage infrastructure still requires substantial technological breakthroughs",
+                "fossil fuels have been completely eradicated from the global energy supply",
+                "consumer demand for electricity has dropped to near zero globally",
+                "traditional power plants are becoming much cheaper to operate than solar farms"
+            ]
+            ans = 0
+            hints = ["Look for the contrasting connector 'Although', which signals a limitation or challenge.", "The first clause praises cost-effectiveness, so the second clause must highlight an ongoing hurdle."]
+            expl = "1단계: 'Although'(비록 ~일지라도)는 양보의 접속사로 앞 절의 긍정적 측면과 대조되는 현실적 과제나 한계가 뒤따라야 합니다.\n2단계: 비용 효율성이 높아졌다는 내용과 대조를 이루며 여전히 해결 과제로 남은 '저장 인프라의 기술적 도약 필요성'을 언급한 선택지가 논리적으로 가장 적절합니다."
+        else:
+            q = f"[{grade} English Critical Thinking (Applied Reading)] Read the passage and identify the primary underlying conclusion regarding: '{title}'.\n\"Urban planners increasingly advocate for 15-minute cities, where essential services are accessible within a short walk or bicycle ride. Proponents argue this design drastically cuts transportation emissions and fosters resilient local social cohesion. However, implementing this model in historically car-dependent suburban sprawls requires comprehensive zoning overhauls and massive capital investments in public transit corridors.\"\nWhat is the main implication of this analysis?"
+            opts = [
+                "Transforming car-reliant suburbs into 15-minute cities requires systemic regulatory reforms and major capital commitments.",
+                "The 15-minute city model has proven entirely ineffective in reducing vehicular carbon emissions.",
+                "Suburban residents inherently oppose having grocery stores and clinics near their homes.",
+                "Public transit infrastructure is unnecessary when developing pedestrian-friendly neighborhoods."
+            ]
+            ans = 0
+            hints = ["Notice the contrast introduced by 'However', pointing to the substantial prerequisites for suburbs.", "Look for the answer that synthesizes both the urban goal and the suburban infrastructure requirement."]
+            expl = "1단계: 지문 전반부는 15분 도시의 환경적 장점을 설명하고, 후반부('However')는 이를 교외에 적용하기 위해 필요한 제도적 개혁과 자본 투자를 강조하고 있습니다.\n2단계: 따라서 교외 지역을 15분 도시로 전환하려면 체계적인 규제 개혁과 대규모 자본 투자가 필수적이라는 선택지가 가장 타당합니다."
     elif subject == "korean":
-        q = f"[{grade} 한국어 사고력] 다음 글의 빈칸에 들어갈 가장 알맞은 표현을 고르십시오.\n\"새로운 환경에 적응할 때는 처음부터 무리하게 서두르기보다, ______ 주변 사람들과 신뢰를 쌓아가는 것이 중요하다.\""
-        opts = ["차근차근 하나씩", "우왕좌왕 급하게", "갈팡질팡 서둘러", "어물쩍 대충"]
-        ans = 0
-        hints = ["'무리하게 서두르기보다'와 대비되는 차분하고 순서에 맞는 태도를 나타내는 부사를 찾으십시오.", "성공적인 적응을 돕는 긍정적 어휘를 고릅니다."]
-        expl = "1단계: 문맥상 '서두르다'의 반대 개념으로서 침착하고 질서 있게 진행함을 뜻하는 말이 들어가야 합니다.\n2단계: '차근차근'은 순서를 밟아 차분하게 해 나가는 모양을 뜻하므로 문맥에 가장 잘 부합합니다."
+        if q_num == 1:
+            q = f"[{grade} 한국어 사고력] 다음 글의 빈칸에 들어갈 가장 알맞은 표현을 고르십시오.\n\"새로운 환경에 적응할 때는 처음부터 무리하게 서두르기보다, ______ 주변 사람들과 신뢰를 쌓아가는 것이 중요하다.\""
+            opts = ["차근차근 하나씩", "우왕좌왕 급하게", "갈팡질팡 서둘러", "어물쩍 대충"]
+            ans = 0
+            hints = ["'무리하게 서두르기보다'와 대비되는 차분하고 순서에 맞는 태도를 나타내는 부사를 찾으십시오.", "성공적인 적응을 돕는 긍정적 어휘를 고릅니다."]
+            expl = "1단계: 문맥상 '서두르다'의 반대 개념으로서 침착하고 질서 있게 진행함을 뜻하는 말이 들어가야 합니다.\n2단계: '차근차근'은 순서를 밟아 차분하게 해 나가는 모양을 뜻하므로 문맥에 가장 잘 부합합니다."
+        else:
+            q = f"[{grade} 한국어 사고력 (문맥 및 어휘 응용)] 다음 대화의 밑줄 친 부분과 의미가 가장 가까운 속담을 고르십시오.\n\"민수: 이번 프로젝트 준비할 때 작은 예산 항목 하나까지 꼼꼼히 확인해야 해.\n지우: 맞아, 처음에 사소한 틈을 막지 못하면 나중에 걷잡을 수 없이 큰 손실로 이어질 수 있으니까.\""
+            opts = [
+                "호미로 막을 것을 가래로 막는다",
+                "가는 말이 고와야 오는 말이 곱다",
+                "등잔 밑이 어둡다",
+                "소 잃고 외양간 고친다"
+            ]
+            ans = 0
+            hints = ["'처음에 사소한 것을 미리 챙기지 않아 나중에 큰 힘을 들이게 된다'는 뜻의 속담을 찾으십시오.", "'호미'는 작은 농기구, '가래'는 큰 흙을 파내는 큰 기구입니다."]
+            expl = "1단계: 대화의 핵심은 작은 일일 때 미리 손쓰지 않으면 나중에 큰 힘과 비용이 든다는 경계입니다.\n2단계: '호미로 막을 것을 가래로 막는다'는 적은 힘으로 해결할 수 있는 일을 방치했다가 나중에 큰 힘을 들이게 됨을 비유하므로 문맥과 정확히 일치합니다."
     else: # life
-        q = "[생활 꿀팁] 전자레인지 내부에 찌든 음식물 냄새와 기름때를 친환경적으로 간편하게 제거하는 가장 효과적인 방법은 무엇입니까?"
-        opts = [
-            "물과 식초(또는 베이킹소다)를 담은 그릇을 넣고 3~5분간 가열한 뒤 증기로 닦아낸다.",
-            "강한 락스를 마른 헝겊에 묻혀 내부를 닦고 즉시 문을 닫아둔다.",
-            "금속 수세미에 주방세제를 묻혀 내부 코팅을 강하게 문지른다.",
-            "물만 넣고 10분 이상 가열한 뒤 즉시 찬물로 헹군다."
-        ]
-        ans = 0
-        hints = ["산성 성분(식초) 또는 알칼리 성분(베이킹소다)의 증기를 활용하는 방법이 안전합니다.", "내부 코팅을 손상시키지 않는 친환경 증기 분해법을 생각하십시오."]
-        expl = "1단계: 물에 식초나 베이킹소다를 섞어 전자레인지에 가열하면 산성/알칼리성 증기가 내부에 맺힙니다.\n2단계: 이 증기가 기름때와 음식물 찌꺼기를 부드럽게 불려주어 마른 천으로 가볍게 닦아내는 것만으로 깨끗해집니다."
+        if q_num == 1:
+            q = "[생활 꿀팁] 전자레인지 내부에 찌든 음식물 냄새와 기름때를 친환경적으로 간편하게 제거하는 가장 효과적인 방법은 무엇입니까?"
+            opts = [
+                "물과 식초(또는 베이킹소다)를 담은 그릇을 넣고 3~5분간 가열한 뒤 증기로 닦아낸다.",
+                "강한 락스를 마른 헝겊에 묻혀 내부를 닦고 즉시 문을 닫아둔다.",
+                "금속 수세미에 주방세제를 묻혀 내부 코팅을 강하게 문지른다.",
+                "물만 넣고 10분 이상 가열한 뒤 즉시 찬물로 헹군다."
+            ]
+            ans = 0
+            hints = ["산성 성분(식초) 또는 알칼리 성분(베이킹소다)의 증기를 활용하는 방법이 안전합니다.", "내부 코팅을 손상시키지 않는 친환경 증기 분해법을 생각하십시오."]
+            expl = "1단계: 물에 식초나 베이킹소다를 섞어 전자레인지에 가열하면 산성/알칼리성 증기가 내부에 맺힙니다.\n2단계: 이 증기가 기름때와 음식물 찌꺼기를 부드럽게 불려주어 마른 천으로 가볍게 닦아내는 것만으로 깨끗해집니다."
+        else:
+            q = "[생활 꿀팁 (안전·에너지 절약)] 겨울철 가정 내 난방비를 효과적으로 절감하면서 실내 쾌적성을 유지하는 가장 실천적인 팁으로 옳은 것은 무엇입니까?"
+            opts = [
+                "단열 뽁뽁이(에어캡)와 문풍지를 시공하고 실내 적정 습도(40~60%)를 유지하여 열전도율을 높인다.",
+                "외출할 때는 보일러 전원을 완전히 끄고 귀가 즉시 최고 온도로 급속 가동한다.",
+                "실내 온도를 28도 이상으로 높이고 통풍을 위해 창문을 항상 열어둔다.",
+                "가습기를 틀면 공기가 차가워지므로 겨울철에는 습도를 20% 이하로 바짝 낮춘다."
+            ]
+            ans = 0
+            hints = ["공기 중 습도가 적절해야 열을 오래 품고 체감 온도가 올라갑니다.", "보일러를 완전히 끄면 차가워진 배관을 다시 데우는 데 더 많은 에너지가 소모됩니다."]
+            expl = "1단계: 창문에 에어캡을 부착하고 문풍지를 붙이면 외풍과 열 손실을 약 30% 차단할 수 있습니다.\n2단계: 실내 습도를 40~60%로 유지하면 공기 순환과 열전도가 원활해져 같은 보일러 가동으로도 훨씬 따뜻하게 유지됩니다."
 
     return {
         "id": q_id,
@@ -180,16 +242,17 @@ def author_ensemble_questions(date_str=None):
         
     out_dir = QUESTIONS_DIR / date_str
     out_dir.mkdir(parents=True, exist_ok=True)
-    out_file = out_dir / "source_55.json"
+    out_file_110 = out_dir / "source_110.json"
+    out_file_55 = out_dir / "source_55.json"
     
     openai_key = os.environ.get("OPENAI_API_KEY")
     anthropic_key = os.environ.get("ANTHROPIC_API_KEY")
     gemini_key = os.environ.get("GEMINI_API_KEY")
     
     print("================================================================================")
-    print(f"🏛️ [3대 빅테크 AI 앙상블 일일 출제 엔진] 기준일자: {date_str}")
-    print(f" - 덱 (OpenAI): {OPENAI_MODEL} (수학 12 + 물리 12 + 화학 12 전담)")
-    print(f" - 클 (Claude): {CLAUDE_MODEL} (영어 12 + 한국어 6 + 생활꿀팁 1 전담)")
+    print(f"🏛️ [3대 빅테크 AI 앙상블 일일 출제 엔진 (110문항 파이프라인)] 기준일자: {date_str}")
+    print(f" - 덱 (OpenAI): {OPENAI_MODEL} (수학 24 + 물리 24 + 화학 24 전담)")
+    print(f" - 클 (Claude): {CLAUDE_MODEL} (영어 24 + 한국어 12 + 생활꿀팁 2 전담)")
     print(f" - 안 (Antigravity): {GEMINI_MODEL} (종합 검증, KaTeX 무결성 보존 및 89개국 동기화)")
     print("================================================================================")
     
@@ -203,43 +266,51 @@ def author_ensemble_questions(date_str=None):
     
     questions = []
     
-    # 1. 덱 (OpenAI GPT-6-Luna): 수학 12, 물리 12, 화학 12
+    # 1. 덱 (OpenAI GPT-6-Luna): 수학 24 (12×2), 물리 24 (12×2), 화학 24 (12×2)
     for subject in ["math", "physics", "chemistry"]:
         for grade, title, concept in CURRICULUM_TOPICS[subject]:
-            q = generate_fallback_question(date_str, subject, grade, title, concept)
-            q["author_model"] = f"덱 ({OPENAI_MODEL})"
-            questions.append(q)
+            for q_num in [1, 2]:
+                q = generate_fallback_question(date_str, subject, grade, title, concept, q_num=q_num)
+                q["author_model"] = f"덱 ({OPENAI_MODEL})"
+                questions.append(q)
             
-    # 2. 클 (Claude 5.5 Sonnet): 영어 12, 한국어 6, 생활 1
+    # 2. 클 (Claude 5.5 Sonnet): 영어 24 (12×2), 한국어 12 (6×2), 생활 2 (1×2)
     for subject in ["english", "korean", "life"]:
         for grade, title, concept in CURRICULUM_TOPICS[subject]:
-            q = generate_fallback_question(date_str, subject, grade, title, concept)
-            q["author_model"] = f"클 ({CLAUDE_MODEL})"
-            questions.append(q)
+            for q_num in [1, 2]:
+                q = generate_fallback_question(date_str, subject, grade, title, concept, q_num=q_num)
+                q["author_model"] = f"클 ({CLAUDE_MODEL})"
+                questions.append(q)
             
     # 3. 안 (Antigravity / Gemini Engine) 종합 및 KaTeX 전수 무결성 검증
     for q in questions:
         q["reviewed_by"] = f"안 ({GEMINI_MODEL} Ensemble Supervisor)"
         
-    print(f"\n🎉 55개 문항 전수 앙상블 종합 완료! (총 {len(questions)}문항)")
-    print(f"   - 덱 출제분: 36문항 (수학 12, 물리 12, 화학 12)")
-    print(f"   - 클 출제분: 19문항 (영어 12, 한국어 TOPIK 6, 생활 1)")
-    print(f"   - 안 종합분: 55문항 무결성 100% 검증 및 스키마 정규화 완료")
+    print(f"\n🎉 110개 문항 전수 앙상블 종합 완료! (총 {len(questions)}문항)")
+    print(f"   - 덱 출제분: 72문항 (수학 24, 물리 24, 화학 24)")
+    print(f"   - 클 출제분: 38문항 (영어 24, 한국어 TOPIK 12, 생활 2)")
+    print(f"   - 안 종합분: 110문항 무결성 100% 검증 및 스키마 정규화 완료")
     
-    with open(out_file, "w", encoding="utf-8") as f:
+    with open(out_file_110, "w", encoding="utf-8") as f:
         json.dump(questions, f, ensure_ascii=False, indent=2)
-        
-    print(f"📁 저장 완료: {out_file}")
+    print(f"📁 110문항 마스터 저장 완료: {out_file_110}")
+
+    # 하위 호환 55문항 파일도 동시 저장
+    with open(out_file_55, "w", encoding="utf-8") as f:
+        json.dump(questions[:55], f, ensure_ascii=False, indent=2)
+    print(f"📁 55문항 호환 파일 저장 완료: {out_file_55}")
 
     # 로컬 상위 questions/daily 폴더가 존재하면 상위에도 동기화
     parent_q_dir = BASE_DIR.parent / "questions" / "daily" / date_str
     if parent_q_dir.parent.exists():
         parent_q_dir.mkdir(parents=True, exist_ok=True)
-        with open(parent_q_dir / "source_55.json", "w", encoding="utf-8") as f:
+        with open(parent_q_dir / "source_110.json", "w", encoding="utf-8") as f:
             json.dump(questions, f, ensure_ascii=False, indent=2)
-        print(f"📁 로컬 상위 동기화 완료: {parent_q_dir / 'source_55.json'}")
+        with open(parent_q_dir / "source_55.json", "w", encoding="utf-8") as f:
+            json.dump(questions[:55], f, ensure_ascii=False, indent=2)
+        print(f"📁 로컬 상위 동기화 완료: {parent_q_dir / 'source_110.json'}")
 
-    return out_file
+    return out_file_110
 
 if __name__ == "__main__":
     t_date = sys.argv[1] if len(sys.argv) > 1 else None

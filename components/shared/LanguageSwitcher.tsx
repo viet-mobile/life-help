@@ -19,6 +19,7 @@ export function LanguageSwitcher({
   const context = useLocale();
 
   const currentLocale = propLocale ?? context.locale;
+  const isBilingual = context.displayMode === "bilingual";
   const isDualScript = isDualScriptLocale(currentLocale);
   const scriptMeta = isDualScript ? DUAL_SCRIPT_LANGUAGES[currentLocale] : null;
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -77,7 +78,7 @@ export function LanguageSwitcher({
               dir="ltr"
               className="text-slate-900 bg-white"
             >
-              {formatLanguageName(lang, currentLocale)}
+              {formatLanguageName(lang, currentLocale, isBilingual)}
             </option>
           ))}
         </select>

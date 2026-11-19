@@ -23,17 +23,62 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
   const userId = await getUserId();
   const hasProfile = userId ? !!(await getLearnService().getState({ userId }, site)).profile : false;
   const dailyInsight = getDailyInsight(site, new Date(), locale);
-  // Links to the other learning sites: same stage (production / staging) on their own hosts, or the /study path locally.
+  // Navigation for all 5 study sites in one single row: Korean, English, Math, Physics, Chemistry
   const stage = parseLearnHost(h.get("host") ?? "")?.stage;
-  const others = SITES.filter((s) => s !== site).map((s) => ({ site: s, href: stage && stage !== "local" ? `https://${learnHost(s, stage)}` : `/study/${s}` }));
+  const subjects = SITES.map((s) => ({
+    site: s,
+    href: stage && stage !== "local" ? `https://${learnHost(s, stage)}` : `/study/${s}`,
+    isCurrent: s === site,
+    label: t(`site.${s}.name` as never),
+  }));
 
   return (
     <div className="l-wrap l-wrap-wide l-stack">
       <a className="l-skip" href="#main">{t("nav.skip")}</a>
-      <header className="l-landing-head">
-        <span className="l-brand"><BrandLogo site={site} name={t(siteConfig(site).brandKey)} size={56} /></span>
-        <LocaleSwitch />
-        {others.map((o) => <Link key={o.site} className="l-link" href={o.href} data-testid={`other-site-${o.site}`}>{t("site.other", { name: t(`site.${o.site}.name` as never) })}</Link>)}
+      <header className="l-landing-head" style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "10px 16px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "12px", flexShrink: 0 }}>
+          <span className="l-brand"><BrandLogo site={site} name={t(siteConfig(site).brandKey)} size={56} /></span>
+          <LocaleSwitch />
+        </div>
+        <nav
+          aria-label="Subjects Navigation"
+          style={{
+            display: "inline-flex",
+            flexWrap: "nowrap",
+            alignItems: "center",
+            gap: "6px",
+            whiteSpace: "nowrap",
+            overflowX: "auto",
+            scrollbarWidth: "none",
+            WebkitOverflowScrolling: "touch",
+            padding: "2px 0",
+          }}
+        >
+          {subjects.map((sub) => (
+            <Link
+              key={sub.site}
+              href={sub.href}
+              className={`l-link ${sub.isCurrent ? "l-link-active" : ""}`}
+              style={{
+                fontSize: "0.92rem",
+                padding: "6px 12px",
+                borderRadius: "9999px",
+                textDecoration: "none",
+                fontWeight: sub.isCurrent ? 800 : 600,
+                color: sub.isCurrent ? "#ffffff" : "inherit",
+                backgroundColor: sub.isCurrent ? "var(--l-brand, #2563eb)" : "rgba(241, 245, 249, 0.9)",
+                border: sub.isCurrent ? "1px solid var(--l-brand, #2563eb)" : "1px solid rgba(203, 213, 225, 0.7)",
+                boxShadow: sub.isCurrent ? "0 2px 6px rgba(37, 99, 235, 0.25)" : "none",
+                whiteSpace: "nowrap",
+                flexShrink: 0,
+                transition: "all 0.15s ease",
+              }}
+              data-testid={`subject-nav-${sub.site}`}
+            >
+              {sub.label}
+            </Link>
+          ))}
+        </nav>
       </header>
 
       <main id="main" className="l-stack">
@@ -94,15 +139,12 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
                       data-testid={`world-card-${c.id}`}
                     >
                       <div>
-                        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
-                          <span style={{ fontSize: "2.2rem" }} aria-hidden="true">{c.world.emoji}</span>
-                          <span className="l-btn l-btn-light" style={{ fontSize: "0.8rem", padding: "4px 10px", pointerEvents: "none" }}>
-                            {t("nav.learn")} →
-                          </span>
+                        <div style={{ marginBottom: 8 }}>
+                          <span style={{ fontSize: "2.4rem" }} aria-hidden="true">{c.world.emoji}</span>
                         </div>
-                        <h3 className="l-h2" style={{ margin: "4px 0" }}>{c.world.name}</h3>
-                        <p className="l-muted" style={{ fontWeight: 600 }}>{c.title}</p>
-                        {c.world.tagline && <p style={{ fontSize: "0.85rem", opacity: 0.85, marginTop: 4 }}>{c.world.tagline}</p>}
+                        <h3 className="l-h2" style={{ margin: "4px 0 6px 0" }}>{c.world.name}</h3>
+                        <p className="l-muted" style={{ fontWeight: 600, fontSize: "1rem" }}>{c.title}</p>
+                        {c.world.tagline && <p style={{ fontSize: "0.88rem", opacity: 0.85, marginTop: 6, lineHeight: 1.45 }}>{c.world.tagline}</p>}
                       </div>
                     </Link>
                   );

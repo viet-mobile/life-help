@@ -29,8 +29,8 @@ def validate_file(file_path):
         return False
         
     total = len(data)
-    if total != 55:
-        print(f"❌ Error: Expected 55 questions, but found {total}.")
+    if total not in (55, 110):
+        print(f"❌ Error: Expected 55 or 110 questions, but found {total}.")
         return False
         
     subject_counts = {}
@@ -78,7 +78,7 @@ def validate_file(file_path):
             print(f"   - {e}")
         return False
         
-    print(f"✅ [검증 합격] 55문항 전수 무결성 통과! (에러 0건)")
+    print(f"✅ [검증 합격] {total}문항 전수 무결성 통과! (에러 0건)")
     print(f"   - 과목별 분포: 수학 {subject_counts.get('math', 0)}, 영어 {subject_counts.get('english', 0)}, 물리 {subject_counts.get('physics', 0)}, 화학 {subject_counts.get('chemistry', 0)}, 한국어 {subject_counts.get('korean', 0)}, 생활 {subject_counts.get('life', 0)}")
     return True
 

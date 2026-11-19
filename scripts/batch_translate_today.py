@@ -136,11 +136,18 @@ def batch_translate_all(date_str=None, workers=6):
     if not date_str:
         date_str = datetime.now().strftime("%Y%m%d")
         
-    source_file = QUESTIONS_DIR / date_str / "source_55.json"
+    # Prefer 110-question pipeline source, fallback to 55-question source
+    source_file = QUESTIONS_DIR / date_str / "source_110.json"
     if not source_file.exists():
-        fallback_file = BASE_DIR.parent / "questions" / "daily" / date_str / "source_55.json"
-        if fallback_file.exists():
-            source_file = fallback_file
+        source_file = QUESTIONS_DIR / date_str / "source_55.json"
+        
+    if not source_file.exists():
+        fallback_file_110 = BASE_DIR.parent / "questions" / "daily" / date_str / "source_110.json"
+        fallback_file_55 = BASE_DIR.parent / "questions" / "daily" / date_str / "source_55.json"
+        if fallback_file_110.exists():
+            source_file = fallback_file_110
+        elif fallback_file_55.exists():
+            source_file = fallback_file_55
         else:
             print(f"❌ Error: Source file not found: {source_file}")
             return False

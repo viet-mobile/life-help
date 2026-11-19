@@ -205,11 +205,24 @@ export const languages: readonly LanguageMeta[] = [
  * - For RTL languages (이란어, 아랍어, 히브리어, 이집트어, 우르두어), renders the native name on the left
  *   and the Korean name on the right using Unicode Left-to-Right Marks (LRM).
  */
-export function formatLanguageName(meta: LanguageMeta, currentLocale?: Locale): string {
+export function formatLanguageName(meta: LanguageMeta, currentLocale?: Locale, isBilingual?: boolean): string {
   if (meta.code === "ko") {
     return meta.nativeName;
   }
   const native = currentLocale === "zh-Hant" && meta.code === "zh-Hans" ? "簡體中文" : meta.nativeName;
+
+  // When Bilingual (Korean) mode is enabled:
+  // Show the native name on the left, and the corresponding Korean name right-aligned on the right
+  // with non-breaking spaces (preventing HTML option collapse).
+  if (isBilingual) {
+    const padCount = Math.max(3, 24 - native.length);
+    const padding = "\u00A0".repeat(padCount);
+    if (meta.dir === "rtl") {
+      return `\u200E${native}\u200E${padding}${meta.name}\u200E`;
+    }
+    return `${native}${padding}${meta.name}`;
+  }
+
   // Non-Korean UI: the endonym only (a Korean exonym beside every language is unreadable for them).
   if (currentLocale && currentLocale !== "ko") {
     return meta.dir === "rtl" ? `\u200E${native}\u200E` : native;
