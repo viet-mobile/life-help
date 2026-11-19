@@ -44,9 +44,52 @@ import pa from "./pa.json";
 import te from "./te.json";
 import kn from "./kn.json";
 import ml from "./ml.json";
+import tl from "./tl.json";
+import ms from "./ms.json";
+import pcm from "./pcm.json";
+import ro from "./ro.json";
+import cs from "./cs.json";
+import af from "./af.json";
+import hu from "./hu.json";
+import fi from "./fi.json";
+import ka from "./ka.json";
+import yue from "./yue.json";
+import ca from "./ca.json";
+import bg from "./bg.json";
+import tg from "./tg.json";
 
 export * from "./registry";
 import { type Locale, defaultLocale, isValidLocale, locales } from "./registry";
+import asLc from "./as.json";
+import azLc from "./az.json";
+import cebLc from "./ceb.json";
+import etLc from "./et.json";
+import euLc from "./eu.json";
+import glLc from "./gl.json";
+import haLc from "./ha.json";
+import hrLc from "./hr.json";
+import igLc from "./ig.json";
+import isLc from "./is.json";
+import jvLc from "./jv.json";
+import kuLc from "./ku.json";
+import ltLc from "./lt.json";
+import lvLc from "./lv.json";
+import mgLc from "./mg.json";
+import mkLc from "./mk.json";
+import omLc from "./om.json";
+import psLc from "./ps.json";
+import sdLc from "./sd.json";
+import sgLc from "./sg.json";
+import skLc from "./sk.json";
+import slLc from "./sl.json";
+import snLc from "./sn.json";
+import soLc from "./so.json";
+import sqLc from "./sq.json";
+import srLc from "./sr.json";
+import suLc from "./su.json";
+import xhLc from "./xh.json";
+import yoLc from "./yo.json";
+import zuLc from "./zu.json";
 
 export const dictionaries = {
   vi,
@@ -95,6 +138,49 @@ export const dictionaries = {
   te,
   kn,
   ml,
+  tl,
+  ms,
+  pcm,
+  ro,
+  cs,
+  af,
+  hu,
+  fi,
+  ka,
+  yue,
+  ca,
+  bg,
+  tg,
+  as: asLc,
+  az: azLc,
+  ceb: cebLc,
+  et: etLc,
+  eu: euLc,
+  gl: glLc,
+  ha: haLc,
+  hr: hrLc,
+  ig: igLc,
+  is: isLc,
+  jv: jvLc,
+  ku: kuLc,
+  lt: ltLc,
+  lv: lvLc,
+  mg: mgLc,
+  mk: mkLc,
+  om: omLc,
+  ps: psLc,
+  sd: sdLc,
+  sg: sgLc,
+  sk: skLc,
+  sl: slLc,
+  sn: snLc,
+  so: soLc,
+  sq: sqLc,
+  sr: srLc,
+  su: suLc,
+  xh: xhLc,
+  yo: yoLc,
+  zu: zuLc,
 } as const;
 
 
@@ -110,13 +196,13 @@ export function detectDeviceLocale(preferredLanguages?: readonly string[]): Loca
     if (!raw) continue;
     const tag = raw.toLowerCase().trim();
 
-    // Chinese Traditional
-    if (
-      tag.startsWith("zh-tw") ||
-      tag.startsWith("zh-hk") ||
-      tag.startsWith("zh-mo") ||
-      tag.includes("hant")
-    ) {
+    // Cantonese (Hong Kong, Macau, Cantonese)
+    if (tag.startsWith("zh-hk") || tag.startsWith("zh-mo") || tag.startsWith("yue")) {
+      return "yue";
+    }
+
+    // Chinese Traditional (Taiwan and other Traditional)
+    if (tag.startsWith("zh-tw") || tag.includes("hant")) {
       return "zh-Hant";
     }
 

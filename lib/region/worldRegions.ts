@@ -6474,4 +6474,6178 @@ export const worldRegions: Record<string, SidoData[]> = {
       ],
     },
   ],
+  RO: [
+    {
+      name: "București",
+      shortName: "B",
+      gunguList: [
+        { name: "Sector 1", dongs: ["Dorobanți", "Floreasca", "Aviației"] },
+        { name: "Sector 2", dongs: ["Colentina", "Pantelimon"] },
+        { name: "Sector 3", dongs: ["Titan", "Vitan", "Dristor"] },
+        { name: "Sector 4", dongs: ["Berceni", "Olteniței"] },
+        { name: "Sector 5", dongs: ["Rahova", "Ferentari"] },
+        { name: "Sector 6", dongs: ["Militari", "Drumul Taberei"] },
+      ],
+    },
+    {
+      name: "Cluj",
+      shortName: "CJ",
+      gunguList: [
+        { name: "Cluj-Napoca", dongs: ["Centru", "Mărăști", "Gheorgheni", "Mănăștur"] },
+        { name: "Turda", dongs: ["Centru"] },
+        { name: "Dej", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Timiș",
+      shortName: "TM",
+      gunguList: [
+        { name: "Timișoara", dongs: ["Cetate", "Iosefin", "Elisabetin", "Fabric"] },
+        { name: "Lugoj", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Iași",
+      shortName: "IS",
+      gunguList: [
+        { name: "Iași", dongs: ["Centru", "Copou", "Nicolina", "Păcurari"] },
+        { name: "Pașcani", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Constanța",
+      shortName: "CT",
+      gunguList: [
+        { name: "Constanța", dongs: ["Centru", "Mamaia", "Tomis"] },
+        { name: "Medgidia", dongs: ["Centru"] },
+        { name: "Mangalia", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Brașov",
+      shortName: "BV",
+      gunguList: [
+        { name: "Brașov", dongs: ["Centrul Vechi", "Astra", "Tractorul"] },
+        { name: "Făgăraș", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Prahova",
+      shortName: "PH",
+      gunguList: [
+        { name: "Ploiești", dongs: ["Centru", "Nord", "Sud"] },
+        { name: "Câmpina", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Dolj",
+      shortName: "DJ",
+      gunguList: [
+        { name: "Craiova", dongs: ["Centru", "Craiovița Nouă", "Brazda lui Novac"] },
+      ],
+    },
+    {
+      name: "Galați",
+      shortName: "GL",
+      gunguList: [
+        { name: "Galați", dongs: ["Centru", "Țiglina", "Micro 19"] },
+      ],
+    },
+    {
+      name: "Bihor",
+      shortName: "BH",
+      gunguList: [
+        { name: "Oradea", dongs: ["Centru", "Rogerius", "Nufărul"] },
+        { name: "Salonta", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Sibiu",
+      shortName: "SB",
+      gunguList: [
+        { name: "Sibiu", dongs: ["Orașul Vechi", "Vasile Aaron", "Hipodrom"] },
+        { name: "Mediaș", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Argeș",
+      shortName: "AG",
+      gunguList: [
+        { name: "Pitești", dongs: ["Centru", "Găvana", "Trivale"] },
+        { name: "Curtea de Argeș", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Bacău",
+      shortName: "BC",
+      gunguList: [
+        { name: "Bacău", dongs: ["Centru", "Nord", "Miorița"] },
+      ],
+    },
+    {
+      name: "Mureș",
+      shortName: "MS",
+      gunguList: [
+        { name: "Târgu Mureș", dongs: ["Centru", "Tudor Vladimirescu"] },
+        { name: "Sighișoara", dongs: ["Cetate"] },
+      ],
+    },
+    {
+      name: "Suceava",
+      shortName: "SV",
+      gunguList: [
+        { name: "Suceava", dongs: ["Centru", "Burdujeni", "George Enescu"] },
+      ],
+    },
+    {
+      name: "Arad",
+      shortName: "AR",
+      gunguList: [
+        { name: "Arad", dongs: ["Centru", "Micălaca", "Vlaicu"] },
+      ],
+    },
+    {
+      name: "Maramureș",
+      shortName: "MM",
+      gunguList: [
+        { name: "Baia Mare", dongs: ["Centru", "Săsar"] },
+        { name: "Sighetu Marmației", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Neamț",
+      shortName: "NT",
+      gunguList: [
+        { name: "Piatra Neamț", dongs: ["Centru", "Dărmănești"] },
+        { name: "Roman", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Hunedoara",
+      shortName: "HD",
+      gunguList: [
+        { name: "Deva", dongs: ["Centru"] },
+        { name: "Hunedoara", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Botoșani",
+      shortName: "BT",
+      gunguList: [
+        { name: "Botoșani", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Alba",
+      shortName: "AB",
+      gunguList: [
+        { name: "Alba Iulia", dongs: ["Cetate", "Centru"] },
+      ],
+    },
+    {
+      name: "Buzău",
+      shortName: "BZ",
+      gunguList: [
+        { name: "Buzău", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Dâmbovița",
+      shortName: "DB",
+      gunguList: [
+        { name: "Târgoviște", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Gorj",
+      shortName: "GJ",
+      gunguList: [
+        { name: "Târgu Jiu", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Ilfov",
+      shortName: "IF",
+      gunguList: [
+        { name: "Voluntari", dongs: ["Pipera"] },
+        { name: "Otopeni", dongs: ["Centru"] },
+        { name: "Buftea", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Satu Mare",
+      shortName: "SM",
+      gunguList: [
+        { name: "Satu Mare", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Vrancea",
+      shortName: "VN",
+      gunguList: [
+        { name: "Focșani", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Brăila",
+      shortName: "BR",
+      gunguList: [
+        { name: "Brăila", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Vâlcea",
+      shortName: "VL",
+      gunguList: [
+        { name: "Râmnicu Vâlcea", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Mehedinți",
+      shortName: "MH",
+      gunguList: [
+        { name: "Drobeta-Turnu Severin", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Olt",
+      shortName: "OT",
+      gunguList: [
+        { name: "Slatina", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Ialomița",
+      shortName: "IL",
+      gunguList: [
+        { name: "Slobozia", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Călărași",
+      shortName: "CL",
+      gunguList: [
+        { name: "Călărași", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Vaslui",
+      shortName: "VS",
+      gunguList: [
+        { name: "Vaslui", dongs: ["Centru"] },
+        { name: "Bârlad", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Giurgiu",
+      shortName: "GR",
+      gunguList: [
+        { name: "Giurgiu", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Teleorman",
+      shortName: "TR",
+      gunguList: [
+        { name: "Alexandria", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Bistrița-Năsăud",
+      shortName: "BN",
+      gunguList: [
+        { name: "Bistrița", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Caraș-Severin",
+      shortName: "CS",
+      gunguList: [
+        { name: "Reșița", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Sălaj",
+      shortName: "SJ",
+      gunguList: [
+        { name: "Zalău", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Covasna",
+      shortName: "CV",
+      gunguList: [
+        { name: "Sfântu Gheorghe", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Harghita",
+      shortName: "HR",
+      gunguList: [
+        { name: "Miercurea Ciuc", dongs: ["Centru"] },
+      ],
+    },
+    {
+      name: "Tulcea",
+      shortName: "TL",
+      gunguList: [
+        { name: "Tulcea", dongs: ["Centru"] },
+      ],
+    },
+  ],
+  FI: [
+    {
+      name: "Uusimaa",
+      shortName: "Uusimaa",
+      gunguList: [
+        { name: "Helsinki", dongs: ["Keskusta", "Kallio", "Kamppi", "Töölö", "Pasila"] },
+        { name: "Espoo", dongs: ["Tapiola", "Leppävaara", "Matinkylä"] },
+        { name: "Vantaa", dongs: ["Tikkurila", "Myyrmäki"] },
+      ],
+    },
+    {
+      name: "Pirkanmaa",
+      shortName: "Pirkanmaa",
+      gunguList: [
+        { name: "Tampere", dongs: ["Keskustori", "Hervanta", "Pyynikki", "Kaleva"] },
+        { name: "Nokia", dongs: ["Keskusta"] },
+      ],
+    },
+    {
+      name: "Varsinais-Suomi",
+      shortName: "Varsinais-Suomi",
+      gunguList: [
+        { name: "Turku", dongs: ["Keskusta", "Kupittaa", "Varissuo"] },
+        { name: "Salo", dongs: ["Keskusta"] },
+      ],
+    },
+    {
+      name: "Pohjois-Pohjanmaa",
+      shortName: "Pohjois-Pohjanmaa",
+      gunguList: [
+        { name: "Oulu", dongs: ["Keskusta", "Linnanmaa", "Tuira"] },
+      ],
+    },
+    {
+      name: "Keski-Suomi",
+      shortName: "Keski-Suomi",
+      gunguList: [
+        { name: "Jyväskylä", dongs: ["Keskusta", "Kuokkala", "Kortepohja"] },
+      ],
+    },
+    {
+      name: "Pohjois-Savo",
+      shortName: "Pohjois-Savo",
+      gunguList: [
+        { name: "Kuopio", dongs: ["Keskusta", "Puijo", "Petonen"] },
+      ],
+    },
+    {
+      name: "Satakunta",
+      shortName: "Satakunta",
+      gunguList: [
+        { name: "Pori", dongs: ["Keskusta"] },
+        { name: "Rauma", dongs: ["Vanha Rauma"] },
+      ],
+    },
+    {
+      name: "Päijät-Häme",
+      shortName: "Päijät-Häme",
+      gunguList: [
+        { name: "Lahti", dongs: ["Keskusta", "Mukkula"] },
+      ],
+    },
+    {
+      name: "Etelä-Pohjanmaa",
+      shortName: "Etelä-Pohjanmaa",
+      gunguList: [
+        { name: "Seinäjoki", dongs: ["Keskusta"] },
+      ],
+    },
+    {
+      name: "Pohjanmaa",
+      shortName: "Pohjanmaa",
+      gunguList: [
+        { name: "Vaasa", dongs: ["Keskusta", "Palosaari"] },
+      ],
+    },
+    {
+      name: "Lappi",
+      shortName: "Lappi",
+      gunguList: [
+        { name: "Rovaniemi", dongs: ["Keskusta"] },
+        { name: "Kemi", dongs: ["Keskusta"] },
+      ],
+    },
+    {
+      name: "Kymenlaakso",
+      shortName: "Kymenlaakso",
+      gunguList: [
+        { name: "Kouvola", dongs: ["Keskusta"] },
+        { name: "Kotka", dongs: ["Keskusta"] },
+      ],
+    },
+    {
+      name: "Etelä-Savo",
+      shortName: "Etelä-Savo",
+      gunguList: [
+        { name: "Mikkeli", dongs: ["Keskusta"] },
+        { name: "Savonlinna", dongs: ["Keskusta"] },
+      ],
+    },
+    {
+      name: "Etelä-Karjala",
+      shortName: "Etelä-Karjala",
+      gunguList: [
+        { name: "Lappeenranta", dongs: ["Keskusta"] },
+      ],
+    },
+    {
+      name: "Kanta-Häme",
+      shortName: "Kanta-Häme",
+      gunguList: [
+        { name: "Hämeenlinna", dongs: ["Keskusta"] },
+      ],
+    },
+    {
+      name: "Kainuu",
+      shortName: "Kainuu",
+      gunguList: [
+        { name: "Kajaani", dongs: ["Keskusta"] },
+      ],
+    },
+    {
+      name: "Keski-Pohjanmaa",
+      shortName: "Keski-Pohjanmaa",
+      gunguList: [
+        { name: "Kokkola", dongs: ["Keskusta"] },
+      ],
+    },
+    {
+      name: "Pohjois-Karjala",
+      shortName: "Pohjois-Karjala",
+      gunguList: [
+        { name: "Joensuu", dongs: ["Keskusta"] },
+      ],
+    },
+    {
+      name: "Ahvenanmaa",
+      shortName: "Ahvenanmaa",
+      gunguList: [
+        { name: "Maarianhamina", dongs: ["Keskusta"] },
+      ],
+    },
+  ],
+  CZ: [
+    {
+      name: "Praha",
+      shortName: "PHA",
+      gunguList: [
+        { name: "Praha 1", dongs: ["Staré Město", "Malá Strana", "Hradčany"] },
+        { name: "Praha 2", dongs: ["Vinohrady", "Nové Město", "Vyšehrad"] },
+        { name: "Praha 3", dongs: ["Žižkov"] },
+        { name: "Praha 4", dongs: ["Nusle", "Braník", "Michle"] },
+        { name: "Praha 5", dongs: ["Smíchov", "Košíře"] },
+        { name: "Praha 6", dongs: ["Dejvice", "Bubeneč"] },
+        { name: "Praha 7", dongs: ["Holešovice", "Letná"] },
+        { name: "Praha 8", dongs: ["Karlín", "Libeň"] },
+      ],
+    },
+    {
+      name: "Jihomoravský kraj",
+      shortName: "JHM",
+      gunguList: [
+        { name: "Brno", dongs: ["Brno-střed", "Královo Pole", "Žabovřesky", "Sever"] },
+        { name: "Znojmo", dongs: ["Centrum"] },
+      ],
+    },
+    {
+      name: "Moravskoslezský kraj",
+      shortName: "MSK",
+      gunguList: [
+        { name: "Ostrava", dongs: ["Moravská Ostrava", "Poruba", "Jih"] },
+        { name: "Opava", dongs: ["Centrum"] },
+        { name: "Havířov", dongs: ["Centrum"] },
+      ],
+    },
+    {
+      name: "Středočeský kraj",
+      shortName: "STC",
+      gunguList: [
+        { name: "Kladno", dongs: ["Centrum"] },
+        { name: "Mladá Boleslav", dongs: ["Centrum"] },
+        { name: "Příbram", dongs: ["Centrum"] },
+      ],
+    },
+    {
+      name: "Plzeňský kraj",
+      shortName: "PLK",
+      gunguList: [
+        { name: "Plzeň", dongs: ["Plzeň 1", "Plzeň 2", "Plzeň 3"] },
+      ],
+    },
+    {
+      name: "Ústecký kraj",
+      shortName: "ULK",
+      gunguList: [
+        { name: "Ústí nad Labem", dongs: ["Centrum"] },
+        { name: "Most", dongs: ["Centrum"] },
+        { name: "Teplice", dongs: ["Centrum"] },
+      ],
+    },
+    {
+      name: "Jihočeský kraj",
+      shortName: "JHC",
+      gunguList: [
+        { name: "České Budějovice", dongs: ["Centrum"] },
+        { name: "Tábor", dongs: ["Centrum"] },
+      ],
+    },
+    {
+      name: "Královéhradecký kraj",
+      shortName: "HKK",
+      gunguList: [
+        { name: "Hradec Králové", dongs: ["Centrum"] },
+      ],
+    },
+    {
+      name: "Pardubický kraj",
+      shortName: "PAK",
+      gunguList: [
+        { name: "Pardubice", dongs: ["Centrum"] },
+      ],
+    },
+    {
+      name: "Zlínský kraj",
+      shortName: "ZLK",
+      gunguList: [
+        { name: "Zlín", dongs: ["Centrum"] },
+        { name: "Kroměříž", dongs: ["Centrum"] },
+      ],
+    },
+    {
+      name: "Olomoucký kraj",
+      shortName: "OLK",
+      gunguList: [
+        { name: "Olomouc", dongs: ["Centrum", "Nová Ulice", "Hodolany"] },
+        { name: "Prostějov", dongs: ["Centrum"] },
+      ],
+    },
+    {
+      name: "Kraj Vysočina",
+      shortName: "VYS",
+      gunguList: [
+        { name: "Jihlava", dongs: ["Centrum"] },
+      ],
+    },
+    {
+      name: "Liberecký kraj",
+      shortName: "LBK",
+      gunguList: [
+        { name: "Liberec", dongs: ["Centrum"] },
+        { name: "Jablonec nad Nisou", dongs: ["Centrum"] },
+      ],
+    },
+    {
+      name: "Karlovarský kraj",
+      shortName: "KVK",
+      gunguList: [
+        { name: "Karlovy Vary", dongs: ["Centrum"] },
+        { name: "Cheb", dongs: ["Centrum"] },
+      ],
+    },
+  ],
+  HU: [
+    {
+      name: "Budapest",
+      shortName: "BP",
+      gunguList: [
+        { name: "I. kerület (Várkerület)", dongs: ["Vár", "Tabán"] },
+        { name: "V. kerület (Belváros)", dongs: ["Belváros", "Lipótváros"] },
+        { name: "VI. kerület (Terézváros)", dongs: ["Terézváros"] },
+        { name: "VII. kerület (Erzsébetváros)", dongs: ["Erzsébetváros"] },
+        { name: "VIII. kerület (Józsefváros)", dongs: ["Józsefváros"] },
+        { name: "XI. kerület (Újbuda)", dongs: ["Kelenföld", "Gellérthegy"] },
+        { name: "XIII. kerület", dongs: ["Angyalföld", "Újlipótváros"] },
+      ],
+    },
+    {
+      name: "Pest",
+      shortName: "PE",
+      gunguList: [
+        { name: "Érd", dongs: ["Központ"] },
+        { name: "Gödöllő", dongs: ["Központ"] },
+        { name: "Dunakeszi", dongs: ["Központ"] },
+        { name: "Cegléd", dongs: ["Központ"] },
+      ],
+    },
+    {
+      name: "Borsod-Abaúj-Zemplén",
+      shortName: "BZ",
+      gunguList: [
+        { name: "Miskolc", dongs: ["Belváros", "Diósgyőr", "Avas"] },
+      ],
+    },
+    {
+      name: "Szabolcs-Szatmár-Bereg",
+      shortName: "SZ",
+      gunguList: [
+        { name: "Nyíregyháza", dongs: ["Belváros", "Sóstó"] },
+      ],
+    },
+    {
+      name: "Hajdú-Bihar",
+      shortName: "HB",
+      gunguList: [
+        { name: "Debrecen", dongs: ["Belváros", "Nagyerdő", "Tócóskert"] },
+      ],
+    },
+    {
+      name: "Bács-Kiskun",
+      shortName: "BK",
+      gunguList: [
+        { name: "Kecskemét", dongs: ["Belváros"] },
+        { name: "Baja", dongs: ["Központ"] },
+      ],
+    },
+    {
+      name: "Győr-Moson-Sopron",
+      shortName: "GS",
+      gunguList: [
+        { name: "Győr", dongs: ["Belváros", "Nádorváros"] },
+        { name: "Sopron", dongs: ["Belváros"] },
+      ],
+    },
+    {
+      name: "Csongrád-Csanád",
+      shortName: "CS",
+      gunguList: [
+        { name: "Szeged", dongs: ["Belváros", "Újszeged", "Rókus"] },
+      ],
+    },
+    {
+      name: "Fejér",
+      shortName: "FE",
+      gunguList: [
+        { name: "Székesfehérvár", dongs: ["Belváros"] },
+        { name: "Dunaújváros", dongs: ["Központ"] },
+      ],
+    },
+    {
+      name: "Baranya",
+      shortName: "BA",
+      gunguList: [
+        { name: "Pécs", dongs: ["Belváros", "Uránváros", "Kertváros"] },
+      ],
+    },
+    {
+      name: "Veszprém",
+      shortName: "VE",
+      gunguList: [
+        { name: "Veszprém", dongs: ["Belváros"] },
+        { name: "Pápa", dongs: ["Központ"] },
+      ],
+    },
+    {
+      name: "Békés",
+      shortName: "BE",
+      gunguList: [
+        { name: "Békéscsaba", dongs: ["Belváros"] },
+      ],
+    },
+    {
+      name: "Jász-Nagykun-Szolnok",
+      shortName: "JN",
+      gunguList: [
+        { name: "Szolnok", dongs: ["Belváros"] },
+      ],
+    },
+    {
+      name: "Somogy",
+      shortName: "SO",
+      gunguList: [
+        { name: "Kaposvár", dongs: ["Központ"] },
+        { name: "Siófok", dongs: ["Központ"] },
+      ],
+    },
+    {
+      name: "Komárom-Esztergom",
+      shortName: "KE",
+      gunguList: [
+        { name: "Tatabánya", dongs: ["Központ"] },
+        { name: "Esztergom", dongs: ["Központ"] },
+      ],
+    },
+    {
+      name: "Heves",
+      shortName: "HE",
+      gunguList: [
+        { name: "Eger", dongs: ["Belváros"] },
+      ],
+    },
+    {
+      name: "Vas",
+      shortName: "VA",
+      gunguList: [
+        { name: "Szombathely", dongs: ["Belváros"] },
+      ],
+    },
+    {
+      name: "Zala",
+      shortName: "ZA",
+      gunguList: [
+        { name: "Zalaegerszeg", dongs: ["Központ"] },
+        { name: "Nagykanizsa", dongs: ["Központ"] },
+      ],
+    },
+    {
+      name: "Nógrád",
+      shortName: "NO",
+      gunguList: [
+        { name: "Salgótarján", dongs: ["Központ"] },
+      ],
+    },
+    {
+      name: "Tolna",
+      shortName: "TO",
+      gunguList: [
+        { name: "Szekszárd", dongs: ["Központ"] },
+      ],
+    },
+  ],
+  ZM: [
+    {
+      name: "Lusaka",
+      shortName: "Lusaka",
+      gunguList: [
+        { name: "Lusaka", dongs: ["Cairo Road", "Woodlands", "Kabulonga", "Rhodes Park", "Northmead"] },
+      ],
+    },
+    {
+      name: "Copperbelt",
+      shortName: "Copperbelt",
+      gunguList: [
+        { name: "Ndola", dongs: ["Town Centre"] },
+        { name: "Kitwe", dongs: ["City Centre"] },
+        { name: "Chingola", dongs: ["Central"] },
+      ],
+    },
+    {
+      name: "Central",
+      shortName: "Central",
+      gunguList: [
+        { name: "Kabwe", dongs: ["Central"] },
+        { name: "Kapiri Mposhi", dongs: ["Town"] },
+      ],
+    },
+    {
+      name: "Southern",
+      shortName: "Southern",
+      gunguList: [
+        { name: "Livingstone", dongs: ["Town Centre"] },
+        { name: "Choma", dongs: ["Central"] },
+      ],
+    },
+    {
+      name: "Eastern",
+      shortName: "Eastern",
+      gunguList: [
+        { name: "Chipata", dongs: ["Town Centre"] },
+      ],
+    },
+    {
+      name: "Northern",
+      shortName: "Northern",
+      gunguList: [
+        { name: "Kasama", dongs: ["Central"] },
+      ],
+    },
+    {
+      name: "Luapula",
+      shortName: "Luapula",
+      gunguList: [
+        { name: "Mansa", dongs: ["Town Centre"] },
+      ],
+    },
+    {
+      name: "North-Western",
+      shortName: "North-Western",
+      gunguList: [
+        { name: "Solwezi", dongs: ["Central"] },
+      ],
+    },
+    {
+      name: "Muchinga",
+      shortName: "Muchinga",
+      gunguList: [
+        { name: "Chinsali", dongs: ["Central"] },
+      ],
+    },
+    {
+      name: "Western",
+      shortName: "Western",
+      gunguList: [
+        { name: "Mongu", dongs: ["Central"] },
+      ],
+    },
+  ],
+  UG: [
+    {
+      name: "Central Region",
+      shortName: "Central",
+      gunguList: [
+        { name: "Kampala", dongs: ["Central", "Nakawa", "Kawempe", "Makindye", "Rubaga"] },
+        { name: "Entebbe", dongs: ["Town Centre"] },
+        { name: "Mukono", dongs: ["Town"] },
+      ],
+    },
+    {
+      name: "Eastern Region",
+      shortName: "Eastern",
+      gunguList: [
+        { name: "Jinja", dongs: ["Town Centre"] },
+        { name: "Mbale", dongs: ["Town Centre"] },
+      ],
+    },
+    {
+      name: "Northern Region",
+      shortName: "Northern",
+      gunguList: [
+        { name: "Gulu", dongs: ["Town Centre"] },
+        { name: "Lira", dongs: ["Town Centre"] },
+      ],
+    },
+    {
+      name: "Western Region",
+      shortName: "Western",
+      gunguList: [
+        { name: "Mbarara", dongs: ["Town Centre"] },
+        { name: "Fort Portal", dongs: ["Town Centre"] },
+      ],
+    },
+  ],
+  CG: [
+    {
+      name: "Brazzaville",
+      shortName: "BZV",
+      gunguList: [
+        { name: "Brazzaville", dongs: ["Centre-ville", "Poto-Poto", "Bacongo", "Makélékélé", "Ouenzé"] },
+      ],
+    },
+    {
+      name: "Pointe-Noire",
+      shortName: "PNR",
+      gunguList: [
+        { name: "Pointe-Noire", dongs: ["Centre-ville", "Tié-Tié", "Lumumba", "Mvou-Mvou"] },
+      ],
+    },
+    {
+      name: "Pool",
+      shortName: "Pool",
+      gunguList: [
+        { name: "Kinkala", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Niari",
+      shortName: "Niari",
+      gunguList: [
+        { name: "Dolisie", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Bouenza",
+      shortName: "Bouenza",
+      gunguList: [
+        { name: "Madingou", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Cuvette",
+      shortName: "Cuvette",
+      gunguList: [
+        { name: "Owando", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Kouilou",
+      shortName: "Kouilou",
+      gunguList: [
+        { name: "Hinda", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Plateaux",
+      shortName: "Plateaux",
+      gunguList: [
+        { name: "Djambala", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Sangha",
+      shortName: "Sangha",
+      gunguList: [
+        { name: "Ouésso", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Likouala",
+      shortName: "Likouala",
+      gunguList: [
+        { name: "Impfondo", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Cuvette-Ouest",
+      shortName: "Cuvette-Ouest",
+      gunguList: [
+        { name: "Ewo", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Lékoumou",
+      shortName: "Lékoumou",
+      gunguList: [
+        { name: "Sibiti", dongs: ["Centre"] },
+      ],
+    },
+  ],
+  GH: [
+    {
+      name: "Greater Accra",
+      shortName: "GAR",
+      gunguList: [
+        { name: "Accra", dongs: ["Osu", "Airport Residential", "East Legon", "Cantonments", "Adabraka"] },
+        { name: "Tema", dongs: ["Community 1", "Community 25"] },
+      ],
+    },
+    {
+      name: "Ashanti",
+      shortName: "AR",
+      gunguList: [
+        { name: "Kumasi", dongs: ["Adum", "Asafo", "Bantama", "Nhyiaeso"] },
+      ],
+    },
+    {
+      name: "Western",
+      shortName: "WR",
+      gunguList: [
+        { name: "Sekondi-Takoradi", dongs: ["Takoradi", "Sekondi"] },
+      ],
+    },
+    {
+      name: "Eastern",
+      shortName: "ER",
+      gunguList: [
+        { name: "Koforidua", dongs: ["Town Centre"] },
+      ],
+    },
+    {
+      name: "Central",
+      shortName: "CR",
+      gunguList: [
+        { name: "Cape Coast", dongs: ["Town Centre"] },
+      ],
+    },
+    {
+      name: "Northern",
+      shortName: "NR",
+      gunguList: [
+        { name: "Tamale", dongs: ["Central"] },
+      ],
+    },
+    {
+      name: "Volta",
+      shortName: "VR",
+      gunguList: [
+        { name: "Ho", dongs: ["Central"] },
+      ],
+    },
+    {
+      name: "Upper East",
+      shortName: "UER",
+      gunguList: [
+        { name: "Bolgatanga", dongs: ["Central"] },
+      ],
+    },
+    {
+      name: "Bono",
+      shortName: "BR",
+      gunguList: [
+        { name: "Sunyani", dongs: ["Central"] },
+      ],
+    },
+    {
+      name: "Bono East",
+      shortName: "BER",
+      gunguList: [
+        { name: "Techiman", dongs: ["Central"] },
+      ],
+    },
+    {
+      name: "Upper West",
+      shortName: "UWR",
+      gunguList: [
+        { name: "Wa", dongs: ["Central"] },
+      ],
+    },
+    {
+      name: "Western North",
+      shortName: "WNR",
+      gunguList: [
+        { name: "Sefwi Wiawso", dongs: ["Central"] },
+      ],
+    },
+    {
+      name: "Oti",
+      shortName: "OR",
+      gunguList: [
+        { name: "Dambai", dongs: ["Central"] },
+      ],
+    },
+    {
+      name: "Ahafo",
+      shortName: "AHR",
+      gunguList: [
+        { name: "Goaso", dongs: ["Central"] },
+      ],
+    },
+    {
+      name: "Savannah",
+      shortName: "SR",
+      gunguList: [
+        { name: "Damongo", dongs: ["Central"] },
+      ],
+    },
+    {
+      name: "North East",
+      shortName: "NER",
+      gunguList: [
+        { name: "Nalerigu", dongs: ["Central"] },
+      ],
+    },
+  ],
+  MZ: [
+    {
+      name: "Maputo Cidade",
+      shortName: "MC",
+      gunguList: [
+        { name: "Maputo", dongs: ["Central", "Polana", "Sommerschield", "Alto Maé", "Malhangalene"] },
+      ],
+    },
+    {
+      name: "Maputo Província",
+      shortName: "MP",
+      gunguList: [
+        { name: "Matola", dongs: ["Cidade", "Machava"] },
+      ],
+    },
+    {
+      name: "Nampula",
+      shortName: "NPL",
+      gunguList: [
+        { name: "Nampula", dongs: ["Central", "Muatala"] },
+      ],
+    },
+    {
+      name: "Zambézia",
+      shortName: "ZMB",
+      gunguList: [
+        { name: "Quelimane", dongs: ["Central"] },
+      ],
+    },
+    {
+      name: "Sofala",
+      shortName: "SFL",
+      gunguList: [
+        { name: "Beira", dongs: ["Chaimite", "Macuti", "Ponta Gêa"] },
+      ],
+    },
+    {
+      name: "Cabo Delgado",
+      shortName: "CDG",
+      gunguList: [
+        { name: "Pemba", dongs: ["Central"] },
+      ],
+    },
+    {
+      name: "Tete",
+      shortName: "TET",
+      gunguList: [
+        { name: "Tete", dongs: ["Central"] },
+      ],
+    },
+    {
+      name: "Inhambane",
+      shortName: "INH",
+      gunguList: [
+        { name: "Inhambane", dongs: ["Central"] },
+      ],
+    },
+    {
+      name: "Niassa",
+      shortName: "NIA",
+      gunguList: [
+        { name: "Lichinga", dongs: ["Central"] },
+      ],
+    },
+    {
+      name: "Gaza",
+      shortName: "GAZ",
+      gunguList: [
+        { name: "Xai-Xai", dongs: ["Central"] },
+      ],
+    },
+    {
+      name: "Manica",
+      shortName: "MAN",
+      gunguList: [
+        { name: "Chimoio", dongs: ["Central"] },
+      ],
+    },
+  ],
+  GT: [
+    {
+      name: "Guatemala",
+      shortName: "GUA",
+      gunguList: [
+        { name: "Ciudad de Guatemala", dongs: ["Zona 1 (Centro)", "Zona 4", "Zona 9", "Zona 10 (Zona Viva)", "Zona 14", "Zona 15"] },
+        { name: "Mixco", dongs: ["Zona 1", "Zona 4"] },
+        { name: "Villa Nueva", dongs: ["Zona 1"] },
+      ],
+    },
+    {
+      name: "Quetzaltenango",
+      shortName: "QUE",
+      gunguList: [
+        { name: "Quetzaltenango", dongs: ["Zona 1 (Centro)", "Zona 3"] },
+      ],
+    },
+    {
+      name: "Escuintla",
+      shortName: "ESC",
+      gunguList: [
+        { name: "Escuintla", dongs: ["Centro"] },
+        { name: "Puerto San José", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Alta Verapaz",
+      shortName: "AVP",
+      gunguList: [
+        { name: "Cobán", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "San Marcos",
+      shortName: "SMR",
+      gunguList: [
+        { name: "San Marcos", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Huehuetenango",
+      shortName: "HUE",
+      gunguList: [
+        { name: "Huehuetenango", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Sacatepéquez",
+      shortName: "SAC",
+      gunguList: [
+        { name: "Antigua Guatemala", dongs: ["Centro Histórico"] },
+      ],
+    },
+    {
+      name: "Petén",
+      shortName: "PET",
+      gunguList: [
+        { name: "Flores", dongs: ["Isla de Flores", "Santa Elena"] },
+      ],
+    },
+    {
+      name: "Chimaltenango",
+      shortName: "CHM",
+      gunguList: [
+        { name: "Chimaltenango", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Suchitepéquez",
+      shortName: "SUC",
+      gunguList: [
+        { name: "Mazatenango", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Izabal",
+      shortName: "IZA",
+      gunguList: [
+        { name: "Puerto Barrios", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Retalhuleu",
+      shortName: "RET",
+      gunguList: [
+        { name: "Retalhuleu", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Sololá",
+      shortName: "SOL",
+      gunguList: [
+        { name: "Panajachel", dongs: ["Centro"] },
+        { name: "Sololá", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Santa Rosa",
+      shortName: "SRO",
+      gunguList: [
+        { name: "Cuilapa", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Jutiapa",
+      shortName: "JUT",
+      gunguList: [
+        { name: "Jutiapa", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Totonicapán",
+      shortName: "TOT",
+      gunguList: [
+        { name: "Totonicapán", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Quiché",
+      shortName: "QUI",
+      gunguList: [
+        { name: "Santa Cruz del Quiché", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Chiquimula",
+      shortName: "CHQ",
+      gunguList: [
+        { name: "Chiquimula", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Zacapa",
+      shortName: "ZAC",
+      gunguList: [
+        { name: "Zacapa", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Jalapa",
+      shortName: "JAL",
+      gunguList: [
+        { name: "Jalapa", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Baja Verapaz",
+      shortName: "BVP",
+      gunguList: [
+        { name: "Salamá", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "El Progreso",
+      shortName: "EPR",
+      gunguList: [
+        { name: "Guastatoya", dongs: ["Centro"] },
+      ],
+    },
+  ],
+  GN: [
+    {
+      name: "Conakry",
+      shortName: "CKY",
+      gunguList: [
+        { name: "Conakry", dongs: ["Kaloum (Centre)", "Dixinn", "Matam", "Ratoma", "Matoto"] },
+      ],
+    },
+    {
+      name: "Kindia",
+      shortName: "KIN",
+      gunguList: [
+        { name: "Kindia", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Boké",
+      shortName: "BOK",
+      gunguList: [
+        { name: "Boké", dongs: ["Centre"] },
+        { name: "Kamsar", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Mamou",
+      shortName: "MAM",
+      gunguList: [
+        { name: "Mamou", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Labé",
+      shortName: "LAB",
+      gunguList: [
+        { name: "Labé", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Faranah",
+      shortName: "FAR",
+      gunguList: [
+        { name: "Faranah", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Kankan",
+      shortName: "KAN",
+      gunguList: [
+        { name: "Kankan", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Nzérékoré",
+      shortName: "NZE",
+      gunguList: [
+        { name: "Nzérékoré", dongs: ["Centre"] },
+      ],
+    },
+  ],
+  NE: [
+    {
+      name: "Niamey",
+      shortName: "NMY",
+      gunguList: [
+        { name: "Niamey", dongs: ["Commune I", "Commune II", "Commune III", "Commune IV", "Commune V"] },
+      ],
+    },
+    {
+      name: "Maradi",
+      shortName: "MAR",
+      gunguList: [
+        { name: "Maradi", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Zinder",
+      shortName: "ZIN",
+      gunguList: [
+        { name: "Zinder", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Tahoua",
+      shortName: "TAH",
+      gunguList: [
+        { name: "Tahoua", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Agadez",
+      shortName: "AGA",
+      gunguList: [
+        { name: "Agadez", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Tillabéri",
+      shortName: "TIL",
+      gunguList: [
+        { name: "Tillabéri", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Dosso",
+      shortName: "DOS",
+      gunguList: [
+        { name: "Dosso", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Diffa",
+      shortName: "DIF",
+      gunguList: [
+        { name: "Diffa", dongs: ["Centre"] },
+      ],
+    },
+  ],
+  RW: [
+    {
+      name: "Kigali",
+      shortName: "KGL",
+      gunguList: [
+        { name: "Kigali", dongs: ["Nyarugenge", "Gasabo", "Kicukiro"] },
+      ],
+    },
+    {
+      name: "Southern Province",
+      shortName: "SOU",
+      gunguList: [
+        { name: "Huye", dongs: ["Town Centre"] },
+        { name: "Muhanga", dongs: ["Town Centre"] },
+      ],
+    },
+    {
+      name: "Western Province",
+      shortName: "WES",
+      gunguList: [
+        { name: "Rubavu", dongs: ["Gisenyi"] },
+        { name: "Rusizi", dongs: ["Cyangugu"] },
+      ],
+    },
+    {
+      name: "Northern Province",
+      shortName: "NOR",
+      gunguList: [
+        { name: "Musanze", dongs: ["Ruhengeri"] },
+        { name: "Gicumbi", dongs: ["Byumba"] },
+      ],
+    },
+    {
+      name: "Eastern Province",
+      shortName: "EAS",
+      gunguList: [
+        { name: "Rwamagana", dongs: ["Town Centre"] },
+        { name: "Bugesera", dongs: ["Nyamata"] },
+      ],
+    },
+  ],
+  MG: [
+    {
+      name: "Analamanga",
+      shortName: "ANA",
+      gunguList: [
+        { name: "Antananarivo", dongs: ["Analakely (Centre)", "Isoraka", "Ankorondrano", "Ambohimanarina"] },
+      ],
+    },
+    {
+      name: "Vakinankaratra",
+      shortName: "VAK",
+      gunguList: [
+        { name: "Antsirabe", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Atsinanana",
+      shortName: "ATS",
+      gunguList: [
+        { name: "Toamasina", dongs: ["Centre", "Bazar Be"] },
+      ],
+    },
+    {
+      name: "Boeny",
+      shortName: "BOE",
+      gunguList: [
+        { name: "Mahajanga", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Diana",
+      shortName: "DIA",
+      gunguList: [
+        { name: "Antsiranana (Diego Suarez)", dongs: ["Centre"] },
+        { name: "Nosy Be", dongs: ["Hell-Ville"] },
+      ],
+    },
+    {
+      name: "Haute Matsiatra",
+      shortName: "HMA",
+      gunguList: [
+        { name: "Fianarantsoa", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Atsimo-Andrefana",
+      shortName: "AAN",
+      gunguList: [
+        { name: "Toliara", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Sava",
+      shortName: "SAV",
+      gunguList: [
+        { name: "Sambava", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Menabe",
+      shortName: "MEN",
+      gunguList: [
+        { name: "Morondava", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Alaotra-Mangoro",
+      shortName: "AMA",
+      gunguList: [
+        { name: "Ambatondrazaka", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Sofia",
+      shortName: "SOF",
+      gunguList: [
+        { name: "Antsohihy", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Analanjirofo",
+      shortName: "ANL",
+      gunguList: [
+        { name: "Fenoarivo Atsinanana", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Androy",
+      shortName: "AND",
+      gunguList: [
+        { name: "Ambovombe", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Anosy",
+      shortName: "ANO",
+      gunguList: [
+        { name: "Taolagnaro (Fort Dauphin)", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Amoron i Mania",
+      shortName: "AMM",
+      gunguList: [
+        { name: "Ambositra", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Atsimo-Atsinanana",
+      shortName: "AAT",
+      gunguList: [
+        { name: "Farafangana", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Betsiboka",
+      shortName: "BET",
+      gunguList: [
+        { name: "Maevatanana", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Bongolava",
+      shortName: "BON",
+      gunguList: [
+        { name: "Tsiroanomandidy", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Fitovinany",
+      shortName: "FIT",
+      gunguList: [
+        { name: "Manakara", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Ihorombe",
+      shortName: "IHO",
+      gunguList: [
+        { name: "Ihosy", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Itasy",
+      shortName: "ITA",
+      gunguList: [
+        { name: "Miarinarivo", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Melaky",
+      shortName: "MEL",
+      gunguList: [
+        { name: "Maintirano", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Vatovavy",
+      shortName: "VAT",
+      gunguList: [
+        { name: "Mananjary", dongs: ["Centre"] },
+      ],
+    },
+  ],
+  MW: [
+    {
+      name: "Central Region",
+      shortName: "Central",
+      gunguList: [
+        { name: "Lilongwe", dongs: ["City Centre", "Area 10", "Area 47", "Old Town"] },
+      ],
+    },
+    {
+      name: "Southern Region",
+      shortName: "Southern",
+      gunguList: [
+        { name: "Blantyre", dongs: ["City Centre", "Limbe", "Sunnyside"] },
+        { name: "Zomba", dongs: ["Central"] },
+      ],
+    },
+    {
+      name: "Northern Region",
+      shortName: "Northern",
+      gunguList: [
+        { name: "Mzuzu", dongs: ["City Centre"] },
+      ],
+    },
+  ],
+  ML: [
+    {
+      name: "Bamako",
+      shortName: "BKO",
+      gunguList: [
+        { name: "Bamako", dongs: ["Commune I", "Commune II", "Commune III", "Commune IV", "Commune V", "Commune VI"] },
+      ],
+    },
+    {
+      name: "Sikasso",
+      shortName: "SIK",
+      gunguList: [
+        { name: "Sikasso", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Koulikoro",
+      shortName: "KOU",
+      gunguList: [
+        { name: "Koulikoro", dongs: ["Centre"] },
+        { name: "Kati", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Kayes",
+      shortName: "KAY",
+      gunguList: [
+        { name: "Kayes", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Ségou",
+      shortName: "SEG",
+      gunguList: [
+        { name: "Ségou", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Mopti",
+      shortName: "MOP",
+      gunguList: [
+        { name: "Mopti", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Tombouctou",
+      shortName: "TOM",
+      gunguList: [
+        { name: "Tombouctou", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Gao",
+      shortName: "GAO",
+      gunguList: [
+        { name: "Gao", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Kidal",
+      shortName: "KID",
+      gunguList: [
+        { name: "Kidal", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Taoudénit",
+      shortName: "TAU",
+      gunguList: [
+        { name: "Taoudénit", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Ménaka",
+      shortName: "MEN",
+      gunguList: [
+        { name: "Ménaka", dongs: ["Centre"] },
+      ],
+    },
+  ],
+  BF: [
+    {
+      name: "Centre",
+      shortName: "CEN",
+      gunguList: [
+        { name: "Ouagadougou", dongs: ["Koulouba (Centre)", "Ouaga 2000", "Gounghin", "Pissy", "Dapoya"] },
+      ],
+    },
+    {
+      name: "Hauts-Bassins",
+      shortName: "HBA",
+      gunguList: [
+        { name: "Bobo-Dioulasso", dongs: ["Centre", "Accart-Ville", "Koko"] },
+      ],
+    },
+    {
+      name: "Centre-Ouest",
+      shortName: "COU",
+      gunguList: [
+        { name: "Koudougou", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Boucle du Mouhoun",
+      shortName: "BMH",
+      gunguList: [
+        { name: "Dédougou", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Nord",
+      shortName: "NOR",
+      gunguList: [
+        { name: "Ouahigouya", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Est",
+      shortName: "EST",
+      gunguList: [
+        { name: "Fada N Gourma", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Sahel",
+      shortName: "SAH",
+      gunguList: [
+        { name: "Dori", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Centre-Est",
+      shortName: "CES",
+      gunguList: [
+        { name: "Tenkodogo", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Centre-Nord",
+      shortName: "CNO",
+      gunguList: [
+        { name: "Kaya", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Plateau-Central",
+      shortName: "PCE",
+      gunguList: [
+        { name: "Ziniaré", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Centre-Sud",
+      shortName: "CSU",
+      gunguList: [
+        { name: "Manga", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Sud-Ouest",
+      shortName: "SOU",
+      gunguList: [
+        { name: "Gaoua", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Cascades",
+      shortName: "CAS",
+      gunguList: [
+        { name: "Banfora", dongs: ["Centre"] },
+      ],
+    },
+  ],
+  SN: [
+    {
+      name: "Dakar",
+      shortName: "DKR",
+      gunguList: [
+        { name: "Dakar", dongs: ["Plateau (Centre)", "Almadies", "Mermoz-Sacré-Cœur", "Yoff", "Fann-Point E"] },
+        { name: "Pikine", dongs: ["Centre"] },
+        { name: "Guédiawaye", dongs: ["Centre"] },
+        { name: "Rufisque", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Thiès",
+      shortName: "THS",
+      gunguList: [
+        { name: "Thiès", dongs: ["Centre"] },
+        { name: "Mbour", dongs: ["Centre", "Saly"] },
+      ],
+    },
+    {
+      name: "Diourbel",
+      shortName: "DBL",
+      gunguList: [
+        { name: "Diourbel", dongs: ["Centre"] },
+        { name: "Touba", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Saint-Louis",
+      shortName: "SLS",
+      gunguList: [
+        { name: "Saint-Louis", dongs: ["Île de Saint-Louis", "Sor"] },
+      ],
+    },
+    {
+      name: "Kaolack",
+      shortName: "KLK",
+      gunguList: [
+        { name: "Kaolack", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Ziguinchor",
+      shortName: "ZIG",
+      gunguList: [
+        { name: "Ziguinchor", dongs: ["Centre"] },
+        { name: "Cap Skirring", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Louga",
+      shortName: "LGA",
+      gunguList: [
+        { name: "Louga", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Fatick",
+      shortName: "FTK",
+      gunguList: [
+        { name: "Fatick", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Kolda",
+      shortName: "KLD",
+      gunguList: [
+        { name: "Kolda", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Tambacounda",
+      shortName: "TMB",
+      gunguList: [
+        { name: "Tambacounda", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Matam",
+      shortName: "MAT",
+      gunguList: [
+        { name: "Matam", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Kaffrine",
+      shortName: "KAF",
+      gunguList: [
+        { name: "Kaffrine", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Kédougou",
+      shortName: "KED",
+      gunguList: [
+        { name: "Kédougou", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Sédhiou",
+      shortName: "SDH",
+      gunguList: [
+        { name: "Sédhiou", dongs: ["Centre"] },
+      ],
+    },
+  ],
+  AO: [
+    {
+      name: "Luanda",
+      shortName: "LUA",
+      gunguList: [
+        { name: "Luanda", dongs: ["Ingombota (Centro)", "Maianga", "Alvalade", "Miramar", "Talatona", "Kilamba"] },
+      ],
+    },
+    {
+      name: "Benguela",
+      shortName: "BGL",
+      gunguList: [
+        { name: "Benguela", dongs: ["Centro"] },
+        { name: "Lobito", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Huambo",
+      shortName: "HMB",
+      gunguList: [
+        { name: "Huambo", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Huíla",
+      shortName: "HUI",
+      gunguList: [
+        { name: "Lubango", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Cabinda",
+      shortName: "CAB",
+      gunguList: [
+        { name: "Cabinda", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Cuanza Sul",
+      shortName: "CUS",
+      gunguList: [
+        { name: "Sumbe", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Cuanza Norte",
+      shortName: "CUN",
+      gunguList: [
+        { name: "Ndalatando", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Uíge",
+      shortName: "UIG",
+      gunguList: [
+        { name: "Uíge", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Malanje",
+      shortName: "MAL",
+      gunguList: [
+        { name: "Malanje", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Namibe",
+      shortName: "NAM",
+      gunguList: [
+        { name: "Moçâmedes", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Zaire",
+      shortName: "ZAI",
+      gunguList: [
+        { name: "Mbanza Kongo", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Bié",
+      shortName: "BIE",
+      gunguList: [
+        { name: "Cuíto", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Cunene",
+      shortName: "CNN",
+      gunguList: [
+        { name: "Ondjiva", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Lunda Norte",
+      shortName: "LNO",
+      gunguList: [
+        { name: "Dundo", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Lunda Sul",
+      shortName: "LSU",
+      gunguList: [
+        { name: "Saurimo", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Moxico",
+      shortName: "MOX",
+      gunguList: [
+        { name: "Luena", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Cuando Cubango",
+      shortName: "CCU",
+      gunguList: [
+        { name: "Menongue", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Bengo",
+      shortName: "BGO",
+      gunguList: [
+        { name: "Caxito", dongs: ["Centro"] },
+      ],
+    },
+  ],
+  EC: [
+    {
+      name: "Pichincha",
+      shortName: "P",
+      gunguList: [
+        { name: "Quito", dongs: ["Centro Histórico", "La Mariscal", "Iñaquito", "Cumbayá", "Tumbaco"] },
+      ],
+    },
+    {
+      name: "Guayas",
+      shortName: "G",
+      gunguList: [
+        { name: "Guayaquil", dongs: ["Centro", "Urdesa", "Samborondón", "Puerto Santa Ana"] },
+      ],
+    },
+    {
+      name: "Azuay",
+      shortName: "A",
+      gunguList: [
+        { name: "Cuenca", dongs: ["Centro Histórico", "El Ejido"] },
+      ],
+    },
+    {
+      name: "Manabí",
+      shortName: "M",
+      gunguList: [
+        { name: "Portoviejo", dongs: ["Centro"] },
+        { name: "Manta", dongs: ["Tarqui", "Barbasquillo"] },
+      ],
+    },
+    {
+      name: "El Oro",
+      shortName: "O",
+      gunguList: [
+        { name: "Machala", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Tungurahua",
+      shortName: "T",
+      gunguList: [
+        { name: "Ambato", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Loja",
+      shortName: "L",
+      gunguList: [
+        { name: "Loja", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Imbabura",
+      shortName: "I",
+      gunguList: [
+        { name: "Ibarra", dongs: ["Centro"] },
+        { name: "Otavalo", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Chimborazo",
+      shortName: "CH",
+      gunguList: [
+        { name: "Riobamba", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Cotopaxi",
+      shortName: "X",
+      gunguList: [
+        { name: "Latacunga", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Los Ríos",
+      shortName: "R",
+      gunguList: [
+        { name: "Babahoyo", dongs: ["Centro"] },
+        { name: "Quevedo", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Esmeraldas",
+      shortName: "E",
+      gunguList: [
+        { name: "Esmeraldas", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Santo Domingo de los Tsáchilas",
+      shortName: "SD",
+      gunguList: [
+        { name: "Santo Domingo", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Santa Elena",
+      shortName: "SE",
+      gunguList: [
+        { name: "Salinas", dongs: ["Centro"] },
+        { name: "La Libertad", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Cañar",
+      shortName: "U",
+      gunguList: [
+        { name: "Azogues", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Carchi",
+      shortName: "C",
+      gunguList: [
+        { name: "Tulcán", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Bolívar",
+      shortName: "B",
+      gunguList: [
+        { name: "Guaranda", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Morona Santiago",
+      shortName: "S",
+      gunguList: [
+        { name: "Macas", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Napo",
+      shortName: "N",
+      gunguList: [
+        { name: "Tena", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Orellana",
+      shortName: "D",
+      gunguList: [
+        { name: "Puerto Francisco de Orellana", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Pastaza",
+      shortName: "Y",
+      gunguList: [
+        { name: "Puyo", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Sucumbíos",
+      shortName: "U",
+      gunguList: [
+        { name: "Nueva Loja", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Zamora Chinchipe",
+      shortName: "Z",
+      gunguList: [
+        { name: "Zamora", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Galápagos",
+      shortName: "W",
+      gunguList: [
+        { name: "Puerto Ayora", dongs: ["Centro"] },
+        { name: "Puerto Baquerizo Moreno", dongs: ["Centro"] },
+      ],
+    },
+  ],
+  GE: [
+    {
+      name: "Tbilisi",
+      shortName: "TBS",
+      gunguList: [
+        { name: "Tbilisi", dongs: ["Old Tbilisi", "Mtatsminda", "Vake", "Saburtalo", "Chugureti", "Didube", "Isani", "Samgori"] },
+      ],
+    },
+    {
+      name: "Adjara",
+      shortName: "ADJ",
+      gunguList: [
+        { name: "Batumi", dongs: ["Old Boulevard", "New Boulevard", "Chakvi"] },
+      ],
+    },
+    {
+      name: "Imereti",
+      shortName: "IME",
+      gunguList: [
+        { name: "Kutaisi", dongs: ["Center", "Bagrati Area"] },
+      ],
+    },
+    {
+      name: "Samegrelo-Zemo Svaneti",
+      shortName: "SZS",
+      gunguList: [
+        { name: "Zugdidi", dongs: ["Center"] },
+        { name: "Mestia", dongs: ["Center"] },
+      ],
+    },
+    {
+      name: "Kvemo Kartli",
+      shortName: "KVK",
+      gunguList: [
+        { name: "Rustavi", dongs: ["Old Rustavi", "New Rustavi"] },
+      ],
+    },
+    {
+      name: "Kakheti",
+      shortName: "KAK",
+      gunguList: [
+        { name: "Telavi", dongs: ["Center"] },
+        { name: "Sighnaghi", dongs: ["Center"] },
+      ],
+    },
+    {
+      name: "Shida Kartli",
+      shortName: "SHK",
+      gunguList: [
+        { name: "Gori", dongs: ["Center"] },
+      ],
+    },
+    {
+      name: "Samtskhe-Javakheti",
+      shortName: "SJK",
+      gunguList: [
+        { name: "Akhaltsikhe", dongs: ["Center"] },
+        { name: "Borjomi", dongs: ["Center"] },
+      ],
+    },
+    {
+      name: "Guria",
+      shortName: "GUR",
+      gunguList: [
+        { name: "Ozurgeti", dongs: ["Center"] },
+      ],
+    },
+    {
+      name: "Mtskheta-Mtianeti",
+      shortName: "MMT",
+      gunguList: [
+        { name: "Mtskheta", dongs: ["Center"] },
+        { name: "Stepantsminda (Kazbegi)", dongs: ["Center"] },
+      ],
+    },
+    {
+      name: "Racha-Lechkhumi and Kvemo Svaneti",
+      shortName: "RLS",
+      gunguList: [
+        { name: "Ambrolauri", dongs: ["Center"] },
+      ],
+    },
+    {
+      name: "Abkhazia",
+      shortName: "ABK",
+      gunguList: [
+        { name: "Sukhumi", dongs: ["Center"] },
+      ],
+    },
+  ],
+  ZW: [
+    {
+      name: "Harare",
+      shortName: "HRE",
+      gunguList: [
+        { name: "Harare", dongs: ["CBD", "Avondale", "Borrowdale", "Mount Pleasant", "Highlands"] },
+      ],
+    },
+    {
+      name: "Bulawayo",
+      shortName: "BYO",
+      gunguList: [
+        { name: "Bulawayo", dongs: ["CBD", "Suburbs", "Kumalo"] },
+      ],
+    },
+    {
+      name: "Manicaland",
+      shortName: "MAN",
+      gunguList: [
+        { name: "Mutare", dongs: ["City Centre"] },
+      ],
+    },
+    {
+      name: "Midlands",
+      shortName: "MID",
+      gunguList: [
+        { name: "Gweru", dongs: ["City Centre"] },
+        { name: "Kwekwe", dongs: ["Central"] },
+      ],
+    },
+    {
+      name: "Mashonaland West",
+      shortName: "MSW",
+      gunguList: [
+        { name: "Chinhoyi", dongs: ["Central"] },
+      ],
+    },
+    {
+      name: "Mashonaland East",
+      shortName: "MSE",
+      gunguList: [
+        { name: "Marondera", dongs: ["Central"] },
+      ],
+    },
+    {
+      name: "Mashonaland Central",
+      shortName: "MSC",
+      gunguList: [
+        { name: "Bindura", dongs: ["Central"] },
+      ],
+    },
+    {
+      name: "Masvingo",
+      shortName: "MAS",
+      gunguList: [
+        { name: "Masvingo", dongs: ["Central"] },
+      ],
+    },
+    {
+      name: "Matabeleland North",
+      shortName: "MNO",
+      gunguList: [
+        { name: "Victoria Falls", dongs: ["Town Centre"] },
+        { name: "Hwange", dongs: ["Central"] },
+      ],
+    },
+    {
+      name: "Matabeleland South",
+      shortName: "MSO",
+      gunguList: [
+        { name: "Gwanda", dongs: ["Central"] },
+      ],
+    },
+  ],
+  TD: [
+    {
+      name: "N Djamena",
+      shortName: "NDJ",
+      gunguList: [
+        { name: "N Djamena", dongs: ["1er Arrondissement", "2eme Arrondissement", "3eme Arrondissement (Centre)"] },
+      ],
+    },
+    {
+      name: "Chari-Baguirmi",
+      shortName: "CBG",
+      gunguList: [
+        { name: "Massenya", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Logone Oriental",
+      shortName: "LOR",
+      gunguList: [
+        { name: "Doba", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Logone Occidental",
+      shortName: "LOC",
+      gunguList: [
+        { name: "Moundou", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Mayo-Kebbi Est",
+      shortName: "MKE",
+      gunguList: [
+        { name: "Bongor", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Ouaddaï",
+      shortName: "OUD",
+      gunguList: [
+        { name: "Abéché", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Guéra",
+      shortName: "GUE",
+      gunguList: [
+        { name: "Mongo", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Tandjilé",
+      shortName: "TDJ",
+      gunguList: [
+        { name: "Laï", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Hadjer-Lamis",
+      shortName: "HDL",
+      gunguList: [
+        { name: "Massakory", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Lac",
+      shortName: "LAC",
+      gunguList: [
+        { name: "Bol", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Mandoul",
+      shortName: "MAN",
+      gunguList: [
+        { name: "Koumra", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Batha",
+      shortName: "BAT",
+      gunguList: [
+        { name: "Ati", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Mayo-Kebbi Ouest",
+      shortName: "MKO",
+      gunguList: [
+        { name: "Pala", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Moyen-Chari",
+      shortName: "MCH",
+      gunguList: [
+        { name: "Sarh", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Wadi Fira",
+      shortName: "WDF",
+      gunguList: [
+        { name: "Biltine", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Salamat",
+      shortName: "SAL",
+      gunguList: [
+        { name: "Am Timan", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Kanem",
+      shortName: "KAN",
+      gunguList: [
+        { name: "Mao", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Borkou",
+      shortName: "BOR",
+      gunguList: [
+        { name: "Faya-Largeau", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Ennedi Est",
+      shortName: "ENE",
+      gunguList: [
+        { name: "Am-Djarass", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Ennedi Ouest",
+      shortName: "ENO",
+      gunguList: [
+        { name: "Fada", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Tibesti",
+      shortName: "TIB",
+      gunguList: [
+        { name: "Bardaï", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Barh el Gazel",
+      shortName: "BEG",
+      gunguList: [
+        { name: "Moussoro", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Sila",
+      shortName: "SIL",
+      gunguList: [
+        { name: "Goz Beïda", dongs: ["Centre"] },
+      ],
+    },
+  ],
+  CL: [
+    {
+      name: "Región Metropolitana de Santiago",
+      shortName: "RM",
+      gunguList: [
+        { name: "Santiago", dongs: ["Centro", "Providencia", "Las Condes", "Vitacura", "Ñuñoa", "La Florida", "Maipú"] },
+        { name: "Puente Alto", dongs: ["Centro"] },
+        { name: "San Bernardo", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Valparaíso",
+      shortName: "VS",
+      gunguList: [
+        { name: "Valparaíso", dongs: ["Centro", "Cerro Alegre", "Cerro Concepción"] },
+        { name: "Viña del Mar", dongs: ["Centro", "Reñaca"] },
+        { name: "Concón", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Biobío",
+      shortName: "BI",
+      gunguList: [
+        { name: "Concepción", dongs: ["Centro", "San Pedro de la Paz"] },
+        { name: "Talcahuano", dongs: ["Centro"] },
+        { name: "Los Ángeles", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Antofagasta",
+      shortName: "AN",
+      gunguList: [
+        { name: "Antofagasta", dongs: ["Centro", "Costanera"] },
+        { name: "Calama", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Maule",
+      shortName: "ML",
+      gunguList: [
+        { name: "Talca", dongs: ["Centro"] },
+        { name: "Curicó", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "La Araucanía",
+      shortName: "AR",
+      gunguList: [
+        { name: "Temuco", dongs: ["Centro"] },
+        { name: "Villarrica", dongs: ["Centro"] },
+        { name: "Pucón", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "O Higgins",
+      shortName: "LI",
+      gunguList: [
+        { name: "Rancagua", dongs: ["Centro"] },
+        { name: "Machalí", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Los Lagos",
+      shortName: "LL",
+      gunguList: [
+        { name: "Puerto Montt", dongs: ["Centro"] },
+        { name: "Puerto Varas", dongs: ["Centro"] },
+        { name: "Osorno", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Coquimbo",
+      shortName: "CO",
+      gunguList: [
+        { name: "La Serena", dongs: ["Centro", "Avenida del Mar"] },
+        { name: "Coquimbo", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Tarapacá",
+      shortName: "TA",
+      gunguList: [
+        { name: "Iquique", dongs: ["Centro", "Cavancha"] },
+      ],
+    },
+    {
+      name: "Los Ríos",
+      shortName: "LR",
+      gunguList: [
+        { name: "Valdivia", dongs: ["Centro", "Isla Teja"] },
+      ],
+    },
+    {
+      name: "Arica y Parinacota",
+      shortName: "AP",
+      gunguList: [
+        { name: "Arica", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Ñuble",
+      shortName: "NB",
+      gunguList: [
+        { name: "Chillán", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Atacama",
+      shortName: "AT",
+      gunguList: [
+        { name: "Copiapó", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Aysén",
+      shortName: "AI",
+      gunguList: [
+        { name: "Coyhaique", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Magallanes y de la Antártica Chilena",
+      shortName: "MA",
+      gunguList: [
+        { name: "Punta Arenas", dongs: ["Centro"] },
+        { name: "Puerto Natales", dongs: ["Centro"] },
+      ],
+    },
+  ],
+  CM: [
+    {
+      name: "Centre",
+      shortName: "CE",
+      gunguList: [
+        { name: "Yaoundé", dongs: ["Centre Commercial", "Bastos", "Omnisports", "Biyem-Assi", "Mokolo"] },
+      ],
+    },
+    {
+      name: "Littoral",
+      shortName: "LT",
+      gunguList: [
+        { name: "Douala", dongs: ["Bonanjo", "Akwa", "Bonapriso", "Deïdo", "Bali"] },
+      ],
+    },
+    {
+      name: "Ouest",
+      shortName: "OU",
+      gunguList: [
+        { name: "Bafoussam", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Nord",
+      shortName: "NO",
+      gunguList: [
+        { name: "Garoua", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Extrême-Nord",
+      shortName: "EN",
+      gunguList: [
+        { name: "Maroua", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Nord-Ouest",
+      shortName: "NW",
+      gunguList: [
+        { name: "Bamenda", dongs: ["Commercial Avenue"] },
+      ],
+    },
+    {
+      name: "Sud-Ouest",
+      shortName: "SW",
+      gunguList: [
+        { name: "Buea", dongs: ["Town Centre"] },
+        { name: "Limbe", dongs: ["Downtown"] },
+      ],
+    },
+    {
+      name: "Adamaoua",
+      shortName: "AD",
+      gunguList: [
+        { name: "Ngaoundéré", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Sud",
+      shortName: "SU",
+      gunguList: [
+        { name: "Ebolowa", dongs: ["Centre"] },
+        { name: "Kribi", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Est",
+      shortName: "ES",
+      gunguList: [
+        { name: "Bertoua", dongs: ["Centre"] },
+      ],
+    },
+  ],
+  CI: [
+    {
+      name: "Abidjan",
+      shortName: "ABJ",
+      gunguList: [
+        { name: "Abidjan", dongs: ["Plateau (Centre)", "Cocody", "Marcory", "Zone 4", "Treichville", "Yopougon"] },
+      ],
+    },
+    {
+      name: "Yamoussoukro",
+      shortName: "YAM",
+      gunguList: [
+        { name: "Yamoussoukro", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Bas-Sassandra",
+      shortName: "BSA",
+      gunguList: [
+        { name: "San-Pédro", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Vallée du Bandama",
+      shortName: "VBA",
+      gunguList: [
+        { name: "Bouaké", dongs: ["Commerce", "Koko"] },
+      ],
+    },
+    {
+      name: "Comoé",
+      shortName: "COM",
+      gunguList: [
+        { name: "Abengourou", dongs: ["Centre"] },
+        { name: "Grand-Bassam", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Lagunes",
+      shortName: "LAG",
+      gunguList: [
+        { name: "Dabou", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Gôh-Djiboua",
+      shortName: "GDJ",
+      gunguList: [
+        { name: "Gagnoa", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Lacs",
+      shortName: "LAC",
+      gunguList: [
+        { name: "Dimbokro", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Montagnes",
+      shortName: "MON",
+      gunguList: [
+        { name: "Man", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Sassandra-Marahoué",
+      shortName: "SMA",
+      gunguList: [
+        { name: "Daloa", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Savanes",
+      shortName: "SAV",
+      gunguList: [
+        { name: "Korhogo", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Woroba",
+      shortName: "WOR",
+      gunguList: [
+        { name: "Séguéla", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Zanzan",
+      shortName: "ZAN",
+      gunguList: [
+        { name: "Bondoukou", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Denguélé",
+      shortName: "DEN",
+      gunguList: [
+        { name: "Odienné", dongs: ["Centre"] },
+      ],
+    },
+  ],
+  CO: [
+    {
+      name: "Bogotá D.C.",
+      shortName: "BOG",
+      gunguList: [
+        { name: "Bogotá", dongs: ["Chapinero", "Usaquén", "Santa Fe (Centro)", "Teusaquillo", "Suba", "La Candelaria", "Kennedy"] },
+      ],
+    },
+    {
+      name: "Antioquia",
+      shortName: "ANT",
+      gunguList: [
+        { name: "Medellín", dongs: ["El Poblado", "Laureles", "La Candelaria (Centro)", "Beln", "Envigado"] },
+      ],
+    },
+    {
+      name: "Valle del Cauca",
+      shortName: "VAC",
+      gunguList: [
+        { name: "Cali", dongs: ["Granada", "San Antonio", "El Peñón", "Ciudad Jardín", "Centro"] },
+      ],
+    },
+    {
+      name: "Atlántico",
+      shortName: "ATL",
+      gunguList: [
+        { name: "Barranquilla", dongs: ["El Prado", "Alto Prado", "Riomar", "Norte-Centro Histórico"] },
+      ],
+    },
+    {
+      name: "Santander",
+      shortName: "SAN",
+      gunguList: [
+        { name: "Bucaramanga", dongs: ["Cabecera del Llano", "Centro"] },
+      ],
+    },
+    {
+      name: "Bolívar",
+      shortName: "BOL",
+      gunguList: [
+        { name: "Cartagena", dongs: ["Centro Histórico", "Bocagrande", "Getsemaní", "Manga"] },
+      ],
+    },
+    {
+      name: "Cundinamarca",
+      shortName: "CUN",
+      gunguList: [
+        { name: "Soacha", dongs: ["Centro"] },
+        { name: "Chía", dongs: ["Centro"] },
+        { name: "Zipaquirá", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Boyacá",
+      shortName: "BOY",
+      gunguList: [
+        { name: "Tunja", dongs: ["Centro"] },
+        { name: "Duitama", dongs: ["Centro"] },
+        { name: "Sogamoso", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Tolima",
+      shortName: "TOL",
+      gunguList: [
+        { name: "Ibagué", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Nariño",
+      shortName: "NAR",
+      gunguList: [
+        { name: "Pasto", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Caldas",
+      shortName: "CAL",
+      gunguList: [
+        { name: "Manizales", dongs: ["Centro", "El Cable"] },
+      ],
+    },
+    {
+      name: "Risaralda",
+      shortName: "RIS",
+      gunguList: [
+        { name: "Pereira", dongs: ["Centro", "Circunvalar"] },
+      ],
+    },
+    {
+      name: "Meta",
+      shortName: "MET",
+      gunguList: [
+        { name: "Villavicencio", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Huila",
+      shortName: "HUI",
+      gunguList: [
+        { name: "Neiva", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Córdoba",
+      shortName: "COR",
+      gunguList: [
+        { name: "Montería", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Cesar",
+      shortName: "CES",
+      gunguList: [
+        { name: "Valledupar", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Norte de Santander",
+      shortName: "NSA",
+      gunguList: [
+        { name: "Cúcuta", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Cauca",
+      shortName: "CAU",
+      gunguList: [
+        { name: "Popayán", dongs: ["Centro Histórico"] },
+      ],
+    },
+    {
+      name: "Magdalena",
+      shortName: "MAG",
+      gunguList: [
+        { name: "Santa Marta", dongs: ["Centro Histórico", "El Rodadero"] },
+      ],
+    },
+    {
+      name: "Quindío",
+      shortName: "QUI",
+      gunguList: [
+        { name: "Armenia", dongs: ["Centro", "Norte"] },
+      ],
+    },
+    {
+      name: "Sucre",
+      shortName: "SUC",
+      gunguList: [
+        { name: "Sincelejo", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "La Guajira",
+      shortName: "LAG",
+      gunguList: [
+        { name: "Riohacha", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Casanare",
+      shortName: "CAS",
+      gunguList: [
+        { name: "Yopal", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Caquetá",
+      shortName: "CAQ",
+      gunguList: [
+        { name: "Florencia", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Chocó",
+      shortName: "CHO",
+      gunguList: [
+        { name: "Quibdó", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Arauca",
+      shortName: "ARA",
+      gunguList: [
+        { name: "Arauca", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Putumayo",
+      shortName: "PUT",
+      gunguList: [
+        { name: "Mocoa", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "San Andrés y Providencia",
+      shortName: "SAP",
+      gunguList: [
+        { name: "San Andrés", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Amazonas",
+      shortName: "AMA",
+      gunguList: [
+        { name: "Leticia", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Guaviare",
+      shortName: "GUV",
+      gunguList: [
+        { name: "San José del Guaviare", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Guainía",
+      shortName: "GUA",
+      gunguList: [
+        { name: "Inírida", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Vaupés",
+      shortName: "VAU",
+      gunguList: [
+        { name: "Mitú", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Vichada",
+      shortName: "VID",
+      gunguList: [
+        { name: "Puerto Carreño", dongs: ["Centro"] },
+      ],
+    },
+  ],
+  CD: [
+    {
+      name: "Kinshasa",
+      shortName: "KIN",
+      gunguList: [
+        { name: "Kinshasa", dongs: ["Gombe (Centre)", "Ngaliema", "Kintambo", "Limete", "Bandalungwa", "Barumbu"] },
+      ],
+    },
+    {
+      name: "Haut-Katanga",
+      shortName: "HK",
+      gunguList: [
+        { name: "Lubumbashi", dongs: ["Centre-ville", "Kenya", "Kamalondo"] },
+      ],
+    },
+    {
+      name: "Kongo-Central",
+      shortName: "KC",
+      gunguList: [
+        { name: "Matadi", dongs: ["Centre"] },
+        { name: "Boma", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Nord-Kivu",
+      shortName: "NK",
+      gunguList: [
+        { name: "Goma", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Sud-Kivu",
+      shortName: "SK",
+      gunguList: [
+        { name: "Bukavu", dongs: ["Ibanda", "Kadutu"] },
+      ],
+    },
+    {
+      name: "Tshopo",
+      shortName: "TSH",
+      gunguList: [
+        { name: "Kisangani", dongs: ["Centre-ville", "Makiso"] },
+      ],
+    },
+    {
+      name: "Lualaba",
+      shortName: "LUA",
+      gunguList: [
+        { name: "Kolwezi", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Kasai-Central",
+      shortName: "KCE",
+      gunguList: [
+        { name: "Kananga", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Kasai-Oriental",
+      shortName: "KOR",
+      gunguList: [
+        { name: "Mbuji-Mayi", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Ituri",
+      shortName: "ITU",
+      gunguList: [
+        { name: "Bunia", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Kwilu",
+      shortName: "KWL",
+      gunguList: [
+        { name: "Bandundu", dongs: ["Centre"] },
+        { name: "Kikwit", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Equateur",
+      shortName: "EQU",
+      gunguList: [
+        { name: "Mbandaka", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Haut-Uele",
+      shortName: "HUE",
+      gunguList: [
+        { name: "Isiro", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Bas-Uele",
+      shortName: "BUE",
+      gunguList: [
+        { name: "Buta", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Maniema",
+      shortName: "MAN",
+      gunguList: [
+        { name: "Kindu", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Tanganyika",
+      shortName: "TAN",
+      gunguList: [
+        { name: "Kalemie", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Lomami",
+      shortName: "LOM",
+      gunguList: [
+        { name: "Kabinda", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Sankuru",
+      shortName: "SAN",
+      gunguList: [
+        { name: "Lusambo", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Kasai",
+      shortName: "KAS",
+      gunguList: [
+        { name: "Tshikapa", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Kwango",
+      shortName: "KWA",
+      gunguList: [
+        { name: "Kenge", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Mai-Ndombe",
+      shortName: "MND",
+      gunguList: [
+        { name: "Inongo", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Mongala",
+      shortName: "MON",
+      gunguList: [
+        { name: "Lisala", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Nord-Ubangi",
+      shortName: "NUB",
+      gunguList: [
+        { name: "Gbadolite", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Sud-Ubangi",
+      shortName: "SUB",
+      gunguList: [
+        { name: "Gemena", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Tshuapa",
+      shortName: "TSU",
+      gunguList: [
+        { name: "Boende", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Haut-Lomami",
+      shortName: "HL",
+      gunguList: [
+        { name: "Kamina", dongs: ["Centre"] },
+      ],
+    },
+  ],
+  PE: [
+    {
+      name: "Lima",
+      shortName: "LIM",
+      gunguList: [
+        { name: "Lima Metropolitana", dongs: ["Miraflores", "San Isidro", "Barranco", "Santiago de Surco", "Centro Histórico", "San Borja", "La Molina"] },
+      ],
+    },
+    {
+      name: "Arequipa",
+      shortName: "ARE",
+      gunguList: [
+        { name: "Arequipa", dongs: ["Centro Histórico", "Yanahuara", "Cayma"] },
+      ],
+    },
+    {
+      name: "La Libertad",
+      shortName: "LAL",
+      gunguList: [
+        { name: "Trujillo", dongs: ["Centro Histórico", "Víctor Larco Herrera"] },
+      ],
+    },
+    {
+      name: "Piura",
+      shortName: "PIU",
+      gunguList: [
+        { name: "Piura", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Cusco",
+      shortName: "CUS",
+      gunguList: [
+        { name: "Cusco", dongs: ["Centro Histórico", "San Blas", "Wanchaq"] },
+      ],
+    },
+    {
+      name: "Junín",
+      shortName: "JUN",
+      gunguList: [
+        { name: "Huancayo", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Lambayeque",
+      shortName: "LAM",
+      gunguList: [
+        { name: "Chiclayo", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Áncash",
+      shortName: "ANC",
+      gunguList: [
+        { name: "Chimbote", dongs: ["Centro"] },
+        { name: "Huaraz", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Puno",
+      shortName: "PUN",
+      gunguList: [
+        { name: "Puno", dongs: ["Centro"] },
+        { name: "Juliaca", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Ica",
+      shortName: "ICA",
+      gunguList: [
+        { name: "Ica", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Loreto",
+      shortName: "LOR",
+      gunguList: [
+        { name: "Iquitos", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "San Martín",
+      shortName: "SAM",
+      gunguList: [
+        { name: "Tarapoto", dongs: ["Centro"] },
+        { name: "Moyobamba", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Cajamarca",
+      shortName: "CAJ",
+      gunguList: [
+        { name: "Cajamarca", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Huánuco",
+      shortName: "HUC",
+      gunguList: [
+        { name: "Huánuco", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Ayacucho",
+      shortName: "AYA",
+      gunguList: [
+        { name: "Ayacucho", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Ucayali",
+      shortName: "UCA",
+      gunguList: [
+        { name: "Pucallpa", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Tacna",
+      shortName: "TAC",
+      gunguList: [
+        { name: "Tacna", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Moquegua",
+      shortName: "MOQ",
+      gunguList: [
+        { name: "Moquegua", dongs: ["Centro"] },
+        { name: "Ilo", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Tumbes",
+      shortName: "TUM",
+      gunguList: [
+        { name: "Tumbes", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Pasco",
+      shortName: "PAS",
+      gunguList: [
+        { name: "Cerro de Pasco", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Apurímac",
+      shortName: "APU",
+      gunguList: [
+        { name: "Abancay", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Huancavelica",
+      shortName: "HUV",
+      gunguList: [
+        { name: "Huancavelica", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Amazonas",
+      shortName: "AMA",
+      gunguList: [
+        { name: "Chachapoyas", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Madre de Dios",
+      shortName: "MDD",
+      gunguList: [
+        { name: "Puerto Maldonado", dongs: ["Centro"] },
+      ],
+    },
+    {
+      name: "Callao",
+      shortName: "CAL",
+      gunguList: [
+        { name: "Callao", dongs: ["La Punta", "Bellavista", "Centro"] },
+      ],
+    },
+  ],
+  TZ: [
+    {
+      name: "Dar es Salaam",
+      shortName: "DAR",
+      gunguList: [
+        { name: "Ilala", dongs: ["Kariakoo", "Upanga", "Kisutu", "Gerezani"] },
+        { name: "Kinondoni", dongs: ["Oysterbay", "Masaki", "Mikocheni"] },
+        { name: "Temeke", dongs: ["Kurasini", "Chang'ombe"] },
+        { name: "Ubungo", dongs: ["Mlimani", "Kijitonyama"] },
+        { name: "Kigamboni", dongs: ["Ferry", "Vijibweni"] },
+      ],
+    },
+    {
+      name: "Arusha",
+      shortName: "ARU",
+      gunguList: [
+        { name: "Arusha City", dongs: ["Sekei", "Kaloleni", "Themi"] },
+      ],
+    },
+    {
+      name: "Dodoma",
+      shortName: "DOD",
+      gunguList: [
+        { name: "Dodoma Urban", dongs: ["Kikuyu", "Chamwino", "Makole", "Majengo"] },
+      ],
+    },
+    {
+      name: "Mwanza",
+      shortName: "MWA",
+      gunguList: [
+        { name: "Nyamagana", dongs: ["Mirongo", "Pamba", "Isamilo"] },
+        { name: "Ilemela", dongs: ["Bugando"] },
+      ],
+    },
+    {
+      name: "Zanzibar Urban/West",
+      shortName: "ZAN",
+      gunguList: [
+        { name: "Stone Town", dongs: ["Shangani", "Kiponda", "Mkunazini"] },
+      ],
+    },
+  ],
+  DZ: [
+    {
+      name: "Alger",
+      shortName: "ALG",
+      gunguList: [
+        { name: "Sidi M'Hamed", dongs: ["Alger Centre", "El Mouradia"] },
+        { name: "Bab El Oued", dongs: ["Casbah", "Oued Koriche"] },
+        { name: "Hydra", dongs: ["Hydra Centre", "Paradou"] },
+        { name: "Bir Mourad Raïs", dongs: ["Centre", "Les Sources"] },
+      ],
+    },
+    {
+      name: "Oran",
+      shortName: "ORN",
+      gunguList: [
+        { name: "Oran Ville", dongs: ["El Menzeh", "Maraval", "Akid Lotfi"] },
+        { name: "Es Sénia", dongs: ["Centre"] },
+      ],
+    },
+    {
+      name: "Constantine",
+      shortName: "CST",
+      gunguList: [
+        { name: "Constantine Centre", dongs: ["Belouizdad", "Sidi Mabrouk"] },
+        { name: "El Khroub", dongs: ["Massinissa"] },
+      ],
+    },
+  ],
+  MA: [
+    {
+      name: "Casablanca-Settat",
+      shortName: "CAS",
+      gunguList: [
+        { name: "Casablanca Anfa", dongs: ["Maarif", "Sidi Belyout", "Gauthier", "Ain Diab"] },
+        { name: "Ain Chock", dongs: ["Californie", "Inara"] },
+        { name: "Mohammedia", dongs: ["Centre", "Kasbah"] },
+      ],
+    },
+    {
+      name: "Rabat-Salé-Kénitra",
+      shortName: "RAB",
+      gunguList: [
+        { name: "Rabat", dongs: ["Agdal", "Hassan", "Souissi", "Hay Riad"] },
+        { name: "Salé", dongs: ["Tabriquet", "Bettana"] },
+        { name: "Kénitra", dongs: ["Centre", "Mehdia"] },
+      ],
+    },
+    {
+      name: "Marrakech-Safi",
+      shortName: "MAR",
+      gunguList: [
+        { name: "Marrakech", dongs: ["Guéliz", "Hivernage", "Médina", "Palmeraie"] },
+      ],
+    },
+    {
+      name: "Tanger-Tétouan-Al Hoceïma",
+      shortName: "TAN",
+      gunguList: [
+        { name: "Tanger", dongs: ["Médina", "Malabata", "Marshan"] },
+        { name: "Tétouan", dongs: ["Centre", "Martil"] },
+      ],
+    },
+  ],
+  BJ: [
+    {
+      name: "Littoral",
+      shortName: "LIT",
+      gunguList: [
+        { name: "Cotonou", dongs: ["Haie Vive", "Ganhi", "Akpakpa", "Cadjehoun"] },
+      ],
+    },
+    {
+      name: "Ouémé",
+      shortName: "OUE",
+      gunguList: [
+        { name: "Porto-Novo", dongs: ["Ouando", "Djassin", "Attakê"] },
+      ],
+    },
+    {
+      name: "Atlantique",
+      shortName: "ATL",
+      gunguList: [
+        { name: "Abomey-Calavi", dongs: ["Godomey", "Calavi Centre"] },
+      ],
+    },
+  ],
+  TN: [
+    {
+      name: "Tunis",
+      shortName: "TUN",
+      gunguList: [
+        { name: "Tunis Ville", dongs: ["Médina", "Lafayette", "El Menzah", "Carthage", "La Marsa", "Sidi Bou Said"] },
+      ],
+    },
+    {
+      name: "Sfax",
+      shortName: "SFA",
+      gunguList: [
+        { name: "Sfax Ville", dongs: ["Médina", "Sfax Ouest", "Sakiet Ezzit"] },
+      ],
+    },
+    {
+      name: "Sousse",
+      shortName: "SOU",
+      gunguList: [
+        { name: "Sousse Ville", dongs: ["Médina", "Kantaoui", "Hammam Sousse"] },
+      ],
+    },
+  ],
+  BO: [
+    {
+      name: "La Paz",
+      shortName: "LPZ",
+      gunguList: [
+        { name: "La Paz Centro", dongs: ["Sopocachi", "Miraflores", "San Pedro", "Zona Sur", "Calacoto"] },
+        { name: "El Alto", dongs: ["Villa Adela", "16 de Julio", "Ciudad Satélite"] },
+      ],
+    },
+    {
+      name: "Santa Cruz",
+      shortName: "SCZ",
+      gunguList: [
+        { name: "Santa Cruz de la Sierra", dongs: ["Equipetrol", "Las Palmas", "Centro", "Plan 3000"] },
+      ],
+    },
+    {
+      name: "Cochabamba",
+      shortName: "CBB",
+      gunguList: [
+        { name: "Cochabamba Cercado", dongs: ["Cala Cala", "Queru Queru", "Centro"] },
+      ],
+    },
+  ],
+  BE: [
+    {
+      name: "Bruxelles-Capitale",
+      shortName: "BRU",
+      gunguList: [
+        { name: "Bruxelles-Ville", dongs: ["Pentagone", "Quartier Européen", "Louise"] },
+        { name: "Ixelles", dongs: ["Flagey", "Châtelain", "Porte de Namur"] },
+        { name: "Saint-Gilles", dongs: ["Parvis", "Horta"] },
+        { name: "Uccle", dongs: ["Observatoire", "Fort Jaco"] },
+      ],
+    },
+    {
+      name: "Vlaanderen",
+      shortName: "VLA",
+      gunguList: [
+        { name: "Antwerpen", dongs: ["Centrum", "Berchem", "Zuid", "Eilandje"] },
+        { name: "Gent", dongs: ["Binnenstad", "Sint-Pieters", "Patershol"] },
+        { name: "Brugge", dongs: ["Historisch Centrum", "Sint-Kruis"] },
+        { name: "Leuven", dongs: ["Centrum", "Heverlee"] },
+      ],
+    },
+    {
+      name: "Wallonie",
+      shortName: "WAL",
+      gunguList: [
+        { name: "Liège", dongs: ["Centre", "Guillemins", "Outremeuse"] },
+        { name: "Namur", dongs: ["Centre", "Jambes", "Citadelle"] },
+        { name: "Charleroi", dongs: ["Ville-Haute", "Ville-Basse"] },
+      ],
+    },
+  ],
+  JO: [
+    {
+      name: "Amman",
+      shortName: "AMM",
+      gunguList: [
+        { name: "Amman Qasabah", dongs: ["Al-Madinah", "Jabal Amman", "Abdali", "Shmeisani", "Abdoun", "Sweifieh"] },
+        { name: "Al-Jubaiha", dongs: ["University District", "Abu Nseir"] },
+      ],
+    },
+    {
+      name: "Irbid",
+      shortName: "IRB",
+      gunguList: [
+        { name: "Irbid Qasabah", dongs: ["Irbid City", "Yarmouk"] },
+      ],
+    },
+    {
+      name: "Zarqa",
+      shortName: "ZAR",
+      gunguList: [
+        { name: "Zarqa City", dongs: ["New Zarqa", "Al-Thawra"] },
+      ],
+    },
+    {
+      name: "Aqaba",
+      shortName: "AQA",
+      gunguList: [
+        { name: "Aqaba City", dongs: ["Al-Markaz", "Tala Bay"] },
+      ],
+    },
+  ],
+  DO: [
+    {
+      name: "Distrito Nacional",
+      shortName: "DNA",
+      gunguList: [
+        { name: "Santo Domingo", dongs: ["Zona Colonial", "Piantini", "Naco", "Bella Vista", "Gazcue"] },
+      ],
+    },
+    {
+      name: "Santo Domingo Este",
+      shortName: "SDE",
+      gunguList: [
+        { name: "Santo Domingo Este", dongs: ["Alma Rosa", "Ensanche Ozama", "Los Corales"] },
+      ],
+    },
+    {
+      name: "Santiago",
+      shortName: "STI",
+      gunguList: [
+        { name: "Santiago de los Caballeros", dongs: ["Centro", "Los Jardines", "Villa Olga"] },
+      ],
+    },
+    {
+      name: "La Altagracia",
+      shortName: "ALT",
+      gunguList: [
+        { name: "Punta Cana", dongs: ["Bávaro", "Cap Cana", "Verón"] },
+        { name: "Higüey", dongs: ["Centro"] },
+      ],
+    },
+  ],
+  HN: [
+    {
+      name: "Francisco Morazán",
+      shortName: "FMZ",
+      gunguList: [
+        { name: "Tegucigalpa", dongs: ["Centro Histórico", "Colonia Palmira", "Lomas del Guijarro", "Morazán"] },
+        { name: "Comayagüela", dongs: ["Centro", "Villa Adela"] },
+      ],
+    },
+    {
+      name: "Cortés",
+      shortName: "COR",
+      gunguList: [
+        { name: "San Pedro Sula", dongs: ["Barrio Guamilito", "Colonia Trejo", "Centro"] },
+        { name: "Puerto Cortés", dongs: ["El Centro", "Cieneguita"] },
+      ],
+    },
+    {
+      name: "Islas de la Bahía",
+      shortName: "IBH",
+      gunguList: [
+        { name: "Roatán", dongs: ["Coxen Hole", "West End", "West Bay"] },
+      ],
+    },
+  ],
+  AZ: [
+    {
+      name: "Bakı",
+      shortName: "BAK",
+      gunguList: [
+        { name: "Səbail", dongs: ["İçərişəhər", "Sahil", "Bayıl"] },
+        { name: "Nəsimi", dongs: ["28 May", "Kubinka"] },
+        { name: "Yasamal", dongs: ["Elmlər", "Yeni Yasamal"] },
+        { name: "Nərimanov", dongs: ["Gənclik", "Montin"] },
+        { name: "Xətai", dongs: ["Ağ Şəhər", "Həzi Aslanov"] },
+      ],
+    },
+    {
+      name: "Abşeron-Xızı",
+      shortName: "ABS",
+      gunguList: [
+        { name: "Sumqayıt", dongs: ["Mərkəz", "Corat"] },
+        { name: "Xırdalan", dongs: ["Mərkəz"] },
+      ],
+    },
+    {
+      name: "Gəncə-Daşkəsən",
+      shortName: "GAN",
+      gunguList: [
+        { name: "Gəncə", dongs: ["Kəpəz", "Nizami"] },
+      ],
+    },
+  ],
+  TJ: [
+    {
+      name: "Dushanbe",
+      shortName: "DUS",
+      gunguList: [
+        { name: "Ismoili Somoni", dongs: ["Markaz", "Rudaki Park"] },
+        { name: "Sino", dongs: ["Zarafshon", "Ipeks"] },
+        { name: "Firdavsi", dongs: ["Sakhovat", "Korgar"] },
+        { name: "Shohmansur", dongs: ["Vokzal", "Aeroport"] },
+      ],
+    },
+    {
+      name: "Sughd",
+      shortName: "SUG",
+      gunguList: [
+        { name: "Khujand", dongs: ["Markaz", "Bochki", "Panjshanbe"] },
+        { name: "Panjakent", dongs: ["Markaz"] },
+      ],
+    },
+    {
+      name: "Khatlon",
+      shortName: "KHA",
+      gunguList: [
+        { name: "Bokhtar", dongs: ["Markaz"] },
+        { name: "Kulob", dongs: ["Markaz"] },
+      ],
+    },
+  ],
+  PG: [
+    {
+      name: "National Capital District",
+      shortName: "NCD",
+      gunguList: [
+        { name: "Port Moresby", dongs: ["Boroko", "Waigani", "Gordons", "Downtown", "Hohola"] },
+      ],
+    },
+    {
+      name: "Morobe",
+      shortName: "MPL",
+      gunguList: [
+        { name: "Lae", dongs: ["Lae Urban", "Eriku", "Top Town"] },
+      ],
+    },
+    {
+      name: "Western Highlands",
+      shortName: "WHP",
+      gunguList: [
+        { name: "Mount Hagen", dongs: ["Hagen Urban", "Kagamuga"] },
+      ],
+    },
+    {
+      name: "East New Britain",
+      shortName: "ENB",
+      gunguList: [
+        { name: "Kokopo", dongs: ["Kokopo-Vunamami", "Rabaul"] },
+      ],
+    },
+  ],
+
+  AF: [
+    {
+      name: "Afghanistan Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Afghanistan Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Afghanistan Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  AL: [
+    {
+      name: "Albania Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Albania Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Albania Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  AM: [
+    {
+      name: "Armenia Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Armenia Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Armenia Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  AT: [
+    {
+      name: "Austria Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Austria Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Austria Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  BA: [
+    {
+      name: "Bosnia Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Bosnia Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Bosnia Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  BB: [
+    {
+      name: "Barbados Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Barbados Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Barbados Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  BG: [
+    {
+      name: "Bulgaria Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Bulgaria Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Bulgaria Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  BH: [
+    {
+      name: "Bahrain Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Bahrain Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Bahrain Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  BI: [
+    {
+      name: "Burundi Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Burundi Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Burundi Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  BN: [
+    {
+      name: "Brunei Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Brunei Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Brunei Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  BS: [
+    {
+      name: "Bahamas Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Bahamas Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Bahamas Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  BT: [
+    {
+      name: "Bhutan Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Bhutan Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Bhutan Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  BW: [
+    {
+      name: "Botswana Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Botswana Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Botswana Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  BY: [
+    {
+      name: "Belarus Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Belarus Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Belarus Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  BZ: [
+    {
+      name: "Belize Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Belize Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Belize Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  CR: [
+    {
+      name: "Costarica Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Costarica Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Costarica Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  CU: [
+    {
+      name: "Cuba Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Cuba Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Cuba Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  CV: [
+    {
+      name: "Capeverde Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Capeverde Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Capeverde Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  CY: [
+    {
+      name: "Cyprus Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Cyprus Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Cyprus Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  DJ: [
+    {
+      name: "Djibouti Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Djibouti Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Djibouti Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  DM: [
+    {
+      name: "Dominicacommonwealth Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Dominicacommonwealth Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Dominicacommonwealth Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  EE: [
+    {
+      name: "Estonia Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Estonia Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Estonia Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  ER: [
+    {
+      name: "Eritrea Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Eritrea Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Eritrea Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  FJ: [
+    {
+      name: "Fiji Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Fiji Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Fiji Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  FM: [
+    {
+      name: "Micronesia Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Micronesia Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Micronesia Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  GA: [
+    {
+      name: "Gabon Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Gabon Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Gabon Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  GD: [
+    {
+      name: "Grenada Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Grenada Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Grenada Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  GM: [
+    {
+      name: "Gambia Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Gambia Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Gambia Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  GQ: [
+    {
+      name: "Equatorialguinea Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Equatorialguinea Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Equatorialguinea Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  GW: [
+    {
+      name: "Guineabissau Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Guineabissau Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Guineabissau Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  GY: [
+    {
+      name: "Guyana Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Guyana Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Guyana Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  HR: [
+    {
+      name: "Croatia Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Croatia Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Croatia Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  HT: [
+    {
+      name: "Haiti Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Haiti Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Haiti Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  IE: [
+    {
+      name: "Ireland Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Ireland Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Ireland Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  IS: [
+    {
+      name: "Iceland Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Iceland Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Iceland Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  JM: [
+    {
+      name: "Jamaica Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Jamaica Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Jamaica Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  KG: [
+    {
+      name: "Kyrgyzstan Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Kyrgyzstan Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Kyrgyzstan Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  KI: [
+    {
+      name: "Kiribati Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Kiribati Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Kiribati Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  KM: [
+    {
+      name: "Comoros Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Comoros Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Comoros Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  KN: [
+    {
+      name: "Saintkitts Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Saintkitts Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Saintkitts Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  KW: [
+    {
+      name: "Kuwait Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Kuwait Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Kuwait Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  LA: [
+    {
+      name: "Laos Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Laos Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Laos Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  LB: [
+    {
+      name: "Lebanon Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Lebanon Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Lebanon Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  LC: [
+    {
+      name: "Saintlucia Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Saintlucia Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Saintlucia Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  LI: [
+    {
+      name: "Liechtenstein Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Liechtenstein Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Liechtenstein Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  LR: [
+    {
+      name: "Liberia Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Liberia Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Liberia Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  LS: [
+    {
+      name: "Lesotho Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Lesotho Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Lesotho Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  LT: [
+    {
+      name: "Lithuania Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Lithuania Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Lithuania Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  LU: [
+    {
+      name: "Luxembourg Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Luxembourg Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Luxembourg Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  LV: [
+    {
+      name: "Latvia Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Latvia Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Latvia Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  LY: [
+    {
+      name: "Libya Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Libya Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Libya Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  MC: [
+    {
+      name: "Monaco Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Monaco Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Monaco Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  MD: [
+    {
+      name: "Moldova Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Moldova Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Moldova Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  ME: [
+    {
+      name: "Montenegro Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Montenegro Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Montenegro Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  MH: [
+    {
+      name: "Marshallislands Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Marshallislands Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Marshallislands Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  MK: [
+    {
+      name: "Northmacedonia Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Northmacedonia Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Northmacedonia Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  MR: [
+    {
+      name: "Mauritania Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Mauritania Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Mauritania Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  MT: [
+    {
+      name: "Malta Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Malta Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Malta Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  MU: [
+    {
+      name: "Mauritius Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Mauritius Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Mauritius Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  MV: [
+    {
+      name: "Maldives Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Maldives Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Maldives Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  NA: [
+    {
+      name: "Namibia Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Namibia Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Namibia Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  NI: [
+    {
+      name: "Nicaragua Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Nicaragua Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Nicaragua Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  NR: [
+    {
+      name: "Nauru Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Nauru Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Nauru Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  OM: [
+    {
+      name: "Oman Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Oman Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Oman Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  PA: [
+    {
+      name: "Panama Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Panama Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Panama Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  PW: [
+    {
+      name: "Palau Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Palau Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Palau Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  PY: [
+    {
+      name: "Paraguay Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Paraguay Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Paraguay Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  QA: [
+    {
+      name: "Qatar Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Qatar Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Qatar Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  SB: [
+    {
+      name: "Solomonislands Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Solomonislands Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Solomonislands Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  SC: [
+    {
+      name: "Seychelles Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Seychelles Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Seychelles Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  SD: [
+    {
+      name: "Sudan Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Sudan Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Sudan Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  SK: [
+    {
+      name: "Slovakia Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Slovakia Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Slovakia Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  SL: [
+    {
+      name: "Sierraleone Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Sierraleone Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Sierraleone Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  SM: [
+    {
+      name: "Sanmarino Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Sanmarino Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Sanmarino Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  SO: [
+    {
+      name: "Somalia Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Somalia Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Somalia Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  SR: [
+    {
+      name: "Suriname Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Suriname Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Suriname Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  SS: [
+    {
+      name: "Southsudan Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Southsudan Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Southsudan Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  ST: [
+    {
+      name: "Saotome Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Saotome Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Saotome Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  SY: [
+    {
+      name: "Syria Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Syria Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Syria Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  SZ: [
+    {
+      name: "Eswatini Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Eswatini Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Eswatini Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  TG: [
+    {
+      name: "Togo Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Togo Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Togo Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  TO: [
+    {
+      name: "Tonga Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Tonga Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Tonga Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  TT: [
+    {
+      name: "Trinidad Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Trinidad Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Trinidad Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  TV: [
+    {
+      name: "Tuvalu Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Tuvalu Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Tuvalu Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  UY: [
+    {
+      name: "Uruguay Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Uruguay Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Uruguay Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  VA: [
+    {
+      name: "Vatican Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Vatican Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Vatican Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  VC: [
+    {
+      name: "Saintvincent Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Saintvincent Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Saintvincent Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  WS: [
+    {
+      name: "Samoa Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Samoa Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Samoa Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  VU: [
+    {
+      name: "Vanuatu Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Vanuatu Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Vanuatu Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
+  XK: [
+    {
+      name: "Kosovo Capital Region",
+      shortName: "Capital",
+      gunguList: [
+        { name: "Central District", dongs: ["District 1", "District 2", "Commercial Zone", "Civic Center"] },
+        { name: "Metropolitan Area", dongs: ["North Sector", "South Sector", "East Sector", "West Sector"] },
+      ],
+    },
+    {
+      name: "Kosovo Northern Province",
+      shortName: "North",
+      gunguList: [
+        { name: "Northern City", dongs: ["Downtown", "Uptown", "Industrial Park"] },
+        { name: "Highland District", dongs: ["Valley Area", "Lakeside", "Ridge"] },
+      ],
+    },
+    {
+      name: "Kosovo Southern Province",
+      shortName: "South",
+      gunguList: [
+        { name: "Southern Coastal City", dongs: ["Harbor District", "Marina", "Ocean View"] },
+        { name: "Port District", dongs: ["Trade Hub", "Customs Area", "Terminal Zone"] },
+      ],
+    },
+  ],
 };

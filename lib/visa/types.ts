@@ -13,13 +13,36 @@ export interface VisaLink {
 }
 
 /** Document checklist item: a short factual line copied from the official page's own list, with its official wording and the link it came from. */
-export interface VisaDoc { text: string; sourceUrl: string }
+export interface VisaDoc {
+  text: string;
+  textKo?: string;
+  texts?: Record<string, string>;
+  sourceUrl: string;
+}
+
+/** Detailed breakdown for a specific visa category (e.g., E-7-1, E-7-4, E-8-1, E-8-3, E-9, F-6-1, D-2) */
+export interface VisaCategoryDetail {
+  code: string;
+  name: string;
+  nameKo?: string;
+  names?: Record<string, string>;
+  desc?: string;
+  descKo?: string;
+  descs?: Record<string, string>;
+  eligibility?: string;
+  eligibilityKo?: string;
+  eligibilities?: Record<string, string>;
+  docs: VisaDoc[];
+  links?: VisaLink[];
+}
 
 export interface PurposeInfo {
   /** Official visa type names exactly as the authority calls them (e.g. "D-2", "Student visa") */
   visaTypes: string[];
   links: VisaLink[];
   docs: VisaDoc[];
+  /** Optional detailed breakdown per visa subcategory */
+  categories?: VisaCategoryDetail[];
 }
 
 /** Entry condition of one nationality (or nationality group) for entering the destination without a visa. */
@@ -31,6 +54,8 @@ export interface EntryRule {
   days: number | null;
   /** Short official note (conditions such as passport validity, purpose limits) */
   note?: string;
+  noteKo?: string;
+  notes?: Record<string, string>;
   sourceUrl: string;
 }
 

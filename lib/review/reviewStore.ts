@@ -6,7 +6,7 @@ export interface CustomerReview {
   serviceCategory?: string;
   content: string;
   createdAt: string;
-  deliveredTo: string; // "contact@life.help"
+  deliveredTo: string; // "sys@life.help"
   locale: string;
   status: "delivered";
 }
@@ -42,7 +42,7 @@ export function saveReview(data: {
     serviceCategory: data.serviceCategory || "일반",
     content: data.content.trim(),
     createdAt: new Date().toISOString(),
-    deliveredTo: "contact@life.help",
+    deliveredTo: "sys@life.help",
     locale: data.locale || "ko",
     status: "delivered",
   };

@@ -1,0 +1,186 @@
+import af_locale from "./locales/af.json";
+import am_locale from "./locales/am.json";
+import ar_locale from "./locales/ar.json";
+import arz_locale from "./locales/arz.json";
+import as_locale from "./locales/as.json";
+import az_locale from "./locales/az.json";
+import bg_locale from "./locales/bg.json";
+import bn_locale from "./locales/bn.json";
+import ca_locale from "./locales/ca.json";
+import ceb_locale from "./locales/ceb.json";
+import cs_locale from "./locales/cs.json";
+import da_locale from "./locales/da.json";
+import de_locale from "./locales/de.json";
+import el_locale from "./locales/el.json";
+import en_locale from "./locales/en.json";
+import es_locale from "./locales/es.json";
+import et_locale from "./locales/et.json";
+import eu_locale from "./locales/eu.json";
+import fa_locale from "./locales/fa.json";
+import fi_locale from "./locales/fi.json";
+import fr_locale from "./locales/fr.json";
+import gl_locale from "./locales/gl.json";
+import gu_locale from "./locales/gu.json";
+import ha_locale from "./locales/ha.json";
+import he_locale from "./locales/he.json";
+import hi_locale from "./locales/hi.json";
+import hr_locale from "./locales/hr.json";
+import hu_locale from "./locales/hu.json";
+import id_locale from "./locales/id.json";
+import ig_locale from "./locales/ig.json";
+import is_locale from "./locales/is.json";
+import it_locale from "./locales/it.json";
+import ja_locale from "./locales/ja.json";
+import jv_locale from "./locales/jv.json";
+import ka_locale from "./locales/ka.json";
+import kk_locale from "./locales/kk.json";
+import km_locale from "./locales/km.json";
+import kn_locale from "./locales/kn.json";
+import ko_locale from "./locales/ko.json";
+import ku_locale from "./locales/ku.json";
+import lt_locale from "./locales/lt.json";
+import lv_locale from "./locales/lv.json";
+import mg_locale from "./locales/mg.json";
+import mk_locale from "./locales/mk.json";
+import ml_locale from "./locales/ml.json";
+import mn_locale from "./locales/mn.json";
+import mr_locale from "./locales/mr.json";
+import ms_locale from "./locales/ms.json";
+import my_locale from "./locales/my.json";
+import ne_locale from "./locales/ne.json";
+import nl_locale from "./locales/nl.json";
+import no_locale from "./locales/no.json";
+import om_locale from "./locales/om.json";
+import pa_locale from "./locales/pa.json";
+import pcm_locale from "./locales/pcm.json";
+import pl_locale from "./locales/pl.json";
+import ps_locale from "./locales/ps.json";
+import pt_locale from "./locales/pt.json";
+import ro_locale from "./locales/ro.json";
+import ru_locale from "./locales/ru.json";
+import sd_locale from "./locales/sd.json";
+import sg_locale from "./locales/sg.json";
+import si_locale from "./locales/si.json";
+import sk_locale from "./locales/sk.json";
+import sl_locale from "./locales/sl.json";
+import sn_locale from "./locales/sn.json";
+import so_locale from "./locales/so.json";
+import sq_locale from "./locales/sq.json";
+import sr_locale from "./locales/sr.json";
+import su_locale from "./locales/su.json";
+import sv_locale from "./locales/sv.json";
+import sw_locale from "./locales/sw.json";
+import ta_locale from "./locales/ta.json";
+import te_locale from "./locales/te.json";
+import tet_locale from "./locales/tet.json";
+import tg_locale from "./locales/tg.json";
+import th_locale from "./locales/th.json";
+import tl_locale from "./locales/tl.json";
+import tr_locale from "./locales/tr.json";
+import uk_locale from "./locales/uk.json";
+import ur_locale from "./locales/ur.json";
+import uz_locale from "./locales/uz.json";
+import vi_locale from "./locales/vi.json";
+import xh_locale from "./locales/xh.json";
+import yo_locale from "./locales/yo.json";
+import yue_locale from "./locales/yue.json";
+import zh_Hans_locale from "./locales/zh-Hans.json";
+import zh_Hant_locale from "./locales/zh-Hant.json";
+import zu_locale from "./locales/zu.json";
+
+export const DAILY_INSIGHT_LOCALES: Record<string, any> = {
+  "af": af_locale as any,
+  "am": am_locale as any,
+  "ar": ar_locale as any,
+  "arz": arz_locale as any,
+  "as": as_locale as any,
+  "az": az_locale as any,
+  "bg": bg_locale as any,
+  "bn": bn_locale as any,
+  "ca": ca_locale as any,
+  "ceb": ceb_locale as any,
+  "cs": cs_locale as any,
+  "da": da_locale as any,
+  "de": de_locale as any,
+  "el": el_locale as any,
+  "en": en_locale as any,
+  "es": es_locale as any,
+  "et": et_locale as any,
+  "eu": eu_locale as any,
+  "fa": fa_locale as any,
+  "fi": fi_locale as any,
+  "fr": fr_locale as any,
+  "gl": gl_locale as any,
+  "gu": gu_locale as any,
+  "ha": ha_locale as any,
+  "he": he_locale as any,
+  "hi": hi_locale as any,
+  "hr": hr_locale as any,
+  "hu": hu_locale as any,
+  "id": id_locale as any,
+  "ig": ig_locale as any,
+  "is": is_locale as any,
+  "it": it_locale as any,
+  "ja": ja_locale as any,
+  "jv": jv_locale as any,
+  "ka": ka_locale as any,
+  "kk": kk_locale as any,
+  "km": km_locale as any,
+  "kn": kn_locale as any,
+  "ko": ko_locale as any,
+  "ku": ku_locale as any,
+  "lt": lt_locale as any,
+  "lv": lv_locale as any,
+  "mg": mg_locale as any,
+  "mk": mk_locale as any,
+  "ml": ml_locale as any,
+  "mn": mn_locale as any,
+  "mr": mr_locale as any,
+  "ms": ms_locale as any,
+  "my": my_locale as any,
+  "ne": ne_locale as any,
+  "nl": nl_locale as any,
+  "no": no_locale as any,
+  "om": om_locale as any,
+  "pa": pa_locale as any,
+  "pcm": pcm_locale as any,
+  "pl": pl_locale as any,
+  "ps": ps_locale as any,
+  "pt": pt_locale as any,
+  "ro": ro_locale as any,
+  "ru": ru_locale as any,
+  "sd": sd_locale as any,
+  "sg": sg_locale as any,
+  "si": si_locale as any,
+  "sk": sk_locale as any,
+  "sl": sl_locale as any,
+  "sn": sn_locale as any,
+  "so": so_locale as any,
+  "sq": sq_locale as any,
+  "sr": sr_locale as any,
+  "su": su_locale as any,
+  "sv": sv_locale as any,
+  "sw": sw_locale as any,
+  "ta": ta_locale as any,
+  "te": te_locale as any,
+  "tet": tet_locale as any,
+  "tg": tg_locale as any,
+  "th": th_locale as any,
+  "tl": tl_locale as any,
+  "tr": tr_locale as any,
+  "uk": uk_locale as any,
+  "ur": ur_locale as any,
+  "uz": uz_locale as any,
+  "vi": vi_locale as any,
+  "xh": xh_locale as any,
+  "yo": yo_locale as any,
+  "yue": yue_locale as any,
+  "zh-Hans": zh_Hans_locale as any,
+  "zh-Hant": zh_Hant_locale as any,
+  "zu": zu_locale as any,
+};
+
+export function getInsightLocaleData(locale?: string): any {
+  if (!locale || locale === "ko") return DAILY_INSIGHT_LOCALES.ko || null;
+  return DAILY_INSIGHT_LOCALES[locale] || DAILY_INSIGHT_LOCALES.en || null;
+}

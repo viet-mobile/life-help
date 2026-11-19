@@ -1,6 +1,13 @@
 import { CUSTOMER_COOKIE, HELPER_COOKIE, REQUEST_TOKEN_COOKIE, clearCookieHeader, isSecret, readCookie, setCookieHeader } from "./credentials";
 import type { CreateRequestInput, ServiceCore } from "./core";
 import { ServiceError } from "./errors";
+import {
+  applyCustomerPayment,
+  confirmCustomerCompletion,
+  getOrCreatePaymentRecord,
+  getPaymentSummaryForHelper,
+  getAdminRevenueSummary,
+} from "./paymentSettlement";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export interface HttpDeps {
@@ -123,8 +130,40 @@ export function createServiceHandler(deps: HttpDeps) {
           if (hit[2] === "link/revoke") return json(await core.revokeLink(cred, reqId));
           return json(await core.revokeAllAccess(cred, reqId));
         }
-        if (route === "/c/requests" && method === "GET") return json({ requests: await core.listCustomerRequests(cred) });
-        if ((hit = m(/^\/c\/requests\/([^/]+)$/)) && method === "GET") return json(await core.getCustomerRequest(cred, tokenFor(id(hit[1])), id(hit[1])));
+        if (route === "/c/requests" && method === "GET") {
+          const list = await core.listCustomerRequests(cred);
+          return json({ requests: list.map((r: any) => ({ ...r, payment: getOrCreatePaymentRecord(r.id, r.serviceSlug, r.helper?.id) })) });
+        }
+        if ((hit = m(/^\/c\/requests\/([^/]+)$/)) && method === "GET") {
+          const out = await core.getCustomerRequest(cred, tokenFor(id(hit[1])), id(hit[1]));
+          const payment = getOrCreatePaymentRecord(out.request.id, out.request.serviceSlug, out.request.helper?.id);
+          return json({ ...out, request: { ...out.request, payment } });
+        }
+        if ((hit = m(/^\/c\/requests\/([^/]+)\/payment$/)) && method === "GET") {
+          const reqId = id(hit[1]);
+          const out = await core.getCustomerRequest(cred, tokenFor(reqId), reqId);
+          return json({ payment: getOrCreatePaymentRecord(reqId, out.request.serviceSlug, out.request.helper?.id) });
+        }
+        if ((hit = m(/^\/c\/requests\/([^/]+)\/pay$/)) && method === "POST") {
+          limit(`pay:${cred ?? ip}`, 30, 60_000, t);
+          const reqId = id(hit[1]);
+          const out = await core.getCustomerRequest(cred, tokenFor(reqId), reqId);
+          const body = await readBody(request);
+          const payment = applyCustomerPayment(
+            reqId,
+            out.request.serviceSlug,
+            body.method ?? "CARD",
+            body.referralCode,
+            out.request.helper?.id
+          );
+          return json({ payment });
+        }
+        if ((hit = m(/^\/c\/requests\/([^/]+)\/confirm$/)) && method === "POST") {
+          limit(`confirm:${cred ?? ip}`, 30, 60_000, t);
+          const reqId = id(hit[1]);
+          const payment = confirmCustomerCompletion(reqId);
+          return json({ payment });
+        }
         if ((hit = m(/^\/c\/requests\/([^/]+)\/cancel$/)) && method === "POST") return json({ request: await core.cancelCustomerRequest(cred, tokenFor(id(hit[1])), id(hit[1])) });
         if ((hit = m(/^\/c\/requests\/([^/]+)\/messages$/))) {
           if (method === "GET") return json({ messages: await core.listMessages("CUSTOMER", cred, tokenFor(id(hit[1])), id(hit[1]), intParam(url.searchParams.get("after")), locale(url.searchParams.get("locale"), "en")) });
@@ -167,8 +206,20 @@ export function createServiceHandler(deps: HttpDeps) {
         }
         if (route === "/h/me" && method === "PATCH") return json({ helper: await core.updateHelperProfile(cred, await readBody(request)) });
         if (route === "/h/available" && method === "POST") return json({ helper: await core.setAvailable(cred, (await readBody(request)).available === true) });
-        if (route === "/h/requests" && method === "GET") return json(await core.listHelperRequests(cred));
-        if ((hit = m(/^\/h\/requests\/([^/]+)$/)) && method === "GET") return json({ request: await core.getHelperRequest(cred, id(hit[1])) });
+        if (route === "/h/earnings" && method === "GET") {
+          const me = cred ? await core.helperMe(cred).catch(() => null) : null;
+          return json({ earnings: getPaymentSummaryForHelper(me?.id) });
+        }
+        if (route === "/h/requests" && method === "GET") {
+          const out = await core.listHelperRequests(cred);
+          const mapReq = (r: any) => ({ ...r, payment: getOrCreatePaymentRecord(r.id, r.serviceSlug, r.helperId ?? r.helper?.id) });
+          return json({ available: out.available.map(mapReq), mine: out.mine.map(mapReq) });
+        }
+        if ((hit = m(/^\/h\/requests\/([^/]+)$/)) && method === "GET") {
+          const r = await core.getHelperRequest(cred, id(hit[1]));
+          const payment = getOrCreatePaymentRecord(r.id, r.serviceSlug, r.helperId ?? r.helper?.id);
+          return json({ request: { ...r, payment } });
+        }
         if ((hit = m(/^\/h\/requests\/([^/]+)\/(accept|start|complete)$/)) && method === "POST") {
           return json({ request: await core.helperAction(hit[2] as "accept" | "start" | "complete", cred, id(hit[1])) });
         }
@@ -189,6 +240,7 @@ export function createServiceHandler(deps: HttpDeps) {
         const admin = await deps.verifyAdmin(request);
         if (!admin) throw new ServiceError("UNAUTHENTICATED");
         const readerLocale = locale(url.searchParams.get("locale"), "ko");
+        if (route === "/a/revenue" && method === "GET") return json({ revenue: getAdminRevenueSummary() });
         if (route === "/a/requests" && method === "GET") return json({ requests: await core.adminListRequests(url.searchParams.get("status")) });
         if ((hit = m(/^\/a\/requests\/([^/]+)$/)) && method === "GET") return json(await core.adminGetRequest(id(hit[1])));
         if ((hit = m(/^\/a\/requests\/([^/]+)\/assign$/)) && method === "POST") {

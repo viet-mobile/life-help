@@ -75,3 +75,24 @@ export async function signOutAction(site: string): Promise<void> {
   revalidatePath("/", "layout");
   redirect(`${base}/`);
 }
+
+/** Apple App Store Guideline 5.1.1(v) compliant Account & Data Deletion */
+export async function deleteAccountAction(site: string): Promise<void> {
+  if (!isSite(site)) return;
+  const base = await siteBase(site);
+  if (accountsEnabled()) {
+    const supabase = await createLearnSessionClient();
+    if (supabase) {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        // Remove associated progress and profiles
+        await supabase.from("learner_progress").delete().eq("user_id", user.id);
+        await supabase.from("learner_profiles").delete().eq("user_id", user.id);
+        await supabase.auth.signOut();
+      }
+    }
+  }
+  revalidatePath("/", "layout");
+  redirect(`${base}/`);
+}
+

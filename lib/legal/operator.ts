@@ -16,9 +16,9 @@ export const OPERATOR = {
   /** 개인정보 보호책임자 (성명 / 직책) */
   privacyOfficer: "",
   /** 개인정보 문의 이메일 */
-  privacyEmail: "contact@life.help",
+  privacyEmail: "sys@life.help",
   /** 일반 문의 이메일 */
-  contactEmail: "contact@life.help",
+  contactEmail: "sys@life.help",
   /** 시행일 (YYYY-MM-DD). Empty = draft, printed as "시행 예정 / to take effect at launch". */
   effectiveDate: "",
   /** Supabase 프로젝트 리전 (예: "Seoul (ap-northeast-2)") */

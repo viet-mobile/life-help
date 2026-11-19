@@ -10,6 +10,9 @@ import { useRegion } from "@/lib/region/RegionContext";
 import { getRegionUIText } from "@/lib/region/regionLocalization";
 import PrivacyNotice from "@/components/customer/PrivacyNotice";
 import { StudyChooser } from "@/components/customer/StudyChooser";
+import { getDailyInsight, DomainType } from "@/lib/learn/dailyInsights";
+import { DailyInsightCard } from "@/components/learn/DailyInsightCard";
+import { ReferralCard } from "@/components/shared/ReferralCard";
 
 export interface ServiceItem {
   id: string;
@@ -312,6 +315,7 @@ export function CustomerHome() {
   // Mobile smart tabs: default "all" so that all 10 services are visible on the first screen
   const [activeTab, setActiveTab] = useState<"all" | "repair" | "support">("all");
   const [studyOpen, setStudyOpen] = useState(false);
+  const [insightDomain, setInsightDomain] = useState<DomainType>("life");
   const countOf = (c: "repair" | "support") => allServices.filter((x) => x.category === c).length;
 
   const displayedServices =
@@ -381,6 +385,8 @@ export function CustomerHome() {
               <span>🚨</span>
               <span>{locale === "ko" ? "빠른 신청" : t("request.title")}</span>
             </Link>
+
+            <ReferralCard compact />
 
             <LanguageSwitcher locale={locale} onChange={setLocale} />
           </div>
@@ -490,8 +496,52 @@ export function CustomerHome() {
         </div>
       </section>
 
+      {/* 2.5 Daily Life Practical Insights (당신의 인생에 도움이 되는 수학·영어·한국어·생활정보) */}
+      <section className="px-3 pt-1 pb-2 sm:px-4 sm:pt-2 sm:pb-3">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-2.5 flex flex-wrap items-center justify-between gap-1.5">
+            <div className="flex items-center gap-1.5">
+              <span className="text-xs sm:text-sm font-black text-slate-900">✨ {t("customer.daily_solution_title")}</span>
+              <span className="rounded-full bg-slate-900 px-2 py-0.5 text-[10px] font-bold text-white">
+                {t("customer.daily_pick") || (locale === "ko" ? "오늘의 추천" : "Daily Pick")}
+              </span>
+            </div>
+
+            {/* 4-Domain Switcher */}
+            <div className="flex items-center gap-1 overflow-x-auto py-0.5">
+              {[
+                { id: "life", label: t("customer.domain_life"), icon: "💡" },
+                { id: "math", label: t("customer.domain_math"), icon: "➗" },
+                { id: "english", label: t("customer.domain_english"), icon: "🔤" },
+                { id: "korean", label: t("customer.domain_korean"), icon: "🇰🇷" },
+              ].map((d) => (
+                <button
+                  key={d.id}
+                  type="button"
+                  onClick={() => setInsightDomain(d.id as DomainType)}
+                  className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] sm:text-xs font-black transition cursor-pointer ${
+                    insightDomain === d.id
+                      ? "bg-slate-900 text-white shadow-2xs"
+                      : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                  }`}
+                >
+                  <span>{d.icon}</span>
+                  <span>{d.label}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <DailyInsightCard
+            domain={insightDomain}
+            insight={getDailyInsight(insightDomain, new Date(), locale)}
+            locale={locale}
+          />
+        </div>
+      </section>
+
       {/* ④ 10 Pastel Services Mobile App Grid (Fit Above-The-Fold on Mobile Screen!) */}
-      <section className="px-3 py-1 sm:px-4 sm:py-2">
+      <section id="services" className="px-3 py-1 sm:px-4 sm:py-2 scroll-mt-14">
         <div className="mx-auto max-w-6xl">
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3">
             {displayedServices.map((svc) => (
@@ -549,6 +599,11 @@ export function CustomerHome() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* ④-B. Viral Referral Program Card */}
+      <section className="mx-auto max-w-6xl px-3 pt-3 pb-1 sm:px-4">
+        <ReferralCard />
       </section>
 
       {/* ⑤ Helper Master Registration Banner (Dark Contrast, Sleek Droplet Banner) */}

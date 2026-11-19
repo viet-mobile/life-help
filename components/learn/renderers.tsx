@@ -8,6 +8,7 @@ import { siteConfig } from "@/lib/learn/sites";
 import { useSite } from "./LearnerProvider";
 import { RichText } from "./RichText";
 import { choiceKeyIndex, isTextTarget } from "./choiceKeys";
+import { MathKeypad } from "./MathKeypad";
 
 /**
  * Renderer registry. A renderer receives the public question and controlled
@@ -120,14 +121,64 @@ registerRenderer("multiple_select", MultiRenderer);
 function TextRenderer({ q, value, onChange, disabled, onSubmit }: RendererProps) {
   const { t, site } = useSite();
   const numeric = q.type === "numeric";
+  const isMathSite = site === "math" || numeric;
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const strVal = typeof value === "string" ? value : "";
+
+  const handleInsert = (char: string) => {
+    const input = inputRef.current;
+    if (!input) {
+      onChange(strVal + char);
+      return;
+    }
+    const start = input.selectionStart ?? strVal.length;
+    const end = input.selectionEnd ?? strVal.length;
+    const nextVal = strVal.slice(0, start) + char + strVal.slice(end);
+    onChange(nextVal);
+    // restore cursor position after render
+    setTimeout(() => {
+      input.focus();
+      input.setSelectionRange(start + char.length, start + char.length);
+    }, 0);
+  };
+
+  const handleBackspace = () => {
+    const input = inputRef.current;
+    if (!input || strVal.length === 0) return;
+    const start = input.selectionStart ?? strVal.length;
+    const end = input.selectionEnd ?? strVal.length;
+    if (start === end && start > 0) {
+      const nextVal = strVal.slice(0, start - 1) + strVal.slice(end);
+      onChange(nextVal);
+      setTimeout(() => {
+        input.focus();
+        input.setSelectionRange(start - 1, start - 1);
+      }, 0);
+    } else if (start !== end) {
+      const nextVal = strVal.slice(0, start) + strVal.slice(end);
+      onChange(nextVal);
+      setTimeout(() => {
+        input.focus();
+        input.setSelectionRange(start, start);
+      }, 0);
+    }
+  };
+
+  const handleClear = () => {
+    onChange("");
+    inputRef.current?.focus();
+  };
+
   return (
     <div>
       <label className="l-sr" htmlFor={`ans-${q.id}`}>
         {t("lesson.answer.placeholder")}
       </label>
       <input
+        ref={inputRef}
         id={`ans-${q.id}`}
-        className="l-input"
+        className="l-input text-lg font-mono tracking-wide"
         type="text"
         // "text" (not "decimal") so students can type minus signs and fractions on phones.
         inputMode="text"
@@ -139,7 +190,7 @@ function TextRenderer({ q, value, onChange, disabled, onSubmit }: RendererProps)
         lang={!numeric ? siteConfig(site).targetLanguage?.code : undefined}
         dir="ltr"
         placeholder={numeric ? t("lesson.answer.numeric") : t("lesson.answer.placeholder")}
-        value={typeof value === "string" ? value : ""}
+        value={strVal}
         disabled={disabled}
         maxLength={numeric ? 32 : 120}
         onChange={(e) => onChange(e.target.value)}
@@ -150,6 +201,15 @@ function TextRenderer({ q, value, onChange, disabled, onSubmit }: RendererProps)
           onSubmit();
         }}
       />
+      {isMathSite && (
+        <MathKeypad
+          onInsert={handleInsert}
+          onBackspace={handleBackspace}
+          onClear={handleClear}
+          onSubmit={onSubmit}
+          disabled={disabled}
+        />
+      )}
     </div>
   );
 }

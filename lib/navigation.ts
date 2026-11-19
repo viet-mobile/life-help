@@ -8,13 +8,10 @@ export function getMainHomeHref(): string {
   const { hostname, protocol, port } = window.location;
   const portStr = port ? `:${port}` : "";
 
-  // Handle subdomain navigation (e.g., tech.life.help -> life.help)
-  if (
-    hostname.startsWith("tech.") ||
-    hostname.startsWith("chat.") ||
-    hostname.startsWith("admin.")
-  ) {
-    const mainHost = hostname.replace(/^(tech|chat|admin)\./, "");
+  // Handle subdomain navigation (e.g., tech.life.help -> life.help, science.life.help -> life.help)
+  const SUBDOMAINS = /^(tech|chat|admin|math|english|korean|science|physics|chemistry)\./;
+  if (SUBDOMAINS.test(hostname)) {
+    const mainHost = hostname.replace(SUBDOMAINS, "");
     return `${protocol}//${mainHost}${portStr}/`;
   }
 
@@ -27,16 +24,13 @@ export function navigateToMainHome(e?: React.MouseEvent) {
   const { hostname, protocol, port } = window.location;
   const portStr = port ? `:${port}` : "";
 
-  if (
-    hostname.startsWith("tech.") ||
-    hostname.startsWith("chat.") ||
-    hostname.startsWith("admin.")
-  ) {
+  const SUBDOMAINS = /^(tech|chat|admin|math|english|korean|science|physics|chemistry)\./;
+  if (SUBDOMAINS.test(hostname)) {
     if (e) {
       e.preventDefault();
       e.stopPropagation();
     }
-    const mainHost = hostname.replace(/^(tech|chat|admin)\./, "");
+    const mainHost = hostname.replace(SUBDOMAINS, "");
     window.location.href = `${protocol}//${mainHost}${portStr}/`;
   }
 }

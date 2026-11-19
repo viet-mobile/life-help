@@ -1,11 +1,21 @@
 // Service Worker for LIFE.HELP PWA.
-// Policy: HTML, APIs and anything personal or authenticated are NEVER stored. Only content-hashed build output and static icons are cached;
-// when a page navigation fails because the device is offline, a small localized /offline.html is shown (not the Korean home page).
-const VERSION = "v2";
+const VERSION = "v3";
 const STATIC_CACHE = `life-help-static-${VERSION}`;
 const OFFLINE_URL = "/offline.html";
 const PRECACHE = [OFFLINE_URL, "/icon-192.png", "/icon-512.png"];
 const MAX_STATIC_ENTRIES = 120;
+
+// On localhost/development, never intercept or cache; immediately unregister
+if (typeof self !== "undefined" && (self.location.hostname === "localhost" || self.location.hostname === "127.0.0.1")) {
+  self.addEventListener("install", () => self.skipWaiting());
+  self.addEventListener("activate", (event) => {
+    event.waitUntil(
+      caches.keys().then((keys) => Promise.all(keys.map((k) => caches.delete(k))))
+        .then(() => self.registration.unregister())
+        .then(() => self.clients.claim())
+    );
+  });
+}
 
 // Same-origin paths that are never handled by the worker at all (always straight to the network).
 const BYPASS_PREFIXES = ["/api/", "/admin", "/tech", "/chat", "/login", "/auth", "/jiu", "/sys", "/payment", "/request", "/review", "/study", "/learn-content/"];

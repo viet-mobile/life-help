@@ -10,6 +10,8 @@ import { learnHost, parseLearnHost } from "@/lib/learn/hosts";
 import { siteConfig } from "@/lib/learn/sites";
 import { SITES, isSite, schoolLevel } from "@/lib/learn/types";
 import { hubLabels } from "@/components/think/hubLabels";
+import { getDailyInsight, DomainType } from "@/lib/learn/dailyInsights";
+import { DailyInsightCard } from "@/components/learn/DailyInsightCard";
 
 export default async function Landing({ params }: { params: Promise<{ site: string }> }) {
   const { site } = await params;
@@ -20,6 +22,7 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
   const { bundle } = await loadContent(site, locale);
   const userId = await getUserId();
   const hasProfile = userId ? !!(await getLearnService().getState({ userId }, site)).profile : false;
+  const dailyInsight = getDailyInsight(site, new Date(), locale);
   // Links to the other learning sites: same stage (production / staging) on their own hosts, or the /study path locally.
   const stage = parseLearnHost(h.get("host") ?? "")?.stage;
   const others = SITES.filter((s) => s !== site).map((s) => ({ site: s, href: stage && stage !== "local" ? `https://${learnHost(s, stage)}` : `/study/${s}` }));
@@ -44,6 +47,11 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
         <p style={{ fontSize: "0.85rem", opacity: 0.9 }}>
           <Link className="l-link" href={`${base}/privacy`}>{t("legal.privacy")}</Link> · <Link className="l-link" href={`${base}/terms`}>{t("legal.terms")}</Link>
         </p>
+      </section>
+
+      {/* 실전 인생 도움 데일리 팁 카드 */}
+      <section className="l-stack">
+        <DailyInsightCard domain={site as DomainType} insight={dailyInsight} locale={locale} />
       </section>
 
       <section className="l-stack" aria-labelledby="how-h">

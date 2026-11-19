@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
-import { useLocale } from "@/lib/i18n/LocaleContext";
+import { useLocale, resolveLocaleFromPath } from "@/lib/i18n/LocaleContext";
 import { type Locale, languages, isValidLocale, formatLanguageName } from "@/messages";
+import { isDualScriptLocale, DUAL_SCRIPT_LANGUAGES } from "@/lib/i18n/scriptConverter";
 
 interface LanguageSwitcherProps {
   locale?: Locale;
@@ -18,13 +19,36 @@ export function LanguageSwitcher({
   const context = useLocale();
 
   const currentLocale = propLocale ?? context.locale;
+  const isDualScript = isDualScriptLocale(currentLocale);
+  const scriptMeta = isDualScript ? DUAL_SCRIPT_LANGUAGES[currentLocale] : null;
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const val = e.target.value;
     if (isValidLocale(val)) {
       if (propOnChange) {
         propOnChange(val);
-      } else {
-        context.setLocale(val);
+      }
+      context.setLocale(val);
+      if (typeof window !== "undefined") {
+        const isIp = /^(?:\d{1,3}\.){3}\d{1,3}$/.test(window.location.hostname);
+        if (isIp) {
+          // On local LAN IP access, avoid URL prefix rewrites; context.setLocale re-renders instantly
+          return;
+        }
+        const pathname = window.location.pathname;
+        const currentUrlLang = resolveLocaleFromPath(pathname);
+        const search = window.location.search || "";
+        const hash = window.location.hash || "";
+
+        if (currentUrlLang) {
+          const stripped = pathname.replace(new RegExp(`^/${currentUrlLang}(?=/|$)`, "i"), "") || "/";
+          const targetPath = val === "ko" ? stripped : `/${val}${stripped === "/" ? "" : stripped}`;
+          window.location.href = `${targetPath}${search}${hash}`;
+        } else if (val !== "ko") {
+          const targetPath = `/${val}${pathname === "/" ? "" : pathname}`;
+          window.location.href = `${targetPath}${search}${hash}`;
+        } else {
+          window.location.href = `${pathname}${search}${hash}`;
+        }
       }
     }
   };
@@ -58,6 +82,46 @@ export function LanguageSwitcher({
           ))}
         </select>
       </div>
+
+      {isDualScript && scriptMeta && (
+        <div
+          dir="ltr"
+          className="droplet-pill inline-flex p-0.5 bg-slate-100 border border-slate-200 text-xs font-bold shadow-2xs shrink-0"
+          role="group"
+          aria-label="Script selection"
+        >
+          <button
+            type="button"
+            onClick={() => context.setScript("latn")}
+            className={`droplet-btn min-h-11 min-w-9 px-2 py-1 transition text-xs flex items-center justify-center gap-1 shrink-0 ${
+              context.script === "latn"
+                ? "bg-white text-blue-700 shadow-xs font-black ring-1 ring-slate-300/60"
+                : "text-slate-600 hover:text-slate-900 font-semibold"
+            }`}
+            title={scriptMeta.latinName}
+            aria-label={scriptMeta.latinName}
+            aria-pressed={context.script === "latn"}
+          >
+            <span className="font-mono text-xs font-black">A</span>
+            <span className="text-[11px] sm:text-xs">{scriptMeta.latinLabel}</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => context.setScript("cyrl")}
+            className={`droplet-btn min-h-11 min-w-9 px-2 py-1 transition text-xs flex items-center justify-center gap-1 shrink-0 ${
+              context.script === "cyrl"
+                ? "bg-white text-blue-700 shadow-xs font-black ring-1 ring-slate-300/60"
+                : "text-slate-600 hover:text-slate-900 font-semibold"
+            }`}
+            title={scriptMeta.cyrillicName}
+            aria-label={scriptMeta.cyrillicName}
+            aria-pressed={context.script === "cyrl"}
+          >
+            <span className="font-mono text-xs font-black">Я</span>
+            <span className="text-[11px] sm:text-xs">{scriptMeta.cyrillicLabel}</span>
+          </button>
+        </div>
+      )}
 
       {currentLocale !== "ko" && (
         <div className="droplet-pill inline-flex p-0.5 bg-slate-100 border border-slate-200 text-xs font-bold shadow-2xs shrink-0">

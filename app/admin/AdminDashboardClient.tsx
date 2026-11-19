@@ -1076,7 +1076,7 @@ export default function AdminDashboardClient({
           </section>
         )}
 
-        {/* TAB 5: ⭐ 익명 고객 리뷰 관리 콘솔 (contact@life.help) */}
+        {/* TAB 5: ⭐ 익명 고객 리뷰 관리 콘솔 (sys@life.help) */}
         {activeTab === "reviews" && (
           <section className="space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-900/60 p-5 rounded-2xl border border-slate-800">
@@ -1095,7 +1095,7 @@ export default function AdminDashboardClient({
                   {t("admin.reviewCount")}: {reviews.length}{t("admin.unitCases")}
                 </span>
                 <span className="rounded-xl border border-blue-500/40 bg-blue-950/40 px-3 py-1.5 text-xs font-bold text-blue-300 font-mono">
-                  contact@life.help
+                  sys@life.help
                 </span>
               </div>
             </div>
@@ -1134,7 +1134,7 @@ export default function AdminDashboardClient({
                     </div>
 
                     <div className="flex items-center justify-between text-[11px] text-slate-500 pt-1">
-                      <span>{t("admin.reviewRecipient")}: contact@life.help</span>
+                      <span>{t("admin.reviewRecipient")}: sys@life.help</span>
                       <span>{new Date(rev.createdAt).toLocaleString()} · {t("admin.reviewAnonymous")}</span>
                     </div>
                   </div>

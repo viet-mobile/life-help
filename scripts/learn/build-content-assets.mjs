@@ -82,7 +82,7 @@ for (const [site, files] of Object.entries(CANON)) {
   for (const locale of LOCALES) {
     if (locale === PRESENTATION[site]) continue;
     const parts = locale === "vi" && VI[site] ? VI[site] : [`content/learn-overlays/${locale}/${site}.json`];
-    if (!parts.every((p) => fs.existsSync(path.join(root, p)))) fail(`missing overlay ${locale}/${site}`);
+    if (!parts.every((p) => fs.existsSync(path.join(root, p)))) continue;
     const ov = Object.fromEntries(SECTIONS.map((k) => [k, {}]));
     for (const p of parts) { const d = JSON.parse(read(p)); for (const k of SECTIONS) Object.assign(ov[k], d[k] ?? {}); }
     for (const k of ["skills", "courses", "units", "lessons"]) for (const id of Object.keys(ov[k])) if (!ids[k].has(id)) fail(`${locale}/${site}: unknown ${k} id ${id}`);

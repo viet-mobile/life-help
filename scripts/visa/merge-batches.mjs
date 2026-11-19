@@ -4,11 +4,12 @@ import fs from "node:fs";
 import path from "node:path";
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), "../..");
 const dir = path.join(root, "lib/visa/data/batches");
-const base = JSON.parse(fs.readFileSync(path.join(root, "lib/visa/data/visa-info.json"), "utf8"));
+const destsText = fs.readFileSync(path.join(root, "lib/visa/destinations.ts"), "utf8");
+const slugs = [...destsText.matchAll(/\["([^"]+)",/g)].map((m) => m[1]);
 const got = new Map();
 for (const f of fs.readdirSync(dir).filter((x) => /^batch-\d+\.json$/.test(x)).sort()) for (const d of JSON.parse(fs.readFileSync(path.join(dir, f), "utf8"))) got.set(d.slug, d);
-const merged = base.map((b) => got.get(b.slug) ?? b);
-const missing = base.filter((b) => !got.has(b.slug)).map((b) => b.slug);
+const merged = slugs.map((slug) => got.get(slug)).filter(Boolean);
+const missing = slugs.filter((slug) => !got.has(slug));
 const linksOf = (d) => [...d.officialPortals, ...Object.values(d.purposes).flatMap((p) => p?.links ?? [])];
 if (process.argv.includes("--hosts")) {
   const hostCount = new Map();
