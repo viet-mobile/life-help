@@ -7,7 +7,7 @@
  * about the QUALITY of an explanation or a written text is shown as "not confirmed - compare with the model answers / ask a teacher",
  * is never turned into a right/wrong verdict, and always allows a retry and a "my answer is also valid" flag.
  */
-export type Subject = "math" | "english" | "korean";
+export type Subject = "math" | "english" | "korean" | "science" | "physics" | "chemistry";
 /** The language the task was authored in (see lib/think/lang.ts for the languages it is available in). */
 export type ThinkLang = "ko" | "en";
 

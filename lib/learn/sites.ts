@@ -20,7 +20,7 @@ export interface SiteConfig {
   presentationLocale: LearnLocale;
   /** locale used when the learner has made no choice yet (deterministic: no header guessing) */
   defaultLocale: LearnLocale;
-  brandKey: "brand.math" | "brand.english" | "brand.korean";
+  brandKey: "brand.math" | "brand.english" | "brand.korean" | "brand.science" | "brand.physics" | "brand.chemistry";
   themeColor: string;
 }
 
@@ -41,6 +41,21 @@ export const SITE_CONFIG: Record<Site, SiteConfig> = {
     // One romanization system only (Revised Romanization of Korean); it is an optional reading aid, never part of an answer key.
     targetLanguage: { code: "ko", speech: "ko-KR", romanization: "revised-romanization" }, presentationLocale: "en", defaultLocale: "en",
     brandKey: "brand.korean", themeColor: "#be123c",
+  },
+  science: {
+    site: "science", levels: SCHOOL_GRADES, levelGroups: SCHOOL_GROUPS,
+    targetLanguage: null, presentationLocale: "ko", defaultLocale: "ko",
+    brandKey: "brand.science", themeColor: "#0284c7",
+  },
+  physics: {
+    site: "physics", levels: SCHOOL_GRADES, levelGroups: SCHOOL_GROUPS,
+    targetLanguage: null, presentationLocale: "ko", defaultLocale: "ko",
+    brandKey: "brand.physics", themeColor: "#6366f1",
+  },
+  chemistry: {
+    site: "chemistry", levels: SCHOOL_GRADES, levelGroups: SCHOOL_GROUPS,
+    targetLanguage: null, presentationLocale: "ko", defaultLocale: "ko",
+    brandKey: "brand.chemistry", themeColor: "#0d9488",
   },
 };
 

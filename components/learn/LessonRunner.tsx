@@ -16,6 +16,7 @@ import { EXAMPLE_KO } from "@/lib/learn/content/listening/examples-ko";
 import { ResultScreen, type SessionResult } from "./ResultScreen";
 import { useEnterToContinue } from "./useEnterToContinue";
 import { PremiumGate } from "./PremiumGate";
+import { LabBuilderView } from "./LabBuilderView";
 
 type Kind = "lesson" | "review" | "practice";
 interface StartResponse {
@@ -52,6 +53,8 @@ export function LessonRunner({ kind, lessonId, skillId, mode }: { kind: Kind; le
   const [i, setI] = useState(0);
   const [firstTryIds, setFirstTryIds] = useState<string[]>([]);
   const [totals, setTotals] = useState<Totals>({ xp: 0, coins: 0, achievements: [], quest: false });
+  const [streak, setStreak] = useState(0);
+  const [bonusPieces, setBonusPieces] = useState(0);
   const [startLevel, setStartLevel] = useState(1);
   const [result, setResult] = useState<SessionResult | null>(null);
 
@@ -76,6 +79,8 @@ export function LessonRunner({ kind, lessonId, skillId, mode }: { kind: Kind; le
       setCoreIds(res.questions.map((x) => x.id));
       setI(0);
       setFirstTryIds([]);
+      setStreak(0);
+      setBonusPieces(0);
       setTotals({ xp: 0, coins: 0, achievements: [], quest: false });
       setStartLevel(levelProgress(state.totalXp).level);
       setResult(null);
@@ -86,13 +91,25 @@ export function LessonRunner({ kind, lessonId, skillId, mode }: { kind: Kind; le
     }
   };
 
-  const onAttempt = (res: AttemptResponse) =>
+  const onAttempt = (res: AttemptResponse) => {
     setTotals((tt) => ({
       xp: tt.xp + res.delta.xp,
       coins: tt.coins + res.delta.coins,
       achievements: [...tt.achievements, ...res.delta.newAchievements],
       quest: tt.quest || res.delta.questCompleted,
     }));
+    if (res.correct) {
+      setStreak((s) => {
+        const next = s + 1;
+        if (next > 0 && next % 3 === 0) {
+          setBonusPieces((b) => b + 1);
+        }
+        return next;
+      });
+    } else {
+      setStreak(0);
+    }
+  };
 
   const finish = async (ids: string[], sums: Totals) => {
     if (!session) return;
@@ -228,6 +245,16 @@ export function LessonRunner({ kind, lessonId, skillId, mode }: { kind: Kind; le
           <span style={{ width: `${progress}%` }} />
         </div>
       </div>
+      <LabBuilderView
+        build={q.build}
+        site={site}
+        locale={locale}
+        streak={streak}
+        bonusPieces={bonusPieces}
+        lessonTitle={lesson?.lesson.title}
+        questionIndex={i}
+        totalQuestions={coreTotal}
+      />
       <QuestionCard
         key={q.id}
         q={q}

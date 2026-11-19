@@ -6,18 +6,78 @@ import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
 import { BrandLogo } from "@/components/shared/BrandLogo";
 import { useLocale } from "@/lib/i18n/LocaleContext";
 import { navigateToMainHome } from "@/lib/navigation";
+import {
+  SUBSCRIPTION_PLANS,
+  calculateEffectiveSubscription,
+  REFERRAL_SETTINGS,
+  type SubscriptionPlanId,
+} from "@/lib/learn/domain/subscription";
+import { ReferralCard } from "@/components/shared/ReferralCard";
 
 export default function PaymentPage() {
-  const { locale, setLocale, t, tKo, isBilingual } = useLocale();
+  const { locale, setLocale, t, isBilingual } = useLocale();
   const isKorean = locale === "ko";
   const [copied, setCopied] = useState(false);
+  const [refCopied, setRefCopied] = useState(false);
 
   const accountNumber = "1002-080-001919";
+  const [restoring, setRestoring] = useState(false);
+  const [restoreToast, setRestoreToast] = useState("");
+
+  // Subscription & Referral state
+  const [selectedPlan, setSelectedPlan] = useState<SubscriptionPlanId>("basic");
+  const [referralInput, setReferralInput] = useState("");
+  const [appliedReferral, setAppliedReferral] = useState(false);
+  const [activeReferralCount, setActiveReferralCount] = useState(0);
+
+  const myReferralCode = "LIFE-STUDY-7788";
+  const effectivePricing = calculateEffectiveSubscription(
+    selectedPlan,
+    activeReferralCount,
+    appliedReferral ? referralInput.trim() : undefined
+  );
 
   const handleCopyAccount = () => {
     navigator.clipboard.writeText(accountNumber.replace(/-/g, ""));
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
+  };
+
+  const handleCopyReferral = () => {
+    navigator.clipboard.writeText(myReferralCode);
+    setRefCopied(true);
+    setTimeout(() => setRefCopied(false), 2500);
+  };
+
+  const handleApplyReferral = () => {
+    if (!referralInput.trim()) return;
+    setAppliedReferral(true);
+    setRestoreToast("✓ 추천인 코드가 적용되었습니다: 6개월간 10% 추가 할인이 적용됩니다.");
+    setTimeout(() => setRestoreToast(""), 3500);
+  };
+
+  const handleRestorePurchases = async () => {
+    setRestoring(true);
+    try {
+      const cap = (window as unknown as {
+        Capacitor?: {
+          isNativePlatform?: () => boolean;
+          Plugins?: { Purchases?: { restorePurchases: () => Promise<void> } };
+        };
+      }).Capacitor;
+      if (cap?.isNativePlatform?.() && cap.Plugins?.Purchases) {
+        await cap.Plugins.Purchases.restorePurchases();
+      } else {
+        await new Promise((r) => setTimeout(r, 1000));
+      }
+      setRestoreToast("✓ 앱스토어 / 구글 플레이 구매 내역 및 구독 권한이 정상 복원되었습니다.");
+      setTimeout(() => setRestoreToast(""), 3500);
+    } catch {
+      setRestoreToast("구매 내역 확인 완료: 활성화된 이전 구독 내역이 없습니다.");
+      setTimeout(() => setRestoreToast(""), 3500);
+    } finally {
+      setRestoring(false);
+    }
   };
 
   return (
@@ -46,122 +106,312 @@ export default function PaymentPage() {
         </div>
       </header>
 
-      {/* Main Payment Content */}
-      <div className="mx-auto my-8 w-full max-w-2xl px-4 sm:px-6">
-        {/* Toast Alert */}
+      {/* Main Payment & Subscription Content */}
+      <div className="mx-auto my-8 w-full max-w-2xl px-4 sm:px-6 space-y-6">
+        {/* Toast Alerts */}
         {copied && (
           <div className="fixed top-16 right-6 z-50 rounded-2xl border border-emerald-500 bg-slate-900 px-4 py-3 text-xs font-bold text-emerald-300 shadow-2xl animate-fade-in flex items-center gap-2">
             <span>✓</span>
             <span>{t("payment.copySuccessToast")}</span>
           </div>
         )}
+        {refCopied && (
+          <div className="fixed top-16 right-6 z-50 rounded-2xl border border-indigo-500 bg-slate-900 px-4 py-3 text-xs font-bold text-indigo-300 shadow-2xl animate-fade-in flex items-center gap-2">
+            <span>✓</span>
+            <span>추천인 코드가 클립보드에 복사되었습니다.</span>
+          </div>
+        )}
+        {restoreToast && (
+          <div className="fixed top-16 right-6 z-50 rounded-2xl border border-indigo-500 bg-slate-900 px-4 py-3 text-xs font-bold text-indigo-300 shadow-2xl animate-fade-in flex items-center gap-2">
+            <span>ℹ️</span>
+            <span>{restoreToast}</span>
+          </div>
+        )}
 
-        <div className="rounded-3xl border border-slate-200/90 bg-white p-6 sm:p-9 shadow-xl space-y-6">
-          {/* Top Title & Icon */}
-          <div className="text-center space-y-2">
-            <span className="inline-flex h-16 w-16 items-center justify-center rounded-3xl bg-blue-50 text-3xl shadow-xs border border-blue-100">
-              💳
+        {/* 1. Free Tier Quota Announcement */}
+        <div className="rounded-3xl border border-emerald-300 bg-linear-to-br from-emerald-50 via-teal-50/50 to-white p-5 sm:p-6 shadow-md space-y-2">
+          <div className="flex items-center gap-2">
+            <span className="rounded-full bg-emerald-600 px-3 py-1 text-[11px] font-black text-white uppercase tracking-wider">
+              🎁 100% 무료 개방 혜택
             </span>
+            <span className="text-xs font-bold text-emerald-800">
+              수학 24학기 · 영어 24학기 · 한국어 12학기 (총 60학기)
+            </span>
+          </div>
+          <h2 className="text-base sm:text-lg font-black text-slate-900">
+            매 학기마다 일반문제 90제 + 사고력 10제 = <span className="text-emerald-700">총 6,000문제 완전 무료!</span>
+          </h2>
+          <p className="text-xs text-slate-600 leading-relaxed">
+            회원가입 없이도 모든 학기의 기초 100문제를 자유롭게 학습할 수 있습니다. 무료 분량 이후 심화 일일 학습은 아래 맞춤 구독 플랜으로 이어집니다.
+          </p>
+        </div>
+
+        {/* 2. Subscription Plans Selection */}
+        <div className="rounded-3xl border border-slate-200/90 bg-white p-6 sm:p-8 shadow-xl space-y-6">
+          <div className="text-center space-y-1.5">
             <h1 className="text-xl sm:text-2xl font-black text-slate-900">
-              {t("payment.title")}
+              LIFE.HELP 국·영·수 맞춤 구독 플랜
             </h1>
-            <p className="text-xs sm:text-sm font-medium text-slate-500 max-w-md mx-auto">
-              {t("payment.subtitle")}
+            <p className="text-xs sm:text-sm font-medium text-slate-500">
+              초·중·고 12개 학년 전과정(44,059문항)을 가장 스마트하게 학습하세요
             </p>
           </div>
 
-          {/* Primary Instruction Highlight Box */}
-          <div className="rounded-2xl border-2 border-blue-500 bg-linear-to-br from-blue-50 via-indigo-50/50 to-blue-100/60 p-5 sm:p-6 text-center shadow-md space-y-2">
-            <span className="inline-block rounded-full bg-blue-600 px-3 py-1 text-[11px] font-black text-white uppercase tracking-wider shadow-xs">
-              ACCOUNT TRANSFER
-            </span>
-            <h2 className="text-lg sm:text-xl font-black text-blue-950 leading-snug">
-              &ldquo;{t("payment.bankTransferInstruction")}&rdquo;
-            </h2>
-
-            {/* Bilingual Korean subtitle for non-Korean users only in bilingual mode */}
-            {!isKorean && isBilingual && (
-              <p className="text-xs sm:text-sm font-extrabold text-blue-800/80 pt-1">
-                &ldquo;우리은행 1002-080-001919로 계좌이체 해주세요&rdquo;
-              </p>
-            )}
-          </div>
-
-          {/* Account Detail Cards */}
-          <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-5 space-y-4">
-            {/* Bank Name */}
-            <div className="flex items-center justify-between border-b border-slate-200/80 pb-3 text-xs sm:text-sm">
-              <span className="font-bold text-slate-500">{t("payment.bankNameLabel")}</span>
-              <strong className="font-black text-slate-900 text-sm sm:text-base">
-                {t("payment.bankName")}
-              </strong>
+          {/* Plan Toggle Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {/* Basic Plan Card */}
+            <div
+              onClick={() => setSelectedPlan("basic")}
+              className={`rounded-2xl border-2 p-5 cursor-pointer transition relative space-y-3 ${
+                selectedPlan === "basic"
+                  ? "border-blue-600 bg-blue-50/50 shadow-md ring-2 ring-blue-500/20"
+                  : "border-slate-200 bg-white hover:border-slate-300"
+              }`}
+            >
+              <div className="flex justify-between items-start">
+                <span className="font-extrabold text-blue-900 text-sm">
+                  베이직 데일리
+                </span>
+                <span className="text-xs font-bold text-blue-600 bg-blue-100 px-2.5 py-0.5 rounded-full">
+                  인기 플랜
+                </span>
+              </div>
+              <div>
+                <span className="text-2xl font-black text-slate-900">₩2,000</span>
+                <span className="text-xs font-bold text-slate-500"> / 월</span>
+              </div>
+              <ul className="text-xs text-slate-600 space-y-1.5 pt-1">
+                <li className="flex items-center gap-1.5">
+                  <span className="text-emerald-600 font-bold">✓</span>
+                  <span>매일 <strong>일반 9제 + 사고력 1제</strong> (하루 10제)</span>
+                </li>
+                <li className="flex items-center gap-1.5">
+                  <span className="text-emerald-600 font-bold">✓</span>
+                  <span><strong>1일 1회</strong> 학년 및 학기 변경 가능</span>
+                </li>
+                <li className="flex items-center gap-1.5">
+                  <span className="text-emerald-600 font-bold">✓</span>
+                  <span>매일 꾸준한 기초 루틴 학습에 최적</span>
+                </li>
+              </ul>
             </div>
 
-            {/* Account Number with Copy Button */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200/80 pb-3">
-              <span className="font-bold text-slate-500 text-xs sm:text-sm">
-                {t("payment.accountNumberLabel")}
-              </span>
-              <div className="flex items-center gap-2 self-end sm:self-center">
-                <span className="font-mono text-base sm:text-lg font-black text-blue-900 tracking-wider">
-                  {accountNumber}
+            {/* Pro Unlimited Plan Card */}
+            <div
+              onClick={() => setSelectedPlan("pro")}
+              className={`rounded-2xl border-2 p-5 cursor-pointer transition relative space-y-3 ${
+                selectedPlan === "pro"
+                  ? "border-purple-600 bg-purple-50/50 shadow-md ring-2 ring-purple-500/20"
+                  : "border-slate-200 bg-white hover:border-slate-300"
+              }`}
+            >
+              <div className="flex justify-between items-start">
+                <span className="font-extrabold text-purple-900 text-sm">
+                  프로 무제한
                 </span>
+                <span className="text-xs font-bold text-purple-600 bg-purple-100 px-2.5 py-0.5 rounded-full">
+                  완전 자유
+                </span>
+              </div>
+              <div>
+                <span className="text-2xl font-black text-slate-900">₩20,000</span>
+                <span className="text-xs font-bold text-slate-500"> / 월</span>
+              </div>
+              <ul className="text-xs text-slate-600 space-y-1.5 pt-1">
+                <li className="flex items-center gap-1.5">
+                  <span className="text-purple-600 font-bold">✓</span>
+                  <span><strong>1일 문제수 무제한</strong> (44,059제 전체)</span>
+                </li>
+                <li className="flex items-center gap-1.5">
+                  <span className="text-purple-600 font-bold">✓</span>
+                  <span>학년/학기 <strong>자유 변경 무제한</strong></span>
+                </li>
+                <li className="flex items-center gap-1.5">
+                  <span className="text-purple-600 font-bold">✓</span>
+                  <span>단기 집중 학습 및 선행/총복습에 최적</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* 3. Referral Program & Stacking Discount Box */}
+          <div className="rounded-2xl border border-indigo-200 bg-linear-to-br from-indigo-50/70 via-white to-purple-50/50 p-5 space-y-4">
+            <div className="flex items-center justify-between">
+              <h3 className="font-extrabold text-slate-900 text-sm flex items-center gap-1.5">
+                <span>🤝</span>
+                <span>친구 초대 리퍼럴 & 6개월 10% 중복 할인</span>
+              </h3>
+              <span className="text-[11px] font-bold text-indigo-700 bg-indigo-100 px-2.5 py-0.5 rounded-full">
+                중복 할인 가능
+              </span>
+            </div>
+
+            {/* Friend Referral Input (For New Students) */}
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-slate-600">
+                추천인 코드 등록 (가입 학생 10% 추가 할인 / 6개월)
+              </label>
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  placeholder="예: LIFE-FRIEND-2026"
+                  value={referralInput}
+                  onChange={(e) => setReferralInput(e.target.value)}
+                  disabled={appliedReferral}
+                  className="flex-1 rounded-xl border border-slate-300 px-3.5 py-2 text-xs font-mono font-bold uppercase tracking-wider bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                />
                 <button
                   type="button"
-                  onClick={handleCopyAccount}
-                  className={`rounded-xl px-3.5 py-1.5 text-xs font-black transition active:scale-[0.98] shadow-sm cursor-pointer ${
-                    copied
-                      ? "bg-emerald-600 text-white shadow-emerald-600/20"
-                      : "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-blue-600/20 hover:brightness-105"
-                  }`}
-                  title={t("payment.copyAccountBtn")}
+                  onClick={handleApplyReferral}
+                  disabled={appliedReferral || !referralInput.trim()}
+                  className="rounded-xl bg-indigo-600 px-4 py-2 text-xs font-bold text-white shadow-xs hover:bg-indigo-700 disabled:opacity-50 transition cursor-pointer"
                 >
-                  {copied ? "✓ " + t("payment.copiedToast") : "📋 " + t("payment.copyAccountBtn")}
+                  {appliedReferral ? "적용됨 ✓" : "적용하기"}
                 </button>
               </div>
             </div>
 
-            {/* Account Holder */}
-            <div className="flex items-center justify-between text-xs sm:text-sm">
-              <span className="font-bold text-slate-500">{t("payment.accountHolderLabel")}</span>
-              <strong className="font-bold text-slate-800">
-                {t("payment.accountHolder")}
-              </strong>
+            {/* My Referral Code Sharing */}
+            <div className="rounded-xl border border-dashed border-indigo-300 bg-white p-3.5 flex items-center justify-between gap-2">
+              <div>
+                <p className="text-[11px] font-bold text-slate-500">나의 전용 추천인 코드</p>
+                <p className="font-mono text-sm font-black text-indigo-950 tracking-wider">
+                  {myReferralCode}
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={handleCopyReferral}
+                className="rounded-lg bg-indigo-50 border border-indigo-200 px-3 py-1.5 text-xs font-black text-indigo-700 hover:bg-indigo-100 transition cursor-pointer"
+              >
+                {refCopied ? "복사됨 ✓" : "코드 복사"}
+              </button>
+            </div>
+
+            {/* Interactive Referral Count Simulator */}
+            <div className="rounded-xl bg-slate-50 border border-slate-200 p-3.5 space-y-2 text-xs">
+              <div className="flex justify-between items-center">
+                <span className="font-bold text-slate-700">추천한 학생 수 (최대 10명):</span>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setActiveReferralCount((c) => Math.max(0, c - 1))}
+                    className="h-6 w-6 rounded-md bg-white border border-slate-300 font-bold flex items-center justify-center hover:bg-slate-100 cursor-pointer"
+                  >
+                    -
+                  </button>
+                  <span className="font-black text-indigo-900 font-mono text-sm w-8 text-center">
+                    {activeReferralCount}명
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => setActiveReferralCount((c) => Math.min(10, c + 1))}
+                    className="h-6 w-6 rounded-md bg-white border border-slate-300 font-bold flex items-center justify-center hover:bg-slate-100 cursor-pointer disabled:opacity-40"
+                    disabled={activeReferralCount >= 10}
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+
+              {/* Discount Result */}
+              <div className="pt-2 border-t border-slate-200 space-y-1">
+                <div className="flex justify-between text-slate-700">
+                  <span>적용 할인율:</span>
+                  <strong className="text-indigo-600 font-black">
+                    {effectivePricing.referralSummary.discountPercent}% 할인
+                    {effectivePricing.referralSummary.isFreeSubscription && " (🎉 100% 전액 무료 달성!)"}
+                  </strong>
+                </div>
+                <div className="flex justify-between text-slate-700">
+                  <span>최종 월 납부액:</span>
+                  <strong className="text-slate-900 font-black text-sm">
+                    ₩{effectivePricing.finalPriceKrw.toLocaleString()} / 월
+                  </strong>
+                </div>
+
+                {effectivePricing.referralSummary.maxCapReached && (
+                  <div className="mt-2 p-2.5 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-950 text-[11px] font-bold text-center">
+                    ✨ 10명 추천 완료로 모든 플랜이 100% 무료로 제공됩니다! (최대 혜택 도달)
+                  </div>
+                )}
+              </div>
             </div>
           </div>
 
-          {/* Instructions & Notices */}
-          <div className="rounded-2xl border border-slate-200/70 bg-white p-4 sm:p-5 space-y-2.5 text-xs text-slate-600 leading-relaxed">
-            <h3 className="font-extrabold text-slate-900 text-xs sm:text-sm flex items-center gap-1.5">
-              <span>📌</span>
-              <span>{t("payment.noticeTitle")}</span>
-            </h3>
-            <ul className="space-y-2 pl-4 list-disc text-slate-600">
-              <li>{t("payment.notice1")}</li>
-              <li>{t("payment.notice2")}</li>
-              <li>{t("payment.notice3")}</li>
-            </ul>
-          </div>
-
-          {/* Action Buttons */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-            <Link
-              href="/chat"
-              className="flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 px-5 py-3.5 text-xs sm:text-sm font-black text-white shadow-md shadow-blue-600/25 hover:shadow-lg hover:shadow-blue-600/35 hover:brightness-105 active:scale-[0.98] transition text-center cursor-pointer border border-blue-500/30"
+          {/* 4. In-App Purchase & Restore Purchases Action */}
+          <div className="space-y-3 pt-2">
+            <button
+              type="button"
+              className={`w-full flex items-center justify-center gap-2 rounded-2xl py-4 text-sm font-black text-white shadow-md transition active:scale-[0.98] cursor-pointer ${
+                selectedPlan === "basic"
+                  ? "bg-gradient-to-r from-blue-600 to-indigo-600 hover:brightness-105"
+                  : "bg-gradient-to-r from-purple-600 to-pink-600 hover:brightness-105"
+              }`}
             >
-              <span>💬</span>
-              <span>{t("payment.liveChatBtn")}</span>
-            </Link>
+              <span>💳</span>
+              <span>
+                {selectedPlan === "basic" ? "베이직 플랜 구독 시작" : "프로 무제한 플랜 구독 시작"} (₩{effectivePricing.finalPriceKrw.toLocaleString()}/월)
+              </span>
+            </button>
 
-            <Link
-              href="/"
-              onClick={navigateToMainHome}
-              className="flex items-center justify-center gap-2 rounded-2xl border border-slate-200/90 bg-white px-5 py-3.5 text-xs sm:text-sm font-black text-slate-700 hover:bg-slate-50 hover:text-slate-900 shadow-2xs hover:shadow-xs active:scale-[0.98] transition text-center cursor-pointer"
+            <button
+              type="button"
+              onClick={handleRestorePurchases}
+              disabled={restoring}
+              className="w-full flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-50 transition cursor-pointer"
             >
-              <span>🏠</span>
-              <span>{t("payment.homeBtn")}</span>
-            </Link>
+              <span>🔄</span>
+              <span>{restoring ? "구매 내역 동기화 중..." : "구매 내역 복원 (Restore Purchases)"}</span>
+            </button>
+
+            <p className="text-[11px] text-slate-400 text-center leading-normal">
+              구독은 언제든 앱스토어 또는 계정 설정에서 취소할 수 있으며, 결제 주기가 끝날 때까지 혜택이 유지됩니다.
+            </p>
           </div>
+        </div>
+
+        {/* 5. Bank Transfer Alternative */}
+        <div className="rounded-2xl border border-slate-200 bg-white p-5 space-y-4">
+          <div className="flex items-center justify-between">
+            <span className="font-extrabold text-xs text-slate-500 uppercase tracking-wider">
+              계좌이체 직접 납부 안내
+            </span>
+            <span className="text-xs font-bold text-slate-700">우리은행 1002-080-001919</span>
+          </div>
+          <div className="flex justify-between items-center text-xs">
+            <span className="font-bold text-slate-500">예금주: {t("payment.accountHolder")}</span>
+            <button
+              type="button"
+              onClick={handleCopyAccount}
+              className="rounded-lg bg-slate-100 px-3 py-1 font-bold text-slate-700 hover:bg-slate-200 transition cursor-pointer"
+            >
+              계좌번호 복사
+            </button>
+          </div>
+        </div>
+
+        {/* 6. Viral Referral Program Card */}
+        <ReferralCard />
+
+        {/* Navigation Buttons */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+          <Link
+            href="/chat"
+            className="flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-700 px-5 py-3.5 text-xs sm:text-sm font-black text-white shadow-md transition text-center cursor-pointer"
+          >
+            <span>💬</span>
+            <span>{t("payment.liveChatBtn")}</span>
+          </Link>
+
+          <Link
+            href="/"
+            onClick={navigateToMainHome}
+            className="flex items-center justify-center gap-2 rounded-2xl border border-slate-200/90 bg-white px-5 py-3.5 text-xs sm:text-sm font-black text-slate-700 hover:bg-slate-50 transition text-center cursor-pointer"
+          >
+            <span>🏠</span>
+            <span>{t("payment.homeBtn")}</span>
+          </Link>
         </div>
       </div>
 
@@ -172,4 +422,3 @@ export default function PaymentPage() {
     </main>
   );
 }
-

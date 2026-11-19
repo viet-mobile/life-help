@@ -9,6 +9,9 @@ export type CountryCode =
   | "NZ" | "SG" | "MY" | "NG" | "SV" | "CF" | "VE"
   | "KE" | "AR"
   | "RO" | "FI" | "CZ" | "HU" | "ZM" | "UG" | "CG" | "GH" | "MZ"
+  | "GT" | "GN" | "NE" | "RW" | "MG" | "MW" | "ML" | "BF" | "SN" | "AO"
+  | "EC" | "GE" | "ZW" | "TD" | "CL" | "CM" | "CI" | "CO" | "CD" | "PE"
+  | "TZ" | "DZ" | "MA" | "BJ" | "TN" | "BO" | "BE" | "JO" | "DO" | "HN" | "AZ" | "TJ" | "PG"
   | string;
 
 export interface CountryInfo {
@@ -91,6 +94,39 @@ export const COUNTRIES: readonly CountryInfo[] = [
   { code: "CG", slug: "congo", flag: "🇨🇬", nameKo: "콩고공화국", nameEn: "Republic of the Congo", nameNative: "République du Congo", level1Category: "Département", level2Category: "District / Commune", level3Category: "Quartier / Village" },
   { code: "GH", slug: "ghana", flag: "🇬🇭", nameKo: "가나", nameEn: "Ghana", nameNative: "Ghana", level1Category: "Region", level2Category: "District / Municipal", level3Category: "Town / Area" },
   { code: "MZ", slug: "mozambique", flag: "🇲🇿", nameKo: "모잠비크", nameEn: "Mozambique", nameNative: "Moçambique", level1Category: "Província", level2Category: "Distrito", level3Category: "Posto Administrativo / Localidade" },
+  { code: "GT", slug: "guatemala", flag: "🇬🇹", nameKo: "과테말라", nameEn: "Guatemala", nameNative: "Guatemala", level1Category: "Departamento", level2Category: "Municipio", level3Category: "Zona / Aldea" },
+  { code: "GN", slug: "guinea", flag: "🇬🇳", nameKo: "기니", nameEn: "Guinea", nameNative: "Guinée", level1Category: "Région", level2Category: "Préfecture", level3Category: "Sous-préfecture" },
+  { code: "NE", slug: "niger", flag: "🇳🇪", nameKo: "니제르", nameEn: "Niger", nameNative: "Niger", level1Category: "Région", level2Category: "Département", level3Category: "Commune" },
+  { code: "RW", slug: "rwanda", flag: "🇷🇼", nameKo: "르완다", nameEn: "Rwanda", nameNative: "Rwanda", level1Category: "Intara", level2Category: "Akarere", level3Category: "Umurenge" },
+  { code: "MG", slug: "madagascar", flag: "🇲🇬", nameKo: "마다가스카르", nameEn: "Madagascar", nameNative: "Madagasikara", level1Category: "Faritra", level2Category: "Distrika", level3Category: "Kaominina" },
+  { code: "MW", slug: "malawi", flag: "🇲🇼", nameKo: "말라위", nameEn: "Malawi", nameNative: "Malawi", level1Category: "Region", level2Category: "District", level3Category: "Traditional Authority" },
+  { code: "ML", slug: "mali", flag: "🇲🇱", nameKo: "말리", nameEn: "Mali", nameNative: "Mali", level1Category: "Région", level2Category: "Cercle", level3Category: "Commune" },
+  { code: "BF", slug: "burkinafaso", flag: "🇧🇫", nameKo: "부르키나파소", nameEn: "Burkina Faso", nameNative: "Burkina Faso", level1Category: "Région", level2Category: "Province", level3Category: "Département" },
+  { code: "SN", slug: "senegal", flag: "🇸🇳", nameKo: "세네갈", nameEn: "Senegal", nameNative: "Sénégal", level1Category: "Région", level2Category: "Département", level3Category: "Commune" },
+  { code: "AO", slug: "angola", flag: "🇦🇴", nameKo: "앙골라", nameEn: "Angola", nameNative: "Angola", level1Category: "Província", level2Category: "Município", level3Category: "Comuna" },
+  { code: "EC", slug: "ecuador", flag: "🇪🇨", nameKo: "에콰도르", nameEn: "Ecuador", nameNative: "Ecuador", level1Category: "Provincia", level2Category: "Cantón", level3Category: "Parroquia" },
+  { code: "GE", slug: "georgia", flag: "🇬🇪", nameKo: "조지아", nameEn: "Georgia", nameNative: "საქართველო", level1Category: "Mkhare", level2Category: "Municipality", level3Category: "Town / Village" },
+  { code: "ZW", slug: "zimbabwe", flag: "🇿🇼", nameKo: "짐바브웨", nameEn: "Zimbabwe", nameNative: "Zimbabwe", level1Category: "Province", level2Category: "District", level3Category: "Ward" },
+  { code: "TD", slug: "chad", flag: "🇹🇩", nameKo: "차드", nameEn: "Chad", nameNative: "Tchad", level1Category: "Province", level2Category: "Département", level3Category: "Commune" },
+  { code: "CL", slug: "chile", flag: "🇨🇱", nameKo: "칠레", nameEn: "Chile", nameNative: "Chile", level1Category: "Región", level2Category: "Provincia", level3Category: "Comuna" },
+  { code: "CM", slug: "cameroon", flag: "🇨🇲", nameKo: "카메룬", nameEn: "Cameroon", nameNative: "Cameroun", level1Category: "Région", level2Category: "Département", level3Category: "Arrondissement" },
+  { code: "CI", slug: "cotedivoire", flag: "🇨🇮", nameKo: "코트디부아르", nameEn: "Ivory Coast", nameNative: "Côte d'Ivoire", level1Category: "District", level2Category: "Région", level3Category: "Département" },
+  { code: "CO", slug: "colombia", flag: "🇨🇴", nameKo: "콜롬비아", nameEn: "Colombia", nameNative: "Colombia", level1Category: "Departamento", level2Category: "Municipio", level3Category: "Barrio" },
+  { code: "CD", slug: "drcongo", flag: "🇨🇩", nameKo: "콩고민주공화국", nameEn: "DR Congo", nameNative: "RD Congo", level1Category: "Province", level2Category: "Ville / Territoire", level3Category: "Commune" },
+  { code: "PE", slug: "peru", flag: "🇵🇪", nameKo: "페루", nameEn: "Peru", nameNative: "Perú", level1Category: "Departamento", level2Category: "Provincia", level3Category: "Distrito" },
+  { code: "TZ", slug: "tanzania", flag: "🇹🇿", nameKo: "탄자니아", nameEn: "Tanzania", nameNative: "Tanzania", level1Category: "Region", level2Category: "District", level3Category: "Ward" },
+  { code: "DZ", slug: "algeria", flag: "🇩🇿", nameKo: "알제리", nameEn: "Algeria", nameNative: "الجزائر", level1Category: "Wilaya", level2Category: "Daïra", level3Category: "Commune" },
+  { code: "MA", slug: "morocco", flag: "🇲🇦", nameKo: "모로코", nameEn: "Morocco", nameNative: "المغرب", level1Category: "Région", level2Category: "Province", level3Category: "Commune" },
+  { code: "BJ", slug: "benin", flag: "🇧🇯", nameKo: "베냉", nameEn: "Benin", nameNative: "Bénin", level1Category: "Département", level2Category: "Commune", level3Category: "Arrondissement" },
+  { code: "TN", slug: "tunisia", flag: "🇹🇳", nameKo: "튀니지", nameEn: "Tunisia", nameNative: "تونس", level1Category: "Gouvernorat", level2Category: "Délégation", level3Category: "Secteur" },
+  { code: "BO", slug: "bolivia", flag: "🇧🇴", nameKo: "볼리비아", nameEn: "Bolivia", nameNative: "Bolivia", level1Category: "Departamento", level2Category: "Provincia", level3Category: "Municipio" },
+  { code: "BE", slug: "belgium", flag: "🇧🇪", nameKo: "벨기에", nameEn: "Belgium", nameNative: "België", level1Category: "Région", level2Category: "Province", level3Category: "Commune" },
+  { code: "JO", slug: "jordan", flag: "🇯🇴", nameKo: "요르단", nameEn: "Jordan", nameNative: "الأردن", level1Category: "Governorate", level2Category: "District", level3Category: "Sub-district" },
+  { code: "DO", slug: "dominica", flag: "🇩🇴", nameKo: "도미니카공화국", nameEn: "Dominican Republic", nameNative: "República Dominicana", level1Category: "Provincia", level2Category: "Municipio", level3Category: "Distrito Municipal" },
+  { code: "HN", slug: "honduras", flag: "🇭🇳", nameKo: "온두라스", nameEn: "Honduras", nameNative: "Honduras", level1Category: "Departamento", level2Category: "Municipio", level3Category: "Aldea" },
+  { code: "AZ", slug: "azerbaijan", flag: "🇦🇿", nameKo: "아제르바이잔", nameEn: "Azerbaijan", nameNative: "Azərbaycan", level1Category: "İqtisadi rayon", level2Category: "Rayon", level3Category: "Qəsəbə" },
+  { code: "TJ", slug: "tajikistan", flag: "🇹🇯", nameKo: "타지키스탄", nameEn: "Tajikistan", nameNative: "Тоҷикистон", level1Category: "Viloyat", level2Category: "Nohiya", level3Category: "Jamoat" },
+  { code: "PG", slug: "papuanewguinea", flag: "🇵🇬", nameKo: "파푸아뉴기니", nameEn: "Papua New Guinea", nameNative: "Papua Niugini", level1Category: "Province", level2Category: "District", level3Category: "LLG" },
 ] as const;
 
 export function getCountryInfo(code: CountryCode | undefined | null): CountryInfo {

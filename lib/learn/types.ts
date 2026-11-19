@@ -1,6 +1,6 @@
 /** Shared type definitions for the LIFE.HELP learning platform (math, english, study.korean). */
 
-export const SITES = ["math", "english", "korean"] as const;
+export const SITES = ["math", "english", "korean", "science", "physics", "chemistry"] as const;
 /** The school-curriculum sites (grades E1..H3); study.korean is a language course with its own levels. */
 export const SCHOOL_SITES = ["math", "english"] as const;
 export type Site = (typeof SITES)[number];
@@ -142,6 +142,24 @@ export interface Question {
   expectedSeconds?: number;
   tags?: string[];
   status: PublishStatus;
+  build?: BuildMeta;
+}
+
+/** Game Builder (Math Smart City / Science Lab) metadata attached to questions. */
+export interface BuildMeta {
+  device?: string;
+  device_ko?: string;
+  device_en?: string;
+  piece?: number;
+  total_pieces?: number;
+  progress_pct?: number;
+  ladder_complete?: boolean;
+  harmony_bonus?: {
+    name_ko?: string;
+    name_en?: string;
+    streak?: number;
+    bonus_pieces?: number;
+  };
 }
 
 /** Question as sent to the browser: no answer, hints or explanation. */
@@ -158,6 +176,7 @@ export interface PublicQuestion {
   audioText?: string;
   target?: { text: string; romanization?: string; romanizationVi?: string };
   hintCount: number;
+  build?: BuildMeta;
 }
 
 /* ------------------------------ Catalog ------------------------------- */

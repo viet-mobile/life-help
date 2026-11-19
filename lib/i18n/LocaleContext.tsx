@@ -19,12 +19,26 @@ import {
   translate,
 } from "@/messages";
 import { COUNTRY_TO_LANGUAGE_MAP } from "@/lib/i18n/siteMetadata";
+import {
+  convertScript,
+  isDualScriptLocale,
+  DUAL_SCRIPT_LANGUAGES,
+  type ScriptType,
+  type DualScriptMeta,
+} from "@/lib/i18n/scriptConverter";
+
+export type { ScriptType, DualScriptMeta };
+export { isDualScriptLocale, DUAL_SCRIPT_LANGUAGES, convertScript };
 
 export type DisplayMode = "bilingual" | "monolingual";
 
 interface LocaleContextType {
   locale: Locale;
   setLocale: (locale: Locale) => void;
+  script: ScriptType;
+  setScript: (script: ScriptType) => void;
+  isDualScript: boolean;
+  scriptMeta: DualScriptMeta | null;
   displayMode: DisplayMode;
   setDisplayMode: (mode: DisplayMode) => void;
   toggleDisplayMode: () => void;
@@ -147,33 +161,14 @@ function getClientLocaleSnapshot(): Locale {
   const currentPath = window.location.pathname;
   const urlLocale = resolveLocaleFromPath(currentPath);
 
-  // If the pathname changed (navigation or initial load)
-  if (currentPath !== lastKnownPathname) {
-    lastKnownPathname = currentPath;
-
-    // 1. If URL contains a valid language segment, URL language ALWAYS takes highest priority
-    if (urlLocale) {
-      cachedLocale = urlLocale;
-      return urlLocale;
-    } else {
-      // Path has no language prefix; reset URL-forced cache so domain/localStorage is used
-      cachedLocale = null;
-    }
-  }
-
-  // If locale was explicitly selected via setLocale during this view, return cachedLocale
-  if (cachedLocale) {
-    return cachedLocale;
-  }
-
-  // 1 (Fallback for initial evaluation): If URL has language, use it
+  // 1. If URL has a language segment, URL language takes highest priority
   if (urlLocale) {
     cachedLocale = urlLocale;
+    lastKnownPathname = currentPath;
     return urlLocale;
   }
 
-  // 2. A language the user explicitly picked (setLocale is the only writer of STORAGE_KEY) is kept across
-  //    navigation and across country domains: the domain default never resets a manual choice.
+  // 2. Explicit user selection in localStorage (kept across navigation)
   try {
     const saved = localStorage.getItem(STORAGE_KEY) || localStorage.getItem(LEGACY_STORAGE_KEY);
     if (saved === "sg") {
@@ -187,17 +182,27 @@ function getClientLocaleSnapshot(): Locale {
       return saved;
     }
   } catch {
-    // storage unavailable: fall through to the domain / device language
+    // storage unavailable: fall through
   }
 
-  // 3. If host domain indicates a country (e.g. vietnam.life.help -> vi), use domain language
+  // 3. Cached locale from explicit setLocale call in memory
+  if (cachedLocale) {
+    return cachedLocale;
+  }
+
+  // 4. Host domain (e.g. vietnam.life.help -> vi)
   const domainLocale = getDomainLocale();
   if (domainLocale) {
     cachedLocale = domainLocale;
     return domainLocale;
   }
 
-  // 4. Otherwise detect device locale (existing behavior)
+  // 5. Server-rendered initial locale
+  if (ssrInitialLocale && isValidLocale(ssrInitialLocale)) {
+    return ssrInitialLocale;
+  }
+
+  // 6. Device locale fallback
   try {
     const detected = detectDeviceLocale();
     cachedLocale = detected;
@@ -287,9 +292,6 @@ export function LocaleProvider({
 }) {
   if (initialLocale && isValidLocale(initialLocale)) {
     ssrInitialLocale = initialLocale;
-    if (typeof window !== "undefined" && !cachedLocale) {
-      cachedLocale = initialLocale;
-    }
   }
 
   const pathname = usePathname();
@@ -306,10 +308,58 @@ export function LocaleProvider({
     getServerDisplayModeSnapshot,
   );
 
+  const [script, setScriptState] = React.useState<ScriptType>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`life_help_script_${locale}`);
+      if (saved === "latn" || saved === "cyrl") return saved;
+    }
+    return DUAL_SCRIPT_LANGUAGES[locale]?.defaultScript || "latn";
+  });
+
+  useEffect(() => {
+    const saved = typeof window !== "undefined" ? localStorage.getItem(`life_help_script_${locale}`) : null;
+    if (saved === "latn" || saved === "cyrl") {
+      setScriptState(saved);
+    } else {
+      setScriptState(DUAL_SCRIPT_LANGUAGES[locale]?.defaultScript || "latn");
+    }
+  }, [locale]);
+
+  const setScript = useCallback(
+    (newScript: ScriptType) => {
+      setScriptState(newScript);
+      try {
+        localStorage.setItem(`life_help_script_${locale}`, newScript);
+      } catch {
+        // ignore
+      }
+    },
+    [locale],
+  );
+
+  const isDualScript = isDualScriptLocale(locale);
+  const scriptMeta = isDualScript ? DUAL_SCRIPT_LANGUAGES[locale] : null;
+
   // Sync client-side route changes with the locale external store
   useEffect(() => {
     window.dispatchEvent(new Event(LOCALE_CHANGE_EVENT));
   }, [pathname]);
+
+  // Post-hydration storage sync: if URL has no language prefix and localStorage has a saved user preference,
+  // transition safely after hydration completes without SSR mismatch errors.
+  useEffect(() => {
+    try {
+      const urlLoc = resolveLocaleFromPath(window.location.pathname);
+      if (!urlLoc) {
+        const saved = localStorage.getItem(STORAGE_KEY) || localStorage.getItem(LEGACY_STORAGE_KEY);
+        if (saved && isValidLocale(saved) && saved !== locale) {
+          setLocale(saved);
+        }
+      }
+    } catch {
+      // ignore
+    }
+  }, []);
 
   useEffect(() => {
     // Learning sites set lang/dir on the server from their own locale source; do not overwrite it with the marketplace locale.
@@ -352,30 +402,38 @@ export function LocaleProvider({
     languages.find((item) => item.code === locale) ||
     languages.find((item) => item.code === defaultLocale)!;
 
-  const t = useCallback((key: string) => translate(locale, key), [locale]);
+  const t = useCallback(
+    (key: string) => {
+      const raw = translate(locale, key);
+      return convertScript(raw, locale, script);
+    },
+    [locale, script],
+  );
   const tKo = useCallback((key: string) => translate("ko", key), []);
 
   const tBilingual = useCallback(
     (key: string, separator?: string) => {
-      const current = translate(locale, key);
+      const rawCurrent = translate(locale, key);
+      const current = convertScript(rawCurrent, locale, script);
       if (locale === "ko" || displayMode === "monolingual") return current;
       const ko = translate("ko", key);
       if (!ko || current === ko) return current;
       const actualSeparator = getBilingualSeparator(current, ko, separator);
       return `${current}${actualSeparator}${ko}`;
     },
-    [locale, displayMode],
+    [locale, displayMode, script],
   );
 
   const formatBilingual = useCallback(
     (targetText: string, koText: string, separator?: string) => {
-      if (locale === "ko") return koText || targetText;
-      if (displayMode === "monolingual") return targetText;
-      if (!koText || targetText === koText) return targetText;
-      const actualSeparator = getBilingualSeparator(targetText, koText, separator);
-      return `${targetText}${actualSeparator}${koText}`;
+      const convertedTarget = convertScript(targetText, locale, script);
+      if (locale === "ko") return koText || convertedTarget;
+      if (displayMode === "monolingual") return convertedTarget;
+      if (!koText || convertedTarget === koText) return convertedTarget;
+      const actualSeparator = getBilingualSeparator(convertedTarget, koText, separator);
+      return `${convertedTarget}${actualSeparator}${koText}`;
     },
-    [locale, displayMode],
+    [locale, displayMode, script],
   );
 
   return (
@@ -383,6 +441,10 @@ export function LocaleProvider({
       value={{
         locale,
         setLocale,
+        script,
+        setScript,
+        isDualScript,
+        scriptMeta,
         displayMode,
         setDisplayMode,
         toggleDisplayMode,
@@ -407,6 +469,10 @@ export function useLocale(): LocaleContextType {
     return {
       locale: defaultLocale,
       setLocale: () => {},
+      script: "latn",
+      setScript: () => {},
+      isDualScript: false,
+      scriptMeta: null,
       displayMode: "bilingual",
       setDisplayMode: () => {},
       toggleDisplayMode: () => {},

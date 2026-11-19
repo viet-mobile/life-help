@@ -12,7 +12,7 @@ import { loadOverlays, localizeFor } from "@/lib/think/localize";
 import {
   OFFER_EVERY, chooseLater, chooseNow, chooseTask, flowKey, noTaskAvailable, parseLedger, recordCompleted, startOffer, type Candidate, type FlowLedger,
 } from "@/lib/think/flow";
-import { schoolLevel, type Grade } from "@/lib/learn/types";
+import { schoolLevel, type Grade, type Site } from "@/lib/learn/types";
 import { siteConfig } from "@/lib/learn/sites";
 import type { ThinkTask } from "@/lib/think/types";
 import { useLearner } from "../learn/LearnerProvider";
@@ -36,7 +36,7 @@ export function readTried(site: string): Set<string> {
 }
 
 /** The tasks of the learner's own grade / level that are ready in the learner's language (never an untranslated original). */
-async function readyTasks(site: "math" | "english" | "korean", grade: string, locale: string, bandLevel?: number) {
+async function readyTasks(site: Site, grade: string, locale: string, bandLevel?: number) {
   const lang = taskLangFor(locale);
   const level = site === "korean" ? (bandLevel ?? priorLevelFor(grade)) : null; // Korean: the tasks of the learner's language level (1-6급), see lib/think/korean-levels.ts
   const metas = FILE_META.filter((m) => m.subject === site && (level ? true : m.grades.includes(grade) || m.grades.length === 0));

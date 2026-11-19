@@ -9,6 +9,8 @@ import { usePoll } from "@/lib/service/usePoll";
 import { getService } from "@/lib/services";
 import { ServiceChat } from "./ServiceChat";
 import { StatusBadge, StatusSteps } from "./RequestStatus";
+import { ServicePaymentCard } from "./ServicePaymentCard";
+import { ReferralCard } from "@/components/shared/ReferralCard";
 
 /** One request as the server knows it, refreshed every few seconds, with its chat. Everything shown here comes from the database. */
 export function CustomerRequest({ requestId, token }: { requestId: string; /** only in memory, from the link just opened or created: used to show the shareable link, never stored */ token: string | null }) {
@@ -92,8 +94,20 @@ export function CustomerRequest({ requestId, token }: { requestId: string; /** o
         )}
       </section>
 
+      {/* Escrow Payment & Platform Fee Card */}
+      <ServicePaymentCard
+        requestId={request.id}
+        serviceSlug={request.serviceSlug}
+        initialPayment={request.payment}
+        canConfirmCompletion={request.status === "COMPLETED" || request.status === "IN_PROGRESS"}
+        onPaymentUpdated={(p) => setRequest((prev) => prev ? { ...prev, payment: p } : null)}
+      />
+
       {request.status === "WAITING" && !request.helper && <p className="px-1 text-[11px] text-slate-500">{t("svc.chat.beforeHelper")}</p>}
       <ServiceChat requestId={request.id} kind="CUSTOMER" canSend={request.status !== "COMPLETED" && request.status !== "CANCELLED"} />
+
+      {/* Viral Referral Program Card */}
+      <ReferralCard />
 
       <details className="px-1 text-[11px] text-slate-500">
         <summary className="cursor-pointer font-bold">{t("svc.req.history")}</summary>

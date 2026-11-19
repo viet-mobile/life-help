@@ -1,3 +1,5 @@
+import type { ServicePaymentRecord } from "./paymentSettlement";
+
 /** Shapes returned by /api/svc (see 202610090040_service_core.sql). */
 export type RequestStatus = "WAITING" | "ASSIGNED" | "IN_PROGRESS" | "COMPLETED" | "CANCELLED";
 export type HelperStatus = "PENDING" | "APPROVED" | "SUSPENDED" | "DISABLED";
@@ -23,6 +25,7 @@ export interface SvcRequest {
   completedAt: string | null;
   cancelledAt: string | null;
   descriptionTranslation?: { locale: string; text: string | null; status: "OK" | "FAILED" } | null;
+  payment?: ServicePaymentRecord | null;
 }
 export interface SvcRegion { country: string; sido: string | null; gungu: string | null }
 export interface SvcHelper {

@@ -7,6 +7,7 @@ import { SITES, type Site } from "@/lib/learn/types";
 import { allowsLearnPathAccess } from "@/lib/env";
 import { splitLocalePrefix } from "@/lib/learn/i18n/path";
 import { updateLearnSession } from "@/lib/learn/server/supabase/proxySession";
+import { locales } from "@/messages/registry";
 
 /**
  * LIFE.HELP country domains
@@ -87,11 +88,48 @@ const COUNTRIES = new Set([
   "congo",
   "ghana",
   "mozambique",
+  "guatemala",
+  "guinea",
+  "niger",
+  "rwanda",
+  "madagascar",
+  "malawi",
+  "mali",
+  "burkinafaso",
+  "senegal",
+  "angola",
+  "ecuador",
+  "georgia",
+  "zimbabwe",
+  "chad",
+  "chile",
+  "cameroon",
+  "cotedivoire",
+  "colombia",
+  "drcongo",
+  "peru",
+  "tanzania",
+  "algeria",
+  "morocco",
+  "benin",
+  "tunisia",
+  "bolivia",
+  "belgium",
+  "jordan",
+  "dominica",
+  "honduras",
+  "azerbaijan",
+  "tajikistan",
+  "papuanewguinea",
 ]);
 
 const COUNTRY_HOST_ALIASES: Readonly<Record<string, string>> = {
   czech: "czechia",
   centralafrican: "centralafrica",
+  dominican: "dominica",
+  dominicanrepublic: "dominica",
+  papua: "papuanewguinea",
+  png: "papuanewguinea",
 };
 
 /**
@@ -101,55 +139,11 @@ const COUNTRY_HOST_ALIASES: Readonly<Record<string, string>> = {
  * zs = zh-Hans
  */
 const LANGUAGES = new Set([
-  "ko",
-  "vi",
-  "en",
+  ...locales.map((l) => l.toLowerCase()),
+  ...locales,
   "zt",
   "zs",
-  "ja",
   "zh",
-  "th",
-  "id",
-  "km",
-  "my",
-  "ne",
-  "hi",
-  "si",
-  "ta",
-  "tet",
-  "ru",
-  "uz",
-  "kk",
-  "fr",
-  "de",
-  "tr",
-  "uk",
-  "ar",
-  "arz",
-  "bn",
-  "it",
-  "es",
-  "fa",
-  "nl",
-  "pl",
-  "am",
-  "sv",
-  "he",
-  "da",
-  "no",
-  "mn",
-  "pt",
-  "el",
-  "ur",
-  "sw",
-  "mr",
-  "gu",
-  "pa",
-  "te",
-  "kn",
-  "ml",
-  "zh-hans",
-  "zh-hant",
 ]);
 
 export const COUNTRY_TO_DEFAULT_LANGUAGE: Record<string, string> = {
@@ -220,6 +214,39 @@ export const COUNTRY_TO_DEFAULT_LANGUAGE: Record<string, string> = {
   congo: "fr",
   ghana: "en",
   mozambique: "pt",
+  guatemala: "es",
+  guinea: "fr",
+  niger: "fr",
+  rwanda: "en",
+  madagascar: "fr",
+  malawi: "en",
+  mali: "fr",
+  burkinafaso: "fr",
+  senegal: "fr",
+  angola: "pt",
+  ecuador: "es",
+  georgia: "ka",
+  zimbabwe: "en",
+  chad: "fr",
+  chile: "es",
+  cameroon: "fr",
+  cotedivoire: "fr",
+  colombia: "es",
+  drcongo: "fr",
+  peru: "es",
+  tanzania: "sw",
+  algeria: "ar",
+  morocco: "ar",
+  benin: "fr",
+  tunisia: "ar",
+  bolivia: "es",
+  belgium: "nl",
+  jordan: "ar",
+  dominica: "es",
+  honduras: "es",
+  azerbaijan: "en",
+  tajikistan: "en",
+  papuanewguinea: "en",
 };
 
 function getHost(request: NextRequest) {
@@ -263,6 +290,43 @@ function getCountryFromHost(host: string): string | null {
     }
   }
 
+  return null;
+}
+
+export const ISO2_TO_COUNTRY: Readonly<Record<string, string>> = {
+  GR: "greece", GH: "ghana", NG: "nigeria", ZA: "southafrica", NL: "netherland",
+  NP: "nepal", NO: "norway", NZ: "newzealand", TW: "taiwan", DK: "denmark",
+  DE: "deutsch", TL: "timorleste", RU: "russia", RO: "romania", MY: "malaysia",
+  MX: "mexico", MZ: "mozambique", MN: "mongol", US: "us", MM: "myanmar",
+  BD: "bangladesh", VE: "venezuela", VN: "vietnam", BR: "brazil", SA: "saudiarabia",
+  LK: "srilanka", SE: "sweden", CH: "swiss", ES: "espania", SG: "singapore",
+  AE: "uae", ET: "ethiopia", SV: "elsalvador", GB: "uk", YE: "yemen",
+  UG: "uganda", UZ: "uzbek", UA: "ukraina", IQ: "iraq", IR: "iran",
+  IL: "israel", EG: "egypt", IT: "italia", IN: "india", ID: "indonesia",
+  JP: "japan", ZM: "zambia", CN: "china", CF: "centralafrica", CZ: "czech",
+  KZ: "kazakh", KH: "cambodia", CA: "canada", KE: "kenya", CG: "congo",
+  TH: "thailand", TR: "turkiye", PK: "pakistan", PT: "portugal", PL: "poland",
+  FR: "france", FI: "finland", PH: "philippines", KR: "korea", HU: "hungary",
+  AU: "australia", AR: "argentina", CO: "colombia", CL: "chile", PE: "peru",
+  EC: "ecuador", GT: "guatemala", GE: "georgia", AO: "angola", CM: "cameroon",
+  CI: "cotedivoire", CD: "drcongo", ZW: "zimbabwe", RW: "rwanda", SN: "senegal",
+  MW: "malawi", ML: "mali", BF: "burkinafaso", NE: "niger", GN: "guinea",
+  MG: "madagascar", TD: "chad", TZ: "tanzania", DZ: "algeria", MA: "morocco",
+  BJ: "benin", TN: "tunisia", BO: "bolivia", BE: "belgium", JO: "jordan",
+  DO: "dominica", HN: "honduras", AZ: "azerbaijan", TJ: "tajikistan",
+  PG: "papuanewguinea",
+};
+
+export function parseAcceptLanguage(header: string | null): string | null {
+  if (!header) return null;
+  const tags = header.split(",").map((part) => part.split(";")[0].trim().toLowerCase());
+  for (const tag of tags) {
+    if (tag === "zh-tw" || tag === "zh-hk") return "zt";
+    if (tag === "zh-cn" || tag === "zh-sg" || tag === "zh") return "zs";
+    const primary = tag.split("-")[0];
+    if (LANGUAGES.has(primary)) return primary;
+    if (LANGUAGES.has(tag)) return tag;
+  }
   return null;
 }
 
@@ -632,6 +696,54 @@ export async function proxy(request: NextRequest) {
     );
   }
 
+  /**
+   * Smart Geo & Language Routing for bare life.help:
+   * When visitors arrive at https://life.help (the global brand/advertising URL),
+   * dynamically dispatch to the appropriate country domain + language environment.
+   *
+   * Priority:
+   * 1. User manual override cookies (life_help_country, life_help_locale)
+   * 2. Geo-IP location (Cloudflare cf-ipcountry)
+   * 3. Device/browser language (Accept-Language header)
+   */
+  if (host === "life.help") {
+    const cfCountry = request.headers.get("cf-ipcountry")?.toUpperCase();
+    const cookieCountry = request.cookies.get("life_help_country")?.value?.toLowerCase();
+    const rawTargetCountry = (cookieCountry && COUNTRIES.has(cookieCountry))
+      ? cookieCountry
+      : (cfCountry && ISO2_TO_COUNTRY[cfCountry] ? ISO2_TO_COUNTRY[cfCountry] : null);
+
+    if (rawTargetCountry) {
+      const targetCountry = COUNTRY_HOST_ALIASES[rawTargetCountry] ?? rawTargetCountry;
+      const urlLang = getLanguage(request.nextUrl.pathname);
+      const cookieLang = request.cookies.get("life_help_locale")?.value || request.cookies.get("learn_lang")?.value;
+      const deviceLang = parseAcceptLanguage(request.headers.get("accept-language"));
+      const targetLang = urlLang || (cookieLang && LANGUAGES.has(cookieLang) ? cookieLang : null) || (deviceLang && LANGUAGES.has(deviceLang) ? deviceLang : null) || COUNTRY_TO_DEFAULT_LANGUAGE[targetCountry] || "ko";
+
+      let subpath = request.nextUrl.pathname;
+      if (urlLang) {
+        const firstSeg = subpath.split("/").filter(Boolean)[0];
+        subpath = subpath === `/${firstSeg}` ? "/" : subpath.replace(new RegExp(`^/${firstSeg}(?=/|$)`, "i"), "") || "/";
+      }
+
+      if (
+        !subpath.startsWith("/api/") &&
+        subpath !== "/manifest.webmanifest" &&
+        subpath !== "/manifest.json" &&
+        subpath !== "/sw.js" &&
+        subpath !== "/robots.txt" &&
+        subpath !== "/sitemap.xml" &&
+        !subpath.startsWith("/icon-")
+      ) {
+        const proto = request.nextUrl.protocol === "http:" ? "http:" : "https:";
+        const redirectUrl = new URL(
+          `${proto}//${targetCountry}.life.help${port}/${targetLang}${subpath === "/" ? "" : subpath}${request.nextUrl.search}`
+        );
+        return NextResponse.redirect(redirectUrl, 307);
+      }
+    }
+  }
+
   const {
     pathname,
     country,
@@ -655,7 +767,9 @@ export async function proxy(request: NextRequest) {
   }
 
   const defaultCountryLang = country ? COUNTRY_TO_DEFAULT_LANGUAGE[country] : null;
-  const effectiveLanguage = language || defaultCountryLang;
+  const cookieLang = request.cookies.get("life_help_locale")?.value || request.cookies.get("learn_lang")?.value;
+  const validCookieLang = cookieLang && LANGUAGES.has(cookieLang.toLowerCase()) ? cookieLang : null;
+  const effectiveLanguage = language || validCookieLang || defaultCountryLang;
 
   if (effectiveLanguage) {
     requestHeaders.set("x-life-language", effectiveLanguage);
@@ -717,6 +831,16 @@ export async function proxy(request: NextRequest) {
   /**
    * Rewrite only when the internal path differs.
    */
+  console.log("PROXY HIT:", {
+    rawUrl: request.url,
+    pathname: request.nextUrl.pathname,
+    rewrittenPath: pathname,
+    portal: getPortalFromHost(host),
+    country,
+    language,
+    effectiveLanguage,
+  });
+
   if (pathname !== request.nextUrl.pathname) {
     const rewriteUrl = new URL(pathname, request.url);
 

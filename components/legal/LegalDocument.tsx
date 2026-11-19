@@ -1,4 +1,4 @@
-import { LEGAL_DOCS, type LegalBlock, type LegalKind, type LegalLang } from "@/lib/legal/documents";
+import { getLegalDoc, type LegalBlock, type LegalKind, type LegalLang } from "@/lib/legal/documents";
 import { LEGAL_VERSION, OPERATOR } from "@/lib/legal/operator";
 
 function Blocks({ blocks }: { blocks: LegalBlock[] }) {
@@ -22,7 +22,7 @@ export function LegalDocument({ kind, langs, className = "" }: { kind: LegalKind
   return (
     <div className={`legal-doc ${className}`}>
       {langs.map((lang) => {
-        const doc = LEGAL_DOCS[kind][lang];
+        const doc = getLegalDoc(kind, lang);
         const effective = OPERATOR.effectiveDate || (lang === "ko" ? "서비스 정식 시작 시 시행(초안)" : "takes effect at launch (draft)");
         return (
           <article key={lang} lang={lang} id={`${kind}-${lang}`} className="legal-article">

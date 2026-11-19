@@ -111,7 +111,7 @@ export function TopPwaBar() {
   if (isMobileOs && !hasPrompt) return null;
 
   const isKorean = locale === "ko";
-  const buttonLabel = isKorean ? guide.buttonLabelKo : guide.buttonLabelEn;
+  const buttonLabel = guide.buttonLabel || (isKorean ? guide.buttonLabelKo : guide.buttonLabelEn);
 
   return (
     <>
@@ -200,7 +200,7 @@ export function TopPwaBar() {
                     </span>
                   </div>
                   <h3 className="mt-0.5 text-base sm:text-lg font-black text-slate-950">
-                    {isKorean ? guide.modalTitleKo : guide.modalTitleEn}
+                    {guide.modalTitle || (isKorean ? guide.modalTitleKo : guide.modalTitleEn)}
                   </h3>
                 </div>
               </div>
@@ -236,7 +236,7 @@ export function TopPwaBar() {
                 {t("shortcut.stepsTitle")}
               </h4>
               <ol className="space-y-2.5 text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">
-                {(isKorean ? guide.stepsKo : guide.stepsEn).map((step, idx) => (
+                {(guide.steps || (isKorean ? guide.stepsKo : guide.stepsEn)).map((step, idx) => (
                   <li
                     key={idx}
                     className="flex items-start gap-2.5 rounded-xl bg-slate-50 p-2.5 border border-slate-100"

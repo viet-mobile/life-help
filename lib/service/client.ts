@@ -1,6 +1,7 @@
 "use client";
 
 import type { SvcHelper, SvcMessage, SvcNotification, SvcRequest, SvcEvent } from "./clientTypes";
+import type { ServicePaymentRecord, HelperEarningsSummary, AdminRevenueSummary } from "./paymentSettlement";
 
 export class ApiError extends Error {
   constructor(readonly code: string, readonly status: number) {
@@ -76,4 +77,13 @@ export const adminApi = {
   assign: (requestId: string, helperId: string) => call<{ request: SvcRequest }>("POST", `/a/requests/${requestId}/assign`, { helperId }).then((r) => r.request),
   cancel: (requestId: string) => call<{ request: SvcRequest }>("POST", `/a/requests/${requestId}/cancel`, {}).then((r) => r.request),
   notifications: (after: number) => call<{ notifications: SvcNotification[] }>("GET", `/a/notifications?after=${after}`).then((r) => r.notifications),
+};
+
+export const paymentApi = {
+  get: (requestId: string) => call<{ payment: ServicePaymentRecord }>("GET", `/c/requests/${requestId}/payment`).then((r) => r.payment),
+  pay: (requestId: string, method: "CARD" | "EASY_PAY" | "TRANSFER", referralCode?: string) =>
+    call<{ payment: ServicePaymentRecord }>("POST", `/c/requests/${requestId}/pay`, { method, referralCode }).then((r) => r.payment),
+  confirm: (requestId: string) => call<{ payment: ServicePaymentRecord }>("POST", `/c/requests/${requestId}/confirm`, {}).then((r) => r.payment),
+  helperEarnings: () => call<{ earnings: HelperEarningsSummary }>("GET", "/h/earnings").then((r) => r.earnings),
+  adminRevenue: () => call<{ revenue: AdminRevenueSummary }>("GET", "/a/revenue").then((r) => r.revenue),
 };

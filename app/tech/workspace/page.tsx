@@ -13,6 +13,7 @@ import { navigateToMainHome } from "@/lib/navigation";
 import { HelperCalendar } from "@/components/tech/HelperCalendar";
 import { WorkHoursPicker } from "@/components/tech/WorkHoursPicker";
 import { HelperServicePanel } from "@/components/service/HelperServicePanel";
+import { ReferralCard } from "@/components/shared/ReferralCard";
 import { formatHelperDisplayName } from "@/lib/helper/helperFormat";
 const DAYS_CONFIG = [
   { key: "월", labelKey: "workspace.dayMon" },
@@ -225,7 +226,7 @@ export default function TechWorkspacePage() {
 
   return (
     <main className="min-h-screen bg-slate-950 px-4 py-8 text-white">
-      <div className="mx-auto max-w-4xl space-y-6">
+      <div className="mx-auto w-full max-w-screen-2xl space-y-6">
         {/* Top Brand Navigation */}
         <div className="flex items-center justify-between pb-1 gap-2">
           <Link
@@ -312,6 +313,11 @@ export default function TechWorkspacePage() {
 
         {/* Server-backed work area: approval status, availability, eligible requests, my jobs, chat */}
         <HelperServicePanel />
+
+        {/* Helper Referral Program */}
+        <div className="mt-4">
+          <ReferralCard />
+        </div>
 
         {/* 2. Direct Emergency Hotline */}
         <section className="droplet-card border border-slate-800 bg-slate-900/70 p-6 backdrop-blur-md">

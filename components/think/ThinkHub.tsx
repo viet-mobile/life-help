@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { FILE_META, TASK_LOADERS } from "@/lib/think/data/assets-index";
 import { domainOf } from "@/lib/think/domains";
 import { fieldInfo, fieldKeyOf, fieldList } from "@/lib/think/areas";
-import { hasThinkSemesters, inSemester } from "@/lib/think/semesters";
+import { hasThinkSemesters, inSemester, thinkSemesterOf } from "@/lib/think/semesters";
 import { gradeLabel } from "@/lib/think/grades";
 import { BOSS_TEXT, addTrophy, bossKey, bossKeyOf, bossProgress, finalBossFor, isFinalBoss, readTrophies, type Trophy } from "@/lib/think/bosses";
 import { KOREAN_LEVELS, isKoreanFirst, isLevelCode, koreanLevelOf, levelCode, levelFromCode, levelName, priorLevelFor } from "@/lib/think/korean-levels";
@@ -90,7 +90,32 @@ export function ThinkHub() {
   const semesterOn = hasThinkSemesters(site) && !grade.startsWith("EL-");
   const bySemester = localized.filter((x) => !semesterOn || inSemester(x.task.id, semester));
   const fieldNow = fields.includes(field) ? field : "all"; // a ?field= that this grade has no tasks for falls back to all
-  const shown = bySemester.filter((x) => !isFinalBoss(x.task.id) && (fieldNow === "all" || fieldOf(x.task) === fieldNow));
+  const filtered = bySemester.filter((x) => !isFinalBoss(x.task.id) && (fieldNow === "all" || fieldOf(x.task) === fieldNow));
+  const shown = useMemo(() => {
+    return [...filtered].sort((a, b) => {
+      const aSem = thinkSemesterOf(a.task.id);
+      const bSem = thinkSemesterOf(b.task.id);
+      const aExact = a.task.grade === grade ? 1 : 0;
+      const bExact = b.task.grade === grade ? 1 : 0;
+
+      const rank = (exact: number, sem: number): number => {
+        if (semester === "1" || semester === "2") {
+          const target = Number(semester);
+          if (exact && sem === target) return 0;
+          if (exact && sem === 0) return 1;
+          if (!exact && sem === target) return 2;
+          return 3;
+        } else {
+          if (exact && sem === 1) return 0;
+          if (exact && sem === 2) return 1;
+          if (exact && sem === 0) return 2;
+          return 3;
+        }
+      };
+
+      return rank(aExact, aSem) - rank(bExact, bSem);
+    });
+  }, [filtered, grade, semester]);
   const BT = BOSS_TEXT[lang];
   // final bosses of the chosen grade / semester(s) / level, only those fully available in this language
   const bossSlots = (grade.startsWith("EL-") ? [] : site === "korean" ? [bossKey(site, grade, 1)] : semester === "all" ? [bossKey(site, grade, 1), bossKey(site, grade, 2)] : [bossKey(site, grade, Number(semester) as 1 | 2)])

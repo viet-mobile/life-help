@@ -3,7 +3,7 @@ import { OPERATOR } from "./operator";
 export type LegalBlock = string | { list: string[] };
 export interface LegalSection { id: string; title: string; body: LegalBlock[] }
 export interface LegalDoc { title: string; intro: string; sections: LegalSection[] }
-export type LegalLang = "ko" | "en";
+export type LegalLang = string;
 export type LegalKind = "privacy" | "terms";
 
 const op = OPERATOR;
@@ -270,7 +270,28 @@ const TERMS_EN: LegalDoc = {
   ],
 };
 
-export const LEGAL_DOCS: Record<LegalKind, Record<LegalLang, LegalDoc>> = {
-  privacy: { ko: PRIVACY_KO, en: PRIVACY_EN },
-  terms: { ko: TERMS_KO, en: TERMS_EN },
+import { ALL_LEGAL_TRANSLATIONS } from "./translations";
+
+export function getLegalDoc(kind: LegalKind, lang: string): LegalDoc {
+  if (lang === "ko") return kind === "privacy" ? PRIVACY_KO : TERMS_KO;
+  if (lang === "en") return kind === "privacy" ? PRIVACY_EN : TERMS_EN;
+  if (ALL_LEGAL_TRANSLATIONS[lang]?.[kind]) return ALL_LEGAL_TRANSLATIONS[lang][kind];
+  const prefix = lang.split("-")[0];
+  if (ALL_LEGAL_TRANSLATIONS[prefix]?.[kind]) return ALL_LEGAL_TRANSLATIONS[prefix][kind];
+  return kind === "privacy" ? PRIVACY_EN : TERMS_EN;
+}
+
+export const LEGAL_DOCS: Record<LegalKind, Record<string, LegalDoc>> = {
+  privacy: new Proxy({ ko: PRIVACY_KO, en: PRIVACY_EN } as Record<string, LegalDoc>, {
+    get(target, prop: string) {
+      if (prop in target) return target[prop];
+      return getLegalDoc("privacy", prop);
+    },
+  }),
+  terms: new Proxy({ ko: TERMS_KO, en: TERMS_EN } as Record<string, LegalDoc>, {
+    get(target, prop: string) {
+      if (prop in target) return target[prop];
+      return getLegalDoc("terms", prop);
+    },
+  }),
 };

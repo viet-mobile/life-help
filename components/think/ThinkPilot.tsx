@@ -14,7 +14,7 @@ interface Flag { task: string; step: string; note: string; at: string }
 const readFlags = (): Flag[] => { try { return JSON.parse(window.localStorage.getItem(STORE) ?? "[]"); } catch { return []; } };
 const writeFlags = (f: Flag[]) => { try { window.localStorage.setItem(STORE, JSON.stringify(f)); } catch { /* storage unavailable: notes are kept for this visit only */ } };
 
-const SUBJECT_ICON = { math: "➗", english: "🔤", korean: "🇰🇷" } as const;
+const SUBJECT_ICON = { math: "➗", english: "🔤", korean: "🇰🇷", science: "🔬", physics: "⚡", chemistry: "🧪" } as const;
 
 export function ThinkPilot({ initialTasks }: { initialTasks?: ThinkTask[] } = {}) {
   const [allTasks, setAllTasks] = useState<ThinkTask[]>(initialTasks ?? []);

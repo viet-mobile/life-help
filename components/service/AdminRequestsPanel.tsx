@@ -50,8 +50,45 @@ export function AdminRequestsPanel({ requests, helpers, onChanged }: { requests:
 
   const approved = helpers.filter((h) => h.status === "APPROVED");
 
+  // Financial metrics calculation
+  const totalGross = requests.reduce((sum, r) => sum + (r.payment?.totalAmountKrw ?? 50000), 0);
+  const totalPlatformFees = requests.reduce((sum, r) => sum + (r.payment?.platformFeeKrw ?? 5000), 0);
+  const totalHelperPayouts = requests.reduce((sum, r) => sum + (r.payment?.helperPayoutKrw ?? 45000), 0);
+
   return (
     <section className="space-y-4" data-testid="admin-requests">
+      {/* Platform Fee & Revenue Summary Widget */}
+      <div className="rounded-2xl border border-blue-900 bg-slate-900/90 p-4 sm:p-5 backdrop-blur-md space-y-3">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-2.5">
+          <h2 className="text-base font-black text-white flex items-center gap-2">
+            <span>👑</span>
+            <span>플랫폼 수수료 수익 및 정산 현황</span>
+          </h2>
+          <span className="rounded-full bg-blue-950 px-2.5 py-0.5 text-xs font-bold text-blue-300 border border-blue-800">
+            플랫폼 수수료율 10% 자동 정산
+          </span>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div className="rounded-xl bg-slate-800/80 p-3 border border-slate-700">
+            <span className="text-[11px] font-bold text-slate-400 block">총 서비스 건수</span>
+            <span className="text-lg font-black text-white">{requests.length}건</span>
+          </div>
+          <div className="rounded-xl bg-slate-800/80 p-3 border border-slate-700">
+            <span className="text-[11px] font-bold text-slate-400 block">총 거래 규모 (Gross)</span>
+            <span className="text-lg font-black text-slate-200">₩{totalGross.toLocaleString()}</span>
+          </div>
+          <div className="rounded-xl bg-blue-950/70 p-3 border border-blue-700">
+            <span className="text-[11px] font-bold text-blue-300 block">플랫폼 수수료 수익 (10%)</span>
+            <span className="text-lg font-black text-blue-400">₩{totalPlatformFees.toLocaleString()}</span>
+          </div>
+          <div className="rounded-xl bg-emerald-950/70 p-3 border border-emerald-700">
+            <span className="text-[11px] font-bold text-emerald-300 block">헬퍼 정산 지급액 (90%)</span>
+            <span className="text-lg font-black text-emerald-400">₩{totalHelperPayouts.toLocaleString()}</span>
+          </div>
+        </div>
+      </div>
+
       <div className="flex flex-wrap items-center gap-2">
         {FILTERS.map((f) => (
           <button key={f} type="button" data-testid={`request-filter-${f}`} onClick={() => setFilter(f)} className={`droplet-btn px-3 py-1.5 text-xs font-black cursor-pointer ${filter === f ? "bg-blue-600 text-white" : "bg-slate-800 text-slate-300"}`}>
@@ -77,6 +114,16 @@ export function AdminRequestsPanel({ requests, helpers, onChanged }: { requests:
                 </div>
               </div>
               <p className="mt-1 text-[11px] text-slate-400">📍 {r.sido} {r.gungu} · {r.address} · {new Date(r.createdAt).toLocaleString()}</p>
+              {r.payment && (
+                <div className="mt-2 flex flex-wrap items-center gap-3 rounded-lg bg-slate-800/60 px-3 py-1.5 text-xs text-slate-300 border border-slate-700/60">
+                  <span>총 결제액: <strong className="text-white">₩{r.payment.totalAmountKrw.toLocaleString()}</strong></span>
+                  <span className="text-blue-400 font-bold">운영자 수수료(10%): ₩{r.payment.platformFeeKrw.toLocaleString()}</span>
+                  <span className="text-emerald-400 font-bold">헬퍼 정산액(90%): ₩{r.payment.helperPayoutKrw.toLocaleString()}</span>
+                  <span className="rounded bg-slate-900 px-2 py-0.5 text-[10px] text-slate-300">
+                    {r.payment.paymentStatus === "SETTLED" ? "✓ 정산완료" : r.payment.paymentStatus === "PAID" ? "🛡️ 에스크로 보관" : "⏳ 결제대기"}
+                  </span>
+                </div>
+              )}
               <p dir="auto" className="mt-2 whitespace-pre-wrap text-sm text-slate-100">{r.description}</p>
               {r.descriptionTranslation?.status === "OK" && <p dir="auto" className="mt-1 whitespace-pre-wrap text-[11px] text-emerald-300">{r.descriptionTranslation.text}</p>}
               {r.helper && <p className="mt-2 text-xs font-bold text-blue-300" data-testid="admin-assigned">🛠️ {r.helper.displayName}</p>}

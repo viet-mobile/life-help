@@ -22,6 +22,35 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+input,
+select,
+textarea,
+button {
+  font-family: inherit;
+}
+
+/* Vietnamese Language Typography Optimization: Use Be Vietnam Pro as primary font */
+:lang(vi),
+html[lang="vi"],
+body[data-lang="vi"],
+[lang="vi"],
+[lang^="vi"] {
+  font-family: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+}
+
+:lang(vi) select,
+:lang(vi) option,
+:lang(vi) input,
+:lang(vi) button,
+:lang(vi) textarea,
+html[lang="vi"] select,
+html[lang="vi"] option,
+html[lang="vi"] input,
+html[lang="vi"] button,
+html[lang="vi"] textarea {
+  font-family: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+}
+
 /* Ensure bilingual multiline titles and long phrases break cleanly into two lines */
 .whitespace-pre-line,
 .bilingual-multiline {

@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import { COUNTRIES_WITH_GENERIC_BRANDING } from "@/lib/region/countryBranding";
 import { brandName, ogLocaleFor, countryBrandName } from "@/lib/i18n/seo";
+import { locales } from "@/messages/registry";
 
 export interface PortalMeta {
   title: string;
@@ -838,6 +839,8 @@ export function resolveLanguageFromHeaders(headersList: Headers): string {
     if (lower === "sg") return "fr";
     if (lower === "zt" || lower === "zh-hant") return "zh-Hant";
     if (lower === "zs" || lower === "zh" || lower === "zh-hans") return "zh-Hans";
+    const match = locales.find((l) => l.toLowerCase() === lower);
+    if (match) return match;
     const found = Object.keys(SITE_METADATA).find((k) => k.toLowerCase() === lower);
     if (found) return found;
   }

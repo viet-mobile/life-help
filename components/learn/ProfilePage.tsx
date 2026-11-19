@@ -10,7 +10,15 @@ import { TtsSettingsPanel } from "./TtsSettings";
 import { useLearner } from "./LearnerProvider";
 import { learnConfig } from "@/lib/learn/config";
 
-export function ProfilePage({ signOutAction, signupEnabled = false }: { signOutAction?: () => Promise<void>; signupEnabled?: boolean }) {
+export function ProfilePage({
+  signOutAction,
+  deleteAccountAction,
+  signupEnabled = false,
+}: {
+  signOutAction?: () => Promise<void>;
+  deleteAccountAction?: () => Promise<void>;
+  signupEnabled?: boolean;
+}) {
   const { state, t, href, mode, accountsEnabled, resetGuest, site } = useLearner();
   const [pending, start] = useTransition();
   const fileRef = useRef<HTMLInputElement>(null);
@@ -109,6 +117,41 @@ export function ProfilePage({ signOutAction, signupEnabled = false }: { signOutA
           )
         )}
         <p className="l-muted">{t("profile.privacy")}</p>
+      </section>
+
+      {/* Apple App Store Guideline 5.1.1(v) Compliant Account & Data Deletion Section */}
+      <section className="l-card l-stack" style={{ borderColor: "#fecaca", backgroundColor: "#fff5f5" }} aria-labelledby="del-h">
+        <h2 id="del-h" className="l-h2" style={{ color: "#b91c1c" }}>
+          ⚠️ {t("profile.deleteAccount")}
+        </h2>
+        <p className="l-muted" style={{ fontSize: "0.85rem", color: "#991b1b" }}>
+          {t("profile.deleteAccount.desc")}
+        </p>
+        <button
+          type="button"
+          className="l-btn l-btn-block"
+          style={{ backgroundColor: "#dc2626", color: "#ffffff", borderColor: "#b91c1c", fontWeight: 700 }}
+          disabled={pending}
+          onClick={() => {
+            const confirmed = window.confirm(t("profile.deleteAccount.confirm"));
+            if (!confirmed) return;
+            start(async () => {
+              try {
+                window.localStorage.removeItem(storageKey);
+                window.sessionStorage.clear();
+              } catch {}
+              if (deleteAccountAction) {
+                await deleteAccountAction();
+              } else {
+                resetGuest();
+              }
+              window.alert(t("profile.deleteAccount.done"));
+              window.location.href = href("/");
+            });
+          }}
+        >
+          {pending ? "삭제 처리 중..." : `🗑️ ${t("profile.deleteAccount")}`}
+        </button>
       </section>
     </div>
   );
