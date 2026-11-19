@@ -14,7 +14,19 @@ export { mergeOverlays, type ContentOverlay } from "./overlay";
 export async function overlayFor(locale: LearnLocale, site: ContentBundle["catalog"]["site"]): Promise<ContentOverlay | null> {
   const presentation = siteConfig(site).presentationLocale;
   if (locale === presentation) return null;
-  return (await loadOverlayAsset(site, locale)) ?? null;
+  try {
+    return (await loadOverlayAsset(site, locale)) ?? null;
+  } catch {
+    // If the overlay for this locale is not yet generated, fall back to English overlay or canonical bundle
+    if (locale !== "en") {
+      try {
+        return (await loadOverlayAsset(site, "en")) ?? null;
+      } catch {
+        return null;
+      }
+    }
+    return null;
+  }
 }
 
 /** Pure: returns the same object for a locale without an overlay (Korean), otherwise a localised copy. */
