@@ -16,7 +16,7 @@ from pathlib import Path
 from datetime import datetime
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-QUESTIONS_DIR = BASE_DIR.parent / "questions" / "daily"
+QUESTIONS_DIR = BASE_DIR / "questions" / "daily"
 LEARN_DIR = BASE_DIR / "lib" / "learn" / "content" / "daily"
 PROD_PORT_DIR = BASE_DIR.parent / "life-help-prod-port" / "lib" / "learn" / "content" / "daily"
 
@@ -138,8 +138,12 @@ def batch_translate_all(date_str=None, workers=6):
         
     source_file = QUESTIONS_DIR / date_str / "source_55.json"
     if not source_file.exists():
-        print(f"❌ Error: Source file not found: {source_file}")
-        return False
+        fallback_file = BASE_DIR.parent / "questions" / "daily" / date_str / "source_55.json"
+        if fallback_file.exists():
+            source_file = fallback_file
+        else:
+            print(f"❌ Error: Source file not found: {source_file}")
+            return False
         
     with open(source_file, "r", encoding="utf-8") as f:
         source_questions = json.load(f)
