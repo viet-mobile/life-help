@@ -74,6 +74,14 @@ export function getOrCreateReferralUser(
       totalEarnedKrw: 0,
       createdAt: new Date().toISOString(),
     };
+    if (usersByDeviceHash.size >= 5000) {
+      const firstKey = usersByDeviceHash.keys().next().value;
+      if (firstKey) {
+        const oldUser = usersByDeviceHash.get(firstKey);
+        usersByDeviceHash.delete(firstKey);
+        if (oldUser) usersByReferralId.delete(oldUser.referralId);
+      }
+    }
     usersByDeviceHash.set(deviceHash, user);
     usersByReferralId.set(referralId, user);
   }
@@ -128,6 +136,7 @@ export function recordReferralServiceSettlement(
   };
 
   rewardsList.push(reward);
+  if (rewardsList.length > 5000) rewardsList.splice(0, rewardsList.length - 5000);
   return reward;
 }
 

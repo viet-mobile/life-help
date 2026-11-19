@@ -6,7 +6,7 @@ const actions = ["start", "attempt", "complete", "cards", "diagnostic"];
 function validEvent(e: unknown): e is JournalEvent {
   if (!e || typeof e !== "object") return false;
   const v = e as JournalEvent;
-  return typeof v.id === "string" && v.id.length <= 100 && ["math", "english", "korean"].includes(v.site) && actions.includes(v.action) && typeof v.at === "string" && Number.isFinite(Date.parse(v.at));
+  return typeof v.id === "string" && v.id.length <= 100 && ["math", "english", "korean", "physics", "chemistry"].includes(v.site) && actions.includes(v.action) && typeof v.at === "string" && Number.isFinite(Date.parse(v.at));
 }
 function appendEvent(event: JournalEvent) {
   const value: unknown = JSON.parse(localStorage.getItem("jiu-journal-v1") || "[]");

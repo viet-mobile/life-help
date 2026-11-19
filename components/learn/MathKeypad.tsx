@@ -61,18 +61,24 @@ export function MathKeypad({ onInsert, onBackspace, onClear, onSubmit, disabled 
     ],
   ];
 
-  const titleText = t ? t("keypad.title") : (isNonKorean ? "Smart Math Keypad" : "수학 전용 스마트 키패드");
+  const isScience = siteCtx?.site === "physics" || siteCtx?.site === "chemistry";
+
+  const titleText = isScience
+    ? (isNonKorean ? "Smart Science Keypad" : "과학·수식 스마트 키패드")
+    : (t ? t("keypad.title") : (isNonKorean ? "Smart Math Keypad" : "수학 전용 스마트 키패드"));
   const clearText = t ? t("keypad.clear") : (isNonKorean ? "Clear All" : "전체지우기");
   const collapseText = t ? t("keypad.collapse") : (isNonKorean ? "Collapse" : "접기");
   const expandText = t ? t("keypad.expand") : (isNonKorean ? "Open Keypad" : "키패드 열기");
   const submitText = t ? t("keypad.submit") : (isNonKorean ? "Submit Answer" : "입력 완료 및 정답 제출");
-  const ariaLabelText = t ? t("keypad.ariaLabel") : (isNonKorean ? "Math Keypad" : "수학 키패드");
+  const ariaLabelText = isScience
+    ? (isNonKorean ? "Science Keypad" : "과학 키패드")
+    : (t ? t("keypad.ariaLabel") : (isNonKorean ? "Math Keypad" : "수학 키패드"));
 
   return (
     <div className="mt-3 w-full max-w-xl mx-auto border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/60 shadow-sm transition-all">
       <div className="flex items-center justify-between px-2.5 xs:px-3 py-1 xs:py-1.5 bg-slate-100 dark:bg-slate-800/80 border-b border-slate-200 dark:border-slate-800 text-[11px] xs:text-xs text-slate-600 dark:text-slate-300">
         <span className="font-semibold flex items-center gap-1 xs:gap-1.5 truncate min-w-0">
-          <span>🧮</span> {titleText}
+          <span>{isScience ? "🔬" : "🧮"}</span> {titleText}
         </span>
         <div className="flex items-center gap-2">
           <button

@@ -22,7 +22,7 @@ const nextConfig: NextConfig = {
       { source: "/:path*", headers: SECURITY_HEADERS },
       { source: "/jiu/bridge", headers: [
         { key: "X-Frame-Options", value: "" },
-        { key: "Content-Security-Policy", value: "frame-ancestors 'self' https://math.life.help https://english.life.help https://korean.life.help https://study.korean.life.help; object-src 'none'; base-uri 'self'; form-action 'self'" },
+        { key: "Content-Security-Policy", value: "frame-ancestors 'self' https://math.life.help https://english.life.help https://korean.life.help https://study.korean.life.help https://physics.life.help https://chemistry.life.help; object-src 'none'; base-uri 'self'; form-action 'self'" },
       ] },
     ];
   },

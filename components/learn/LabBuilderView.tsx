@@ -425,7 +425,7 @@ export function LabBuilderView({
   const isEnglish = site === "english";
   const isKorean = site === "korean";
 
-  const drawerButtonLabel = isScience ? (isNonKorean ? "Calibration" : "정밀 계측도") : netViewText;
+  const drawerButtonLabel = isScience ? (t ? t("lab.calibration" as never) : (isNonKorean ? "Apparatus Calibration" : "양자·분자 정밀 계측도 (Apparatus Calibration)")) : netViewText;
 
   // Category detection for situational dialogues
   const matchedCat = useMemo(() => {
@@ -711,7 +711,7 @@ export function LabBuilderView({
               cursor: "pointer",
             }}
             aria-expanded={isExpanded}
-            aria-label={isExpanded ? collapseAriaText : (isScience ? (isNonKorean ? "View Apparatus Calibration" : "정밀 계측도 보기") : netViewAriaText)}
+            aria-label={isExpanded ? collapseAriaText : (isScience ? (t ? t("lab.calibration" as never) : (isNonKorean ? "View Apparatus Calibration" : "정밀 계측도 보기")) : netViewAriaText)}
           >
             {isExpanded ? `▲ ${collapseText}` : `▼ ${drawerButtonLabel}`}
           </button>
