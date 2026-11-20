@@ -9,8 +9,9 @@ import { navigateToMainHome } from "@/lib/navigation";
 import {
   SUBSCRIPTION_PLANS,
   calculateEffectiveSubscription,
-  REFERRAL_SETTINGS,
+  LEARN_REFERRAL_POLICY,
   type SubscriptionPlanId,
+  type BillingCycle,
 } from "@/lib/learn/domain/subscription";
 import { ReferralCard } from "@/components/shared/ReferralCard";
 
@@ -26,6 +27,7 @@ export default function PaymentPage() {
 
   // Subscription & Referral state
   const [selectedPlan, setSelectedPlan] = useState<SubscriptionPlanId>("basic");
+  const [billingCycle, setBillingCycle] = useState<BillingCycle>("monthly");
   const [referralInput, setReferralInput] = useState("");
   const [appliedReferral, setAppliedReferral] = useState(false);
   const [activeReferralCount, setActiveReferralCount] = useState(0);
@@ -33,8 +35,8 @@ export default function PaymentPage() {
   const myReferralCode = "LIFE-STUDY-7788";
   const effectivePricing = calculateEffectiveSubscription(
     selectedPlan,
-    activeReferralCount,
-    appliedReferral ? referralInput.trim() : undefined
+    billingCycle,
+    activeReferralCount
   );
 
   const handleCopyAccount = () => {
@@ -319,20 +321,20 @@ export default function PaymentPage() {
                 <div className="flex justify-between text-slate-700">
                   <span>적용 할인율:</span>
                   <strong className="text-indigo-600 font-black">
-                    {effectivePricing.referralSummary.discountPercent}% 할인
-                    {effectivePricing.referralSummary.isFreeSubscription && " (🎉 100% 전액 무료 달성!)"}
+                    {effectivePricing.referralSummary.discountPercent.toFixed(1)}% 할인
+                    {effectivePricing.referralSummary.isMaxDiscountReached && " (🎉 99.9% 최대 할인 달성!)"}
                   </strong>
                 </div>
                 <div className="flex justify-between text-slate-700">
-                  <span>최종 월 납부액:</span>
+                  <span>최종 납부액 ({billingCycle === "annual" ? "연간" : "월간"}):</span>
                   <strong className="text-slate-900 font-black text-sm">
-                    ₩{effectivePricing.finalPriceKrw.toLocaleString()} / 월
+                    ₩{effectivePricing.finalPriceKrw.toLocaleString()} / {billingCycle === "annual" ? "년" : "월"}
                   </strong>
                 </div>
 
-                {effectivePricing.referralSummary.maxCapReached && (
+                {effectivePricing.referralSummary.isMaxDiscountReached && (
                   <div className="mt-2 p-2.5 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-950 text-[11px] font-bold text-center">
-                    ✨ 10명 추천 완료로 모든 플랜이 100% 무료로 제공됩니다! (최대 혜택 도달)
+                    ✨ 999명 추천 목표 달성으로 99.9% 최대 할인이 적용되었습니다! (바닥 요금 0.1% 결제)
                   </div>
                 )}
               </div>
