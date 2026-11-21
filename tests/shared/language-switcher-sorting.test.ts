@@ -162,5 +162,56 @@ describe("Language selection list: sorting and display specifications", () => {
       expect(linesHe).toHaveLength(2);
       expect(linesHe[1]).toBe("עברית");
     });
+
+    it("verifies full 89-locale translations for Egyptian Arabic (arz) and Nigerian Pidgin (pcm)", () => {
+      const arz = languages.find((l) => l.code === "arz")!;
+      const pcm = languages.find((l) => l.code === "pcm")!;
+
+      expect(arz.name).toBe("이집트 아랍어");
+      expect(pcm.name).toBe("나이지리아 피진");
+
+      // Sample key locale checks for arz
+      expect(getLanguageNameInLocale("arz", "ko")).toBe("이집트 아랍어");
+      expect(getLanguageNameInLocale("arz", "en")).toBe("Egyptian Arabic");
+      expect(getLanguageNameInLocale("arz", "ja")).toBe("エジプト・アラビア語");
+      expect(getLanguageNameInLocale("arz", "vi")).toBe("Tiếng Ả Rập Ai Cập");
+      expect(getLanguageNameInLocale("arz", "zh-Hans")).toBe("埃及阿拉伯语");
+      expect(getLanguageNameInLocale("arz", "zh-Hant")).toBe("埃及阿拉伯語");
+      expect(getLanguageNameInLocale("arz", "yue")).toBe("埃及阿拉伯話");
+      expect(getLanguageNameInLocale("arz", "fr")).toBe("Arabe égyptien");
+      expect(getLanguageNameInLocale("arz", "de")).toBe("Ägyptisches Arabisch");
+      expect(getLanguageNameInLocale("arz", "ru")).toBe("Египетский арабский");
+      expect(getLanguageNameInLocale("arz", "ar")).toBe("العامية المصرية");
+
+      // Sample key locale checks for pcm
+      expect(getLanguageNameInLocale("pcm", "ko")).toBe("나이지리아 피진");
+      expect(getLanguageNameInLocale("pcm", "en")).toBe("Nigerian Pidgin");
+      expect(getLanguageNameInLocale("pcm", "pcm")).toBe("Naijá");
+      expect(getLanguageNameInLocale("pcm", "ja")).toBe("ナイジェリア・ピジン");
+      expect(getLanguageNameInLocale("pcm", "vi")).toBe("Tiếng Pidgin Nigeria");
+      expect(getLanguageNameInLocale("pcm", "zh-Hans")).toBe("尼日利亚皮钦语");
+      expect(getLanguageNameInLocale("pcm", "zh-Hant")).toBe("奈及利亞皮欽語");
+      expect(getLanguageNameInLocale("pcm", "yue")).toBe("尼日利亞皮欽話");
+      expect(getLanguageNameInLocale("pcm", "fr")).toBe("Pidgin nigérian");
+      expect(getLanguageNameInLocale("pcm", "de")).toBe("Nigerianisches Pidgin");
+      expect(getLanguageNameInLocale("pcm", "ru")).toBe("Нигерийский пиджин");
+      expect(getLanguageNameInLocale("pcm", "ar")).toBe("البيجين النيجيري");
+
+      // All 89 locales must have valid translations without falling back to raw English unexpectedly
+      for (const loc of locales) {
+        const nameArz = getLanguageNameInLocale("arz", loc);
+        const namePcm = getLanguageNameInLocale("pcm", loc);
+
+        expect(nameArz.length).toBeGreaterThan(0);
+        expect(namePcm.length).toBeGreaterThan(0);
+
+        if (loc !== "en" && loc !== "pcm") {
+          expect(nameArz).not.toBe("Egyptian Arabic");
+        }
+        if (loc !== "en") {
+          expect(namePcm).not.toBe("Nigerian Pidgin");
+        }
+      }
+    });
   });
 });
