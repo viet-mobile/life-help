@@ -196,7 +196,7 @@ if (report) {
   outputs.push(...bankOutputs.map((o) => ({ rel: o.rel, body: o.body })));
 }
 manifest.version = sha(JSON.stringify({ sites: manifest.sites, englishBank: manifest.englishBank })).slice(0, 16);
-const manifestText = JSON.stringify(manifest, null, 1) + "\n";
+const manifestText = JSON.stringify(manifest) + "\n";
 const manifestPath = path.join(root, "lib/learn/content/asset-manifest.json");
 
 if (check) {

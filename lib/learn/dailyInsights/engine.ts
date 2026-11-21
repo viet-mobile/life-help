@@ -5,6 +5,28 @@ import { resolveLifeTopicI18n } from "./lifeTopicsI18n";
 import { resolveKoreanTopicI18n } from "./koreanTopicsI18n";
 import { resolveStudyTopicI18n } from "./studyTopicsI18n";
 
+const CATEGORY_KO: Record<string, string> = {
+  wealth: "재산 증식",
+  saving: "비용 절약",
+  career: "경력 및 구직",
+  health: "건강 및 웰니스",
+  travel: "여행 및 이동",
+  problem: "생활 문제 해결",
+  shopping: "쇼핑·소비",
+  energy: "에너지 절약",
+};
+
+const CATEGORY_ICON: Record<string, string> = {
+  wealth: "📈",
+  saving: "💸",
+  career: "💼",
+  health: "🌱",
+  travel: "✈️",
+  problem: "🛠️",
+  shopping: "🛒",
+  energy: "⚡",
+};
+
 /**
  * Returns the deterministic day index (0 ~ 365) based on month and day,
  * calibrated for a full 366-day leap-year calendar.
@@ -124,6 +146,12 @@ export function getDailyInsight(domain: DomainType | string, date: Date = new Da
     }
   }
 
+  if (!item.categoryLabelKo) {
+    item.categoryLabelKo = CATEGORY_KO[item.category] || item.category;
+  }
+  if (!item.categoryIcon) {
+    item.categoryIcon = CATEGORY_ICON[item.category] || "💡";
+  }
   if (!item.categoryLabel) {
     item.categoryLabel = item.categoryLabelKo || item.category;
   }

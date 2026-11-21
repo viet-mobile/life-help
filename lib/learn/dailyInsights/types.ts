@@ -11,9 +11,9 @@ export type InsightCategory =
 export interface DailyInsight {
   id: string;
   category: InsightCategory;
-  categoryLabelKo: string;
+  categoryLabelKo?: string;
   categoryLabel?: string;
-  categoryIcon: string;
+  categoryIcon?: string;
   title: string;
   summary: string;
   principle: string;
