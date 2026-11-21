@@ -161,7 +161,7 @@ export const languages: readonly LanguageMeta[] = [
   { code: "hu", name: "헝가리어", nativeName: "Magyar" },
   { code: "fi", name: "핀란드어", nativeName: "Suomi" },
   { code: "ka", name: "조지아어", nativeName: "ქართული" },
-  { code: "yue", name: "광동어(광둥어)", nativeName: "粵語" },
+  { code: "yue", name: "광둥어", nativeName: "粵語" },
   { code: "ca", name: "카탈루냐어", nativeName: "Català" },
   { code: "bg", name: "불가리아어", nativeName: "Български" },
   { code: "tg", name: "타지크어", nativeName: "Тоҷикӣ" },
@@ -276,10 +276,11 @@ export function getSortedLanguages(currentLocale: Locale | string = "ko"): reado
 
 /**
  * Formats a language metadata object for dropdowns and selection UI:
- * - Left: The name of the language in the currently selected language (left-aligned).
- * - Right: The native name of the language (right-aligned).
- * - Even for RTL languages, Left is strictly the name in the current language, and Right is the native name.
- * - Bidirectional isolation (LRM) guarantees clean LTR display across all browsers and scripts.
+ * - Left-aligned text presentation across all scripts.
+ * - Current selected language (pinned at top): rendered exactly once on 1 line (no redundant duplicate).
+ * - All other languages: rendered on 2 distinct lines with exactly 1 newline separator:
+ *   Line 1: Name in the currently selected language
+ *   Line 2: Native name in its own script
  */
 export function formatLanguageName(
   meta: LanguageMeta,
@@ -289,12 +290,13 @@ export function formatLanguageName(
   const left = getLanguageNameInLocale(meta.code, currentLocale);
   const right = currentLocale === "zh-Hant" && meta.code === "zh-Hans" ? "簡體中文" : meta.nativeName;
 
-  const w = getDisplayWidth(left);
-  const targetCol = 24;
-  const pad = Math.max(3, targetCol - w);
-  const padding = "\u00A0".repeat(pad);
+  // 최상단 현재 선택 언어이거나 두 언어명이 동일한 경우 중복 표기 없이 1번만 표기
+  if (meta.code === currentLocale || left.trim() === right.trim()) {
+    return left;
+  }
 
-  return `\u200E${left}\u200E${padding}\u200E${right}\u200E`;
+  // 선택 언어로 된 언어명(1행)과 해당 언어로 된 언어명(2행)을 2줄로 표기 (줄바꿈 1줄씩만)
+  return `${left}\n${right}`;
 }
 
 export function isValidLocale(val: unknown): val is Locale {

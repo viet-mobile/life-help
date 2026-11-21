@@ -76,63 +76,91 @@ describe("Language selection list: sorting and display specifications", () => {
     });
   });
 
-  describe("Rule 3: Two-column formatting (Left: name in current language, Right: native name)", () => {
-    it("formats options with Left = current lang name and Right = native name", () => {
+  describe("Rule 3: Left-aligned 2-line formatting & Single display for current language", () => {
+    it("renders top current language once on 1 line (no redundant duplicate)", () => {
+      const ko = languages.find((l) => l.code === "ko")!;
+      const en = languages.find((l) => l.code === "en")!;
+      const ja = languages.find((l) => l.code === "ja")!;
+      const ar = languages.find((l) => l.code === "ar")!;
+
+      expect(formatLanguageName(ko, "ko")).toBe("한국어");
+      expect(formatLanguageName(ko, "ko")).not.toContain("\n");
+
+      expect(formatLanguageName(en, "en")).toBe("English");
+      expect(formatLanguageName(en, "en")).not.toContain("\n");
+
+      expect(formatLanguageName(ja, "ja")).toBe("日本語");
+      expect(formatLanguageName(ja, "ja")).not.toContain("\n");
+
+      expect(formatLanguageName(ar, "ar")).toBe("العربية");
+      expect(formatLanguageName(ar, "ar")).not.toContain("\n");
+    });
+
+    it("renders non-current languages in 2 lines with exactly 1 newline separator", () => {
       const ko = languages.find((l) => l.code === "ko")!;
       const en = languages.find((l) => l.code === "en")!;
       const fr = languages.find((l) => l.code === "fr")!;
+      const ja = languages.find((l) => l.code === "ja")!;
 
-      // In Korean
+      // In Korean mode: English is rendered as '영어\nEnglish'
       const formattedEnInKo = formatLanguageName(en, "ko");
-      expect(formattedEnInKo).toContain("영어");
-      expect(formattedEnInKo).toContain("English");
-      expect(formattedEnInKo.indexOf("영어")).toBeLessThan(formattedEnInKo.indexOf("English"));
+      const linesEnInKo = formattedEnInKo.split("\n");
+      expect(linesEnInKo).toHaveLength(2);
+      expect(linesEnInKo[0]).toBe("영어");
+      expect(linesEnInKo[1]).toBe("English");
 
+      // In Korean mode: French is rendered as '프랑스어\nFrançais'
       const formattedFrInKo = formatLanguageName(fr, "ko");
-      expect(formattedFrInKo).toContain("프랑스어");
-      expect(formattedFrInKo).toContain("Français");
-      expect(formattedFrInKo.indexOf("프랑스어")).toBeLessThan(formattedFrInKo.indexOf("Français"));
+      const linesFrInKo = formattedFrInKo.split("\n");
+      expect(linesFrInKo).toHaveLength(2);
+      expect(linesFrInKo[0]).toBe("프랑스어");
+      expect(linesFrInKo[1]).toBe("Français");
 
-      // In English
+      // In English mode: Korean is rendered as 'Korean\n한국어'
       const formattedKoInEn = formatLanguageName(ko, "en");
-      expect(formattedKoInEn).toContain("Korean");
-      expect(formattedKoInEn).toContain("한국어");
-      expect(formattedKoInEn.indexOf("Korean")).toBeLessThan(formattedKoInEn.indexOf("한국어"));
+      const linesKoInEn = formattedKoInEn.split("\n");
+      expect(linesKoInEn).toHaveLength(2);
+      expect(linesKoInEn[0]).toBe("Korean");
+      expect(linesKoInEn[1]).toBe("한국어");
+
+      // In Japanese mode: English is rendered as '英語\nEnglish'
+      const formattedEnInJa = formatLanguageName(en, "ja");
+      const linesEnInJa = formattedEnInJa.split("\n");
+      expect(linesEnInJa).toHaveLength(2);
+      expect(linesEnInJa[0]).toBe("英語");
+      expect(linesEnInJa[1]).toBe("English");
     });
 
-    it("applies the exact same Left-to-Right principle even for RTL languages", () => {
-      const ar = languages.find((l) => l.code === "ar")!; // Arabic (RTL)
-      const he = languages.find((l) => l.code === "he")!; // Hebrew (RTL)
-      const fa = languages.find((l) => l.code === "fa")!; // Persian (RTL)
-      const ur = languages.find((l) => l.code === "ur")!; // Urdu (RTL)
+    it("standardizes Cantonese to '광둥어' in Korean mode without parentheses", () => {
+      const yue = languages.find((l) => l.code === "yue")!;
+      expect(yue.name).toBe("광둥어");
+      expect(yue.name).not.toContain("광동어");
+      expect(yue.name).not.toContain("(");
+      expect(yue.name).not.toContain(")");
 
-      // When UI is Korean
-      for (const lang of [ar, he, fa, ur]) {
-        const str = formatLanguageName(lang, "ko");
-        const left = getLanguageNameInLocale(lang.code, "ko");
-        const right = lang.nativeName;
-
-        expect(str).toContain(left);
-        expect(str).toContain(right);
-        // Left name must appear before the native name
-        expect(str.indexOf(left)).toBeLessThan(str.indexOf(right));
-      }
-
-      // When UI itself is Arabic (RTL)
-      const ko = languages.find((l) => l.code === "ko")!;
-      const strAr = formatLanguageName(ko, "ar");
-      const leftAr = getLanguageNameInLocale("ko", "ar");
-      const rightKo = ko.nativeName;
-
-      expect(strAr).toContain(leftAr);
-      expect(strAr).toContain(rightKo);
-      expect(strAr.indexOf(leftAr)).toBeLessThan(strAr.indexOf(rightKo));
+      const formattedYueInKo = formatLanguageName(yue, "ko");
+      const lines = formattedYueInKo.split("\n");
+      expect(lines).toHaveLength(2);
+      expect(lines[0]).toBe("광둥어");
+      expect(lines[1]).toBe("粵語");
     });
 
-    it("contains non-breaking spaces between left and right for alignment", () => {
-      const en = languages.find((l) => l.code === "en")!;
-      const str = formatLanguageName(en, "ko");
-      expect(str).toMatch(/\u00A0{2,}/);
+    it("applies 2-line formatting consistently even for RTL languages", () => {
+      const ar = languages.find((l) => l.code === "ar")!;
+      const he = languages.find((l) => l.code === "he")!;
+
+      // In Korean mode
+      const formattedArInKo = formatLanguageName(ar, "ko");
+      const linesAr = formattedArInKo.split("\n");
+      expect(linesAr).toHaveLength(2);
+      expect(linesAr[0]).toBe("아랍어");
+      expect(linesAr[1]).toBe("العربية");
+
+      // In Arabic mode: Hebrew
+      const formattedHeInAr = formatLanguageName(he, "ar");
+      const linesHe = formattedHeInAr.split("\n");
+      expect(linesHe).toHaveLength(2);
+      expect(linesHe[1]).toBe("עברית");
     });
   });
 });

@@ -72,7 +72,7 @@ export function LanguageSwitcher({
           value={currentLocale}
           onChange={handleChange}
           dir="ltr"
-          className="cursor-pointer bg-transparent pr-0 text-[11px] font-bold text-slate-800 sm:text-xs md:text-sm w-full min-w-0 min-h-11 truncate focus-visible:outline-none"
+          className="cursor-pointer bg-transparent pr-0 text-[11px] font-bold text-slate-800 sm:text-xs md:text-sm w-full min-w-0 min-h-11 truncate focus-visible:outline-none text-left"
           aria-label="Select system language"
         >
           {sortedLanguages.map((lang) => (
@@ -80,7 +80,7 @@ export function LanguageSwitcher({
               key={lang.code}
               value={lang.code}
               dir="ltr"
-              className="text-slate-900 bg-white"
+              className="text-slate-900 bg-white text-left whitespace-pre py-1"
             >
               {formatLanguageName(lang, currentLocale, isBilingual)}
             </option>
