@@ -301,7 +301,13 @@ function CardShell({ svc, onStudy, className, children }: { svc: ServiceItem; on
     );
   }
   return (
-    <Link href={svc.href ?? `/services/${svc.slug}`} data-testid={`home-card-${svc.id}`} data-service-id={svc.id} className={className}>
+    <Link
+      href={svc.href ?? `/services/${svc.slug}`}
+      prefetch={true}
+      data-testid={`home-card-${svc.id}`}
+      data-service-id={svc.id}
+      className={className}
+    >
       {children}
     </Link>
   );
@@ -421,6 +427,7 @@ export function CustomerHome() {
             {/* One-Touch Instant Emergency Dispatch Droplet Button */}
             <Link
               href="/request"
+              prefetch={true}
               className="droplet-btn-lg min-h-11 shrink-0 flex items-center justify-center gap-1.5 bg-linear-to-r from-red-600 via-rose-600 to-red-600 hover:from-red-700 hover:to-red-700 px-4 py-2 sm:py-2.5 text-white font-black shadow-md shadow-red-600/20 active:scale-98 transition text-center cursor-pointer"
             >
               <span className="text-sm">🚨</span>
@@ -636,6 +643,7 @@ export function CustomerHome() {
             <div className="shrink-0 flex justify-end">
               <Link
                 href="/services/job-help?tab=provider"
+                prefetch={true}
                 className="droplet-btn-lg inline-flex items-center justify-center bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 px-4 py-2 text-slate-950 font-black text-xs sm:text-sm shadow-md shadow-amber-500/20 active:scale-98 transition text-center cursor-pointer"
               >
                 <span>{t("customer.helperRegisterBtn") || "헬퍼 등록 신청하기 →"}</span>

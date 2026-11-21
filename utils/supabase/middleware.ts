@@ -14,6 +14,15 @@ export async function updateSession(request: NextRequest) {
     return { response: supabaseResponse, supabaseResponse, user: null };
   }
 
+  // Fast-path: If no Supabase auth token cookie exists in request, skip remote getUser() network call
+  const allCookies = request.cookies.getAll();
+  const hasAuthCookie = allCookies.some(
+    (c) => c.name.startsWith("sb-") || c.name.includes("auth-token")
+  );
+  if (!hasAuthCookie) {
+    return { response: supabaseResponse, supabaseResponse, user: null };
+  }
+
   const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
     cookies: {
       getAll() {

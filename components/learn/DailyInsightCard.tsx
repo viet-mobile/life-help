@@ -200,6 +200,7 @@ export function DailyInsightCard({ domain, insight: initialInsight, locale: prop
         {targetHref ? (
           <Link
             href={targetHref}
+            prefetch={true}
             className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-700 hover:text-slate-950 transition cursor-pointer"
           >
             <span suppressHydrationWarning>{displayRelatedText}</span>

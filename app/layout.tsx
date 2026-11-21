@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { headers } from "next/headers";
 import "./globals.css";
 import { LocaleProvider } from "@/lib/i18n/LocaleContext";
@@ -14,6 +15,7 @@ import {
 } from "@/lib/i18n/siteMetadata";
 
 import { TopPwaBar } from "@/components/pwa/TopPwaBar";
+import { RouteProgressBar } from "@/components/shared/RouteProgressBar";
 import { isJiuHost, jiuMetadata } from "@/lib/jiu/brand";
 import { PwaRegister } from "@/components/pwa/PwaRegister";
 import { directionForLocale } from "@/lib/i18n/direction";
@@ -90,6 +92,9 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
         <meta name="theme-color" content={jiu ? "#253b35" : "#000000"} />
       </head>
       <body>
+        <Suspense fallback={null}>
+          <RouteProgressBar />
+        </Suspense>
         {portalHeader !== "learn" && !jiu && ["", "customer"].includes(portalHeader) && (
           <script
             type="application/ld+json"
