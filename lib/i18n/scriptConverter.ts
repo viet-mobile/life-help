@@ -1,29 +1,49 @@
+import { convertTradToSimp } from "@/lib/i18n/chineseConverter";
+
 /**
- * Dual Script Conversion Engine (Latin <-> Cyrillic)
- * Supports digraphia countries where Latin alphabet and Cyrillic script are both in active use:
+ * Dual Script Conversion Engine
+ * Supports digraphia and dual-script languages where two scripts are in active use:
  * - Uzbek (uz): Lotin <-> Кирилл
  * - Kazakh (kk): Latyn <-> Кирилл
  * - Serbian (sr): Latinica <-> Ћирилица
  * - Tajik (tg): Lotinī <-> Кириллӣ
  * - Azerbaijani (az): Latın <-> Кирил
  * - Mongolian (mn): Latin <-> Кирилл
+ * - Cantonese (yue): 繁體 (Traditional) <-> 簡體 (Simplified)
  */
 
-export type ScriptType = "latn" | "cyrl";
+export type ScriptType = "latn" | "cyrl" | "hant" | "hans";
 
 export interface DualScriptMeta {
   code: string;
   defaultScript: ScriptType;
-  latinLabel: string;
-  cyrillicLabel: string;
-  latinName: string;
-  cyrillicName: string;
+  script1: ScriptType;
+  script2: ScriptType;
+  script1Icon: string;
+  script2Icon: string;
+  script1Label: string;
+  script2Label: string;
+  script1Name: string;
+  script2Name: string;
+  // Backward compatibility fields
+  latinLabel?: string;
+  cyrillicLabel?: string;
+  latinName?: string;
+  cyrillicName?: string;
 }
 
 export const DUAL_SCRIPT_LANGUAGES: Record<string, DualScriptMeta> = {
   uz: {
     code: "uz",
     defaultScript: "latn",
+    script1: "latn",
+    script2: "cyrl",
+    script1Icon: "A",
+    script2Icon: "Я",
+    script1Label: "Lotin",
+    script2Label: "Кирилл",
+    script1Name: "Lotin alifbosi (Latin)",
+    script2Name: "Кирилл алифбоси (Cyrillic)",
     latinLabel: "Lotin",
     cyrillicLabel: "Кирилл",
     latinName: "Lotin alifbosi (Latin)",
@@ -32,6 +52,14 @@ export const DUAL_SCRIPT_LANGUAGES: Record<string, DualScriptMeta> = {
   kk: {
     code: "kk",
     defaultScript: "cyrl",
+    script1: "latn",
+    script2: "cyrl",
+    script1Icon: "A",
+    script2Icon: "Я",
+    script1Label: "Latyn",
+    script2Label: "Кирилл",
+    script1Name: "Latyn älipbii (Latin)",
+    script2Name: "Кирилл әліпбиі (Cyrillic)",
     latinLabel: "Latyn",
     cyrillicLabel: "Кирилл",
     latinName: "Latyn älipbii (Latin)",
@@ -40,6 +68,14 @@ export const DUAL_SCRIPT_LANGUAGES: Record<string, DualScriptMeta> = {
   sr: {
     code: "sr",
     defaultScript: "cyrl",
+    script1: "latn",
+    script2: "cyrl",
+    script1Icon: "A",
+    script2Icon: "Я",
+    script1Label: "Latinica",
+    script2Label: "Ћирилица",
+    script1Name: "Srpska latinica (Latin)",
+    script2Name: "Српска ћирилица (Cyrillic)",
     latinLabel: "Latinica",
     cyrillicLabel: "Ћирилица",
     latinName: "Srpska latinica (Latin)",
@@ -48,6 +84,14 @@ export const DUAL_SCRIPT_LANGUAGES: Record<string, DualScriptMeta> = {
   tg: {
     code: "tg",
     defaultScript: "cyrl",
+    script1: "latn",
+    script2: "cyrl",
+    script1Icon: "A",
+    script2Icon: "Я",
+    script1Label: "Lotinī",
+    script2Label: "Кириллӣ",
+    script1Name: "Alifboi lotinī (Latin)",
+    script2Name: "Алифбои кириллӣ (Cyrillic)",
     latinLabel: "Lotinī",
     cyrillicLabel: "Кириллӣ",
     latinName: "Alifboi lotinī (Latin)",
@@ -56,6 +100,14 @@ export const DUAL_SCRIPT_LANGUAGES: Record<string, DualScriptMeta> = {
   az: {
     code: "az",
     defaultScript: "latn",
+    script1: "latn",
+    script2: "cyrl",
+    script1Icon: "A",
+    script2Icon: "Я",
+    script1Label: "Latın",
+    script2Label: "Кирил",
+    script1Name: "Latın qrafikası (Latin)",
+    script2Name: "Кирил графикасы (Cyrillic)",
     latinLabel: "Latın",
     cyrillicLabel: "Кирил",
     latinName: "Latın qrafikası (Latin)",
@@ -64,10 +116,34 @@ export const DUAL_SCRIPT_LANGUAGES: Record<string, DualScriptMeta> = {
   mn: {
     code: "mn",
     defaultScript: "cyrl",
+    script1: "latn",
+    script2: "cyrl",
+    script1Icon: "A",
+    script2Icon: "Я",
+    script1Label: "Latin",
+    script2Label: "Кирилл",
+    script1Name: "Latin üseg (Latin)",
+    script2Name: "Кирилл үсэг (Cyrillic)",
     latinLabel: "Latin",
     cyrillicLabel: "Кирилл",
     latinName: "Latin üseg (Latin)",
     cyrillicName: "Кирилл үсэг (Cyrillic)",
+  },
+  yue: {
+    code: "yue",
+    defaultScript: "hant",
+    script1: "hant",
+    script2: "hans",
+    script1Icon: "繁",
+    script2Icon: "简",
+    script1Label: "繁體",
+    script2Label: "簡體",
+    script1Name: "繁體中文 (Traditional Chinese)",
+    script2Name: "簡體中文 (Simplified Chinese)",
+    latinLabel: "繁體",
+    cyrillicLabel: "簡體",
+    latinName: "繁體中文 (Traditional Chinese)",
+    cyrillicName: "簡體中文 (Simplified Chinese)",
   },
 };
 
@@ -228,6 +304,11 @@ export function convertScript(text: string, locale: string, targetScript: Script
   // 6. Mongolian (Source is Cyrillic, target is Latin)
   if (locale === "mn" && targetScript === "latn") {
     return text.split("").map((c) => MN_CYRL_TO_LATN[c] !== undefined ? MN_CYRL_TO_LATN[c] : c).join("");
+  }
+
+  // 7. Cantonese (Source is Traditional Chinese, target is Simplified Chinese)
+  if (locale === "yue" && targetScript === "hans") {
+    return convertTradToSimp(text);
   }
 
   return text;

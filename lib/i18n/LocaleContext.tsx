@@ -310,15 +310,15 @@ export function LocaleProvider({
 
   const [script, setScriptState] = React.useState<ScriptType>(() => {
     if (typeof window !== "undefined") {
-      const saved = localStorage.getItem(`life_help_script_${locale}`);
-      if (saved === "latn" || saved === "cyrl") return saved;
+      const saved = localStorage.getItem(`life_help_script_${locale}`) as ScriptType;
+      if (saved === "latn" || saved === "cyrl" || saved === "hant" || saved === "hans") return saved;
     }
     return DUAL_SCRIPT_LANGUAGES[locale]?.defaultScript || "latn";
   });
 
   useEffect(() => {
-    const saved = typeof window !== "undefined" ? localStorage.getItem(`life_help_script_${locale}`) : null;
-    if (saved === "latn" || saved === "cyrl") {
+    const saved = typeof window !== "undefined" ? (localStorage.getItem(`life_help_script_${locale}`) as ScriptType) : null;
+    if (saved === "latn" || saved === "cyrl" || saved === "hant" || saved === "hans") {
       setScriptState(saved);
     } else {
       setScriptState(DUAL_SCRIPT_LANGUAGES[locale]?.defaultScript || "latn");

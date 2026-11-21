@@ -97,33 +97,33 @@ export function LanguageSwitcher({
         >
           <button
             type="button"
-            onClick={() => context.setScript("latn")}
+            onClick={() => context.setScript(scriptMeta.script1)}
             className={`droplet-btn min-h-11 min-w-9 px-2 py-1 transition text-xs flex items-center justify-center gap-1 shrink-0 ${
-              context.script === "latn"
+              context.script === scriptMeta.script1
                 ? "bg-white text-blue-700 shadow-xs font-black ring-1 ring-slate-300/60"
                 : "text-slate-600 hover:text-slate-900 font-semibold"
             }`}
-            title={scriptMeta.latinName}
-            aria-label={scriptMeta.latinName}
-            aria-pressed={context.script === "latn"}
+            title={scriptMeta.script1Name}
+            aria-label={scriptMeta.script1Name}
+            aria-pressed={context.script === scriptMeta.script1}
           >
-            <span className="font-mono text-xs font-black">A</span>
-            <span className="text-[11px] sm:text-xs">{scriptMeta.latinLabel}</span>
+            <span className="font-mono text-xs font-black">{scriptMeta.script1Icon}</span>
+            <span className="text-[11px] sm:text-xs">{scriptMeta.script1Label}</span>
           </button>
           <button
             type="button"
-            onClick={() => context.setScript("cyrl")}
+            onClick={() => context.setScript(scriptMeta.script2)}
             className={`droplet-btn min-h-11 min-w-9 px-2 py-1 transition text-xs flex items-center justify-center gap-1 shrink-0 ${
-              context.script === "cyrl"
+              context.script === scriptMeta.script2
                 ? "bg-white text-blue-700 shadow-xs font-black ring-1 ring-slate-300/60"
                 : "text-slate-600 hover:text-slate-900 font-semibold"
             }`}
-            title={scriptMeta.cyrillicName}
-            aria-label={scriptMeta.cyrillicName}
-            aria-pressed={context.script === "cyrl"}
+            title={scriptMeta.script2Name}
+            aria-label={scriptMeta.script2Name}
+            aria-pressed={context.script === scriptMeta.script2}
           >
-            <span className="font-mono text-xs font-black">Я</span>
-            <span className="text-[11px] sm:text-xs">{scriptMeta.cyrillicLabel}</span>
+            <span className="font-mono text-xs font-black">{scriptMeta.script2Icon}</span>
+            <span className="text-[11px] sm:text-xs">{scriptMeta.script2Label}</span>
           </button>
         </div>
       )}
