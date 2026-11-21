@@ -1,4 +1,5 @@
 import { describe, it, expect } from "vitest";
+import { locales } from "@/messages/registry";
 import {
   getLocalizedCountryName,
   getLocalizedSiteDescription,
@@ -151,6 +152,27 @@ describe("Top Banner & Site Metadata Dynamic Description", () => {
       expect(SITE_METADATA["en"].description).toContain(
         "Living services platform for all people living in Korea"
       );
+    });
+
+    it("verifies full coverage across all 89 locales in the official registry", () => {
+      expect(locales.length).toBe(89);
+
+      for (const loc of locales) {
+        expect(SITE_METADATA[loc], `SITE_METADATA must contain ${loc}`).toBeDefined();
+        expect(SITE_METADATA[loc].tagline.length).toBeGreaterThan(0);
+        expect(SITE_METADATA[loc].description.length).toBeGreaterThan(0);
+        expect(SITE_METADATA[loc].chat.title.length).toBeGreaterThan(0);
+        expect(SITE_METADATA[loc].tech.title.length).toBeGreaterThan(0);
+        expect(SITE_METADATA[loc].sys.title.length).toBeGreaterThan(0);
+
+        const descKorea = getLocalizedSiteDescription(loc, "korea");
+        expect(descKorea).not.toContain("{country}");
+        expect(descKorea.length).toBeGreaterThan(5);
+
+        const descJapan = getLocalizedSiteDescription(loc, "japan");
+        expect(descJapan).not.toContain("{country}");
+        expect(descJapan.length).toBeGreaterThan(5);
+      }
     });
   });
 });

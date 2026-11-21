@@ -279,6 +279,49 @@ export const DEFAULT_KOREA_NAMES: Record<string, string> = {
   uz: "Koreya",
   tet: "Koreia",
   am: "ኮሪያ",
+  tl: "Korea",
+  ms: "Korea",
+  pcm: "Korea",
+  ro: "Coreea",
+  cs: "Koreji",
+  af: "Korea",
+  hu: "Koreában",
+  fi: "Koreassa",
+  ka: "კორეაში",
+  yue: "韓國",
+  ca: "Corea",
+  bg: "Корея",
+  tg: "Корея",
+  as: "কোৰিয়া",
+  az: "Koreya",
+  ceb: "Korea",
+  et: "Koreas",
+  eu: "Korean",
+  gl: "Corea",
+  ha: "Koriya",
+  hr: "Koreji",
+  ig: "Korea",
+  is: "Kóreu",
+  jv: "Korea",
+  ku: "Koreya",
+  lt: "Korėjoje",
+  lv: "Korejā",
+  mg: "Korea",
+  mk: "Кореја",
+  om: "Kooriyaa",
+  ps: "کوریا",
+  sd: "ڪوريا",
+  sg: "Korëe",
+  sk: "Kórei",
+  sl: "Koreji",
+  sn: "Korea",
+  so: "Kuuriyada Koonfureed",
+  sq: "Kore",
+  sr: "Кореји",
+  su: "Koréa",
+  xh: "eKorea",
+  yo: "Koria",
+  zu: "eKorea",
 };
 
 export const SITE_DESCRIPTION_TEMPLATES: Record<string, string> = {
@@ -327,7 +370,50 @@ export const SITE_DESCRIPTION_TEMPLATES: Record<string, string> = {
   kk: "{country} еліндегі барлық тұрғындарға арналған тұрмыстық қызметтер платформасы. Өз ана тіліңізде кеңес алып, сенімді жергілікті шеберлермен байланысыңыз.",
   uz: "{country}da yashovchi barcha aholi uchun turmush xizmatlari platformasi. O'z ona tilingizda maslahat oling va ishonchli mahalliy ustalar bilan bog'laning.",
   tet: "Plataforma servisu moris nian ba ema hotu ne'ebé hela iha {country}. Konsulta ho ita-boot nia lian inan no liga ba tékniku profisionál lokál ne'ebé fiar-laek.",
-  am: "በ{country} ለሚኖሩ ሰዎች ሁሉ የተዘጋጀ የዕለት ተዕለት ኑሮ አገልግሎት መድረክ። በአፍ መፍቻ ቋንቋዎ ይማከሩ እና ከታመኑ የአካባቢው ባለሙያዎች ጋር ይገናኙ。"
+  am: "በ{country} ለሚኖሩ ሰዎች ሁሉ የተዘጋጀ የዕለት ተዕለት ኑሮ አገልግሎት መድረክ። በአፍ መፍቻ ቋንቋዎ ይማከሩ እና ከታመኑ የአካባቢው ባለሙያዎች ጋር ይገናኙ。",
+  tl: "Platform ng mga serbisyo sa pamumuhay para sa lahat ng naninirahan sa {country}. Kumonsulta sa iyong sariling wika at kumonekta sa mga pinagkakatiwalaang lokal na espesyalista.",
+  ms: "Platform perkhidmatan kehidupan untuk semua orang yang tinggal di {country}. Berunding dalam bahasa ibunda anda dan berhubung dengan pakar tempatan yang dipercayai.",
+  pcm: "Living service platform for all people wey dey stay for {country}. Make una chat with una mama tongue and connect with local specialists wey una fit trust.",
+  ro: "Platformă de servicii cotidiene pentru toți cei care locuiesc în {country}. Consultați în limba maternă și conectați-vă cu specialiști locali de încredere.",
+  cs: "Platforma životních služeb pro všechny lidi žijící v {country}. Poraďte se ve svém rodném jazyce a spojte se s ověřenými místními specialisty.",
+  af: "Lewensdienste-platform vir almal wat in {country} woon. Raadpleeg in jou moedertaal en skakel met betroubare plaaslike spesialiste.",
+  hu: "Életviteli szolgáltatási platform mindenkinek, aki itt él: {country}. Konzultáljon anyanyelvén, és vegye fel a kapcsolatot megbízható helyi szakemberekkel.",
+  fi: "Arjen palvelualusta kaikille maassa {country} asuville. Keskustele äidinkielelläsi ja ota yhteyttä luotettaviin paikallisiin asiantuntijoihin.",
+  ka: "საცხოვრებელი მომსახურების პლატფორმა მათთვის, ვინც ცხოვრობს {country}. გაიარეთ კონსულტაცია მშობლიურ ენაზე და დაუკავშირდით სანდო ადგილობრივ სპეციალისტებს.",
+  yue: "專為在{country}所有居民打造嘅生活服務平臺。使用母語即時諮詢，快速媒合在地值得信賴嘅專業師傅。",
+  ca: "Plataforma de serveis del dia a dia per a tothom que viu a {country}. Consulta en la teva llengua materna i connecta amb especialistes locals de confiança.",
+  bg: "Платформа за битови услуги за всички живеещи в {country}. Консултирайте се на родния си език и се свържете с надеждни местни специалисти.",
+  tg: "Платформаи хидматрасонии маишӣ барои ҳамаи сокинони {country}. Дар забони модарии худ маслиҳат гиред ва бо мутахассисони боэътимоди маҳаллӣ пайваст шавед.",
+  as: "{country}ত বাস কৰা সকলো লোকৰ বাবে জীৱন-যাপন সেৱা মঞ্চ। আপোনাৰ মাতৃভাষাত পৰামৰ্শ লওক আৰু বিশ্বস্ত স্থানীয় বিশেষজ্ঞসকলৰ সৈতে সংযোগ কৰক।",
+  az: "{country} ərazisində yaşayan hər kəs üçün məişət xidmətləri platforması. Öz ana dilinizdə məsləhətləşin və etibarlı yerli mütəxəssislərlə əlaqə saxlayın.",
+  ceb: "Plataporma sa serbisyo sa panginabuhi alang sa tanan nga nagpuyo sa {country}. Pagkonsulta sa imong lumad nga pinulongan ug pakigkita sa kasaligang lokal nga mga espesyalista.",
+  et: "Igapäevateenuste platvorm kõigile, kes elavad riigis {country}. Konsulteerige oma emakeeles ja võtke ühendust usaldusväärsete kohalike spetsialistidega.",
+  eu: "{country} herrialdean bizi diren guztientzako bizi-zerbitzuen plataforma. Kontsultatu zure ama-hizkuntzan eta konektatu tokiko espezialista fidagarriekin.",
+  gl: "Plataforma de servizos vitais para todas as persoas que viven en {country}. Consulta na túa lingua materna e conecta con especialistas locais de confianza.",
+  ha: "Dandalin ayyukan yau da kullun ga duk mutanen da ke zaune a {country}. Nemi shawara da yarenku na asali kuma ku haɗu da kwararrun masana na gida abin dogaro.",
+  hr: "Platforma svakodnevnih usluga za sve ljude koji žive u {country}. Savjetujte se na svom materinjem jeziku i povežite se s provjerenim lokalnim stručnjacima.",
+  ig: "Usoro ọrụ ndụ maka mmadụ niile bi na {country}. Kpọtụrụ anyị n'asụsụ obodo gị ma jikọọ ndị ọkachamara obodo a pụrụ ịtụkwasị obi.",
+  is: "Þjónustuvettvangur fyrir alla sem búa í {country}. Fáðu ráðgjöf á þínu móðurmáli og hafðu samband við trausta sérfræðinga á staðnum.",
+  jv: "Platform layanan urip kanggo kabeh wong sing manggon ing {country}. Konsultasi nganggo basa ibu sampeyan lan sambung karo spesialis lokal sing dipercaya.",
+  ku: "Platforma xizmetên jiyanê ji bo her kesê li {country} dijî. Bi zimanê dayika xwe şêwir bikin û bi pisporên herêmî yên pêbawer re têkilî daynin.",
+  lt: "Gyvenimo paslaugų platforma visiems, gyvenantiems {country}. Konsultuokitės gimtąja kalba ir susisiekite su patikimais vietos specialistais.",
+  lv: "Sadzīves pakalpojumu platforma ikvienam, kas dzīvo {country}. Konsultējieties dzimtajā valodā un sazinieties ar uzticamiem vietējiem speciālistiem.",
+  mg: "Sehatra tolotra fiainana ho an'ny rehetra monina ao {country}. Manontania amin'ny fitenin-dreninao ary mifandraisa amin'ireo manampahaizana manokana azo itokisana.",
+  mk: "Платформа за животни услуги за сите луѓе што живеат во {country}. Консултирајте се на вашиот мајчин јазик и поврзете се со доверливи локални специјалисти.",
+  om: "Wirtuu tajaajila jireenyaa namoota {country} keessa jiraatan hundaaf. Afaan dhalootaa keessaniin mari'adhaa ogeeyyii naannoo amanamaa waliin walqunnamaa.",
+  ps: "د هر هغه چا لپاره د ژوند د خدمتونو پلیټفارم چې په {country} کې ژوند کوي. په خپله مورنۍ ژبه مشوره وکړئ او د باوري محلي متخصصینو سره اړیکه ونیسئ.",
+  sd: "{country} ۾ رهندڙ سڀني ماڻهن لاءِ زندگي جي خدمتن جو پليٽ فارم. پنهنجي مادري زبان ۾ صلاح وٺو ۽ قابل اعتماد مقامي ماهرن سان رابطو ڪريو.",
+  sg: "Gbâ ti a-service ti lâ oko oko ndali ti azo kue so ayeke na {country}. Sâra tënë na yanga ti kodro ti mo na wara atongani ti ndo ni so a lingbi ti zia bê na ala.",
+  sk: "Platforma každodenných služieb pre všetkých ľudí žijúcich v {country}. Poraďte sa vo svojom rodnom jazyku a spojte sa s overenými miestnymi špecialistami.",
+  sl: "Platforma za vsakodnevne storitve za vse, ki živijo v {country}. Posvetujte se v maternem jeziku in se povežite z zaupanja vrednimi lokalnimi strokovnjaki.",
+  sn: "Nzvimbo yebasa reupenyu kune vanhu vose vanogara mu{country}. Bvunzai nemutauro wenyu uye batana nenyanzvi dzenharaunda dzinovimbika.",
+  so: "Madal adeegyada nolosha oo loogu talagalay dhammaan dadka ku nool {country}. Kula tasho afkaaga hooyo oo la xiriir khubaro maxalli ah oo la aamini karo.",
+  sq: "Platforma e shërbimeve të jetesës për të gjithë njerëzit që jetojnë në {country}. Konsultohuni në gjuhën tuaj amtare dhe lidhuni me specialistë vendorë të besueshëm.",
+  sr: "Платформа за свакодневне услуге за све људе који живе у {country}. Саветујте се на свом матерњем језику и повежите се са провереним локалним стручњацима.",
+  su: "Platform ladenan kahirupan pikeun sakumna jalma anu cicing di {country}. Konsultasi dina basa indung anjeun sarta sambungkeun jeung ahli lokal anu tiasa dipercaya.",
+  xh: "Iqonga leenkonzo zobomi kumntu wonke ohlala e{country}. Dlana indlebe ngolwimi lwakho lwenkobe kwaye uqhagamshelane neengcali zalapha ezithembekileyo.",
+  yo: "Pẹpẹ iṣẹ igbe aye fun gbogbo eniyan ti n gbe ni {country}. Kan si wa ni ede abinibi rẹ ki o sopọ mọ awọn alamọja agbegbe ti o ni igbẹkẹle.",
+  zu: "Inkundla yezinsizakalo zokuphila yabo bonke abantu abahlala e{country}. Xhumana ngolimi lwakho lwebele futhi uxhumane nochwepheshe bendawo abathembekile.",
 };
 
 export function getLocalizedCountryName(countrySlug: string | null | undefined, lang: string): string {
@@ -1119,6 +1205,694 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
     sys: {
       title: "የዋनाው መሥሪያ ቤት የተቀናጀ ቁጥጥር ሥርዓት",
       description: "የLIFE.HELP ይፋዊ ማዕከላዊ የቁጥጥር እና የአሠራር አስተዳደር ሥርዓት።",
+    },
+  },
+  tl: {
+    tagline: "Multilingual na Platform ng Serbisyo sa Pamumuhay",
+    description: "Platform ng mga serbisyo sa pamumuhay para sa lahat ng naninirahan sa Korea. Kumonsulta sa iyong sariling wika at kumonekta sa mga pinagkakatiwalaang lokal na espesyalista.",
+    chat: {
+      title: "Multilingual Customer Support Center",
+      description: "Humingi ng tulong sa pamumuhay sa iyong sariling wika. Makipag-chat nang 1:1 sa mga beripikadong lokal na espesyalista.",
+    },
+    tech: {
+      title: "Portal ng Tekniko",
+      description: "Portal sa trabaho para sa mga katulong at tekniko ng LIFE.HELP.",
+    },
+    sys: {
+      title: "Sistemang Pinagsamang Pamamahala ng Punong Tanggapan",
+      description: "Opisyal na pinagsamang kontrol at pamamahala ng pagpapatakbo ng LIFE.HELP.",
+    },
+  },
+  ms: {
+    tagline: "Platform Perkhidmatan Kehidupan Pelbagai Bahasa",
+    description: "Platform perkhidmatan kehidupan untuk semua orang yang tinggal di Korea. Berunding dalam bahasa ibunda anda dan berhubung dengan pakar tempatan yang dipercayai.",
+    chat: {
+      title: "Pusat Sokongan Pelanggan Pelbagai Bahasa",
+      description: "Minta bantuan tentang kehidupan dalam bahasa ibunda anda. Berbual 1:1 dengan pembantu tempatan yang dipercayai.",
+    },
+    tech: {
+      title: "Portal Juruteknik",
+      description: "Portal kerja untuk pembantu dan juruteknik LIFE.HELP.",
+    },
+    sys: {
+      title: "Sistem Pengurusan Bersepadu Ibu Pejabat",
+      description: "Sistem kawalan dan pengurusan operasi bersepadu rasmi LIFE.HELP.",
+    },
+  },
+  pcm: {
+    tagline: "Multilingual Living Service Platform",
+    description: "Living service platform for all people wey dey stay for Korea. Make una chat with una mama tongue and connect with local specialists wey una fit trust.",
+    chat: {
+      title: "Customer Support Center for All Languages",
+      description: "Ask for help about life inside your own language. Chat 1:1 with trusted local helpers.",
+    },
+    tech: {
+      title: "Specialist Helper Portal",
+      description: "Work portal for LIFE.HELP helpers and specialists.",
+    },
+    sys: {
+      title: "Headquarters Integrated Management System",
+      description: "Official integrated control and operations management system of LIFE.HELP.",
+    },
+  },
+  ro: {
+    tagline: "Platformă multilingvă de servicii de zi cu zi",
+    description: "Platformă de servicii cotidiene pentru toți cei care locuiesc în Coreea. Consultați în limba maternă și conectați-vă cu specialiști locali de încredere.",
+    chat: {
+      title: "Centrul de asistență clienți multilingv",
+      description: "Cereți ajutor pentru viața de zi cu zi în limba maternă. Discutați 1:1 cu meșteri locali de încredere.",
+    },
+    tech: {
+      title: "Portalul Tehnicianului",
+      description: "Portal de lucru pentru ajutoarele și tehnicienii LIFE.HELP.",
+    },
+    sys: {
+      title: "Sistem integrat de management al sediului central",
+      description: "Sistemul oficial integrat de control și gestionare a operațiunilor LIFE.HELP.",
+    },
+  },
+  cs: {
+    tagline: "Vícejazyčná platforma každodenních služeb",
+    description: "Platforma životních služeb pro všechny lidi žijící v Koreji. Poraďte se ve svém rodném jazyce a spojte se s ověřenými místními specialisty.",
+    chat: {
+      title: "Vícejazyčné centrum zákaznické podpory",
+      description: "Požádejte o pomoc v každodenním životě ve svém rodném jazyce. Chatujte 1:1 s ověřenými místními specialisty.",
+    },
+    tech: {
+      title: "Portál pro techniky",
+      description: "Pracovní portál pro pomocníky a techniky LIFE.HELP.",
+    },
+    sys: {
+      title: "Integrovaný systém řízení centrály",
+      description: "Oficiální integrovaný systém řízení a provozu centrály LIFE.HELP.",
+    },
+  },
+  af: {
+    tagline: "Veeltalige Lewensdienste-platform",
+    description: "Lewensdienste-platform vir almal wat in Korea woon. Raadpleeg in jou moedertaal en skakel met betroubare plaaslike spesialiste.",
+    chat: {
+      title: "Veeltalige Kliëntedienssentrum",
+      description: "Vra hulp vir die lewe in jou eie moedertaal. Gesels 1:1 met betroubare plaaslike spesialiste.",
+    },
+    tech: {
+      title: "Tegnikusportaal",
+      description: "Werkportaal vir helpers en tegnici van LIFE.HELP.",
+    },
+    sys: {
+      title: "Hoofkantoor Geïntegreerde Bestuurstelsel",
+      description: "Amptelike geïntegreerde beheer- en bedryfstelsel van LIFE.HELP.",
+    },
+  },
+  hu: {
+    tagline: "Többnyelvű mindennapi szolgáltatási platform",
+    description: "Életviteli szolgáltatási platform mindenkinek, aki itt él: Koreában. Konzultáljon anyanyelvén, és vegye fel a kapcsolatot megbízható helyi szakemberekkel.",
+    chat: {
+      title: "Többnyelvű Ügyfélszolgálati Központ",
+      description: "Kérjen segítséget a mindennapi élethez anyanyelvén. Csevegjen 1:1 arányban megbízható helyi szakemberekkel.",
+    },
+    tech: {
+      title: "Szakember Portál",
+      description: "Munkafelület a LIFE.HELP segítői és szakemberei számára.",
+    },
+    sys: {
+      title: "Központi Integrált Irányítási Rendszer",
+      description: "A LIFE.HELP hivatalos központi integrált felügyeleti és üzemeltetési rendszere.",
+    },
+  },
+  fi: {
+    tagline: "Monikielinen arjen palvelualusta",
+    description: "Arjen palvelualusta kaikille maassa Koreassa asuville. Keskustele äidinkielelläsi ja ota yhteyttä luotettaviin paikallisiin asiantuntijoihin.",
+    chat: {
+      title: "Monikielinen asiakastukikeskus",
+      description: "Pyydä apua arjen asioihin omalla äidinkielelläsi. Keskustele 1:1 luotettujen paikallisten asiantuntijoiden kanssa.",
+    },
+    tech: {
+      title: "Teknikkoportaali",
+      description: "Työportaali LIFE.HELP-avustajille ja ammattilaisille.",
+    },
+    sys: {
+      title: "Päämajan integroitu hallintajärjestelmä",
+      description: "LIFE.HELPin virallinen integroitu valvonta- ja toiminnanohjausjärjestelmä.",
+    },
+  },
+  ka: {
+    tagline: "მრავალენოვანი საყოფაცხოვრებო მომსახურების პლატფორმა",
+    description: "საცხოვრებელი მომსახურების პლატფორმა მათთვის, ვინც ცხოვრობს კორეაში. გაიარეთ კონსულტაცია მშობლიურ ენაზე და დაუკავშირდით სანდო ადგილობრივ სპეციალისტებს.",
+    chat: {
+      title: "მრავალენოვანი მომხმარებელთა მხარდაჭერის ცენტრი",
+      description: "მოითხოვეთ დახმარება ყოველდღიურ ცხოვრებაში თქვენს მშობლიურ ენაზე. ესაუბრეთ 1:1 სანდო ადგილობრივ სპეციალისტებს.",
+    },
+    tech: {
+      title: "სპეციალისტთა პორტალი",
+      description: "სამუშაო პორტალი LIFE.HELP-ის დამხმარეებისა და ტექნიკოსებისთვის.",
+    },
+    sys: {
+      title: "სათაო ოფისის ინტეგრირებული მართვის სისტემა",
+      description: "LIFE.HELP-ის ოფიციალური ინტეგრირებული კონტროლისა და მართვის სისტემა.",
+    },
+  },
+  yue: {
+    tagline: "多語言生活服務平臺",
+    description: "專為在韓國所有居民打造嘅生活服務平臺。使用母語即時諮詢，快速媒合在地值得信賴嘅專業師傅。",
+    chat: {
+      title: "母語客戶支援中心",
+      description: "用你嘅母語尋求生活協助。與值得信賴嘅在地專業師傅1對1對話。",
+    },
+    tech: {
+      title: "師傅專用平臺",
+      description: "LIFE.HELP 專業師傅專用工作平臺。管理你嘅工作時間與委託申請。",
+    },
+    sys: {
+      title: "總部綜合管理系統",
+      description: "LIFE.HELP 官方總部綜合運營及控制系統。",
+    },
+  },
+  ca: {
+    tagline: "Plataforma multilingüe de serveis per a la llar",
+    description: "Plataforma de serveis del dia a dia per a tothom que viu a Corea. Consulta en la teva llengua materna i connecta amb especialistes locals de confiança.",
+    chat: {
+      title: "Centre d'atenció al client multilingüe",
+      description: "Demana ajuda per al teu dia a dia en la teva pròpia llengua. Parla 1:1 amb especialistes locals de confiança.",
+    },
+    tech: {
+      title: "Portal de Tècnics",
+      description: "Portal de feina per als col·laboradors i especialistes de LIFE.HELP.",
+    },
+    sys: {
+      title: "Sistema integrat de gestió de la seu central",
+      description: "Sistema oficial integrat de control i gestió operativa de LIFE.HELP.",
+    },
+  },
+  bg: {
+    tagline: "Многоезична платформа за битови услуги",
+    description: "Платформа за битови услуги за всички живеещи в Корея. Консултирайте се на родния си език и се свържете с надеждни местни специалисти.",
+    chat: {
+      title: "Многоезичен център за обслужване на клиенти",
+      description: "Потърсете помощ за бита на родния си език. Разговаряйте 1:1 с надеждни местни специалисти.",
+    },
+    tech: {
+      title: "Портал за техници",
+      description: "Работен портал за помощници и техници на LIFE.HELP.",
+    },
+    sys: {
+      title: "Интегрирана система за управление на централата",
+      description: "Официална интегрирана система за контрол и оперативно управление на LIFE.HELP.",
+    },
+  },
+  tg: {
+    tagline: "Платформаи бисёрзабонаи хидматрасонии рӯзгор",
+    description: "Платформаи хидматрасонии маишӣ барои ҳамаи сокинони Корея. Дар забони модарии худ маслиҳат гиред ва бо мутахассисони боэътимоди маҳаллӣ пайваст шавед.",
+    chat: {
+      title: "Маркази дастгирии муштариён бо забони модарӣ",
+      description: "Барои кӯмак дар зиндагӣ бо забони модарии худ муроҷиат кунед. Бо мутахассисони маҳаллӣ 1:1 сӯҳбат кунед.",
+    },
+    tech: {
+      title: "Портали мутахассисон",
+      description: "Портали корӣ барои ёварон ва устоҳои LIFE.HELP.",
+    },
+    sys: {
+      title: "Системаи ягонаи идоракунии марказӣ",
+      description: "Системаи расмии ягонаи назорат ва идоракунии амалиёти LIFE.HELP.",
+    },
+  },
+  as: {
+    tagline: "বহুভাষিক জীৱন-যাপন সেৱা মঞ্চ",
+    description: "কোৰিয়াত বাস কৰা সকলো লোকৰ বাবে জীৱন-যাপন সেৱা মঞ্চ। আপোনাৰ মাতৃভাষাত পৰামৰ্শ লওক আৰু বিশ্বস্ত স্থানীয় বিশেষজ্ঞসকলৰ সৈতে সংযোগ কৰক।",
+    chat: {
+      title: "মাতৃভাষা গ্ৰাহক সহায়ক কেন্দ্ৰ",
+      description: "আপোনাৰ মাতৃভাষাত দৈনন্দিন জীৱনৰ বাবে সহায় বিচাৰক। বিশ্বস্ত স্থানীয় সহায়কসকলৰ সৈতে 1:1 কথা পাতক।",
+    },
+    tech: {
+      title: "সহায়ক বিশেষজ্ঞ পৰ্টেল",
+      description: "LIFE.HELPৰ সহায়ক আৰু কাৰিকৰসকলৰ বাবে কৰ্ম পৰ্টেল।",
+    },
+    sys: {
+      title: "মুখ্য কাৰ্যালয় একত্ৰিত ব্যৱস্থাপনা প্ৰণালী",
+      description: "LIFE.HELPৰ চৰকাৰী একত্ৰিত নিয়ন্ত্ৰণ আৰু পৰিচালনা ব্যৱস্থাপনা প্ৰণালী।",
+    },
+  },
+  az: {
+    tagline: "Çoxdilli Məişət Xidmətləri Platforması",
+    description: "Koreya ərazisində yaşayan hər kəs üçün məişət xidmətləri platforması. Öz ana dilinizdə məsləhətləşin və etibarlı yerli mütəxəssislərlə əlaqə saxlayın.",
+    chat: {
+      title: "Ana Dilində Müştəri Dəstək Mərkəzi",
+      description: "Gündəlik həyatınız üçün ana dilinizdə kömək istəyin. Etibarlı yerli ustalarla 1:1 söhbət edin.",
+    },
+    tech: {
+      title: "Usta Portalı",
+      description: "LIFE.HELP köməkçiləri və ustaları üçün iş portalı.",
+    },
+    sys: {
+      title: "Baş Qərargahın Vahid İdarəetmə Sistemi",
+      description: "LIFE.HELP-in rəsmi vahid nəzarət və əməliyyat idarəetmə sistemi.",
+    },
+  },
+  ceb: {
+    tagline: "Multilingual nga Plataporma sa Serbisyo sa Pagpuyo",
+    description: "Plataporma sa serbisyo sa panginabuhi alang sa tanan nga nagpuyo sa Korea. Pagkonsulta sa imong lumad nga pinulongan ug pakigkita sa kasaligang lokal nga mga espesyalista.",
+    chat: {
+      title: "Sentro sa Suporta sa Kustomer sa Lumad nga Pinulongan",
+      description: "Pangayo og tabang alang sa imong adlaw-adlaw nga kinabuhi sa imong kaugalingong pinulongan. Pakig-estorya 1:1 sa kasaligang lokal nga mga eksperto.",
+    },
+    tech: {
+      title: "Portal sa Eksperto",
+      description: "Portal sa trabaho alang sa mga katabang ug teknisyan sa LIFE.HELP.",
+    },
+    sys: {
+      title: "Nahiusang Sistema sa Pagdumala sa Headquarters",
+      description: "Opisyal nga nahiusang sistema sa pagkontrol ug pagdumala sa operasyon sa LIFE.HELP.",
+    },
+  },
+  et: {
+    tagline: "Mitmekeelne igapäevateenuste platvorm",
+    description: "Igapäevateenuste platvorm kõigile, kes elavad riigis Koreas. Konsulteerige oma emakeeles ja võtke ühendust usaldusväärsete kohalike spetsialistidega.",
+    chat: {
+      title: "Mitmekeelne klienditoe keskus",
+      description: "Küsige igapäevaeluks abi oma emakeeles. Vestelge 1:1 usaldusväärsete kohalike spetsialistidega.",
+    },
+    tech: {
+      title: "Tehnikute portaal",
+      description: "Tööportaal LIFE.HELP-i abistajatele ja spetsialistidele.",
+    },
+    sys: {
+      title: "Peakorteri integreeritud juhtimissüsteem",
+      description: "LIFE.HELP-i ametlik integreeritud juhtimis- ja operatsioonisüsteem.",
+    },
+  },
+  eu: {
+    tagline: "Hizkuntza anitzeko eguneroko zerbitzuen plataforma",
+    description: "Korean herrialdean bizi diren guztientzako bizi-zerbitzuen plataforma. Kontsultatu zure ama-hizkuntzan eta konektatu tokiko espezialista fidagarriekin.",
+    chat: {
+      title: "Hizkuntza anitzeko bezeroarentzako arreta-zentroa",
+      description: "Eskatu laguntza zure eguneroko bizitzarako zure ama-hizkuntzan. Hitz egin 1:1 tokiko espezialista fidagarriekin.",
+    },
+    tech: {
+      title: "Teknikarien Portala",
+      description: "LIFE.HELPeko laguntzaile eta teknikarien lan-ataria.",
+    },
+    sys: {
+      title: "Egoitza Nagusiko Kudeaketa Sistema Integratua",
+      description: "LIFE.HELP-en kontrol eta eragiketen kudeaketa-sistema ofiziala.",
+    },
+  },
+  gl: {
+    tagline: "Plataforma multilingüe de servizos para a vida cotiá",
+    description: "Plataforma de servizos vitais para todas as persoas que viven en Corea. Consulta na túa lingua materna e conecta con especialistas locais de confianza.",
+    chat: {
+      title: "Centro de atención ao cliente multilingüe",
+      description: "Pide axuda para o teu día a día no teu propio idioma. Chatea 1:1 con especialistas locais de confianza.",
+    },
+    tech: {
+      title: "Portal de Técnicos",
+      description: "Portal de traballo para axudantes e técnicos de LIFE.HELP.",
+    },
+    sys: {
+      title: "Sistema Integrado de Xestión da Sede Central",
+      description: "Sistema oficial integrado de control e xestión operativa de LIFE.HELP.",
+    },
+  },
+  ha: {
+    tagline: "Dandalin Sabis na Rayuwa na Harsuna da Dama",
+    description: "Dandalin ayyukan yau da kullun ga duk mutanen da ke zaune a Koriya. Nemi shawara da yarenku na asali kuma ku haɗu da kwararrun masana na gida abin dogaro.",
+    chat: {
+      title: "Cibiyar Tallafin Abokan Ciniki ta Harshen Asali",
+      description: "Nemi taimako game da rayuwa cikin yarenku na asali. Yi magana 1:1 tare da amintattun mataimaka na gida.",
+    },
+    tech: {
+      title: "Dandalin Kwararru",
+      description: "Dandalin aiki ga mataimaka da kwararrun LIFE.HELP.",
+    },
+    sys: {
+      title: "Tsarin Gudanarwa na Haɗin Gwiwa na Hedikwata",
+      description: "Tabbataccen tsarin sarrafawa da gudanar da ayyuka na LIFE.HELP.",
+    },
+  },
+  hr: {
+    tagline: "Višejezična platforma usluga za život",
+    description: "Platforma svakodnevnih usluga za sve ljude koji žive u Koreji. Savjetujte se na svom materinjem jeziku i povežite se s provjerenim lokalnim stručnjacima.",
+    chat: {
+      title: "Višejezični centar za korisničku podršku",
+      description: "Zatražite pomoć za svakodnevni život na svom materinjem jeziku. Razgovarajte 1:1 s provjerenim lokalnim stručnjacima.",
+    },
+    tech: {
+      title: "Portal za stručnjake",
+      description: "Radni portal za pomagače i tehničare LIFE.HELP-a.",
+    },
+    sys: {
+      title: "Integrirani sustav upravljanja sjedišta",
+      description: "Službeni integrirani sustav kontrole i upravljanja poslovanjem LIFE.HELP-a.",
+    },
+  },
+  ig: {
+    tagline: "Ikpo Okwu Ọrụ Ndụ Asụsụ Dị Iche Iche",
+    description: "Usoro ọrụ ndụ maka mmadụ niile bi na Korea. Kpọtụrụ anyị n'asụsụ obodo gị ma jikọọ ndị ọkachamara obodo a pụrụ ịtụkwasị obi.",
+    chat: {
+      title: "Ebe Nkwado Ndị Ahịa n'Asụsụ Obodo",
+      description: "Rịọ enyemaka maka ibi ndụ n'asụsụ obodo gị. Kparịta ụka 1:1 na ndị inyeaka obodo tụkwasịrị obi.",
+    },
+    tech: {
+      title: "Ọnụ Ụzọ Ndị Ọrụ Pụrụ Iche",
+      description: "Ọnụ ụzọ ọrụ maka ndị na-enyere aka na ndị nka na LIFE.HELP.",
+    },
+    sys: {
+      title: "Usoro Nlekọta Ejikọtara Ọnụ nke Isi Ụlọ Ọrụ",
+      description: "Usoro nchịkwa na njikwa ọrụ gọọmentị nke LIFE.HELP.",
+    },
+  },
+  is: {
+    tagline: "Fjöltyngdur þjónustuvettvangur fyrir daglegt líf",
+    description: "Þjónustuvettvangur fyrir alla sem búa í Kóreu. Fáðu ráðgjöf á þínu móðurmáli og hafðu samband við trausta sérfræðinga á staðnum.",
+    chat: {
+      title: "Fjöltyngd þjónustumiðstöð fyrir viðskiptavini",
+      description: "Óskaðu eftir aðstoð við daglegt líf á þínu eigin móðurmáli. Spjallaðu 1:1 við trausta sérfræðinga á staðnum.",
+    },
+    tech: {
+      title: "Tæknimannagátt",
+      description: "Vinnugátt fyrir aðstoðarfólk og sérfræðinga LIFE.HELP.",
+    },
+    sys: {
+      title: "Samþætt stjórnkerfi höfuðstöðva",
+      description: "Opinbert samþætt eftirlits- og rekstrarstjórnunarkerfi LIFE.HELP.",
+    },
+  },
+  jv: {
+    tagline: "Platform Layanan Urip Multibasa",
+    description: "Platform layanan urip kanggo kabeh wong sing manggon ing Korea. Konsultasi nganggo basa ibu sampeyan lan sambung karo spesialis lokal sing dipercaya.",
+    chat: {
+      title: "Pusat Dhukungan Pelanggan Basa Ibu",
+      description: "Nyuwun pitulung babagan urip nganggo basa ibu sampeyan. Ngobrol 1:1 karo spesialis lokal sing dipercaya.",
+    },
+    tech: {
+      title: "Portal Teknisi",
+      description: "Portal kerja kanggo asisten lan teknisi LIFE.HELP.",
+    },
+    sys: {
+      title: "Sistem Manajemen Terpadu Kantor Pusat",
+      description: "Sistem kontrol lan manajemen operasional resmi terpadu LIFE.HELP.",
+    },
+  },
+  ku: {
+    tagline: "Platforma Pirzimanî ya Xizmetên Jiyanê",
+    description: "Platforma xizmetên jiyanê ji bo her kesê li Koreya dijî. Bi zimanê dayika xwe şêwir bikin û bi pisporên herêmî yên pêbawer re têkilî daynin.",
+    chat: {
+      title: "Navenda Piştgiriya Xerîdaran bi Zimanê Zikmakî",
+      description: "Ji bo jiyanê bi zimanê dayika xwe alîkariyê bixwazin. Bi pisporên herêmî yên pêbawer re 1:1 bipeyivin.",
+    },
+    tech: {
+      title: "Portala Pisporan",
+      description: "Portala xebatê ji bo arîkar û pisporên LIFE.HELP.",
+    },
+    sys: {
+      title: "Pergala Rêvebiriya Yekgirtî ya Navendê",
+      description: "Pergala fermî ya kontrol û rêveberiya operasyonan a LIFE.HELP.",
+    },
+  },
+  lt: {
+    tagline: "Daugiakalbė kasdienių paslaugų platforma",
+    description: "Gyvenimo paslaugų platforma visiems, gyvenantiems Korėjoje. Konsultuokitės gimtąja kalba ir susisiekite su patikimais vietos specialistais.",
+    chat: {
+      title: "Daugiakalbis klientų aptarnavimo centras",
+      description: "Paprašykite pagalbos kasdieniam gyvenimui savo gimtąja kalba. Bendraukite 1:1 su patikimais vietos specialistais.",
+    },
+    tech: {
+      title: "Specialistų portalas",
+      description: "Darbo portalas LIFE.HELP padėjėjams ir meistrams.",
+    },
+    sys: {
+      title: "Būstinės integruota valdymo sistema",
+      description: "Oficiali LIFE.HELP integruota valdymo ir operacijų kontrolės sistema.",
+    },
+  },
+  lv: {
+    tagline: "Daudzvalodu sadzīves pakalpojumu platforma",
+    description: "Sadzīves pakalpojumu platforma ikvienam, kas dzīvo Korejā. Konsultējieties dzimtajā valodā un sazinieties ar uzticamiem vietējiem speciālistiem.",
+    chat: {
+      title: "Daudzvalodu klientu atbalsta centrs",
+      description: "Lūdziet palīdzību ikdienas dzīvē savā dzimtajā valodā. Sazinieties 1:1 ar uzticamiem vietējiem meistariem.",
+    },
+    tech: {
+      title: "Meistaru portāls",
+      description: "Darba portāls LIFE.HELP palīgiem un tehniķiem.",
+    },
+    sys: {
+      title: "Galvenās mītnes integrētā vadības sistēma",
+      description: "Oficiālā LIFE.HELP integrētā uzraudzības un operatīvās vadības sistēma.",
+    },
+  },
+  mg: {
+    tagline: "Sehatra Tolotra Fiainana Maro Fiteny",
+    description: "Sehatra tolotra fiainana ho an'ny rehetra monina ao Korea. Manontania amin'ny fitenin-dreninao ary mifandraisa amin'ireo manampahaizana manokana azo itokisana.",
+    chat: {
+      title: "Foibe Fanohanana ny Mpanjifa amin'ny Fitenin-dreny",
+      description: "Mangataha fanampiana amin'ny fiainana andavanandro amin'ny fiteninao. Miresaha 1:1 amin'ireo manampahaizana azo itokisana.",
+    },
+    tech: {
+      title: "Vavahadin'ny Teknisiana",
+      description: "Vavahadin'asa ho an'ireo mpanampy sy teknisianina ao amin'ny LIFE.HELP.",
+    },
+    sys: {
+      title: "Rafitra Fitantanana Mitambatra ao amin'ny Foibe",
+      description: "Rafitra ofisialy fanaraha-maso sy fitantanana ny asan'ny LIFE.HELP.",
+    },
+  },
+  mk: {
+    tagline: "Повеќејазична платформа за секојдневни животни услуги",
+    description: "Платформа за животни услуги за сите луѓе што живеат во Кореја. Консултирајте се на вашиот мајчин јазик и поврзете се со доверливи локални специјалисти.",
+    chat: {
+      title: "Повеќејазичен центар за поддршка на корисници",
+      description: "Побарајте помош за секојдневниот живот на вашиот мајчин јазик. Разговарајте 1:1 со доверливи локални специјалисти.",
+    },
+    tech: {
+      title: "Портал за техничари",
+      description: "Работен портал за помошници и техничари на LIFE.HELP.",
+    },
+    sys: {
+      title: "Интегриран систем за управување на седиштето",
+      description: "Официјален интегриран систем за контрола и оперативно управување на LIFE.HELP.",
+    },
+  },
+  om: {
+    tagline: "Wirtuu Tajaajila Jireenyaa Afaanota Hedduu",
+    description: "Wirtuu tajaajila jireenyaa namoota Kooriyaa keessa jiraatan hundaaf. Afaan dhalootaa keessaniin mari'adhaa ogeeyyii naannoo amanamaa waliin walqunnamaa.",
+    chat: {
+      title: "Wiirtuu Deeggarsa Maamiltootaa Afaan Dhalootaa",
+      description: "Jireenya guyyaa guyyaaf afaan keessaniin gargaarsa gaafadhaa. Ogeeyyii naannoo amanamaa waliin kallattiin haasa'aa.",
+    },
+    tech: {
+      title: "Balbala Ogeeyyii",
+      description: "Balbala hojii gargaartotaa fi ogeeyyii LIFE.HELP.",
+    },
+    sys: {
+      title: "Sirna Bulchiinsa Qindaa'aa Waajjira Muummee",
+      description: "Sirna to'annoo fi bulchiinsa hojii seera qabeessa LIFE.HELP.",
+    },
+  },
+  ps: {
+    tagline: "د څو ژبو د ژوند د خدمتونو پلیټفارم",
+    description: "د هر هغه چا لپاره د ژوند د خدمتونو پلیټفارم چې په کوریا کې ژوند کوي. په خپله مورنۍ ژبه مشوره وکړئ او د باوري محلي متخصصینو سره اړیکه ونیسئ.",
+    chat: {
+      title: "په مورنۍ ژبه د پیرودونکو د ملاتړ مرکز",
+      description: "د خپل ورځني ژوند لپاره په خپله ژبه مرسته وغواړئ. د باوري محلي مرستندویانو سره 1:1 خبرې وکړئ.",
+    },
+    tech: {
+      title: "د مسلکي متخصصینو پورټل",
+      description: "د LIFE.HELP د مرستندویانو او تخنیکانو لپاره د کار پورټل.",
+    },
+    sys: {
+      title: "د مرکزي دفتر یوځای شوی مدیریت سیسټم",
+      description: "د LIFE.HELP رسمي یوځای شوی د کنټرول او عملیاتي مدیریت سیسټم.",
+    },
+  },
+  sd: {
+    tagline: "گھڻ-ٻولي حياتياتي خدمتن جو پليٽ فارم",
+    description: "ڪوريا ۾ رهندڙ سڀني ماڻهن لاءِ زندگي جي خدمتن جو پليٽ فارم. پنهنجي مادري زبان ۾ صلاح وٺو ۽ قابل اعتماد مقامي ماهرن سان رابطو ڪريو.",
+    chat: {
+      title: "مادري زبان ۾ صارفين جي مدد جو مرڪز",
+      description: "زندگي بابت پنهنجي مادري ٻوليءَ ۾ مدد طلب ڪريو. بااعتماد مقامي ماهرن سان 1:1 ڳالھ ٻولھ ڪريو.",
+    },
+    tech: {
+      title: "ٽيڪنيشن پورٽل",
+      description: "LIFE.HELP جي مددگارن ۽ ماهرن لاءِ ڪم جو پورٽل.",
+    },
+    sys: {
+      title: "هيڊ ڪوارٽر جو مربوط انتظامي نظام",
+      description: "LIFE.HELP جو سرڪاري مربوط ڪنٽرول ۽ آپريشن مئنيجمينٽ سسٽم.",
+    },
+  },
+  sg: {
+    tagline: "Gbâ ti a-service ti gigi na a-yanga ti kodro mingi",
+    description: "Gbâ ti a-service ti lâ oko oko ndali ti azo kue so ayeke na Korëe. Sâra tënë na yanga ti kodro ti mo na wara atongani ti ndo ni so a lingbi ti zia bê na ala.",
+    chat: {
+      title: "Ndohuku ti mungo mabôko na yanga ti kodro",
+      description: "Hunda mabôko ndali ti gigi ti mo na yanga ti kodro ti mo. Sala lisoro 1:1 na awandara so mo lingbi ti zia bê na ala.",
+    },
+    tech: {
+      title: "Portal ti Awandara",
+      description: "Portal ti kua ndali ti azo ti mungo mabôko na a-technicien ti LIFE.HELP.",
+    },
+    sys: {
+      title: "Kpengba Ndokua ti Batango Kua ti Kota Da",
+      description: "Lêgë ti kpengba batango kua na bango ndo ti LIFE.HELP.",
+    },
+  },
+  sk: {
+    tagline: "Viacjazyčná platforma životných služieb",
+    description: "Platforma každodenných služieb pre všetkých ľudí žijúcich v Kórei. Poraďte sa vo svojom rodnom jazyku a spojte sa s overenými miestnymi špecialistami.",
+    chat: {
+      title: "Viacjazyčné centrum zákazníckej podpory",
+      description: "Požiadajte o pomoc v každodennom živote vo svojom rodnom jazyku. Komunikujte 1:1 s overenými miestnymi špecialistami.",
+    },
+    tech: {
+      title: "Portál pre technikov",
+      description: "Pracovný portál pre pomocníkov a technikov LIFE.HELP.",
+    },
+    sys: {
+      title: "Integrovaný systém riadenia centrály",
+      description: "Oficiálny integrovaný riadiaci a prevádzkový systém LIFE.HELP.",
+    },
+  },
+  sl: {
+    tagline: "Večjezična platforma vsakodnevnih storitev",
+    description: "Platforma za vsakodnevne storitve za vse, ki živijo v Koreji. Posvetujte se v maternem jeziku in se povežite z zaupanja vrednimi lokalnimi strokovnjaki.",
+    chat: {
+      title: "Večjezični center za podporo uporabnikom",
+      description: "Poiščite pomoč za vsakdanje življenje v svojem maternem jeziku. Klepetajte 1:1 z zaupanja vrednimi lokalnimi strokovnjaki.",
+    },
+    tech: {
+      title: "Portal za strokovnjake",
+      description: "Delovni portal za pomočnike in tehnike LIFE.HELP.",
+    },
+    sys: {
+      title: "Integrirani sistem vodenja sedeža podjetja",
+      description: "Uradni integrirani nadzorni in operativni sistem LIFE.HELP.",
+    },
+  },
+  sn: {
+    tagline: "Chikuva Chemabasa Eupenyu Chemitauro Yakawanda",
+    description: "Nzvimbo yebasa reupenyu kune vanhu vose vanogara muKorea. Bvunzai nemutauro wenyu uye batana nenyanzvi dzenharaunda dzinovimbika.",
+    chat: {
+      title: "Nzvimbo Yokubatsira Vatengi Mumutauro Wamai",
+      description: "Kumbirai rubatsiro rweupenyu nemutauro wenyu wemuno. Taura 1:1 nenyanzvi dzenharaunda dzinovimbika.",
+    },
+    tech: {
+      title: "Gonhi Renyanzvi",
+      description: "Nzvimbo yebasa yevabatsiri nenyanzvi dzeLIFE.HELP.",
+    },
+    sys: {
+      title: "Mubatanidzwa Wemaitiro Ekutungamira Padzimbahwe",
+      description: "Hurongwa hwepamutemo hwekutonga nekushanda hweLIFE.HELP.",
+    },
+  },
+  so: {
+    tagline: "Madal Adeegyada Nolosha ee Luuqadaha Badan",
+    description: "Madal adeegyada nolosha oo loogu talagalay dhammaan dadka ku nool Kuuriyada Koonfureed. Kula tasho afkaaga hooyo oo la xiriir khubaro maxalli ah oo la aamini karo.",
+    chat: {
+      title: "Xarunta Taageerada Macmiilka ee Afka Hooyo",
+      description: "Ka codso caawimaad nolosha afkaaga hooyo. Kula sheekayso 1:1 khubaro maxalli ah oo la aaminsan yahay.",
+    },
+    tech: {
+      title: "Xariirka Farsamoyaqiinta",
+      description: "Xariirka shaqada ee caawiyayaasha iyo farsamoyaqaannada LIFE.HELP.",
+    },
+    sys: {
+      title: "Nidaamka Maareynta Isku-dhafan ee Xarunta Dhexe",
+      description: "Nidaamka rasmiga ah ee xakamaynta iyo maareynta hawlgallada LIFE.HELP.",
+    },
+  },
+  sq: {
+    tagline: "Platformë shumëgjuhëshe e shërbimeve jetësore",
+    description: "Platforma e shërbimeve të jetesës për të gjithë njerëzit që jetojnë në Kore. Konsultohuni në gjuhën tuaj amtare dhe lidhuni me specialistë vendorë të besueshëm.",
+    chat: {
+      title: "Qendra e mbështetjes së klientit në gjuhën amtare",
+      description: "Kërkoni ndihmë për jetën e përditshme në gjuhën tuaj amtare. Bisedoni 1:1 me specialistë vendorë të besuar.",
+    },
+    tech: {
+      title: "Portali i Teknikëve",
+      description: "Portali i punës për ndihmësit dhe teknikët e LIFE.HELP.",
+    },
+    sys: {
+      title: "Sistemi i Integruar i Menaxhimit të Selisë",
+      description: "Sistemi zyrtar i integruar i kontrollit dhe menaxhimit operativ të LIFE.HELP.",
+    },
+  },
+  sr: {
+    tagline: "Вишејезична платформа услуга за живот",
+    description: "Платформа за свакодневне услуге за све људе који живе у Кореји. Саветујте се на свом матерњем језику и повежите се са провереним локалним стручњацима.",
+    chat: {
+      title: "Вишејезични центар за корисничку подршку",
+      description: "Затражите помоћ за свакодневни живот на свом матерњем језику. Разговарајте 1:1 са провереним локалним мајсторима.",
+    },
+    tech: {
+      title: "Портал за стручњаке",
+      description: "Радни портал за помагаче и техничаре LIFE.HELP-а.",
+    },
+    sys: {
+      title: "Интегрисани систем управљања седишта",
+      description: "Званични интегрисани систем контроле и управљања пословањем LIFE.HELP-а.",
+    },
+  },
+  su: {
+    tagline: "Platform Ladenan Kahirupan Sababaraha Basa",
+    description: "Platform ladenan kahirupan pikeun sakumna jalma anu cicing di Koréa. Konsultasi dina basa indung anjeun sarta sambungkeun jeung ahli lokal anu tiasa dipercaya.",
+    chat: {
+      title: "Puseur Pangrojong Palanggan Basa Indung",
+      description: "Pénta bantosan ngeunaan kahirupan dina basa indung anjeun. Ngobrol 1:1 sareng spesialis lokal anu tiasa dipercaya.",
+    },
+    tech: {
+      title: "Portal Teknisi",
+      description: "Portal damel pikeun réréncangan sareng teknisi LIFE.HELP.",
+    },
+    sys: {
+      title: "Sistem Manajemen Terpadu Kantor Puseur",
+      description: "Sistem kontrol sareng manajemen operasional resmi terpadu LIFE.HELP.",
+    },
+  },
+  xh: {
+    tagline: "Iqonga leeNkonzo zoBomi zeeLwimi eziNinzi",
+    description: "Iqonga leenkonzo zobomi kumntu wonke ohlala eeKorea. Dlana indlebe ngolwimi lwakho lwenkobe kwaye uqhagamshelane neengcali zalapha ezithembekileyo.",
+    chat: {
+      title: "Iziko leNkxaso yabaXhasi ngoLwimi lweNkobe",
+      description: "Cela uncedo ngobomi ngolwimi lwakho lwenkobe. Ncokola 1:1 neengcali zalapha ezithembekileyo.",
+    },
+    tech: {
+      title: "Isango leeNgcali",
+      description: "Isango lomsebenzi labancedisi neengcali ze-LIFE.HELP.",
+    },
+    sys: {
+      title: "Inkqubo eDityanisiweyo yoLawulo lweKomkhulu",
+      description: "Inkqubo esemthethweni yolawulo nokusebenza ye-LIFE.HELP.",
+    },
+  },
+  yo: {
+    tagline: "Pẹpẹ Awọn Iṣẹ Igbesi Aye Oniruuru Ede",
+    description: "Pẹpẹ iṣẹ igbe aye fun gbogbo eniyan ti n gbe ni Koria. Kan si wa ni ede abinibi rẹ ki o sopọ mọ awọn alamọja agbegbe ti o ni igbẹkẹle.",
+    chat: {
+      title: "Ile-iṣẹ Atilẹyin Onibara Ede Abinibi",
+      description: "Beere fun iranlọwọ nipa igbesi aye ni ede abinibi rẹ. Wiregbe 1:1 pẹlu awọn alamọja agbegbe ti o gbẹkẹle.",
+    },
+    tech: {
+      title: "Ọna Abawọle Onimọ-ẹrọ",
+      description: "Ọna abawọle iṣẹ fun awọn oluranlọwọ ati awọn onimọ-ẹrọ LIFE.HELP.",
+    },
+    sys: {
+      title: "Eto Iṣakoso Ijọpọ Ile-iṣẹ",
+      description: "Eto iṣakoso ati iṣẹ ṣiṣe iṣọkan osise ti LIFE.HELP.",
+    },
+  },
+  zu: {
+    tagline: "Inkundla Yezinsizakalo Zokuphila Yezilimi Eziningi",
+    description: "Inkundla yezinsizakalo zokuphila yabo bonke abantu abahlala eeKorea. Xhumana ngolimi lwakho lwebele futhi uxhumane nochwepheshe bendawo abathembekile.",
+    chat: {
+      title: "Isikhungo Sokusekela Amakhasimende Ngolimi Lwebele",
+      description: "Cela usizo mayelana nokuphila ngolimi lwakho lwebele. Xoxa 1:1 nochwepheshe bendawo abathembekile.",
+    },
+    tech: {
+      title: "Ingosi Yochwepheshe",
+      description: "Ingosi yomsebenzi yabasizi nochwepheshe be-LIFE.HELP.",
+    },
+    sys: {
+      title: "Uhlelo Lokulawula Oludidiyelwe Lwekomkhulu",
+      description: "Uhlelo olusemthethweni oludidiyelwe lokulawula nokusebenza lwe-LIFE.HELP.",
     },
   },
 };
