@@ -1,3 +1,4 @@
+import { dispatchEmergencyCall, sendWebPushNotification, type PushPayload } from "./pushDispatcher";
 import type { ServiceDb } from "./db";
 import { isSecret, newSecret, sha256Hex } from "./credentials";
 import { ServiceError } from "./errors";
@@ -78,6 +79,15 @@ export class ServiceCore {
       p_description: text(input.description, 2000),
       p_options: strings(input.selectedOptions, 20, 80),
     });
+
+    if (out?.request?.id) {
+      void dispatchEmergencyCall(this.db, out.request.id, {
+        serviceSlug: slug,
+        sido: text(input.sido, 60),
+        gungu: text(input.gungu, 60),
+      });
+    }
+
     return { ...out, token, session, credential: isSecret(credRaw) ? null : credential };
   }
 
@@ -170,6 +180,81 @@ export class ServiceCore {
   async helperAction(action: "accept" | "start" | "complete", credRaw: string | null, id: string) {
     const fn = { accept: "svc_h_accept", start: "svc_h_start_request", complete: "svc_h_complete_request" }[action];
     return this.db.rpc<any>(fn, { p_cred: await this.helperCred(credRaw), p_request: id });
+  }
+
+  async getHelperPushSettings(credRaw: string | null) {
+    return this.db.rpc<{
+      quietStart: string;
+      quietEnd: string;
+      quietEnabled: boolean;
+      allowCallsWhileBusy: boolean;
+      contactPhone: string | null;
+      hasPushSubscription: boolean;
+      deviceCount: number;
+      subscriptions: Array<{ endpoint: string; p256dh: string; auth: string }>;
+    }>("svc_h_get_push_settings", { p_cred: await this.helperCred(credRaw) });
+  }
+
+  async updateHelperPushSettings(credRaw: string | null, patch: {
+    quietEnabled?: boolean;
+    quietStart?: string;
+    quietEnd?: string;
+    allowCallsWhileBusy?: boolean;
+    contactPhone?: string | null;
+  }) {
+    return this.db.rpc<any>("svc_h_update_push_settings", {
+      p_cred: await this.helperCred(credRaw),
+      p_quiet_enabled: patch.quietEnabled === undefined ? null : !!patch.quietEnabled,
+      p_quiet_start: patch.quietStart === undefined ? null : text(patch.quietStart, 10),
+      p_quiet_end: patch.quietEnd === undefined ? null : text(patch.quietEnd, 10),
+      p_allow_busy: patch.allowCallsWhileBusy === undefined ? null : !!patch.allowCallsWhileBusy,
+      p_phone: patch.contactPhone !== undefined ? (text(patch.contactPhone, 32) || null) : null,
+    });
+  }
+
+  async registerPushSubscription(credRaw: string | null, input: {
+    endpoint: string;
+    p256dh: string;
+    auth: string;
+    userAgent?: string;
+  }) {
+    return this.db.rpc<{ ok: boolean; helperId: string }>("svc_h_register_push", {
+      p_cred: await this.helperCred(credRaw),
+      p_endpoint: text(input.endpoint, 2048),
+      p_p256dh: text(input.p256dh, 512),
+      p_auth: text(input.auth, 512),
+      p_ua: text(input.userAgent, 500) || null,
+    });
+  }
+
+  async unregisterPushSubscription(credRaw: string | null, endpoint: string) {
+    return this.db.rpc<{ ok: boolean }>("svc_h_unregister_push", {
+      p_cred: await this.helperCred(credRaw),
+      p_endpoint: text(endpoint, 2048),
+    });
+  }
+
+  async testPushNotification(credRaw: string | null) {
+    const cred = await this.helperCred(credRaw);
+    const settings = await this.db.rpc<any>("svc_h_get_push_settings", { p_cred: cred });
+    const payload: PushPayload = {
+      title: "🔔 [LIFE.HELP] 기사 호출 알림 테스트",
+      body: "스마트폰 잠금화면 실시간 알림이 정상 작동 중입니다. 고객의 긴급 수리 접수 시 즉시 호출됩니다.",
+      serviceSlug: "test",
+      sido: "전국",
+      gungu: "서비스망",
+      requestId: "test",
+      url: "/tech/workspace",
+      urgent: true,
+    };
+    let dispatched = 0;
+    if (Array.isArray(settings?.subscriptions)) {
+      for (const sub of settings.subscriptions) {
+        await sendWebPushNotification(sub, payload);
+        dispatched++;
+      }
+    }
+    return { ok: true, dispatched, settings };
   }
 
   /* -------------------------------------------------------------------- chat */

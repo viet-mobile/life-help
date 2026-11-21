@@ -3,6 +3,7 @@ import { INSIGHT_MAP } from "./data";
 import { DAILY_INSIGHT_LOCALES, getInsightLocaleData } from "./localesData";
 import { resolveLifeTopicI18n } from "./lifeTopicsI18n";
 import { resolveKoreanTopicI18n } from "./koreanTopicsI18n";
+import { resolveStudyTopicI18n } from "./studyTopicsI18n";
 
 /**
  * Returns the deterministic day index (0 ~ 365) based on month and day,
@@ -56,7 +57,7 @@ export function getDailyInsight(domain: DomainType | string, date: Date = new Da
 
   if (locale && locale !== "ko") {
     // 1. Resolve domain="life" topics across all 366 days
-    if (domain === "life") {
+    if (domain === "life" || item.id.startsWith("insight-") || !INSIGHT_MAP[domain]) {
       const topicTrans = resolveLifeTopicI18n(item.title, locale);
       if (topicTrans) {
         if (topicTrans.title) item.title = topicTrans.title;
@@ -68,8 +69,21 @@ export function getDailyInsight(domain: DomainType | string, date: Date = new Da
     }
 
     // 1-1. Resolve domain="korean" topics across all 366 days
-    if (domain === "korean") {
+    if (domain === "korean" || item.id.startsWith("k-")) {
       const topicTrans = resolveKoreanTopicI18n(item, locale);
+      if (topicTrans) {
+        if (topicTrans.title) item.title = topicTrans.title;
+        if (topicTrans.summary) item.summary = topicTrans.summary;
+        if (topicTrans.principle) item.principle = topicTrans.principle;
+        if (topicTrans.example) item.example = topicTrans.example;
+        if (topicTrans.actionItem) item.actionItem = topicTrans.actionItem;
+        if (topicTrans.categoryLabel) item.categoryLabel = topicTrans.categoryLabel;
+      }
+    }
+
+    // 1-2. Resolve math, english, physics, and chemistry topics across all 366 days
+    if (["math", "english", "physics", "chemistry"].includes(domain) || ["m", "e", "p", "c"].includes(item.id.split("-")[0])) {
+      const topicTrans = resolveStudyTopicI18n(item, locale);
       if (topicTrans) {
         if (topicTrans.title) item.title = topicTrans.title;
         if (topicTrans.summary) item.summary = topicTrans.summary;
@@ -110,6 +124,10 @@ export function getDailyInsight(domain: DomainType | string, date: Date = new Da
     }
   }
 
+  if (!item.categoryLabel) {
+    item.categoryLabel = item.categoryLabelKo || item.category;
+  }
+
   return item;
 }
 
@@ -122,5 +140,7 @@ export function getAllDailyInsights(date: Date = new Date(), locale?: string): R
     english: getDailyInsight("english", date, locale),
     korean: getDailyInsight("korean", date, locale),
     life: getDailyInsight("life", date, locale),
+    physics: getDailyInsight("physics", date, locale),
+    chemistry: getDailyInsight("chemistry", date, locale),
   };
 }

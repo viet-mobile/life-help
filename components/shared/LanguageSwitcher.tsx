@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import { useLocale, resolveLocaleFromPath } from "@/lib/i18n/LocaleContext";
-import { type Locale, languages, isValidLocale, formatLanguageName } from "@/messages/registry";
+import { type Locale, languages, isValidLocale, formatLanguageName, getSortedLanguages } from "@/messages/registry";
 import { isDualScriptLocale, DUAL_SCRIPT_LANGUAGES } from "@/lib/i18n/scriptConverter";
 
 interface LanguageSwitcherProps {
@@ -22,6 +22,10 @@ export function LanguageSwitcher({
   const isBilingual = context.displayMode === "bilingual";
   const isDualScript = isDualScriptLocale(currentLocale);
   const scriptMeta = isDualScript ? DUAL_SCRIPT_LANGUAGES[currentLocale] : null;
+
+  const sortedLanguages = useMemo(() => {
+    return getSortedLanguages(currentLocale);
+  }, [currentLocale]);
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const val = e.target.value;
     if (isValidLocale(val)) {
@@ -71,7 +75,7 @@ export function LanguageSwitcher({
           className="cursor-pointer bg-transparent pr-0 text-[11px] font-bold text-slate-800 sm:text-xs md:text-sm w-full min-w-0 min-h-11 truncate focus-visible:outline-none"
           aria-label="Select system language"
         >
-          {languages.map((lang) => (
+          {sortedLanguages.map((lang) => (
             <option
               key={lang.code}
               value={lang.code}

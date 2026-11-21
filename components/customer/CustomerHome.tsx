@@ -507,13 +507,15 @@ export function CustomerHome() {
               </span>
             </div>
 
-            {/* 4-Domain Switcher */}
+            {/* 6-Domain Switcher: Life, Math, English, Korean, Physics, Chemistry */}
             <div className="flex items-center gap-1 overflow-x-auto py-0.5">
               {[
                 { id: "life", label: t("customer.domain_life"), icon: "💡" },
                 { id: "math", label: t("customer.domain_math"), icon: "➗" },
                 { id: "english", label: t("customer.domain_english"), icon: "🔤" },
                 { id: "korean", label: t("customer.domain_korean"), icon: "🇰🇷" },
+                { id: "physics", label: t("customer.domain_physics"), icon: "🔬" },
+                { id: "chemistry", label: t("customer.domain_chemistry"), icon: "🧪" },
               ].map((d) => (
                 <button
                   key={d.id}

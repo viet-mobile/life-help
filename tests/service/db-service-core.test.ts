@@ -394,7 +394,7 @@ describe("service core: customer -> helper -> chat -> complete (SQL authority)",
     it("every svc table has RLS enabled and forced, and no policy", async () => {
       const rows = (await db.query<{ relname: string; rls: boolean; force: boolean }>(
         "select relname, relrowsecurity rls, relforcerowsecurity force from pg_class where relnamespace = 'public'::regnamespace and relkind = 'r' and relname like 'svc\\_%'")).rows;
-      expect(rows.length).toBe(10);
+      expect(rows.length).toBe(11);
       for (const r of rows) expect([r.relname, r.rls, r.force]).toEqual([r.relname, true, true]);
       expect((await db.query("select count(*)::int c from pg_policies where tablename like 'svc\\_%'")).rows[0]).toEqual({ c: 0 });
     });
@@ -420,7 +420,7 @@ describe("service core migration on the real LIFE.HELP chain", { timeout: 180_00
     const catalogAfter = await nonLearningCatalog(full);
     const strip = (xs: string[]) => xs.filter((x) => !x.includes("svc_"));
     expect(strip(catalogAfter)).toEqual(strip(catalogBefore));
-    expect((await full.query("select count(*)::int c from pg_class where relnamespace = 'public'::regnamespace and relname like 'svc\\_%' and relkind = 'r'")).rows[0]).toEqual({ c: 10 });
+    expect((await full.query("select count(*)::int c from pg_class where relnamespace = 'public'::regnamespace and relname like 'svc\\_%' and relkind = 'r'")).rows[0]).toEqual({ c: 11 });
     await full.close();
   });
 });

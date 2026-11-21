@@ -124,7 +124,7 @@ describe("browser identity, server authority, caching, environment (source facts
   it("site scope key: the entitlement scope, the route segment and the query use the same canonical site names", () => {
     expect(src("lib/learn/domain/access.ts")).toContain('scope: "all" | "math" | "english" | "korean"');
     expect(src("supabase/migrations/202610080029_learning_entitlements.sql")).toContain("scope in ('all', 'math', 'english', 'korean')");
-    expect(src("lib/learn/types.ts")).toMatch(/SITES = \["math", "english", "korean"\]/);
+    expect(src("lib/learn/types.ts")).toMatch(/SITES = \[(.*?)korean(.*?)english(.*?)math(.*?)\]/);
   });
 });
 

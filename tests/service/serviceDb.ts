@@ -7,13 +7,14 @@ import { apply, newBase } from "../learn/chainDb";
 export const SERVICE_CORE = "202610090040_service_core.sql";
 export const SERVICE_ACCESS = "202610100041_service_request_access.sql";
 export const SERVICE_LOCKDOWN = "202610110042_service_core_internal_rpc_lockdown.sql";
+export const SERVICE_PUSH_AVAILABILITY = "202611210045_service_helper_push_and_availability.sql";
 export const sha = (s: string) => createHash("sha256").update(s).digest("hex");
 export const secret = () => randomBytes(24).toString("hex");
 
 /** Supabase-compatible base plus ONLY the service-core migration (it has no other dependency). */
 export async function newServiceDb(): Promise<PGlite> {
   const db = await newBase();
-  await apply(db, [SERVICE_CORE, SERVICE_ACCESS, SERVICE_LOCKDOWN]);
+  await apply(db, [SERVICE_CORE, SERVICE_ACCESS, SERVICE_LOCKDOWN, SERVICE_PUSH_AVAILABILITY]);
   return db;
 }
 

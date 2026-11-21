@@ -198,39 +198,103 @@ export const languages: readonly LanguageMeta[] = [
 ] as const;
 
 /**
- * Formats a language metadata object for dropdowns and selection UI:
- * - Omits outer parentheses around Korean language name (e.g. "English 영어").
- * - Retains parentheses for the 4 exceptions:
- *     중국어(간체), 중국어(번체), 이란어(페르시아어), 에티오피아어(암하라어).
- * - For RTL languages (이란어, 아랍어, 히브리어, 이집트어, 우르두어), renders the native name on the left
- *   and the Korean name on the right using Unicode Left-to-Right Marks (LRM).
+ * Computes display width of a string in monospace/CJK typography:
+ * Fullwidth & CJK characters count as 2 units, standard Latin/Arabic as 1 unit.
  */
-export function formatLanguageName(meta: LanguageMeta, currentLocale?: Locale, isBilingual?: boolean): string {
-  if (meta.code === "ko") {
-    return meta.nativeName;
-  }
-  const native = currentLocale === "zh-Hant" && meta.code === "zh-Hans" ? "簡體中文" : meta.nativeName;
-
-  // When Bilingual (Korean) mode is enabled:
-  // Show the native name on the left, and the corresponding Korean name right-aligned on the right
-  // with non-breaking spaces (preventing HTML option collapse).
-  if (isBilingual) {
-    const padCount = Math.max(3, 24 - native.length);
-    const padding = "\u00A0".repeat(padCount);
-    if (meta.dir === "rtl") {
-      return `\u200E${native}\u200E${padding}${meta.name}\u200E`;
+export function getDisplayWidth(str: string): number {
+  let width = 0;
+  for (const ch of str) {
+    const code = ch.codePointAt(0) || 0;
+    if (
+      (code >= 0x1100 && code <= 0x11ff) || // Hangul Jamo
+      (code >= 0x2e80 && code <= 0xa4cf) || // CJK Radicals, Kangxi, Ideographs
+      (code >= 0xac00 && code <= 0xd7af) || // Hangul Syllables
+      (code >= 0xf900 && code <= 0xfaff) || // CJK Compatibility
+      (code >= 0xff01 && code <= 0xff60) || // Fullwidth Forms
+      (code >= 0xffe0 && code <= 0xffe6)
+    ) {
+      width += 2;
+    } else {
+      width += 1;
     }
-    return `${native}${padding}${meta.name}`;
   }
+  return width;
+}
 
-  // Non-Korean UI: the endonym only (a Korean exonym beside every language is unreadable for them).
-  if (currentLocale && currentLocale !== "ko") {
-    return meta.dir === "rtl" ? `\u200E${native}\u200E` : native;
+/**
+ * Returns the localized name of a language in the given target locale.
+ * - When targetLocale is "ko", prefers the curated Korean name from languages metadata.
+ * - Otherwise, uses Intl.DisplayNames, falling back to English, then metadata name.
+ */
+export function getLanguageNameInLocale(langCode: string, targetLocale: Locale | string = "ko"): string {
+  if (langCode === "arz") {
+    if (targetLocale === "ko") return "이집트어";
+    if (targetLocale === "ar") return "العامية المصرية";
+    return "Egyptian Arabic";
   }
-  if (meta.dir === "rtl") {
-    return `\u200E${native}\u200E ${meta.name}\u200E`;
+  if (targetLocale === "ko") {
+    const found = languages.find((l) => l.code === langCode);
+    if (found) return found.name;
   }
-  return `${native} ${meta.name}`;
+  try {
+    const dn = new Intl.DisplayNames([targetLocale], { type: "language", fallback: "none" });
+    const name = dn.of(langCode);
+    if (name) return name.charAt(0).toUpperCase() + name.slice(1);
+  } catch {
+    // fallback
+  }
+  try {
+    const dnEn = new Intl.DisplayNames(["en"], { type: "language", fallback: "none" });
+    const nameEn = dnEn.of(langCode);
+    if (nameEn) return nameEn.charAt(0).toUpperCase() + nameEn.slice(1);
+  } catch {
+    // fallback
+  }
+  const found = languages.find((l) => l.code === langCode);
+  return found ? found.name : langCode;
+}
+
+/**
+ * Returns the canonical list of languages sorted for the given current locale:
+ * 1. The currently selected language is placed at the very top.
+ * 2. All remaining languages are sorted in dictionary order (collation)
+ *    of their names in the currently selected language.
+ */
+export function getSortedLanguages(currentLocale: Locale | string = "ko"): readonly LanguageMeta[] {
+  const current = languages.find((l) => l.code === currentLocale) || languages[0];
+  const others = languages.filter((l) => l.code !== current.code);
+  const collator = new Intl.Collator(currentLocale);
+
+  others.sort((a, b) => {
+    const nameA = getLanguageNameInLocale(a.code, currentLocale);
+    const nameB = getLanguageNameInLocale(b.code, currentLocale);
+    return collator.compare(nameA, nameB);
+  });
+
+  return [current, ...others];
+}
+
+/**
+ * Formats a language metadata object for dropdowns and selection UI:
+ * - Left: The name of the language in the currently selected language (left-aligned).
+ * - Right: The native name of the language (right-aligned).
+ * - Even for RTL languages, Left is strictly the name in the current language, and Right is the native name.
+ * - Bidirectional isolation (LRM) guarantees clean LTR display across all browsers and scripts.
+ */
+export function formatLanguageName(
+  meta: LanguageMeta,
+  currentLocale: Locale | string = "ko",
+  _isBilingual?: boolean
+): string {
+  const left = getLanguageNameInLocale(meta.code, currentLocale);
+  const right = currentLocale === "zh-Hant" && meta.code === "zh-Hans" ? "簡體中文" : meta.nativeName;
+
+  const w = getDisplayWidth(left);
+  const targetCol = 24;
+  const pad = Math.max(3, targetCol - w);
+  const padding = "\u00A0".repeat(pad);
+
+  return `\u200E${left}\u200E${padding}\u200E${right}\u200E`;
 }
 
 export function isValidLocale(val: unknown): val is Locale {

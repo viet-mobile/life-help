@@ -1,9 +1,10 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useTransition } from "react";
+import { useTransition, useMemo } from "react";
 import { LOCALES, LOCALE_COOKIE, LOCALE_COOKIE_MAX_AGE, isLocale, localeDir, nativeName, type LearnLocale } from "@/lib/learn/i18n";
 import { localeFromSegment } from "@/lib/learn/i18n/path";
+import { getLanguageNameInLocale, formatLanguageName, type Locale } from "@/messages/registry";
 import { useSite } from "./LearnerProvider";
 
 /**
@@ -16,6 +17,18 @@ export function LocaleSwitch({ compact = false }: { compact?: boolean }) {
   const { locale, t, base } = useSite();
   const router = useRouter();
   const [pending, start] = useTransition();
+
+  const sortedLocales = useMemo(() => {
+    const current = locale;
+    const others = LOCALES.filter((c) => c !== current);
+    const collator = new Intl.Collator(current);
+    others.sort((a, b) => {
+      const nameA = getLanguageNameInLocale(a, current);
+      const nameB = getLanguageNameInLocale(b, current);
+      return collator.compare(nameA, nameB);
+    });
+    return [current, ...others];
+  }, [locale]);
 
   const choose = (next: LearnLocale) => {
     if (next === locale) return;
@@ -45,9 +58,9 @@ export function LocaleSwitch({ compact = false }: { compact?: boolean }) {
         aria-label={t("locale.label")}
         onChange={(e) => { if (isLocale(e.target.value)) choose(e.target.value); }}
       >
-        {LOCALES.map((code) => (
-          <option key={code} value={code} lang={code} dir={localeDir(code)}>
-            {nativeName(code)}
+        {sortedLocales.map((code) => (
+          <option key={code} value={code} lang={code} dir="ltr">
+            {formatLanguageName({ code: code as Locale, name: getLanguageNameInLocale(code, locale), nativeName: nativeName(code) }, locale)}
           </option>
         ))}
       </select>

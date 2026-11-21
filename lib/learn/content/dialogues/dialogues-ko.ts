@@ -128,7 +128,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "하루에 다섯 번 이상 복용해야 효과가 있다." }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["약의 부작용과 운전 관련 내용을 확인하세요."],
+        hints: ["약의 부작용과 운전 관련 내용을 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "약사는 졸림을 유발할 수 있어 장거리 운전을 피하는 것이 좋다고 당부했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -173,7 +173,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "승강장이 지상 1층에 있어서" }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["승객의 대화 내용 중 비행기 시간에 주목하세요."],
+        hints: ["승객의 대화 내용 중 비행기 시간에 주목하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "승객은 비행기 출발 시간이 촉박하여 더 빠른 직통열차를 선택했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -217,7 +217,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "43번 탑승구 / 14시 40분" }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["지상직원의 마지막 안내를 확인하세요."],
+        hints: ["지상직원의 마지막 안내를 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "직원은 24번 탑승구로 14시 20분까지 가라고 안내했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -261,7 +261,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "영주 거주 / F-5 비자" }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["입국자의 첫 답변에서 D-4 비자와 어학연수를 언급했습니다."],
+        hints: ["입국자의 첫 답변에서 D-4 비자와 어학연수를 언급했습니다.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "입국자는 대학교 어학연수를 목적으로 D-4 비자를 받아 입국했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -307,7 +307,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "신용카드 할부" }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["손님이 직원에게 물어본 결제 수단을 확인하세요."],
+        hints: ["손님이 직원에게 물어본 결제 수단을 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "손님은 교통카드로 결제할 수 있는지 물어보고 교통카드로 결제했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -351,7 +351,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "노란색 프리사이즈 니트" }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["손님의 마지막 대사에서 색상과 사이즈를 확인하세요."],
+        hints: ["손님의 마지막 대사에서 색상과 사이즈를 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "손님은 소매가 맞는 하늘색 S 사이즈 셔츠를 최종 선택했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -395,7 +395,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "고객이 현금 결제를 요구해서" }
         ],
         answer: { kind: "choice", id: "c" },
-        hints: ["안내원의 대화 중 품절 언급을 확인하세요."],
+        hints: ["안내원의 대화 중 품절 언급을 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "동일한 색상의 가방 재고가 모든 매장에서 품절되어 전액 환불로 처리되었습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -440,7 +440,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "색연필 세트" }
         ],
         answer: { kind: "choice", id: "a" },
-        hints: ["지우의 첫 번째 대사를 확인하세요."],
+        hints: ["지우의 첫 번째 대사를 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "지우는 필통을 두고 와서 연필 한 자루를 빌렸습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -483,7 +483,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "다음 주 월요일" }
         ],
         answer: { kind: "choice", id: "c" },
-        hints: ["선생님의 마지막 제출 안내를 확인하세요."],
+        hints: ["선생님의 마지막 제출 안내를 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "선생님은 금요일 1교시 시작 전까지 제출하라고 지시했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -526,7 +526,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "발표 영상 촬영 및 편집" }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["조장 A의 두 번째 발언을 확인하세요."],
+        hints: ["조장 A의 두 번째 발언을 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "조장 A는 슬라이드 디자인과 발표 대본 정리를 맡았습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -572,7 +572,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "놀이공원 연간 회원증" }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["손님의 대사에서 통신사 앱 바코드를 확인하세요."],
+        hints: ["손님의 대사에서 통신사 앱 바코드를 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "손님은 통신사 멤버십 앱 바코드를 제시하여 할인을 적용받았습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -616,7 +616,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "음료수를 손에 들고 마시며 탑승한다." }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["진행요원의 안전 안내를 확인하세요."],
+        hints: ["진행요원의 안전 안내를 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "진행요원은 안전을 위해 안경, 모자, 가방을 사물함에 보관하도록 안내했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -659,7 +659,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "회전목마 기념품 가게 안" }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["안내원의 마지막 답변을 확인하세요."],
+        hints: ["안내원의 마지막 답변을 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "안내원은 분수대 바로 뒤편 편의 서비스 센터에서 즉시 대여 가능하다고 안내했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -704,7 +704,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "식사를 마친 후 계산대에서 요청한다." }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["직원의 안내 중 '셀프 코너'를 확인하세요."],
+        hints: ["직원의 안내 중 '셀프 코너'를 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "직원은 물과 단무지를 셀프 코너에서 편하게 직접 가져다 먹으면 된다고 안내했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -749,7 +749,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "냉면과 만두 세트" }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["사장님의 첫 번째 추천 대사를 확인하세요."],
+        hints: ["사장님의 첫 번째 추천 대사를 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "사장님은 처음 온 손님에게 달콤 짭조름한 소불고기 전골 정식을 추천했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -793,7 +793,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "30,000원" }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["총 48,000원을 둘이서 반반씩 결제했습니다."],
+        hints: ["총 48,000원을 둘이서 반반씩 결제했습니다.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "총 금액 48,000원을 반으로 나누어 각각 24,000원씩 결제했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -838,7 +838,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "다음 주 수요일 점심" }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["A의 첫 번째 대사를 확인하세요."],
+        hints: ["A의 첫 번째 대사를 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "예비 신랑 A는 다음 달 첫째 주 토요일에 결혼식을 올린다고 알렸습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -883,7 +883,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "하객의 자택 도로명 주소" }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["하객의 대사 중 봉투 뒷면에 적은 내용을 확인하세요."],
+        hints: ["하객의 대사 중 봉투 뒷면에 적은 내용을 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "한국 결혼식에서는 축의금 접수자가 하객을 명확히 파악할 수 있도록 봉투 뒷면에 이름과 소속(관계)을 적는 것이 예의입니다.",
         role: "core",
         status: "PUBLISHED"
@@ -926,7 +926,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "신혼여행 경비를 절약하라는 권유" }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["하객 A의 축하 덕담 내용을 확인하세요."],
+        hints: ["하객 A의 축하 덕담 내용을 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "하객 A는 서로 아끼고 존중하며 평화롭고 행복한 가정을 꾸리기를 기원했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -970,7 +970,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "오후 3시" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["직원의 마지막 답변을 확인하세요."],
+        hints: ["직원의 마지막 답변을 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "직원은 체크아웃 시간이 오전 11시라고 안내했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -1013,7 +1013,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "오후 6시" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["프런트 직원의 마지막 승인 대화를 확인하세요."],
+        hints: ["프런트 직원의 마지막 승인 대화를 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "직원은 오후 1시까지 무료 레이트 체크아웃을 적용해 드리겠다고 확답했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -1056,7 +1056,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "내일 아침 첫차 출발" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["직원의 마지막 셔틀버스 출발 안내를 확인하세요."],
+        hints: ["직원의 마지막 셔틀버스 출발 안내를 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "직원은 공항 셔틀이 30분 뒤 정각에 로비 정문에서 출발한다고 안내했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -1099,7 +1099,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "8번 출구" },
         ],
         answer: { kind: "choice", id: "c" },
-        hints: ["역무원의 마지막 안내를 확인하세요."],
+        hints: ["역무원의 마지막 안내를 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "역무원은 5번 출구로 나가면 광장 바로 앞으로 연결된다고 설명했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -1143,7 +1143,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "교통카드와 승차권" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["승객의 마지막 대사를 확인하세요."],
+        hints: ["승객의 마지막 대사를 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "승객은 신용카드로 결제하겠다고 밝히고 영수증 출력을 요청했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -1186,7 +1186,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "특실로 업그레이드했기 때문" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["역무원의 수수료 면제 사유 설명을 확인하세요."],
+        hints: ["역무원의 수수료 면제 사유 설명을 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "역무원은 출발 3시간 전 변경이라 규정에 따라 수수료 없이 무료로 변경해 드렸다고 설명했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -1229,7 +1229,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "항공 마일리지 바우처" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["고객이 환율 수수료 할인을 위해 언급한 것을 확인하세요."],
+        hints: ["고객이 환율 수수료 할인을 위해 언급한 것을 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "고객은 모바일 앱의 80% 환율 우대 쿠폰을 제시하여 수수료 감면을 받았습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -1272,7 +1272,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "비행기 왕복 탑승권" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["은행원이 요구하고 고객이 제출한 서류를 확인하세요."],
+        hints: ["은행원이 요구하고 고객이 제출한 서류를 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "고객은 계좌 개설 목적 증빙을 위해 외국인등록증과 회사 재직증명서를 제출했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -1315,7 +1315,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "여권 번호 (Passport Number)" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["은행 간 국제 거래에서 쓰는 고유 식별코드를 확인하세요."],
+        hints: ["은행 간 국제 거래에서 쓰는 고유 식별코드를 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "해외 송금 시 수취 은행을 정확히 지정하기 위해 SWIFT 코드가 필수적입니다.",
         role: "core",
         status: "PUBLISHED"
@@ -1358,7 +1358,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "우표의 그림" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["우체국 직원의 마지막 안내를 확인하세요."],
+        hints: ["우체국 직원의 마지막 안내를 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "우체국 직원은 영수증에 인쇄된 등기번호로 배송 조회가 가능하다고 안내했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -1401,7 +1401,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "개봉 금지 스티커" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["직원의 마지막 포장 안내를 확인하세요."],
+        hints: ["직원의 마지막 포장 안내를 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "직원은 도자기 제품의 안전한 배송을 위해 '파손주의' 스티커를 부착하라고 안내했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -1444,7 +1444,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "한국 전통 과자" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["직원의 마지막 항공 안전 주의사항을 확인하세요."],
+        hints: ["직원의 마지막 항공 안전 주의사항을 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "항공 운송 규정상 배터리, 가연성 스프레이 등은 폭발 및 화재 위험으로 금지 품목에 해당합니다.",
         role: "core",
         status: "PUBLISHED"
@@ -1487,7 +1487,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "조식 식사 제공" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["공인중개사의 마지막 관리비 포함 항목 설명을 확인하세요."],
+        hints: ["공인중개사의 마지막 관리비 포함 항목 설명을 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "관리비 7만 원에는 인터넷과 수도 요금이 포함되며, 전기와 가스는 별도 납부합니다.",
         role: "core",
         status: "PUBLISHED"
@@ -1530,7 +1530,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "부동산 중개업소가 부담" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["집주인의 마지막 답변을 확인하세요."],
+        hints: ["집주인의 마지막 답변을 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "집주인은 임대인의 기본 시설물 유지 의무에 따라 수리비를 전액 부담하겠다고 확약했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -1573,7 +1573,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "엘리베이터 이용 수수료" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["임대인의 마지막 대화에 언급된 충당금 항목을 확인하세요."],
+        hints: ["임대인의 마지막 대화에 언급된 충당금 항목을 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "장기수선충당금은 원래 집주인이 부담해야 하는 항목이므로, 퇴거 시 임차인이 관리사무소 내역을 받아 임대인으로부터 반환받습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -1616,7 +1616,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "1년 이내" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["공무원의 첫 번째 법정 기한 설명을 확인하세요."],
+        hints: ["공무원의 첫 번째 법정 기한 설명을 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "출입국관리법령상 체류지 변경은 전입일(이사일)로부터 15일 이내에 반드시 신고하여야 합니다.",
         role: "core",
         status: "PUBLISHED"
@@ -1659,7 +1659,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "5년" },
         ],
         answer: { kind: "choice", id: "c" },
-        hints: ["출입국 공무원의 마지막 심사 승인 내용을 확인하세요."],
+        hints: ["출입국 공무원의 마지막 심사 승인 내용을 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "공무원은 심사 요건 충족으로 1년 연장 허가가 났다고 안내했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -1702,7 +1702,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "얼굴 표정 인식" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["안내 도우미가 설명한 센서 위치와 인식 수단을 확인하세요."],
+        hints: ["안내 도우미가 설명한 센서 위치와 인식 수단을 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "기기 화면 메뉴 입력 후 오른쪽 지문 센서에 손가락을 대어 지문 인식을 진행했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -1745,7 +1745,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "조기 퇴근을 원한다는 희망" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["신입사원 줄리앙의 자기소개 발언을 확인하세요."],
+        hints: ["신입사원 줄리앙의 자기소개 발언을 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "신입사원은 성실히 배우며 팀에 기여하기 위해 최선을 다하겠다고 예의 바르게 포부를 밝혔습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -1788,7 +1788,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "금요일" },
         ],
         answer: { kind: "choice", id: "d" },
-        hints: ["엔지니어의 마지막 대답을 확인하세요."],
+        hints: ["엔지니어의 마지막 대답을 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "담당 엔지니어는 목요일 QA를 마치고 금요일에 정식 배포를 진행할 예정이라고 보고했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -1831,7 +1831,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "다음 달 초" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["기획팀장이 수용 조건으로 제시하고 합의한 시점을 확인하세요."],
+        hints: ["기획팀장이 수용 조건으로 제시하고 합의한 시점을 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "이사회 보고 일정(20일)을 감안하여 18일 오전까지 1차 분석본을 전달하기로 원만하게 조율되었습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -1874,7 +1874,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "턱선까지 내려오는 길이" },
         ],
         answer: { kind: "choice", id: "c" },
-        hints: ["고객의 마지막 요청 발언을 확인하세요."],
+        hints: ["고객의 마지막 요청 발언을 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "고객은 눈을 가리지 않게 눈썹 바로 위까지만 앞머리를 다듬어 달라고 명확히 요청했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -1918,7 +1918,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "어깨 라인" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["고객이 더 헹궈달라고 지정한 위치를 확인하세요."],
+        hints: ["고객이 더 헹궈달라고 지정한 위치를 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "고객은 물 온도가 적당하다고 답하면서 뒷목 쪽을 조금 더 헹궈달라고 요청했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -1961,7 +1961,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "일주일간 전혀 머리를 감지 않기" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["원장의 마지막 홈케어 샴푸 권장사항을 확인하세요."],
+        hints: ["원장의 마지막 홈케어 샴푸 권장사항을 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "원장은 염색 모발의 색소 유지와 손상 방지를 위해 시술 후 이틀 동안 미온수로 감을 것을 권장했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -2004,7 +2004,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "비닐 커버" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["시민이 설명한 우산의 구체적 외관 특징을 확인하세요."],
+        hints: ["시민이 설명한 우산의 구체적 외관 특징을 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "시민은 우산 손잡이에 파란색 끈이 묶여 있다고 구체적인 식별 특징을 설명했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -2047,7 +2047,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "계좌의 전액을 다른 사람에게 송금하기" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["안내소 직원의 긴급 대응 조언을 확인하세요."],
+        hints: ["안내소 직원의 긴급 대응 조언을 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "직원은 부정 결제를 막기 위해 신용카드 분실 정지 신청을 즉각 진행하라고 조언했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -2090,7 +2090,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "기기 제조사 서비스센터에 방문하기" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["경찰관이 요청하고 민원인이 수행한 검증 절차를 확인하세요."],
+        hints: ["경찰관이 요청하고 민원인이 수행한 검증 절차를 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "화면 잠금 비밀번호를 직접 해제하여 가족사진 배경화면을 확인함으로써 정당한 소유자임이 즉시 입증되었습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -2133,7 +2133,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "매일 1대1 개인 PT" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["매니저의 마지막 패키지 혜택 설명을 확인하세요."],
+        hints: ["매니저의 마지막 패키지 혜택 설명을 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "매니저는 3개월 패키지 이용 시 운동복과 수건이 무료로 제공된다고 안내했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -2176,7 +2176,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "달리면서 바닥으로 뛰어내리기" },
         ],
         answer: { kind: "choice", id: "c" },
-        hints: ["트레이너가 강조한 빨간색 안전 버튼을 확인하세요."],
+        hints: ["트레이너가 강조한 빨간색 안전 버튼을 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "러닝머신 중앙의 빨간색 긴급 정지 버튼이나 옷에 연결된 안전핀을 당기면 벨트가 즉시 멈춥니다.",
         role: "core",
         status: "PUBLISHED"
@@ -2219,7 +2219,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "취소는 언제든 불가능함" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["안내 직원의 마지막 취소 규정 설명을 확인하세요."],
+        hints: ["안내 직원의 마지막 취소 규정 설명을 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "직원은 수업 시작 4시간 전까지 취소하면 횟수 차감 없이 다른 요일로 변경할 수 있다고 안내했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -2262,7 +2262,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "권수 무제한, 1년" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["사서의 마지막 규정 안내를 확인하세요."],
+        hints: ["사서의 마지막 규정 안내를 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "사서는 1인당 최대 5권까지 14일간 대출 가능하다고 안내했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -2305,7 +2305,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "야외 정원 석탑 마당" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["안내원의 마지막 동선 안내를 확인하세요."],
+        hints: ["안내원의 마지막 동선 안내를 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "안내원은 1층 동관 선사고대관 입구부터 관람 동선을 따라 이동해야 시대순으로 관람할 수 있다고 설명했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -2348,7 +2348,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "도슨트 이어폰" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["안내원의 첫 번째 사진 규정 답변을 확인하세요."],
+        hints: ["안내원의 첫 번째 사진 규정 답변을 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "작품 보호와 타인의 관람 방해를 막기 위해 플래시와 삼각대 사용은 엄격히 금지됩니다.",
         role: "core",
         status: "PUBLISHED"
@@ -2392,7 +2392,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "전기차 충전기로만 충전해야 한다." },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["직원의 마지막 연료 반납 안내를 확인하세요."],
+        hints: ["직원의 마지막 연료 반납 안내를 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "직원은 차량 인수 시 가득 차 있었으므로 반납 시에도 가득 주유하여 반납해야 한다고 안내했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -2435,7 +2435,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "전기차 급속 충전 50%" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["운전자의 첫 번째 주문 내용을 확인하세요."],
+        hints: ["운전자의 첫 번째 주문 내용을 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "운전자는 휘발유(가솔린)로 가득 채워달라고 명확히 요청했습니다.",
         role: "core",
         status: "PUBLISHED"
@@ -2478,7 +2478,7 @@ export const KOREAN_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "주차 위반 과태료" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["반납 검사원의 마지막 정산 안내를 확인하세요."],
+        hints: ["반납 검사원의 마지막 정산 안내를 확인하세요.", "대화문의 핵심 문장을 다시 한번 주의 깊게 읽어보세요."],
         explanation: "반납 검사원은 연료와 외관 점검에 이상이 없으며 하이패스 통행료 2,400원만 정산하면 완료된다고 안내했습니다.",
         role: "core",
         status: "PUBLISHED"

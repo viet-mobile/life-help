@@ -31,8 +31,10 @@ const CANON = {
   math: ["lib/learn/content/elementary/math.json", "lib/learn/content/demo/math.json", "lib/learn/content/secondary/math.json"],
   english: ["lib/learn/content/elementary/english.json", "lib/learn/content/demo/english.json", "lib/learn/content/secondary/english.json"],
   korean: ["lib/learn/content/korean/korean.json"],
+  physics: ["lib/learn/content/physics/physics.json"],
+  chemistry: ["lib/learn/content/chemistry/chemistry.json"],
 };
-const PRESENTATION = { math: "ko", english: "ko", korean: "en" };
+const PRESENTATION = { math: "ko", english: "ko", korean: "en", physics: "ko", chemistry: "ko" };
 const VI = { math: ["lib/learn/content/vi/math.json", "lib/learn/content/vi/secondary-math.json"], english: ["lib/learn/content/vi/english.json", "lib/learn/content/vi/secondary-english.json"] };
 const SECTIONS = ["skills", "courses", "units", "lessons", "questions"];
 const fail = (msg) => { console.error(`learn content assets: ${msg}`); process.exit(1); };

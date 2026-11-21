@@ -8,7 +8,7 @@ const SUPABASE_ROLES = `
   alter default privileges in schema public grant all on functions to anon, authenticated, service_role;
   alter default privileges in schema public grant all on sequences to anon, authenticated, service_role;
 `;
-export const SERVICE_CORE_MIGRATIONS = ["supabase/migrations/202610090040_service_core.sql", "supabase/migrations/202610100041_service_request_access.sql", "supabase/migrations/202610110042_service_core_internal_rpc_lockdown.sql"] as const;
+export const SERVICE_CORE_MIGRATIONS = ["supabase/migrations/202610090040_service_core.sql", "supabase/migrations/202610100041_service_request_access.sql", "supabase/migrations/202610110042_service_core_internal_rpc_lockdown.sql", "supabase/migrations/202611210045_service_helper_push_and_availability.sql"] as const;
 
 interface LocalDb extends ServiceDb {
   close(): Promise<void>;

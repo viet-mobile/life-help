@@ -1,3 +1,14 @@
+
+export interface HelperPushSettings {
+  quietStart: string;
+  quietEnd: string;
+  quietEnabled: boolean;
+  allowCallsWhileBusy: boolean;
+  contactPhone: string | null;
+  hasPushSubscription: boolean;
+  deviceCount: number;
+}
+
 import type { ServicePaymentRecord } from "./paymentSettlement";
 
 /** Shapes returned by /api/svc (see 202610090040_service_core.sql). */

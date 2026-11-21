@@ -4,7 +4,9 @@ export type InsightCategory =
   | "career"   // 경력 및 구직
   | "health"   // 건강 및 웰니스
   | "travel"   // 여행 및 이동
-  | "problem"; // 생활 문제 해결
+  | "problem"  // 생활 문제 해결
+  | "shopping" // 쇼핑·소비
+  | "energy";  // 에너지 절약
 
 export interface DailyInsight {
   id: string;
@@ -28,4 +30,4 @@ export interface DailyInsight {
   expiresAt?: string;     // 정책/규정 변경 시 만료 일자 (YYYY-MM-DD)
 }
 
-export type DomainType = "math" | "english" | "korean" | "life";
+export type DomainType = "math" | "english" | "korean" | "life" | "physics" | "chemistry";

@@ -1,0 +1,340 @@
+{
+ "questions": {
+  "physics-killer-01": {
+   "prompt": "A object starts from rest at point A, $50\\,\\mathrm{m}$ high, on a frictionless roller-coaster track. The heights of three points on the track are: point B $45\\,\\mathrm{m}$, point C $30\\,\\mathrm{m}$, point D $5\\,\\mathrm{m}$. Ignore air resistance and use $g=10\\,\\mathrm{m/s^2}$. Which option correctly gives, in order, how many times the speed at C is the speed at B, and the speed at D?",
+   "options": {
+    "a": "$4$ times, $90\\,\\mathrm{m/s}$",
+    "b": "$2$ times, $30\\,\\mathrm{m/s}$",
+    "c": "$2$ times, $10\\,\\mathrm{m/s}$",
+    "d": "$2$ times, about $21\\,\\mathrm{m/s}$"
+   },
+   "hints": [
+    "Conservation of mechanical energy: $mg(h_A-h)=\\frac12mv^2$, so $v=\\sqrt{2g\\,\\Delta h}$ ($\\Delta h$ is the drop from A).",
+    "The drops are B: $5\\,\\mathrm{m}$, C: $20\\,\\mathrm{m}$, D: $45\\,\\mathrm{m}$. $v_B=\\sqrt{2\\cdot10\\cdot5}=10\\,\\mathrm{m/s}$."
+   ],
+   "explanation": "Starting from rest, $mgh_A=\\frac12mv^2+mgh$ gives $v=\\sqrt{2g(h_A-h)}$. $v_B=\\sqrt{2\\cdot10\\cdot5}=10$, $v_C=\\sqrt{2\\cdot10\\cdot20}=20$, $v_D=\\sqrt{2\\cdot10\\cdot45}=30\\,\\mathrm{m/s}$. So $v_C/v_B=2$ and $v_D=30\\,\\mathrm{m/s}$. Speed is proportional to $\\sqrt{\\Delta h}$, not to $\\Delta h$ (option 1); taking D's height $5\\,\\mathrm{m}$ as the drop gives $10\\,\\mathrm{m/s}$ (option 3); dropping the factor $\\frac12$ gives $\\sqrt{10\\cdot45}\\approx21\\,\\mathrm{m/s}$ (option 4)."
+  },
+  "physics-killer-02": {
+   "prompt": "A vertical circular loop of radius $R=4\\,\\mathrm{m}$ is attached to the bottom (height $0$) of a frictionless track. A $2\\,\\mathrm{kg}$ object is released from rest on the track so that it goes around the loop. Use $g=10\\,\\mathrm{m/s^2}$. Which option correctly gives, in order, the minimum release height $h_{min}$ (measured from the bottom) needed to pass the top of the loop without leaving the track, and the normal force $N$ exerted by the track on the object at the top when the release height is $15\\,\\mathrm{m}$?",
+   "options": {
+    "a": "$8\\,\\mathrm{m}$, $50\\,\\mathrm{N}$",
+    "b": "$10\\,\\mathrm{m}$, $70\\,\\mathrm{N}$",
+    "c": "$10\\,\\mathrm{m}$, $90\\,\\mathrm{N}$",
+    "d": "$10\\,\\mathrm{m}$, $50\\,\\mathrm{N}$"
+   },
+   "hints": [
+    "At the top, $mg+N=\\dfrac{mv^2}{R}$; not leaving the track requires $N\\ge0$, i.e. $v_{top}\\ge\\sqrt{gR}$. Energy conservation: $mgh=mg(2R)+\\frac12mv_{top}^2$.",
+    "With $v_{top}^2=gR=40$, $h_{min}=2R+\\dfrac{v_{top}^2}{2g}=8+2=10\\,\\mathrm{m}$. For $h=15\\,\\mathrm{m}$, $v_{top}^2=2\\cdot10\\cdot(15-8)=140$."
+   ],
+   "explanation": "Minimum condition $N=0$: $mg=mv^2/R\\Rightarrow v_{top}^2=gR=40$. Energy conservation $mgh_{min}=mg(2R)+\\frac12mv_{top}^2$ gives $h_{min}=2R+\\dfrac{R}{2}=2.5R=10\\,\\mathrm{m}$. For $h=15\\,\\mathrm{m}$, $v_{top}^2=2g(h-2R)=2\\cdot10\\cdot7=140$. From $mg+N=mv^2/R$, $N=m\\left(\\dfrac{v^2}{R}-g\\right)=2(35-10)=50\\,\\mathrm{N}$. Using only the height $2R=8\\,\\mathrm{m}$ ignores the kinetic energy (option 1); $N=mv^2/R=70\\,\\mathrm{N}$ ignores gravity (option 2); $90\\,\\mathrm{N}$ is a sign error that adds gravity (option 3)."
+  },
+  "physics-killer-03": {
+   "prompt": "A $2\\,\\mathrm{kg}$ object slides from rest from a height of $4\\,\\mathrm{m}$ down a frictionless curved surface, crosses a rough horizontal section of length $5\\,\\mathrm{m}$ (constant friction force of magnitude $11\\,\\mathrm{N}$ on the object), and then climbs a frictionless incline on the right. Use $g=10\\,\\mathrm{m/s^2}$ and ignore air resistance. Which option correctly gives, in order, the thermal energy $Q$ produced in the rough section and the maximum height reached on the right incline?",
+   "options": {
+    "a": "$55\\,\\mathrm{J}$, $1.25\\,\\mathrm{m}$",
+    "b": "$55\\,\\mathrm{J}$, $4\\,\\mathrm{m}$",
+    "c": "$25\\,\\mathrm{J}$, $1.25\\,\\mathrm{m}$",
+    "d": "$55\\,\\mathrm{J}$, $2.5\\,\\mathrm{m}$"
+   },
+   "hints": [
+    "The mechanical energy lost in the rough section equals the work done by friction, which equals the heat produced: $Q=W_f=fs$. The initial mechanical energy is $mgh_0$.",
+    "$mgh_0=2\\cdot10\\cdot4=80\\,\\mathrm{J}$, $Q=fs=11\\cdot5=55\\,\\mathrm{J}$. The remaining mechanical energy is $80-55=25\\,\\mathrm{J}$."
+   ],
+   "explanation": "Initial mechanical energy $E_0=mgh_0=2\\cdot10\\cdot4=80\\,\\mathrm{J}$. In the rough section $Q=fs=11\\cdot5=55\\,\\mathrm{J}$ becomes heat, so $80-55=25\\,\\mathrm{J}$ of mechanical energy remains. The right incline is frictionless, so $25=mgh$ gives $h=\\dfrac{25}{2\\cdot10}=1.25\\,\\mathrm{m}$. Assuming the object returns to $4\\,\\mathrm{m}$ ignores friction (option 2); mistaking the remaining $25\\,\\mathrm{J}$ for the heat gives option 3; using $\\frac12mgh$ instead of $mgh$ gives $2.5\\,\\mathrm{m}$ (option 4)."
+  },
+  "physics-killer-04": {
+   "prompt": "A ball is thrown horizontally from the edge of a $20\\,\\mathrm{m}$ high cliff and lands on the ground at a horizontal distance of $30\\,\\mathrm{m}$ from the cliff. Use $g=10\\,\\mathrm{m/s^2}$ and ignore air resistance. Which option correctly gives, in order, the speed of the ball the instant it reaches the ground and $\\tan\\theta$, where $\\theta$ is the angle its velocity makes with the horizontal at that instant?",
+   "options": {
+    "a": "$35\\,\\mathrm{m/s}$, $\\dfrac43$",
+    "b": "$25\\,\\mathrm{m/s}$, $\\dfrac34$",
+    "c": "$25\\,\\mathrm{m/s}$, $\\dfrac43$",
+    "d": "$20\\,\\mathrm{m/s}$, $\\dfrac43$"
+   },
+   "hints": [
+    "Horizontal: $x=v_0t$; vertical: $y=\\frac12gt^2$. Find $v_0$ from the fall time; landing speed $v=\\sqrt{v_0^2+(gt)^2}$, $\\tan\\theta=\\dfrac{v_y}{v_0}$.",
+    "$t=\\sqrt{2\\cdot20/10}=2\\,\\mathrm{s}$, $v_0=30/2=15\\,\\mathrm{m/s}$, $v_y=gt=20\\,\\mathrm{m/s}$."
+   ],
+   "explanation": "Vertically $20=\\frac12\\cdot10\\cdot t^2\\Rightarrow t=2\\,\\mathrm{s}$. Horizontally $30=v_0t\\Rightarrow v_0=15\\,\\mathrm{m/s}$. Just before landing $v_y=gt=20\\,\\mathrm{m/s}$. $v=\\sqrt{15^2+20^2}=25\\,\\mathrm{m/s}$, $\\tan\\theta=\\dfrac{v_y}{v_0}=\\dfrac{20}{15}=\\dfrac43$. Adding the components as $v_0+gt=35$ gives option 1; inverting the tangent gives $\\frac34$ (option 2); using only the vertical component $20\\,\\mathrm{m/s}$ as the speed gives option 4."
+  },
+  "physics-killer-05": {
+   "prompt": "An object of mass $2\\,\\mathrm{kg}$ is moving in the $+x$ direction at $4\\,\\mathrm{m/s}$. A force in the $+x$ direction acts on it: its magnitude rises uniformly from $0$ to $40\\,\\mathrm{N}$ during $0$ to $0.1\\,\\mathrm{s}$, stays constant at $40\\,\\mathrm{N}$ during $0.1$ to $0.3\\,\\mathrm{s}$, and falls uniformly from $40\\,\\mathrm{N}$ to $0$ during $0.3$ to $0.4\\,\\mathrm{s}$. Which option correctly gives, in order, the magnitude of the impulse the object receives during these $0.4\\,\\mathrm{s}$ and its speed just after the force disappears? (There are no other forces.)",
+   "options": {
+    "a": "$12\\,\\mathrm{N\\cdot s}$, $10\\,\\mathrm{m/s}$",
+    "b": "$16\\,\\mathrm{N\\cdot s}$, $12\\,\\mathrm{m/s}$",
+    "c": "$8\\,\\mathrm{N\\cdot s}$, $8\\,\\mathrm{m/s}$",
+    "d": "$12\\,\\mathrm{N\\cdot s}$, $16\\,\\mathrm{m/s}$"
+   },
+   "hints": [
+    "Impulse is the area under the force–time graph, and $I=\\Delta p=m(v-v_0)$. Split the graph into triangle, rectangle, triangle.",
+    "$I=\\frac12(0.1)(40)+(0.2)(40)+\\frac12(0.1)(40)=2+8+2=12\\,\\mathrm{N\\cdot s}$. So $\\Delta v=I/m=6\\,\\mathrm{m/s}$."
+   ],
+   "explanation": "Areas: first triangle $\\frac12\\cdot0.1\\cdot40=2$, rectangle $0.2\\cdot40=8$, last triangle $2$, so $I=12\\,\\mathrm{N\\cdot s}$. From $I=m(v-v_0)$, $12=2(v-4)\\Rightarrow v=10\\,\\mathrm{m/s}$. Treating the whole graph as a rectangle $40\\cdot0.4=16$ gives option 2; omitting the triangles and using $8$ gives option 3; not dividing $I$ by the mass and writing $4+12=16$ gives option 4."
+  },
+  "physics-killer-06": {
+   "prompt": "On a frictionless horizontal surface, object A of mass $2\\,\\mathrm{kg}$ moves at $6\\,\\mathrm{m/s}$ and collides with object B of mass $4\\,\\mathrm{kg}$ at rest; the two objects stick together and move as one. If the collision lasts $0.05\\,\\mathrm{s}$, which option correctly gives, in order, the speed of the two objects just after the collision and the magnitude of the average force on B during the collision?",
+   "options": {
+    "a": "$3\\,\\mathrm{m/s}$, $240\\,\\mathrm{N}$",
+    "b": "$2\\,\\mathrm{m/s}$, $240\\,\\mathrm{N}$",
+    "c": "$4\\,\\mathrm{m/s}$, $320\\,\\mathrm{N}$",
+    "d": "$2\\,\\mathrm{m/s}$, $160\\,\\mathrm{N}$"
+   },
+   "hints": [
+    "Momentum conservation $m_Av_A=(m_A+m_B)v$ gives $v$; the average force on B is $F_{avg}=\\dfrac{\\Delta p_B}{\\Delta t}$ (by action and reaction it has the same magnitude as the force on A).",
+    "$v=\\dfrac{2\\cdot6}{2+4}=2\\,\\mathrm{m/s}$, $\\Delta p_B=4\\cdot2=8\\,\\mathrm{kg\\cdot m/s}$."
+   ],
+   "explanation": "Momentum conservation: $2\\cdot6=(2+4)v\\Rightarrow v=2\\,\\mathrm{m/s}$. The change in B's momentum is $\\Delta p_B=4\\cdot2-0=8\\,\\mathrm{kg\\cdot m/s}$, so $F_{avg}=\\dfrac{8}{0.05}=160\\,\\mathrm{N}$. (A's momentum change $2(2-6)=-8$ has the same magnitude, consistent.) Using only $m_A$ in the denominator gives $v=3\\,\\mathrm{m/s}$ (option 1); using A's initial momentum $12$ in the force calculation gives $240\\,\\mathrm{N}$ (option 2); applying the elastic-collision $v_B=4\\,\\mathrm{m/s}$ gives option 3."
+  },
+  "physics-killer-07": {
+   "prompt": "As observed from Earth, a star is $6$ light-years away. A spaceship leaves Earth for the star at a constant speed of $0.6c$ and arrives at the star. Which option correctly gives, in order, the flight time measured by an observer on Earth and the flight time measured by a clock aboard the spaceship? (Take the speed of light $c$ as $1$ light-year per year.)",
+   "options": {
+    "a": "$10$ years, $6.4$ years",
+    "b": "$10$ years, $8$ years",
+    "c": "$10$ years, $12.5$ years",
+    "d": "$8$ years, $10$ years"
+   },
+   "hints": [
+    "The time measured on Earth is $\\Delta t=\\dfrac{L}{v}$. The spaceship clock reads the proper time $\\Delta t_0$, with $\\Delta t=\\gamma\\Delta t_0$, $\\gamma=\\dfrac{1}{\\sqrt{1-(v/c)^2}}$.",
+    "$\\Delta t=6/0.6=10$ years, $\\gamma=\\dfrac{1}{\\sqrt{1-0.36}}=1.25$."
+   ],
+   "explanation": "Earth observer: $\\Delta t=\\dfrac{6\\text{ light-years}}{0.6c}=10$ years. $\\gamma=1/\\sqrt{1-0.6^2}=1/0.8=1.25$. The ship's clock is present at both departure and arrival, so it measures the proper time: $\\Delta t_0=\\Delta t/\\gamma=10/1.25=8$ years. Multiplying gives $12.5$ years (option 3), dividing by $\\gamma^2$ gives $6.4$ years (option 1), and swapping the two values gives option 4. (In the ship's frame the distance is contracted to $6/1.25=4.8$ light-years, and $4.8/0.6=8$ years, in agreement.)"
+  },
+  "physics-killer-08": {
+   "prompt": "A muon produced in the upper atmosphere travels vertically downward toward the ground at speed $0.8c$. In the Earth (ground) frame the production point is at a height of $800\\,\\mathrm{m}$, and the muon's mean lifetime measured in its own rest frame is $2.0\\,\\mu\\mathrm{s}$. With $c=3\\times10^8\\,\\mathrm{m/s}$, which option correctly gives, in order, the distance from the production point to the ground as seen in the muon's rest frame and the time the muon takes to cover that distance?",
+   "options": {
+    "a": "$1333\\,\\mathrm{m}$, $5.6\\,\\mu\\mathrm{s}$",
+    "b": "$640\\,\\mathrm{m}$, $2.7\\,\\mu\\mathrm{s}$",
+    "c": "$480\\,\\mathrm{m}$, $2.0\\,\\mu\\mathrm{s}$",
+    "d": "$800\\,\\mathrm{m}$, $3.3\\,\\mu\\mathrm{s}$"
+   },
+   "hints": [
+    "In the muon's frame the distance to the ground is length-contracted: $L=\\dfrac{L_0}{\\gamma}$ ($L_0$ is the proper length in the Earth frame), $\\gamma=\\dfrac{1}{\\sqrt{1-(v/c)^2}}$.",
+    "$\\gamma=\\dfrac{1}{\\sqrt{1-0.64}}=\\dfrac53$, $L=\\dfrac{800}{5/3}=480\\,\\mathrm{m}$."
+   ],
+   "explanation": "$\\gamma=1/\\sqrt{1-0.8^2}=5/3$. Length contraction: $L=L_0/\\gamma=800\\cdot\\dfrac35=480\\,\\mathrm{m}$. Time $t=\\dfrac{L}{v}=\\dfrac{480}{0.8\\cdot3\\times10^8}=2.0\\times10^{-6}\\,\\mathrm{s}=2.0\\,\\mu\\mathrm{s}$, equal to the muon's proper lifetime. The Earth observer explains the same event by time dilation: $\\Delta t=\\dfrac{800}{0.8c}=3.3\\,\\mu\\mathrm{s}=\\gamma\\cdot2.0\\,\\mu\\mathrm{s}$. Multiplying by $\\gamma$ gives $1333\\,\\mathrm{m}$ (option 1), multiplying by $v/c$ instead gives $640\\,\\mathrm{m}$ (option 2), and ignoring contraction gives option 4."
+  },
+  "physics-killer-09": {
+   "prompt": "In the fusion reaction $\\mathrm{^2H}+\\mathrm{^3H}\\rightarrow\\mathrm{^4He}+\\mathrm{n}$ the particle masses are $\\mathrm{^2H}$: $2.0141\\,\\mathrm{u}$, $\\mathrm{^3H}$: $3.0160\\,\\mathrm{u}$, $\\mathrm{^4He}$: $4.0015\\,\\mathrm{u}$, neutron: $1.0086\\,\\mathrm{u}$. Take the energy equivalent of $1\\,\\mathrm{u}$ to be $930\\,\\mathrm{MeV}$ and ignore the kinetic energies of the particles before the reaction. Which option correctly gives, in order, the energy $E$ released in this reaction and the kinetic energy of the neutron, assuming the produced $\\mathrm{^4He}$ and neutron have momenta of equal magnitude and a mass ratio of $4:1$?",
+   "options": {
+    "a": "$18.6\\,\\mathrm{MeV}$, $14.9\\,\\mathrm{MeV}$",
+    "b": "$18.6\\,\\mathrm{MeV}$, $3.7\\,\\mathrm{MeV}$",
+    "c": "$9.3\\,\\mathrm{MeV}$, $7.4\\,\\mathrm{MeV}$",
+    "d": "$37.2\\,\\mathrm{MeV}$, $29.8\\,\\mathrm{MeV}$"
+   },
+   "hints": [
+    "Mass defect $\\Delta m=($total mass before$)-($total mass after$)$, released energy $E=\\Delta m\\,c^2$. With equal momentum magnitudes, $K=p^2/(2m)$, so kinetic energy is inversely proportional to mass.",
+    "$\\Delta m=(2.0141+3.0160)-(4.0015+1.0086)=0.0200\\,\\mathrm{u}$, $E=0.0200\\times930=18.6\\,\\mathrm{MeV}$."
+   ],
+   "explanation": "$\\Delta m=5.0301-5.0101=0.0200\\,\\mathrm{u}$, so $E=\\Delta mc^2=0.0200\\times930=18.6\\,\\mathrm{MeV}$. After the reaction the two particles have equal momentum magnitudes, so $K=\\dfrac{p^2}{2m}\\propto\\dfrac1m$ and $K_{He}:K_n=1:4$. Hence $K_n=\\dfrac45\\times18.6=14.88\\approx14.9\\,\\mathrm{MeV}$ and $K_{He}\\approx3.7\\,\\mathrm{MeV}$. Inverting the mass dependence gives $3.7\\,\\mathrm{MeV}$ (option 2), halving the energy gives option 3, and miscalculating $\\Delta m$ as $0.0400\\,\\mathrm{u}$ gives option 4."
+  },
+  "physics-killer-10": {
+   "prompt": "In a photoelectric-effect experiment, monochromatic light is shone on a metal plate and the maximum kinetic energy of the photoelectrons is measured at two frequencies: at $7.5\\times10^{14}\\,\\mathrm{Hz}$, $E_k=1.0\\,\\mathrm{eV}$; at $9.0\\times10^{14}\\,\\mathrm{Hz}$, $E_k=1.6\\,\\mathrm{eV}$. Use Planck's constant $h=4.0\\times10^{-15}\\,\\mathrm{eV\\cdot s}$ (an approximate value for this problem). Which option correctly gives, in order, the threshold frequency $\\nu_0$ of the metal and the stopping voltage $V_0$ when light of frequency $12.0\\times10^{14}\\,\\mathrm{Hz}$ is used?",
+   "options": {
+    "a": "$2.5\\times10^{14}\\,\\mathrm{Hz}$, $3.8\\,\\mathrm{V}$",
+    "b": "$5.0\\times10^{14}\\,\\mathrm{Hz}$, $4.8\\,\\mathrm{V}$",
+    "c": "$7.5\\times10^{14}\\,\\mathrm{Hz}$, $1.8\\,\\mathrm{V}$",
+    "d": "$5.0\\times10^{14}\\,\\mathrm{Hz}$, $2.8\\,\\mathrm{V}$"
+   },
+   "hints": [
+    "$E_k=h\\nu-W$ and the stopping voltage satisfies $eV_0=E_k$ (with energies in eV, $V_0$ in volts equals $E_k$ in eV). The threshold frequency is $\\nu_0=W/h$ (where $E_k=0$).",
+    "$h\\nu=4.0\\times10^{-15}\\times7.5\\times10^{14}=3.0\\,\\mathrm{eV}$, so $W=3.0-1.0=2.0\\,\\mathrm{eV}$."
+   ],
+   "explanation": "From the (7.5, 1.0) data: $W=h\\nu-E_k=3.0-1.0=2.0\\,\\mathrm{eV}$ (check with the second data point: $4.0\\times10^{-15}\\times9.0\\times10^{14}-1.6=3.6-1.6=2.0$). Threshold frequency $\\nu_0=\\dfrac{W}{h}=\\dfrac{2.0}{4.0\\times10^{-15}}=5.0\\times10^{14}\\,\\mathrm{Hz}$. For $\\nu=12.0\\times10^{14}\\,\\mathrm{Hz}$, $h\\nu=4.8\\,\\mathrm{eV}$ and $E_k=4.8-2.0=2.8\\,\\mathrm{eV}$, so $V_0=2.8\\,\\mathrm{V}$. Mistaking $W$ for $1.0\\,\\mathrm{eV}$ gives $\\nu_0=2.5\\times10^{14}$ and $V_0=3.8\\,\\mathrm{V}$ (option 1); forgetting to subtract the work function gives $4.8\\,\\mathrm{V}$ (option 2); using $h\\nu=3.0\\,\\mathrm{eV}$ as the work function gives $\\nu_0=7.5\\times10^{14}$ and $V_0=1.8\\,\\mathrm{V}$ (option 3)."
+  },
+  "physics-killer-11": {
+   "prompt": "Particle P enters a uniform magnetic field $B$ perpendicular to the field and moves in uniform circular motion with an orbit radius of $5\\,\\mathrm{cm}$ and a period of $2\\,\\mu\\mathrm{s}$. Particle Q enters the same field perpendicular to it, with a mass $4$ times that of P, a charge of magnitude $2$ times that of P, and a speed $3$ times that of P. Ignore gravity. Which option correctly gives, in order, the orbit radius and the period of Q?",
+   "options": {
+    "a": "$60\\,\\mathrm{cm}$, $8\\,\\mu\\mathrm{s}$",
+    "b": "$30\\,\\mathrm{cm}$, $4\\,\\mu\\mathrm{s}$",
+    "c": "$30\\,\\mathrm{cm}$, $12\\,\\mu\\mathrm{s}$",
+    "d": "$15\\,\\mathrm{cm}$, $4\\,\\mu\\mathrm{s}$"
+   },
+   "hints": [
+    "From $qvB=\\dfrac{mv^2}{r}$, $r=\\dfrac{mv}{qB}$, and the period is $T=\\dfrac{2\\pi r}{v}=\\dfrac{2\\pi m}{qB}$ (independent of speed).",
+    "$\\dfrac{r_Q}{r_P}=\\dfrac{4\\cdot3}{2}=6$, $\\dfrac{T_Q}{T_P}=\\dfrac{4}{2}=2$."
+   ],
+   "explanation": "Since $r\\propto\\dfrac{mv}{q}$, $\\dfrac{r_Q}{r_P}=\\dfrac{4m\\cdot3v}{2q}\\cdot\\dfrac{q}{mv}=6\\Rightarrow r_Q=5\\times6=30\\,\\mathrm{cm}$. $T=\\dfrac{2\\pi m}{qB}$ is independent of speed, so $\\dfrac{T_Q}{T_P}=\\dfrac{4}{2}=2\\Rightarrow T_Q=4\\,\\mu\\mathrm{s}$. Forgetting the charge ratio gives $r=60\\,\\mathrm{cm}$, $T=8\\,\\mu\\mathrm{s}$ (option 1); assuming the period is proportional to speed gives $12\\,\\mu\\mathrm{s}$ (option 3); ignoring both mass and charge ratios and using only the speed ratio gives $r=15\\,\\mathrm{cm}$ (option 4)."
+  },
+  "physics-killer-12": {
+   "prompt": "Two parallel conducting rails a distance $\\ell=0.5\\,\\mathrm{m}$ apart lie on a horizontal surface, joined at one end through a resistor. The closed circuit formed by the rails, the conducting rod and the resistor has a total resistance of $2\\,\\Omega$. A uniform vertical magnetic field $B=0.5\\,\\mathrm{T}$ covers the whole circuit, and the rod moves along the rails at a constant speed of $4\\,\\mathrm{m/s}$ away from the resistor. While the rod moves $2\\,\\mathrm{m}$ in $0.5\\,\\mathrm{s}$, the magnetic flux through the circuit changes by $\\Delta\\Phi=B\\ell\\Delta x$. Which option correctly gives, in order, the magnitude of the induced current in the circuit and the magnitude of the external force needed to keep the rod at constant speed? (There is no friction.)",
+   "options": {
+    "a": "$1.0\\,\\mathrm{A}$, $0.25\\,\\mathrm{N}$",
+    "b": "$0.5\\,\\mathrm{A}$, $0.25\\,\\mathrm{N}$",
+    "c": "$0.5\\,\\mathrm{A}$, $0.125\\,\\mathrm{N}$",
+    "d": "$0.25\\,\\mathrm{A}$, $0.0625\\,\\mathrm{N}$"
+   },
+   "hints": [
+    "Faraday's law $|\\mathcal E|=\\dfrac{\\Delta\\Phi}{\\Delta t}=B\\ell v$, $I=\\dfrac{\\mathcal E}{R}$. At constant speed the external force equals the magnetic force $F=BI\\ell$.",
+    "$\\Delta\\Phi=0.5\\times0.5\\times2=0.5\\,\\mathrm{Wb}$, $\\mathcal E=\\dfrac{0.5}{0.5}=1.0\\,\\mathrm{V}$."
+   ],
+   "explanation": "$\\Delta\\Phi=B\\ell\\Delta x=0.5\\cdot0.5\\cdot2=0.5\\,\\mathrm{Wb}$, $|\\mathcal E|=\\dfrac{\\Delta\\Phi}{\\Delta t}=\\dfrac{0.5}{0.5}=1.0\\,\\mathrm{V}$ (agrees with $B\\ell v=0.5\\cdot0.5\\cdot4$). $I=\\dfrac{\\mathcal E}{R}=\\dfrac{1.0}{2}=0.5\\,\\mathrm{A}$. The magnetic force on the rod is $F=BI\\ell=0.5\\cdot0.5\\cdot0.5=0.125\\,\\mathrm{N}$ (opposing the motion, by Lenz's law), so the external force is also $0.125\\,\\mathrm{N}$. Check: power $Fv=0.125\\cdot4=0.5\\,\\mathrm{W}=I^2R=0.25\\cdot2$. Omitting $\\ell$ gives $I=1.0\\,\\mathrm{A}$ (option 1); omitting $\\ell$ in the force gives $0.25\\,\\mathrm{N}$ (option 2); multiplying $\\mathcal E$ by $\\frac12$ gives option 4."
+  },
+  "chemistry-killer-01": {
+   "prompt": "Copper (Cu) powder is heated with oxygen ($\\mathrm{O_2}$) in a closed container to form copper(II) oxide ($\\mathrm{CuO}$). In every experiment the container holds 2.0 g of $\\mathrm{O_2}$, and the reaction is $\\mathrm{2Cu + O_2 \\rightarrow 2CuO}$. The masses of CuO formed are:\n(A) Cu 4.0 g -> CuO 5.0 g\n(B) Cu 8.0 g -> CuO 10.0 g\n(C) Cu 12.0 g -> CuO 10.0 g\nThe law of definite proportions holds under the same conditions. In the same container, 14.0 g of Cu and 4.0 g of $\\mathrm{O_2}$ are reacted until one reactant is used up. Which result is correct?",
+   "options": {
+    "a": "$\\mathrm{CuO}$ 17.5 g formed, $\\mathrm{O_2}$ 0.5 g left over",
+    "b": "$\\mathrm{CuO}$ 18.0 g formed, nothing left over",
+    "c": "$\\mathrm{CuO}$ 17.5 g formed, Cu 0.5 g left over",
+    "d": "$\\mathrm{CuO}$ 20.0 g formed, no $\\mathrm{O_2}$ left, Cu left over"
+   },
+   "hints": [
+    "In (C), where Cu is in excess, the 10.0 g of CuO contains all 2.0 g of O from the container, so find the Cu:O mass ratio, then check which reactant runs short. Mass of product = Cu reacted + O reacted.",
+    "(C): CuO 10.0 g = Cu 8.0 g + O 2.0 g, so Cu:O = 4:1. O needed for 14.0 g Cu is $14.0 \\times \\frac{1}{4} = 3.5$ g < 4.0 g, so Cu is the limiting reactant."
+   ],
+   "explanation": "Step 1: In (C), adding more Cu does not raise CuO above 10.0 g, so all 2.0 g of $\\mathrm{O_2}$ reacted: CuO 10.0 g = Cu 8.0 g + O 2.0 g, i.e. Cu:O = 4:1. (Check: in (A) Cu 4.0 g + O 1.0 g = 5.0 g with O left over; in (B) Cu 8.0 g + O 2.0 g = 10.0 g exactly; in (C) 4.0 g Cu is left over.)\nStep 2: O needed for 14.0 g Cu = $14.0 \\times \\frac{1}{4} = 3.5$ g. Since 4.0 g of $\\mathrm{O_2}$ is supplied, all the Cu reacts and $4.0-3.5=0.5$ g of $\\mathrm{O_2}$ remains.\nStep 3: CuO formed = 14.0 + 3.5 = 17.5 g (Cu:O:CuO = 4:1:5).\nAnswer: a (CuO 17.5 g, $\\mathrm{O_2}$ 0.5 g left). (Wrong options: 18.0 g adds the unreacted O; 20.0 g is computed from 4.0 g O ignoring that Cu runs out.)"
+  },
+  "chemistry-killer-02": {
+   "prompt": "At constant temperature and pressure, hydrogen ($\\mathrm{H_2}$) reacts with oxygen ($\\mathrm{O_2}$) to form water vapor ($\\mathrm{H_2O}$(g)). Different gas mixtures were reacted completely and the total gas volume was measured at the same temperature and pressure (all water is gaseous).\n(A) $\\mathrm{H_2}$ 30 mL + $\\mathrm{O_2}$ 20 mL -> total 35 mL after reaction\n(B) $\\mathrm{H_2}$ 20 mL + $\\mathrm{O_2}$ 20 mL -> total 30 mL after reaction\nA 60 mL mixture of $\\mathrm{H_2}$ and $\\mathrm{O_2}$ was reacted completely at the same temperature and pressure. The total volume after reaction was 45 mL and the only gas left over was $\\mathrm{O_2}$ (no $\\mathrm{H_2}$ left). Which pair correctly gives the volume of $\\mathrm{H_2}$ before reaction and the volume of $\\mathrm{O_2}$ left after reaction, in that order?",
+   "options": {
+    "a": "40 mL, 20 mL",
+    "b": "30 mL, 15 mL",
+    "c": "20 mL, 30 mL",
+    "d": "45 mL, 15 mL"
+   },
+   "hints": [
+    "In $\\mathrm{2H_2 + O_2 \\rightarrow 2H_2O(g)}$, 3 volumes of gas become 2 volumes, so the decrease in volume equals the volume of $\\mathrm{O_2}$ that reacted.",
+    "Decrease = 60 - 45 = 15 mL = $\\mathrm{O_2}$ reacted. All the $\\mathrm{H_2}$ reacted, so $\\mathrm{H_2}$ = 15 x 2 = 30 mL and $\\mathrm{H_2O(g)}$ formed = 30 mL."
+   ],
+   "explanation": "Step 1: From (A) and (B) the volume ratio. (B): 20 mL of H2 reacts with 10 mL of O2 to give 20 mL of H2O, 10 mL of O2 left, total 30 mL. (A): 30 mL of H2 reacts with 15 mL of O2 to give 30 mL of H2O, 5 mL of O2 left, total 35 mL. So $\\mathrm{H_2:O_2:H_2O(g)} = 2:1:2$.\nStep 2: Volume falls from 60 mL to 45 mL, a decrease of 15 mL. Each reaction of 3 volumes into 2 loses 1 volume, equal to the O2 volume reacted, so O2 reacted = 15 mL.\nStep 3: No H2 is left, so H2 reacted = 15 x 2 = 30 mL, H2O(g) = 30 mL. Total after = 45 mL, so O2 left = 45 - 30 = 15 mL. Initial O2 = 15 + 15 = 30 mL, and 30 + 30 = 60 mL checks out.\nAnswer: 30 mL, 15 mL (b)."
+  },
+  "chemistry-killer-03": {
+   "prompt": "14 g of nitrogen ($\\mathrm{N_2}$) and 4 g of hydrogen ($\\mathrm{H_2}$) are reacted completely in a vessel to form ammonia ($\\mathrm{NH_3}$). The reaction is $\\mathrm{N_2 + 3H_2 \\rightarrow 2NH_3}$, with atomic masses H = 1, N = 14, and it proceeds until one reactant is used up. Which pair correctly gives the mass (g) of $\\mathrm{NH_3}$ formed and the volume of all gas in the vessel after the reaction, converted to standard temperature and pressure (STP, 1 mol = 22.4 L), in that order?",
+   "options": {
+    "a": "17 g, 22.4 L",
+    "b": "34 g, 44.8 L",
+    "c": "17 g, 33.6 L",
+    "d": "8.5 g, 22.4 L"
+   },
+   "hints": [
+    "Find the moles of each substance and compare each divided by its coefficient to find the limiting reactant. Gas after reaction = $\\mathrm{NH_3}$ formed + $\\mathrm{H_2}$ left.",
+    "$\\mathrm{N_2}$ = 14/28 = 0.5 mol, $\\mathrm{H_2}$ = 4/2 = 2 mol. 0.5/1 = 0.5 < 2/3 ≈ 0.67, so $\\mathrm{N_2}$ is limiting and $\\mathrm{NH_3}$ = 0.5 x 2 = 1 mol."
+   ],
+   "explanation": "Step 1: Moles. $\\mathrm{N_2}$ 14 g / 28 g/mol = 0.5 mol; $\\mathrm{H_2}$ 4 g / 2 g/mol = 2 mol.\nStep 2: Divide by coefficients. $\\mathrm{N_2}$: 0.5/1 = 0.5; $\\mathrm{H_2}$: 2/3 ≈ 0.67. The smaller value belongs to $\\mathrm{N_2}$, the limiting reactant.\nStep 3: 0.5 mol $\\mathrm{N_2}$ reacts with 1.5 mol $\\mathrm{H_2}$ to give 1.0 mol $\\mathrm{NH_3}$. Mass = 1.0 x 17 = 17 g. $\\mathrm{H_2}$ left = 2 - 1.5 = 0.5 mol.\nStep 4: Total gas = 1.0 + 0.5 = 1.5 mol, volume at STP = 1.5 x 22.4 = 33.6 L.\nAnswer: 17 g, 33.6 L (c). (Wrong options: 22.4 L ignores the leftover H2; 34 g mixes up the mole counts and coefficients; 8.5 g treats N2:NH3 as 1:1.)"
+  },
+  "chemistry-killer-04": {
+   "prompt": "At 25 °C, $v$ mL of $\\mathrm{HCl(aq)}$ of unknown concentration is added to 50 mL of 1.0 M $\\mathrm{NaOH(aq)}$, and the maximum temperature of the mixture is measured. Both solutions are at 20.0 °C before mixing.\nVolume of HCl, $v$ (mL): 0 / 10 / 25 / 40 / 50\nMaximum temperature after mixing (°C): 20.0 / 24.5 / 29.0 / 27.5 / 26.75\nAssume the mixture has density 1.0 g/mL and specific heat 4.0 J/(g·°C), the volumes are additive, and no heat is lost. The reaction is $\\mathrm{H^+ + OH^- \\rightarrow H_2O}$. Which pair correctly gives the concentration of HCl(aq) and the heat of neutralization (heat released per 1 mol of water formed, kJ/mol), in that order?",
+   "options": {
+    "a": "1.0 M, 54 kJ/mol",
+    "b": "2.0 M, 36 kJ/mol",
+    "c": "2.0 M, 108 kJ/mol",
+    "d": "2.0 M, 54 kJ/mol"
+   },
+   "hints": [
+    "The temperature peak is exactly the neutralization point: $M_{\\mathrm{HCl}}V_{\\mathrm{HCl}} = M_{\\mathrm{NaOH}}V_{\\mathrm{NaOH}}$. Heat released $Q = mc\\Delta T$; heat of neutralization = $Q$ / moles of water formed.",
+    "At $v$ = 25 mL: $M \\times 25 = 1.0 \\times 50$, so M = 2.0 M. Then $Q = (75\\,\\mathrm{g}) \\times 4.0 \\times (29.0-20.0) = 2700$ J = 2.7 kJ, forming 0.050 mol of water."
+   ],
+   "explanation": "Step 1: The temperature rises with $v$, peaks at 29.0 °C at 25 mL, then falls as unreacted solution accumulates (and the total volume grows). So at 25 mL, H+ and OH- react exactly.\nStep 2: NaOH = 1.0 M x 0.050 L = 0.050 mol reacts 1:1 with HCl, so 0.050 mol HCl is in 25 mL: 0.050 / 0.025 = 2.0 M.\nStep 3: Q = mc$\\Delta$T = (50 + 25 mL x 1.0 g/mL) x 4.0 x 9.0 = 75 x 4.0 x 9.0 = 2700 J.\nStep 4: Heat of neutralization = 2700 J / 0.050 mol = 54000 J/mol = 54 kJ/mol.\nCheck: at $v$ = 10 mL, 0.020 mol H+ reacts, $\\Delta$T = 0.020 x 54000 / (60 x 4.0) = 4.5, so 24.5 °C. At 40 mL, 0.050 mol OH- reacts, $\\Delta$T = 2700 / (90 x 4.0) = 7.5, so 27.5 °C.\nAnswer: 2.0 M, 54 kJ/mol (d). (Wrong options: 36 kJ/mol uses a 50 g mass; 108 kJ/mol uses 0.025 mol of water.)"
+  },
+  "chemistry-killer-05": {
+   "prompt": "0.1 M $\\mathrm{NaOH(aq)}$ is added to 50 mL of 0.2 M $\\mathrm{HCl(aq)}$, and the total number of ions (mmol) in the solution is recorded. Water is not counted as ions, and only $\\mathrm{H^+ + OH^- \\rightarrow H_2O}$ occurs.\nVolume of NaOH(aq) added (mL): 0 / 50 / 100\nTotal ions (mmol): 20 / 20 / 20\nWhen 150 mL of NaOH(aq) has been added, which pair correctly gives the number ratio $\\mathrm{Na^+ : Cl^- : OH^-}$ in the mixture and (total ions after mixing) / (total ions originally in the 50 mL of HCl(aq) plus the 150 mL of NaOH(aq)), in that order? (Ignore autoionization of water.)",
+   "options": {
+    "a": "3 : 2 : 1, 3/5",
+    "b": "3 : 2 : 3, 1",
+    "c": "3 : 2 : 1, 3/4",
+    "d": "3 : 2 : 1, 5/3"
+   },
+   "hints": [
+    "Net ions ($\\mathrm{H^+}$, $\\mathrm{OH^-}$) are consumed 1:1 to form water, while spectator ions ($\\mathrm{Na^+}$, $\\mathrm{Cl^-}$) keep their numbers. Number of ions = concentration x volume (mmol).",
+    "HCl 50 mL: $\\mathrm{H^+}$ = $\\mathrm{Cl^-}$ = 10 mmol. NaOH 150 mL: $\\mathrm{Na^+}$ = $\\mathrm{OH^-}$ = 15 mmol. $\\mathrm{OH^-}$ left = 15 - 10 = 5 mmol."
+   ],
+   "explanation": "Step 1: Reading the table. 0 mL: H+ 10 + Cl- 10 = 20. 50 mL: H+ 5, Cl- 10, Na+ 5 = 20. 100 mL: Cl- 10, Na+ 10 = 20 (neutralization point). Up to that point each H+ is replaced by a Na+, so the total stays constant.\nStep 2: At 150 mL the NaOH supplies Na+ 15 mmol and OH- 15 mmol. 10 mmol of OH- reacts with the 10 mmol of H+, leaving OH- 5 mmol. Ions: Na+ 15, Cl- 10, OH- 5, ratio 3 : 2 : 1, total 30 mmol.\nStep 3: Ions before mixing = (10 + 10) + (15 + 15) = 50 mmol. Ratio = 30/50 = 3/5.\nAnswer: 3 : 2 : 1, 3/5 (a). (Wrong options: OH- = 15 ignores neutralization; 5/3 inverts the ratio; 3/4 miscounts the ions before mixing as 40.)"
+  },
+  "chemistry-killer-06": {
+   "prompt": "The colour-change ranges of indicators are:\nMethyl orange: red at pH < 3.1, orange at 3.1 to 4.4, yellow at pH > 4.4\nBTB: yellow at pH < 6.0, green at 6.0 to 7.6, blue at pH > 7.6\nPhenolphthalein: colourless at pH < 8.3, pink at 8.3 to 10.0, red at pH > 10.0\nThree everyday aqueous solutions were tested with all three indicators.\n(A) Stomach-acid model solution: methyl orange red, BTB yellow, phenolphthalein colourless\n(B) Solution after an antacid was added and fully reacted: methyl orange yellow, BTB yellow, phenolphthalein colourless\n(C) Dilute sodium hydrogencarbonate solution: methyl orange yellow, BTB blue, phenolphthalein colourless\nIf the pH range satisfying all three indicator results is narrowed down as far as possible, which option correctly gives the pH ranges of (A), (B), (C) in order?",
+   "options": {
+    "a": "(A) 3.1 to 4.4, (B) 4.4 < pH < 6.0, (C) 7.6 < pH < 8.3",
+    "b": "(A) pH < 3.1, (B) 4.4 < pH < 6.0, (C) 7.6 < pH < 8.3",
+    "c": "(A) pH < 3.1, (B) 6.0 to 7.6, (C) 8.3 to 10.0",
+    "d": "(A) pH < 3.1, (B) pH < 6.0, (C) pH > 7.6"
+   },
+   "hints": [
+    "Take the intersection (common part) of the pH ranges given by each indicator result.",
+    "(A): methyl orange red gives pH < 3.1, which already satisfies BTB yellow (pH < 6.0) and phenolphthalein colourless (pH < 8.3), so pH < 3.1. (B): methyl orange yellow pH > 4.4 and BTB yellow pH < 6.0 give 4.4 < pH < 6.0."
+   ],
+   "explanation": "(A): methyl orange red pH < 3.1, BTB yellow pH < 6.0, phenolphthalein colourless pH < 8.3. Common range: pH < 3.1.\n(B): methyl orange yellow pH > 4.4, BTB yellow pH < 6.0, phenolphthalein colourless pH < 8.3. Common range: 4.4 < pH < 6.0.\n(C): methyl orange yellow pH > 4.4, BTB blue pH > 7.6, phenolphthalein colourless pH < 8.3. Common range: 7.6 < pH < 8.3.\nAnswer: (A) pH < 3.1, (B) 4.4 < pH < 6.0, (C) 7.6 < pH < 8.3 (b). (Wrong options: reading (A) as 3.1 to 4.4 confuses red with orange; reading (B) as 6.0 to 7.6 confuses BTB yellow with green; the last option uses only the BTB range and is not the narrowest.)"
+  },
+  "chemistry-killer-07": {
+   "prompt": "At standard temperature and pressure (STP, 0 °C, 1 atm; 1 mol of gas = 22.4 L), a gas mixture of methane ($\\mathrm{CH_4}$) and carbon dioxide ($\\mathrm{CO_2}$) has a volume of 11.2 L and a mass of 16.4 g. Atomic masses are H = 1, C = 12, O = 16, and Avogadro's number is $N_A$. How many atoms in total are in this mixture?",
+   "options": {
+    "a": "$1.5\\,N_A$",
+    "b": "$1.7\\,N_A$",
+    "c": "$1.9\\,N_A$",
+    "d": "$2.5\\,N_A$"
+   },
+   "hints": [
+    "Use total moles $n = V/22.4$ and the mass equation $16x + 44y = 16.4$ (x, y = moles of $\\mathrm{CH_4}$, $\\mathrm{CO_2}$). Atoms = (atoms per molecule) x moles x $N_A$.",
+    "x + y = 11.2/22.4 = 0.5 and 16x + 44y = 16.4 give x = 0.2 mol, y = 0.3 mol."
+   ],
+   "explanation": "Step 1: Total moles = 11.2 L / 22.4 L/mol = 0.5 mol, so x + y = 0.5.\nStep 2: Mass: 16x + 44y = 16.4. Substitute y = 0.5 - x: 16x + 22 - 44x = 16.4, so 28x = 5.6, x = 0.2, y = 0.3.\nStep 3: Atoms: $\\mathrm{CH_4}$ has 5 atoms per molecule, 0.2 x 5 = 1.0 mol; $\\mathrm{CO_2}$ has 3, 0.3 x 3 = 0.9 mol. Total 1.9 mol of atoms = $1.9\\,N_A$.\nAnswer: $1.9\\,N_A$ (c). (Wrong options: 1.5 assumes all CO2, 2.5 assumes all CH4, 1.7 counts only 4 atoms for CH4.)"
+  },
+  "chemistry-killer-08": {
+   "prompt": "A 20 % (by mass) aqueous sodium hydroxide solution ($\\mathrm{NaOH}$, formula mass 40) has a density of 1.2 g/mL. It is diluted with water to prepare 600 mL of 0.5 M NaOH(aq). What volume (mL) of the 20 % NaOH solution is needed? (Atomic masses H = 1, O = 16, Na = 23. Molarity $M = \\frac{10xd}{M_w}$, where x is the mass percent and d is the solution density in g/mL.)",
+   "options": {
+    "a": "60 mL",
+    "b": "5.0 mL",
+    "c": "72 mL",
+    "d": "50 mL"
+   },
+   "hints": [
+    "Find the molarity of the 20 % solution with $M = \\frac{10xd}{M_w}$, then use conservation of moles of solute on dilution ($M_1V_1 = M_2V_2$).",
+    "$M = \\frac{10 \\times 20 \\times 1.2}{40} = 6.0$ M. Solute needed = 0.5 x 0.600 = 0.30 mol, so $V_1 = 0.30/6.0 = 0.050$ L."
+   ],
+   "explanation": "Step 1: Molarity of 20 % NaOH: $M = \\frac{10 \\times 20 \\times 1.2}{40} = 6.0$ mol/L (1 L = 1200 g of solution containing 240 g NaOH = 6 mol).\nStep 2: Solute in the target solution = 0.5 mol/L x 0.600 L = 0.30 mol (12 g NaOH).\nStep 3: Moles of solute are unchanged on dilution: 6.0 x V = 0.30, V = 0.050 L = 50 mL. (Check: 12 g / 0.20 = 60 g of solution, 60 g / 1.2 g/mL = 50 mL.)\nAnswer: 50 mL (d). (Wrong options: 60 mL ignores density, giving M = 5.0; 72 mL multiplies 60 g by the density; 5.0 mL is a decimal-place error.)"
+  },
+  "chemistry-killer-09": {
+   "prompt": "At constant temperature and pressure, gases A and B react to form gas C in $\\mathrm{aA(g) + bB(g) \\rightarrow cC(g)}$. 20 mL of A and 60 mL of B react exactly to give 40 mL of C. The molecular mass of A is 28 and that of B is 2. A 100 mL mixture of A and B (average molecular mass 12.4) is reacted completely at the same temperature and pressure. How many times the density of the gas mixture before the reaction is the density of the gas mixture after the reaction?",
+   "options": {
+    "a": "$\\frac{5}{3}$",
+    "b": "$\\frac{3}{5}$",
+    "c": "1",
+    "d": "$\\frac{5}{4}$"
+   },
+   "hints": [
+    "At the same temperature and pressure, gas density is proportional to average molecular mass, and mass is conserved, so the density ratio is the inverse of the volume ratio. Use the average molecular mass to find the volumes of A and B.",
+    "28x + 2(100 - x) = 12.4 x 100 gives x = 40 mL (A) and B = 60 mL. With A:B:C = 1:3:2, all 60 mL of B reacts using 20 mL of A and forming 40 mL of C, leaving 20 mL of A, so the total after is 60 mL."
+   ],
+   "explanation": "Step 1: Volume ratio A:B:C = 20:60:40 = 1:3:2, i.e. $\\mathrm{A + 3B \\rightarrow 2C}$.\nStep 2: In the 100 mL mixture let A = x mL: (28x + 2(100 - x))/100 = 12.4, so 26x + 200 = 1240 and x = 40 mL. A = 40 mL, B = 60 mL.\nStep 3: All 60 mL of B reacts, using 20 mL of A and giving 40 mL of C. After the reaction: A 20 mL + C 40 mL = 60 mL.\nStep 4: Mass is conserved (check: before 40 x 28 + 60 x 2 = 1240; C has molecular mass (28 + 3 x 2)/2 = 17, after 20 x 28 + 40 x 17 = 1240). At the same T and P, density = mass/volume, so after/before = 100/60 = 5/3.\nAnswer: 5/3 (a). (Wrong options: 3/5 inverts the ratio; 1 uses mass conservation but ignores the volume change; 5/4 wrongly leaves 40 mL of A, giving a total of 80 mL.)"
+  },
+  "chemistry-killer-10": {
+   "prompt": "Consider the ammonia-synthesis equilibrium $\\mathrm{N_2(g) + 3H_2(g) \\rightleftharpoons 2NH_3(g)}$, $\\Delta H < 0$ (exothermic). Starting from equilibrium in a sealed vessel at constant temperature, each of the following changes is made separately and a new equilibrium is reached.\n(A) Keeping the temperature constant, the volume of the vessel is decreased.\n(B) Keeping the volume constant, the temperature is raised.\n(C) Keeping temperature and volume constant, unreactive Ar(g) is added.\n(D) Keeping temperature and total pressure constant, Ar(g) is added so that the volume increases.\n(E) Keeping temperature and volume constant, $\\mathrm{H_2(g)}$ is added.\nSelect all the cases in which the amount (mol) of $\\mathrm{NH_3}$ at the new equilibrium is greater than at the original equilibrium.",
+   "options": {
+    "a": "(A), (C), (E)",
+    "b": "(A), (E)",
+    "c": "(A), (B), (E)",
+    "d": "(A), (D), (E)"
+   },
+   "hints": [
+    "Le Chatelier's principle: the equilibrium shifts to reduce the change. Moles of gas go 4 -> 2, and the forward reaction is exothermic.",
+    "(A) pressure up: shifts to fewer moles (forward). (B) temperature up: shifts to the endothermic side (reverse). (C) constant V, Ar added: no concentration change, no shift. (D) constant P, Ar added: volume grows (partial pressures fall), shifts to more moles (reverse). (E) $\\mathrm{H_2}$ added: forward."
+   ],
+   "explanation": "Step 1: Gas moles go from 4 (reactants) to 2 (product). The forward reaction is exothermic.\nStep 2: (A) Decreasing volume raises pressure, so the equilibrium shifts toward fewer gas moles (forward) and NH3 increases.\n(B) Raising temperature favours the endothermic reverse reaction, so NH3 decreases.\n(C) At constant volume, adding Ar leaves the concentrations (partial pressures) of N2, H2, NH3 unchanged, so Q = K and nothing shifts; NH3 is unchanged.\n(D) At constant pressure, adding Ar expands the volume and lowers all reactant and product concentrations, so the equilibrium shifts to the side with more gas moles (reverse) and NH3 decreases.\n(E) Adding H2 makes Q < K, so the forward reaction proceeds and the amount of NH3 (mol) increases.\nStep 3: NH3 increases in (A) and (E).\nAnswer: (A), (E) (b)."
+  },
+  "chemistry-killer-11": {
+   "prompt": "For $\\mathrm{N_2O_4(g) \\rightleftharpoons 2NO_2(g)}$, the equilibrium constant in concentrations is $K = 0.4$ (units omitted) at a certain temperature. At this temperature, $\\mathrm{N_2O_4}$ and $\\mathrm{NO_2}$ are placed in three vessels and left for a long time.\n(A) Volume 2.0 L, $\\mathrm{N_2O_4}$ 0.4 mol, $\\mathrm{NO_2}$ 0.4 mol\n(B) Volume 0.5 L, $\\mathrm{N_2O_4}$ 0.1 mol, $\\mathrm{NO_2}$ 0.2 mol\n(C) Volume 2.0 L, $\\mathrm{N_2O_4}$ 0.2 mol, $\\mathrm{NO_2}$ 0.4 mol\nComparing the reaction quotient $Q$ with $K$, which option correctly gives the direction of net reaction in each vessel on the way to equilibrium?",
+   "options": {
+    "a": "(A) at equilibrium, (B) at equilibrium, (C) reverse reaction",
+    "b": "(A) forward reaction, (B) forward reaction, (C) at equilibrium",
+    "c": "(A) forward reaction, (B) reverse reaction, (C) at equilibrium",
+    "d": "(A) reverse reaction, (B) forward reaction, (C) at equilibrium"
+   },
+   "hints": [
+    "Substitute molar concentrations (mol/L, not moles) into $Q = \\frac{[\\mathrm{NO_2}]^2}{[\\mathrm{N_2O_4}]}$. Q < K: forward; Q > K: reverse; Q = K: equilibrium.",
+    "(A) [N2O4] = 0.2, [NO2] = 0.2, Q = 0.04/0.2 = 0.2. (B) [N2O4] = 0.2, [NO2] = 0.4, Q = 0.16/0.2 = 0.8. (C) [N2O4] = 0.1, [NO2] = 0.2, Q = 0.04/0.1 = 0.4."
+   ],
+   "explanation": "Step 1: Concentrations. (A) 2.0 L: [N2O4] = 0.4/2.0 = 0.2 M, [NO2] = 0.2 M. (B) 0.5 L: [N2O4] = 0.1/0.5 = 0.2 M, [NO2] = 0.2/0.5 = 0.4 M. (C) 2.0 L: [N2O4] = 0.1 M, [NO2] = 0.2 M.\nStep 2: Q. (A) Q = 0.2^2/0.2 = 0.2 < 0.4, forward. (B) Q = 0.4^2/0.2 = 0.8 > 0.4, reverse. (C) Q = 0.2^2/0.1 = 0.4 = K, equilibrium.\nAnswer: (A) forward, (B) reverse, (C) equilibrium (c). (Wrong options: using moles instead of concentrations gives Q = 0.4^2/0.4 = 0.4 for (A) and 0.2^2/0.1 = 0.4 for (B), so both look like equilibrium.)"
+  },
+  "chemistry-killer-12": {
+   "prompt": "At 25 °C the $\\mathrm{p}K_a$ of acetic acid ($\\mathrm{CH_3COOH}$) is 4.7. A buffer is made by mixing 100 mL of 0.20 M $\\mathrm{CH_3COOH}$ with 100 mL of 0.10 M $\\mathrm{CH_3COONa}$. Then 10 mL of 1.0 M $\\mathrm{NaOH(aq)}$ is added. What is the pH of the solution? (Changes in concentration due to volume change do not affect the ratio calculation; use $\\log 2 = 0.30$. The NaOH reacts completely with acetic acid.)",
+   "options": {
+    "a": "4.7",
+    "b": "5.3",
+    "c": "4.4",
+    "d": "5.0"
+   },
+   "hints": [
+    "Use the Henderson-Hasselbalch equation $\\mathrm{pH = p}K_a + \\log\\frac{[\\mathrm{A^-}]}{[\\mathrm{HA}]}$ after first finding the change in moles from $\\mathrm{OH^- + HA \\rightarrow A^- + H_2O}$.",
+    "Initially HA = 0.20 x 0.100 = 20 mmol and A⁻ = 0.10 x 0.100 = 10 mmol. Adding 10 mmol NaOH gives HA = 10 mmol and A⁻ = 20 mmol, so [A⁻]/[HA] = 2."
+   ],
+   "explanation": "Step 1: Initial moles: HA = 20 mmol, A⁻ = 10 mmol (initial pH = 4.7 + log 0.5 = 4.7 - 0.30 = 4.4).\nStep 2: NaOH = 1.0 M x 10 mL = 10 mmol. In $\\mathrm{OH^- + HA \\rightarrow A^- + H_2O}$, HA falls by 10 mmol and A⁻ rises by 10 mmol: HA = 10 mmol, A⁻ = 20 mmol.\nStep 3: Both are in the same solution, so the concentration ratio equals the mole ratio = 2. pH = 4.7 + log 2 = 4.7 + 0.30 = 5.0.\nAnswer: 5.0 (d). (Wrong options: 4.4 is the pH before NaOH was added; 4.7 wrongly takes HA = A⁻; 5.3 uses a ratio of 4.)"
+  }
+ }
+}

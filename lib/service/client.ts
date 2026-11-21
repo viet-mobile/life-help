@@ -1,6 +1,7 @@
 "use client";
 
-import type { SvcHelper, SvcMessage, SvcNotification, SvcRequest, SvcEvent } from "./clientTypes";
+import type { SvcHelper, SvcMessage, SvcNotification, SvcRequest, SvcEvent, HelperPushSettings } from "./clientTypes";
+export type { HelperPushSettings };
 import type { ServicePaymentRecord, HelperEarningsSummary, AdminRevenueSummary } from "./paymentSettlement";
 
 export class ApiError extends Error {
@@ -67,6 +68,14 @@ export const helperApi = {
   requests: () => call<{ available: SvcRequest[]; mine: SvcRequest[] }>("GET", "/h/requests"),
   act: (id: string, action: "accept" | "start" | "complete") => call<{ request: SvcRequest }>("POST", `/h/requests/${id}/${action}`, {}).then((r) => r.request),
   notifications: (after: number) => call<{ notifications: SvcNotification[] }>("GET", `/h/notifications?after=${after}`).then((r) => r.notifications),
+  getPushSettings: () => call<{ settings: HelperPushSettings }>("GET", "/h/push/settings").then((r) => r.settings),
+  updatePushSettings: (patch: Partial<HelperPushSettings>) =>
+    call<{ settings: HelperPushSettings }>("POST", "/h/push/settings", patch).then((r) => r.settings),
+  registerPush: (input: { endpoint: string; p256dh: string; auth: string; userAgent?: string }) =>
+    call<{ ok: boolean }>("POST", "/h/push/subscribe", input),
+  unregisterPush: (endpoint: string) =>
+    call<{ ok: boolean }>("POST", "/h/push/unsubscribe", { endpoint }),
+  testPush: () => call<{ ok: boolean; dispatched: number }>("POST", "/h/push/test", {}),
 };
 
 export const adminApi = {

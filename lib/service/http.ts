@@ -206,6 +206,26 @@ export function createServiceHandler(deps: HttpDeps) {
         }
         if (route === "/h/me" && method === "PATCH") return json({ helper: await core.updateHelperProfile(cred, await readBody(request)) });
         if (route === "/h/available" && method === "POST") return json({ helper: await core.setAvailable(cred, (await readBody(request)).available === true) });
+        if (route === "/h/push/settings") {
+          if (method === "GET") return json({ settings: await core.getHelperPushSettings(cred) });
+          if (method === "POST" || method === "PATCH") return json({ settings: await core.updateHelperPushSettings(cred, await readBody(request)) });
+        }
+        if (route === "/h/push/subscribe" && method === "POST") {
+          const body = await readBody(request);
+          return json(await core.registerPushSubscription(cred, {
+            endpoint: String(body.endpoint || ""),
+            p256dh: String(body.p256dh || ""),
+            auth: String(body.auth || ""),
+            userAgent: body.userAgent ? String(body.userAgent) : undefined,
+          }));
+        }
+        if (route === "/h/push/unsubscribe" && method === "POST") {
+          const body = await readBody(request);
+          return json(await core.unregisterPushSubscription(cred, String(body.endpoint || "")));
+        }
+        if (route === "/h/push/test" && method === "POST") {
+          return json(await core.testPushNotification(cred));
+        }
         if (route === "/h/earnings" && method === "GET") {
           const me = cred ? await core.helperMe(cred).catch(() => null) : null;
           return json({ earnings: getPaymentSummaryForHelper(me?.id) });

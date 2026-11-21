@@ -40,7 +40,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "A high fever with chills" }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Check the customer's first line about their throat."],
+        hints: ["Check the customer's first line about their throat.", "Review the key statements in the dialogue carefully."],
         explanation: "The customer explicitly said: 'I have had a runny nose and a sore throat since yesterday morning.'",
         role: "core",
         status: "PUBLISHED"
@@ -84,7 +84,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Antibiotic ointment" }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Check the doctor's final diagnosis and treatment."],
+        hints: ["Check the doctor's final diagnosis and treatment.", "Review the key statements in the dialogue carefully."],
         explanation: "The doctor diagnosed acute indigestion and prescribed an antacid.",
         role: "core",
         status: "PUBLISHED"
@@ -128,7 +128,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Because the patient needs to rest for a whole month" }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Find the word 'drowsiness' in the dialogue."],
+        hints: ["Find the word 'drowsiness' in the dialogue.", "Review the key statements in the dialogue carefully."],
         explanation: "The pharmacist explicitly warned that the medicine causes drowsiness, which makes driving unsafe.",
         role: "core",
         status: "PUBLISHED"
@@ -173,7 +173,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Platform 5" }
         ],
         answer: { kind: "choice", id: "c" },
-        hints: ["Look at the agent's first reply."],
+        hints: ["Look at the agent's first reply.", "Review the key statements in the dialogue carefully."],
         explanation: "The agent said: 'The airport express departs from Platform 3 every twenty minutes.'",
         role: "core",
         status: "PUBLISHED"
@@ -217,7 +217,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "First class bed seat" }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Check the traveler's question about their seat preference."],
+        hints: ["Check the traveler's question about their seat preference.", "Review the key statements in the dialogue carefully."],
         explanation: "The traveler asked: 'Could I please request an aisle seat near the front?'",
         role: "core",
         status: "PUBLISHED"
@@ -261,7 +261,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Working at a construction site" }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Look at the visitor's first answer about 'exchange student'."],
+        hints: ["Look at the visitor's first answer about 'exchange student'.", "Review the key statements in the dialogue carefully."],
         explanation: "The visitor stated they are an exchange student studying at the university for one semester.",
         role: "core",
         status: "PUBLISHED"
@@ -307,7 +307,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Ten dollars" }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Check the cashier's reply to the customer's question."],
+        hints: ["Check the cashier's reply to the customer's question.", "Review the key statements in the dialogue carefully."],
         explanation: "The cashier stated: 'It's two dollars and fifty cents.'",
         role: "core",
         status: "PUBLISHED"
@@ -351,7 +351,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "A leather jacket in size XL" }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Check the shopper's opening question."],
+        hints: ["Check the shopper's opening question.", "Review the key statements in the dialogue carefully."],
         explanation: "The shopper asked for a navy hoodie in a medium size.",
         role: "core",
         status: "PUBLISHED"
@@ -395,7 +395,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "A free repair service" }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Look at the customer's final sentence."],
+        hints: ["Look at the customer's final sentence.", "Review the key statements in the dialogue carefully."],
         explanation: "The customer said: 'I'd prefer a full refund to my card, please.'",
         role: "core",
         status: "PUBLISHED"
@@ -440,7 +440,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Because the teacher collected all pencils" }
         ],
         answer: { kind: "choice", id: "a" },
-        hints: ["Check Emma's first sentence."],
+        hints: ["Check Emma's first sentence.", "Review the key statements in the dialogue carefully."],
         explanation: "Emma explained: 'could I borrow an extra pencil? Mine broke.'",
         role: "core",
         status: "PUBLISHED"
@@ -483,7 +483,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Next month after vacation" }
         ],
         answer: { kind: "choice", id: "c" },
-        hints: ["Look at the teacher's final statement."],
+        hints: ["Look at the teacher's final statement.", "Review the key statements in the dialogue carefully."],
         explanation: "The teacher said: 'It is due this coming Friday by 3 PM in the classroom dropbox.'",
         role: "core",
         status: "PUBLISHED"
@@ -526,7 +526,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Grading other student essays" }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Look at B's reply to assigning sections."],
+        hints: ["Look at B's reply to assigning sections.", "Review the key statements in the dialogue carefully."],
         explanation: "Team member B said: 'I can collect maps and research the Silk Road trading goods.'",
         role: "core",
         status: "PUBLISHED"
@@ -571,7 +571,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Free cotton candy coupon" }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Look at the cashier's last sentence."],
+        hints: ["Look at the cashier's last sentence.", "Review the key statements in the dialogue carefully."],
         explanation: "The cashier stated: 'That qualifies you for our 25% youth discount.'",
         role: "core",
         status: "PUBLISHED"
@@ -615,7 +615,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Mail them home via express post" }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Check the attendant's instructions about loose articles."],
+        hints: ["Check the attendant's instructions about loose articles.", "Review the key statements in the dialogue carefully."],
         explanation: "The ride attendant stated that all loose articles must be deposited in complimentary lockers for safety.",
         role: "core",
         status: "PUBLISHED"
@@ -658,7 +658,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Outside the park subway station" }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Check the guide's final sentence about stalls 3 and 4."],
+        hints: ["Check the guide's final sentence about stalls 3 and 4.", "Review the key statements in the dialogue carefully."],
         explanation: "The park guide explained that stalls 3 and 4 in the food hall specialize in salads and nut-free sandwiches.",
         role: "core",
         status: "PUBLISHED"
@@ -703,7 +703,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Seafood soup and fried rice" }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Look at the diner's first reply."],
+        hints: ["Look at the diner's first reply.", "Review the key statements in the dialogue carefully."],
         explanation: "The diner ordered: 'a grilled chicken salad and a tomato pasta, please.'",
         role: "core",
         status: "PUBLISHED"
@@ -746,7 +746,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "With sweetened whipped cream" }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Check the guest's second request to the server."],
+        hints: ["Check the guest's second request to the server.", "Review the key statements in the dialogue carefully."],
         explanation: "The guest asked: 'Could we get the sauce with less salt and extra basil?'",
         role: "core",
         status: "PUBLISHED"
@@ -790,7 +790,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Forty-five dollars" }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Divide the total  by two."],
+        hints: ["Divide the total  by two.", "Review the key statements in the dialogue carefully."],
         explanation: "The server stated: 'The total is sixty dollars, so that will be thirty dollars each.'",
         role: "core",
         status: "PUBLISHED"
@@ -835,7 +835,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Ignoring the invitation card entirely" }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Look at colleague B's reply: 'I would not miss it for the world.'"],
+        hints: ["Look at colleague B's reply: 'I would not miss it for the world.'", "Review the key statements in the dialogue carefully."],
         explanation: "Colleague B enthusiastically congratulated the groom and promised not to miss the celebration.",
         role: "core",
         status: "PUBLISHED"
@@ -878,7 +878,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Two hours" }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Check the usher's final sentence."],
+        hints: ["Check the usher's final sentence.", "Review the key statements in the dialogue carefully."],
         explanation: "The usher stated: 'The ceremony begins in twenty minutes.'",
         role: "core",
         status: "PUBLISHED"
@@ -921,7 +921,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Moving to a different foreign country next week" }
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Check guest A's heartfelt wishes in the third turn."],
+        hints: ["Check guest A's heartfelt wishes in the third turn.", "Review the key statements in the dialogue carefully."],
         explanation: "Guest A wished: 'May your marriage be blessed with lifelong companionship, mutual respect, and abundant joy.'",
         role: "core",
         status: "PUBLISHED"
@@ -965,7 +965,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Only at noon" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Check the front desk agent's last line about the morning buffet."],
+        hints: ["Check the front desk agent's last line about the morning buffet.", "Review the key statements in the dialogue carefully."],
         explanation: "The front desk agent stated that breakfast buffet is served on the second floor from 6:30 to 10:00 AM.",
         role: "core",
         status: "PUBLISHED"
@@ -1008,7 +1008,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Checkout must be completed before 10 AM." },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Look at the agent's confirmation in the final response."],
+        hints: ["Look at the agent's confirmation in the final response.", "Review the key statements in the dialogue carefully."],
         explanation: "The front desk agent confirmed that checkout could be extended until 1 PM without additional charge.",
         role: "core",
         status: "PUBLISHED"
@@ -1051,7 +1051,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "It has already left" },
         ],
         answer: { kind: "choice", id: "a" },
-        hints: ["Look at the agent's final sentence about the shuttle."],
+        hints: ["Look at the agent's final sentence about the shuttle.", "Review the key statements in the dialogue carefully."],
         explanation: "The front desk agent informed the guest that the airport express shuttle would arrive in 15 minutes.",
         role: "core",
         status: "PUBLISHED"
@@ -1094,7 +1094,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Exit 9" },
         ],
         answer: { kind: "choice", id: "c" },
-        hints: ["Look at the attendant's directions in the last turn."],
+        hints: ["Look at the attendant's directions in the last turn.", "Review the key statements in the dialogue carefully."],
         explanation: "The station attendant explicitly advised taking Exit 4 on the right.",
         role: "core",
         status: "PUBLISHED"
@@ -1137,7 +1137,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "To pick up another passenger" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Review the driver's response about traffic conditions."],
+        hints: ["Review the driver's response about traffic conditions.", "Review the key statements in the dialogue carefully."],
         explanation: "The taxi driver explained that highway traffic was heavy, so taking Broadway would avoid delay.",
         role: "core",
         status: "PUBLISHED"
@@ -1180,7 +1180,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "The passenger volunteered to travel in cargo." },
         ],
         answer: { kind: "choice", id: "a" },
-        hints: ["Check the ticket agent's explanation about ticket type."],
+        hints: ["Check the ticket agent's explanation about ticket type.", "Review the key statements in the dialogue carefully."],
         explanation: "The ticket agent stated that because of the flexible fare ticket, modifications were completely complimentary.",
         role: "core",
         status: "PUBLISHED"
@@ -1223,7 +1223,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Because high bills are forbidden" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Look at the customer's explanation for requesting smaller twenties and tens."],
+        hints: ["Look at the customer's explanation for requesting smaller twenties and tens.", "Review the key statements in the dialogue carefully."],
         explanation: "The customer requested smaller twenties and tens specifically for tipping and small daily payments.",
         role: "core",
         status: "PUBLISHED"
@@ -1266,7 +1266,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "A gym membership receipt" },
         ],
         answer: { kind: "choice", id: "a" },
-        hints: ["Check the customer's response listing the three documents brought."],
+        hints: ["Check the customer's response listing the three documents brought.", "Review the key statements in the dialogue carefully."],
         explanation: "The customer specifically brought a utility bill displaying the apartment address as proof of address.",
         role: "core",
         status: "PUBLISHED"
@@ -1309,7 +1309,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "At the end of the semester" },
         ],
         answer: { kind: "choice", id: "a" },
-        hints: ["Review the wire specialist's final confirmation."],
+        hints: ["Review the wire specialist's final confirmation.", "Review the key statements in the dialogue carefully."],
         explanation: "The wire specialist stated that funds should credit to the university account within two business days.",
         role: "core",
         status: "PUBLISHED"
@@ -1352,7 +1352,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Behind the stamp" },
         ],
         answer: { kind: "choice", id: "a" },
-        hints: ["Look at the clerk's final sentence about the receipt."],
+        hints: ["Look at the clerk's final sentence about the receipt.", "Review the key statements in the dialogue carefully."],
         explanation: "The postal clerk explained that the tracking number is printed right on the customer receipt.",
         role: "core",
         status: "PUBLISHED"
@@ -1395,7 +1395,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Return to Sender" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Check the clerk's instruction about protecting fragile ceramic goods."],
+        hints: ["Check the clerk's instruction about protecting fragile ceramic goods.", "Review the key statements in the dialogue carefully."],
         explanation: "The clerk instructed the customer to stick a bright red 'FRAGILE' label on top of the box.",
         role: "core",
         status: "PUBLISHED"
@@ -1438,7 +1438,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Plastic pencil cases" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Look at the clerk's warning regarding aviation prohibited items."],
+        hints: ["Look at the clerk's warning regarding aviation prohibited items.", "Review the key statements in the dialogue carefully."],
         explanation: "The clerk explicitly warned that loose lithium batteries and aerosols are strictly restricted on cargo aircraft.",
         role: "core",
         status: "PUBLISHED"
@@ -1481,7 +1481,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Full purchase price of the apartment" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Review the leasing agent's explanation of terms."],
+        hints: ["Review the leasing agent's explanation of terms.", "Review the key statements in the dialogue carefully."],
         explanation: "The leasing agent stated that the apartment requires a standard 12-month lease with one month of security deposit.",
         role: "core",
         status: "PUBLISHED"
@@ -1524,7 +1524,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "The neighbors upstairs" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Look at the landlord's closing commitment."],
+        hints: ["Look at the landlord's closing commitment.", "Review the key statements in the dialogue carefully."],
         explanation: "The landlord confirmed: 'As landlord, I will cover all repair expenses.'",
         role: "core",
         status: "PUBLISHED"
@@ -1567,7 +1567,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "It will be withheld permanently" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Review the property manager's final statement regarding deposit payment."],
+        hints: ["Review the property manager's final statement regarding deposit payment.", "Review the key statements in the dialogue carefully."],
         explanation: "The property manager stated that the complete security deposit will be refunded by direct wire transfer within 72 hours.",
         role: "core",
         status: "PUBLISHED"
@@ -1610,7 +1610,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "A gym brochure" },
         ],
         answer: { kind: "choice", id: "a" },
-        hints: ["Check the resident's response handing over documents."],
+        hints: ["Check the resident's response handing over documents.", "Review the key statements in the dialogue carefully."],
         explanation: "The resident provided a driver license and an apartment lease agreement to verify their new address.",
         role: "core",
         status: "PUBLISHED"
@@ -1653,7 +1653,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "It was rejected completely" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Check the immigration officer's final decision."],
+        hints: ["Check the immigration officer's final decision.", "Review the key statements in the dialogue carefully."],
         explanation: "The immigration officer explicitly announced that the extension is granted for three additional years.",
         role: "core",
         status: "PUBLISHED"
@@ -1696,7 +1696,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Because it is the only option in Spanish" },
         ],
         answer: { kind: "choice", id: "a" },
-        hints: ["Look at the civic assistant's reasoning regarding financial lenders."],
+        hints: ["Look at the civic assistant's reasoning regarding financial lenders.", "Review the key statements in the dialogue carefully."],
         explanation: "The assistant explained that financial lenders require the digitally stamped watermark seal for official validation.",
         role: "core",
         status: "PUBLISHED"
@@ -1739,7 +1739,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Cafeteria chef" },
         ],
         answer: { kind: "choice", id: "a" },
-        hints: ["Look at the team lead's opening introduction sentence."],
+        hints: ["Look at the team lead's opening introduction sentence.", "Review the key statements in the dialogue carefully."],
         explanation: "The team lead introduced Marcus as the new product designer.",
         role: "core",
         status: "PUBLISHED"
@@ -1782,7 +1782,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Immediately this morning" },
         ],
         answer: { kind: "choice", id: "a" },
-        hints: ["Look at the lead engineer's final sentence about the schedule."],
+        hints: ["Look at the lead engineer's final sentence about the schedule.", "Review the key statements in the dialogue carefully."],
         explanation: "The lead engineer confirmed that code freeze will be locked by Wednesday midnight.",
         role: "core",
         status: "PUBLISHED"
@@ -1825,7 +1825,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Extending the deadline by six months" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Review the Director of Infrastructure's negotiation offer."],
+        hints: ["Review the Director of Infrastructure's negotiation offer.", "Review the key statements in the dialogue carefully."],
         explanation: "The Director offered to commit two senior backend developers to assist the sprint in exchange for adjusting the date to the 18th.",
         role: "core",
         status: "PUBLISHED"
@@ -1868,7 +1868,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Dyed bright green" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Look at the client's final instruction regarding front bangs."],
+        hints: ["Look at the client's final instruction regarding front bangs.", "Review the key statements in the dialogue carefully."],
         explanation: "The client requested to keep the front bangs long enough to tuck behind the ears.",
         role: "core",
         status: "PUBLISHED"
@@ -1912,7 +1912,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Behind the knees" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Look at the client's request regarding head acupressure."],
+        hints: ["Look at the client's request regarding head acupressure.", "Review the key statements in the dialogue carefully."],
         explanation: "The client specifically asked to massage around the temples a little firmer.",
         role: "core",
         status: "PUBLISHED"
@@ -1955,7 +1955,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Shave the head bald" },
         ],
         answer: { kind: "choice", id: "a" },
-        hints: ["Review the colorist's advice for swimmers."],
+        hints: ["Review the colorist's advice for swimmers.", "Review the key statements in the dialogue carefully."],
         explanation: "The colorist advised rinsing hair with fresh tap water before entering the pool so strands absorb clean water first.",
         role: "core",
         status: "PUBLISHED"
@@ -1998,7 +1998,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "A golden diamond ring" },
         ],
         answer: { kind: "choice", id: "a" },
-        hints: ["Look at the commuter's description of the umbrella handle."],
+        hints: ["Look at the commuter's description of the umbrella handle.", "Review the key statements in the dialogue carefully."],
         explanation: "The commuter described a wooden handle with a silver keychain attached.",
         role: "core",
         status: "PUBLISHED"
@@ -2041,7 +2041,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Ignore the cards completely" },
         ],
         answer: { kind: "choice", id: "a" },
-        hints: ["Review the officer's advice to protect against fraud."],
+        hints: ["Review the officer's advice to protect against fraud.", "Review the key statements in the dialogue carefully."],
         explanation: "The information officer instructed the visitor to use the hotline telephone to freeze those bank cards immediately.",
         role: "core",
         status: "PUBLISHED"
@@ -2084,7 +2084,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "By paying a large cash reward" },
         ],
         answer: { kind: "choice", id: "a" },
-        hints: ["Check the verification steps performed by the passenger."],
+        hints: ["Check the verification steps performed by the passenger.", "Review the key statements in the dialogue carefully."],
         explanation: "The passenger entered the correct PIN to unlock the device and presented a government passport matching the details.",
         role: "core",
         status: "PUBLISHED"
@@ -2127,7 +2127,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Complimentary running shoes" },
         ],
         answer: { kind: "choice", id: "a" },
-        hints: ["Look at the gym manager's response about amenities."],
+        hints: ["Look at the gym manager's response about amenities.", "Review the key statements in the dialogue carefully."],
         explanation: "The gym manager clarified that daily lockers and showers are free of charge.",
         role: "core",
         status: "PUBLISHED"
@@ -2170,7 +2170,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "It calls an international flight" },
         ],
         answer: { kind: "choice", id: "a" },
-        hints: ["Review the coach's safety explanation regarding the magnetic cord."],
+        hints: ["Review the coach's safety explanation regarding the magnetic cord.", "Review the key statements in the dialogue carefully."],
         explanation: "The coach explained that if the runner slips, the magnetic safety cord disconnects and halts the motor immediately.",
         role: "core",
         status: "PUBLISHED"
@@ -2213,7 +2213,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Cancellations are never allowed" },
         ],
         answer: { kind: "choice", id: "a" },
-        hints: ["Check the coordinator's cancellation timeframe requirement."],
+        hints: ["Check the coordinator's cancellation timeframe requirement.", "Review the key statements in the dialogue carefully."],
         explanation: "The coordinator stated that members can cancel without losing credit as long as it is done at least four hours prior to class start.",
         role: "core",
         status: "PUBLISHED"
@@ -2256,7 +2256,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Ten years" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Look at the librarian's explanation of borrowing terms."],
+        hints: ["Look at the librarian's explanation of borrowing terms.", "Review the key statements in the dialogue carefully."],
         explanation: "The librarian explicitly stated that patrons can borrow books for a three-week loan period.",
         role: "core",
         status: "PUBLISHED"
@@ -2299,7 +2299,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "The outdoor cafeteria" },
         ],
         answer: { kind: "choice", id: "a" },
-        hints: ["Look at the museum docent's directions for starting the tour."],
+        hints: ["Look at the museum docent's directions for starting the tour.", "Review the key statements in the dialogue carefully."],
         explanation: "The docent advised heading up to Gallery A on the second floor (Ancient World) to begin the chronological tour.",
         role: "core",
         status: "PUBLISHED"
@@ -2342,7 +2342,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "To hide paintings inside" },
         ],
         answer: { kind: "choice", id: "a" },
-        hints: ["Review the gallery attendant's explanation on protecting artwork."],
+        hints: ["Review the gallery attendant's explanation on protecting artwork.", "Review the key statements in the dialogue carefully."],
         explanation: "The gallery attendant explained that storing bulky bags safeguards delicate artwork from accidental bumps and contact.",
         role: "core",
         status: "PUBLISHED"
@@ -2386,7 +2386,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Life insurance for pets only" },
         ],
         answer: { kind: "choice", id: "a" },
-        hints: ["Look at the rental agent's confirmation about insurance deductible."],
+        hints: ["Look at the rental agent's confirmation about insurance deductible.", "Review the key statements in the dialogue carefully."],
         explanation: "The rental agent confirmed that zero-deductible CDW and roadside assistance are fully bundled into the booking.",
         role: "core",
         status: "PUBLISHED"
@@ -2429,7 +2429,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Kerosene heater oil" },
         ],
         answer: { kind: "choice", id: "b" },
-        hints: ["Review the driver's response specifying fuel type."],
+        hints: ["Review the driver's response specifying fuel type.", "Review the key statements in the dialogue carefully."],
         explanation: "The driver explicitly asked to 'fill it up with regular unleaded 87 octane.'",
         role: "core",
         status: "PUBLISHED"
@@ -2472,7 +2472,7 @@ export const ENGLISH_SITUATIONAL_DIALOGUES: readonly SituationalDialogue[] = [
           { id: "d", text: "Airport parking ticket" },
         ],
         answer: { kind: "choice", id: "a" },
-        hints: ["Look at the return inspector's final settlement explanation."],
+        hints: ["Look at the return inspector's final settlement explanation.", "Review the key statements in the dialogue carefully."],
         explanation: "The inspector noted that vehicle condition was flawless and only $6.50 in automated highway tolls was billed on the final receipt.",
         role: "core",
         status: "PUBLISHED"

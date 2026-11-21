@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { useLocale } from "@/lib/i18n/LocaleContext";
-import { languages } from "@/messages/registry";
+import { languages, getSortedLanguages, formatLanguageName, type Locale } from "@/messages/registry";
 import { LegalDocument } from "./LegalDocument";
 import type { LegalKind } from "@/lib/legal/documents";
 import "./legal.css";
@@ -28,6 +28,11 @@ export function LegalPage({
       setSelectedLang(currentLocale);
     }
   }, [currentLocale]);
+
+  const activeLocale = (selectedLang || currentLocale || "ko") as Locale;
+  const sortedLanguages = useMemo(() => {
+    return getSortedLanguages(activeLocale);
+  }, [activeLocale]);
 
   // Order of display: Selected language first, followed by Korean governing text, then English reference
   const langs =
@@ -54,11 +59,12 @@ export function LegalPage({
             <select
               value={selectedLang}
               onChange={(e) => setSelectedLang(e.target.value)}
+              dir="ltr"
               className="rounded-lg border border-slate-300 bg-white px-2.5 py-1 text-xs font-bold text-slate-800 shadow-xs focus:border-blue-500 focus:outline-none cursor-pointer"
             >
-              {languages.map((meta) => (
-                <option key={meta.code} value={meta.code}>
-                  {meta.nativeName} ({meta.name})
+              {sortedLanguages.map((meta) => (
+                <option key={meta.code} value={meta.code} dir="ltr">
+                  {formatLanguageName(meta, activeLocale)}
                 </option>
               ))}
             </select>

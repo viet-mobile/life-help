@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { DailyInsight, DomainType, getInsightLocaleData, getDailyInsight } from "@/lib/learn/dailyInsights";
+import { studyUrl, StudySubject } from "@/lib/home/studyHosts";
+import type { Locale } from "@/messages/registry";
 import { useLocale } from "@/lib/i18n/LocaleContext";
 
 interface DailyInsightCardProps {
@@ -44,6 +46,22 @@ const DOMAIN_SLOGANS: Record<DomainType, { labelKo: string; labelEn: string; ico
     themeColor: "text-amber-700",
     bgSoft: "bg-amber-50/90",
     borderSoft: "border-amber-200",
+  },
+  physics: {
+    labelKo: "당신의 인생에 도움이 되는 물리",
+    labelEn: "Physics that helps your life",
+    icon: "🔬",
+    themeColor: "text-indigo-700",
+    bgSoft: "bg-indigo-50/90",
+    borderSoft: "border-indigo-200",
+  },
+  chemistry: {
+    labelKo: "당신의 인생에 도움이 되는 화학",
+    labelEn: "Chemistry that helps your life",
+    icon: "🧪",
+    themeColor: "text-teal-700",
+    bgSoft: "bg-teal-50/90",
+    borderSoft: "border-teal-200",
   },
 };
 

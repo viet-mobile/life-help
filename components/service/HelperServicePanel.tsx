@@ -4,7 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import { useHelper } from "@/lib/helper/HelperContext";
 import { useLocale } from "@/lib/i18n/LocaleContext";
 import { ApiError, helperApi, paymentApi } from "@/lib/service/client";
-import type { SvcRequest } from "@/lib/service/clientTypes";
+import type { SvcRequest, HelperPushSettings } from "@/lib/service/clientTypes";
 import type { HelperEarningsSummary } from "@/lib/service/paymentSettlement";
 import { usePoll } from "@/lib/service/usePoll";
 import { getService } from "@/lib/services";
@@ -28,6 +28,120 @@ export function HelperServicePanel() {
   const [busy, setBusy] = useState<string | null>(null);
   const cursor = useRef(0);
   const approved = serverHelper?.status === "APPROVED";
+  const [pushSettings, setPushSettings] = useState<HelperPushSettings | null>(null);
+  const [pushLoading, setPushLoading] = useState(false);
+  const [pushFeedback, setPushFeedback] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (approved) {
+      helperApi.getPushSettings().then(setPushSettings).catch(() => undefined);
+    }
+  }, [approved]);
+
+  const toggleBusyCalls = async () => {
+    if (!pushSettings) return;
+    setPushLoading(true);
+    try {
+      const updated = await helperApi.updatePushSettings({
+        allowCallsWhileBusy: !pushSettings.allowCallsWhileBusy,
+      });
+      setPushSettings(updated);
+      setPushFeedback(updated.allowCallsWhileBusy ? "작업 중 긴급 호출 수신이 활성화되었습니다." : "작업 중 호출 수신이 차단되었습니다.");
+      setTimeout(() => setPushFeedback(null), 3000);
+    } catch {
+      setProblem("설정 변경 실패");
+    } finally {
+      setPushLoading(false);
+    }
+  };
+
+  const toggleQuietEnabled = async () => {
+    if (!pushSettings) return;
+    setPushLoading(true);
+    try {
+      const updated = await helperApi.updatePushSettings({
+        quietEnabled: !pushSettings.quietEnabled,
+      });
+      setPushSettings(updated);
+      setPushFeedback(updated.quietEnabled ? `휴식 시간 모드가 켜졌습니다 (${updated.quietStart} ~ ${updated.quietEnd}).` : "휴식 시간 모드가 꺼졌습니다.");
+      setTimeout(() => setPushFeedback(null), 3000);
+    } catch {
+      setProblem("설정 변경 실패");
+    } finally {
+      setPushLoading(false);
+    }
+  };
+
+  const updateQuietTimes = async (start: string, end: string) => {
+    setPushLoading(true);
+    try {
+      const updated = await helperApi.updatePushSettings({
+        quietStart: start,
+        quietEnd: end,
+      });
+      setPushSettings(updated);
+    } catch {
+      setProblem("시간 저장 실패");
+    } finally {
+      setPushLoading(false);
+    }
+  };
+
+  const subscribePush = async () => {
+    if (typeof window === "undefined" || !("serviceWorker" in navigator) || !("Notification" in window)) {
+      setProblem("이 브라우저/기기는 백그라운드 푸시 알림을 지원하지 않습니다.");
+      return;
+    }
+    setPushLoading(true);
+    setPushFeedback(null);
+    try {
+      const permission = await Notification.requestPermission();
+      if (permission !== "granted") {
+        setProblem("알림 권한이 거부되었습니다. 스마트폰 브라우저 설정에서 알림을 허용해주세요.");
+        return;
+      }
+
+      const reg = await navigator.serviceWorker.ready;
+      const sub = await reg.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY || "BIg_VAPID_KEY_FALLBACK_LIFE_HELP_2026",
+      });
+
+      const subJson = sub.toJSON();
+      if (!subJson.endpoint || !subJson.keys?.p256dh || !subJson.keys?.auth) {
+        throw new Error("Invalid push subscription structure");
+      }
+
+      await helperApi.registerPush({
+        endpoint: subJson.endpoint,
+        p256dh: subJson.keys.p256dh,
+        auth: subJson.keys.auth,
+        userAgent: navigator.userAgent,
+      });
+
+      const refreshed = await helperApi.getPushSettings();
+      setPushSettings(refreshed);
+      setPushFeedback("📱 스마트폰 잠금화면 긴급 호출 알림이 성공적으로 등록되었습니다!");
+      setTimeout(() => setPushFeedback(null), 4000);
+    } catch (err) {
+      setProblem("푸시 알림 등록 실패: " + (err instanceof Error ? err.message : String(err)));
+    } finally {
+      setPushLoading(false);
+    }
+  };
+
+  const testPush = async () => {
+    setPushLoading(true);
+    try {
+      const res = await helperApi.testPush();
+      setPushFeedback(`🔔 테스트 호출 알림이 발송되었습니다! (전송 기기: ${res.dispatched ?? 1}대)`);
+      setTimeout(() => setPushFeedback(null), 4000);
+    } catch {
+      setProblem("테스트 알림 발송 실패");
+    } finally {
+      setPushLoading(false);
+    }
+  };
 
   const load = async () => {
     setData(await helperApi.requests());
@@ -84,6 +198,143 @@ export function HelperServicePanel() {
 
       {approved && (
         <>
+          {/* Mobile Background Emergency Call & Rest Settings */}
+          <section className={PANEL} data-testid="helper-dispatch-settings">
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-3">
+              <div>
+                <h2 className="text-lg font-black text-white flex items-center gap-2">
+                  <span>📱</span>
+                  <span>스마트폰 잠금화면 긴급 호출 및 방해금지 설정</span>
+                </h2>
+                <p className="mt-1 text-xs text-slate-400">
+                  앱을 닫고 일상생활을 하거나 휴대폰이 꺼져 있어도 배달/택시 기사 앱처럼 백그라운드 잠금화면 진동/소리 알림으로 긴급 호출을 받습니다.
+                </p>
+              </div>
+              <div className="flex items-center gap-2">
+                {pushSettings?.hasPushSubscription ? (
+                  <span className="rounded-full bg-emerald-950 px-2.5 py-1 text-xs font-bold text-emerald-300 border border-emerald-800 flex items-center gap-1">
+                    <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    잠금화면 푸시 활성 ({pushSettings.deviceCount}대)
+                  </span>
+                ) : (
+                  <span className="rounded-full bg-amber-950 px-2.5 py-1 text-xs font-bold text-amber-300 border border-amber-800">
+                    푸시 미등록
+                  </span>
+                )}
+              </div>
+            </div>
+
+            {pushFeedback && (
+              <div className="mt-3 rounded-lg bg-emerald-950/80 border border-emerald-700/80 p-2.5 text-xs font-bold text-emerald-200">
+                {pushFeedback}
+              </div>
+            )}
+
+            <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* 1. 작업 중 신규 호출 수신 여부 */}
+              <div className="rounded-xl bg-slate-800/70 p-4 border border-slate-700 space-y-2">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-sm font-black text-white">작업(출동) 중 신규 호출 수신</h3>
+                    <p className="text-[11px] text-slate-400">
+                      이미 고객 집에서 작업 중일 때 다른 긴급 호출을 받을지 선택합니다.
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    disabled={pushLoading}
+                    onClick={toggleBusyCalls}
+                    className={`rounded-xl px-3.5 py-1.5 text-xs font-black cursor-pointer transition-colors ${
+                      pushSettings?.allowCallsWhileBusy
+                        ? "bg-emerald-600 text-white"
+                        : "bg-slate-700 text-slate-300"
+                    }`}
+                  >
+                    {pushSettings?.allowCallsWhileBusy ? "ON (수신 허용)" : "OFF (작업중 차단)"}
+                  </button>
+                </div>
+              </div>
+
+              {/* 2. 휴식 및 방해금지 시간 설정 */}
+              <div className="rounded-xl bg-slate-800/70 p-4 border border-slate-700 space-y-2">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-sm font-black text-white">휴식 시간 방해금지 모드</h3>
+                    <p className="text-[11px] text-slate-400">
+                      정해둔 휴식/야간 시간에는 긴급 호출 알림을 자동으로 차단합니다.
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    disabled={pushLoading}
+                    onClick={toggleQuietEnabled}
+                    className={`rounded-xl px-3.5 py-1.5 text-xs font-black cursor-pointer transition-colors ${
+                      pushSettings?.quietEnabled
+                        ? "bg-indigo-600 text-white"
+                        : "bg-slate-700 text-slate-300"
+                    }`}
+                  >
+                    {pushSettings?.quietEnabled ? "ON (휴식 차단 중)" : "OFF (24시간 수신)"}
+                  </button>
+                </div>
+
+                {pushSettings?.quietEnabled && (
+                  <div className="mt-2.5 pt-2 border-t border-slate-700/60 flex items-center gap-2 text-xs text-slate-300">
+                    <span>차단 시간:</span>
+                    <input
+                      type="time"
+                      value={pushSettings.quietStart || "22:00"}
+                      onChange={(e) => updateQuietTimes(e.target.value, pushSettings.quietEnd || "08:00")}
+                      className="rounded bg-slate-900 border border-slate-600 px-2 py-1 text-white font-mono text-xs"
+                    />
+                    <span>~</span>
+                    <input
+                      type="time"
+                      value={pushSettings.quietEnd || "08:00"}
+                      onChange={(e) => updateQuietTimes(pushSettings.quietStart || "22:00", e.target.value)}
+                      className="rounded bg-slate-900 border border-slate-600 px-2 py-1 text-white font-mono text-xs"
+                    />
+                    <span className="text-[10px] text-slate-400">(자정 교차 지원)</span>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* 3. 모바일 Web Push 등록 및 실시간 테스트 */}
+            <div className="mt-4 rounded-xl bg-slate-800/50 p-4 border border-slate-700/70 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+              <div className="space-y-1">
+                <p className="font-bold text-slate-200">
+                  {pushSettings?.hasPushSubscription
+                    ? "스마트폰 브라우저 푸시가 등록되어 실시간 잠금화면 호출이 가능합니다."
+                    : "아직 이 휴대폰/기기에 잠금화면 푸시가 등록되지 않았습니다."}
+                </p>
+                <p className="text-[11px] text-slate-400">
+                  배달의민족/카카오T 기사용 앱처럼 긴급 진동과 소리로 잠금화면을 깨워 호출합니다.
+                </p>
+              </div>
+              <div className="flex items-center gap-2 shrink-0">
+                <button
+                  type="button"
+                  disabled={pushLoading}
+                  onClick={subscribePush}
+                  className="rounded-xl bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 px-4 py-2 text-xs font-black text-white cursor-pointer shadow-lg shadow-emerald-900/30"
+                >
+                  {pushSettings?.hasPushSubscription ? "📱 기기 재등록 / 갱신" : "📱 잠금화면 푸시 알림 등록"}
+                </button>
+                {pushSettings?.hasPushSubscription && (
+                  <button
+                    type="button"
+                    disabled={pushLoading}
+                    onClick={testPush}
+                    className="rounded-xl bg-slate-700 hover:bg-slate-600 disabled:opacity-50 px-3.5 py-2 text-xs font-bold text-slate-200 cursor-pointer"
+                  >
+                    🔔 호출 테스트
+                  </button>
+                )}
+              </div>
+            </div>
+          </section>
+
           <section className={PANEL}>
             <h2 className="text-lg font-black text-white">{t("svc.helper.openRequests")}</h2>
             {!serverHelper.isAvailable && <p className="mt-2 text-xs text-slate-400">{t("svc.helper.goOnlineHint")}</p>}

@@ -73,7 +73,7 @@ test.describe("English", () => {
     await page.goto(`${MAIN}/`);
     await page.getByTestId("home-card-study").waitFor();
     expect(await ids(page)).toEqual(ORDER);
-    await expect(page.getByTestId("home-card-study")).toContainText("English, Math & Korean Study");
+    await expect(page.getByTestId("home-card-study")).toContainText("Korean, English, Math, Physics & Chemistry Study");
     await page.getByTestId("home-card-study").click();
     await expect(page.getByRole("dialog", { name: "Choose a study subject" })).toContainText("Study Math");
     await expect(page.getByTestId("study-link-english")).toContainText("Open english.life.help");
@@ -86,7 +86,7 @@ test.describe("a locale with a verified translation", () => {
     await page.goto(`${MAIN}/`);
     await page.getByTestId("home-card-study").waitFor();
     expect(await ids(page)).toEqual(ORDER);
-    await expect(page.getByTestId("home-card-study")).toContainText("英語・数学・韓国語の学習");
+    await expect(page.getByTestId("home-card-study")).toContainText("韓国語・英語・数学・物理・化学の学習");
     expect(await page.getByTestId("home-card-study").textContent()).not.toMatch(/[가-힯]|English, Math & Korean Study/);
   });
 });
