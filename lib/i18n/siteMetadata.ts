@@ -89,10 +89,305 @@ export const COUNTRY_TO_LANGUAGE_MAP: Record<string, string> = {
   mozambique: "pt",
 };
 
+
+export const COUNTRY_KOREAN_NAMES: Record<string, string> = {
+  korea: "한국",
+  japan: "일본",
+  china: "중국",
+  taiwan: "대만",
+  vietnam: "베트남",
+  philippines: "필리핀",
+  indonesia: "인도네시아",
+  russia: "러시아",
+  uzbek: "우즈베키스탄",
+  nepal: "네팔",
+  india: "인도",
+  cambodia: "캄보디아",
+  thailand: "태국",
+  myanmar: "미얀마",
+  srilanka: "스리랑카",
+  kazakh: "카자흐스탄",
+  france: "프랑스",
+  deutsch: "독일",
+  turkiye: "튀르키예",
+  ukraina: "우크라이나",
+  timorleste: "동티모르",
+  uae: "아랍에미리트",
+  italia: "이탈리아",
+  egypt: "이집트",
+  espania: "스페인",
+  iran: "이란",
+  netherland: "네덜란드",
+  poland: "폴란드",
+  ethiopia: "에티오피아",
+  sweden: "스웨덴",
+  israel: "이스라엘",
+  denmark: "덴마크",
+  norway: "노르웨이",
+  mongol: "몽골",
+  mexico: "멕시코",
+  brazil: "브라질",
+  greece: "그리스",
+  portugal: "포르투갈",
+  southafrica: "남아프리카공화국",
+  swiss: "스위스",
+  pakistan: "파키스탄",
+  saudiarabia: "사우디아라비아",
+  yemen: "예멘",
+  iraq: "이라크",
+  bangladesh: "방글라데시",
+  us: "미국",
+  uk: "영국",
+  canada: "캐나다",
+  australia: "호주",
+  newzealand: "뉴질랜드",
+  singapore: "싱가포르",
+  malaysia: "말레이시아",
+  nigeria: "나이지리아",
+  elsalvador: "엘살바도르",
+  centralafrica: "중앙아프리카공화국",
+  venezuela: "베네수엘라",
+  kenya: "케냐",
+  argentina: "아르헨티나",
+  romania: "루마니아",
+  finland: "핀란드",
+  czechia: "체코",
+  hungary: "헝가리",
+  zambia: "잠비아",
+  uganda: "우간다",
+  congo: "콩고공화국",
+  ghana: "가나",
+  mozambique: "모잠비크",
+};
+
+export const COUNTRY_SLUG_TO_ISO2: Record<string, string> = {
+  korea: "KR",
+  vietnam: "VN",
+  japan: "JP",
+  china: "CN",
+  taiwan: "TW",
+  philippines: "PH",
+  indonesia: "ID",
+  russia: "RU",
+  uzbek: "UZ",
+  nepal: "NP",
+  india: "IN",
+  cambodia: "KH",
+  thailand: "TH",
+  myanmar: "MM",
+  srilanka: "LK",
+  kazakh: "KZ",
+  france: "FR",
+  deutsch: "DE",
+  turkiye: "TR",
+  ukraina: "UA",
+  timorleste: "TL",
+  uae: "AE",
+  italia: "IT",
+  egypt: "EG",
+  espania: "ES",
+  iran: "IR",
+  netherland: "NL",
+  poland: "PL",
+  ethiopia: "ET",
+  sweden: "SE",
+  israel: "IL",
+  denmark: "DK",
+  norway: "NO",
+  mongol: "MN",
+  mexico: "MX",
+  brazil: "BR",
+  greece: "GR",
+  portugal: "PT",
+  southafrica: "ZA",
+  swiss: "CH",
+  pakistan: "PK",
+  saudiarabia: "SA",
+  yemen: "YE",
+  iraq: "IQ",
+  bangladesh: "BD",
+  us: "US",
+  uk: "GB",
+  canada: "CA",
+  australia: "AU",
+  newzealand: "NZ",
+  singapore: "SG",
+  malaysia: "MY",
+  nigeria: "NG",
+  elsalvador: "SV",
+  centralafrica: "CF",
+  centralafrican: "CF",
+  venezuela: "VE",
+  kenya: "KE",
+  argentina: "AR",
+  romania: "RO",
+  finland: "FI",
+  czechia: "CZ",
+  czech: "CZ",
+  hungary: "HU",
+  zambia: "ZM",
+  uganda: "UG",
+  congo: "CG",
+  ghana: "GH",
+  mozambique: "MZ",
+};
+
+export const DEFAULT_KOREA_NAMES: Record<string, string> = {
+  ko: "한국",
+  vi: "Hàn Quốc",
+  en: "Korea",
+  "zh-Hans": "韩国",
+  "zh-Hant": "韓國",
+  ja: "韓国",
+  pl: "Korei",
+  de: "Korea",
+  fr: "Corée",
+  es: "Corea",
+  pt: "Coreia",
+  it: "Corea",
+  ru: "Корее",
+  uk: "Кореї",
+  tr: "Kore",
+  id: "Korea",
+  th: "เกาหลี",
+  nl: "Korea",
+  sv: "Korea",
+  da: "Korea",
+  no: "Korea",
+  el: "Κορέα",
+  ar: "كوريا",
+  arz: "كوريا",
+  ur: "کوریا",
+  sw: "Korea",
+  mr: "कोरिया",
+  gu: "કોરિયા",
+  pa: "ਕੋਰੀਆ",
+  te: "కొరియా",
+  kn: "ಕೊರಿಯಾ",
+  ml: "കൊറിയ",
+  fa: "کره",
+  he: "קוריאה",
+  hi: "कोरिया",
+  bn: "কোরিয়া",
+  ta: "கொரியா",
+  si: "කොරියාව",
+  ne: "कोरिया",
+  my: "ကိုရီးယား",
+  km: "កូរ៉េ",
+  mn: "Солонгос",
+  kk: "Корея",
+  uz: "Koreya",
+  tet: "Koreia",
+  am: "ኮሪያ",
+};
+
+export const SITE_DESCRIPTION_TEMPLATES: Record<string, string> = {
+  ko: "{country}에 사는 모든 사람을 위한 생활서비스 플랫폼. 모국어로 상담하고 신뢰할 수 있는 지역 전문 헬퍼와 연결됩니다.",
+  vi: "Nền tảng dịch vụ sinh hoạt cho tất cả mọi người sinh sống tại {country}. Tư vấn bằng tiếng mẹ đẻ và kết nối với thợ chuyên nghiệp địa phương đáng tin cậy.",
+  en: "Living services platform for all people living in {country}. Consult in your native language and connect with verified local specialists.",
+  "zh-Hans": "面向所有在{country}居民的生活服务平台。使用母语即时咨询，直接连接值得信赖的本地专业师傅。",
+  "zh-Hant": "專為在{country}所有居民打造的生活服務平臺。使用母語即時諮詢，快速媒合在地值得信賴的專業師傅。",
+  ja: "{country}に住むすべての人のための生活支援プラットフォーム。母国語で相談でき、信頼できる地域専門スタッフとマッチングします。",
+  pl: "Platforma usług codziennych dla wszystkich mieszkańców w {country}. Konsultacje w języku ojczystym i kontakt ze sprawdzonymi lokalnymi fachowcami.",
+  de: "Plattform für Alltagsdienste für alle Menschen in {country}. Beratung in der Muttersprache und Vermittlung geprüfter Handwerker.",
+  fr: "Plateforme de services du quotidien pour tous les résidents en {country}. Conseils dans votre langue maternelle et mise en relation avec des artisans de confiance.",
+  es: "Plataforma de servicios del hogar para todas las personas que viven en {country}. Asesoramiento en su idioma materno y conexión con técnicos locales de confianza.",
+  pt: "Plataforma de serviços cotidianos para todas as pessoas que vivem em {country}. Atendimento no seu idioma nativo e conexão com especialistas confiáveis.",
+  it: "Piattaforma di servizi per la vita quotidiana per tutte le persone che vivono in {country}. Consulenza nella tua lingua madre e contatto con tecnici locali affidabili.",
+  ru: "Платформа бытовых услуг для всех жителей в {country}. Консультации на родном языке и связь с проверенными местными мастерами.",
+  uk: "Платформа побутових послуг для всіх жителів у {country}. Консультації рідною мовою та прямий зв'язок із перевіреними місцевими майстрами.",
+  tr: "{country}'de yaşayan herkes için yaşam hizmetleri platformu. Kendi ana dilinizde danışın ve güvenilir yerel uzman ustalarla bağlantı kurun.",
+  id: "Platform layanan kehidupan untuk semua orang yang tinggal di {country}. Konsultasi dalam bahasa ibu dan terhubung langsung dengan teknisi ahli lokal tepercaya.",
+  th: "แพลตฟอร์มบริการการใช้ชีวิตสำหรับทุกคนที่อาศัยอยู่ใน{country} ปรึกษาด้วยภาษาแม่ของคุณและเชื่อมต่อกับช่างผู้เชี่ยวชาญในท้องถิ่นที่เชื่อถือได้",
+  nl: "Platform voor levensdiensten voor alle inwoners in {country}. Advies in uw moedertaal en direct contact met betrouwbare lokale vakmensen.",
+  sv: "Plattform för vardagstjänster för alla som bor i {country}. Rådgivning på modersmålet och koppling till pålitliga lokala hantverkare.",
+  da: "Platform for hverdagstjenester for alle, der bor i {country}. Rådgivning på dit modersmål og forbindelse til pålidelige lokale håndværkere.",
+  no: "Plattform for hverdagstjenester for alle som bor i {country}. Rådgivning på morsmålet og kontakt med pålitelige lokale fagfolk.",
+  el: "Πλατφόρμα υπηρεσιών καθημερινής ζωής για όλους τους κατοίκους σε {country}. Συμβουλευτείτε στη μητρική σας γλώσσα και συνδεθείτε με αξιόπιστους τοπικούς ειδικούς τεχνικούς.",
+  ar: "منصة الخدمات المعيشية لجميع المقيمين في {country}. استشارات بلغتك الأم وتواصل مباشر مع فنيين وخبراء محليين موثوقين.",
+  arz: "منصة الخدمات المعيشية لجميع المقيمين في {country}. استشارات بلغتك الأم وتواصل مباشر مع فنيين وخبراء محليين موثوقين.",
+  ur: "{country} میں مقیم تمام افراد کے لیے روزمرہ خدمات کا پلیٹ فارم۔ اپنی مادری زبان میں مشورہ اور قابلِ اعتماد مقامی ماہرین سے رابطہ۔",
+  sw: "Jukwaa la huduma za maisha kwa watu wote wanaoishi {country}. Pata ushauri kwa lugha yako na uunganishwe na mafundi waliothibitishwa.",
+  mr: "{country}मधील सर्व नागरिकांसाठी जीवनावश्यक सेवा प्लॅटफॉर्म. तुमच्या मातृभाषेत सल्ला घ्या आणि सत्यापित स्थानिक तज्ज्ञांशी संपर्क साधा.",
+  gu: "{country}માં રહેતા તમામ લોકો માટે જીવનજરૂરી સેવા પ્લેટફોર્મ. તમારી માતૃભાષામાં સલાહ લો અને ચકાસાયેલ સ્થાનિક નિષ્ણાતો સાથે જોડાઓ.",
+  pa: "{country} ਵਿੱਚ ਰਹਿਣ ਵਾਲੇ ਸਾਰੇ ਲੋਕਾਂ ਲਈ ਜੀਵਨ ਸੇਵਾਵਾਂ ਪਲੇਟਫਾਰਮ। ਆਪਣੀ ਮਾਂ-ਬੋਲੀ ਵਿੱਚ ਸਲਾਹ ਲਵੋ ਅਤੇ ਪ੍ਰਮਾਣਿਤ ਸਥਾਨਕ ਮਾਹਿਰਾਂ ਨਾਲ ਜੁੜੋ।",
+  te: "{country}లో నివసిస్తున్న ప్రజలందరి కోసం జీవన సేవల ప్లాట్‌ఫారమ్. మీ మాతృభాషలో సంప్రదించండి మరియు ధృవీకరించబడిన స్థానిక నిపుణులతో కనెక్ట్ అవ్వండి.",
+  kn: "{country}ದಲ್ಲಿ ವಾಸಿಸುವ ಪ್ರತಿಯೊಬ್ಬರಿಗಾಗಿ ಜೀವನ ಸೇವೆಗಳ ವೇದಿಕೆ. ನಿಮ್ಮ ಮಾತೃಭಾಷೆಯಲ್ಲಿ ಸಮಾಲೋಚಿಸಿ ಮತ್ತು ಪರಿಶೀಲಿಸಿದ ಸ್ಥಳೀಯ ತಜ್ಞರೊಂದಿಗೆ ಸಂಪರ್ਕ ಸಾಧಿಸಿ.",
+  ml: "{country}യിൽ താമസിക്കുന്ന എല്ലാവർക്കുമുള്ള ജീവിത സേവന പ്ലാറ്റ്‌ഫോം. നിങ്ങളുടെ മാതൃഭാഷയിൽ കൂടിയാലോചിക്കുകയും പരിശോധിച്ചുറപ്പിച്ച പ്രാദേശിക വിദഗ്ധരുമായി ബന്ധപ്പെടുകയും ചെയ്യുക.",
+  fa: "پلتفرم خدمات زندگی برای همه ساکنان در {country}. مشاوره به زبان مادری و ارتباط با متخصصان معتمد محلی.",
+  he: "פלטפורמת שירותי חיים לכל האנשים החיים ב{country}. ייעוץ בשפת האם וחיבור לבעלי מקצוע מקומיים מוסמכים.",
+  hi: "{country} में रहने वाले सभी लोगों के लिए जीवन सेवा मंच। अपनी मातृभाषा में परामर्श करें और विश्वसनीय स्थानीय तकनीशियनों से जुड़ें।",
+  bn: "{country}-এ বসবাসকারী সকল মানুষের জন্য জীবন পরিষেবা প্ল্যাটফর্ম। নিজের মাতৃভাষায় পরামর্শ নিন এবং বিশ্বস্ত স্থানীয় টেকনিশিয়ানদের সাথে যুক্ত হন।",
+  ta: "{country}யில் வாழும் அனைவருக்கும் வாழ்க்கை சேவை தளம். உங்கள் தாய்மொழியில் ஆலோசனை பெற்று நம்பகமான உள்ளூர் வல்லுநர்களுடன் இணையுங்கள்.",
+  si: "{country}හි වෙසෙන සියලුම ජනතාව සඳහා වන ජීවන සේවා වේදිකාව. ඔබේ මව්බසින් උපදෙස් ලබාගෙන විශ්වාසදායක ප්‍රදේශයේ කාර්මික ශිල්පීන් සමඟ සම්බන්ධ වන්න.",
+  ne: "{country}मा बस्ने सबै मानिसहरूका लागि जीवन सेवा प्लेटफर्म। आफ्नै मातृभाषामा परामर्श लिनुहोस् र भरपર્दो स्थानीय प्राविधिकहरूसँग जोडिनुहोस्।",
+  my: "{country}ရှိ လူတိုင်းအတွက် လူနေမှုဘဝဝန်ဆောင်မှု ပလက်ဖောင်း။ မိခင်ဘာသာစကားဖြင့် ဆွေးနွေးတိုင်ပင်ပြီး စိတ်ချရသော ဒေသတွင်း ကျွမ်းကျင်ပညာရှင်များနှင့် တိုက်ရိုက်ချိတ်ဆက်ပါ။",
+  km: "វេទិកាសេវាកម្មជីវិតសម្រាប់មនុស្សគ្រប់រូបដែលរស់នៅក្នុង{country}។ ពិគ្រោះជាភាសាកំណើតរបស់អ្នក និងភ្ជាប់ទំនាក់ទំនងជាមួយជាងជំនាញក្នុងតំបន់ដែលគួរឱ្យទុកចិត្ត។",
+  mn: "{country} улсад оршин суугаа бүх хүнд зориулсан ахуйн үйлчилгээний платформ. Эх хэлээрээ зөвлөгөө авч, найдвартай мэргэжилтнүүдтэй шууд холбогдоорой.",
+  kk: "{country} еліндегі барлық тұрғындарға арналған тұрмыстық қызметтер платформасы. Өз ана тіліңізде кеңес алып, сенімді жергілікті шеберлермен байланысыңыз.",
+  uz: "{country}da yashovchi barcha aholi uchun turmush xizmatlari platformasi. O'z ona tilingizda maslahat oling va ishonchli mahalliy ustalar bilan bog'laning.",
+  tet: "Plataforma servisu moris nian ba ema hotu ne'ebé hela iha {country}. Konsulta ho ita-boot nia lian inan no liga ba tékniku profisionál lokál ne'ebé fiar-laek.",
+  am: "በ{country} ለሚኖሩ ሰዎች ሁሉ የተዘጋጀ የዕለት ተዕለት ኑሮ አገልግሎት መድረክ። በአፍ መፍቻ ቋንቋዎ ይማከሩ እና ከታመኑ የአካባቢው ባለሙያዎች ጋር ይገናኙ。"
+};
+
+export function getLocalizedCountryName(countrySlug: string | null | undefined, lang: string): string {
+  const normSlug = countrySlug?.toLowerCase().trim() || "";
+
+  // 1. 기본 한국인 경우
+  if (!normSlug || normSlug === "korea") {
+    return DEFAULT_KOREA_NAMES[lang] || DEFAULT_KOREA_NAMES["ko"] || "한국";
+  }
+
+  // 2. 한국어(ko)의 경우 일상적인 한글 국가명
+  if (lang === "ko") {
+    if (COUNTRY_KOREAN_NAMES[normSlug]) {
+      return COUNTRY_KOREAN_NAMES[normSlug];
+    }
+  }
+
+  // 3. 영어(en) 친화적 관용구 오버라이드
+  if (lang === "en") {
+    if (normSlug === "us") return "the United States";
+    if (normSlug === "uk") return "the United Kingdom";
+    if (normSlug === "uae") return "the UAE";
+    if (normSlug === "netherland") return "the Netherlands";
+    if (normSlug === "philippines") return "the Philippines";
+  }
+
+  // 4. zh-Hant 오버라이드
+  if (lang === "zh-Hant" && normSlug === "korea") {
+    return "韓國";
+  }
+
+  // 5. ISO 코드를 통한 Intl.DisplayNames 번역
+  const iso2 = COUNTRY_SLUG_TO_ISO2[normSlug];
+  if (iso2) {
+    try {
+      if (typeof Intl !== "undefined" && Intl.DisplayNames) {
+        const dn = new Intl.DisplayNames([lang], { type: "region", fallback: "none" });
+        const name = dn.of(iso2);
+        if (name && name !== iso2) {
+          return name;
+        }
+      }
+    } catch {
+      // ignore
+    }
+  }
+
+  return COUNTRY_KOREAN_NAMES[normSlug] || normSlug.toUpperCase();
+}
+
+export function getLocalizedSiteDescription(lang: string, countrySlug?: string | null): string {
+  const template = SITE_DESCRIPTION_TEMPLATES[lang] || SITE_DESCRIPTION_TEMPLATES["ko"];
+  const countryName = getLocalizedCountryName(countrySlug, lang);
+  return template.replace(/\{country\}/g, countryName);
+}
+
 export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   ko: {
     tagline: "다국어 생활서비스 플랫폼",
-    description: "한국 거주 외국인을 위한 생활서비스 플랫폼. 모국어로 상담하고 신뢰할 수 있는 지역 전문 헬퍼와 연결됩니다.",
+    description: "한국에 사는 모든 사람을 위한 생활서비스 플랫폼. 모국어로 상담하고 신뢰할 수 있는 지역 전문 헬퍼와 연결됩니다.",
     chat: {
       title: "모국어 상담 센터",
       description: "한국 생활의 도움을 모국어로 요청하세요. 헬퍼와 1:1로 대화하며 메시지는 기계 번역됩니다.",
@@ -108,7 +403,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   vi: {
     tagline: "Nền tảng dịch vụ sinh hoạt đa ngôn ngữ",
-    description: "Nền tảng dịch vụ sinh hoạt đa ngôn ngữ",
+    description: "Nền tảng dịch vụ sinh hoạt cho tất cả mọi người sinh sống tại Hàn Quốc. Tư vấn bằng tiếng mẹ đẻ và kết nối với thợ chuyên nghiệp địa phương đáng tin cậy.",
     chat: {
       title: "Trung tâm hỗ trợ bằng tiếng mẹ đẻ",
       description: "Nhờ giúp đỡ về cuộc sống tại Hàn Quốc bằng chính ngôn ngữ của bạn. Trò chuyện 1:1 với người hỗ trợ; tin nhắn được dịch bằng máy.",
@@ -124,7 +419,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   en: {
     tagline: "Multilingual Living Services Platform",
-    description: "Living services platform for foreign residents in Korea. Consult in your native language and connect with verified local specialists.",
+    description: "Living services platform for all people living in Korea. Consult in your native language and connect with verified local specialists.",
     chat: {
       title: "Native Language Help Center",
       description: "Ask for help with life in Korea in your own language. Chat 1:1 with a helper; messages are machine-translated.",
@@ -140,7 +435,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   "zh-Hans": {
     tagline: "多语言生活服务平台",
-    description: "面向在韩外国人的生活服务平台。使用母语即时咨询，直接连接值得信赖的本地专业师傅。",
+    description: "面向所有在韩国居民的生活服务平台。使用母语即时咨询，直接连接值得信赖的本地专业师傅。",
     chat: {
       title: "母语咨询中心",
       description: "用您的母语请求在韩国生活中的帮助。与帮手进行1对1聊天,消息由机器翻译。",
@@ -156,7 +451,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   "zh-Hant": {
     tagline: "多語言生活服務平臺",
-    description: "專為在韓外籍居民打造的生活服務平臺。使用母語即時諮詢，快速媒合在地值得信賴的專業師傅。",
+    description: "專為在韓國所有居民打造的生活服務平臺。使用母語即時諮詢，快速媒合在地值得信賴的專業師傅。",
     chat: {
       title: "母語諮詢中心",
       description: "用您的母語請求在韓國生活中的協助。與幫手進行1對1聊天,訊息由機器翻譯。",
@@ -172,7 +467,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   ja: {
     tagline: "多言語生活サービスプラットフォーム",
-    description: "在韓外国人向け生活支援プラットフォーム。母国語で相談でき、信頼できる地域専門スタッフとマッチングします。",
+    description: "韓国に住むすべての人のための生活支援プラットフォーム。母国語で相談でき、信頼できる地域専門スタッフとマッチングします。",
     chat: {
       title: "母国語相談センター",
       description: "韓国での生活の困りごとを、母国語で相談できます。ヘルパーと1対1でチャットし、メッセージは機械翻訳されます。",
@@ -188,7 +483,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   pl: {
     tagline: "Wielojęzyczna platforma usług codziennych",
-    description: "Platforma usług codziennych dla obcokrajowców w Korei. Konsultacje w języku ojczystym i kontakt ze sprawdzonymi lokalnymi fachowcami.",
+    description: "Platforma usług codziennych dla wszystkich mieszkańców w Korei. Konsultacje w języku ojczystym i kontakt ze sprawdzonymi lokalnymi fachowcami.",
     chat: {
       title: "Centrum pomocy w języku ojczystym",
       description: "Poproś o pomoc w życiu w Korei w swoim języku. Rozmawiaj 1:1 z pomocnikiem; wiadomości są tłumaczone maszynowo.",
@@ -204,7 +499,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   de: {
     tagline: "Mehrsprachige Plattform für Alltagsdienste",
-    description: "Plattform für Alltagsdienste für ausländische Bewohner in Korea. Beratung in der Muttersprache und Vermittlung geprüfter Handwerker.",
+    description: "Plattform für Alltagsdienste für alle Menschen in Korea. Beratung in der Muttersprache und Vermittlung geprüfter Handwerker.",
     chat: {
       title: "Hilfezentrum in der Muttersprache",
       description: "Bitten Sie in Ihrer eigenen Sprache um Hilfe für das Leben in Korea. Chatten Sie 1:1 mit einem Helfer; Nachrichten werden maschinell übersetzt.",
@@ -220,7 +515,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   fr: {
     tagline: "Plateforme multilingue de services du quotidien",
-    description: "Plateforme de services du quotidien pour les résidents étrangers en Corée. Conseils dans votre langue maternelle et mise en relation avec des artisans de confiance.",
+    description: "Plateforme de services du quotidien pour tous les résidents en Corée. Conseils dans votre langue maternelle et mise en relation avec des artisans de confiance.",
     chat: {
       title: "Centre d'aide en langue maternelle",
       description: "Demandez de l'aide pour la vie en Corée dans votre propre langue. Discutez en 1:1 avec un assistant ; les messages sont traduits automatiquement.",
@@ -236,7 +531,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   es: {
     tagline: "Plataforma multilingüe de servicios para el hogar",
-    description: "Plataforma de servicios del hogar para extranjeros en Corea. Asesoramiento en su idioma materno y conexión con técnicos locales de confianza.",
+    description: "Plataforma de servicios del hogar para todas las personas que viven en Corea. Asesoramiento en su idioma materno y conexión con técnicos locales de confianza.",
     chat: {
       title: "Centro de ayuda en tu lengua materna",
       description: "Pide ayuda para la vida en Corea en tu propio idioma. Chatea 1:1 con un ayudante; los mensajes se traducen automáticamente.",
@@ -252,7 +547,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   pt: {
     tagline: "Plataforma multilíngue de serviços cotidianos",
-    description: "Plataforma de serviços cotidianos para estrangeiros na Coreia. Atendimento no seu idioma nativo e conexão com especialistas confiáveis.",
+    description: "Plataforma de serviços cotidianos para todas as pessoas que vivem em Coreia. Atendimento no seu idioma nativo e conexão com especialistas confiáveis.",
     chat: {
       title: "Central de ajuda no idioma nativo",
       description: "Peça ajuda para a vida na Coreia no seu próprio idioma. Converse 1:1 com um ajudante; as mensagens são traduzidas por máquina.",
@@ -268,7 +563,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   it: {
     tagline: "Piattaforma multilingue di servizi per la vita quotidiana",
-    description: "Piattaforma multilingue di servizi per la vita quotidiana per residenti stranieri in Corea. Consulenza nella tua lingua madre e contatto con tecnici locali affidabili.",
+    description: "Piattaforma di servizi per la vita quotidiana per tutte le persone che vivono in Corea. Consulenza nella tua lingua madre e contatto con tecnici locali affidabili.",
     chat: {
       title: "Centro di assistenza nella lingua madre",
       description: "Chiedi aiuto per la vita in Corea nella tua lingua. Chatta 1:1 con un assistente; i messaggi sono tradotti automaticamente.",
@@ -284,7 +579,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   ru: {
     tagline: "Многоязычная платформа бытовых услуг",
-    description: "Платформа бытовых услуг для иностранцев в Корее. Консультации на родном языке и связь с проверенными местными мастерами.",
+    description: "Платформа бытовых услуг для всех жителей в Корее. Консультации на родном языке и связь с проверенными местными мастерами.",
     chat: {
       title: "Центр помощи на родном языке",
       description: "Просите помощи в жизни в Корее на родном языке. Общайтесь с помощником в чате 1:1; сообщения переводятся машинным переводом.",
@@ -300,7 +595,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   uk: {
     tagline: "Багатомовна платформа побутових послуг",
-    description: "Платформа побутових послуг для іноземців у Кореї. Консультації рідною мовою та прямий зв'язок із перевіреними місцевими майстрами.",
+    description: "Платформа побутових послуг для всіх жителів у Кореї. Консультації рідною мовою та прямий зв'язок із перевіреними місцевими майстрами.",
     chat: {
       title: "Центр допомоги рідною мовою",
       description: "Просіть допомоги з життям у Кореї рідною мовою. Спілкуйтеся з помічником у чаті 1:1; повідомлення перекладаються машинним перекладом.",
@@ -316,7 +611,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   tr: {
     tagline: "Çok Dilli Yaşam Hizmetleri Platformu",
-    description: "Kore'de yaşayan yabancılar için yaşam hizmetleri platformu. Kendi ana dilinizde danışın ve güvenilir yerel uzman ustalarla bağlantı kurun.",
+    description: "Kore'de yaşayan herkes için yaşam hizmetleri platformu. Kendi ana dilinizde danışın ve güvenilir yerel uzman ustalarla bağlantı kurun.",
     chat: {
       title: "Ana Dilde Yardım Merkezi",
       description: "Kore'de yaşamla ilgili yardımı kendi dilinizde isteyin. Bir yardımcıyla 1:1 sohbet edin; mesajlar makine çevirisiyle çevrilir.",
@@ -332,7 +627,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   id: {
     tagline: "Platform Layanan Kehidupan Multibahasa",
-    description: "Platform layanan kehidupan untuk warga asing di Korea. Konsultasi dalam bahasa ibu dan terhubung langsung dengan teknisi ahli lokal tepercaya.",
+    description: "Platform layanan kehidupan untuk semua orang yang tinggal di Korea. Konsultasi dalam bahasa ibu dan terhubung langsung dengan teknisi ahli lokal tepercaya.",
     chat: {
       title: "Pusat Bantuan Bahasa Ibu",
       description: "Minta bantuan untuk kehidupan di Korea dalam bahasa Anda sendiri. Chat 1:1 dengan helper; pesan diterjemahkan oleh mesin.",
@@ -348,7 +643,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   th: {
     tagline: "แพลตฟอร์มบริการการใช้ชีวิตหลายภาษา",
-    description: "แพลตฟอร์มบริการการใช้ชีวิตสำหรับชาวต่างชาติในเกาหลี ปรึกษาด้วยภาษาแม่ของคุณและเชื่อมต่อกับช่างผู้เชี่ยวชาญในท้องถิ่นที่เชื่อถือได้",
+    description: "แพลตฟอร์มบริการการใช้ชีวิตสำหรับทุกคนที่อาศัยอยู่ในเกาหลี ปรึกษาด้วยภาษาแม่ของคุณและเชื่อมต่อกับช่างผู้เชี่ยวชาญในท้องถิ่นที่เชื่อถือได้",
     chat: {
       title: "ศูนย์ช่วยเหลือภาษาแม่",
       description: "ขอความช่วยเหลือเรื่องการใช้ชีวิตในเกาหลีด้วยภาษาของคุณเอง แชต 1:1 กับผู้ช่วย ข้อความจะถูกแปลด้วยเครื่อง",
@@ -364,7 +659,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   nl: {
     tagline: "Meertalig platform voor levensdiensten",
-    description: "Platform voor levensdiensten voor buitenlandse inwoners in Korea. Advies in uw moedertaal en direct contact met betrouwbare lokale vakmensen.",
+    description: "Platform voor levensdiensten voor alle inwoners in Korea. Advies in uw moedertaal en direct contact met betrouwbare lokale vakmensen.",
     chat: {
       title: "Hulpcentrum in je moedertaal",
       description: "Vraag in je eigen taal om hulp bij het leven in Korea. Chat 1:1 met een helper; berichten worden automatisch vertaald.",
@@ -380,7 +675,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   sv: {
     tagline: "Flerspråkig plattform för vardagstjänster",
-    description: "Plattform för vardagstjänster för utländska invånare i Korea. Rådgivning på modersmålet och koppling till pålitliga lokala hantverkare.",
+    description: "Plattform för vardagstjänster för alla som bor i Korea. Rådgivning på modersmålet och koppling till pålitliga lokala hantverkare.",
     chat: {
       title: "Hjälpcenter på modersmålet",
       description: "Be om hjälp med livet i Korea på ditt eget språk. Chatta 1:1 med en hjälpare; meddelandena maskinöversätts.",
@@ -396,7 +691,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   da: {
     tagline: "Flersproget platform for hverdagstjenester",
-    description: "Platform for hverdagstjenester for udenlandske beboere i Korea. Rådgivning på dit modersmål og forbindelse til pålidelige lokale håndværkere.",
+    description: "Platform for hverdagstjenester for alle, der bor i Korea. Rådgivning på dit modersmål og forbindelse til pålidelige lokale håndværkere.",
     chat: {
       title: "Hjælpecenter på dit modersmål",
       description: "Bed om hjælp til livet i Korea på dit eget sprog. Chat 1:1 med en hjælper; beskederne maskinoversættes.",
@@ -412,7 +707,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   no: {
     tagline: "Flerspråklig plattform for hverdagstjenester",
-    description: "Plattform for hverdagstjenester for utenlandske innbyggere i Korea. Rådgivning på morsmålet og kontakt med pålitelige lokale fagfolk.",
+    description: "Plattform for hverdagstjenester for alle som bor i Korea. Rådgivning på morsmålet og kontakt med pålitelige lokale fagfolk.",
     chat: {
       title: "Hjelpesenter på morsmålet",
       description: "Be om hjelp med livet i Korea på ditt eget språk. Chat 1:1 med en hjelper; meldingene maskinoversettes.",
@@ -428,7 +723,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   el: {
     tagline: "Πολυγλωσσική πλατφόρμα υπηρεσιών καθημερινής ζωής",
-    description: "Πλατφόρμα υπηρεσιών καθημερινής ζωής για αλλοδαπούς κατοίκους στην Κορέα. Συμβουλευτείτε στη μητρική σας γλώσσα και συνδεθείτε με αξιόπιστους τοπικούς ειδικούς τεχνικούς.",
+    description: "Πλατφόρμα υπηρεσιών καθημερινής ζωής για όλους τους κατοίκους σε Κορέα. Συμβουλευτείτε στη μητρική σας γλώσσα और συνδεθείτε με αξιόπιστους τοπικούς ειδικούς τεχνικούς.",
     chat: {
       title: "Κέντρο βοήθειας στη μητρική γλώσσα",
       description: "Ζητήστε βοήθεια για τη ζωή στην Κορέα στη δική σας γλώσσα. Συνομιλήστε 1:1 με έναν βοηθό· τα μηνύματα μεταφράζονται αυτόματα.",
@@ -444,7 +739,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   ar: {
     tagline: "منصة الخدمات المعيشية متعددة اللغات",
-    description: "منصة الخدمات المعيشية للمقيمين الأجانب في كوريا. استشارات بلغتك الأم وتواصل مباشر مع فنيين وخبراء محليين موثوقين.",
+    description: "منصة الخدمات المعيشية لجميع المقيمين في كوريا. استشارات بلغتك الأم وتواصل مباشر مع فنيين وخبراء محليين موثوقين.",
     chat: {
       title: "مركز المساعدة بلغتك الأم",
       description: "اطلب المساعدة في الحياة في كوريا بلغتك. تحدث مع مساعد في دردشة 1:1؛ تُترجم الرسائل آليًا.",
@@ -460,7 +755,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   arz: {
     tagline: "منصة الخدمات المعيشية متعددة اللغات",
-    description: "منصة الخدمات المعيشية للمقيمين الأجانب في كوريا. استشارات بلغتك الأم وتواصل مباشر مع فنيين وخبراء محليين موثوقين.",
+    description: "منصة الخدمات المعيشية لجميع المقيمين في كوريا. استشارات بلغتك الأم وتواصل مباشر مع فنيين وخبراء محليين موثوقين.",
     chat: {
       title: "مركز المساعدة بلغتك الأم",
       description: "اطلب مساعدة في الحياة في كوريا بلغتك. اتكلم مع مساعد في شات 1:1؛ والرسايل بتتترجم بالترجمة الآلية.",
@@ -476,7 +771,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   ur: {
     tagline: "کثیر لسانی روزمرہ خدمات کا پلیٹ فارم",
-    description: "کوریا میں مقیم غیر ملکیوں کے لیے روزمرہ خدمات کا پلیٹ فارم۔ اپنی مادری زبان میں مشورہ اور قابلِ اعتماد مقامی ماہرین سے رابطہ۔",
+    description: "کوریا میں مقیم تمام افراد کے لیے روزمرہ خدمات کا پلیٹ فارم۔ اپنی مادری زبان میں مشورہ اور قابلِ اعتماد مقامی ماہرین سے رابطہ۔",
     chat: {
       title: "مادری زبان میں مدد کا مرکز",
       description: "کوریا میں زندگی کے لیے اپنی زبان میں مدد مانگیں۔ مددگار کے ساتھ 1:1 چیٹ کریں؛ پیغامات کا ترجمہ مشین سے ہوتا ہے۔",
@@ -492,7 +787,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   sw: {
     tagline: "Jukwaa la Huduma za Maisha kwa Lugha Nyingi",
-    description: "Jukwaa la huduma za maisha kwa wakazi wa kigeni nchini Korea. Pata ushauri kwa lugha yako na uunganishwe na mafundi waliothibitishwa.",
+    description: "Jukwaa la huduma za maisha kwa watu wote wanaoishi Korea. Pata ushauri kwa lugha yako na uunganishwe na mafundi waliothibitishwa.",
     chat: {
       title: "Kituo cha Msaada kwa Lugha ya Asili",
       description: "Omba msaada wa maisha nchini Korea kwa lugha yako mwenyewe. Zungumza 1:1 na msaidizi; ujumbe hutafsiriwa na mashine.",
@@ -508,7 +803,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   mr: {
     tagline: "बहुभाषिक जीवनावश्यक सेवा प्लॅटफॉर्म",
-    description: "कोरियातील परदेशी रहिवाशांसाठी जीवनावश्यक सेवा प्लॅटफॉर्म. तुमच्या मातृभाषेत सल्ला घ्या आणि सत्यापित स्थानिक तज्ज्ञांशी संपर्क साधा.",
+    description: "कोरियामधील सर्व नागरिकांसाठी जीवनावश्यक सेवा प्लॅटफॉर्म. तुमच्या मातृभाषेत सल्ला घ्या आणि सत्यापित स्थानिक तज्ज्ञांशी संपर्क साधा.",
     chat: {
       title: "मातृभाषेतील मदत केंद्र",
       description: "कोरियातील जीवनासाठी मदत तुमच्या स्वतःच्या भाषेत मागा. मदतनीसासोबत 1:1 चॅट करा; संदेशांचे भाषांतर मशीनद्वारे होते.",
@@ -524,7 +819,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   gu: {
     tagline: "બહુભાષી જીવનજરૂરી સેવા પ્લેટફોર્મ",
-    description: "કોરિયામાં રહેતા વિદેશી રહેવાસીઓ માટે જીવનજરૂરી સેવા પ્લેટફોર્મ. તમારી માતૃભાષામાં સલાહ લો અને ચકાસાયેલા સ્થાનિક નિષ્ણાતો સાથે જોડાઓ.",
+    description: "કોરિયામાં રહેતા તમામ લોકો માટે જીવનજરૂરી સેવા પ્લેટફોર્મ. તમારી માતૃભાષામાં સલાહ લો અને ચકાસાયેલ સ્થાનિક નિષ્ણાતો સાથે જોડાઓ.",
     chat: {
       title: "માતૃભાષામાં સહાય કેન્દ્ર",
       description: "કોરિયામાં જીવન માટે મદદ તમારી પોતાની ભાષામાં માગો. મદદનીશ સાથે 1:1 ચેટ કરો; સંદેશાઓનો અનુવાદ મશીન દ્વારા થાય છે.",
@@ -540,7 +835,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   pa: {
     tagline: "ਬਹੁ-ਭਾਸ਼ਾਈ ਜੀਵਨ ਸੇਵਾਵਾਂ ਪਲੇਟਫਾਰਮ",
-    description: "ਕੋਰੀਆ ਵਿੱਚ ਰਹਿੰਦੇ ਵਿਦੇਸ਼ੀ ਨਿਵਾਸੀਆਂ ਲਈ ਜੀਵਨ ਸੇਵਾਵਾਂ ਪਲੇਟਫਾਰਮ। ਆਪਣੀ ਮਾਂ-ਬੋਲੀ ਵਿੱਚ ਸਲਾਹ ਲਓ ਅਤੇ ਪ੍ਰਮਾਣਿਤ ਸਥਾਨਕ ਮਾਹਿਰਾਂ ਨਾਲ ਜੁੜੋ।",
+    description: "ਕੋਰੀਆ ਵਿੱਚ ਰਹਿਣ ਵਾਲੇ ਸਾਰੇ ਲੋਕਾਂ ਲਈ ਜੀਵਨ ਸੇਵਾਵਾਂ ਪਲੇਟਫਾਰਮ। ਆਪਣੀ ਮਾਂ-ਬੋਲੀ ਵਿੱਚ ਸਲਾਹ ਲਵੋ ਅਤੇ ਪ੍ਰਮਾਣਿਤ ਸਥਾਨਕ ਮਾਹਿਰਾਂ ਨਾਲ ਜੁੜੋ।",
     chat: {
       title: "ਮਾਤ-ਭਾਸ਼ਾ ਵਿੱਚ ਸਹਾਇਤਾ ਕੇਂਦਰ",
       description: "ਕੋਰੀਆ ਵਿੱਚ ਜ਼ਿੰਦਗੀ ਲਈ ਮਦਦ ਆਪਣੀ ਭਾਸ਼ਾ ਵਿੱਚ ਮੰਗੋ। ਮਦਦਗਾਰ ਨਾਲ 1:1 ਚੈਟ ਕਰੋ; ਸੁਨੇਹਿਆਂ ਦਾ ਅਨੁਵਾਦ ਮਸ਼ੀਨ ਰਾਹੀਂ ਹੁੰਦਾ ਹੈ।",
@@ -556,7 +851,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   te: {
     tagline: "బహుభాషా జీవన సేవల ప్లాట్‌ఫారమ్",
-    description: "కొరియాలో నివసిస్తున్న విదేశీయుల కోసం జీవన సేవల ప్లాట్‌ఫారమ్. మీ మాతృభాషలో సంప్రదించండి మరియు ధృవీకరించబడిన స్థానిక నిపుణులతో కనెక్ట్ అవ్వండి.",
+    description: "కొరియాలో నివసిస్తున్న ప్రజలందరి కోసం జీవన సేవల ప్లాట్‌ఫారమ్. మీ మాతృభాషలో సంప్రదించండి మరియు ధృవీకరించబడిన స్థానిక నిపుణులతో కనెక్ట్ అవ్వండి.",
     chat: {
       title: "మాతృభాషలో సహాయ కేంద్రం",
       description: "కొరియాలో జీవనానికి సహాయాన్ని మీ స్వంత భాషలో అడగండి. సహాయకుడితో 1:1 చాట్ చేయండి; సందేశాలు యంత్రం ద్వారా అనువదించబడతాయి.",
@@ -572,7 +867,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   kn: {
     tagline: "ಬಹುಭಾಷಾ ಜೀವನ ಸೇವೆಗಳ ವೇದಿಕೆ",
-    description: "ಕೊರಿಯಾದಲ್ಲಿ ವಾಸಿಸುವ ವಿದೇಶಿ ನಿವಾಸಿಗಳಿಗಾಗಿ ಜೀವನ ಸೇವೆಗಳ ವೇದಿಕೆ. ನಿಮ್ಮ ಮಾತೃಭಾಷೆಯಲ್ಲಿ ಸಮಾಲೋಚಿಸಿ ಮತ್ತು ಪರಿಶೀಲಿತ ಸ್ಥಳೀಯ ತಜ್ಞರೊಂದಿಗೆ ಸಂಪರ್ಕ ಸಾಧಿಸಿ.",
+    description: "ಕೊರಿಯಾದಲ್ಲಿ ವಾಸಿಸುವ ಪ್ರತಿಯೊಬ್ಬರಿಗಾಗಿ ಜೀವನ ಸೇವೆಗಳ ವೇದಿಕೆ. ನಿಮ್ಮ ಮಾತೃಭಾಷೆಯಲ್ಲಿ ಸಮಾಲೋಚಿಸಿ ಮತ್ತು ಪರಿಶೀಲಿಸಿದ ಸ್ಥಳೀಯ ತಜ್ಞರೊಂದಿಗೆ ಸಂಪರ್ක ಸಾಧಿಸಿ.",
     chat: {
       title: "ಮಾತೃಭಾಷೆಯಲ್ಲಿ ಸಹಾಯ ಕೇಂದ್ರ",
       description: "ಕೊರಿಯಾದಲ್ಲಿನ ಜೀವನಕ್ಕೆ ಸಹಾಯವನ್ನು ನಿಮ್ಮ ಸ್ವಂತ ಭಾಷೆಯಲ್ಲಿ ಕೇಳಿ. ಸಹಾಯಕರೊಂದಿಗೆ 1:1 ಚಾಟ್ ಮಾಡಿ; ಸಂದೇಶಗಳನ್ನು ಯಂತ್ರದ ಮೂಲಕ ಅನುವಾದಿಸಲಾಗುತ್ತದೆ.",
@@ -588,7 +883,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   ml: {
     tagline: "ബഹുഭാഷാ ജീവിത സേവന പ്ലാറ്റ്‌ഫോം",
-    description: "കൊറിയയിൽ താമസിക്കുന്ന വിദേശികൾക്കായുള്ള ജീവിത സേവന പ്ലാറ്റ്‌ഫോം. നിങ്ങളുടെ മാതൃഭാഷയിൽ കൂടിയാലോചിക്കുകയും പരിശോധിച്ചുറപ്പിച്ച പ്രാദേശിക വിദഗ്ധരുമായി ബന്ധപ്പെടുകയും ചെയ്യുക.",
+    description: "കൊറിയയിൽ താമസിക്കുന്ന എല്ലാവർക്കുമുള്ള ജീവിത സേവന പ്ലാറ്റ്‌ഫോം. നിങ്ങളുടെ മാതൃഭാഷയിൽ കൂടിയാലോചിക്കുകയും പരിശോധിച്ചുറപ്പിച്ച പ്രാദേശിക വിദഗ്ധരുമായി ബന്ധപ്പെടുകയും ചെയ്യുക.",
     chat: {
       title: "മാതൃഭാഷയിലെ സഹായ കേന്ദ്രം",
       description: "കൊറിയയിലെ ജീവിതത്തിനുള്ള സഹായം നിങ്ങളുടെ സ്വന്തം ഭാഷയിൽ ചോദിക്കൂ. സഹായിയുമായി 1:1 ചാറ്റ് ചെയ്യൂ; സന്ദേശങ്ങൾ യന്ത്രം വഴി വിവർത്തനം ചെയ്യപ്പെടുന്നു.",
@@ -604,7 +899,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   fa: {
     tagline: "پلتفرم خدمات زندگی چندزبانه",
-    description: "پلتفرم خدمات زندگی برای ساکنان خارجی در کره. مشاوره به زبان مادری و ارتباط با متخصصان معتمد محلی.",
+    description: "پلتفرم خدمات زندگی برای همه ساکنان در کره. مشاوره به زبان مادری و ارتباط با متخصصان معتمد محلی.",
     chat: {
       title: "مرکز کمک به زبان مادری",
       description: "برای زندگی در کره به زبان خودتان درخواست کمک کنید. با یک کمک‌رسان ۱:۱ گفت‌وگو کنید؛ پیام‌ها با ترجمهٔ ماشینی ترجمه می‌شوند.",
@@ -620,7 +915,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   he: {
     tagline: "פלטפורמת שירותי חיים רב-לשונית",
-    description: "פלטפורמת שירותי חיים לתושבים זרים בקוריאה. ייעוץ בשפת האם וחיבור לבעלי מקצוע מקומיים מוסמכים.",
+    description: "פלטפורמת שירותי חיים לכל האנשים החיים בקוריאה. ייעוץ בשפת האם וחיבור לבעלי מקצוע מקומיים מוסמכים.",
     chat: {
       title: "מרכז סיוע בשפת האם",
       description: "בקשו עזרה בחיים בקוריאה בשפה שלכם. שוחחו 1:1 עם עוזר; ההודעות מתורגמות במכונה.",
@@ -636,7 +931,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   hi: {
     tagline: "बहुभाषी जीवन सेवा मंच",
-    description: "कोरिया में विदेशी निवासियों के लिए जीवन सेवा मंच। अपनी मातृभाषा में परामर्श करें और विश्वसनीय स्थानीय तकनीशियनों से जुड़ें।",
+    description: "कोरिया में रहने वाले सभी लोगों के लिए जीवन सेवा मंच। अपनी मातृभाषा में परामर्श करें और विश्वसनीय स्थानीय तकनीशियनों से जुड़ें।",
     chat: {
       title: "मातृभाषा सहायता केंद्र",
       description: "कोरिया में जीवन से जुड़ी मदद अपनी भाषा में माँगें। हेल्पर के साथ 1:1 चैट करें; संदेशों का मशीन द्वारा अनुवाद किया जाता है।",
@@ -652,7 +947,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   bn: {
     tagline: "বহুভাষিক জীবন পরিষেবা প্ল্যাটফর্ম",
-    description: "কোরিয়ায় বসবাসকারী বিদেশী নাগরিকদের জন্য জীবন পরিষেবা প্ল্যাটফর্ম। নিজের মাতৃভাষায় পরামর্শ নিন এবং বিশ্বস্ত স্থানীয় টেকনিশিয়ানদের সাথে যুক্ত হন।",
+    description: "কোরিয়া-এ বসবাসকারী সকল মানুষের জন্য জীবন পরিষেবা প্ল্যাটফর্ম। নিজের মাতৃভাষায় পরামর্শ নিন এবং বিশ্বস্ত স্থানীয় টেকনিশিয়ানদের সাথে যুক্ত হন।",
     chat: {
       title: "মাতৃভাষায় সহায়তা কেন্দ্র",
       description: "কোরিয়ায় জীবনযাত্রার সাহায্য নিজের ভাষায় চান। হেল্পারের সাথে ১:১ চ্যাট করুন; বার্তাগুলো মেশিন অনুবাদে অনূদিত হয়।",
@@ -668,7 +963,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   ta: {
     tagline: "பல்மொழி வாழ்க்கை சேவை தளம்",
-    description: "கொரியாவில் வாழும் வெளிநாட்டினருக்கான வாழ்க்கை சேவை தளம். உங்கள் தாய்மொழியில் ஆலோசனை பெற்று நம்பகமான உள்ளூர் வல்லுநர்களுடன் இணையுங்கள்.",
+    description: "கொரியாயில் வாழும் அனைவருக்கும் வாழ்க்கை சேவை தளம். உங்கள் தாய்மொழியில் ஆலோசனை பெற்று நம்பகமான உள்ளூர் வல்லுநர்களுடன் இணையுங்கள்.",
     chat: {
       title: "தாய்மொழி உதவி மையம்",
       description: "கொரியாவில் வாழ்க்கைக்கான உதவியை உங்கள் சொந்த மொழியில் கேளுங்கள். உதவியாளருடன் 1:1 அரட்டை செய்யுங்கள்; செய்திகள் இயந்திர மொழிபெயர்ப்பு செய்யப்படுகின்றன.",
@@ -684,7 +979,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   si: {
     tagline: "බහුභාෂා ජීවන සේවා වේදිකාව",
-    description: "කොරියාවේ වෙසෙන විදේශිකයන් සඳහා වන ජීවන සේවා වේදිකාව. ඔබේ මව්බසින් උපදෙස් ලබාගෙන විශ්වාසදායක ප්‍රදේශයේ කාර්මික ශිල්පීන් සමඟ සම්බන්ධ වන්න.",
+    description: "කොරියාවහි වෙසෙන සියලුම ජනතාව සඳහා වන ජීවන සේවා වේදිකාව. ඔබේ මව්බසින් උපදෙස් ලබාගෙන විශ්වාසදායක ප්‍රදේශයේ කාර්මික ශිල්පීන් සමඟ සම්බන්ධ වන්න.",
     chat: {
       title: "මව් භාෂා උපකාර මධ්‍යස්ථානය",
       description: "කොරියාවේ ජීවිතයට අදාළ උදව් ඔබේම භාෂාවෙන් ඉල්ලන්න. උදව්කරු සමඟ 1:1 චැට් කරන්න; පණිවිඩ යන්ත්‍රයෙන් පරිවර්තනය කෙරේ.",
@@ -700,7 +995,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   ne: {
     tagline: "बहुभाषी जीवन सेवा प्लेटफर्म",
-    description: "कोरियामा बस्ने विदेशी बासिन्दाहरूका लागि जीवन सेवा प्लेटफर्म। आफ्नै मातृभाषामा परामर्श लिनुहोस् र भरपર્दो स्थानीय प्राविधिकहरूसँग जोडिनुहोस्।",
+    description: "कोरियामा बस्ने सबै मानिसहरूका लागि जीवन सेवा प्लेटफर्म। आफ्नै मातृभाषामा परामर्श लिनुहोस् र भरपर्दो स्थानीय प्राविधिकहरूसँग जोडिनुहोस्।",
     chat: {
       title: "मातृभाषामा सहायता केन्द्र",
       description: "कोरियामा बस्दा चाहिने सहयोग आफ्नै भाषामा माग्नुहोस्। सहयोगीसँग १:१ च्याट गर्नुहोस्; सन्देशहरू मेसिनद्वारा अनुवाद गरिन्छन्।",
@@ -716,7 +1011,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   my: {
     tagline: "ဘာသာစကားမျိုးစုံ လူနေမှုဘဝဝန်ဆောင်မှု ပလက်ဖောင်း",
-    description: "ကိုရီးယားရှိ နိုင်ငံခြားသားများအတွက် လူနေမှုဘဝဝန်ဆောင်မှု ပလက်ဖောင်း။ မိခင်ဘာသာစကားဖြင့် ဆွေးနွေးတိုင်ပင်ပြီး စိတ်ချရသော ဒေသတွင်း ကျွမ်းကျင်ပညာရှင်များနှင့် တိုက်ရိုက်ချိတ်ဆက်ပါ။",
+    description: "ကိုရီးယားရှိ လူတိုင်းအတွက် လူနေမှုဘဝဝန်ဆောင်မှု ပလက်ဖောင်း။ မိခင်ဘာသာစကားဖြင့် ဆွေးနွေးတိုင်ပင်ပြီး စိတ်ချရသော ဒေသတွင်း ကျွမ်းကျင်ပညာရှင်များနှင့် တိုက်ရိုက်ချိတ်ဆက်ပါ။",
     chat: {
       title: "မိခင်ဘာသာစကား အကူအညီဌာန",
       description: "ကိုရီးယားရှိ နေထိုင်မှုဆိုင်ရာ အကူအညီကို သင့်ဘာသာစကားဖြင့် တောင်းဆိုပါ။ အကူအညီပေးသူနှင့် ၁:၁ ချက်တင်လုပ်ပါ၊ မက်ဆေ့ချ်များကို စက်ဖြင့် ဘာသာပြန်ပါသည်။",
@@ -732,7 +1027,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   km: {
     tagline: "វេទិកាសេវាកម្មជីវិតពហុភាសា",
-    description: "វេទិកាសេវាកម្មជីវិតសម្រាប់ជនបរទេសដែលរស់នៅក្នុងប្រទេសកូរ៉េ។ ពិគ្រោះជាភាសាកំណើតរបស់អ្នក និងភ្ជាប់ទំនាក់ទំនងជាមួយជាងជំនាញក្នុងតំបន់ដែលគួរឱ្យទុកចិត្ត។",
+    description: "វេទិកាសេវាកម្មជីវិតសម្រាប់មនុស្សគ្រប់រូបដែលរស់នៅក្នុងកូរ៉េ។ ពិគ្រោះជាភាសាកំណើតរបស់អ្នក និងភ្ជាប់ទំនាក់ទំនងជាមួយជាងជំនាញในតំបន់ដែលគួរឱ្យទុកចិត្ត។",
     chat: {
       title: "មជ្ឈមណ្ឌលជំនួយជាភាសាកំណើត",
       description: "សុំជំនួយអំពីជីវិតនៅកូរ៉េជាភាសារបស់អ្នក។ ជជែក 1:1 ជាមួយអ្នកជំនួយ ហើយសារត្រូវបានបកប្រែដោយម៉ាស៊ីន។",
@@ -748,7 +1043,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   mn: {
     tagline: "Олон хэлний ахуйн үйлчилгээний платформ",
-    description: "Солонгос улсад оршин суугаа гадаадын иргэдэд зориулсан ахуйн үйлчилгээний платформ. Эх хэлээрээ зөвлөгөө авч, найдвартай мэргэжилтнүүдтэй шууд холбогдоорой.",
+    description: "Солонгос улсад оршин суугаа бүх хүнд зориулсан ахуйн үйлчилгээний платформ. Эх хэлээрээ зөвлөгөө авч, найдвартай мэргэжилтнүүдтэй шууд холбогдоорой.",
     chat: {
       title: "Төрөлх хэлээрх тусламжийн төв",
       description: "Солонгос дахь амьдралдаа тусламжийг төрөлх хэлээрээ хүс. Туслагчтай 1:1 чатлах бөгөөд мессежийг машин орчуулна.",
@@ -764,7 +1059,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   kk: {
     tagline: "Көптілді тұрмыстық қызметтер платформасы",
-    description: "Кореядағы шетелдік азаматтарға арналған тұрмыстық қызметтер платформасы. Өз ана тіліңізде кеңес алып, сенімді жергілікті шеберлермен байланысыңыз.",
+    description: "Корея еліндегі барлық тұрғындарға арналған тұрмыстық қызметтер платформасы. Өз ана тіліңізде кеңес алып, сенімді жергілікті шеберлермен байланысыңыз.",
     chat: {
       title: "Ана тіліндегі көмек орталығы",
       description: "Кореядағы өмірге қатысты көмекті өз тіліңізде сұраңыз. Көмекшімен 1:1 чатта сөйлесіңіз; хабарламалар машиналық аударылады.",
@@ -780,7 +1075,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   uz: {
     tagline: "Ko'p tilli turmush xizmatlari platformasi",
-    description: "Koreyada yashovchi chet elliklar uchun turmush xizmatlari platformasi. O'z ona tilingizda maslahat oling va ishonchli mahalliy ustalar bilan bog'laning.",
+    description: "Koreyada yashovchi barcha aholi uchun turmush xizmatlari platformasi. O'z ona tilingizda maslahat oling va ishonchli mahalliy ustalar bilan bog'laning.",
     chat: {
       title: "Ona tilida yordam markazi",
       description: "Koreyadagi hayotingiz bo‘yicha yordamni ona tilingizda so‘rang. Yordamchi bilan 1:1 chatda yozishing; xabarlar mashina tarjimasi bilan tarjima qilinadi.",
@@ -796,7 +1091,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   tet: {
     tagline: "Plataforma servisu moris nian iha lian barak",
-    description: "Plataforma servisu moris nian ba ema estranjeiru sira ne'ebé hela iha Koreia. Konsulta ho ita-boot nia lian inan no liga ba tékniku profisionál lokál ne'ebé fiar-laek.",
+    description: "Plataforma servisu moris nian ba ema hotu ne'ebé hela iha Koreia. Konsulta ho ita-boot nia lian inan no liga ba tékniku profisionál lokál ne'ebé fiar-laek.",
     chat: {
       title: "Sentru Ajuda iha Lian Inan",
       description: "Husu ajuda ba moris iha Korea ho ita-nia lian rasik. Xat 1:1 ho helper; mensajen sira tradús ho makina.",
@@ -812,7 +1107,7 @@ export const SITE_METADATA: Record<string, SiteMetaTranslation> = {
   },
   am: {
     tagline: "የብዙ ቋንቋ የዕለት ተዕለት ኑሮ አገልግሎት መድረክ",
-    description: "በኮሪያ ለሚኖሩ የውጭ ሀገር ዜጎች የተዘጋጀ የዕለት ተዕለት ኑሮ አገልግሎት መድረክ። በአፍ መፍቻ ቋንቋዎ ይማከሩ እና ከታመኑ የአካባቢው ባለሙያዎች ጋር ይገናኙ።",
+    description: "በኮሪያ ለሚኖሩ ሰዎች ሁሉ የተዘጋጀ የዕለት ተዕለት ኑሮ አገልግሎት መድረክ። በአፍ መፍቻ ቋንቋዎ ይማከሩ እና ከታመኑ የአካባቢው ባለሙያዎች ጋር ይገናኙ。",
     chat: {
       title: "የአፍ መፍቻ ቋንቋ የእርዳታ ማዕከል",
       description: "በኮሪያ ለሚኖሩበት ሕይወት እርዳታን በራስዎ ቋንቋ ይጠይቁ። ከረዳት ጋር 1:1 ይወያዩ፤ መልዕክቶች በማሽን ይተረጎማሉ።",
@@ -987,7 +1282,7 @@ export function getSiteMetadata(lang: string, country?: string | null): Metadata
   const title = countryUpper
     ? `LIFE.HELP ${countryUpper} · ${meta.tagline}`
     : `LIFE.HELP · ${meta.tagline}`;
-  const description = meta.description;
+  const description = getLocalizedSiteDescription(lang, country);
 
   return {
     title,

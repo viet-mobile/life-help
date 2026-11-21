@@ -3,7 +3,10 @@ import { isJiuHost, JIU_TITLE, JIU_DESCRIPTION, JIU_ORIGIN } from "@/lib/jiu/bra
 import {
   SITE_METADATA,
   COUNTRY_TO_LANGUAGE_MAP,
+  COUNTRY_KOREAN_NAMES,
+  getLocalizedSiteDescription,
 } from "@/lib/i18n/siteMetadata";
+export { COUNTRY_KOREAN_NAMES };
 
 /** One physical line: CR/LF and other control characters can never start a new key in the generated .url (INI) file. */
 export function oneLine(value: string): string {
@@ -27,76 +30,6 @@ export interface DomainShortcutDetails {
   urlFileContent: string;
   suggestedFileName: string;
 }
-
-export const COUNTRY_KOREAN_NAMES: Record<string, string> = {
-  korea: "한국",
-  japan: "일본",
-  china: "중국",
-  taiwan: "대만",
-  vietnam: "베트남",
-  philippines: "필리핀",
-  indonesia: "인도네시아",
-  russia: "러시아",
-  uzbek: "우즈베키스탄",
-  nepal: "네팔",
-  india: "인도",
-  cambodia: "캄보디아",
-  thailand: "태국",
-  myanmar: "미얀마",
-  srilanka: "스리랑카",
-  kazakh: "카자흐스탄",
-  france: "프랑스",
-  deutsch: "독일",
-  turkiye: "튀르키예",
-  ukraina: "우크라이나",
-  timorleste: "동티모르",
-  uae: "아랍에미리트",
-  italia: "이탈리아",
-  egypt: "이집트",
-  espania: "스페인",
-  iran: "이란",
-  netherland: "네덜란드",
-  poland: "폴란드",
-  ethiopia: "에티오피아",
-  sweden: "스웨덴",
-  israel: "이스라엘",
-  denmark: "덴마크",
-  norway: "노르웨이",
-  mongol: "몽골",
-  mexico: "멕시코",
-  brazil: "브라질",
-  greece: "그리스",
-  portugal: "포르투갈",
-  southafrica: "남아프리카공화국",
-  swiss: "스위스",
-  pakistan: "파키스탄",
-  saudiarabia: "사우디아라비아",
-  yemen: "예멘",
-  iraq: "이라크",
-  bangladesh: "방글라데시",
-  us: "미국",
-  uk: "영국",
-  canada: "캐나다",
-  australia: "호주",
-  newzealand: "뉴질랜드",
-  singapore: "싱가포르",
-  malaysia: "말레이시아",
-  nigeria: "나이지리아",
-  elsalvador: "엘살바도르",
-  centralafrica: "중앙아프리카공화국",
-  venezuela: "베네수엘라",
-  kenya: "케냐",
-  argentina: "아르헨티나",
-  romania: "루마니아",
-  finland: "핀란드",
-  czechia: "체코",
-  hungary: "헝가리",
-  zambia: "잠비아",
-  uganda: "우간다",
-  congo: "콩고공화국",
-  ghana: "가나",
-  mozambique: "모잠비크",
-};
 
 /**
  * Resolves full domain, country, portal, and localized site URL description
@@ -245,17 +178,13 @@ export function getDomainShortcutDetails(options?: {
       ? `LIFE.HELP ${cUpper} · ${countryDisplayName} 다국어 생활서비스`
       : `LIFE.HELP ${cUpper} · ${meta.tagline}`;
     shortName = isKorean ? `LIFE.HELP · ${countryDisplayName}` : `LIFE.HELP · ${cUpper}`;
-    if (country === "vietnam" && (lang === "vi" || !options?.localeOverride)) {
-      description = "Nền tảng dịch vụ sinh hoạt đa ngôn ngữ";
-    } else {
-      description = meta.description;
-    }
+    description = getLocalizedSiteDescription(lang, country);
   } else {
     title = isKorean
       ? "LIFE.HELP · 다국어 생활서비스 플랫폼"
       : `LIFE.HELP · ${meta.tagline}`;
     shortName = "LIFE.HELP";
-    description = meta.description;
+    description = getLocalizedSiteDescription(lang, country);
   }
 
   // 7. Icon URLs

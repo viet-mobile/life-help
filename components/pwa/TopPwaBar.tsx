@@ -141,7 +141,7 @@ export function TopPwaBar() {
                 {details.canonicalDomain}
               </span>
               <span className="hidden md:inline text-slate-400">·</span>
-              <span className="hidden md:inline text-slate-300 truncate max-w-[320px]">
+              <span className="hidden md:inline text-slate-300 truncate max-w-[320px] lg:max-w-2xl">
                 {details.description}
               </span>
             </div>
