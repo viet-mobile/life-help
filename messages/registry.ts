@@ -411,6 +411,13 @@ export const PCM_LOCALIZED_NAMES: Record<string, string> = {
 };
 
 export function getLanguageNameInLocale(langCode: string, targetLocale: Locale | string = "ko"): string {
+  // 1. Curated overrides for languages with incomplete or colloquial Intl.DisplayNames coverage
+  if (langCode === "yue") {
+    if (targetLocale === "ko") return "광둥어";
+    if (targetLocale === "zh-Hans") return "粤语";
+    if (targetLocale === "en") return "Cantonese";
+    return "粵語";
+  }
   if (langCode === "arz" && ARZ_LOCALIZED_NAMES[targetLocale]) {
     return ARZ_LOCALIZED_NAMES[targetLocale];
   }

@@ -15,9 +15,9 @@ describe("Cantonese Dual Script (Traditional / Simplified) Engine", () => {
     expect(meta.script1).toBe("hant");
     expect(meta.script2).toBe("hans");
     expect(meta.script1Icon).toBe("繁");
-    expect(meta.script2Icon).toBe("简");
-    expect(meta.script1Label).toBe("繁體");
-    expect(meta.script2Label).toBe("簡體");
+    expect(meta.script2Icon).toBe("簡");
+    expect(meta.script1Label).toBe("");
+    expect(meta.script2Label).toBe("");
     expect(meta.script1Name).toContain("Traditional");
     expect(meta.script2Name).toContain("Simplified");
   });

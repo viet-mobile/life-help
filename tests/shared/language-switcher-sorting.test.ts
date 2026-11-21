@@ -131,18 +131,32 @@ describe("Language selection list: sorting and display specifications", () => {
       expect(linesEnInJa[1]).toBe("English");
     });
 
-    it("standardizes Cantonese to '광둥어' in Korean mode without parentheses", () => {
+    it("standardizes Cantonese to '광둥어' in Korean mode without parentheses and '粵語' in Cantonese mode", () => {
       const yue = languages.find((l) => l.code === "yue")!;
       expect(yue.name).toBe("광둥어");
+      expect(yue.nativeName).toBe("粵語");
       expect(yue.name).not.toContain("광동어");
       expect(yue.name).not.toContain("(");
       expect(yue.name).not.toContain(")");
 
+      // In Korean mode: '광둥어\n粵語'
       const formattedYueInKo = formatLanguageName(yue, "ko");
       const lines = formattedYueInKo.split("\n");
       expect(lines).toHaveLength(2);
       expect(lines[0]).toBe("광둥어");
       expect(lines[1]).toBe("粵語");
+
+      // In Cantonese (yue) mode: must be exactly '粵語' on 1 line (not '廣東話')
+      expect(getLanguageNameInLocale("yue", "yue")).toBe("粵語");
+      expect(getLanguageNameInLocale("yue", "yue")).not.toContain("廣東話");
+      const formattedYueInYue = formatLanguageName(yue, "yue");
+      expect(formattedYueInYue).toBe("粵語");
+      expect(formattedYueInYue).not.toContain("\n");
+      expect(formattedYueInYue).not.toContain("廣東話");
+
+      // In Traditional Chinese (zh-Hant) mode: must also be '粵語'
+      expect(getLanguageNameInLocale("yue", "zh-Hant")).toBe("粵語");
+      expect(getLanguageNameInLocale("yue", "zh-Hant")).not.toContain("廣東話");
     });
 
     it("applies 2-line formatting consistently even for RTL languages", () => {

@@ -107,8 +107,10 @@ export function LanguageSwitcher({
             aria-label={scriptMeta.script1Name}
             aria-pressed={context.script === scriptMeta.script1}
           >
-            <span className="font-mono text-xs font-black">{scriptMeta.script1Icon}</span>
-            <span className="text-[11px] sm:text-xs">{scriptMeta.script1Label}</span>
+            <span className="font-mono text-xs sm:text-sm font-black">{scriptMeta.script1Icon}</span>
+            {scriptMeta.script1Label ? (
+              <span className="text-[11px] sm:text-xs">{scriptMeta.script1Label}</span>
+            ) : null}
           </button>
           <button
             type="button"
@@ -122,8 +124,10 @@ export function LanguageSwitcher({
             aria-label={scriptMeta.script2Name}
             aria-pressed={context.script === scriptMeta.script2}
           >
-            <span className="font-mono text-xs font-black">{scriptMeta.script2Icon}</span>
-            <span className="text-[11px] sm:text-xs">{scriptMeta.script2Label}</span>
+            <span className="font-mono text-xs sm:text-sm font-black">{scriptMeta.script2Icon}</span>
+            {scriptMeta.script2Label ? (
+              <span className="text-[11px] sm:text-xs">{scriptMeta.script2Label}</span>
+            ) : null}
           </button>
         </div>
       )}
