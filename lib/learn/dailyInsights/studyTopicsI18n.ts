@@ -119,22 +119,10 @@ export function resolveStudyTopicI18n(
 
   const season = hasExact ? 1 : Math.floor((num - 1) / 36) + 1;
 
-  // Normalize language key
+  // Normalize language key with full 89-language support
   const isHant = locale === "zh-Hant" || locale === "zt" || locale === "zh-HK" || locale === "zh-TW";
-  const lang =
-    locale === "vi"
-      ? "vi"
-      : locale === "ja"
-      ? "ja"
-      : locale === "zh-Hans" || locale === "zh-CN" || locale === "zh"
-      ? "zh-Hans"
-      : isHant
-      ? "zh-Hans"
-      : locale === "es"
-      ? "es"
-      : locale === "fr"
-      ? "fr"
-      : "en";
+  const normLocale = locale === "zs" || locale === "zh" || locale === "zh-CN" ? "zh-Hans" : (isHant ? "zh-Hant" : locale);
+  const lang = entry.title?.[normLocale] ? normLocale : (isHant && entry.title?.["zh-Hans"] ? "zh-Hans" : (entry.title?.en ? "en" : "ko"));
 
   let title = entry.title?.[lang] || entry.title?.en || item.title;
   let summary = entry.summary?.[lang] || entry.summary?.en || item.summary;

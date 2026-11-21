@@ -9,7 +9,7 @@ import { useRegion } from "@/lib/region/RegionContext";
 import { getRegionUIText, getLocalizedGunguList } from "@/lib/region/regionLocalization";
 import { dictionaries } from "@/messages";
 import { SUPPORT_CATEGORIES } from "@/lib/support/supportStore";
-import { getProblemOptionsForService } from "@/lib/request/problemChecklists";
+import { getProblemOptionsForService, fetchProblemOptions } from "@/lib/request/problemChecklists";
 import { getServiceBadge } from "@/lib/services";
 
 // 10 Services Exact Color Codes Order:
@@ -216,6 +216,15 @@ export function SupportServiceView({
   const [seekerMemo, setSeekerMemo] = useState("");
   const [notSent, setNotSent] = useState(false);
   const [seekerError, setSeekerError] = useState("");
+  const [optionsTick, setOptionsTick] = useState(0);
+
+  useEffect(() => {
+    if (locale !== "ko" && locale !== "en" && locale !== "vi" && locale !== "zh-Hans" && locale !== "zh-Hant" && locale !== "yue") {
+      fetchProblemOptions(locale).then((data) => {
+        if (data) setOptionsTick((t) => t + 1);
+      });
+    }
+  }, [locale]);
 
   const checklistOptions = useMemo(() => {
     const problemOpts = getProblemOptionsForService(slug, locale);
@@ -230,7 +239,7 @@ export function SupportServiceView({
     if (locale === "vi") return categoryMeta.checklistOptionsVi;
     if (locale === "en") return categoryMeta.checklistOptionsEn;
     return categoryMeta.checklistOptionsKo;
-  }, [categoryMeta, slug, locale]);
+  }, [categoryMeta, slug, locale, optionsTick]);
 
   // Dynamic Hero Information based on active tab
   const isProviderTab = activeTab === "provider";

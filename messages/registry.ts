@@ -410,6 +410,9 @@ export const PCM_LOCALIZED_NAMES: Record<string, string> = {
   "ku": "Pîcîna Nîjeryayî"
 };
 
+import languageNamesData from "./languageNames.json";
+const STATIC_LANGUAGE_NAMES: Record<string, Record<string, string>> = languageNamesData as unknown as Record<string, Record<string, string>>;
+
 export function getLanguageNameInLocale(langCode: string, targetLocale: Locale | string = "ko"): string {
   // 1. Curated overrides for languages with incomplete or colloquial Intl.DisplayNames coverage
   if (langCode === "yue") {
@@ -428,6 +431,8 @@ export function getLanguageNameInLocale(langCode: string, targetLocale: Locale |
     const found = languages.find((l) => l.code === langCode);
     if (found) return found.name;
   }
+
+  // 2. Browser / runtime native Intl.DisplayNames (fast, zero memory overhead)
   try {
     const dn = new Intl.DisplayNames([targetLocale], { type: "language", fallback: "none" });
     const name = dn.of(langCode);
@@ -435,6 +440,13 @@ export function getLanguageNameInLocale(langCode: string, targetLocale: Locale |
   } catch {
     // fallback
   }
+
+  // 3. Static precompiled fallback table for languages where ICU data is absent
+  const byTarget = STATIC_LANGUAGE_NAMES[targetLocale];
+  if (byTarget && byTarget[langCode]) {
+    return byTarget[langCode];
+  }
+
   try {
     const dnEn = new Intl.DisplayNames(["en"], { type: "language", fallback: "none" });
     const nameEn = dnEn.of(langCode);

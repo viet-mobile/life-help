@@ -1905,7 +1905,6 @@ export function resolveLanguageFromHeaders(headersList: Headers): string {
   const rawLangHeader = headersList.get("x-life-language");
   if (rawLangHeader) {
     const lower = rawLangHeader.toLowerCase();
-    if (lower === "sg") return "fr";
     if (lower === "zt" || lower === "zh-hant") return "zh-Hant";
     if (lower === "zs" || lower === "zh" || lower === "zh-hans") return "zh-Hans";
     const match = locales.find((l) => l.toLowerCase() === lower);

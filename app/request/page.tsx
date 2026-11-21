@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { Suspense, useMemo, useState } from "react";
+import { Suspense, useMemo, useState, useEffect } from "react";
 import Link from "next/link";
 import PrivacyNotice from "@/components/customer/PrivacyNotice";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
@@ -16,7 +16,7 @@ import {
   romanizeKoreanRegion,
 } from "@/lib/region/regionLocalization";
 import { ApiError, customerApi } from "@/lib/service/client";
-import { getProblemOptionsForService } from "@/lib/request/problemChecklists";
+import { getProblemOptionsForService, fetchProblemOptions } from "@/lib/request/problemChecklists";
 import { languages } from "@/messages/registry";
 
 // 10 Services in exact requested order: 자주-분홍-주황-노랑-연두-민트-하늘-파랑-네이비-보라
@@ -247,10 +247,20 @@ function RequestPageContent() {
     return badge && !badge.startsWith("serviceBadge.") ? badge : fallback;
   };
 
+  const [optionsTick, setOptionsTick] = useState(0);
+
+  useEffect(() => {
+    if (locale !== "ko" && locale !== "en" && locale !== "vi" && locale !== "zh-Hans" && locale !== "zh-Hant" && locale !== "yue") {
+      fetchProblemOptions(locale).then((data) => {
+        if (data) setOptionsTick((t) => t + 1);
+      });
+    }
+  }, [locale]);
+
   const problemOptions = useMemo(
     () => getProblemOptionsForService(selectedSlug, locale, script),
     // eslint-disable-next-line react-hooks/preserve-manual-memoization -- hydrates from the server / browser cache after mount
-    [selectedSlug, locale, script]
+    [selectedSlug, locale, script, optionsTick]
   );
 
   const toggleProblemOption = (label: string) => {

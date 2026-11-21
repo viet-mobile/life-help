@@ -4,15 +4,15 @@ import { describe, expect, it } from "vitest";
 import { locales } from "@/messages/registry";
 import { SUPPORTED_LOCALE_COUNT, formatLocaleCount } from "@/lib/i18n/localeCount";
 
-describe("locale count has one source and Sango is fully retired", () => {
+describe("locale count has one source and Sango is an active language", () => {
   it("SUPPORTED_LOCALE_COUNT is the registry length", () => {
     expect(SUPPORTED_LOCALE_COUNT).toBe(locales.length);
     expect(formatLocaleCount("en")).toBe(String(locales.length));
   });
-  it("no sg dictionary or overlay is shipped", () => {
-    expect((locales as readonly string[]).includes("sg")).toBe(false);
+  it("sg dictionary and overlay are shipped as an active language", () => {
+    expect((locales as readonly string[]).includes("sg")).toBe(true);
     for (const p of ["lib/learn/i18n/locales/sg.json", "content/learn-overlays/sg", "messages/sg.json"]) {
-      expect(fs.existsSync(path.join(process.cwd(), p)), p).toBe(false);
+      expect(fs.existsSync(path.join(process.cwd(), p)), p).toBe(true);
     }
   });
 });

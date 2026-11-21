@@ -524,12 +524,6 @@ function buildInternalPath(
 }
 
 export async function proxy(request: NextRequest) {
-  const retiredSangoPath = request.nextUrl.pathname.match(/^(\/study\/(?:math|english|korean))?\/sg(?=\/|$)/);
-  if (retiredSangoPath) {
-    const target = request.nextUrl.clone();
-    target.pathname = target.pathname.replace(/\/sg(?=\/|$)/, "/fr");
-    return NextResponse.redirect(target, 308);
-  }
 
   // Learning presentation overlays (hints, explanations) are server-side content read through the ASSETS binding only; they are never
   // served to a browser (wrangler.jsonc makes /learn-content/* worker-first, and this refuses it on every host, also under next start).
