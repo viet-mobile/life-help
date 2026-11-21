@@ -87,7 +87,7 @@ export function formatCustomerDisplayName(
   if (locale === "vi") targetTerm = "Khách hàng";
   else if (locale === "ja") targetTerm = "お客様";
   else if (locale === "zh-Hans") targetTerm = "客户";
-  else if (locale === "zh-Hant") targetTerm = "客戶";
+  else if (locale === "zh-Hant" || locale === "yue") targetTerm = "客戶";
   else if (locale === "ru") targetTerm = "Клиент";
   else if (locale === "th") targetTerm = "ลูกค้า";
   else if (locale === "id") targetTerm = "Pelanggan";

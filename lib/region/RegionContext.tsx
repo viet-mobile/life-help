@@ -138,7 +138,7 @@ export function RegionProvider({
     };
   }, [initialCountry]);
 
-  const { locale, isBilingual } = useLocale();
+  const { locale, isBilingual, script } = useLocale();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = useCallback(() => setIsModalOpen(true), []);
@@ -158,8 +158,8 @@ export function RegionProvider({
     }
   }, []);
 
-  const formattedRegion = getLocalizedAddress(selectedRegion, locale, isBilingual);
-  const shortRegionText = getLocalizedShortAddress(selectedRegion, locale, isBilingual);
+  const formattedRegion = getLocalizedAddress(selectedRegion, locale, isBilingual, script);
+  const shortRegionText = getLocalizedShortAddress(selectedRegion, locale, isBilingual, script);
 
   return (
     <RegionContext.Provider
@@ -224,7 +224,7 @@ function RegionSelectorModal({
   domainCountryCode: CountryCode;
   onSelect: (region: RegionItem) => void;
 }) {
-  const { locale, isBilingual } = useLocale();
+  const { locale, isBilingual, script } = useLocale();
 
   const [country, setCountry] = useState<CountryCode>(() => {
     return currentRegion.country || domainCountryCode || "KR";
@@ -256,9 +256,9 @@ function RegionSelectorModal({
   }, [isOpen, currentRegion, domainCountryCode]);
 
   const countryInfo = useMemo(() => getCountryInfo(country), [country]);
-  const sidoList = useMemo(() => getLocalizedSidoList(locale, isBilingual, country), [locale, isBilingual, country]);
-  const gunguList = useMemo(() => getLocalizedGunguList(sido, locale, isBilingual, country), [sido, locale, isBilingual, country]);
-  const dongList = useMemo(() => getLocalizedDongList(sido, gungu, locale, isBilingual, country), [sido, gungu, locale, isBilingual, country]);
+  const sidoList = useMemo(() => getLocalizedSidoList(locale, isBilingual, country, script), [locale, isBilingual, country, script]);
+  const gunguList = useMemo(() => getLocalizedGunguList(sido, locale, isBilingual, country, script), [sido, locale, isBilingual, country, script]);
+  const dongList = useMemo(() => getLocalizedDongList(sido, gungu, locale, isBilingual, country, script), [sido, gungu, locale, isBilingual, country, script]);
   const categoryHeaders = useMemo(() => getRegionCategoryHeaders(locale, isBilingual), [locale, isBilingual]);
 
   // Country sorting: Default domain country at the top, others sorted in dictionary order of current locale
@@ -278,15 +278,15 @@ function RegionSelectorModal({
   const handleCountryClick = (newCountry: CountryCode) => {
     if (newCountry === country) return;
     setCountry(newCountry);
-    const newSidos = getLocalizedSidoList(locale, isBilingual, newCountry);
+    const newSidos = getLocalizedSidoList(locale, isBilingual, newCountry, script);
     if (newSidos.length > 0) {
       const firstSido = newSidos[0].key;
       setSido(firstSido);
-      const newGungus = getLocalizedGunguList(firstSido, locale, isBilingual, newCountry);
+      const newGungus = getLocalizedGunguList(firstSido, locale, isBilingual, newCountry, script);
       if (newGungus.length > 0) {
         const firstGungu = newGungus[0].key;
         setGungu(firstGungu);
-        const newDongs = getLocalizedDongList(firstSido, firstGungu, locale, isBilingual, newCountry);
+        const newDongs = getLocalizedDongList(firstSido, firstGungu, locale, isBilingual, newCountry, script);
         setDong(newDongs[0]?.key || "");
       } else {
         setGungu("");
@@ -302,11 +302,11 @@ function RegionSelectorModal({
 
   const handleSidoClick = (sidoName: string) => {
     setSido(sidoName);
-    const newGungus = getLocalizedGunguList(sidoName, locale, isBilingual, country);
+    const newGungus = getLocalizedGunguList(sidoName, locale, isBilingual, country, script);
     if (newGungus.length > 0) {
       const firstGungu = newGungus[0].key;
       setGungu(firstGungu);
-      const newDongs = getLocalizedDongList(sidoName, firstGungu, locale, isBilingual, country);
+      const newDongs = getLocalizedDongList(sidoName, firstGungu, locale, isBilingual, country, script);
       setDong(newDongs[0]?.key || "");
     } else {
       setGungu("");
@@ -317,7 +317,7 @@ function RegionSelectorModal({
 
   const handleGunguClick = (gunguName: string) => {
     setGungu(gunguName);
-    const newDongs = getLocalizedDongList(sido, gunguName, locale, isBilingual, country);
+    const newDongs = getLocalizedDongList(sido, gunguName, locale, isBilingual, country, script);
     if (newDongs.length > 0) {
       setDong(newDongs[0].key);
     } else {

@@ -18,6 +18,7 @@
 import { type RegionItem, koreanRegions, findSido, findGungu, getCountryRegions } from "./regions";
 import { type CountryCode, getCountryInfo } from "./countries";
 import { COMPLETE_DONG_HANJA } from "./dongHanjaData";
+import type { ScriptType } from "@/lib/i18n/scriptConverter";
 import {
   type RegionUITexts,
   type RegionCategoryHeaders,
@@ -1029,14 +1030,20 @@ export function getNativeRegionName(
   koreanName: string,
   englishName: string,
   locale: string,
-  level: "sido" | "gungu" | "dong"
+  level: "sido" | "gungu" | "dong",
+  script?: ScriptType
 ): string {
   if (locale === "ko") return koreanName;
   if (locale === "en") return englishName;
 
   // 1. Check Sido exact match
   if (level === "sido" && SIDO_DATA[koreanName]) {
-    const loc = SIDO_DATA[koreanName].locales[locale];
+    const sLoc = SIDO_DATA[koreanName].locales;
+    if (locale === "yue") {
+      const val = (script === "hans" ? sLoc["zh-Hans"] : sLoc["zh-Hant"]) || sLoc["zh-Hant"] || sLoc["zh-Hans"];
+      if (val) return val;
+    }
+    const loc = sLoc[locale];
     if (loc) return loc;
   }
 
@@ -1045,6 +1052,10 @@ export function getNativeRegionName(
     const g = GUNGU_DATA[koreanName];
     if (locale === "zh-Hans" && g.hanzi) return g.hanzi;
     if (locale === "zh-Hant" && (g.zht || g.hanzi)) return (g.zht || g.hanzi)!;
+    if (locale === "yue") {
+      if (script === "hans" && g.hanzi) return g.hanzi;
+      if (g.zht || g.hanzi) return (g.zht || g.hanzi)!;
+    }
     if (locale === "ja" && g.ja) return g.ja;
   }
 
@@ -1053,6 +1064,10 @@ export function getNativeRegionName(
     const d = COMPLETE_DONG_HANJA[koreanName];
     if (locale === "zh-Hans") return d.zh;
     if (locale === "zh-Hant") return d.zht;
+    if (locale === "yue") {
+      if (script === "hans" && d.zh) return d.zh;
+      return d.zht || d.zh;
+    }
     if (locale === "ja") return d.ja;
   }
 
@@ -1149,13 +1164,14 @@ export function sortRegionsByLocale<T>(
 export function getLocalizedSidoList(
   locale: string,
   isBilingual: boolean = false,
-  country: CountryCode = "KR"
+  country: CountryCode = "KR",
+  script?: ScriptType
 ): LocalizedRegionOption[] {
   if (country === "KR") {
     const options: LocalizedRegionOption[] = koreanRegions.map((s) => {
       const ko = s.name;
       const en = SIDO_DATA[ko]?.en || romanizeKoreanRegion(ko);
-      const native = getNativeRegionName(ko, en, locale, "sido");
+      const native = getNativeRegionName(ko, en, locale, "sido", script);
       const display = formatRegionDisplay(native, en, ko, locale, isBilingual);
       const sortKey = locale === "ko" ? ko : native;
 
@@ -1191,7 +1207,8 @@ export function getLocalizedGunguList(
   sidoName: string,
   locale: string,
   isBilingual: boolean = false,
-  country: CountryCode = "KR"
+  country: CountryCode = "KR",
+  script?: ScriptType
 ): LocalizedRegionOption[] {
   const sData = findSido(sidoName, country);
   if (!sData) return [];
@@ -1200,7 +1217,7 @@ export function getLocalizedGunguList(
     const options: LocalizedRegionOption[] = sData.gunguList.map((g) => {
       const ko = g.name;
       const en = GUNGU_DATA[ko]?.en || romanizeKoreanRegion(ko);
-      const native = getNativeRegionName(ko, en, locale, "gungu");
+      const native = getNativeRegionName(ko, en, locale, "gungu", script);
       const display = formatRegionDisplay(native, en, ko, locale, isBilingual);
       const sortKey = locale === "ko" ? ko : native;
 
@@ -1236,7 +1253,8 @@ export function getLocalizedDongList(
   gunguName: string,
   locale: string,
   isBilingual: boolean = false,
-  country: CountryCode = "KR"
+  country: CountryCode = "KR",
+  script?: ScriptType
 ): LocalizedRegionOption[] {
   const gData = findGungu(sidoName, gunguName, country);
   if (!gData) return [];
@@ -1245,7 +1263,7 @@ export function getLocalizedDongList(
     const options: LocalizedRegionOption[] = gData.dongs.map((d) => {
       const ko = d;
       const en = romanizeKoreanRegion(ko);
-      const native = getNativeRegionName(ko, en, locale, "dong");
+      const native = getNativeRegionName(ko, en, locale, "dong", script);
       const display = formatRegionDisplay(native, en, ko, locale, isBilingual);
       const sortKey = locale === "ko" ? ko : native;
 
@@ -1279,7 +1297,8 @@ export function getLocalizedDongList(
 export function getLocalizedAddress(
   region: RegionItem,
   locale: string,
-  isBilingual: boolean = false
+  isBilingual: boolean = false,
+  script?: ScriptType
 ): string {
   const country = region.country || "KR";
   const { sido, gungu, dong } = region;
@@ -1304,13 +1323,13 @@ export function getLocalizedAddress(
   }
 
   const sidoEn = SIDO_DATA[sido]?.en || romanizeKoreanRegion(sido);
-  const sidoNative = getNativeRegionName(sido, sidoEn, locale, "sido");
+  const sidoNative = getNativeRegionName(sido, sidoEn, locale, "sido", script);
 
   const gunguEn = GUNGU_DATA[gungu]?.en || romanizeKoreanRegion(gungu);
-  const gunguNative = getNativeRegionName(gungu, gunguEn, locale, "gungu");
+  const gunguNative = getNativeRegionName(gungu, gunguEn, locale, "gungu", script);
 
   const dongEn = romanizeKoreanRegion(dong);
-  const dongNative = getNativeRegionName(dong, dongEn, locale, "dong");
+  const dongNative = getNativeRegionName(dong, dongEn, locale, "dong", script);
 
   const nativeCombined = `${sidoNative} ${gunguNative} ${dongNative}`.trim();
   const enCombined = `${sidoEn} ${gunguEn} ${dongEn}`.trim();
@@ -1325,7 +1344,8 @@ export function getLocalizedAddress(
 export function getLocalizedShortAddress(
   region: RegionItem,
   locale: string,
-  isBilingual: boolean = false
+  isBilingual: boolean = false,
+  script?: ScriptType
 ): string {
   const country = region.country || "KR";
   const { gungu, dong } = region;
@@ -1350,10 +1370,10 @@ export function getLocalizedShortAddress(
   }
 
   const gunguEn = GUNGU_DATA[gungu]?.en || romanizeKoreanRegion(gungu);
-  const gunguNative = getNativeRegionName(gungu, gunguEn, locale, "gungu");
+  const gunguNative = getNativeRegionName(gungu, gunguEn, locale, "gungu", script);
 
   const dongEn = romanizeKoreanRegion(dong);
-  const dongNative = getNativeRegionName(dong, dongEn, locale, "dong");
+  const dongNative = getNativeRegionName(dong, dongEn, locale, "dong", script);
 
   const nativeCombined = `${gunguNative} ${dongNative}`.trim();
   const enCombined = `${gunguEn} ${dongEn}`.trim();

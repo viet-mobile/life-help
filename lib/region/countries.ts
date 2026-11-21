@@ -505,7 +505,7 @@ const CLDR_COUNTRY_NAMES: Readonly<Record<string, Readonly<Record<string, string
 };
 
 /** Locales without ICU region-name data, mapped to the closest locale that has it (tet: Portuguese is co-official in Timor-Leste). */
-const DISPLAY_NAME_LOCALE_FALLBACKS: Record<string, readonly string[]> = { tet: ["pt"], arz: ["ar"] };
+const DISPLAY_NAME_LOCALE_FALLBACKS: Record<string, readonly string[]> = { tet: ["pt"], arz: ["ar"], yue: ["zh-Hant", "zh"] };
 
 /**
  * Returns ONLY the localized country name (WITHOUT flag prepended),
@@ -533,7 +533,7 @@ export function getCountryDisplayName(country: CountryInfo, locale: string): str
   if (locale === "ko") return country.nameKo;
   if (locale === "en") return country.nameEn;
   if (locale === "vi" && country.code === "VN") return country.nameNative;
-  if ((locale === "zh-Hans" || locale === "zh-Hant") && (country.code === "CN" || country.code === "TW")) {
+  if ((locale === "zh-Hans" || locale === "zh-Hant" || locale === "yue") && (country.code === "CN" || country.code === "TW" || country.code === "HK")) {
     return country.nameNative;
   }
   if (locale === "ja" && country.code === "JP") return country.nameNative;

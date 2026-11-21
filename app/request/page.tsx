@@ -215,7 +215,7 @@ function getNormalizedSlug(rawSlug: string): string {
 function RequestPageContent() {
   const searchParams = useSearchParams();
   const slugFromUrl = searchParams.get("service") ?? "";
-  const { locale, t, tKo, formatBilingual, isBilingual } = useLocale();
+  const { locale, script, t, tKo, formatBilingual, isBilingual } = useLocale();
   const isKorean = locale === "ko";
   const currentMeta = languages.find((l) => l.code === locale);
 
@@ -248,9 +248,9 @@ function RequestPageContent() {
   };
 
   const problemOptions = useMemo(
-    () => getProblemOptionsForService(selectedSlug, locale),
+    () => getProblemOptionsForService(selectedSlug, locale, script),
     // eslint-disable-next-line react-hooks/preserve-manual-memoization -- hydrates from the server / browser cache after mount
-    [selectedSlug, locale]
+    [selectedSlug, locale, script]
   );
 
   const toggleProblemOption = (label: string) => {

@@ -1,3 +1,5 @@
+import { convertScript, type ScriptType } from "@/lib/i18n/scriptConverter";
+
 export interface ProblemOption {
   id: string;
   ko: string;
@@ -838,7 +840,11 @@ export const SERVICE_PROBLEM_OPTIONS: Record<string, ProblemOption[]> = {
 /**
  * Returns the checklist options for a service slug in the user's locale
  */
-export function getProblemOptionsForService(slug: string, locale: string): { id: string; label: string; ko: string; translated: string }[] {
+export function getProblemOptionsForService(
+  slug: string,
+  locale: string,
+  script?: string
+): { id: string; label: string; ko: string; translated: string }[] {
   // Normalize slug aliases
   let targetSlug = slug.toLowerCase();
   if (targetSlug.includes("clog") || targetSlug.includes("toilet") || targetSlug.includes("sink") || targetSlug.includes("drain")) {
@@ -871,6 +877,9 @@ export function getProblemOptionsForService(slug: string, locale: string): { id:
       text = item.ko;
     } else if (locale === "vi") {
       text = item.vi || item.en || item.ko;
+    } else if (locale === "yue") {
+      const baseZh = script === "hans" ? (item.zh || item["zh-Hant"]) : (item["zh-Hant"] || item.zh);
+      text = baseZh ? convertScript(baseZh, "yue", (script as ScriptType) || "hant") : (item.en || item.ko);
     } else if (locale === "zh-Hant" || locale === "zt") {
       text = item["zh-Hant"] || item.zhHant || item.zh || item.en || item.ko;
     } else if (locale.startsWith("zh")) {

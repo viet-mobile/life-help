@@ -9,7 +9,7 @@ const OG_LOCALE: Record<string, string> = {
   hi: "hi_IN", km: "km_KH", th: "th_TH", my: "my_MM", ja: "ja_JP", id: "id_ID", si: "si_LK", kk: "kk_KZ", bn: "bn_BD", ta: "ta_IN",
   fr: "fr_FR", de: "de_DE", tr: "tr_TR", uk: "uk_UA", tet: "tet_TL", ar: "ar_AR", it: "it_IT", arz: "ar_EG", es: "es_ES", fa: "fa_IR",
   nl: "nl_NL", pl: "pl_PL", am: "am_ET", sv: "sv_SE", he: "he_IL", da: "da_DK", no: "nb_NO", el: "el_GR", pt: "pt_PT", ur: "ur_PK",
-  sw: "sw_KE", mr: "mr_IN", gu: "gu_IN", pa: "pa_IN", te: "te_IN", kn: "kn_IN", ml: "ml_IN",
+  sw: "sw_KE", mr: "mr_IN", gu: "gu_IN", pa: "pa_IN", te: "te_IN", kn: "kn_IN", ml: "ml_IN", yue: "zh_HK",
 };
 
 const OG_LOCALE_BY_COUNTRY: Record<string, Record<string, string>> = {
