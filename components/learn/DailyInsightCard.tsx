@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { DailyInsight, DomainType, getInsightLocaleData, getDailyInsight } from "@/lib/learn/dailyInsights";
+import { DailyInsight, DomainType, getInsightLocaleData, getDailyInsight, resolveActionLink } from "@/lib/learn/dailyInsights";
 import { studyUrl, StudySubject } from "@/lib/home/studyHosts";
 import type { Locale } from "@/messages/registry";
 import { useLocale } from "@/lib/i18n/LocaleContext";
@@ -84,6 +84,8 @@ export function DailyInsightCard({ domain, insight: initialInsight, locale: prop
   const insight = mounted
     ? getDailyInsight(domain, new Date(), activeLocale)
     : initialInsight;
+
+  const officialLink = resolveActionLink(insight);
 
   const effectiveSecondaryLocale = secondaryLocale || (isBilingual && !isKo ? "ko" : null);
   const insightSecondary = mounted && isBilingual && effectiveSecondaryLocale && effectiveSecondaryLocale !== activeLocale
@@ -220,23 +222,57 @@ export function DailyInsightCard({ domain, insight: initialInsight, locale: prop
         </div>
 
         {/* Action Item Box */}
-        <div className="rounded-xl bg-slate-900 p-3 text-white flex items-start gap-2.5 shadow-sm">
-          <span className="text-sm shrink-0 mt-0.5">🎯</span>
-          <div className="min-w-0 flex-1">
-            <span suppressHydrationWarning className="block text-[10px] font-black uppercase text-amber-300 tracking-wider">
-              {uiActionTitle}
-              {isBilingual && insightSecondary && <span className="ml-1 text-[9px] text-amber-400/80 font-normal">· {effectiveSecondaryLocale === "ko" ? "오늘 실천 행동" : "Action Item"}</span>}
-            </span>
-            <span suppressHydrationWarning className="block text-xs sm:text-sm font-semibold text-slate-100 mt-0.5">
-              {insight.actionItem}
-            </span>
-            {isBilingual && insightSecondary?.actionItem && insightSecondary.actionItem !== insight.actionItem && (
-              <span suppressHydrationWarning className="block text-xs font-medium text-amber-200/90 mt-1">
-                {insightSecondary.actionItem}
+        {officialLink ? (
+          <a
+            href={officialLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block rounded-xl bg-slate-900 p-3 text-white shadow-sm transition hover:bg-slate-800 hover:ring-2 hover:ring-blue-400 cursor-pointer active:scale-[0.99]"
+            title={isKo ? "공식 사이트로 이동" : "Visit official authoritative website"}
+          >
+            <div className="flex items-start gap-2.5">
+              <span className="text-sm shrink-0 mt-0.5">🎯</span>
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center justify-between gap-1.5 flex-wrap">
+                  <span suppressHydrationWarning className="block text-[10px] font-black uppercase text-amber-300 tracking-wider">
+                    {uiActionTitle}
+                    {isBilingual && insightSecondary && <span className="ml-1 text-[9px] text-amber-400/80 font-normal">· {effectiveSecondaryLocale === "ko" ? "오늘 실천 행동" : "Action Item"}</span>}
+                  </span>
+                  <span className="inline-flex items-center gap-1 rounded bg-blue-600/90 group-hover:bg-blue-500 px-1.5 py-0.5 text-[10px] font-bold text-white transition shrink-0 shadow-2xs">
+                    <span>{isKo ? "공식 사이트 바로가기" : "Official Website"}</span>
+                    <span aria-hidden="true">↗</span>
+                  </span>
+                </div>
+                <span suppressHydrationWarning className="block text-xs sm:text-sm font-semibold text-slate-100 mt-1 group-hover:text-blue-100 transition">
+                  {insight.actionItem}
+                </span>
+                {isBilingual && insightSecondary?.actionItem && insightSecondary.actionItem !== insight.actionItem && (
+                  <span suppressHydrationWarning className="block text-xs font-medium text-amber-200/90 mt-1">
+                    {insightSecondary.actionItem}
+                  </span>
+                )}
+              </div>
+            </div>
+          </a>
+        ) : (
+          <div className="rounded-xl bg-slate-900 p-3 text-white flex items-start gap-2.5 shadow-sm">
+            <span className="text-sm shrink-0 mt-0.5">🎯</span>
+            <div className="min-w-0 flex-1">
+              <span suppressHydrationWarning className="block text-[10px] font-black uppercase text-amber-300 tracking-wider">
+                {uiActionTitle}
+                {isBilingual && insightSecondary && <span className="ml-1 text-[9px] text-amber-400/80 font-normal">· {effectiveSecondaryLocale === "ko" ? "오늘 실천 행동" : "Action Item"}</span>}
               </span>
-            )}
+              <span suppressHydrationWarning className="block text-xs sm:text-sm font-semibold text-slate-100 mt-0.5">
+                {insight.actionItem}
+              </span>
+              {isBilingual && insightSecondary?.actionItem && insightSecondary.actionItem !== insight.actionItem && (
+                <span suppressHydrationWarning className="block text-xs font-medium text-amber-200/90 mt-1">
+                  {insightSecondary.actionItem}
+                </span>
+              )}
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       {/* Footer Controls */}

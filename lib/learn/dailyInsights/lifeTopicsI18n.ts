@@ -35,7 +35,7 @@ export const LIFE_TOPICS_I18N: Record<string, TopicI18nEntry> = {
     summary: {"en": "Practical guidance for 국민취업지원제도 구직촉진수당 월 50만 원 to optimize everyday decisions and reduce costs."},
     principle: {"en": "구직 청년 및 취업준비생에게 매월 50만 원씩 6개월간 최대 300만 원 지원"},
     example: {"en": "1:1 취업 컨설팅, 이력서 첨삭, 직업훈련 연계 프로그램 제공"},
-    actionItem: {"en": "고용24 사이트에서 국민취업지원제도 1유형 신청 자격을 조회하세요."},
+    actionItem: {"en": "고용24 사이트에서 국민취업지원제도(구직촉진수당) 신청 자격을 조회하세요."},
   },
   "만성 피로 잡는 카페인 반감기와 수면 위생": {
     title: {"en": "만성 피로 잡는 카페인 반감기와 수면 위생 (Practical Life Guide)"},
