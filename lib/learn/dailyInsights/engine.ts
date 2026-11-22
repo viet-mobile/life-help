@@ -157,6 +157,13 @@ export function getDailyInsight(domain: DomainType | string, date: Date = new Da
     item.categoryLabel = item.categoryLabelKo || item.category;
   }
 
+  // Remove redundant season and guide suffixes (e.g. (시즌 10 심화 가이드), (Season 10 Advanced Guide), (Practical Math Guide), etc.)
+  item.title = item.title
+    .replace(/\s*\([시즌SeasonPhần第]+[\s\d\w가-힣（）·-]*가이드[\s\)]*/gi, "")
+    .replace(/\s*\(시즌\s*\d+\s*심화\s*가이드\)/gi, "")
+    .replace(/\s*\([A-Za-z\s]+Guide\)/gi, "")
+    .replace(/\s*\(Season\s*\d+[^)]*\)/gi, "")
+    .trim();
   item.title = cleanFormulaText(item.title);
   item.summary = cleanFormulaText(item.summary);
   item.principle = cleanFormulaText(item.principle);

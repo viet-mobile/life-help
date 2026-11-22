@@ -130,18 +130,7 @@ export function resolveStudyTopicI18n(
   const example = entry.example?.[lang] || entry.example?.en || item.example;
   const actionItem = entry.actionItem?.[lang] || entry.actionItem?.en || item.actionItem;
 
-  // Localized season suffix if beyond Season 1
-  if (season > 1) {
-    if (lang === "vi") {
-      title = `${title} (Phần ${season} Hướng dẫn nâng cao)`;
-    } else if (lang === "zh-Hans") {
-      title = `${title}（第${season}季进阶指南）`;
-    } else if (lang === "ja") {
-      title = `${title}（シーズン${season} 応用ガイド）`;
-    } else {
-      title = `${title} (Season ${season} Advanced Guide)`;
-    }
-  }
+  // Season suffix completely removed per user instruction
 
   const catMap = CATEGORY_TRANSLATIONS[item.category];
   const categoryLabel = catMap ? catMap[lang] || catMap.en : undefined;
