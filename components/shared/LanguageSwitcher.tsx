@@ -82,7 +82,7 @@ export function LanguageSwitcher({
               dir="ltr"
               className="text-slate-900 bg-white text-left whitespace-pre py-1"
             >
-              {formatLanguageName(lang, currentLocale, isKoreanBilingual)}
+              {formatLanguageName(lang, currentLocale, false)}
             </option>
           ))}
         </select>

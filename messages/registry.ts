@@ -506,19 +506,23 @@ export function formatLanguageName(
   const left = getLanguageNameInLocale(meta.code, currentLocale);
   const right = currentLocale === "zh-Hant" && meta.code === "zh-Hans" ? "簡體中文" : meta.nativeName;
 
-  if (isBilingual && currentLocale !== "ko") {
-    if (meta.code === currentLocale) {
-      return `${left} (${meta.name})`;
-    }
-    if (left.trim() === right.trim()) {
-      return `${left} (${meta.name})`;
-    }
-    return `${left} (${meta.name})\n${right}`;
-  }
-
   // 최상단 현재 선택 언어이거나 두 언어명이 동일한 경우 중복 표기 없이 1번만 표기
   if (meta.code === currentLocale || left.trim() === right.trim()) {
     return left;
+  }
+
+  // 병기 모드 (isBilingual) 활성화 시 한국어명(meta.name) 추가:
+  // 단, 한국어(ko) 항목이거나 원어명(right) 또는 현재번역명(left)과 한국어명이 같거나 겹칠 경우
+  // "(한국어) 한국어" 등의 이상한 중복 표기를 원천 차단하기 위해 괄호를 붙이지 않음.
+  if (isBilingual && currentLocale !== "ko") {
+    const isKoreanDuplicate =
+      meta.code === "ko" ||
+      right.trim() === meta.name.trim() ||
+      left.trim() === meta.name.trim();
+
+    if (!isKoreanDuplicate) {
+      return `${left} (${meta.name})\n${right}`;
+    }
   }
 
   // 선택 언어로 된 언어명(1행)과 해당 언어로 된 언어명(2행)을 2줄로 표기 (줄바꿈 1줄씩만)

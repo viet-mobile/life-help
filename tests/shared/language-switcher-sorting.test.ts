@@ -227,5 +227,27 @@ describe("Language selection list: sorting and display specifications", () => {
         }
       }
     });
+
+    it("Rule 4: Never emits redundant duplicate parentheses such as (한국어) 한국어", () => {
+      const koMeta = languages.find((l) => l.code === "ko")!;
+
+      // In Galician (gl), Korean should be "Coreano\n한국어", NOT "Coreano (한국어) 한국어"
+      const formattedInGl = formatLanguageName(koMeta, "gl", false);
+      expect(formattedInGl).toBe("Coreano\n한국어");
+      expect(formattedInGl).not.toContain("(한국어)");
+
+      const formattedInGlBilingual = formatLanguageName(koMeta, "gl", true);
+      expect(formattedInGlBilingual).toBe("Coreano\n한국어");
+      expect(formattedInGlBilingual).not.toContain("(한국어)");
+
+      // Across all 89 locales, formatting Korean must never yield "(한국어) 한국어"
+      for (const loc of locales) {
+        const single = formatLanguageName(koMeta, loc, false);
+        const bilingual = formatLanguageName(koMeta, loc, true);
+
+        expect(single).not.toContain("(한국어) 한국어");
+        expect(bilingual).not.toContain("(한국어) 한국어");
+      }
+    });
   });
 });
