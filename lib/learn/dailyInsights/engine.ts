@@ -1,3 +1,4 @@
+import { cleanFormulaText } from "./cleanFormula";
 import { DailyInsight, DomainType } from "./types";
 import { INSIGHT_MAP } from "./data";
 import { DAILY_INSIGHT_LOCALES, getInsightLocaleData } from "./localesData";
@@ -155,6 +156,12 @@ export function getDailyInsight(domain: DomainType | string, date: Date = new Da
   if (!item.categoryLabel) {
     item.categoryLabel = item.categoryLabelKo || item.category;
   }
+
+  item.title = cleanFormulaText(item.title);
+  item.summary = cleanFormulaText(item.summary);
+  item.principle = cleanFormulaText(item.principle);
+  item.example = cleanFormulaText(item.example);
+  item.actionItem = cleanFormulaText(item.actionItem);
 
   return item;
 }
