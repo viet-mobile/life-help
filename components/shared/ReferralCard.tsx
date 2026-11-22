@@ -224,33 +224,33 @@ export function ReferralCard({ compact = false }: { compact?: boolean }) {
     <section className="rounded-3xl border border-indigo-200/90 bg-linear-to-br from-indigo-50/80 via-white to-purple-50/60 p-5 sm:p-6 shadow-md space-y-4">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div className="flex items-center gap-2.5">
-          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-indigo-600 text-xl text-white shadow-sm">
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-indigo-600 text-2xl text-white shadow-sm">
             🤝
           </span>
           <div>
-            <h2 className="text-base sm:text-lg font-black text-slate-900 leading-snug">
+            <h2 className="text-base sm:text-lg md:text-xl font-black text-slate-900 leading-snug">
               {texts.title}
             </h2>
-            <p className="text-xs font-medium text-slate-500">
+            <p className="text-xs sm:text-sm font-medium text-slate-600">
               {texts.subtitle}
             </p>
           </div>
         </div>
         <div className="self-start sm:self-auto flex items-center gap-2">
-          <span className="rounded-full bg-indigo-100 px-3 py-1 text-xs font-black text-indigo-800 border border-indigo-200">
+          <span className="rounded-full bg-indigo-100 px-3.5 py-1.5 text-xs sm:text-sm font-black text-indigo-800 border border-indigo-200 shadow-2xs">
             {texts.myFeeBadge.replace("{fee}", feeDisplay)}
           </span>
         </div>
       </div>
 
       {/* Fee Progress Bar & Milestones */}
-      <div className="rounded-2xl border border-indigo-100 bg-white/90 p-4 space-y-2.5 shadow-2xs">
-        <div className="flex items-center justify-between text-xs font-bold">
-          <span className="text-slate-700 flex items-center gap-1.5">
+      <div className="rounded-2xl border border-indigo-100 bg-white/90 p-4 sm:p-5 space-y-3 shadow-2xs">
+        <div className="flex items-center justify-between text-xs sm:text-sm font-bold">
+          <span className="text-slate-800 flex items-center gap-1.5">
             <span>📉</span>
             <span>{texts.progressLabel.replace("{fee}", feeDisplay)}</span>
           </span>
-          <span className="font-extrabold text-indigo-600">
+          <span className="font-extrabold text-indigo-700">
             {texts.progressStatus
               .replace("{count}", String(inviteCount))
               .replace("{goal}", String(MAX_INVITE_GOAL))
@@ -263,7 +263,7 @@ export function ReferralCard({ compact = false }: { compact?: boolean }) {
             style={{ width: `${Math.max(1, progressPercent)}%` }}
           />
         </div>
-        <div className="flex items-center justify-between text-[11px] text-slate-500 pt-0.5">
+        <div className="flex items-center justify-between text-xs sm:text-sm font-semibold text-slate-600 pt-1">
           <span>
             {currentFee <= MIN_FEE_PERCENT
               ? texts.congratsLowest
@@ -278,47 +278,47 @@ export function ReferralCard({ compact = false }: { compact?: boolean }) {
         </div>
 
         {/* Milestone Steps Bar */}
-        <div className="grid grid-cols-3 sm:grid-cols-6 gap-1.5 pt-2 border-t border-slate-100 text-center">
-          <div className="rounded-lg bg-slate-50 p-1.5 border border-slate-200">
-            <span className="block text-[10px] text-slate-400">{texts.milestone0}</span>
-            <span className="text-xs font-black text-slate-700">10.00%</span>
+        <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 pt-2.5 border-t border-slate-100 text-center">
+          <div className="rounded-xl bg-slate-50 p-2 border border-slate-200">
+            <span className="block text-xs font-bold text-slate-500">{texts.milestone0}</span>
+            <span className="text-xs sm:text-sm font-black text-slate-800">10.00%</span>
           </div>
-          <div className="rounded-lg bg-indigo-50/70 p-1.5 border border-indigo-200">
-            <span className="block text-[10px] text-indigo-600 font-bold">{texts.milestone1}</span>
-            <span className="text-xs font-black text-indigo-900">9.99%</span>
+          <div className="rounded-xl bg-indigo-50/70 p-2 border border-indigo-200">
+            <span className="block text-xs font-bold text-indigo-700">{texts.milestone1}</span>
+            <span className="text-xs sm:text-sm font-black text-indigo-950">9.99%</span>
           </div>
-          <div className="rounded-lg bg-indigo-50/70 p-1.5 border border-indigo-200">
-            <span className="block text-[10px] text-indigo-600 font-bold">{texts.milestone10}</span>
-            <span className="text-xs font-black text-indigo-900">9.90%</span>
+          <div className="rounded-xl bg-indigo-50/70 p-2 border border-indigo-200">
+            <span className="block text-xs font-bold text-indigo-700">{texts.milestone10}</span>
+            <span className="text-xs sm:text-sm font-black text-indigo-950">9.90%</span>
           </div>
-          <div className="rounded-lg bg-indigo-50/70 p-1.5 border border-indigo-200">
-            <span className="block text-[10px] text-indigo-600 font-bold">{texts.milestone100}</span>
-            <span className="text-xs font-black text-indigo-900">9.00%</span>
+          <div className="rounded-xl bg-indigo-50/70 p-2 border border-indigo-200">
+            <span className="block text-xs font-bold text-indigo-700">{texts.milestone100}</span>
+            <span className="text-xs sm:text-sm font-black text-indigo-950">9.00%</span>
           </div>
-          <div className="rounded-lg bg-purple-50/70 p-1.5 border border-purple-200">
-            <span className="block text-[10px] text-purple-600 font-bold">{texts.milestone500}</span>
-            <span className="text-xs font-black text-purple-900">5.00%</span>
+          <div className="rounded-xl bg-purple-50/70 p-2 border border-purple-200">
+            <span className="block text-xs font-bold text-purple-700">{texts.milestone500}</span>
+            <span className="text-xs sm:text-sm font-black text-purple-950">5.00%</span>
           </div>
-          <div className="rounded-lg bg-purple-100 p-1.5 border border-purple-300">
-            <span className="block text-[10px] text-purple-700 font-black">{texts.milestone999}</span>
-            <span className="text-xs font-black text-purple-950">0.01%</span>
+          <div className="rounded-xl bg-purple-100 p-2 border border-purple-300">
+            <span className="block text-xs font-black text-purple-800">{texts.milestone999}</span>
+            <span className="text-xs sm:text-sm font-black text-purple-950">0.01%</span>
           </div>
         </div>
       </div>
 
       {/* Code & Link Section */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-        <div className="rounded-2xl border border-slate-200 bg-white p-3.5 flex items-center justify-between">
+        <div className="rounded-2xl border border-slate-200 bg-white p-3.5 flex items-center justify-between shadow-2xs">
           <div>
-            <span className="text-[11px] font-bold text-slate-400 block">{texts.myCodeLabel}</span>
-            <code className="text-base font-black text-indigo-700 tracking-wider">
+            <span className="text-xs font-bold text-slate-500 block">{texts.myCodeLabel}</span>
+            <code className="text-base sm:text-lg font-black text-indigo-700 tracking-wider">
               {loading ? "..." : data?.referralId}
             </code>
           </div>
           <button
             type="button"
             onClick={copyCode}
-            className="rounded-xl bg-slate-100 hover:bg-slate-200 px-3 py-1.5 text-xs font-extrabold text-slate-700 cursor-pointer transition active:scale-95"
+            className="rounded-xl bg-slate-100 hover:bg-slate-200 px-3.5 py-1.5 text-xs sm:text-sm font-extrabold text-slate-800 cursor-pointer transition active:scale-95"
           >
             {copied ? texts.copiedBtn : texts.copyCodeBtn}
           </button>
@@ -328,17 +328,15 @@ export function ReferralCard({ compact = false }: { compact?: boolean }) {
           <button
             type="button"
             onClick={copyLink}
-            className="flex-1 rounded-2xl border border-indigo-200 bg-white py-3 px-3 text-xs font-black text-indigo-700 hover:bg-indigo-50 shadow-2xs cursor-pointer transition active:scale-95 text-center flex items-center justify-center gap-1.5"
+            className="flex-1 rounded-2xl border border-indigo-200 bg-white py-3 px-3 text-xs sm:text-sm font-black text-indigo-700 hover:bg-indigo-50 shadow-2xs cursor-pointer transition active:scale-95 text-center flex items-center justify-center gap-1.5"
           >
-            <span>🔗</span>
             <span>{texts.copyLinkBtn}</span>
           </button>
           <button
             type="button"
             onClick={handleShare}
-            className="flex-1 rounded-2xl bg-indigo-600 py-3 px-3 text-xs font-black text-white hover:bg-indigo-700 shadow-sm cursor-pointer transition active:scale-95 text-center flex items-center justify-center gap-1.5"
+            className="flex-1 rounded-2xl bg-indigo-600 py-3 px-3 text-xs sm:text-sm font-black text-white hover:bg-indigo-700 shadow-sm cursor-pointer transition active:scale-95 text-center flex items-center justify-center gap-1.5"
           >
-            <span>💬</span>
             <span>{texts.shareBtn}</span>
           </button>
         </div>

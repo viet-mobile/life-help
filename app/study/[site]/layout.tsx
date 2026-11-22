@@ -58,8 +58,22 @@ export async function generateMetadata({ params }: { params: Promise<{ site: str
       shortcut: [`/logos/favicon-${site}.png`],
       apple: [{ url: `/logos/apple-touch-icon-${site}.png`, sizes: "180x180", type: "image/png" }],
     },
-    openGraph: { url: urlLocale ? languages[urlLocale] : `${siteRoot}${rootPath}${page || "/"}`, alternateLocale: locales.filter((l) => l !== locale).map((l) => l.replace("-", "_")), title: t(`site.${site}.tagline` as never), description: t(`site.${site}.description` as never), locale: locale.replace("-", "_"), type: "website", siteName: name, images: [{ url: logo, width: 512, height: 512, alt: name }] },
-    twitter: { card: "summary", title: t(`site.${site}.tagline` as never), description: t(`site.${site}.description` as never), images: [logo] },
+    openGraph: {
+      url: urlLocale ? languages[urlLocale] : `${siteRoot}${rootPath}${page || "/"}`,
+      alternateLocale: locales.filter((l) => l !== locale).map((l) => l.replace("-", "_")),
+      title: `${name} · ${t(`site.${site}.tagline` as never)}`,
+      description: t(`site.${site}.description` as never),
+      locale: locale.replace("-", "_"),
+      type: "website",
+      siteName: name,
+      images: [{ url: `${origin}/og-${site}.png`, width: 1200, height: 630, alt: name }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${name} · ${t(`site.${site}.tagline` as never)}`,
+      description: t(`site.${site}.description` as never),
+      images: [`${origin}/og-${site}.png`],
+    },
   };
 }
 

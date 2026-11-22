@@ -432,21 +432,31 @@ export function getLanguageNameInLocale(langCode: string, targetLocale: Locale |
     if (found) return found.name;
   }
 
-  // 2. Browser / runtime native Intl.DisplayNames (fast, zero memory overhead)
-  try {
-    const dn = new Intl.DisplayNames([targetLocale], { type: "language", fallback: "none" });
-    const name = dn.of(langCode);
-    if (name) return name.charAt(0).toUpperCase() + name.slice(1);
-  } catch {
-    // fallback
-  }
-
-  // 3. Static precompiled fallback table for languages where ICU data is absent
+  // 2. Static precompiled table (covers all 89 locales with 100% verified native translations)
   const byTarget = STATIC_LANGUAGE_NAMES[targetLocale];
   if (byTarget && byTarget[langCode]) {
     return byTarget[langCode];
   }
 
+  // 3. Browser / runtime native Intl.DisplayNames (with strict target locale resolution match)
+  try {
+    const dn = new Intl.DisplayNames([targetLocale], { type: "language", fallback: "none" });
+    const resolved = dn.resolvedOptions().locale;
+    const baseTarget = targetLocale.split("-")[0];
+    const baseResolved = resolved.split("-")[0];
+    if (baseResolved === baseTarget || (baseTarget === "tl" && baseResolved === "fil")) {
+      const name = dn.of(langCode);
+      if (name) return name.charAt(0).toUpperCase() + name.slice(1);
+    }
+  } catch {
+    // fallback
+  }
+
+  // 4. English fallback
+  const byEn = STATIC_LANGUAGE_NAMES["en"];
+  if (byEn && byEn[langCode]) {
+    return byEn[langCode];
+  }
   try {
     const dnEn = new Intl.DisplayNames(["en"], { type: "language", fallback: "none" });
     const nameEn = dnEn.of(langCode);
@@ -454,8 +464,9 @@ export function getLanguageNameInLocale(langCode: string, targetLocale: Locale |
   } catch {
     // fallback
   }
+
   const found = languages.find((l) => l.code === langCode);
-  return found ? found.name : langCode;
+  return found ? (found.nativeName || found.name) : langCode;
 }
 
 /**
@@ -485,14 +496,25 @@ export function getSortedLanguages(currentLocale: Locale | string = "ko"): reado
  * - All other languages: rendered on 2 distinct lines with exactly 1 newline separator:
  *   Line 1: Name in the currently selected language
  *   Line 2: Native name in its own script
+ * - When isBilingual is active, Korean name is also appended.
  */
 export function formatLanguageName(
   meta: LanguageMeta,
   currentLocale: Locale | string = "ko",
-  _isBilingual?: boolean
+  isBilingual?: boolean
 ): string {
   const left = getLanguageNameInLocale(meta.code, currentLocale);
   const right = currentLocale === "zh-Hant" && meta.code === "zh-Hans" ? "簡體中文" : meta.nativeName;
+
+  if (isBilingual && currentLocale !== "ko") {
+    if (meta.code === currentLocale) {
+      return `${left} (${meta.name})`;
+    }
+    if (left.trim() === right.trim()) {
+      return `${left} (${meta.name})`;
+    }
+    return `${left} (${meta.name})\n${right}`;
+  }
 
   // 최상단 현재 선택 언어이거나 두 언어명이 동일한 경우 중복 표기 없이 1번만 표기
   if (meta.code === currentLocale || left.trim() === right.trim()) {

@@ -66,7 +66,7 @@ const DOMAIN_SLOGANS: Record<DomainType, { labelKo: string; labelEn: string; ico
 };
 
 export function DailyInsightCard({ domain, insight: initialInsight, locale: propLocale = "ko", className = "" }: DailyInsightCardProps) {
-  const { locale: contextLocale } = useLocale();
+  const { locale: contextLocale, isBilingual } = useLocale();
   const [mounted, setMounted] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -85,6 +85,10 @@ export function DailyInsightCard({ domain, insight: initialInsight, locale: prop
     ? getDailyInsight(domain, new Date(), activeLocale)
     : initialInsight;
 
+  const insightKo = mounted && isBilingual && !isKo
+    ? getDailyInsight(domain, new Date(), "ko")
+    : null;
+
   // Tagline from locale data (covers 89 languages) or fallback
   const domainTagline = locData?.brand_taglines?.[domain]?.tagline;
   const displayDomainLabel =
@@ -96,7 +100,7 @@ export function DailyInsightCard({ domain, insight: initialInsight, locale: prop
   const uiCardTitle = locData?.ui_labels?.card_title || (isKo ? "오늘의 추천" : "Today's Pick");
   const uiPrincipleTitle = locData?.ui_labels?.principle_title || (isKo ? "핵심 원리 & 실천 공식" : "Core Principle & Practical Formula");
   const uiActionTitle = locData?.ui_labels?.action_title || (isKo ? "오늘 바로 실천할 행동 (Action Item)" : "One Action for Today (Action Item)");
-  const uiLearnMore = locData?.ui_labels?.btn_learn_more || (isKo ? "자세히 알아보기" : "Learn more");
+  const uiLearnMore = locData?.ui_labels?.btn_learn_more || (isKo ? "관련 탐험 바로가기" : "Explore Subject");
   const uiCopied = locData?.ui_labels?.btn_copied || (isKo ? "✓ 복사됨" : "✓ Copied");
   const uiCopy = locData?.ui_labels?.btn_copy || (isKo ? "📋 팁 공유" : "📋 Share Tip");
 
@@ -111,18 +115,30 @@ export function DailyInsightCard({ domain, insight: initialInsight, locale: prop
       if (activeLocale === "uz") return "Hayotiy yordam xizmatlari";
       return locData?.ui_labels?.btn_learn_more || "Explore Life Support Services";
     }
-    return insight.relatedServiceOrWorld || locData?.ui_labels?.btn_learn_more || (isKo ? "자세히 알아보기" : "Learn more");
+    return locData?.ui_labels?.btn_learn_more || insight.relatedServiceOrWorld || (isKo ? "관련 탐험 바로가기" : "Explore Subject");
   };
   const displayRelatedText = getDomainRelatedText();
 
-  const targetHref =
-    domain === "life"
-      ? (activeLocale && activeLocale !== "ko" ? `/${activeLocale}/services` : "/services")
-      : (activeLocale && activeLocale !== "ko" ? `/${activeLocale}${insight.relatedHref}` : (insight.relatedHref || "/services"));
+  let targetHref = "/services";
+  if (domain === "life") {
+    targetHref = activeLocale && activeLocale !== "ko" ? `/${activeLocale}/services` : "/services";
+  } else {
+    if (insight.relatedHref && insight.relatedHref !== "/services") {
+      targetHref = activeLocale && activeLocale !== "ko" ? `/${activeLocale}${insight.relatedHref}` : insight.relatedHref;
+    } else {
+      if (typeof window !== "undefined") {
+        const [h, p = ""] = window.location.host.split(":");
+        targetHref = studyUrl(domain as StudySubject, h, p, activeLocale as Locale);
+      } else {
+        targetHref = `/study/${domain}`;
+      }
+    }
+  }
 
   const handleShare = () => {
     if (typeof window !== "undefined") {
-      const shareText = `[${displayDomainLabel}] ${insight.title}\n\n${insight.summary}\n${uiPrincipleTitle}: ${insight.principle}\n${uiActionTitle}: ${insight.actionItem}\nLIFE.HELP`;
+      const shareUrl = domain === "life" ? "https://life.help" : `https://${domain}.life.help`;
+      const shareText = `[${displayDomainLabel}] ${insight.title}\n\n${insight.summary}\n${uiPrincipleTitle}: ${insight.principle}\n${uiActionTitle}: ${insight.actionItem}\n\n👉 ${shareUrl}`;
       navigator.clipboard.writeText(shareText).then(() => {
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
@@ -160,22 +176,43 @@ export function DailyInsightCard({ domain, insight: initialInsight, locale: prop
 
       {/* Main Content */}
       <div className="mt-3.5 space-y-2.5">
-        <h3 suppressHydrationWarning className="text-base sm:text-lg font-black text-slate-900 leading-snug">
-          {insight.title}
-        </h3>
-        <p suppressHydrationWarning className="text-xs sm:text-sm font-medium text-slate-700 leading-relaxed">
-          {insight.summary}
-        </p>
+        <div>
+          <h3 suppressHydrationWarning className="text-base sm:text-lg font-black text-slate-900 leading-snug">
+            {insight.title}
+          </h3>
+          {isBilingual && !isKo && insightKo?.title && insightKo.title !== insight.title && (
+            <p suppressHydrationWarning className="mt-0.5 text-xs sm:text-sm font-bold text-slate-500">
+              {insightKo.title}
+            </p>
+          )}
+        </div>
+
+        <div>
+          <p suppressHydrationWarning className="text-xs sm:text-sm font-medium text-slate-700 leading-relaxed">
+            {insight.summary}
+          </p>
+          {isBilingual && !isKo && insightKo?.summary && insightKo.summary !== insight.summary && (
+            <p suppressHydrationWarning className="mt-0.5 text-xs text-slate-500 font-medium leading-relaxed">
+              {insightKo.summary}
+            </p>
+          )}
+        </div>
 
         {/* Principle / Formula Box */}
         <div className="rounded-xl border border-white/80 bg-white/90 p-3 shadow-2xs space-y-1.5">
           <div className="flex items-center gap-1 text-[11px] font-bold text-slate-500 uppercase tracking-wider">
             <span>📌</span>
             <span suppressHydrationWarning>{uiPrincipleTitle}</span>
+            {isBilingual && !isKo && <span className="text-[10px] text-slate-400 font-normal">· 핵심 원리</span>}
           </div>
           <div suppressHydrationWarning className="text-xs sm:text-sm font-extrabold text-slate-900">
             {insight.principle}
           </div>
+          {isBilingual && !isKo && insightKo?.principle && insightKo.principle !== insight.principle && (
+            <p suppressHydrationWarning className="text-xs font-semibold text-slate-500">
+              {insightKo.principle}
+            </p>
+          )}
           <p suppressHydrationWarning className="text-xs text-slate-600 font-medium">
             {insight.example}
           </p>
@@ -187,10 +224,16 @@ export function DailyInsightCard({ domain, insight: initialInsight, locale: prop
           <div className="min-w-0 flex-1">
             <span suppressHydrationWarning className="block text-[10px] font-black uppercase text-amber-300 tracking-wider">
               {uiActionTitle}
+              {isBilingual && !isKo && <span className="ml-1 text-[9px] text-amber-400/80 font-normal">· 오늘 실천 행동</span>}
             </span>
             <span suppressHydrationWarning className="block text-xs sm:text-sm font-semibold text-slate-100 mt-0.5">
               {insight.actionItem}
             </span>
+            {isBilingual && !isKo && insightKo?.actionItem && insightKo.actionItem !== insight.actionItem && (
+              <span suppressHydrationWarning className="block text-xs font-medium text-amber-200/90 mt-1">
+                {insightKo.actionItem}
+              </span>
+            )}
           </div>
         </div>
       </div>

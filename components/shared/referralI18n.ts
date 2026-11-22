@@ -60,7 +60,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10명 초대",
     milestone100: "100명 초대",
     milestone500: "500명 초대",
-    milestone999: "999명 초대 (최저 0.01%)",
+    milestone999: "999명 초대",
   },
   en: {
     badgeLabel: "Current Fee {fee}",
@@ -88,7 +88,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 Invited",
     milestone100: "100 Invited",
     milestone500: "500 Invited",
-    milestone999: "999 Invited (Min 0.01%)",
+    milestone999: "999 Invited",
   },
   vi: {
     badgeLabel: "Phí hiện tại {fee}",
@@ -116,7 +116,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "Mời 10 người",
     milestone100: "Mời 100 người",
     milestone500: "Mời 500 người",
-    milestone999: "Mời 999 người (Tối thiểu 0.01%)",
+    milestone999: "Mời 999 người",
   },
   is: {
     badgeLabel: "Núverandi gjald {fee}",
@@ -144,7 +144,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 boð",
     milestone100: "100 boð",
     milestone500: "500 boð",
-    milestone999: "999 boð (lágmark 0.01%)",
+    milestone999: "999 boð",
   },
   fr: {
     badgeLabel: "Frais actuels {fee}",
@@ -172,7 +172,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 parrainages",
     milestone100: "100 parrainages",
     milestone500: "500 parrainages",
-    milestone999: "999 parrainages (minimum 0.01%)",
+    milestone999: "999 parrainages",
   },
   de: {
     badgeLabel: "Aktuelle Gebühr {fee}",
@@ -200,7 +200,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 Einladungen",
     milestone100: "100 Einladungen",
     milestone500: "500 Einladungen",
-    milestone999: "999 Einladungen (mind. 0.01%)",
+    milestone999: "999 Einladungen",
   },
   it: {
     badgeLabel: "Commissione attuale {fee}",
@@ -228,7 +228,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 inviti",
     milestone100: "100 inviti",
     milestone500: "500 inviti",
-    milestone999: "999 inviti (minimo 0.01%)",
+    milestone999: "999 inviti",
   },
   pt: {
     badgeLabel: "Taxa atual {fee}",
@@ -256,7 +256,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 convites",
     milestone100: "100 convites",
     milestone500: "500 convites",
-    milestone999: "999 convites (mínimo 0.01%)",
+    milestone999: "999 convites",
   },
   nl: {
     badgeLabel: "Huidige kosten {fee}",
@@ -284,7 +284,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 uitgenodigd",
     milestone100: "100 uitgenodigd",
     milestone500: "500 uitgenodigd",
-    milestone999: "999 uitgenodigd (min. 0.01%)",
+    milestone999: "999 uitgenodigd",
   },
   sv: {
     badgeLabel: "Aktuell avgift {fee}",
@@ -312,7 +312,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 inbjudna",
     milestone100: "100 inbjudna",
     milestone500: "500 inbjudna",
-    milestone999: "999 inbjudna (minst 0.01%)",
+    milestone999: "999 inbjudna",
   },
   da: {
     badgeLabel: "Nuværende gebyr {fee}",
@@ -340,7 +340,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 inviteret",
     milestone100: "100 inviteret",
     milestone500: "500 inviteret",
-    milestone999: "999 inviteret (min. 0.01%)",
+    milestone999: "999 inviteret",
   },
   no: {
     badgeLabel: "Gjeldende gebyr {fee}",
@@ -368,7 +368,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 invitert",
     milestone100: "100 invitert",
     milestone500: "500 invitert",
-    milestone999: "999 invitert (minst 0.01%)",
+    milestone999: "999 invitert",
   },
   fi: {
     badgeLabel: "Nykyinen maksu {fee}",
@@ -396,7 +396,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 kutsua",
     milestone100: "100 kutsua",
     milestone500: "500 kutsua",
-    milestone999: "999 kutsua (vähintään 0.01%)",
+    milestone999: "999 kutsua",
   },
   pl: {
     badgeLabel: "Aktualna opłata {fee}",
@@ -424,7 +424,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 zaproszeń",
     milestone100: "100 zaproszeń",
     milestone500: "500 zaproszeń",
-    milestone999: "999 zaproszeń (min. 0.01%)",
+    milestone999: "999 zaproszeń",
   },
   tr: {
     badgeLabel: "Mevcut ücret {fee}",
@@ -452,7 +452,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 davet",
     milestone100: "100 davet",
     milestone500: "500 davet",
-    milestone999: "999 davet (en az 0.01%)",
+    milestone999: "999 davet",
   },
   ro: {
     badgeLabel: "Taxă curentă {fee}",
@@ -480,7 +480,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 invitații",
     milestone100: "100 de invitații",
     milestone500: "500 de invitații",
-    milestone999: "999 de invitații (min. 0.01%)",
+    milestone999: "999 de invitații",
   },
   cs: {
     badgeLabel: "Aktuální poplatek {fee}",
@@ -508,7 +508,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 pozvaných",
     milestone100: "100 pozvaných",
     milestone500: "500 pozvaných",
-    milestone999: "999 pozvaných (min. 0.01%)",
+    milestone999: "999 pozvaných",
   },
   el: {
     badgeLabel: "Τρέχουσα χρέωση {fee}",
@@ -536,7 +536,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 προσκλήσεις",
     milestone100: "100 προσκλήσεις",
     milestone500: "500 προσκλήσεις",
-    milestone999: "999 προσκλήσεις (ελάχιστο 0.01%)",
+    milestone999: "999 προσκλήσεις",
   },
   uk: {
     badgeLabel: "Поточна комісія {fee}",
@@ -564,7 +564,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 запрошень",
     milestone100: "100 запрошень",
     milestone500: "500 запрошень",
-    milestone999: "999 запрошень (мін. 0.01%)",
+    milestone999: "999 запрошень",
   },
   bg: {
     badgeLabel: "Текуща такса {fee}",
@@ -592,7 +592,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 покани",
     milestone100: "100 покани",
     milestone500: "500 покани",
-    milestone999: "999 покани (мин. 0.01%)",
+    milestone999: "999 покани",
   },
   id: {
     badgeLabel: "Biaya saat ini {fee}",
@@ -620,7 +620,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 undangan",
     milestone100: "100 undangan",
     milestone500: "500 undangan",
-    milestone999: "999 undangan (min. 0.01%)",
+    milestone999: "999 undangan",
   },
   th: {
     badgeLabel: "ค่าธรรมเนียมปัจจุบัน {fee}",
@@ -648,7 +648,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "เชิญ 10 คน",
     milestone100: "เชิญ 100 คน",
     milestone500: "เชิญ 500 คน",
-    milestone999: "เชิญ 999 คน (ต่ำสุด 0.01%)",
+    milestone999: "เชิญ 999 คน",
   },
   ms: {
     badgeLabel: "Yuran semasa {fee}",
@@ -676,7 +676,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 jemputan",
     milestone100: "100 jemputan",
     milestone500: "500 jemputan",
-    milestone999: "999 jemputan (minimum 0.01%)",
+    milestone999: "999 jemputan",
   },
   tl: {
     badgeLabel: "Kasalukuyang bayad {fee}",
@@ -704,7 +704,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 imbitasyon",
     milestone100: "100 imbitasyon",
     milestone500: "500 imbitasyon",
-    milestone999: "999 imbitasyon (min. 0.01%)",
+    milestone999: "999 imbitasyon",
   },
   sw: {
     badgeLabel: "Ada ya sasa {fee}",
@@ -732,7 +732,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "Mialiko 10",
     milestone100: "Mialiko 100",
     milestone500: "Mialiko 500",
-    milestone999: "Mialiko 999 (min. 0.01%)",
+    milestone999: "Mialiko 999",
   },
   ar: {
     badgeLabel: "الرسوم الحالية {fee}",
@@ -760,7 +760,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 دعوات",
     milestone100: "100 دعوة",
     milestone500: "500 دعوة",
-    milestone999: "999 دعوة (الحد الأدنى 0.01%)",
+    milestone999: "999 دعوة",
   },
   fa: {
     badgeLabel: "کارمزد فعلی {fee}",
@@ -788,7 +788,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 دعوت",
     milestone100: "100 دعوت",
     milestone500: "500 دعوت",
-    milestone999: "999 دعوت (حداقل 0.01%)",
+    milestone999: "999 دعوت",
   },
   hi: {
     badgeLabel: "वर्तमान शुल्क {fee}",
@@ -816,7 +816,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 आमंत्रण",
     milestone100: "100 आमंत्रण",
     milestone500: "500 आमंत्रण",
-    milestone999: "999 आमंत्रण (न्यूनतम 0.01%)",
+    milestone999: "999 आमंत्रण",
   },
   bn: {
     badgeLabel: "বর্তমান ফি {fee}",
@@ -844,7 +844,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10টি আমন্ত্রণ",
     milestone100: "100টি আমন্ত্রণ",
     milestone500: "500টি আমন্ত্রণ",
-    milestone999: "999টি আমন্ত্রণ (সর্বনিম্ন 0.01%)",
+    milestone999: "999টি আমন্ত্রণ",
   },
   ur: {
     badgeLabel: "موجودہ فیس {fee}",
@@ -872,7 +872,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 دعوتیں",
     milestone100: "100 دعوتیں",
     milestone500: "500 دعوتیں",
-    milestone999: "999 دعوتیں (کم از کم 0.01%)",
+    milestone999: "999 دعوتیں",
   },
   mr: {
     badgeLabel: "सध्याचे शुल्क {fee}",
@@ -900,7 +900,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 आमंत्रणे",
     milestone100: "100 आमंत्रणे",
     milestone500: "500 आमंत्रणे",
-    milestone999: "999 आमंत्रणे (किमान 0.01%)",
+    milestone999: "999 आमंत्रणे",
   },
   gu: {
     badgeLabel: "વર્તમાન ફી {fee}",
@@ -928,7 +928,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 આમંત્રણ",
     milestone100: "100 આમંત્રણ",
     milestone500: "500 આમંત્રણ",
-    milestone999: "999 આમંત્રણ (ઓછામાં ઓછું 0.01%)",
+    milestone999: "999 આમંત્રણ",
   },
   pa: {
     badgeLabel: "ਮੌਜੂਦਾ ਫੀਸ {fee}",
@@ -956,7 +956,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 ਸੱਦੇ",
     milestone100: "100 ਸੱਦੇ",
     milestone500: "500 ਸੱਦੇ",
-    milestone999: "999 ਸੱਦੇ (ਘੱਟੋ-ਘੱਟ 0.01%)",
+    milestone999: "999 ਸੱਦੇ",
   },
   ta: {
     badgeLabel: "தற்போதைய கட்டணம் {fee}",
@@ -984,7 +984,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 அழைப்புகள்",
     milestone100: "100 அழைப்புகள்",
     milestone500: "500 அழைப்புகள்",
-    milestone999: "999 அழைப்புகள் (குறைந்தபட்சம் 0.01%)",
+    milestone999: "999 அழைப்புகள்",
   },
   te: {
     badgeLabel: "ప్రస్తుత రుసుము {fee}",
@@ -1012,7 +1012,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 ఆహ్వానాలు",
     milestone100: "100 ఆహ్వానాలు",
     milestone500: "500 ఆహ్వానాలు",
-    milestone999: "999 ఆహ్వానాలు (కనిష్ఠం 0.01%)",
+    milestone999: "999 ఆహ్వానాలు",
   },
   kn: {
     badgeLabel: "ಪ್ರಸ್ತುತ ಶುಲ್ಕ {fee}",
@@ -1040,7 +1040,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 ಆಹ್ವಾನಗಳು",
     milestone100: "100 ಆಹ್ವಾನಗಳು",
     milestone500: "500 ಆಹ್ವಾನಗಳು",
-    milestone999: "999 ಆಹ್ವಾನಗಳು (ಕನಿಷ್ಠ 0.01%)",
+    milestone999: "999 ಆಹ್ವಾನಗಳು",
   },
   ml: {
     badgeLabel: "നിലവിലെ ഫീസ് {fee}",
@@ -1068,7 +1068,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 ക്ഷണങ്ങൾ",
     milestone100: "100 ക്ഷണങ്ങൾ",
     milestone500: "500 ക്ഷണങ്ങൾ",
-    milestone999: "999 ക്ഷണങ്ങൾ (കുറഞ്ഞത് 0.01%)",
+    milestone999: "999 ക്ഷണങ്ങൾ",
   },
   km: {
     badgeLabel: "ថ្លៃសេវាបច្ចុប្បន្ន {fee}",
@@ -1096,7 +1096,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "អញ្ជើញ 10 នាក់",
     milestone100: "អញ្ជើញ 100 នាក់",
     milestone500: "អញ្ជើញ 500 នាក់",
-    milestone999: "អញ្ជើញ 999 នាក់ (អប្បបរមា 0.01%)",
+    milestone999: "អញ្ជើញ 999 នាក់",
   },
   my: {
     badgeLabel: "လက်ရှိဝန်ဆောင်ခ {fee}",
@@ -1124,7 +1124,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 ဦးဖိတ်ခေါ်",
     milestone100: "100 ဦးဖိတ်ခေါ်",
     milestone500: "500 ဦးဖိတ်ခေါ်",
-    milestone999: "999 ဦးဖိတ်ခေါ် (အနည်းဆုံး 0.01%)",
+    milestone999: "999 ဦးဖိတ်ခေါ်",
   },
   si: {
     badgeLabel: "වත්මන් ගාස්තුව {fee}",
@@ -1152,7 +1152,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "ආරාධනා 10",
     milestone100: "ආරාධනා 100",
     milestone500: "ආරාධනා 500",
-    milestone999: "ආරාධනා 999 (අවම 0.01%)",
+    milestone999: "ආරාධනා 999",
   },
   ne: {
     badgeLabel: "हालको शुल्क {fee}",
@@ -1180,7 +1180,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 आमन्त्रण",
     milestone100: "100 आमन्त्रण",
     milestone500: "500 आमन्त्रण",
-    milestone999: "999 आमन्त्रण (न्यूनतम 0.01%)",
+    milestone999: "999 आमन्त्रण",
   },
   he: {
     badgeLabel: "העמלה הנוכחית {fee}",
@@ -1208,7 +1208,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 הזמנות",
     milestone100: "100 הזמנות",
     milestone500: "500 הזמנות",
-    milestone999: "999 הזמנות (מינימום 0.01%)",
+    milestone999: "999 הזמנות",
   },
   uz: {
     badgeLabel: "Joriy to'lov {fee}",
@@ -1236,7 +1236,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 ta taklif",
     milestone100: "100 ta taklif",
     milestone500: "500 ta taklif",
-    milestone999: "999 ta taklif (eng kam 0.01%)",
+    milestone999: "999 ta taklif",
   },
   kk: {
     badgeLabel: "Ағымдағы комиссия {fee}",
@@ -1264,7 +1264,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 шақыру",
     milestone100: "100 шақыру",
     milestone500: "500 шақыру",
-    milestone999: "999 шақыру (ең азы 0.01%)",
+    milestone999: "999 шақыру",
   },
   az: {
     badgeLabel: "Cari xidmət haqqı {fee}",
@@ -1292,7 +1292,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 dəvət",
     milestone100: "100 dəvət",
     milestone500: "500 dəvət",
-    milestone999: "999 dəvət (minimum 0.01%)",
+    milestone999: "999 dəvət",
   },
   ka: {
     badgeLabel: "მიმდინარე საკომისიო {fee}",
@@ -1320,7 +1320,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 მოწვევა",
     milestone100: "100 მოწვევა",
     milestone500: "500 მოწვევა",
-    milestone999: "999 მოწვევა (მინ. 0.01%)",
+    milestone999: "999 მოწვევა",
   },
   hu: {
     badgeLabel: "Jelenlegi díj {fee}",
@@ -1348,7 +1348,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 meghívás",
     milestone100: "100 meghívás",
     milestone500: "500 meghívás",
-    milestone999: "999 meghívás (min. 0.01%)",
+    milestone999: "999 meghívás",
   },
   hr: {
     badgeLabel: "Trenutačna naknada {fee}",
@@ -1376,7 +1376,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 poziva",
     milestone100: "100 poziva",
     milestone500: "500 poziva",
-    milestone999: "999 poziva (min. 0.01%)",
+    milestone999: "999 poziva",
   },
   sk: {
     badgeLabel: "Aktuálny poplatok {fee}",
@@ -1404,7 +1404,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 pozvaných",
     milestone100: "100 pozvaných",
     milestone500: "500 pozvaných",
-    milestone999: "999 pozvaných (min. 0.01%)",
+    milestone999: "999 pozvaných",
   },
   sl: {
     badgeLabel: "Trenutna pristojbina {fee}",
@@ -1432,7 +1432,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 povabil",
     milestone100: "100 povabil",
     milestone500: "500 povabil",
-    milestone999: "999 povabil (min. 0.01%)",
+    milestone999: "999 povabil",
   },
   af: {
     badgeLabel: "Huidige fooi {fee}",
@@ -1460,7 +1460,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 genooi",
     milestone100: "100 genooi",
     milestone500: "500 genooi",
-    milestone999: "999 genooi (min. 0.01%)",
+    milestone999: "999 genooi",
   },
   ca: {
     badgeLabel: "Comissió actual {fee}",
@@ -1488,7 +1488,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 invitacions",
     milestone100: "100 invitacions",
     milestone500: "500 invitacions",
-    milestone999: "999 invitacions (mín. 0.01%)",
+    milestone999: "999 invitacions",
   },
   eu: {
     badgeLabel: "Uneko kuota {fee}",
@@ -1516,7 +1516,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 gonbidapen",
     milestone100: "100 gonbidapen",
     milestone500: "500 gonbidapen",
-    milestone999: "999 gonbidapen (gutxienez 0.01%)",
+    milestone999: "999 gonbidapen",
   },
   gl: {
     badgeLabel: "Cota actual {fee}",
@@ -1544,7 +1544,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 invitacións",
     milestone100: "100 invitacións",
     milestone500: "500 invitacións",
-    milestone999: "999 invitacións (mín. 0.01%)",
+    milestone999: "999 invitacións",
   },
   et: {
     badgeLabel: "Praegune tasu {fee}",
@@ -1572,7 +1572,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 kutset",
     milestone100: "100 kutset",
     milestone500: "500 kutset",
-    milestone999: "999 kutset (min. 0.01%)",
+    milestone999: "999 kutset",
   },
   lv: {
     badgeLabel: "Pašreizējā maksa {fee}",
@@ -1600,7 +1600,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 uzaicinājumu",
     milestone100: "100 uzaicinājumu",
     milestone500: "500 uzaicinājumu",
-    milestone999: "999 uzaicinājumu (min. 0.01%)",
+    milestone999: "999 uzaicinājumu",
   },
   lt: {
     badgeLabel: "Dabartinis mokestis {fee}",
@@ -1628,7 +1628,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 pakvietimų",
     milestone100: "100 pakvietimų",
     milestone500: "500 pakvietimų",
-    milestone999: "999 pakvietimų (min. 0.01%)",
+    milestone999: "999 pakvietimų",
   },
   mn: {
     badgeLabel: "Одоогийн шимтгэл {fee}",
@@ -1656,7 +1656,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 урилга",
     milestone100: "100 урилга",
     milestone500: "500 урилга",
-    milestone999: "999 урилга (хамгийн багадаа 0.01%)",
+    milestone999: "999 урилга",
   },
   sr: {
     badgeLabel: "Trenutna naknada {fee}",
@@ -1684,7 +1684,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 pozivnica",
     milestone100: "100 pozivnica",
     milestone500: "500 pozivnica",
-    milestone999: "999 pozivnica (min. 0.01%)",
+    milestone999: "999 pozivnica",
   },
   mk: {
     badgeLabel: "Тековна провизија {fee}",
@@ -1712,7 +1712,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 покани",
     milestone100: "100 покани",
     milestone500: "500 покани",
-    milestone999: "999 покани (мин. 0.01%)",
+    milestone999: "999 покани",
   },
   sq: {
     badgeLabel: "Tarifa aktuale {fee}",
@@ -1740,7 +1740,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 ftesa",
     milestone100: "100 ftesa",
     milestone500: "500 ftesa",
-    milestone999: "999 ftesa (min. 0.01%)",
+    milestone999: "999 ftesa",
   },
   tg: {
     badgeLabel: "Комиссияи ҷорӣ {fee}",
@@ -1768,7 +1768,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 даъват",
     milestone100: "100 даъват",
     milestone500: "500 даъват",
-    milestone999: "999 даъват (ҳадди ақал 0.01%)",
+    milestone999: "999 даъват",
   },
   tet: {
     badgeLabel: "Taxa agora {fee}",
@@ -1796,7 +1796,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "Konvite 10",
     milestone100: "Konvite 100",
     milestone500: "Konvite 500",
-    milestone999: "Konvite 999 (mín. 0.01%)",
+    milestone999: "Konvite 999",
   },
   yue: {
     badgeLabel: "目前手續費 {fee}",
@@ -1852,7 +1852,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 ግብዣዎች",
     milestone100: "100 ግብዣዎች",
     milestone500: "500 ግብዣዎች",
-    milestone999: "999 ግብዣዎች (ዝቅተኛው 0.01%)",
+    milestone999: "999 ግብዣዎች",
   },
   as: {
     badgeLabel: "বৰ্তমান মাচুল {fee}",
@@ -1880,7 +1880,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10টা আমন্ত্ৰণ",
     milestone100: "100টা আমন্ত্ৰণ",
     milestone500: "500টা আমন্ত্ৰণ",
-    milestone999: "999টা আমন্ত্ৰণ (নিম্নতম 0.01%)",
+    milestone999: "999টা আমন্ত্ৰণ",
   },
   ceb: {
     badgeLabel: "Karon nga bayranan {fee}",
@@ -1908,7 +1908,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 ka imbitasyon",
     milestone100: "100 ka imbitasyon",
     milestone500: "500 ka imbitasyon",
-    milestone999: "999 ka imbitasyon (min. 0.01%)",
+    milestone999: "999 ka imbitasyon",
   },
   ha: {
     badgeLabel: "Kuɗin yanzu {fee}",
@@ -1936,7 +1936,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "Gayyata 10",
     milestone100: "Gayyata 100",
     milestone500: "Gayyata 500",
-    milestone999: "Gayyata 999 (min. 0.01%)",
+    milestone999: "Gayyata 999",
   },
   ig: {
     badgeLabel: "Ụgwọ dị ugbu a {fee}",
@@ -1964,7 +1964,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "Ọkpụkpọ 10",
     milestone100: "Ọkpụkpọ 100",
     milestone500: "Ọkpụkpọ 500",
-    milestone999: "Ọkpụkpọ 999 (opekempe 0.01%)",
+    milestone999: "Ọkpụkpọ 999",
   },
   jv: {
     badgeLabel: "Biaya saiki {fee}",
@@ -1992,7 +1992,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 undhangan",
     milestone100: "100 undhangan",
     milestone500: "500 undhangan",
-    milestone999: "999 undhangan (paling murah 0.01%)",
+    milestone999: "999 undhangan",
   },
   mg: {
     badgeLabel: "Saram-panompoana ankehitriny {fee}",
@@ -2020,7 +2020,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "Fanasana 10",
     milestone100: "Fanasana 100",
     milestone500: "Fanasana 500",
-    milestone999: "Fanasana 999 (min. 0.01%)",
+    milestone999: "Fanasana 999",
   },
   so: {
     badgeLabel: "Kharashka hadda {fee}",
@@ -2048,7 +2048,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 casuumaad",
     milestone100: "100 casuumaad",
     milestone500: "500 casuumaad",
-    milestone999: "999 casuumaad (ugu yaraan 0.01%)",
+    milestone999: "999 casuumaad",
   },
   ku: {
     badgeLabel: "Xercê heyî {fee}",
@@ -2076,7 +2076,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 vexwendin",
     milestone100: "100 vexwendin",
     milestone500: "500 vexwendin",
-    milestone999: "999 vexwendin (herî kêm 0.01%)",
+    milestone999: "999 vexwendin",
   },
   om: {
     badgeLabel: "Kaffaltii ammaa {fee}",
@@ -2104,7 +2104,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "Affeerraa 10",
     milestone100: "Affeerraa 100",
     milestone500: "Affeerraa 500",
-    milestone999: "Affeerraa 999 (xiqqaa 0.01%)",
+    milestone999: "Affeerraa 999",
   },
   pcm: {
     badgeLabel: "Current fee {fee}",
@@ -2132,7 +2132,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 invites",
     milestone100: "100 invites",
     milestone500: "500 invites",
-    milestone999: "999 invites (minimum 0.01%)",
+    milestone999: "999 invites",
   },
   arz: {
     badgeLabel: "العمولة الحالية {fee}",
@@ -2160,7 +2160,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 دعوات",
     milestone100: "100 دعوة",
     milestone500: "500 دعوة",
-    milestone999: "999 دعوة (أقل حاجة 0.01%)",
+    milestone999: "999 دعوة",
   },
   ps: {
     badgeLabel: "اوسنی فیس {fee}",
@@ -2188,7 +2188,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 بلنې",
     milestone100: "100 بلنې",
     milestone500: "500 بلنې",
-    milestone999: "999 بلنې (لږ تر لږه 0.01%)",
+    milestone999: "999 بلنې",
   },
   sd: {
     badgeLabel: "موجوده فيس {fee}",
@@ -2216,7 +2216,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 دعوتون",
     milestone100: "100 دعوتون",
     milestone500: "500 دعوتون",
-    milestone999: "999 دعوتون (گهٽ ۾ گهٽ 0.01%)",
+    milestone999: "999 دعوتون",
   },
   sg: {
     badgeLabel: "Kota ti si {fee}",
@@ -2244,7 +2244,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "Mîngi 10",
     milestone100: "Mîngi 100",
     milestone500: "Mîngi 500",
-    milestone999: "Mîngi 999 (kota ti si ti ndö 0.01%)",
+    milestone999: "Mîngi 999",
   },
   sn: {
     badgeLabel: "Muripo wazvino {fee}",
@@ -2272,7 +2272,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "Vakokwa 10",
     milestone100: "Vakokwa 100",
     milestone500: "Vakokwa 500",
-    milestone999: "Vakokwa 999 (pasi 0.01%)",
+    milestone999: "Vakokwa 999",
   },
   su: {
     badgeLabel: "Biaya ayeuna {fee}",
@@ -2300,7 +2300,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 uleman",
     milestone100: "100 uleman",
     milestone500: "500 uleman",
-    milestone999: "999 uleman (paling handap 0.01%)",
+    milestone999: "999 uleman",
   },
   xh: {
     badgeLabel: "Intlawulo yangoku {fee}",
@@ -2328,7 +2328,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "Izimemo ezi-10",
     milestone100: "Izimemo ezi-100",
     milestone500: "Izimemo ezi-500",
-    milestone999: "Izimemo ezi-999 (ubuncinane 0.01%)",
+    milestone999: "Izimemo ezi-999",
   },
   yo: {
     badgeLabel: "Owo lọwọlọwọ {fee}",
@@ -2356,7 +2356,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "Ìpè 10",
     milestone100: "Ìpè 100",
     milestone500: "Ìpè 500",
-    milestone999: "Ìpè 999 (ó kéré jù 0.01%)",
+    milestone999: "Ìpè 999",
   },
   zu: {
     badgeLabel: "Imali ekhokhwayo yamanje {fee}",
@@ -2384,7 +2384,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "Izimemo ezingu-10",
     milestone100: "Izimemo ezingu-100",
     milestone500: "Izimemo ezingu-500",
-    milestone999: "Izimemo ezingu-999 (ubuncane obungu-0.01%)",
+    milestone999: "Izimemo ezingu-999",
   },
   "zh-Hans": {
     badgeLabel: "当前手续费 {fee}",
@@ -2412,7 +2412,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "邀请 10 人",
     milestone100: "邀请 100 人",
     milestone500: "邀请 500 人",
-    milestone999: "邀请 999 人 (最低 0.01%)",
+    milestone999: "邀请 999 人",
   },
   "zh-Hant": {
     badgeLabel: "當前手續費 {fee}",
@@ -2440,7 +2440,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "邀請 10 人",
     milestone100: "邀請 100 人",
     milestone500: "邀請 500 人",
-    milestone999: "邀請 999 人 (最低 0.01%)",
+    milestone999: "邀請 999 人",
   },
   ja: {
     badgeLabel: "現在の手数料 {fee}",
@@ -2468,7 +2468,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10人招待",
     milestone100: "100人招待",
     milestone500: "500人招待",
-    milestone999: "999人招待 (最低0.01%)",
+    milestone999: "999人招待",
   },
   es: {
     badgeLabel: "Tarifa actual {fee}",
@@ -2496,7 +2496,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 invitados",
     milestone100: "100 invitados",
     milestone500: "500 invitados",
-    milestone999: "999 invitados (Mín 0.01%)",
+    milestone999: "999 invitados",
   },
   ru: {
     badgeLabel: "Текущая комиссия {fee}",
@@ -2524,7 +2524,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
     milestone10: "10 приглашений",
     milestone100: "100 приглашений",
     milestone500: "500 приглашений",
-    milestone999: "999 приглашений (Мин. 0.01%)",
+    milestone999: "999 приглашений",
   },
 };
 

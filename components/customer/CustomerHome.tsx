@@ -101,7 +101,7 @@ const allServices: ServiceItem[] = [
     btnBg: "bg-pink-600 hover:bg-pink-700",
     badgeLabelKo: "휴대폰 개통",
   },
-  // 3. 주황 (Pastel Orange / Peach) - 보일러
+  // 3. 주황 (Pastel Orange / Peach) - 보일러 · 에어컨 · 방충망 · 보안문 종합 홈케어
   {
     id: "boiler",
     category: "repair",
@@ -109,7 +109,7 @@ const allServices: ServiceItem[] = [
     key: "boiler",
     slug: "boiler",
     pathPrefix: "services",
-    ko: "보일러 설치, 시공, 수리",
+    ko: "보일러 · 에어컨 · 방충망/방범창 · 보안문(전자키) 설치, 청소, 수리",
     colorName: "주황",
     cardBg: "bg-orange-50/85",
     cardBorder: "border-orange-200/90",
@@ -119,7 +119,7 @@ const allServices: ServiceItem[] = [
     badgeBg: "bg-orange-100/90",
     badgeText: "text-orange-900",
     btnBg: "bg-orange-600 hover:bg-orange-700",
-    badgeLabelKo: "난방·온수",
+    badgeLabelKo: "냉난방·보안",
   },
   // 4. 노랑 (Pastel Yellow / Cream) - 주거/원룸
   {
@@ -563,11 +563,24 @@ export function CustomerHome() {
                 {/* Top: Large Icon + Badge */}
                 <div>
                   <div className="flex items-center justify-between gap-1 mb-2 min-w-0">
-                    <span
-                      className={`droplet-icon flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center ${svc.iconBg} text-2xl sm:text-3xl shadow-2xs group-hover:scale-110 transition-transform shrink-0`}
-                    >
-                      {svc.icon}
-                    </span>
+                    {svc.id === "boiler" ? (
+                      <span
+                        className={`droplet-icon grid grid-cols-2 grid-rows-2 h-10 w-10 sm:h-12 sm:w-12 p-1 gap-0.5 items-center justify-items-center ${svc.iconBg} text-[11px] sm:text-xs shadow-2xs group-hover:scale-110 transition-transform shrink-0 leading-none`}
+                        aria-label="보일러, 에어컨, 방충망/방범창, 보안문(전자키)"
+                        title="보일러, 에어컨, 방충망/방범창, 보안문(전자키)"
+                      >
+                        <span title="보일러">♨️</span>
+                        <span title="에어컨">❄️</span>
+                        <span title="방충망/방범창">🪟</span>
+                        <span title="보안문(전자키)">🔐</span>
+                      </span>
+                    ) : (
+                      <span
+                        className={`droplet-icon flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center ${svc.iconBg} text-2xl sm:text-3xl shadow-2xs group-hover:scale-110 transition-transform shrink-0`}
+                      >
+                        {svc.icon}
+                      </span>
+                    )}
 
                     {/* Pastel Tag */}
                     <span
@@ -586,7 +599,7 @@ export function CustomerHome() {
                     </h3>
 
                     {isBilingual && locale !== "ko" && (
-                      <p className="mt-1 text-xs sm:text-[13px] font-bold text-slate-500 truncate">
+                      <p className="mt-1 text-xs sm:text-[13px] font-bold text-slate-500 leading-snug line-clamp-2">
                         {svc.ko}
                       </p>
                     )}
@@ -596,16 +609,26 @@ export function CustomerHome() {
             ))}
           </div>
 
-          {/* Quick Floating Trust Metrics Bar */}
+          {/* Quick Floating Trust Metrics Bar - Clickable Interactive Shortcuts */}
           <div className="mt-3.5 flex flex-wrap items-center justify-center gap-1.5 sm:gap-3 text-[10px] sm:text-xs font-bold text-slate-600">
-            <div className="droplet-pill inline-flex items-center gap-1 bg-white/80 border border-slate-200/80 px-2.5 py-0.5 shadow-2xs backdrop-blur-xs">
+            <Link
+              href="/chat"
+              className="droplet-pill inline-flex items-center gap-1.5 bg-white/90 border border-slate-200/90 px-3 py-1 shadow-2xs backdrop-blur-xs hover:bg-blue-50 hover:border-blue-300 hover:text-blue-800 transition cursor-pointer"
+              title={locale === "ko" ? "모국어 상담 센터 바로가기" : t("customer.consultation")}
+            >
               <span>🌐</span>
               <span>{t("trustMetrics.languages").replace("{count}", formatLocaleCount(locale))}</span>
-            </div>
-            <div className="droplet-pill inline-flex items-center gap-1 bg-white/80 border border-slate-200/80 px-2.5 py-0.5 shadow-2xs backdrop-blur-xs">
+              <span className="text-[10px] text-blue-600 font-black">→</span>
+            </Link>
+            <a
+              href="#privacy-safety"
+              className="droplet-pill inline-flex items-center gap-1.5 bg-white/90 border border-slate-200/90 px-3 py-1 shadow-2xs backdrop-blur-xs hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-800 transition cursor-pointer"
+              title="사생활 보호 안심 시스템 위치로 이동"
+            >
               <span>🔒</span>
               <span>{t("trustMetrics.safeNumber") || "전화번호 수집 제로 · 안심 대화"}</span>
-            </div>
+              <span className="text-[10px] text-emerald-600 font-black">↓</span>
+            </a>
           </div>
         </div>
       </section>
@@ -654,7 +677,7 @@ export function CustomerHome() {
       </section>
 
       {/* ⑥ Privacy & Safety Spotlight (3 Glass Droplet Cards) */}
-      <section className="border-t border-slate-200/70 bg-white/70 backdrop-blur-xs px-3 py-6 sm:px-4 sm:py-8">
+      <section id="privacy-safety" className="border-t border-slate-200/70 bg-white/70 backdrop-blur-xs px-3 py-6 sm:px-4 sm:py-8 scroll-mt-14">
         <div className="mx-auto max-w-6xl text-center">
           <div className="droplet-pill inline-flex items-center gap-1.5 border border-emerald-200 bg-emerald-50 px-3 py-0.5 text-[10px] sm:text-[11px] font-black text-emerald-800 mb-1.5">
             <span>🔒</span>

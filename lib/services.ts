@@ -25,13 +25,13 @@ export const services: readonly ServiceItem[] = [
     ko: "누수 방지, 누수 탐지, 수도 배관 공사 등",
     vi: "Chống rò rỉ, dò tìm rò rỉ, thi công đường ống nước",
   },
-  // 3. Boiler (Heating)
+  // 3. Boiler, AC, Screens & Smart Locks Comprehensive Homecare
   {
     slug: "boiler",
     key: "boiler",
-    icon: "♨️",
-    ko: "보일러 설치, 시공, 수리",
-    vi: "Lắp đặt, thi công, sửa chữa bình nóng lạnh / nồi hơi",
+    icon: "♨️ ❄️ 🪟 🔐",
+    ko: "보일러 · 에어컨 · 방충망/방범창 · 보안문(전자키) 설치, 청소, 수리",
+    vi: "Lắp đặt, vệ sinh, sửa chữa bình nóng lạnh / điều hòa, lưới chống côn trùng, khóa điện tử",
   },
   // 4. Cleaning
   {
