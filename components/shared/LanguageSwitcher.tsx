@@ -19,7 +19,7 @@ export function LanguageSwitcher({
   const context = useLocale();
 
   const currentLocale = propLocale ?? context.locale;
-  const isBilingual = context.displayMode === "bilingual";
+  const isKoreanBilingual = context.isBilingual && context.secondaryLocale === "ko";
   const isDualScript = isDualScriptLocale(currentLocale);
   const scriptMeta = isDualScript ? DUAL_SCRIPT_LANGUAGES[currentLocale] : null;
 
@@ -82,7 +82,7 @@ export function LanguageSwitcher({
               dir="ltr"
               className="text-slate-900 bg-white text-left whitespace-pre py-1"
             >
-              {formatLanguageName(lang, currentLocale, isBilingual)}
+              {formatLanguageName(lang, currentLocale, isKoreanBilingual)}
             </option>
           ))}
         </select>

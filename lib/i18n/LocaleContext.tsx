@@ -270,6 +270,11 @@ function getServerLocaleSnapshot(): Locale {
 function getClientDisplayModeSnapshot(): DisplayMode {
   if (cachedDisplayMode) return cachedDisplayMode;
   try {
+    const sec = localStorage.getItem(SECONDARY_LOCALE_STORAGE_KEY);
+    if (!sec || sec === "none") {
+      cachedDisplayMode = "monolingual";
+      return "monolingual";
+    }
     const saved = localStorage.getItem(DISPLAY_MODE_STORAGE_KEY);
     if (saved === "monolingual" || saved === "bilingual") {
       cachedDisplayMode = saved;
