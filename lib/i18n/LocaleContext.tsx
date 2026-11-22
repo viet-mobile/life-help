@@ -35,6 +35,8 @@ export type DisplayMode = "bilingual" | "monolingual";
 interface LocaleContextType {
   locale: Locale;
   setLocale: (locale: Locale) => void;
+  secondaryLocale: Locale | null;
+  setSecondaryLocale: (locale: Locale | null) => void;
   script: ScriptType;
   setScript: (script: ScriptType) => void;
   isDualScript: boolean;
@@ -45,6 +47,7 @@ interface LocaleContextType {
   isBilingual: boolean;
   t: (key: string) => string;
   tKo: (key: string) => string;
+  tSecondary: (key: string) => string;
   tBilingual: (key: string, separator?: string) => string;
   formatBilingual: (targetText: string, koText: string, separator?: string) => string;
   currentMeta: LanguageMeta;
@@ -60,6 +63,58 @@ const LOCALE_CHANGE_EVENT = "life_help_locale_change";
 
 const DISPLAY_MODE_STORAGE_KEY = "life_help_display_mode";
 const DISPLAY_MODE_CHANGE_EVENT = "life_help_display_mode_change";
+
+const SECONDARY_LOCALE_STORAGE_KEY = "life_help_secondary_locale";
+const SECONDARY_LOCALE_CHANGE_EVENT = "life_help_secondary_locale_change";
+let cachedSecondaryLocale: Locale | null = null;
+let cachedSecondaryLocaleInitialized = false;
+
+function getClientSecondaryLocaleSnapshot(): Locale | null {
+  if (typeof window === "undefined") return null;
+  if (cachedSecondaryLocaleInitialized) return cachedSecondaryLocale;
+  cachedSecondaryLocaleInitialized = true;
+  try {
+    const saved = localStorage.getItem(SECONDARY_LOCALE_STORAGE_KEY);
+    if (saved && isValidLocale(saved)) {
+      cachedSecondaryLocale = saved;
+      return saved;
+    }
+    // Backward compatibility: if displayMode is bilingual and no secondary locale is saved, default to ko (or en if main is ko)
+    const mode = localStorage.getItem(DISPLAY_MODE_STORAGE_KEY);
+    if (mode === "bilingual") {
+      const mainLocale = getClientLocaleSnapshot();
+      cachedSecondaryLocale = mainLocale === "ko" ? "en" : "ko";
+      return cachedSecondaryLocale;
+    }
+  } catch {
+    // ignore
+  }
+  return null;
+}
+
+function getServerSecondaryLocaleSnapshot(): Locale | null {
+  return null;
+}
+
+function subscribeSecondaryLocale(callback: () => void): () => void {
+  const handleStorage = (e: StorageEvent) => {
+    if (e.key === SECONDARY_LOCALE_STORAGE_KEY || e.key === DISPLAY_MODE_STORAGE_KEY) {
+      cachedSecondaryLocaleInitialized = false;
+      cachedSecondaryLocale = null;
+      callback();
+    }
+  };
+  const handleCustom = () => {
+    callback();
+  };
+
+  window.addEventListener("storage", handleStorage);
+  window.addEventListener(SECONDARY_LOCALE_CHANGE_EVENT, handleCustom);
+  return () => {
+    window.removeEventListener("storage", handleStorage);
+    window.removeEventListener(SECONDARY_LOCALE_CHANGE_EVENT, handleCustom);
+  };
+}
 
 /**
  * Determines whether a bilingual phrase is considered long and should be rendered
@@ -302,6 +357,12 @@ export function LocaleProvider({
     getServerDisplayModeSnapshot,
   );
 
+  const secondaryLocale = useSyncExternalStore(
+    subscribeSecondaryLocale,
+    getClientSecondaryLocaleSnapshot,
+    getServerSecondaryLocaleSnapshot,
+  );
+
   const [script, setScriptState] = React.useState<ScriptType>(() => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem(`life_help_script_${locale}`) as ScriptType;
@@ -375,22 +436,52 @@ export function LocaleProvider({
     }
   }, []);
 
-  const setDisplayMode = useCallback((mode: DisplayMode) => {
-    cachedDisplayMode = mode;
+  const setSecondaryLocale = useCallback((sec: Locale | null) => {
+    cachedSecondaryLocale = sec;
+    cachedSecondaryLocaleInitialized = true;
     try {
-      localStorage.setItem(DISPLAY_MODE_STORAGE_KEY, mode);
-      document.cookie = `${DISPLAY_MODE_STORAGE_KEY}=${mode}; path=/; max-age=31536000; SameSite=Lax`;
+      if (sec && isValidLocale(sec)) {
+        localStorage.setItem(SECONDARY_LOCALE_STORAGE_KEY, sec);
+        localStorage.setItem(DISPLAY_MODE_STORAGE_KEY, "bilingual");
+        document.cookie = `${SECONDARY_LOCALE_STORAGE_KEY}=${sec}; path=/; max-age=31536000; SameSite=Lax`;
+        document.cookie = `${DISPLAY_MODE_STORAGE_KEY}=bilingual; path=/; max-age=31536000; SameSite=Lax`;
+      } else {
+        localStorage.removeItem(SECONDARY_LOCALE_STORAGE_KEY);
+        localStorage.setItem(DISPLAY_MODE_STORAGE_KEY, "monolingual");
+        document.cookie = `${SECONDARY_LOCALE_STORAGE_KEY}=; path=/; max-age=0; SameSite=Lax`;
+        document.cookie = `${DISPLAY_MODE_STORAGE_KEY}=monolingual; path=/; max-age=31536000; SameSite=Lax`;
+      }
+      window.dispatchEvent(new Event(SECONDARY_LOCALE_CHANGE_EVENT));
       window.dispatchEvent(new Event(DISPLAY_MODE_CHANGE_EVENT));
     } catch {
       // ignore
     }
   }, []);
 
-  const toggleDisplayMode = useCallback(() => {
-    setDisplayMode(displayMode === "bilingual" ? "monolingual" : "bilingual");
-  }, [displayMode, setDisplayMode]);
+  const setDisplayMode = useCallback((mode: DisplayMode) => {
+    cachedDisplayMode = mode;
+    try {
+      localStorage.setItem(DISPLAY_MODE_STORAGE_KEY, mode);
+      document.cookie = `${DISPLAY_MODE_STORAGE_KEY}=${mode}; path=/; max-age=31536000; SameSite=Lax`;
+      if (mode === "monolingual") {
+        setSecondaryLocale(null);
+      } else {
+        const currentSec = localStorage.getItem(SECONDARY_LOCALE_STORAGE_KEY) as Locale | null;
+        if (!currentSec || !isValidLocale(currentSec) || currentSec === locale) {
+          setSecondaryLocale(locale === "ko" ? "en" : "ko");
+        }
+      }
+      window.dispatchEvent(new Event(DISPLAY_MODE_CHANGE_EVENT));
+    } catch {
+      // ignore
+    }
+  }, [locale, setSecondaryLocale]);
 
-  const isBilingual = displayMode === "bilingual" && locale !== "ko";
+  const toggleDisplayMode = useCallback(() => {
+    setDisplayMode(secondaryLocale ? "monolingual" : "bilingual");
+  }, [secondaryLocale, setDisplayMode]);
+
+  const isBilingual = secondaryLocale !== null && secondaryLocale !== locale;
 
   const currentMeta =
     languages.find((item) => item.code === locale) ||
@@ -404,30 +495,33 @@ export function LocaleProvider({
     [locale, script],
   );
   const tKo = useCallback((key: string) => translate("ko", key), []);
+  const tSecondary = useCallback((key: string) => {
+    if (!secondaryLocale) return "";
+    return translate(secondaryLocale, key);
+  }, [secondaryLocale]);
 
   const tBilingual = useCallback(
     (key: string, separator?: string) => {
       const rawCurrent = translate(locale, key);
       const current = convertScript(rawCurrent, locale, script);
-      if (locale === "ko" || displayMode === "monolingual") return current;
-      const ko = translate("ko", key);
-      if (!ko || current === ko) return current;
-      const actualSeparator = getBilingualSeparator(current, ko, separator);
-      return `${current}${actualSeparator}${ko}`;
+      if (!secondaryLocale || secondaryLocale === locale || displayMode === "monolingual") return current;
+      const sec = translate(secondaryLocale, key);
+      if (!sec || current === sec) return current;
+      const actualSeparator = getBilingualSeparator(current, sec, separator);
+      return `${current}${actualSeparator}${sec}`;
     },
-    [locale, displayMode, script],
+    [locale, secondaryLocale, displayMode, script],
   );
 
   const formatBilingual = useCallback(
-    (targetText: string, koText: string, separator?: string) => {
+    (targetText: string, secondaryText: string, separator?: string) => {
       const convertedTarget = convertScript(targetText, locale, script);
-      if (locale === "ko") return koText || convertedTarget;
-      if (displayMode === "monolingual") return convertedTarget;
-      if (!koText || convertedTarget === koText) return convertedTarget;
-      const actualSeparator = getBilingualSeparator(convertedTarget, koText, separator);
-      return `${convertedTarget}${actualSeparator}${koText}`;
+      if (!secondaryLocale || secondaryLocale === locale || displayMode === "monolingual") return convertedTarget;
+      if (!secondaryText || convertedTarget === secondaryText) return convertedTarget;
+      const actualSeparator = getBilingualSeparator(convertedTarget, secondaryText, separator);
+      return `${convertedTarget}${actualSeparator}${secondaryText}`;
     },
-    [locale, displayMode, script],
+    [locale, secondaryLocale, displayMode, script],
   );
 
   return (
@@ -435,6 +529,8 @@ export function LocaleProvider({
       value={{
         locale,
         setLocale,
+        secondaryLocale,
+        setSecondaryLocale,
         script,
         setScript,
         isDualScript,
@@ -445,6 +541,7 @@ export function LocaleProvider({
         isBilingual,
         t,
         tKo,
+        tSecondary,
         tBilingual,
         formatBilingual,
         currentMeta,
@@ -463,16 +560,19 @@ export function useLocale(): LocaleContextType {
     return {
       locale: defaultLocale,
       setLocale: () => {},
+      secondaryLocale: null,
+      setSecondaryLocale: () => {},
       script: "latn",
       setScript: () => {},
       isDualScript: false,
       scriptMeta: null,
-      displayMode: "bilingual",
+      displayMode: "monolingual",
       setDisplayMode: () => {},
       toggleDisplayMode: () => {},
-      isBilingual: true,
+      isBilingual: false,
       t: (key: string) => translate(defaultLocale, key),
       tKo: (key: string) => translate("ko", key),
+      tSecondary: () => "",
       tBilingual: (key: string) => translate(defaultLocale, key),
       formatBilingual: (targetText: string) => targetText,
       currentMeta: languages[0],

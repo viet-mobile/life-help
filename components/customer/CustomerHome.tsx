@@ -314,7 +314,7 @@ function CardShell({ svc, onStudy, className, children }: { svc: ServiceItem; on
 }
 
 export function CustomerHome() {
-  const { locale, setLocale, t, tKo, tBilingual, isBilingual, formatBilingual } = useLocale();
+  const { locale, setLocale, t, tKo, tSecondary, tBilingual, isBilingual, secondaryLocale, formatBilingual } = useLocale();
   const { formattedRegion, shortRegionText, openModal } = useRegion();
   const headingWeight = locale === "vi" ? "font-bold" : "font-extrabold";
 
@@ -416,9 +416,9 @@ export function CustomerHome() {
 
               <h1 className={`text-sm xs:text-base sm:text-2xl lg:text-3xl ${headingWeight} tracking-tight text-slate-900 leading-snug`}>
                 {t("customer.tagline")}
-                {isBilingual && locale !== "ko" && (
+                {isBilingual && (
                   <span className="block mt-0.5 text-xs sm:text-sm font-bold text-slate-500">
-                    {tKo("customer.tagline")}
+                    {tSecondary("customer.tagline") || tKo("customer.tagline")}
                   </span>
                 )}
               </h1>
@@ -652,9 +652,9 @@ export function CustomerHome() {
               <h2 className="text-sm sm:text-lg font-black text-white leading-tight">
                 {t("customer.helperMasterBanner")}
               </h2>
-              {isBilingual && locale !== "ko" && (
+              {isBilingual && (
                 <p className="mt-0.5 text-xs sm:text-sm font-bold text-amber-300">
-                  {tKo("customer.helperMasterBanner")}
+                  {tSecondary("customer.helperMasterBanner") || tKo("customer.helperMasterBanner")}
                 </p>
               )}
 
@@ -728,9 +728,9 @@ export function CustomerHome() {
                 <span className="text-xs sm:text-sm font-black text-slate-900 leading-snug">
                   {t(`customer.${key}`)}
                 </span>
-                {isBilingual && locale !== "ko" && (
+                {isBilingual && (
                   <span className="mt-0.5 text-[10px] font-bold text-blue-700 truncate">
-                    {tKo(`customer.${key}`)}
+                    {tSecondary(`customer.${key}`) || tKo(`customer.${key}`)}
                   </span>
                 )}
               </div>
