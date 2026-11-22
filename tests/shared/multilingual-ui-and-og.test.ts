@@ -36,10 +36,11 @@ describe("Multilingual UI, 4-Quadrant Homecare, Referral & OG Metadata", () => {
     const monoSq = formatLanguageName(sqMeta, "sq", false);
     expect(monoSq).toBe("Shqip");
 
-    // Bilingual mode in sq
+    // Top current language never attaches redundant parentheses
     const biSq = formatLanguageName(sqMeta, "sq", true);
-    expect(biSq).toBe("Shqip (알바니아어)");
+    expect(biSq).toBe("Shqip");
 
+    // Other non-current languages include Korean in bilingual mode
     const biEnInSq = formatLanguageName(enMeta, "sq", true);
     expect(biEnInSq).toContain("Anglisht (영어)");
   });
@@ -77,5 +78,8 @@ describe("Multilingual UI, 4-Quadrant Homecare, Referral & OG Metadata", () => {
     expect(fs.existsSync(path.join(publicDir, "og-chemistry.png"))).toBe(true);
     expect(fs.existsSync(path.join(publicDir, "logos/logo-physics.png"))).toBe(true);
     expect(fs.existsSync(path.join(publicDir, "logos/logo-chemistry.png"))).toBe(true);
+
+    // Verify official round logo badge is integrated into og.png
+    expect(fs.existsSync(path.join(publicDir, "logos/life-help-round-logo.png"))).toBe(true);
   });
 });
