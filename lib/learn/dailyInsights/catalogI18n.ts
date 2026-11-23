@@ -3,6 +3,7 @@
 import { getInsightLocaleData } from "./localesData";
 import type { Locale } from "@/messages/registry";
 import CATALOG_TITLES from "./catalogTitles89.json";
+import MULTILINGUAL_POPOVER from "./multilingualPopover89.json";
 
 export interface CatalogI18nEntry {
   catalogTitle?: string;
@@ -15,6 +16,9 @@ export interface CatalogI18nEntry {
   allCategories: string;
   resultsCount: string;
   noResults: string;
+  multilingualTitle?: string;
+  multilingualDesc?: string;
+  searchMultilingual?: string;
 }
 
 export const CATALOG_UI_DICTIONARY: Record<string, CatalogI18nEntry> = {
@@ -913,6 +917,13 @@ export const CATALOG_UI_DICTIONARY: Record<string, CatalogI18nEntry> = {
 export function getCatalogI18n(locale: string = "ko") {
   const isKo = locale === "ko";
   const entry = CATALOG_UI_DICTIONARY[locale] || CATALOG_UI_DICTIONARY.en || CATALOG_UI_DICTIONARY.ko;
+  const popoverMap = MULTILINGUAL_POPOVER as Record<string, {
+    multilingualTitle: string;
+    multilingualDesc: string;
+    singleClear: string;
+    searchMultilingual: string;
+  }>;
+  const popover = popoverMap[locale] || popoverMap.en || popoverMap.ko;
   const titlesMap = CATALOG_TITLES as Record<string, { title: string; subtitle: string }>;
   const titleInfo = titlesMap[locale] || titlesMap.en || {
     title: "Daily Life Help · 366 Practical Catalog",
@@ -926,7 +937,10 @@ export function getCatalogI18n(locale: string = "ko") {
     catalogSubtitle: titleInfo.subtitle,
     home: entry.home || (isKo ? "홈으로" : "Home"),
     single: entry.single || (isKo ? "단일 언어" : "Single"),
-    singleClear: entry.singleClear || (isKo ? "단일 언어 표기 (모두 해제)" : "Single Language (Clear all)"),
+    singleClear: popover?.singleClear || entry.singleClear || (isKo ? "단일 언어만 표기 (해제)" : "Single Language Only (Off)"),
+    multilingualTitle: popover?.multilingualTitle || entry.multilingualTitle || (isKo ? "다중 병기 언어" : "Multilingual Languages"),
+    multilingualDesc: popover?.multilingualDesc || entry.multilingualDesc || (isKo ? "선택된 언어를 다시 누르면 해제됩니다" : "Click selected language to remove"),
+    searchMultilingual: popover?.searchMultilingual || entry.searchMultilingual || (isKo ? "병기할 언어 검색..." : "Search multilingual language..."),
     catalogBadge: entry.catalogBadge || (isKo ? "366일 전과목 실천 가이드" : "366-Day Complete Catalog"),
     searchPlaceholder: entry.searchPlaceholder || (isKo ? "팁 제목, 원리, 행동 또는 Day 번호 검색..." : "Search title, principle, action, or day #..."),
     allCategories: entry.allCategories || (isKo ? "전체 분야" : "All Categories"),

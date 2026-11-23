@@ -113,4 +113,34 @@ describe("366-Day Complete Catalog & Multilingual Selector 89-Language I18n", ()
     expect(fr.single).toBe("Unique");
     expect(fr.categories.health).toBe("Santé et bien-être");
   });
+
+  it("verifies accurate 89-language coverage for multilingual popover controls", () => {
+    for (const loc of locales) {
+      const i18n = getCatalogI18n(loc);
+      expect(i18n.multilingualTitle).toBeTruthy();
+      expect(i18n.multilingualDesc).toBeTruthy();
+      expect(i18n.singleClear).toBeTruthy();
+      expect(i18n.searchMultilingual).toBeTruthy();
+
+      // Check specific locales
+      if (loc === "en") {
+        expect(i18n.multilingualTitle).toBe("Multilingual Languages");
+        expect(i18n.multilingualDesc).toBe("Click selected language to remove");
+        expect(i18n.singleClear).toBe("Single Language Only (Off)");
+        expect(i18n.searchMultilingual).toBe("Search multilingual language...");
+      }
+      if (loc === "vi") {
+        expect(i18n.multilingualTitle).toBe("Đa ngôn ngữ song song");
+        expect(i18n.multilingualDesc).toBe("Nhấn vào ngôn ngữ đã chọn để hủy");
+        expect(i18n.singleClear).toBe("Chỉ Đơn ngữ (Tắt)");
+        expect(i18n.searchMultilingual).toBe("Tìm kiếm ngôn ngữ song song...");
+      }
+      if (loc === "hi") {
+        expect(i18n.multilingualTitle).toBe("बहुभाषी भाषाएं");
+        expect(i18n.multilingualDesc).toBe("हटाने के लिए चयनित भाषा पर क्लिक करें");
+        expect(i18n.singleClear).toBe("केवल एकल भाषा (बंद)");
+        expect(i18n.searchMultilingual).toBe("बहुभाषी भाषा खोजें...");
+      }
+    }
+  });
 });

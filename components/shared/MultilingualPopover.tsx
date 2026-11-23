@@ -104,7 +104,7 @@ export function MultilingualPopover({
             <div>
               <h4 className="text-xs font-black text-slate-900 flex items-center gap-1.5">
                 <span>🈁</span>
-                <span>{isKo ? "다중 병기 언어 선택" : "Multilingual Languages"}</span>
+                <span>{catalogI18n.multilingualTitle || "Multilingual Languages"}</span>
                 {secondaryCount > 0 && (
                   <span className="rounded-full bg-blue-600 px-1.5 py-0.2 text-[10px] font-bold text-white">
                     {secondaryCount}
@@ -112,7 +112,7 @@ export function MultilingualPopover({
                 )}
               </h4>
               <p className="text-[10px] font-medium text-slate-500 mt-0.5">
-                {isKo ? "선택된 언어를 다시 누르면 해제됩니다" : "Click selected language to remove"}
+                {catalogI18n.multilingualDesc}
               </p>
             </div>
             <button
@@ -148,7 +148,7 @@ export function MultilingualPopover({
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder={isKo ? "언어 검색 (예: 한국어, English, Tiếng Việt)..." : "Search languages..."}
+              placeholder={catalogI18n.searchMultilingual}
               className="w-full rounded-lg border border-slate-200 px-2.5 py-1.5 text-xs font-semibold text-slate-800 placeholder-slate-400 focus:border-blue-500 focus:outline-none"
             />
           </div>
