@@ -25,6 +25,8 @@ export async function POST(request: Request, ctx: RouteContext<"/api/learn/[acti
     const actor = await resolveActor(body.state);
     // Presentation only; the authenticated identity still comes exclusively from the session.
     if (isLocale(body.locale)) actor.locale = body.locale;
+    if (body.secondaryLocale && isLocale(body.secondaryLocale)) actor.secondaryLocale = body.secondaryLocale;
+    if (Array.isArray(body.secondaryLocales)) actor.secondaryLocales = body.secondaryLocales.filter(isLocale);
     const ip = request.headers.get("cf-connecting-ip") ?? request.headers.get("x-forwarded-for") ?? "local";
     await edgeRateLimit(actor.userId ?? ip);
     rateLimit(`${actor.userId ?? ip}:${action}`, action === "attempt" ? 120 : 60, 60_000);

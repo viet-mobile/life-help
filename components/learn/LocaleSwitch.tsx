@@ -6,7 +6,7 @@ import { LOCALES, LOCALE_COOKIE, LOCALE_COOKIE_MAX_AGE, isLocale, nativeName, ty
 import { localeFromSegment, splitLocalePrefix } from "@/lib/learn/i18n/path";
 import { getLanguageNameInLocale, formatLanguageName, type Locale } from "@/messages/registry";
 import { useSite } from "./LearnerProvider";
-import { MultilingualPopover } from "@/components/shared/MultilingualPopover";
+import { LearnMultilingualPopover } from "./LearnMultilingualPopover";
 
 /**
  * Language picker over registry locales, each named in its own script so a learner can always find their language.
@@ -69,7 +69,7 @@ export function LocaleSwitch({ compact = false }: { compact?: boolean }) {
       </label>
 
       {/* Multilingual Secondary Languages Selector */}
-      <MultilingualPopover currentLocale={locale as Locale} compact={compact} />
+      <LearnMultilingualPopover currentLocale={locale as Locale} compact={compact} />
     </div>
   );
 }

@@ -16,18 +16,18 @@ import { hubLabels } from "../think/hubLabels";
 const FOCUS_PATHS = ["/lesson/", "/onboarding", "/diagnostic", "/practice"]; // /think keeps the tab bar (its hub), the player is part of it
 
 export function PlayShell({ children }: { children: ReactNode }) {
-  const { t, href, site, state, ready, locale } = useLearner();
+  const { t, tSecondary, isBilingual, href, site, state, ready, locale } = useLearner();
   const pathname = usePathname();
   const focus = FOCUS_PATHS.some((p) => pathname.includes(p));
   const level = levelProgress(state.totalXp);
   const streak = ready ? displayStreak(state.streak, dayKey(new Date())) : 0;
 
   const tabs = [
-    { path: "/dashboard", icon: "🏠", label: t("nav.home") },
-    { path: "/learn", icon: "🗺️", label: t("nav.learn") },
-    { path: "/quest", icon: "📜", label: t("nav.quest") },
-    { path: "/think", icon: "🧠", label: hubLabels(t).title },
-    { path: "/profile", icon: "🙂", label: t("nav.profile") },
+    { path: "/dashboard", icon: "🏠", label: t("nav.home"), secLabel: isBilingual ? tSecondary("nav.home") : undefined },
+    { path: "/learn", icon: "🗺️", label: t("nav.learn"), secLabel: isBilingual ? tSecondary("nav.learn") : undefined },
+    { path: "/quest", icon: "📜", label: t("nav.quest"), secLabel: isBilingual ? tSecondary("nav.quest") : undefined },
+    { path: "/think", icon: "🧠", label: hubLabels(t).title, secLabel: isBilingual ? hubLabels(tSecondary).title : undefined },
+    { path: "/profile", icon: "🙂", label: t("nav.profile"), secLabel: isBilingual ? tSecondary("nav.profile") : undefined },
   ];
 
   if (focus) return <><main id="main" className="l-main">{children}</main><ThinkOffer /></>;
@@ -50,7 +50,10 @@ export function PlayShell({ children }: { children: ReactNode }) {
         {tabs.map((tab) => (
           <Link key={tab.path} className="l-tab" href={href(tab.path)} aria-current={pathname.endsWith(tab.path) ? "page" : undefined}>
             <span className="l-tab-ico" aria-hidden="true">{tab.icon}</span>
-            {tab.label}
+            <span style={{ display: "inline-flex", flexDirection: "column", alignItems: "center" }}>
+              <span>{tab.label}</span>
+              {tab.secLabel && <span style={{ fontSize: "0.75em", opacity: 0.85, lineHeight: 1 }}>{tab.secLabel}</span>}
+            </span>
           </Link>
         ))}
       </nav>

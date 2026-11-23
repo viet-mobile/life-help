@@ -50,3 +50,15 @@ export function learnHost(site: Site, stage: "production" | "staging"): string {
 export function learnOrigins(): string[] {
   return Object.entries(HOSTS).filter(([, v]) => v.stage !== "local").map(([h]) => `https://${h}`);
 }
+
+export function buildLearnUrl(site: Site, rawHost: string, locale?: string): string {
+  const host = rawHost.split(":")[0].toLowerCase().trim();
+  const info = parseLearnHost(host);
+  const stage = info?.stage ?? (host.includes("localhost") || host.includes("127.0.0.1") ? "local" : "production");
+  const sub = site === "chemistry" ? "chem" : site;
+  const path = locale ? `/${locale}` : "";
+  if (stage === "local") {
+    return `http://${sub}.localhost:3000${path}`;
+  }
+  return `https://${sub}.life.help${path}`;
+}

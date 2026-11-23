@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
-import { useLocale } from "@/lib/i18n/LocaleContext";
 import { languages, getSortedLanguages, formatLanguageName, type Locale } from "@/messages/registry";
 import { LegalDocument } from "./LegalDocument";
 import type { LegalKind } from "@/lib/legal/documents";
@@ -20,8 +19,8 @@ export function LegalPage({
   home?: string;
   other: { href: string; label: string };
 }) {
-  const { locale: currentLocale } = useLocale();
-  const [selectedLang, setSelectedLang] = useState<string>(primary || currentLocale || "ko");
+  const currentLocale = primary || "ko";
+  const [selectedLang, setSelectedLang] = useState<string>(currentLocale);
 
   useEffect(() => {
     if (currentLocale && currentLocale !== "ko" && currentLocale !== "en") {

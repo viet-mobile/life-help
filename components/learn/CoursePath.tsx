@@ -14,7 +14,8 @@ import { useLearner } from "./LearnerProvider";
 const SEMESTER_KEY = "learn:semester";
 
 export function CoursePath({ course }: { course: Course }) {
-  const { state, index, t, href, access, plan, site } = useLearner();
+  const { state, index, t, href, access, plan, site, secondaryIndex, tSecondary, isBilingual } = useLearner();
+  const secCourse = isBilingual && secondaryIndex ? secondaryIndex.bundle.catalog.courses.find((c) => c.id === course.id) : null;
   const split = hasSemesters(site) && course.units.some((u) => u.lessons.some((l) => semesterOf(site, l.id) !== 0));
   // first paint is semester 1 (same on server and client); the effect then picks the remembered / current semester
   const [semester, setSemester] = useState<1 | 2>(1);
@@ -35,8 +36,22 @@ export function CoursePath({ course }: { course: Course }) {
     <section className="l-stack" aria-labelledby={`c-${course.id}`}>
       <div className="l-card l-card-accent">
         <div style={{ fontSize: "2.4rem" }} aria-hidden="true">{course.world.emoji}</div>
-        <h2 id={`c-${course.id}`} className="l-h1">{course.world.name}</h2>
-        <p>{course.world.tagline} · {course.title}</p>
+        <h2 id={`c-${course.id}`} className="l-h1">
+          <div>{course.world.name}</div>
+          {isBilingual && secCourse && (
+            <div style={{ fontSize: "0.75em", fontWeight: 400, opacity: 0.85, marginTop: "0.2rem" }}>
+              {secCourse.world.name}
+            </div>
+          )}
+        </h2>
+        <p>
+          <span>{course.world.tagline} · {course.title}</span>
+          {isBilingual && secCourse && (
+            <span style={{ display: "block", fontSize: "0.9em", opacity: 0.85, marginTop: "0.15rem" }}>
+              {secCourse.world.tagline} · {secCourse.title}
+            </span>
+          )}
+        </p>
         {site === "korean" && (
           <p className="l-muted" data-testid="course-official">
             <OfficialGradeChip level={course.grade} t={t} />
@@ -48,53 +63,105 @@ export function CoursePath({ course }: { course: Course }) {
         <div role="tablist" aria-label={t("semester.title")} className="l-options" style={{ gridTemplateColumns: "1fr 1fr" }} data-testid="semester-tabs">
           {([1, 2] as const).map((n) => (
             <button key={n} type="button" role="tab" aria-selected={semester === n} data-selected={semester === n} data-testid={`semester-${n}`} className="l-option" onClick={() => pick(n)}>
-              {t(`semester.${n}` as never)}
+              <span>{t(`semester.${n}` as never)}</span>
+              {isBilingual && (
+                <span style={{ display: "block", fontSize: "0.8em", opacity: 0.85 }}>
+                  {tSecondary(`semester.${n}` as never)}
+                </span>
+              )}
             </button>
           ))}
         </div>
       )}
       {split && course.units.every((u) => u.lessons.every((l) => !visible(l.id))) && <div className="l-panel l-panel-hint" role="status">{t("semester.empty")}</div>}
-      {course.units.map((unit) => (
-        <div key={unit.id} className="l-stack">
-          <h3 className="l-h2">{t("learn.unit")} · {unit.title}</h3>
-          <ol className="l-path">
-            {unit.lessons.filter((lesson) => visible(lesson.id)).map((lesson) => {
-              const node = nodes.get(lesson.id);
-              const tier = plan.lessonTier.get(lesson.id) ?? "PREMIUM";
-              const premium = tier !== "FREE";
-              const premiumLocked = tier === "PREMIUM" && access.tier !== "PREMIUM";
-              const status = node?.status ?? "locked";
-              const icon = premiumLocked ? "💎" : status === "done" ? "✅" : status === "current" ? "▶️" : "🔒";
-              const inner = (
-                <>
-                  <span className="l-node-ico" aria-hidden="true">{icon}</span>
-                  <span style={{ flex: 1 }}>
-                    <strong>{lesson.title}</strong>{site === "korean" && <> <BandChip lessonId={lesson.id} t={t} /></>}{split && semesterOf(site, lesson.id) === 0 && <span className="l-muted"> · {t("semester.shared")}</span>}{showTier && " "}
-                    {showTier && <span className="l-tier" data-tier={tier.toLowerCase()} data-testid={`tier-${lesson.id}`}>{tier === "PARTIAL" ? `${t("premium.free")} + ${t("premium.premium")}` : t(premium ? "premium.premium" : "premium.free")}</span>}
-                    <br />
-                    <span className="l-muted">
-                      {status === "done" ? (node?.placedOut && !node.stars ? t("learn.lesson.placed") : `${"★".repeat(node?.stars ?? 0)}${"☆".repeat(3 - (node?.stars ?? 0))} ${t("learn.lesson.done")}`) : status === "current" ? t("learn.lesson.current") : t("learn.lesson.locked")}
+      {course.units.map((unit) => {
+        const secUnit = secCourse?.units.find((u) => u.id === unit.id);
+        return (
+          <div key={unit.id} className="l-stack">
+            <h3 className="l-h2">
+              <div>{t("learn.unit")} · {unit.title}</div>
+              {isBilingual && secUnit && (
+                <div style={{ fontSize: "0.8em", fontWeight: 400, opacity: 0.85, marginTop: "0.15rem" }}>
+                  {tSecondary("learn.unit")} · {secUnit.title}
+                </div>
+              )}
+            </h3>
+            <ol className="l-path">
+              {unit.lessons.filter((lesson) => visible(lesson.id)).map((lesson) => {
+                const secLesson = secUnit?.lessons.find((l) => l.id === lesson.id);
+                const node = nodes.get(lesson.id);
+                const tier = plan.lessonTier.get(lesson.id) ?? "PREMIUM";
+                const premium = tier !== "FREE";
+                const premiumLocked = tier === "PREMIUM" && access.tier !== "PREMIUM";
+                const status = node?.status ?? "locked";
+                const icon = premiumLocked ? "💎" : status === "done" ? "✅" : status === "current" ? "▶️" : "🔒";
+                const inner = (
+                  <>
+                    <span className="l-node-ico" aria-hidden="true">{icon}</span>
+                    <span style={{ flex: 1 }}>
+                      <strong>{lesson.title}</strong>
+                      {isBilingual && secLesson && (
+                        <span style={{ display: "block", fontSize: "0.88em", fontWeight: 400, opacity: 0.85 }}>
+                          {secLesson.title}
+                        </span>
+                      )}
+                      {site === "korean" && <> <BandChip lessonId={lesson.id} t={t} /></>}
+                      {split && semesterOf(site, lesson.id) === 0 && <span className="l-muted"> · {t("semester.shared")}</span>}
+                      {showTier && " "}
+                      {showTier && <span className="l-tier" data-tier={tier.toLowerCase()} data-testid={`tier-${lesson.id}`}>{tier === "PARTIAL" ? `${t("premium.free")} + ${t("premium.premium")}` : t(premium ? "premium.premium" : "premium.free")}</span>}
+                      <br />
+                      <span className="l-muted">
+                        {status === "done" ? (
+                          <>
+                            <span>{node?.placedOut && !node.stars ? t("learn.lesson.placed") : `${"★".repeat(node?.stars ?? 0)}${"☆".repeat(3 - (node?.stars ?? 0))} ${t("learn.lesson.done")}`}</span>
+                            {isBilingual && <span style={{ opacity: 0.85, marginLeft: "0.3rem" }}>({tSecondary(node?.placedOut && !node.stars ? "learn.lesson.placed" : "learn.lesson.done")})</span>}
+                          </>
+                        ) : status === "current" ? (
+                          <>
+                            <span>{t("learn.lesson.current")}</span>
+                            {isBilingual && <span style={{ opacity: 0.85, marginLeft: "0.3rem" }}>({tSecondary("learn.lesson.current")})</span>}
+                          </>
+                        ) : (
+                          <>
+                            <span>{t("learn.lesson.locked")}</span>
+                            {isBilingual && <span style={{ opacity: 0.85, marginLeft: "0.3rem" }}>({tSecondary("learn.lesson.locked")})</span>}
+                          </>
+                        )}
+                      </span>
                     </span>
-                  </span>
-                  {premiumLocked ? <span className="l-chip">{t("premium.locked")}</span> : status !== "locked" && <span className="l-chip">{status === "done" ? t("learn.lesson.replay") : t("learn.lesson.start")}</span>}
-                </>
-              );
-              return (
-                <li key={lesson.id}>
-                  {premiumLocked ? (
-                    // a premium lesson opens the lesson page, which shows why it is locked (the server sends no lesson content)
-                    <Link className="l-node" data-status="premium" href={href(`/lesson/${lesson.id}`)}>{inner}</Link>
-                  ) : status === "locked" ? (
-                    <div className="l-node" data-status={status} aria-disabled="true">{inner}</div>
-                  ) : (
-                    <Link className="l-node" data-status={status} href={href(`/lesson/${lesson.id}`)}>{inner}</Link>
-                  )}
-                </li>
-              );
-            })}
-          </ol>
-        </div>
-      ))}
+                    {premiumLocked ? (
+                      <span className="l-chip">
+                        <span>{t("premium.locked")}</span>
+                        {isBilingual && <span style={{ display: "block", fontSize: "0.75em", opacity: 0.85 }}>{tSecondary("premium.locked")}</span>}
+                      </span>
+                    ) : status !== "locked" && (
+                      <span className="l-chip">
+                        <span>{status === "done" ? t("learn.lesson.replay") : t("learn.lesson.start")}</span>
+                        {isBilingual && (
+                          <span style={{ display: "block", fontSize: "0.75em", opacity: 0.85 }}>
+                            {status === "done" ? tSecondary("learn.lesson.replay") : tSecondary("learn.lesson.start")}
+                          </span>
+                        )}
+                      </span>
+                    )}
+                  </>
+                );
+                return (
+                  <li key={lesson.id}>
+                    {premiumLocked ? (
+                      <Link className="l-node" data-status="premium" href={href(`/lesson/${lesson.id}`)}>{inner}</Link>
+                    ) : status === "locked" ? (
+                      <div className="l-node" data-status={status} aria-disabled="true">{inner}</div>
+                    ) : (
+                      <Link className="l-node" data-status={status} href={href(`/lesson/${lesson.id}`)}>{inner}</Link>
+                    )}
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+        );
+      })}
     </section>
   );
 }

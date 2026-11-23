@@ -6,7 +6,7 @@ import "katex/dist/katex.min.css";
 import "../study.css";
 import { SiteProvider } from "@/components/learn/LearnerProvider";
 import { localeDir } from "@/lib/learn/i18n";
-import { getServerT, getSecondaryLocale } from "@/lib/learn/i18n/server";
+import { getServerT, getSecondaryLocale, getSecondaryLocales } from "@/lib/learn/i18n/server";
 import { siteConfig } from "@/lib/learn/sites";
 import { isSite } from "@/lib/learn/types";
 import { learnHost, parseLearnHost } from "@/lib/learn/hosts";
@@ -101,11 +101,22 @@ export default async function StudyLayout({ children, params }: { children: Reac
   const h = await headers();
   const base = h.get("x-learn-base") ?? `/study/${site}`;
   const { locale, messages } = await getServerT();
+  const secondaryLocale = await getSecondaryLocale();
+  const secondaryLocales = await getSecondaryLocales();
+  const secondaryMessages = secondaryLocale && secondaryLocale !== locale ? (await getServerT(secondaryLocale)).messages : null;
   // lang / dir from the locale registry: Arabic-script and Hebrew locales render right-to-left; target-language material and formulas
   // inside keep their own direction (components mark them dir="ltr" / lang).
   return (
     <div className="study-root" data-site={site} lang={locale} dir={localeDir(locale)}>
-      <SiteProvider site={site} base={base} locale={locale} messages={messages}>
+      <SiteProvider
+        site={site}
+        base={base}
+        locale={locale}
+        messages={messages}
+        secondaryLocale={secondaryLocale}
+        secondaryLocales={secondaryLocales}
+        secondaryMessages={secondaryMessages}
+      >
         {children}
       </SiteProvider>
     </div>

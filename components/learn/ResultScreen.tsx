@@ -23,7 +23,7 @@ export interface SessionResult {
 }
 
 export function ResultScreen({ result, nextLesson, onAgain }: { result: SessionResult; nextLesson: Lesson | null; onAgain: () => void }) {
-  const { t, href, state, index } = useLearner();
+  const { t, tSecondary, isBilingual, href, state, index } = useLearner();
   const router = useRouter();
   useEnterToContinue(result.kind === "lesson" && !!nextLesson, () => { if (nextLesson) router.push(href(`/lesson/${nextLesson.id}`)); });
   const level = levelProgress(state.totalXp);
@@ -34,14 +34,28 @@ export function ResultScreen({ result, nextLesson, onAgain }: { result: SessionR
     <div className="l-wrap l-stack" role="region" aria-label={t("result.title.session")}>
       <div className="l-card l-card-accent l-pop" style={{ textAlign: "center" }}>
         <div style={{ fontSize: "3rem" }} aria-hidden="true">{result.kind === "lesson" ? "🏆" : "🎯"}</div>
-        <h1 className="l-h1">{result.kind === "lesson" ? t("result.title.lesson") : t("result.title.session")}</h1>
+        <h1 className="l-h1">
+          <div>{result.kind === "lesson" ? t("result.title.lesson") : t("result.title.session")}</div>
+          {isBilingual && (
+            <div style={{ fontSize: "0.75em", fontWeight: 400, opacity: 0.85, marginTop: "0.25rem" }}>
+              {result.kind === "lesson" ? tSecondary("result.title.lesson") : tSecondary("result.title.session")}
+            </div>
+          )}
+        </h1>
         {result.kind === "lesson" && (
           <p aria-label={t("learn.lesson.stars", { n: result.stars })} style={{ fontSize: "2rem" }}>
             {"★".repeat(result.stars)}
             <span style={{ opacity: 0.4 }}>{"★".repeat(3 - result.stars)}</span>
           </p>
         )}
-        <p>{t("result.accuracy", { n: result.firstTryCorrect, total: result.total })}</p>
+        <p>
+          <span>{t("result.accuracy", { n: result.firstTryCorrect, total: result.total })}</span>
+          {isBilingual && (
+            <span style={{ display: "block", fontSize: "0.85em", opacity: 0.85, marginTop: "0.15rem" }}>
+              {tSecondary("result.accuracy", { n: result.firstTryCorrect, total: result.total })}
+            </span>
+          )}
+        </p>
       </div>
 
       <div className="l-grid l-grid-2">
@@ -77,9 +91,18 @@ export function ResultScreen({ result, nextLesson, onAgain }: { result: SessionR
         ) : result.kind === "lesson" ? (
           <p className="l-muted">{t("result.noNext")}</p>
         ) : null}
-        <Link className="l-btn l-btn-ghost l-btn-block" href={href("/quest")}>📜 {t("nav.quest")}</Link>
-        <button className="l-btn l-btn-ghost l-btn-block" onClick={onAgain}>{t("result.again")}</button>
-        <Link className="l-link" href={href("/dashboard")}>{t("result.home")}</Link>
+        <Link className="l-btn l-btn-ghost l-btn-block" href={href("/quest")}>
+          <span>📜 {t("nav.quest")}</span>
+          {isBilingual && <span style={{ fontSize: "0.85em", opacity: 0.85, marginLeft: "0.4rem" }}>· {tSecondary("nav.quest")}</span>}
+        </Link>
+        <button className="l-btn l-btn-ghost l-btn-block" onClick={onAgain}>
+          <span>{t("result.again")}</span>
+          {isBilingual && <span style={{ fontSize: "0.85em", opacity: 0.85, marginLeft: "0.4rem" }}>· {tSecondary("result.again")}</span>}
+        </button>
+        <Link className="l-link" href={href("/dashboard")}>
+          <span>{t("result.home")}</span>
+          {isBilingual && <span style={{ fontSize: "0.85em", opacity: 0.85, marginLeft: "0.4rem" }}>· {tSecondary("result.home")}</span>}
+        </Link>
       </div>
     </div>
   );

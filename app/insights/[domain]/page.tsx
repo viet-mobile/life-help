@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { DailyInsightsCatalog } from "@/components/learn/DailyInsightsCatalog";
+import { DailyInsightsCatalog } from "@/components/insights/DailyInsightsCatalog";
 import { DomainType } from "@/lib/learn/dailyInsights/types";
 
 interface PageProps {

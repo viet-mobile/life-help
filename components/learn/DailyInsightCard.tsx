@@ -3,10 +3,10 @@
 import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { DailyInsight, DomainType, getInsightLocaleData, getDailyInsight, resolveActionLink } from "@/lib/learn/dailyInsights";
-import { studyUrl, StudySubject } from "@/lib/home/studyHosts";
+import { buildLearnUrl } from "@/lib/learn/hosts";
 import type { Locale } from "@/messages/registry";
-import { useLocale } from "@/lib/i18n/LocaleContext";
-import { HangeulCalligraphyIcon } from "@/components/shared/HangeulCalligraphyIcon";
+import type { Site } from "@/lib/learn/types";
+import { HangeulCalligraphyIcon } from "./HangeulCalligraphyIcon";
 import { getOfficialWebsiteBadge } from "@/lib/learn/dailyInsights/officialWebsiteI18n";
 
 interface DailyInsightCardProps {
@@ -67,22 +67,32 @@ const DOMAIN_SLOGANS: Record<DomainType, { labelKo: string; labelEn: string; ico
   },
 };
 
+function getClientSecondaryLocales(): { isBilingual: boolean; secondaryLocale: string | null; secondaryLocales: string[] } {
+  if (typeof document === "undefined") return { isBilingual: false, secondaryLocale: null, secondaryLocales: [] };
+  const mode = document.cookie.match(/life_help_display_mode=([^;]+)/)?.[1];
+  const sec = document.cookie.match(/life_help_secondary_locale=([^;]+)/)?.[1] ?? null;
+  const multi = document.cookie.match(/life_help_secondary_locales=([^;]+)/)?.[1]?.split(/[,+]/) ?? [];
+  return { isBilingual: mode === "bilingual" || mode === "multilingual" || multi.length > 0 || !!sec, secondaryLocale: sec, secondaryLocales: multi };
+}
+
 export function DailyInsightCard({ domain, insight: initialInsight, locale: propLocale = "ko", className = "" }: DailyInsightCardProps) {
-  const { locale: contextLocale, isBilingual, secondaryLocale, secondaryLocales } = useLocale();
   const [mounted, setMounted] = useState(false);
+  const [clientSec, setClientSec] = useState(() => getClientSecondaryLocales());
   const [copied, setCopied] = useState(false);
   const [randomSeed, setRandomSeed] = useState<number | null>(null);
 
   useEffect(() => {
     setMounted(true);
+    setClientSec(getClientSecondaryLocales());
     // Every visit and subject tab switch selects a fresh randomized topic
     setRandomSeed(Math.floor(Math.random() * 366));
   }, [domain]);
 
   // During SSR and first client frame, use propLocale to ensure 0 hydration mismatch.
-  // Immediately after mounting, use live contextLocale and randomized seed.
-  const activeLocale = mounted ? (contextLocale || propLocale) : propLocale;
+  // Immediately after mounting, use live propLocale and randomized seed.
+  const activeLocale = propLocale;
   const isKo = activeLocale === "ko";
+  const isBilingual = clientSec.isBilingual;
   const locData = getInsightLocaleData(activeLocale);
   const domainMeta = DOMAIN_SLOGANS[domain] || DOMAIN_SLOGANS.life;
 
@@ -93,18 +103,18 @@ export function DailyInsightCard({ domain, insight: initialInsight, locale: prop
   const officialLink = resolveActionLink(insight);
 
   const effectiveSecondaryLocales: Locale[] = useMemo(() => {
-    if (!isBilingual) return [];
-    if (secondaryLocales && secondaryLocales.length > 0) {
-      return secondaryLocales.filter((l): l is Locale => l !== activeLocale);
+    if (!clientSec.isBilingual) return [];
+    if (clientSec.secondaryLocales && clientSec.secondaryLocales.length > 0) {
+      return clientSec.secondaryLocales.filter((l): l is Locale => l !== activeLocale);
     }
-    if (secondaryLocale && secondaryLocale !== activeLocale) {
-      return [secondaryLocale];
+    if (clientSec.secondaryLocale && clientSec.secondaryLocale !== activeLocale) {
+      return [clientSec.secondaryLocale as Locale];
     }
     if (!isKo) {
       return ["ko" as Locale];
     }
     return [];
-  }, [isBilingual, secondaryLocales, secondaryLocale, activeLocale, isKo]);
+  }, [clientSec, activeLocale, isKo]);
 
   const secondaryInsights: { locale: Locale; insight: DailyInsight }[] = useMemo(() => {
     if (!mounted || effectiveSecondaryLocales.length === 0) return [];
@@ -157,8 +167,7 @@ export function DailyInsightCard({ domain, insight: initialInsight, locale: prop
       targetHref = activeLocale && activeLocale !== "ko" ? `/${activeLocale}${insight.relatedHref}` : insight.relatedHref;
     } else {
       if (typeof window !== "undefined") {
-        const [h, p = ""] = window.location.host.split(":");
-        targetHref = studyUrl(domain as StudySubject, h, p, activeLocale as Locale);
+        targetHref = buildLearnUrl(domain as Site, window.location.host, activeLocale);
       } else {
         targetHref = `/study/${domain}`;
       }

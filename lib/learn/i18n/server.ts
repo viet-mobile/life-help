@@ -69,6 +69,11 @@ export async function getSecondaryLocales(): Promise<LearnLocale[]> {
       const parts = fromCookie.split(/[,+]/).filter(isLocale);
       if (parts.length > 0) return parts;
     }
+    const displayMode = (await cookies()).get("life_help_display_mode")?.value;
+    if (displayMode === "bilingual") {
+      const primary = await getLocale();
+      return primary !== "ko" ? ["ko"] : ["en"];
+    }
   } catch {
     return [];
   }

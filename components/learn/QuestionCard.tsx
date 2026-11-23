@@ -18,7 +18,20 @@ export interface AttemptResponse {
   /** server-issued proof of the attempt counter (guests) */
   attemptProof?: string;
   revealed: boolean;
-  feedback: { hint?: string; hintLevel?: number; /** server proof that this hint level was served (needed to ask for the next one) */ hintProof?: string; explanation?: string; answer?: string; /** canonical Korean of the passage, sent once the question is solved or revealed */ passageKo?: string[]; /** the correct Korean sentence for pick-the-Korean / fill-in questions, sent only once solved or revealed */ audioAnswer?: string };
+  feedback: {
+    hint?: string;
+    secondaryHint?: string;
+    hintLevel?: number;
+    /** server proof that this hint level was served (needed to ask for the next one) */
+    hintProof?: string;
+    explanation?: string;
+    secondaryExplanation?: string;
+    answer?: string;
+    /** canonical Korean of the passage, sent once the question is solved or revealed */
+    passageKo?: string[];
+    /** the correct Korean sentence for pick-the-Korean / fill-in questions, sent only once solved or revealed */
+    audioAnswer?: string;
+  };
   followUp: PublicQuestion | null;
   delta: EngineDelta;
   state: PlayerState;
@@ -55,13 +68,14 @@ export function QuestionCard({
   onAttempt: (res: AttemptResponse) => void;
   onNext: (outcome: QuestionOutcome) => void;
 }) {
-  const { api, t, site } = useLearner();
+  const { api, t, tSecondary, isBilingual, site } = useLearner();
   const isMulti = q.type === "ordering" || q.type === "multiple_select";
   const [value, setValue] = useState<string | string[]>(isMulti ? [] : "");
   const [status, setStatus] = useState<QStatus>("answering");
   const [attempts, setAttempts] = useState(0);
   const [proof, setProof] = useState<string | undefined>(undefined);
   const [hints, setHints] = useState<string[]>([]);
+  const [secondaryHints, setSecondaryHints] = useState<string[]>([]);
   const [hintProof, setHintProof] = useState<string | undefined>(undefined);
   const [feedback, setFeedback] = useState<AttemptResponse["feedback"]>({});
   const [followUp, setFollowUp] = useState<PublicQuestion | null>(null);
@@ -112,7 +126,11 @@ export function QuestionCard({
         setProof(res.attemptProof);
         setStatus("wrong");
         const hint = res.feedback.hint;
-        if (hint && !hints.includes(hint)) { setHints((h) => [...h, hint]); setHintProof(res.feedback.hintProof); }
+        if (hint && !hints.includes(hint)) {
+          setHints((h) => [...h, hint]);
+          if (res.feedback.secondaryHint) setSecondaryHints((sh) => [...sh, res.feedback.secondaryHint!]);
+          setHintProof(res.feedback.hintProof);
+        }
         setValue(isMulti ? [] : "");
       }
       window.setTimeout(() => feedbackRef.current?.focus(), 30);
@@ -127,8 +145,9 @@ export function QuestionCard({
 
   const askHint = async () => {
     try {
-      const res = await api<{ hint: string; level: number; hintProof?: string }>("hint", { questionId: q.id, level: hints.length + 1, sessionId, prevProof: hintProof });
+      const res = await api<{ hint: string; secondaryHint?: string; level: number; hintProof?: string }>("hint", { questionId: q.id, level: hints.length + 1, sessionId, prevProof: hintProof });
       setHints((h) => [...h, res.hint]);
+      if (res.secondaryHint) setSecondaryHints((sh) => [...sh, res.secondaryHint!]);
       setHintProof(res.hintProof);
     } catch {
       /* no more hints */
@@ -137,10 +156,20 @@ export function QuestionCard({
 
   return (
     <div className="l-stack">
-      <p className="l-muted" aria-live="polite">{label} · {t("common.diff", { n: q.difficulty })}</p>
+      <p className="l-muted" aria-live="polite">
+        <span>{label} · {t("common.diff", { n: q.difficulty })}</span>
+        {isBilingual && <span style={{ marginLeft: "0.4rem", opacity: 0.85 }}>({tSecondary("common.diff", { n: q.difficulty })})</span>}
+      </p>
 
       <div className="l-card l-stack">
-        <div className="l-qprompt"><RichText text={formatPrompt(q.prompt)} /></div>
+        <div className="l-qprompt">
+          <RichText text={formatPrompt(q.prompt)} />
+          {isBilingual && q.secondary?.prompt && q.secondary.prompt !== q.prompt && (
+            <div style={{ borderTop: "1px dashed var(--l-border, #ccc)", paddingTop: "0.5rem", marginTop: "0.5rem", opacity: 0.88, fontSize: "0.95em" }}>
+              <RichText text={formatPrompt(q.secondary.prompt)} />
+            </div>
+          )}
+        </div>
         {q.figure && <FigureView figure={q.figure} label={t("figure.alt")} />}
         {passage && <ListeningPanel scope={`q-${q.id}`} variant="chips" segments={passage} meaningPending={!resolved} />}
         {q.latex && <MathBlock latex={q.latex} />}
@@ -153,45 +182,127 @@ export function QuestionCard({
       <div ref={feedbackRef} tabIndex={-1} aria-live="polite" className="l-stack">
         {status === "wrong" && (
           <div className="l-panel l-panel-hint">
-            <div className="l-panel-title">💭 {attempts === 1 ? t("lesson.wrong.1") : t("lesson.wrong.2")}</div>
-            {hints.map((h, k) => <p key={k}><RichText text={h} /></p>)}
+            <div className="l-panel-title">
+              <span>💭 {attempts === 1 ? t("lesson.wrong.1") : t("lesson.wrong.2")}</span>
+              {isBilingual && (
+                <span style={{ fontSize: "0.85em", fontWeight: 400, opacity: 0.85, marginLeft: "0.4rem" }}>
+                  ({attempts === 1 ? tSecondary("lesson.wrong.1") : tSecondary("lesson.wrong.2")})
+                </span>
+              )}
+            </div>
+            {hints.map((h, k) => (
+              <div key={k} style={{ marginBottom: "0.35rem" }}>
+                <p><RichText text={h} /></p>
+                {isBilingual && secondaryHints[k] && secondaryHints[k] !== h && (
+                  <p style={{ opacity: 0.85, fontSize: "0.9em", marginTop: "0.15rem" }}>
+                    <RichText text={secondaryHints[k]} />
+                  </p>
+                )}
+              </div>
+            ))}
           </div>
         )}
         {(status === "wrong" || status === "revealed") && <PronTip text={q.target?.text ?? q.audioText} />}
         {status === "correct" && (
           <div className="l-panel l-panel-good l-pop">
-            <div className="l-panel-title">✅ {attempts > 0 ? t("lesson.correct.after") : t("lesson.correct")}</div>
-            {feedback.explanation && <p><strong>{t("lesson.explain")}</strong> · <RichText text={feedback.explanation} /></p>}
+            <div className="l-panel-title">
+              <span>✅ {attempts > 0 ? t("lesson.correct.after") : t("lesson.correct")}</span>
+              {isBilingual && (
+                <span style={{ fontSize: "0.85em", fontWeight: 400, opacity: 0.85, marginLeft: "0.4rem" }}>
+                  ({attempts > 0 ? tSecondary("lesson.correct.after") : tSecondary("lesson.correct")})
+                </span>
+              )}
+            </div>
+            {feedback.explanation && (
+              <div>
+                <p>
+                  <strong>{t("lesson.explain")}</strong>{isBilingual && <span style={{ opacity: 0.85 }}> ({tSecondary("lesson.explain")})</span>} · <RichText text={feedback.explanation} />
+                </p>
+                {isBilingual && feedback.secondaryExplanation && feedback.secondaryExplanation !== feedback.explanation && (
+                  <p style={{ opacity: 0.85, fontSize: "0.92em", marginTop: "0.2rem" }}>
+                    <RichText text={feedback.secondaryExplanation} />
+                  </p>
+                )}
+              </div>
+            )}
             {feedback.audioAnswer && <ListenButton text={feedback.audioAnswer} />}
             {floatXp ? <p className="l-rise" aria-hidden="true">{t("lesson.xp", { n: floatXp })}</p> : null}
           </div>
         )}
         {status === "revealed" && (
           <div className="l-panel l-panel-reveal">
-            <div className="l-panel-title">🧭 {t("lesson.reveal")}</div>
-            {feedback.answer && <p><strong>{t("lesson.answerIs")}</strong> · <RichText text={feedback.answer} /></p>}
-            {feedback.explanation && <p><strong>{t("lesson.explain")}</strong> · <RichText text={feedback.explanation} /></p>}
+            <div className="l-panel-title">
+              <span>🧭 {t("lesson.reveal")}</span>
+              {isBilingual && (
+                <span style={{ fontSize: "0.85em", fontWeight: 400, opacity: 0.85, marginLeft: "0.4rem" }}>
+                  ({tSecondary("lesson.reveal")})
+                </span>
+              )}
+            </div>
+            {feedback.answer && (
+              <p>
+                <strong>{t("lesson.answerIs")}</strong>{isBilingual && <span style={{ opacity: 0.85 }}> ({tSecondary("lesson.answerIs")})</span>} · <RichText text={feedback.answer} />
+              </p>
+            )}
+            {feedback.explanation && (
+              <div>
+                <p>
+                  <strong>{t("lesson.explain")}</strong>{isBilingual && <span style={{ opacity: 0.85 }}> ({tSecondary("lesson.explain")})</span>} · <RichText text={feedback.explanation} />
+                </p>
+                {isBilingual && feedback.secondaryExplanation && feedback.secondaryExplanation !== feedback.explanation && (
+                  <p style={{ opacity: 0.85, fontSize: "0.92em", marginTop: "0.2rem" }}>
+                    <RichText text={feedback.secondaryExplanation} />
+                  </p>
+                )}
+              </div>
+            )}
             {feedback.audioAnswer && <ListenButton text={feedback.audioAnswer} />}
           </div>
         )}
       </div>
 
       {status === "answering" && hints.length > 0 && (
-        <div className="l-panel l-panel-hint" aria-live="polite">{hints.map((h, k) => <p key={k}><RichText text={h} /></p>)}</div>
+        <div className="l-panel l-panel-hint" aria-live="polite">
+          {hints.map((h, k) => (
+            <div key={k} style={{ marginBottom: "0.35rem" }}>
+              <p><RichText text={h} /></p>
+              {isBilingual && secondaryHints[k] && secondaryHints[k] !== h && (
+                <p style={{ opacity: 0.85, fontSize: "0.9em", marginTop: "0.15rem" }}>
+                  <RichText text={secondaryHints[k]} />
+                </p>
+              )}
+            </div>
+          ))}
+        </div>
       )}
 
       <div className="l-stack w-full max-w-xl mx-auto">
         {resolved ? (
           <button className="l-btn l-btn-block" onClick={goNext}>
-            {status === "revealed" && followUp ? t("lesson.similar.go") : isLast ? t("lesson.finish") : t("lesson.next")}
+            <span>{status === "revealed" && followUp ? t("lesson.similar.go") : isLast ? t("lesson.finish") : t("lesson.next")}</span>
+            {isBilingual && (
+              <span style={{ fontSize: "0.85em", opacity: 0.85, marginLeft: "0.4rem" }}>
+                · {status === "revealed" && followUp ? tSecondary("lesson.similar.go") : isLast ? tSecondary("lesson.finish") : tSecondary("lesson.next")}
+              </span>
+            )}
           </button>
         ) : (
           <>
             <button className="l-btn l-btn-block" onClick={submit} disabled={!hasAnswer || status === "checking"}>
-              {status === "wrong" ? t("lesson.retry") : t("lesson.check")}
+              <span>{status === "wrong" ? t("lesson.retry") : t("lesson.check")}</span>
+              {isBilingual && (
+                <span style={{ fontSize: "0.85em", opacity: 0.85, marginLeft: "0.4rem" }}>
+                  · {status === "wrong" ? tSecondary("lesson.retry") : tSecondary("lesson.check")}
+                </span>
+              )}
             </button>
             <button className="l-btn l-btn-ghost l-btn-block" onClick={askHint} disabled={!canHint || status === "checking"}>
-              💡 {canHint ? `${t("lesson.hint")} (${hints.length}/2)` : t("lesson.hint.none")}
+              <span>💡 {canHint ? `${t("lesson.hint")} (${hints.length}/2)` : t("lesson.hint.none")}</span>
+              {isBilingual && (
+                <span style={{ fontSize: "0.85em", opacity: 0.85, marginLeft: "0.4rem" }}>
+                  · {canHint ? `${tSecondary("lesson.hint")} (${hints.length}/2)` : tSecondary("lesson.hint.none")}
+                </span>
+              )}
             </button>
           </>
         )}

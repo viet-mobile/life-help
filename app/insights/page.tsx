@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { DailyInsightsCatalog } from "@/components/learn/DailyInsightsCatalog";
+import { DailyInsightsCatalog } from "@/components/insights/DailyInsightsCatalog";
 
 export const metadata: Metadata = {
   title: "매일 만나는 인생 도움 366 실천 도감 · LIFE.HELP",

@@ -38,14 +38,20 @@ export function getRenderer(site: Site, type: QuestionType): Renderer | undefine
 /* ------------------------------- choice ------------------------------- */
 
 function ChoiceRenderer({ q, value, onChange, disabled }: RendererProps) {
-  const { t } = useSite();
+  const { t, tSecondary, isBilingual } = useSite();
   const options =
     q.type === "true_false"
       ? [
-          { id: "true", text: t("lesson.tf.true") },
-          { id: "false", text: t("lesson.tf.false") },
+          { id: "true", text: t("lesson.tf.true"), secText: isBilingual ? tSecondary("lesson.tf.true") : undefined },
+          { id: "false", text: t("lesson.tf.false"), secText: isBilingual ? tSecondary("lesson.tf.false") : undefined },
         ]
-      : (q.options ?? []);
+      : (q.options ?? []).map((opt) => {
+          const secOpt = q.secondary?.options?.find((so) => so.id === opt.id);
+          return {
+            ...opt,
+            secText: isBilingual && secOpt?.text && secOpt.text !== opt.text ? secOpt.text : undefined,
+          };
+        });
   // The letters on the options are keys: A / B / C / D (any case, also under a Korean input method) choose exactly like a click.
   const latest = useRef({ options, onChange, disabled });
   useEffect(() => { latest.current = { options, onChange, disabled }; });
@@ -79,7 +85,14 @@ function ChoiceRenderer({ q, value, onChange, disabled }: RendererProps) {
           >
             <span className="l-option-key" aria-hidden="true">{q.type === "true_false" ? (o.id === "true" ? "O" : "X") : String.fromCharCode(65 + i)}</span>
             {/* dir="auto": a gloss in Arabic script reads right-to-left, Korean / English target text left-to-right, on any page */}
-            <RichText text={o.text} dir="auto" />
+            <span style={{ flex: 1, textAlign: "left" }}>
+              <RichText text={o.text} dir="auto" />
+              {o.secText && (
+                <div style={{ fontSize: "0.85em", opacity: 0.85, marginTop: "0.15rem" }}>
+                  <RichText text={o.secText} dir="auto" />
+                </div>
+              )}
+            </span>
           </button>
         );
       })}
@@ -90,10 +103,18 @@ registerRenderer("multiple_choice", ChoiceRenderer);
 registerRenderer("true_false", ChoiceRenderer);
 
 function MultiRenderer({ q, value, onChange, disabled }: RendererProps) {
+  const { isBilingual } = useSite();
   const selected = Array.isArray(value) ? value : [];
+  const options = (q.options ?? []).map((opt) => {
+    const secOpt = q.secondary?.options?.find((so) => so.id === opt.id);
+    return {
+      ...opt,
+      secText: isBilingual && secOpt?.text && secOpt.text !== opt.text ? secOpt.text : undefined,
+    };
+  });
   return (
     <div role="group" aria-label={q.prompt} className="l-options">
-      {(q.options ?? []).map((o) => {
+      {options.map((o) => {
         const on = selected.includes(o.id);
         return (
           <button
@@ -107,7 +128,14 @@ function MultiRenderer({ q, value, onChange, disabled }: RendererProps) {
             data-selected={on}
           >
             <span className="l-option-key" aria-hidden="true">{on ? "✓" : ""}</span>
-            <RichText text={o.text} dir="auto" />
+            <span style={{ flex: 1, textAlign: "left" }}>
+              <RichText text={o.text} dir="auto" />
+              {o.secText && (
+                <div style={{ fontSize: "0.85em", opacity: 0.85, marginTop: "0.15rem" }}>
+                  <RichText text={o.secText} dir="auto" />
+                </div>
+              )}
+            </span>
           </button>
         );
       })}

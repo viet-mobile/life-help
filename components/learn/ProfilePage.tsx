@@ -19,7 +19,7 @@ export function ProfilePage({
   deleteAccountAction?: () => Promise<void>;
   signupEnabled?: boolean;
 }) {
-  const { state, t, href, mode, accountsEnabled, resetGuest, site, index } = useLearner();
+  const { state, t, tSecondary, isBilingual, href, mode, accountsEnabled, resetGuest, site, index } = useLearner();
   const [pending, start] = useTransition();
   const fileRef = useRef<HTMLInputElement>(null);
   const [note, setNote] = useState("");
@@ -82,15 +82,24 @@ export function ProfilePage({
       </div>
 
       <section className="l-card l-stack" aria-labelledby="st-h">
-        <h2 id="st-h" className="l-h2">{t("profile.stats")}</h2>
+        <h2 id="st-h" className="l-h2">
+          <span>{t("profile.stats")}</span>
+          {isBilingual && <span style={{ fontSize: "0.8em", fontWeight: 400, opacity: 0.85, marginLeft: "0.4rem" }}>({tSecondary("profile.stats")})</span>}
+        </h2>
         <dl style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, margin: 0 }}>
           {[
-            [t("profile.stat.solved"), c.questionsSolved],
-            [t("profile.stat.correct"), c.correctAnswers],
-            [t("profile.stat.lessons"), c.lessonsCompleted],
-            [t("profile.stat.bestStreak"), state.streak.best],
-          ].map(([label, val]) => (
-            <div key={String(label)}><dt className="l-muted">{label}</dt><dd style={{ margin: 0, fontWeight: 900, fontSize: "1.4rem" }}>{val}</dd></div>
+            [t("profile.stat.solved"), isBilingual ? tSecondary("profile.stat.solved") : "", c.questionsSolved],
+            [t("profile.stat.correct"), isBilingual ? tSecondary("profile.stat.correct") : "", c.correctAnswers],
+            [t("profile.stat.lessons"), isBilingual ? tSecondary("profile.stat.lessons") : "", c.lessonsCompleted],
+            [t("profile.stat.bestStreak"), isBilingual ? tSecondary("profile.stat.bestStreak") : "", state.streak.best],
+          ].map(([label, secLabel, val]) => (
+            <div key={String(label)}>
+              <dt className="l-muted">
+                <span>{label}</span>
+                {secLabel && <span style={{ display: "block", fontSize: "0.85em", opacity: 0.85 }}>{secLabel}</span>}
+              </dt>
+              <dd style={{ margin: 0, fontWeight: 900, fontSize: "1.4rem" }}>{val}</dd>
+            </div>
           ))}
         </dl>
       </section>

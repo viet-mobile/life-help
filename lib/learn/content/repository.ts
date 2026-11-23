@@ -142,7 +142,7 @@ export async function loadIndex(site: Site, opts: { grade?: Grade; locale?: Lear
 }
 
 /** Strip server-only fields (answer key, hints, explanation) for the browser. */
-export function toPublicQuestion(q: Question): PublicQuestion {
+export function toPublicQuestion(q: Question, secQ?: Question | null): PublicQuestion {
   return {
     id: q.id,
     site: q.site,
@@ -156,6 +156,15 @@ export function toPublicQuestion(q: Question): PublicQuestion {
     audioText: q.audioText,
     target: q.target,
     hintCount: q.hints.length,
+    ...(secQ
+      ? {
+          secondary: {
+            prompt: secQ.prompt,
+            latex: secQ.latex,
+            options: secQ.options,
+          },
+        }
+      : {}),
   };
 }
 

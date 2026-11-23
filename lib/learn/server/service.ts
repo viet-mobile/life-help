@@ -33,7 +33,7 @@ import type {
   StudentProfile,
 } from "@/lib/learn/types";
 import { isGoal } from "@/lib/learn/types";
-import { isLevelOf } from "@/lib/learn/sites";
+import { isLevelOf, siteConfig } from "@/lib/learn/sites";
 import { LearnError } from "./errors";
 import type { LearnStore } from "./store";
 import { parsePlayerState } from "./stateCodec";
@@ -67,6 +67,8 @@ export interface Actor {
   guestState?: unknown;
   /** Presentation language of this request (Korean when absent). It never changes grading, XP or mastery. */
   locale?: LearnLocale;
+  secondaryLocale?: LearnLocale;
+  secondaryLocales?: LearnLocale[];
 }
 
 export interface ServiceDeps {
@@ -280,12 +282,20 @@ export class LearnService {
     if (store && actor.userId) {
       await store.createSession({ id: sessionId, userId: actor.userId, site, kind: input.kind, lessonId });
     }
+    let secBundle: ContentBundle | null = null;
+    if (actor.secondaryLocale && actor.secondaryLocale !== (actor.locale ?? siteConfig(site).presentationLocale)) {
+      try {
+        secBundle = (await loadIndex(site, { locale: actor.secondaryLocale, grade: state.profile?.grade })).bundle;
+      } catch {
+        /* optional secondary */
+      }
+    }
     return {
       sessionId,
       kind: input.kind,
       lessonId,
       premiumLocked,
-      questions: questions.map(toPublicQuestion),
+      questions: questions.map((q) => toPublicQuestion(q, secBundle?.questions.find((sq) => sq.id === q.id))),
     };
   }
 
@@ -340,7 +350,17 @@ export class LearnService {
       const expected = sid ? await hintProof(q.id, sid, level - 1) : "";
       if (!expected || body.prevProof !== expected) throw new LearnError("hint_locked", 409);
     }
-    return { level, hint: q.hints[level - 1], hasMore: level < q.hints.length, ...(sid ? { hintProof: await hintProof(q.id, sid, level) } : {}) };
+    let secondaryHint: string | undefined;
+    if (actor.secondaryLocale && actor.secondaryLocale !== (actor.locale ?? siteConfig(site).presentationLocale)) {
+      try {
+        const { bundle: secFull } = await loadIndex(site, { locale: actor.secondaryLocale, bankQuestionId: body.questionId });
+        const secQ = secFull.questions.find((x) => x.id === body.questionId);
+        secondaryHint = secQ?.hints[level - 1];
+      } catch {
+        /* optional secondary */
+      }
+    }
+    return { level, hint: q.hints[level - 1], secondaryHint, hasMore: level < q.hints.length, ...(sid ? { hintProof: await hintProof(q.id, sid, level) } : {}) };
   }
 
   async submitAttempt(
@@ -415,20 +435,30 @@ export class LearnService {
       await store.commit(actor.userId, site, result, { sessionId: body.sessionId, lessonId: sessionLessonId });
     }
 
+    let secQ: Question | undefined;
+    if (actor.secondaryLocale && actor.secondaryLocale !== (actor.locale ?? siteConfig(site).presentationLocale)) {
+      try {
+        const { bundle: secFull } = await loadIndex(site, { locale: actor.secondaryLocale, bankQuestionId: body.questionId });
+        secQ = secFull.questions.find((x) => x.id === body.questionId);
+      } catch {
+        /* optional secondary */
+      }
+    }
+
     // Wrong answers escalate: small hint -> concrete hint -> worked explanation + similar question.
-    let feedback: { hint?: string; hintLevel?: number; hintProof?: string; explanation?: string; answer?: string; passageKo?: string[]; audioAnswer?: string } = {};
+    let feedback: { hint?: string; secondaryHint?: string; hintLevel?: number; hintProof?: string; explanation?: string; secondaryExplanation?: string; answer?: string; passageKo?: string[]; audioAnswer?: string } = {};
     // canonical Korean of an English reading passage: only once the question is solved or revealed (it would help answer it)
     const passage = q.site === "english" ? passageText(q.prompt) : null;
     const passageKo = passage ? PASSAGE_KO[passage] : undefined;
     let followUp: PublicQuestion | null = null;
     if (correct) {
-      feedback = { explanation: q.explanation, ...(passageKo ? { passageKo: [...passageKo] } : {}), ...(q.audioAnswer ? { audioAnswer: q.audioAnswer } : {}) };
+      feedback = { explanation: q.explanation, secondaryExplanation: secQ?.explanation, ...(passageKo ? { passageKo: [...passageKo] } : {}), ...(q.audioAnswer ? { audioAnswer: q.audioAnswer } : {}) };
     } else if (reveal) {
-      feedback = { explanation: q.explanation, answer: describeAnswer(q), ...(passageKo ? { passageKo: [...passageKo] } : {}), ...(q.audioAnswer ? { audioAnswer: q.audioAnswer } : {}) };
+      feedback = { explanation: q.explanation, secondaryExplanation: secQ?.explanation, answer: describeAnswer(q), ...(passageKo ? { passageKo: [...passageKo] } : {}), ...(q.audioAnswer ? { audioAnswer: q.audioAnswer } : {}) };
       followUp = this.pickFollowUp(bundle, index, q, body.seenIds ?? []);
     } else {
       const level = Math.min(attemptNo, q.hints.length);
-      if (level >= 1) feedback = { hint: q.hints[level - 1], hintLevel: level, hintProof: (await hintProof(q.id, body.sessionId, level)) || undefined };
+      if (level >= 1) feedback = { hint: q.hints[level - 1], secondaryHint: secQ?.hints[level - 1], hintLevel: level, hintProof: (await hintProof(q.id, body.sessionId, level)) || undefined };
     }
 
     const attemptProofOut = !correct && !reveal && !(store && actor.userId) ? await attemptProof(q.id, body.sessionId, attemptNo) : undefined;

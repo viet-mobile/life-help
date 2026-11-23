@@ -42,8 +42,9 @@ interface Totals {
 }
 
 export function LessonRunner({ kind, lessonId, skillId, mode }: { kind: Kind; lessonId?: string; skillId?: string; mode?: ReviewMode }) {
-  const { api, index, t, href, state, site, access, locale } = useLearner();
+  const { api, index, secondaryIndex, t, tSecondary, isBilingual, href, state, site, access, locale } = useLearner();
   const lesson = lessonId ? index.lessons.get(lessonId) : undefined;
+  const secLesson = isBilingual && lessonId && secondaryIndex ? secondaryIndex.lessons.get(lessonId) : undefined;
 
   const [phase, setPhase] = useState<"intro" | "loading" | "play" | "finishing" | "result" | "premium" | "error">("intro");
   const [error, setError] = useState<string | null>(null);
@@ -193,23 +194,58 @@ export function LessonRunner({ kind, lessonId, skillId, mode }: { kind: Kind; le
         <Link className="l-link" href={href(kind === "lesson" ? "/learn" : "/dashboard")}><span className="l-arrow">←</span> {t("lesson.exit")}</Link>
         {lesson ? (
           <>
-            <h1 className="l-h1">{lesson.lesson.title}</h1>
+            <h1 className="l-h1">
+              <div>{lesson.lesson.title}</div>
+              {isBilingual && secLesson && (
+                <div style={{ fontSize: "0.75em", fontWeight: 400, opacity: 0.85, marginTop: "0.25rem" }}>
+                  {secLesson.lesson.title}
+                </div>
+              )}
+            </h1>
             <section className="l-card l-stack" aria-labelledby="concept-h">
-              <h2 id="concept-h" className="l-h2">💡 {t("lesson.concept")}</h2>
+              <h2 id="concept-h" className="l-h2">
+                <span>💡 {t("lesson.concept")}</span>
+                {isBilingual && <span style={{ fontSize: "0.8em", fontWeight: 400, opacity: 0.85, marginLeft: "0.4rem" }}>({tSecondary("lesson.concept")})</span>}
+              </h2>
               <p><RichText text={lesson.lesson.concept} /></p>
+              {isBilingual && secLesson?.lesson.concept && secLesson.lesson.concept !== lesson.lesson.concept && (
+                <div style={{ borderTop: "1px dashed var(--l-border, #ccc)", paddingTop: "0.5rem", marginTop: "0.5rem", opacity: 0.85 }}>
+                  <RichText text={secLesson.lesson.concept} />
+                </div>
+              )}
             </section>
             <section className="l-card l-stack" aria-labelledby="example-h">
-              <h2 id="example-h" className="l-h2">✏️ {t("lesson.example")}</h2>
+              <h2 id="example-h" className="l-h2">
+                <span>✏️ {t("lesson.example")}</span>
+                {isBilingual && <span style={{ fontSize: "0.8em", fontWeight: 400, opacity: 0.85, marginLeft: "0.4rem" }}>({tSecondary("lesson.example")})</span>}
+              </h2>
               <p><RichText text={lesson.lesson.example} /></p>
+              {isBilingual && secLesson?.lesson.example && secLesson.lesson.example !== lesson.lesson.example && (
+                <div style={{ borderTop: "1px dashed var(--l-border, #ccc)", paddingTop: "0.5rem", marginTop: "0.5rem", opacity: 0.85 }}>
+                  <RichText text={secLesson.lesson.example} />
+                </div>
+              )}
               {site === "english" && <ListeningPanel scope={`ex-${lesson.lesson.id}`} variant="list" segments={exampleSegments(`ex-${lesson.lesson.id}`, lesson.lesson.example, EXAMPLE_KO[lesson.lesson.id])} lesson={{ id: lesson.lesson.id, title: lesson.lesson.title }} />}
             </section>
             {site === "math" && <LessonMotion skillIds={lesson.lesson.skillIds} locale={locale} title={lesson.lesson.title} />}
           </>
         ) : (
-          <h1 className="l-h1">{kind === "review" ? t("dash.continue.review") : t("dash.recommended")}</h1>
+          <h1 className="l-h1">
+            <span>{kind === "review" ? t("dash.continue.review") : t("dash.recommended")}</span>
+            {isBilingual && (
+              <span style={{ display: "block", fontSize: "0.75em", fontWeight: 400, opacity: 0.85, marginTop: "0.25rem" }}>
+                {kind === "review" ? tSecondary("dash.continue.review") : tSecondary("dash.recommended")}
+              </span>
+            )}
+          </h1>
         )}
         <button className="l-btn l-btn-block" onClick={start} disabled={phase === "loading"}>
-          {phase === "loading" ? t("lesson.loading") : t("lesson.begin")}
+          <span>{phase === "loading" ? t("lesson.loading") : t("lesson.begin")}</span>
+          {isBilingual && phase !== "loading" && (
+            <span style={{ fontSize: "0.85em", opacity: 0.85, marginLeft: "0.4rem" }}>
+              · {tSecondary("lesson.begin")}
+            </span>
+          )}
         </button>
       </div>
     );

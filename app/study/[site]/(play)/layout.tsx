@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { LearnerProvider } from "@/components/learn/LearnerProvider";
 import { PlayShell } from "@/components/learn/PlayShell";
 import { toMetaBundle } from "@/lib/learn/content/indexer";
-import { getLocale } from "@/lib/learn/i18n/server";
+import { getLocale, getSecondaryLocale } from "@/lib/learn/i18n/server";
 import { loadContent, accountsEnabled, getLearnService, getUserId } from "@/lib/learn/server/runtime";
 import { isSite } from "@/lib/learn/types";
 import { accessibleBundle } from "@/lib/learn/domain/access";
@@ -15,14 +15,31 @@ export const metadata: Metadata = { robots: { index: false, follow: false } };
 export default async function PlayLayout({ children, params }: { children: ReactNode; params: Promise<{ site: string }> }) {
   const { site } = await params;
   if (!isSite(site)) notFound();
-  const { bundle } = await loadContent(site, await getLocale());
+  const locale = await getLocale();
+  const secondaryLocale = await getSecondaryLocale();
+  const { bundle } = await loadContent(site, locale);
   const userId = await getUserId();
   const svc = getLearnService();
   const initial = userId ? await svc.getState({ userId }, site) : null;
   // Server-authoritative access: premium lessons stay listed (as Premium) but carry no teaching text for a non-Premium learner.
   const [access, plan] = await Promise.all([svc.getAccess({ userId }, site), svc.accessPlan(site)]);
+  let secondaryMeta = null;
+  if (secondaryLocale && secondaryLocale !== locale) {
+    try {
+      const secRes = await loadContent(site, secondaryLocale);
+      secondaryMeta = toMetaBundle(accessibleBundle(secRes.bundle, plan, access));
+    } catch {
+      /* optional secondary */
+    }
+  }
   return (
-    <LearnerProvider meta={toMetaBundle(accessibleBundle(bundle, plan, access))} initialState={initial} accountsEnabled={accountsEnabled()} access={access}>
+    <LearnerProvider
+      meta={toMetaBundle(accessibleBundle(bundle, plan, access))}
+      secondaryMeta={secondaryMeta}
+      initialState={initial}
+      accountsEnabled={accountsEnabled()}
+      access={access}
+    >
       <PlayShell>{children}</PlayShell>
     </LearnerProvider>
   );

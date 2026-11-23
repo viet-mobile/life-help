@@ -23,7 +23,7 @@ import { SkillBars } from "./SkillBars";
 import { MathMotionEntry } from "./MathMotion";
 
 export function Dashboard() {
-  const { state, index, t, href, mode, accountsEnabled, site, locale } = useLearner();
+  const { state, index, t, href, mode, accountsEnabled, site, locale, secondaryIndex, tSecondary, isBilingual } = useLearner();
   const thinkLang = thinkLangFor(locale, site);
   const thinkText = hubLabels(t);
   const cadence = flowView(readLedger(site)); // counted per distinct solved / revealed question, retries never count (lib/think/flow.ts)
@@ -50,6 +50,17 @@ export function Dashboard() {
     ctaHref = href(`/practice?kind=practice&skill=${encodeURIComponent(rec.skillId)}`);
   }
 
+  let secCtaLabel = isBilingual ? tSecondary("dash.continue.done") : "";
+  if (isBilingual) {
+    if (rec.kind === "lesson") {
+      secCtaLabel = tSecondary("dash.continue.lesson", { title: secondaryIndex?.lessons.get(rec.lessonId)?.lesson.title ?? "" });
+    } else if (rec.kind === "review") {
+      secCtaLabel = tSecondary("dash.continue.review");
+    } else if (rec.kind === "practice") {
+      secCtaLabel = tSecondary("dash.continue.practice", { title: secondaryIndex?.skills.get(rec.skillId)?.title ?? "" });
+    }
+  }
+
   const questDone = !!quest.completedAt;
   const recommended = weak ? index.skills.get(weak.id) : null;
   const practicedSkillIds = Object.keys(state.mastery);
@@ -57,16 +68,40 @@ export function Dashboard() {
   return (
     <div className="l-wrap l-wrap-wide l-stack">
       <h1 className="l-h1">
-        <span aria-hidden="true">{avatarEmoji(state.profile?.avatar)}</span> {t("dash.hello", { name: state.profile?.nickname ?? "" })}
+        <div>
+          <span aria-hidden="true">{avatarEmoji(state.profile?.avatar)}</span> {t("dash.hello", { name: state.profile?.nickname ?? "" })}
+        </div>
+        {isBilingual && (
+          <div style={{ fontSize: "0.65em", fontWeight: 400, opacity: 0.85, marginTop: "0.2rem" }}>
+            {tSecondary("dash.hello", { name: state.profile?.nickname ?? "" })}
+          </div>
+        )}
       </h1>
 
       {index.lessons.size === 0 && <LevelUnavailable />}
 
       <section className="l-card l-card-accent l-stack" aria-labelledby="cta-h">
-        <h2 id="cta-h" className="l-h2">{t("dash.continue")}</h2>
-        <p>{ctaLabel}{site === "korean" && rec.kind === "lesson" && <> <BandChip lessonId={rec.lessonId} t={t} /></>}</p>
-        <Link className="l-btn l-btn-light l-btn-block" href={ctaHref}><span className="l-arrow">▶</span> {t("dash.continue")}</Link>
-        <Link className="l-btn l-btn-ghost l-btn-block" href={href("/modes")}>{t("modes.title")}</Link>
+        <h2 id="cta-h" className="l-h2">
+          <span>{t("dash.continue")}</span>
+          {isBilingual && <span style={{ fontSize: "0.8em", fontWeight: 400, opacity: 0.85, marginLeft: "0.4rem" }}>({tSecondary("dash.continue")})</span>}
+        </h2>
+        <p>
+          <span>{ctaLabel}</span>
+          {isBilingual && secCtaLabel && (
+            <span style={{ display: "block", fontSize: "0.9em", opacity: 0.85, marginTop: "0.2rem" }}>
+              {secCtaLabel}
+            </span>
+          )}
+          {site === "korean" && rec.kind === "lesson" && <> <BandChip lessonId={rec.lessonId} t={t} /></>}
+        </p>
+        <Link className="l-btn l-btn-light l-btn-block" href={ctaHref}>
+          <span className="l-arrow">▶</span> {t("dash.continue")}
+          {isBilingual && <span style={{ fontSize: "0.85em", opacity: 0.85, marginLeft: "0.4rem" }}>· {tSecondary("dash.continue")}</span>}
+        </Link>
+        <Link className="l-btn l-btn-ghost l-btn-block" href={href("/modes")}>
+          <span>{t("modes.title")}</span>
+          {isBilingual && <span style={{ fontSize: "0.85em", opacity: 0.85, marginLeft: "0.4rem" }}>· {tSecondary("modes.title")}</span>}
+        </Link>
       </section>
 
       {hasGap(coverage) && <div className="l-panel l-panel-hint" role="note" data-testid="coverage-notice">{t("dash.coverage", { served: coverage.served.toLocaleString(locale), total: coverage.total.toLocaleString(locale) })}</div>}
@@ -91,7 +126,14 @@ export function Dashboard() {
 
       <div className="l-grid l-grid-2">
         <section className="l-card l-stack" aria-labelledby="lv-h">
-          <h2 id="lv-h" className="l-h2">{t("dash.level")} {level.level} · {t(`level.${level.titleKey}` as never)}</h2>
+          <h2 id="lv-h" className="l-h2">
+            <div>{t("dash.level")} {level.level} · {t(`level.${level.titleKey}` as never)}</div>
+            {isBilingual && (
+              <div style={{ fontSize: "0.75em", fontWeight: 400, opacity: 0.85, marginTop: "0.15rem" }}>
+                {tSecondary("dash.level")} {level.level} · {tSecondary(`level.${level.titleKey}` as never)}
+              </div>
+            )}
+          </h2>
           <div className="l-bar l-bar-gold" role="progressbar" aria-label="XP" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(level.ratio * 100)}>
             <span style={{ width: `${level.ratio * 100}%` }} />
           </div>
@@ -101,21 +143,40 @@ export function Dashboard() {
         </section>
 
         <section className="l-card l-stack" aria-labelledby="q-h">
-          <h2 id="q-h" className="l-h2">📜 {t("dash.quest")}</h2>
+          <h2 id="q-h" className="l-h2">
+            <span>📜 {t("dash.quest")}</span>
+            {isBilingual && <span style={{ fontSize: "0.8em", fontWeight: 400, opacity: 0.85, marginLeft: "0.4rem" }}>({tSecondary("dash.quest")})</span>}
+          </h2>
           <QuestList quest={quest} compact />
-          <Link className="l-btn l-btn-block" href={href("/quest")}>{questDone ? t("dash.quest.done") : t("dash.quest.start")}</Link>
+          <Link className="l-btn l-btn-block" href={href("/quest")}>
+            <span>{questDone ? t("dash.quest.done") : t("dash.quest.start")}</span>
+            {isBilingual && (
+              <span style={{ fontSize: "0.85em", opacity: 0.85, marginLeft: "0.4rem" }}>
+                · {tSecondary(questDone ? "dash.quest.done" : "dash.quest.start")}
+              </span>
+            )}
+          </Link>
         </section>
 
         {site === "english" && (
           <section className="l-card l-stack" aria-labelledby="w-h">
-            <h2 id="w-h" className="l-h2">📇 {t("words.title")}</h2>
-            <Link className="l-btn l-btn-ghost l-btn-block" data-testid="words-link" href={href("/words")}>{t("words.open")}</Link>
+            <h2 id="w-h" className="l-h2">
+              <span>📇 {t("words.title")}</span>
+              {isBilingual && <span style={{ fontSize: "0.8em", fontWeight: 400, opacity: 0.85, marginLeft: "0.4rem" }}>({tSecondary("words.title")})</span>}
+            </h2>
+            <Link className="l-btn l-btn-ghost l-btn-block" data-testid="words-link" href={href("/words")}>
+              <span>{t("words.open")}</span>
+              {isBilingual && <span style={{ fontSize: "0.85em", opacity: 0.85, marginLeft: "0.4rem" }}>· {tSecondary("words.open")}</span>}
+            </Link>
           </section>
         )}
       </div>
 
       <section className="l-card l-stack" aria-labelledby="sk-h">
-        <h2 id="sk-h" className="l-h2">{t("dash.skills")}</h2>
+        <h2 id="sk-h" className="l-h2">
+          <span>{t("dash.skills")}</span>
+          {isBilingual && <span style={{ fontSize: "0.8em", fontWeight: 400, opacity: 0.85, marginLeft: "0.4rem" }}>({tSecondary("dash.skills")})</span>}
+        </h2>
         {practicedSkillIds.length === 0 ? <p className="l-muted">{t("dash.skills.empty")}</p> : null}
         <SkillBars />
       </section>

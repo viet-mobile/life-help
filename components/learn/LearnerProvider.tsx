@@ -23,14 +23,54 @@ interface SiteCtx {
   base: string;
   /** The learner's language for this page (cookie, resolved on the server). */
   locale: LearnLocale;
+  secondaryLocale?: LearnLocale | null;
+  secondaryLocales?: LearnLocale[];
+  isBilingual: boolean;
   t: Translator;
+  tSecondary: Translator;
   href: (path: string) => string;
 }
 const SiteContext = createContext<SiteCtx | null>(null);
 
-export function SiteProvider({ site, base, locale, messages, children }: { site: Site; base: string; locale: LearnLocale; messages: Messages; children: ReactNode }) {
-  // `messages` is the server-resolved dictionary of this locale only (never the whole catalogue in the browser bundle).
-  const value = useMemo(() => ({ site, base, locale, t: createTranslator(messages), href: (path: string) => `${base}${path}` }), [site, base, locale, messages]);
+export function SiteProvider({
+  site,
+  base,
+  locale,
+  messages,
+  secondaryLocale = null,
+  secondaryLocales = [],
+  secondaryMessages = null,
+  children,
+}: {
+  site: Site;
+  base: string;
+  locale: LearnLocale;
+  messages: Messages;
+  secondaryLocale?: LearnLocale | null;
+  secondaryLocales?: LearnLocale[];
+  secondaryMessages?: Messages | null;
+  children: ReactNode;
+}) {
+  const isBilingual = !!(secondaryLocale && secondaryLocale !== locale && secondaryMessages);
+  const secTranslator: Translator = useMemo(() => {
+    if (isBilingual && secondaryMessages) return createTranslator(secondaryMessages);
+    return ((key: string) => key) as unknown as Translator;
+  }, [isBilingual, secondaryMessages]);
+
+  const value = useMemo(
+    () => ({
+      site,
+      base,
+      locale,
+      secondaryLocale,
+      secondaryLocales,
+      isBilingual,
+      t: createTranslator(messages),
+      tSecondary: secTranslator,
+      href: (path: string) => `${base}${path}`,
+    }),
+    [site, base, locale, secondaryLocale, secondaryLocales, isBilingual, messages, secTranslator],
+  );
   return <SiteContext.Provider value={value}>{children}</SiteContext.Provider>;
 }
 export function useSite(): SiteCtx {
@@ -51,6 +91,7 @@ interface LearnerCtx extends SiteCtx {
   ready: boolean;
   state: PlayerState;
   index: ContentIndex;
+  secondaryIndex?: ContentIndex | null;
   /** POST to the learning API. Guest state is attached automatically; the returned state is adopted. */
   api: <T extends object>(action: string, body?: Record<string, unknown>) => Promise<T & { state?: PlayerState }>;
   resetGuest: () => void;
@@ -102,6 +143,7 @@ function ApiErrorToast({ message, closeLabel }: { message: string; closeLabel: s
 
 export function LearnerProvider({
   meta,
+  secondaryMeta = null,
   initialState,
   accountsEnabled,
   access = FREE_ACCESS,
@@ -109,12 +151,13 @@ export function LearnerProvider({
 }: {
   access?: Access;
   meta: MetaBundle;
+  secondaryMeta?: MetaBundle | null;
   /** Present for signed-in students (server-loaded); null means guest/demo mode. */
   initialState: PlayerState | null;
   accountsEnabled: boolean;
   children: ReactNode;
 }) {
-  const { site, base, locale, t, href } = useSite();
+  const { site, base, locale, secondaryLocale, secondaryLocales, isBilingual, t, tSecondary, href } = useSite();
   const router = useRouter();
   const pathname = usePathname();
   const mode = initialState ? "account" : "guest";
@@ -123,6 +166,10 @@ export function LearnerProvider({
   // exactly as before; elementary: only that grade's course). Before onboarding there is no grade yet and the secondary default applies.
   const grade = state.profile?.grade ?? "M1";
   const index = useMemo(() => indexContent(scopeToGrade(meta, grade)), [meta, grade]);
+  const secondaryIndex = useMemo(
+    () => (secondaryMeta ? indexContent(scopeToGrade(secondaryMeta, grade)) : null),
+    [secondaryMeta, grade],
+  );
   const [ready, setReady] = useState(mode === "account");
   const stateRef = useRef(state);
   useEffect(() => {
@@ -163,7 +210,12 @@ export function LearnerProvider({
   const api = useCallback(
     async <T extends object>(action: string, body: Record<string, unknown> = {}): Promise<T & { state?: PlayerState }> => {
       // API URLs have no /<locale> prefix: send the page's resolved presentation language explicitly.
-      const payload: Record<string, unknown> = { ...body, site, locale };
+      const payload: Record<string, unknown> = {
+        ...body,
+        site,
+        locale,
+        ...(secondaryLocale ? { secondaryLocale, secondaryLocales } : {}),
+      };
       if (mode === "guest") payload.state = stateRef.current;
       // Read-only actions are safe to repeat: one automatic retry with a short backoff on a network failure or 5xx.
       const attempts = IDEMPOTENT_ACTIONS.includes(action) ? 2 : 1;
@@ -195,7 +247,7 @@ export function LearnerProvider({
       if (["start", "attempt", "complete", "cards", "diagnostic"].includes(action)) window.dispatchEvent(new CustomEvent("jiu-activity", { detail: action }));
       return data as T & { state?: PlayerState };
     },
-    [mode, site, locale, adopt],
+    [mode, site, locale, secondaryLocale, secondaryLocales, adopt],
   );
 
   const resetGuest = useCallback(() => {
@@ -222,8 +274,48 @@ export function LearnerProvider({
   const toastClose = t("common.close");
   const plan = useMemo(() => buildAccessPlan(meta.catalog, meta.questions), [meta]);
   const value = useMemo<LearnerCtx>(
-    () => ({ site, base, locale, t, mode, accountsEnabled, ready, state, index, api, href, resetGuest, access, plan }),
-    [site, base, locale, t, mode, accountsEnabled, ready, state, index, api, href, resetGuest, access, plan],
+    () => ({
+      site,
+      base,
+      locale,
+      secondaryLocale,
+      secondaryLocales,
+      isBilingual,
+      t,
+      tSecondary,
+      mode,
+      accountsEnabled,
+      ready,
+      state,
+      index,
+      secondaryIndex,
+      api,
+      href,
+      resetGuest,
+      access,
+      plan,
+    }),
+    [
+      site,
+      base,
+      locale,
+      secondaryLocale,
+      secondaryLocales,
+      isBilingual,
+      t,
+      tSecondary,
+      mode,
+      accountsEnabled,
+      ready,
+      state,
+      index,
+      secondaryIndex,
+      api,
+      href,
+      resetGuest,
+      access,
+      plan,
+    ],
   );
   return <LearnerContext.Provider value={value}><JournalSender site={site} />{children}<ApiErrorToast message={toastMsg} closeLabel={toastClose} /></LearnerContext.Provider>;
 }

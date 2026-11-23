@@ -177,6 +177,11 @@ export interface PublicQuestion {
   target?: { text: string; romanization?: string; romanizationVi?: string };
   hintCount: number;
   build?: BuildMeta;
+  secondary?: {
+    prompt?: string;
+    latex?: string;
+    options?: QuestionOption[];
+  };
 }
 
 /* ------------------------------ Catalog ------------------------------- */
