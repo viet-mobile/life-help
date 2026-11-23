@@ -8,6 +8,8 @@ describe("366-Day Complete Catalog & Multilingual Selector 89-Language I18n", ()
 
     for (const loc of locales) {
       const i18n = getCatalogI18n(loc);
+      expect(i18n.catalogTitle, `catalogTitle missing in ${loc}`).toBeTruthy();
+      expect(i18n.catalogSubtitle, `catalogSubtitle missing in ${loc}`).toBeTruthy();
       expect(i18n.home, `home missing in ${loc}`).toBeTruthy();
       expect(i18n.single, `single missing in ${loc}`).toBeTruthy();
       expect(i18n.singleClear, `singleClear missing in ${loc}`).toBeTruthy();
@@ -81,6 +83,23 @@ describe("366-Day Complete Catalog & Multilingual Selector 89-Language I18n", ()
     const zhHant = getCatalogI18n("zh-Hant");
     expect(zhHant.home).toBe("首頁");
     expect(zhHant.single).toBe("單語言");
+  });
+
+  it("verifies authentic translations for Hindi (hi)", () => {
+    const hi = getCatalogI18n("hi");
+    expect(hi.catalogTitle).toContain("दैनिक");
+    expect(hi.catalogSubtitle).toContain("कोरियाई");
+    expect(hi.home).toBe("मुखपृष्ठ");
+    expect(hi.single).toBe("एकल भाषा");
+    expect(hi.catalogBadge).toBe("366-दिवसीय संपूर्ण कैटलॉग");
+    expect(hi.allCategories).toBe("सभी श्रेणियां");
+    expect(hi.categories.wealth).toBe("धन निर्माण");
+    expect(hi.categories.saving).toBe("समझदारी से बचत");
+    expect(hi.categories.career).toBe("करियर और नौकरी");
+    expect(hi.categories.health).toBe("स्वास्थ्य और कल्याण");
+    expect(hi.categories.problem).toBe("रोज़मर्रा की समस्या का समाधान");
+    expect(hi.corePrinciple).toBe("मुख्य सिद्धांत");
+    expect(hi.actionItem).toBe("आज का एक कदम");
   });
 
   it("verifies authentic translations for Spanish (es) & French (fr)", () => {

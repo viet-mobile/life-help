@@ -113,15 +113,16 @@ export function resolveStudyTopicI18n(
   const exactKey = item.id;
   const baseIndex = ((num - 1) % 36) + 1;
   const baseKey = `${prefix}-${String(baseIndex).padStart(3, "0")}`;
-  const hasExact = !!STUDY_TOPIC_DATA[exactKey];
-  const entry = STUDY_TOPIC_DATA[exactKey] || STUDY_TOPIC_DATA[baseKey];
-  if (!entry) return null;
-
-  const season = hasExact ? 1 : Math.floor((num - 1) / 36) + 1;
 
   // Normalize language key with full 89-language support
   const isHant = locale === "zh-Hant" || locale === "zt" || locale === "zh-HK" || locale === "zh-TW";
   const normLocale = locale === "zs" || locale === "zh" || locale === "zh-CN" ? "zh-Hans" : (isHant ? "zh-Hant" : locale);
+
+  const exactEntry = STUDY_TOPIC_DATA[exactKey];
+  const baseEntry = STUDY_TOPIC_DATA[baseKey];
+  const entry = (exactEntry?.title?.[normLocale] ? exactEntry : baseEntry) || exactEntry || baseEntry;
+  if (!entry) return null;
+
   const lang = entry.title?.[normLocale] ? normLocale : (isHant && entry.title?.["zh-Hans"] ? "zh-Hans" : (entry.title?.en ? "en" : "ko"));
 
   const HANGUL_REGEX = /[\uac00-\ud7a3]/;

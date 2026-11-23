@@ -2,8 +2,11 @@
 // 100% verified 89-language dictionary for the 366-day catalog and multilingual selector controls
 import { getInsightLocaleData } from "./localesData";
 import type { Locale } from "@/messages/registry";
+import CATALOG_TITLES from "./catalogTitles89.json";
 
 export interface CatalogI18nEntry {
+  catalogTitle?: string;
+  catalogSubtitle?: string;
   home: string;
   single: string;
   singleClear: string;
@@ -910,10 +913,17 @@ export const CATALOG_UI_DICTIONARY: Record<string, CatalogI18nEntry> = {
 export function getCatalogI18n(locale: string = "ko") {
   const isKo = locale === "ko";
   const entry = CATALOG_UI_DICTIONARY[locale] || CATALOG_UI_DICTIONARY.en || CATALOG_UI_DICTIONARY.ko;
+  const titlesMap = CATALOG_TITLES as Record<string, { title: string; subtitle: string }>;
+  const titleInfo = titlesMap[locale] || titlesMap.en || {
+    title: "Daily Life Help · 366 Practical Catalog",
+    subtitle: "Curated daily wisdom across Korean, English, Math, Physics, Chemistry, and Life Info to optimize everyday decisions."
+  };
   const locData = getInsightLocaleData(locale);
   const ui = locData?.ui_labels || {};
 
   return {
+    catalogTitle: titleInfo.title,
+    catalogSubtitle: titleInfo.subtitle,
     home: entry.home || (isKo ? "홈으로" : "Home"),
     single: entry.single || (isKo ? "단일 언어" : "Single"),
     singleClear: entry.singleClear || (isKo ? "단일 언어 표기 (모두 해제)" : "Single Language (Clear all)"),

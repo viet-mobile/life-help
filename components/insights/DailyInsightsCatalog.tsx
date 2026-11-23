@@ -155,17 +155,8 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
   const currentDomainMeta = DOMAIN_CONFIG.find((d) => d.id === selectedDomain) || DOMAIN_CONFIG[0];
   const uiOfficialWebsite = locData?.ui_labels?.btn_official_website || getOfficialWebsiteBadge(locale);
 
-  const catalogTitle = isKo
-    ? "매일 만나는 인생 도움 · 366 실천 도감"
-    : (locale === "vi"
-        ? "Hỗ trợ cuộc sống mỗi ngày · 366 Hướng dẫn thực tiễn"
-        : "Daily Life Help · 366 Practical Catalog");
-
-  const catalogSubtitle = isKo
-    ? "한국어, 영어, 수학, 물리, 화학, 생활정보의 지혜를 모아 매일의 선택과 기회비용을 최적화합니다."
-    : (locale === "vi"
-        ? "Tổng hợp tri thức Tiếng Hàn, Tiếng Anh, Toán học, Vật lý, Hóa học và Đời sống giúp tối ưu hóa cuộc sống hàng ngày."
-        : "Curated daily wisdom across Korean, English, Math, Physics, Chemistry, and Life Info to optimize everyday decisions.");
+  const catalogTitle = catalogI18n.catalogTitle;
+  const catalogSubtitle = catalogI18n.catalogSubtitle;
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
@@ -306,7 +297,7 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
           <span>
             {catalogI18n.formatTipsFound(
               filteredItems.length,
-              isKo ? currentDomainMeta.labelKo : currentDomainMeta.labelEn
+              isKo ? currentDomainMeta.labelKo : (t(`customer.domain_${currentDomainMeta.id}`) || currentDomainMeta.labelEn)
             )}
           </span>
         </div>
