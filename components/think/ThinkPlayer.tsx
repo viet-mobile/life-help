@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { checkBuild, checkChoose, checkPickLine, checkRevealStage, checkWrite, previousPredictionText } from "@/lib/think/check";
 import type { ThinkLang } from "@/lib/think/lang";
 import type { BuildStep, ChooseStep, PickLineStep, RevealStep, Step, ThinkTask, WriteStep } from "@/lib/think/types";
-import { formatLevelLabel } from "@/lib/think/grades";
+import { formatLevelLabel, formatMinutes } from "@/lib/think/grades";
 import { fmt, labels, type Labels } from "./labels";
 
 export interface Flag { task: string; step: string; note: string; at: string }
@@ -25,7 +25,7 @@ export function TaskPlayer({ task, lang, checksOff = false, reviewer, onBack, on
     <main className="mx-auto max-w-3xl px-4 py-6 text-slate-900" data-testid="think-task" data-task={task.id} lang={task.uiLang}>
       <button onClick={onBack} className="text-sm font-bold underline">{L.back}</button>
       {/* internal codes (id, format) are shown to reviewers only */}
-      <p className="mt-3 text-xs font-bold text-slate-500" data-testid="task-meta">{reviewer ? `${task.id} · ` : ""}{formatLevelLabel(task.levelLabel, shownLang)} · ≈ ${task.minutes} ${L.minutes}{reviewer ? ` · ${task.format}` : ""}</p>
+      <p className="mt-3 text-xs font-bold text-slate-500" data-testid="task-meta">{reviewer ? `${task.id} · ` : ""}{formatLevelLabel(task.levelLabel, shownLang)} · {formatMinutes(task.minutes, shownLang, true)}{reviewer ? ` · ${task.format}` : ""}</p>
       <h1 className="text-2xl font-black">{task.title}</h1>
       {reviewer && task.status === "draft" && <p className="mt-1 rounded-lg bg-amber-50 p-2 text-xs font-bold text-amber-800" data-testid="draft-note">🟡 {L.draft}</p>}
       <p className="mt-2 text-sm" data-testid="prereq"><b>{L.prereq}:</b> {task.prerequisites.join("; ")}</p>

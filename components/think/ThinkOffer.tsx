@@ -18,6 +18,7 @@ import type { ThinkTask } from "@/lib/think/types";
 import { useLearner } from "../learn/LearnerProvider";
 import { FLOW } from "./flowLabels";
 import { labels } from "./labels";
+import { formatMinutes } from "@/lib/think/grades";
 
 export const COMPLETE_EVENT = "learn:q-complete";
 export const triedKey = (site: string) => `learn:think:${site}`;
@@ -118,7 +119,7 @@ export function ThinkOffer() {
       style={{ position: "fixed", left: 12, right: 12, bottom: 12, zIndex: 40, maxWidth: 560, margin: "0 auto", boxShadow: "0 6px 24px rgba(0,0,0,.25)" }}>
       <strong>🧠 {L.title(OFFER_EVERY)}</strong>
       <span>{L.body}</span>
-      <span className="l-muted">{offer.title} · ≈ ${offer.minutes} ${labels(lang).minutes}</span>
+      <span className="l-muted">{offer.title} · {formatMinutes(offer.minutes, lang, true)}</span>
       <span className="l-muted" style={{ fontSize: "0.85rem" }}>{L.counting}</span>
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
         <button type="button" className="l-btn" data-testid="think-offer-now" onClick={() => decide(true)}>{L.now}</button>

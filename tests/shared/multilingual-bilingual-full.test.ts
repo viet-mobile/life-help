@@ -1,10 +1,36 @@
 import { describe, expect, it } from "vitest";
-import { formatLevelLabel } from "../../lib/think/grades";
+import { formatLevelLabel, formatMinutes } from "../../lib/think/grades";
 import { applyFlat, flatten } from "../../lib/think/flat";
 import { mergeBilingual } from "../../lib/think/localize";
 import type { ThinkTask } from "../../lib/think/types";
 
 describe("multilingual, bilingual and level translation verification", () => {
+  it("formats minutes with proper spacing per language convention (attached for CJK, spaced for others)", () => {
+    // Korean: attached without space
+    expect(formatMinutes(10, "ko", true)).toBe("≈10분");
+    expect(formatMinutes(10, "ko", false)).toBe("10분");
+
+    // Chinese Traditional: attached without space
+    expect(formatMinutes(10, "zh-Hant", true)).toBe("≈10分鐘");
+    expect(formatMinutes(10, "zh-Hant", false)).toBe("10分鐘");
+
+    // Chinese Simplified: attached without space
+    expect(formatMinutes(10, "zh-Hans", true)).toBe("≈10分钟");
+    expect(formatMinutes(10, "zh-Hans", false)).toBe("10分钟");
+
+    // Japanese: attached without space
+    expect(formatMinutes(10, "ja", true)).toBe("≈10分");
+    expect(formatMinutes(10, "ja", false)).toBe("10分");
+
+    // Vietnamese: spaced
+    expect(formatMinutes(10, "vi", true)).toBe("≈ 10 phút");
+    expect(formatMinutes(10, "vi", false)).toBe("10 phút");
+
+    // English: spaced
+    expect(formatMinutes(10, "en", true)).toBe("≈ 10 min");
+    expect(formatMinutes(10, "en", false)).toBe("10 min");
+  });
+
   it("translates 초등, 중등, 고등, Beginner, Intermediate, Advanced correctly across languages", () => {
     expect(formatLevelLabel("초등", "vi")).toBe("Tiểu học");
     expect(formatLevelLabel("초등", "en")).toBe("Elementary");

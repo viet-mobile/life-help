@@ -6,7 +6,7 @@ import { FILE_META, TASK_LOADERS } from "@/lib/think/data/assets-index";
 import { domainOf } from "@/lib/think/domains";
 import { fieldInfo, fieldKeyOf, fieldList } from "@/lib/think/areas";
 import { hasThinkSemesters, inSemester, thinkSemesterOf } from "@/lib/think/semesters";
-import { gradeLabel } from "@/lib/think/grades";
+import { gradeLabel, formatMinutes } from "@/lib/think/grades";
 import { BOSS_TEXT, addTrophy, bossKey, bossKeyOf, bossProgress, finalBossFor, isFinalBoss, readTrophies, type Trophy } from "@/lib/think/bosses";
 import { KOREAN_LEVELS, isKoreanFirst, isLevelCode, koreanLevelOf, levelCode, levelFromCode, levelName, priorLevelFor } from "@/lib/think/korean-levels";
 import { LANG_NAMES, TASK_LANG_NAMES, taskLangFor, thinkLangFor, type TaskLang, type ThinkLang } from "@/lib/think/lang";
@@ -249,7 +249,7 @@ export function ThinkHub() {
           <li key={task.id}>
             <button type="button" className="l-card" data-testid={`think-${task.id}`} style={{ textAlign: "left", width: "100%", cursor: "pointer", display: "block" }} onClick={() => router.push(href(`/think?task=${encodeURIComponent(task.id)}`))}>
               <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-                <div className="l-muted" style={{ fontSize: 13 }}>{done[task.id] ? "✅ " : ""}{fieldText(fieldOf(task), false) ? `${fieldText(fieldOf(task), false)} · ` : ""}≈ ${task.minutes} ${L.minutes}</div>
+                <div className="l-muted" style={{ fontSize: 13 }}>{done[task.id] ? "✅ " : ""}{fieldText(fieldOf(task), false) ? `${fieldText(fieldOf(task), false)} · ` : ""}{formatMinutes(task.minutes, lang, true)}</div>
                 <strong style={{ display: "block", fontSize: 18, lineHeight: 1.35 }}>{task.title}</strong>
                 <div className="l-muted" style={{ lineHeight: 1.5 }}>{task.goal}</div>
               </div>

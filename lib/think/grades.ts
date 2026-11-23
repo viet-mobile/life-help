@@ -26,3 +26,26 @@ export function formatLevelLabel(label: string, lang: string): string {
   if (!entry) return label;
   return entry[lang] ?? entry[lang.split("-")[0]] ?? entry.en ?? label;
 }
+
+const MINUTES_MAP: Record<string, string> = {
+  ko: "분",
+  ja: "分",
+  "zh-Hans": "分钟",
+  "zh-Hant": "分鐘",
+  zh: "分钟",
+  vi: "phút",
+  en: "min",
+};
+
+/**
+ * Formats duration with unit according to language conventions:
+ * - Korean (ko), Chinese (zh, zh-Hans, zh-Hant), Japanese (ja) attach directly without space (e.g. 10분, 10分鐘, 10分).
+ * - Vietnamese (vi), English (en) and others include a space (e.g. 10 phút, 10 min).
+ * - When approx is true, prepends ≈ (e.g. ≈10분 vs ≈ 10 phút).
+ */
+export function formatMinutes(minutes: number, lang: string, approx = false): string {
+  const isNoSpace = /^(ko|ja|zh|zh-Hans|zh-Hant)$/.test(lang);
+  const unit = MINUTES_MAP[lang] ?? MINUTES_MAP[lang.split("-")[0]] ?? "min";
+  const numStr = isNoSpace ? `${minutes}${unit}` : `${minutes} ${unit}`;
+  return approx ? (isNoSpace ? `≈${numStr}` : `≈ ${numStr}`) : numStr;
+}
