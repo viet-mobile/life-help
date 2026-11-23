@@ -30,10 +30,12 @@ export async function generateMetadata(): Promise<Metadata> {
   const portal = resolvePortalFromHeaders(headersList);
   const country = resolveCountryFromHeaders(headersList);
 
+  const origin = originFromHost(headersList.get("x-forwarded-host") ?? headersList.get("host"));
+
   const baseMeta =
     portal === "chat" || portal === "tech" || portal === "sys"
       ? getPortalMetadata(portal, lang)
-      : getSiteMetadata(lang, country, secondaryLang);
+      : getSiteMetadata(lang, country, secondaryLang, origin);
 
   const icons = getIconMetadata(country, portal);
 
@@ -41,7 +43,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const publicPath = headersList.get("x-life-path");
   const alternates =
     portal === "customer" && publicPath
-      ? buildAlternates(originFromHost(headersList.get("x-forwarded-host") ?? headersList.get("host")), publicPath, headersList.get("x-life-url-lang"))
+      ? buildAlternates(origin, publicPath, headersList.get("x-life-url-lang"))
       : undefined;
 
   const appName =
@@ -54,8 +56,6 @@ export async function generateMetadata(): Promise<Metadata> {
       : country
       ? `LIFE.HELP · ${countryBrandName(country)}`
       : "LIFE.HELP";
-
-  const origin = originFromHost(headersList.get("x-forwarded-host") ?? headersList.get("host"));
   return {
     ...baseMeta,
     ...(origin ? { metadataBase: new URL(origin) } : {}),

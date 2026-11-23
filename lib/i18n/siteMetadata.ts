@@ -2049,7 +2049,7 @@ export function getIconMetadata(country?: string | null, portal?: string | null)
 /**
  * Returns dynamic Metadata with localized title and description for social link previews and browser titles.
  */
-export function getSiteMetadata(lang: string, country?: string | null, secondaryLang?: string | null): Metadata {
+export function getSiteMetadata(lang: string, country?: string | null, secondaryLang?: string | null, origin?: string | null): Metadata {
   const meta = SITE_METADATA[lang] || SITE_METADATA["ko"];
   const countryUpper = countryBrandName(country);
   let title = countryUpper
@@ -2066,7 +2066,8 @@ export function getSiteMetadata(lang: string, country?: string | null, secondary
     description = `${description}\n${secDescription}`;
   }
 
-  const ogImageUrl = "/og.png?v=20261123";
+  const baseOrigin = origin || "https://life.help";
+  const ogImageUrl = `${baseOrigin}/og.png?v=20261123d`;
 
   return {
     title,

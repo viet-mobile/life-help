@@ -11,6 +11,7 @@ import { getDailyInsight } from "@/lib/learn/dailyInsights/engine";
 import { resolveActionLink } from "@/lib/learn/dailyInsights/actionLinkMap";
 import { getOfficialWebsiteBadge } from "@/lib/learn/dailyInsights/officialWebsiteI18n";
 import { getInsightLocaleData } from "@/lib/learn/dailyInsights/localesData";
+import { getCatalogI18n } from "@/lib/learn/dailyInsights/catalogI18n";
 import type { Locale } from "@/messages/registry";
 
 interface DailyInsightsCatalogProps {
@@ -84,6 +85,7 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
 
   const isKo = locale === "ko";
   const locData = getInsightLocaleData(locale);
+  const catalogI18n = getCatalogI18n(locale);
 
   const effectiveSecondaryLocales: Locale[] = useMemo(() => {
     if (!isBilingual) return [];
@@ -181,7 +183,7 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
               className="text-xs font-bold text-slate-500 hover:text-slate-900 transition flex items-center gap-1"
             >
               <span>←</span>
-              <span>{isKo ? "홈으로" : "Home"}</span>
+              <span>{catalogI18n.home.replace("←", "").trim()}</span>
             </Link>
           </div>
           <div className="flex items-center gap-2">
@@ -195,7 +197,7 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
         <div className="mx-auto max-w-6xl">
           <div className="inline-flex items-center gap-1.5 rounded-full bg-slate-900 px-3 py-1 text-xs font-black text-white shadow-2xs mb-3">
             <span>✨</span>
-            <span>{isKo ? "366일 전과목 실천 가이드" : "366-Day Complete Catalog"}</span>
+            <span>{catalogI18n.catalogBadge}</span>
           </div>
           <h1 className="text-xl sm:text-3xl font-black text-slate-900 tracking-tight leading-tight">
             {catalogTitle}
@@ -251,7 +253,7 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder={isKo ? "팁 제목, 원리, 행동 또는 Day 번호 검색..." : "Search title, principle, action, or day #..."}
+              placeholder={catalogI18n.searchPlaceholder}
               className="w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2 pl-9 text-xs sm:text-sm font-medium text-slate-900 placeholder-slate-400 focus:border-slate-900 focus:outline-hidden shadow-2xs"
             />
             <span className="absolute left-3 top-2.5 text-slate-400 text-xs">🔍</span>
@@ -277,31 +279,35 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
                   : "bg-white border border-slate-200 text-slate-600 hover:bg-slate-100"
               }`}
             >
-              {isKo ? "전체 분야" : "All Categories"} ({domainItems.length})
+              {catalogI18n.allCategories} ({domainItems.length})
             </button>
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                type="button"
-                onClick={() => setSelectedCategory(cat)}
-                className={`rounded-lg px-2.5 py-1 font-bold whitespace-nowrap transition cursor-pointer capitalize ${
-                  selectedCategory === cat
-                    ? "bg-slate-900 text-white"
-                    : "bg-white border border-slate-200 text-slate-600 hover:bg-slate-100"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
+            {categories.map((cat) => {
+              const catLabel = catalogI18n.categories[cat] || cat;
+              return (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`rounded-lg px-2.5 py-1 font-bold whitespace-nowrap transition cursor-pointer capitalize ${
+                    selectedCategory === cat
+                      ? "bg-slate-900 text-white"
+                      : "bg-white border border-slate-200 text-slate-600 hover:bg-slate-100"
+                  }`}
+                >
+                  {catLabel}
+                </button>
+              );
+            })}
           </div>
         </div>
 
         {/* Results Header */}
         <div className="mb-4 flex items-center justify-between text-xs font-bold text-slate-500">
           <span>
-            {isKo
-              ? `총 ${filteredItems.length}개의 ${currentDomainMeta.labelKo} 실천 팁`
-              : `${filteredItems.length} tips found in ${currentDomainMeta.labelEn}`}
+            {catalogI18n.formatTipsFound(
+              filteredItems.length,
+              isKo ? currentDomainMeta.labelKo : currentDomainMeta.labelEn
+            )}
           </span>
         </div>
 
@@ -320,12 +326,12 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
                   {/* Top Header: Day Number & Category */}
                   <div className="flex items-center justify-between border-b border-slate-100 pb-2.5 mb-3">
                     <span className="inline-flex items-center gap-1 rounded-full bg-slate-900 px-2 py-0.5 text-[10px] font-black text-white">
-                      <span>Day {index + 1}</span>
+                      <span>{catalogI18n.dayLabel(index + 1)}</span>
                     </span>
 
                     <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-bold text-slate-700">
                       <span>{insight.categoryIcon || "💡"}</span>
-                      <span>{insight.categoryLabel || insight.categoryLabelKo || insight.category}</span>
+                      <span>{catalogI18n.categories[insight.category] || insight.categoryLabel || insight.categoryLabelKo || insight.category}</span>
                     </span>
                   </div>
 
@@ -349,7 +355,7 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
                   {/* Principle Box */}
                   <div className="mt-3 rounded-xl border border-slate-100 bg-slate-50 p-2.5 space-y-1">
                     <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                      📌 {isKo ? "핵심 원리 & 실천 공식" : "Core Principle"}
+                      📌 {catalogI18n.corePrinciple}
                     </div>
                     <div className="text-xs font-bold text-slate-900 leading-snug">
                       {insight.principle}
@@ -371,7 +377,7 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
                   {/* Action Item Box */}
                   <div className="mt-2.5 rounded-xl border border-slate-800/10 bg-slate-900 p-2.5 text-white">
                     <div className="text-[10px] font-black uppercase tracking-wider text-amber-300">
-                      🎯 {isKo ? "오늘 바로 실천할 행동" : "Action Item"}
+                      🎯 {catalogI18n.actionItem}
                     </div>
                     <div className="mt-1 text-xs font-bold text-slate-100 leading-snug">
                       {insight.actionItem}
@@ -409,7 +415,7 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
                     className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white px-2.5 py-1 text-[11px] font-bold text-slate-700 hover:bg-slate-50 transition cursor-pointer"
                   >
                     <span>{isCopied ? "✓" : "📋"}</span>
-                    <span>{isCopied ? (isKo ? "복사됨" : "Copied") : (isKo ? "공유" : "Share")}</span>
+                    <span>{isCopied ? catalogI18n.copied : catalogI18n.share}</span>
                   </button>
                 </div>
               </div>
@@ -420,7 +426,7 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
         {filteredItems.length === 0 && (
           <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-12 text-center text-slate-500">
             <p className="text-sm font-bold">
-              {isKo ? "검색 조건에 맞는 실천 팁이 없습니다." : "No tips match your search criteria."}
+              {catalogI18n.noResults}
             </p>
           </div>
         )}

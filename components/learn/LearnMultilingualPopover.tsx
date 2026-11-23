@@ -4,6 +4,7 @@ import React, { useMemo, useState, useRef, useEffect } from "react";
 import { type Locale, languages, formatLanguageName, getSortedLanguages } from "@/messages/registry";
 import { splitLocalePrefix } from "@/lib/learn/i18n/path";
 import { useSite } from "./LearnerProvider";
+import { getCatalogI18n } from "@/lib/learn/dailyInsights/catalogI18n";
 
 interface LearnMultilingualPopoverProps {
   currentLocale: Locale;
@@ -104,6 +105,7 @@ export function LearnMultilingualPopover({
 
   const secondaryCount = activeSecLocales.length;
   const isKo = currentLocale === "ko";
+  const catalogI18n = getCatalogI18n(currentLocale);
 
   return (
     <div className="relative inline-block shrink-0" ref={secDropdownRef}>
@@ -131,7 +133,7 @@ export function LearnMultilingualPopover({
 
         <span className="hidden sm:inline-block font-bold text-[11px] sm:text-xs text-slate-800 ml-1 truncate">
           {secondaryCount === 0
-            ? (isKo ? "단일 언어" : "Single")
+            ? catalogI18n.single
             : (secondaryCount === 1
                 ? `+ ${formatLanguageName(languages.find((l) => l.code === activeSecLocales[0]) || languages[0], currentLocale, false).split("\n")[0]}`
                 : `+ ${secondaryCount} ${isKo ? "개 언어" : "langs"}`)
@@ -182,7 +184,7 @@ export function LearnMultilingualPopover({
                 : "bg-slate-100 text-slate-700 hover:bg-slate-200"
             }`}
           >
-            <span>{isKo ? "단일 언어 모드 (병기 끄기)" : "Single Language Only (Off)"}</span>
+            <span>{catalogI18n.singleClear}</span>
             {secondaryCount === 0 && <span>✓</span>}
           </button>
 

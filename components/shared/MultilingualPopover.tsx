@@ -3,6 +3,7 @@
 import React, { useMemo, useState, useRef, useEffect } from "react";
 import { useLocale } from "@/lib/i18n/LocaleContext";
 import { type Locale, languages, formatLanguageName, getSortedLanguages } from "@/messages/registry";
+import { getCatalogI18n } from "@/lib/learn/dailyInsights/catalogI18n";
 
 interface MultilingualPopoverProps {
   currentLocale: Locale;
@@ -53,6 +54,7 @@ export function MultilingualPopover({
 
   const secondaryCount = context.secondaryLocales.length;
   const isKo = currentLocale === "ko";
+  const catalogI18n = getCatalogI18n(currentLocale);
 
   return (
     <div className={`relative inline-block shrink-0 ${className}`} ref={secDropdownRef}>
@@ -82,7 +84,7 @@ export function MultilingualPopover({
         {/* Desktop Text Label */}
         <span className="hidden sm:inline-block font-bold text-[11px] sm:text-xs text-slate-800 ml-1 truncate">
           {secondaryCount === 0
-            ? (isKo ? "단일 언어" : "Single")
+            ? catalogI18n.single
             : (secondaryCount === 1
                 ? `+ ${formatLanguageName(languages.find((l) => l.code === context.secondaryLocales[0]) || languages[0], currentLocale, false).split("\n")[0]}`
                 : `+ ${secondaryCount} ${isKo ? "개 언어" : "langs"}`)
@@ -136,7 +138,7 @@ export function MultilingualPopover({
                 : "bg-slate-100 text-slate-700 hover:bg-slate-200"
             }`}
           >
-            <span>{isKo ? "단일 언어 표기 (모두 해제)" : "Single Language (Clear all)"}</span>
+            <span>{catalogI18n.singleClear}</span>
             {secondaryCount === 0 && <span>✓</span>}
           </button>
 

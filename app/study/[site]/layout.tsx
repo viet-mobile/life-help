@@ -55,7 +55,7 @@ export async function generateMetadata({ params }: { params: Promise<{ site: str
   const page = innerPath === "/" ? "" : innerPath;
   const urlLocale = h.get("x-learn-locale");
   const languages = Object.fromEntries([...locales.map((l) => [l, `${siteRoot}${rootPath}/${l}${page}`] as const), ["x-default", `${siteRoot}${rootPath}${page || "/"}`] as const]);
-  const ogImageUrl = `${origin}/og-${site}.png?v=20261123`;
+  const ogImageUrl = `${origin}/og-${site}.png?v=20261123d`;
 
   return {
     metadataBase: origin ? new URL(origin) : undefined,
@@ -84,13 +84,16 @@ export async function generateMetadata({ params }: { params: Promise<{ site: str
       locale: locale.replace("-", "_"),
       type: "website",
       siteName: name,
-      images: [{ url: logo, width: 512, height: 512, alt: name }],
+      images: [
+        { url: ogImageUrl, width: 1200, height: 630, alt: name },
+        { url: logo, width: 512, height: 512, alt: name },
+      ],
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title: sec ? titleText : primaryTagline,
       description: descText,
-      images: [logo],
+      images: [ogImageUrl],
     },
   };
 }
