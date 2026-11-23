@@ -60,7 +60,14 @@ export function mergeBilingual(primary: ThinkTask, secondary: ThinkTask): ThinkT
   const m: Record<string, string> = {};
   for (const [p, s] of Object.entries(a)) {
     const o = b[p];
-    if (typeof o === "string" && o.trim() && s.trim() && o.trim() !== s.trim()) m[p] = `${s}\n${o}`;
+    if (typeof o === "string" && o.trim() && s.trim() && o.trim() !== s.trim()) {
+      const parts = s.split("\n").map((x) => x.trim());
+      if (!parts.includes(o.trim())) {
+        m[p] = `${s}\n${o}`;
+      } else {
+        m[p] = s;
+      }
+    }
   }
   return applyFlat(primary, m);
 }

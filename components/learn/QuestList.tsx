@@ -5,7 +5,7 @@ import type { DailyQuest, QuestItem } from "@/lib/learn/types";
 import { useLearner } from "./LearnerProvider";
 
 export function QuestList({ quest, compact = false }: { quest: DailyQuest; compact?: boolean }) {
-  const { t, href, state, index } = useLearner();
+  const { t, tSecondary, isBilingual, href, state, index } = useLearner();
 
   const target = (it: QuestItem): string => {
     if (it.kind === "lesson") {
@@ -23,16 +23,33 @@ export function QuestList({ quest, compact = false }: { quest: DailyQuest; compa
         return (
           <li key={it.id} className={compact ? "" : "l-card"}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, fontWeight: 700 }}>
-              <span>
-                <span aria-hidden="true">{done ? "✅" : "⬜"}</span> {t(`quest.item.${it.kind}` as never, { n: it.target })}
+              <div>
+                <div>
+                  <span aria-hidden="true">{done ? "✅" : "⬜"}</span> {t(`quest.item.${it.kind}` as never, { n: it.target })}
+                </div>
+                {isBilingual && (
+                  <div style={{ fontSize: "0.85em", fontWeight: 400, opacity: 0.85, paddingLeft: "1.4rem" }}>
+                    {tSecondary(`quest.item.${it.kind}` as never, { n: it.target })}
+                  </div>
+                )}
+              </div>
+              <span style={{ textAlign: "right" }}>
+                <span>{done ? t("quest.complete") : `${it.progress}/${it.target}`}</span>
+                {isBilingual && done && (
+                  <span style={{ display: "block", fontSize: "0.85em", fontWeight: 400, opacity: 0.85 }}>
+                    {tSecondary("quest.complete")}
+                  </span>
+                )}
               </span>
-              <span>{done ? t("quest.complete") : `${it.progress}/${it.target}`}</span>
             </div>
             <div className="l-bar" role="progressbar" aria-label={t(`quest.item.${it.kind}` as never, { n: it.target })} aria-valuemin={0} aria-valuemax={it.target} aria-valuenow={it.progress}>
               <span style={{ width: `${(it.progress / it.target) * 100}%` }} />
             </div>
             {!compact && !done && (
-              <Link className="l-btn l-btn-ghost" style={{ marginTop: 10 }} href={target(it)}>{t("quest.go")}</Link>
+              <Link className="l-btn l-btn-ghost" style={{ marginTop: 10 }} href={target(it)}>
+                <span>{t("quest.go")}</span>
+                {isBilingual && <span style={{ fontSize: "0.85em", opacity: 0.85, marginLeft: "0.4rem" }}>· {tSecondary("quest.go")}</span>}
+              </Link>
             )}
           </li>
         );

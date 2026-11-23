@@ -180,7 +180,7 @@ registerRenderer("multiple_select", MultiRenderer);
 /* ------------------------------- text -------------------------------- */
 
 function TextRenderer({ q, value, onChange, disabled, onSubmit }: RendererProps) {
-  const { t, site } = useSite();
+  const { t, tSecondary, isBilingual, site } = useSite();
   const numeric = q.type === "numeric";
   const isMathSite = site === "math" || numeric;
   const inputRef = useRef<HTMLInputElement>(null);
@@ -250,7 +250,11 @@ function TextRenderer({ q, value, onChange, disabled, onSubmit }: RendererProps)
         // typed answers are target-language text (English / Korean) or numbers: always left-to-right, with the target language's keyboard hint
         lang={!numeric ? siteConfig(site).targetLanguage?.code : undefined}
         dir="ltr"
-        placeholder={numeric ? t("lesson.answer.numeric") : t("lesson.answer.placeholder")}
+        placeholder={(() => {
+          const primPh = numeric ? t("lesson.answer.numeric") : t("lesson.answer.placeholder");
+          const secPh = isBilingual && tSecondary ? (numeric ? tSecondary("lesson.answer.numeric") : tSecondary("lesson.answer.placeholder")) : "";
+          return isBilingual && secPh && secPh !== primPh ? `${primPh} (${secPh})` : primPh;
+        })()}
         value={strVal}
         disabled={disabled}
         maxLength={numeric ? 32 : 120}
@@ -323,7 +327,7 @@ registerRenderer("ordering", OrderingRenderer);
  * its voices and none speaks the language, the button is replaced by a short note: the learner continues with the text.
  */
 export function ListenButton({ text }: { text: string }) {
-  const { t, site } = useSite();
+  const { t, tSecondary, isBilingual, site } = useSite();
   const [busy, setBusy] = useState(false);
   const target = siteConfig(site).targetLanguage;
   const provider = getAudioProvider();

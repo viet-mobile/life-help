@@ -23,7 +23,7 @@ export interface SessionResult {
 }
 
 export function ResultScreen({ result, nextLesson, onAgain }: { result: SessionResult; nextLesson: Lesson | null; onAgain: () => void }) {
-  const { t, tSecondary, isBilingual, href, state, index } = useLearner();
+  const { t, tSecondary, isBilingual, href, state, index, secondaryIndex } = useLearner();
   const router = useRouter();
   useEnterToContinue(result.kind === "lesson" && !!nextLesson, () => { if (nextLesson) router.push(href(`/lesson/${nextLesson.id}`)); });
   const level = levelProgress(state.totalXp);
@@ -59,26 +59,69 @@ export function ResultScreen({ result, nextLesson, onAgain }: { result: SessionR
       </div>
 
       <div className="l-grid l-grid-2">
-        <div className="l-card"><div className="l-muted">{t("result.xp")}</div><div className="l-h1">+{result.xp} XP</div></div>
-        <div className="l-card"><div className="l-muted">{t("result.coins")}</div><div className="l-h1">🪙 +{result.coins}</div></div>
+        <div className="l-card">
+          <div className="l-muted">
+            {t("result.xp")}
+            {isBilingual && <span style={{ marginLeft: "0.3rem", opacity: 0.85 }}>({tSecondary("result.xp")})</span>}
+          </div>
+          <div className="l-h1">+{result.xp} XP</div>
+        </div>
+        <div className="l-card">
+          <div className="l-muted">
+            {t("result.coins")}
+            {isBilingual && <span style={{ marginLeft: "0.3rem", opacity: 0.85 }}>({tSecondary("result.coins")})</span>}
+          </div>
+          <div className="l-h1">🪙 +{result.coins}</div>
+        </div>
       </div>
 
       {leveledUp && (
         <div className="l-card l-pop" style={{ background: "var(--l-gold-soft)", borderColor: "#f0cf7a" }} role="status">
-          🎉 <strong>{t("result.levelUp", { level: level.level, title: t(`level.${level.titleKey}` as never) })}</strong>
+          <div>🎉 <strong>{t("result.levelUp", { level: level.level, title: t(`level.${level.titleKey}` as never) })}</strong></div>
+          {isBilingual && (
+            <div style={{ fontSize: "0.85em", opacity: 0.85, marginTop: "0.15rem" }}>
+              🎉 {tSecondary("result.levelUp", { level: level.level, title: tSecondary(`level.${level.titleKey}` as never) })}
+            </div>
+          )}
         </div>
       )}
       {result.achievements.map((code) => (
         <div key={code} className="l-card l-pop" role="status">
-          🏅 <strong>{t("result.badge")}</strong> · {t(`ach.${code}.title` as never)}
+          <div>🏅 <strong>{t("result.badge")}</strong> · {t(`ach.${code}.title` as never)}</div>
+          {isBilingual && (
+            <div style={{ fontSize: "0.85em", opacity: 0.85, marginTop: "0.15rem" }}>
+              🏅 {tSecondary("result.badge")} · {tSecondary(`ach.${code}.title` as never)}
+            </div>
+          )}
         </div>
       ))}
-      {state.streak.current > 0 && <div className="l-card">{t("result.streak", { n: state.streak.current })}</div>}
-      {result.questCompleted && <div className="l-card" style={{ background: "var(--l-good-soft)" }} role="status">📜 {t("result.quest")}</div>}
+      {state.streak.current > 0 && (
+        <div className="l-card">
+          <div>{t("result.streak", { n: state.streak.current })}</div>
+          {isBilingual && (
+            <div style={{ fontSize: "0.85em", opacity: 0.85, marginTop: "0.15rem" }}>
+              {tSecondary("result.streak", { n: state.streak.current })}
+            </div>
+          )}
+        </div>
+      )}
+      {result.questCompleted && (
+        <div className="l-card" style={{ background: "var(--l-good-soft)" }} role="status">
+          <div>📜 {t("result.quest")}</div>
+          {isBilingual && (
+            <div style={{ fontSize: "0.85em", opacity: 0.85, marginTop: "0.15rem" }}>
+              📜 {tSecondary("result.quest")}
+            </div>
+          )}
+        </div>
+      )}
 
       {lessonSkillIds && (
         <section className="l-card l-stack">
-          <h2 className="l-h2">{t("result.mastery")}</h2>
+          <h2 className="l-h2">
+            <span>{t("result.mastery")}</span>
+            {isBilingual && <span style={{ fontSize: "0.8em", fontWeight: 400, opacity: 0.85, marginLeft: "0.4rem" }}>({tSecondary("result.mastery")})</span>}
+          </h2>
           <SkillBars skillIds={lessonSkillIds} />
         </section>
       )}
@@ -87,6 +130,11 @@ export function ResultScreen({ result, nextLesson, onAgain }: { result: SessionR
         {result.kind === "lesson" && nextLesson ? (
           <Link className="l-btn l-btn-block" href={href(`/lesson/${nextLesson.id}`)}>
             <span className="l-arrow">▶</span> {t("result.next", { title: nextLesson.title })}
+            {isBilingual && secondaryIndex?.lessons.get(nextLesson.id) && (
+              <span style={{ display: "block", fontSize: "0.85em", opacity: 0.85, marginTop: "0.15rem" }}>
+                {tSecondary("result.next", { title: secondaryIndex.lessons.get(nextLesson.id)?.lesson.title ?? nextLesson.title })}
+              </span>
+            )}
           </Link>
         ) : result.kind === "lesson" ? (
           <p className="l-muted">{t("result.noNext")}</p>

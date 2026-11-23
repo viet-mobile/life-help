@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { checkBuild, checkChoose, checkPickLine, checkRevealStage, checkWrite, previousPredictionText } from "@/lib/think/check";
 import type { ThinkLang } from "@/lib/think/lang";
 import type { BuildStep, ChooseStep, PickLineStep, RevealStep, Step, ThinkTask, WriteStep } from "@/lib/think/types";
+import { formatLevelLabel } from "@/lib/think/grades";
 import { fmt, labels, type Labels } from "./labels";
 
 export interface Flag { task: string; step: string; note: string; at: string }
@@ -24,7 +25,7 @@ export function TaskPlayer({ task, lang, checksOff = false, reviewer, onBack, on
     <main className="mx-auto max-w-3xl px-4 py-6 text-slate-900" data-testid="think-task" data-task={task.id} lang={task.uiLang}>
       <button onClick={onBack} className="text-sm font-bold underline">{L.back}</button>
       {/* internal codes (id, format) are shown to reviewers only */}
-      <p className="mt-3 text-xs font-bold text-slate-500" data-testid="task-meta">{reviewer ? `${task.id} · ` : ""}{task.levelLabel} · ≈{task.minutes}{L.minutes}{reviewer ? ` · ${task.format}` : ""}</p>
+      <p className="mt-3 text-xs font-bold text-slate-500" data-testid="task-meta">{reviewer ? `${task.id} · ` : ""}{formatLevelLabel(task.levelLabel, shownLang)} · ≈ ${task.minutes} ${L.minutes}{reviewer ? ` · ${task.format}` : ""}</p>
       <h1 className="text-2xl font-black">{task.title}</h1>
       {reviewer && task.status === "draft" && <p className="mt-1 rounded-lg bg-amber-50 p-2 text-xs font-bold text-amber-800" data-testid="draft-note">🟡 {L.draft}</p>}
       <p className="mt-2 text-sm" data-testid="prereq"><b>{L.prereq}:</b> {task.prerequisites.join("; ")}</p>
@@ -61,7 +62,7 @@ function Hints({ hints, L, id }: { hints: string[]; L: Labels; id: string }) {
   const [n, setN] = useState(0);
   return (
     <div className="grid gap-1" data-testid={`hints-${id}`}>
-      {hints.slice(0, n).map((h, i) => <p key={i} className="rounded-lg bg-amber-50 p-2 text-sm">💡 {h}</p>)}
+      {hints.slice(0, n).map((h, i) => <p key={i} className="rounded-lg bg-amber-50 p-2 text-sm whitespace-pre-line">💡 {h}</p>)}
       <button type="button" disabled={n >= hints.length} onClick={() => setN(n + 1)} className="w-fit rounded-lg border px-3 py-1 text-sm font-bold disabled:opacity-50" data-testid={`hint-${id}`}>{n >= hints.length && n > 0 ? L.hintNone : `${L.hint} (${n}/${hints.length})`}</button>
     </div>
   );
@@ -83,7 +84,7 @@ function StepView(p: SV) {
   const canSkip = step.scaffold && !p.resolved && !skipped && p.current;
   return (
     <section className="grid gap-3 rounded-2xl border bg-white p-4" aria-label={`${p.index + 1}/${p.total}`} data-testid={`step-${step.id}`} data-resolved={p.resolved ?? ""}>
-      <h2 className="text-base font-black">{p.index + 1}/{p.total} · {step.prompt}</h2>
+      <h2 className="text-base font-black whitespace-pre-line">{p.index + 1}/{p.total} · {step.prompt}</h2>
       {skipped ? <p className="text-sm text-slate-500">— {L.skip}</p> : (
         <>
           {step.kind === "choose" && <ChooseView {...p} step={step} />}
@@ -118,7 +119,7 @@ function ChooseView({ step, L, reviewer, onResult, onFlag }: SV & { step: Choose
       <div role={step.multi ? "group" : "radiogroup"} className="grid gap-2">
         {step.options.map((o) => (
           <button key={o.id} type="button" role={step.multi ? "checkbox" : "radio"} aria-checked={sel.includes(o.id)} onClick={() => toggle(o.id)} data-testid={`opt-${o.id}`}
-            className={`rounded-xl border p-3 text-left text-sm ${sel.includes(o.id) ? "border-slate-900 bg-slate-100" : ""}`}>
+            className={`rounded-xl border p-3 text-left text-sm whitespace-pre-line ${sel.includes(o.id) ? "border-slate-900 bg-slate-100" : ""}`}>
             <b className="mr-2" aria-hidden="true">{o.id.toUpperCase()}.</b>{o.text}{reviewer && step.correct.includes(o.id) ? " ✔" : ""}
           </button>
         ))}
@@ -141,7 +142,7 @@ function PickLineView({ step, L, reviewer, onResult, onFlag }: SV & { step: Pick
       <p className="text-xs text-slate-500">{L.pickLine}</p>
       <ol className="grid gap-1" role="radiogroup">
         {step.lines.map((l, i) => (
-          <li key={i}><button type="button" role="radio" aria-checked={sel === i} onClick={() => { setSel(i); setRes(null); }} data-testid={`line-${i}`} className={`w-full rounded-lg border p-2 text-left text-sm ${sel === i ? "border-slate-900 bg-slate-100" : ""}`}>{i + 1}. {l}{reviewer && step.wrong.includes(i) ? " ✘" : ""}</button></li>
+          <li key={i}><button type="button" role="radio" aria-checked={sel === i} onClick={() => { setSel(i); setRes(null); }} data-testid={`line-${i}`} className={`w-full rounded-lg border p-2 text-left text-sm whitespace-pre-line ${sel === i ? "border-slate-900 bg-slate-100" : ""}`}>{i + 1}. {l}{reviewer && step.wrong.includes(i) ? " ✘" : ""}</button></li>
         ))}
       </ol>
       <button className="w-fit rounded-xl bg-slate-900 px-4 py-2 font-black text-white disabled:opacity-40" disabled={sel === null} data-testid="check" onClick={() => { const r = checkPickLine(step, sel); setRes(r); setTries((t) => t + 1); onResult(r.status === "match" ? "auto" : "surface"); }}>{L.check}</button>
@@ -174,9 +175,9 @@ function WriteBlock({ step, L, onResult, onFlag, reviewer, checksOff }: { step: 
             </ul>
           )}
           <details open className="rounded-lg border p-3"><summary className="cursor-pointer text-sm font-black">{L.model}</summary>
-            <ul className="mt-2 grid gap-2 text-sm">{step.modelAnswers.map((m, i) => <li key={i} className="rounded-lg bg-emerald-50 p-2" dir="auto">{m.text}{m.note ? <span className="block text-xs text-slate-500">{m.note}</span> : null}</li>)}</ul></details>
+            <ul className="mt-2 grid gap-2 text-sm">{step.modelAnswers.map((m, i) => <li key={i} className="rounded-lg bg-emerald-50 p-2 whitespace-pre-line" dir="auto">{m.text}{m.note ? <span className="block text-xs text-slate-500">{m.note}</span> : null}</li>)}</ul></details>
           <fieldset className="grid gap-1 text-sm"><legend className="font-black">{L.selfAssess}</legend>
-            {step.selfAssess.map((s, i) => <label key={i} className="flex gap-2"><input type="checkbox" checked={ticks[i]} onChange={() => setTicks((t) => t.map((x, j) => (j === i ? !x : x)))} />{s}</label>)}</fieldset>
+            {step.selfAssess.map((s, i) => <label key={i} className="flex gap-2 whitespace-pre-line"><input type="checkbox" checked={ticks[i]} onChange={() => setTicks((t) => t.map((x, j) => (j === i ? !x : x)))} /><span>{s}</span></label>)}</fieldset>
           <p className="text-xs text-slate-600"><b>{L.needsHuman}:</b> {step.humanReview}</p>
           {reviewer && <ul className="text-xs text-rose-700">{step.badAnswers.map((b, i) => <li key={i}>✘ {b.text} — {b.why}</li>)}</ul>}
           <FlagBox L={L} onFlag={onFlag} />

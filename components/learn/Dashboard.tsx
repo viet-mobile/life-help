@@ -138,8 +138,20 @@ export function Dashboard() {
             <span style={{ width: `${level.ratio * 100}%` }} />
           </div>
           <p className="l-muted">{state.totalXp} XP · {level.isMax ? t("dash.maxLevel") : t("dash.toNext", { n: level.xpForNext - level.xpIntoLevel })}</p>
-          <p><strong>🔥 {streak > 0 ? t("dash.streak", { n: streak }) : t("dash.streak.none")}</strong>
-            {state.streak.freezes > 0 && <span className="l-muted"> · ❄️ {t("dash.streak.freeze", { n: state.streak.freezes })}</span>}</p>
+          {isBilingual && (
+            <p className="l-muted" style={{ fontSize: "0.85em", marginTop: "-0.25rem" }}>
+              {state.totalXp} XP · {level.isMax ? tSecondary("dash.maxLevel") : tSecondary("dash.toNext", { n: level.xpForNext - level.xpIntoLevel })}
+            </p>
+          )}
+          <p>
+            <strong>🔥 {streak > 0 ? t("dash.streak", { n: streak }) : t("dash.streak.none")}</strong>
+            {isBilingual && (
+              <span style={{ display: "block", fontSize: "0.85em", opacity: 0.85, fontWeight: 400 }}>
+                🔥 {streak > 0 ? tSecondary("dash.streak", { n: streak }) : tSecondary("dash.streak.none")}
+              </span>
+            )}
+            {state.streak.freezes > 0 && <span className="l-muted"> · ❄️ {t("dash.streak.freeze", { n: state.streak.freezes })}</span>}
+          </p>
         </section>
 
         <section className="l-card l-stack" aria-labelledby="q-h">
@@ -183,18 +195,36 @@ export function Dashboard() {
 
       <div className="l-grid l-grid-2">
         <section className="l-card l-stack" aria-labelledby="rc-h">
-          <h2 id="rc-h" className="l-h2">🎖️ {t("dash.recent")}</h2>
+          <h2 id="rc-h" className="l-h2">
+            <span>🎖️ {t("dash.recent")}</span>
+            {isBilingual && <span style={{ fontSize: "0.8em", fontWeight: 400, opacity: 0.85, marginLeft: "0.4rem" }}>({tSecondary("dash.recent")})</span>}
+          </h2>
           {badgeDef ? (
-            <p><span aria-hidden="true" style={{ fontSize: "1.6rem" }}>{badgeDef.emoji}</span> <strong>{t(`ach.${badgeDef.code}.title` as never)}</strong></p>
+            <div>
+              <p><span aria-hidden="true" style={{ fontSize: "1.6rem" }}>{badgeDef.emoji}</span> <strong>{t(`ach.${badgeDef.code}.title` as never)}</strong></p>
+              {isBilingual && <p style={{ fontSize: "0.85em", opacity: 0.85 }}><strong>{tSecondary(`ach.${badgeDef.code}.title` as never)}</strong></p>}
+            </div>
           ) : (
-            <p className="l-muted">{t("dash.recent.empty")}</p>
+            <div>
+              <p className="l-muted">{t("dash.recent.empty")}</p>
+              {isBilingual && <p className="l-muted" style={{ fontSize: "0.85em" }}>{tSecondary("dash.recent.empty")}</p>}
+            </div>
           )}
         </section>
         {recommended && (
           <section className="l-card l-stack" aria-labelledby="rec-h">
-            <h2 id="rec-h" className="l-h2">✨ {t("dash.recommended")}</h2>
+            <h2 id="rec-h" className="l-h2">
+              <span>✨ {t("dash.recommended")}</span>
+              {isBilingual && <span style={{ fontSize: "0.8em", fontWeight: 400, opacity: 0.85, marginLeft: "0.4rem" }}>({tSecondary("dash.recommended")})</span>}
+            </h2>
             <p>{recommended.title}</p>
-            <Link className="l-btn l-btn-ghost l-btn-block" href={href(`/practice?kind=practice&skill=${encodeURIComponent(recommended.id)}`)}>{t("lesson.begin")}</Link>
+            {isBilingual && secondaryIndex?.skills.get(recommended.id) && (
+              <p style={{ fontSize: "0.85em", opacity: 0.85, marginTop: "-0.25rem" }}>{secondaryIndex.skills.get(recommended.id)?.title}</p>
+            )}
+            <Link className="l-btn l-btn-ghost l-btn-block" href={href(`/practice?kind=practice&skill=${encodeURIComponent(recommended.id)}`)}>
+              <span>{t("lesson.begin")}</span>
+              {isBilingual && <span style={{ fontSize: "0.85em", opacity: 0.85, marginLeft: "0.4rem" }}>· {tSecondary("lesson.begin")}</span>}
+            </Link>
           </section>
         )}
       </div>
@@ -202,7 +232,13 @@ export function Dashboard() {
       {mode === "guest" && (
         <section className="l-card l-stack">
           <p className="l-muted">{t("dash.guest")}</p>
-          {accountsEnabled && <Link className="l-btn l-btn-ghost" href={href("/login")}>{t("dash.guest.cta")}</Link>}
+          {isBilingual && <p className="l-muted" style={{ fontSize: "0.85em", marginTop: "-0.25rem" }}>{tSecondary("dash.guest")}</p>}
+          {accountsEnabled && (
+            <Link className="l-btn l-btn-ghost" href={href("/login")}>
+              <span>{t("dash.guest.cta")}</span>
+              {isBilingual && <span style={{ fontSize: "0.85em", opacity: 0.85, marginLeft: "0.4rem" }}>· {tSecondary("dash.guest.cta")}</span>}
+            </Link>
+          )}
         </section>
       )}
     </div>

@@ -43,7 +43,7 @@ export function flatten(t: ThinkTask): Record<string, string> {
 }
 export function applyFlat(t: ThinkTask, m: Record<string, string>): ThinkTask {
   const g = (k: string, d: string): string => (typeof m[k] === "string" && m[k].trim() ? m[k] : d);
-  const W = (p: string, w: any) => ({ ...w, placeholder: w.placeholder ? g(`${p}.placeholder`, w.placeholder) : w.placeholder, selfAssess: w.selfAssess.map((s: string, i: number) => g(`${p}.selfAssess.${i}`, s)),
+  const W = (p: string, w: any) => ({ placeholder: w.placeholder ? g(`${p}.placeholder`, w.placeholder) : w.placeholder, selfAssess: w.selfAssess.map((s: string, i: number) => g(`${p}.selfAssess.${i}`, s)),
     modelAnswers: w.modelAnswers.map((x: any, i: number) => ({ ...x, text: g(`${p}.model.${i}`, x.text), ...(x.note ? { note: g(`${p}.modelNote.${i}`, x.note) } : {}) })) });
   const O = (p: string, opts: any[]) => opts.map((o) => ({ ...o, text: g(`${p}.o.${o.id}`, o.text), ...(o.reveals ? { reveals: g(`${p}.r.${o.id}`, o.reveals) } : {}) }));
   return { ...(t as any), title: g("title", t.title), ...(t.topic ? { topic: g("topic", t.topic) } : {}), goal: g("goal", t.goal), material: g("material", t.material),

@@ -5,7 +5,7 @@ import { useLearner } from "./LearnerProvider";
 
 /** Skill map: bars + a text label (never colour alone) using growth-oriented wording. */
 export function SkillBars({ skillIds }: { skillIds?: string[] }) {
-  const { index, state, t } = useLearner();
+  const { index, secondaryIndex, isBilingual, state, t, tSecondary } = useLearner();
   const now = new Date();
   const ids = skillIds ?? [...index.skills.keys()];
   return (
@@ -18,8 +18,22 @@ export function SkillBars({ skillIds }: { skillIds?: string[] }) {
         return (
           <li key={id}>
             <div style={{ display: "flex", justifyContent: "space-between", fontWeight: 700 }}>
-              <span>{skill.title}</span>
-              <span>{score}% · {t(`mastery.${label}` as never)}</span>
+              <div>
+                <span>{skill.title}</span>
+                {isBilingual && secondaryIndex?.skills.get(id)?.title && secondaryIndex.skills.get(id)!.title !== skill.title && (
+                  <span style={{ display: "block", fontSize: "0.85em", fontWeight: 400, opacity: 0.85 }}>
+                    {secondaryIndex.skills.get(id)!.title}
+                  </span>
+                )}
+              </div>
+              <div style={{ textAlign: "right" }}>
+                <span>{score}% · {t(`mastery.${label}` as never)}</span>
+                {isBilingual && (
+                  <span style={{ display: "block", fontSize: "0.85em", fontWeight: 400, opacity: 0.85 }}>
+                    {score}% · {tSecondary(`mastery.${label}` as never)}
+                  </span>
+                )}
+              </div>
             </div>
             <div className="l-bar" role="progressbar" aria-label={skill.title} aria-valuemin={0} aria-valuemax={100} aria-valuenow={score}>
               <span style={{ width: `${score}%` }} />

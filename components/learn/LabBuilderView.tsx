@@ -820,7 +820,7 @@ export function LabBuilderView({
                   ? `${maxStreak - currentStreak} more in a row`
                   : isNonKorean
                     ? `${maxStreak - currentStreak} more in a row`
-                    : `${maxStreak - currentStreak}연속 추가 정답 시 보너스`
+                    : isNonKorean ? `${maxStreak - currentStreak} more in a row` : `${maxStreak - currentStreak}연속 추가 정답 시 보너스`
                 : themeStyles.streakHint}
             </span>
           )}

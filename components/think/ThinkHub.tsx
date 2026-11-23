@@ -32,7 +32,7 @@ const bandOf = (g: string): 1 | 2 | 3 => (g.startsWith("K") ? (Number(g.slice(1)
  * kept on this device - the tasks write no scores, XP or accounts data.
  */
 export function ThinkHub() {
-  const { site, state, locale, href, ready, t } = useLearner();
+  const { site, state, locale, isBilingual: globalIsBilingual, secondaryLocales, href, ready, t } = useLearner();
   const router = useRouter();
   const params = useSearchParams();
   const ownGrade = (state.profile?.grade ?? siteConfig(site).levels[0]) as string;
@@ -48,6 +48,7 @@ export function ThinkHub() {
   const [overlayFb, setOverlayFb] = useState<Record<string, Record<string, string>>>({}); // English fallback for languages outside the six
   const [overlayKo, setOverlayKo] = useState<Record<string, Record<string, string>>>({}); // Korean version of the Korean-subject tasks (level 4+ shows it first)
   const [bilingual, setBilingual] = useState(false);
+  const [secOverlays, setSecOverlays] = useState<Array<{ lang: string; primary: any; fallback: any }>>([]);
   useEffect(() => { try { setBilingual(window.localStorage.getItem("learn:think:bilingual") === "1"); } catch { /* storage unavailable */ } }, []);
   const [done, setDone] = useState<Record<string, string>>({});
   const [trophies, setTrophies] = useState<Record<string, Trophy>>({});
@@ -74,10 +75,22 @@ export function ThinkHub() {
       const all = lists.flat().filter((t) => (level ? koreanLevelOf(t.id) === level : t.grade ? t.grade === grade : !isElective && t.level === bandOf(grade)));
       const o = await loadOverlays(taskLang, metas.map((m) => m.key));
       const ok = site === "korean" && lang !== "ko" ? await loadOverlay("ko", metas.map((m) => m.key)) : {};
-      if (live) { setTasks(all); setOverlay(o.primary); setOverlayFb(o.fallback); setOverlayKo(ok); setLoading(false); }
+      const rawSecLangs = (secondaryLocales ?? []).map((loc) => taskLangFor(loc));
+      if (rawSecLangs.length === 0 && (bilingual || globalIsBilingual)) {
+        if (site === "math" && taskLang !== "ko") rawSecLangs.push("ko");
+        else if (site === "korean" && taskLang !== "en") rawSecLangs.push("en");
+      }
+      const secLangs = [...new Set(rawSecLangs)].filter((l) => l !== taskLang);
+      const secLoaded = await Promise.all(
+        secLangs.map(async (sl) => {
+          const so = await loadOverlays(sl, metas.map((m) => m.key));
+          return { lang: sl, primary: so.primary, fallback: so.fallback };
+        })
+      );
+      if (live) { setTasks(all); setOverlay(o.primary); setOverlayFb(o.fallback); setOverlayKo(ok); setSecOverlays(secLoaded); setLoading(false); }
     }).catch(() => { if (live) { setLoadError(true); setLoading(false); } });
     return () => { live = false; };
-  }, [site, grade, lang, taskLang, retry]);
+  }, [site, grade, lang, taskLang, retry, secondaryLocales, bilingual, globalIsBilingual]);
 
   const everything = useMemo(() => tasks.map((t) => localizeFor(t, taskLang, { primary: overlay, fallback: overlayFb })), [tasks, taskLang, overlay, overlayFb]);
   // Only tasks fully available in the learner's language are listed or opened; the others are counted and explained, never shown half-translated.
@@ -126,7 +139,15 @@ export function ThinkHub() {
   const gradeName = (g: string) => (g.startsWith("EL-") ? ELECTIVE_NAMES[g][lang] : g);
 
   if (!ready) return <div className="l-wrap" role="status">…</div>;
-  const loadText = { ko: ["과제를 불러오는 중…", "과제를 불러오지 못했어요.", "다시 시도"], en: ["Loading tasks…", "Could not load tasks.", "Try again"], vi: ["Đang tải bài tập…", "Không thể tải bài tập.", "Thử lại"], ja: ["課題を読み込み中…", "課題を読み込めませんでした。", "再試行"], "zh-Hans": ["正在加载任务…", "无法加载任务。", "重试"], "zh-Hant": ["正在載入任務…", "無法載入任務。", "重試"] }[lang];
+  const loadMap: Record<string, [string, string, string]> = {
+    ko: ["과제를 불러오는 중…", "과제를 불러오지 못했어요.", "다시 시도"],
+    en: ["Loading tasks…", "Could not load tasks.", "Try again"],
+    vi: ["Đang tải bài tập…", "Không thể tải bài tập.", "Thử lại"],
+    ja: ["課題を読み込み中…", "課題を読み込めませんでした。", "再試行"],
+    "zh-Hans": ["正在加载任务…", "无法加载任务。", "重试"],
+    "zh-Hant": ["正在載入任務…", "無法載入任務。", "重試"],
+  };
+  const loadText = loadMap[lang] ?? loadMap.en;
   if (loadError) return <div className="l-wrap" role="alert"><p>{loadText[1]}</p><button className="l-btn" onClick={() => setRetry(n => n + 1)}>{loadText[2]}</button></div>;
   if (loading) return <div className="l-wrap" role="status">{loadText[0]}</div>;
   // "next challenge": the next not-yet-tried task of the list the learner is looking at (this grade / semester / field), else any other untried one
@@ -137,7 +158,16 @@ export function ThinkHub() {
     const raw = tasks.find((t) => t.id === current.task.id);
     const koItem = site === "korean" && lang !== "ko" && raw && isKoreanFirst(raw.id) ? localize(raw, "ko", overlayKo) : null;
     const koFirst = !!koItem?.translated;
-    const playTask = koFirst ? (bilingual ? mergeBilingual(koItem!.task, current.task) : koItem!.task) : current.task;
+    const playTask = koFirst ? ((bilingual || globalIsBilingual) ? mergeBilingual(koItem!.task, current.task) : koItem!.task) : current.task;
+    let finalTask = playTask;
+    if (!koFirst && raw && (bilingual || globalIsBilingual) && secOverlays.length > 0) {
+      for (const sec of secOverlays) {
+        const secLoc = localizeFor(raw, sec.lang, { primary: sec.primary, fallback: sec.fallback });
+        if (secLoc.translated) {
+          finalTask = mergeBilingual(finalTask, secLoc.task);
+        }
+      }
+    }
     return (
       <div className="l-wrap l-stack" data-testid="think-player" style={{ whiteSpace: "pre-line" }}>
         {koFirst && (
@@ -149,7 +179,7 @@ export function ThinkHub() {
             </label>
           </div>
         )}
-        <TaskPlayer key={`${current.task.id}:${current.lang}`} task={playTask} lang={lang} checksOff={checksOffFor(playTask, current.lang)} reviewer={false}
+        <TaskPlayer key={`${current.task.id}:${current.lang}`} task={finalTask} lang={lang} checksOff={checksOffFor(playTask, current.lang)} reviewer={false}
           onBack={() => router.push(href("/think"))} onNext={nextId ? () => router.push(href(`/think?task=${encodeURIComponent(nextId)}`)) : undefined} onFlag={() => undefined}
           onComplete={() => { const d = { ...readDone(site), [current.task.id]: new Date().toISOString() }; writeDone(site, d); setDone(d); try { window.localStorage.setItem(flowKey(site), JSON.stringify(taskCompleted(readLedger(site), current.task.id))); } catch { /* storage unavailable */ } if (isFinalBoss(current.task.id)) { addTrophy(site, current.task.id); setTrophies(readTrophies(site)); setWon(true); } }} />
       </div>
@@ -219,7 +249,7 @@ export function ThinkHub() {
           <li key={task.id}>
             <button type="button" className="l-card" data-testid={`think-${task.id}`} style={{ textAlign: "left", width: "100%", cursor: "pointer", display: "block" }} onClick={() => router.push(href(`/think?task=${encodeURIComponent(task.id)}`))}>
               <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-                <div className="l-muted" style={{ fontSize: 13 }}>{done[task.id] ? "✅ " : ""}{fieldText(fieldOf(task), false) ? `${fieldText(fieldOf(task), false)} · ` : ""}≈{task.minutes}{L.minutes}</div>
+                <div className="l-muted" style={{ fontSize: 13 }}>{done[task.id] ? "✅ " : ""}{fieldText(fieldOf(task), false) ? `${fieldText(fieldOf(task), false)} · ` : ""}≈ ${task.minutes} ${L.minutes}</div>
                 <strong style={{ display: "block", fontSize: 18, lineHeight: 1.35 }}>{task.title}</strong>
                 <div className="l-muted" style={{ lineHeight: 1.5 }}>{task.goal}</div>
               </div>

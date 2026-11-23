@@ -15,6 +15,8 @@ export function MathKeypad({ onInsert, onBackspace, onClear, onSubmit, disabled 
   const [isOpen, setIsOpen] = useState(true);
   const siteCtx = useOptionalSite();
   const t = siteCtx?.t;
+  const isBilingual = siteCtx?.isBilingual;
+  const tSecondary = siteCtx?.tSecondary;
   const isNonKorean = siteCtx?.locale && siteCtx.locale !== "ko";
 
   // Groups of keys for elementary through high school math
@@ -66,10 +68,20 @@ export function MathKeypad({ onInsert, onBackspace, onClear, onSubmit, disabled 
   const titleText = isScience
     ? (isNonKorean ? "Smart Science Keypad" : "과학·수식 스마트 키패드")
     : (t ? t("keypad.title") : (isNonKorean ? "Smart Math Keypad" : "수학 전용 스마트 키패드"));
+  const secTitleText = isBilingual && tSecondary ? tSecondary("keypad.title") : "";
+
   const clearText = t ? t("keypad.clear") : (isNonKorean ? "Clear All" : "전체지우기");
+  const secClearText = isBilingual && tSecondary ? tSecondary("keypad.clear") : "";
+
   const collapseText = t ? t("keypad.collapse") : (isNonKorean ? "Collapse" : "접기");
+  const secCollapseText = isBilingual && tSecondary ? tSecondary("keypad.collapse") : "";
+
   const expandText = t ? t("keypad.expand") : (isNonKorean ? "Open Keypad" : "키패드 열기");
+  const secExpandText = isBilingual && tSecondary ? tSecondary("keypad.expand") : "";
+
   const submitText = t ? t("keypad.submit") : (isNonKorean ? "Submit Answer" : "입력 완료 및 정답 제출");
+  const secSubmitText = isBilingual && tSecondary ? tSecondary("keypad.submit") : "";
+
   const ariaLabelText = isScience
     ? (isNonKorean ? "Science Keypad" : "과학 키패드")
     : (t ? t("keypad.ariaLabel") : (isNonKorean ? "Math Keypad" : "수학 키패드"));
@@ -78,7 +90,11 @@ export function MathKeypad({ onInsert, onBackspace, onClear, onSubmit, disabled 
     <div className="mt-3 w-full max-w-xl mx-auto border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/60 shadow-sm transition-all">
       <div className="flex items-center justify-between px-2.5 xs:px-3 py-1 xs:py-1.5 bg-slate-100 dark:bg-slate-800/80 border-b border-slate-200 dark:border-slate-800 text-[11px] xs:text-xs text-slate-600 dark:text-slate-300">
         <span className="font-semibold flex items-center gap-1 xs:gap-1.5 truncate min-w-0">
-          <span>{isScience ? "🔬" : "🧮"}</span> {titleText}
+          <span>{isScience ? "🔬" : "🧮"}</span>
+          <span>{titleText}</span>
+          {secTitleText && secTitleText !== titleText && (
+            <span className="text-[10px] font-normal opacity-85 ml-1">({secTitleText})</span>
+          )}
         </span>
         <div className="flex items-center gap-2">
           <button
@@ -87,14 +103,20 @@ export function MathKeypad({ onInsert, onBackspace, onClear, onSubmit, disabled 
             disabled={disabled}
             className="hover:text-red-500 transition-colors px-1"
           >
-            {clearText}
+            <span>{clearText}</span>
+            {secClearText && secClearText !== clearText && (
+              <span className="text-[10px] font-normal opacity-85 ml-0.5">({secClearText})</span>
+            )}
           </button>
           <button
             type="button"
             onClick={() => setIsOpen(!isOpen)}
             className="text-slate-500 hover:text-slate-700 dark:hover:text-slate-200 transition-colors font-medium px-1"
           >
-            {isOpen ? `${collapseText} ▲` : `${expandText} ▼`}
+            <span>{isOpen ? `${collapseText} ▲` : `${expandText} ▼`}</span>
+            {((isOpen && secCollapseText && secCollapseText !== collapseText) || (!isOpen && secExpandText && secExpandText !== expandText)) && (
+              <span className="text-[10px] font-normal opacity-85 ml-0.5">({isOpen ? secCollapseText : secExpandText})</span>
+            )}
           </button>
         </div>
       </div>
@@ -132,10 +154,15 @@ export function MathKeypad({ onInsert, onBackspace, onClear, onSubmit, disabled 
               type="button"
               disabled={disabled}
               onClick={onSubmit}
-              className="w-full h-10 sm:h-12 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs xs:text-sm sm:text-base tracking-wide shadow-sm transition-all active:scale-[0.99] flex items-center justify-center gap-1.5 disabled:opacity-50"
+              className="w-full min-h-[2.5rem] py-1.5 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs xs:text-sm sm:text-base tracking-wide shadow-sm transition-all active:scale-[0.99] flex flex-col items-center justify-center disabled:opacity-50"
             >
-              <span>{submitText}</span>
-              <span>↵</span>
+              <div className="flex items-center gap-1.5">
+                <span>{submitText}</span>
+                <span>↵</span>
+              </div>
+              {secSubmitText && secSubmitText !== submitText && (
+                <span className="text-[11px] font-normal opacity-90">{secSubmitText}</span>
+              )}
             </button>
           </div>
         </div>
