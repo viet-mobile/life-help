@@ -512,7 +512,18 @@ export function CustomerHome() {
 
           <div className="mb-2.5 flex flex-wrap items-center justify-between gap-1.5">
             <div className="flex items-center gap-1.5">
-              <span className="text-xs sm:text-sm font-black text-slate-900">✨ {t("customer.daily_solution_title")}</span>
+              <Link
+                href={locale && locale !== "ko" ? `/${locale}/insights` : "/insights"}
+                className="group inline-flex items-center gap-1 hover:opacity-85 transition cursor-pointer"
+                title={locale === "ko" ? "인생 도움 전체 팁 도감 바로가기" : "View All Daily Life Help Tips"}
+              >
+                <span className="text-xs sm:text-sm font-black text-slate-900 group-hover:underline">
+                  ✨ {t("customer.daily_solution_title")}
+                </span>
+                <span className="text-[11px] text-slate-400 group-hover:text-blue-600 transition" aria-hidden="true">
+                  →
+                </span>
+              </Link>
               <span className="rounded-full bg-slate-900 px-2 py-0.5 text-[10px] font-bold text-white">
                 {t("customer.daily_pick") || (locale === "ko" ? "오늘의 추천" : "Daily Pick")}
               </span>

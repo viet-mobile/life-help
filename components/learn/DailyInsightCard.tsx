@@ -145,6 +145,10 @@ export function DailyInsightCard({ domain, insight: initialInsight, locale: prop
   };
   const displayRelatedText = getDomainRelatedText();
 
+  const catalogHref = activeLocale && activeLocale !== "ko"
+    ? `/${activeLocale}/insights/${domain}`
+    : `/insights/${domain}`;
+
   let targetHref = "/services";
   if (domain === "life") {
     targetHref = activeLocale && activeLocale !== "ko" ? `/${activeLocale}/services` : "/services";
@@ -181,7 +185,7 @@ export function DailyInsightCard({ domain, insight: initialInsight, locale: prop
       {/* Header Badge & Date */}
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200/60 pb-3">
         <Link
-          href={targetHref}
+          href={catalogHref}
           className="group flex items-center gap-2 transition hover:opacity-85 cursor-pointer"
           title={isKo ? `${displayDomainLabel} 전체 정보 바로가기` : `Explore all of ${displayDomainLabel}`}
         >

@@ -49,4 +49,28 @@ describe("Daily Insight Official Authority Links and Action Items", () => {
     const insight = getDailyInsight("life", testDate, "ko");
     expect(resolveActionLink(insight)).toBeNull();
   });
+
+  it("guarantees zero Hangul leak in English and Vietnamese daily insights for e-030 and m-006", () => {
+    const hangul = /[\uac00-\ud7a3]/;
+
+    // e-030 in vi (Day 30, index 29)
+    const e30Vi = getDailyInsight("english", 29, "vi");
+    expect(hangul.test(e30Vi.title)).toBe(false);
+    expect(hangul.test(e30Vi.summary)).toBe(false);
+    expect(hangul.test(e30Vi.actionItem)).toBe(false);
+    expect(e30Vi.title).toContain("Mẫu thư yêu cầu đổi hàng");
+
+    // e-030 in en
+    const e30En = getDailyInsight("english", 29, "en");
+    expect(hangul.test(e30En.title)).toBe(false);
+    expect(hangul.test(e30En.summary)).toBe(false);
+    expect(hangul.test(e30En.actionItem)).toBe(false);
+
+    // m-006 in vi (Day 6, index 5)
+    const m6Vi = getDailyInsight("math", 5, "vi");
+    expect(hangul.test(m6Vi.title)).toBe(false);
+    expect(hangul.test(m6Vi.summary)).toBe(false);
+    expect(hangul.test(m6Vi.actionItem)).toBe(false);
+    expect(m6Vi.title).toContain("Định lượng nồng độ nước giặt");
+  });
 });

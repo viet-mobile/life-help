@@ -90,11 +90,31 @@ export function resolveKoreanTopicI18n(
   const normLocale = locale === "zs" || locale === "zh" || locale === "zh-CN" ? "zh-Hans" : (isHant ? "zh-Hant" : locale);
   const lang = entry.title?.[normLocale] ? normLocale : (isHant && entry.title?.["zh-Hans"] ? "zh-Hans" : (entry.title?.en ? "en" : "ko"));
 
-  let title = entry.title[lang] || entry.title.en || item.title;
-  let summary = entry.summary[lang] || entry.summary.en || item.summary;
-  const principle = entry.principle[lang] || entry.principle.en || item.principle;
-  const example = entry.example[lang] || entry.example.en || item.example;
-  const actionItem = entry.actionItem[lang] || entry.actionItem.en || item.actionItem;
+  const HANGUL_REGEX = /[\uac00-\ud7a3]/;
+
+  const pickField = (
+    fieldMap: Record<string, string> | undefined,
+    itemDefault: string | undefined,
+    allowHangul = false
+  ): string => {
+    const targetVal = fieldMap?.[lang];
+    if (targetVal && (allowHangul || !HANGUL_REGEX.test(targetVal) || lang === "ko")) {
+      return targetVal;
+    }
+    const enVal = fieldMap?.en;
+    if (enVal && (allowHangul || !HANGUL_REGEX.test(enVal))) {
+      return enVal;
+    }
+    if (targetVal) return allowHangul ? targetVal : targetVal.replace(HANGUL_REGEX, "").trim();
+    if (enVal) return allowHangul ? enVal : enVal.replace(HANGUL_REGEX, "").trim();
+    return itemDefault || "";
+  };
+
+  const title = pickField(entry.title, item.title, false);
+  const summary = pickField(entry.summary, item.summary, false);
+  const principle = pickField(entry.principle, item.principle, true);
+  const example = pickField(entry.example, item.example, true);
+  const actionItem = pickField(entry.actionItem, item.actionItem, false);
 
   // Season suffix completely removed per user instruction
 

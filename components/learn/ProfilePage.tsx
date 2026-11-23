@@ -19,11 +19,35 @@ export function ProfilePage({
   deleteAccountAction?: () => Promise<void>;
   signupEnabled?: boolean;
 }) {
-  const { state, t, href, mode, accountsEnabled, resetGuest, site } = useLearner();
+  const { state, t, href, mode, accountsEnabled, resetGuest, site, index } = useLearner();
   const [pending, start] = useTransition();
   const fileRef = useRef<HTMLInputElement>(null);
   const [note, setNote] = useState("");
   const storageKey = `${learnConfig.guestStorageKey}:${site}`;
+
+  const unlockAllLessons = () => {
+    if (!window.confirm(site === "korean" ? "모든 강의와 문제를 잠금 해제(전체 검수 모드)하시겠습니까?" : "Unlock all lessons and questions across all grades/semesters for inspection?")) return;
+    const updated = { ...state };
+    const allLessonIds = index.lessonOrder;
+    for (const lid of allLessonIds) {
+      if (!updated.lessons[lid]) {
+        updated.lessons[lid] = {
+          lessonId: lid,
+          stars: 3,
+          bestAccuracy: 1,
+          completions: 1,
+          firstCompletedAt: new Date().toISOString(),
+          lastCompletedAt: new Date().toISOString(),
+          placedOut: true,
+        };
+      } else {
+        updated.lessons[lid] = { ...updated.lessons[lid], placedOut: true };
+      }
+    }
+    window.localStorage.setItem(storageKey, JSON.stringify(updated));
+    setNote(site === "korean" ? "모든 강의와 문제가 잠금 해제되었습니다." : "All lessons and questions have been unlocked.");
+    window.location.reload();
+  };
   const exportProgress = () => {
     const blob = new Blob([JSON.stringify(state)], { type: "application/json" });
     const a = document.createElement("a");
@@ -107,6 +131,9 @@ export function ProfilePage({
             <p className="l-muted">{t("profile.backup.hint")}</p>
             <button className="l-btn l-btn-ghost l-btn-block" onClick={exportProgress}>{t("profile.export")}</button>
             <button className="l-btn l-btn-ghost l-btn-block" onClick={() => fileRef.current?.click()}>{t("profile.import")}</button>
+            <button className="l-btn l-btn-block" style={{ backgroundColor: "#2563eb", color: "#fff", fontWeight: 700 }} onClick={unlockAllLessons}>
+              🔓 {site === "korean" ? "모든 문제 잠금 해제 (전체 검수 모드)" : "Unlock All Lessons (Inspection Mode)"}
+            </button>
             <input ref={fileRef} type="file" accept="application/json,.json" hidden onChange={(e) => importProgress(e.target.files?.[0])} />
             <p role="status" className="l-muted">{note}</p>
             <button className="l-btn l-btn-ghost l-btn-block" onClick={() => window.confirm(t("profile.reset.confirm")) && resetGuest()}>{t("profile.reset")}</button>

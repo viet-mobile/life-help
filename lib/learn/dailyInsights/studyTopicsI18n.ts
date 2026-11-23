@@ -124,11 +124,30 @@ export function resolveStudyTopicI18n(
   const normLocale = locale === "zs" || locale === "zh" || locale === "zh-CN" ? "zh-Hans" : (isHant ? "zh-Hant" : locale);
   const lang = entry.title?.[normLocale] ? normLocale : (isHant && entry.title?.["zh-Hans"] ? "zh-Hans" : (entry.title?.en ? "en" : "ko"));
 
-  let title = entry.title?.[lang] || entry.title?.en || item.title;
-  let summary = entry.summary?.[lang] || entry.summary?.en || item.summary;
-  const principle = entry.principle?.[lang] || entry.principle?.en || item.principle;
-  const example = entry.example?.[lang] || entry.example?.en || item.example;
-  const actionItem = entry.actionItem?.[lang] || entry.actionItem?.en || item.actionItem;
+  const HANGUL_REGEX = /[\uac00-\ud7a3]/;
+
+  const pickField = (
+    fieldMap: Record<string, string> | undefined,
+    itemDefault: string | undefined
+  ): string => {
+    const targetVal = fieldMap?.[lang];
+    if (targetVal && (!HANGUL_REGEX.test(targetVal) || lang === "ko")) {
+      return targetVal;
+    }
+    const enVal = fieldMap?.en;
+    if (enVal && !HANGUL_REGEX.test(enVal)) {
+      return enVal;
+    }
+    if (targetVal) return targetVal.replace(HANGUL_REGEX, "").trim();
+    if (enVal) return enVal.replace(HANGUL_REGEX, "").trim();
+    return itemDefault || "";
+  };
+
+  const title = pickField(entry.title, item.title);
+  const summary = pickField(entry.summary, item.summary);
+  const principle = pickField(entry.principle, item.principle);
+  const example = pickField(entry.example, item.example);
+  const actionItem = pickField(entry.actionItem, item.actionItem);
 
   // Season suffix completely removed per user instruction
 
