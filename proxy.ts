@@ -576,7 +576,11 @@ export async function proxy(request: NextRequest) {
 
   // Learning presentation overlays (hints, explanations) are server-side content read through the ASSETS binding only; they are never
   // served to a browser (wrangler.jsonc makes /learn-content/* worker-first, and this refuses it on every host, also under next start).
-  if (request.nextUrl.pathname === "/learn-content" || request.nextUrl.pathname.startsWith("/learn-content/")) {
+  // Note: /learn-content/daily-tips/* is public multilingual daily tips assets and is permitted to pass through to static ASSETS.
+  if (
+    (request.nextUrl.pathname === "/learn-content" || request.nextUrl.pathname.startsWith("/learn-content/")) &&
+    !request.nextUrl.pathname.startsWith("/learn-content/daily-tips/")
+  ) {
     return new NextResponse("Not found", { status: 404, headers: { "Cache-Control": "no-store" } });
   }
   const rawHost =

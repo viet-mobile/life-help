@@ -7,47 +7,25 @@ interface HangeulCalligraphyIconProps {
   size?: number;
 }
 
+const HAN_CALLIGRAPHY_B64 = "data:image/png;base64,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";
+
 /**
- * Clean, modern Korean language icon featuring crisp "가나다" typography.
- * High-legibility badge designed for 14px~32px rendering across all themes.
+ * Authentic Korean calligraphy "한" icon based on traditional brush calligraphy.
+ * Supports zero-flash instant display via embedded high-definition data URI and static CDN asset.
  */
 export function HangeulCalligraphyIcon({
   className = "w-5 h-5",
   size = 24,
 }: HangeulCalligraphyIconProps) {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 48 48"
+    <img
+      src={HAN_CALLIGRAPHY_B64}
+      alt="한"
       width={size}
       height={size}
-      className={`inline-block shrink-0 select-none ${className}`}
-      fill="none"
-      aria-label="가나다"
-      role="img"
-    >
-      <rect
-        x="2"
-        y="2"
-        width="44"
-        height="44"
-        rx="10"
-        fill="#EEF2FF"
-        stroke="#6366F1"
-        strokeWidth="2.5"
-      />
-      <text
-        x="24"
-        y="31"
-        textAnchor="middle"
-        fontSize="17"
-        fontWeight="900"
-        letterSpacing="-0.5px"
-        fill="#312E81"
-        fontFamily="system-ui, -apple-system, sans-serif"
-      >
-        가나다
-      </text>
-    </svg>
+      className={`inline-block shrink-0 object-contain select-none ${className}`}
+      loading="eager"
+      decoding="sync"
+    />
   );
 }

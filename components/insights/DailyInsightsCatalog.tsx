@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import { BrandLogo } from "@/components/shared/BrandLogo";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
@@ -82,6 +82,7 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [tipOverlays, setTipOverlays] = useState<Record<string, Record<string, { title?: string; summary?: string; principle?: string; example?: string; actionItem?: string }>>>({});
 
   const isKo = locale === "ko";
   const locData = getInsightLocaleData(locale);
@@ -101,19 +102,61 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
     return [];
   }, [isBilingual, secondaryLocales, secondaryLocale, locale, isKo]);
 
+  useEffect(() => {
+    if (selectedDomain !== "physics" && selectedDomain !== "chemistry") return;
+    const neededLocales = [locale, ...effectiveSecondaryLocales].filter(Boolean);
+    neededLocales.forEach((loc) => {
+      if (tipOverlays[loc]) return;
+      fetch(`/daily-tips/${loc}.json`).then((r) => (r.ok ? r : fetch(`/learn-content/daily-tips/${loc}.json`)))
+        .then((res) => (res.ok ? res.json() : null))
+        .then((data) => {
+          if (data && typeof data === "object") {
+            setTipOverlays((prev) => ({ ...prev, [loc]: data }));
+          }
+        })
+        .catch(() => {});
+    });
+  }, [selectedDomain, locale, effectiveSecondaryLocales]);
+
   // Load all 366 insights for the selected domain
   const domainItems: { index: number; insight: DailyInsight; secondaryInsights: { locale: Locale; insight: DailyInsight }[] }[] = useMemo(() => {
     const list = [];
     for (let i = 0; i < 366; i++) {
-      const insight = getDailyInsight(selectedDomain, i, locale);
-      const secList = effectiveSecondaryLocales.map((secLoc) => ({
-        locale: secLoc,
-        insight: getDailyInsight(selectedDomain, i, secLoc),
-      }));
+      let insight = getDailyInsight(selectedDomain, i, locale);
+      if (selectedDomain === "physics" || selectedDomain === "chemistry") {
+        const ov = tipOverlays[locale]?.[insight.id];
+        if (ov) {
+          insight = {
+            ...insight,
+            title: ov.title || insight.title,
+            summary: ov.summary || insight.summary,
+            principle: ov.principle || insight.principle,
+            example: ov.example || insight.example,
+            actionItem: ov.actionItem || insight.actionItem,
+          };
+        }
+      }
+      const secList = effectiveSecondaryLocales.map((secLoc) => {
+        let secInsight = getDailyInsight(selectedDomain, i, secLoc);
+        if (selectedDomain === "physics" || selectedDomain === "chemistry") {
+          const secOv = tipOverlays[secLoc]?.[secInsight.id];
+          if (secOv) {
+            secInsight = {
+              ...secInsight,
+              title: secOv.title || secInsight.title,
+              summary: secOv.summary || secInsight.summary,
+              principle: secOv.principle || secInsight.principle,
+              example: secOv.example || secInsight.example,
+              actionItem: secOv.actionItem || secInsight.actionItem,
+            };
+          }
+        }
+        return { locale: secLoc, insight: secInsight };
+      });
       list.push({ index: i, insight, secondaryInsights: secList });
     }
     return list;
-  }, [selectedDomain, locale, effectiveSecondaryLocales]);
+  }, [selectedDomain, locale, effectiveSecondaryLocales, tipOverlays]);
 
   // Extract unique categories
   const categories = useMemo(() => {
@@ -386,7 +429,7 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
                       </p>
                     )}
                     {isBilingual && secondaryInsights.map(({ locale: secLoc, insight: secInsight }) => (
-                      secInsight?.example && secInsight.example !== insight.example ? (
+                      secInsight?.example && (secInsight.example !== insight.example || secLoc !== locale) ? (
                         <p key={secLoc} className="text-[11px] text-slate-500 font-normal flex items-baseline gap-1.5">
                           {effectiveSecondaryLocales.length > 1 && (
                             <span className="inline-block text-[9px] font-black uppercase px-1 py-0.2 rounded bg-slate-200 text-slate-700 border border-slate-300 shrink-0">

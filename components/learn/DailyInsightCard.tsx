@@ -171,10 +171,10 @@ export function DailyInsightCard({
   // Dynamically load static 88-language daily tips overlay for physics and chemistry
   useEffect(() => {
     if (!mounted) return;
-    const neededLocales = [activeLocale, ...effectiveSecondaryLocales].filter((l) => l && l !== "ko");
+    const neededLocales = [activeLocale, ...effectiveSecondaryLocales].filter(Boolean);
     neededLocales.forEach((loc) => {
       if (tipOverlays[loc]) return;
-      fetch(`/learn-content/daily-tips/${loc}.json`)
+      fetch(`/daily-tips/${loc}.json`).then((r) => r.ok ? r : fetch(`/learn-content/daily-tips/${loc}.json`))
         .then((res) => (res.ok ? res.json() : null))
         .then((data) => {
           if (data && typeof data === "object") {
@@ -204,7 +204,7 @@ export function DailyInsightCard({
         : rawSec;
       return { locale: loc, insight: mergedSec };
     });
-  }, [mounted, effectiveSecondaryLocales, domain, randomSeed, tipOverlays]);
+  }, [mounted, effectiveSecondaryLocales, domain, baseInsight.id, randomSeed, tipOverlays]);
 
   // Tagline from locale data (covers 89 languages) or fallback
   const domainTagline = locData?.brand_taglines?.[domain]?.tagline;
