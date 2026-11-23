@@ -71,70 +71,55 @@ const DISPLAY_MODE_CHANGE_EVENT = "life_help_display_mode_change";
 const SECONDARY_LOCALE_STORAGE_KEY = "life_help_secondary_locale";
 const SECONDARY_LOCALES_STORAGE_KEY = "life_help_secondary_locales";
 const SECONDARY_LOCALE_CHANGE_EVENT = "life_help_secondary_locale_change";
-let cachedSecondaryLocale: Locale | null = null;
-let cachedSecondaryLocales: Locale[] = [];
-let cachedSecondaryLocaleInitialized = false;
+const EMPTY_SECONDARY_LOCALES_STR = "";
 
-function getClientSecondaryLocalesSnapshot(): Locale[] {
-  if (typeof window === "undefined") return [];
+function getClientSecondaryLocalesStringSnapshot(): string {
+  if (typeof window === "undefined") return EMPTY_SECONDARY_LOCALES_STR;
 
   const currentPath = window.location.pathname;
   const urlSecLocales = resolveSecondaryLocalesFromPath(currentPath);
   if (urlSecLocales.length > 0) {
-    cachedSecondaryLocales = urlSecLocales;
-    cachedSecondaryLocale = urlSecLocales[0];
-    return urlSecLocales;
+    return urlSecLocales.join(",");
   }
 
   const urlPrimaryLocale = resolveLocaleFromPath(currentPath);
   if (urlPrimaryLocale && urlSecLocales.length === 0) {
-    cachedSecondaryLocales = [];
-    cachedSecondaryLocale = null;
-    return [];
+    return EMPTY_SECONDARY_LOCALES_STR;
   }
 
-  if (cachedSecondaryLocaleInitialized && cachedSecondaryLocales !== undefined) return cachedSecondaryLocales;
-  cachedSecondaryLocaleInitialized = true;
   try {
     const savedList = localStorage.getItem(SECONDARY_LOCALES_STORAGE_KEY);
     if (savedList) {
       const parsed = savedList.split(",").filter((s): s is Locale => isValidLocale(s));
       if (parsed.length > 0) {
-        cachedSecondaryLocales = parsed;
-        cachedSecondaryLocale = parsed[0];
-        return parsed;
+        return parsed.join(",");
       }
     }
     const saved = localStorage.getItem(SECONDARY_LOCALE_STORAGE_KEY);
     if (saved && isValidLocale(saved)) {
-      cachedSecondaryLocales = [saved];
-      cachedSecondaryLocale = saved;
-      return [saved];
+      return saved;
     }
     // Backward compatibility: if displayMode is bilingual and no secondary locale is saved, default to ko (or en if main is ko)
     const mode = localStorage.getItem(DISPLAY_MODE_STORAGE_KEY);
     if (mode === "bilingual") {
       const mainLocale = getClientLocaleSnapshot();
-      const def: Locale[] = [mainLocale === "ko" ? "en" : "ko"];
-      cachedSecondaryLocales = def;
-      cachedSecondaryLocale = def[0];
-      return def;
+      return mainLocale === "ko" ? "en" : "ko";
     }
   } catch {
     // ignore
   }
-  cachedSecondaryLocales = [];
-  cachedSecondaryLocale = null;
-  return [];
+  return EMPTY_SECONDARY_LOCALES_STR;
 }
 
 function getClientSecondaryLocaleSnapshot(): Locale | null {
-  const list = getClientSecondaryLocalesSnapshot();
-  return list.length > 0 ? list[0] : null;
+  const str = getClientSecondaryLocalesStringSnapshot();
+  if (!str) return null;
+  const first = str.split(",")[0];
+  return isValidLocale(first) ? (first as Locale) : null;
 }
 
-function getServerSecondaryLocalesSnapshot(): Locale[] {
-  return [];
+function getServerSecondaryLocalesStringSnapshot(): string {
+  return EMPTY_SECONDARY_LOCALES_STR;
 }
 
 function getServerSecondaryLocaleSnapshot(): Locale | null {
@@ -148,9 +133,6 @@ function subscribeSecondaryLocale(callback: () => void): () => void {
       e.key === SECONDARY_LOCALES_STORAGE_KEY ||
       e.key === DISPLAY_MODE_STORAGE_KEY
     ) {
-      cachedSecondaryLocaleInitialized = false;
-      cachedSecondaryLocale = null;
-      cachedSecondaryLocales = [];
       callback();
     }
   };
@@ -453,11 +435,16 @@ export function LocaleProvider({
     getServerDisplayModeSnapshot,
   );
 
-  const secondaryLocales = useSyncExternalStore(
+  const secondaryLocalesStr = useSyncExternalStore(
     subscribeSecondaryLocale,
-    getClientSecondaryLocalesSnapshot,
-    getServerSecondaryLocalesSnapshot,
+    getClientSecondaryLocalesStringSnapshot,
+    getServerSecondaryLocalesStringSnapshot,
   );
+
+  const secondaryLocales: Locale[] = React.useMemo(() => {
+    if (!secondaryLocalesStr) return [];
+    return secondaryLocalesStr.split(",").filter((s): s is Locale => isValidLocale(s));
+  }, [secondaryLocalesStr]);
 
   const secondaryLocale = secondaryLocales.length > 0 ? secondaryLocales[0] : null;
 
@@ -536,15 +523,13 @@ export function LocaleProvider({
 
   const setSecondaryLocales = useCallback((locs: Locale[]) => {
     const valid = Array.from(new Set(locs.filter(isValidLocale)));
-    cachedSecondaryLocales = valid;
-    cachedSecondaryLocale = valid[0] ?? null;
-    cachedSecondaryLocaleInitialized = true;
+    const str = valid.join(",");
     try {
       if (valid.length > 0) {
-        localStorage.setItem(SECONDARY_LOCALES_STORAGE_KEY, valid.join(","));
+        localStorage.setItem(SECONDARY_LOCALES_STORAGE_KEY, str);
         localStorage.setItem(SECONDARY_LOCALE_STORAGE_KEY, valid[0]);
         localStorage.setItem(DISPLAY_MODE_STORAGE_KEY, "bilingual");
-        document.cookie = `${SECONDARY_LOCALES_STORAGE_KEY}=${valid.join(",")}; path=/; max-age=31536000; SameSite=Lax`;
+        document.cookie = `${SECONDARY_LOCALES_STORAGE_KEY}=${str}; path=/; max-age=31536000; SameSite=Lax`;
         document.cookie = `${SECONDARY_LOCALE_STORAGE_KEY}=${valid[0]}; path=/; max-age=31536000; SameSite=Lax`;
         document.cookie = `${DISPLAY_MODE_STORAGE_KEY}=bilingual; path=/; max-age=31536000; SameSite=Lax`;
       } else {
@@ -584,8 +569,8 @@ export function LocaleProvider({
       if (mode === "monolingual") {
         setSecondaryLocales([]);
       } else {
-        const currentSecs = getClientSecondaryLocalesSnapshot();
-        if (currentSecs.length === 0) {
+        const currentSecsStr = getClientSecondaryLocalesStringSnapshot();
+        if (!currentSecsStr) {
           setSecondaryLocales([locale === "ko" ? "en" : "ko"]);
         }
       }
