@@ -69,27 +69,30 @@ export function DailyInsightCard({ domain, insight: initialInsight, locale: prop
   const { locale: contextLocale, isBilingual, secondaryLocale } = useLocale();
   const [mounted, setMounted] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [randomSeed, setRandomSeed] = useState<number | null>(null);
 
   useEffect(() => {
     setMounted(true);
-  }, []);
+    // Every visit and subject tab switch selects a fresh randomized topic
+    setRandomSeed(Math.floor(Math.random() * 366));
+  }, [domain]);
 
   // During SSR and first client frame, use propLocale to ensure 0 hydration mismatch.
-  // Immediately after mounting, use live contextLocale from the user's active UI selection.
+  // Immediately after mounting, use live contextLocale and randomized seed.
   const activeLocale = mounted ? (contextLocale || propLocale) : propLocale;
   const isKo = activeLocale === "ko";
   const locData = getInsightLocaleData(activeLocale);
   const domainMeta = DOMAIN_SLOGANS[domain] || DOMAIN_SLOGANS.life;
 
-  const insight = mounted
-    ? getDailyInsight(domain, new Date(), activeLocale)
+  const insight = mounted && randomSeed !== null
+    ? getDailyInsight(domain, randomSeed, activeLocale)
     : initialInsight;
 
   const officialLink = resolveActionLink(insight);
 
   const effectiveSecondaryLocale = secondaryLocale || (isBilingual && !isKo ? "ko" : null);
   const insightSecondary = mounted && isBilingual && effectiveSecondaryLocale && effectiveSecondaryLocale !== activeLocale
-    ? getDailyInsight(domain, new Date(), effectiveSecondaryLocale)
+    ? getDailyInsight(domain, randomSeed !== null ? randomSeed : new Date(), effectiveSecondaryLocale)
     : null;
 
   // Tagline from locale data (covers 89 languages) or fallback

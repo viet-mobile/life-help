@@ -120,4 +120,39 @@ describe("Multilingual UI, 4-Quadrant Homecare, Referral & OG Metadata", () => {
     expect(info!.site).toBe("chemistry");
     expect(info!.stage).toBe("production");
   });
+
+  it("8. Daily insight translations: zero Korean in English math tips, complete Albanian, and copy update", async () => {
+    const { getDailyInsight } = await import("@/lib/learn/dailyInsights/engine");
+    const testDate = new Date("2026-11-23T12:00:00+09:00");
+
+    // Math in English: m-004 must be 100% English without Hangul
+    const mathEn = getDailyInsight("math", testDate, "en");
+    expect(mathEn.title).toBe("Energy Deficit Formula for 1kg Fat Loss");
+    expect(mathEn.summary).not.toMatch(/[\uac00-\ud7a3]/);
+    expect(mathEn.summary).toContain("Optimize everyday decisions and opportunity costs");
+
+    // Korean in Albanian (sq): k-004 must be in Albanian, not falling back to English
+    const koreanSq = getDailyInsight("korean", testDate, "sq");
+    expect(koreanSq.title).toBe("Fjalët onomatopeike koreane për përshkrimin e saktë të dhimbjes në klinika");
+    expect(koreanSq.summary).toContain("Komunikoni qartë");
+    expect(koreanSq.principle).toContain("Përshkrimi i nuancave");
+    expect(koreanSq.actionItem).toContain("Shënoni fjalët");
+
+    // Physics and Chemistry in Albanian (sq)
+    const physicsSq = getDailyInsight("physics", testDate, "sq");
+    expect(physicsSq.title).toContain("1 kWh është 3.6 MJ");
+
+    const chemSq = getDailyInsight("chemistry", testDate, "sq");
+    expect(chemSq.title).toContain("Orizi");
+
+    // Random / custom index support in getDailyInsight
+    const random1 = getDailyInsight("math", 0, "en");
+    const random2 = getDailyInsight("math", 10, "en");
+    expect(random1.id).not.toBe(random2.id);
+
+    // Copy update check
+    const mathKo = getDailyInsight("math", testDate, "ko");
+    expect(mathKo.summary).toContain("매일의 선택과 기회비용을 최적화합니다.");
+    expect(mathKo.summary).not.toContain("일상 비용과 기회비용을 최적화합니다.");
+  });
 });

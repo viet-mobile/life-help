@@ -69,13 +69,19 @@ export function getDailyIndex(date: Date = new Date()): number {
 }
 
 /**
- * Get the daily insight for a specific domain ("math" | "english" | "korean" | "life")
+ * Get the daily insight for a specific domain ("math" | "english" | "korean" | "life" | "physics" | "chemistry")
  * with optional locale translation.
+ * Accepts either a Date (for deterministic calendar lookup) or a numeric index (for random/custom selection).
  */
-export function getDailyInsight(domain: DomainType | string, date: Date = new Date(), locale?: string): DailyInsight {
+export function getDailyInsight(
+  domain: DomainType | string,
+  dateOrIndex: Date | number = new Date(),
+  locale?: string
+): DailyInsight {
   const items = INSIGHT_MAP[domain] || INSIGHT_MAP.life;
-  const dayIndex = getDailyIndex(date);
-  const selectedIndex = dayIndex % items.length;
+  const selectedIndex = typeof dateOrIndex === "number"
+    ? Math.abs(Math.floor(dateOrIndex)) % items.length
+    : getDailyIndex(dateOrIndex) % items.length;
   const item = { ...items[selectedIndex] };
 
   if (locale && locale !== "ko") {
