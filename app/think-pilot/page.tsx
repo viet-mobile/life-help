@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ThinkPilot } from "@/components/think/ThinkPilot";
+import { ThinkPilotClient } from "./ThinkPilotClient";
 
 export const metadata: Metadata = {
   title: "Thinking tasks (review pilot)",
@@ -7,5 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <ThinkPilot />;
+  return <ThinkPilotClient />;
 }

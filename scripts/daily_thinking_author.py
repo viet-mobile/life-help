@@ -310,6 +310,20 @@ def author_ensemble_questions(date_str=None):
             json.dump(questions[:55], f, ensure_ascii=False, indent=2)
         print(f"📁 로컬 상위 동기화 완료: {parent_q_dir / 'source_110.json'}")
 
+    # 4. 사고력 문제 은행 및 플랫폼 즉시 배포 자동화 파이프라인 (안 무인 통합)
+    try:
+        print("\n🚀 사고력 문제 플랫폼 자동 통합 및 인덱싱 파이프라인 가동...")
+        ingest_script = BASE_DIR / "scripts" / "think" / "ingest-daily-questions.py"
+        gen_script = BASE_DIR / "scripts" / "think" / "gen-extra-index.mjs"
+        if ingest_script.exists():
+            import subprocess
+            subprocess.run([sys.executable, str(ingest_script)], check=True)
+            if gen_script.exists():
+                subprocess.run(["node", str(gen_script)], cwd=str(BASE_DIR), check=True)
+            print("✅ 사고력 문제 플랫폼 배포 및 정적 에셋 동기화 100% 완료!")
+    except Exception as e:
+        print(f"⚠️ 사고력 플랫폼 자동 동기화 중 경고: {e}")
+
     return out_file_110
 
 if __name__ == "__main__":

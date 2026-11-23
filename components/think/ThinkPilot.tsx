@@ -5,7 +5,7 @@ import { TASK_LOADERS } from "@/lib/think/data/assets-index";
 import type { ThinkTask } from "@/lib/think/types";
 import { THINK_LANGS, LANG_NAMES, type ThinkLang } from "@/lib/think/lang";
 import { checksOffFor, loadOverlay, localize } from "@/lib/think/localize";
-import type { Overlay } from "@/lib/think/data/files";
+import type { Overlay } from "@/lib/think/data/assets-index";
 import { labels } from "./labels";
 import { formatLevelLabel, formatMinutes } from "@/lib/think/grades";
 import { TaskPlayer } from "./ThinkPlayer";

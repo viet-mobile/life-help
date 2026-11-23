@@ -111,16 +111,22 @@ export function resolveStudyTopicI18n(
   if (isNaN(num)) return null;
 
   const exactKey = item.id;
-  const baseIndex = ((num - 1) % 36) + 1;
-  const baseKey = `${prefix}-${String(baseIndex).padStart(3, "0")}`;
-
   // Normalize language key with full 89-language support
   const isHant = locale === "zh-Hant" || locale === "zt" || locale === "zh-HK" || locale === "zh-TW";
   const normLocale = locale === "zs" || locale === "zh" || locale === "zh-CN" ? "zh-Hans" : (isHant ? "zh-Hant" : locale);
 
+  // Physics and Chemistry have 366 unique individual daily topics (p-001..p-366, c-001..c-366).
+  // They MUST strictly match exact topic IDs and NEVER modulo-map to an unrelated topic!
+  // Math and English canonical datasets are cycles of 36 topics, so baseIndex is used as fallback only for m- and e-.
   const exactEntry = STUDY_TOPIC_DATA[exactKey];
-  const baseEntry = STUDY_TOPIC_DATA[baseKey];
-  const entry = (exactEntry?.title?.[normLocale] ? exactEntry : baseEntry) || exactEntry || baseEntry;
+  let entry: StudyTopicEntry | undefined = exactEntry;
+
+  if (!entry && (prefix === "m" || prefix === "e")) {
+    const baseIndex = ((num - 1) % 36) + 1;
+    const baseKey = `${prefix}-${String(baseIndex).padStart(3, "0")}`;
+    entry = STUDY_TOPIC_DATA[baseKey];
+  }
+
   if (!entry) return null;
 
   const lang = entry.title?.[normLocale] ? normLocale : (isHant && entry.title?.["zh-Hans"] ? "zh-Hans" : (entry.title?.en ? "en" : "ko"));

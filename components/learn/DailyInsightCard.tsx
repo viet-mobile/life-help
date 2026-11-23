@@ -100,6 +100,7 @@ export function DailyInsightCard({
   const [clientSec, setClientSec] = useState(() => getClientSecondaryLocales());
   const [copied, setCopied] = useState(false);
   const [randomSeed, setRandomSeed] = useState<number | null>(null);
+  const [tipOverlays, setTipOverlays] = useState<Record<string, Record<string, { title?: string; summary?: string; principle?: string; example?: string; actionItem?: string }>>>({});
 
   useEffect(() => {
     setMounted(true);
@@ -120,6 +121,8 @@ export function DailyInsightCard({
     };
   }, [domain]);
 
+
+
   // During SSR and first client frame, use propLocale to ensure 0 hydration mismatch.
   // Immediately after mounting, use live propLocale and randomized seed.
   const activeLocale = propLocale;
@@ -127,9 +130,21 @@ export function DailyInsightCard({
   const locData = getInsightLocaleData(activeLocale);
   const domainMeta = DOMAIN_SLOGANS[domain] || DOMAIN_SLOGANS.life;
 
-  const insight = mounted && randomSeed !== null
+  const baseInsight = mounted && randomSeed !== null
     ? getDailyInsight(domain, randomSeed, activeLocale)
     : initialInsight;
+
+  const activeOverlay = (domain === "physics" || domain === "chemistry") ? tipOverlays[activeLocale]?.[baseInsight.id] : null;
+  const insight = activeOverlay
+    ? {
+        ...baseInsight,
+        title: activeOverlay.title || baseInsight.title,
+        summary: activeOverlay.summary || baseInsight.summary,
+        principle: activeOverlay.principle || baseInsight.principle,
+        example: activeOverlay.example || baseInsight.example,
+        actionItem: activeOverlay.actionItem || baseInsight.actionItem,
+      }
+    : baseInsight;
 
   const officialLink = resolveActionLink(insight);
 
@@ -153,15 +168,43 @@ export function DailyInsightCard({
     return [];
   }, [propSecondaryLocales, optionalSite, clientSec, activeLocale, isKo]);
 
+  // Dynamically load static 88-language daily tips overlay for physics and chemistry
+  useEffect(() => {
+    if (!mounted) return;
+    const neededLocales = [activeLocale, ...effectiveSecondaryLocales].filter((l) => l && l !== "ko");
+    neededLocales.forEach((loc) => {
+      if (tipOverlays[loc]) return;
+      fetch(`/learn-content/daily-tips/${loc}.json`)
+        .then((res) => (res.ok ? res.json() : null))
+        .then((data) => {
+          if (data && typeof data === "object") {
+            setTipOverlays((prev) => ({ ...prev, [loc]: data }));
+          }
+        })
+        .catch(() => {});
+    });
+  }, [mounted, activeLocale, effectiveSecondaryLocales]);
+
   const isBilingual = clientSec.isBilingual || effectiveSecondaryLocales.length > 0;
 
   const secondaryInsights: { locale: Locale; insight: DailyInsight }[] = useMemo(() => {
     if (!mounted || effectiveSecondaryLocales.length === 0) return [];
-    return effectiveSecondaryLocales.map((loc: Locale) => ({
-      locale: loc,
-      insight: getDailyInsight(domain, randomSeed !== null ? randomSeed : new Date(), loc),
-    }));
-  }, [mounted, effectiveSecondaryLocales, domain, randomSeed]);
+    return effectiveSecondaryLocales.map((loc: Locale) => {
+      const rawSec = getDailyInsight(domain, randomSeed !== null ? randomSeed : new Date(), loc);
+      const secOv = (domain === "physics" || domain === "chemistry") ? tipOverlays[loc]?.[rawSec.id] : null;
+      const mergedSec = secOv
+        ? {
+            ...rawSec,
+            title: secOv.title || rawSec.title,
+            summary: secOv.summary || rawSec.summary,
+            principle: secOv.principle || rawSec.principle,
+            example: secOv.example || rawSec.example,
+            actionItem: secOv.actionItem || rawSec.actionItem,
+          }
+        : rawSec;
+      return { locale: loc, insight: mergedSec };
+    });
+  }, [mounted, effectiveSecondaryLocales, domain, randomSeed, tipOverlays]);
 
   // Tagline from locale data (covers 89 languages) or fallback
   const domainTagline = locData?.brand_taglines?.[domain]?.tagline;

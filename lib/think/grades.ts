@@ -5,6 +5,8 @@ const GRADE_NUM: Record<string, number> = {
   E1: 1, E2: 2, E3: 3, E4: 4, E5: 5, E6: 6,
   M1: 7, M2: 8, M3: 9,
   H1: 10, H2: 11, H3: 12,
+  G01: 1, G02: 2, G03: 3, G04: 4, G05: 5, G06: 6,
+  G07: 7, G08: 8, G09: 9, G10: 10, G11: 11, G12: 12,
 };
 
 export function gradeLabel(code: string, lang: ThinkLang): string {
