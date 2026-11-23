@@ -413,15 +413,11 @@ export function CustomerHome() {
                     : `${t("customer.consultation")} · ${t("customer.safe050Tag") || "안심 연결"}`}
                 </span>
               </div>
-
-              <h1 className={`text-sm xs:text-base sm:text-2xl lg:text-3xl ${headingWeight} tracking-tight text-slate-900 leading-snug`}>
-                {t("customer.tagline")}
-                {isBilingual && (
-                  <span className="block mt-0.5 text-xs sm:text-sm font-bold text-slate-500">
-                    {tSecondary("customer.tagline") || tKo("customer.tagline")}
-                  </span>
-                )}
-              </h1>
+              <p className="text-[11px] sm:text-xs font-bold text-slate-600 mt-0.5">
+                {locale === "ko"
+                  ? "한국 거주 외국인을 위한 24시간 생활 문제 해결 & 전문 헬퍼 연결"
+                  : (t("customer.subtitle") || "24/7 Life Services & Verified Helpers Platform")}
+              </p>
             </div>
 
             {/* One-Touch Instant Emergency Dispatch Droplet Button */}
@@ -506,6 +502,18 @@ export function CustomerHome() {
       {/* 2.5 Daily Life Practical Insights (당신의 인생에 도움이 되는 수학·영어·한국어·생활정보) */}
       <section className="px-3 pt-1 pb-2 sm:px-4 sm:pt-2 sm:pb-3">
         <div className="mx-auto max-w-6xl">
+          {/* Main Tagline Title positioned directly above Daily Life Help */}
+          <div className="mb-2.5">
+            <h1 className={`text-sm xs:text-base sm:text-2xl lg:text-3xl ${headingWeight} tracking-tight text-slate-900 leading-snug`}>
+              {t("customer.tagline")}
+              {isBilingual && (
+                <span className="block mt-0.5 text-xs sm:text-sm font-bold text-slate-500">
+                  {tSecondary("customer.tagline") || tKo("customer.tagline")}
+                </span>
+              )}
+            </h1>
+          </div>
+
           <div className="mb-2.5 flex flex-wrap items-center justify-between gap-1.5">
             <div className="flex items-center gap-1.5">
               <span className="text-xs sm:text-sm font-black text-slate-900">✨ {t("customer.daily_solution_title")}</span>

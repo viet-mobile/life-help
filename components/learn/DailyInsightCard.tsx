@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { DailyInsight, DomainType, getInsightLocaleData, getDailyInsight, resolveActionLink } from "@/lib/learn/dailyInsights";
 import { studyUrl, StudySubject } from "@/lib/home/studyHosts";
@@ -66,7 +66,7 @@ const DOMAIN_SLOGANS: Record<DomainType, { labelKo: string; labelEn: string; ico
 };
 
 export function DailyInsightCard({ domain, insight: initialInsight, locale: propLocale = "ko", className = "" }: DailyInsightCardProps) {
-  const { locale: contextLocale, isBilingual, secondaryLocale } = useLocale();
+  const { locale: contextLocale, isBilingual, secondaryLocale, secondaryLocales } = useLocale();
   const [mounted, setMounted] = useState(false);
   const [copied, setCopied] = useState(false);
   const [randomSeed, setRandomSeed] = useState<number | null>(null);
@@ -90,10 +90,27 @@ export function DailyInsightCard({ domain, insight: initialInsight, locale: prop
 
   const officialLink = resolveActionLink(insight);
 
-  const effectiveSecondaryLocale = secondaryLocale || (isBilingual && !isKo ? "ko" : null);
-  const insightSecondary = mounted && isBilingual && effectiveSecondaryLocale && effectiveSecondaryLocale !== activeLocale
-    ? getDailyInsight(domain, randomSeed !== null ? randomSeed : new Date(), effectiveSecondaryLocale)
-    : null;
+  const effectiveSecondaryLocales: Locale[] = useMemo(() => {
+    if (!isBilingual) return [];
+    if (secondaryLocales && secondaryLocales.length > 0) {
+      return secondaryLocales.filter((l): l is Locale => l !== activeLocale);
+    }
+    if (secondaryLocale && secondaryLocale !== activeLocale) {
+      return [secondaryLocale];
+    }
+    if (!isKo) {
+      return ["ko" as Locale];
+    }
+    return [];
+  }, [isBilingual, secondaryLocales, secondaryLocale, activeLocale, isKo]);
+
+  const secondaryInsights: { locale: Locale; insight: DailyInsight }[] = useMemo(() => {
+    if (!mounted || effectiveSecondaryLocales.length === 0) return [];
+    return effectiveSecondaryLocales.map((loc: Locale) => ({
+      locale: loc,
+      insight: getDailyInsight(domain, randomSeed !== null ? randomSeed : new Date(), loc),
+    }));
+  }, [mounted, effectiveSecondaryLocales, domain, randomSeed]);
 
   // Tagline from locale data (covers 89 languages) or fallback
   const domainTagline = locData?.brand_taglines?.[domain]?.tagline;
@@ -191,22 +208,26 @@ export function DailyInsightCard({ domain, insight: initialInsight, locale: prop
           <h3 suppressHydrationWarning className="text-base sm:text-lg font-black text-slate-900 leading-snug">
             {insight.title}
           </h3>
-          {isBilingual && insightSecondary?.title && insightSecondary.title !== insight.title && (
-            <p suppressHydrationWarning className="mt-0.5 text-xs sm:text-sm font-bold text-slate-500">
-              {insightSecondary.title}
-            </p>
-          )}
+          {isBilingual && secondaryInsights.map(({ locale: secLoc, insight: secInsight }) => (
+            secInsight?.title && secInsight.title !== insight.title ? (
+              <p key={secLoc} suppressHydrationWarning className="mt-0.5 text-xs sm:text-sm font-bold text-slate-500">
+                {secInsight.title}
+              </p>
+            ) : null
+          ))}
         </div>
 
         <div>
           <p suppressHydrationWarning className="text-xs sm:text-sm font-medium text-slate-700 leading-relaxed">
             {insight.summary}
           </p>
-          {isBilingual && insightSecondary?.summary && insightSecondary.summary !== insight.summary && (
-            <p suppressHydrationWarning className="mt-0.5 text-xs text-slate-500 font-medium leading-relaxed">
-              {insightSecondary.summary}
-            </p>
-          )}
+          {isBilingual && secondaryInsights.map(({ locale: secLoc, insight: secInsight }) => (
+            secInsight?.summary && secInsight.summary !== insight.summary ? (
+              <p key={secLoc} suppressHydrationWarning className="mt-0.5 text-xs text-slate-500 font-medium leading-relaxed">
+                {secInsight.summary}
+              </p>
+            ) : null
+          ))}
         </div>
 
         {/* Principle / Formula Box */}
@@ -214,16 +235,22 @@ export function DailyInsightCard({ domain, insight: initialInsight, locale: prop
           <div className="flex items-center gap-1 text-[11px] font-bold text-slate-500 uppercase tracking-wider">
             <span>📌</span>
             <span suppressHydrationWarning>{uiPrincipleTitle}</span>
-            {isBilingual && insightSecondary && <span className="text-[10px] text-slate-400 font-normal">· {effectiveSecondaryLocale === "ko" ? "핵심 원리" : "Core Principle"}</span>}
+            {isBilingual && effectiveSecondaryLocales.length > 0 && (
+              <span className="text-[10px] text-slate-400 font-normal">
+                · {effectiveSecondaryLocales.includes("ko") ? "핵심 원리" : "Core Principle"}
+              </span>
+            )}
           </div>
           <div suppressHydrationWarning className="text-xs sm:text-sm font-extrabold text-slate-900">
             {insight.principle}
           </div>
-          {isBilingual && insightSecondary?.principle && insightSecondary.principle !== insight.principle && (
-            <p suppressHydrationWarning className="text-xs font-semibold text-slate-500">
-              {insightSecondary.principle}
-            </p>
-          )}
+          {isBilingual && secondaryInsights.map(({ locale: secLoc, insight: secInsight }) => (
+            secInsight?.principle && secInsight.principle !== insight.principle ? (
+              <p key={secLoc} suppressHydrationWarning className="text-xs font-semibold text-slate-500">
+                {secInsight.principle}
+              </p>
+            ) : null
+          ))}
           <p suppressHydrationWarning className="text-xs text-slate-600 font-medium">
             {insight.example}
           </p>
@@ -244,7 +271,11 @@ export function DailyInsightCard({ domain, insight: initialInsight, locale: prop
                 <div className="flex items-center justify-between gap-1.5 flex-wrap">
                   <span suppressHydrationWarning className="block text-[10px] font-black uppercase text-amber-300 tracking-wider">
                     {uiActionTitle}
-                    {isBilingual && insightSecondary && <span className="ml-1 text-[9px] text-amber-400/80 font-normal">· {effectiveSecondaryLocale === "ko" ? "오늘 실천 행동" : "Action Item"}</span>}
+                    {isBilingual && effectiveSecondaryLocales.length > 0 && (
+                      <span className="ml-1 text-[9px] text-amber-400/80 font-normal">
+                        · {effectiveSecondaryLocales.includes("ko") ? "오늘 실천 행동" : "Action Item"}
+                      </span>
+                    )}
                   </span>
                   <span className="inline-flex items-center gap-1 rounded bg-blue-600/90 group-hover:bg-blue-500 px-1.5 py-0.5 text-[10px] font-bold text-white transition shrink-0 shadow-2xs">
                     <span>{isKo ? "공식 사이트 바로가기" : "Official Website"}</span>
@@ -254,11 +285,13 @@ export function DailyInsightCard({ domain, insight: initialInsight, locale: prop
                 <span suppressHydrationWarning className="block text-xs sm:text-sm font-semibold text-slate-100 mt-1 group-hover:text-blue-100 transition">
                   {insight.actionItem}
                 </span>
-                {isBilingual && insightSecondary?.actionItem && insightSecondary.actionItem !== insight.actionItem && (
-                  <span suppressHydrationWarning className="block text-xs font-medium text-amber-200/90 mt-1">
-                    {insightSecondary.actionItem}
-                  </span>
-                )}
+                {isBilingual && secondaryInsights.map(({ locale: secLoc, insight: secInsight }) => (
+                  secInsight?.actionItem && secInsight.actionItem !== insight.actionItem ? (
+                    <span key={secLoc} suppressHydrationWarning className="block text-xs font-medium text-amber-200/90 mt-1">
+                      {secInsight.actionItem}
+                    </span>
+                  ) : null
+                ))}
               </div>
             </div>
           </a>
@@ -268,16 +301,22 @@ export function DailyInsightCard({ domain, insight: initialInsight, locale: prop
             <div className="min-w-0 flex-1">
               <span suppressHydrationWarning className="block text-[10px] font-black uppercase text-amber-300 tracking-wider">
                 {uiActionTitle}
-                {isBilingual && insightSecondary && <span className="ml-1 text-[9px] text-amber-400/80 font-normal">· {effectiveSecondaryLocale === "ko" ? "오늘 실천 행동" : "Action Item"}</span>}
+                {isBilingual && effectiveSecondaryLocales.length > 0 && (
+                  <span className="ml-1 text-[9px] text-amber-400/80 font-normal">
+                    · {effectiveSecondaryLocales.includes("ko") ? "오늘 실천 행동" : "Action Item"}
+                  </span>
+                )}
               </span>
               <span suppressHydrationWarning className="block text-xs sm:text-sm font-semibold text-slate-100 mt-0.5">
                 {insight.actionItem}
               </span>
-              {isBilingual && insightSecondary?.actionItem && insightSecondary.actionItem !== insight.actionItem && (
-                <span suppressHydrationWarning className="block text-xs font-medium text-amber-200/90 mt-1">
-                  {insightSecondary.actionItem}
-                </span>
-              )}
+              {isBilingual && secondaryInsights.map(({ locale: secLoc, insight: secInsight }) => (
+                secInsight?.actionItem && secInsight.actionItem !== insight.actionItem ? (
+                  <span key={secLoc} suppressHydrationWarning className="block text-xs font-medium text-amber-200/90 mt-1">
+                    {secInsight.actionItem}
+                  </span>
+                ) : null
+              ))}
             </div>
           </div>
         )}

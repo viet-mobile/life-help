@@ -129,11 +129,12 @@ export function ReferralCard({ compact = false }: { compact?: boolean }) {
         <button
           type="button"
           onClick={() => setOpenModal((v) => !v)}
-          className="droplet-pill inline-flex min-h-11 items-center justify-center gap-1 border border-indigo-200 bg-indigo-50/90 hover:bg-indigo-100 px-2.5 py-1 text-[11px] sm:text-xs font-bold text-indigo-800 transition shrink-0 cursor-pointer shadow-2xs"
+          className="droplet-pill inline-flex min-h-11 items-center justify-center gap-1 border border-indigo-200 bg-indigo-50/90 hover:bg-indigo-100 px-2 sm:px-2.5 py-1 text-[11px] sm:text-xs font-bold text-indigo-800 transition shrink-0 cursor-pointer shadow-2xs"
           title={texts.title}
         >
           <span className="shrink-0 text-xs">🤝</span>
-          <span>{texts.badgeLabel.replace("{fee}", feeDisplay)}</span>
+          <span className="sm:hidden font-black text-indigo-900">{feeDisplay}</span>
+          <span className="hidden sm:inline">{texts.badgeLabel.replace("{fee}", feeDisplay)}</span>
         </button>
 
         {openModal && (

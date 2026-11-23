@@ -37,6 +37,9 @@ interface LocaleContextType {
   setLocale: (locale: Locale) => void;
   secondaryLocale: Locale | null;
   setSecondaryLocale: (locale: Locale | null) => void;
+  secondaryLocales: Locale[];
+  setSecondaryLocales: (locales: Locale[]) => void;
+  toggleSecondaryLocale: (locale: Locale) => void;
   script: ScriptType;
   setScript: (script: ScriptType) => void;
   isDualScript: boolean;
@@ -48,6 +51,7 @@ interface LocaleContextType {
   t: (key: string) => string;
   tKo: (key: string) => string;
   tSecondary: (key: string) => string;
+  tSecondaryList: (key: string) => string[];
   tBilingual: (key: string, separator?: string) => string;
   formatBilingual: (targetText: string, koText: string, separator?: string) => string;
   currentMeta: LanguageMeta;
@@ -65,47 +69,72 @@ const DISPLAY_MODE_STORAGE_KEY = "life_help_display_mode";
 const DISPLAY_MODE_CHANGE_EVENT = "life_help_display_mode_change";
 
 const SECONDARY_LOCALE_STORAGE_KEY = "life_help_secondary_locale";
+const SECONDARY_LOCALES_STORAGE_KEY = "life_help_secondary_locales";
 const SECONDARY_LOCALE_CHANGE_EVENT = "life_help_secondary_locale_change";
 let cachedSecondaryLocale: Locale | null = null;
+let cachedSecondaryLocales: Locale[] = [];
 let cachedSecondaryLocaleInitialized = false;
 
-function getClientSecondaryLocaleSnapshot(): Locale | null {
-  if (typeof window === "undefined") return null;
+function getClientSecondaryLocalesSnapshot(): Locale[] {
+  if (typeof window === "undefined") return [];
 
   const currentPath = window.location.pathname;
-  const urlSecLocale = resolveSecondaryLocaleFromPath(currentPath);
-  if (urlSecLocale) {
-    cachedSecondaryLocale = urlSecLocale;
-    return urlSecLocale;
+  const urlSecLocales = resolveSecondaryLocalesFromPath(currentPath);
+  if (urlSecLocales.length > 0) {
+    cachedSecondaryLocales = urlSecLocales;
+    cachedSecondaryLocale = urlSecLocales[0];
+    return urlSecLocales;
   }
 
   const urlPrimaryLocale = resolveLocaleFromPath(currentPath);
-  // If the URL explicitly names a single language (e.g. /vi or /vi/services),
-  // enforce single language mode (secondaryLocale = null) per user instruction:
-  if (urlPrimaryLocale && !urlSecLocale) {
+  if (urlPrimaryLocale && urlSecLocales.length === 0) {
+    cachedSecondaryLocales = [];
     cachedSecondaryLocale = null;
-    return null;
+    return [];
   }
 
-  if (cachedSecondaryLocaleInitialized && cachedSecondaryLocale !== undefined) return cachedSecondaryLocale;
+  if (cachedSecondaryLocaleInitialized && cachedSecondaryLocales !== undefined) return cachedSecondaryLocales;
   cachedSecondaryLocaleInitialized = true;
   try {
+    const savedList = localStorage.getItem(SECONDARY_LOCALES_STORAGE_KEY);
+    if (savedList) {
+      const parsed = savedList.split(",").filter((s): s is Locale => isValidLocale(s));
+      if (parsed.length > 0) {
+        cachedSecondaryLocales = parsed;
+        cachedSecondaryLocale = parsed[0];
+        return parsed;
+      }
+    }
     const saved = localStorage.getItem(SECONDARY_LOCALE_STORAGE_KEY);
     if (saved && isValidLocale(saved)) {
+      cachedSecondaryLocales = [saved];
       cachedSecondaryLocale = saved;
-      return saved;
+      return [saved];
     }
     // Backward compatibility: if displayMode is bilingual and no secondary locale is saved, default to ko (or en if main is ko)
     const mode = localStorage.getItem(DISPLAY_MODE_STORAGE_KEY);
     if (mode === "bilingual") {
       const mainLocale = getClientLocaleSnapshot();
-      cachedSecondaryLocale = mainLocale === "ko" ? "en" : "ko";
-      return cachedSecondaryLocale;
+      const def: Locale[] = [mainLocale === "ko" ? "en" : "ko"];
+      cachedSecondaryLocales = def;
+      cachedSecondaryLocale = def[0];
+      return def;
     }
   } catch {
     // ignore
   }
-  return null;
+  cachedSecondaryLocales = [];
+  cachedSecondaryLocale = null;
+  return [];
+}
+
+function getClientSecondaryLocaleSnapshot(): Locale | null {
+  const list = getClientSecondaryLocalesSnapshot();
+  return list.length > 0 ? list[0] : null;
+}
+
+function getServerSecondaryLocalesSnapshot(): Locale[] {
+  return [];
 }
 
 function getServerSecondaryLocaleSnapshot(): Locale | null {
@@ -114,9 +143,14 @@ function getServerSecondaryLocaleSnapshot(): Locale | null {
 
 function subscribeSecondaryLocale(callback: () => void): () => void {
   const handleStorage = (e: StorageEvent) => {
-    if (e.key === SECONDARY_LOCALE_STORAGE_KEY || e.key === DISPLAY_MODE_STORAGE_KEY) {
+    if (
+      e.key === SECONDARY_LOCALE_STORAGE_KEY ||
+      e.key === SECONDARY_LOCALES_STORAGE_KEY ||
+      e.key === DISPLAY_MODE_STORAGE_KEY
+    ) {
       cachedSecondaryLocaleInitialized = false;
       cachedSecondaryLocale = null;
+      cachedSecondaryLocales = [];
       callback();
     }
   };
@@ -205,21 +239,31 @@ export function resolveLocaleFromPath(pathname?: string | null): Locale | null {
 }
 
 /**
- * Resolves a URL path's second segment into a valid supported Locale if present (e.g. /vi/ko -> ko).
+ * Resolves a URL path's second segment into valid supported Locales if present (e.g. /vi/ko -> [ko], /vi/ko,en -> [ko, en]).
  */
-export function resolveSecondaryLocaleFromPath(pathname?: string | null): Locale | null {
-  if (!pathname) return null;
+export function resolveSecondaryLocalesFromPath(pathname?: string | null): Locale[] {
+  if (!pathname) return [];
   const segments = pathname.split("/").filter(Boolean);
-  if (segments.length < 2) return null;
+  if (segments.length < 2) return [];
 
   const first = resolveLocaleFromPath("/" + segments[0]);
-  if (!first) return null;
+  if (!first) return [];
 
-  const second = resolveLocaleFromPath("/" + segments[1]);
-  if (second && second !== first) {
-    return second;
+  const rawSecond = segments[1];
+  const candidates = rawSecond.split(/[,+]/).filter(Boolean);
+  const result: Locale[] = [];
+  for (const cand of candidates) {
+    const loc = resolveLocaleFromPath("/" + cand);
+    if (loc && loc !== first && !result.includes(loc)) {
+      result.push(loc);
+    }
   }
-  return null;
+  return result;
+}
+
+export function resolveSecondaryLocaleFromPath(pathname?: string | null): Locale | null {
+  const list = resolveSecondaryLocalesFromPath(pathname);
+  return list.length > 0 ? list[0] : null;
 }
 
 let cachedLocale: Locale | null = null;
@@ -409,11 +453,13 @@ export function LocaleProvider({
     getServerDisplayModeSnapshot,
   );
 
-  const secondaryLocale = useSyncExternalStore(
+  const secondaryLocales = useSyncExternalStore(
     subscribeSecondaryLocale,
-    getClientSecondaryLocaleSnapshot,
-    getServerSecondaryLocaleSnapshot,
+    getClientSecondaryLocalesSnapshot,
+    getServerSecondaryLocalesSnapshot,
   );
+
+  const secondaryLocale = secondaryLocales.length > 0 ? secondaryLocales[0] : null;
 
   const [script, setScriptState] = React.useState<ScriptType>(() => {
     if (typeof window !== "undefined") {
@@ -488,18 +534,24 @@ export function LocaleProvider({
     }
   }, []);
 
-  const setSecondaryLocale = useCallback((sec: Locale | null) => {
-    cachedSecondaryLocale = sec;
+  const setSecondaryLocales = useCallback((locs: Locale[]) => {
+    const valid = Array.from(new Set(locs.filter(isValidLocale)));
+    cachedSecondaryLocales = valid;
+    cachedSecondaryLocale = valid[0] ?? null;
     cachedSecondaryLocaleInitialized = true;
     try {
-      if (sec && isValidLocale(sec)) {
-        localStorage.setItem(SECONDARY_LOCALE_STORAGE_KEY, sec);
+      if (valid.length > 0) {
+        localStorage.setItem(SECONDARY_LOCALES_STORAGE_KEY, valid.join(","));
+        localStorage.setItem(SECONDARY_LOCALE_STORAGE_KEY, valid[0]);
         localStorage.setItem(DISPLAY_MODE_STORAGE_KEY, "bilingual");
-        document.cookie = `${SECONDARY_LOCALE_STORAGE_KEY}=${sec}; path=/; max-age=31536000; SameSite=Lax`;
+        document.cookie = `${SECONDARY_LOCALES_STORAGE_KEY}=${valid.join(",")}; path=/; max-age=31536000; SameSite=Lax`;
+        document.cookie = `${SECONDARY_LOCALE_STORAGE_KEY}=${valid[0]}; path=/; max-age=31536000; SameSite=Lax`;
         document.cookie = `${DISPLAY_MODE_STORAGE_KEY}=bilingual; path=/; max-age=31536000; SameSite=Lax`;
       } else {
+        localStorage.removeItem(SECONDARY_LOCALES_STORAGE_KEY);
         localStorage.removeItem(SECONDARY_LOCALE_STORAGE_KEY);
         localStorage.setItem(DISPLAY_MODE_STORAGE_KEY, "monolingual");
+        document.cookie = `${SECONDARY_LOCALES_STORAGE_KEY}=; path=/; max-age=0; SameSite=Lax`;
         document.cookie = `${SECONDARY_LOCALE_STORAGE_KEY}=; path=/; max-age=0; SameSite=Lax`;
         document.cookie = `${DISPLAY_MODE_STORAGE_KEY}=monolingual; path=/; max-age=31536000; SameSite=Lax`;
       }
@@ -510,30 +562,44 @@ export function LocaleProvider({
     }
   }, []);
 
+  const toggleSecondaryLocale = useCallback((target: Locale) => {
+    let next: Locale[];
+    if (secondaryLocales.includes(target)) {
+      next = secondaryLocales.filter((l) => l !== target);
+    } else {
+      next = [...secondaryLocales, target];
+    }
+    setSecondaryLocales(next);
+  }, [secondaryLocales, setSecondaryLocales]);
+
+  const setSecondaryLocale = useCallback((sec: Locale | null) => {
+    setSecondaryLocales(sec ? [sec] : []);
+  }, [setSecondaryLocales]);
+
   const setDisplayMode = useCallback((mode: DisplayMode) => {
     cachedDisplayMode = mode;
     try {
       localStorage.setItem(DISPLAY_MODE_STORAGE_KEY, mode);
       document.cookie = `${DISPLAY_MODE_STORAGE_KEY}=${mode}; path=/; max-age=31536000; SameSite=Lax`;
       if (mode === "monolingual") {
-        setSecondaryLocale(null);
+        setSecondaryLocales([]);
       } else {
-        const currentSec = localStorage.getItem(SECONDARY_LOCALE_STORAGE_KEY) as Locale | null;
-        if (!currentSec || !isValidLocale(currentSec) || currentSec === locale) {
-          setSecondaryLocale(locale === "ko" ? "en" : "ko");
+        const currentSecs = getClientSecondaryLocalesSnapshot();
+        if (currentSecs.length === 0) {
+          setSecondaryLocales([locale === "ko" ? "en" : "ko"]);
         }
       }
       window.dispatchEvent(new Event(DISPLAY_MODE_CHANGE_EVENT));
     } catch {
       // ignore
     }
-  }, [locale, setSecondaryLocale]);
+  }, [locale, setSecondaryLocales]);
 
   const toggleDisplayMode = useCallback(() => {
-    setDisplayMode(secondaryLocale ? "monolingual" : "bilingual");
-  }, [secondaryLocale, setDisplayMode]);
+    setDisplayMode(secondaryLocales.length > 0 ? "monolingual" : "bilingual");
+  }, [secondaryLocales, setDisplayMode]);
 
-  const isBilingual = secondaryLocale !== null && secondaryLocale !== locale;
+  const isBilingual = secondaryLocales.length > 0 && secondaryLocales.some((l) => l !== locale);
 
   const currentMeta =
     languages.find((item) => item.code === locale) ||
@@ -551,6 +617,10 @@ export function LocaleProvider({
     if (!secondaryLocale) return "";
     return translate(secondaryLocale, key);
   }, [secondaryLocale]);
+
+  const tSecondaryList = useCallback((key: string) => {
+    return secondaryLocales.map((loc) => translate(loc, key));
+  }, [secondaryLocales]);
 
   const tBilingual = useCallback(
     (key: string, separator?: string) => {
@@ -583,6 +653,9 @@ export function LocaleProvider({
         setLocale,
         secondaryLocale,
         setSecondaryLocale,
+        secondaryLocales,
+        setSecondaryLocales,
+        toggleSecondaryLocale,
         script,
         setScript,
         isDualScript,
@@ -594,6 +667,7 @@ export function LocaleProvider({
         t,
         tKo,
         tSecondary,
+        tSecondaryList,
         tBilingual,
         formatBilingual,
         currentMeta,
@@ -614,6 +688,9 @@ export function useLocale(): LocaleContextType {
       setLocale: () => {},
       secondaryLocale: null,
       setSecondaryLocale: () => {},
+      secondaryLocales: [],
+      setSecondaryLocales: () => {},
+      toggleSecondaryLocale: () => {},
       script: "latn",
       setScript: () => {},
       isDualScript: false,
@@ -625,6 +702,7 @@ export function useLocale(): LocaleContextType {
       t: (key: string) => translate(defaultLocale, key),
       tKo: (key: string) => translate("ko", key),
       tSecondary: () => "",
+      tSecondaryList: () => [],
       tBilingual: (key: string) => translate(defaultLocale, key),
       formatBilingual: (targetText: string) => targetText,
       currentMeta: languages[0],
