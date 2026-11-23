@@ -3,6 +3,7 @@
 import { useEffect, useRef, useSyncExternalStore } from "react";
 import { useLocale } from "@/lib/i18n/LocaleContext";
 import { studyUrls } from "@/lib/home/studyHosts";
+import { HangeulCalligraphyIcon } from "@/components/shared/HangeulCalligraphyIcon";
 
 /**
  * The Study card's chooser: three plain links to the learning sub-domains (a real navigation, not a route of this site).
@@ -31,13 +32,13 @@ export function StudyChooser({ open, onClose }: { open: boolean; onClose: () => 
 
   if (!open) return null;
   const goTo = (site: string) => t("study.chooser.goTo").replace("{site}", site);
-  const options = [
-    { id: "korean", href: urls.korean, site: "korean.life.help", icon: "🇰🇷", title: t("study.chooser.korean"), desc: t("study.chooser.koreanDesc"), ring: "border-violet-300 hover:border-violet-500 hover:bg-violet-50" },
+  const options: { id: string; href: string; site: string; icon: React.ReactNode; title: string; desc: string; ring: string }[] = [
+    { id: "korean", href: urls.korean, site: "korean.life.help", icon: <HangeulCalligraphyIcon className="w-5 h-5" />, title: t("study.chooser.korean"), desc: t("study.chooser.koreanDesc"), ring: "border-violet-300 hover:border-violet-500 hover:bg-violet-50" },
     { id: "english", href: urls.english, site: "english.life.help", icon: "🔤", title: t("study.chooser.english"), desc: t("study.chooser.englishDesc"), ring: "border-sky-300 hover:border-sky-500 hover:bg-sky-50" },
     { id: "math", href: urls.math, site: "math.life.help", icon: "➗", title: t("study.chooser.math"), desc: t("study.chooser.mathDesc"), ring: "border-emerald-300 hover:border-emerald-500 hover:bg-emerald-50" },
     { id: "physics", href: urls.physics, site: "physics.life.help", icon: "🔬", title: t("study.chooser.physics"), desc: t("study.chooser.physicsDesc"), ring: "border-indigo-300 hover:border-indigo-500 hover:bg-indigo-50" },
     { id: "chemistry", href: urls.chemistry, site: "chemistry.life.help", icon: "🧪", title: t("study.chooser.chemistry"), desc: t("study.chooser.chemistryDesc"), ring: "border-teal-300 hover:border-teal-500 hover:bg-teal-50" },
-  ] as const;
+  ];
 
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-slate-900/50 p-3 sm:items-center" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>

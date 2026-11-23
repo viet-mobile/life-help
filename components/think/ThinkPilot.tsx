@@ -8,13 +8,14 @@ import { checksOffFor, loadOverlay, localize } from "@/lib/think/localize";
 import type { Overlay } from "@/lib/think/data/files";
 import { labels } from "./labels";
 import { TaskPlayer } from "./ThinkPlayer";
+import { HangeulCalligraphyIcon } from "@/components/shared/HangeulCalligraphyIcon";
 
 const STORE = "think-pilot:v1";
 interface Flag { task: string; step: string; note: string; at: string }
 const readFlags = (): Flag[] => { try { return JSON.parse(window.localStorage.getItem(STORE) ?? "[]"); } catch { return []; } };
 const writeFlags = (f: Flag[]) => { try { window.localStorage.setItem(STORE, JSON.stringify(f)); } catch { /* storage unavailable: notes are kept for this visit only */ } };
 
-const SUBJECT_ICON = { korean: "🇰🇷", english: "🔤", math: "➗", physics: "🔬", chemistry: "🧪" } as const;
+const SUBJECT_ICON: Record<string, React.ReactNode> = { korean: <HangeulCalligraphyIcon className="w-3.5 h-3.5 inline-block" />, english: "🔤", math: "➗", physics: "🔬", chemistry: "🧪" };
 
 export function ThinkPilot({ initialTasks }: { initialTasks?: ThinkTask[] } = {}) {
   const [allTasks, setAllTasks] = useState<ThinkTask[]>(initialTasks ?? []);

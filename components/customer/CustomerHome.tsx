@@ -13,6 +13,7 @@ import { StudyChooser } from "@/components/customer/StudyChooser";
 import { getDailyInsight, DomainType } from "@/lib/learn/dailyInsights";
 import { DailyInsightCard } from "@/components/learn/DailyInsightCard";
 import { ReferralCard } from "@/components/shared/ReferralCard";
+import { HangeulCalligraphyIcon } from "@/components/shared/HangeulCalligraphyIcon";
 
 export interface ServiceItem {
   id: string;
@@ -525,7 +526,7 @@ export function CustomerHome() {
             {/* 6-Domain Switcher: Korean, English, Math, Physics, Chemistry, Life */}
             <div className="flex items-center gap-1 overflow-x-auto py-0.5">
               {[
-                { id: "korean", label: t("customer.domain_korean"), icon: "🇰🇷" },
+                { id: "korean", label: t("customer.domain_korean"), icon: <HangeulCalligraphyIcon className="w-4 h-4" /> },
                 { id: "english", label: t("customer.domain_english"), icon: "🔤" },
                 { id: "math", label: t("customer.domain_math"), icon: "➗" },
                 { id: "physics", label: t("customer.domain_physics"), icon: "🔬" },

@@ -6,6 +6,8 @@ import { DailyInsight, DomainType, getInsightLocaleData, getDailyInsight, resolv
 import { studyUrl, StudySubject } from "@/lib/home/studyHosts";
 import type { Locale } from "@/messages/registry";
 import { useLocale } from "@/lib/i18n/LocaleContext";
+import { HangeulCalligraphyIcon } from "@/components/shared/HangeulCalligraphyIcon";
+import { getOfficialWebsiteBadge } from "@/lib/learn/dailyInsights/officialWebsiteI18n";
 
 interface DailyInsightCardProps {
   domain: DomainType;
@@ -14,7 +16,7 @@ interface DailyInsightCardProps {
   className?: string;
 }
 
-const DOMAIN_SLOGANS: Record<DomainType, { labelKo: string; labelEn: string; icon: string; themeColor: string; bgSoft: string; borderSoft: string }> = {
+const DOMAIN_SLOGANS: Record<DomainType, { labelKo: string; labelEn: string; icon: React.ReactNode; themeColor: string; bgSoft: string; borderSoft: string }> = {
   math: {
     labelKo: "당신의 인생에 도움이 되는 수학",
     labelEn: "Math that helps your life",
@@ -34,7 +36,7 @@ const DOMAIN_SLOGANS: Record<DomainType, { labelKo: string; labelEn: string; ico
   korean: {
     labelKo: "당신의 인생에 도움이 되는 한국어",
     labelEn: "Korean that helps your life",
-    icon: "🇰🇷",
+    icon: <HangeulCalligraphyIcon className="w-5 h-5" />,
     themeColor: "text-violet-700",
     bgSoft: "bg-violet-50/90",
     borderSoft: "border-violet-200",
@@ -126,6 +128,7 @@ export function DailyInsightCard({ domain, insight: initialInsight, locale: prop
   const uiLearnMore = locData?.ui_labels?.btn_learn_more || (isKo ? "관련 탐험 바로가기" : "Explore Subject");
   const uiCopied = locData?.ui_labels?.btn_copied || (isKo ? "✓ 복사됨" : "✓ Copied");
   const uiCopy = locData?.ui_labels?.btn_copy || (isKo ? "📋 팁 공유" : "📋 Share Tip");
+  const uiOfficialWebsite = locData?.ui_labels?.btn_official_website || getOfficialWebsiteBadge(activeLocale);
 
   const getDomainRelatedText = () => {
     if (domain === "life") {
@@ -278,7 +281,7 @@ export function DailyInsightCard({ domain, insight: initialInsight, locale: prop
                     )}
                   </span>
                   <span className="inline-flex items-center gap-1 rounded bg-blue-600/90 group-hover:bg-blue-500 px-1.5 py-0.5 text-[10px] font-bold text-white transition shrink-0 shadow-2xs">
-                    <span>{isKo ? "공식 사이트 바로가기" : "Official Website"}</span>
+                    <span suppressHydrationWarning>{uiOfficialWebsite}</span>
                     <span aria-hidden="true">↗</span>
                   </span>
                 </div>
