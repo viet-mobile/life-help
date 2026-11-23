@@ -75,13 +75,19 @@ export function getDailyIndex(date: Date = new Date()): number {
  */
 export function getDailyInsight(
   domain: DomainType | string,
-  dateOrIndex: Date | number = new Date(),
+  dateOrIndex: Date | number | string = new Date(),
   locale?: string
 ): DailyInsight {
   const items = INSIGHT_MAP[domain] || INSIGHT_MAP.life;
-  const selectedIndex = typeof dateOrIndex === "number"
-    ? Math.abs(Math.floor(dateOrIndex)) % items.length
-    : getDailyIndex(dateOrIndex) % items.length;
+  let selectedIndex = 0;
+  if (typeof dateOrIndex === "string") {
+    const idx = items.findIndex((it) => it.id === dateOrIndex);
+    selectedIndex = idx >= 0 ? idx : 0;
+  } else if (typeof dateOrIndex === "number") {
+    selectedIndex = Math.abs(Math.floor(dateOrIndex)) % items.length;
+  } else {
+    selectedIndex = getDailyIndex(dateOrIndex) % items.length;
+  }
   const item = { ...items[selectedIndex] };
 
   if (locale && locale !== "ko") {

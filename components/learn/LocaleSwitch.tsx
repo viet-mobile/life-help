@@ -35,16 +35,14 @@ export function LocaleSwitch({ compact = false }: { compact?: boolean }) {
     document.cookie = `${LOCALE_COOKIE}=${next}; Path=/; Max-Age=${LOCALE_COOKIE_MAX_AGE}; SameSite=Lax${secure}`;
     document.cookie = `life_help_locale=${next}; Path=/; Max-Age=${LOCALE_COOKIE_MAX_AGE}; SameSite=Lax${secure}`;
 
-    // On a language URL (/en/..., /vi/ko+en/...) the URL itself carries the language: move to the same page under the new prefix
+    // On a language URL (/en/..., /vi/ko+en/...) or un-prefixed URL, always navigate to include the new prefix
     if (typeof window !== "undefined") {
       const pathname = window.location.pathname;
-      const { locale: currentUrlLocale, secondaryLocales, rest } = splitLocalePrefix(pathname);
-      if (currentUrlLocale) {
-        const secPart = secondaryLocales && secondaryLocales.length > 0 ? `/${secondaryLocales.join("+")}` : "";
-        const targetPath = next === "ko" ? (secPart ? `/ko${secPart}${rest === "/" ? "" : rest}` : rest) : `/${next}${secPart}${rest === "/" ? "" : rest}`;
-        window.location.assign(`${targetPath}${window.location.search}${window.location.hash}`);
-        return;
-      }
+      const { secondaryLocales, rest } = splitLocalePrefix(pathname);
+      const secPart = secondaryLocales && secondaryLocales.length > 0 ? `/${secondaryLocales.join("+")}` : "";
+      const targetPath = `/${next}${secPart}${rest === "/" ? "" : rest}`;
+      window.location.assign(`${targetPath}${window.location.search}${window.location.hash}`);
+      return;
     }
     start(() => router.refresh());
   };

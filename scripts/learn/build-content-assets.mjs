@@ -211,6 +211,31 @@ if (check) {
     fs.mkdirSync(path.dirname(file), { recursive: true });
     fs.writeFileSync(file, o.body);
   }
+
+  // Generate public/learn-content/daily-tips/<locale>.json for all 88 service languages + Korean
+  const tipsDir = path.join(dir, "daily-tips");
+  fs.mkdirSync(tipsDir, { recursive: true });
+  for (const loc of LOCALES) {
+    const tipSource = path.join(root, `content/learn-overlays/${loc}/daily-tips-pc.json`);
+    if (fs.existsSync(tipSource)) {
+      fs.copyFileSync(tipSource, path.join(tipsDir, `${loc}.json`));
+    }
+  }
+  // Generate Korean daily tips overlay from canonical physics and chemistry data
+  const physData = JSON.parse(fs.readFileSync(path.join(root, "lib/learn/dailyInsights/data/physics.json"), "utf8"));
+  const chemData = JSON.parse(fs.readFileSync(path.join(root, "lib/learn/dailyInsights/data/chemistry.json"), "utf8"));
+  const koTips = {};
+  for (const item of [...physData, ...chemData]) {
+    koTips[item.id] = {
+      title: item.title,
+      summary: item.summary,
+      principle: item.principle,
+      example: item.example,
+      actionItem: item.actionItem,
+    };
+  }
+  fs.writeFileSync(path.join(tipsDir, "ko.json"), JSON.stringify(koTips));
+
   const total = outputs.reduce((n, o) => n + Buffer.byteLength(o.body), 0);
   console.log(`wrote learn content assets: version ${manifest.version}, ${outputs.length} files (overlays + English bank shards), ${(total / 1048576).toFixed(1)} MiB`);
 }

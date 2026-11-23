@@ -665,7 +665,12 @@ export function LabBuilderView({
               }}
               title={displayName}
             >
-              {displayName}
+              <div>{displayName}</div>
+              {siteCtx?.isBilingual && (
+                <div style={{ fontSize: 11, fontWeight: 500, color: "rgba(248, 250, 252, 0.7)", marginTop: 1 }}>
+                  {isNonKorean ? landmarkInfo.nameKo : landmarkInfo.nameEn}
+                </div>
+              )}
             </div>
           </div>
         </div>

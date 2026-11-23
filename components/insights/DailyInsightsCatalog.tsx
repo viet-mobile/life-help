@@ -385,6 +385,18 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
                         {insight.example}
                       </p>
                     )}
+                    {isBilingual && secondaryInsights.map(({ locale: secLoc, insight: secInsight }) => (
+                      secInsight?.example && secInsight.example !== insight.example ? (
+                        <p key={secLoc} className="text-[11px] text-slate-500 font-normal flex items-baseline gap-1.5">
+                          {effectiveSecondaryLocales.length > 1 && (
+                            <span className="inline-block text-[9px] font-black uppercase px-1 py-0.2 rounded bg-slate-200 text-slate-700 border border-slate-300 shrink-0">
+                              {secLoc}
+                            </span>
+                          )}
+                          <span>{secInsight.example}</span>
+                        </p>
+                      ) : null
+                    ))}
                   </div>
 
                   {/* Action Item Box */}

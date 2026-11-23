@@ -92,8 +92,16 @@ export function MathKeypad({ onInsert, onBackspace, onClear, onSubmit, disabled 
         <span className="font-semibold flex items-center gap-1 xs:gap-1.5 truncate min-w-0">
           <span>{isScience ? "🔬" : "🧮"}</span>
           <span>{titleText}</span>
-          {secTitleText && secTitleText !== titleText && (
-            <span className="text-[10px] font-normal opacity-85 ml-1">({secTitleText})</span>
+          {isBilingual && (
+            siteCtx?.secondaryTranslators && siteCtx.secondaryTranslators.length > 0 ? (
+              siteCtx.secondaryTranslators.map((st, idx) => {
+                const s = st.t("keypad.title");
+                if (!s || s === titleText || s === "keypad.title") return null;
+                return <span key={idx} className="text-[10px] font-normal opacity-85 ml-1">({s})</span>;
+              })
+            ) : (secTitleText && secTitleText !== titleText && secTitleText !== "keypad.title" && (
+              <span className="text-[10px] font-normal opacity-85 ml-1">({secTitleText})</span>
+            ))
           )}
         </span>
         <div className="flex items-center gap-2">
@@ -104,8 +112,16 @@ export function MathKeypad({ onInsert, onBackspace, onClear, onSubmit, disabled 
             className="hover:text-red-500 transition-colors px-1"
           >
             <span>{clearText}</span>
-            {secClearText && secClearText !== clearText && (
-              <span className="text-[10px] font-normal opacity-85 ml-0.5">({secClearText})</span>
+            {isBilingual && (
+              siteCtx?.secondaryTranslators && siteCtx.secondaryTranslators.length > 0 ? (
+                siteCtx.secondaryTranslators.map((st, idx) => {
+                  const s = st.t("keypad.clear");
+                  if (!s || s === clearText || s === "keypad.clear") return null;
+                  return <span key={idx} className="text-[10px] font-normal opacity-85 ml-0.5">({s})</span>;
+                })
+              ) : (secClearText && secClearText !== clearText && secClearText !== "keypad.clear" && (
+                <span className="text-[10px] font-normal opacity-85 ml-0.5">({secClearText})</span>
+              ))
             )}
           </button>
           <button
@@ -160,8 +176,16 @@ export function MathKeypad({ onInsert, onBackspace, onClear, onSubmit, disabled 
                 <span>{submitText}</span>
                 <span>↵</span>
               </div>
-              {secSubmitText && secSubmitText !== submitText && (
-                <span className="text-[11px] font-normal opacity-90">{secSubmitText}</span>
+              {isBilingual && (
+                siteCtx?.secondaryTranslators && siteCtx.secondaryTranslators.length > 0 ? (
+                  siteCtx.secondaryTranslators.map((st, idx) => {
+                    const s = st.t("keypad.submit");
+                    if (!s || s === submitText || s === "keypad.submit") return null;
+                    return <span key={idx} className="text-[11px] font-normal opacity-90">({s})</span>;
+                  })
+                ) : (secSubmitText && secSubmitText !== submitText && secSubmitText !== "keypad.submit" && (
+                  <span className="text-[11px] font-normal opacity-90">({secSubmitText})</span>
+                ))
               )}
             </button>
           </div>

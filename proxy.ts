@@ -691,26 +691,38 @@ export async function proxy(request: NextRequest) {
       const siteRoot = learnHostSite ? "" : `/study/${learnSite}`;
       const internal = passthrough ? path : `/study/${learnSite}${innerPath === "/" ? "" : innerPath}`;
 
+      // Resolve effective locale from URL or persistent cookies
+      const cookieLocale = request.cookies.get(LOCALE_COOKIE)?.value || request.cookies.get("life_help_locale")?.value;
+      const validCookieLocale = cookieLocale && LANGUAGES.has(cookieLocale.toLowerCase()) ? cookieLocale : null;
+      const effectiveLocale = urlLocale || validCookieLocale || "ko";
+
+      // Resolve effective secondary locales from URL or persistent cookies
+      const cookieSecLocales = request.cookies.get("life_help_secondary_locales")?.value;
+      const cookieSecLocale = request.cookies.get("life_help_secondary_locale")?.value;
+      const validCookieSecLocales = cookieSecLocales
+        ? cookieSecLocales.split(/[,+]/).filter((l) => LANGUAGES.has(l.toLowerCase()))
+        : (cookieSecLocale && LANGUAGES.has(cookieSecLocale.toLowerCase()) ? [cookieSecLocale] : []);
+
+      const effectiveSecLocales = (urlSecondaryLocales && urlSecondaryLocales.length > 0)
+        ? urlSecondaryLocales
+        : (urlSecondaryLocale ? [urlSecondaryLocale] : validCookieSecLocales).filter((l) => l !== effectiveLocale).slice(0, 4);
+
       const learnHeaders = new Headers(request.headers);
       learnHeaders.set("x-life-portal", "learn");
       learnHeaders.set("x-life-site", learnSite);
-      // The public base path for links: empty on the site's own subdomain (plus the language prefix when the URL carries one).
-      const secJoined = urlSecondaryLocales && urlSecondaryLocales.length > 0 ? urlSecondaryLocales.join("+") : urlSecondaryLocale;
-      const urlPrefix = urlLocale ? (secJoined ? `/${urlLocale}/${secJoined}` : `/${urlLocale}`) : "";
+      // The public base path for links: includes both primary and secondary language prefixes to preserve state
+      const secJoined = effectiveSecLocales.length > 0 ? effectiveSecLocales.join("+") : null;
+      const urlPrefix = effectiveLocale ? (secJoined ? `/${effectiveLocale}/${secJoined}` : `/${effectiveLocale}`) : "";
       learnHeaders.set("x-learn-base", `${siteRoot}${urlPrefix}`);
       learnHeaders.set("x-learn-path", innerPath);
-      if (urlLocale) {
-        learnHeaders.set("x-learn-locale", urlLocale);
-        learnHeaders.set("x-life-language", urlLocale);
-      } else {
-        learnHeaders.delete("x-learn-locale");
-        learnHeaders.set("x-life-language", "ko");
-      }
-      if (urlSecondaryLocale) {
-        const secListStr = urlSecondaryLocales && urlSecondaryLocales.length > 0 ? urlSecondaryLocales.join(",") : urlSecondaryLocale;
-        learnHeaders.set("x-learn-secondary-locale", urlSecondaryLocale);
+      learnHeaders.set("x-learn-locale", effectiveLocale);
+      learnHeaders.set("x-life-language", effectiveLocale);
+
+      if (effectiveSecLocales.length > 0) {
+        const secListStr = effectiveSecLocales.join(",");
+        learnHeaders.set("x-learn-secondary-locale", effectiveSecLocales[0]);
         learnHeaders.set("x-learn-secondary-locales", secListStr);
-        learnHeaders.set("x-life-secondary-language", secJoined || urlSecondaryLocale);
+        learnHeaders.set("x-life-secondary-language", secJoined || effectiveSecLocales[0]);
         learnHeaders.set("x-life-secondary-languages", secListStr);
       } else {
         learnHeaders.delete("x-learn-secondary-locale");
@@ -729,16 +741,17 @@ export async function proxy(request: NextRequest) {
             })
           : NextResponse.next({ request: { headers: learnHeaders } });
       sessionResponse.cookies.getAll().forEach((c) => out.cookies.set(c));
-      // a language link also becomes the browser's language (same cookie the language switcher writes)
-      if (urlLocale) {
-        out.cookies.set(LOCALE_COOKIE, urlLocale, { path: "/", maxAge: LOCALE_COOKIE_MAX_AGE, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });
-        out.cookies.set("life_help_locale", urlLocale, { path: "/", maxAge: LOCALE_COOKIE_MAX_AGE, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });
-        if (urlSecondaryLocale) {
-          const secListStr = urlSecondaryLocales && urlSecondaryLocales.length > 0 ? urlSecondaryLocales.join(",") : urlSecondaryLocale;
-          out.cookies.set("life_help_secondary_locale", urlSecondaryLocale, { path: "/", maxAge: LOCALE_COOKIE_MAX_AGE, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });
+
+      // Persist browser language and multi-secondary preferences
+      if (effectiveLocale) {
+        out.cookies.set(LOCALE_COOKIE, effectiveLocale, { path: "/", maxAge: LOCALE_COOKIE_MAX_AGE, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });
+        out.cookies.set("life_help_locale", effectiveLocale, { path: "/", maxAge: LOCALE_COOKIE_MAX_AGE, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });
+        if (effectiveSecLocales.length > 0) {
+          const secListStr = effectiveSecLocales.join(",");
+          out.cookies.set("life_help_secondary_locale", effectiveSecLocales[0], { path: "/", maxAge: LOCALE_COOKIE_MAX_AGE, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });
           out.cookies.set("life_help_secondary_locales", secListStr, { path: "/", maxAge: LOCALE_COOKIE_MAX_AGE, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });
           out.cookies.set("life_help_display_mode", "bilingual", { path: "/", maxAge: LOCALE_COOKIE_MAX_AGE, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });
-        } else {
+        } else if (urlLocale && !urlSecondaryLocale) {
           out.cookies.delete("life_help_secondary_locale");
           out.cookies.delete("life_help_secondary_locales");
           out.cookies.set("life_help_display_mode", "monolingual", { path: "/", maxAge: LOCALE_COOKIE_MAX_AGE, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });

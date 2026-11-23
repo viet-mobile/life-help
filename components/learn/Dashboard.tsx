@@ -13,7 +13,7 @@ import { useLearner } from "./LearnerProvider";
 import { LevelUnavailable } from "./LevelUnavailable";
 import { thinkLangFor } from "@/lib/think/lang";
 import { hubLabels } from "@/components/think/hubLabels";
-import { CADENCE_TEXT } from "@/lib/think/cadence";
+import { CADENCE_TEXT, getCadenceString } from "@/lib/think/cadence";
 import { flowView } from "@/lib/think/flow";
 import { ThinkQuickEntry } from "../think/ThinkQuickEntry";
 import { coverageFor, hasGap } from "@/lib/learn/coverage";
@@ -124,13 +124,12 @@ export function Dashboard() {
           ))}
         </p>
         <p data-testid="think-cadence" style={cadence.owed > 0 ? { fontWeight: 600 } : undefined} className={cadence.owed > 0 ? undefined : "l-muted"}>
-          <span>{cadence.owed > 0 ? CADENCE_TEXT[thinkLang].unlocked(cadence.owed) : CADENCE_TEXT[thinkLang].toNext(cadence.toNext)}</span>
+          <span>{getCadenceString(thinkLang, cadence.owed > 0 ? cadence.owed : cadence.toNext, cadence.owed > 0)}</span>
           {isBilingual && secondaryLocales && secondaryLocales.map((secLoc) => {
-            const secThinkLang = thinkLangFor(secLoc, site);
-            if (secThinkLang === thinkLang) return null;
+            if (secLoc === locale) return null;
             return (
               <span key={secLoc} style={{ display: "block", fontSize: "0.85em", opacity: 0.85, marginTop: "0.2rem" }}>
-                {cadence.owed > 0 ? CADENCE_TEXT[secThinkLang].unlocked(cadence.owed) : CADENCE_TEXT[secThinkLang].toNext(cadence.toNext)}
+                {getCadenceString(secLoc, cadence.owed > 0 ? cadence.owed : cadence.toNext, cadence.owed > 0)}
               </span>
             );
           })}

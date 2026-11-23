@@ -73,13 +73,12 @@ export function LearnMultilingualPopover({
       window.dispatchEvent(new Event("life_help_display_mode_change"));
       const pathname = window.location.pathname;
       const { locale: currentUrlLocale, rest } = splitLocalePrefix(pathname);
-      if (currentUrlLocale) {
-        const secPart = nextList.length > 0 ? `/${nextList.join("+")}` : "";
-        const targetPath = `/${currentUrlLocale}${secPart}${rest === "/" ? "" : rest}`;
-        if (targetPath !== pathname) {
-          window.location.assign(`${targetPath}${window.location.search}${window.location.hash}`);
-          return;
-        }
+      const effectivePrimary = currentUrlLocale || currentLocale;
+      const secPart = nextList.length > 0 ? `/${nextList.join("+")}` : "";
+      const targetPath = `/${effectivePrimary}${secPart}${rest === "/" ? "" : rest}`;
+      if (targetPath !== pathname) {
+        window.location.assign(`${targetPath}${window.location.search}${window.location.hash}`);
+        return;
       }
     }
   };

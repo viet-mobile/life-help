@@ -190,7 +190,7 @@ export function DailyInsightCard({
   const secondaryInsights: { locale: Locale; insight: DailyInsight }[] = useMemo(() => {
     if (!mounted || effectiveSecondaryLocales.length === 0) return [];
     return effectiveSecondaryLocales.map((loc: Locale) => {
-      const rawSec = getDailyInsight(domain, randomSeed !== null ? randomSeed : new Date(), loc);
+      const rawSec = getDailyInsight(domain, baseInsight.id, loc);
       const secOv = (domain === "physics" || domain === "chemistry") ? tipOverlays[loc]?.[rawSec.id] : null;
       const mergedSec = secOv
         ? {
@@ -307,7 +307,7 @@ export function DailyInsightCard({
             {insight.title}
           </h3>
           {isBilingual && secondaryInsights.map(({ locale: secLoc, insight: secInsight }) => (
-            secInsight?.title && secInsight.title !== insight.title ? (
+            secInsight?.title && (secInsight.title !== insight.title || secLoc !== activeLocale) ? (
               <p key={secLoc} suppressHydrationWarning className="mt-1 text-xs sm:text-sm font-bold text-slate-500 flex items-baseline gap-1.5">
                 {effectiveSecondaryLocales.length > 1 && (
                   <span className="inline-block text-[9px] font-black uppercase px-1 py-0.2 rounded bg-slate-100 text-slate-600 border border-slate-200 shrink-0">
@@ -325,7 +325,7 @@ export function DailyInsightCard({
             {insight.summary}
           </p>
           {isBilingual && secondaryInsights.map(({ locale: secLoc, insight: secInsight }) => (
-            secInsight?.summary && secInsight.summary !== insight.summary ? (
+            secInsight?.summary && (secInsight.summary !== insight.summary || secLoc !== activeLocale) ? (
               <p key={secLoc} suppressHydrationWarning className="mt-1 text-xs text-slate-500 font-medium leading-relaxed flex items-baseline gap-1.5">
                 {effectiveSecondaryLocales.length > 1 && (
                   <span className="inline-block text-[9px] font-black uppercase px-1 py-0.2 rounded bg-slate-100 text-slate-600 border border-slate-200 shrink-0">
@@ -353,7 +353,7 @@ export function DailyInsightCard({
             {insight.principle}
           </div>
           {isBilingual && secondaryInsights.map(({ locale: secLoc, insight: secInsight }) => (
-            secInsight?.principle && secInsight.principle !== insight.principle ? (
+            secInsight?.principle && (secInsight.principle !== insight.principle || secLoc !== activeLocale) ? (
               <p key={secLoc} suppressHydrationWarning className="text-xs font-semibold text-slate-500 flex items-baseline gap-1.5">
                 {effectiveSecondaryLocales.length > 1 && (
                   <span className="inline-block text-[9px] font-black uppercase px-1 py-0.2 rounded bg-slate-100 text-slate-600 border border-slate-200 shrink-0">
@@ -368,7 +368,7 @@ export function DailyInsightCard({
             {insight.example}
           </p>
           {isBilingual && secondaryInsights.map(({ locale: secLoc, insight: secInsight }) => (
-            secInsight?.example && secInsight.example !== insight.example ? (
+            secInsight?.example && (secInsight.example !== insight.example || secLoc !== activeLocale) ? (
               <p key={`${secLoc}-example`} suppressHydrationWarning className="text-xs font-normal text-slate-500 flex items-baseline gap-1.5">
                 {effectiveSecondaryLocales.length > 1 && (
                   <span className="inline-block text-[9px] font-black uppercase px-1 py-0.2 rounded bg-slate-100 text-slate-600 border border-slate-200 shrink-0">
@@ -411,7 +411,7 @@ export function DailyInsightCard({
                   {insight.actionItem}
                 </span>
                 {isBilingual && secondaryInsights.map(({ locale: secLoc, insight: secInsight }) => (
-                  secInsight?.actionItem && secInsight.actionItem !== insight.actionItem ? (
+                  secInsight?.actionItem && (secInsight.actionItem !== insight.actionItem || secLoc !== activeLocale) ? (
                     <span key={secLoc} suppressHydrationWarning className="block text-xs font-medium text-amber-200/90 mt-1 flex items-baseline gap-1.5">
                       {effectiveSecondaryLocales.length > 1 && (
                         <span className="inline-block text-[9px] font-black uppercase px-1 py-0.2 rounded bg-amber-500/30 text-amber-200 border border-amber-400/30 shrink-0">
@@ -441,7 +441,7 @@ export function DailyInsightCard({
                 {insight.actionItem}
               </span>
               {isBilingual && secondaryInsights.map(({ locale: secLoc, insight: secInsight }) => (
-                secInsight?.actionItem && secInsight.actionItem !== insight.actionItem ? (
+                secInsight?.actionItem && (secInsight.actionItem !== insight.actionItem || secLoc !== activeLocale) ? (
                   <span key={secLoc} suppressHydrationWarning className="block text-xs font-medium text-amber-200/90 mt-1 flex items-baseline gap-1.5">
                     {effectiveSecondaryLocales.length > 1 && (
                       <span className="inline-block text-[9px] font-black uppercase px-1 py-0.2 rounded bg-amber-500/30 text-amber-200 border border-amber-400/30 shrink-0">
