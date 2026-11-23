@@ -169,7 +169,7 @@ export function LearnMultilingualPopover({
       {secOpen && (
         <div
           dir="ltr"
-          className="fixed inset-x-3 top-14 sm:absolute sm:inset-x-auto sm:right-0 sm:top-full sm:mt-1 z-50 w-auto sm:w-80 rounded-2xl border border-slate-200 bg-white p-3 shadow-2xl ring-1 ring-black/5 animate-in fade-in zoom-in-95 duration-150"
+          className="fixed inset-x-3 top-14 sm:absolute sm:inset-x-auto sm:right-0 sm:top-full sm:mt-1 z-50 w-auto sm:w-80 droplet-card border border-slate-200/90 bg-white/95 p-3.5 shadow-2xl ring-1 ring-black/5 animate-in fade-in zoom-in-95 duration-150"
         >
           <div className="flex items-center justify-between border-b border-slate-100 pb-2 mb-2">
             <div>
@@ -189,7 +189,7 @@ export function LearnMultilingualPopover({
             <button
               type="button"
               onClick={() => setSecOpen(false)}
-              className="rounded-full p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-600 cursor-pointer"
+              className="droplet-pill p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-600 cursor-pointer flex items-center justify-center"
               aria-label="Close"
             >
               ✕
@@ -202,7 +202,7 @@ export function LearnMultilingualPopover({
               applyLocales([]);
               setSecOpen(false);
             }}
-            className={`w-full flex items-center justify-between rounded-xl px-2.5 py-1.5 text-xs font-bold transition mb-2 cursor-pointer ${
+            className={`w-full flex items-center justify-between droplet-btn px-3 py-2 text-xs font-bold transition mb-2 cursor-pointer ${
               secondaryCount === 0
                 ? "bg-blue-600 text-white"
                 : "bg-slate-100 text-slate-700 hover:bg-slate-200"
@@ -218,7 +218,7 @@ export function LearnMultilingualPopover({
               placeholder={catalogI18n.searchMultilingual}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full rounded-xl border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs text-slate-800 placeholder-slate-400 focus:border-blue-500 focus:bg-white focus:outline-hidden"
+              className="droplet-input w-full border border-slate-200 bg-slate-50 px-3 py-2 text-xs text-slate-800 placeholder-slate-400 focus:border-blue-500 focus:bg-white focus:outline-hidden"
             />
           </div>
 
@@ -230,7 +230,7 @@ export function LearnMultilingualPopover({
                   key={lang.code}
                   type="button"
                   onClick={() => toggleLocale(lang.code)}
-                  className={`w-full flex items-center justify-between rounded-xl px-2.5 py-1.5 text-left text-xs transition cursor-pointer ${
+                  className={`w-full flex items-center justify-between droplet-btn px-3 py-2 text-left text-xs transition cursor-pointer ${
                     isSelected
                       ? "bg-blue-50 text-blue-900 font-bold border border-blue-200"
                       : "hover:bg-slate-50 text-slate-700"
@@ -264,7 +264,7 @@ export function LearnMultilingualPopover({
                 applyLocales(activeSecLocales);
                 setSecOpen(false);
               }}
-              className="rounded-lg bg-blue-600 hover:bg-blue-700 px-3 py-1.5 text-xs font-black text-white shadow-2xs transition cursor-pointer"
+              className="droplet-btn bg-blue-600 hover:bg-blue-700 px-3.5 py-1.5 text-xs font-black text-white shadow-2xs transition cursor-pointer"
             >
               {isKo ? "선택 완료" : "Done"}
             </button>

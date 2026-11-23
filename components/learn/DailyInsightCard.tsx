@@ -228,7 +228,7 @@ export function DailyInsightCard({
     <article
       data-testid={`daily-insight-${domain}`}
       suppressHydrationWarning
-      className={`rounded-2xl border ${domainMeta.borderSoft} ${domainMeta.bgSoft} p-4 sm:p-5 shadow-sm transition hover:shadow-md ${className}`}
+      className={`droplet-card border ${domainMeta.borderSoft} ${domainMeta.bgSoft} p-4 sm:p-5 shadow-sm transition hover:shadow-md ${className}`}
     >
       {/* Header Badge & Date */}
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200/60 pb-3">
@@ -237,7 +237,7 @@ export function DailyInsightCard({
           className="group flex items-center gap-2 transition hover:opacity-85 cursor-pointer"
           title={isKo ? `${displayDomainLabel} 전체 정보 바로가기` : `Explore all of ${displayDomainLabel}`}
         >
-          <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-white shadow-2xs text-base group-hover:scale-110 transition-transform" aria-hidden="true">
+          <span className="flex h-7 w-7 items-center justify-center droplet-icon bg-white shadow-2xs text-base group-hover:scale-110 transition-transform" aria-hidden="true">
             {domainMeta.icon}
           </span>
           <span suppressHydrationWarning className={`text-xs sm:text-sm font-black ${domainMeta.themeColor} group-hover:underline flex items-center gap-1`}>
@@ -247,7 +247,7 @@ export function DailyInsightCard({
         </Link>
 
         <div className="flex items-center gap-1.5">
-          <span className="inline-flex items-center gap-1 rounded-full bg-white/95 px-2.5 py-0.5 text-xs font-bold text-slate-700 border border-slate-200/80 shadow-2xs">
+          <span className="inline-flex items-center gap-1 droplet-pill bg-white/95 px-2.5 py-0.5 text-xs font-bold text-slate-700 border border-slate-200/80 shadow-2xs">
             <span>{insight.categoryIcon}</span>
             <span suppressHydrationWarning>{displayCategory}</span>
           </span>
@@ -296,7 +296,7 @@ export function DailyInsightCard({
         </div>
 
         {/* Principle / Formula Box */}
-        <div className="rounded-xl border border-white/80 bg-white/90 p-3 shadow-2xs space-y-1.5">
+        <div className="droplet-card border border-white/80 bg-white/90 p-3 shadow-2xs space-y-1.5">
           <div className="flex items-center gap-1 text-[11px] font-bold text-slate-500 uppercase tracking-wider">
             <span>📌</span>
             <span suppressHydrationWarning>{uiPrincipleTitle}</span>
@@ -332,7 +332,7 @@ export function DailyInsightCard({
             href={officialLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="group block rounded-xl bg-slate-900 p-3 text-white shadow-sm transition hover:bg-slate-800 hover:ring-2 hover:ring-blue-400 cursor-pointer active:scale-[0.99]"
+            className="droplet-card group block bg-slate-900 p-3 text-white shadow-sm transition hover:bg-slate-800 hover:ring-2 hover:ring-blue-400 cursor-pointer active:scale-[0.99]"
             title={isKo ? "공식 사이트로 이동" : "Visit official authoritative website"}
           >
             <div className="flex items-start gap-2.5">
@@ -371,7 +371,7 @@ export function DailyInsightCard({
             </div>
           </a>
         ) : (
-          <div className="rounded-xl bg-slate-900 p-3 text-white flex items-start gap-2.5 shadow-sm">
+          <div className="droplet-card bg-slate-900 p-3 text-white flex items-start gap-2.5 shadow-sm">
             <span className="text-sm shrink-0 mt-0.5">🎯</span>
             <div className="min-w-0 flex-1">
               <span suppressHydrationWarning className="block text-[10px] font-black uppercase text-amber-300 tracking-wider">
@@ -420,7 +420,7 @@ export function DailyInsightCard({
         <button
           type="button"
           onClick={handleShare}
-          className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white px-2.5 py-1 text-xs font-bold text-slate-600 hover:bg-slate-50 active:scale-95 transition"
+          className="droplet-btn inline-flex items-center gap-1 border border-slate-200 bg-white px-2.5 py-1 text-xs font-bold text-slate-600 hover:bg-slate-50 active:scale-95 transition"
         >
           <span suppressHydrationWarning>{copied ? uiCopied : uiCopy}</span>
         </button>

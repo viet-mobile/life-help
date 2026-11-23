@@ -186,7 +186,7 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
       {/* Hero Banner */}
       <div className="border-b border-slate-200 bg-linear-to-b from-white to-slate-100/60 px-4 py-6 sm:px-6 sm:py-8">
         <div className="mx-auto max-w-6xl">
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-slate-900 px-3 py-1 text-xs font-black text-white shadow-2xs mb-3">
+          <div className="droplet-pill inline-flex items-center gap-1.5 bg-slate-900 px-3 py-1 text-xs font-black text-white shadow-2xs mb-3">
             <span>✨</span>
             <span>{catalogI18n.catalogBadge}</span>
           </div>
@@ -217,7 +217,7 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
                     setSelectedDomain(d.id);
                     setSelectedCategory("all");
                   }}
-                  className={`inline-flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs sm:text-sm font-black transition cursor-pointer whitespace-nowrap shadow-2xs ${
+                  className={`droplet-btn inline-flex items-center gap-1.5 px-3.5 py-2 text-xs sm:text-sm font-black transition cursor-pointer whitespace-nowrap shadow-2xs ${
                     isSelected
                       ? "bg-slate-900 text-white ring-2 ring-slate-900"
                       : "bg-white text-slate-700 border border-slate-200 hover:bg-slate-100"
@@ -225,7 +225,7 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
                 >
                   <span>{d.icon}</span>
                   <span>{label}</span>
-                  <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${isSelected ? "bg-white/20 text-white" : "bg-slate-100 text-slate-500"}`}>
+                  <span className={`text-[10px] px-1.5 py-0.2 droplet-pill font-bold ${isSelected ? "bg-white/20 text-white" : "bg-slate-100 text-slate-500"}`}>
                     366
                   </span>
                 </button>
@@ -245,7 +245,7 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={catalogI18n.searchPlaceholder}
-              className="w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2 pl-9 text-xs sm:text-sm font-medium text-slate-900 placeholder-slate-400 focus:border-slate-900 focus:outline-hidden shadow-2xs"
+              className="droplet-input w-full border border-slate-300 bg-white px-3.5 py-2 pl-9 text-xs sm:text-sm font-medium text-slate-900 placeholder-slate-400 focus:border-slate-900 focus:outline-hidden shadow-2xs"
             />
             <span className="absolute left-3 top-2.5 text-slate-400 text-xs">🔍</span>
             {searchQuery && (
@@ -264,7 +264,7 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
             <button
               type="button"
               onClick={() => setSelectedCategory("all")}
-              className={`rounded-lg px-2.5 py-1 font-bold whitespace-nowrap transition cursor-pointer ${
+              className={`droplet-pill px-2.5 py-1 font-bold whitespace-nowrap transition cursor-pointer ${
                 selectedCategory === "all"
                   ? "bg-slate-900 text-white"
                   : "bg-white border border-slate-200 text-slate-600 hover:bg-slate-100"
@@ -279,7 +279,7 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
                   key={cat}
                   type="button"
                   onClick={() => setSelectedCategory(cat)}
-                  className={`rounded-lg px-2.5 py-1 font-bold whitespace-nowrap transition cursor-pointer capitalize ${
+                  className={`droplet-pill px-2.5 py-1 font-bold whitespace-nowrap transition cursor-pointer capitalize ${
                     selectedCategory === cat
                       ? "bg-slate-900 text-white"
                       : "bg-white border border-slate-200 text-slate-600 hover:bg-slate-100"
@@ -311,16 +311,16 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
             return (
               <div
                 key={insight.id}
-                className="flex flex-col justify-between rounded-2xl border border-slate-200/90 bg-white p-4 sm:p-5 shadow-2xs hover:shadow-md transition"
+                className="droplet-card flex flex-col justify-between border border-slate-200/90 bg-white/95 p-4 sm:p-5 shadow-2xs hover:shadow-md transition"
               >
                 <div>
                   {/* Top Header: Day Number & Category */}
                   <div className="flex items-center justify-between border-b border-slate-100 pb-2.5 mb-3">
-                    <span className="inline-flex items-center gap-1 rounded-full bg-slate-900 px-2 py-0.5 text-[10px] font-black text-white">
+                    <span className="droplet-pill inline-flex items-center gap-1 bg-slate-900 px-2.5 py-0.5 text-[10px] font-black text-white">
                       <span>{catalogI18n.dayLabel(index + 1)}</span>
                     </span>
 
-                    <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-bold text-slate-700">
+                    <span className="droplet-pill inline-flex items-center gap-1 bg-slate-100 px-2.5 py-0.5 text-[11px] font-bold text-slate-700">
                       <span>{insight.categoryIcon || "💡"}</span>
                       <span>{catalogI18n.categories[insight.category] || insight.categoryLabel || insight.categoryLabelKo || insight.category}</span>
                     </span>
@@ -361,7 +361,7 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
                   ))}
 
                   {/* Principle Box */}
-                  <div className="mt-3 rounded-xl border border-slate-100 bg-slate-50 p-2.5 space-y-1">
+                  <div className="droplet-card mt-3 border border-slate-100 bg-slate-50 p-3 space-y-1">
                     <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
                       📌 {catalogI18n.corePrinciple}
                     </div>
@@ -388,7 +388,7 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
                   </div>
 
                   {/* Action Item Box */}
-                  <div className="mt-2.5 rounded-xl border border-slate-800/10 bg-slate-900 p-2.5 text-white">
+                  <div className="droplet-card mt-2.5 border border-slate-800/10 bg-slate-900 p-3 text-white">
                     <div className="text-[10px] font-black uppercase tracking-wider text-amber-300">
                       🎯 {catalogI18n.actionItem}
                     </div>
@@ -417,7 +417,7 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
                       href={officialLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 rounded-lg bg-emerald-50 px-2 py-1 text-[11px] font-black text-emerald-800 hover:bg-emerald-100 transition"
+                      className="droplet-btn inline-flex items-center gap-1 bg-emerald-50 px-2.5 py-1 text-[11px] font-black text-emerald-800 hover:bg-emerald-100 transition"
                     >
                       <span>🏛️</span>
                       <span>{uiOfficialWebsite}</span>
@@ -430,7 +430,7 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
                   <button
                     type="button"
                     onClick={() => handleCopy(insight, index)}
-                    className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white px-2.5 py-1 text-[11px] font-bold text-slate-700 hover:bg-slate-50 transition cursor-pointer"
+                    className="droplet-btn inline-flex items-center gap-1 border border-slate-200 bg-white px-2.5 py-1 text-[11px] font-bold text-slate-700 hover:bg-slate-50 transition cursor-pointer"
                   >
                     <span>{isCopied ? "✓" : "📋"}</span>
                     <span>{isCopied ? catalogI18n.copied : catalogI18n.share}</span>
@@ -442,7 +442,7 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
         </div>
 
         {filteredItems.length === 0 && (
-          <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-12 text-center text-slate-500">
+          <div className="droplet-card border border-dashed border-slate-300 bg-white p-12 text-center text-slate-500">
             <p className="text-sm font-bold">
               {catalogI18n.noResults}
             </p>

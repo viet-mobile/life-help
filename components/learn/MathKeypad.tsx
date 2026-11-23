@@ -87,7 +87,7 @@ export function MathKeypad({ onInsert, onBackspace, onClear, onSubmit, disabled 
     : (t ? t("keypad.ariaLabel") : (isNonKorean ? "Math Keypad" : "수학 키패드"));
 
   return (
-    <div className="mt-3 w-full max-w-xl mx-auto border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/60 shadow-sm transition-all">
+    <div className="mt-3 w-full max-w-xl mx-auto border border-slate-200 dark:border-slate-800 droplet-card overflow-hidden bg-slate-50/95 dark:bg-slate-900/60 shadow-sm transition-all">
       <div className="flex items-center justify-between px-2.5 xs:px-3 py-1 xs:py-1.5 bg-slate-100 dark:bg-slate-800/80 border-b border-slate-200 dark:border-slate-800 text-[11px] xs:text-xs text-slate-600 dark:text-slate-300">
         <span className="font-semibold flex items-center gap-1 xs:gap-1.5 truncate min-w-0">
           <span>{isScience ? "🔬" : "🧮"}</span>
@@ -137,7 +137,7 @@ export function MathKeypad({ onInsert, onBackspace, onClear, onSubmit, disabled 
                       onInsert(k.val);
                     }
                   }}
-                  className={`h-9 xs:h-10 sm:h-11 rounded-lg text-sm xs:text-base sm:text-lg font-semibold flex items-center justify-center transition-all active:scale-95 shadow-xs ${
+                  className={`h-9 xs:h-10 sm:h-11 droplet-btn text-sm xs:text-base sm:text-lg font-semibold flex items-center justify-center transition-all active:scale-95 shadow-xs ${
                     k.cls
                       ? k.cls
                       : "bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/80 border border-slate-200/80 dark:border-slate-700 text-slate-800 dark:text-slate-100"
@@ -154,7 +154,7 @@ export function MathKeypad({ onInsert, onBackspace, onClear, onSubmit, disabled 
               type="button"
               disabled={disabled}
               onClick={onSubmit}
-              className="w-full min-h-[2.5rem] py-1.5 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs xs:text-sm sm:text-base tracking-wide shadow-sm transition-all active:scale-[0.99] flex flex-col items-center justify-center disabled:opacity-50"
+              className="w-full min-h-[2.5rem] py-1.5 px-3 droplet-btn-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs xs:text-sm sm:text-base tracking-wide shadow-sm transition-all active:scale-[0.99] flex flex-col items-center justify-center disabled:opacity-50"
             >
               <div className="flex items-center gap-1.5">
                 <span>{submitText}</span>

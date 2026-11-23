@@ -42,18 +42,18 @@ export function StudyChooser({ open, onClose }: { open: boolean; onClose: () => 
 
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-slate-900/50 p-3 sm:items-center" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
-      <div role="dialog" aria-modal="true" aria-label={t("study.chooser.aria")} data-testid="study-chooser" className="w-full max-w-md sm:max-w-lg rounded-t-2xl sm:rounded-2xl bg-white p-3.5 sm:p-5 shadow-2xl max-h-[90vh] overflow-y-auto">
+      <div role="dialog" aria-modal="true" aria-label={t("study.chooser.aria")} data-testid="study-chooser" className="droplet-card w-full max-w-md sm:max-w-lg bg-white/95 border border-slate-200/90 p-4 sm:p-6 shadow-2xl max-h-[90vh] overflow-y-auto">
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
             <h2 className="text-lg font-black text-slate-900">{t("study.chooser.title")}</h2>
             <p className="mt-1 text-sm font-semibold text-slate-600">{t("study.chooser.subtitle")}</p>
           </div>
-          <button type="button" onClick={onClose} aria-label={t("study.chooser.close")} className="shrink-0 rounded-full border border-slate-200 px-2.5 py-1 text-sm font-black text-slate-600 hover:bg-slate-100">✕</button>
+          <button type="button" onClick={onClose} aria-label={t("study.chooser.close")} className="droplet-pill shrink-0 border border-slate-200 px-2.5 py-1 text-sm font-black text-slate-600 hover:bg-slate-100 cursor-pointer">✕</button>
         </div>
         <div className="mt-4 grid gap-2.5">
           {options.map((o, i) => (
             <a key={o.id} ref={i === 0 ? firstLink : undefined} href={o.href} data-testid={`study-link-${o.id}`} className={`flex items-center gap-2.5 sm:gap-3.5 rounded-xl border-2 bg-white p-2.5 sm:p-3.5 transition ${o.ring} active:scale-[0.99]`}>
-              <span className="flex h-9 w-9 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-xl sm:text-2xl shadow-2xs" aria-hidden="true">{o.icon}</span>
+              <span className="droplet-icon flex h-9 w-9 sm:h-11 sm:w-11 shrink-0 items-center justify-center bg-slate-100 text-xl sm:text-2xl shadow-2xs" aria-hidden="true">{o.icon}</span>
               <span className="min-w-0 flex-1">
                 <span className="block text-sm sm:text-base font-black text-slate-900">{o.title}</span>
                 <span className="block text-[11px] sm:text-xs font-semibold text-slate-500 line-clamp-1 sm:line-clamp-none">{o.desc}</span>

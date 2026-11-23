@@ -47,17 +47,17 @@ export function ThinkPilot({ initialTasks }: { initialTasks?: ThinkTask[] } = {}
   const shown = allTasks.filter((t) => (subject === "all" || t.subject === subject) && (level === "all" || String(t.level) === level) && (grade === "all" || t.grade === grade));
   return (
     <main className="mx-auto max-w-3xl px-4 py-6 text-slate-900" data-testid="think-list">
-      <div className="flex flex-wrap items-center gap-3"><h1 className="text-2xl font-black">{L0.title}</h1><label className="ml-auto text-sm font-bold">🌐 <select value={lang} onChange={(e) => setLang(e.target.value as ThinkLang)} data-testid="lang-select" className="rounded-lg border px-2 py-1">{THINK_LANGS.map((l) => <option key={l} value={l}>{LANG_NAMES[l]}</option>)}</select></label></div>
+      <div className="flex flex-wrap items-center gap-3"><h1 className="text-2xl font-black">{L0.title}</h1><label className="ml-auto text-sm font-bold">🌐 <select value={lang} onChange={(e) => setLang(e.target.value as ThinkLang)} data-testid="lang-select" className="droplet-input border px-2 py-1">{THINK_LANGS.map((l) => <option key={l} value={l}>{LANG_NAMES[l]}</option>)}</select></label></div>
       <p className="mt-1 text-sm text-slate-600">검토용 과제 {allTasks.length}개(앞의 36개는 AI 독립 검토 2회, 🟡 표시는 초안) · Review pilot · 수량이 아니라 학생이 하는 생각을 보기 위한 시제품입니다. 자동 확인은 정오 확정이 아닙니다.</p>
       <div className="mt-4 flex flex-wrap gap-2" role="group" aria-label={L0.subject}>
         {["all", "math", "english", "korean"].map((s) => (
-          <button key={s} onClick={() => setSubject(s)} aria-pressed={subject === s} className={`rounded-full border px-3 py-1 text-sm font-bold ${subject === s ? "bg-slate-900 text-white" : "bg-white"}`}>{s === "all" ? L0.all : L0[s as "math"]}</button>
+          <button key={s} onClick={() => setSubject(s)} aria-pressed={subject === s} className={`droplet-pill border px-3 py-1 text-sm font-bold ${subject === s ? "bg-slate-900 text-white" : "bg-white"}`}>{s === "all" ? L0.all : L0[s as "math"]}</button>
         ))}
         {["all", "1", "2", "3"].map((s) => (
-          <button key={`l${s}`} onClick={() => setLevel(s)} aria-pressed={level === s} className={`rounded-full border px-3 py-1 text-sm font-bold ${level === s ? "bg-slate-900 text-white" : "bg-white"}`}>{s === "all" ? `${L0.level}: ${L0.all}` : `${L0.level} ${s}`}</button>
+          <button key={`l${s}`} onClick={() => setLevel(s)} aria-pressed={level === s} className={`droplet-pill border px-3 py-1 text-sm font-bold ${level === s ? "bg-slate-900 text-white" : "bg-white"}`}>{s === "all" ? `${L0.level}: ${L0.all}` : `${L0.level} ${s}`}</button>
         ))}
         {grades.length > 0 && (
-          <select value={grade} onChange={(e) => setGrade(e.target.value)} aria-label="grade" data-testid="grade-filter" className="rounded-full border px-3 py-1 text-sm font-bold">
+          <select value={grade} onChange={(e) => setGrade(e.target.value)} aria-label="grade" data-testid="grade-filter" className="droplet-input border px-3 py-1 text-sm font-bold">
             <option value="all">{L0.all} (grade / level)</option>
             {grades.map((g) => <option key={g} value={g}>{g}</option>)}
           </select>
@@ -67,7 +67,7 @@ export function ThinkPilot({ initialTasks }: { initialTasks?: ThinkTask[] } = {}
       <ul className="mt-4 grid gap-3">
         {shown.map((t0) => { const t = localize(t0, lang, overlay).task; return (
           <li key={t.id}>
-            <button onClick={() => open(t.id)} data-testid={`task-${t.id}`} className="w-full rounded-2xl border bg-white p-4 text-left shadow-sm hover:border-slate-900">
+            <button onClick={() => open(t.id)} data-testid={`task-${t.id}`} className="droplet-card w-full border bg-white p-4 text-left shadow-sm hover:border-slate-900">
               <div className="flex items-center gap-2 text-xs font-bold text-slate-500"><span aria-hidden>{SUBJECT_ICON[t.subject]}</span>{t.id} · {t.grade ? `${t.grade} · ` : ""}{formatLevelLabel(t.levelLabel, t.uiLang)} · {formatMinutes(t.minutes, t.uiLang, false)} · {t.format}{t.topic ? ` · ${t.topic}` : ""}{t.status === "draft" ? " · 🟡 draft (not independently reviewed)" : ""}</div>
               <div className="mt-1 text-lg font-black">{t.title}</div>
               <div className="mt-1 text-sm text-slate-600">{t.goal}</div>

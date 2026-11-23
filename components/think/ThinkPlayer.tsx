@@ -27,9 +27,9 @@ export function TaskPlayer({ task, lang, checksOff = false, reviewer, onBack, on
       {/* internal codes (id, format) are shown to reviewers only */}
       <p className="mt-3 text-xs font-bold text-slate-500" data-testid="task-meta">{reviewer ? `${task.id} · ` : ""}{formatLevelLabel(task.levelLabel, shownLang)} · {formatMinutes(task.minutes, shownLang, true)}{reviewer ? ` · ${task.format}` : ""}</p>
       <h1 className="text-2xl font-black">{task.title}</h1>
-      {reviewer && task.status === "draft" && <p className="mt-1 rounded-lg bg-amber-50 p-2 text-xs font-bold text-amber-800" data-testid="draft-note">🟡 {L.draft}</p>}
+      {reviewer && task.status === "draft" && <p className="mt-1 droplet-card bg-amber-50 p-2 text-xs font-bold text-amber-800" data-testid="draft-note">🟡 {L.draft}</p>}
       <p className="mt-2 text-sm" data-testid="prereq"><b>{L.prereq}:</b> {task.prerequisites.join("; ")}</p>
-      <details className="mt-3 rounded-2xl border bg-slate-50 p-4 text-sm" data-testid="task-info" open={reviewer}>
+      <details className="mt-3 droplet-card border bg-slate-50 p-4 text-sm" data-testid="task-info" open={reviewer}>
         <summary className="cursor-pointer font-black">{L.info}</summary>
         <div className="mt-2 grid gap-2">
           <p><b>{L.goal}:</b> {task.goal}</p>
@@ -39,9 +39,9 @@ export function TaskPlayer({ task, lang, checksOff = false, reviewer, onBack, on
         </div>
       </details>
       <p className="mt-2 text-xs text-slate-500">{L.uncertainty}</p>
-      <section className="mt-4 rounded-2xl border-2 border-slate-900 p-4" aria-label="material"><p className="whitespace-pre-wrap text-base leading-relaxed" data-testid="material">{task.material}</p></section>
+      <section className="mt-4 droplet-card border-2 border-slate-900 p-4" aria-label="material"><p className="whitespace-pre-wrap text-base leading-relaxed" data-testid="material">{task.material}</p></section>
       {!started ? (
-        <button className="mt-4 rounded-xl bg-slate-900 px-5 py-3 font-black text-white" onClick={() => setStarted(true)} data-testid="start">{L.start}</button>
+        <button className="mt-4 droplet-btn bg-slate-900 px-5 py-3 font-black text-white" onClick={() => setStarted(true)} data-testid="start">{L.start}</button>
       ) : (
         <div className="mt-4 grid gap-6">
           {task.steps.slice(0, at + 1).map((s, i) => (
@@ -62,8 +62,8 @@ function Hints({ hints, L, id }: { hints: string[]; L: Labels; id: string }) {
   const [n, setN] = useState(0);
   return (
     <div className="grid gap-1" data-testid={`hints-${id}`}>
-      {hints.slice(0, n).map((h, i) => <p key={i} className="rounded-lg bg-amber-50 p-2 text-sm whitespace-pre-line">💡 {h}</p>)}
-      <button type="button" disabled={n >= hints.length} onClick={() => setN(n + 1)} className="w-fit rounded-lg border px-3 py-1 text-sm font-bold disabled:opacity-50" data-testid={`hint-${id}`}>{n >= hints.length && n > 0 ? L.hintNone : `${L.hint} (${n}/${hints.length})`}</button>
+      {hints.slice(0, n).map((h, i) => <p key={i} className="droplet-card bg-amber-50 p-2 text-sm whitespace-pre-line">💡 {h}</p>)}
+      <button type="button" disabled={n >= hints.length} onClick={() => setN(n + 1)} className="droplet-btn w-fit border px-3 py-1 text-sm font-bold disabled:opacity-50" data-testid={`hint-${id}`}>{n >= hints.length && n > 0 ? L.hintNone : `${L.hint} (${n}/${hints.length})`}</button>
     </div>
   );
 }
@@ -72,8 +72,8 @@ function FlagBox({ L, onFlag }: { L: Labels; onFlag: (note: string) => void }) {
   const [note, setNote] = useState(""); const [saved, setSaved] = useState(false);
   return saved ? <p className="text-sm font-bold text-emerald-700" role="status">{L.flagged}</p> : (
     <details className="text-sm"><summary className="cursor-pointer font-bold">{L.flag}</summary>
-      <textarea value={note} onChange={(e) => setNote(e.target.value)} className="mt-1 w-full rounded-lg border p-2" rows={2} aria-label={L.flag} />
-      <button className="mt-1 rounded-lg border px-3 py-1 font-bold" onClick={() => { onFlag(note.trim() || "(no note)"); setSaved(true); }}>OK</button></details>
+      <textarea value={note} onChange={(e) => setNote(e.target.value)} className="mt-1 droplet-input w-full border p-2" rows={2} aria-label={L.flag} />
+      <button className="mt-1 droplet-btn border px-3 py-1 font-bold" onClick={() => { onFlag(note.trim() || "(no note)"); setSaved(true); }}>OK</button></details>
   );
 }
 
@@ -83,7 +83,7 @@ function StepView(p: SV) {
   const [skipped, setSkipped] = useState(false);
   const canSkip = step.scaffold && !p.resolved && !skipped && p.current;
   return (
-    <section className="grid gap-3 rounded-2xl border bg-white p-4" aria-label={`${p.index + 1}/${p.total}`} data-testid={`step-${step.id}`} data-resolved={p.resolved ?? ""}>
+    <section className="droplet-card grid gap-3 border bg-white p-4" aria-label={`${p.index + 1}/${p.total}`} data-testid={`step-${step.id}`} data-resolved={p.resolved ?? ""}>
       <h2 className="text-base font-black whitespace-pre-line">{p.index + 1}/{p.total} · {step.prompt}</h2>
       {skipped ? <p className="text-sm text-slate-500">— {L.skip}</p> : (
         <>
@@ -96,8 +96,8 @@ function StepView(p: SV) {
         </>
       )}
       <div className="flex gap-2">
-        {canSkip && <button className="rounded-lg border px-3 py-1 text-sm font-bold" data-testid={`skip-${step.id}`} onClick={() => { setSkipped(true); p.onResult("skipped"); p.onNext(); }}>{L.skip}</button>}
-        {p.current && p.resolved && !skipped && <button className="rounded-xl bg-slate-900 px-4 py-2 font-black text-white" data-testid={`next-${step.id}`} onClick={p.onNext}>{p.index + 1 >= p.total ? L.finish : L.next}</button>}
+        {canSkip && <button className="droplet-btn border px-3 py-1 text-sm font-bold" data-testid={`skip-${step.id}`} onClick={() => { setSkipped(true); p.onResult("skipped"); p.onNext(); }}>{L.skip}</button>}
+        {p.current && p.resolved && !skipped && <button className="droplet-btn bg-slate-900 px-4 py-2 font-black text-white" data-testid={`next-${step.id}`} onClick={p.onNext}>{p.index + 1 >= p.total ? L.finish : L.next}</button>}
       </div>
     </section>
   );
@@ -106,7 +106,7 @@ function StepView(p: SV) {
 function Feedback({ kind, msg, L }: { kind: "match" | "acceptable" | "not-match"; msg: string; L: Labels }) {
   const cls = kind === "match" ? "bg-emerald-50 border-emerald-300" : kind === "acceptable" ? "bg-sky-50 border-sky-300" : "bg-rose-50 border-rose-300";
   const head = kind === "match" ? `✅ ${L.matchT}` : kind === "acceptable" ? `🟦 ${L.acceptT}` : `↻ ${L.notT}`;
-  return <div role="status" aria-live="polite" className={`rounded-lg border p-3 text-sm ${cls}`} data-testid="feedback" data-kind={kind}><b>{head}</b>{msg ? <p className="mt-1 whitespace-pre-wrap">{msg}</p> : null}</div>;
+  return <div role="status" aria-live="polite" className={`droplet-card border p-3 text-sm ${cls}`} data-testid="feedback" data-kind={kind}><b>{head}</b>{msg ? <p className="mt-1 whitespace-pre-wrap">{msg}</p> : null}</div>;
 }
 
 function ChooseView({ step, L, reviewer, onResult, onFlag }: SV & { step: ChooseStep }) {
@@ -119,13 +119,13 @@ function ChooseView({ step, L, reviewer, onResult, onFlag }: SV & { step: Choose
       <div role={step.multi ? "group" : "radiogroup"} className="grid gap-2">
         {step.options.map((o) => (
           <button key={o.id} type="button" role={step.multi ? "checkbox" : "radio"} aria-checked={sel.includes(o.id)} onClick={() => toggle(o.id)} data-testid={`opt-${o.id}`}
-            className={`rounded-xl border p-3 text-left text-sm whitespace-pre-line ${sel.includes(o.id) ? "border-slate-900 bg-slate-100" : ""}`}>
+            className={`droplet-btn border p-3 text-left text-sm whitespace-pre-line ${sel.includes(o.id) ? "border-slate-900 bg-slate-100" : ""}`}>
             <b className="mr-2" aria-hidden="true">{o.id.toUpperCase()}.</b>{o.text}{reviewer && step.correct.includes(o.id) ? " ✔" : ""}
           </button>
         ))}
       </div>
       {step.multi && <p className="text-xs text-slate-500">{step.multi ? "☑ multiple" : ""}</p>}
-      <button className="w-fit rounded-xl bg-slate-900 px-4 py-2 font-black text-white disabled:opacity-40" disabled={!sel.length} data-testid="check" onClick={() => { const r = checkChoose(step, sel); setRes(r); setTries((t) => t + 1); onResult(r.status === "not-match" ? "surface" : "auto"); }}>{L.check}</button>
+      <button className="w-fit droplet-btn bg-slate-900 px-4 py-2 font-black text-white disabled:opacity-40" disabled={!sel.length} data-testid="check" onClick={() => { const r = checkChoose(step, sel); setRes(r); setTries((t) => t + 1); onResult(r.status === "not-match" ? "surface" : "auto"); }}>{L.check}</button>
       {res && <Feedback kind={res.status} msg={res.status === "not-match" ? res.message : res.message || step.explain} L={L} />}
       {res?.status === "not-match" && tries >= 2 && <Feedback kind="match" msg={step.explain} L={L} />}
       {res && <FlagBox L={L} onFlag={onFlag} />}
@@ -142,10 +142,10 @@ function PickLineView({ step, L, reviewer, onResult, onFlag }: SV & { step: Pick
       <p className="text-xs text-slate-500">{L.pickLine}</p>
       <ol className="grid gap-1" role="radiogroup">
         {step.lines.map((l, i) => (
-          <li key={i}><button type="button" role="radio" aria-checked={sel === i} onClick={() => { setSel(i); setRes(null); }} data-testid={`line-${i}`} className={`w-full rounded-lg border p-2 text-left text-sm whitespace-pre-line ${sel === i ? "border-slate-900 bg-slate-100" : ""}`}>{i + 1}. {l}{reviewer && step.wrong.includes(i) ? " ✘" : ""}</button></li>
+          <li key={i}><button type="button" role="radio" aria-checked={sel === i} onClick={() => { setSel(i); setRes(null); }} data-testid={`line-${i}`} className={`droplet-input w-full border p-2 text-left text-sm whitespace-pre-line ${sel === i ? "border-slate-900 bg-slate-100" : ""}`}>{i + 1}. {l}{reviewer && step.wrong.includes(i) ? " ✘" : ""}</button></li>
         ))}
       </ol>
-      <button className="w-fit rounded-xl bg-slate-900 px-4 py-2 font-black text-white disabled:opacity-40" disabled={sel === null} data-testid="check" onClick={() => { const r = checkPickLine(step, sel); setRes(r); setTries((t) => t + 1); onResult(r.status === "match" ? "auto" : "surface"); }}>{L.check}</button>
+      <button className="w-fit droplet-btn bg-slate-900 px-4 py-2 font-black text-white disabled:opacity-40" disabled={sel === null} data-testid="check" onClick={() => { const r = checkPickLine(step, sel); setRes(r); setTries((t) => t + 1); onResult(r.status === "match" ? "auto" : "surface"); }}>{L.check}</button>
       {res && <Feedback kind={res.status} msg={res.message} L={L} />}
       {res?.status === "not-match" && tries >= 2 && <Feedback kind="match" msg={step.explain} L={L} />}
       {res && <FlagBox L={L} onFlag={onFlag} />}
@@ -160,10 +160,10 @@ function WriteBlock({ step, L, onResult, onFlag, reviewer, checksOff }: { step: 
   const r = useMemo(() => (shown ? checkWrite(step, text) : null), [shown, step, text]);
   return (
     <div className="grid gap-2">
-      <textarea value={text} onChange={(e) => { setText(e.target.value); }} rows={4} placeholder={step.placeholder} aria-label={step.prompt} data-testid="write" dir="auto" className="w-full rounded-xl border p-3 text-sm" />
+      <textarea value={text} onChange={(e) => { setText(e.target.value); }} rows={4} placeholder={step.placeholder} aria-label={step.prompt} data-testid="write" dir="auto" className="droplet-input w-full border p-3 text-sm" />
       <div className="flex gap-2">
-        <button className="rounded-xl bg-slate-900 px-4 py-2 font-black text-white disabled:opacity-40" disabled={!text.trim()} data-testid="check" onClick={() => { setShown(true); onResult("surface"); }}>{L.check}</button>
-        {shown && <button className="rounded-xl border px-4 py-2 font-bold" onClick={() => setShown(false)}>{L.retry}</button>}
+        <button className="droplet-btn bg-slate-900 px-4 py-2 font-black text-white disabled:opacity-40" disabled={!text.trim()} data-testid="check" onClick={() => { setShown(true); onResult("surface"); }}>{L.check}</button>
+        {shown && <button className="droplet-btn border px-4 py-2 font-bold" onClick={() => setShown(false)}>{L.retry}</button>}
       </div>
       {shown && r && (
         <div className="grid gap-2" data-testid="write-result">
@@ -174,7 +174,7 @@ function WriteBlock({ step, L, onResult, onFlag, reviewer, checksOff }: { step: 
               {!r.longEnough && <li>☐ {L.enterAnswer}</li>}
             </ul>
           )}
-          <details open className="rounded-lg border p-3"><summary className="cursor-pointer text-sm font-black">{L.model}</summary>
+          <details open className="droplet-card border p-3"><summary className="cursor-pointer text-sm font-black">{L.model}</summary>
             <ul className="mt-2 grid gap-2 text-sm">{step.modelAnswers.map((m, i) => <li key={i} className="rounded-lg bg-emerald-50 p-2 whitespace-pre-line" dir="auto">{m.text}{m.note ? <span className="block text-xs text-slate-500">{m.note}</span> : null}</li>)}</ul></details>
           <fieldset className="grid gap-1 text-sm"><legend className="font-black">{L.selfAssess}</legend>
             {step.selfAssess.map((s, i) => <label key={i} className="flex gap-2 whitespace-pre-line"><input type="checkbox" checked={ticks[i]} onChange={() => setTicks((t) => t.map((x, j) => (j === i ? !x : x)))} /><span>{s}</span></label>)}</fieldset>
@@ -197,13 +197,13 @@ function BuildView({ step, L, reviewer, checksOff, onResult, onFlag }: SV & { st
   return (
     <div className="grid gap-3">
       {rows.map((r, i) => (
-        <div key={i} className="grid gap-1 rounded-xl border p-2" data-testid={`row-${i}`}>
+        <div key={i} className="droplet-card grid gap-1 border p-2" data-testid={`row-${i}`}>
           <div className="flex flex-wrap items-end gap-2">
             {step.vars.map((v) => (
               <label key={v.name} className="grid text-xs font-bold">{v.label}
-                <input inputMode="decimal" value={r[v.name]} onChange={(e) => { setChecked(false); setRows((rs) => rs.map((x, j) => (j === i ? { ...x, [v.name]: e.target.value } : x))); }} aria-label={`${v.label} #${i + 1}`} data-testid={`in-${v.name}-${i}`} className="w-24 rounded-lg border p-2 text-sm" /></label>
+                <input inputMode="decimal" value={r[v.name]} onChange={(e) => { setChecked(false); setRows((rs) => rs.map((x, j) => (j === i ? { ...x, [v.name]: e.target.value } : x))); }} aria-label={`${v.label} #${i + 1}`} data-testid={`in-${v.name}-${i}`} className="droplet-input w-24 border p-2 text-sm" /></label>
             ))}
-            {rows.length > 1 && <button className="rounded-lg border px-2 py-1 text-xs" onClick={() => { setChecked(false); setRows((rs) => rs.filter((_, j) => j !== i)); }}>{L.remove}</button>}
+            {rows.length > 1 && <button className="droplet-btn border px-2 py-1 text-xs" onClick={() => { setChecked(false); setRows((rs) => rs.filter((_, j) => j !== i)); }}>{L.remove}</button>}
           </div>
           {out && (
             <ul className="text-xs" aria-live="polite">
@@ -213,8 +213,8 @@ function BuildView({ step, L, reviewer, checksOff, onResult, onFlag }: SV & { st
         </div>
       ))}
       <div className="flex flex-wrap gap-2">
-        <button className="rounded-lg border px-3 py-1 text-sm font-bold" onClick={() => { setChecked(false); setRows((rs) => [...rs, blank()]); }}>{L.add}</button>
-        <button className="rounded-xl bg-slate-900 px-4 py-2 font-black text-white" data-testid="check" onClick={() => { setChecked(true); const o = checkBuild(step, nums); onResult(o.done ? "auto" : "surface"); }}>{L.check}</button>
+        <button className="droplet-btn border px-3 py-1 text-sm font-bold" onClick={() => { setChecked(false); setRows((rs) => [...rs, blank()]); }}>{L.add}</button>
+        <button className="droplet-btn bg-slate-900 px-4 py-2 font-black text-white" data-testid="check" onClick={() => { setChecked(true); const o = checkBuild(step, nums); onResult(o.done ? "auto" : "surface"); }}>{L.check}</button>
       </div>
       <p className="text-xs text-slate-600" data-testid="build-count">{fmt(L.needN, { n: step.need, k: out?.valid ?? 0 })}</p>
       {out?.done && <Feedback kind="match" msg={step.explain} L={L} />}
@@ -235,21 +235,21 @@ function RevealView({ step, L, onResult, onFlag }: SV & { step: RevealStep }) {
   return (
     <div className="grid gap-3">
       {step.stages.slice(0, stage + 1).map((st, i) => (
-        <div key={i} className="grid gap-2 rounded-xl border p-3" data-testid={`stage-${i}`}>
+        <div key={i} className="droplet-card grid gap-2 border p-3" data-testid={`stage-${i}`}>
           <p className="whitespace-pre-wrap text-sm"><b>#{i + 1}</b> {st.info}</p>
           <p className="text-sm font-bold">{st.ask}</p>
           <div role="radiogroup" className="grid gap-1">
             {st.options.map((o) => (
-              <button key={o.id} role="radio" aria-checked={picks[i] === o.id} disabled={committed[i]} onClick={() => setPicks((p) => p.map((x, j) => (j === i ? o.id : x)))} data-testid={`s${i}-${o.id}`} className={`rounded-lg border p-2 text-left text-sm ${picks[i] === o.id ? "border-slate-900 bg-slate-100" : ""}`}><b className="mr-2" aria-hidden="true">{o.id.toUpperCase()}.</b>{o.text}</button>
+              <button key={o.id} role="radio" aria-checked={picks[i] === o.id} disabled={committed[i]} onClick={() => setPicks((p) => p.map((x, j) => (j === i ? o.id : x)))} data-testid={`s${i}-${o.id}`} className={`droplet-btn border p-2 text-left text-sm ${picks[i] === o.id ? "border-slate-900 bg-slate-100" : ""}`}><b className="mr-2" aria-hidden="true">{o.id.toUpperCase()}.</b>{o.text}</button>
             ))}
           </div>
           {!committed[i] ? (
-            <button className="w-fit rounded-xl bg-slate-900 px-4 py-2 font-black text-white disabled:opacity-40" disabled={!picks[i]} data-testid={`commit-${i}`} onClick={() => { setCommitted((c) => c.map((x, j) => (j === i ? true : x))); }}>{L.check}</button>
+            <button className="w-fit droplet-btn bg-slate-900 px-4 py-2 font-black text-white disabled:opacity-40" disabled={!picks[i]} data-testid={`commit-${i}`} onClick={() => { setCommitted((c) => c.map((x, j) => (j === i ? true : x))); }}>{L.check}</button>
           ) : (
             <>
               <Feedback kind={checkRevealStage(st, picks[i]) === "reasonable" ? "acceptable" : "not-match"} msg={`${st.options.find((o) => o.id === picks[i])?.reveals ?? ""} ${st.after}`.trim()} L={L} />
               {i > 0 && picks[i] !== picks[i - 1] && <p className="text-xs text-slate-600">↺ {L.before}: {previousPredictionText(step, i, picks[i - 1]) ?? L.notAnswered}</p>}
-              {i === stage && i + 1 < step.stages.length && <button className="w-fit rounded-lg border px-3 py-1 text-sm font-bold" data-testid={`more-${i}`} onClick={() => setStage(i + 1)}>{L.reveal}</button>}
+              {i === stage && i + 1 < step.stages.length && <button className="droplet-btn w-fit border px-3 py-1 text-sm font-bold" data-testid={`more-${i}`} onClick={() => setStage(i + 1)}>{L.reveal}</button>}
             </>
           )}
         </div>
@@ -262,7 +262,7 @@ function RevealView({ step, L, onResult, onFlag }: SV & { step: RevealStep }) {
 
 function Summary({ task, L, done, reviewer }: { task: ThinkTask; L: Labels; done: Record<string, string>; reviewer: boolean }) {
   return (
-    <section className="grid gap-3 rounded-2xl border-2 border-slate-900 p-4" data-testid="summary">
+    <section className="grid gap-3 droplet-card border-2 border-slate-900 p-4" data-testid="summary">
       <h2 className="text-lg font-black">{L.summary}</h2>
       <ul className="text-sm">{task.steps.map((s, i) => <li key={s.id}>{done[s.id] === "auto" ? "✅" : done[s.id] === "skipped" ? "⏭" : "◐"} {reviewer ? s.id : i + 1}: {done[s.id] === "auto" ? L.matchT : done[s.id] === "skipped" ? L.skip : L.needsHuman}</li>)}</ul>
       {reviewer && (
@@ -284,8 +284,8 @@ function Summary({ task, L, done, reviewer }: { task: ThinkTask; L: Labels; done
 function Actions({ L, onNext, onBack, where }: { L: Labels; onNext?: () => void; onBack: () => void; where: "top" | "bottom" }) {
   return (
     <div className="flex flex-wrap gap-3" data-testid={`think-actions-${where}`}>
-      {onNext && <button type="button" className="rounded-xl bg-slate-900 px-5 py-3 font-black text-white" data-testid={`think-next-${where}`} onClick={onNext}>{L.nextTask}</button>}
-      <button type="button" className="rounded-xl border-2 border-slate-900 px-5 py-3 font-black" data-testid={`think-tolist-${where}`} onClick={onBack}>{L.toList}</button>
+      {onNext && <button type="button" className="droplet-btn bg-slate-900 px-5 py-3 font-black text-white" data-testid={`think-next-${where}`} onClick={onNext}>{L.nextTask}</button>}
+      <button type="button" className="droplet-btn border-2 border-slate-900 px-5 py-3 font-black" data-testid={`think-tolist-${where}`} onClick={onBack}>{L.toList}</button>
     </div>
   );
 }
