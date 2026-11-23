@@ -1280,7 +1280,7 @@ CHEMISTRY_DATA = [
     # 고3: 화학Ⅱ 반응 속도·화학 평형·전기화학
     {
         "id": "chemistry-h3", "grade": "H3", "title": "고3 화학 · 화학Ⅱ: 반응 속도·화학 평형·전기화학",
-        "world": {"name": "화학 평형의 대성당", "emoji": "⚖️", "tagline": "르샤틀리에 원리, 반응 엔탈피, 화학 전지의 심오한 원리를 파헤쳐요"},
+        "world": {"name": "화학 평형의 전당", "emoji": "⚖️", "tagline": "르샤틀리에 원리, 반응 엔탈피, 화학 전지의 심오한 원리를 파헤쳐요"},
         "unit": {"id": "chm-u-h3", "title": "화학 평형과 반응 속도"},
         "lesson": {
             "id": "chm-h3-l1", "title": "반응 속도, 르샤틀리에 원리와 화학 전지", "skillId": "chm.h3.equ",

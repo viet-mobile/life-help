@@ -47,7 +47,7 @@ export function CoursePath({ course }: { course: Course }) {
     setSemester(n);
     try { window.localStorage.setItem(SEMESTER_KEY, String(n)); } catch { /* storage unavailable */ }
   };
-  const visible = (id: string) => !split || ((semesterOf(site, id) as Semester) === 0 || semesterOf(site, id) === semester);
+  const visible = (id: string) => !split || semesterOf(site, id) === semester;
   const nodes = new Map(buildPath(state, index).map((n) => [n.lessonId, n]));
   // when Premium is switched off (every item Free) the Free / Premium chips would only be noise
   const showTier = plan.courses.some((c) => c.premiumUnits > 0);
@@ -144,7 +144,7 @@ export function CoursePath({ course }: { course: Course }) {
                         );
                       })}
                       {site === "korean" && <> <BandChip lessonId={lesson.id} t={t} /></>}
-                      {split && semesterOf(site, lesson.id) === 0 && <span className="l-muted"> · {t("semester.shared")}</span>}
+                      
                       {showTier && " "}
                       {showTier && <span className="l-tier" data-tier={tier.toLowerCase()} data-testid={`tier-${lesson.id}`}>{tier === "PARTIAL" ? `${t("premium.free")} + ${t("premium.premium")}` : t(premium ? "premium.premium" : "premium.free")}</span>}
                       <br />

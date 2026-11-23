@@ -23,7 +23,7 @@ import { SkillBars } from "./SkillBars";
 import { MathMotionEntry } from "./MathMotion";
 
 export function Dashboard() {
-  const { state, index, t, href, mode, accountsEnabled, site, locale, secondaryIndex, tSecondary, isBilingual } = useLearner();
+  const { state, index, t, href, mode, accountsEnabled, site, locale, secondaryIndex, secondaryIndices, secondaryTranslators, secondaryLocales, tSecondary, isBilingual } = useLearner();
   const thinkLang = thinkLangFor(locale, site);
   const thinkText = hubLabels(t);
   const cadence = flowView(readLedger(site)); // counted per distinct solved / revealed question, retries never count (lib/think/flow.ts)
@@ -107,12 +107,42 @@ export function Dashboard() {
       {hasGap(coverage) && <div className="l-panel l-panel-hint" role="note" data-testid="coverage-notice">{t("dash.coverage", { served: coverage.served.toLocaleString(locale), total: coverage.total.toLocaleString(locale) })}</div>}
 
       <Link className="l-card l-stack" data-testid="think-card" href={href("/think")} style={{ textDecoration: "none", color: "inherit" }}>
-        <h2 className="l-h2">🧠 {thinkText.title}</h2>
-        <p className="l-muted">{thinkText.intro}</p>
-        <p data-testid="think-cadence" style={cadence.owed > 0 ? { fontWeight: 600 } : undefined} className={cadence.owed > 0 ? undefined : "l-muted"}>
-          {cadence.owed > 0 ? CADENCE_TEXT[thinkLang].unlocked(cadence.owed) : CADENCE_TEXT[thinkLang].toNext(cadence.toNext)}
+        <h2 className="l-h2">
+          <span>🧠 {thinkText.title}</span>
+          {isBilingual && secondaryTranslators && secondaryTranslators.length > 0 && secondaryTranslators.map(({ locale: secLoc, t: secT }) => (
+            <span key={secLoc} style={{ display: "block", fontSize: "0.8em", fontWeight: 400, opacity: 0.85, marginTop: "0.2rem" }}>
+              🧠 {hubLabels(secT).title}
+            </span>
+          ))}
+        </h2>
+        <p className="l-muted">
+          <span>{thinkText.intro}</span>
+          {isBilingual && secondaryTranslators && secondaryTranslators.length > 0 && secondaryTranslators.map(({ locale: secLoc, t: secT }) => (
+            <span key={secLoc} style={{ display: "block", fontSize: "0.85em", opacity: 0.85, marginTop: "0.2rem" }}>
+              {hubLabels(secT).intro}
+            </span>
+          ))}
         </p>
-        <span className="l-btn l-btn-ghost l-btn-block">{thinkText.tryOne}</span>
+        <p data-testid="think-cadence" style={cadence.owed > 0 ? { fontWeight: 600 } : undefined} className={cadence.owed > 0 ? undefined : "l-muted"}>
+          <span>{cadence.owed > 0 ? CADENCE_TEXT[thinkLang].unlocked(cadence.owed) : CADENCE_TEXT[thinkLang].toNext(cadence.toNext)}</span>
+          {isBilingual && secondaryLocales && secondaryLocales.map((secLoc) => {
+            const secThinkLang = thinkLangFor(secLoc, site);
+            if (secThinkLang === thinkLang) return null;
+            return (
+              <span key={secLoc} style={{ display: "block", fontSize: "0.85em", opacity: 0.85, marginTop: "0.2rem" }}>
+                {cadence.owed > 0 ? CADENCE_TEXT[secThinkLang].unlocked(cadence.owed) : CADENCE_TEXT[secThinkLang].toNext(cadence.toNext)}
+              </span>
+            );
+          })}
+        </p>
+        <span className="l-btn l-btn-ghost l-btn-block">
+          <span>{thinkText.tryOne}</span>
+          {isBilingual && secondaryTranslators && secondaryTranslators.length > 0 && secondaryTranslators.map(({ locale: secLoc, t: secT }) => (
+            <span key={secLoc} style={{ fontSize: "0.85em", opacity: 0.85, marginLeft: "0.4rem" }}>
+              · {hubLabels(secT).tryOne}
+            </span>
+          ))}
+        </span>
       </Link>
 
       <ThinkQuickEntry />
@@ -120,7 +150,12 @@ export function Dashboard() {
 
       {!state.diagnosticDone && (
         <Link className="l-card" href={href("/diagnostic")} style={{ textDecoration: "none", color: "inherit", display: "block", borderColor: "var(--l-accent)" }}>
-          🧭 <strong>{t("dash.diagnostic.cta")}</strong>
+          <div>🧭 <strong>{t("dash.diagnostic.cta")}</strong></div>
+          {isBilingual && secondaryTranslators && secondaryTranslators.length > 0 && secondaryTranslators.map(({ locale: secLoc, t: secT }) => (
+            <div key={secLoc} style={{ fontSize: "0.85em", opacity: 0.85, marginTop: "0.2rem" }}>
+              🧭 <strong>{secT("dash.diagnostic.cta")}</strong>
+            </div>
+          ))}
         </Link>
       )}
 
@@ -187,9 +222,26 @@ export function Dashboard() {
       <section className="l-card l-stack" aria-labelledby="sk-h">
         <h2 id="sk-h" className="l-h2">
           <span>{t("dash.skills")}</span>
-          {isBilingual && <span style={{ fontSize: "0.8em", fontWeight: 400, opacity: 0.85, marginLeft: "0.4rem" }}>({tSecondary("dash.skills")})</span>}
+          {isBilingual && secondaryTranslators && secondaryTranslators.length > 0 ? (
+            secondaryTranslators.map(({ locale: secLoc, t: secT }) => (
+              <span key={secLoc} style={{ fontSize: "0.8em", fontWeight: 400, opacity: 0.85, marginLeft: "0.4rem" }}>
+                ({secT("dash.skills")})
+              </span>
+            ))
+          ) : isBilingual ? (
+            <span style={{ fontSize: "0.8em", fontWeight: 400, opacity: 0.85, marginLeft: "0.4rem" }}>({tSecondary("dash.skills")})</span>
+          ) : null}
         </h2>
-        {practicedSkillIds.length === 0 ? <p className="l-muted">{t("dash.skills.empty")}</p> : null}
+        {practicedSkillIds.length === 0 ? (
+          <div>
+            <p className="l-muted">{t("dash.skills.empty")}</p>
+            {isBilingual && secondaryTranslators && secondaryTranslators.length > 0 && secondaryTranslators.map(({ locale: secLoc, t: secT }) => (
+              <p key={secLoc} className="l-muted" style={{ fontSize: "0.85em", marginTop: "-0.25rem" }}>
+                {secT("dash.skills.empty")}
+              </p>
+            ))}
+          </div>
+        ) : null}
         <SkillBars />
       </section>
 
@@ -197,17 +249,37 @@ export function Dashboard() {
         <section className="l-card l-stack" aria-labelledby="rc-h">
           <h2 id="rc-h" className="l-h2">
             <span>🎖️ {t("dash.recent")}</span>
-            {isBilingual && <span style={{ fontSize: "0.8em", fontWeight: 400, opacity: 0.85, marginLeft: "0.4rem" }}>({tSecondary("dash.recent")})</span>}
+            {isBilingual && secondaryTranslators && secondaryTranslators.length > 0 ? (
+              secondaryTranslators.map(({ locale: secLoc, t: secT }) => (
+                <span key={secLoc} style={{ fontSize: "0.8em", fontWeight: 400, opacity: 0.85, marginLeft: "0.4rem" }}>
+                  ({secT("dash.recent")})
+                </span>
+              ))
+            ) : isBilingual ? (
+              <span style={{ fontSize: "0.8em", fontWeight: 400, opacity: 0.85, marginLeft: "0.4rem" }}>({tSecondary("dash.recent")})</span>
+            ) : null}
           </h2>
           {badgeDef ? (
             <div>
               <p><span aria-hidden="true" style={{ fontSize: "1.6rem" }}>{badgeDef.emoji}</span> <strong>{t(`ach.${badgeDef.code}.title` as never)}</strong></p>
-              {isBilingual && <p style={{ fontSize: "0.85em", opacity: 0.85 }}><strong>{tSecondary(`ach.${badgeDef.code}.title` as never)}</strong></p>}
+              {isBilingual && secondaryTranslators && secondaryTranslators.length > 0 ? (
+                secondaryTranslators.map(({ locale: secLoc, t: secT }) => (
+                  <p key={secLoc} style={{ fontSize: "0.85em", opacity: 0.85 }}><strong>{secT(`ach.${badgeDef.code}.title` as never)}</strong></p>
+                ))
+              ) : isBilingual ? (
+                <p style={{ fontSize: "0.85em", opacity: 0.85 }}><strong>{tSecondary(`ach.${badgeDef.code}.title` as never)}</strong></p>
+              ) : null}
             </div>
           ) : (
             <div>
               <p className="l-muted">{t("dash.recent.empty")}</p>
-              {isBilingual && <p className="l-muted" style={{ fontSize: "0.85em" }}>{tSecondary("dash.recent.empty")}</p>}
+              {isBilingual && secondaryTranslators && secondaryTranslators.length > 0 ? (
+                secondaryTranslators.map(({ locale: secLoc, t: secT }) => (
+                  <p key={secLoc} className="l-muted" style={{ fontSize: "0.85em" }}>{secT("dash.recent.empty")}</p>
+                ))
+              ) : isBilingual ? (
+                <p className="l-muted" style={{ fontSize: "0.85em" }}>{tSecondary("dash.recent.empty")}</p>
+              ) : null}
             </div>
           )}
         </section>
@@ -215,15 +287,37 @@ export function Dashboard() {
           <section className="l-card l-stack" aria-labelledby="rec-h">
             <h2 id="rec-h" className="l-h2">
               <span>✨ {t("dash.recommended")}</span>
-              {isBilingual && <span style={{ fontSize: "0.8em", fontWeight: 400, opacity: 0.85, marginLeft: "0.4rem" }}>({tSecondary("dash.recommended")})</span>}
+              {isBilingual && secondaryTranslators && secondaryTranslators.length > 0 ? (
+                secondaryTranslators.map(({ locale: secLoc, t: secT }) => (
+                  <span key={secLoc} style={{ fontSize: "0.8em", fontWeight: 400, opacity: 0.85, marginLeft: "0.4rem" }}>
+                    ({secT("dash.recommended")})
+                  </span>
+                ))
+              ) : isBilingual ? (
+                <span style={{ fontSize: "0.8em", fontWeight: 400, opacity: 0.85, marginLeft: "0.4rem" }}>({tSecondary("dash.recommended")})</span>
+              ) : null}
             </h2>
             <p>{recommended.title}</p>
-            {isBilingual && secondaryIndex?.skills.get(recommended.id) && (
+            {isBilingual && secondaryIndices && secondaryIndices.length > 0 ? (
+              secondaryIndices.map(({ locale: secLoc, index: secIdx }) => {
+                const secTitle = secIdx.skills.get(recommended.id)?.title;
+                if (!secTitle || secTitle === recommended.title) return null;
+                return (
+                  <p key={secLoc} style={{ fontSize: "0.85em", opacity: 0.85, marginTop: "-0.25rem" }}>{secTitle}</p>
+                );
+              })
+            ) : isBilingual && secondaryIndex?.skills.get(recommended.id) ? (
               <p style={{ fontSize: "0.85em", opacity: 0.85, marginTop: "-0.25rem" }}>{secondaryIndex.skills.get(recommended.id)?.title}</p>
-            )}
+            ) : null}
             <Link className="l-btn l-btn-ghost l-btn-block" href={href(`/practice?kind=practice&skill=${encodeURIComponent(recommended.id)}`)}>
               <span>{t("lesson.begin")}</span>
-              {isBilingual && <span style={{ fontSize: "0.85em", opacity: 0.85, marginLeft: "0.4rem" }}>· {tSecondary("lesson.begin")}</span>}
+              {isBilingual && secondaryTranslators && secondaryTranslators.length > 0 ? (
+                secondaryTranslators.map(({ locale: secLoc, t: secT }) => (
+                  <span key={secLoc} style={{ fontSize: "0.85em", opacity: 0.85, marginLeft: "0.4rem" }}>· {secT("lesson.begin")}</span>
+                ))
+              ) : isBilingual ? (
+                <span style={{ fontSize: "0.85em", opacity: 0.85, marginLeft: "0.4rem" }}>· {tSecondary("lesson.begin")}</span>
+              ) : null}
             </Link>
           </section>
         )}
@@ -232,11 +326,23 @@ export function Dashboard() {
       {mode === "guest" && (
         <section className="l-card l-stack">
           <p className="l-muted">{t("dash.guest")}</p>
-          {isBilingual && <p className="l-muted" style={{ fontSize: "0.85em", marginTop: "-0.25rem" }}>{tSecondary("dash.guest")}</p>}
+          {isBilingual && secondaryTranslators && secondaryTranslators.length > 0 ? (
+            secondaryTranslators.map(({ locale: secLoc, t: secT }) => (
+              <p key={secLoc} className="l-muted" style={{ fontSize: "0.85em", marginTop: "-0.25rem" }}>{secT("dash.guest")}</p>
+            ))
+          ) : isBilingual ? (
+            <p className="l-muted" style={{ fontSize: "0.85em", marginTop: "-0.25rem" }}>{tSecondary("dash.guest")}</p>
+          ) : null}
           {accountsEnabled && (
             <Link className="l-btn l-btn-ghost" href={href("/login")}>
               <span>{t("dash.guest.cta")}</span>
-              {isBilingual && <span style={{ fontSize: "0.85em", opacity: 0.85, marginLeft: "0.4rem" }}>· {tSecondary("dash.guest.cta")}</span>}
+              {isBilingual && secondaryTranslators && secondaryTranslators.length > 0 ? (
+                secondaryTranslators.map(({ locale: secLoc, t: secT }) => (
+                  <span key={secLoc} style={{ fontSize: "0.85em", opacity: 0.85, marginLeft: "0.4rem" }}>· {secT("dash.guest.cta")}</span>
+                ))
+              ) : isBilingual ? (
+                <span style={{ fontSize: "0.85em", opacity: 0.85, marginLeft: "0.4rem" }}>· {tSecondary("dash.guest.cta")}</span>
+              ) : null}
             </Link>
           )}
         </section>

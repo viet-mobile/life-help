@@ -40,16 +40,20 @@ export function PlayShell({ children }: { children: ReactNode }) {
       <a className="l-skip" href="#main">{t("nav.skip")}</a>
       <header className="l-topbar">
         <div className="l-topbar-inner">
-          <a
-            href={mainHomeUrl}
-            className="droplet-pill inline-flex items-center gap-1 px-2.5 py-1 bg-white/90 hover:bg-white text-slate-900 rounded-full font-black text-xs transition border border-slate-200 shadow-2xs mr-1 shrink-0"
-            title={locale === "ko" ? "LIFE.HELP 메인 홈으로 이동" : "Return to LIFE.HELP Main Portal"}
-          >
-            <span>🏠</span>
-            <span className="hidden sm:inline">LIFE.HELP</span>
-          </a>
-          <Link className="l-brand" href={href("/dashboard")}><BrandLogo site={site} name={t(siteConfig(site).brandKey)} /></Link>
-          <LocaleSwitch compact />
+          <div className="flex items-center gap-2.5 min-w-0 shrink-0">
+            <a
+              href={mainHomeUrl}
+              className="droplet-pill inline-flex items-center gap-1 px-2.5 py-1 bg-white/90 hover:bg-white text-slate-900 rounded-full font-black text-xs transition border border-slate-200 shadow-2xs shrink-0"
+              title={locale === "ko" ? "LIFE.HELP 메인 홈으로 이동" : "Return to LIFE.HELP Main Portal"}
+            >
+              <span>🏠</span>
+              <span className="hidden sm:inline">LIFE.HELP</span>
+            </a>
+            <Link className="l-brand shrink-0" href={href("/dashboard")}>
+              <BrandLogo site={site} name={t(siteConfig(site).brandKey)} />
+            </Link>
+            <LocaleSwitch compact />
+          </div>
           <div className="l-stats" aria-label="status">
             <span className="l-stat" title={t("dash.streak", { n: streak })}>🔥 {streak}</span>
             <span className="l-stat">Lv.{level.level}</span>

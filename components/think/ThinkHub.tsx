@@ -32,7 +32,7 @@ const bandOf = (g: string): 1 | 2 | 3 => (g.startsWith("K") ? (Number(g.slice(1)
  * kept on this device - the tasks write no scores, XP or accounts data.
  */
 export function ThinkHub() {
-  const { site, state, locale, isBilingual: globalIsBilingual, secondaryLocales, href, ready, t } = useLearner();
+  const { site, state, locale, isBilingual: globalIsBilingual, secondaryLocales, secondaryTranslators, href, ready, t } = useLearner();
   const router = useRouter();
   const params = useSearchParams();
   const ownGrade = (state.profile?.grade ?? siteConfig(site).levels[0]) as string;
@@ -151,6 +151,14 @@ export function ThinkHub() {
   if (loadError) return <div className="l-wrap" role="alert"><p>{loadText[1]}</p><button className="l-btn" onClick={() => setRetry(n => n + 1)}>{loadText[2]}</button></div>;
   if (loading) return <div className="l-wrap" role="status">{loadText[0]}</div>;
   // "next challenge": the next not-yet-tried task of the list the learner is looking at (this grade / semester / field), else any other untried one
+    const isMulti = globalIsBilingual || bilingual;
+  const getSecTasks = (tTask: ThinkTask) => {
+    if (!isMulti || secOverlays.length === 0) return [];
+    const raw = tasks.find((t) => t.id === tTask.id) ?? tTask;
+    return secOverlays
+      .map((so) => ({ lang: so.lang, loc: localizeFor(raw, so.lang, { primary: so.primary, fallback: so.fallback }) }))
+      .filter((x) => x.loc.translated && x.loc.task.title !== tTask.title);
+  };
   const order = shown.map((x) => x.task.id);
   const nextId = current ? (order.slice(order.indexOf(current.task.id) + 1).find((id) => !done[id]) ?? order.find((id) => id !== current.task.id && !done[id]) ?? null) : null;
   if (current) {
@@ -188,8 +196,22 @@ export function ThinkHub() {
   const doneCount = shown.filter((x) => done[x.task.id]).length;
   return (
     <div className="l-wrap l-wrap-wide l-stack" data-testid="think-hub">
-      <h1 className="l-h1">🧠 {H.title}</h1>
-      <p className="l-muted">{H.intro}</p>
+      <h1 className="l-h1">
+        <div>🧠 {H.title}</div>
+        {isMulti && secondaryTranslators && secondaryTranslators.length > 0 && secondaryTranslators.map(({ locale: secLoc, t: secT }) => (
+          <div key={secLoc} style={{ fontSize: "0.75em", fontWeight: 400, opacity: 0.85, marginTop: "0.2rem" }}>
+            🧠 {hubLabels(secT).title}
+          </div>
+        ))}
+      </h1>
+      <p className="l-muted">
+        <span>{H.intro}</span>
+        {isMulti && secondaryTranslators && secondaryTranslators.length > 0 && secondaryTranslators.map(({ locale: secLoc, t: secT }) => (
+          <span key={secLoc} style={{ display: "block", fontSize: "0.9em", opacity: 0.85, marginTop: "0.2rem" }}>
+            {hubLabels(secT).intro}
+          </span>
+        ))}
+      </p>
       <div className="l-card l-stack">
         <label className="l-stack" style={{ gap: 4 }}>
           <span className="l-muted">{H.grade}</span>
@@ -220,19 +242,62 @@ export function ThinkHub() {
       </div>
       {(bossSlots.length > 0 || Object.keys(trophies).length > 0) && (
         <section className="l-card l-stack" data-testid="think-boss" aria-labelledby="boss-h" style={{ borderColor: "var(--l-accent)" }}>
-          <h2 id="boss-h" className="l-h2">👑 {BT.final}</h2>
+          <h2 id="boss-h" className="l-h2">
+            <div>👑 {BT.final}</div>
+            {isMulti && secondaryTranslators && secondaryTranslators.length > 0 && secondaryTranslators.map(({ locale: secLoc }) => {
+              const secLang = thinkLangFor(secLoc, site);
+              const secBT = BOSS_TEXT[secLang] ?? BOSS_TEXT.en;
+              return (
+                <div key={secLoc} style={{ fontSize: "0.8em", fontWeight: 400, opacity: 0.85, marginTop: "0.15rem" }}>
+                  👑 {secBT.final}
+                </div>
+              );
+            })}
+          </h2>
           {won && <div className="l-panel l-panel-hint" role="status" data-testid="boss-reward">🏆 {BT.reward}</div>}
           {bossSlots.map(({ key, task }) => {
             const prog = bossProgress(key, state.lessons ?? {});
             const beaten = trophies[key];
+            const secList = getSecTasks(task!);
             return (
               <button key={key} type="button" className="l-card" disabled={!prog.open} data-testid={`boss-${key}`} data-state={beaten ? "defeated" : prog.open ? "open" : "locked"}
                 style={{ textAlign: "left", width: "100%", cursor: prog.open ? "pointer" : "not-allowed", opacity: prog.open ? 1 : 0.65, display: "block" }}
                 onClick={() => router.push(href(`/think?task=${encodeURIComponent(task!.id)}`))}>
                 <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-                  <div className="l-muted" style={{ fontSize: 13 }}>{beaten ? `✅ ${BT.defeated} · ` : prog.open ? "⚔️ " : "🔒 "}{slotName(key)}</div>
-                  <strong style={{ display: "block", fontSize: 18, lineHeight: 1.35 }}>{task!.title}</strong>
-                  <div className="l-muted" style={{ lineHeight: 1.5 }}>{beaten ? BT.title(slotName(key)) : prog.open ? BT.open : BT.locked(prog.done, prog.total)}</div>
+                  <div className="l-muted" style={{ fontSize: 13 }}>
+                    <div>{beaten ? `✅ ${BT.defeated} · ` : prog.open ? "⚔️ " : "🔒 "}{slotName(key)}</div>
+                    {isMulti && secondaryTranslators && secondaryTranslators.length > 0 && secondaryTranslators.map(({ locale: secLoc, t: secT }) => {
+                      const secLang = thinkLangFor(secLoc, site);
+                      const secBT = BOSS_TEXT[secLang] ?? BOSS_TEXT.en;
+                      const secSlot = site === "korean" ? levelName(Number(key.split("L")[1]), secLang) : `${gradeLabel(key.split("|")[1], secLang)} ${secT(`semester.${key.split("|")[2]}` as never)}`;
+                      return (
+                        <div key={secLoc} style={{ fontSize: "0.9em", opacity: 0.85 }}>
+                          {beaten ? `✅ ${secBT.defeated} · ` : prog.open ? "⚔️ " : "🔒 "}{secSlot}
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <strong style={{ display: "block", fontSize: 18, lineHeight: 1.35 }}>
+                    <div>{task!.title}</div>
+                    {isMulti && secList.map((st, i) => (
+                      <div key={i} className="text-sm font-semibold text-slate-600 mt-0.5">
+                        {st.loc.task.title}
+                      </div>
+                    ))}
+                  </strong>
+                  <div className="l-muted" style={{ lineHeight: 1.5 }}>
+                    <div>{beaten ? BT.title(slotName(key)) : prog.open ? BT.open : BT.locked(prog.done, prog.total)}</div>
+                    {isMulti && secondaryTranslators && secondaryTranslators.length > 0 && secondaryTranslators.map(({ locale: secLoc, t: secT }) => {
+                      const secLang = thinkLangFor(secLoc, site);
+                      const secBT = BOSS_TEXT[secLang] ?? BOSS_TEXT.en;
+                      const secSlot = site === "korean" ? levelName(Number(key.split("L")[1]), secLang) : `${gradeLabel(key.split("|")[1], secLang)} ${secT(`semester.${key.split("|")[2]}` as never)}`;
+                      return (
+                        <div key={secLoc} style={{ fontSize: "0.85em", opacity: 0.85 }}>
+                          {beaten ? secBT.title(secSlot) : prog.open ? secBT.open : secBT.locked(prog.done, prog.total)}
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
               </button>
             );
@@ -245,17 +310,48 @@ export function ThinkHub() {
       {shown.length === 0 && <div className="l-panel l-panel-hint" role="status">{H.empty}</div>}
       {hidden > 0 && <div className="l-panel l-panel-hint" role="status" data-testid="think-hidden">{H.notTranslated} ({hidden})</div>}
       <ul className="l-stack" style={{ listStyle: "none", padding: 0 }}>
-        {shown.map(({ task }) => (
-          <li key={task.id}>
-            <button type="button" className="l-card" data-testid={`think-${task.id}`} style={{ textAlign: "left", width: "100%", cursor: "pointer", display: "block" }} onClick={() => router.push(href(`/think?task=${encodeURIComponent(task.id)}`))}>
-              <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-                <div className="l-muted" style={{ fontSize: 13 }}>{done[task.id] ? "✅ " : ""}{fieldText(fieldOf(task), false) ? `${fieldText(fieldOf(task), false)} · ` : ""}{formatMinutes(task.minutes, lang, true)}</div>
-                <strong style={{ display: "block", fontSize: 18, lineHeight: 1.35 }}>{task.title}</strong>
-                <div className="l-muted" style={{ lineHeight: 1.5 }}>{task.goal}</div>
-              </div>
-            </button>
-          </li>
-        ))}
+        {shown.map(({ task }) => {
+          const secList = getSecTasks(task);
+          return (
+            <li key={task.id}>
+              <button type="button" className="l-card" data-testid={`think-${task.id}`} style={{ textAlign: "left", width: "100%", cursor: "pointer", display: "block" }} onClick={() => router.push(href(`/think?task=${encodeURIComponent(task.id)}`))}>
+                <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                  <div className="l-muted" style={{ fontSize: 13 }}>
+                    <div>
+                      {done[task.id] ? "✅ " : ""}{fieldText(fieldOf(task), false) ? `${fieldText(fieldOf(task), false)} · ` : ""}{formatMinutes(task.minutes, lang, true)}
+                    </div>
+                    {isMulti && secondaryTranslators && secondaryTranslators.length > 0 && secondaryTranslators.map(({ locale: secLoc }) => {
+                      const secLang = thinkLangFor(secLoc, site);
+                      const fKey = fieldOf(task);
+                      const secField = fKey ? fieldInfo(site, fKey, secLang).short : "";
+                      return (
+                        <div key={secLoc} style={{ fontSize: "0.85em", opacity: 0.85 }}>
+                          {done[task.id] ? "✅ " : ""}{secField ? `${secField} · ` : ""}{formatMinutes(task.minutes, secLang, true)}
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <strong style={{ display: "block", fontSize: 18, lineHeight: 1.35 }}>
+                    <div>{task.title}</div>
+                    {isMulti && secList.map((st, i) => (
+                      <div key={i} className="text-sm font-semibold text-slate-600 mt-0.5">
+                        {st.loc.task.title}
+                      </div>
+                    ))}
+                  </strong>
+                  <div className="l-muted" style={{ lineHeight: 1.5 }}>
+                    <div>{task.goal}</div>
+                    {isMulti && secList.map((st, i) => (
+                      <div key={i} className="text-xs text-slate-500 mt-0.5">
+                        {st.loc.task.goal}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </button>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

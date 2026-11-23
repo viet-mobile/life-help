@@ -121,18 +121,17 @@ export function Onboarding() {
               <p className="l-muted" style={{ fontSize: "0.85rem" }}>{t("korean.band.preparing")}</p>
             </div>
           )}
-          {site !== "korean" && siteConfig(site).levelGroups.map(({ key: level, levels: list }) => (
-            <div key={level} role="radiogroup" aria-label={t(`grade.group.${level}` as never)} className="l-stack">
-              <p className="l-muted" style={{ fontWeight: 800 }}>{t(`grade.group.${level}` as never)}</p>
+          {site !== "korean" && (
+            <div role="radiogroup" aria-label={t("onboarding.grade.title")} className="l-stack">
               <div className="l-options l-grades">
-                {list.map((g) => (
+                {siteConfig(site).levels.map((g) => (
                   <button key={g} type="button" role="radio" aria-checked={grade === g} data-selected={grade === g} data-grade={g} className="l-option l-grade" onClick={() => setGrade(g)}>
                     {t(`grade.${g}` as never)}
                   </button>
                 ))}
               </div>
             </div>
-          ))}
+          )}
           {isBlockedLevel && (
             <p className="l-panel" style={{ fontSize: "0.9rem", color: "var(--l-accent, #c2410c)" }} role="status">
               ℹ️ {t("onboarding.korean.account_limit")}

@@ -1,14 +1,23 @@
 import type { ThinkLang } from "./lang";
 
 /** Display name of a grade code in the thinking hub: E1-E6 = elementary 1-6, M1-M3 = middle 1-3, H1-H3 = high 1-3. Codes stay as they are in data and URLs. */
-const PREFIX: Record<"E" | "M" | "H", Record<ThinkLang, string>> = {
-  E: { ko: "초", en: "Elementary ", "zh-Hans": "小学", "zh-Hant": "國小", ja: "小", vi: "Tiểu học " },
-  M: { ko: "중", en: "Middle ", "zh-Hans": "初中", "zh-Hant": "國中", ja: "中", vi: "THCS " },
-  H: { ko: "고", en: "High ", "zh-Hans": "高中", "zh-Hant": "高中", ja: "高", vi: "THPT " },
+const GRADE_NUM: Record<string, number> = {
+  E1: 1, E2: 2, E3: 3, E4: 4, E5: 5, E6: 6,
+  M1: 7, M2: 8, M3: 9,
+  H1: 10, H2: 11, H3: 12,
 };
+
 export function gradeLabel(code: string, lang: ThinkLang): string {
-  const m = /^([EMH])([1-6])$/.exec(code);
-  return m ? `${PREFIX[m[1] as "E" | "M" | "H"][lang]}${m[2]}` : code;
+  const num = GRADE_NUM[code] ?? (/^\d+$/.test(code) ? Number(code) : null);
+  if (num !== null && num >= 1 && num <= 12) {
+    if (lang === "ko") return `${num}학년`;
+    if (lang === "vi") return `Lớp ${num}`;
+    if (lang === "ja") return `${num}年生`;
+    if (lang === "zh-Hans") return `${num}年级`;
+    if (lang === "zh-Hant") return `${num}年級`;
+    return `Grade ${num}`;
+  }
+  return code;
 }
 
 export const LEVEL_LABEL_MAP: Record<string, Record<string, string>> = {

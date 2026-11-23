@@ -129,46 +129,80 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
 
       <section className="l-stack" aria-labelledby="worlds-h">
         <h2 id="worlds-h" className="l-h2">{t("landing.worldsTitle")}</h2>
-        {siteConfig(site).levelGroups.map(({ key: level }) => {
-          const courses = bundle.catalog.courses.filter((c) => schoolLevel(c.grade) === level);
-          if (courses.length === 0) return null;
-          return (
-            <div key={level} className="l-stack">
-              <h3 className="l-h2">{t(`grade.group.${level}` as never)}</h3>
-              <div className="l-grid-courses">
-                {courses.map((c) => {
-                  const isSpecial = c.id.includes("situational");
-                  return (
-                    <Link
-                      key={c.id}
-                      href={`${base}/course/${c.id}`}
-                      className={`l-card ${isSpecial ? "l-card-accent" : ""}`}
-                      style={{
-                        textDecoration: "none",
-                        color: "inherit",
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "space-between",
-                        cursor: "pointer",
-                        transition: "transform 0.15s ease, box-shadow 0.15s ease",
-                      }}
-                      data-testid={`world-card-${c.id}`}
-                    >
-                      <div>
-                        <div style={{ marginBottom: 8 }}>
-                          <span style={{ fontSize: "2.4rem" }} aria-hidden="true">{c.world.emoji}</span>
+        {site !== "korean" ? (
+          <div className="l-grid-courses">
+            {bundle.catalog.courses.map((c) => {
+              const isSpecial = c.id.includes("situational");
+              return (
+                <Link
+                  key={c.id}
+                  href={`${base}/course/${c.id}`}
+                  className={`l-card ${isSpecial ? "l-card-accent" : ""}`}
+                  style={{
+                    textDecoration: "none",
+                    color: "inherit",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    cursor: "pointer",
+                    transition: "transform 0.15s ease, box-shadow 0.15s ease",
+                  }}
+                  data-testid={`world-card-${c.id}`}
+                >
+                  <div>
+                    <div style={{ marginBottom: 8 }}>
+                      <span style={{ fontSize: "2.4rem" }} aria-hidden="true">{c.world.emoji}</span>
+                    </div>
+                    <h3 className="l-h2" style={{ margin: "4px 0 6px 0" }}>{c.world.name}</h3>
+                    <p className="l-muted" style={{ fontWeight: 600, fontSize: "1rem" }}>{c.title}</p>
+                    {c.world.tagline && <p style={{ fontSize: "0.88rem", opacity: 0.85, marginTop: 6, lineHeight: 1.45 }}>{c.world.tagline}</p>}
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        ) : (
+          siteConfig(site).levelGroups.map(({ key: level }) => {
+            const courses = bundle.catalog.courses.filter((c) => schoolLevel(c.grade) === level);
+            if (courses.length === 0) return null;
+            return (
+              <div key={level} className="l-stack">
+                <h3 className="l-h2">{t(`grade.group.${level}` as never)}</h3>
+                <div className="l-grid-courses">
+                  {courses.map((c) => {
+                    const isSpecial = c.id.includes("situational");
+                    return (
+                      <Link
+                        key={c.id}
+                        href={`${base}/course/${c.id}`}
+                        className={`l-card ${isSpecial ? "l-card-accent" : ""}`}
+                        style={{
+                          textDecoration: "none",
+                          color: "inherit",
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "space-between",
+                          cursor: "pointer",
+                          transition: "transform 0.15s ease, box-shadow 0.15s ease",
+                        }}
+                        data-testid={`world-card-${c.id}`}
+                      >
+                        <div>
+                          <div style={{ marginBottom: 8 }}>
+                            <span style={{ fontSize: "2.4rem" }} aria-hidden="true">{c.world.emoji}</span>
+                          </div>
+                          <h3 className="l-h2" style={{ margin: "4px 0 6px 0" }}>{c.world.name}</h3>
+                          <p className="l-muted" style={{ fontWeight: 600, fontSize: "1rem" }}>{c.title}</p>
+                          {c.world.tagline && <p style={{ fontSize: "0.88rem", opacity: 0.85, marginTop: 6, lineHeight: 1.45 }}>{c.world.tagline}</p>}
                         </div>
-                        <h3 className="l-h2" style={{ margin: "4px 0 6px 0" }}>{c.world.name}</h3>
-                        <p className="l-muted" style={{ fontWeight: 600, fontSize: "1rem" }}>{c.title}</p>
-                        {c.world.tagline && <p style={{ fontSize: "0.88rem", opacity: 0.85, marginTop: 6, lineHeight: 1.45 }}>{c.world.tagline}</p>}
-                      </div>
-                    </Link>
-                  );
-                })}
+                      </Link>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })
+        )}
       </section>
       </main>
       <span hidden data-base={base} />
