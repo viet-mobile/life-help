@@ -26,13 +26,14 @@ export async function generateMetadata(): Promise<Metadata> {
   const headersList = await headers();
   if (isJiuHost(headersList.get("x-forwarded-host") ?? headersList.get("host") ?? "")) return jiuMetadata;
   const lang = resolveLanguageFromHeaders(headersList);
+  const secondaryLang = headersList.get("x-life-secondary-language") || headersList.get("x-learn-secondary-locale");
   const portal = resolvePortalFromHeaders(headersList);
   const country = resolveCountryFromHeaders(headersList);
 
   const baseMeta =
     portal === "chat" || portal === "tech" || portal === "sys"
       ? getPortalMetadata(portal, lang)
-      : getSiteMetadata(lang, country);
+      : getSiteMetadata(lang, country, secondaryLang);
 
   const icons = getIconMetadata(country, portal);
 

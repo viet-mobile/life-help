@@ -321,7 +321,7 @@ export function CustomerHome() {
   // Mobile smart tabs: default "all" so that all 10 services are visible on the first screen
   const [activeTab, setActiveTab] = useState<"all" | "repair" | "support">("all");
   const [studyOpen, setStudyOpen] = useState(false);
-  const [insightDomain, setInsightDomain] = useState<DomainType>("life");
+  const [insightDomain, setInsightDomain] = useState<DomainType>("korean");
   const countOf = (c: "repair" | "support") => allServices.filter((x) => x.category === c).length;
 
   const displayedServices =
@@ -514,15 +514,15 @@ export function CustomerHome() {
               </span>
             </div>
 
-            {/* 6-Domain Switcher: Life, Math, English, Korean, Physics, Chemistry */}
+            {/* 6-Domain Switcher: Korean, English, Math, Physics, Chemistry, Life */}
             <div className="flex items-center gap-1 overflow-x-auto py-0.5">
               {[
-                { id: "life", label: t("customer.domain_life"), icon: "💡" },
-                { id: "math", label: t("customer.domain_math"), icon: "➗" },
-                { id: "english", label: t("customer.domain_english"), icon: "🔤" },
                 { id: "korean", label: t("customer.domain_korean"), icon: "🇰🇷" },
+                { id: "english", label: t("customer.domain_english"), icon: "🔤" },
+                { id: "math", label: t("customer.domain_math"), icon: "➗" },
                 { id: "physics", label: t("customer.domain_physics"), icon: "🔬" },
                 { id: "chemistry", label: t("customer.domain_chemistry"), icon: "🧪" },
+                { id: "life", label: t("customer.domain_life"), icon: "💡" },
               ].map((d) => (
                 <button
                   key={d.id}

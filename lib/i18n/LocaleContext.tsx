@@ -71,7 +71,23 @@ let cachedSecondaryLocaleInitialized = false;
 
 function getClientSecondaryLocaleSnapshot(): Locale | null {
   if (typeof window === "undefined") return null;
-  if (cachedSecondaryLocaleInitialized) return cachedSecondaryLocale;
+
+  const currentPath = window.location.pathname;
+  const urlSecLocale = resolveSecondaryLocaleFromPath(currentPath);
+  if (urlSecLocale) {
+    cachedSecondaryLocale = urlSecLocale;
+    return urlSecLocale;
+  }
+
+  const urlPrimaryLocale = resolveLocaleFromPath(currentPath);
+  // If the URL explicitly names a single language (e.g. /vi or /vi/services),
+  // enforce single language mode (secondaryLocale = null) per user instruction:
+  if (urlPrimaryLocale && !urlSecLocale) {
+    cachedSecondaryLocale = null;
+    return null;
+  }
+
+  if (cachedSecondaryLocaleInitialized && cachedSecondaryLocale !== undefined) return cachedSecondaryLocale;
   cachedSecondaryLocaleInitialized = true;
   try {
     const saved = localStorage.getItem(SECONDARY_LOCALE_STORAGE_KEY);
@@ -188,6 +204,24 @@ export function resolveLocaleFromPath(pathname?: string | null): Locale | null {
   return null;
 }
 
+/**
+ * Resolves a URL path's second segment into a valid supported Locale if present (e.g. /vi/ko -> ko).
+ */
+export function resolveSecondaryLocaleFromPath(pathname?: string | null): Locale | null {
+  if (!pathname) return null;
+  const segments = pathname.split("/").filter(Boolean);
+  if (segments.length < 2) return null;
+
+  const first = resolveLocaleFromPath("/" + segments[0]);
+  if (!first) return null;
+
+  const second = resolveLocaleFromPath("/" + segments[1]);
+  if (second && second !== first) {
+    return second;
+  }
+  return null;
+}
+
 let cachedLocale: Locale | null = null;
 let lastKnownPathname: string | null = null;
 let cachedDisplayMode: DisplayMode | null = null;
@@ -268,6 +302,19 @@ function getServerLocaleSnapshot(): Locale {
 }
 
 function getClientDisplayModeSnapshot(): DisplayMode {
+  if (typeof window !== "undefined") {
+    const currentPath = window.location.pathname;
+    const urlSecLocale = resolveSecondaryLocaleFromPath(currentPath);
+    if (urlSecLocale) {
+      cachedDisplayMode = "bilingual";
+      return "bilingual";
+    }
+    const urlPrimaryLocale = resolveLocaleFromPath(currentPath);
+    if (urlPrimaryLocale && !urlSecLocale) {
+      cachedDisplayMode = "monolingual";
+      return "monolingual";
+    }
+  }
   if (cachedDisplayMode) return cachedDisplayMode;
   try {
     const sec = localStorage.getItem(SECONDARY_LOCALE_STORAGE_KEY);

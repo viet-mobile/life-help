@@ -157,14 +157,19 @@ export function DailyInsightCard({ domain, insight: initialInsight, locale: prop
     >
       {/* Header Badge & Date */}
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200/60 pb-3">
-        <div className="flex items-center gap-2">
-          <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-white shadow-2xs text-base" aria-hidden="true">
+        <Link
+          href={targetHref}
+          className="group flex items-center gap-2 transition hover:opacity-85 cursor-pointer"
+          title={isKo ? `${displayDomainLabel} 전체 정보 바로가기` : `Explore all of ${displayDomainLabel}`}
+        >
+          <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-white shadow-2xs text-base group-hover:scale-110 transition-transform" aria-hidden="true">
             {domainMeta.icon}
           </span>
-          <span suppressHydrationWarning className={`text-xs sm:text-sm font-black ${domainMeta.themeColor}`}>
-            {displayDomainLabel}
+          <span suppressHydrationWarning className={`text-xs sm:text-sm font-black ${domainMeta.themeColor} group-hover:underline flex items-center gap-1`}>
+            <span>{displayDomainLabel}</span>
+            <span className="text-[11px] text-slate-400 group-hover:text-blue-600 transition" aria-hidden="true">→</span>
           </span>
-        </div>
+        </Link>
 
         <div className="flex items-center gap-1.5">
           <span className="inline-flex items-center gap-1 rounded-full bg-white/95 px-2.5 py-0.5 text-xs font-bold text-slate-700 border border-slate-200/80 shadow-2xs">

@@ -2049,13 +2049,24 @@ export function getIconMetadata(country?: string | null, portal?: string | null)
 /**
  * Returns dynamic Metadata with localized title and description for social link previews and browser titles.
  */
-export function getSiteMetadata(lang: string, country?: string | null): Metadata {
+export function getSiteMetadata(lang: string, country?: string | null, secondaryLang?: string | null): Metadata {
   const meta = SITE_METADATA[lang] || SITE_METADATA["ko"];
   const countryUpper = countryBrandName(country);
-  const title = countryUpper
+  let title = countryUpper
     ? `LIFE.HELP ${countryUpper} · ${meta.tagline}`
     : `LIFE.HELP · ${meta.tagline}`;
-  const description = getLocalizedSiteDescription(lang, country);
+  let description = getLocalizedSiteDescription(lang, country);
+
+  // When secondary language is specified (e.g. /vi/ko), render bilingual metadata in both languages
+  if (secondaryLang && secondaryLang !== lang) {
+    const secMeta = SITE_METADATA[secondaryLang] || SITE_METADATA["ko"];
+    const secTitle = secMeta.tagline;
+    const secDescription = getLocalizedSiteDescription(secondaryLang, country);
+    title = `${title} · ${secTitle}`;
+    description = `${description}\n${secDescription}`;
+  }
+
+  const ogImageUrl = "/og.png?v=20261123";
 
   return {
     title,
@@ -2066,13 +2077,13 @@ export function getSiteMetadata(lang: string, country?: string | null): Metadata
       siteName: brandName(country),
       type: "website",
       locale: ogLocaleFor(lang, country),
-      images: [{ url: "/og.png", width: 1200, height: 630, alt: "LIFE.HELP" }],
+      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: "LIFE.HELP" }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: ["/og.png"],
+      images: [ogImageUrl],
     },
   };
 }

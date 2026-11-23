@@ -2,6 +2,10 @@ import { describe, it, expect } from "vitest";
 import { formatLanguageName, getLanguageNameInLocale, languages } from "@/messages/registry";
 import { services } from "@/lib/services";
 import { getReferralI18n } from "@/components/shared/referralI18n";
+import { splitLocalePrefix } from "@/lib/learn/i18n/path";
+import { resolveSecondaryLocaleFromPath } from "@/lib/i18n/LocaleContext";
+import { getSiteMetadata } from "@/lib/i18n/siteMetadata";
+import { parseLearnHost } from "@/lib/learn/hosts";
 import fs from "fs";
 import path from "path";
 
@@ -81,5 +85,39 @@ describe("Multilingual UI, 4-Quadrant Homecare, Referral & OG Metadata", () => {
 
     // Verify official round logo badge is integrated into og.png
     expect(fs.existsSync(path.join(publicDir, "logos/life-help-round-logo.png"))).toBe(true);
+  });
+
+  it("6. Multilingual & bilingual URL routing and metadata support for all 89 languages", () => {
+    // 1. splitLocalePrefix handles single and bilingual paths
+    const single = splitLocalePrefix("/vi/dashboard");
+    expect(single.locale).toBe("vi");
+    expect(single.secondaryLocale).toBeFalsy();
+    expect(single.rest).toBe("/dashboard");
+
+    const bilingual = splitLocalePrefix("/vi/ko/dashboard");
+    expect(bilingual.locale).toBe("vi");
+    expect(bilingual.secondaryLocale).toBe("ko");
+    expect(bilingual.rest).toBe("/dashboard");
+
+    // 2. resolveSecondaryLocaleFromPath
+    expect(resolveSecondaryLocaleFromPath("/vi/ko")).toBe("ko");
+    expect(resolveSecondaryLocaleFromPath("/vi/ko/services")).toBe("ko");
+    expect(resolveSecondaryLocaleFromPath("/vi")).toBeNull();
+    expect(resolveSecondaryLocaleFromPath("/vi/services")).toBeNull();
+
+    // 3. getSiteMetadata generates bilingual metadata
+    const singleMeta = getSiteMetadata("vi");
+    expect(singleMeta.title).toBeDefined();
+
+    const biMeta = getSiteMetadata("vi", null, "ko");
+    expect(biMeta.title).toContain("·");
+    expect(biMeta.description).toContain("\n");
+  });
+
+  it("7. Subject host alias chem.life.help resolves to chemistry site", () => {
+    const info = parseLearnHost("chem.life.help");
+    expect(info).toBeDefined();
+    expect(info!.site).toBe("chemistry");
+    expect(info!.stage).toBe("production");
   });
 });

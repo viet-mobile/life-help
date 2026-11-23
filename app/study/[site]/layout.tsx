@@ -6,7 +6,7 @@ import "katex/dist/katex.min.css";
 import "../study.css";
 import { SiteProvider } from "@/components/learn/LearnerProvider";
 import { localeDir } from "@/lib/learn/i18n";
-import { getServerT } from "@/lib/learn/i18n/server";
+import { getServerT, getSecondaryLocale } from "@/lib/learn/i18n/server";
 import { siteConfig } from "@/lib/learn/sites";
 import { isSite } from "@/lib/learn/types";
 import { learnHost, parseLearnHost } from "@/lib/learn/hosts";
@@ -22,7 +22,23 @@ export async function generateMetadata({ params }: { params: Promise<{ site: str
   const { site } = await params;
   if (!isSite(site)) return {};
   const { t, locale } = await getServerT(); // title / description / social preview in the learner's language
+  const secondaryLocale = await getSecondaryLocale();
+  const sec = secondaryLocale && secondaryLocale !== locale ? await getServerT(secondaryLocale) : null;
+
   const name = t(siteConfig(site).brandKey);
+  const primaryTagline = t(`site.${site}.tagline` as never);
+  const primaryDesc = t(`site.${site}.description` as never);
+  const secName = sec ? sec.t(siteConfig(site).brandKey) : "";
+  const secTagline = sec ? sec.t(`site.${site}.tagline` as never) : "";
+  const secDesc = sec ? sec.t(`site.${site}.description` as never) : "";
+
+  const titleText = sec
+    ? `${name} · ${primaryTagline} · ${secName} · ${secTagline}`
+    : `${name} · ${primaryTagline}`;
+  const descText = sec
+    ? `${primaryDesc}\n${secDesc}`
+    : primaryDesc;
+
   // Absolute URL for social previews (relative og:image would be resolved against a default origin).
   const h = await headers();
   const requestHost = h.get("x-forwarded-host") ?? h.get("host") ?? "";
@@ -39,11 +55,13 @@ export async function generateMetadata({ params }: { params: Promise<{ site: str
   const page = innerPath === "/" ? "" : innerPath;
   const urlLocale = h.get("x-learn-locale");
   const languages = Object.fromEntries([...locales.map((l) => [l, `${siteRoot}${rootPath}/${l}${page}`] as const), ["x-default", `${siteRoot}${rootPath}${page || "/"}`] as const]);
+  const ogImageUrl = `${origin}/og-${site}.png?v=20261123`;
+
   return {
     metadataBase: origin ? new URL(origin) : undefined,
     alternates: { canonical: urlLocale ? languages[urlLocale] : `${siteRoot}${rootPath}${page || "/"}`, languages },
-    title: { default: `${name} · ${t(`site.${site}.tagline` as never)}`, template: `%s · ${name}` },
-    description: t(`site.${site}.description` as never),
+    title: { default: titleText, template: `%s · ${name}` },
+    description: descText,
     // Staging/local are never indexed; individual pages narrow this further.
     // First (guest-only) production release: the learning sites are NOT indexed. Search visibility is a separate, later decision.
     robots: { index: false, follow: false },
@@ -61,18 +79,18 @@ export async function generateMetadata({ params }: { params: Promise<{ site: str
     openGraph: {
       url: urlLocale ? languages[urlLocale] : `${siteRoot}${rootPath}${page || "/"}`,
       alternateLocale: locales.filter((l) => l !== locale).map((l) => l.replace("-", "_")),
-      title: `${name} · ${t(`site.${site}.tagline` as never)}`,
-      description: t(`site.${site}.description` as never),
+      title: sec ? titleText : primaryTagline,
+      description: descText,
       locale: locale.replace("-", "_"),
       type: "website",
       siteName: name,
-      images: [{ url: `${origin}/og-${site}.png`, width: 1200, height: 630, alt: name }],
+      images: [{ url: logo, width: 512, height: 512, alt: name }],
     },
     twitter: {
-      card: "summary_large_image",
-      title: `${name} · ${t(`site.${site}.tagline` as never)}`,
-      description: t(`site.${site}.description` as never),
-      images: [`${origin}/og-${site}.png`],
+      card: "summary",
+      title: sec ? titleText : primaryTagline,
+      description: descText,
+      images: [logo],
     },
   };
 }

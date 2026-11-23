@@ -373,18 +373,52 @@ function getPortalFromHost(host: string): "customer" | "tech" | "chat" | "sys" |
   return "customer";
 }
 
-function getLanguage(pathname: string): string | null {
-  const firstSegment = pathname.split("/").filter(Boolean)[0];
-
-  if (!firstSegment) {
-    return null;
+function getLanguagesFromPath(pathname: string): {
+  language: string | null;
+  secondaryLanguage: string | null;
+  subpath: string;
+} {
+  const segments = pathname.split("/").filter(Boolean);
+  if (segments.length === 0) {
+    return { language: null, secondaryLanguage: null, subpath: pathname || "/" };
   }
 
-  const lower = firstSegment.toLowerCase();
-  if (lower === "zt" || lower === "zh-hant") return "zt";
-  if (lower === "zs" || lower === "zh" || lower === "zh-hans") return "zs";
+  const parseLang = (seg: string | undefined): string | null => {
+    if (!seg) return null;
+    const lower = seg.toLowerCase();
+    if (lower === "zt" || lower === "zh-hant") return "zt";
+    if (lower === "zs" || lower === "zh" || lower === "zh-hans") return "zs";
+    return LANGUAGES.has(lower) ? lower : null;
+  };
 
-  return LANGUAGES.has(lower) ? lower : null;
+  const first = parseLang(segments[0]);
+  if (!first) {
+    return { language: null, secondaryLanguage: null, subpath: pathname || "/" };
+  }
+
+  // Check if second segment is also a valid language (e.g. /vi/ko)
+  if (segments.length >= 2) {
+    const second = parseLang(segments[1]);
+    if (second && second !== first) {
+      const rest = segments.slice(2);
+      return {
+        language: first,
+        secondaryLanguage: second,
+        subpath: rest.length > 0 ? "/" + rest.join("/") : "/",
+      };
+    }
+  }
+
+  const rest = segments.slice(1);
+  return {
+    language: first,
+    secondaryLanguage: null,
+    subpath: rest.length > 0 ? "/" + rest.join("/") : "/",
+  };
+}
+
+function getLanguage(pathname: string): string | null {
+  return getLanguagesFromPath(pathname).language;
 }
 
 function buildInternalPath(
@@ -394,26 +428,18 @@ function buildInternalPath(
   pathname: string;
   country: string | null;
   language: string | null;
+  secondaryLanguage: string | null;
 } {
-  const pathname = request.nextUrl.pathname;
+  const rawPathname = request.nextUrl.pathname;
   const portal = getPortalFromHost(host);
   const country = getCountryFromHost(host);
 
-  // 1. Detect if pathname starts with a supported language code (e.g. /vi, /ko, /en, /zt, /zs)
-  const language = getLanguage(pathname);
-
-  // 2. Strip language prefix if present to obtain the relative subpath
-  // e.g. "/vi" -> "/"
-  //      "/vi/counselor" -> "/counselor"
-  //      "/vi/workspace" -> "/workspace"
-  let subpath = pathname;
-  if (language) {
-    const firstSeg = pathname.split("/").filter(Boolean)[0];
-    subpath =
-      pathname === `/${firstSeg}`
-        ? "/"
-        : pathname.replace(new RegExp(`^/${firstSeg}(?=/|$)`, "i"), "") || "/";
-  }
+  // 1. Detect language(s) and subpath
+  // e.g. "/vi" -> { language: "vi", secondaryLanguage: null, subpath: "/" }
+  //      "/vi/ko" -> { language: "vi", secondaryLanguage: "ko", subpath: "/" }
+  //      "/vi/counselor" -> { language: "vi", secondaryLanguage: null, subpath: "/counselor" }
+  //      "/vi/ko/counselor" -> { language: "vi", secondaryLanguage: "ko", subpath: "/counselor" }
+  const { language, secondaryLanguage, subpath } = getLanguagesFromPath(rawPathname);
 
   // Bypass internal portal rewriting for global API endpoints, manifest, service worker, and icons
   if (
@@ -429,6 +455,7 @@ function buildInternalPath(
       pathname: subpath,
       country,
       language,
+      secondaryLanguage,
     };
   }
 
@@ -455,6 +482,7 @@ function buildInternalPath(
       pathname: internalPath,
       country,
       language,
+      secondaryLanguage,
     };
   }
 
@@ -478,6 +506,7 @@ function buildInternalPath(
       pathname: internalPath,
       country,
       language,
+      secondaryLanguage,
     };
   }
 
@@ -501,6 +530,7 @@ function buildInternalPath(
       pathname: internalPath,
       country,
       language,
+      secondaryLanguage,
     };
   }
 
@@ -520,6 +550,7 @@ function buildInternalPath(
     pathname: internalPath,
     country,
     language,
+    secondaryLanguage,
   };
 }
 
@@ -635,7 +666,9 @@ export async function proxy(request: NextRequest) {
       // It is stripped before routing and travels as x-learn-locale, so the server renders - and link previews / crawlers see - the
       // metadata of THAT language without any cookie. Links inside the page keep the prefix (x-learn-base).
       const sitePath = path.startsWith("/study/") ? "/" + path.split("/").slice(3).join("/") : path;
-      const { locale: urlLocale, rest } = passthrough ? { locale: null, rest: sitePath } : splitLocalePrefix(sitePath);
+      const { locale: urlLocale, secondaryLocale: urlSecondaryLocale, rest } = passthrough
+        ? { locale: null, secondaryLocale: null, rest: sitePath }
+        : splitLocalePrefix(sitePath);
       const innerPath = urlLocale ? rest : sitePath;
       const siteRoot = learnHostSite ? "" : `/study/${learnSite}`;
       const internal = passthrough ? path : `/study/${learnSite}${innerPath === "/" ? "" : innerPath}`;
@@ -644,10 +677,23 @@ export async function proxy(request: NextRequest) {
       learnHeaders.set("x-life-portal", "learn");
       learnHeaders.set("x-life-site", learnSite);
       // The public base path for links: empty on the site's own subdomain (plus the language prefix when the URL carries one).
-      learnHeaders.set("x-learn-base", `${siteRoot}${urlLocale ? `/${urlLocale}` : ""}`);
+      const urlPrefix = urlLocale ? (urlSecondaryLocale ? `/${urlLocale}/${urlSecondaryLocale}` : `/${urlLocale}`) : "";
+      learnHeaders.set("x-learn-base", `${siteRoot}${urlPrefix}`);
       learnHeaders.set("x-learn-path", innerPath);
-      if (urlLocale) learnHeaders.set("x-learn-locale", urlLocale); else learnHeaders.delete("x-learn-locale"); // never trust a client-supplied value
-      learnHeaders.set("x-life-language", urlLocale ?? "ko");
+      if (urlLocale) {
+        learnHeaders.set("x-learn-locale", urlLocale);
+        learnHeaders.set("x-life-language", urlLocale);
+      } else {
+        learnHeaders.delete("x-learn-locale");
+        learnHeaders.set("x-life-language", "ko");
+      }
+      if (urlSecondaryLocale) {
+        learnHeaders.set("x-learn-secondary-locale", urlSecondaryLocale);
+        learnHeaders.set("x-life-secondary-language", urlSecondaryLocale);
+      } else {
+        learnHeaders.delete("x-learn-secondary-locale");
+        learnHeaders.delete("x-life-secondary-language");
+      }
       learnHeaders.delete("x-life-country");
 
       // Keep the learning Supabase session fresh and persist refreshed cookies (no-op without LEARN_SUPABASE_* public config).
@@ -660,7 +706,17 @@ export async function proxy(request: NextRequest) {
           : NextResponse.next({ request: { headers: learnHeaders } });
       sessionResponse.cookies.getAll().forEach((c) => out.cookies.set(c));
       // a language link also becomes the browser's language (same cookie the language switcher writes)
-      if (urlLocale) out.cookies.set(LOCALE_COOKIE, urlLocale, { path: "/", maxAge: LOCALE_COOKIE_MAX_AGE, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });
+      if (urlLocale) {
+        out.cookies.set(LOCALE_COOKIE, urlLocale, { path: "/", maxAge: LOCALE_COOKIE_MAX_AGE, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });
+        out.cookies.set("life_help_locale", urlLocale, { path: "/", maxAge: LOCALE_COOKIE_MAX_AGE, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });
+        if (urlSecondaryLocale) {
+          out.cookies.set("life_help_secondary_locale", urlSecondaryLocale, { path: "/", maxAge: LOCALE_COOKIE_MAX_AGE, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });
+          out.cookies.set("life_help_display_mode", "bilingual", { path: "/", maxAge: LOCALE_COOKIE_MAX_AGE, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });
+        } else {
+          out.cookies.delete("life_help_secondary_locale");
+          out.cookies.set("life_help_display_mode", "monolingual", { path: "/", maxAge: LOCALE_COOKIE_MAX_AGE, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });
+        }
+      }
       out.headers.set("X-Robots-Tag", "noindex, nofollow"); // first release: learning sites are not indexed
       return out;
     }
@@ -742,6 +798,7 @@ export async function proxy(request: NextRequest) {
     pathname,
     country,
     language,
+    secondaryLanguage,
   } = buildInternalPath(request, host);
 
   /**
@@ -751,6 +808,7 @@ export async function proxy(request: NextRequest) {
    *
    * x-life-country
    * x-life-language
+   * x-life-secondary-language
    */
   const requestHeaders = new Headers(request.headers);
 
@@ -771,10 +829,30 @@ export async function proxy(request: NextRequest) {
     requestHeaders.delete("x-life-language");
   }
 
+  if (secondaryLanguage) {
+    requestHeaders.set("x-life-secondary-language", secondaryLanguage);
+  } else {
+    requestHeaders.delete("x-life-secondary-language");
+  }
+
   requestHeaders.set(
     "x-life-portal",
     getPortalFromHost(host),
   );
+
+  // Helper to persist language and bilingual mode cookies
+  const applyLocaleCookies = (res: NextResponse) => {
+    if (language) {
+      res.cookies.set("life_help_locale", language, { path: "/", maxAge: 31536000, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });
+      if (secondaryLanguage) {
+        res.cookies.set("life_help_secondary_locale", secondaryLanguage, { path: "/", maxAge: 31536000, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });
+        res.cookies.set("life_help_display_mode", "bilingual", { path: "/", maxAge: 31536000, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });
+      } else {
+        res.cookies.delete("life_help_secondary_locale");
+        res.cookies.set("life_help_display_mode", "monolingual", { path: "/", maxAge: 31536000, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });
+      }
+    }
+  };
 
   // Public path (without the language prefix) and the URL's language prefix: used server-side for canonical / hreflang.
   // Always overwritten so a client-supplied value is never trusted.
@@ -792,6 +870,7 @@ export async function proxy(request: NextRequest) {
       headers: requestHeaders,
     },
   });
+  applyLocaleCookies(requestWithHeaders);
 
   /**
    * Authentication
@@ -832,6 +911,7 @@ export async function proxy(request: NextRequest) {
     portal: getPortalFromHost(host),
     country,
     language,
+    secondaryLanguage,
     effectiveLanguage,
   });
 
@@ -850,10 +930,14 @@ export async function proxy(request: NextRequest) {
     if (effectiveLanguage) {
       rewriteResponse.headers.set("x-life-language", effectiveLanguage);
     }
+    if (secondaryLanguage) {
+      rewriteResponse.headers.set("x-life-secondary-language", secondaryLanguage);
+    }
     if (country) {
       rewriteResponse.headers.set("x-life-country", country);
     }
     rewriteResponse.headers.set("x-life-portal", getPortalFromHost(host));
+    applyLocaleCookies(rewriteResponse);
 
     return rewriteResponse;
   }
@@ -880,6 +964,7 @@ export async function proxy(request: NextRequest) {
   }
   const bare = NextResponse.next({ request: { headers: bareHeaders } });
   response.cookies.getAll().forEach((c) => bare.cookies.set(c));
+  applyLocaleCookies(bare);
   return bare;
 }
 

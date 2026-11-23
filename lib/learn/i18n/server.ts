@@ -34,8 +34,25 @@ export async function getLocale(): Promise<LearnLocale> {
   }
 }
 
-export async function getServerT(): Promise<{ locale: LearnLocale; t: Translator; messages: Messages }> {
-  const locale = await getLocale();
+/**
+ * The secondary locale for bilingual display, if specified in the URL (/vi/ko) or cookies.
+ */
+export async function getSecondaryLocale(): Promise<LearnLocale | null> {
+  try {
+    const fromUrl = (await headers()).get("x-learn-secondary-locale");
+    if (fromUrl && isLocale(fromUrl)) return fromUrl;
+  } catch { /* no request context */ }
+  try {
+    const fromCookie = (await cookies()).get("life_help_secondary_locale")?.value;
+    if (fromCookie && isLocale(fromCookie)) return fromCookie;
+  } catch {
+    return null;
+  }
+  return null;
+}
+
+export async function getServerT(customLocale?: LearnLocale): Promise<{ locale: LearnLocale; t: Translator; messages: Messages }> {
+  const locale = customLocale ?? (await getLocale());
   const messages = await loadMessages(locale);
   return { locale, t: createTranslator(messages), messages };
 }

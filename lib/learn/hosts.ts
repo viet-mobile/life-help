@@ -20,17 +20,20 @@ const HOSTS: Record<string, LearnHostInfo> = {
   "study.korean.life.help": { site: "korean", stage: "production" },
   "physics.life.help": { site: "physics", stage: "production" },
   "chemistry.life.help": { site: "chemistry", stage: "production" },
+  "chem.life.help": { site: "chemistry", stage: "production" },
   "math-staging.life.help": { site: "math", stage: "staging" },
   "english-staging.life.help": { site: "english", stage: "staging" },
   "study-korean-staging.life.help": { site: "korean", stage: "staging" },
   "physics-staging.life.help": { site: "physics", stage: "staging" },
   "chemistry-staging.life.help": { site: "chemistry", stage: "staging" },
+  "chem-staging.life.help": { site: "chemistry", stage: "staging" },
   "math.localhost": { site: "math", stage: "local" },
   "english.localhost": { site: "english", stage: "local" },
   "korean.localhost": { site: "korean", stage: "local" },
   "study.korean.localhost": { site: "korean", stage: "local" },
   "physics.localhost": { site: "physics", stage: "local" },
   "chemistry.localhost": { site: "chemistry", stage: "local" },
+  "chem.localhost": { site: "chemistry", stage: "local" },
 };
 
 export function parseLearnHost(rawHost: string): LearnHostInfo | null {

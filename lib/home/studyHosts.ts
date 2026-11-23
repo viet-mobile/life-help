@@ -23,8 +23,14 @@ export function studyUrl(subject: StudySubject, hostname: string, port = "", loc
   if (/^(?:\d{1,3}\.){3}\d{1,3}$/.test(host)) {
     return `http://${hostname}${port ? `:${port}` : ""}/study/${subject}${path}`;
   }
-  if (host === "localhost" || host.endsWith(".localhost") || host === "127.0.0.1") return `http://${subject}.localhost${port ? `:${port}` : ""}${path}`;
-  if (productionHost(host) || host.endsWith(".workers.dev")) return `https://${subject}.life.help${path}`;
+  if (host === "localhost" || host.endsWith(".localhost") || host === "127.0.0.1") {
+    const sub = host.startsWith("chem.") ? "chem" : subject;
+    return `http://${sub}.localhost${port ? `:${port}` : ""}${path}`;
+  }
+  if (productionHost(host) || host.endsWith(".workers.dev")) {
+    const sub = host.startsWith("chem.") ? "chem" : subject;
+    return `https://${sub}.life.help${path}`;
+  }
   return `https://${subject === "korean" ? "study-korean" : subject}-staging.life.help${path}`;
 }
 
