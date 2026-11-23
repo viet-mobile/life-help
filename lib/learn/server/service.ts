@@ -282,20 +282,43 @@ export class LearnService {
     if (store && actor.userId) {
       await store.createSession({ id: sessionId, userId: actor.userId, site, kind: input.kind, lessonId });
     }
-    let secBundle: ContentBundle | null = null;
-    if (actor.secondaryLocale && actor.secondaryLocale !== (actor.locale ?? siteConfig(site).presentationLocale)) {
-      try {
-        secBundle = (await loadIndex(site, { locale: actor.secondaryLocale, grade: state.profile?.grade })).bundle;
-      } catch {
-        /* optional secondary */
-      }
-    }
+    const secLocales = (actor.secondaryLocales && actor.secondaryLocales.length > 0
+      ? actor.secondaryLocales
+      : actor.secondaryLocale
+      ? [actor.secondaryLocale]
+      : []
+    )
+      .filter((l) => l !== (actor.locale ?? siteConfig(site).presentationLocale))
+      .slice(0, 4);
+
+    const secBundles = await Promise.all(
+      secLocales.map(async (secLoc) => {
+        try {
+          const b = (await loadIndex(site, { locale: secLoc, grade: state.profile?.grade })).bundle;
+          return { locale: secLoc, bundle: b };
+        } catch {
+          return null;
+        }
+      })
+    );
+    const validSecBundles = secBundles.filter((x): x is { locale: LearnLocale; bundle: ContentBundle } => x !== null);
+    const primarySecBundle = validSecBundles[0]?.bundle ?? null;
+
     return {
       sessionId,
       kind: input.kind,
       lessonId,
       premiumLocked,
-      questions: questions.map((q) => toPublicQuestion(q, secBundle?.questions.find((sq) => sq.id === q.id))),
+      questions: questions.map((q) => {
+        const secQ = primarySecBundle?.questions.find((sq) => sq.id === q.id);
+        const secList = validSecBundles
+          .map((vb) => {
+            const sq = vb.bundle.questions.find((x) => x.id === q.id);
+            return sq ? { locale: vb.locale, q: sq } : null;
+          })
+          .filter((x): x is { locale: LearnLocale; q: Question } => x !== null);
+        return toPublicQuestion(q, secQ, secList);
+      }),
     };
   }
 

@@ -142,7 +142,11 @@ export async function loadIndex(site: Site, opts: { grade?: Grade; locale?: Lear
 }
 
 /** Strip server-only fields (answer key, hints, explanation) for the browser. */
-export function toPublicQuestion(q: Question, secQ?: Question | null): PublicQuestion {
+export function toPublicQuestion(
+  q: Question,
+  secQ?: Question | null,
+  secondaries?: { locale: LearnLocale; q: Question }[]
+): PublicQuestion {
   return {
     id: q.id,
     site: q.site,
@@ -163,6 +167,16 @@ export function toPublicQuestion(q: Question, secQ?: Question | null): PublicQue
             latex: secQ.latex,
             options: secQ.options,
           },
+        }
+      : {}),
+    ...(secondaries && secondaries.length > 0
+      ? {
+          secondaries: secondaries.map((s) => ({
+            locale: s.locale,
+            prompt: s.q.prompt,
+            latex: s.q.latex,
+            options: s.q.options,
+          })),
         }
       : {}),
   };

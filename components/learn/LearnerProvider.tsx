@@ -28,6 +28,8 @@ interface SiteCtx {
   isBilingual: boolean;
   t: Translator;
   tSecondary: Translator;
+  secondaryTranslators: { locale: LearnLocale; t: Translator }[];
+  secondaryTranslatorsMap: Record<string, Translator>;
   href: (path: string) => string;
 }
 const SiteContext = createContext<SiteCtx | null>(null);
@@ -40,6 +42,7 @@ export function SiteProvider({
   secondaryLocale = null,
   secondaryLocales = [],
   secondaryMessages = null,
+  secondaryMessagesMap = {},
   children,
 }: {
   site: Site;
@@ -49,27 +52,55 @@ export function SiteProvider({
   secondaryLocale?: LearnLocale | null;
   secondaryLocales?: LearnLocale[];
   secondaryMessages?: Messages | null;
+  secondaryMessagesMap?: Record<string, Messages>;
   children: ReactNode;
 }) {
-  const isBilingual = !!(secondaryLocale && secondaryLocale !== locale && secondaryMessages);
+  const effectiveSecondaryLocales = useMemo(() => {
+    const list = secondaryLocales.length > 0 ? secondaryLocales : secondaryLocale ? [secondaryLocale] : [];
+    return list.filter((l) => l !== locale).slice(0, 4);
+  }, [secondaryLocales, secondaryLocale, locale]);
+
+  const isBilingual = !!(
+    (secondaryLocale && secondaryLocale !== locale && secondaryMessages) ||
+    effectiveSecondaryLocales.length > 0
+  );
+
   const secTranslator: Translator = useMemo(() => {
-    if (isBilingual && secondaryMessages) return createTranslator(secondaryMessages);
+    if (secondaryMessages) return createTranslator(secondaryMessages);
+    const firstSec = effectiveSecondaryLocales.find((l) => secondaryMessagesMap[l]);
+    if (firstSec && secondaryMessagesMap[firstSec]) return createTranslator(secondaryMessagesMap[firstSec]);
     return ((key: string) => key) as unknown as Translator;
-  }, [isBilingual, secondaryMessages]);
+  }, [secondaryMessages, effectiveSecondaryLocales, secondaryMessagesMap]);
+
+  const secondaryTranslators = useMemo(() => {
+    return effectiveSecondaryLocales.map((loc) => {
+      const msgs = secondaryMessagesMap[loc] ?? (loc === secondaryLocale ? secondaryMessages : null);
+      return {
+        locale: loc,
+        t: msgs ? createTranslator(msgs) : (((k: string) => k) as unknown as Translator),
+      };
+    });
+  }, [effectiveSecondaryLocales, secondaryMessagesMap, secondaryLocale, secondaryMessages]);
+
+  const secondaryTranslatorsMap = useMemo(() => {
+    return Object.fromEntries(secondaryTranslators.map((st) => [st.locale, st.t]));
+  }, [secondaryTranslators]);
 
   const value = useMemo(
     () => ({
       site,
       base,
       locale,
-      secondaryLocale,
-      secondaryLocales,
+      secondaryLocale: secondaryLocale ?? effectiveSecondaryLocales[0] ?? null,
+      secondaryLocales: effectiveSecondaryLocales,
       isBilingual,
       t: createTranslator(messages),
       tSecondary: secTranslator,
+      secondaryTranslators,
+      secondaryTranslatorsMap,
       href: (path: string) => `${base}${path}`,
     }),
-    [site, base, locale, secondaryLocale, secondaryLocales, isBilingual, messages, secTranslator],
+    [site, base, locale, secondaryLocale, effectiveSecondaryLocales, isBilingual, messages, secTranslator, secondaryTranslators, secondaryTranslatorsMap],
   );
   return <SiteContext.Provider value={value}>{children}</SiteContext.Provider>;
 }
@@ -92,6 +123,7 @@ interface LearnerCtx extends SiteCtx {
   state: PlayerState;
   index: ContentIndex;
   secondaryIndex?: ContentIndex | null;
+  secondaryIndices: { locale: LearnLocale; index: ContentIndex }[];
   /** POST to the learning API. Guest state is attached automatically; the returned state is adopted. */
   api: <T extends object>(action: string, body?: Record<string, unknown>) => Promise<T & { state?: PlayerState }>;
   resetGuest: () => void;
@@ -144,6 +176,7 @@ function ApiErrorToast({ message, closeLabel }: { message: string; closeLabel: s
 export function LearnerProvider({
   meta,
   secondaryMeta = null,
+  secondaryMetas = [],
   initialState,
   accountsEnabled,
   access = FREE_ACCESS,
@@ -152,12 +185,13 @@ export function LearnerProvider({
   access?: Access;
   meta: MetaBundle;
   secondaryMeta?: MetaBundle | null;
+  secondaryMetas?: { locale: LearnLocale; meta: MetaBundle }[];
   /** Present for signed-in students (server-loaded); null means guest/demo mode. */
   initialState: PlayerState | null;
   accountsEnabled: boolean;
   children: ReactNode;
 }) {
-  const { site, base, locale, secondaryLocale, secondaryLocales, isBilingual, t, tSecondary, href } = useSite();
+  const { site, base, locale, secondaryLocale, secondaryLocales, isBilingual, t, tSecondary, secondaryTranslators, secondaryTranslatorsMap, href } = useSite();
   const router = useRouter();
   const pathname = usePathname();
   const mode = initialState ? "account" : "guest";
@@ -166,9 +200,27 @@ export function LearnerProvider({
   // exactly as before; elementary: only that grade's course). Before onboarding there is no grade yet and the secondary default applies.
   const grade = state.profile?.grade ?? "M1";
   const index = useMemo(() => indexContent(scopeToGrade(meta, grade)), [meta, grade]);
+  const secondaryIndices = useMemo(() => {
+    if (secondaryMetas && secondaryMetas.length > 0) {
+      return secondaryMetas.map((sm) => ({
+        locale: sm.locale,
+        index: indexContent(scopeToGrade(sm.meta, grade)),
+      }));
+    }
+    if (secondaryMeta) {
+      return [
+        {
+          locale: (secondaryLocale || "ko") as LearnLocale,
+          index: indexContent(scopeToGrade(secondaryMeta, grade)),
+        },
+      ];
+    }
+    return [];
+  }, [secondaryMetas, secondaryMeta, grade, secondaryLocale]);
+
   const secondaryIndex = useMemo(
-    () => (secondaryMeta ? indexContent(scopeToGrade(secondaryMeta, grade)) : null),
-    [secondaryMeta, grade],
+    () => secondaryIndices[0]?.index ?? (secondaryMeta ? indexContent(scopeToGrade(secondaryMeta, grade)) : null),
+    [secondaryIndices, secondaryMeta, grade],
   );
   const [ready, setReady] = useState(mode === "account");
   const stateRef = useRef(state);
@@ -289,6 +341,9 @@ export function LearnerProvider({
       state,
       index,
       secondaryIndex,
+      secondaryIndices,
+      secondaryTranslators,
+      secondaryTranslatorsMap,
       api,
       href,
       resetGuest,
@@ -310,6 +365,9 @@ export function LearnerProvider({
       state,
       index,
       secondaryIndex,
+      secondaryIndices,
+      secondaryTranslators,
+      secondaryTranslatorsMap,
       api,
       href,
       resetGuest,

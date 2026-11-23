@@ -162,7 +162,14 @@ export function MultilingualPopover({
                 <button
                   key={lang.code}
                   type="button"
-                  onClick={() => context.toggleSecondaryLocale(lang.code)}
+                  onClick={() => {
+                    if (context.secondaryLocales.includes(lang.code)) {
+                      context.toggleSecondaryLocale(lang.code);
+                    } else if (context.secondaryLocales.length < 4) {
+                      context.toggleSecondaryLocale(lang.code);
+                    }
+                  }}
+                  disabled={!context.secondaryLocales.includes(lang.code) && context.secondaryLocales.length >= 4}
                   className={`w-full flex items-center justify-between rounded-lg px-2.5 py-1.5 text-left text-xs transition cursor-pointer ${
                     isSelected
                       ? "bg-blue-50 text-blue-900 font-extrabold border border-blue-200 shadow-2xs"

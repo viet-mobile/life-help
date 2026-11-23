@@ -121,6 +121,7 @@ export function LearnMultilingualPopover({
       if (prev.includes(code)) {
         return prev.filter((l) => l !== code);
       } else {
+        if (prev.length >= 4) return prev; // Limit to max 4 secondary languages
         return [...prev, code];
       }
     });

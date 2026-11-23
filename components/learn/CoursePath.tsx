@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { buildPath } from "@/lib/learn/domain/path";
 import type { Course } from "@/lib/learn/types";
+import type { LearnLocale } from "@/lib/learn/i18n";
 import { currentSemester, hasSemesters, semesterOf, type Semester } from "@/lib/learn/content/semesters";
 import { previousLevel } from "@/lib/learn/korean-grades";
 import { courseTopic } from "@/lib/learn/korean-bands";
@@ -14,9 +15,27 @@ import { useLearner } from "./LearnerProvider";
 const SEMESTER_KEY = "learn:semester";
 
 export function CoursePath({ course }: { course: Course }) {
-  const { state, index, t, href, access, plan, site, secondaryIndex, tSecondary, isBilingual } = useLearner();
-  const secCourse = isBilingual && secondaryIndex ? secondaryIndex.bundle.catalog.courses.find((c) => c.id === course.id) : null;
-  const split = hasSemesters(site) && course.units.some((u) => u.lessons.some((l) => semesterOf(site, l.id) !== 0));
+  const { state, index, t, href, access, plan, site, secondaryLocale, secondaryIndex, secondaryIndices = [], secondaryTranslatorsMap = {}, tSecondary, isBilingual } = useLearner();
+  const currentCourse = index.bundle?.catalog?.courses?.find((c) => c.id === course.id) || course;
+  
+  const secCourses: Array<{ locale: LearnLocale; course: Course; t: typeof tSecondary }> = useMemo(() => {
+    if (!isBilingual) return [];
+    if (secondaryIndices && secondaryIndices.length > 0) {
+      return secondaryIndices
+        .map((si) => {
+          const sc = si.index.bundle?.catalog?.courses?.find((c) => c.id === currentCourse.id);
+          const tr = secondaryTranslatorsMap[si.locale] ?? tSecondary;
+          return sc ? { locale: si.locale, course: sc, t: tr } : null;
+        })
+        .filter((x): x is { locale: LearnLocale; course: Course; t: typeof tSecondary } => x !== null);
+    }
+    if (secondaryIndex) {
+      const sc = secondaryIndex.bundle?.catalog?.courses?.find((c) => c.id === currentCourse.id);
+      return sc ? [{ locale: (secondaryLocale || "ko") as LearnLocale, course: sc, t: tSecondary }] : [];
+    }
+    return [];
+  }, [isBilingual, secondaryIndices, secondaryIndex, currentCourse.id, secondaryTranslatorsMap, tSecondary, secondaryLocale]);
+  const split = hasSemesters(site) && currentCourse.units.some((u) => u.lessons.some((l) => semesterOf(site, l.id) !== 0));
   // first paint is semester 1 (same on server and client); the effect then picks the remembered / current semester
   const [semester, setSemester] = useState<1 | 2>(1);
   useEffect(() => {
@@ -33,24 +52,34 @@ export function CoursePath({ course }: { course: Course }) {
   // when Premium is switched off (every item Free) the Free / Premium chips would only be noise
   const showTier = plan.courses.some((c) => c.premiumUnits > 0);
   return (
-    <section className="l-stack" aria-labelledby={`c-${course.id}`}>
+    <section className="l-stack" aria-labelledby={`c-${currentCourse.id}`}>
       <div className="l-card l-card-accent">
-        <div style={{ fontSize: "2.4rem" }} aria-hidden="true">{course.world.emoji}</div>
-        <h2 id={`c-${course.id}`} className="l-h1">
-          <div>{course.world.name}</div>
-          {isBilingual && secCourse && (
-            <div style={{ fontSize: "0.75em", fontWeight: 400, opacity: 0.85, marginTop: "0.2rem" }}>
-              {secCourse.world.name}
+        <div style={{ fontSize: "2.4rem" }} aria-hidden="true">{currentCourse.world.emoji}</div>
+        <h2 id={`c-${currentCourse.id}`} className="l-h1">
+          <div>{currentCourse.world.name}</div>
+          {secCourses.map(({ locale: secLoc, course: sc }) => (
+            <div key={secLoc || sc.id} style={{ fontSize: "0.75em", fontWeight: 400, opacity: 0.85, marginTop: "0.2rem" }}>
+              {secCourses.length > 1 && secLoc && (
+                <span className="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded mr-1.5" style={{ background: "rgba(255,255,255,0.15)" }}>
+                  {secLoc}
+                </span>
+              )}
+              {sc.world.name}
             </div>
-          )}
+          ))}
         </h2>
         <p>
-          <span>{course.world.tagline} · {course.title}</span>
-          {isBilingual && secCourse && (
-            <span style={{ display: "block", fontSize: "0.9em", opacity: 0.85, marginTop: "0.15rem" }}>
-              {secCourse.world.tagline} · {secCourse.title}
+          <span>{currentCourse.world.tagline} · {currentCourse.title}</span>
+          {secCourses.map(({ locale: secLoc, course: sc }) => (
+            <span key={secLoc || sc.id} style={{ display: "block", fontSize: "0.9em", opacity: 0.85, marginTop: "0.15rem" }}>
+              {secCourses.length > 1 && secLoc && (
+                <span className="text-[10px] uppercase font-bold px-1 py-0.5 rounded mr-1.5" style={{ background: "rgba(255,255,255,0.15)" }}>
+                  {secLoc}
+                </span>
+              )}
+              {sc.world.tagline} · {sc.title}
             </span>
-          )}
+          ))}
         </p>
         {site === "korean" && (
           <p className="l-muted" data-testid="course-official">
@@ -64,31 +93,35 @@ export function CoursePath({ course }: { course: Course }) {
           {([1, 2] as const).map((n) => (
             <button key={n} type="button" role="tab" aria-selected={semester === n} data-selected={semester === n} data-testid={`semester-${n}`} className="l-option" onClick={() => pick(n)}>
               <span>{t(`semester.${n}` as never)}</span>
-              {isBilingual && (
-                <span style={{ display: "block", fontSize: "0.8em", opacity: 0.85 }}>
-                  {tSecondary(`semester.${n}` as never)}
+              {secCourses.map(({ locale: secLoc, t: secT }) => (
+                <span key={secLoc} style={{ display: "block", fontSize: "0.8em", opacity: 0.85 }}>
+                  {secCourses.length > 1 && secLoc && <span className="opacity-70 text-[10px] uppercase mr-1">[{secLoc}]</span>}
+                  {secT(`semester.${n}` as never)}
                 </span>
-              )}
+              ))}
             </button>
           ))}
         </div>
       )}
-      {split && course.units.every((u) => u.lessons.every((l) => !visible(l.id))) && <div className="l-panel l-panel-hint" role="status">{t("semester.empty")}</div>}
-      {course.units.map((unit) => {
-        const secUnit = secCourse?.units.find((u) => u.id === unit.id);
+      {split && currentCourse.units.every((u) => u.lessons.every((l) => !visible(l.id))) && <div className="l-panel l-panel-hint" role="status">{t("semester.empty")}</div>}
+      {currentCourse.units.map((unit) => {
         return (
           <div key={unit.id} className="l-stack">
             <h3 className="l-h2">
               <div>{t("learn.unit")} · {unit.title}</div>
-              {isBilingual && secUnit && (
-                <div style={{ fontSize: "0.8em", fontWeight: 400, opacity: 0.85, marginTop: "0.15rem" }}>
-                  {tSecondary("learn.unit")} · {secUnit.title}
-                </div>
-              )}
+              {secCourses.map(({ locale: secLoc, course: sc, t: secT }) => {
+                const su = sc.units.find((u) => u.id === unit.id);
+                if (!su) return null;
+                return (
+                  <div key={secLoc || sc.id} style={{ fontSize: "0.8em", fontWeight: 400, opacity: 0.85, marginTop: "0.15rem" }}>
+                    {secCourses.length > 1 && secLoc && <span className="opacity-70 text-[10px] uppercase mr-1">[{secLoc}]</span>}
+                    {secT("learn.unit")} · {su.title}
+                  </div>
+                );
+              })}
             </h3>
             <ol className="l-path">
               {unit.lessons.filter((lesson) => visible(lesson.id)).map((lesson) => {
-                const secLesson = secUnit?.lessons.find((l) => l.id === lesson.id);
                 const node = nodes.get(lesson.id);
                 const tier = plan.lessonTier.get(lesson.id) ?? "PREMIUM";
                 const premium = tier !== "FREE";
@@ -100,11 +133,16 @@ export function CoursePath({ course }: { course: Course }) {
                     <span className="l-node-ico" aria-hidden="true">{icon}</span>
                     <span style={{ flex: 1 }}>
                       <strong>{lesson.title}</strong>
-                      {isBilingual && secLesson && (
-                        <span style={{ display: "block", fontSize: "0.88em", fontWeight: 400, opacity: 0.85 }}>
-                          {secLesson.title}
-                        </span>
-                      )}
+                      {secCourses.map(({ locale: secLoc, course: sc }) => {
+                        const sl = sc.units.find((u) => u.id === unit.id)?.lessons.find((l) => l.id === lesson.id);
+                        if (!sl) return null;
+                        return (
+                          <span key={secLoc || sc.id} style={{ display: "block", fontSize: "0.88em", fontWeight: 400, opacity: 0.85 }}>
+                            {secCourses.length > 1 && secLoc && <span className="opacity-70 text-[10px] uppercase mr-1">[{secLoc}]</span>}
+                            {sl.title}
+                          </span>
+                        );
+                      })}
                       {site === "korean" && <> <BandChip lessonId={lesson.id} t={t} /></>}
                       {split && semesterOf(site, lesson.id) === 0 && <span className="l-muted"> · {t("semester.shared")}</span>}
                       {showTier && " "}
@@ -114,17 +152,32 @@ export function CoursePath({ course }: { course: Course }) {
                         {status === "done" ? (
                           <>
                             <span>{node?.placedOut && !node.stars ? t("learn.lesson.placed") : `${"★".repeat(node?.stars ?? 0)}${"☆".repeat(3 - (node?.stars ?? 0))} ${t("learn.lesson.done")}`}</span>
-                            {isBilingual && <span style={{ opacity: 0.85, marginLeft: "0.3rem" }}>({tSecondary(node?.placedOut && !node.stars ? "learn.lesson.placed" : "learn.lesson.done")})</span>}
+                            {secCourses.map(({ locale: secLoc, t: secT }) => (
+                              <span key={secLoc} style={{ opacity: 0.85, marginLeft: "0.3rem" }}>
+                                {secCourses.length > 1 && secLoc && <span className="opacity-70 text-[10px] uppercase mr-0.5">[{secLoc}]</span>}
+                                ({secT(node?.placedOut && !node.stars ? "learn.lesson.placed" : "learn.lesson.done")})
+                              </span>
+                            ))}
                           </>
                         ) : status === "current" ? (
                           <>
                             <span>{t("learn.lesson.current")}</span>
-                            {isBilingual && <span style={{ opacity: 0.85, marginLeft: "0.3rem" }}>({tSecondary("learn.lesson.current")})</span>}
+                            {secCourses.map(({ locale: secLoc, t: secT }) => (
+                              <span key={secLoc} style={{ opacity: 0.85, marginLeft: "0.3rem" }}>
+                                {secCourses.length > 1 && secLoc && <span className="opacity-70 text-[10px] uppercase mr-0.5">[{secLoc}]</span>}
+                                ({secT("learn.lesson.current")})
+                              </span>
+                            ))}
                           </>
                         ) : (
                           <>
                             <span>{t("learn.lesson.locked")}</span>
-                            {isBilingual && <span style={{ opacity: 0.85, marginLeft: "0.3rem" }}>({tSecondary("learn.lesson.locked")})</span>}
+                            {secCourses.map(({ locale: secLoc, t: secT }) => (
+                              <span key={secLoc} style={{ opacity: 0.85, marginLeft: "0.3rem" }}>
+                                {secCourses.length > 1 && secLoc && <span className="opacity-70 text-[10px] uppercase mr-0.5">[{secLoc}]</span>}
+                                ({secT("learn.lesson.locked")})
+                              </span>
+                            ))}
                           </>
                         )}
                       </span>
@@ -132,16 +185,22 @@ export function CoursePath({ course }: { course: Course }) {
                     {premiumLocked ? (
                       <span className="l-chip">
                         <span>{t("premium.locked")}</span>
-                        {isBilingual && <span style={{ display: "block", fontSize: "0.75em", opacity: 0.85 }}>{tSecondary("premium.locked")}</span>}
+                        {secCourses.map(({ locale: secLoc, t: secT }) => (
+                          <span key={secLoc} style={{ display: "block", fontSize: "0.75em", opacity: 0.85 }}>
+                            {secCourses.length > 1 && secLoc && <span className="opacity-70 text-[10px] uppercase mr-0.5">[{secLoc}]</span>}
+                            {secT("premium.locked")}
+                          </span>
+                        ))}
                       </span>
                     ) : status !== "locked" && (
                       <span className="l-chip">
                         <span>{status === "done" ? t("learn.lesson.replay") : t("learn.lesson.start")}</span>
-                        {isBilingual && (
-                          <span style={{ display: "block", fontSize: "0.75em", opacity: 0.85 }}>
-                            {status === "done" ? tSecondary("learn.lesson.replay") : tSecondary("learn.lesson.start")}
+                        {secCourses.map(({ locale: secLoc, t: secT }) => (
+                          <span key={secLoc} style={{ display: "block", fontSize: "0.75em", opacity: 0.85 }}>
+                            {secCourses.length > 1 && secLoc && <span className="opacity-70 text-[10px] uppercase mr-0.5">[{secLoc}]</span>}
+                            {status === "done" ? secT("learn.lesson.replay") : secT("learn.lesson.start")}
                           </span>
-                        )}
+                        ))}
                       </span>
                     )}
                   </>

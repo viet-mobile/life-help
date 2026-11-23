@@ -611,6 +611,7 @@ export function LocaleProvider({
     if (secondaryLocales.includes(target)) {
       next = secondaryLocales.filter((l) => l !== target);
     } else {
+      if (secondaryLocales.length >= 4) return;
       next = [...secondaryLocales, target];
     }
     setSecondaryLocales(next);

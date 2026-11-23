@@ -28,10 +28,18 @@ export async function getLocale(): Promise<LearnLocale> {
     if (fromUrl && isLocale(fromUrl)) return fromUrl;
   } catch { /* no request context */ }
   try {
-    return parseLocale((await cookies()).get(LOCALE_COOKIE)?.value, fallback);
-  } catch {
-    return fallback;
-  }
+    const fromCookie = (await cookies()).get(LOCALE_COOKIE)?.value;
+    if (fromCookie && isLocale(fromCookie)) return fromCookie;
+  } catch { /* no request context */ }
+  try {
+    const fromLifeCookie = (await cookies()).get("life_help_locale")?.value;
+    if (fromLifeCookie && isLocale(fromLifeCookie)) return fromLifeCookie;
+  } catch { /* no request context */ }
+  try {
+    const fromLifeHeader = (await headers()).get("x-life-language");
+    if (fromLifeHeader && isLocale(fromLifeHeader)) return fromLifeHeader;
+  } catch { /* no request context */ }
+  return fallback;
 }
 
 /**
@@ -50,24 +58,24 @@ export async function getSecondaryLocales(): Promise<LearnLocale[]> {
     const fromUrlMulti = (await headers()).get("x-learn-secondary-locales");
     if (fromUrlMulti) {
       const parts = fromUrlMulti.split(/[,+]/).filter(isLocale);
-      if (parts.length > 0) return parts;
+      if (parts.length > 0) return parts.slice(0, 4);
     }
     const fromUrl = (await headers()).get("x-learn-secondary-locale");
     if (fromUrl) {
       const parts = fromUrl.split(/[,+]/).filter(isLocale);
-      if (parts.length > 0) return parts;
+      if (parts.length > 0) return parts.slice(0, 4);
     }
   } catch { /* no request context */ }
   try {
     const fromCookieMulti = (await cookies()).get("life_help_secondary_locales")?.value;
     if (fromCookieMulti) {
       const parts = fromCookieMulti.split(/[,+]/).filter(isLocale);
-      if (parts.length > 0) return parts;
+      if (parts.length > 0) return parts.slice(0, 4);
     }
     const fromCookie = (await cookies()).get("life_help_secondary_locale")?.value;
     if (fromCookie) {
       const parts = fromCookie.split(/[,+]/).filter(isLocale);
-      if (parts.length > 0) return parts;
+      if (parts.length > 0) return parts.slice(0, 4);
     }
     const displayMode = (await cookies()).get("life_help_display_mode")?.value;
     if (displayMode === "bilingual") {

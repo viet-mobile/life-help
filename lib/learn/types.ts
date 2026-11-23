@@ -182,6 +182,12 @@ export interface PublicQuestion {
     latex?: string;
     options?: QuestionOption[];
   };
+  secondaries?: Array<{
+    locale: string;
+    prompt?: string;
+    latex?: string;
+    options?: QuestionOption[];
+  }>;
 }
 
 /* ------------------------------ Catalog ------------------------------- */

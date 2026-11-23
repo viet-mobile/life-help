@@ -5,7 +5,7 @@ import type { ReactNode } from "react";
 import "katex/dist/katex.min.css";
 import "../study.css";
 import { SiteProvider } from "@/components/learn/LearnerProvider";
-import { localeDir } from "@/lib/learn/i18n";
+import { localeDir, type LearnLocale, type Messages } from "@/lib/learn/i18n";
 import { getServerT, getSecondaryLocale, getSecondaryLocales } from "@/lib/learn/i18n/server";
 import { siteConfig } from "@/lib/learn/sites";
 import { isSite } from "@/lib/learn/types";
@@ -104,11 +104,22 @@ export default async function StudyLayout({ children, params }: { children: Reac
   const h = await headers();
   const base = h.get("x-learn-base") ?? `/study/${site}`;
   const { locale, messages } = await getServerT();
-  const secondaryLocale = await getSecondaryLocale();
-  const secondaryLocales = await getSecondaryLocales();
-  const secondaryMessages = secondaryLocale && secondaryLocale !== locale ? (await getServerT(secondaryLocale)).messages : null;
-  // lang / dir from the locale registry: Arabic-script and Hebrew locales render right-to-left; target-language material and formulas
-  // inside keep their own direction (components mark them dir="ltr" / lang).
+  const secondaryLocales = (await getSecondaryLocales()).filter((l) => l !== locale).slice(0, 4);
+  const secondaryLocale = secondaryLocales[0] ?? null;
+  const secondaryMessagesList = await Promise.all(
+    secondaryLocales.map(async (secLoc) => {
+      try {
+        const res = await getServerT(secLoc);
+        return { locale: secLoc, messages: res.messages };
+      } catch {
+        return null;
+      }
+    })
+  );
+  const validSecMessages = secondaryMessagesList.filter((m): m is { locale: LearnLocale; messages: Messages } => m !== null);
+  const secondaryMessages = validSecMessages[0]?.messages ?? null;
+  const secondaryMessagesMap = Object.fromEntries(validSecMessages.map((m) => [m.locale, m.messages]));
+
   return (
     <div className="study-root" data-site={site} lang={locale} dir={localeDir(locale)}>
       <SiteProvider
@@ -119,6 +130,7 @@ export default async function StudyLayout({ children, params }: { children: Reac
         secondaryLocale={secondaryLocale}
         secondaryLocales={secondaryLocales}
         secondaryMessages={secondaryMessages}
+        secondaryMessagesMap={secondaryMessagesMap}
       >
         {children}
       </SiteProvider>

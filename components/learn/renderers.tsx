@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useSyncExternalStore, type ComponentType }
 import { getAudioProvider } from "@/lib/learn/providers/audio";
 import { TtsSettingsPanel } from "./TtsSettings";
 import type { PublicQuestion, QuestionType, Site } from "@/lib/learn/types";
+import type { LearnLocale } from "@/lib/learn/i18n";
 import { siteConfig } from "@/lib/learn/sites";
 import { useSite } from "./LearnerProvider";
 import { RichText } from "./RichText";
@@ -39,7 +40,7 @@ export function getRenderer(site: Site, type: QuestionType): Renderer | undefine
 
 function ChoiceRenderer({ q, value, onChange, disabled }: RendererProps) {
   const { t, tSecondary, isBilingual } = useSite();
-  const options =
+  const options: Array<{ id: string; text: string; secText?: string; secTexts?: { locale: string; text: string }[] }> =
     q.type === "true_false"
       ? [
           { id: "true", text: t("lesson.tf.true"), secText: isBilingual ? tSecondary("lesson.tf.true") : undefined },
@@ -47,9 +48,18 @@ function ChoiceRenderer({ q, value, onChange, disabled }: RendererProps) {
         ]
       : (q.options ?? []).map((opt) => {
           const secOpt = q.secondary?.options?.find((so) => so.id === opt.id);
+          const secTexts = isBilingual && q.secondaries
+            ? q.secondaries
+                .map((sq) => {
+                  const found = sq.options?.find((so) => so.id === opt.id);
+                  return found?.text && found.text !== opt.text ? { locale: sq.locale, text: found.text } : null;
+                })
+                .filter((x): x is { locale: string; text: string } => x !== null)
+            : undefined;
           return {
             ...opt,
             secText: isBilingual && secOpt?.text && secOpt.text !== opt.text ? secOpt.text : undefined,
+            secTexts,
           };
         });
   // The letters on the options are keys: A / B / C / D (any case, also under a Korean input method) choose exactly like a click.
@@ -87,11 +97,18 @@ function ChoiceRenderer({ q, value, onChange, disabled }: RendererProps) {
             {/* dir="auto": a gloss in Arabic script reads right-to-left, Korean / English target text left-to-right, on any page */}
             <span style={{ flex: 1, textAlign: "left" }}>
               <RichText text={o.text} dir="auto" />
-              {o.secText && (
+              {o.secTexts && o.secTexts.length > 0 ? (
+                o.secTexts.map((st) => (
+                  <div key={st.locale} style={{ fontSize: "0.85em", opacity: 0.85, marginTop: "0.15rem" }}>
+                    {o.secTexts!.length > 1 && <span className="opacity-70 text-[10px] uppercase font-bold mr-1">[{st.locale}]</span>}
+                    <RichText text={st.text} dir="auto" />
+                  </div>
+                ))
+              ) : o.secText ? (
                 <div style={{ fontSize: "0.85em", opacity: 0.85, marginTop: "0.15rem" }}>
                   <RichText text={o.secText} dir="auto" />
                 </div>
-              )}
+              ) : null}
             </span>
           </button>
         );
@@ -105,11 +122,20 @@ registerRenderer("true_false", ChoiceRenderer);
 function MultiRenderer({ q, value, onChange, disabled }: RendererProps) {
   const { isBilingual } = useSite();
   const selected = Array.isArray(value) ? value : [];
-  const options = (q.options ?? []).map((opt) => {
+  const options: Array<{ id: string; text: string; secText?: string; secTexts?: { locale: string; text: string }[] }> = (q.options ?? []).map((opt) => {
     const secOpt = q.secondary?.options?.find((so) => so.id === opt.id);
+    const secTexts = isBilingual && q.secondaries
+      ? q.secondaries
+          .map((sq) => {
+            const found = sq.options?.find((so) => so.id === opt.id);
+            return found?.text && found.text !== opt.text ? { locale: sq.locale, text: found.text } : null;
+          })
+          .filter((x): x is { locale: string; text: string } => x !== null)
+      : undefined;
     return {
       ...opt,
       secText: isBilingual && secOpt?.text && secOpt.text !== opt.text ? secOpt.text : undefined,
+      secTexts,
     };
   });
   return (
@@ -130,11 +156,18 @@ function MultiRenderer({ q, value, onChange, disabled }: RendererProps) {
             <span className="l-option-key" aria-hidden="true">{on ? "✓" : ""}</span>
             <span style={{ flex: 1, textAlign: "left" }}>
               <RichText text={o.text} dir="auto" />
-              {o.secText && (
+              {o.secTexts && o.secTexts.length > 0 ? (
+                o.secTexts.map((st) => (
+                  <div key={st.locale} style={{ fontSize: "0.85em", opacity: 0.85, marginTop: "0.15rem" }}>
+                    {o.secTexts!.length > 1 && <span className="opacity-70 text-[10px] uppercase font-bold mr-1">[{st.locale}]</span>}
+                    <RichText text={st.text} dir="auto" />
+                  </div>
+                ))
+              ) : o.secText ? (
                 <div style={{ fontSize: "0.85em", opacity: 0.85, marginTop: "0.15rem" }}>
                   <RichText text={o.secText} dir="auto" />
                 </div>
-              )}
+              ) : null}
             </span>
           </button>
         );

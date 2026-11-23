@@ -43,4 +43,26 @@ describe("Arabic multilingual and study tests", () => {
     const mainUrlKo = buildMainPortalUrl("math.life.help", "ko", []);
     expect(mainUrlKo).toBe("https://korea.life.help/");
   });
+
+  it("checks loadIndex for math in Vietnamese and verifies titles are localized", async () => {
+    const { loadIndex } = await import("@/lib/learn/content/repository");
+    const { bundle } = await loadIndex("math", { locale: "vi" });
+    const c0 = bundle.catalog.courses[0];
+    expect(c0.title).toContain("Toán Lớp 1");
+    expect(c0.world.name).toBe("Đồng cỏ Số");
+    expect(c0.units[0].title).toBe("Số, phép tính và hình");
+    expect(c0.units[0].lessons[0].title).toBe("Đếm số");
+  });
+
+  it("checks multiple secondary indices and parallel locale resolution", async () => {
+    const { loadIndex } = await import("@/lib/learn/content/repository");
+    const [viRes, arRes, koRes] = await Promise.all([
+      loadIndex("math", { locale: "vi" }),
+      loadIndex("math", { locale: "ar" }),
+      loadIndex("math", { locale: "ko" }),
+    ]);
+    expect(viRes.bundle.catalog.courses[0].world.name).toBe("Đồng cỏ Số");
+    expect(arRes.bundle.catalog.courses[0].world.name).toBe("مرج الأعداد");
+    expect(koRes.bundle.catalog.courses[0].world.name).toBe("수의 초원");
+  });
 });

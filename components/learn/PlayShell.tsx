@@ -17,7 +17,7 @@ import { hubLabels } from "../think/hubLabels";
 const FOCUS_PATHS = ["/lesson/", "/onboarding", "/diagnostic", "/practice"]; // /think keeps the tab bar (its hub), the player is part of it
 
 export function PlayShell({ children }: { children: ReactNode }) {
-  const { t, tSecondary, isBilingual, href, site, state, ready, locale, secondaryLocales } = useLearner();
+  const { t, tSecondary, secondaryTranslators = [], isBilingual, href, site, state, ready, locale, secondaryLocales } = useLearner();
   const pathname = usePathname();
   const focus = FOCUS_PATHS.some((p) => pathname.includes(p));
   const level = levelProgress(state.totalXp);
@@ -26,11 +26,11 @@ export function PlayShell({ children }: { children: ReactNode }) {
   const mainHomeUrl = buildMainPortalUrl(rawHost, locale, secondaryLocales);
 
   const tabs = [
-    { path: "/dashboard", icon: "🏠", label: t("nav.home"), secLabel: isBilingual ? tSecondary("nav.home") : undefined },
-    { path: "/learn", icon: "🗺️", label: t("nav.learn"), secLabel: isBilingual ? tSecondary("nav.learn") : undefined },
-    { path: "/quest", icon: "📜", label: t("nav.quest"), secLabel: isBilingual ? tSecondary("nav.quest") : undefined },
-    { path: "/think", icon: "🧠", label: hubLabels(t).title, secLabel: isBilingual ? hubLabels(tSecondary).title : undefined },
-    { path: "/profile", icon: "🙂", label: t("nav.profile"), secLabel: isBilingual ? tSecondary("nav.profile") : undefined },
+    { path: "/dashboard", icon: "🏠", key: "nav.home" as const },
+    { path: "/learn", icon: "🗺️", key: "nav.learn" as const },
+    { path: "/quest", icon: "📜", key: "nav.quest" as const },
+    { path: "/think", icon: "🧠", key: "think" as const },
+    { path: "/profile", icon: "🙂", key: "nav.profile" as const },
   ];
 
   if (focus) return <><main id="main" className="l-main">{children}</main><ThinkOffer /></>;
@@ -58,15 +58,34 @@ export function PlayShell({ children }: { children: ReactNode }) {
         </div>
       </header>
       <nav className="l-tabs" aria-label={t("nav.main")}>
-        {tabs.map((tab) => (
-          <Link key={tab.path} className="l-tab" href={href(tab.path)} aria-current={pathname.endsWith(tab.path) ? "page" : undefined}>
-            <span className="l-tab-ico" aria-hidden="true">{tab.icon}</span>
-            <span style={{ display: "inline-flex", flexDirection: "column", alignItems: "center" }}>
-              <span>{tab.label}</span>
-              {tab.secLabel && <span style={{ fontSize: "0.75em", opacity: 0.85, lineHeight: 1 }}>{tab.secLabel}</span>}
-            </span>
-          </Link>
-        ))}
+        {tabs.map((tab) => {
+          const mainLabel = tab.key === "think" ? hubLabels(t).title : t(tab.key);
+          return (
+            <Link key={tab.path} className="l-tab" href={href(tab.path)} aria-current={pathname.endsWith(tab.path) ? "page" : undefined}>
+              <span className="l-tab-ico" aria-hidden="true">{tab.icon}</span>
+              <span style={{ display: "inline-flex", flexDirection: "column", alignItems: "center" }}>
+                <span>{mainLabel}</span>
+                {isBilingual && (
+                  secondaryTranslators && secondaryTranslators.length > 0 ? (
+                    secondaryTranslators.map((st) => {
+                      const secText = tab.key === "think" ? hubLabels(st.t).title : st.t(tab.key);
+                      return (
+                        <span key={st.locale} style={{ fontSize: "0.75em", opacity: 0.85, lineHeight: 1, marginTop: "1px" }}>
+                          {secondaryTranslators.length > 1 && <span className="opacity-70 text-[9px] uppercase mr-0.5">[{st.locale}]</span>}
+                          {secText}
+                        </span>
+                      );
+                    })
+                  ) : tSecondary ? (
+                    <span style={{ fontSize: "0.75em", opacity: 0.85, lineHeight: 1 }}>
+                      {tab.key === "think" ? hubLabels(tSecondary).title : tSecondary(tab.key)}
+                    </span>
+                  ) : null
+                )}
+              </span>
+            </Link>
+          );
+        })}
       </nav>
       <main id="main" className="l-main">{ready ? children : <div className="l-wrap" role="status">{t("common.loading")}</div>}</main>
       <ThinkOffer />
