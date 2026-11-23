@@ -70,7 +70,7 @@ func renderOGImage(subject: String?, outputPath: String) {
             subjectColor = NSColor(red: 0.05, green: 0.65, blue: 0.40, alpha: 1.0) // Emerald
         case "PHYSICS":
             subjectColor = NSColor(red: 0.31, green: 0.35, blue: 0.92, alpha: 1.0) // Indigo
-        case "CHEMISTRY":
+        case "CHEMISTRY", "CHEM":
             subjectColor = NSColor(red: 0.06, green: 0.60, blue: 0.62, alpha: 1.0) // Teal
         default:
             subjectColor = NSColor(red: 0.08, green: 0.15, blue: 0.35, alpha: 1.0) // Navy
@@ -107,7 +107,7 @@ renderOGImage(subject: "KOREAN", outputPath: "\(publicDir)/og-korean.png")
 renderOGImage(subject: "ENGLISH", outputPath: "\(publicDir)/og-english.png")
 renderOGImage(subject: "MATH", outputPath: "\(publicDir)/og-math.png")
 renderOGImage(subject: "PHYSICS", outputPath: "\(publicDir)/og-physics.png")
-renderOGImage(subject: "CHEMISTRY", outputPath: "\(publicDir)/og-chemistry.png")
+renderOGImage(subject: "CHEM", outputPath: "\(publicDir)/og-chemistry.png")
 
 // Also render 512x512 logo files for public/logos/logo-{subject}.png
 func renderSquareLogo(subject: String?, outputPath: String) {
@@ -147,7 +147,7 @@ func renderSquareLogo(subject: String?, outputPath: String) {
         case "ENGLISH": subjectColor = NSColor(red: 0.08, green: 0.52, blue: 0.88, alpha: 1.0)
         case "MATH": subjectColor = NSColor(red: 0.05, green: 0.65, blue: 0.40, alpha: 1.0)
         case "PHYSICS": subjectColor = NSColor(red: 0.31, green: 0.35, blue: 0.92, alpha: 1.0)
-        case "CHEMISTRY": subjectColor = NSColor(red: 0.06, green: 0.60, blue: 0.62, alpha: 1.0)
+        case "CHEMISTRY", "CHEM": subjectColor = NSColor(red: 0.06, green: 0.60, blue: 0.62, alpha: 1.0)
         default: subjectColor = NSColor(red: 0.08, green: 0.15, blue: 0.35, alpha: 1.0)
         }
         
@@ -173,8 +173,8 @@ func renderSquareLogo(subject: String?, outputPath: String) {
 
 renderSquareLogo(subject: nil, outputPath: "\(logosDir)/logo-default.png")
 renderSquareLogo(subject: nil, outputPath: "\(logosDir)/life-help-round-logo.png")
-renderSquareLogo(subject: "KOREAN", outputPath: "\(logosDir)/logo-korean.png")
-renderSquareLogo(subject: "ENGLISH", outputPath: "\(logosDir)/logo-english.png")
-renderSquareLogo(subject: "MATH", outputPath: "\(logosDir)/logo-math.png")
-renderSquareLogo(subject: "PHYSICS", outputPath: "\(logosDir)/logo-physics.png")
-renderSquareLogo(subject: "CHEMISTRY", outputPath: "\(logosDir)/logo-chemistry.png")
+// renderSquareLogo(subject: "KOREAN", ...)
+// renderSquareLogo(subject: "ENGLISH", ...)
+// renderSquareLogo(subject: "MATH", ...)
+// renderSquareLogo(subject: "PHYSICS", ...)
+// renderSquareLogo(subject: "CHEMISTRY", ...)

@@ -15,7 +15,7 @@ const path = require("node:path");
 
 const LOGOS = path.join(__dirname, "../public/logos");
 const CANVAS = path.join(LOGOS, "logo-nepal.png");
-const SITES = { math: "MATH", english: "ENGLISH", korean: "KOREAN" };
+const SITES = { math: "MATH", english: "ENGLISH", korean: "KOREAN", physics: "PHYSICS", chemistry: "CHEM" };
 // Name band in 512px coordinates (generate_logos.js: text 678x162 at (180,158) of the 790px crop, scaled by 512/790).
 const BAND = { left: 36, top: 25, width: 439, height: 105 };
 const NAVY = "#0b1e4c";

@@ -84,10 +84,7 @@ export async function generateMetadata({ params }: { params: Promise<{ site: str
       locale: locale.replace("-", "_"),
       type: "website",
       siteName: name,
-      images: [
-        { url: ogImageUrl, width: 1200, height: 630, alt: name },
-        { url: logo, width: 512, height: 512, alt: name },
-      ],
+      images: [{ url: logo, width: 512, height: 512, alt: name }, { url: ogImageUrl, width: 1200, height: 630, alt: name }],
     },
     twitter: {
       card: "summary_large_image",
