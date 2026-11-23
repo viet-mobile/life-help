@@ -414,11 +414,6 @@ export function CustomerHome() {
                     : `${t("customer.consultation")} · ${t("customer.safe050Tag") || "안심 연결"}`}
                 </span>
               </div>
-              <p className="text-[11px] sm:text-xs font-bold text-slate-600 mt-0.5">
-                {locale === "ko"
-                  ? "한국 거주 외국인을 위한 24시간 생활 문제 해결 & 전문 헬퍼 연결"
-                  : (t("customer.subtitle") || "24/7 Life Services & Verified Helpers Platform")}
-              </p>
             </div>
 
             {/* One-Touch Instant Emergency Dispatch Droplet Button */}
