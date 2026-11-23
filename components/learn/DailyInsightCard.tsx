@@ -367,6 +367,18 @@ export function DailyInsightCard({
           <p suppressHydrationWarning className="text-xs text-slate-600 font-medium">
             {insight.example}
           </p>
+          {isBilingual && secondaryInsights.map(({ locale: secLoc, insight: secInsight }) => (
+            secInsight?.example && secInsight.example !== insight.example ? (
+              <p key={`${secLoc}-example`} suppressHydrationWarning className="text-xs font-normal text-slate-500 flex items-baseline gap-1.5">
+                {effectiveSecondaryLocales.length > 1 && (
+                  <span className="inline-block text-[9px] font-black uppercase px-1 py-0.2 rounded bg-slate-100 text-slate-600 border border-slate-200 shrink-0">
+                    {secLoc}
+                  </span>
+                )}
+                <span>{secInsight.example}</span>
+              </p>
+            ) : null
+          ))}
         </div>
 
         {/* Action Item Box */}

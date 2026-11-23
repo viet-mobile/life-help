@@ -15,31 +15,56 @@ TOPICS_36 = [
             "en": "Essential Lease Clauses to Protect Rental Deposit (Jeonse/Wolse)",
             "vi": "Điều khoản bắt buộc để bảo vệ tiền cọc khi thuê nhà (Jeonse/Wolse)",
             "zh-Hans": "全租·月租签约时保护租房押金的必备特约条款",
-            "ja": "チョンセ・ウォルセ契約時に保証金を守る必須特約"
+            "ja": "チョンセ・ウォルセ契約時に保証金を守る必須特約",
+            "sq": "Klauzola thelbësore në kontratën e qirasë për mbrojtjen e depozitës (Jeonse/Wolse)",
+            "hi": "किराया जमा राशि (Jeonse/Wolse) की सुरक्षा के लिए आवश्यक पट्टा शर्तें",
+            "ar": "بنود العقد الأساسية لحماية وديعة الإيجار (Jeonse/Wolse) في كوريا",
+            "zh-Hant": "全租·月租簽約時保護租房押金的必備特約條款",
+            "ko": "전·월세 계약 시 보증금 보호 필수 특약"
         },
         "summary": {
             "en": "Protect your rental deposit in South Korea against landlord debt with standard defense clauses.",
             "vi": "Bảo vệ trọn vẹn tiền cọc thuê nhà tại Hàn Quốc trước các khoản nợ của chủ nhà bằng điều khoản đặc biệt.",
             "zh-Hans": "通过标准防范特约条款，避免房东在搬入当天抵押房产，切实守护在韩租房押金安全。",
-            "ja": "引越し当日の対抗力発生タイムラグを突いた家主の抵当権設定を防ぎ、大切な保証金を保護します。"
+            "ja": "引越し当日の対抗力発生タイムラグを突いた家主の抵当権設定を防ぎ、大切な保証金を保護します。",
+            "sq": "Mbroni depozitën tuaj të qirasë në Kore kundër borxheve të pronarit përmes klauzolave standarde mbrojtëse.",
+            "hi": "मानक सुरक्षा शर्तों के साथ दक्षिण कोरिया में मकान मालिक के कर्ज से अपनी किराये की जमा राशि सुरक्षित रखें।",
+            "ar": "نصيحة عملية للإقامة في كوريا: حماية وديعة الإيجار ضد ديون المالك والرهون العقارية عبر البنود الخاصة الإلزامية في العقد.",
+            "zh-Hant": "通過標準防範特約條款，避免房東在搬入當天抵押房產，切實守護在韓租房押金安全。",
+            "ko": "임대인의 근저당 설정 등 권리 침해로부터 임대차 보증금을 안전하게 지키기 위한 표준 방어 특약 조항을 활용하세요."
         },
         "principle": {
             "en": "Standard defense clause protecting against the legal gap before opposing power takes effect (midnight next day).",
             "vi": "Điều khoản tiêu chuẩn giúp phòng ngừa rủi ro trong khoảng trống hiệu lực pháp lý (0h ngày hôm sau).",
             "zh-Hans": "防范对抗力生效时间差（次日凌晨0点）法律盲区的标准特约条款。",
-            "ja": "対抗力発生の時間差（翌日午前0時）の盲点を防御する標準特約条項。"
+            "ja": "対抗力発生の時間差（翌日午前0時）の盲点を防御する標準特約条項。",
+            "sq": "Klauzolë standarde që mbron nga hendeku ligjor para se të hyjë në fuqi e drejta mbrojtëse (ora 00:00 e ditës tjetër).",
+            "hi": "विधिक प्रभाव लागू होने से पहले की कानूनी समय-सीमा (अगले दिन मध्यरात्रि) के जोखिम से बचाने वाली मानक सुरक्षा शर्त।",
+            "ar": "بند الدفاع القياسي للحماية من الفجوة الزمنية لسريان القوة القانونية (منتصف ليل اليوم التالي): اشتراط عدم رهن العقار حتى تاريخ سداد الوديعة.",
+            "zh-Hant": "防範對抗力生效時間差（次日凌晨0點）法律盲區的標準特約條款。",
+            "ko": "대항력 발생 시점(전입신고 익일 0시)의 법적 공백 기간 동안 집주인의 근저당 설정을 원천 차단하는 표준 방어 특약입니다."
         },
         "example": {
             "en": "\"The landlord shall not establish any rights or mortgages on this property until the day after the balance is paid. Any violation will immediately void the contract and refund the full deposit.\"",
             "vi": "\"Bên cho thuê cam kết không thế chấp hay phát sinh quyền lợi nào trên bất động sản đến hết ngày hôm sau khi nhận đủ tiền. Nếu vi phạm, hợp đồng lập tức bị hủy và hoàn trả 100% tiền cọc.\"",
             "zh-Hans": "\"房东直至支付尾款次日不得在该房产设定抵押权等任何权利，如有违反立即解除合同并全额退还押金。\"",
-            "ja": "「賃貸人は残金支払日の翌日まで本物件に根抵当権等の権利を設定せず、違反時は即座に契約解除および保証金全額を返還する。」"
+            "ja": "「賃貸人は残金支払日の翌日まで本物件に根抵当権等の権利を設定せず、違反時は即座に契約解除および保証金全額を返還する。」",
+            "sq": "\"Qiradhënësi nuk do të vendosë hipotekë mbi pronën deri një ditë pas pagesës; çdo shkelje anulon kontratën me rimbursim të plotë.\"",
+            "hi": "\"शेष राशि का भुगतान होने के अगले दिन तक मकान मालिक इस संपत्ति पर कोई अधिकार या गिरवी (mortgage) स्थापित नहीं करेगा। किसी भी उल्लंघन की स्थिति में अनुबंध तुरंत रद्द माना जाएगा और पूरी जमा राशि वापस की जाएगी।\"",
+            "ar": "'يلتزم المؤجر بعدم إنشاء أي رهون عقارية أو حقوق عينية على العقار حتى تاريخ سداد كامل مبلغ الوديعة، وأي إخلال يفسخ العقد فورًا مع التعويض.'",
+            "zh-Hant": "\"房東直至支付尾款次日不得在該房產設定抵押權等任何權利，如有違反立即解除合同並全額退還押金。\"",
+            "ko": "\"임대인은 잔금 지급일 다음 날까지 본 부동산에 근저당 등 어떠한 담보권이나 권리도 설정하지 않으며, 이를 위반할 시 즉시 계약을 해제하고 보증금 전액을 반환한다.\""
         },
         "actionItem": {
             "en": "Always demand the clause prohibiting mortgage registration before your opposing power takes effect.",
             "vi": "Bắt buộc yêu cầu ghi rõ điều khoản cấm thế chấp vào mục thỏa thuận đặc biệt trong hợp đồng.",
             "zh-Hans": "签约时务必在特约事项栏明确注明禁止设定抵押权条款。",
-            "ja": "契約書の特約欄に根抵当権設定禁止の文言を必ず明記してください。"
+            "ja": "契約書の特約欄に根抵当権設定禁止の文言を必ず明記してください。",
+            "sq": "Kërkoni gjithmonë shënimin e klauzolës që ndalon vendosjen e hipotekës në kontratën e qirasë.",
+            "hi": "अपने कानूनी अधिकार प्रभावी होने से पहले हमेशा गिरवी पंजीकरण को प्रतिबंधित करने वाली शर्त जोड़ने की मांग करें।",
+            "ar": "تأكد من إضافة البند الخاص بحظر الرهون العقارية في عقد الإيجار قبل التوقيع وسداد العربون.",
+            "zh-Hant": "簽約時務必在特約事項欄明確註明禁止設定抵押權條款。",
+            "ko": "계약서 특약 사항 란에 대항력 발생 전 근저당 설정 금지 조항을 반드시 명시하세요."
         }
     },
     {
@@ -48,31 +73,56 @@ TOPICS_36 = [
             "en": "Free Public Certificate Issuance: Community Centers & Government24",
             "vi": "Cấp giấy tờ hành chính công miễn phí tại Trung tâm dân cư và Government24",
             "zh-Hans": "居民中心·政府24(Government24)免费打印民政证明文件",
-            "ja": "住民センター・政府24での民願書類の無料発行"
+            "ja": "住民センター・政府24での民願書類の無料発行",
+            "sq": "Lëshimi falas i certifikatave publike: Qendrat administrative dhe Government24",
+            "hi": "निःशुल्क सार्वजनिक प्रमाण पत्र जारी करना: कम्युनिटी सेंटर और Government24",
+            "ar": "إصدار الشهادات والمستندات الحكومية الرسمية مجانًا عبر مراكز الخدمات وتطبيق Government24",
+            "zh-Hant": "居民中心·政府24(Government24)免費打印民政證明文件",
+            "ko": "동주민센터·정부24 민원 서류 무료 발급"
         },
         "summary": {
             "en": "Save time and administrative fees by issuing official residence and tax documents online or via kiosks.",
             "vi": "Tiết kiệm lệ phí hành chính và thời gian khi xin cấp giấy tờ cư trú, chứng nhận thuế tại Hàn Quốc.",
             "zh-Hans": "避开人工窗口手续费，在线上或地铁站无人自助机免费开具居民登记与税务证明。",
-            "ja": "住民登録謄本や納税証明を窓口手数料なしで手軽にオンラインや無人機で発行できます。"
+            "ja": "住民登録謄本や納税証明を窓口手数料なしで手軽にオンラインや無人機で発行できます。",
+            "sq": "Kurseni kohë dhe tarifa administrative duke nxjerrë dokumentet e vendbanimit dhe taksave online ose në aparatet vetëshërbyese.",
+            "hi": "आधिकारिक निवास और कर दस्तावेज़ ऑनलाइन या कियोस्क के माध्यम से जारी करवाकर समय और प्रशासनिक शुल्क बचाएं।",
+            "ar": "نصيحة عملية للإقامة في كوريا: استخراج مستخرجات السجل المدني وشهادات الضرائب مجانًا عبر التطبيق وأجهزة الخدمة الذاتية بالشارع ومحطات المترو.",
+            "zh-Hant": "避開人工窗口手續費，在線上或地鐵站無人自助機免費開具居民登記與稅務證明。",
+            "ko": "동주민센터 창구 대기 시간과 수수료를 아끼고 정부24 앱이나 무인민원발급기를 통해 주민등록 및 세무 증명서를 무료로 발급받으세요."
         },
         "principle": {
             "en": "In-person window issuance (400–1,000 KRW) vs Government24 app and unmanned kiosks (100% Free).",
             "vi": "Cấp trực tiếp tại quầy tốn 400~1.000 won vs Cấp qua ứng dụng Government24 hoặc máy tự động (Miễn phí).",
             "zh-Hans": "人工窗口开具（400~1,000韩元）vs 政府24App及无人机打印（完全免费）。",
-            "ja": "窓口発行（400〜1,000ウォン）vs 政府24アプリおよび無人発給機（完全無料）。"
+            "ja": "窓口発行（400〜1,000ウォン）vs 政府24アプリおよび無人発給機（完全無料）。",
+            "sq": "Lëshimi në sportel me sportelist (400-1,000 KRW) kundrejt aplikacionit Government24 dhe aparateve automatike (100% Falas).",
+            "hi": "कार्यालय खिड़की पर व्यक्तिगत रूप से जारी कराना (400–1,000 KRW) बनाम Government24 ऐप और स्वचालित कियोस्क (100% निःशुल्क)।",
+            "ar": "استخراج الوثائق من شباك الموظف يكلف 400 إلى 1,000 وون، بينما إصدارها إلكترونيًا عبر تطبيق Government24 أو أجهزة الكشك مجاني 100%.",
+            "zh-Hant": "人工窗口開具（400~1,000韓元）vs 政府24App及無人機打印（完全免費）。",
+            "ko": "주민센터 창구 방문 발급(건당 400~1,000원) 대비 정부24 앱과 지하철역 무인민원발급기는 수수료가 100% 전액 면제됩니다."
         },
         "example": {
             "en": "Fees are completely waived when using the Government24 mobile app or unmanned certificate kiosks in metro stations.",
             "vi": "Miễn phí hoàn toàn khi dùng ứng dụng Government24 hoặc máy cấp chứng nhận tự động tại ga tàu điện ngầm.",
             "zh-Hans": "使用政府24App或地铁站内的无人便民打印机时，免除全部手续费。",
-            "ja": "政府24アプリや地下鉄駅にある無人民願発給機を利用すれば手数料が免除されます。"
+            "ja": "政府24アプリや地下鉄駅にある無人民願発給機を利用すれば手数料が免除されます。",
+            "sq": "Tarifat falen plotësisht kur përdorni aplikacionin Government24 ose kioskat automatike në stacionet e metrosë.",
+            "hi": "Government24 मोबाइल ऐप या मेट्रो स्टेशनों पर स्थापित मानवरहित कियोस्क का उपयोग करने पर शुल्क पूरी तरह से माफ होता है।",
+            "ar": "شهادة السجل السكني (주민등록등본) وإثبات الدخل الضريبي تصدر مجانًا وفوريًا بصيغة PDF قابلة للطباعة من هاتفك.",
+            "zh-Hant": "使用政府24App或地鐵站內的無人便民打印機時，免除全部手續費。",
+            "ko": "정부24 모바일 앱이나 지하철역 무인민원발급기에서 전자증명서로 발급받으면 수수료 0원으로 1분 만에 출력할 수 있습니다."
         },
         "actionItem": {
             "en": "Skip the counter queue and use automated kiosks or Government24 online.",
             "vi": "Thay vì xếp hàng tại quầy trung tâm dân cư, hãy dùng máy cấp tự động hoặc ứng dụng Government24.",
             "zh-Hans": "无需在居民中心窗口排队，推荐直接使用无人打印机或政府24开具证明。",
-            "ja": "窓口で並ぶ代わりに無人発給機や政府24アプリを活用しましょう。"
+            "ja": "窓口で並ぶ代わりに無人発給機や政府24アプリを活用しましょう。",
+            "sq": "Shmangni radhën në sportel dhe përdorni aparatet automatike ose portalin Government24.",
+            "hi": "काउंटर की कतार में खड़े होने से बचें और स्वचालित कियोस्क या Government24 ऑनलाइन सेवा का उपयोग करें।",
+            "ar": "حمل تطبيق Government24 واستخدم المصادقة المالية البسيطة (Kakao/Naver) لاستخراج أوراقك الرسمية مجانًا.",
+            "zh-Hant": "無需在居民中心窗口排隊，推薦直接使用無人打印機或政府24開具證明。",
+            "ko": "창구 번호표를 뽑고 대기하지 말고 스마트폰 정부24 앱이나 인근 무인민원발급기를 활용하세요."
         }
     },
     {
@@ -81,31 +131,456 @@ TOPICS_36 = [
             "en": "Confident Sentence Endings for Korean Job Interviews",
             "vi": "Cách ngắt câu tạo sự tin cậy trong phỏng vấn tuyển dụng tại Hàn Quốc",
             "zh-Hans": "韩国企业求职面试展现信赖感的干练句尾技巧",
-            "ja": "韓国企業の面接で信頼感を与える語尾の結び方"
+            "ja": "韓国企業の面接で信頼感を与える語尾の結び方",
+            "gl": "Terminacións de frases con seguridade para entrevistas de traballo en coreano",
+            "gu": "કોરિયન જોબ ઇન્ટરવ્યુ માટે આત્મવિશ્વાસપૂર્ણ વાક્ય અંત",
+            "el": "Καταλήξεις προτάσεων με αυτοπεποίθηση για συνεντεύξεις εργασίας στα κορεατικά",
+            "az": "Koreya iş müsahibələrində inamlı cümlə bitirmələri",
+            "sg": "Hunzingo ti atënë na confidence ndali ti entretien ti kua na Corée",
+            "pcm": "Confident Sentence Endings for Korean Job Interviews",
+            "mn": "Солонгосын ажлын ярилцлагын өөртөө итгэлтэй өгүүлбэрийн төгсгөлүүд",
+            "ne": "कोरियाली जागिर अन्तर्वार्ताका लागि आत्मविश्वासपूर्ण वाक्यको अन्त्य",
+            "th": "การลงท้ายประโยคอย่างมั่นใจสำหรับการสัมภาษณ์งานในเกาหลี",
+            "ru": "Уверенное окончание предложений на собеседовании в Корее",
+            "hi": "कोरियाई नौकरी साक्षात्कार के लिए आत्मविश्वासपूर्ण वाक्य अंत",
+            "my": "ကိုရီးယားအလုပ်အင်တာဗျူးများအတွက် ယုံကြည်သောစာကြောင်းအဆုံးသတ်များ",
+            "id": "Akhir Kalimat Percaya Diri untuk Wawancara Kerja Korea",
+            "zh-Hant": "韓國企業求職面試展現信賴感的幹練句尾技巧",
+            "si": "කොරියානු රැකියා සම්මුඛ පරීක්ෂණ සඳහා විශ්වාසදායක වාක්‍ය අවසන් කිරීම්",
+            "uz": "Koreyalik ish suhbatlari uchun ishonchli jumlalar",
+            "kk": "Корейлік жұмыс сұхбаттары үшін сенімді сөйлемнің аяқталуы",
+            "bn": "কোরিয়ান চাকরির ইন্টারভিউয়ের জন্য আত্মবিশ্বাসী বাক্য শেষ",
+            "km": "ការបញ្ចប់ប្រយោគប្រកបដោយទំនុកចិត្តសម្រាប់ការសម្ភាសន៍ការងារនៅកូរ៉េ",
+            "ta": "கொரிய வேலை நேர்காணலுக்கான நம்பிக்கை வாக்கிய முடிவு",
+            "ar": "نهايات الجمل الواثقة لمقابلات العمل الكورية",
+            "tr": "Korece İş Görüşmelerinde Kendine Güvenen Cümle Sonları",
+            "es": "Finales seguros de oraciones para entrevistas de trabajo coreanas",
+            "fa": "پایان جملات مطمئن برای مصاحبه های شغلی کره ای",
+            "it": "Conclusioni delle frasi sicure per i colloqui di lavoro coreani",
+            "fr": "Fins de phrases sûres pour les entretiens d'embauche coréens",
+            "de": "Sichere Satzenden für koreanische Vorstellungsgespräche",
+            "uk": "Впевнені закінчення речень для корейських співбесід",
+            "tet": "Fraze nia rohan ne'ebé fiar-an ba entrevista serbisu nian iha lian Koreanu",
+            "arz": "نهايات الجملة الواثقة لمقابلات العمل الكورية",
+            "he": "סיום משפטים בטוחים לראיונות עבודה בקוריאנית",
+            "nl": "Zelfverzekerde zinseindes voor Koreaanse sollicitatiegesprekken",
+            "pl": "Pewne zakończenia zdań w koreańskich rozmowach kwalifikacyjnych",
+            "ur": "کورین جاب انٹرویوز کے لیے پراعتماد سزا کا خاتمہ",
+            "no": "Selvsikre setningsavslutninger for koreanske jobbintervjuer",
+            "sv": "Säkra meningsslut för koreanska jobbintervjuer",
+            "am": "ለኮሪያ የስራ ቃለመጠይቆች በራስ የመተማመን ዓረፍተ ነገር ያበቃል",
+            "mr": "कोरियन नोकरीच्या मुलाखतींसाठी आत्मविश्वासपूर्ण वाक्याचा शेवट",
+            "pt": "Finais de frases confiantes para entrevistas de emprego coreanas",
+            "pa": "ਕੋਰੀਅਨ ਨੌਕਰੀ ਦੇ ਇੰਟਰਵਿਊਆਂ ਲਈ ਭਰੋਸੇਮੰਦ ਵਾਕ ਸਮਾਪਤੀ",
+            "da": "Selvsikre sætningsafslutninger for koreanske jobsamtaler",
+            "kn": "ಕೊರಿಯನ್ ಉದ್ಯೋಗ ಸಂದರ್ಶನಗಳಿಗೆ ಆತ್ಮವಿಶ್ವಾಸದ ವಾಕ್ಯದ ಅಂತ್ಯಗಳು",
+            "te": "కొరియన్ ఉద్యోగ ఇంటర్వ్యూల కోసం కాన్ఫిడెంట్ సెంటెన్స్ ఎండింగ్స్",
+            "tl": "Kumpiyansa na Pangungusap na Pagtatapos para sa mga Panayam sa Trabaho sa Korea",
+            "ms": "Pengakhiran Ayat Yakin untuk Temuduga Kerja Korea",
+            "ml": "കൊറിയൻ ജോബ് ഇൻ്റർവ്യൂവിനുള്ള ആത്മവിശ്വാസത്തോടെയുള്ള വാക്യാവസാനങ്ങൾ",
+            "yue": "韓國求職面試的自信句子結尾",
+            "cs": "Sebevědomé konce vět pro korejské pracovní pohovory",
+            "sw": "Mwisho wa Sentensi ya Kujiamini kwa Mahojiano ya Kazi ya Kikorea",
+            "ro": "Terminații sigure ale propozițiilor pentru interviurile de angajare în coreeană",
+            "ca": "Terminis de frase segurs per a entrevistes de feina coreanes",
+            "ka": "წინადადებების დამაჯერებელი დაბოლოებები კორეის სამუშაო ინტერვიუებისთვის",
+            "ceb": "Masaligon nga Mga Pagtapos sa Sentensiya alang sa mga Interbyu sa Trabaho sa Korea",
+            "tg": "Анҷоми ҳукми боварӣ барои мусоҳибаҳои кор дар Корея",
+            "af": "Selfversekerde sinseindes vir Koreaanse werksonderhoude",
+            "hu": "Magabiztos mondatvégek koreai állásinterjúkhoz",
+            "fi": "Itsevarmat lauseen päätteet korealaisiin työhaastatteluihin",
+            "bg": "Уверени краища на изречения за корейски интервюта за работа",
+            "as": "কোৰিয়ান চাকৰিৰ সাক্ষাৎকাৰৰ বাবে আত্মবিশ্বাসী বাক্যৰ অন্ত",
+            "is": "Öruggar setningarlokar fyrir kóresk atvinnuviðtöl",
+            "eu": "Koreako Lan Elkarrizketetarako esaldi amaiera seguruak",
+            "et": "Enesekindlad lauselõpud Korea tööintervjuudele",
+            "lv": "Pārliecinātas teikumu beigas korejiešu darba intervijām",
+            "lt": "Pasitikinti korėjiečių darbo pokalbių sakinių pabaiga",
+            "ku": "Ji bo Hevpeyvînên Karê Koreyî Dawiyên Hevokên Pêbawer",
+            "hr": "Sigurni završeci rečenica za razgovore za posao u Koreji",
+            "ig": "Mkpebi ahịrịokwu ntụkwasị obi maka ajụjụ ọnụ ọrụ ndị Korea",
+            "ha": "Ƙarshen Ƙarshen Jumla don Tattaunawar Ayyukan Koriya",
+            "mk": "Сигурни завршетоци на реченици за интервјуа за работа во Кореја",
+            "jv": "Ukara Percaya Diri kanggo Wawancara Kerja ing Korea",
+            "mg": "Famaranana fehezanteny matoky tena ho an'ny dinidinika momba ny asa Koreana",
+            "sd": "ڪورين نوڪريءَ جي انٽرويوز لاءِ اعتماد واري سزا جو خاتمو",
+            "ps": "د کوریا د دندې مرکې لپاره د باوري جملې پای",
+            "om": "Af-gaaffii Hojii Kooriyaatiif Xumura Himaa Ofitti amanamummaa",
+            "sk": "Sebavedomé konce viet pre kórejské pracovné pohovory",
+            "sn": "Kuvimbika Mutongo Kupera kweKorea Job Hurukuro",
+            "zu": "Ukuphela Kwesigwebo Esiqinisekayo Sezingxoxo Zemisebenzi YaseKorea",
+            "xh": "Iziphelo zesivakalisi esiqinisekileyo kudliwanondlebe lwaseKorea ngomsebenzi",
+            "sq": "Mbarime fjalish që krijojnë besim në intervistat e punës në Kore",
+            "sl": "Samozavestni zaključki stavkov za razgovore za službo v Koreji",
+            "yo": "Awọn Ipari Idajọ Idaniloju fun Awọn ifọrọwanilẹnuwo Iṣẹ Koria",
+            "so": "Xukunka Kalsoonida leh ee Dhamaadka Wareysiyada Shaqada Kuuriya",
+            "su": "Panungtungan Kalimah Yakin pikeun Wawancara Proyék Koréa",
+            "sr": "Поуздани завршници реченица за интервјуе за посао у Кореји",
+            "ko": "신뢰감을 주는 한국 기업 면접 말끝 처리"
         },
         "summary": {
             "en": "Deliver professionalism, clarity, and decisive competence by using clear formal ending forms (-ㅂ니다/습니다).",
             "vi": "Thể hiện sự chuyên nghiệp, quyết đoán và năng lực làm việc bằng đuôi câu trang trọng chuẩn mực.",
             "zh-Hans": "在韩国求职面试中避免模糊不定的语气，用标准正式语尾展现高度专业性与决断力。",
-            "ja": "曖昧な表現を排し、格式ある体言止めやハムニダ体でプロフェッショナルな決断力を示します。"
+            "ja": "曖昧な表現を排し、格式ある体言止めやハムニダ体でプロフェッショナルな決断力を示します。",
+            "pcm": "Deliver professionalism, clarity, and decisive competence by using clear formal ending forms (-ㅂ니다/습니다).",
+            "ru": "Продемонстрируйте профессионализм, ясность и решающую компетентность, используя четкие формальные формы окончания (-ㅂ니다/습니다).",
+            "ne": "स्पष्ट औपचारिक अन्त्य फारमहरू (-ㅂ니다/습니다) प्रयोग गरेर व्यावसायिकता, स्पष्टता, र निर्णायक क्षमता प्रदान गर्नुहोस्।",
+            "hi": "स्पष्ट औपचारिक अंतिम रूपों (-ㅂ니다/습니다) का उपयोग करके व्यावसायिकता, स्पष्टता और निर्णायक क्षमता प्रदान करें।",
+            "si": "පැහැදිලි විධිමත් අවසන් ආකෘති (-ㅂ니다/습니다) භාවිතා කිරීමෙන් වෘත්තීයභාවය, පැහැදිලි බව සහ තීරණාත්මක නිපුණතාවය ලබා දෙන්න.",
+            "mn": "Тодорхой албан ёсны төгсгөлийн маягтуудыг (-ㅂ니다/습니다) ашиглан мэргэжлийн ур чадвар, ойлгомжтой байдал, шийдэмгий ур чадварыг эзэмшүүлэх.",
+            "kk": "Анық формалды аяқтау формаларын (-ㅂ니다/습니다) пайдалану арқылы кәсібилікті, анықтықты және шешуші құзыретті жеткізіңіз.",
+            "uz": "Aniq rasmiy tugatish shakllaridan foydalangan holda professionallik, ravshanlik va hal qiluvchi kompetentsiyani taqdim eting.",
+            "id": "Memberikan profesionalisme, kejelasan, dan kompetensi tegas dengan menggunakan bentuk akhiran formal yang jelas (-ㅂ니다/습니다).",
+            "zh-Hant": "在韓國求職面試中避免模糊不定的語氣，用標準正式語尾展現高度專業性與決斷力。",
+            "th": "นำเสนอความเป็นมืออาชีพ ความชัดเจน และความสามารถในการตัดสินใจโดยใช้รูปแบบการลงท้ายที่เป็นทางการที่ชัดเจน (-ㅂ니다/습니다)",
+            "bn": "স্পষ্ট আনুষ্ঠানিক সমাপ্তি ফর্ম (-ㅂ니다/습니다) ব্যবহার করে পেশাদারিত্ব, স্বচ্ছতা এবং সিদ্ধান্তমূলক দক্ষতা প্রদান করুন।",
+            "km": "ផ្តល់ជំនាញវិជ្ជាជីវៈ ភាពច្បាស់លាស់ និងសមត្ថភាពសម្រេចចិត្តដោយប្រើទម្រង់បញ្ចប់ផ្លូវការច្បាស់លាស់ (-ㅂ니다/습니다) ។",
+            "my": "ရှင်းလင်းသော တရားဝင် အဆုံးသတ်ပုံစံများ (-ㅂ니다/습니다) ကို အသုံးပြု၍ ပရော်ဖက်ရှင်နယ်ဆန်မှု၊ ပြတ်သားမှုနှင့် ပြတ်ပြတ်သားသား အရည်အချင်းကို ပေးအပ်ပါ။",
+            "ta": "தெளிவான முறையான முடிவு படிவங்களை (-ㅂ니다/습니다) பயன்படுத்தி தொழில்முறை, தெளிவு மற்றும் தீர்க்கமான திறனை வழங்கவும்.",
+            "tr": "Net resmi bitiş formlarını (-ㅂ니다/습니다) kullanarak profesyonellik, açıklık ve kararlı yeterlilik sunun.",
+            "ar": "نصيحة عملية للإقامة في كوريا: استخدام صيغ الاحترام الجازمة (-습니다/-습니까) بدلاً من النهايات الترددية (-것 같습니다) لإظهار الثقة المهنية.",
+            "arz": "تقديم الاحترافية والوضوح والكفاءة الحاسمة باستخدام نماذج نهاية رسمية واضحة (-ㅂ니다/습니다).",
+            "de": "Sorgen Sie für Professionalität, Klarheit und Entscheidungskompetenz, indem Sie klare formale Endformen (-ㅂ니다/습니다) verwenden.",
+            "uk": "Виявляйте професіоналізм, ясність і рішучу компетентність, використовуючи чіткі офіційні форми закінчення (-ㅂ니다/습니다).",
+            "fr": "Offrez professionnalisme, clarté et compétence décisive en utilisant des formes de terminaison formelles claires (-ㅂ니다/습니다).",
+            "fa": "با استفاده از فرم‌های پایان رسمی واضح (-ㅂ니다/습니다) حرفه‌ای بودن، وضوح و شایستگی قاطع را ارائه دهید.",
+            "it": "Fornisci professionalità, chiarezza e competenza decisiva utilizzando forme finali formali chiare (-ㅂ니다/습니다).",
+            "es": "Ofrezca profesionalismo, claridad y competencia decisiva mediante el uso de formas finales formales claras (-ㅂ니다/습니다).",
+            "tet": "Hato'o profisionalizmu, klareza, no kompeténsia desizivu liuhosi uza forma finál formál ne'ebé klaru (-ㅂ니다/습니다).",
+            "el": "Προσφέρετε επαγγελματισμό, σαφήνεια και αποφασιστική ικανότητα χρησιμοποιώντας σαφείς τυπικές φόρμες τέλους (-ㅂ니다/습니다).",
+            "da": "Lever professionalisme, klarhed og beslutsom kompetence ved at bruge klare formelle afslutningsformer (-ㅂ니다/습니다).",
+            "ur": "واضح رسمی اختتامی شکلیں (-ㅂ니다/습니다) استعمال کرکے پیشہ ورانہ مہارت، وضاحت، اور فیصلہ کن قابلیت فراہم کریں۔",
+            "no": "Lever profesjonalitet, klarhet og avgjørende kompetanse ved å bruke klare formelle sluttformer (-ㅂ니다/습니다).",
+            "he": "ספק מקצועיות, בהירות ויכולת החלטית על ידי שימוש בצורות סיום רשמיות ברורות (-ㅂ니다/습니다).",
+            "sv": "Leverera professionalism, tydlighet och beslutsam kompetens genom att använda tydliga formella slutformer (-ㅂ니다/습니다).",
+            "nl": "Zorg voor professionaliteit, duidelijkheid en beslissende competentie door duidelijke formele eindvormen te gebruiken (-ㅂ니다/습니다).",
+            "pt": "Ofereça profissionalismo, clareza e competência decisiva usando formas finais formais claras (-ㅂ니다/습니다).",
+            "mr": "स्पष्ट औपचारिक समाप्ती फॉर्म (-ㅂ니다/습니다) वापरून व्यावसायिकता, स्पष्टता आणि निर्णायक क्षमता प्रदान करा.",
+            "pl": "Zapewnij profesjonalizm, przejrzystość i zdecydowaną kompetencję, używając jasnych formalnych form końcowych (-ㅂ니다/습니다).",
+            "te": "స్పష్టమైన అధికారిక ముగింపు రూపాలను (-ㅂ니다/습니다) ఉపయోగించడం ద్వారా వృత్తి నైపుణ్యం, స్పష్టత మరియు నిర్ణయాత్మక సామర్థ్యాన్ని అందించండి.",
+            "gu": "સ્પષ્ટ ઔપચારિક અંતિમ સ્વરૂપો (-ㅂ니다/습니다) નો ઉપયોગ કરીને વ્યાવસાયિકતા, સ્પષ્ટતા અને નિર્ણાયક યોગ્યતા પ્રદાન કરો.",
+            "am": "ግልጽ የሆኑ መደበኛ የማለቂያ ቅጾችን (-ㅂ니다/습니다) በመጠቀም ሙያዊነትን፣ ግልጽነትን እና ወሳኝ ብቃትን ያቅርቡ።",
+            "pa": "ਸਪਸ਼ਟ ਰਸਮੀ ਅੰਤਮ ਰੂਪਾਂ (-ㅂ니다/습니다) ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਪੇਸ਼ੇਵਰਤਾ, ਸਪੱਸ਼ਟਤਾ, ਅਤੇ ਨਿਰਣਾਇਕ ਯੋਗਤਾ ਪ੍ਰਦਾਨ ਕਰੋ।",
+            "kn": "ಸ್ಪಷ್ಟ ಔಪಚಾರಿಕ ಅಂತ್ಯದ ರೂಪಗಳನ್ನು (-ㅂ니다/습니다) ಬಳಸಿಕೊಂಡು ವೃತ್ತಿಪರತೆ, ಸ್ಪಷ್ಟತೆ ಮತ್ತು ನಿರ್ಣಾಯಕ ಸಾಮರ್ಥ್ಯವನ್ನು ತಲುಪಿಸಿ.",
+            "ml": "വ്യക്തമായ ഔപചാരികമായ അവസാന രൂപങ്ങൾ (-ㅂ니다/습니다) ഉപയോഗിച്ച് പ്രൊഫഷണലിസം, വ്യക്തത, നിർണ്ണായക കഴിവ് എന്നിവ നൽകുക.",
+            "ms": "Menyampaikan profesionalisme, kejelasan, dan kecekapan tegas dengan menggunakan borang penamat formal yang jelas (-ㅂ니다/습니다).",
+            "tl": "Maghatid ng propesyonalismo, kalinawan, at mapagpasyang kakayahan sa pamamagitan ng paggamit ng malinaw na pormal na mga form sa pagtatapos (-ㅂ니다/습니다).",
+            "yue": "透過使用清晰的正式結尾形式 (-ㅂ니다/습니다) 來表達專業性、清晰度和果斷能力。",
+            "ro": "Oferiți profesionalism, claritate și competență decisivă folosind forme formale clare de terminare (-ㅂ니다/습니다).",
+            "sw": "Toa taaluma, uwazi, na umahiri madhubuti kwa kutumia fomu rasmi za kumalizia zilizo wazi (-ㅂ니다/습니다).",
+            "ka": "აჩვენეთ პროფესიონალიზმი, სიცხადე და გადამწყვეტი კომპეტენცია მკაფიო ფორმალური დასასრულის ფორმების გამოყენებით (-ㅂ니다/습니다).",
+            "bg": "Осигурете професионализъм, яснота и решителна компетентност, като използвате ясни официални завършващи форми (-ㅂ니다/습니다).",
+            "tg": "Бо истифода аз шаклҳои расмии хотимавӣ (-ㅂ니다/습니다) касбият, возеҳият ва салоҳияти ҳалкунандаро расонед.",
+            "cs": "Poskytujte profesionalitu, srozumitelnost a rozhodné schopnosti pomocí jasných formálních koncovek (-ㅂ니다/습니다).",
+            "ceb": "Ihatag ang propesyonalismo, katin-aw, ug mahukmanon nga katakus pinaagi sa paggamit sa tin-aw nga pormal nga mga porma sa pagtapos (-ㅂ니다/습니다).",
+            "hu": "A professzionalizmust, az egyértelműséget és a határozott kompetenciát világos formai befejezési formák (-ㅂ니다/습니다) használatával biztosítsa.",
+            "fi": "Tarjoa ammattimaisuutta, selkeyttä ja päättäväisyyttä käyttämällä selkeitä muodollisia loppumuotoja (-ㅂ니다/습니다).",
+            "af": "Lewer professionaliteit, duidelikheid en beslissende bevoegdheid deur duidelike formele eindvorme te gebruik (-ㅂ니다/습니다).",
+            "eu": "Profesionaltasuna, argitasuna eta gaitasun erabakigarria eman amaiera forma formal argiak erabiliz (-ㅂ니다/습니다).",
+            "ca": "Oferir professionalitat, claredat i competència decisiva mitjançant l'ús de formes finals formals clares (-ㅂ니다/습니다).",
+            "as": "স্পষ্ট আনুষ্ঠানিক সমাপ্তি ফৰ্ম (-ᅂ니다/습니다) ব্যৱহাৰ কৰি পেছাদাৰিত্ব, স্পষ্টতা, আৰু নিৰ্ণায়ক দক্ষতা প্ৰদান কৰা।",
+            "az": "Aydın formal sonluq formalarından (-ㅂ니다/습니다) istifadə etməklə peşəkarlıq, aydınlıq və həlledici səriştə təqdim edin.",
+            "et": "Edastage professionaalsust, selgust ja otsustavat pädevust, kasutades selgeid formaalseid lõpuvorme (-ㅂ니다/습니다).",
+            "hr": "Pružite profesionalizam, jasnoću i odlučnu kompetenciju korištenjem jasnih formalnih završnih obrazaca (-ㅂ니다/습니다).",
+            "jv": "Nyedhiyakake profesionalisme, kajelasan, lan kompetensi sing nemtokake kanthi nggunakake formulir pungkasan formal sing jelas (-ㅂ니다/습니다).",
+            "ku": "Bi karanîna formên dawiya fermî yên zelal (-ㅂ니다/습니다) profesyonelî, zelalî û jêhatîbûna biryardar peyda bikin.",
+            "gl": "Ofrecer profesionalidade, claridade e competencia decisiva mediante o uso de formas terminais formais claras (-ㅂ니다/습니다).",
+            "ha": "Isar da ƙwararru, tsabta, da ƙwararrun ƙwarewa ta amfani da fayyace fom ɗin ƙarewa (-ㅂ니다/습니다).",
+            "ig": "Nyepụta ọkachamara, idoanya na nka siri ike site na iji ụdị njedebe doro anya (-ㅂ니다/습니다).",
+            "is": "Veita fagmennsku, skýrleika og afgerandi hæfni með því að nota skýrar formlegar endir (-ㅂ니다/습니다).",
+            "mg": "Manomeza fahaiza-manao matihanina, mazava ary fahaiza-manao manapa-kevitra amin'ny fampiasana endrika famaranana ofisialy mazava (-ㅂ니다/습니다).",
+            "mk": "Обезбедете професионализам, јасност и одлучувачка компетентност со користење на јасни формални завршни форми (-ㅂ니다/습니다).",
+            "ps": "د روښانه رسمي پای فارمونو (-ㅂ니다/습니다) په کارولو سره مسلکيتوب، وضاحت، او پریکړه کونکي وړتیا وړاندې کړئ.",
+            "lv": "Nodrošiniet profesionalitāti, skaidrību un izlēmīgu kompetenci, izmantojot skaidras formālas beigu formas (-ㅂ니다/습니다).",
+            "lt": "Pateikite profesionalumą, aiškumą ir ryžtingą kompetenciją naudodami aiškias formalias pabaigos formas (-ㅂ니다/습니다).",
+            "sd": "واضع رسم الخط ختم ٿيندڙ فارم (-ㅂ니다/습니다) استعمال ڪندي پروفيشنلزم، وضاحت، ۽ فيصلي واري صلاحيت فراهم ڪريو.",
+            "sq": "Përcillni profesionalizëm dhe vendosmëri duke përdorur mbarime formale të qarta (-ㅂ니다/습니다).",
+            "om": "Unka xumura sirnaa ifa ta’e (-ᅂ니다/습니다) fayyadamuun ogummaa, ifa ta’uu fi dandeettii murteessaa kennuu.",
+            "sk": "Poskytnite profesionalitu, jasnosť a rozhodnú kompetenciu použitím jasných formálnych koncoviek (-ㅂ니다/습니다).",
+            "sg": "Fa na gigi kode ti kusala, polele, na ngangu ti mû desizion na salango kusala na aformule ti nda ti tënë so ayeke polele (-ᅂ니다/습니다).",
+            "sl": "Zagotovite strokovnost, jasnost in odločilno usposobljenost z uporabo jasnih formalnih zaključnih obrazcev (-ㅂ니다/습니다).",
+            "su": "Nepikeun profesionalisme, kajelasan, sareng kompeténsi decisive ku cara ngagunakeun bentuk tungtung formal anu jelas (-ㅂ니다/습니다).",
+            "so": "Keeno xirfad, hufnaan, iyo karti go'aan leh adoo isticmaalaya foomamka dhamaadka rasmiga ah ee cad (-ㅂ니다/습니다).",
+            "yo": "Pese iṣẹ-oye, mimọ, ati agbara ipinnu nipa lilo awọn fọọmu ipari deede (-ㅂ니다/습니다).",
+            "sn": "Nunura hunyanzvi, kujeka, uye kugona kwakasimba nekushandisa akajeka mafomu ekupedzisira (-ㅂ니다/습니다).",
+            "xh": "Ukunikezela ngobungcali, ukucaca, kunye nobuchule obugqibeleleyo ngokusebenzisa iifomu ezicacileyo zokuphela ezisesikweni (-ㅂ니다/습니다).",
+            "zu": "Letha ubungcweti, ukucaca, kanye nekhono eliwujuqu ngokusebenzisa amafomu okugcina ahlelekile acacile (-ㅂ니다/습니다).",
+            "sr": "Испоручите професионализам, јасноћу и одлучну компетенцију користећи јасне формалне облике завршетка (-ㅂ니다/습니다).",
+            "ko": "말끝을 흐리지 않고 '-ㅂ니다/습니다' 격식체를 사용하여 면접관에게 확고한 전문성과 주도적인 실행력을 전달하세요."
         },
         "principle": {
             "en": "Replace tentative speech with assertive formal endings to demonstrate executive presence and accountability.",
             "vi": "Tránh đuôi câu do dự, sử dụng đuôi câu kính ngữ trang trọng (-ㅂ니다/습니다) để thể hiện sự tự tin.",
             "zh-Hans": "不使用含糊拖沓的尾音，使用展现专业度与担当的“-ㅂ니다/습니다”正式格语尾。",
-            "ja": "語尾を濁さず専門性と主体性を明確に示す「-ㅂ니다/습니다」格式体。"
+            "ja": "語尾を濁さず専門性と主体性を明確に示す「-ㅂ니다/습니다」格式体。",
+            "pcm": "Replace tentative speech with assertive formal endings to demonstrate executive presence and accountability.",
+            "ne": "कार्यकारी उपस्थिति र उत्तरदायित्व देखाउनको लागि दृढ औपचारिक अन्त्यहरूसँग अस्थायी भाषणलाई बदल्नुहोस्।",
+            "hi": "कार्यकारी उपस्थिति और जवाबदेही प्रदर्शित करने के लिए अस्थायी भाषण को मुखर औपचारिक अंत के साथ बदलें।",
+            "my": "အမှုဆောင်များရှိနေခြင်းနှင့် တာဝန်ခံမှုကို သက်သေပြရန် ခိုင်လုံသောတရားဝင်အဆုံးသတ်များဖြင့် စိတ်ကူးယဉ်စကားများကို အစားထိုးပါ။",
+            "mn": "Гүйцэтгэх албан тушаалтнуудын оролцоо, хариуцлагатай байдлыг харуулахын тулд урьдчилсан яриаг албан ёсны төгсгөлөөр соль.",
+            "kk": "Атқарушының қатысуын және жауапкершілігін көрсету үшін болжалды сөзді сенімді ресми аяқталулармен ауыстырыңыз.",
+            "uz": "Rahbarning mavjudligi va javobgarligini ko'rsatish uchun taxminiy nutqni ishonchli rasmiy yakunlar bilan almashtiring.",
+            "ru": "Замените предварительную речь напористыми формальными окончаниями, чтобы продемонстрировать присутствие и подотчетность руководителя.",
+            "bn": "কার্যনির্বাহী উপস্থিতি এবং জবাবদিহিতা প্রদর্শনের জন্য অস্থায়ী বক্তৃতাকে জোরদার আনুষ্ঠানিক সমাপ্তি দিয়ে প্রতিস্থাপন করুন।",
+            "si": "විධායක පැවැත්ම සහ වගවීම ප්‍රදර්ශනය කිරීම සඳහා තාවකාලික කථාව ස්ථිර විධිමත් අවසන් කිරීම් සමඟ ප්‍රතිස්ථාපනය කරන්න.",
+            "th": "แทนที่คำพูดเบื้องต้นด้วยตอนจบอย่างเป็นทางการที่กล้าแสดงออกเพื่อแสดงบทบาทและความรับผิดชอบของผู้บริหาร",
+            "id": "Gantikan pidato tentatif dengan akhiran formal yang tegas untuk menunjukkan kehadiran dan akuntabilitas eksekutif.",
+            "ta": "நிர்வாக இருப்பு மற்றும் பொறுப்புணர்வை நிரூபிக்க உறுதியான முறையான முடிவுகளுடன் தற்காலிக பேச்சை மாற்றவும்.",
+            "km": "ជំនួសពាក្យសំដីបណ្តោះអាសន្នជាមួយនឹងការបញ្ចប់ជាផ្លូវការដោយអះអាង ដើម្បីបង្ហាញពីវត្តមានរបស់នាយកប្រតិបត្តិ និងការទទួលខុសត្រូវ។",
+            "ar": "صيغ الجزم تبرز الحزم واليقين في كفاءتك وخبرتك أمام مسؤولي التوظيف في الشركات الكورية.",
+            "it": "Sostituisci il discorso provvisorio con finali formali assertivi per dimostrare la presenza e la responsabilità dell'esecutivo.",
+            "tr": "Yöneticinin mevcudiyetini ve hesap verebilirliğini göstermek için geçici konuşmayı iddialı resmi sonlarla değiştirin.",
+            "de": "Ersetzen Sie vorläufige Reden durch durchsetzungsfähige formelle Abschlüsse, um die Präsenz und Verantwortung der Führungskraft zu demonstrieren.",
+            "fa": "برای نشان دادن حضور اجرایی و مسئولیت پذیری، سخنرانی آزمایشی را با پایان های رسمی قاطعانه جایگزین کنید.",
+            "uk": "Замініть умовне мовлення впевненими формальними закінченнями, щоб продемонструвати присутність і підзвітність керівника.",
+            "es": "Reemplace el discurso tentativo con finales formales asertivos para demostrar presencia ejecutiva y responsabilidad.",
+            "arz": "استبدل الخطاب المؤقت بنهايات رسمية حازمة لإثبات الحضور التنفيذي والمساءلة.",
+            "fr": "Remplacez le discours provisoire par des fins formelles affirmées pour démontrer la présence et la responsabilité de l'exécutif.",
+            "tet": "Troka diskursu tentativu ho finál formál asertivu sira hodi hatudu prezensa ezekutivu no responsabilizasaun.",
+            "ur": "انتظامی موجودگی اور جوابدہی کو ظاہر کرنے کے لیے عارضی تقریر کو باضابطہ اختتام کے ساتھ بدل دیں۔",
+            "pl": "Zastąp wstępne przemówienie asertywnymi, formalnymi zakończeniami, aby zademonstrować obecność i odpowiedzialność kierownictwa.",
+            "el": "Αντικαταστήστε τη δοκιμαστική ομιλία με διεκδικητικές επίσημες καταλήξεις για να δείξετε παρουσία και υπευθυνότητα.",
+            "am": "የአስፈጻሚነት መኖርን እና ተጠያቂነትን ለማሳየት ጊዜያዊ ንግግርን በጠንካራ መደበኛ መጨረሻዎች ይተኩ።",
+            "nl": "Vervang voorzichtige uitspraken door assertieve formele eindes om de aanwezigheid en verantwoordelijkheid van leidinggevenden te demonstreren.",
+            "da": "Erstat foreløbig tale med assertive formelle afslutninger for at demonstrere ledelsens tilstedeværelse og ansvarlighed.",
+            "sv": "Byt ut preliminärt tal med assertiva formella slut för att visa verkställande närvaro och ansvarighet.",
+            "no": "Erstatt tentativ tale med selvsikker formelle avslutninger for å demonstrere utøvende tilstedeværelse og ansvarlighet.",
+            "he": "החלף את הדיבור הטנטטיבי בסופים רשמיים אסרטיביים כדי להפגין נוכחות מנהלית ואחריות.",
+            "mr": "कार्यकारी उपस्थिती आणि उत्तरदायित्व दर्शविण्यासाठी तात्पुरते भाषण ठाम औपचारिक समाप्तीसह बदला.",
+            "ml": "എക്സിക്യൂട്ടീവ് സാന്നിധ്യവും ഉത്തരവാദിത്തവും പ്രകടമാക്കുന്നതിന് താൽക്കാലിക സംഭാഷണത്തിന് പകരം ഉറപ്പുള്ള ഔപചാരിക അവസാനങ്ങൾ നൽകുക.",
+            "gu": "કાર્યકારી હાજરી અને જવાબદારી દર્શાવવા માટે કામચલાઉ ભાષણને નિશ્ચિત ઔપચારિક અંત સાથે બદલો.",
+            "pa": "ਕਾਰਜਕਾਰੀ ਮੌਜੂਦਗੀ ਅਤੇ ਜਵਾਬਦੇਹੀ ਦਾ ਪ੍ਰਦਰਸ਼ਨ ਕਰਨ ਲਈ ਅਸਥਾਈ ਭਾਸ਼ਣ ਨੂੰ ਜ਼ੋਰਦਾਰ ਰਸਮੀ ਅੰਤ ਨਾਲ ਬਦਲੋ।",
+            "kn": "ಕಾರ್ಯನಿರ್ವಾಹಕ ಉಪಸ್ಥಿತಿ ಮತ್ತು ಹೊಣೆಗಾರಿಕೆಯನ್ನು ಪ್ರದರ್ಶಿಸಲು ತಾತ್ಕಾಲಿಕ ಭಾಷಣವನ್ನು ಸಮರ್ಥನೀಯ ಔಪಚಾರಿಕ ಅಂತ್ಯಗಳೊಂದಿಗೆ ಬದಲಾಯಿಸಿ.",
+            "pt": "Substitua o discurso provisório por finais formais assertivos para demonstrar a presença executiva e a responsabilidade.",
+            "ms": "Gantikan ucapan tentatif dengan pengakhiran formal yang tegas untuk menunjukkan kehadiran eksekutif dan akauntabiliti.",
+            "tl": "Palitan ang pansamantalang pananalita ng mapanindigang pormal na pagtatapos upang ipakita ang presensya at pananagutan ng ehekutibo.",
+            "sw": "Badilisha hotuba ya kujaribu na miisho rasmi ya uthubutu ili kuonyesha uwepo wa mtendaji na uwajibikaji.",
+            "te": "కార్యనిర్వాహక ఉనికిని మరియు జవాబుదారీతనాన్ని ప్రదర్శించడానికి తాత్కాలిక ప్రసంగాన్ని దృఢమైన అధికారిక ముగింపులతో భర్తీ చేయండి.",
+            "ro": "Înlocuiți discursul tentativ cu finaluri formale asertive pentru a demonstra prezența executivului și responsabilitatea.",
+            "yue": "用果斷的正式結尾取代試探性的演講，以展現高階主管的風度和責任感。",
+            "hu": "Cserélje le a kísérletező beszédet határozott formális befejezéssel, ezzel demonstrálva a vezető jelenlétét és elszámoltathatóságát.",
+            "af": "Vervang voorlopige toespraak met selfgeldende formele eindes om uitvoerende teenwoordigheid en aanspreeklikheid te demonstreer.",
+            "ka": "შეცვალეთ სავარაუდო მეტყველება დამაჯერებელი ფორმალური დაბოლოებებით, რათა აჩვენოთ აღმასრულებელი ყოფნა და ანგარიშვალდებულება.",
+            "ceb": "Ilisan ang tentatibo nga sinultihan nga adunay pormal nga pagtapos aron ipakita ang presensya sa ehekutibo ug pagkamay-tulubagon.",
+            "cs": "Nahraďte nezávaznou řeč asertivními formálními zakončeními, abyste demonstrovali přítomnost a odpovědnost vedoucích pracovníků.",
+            "az": "İcra heyətinin mövcudluğunu və hesabatlılığını nümayiş etdirmək üçün ilkin nitqi iddialı formal sonluqlarla əvəz edin.",
+            "tg": "Барои нишон додани ҳузур ва масъулиятшиносии роҳбарикунанда сухани тахминиро бо хотимаҳои расмӣ иваз кунед.",
+            "fi": "Korvaa alustava puhe vakuuttavilla muodollisilla päätteillä osoittaaksesi johdon läsnäoloa ja vastuullisuutta.",
+            "et": "Asendage esialgne kõne enesekindlate ametlike lõppudega, et näidata juhi kohalolekut ja vastutust.",
+            "eu": "Ordeztu behin-behineko hizkera amaiera formal asertiboekin exekutiboaren presentzia eta erantzukizuna erakusteko.",
+            "ca": "Substituïu el discurs provisional per finals formals assertius per demostrar la presència i la responsabilitat de l'executiu.",
+            "bg": "Заменете условната реч с настоятелни официални окончания, за да демонстрирате присъствие и отговорност на изпълнителен директор.",
+            "as": "কাৰ্যবাহী উপস্থিতি আৰু জবাবদিহিতা প্ৰদৰ্শন কৰিবলৈ আংশিক ভাষণৰ ঠাইত আত্মবিশ্বাসী আনুষ্ঠানিক সমাপ্তি স্থাপন কৰক।",
+            "lt": "Pakeiskite preliminarią kalbą tvirtomis formaliomis pabaigomis, kad parodytumėte vadovo buvimą ir atskaitomybę.",
+            "ig": "Dochie okwu echere na-atụghị anya ya na njedebe nkwụsi ike iji gosipụta ọnụnọ onye isi na nnabata.",
+            "ha": "Maye gurbin magana mai ƙayatarwa tare da tabbataccen ƙarewa na yau da kullun don nuna kasancewar zartarwa da alhaki.",
+            "gl": "Substitúe o discurso tentativo por finais formais asertivos para demostrar a presenza e a responsabilidade do executivo.",
+            "ku": "Axaftina serpêhatî bi dawiya fermî ya piştrast veguherînin da ku hebûna rêveber û berpirsiyariyê nîşan bidin.",
+            "jv": "Ganti wicara tentatif kanthi pungkasan resmi sing tegas kanggo nuduhake kehadiran eksekutif lan tanggung jawab.",
+            "mg": "Soloy amin'ny fiafaran'ny fomba ofisialy ny kabary tentative mba hanehoana ny fisian'ny mpanatanteraka sy ny fandraisana andraikitra.",
+            "is": "Skiptu út bráðabirgðaræðu með fullyrðingum formlegum endingum til að sýna fram á viðveru stjórnenda og ábyrgð.",
+            "sd": "ايگزيڪيوٽو جي موجودگي ۽ احتساب کي ظاهر ڪرڻ لاءِ عارضي تقرير کي باضابطه رسم الخط سان تبديل ڪريو.",
+            "ps": "د اجرایوي شتون او حساب ورکونې ښودلو لپاره لنډمهاله وینا د رسمي رسمي پایونو سره بدله کړئ.",
+            "om": "Haasaa yeroof xumura sirnaa mirkaneessaatiin bakka buusuun argama hojii raawwachiiftuu fi itti gaafatamummaa agarsiisuu.",
+            "mk": "Заменете го пробниот говор со наметливи формални завршетоци за да покажете извршно присуство и одговорност.",
+            "hr": "Zamijenite provizorni govor asertivnim formalnim završecima kako biste pokazali prisutnost i odgovornost izvršne vlasti.",
+            "lv": "Aizstājiet provizorisku runu ar pārliecinošām formālām beigām, lai demonstrētu izpildvaras klātbūtni un atbildību.",
+            "sg": "Zia na place ti atënë ti tarango ni atënë ti nda ni so ayeke na lege ni ti fa so azo ti komande ayeke dä nga so ala yeke kiri tënë.",
+            "sq": "Zëvendësoni të folurit hezitues me mbarime formale pohuese për të treguar përgjegjësi dhe siguri.",
+            "sr": "Замените провизорни говор асертивним формалним завршетцима да бисте демонстрирали присуство и одговорност извршне власти.",
+            "su": "Ganti ucapan saheulaanan ku tungtung formal tegas pikeun nunjukkeun ayana eksekutif sareng akuntabilitas.",
+            "sl": "Zamenjajte pogojni govor z odločnimi formalnimi zaključki, da pokažete prisotnost in odgovornost izvršnega direktorja.",
+            "xh": "Faka endaweni yentetho ebambekayo kunye neziphelo ezisesikweni eziqinisekisayo ukubonisa ubukho besigqeba kunye noxanduva lokuphendula.",
+            "sn": "Tsiva kutaura kwekuedza nekusimbisa magumo ekupedzisira kuratidza kuvepo kwevakuru uye kuzvidavirira.",
+            "sk": "Nahraďte nezáväznú reč asertívnymi formálnymi zakončeniami, aby ste preukázali prítomnosť a zodpovednosť výkonného pracovníka.",
+            "so": "Ku beddel hadalka ku meel gaadhka ah ee dhammaadka rasmiga ah si aad u muujiso joogitaanka fulinta iyo isla xisaabtanka.",
+            "yo": "Rọpo ọrọ tentative pẹlu awọn ipari ifẹsẹmulẹ lati ṣe afihan wiwa alaṣẹ ati iṣiro.",
+            "zu": "Faka esikhundleni senkulumo engasho lutho ngeziphetho ezisemthethweni ezigomelayo ukuze ubonise ubukhona bezikhulu kanye nokuziphendulela.",
+            "zh-Hant": "不使用含糊拖沓的尾音，使用展現專業度與擔當的“-ㅂ니다/습니다”正式格語尾。",
+            "ko": "불확실한 추측성 표현을 단호하고 책임감 있는 정중 격식체 종결 어미로 대체하여 프로페셔널한 신뢰감을 형성합니다."
         },
         "example": {
             "en": "Instead of \"It seems like... (~인 것 같아요)\", say \"I analyzed the data and successfully executed the project (~완수했습니다)\".",
             "vi": "Thay vì nói mơ hồ \"Hình như là... (~인 것 같아요)\", hãy nói \"Tôi đã phân tích và hoàn thành xuất sắc (~완수했습니다)\".",
             "zh-Hans": "避免使用“好像是... (~인 것 같아요)”，改用“我经过精准分析已圆满达成目标 (~완수했습니다)”。",
-            "ja": "「〜のようです（~인 것 같아요）」の代わりに「〜と分析し成功裏に完遂いたしました（~완수했습니다）」と答える。"
+            "ja": "「〜のようです（~인 것 같아요）」の代わりに「〜と分析し成功裏に完遂いたしました（~완수했습니다）」と答える。",
+            "pcm": "Instead of \"It seems like... (~인 것 같아요)\", say \"I analyzed the data and successfully executed the project (~완수했습니다)\".",
+            "mn": "\"... (~인 것 같아요)\" гэхийн оронд \"Би өгөгдөлд дүн шинжилгээ хийж, төслийг амжилттай гүйцэтгэсэн (~완수했습니다)\" гэж хэлээрэй.",
+            "ne": "\"यस्तो देखिन्छ... (~인 것 같아요)\" को सट्टा, \"मैले डाटा विश्लेषण गरें र परियोजना सफलतापूर्वक कार्यान्वयन गरें (~완수했습니다)\" भन्नुहोस्।",
+            "uz": "\"Bu ko'rinadi ... (~ee gae gaesejo)\" o'rniga \"Men ma'lumotlarni tahlil qildim va loyihani muvaffaqiyatli amalga oshirdim (~seeenghaengbane)\" deb ayting.",
+            "ru": "Вместо «Похоже... (~인 것 같아요)» скажите «Я проанализировал данные и успешно выполнил проект (~완수했습니다)».",
+            "hi": "\"ऐसा लगता है... (~인 것 같아요)\" के बजाय, \"मैंने डेटा का विश्लेषण किया और प्रोजेक्ट को सफलतापूर्वक निष्पादित किया (~완수했습니다)\"।",
+            "zh-Hant": "避免使用“好像是... (~인 것 같아요)”，改用“我經過精準分析已圓滿達成目標 (~완수했습니다)”。",
+            "kk": "«Бұл сияқты... (~인 것 같아요)» орнына «Мен деректерді талдап, жобаны сәтті орындадым (~완수했습니다)» деңіз.",
+            "my": "\"ဖြစ်ပုံက... (~인 것같아요)\" အစား \"ငါ ဒေတာတွေကို ခွဲခြမ်းစိတ်ဖြာပြီး ပရောဂျက်ကို အောင်မြင်စွာ လုပ်ဆောင်ခဲ့တယ် (~완수했습니다)\" လို့ပြောလိုက်ပါ။",
+            "si": "\"එය පෙනේ... (~인 것 같아요)\" වෙනුවට, \"මම දත්ත විශ්ලේෂණය කර ව්‍යාපෘතිය සාර්ථකව ක්‍රියාත්මක කළෙමි (~완수했습니다)\" යැයි පවසන්න.",
+            "km": "ជំនួសឱ្យ \"វាហាក់ដូចជា... (~인 것 같아요)\" ចូរនិយាយថា \"ខ្ញុំបានវិភាគទិន្នន័យ ហើយបានដំណើរការគម្រោងដោយជោគជ័យ (~완수했습니다)\" ។",
+            "bn": "\"এটা মনে হচ্ছে... (~인 것 같아요)\" এর পরিবর্তে বলুন \"আমি ডেটা বিশ্লেষণ করেছি এবং সফলভাবে প্রকল্পটি কার্যকর করেছি (~완수했습니다)\"।",
+            "th": "แทนที่จะพูดว่า \"ดูเหมือนว่า... (~อิน 것 같아요)\" ให้พูดว่า \"ฉันวิเคราะห์ข้อมูลและดำเนินโครงการสำเร็จแล้ว (~완수했습니다)\"",
+            "ta": "\"இது போல் தெரிகிறது... (~인 것 같아요)\" என்பதற்குப் பதிலாக, \"நான் தரவைப் பகுப்பாய்வு செய்து திட்டத்தை வெற்றிகரமாகச் செயல்படுத்தினேன் (~완수했습니다)\" என்று கூறுங்கள்.",
+            "id": "Daripada \"Sepertinya... (~인 것 같아요)\", ucapkan \"Saya menganalisis data dan berhasil menjalankan proyek (~완수했습니다)\".",
+            "fr": "Au lieu de \"On dirait que... (~인 것 같아요)\", dites \"J'ai analysé les données et exécuté le projet avec succès (~완수했습니다)\".",
+            "de": "Anstelle von „Es scheint, als ob... (~인 것 같아요)“ sagen Sie „Ich habe die Daten analysiert und das Projekt erfolgreich ausgeführt (~완수했습니다)“.",
+            "es": "En lugar de \"Parece que... (~인 것 같아요)\", diga \"Analicé los datos y ejecuté exitosamente el proyecto (~완수했습니다)\".",
+            "fa": "به جای \"به نظر می رسد ... (~인 것 같아요)\"، بگویید \"من داده ها را تجزیه و تحلیل کردم و پروژه را با موفقیت اجرا کردم (~완수했습니다)\".",
+            "nl": "In plaats van \"Het lijkt erop... (~인 것 같아요)\", zeg je \"Ik heb de gegevens geanalyseerd en het project met succes uitgevoerd (~완수했습니다)\".",
+            "tr": "\"Görünüşe göre... (~인 것 같아요)\" yerine \"Verileri analiz ettim ve projeyi başarıyla yürüttüm (~완수했습니다)\" deyin.",
+            "tet": "Envezde \"Parese hanesan... (~인 것 같아요)\", dehan \"Ha'u analiza dadus no ezekuta ho susesu projetu (~완수했습니다)\".",
+            "uk": "Замість «Схоже... (~인 것 같아요)» скажіть «Я проаналізував дані та успішно виконав проект (~완수했습니다)».",
+            "arz": "بدلاً من \"يبدو أن... (~인 것 같아요)\"، قل \"لقد قمت بتحليل البيانات وتنفيذ المشروع بنجاح (~완수했습니다)\".",
+            "ar": "قل بثقة: '이 프로젝트를 성공적으로 완수했습니다' بدلاً من صيغة التردد '완수한 것 같습니다'.",
+            "it": "Invece di \"Sembra che... (~인 것 같아요)\", dì \"Ho analizzato i dati e ho eseguito con successo il progetto (~완수했습니다)\".",
+            "sv": "Istället för \"Det verkar som... (~인 것 같아요)\", säg \"Jag analyserade data och genomförde projektet framgångsrikt (~완수했습니다)\".",
+            "pl": "Zamiast „Wygląda na to, że... (~인 것 같아요)” powiedz „Przeanalizowałem dane i pomyślnie wykonałem projekt (~완수했습니다)”.",
+            "el": "Αντί για \"Φαίνεται ότι... (~인 것 같아요)\", πείτε \"Ανέλυσα τα δεδομένα και εκτέλεσα με επιτυχία το έργο (~완수했습니다)\".",
+            "da": "I stedet for \"Det ser ud til... (~인 것 같아요)\", skal du sige \"Jeg analyserede dataene og udførte projektet med succes (~완수했습니다)\".",
+            "he": "במקום \"זה נראה כאילו... (~인 것 같아요)\", אמור \"ניתחתי את הנתונים וביצעתי את הפרויקט בהצלחה (~완수했습니다)\".",
+            "no": "I stedet for \"Det virker som... (~인 것 같아요)\", si \"Jeg analyserte dataene og gjennomførte prosjektet vellykket (~완수했습니다)\".",
+            "am": "ከ \"ይመስላል...",
+            "ur": "\"ایسا لگتا ہے کہ... (~인 것 같아요)\" کے بجائے، \"میں نے ڈیٹا کا تجزیہ کیا اور پروجیکٹ کو کامیابی کے ساتھ انجام دیا (~완수했습니다)\"۔",
+            "mr": "\"असे दिसते... (~인 것 같아요)\" ऐवजी, \"मी डेटाचे विश्लेषण केले आणि प्रकल्प यशस्वीरित्या कार्यान्वित केला (~완수했습니다)\" असे म्हणा.",
+            "te": "\"ఇది ఇలా ఉంది... (~인 것 같아요)\"కి బదులుగా, \"నేను డేటాను విశ్లేషించాను మరియు ప్రాజెక్ట్‌ను విజయవంతంగా అమలు చేసాను (~완수했습니다)\" అని చెప్పండి.",
+            "pa": "\"ਇਹ ਜਾਪਦਾ ਹੈ... (~인 것 같아요)\" ਦੀ ਬਜਾਏ, ਕਹੋ \"ਮੈਂ ਡੇਟਾ ਦਾ ਵਿਸ਼ਲੇਸ਼ਣ ਕੀਤਾ ਅਤੇ ਪ੍ਰੋਜੈਕਟ ਨੂੰ ਸਫਲਤਾਪੂਰਵਕ ਚਲਾਇਆ (~완수했습니다)\"।",
+            "gu": "\"એવું લાગે છે... (~인 것 같아요)\" ને બદલે, \"મેં ડેટાનું વિશ્લેષણ કર્યું અને પ્રોજેક્ટ સફળતાપૂર્વક એક્ઝિક્યુટ કર્યો (~완수했습니다)\" કહો.",
+            "pt": "Em vez de \"Parece que... (~인 것 같아요)\", diga \"Analisei os dados e executei o projeto com sucesso (~완수했습니다)\".",
+            "kn": "\"ಇದು ತೋರುತ್ತಿದೆ... (~인 것 같아요)\" ಬದಲಿಗೆ, \"ನಾನು ಡೇಟಾವನ್ನು ವಿಶ್ಲೇಷಿಸಿದ್ದೇನೆ ಮತ್ತು ಯೋಜನೆಯನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಕಾರ್ಯಗತಗೊಳಿಸಿದ್ದೇನೆ (~완수했습니다)\" ಎಂದು ಹೇಳಿ.",
+            "ml": "\"ഇത് പോലെ തോന്നുന്നു... (~인 것 같아요)\" എന്നതിന് പകരം, \"ഞാൻ ഡാറ്റ വിശകലനം ചെയ്യുകയും പ്രോജക്റ്റ് വിജയകരമായി നടപ്പിലാക്കുകയും ചെയ്തു (~완수했습니다)\" എന്ന് പറയുക.",
+            "ro": "În loc de „Se pare că... (~인 것 같아요)”, spuneți „Am analizat datele și am executat cu succes proiectul (~완수했습니다)”.",
+            "yue": "不要說“看起來像... (~인 것 같아요)”，而要說“我分析了數據並成功執行了項目 (~완수했습니다)”。",
+            "sw": "Badala ya \"Inaonekana kama... (~인 것 같아요)\", sema \"Nilichanganua data na kutekeleza mradi kwa ufanisi (~완수했습니다)\".",
+            "af": "In plaas van \"Dit lyk asof... (~인 것 같아요)\", sê \"Ek het die data ontleed en die projek suksesvol uitgevoer (~완수했습니다)\".",
+            "ka": "იმის ნაცვლად, რომ \"როგორც ჩანს... (~인 것 같아요)\", თქვით \"მე გავაანალიზე მონაცემები და წარმატებით შევასრულე პროექტი (~완수했습니다)\".",
+            "fi": "Sanon \"Näyttää siltä, ​​että... (~인 것 같아요)\" sijaan sano \"Analysoin tiedot ja suoritin projektin onnistuneesti (~완수했습니다)\".",
+            "ca": "En lloc de \"Sembla que... (~인 것 같아요)\", digueu \"He analitzat les dades i he executat el projecte amb èxit (~완수했습니다)\".",
+            "tl": "Sa halip na \"Mukhang... (~인 것 같아요)\", sabihin ang \"Nasuri ko ang data at matagumpay na naisakatuparan ang proyekto (~완수했습니다)\".",
+            "ms": "Daripada \"Nampaknya... (~인 것 같아요)\", katakan \"Saya menganalisis data dan berjaya melaksanakan projek (~완수했습니다)\".",
+            "hu": "A „Úgy tűnik... (~인 것 같아요)” helyett mondja azt, hogy „Elemeztem az adatokat és sikeresen végrehajtottam a projektet (~완수했습니다)”.",
+            "et": "\"Tundub nagu... (~인 것 같아요)\" asemel öelge \"Analüüsisin andmeid ja viisin projekti edukalt läbi (~완수했습니다)\".",
+            "cs": "Místo „Vypadá to jako... (~인 것 같아요)“ řekněte „Analyzoval jsem data a úspěšně jsem provedl projekt (~완수했습니다)“.",
+            "az": "\"Görünür... (~인 것 같아요)\" əvəzinə \"Mən məlumatları təhlil etdim və layihəni uğurla icra etdim (~완수했습니다)\" deyin.",
+            "tg": "Ба ҷои \"Ин ба назар мерасад... (~인 것 같아요)\" бигӯед \"Ман маълумотро таҳлил кардам ва лоиҳаро бомуваффақият иҷро кардам (~완수했습니다)\".",
+            "gl": "En lugar de \"Parece que... (~인 것 같아요)\", di \"Analicei os datos e executei correctamente o proxecto (~완수했습니다)\".",
+            "eu": "\"Badirudi... (~인 것 같아요)\"-ren ordez, esan \"Datuak aztertu eta arrakastaz exekutatu dut proiektua (~완수했습니다)\".",
+            "as": "\"এইটো যেন লাগে... (~인 것 같아요)\"ৰ পৰিৱৰ্তে \"মই তথ্য বিশ্লেষণ কৰিলোঁ আৰু প্ৰকল্পটো সফলতাৰে সম্পন্ন কৰিলোঁ (~완수했습니다)\"।",
+            "bg": "Вместо „Изглежда като... (~인 것 같아요)“, кажете „Анализирах данните и успешно изпълних проекта (~완수했습니다)“.",
+            "is": "Í stað \"Það virðist eins og... (~인 것 같아요)\", segðu \"Ég greindi gögnin og framkvæmdi verkefnið með góðum árangri (~완수했습니다)\".",
+            "jv": "Tinimbang \"Koyone ... (~인 것 같아요)\", ucapake \"Aku nganalisa data lan kasil nglakokake proyek kasebut (~완수했습니다)\".",
+            "ceb": "Imbes nga \"Morag... (~인 것 같아요)\", ingna ang \"Akong gi-analisa ang datos ug malampusong napatuman ang proyekto (~완수했습니다)\".",
+            "ku": "Li şûna \"Wek xuya dike... (~인 것 같아요)\", bêje \"Min dane analîz kir û proje bi serfirazî pêk anî (~완수했습니다)\".",
+            "mk": "Наместо „Се чини како... (~인 것 같아요)“, кажете „Ги анализирав податоците и успешно го извршив проектот (~완수했습니다)“.",
+            "hr": "Umjesto \"Čini se kao... (~인 것 같아요)\", recite \"Analizirao sam podatke i uspješno izvršio projekt (~완수했습니다)\".",
+            "ig": "Kama \"Ọ dị ka...",
+            "ha": "Maimakon \"Da alama ...",
+            "mg": "Raha tokony ho \"Toa... (~인 것 같아요)\", dia lazao hoe \"Namakafaka ny angona aho ary nahavita ny tetikasa (~완수했습니다)\".",
+            "sd": "ان جي بدران \"اهو لڳي ٿو ... (~인 것 같아요)\"، چئو \"مون ڊيٽا جو تجزيو ڪيو ۽ ڪاميابيءَ سان منصوبي تي عمل ڪيو (~완수했습니다)\".",
+            "lv": "\"Šķiet, ka... (~인 것 같아요)\" vietā sakiet \"Es analizēju datus un veiksmīgi izpildīju projektu (~완수했습니다)\".",
+            "om": "\"Akka... (~인 것 같아요)\" jechuu mannaa, \"Deetaa xiinxalee pirojektii milkaa'inaan raawwadheera (~완수했습니다)\" jedhi.",
+            "ps": "د \"داسې ښکاري ... (~인 것 같아요)\" پر ځای، ووایه \"ما معلومات تحلیل کړل او پروژه یې په بریالیتوب سره اجرا کړه (~완수했습니다)\".",
+            "lt": "Vietoj „Atrodo, kad... (~인 것 같아요)“ pasakykite „Išanalizavau duomenis ir sėkmingai įvykdžiau projektą (~완수했습니다)“.",
+            "sk": "Namiesto „Zdá sa, že... (~인 것 같아요)“ povedzte „Analyzoval som údaje a úspešne som vykonal projekt (~완수했습니다)“.",
+            "sq": "Në vend të \"Duket sikur... (~인 것 같아요)\", thoni \"Analizova të dhënat dhe e përfundova projektin me sukses (~완수했습니다)\".",
+            "sg": "Ahon ti tene \"A yeke mo bâ mo tene... (~인 것 같아요)\", tene \"Mbi gi nda ti asango ni na mbi sara kua ni nzoni (~완수했습니다)\".",
+            "zu": "Esikhundleni sokuthi \"Kubonakala sengathi... (~인 것 같아요)\", ithi \"Ngihlaziye idatha futhi ngenza ngempumelelo iphrojekthi (~완수했습니다)\".",
+            "xh": "Endaweni yokuthi \"Kubonakala ngathi... (~인 것 같아요)\", yithi \"Ndihlalutye idatha kwaye ndiphumeze ngempumelelo iprojekthi (~완수했습니다)\".",
+            "sn": "Panzvimbo yekuti \"Zvinoita senge ... (~인 것 같아요)\", taura \"Ndakaongorora data uye ndakabudirira kuita chirongwa (~완수했습니다)\".",
+            "sl": "Namesto \"Zdi se kot ... (~인 것 같아요)\", recite \"Analiziral sem podatke in uspešno izvedel projekt (~완수했습니다)\".",
+            "yo": "Dipo \"O dabi ẹnipe... (~인 것 같아요)\", sọ \"Mo ṣe atupale data naa ati ṣiṣe iṣẹ naa ni aṣeyọri (~완수했습니다)\".",
+            "so": "Halkii \"Waxay u egtahay... (~인 것 같아요)\", waxaad dhahdaa \"Waan falanqeeyay xogta oo si guul leh ayaan u fuliyay mashruuca (~완수했습니다)\".",
+            "sr": "Уместо „Изгледа као... (~인 것 같아요)“, реците „Анализирао сам податке и успешно извршио пројекат (~완수했습니다)“.",
+            "su": "Gantina \"Sigana mah... (~인 것 같아요)\", sebutkeun \"Kuring nganalisa data sareng suksés ngalaksanakeun proyék (~완수했습니다)\".",
+            "ko": "'~인 것 같아요' 대신 '데이터를 기반으로 원인을 분석하여 프로젝트를 성공적으로 완수했습니다'와 같이 명확하게 답변합니다."
         },
         "actionItem": {
             "en": "Practice concluding interview answers with firm, resonant formal speech.",
             "vi": "Luyện tập dứt khoát kết thúc câu trả lời với giọng điệu quả quyết, tự tin.",
             "zh-Hans": "面试练习时训练用坚决干脆的语调结束每一句话。",
-            "ja": "面接練習では文末をきっぱりと言い切る訓練を行いましょう。"
+            "ja": "面接練習では文末をきっぱりと言い切る訓練を行いましょう。",
+            "pcm": "Practice concluding interview answers with firm, resonant formal speech.",
+            "ne": "दृढ, प्रतिध्वनिपूर्ण औपचारिक भाषणको साथ अन्तर्वार्ता उत्तरहरू समापन गर्ने अभ्यास गर्नुहोस्।",
+            "th": "ฝึกสรุปคำตอบการสัมภาษณ์ด้วยคำพูดที่เป็นทางการและหนักแน่น",
+            "zh-Hant": "面試練習時訓練用堅決乾脆的語調結束每一句話。",
+            "uz": "Suhbatga javoblarni qat'iy, jarangdor rasmiy nutq bilan yakunlashni mashq qiling.",
+            "mn": "Ярилцлагын хариултыг хатуу, цуурайтсан албан ёсны яриагаар дуусгах дадлага хий.",
+            "km": "អនុវត្ត​ការ​បញ្ចប់​ការ​ឆ្លើយ​សម្ភាសន៍​ជាមួយ​នឹង​ការ​និយាយ​ជា​ផ្លូវការ​ដែល​មាន​ភាព​ម៉ឺងម៉ាត់។",
+            "my": "အင်တာဗျူးအဖြေများကို ပြတ်ပြတ်သားသား ပြတ်ပြတ်သားသား တရားဝင်ပြောဆိုမှုဖြင့် နိဂုံးချုပ်ရန် လေ့ကျင့်ပါ။",
+            "hi": "दृढ़, गूंजते औपचारिक भाषण के साथ साक्षात्कार के उत्तरों को समाप्त करने का अभ्यास करें।",
+            "id": "Berlatihlah menyimpulkan jawaban wawancara dengan pidato formal yang tegas dan bergema.",
+            "ru": "Потренируйтесь завершать ответы на собеседовании твердой, звучной официальной речью.",
+            "bn": "দৃঢ়, অনুরণিত আনুষ্ঠানিক বক্তৃতার সাথে সাক্ষাত্কারের উত্তর শেষ করার অনুশীলন করুন।",
+            "si": "ස්ථිර, අනුනාද විධිමත් කථාවකින් සම්මුඛ පරීක්ෂණ පිළිතුරු අවසන් කිරීමට පුරුදු වන්න.",
+            "ta": "உறுதியான, எதிரொலிக்கும் முறையான பேச்சு மூலம் நேர்காணல் பதில்களை முடிக்க பயிற்சி செய்யுங்கள்.",
+            "tr": "Röportaj cevaplarını kesin, yankı uyandıran resmi bir konuşmayla sonuçlandırma alıştırması yapın.",
+            "de": "Üben Sie, die Antworten auf Vorstellungsgespräche mit einer festen, klangvollen formellen Rede abzuschließen.",
+            "fr": "Entraînez-vous à conclure les réponses à l’entretien avec un discours formel ferme et résonnant.",
+            "kk": "Нақты, резонансты ресми сөзбен сұхбат жауаптарын қорытындылауға жаттықтыру.",
+            "ar": "تدرب على إنهاء إجابات مقابلات العمل بصيغة '-습니다' الجازمة والواضحة.",
+            "arz": "تدرب على اختتام إجابات المقابلة بخطاب رسمي حازم ومرن.",
+            "es": "Practique las respuestas finales de la entrevista con un discurso formal firme y resonante.",
+            "uk": "Потренуйтеся завершувати відповіді на співбесіді твердою, резонансною офіційною промовою.",
+            "pl": "Przećwicz kończenie odpowiedzi na rozmowie kwalifikacyjnej stanowczą, donośną mową formalną.",
+            "tet": "Pratika konklui resposta entrevista nian ho diskursu formál ne'ebé metin no rezonante.",
+            "sv": "Träna på att avsluta intervjusvar med ett fast, resonant formellt tal.",
+            "nl": "Oefen de antwoorden op het afsluitende interview met een stevige, resonerende formele toespraak.",
+            "it": "Esercitati a concludere le risposte all'intervista con un discorso formale fermo e risonante.",
+            "fa": "نتیجه گیری پاسخ های مصاحبه را با سخنرانی رسمی محکم و پرطنین تمرین کنید.",
+            "he": "תרגל סיום תשובות לראיון עם דיבור פורמלי תקיף ומהדהד.",
+            "ur": "مضبوط، گونج دار رسمی تقریر کے ساتھ انٹرویو کے جوابات کو ختم کرنے کی مشق کریں۔",
+            "el": "Εξασκηθείτε στην ολοκλήρωση των απαντήσεων των συνεντεύξεων με σταθερή, ηχηρή επίσημη ομιλία.",
+            "am": "የቃለ መጠይቁን መልሶች በጠንካራ እና በሚያስተጋባ መደበኛ ንግግር የመደምደሚያ ልምምድ ያድርጉ።",
+            "mr": "मुलाखतीच्या समारोपाचा सराव दृढ, अनुनादपूर्ण औपचारिक भाषणाने करा.",
+            "da": "Øv dig i at afslutte interviewsvar med fast, resonant formel tale.",
+            "no": "Øv på å avslutte intervjusvar med fast, resonant formell tale.",
+            "pa": "ਪੱਕੇ, ਗੂੰਜਦੇ ਰਸਮੀ ਭਾਸ਼ਣ ਨਾਲ ਇੰਟਰਵਿਊ ਦੇ ਜਵਾਬਾਂ ਨੂੰ ਸਮਾਪਤ ਕਰਨ ਦਾ ਅਭਿਆਸ ਕਰੋ।",
+            "gu": "મક્કમ, પ્રતિધ્વનિયુક્ત ઔપચારિક ભાષણ સાથે ઇન્ટરવ્યુના જવાબો સમાપ્ત કરવાની પ્રેક્ટિસ કરો.",
+            "te": "దృఢమైన, ప్రతిధ్వనించే అధికారిక ప్రసంగంతో ఇంటర్వ్యూ సమాధానాలను ముగించడాన్ని ప్రాక్టీస్ చేయండి.",
+            "ml": "ദൃഢവും അനുരണനപരവുമായ ഔപചാരികമായ സംഭാഷണത്തിലൂടെ അഭിമുഖത്തിൻ്റെ ഉത്തരങ്ങൾ അവസാനിപ്പിക്കാൻ പരിശീലിക്കുക.",
+            "kn": "ದೃಢವಾದ, ಪ್ರತಿಧ್ವನಿಸುವ ಔಪಚಾರಿಕ ಭಾಷಣದೊಂದಿಗೆ ಸಂದರ್ಶನದ ಉತ್ತರಗಳನ್ನು ಮುಕ್ತಾಯಗೊಳಿಸಲು ಅಭ್ಯಾಸ ಮಾಡಿ.",
+            "sw": "Jizoeze kuhitimisha majibu ya mahojiano kwa hotuba rasmi na thabiti.",
+            "pt": "Pratique concluir as respostas da entrevista com um discurso formal firme e ressonante.",
+            "tl": "Magsanay ng pagtatapos ng mga sagot sa panayam na may matatag, matunog na pormal na pananalita.",
+            "ms": "Berlatih menyimpulkan jawapan temu bual dengan ucapan formal yang tegas dan bergema.",
+            "yue": "練習用堅定、響亮的正式演講來結束面試回答。",
+            "ka": "ივარჯიშეთ ინტერვიუს პასუხების დასრულებაში მყარი, რეზონანსული ფორმალური სიტყვით.",
+            "cs": "Procvičte si závěrečné odpovědi na pohovor pevnou, zvučnou formální řečí.",
+            "af": "Oefen die afsluiting van onderhoudantwoorde met ferm, resonante formele toespraak.",
+            "fi": "Harjoittele haastatteluvastausten päättämistä kiinteällä, kaikuvalla muodollisella puheella.",
+            "hu": "Gyakorolja az interjúválaszok lezárását határozott, zengő formális beszéddel.",
+            "ca": "Practiqueu les respostes de l'entrevista final amb un discurs formal ferm i ressonant.",
+            "ro": "Exersați încheierea răspunsurilor la interviu cu un discurs formal ferm și rezonant.",
+            "bg": "Практикувайте да завършвате отговорите на интервюто с твърда, звучна официална реч.",
+            "as": "দৃঢ়, অনুৰণিত আনুষ্ঠানিক ভাষণৰ সৈতে সাক্ষাৎকাৰৰ উত্তৰ সামৰণি অভ্যাস কৰক।",
+            "et": "Harjutage intervjuuvastuste lõpetamist kindla, kõlava ametliku kõnega.",
+            "az": "Möhkəm, rezonanslı rəsmi nitqlə müsahibə cavablarını yekunlaşdırmağa məşq edin.",
+            "tg": "Машқ кунед, ки ҷавобҳои мусоҳибаро бо сухани расмии қатъӣ ва резонанс анҷом диҳед.",
+            "ceb": "Pagpraktis sa pagtapos sa mga tubag sa interbyu uban ang lig-on, lanog nga pormal nga sinultihan.",
+            "is": "Æfðu þig í að ljúka viðtalssvörum með fastri, hljómandi formlegu tali.",
+            "gl": "Practica as respostas de conclusión das entrevistas cun discurso formal firme e resonante.",
+            "eu": "Landu elkarrizketa-erantzunak amaitzen, hizkera formal irmo eta oihartzunarekin.",
+            "hr": "Vježbajte zaključivati ​​odgovore na intervjuu čvrstim, rezonantnim formalnim govorom.",
+            "ha": "Koyi yadda za a kammala amsoshin tambayoyin tare da tsayayyen magana mai gamsarwa.",
+            "ig": "Mụa ime ka azịza ajụjụ ọnụ na-emechi site n'okwu siri ike, nke na-ada ụda.",
+            "ku": "Bersivên hevpeyivînê bi axaftina fermî ya hişk, resonant re pratîk bikin.",
+            "lt": "Treniruokitės užbaigdami interviu atsakymus tvirta, rezonansine oficialia kalba.",
+            "mk": "Вежбајте да ги заклучувате одговорите на интервјуто со цврст, резонантен формален говор.",
+            "sd": "انٽرويو جي جوابن کي ختم ڪرڻ جي مشق ڪريو مضبوط، گونج واري رسمي تقرير سان.",
+            "ps": "د مرکې پای ته رسیدو ځوابونو ته د قوي، ګونګ رسمي وینا سره تمرین وکړئ.",
+            "lv": "Praktizējiet intervijas atbilžu noslēgšanu ar stingru, rezonējošu formālu runu.",
+            "mg": "Manaova fanazaran-tena mamarana ny valim-panadinana amin'ny lahateny ara-dalàna hentitra sy maneno.",
+            "jv": "Praktek nyimpulake jawaban wawancara kanthi wicara resmi sing tegas lan resonan.",
+            "sk": "Precvičte si uzatváranie odpovedí na pohovor pevným, rezonujúcim formálnym prejavom.",
+            "om": "Deebii af-gaaffii xumuraa haasaa sirnaa cimaa fi sagalee qabuun shaakali.",
+            "sg": "Pratique ti hunzi akiringo tënë ti interview na mbeni kpengba tënë so ayeke na lege ni.",
+            "sq": "Praktikoni përgjigjet e intervistës me ton të sigurt dhe mbarime formale në vend të shprehjeve të pasigurta.",
+            "sl": "Vadite zaključke odgovorov na intervjuju z odločnim, odmevnim uradnim govorom.",
+            "so": "Ku celceli soo gabagabaynta jawaabaha waraysiga hadal adag oo toos ah.",
+            "su": "Prakték nyimpulkeun jawaban wawancara ku ucapan formal anu tegas sareng résonansi.",
+            "sn": "Dzidzira mhinduro dzebvunzurudzo dzekupedzisa nekutaura kwakasimba, kunonzwika.",
+            "xh": "Ziqhelanise neempendulo zodliwano-ndlebe eziqukumbelayo ngentetho esesikweni eqinileyo, evakalayo.",
+            "sr": "Вежбајте закључивање одговора на интервју чврстим, резонантним формалним говором.",
+            "yo": "Ṣaṣewaṣe awọn idahun ifọrọwanilẹnuwo ipari pẹlu iduroṣinṣin, ọrọ isọdi ti o ṣe deede.",
+            "zu": "Prakthiza izimpendulo zengxoxo yokuphetha ngenkulumo esemthethweni eqinile, enomsindo.",
+            "ko": "면접 모의 연습 시 모든 문장의 끝을 또렷하고 힘 있는 어조로 맺는 연습을 하세요."
         }
     },
     {
@@ -114,31 +589,56 @@ TOPICS_36 = [
             "en": "Korean Mimetic Words for Accurate Pain Descriptions at Clinics",
             "vi": "Từ tượng hình miêu tả cơn đau chính xác tại bệnh viện và hiệu thuốc Hàn Quốc",
             "zh-Hans": "在韩国医院与药房精准描述病痛的拟态词指南",
-            "ja": "韓国の病院・薬局で正確に痛みを伝えるオノマトペ集"
+            "ja": "韓国の病院・薬局で正確に痛みを伝えるオノマトペ集",
+            "sq": "Fjalët onomatopeike koreane për përshkrimin e saktë të dhimbjes në klinika",
+            "hi": "क्लिनिक में दर्द के सटीक विवरण के लिए कोरियाई अनुकरणात्मक शब्द",
+            "ar": "الكلمات التعبيرية الكورية (의성어·의태어) لوصف الألم بدقة في العيادات والمستشفيات",
+            "zh-Hant": "在韓國醫院與藥房精準描述病痛的擬態詞指南",
+            "ko": "한국 병원·약국 통증 표현 의태어 모음"
         },
         "summary": {
             "en": "Clearly communicate subtle pain sensations to Korean doctors and pharmacists using natural descriptive expressions.",
             "vi": "Mô tả chính xác cảm giác đau cho bác sĩ và dược sĩ Hàn Quốc bằng các từ tượng hình tự nhiên.",
             "zh-Hans": "运用自然生动的拟态词向韩国医生与药剂师准确传达疼痛的具体感觉与部位。",
-            "ja": "ズキズキ、チクチクなどの韓国語独特の擬態語で医師や薬剤師に痛みのニュアンスを的確に伝えます。"
+            "ja": "ズキズキ、チクチクなどの韓国語独特の擬態語で医師や薬剤師に痛みのニュアンスを的確に伝えます。",
+            "sq": "Komunikoni qartë ndjesitë e dhimbjes te mjekët dhe farmacistët koreanë duke përdorur shprehje natyrore përshkruese.",
+            "hi": "प्राकृतिक विवरणात्मक भावों का उपयोग करके कोरियाई डॉक्टरों और फार्मासिस्टों को दर्द की सूक्ष्म अनुभूतियां स्पष्ट रूप से बताएं।",
+            "ar": "نصيحة عملية للإقامة في كوريا: استخدام التعبيرات الكورية الدقيقة مثل 콕콕 و욱신욱신 و뻐근하다 لتحديد طبيعة الألم بدقة للطبيب.",
+            "zh-Hant": "運用自然生動的擬態詞向韓國醫生與藥劑師準確傳達疼痛的具體感覺與部位。",
+            "ko": "한국 특유의 자연스러운 감각 의태어를 활용하여 병원 진료실과 약국에서 통증의 양상을 의사와 약사에게 정확하게 설명하세요."
         },
         "principle": {
             "en": "Expressing sensory nuances helps medical providers diagnose accurately (throbbing, stinging, dull ache).",
             "vi": "Sử dụng từ tượng thanh tượng hình giúp bác sĩ chẩn đoán chính xác nguyên nhân (đau nhói, đau buốt, âm ỉ).",
             "zh-Hans": "生动传达痛感有助于医生做出精准诊断（偏头痛抽痛、针扎刺痛、灼烧感）。",
-            "ja": "感覚的な痛みのニュアンスを正確に伝えることで誤診を防ぎ迅速な治療を受けられます。"
+            "ja": "感覚的な痛みのニュアンスを正確に伝えることで誤診を防ぎ迅速な治療を受けられます。",
+            "sq": "Përshkrimi i nuancave shqisore i ndihmon mjekët të diagnostikojnë me saktësi (dhimbje therëse, therëse e mprehtë, djegëse).",
+            "hi": "संवेदी बारीकियों को व्यक्त करने से चिकित्सकों को सटीक निदान करने में मदद मिलती है (जैसे कि धड़कता हुआ दर्द, चुभन, या जलन)।",
+            "ar": "콕콕 = ألم طاعن حاد كالإبرة؛ 욱신욱신 = ألم نابض دوري؛ 뻐근하다 = تيبس وثقل في العضلات والمفاصل؛ 쓰리다 = ألم حارق بالمعدة.",
+            "zh-Hant": "生動傳達痛感有助於醫生做出精準診斷（偏頭痛抽痛、針扎刺痛、灼燒感）。",
+            "ko": "미세한 통증 감각(욱신거림, 찌릿함, 콕콕 쑤심 등)을 알맞은 묘사어로 전달하면 의사의 정확한 진료와 처방에 큰 도움이 됩니다."
         },
         "example": {
             "en": "Throbbing headache = '지끈지끈', Stabbing sharp stomach ache = '콕콕 쑤셔요', Burning chest = '화끈화끈'.",
             "vi": "Đau đầu giật giật = '지끈지끈', Đau bụng nhói từng cơn = '콕콕 쑤셔요', Nóng rát lồng ngực = '화끈화끈'.",
             "zh-Hans": "头痛欲裂胀痛 = '지끈지끈'，腹部针扎样刺痛 = '콕콕 쑤셔요'，胸口火辣灼热 = '화끈화끈'。",
-            "ja": "頭がズキズキする＝「지끈지끈」、お腹がチクチク刺すように痛い＝「콕콕 쑤셔요」、胸がヒリヒリ熱い＝「화끈화끈」。"
+            "ja": "頭がズキズキする＝「지끈지끈」、お腹がチクチク刺すように痛い＝「콕콕 쑤셔요」、胸がヒリヒリ熱い＝「화끈화끈」。",
+            "sq": "Dhimbje koke pulsuese = '지끈지끈', Dhimbje therëse në stomak = '콕콕 쑤셔요', Ndjesi djegieje në kraharor = '화끈화끈'.",
+            "hi": "धड़कता हुआ सिरदर्द = 'Jikkeun-jikkeun', पेट में चुभने वाला तेज दर्द = 'Kok-kok ssusyeoyo', सीने में जलन = 'Hwakkeun-hwakkun'।",
+            "ar": "'무릎이 쑤셔요' (ركبتي تؤلمني وتثقل)، '위가 콕콕 찔리듯이 아파요' (معدتي تؤلمني كالوخز الحاد).",
+            "zh-Hant": "頭痛欲裂脹痛 = '지끈지끈'，腹部針扎樣刺痛 = '콕콕 쑤셔요'，胸口火辣灼熱 = '화끈화끈'。",
+            "ko": "머리가 깨질 듯 아플 때는 '지끈지끈', 위장이 찌르듯 아플 때는 '콕콕 쑤셔요', 가슴이 타는 듯할 때는 '화끈거려요'라고 구체적으로 표현합니다."
         },
         "actionItem": {
             "en": "Bookmark key pain mimetic words on your phone before visiting a clinic in Korea.",
             "vi": "Lưu lại các từ miêu tả cơn đau vào điện thoại để dùng khi đi khám bệnh tại Hàn Quốc.",
             "zh-Hans": "去韩国医院前将核心疼痛表达保存在手机备忘录中。",
-            "ja": "韓国で病院にかかる前に痛みのオノマトペをメモしておきましょう。"
+            "ja": "韓国で病院にかかる前に痛みのオノマトペをメモしておきましょう。",
+            "sq": "Shënoni fjalët kyçe të dhimbjes në telefon para se të vizitoni një klinikë në Kore.",
+            "hi": "कोरिया में किसी क्लिनिक में जाने से पहले अपने फोन पर दर्द से जुड़े मुख्य अनुकरणात्मक शब्दों को बुकमार्क कर लें।",
+            "ar": "احفظ الكلمات الأربع الأساسية (콕콕, 욱신욱신, 뻐근하다, 쓰리다) لاستخدامها فورًا عند زيارة الطبيب في كوريا.",
+            "zh-Hant": "去韓國醫院前將核心疼痛表達保存在手機備忘錄中。",
+            "ko": "병원이나 약국에 방문하기 전 현재 느끼는 통증 양상에 맞는 의태어를 메모해 두세요."
         }
     },
     {
@@ -147,31 +647,56 @@ TOPICS_36 = [
             "en": "Korean Public Transit: Tap-Off Rules & Transfer Discounts",
             "vi": "Quy tắc quẹt thẻ khi xuống xe và giảm giá chuyển tuyến giao thông công cộng Hàn Quốc",
             "zh-Hans": "韩国公共交通下车刷卡与换乘优惠核心规则",
-            "ja": "韓国の公共交通での下車時タッチと乗継割引ルール"
+            "ja": "韓国の公共交通での下車時タッチと乗継割引ルール",
+            "sq": "Korean Public Transit: Tap-Off Rules & Transfer Discounts",
+            "hi": "कोरियाई सार्वजनिक परिवहन: टैप-ऑफ नियम और ट्रांसफर छूट",
+            "ar": "قواعد النقل العام في كوريا: لمس البطاقة عند النزول والحصول على خصومات التحويل",
+            "zh-Hant": "韓國公共交通下車刷卡與換乘優惠核心規則",
+            "ko": "한국 대중교통 하차 태그와 환승 할인 규칙"
         },
         "summary": {
             "en": "Maximize transit savings in South Korea by always tapping off to earn free or discounted bus/subway transfers.",
             "vi": "Tiết kiệm chi phí đi lại bằng cách luôn quẹt thẻ khi xuống xe buýt hoặc tàu điện ngầm để hưởng ưu đãi chuyển tuyến.",
             "zh-Hans": "下车务必刷交通卡，享受地铁与公交之间长达4次免费或高额折扣换乘优惠。",
-            "ja": "地下鉄とバスの下車時に必ず交通カードをタッチして、無料または割引の乗換特典を受けましょう。"
+            "ja": "地下鉄とバスの下車時に必ず交通カードをタッチして、無料または割引の乗換特典を受けましょう。",
+            "sq": "Maximize transit savings in South Korea by always tapping off to earn free or discounted bus/subway transfers.",
+            "hi": "मुफ़्त या रियायती बस/सबवे ट्रांसफर पाने के लिए उतरते समय हमेशा कार्ड टैप-ऑफ करें और अपनी यात्रा बचत को अधिकतम करें।",
+            "ar": "نصيحة عملية للإقامة في كوريا: لمس بطاقة النقل عند باب النزول إلزامي للحصول على تحويل مجاني للخط التالي وتجنب دفع الأجرة القصوى.",
+            "zh-Hant": "下車務必刷交通卡，享受地鐵與公交之間長達4次免費或高額折扣換乘優惠。",
+            "ko": "버스와 지하철에서 내릴 때 반드시 카드를 태그하여 환승 할인 혜택을 챙기고 요금 페널티를 사전에 방지하세요."
         },
         "principle": {
             "en": "Transfers are discounted up to 4 times within 30 minutes (60 min from 9 PM to 7 AM) when tapping off upon exit.",
             "vi": "Được giảm giá chuyển tuyến tối đa 4 lần trong vòng 30 phút (60 phút từ 21h đến 7h sáng) nếu quẹt thẻ lúc xuống.",
             "zh-Hans": "下车刷卡后30分钟内（夜间21点至次日早7点放宽至60分钟）可享最多4次换乘优惠。",
-            "ja": "下車タッチ後30分以内（21時〜翌朝7時は60分以内）に最大4回まで乗換割引が適用されます。"
+            "ja": "下車タッチ後30分以内（21時〜翌朝7時は60分以内）に最大4回まで乗換割引が適用されます。",
+            "sq": "Transfers are discounted up to 4 times within 30 minutes (60 min from 9 PM to 7 AM) when tapping off upon exit.",
+            "hi": "उतरते समय टैप-ऑफ करने पर 30 मिनट के भीतर (रात 9 बजे से सुबह 7 बजे तक 60 मिनट) अधिकतम 4 बार ट्रांसफर छूट मिलती है।",
+            "ar": "خصم التحويل التبادلي (Transfer Discount) يمنحك ركوب الحافلة أو المترو التالي مجانًا أو بسعر رمزي خلال 30 دقيقة من لمس النزول.",
+            "zh-Hant": "下車刷卡後30分鐘內（夜間21點至次日早7點放寬至60分鐘）可享最多4次換乘優惠。",
+            "ko": "하차 태그 시각 기준 30분 이내(야간 21시~익일 07시는 60분 이내)에 다른 대중교통 이용 시 최대 4회까지 무료 또는 할인 환승이 적용됩니다."
         },
         "example": {
             "en": "Failing to tap off results in maximum distance penalty fare and eliminates your next transfer discount.",
             "vi": "Nếu quên quẹt thẻ khi xuống xe, bạn sẽ bị tính cước tối đa và mất quyền giảm giá chuyển tuyến ở chuyến tiếp theo.",
             "zh-Hans": "若下车未刷卡，将被扣除最长区间补交罚款，且下一次换乘无法享受减免优惠。",
-            "ja": "下車時のタッチを忘れると最長距離のペナルティ料金が課され、次回の乗換割引も無効になります。"
+            "ja": "下車時のタッチを忘れると最長距離のペナルティ料金が課され、次回の乗換割引も無効になります。",
+            "sq": "Failing to tap off results in maximum distance penalty fare and eliminates your next transfer discount.",
+            "hi": "टैप-ऑफ न करने पर अधिकतम दूरी का जुर्माना किराया लगता है और आपकी अगली ट्रांसफर छूट भी समाप्त हो जाती है।",
+            "ar": "إذا نسيت لمس البطاقة عند النزول من الحافلة، فسيتم تطبيق غرامة مسافة قصوى تلقائيًا في رحلتك القادمة ويضيع حق التحويل المجاني.",
+            "zh-Hant": "若下車未刷卡，將被扣除最長區間補交罰款，且下一次換乘無法享受減免優惠。",
+            "ko": "하차 태그를 빠뜨리면 다음 탑승 시 최대 이동 거리 기준의 추가 페널티 운임이 부과되고 환승 혜택이 즉시 소멸됩니다."
         },
         "actionItem": {
             "en": "Always tap your transit card when getting off buses and subways in Korea.",
             "vi": "Luôn nhớ quẹt thẻ giao thông khi bước xuống xe buýt và tàu điện ngầm.",
             "zh-Hans": "在韩国乘坐公交车与地铁下车时一定要记得刷交通卡。",
-            "ja": "韓国でバスや地下鉄を降りる際は必ず交通カードをリーダーにタッチしてください。"
+            "ja": "韓国でバスや地下鉄を降りる際は必ず交通カードをリーダーにタッチしてください。",
+            "sq": "Always tap your transit card when getting off buses and subways in Korea.",
+            "hi": "कोरिया में बसों और सबवे से उतरते समय हमेशा अपने ट्रांजिट कार्ड को टैप करें।",
+            "ar": "المس بطاقة المواصلات دائمًا عند باب النزول من الحافلة والمترو دون استثناء.",
+            "zh-Hant": "在韓國乘坐公交車與地鐵下車時一定要記得刷交通卡。",
+            "ko": "다음 교통수단으로 환승할 계획이 없더라도 버스나 지하철에서 내릴 때는 항상 카드를 찍으세요."
         }
     },
     {
@@ -180,31 +705,56 @@ TOPICS_36 = [
             "en": "Polite Cushion-Word Notes to Resolve Apartment Noise Disputes",
             "vi": "Mẫu thư nhã nhặn dùng từ đệm giải quyết mâu thuẫn tiếng ồn chung cư",
             "zh-Hans": "化解公寓楼层噪音纠纷的礼貌委婉便利贴沟通法",
-            "ja": "階間騒音トラブルを円満に緩和する丁寧なクッション言葉メモ"
+            "ja": "階間騒音トラブルを円満に緩和する丁寧なクッション言葉メモ",
+            "sq": "Polite Cushion-Word Notes to Resolve Apartment Noise Disputes",
+            "hi": "अपार्टमेंट के शोर विवादों को सुलझाने के लिए विनम्र संदेश नोट्स",
+            "ar": "صياغة الملاحظات المهذبة لحل نزاعات الضوضاء بين الطوابق في المباني السكنية",
+            "zh-Hant": "化解公寓樓層噪音糾紛的禮貌委婉便利貼溝通法",
+            "ko": "층간소음 분쟁 완화 정중한 쿠션어 쪽지"
         },
         "summary": {
             "en": "Defuse apartment floor noise conflicts amicably in Korea using polite, empathetic cushion-language notes.",
             "vi": "Hóa giải êm thấm tranh chấp tiếng ồn giữa các tầng chung cư tại Hàn Quốc bằng lời nhắn lịch sự, tinh tế.",
             "zh-Hans": "在韩国公寓生活遇到楼层噪音时，用委婉柔和的用语留言，避免邻里争执与摩擦。",
-            "ja": "韓国の集合住宅での騒音問題を、相手を思いやる丁寧な表現のメモで角を立てずに解決します。"
+            "ja": "韓国の集合住宅での騒音問題を、相手を思いやる丁寧な表現のメモで角を立てずに解決します。",
+            "sq": "Defuse apartment floor noise conflicts amicably in Korea using polite, empathetic cushion-language notes.",
+            "hi": "कोरिया में विनम्र और सहानुभूतिपूर्ण संदेश नोट्स का उपयोग करके अपार्टमेंट के फर्श के शोर से जुड़े विवादों को शांतिपूर्वक सुलझाएं।",
+            "ar": "نصيحة عملية للإقامة في كوريا: استخدام كلمات التلطيف (Cushion Words) والاعتذار المهذب لحل خلافات أصوات المشي في الشقق الودية.",
+            "zh-Hant": "在韓國公寓生活遇到樓層噪音時，用委婉柔和的用語留言，避免鄰里爭執與摩擦。",
+            "ko": "층간소음 갈등 시 직접적인 감정 대립을 피하고 정중하고 공감 어린 쿠션어 손편지로 원만하게 문제를 해결하세요."
         },
         "principle": {
             "en": "Direct confrontation causes emotional friction; gentle polite notes with small gifts prevent escalation.",
             "vi": "Đối đầu trực tiếp dễ gây căng thẳng; một mảnh giấy viết tay kèm quà nhỏ giúp thấu hiểu lẫn nhau.",
             "zh-Hans": "当面冲突易激化矛盾，贴附礼貌手写留言与小点心能更有效促成邻里理解。",
-            "ja": "直接の怒鳴り込みは反発を招くため、小さなお菓子を添えた丁寧な手紙が最も効果的です。"
+            "ja": "直接の怒鳴り込みは反発を招くため、小さなお菓子を添えた丁寧な手紙が最も効果的です。",
+            "sq": "Direct confrontation causes emotional friction; gentle polite notes with small gifts prevent escalation.",
+            "hi": "सीधे टकराव से भावनात्मक तनाव बढ़ता है; छोटे उपहार के साथ भेजा गया एक विनम्र नोट विवाद को बढ़ने से रोकता है।",
+            "ar": "المواجهة المباشرة أو الصراخ قد يؤدي لمسؤولية قانونية؛ استخدام صندوق الرسائل أو حارس العمارة بملاحظة لطيفة يحقق أسرع نتيجة ودية.",
+            "zh-Hant": "當面衝突易激化矛盾，貼附禮貌手寫留言與小點心能更有效促成鄰里理解。",
+            "ko": "문이나 천장을 두드리는 직접 항의는 감정 격화로 이어지므로, 부드러운 완충 표현과 작은 간식을 곁들인 메모가 훨씬 효과적입니다."
         },
         "example": {
             "en": "\"Hello, neighbor! We know it is unintended, but sounds travel easily at night. We would deeply appreciate your kind consideration.\"",
             "vi": "\"Chào anh/chị hàng xóm, tôi biết không phải cố ý nhưng đêm khuya âm thanh rất vang. Rất mong anh/chị lưu tâm giúp một chút ạ.\"",
             "zh-Hans": "“邻居您好，知道您并非有意，但深夜声音容易共振传导，如果能稍加留意我们将感激不尽。”",
-            "ja": "「お隣様、わざとではないと存じますが、夜間は響きやすいため少しご配慮いただけますと幸いです。」"
+            "ja": "「お隣様、わざとではないと存じますが、夜間は響きやすいため少しご配慮いただけますと幸いです。」",
+            "sq": "\"Hello, neighbor! We know it is unintended, but sounds travel easily at night. We would deeply appreciate your kind consideration.\"",
+            "hi": "\"नमस्ते, पड़ोसी! हम जानते हैं कि यह अनजाने में हुआ है, लेकिन रात में आवाजें आसानी से नीचे पहुंचती हैं। आपके थोड़े से सहयोग के लिए हम बहुत आभारी रहेंगे।\"",
+            "ar": "'안녕하세요, 다름이 아니라 늦은 시간에 발걸음 소리가 조금 크게 들려 조심스럽게 부탁드립니다.'",
+            "zh-Hant": "“鄰居您好，知道您並非有意，但深夜聲音容易共振傳導，如果能稍加留意我們將感激不盡。”",
+            "ko": "\"이웃님, 안녕하세요! 고의가 아니시겠지만 밤 시간대 발소리가 다소 울려 휴식에 어려움이 있습니다. 조금만 배려해 주시면 진심으로 감사하겠습니다.\""
         },
         "actionItem": {
             "en": "Leave a polite handwritten note with a small treat rather than pounding on ceilings or doors.",
             "vi": "Viết giấy nhắn nhẹ nhàng kèm bánh nhỏ treo ở cửa thay vì gõ trần hay cãi vã.",
             "zh-Hans": "不要冲动敲门敲天花板，用温和客气的手写便利贴表达诉求。",
-            "ja": "感情的にドアを叩くのではなく、思いやりのある手書きメモをポストに入れましょう。"
+            "ja": "感情的にドアを叩くのではなく、思いやりのある手書きメモをポストに入れましょう。",
+            "sq": "Leave a polite handwritten note with a small treat rather than pounding on ceilings or doors.",
+            "hi": "छत या दरवाजों को पीटने के बजाय एक छोटा सा उपहार और हाथ से लिखा विनम्र नोट छोड़ें।",
+            "ar": "في حال وجود إزعاج مستمر، تواصل أولاً مع مكتب إدارة المبنى (관리사무소) أو اترك رسالة مهذبة مصحوبة بهدية رمزية.",
+            "zh-Hant": "不要衝動敲門敲天花板，用溫和客氣的手寫便利貼表達訴求。",
+            "ko": "윗집을 직접 찾아가 벨을 누르는 대신 관리사무소 중재를 요청하거나 정중한 손편지를 우편함에 남기세요."
         }
     },
     {
@@ -213,31 +763,56 @@ TOPICS_36 = [
             "en": "Real Estate Registry (Deed) Analysis: Section A (Gap-gu) & Section B (Eul-gu)",
             "vi": "Phân tích trích lục bất động sản Hàn Quốc: Mục A (Gap-gu) và Mục B (Eul-gu)",
             "zh-Hans": "韩国不动产登记簿誊本甲区(Gap-gu)与乙区(Eul-gu)权利分析核心",
-            "ja": "不動産登記簿謄本の甲区・乙区の権利分析の要点"
+            "ja": "不動産登記簿謄本の甲区・乙区の権利分析の要点",
+            "sq": "Real Estate Registry (Deed) Analysis: Section A (Gap-gu) & Section B (Eul-gu)",
+            "hi": "अचल संपत्ति रजिस्ट्री (Deed) विश्लेषण: भाग A (Gap-gu) और भाग B (Eul-gu)",
+            "ar": "تحليل السجل العقاري الرسمي (등기부등본): القسم أ (Gap-gu) والقسم ب (Eul-gu)",
+            "zh-Hant": "韓國不動產登記簿謄本甲區(Gap-gu)與乙區(Eul-gu)權利分析核心",
+            "ko": "등기부등본 갑구·을구 권리분석 핵심"
         },
         "summary": {
             "en": "Verify true ownership and financial encumbrances on Korean property deeds before signing contracts.",
             "vi": "Kiểm tra chủ sở hữu thực sự và các khoản thế chấp ngân hàng trên trích lục nhà đất trước khi ký hợp đồng.",
             "zh-Hans": "签约前透彻分析不动产登记簿，核实真正房东身份及房产是否存在抵押贷款风险。",
-            "ja": "韓国で住宅を契約する前に、真の所有者と抵当権設定状況を正確に読み解く方法を身につけます。"
+            "ja": "韓国で住宅を契約する前に、真の所有者と抵当権設定状況を正確に読み解く方法を身につけます。",
+            "sq": "Verify true ownership and financial encumbrances on Korean property deeds before signing contracts.",
+            "hi": "अनुबंध पर हस्ताक्षर करने से पहले कोरियाई संपत्ति दस्तावेजों पर वास्तविक स्वामित्व और वित्तीय देनदारियों की पुष्टि करें।",
+            "ar": "نصيحة عملية للإقامة في كوريا: فحص المالك الحقيقي في القسم أ والرهون والديون المسجلة على الشقة في القسم ب قبل دفع أي مبلغ.",
+            "zh-Hant": "簽約前透徹分析不動產登記簿，覈實真正房東身份及房產是否存在抵押貸款風險。",
+            "ko": "전·월세 계약 체결 전 부동산 등기부등본의 소유권과 근저당 부채 내역을 면밀히 분석하여 보증금 위험을 차단하세요."
         },
         "principle": {
             "en": "Section A records ownership, provisional seizure, and auctions; Section B records mortgages and senior loans.",
             "vi": "Mục A ghi nhận quyền sở hữu, phong tỏa và bán đấu giá; Mục B ghi nhận nợ thế chấp và cầm cố.",
             "zh-Hans": "甲区记载所有权归属、假扣押及拍卖事项；乙区记载抵押权及各类担保借款。",
-            "ja": "甲区は所有権や仮差押え・競売を記載し、乙区は根抵当権や担保融資を記載します。"
+            "ja": "甲区は所有権や仮差押え・競売を記載し、乙区は根抵当権や担保融資を記載します。",
+            "sq": "Section A records ownership, provisional seizure, and auctions; Section B records mortgages and senior loans.",
+            "hi": "भाग A (Gap-gu) में स्वामित्व, अनंतिम जब्ती और नीलामी दर्ज होती है; भाग B (Eul-gu) में बंधक (mortgage) और वरिष्ठ ऋण दर्ज होते हैं।",
+            "ar": "القسم أ (갑구) يوضح هوية المالك الشرعي وأي حجز قضائي؛ القسم ب (을구) يوضح قروض البنك العقارية والرهون المسجلة (근저당권).",
+            "zh-Hant": "甲區記載所有權歸屬、假扣押及拍賣事項；乙區記載抵押權及各類擔保借款。",
+            "ko": "갑구에서 실제 소유자, 가압류, 경매 개시 여부를 확인하고, 을구에서 은행 근저당권과 선순위 대출금 규모를 철저히 검증합니다."
         },
         "example": {
             "en": "Ensure total mortgage debt plus all tenant deposits does not exceed 70% of the property's market value.",
             "vi": "Đảm bảo tổng nợ thế chấp cộng với toàn bộ tiền cọc thuê nhà không vượt quá 70% giá trị thị trường của căn nhà.",
             "zh-Hans": "确保房产总抵押贷款加上全部租客押金之和不超过房产实际市值的70%。",
-            "ja": "根抵当権設定額＋入居者の保証金総額が住宅相場の70%を超えていないか確認します。"
+            "ja": "根抵当権設定額＋入居者の保証金総額が住宅相場の70%を超えていないか確認します。",
+            "sq": "Ensure total mortgage debt plus all tenant deposits does not exceed 70% of the property's market value.",
+            "hi": "सुनिश्चित करें कि कुल बंधक ऋण और सभी किरायेदारों की जमा राशि मिलकर संपत्ति के बाजार मूल्य के 70% से अधिक न हो।",
+            "ar": "إذا تجاوز إجمالي ديون القسم ب مع وديعتك 70% من سعر بيع الشقة في السوق، فإن العقار يعتبر عالي المخاطر (깡통전세).",
+            "zh-Hant": "確保房產總抵押貸款加上全部租客押金之和不超過房產實際市值的70%。",
+            "ko": "선순위 근저당권 채권최고액과 전체 세입자 보증금의 합계가 해당 건물 시세의 70%를 넘지 않는지 반드시 계산해 봅니다."
         },
         "actionItem": {
             "en": "Inspect an up-to-date registry issued on the exact day you sign and pay the balance.",
             "vi": "Luôn yêu cầu xem trích lục bất động sản được in ngay trong ngày ký hợp đồng và ngày trả tiền nốt.",
             "zh-Hans": "签约当天与支付尾款当天必须分别打印最新的登记簿誊本进行核对。",
-            "ja": "契約締結日と残金支払日当日にそれぞれ最新の登記簿謄本を発行して確認しましょう。"
+            "ja": "契約締結日と残金支払日当日にそれぞれ最新の登記簿謄本を発行して確認しましょう。",
+            "sq": "Inspect an up-to-date registry issued on the exact day you sign and pay the balance.",
+            "hi": "हस्ताक्षर करने और शेष राशि का भुगतान करने के ठीक उसी दिन जारी की गई नवीनतम रजिस्ट्री की जांच करें।",
+            "ar": "اطبع نسخة حديثة من السجل العقاري في يوم توقيع العقد وفي يوم دفع باقي الوديعة للتأكد من خلوه من أي رهن جديد.",
+            "zh-Hant": "簽約當天與支付尾款當天必須分別打印最新的登記簿謄本進行覈對。",
+            "ko": "계약서를 쓰는 당일과 잔금을 치르는 날 아침, 2회에 걸쳐 대법원 인터넷등기소에서 최신 등기부등본을 직접 열람하세요."
         }
     },
     {
@@ -246,31 +821,56 @@ TOPICS_36 = [
             "en": "K-Pass / Commuter Cards: Up to 53% Public Transit Cashback in Korea",
             "vi": "Quy tắc hoàn tiền chi phí giao thông K-Pass lên tới 53% tại Hàn Quốc",
             "zh-Hans": "韩国公共交通K-Pass卡高达53%返现退费规则",
-            "ja": "K-パス／アルットゥル交通カードの最大53%交通費キャッシュバック規則"
+            "ja": "K-パス／アルットゥル交通カードの最大53%交通費キャッシュバック規則",
+            "sq": "K-Pass / Commuter Cards: Up to 53% Public Transit Cashback in Korea",
+            "hi": "K-Pass / कम्यूटर कार्ड: कोरिया में सार्वजनिक परिवहन पर 53% तक कैशबैक",
+            "ar": "بطاقة النقل K-Pass: استرداد نقدي يصل إلى 53% من مصاريف المواصلات العامة في كوريا",
+            "zh-Hant": "韓國公共交通K-Pass卡高達53%返現退費規則",
+            "ko": "알뜰교통카드/K-패스 대중교통비 환급 규칙"
         },
         "summary": {
             "en": "Receive monthly refunds on bus and subway fares across Korea with the nationwide K-Pass transit initiative.",
             "vi": "Nhận tiền hoàn hàng tháng khi đi xe buýt và tàu điện ngầm khắp Hàn Quốc với chương trình K-Pass.",
             "zh-Hans": "使用全韩国通用的K-Pass交通卡，每月乘坐公交与地铁享受最高53%的现金返还。",
-            "ja": "韓国全域のバス・地下鉄利用時に、月間最大53%の現金融資キャッシュバックを受けられます。"
+            "ja": "韓国全域のバス・地下鉄利用時に、月間最大53%の現金融資キャッシュバックを受けられます。",
+            "sq": "Receive monthly refunds on bus and subway fares across Korea with the nationwide K-Pass transit initiative.",
+            "hi": "राष्ट्रव्यापी K-Pass परिवहन योजना के साथ पूरे कोरिया में बस और सबवे किराए पर मासिक रिफंड प्राप्त करें।",
+            "ar": "نصيحة عملية للإقامة في كوريا: بطاقة K-Pass الحكومية تمنح استردادًا نقديًا شهريًا يتراوح بين 20% و53% لمستخدمي المترو والحافلات الدائمين.",
+            "zh-Hant": "使用全韓國通用的K-Pass交通卡，每月乘坐公交與地鐵享受最高53%的現金返還。",
+            "ko": "전국 대중교통 이용 요금의 최대 53%까지 매월 현금으로 환급해 주는 K-패스(K-Pass) 카드를 활용하세요."
         },
         "principle": {
             "en": "Taking public transit at least 15 times a month triggers a 20% (General), 30% (Youth 19-34), or 53% (Low Income) refund.",
             "vi": "Sử dụng giao thông công cộng từ 15 lần/tháng trở lên sẽ được hoàn 20% (Phổ thông), 30% (Thanh niên 19-34 tuổi), 53% (Thu nhập thấp).",
             "zh-Hans": "每月乘坐公共交通15次以上，可享受20%（普通）、30%（19~34岁青年）或53%（低收入层）退费返现。",
-            "ja": "月15回以上公共交通を利用すると、一般20%、青年（19〜34歳）30%、低所得層53%が返還されます。"
+            "ja": "月15回以上公共交通を利用すると、一般20%、青年（19〜34歳）30%、低所得層53%が返還されます。",
+            "sq": "Taking public transit at least 15 times a month triggers a 20% (General), 30% (Youth 19-34), or 53% (Low Income) refund.",
+            "hi": "महीने में कम से कम 15 बार सार्वजनिक परिवहन का उपयोग करने पर 20% (सामान्य), 30% (युवा 19-34 वर्ष), या 53% (कम आय वर्ग) का रिफंड मिलता है।",
+            "ar": "استخدام المواصلات العامة 15 مرة أو أكثر شهريًا يؤهلك لاسترداد 20% لعامة الناس، و30% للشباب (19-34 عامًا)، و53% للفئات المستحقة.",
+            "zh-Hant": "每月乘坐公共交通15次以上，可享受20%（普通）、30%（19~34歲青年）或53%（低收入層）退費返現。",
+            "ko": "월 15회 이상 버스·지하철 탑승 시 일반 20%, 청년(만 19~34세) 30%, 저소득층 53%의 교통비가 다음 달 계좌로 자동 환급됩니다."
         },
         "example": {
             "en": "A youth spending 80,000 KRW monthly on commuting receives 24,000 KRW deposited directly back each month.",
             "vi": "Thanh niên chi 80.000 won tiền tàu xe mỗi tháng sẽ được nhận lại 24.000 won tiền mặt chuyển thẳng vào tài khoản.",
             "zh-Hans": "青年群体每月交通费支出8万韩元，次月将直接到账返现2.4万韩元。",
-            "ja": "青年が月8万ウォン利用した場合、毎月2万4千ウォンが口座に自動キャッシュバックされます。"
+            "ja": "青年が月8万ウォン利用した場合、毎月2万4千ウォンが口座に自動キャッシュバックされます。",
+            "sq": "A youth spending 80,000 KRW monthly on commuting receives 24,000 KRW deposited directly back each month.",
+            "hi": "आवागमन पर प्रति माह 80,000 KRW खर्च करने वाले एक युवा को हर महीने 24,000 KRW सीधे खाते में वापस मिल जाते हैं।",
+            "ar": "إنفاق 70,000 وون شهريًا يمنح الشاب استردادًا نقديًا مباشرًا بحوالي 21,000 وون في حسابه البنكي كل شهر.",
+            "zh-Hant": "青年羣體每月交通費支出8萬韓元，次月將直接到賬返現2.4萬韓元。",
+            "ko": "월 8만 원을 출퇴근 교통비로 지출하는 청년 이용자는 K-패스를 통해 매달 24,000원의 현금을 그대로 돌려받습니다."
         },
         "actionItem": {
             "en": "Link your commercial credit/debit card to the official K-Pass app to activate auto-refunds.",
             "vi": "Đăng ký thẻ ngân hàng vào ứng dụng K-Pass để tự động nhận tiền hoàn mỗi tháng.",
             "zh-Hans": "申领商业银行交通卡后，务必下载官方K-Pass App完成卡号绑定。",
-            "ja": "提携カード発行後、K-Pass公式アプリにカード番号を登録して利用を開始しましょう。"
+            "ja": "提携カード発行後、K-Pass公式アプリにカード番号を登録して利用を開始しましょう。",
+            "sq": "Link your commercial credit/debit card to the official K-Pass app to activate auto-refunds.",
+            "hi": "ऑटो-रिफंड सक्रिय करने के लिए अपने वाणिज्यिक क्रेडिट/डेबिट कार्ड को आधिकारिक K-Pass ऐप से लिंक करें।",
+            "ar": "أصدر بطاقة K-Pass من بنكك وسجل رقمها فورًا في تطبيق K-Pass لبدء تجميع الكاش باك الشهري.",
+            "zh-Hant": "申領商業銀行交通卡後，務必下載官方K-Pass App完成卡號綁定。",
+            "ko": "보유 중인 신용·체크카드를 K-패스 공식 앱에 등록하여 매월 자동 환급 혜택을 개시하세요."
         }
     },
     {
@@ -279,31 +879,56 @@ TOPICS_36 = [
             "en": "Formal Etiquette for Business Emails in Korean Workplaces",
             "vi": "Quy tắc chào hỏi mở đầu và kết thúc email công việc chuẩn mực tại Hàn Quốc",
             "zh-Hans": "韩国职场商务电子邮件标准格式头尾礼仪指南",
-            "ja": "韓国のビジネスメールにおける格式高い冒頭と結びの挨拶"
+            "ja": "韓国のビジネスメールにおける格式高い冒頭と結びの挨拶",
+            "sq": "Formal Etiquette for Business Emails in Korean Workplaces",
+            "hi": "कोरियाई कार्यस्थलों में व्यावसायिक ईमेल के लिए औपचारिक शिष्टाचार",
+            "ar": "آداب وقواعد كتابة رسائل البريد الإلكتروني في بيئة العمل الكورية",
+            "zh-Hant": "韓國職場商務電子郵件標準格式頭尾禮儀指南",
+            "ko": "한국 직장 이메일 격식체 첫인사와 끝인사"
         },
         "summary": {
             "en": "Master polite Korean business greetings and closing formulas to maintain impeccable professional decorum.",
             "vi": "Nắm vững văn phong trang trọng khi viết email công sở Hàn Quốc để tạo ấn tượng chuyên nghiệp tuyệt đối.",
             "zh-Hans": "熟练掌握韩国职场商务邮件的标准敬语套路，展现严谨可靠的专业职业素养。",
-            "ja": "韓国企業での円滑な業務連絡のため、失礼のない洗練されたビジネスメールの挨拶文をマスターします。"
+            "ja": "韓国企業での円滑な業務連絡のため、失礼のない洗練されたビジネスメールの挨拶文をマスターします。",
+            "sq": "Master polite Korean business greetings and closing formulas to maintain impeccable professional decorum.",
+            "hi": "उत्कृष्ट पेशेवर गरिमा बनाए रखने के लिए कोरियाई बिजनेस अभिवादन और समापन शैलियों में महारत हासिल करें।",
+            "ar": "نصيحة عملية للإقامة في كوريا: البنية الرسمية لرسائل العمل الكورية تبدأ بالتحية والمسمى الوظيفي وتنتهي بعبارة شكر مهذبة.",
+            "zh-Hant": "熟練掌握韓國職場商務郵件的標準敬語套路，展現嚴謹可靠的專業職業素養。",
+            "ko": "비즈니스 이메일의 정중한 도입부와 마무리 인사 형식을 숙지하여 사내외 업무 소통에서 완벽한 프로페셔널 매너를 갖추세요."
         },
         "principle": {
             "en": "Standard format: greeting with affiliation/title -> state purpose clearly -> closing wish -> formal sign-off.",
             "vi": "Cấu trúc chuẩn: Chào hỏi nêu rõ chức vụ/đơn vị -> Nêu mục đích rõ ràng -> Lời chúc -> Ký tên trang trọng (드림/올림).",
             "zh-Hans": "标准格式：标明所属及职务问候 -> 阐明邮件目的 -> 换季健康祝福 -> 正式落款敬语（드림/올림）。",
-            "ja": "標準フォーマット：所属・役職を名乗る挨拶 → 用件の明示 → 季節の健康祈願 → 結びの敬語（드림/올림）。"
+            "ja": "標準フォーマット：所属・役職を名乗る挨拶 → 用件の明示 → 季節の健康祈願 → 結びの敬語（드림/올림）。",
+            "sq": "Standard format: greeting with affiliation/title -> state purpose clearly -> closing wish -> formal sign-off.",
+            "hi": "मानक प्रारूप: पद/कंपनी के साथ अभिवादन -> उद्देश्य स्पष्ट रूप से बताएं -> समापन शुभकामनाएं -> औपचारिक हस्ताक्षर।",
+            "ar": "الهيكل القياسي: التحية واسم الشركة والمسمى الوظيفي للطرف الآخر ← التعريف بنفسك ← غرض الرسالة المباشر ← الطلب والمهلة ← التحية الختامية.",
+            "zh-Hant": "標準格式：標明所屬及職務問候 -> 闡明郵件目的 -> 換季健康祝福 -> 正式落款敬語（드림/올림）。",
+            "ko": "소속·직함 소개, 감사 인사, 핵심 용건, 맺음말로 이어지는 표준 비즈니스 격식 구조가 신뢰도와 업무 협조율을 높입니다."
         },
         "example": {
             "en": "\"안녕하십니까, [소속] [이름] [직급]입니다... 노고에 감사드리며, 환절기 건강 유의하시기 바랍니다. [이름] 드림.\"",
             "vi": "\"안녕하십니까, [Đơn vị] [Tên] [Chức vụ]입니다... Xin cảm ơn sự hỗ trợ của anh/chị, chúc anh/chị nhiều sức khỏe. [Tên] 드림.\"",
             "zh-Hans": "“안녕하십니까, [所属] [姓名] [职务]입니다... 感谢协助，换季时节请多保重身体。[姓名] 드림。”",
-            "ja": "「안녕하십니까, [所属]の[氏名] [役職]です… 平素のご協力に感謝申し上げます。[氏名] 드림.」"
+            "ja": "「안녕하십니까, [所属]の[氏名] [役職]です… 平素のご協力に感謝申し上げます。[氏名] 드림.」",
+            "sq": "\"안녕하십니까, [소속] [이름] [직급]입니다... 노고에 감사드리며, 환절기 건강 유의하시기 바랍니다. [이름] 드림.\"",
+            "hi": "\"नमस्ते (Annyeonghasimnikka), मैं [कंपनी/विभाग] का [नाम] [पदनाम] बोल रहा हूँ... आपकी कड़ी मेहनत के लिए धन्यवाद, बदलते मौसम में अपने स्वास्थ्य का ध्यान रखें। सादर, [नाम]।\"",
+            "ar": "ابدأ بـ: '[회사명] [직급]님, 안녕하십니까. [내회사] [내이름]입니다.' واختم بـ: '감사합니다. [내이름] 드림'.",
+            "zh-Hant": "“안녕하십니까, [所屬] [姓名] [職務]입니다... 感謝協助，換季時節請多保重身體。[姓名] 드림。”",
+            "ko": "\"안녕하십니까, [회사명/부서명] [이름] [직급]입니다. 노고에 감사드립니다. / 원활한 협조에 감사드리며, 문의 사항이 있으시면 편히 말씀해 주시기 바랍니다. [이름] 드림\""
         },
         "actionItem": {
             "en": "Save polite opening and closing snippets in your email client signature settings.",
             "vi": "Lưu sẵn mẫu mở đầu và kết thúc lịch sự vào phần chữ ký tự động trong hòm thư điện tử.",
             "zh-Hans": "在企业邮箱签名档中预设标准的商务问候与祝福模板。",
-            "ja": "メールソフトの署名テンプレートに丁寧な挨拶定型文を保存しておきましょう。"
+            "ja": "メールソフトの署名テンプレートに丁寧な挨拶定型文を保存しておきましょう。",
+            "sq": "Save polite opening and closing snippets in your email client signature settings.",
+            "hi": "अपने ईमेल क्लाइंट के हस्ताक्षर सेटिंग्स में विनम्र आरंभिक और समापन वाक्य (snippets) सहेज कर रखें।",
+            "ar": "احفظ نموذج البريد المهني الكوري وتأكد دائمًا من إضافة اللقب الوظيفي الدقيق للشخص المرسل إليه.",
+            "zh-Hant": "在企業郵箱簽名檔中預設標準的商務問候與祝福模板。",
+            "ko": "사내 메일 클라이언트의 자동 서명란에 소속, 직급, 유선 연락처가 포함된 표준 비즈니스 서명을 등록하세요."
         }
     },
     {
@@ -312,31 +937,56 @@ TOPICS_36 = [
             "en": "3 Essential Documents for Claiming Private Medical Reimbursement (Silbi)",
             "vi": "3 loại giấy tờ bắt buộc để thanh toán bảo hiểm y tế thực tế (Silbi) tại Hàn Quốc",
             "zh-Hans": "韩国实损医疗保险(Silbi)理赔报销必备的三大核心文件",
-            "ja": "実損医療保険（シルビ）の病院代請求に必要な3大必須書類"
+            "ja": "実損医療保険（シルビ）の病院代請求に必要な3大必須書類",
+            "sq": "3 Essential Documents for Claiming Private Medical Reimbursement (Silbi)",
+            "hi": "निजी चिकित्सा बीमा प्रतिपूर्ति (Silbi) क्लेम करने के लिए 3 आवश्यक दस्तावेज़",
+            "ar": "المستندات الثلاثة الأساسية للمطالبة بتعويض التأمين الطبي الخاص (실비보험)",
+            "zh-Hant": "韓國實損醫療保險(Silbi)理賠報銷必備的三大核心文件",
+            "ko": "실손의료보험 병원비 청구 3대 필수 서류"
         },
         "summary": {
             "en": "Ensure rapid, seamless insurance payouts for Korean clinic visits by collecting the three required documents.",
             "vi": "Được hoàn tiền viện phí nhanh chóng và đầy đủ bằng cách lấy đủ 3 loại giấy tờ khi khám bệnh.",
             "zh-Hans": "在韩国就医后迅速获得商业实损保险理赔金，结算时务必开具三项法定凭证。",
-            "ja": "韓国で受診した治療費のスムーズな保険給付を受けるため、窓口で受け取るべき3つの書類を把握します。"
+            "ja": "韓国で受診した治療費のスムーズな保険給付を受けるため、窓口で受け取るべき3つの書類を把握します。",
+            "sq": "Ensure rapid, seamless insurance payouts for Korean clinic visits by collecting the three required documents.",
+            "hi": "तीन आवश्यक दस्तावेज़ एकत्र करके कोरियाई क्लीनिक में उपचार के बाद त्वरित और निर्बाध बीमा भुगतान सुनिश्चित करें।",
+            "ar": "نصيحة عملية للإقامة في كوريا: استخراج الفاتورة الطبية المفصلة وإيصال الدفع وتفاصيل الوصفة الطبية لضمان استرداد مصاريف العلاج.",
+            "zh-Hant": "在韓國就醫後迅速獲得商業實損保險理賠金，結算時務必開具三項法定憑證。",
+            "ko": "병의원 진료 후 3대 핵심 증빙 서류를 빠짐없이 챙겨 실손의료보험금 심사와 지급을 지연 없이 한 번에 통과하세요."
         },
         "principle": {
             "en": "Insurance companies require standardized proof: itemized receipt, detailed billing breakdown, and diagnosis certificate.",
             "vi": "Công ty bảo hiểm yêu cầu: Hóa đơn viện phí, Bảng kê chi tiết điều trị và Đơn thuốc có mã bệnh.",
             "zh-Hans": "保险公司审核报销必备凭证：诊疗费收据、诊疗费明细单、含疾病代码的处方签或诊断书。",
-            "ja": "保険金請求の必須3点：診療費領収書、診療費詳細内訳書、疾病コード付き処方箋（診断書）。"
+            "ja": "保険金請求の必須3点：診療費領収書、診療費詳細内訳書、疾病コード付き処方箋（診断書）。",
+            "sq": "Insurance companies require standardized proof: itemized receipt, detailed billing breakdown, and diagnosis certificate.",
+            "hi": "बीमा कंपनियों को मानकीकृत प्रमाण की आवश्यकता होती है: मदवार रसीद, विस्तृत बिलिंग विवरण और रोग निदान प्रमाणपत्र।",
+            "ar": "المطالبة بمبالغ أقل من 100,000 وون لا تتطلب تقرير طبيب مكلف (진단서)؛ يكفي إيصال العيادة وتفاصيل العلاج بالرمز الطبي.",
+            "zh-Hant": "保險公司審覈報銷必備憑證：診療費收據、診療費明細單、含疾病代碼的處方籤或診斷書。",
+            "ko": "보험금 심사에 필요한 3대 기본 서류(진료비 계산서·영수증, 진료비 세부내역서, 처방전/진단서)를 구비하면 즉시 당일 지급됩니다."
         },
         "example": {
             "en": "Request '진료비 영수증', '진료비 세부내역서', and '처방전 (질병분류기호 포함)' at the payment counter.",
             "vi": "Yêu cầu quầy thanh toán xuất: '진료비 영수증', '진료비 세부내역서' và '처방전 có kèm 질병분류기호'.",
             "zh-Hans": "结账时要求前台打印：'진료비 영수증'、'진료비 세부내역서' 以及 '처방전(질병분류기호 포함)'。",
-            "ja": "会計窓口で「진료비 영수증（領収書）」「진료비 세부내역서（詳細内訳書）」「질병분류기호付き처방전」を依頼します。"
+            "ja": "会計窓口で「진료비 영수증（領収書）」「진료비 세부내역서（詳細内訳書）」「질병분류기호付き처방전」を依頼します。",
+            "sq": "Request '진료비 영수증', '진료비 세부내역서', and '처방전 (질병분류기호 포함)' at the payment counter.",
+            "hi": "भुगतान काउंटर पर 'उपचार शुल्क रसीद (Jinryobi Yeongsujeung)', 'विस्तृत चिकित्सा विवरण (Jinryobi Sebu Naeyeokseo)', और 'प्रिस्क्रिप्शन कोड सहित (Cheobangjeon)' का अनुरोध करें।",
+            "ar": "المستندات المطلوبة: 진료비 영수증 (إيصال العلاج) + 진료비 세부내역서 (كشف التفاصيل) + 처방전 (الوصفة الطبية مع كود المرض).",
+            "zh-Hant": "結賬時要求前臺打印：'진료비 영수증'、'진료비 세부내역서' 以及 '처방전(질병분류기호 포함)'。",
+            "ko": "단순 카드 결제 전표만 제출하면 심사가 거절되므로, 원무과에 '비급여 코드가 기재된 진료비 세부내역서'를 반드시 요구해야 합니다."
         },
         "actionItem": {
             "en": "Ask the hospital counter for detailed breakdowns before leaving to avoid repeat visits.",
             "vi": "Luôn xin bảng kê chi tiết viện phí ngay khi thanh toán tại bệnh viện để không phải quay lại.",
             "zh-Hans": "在医院柜台结账时一并开齐详细明细单，免去二次往返奔波。",
-            "ja": "病院を出る前に詳細内訳書の発行を窓口で必ず依頼しましょう。"
+            "ja": "病院を出る前に詳細内訳書の発行を窓口で必ず依頼しましょう。",
+            "sq": "Ask the hospital counter for detailed breakdowns before leaving to avoid repeat visits.",
+            "hi": "अस्पताल के दोबारा चक्कर लगाने से बचने के लिए निकलने से पहले ही बिलिंग काउंटर से विस्तृत विवरण मांग लें।",
+            "ar": "اطلب دائمًا '세부내역서' مجانًا من شباك العيادة بعد الدفع وقدم المطالبة فورًا عبر تطبيق التأمين بهاتفك.",
+            "zh-Hant": "在醫院櫃檯結賬時一併開齊詳細明細單，免去二次往返奔波。",
+            "ko": "진료 후 병원 수납 창구에서 \"실손보험 청구용 진료비 계산서와 영수증, 세부내역서 함께 출력해 주세요\"라고 요청하세요."
         }
     },
     {
@@ -345,31 +995,56 @@ TOPICS_36 = [
             "en": "KTX/SRT Early Booking Discounts & Youth Fare Deals",
             "vi": "Giảm giá đặt vé sớm tàu cao tốc KTX/SRT và gói cước ưu đãi thanh niên",
             "zh-Hans": "KTX/SRT高铁提前预订折扣与青年专属特惠票",
-            "ja": "KTX・SRTの早期予約割引と青年割引特典"
+            "ja": "KTX・SRTの早期予約割引と青年割引特典",
+            "sq": "KTX/SRT Early Booking Discounts & Youth Fare Deals",
+            "hi": "KTX/SRT अर्ली बुकिंग छूट और युवा किराया ऑफ़र",
+            "ar": "خصومات الحجز المبكر وتذاكر الشباب لقطارات KTX وSRT السريعة في كوريا",
+            "zh-Hant": "KTX/SRT高鐵提前預訂折扣與青年專屬特惠票",
+            "ko": "KTX·SRT 조기 예매 할인과 힘내라 청춘"
         },
         "summary": {
             "en": "Save up to 40% on high-speed rail travel across South Korea by booking in advance or using youth benefits.",
             "vi": "Tiết kiệm tới 40% vé tàu cao tốc KTX/SRT tại Hàn Quốc bằng cách đặt trước hoặc dùng gói ưu đãi thanh niên.",
             "zh-Hans": "通过提前购票或青年资格认证，在韩国乘坐KTX/SRT高铁最高享受40%票价减免。",
-            "ja": "事前予約や青年特典を活用して韓国の高速鉄道運賃を最大40%節約します。"
+            "ja": "事前予約や青年特典を活用して韓国の高速鉄道運賃を最大40%節約します。",
+            "sq": "Save up to 40% on high-speed rail travel across South Korea by booking in advance or using youth benefits.",
+            "hi": "पहले से बुकिंग करके या युवा लाभों का उपयोग करके पूरे दक्षिण कोरिया में हाई-स्पीड रेल यात्रा पर 40% तक की बचत करें।",
+            "ar": "نصيحة عملية للإقامة في كوريا: خصومات تصل إلى 40% على تذاكر القطارات السريعة عبر برامج الشباب (힘내라 청춘) والحجز المسبق.",
+            "zh-Hant": "通過提前購票或青年資格認證，在韓國乘坐KTX/SRT高鐵最高享受40%票價減免。",
+            "ko": "KTX와 SRT 조기 예매 할인 및 힘내라 청춘 특가를 활용해 고속철도 운임을 최대 40%까지 대폭 절약하세요."
         },
         "principle": {
             "en": "Members aged 19-33 get 10-40% discounts through KORAIL Youth Cheer; booking weeks ahead yields maximum savings.",
             "vi": "Độ tuổi 19-33 được giảm 10-40% qua chương trình Thanh niên của Korail; đặt vé trước càng sớm càng tiết kiệm.",
             "zh-Hans": "19至33岁会员享受“加油青年”10%~40%折扣，提前预订早晚非高峰班次优惠幅度最大。",
-            "ja": "19〜33歳の会員はコレイル青年割引で10〜40%割引となり、早期予約で割引率が最大化します。"
+            "ja": "19〜33歳の会員はコレイル青年割引で10〜40%割引となり、早期予約で割引率が最大化します。",
+            "sq": "Members aged 19-33 get 10-40% discounts through KORAIL Youth Cheer; booking weeks ahead yields maximum savings.",
+            "hi": "19-33 वर्ष के सदस्यों को KORAIL यूथ चीयर के माध्यम से 10-40% की छूट मिलती है; कुछ सप्ताह पहले बुक करने पर अधिकतम बचत होती है।",
+            "ar": "برنامج '힘내라 청춘' يمنح المسافرين بين 19 و34 عامًا خصومات تتراوح بين 10% و40% عند الحجز قبل موعد الرحلة بأيام.",
+            "zh-Hant": "19至33歲會員享受“加油青年”10%~40%折扣，提前預訂早晚非高峯班次優惠幅度最大。",
+            "ko": "만 19~33세 청년은 코레일멤버십 힘내라 청춘을 통해 10~40% 할인을 받으며, 수주일 전 조기 예매할수록 최대 할인율이 적용됩니다."
         },
         "example": {
             "en": "A 59,800 KRW Seoul-Busan KTX fare drops to 35,800 KRW when booked with early youth promo quotas.",
             "vi": "Vé KTX Seoul - Busan 59.800 won giảm xuống chỉ còn 35.800 won khi áp dụng ưu đãi thanh niên đặt sớm.",
             "zh-Hans": "原价59,800韩元的首尔至釜山KTX车票，通过提前预订特惠可降至35,800韩元。",
-            "ja": "ソウル〜釜山間のKTX運賃59,800ウォンが青年割引枠の事前予約で35,800ウォンに割引されます。"
+            "ja": "ソウル〜釜山間のKTX運賃59,800ウォンが青年割引枠の事前予約で35,800ウォンに割引されます。",
+            "sq": "A 59,800 KRW Seoul-Busan KTX fare drops to 35,800 KRW when booked with early youth promo quotas.",
+            "hi": "शुरुआती युवा प्रोमो कोटे के तहत बुक करने पर 59,800 KRW का सियोल-बुसान KTX किराया घटकर 35,800 KRW हो जाता है।",
+            "ar": "تذكرة KTX من سيول إلى بوسان قد ينخفض سعرها من 59,800 وون إلى حوالي 35,000 وون فقط عبر خصم الشباب.",
+            "zh-Hant": "原價59,800韓元的首爾至釜山KTX車票，通過提前預訂特惠可降至35,800韓元。",
+            "ko": "정가 59,800원인 서울-부산 KTX 편도 운임이 힘내라 청춘 조기 예매 특가 배정 시 35,800원까지 대폭 할인됩니다."
         },
         "actionItem": {
             "en": "Verify your youth membership status on the KorailTalk mobile app.",
             "vi": "Xác thực tư cách thành viên thanh niên trên ứng dụng KorailTalk để nhận ưu đãi.",
             "zh-Hans": "在KorailTalk手机App中完成青年身份认证开启优惠权益。",
-            "ja": "KorailTalkアプリで青年会員の認証を済ませておきましょう。"
+            "ja": "KorailTalkアプリで青年会員の認証を済ませておきましょう。",
+            "sq": "Verify your youth membership status on the KorailTalk mobile app.",
+            "hi": "KorailTalk मोबाइल ऐप पर अपनी युवा सदस्यता स्थिति (Youth membership) सत्यापित करें।",
+            "ar": "سجل في عضوية Korail ووثق تاريخ ميلادك لتفعيل خصم الشباب وحجز التذاكر قبل موعدها بأسبوعين.",
+            "zh-Hant": "在KorailTalk手機App中完成青年身份認證開啓優惠權益。",
+            "ko": "코레일톡 마이페이지에서 청년 할인 특가 상품 회원 인증을 완료하세요."
         }
     },
     {
@@ -378,31 +1053,56 @@ TOPICS_36 = [
             "en": "Legal Evidentiary Value of Certified Mail (Proof of Contents) in Korea",
             "vi": "Giá trị chứng cứ pháp lý của Thư chứng nhận nội dung tại bưu điện Hàn Quốc",
             "zh-Hans": "韩国内容证明(Proof of Contents)邮寄的法律效力与寄送指南",
-            "ja": "韓国の内容証明郵便における法的証拠力と発送方法"
+            "ja": "韓国の内容証明郵便における法的証拠力と発送方法",
+            "sq": "Legal Evidentiary Value of Certified Mail (Proof of Contents) in Korea",
+            "hi": "कोरिया में प्रमाणित डाक (सामग्री का प्रमाण - Naeyong Jeungmyeong) का कानूनी साक्ष्य मूल्य",
+            "ar": "القيمة القانونية والإثباتية للبريد الرسمي المعتمد (내용증명) في كوريا",
+            "zh-Hant": "韓國內容證明(Proof of Contents)郵寄的法律效力與寄送指南",
+            "ko": "내용증명 우편의 법적 증거력과 발송 방법"
         },
         "summary": {
             "en": "Officially document lease terminations, deposit refund requests, and contractual notices with post office proof.",
             "vi": "Xác lập chứng cứ pháp lý khi đòi lại tiền cọc hoặc thông báo hủy hợp đồng qua bưu điện Hàn Quốc.",
             "zh-Hans": "通过韩国邮局内容证明文件，确凿留存押金退还请求或合同解除的书面法律证据。",
-            "ja": "賃貸契約解除や保証金返還請求の通知を郵便局の公的記録として残す方法を身につけます。"
+            "ja": "賃貸契約解除や保証金返還請求の通知を郵便局の公的記録として残す方法を身につけます。",
+            "sq": "Officially document lease terminations, deposit refund requests, and contractual notices with post office proof.",
+            "hi": "डाकघर के प्रमाण के साथ लीज समाप्ति, डिपॉजिट रिफंड अनुरोध और संविदात्मक नोटिस को आधिकारिक रूप से दर्ज करें।",
+            "ar": "نصيحة عملية للإقامة في كوريا: إرسال خطاب رسمي عبر البريد الكوري يثبت قانونيًا تاريخ ومحتوى إخطارك للمالك أو الشركة بحقوقك المالية.",
+            "zh-Hant": "通過韓國郵局內容證明文件，確鑿留存押金退還請求或合同解除的書面法律證據。",
+            "ko": "임대차 계약 해지 통보, 보증금 반환 독촉 등 법적 분쟁 소지가 있는 의사표시를 우체국 공적 증거력을 갖는 내용증명으로 발송하세요."
         },
         "principle": {
             "en": "A 3-copy post office certification proves who sent what message on which exact calendar date.",
             "vi": "Thủ tục lập 3 bản tại bưu điện chứng minh rõ ai đã gửi nội dung gì vào ngày giờ chính xác nào.",
             "zh-Hans": "一式三份由邮局加盖骑缝公章，确凿证明发件人在特定日期向收件人传达了具体的法律意图。",
-            "ja": "郵便局が3部保管・認証することで、誰がいつどのような内容を送付したかを法的に証明します。"
+            "ja": "郵便局が3部保管・認証することで、誰がいつどのような内容を送付したかを法的に証明します。",
+            "sq": "A 3-copy post office certification proves who sent what message on which exact calendar date.",
+            "hi": "3 प्रतियों वाला डाकघर प्रमाणीकरण यह सिद्ध करता है कि किस निश्चित कैलेंडर तिथि पर किसने क्या संदेश भेजा था।",
+            "ar": "خدمة 내용증명 في مكتب البريد توثق رسميًا إخطارك للمؤجر بطلب استرداد الوديعة أو إنهاء العقد وتعتبر حجة قاطعة أمام المحاكم.",
+            "zh-Hant": "一式三份由郵局加蓋騎縫公章，確鑿證明發件人在特定日期向收件人傳達了具體的法律意圖。",
+            "ko": "우체국이 발송 일자와 문서 내용을 공식 보증하므로 차후 소송 및 지급명령 시 명확한 도달 증거 및 소멸시효 중단 효력을 발휘합니다."
         },
         "example": {
             "en": "Send certified mail 2 months before lease expiry to legally prevent automatic lease extension.",
             "vi": "Gửi thư chứng nhận nội dung trước 2 tháng khi hết hợp đồng thuê để ngăn hợp đồng tự động gia hạn.",
             "zh-Hans": "在租约到期前2个月发送内容证明，依法防止房屋租赁合同自动默认续签。",
-            "ja": "契約満了の2か月前までに内容証明を送付し、自動更新（黙示の更新）を法的に阻止します。"
+            "ja": "契約満了の2か月前までに内容証明を送付し、自動更新（黙示の更新）を法的に阻止します。",
+            "sq": "Send certified mail 2 months before lease expiry to legally prevent automatic lease extension.",
+            "hi": "लीज के स्वतः नवीनीकरण को कानूनी रूप से रोकने के लिए लीज समाप्त होने से 2 महीने पहले प्रमाणित डाक भेजें।",
+            "ar": "إرسال خطاب 내용증명 قبل انتهاء عقد الإيجار بشهرين يمنع التجديد التلقائي الضمني للعقد ويحفظ حقك في المطالبة القضائية.",
+            "zh-Hant": "在租約到期前2個月發送內容證明，依法防止房屋租賃合同自動默認續簽。",
+            "ko": "집주인이 연락을 피할 때 계약 만료 2개월 전 우체국 인터넷 내용증명으로 전세계약 해지 및 보증금 반환 청구 서면을 보냅니다."
         },
         "actionItem": {
             "en": "Draft 3 identical printed copies and visit any local post office or use e-Post online.",
             "vi": "In sẵn 3 bản giống hệt nhau và mang ra bưu điện gần nhất hoặc gửi qua e-Post.",
             "zh-Hans": "打印三份相同内容的文件，前往附近邮局或使用e-Post线上邮寄。",
-            "ja": "同一の文書を3部印刷し、最寄りの郵便局窓口またはe-Postから発送しましょう。"
+            "ja": "同一の文書を3部印刷し、最寄りの郵便局窓口またはe-Postから発送しましょう。",
+            "sq": "Draft 3 identical printed copies and visit any local post office or use e-Post online.",
+            "hi": "3 समान मुद्रित प्रतियां तैयार करें और किसी भी स्थानीय डाकघर जाएं या ऑनलाइन e-Post का उपयोग करें।",
+            "ar": "اطبع 3 نسخ متطابقة من خطاب إخطارك وتوجه لأقرب مكتب بريد لإرسالها بالبريد المعتمد عند أي نزاع مالي.",
+            "zh-Hant": "打印三份相同內容的文件，前往附近郵局或使用e-Post線上郵寄。",
+            "ko": "인터넷우체국(epost.go.kr)에 접속해 3부 출력 없이 전자 내용증명으로 즉시 발송하세요."
         }
     },
     {
@@ -411,31 +1111,56 @@ TOPICS_36 = [
             "en": "Fixed Date (Hwakjeong-ilja) vs Move-In Report (Jeonip-singo): Timing Differences",
             "vi": "Phân biệt hiệu lực giữa Ngày xác nhận (Hwakjeong-ilja) và Khai báo cư trú (Jeonip-singo)",
             "zh-Hans": "确定日(Hwakjeong-ilja)与迁入申报(Jeonip-singo)生效时间差深度解析",
-            "ja": "確定日付（ファクチョンイルジャ）と転入申告の効力発生日の違い"
+            "ja": "確定日付（ファクチョンイルジャ）と転入申告の効力発生日の違い",
+            "sq": "Fixed Date (Hwakjeong-ilja) vs Move-In Report (Jeonip-singo): Timing Differences",
+            "hi": "निश्चित तिथि (Hwakjeong-ilja) बनाम मूव-इन रिपोर्ट (Jeonip-singo): समय का अंतर",
+            "ar": "التاريخ الثابت (확정일자) مقابل إخطار الانتقال السكني (전입신고): الفروق الزمنية والأهمية",
+            "zh-Hant": "確定日(Hwakjeong-ilja)與遷入申報(Jeonip-singo)生效時間差深度解析",
+            "ko": "확정일자와 전입신고 당일 효력 차이"
         },
         "summary": {
             "en": "Understand when legal priority starts to safeguard rental deposits against subsequent property liens.",
             "vi": "Hiểu rõ thời điểm phát sinh quyền ưu tiên để bảo vệ tiền cọc thuê nhà trước các khoản nợ của chủ nhà.",
             "zh-Hans": "掌握在韩租房优先清偿权的确立节点，避免因登记顺序延误导致租房押金受损。",
-            "ja": "優先弁済権の発生タイミングを正確に把握し、家主の追加債務から敷金を防御します。"
+            "ja": "優先弁済権の発生タイミングを正確に把握し、家主の追加債務から敷金を防御します。",
+            "sq": "Understand when legal priority starts to safeguard rental deposits against subsequent property liens.",
+            "hi": "किराया डिपॉजिट को संपत्ति के भविष्य के ऋणभारों से बचाने के लिए समझें कि कानूनी प्राथमिकता कब से लागू होती है।",
+            "ar": "نصيحة عملية للإقامة في كوريا: الحصول على 전입신고 و확정일자 فور استلام مفاتيح المنزل هو الشرط القانوني الوحيد لحماية وديعتك من المزادات.",
+            "zh-Hant": "掌握在韓租房優先清償權的確立節點，避免因登記順序延誤導致租房押金受損。",
+            "ko": "주택임대차보호법상 전입신고(익일 0시 효력)와 확정일자(당일 효력)의 시차를 정확히 알고 보증금 우선변제권을 확보하세요."
         },
         "principle": {
             "en": "Move-in opposing power takes effect at 00:00 next day; fixed date grants preferential repayment status on that day.",
             "vi": "Hiệu lực đối kháng cư trú phát sinh lúc 0h ngày hôm sau; Ngày xác nhận cấp quyền ưu tiên thanh toán.",
             "zh-Hans": "迁入申报的对抗力于次日凌晨0点生效，确定日则赋予当天起对拍卖款项的优先受偿权。",
-            "ja": "転入申告の対抗力は翌日午前0時に発生し、確定日付は当日付で競売時の優先弁済権を付与します。"
+            "ja": "転入申告の対抗力は翌日午前0時に発生し、確定日付は当日付で競売時の優先弁済権を付与します。",
+            "sq": "Move-in opposing power takes effect at 00:00 next day; fixed date grants preferential repayment status on that day.",
+            "hi": "मूव-इन का विरोध करने का कानूनी अधिकार अगले दिन 00:00 बजे से लागू होता है; निश्चित तिथि (Hwakjeong-ilja) उसी दिन से प्राथमिकता पुनर्भुगतान का दर्जा देती है।",
+            "ar": "전입신고 يمنحك القوة المعارضة (대항력) في منتصف ليل اليوم التالي؛ بينما 확정일자 يمنحك حق الأولوية في استرداد أموالك (우선변제권).",
+            "zh-Hant": "遷入申報的對抗力於次日凌晨0點生效，確定日則賦予當天起對拍賣款項的優先受償權。",
+            "ko": "전입신고에 따른 대항력은 다음 날 오전 0시에 발생하므로, 잔금 지급 당일 즉시 전입신고와 확정일자를 모두 받아야 안전합니다."
         },
         "example": {
             "en": "Always submit move-in report and secure the fixed date immediately on the day you receive the keys.",
             "vi": "Luôn làm thủ tục khai báo cư trú và xin đóng dấu ngày xác nhận ngay trong ngày nhận chìa khóa nhà.",
             "zh-Hans": "在拿到房屋钥匙入住的当天，务必立即前往居民中心办理迁入申报并盖确定日章。",
-            "ja": "鍵を受け取った当日に必ず住民センターで転入申告を行い確定日付を取得してください。"
+            "ja": "鍵を受け取った当日に必ず住民センターで転入申告を行い確定日付を取得してください。",
+            "sq": "Always submit move-in report and secure the fixed date immediately on the day you receive the keys.",
+            "hi": "जिस दिन आपको चाबियां मिलें, उसी दिन तुरंत मूव-इन रिपोर्ट जमा करें और निश्चित तिथि सुरक्षित करें।",
+            "ar": "حتى لو وقعت العقد، إذا لم تبلغ عن السكن في مركز الحي (동주민센터)، فلن تحميك محكمة الإفلاس إذا بيع العقار بالمزاد.",
+            "zh-Hant": "在拿到房屋鑰匙入住的當天，務必立即前往居民中心辦理遷入申報並蓋確定日章。",
+            "ko": "이사 당일 주민센터에서 전입신고와 확정일자를 동시에 완료하면 다음 날 0시부터 후순위 채권자보다 우선하여 보증금을 변제받습니다."
         },
         "actionItem": {
             "en": "Complete both registrations online via Government24 on your actual move-in date.",
             "vi": "Hoàn tất cả hai thủ tục trên Government24 ngay trong ngày dọn vào nhà mới.",
             "zh-Hans": "搬家当天登录政府24网站线上同时完成迁入申报与确定日申领。",
-            "ja": "入居当日に政府24サイトで転入申告と確定日付取得を速やかに完了させましょう。"
+            "ja": "入居当日に政府24サイトで転入申告と確定日付取得を速やかに完了させましょう。",
+            "sq": "Complete both registrations online via Government24 on your actual move-in date.",
+            "hi": "अपने वास्तविक स्थानांतरण के दिन Government24 के माध्यम से दोनों पंजीकरण ऑनलाइन पूरे करें।",
+            "ar": "توجه لمركز الحي في نفس يوم استلام الشقة وسجل 전입신고 واحصل على ختم 확정일자 فورًا على العقد.",
+            "zh-Hant": "搬家當天登錄政府24網站線上同時完成遷入申報與確定日申領。",
+            "ko": "이삿날 오전 잔금을 치르기 전이나 치른 직후 가장 먼저 관할 주민센터를 방문해 전입신고와 확정일자를 처리하세요."
         }
     },
     {
@@ -444,31 +1169,56 @@ TOPICS_36 = [
             "en": "Carbon Neutral Points: Save Energy & Earn up to 100,000 KRW Annual Cash",
             "vi": "Tích điểm Carbon Neutral: Tiết kiệm điện nước và nhận hoàn tiền 100.000 won mỗi năm",
             "zh-Hans": "碳中和能源积分制度：节约水电煤每年返还高达10万韩元现金",
-            "ja": "炭素中立エネルギーポイント：光熱費削減で年間最大10万ウォン還元"
+            "ja": "炭素中立エネルギーポイント：光熱費削減で年間最大10万ウォン還元",
+            "sq": "Carbon Neutral Points: Save Energy & Earn up to 100,000 KRW Annual Cash",
+            "hi": "कार्बन न्यूट्रल पॉइंट्स: ऊर्जा बचाएं और सालाना 100,000 KRW तक नकद कमाएं",
+            "ar": "نقاط الحياد الكربوني (탄소중립포인트): توفير الطاقة والحصول على 100,000 وون كاش سنويًا",
+            "zh-Hant": "碳中和能源積分制度：節約水電煤每年返還高達10萬韓元現金",
+            "ko": "탄소중립포인트 에너지로 연 10만 원 환급"
         },
         "summary": {
             "en": "Earn government cash rewards simply by reducing electricity, water, and city gas usage in Korea.",
             "vi": "Nhận tiền thưởng tiền mặt từ chính phủ Hàn Quốc khi tiết kiệm điện, nước và gas sinh hoạt.",
             "zh-Hans": "在韩日常生活中减少水电煤气消耗，即可获得韩国政府按年发放的现金奖励。",
-            "ja": "韓国で電気・水道・都市ガスの使用量を削減するだけで政府から年間現金報酬を受け取れます。"
+            "ja": "韓国で電気・水道・都市ガスの使用量を削減するだけで政府から年間現金報酬を受け取れます。",
+            "sq": "Earn government cash rewards simply by reducing electricity, water, and city gas usage in Korea.",
+            "hi": "दक्षिण कोरिया में बिजली, पानी और पाइप्ड गैस की खपत कम करके सरकार से नकद पुरस्कार प्राप्त करें।",
+            "ar": "نصيحة عملية للإقامة في كوريا: برنامج حكومي يكافئ الأسر التي تخفض استهلاك الكهرباء والماء والغاز بمكافآت نقدية في حساباتهم البنكية.",
+            "zh-Hant": "在韓日常生活中減少水電煤氣消耗，即可獲得韓國政府按年發放的現金獎勵。",
+            "ko": "전기, 상수도, 도시가스 사용량을 줄이는 것만으로 정부에서 지급하는 연간 최대 10만 원의 현금 환급 혜택을 받으세요."
         },
         "principle": {
             "en": "Cutting consumption by 5-15% compared to the past 2-year average yields cash or local gift certificates twice a year.",
             "vi": "Giảm 5-15% lượng tiêu thụ so với mức trung bình 2 năm trước sẽ được nhận tiền mặt 2 lần mỗi năm.",
             "zh-Hans": "能源用量较过去两年平均值减少5%~15%以上，每年分两次直接领取现金或地方礼券。",
-            "ja": "過去2年の平均使用量から5〜15%以上削減すると、年2回現金または地域商品券が付与されます。"
+            "ja": "過去2年の平均使用量から5〜15%以上削減すると、年2回現金または地域商品券が付与されます。",
+            "sq": "Cutting consumption by 5-15% compared to the past 2-year average yields cash or local gift certificates twice a year.",
+            "hi": "पिछले 2 वर्षों के औसत की तुलना में 5-15% तक खपत घटाने पर साल में दो बार नकद या स्थानीय उपहार वाउचर मिलते हैं।",
+            "ar": "خفض استهلاك الطاقة المنزلية بنسبة 5% إلى 15% مقارنة بالعامين الماضيين يمنحك نقاطًا نقدية تحول لحسابك البنكي مرتين سنويًا.",
+            "zh-Hant": "能源用量較過去兩年平均值減少5%~15%以上，每年分兩次直接領取現金或地方禮券。",
+            "ko": "과거 2년 평균 대비 사용량을 5~15% 이상 감축하면 연 2회 현금 또는 지역화폐로 인센티브가 지급됩니다."
         },
         "example": {
             "en": "Turning off standby power and adjusting winter heating nets 50,000 to 100,000 KRW in annual refunds.",
             "vi": "Tắt nguồn chờ và hạ nhiệt độ sưởi mùa đông giúp kiếm thêm 50.000 đến 100.000 won mỗi năm.",
             "zh-Hans": "拔掉待机插头并合理设定冬季地暖温度，每年可额外入账5万至10万韩元补贴。",
-            "ja": "待機電力の遮断や冬場の暖房温度調節により、年間5万〜10万ウォンの還元金を獲得できます。"
+            "ja": "待機電力の遮断や冬場の暖房温度調節により、年間5万〜10万ウォンの還元金を獲得できます。",
+            "sq": "Turning off standby power and adjusting winter heating nets 50,000 to 100,000 KRW in annual refunds.",
+            "hi": "स्टैंडबाय बिजली बंद रखने और सर्दियों में हीटिंग नियंत्रित करने से सालाना 50,000 से 100,000 KRW तक का रिफंड मिल सकता है।",
+            "ar": "توفير الغاز في الشتاء والكهرباء صيفًا يمنح الأسرة ما يصل إلى 100,000 وون نقدًا سنويًا من وزارة البيئة الكورية.",
+            "zh-Hant": "拔掉待機插頭併合理設定冬季地暖溫度，每年可額外入賬5萬至10萬韓元補貼。",
+            "ko": "대기전력을 차단하고 겨울철 적정 난방 온도를 유지하면 연간 5만~10만 원의 알짜배기 현금 환급금을 수령할 수 있습니다."
         },
         "actionItem": {
             "en": "Register your utility meter numbers at cpoint.or.kr.",
             "vi": "Đăng ký mã số đồng hồ điện nước tại trang web cpoint.or.kr.",
             "zh-Hans": "登录cpoint.or.kr输入家中水电煤气表号完成户号绑定。",
-            "ja": "cpoint.or.krで自宅のメーター番号を登録してポイント積立を始めましょう。"
+            "ja": "cpoint.or.krで自宅のメーター番号を登録してポイント積立を始めましょう。",
+            "sq": "Register your utility meter numbers at cpoint.or.kr.",
+            "hi": "cpoint.or.kr पर जाकर अपने यूटिलिटी मीटर नंबर पंजीकृत करें।",
+            "ar": "ادخل إلى موقع cpoint.or.kr وسجل رقم عداد الكهرباء والغاز لمنزلك لربطه بحسابك البنكي.",
+            "zh-Hant": "登錄cpoint.or.kr輸入家中水電煤氣表號完成戶號綁定。",
+            "ko": "탄소중립포인트 에너지 누리집(cpoint.or.kr)에 가입하고 고지서 고객번호를 등록하세요."
         }
     },
     {
@@ -477,31 +1227,56 @@ TOPICS_36 = [
             "en": "Job Transition Certificate & Employment Insurance Loss Filing upon Resignation",
             "vi": "Yêu cầu Giấy xác nhận chuyển việc và Khai báo thôi việc trước khi nghỉ làm tại Hàn Quốc",
             "zh-Hans": "在韩离职前必须要求雇主开具离职确认书与丧失就业保险申报",
-            "ja": "退職前の離職確認書および雇用保険喪失申告の申請手順"
+            "ja": "退職前の離職確認書および雇用保険喪失申告の申請手順",
+            "sq": "Job Transition Certificate & Employment Insurance Loss Filing upon Resignation",
+            "hi": "इस्तीफे के बाद जॉब ट्रांज़िशन सर्टिफिकेट और रोज़गार बीमा रद्दीकरण की रिपोर्ट",
+            "ar": "شهادة نهاية الخدمة (이직확인서) وإلغاء التأمين الوظيفي للحصول على إعانة البطالة",
+            "zh-Hant": "在韓離職前必須要求僱主開具離職確認書與喪失就業保險申報",
+            "ko": "퇴사 전 이직확인서와 고용보험 상실신고 요청"
         },
         "summary": {
             "en": "Secure your unemployment benefits in Korea by ensuring your employer promptly files required exit documents.",
             "vi": "Đảm bảo quyền lợi nhận trợ cấp thất nghiệp tại Hàn Quốc bằng cách yêu cầu công ty nộp đủ giấy tờ thôi việc.",
             "zh-Hans": "确保离职后顺利领取失业求职津贴，督促雇主依法按时申报离职证明与保险注销。",
-            "ja": "韓国で失業手当を滞りなく受給するため、雇用主に離職確認書の提出を要請します。"
+            "ja": "韓国で失業手当を滞りなく受給するため、雇用主に離職確認書の提出を要請します。",
+            "sq": "Secure your unemployment benefits in Korea by ensuring your employer promptly files required exit documents.",
+            "hi": "कोरिया में अपने बेरोज़गारी लाभ सुरक्षित करने के लिए सुनिश्चित करें कि आपका नियोक्ता आवश्यक निकास दस्तावेज़ समय पर जमा करे।",
+            "ar": "نصيحة عملية للإقامة في كوريا: اشتراط قيام شركتك السابقة برفع إشعار إنهاء الخدمة لمركز العمل لاستحقاق راتب إعانة البطالة (실업급여).",
+            "zh-Hant": "確保離職後順利領取失業求職津貼，督促僱主依法按時申報離職證明與保險註銷。",
+            "ko": "퇴사 시 고용센터 실업급여(구직급여) 심사가 지연되지 않도록 회사에 이직확인서와 고용보험 상실신고 처리를 미리 요청하세요."
         },
         "principle": {
             "en": "The employer must submit the loss report and certificate within 14 days of the employee request by law.",
             "vi": "Theo luật lao động Hàn Quốc, chủ sử dụng lao động phải nộp giấy tờ trong vòng 14 ngày kể từ khi người lao động yêu cầu.",
             "zh-Hans": "韩国劳动法规定，雇主必须在劳动者提出要求的14天内向雇用保险公团完成离职确认申报。",
-            "ja": "雇用主には労働者の要求から14日以内に雇用保険喪失申告と離職確認書を提出する法的義務があります。"
+            "ja": "雇用主には労働者の要求から14日以内に雇用保険喪失申告と離職確認書を提出する法的義務があります。",
+            "sq": "The employer must submit the loss report and certificate within 14 days of the employee request by law.",
+            "hi": "कर्मचारी के अनुरोध करने पर कानूनन नियोक्ता को 14 दिनों के भीतर नुकसान रिपोर्ट और प्रमाण पत्र जमा करना अनिवार्य है।",
+            "ar": "إذا تأخرت الشركة في إرسال 이직확인서، يمكنك تقديم طلب رسمي يلزمها بإرساله قانونيًا خلال 10 أيام تحت طائلة الغرامة المالية.",
+            "zh-Hant": "韓國勞動法規定，僱主必須在勞動者提出要求的14天內向僱用保險公團完成離職確認申報。",
+            "ko": "회사는 근로자 퇴사일 익월 15일까지 근로복지공단과 고용센터에 상실신고서와 이직확인서를 제출해야 하며, 근로자 요청 시 10일 이내 발급 의무가 있습니다."
         },
         "example": {
             "en": "Confirm issuance status on the Employment Insurance (ei.go.kr) website before visiting the Job Center.",
             "vi": "Kiểm tra tình trạng nộp giấy tờ trên website ei.go.kr trước khi tới Trung tâm việc làm.",
             "zh-Hans": "前往居住地雇用福祉Plus中心前，先在雇用保险官网(ei.go.kr)核实离职确认书是否已通过处理。",
-            "ja": "雇用福祉センターを訪問する前に、雇用保険サイト（ei.go.kr）で提出状況を確認します。"
+            "ja": "雇用福祉センターを訪問する前に、雇用保険サイト（ei.go.kr）で提出状況を確認します。",
+            "sq": "Confirm issuance status on the Employment Insurance (ei.go.kr) website before visiting the Job Center.",
+            "hi": "जॉब सेंटर जाने से पहले एम्प्लॉयमेंट इंश्योरेंस (ei.go.kr) वेबसाइट पर दस्तावेज़ जारी होने की स्थिति जांच लें।",
+            "ar": "الحصول على إعانة البطالة يتطلب تسجيل إنهاء الخدمة كإنهاء غير طوعي (권고사직 أو انتهاء عقد) وليس استقالة شخصية طوعية.",
+            "zh-Hant": "前往居住地僱用福祉Plus中心前，先在僱用保險官網(ei.go.kr)覈實離職確認書是否已通過處理。",
+            "ko": "비자발적 퇴사(권고사직, 계약만료 등) 코드가 정확히 기재되어 있는지 고용24 시스템에서 확인해야 실업급여를 즉시 수급합니다."
         },
         "actionItem": {
             "en": "Formally text or email your HR department requesting the '이직확인서' upon resignation.",
             "vi": "Nhắn tin hoặc gửi email chính thức cho phòng nhân sự yêu cầu nộp '이직확인서'.",
             "zh-Hans": "离职时通过短信或正式邮件向人事部门要求及时申报“이직확인서（离职确认书）”。",
-            "ja": "退職時に人事担当者へ「이직확인서」の速やかな提出を文書で要請しましょう。"
+            "ja": "退職時に人事担当者へ「이직확인서」の速やかな提出を文書で要請しましょう。",
+            "sq": "Formally text or email your HR department requesting the '이직확인서' upon resignation.",
+            "hi": "इस्तीफा देते समय अपने HR विभाग को औपचारिक टेक्स्ट या ईमेल भेजकर जॉब ट्रांज़िशन सर्टिफिकेट (Ijikhwag-inseo) का अनुरोध करें।",
+            "ar": "اطلب رسميًا من إدارة الموارد البشرية بشركتك السابقة إرسال '이직확인서' إلى مركز التأمين الوظيفي فور الاستقالة.",
+            "zh-Hant": "離職時通過短信或正式郵件向人事部門要求及時申報“이직확인서（離職確認書）”。",
+            "ko": "퇴사 전 인사팀에 이직확인서 및 자격상실신고서 제출 일정을 확인하고 발급을 요청하세요."
         }
     },
     {
@@ -510,31 +1285,56 @@ TOPICS_36 = [
             "en": "National Health Checkups: Cycles & Cancer Screening Eligibility",
             "vi": "Lịch khám sức khỏe quốc gia định kỳ và đối tượng tầm soát ung thư tại Hàn Quốc",
             "zh-Hans": "韩国国民健康保险定期体检周期与国家癌症筛查资格确认",
-            "ja": "韓国の国家健康診断周期とがん検診受診対象の確認方法"
+            "ja": "韓国の国家健康診断周期とがん検診受診対象の確認方法",
+            "sq": "National Health Checkups: Cycles & Cancer Screening Eligibility",
+            "hi": "राष्ट्रीय स्वास्थ्य जांच: समयावधि और कैंसर स्क्रीनिंग पात्रता",
+            "ar": "الفحوصات الطبية الوطنية المجانية (국가건강검진): الدورات الدورية وفحوصات السرطان في كوريا",
+            "zh-Hant": "韓國國民健康保險定期體檢週期與國家癌症篩查資格確認",
+            "ko": "국가 건강검진 주기와 암 검진 대상 확인"
         },
         "summary": {
             "en": "Take full advantage of free bi-annual national general health checkups and subsidized cancer screenings.",
             "vi": "Tận dụng tối đa quyền lợi khám sức khỏe tổng quát miễn phí 2 năm/lần và tầm soát ung thư tại Hàn Quốc.",
             "zh-Hans": "充分享受韩国国民健康保险每两年一次的免费全面体检及高额补贴的五大癌症筛查。",
-            "ja": "韓国の国民健康保険で2年に1回提供される無料一般健康診断とがん検診を活用します。"
+            "ja": "韓国の国民健康保険で2年に1回提供される無料一般健康診断とがん検診を活用します。",
+            "sq": "Take full advantage of free bi-annual national general health checkups and subsidized cancer screenings.",
+            "hi": "हर दो साल में मिलने वाली निःशुल्क राष्ट्रीय सामान्य स्वास्थ्य जांच और रियायती कैंसर स्क्रीनिंग का पूरा लाभ उठाएं।",
+            "ar": "نصيحة عملية للإقامة في كوريا: فحص طبي شامل مجاني كل سنتين لجميع حاملي التأمين الصحي الوطني حسب سنة الميلاد (فردية أو زوجية).",
+            "zh-Hant": "充分享受韓國國民健康保險每兩年一次的免費全面體檢及高額補貼的五大癌症篩查。",
+            "ko": "국민건강보험공단에서 무료 또는 90% 지원으로 제공하는 2년 주기 일반건강검진과 6대 암 검진 기회를 놓치지 마세요."
         },
         "principle": {
             "en": "Office employees and insured citizens take general checkups in alternating odd/even birth years at zero cost.",
             "vi": "Người có bảo hiểm y tế khám tổng quát miễn phí vào các năm chẵn/lẻ tương ứng với năm sinh của mình.",
             "zh-Hans": "非生产线职场参保人按出生年份的奇数年或偶数年每两年享受一次完全免费的基础体检。",
-            "ja": "非事務職は毎年、事務職および地域加入者は誕生年の偶奇に合わせて2年に1度無料で受診できます。"
+            "ja": "非事務職は毎年、事務職および地域加入者は誕生年の偶奇に合わせて2年に1度無料で受診できます。",
+            "sq": "Office employees and insured citizens take general checkups in alternating odd/even birth years at zero cost.",
+            "hi": "कार्यालयी कर्मचारी और बीमित नागरिक अपने जन्म वर्ष (विषम/सम) के अनुसार बिना किसी शुल्क के हर दूसरे वर्ष सामान्य जांच करवा सकते हैं।",
+            "ar": "الأشخاص المولودون في سنوات فردية يفحصون في السنوات الفردية، ويشمل الفحص تحليل الدم والبول والضغط وفحوصات الأورام المبكرة.",
+            "zh-Hant": "非生產線職場參保人按出生年份的奇數年或偶數年每兩年享受一次完全免費的基礎體檢。",
+            "ko": "지역가입자와 사무직 직장인은 2년 주기(출생연도 짝/홀수해), 비사무직은 매년 일반건강검진 대상이며 비용은 공단이 전액 부담합니다."
         },
         "example": {
             "en": "Screenings include blood tests, chest X-rays, liver panels, and stomach endoscopy for age 40+ (10% copay).",
             "vi": "Các hạng mục gồm xét nghiệm máu, chụp X-quang phổi, chức năng gan và nội soi dạ dày từ tuổi 40 (chỉ trả 10%).",
             "zh-Hans": "检查包含血液生化、胸部X光、肝功能以及40岁以上胃镜检查（自费仅需负担10%）。",
-            "ja": "血液検査、胸部X線、肝機能検査に加え、40歳以上は胃内視鏡検査（自己負担10%）が含まれます。"
+            "ja": "血液検査、胸部X線、肝機能検査に加え、40歳以上は胃内視鏡検査（自己負担10%）が含まれます。",
+            "sq": "Screenings include blood tests, chest X-rays, liver panels, and stomach endoscopy for age 40+ (10% copay).",
+            "hi": "इस जांच में रक्त परीक्षण, छाती का एक्स-रे, लिवर प्रोफाइल और 40 वर्ष से अधिक उम्र के लोगों के लिए पेट की एंडोस्कोपी (10% सह-भुगतान) शामिल हैं।",
+            "ar": "يشمل الفحص الوطني سرطان المعدة لمن هم فوق 40 عامًا وسرطان عنق الرحم للنساء مجانًا أو بمساهمة رمزية 10% فقط.",
+            "zh-Hant": "檢查包含血液生化、胸部X光、肝功能以及40歲以上胃鏡檢查（自費僅需負擔10%）。",
+            "ko": "만 40세 이상 위암·유방암, 만 50세 이상 대장암 검진은 본인 부담금 0원 또는 10% 수준으로 정밀 검진을 받을 수 있습니다."
         },
         "actionItem": {
             "en": "Check your screening eligibility on the National Health Insurance app (The 건강보험).",
             "vi": "Kiểm tra tư cách khám bệnh của bạn trên ứng dụng Bảo hiểm y tế quốc gia (The 건강보험).",
             "zh-Hans": "下载韩国国民健康保险官方App（The 건강보험）核对当年度体检资格。",
-            "ja": "国民健康保険公団アプリ（The健康保険）で今年の受診対象者か確認しましょう。"
+            "ja": "国民健康保険公団アプリ（The健康保険）で今年の受診対象者か確認しましょう。",
+            "sq": "Check your screening eligibility on the National Health Insurance app (The 건강보험).",
+            "hi": "राष्ट्रीय स्वास्थ्य बीमा ऐप (The Geongangboheom) पर अपनी स्क्रीनिंग पात्रता की जांच करें।",
+            "ar": "ادخل إلى موقع التأمين الصحي nhis.or.kr وتحقق من استحقاقك للفحص المجاني لهذا العام واحجز في أقرب مستشفى معتمد.",
+            "zh-Hant": "下載韓國國民健康保險官方App（The 건강보험）覈對當年度體檢資格。",
+            "ko": "국민건강보험공단 앱(The건강보험)에서 올해 본인이 국가 검진 대상자인지 조회하고 예약하세요."
         }
     },
     {
@@ -543,31 +1343,56 @@ TOPICS_36 = [
             "en": "Easy Payment Methods for Unpaid Highway Hi-Pass Tolls in Korea",
             "vi": "Hướng dẫn nộp phí cầu đường cao tốc Hi-Pass chưa thanh toán tại Hàn Quốc",
             "zh-Hans": "韩国高速公路Hi-Pass未缴通行费便捷补缴全流程",
-            "ja": "韓国の高速道路ハイパス未払い通行料金の簡単納付方法"
+            "ja": "韓国の高速道路ハイパス未払い通行料金の簡単納付方法",
+            "sq": "Easy Payment Methods for Unpaid Highway Hi-Pass Tolls in Korea",
+            "hi": "कोरिया में हाईवे हाई-पास (Hi-Pass) के बकाया टोल टैक्स के भुगतान के आसान तरीके",
+            "ar": "طرق السداد السهلة لرسوم الطرق السريعة (Hi-Pass) غير المدفوعة في كوريا",
+            "zh-Hant": "韓國高速公路Hi-Pass未繳通行費便捷補繳全流程",
+            "ko": "고속도로 통행료 하이패스 미납 요금 간편 납부"
         },
         "summary": {
             "en": "Avoid hefty non-payment surcharges (up to 10x) by settling missed highway toll lane passes immediately.",
             "vi": "Tránh bị phạt nặng gấp 10 lần bằng cách nhanh chóng nộp bù tiền vé cầu đường khi lỡ đi qua cổng Hi-Pass.",
             "zh-Hans": "如果不慎误闯Hi-Pass专用ETC车道，无需惊慌，及时补缴可避免高达10倍的滞纳加征金。",
-            "ja": "ハイパス専用レーンを誤通過した際の最大10倍の追徴金を回避するため、速やかに未納分を納付します。"
+            "ja": "ハイパス専用レーンを誤通過した際の最大10倍の追徴金を回避するため、速やかに未納分を納付します。",
+            "sq": "Avoid hefty non-payment surcharges (up to 10x) by settling missed highway toll lane passes immediately.",
+            "hi": "हाईवे टोल लेन से गलती से बिना भुगतान निकले टोल को तुरंत चुकाएं और 10 गुना तक के भारी जुर्माने से बचें।",
+            "ar": "نصيحة عملية للإقامة في كوريا: المرور بالخطأ من بوابة Hi-Pass بدون جهاز لا يستدعي التوقف الخطر؛ يمكن السداد لاحقًا عبر الإنترنت ومتاجر GS25.",
+            "zh-Hant": "如果不慎誤闖Hi-Pass專用ETC車道，無需驚慌，及時補繳可避免高達10倍的滯納加徵金。",
+            "ko": "고속도로 하이패스 차로를 무단 통과했더라도 최대 10배의 부가통행료가 부과되기 전에 즉시 간편하게 납부하세요."
         },
         "principle": {
             "en": "Passing without a card triggers no immediate stoppage; pay via rest stops, toll plazas, or the Korea Expressway app.",
             "vi": "Không dừng xe đột ngột; có thể nộp bù tại trạm nghỉ, trạm thu phí kế tiếp hoặc qua ứng dụng trực tuyến.",
             "zh-Hans": "误入车道时切勿紧急制动，可通过高速服务区便利店、出入口人工窗口或官方App补缴。",
-            "ja": "誤進入時に急ブレーキは厳禁です。次の料金所窓口、SA内売店、または専用アプリで後日納付可能です。"
+            "ja": "誤進入時に急ブレーキは厳禁です。次の料金所窓口、SA内売店、または専用アプリで後日納付可能です。",
+            "sq": "Passing without a card triggers no immediate stoppage; pay via rest stops, toll plazas, or the Korea Expressway app.",
+            "hi": "बिना कार्ड के निकलने पर वाहन को तुरंत रोका नहीं जाता; आप रेस्ट एरिया, टोल प्लाज़ा या कोरिया एक्सप्रेसवे ऐप के माध्यम से भुगतान कर सकते हैं।",
+            "ar": "كاميرات البوابات تسجل لوحة السيارة؛ يمكنك سداد الرسوم المتأخرة بدون أي غرامات إضافية خلال أسبوعين عبر الموقع أو متاجر الراحة.",
+            "zh-Hant": "誤入車道時切勿緊急制動，可通過高速服務區便利店、出入口人工窗口或官方App補繳。",
+            "ko": "하이패스 카드 미인식 통과 시 급정거하지 말고 그대로 통과한 후 휴게소, 톨게이트 요금소, 또는 고속도로 통행료 앱에서 납부하세요."
         },
         "example": {
             "en": "Visit any GS25 or CU convenience store and present your vehicle license plate number to pay instantly.",
             "vi": "Vào bất kỳ cửa hàng tiện lợi GS25 hoặc CU nào, đọc biển số xe là có thể thanh toán tiền phí cầu đường ngay.",
             "zh-Hans": "在韩国任意一家GS25或CU便利店报出汽车车牌号，即可在收银台当场补齐未缴通行费。",
-            "ja": "全国のGS25やCUコンビニのレジで車両番号を伝えるだけで未納通行料金を即座に支払えます。"
+            "ja": "全国のGS25やCUコンビニのレジで車両番号を伝えるだけで未納通行料金を即座に支払えます。",
+            "sq": "Visit any GS25 or CU convenience store and present your vehicle license plate number to pay instantly.",
+            "hi": "किसी भी GS25 या CU सुविधा स्टोर पर जाएं और तुरंत भुगतान करने के लिए अपनी गाड़ी का नंबर बताएं।",
+            "ar": "ادخل إلى متجر GS25 أو CU واذكر رقم لوحة سيارتك للموظف، وسيظهر المبلغ المطلوب وتستطيع دفعه نقدًا أو بالبطاقة فورًا.",
+            "zh-Hant": "在韓國任意一家GS25或CU便利店報出汽車車牌號，即可在收銀臺當場補齊未繳通行費。",
+            "ko": "가까운 GS25나 CU 편의점을 방문해 차량 번호판 번호만 제시하면 미납 통행료를 그 자리에서 즉시 결제할 수 있습니다."
         },
         "actionItem": {
             "en": "Check and settle unpaid tolls within 30 days at hipass.co.kr.",
             "vi": "Kiểm tra và thanh toán các khoản phí chưa nộp trong vòng 30 ngày tại hipass.co.kr.",
             "zh-Hans": "误闯车道后30天内登录hipass.co.kr查询车牌号并完成线上结清。",
-            "ja": "hipass.co.krで未納料金を確認し、加算税が課される前に納付を完了しましょう。"
+            "ja": "hipass.co.krで未納料金を確認し、加算税が課される前に納付を完了しましょう。",
+            "sq": "Check and settle unpaid tolls within 30 days at hipass.co.kr.",
+            "hi": "hipass.co.kr पर जाकर 30 दिनों के भीतर अपने बकाया टोल की जांच करें और भुगतान करें।",
+            "ar": "لا تتوقف أبدًا فجأة عند بوابة هاي باس؛ تابع سيرك بأمان وسدد الرسوم في المساء عبر موقع ex.co.kr أو أقرب متجر راحة.",
+            "zh-Hant": "誤闖車道後30天內登錄hipass.co.kr查詢車牌號並完成線上結清。",
+            "ko": "고속도로 통행료 모바일 앱 또는 편의점에서 차량번호로 미납 통행료를 조회하고 납부하세요."
         }
     },
     {
@@ -576,31 +1401,56 @@ TOPICS_36 = [
             "en": "Small Claims Trials in Korea: Swift Verdicts for Under 30 Million KRW",
             "vi": "Kiện tụng vụ án nhỏ dưới 30 triệu won: Phán quyết nhanh tại tòa án Hàn Quốc",
             "zh-Hans": "韩国3000万韩元以下小额民事诉讼快速裁判制度",
-            "ja": "韓国の3,000万ウォン以下少額事件裁判による迅速判決"
+            "ja": "韓国の3,000万ウォン以下少額事件裁判による迅速判決",
+            "sq": "Small Claims Trials in Korea: Swift Verdicts for Under 30 Million KRW",
+            "hi": "कोरिया में लघु वाद न्यायालय: 3 करोड़ KRW से कम के मामलों में त्वरित निर्णय",
+            "ar": "محاكمات الدعاوى البسيطة (소액사건심판): أحكام سريعة للمبالغ التي تقل عن 30 مليون وون",
+            "zh-Hant": "韓國3000萬韓元以下小額民事訴訟快速裁判制度",
+            "ko": "소액사건재판으로 3,000만 원 이하 신속 판결"
         },
         "summary": {
             "en": "Recover unpaid deposits, wages, or borrowed money quickly through Korea's streamlined small-claims court system.",
             "vi": "Đòi lại tiền cọc, tiền lương chưa trả hoặc tiền vay nợ nhanh chóng qua tòa án xét xử án nhỏ của Hàn Quốc.",
             "zh-Hans": "对于被拖欠的押金、工资或债务，通过韩国小额速裁程序在1~2个月内快速获得执行判决。",
-            "ja": "未払い保証金や給与の回収を、単独判事による1回限りの期日で迅速に解決します。"
+            "ja": "未払い保証金や給与の回収を、単独判事による1回限りの期日で迅速に解決します。",
+            "sq": "Recover unpaid deposits, wages, or borrowed money quickly through Korea's streamlined small-claims court system.",
+            "hi": "कोरिया की सुव्यवस्थित लघु वाद अदालत प्रणाली के ज़रिए अपनी बकाया जमा राशि, वेतन या दिया गया उधार तेज़ी से वापस पाएं।",
+            "ar": "نصيحة عملية للإقامة في كوريا: نظام قضائي مبسط وسريع للفصل في نزاعات الديون والإيجارات التي تقل عن 30 مليون وون بجلسة واحدة.",
+            "zh-Hant": "對於被拖欠的押金、工資或債務，通過韓國小額速裁程序在1~2個月內快速獲得執行判決。",
+            "ko": "3,000만 원 이하의 떼인 돈이나 미반환 보증금, 임금 체불 건을 대한민국 대법원 전자소송 소액사건재판으로 신속하게 판결받으세요."
         },
         "principle": {
             "en": "Civil disputes under 30M KRW are resolved in a single court session without formal lawyer requirements.",
             "vi": "Tranh chấp dân sự dưới 30 triệu won được xét xử chỉ trong 1 phiên duy nhất mà không bắt buộc thuê luật sư.",
             "zh-Hans": "诉讼请求金额在3,000万韩元以下的民事纠纷，法院原则上一庭结案，无需强制委托律师。",
-            "ja": "訴額3,000万ウォン以下の民事訴訟は原則1回の弁論期日で即日判決が下され、弁護士なしでも提訴可能です。"
+            "ja": "訴額3,000万ウォン以下の民事訴訟は原則1回の弁論期日で即日判決が下され、弁護士なしでも提訴可能です。",
+            "sq": "Civil disputes under 30M KRW are resolved in a single court session without formal lawyer requirements.",
+            "hi": "3 करोड़ KRW से कम के नागरिक विवादों का निपटारा बिना किसी औपचारिक वकील की अनिवार्यता के केवल एक अदालती सुनवाई में हो जाता है।",
+            "ar": "تصدر المحكمة أمر أداء وتوصية بالتسوية (이행권고결정) فور تقديم الدعوى دون الحاجة لتوظيف محامٍ مكلف.",
+            "zh-Hant": "訴訟請求金額在3,000萬韓元以下的民事糾紛，法院原則上一庭結案，無需強制委託律師。",
+            "ko": "소가 3,000만 원 이하 사건은 단독 판사가 1회 변론기일로 종결하거나 이행권고결정을 내려 통상 1~2개월 내에 강제집행 권원을 확보합니다."
         },
         "example": {
             "en": "File an online payment order or small claim petition via Korea Electronic Litigation (ecfs.scourt.go.kr).",
             "vi": "Nộp đơn yêu cầu trả tiền trực tuyến qua Cổng kiện tụng điện tử Hàn Quốc (ecfs.scourt.go.kr).",
             "zh-Hans": "通过韩国法院电子诉讼系统（ecfs.scourt.go.kr）在线提交支付命令或小额诉讼状。",
-            "ja": "大法院電子訴訟サイト（ecfs.scourt.go.kr）から支払督促または少額訴状をオンライン提出します。"
+            "ja": "大法院電子訴訟サイト（ecfs.scourt.go.kr）から支払督促または少額訴状をオンライン提出します。",
+            "sq": "File an online payment order or small claim petition via Korea Electronic Litigation (ecfs.scourt.go.kr).",
+            "hi": "कोरिया इलेक्ट्रॉनिक लिटिगेशन (ecfs.scourt.go.kr) के माध्यम से ऑनलाइन पेमेंट ऑर्डर या छोटे दावों की याचिका दायर करें।",
+            "ar": "إذا رفض شخص إعادة دين أو تأخر المالك في رد جزء من الوديعة، يمكنك تقديم دعوى صغرى إلكترونيًا عبر موقع المحكمة الإلكترونية e-court.",
+            "zh-Hant": "通過韓國法院電子訴訟系統（ecfs.scourt.go.kr）在線提交支付命令或小額訴訟狀。",
+            "ko": "변호사 선임 없이 대법원 전자소송 웹사이트에서 소장을 접수하면 판사가 피고에게 이행권고결정문을 송달하여 신속히 승소할 수 있습니다."
         },
         "actionItem": {
             "en": "Gather your contract, transfer receipts, and KakaoTalk chat logs as evidence before filing.",
             "vi": "Tập hợp hợp đồng, biên lai chuyển tiền và tin nhắn KakaoTalk làm bằng chứng trước khi nộp đơn.",
             "zh-Hans": "提起诉讼前准备好合同原件、银行转账流水以及KakaoTalk沟通记录等完整书证。",
-            "ja": "契約書、振込領収書、カカオトークのメッセージ履歴を証拠資料としてPDF化して準備しましょう。"
+            "ja": "契約書、振込領収書、カカオトークのメッセージ履歴を証拠資料としてPDF化して準備しましょう。",
+            "sq": "Gather your contract, transfer receipts, and KakaoTalk chat logs as evidence before filing.",
+            "hi": "दावा दायर करने से पहले अपना अनुबंध, बैंक ट्रांसफर रसीदें और काकाओटॉक चैट रिकॉर्ड साक्ष्य के रूप में एकत्र करें।",
+            "ar": "اجمع أدلة المحادثات والحوالات وقدم دعوى 소액소송 عبر موقع ecfs.scourt.go.kr لاسترداد أموالك رسميًا.",
+            "zh-Hant": "提起訴訟前準備好合同原件、銀行轉賬流水以及KakaoTalk溝通記錄等完整書證。",
+            "ko": "대법원 전자소송(ecfs.scourt.go.kr)에 접속해 소액 민사소장을 직접 작성해 보세요."
         }
     },
     {
@@ -609,31 +1459,56 @@ TOPICS_36 = [
             "en": "Small-Deposit Tenants' Super-Priority Repayment Protection Thresholds",
             "vi": "Hạn mức ưu tiên hoàn trả tiền cọc tối thượng cho người thuê nhà quy mô nhỏ tại Hàn Quốc",
             "zh-Hans": "韩国小额租客超优先清偿金保障范围与标准核查法",
-            "ja": "小額賃借人の最優先弁済金の保障範囲確認法"
+            "ja": "小額賃借人の最優先弁済金の保障範囲確認法",
+            "sq": "Small-Deposit Tenants' Super-Priority Repayment Protection Thresholds",
+            "hi": "कम जमा राशि वाले किरायेदारों के लिए सुपर-प्रायोरिटी पुनर्भुगतान सुरक्षा सीमा",
+            "ar": "حدود الحماية فائقة الأولوية لودائع الإيجار الصغيرة في القانون الكوري (최우선변제금)",
+            "zh-Hant": "韓國小額租客超優先清償金保障範圍與標準覈查法",
+            "ko": "소액임차인 최우선변제금 범위 확인법"
         },
         "summary": {
             "en": "Secure absolute priority legal protection for your rental deposit in bankruptcy or foreclosure proceedings.",
             "vi": "Đảm bảo quyền thu hồi tiền cọc tuyệt đối ngay cả khi căn nhà bị siết nợ hay bán đấu giá.",
             "zh-Hans": "即使房东破产或房屋被银行强制拍卖，也能依法在第一时间拿回受法律绝对保护的基础押金。",
-            "ja": "家主が破産し競売にかけられた場合でも、最優先で回収できる法定保証金額の確認方法を学びます。"
+            "ja": "家主が破産し競売にかけられた場合でも、最優先で回収できる法定保証金額の確認方法を学びます。",
+            "sq": "Secure absolute priority legal protection for your rental deposit in bankruptcy or foreclosure proceedings.",
+            "hi": "मकान मालिक के दिवालिया होने या संपत्ति की नीलामी की स्थिति में अपने रेंटल डिपॉज़िट की पूर्ण प्राथमिकता वाली कानूनी सुरक्षा सुनिश्चित करें।",
+            "ar": "نصيحة عملية للإقامة في كوريا: استرداد مبلغ محدد من الوديعة بالكامل قبل كل الديون والرهون البنكية في حال بيع الشقة بالمزاد العلني.",
+            "zh-Hant": "即使房東破產或房屋被銀行強制拍賣，也能依法在第一時間拿回受法律絕對保護的基礎押金。",
+            "ko": "거주하는 집이 법원 경매로 넘어가더라도 다른 채권자보다 법적으로 가장 먼저 배당받는 소액임차인 최우선변제금 범위를 확인하세요."
         },
         "principle": {
             "en": "Tenants meeting regional deposit caps recover protected sums ahead of senior mortgages and national taxes.",
             "vi": "Người thuê có tiền cọc dưới mức quy định từng vùng sẽ được trả lại khoản bảo vệ trước cả nợ ngân hàng và thuế.",
             "zh-Hans": "押金符合各地区小额标准者，即使抵押权设定在前，也可先于银行和国家税收获得法定优先返还。",
-            "ja": "地域別の基準金額以下の少額契約なら、先順位の銀行抵当権や国税よりも優先して保護金が支払われます。"
+            "ja": "地域別の基準金額以下の少額契約なら、先順位の銀行抵当権や国税よりも優先して保護金が支払われます。",
+            "sq": "Tenants meeting regional deposit caps recover protected sums ahead of senior mortgages and national taxes.",
+            "hi": "क्षेत्रीय जमा सीमा के अंतर्गत आने वाले किरायेदार सीनियर मॉर्गेज और राष्ट्रीय करों से भी पहले अपनी सुरक्षित राशि वापस पाने के हकदार होते हैं।",
+            "ar": "في سيول، إذا كانت الوديعة الإجمالية أقل من 165 مليون وون، يضمن القانون استرداد أول 55 مليون وون بأولوية مطلقة وفورية.",
+            "zh-Hant": "押金符合各地區小額標準者，即使抵押權設定在前，也可先於銀行和國家稅收穫得法定優先返還。",
+            "ko": "근저당 설정일 당시의 주택임대차보호법 시행령 기준 소액보증금 요건을 충족하면 선순위 은행 대출보다 먼저 보증금 중 일정액을 돌려받습니다."
         },
         "example": {
             "en": "In Seoul (as of 2024), deposits up to 165M KRW are guaranteed up to 55M KRW with only opposing power.",
             "vi": "Tại Seoul, tiền cọc từ 165 triệu won trở xuống được bảo đảm thu hồi tối đa 55 triệu won chỉ cần có đối kháng cư trú.",
             "zh-Hans": "以首尔为例，押金在1.65亿韩元以下者，只要具备实际迁入对抗力，最多可保底无条件拿回5,500万韩元。",
-            "ja": "ソウル市の場合、保証金1億6,500万ウォン以下の賃貸なら最大5,500万ウォンが最優先で返還されます。"
+            "ja": "ソウル市の場合、保証金1億6,500万ウォン以下の賃貸なら最大5,500万ウォンが最優先で返還されます。",
+            "sq": "In Seoul (as of 2024), deposits up to 165M KRW are guaranteed up to 55M KRW with only opposing power.",
+            "hi": "सियोल में (2024 तक), 16.5 करोड़ KRW तक की जमा राशि पर केवल कानूनी अधिकार (Opposing Power) बनाए रखने से 5.5 करोड़ KRW तक की राशि की गारंटी मिलती है।",
+            "ar": "حتى لو كان العقار مثقلاً برهون مليارية سابقة، تضمن المحكمة دفع 최우선변제금 للمستأجر الصغير لحمايته من التشرد.",
+            "zh-Hant": "以首爾爲例，押金在1.65億韓元以下者，只要具備實際遷入對抗力，最多可保底無條件拿回5,500萬韓元。",
+            "ko": "서울 기준 보증금 1억 6,500만 원 이하 임차인은 경매 낙찰가의 절반 범위 내에서 최대 5,500만 원까지 무조건 1순위로 최우선 배당받습니다."
         },
         "actionItem": {
             "en": "Check your city's exact priority repayment ceiling before finalizing lease agreements.",
             "vi": "Kiểm tra kỹ hạn mức ưu tiên bảo vệ tiền cọc của thành phố bạn đang ở trước khi ký hợp đồng.",
             "zh-Hans": "签约前务必核对所在城市现行的不动产小额租客最优先受偿金额标准。",
-            "ja": "契約前に所在自治体の「소액임차인 최우선변제금」の現行基準を必ず確認してください。"
+            "ja": "契約前に所在自治体の「소액임차인 최우선변제금」の現行基準を必ず確認してください。",
+            "sq": "Check your city's exact priority repayment ceiling before finalizing lease agreements.",
+            "hi": "किराया अनुबंध को अंतिम रूप देने से पहले अपने शहर की सटीक प्राथमिकता पुनर्भुगतान सीमा की जांच करें।",
+            "ar": "تأكد من شروط مدينتك ومبلغ وديعتك لضمان وقوعك تحت سقف الحماية القانونية فائقة الأولوية.",
+            "zh-Hant": "簽約前務必覈對所在城市現行的不動產小額租客最優先受償金額標準。",
+            "ko": "계약 전 등기부등본 을구의 최초 근저당 설정일을 확인하고 인터넷등기소 소액임차인 변제금 표와 대조하세요."
         }
     },
     {
@@ -642,31 +1517,56 @@ TOPICS_36 = [
             "en": "Tax Deductions for Traditional Markets & Public Transit Spending",
             "vi": "Tỷ lệ khấu trừ thuế thu nhập khi chi tiêu tại chợ truyền thống và phương tiện công cộng Hàn Quốc",
             "zh-Hans": "传统市场与公共交通韩国个人所得税超高额抵扣率全解析",
-            "ja": "伝統市場および公共交通機関のクレジットカード所得控除率"
+            "ja": "伝統市場および公共交通機関のクレジットカード所得控除率",
+            "sq": "Tax Deductions for Traditional Markets & Public Transit Spending",
+            "hi": "पारंपरिक बाज़ारों और सार्वजनिक परिवहन खर्च पर टैक्स छूट",
+            "ar": "الخصومات الضريبية للتسوق في الأسواق التقليدية واستخدام النقل العام في كوريا",
+            "zh-Hant": "傳統市場與公共交通韓國個人所得稅超高額抵扣率全解析",
+            "ko": "전통시장 및 대중교통 카드 소득공제율"
         },
         "summary": {
             "en": "Maximize year-end income tax refunds by utilizing 40-80% deduction rates for market and transit payments.",
             "vi": "Tối đa hóa tiền hoàn thuế cuối năm với tỷ lệ khấu trừ cao 40-80% khi đi chợ truyền thống và tàu xe.",
             "zh-Hans": "在韩国年末清算中，传统市场消费与公共交通卡可享受高达40%至80%的特别税额抵扣率。",
-            "ja": "年末調整の還付金を最大化するため、伝統市場と公共交通での控除率（40〜80%）を味方にします。"
+            "ja": "年末調整の還付金を最大化するため、伝統市場と公共交通での控除率（40〜80%）を味方にします。",
+            "sq": "Maximize year-end income tax refunds by utilizing 40-80% deduction rates for market and transit payments.",
+            "hi": "पारंपरिक बाज़ार और सार्वजनिक परिवहन खर्चों पर 40-80% की कटौती दर का लाभ उठाकर साल के अंत में मिलने वाले आयकर रिफंड को अधिकतम करें।",
+            "ar": "نصيحة عملية للإقامة في كوريا: خصم ضريبي يصل إلى 40% إلى 80% من المبالغ المنفقة في الأسواق الشعبية والمواصلات بالتسوية الضريبية السنوية.",
+            "zh-Hant": "在韓國年末清算中，傳統市場消費與公共交通卡可享受高達40%至80%的特別稅額抵扣率。",
+            "ko": "연말정산 신용카드 소득공제에서 전통시장 40%, 대중교통 80%의 높은 공제율을 활용하여 환급액을 극대화하세요."
         },
         "principle": {
             "en": "General credit cards offer only 15% deductions, while traditional markets and public transit yield 40-80%.",
             "vi": "Thẻ tín dụng thông thường chỉ được khấu trừ 15%, trong khi chợ truyền thống và giao thông công cộng được khấu trừ 40-80%.",
             "zh-Hans": "普通信用卡仅享15%抵扣率，而传统市场与公共交通消费享受高达40%~80%的额外特别额度抵扣。",
-            "ja": "一般クレジットカードの控除率が15%であるのに対し、伝統市場と公共交通は40〜80%が控除対象になります。"
+            "ja": "一般クレジットカードの控除率が15%であるのに対し、伝統市場と公共交通は40〜80%が控除対象になります。",
+            "sq": "General credit cards offer only 15% deductions, while traditional markets and public transit yield 40-80%.",
+            "hi": "सामान्य क्रेडिट कार्ड पर केवल 15% की छूट मिलती है, जबकि पारंपरिक बाज़ारों और सार्वजनिक परिवहन पर 40-80% तक कटौती मिलती है।",
+            "ar": "معدل الخصم الضريبي لبطاقات الدفع العادية 15%، بينما يرتفع إلى 40% في الأسواق التقليدية والنقل العام لدعم الاقتصاد المحلي.",
+            "zh-Hant": "普通信用卡僅享15%抵扣率，而傳統市場與公共交通消費享受高達40%~80%的額外特別額度抵扣。",
+            "ko": "일반 신용카드 공제율(15%) 대비 전통시장과 대중교통 이용액은 40~80%의 특별 공제율과 추가 한도 100만~200만 원이 부여됩니다."
         },
         "example": {
             "en": "Pay with Onnuri gift certificates (10% purchase discount) at traditional markets for double the financial benefit.",
             "vi": "Dùng phiếu quà tặng Onnuri (giảm giá 10% khi mua) tại chợ truyền thống để nhân đôi lợi ích tiết kiệm.",
             "zh-Hans": "在传统市场刷享受9折购券优惠的Onnuri礼券卡，既省现金又能拿满年末清算退税。",
-            "ja": "伝統市場で10%割引購入できるオンヌリ商品券アプリを使用すれば、割引と所得控除の二重取りが可能です。"
+            "ja": "伝統市場で10%割引購入できるオンヌリ商品券アプリを使用すれば、割引と所得控除の二重取りが可能です。",
+            "sq": "Pay with Onnuri gift certificates (10% purchase discount) at traditional markets for double the financial benefit.",
+            "hi": "दोहरे वित्तीय लाभ के लिए पारंपरिक बाज़ारों में ओन्नूरी उपहार प्रमाणपत्र (Onnuri gift certificates - 10% खरीद छूट) से भुगतान करें।",
+            "ar": "الشراء ببطاقة Onnuri أو البطاقة البنكية في الأسواق الشعبية يمنحك أعلى معدل خصم من وعاء ضريبة الدخل السنوية في تسوية نهاية العام.",
+            "zh-Hant": "在傳統市場刷享受9折購券優惠的Onnuri禮券卡，既省現金又能拿滿年末清算退稅。",
+            "ko": "신용카드 기본 공제 한도(300만 원)를 이미 채웠더라도 전통시장이나 대중교통 지출분은 별도 추가 공제 한도로 계산되어 환급금이 크게 늘어납니다."
         },
         "actionItem": {
             "en": "Download the Mobile Onnuri Gift Certificate app to shop at neighborhood traditional markets.",
             "vi": "Tải ứng dụng Phiếu quà tặng Onnuri để đi chợ truyền thống gần nhà tiết kiệm hơn.",
             "zh-Hans": "下载移动端Onnuri礼券App，在住宅附近的传统市场开启高额抵扣消费。",
-            "ja": "モバイルオンヌリ商品券アプリをダウンロードし、近所の市場で活用しましょう。"
+            "ja": "モバイルオンヌリ商品券アプリをダウンロードし、近所の市場で活用しましょう。",
+            "sq": "Download the Mobile Onnuri Gift Certificate app to shop at neighborhood traditional markets.",
+            "hi": "अपने आस-पास के पारंपरिक बाज़ारों में खरीदारी करने के लिए मोबाइल ओन्नूरी गिफ़्ट सर्टिफ़िकेट ऐप डाउनलोड करें।",
+            "ar": "استخدم بطاقة الدفع المباشر في الأسواق التقليدية والمترو للاستفادة من أقصى خصم ضريبي في تسوية مايو.",
+            "zh-Hant": "下載移動端Onnuri禮券App，在住宅附近的傳統市場開啓高額抵扣消費。",
+            "ko": "국세청 홈택스 연말정산 미리보기에서 현재까지의 신용카드·전통시장·대중교통 지출 누적액을 점검하세요."
         }
     },
     {
@@ -675,31 +1575,56 @@ TOPICS_36 = [
             "en": "Official Employment Certificates vs 4 Major Social Insurance History",
             "vi": "Phân biệt Giấy chứng nhận kinh nghiệm làm việc và Chứng nhận tham gia 4 loại bảo hiểm xã hội",
             "zh-Hans": "在韩求职：工作履历证明书与四大社会保险参保记录证明的区别",
-            "ja": "経歴証明書と4大保険加入履歴証明書の公的証明力比較"
+            "ja": "経歴証明書と4大保険加入履歴証明書の公的証明力比較",
+            "sq": "Official Employment Certificates vs 4 Major Social Insurance History",
+            "hi": "आधिकारिक रोज़गार प्रमाणपत्र बनाम 4 प्रमुख सामाजिक बीमा इतिहास",
+            "ar": "الشهادات الوظيفية الرسمية مقابل مستخرج التأمينات الاجتماعية الأربعة (4대보험 가입내역)",
+            "zh-Hant": "在韓求職：工作履歷證明書與四大社會保險參保記錄證明的區別",
+            "ko": "경력증명서와 4대보험 가입이력 증명서"
         },
         "summary": {
             "en": "Verify legitimate career history for Korean visa renewals and job interviews without former employer delays.",
             "vi": "Chứng minh kinh nghiệm làm việc khi gia hạn visa hoặc xin việc tại Hàn Quốc mà không cần phụ thuộc công ty cũ.",
             "zh-Hans": "在韩国换签或求职时，无需前雇主盖章即可通过社保系统快速取得公信力最高的职业经历证明。",
-            "ja": "前職の会社に依頼することなく、公的年金・健康保険の記録で職歴を100%客観的に証明します。"
+            "ja": "前職の会社に依頼することなく、公的年金・健康保険の記録で職歴を100%客観的に証明します。",
+            "sq": "Verify legitimate career history for Korean visa renewals and job interviews without former employer delays.",
+            "hi": "पूर्व नियोक्ता से होने वाली देरी के बिना, कोरियाई वीज़ा नवीनीकरण और नौकरी के इंटरव्यू के लिए अपने करियर इतिहास को प्रमाणित करें।",
+            "ar": "نصيحة عملية للإقامة في كوريا: إثبات الخبرة والدخل الموثق أمام البنوك وتأشيرات الهجرة يتطلب مستخرج التأمينات وليس مجرد ورقة من الشركة.",
+            "zh-Hant": "在韓國換籤或求職時，無需前僱主蓋章即可通過社保系統快速取得公信力最高的職業經歷證明。",
+            "ko": "이전 직장에 연락하기 곤란하거나 빠른 이직·비자 심사가 필요할 때 공적 4대보험 가입이력 증명서로 객관적인 실근무 경력을 1분 만에 증빙하세요."
         },
         "principle": {
             "en": "The National Pension subscription certificate is legally recognized across Korea as an objective career record.",
             "vi": "Chứng nhận tham gia Quỹ hưu trí quốc gia được công nhận rộng rãi là giấy tờ chứng minh kinh nghiệm làm việc chuẩn xác nhất.",
             "zh-Hans": "国民年金加入者证书载明入职退职时间与标准纳税额，在韩国被司法与企业广泛采纳为不可篡改的资历凭证。",
-            "ja": "国民年金の加入履歴証明書は、改ざん不能な公的経歴証明として企業や出入国管理庁に受理されます。"
+            "ja": "国民年金の加入履歴証明書は、改ざん不能な公的経歴証明として企業や出入国管理庁に受理されます。",
+            "sq": "The National Pension subscription certificate is legally recognized across Korea as an objective career record.",
+            "hi": "राष्ट्रीय पेंशन सदस्यता प्रमाणपत्र (National Pension subscription certificate) को पूरे कोरिया में एक निष्पक्ष और आधिकारिक करियर रिकॉर्ड के रूप में कानूनी मान्यता प्राप्त है।",
+            "ar": "مستخرج 4대 사회보험 가입자 가입내역확인서 مستند حكومي معتمد لا يمكن تزويره ويوضح تاريخ بدء ونهاية العمل والراتب المعتمد رسميًا.",
+            "zh-Hant": "國民年金加入者證書載明入職退職時間與標準納稅額，在韓國被司法與企業廣泛採納爲不可篡改的資歷憑證。",
+            "ko": "국민연금 가입증명서와 건강보험 자격득실확인서는 공공기관이 전산 발급하는 공적 문서이므로 기업 인사팀과 출입국사무소에서 공인 경력 서류로 인정됩니다."
         },
         "example": {
             "en": "Print your comprehensive employment history instantly at nps.or.kr or via the NPS mobile app.",
             "vi": "In ngay bảng lịch sử tham gia bảo hiểm hưu trí tại trang web nps.or.kr hoặc qua ứng dụng NPS.",
             "zh-Hans": "登录国民年金公团官网(nps.or.kr)或官方App，即可即时免费打印含企业名称的公印参保明细。",
-            "ja": "国民年金公団（nps.or.kr）または専用アプリから即時無料で公印付き証明書を発行できます。"
+            "ja": "国民年金公団（nps.or.kr）または専用アプリから即時無料で公印付き証明書を発行できます。",
+            "sq": "Print your comprehensive employment history instantly at nps.or.kr or via the NPS mobile app.",
+            "hi": "nps.or.kr पर या एनपीएस (NPS) मोबाइल ऐप के माध्यम से अपना संपूर्ण रोज़गार इतिहास तुरंत प्रिंट करें।",
+            "ar": "عند طلب قرض بنكي أو تجديد تأشيرة العمل (E-7 / F-2)، يطلب موظف الهجرة مستخرج التأمينات الاجتماعية كدليل قاطع على استمرار التوظيف.",
+            "zh-Hant": "登錄國民年金公團官網(nps.or.kr)或官方App，即可即時免費打印含企業名稱的公印參保明細。",
+            "ko": "국민연금공단 홈페이지나 정부24에서 공동인증서로 접속하면 전 직장의 입사일과 퇴사일이 명시된 가입증명서를 즉시 무료 출력할 수 있습니다."
         },
         "actionItem": {
             "en": "Generate your free pension subscription statement online before submitting job applications.",
             "vi": "Tự tải chứng nhận bảo hiểm hưu trí miễn phí trên mạng trước khi nộp hồ sơ xin việc.",
             "zh-Hans": "求职提交简历前先在线下载一份自己的国民年金参保明细备用。",
-            "ja": "転職活動の前に国民年金公団サイトから加入履歴証明書をPDFで用意しておきましょう。"
+            "ja": "転職活動の前に国民年金公団サイトから加入履歴証明書をPDFで用意しておきましょう。",
+            "sq": "Generate your free pension subscription statement online before submitting job applications.",
+            "hi": "नौकरी के आवेदन जमा करने से पहले अपना निःशुल्क पेंशन सदस्यता विवरण ऑनलाइन डाउनलोड करें।",
+            "ar": "استخرج وثيقة التأمينات الاجتماعية الأربعة مجانًا وفوريًا عبر موقع 4insure.0r.kr باستخدام شهادتك البنكية.",
+            "zh-Hant": "求職提交簡歷前先在線下載一份自己的國民年金參保明細備用。",
+            "ko": "국민연금공단 누리집(nps.or.kr) 전자민원서비스에서 '국민연금 가입증명서'를 직접 발급받아 보세요."
         }
     },
     {
@@ -708,31 +1633,56 @@ TOPICS_36 = [
             "en": "Moonlight Pediatric Clinics: Night & Weekend Child Medical Care in Korea",
             "vi": "Bệnh viện Nhi Moonlight: Khám chữa bệnh cho trẻ em vào ban đêm và ngày nghỉ tại Hàn Quốc",
             "zh-Hans": "月光儿童医院：韩国夜间与公休日儿科门诊急诊指南",
-            "ja": "月光子供病院：韓国の夜間・休日の小児科診療利用ガイド"
+            "ja": "月光子供病院：韓国の夜間・休日の小児科診療利用ガイド",
+            "sq": "Moonlight Pediatric Clinics: Night & Weekend Child Medical Care in Korea",
+            "hi": "मूनलाइट पीडियाट्रिक क्लीनिक: कोरिया में बच्चों के लिए रात और सप्ताहांत में चिकित्सा सेवा",
+            "ar": "عيادات ضوء القمر لطب الأطفال (달빛어린이병원): الرعاية الليلية وفي عطلات نهاية الأسبوع",
+            "zh-Hant": "月光兒童醫院：韓國夜間與公休日兒科門診急診指南",
+            "ko": "달빛어린이병원 야간·휴일 소아과 진료"
         },
         "summary": {
             "en": "Access specialized pediatric care up to 11 PM on holidays without overwhelming emergency room wait times.",
             "vi": "Đưa con đi khám bác sĩ nhi chuyên khoa tới 23h đêm vào cuối tuần mà không phải chịu chi phí đắt đỏ của phòng cấp cứu.",
             "zh-Hans": "夜间或节假日孩子突发高烧时，无需去大型综合急诊室排长队，可前往专门的月光儿童医院就诊。",
-            "ja": "休日や夜間に子供が急病の際、過密な大学病院救急室を避け最大23時まで専門医の診察を受けられます。"
+            "ja": "休日や夜間に子供が急病の際、過密な大学病院救急室を避け最大23時まで専門医の診察を受けられます。",
+            "sq": "Access specialized pediatric care up to 11 PM on holidays without overwhelming emergency room wait times.",
+            "hi": "आपातकालीन कक्ष (ER) की लंबी प्रतीक्षा से बचते हुए छुट्टियों और रात 11 बजे तक विशेषज्ञ बाल चिकित्सा देखभाल प्राप्त करें।",
+            "ar": "نصيحة عملية للإقامة في كوريا: مراكز طب أطفال معتمدة تعمل حتى الساعة 11 مساءً وفي أيام العطلات بأسعار العيادات العادية دون رسوم الطوارئ الباهظة.",
+            "zh-Hant": "夜間或節假日孩子突發高燒時，無需去大型綜合急診室排長隊，可前往專門的月光兒童醫院就診。",
+            "ko": "야간이나 주말·공휴일에 아이가 아플 때 비싸고 대기가 긴 대학병원 응급실 대신 밤 11시까지 운영하는 달빛어린이병원을 이용하세요."
         },
         "principle": {
             "en": "Designated Moonlight clinics provide pediatric primary care until 23:00 on weekdays, weekends, and holidays at standard clinic co-pays.",
             "vi": "Các bệnh viện Moonlight hoạt động đến 23h đêm với mức viện phí thông thường như ban ngày thay vì phí cấp cứu.",
             "zh-Hans": "韩国政府指定的“月光儿童医院”在夜间及公休日开放至23点，按普通门诊标准收费，费用远低于急诊室。",
-            "ja": "国が指定する月光小児科は平日夜間・休日23時まで一般診療費と同水準の低額自己負担で受診可能です。"
+            "ja": "国が指定する月光小児科は平日夜間・休日23時まで一般診療費と同水準の低額自己負担で受診可能です。",
+            "sq": "Designated Moonlight clinics provide pediatric primary care until 23:00 on weekdays, weekends, and holidays at standard clinic co-pays.",
+            "hi": "नामित मूनलाइट क्लीनिक (Moonlight clinics) सामान्य क्लिनिक शुल्क पर ही कार्यदिवसों, सप्ताहांतों और छुट्टियों में रात 23:00 बजे तक बाल चिकित्सा प्राथमिक देखभाल प्रदान करते हैं।",
+            "ar": "تجنب أقسام طوارئ المستشفيات الكبرى المزدحمة وذات التكلفة العالية، وتوجه لعيادات Dalbit المجهزة خصيصًا لحالات الأطفال العاجلة.",
+            "zh-Hant": "韓國政府指定的“月光兒童醫院”在夜間及公休日開放至23點，按普通門診標準收費，費用遠低於急診室。",
+            "ko": "보건복지부가 지정한 달빛어린이병원은 평일 야간(최대 23시) 및 토·일·공휴일에도 소아청소년과 전문의가 상주하며 외래 진료를 제공합니다."
         },
         "example": {
             "en": "Find participating nearby clinics and open late-night pharmacies on the National Emergency Portal (e-gen.or.kr).",
             "vi": "Tìm bệnh viện Moonlight và hiệu thuốc trực đêm gần nhất trên cổng e-gen.or.kr.",
             "zh-Hans": "登录国立中央医疗院急救医疗信息门户网站（e-gen.or.kr）或应急医疗App查询最近的月光医院。",
-            "ja": "救急医療ポータル（e-gen.or.kr）で最寄りの月光小児科と当番薬局をリアルタイム検索します。"
+            "ja": "救急医療ポータル（e-gen.or.kr）で最寄りの月光小児科と当番薬局をリアルタイム検索します。",
+            "sq": "Find participating nearby clinics and open late-night pharmacies on the National Emergency Portal (e-gen.or.kr).",
+            "hi": "राष्ट्रीय आपातकालीन पोर्टल (e-gen.or.kr) पर अपने नजदीकी भागीदार क्लीनिक और देर रात तक खुली रहने वाली फार्मेसियों की जानकारी प्राप्त करें।",
+            "ar": "إذا أصيب طفلك بحمى ليلية مفاجئة، توفر عيادة 달빛어린이병원 فحصًا فوريًا من أخصائي أطفال مع صيدلية مجاورة تعمل بنفس التوقيت.",
+            "zh-Hant": "登錄國立中央醫療院急救醫療信息門戶網站（e-gen.or.kr）或應急醫療App查詢最近的月光醫院。",
+            "ko": "응급실 대비 진료비가 3분의 1 수준으로 저렴하고 소아 전문의의 신속한 진찰과 인근 연계 약국 조제를 동시에 이용할 수 있습니다."
         },
         "actionItem": {
             "en": "Save your neighborhood's closest Moonlight clinic address and phone number for family emergencies.",
             "vi": "Lưu sẵn địa chỉ và số điện thoại phòng khám Moonlight gần nhà vào danh bạ điện thoại.",
             "zh-Hans": "在手机通讯录中提前保存离家最近的月光儿童医院电话与营业时间。",
-            "ja": "万一に備えて最寄りの月光子供病院の住所と夜間受付時間をスマホに登録しておきましょう。"
+            "ja": "万一に備えて最寄りの月光子供病院の住所と夜間受付時間をスマホに登録しておきましょう。",
+            "sq": "Save your neighborhood's closest Moonlight clinic address and phone number for family emergencies.",
+            "hi": "पारिवारिक आपात स्थिति के लिए अपने क्षेत्र के निकटतम मूनलाइट क्लीनिक का पता और फ़ोन नंबर सहेज कर रखें।",
+            "ar": "ابحث عن أقرب عيادة '달빛어린이병원' لبيتك عبر تطبيق E-Gen (119) واحفظ موقعها لحالات طوارئ الأطفال الليلية.",
+            "zh-Hant": "在手機通訊錄中提前保存離家最近的月光兒童醫院電話與營業時間。",
+            "ko": "응급의료포털(e-gen.or.kr) 또는 달빛어린이병원 홈페이지에서 거주지 인근 지정 병원의 운영 시간을 미리 즐겨찾기하세요."
         }
     },
     {
@@ -741,31 +1691,56 @@ TOPICS_36 = [
             "en": "Korea National Park Shelters & Campsite Reservation Strategies",
             "vi": "Bí quyết đặt chỗ trạm trú chân và bãi cắm trại tại các Vườn quốc gia Hàn Quốc",
             "zh-Hans": "韩国国立公园避难所庇护所与露营营地抢票实战技巧",
-            "ja": "韓国の国立公園避難所およびキャンプ場予約の成功ノウハウ"
+            "ja": "韓国の国立公園避難所およびキャンプ場予約の成功ノウハウ",
+            "sq": "Korea National Park Shelters & Campsite Reservation Strategies",
+            "hi": "कोरिया राष्ट्रीय उद्यान शेल्टर और कैंपसाइट आरक्षण की रणनीतियाँ",
+            "ar": "استراتيجيات حجز ملاجئ ومخيمات المتنزهات الوطنية الكورية (국립공원공단)",
+            "zh-Hant": "韓國國立公園避難所庇護所與露營營地搶票實戰技巧",
+            "ko": "국립공원 대피소 및 야영장 예약 성공 요령"
         },
         "summary": {
             "en": "Successfully secure highly competitive overnight shelters in Jirisan, Seoraksan, and national park campgrounds.",
             "vi": "Đặt thành công chỗ nghỉ qua đêm và cắm trại trên đỉnh Jirisan, Seoraksan với chi phí vô cùng tiết kiệm.",
             "zh-Hans": "掌握韩国国立公园管理公团的定时放票规则，成功预订智异山、雪岳山高山避难所与野营地。",
-            "ja": "智異山や雪岳山の山小屋避難所やキャンプ場の激戦予約を確実に勝ち取るテクニックです。"
+            "ja": "智異山や雪岳山の山小屋避難所やキャンプ場の激戦予約を確実に勝ち取るテクニックです。",
+            "sq": "Successfully secure highly competitive overnight shelters in Jirisan, Seoraksan, and national park campgrounds.",
+            "hi": "जिरीसान (Jirisan), सिओराक्सान (Seoraksan) और राष्ट्रीय उद्यानों के कैंपग्राउंड में अत्यधिक मांग वाले शेल्टर को सफलतापूर्वक बुक करें।",
+            "ar": "نصيحة عملية للإقامة في كوريا: ملاجئ جبل جيراسان وسيوراكسان ومواقع التخييم الطبيعية تفتح حجوزاتها بنظام القرعة والمواعيد المحددة مسبقًا.",
+            "zh-Hant": "掌握韓國國立公園管理公團的定時放票規則，成功預訂智異山、雪嶽山高山避難所與野營地。",
+            "ko": "지리산·설악산 등 인기 국립공원 대피소와 야영장 예약 경쟁에서 성공하는 핵심 전략을 활용하세요."
         },
         "principle": {
             "en": "Reservations open every 1st and 15th of the month at 10:00 AM sharp on reservation.knps.or.kr with strict quota limits.",
             "vi": "Hệ thống mở cổng đặt chỗ vào đúng 10h sáng ngày 1 và 15 hàng tháng trên reservation.knps.or.kr.",
             "zh-Hans": "每月1号和15号上午10点准时开放未来半个月的避难所与露营地名额，需通过国立公园预约系统抢订。",
-            "ja": "毎月1日と15日の午前10時ちょうどにknps予約サイトで開放され、事前のログイン準備が成否を分けます。"
+            "ja": "毎月1日と15日の午前10時ちょうどにknps予約サイトで開放され、事前のログイン準備が成否を分けます。",
+            "sq": "Reservations open every 1st and 15th of the month at 10:00 AM sharp on reservation.knps.or.kr with strict quota limits.",
+            "hi": "आरक्षण प्रत्येक महीने की 1 और 15 तारीख को ठीक सुबह 10:00 बजे reservation.knps.or.kr पर सख्त कोटा सीमाओं के साथ खुलता है।",
+            "ar": "الحجز الحكومي يكلف 10,000 إلى 15,000 وون فقط لليلة، ويفتح الحجز في اليوم الأول والخامس عشر من كل شهر بدقة الثانية.",
+            "zh-Hant": "每月1號和15號上午10點準時開放未來半個月的避難所與露營地名額，需通過國立公園預約系統搶訂。",
+            "ko": "매월 1일과 15일 오전 10시 정각 국립공원공단 예약시스템(reservation.knps.or.kr)에서 엄격한 정원으로 예약이 개시됩니다."
         },
         "example": {
             "en": "Log in 10 minutes prior, synchronize with server clock time (Navyism), and target low-demand weekdays.",
             "vi": "Đăng nhập trước 10 phút, canh giờ chuẩn theo đồng hồ server (Navyism) để bấm giữ chỗ ngay khi mở.",
             "zh-Hans": "提前10分钟登录账号，对照服务器时间（Navyism）准点刷新并快速选定床位。",
-            "ja": "10分前にログインし、サーバー時計を照合して10時00分00秒にアクセスして席を確保します。"
+            "ja": "10分前にログインし、サーバー時計を照合して10時00分00秒にアクセスして席を確保します。",
+            "sq": "Log in 10 minutes prior, synchronize with server clock time (Navyism), and target low-demand weekdays.",
+            "hi": "बुकिंग खुलने से 10 मिनट पहले लॉग इन करें, सर्वर घड़ी (Navyism) के समय से तालमेल बैठाएं, और कम मांग वाले कार्यदिवसों को प्राथमिकता दें।",
+            "ar": "ملاجئ جبل جيراسان (مثل ملجأ جانغتوموك) تسمح لك بالمبيت الآمن قرب القمة لمشاهدة شروق الشمس بأسعار رمزية للغاية.",
+            "zh-Hant": "提前10分鐘登錄賬號，對照服務器時間（Navyism）準點刷新並快速選定牀位。",
+            "ko": "서버 시계(네이비즘)에 맞춰 10분 전에 로그인하고, 주말 대신 경쟁이 덜한 평일 일정을 공략하세요."
         },
         "actionItem": {
             "en": "Create your account and complete identity verification on reservation.knps.or.kr ahead of booking days.",
             "vi": "Tạo tài khoản và hoàn tất xác thực danh tính trên trang reservation.knps.or.kr từ trước.",
             "zh-Hans": "在订票日前先完成国立公园预约系统的实名注册与短信验证。",
-            "ja": "予約日当日までにknpsサイトの会員登録と本人認証を済ませておきましょう。"
+            "ja": "予約日当日までにknpsサイトの会員登録と本人認証を済ませておきましょう。",
+            "sq": "Create your account and complete identity verification on reservation.knps.or.kr ahead of booking days.",
+            "hi": "बुकिंग के दिन से पहले reservation.knps.or.kr पर अपना खाता बनाएं और पहचान सत्यापन पूरा करें।",
+            "ar": "سجل حسابًا في موقع reservation.knps.or.kr وادخل قبل موعد فتح الحجز بـ 5 دقائق لتأكيد حجزك في ثوانٍ.",
+            "zh-Hant": "在訂票日前先完成國立公園預約系統的實名註冊與短信驗證。",
+            "ko": "국립공원 예약시스템에 미리 로그인하고 본인 인증을 마친 뒤 정각 1초 전에 예약 버튼을 클릭하세요."
         }
     },
     {
@@ -774,31 +1749,56 @@ TOPICS_36 = [
             "en": "Free Legal Aid & Counseling Services via Korea Legal Aid Corporation (KLAC)",
             "vi": "Dịch vụ tư vấn pháp lý và hỗ trợ luật sư miễn phí của Hiệp hội Trợ giúp Pháp lý Hàn Quốc (KLAC)",
             "zh-Hans": "大韩法律救助公团(KLAC)免费法律咨询与低成本诉讼代理服务",
-            "ja": "大韓法律救助公団による無料法律相談および訴訟代理の活用法"
+            "ja": "大韓法律救助公団による無料法律相談および訴訟代理の活用法",
+            "sq": "Free Legal Aid & Counseling Services via Korea Legal Aid Corporation (KLAC)",
+            "hi": "कोरिया लीगल एड कॉर्पोरेशन (KLAC) के माध्यम से निःशुल्क कानूनी सहायता और परामर्श",
+            "ar": "خدمات الاستشارات القانونية والمساعدة القضائية المجانية عبر مؤسسة المساعدة القانونية (KLAC)",
+            "zh-Hant": "大韓法律救助公團(KLAC)免費法律諮詢與低成本訴訟代理服務",
+            "ko": "대한법률구조공단 무료 법률 상담 활용"
         },
         "summary": {
             "en": "Receive free expert legal consultation and court representation for labor, tenancy, and civil disputes in Korea.",
             "vi": "Được luật sư tư vấn miễn phí và hỗ trợ kiện tụng khi gặp tranh chấp tiền lương, tiền cọc hoặc cư trú.",
             "zh-Hans": "遇到欠薪、租房纠纷或民事侵权时，向韩国官方法律救助公团申请免费咨询与公派律师诉讼支持。",
-            "ja": "賃貸トラブルや未払い賃金問題に対し、国家機関による無料相談と弁護士費用支援を受けられます。"
+            "ja": "賃貸トラブルや未払い賃金問題に対し、国家機関による無料相談と弁護士費用支援を受けられます。",
+            "sq": "Receive free expert legal consultation and court representation for labor, tenancy, and civil disputes in Korea.",
+            "hi": "कोरिया में श्रम, किरायेदारी और नागरिक विवादों के लिए निःशुल्क विशेषज्ञ कानूनी परामर्श और अदालती प्रतिनिधित्व प्राप्त करें।",
+            "ar": "نصيحة عملية للإقامة في كوريا: استشارات مجانية وتمثيل قضائي للمقيمين والمواطنين في نزاعات العمل واسترداد الودائع وحوادث المرور.",
+            "zh-Hant": "遇到欠薪、租房糾紛或民事侵權時，向韓國官方法律救助公團申請免費諮詢與公派律師訴訟支持。",
+            "ko": "국내 임금 체불, 임대차 분쟁, 민사 소송에 대해 무료 전문 법률 상담과 소송 대리 지원을 받으세요."
         },
         "principle": {
             "en": "Citizens and foreign residents with modest incomes (below 125% median) qualify for 100% free litigation representation.",
             "vi": "Người dân và người nước ngoài có thu nhập trung bình trở xuống được miễn 100% phí đại diện kiện tụng.",
             "zh-Hans": "所得在基准中位数收入125%以下者，可全额免费获得公团所属专职律师出庭代理诉讼服务。",
-            "ja": "基準中位所得125%以下の居住者であれば、公団所属の弁護士による訴訟代理を完全無料で利用できます。"
+            "ja": "基準中位所得125%以下の居住者であれば、公団所属の弁護士による訴訟代理を完全無料で利用できます。",
+            "sq": "Citizens and foreign residents with modest incomes (below 125% median) qualify for 100% free litigation representation.",
+            "hi": "मध्यम आय (औसत आय के 125% से कम) वाले नागरिक और विदेशी निवासी 100% निःशुल्क कानूनी प्रतिनिधित्व के पात्र हैं।",
+            "ar": "هيئة 대한법률구조공단 تقدم خدمات محامين حكوميين مجانًا أو برسوم رمزية لذوي الدخل المحدود والعمال الأجانب المستحقين قانونًا.",
+            "zh-Hant": "所得在基準中位數收入125%以下者，可全額免費獲得公團所屬專職律師出庭代理訴訟服務。",
+            "ko": "기준 중위소득 125% 이하 국민과 취약계층은 공단 소속 변호사 및 공익법무관의 무료 법률 지원을 받을 수 있습니다."
         },
         "example": {
             "en": "Call nationwide hotline 132 or book an in-person appointment via klac.or.kr.",
             "vi": "Gọi tổng đài pháp lý 132 hoặc đặt lịch hẹn gặp trực tiếp luật sư trên klac.or.kr.",
             "zh-Hans": "拨打全韩国统一法律咨询电话132，或在klac.or.kr在线预约就近分部的一对一面谈。",
-            "ja": "全国共通の電話相談「132」番、またはklac.or.krから最寄りの事務所への対面相談を事前予約します。"
+            "ja": "全国共通の電話相談「132」番、またはklac.or.krから最寄りの事務所への対面相談を事前予約します。",
+            "sq": "Call nationwide hotline 132 or book an in-person appointment via klac.or.kr.",
+            "hi": "देशव्यापी हेल्पलाइन 132 पर कॉल करें या klac.or.kr के माध्यम से व्यक्तिगत रूप से मिलने का अपॉइंटमेंट बुक करें।",
+            "ar": "في حال مماطلة صاحب العمل في سداد الراتب أو المؤجر في رد الوديعة، توفر الهيئة محاميًا يتولى رفع الدعوى القضائية نيابة عنك.",
+            "zh-Hant": "撥打全韓國統一法律諮詢電話132，或在klac.or.kr在線預約就近分部的一對一面談。",
+            "ko": "국번 없이 132로 전화하거나 대한법률구조공단 누리집(klac.or.kr)에서 방문 예약을 신청하세요."
         },
         "actionItem": {
             "en": "Book a legal consultation session at KLAC before signing settlement papers in any dispute.",
             "vi": "Đặt lịch tư vấn luật tại KLAC trước khi ký bất kỳ biên bản hòa giải hay thỏa thuận nào.",
             "zh-Hans": "在签署任何涉及纠纷的和解书之前，先向法律救助公团预约免费专家咨询。",
-            "ja": "トラブル時に不利な合意書にサインする前に、必ず公団の無料相談を予約しましょう。"
+            "ja": "トラブル時に不利な合意書にサインする前に、必ず公団の無料相談を予約しましょう。",
+            "sq": "Book a legal consultation session at KLAC before signing settlement papers in any dispute.",
+            "hi": "किसी भी विवाद में समझौते के दस्तावेज़ों पर हस्ताक्षर करने से पहले केएलएसी (KLAC) में कानूनी परामर्श सत्र बुक करें।",
+            "ar": "احجز موعد استشارة قانونية مجانية عبر موقع klac.or.kr أو اتصل بالرقم 132 المتاح بعدة لغات.",
+            "zh-Hant": "在簽署任何涉及糾紛的和解書之前，先向法律救助公團預約免費專家諮詢。",
+            "ko": "대한법률구조공단 홈페이지에서 무료 법률구조 지원 대상 자격을 확인하고 방문 상담을 예약하세요."
         }
     },
     {
@@ -807,31 +1807,56 @@ TOPICS_36 = [
             "en": "Youth Housing Subscription Accounts: Tax Deductions & 4.5% Preferential Rates",
             "vi": "Sổ tiết kiệm mua nhà thanh niên Hàn Quốc: Miễn thuế và lãi suất ưu đãi lên tới 4.5%",
             "zh-Hans": "韩国青年住宅认购综合储蓄账户高息免税与所得税减免全攻略",
-            "ja": "青年住宅請約総合貯蓄：非課税特典と最大4.5%の優遇金利活用法"
+            "ja": "青年住宅請約総合貯蓄：非課税特典と最大4.5%の優遇金利活用法",
+            "sq": "Youth Housing Subscription Accounts: Tax Deductions & 4.5% Preferential Rates",
+            "hi": "युवा आवास सदस्यता खाते: टैक्स छूट और 4.5% तरजीही ब्याज दर",
+            "ar": "حسابات ادخار الإسكان للشباب (청년주택드ريم청약통장): فوائد تفضيلية 4.5% وخصومات ضريبية",
+            "zh-Hant": "韓國青年住宅認購綜合儲蓄賬戶高息免稅與所得稅減免全攻略",
+            "ko": "청년 주택청약종합저축 비과세 소득공제"
         },
         "summary": {
             "en": "Boost your housing fund with Korean government matching interest rates and up to 1.2M KRW annual tax write-offs.",
             "vi": "Tích lũy tiền mua nhà tại Hàn Quốc với mức lãi suất ưu đãi 4.5% và được khấu trừ thuế hàng năm lên tới 1.2 triệu won.",
             "zh-Hans": "19至34岁青年认购账户享有最高4.5%高额利息，同时每年可享受最高120万韩元的个税所得扣除。",
-            "ja": "韓国で19〜34歳を対象に、最大4.5%の高金利と年120万ウォンの所得控除を兼ね備えた優遇口座を活用します。"
+            "ja": "韓国で19〜34歳を対象に、最大4.5%の高金利と年120万ウォンの所得控除を兼ね備えた優遇口座を活用します。",
+            "sq": "Boost your housing fund with Korean government matching interest rates and up to 1.2M KRW annual tax write-offs.",
+            "hi": "कोरियाई सरकार द्वारा समर्थित ब्याज दरों और प्रति वर्ष 1.2M KRW तक की टैक्स कटौती के साथ अपने हाउसिंग फंड को बढ़ाएं।",
+            "ar": "نصيحة عملية للإقامة في كوريا: دفتر ادخار سكني مدعوم حكوميًا يمنح الشباب بين 19 و34 عامًا عوائد مرتفعة وفرصة أولوية الفوز بشقق التمليك.",
+            "zh-Hant": "19至34歲青年認購賬戶享有最高4.5%高額利息，同時每年可享受最高120萬韓元的個稅所得扣除。",
+            "ko": "최고 연 4.5% 우대금리와 이자소득 비과세, 연 최대 120만 원 소득공제 혜택을 제공하는 청년 주택드림 청약통장에 가입하세요."
         },
         "principle": {
             "en": "Ages 19-34 with income under 50M KRW qualify for preferential 4.5% interest and 40% income deduction on deposits.",
             "vi": "Độ tuổi 19-34 có thu nhập dưới 50 triệu won được hưởng lãi suất 4.5% và khấu trừ 40% số tiền gửi vào thu nhập chịu thuế.",
             "zh-Hans": "年收入5,000万韩元以下的青年无房户主，享受利息非课税待遇以及入金金额40%的个税税前扣除。",
-            "ja": "年収5,000万ウォン以下の無住宅青年なら利息非課税および納付額の40%の所得控除が適用されます。"
+            "ja": "年収5,000万ウォン以下の無住宅青年なら利息非課税および納付額の40%の所得控除が適用されます。",
+            "sq": "Ages 19-34 with income under 50M KRW qualify for preferential 4.5% interest and 40% income deduction on deposits.",
+            "hi": "19-34 वर्ष की आयु और 50M KRW से कम वार्षिक आय वाले व्यक्ति 4.5% की विशेष ब्याज दर और जमा राशि पर 40% आयकर कटौती के पात्र हैं।",
+            "ar": "إيداع شهري يبدأ من 20,000 وون يمنحك فائدة 4.5% وخصمًا ضريبيًا سنويًا مع حق الاقتراض بفائدة مخفضة جدًا عند شراء منزلك الأول.",
+            "zh-Hant": "年收入5,000萬韓元以下的青年無房戶主，享受利息非課稅待遇以及入金金額40%的個稅稅前扣除。",
+            "ko": "만 19~34세 이하 청년(연 소득 5천만 원 이하)은 일반 청약통장 대비 높은 금리와 이자 비과세, 연말정산 납입액 40% 소득공제를 받습니다."
         },
         "example": {
             "en": "Depositing 200,000 KRW monthly earns 960,000 KRW in annual tax deduction value plus top-tier compound interest.",
             "vi": "Gửi 200.000 won mỗi tháng sẽ được hưởng 960.000 won khấu trừ thuế hàng năm cùng lãi suất tối đa.",
             "zh-Hans": "每月存入20万韩元，全年可获得96万韩元的个税税额抵扣额度，同时累积新房抽签优先顺位。",
-            "ja": "毎月20万ウォンを積み立てることで、年間96万ウォンの所得控除枠と最高水準の金利を享受できます。"
+            "ja": "毎月20万ウォンを積み立てることで、年間96万ウォンの所得控除枠と最高水準の金利を享受できます。",
+            "sq": "Depositing 200,000 KRW monthly earns 960,000 KRW in annual tax deduction value plus top-tier compound interest.",
+            "hi": "प्रति माह 200,000 KRW जमा करने पर आपको सालाना 960,000 KRW मूल्य की टैक्स कटौती और उत्कृष्ट चक्रवृद्धि ब्याज प्राप्त होता है।",
+            "ar": "التحويل من حساب 청약 القديم إلى حساب 청년주택드ريم الجديد يحفظ لك أقدميتك السابقة بالكامل مع التمتع بالفائدة الأعلى.",
+            "zh-Hant": "每月存入20萬韓元，全年可獲得96萬韓元的個稅稅額抵扣額度，同時累積新房抽籤優先順位。",
+            "ko": "매월 25만 원씩 연간 300만 원 납입 시 최대 120만 원의 소득공제 혜택과 시중금리 이상의 높은 우대이자를 챙길 수 있습니다."
         },
         "actionItem": {
             "en": "Switch your existing standard housing account to the Youth Leap Account at commercial banks.",
             "vi": "Chuyển đổi sổ tiết kiệm mua nhà hiện tại sang gói Sổ 청년 tại ngân hàng thương mại.",
             "zh-Hans": "携带所得金额证明与居民登记本，前往商业银行将普通认购存折转换为青年优待型存折。",
-            "ja": "所得証明を持参し、取引先銀行の窓口で一般口座から青年優遇型請約口座へ切り替えましょう。"
+            "ja": "所得証明を持参し、取引先銀行の窓口で一般口座から青年優遇型請約口座へ切り替えましょう。",
+            "sq": "Switch your existing standard housing account to the Youth Leap Account at commercial banks.",
+            "hi": "वाणिज्यिक बैंकों में जाकर अपने मौजूदा सामान्य हाउसिंग खाते को यूथ लीप अकाउंट (Youth Leap Account) में बदलें।",
+            "ar": "توجه لأي بنك كوري وافتح حساب '청년주택드ريم청약통장' ببطاقة الهوية وإثبات الدخل السنوي للاستفادة من الفائدة القصوى.",
+            "zh-Hant": "攜帶所得金額證明與居民登記本，前往商業銀行將普通認購存摺轉換爲青年優待型存摺。",
+            "ko": "주거래은행 모바일 앱에서 기존 주택청약통장을 청년 주택드림 청약통장으로 전환 신청하세요."
         }
     },
     {
@@ -840,31 +1865,56 @@ TOPICS_36 = [
             "en": "10% Government Cashback on Grade 1 Energy-Efficient Home Appliances",
             "vi": "Hoàn tiền 10% từ chính phủ khi mua thiết bị gia dụng tiết kiệm năng lượng cấp 1",
             "zh-Hans": "韩国购买1级高能效家电享受政府10%现金返还补贴政策",
-            "ja": "高効率1等級家電製品の購入時に政府から10%キャッシュバック"
+            "ja": "高効率1等級家電製品の購入時に政府から10%キャッシュバック",
+            "sq": "10% Government Cashback on Grade 1 Energy-Efficient Home Appliances",
+            "hi": "ग्रेड 1 ऊर्जा-कुशल घरेलू उपकरणों पर 10% सरकारी कैशबैक",
+            "ar": "استرداد نقدي حكومي بنسبة 10% عند شراء الأجهزة المنزلية الموفرة للطاقة (كفاءة الدرجة الأولى)",
+            "zh-Hant": "韓國購買1級高能效家電享受政府10%現金返還補貼政策",
+            "ko": "가전제품 1등급 환급사업 10% 지원"
         },
         "summary": {
             "en": "Get up to 300,000 KRW directly refunded by purchasing top energy-rated refrigerators, washers, or AC units in Korea.",
             "vi": "Nhận lại tới 300.000 won tiền mặt từ chính phủ Hàn Quốc khi sắm tủ lạnh, máy giặt, điều hòa tiết kiệm điện cấp 1.",
             "zh-Hans": "购买高能效1级冰箱、洗衣机、空调等家用电器，凭发票可在政府官网全额领回10%现金退款。",
-            "ja": "韓国でエネルギー消費効率1等級の家電を購入すると、購入額の10%（最大30万ウォン）が現金還元されます。"
+            "ja": "韓国でエネルギー消費効率1等級の家電を購入すると、購入額の10%（最大30万ウォン）が現金還元されます。",
+            "sq": "Get up to 300,000 KRW directly refunded by purchasing top energy-rated refrigerators, washers, or AC units in Korea.",
+            "hi": "दक्षिण कोरिया में उच्च ऊर्जा दक्षता रेटिंग वाले रेफ्रिजरेटर, वॉशिंग मशीन या एसी खरीदने पर 300,000 KRW तक का सीधा रिफंड प्राप्त करें।",
+            "ar": "نصيحة عملية للإقامة في كوريا: دعم نقدي حكومي يعيد 10% من قيمة الثلاجات والغسالات ومكيفات الهواء ذات كفاءة الطاقة من الدرجة الأولى.",
+            "zh-Hant": "購買高能效1級冰箱、洗衣機、空調等家用電器，憑發票可在政府官網全額領回10%現金退款。",
+            "ko": "에너지 소비효율 1등급 가전제품 구매 시 정부에서 구매 금액의 10%(가구당 최대 30만 원)를 현금 환급해 주는 지원 사업을 신청하세요."
         },
         "principle": {
             "en": "Eligible households claim 10% of appliance purchase prices back (up to 300,000 KRW per home) through KEPCO budget initiatives.",
             "vi": "Mỗi hộ gia đình đủ điều kiện được hoàn 10% giá trị sản phẩm (tối đa 300.000 won) qua quỹ của Tập đoàn Điện lực Hàn Quốc.",
             "zh-Hans": "韩国电力公社为高能效家电提供10%政府财政补贴，每户家庭上限可达30万韩元。",
-            "ja": "韓国電力公社が主導し、1等級家電製品の領収書とエネルギー効率ラベルの提出で10%が口座返還されます。"
+            "ja": "韓国電力公社が主導し、1等級家電製品の領収書とエネルギー効率ラベルの提出で10%が口座返還されます。",
+            "sq": "Eligible households claim 10% of appliance purchase prices back (up to 300,000 KRW per home) through KEPCO budget initiatives.",
+            "hi": "पात्र परिवार KEPCO की बजट योजना के तहत उपकरण खरीद मूल्य का 10% (प्रति परिवार 300,000 KRW तक) वापस पा सकते हैं।",
+            "ar": "المشروع الحكومي للأسر المؤهلة يعيد ما يصل إلى 300,000 وون نقدًا بحسابك البنكي لتشجيع شراء الأجهزة عالية الكفاءة (1등급).",
+            "zh-Hant": "韓國電力公社爲高能效家電提供10%政府財政補貼，每戶家庭上限可達30萬韓元。",
+            "ko": "한전 고효율 가전제품 구매비용 지원사업 대상(다자녀, 대가족, 출산가구, 복지할인 가구)은 에너지 효율 최고 등급 가전 구매 시 10~20% 환급금을 받습니다."
         },
         "example": {
             "en": "Buying a 1.5M KRW Grade-1 refrigerator yields an immediate 150,000 KRW cash rebate straight into your account.",
             "vi": "Mua tủ lạnh cấp 1 trị giá 1.5 triệu won sẽ nhận lại ngay 150.000 won tiền mặt chuyển thẳng vào tài khoản ngân hàng.",
             "zh-Hans": "购买一台150万韩元的高能效1级双开门冰箱，审核后将有15万韩元现金直接转账至买家账户。",
-            "ja": "150万ウォンの1等級冷蔵庫を購入した場合、申請により15万ウォンが銀行口座へ直接キャッシュバックされます。"
+            "ja": "150万ウォンの1等級冷蔵庫を購入した場合、申請により15万ウォンが銀行口座へ直接キャッシュバックされます。",
+            "sq": "Buying a 1.5M KRW Grade-1 refrigerator yields an immediate 150,000 KRW cash rebate straight into your account.",
+            "hi": "15 लाख KRW का ग्रेड-1 रेफ्रिजरेटर खरीदने पर सीधे आपके बैंक खाते में 150,000 KRW की नकद छूट मिलती है।",
+            "ar": "شراء غسالة أو ثلاجة درجة أولى بقيمة 1.5 مليون وون يمنحك استردادًا نقديًا مباشرًا بقيمة 150,000 وون عبر رفع الفاتورة للموقع.",
+            "zh-Hant": "購買一臺150萬韓元的高能效1級雙開門冰箱，審覈後將有15萬韓元現金直接轉賬至買家賬戶。",
+            "ko": "1등급 냉장고나 세탁기를 150만 원에 구매한 뒤 영수증과 에너지 라벨을 제출하면 15만 원의 지원금이 계좌로 입금됩니다."
         },
         "actionItem": {
             "en": "Take photos of the appliance energy label and product barcode before throwing away packaging.",
             "vi": "Chụp ảnh nhãn năng lượng và mã vạch sản phẩm trước khi vứt vỏ thùng thiết bị.",
             "zh-Hans": "家电安装时务必拍照保留机器侧面的能效等级铭牌以及序列号条形码。",
-            "ja": "梱包箱を破棄する前に製品のエネルギー効率ラベルと製造番号バーコードを撮影しておきましょう。"
+            "ja": "梱包箱を破棄する前に製品のエネルギー効率ラベルと製造番号バーコードを撮影しておきましょう。",
+            "sq": "Take photos of the appliance energy label and product barcode before throwing away packaging.",
+            "hi": "पैकेजिंग फेंकने से पहले उपकरण के एनर्जी लेबल और उत्पाद बारकोड की तस्वीरें खींच लें।",
+            "ar": "تأكد من وجود ملصق كفاءة الطاقة '1등급' على الجهاز واحتفظ بالفاتورة وملصق الرقم التسلسلي لرفع طلب الدعم.",
+            "zh-Hant": "家電安裝時務必拍照保留機器側面的能效等級銘牌以及序列號條形碼。",
+            "ko": "한전 고효율 가전 구매비용 지원사업 홈페이지(en-ter.co.kr)에서 지원 대상 여부를 조회하세요."
         }
     },
     {
@@ -873,31 +1923,56 @@ TOPICS_36 = [
             "en": "Tomorrow Learning Card: 3 to 5 Million KRW Vocational Training Grants",
             "vi": "Thẻ học tập ngày mai (Naeil Baeum Card): Hỗ trợ chi phí đào tạo nghề từ 3 đến 5 triệu won",
             "zh-Hans": "韩国明日学业卡(Naeil Baeum Card)：300~500万韩元职业技能培训补助金",
-            "ja": "韓国の明日学習カード（ネイルペウムカード）：300〜500万ウォンの職業訓練支援金"
+            "ja": "韓国の明日学習カード（ネイルペウムカード）：300〜500万ウォンの職業訓練支援金",
+            "sq": "Tomorrow Learning Card: 3 to 5 Million KRW Vocational Training Grants",
+            "hi": "टुमॉरो लर्निंग कार्ड (Tomorrow Learning Card): 30 से 50 लाख KRW का व्यावसायिक प्रशिक्षण अनुदान",
+            "ar": "بطاقة التعلم للغد (내일배움카드): منح تدريب مهني تصل إلى 5 ملايين وون لجميع المقيمين المؤهلين",
+            "zh-Hant": "韓國明日學業卡(Naeil Baeum Card)：300~500萬韓元職業技能培訓補助金",
+            "ko": "재직자 내일배움카드로 교육비 300~500만 원 지원"
         },
         "summary": {
             "en": "Subsidize professional upskilling in coding, design, nursing, accounting, and foreign languages via government cards.",
             "vi": "Được chính phủ Hàn Quốc chi trả 3 đến 5 triệu won học phí để học lập trình, thiết kế, tiếng Hàn và nghiệp vụ kế toán.",
             "zh-Hans": "无论在职还是待业，申领韩国劳动部“明日学业卡”，享受最高500万韩元的职业技能课程官方学费资助。",
-            "ja": "プログラミング、デザイン、韓国語、専門資格取得の学費を国が最大500万ウォンまで補助します。"
+            "ja": "プログラミング、デザイン、韓国語、専門資格取得の学費を国が最大500万ウォンまで補助します。",
+            "sq": "Subsidize professional upskilling in coding, design, nursing, accounting, and foreign languages via government cards.",
+            "hi": "सरकारी कार्ड के जरिए कोडिंग, डिजाइनिंग, नर्सिंग, अकाउंटिंग और विदेशी भाषाओं में पेशेवर कौशल बढ़ाने के लिए सब्सिडी प्राप्त करें।",
+            "ar": "نصيحة عملية للإقامة في كوريا: تمويل حكومي رسمي يغطي 45% إلى 85% من تكاليف تعلم البرمجة والطهي واللغات والمهارات المهنية المتخصصة.",
+            "zh-Hant": "無論在職還是待業，申領韓國勞動部“明日學業卡”，享受最高500萬韓元的職業技能課程官方學費資助。",
+            "ko": "고용노동부 국민내일배움카드를 발급받아 직무 역량 강화와 이직에 필요한 학원비 및 온·오프라인 교육비를 300만~500만 원 지원받으세요."
         },
         "principle": {
             "en": "All citizens and eligible long-term foreign residents receive 3M KRW base credit (expandable to 5M KRW for eligible tiers) over 5 years.",
             "vi": "Mọi người dân và người nước ngoài cư trú dài hạn đủ điều kiện được cấp 3 triệu won hạn mức học tập trong 5 năm.",
             "zh-Hans": "符合在韩居留条件的劳动者均可获得为期5年、额度300万至500万韩元的国费培训补贴账户。",
-            "ja": "5年間有効の口座に国から基本300万〜最大500万ウォンの訓練費がチャージされ受講料の大部分が充当されます。"
+            "ja": "5年間有効の口座に国から基本300万〜最大500万ウォンの訓練費がチャージされ受講料の大部分が充当されます。",
+            "sq": "All citizens and eligible long-term foreign residents receive 3M KRW base credit (expandable to 5M KRW for eligible tiers) over 5 years.",
+            "hi": "सभी नागरिकों और पात्र दीर्घकालिक विदेशी निवासियों को 5 वर्षों की अवधि के लिए 30 लाख KRW का आधार क्रेडिट (पात्र श्रेणियों के लिए 50 लाख KRW तक) मिलता है।",
+            "ar": "بطاقة تمنح كل متقدم ما بين 3 إلى 5 ملايين وون على مدار 5 سنوات للدراسة في آلاف الأكاديميات والمعاهد المعتمدة على مستوى كوريا.",
+            "zh-Hant": "符合在韓居留條件的勞動者均可獲得爲期5年、額度300萬至500萬韓元的國費培訓補貼賬戶。",
+            "ko": "실업자, 재직자, 프리랜서 등 국민 누구나 직업능력개발계좌를 통해 국비 지원 훈련비의 45~85%를 정부가 직접 지원합니다."
         },
         "example": {
             "en": "A 1,000,000 KRW data analysis or barista academy course requires as little as 100,000 KRW out-of-pocket payment.",
             "vi": "Khóa học phân tích dữ liệu hoặc pha chế cà phê 1 triệu won chỉ phải tự đóng khoảng 100.000 won tiền túi.",
             "zh-Hans": "原价100万韩元的软件工程师或咖啡师课程，使用该卡抵扣后个人仅需自付约10万韩元左右。",
-            "ja": "通常100万ウォンのデータ分析やバリスタ養成講座を、自己負担わずか10万ウォン程度で受講できます。"
+            "ja": "通常100万ウォンのデータ分析やバリスタ養成講座を、自己負担わずか10万ウォン程度で受講できます。",
+            "sq": "A 1,000,000 KRW data analysis or barista academy course requires as little as 100,000 KRW out-of-pocket payment.",
+            "hi": "1,000,000 KRW के डेटा विश्लेषण या बरिस्ता अकादमी कोर्स के लिए आपको अपनी जेब से केवल 100,000 KRW का भुगतान करना पड़ सकता है।",
+            "ar": "دورة تدريبية في الذكاء الاصطناعي أو التصميم تكلفتها 2 مليون وون يمكن دراستها بدفع مساهمة شخصية بسيطة لا تتجاوز 200 ألف وون.",
+            "zh-Hant": "原價100萬韓元的軟件工程師或咖啡師課程，使用該卡抵扣後個人僅需自付約10萬韓元左右。",
+            "ko": "직무에 필요한 코딩, AI 데이터 분석, 세무회계, 공인 어학 자격증 국비 지원 강좌를 자부담금 일부만 내고 수강할 수 있습니다."
         },
         "actionItem": {
             "en": "Apply for your digital Tomorrow Learning Card on the official HRD-Net website (hrd.go.kr).",
             "vi": "Đăng ký cấp thẻ học tập trực tuyến trên website HRD-Net (hrd.go.kr).",
             "zh-Hans": "登录韩国雇佣劳动部HRD-Net官网（hrd.go.kr）在线申请开卡并挑选认证培训机构。",
-            "ja": "雇用労働部HRD-Net（hrd.go.kr）からオンラインでカード発給を申請しましょう。"
+            "ja": "雇用労働部HRD-Net（hrd.go.kr）からオンラインでカード発給を申請しましょう。",
+            "sq": "Apply for your digital Tomorrow Learning Card on the official HRD-Net website (hrd.go.kr).",
+            "hi": "आधिकारिक HRD-Net वेबसाइट (hrd.go.kr) पर अपने डिजिटल टुमॉरो लर्निंग कार्ड के लिए आवेदन करें।",
+            "ar": "قدم على بطاقة '국민내일배움카드' عبر بوابة العمل الحكومية hrd.go.kr واستلم البطاقة البنكية لبدء دوراتك.",
+            "zh-Hant": "登錄韓國僱傭勞動部HRD-Net官網（hrd.go.kr）在線申請開卡並挑選認證培訓機構。",
+            "ko": "고용24(work24.go.kr)에 접속해 국민내일배움카드 발급을 신청하고 개설 훈련과정을 검색해 보세요."
         }
     },
     {
@@ -906,31 +1981,56 @@ TOPICS_36 = [
             "en": "Free Metabolic Syndrome Health Checks & Nutrition Guidance at Local Public Clinics",
             "vi": "Kiểm tra hội chứng chuyển hóa và tư vấn dinh dưỡng miễn phí tại Trạm y tế (Bo-geon-so)",
             "zh-Hans": "韩国社区保健所免费代谢综合征健康体检与一对一营养健康指导",
-            "ja": "韓国の保健所での無料メタボリックシンドローム検査と栄養相談"
+            "ja": "韓国の保健所での無料メタボリックシンドローム検査と栄養相談",
+            "sq": "Free Metabolic Syndrome Health Checks & Nutrition Guidance at Local Public Clinics",
+            "hi": "स्थानीय सार्वजनिक स्वास्थ्य केंद्रों में मुफ्त मेटाबोलिक सिंड्रोम जांच और पोषण परामर्श",
+            "ar": "فحوصات متلازمة الأيض والتوجيه الغذائي المجاني في المراكز الصحية المحلية (보건소)",
+            "zh-Hant": "韓國社區保健所免費代謝綜合徵健康體檢與一對一營養健康指導",
+            "ko": "보건소 무료 대사증후군 검사와 영양 상담"
         },
         "summary": {
             "en": "Monitor cholesterol, blood sugar, visceral fat, and body composition for free at municipal health centers (Bogeonso).",
             "vi": "Đo mỡ máu, đường huyết, phân tích cơ thể InBody và nhận tư vấn bác sĩ miễn phí tại Trạm y tế địa phương.",
             "zh-Hans": "无需支付昂贵体检费，在居住地保健所免费检测血压、血糖、胆固醇及InBody人体成分深度分析。",
-            "ja": "近所の保健所で血圧、血糖、コレステロール、InBody体成分分析を完全無料で受診できます。"
+            "ja": "近所の保健所で血圧、血糖、コレステロール、InBody体成分分析を完全無料で受診できます。",
+            "sq": "Monitor cholesterol, blood sugar, visceral fat, and body composition for free at municipal health centers (Bogeonso).",
+            "hi": "नगरपालिका स्वास्थ्य केंद्रों (Bogeonso) में कोलेस्ट्रॉल, ब्लड शुगर, विसरल फैट और शरीर संरचना की मुफ्त जांच कराएं।",
+            "ar": "نصيحة عملية للإقامة في كوريا: فحص مجاني شامل لدهون الدم وسكر الدم وضغط الدم مع تحليل مكونات الجسم (InBody) بمركز الصحة ببلديتك.",
+            "zh-Hant": "無需支付昂貴體檢費，在居住地保健所免費檢測血壓、血糖、膽固醇及InBody人體成分深度分析。",
+            "ko": "거주지 관할 보건소에서 혈압, 혈당, 콜레스테롤, 복부비만 등 대사증후군 무료 검사를 받고 전담 의료진의 1:1 맞춤 영양 관리를 받으세요."
         },
         "principle": {
             "en": "Public health centers test blood pressure, glucose, HDL/LDL, and triglycerides with on-the-spot physician feedback.",
             "vi": "Trạm y tế xét nghiệm máu, đo chỉ số mỡ nội tạng và tư vấn chế độ ăn uống, tập luyện hoàn toàn miễn phí.",
             "zh-Hans": "社区保健所为居民提供免挂号费的指尖采血快速检测，10分钟出具心血管健康评估报告与运动方案。",
-            "ja": "指先採血によるわずか10分の簡易検査で脂質・血糖の数値を測定し、専門栄養士が改善指導を行います。"
+            "ja": "指先採血によるわずか10分の簡易検査で脂質・血糖の数値を測定し、専門栄養士が改善指導を行います。",
+            "sq": "Public health centers test blood pressure, glucose, HDL/LDL, and triglycerides with on-the-spot physician feedback.",
+            "hi": "सार्वजनिक स्वास्थ्य केंद्र ब्लड प्रेशर, ग्लूकोज, HDL/LDL और ट्राइग्लिसराइड्स की जांच करते हैं और चिकित्सक द्वारा तुरंत परामर्श प्रदान करते हैं।",
+            "ar": "مراكز الرعاية الصحية الحكومية (보건소) تقدم فحوصات مخبرية دقيقة واستشارات أخصائيي تغذية مجانًا لكل المقيمين في الحي دون أي رسوم.",
+            "zh-Hant": "社區保健所爲居民提供免掛號費的指尖採血快速檢測，10分鐘出具心血管健康評估報告與運動方案。",
+            "ko": "지자체 보건소는 만 20세 이상 주민을 대상으로 심뇌혈관 질환 조기 발견을 위한 무료 혈액 검사와 체성분 분석, 맞춤형 운동 처방을 무료로 제공합니다."
         },
         "example": {
             "en": "Fast for 8 hours overnight, walk into your local district Bogeonso, and receive free tailored health management.",
             "vi": "Nhịn ăn 8 tiếng qua đêm, đến Trạm y tế quận gần nhất vào buổi sáng để được thăm khám miễn phí.",
             "zh-Hans": "早晨空腹前往所在区厅下属保健所，即可免费获得定制的低盐饮食食谱与免费体脂测量。",
-            "ja": "朝食を抜いて区の保健所を訪問するだけで、精密な健康評価と運動指導が無料で提供されます。"
+            "ja": "朝食を抜いて区の保健所を訪問するだけで、精密な健康評価と運動指導が無料で提供されます。",
+            "sq": "Fast for 8 hours overnight, walk into your local district Bogeonso, and receive free tailored health management.",
+            "hi": "रात भर 8 घंटे का उपवास रखें, अपने स्थानीय जिला स्वास्थ्य केंद्र (Bogeonso) जाएं और मुफ्त व्यक्तिगत स्वास्थ्य प्रबंधन सेवाएं प्राप्त करें।",
+            "ar": "زيارة 보건소 صباحًا وأنت صائم تمنحك نتائج تحليل السكر والكوليسترول وتوزيع العضلات والدهون في 15 دقيقة مجانًا.",
+            "zh-Hant": "早晨空腹前往所在區廳下屬保健所，即可免費獲得定製的低鹽飲食食譜與免費體脂測量。",
+            "ko": "보건소 방문 후 10분 만에 혈액 검사와 인바디 측정을 마치고 전담 간호사와 영양사로부터 식습관 개선 솔루션을 무료로 안내받습니다."
         },
         "actionItem": {
             "en": "Call your district Bogeonso (public health center) to schedule a free metabolic syndrome screening.",
             "vi": "Gọi điện cho Trạm y tế quận gần nhất để đặt lịch kiểm tra miễn phí.",
             "zh-Hans": "拨打所在区保健所电话预约免费代谢健康检查时段。",
-            "ja": "管轄の保健所に電話をして代謝症候群（メタボ）無料検査の予約を取りましょう。"
+            "ja": "管轄の保健所に電話をして代謝症候群（メタボ）無料検査の予約を取りましょう。",
+            "sq": "Call your district Bogeonso (public health center) to schedule a free metabolic syndrome screening.",
+            "hi": "मुफ्त मेटाबोलिक सिंड्रोम स्क्रीनिंग शेड्यूल करने के लिए अपने जिला स्वास्थ्य केंद्र (Bogeonso) को कॉल करें।",
+            "ar": "اتصل بمركز الرعاية الصحية (보건소) التابع لحيك واحجز فحص متلازمة الأيض المجاني واختبار InBody.",
+            "zh-Hant": "撥打所在區保健所電話預約免費代謝健康檢查時段。",
+            "ko": "관할 구청 보건소 홈페이지 대사증후군 관리센터에서 무료 검진 일정을 확인하고 예약하세요."
         }
     },
     {
@@ -939,31 +2039,56 @@ TOPICS_36 = [
             "en": "Culture Day Perks: 50% Movie Tickets & Free Museum Admissions Across Korea",
             "vi": "Ưu đãi Ngày văn hóa: Giảm 50% vé xem phim và miễn phí bảo tàng khắp Hàn Quốc",
             "zh-Hans": "韩国“文化之日”福利：每月最后周三电影半价与国立场馆免费开放",
-            "ja": "韓国の「文化のある日」特典：毎月最終水曜の映画半額と国立施設無料入場"
+            "ja": "韓国の「文化のある日」特典：毎月最終水曜の映画半額と国立施設無料入場",
+            "sq": "Culture Day Perks: 50% Movie Tickets & Free Museum Admissions Across Korea",
+            "hi": "संस्कृति दिवस (Culture Day) के लाभ: पूरे कोरिया में मूवी टिकटों पर 50% छूट और संग्रहालयों में मुफ्त प्रवेश",
+            "ar": "مزايا يوم الثقافة الكوري (문화가 있는 날): خصم 50% على تذاكر السينما ودخول المتاحف مجانًا",
+            "zh-Hant": "韓國“文化之日”福利：每月最後週三電影半價與國立場館免費開放",
+            "ko": "문화가 있는 날(매월 마지막 수요일) 혜택"
         },
         "summary": {
             "en": "Enjoy half-price cinema tickets and free admission to ancient royal palaces, galleries, and sports games every month.",
             "vi": "Xem phim chiếu rạp chỉ với nửa giá và vào cửa miễn phí các cung điện cổ kính, bảo tàng vào thứ Tư cuối cùng hàng tháng.",
             "zh-Hans": "每月最后一个星期三是韩国国家文化之日，各大影院晚间电影半价，景福宫等古宫与国立博物馆全免门票。",
-            "ja": "毎月最終水曜日は韓国の主要シネコンの映画が半額、景福宮などの古宮や美術館が無料開放されます。"
+            "ja": "毎月最終水曜日は韓国の主要シネコンの映画が半額、景福宮などの古宮や美術館が無料開放されます。",
+            "sq": "Enjoy half-price cinema tickets and free admission to ancient royal palaces, galleries, and sports games every month.",
+            "hi": "हर महीने सिनेमा टिकटों पर 50% की छूट का लाभ उठाएं और ऐतिहासिक शाही महलों, कला दीर्घाओं और खेल आयोजनों में मुफ्त प्रवेश पाएं।",
+            "ar": "نصيحة عملية للإقامة في كوريا: الأربعاء الأخير من كل شهر يقدم تذاكر سينما بـ 7,000 وون في CGV وLotte Cinema ودخولاً مجانيًا للقصور الملكية.",
+            "zh-Hant": "每月最後一個星期三是韓國國家文化之日，各大影院晚間電影半價，景福宮等古宮與國立博物館全免門票。",
+            "ko": "매월 마지막 수요일 '문화가 있는 날'을 활용하여 50% 반값 영화 관람과 4대 고궁·국립 박물관 무료입장 혜택을 마음껏 누리세요."
         },
         "principle": {
             "en": "On the last Wednesday of each month, CGV/Lotte/Megabox offer 7,000 KRW tickets (5-9 PM), and palaces open for free.",
             "vi": "Vào thứ Tư cuối cùng của tháng, vé phim CGV/Lotte/Megabox từ 17h-21h chỉ còn 7.000 won, các cung điện mở cửa miễn phí.",
             "zh-Hans": "CGV、乐天影院、Megabox在17点至21点开场电影票统一降至7,000韩元，四大宫殿与宗庙免门票。",
-            "ja": "CGV・ロッテシネマ・メガボックスで夕方17〜21時上映の映画が7,000ウォン均一になり、四大宮殿が入場無料となります。"
+            "ja": "CGV・ロッテシネマ・メガボックスで夕方17〜21時上映の映画が7,000ウォン均一になり、四大宮殿が入場無料となります。",
+            "sq": "On the last Wednesday of each month, CGV/Lotte/Megabox offer 7,000 KRW tickets (5-9 PM), and palaces open for free.",
+            "hi": "प्रत्येक महीने के अंतिम बुधवार को, CGV/Lotte/Megabox 7,000 KRW में टिकट (शाम 5 से 9 बजे) प्रदान करते हैं, और महल आम जनता के लिए मुफ्त खोले जाते हैं।",
+            "ar": "بين الساعة 5 و9 مساءً في آخر أربعاء من كل شهر، تفتح القصور الملكية الأربعة في سيول مجانًا وتنخفض تذاكر السينما والمسارح بنسبة 50%.",
+            "zh-Hant": "CGV、樂天影院、Megabox在17點至21點開場電影票統一降至7,000韓元，四大宮殿與宗廟免門票。",
+            "ko": "매달 마지막 주 수요일 저녁(17시~21시) CGV, 롯데시네마, 메가박스 등 주요 극장 영화표가 7,000원에 제공되며 주요 국공립 문화시설이 무료 개방됩니다."
         },
         "example": {
             "en": "A prime-time movie ticket drops from 15,000 KRW to 7,000 KRW, saving 8,000 KRW per person.",
             "vi": "Vé phim giờ vàng 15.000 won giảm xuống chỉ còn 7.000 won, tiết kiệm 8.000 won cho mỗi người.",
             "zh-Hans": "原价15,000韩元的黄金档电影票直接立减至7,000韩元，两人观影即可立省16,000韩元。",
-            "ja": "通常15,000ウォンの映画チケットが7,000ウォンに割引され、手軽に文化体験を楽しめます。"
+            "ja": "通常15,000ウォンの映画チケットが7,000ウォンに割引され、手軽に文化体験を楽しめます。",
+            "sq": "A prime-time movie ticket drops from 15,000 KRW to 7,000 KRW, saving 8,000 KRW per person.",
+            "hi": "प्राइम-टाइम मूवी टिकट की कीमत 15,000 KRW से घटकर 7,000 KRW हो जाती है, जिससे प्रति व्यक्ति 8,000 KRW की बचत होती है।",
+            "ar": "دخول قصر غيونغبوك وشانغدوك مجاني تمامًا طوال يوم الأربعاء الثقافي، وتذاكر أفلام السينما المسائية بنصف السعر المعتاد.",
+            "zh-Hant": "原價15,000韓元的黃金檔電影票直接立減至7,000韓元，兩人觀影即可立省16,000韓元。",
+            "ko": "1인당 15,000원인 주말 영화 관람료를 7,000원으로 대폭 절감하고 경복궁, 창덕궁 등 4대 고궁을 무료로 관람할 수 있습니다."
         },
         "actionItem": {
             "en": "Check upcoming Culture Day special performance schedules on culture.go.kr.",
             "vi": "Xem lịch biểu diễn đặc biệt của Ngày văn hóa trên culture.go.kr.",
             "zh-Hans": "在手机日历中标注每月最后周三，并登录culture.go.kr查看当月特别文化汇演。",
-            "ja": "カレンダーの月末水曜日に印をつけ、culture.go.krで今月の割引施設を確認しましょう。"
+            "ja": "カレンダーの月末水曜日に印をつけ、culture.go.krで今月の割引施設を確認しましょう。",
+            "sq": "Check upcoming Culture Day special performance schedules on culture.go.kr.",
+            "hi": "culture.go.kr पर आगामी संस्कृति दिवस के विशेष कार्यक्रमों का विवरण और शेड्यूल देखें।",
+            "ar": "احجز تذاكر السينما ليوم الأربعاء الأخير من الشهر مبكرًا عبر تطبيق السينما للاستفادة من تسعيرة 7,000 وون الترويجية.",
+            "zh-Hant": "在手機日曆中標註每月最後週三，並登錄culture.go.kr查看當月特別文化匯演。",
+            "ko": "문화가 있는 날 공식 누리집(culture.go.kr)에서 이번 달 할인 공연과 무료 전시 일정을 확인하세요."
         }
     },
     {
@@ -972,31 +2097,56 @@ TOPICS_36 = [
             "en": "Free Doorstep Disposal & Recycling Collection for Heavy Waste Electronics",
             "vi": "Dịch vụ thu gom đồ điện tử cũ cồng kềnh miễn phí tận nhà tại Hàn Quốc",
             "zh-Hans": "韩国大型废旧家电免费上门回收清运便民服务指南",
-            "ja": "韓国の大型廃家電製品の無料訪問回収サービス利用法"
+            "ja": "韓国の大型廃家電製品の無料訪問回収サービス利用法",
+            "sq": "Free Doorstep Disposal & Recycling Collection for Heavy Waste Electronics",
+            "hi": "भारी इलेक्ट्रॉनिक कचरे के लिए मुफ्त डोरस्टेप निपटान और रीसाइक्लिंग संग्रह",
+            "ar": "الخدمة الحكومية المجانية لجمع وتدوير الأجهزة الكهربائية المنزلية الثقيلة من باب منزلك",
+            "zh-Hant": "韓國大型廢舊家電免費上門回收清運便民服務指南",
+            "ko": "폐가전제품 무상 방문 수거 서비스"
         },
         "summary": {
             "en": "Dispose of old TVs, washers, refrigerators, and computers for free without buying municipal waste sticker tags.",
             "vi": "Vứt bỏ tivi, máy giặt, tủ lạnh, máy tính cũ hoàn toàn miễn phí mà không cần tốn tiền mua tem dán rác thải cồng kềnh.",
             "zh-Hans": "淘汰废旧冰箱、洗衣机、电视和电脑时，无需花钱购买垃圾分类排放贴纸，专业团队免费入户搬运。",
-            "ja": "粗大ゴミ処理シールの購入不要で、冷蔵庫や洗濯機、PCを回収員が自宅まで無料で引き取りに来てくれます。"
+            "ja": "粗大ゴミ処理シールの購入不要で、冷蔵庫や洗濯機、PCを回収員が自宅まで無料で引き取りに来てくれます。",
+            "sq": "Dispose of old TVs, washers, refrigerators, and computers for free without buying municipal waste sticker tags.",
+            "hi": "नगरपालिका अपशिष्ट स्टीकर टैग खरीदे बिना पुराने टीवी, वॉशिंग मशीन, रेफ्रिजरेटर और कंप्यूटर का मुफ्त में सुरक्षित निपटान करें।",
+            "ar": "نصيحة عملية للإقامة في كوريا: التخلص المجاني من الثلاجات والغسالات والتلفزيونات القديمة دون الحاجة لشراء ملصقات النفايات الكبيرة.",
+            "zh-Hant": "淘汰廢舊冰箱、洗衣機、電視和電腦時，無需花錢購買垃圾分類排放貼紙，專業團隊免費入戶搬運。",
+            "ko": "버리기 무거운 냉장고, 세탁기, 에어컨, TV 등 폐가전을 지자체 폐기물 스티커 구매 없이 전담 수거팀의 무료 방문 수거 서비스로 배출하세요."
         },
         "principle": {
             "en": "The national e-Waste recycling council dispatches dedicated movers directly to your home to collect discarded electronics at zero cost.",
             "vi": "Hiệp hội tái chế cử nhân viên đến tận nhà thu gom và tái chế đồ điện gia dụng hoàn toàn miễn phí.",
             "zh-Hans": "由韩国环境保护公团与家电协会联合运营，只需预约即可享受专业工作人员上门搬运与环保拆解。",
-            "ja": "全国廃家電回収リサイクル事業団により、予約日に作業員が玄関先まで無料で引き取りに来ます。"
+            "ja": "全国廃家電回収リサイクル事業団により、予約日に作業員が玄関先まで無料で引き取りに来ます。",
+            "sq": "The national e-Waste recycling council dispatches dedicated movers directly to your home to collect discarded electronics at zero cost.",
+            "hi": "राष्ट्रीय ई-कचरा रीसाइक्लिंग परिषद उपयोग से बाहर हो चुके इलेक्ट्रॉनिक उपकरणों को बिना किसी शुल्क के उठाने के लिए कर्मचारियों को सीधे आपके घर भेजती है।",
+            "ar": "عمال الجمعية الحكومية لتدوير الإلكترونيات يزورون منزلك وينقلون الأجهزة الكهربائية الكبيرة مجانًا بموجب حجز إلكتروني مسبق.",
+            "zh-Hant": "由韓國環境保護公團與家電協會聯合運營，只需預約即可享受專業工作人員上門搬運與環保拆解。",
+            "ko": "한국전자제품자원순환공제조합이 운영하는 국가 무상 방문수거 서비스로, 수수료 0원에 기사가 직접 가정집 내부까지 방문하여 수거합니다."
         },
         "example": {
             "en": "Disposing of a large refrigerator normally costs 15,000 KRW in sticker fees, but is 100% free via 15990903.or.kr.",
             "vi": "Vứt tủ lạnh lớn bình thường mất 15.000 won tiền tem, nhưng sẽ miễn phí 100% nếu đặt qua 15990903.or.kr.",
             "zh-Hans": "排放大型双门冰箱通常需购买1.5万韩元的市政大件贴纸，通过该服务预约则一分钱不用花。",
-            "ja": "大型冷蔵庫の廃棄には通常15,000ウォン程度の粗大ゴミ券が必要ですが、このサービスなら完全無料です。"
+            "ja": "大型冷蔵庫の廃棄には通常15,000ウォン程度の粗大ゴミ券が必要ですが、このサービスなら完全無料です。",
+            "sq": "Disposing of a large refrigerator normally costs 15,000 KRW in sticker fees, but is 100% free via 15990903.or.kr.",
+            "hi": "एक बड़े रेफ्रिजरेटर को फेंकने में आमतौर पर स्टीकर शुल्क के 15,000 KRW खर्च होते हैं, लेकिन 15990903.or.kr के माध्यम से यह पूरी तरह से मुफ्त है।",
+            "ar": "بدلاً من دفع 10,000 وون لملصق نفايات الثلاجة وحملها للشارع، يقوم فريق الجمع بزيارة منزلك ونقلها مجانًا تمامًا.",
+            "zh-Hant": "排放大型雙門冰箱通常需購買1.5萬韓元的市政大件貼紙，通過該服務預約則一分錢不用花。",
+            "ko": "대형 냉장고 폐기 시 보통 15,000원 상당의 대형폐기물 스티커를 부착해야 하지만, 1599-0903 예약 시 100% 무료로 수거해 갑니다."
         },
         "actionItem": {
             "en": "Schedule your free pickup date online at 15990903.or.kr or call hotline 1599-0903.",
             "vi": "Đặt lịch hẹn thu gom miễn phí trên 15990903.or.kr hoặc gọi số 1599-0903.",
             "zh-Hans": "登录15990903.or.kr或拨打1599-0903官方服务热线预约上门搬运日期。",
-            "ja": "15990903.or.krのサイトまたは電話1599-0903から訪問回収を事前予約しましょう。"
+            "ja": "15990903.or.krのサイトまたは電話1599-0903から訪問回収を事前予約しましょう。",
+            "sq": "Schedule your free pickup date online at 15990903.or.kr or call hotline 1599-0903.",
+            "hi": "15990903.or.kr पर ऑनलाइन अपनी मुफ्त पिकअप तिथि निर्धारित करें या हेल्पलाइन 1599-0903 पर कॉल करें।",
+            "ar": "احجز موعد الجمع المجاني عبر الموقع الرسمي 15440997.or.kr وحدد الأجهزة التي ترغب في التخلص منها.",
+            "zh-Hant": "登錄15990903.or.kr或撥打1599-0903官方服務熱線預約上門搬運日期。",
+            "ko": "폐가전 무상방문수거 배출예약시스템(15990903.or.kr)에서 원하는 방문 수거 날짜를 예약하세요."
         }
     },
     {
@@ -1005,31 +2155,56 @@ TOPICS_36 = [
             "en": "Jeonse Deposit Guarantee Insurance (HUG/SGI): 100% Protection Against Default",
             "vi": "Bảo hiểm bảo lãnh hoàn trả tiền cọc thuê nhà (HUG/SGI): Bảo đảm 100% tiền cọc an toàn",
             "zh-Hans": "韩国全租房保证保险(HUG/SGI)参保攻略：彻底杜绝房东卷款跑路",
-            "ja": "全税（チョンセ）保証金返還保証保険（HUG・SGI）の加入方法"
+            "ja": "全税（チョンセ）保証金返還保証保険（HUG・SGI）の加入方法",
+            "sq": "Jeonse Deposit Guarantee Insurance (HUG/SGI): 100% Protection Against Default",
+            "hi": "जियोन्से जमा गारंटी बीमा (HUG/SGI): डिफ़ॉल्ट के खिलाफ 100% सुरक्षा",
+            "ar": "تأمين ضمان وديعة الإيجار (전세보증금반환보증): حماية 100% ضد تعثر المؤجر أو امتناعه",
+            "zh-Hant": "韓國全租房保證保險(HUG/SGI)參保攻略：徹底杜絕房東捲款跑路",
+            "ko": "임대보증금 반환보증보험(HUG/SGI) 가입"
         },
         "summary": {
             "en": "Safeguard your entire rental deposit even if the landlord defaults, goes bankrupt, or faces tax seizure.",
             "vi": "Bảo vệ trọn vẹn số tiền cọc nhà hàng chục triệu won ngay cả khi chủ nhà vỡ nợ hoặc bị tịch thu tài sản.",
             "zh-Hans": "即使房东失联破产或房产被查封，由韩国政府国有担保机构100%全额垫付退还您的全租押金。",
-            "ja": "家主の資金難や破産により保証金が返還されない場合でも、公的機関が全額を立替払いしてくれます。"
+            "ja": "家主の資金難や破産により保証金が返還されない場合でも、公的機関が全額を立替払いしてくれます。",
+            "sq": "Safeguard your entire rental deposit even if the landlord defaults, goes bankrupt, or faces tax seizure.",
+            "hi": "मकान मालिक द्वारा डिफ़ॉल्ट करने, दिवालिया होने या कर जब्ती का सामना करने पर भी अपनी पूरी किराये की जमा राशि को सुरक्षित रखें।",
+            "ar": "نصيحة عملية للإقامة في كوريا: الاشتراك في وثيقة HUG أو SGI يضمن استرداد كامل وديعتك من مؤسسة التأمين الحكومية فور انتهاء العقد.",
+            "zh-Hant": "即使房東失聯破產或房產被查封，由韓國政府國有擔保機構100%全額墊付退還您的全租押金。",
+            "ko": "전세 계약 종료 후 집주인이 보증금을 돌려주지 못하거나 경매가 개시되더라도 공공 보증기관이 전액 대신 반환해 주는 전세보증보험에 가입하세요."
         },
         "principle": {
             "en": "Public housing guarantee corporations (HUG/HF/SGI) repay the tenant directly if the landlord fails to return the deposit within 30 days of lease end.",
             "vi": "Tổ chức bảo lãnh công lập (HUG/HF/SGI) sẽ đứng ra thanh toán trực tiếp cho người thuê nếu chủ nhà chậm trả tiền cọc quá 30 ngày.",
             "zh-Hans": "租期结束30天内房东未能返还押金，韩国住宅都市保证公社(HUG)将依法全额代位赔付给租户。",
-            "ja": "退去後30日以内に家主が保証金を返還しない場合、保証公社が家主に代わって全額を借主に支払います。"
+            "ja": "退去後30日以内に家主が保証金を返還しない場合、保証公社が家主に代わって全額を借主に支払います。",
+            "sq": "Public housing guarantee corporations (HUG/HF/SGI) repay the tenant directly if the landlord fails to return the deposit within 30 days of lease end.",
+            "hi": "यदि मकान मालिक लीज समाप्त होने के 30 दिनों के भीतर जमा राशि वापस करने में विफल रहता है, तो सार्वजनिक आवास गारंटी निगम (HUG/HF/SGI) सीधे किरायेदार को भुगतान करते हैं।",
+            "ar": "إذا عجز المؤجر عن رد الوديعة، تدفع لك مؤسسة HUG كامل المبلغ في غضون شهر ثم تتولى هي ملاحقة المالك قضائيًا وبيع العقار.",
+            "zh-Hant": "租期結束30天內房東未能返還押金，韓國住宅都市保證公社(HUG)將依法全額代位賠付給租戶。",
+            "ko": "주택도시보증공사(HUG)나 SGI서울보증이 집주인 대신 세입자에게 전세보증금 전액을 대위변제해 주므로 전세사기 및 깡통전세를 완벽 차단합니다."
         },
         "example": {
             "en": "Youth households with modest incomes qualify for up to 300,000 KRW in local government insurance fee subsidies.",
             "vi": "Thanh niên có thu nhập trung bình được chính quyền địa phương hỗ trợ tới 300.000 won tiền phí mua bảo hiểm này.",
             "zh-Hans": "青年家庭可申领地方政府专项补贴，最高可报销30万韩元的全部担保保险手续费，近乎零成本投保。",
-            "ja": "低所得の青年世帯なら地方自治体から保険料支援金（最大30万ウォン）が支給され実質無料で加入できます。"
+            "ja": "低所得の青年世帯なら地方自治体から保険料支援金（最大30万ウォン）が支給され実質無料で加入できます。",
+            "sq": "Youth households with modest incomes qualify for up to 300,000 KRW in local government insurance fee subsidies.",
+            "hi": "मध्यम आय वाले युवा परिवार स्थानीय सरकार से बीमा शुल्क सब्सिडी के रूप में 300,000 KRW तक के पात्र हैं।",
+            "ar": "رسوم تأمين سنوية بسيطة تحميك بالكامل من عمليات الاحتيال العقاري (전세사기) وتضمن عودة كل أموالك بضمان حكومي معتمد.",
+            "zh-Hant": "青年家庭可申領地方政府專項補貼，最高可報銷30萬韓元的全部擔保保險手續費，近乎零成本投保。",
+            "ko": "청년이나 신혼부부는 지자체 전세보증금 반환보증 보증료 지원 사업을 통해 최대 30만 원까지 보증료를 전액 환급받을 수 있습니다."
         },
         "actionItem": {
             "en": "Check eligibility for HUG Jeonse Insurance on the HUG mobile app (안심전세) right after signing.",
             "vi": "Kiểm tra tư cách tham gia bảo hiểm trên ứng dụng HUG (안심전세) ngay sau khi ký hợp đồng.",
             "zh-Hans": "签约入住后第一时间打开HUG“安心全租App（안심전세）”核验参保资格并提交审核。",
-            "ja": "契約直後にHUGの「安心チョンセ（안심전세）」アプリで保証保険の加入可否を診断しましょう。"
+            "ja": "契約直後にHUGの「安心チョンセ（안심전세）」アプリで保証保険の加入可否を診断しましょう。",
+            "sq": "Check eligibility for HUG Jeonse Insurance on the HUG mobile app (안심전세) right after signing.",
+            "hi": "अनुबंध पर हस्ताक्षर करने के तुरंत बाद HUG मोबाइल ऐप (Ansim Jeonse) पर HUG जियोन्से बीमा पात्रता की जांच करें।",
+            "ar": "اشترك في تأمين HUG عبر تطبيق البنك أو تطبيق KakaoPay خلال النصف الأول من فترة عقد الإيجار لحماية أموالك.",
+            "zh-Hant": "簽約入住後第一時間打開HUG“安心全租App（안심전세）”覈驗參保資格並提交審覈。",
+            "ko": "HUG 모바일 안심전세 앱에서 거주 중인 주택의 보증보험 가입 요건을 즉시 자가진단하세요."
         }
     },
     {
@@ -1038,31 +2213,56 @@ TOPICS_36 = [
             "en": "Locate Forgotten Bank Accounts & Unclaimed Insurance Money Across Korea",
             "vi": "Tìm lại tiền tiết kiệm ngủ quên và tiền bảo hiểm chưa lĩnh tại các ngân hàng Hàn Quốc",
             "zh-Hans": "一键寻回在韩休眠银行账户资金与未领取的隐形保险金",
-            "ja": "韓国の休眠預金および隠れた保険金の統合照会・回収方法"
+            "ja": "韓国の休眠預金および隠れた保険金の統合照会・回収方法",
+            "sq": "Locate Forgotten Bank Accounts & Unclaimed Insurance Money Across Korea",
+            "hi": "कोरिया भर में अपने भूले हुए बैंक खाते और लावारिस बीमा राशि का पता लगाएं",
+            "ar": "العثور على الحسابات البنكية المنسية وأموال التأمين غير المطالب بها في كوريا",
+            "zh-Hant": "一鍵尋回在韓休眠銀行賬戶資金與未領取的隱形保險金",
+            "ko": "휴면예금 및 숨은 보험금 찾기"
         },
         "summary": {
             "en": "Reclaim forgotten cash sitting in inactive Korean accounts, dormant deposits, and expired insurance dividends.",
             "vi": "Thu hồi lại các khoản tiền mặt bị lãng quên trong các tài khoản ngân hàng cũ hoặc tiền chia cổ tức bảo hiểm.",
             "zh-Hans": "在韩国全国金融统合系统中一键排查多年未使用的休眠账户余额与逾期未领的保险返还金，即时转账提现。",
-            "ja": "過去に開設したまま放置されている銀行口座の残高や失効保険金の返還金をワンストップで回収します。"
+            "ja": "過去に開設したまま放置されている銀行口座の残高や失効保険金の返還金をワンストップで回収します。",
+            "sq": "Reclaim forgotten cash sitting in inactive Korean accounts, dormant deposits, and expired insurance dividends.",
+            "hi": "निष्क्रिय कोरियाई खातों, अप्रयुक्त जमा राशियों और समाप्त हो चुके बीमा लाभांशों में पड़े अपने भूले हुए पैसों को वापस पाएं।",
+            "ar": "نصيحة عملية للإقامة في كوريا: خدمة Payinfo الرسمية تجمع كل حساباتك وبطاقاتك الخاملة وتحول أرصدتها المنسية لحسابك النشط فوريًا.",
+            "zh-Hant": "在韓國全國金融統合系統中一鍵排查多年未使用的休眠賬戶餘額與逾期未領的保險返還金，即時轉賬提現。",
+            "ko": "잊고 있던 은행 휴면계좌, 증권사 휴면 예수금, 만기 후 찾아가지 않은 숨은 보험금을 서민금융진흥원 통합조회로 찾아 즉시 환급받으세요."
         },
         "principle": {
             "en": "The Korea Financial Telecommunications service (Account Info) tracks all bank, securities, card points, and insurance balances under your ID.",
             "vi": "Hệ thống Account Info của Hàn Quốc liên kết toàn bộ tài khoản ngân hàng, chứng khoán, điểm thẻ để gom tiền về một mối.",
             "zh-Hans": "金融清算院账户信息整合管理服务(Account Info)全面覆盖所有银行、储蓄银行及保险资金，一键免费归集到主账户。",
-            "ja": "金融決済院の「アカウントインフォ（payinfo.or.kr）」を利用すれば、全金融機関の休眠資金を即座にメイン口座へ移せます。"
+            "ja": "金融決済院の「アカウントインフォ（payinfo.or.kr）」を利用すれば、全金融機関の休眠資金を即座にメイン口座へ移せます。",
+            "sq": "The Korea Financial Telecommunications service (Account Info) tracks all bank, securities, card points, and insurance balances under your ID.",
+            "hi": "कोरिया फाइनेंशियल टेलीकम्युनिकेशंस सेवा (Account Info) आपकी आईडी से जुड़े सभी बैंक, प्रतिभूतियों, कार्ड पॉइंट्स और बीमा शेष राशि को ट्रैक करती है।",
+            "ar": "الملايين من الوون تظل منسية في حسابات فتحت للوظائف القديمة؛ منصة Account Info الحكومية تسترجعها بضغطة زر واحدة.",
+            "zh-Hant": "金融清算院賬戶信息整合管理服務(Account Info)全面覆蓋所有銀行、儲蓄銀行及保險資金，一鍵免費歸集到主賬戶。",
+            "ko": "금융결제원 '어카운트인포'와 서민금융진흥원 포털을 통해 전 금융기관에 잠들어 있는 소멸시효 경과 예금과 미청구 보험금을 1회 인증으로 조회 및 이체합니다."
         },
         "example": {
             "en": "Log into payinfo.or.kr to consolidate dormant balances and auto-transfer card loyalty points directly to cash.",
             "vi": "Đăng nhập payinfo.or.kr để rút số dư tài khoản ngủ quên và đổi toàn bộ điểm thẻ tín dụng ra tiền mặt.",
             "zh-Hans": "登录payinfo.or.kr，不仅能找回遗忘的小额存款，还能将多家信用卡的积分一次性全部提现到借记卡中。",
-            "ja": "payinfo.or.krにログインするだけで、長年忘れていた数万〜数十万ウォンの残高やカードポイントを即現金化できます。"
+            "ja": "payinfo.or.krにログインするだけで、長年忘れていた数万〜数十万ウォンの残高やカードポイントを即現金化できます。",
+            "sq": "Log into payinfo.or.kr to consolidate dormant balances and auto-transfer card loyalty points directly to cash.",
+            "hi": "सुप्त (dormant) शेष राशि को एक जगह देखने और कार्ड लॉयल्टी पॉइंट्स को सीधे नकद में बदलने के लिए payinfo.or.kr पर लॉग इन करें।",
+            "ar": "تسجيل الدخول في موقع payinfo.or.kr كفيل بكشف حسابات مصرفية قديمة واسترداد عشرات الآلاف من الوون الضائعة في ثوانٍ.",
+            "zh-Hant": "登錄payinfo.or.kr，不僅能找回遺忘的小額存款，還能將多家信用卡的積分一次性全部提現到借記卡中。",
+            "ko": "파인(fine.fss.or.kr)이나 '내보험 찾아줌'에 접속해 조회하면 잊고 지냈던 수십만 원의 통장 잔고와 카드 포인트를 계좌로 즉시 입금받을 수 있습니다."
         },
         "actionItem": {
             "en": "Download the 'Account Info' mobile app and link with your Joint Certificate (Gong-in In-jeung-seo).",
             "vi": "Tải ứng dụng 'Account Info' trên điện thoại và xác thực bằng chứng chỉ ngân hàng để tìm tiền.",
             "zh-Hans": "下载“Account Info（어카운트인포）”手机App，使用联合认证证书一键检索全部遗忘资产。",
-            "ja": "「Account Info（어카운트인포）」アプリを導入し、眠っている資産がないか確認しましょう。"
+            "ja": "「Account Info（어카운트인포）」アプリを導入し、眠っている資産がないか確認しましょう。",
+            "sq": "Download the 'Account Info' mobile app and link with your Joint Certificate (Gong-in In-jeung-seo).",
+            "hi": "'Account Info' मोबाइल ऐप डाउनलोड करें और इसे अपने संयुक्त प्रमाणपत्र (Gong-in In-jeung-seo) से लिंक करें।",
+            "ar": "ادخل إلى موقع payinfo.or.kr أو تطبيق '어카운트인포' واسترجع كل أموالك وتأمينك الخامل لحسابك الأساسي اليوم.",
+            "zh-Hant": "下載“Account Info（어카운트인포）”手機App，使用聯合認證證書一鍵檢索全部遺忘資產。",
+            "ko": "금융결제원 계좌정보통합관리서비스(payinfo.or.kr) 또는 어카운트인포 앱에 로그인해 숨은 자산을 조회하세요."
         }
     },
     {
@@ -1071,31 +2271,56 @@ TOPICS_36 = [
             "en": "Statutory Calculation of Unused Annual Paid Leave Compensation in Korea",
             "vi": "Quy tắc thanh toán tiền lương cho ngày nghỉ phép năm chưa sử dụng tại Hàn Quốc",
             "zh-Hans": "韩国法定未休年假工资补偿结算核心标准与核算公式",
-            "ja": "韓国の年次有給休暇の未消化手当精算ルールと計算基準"
+            "ja": "韓国の年次有給休暇の未消化手当精算ルールと計算基準",
+            "sq": "Statutory Calculation of Unused Annual Paid Leave Compensation in Korea",
+            "hi": "कोरिया में अप्रयुक्त वार्षिक सवेतन अवकाश मुआवजे की वैधानिक गणना",
+            "ar": "الحساب القانوني للتعويض المالي عن الإجازات السنوية غير المستخدمة في كوريا (연차수당)",
+            "zh-Hant": "韓國法定未休年假工資補償結算核心標準與覈算公式",
+            "ko": "연차유급휴가 미사용 수당 정산 원칙"
         },
         "summary": {
             "en": "Ensure you receive full cash pay for unused annual leave days upon year-end or employment resignation.",
             "vi": "Nhận đầy đủ tiền thanh toán cho những ngày phép năm chưa nghỉ hết khi kết thúc năm hoặc khi thôi việc.",
             "zh-Hans": "了解韩国劳动基准法关于未休年休假津贴的法定清算规则，在离职或年末时全额折现拿回应得收入。",
-            "ja": "1年間で消化しきれなかった有給休暇を、年末または退職時に適正な日当として現金で精算します。"
+            "ja": "1年間で消化しきれなかった有給休暇を、年末または退職時に適正な日当として現金で精算します。",
+            "sq": "Ensure you receive full cash pay for unused annual leave days upon year-end or employment resignation.",
+            "hi": "वर्ष के अंत में या नौकरी छोड़ने पर बिना उपयोग की गई वार्षिक छुट्टियों के बदले पूरा नकद भुगतान प्राप्त करना सुनिश्चित करें।",
+            "ar": "نصيحة عملية للإقامة في كوريا: الموظف يستحق 15 يوم إجازة سنوية مدفوعة قانونًا، وأي يوم لم يستخدم يدفع كبدل نقدي إلزامي ما لم تفعل الشركة خطة الحث الرسمية.",
+            "zh-Hant": "瞭解韓國勞動基準法關於未休年休假津貼的法定清算規則，在離職或年末時全額折現拿回應得收入。",
+            "ko": "근로기준법상 1년간 사용하지 못한 잔여 연차에 대해 회사가 법적 휴가 사용 촉진 절차를 밟지 않았다면 통상임금 기준 미사용 수당으로 정산받으세요."
         },
         "principle": {
             "en": "Unless the employer implements strict statutory leave promotion procedures, unused days must be paid out based on standard daily wage.",
             "vi": "Nếu công ty không thực hiện đúng quy trình thông báo khuyến khích nghỉ phép, họ bắt buộc phải trả tiền lương cho số ngày còn lại.",
             "zh-Hans": "若雇主未严格依照法定程序履行书面催休手续，所有剩余年假必须按基准日薪折现随离职工资足额发放。",
-            "ja": "会社側が法定の年休促進手続きを厳格に踏んでいない限り、未消化分は通常賃金基準で手当として支給義務が生じます。"
+            "ja": "会社側が法定の年休促進手続きを厳格に踏んでいない限り、未消化分は通常賃金基準で手当として支給義務が生じます。",
+            "sq": "Unless the employer implements strict statutory leave promotion procedures, unused days must be paid out based on standard daily wage.",
+            "hi": "जब तक नियोक्ता वैधानिक अवकाश प्रोत्साहन प्रक्रिया लागू नहीं करता, तब तक बची हुई छुट्टियों का भुगतान मानक दैनिक वेतन के आधार पर किया जाना अनिवार्य है।",
+            "ar": "بدل اليوم الواحد = الأجر الساعي المعتمد 통상임금 × 8 ساعات عمل؛ الشركة ملزمة بدفعه في راتب الشهر التالي لانتهاء العام.",
+            "zh-Hant": "若僱主未嚴格依照法定程序履行書面催休手續，所有剩餘年假必須按基準日薪折現隨離職工資足額髮放。",
+            "ko": "사용자가 법률에 규정된 서면 통보 절차를 거쳐 연차휴가 사용을 유도하지 않은 경우, 남은 일수에 대해 통상일급에 해당하는 금전 수당을 지급해야 합니다."
         },
         "example": {
             "en": "Formula: Remaining leave days × (Monthly basic salary ÷ 209 hours × 8 hours) = Cash compensation paid on final payroll.",
             "vi": "Công thức: Số ngày phép còn lại × (Lương cơ bản tháng ÷ 209 giờ × 8 giờ) = Tiền trợ cấp nghỉ phép nhận được.",
             "zh-Hans": "核算公式：未休天数 ×（月基本工资 ÷ 209小时 × 8小时）= 最终离职薪酬中应包含的年休津贴总额。",
-            "ja": "計算式：残日数 ×（月給通常賃金 ÷ 209時間 × 8時間）＝ 最終給与で受け取るべき未消化年休手当額。"
+            "ja": "計算式：残日数 ×（月給通常賃金 ÷ 209時間 × 8時間）＝ 最終給与で受け取るべき未消化年休手当額。",
+            "sq": "Formula: Remaining leave days × (Monthly basic salary ÷ 209 hours × 8 hours) = Cash compensation paid on final payroll.",
+            "hi": "सूत्र: शेष अवकाश दिन × (मासिक मूल वेतन ÷ 209 घंटे × 8 घंटे) = अंतिम वेतन पर्ची पर देय नकद मुआवजा।",
+            "ar": "إذا تبقت لك 5 أيام إجازة سنوية غير مستخدمة وأجرك اليومي 100,000 وون، يجب على الشركة صرف 500,000 وون نقدًا مع الراتب.",
+            "zh-Hant": "覈算公式：未休天數 ×（月基本工資 ÷ 209小時 × 8小時）= 最終離職薪酬中應包含的年休津貼總額。",
+            "ko": "잔여 연차가 5일 남았을 때 통상일급이 10만 원이라면 퇴사 시 또는 연도 말 급여에 50만 원의 연차수당이 법적으로 정산 입금됩니다."
         },
         "actionItem": {
             "en": "Keep accurate records of taken leave days and verify your final payslip breakdown upon exit.",
             "vi": "Ghi chép chính xác số ngày phép đã nghỉ và kiểm tra kỹ bảng lương thanh toán cuối cùng khi thôi việc.",
             "zh-Hans": "日常精准记录每次请假调休流水，并在最终离职工资单中核实未休假津贴明细。",
-            "ja": "自身が取得した有給日数をメモに残し、退職時の給与明細で未消化手当が反映されているか点検しましょう。"
+            "ja": "自身が取得した有給日数をメモに残し、退職時の給与明細で未消化手当が反映されているか点検しましょう。",
+            "sq": "Keep accurate records of taken leave days and verify your final payslip breakdown upon exit.",
+            "hi": "ली गई छुट्टियों का सटीक रिकॉर्ड रखें और नौकरी छोड़ते समय अपनी अंतिम वेतन पर्ची (payslip) के विवरण की पुष्टि करें।",
+            "ar": "راجع رصيد إجازاتك المتبقية في شهر ديسمبر وتأكد من إضافة أيام الإجازة غير المستخدمة كبدل نقدي في قسيمة راتبك.",
+            "zh-Hant": "日常精準記錄每次請假調休流水，並在最終離職工資單中核實未休假津貼明細。",
+            "ko": "사내 근태 관리 시스템에서 올해 잔여 연차 일수를 확인하고 회사의 연차 사용 촉진 서면 통보 여부를 점검하세요."
         }
     },
     {
@@ -1104,31 +2329,56 @@ TOPICS_36 = [
             "en": "Mobile Prescription QR Codes: Digital Dosing Schedules & Drug Interactions",
             "vi": "Mã QR trên đơn thuốc: Lịch uống thuốc thông minh và cảnh báo tương tác thuốc tại Hàn Quốc",
             "zh-Hans": "韩国医院处方签QR二维码智能用药提醒与药物禁忌自查指南",
-            "ja": "処方箋QRコードによるスマホ服薬アラームと飲み合わせ確認法"
+            "ja": "処方箋QRコードによるスマホ服薬アラームと飲み合わせ確認法",
+            "sq": "Mobile Prescription QR Codes: Digital Dosing Schedules & Drug Interactions",
+            "hi": "मोबाइल प्रिस्क्रिप्शन क्यूआर कोड: डिजिटल खुराक समय-सारणी और दवाओं के दुष्प्रभाव",
+            "ar": "الرموز الرقمية QR على الوصفات الطبية: مواعيد الجرعات والتداخلات الدوائية بالهاتف",
+            "zh-Hant": "韓國醫院處方籤QR二維碼智能用藥提醒與藥物禁忌自查指南",
+            "ko": "처방전 QR코드로 모바일 간편 복약 알림"
         },
         "summary": {
             "en": "Scan hospital prescriptions to automatically track dosing schedules, drug side-effects, and duplicate medication risks.",
             "vi": "Quét mã QR trên đơn thuốc để theo dõi lịch uống thuốc, tác dụng phụ và tránh trùng lặp thuốc nguy hiểm.",
             "zh-Hans": "扫描处方签上的标准QR二维码，自动将用药时间写入手机日历，并即时排查成分冲突与用药禁忌。",
-            "ja": "調剤薬局の処方箋QRを読み取るだけで、スマホに正確な服薬リマインダーと副作用情報を自動登録します。"
+            "ja": "調剤薬局の処方箋QRを読み取るだけで、スマホに正確な服薬リマインダーと副作用情報を自動登録します。",
+            "sq": "Scan hospital prescriptions to automatically track dosing schedules, drug side-effects, and duplicate medication risks.",
+            "hi": "दवा की खुराक के समय, दुष्प्रभावों और अन्य दवाओं के साथ हानिकारक अंतःक्रिया (drug interactions) के जोखिमों को ट्रैक करने के लिए अस्पताल के पर्चे को स्कैन करें।",
+            "ar": "نصيحة عملية للإقامة في كوريا: مسح رمز QR المطبوع على كيس الدواء الصيدلاني يظهر لك فورًا بالهاتف مواعيد الجرعات وتحذيرات التفاعل الدوائي.",
+            "zh-Hant": "掃描處方簽上的標準QR二維碼，自動將用藥時間寫入手機日曆，並即時排查成分衝突與用藥禁忌。",
+            "ko": "약국 조제 약봉투의 처방 QR코드를 스마트폰으로 스캔하여 복약 시간 자동 알림을 설정하고 약물 중복 처방 및 부작용을 사전에 예방하세요."
         },
         "principle": {
             "en": "Prescription QR codes link to the National Health Insurance DUR (Drug Utilization Review) database to warn against risky interactions.",
             "vi": "Mã QR liên kết với hệ thống DUR của Bảo hiểm y tế quốc gia để cảnh báo những loại thuốc kỵ nhau.",
             "zh-Hans": "处方签二维码对接韩国药品安全使用服务(DUR)官方数据库，精准识别是否存在同类药物重复给药或配伍禁忌。",
-            "ja": "韓国の医薬品適正使用（DUR）システムと連動し、重複投薬や飲み合わせによる危険を自動アラートします。"
+            "ja": "韓国の医薬品適正使用（DUR）システムと連動し、重複投薬や飲み合わせによる危険を自動アラートします。",
+            "sq": "Prescription QR codes link to the National Health Insurance DUR (Drug Utilization Review) database to warn against risky interactions.",
+            "hi": "प्रिस्क्रिप्शन क्यूआर कोड राष्ट्रीय स्वास्थ्य बीमा के DUR (Drug Utilization Review) डेटाबेस से जुड़े होते हैं, जो दवाओं के परस्पर जोखिमों की चेतावनी देते हैं।",
+            "ar": "نظام الأدوية الآمن الكوري (DUR) يمنع صرف أدوية تتداخل مع بعضها، ومسح الكود يشرح لك الاستخدام الطبي الصحيح بلغة سهلة.",
+            "zh-Hant": "處方籤二維碼對接韓國藥品安全使用服務(DUR)官方數據庫，精準識別是否存在同類藥物重複給藥或配伍禁忌。",
+            "ko": "종이 처방전의 2차원 바코드(QR코드)는 건강보험심사평가원의 DUR(의약품 안전사용 서비스) 데이터와 연동되어 병용 금기 약물 정보를 제공합니다."
         },
         "example": {
             "en": "Scan with health apps (Kakao Pay, Naver, or MyHealthBank) to review prescription history from the past year.",
             "vi": "Quét bằng ứng dụng sức khỏe (Kakao, Naver hoặc MyHealthBank) để xem lại lịch sử dùng thuốc trong cả năm qua.",
             "zh-Hans": "使用Kakao Pay或Naver App健康扫描功能扫码，即可永久云端保存处方记录与药理说明。",
-            "ja": "カカオペイやNAVERアプリのスキャン機能を使えば、過去1年間の処方履歴と薬効を手元で一元管理できます。"
+            "ja": "カカオペイやNAVERアプリのスキャン機能を使えば、過去1年間の処方履歴と薬効を手元で一元管理できます。",
+            "sq": "Scan with health apps (Kakao Pay, Naver, or MyHealthBank) to review prescription history from the past year.",
+            "hi": "पिछले एक वर्ष के अपने प्रिस्क्रिप्शन इतिहास की समीक्षा करने के लिए स्वास्थ्य ऐप (जैसे Kakao Pay, Naver, या MyHealthBank) से स्कैन करें।",
+            "ar": "مسح الكود بكاميرا الهاتف يوضح ما إذا كان يجب تناول الدواء قبل الأكل أو بعده، ويحذر من تناوله مع المشروبات الكحولية أو الحليب.",
+            "zh-Hant": "使用Kakao Pay或Naver App健康掃描功能掃碼，即可永久雲端保存處方記錄與藥理說明。",
+            "ko": "모바일 건강 앱(카카오페이, 네이버페이 건강, 마이헬스뱅크 등)으로 약봉투 QR을 스캔하면 내가 복용 중인 모든 약물의 효능과 주의사항이 스마트폰에 저장됩니다."
         },
         "actionItem": {
             "en": "Scan your paper prescription QR code right after leaving the pharmacy counter.",
             "vi": "Quét mã QR trên đơn thuốc ngay khi nhận thuốc từ quầy dược sĩ.",
             "zh-Hans": "在药店前台拿药后，随手用手机扫描纸质处方签上的QR二维码建立健康用药档案。",
-            "ja": "薬局で薬を受け取ったらすぐに紙の処方箋QRコードをスマホでスキャンしましょう。"
+            "ja": "薬局で薬を受け取ったらすぐに紙の処方箋QRコードをスマホでスキャンしましょう。",
+            "sq": "Scan your paper prescription QR code right after leaving the pharmacy counter.",
+            "hi": "फार्मेसी काउंटर से बाहर निकलते ही अपने कागजी पर्चे पर मौजूद क्यूआर कोड को तुरंत स्कैन करें।",
+            "ar": "امسح رمز QR المطبوع على كيس الأدوية الورقي بهاتفك لقراءة تعليمات الدواء وحفظ مواعيد الجرعات بدقة.",
+            "zh-Hant": "在藥店前臺拿藥後，隨手用手機掃描紙質處方簽上的QR二維碼建立健康用藥檔案。",
+            "ko": "약국에서 처방약을 수령한 직후 약봉투 앞·뒷면의 QR코드를 카메라로 스캔해 복약 기록을 등록하세요."
         }
     },
     {
@@ -1137,31 +2387,56 @@ TOPICS_36 = [
             "en": "Using Metro Emergency Gates for Restroom Access Outside Ticket Turnstiles",
             "vi": "Cách đi qua cổng thoát hiểm để dùng nhà vệ sinh tại ga tàu điện ngầm Hàn Quốc",
             "zh-Hans": "在韩国地铁刷卡后出站上厕所的免扣费“紧急闸机”同行规则",
-            "ja": "韓国の地下鉄で改札外トイレを利用するための非常ゲート通過ルール"
+            "ja": "韓国の地下鉄で改札外トイレを利用するための非常ゲート通過ルール",
+            "sq": "Using Metro Emergency Gates for Restroom Access Outside Ticket Turnstiles",
+            "hi": "टिकट टर्नस्टाइल के बाहर शौचालय जाने के लिए मेट्रो आपातकालीन गेट का उपयोग",
+            "ar": "استخدام بوابات الطوارئ بالمترو (비상게이트) لدخول دورات المياه خارج بوابات التذاكر",
+            "zh-Hant": "在韓國地鐵刷卡後出站上廁所的免扣費“緊急閘機”同行規則",
+            "ko": "지하철 화장실 이용을 위한 비상 게이트 통과"
         },
         "summary": {
             "en": "Exit faregates temporarily to use restrooms without paying extra tickets by using the 15-minute re-entry grace rule.",
             "vi": "Tạm thời ra khỏi cửa soát vé để đi vệ sinh mà không bị trừ thêm tiền vé nhờ quy tắc miễn phí trong 15 phút.",
             "zh-Hans": "误刷进闸机或途中内急需去闸机外洗手间时，利用15分钟内同站免费重新进站机制或呼叫求助按钮。",
-            "ja": "改札内に入った後に改札外のトイレを利用したい時、追加運賃なしで通過する公式ルールを活用します。"
+            "ja": "改札内に入った後に改札外のトイレを利用したい時、追加運賃なしで通過する公式ルールを活用します。",
+            "sq": "Exit faregates temporarily to use restrooms without paying extra tickets by using the 15-minute re-entry grace rule.",
+            "hi": "15 मिनट के भीतर पुनः प्रवेश नियम का लाभ उठाकर बिना अतिरिक्त किराया दिए शौचालय जाने के लिए फेयरगेट से अस्थायी रूप से बाहर निकलें।",
+            "ar": "نصيحة عملية للإقامة في كوريا: لمس بطاقتك والخروج لاستخدام الحمام خارج بوابات المترو ثم العودة خلال 15 دقيقة لا يخصم أي مبالغ إضافية.",
+            "zh-Hant": "誤刷進閘機或途中內急需去閘機外洗手間時，利用15分鐘內同站免費重新進站機制或呼叫求助按鈕。",
+            "ko": "지하철 개찰구 안팎으로 잘못 들어갔거나 화장실을 이용할 때 당황하지 말고 15분 재개표 면제 제도나 비상 게이트 인터폰을 이용하세요."
         },
         "principle": {
             "en": "Seoul Metro allows 1 free re-entry within 15 minutes at the same station; emergency gates feature a direct attendant intercom.",
             "vi": "Tàu điện ngầm Seoul cho phép vào lại miễn phí 1 lần trong 15 phút tại cùng một ga; cổng khẩn cấp có nút đàm thoại với nhân viên.",
             "zh-Hans": "首尔地铁已全面实行15分钟内同站刷卡再次进站0元免扣费机制；紧急闸机侧面配有求助对讲机直接开闸。",
-            "ja": "ソウル地下鉄では同駅で15分以内の再入場なら追加料金が0ウォンとなり、非常ゲートのインターホンでも解錠可能です。"
+            "ja": "ソウル地下鉄では同駅で15分以内の再入場なら追加料金が0ウォンとなり、非常ゲートのインターホンでも解錠可能です。",
+            "sq": "Seoul Metro allows 1 free re-entry within 15 minutes at the same station; emergency gates feature a direct attendant intercom.",
+            "hi": "सियोल मेट्रो उसी स्टेशन पर 15 मिनट के भीतर 1 बार मुफ्त पुनः प्रवेश की अनुमति देती है; आपातकालीन गेटों पर सीधे कर्मचारी से बात करने के लिए इंटरकॉम होता है।",
+            "ar": "قاعدة الـ 15 دقيقة لمترو سيول تسمح بإعادة الدخول لنفس المحطة مجانًا تمامًا للوصول للحمام أو تصحيح اتجاه الرصيف الخاطئ.",
+            "zh-Hant": "首爾地鐵已全面實行15分鐘內同站刷卡再次進站0元免扣費機制；緊急閘機側面配有求助對講機直接開閘。",
+            "ko": "수도권 지하철은 동일 역에서 개찰구를 통과한 후 15분 이내에 동일 카드로 다시 태그하면 요금이 추가 부과되지 않고 환승 횟수도 차감되지 않습니다."
         },
         "example": {
             "en": "If you tap out, use the restroom, and tap back in within 15 minutes, your fare charge is 0 KRW.",
             "vi": "Nếu bạn quẹt thẻ ra ngoài đi vệ sinh và quẹt vào lại trong vòng 15 phút, tiền vé bị trừ thêm là 0 won.",
             "zh-Hans": "刷卡出闸去洗手间并在15分钟内刷卡重新进闸，系统自动识别为同站连续乘车，扣费金额为0元。",
-            "ja": "改札を出てトイレを利用後、15分以内に再度交通カードをタッチして入場すれば引き落とし額は0ウォンです。"
+            "ja": "改札を出てトイレを利用後、15分以内に再度交通カードをタッチして入場すれば引き落とし額は0ウォンです。",
+            "sq": "If you tap out, use the restroom, and tap back in within 15 minutes, your fare charge is 0 KRW.",
+            "hi": "यदि आप कार्ड टैप करके बाहर निकलते हैं, शौचालय का उपयोग करते हैं, और 15 मिनट के भीतर पुनः टैप करके अंदर आते हैं, तो कोई अतिरिक्त किराया (0 KRW) नहीं लगेगा।",
+            "ar": "إذا ركبت في الاتجاه المعاكس بالخطأ، المس بوابة الخروج وادخل الرصيف الآخر خلال 15 دقيقة وسيتم احتساب الأجرة كرحلة واحدة مستمرة دون خصم.",
+            "zh-Hant": "刷卡出閘去洗手間並在15分鐘內刷卡重新進閘，系統自動識別爲同站連續乘車，扣費金額爲0元。",
+            "ko": "화장실이 개찰구 밖에 있는 역에서 하차 태그를 하고 화장실을 다녀온 뒤 15분 내에 재입장하면 0원으로 통과할 수 있습니다."
         },
         "actionItem": {
             "en": "Never hop over turnstiles—press the intercom button on the wheelchair emergency gate if needed.",
             "vi": "Tuyệt đối không nhảy qua rào soát vé—hãy bấm nút đàm thoại trên cổng khẩn cấp dành cho xe lăn nếu cần trợ giúp.",
             "zh-Hans": "切勿强行翻越闸机，如有疑问直接按响轮椅专用宽体紧急闸门上的呼叫求助铃即可。",
-            "ja": "改札を飛び越えず、車椅子対応の非常ゲートにあるインターホンを押して駅係員に伝えましょう。"
+            "ja": "改札を飛び越えず、車椅子対応の非常ゲートにあるインターホンを押して駅係員に伝えましょう。",
+            "sq": "Never hop over turnstiles—press the intercom button on the wheelchair emergency gate if needed.",
+            "hi": "टर्नस्टाइल के ऊपर से कभी न कूदें—यदि आवश्यकता हो तो व्हीलचेयर आपातकालीन गेट पर लगा इंटरकॉम बटन दबाएं।",
+            "ar": "إذا دخلت رصيفًا خاطئًا أو أردت الحمام، المس البطاقة واخرج ثم أعد الدخول خلال 15 دقيقة دون دفع أي رسوم إضافية.",
+            "zh-Hant": "切勿強行翻越閘機，如有疑問直接按響輪椅專用寬體緊急閘門上的呼叫求助鈴即可。",
+            "ko": "개찰구를 잘못 통과했거나 화장실을 이용할 때는 개찰구를 무단으로 넘지 말고 휠체어 전용 비상 게이트의 역무원 호출 버튼을 누르세요."
         }
     },
     {
@@ -1170,42 +2445,70 @@ TOPICS_36 = [
             "en": "Navigating Fault-Ratio Disputes in Korean Traffic Accidents",
             "vi": "Quy trình giải quyết tranh chấp tỷ lệ lỗi khi xảy ra tai nạn giao thông tại Hàn Quốc",
             "zh-Hans": "在韩发生交通事故责任过失比例(Fault Ratio)争议官方处理流程",
-            "ja": "韓国での交通事故における過失割合トラブルの公的紛争解決手順"
+            "ja": "韓国での交通事故における過失割合トラブルの公的紛争解決手順",
+            "sq": "Navigating Fault-Ratio Disputes in Korean Traffic Accidents",
+            "hi": "कोरियाई सड़क दुर्घटनाओं में गलती-अनुपात (Fault-Ratio) विवादों का समाधान",
+            "ar": "إدارة نزاعات تحديد نسبة الخطأ في الحوادث المرورية الكورية (과실비율)",
+            "zh-Hant": "在韓發生交通事故責任過失比例(Fault Ratio)爭議官方處理流程",
+            "ko": "자동차 교통사고 과실비율 분쟁 해결 절차"
         },
         "summary": {
             "en": "Protect your rights against unfair insurer fault assignments using the General Insurance Association Review Committee.",
             "vi": "Bảo vệ quyền lợi trước tỷ lệ lỗi bất công do công ty bảo hiểm đưa ra qua Ủy ban giải quyết tranh chấp bảo hiểm Hàn Quốc.",
             "zh-Hans": "遭遇交通事故且对保险公司拟定的过失比例有异议时，申请官方过失比例纠纷审议委员会进行中立裁决。",
-            "ja": "保険会社から一方的に提示された納得のいかない過失割合に対し、公的な過失紛争審議委員会で異議を申し立てます。"
+            "ja": "保険会社から一方的に提示された納得のいかない過失割合に対し、公的な過失紛争審議委員会で異議を申し立てます。",
+            "sq": "Protect your rights against unfair insurer fault assignments using the General Insurance Association Review Committee.",
+            "hi": "जनरल इंश्योरेंस एसोसिएशन समीक्षा समिति का उपयोग करके बीमा कंपनियों द्वारा तय किए गए अनुचित गलती-अनुपात से अपने अधिकारों की रक्षा करें।",
+            "ar": "نصيحة عملية للإقامة في كوريا: تصوير موقع الحادث وخطوط المسارات وإرسال تسجيل الكاميرا الأمامية (Blackbox) للجنة فض النزاعات الرسمية.",
+            "zh-Hant": "遭遇交通事故且對保險公司擬定的過失比例有異議時，申請官方過失比例糾紛審議委員會進行中立裁決。",
+            "ko": "자동차 접촉사고 발생 시 보험사가 제시한 일방적인 과실비율에 동의하기 어렵다면 손해보험협회 과실비율분쟁심의위원회에 무료 심의를 신청하세요."
         },
         "principle": {
             "en": "Instead of immediately filing expensive lawsuits, the official Review Committee examines dashcam footage under statutory guidelines.",
             "vi": "Thay vì khởi kiện tốn kém tại tòa, Ủy ban xét duyệt chính thức sẽ xem xét camera hành trình và đưa ra phán quyết độc lập.",
             "zh-Hans": "无需直接自费打官司，通过损害保险协会过失审议委员会，由资深律师团队根据行车记录仪录像进行免费公正仲裁。",
-            "ja": "高額な裁判費用をかける前に、損害保険協会の過失紛争審議委員会がドライブレコーダー動画に基づき中立に判定します。"
+            "ja": "高額な裁判費用をかける前に、損害保険協会の過失紛争審議委員会がドライブレコーダー動画に基づき中立に判定します。",
+            "sq": "Instead of immediately filing expensive lawsuits, the official Review Committee examines dashcam footage under statutory guidelines.",
+            "hi": "सीधे महंगे मुकदमों में जाने के बजाय, आधिकारिक समीक्षा समिति वैधानिक दिशानिर्देशों के तहत डैशकैम फुटेज की निष्पक्ष जांच करती है।",
+            "ar": "لجنة 분쟁심의위원회 التابعة لجمعية التأمين تحدد نسب الخطأ استنادًا إلى السوابق القضائية وتسجيلات الفيديو بدقة تامة.",
+            "zh-Hant": "無需直接自費打官司，通過損害保險協會過失審議委員會，由資深律師團隊根據行車記錄儀錄像進行免費公正仲裁。",
+            "ko": "비싼 소송 비용과 오랜 시간을 들이지 않고도 손해보험협회 과실분쟁심의위원회(과심위) 변호사단이 블랙박스 영상과 판례를 검토해 중립적으로 과실을 판단합니다."
         },
         "example": {
             "en": "Refuse to agree to an unfair 8:2 fault assessment and formally request your insurance agent submit the case to the Review Committee.",
             "vi": "Từ chối thỏa thuận nếu thấy tỷ lệ lỗi 8:2 không thỏa đáng và yêu cầu công ty bảo hiểm chuyển hồ sơ lên Ủy ban xét duyệt.",
             "zh-Hans": "对不公的“8比2”责任判定明确拒绝签字，正式指示自身保险公司负责专员将案件移交“过审委（과심위）”审议。",
-            "ja": "納得のいかない「8対2」の過失提示には安易に同意せず、担当者に「過審委（과심위）」への付託を文書で要求します。"
+            "ja": "納得のいかない「8対2」の過失提示には安易に同意せず、担当者に「過審委（과심위）」への付託を文書で要求します。",
+            "sq": "Refuse to agree to an unfair 8:2 fault assessment and formally request your insurance agent submit the case to the Review Committee.",
+            "hi": "अनुचित 8:2 गलती के आकलन को स्वीकार करने से मना करें और अपने बीमा एजेंट से मामले को औपचारिक रूप से समीक्षा समिति के पास भेजने का अनुरोध करें।",
+            "ar": "لا توافق أبدًا على الاعتراف بنسبة خطأ شفهية في موقع الحادث تحت الضغط؛ اكتفِ بتصوير المشهد وتبادل بيانات التأمين ودع الفحص للفيديو.",
+            "zh-Hant": "對不公的“8比2”責任判定明確拒絕簽字，正式指示自身保險公司負責專員將案件移交“過審委（과심위）”審議。",
+            "ko": "납득할 수 없는 8:2 과실비율 합의안에 서명하지 않고, 담당 보상 직원에게 손해보험협회 과심위 심의 청구를 정식으로 요청합니다."
         },
         "actionItem": {
             "en": "Preserve your black box memory card immediately and demand the case be forwarded to the Review Committee.",
             "vi": "Tháo và bảo quản ngay thẻ nhớ camera hành trình, yêu cầu chuyển vụ việc lên Ủy ban giải quyết tranh chấp.",
             "zh-Hans": "发生事故后立即拔出保存行车记录仪SD卡防止被覆盖，并要求保险公司启动官方过失审议。",
-            "ja": "事故直後はドライブレコーダーのSDカードを抜いて上書きを防ぎ、過失審議委員会への付託を求めましょう。"
+            "ja": "事故直後はドライブレコーダーのSDカードを抜いて上書きを防ぎ、過失審議委員会への付託を求めましょう。",
+            "sq": "Preserve your black box memory card immediately and demand the case be forwarded to the Review Committee.",
+            "hi": "दुर्घटना के तुरंत बाद अपने डैशकैम (Black Box) का मेमोरी कार्ड सुरक्षित रख लें और मामले को समीक्षा समिति को भेजने की मांग करें।",
+            "ar": "التقط صورًا لمسافة 20 مترًا تظهر اتجاه إطارات السيارتين وعلامات الطريق واحتفظ بذاكرة كاميرا السيارة (SD Card) بأمان.",
+            "zh-Hant": "發生事故後立即拔出保存行車記錄儀SD卡防止被覆蓋，並要求保險公司啓動官方過失審議。",
+            "ko": "사고 직후 블랙박스 SD카드를 즉시 분리하여 영상 덮어쓰기를 방지하고, 보험사 담당자에게 과실분쟁심의위원회 접수를 요청하세요."
         }
     }
 ]
 
-# Compile comprehensive topics dictionary mapping baseTitleKo to translations
 result = {}
 for topic in TOPICS_36:
     tid = topic["id"]
     result[tid] = topic
 
-out_file = "life-help/lib/learn/dailyInsights/koreanTopics89.json"
+out_file = "lib/learn/dailyInsights/koreanTopics89.json"
+if not os.path.isabs(out_file):
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    out_file = os.path.join(base_dir, out_file)
+
 os.makedirs(os.path.dirname(out_file), exist_ok=True)
 with open(out_file, "w", encoding="utf-8") as f:
     json.dump(result, f, ensure_ascii=False, indent=2)

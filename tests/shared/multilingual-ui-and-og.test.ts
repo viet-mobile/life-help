@@ -150,9 +150,10 @@ describe("Multilingual UI, 4-Quadrant Homecare, Referral & OG Metadata", () => {
     const random2 = getDailyInsight("math", 10, "en");
     expect(random1.id).not.toBe(random2.id);
 
-    // Copy update check
+    // Copy update check: verify date prefixes and template boilerplate are removed
     const mathKo = getDailyInsight("math", testDate, "ko");
-    expect(mathKo.summary).toContain("매일의 선택과 기회비용을 최적화합니다.");
-    expect(mathKo.summary).not.toContain("일상 비용과 기회비용을 최적화합니다.");
+    expect(mathKo.summary).not.toContain("실용 팁:");
+    expect(mathKo.summary).not.toContain("최적화합니다.");
+    expect(mathKo.summary.length).toBeGreaterThan(15);
   });
 });
