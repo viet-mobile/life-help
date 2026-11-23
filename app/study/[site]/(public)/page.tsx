@@ -4,9 +4,9 @@ import { notFound } from "next/navigation";
 import { BrandLogo } from "@/components/learn/BrandLogo";
 import { LocaleSwitch } from "@/components/learn/LocaleSwitch";
 import { StartCta } from "@/components/learn/StartCta";
-import { getServerT } from "@/lib/learn/i18n/server";
+import { getServerT, getSecondaryLocales } from "@/lib/learn/i18n/server";
 import { loadContent, accountsEnabled, SIGNUP_ENABLED, getLearnService, getUserId } from "@/lib/learn/server/runtime";
-import { learnHost, parseLearnHost } from "@/lib/learn/hosts";
+import { learnHost, parseLearnHost, buildMainPortalUrl } from "@/lib/learn/hosts";
 import { siteConfig } from "@/lib/learn/sites";
 import { SITES, isSite, schoolLevel } from "@/lib/learn/types";
 import { hubLabels } from "@/components/think/hubLabels";
@@ -19,12 +19,15 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
   const h = await headers();
   const base = h.get("x-learn-base") ?? `/study/${site}`;
   const { t, locale } = await getServerT();
+  const secondaryLocales = await getSecondaryLocales();
+  const rawHost = h.get("x-forwarded-host") ?? h.get("host") ?? "";
+  const mainHomeUrl = buildMainPortalUrl(rawHost, locale, secondaryLocales);
   const { bundle } = await loadContent(site, locale);
   const userId = await getUserId();
   const hasProfile = userId ? !!(await getLearnService().getState({ userId }, site)).profile : false;
   const dailyInsight = getDailyInsight(site, new Date(), locale);
   // Navigation for all 5 study sites in one single row: Korean, English, Math, Physics, Chemistry
-  const stage = parseLearnHost(h.get("host") ?? "")?.stage;
+  const stage = parseLearnHost(rawHost)?.stage;
   const urlLocalePrefix = base.startsWith(`/study/${site}`)
     ? base.slice(`/study/${site}`.length)
     : (base.startsWith("/") ? base : "");
@@ -42,6 +45,14 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
       <a className="l-skip" href="#main">{t("nav.skip")}</a>
       <header className="l-landing-head" style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "10px 16px" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "12px", flexShrink: 0 }}>
+          <a
+            href={mainHomeUrl}
+            className="droplet-pill inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-white rounded-full font-black text-xs transition shadow-sm cursor-pointer"
+            title={locale === "ko" ? "LIFE.HELP 메인 홈으로 이동" : "Return to LIFE.HELP Main Portal"}
+          >
+            <span className="text-sm">🏠</span>
+            <span>LIFE.HELP</span>
+          </a>
           <span className="l-brand"><BrandLogo site={site} name={t(siteConfig(site).brandKey)} size={56} /></span>
           <LocaleSwitch />
         </div>
@@ -101,7 +112,7 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
 
       {/* 실전 인생 도움 데일리 팁 카드 */}
       <section className="l-stack">
-        <DailyInsightCard domain={site as DomainType} insight={dailyInsight} locale={locale} />
+        <DailyInsightCard domain={site as DomainType} insight={dailyInsight} locale={locale} secondaryLocales={secondaryLocales} />
       </section>
 
       <section className="l-stack" aria-labelledby="how-h">

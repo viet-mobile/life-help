@@ -62,3 +62,26 @@ export function buildLearnUrl(site: Site, rawHost: string, locale?: string): str
   }
   return `https://${sub}.life.help${path}`;
 }
+
+export function buildMainPortalUrl(
+  rawHost: string,
+  locale?: string,
+  secondaryLocales?: string[]
+): string {
+  const host = rawHost.split(":")[0].toLowerCase().trim();
+  const info = parseLearnHost(host);
+  const stage = info?.stage ?? (host.includes("localhost") || host.includes("127.0.0.1") ? "local" : "production");
+
+  let baseOrigin = "https://korea.life.help";
+  if (stage === "local") {
+    baseOrigin = "http://localhost:3000";
+  } else if (stage === "staging") {
+    baseOrigin = "https://korea-staging.life.help";
+  }
+
+  const validLoc = locale && locale !== "ko" ? locale : "";
+  const secPart = secondaryLocales && secondaryLocales.length > 0 ? `/${secondaryLocales.join("+")}` : "";
+  const prefix = validLoc ? `/${validLoc}${secPart}` : (secPart ? `/ko${secPart}` : "");
+  return `${baseOrigin}${prefix || "/"}`;
+}
+

@@ -315,7 +315,7 @@ function CardShell({ svc, onStudy, className, children }: { svc: ServiceItem; on
 }
 
 export function CustomerHome() {
-  const { locale, setLocale, t, tKo, tSecondary, tBilingual, isBilingual, secondaryLocale, formatBilingual } = useLocale();
+  const { locale, setLocale, t, tKo, tSecondary, tBilingual, isBilingual, secondaryLocale, secondaryLocales, formatBilingual } = useLocale();
   const { formattedRegion, shortRegionText, openModal } = useRegion();
   const headingWeight = locale === "vi" ? "font-bold" : "font-extrabold";
 
@@ -560,6 +560,7 @@ export function CustomerHome() {
             domain={insightDomain}
             insight={getDailyInsight(insightDomain, new Date(), locale)}
             locale={locale}
+            secondaryLocales={secondaryLocales}
           />
         </div>
       </section>

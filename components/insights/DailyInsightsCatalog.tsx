@@ -332,8 +332,13 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
                   </h3>
                   {isBilingual && secondaryInsights.map(({ locale: secLoc, insight: secInsight }) => (
                     secInsight?.title && secInsight.title !== insight.title ? (
-                      <p key={secLoc} className="mt-0.5 text-xs font-bold text-slate-500">
-                        {secInsight.title}
+                      <p key={secLoc} className="mt-1 text-xs font-bold text-slate-500 flex items-baseline gap-1.5">
+                        {effectiveSecondaryLocales.length > 1 && (
+                          <span className="inline-block text-[9px] font-black uppercase px-1 py-0.2 rounded bg-slate-100 text-slate-600 border border-slate-200 shrink-0">
+                            {secLoc}
+                          </span>
+                        )}
+                        <span>{secInsight.title}</span>
                       </p>
                     ) : null
                   ))}
@@ -342,6 +347,18 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
                   <p className="mt-2 text-xs text-slate-600 font-medium leading-relaxed">
                     {insight.summary}
                   </p>
+                  {isBilingual && secondaryInsights.map(({ locale: secLoc, insight: secInsight }) => (
+                    secInsight?.summary && secInsight.summary !== insight.summary ? (
+                      <p key={secLoc} className="mt-1 text-xs text-slate-500 font-medium leading-relaxed flex items-baseline gap-1.5">
+                        {effectiveSecondaryLocales.length > 1 && (
+                          <span className="inline-block text-[9px] font-black uppercase px-1 py-0.2 rounded bg-slate-100 text-slate-600 border border-slate-200 shrink-0">
+                            {secLoc}
+                          </span>
+                        )}
+                        <span>{secInsight.summary}</span>
+                      </p>
+                    ) : null
+                  ))}
 
                   {/* Principle Box */}
                   <div className="mt-3 rounded-xl border border-slate-100 bg-slate-50 p-2.5 space-y-1">
@@ -353,8 +370,13 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
                     </div>
                     {isBilingual && secondaryInsights.map(({ locale: secLoc, insight: secInsight }) => (
                       secInsight?.principle && secInsight.principle !== insight.principle ? (
-                        <p key={secLoc} className="text-[11px] font-medium text-slate-500">
-                          {secInsight.principle}
+                        <p key={secLoc} className="text-[11px] font-medium text-slate-500 flex items-baseline gap-1.5">
+                          {effectiveSecondaryLocales.length > 1 && (
+                            <span className="inline-block text-[9px] font-black uppercase px-1 py-0.2 rounded bg-slate-200 text-slate-700 border border-slate-300 shrink-0">
+                              {secLoc}
+                            </span>
+                          )}
+                          <span>{secInsight.principle}</span>
                         </p>
                       ) : null
                     ))}
@@ -375,8 +397,13 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
                     </div>
                     {isBilingual && secondaryInsights.map(({ locale: secLoc, insight: secInsight }) => (
                       secInsight?.actionItem && secInsight.actionItem !== insight.actionItem ? (
-                        <p key={secLoc} className="mt-0.5 text-[11px] font-medium text-slate-300">
-                          {secInsight.actionItem}
+                        <p key={secLoc} className="mt-1 text-[11px] font-medium text-amber-200/90 flex items-baseline gap-1.5">
+                          {effectiveSecondaryLocales.length > 1 && (
+                            <span className="inline-block text-[9px] font-black uppercase px-1 py-0.2 rounded bg-amber-500/30 text-amber-200 border border-amber-400/30 shrink-0">
+                              {secLoc}
+                            </span>
+                          )}
+                          <span>{secInsight.actionItem}</span>
                         </p>
                       ) : null
                     ))}

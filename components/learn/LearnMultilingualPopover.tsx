@@ -23,6 +23,22 @@ function getSecondaryLocalesFromCookie(): Locale[] {
   return [];
 }
 
+function getInitialActiveLocales(currentLocale: Locale, secondaryLocales?: Locale[], secondaryLocale?: Locale | null): Locale[] {
+  if (secondaryLocales && secondaryLocales.length > 0) return secondaryLocales as Locale[];
+  if (secondaryLocale) return [secondaryLocale as Locale];
+  const fromCookie = getSecondaryLocalesFromCookie();
+  if (fromCookie.length > 0) return fromCookie;
+  if (typeof document !== "undefined") {
+    const mode = document.cookie.match(/life_help_display_mode=([^;]+)/)?.[1];
+    if (mode === "single") return [];
+  }
+  // Default on study pages for non-Korean learners: Korean is the default secondary language
+  if (currentLocale !== "ko") {
+    return ["ko" as Locale];
+  }
+  return [];
+}
+
 export function LearnMultilingualPopover({
   currentLocale,
   compact = false,
@@ -33,16 +49,47 @@ export function LearnMultilingualPopover({
   const secDropdownRef = useRef<HTMLDivElement>(null);
 
   const [activeSecLocales, setActiveSecLocales] = useState<Locale[]>(() => {
-    if (secondaryLocales && secondaryLocales.length > 0) return secondaryLocales as Locale[];
-    if (secondaryLocale) return [secondaryLocale as Locale];
-    return getSecondaryLocalesFromCookie();
+    return getInitialActiveLocales(currentLocale, secondaryLocales as Locale[], secondaryLocale as Locale);
   });
+  const activeSecLocalesRef = useRef(activeSecLocales);
+  activeSecLocalesRef.current = activeSecLocales;
+
+  const applyLocales = (nextList: Locale[]) => {
+    setActiveSecLocales(nextList);
+    const secure = typeof window !== "undefined" && window.location.protocol === "https:" ? "; Secure" : "";
+    const maxAge = 31536000;
+    if (nextList.length === 0) {
+      document.cookie = `life_help_display_mode=single; Path=/; Max-Age=${maxAge}; SameSite=Lax${secure}`;
+      document.cookie = `life_help_secondary_locale=; Path=/; Max-Age=0; SameSite=Lax${secure}`;
+      document.cookie = `life_help_secondary_locales=; Path=/; Max-Age=0; SameSite=Lax${secure}`;
+    } else {
+      document.cookie = `life_help_display_mode=bilingual; Path=/; Max-Age=${maxAge}; SameSite=Lax${secure}`;
+      document.cookie = `life_help_secondary_locale=${nextList[0]}; Path=/; Max-Age=${maxAge}; SameSite=Lax${secure}`;
+      document.cookie = `life_help_secondary_locales=${nextList.join("+")}; Path=/; Max-Age=${maxAge}; SameSite=Lax${secure}`;
+    }
+
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new Event("life_help_secondary_locale_change"));
+      window.dispatchEvent(new Event("life_help_display_mode_change"));
+      const pathname = window.location.pathname;
+      const { locale: currentUrlLocale, rest } = splitLocalePrefix(pathname);
+      if (currentUrlLocale) {
+        const secPart = nextList.length > 0 ? `/${nextList.join("+")}` : "";
+        const targetPath = `/${currentUrlLocale}${secPart}${rest === "/" ? "" : rest}`;
+        if (targetPath !== pathname) {
+          window.location.assign(`${targetPath}${window.location.search}${window.location.hash}`);
+          return;
+        }
+      }
+    }
+  };
 
   // Close secondary popover on outside click
   useEffect(() => {
     if (!secOpen) return;
     const handleClickOutside = (e: MouseEvent) => {
       if (secDropdownRef.current && !secDropdownRef.current.contains(e.target as Node)) {
+        applyLocales(activeSecLocalesRef.current);
         setSecOpen(false);
       }
     };
@@ -69,38 +116,14 @@ export function LearnMultilingualPopover({
     });
   }, [sortedLanguages, currentLocale, searchQuery]);
 
-  const applyLocales = (nextList: Locale[]) => {
-    setActiveSecLocales(nextList);
-    const secure = typeof window !== "undefined" && window.location.protocol === "https:" ? "; Secure" : "";
-    const maxAge = 31536000;
-    if (nextList.length === 0) {
-      document.cookie = `life_help_display_mode=single; Path=/; Max-Age=${maxAge}; SameSite=Lax${secure}`;
-      document.cookie = `life_help_secondary_locale=; Path=/; Max-Age=0; SameSite=Lax${secure}`;
-      document.cookie = `life_help_secondary_locales=; Path=/; Max-Age=0; SameSite=Lax${secure}`;
-    } else {
-      document.cookie = `life_help_display_mode=bilingual; Path=/; Max-Age=${maxAge}; SameSite=Lax${secure}`;
-      document.cookie = `life_help_secondary_locale=${nextList[0]}; Path=/; Max-Age=${maxAge}; SameSite=Lax${secure}`;
-      document.cookie = `life_help_secondary_locales=${nextList.join("+")}; Path=/; Max-Age=${maxAge}; SameSite=Lax${secure}`;
-    }
-
-    if (typeof window !== "undefined") {
-      const pathname = window.location.pathname;
-      const { locale: currentUrlLocale, rest } = splitLocalePrefix(pathname);
-      if (currentUrlLocale) {
-        const secPart = nextList.length > 0 ? `/${nextList.join("+")}` : "";
-        const targetPath = `/${currentUrlLocale}${secPart}${rest === "/" ? "" : rest}`;
-        window.location.assign(`${targetPath}${window.location.search}${window.location.hash}`);
-        return;
-      }
-      window.location.reload();
-    }
-  };
-
   const toggleLocale = (code: Locale) => {
-    const nextList = activeSecLocales.includes(code)
-      ? activeSecLocales.filter((l) => l !== code)
-      : [...activeSecLocales, code];
-    applyLocales(nextList);
+    setActiveSecLocales((prev) => {
+      if (prev.includes(code)) {
+        return prev.filter((l) => l !== code);
+      } else {
+        return [...prev, code];
+      }
+    });
   };
 
   const secondaryCount = activeSecLocales.length;
@@ -227,6 +250,23 @@ export function LearnMultilingualPopover({
                 </button>
               );
             })}
+          </div>
+
+          {/* Footer with Done button */}
+          <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between">
+            <span className="text-[11px] font-bold text-slate-500">
+              {isKo ? `${secondaryCount}개 병기 언어 선택됨` : `${secondaryCount} selected`}
+            </span>
+            <button
+              type="button"
+              onClick={() => {
+                applyLocales(activeSecLocales);
+                setSecOpen(false);
+              }}
+              className="rounded-lg bg-blue-600 hover:bg-blue-700 px-3 py-1.5 text-xs font-black text-white shadow-2xs transition cursor-pointer"
+            >
+              {isKo ? "선택 완료" : "Done"}
+            </button>
           </div>
         </div>
       )}
