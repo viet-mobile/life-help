@@ -414,28 +414,31 @@ import languageNamesData from "./languageNames.json";
 const STATIC_LANGUAGE_NAMES: Record<string, Record<string, string>> = languageNamesData as unknown as Record<string, Record<string, string>>;
 
 export function getLanguageNameInLocale(langCode: string, targetLocale: Locale | string = "ko"): string {
-  // 1. Curated overrides for languages with incomplete or colloquial Intl.DisplayNames coverage
-  if (langCode === "yue") {
-    if (targetLocale === "ko") return "광둥어";
-    if (targetLocale === "zh-Hans") return "粤语";
-    if (targetLocale === "en") return "Cantonese";
-    return "粵語";
+  if (targetLocale === "ko") {
+    const found = languages.find((l) => l.code === langCode);
+    if (found) return found.name;
+    if (langCode === "yue") return "광둥어";
   }
+
+  // Curated overrides for specialized dialect registries
   if (langCode === "arz" && ARZ_LOCALIZED_NAMES[targetLocale]) {
     return ARZ_LOCALIZED_NAMES[targetLocale];
   }
   if (langCode === "pcm" && PCM_LOCALIZED_NAMES[targetLocale]) {
     return PCM_LOCALIZED_NAMES[targetLocale];
   }
-  if (targetLocale === "ko") {
-    const found = languages.find((l) => l.code === langCode);
-    if (found) return found.name;
-  }
 
-  // 2. Static precompiled table (covers all 89 locales with 100% verified native translations)
+  // 1. Static precompiled table (covers all 89 locales with 100% verified native translations)
   const byTarget = STATIC_LANGUAGE_NAMES[targetLocale];
   if (byTarget && byTarget[langCode]) {
     return byTarget[langCode];
+  }
+
+  // 2. Curated fallback overrides for Cantonese (yue)
+  if (langCode === "yue") {
+    if (targetLocale === "zh-Hans") return "粤语";
+    if (targetLocale === "en") return "Cantonese";
+    return "粵語";
   }
 
   // 3. Browser / runtime native Intl.DisplayNames (with strict target locale resolution match)

@@ -140,10 +140,10 @@ describe("Multilingual UI, 4-Quadrant Homecare, Referral & OG Metadata", () => {
 
     // Physics and Chemistry in Albanian (sq)
     const physicsSq = getDailyInsight("physics", testDate, "sq");
-    expect(physicsSq.title).toContain("1 kWh është 3.6 MJ");
+    expect(physicsSq.title).toBe("Batanije elektrike kundrejt kaldajës");
 
     const chemSq = getDailyInsight("chemistry", testDate, "sq");
-    expect(chemSq.title).toContain("Orizi");
+    expect(chemSq.title).toBe("Dezinfektues duarsh për udhëtim, me etanol mbi 60%");
 
     // Random / custom index support in getDailyInsight
     const random1 = getDailyInsight("math", 0, "en");

@@ -249,5 +249,34 @@ describe("Language selection list: sorting and display specifications", () => {
         expect(bilingual).not.toContain("(한국어) 한국어");
       }
     });
+
+    it("Rule 5: Accurately formats Cantonese (yue) across all locales including Hindi without raw Han character leaks", () => {
+      const yueMeta = languages.find((l) => l.code === "yue")!;
+
+      // In Hindi (hi), Cantonese MUST be localized as कैंटोनीज़ with native 粵語 on second line
+      expect(getLanguageNameInLocale("yue", "hi")).toBe("कैंटोनीज़");
+      const formattedHi = formatLanguageName(yueMeta, "hi", false);
+      expect(formattedHi).toBe("कैंटोनीज़\n粵語");
+
+      // In Vietnamese (vi), Cantonese MUST be Tiếng Quảng Đông
+      expect(getLanguageNameInLocale("yue", "vi")).toBe("Tiếng Quảng Đông");
+      expect(formatLanguageName(yueMeta, "vi", false)).toBe("Tiếng Quảng Đông\n粵語");
+
+      // In Japanese (ja), Cantonese MUST be 広東語
+      expect(getLanguageNameInLocale("yue", "ja")).toBe("広東語");
+      expect(formatLanguageName(yueMeta, "ja", false)).toBe("広東語\n粵語");
+
+      // In Korean (ko), Cantonese MUST be 광둥어
+      expect(getLanguageNameInLocale("yue", "ko")).toBe("광둥어");
+      expect(formatLanguageName(yueMeta, "ko", false)).toBe("광둥어\n粵語");
+
+      // In all non-CJK locales, Cantonese translation must never leak Chinese characters
+      const cjkRegex = /[\u4e00-\u9fff]/;
+      for (const loc of locales) {
+        if (["ko", "ja", "zh-Hans", "zh-Hant", "yue"].includes(loc)) continue;
+        const nameInLoc = getLanguageNameInLocale("yue", loc);
+        expect(cjkRegex.test(nameInLoc), `Cantonese name in ${loc} leaked CJK characters: ${nameInLoc}`).toBe(false);
+      }
+    });
   });
 });
