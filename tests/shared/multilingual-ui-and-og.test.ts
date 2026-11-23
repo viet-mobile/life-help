@@ -139,10 +139,10 @@ describe("Multilingual UI, 4-Quadrant Homecare, Referral & OG Metadata", () => {
     expect(koreanSq.actionItem).toContain("Shënoni fjalët");
 
     // Physics and Chemistry in Albanian (sq)
-    const physicsSq = getDailyInsight("physics", testDate, "sq");
+    const physicsSq = getDailyInsight("physics", 3, "sq");
     expect(physicsSq.title).toBe("Batanije elektrike kundrejt kaldajës");
 
-    const chemSq = getDailyInsight("chemistry", testDate, "sq");
+    const chemSq = getDailyInsight("chemistry", 3, "sq");
     expect(chemSq.title).toBe("Dezinfektues duarsh për udhëtim, me etanol mbi 60%");
 
     // Random / custom index support in getDailyInsight

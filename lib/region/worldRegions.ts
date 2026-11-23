@@ -1961,49 +1961,52 @@ export const worldRegions: Record<string, SidoData[]> = {
   ],
   DK: [
     {
-      name: "Region Hovedstaden (Capital)",
+      name: "Region Hovedstaden (Capital Region)",
       shortName: "Hovedstaden",
       gunguList: [
-        { name: "København (Copenhagen)", dongs: ["Indre By (City)", "Vesterbro", "Nørrebro", "Østerbro", "Frederiksberg"] },
-        { name: "Helsingør", dongs: ["Centrum"] },
-        { name: "Hillerød", dongs: ["Centrum"] },
+        { name: "Copenhagen (København)", dongs: ["Indre By (City Center)", "Vesterbro", "Nørrebro", "Østerbro", "Frederiksberg", "Amager"] },
+        { name: "North Sealand", dongs: ["Helsingør", "Hillerød", "Lyngby-Taarbæk", "Gentofte"] },
+        { name: "Bornholm", dongs: ["Rønne", "Nexø"] },
       ],
     },
     {
-      name: "Region Midtjylland (Central)",
-      shortName: "Midtjylland",
-      gunguList: [
-        { name: "Aarhus", dongs: ["Aarhus C", "Trøjborg", "Viby"] },
-        { name: "Randers", dongs: ["Centrum"] },
-        { name: "Horsens", dongs: ["Centrum"] },
-        { name: "Silkeborg", dongs: ["Centrum"] },
-      ],
-    },
-    {
-      name: "Region Syddanmark (Southern)",
-      shortName: "Syddanmark",
-      gunguList: [
-        { name: "Odense", dongs: ["Centrum", "Odense M"] },
-        { name: "Esbjerg", dongs: ["Centrum"] },
-        { name: "Kolding", dongs: ["Centrum"] },
-        { name: "Vejle", dongs: ["Centrum"] },
-      ],
-    },
-    {
-      name: "Region Nordjylland (Northern)",
-      shortName: "Nordjylland",
-      gunguList: [
-        { name: "Aalborg", dongs: ["Centrum", "Aalborg Øst"] },
-        { name: "Hjørring", dongs: ["Centrum"] },
-      ],
-    },
-    {
-      name: "Region Sjælland (Zealand)",
+      name: "Region Sjælland",
       shortName: "Sjælland",
       gunguList: [
-        { name: "Roskilde", dongs: ["Centrum"] },
-        { name: "Næstved", dongs: ["Centrum"] },
-        { name: "Køge", dongs: ["Centrum"] },
+        { name: "Roskilde", dongs: ["Centrum", "Trekroner", "Himmelev"] },
+        { name: "Køge", dongs: ["Køge Centrum", "Herfølge"] },
+        { name: "Næstved", dongs: ["Næstved Centrum"] },
+        { name: "Helsingør / Slagelse", dongs: ["Slagelse Centrum", "Korsør"] },
+      ],
+    },
+    {
+      name: "Region Syddanmark (South Denmark)",
+      shortName: "Syddanmark",
+      gunguList: [
+        { name: "Odense (Fyn)", dongs: ["Odense C", "Odense M", "HC Andersen Kvarteret"] },
+        { name: "Esbjerg", dongs: ["Esbjerg Centrum", "Ribe"] },
+        { name: "Kolding / Vejle", dongs: ["Kolding Centrum", "Vejle Centrum", "Fredericia"] },
+        { name: "Sønderborg", dongs: ["Sønderborg By", "Als"] },
+      ],
+    },
+    {
+      name: "Region Midtjylland (Central Jutland)",
+      shortName: "Midtjylland",
+      gunguList: [
+        { name: "Aarhus", dongs: ["Aarhus C (Midtbyen)", "Trøjborg", "Latinerkvarteret", "Aarhus Ø", "Viby J"] },
+        { name: "Silkeborg", dongs: ["Silkeborg Centrum", "Lakeside Area"] },
+        { name: "Horsens", dongs: ["Horsens Centrum"] },
+        { name: "Randers", dongs: ["Randers C"] },
+        { name: "Herning", dongs: ["Herning Centrum"] },
+      ],
+    },
+    {
+      name: "Region Nordjylland (North Jutland)",
+      shortName: "Nordjylland",
+      gunguList: [
+        { name: "Aalborg", dongs: ["Aalborg Centrum", "Nørresundby", "Hasseris", "Vestbyen"] },
+        { name: "Frederikshavn / Skagen", dongs: ["Skagen", "Frederikshavn Centrum"] },
+        { name: "Hjørring", dongs: ["Hjørring By"] },
       ],
     },
   ],
@@ -3698,55 +3701,67 @@ export const worldRegions: Record<string, SidoData[]> = {
       name: "Bagmati Province",
       shortName: "Bagmati",
       gunguList: [
-        { name: "Kathmandu District", dongs: ["Thamel", "Baluwatar", "Baneshwor", "Durbar Marg", "Lazimpat"] },
-        { name: "Lalitpur District (Patan)", dongs: ["Jhamsikhel", "Kupondole", "Patan Durbar Square"] },
-        { name: "Bhaktapur District", dongs: ["Durbar Square"] },
+        { name: "Kathmandu District", dongs: ["Thamel", "Baluwatar", "Baneshwor", "Durbar Marg", "Lazimpat", "Chabahil", "Koteshwor"] },
+        { name: "Lalitpur District (Patan)", dongs: ["Jhamsikhel", "Kupondole", "Patan Durbar Square", "Pulchowk", "Jawalakhel"] },
+        { name: "Bhaktapur District", dongs: ["Durbar Square", "Suryabinayak", "Madhyapur Thimi", "Nagarkot"] },
+        { name: "Chitwan District", dongs: ["Bharatpur", "Ratnanagar", "Sauraha"] },
+        { name: "Makwanpur District", dongs: ["Hetauda", "Thaha"] },
       ],
     },
     {
       name: "Gandaki Province",
       shortName: "Gandaki",
       gunguList: [
-        { name: "Kaski (Pokhara)", dongs: ["Lakeside", "Damside", "Mahendrapool"] },
+        { name: "Kaski District (Pokhara)", dongs: ["Lakeside", "Damside", "Mahendrapool", "Prithvi Chowk", "Bagar"] },
+        { name: "Tanahun District", dongs: ["Damauli", "Bandipur", "Shuklagandaki"] },
+        { name: "Syangja District", dongs: ["Putalibazar", "Waling"] },
+        { name: "Gorkha District", dongs: ["Gorkha Bazaar", "Manakamana"] },
       ],
     },
     {
       name: "Koshi Province",
       shortName: "Koshi",
       gunguList: [
-        { name: "Morang (Biratnagar)", dongs: ["Main Road"] },
-        { name: "Sunsari (Dharan)", dongs: ["Bhanu Chowk"] },
+        { name: "Morang District (Biratnagar)", dongs: ["Main Road", "Traffic Chowk", "Bargachhi"] },
+        { name: "Sunsari District", dongs: ["Dharan", "Itahari", "Inaruwa"] },
+        { name: "Jhapa District", dongs: ["Damak", "Birtamod", "Bhadrapur"] },
+        { name: "Ilam District", dongs: ["Ilam Bazaar", "Kanyam"] },
       ],
     },
     {
       name: "Madhesh Province",
       shortName: "Madhesh",
       gunguList: [
-        { name: "Parsa (Birgunj)", dongs: ["Adarshnagar"] },
-        { name: "Dhanusha (Janakpur)", dongs: ["Station Road"] },
+        { name: "Parsa District (Birgunj)", dongs: ["Adarshnagar", "Maisthan", "Ghantaghar"] },
+        { name: "Dhanusha District (Janakpur)", dongs: ["Janaki Mandir", "Station Road", "Ramanand Chowk"] },
+        { name: "Siraha District", dongs: ["Lahan", "Siraha Bazaar"] },
+        { name: "Bara District", dongs: ["Kalaiya", "Simara"] },
       ],
     },
     {
       name: "Lumbini Province",
       shortName: "Lumbini",
       gunguList: [
-        { name: "Rupandehi (Butwal / Bhairahawa)", dongs: ["Traffic Chowk"] },
-        { name: "Kapilvastu (Lumbini)", dongs: ["Lumbini Sacred Garden"] },
+        { name: "Rupandehi District (Butwal/Bhairahawa)", dongs: ["Traffic Chowk", "Lumbini Heritage Area", "Siddharthanagar"] },
+        { name: "Banke District (Nepalgunj)", dongs: ["Tribhuvan Chowk", "Dhamboji", "Kohalpur"] },
+        { name: "Dang District", dongs: ["Ghorahi", "Tulsipur"] },
+        { name: "Kapilvastu District", dongs: ["Taulihawa", "Tilaurakot"] },
       ],
     },
     {
       name: "Karnali Province",
       shortName: "Karnali",
       gunguList: [
-        { name: "Surkhet (Birendranagar)", dongs: ["Birendrachowk"] },
+        { name: "Surkhet District (Birendranagar)", dongs: ["Birendra Chowk", "Mulpani", "Yerin"] },
+        { name: "Jumla District", dongs: ["Chandannath", "Khalanga"] },
       ],
     },
     {
       name: "Sudurpashchim Province",
       shortName: "Sudurpashchim",
       gunguList: [
-        { name: "Kailali (Dhangadhi)", dongs: ["Main Road"] },
-        { name: "Kanchanpur (Mahendranagar)", dongs: ["Bazaar"] },
+        { name: "Kailali District (Dhangadhi)", dongs: ["Main Bazaar", "Chauraha", "Tikapur"] },
+        { name: "Kanchanpur District (Mahendranagar)", dongs: ["Bhimdatta Bazaar", "Dodhara-Chandani"] },
       ],
     },
   ],
@@ -3829,110 +3844,62 @@ export const worldRegions: Record<string, SidoData[]> = {
       name: "Yangon Region",
       shortName: "Yangon",
       gunguList: [
-        { name: "Yangon", dongs: ["Dagon", "Kamayut", "Bahan", "Kyauktada", "Mayangone", "Hlaing"] },
+        { name: "Yangon Downtown", dongs: ["Kyauktada", "Pabedan", "Latha", "Lanmadaw", "Botahtaung"] },
+        { name: "Inner Yangon", dongs: ["Bahan", "Dagon", "Kamayut", "Sanchaung", "Hlaing", "Mayangone"] },
+        { name: "Outer Yangon", dongs: ["Thanlyin", "Insein", "North Dagon", "South Dagon", "Hmawbi"] },
       ],
     },
     {
       name: "Mandalay Region",
       shortName: "Mandalay",
       gunguList: [
-        { name: "Mandalay City", dongs: ["Chanayethazan", "Mahaaungmye", "Aungmyethazan"] },
-        { name: "Pyin Oo Lwin", dongs: ["Central"] },
+        { name: "Mandalay City", dongs: ["Chanayethazan", "Mahaaungmye", "Aungmyethazan", "Pyigyitagon", "Chanmyathazi"] },
+        { name: "Pyin Oo Lwin", dongs: ["Central Area", "Botanical Garden Ward", "Station Ward"] },
+        { name: "Nyaung-U (Bagan)", dongs: ["Old Bagan", "New Bagan", "Nyaung-U Town"] },
+        { name: "Meiktila", dongs: ["Town Center", "Lakeside Ward"] },
       ],
     },
     {
       name: "Naypyidaw Union Territory",
       shortName: "Naypyidaw",
       gunguList: [
-        { name: "Naypyidaw", dongs: ["Zabuthiri", "Ottarathiri", "Dekkhinathiri"] },
+        { name: "Capital Center", dongs: ["Zabuthiri", "Ottarathiri", "Dekkhinathiri", "Pobbathiri"] },
+        { name: "Pyinmana Area", dongs: ["Pyinmana Town", "Lewe"] },
       ],
     },
     {
       name: "Shan State",
       shortName: "Shan",
       gunguList: [
-        { name: "Taunggyi", dongs: ["City Centre"] },
-        { name: "Inle Lake", dongs: ["Nyaungshwe"] },
-        { name: "Lashio", dongs: ["City Centre"] },
+        { name: "Taunggyi", dongs: ["Market Ward", "Central Taunggyi", "Forestry Area"] },
+        { name: "Nyaungshwe (Inle Lake)", dongs: ["Nyaungshwe Town", "Floating Villages"] },
+        { name: "Kalaw", dongs: ["Hill Station Center", "Pine Hill"] },
+        { name: "Lashio", dongs: ["Downtown Lashio", "Station Ward"] },
       ],
     },
     {
       name: "Bago Region",
       shortName: "Bago",
       gunguList: [
-        { name: "Bago City", dongs: ["Central"] },
-      ],
-    },
-    {
-      name: "Ayeyarwady Region",
-      shortName: "Ayeyarwady",
-      gunguList: [
-        { name: "Pathein", dongs: ["City Centre"] },
-      ],
-    },
-    {
-      name: "Sagaing Region",
-      shortName: "Sagaing",
-      gunguList: [
-        { name: "Monywa", dongs: ["City Centre"] },
+        { name: "Bago City", dongs: ["Shwemawdaw Area", "Kalyani", "Center"] },
+        { name: "Pyay", dongs: ["Strand Road", "Central Pyay"] },
+        { name: "Taungoo", dongs: ["Palace Quarter", "Center"] },
       ],
     },
     {
       name: "Mon State",
       shortName: "Mon",
       gunguList: [
-        { name: "Mawlamyine", dongs: ["City Centre"] },
-      ],
-    },
-    {
-      name: "Kachin State",
-      shortName: "Kachin",
-      gunguList: [
-        { name: "Myitkyina", dongs: ["City Centre"] },
+        { name: "Mawlamyine", dongs: ["Strand Road", "Kyaikthanlan Area", "Center"] },
+        { name: "Kyaikto (Golden Rock)", dongs: ["Kinpun Base Camp", "Mountain Top Area"] },
       ],
     },
     {
       name: "Rakhine State",
       shortName: "Rakhine",
       gunguList: [
-        { name: "Sittwe", dongs: ["City Centre"] },
-        { name: "Thandwe (Ngapali)", dongs: ["Ngapali Beach"] },
-      ],
-    },
-    {
-      name: "Kayin State",
-      shortName: "Kayin",
-      gunguList: [
-        { name: "Hpa-an", dongs: ["City Centre"] },
-      ],
-    },
-    {
-      name: "Magway Region",
-      shortName: "Magway",
-      gunguList: [
-        { name: "Magway City", dongs: ["City Centre"] },
-      ],
-    },
-    {
-      name: "Tanintharyi Region",
-      shortName: "Tanintharyi",
-      gunguList: [
-        { name: "Dawei", dongs: ["City Centre"] },
-        { name: "Myeik", dongs: ["City Centre"] },
-      ],
-    },
-    {
-      name: "Kayah State",
-      shortName: "Kayah",
-      gunguList: [
-        { name: "Loikaw", dongs: ["City Centre"] },
-      ],
-    },
-    {
-      name: "Chin State",
-      shortName: "Chin",
-      gunguList: [
-        { name: "Hakha", dongs: ["City Centre"] },
+        { name: "Sittwe", dongs: ["Point Area", "Central Sittwe", "Strand Road"] },
+        { name: "Thandwe (Ngapali Beach)", dongs: ["Ngapali Beachfront", "Thandwe Town"] },
       ],
     },
   ],
@@ -3941,109 +3908,41 @@ export const worldRegions: Record<string, SidoData[]> = {
       name: "Phnom Penh",
       shortName: "Phnom Penh",
       gunguList: [
-        { name: "Doun Penh", dongs: ["Phsar Kandal", "Boeung Reang", "Chey Chumneah", "Srah Chak"] },
-        { name: "Chamkar Mon", dongs: ["Tonle Bassac", "Boeng Keng Kang 1"] },
-        { name: "Toul Kork", dongs: ["Boeung Kak", "Phsar Depo"] },
+        { name: "Daun Penh (Riverside/Palace)", dongs: ["Phsar Kandal", "Chey Chumneas", "Wat Phnom", "Phsar Thmey"] },
+        { name: "Chamkar Mon (BKK)", dongs: ["Boeung Keng Kang 1", "Boeung Keng Kang 2", "Tonle Bassac", "Tuol Tumpoung"] },
+        { name: "Toul Kork", dongs: ["Boeung Kak 1", "Boeung Kak 2", "Phsar Depo"] },
+        { name: "Chroy Changvar", dongs: ["Chroy Changvar", "Prek Leap"] },
       ],
     },
     {
       name: "Siem Reap",
       shortName: "Siem Reap",
       gunguList: [
-        { name: "Siem Reap Municipality", dongs: ["Old Market (Pub Street)", "Wat Bo", "Sala Kamreuk", "Svay Dangkum"] },
-      ],
-    },
-    {
-      name: "Preah Sihanouk (Sihanoukville)",
-      shortName: "Sihanoukville",
-      gunguList: [
-        { name: "Sihanoukville City", dongs: ["Ochheuteal Beach", "Otres", "Mittakpheap"] },
+        { name: "Siem Reap Central", dongs: ["Pub Street Area", "Wat Bo", "Sala Kamreuk", "Svay Dangkum", "Old Market"] },
+        { name: "Angkor Archaeological Zone", dongs: ["Norkor Thum", "Bakheng Area"] },
       ],
     },
     {
       name: "Battambang",
       shortName: "Battambang",
       gunguList: [
-        { name: "Battambang Municipality", dongs: ["Svay Pao", "Rottanak"] },
+        { name: "Battambang City", dongs: ["Svay Pao", "Rottanak", "Chamkar Samraong", "Wat Kor"] },
       ],
     },
     {
-      name: "Kandal",
-      shortName: "Kandal",
+      name: "Preah Sihanouk (Sihanoukville)",
+      shortName: "Sihanoukville",
       gunguList: [
-        { name: "Ta Khmau", dongs: ["Ta Khmau", "Prek Ruessei"] },
+        { name: "Sihanoukville Coastal", dongs: ["Ochheuteal Beach", "Otres Beach", "Sangkat 4", "Port Zone"] },
+        { name: "Koh Rong Island", dongs: ["Koh Touch", "Sok San"] },
       ],
     },
     {
       name: "Kampot",
       shortName: "Kampot",
       gunguList: [
-        { name: "Kampot Municipality", dongs: ["Kampong Bay", "Traeuy Kaoh"] },
-      ],
-    },
-    {
-      name: "Banteay Meanchey (Poipet)",
-      shortName: "Poipet",
-      gunguList: [
-        { name: "Poipet City", dongs: ["Poipet"] },
-        { name: "Serei Saophoan", dongs: ["Preah Ponlea"] },
-      ],
-    },
-    {
-      name: "Kampong Cham",
-      shortName: "Kampong Cham",
-      gunguList: [
-        { name: "Kampong Cham City", dongs: ["Kampong Cham"] },
-      ],
-    },
-    {
-      name: "Koh Kong",
-      shortName: "Koh Kong",
-      gunguList: [
-        { name: "Khemarak Phoumin", dongs: ["Smach Mean Chey"] },
-      ],
-    },
-    {
-      name: "Kep",
-      shortName: "Kep",
-      gunguList: [
-        { name: "Kep Municipality", dongs: ["Prey Thum", "Crab Market Area"] },
-      ],
-    },
-    {
-      name: "Svay Rieng (Bavet)",
-      shortName: "Bavet",
-      gunguList: [
-        { name: "Bavet City", dongs: ["Bavet"] },
-        { name: "Svay Rieng City", dongs: ["Svay Rieng"] },
-      ],
-    },
-    {
-      name: "Kampong Speu",
-      shortName: "Kampong Speu",
-      gunguList: [
-        { name: "Chbar Mon", dongs: ["Chbar Mon"] },
-      ],
-    },
-    {
-      name: "Pursat",
-      shortName: "Pursat",
-      gunguList: [
-        { name: "Pursat Municipality", dongs: ["Roleap"] },
-      ],
-    },
-    {
-      name: "Kampong Thom",
-      shortName: "Kampong Thom",
-      gunguList: [
-        { name: "Stung Saen", dongs: ["Kampong Thom"] },
-      ],
-    },
-    {
-      name: "Takeo",
-      shortName: "Takeo",
-      gunguList: [
-        { name: "Doun Kaev", dongs: ["Roka Knong"] },
+        { name: "Kampot Central", dongs: ["Riverside", "Old French Quarter", "Fish Market Area"] },
+        { name: "Bokor Mountain", dongs: ["Bokor Plateau Area"] },
       ],
     },
   ],
@@ -6476,740 +6375,133 @@ export const worldRegions: Record<string, SidoData[]> = {
   ],
   RO: [
     {
-      name: "București",
-      shortName: "B",
+      name: "București (Bucharest)",
+      shortName: "București",
       gunguList: [
-        { name: "Sector 1", dongs: ["Dorobanți", "Floreasca", "Aviației"] },
-        { name: "Sector 2", dongs: ["Colentina", "Pantelimon"] },
-        { name: "Sector 3", dongs: ["Titan", "Vitan", "Dristor"] },
-        { name: "Sector 4", dongs: ["Berceni", "Olteniței"] },
-        { name: "Sector 5", dongs: ["Rahova", "Ferentari"] },
-        { name: "Sector 6", dongs: ["Militari", "Drumul Taberei"] },
+        { name: "Sector 1 (Nord)", dongs: ["Dorobanți", "Pipera", "Băneasa", "Aviatorilor"] },
+        { name: "Sector 2 (Nord-Est)", dongs: ["Colentina", "Pantelimon", "Obor"] },
+        { name: "Sector 3 (Centru-Est)", dongs: ["Centrul Vechi (Lipscani)", "Titan", "Vitan"] },
+        { name: "Sector 6 (Vest)", dongs: ["Drumul Taberei", "Militari"] },
       ],
     },
     {
       name: "Cluj",
-      shortName: "CJ",
+      shortName: "Cluj",
       gunguList: [
-        { name: "Cluj-Napoca", dongs: ["Centru", "Mărăști", "Gheorgheni", "Mănăștur"] },
-        { name: "Turda", dongs: ["Centru"] },
-        { name: "Dej", dongs: ["Centru"] },
+        { name: "Cluj-Napoca", dongs: ["Centru", "Mărăști", "Gheorgheni", "Zorilor", "Mănăștur"] },
       ],
     },
     {
       name: "Timiș",
-      shortName: "TM",
+      shortName: "Timiș",
       gunguList: [
-        { name: "Timișoara", dongs: ["Cetate", "Iosefin", "Elisabetin", "Fabric"] },
-        { name: "Lugoj", dongs: ["Centru"] },
+        { name: "Timișoara", dongs: ["Cetate (Centru)", "Iosefin", "Elisabetin", "Fabric"] },
       ],
     },
     {
       name: "Iași",
-      shortName: "IS",
+      shortName: "Iași",
       gunguList: [
-        { name: "Iași", dongs: ["Centru", "Copou", "Nicolina", "Păcurari"] },
-        { name: "Pașcani", dongs: ["Centru"] },
-      ],
-    },
-    {
-      name: "Constanța",
-      shortName: "CT",
-      gunguList: [
-        { name: "Constanța", dongs: ["Centru", "Mamaia", "Tomis"] },
-        { name: "Medgidia", dongs: ["Centru"] },
-        { name: "Mangalia", dongs: ["Centru"] },
+        { name: "Iași City", dongs: ["Copou", "Centru", "Tătărași", "Nicolina"] },
       ],
     },
     {
       name: "Brașov",
-      shortName: "BV",
+      shortName: "Brașov",
       gunguList: [
-        { name: "Brașov", dongs: ["Centrul Vechi", "Astra", "Tractorul"] },
-        { name: "Făgăraș", dongs: ["Centru"] },
-      ],
-    },
-    {
-      name: "Prahova",
-      shortName: "PH",
-      gunguList: [
-        { name: "Ploiești", dongs: ["Centru", "Nord", "Sud"] },
-        { name: "Câmpina", dongs: ["Centru"] },
-      ],
-    },
-    {
-      name: "Dolj",
-      shortName: "DJ",
-      gunguList: [
-        { name: "Craiova", dongs: ["Centru", "Craiovița Nouă", "Brazda lui Novac"] },
-      ],
-    },
-    {
-      name: "Galați",
-      shortName: "GL",
-      gunguList: [
-        { name: "Galați", dongs: ["Centru", "Țiglina", "Micro 19"] },
-      ],
-    },
-    {
-      name: "Bihor",
-      shortName: "BH",
-      gunguList: [
-        { name: "Oradea", dongs: ["Centru", "Rogerius", "Nufărul"] },
-        { name: "Salonta", dongs: ["Centru"] },
-      ],
-    },
-    {
-      name: "Sibiu",
-      shortName: "SB",
-      gunguList: [
-        { name: "Sibiu", dongs: ["Orașul Vechi", "Vasile Aaron", "Hipodrom"] },
-        { name: "Mediaș", dongs: ["Centru"] },
-      ],
-    },
-    {
-      name: "Argeș",
-      shortName: "AG",
-      gunguList: [
-        { name: "Pitești", dongs: ["Centru", "Găvana", "Trivale"] },
-        { name: "Curtea de Argeș", dongs: ["Centru"] },
-      ],
-    },
-    {
-      name: "Bacău",
-      shortName: "BC",
-      gunguList: [
-        { name: "Bacău", dongs: ["Centru", "Nord", "Miorița"] },
-      ],
-    },
-    {
-      name: "Mureș",
-      shortName: "MS",
-      gunguList: [
-        { name: "Târgu Mureș", dongs: ["Centru", "Tudor Vladimirescu"] },
-        { name: "Sighișoara", dongs: ["Cetate"] },
-      ],
-    },
-    {
-      name: "Suceava",
-      shortName: "SV",
-      gunguList: [
-        { name: "Suceava", dongs: ["Centru", "Burdujeni", "George Enescu"] },
-      ],
-    },
-    {
-      name: "Arad",
-      shortName: "AR",
-      gunguList: [
-        { name: "Arad", dongs: ["Centru", "Micălaca", "Vlaicu"] },
-      ],
-    },
-    {
-      name: "Maramureș",
-      shortName: "MM",
-      gunguList: [
-        { name: "Baia Mare", dongs: ["Centru", "Săsar"] },
-        { name: "Sighetu Marmației", dongs: ["Centru"] },
-      ],
-    },
-    {
-      name: "Neamț",
-      shortName: "NT",
-      gunguList: [
-        { name: "Piatra Neamț", dongs: ["Centru", "Dărmănești"] },
-        { name: "Roman", dongs: ["Centru"] },
-      ],
-    },
-    {
-      name: "Hunedoara",
-      shortName: "HD",
-      gunguList: [
-        { name: "Deva", dongs: ["Centru"] },
-        { name: "Hunedoara", dongs: ["Centru"] },
-      ],
-    },
-    {
-      name: "Botoșani",
-      shortName: "BT",
-      gunguList: [
-        { name: "Botoșani", dongs: ["Centru"] },
-      ],
-    },
-    {
-      name: "Alba",
-      shortName: "AB",
-      gunguList: [
-        { name: "Alba Iulia", dongs: ["Cetate", "Centru"] },
-      ],
-    },
-    {
-      name: "Buzău",
-      shortName: "BZ",
-      gunguList: [
-        { name: "Buzău", dongs: ["Centru"] },
-      ],
-    },
-    {
-      name: "Dâmbovița",
-      shortName: "DB",
-      gunguList: [
-        { name: "Târgoviște", dongs: ["Centru"] },
-      ],
-    },
-    {
-      name: "Gorj",
-      shortName: "GJ",
-      gunguList: [
-        { name: "Târgu Jiu", dongs: ["Centru"] },
-      ],
-    },
-    {
-      name: "Ilfov",
-      shortName: "IF",
-      gunguList: [
-        { name: "Voluntari", dongs: ["Pipera"] },
-        { name: "Otopeni", dongs: ["Centru"] },
-        { name: "Buftea", dongs: ["Centru"] },
-      ],
-    },
-    {
-      name: "Satu Mare",
-      shortName: "SM",
-      gunguList: [
-        { name: "Satu Mare", dongs: ["Centru"] },
-      ],
-    },
-    {
-      name: "Vrancea",
-      shortName: "VN",
-      gunguList: [
-        { name: "Focșani", dongs: ["Centru"] },
-      ],
-    },
-    {
-      name: "Brăila",
-      shortName: "BR",
-      gunguList: [
-        { name: "Brăila", dongs: ["Centru"] },
-      ],
-    },
-    {
-      name: "Vâlcea",
-      shortName: "VL",
-      gunguList: [
-        { name: "Râmnicu Vâlcea", dongs: ["Centru"] },
-      ],
-    },
-    {
-      name: "Mehedinți",
-      shortName: "MH",
-      gunguList: [
-        { name: "Drobeta-Turnu Severin", dongs: ["Centru"] },
-      ],
-    },
-    {
-      name: "Olt",
-      shortName: "OT",
-      gunguList: [
-        { name: "Slatina", dongs: ["Centru"] },
-      ],
-    },
-    {
-      name: "Ialomița",
-      shortName: "IL",
-      gunguList: [
-        { name: "Slobozia", dongs: ["Centru"] },
-      ],
-    },
-    {
-      name: "Călărași",
-      shortName: "CL",
-      gunguList: [
-        { name: "Călărași", dongs: ["Centru"] },
-      ],
-    },
-    {
-      name: "Vaslui",
-      shortName: "VS",
-      gunguList: [
-        { name: "Vaslui", dongs: ["Centru"] },
-        { name: "Bârlad", dongs: ["Centru"] },
-      ],
-    },
-    {
-      name: "Giurgiu",
-      shortName: "GR",
-      gunguList: [
-        { name: "Giurgiu", dongs: ["Centru"] },
-      ],
-    },
-    {
-      name: "Teleorman",
-      shortName: "TR",
-      gunguList: [
-        { name: "Alexandria", dongs: ["Centru"] },
-      ],
-    },
-    {
-      name: "Bistrița-Năsăud",
-      shortName: "BN",
-      gunguList: [
-        { name: "Bistrița", dongs: ["Centru"] },
-      ],
-    },
-    {
-      name: "Caraș-Severin",
-      shortName: "CS",
-      gunguList: [
-        { name: "Reșița", dongs: ["Centru"] },
-      ],
-    },
-    {
-      name: "Sălaj",
-      shortName: "SJ",
-      gunguList: [
-        { name: "Zalău", dongs: ["Centru"] },
-      ],
-    },
-    {
-      name: "Covasna",
-      shortName: "CV",
-      gunguList: [
-        { name: "Sfântu Gheorghe", dongs: ["Centru"] },
-      ],
-    },
-    {
-      name: "Harghita",
-      shortName: "HR",
-      gunguList: [
-        { name: "Miercurea Ciuc", dongs: ["Centru"] },
-      ],
-    },
-    {
-      name: "Tulcea",
-      shortName: "TL",
-      gunguList: [
-        { name: "Tulcea", dongs: ["Centru"] },
+        { name: "Brașov City", dongs: ["Centrul Istoric", "Schei", "Astra", "Poiana Brașov"] },
       ],
     },
   ],
   FI: [
     {
-      name: "Uusimaa",
+      name: "Uusimaa (Helsinki Metropolitan)",
       shortName: "Uusimaa",
       gunguList: [
-        { name: "Helsinki", dongs: ["Keskusta", "Kallio", "Kamppi", "Töölö", "Pasila"] },
-        { name: "Espoo", dongs: ["Tapiola", "Leppävaara", "Matinkylä"] },
-        { name: "Vantaa", dongs: ["Tikkurila", "Myyrmäki"] },
+        { name: "Helsinki", dongs: ["Kruununhaka", "Kamppi", "Kallio", "Töölö", "Punavuori", "Pasila"] },
+        { name: "Espoo", dongs: ["Otaniemi (Aalto)", "Tapiola", "Leppävaara", "Matinkylä"] },
+        { name: "Vantaa", dongs: ["Tikkurila", "Myyrmäki", "Airport Area"] },
       ],
     },
     {
-      name: "Pirkanmaa",
+      name: "Pirkanmaa (Tampere)",
       shortName: "Pirkanmaa",
       gunguList: [
-        { name: "Tampere", dongs: ["Keskustori", "Hervanta", "Pyynikki", "Kaleva"] },
-        { name: "Nokia", dongs: ["Keskusta"] },
+        { name: "Tampere", dongs: ["Keskustori (Center)", "Pyynikki", "Hervanta", "Kaleva"] },
       ],
     },
     {
-      name: "Varsinais-Suomi",
+      name: "Varsinais-Suomi (Turku)",
       shortName: "Varsinais-Suomi",
       gunguList: [
-        { name: "Turku", dongs: ["Keskusta", "Kupittaa", "Varissuo"] },
-        { name: "Salo", dongs: ["Keskusta"] },
+        { name: "Turku", dongs: ["Keskusta (Riverside)", "Kupittaa", "Port Arthur"] },
       ],
     },
     {
-      name: "Pohjois-Pohjanmaa",
+      name: "Pohjois-Pohjanmaa (Oulu)",
       shortName: "Pohjois-Pohjanmaa",
       gunguList: [
-        { name: "Oulu", dongs: ["Keskusta", "Linnanmaa", "Tuira"] },
-      ],
-    },
-    {
-      name: "Keski-Suomi",
-      shortName: "Keski-Suomi",
-      gunguList: [
-        { name: "Jyväskylä", dongs: ["Keskusta", "Kuokkala", "Kortepohja"] },
-      ],
-    },
-    {
-      name: "Pohjois-Savo",
-      shortName: "Pohjois-Savo",
-      gunguList: [
-        { name: "Kuopio", dongs: ["Keskusta", "Puijo", "Petonen"] },
-      ],
-    },
-    {
-      name: "Satakunta",
-      shortName: "Satakunta",
-      gunguList: [
-        { name: "Pori", dongs: ["Keskusta"] },
-        { name: "Rauma", dongs: ["Vanha Rauma"] },
-      ],
-    },
-    {
-      name: "Päijät-Häme",
-      shortName: "Päijät-Häme",
-      gunguList: [
-        { name: "Lahti", dongs: ["Keskusta", "Mukkula"] },
-      ],
-    },
-    {
-      name: "Etelä-Pohjanmaa",
-      shortName: "Etelä-Pohjanmaa",
-      gunguList: [
-        { name: "Seinäjoki", dongs: ["Keskusta"] },
-      ],
-    },
-    {
-      name: "Pohjanmaa",
-      shortName: "Pohjanmaa",
-      gunguList: [
-        { name: "Vaasa", dongs: ["Keskusta", "Palosaari"] },
-      ],
-    },
-    {
-      name: "Lappi",
-      shortName: "Lappi",
-      gunguList: [
-        { name: "Rovaniemi", dongs: ["Keskusta"] },
-        { name: "Kemi", dongs: ["Keskusta"] },
-      ],
-    },
-    {
-      name: "Kymenlaakso",
-      shortName: "Kymenlaakso",
-      gunguList: [
-        { name: "Kouvola", dongs: ["Keskusta"] },
-        { name: "Kotka", dongs: ["Keskusta"] },
-      ],
-    },
-    {
-      name: "Etelä-Savo",
-      shortName: "Etelä-Savo",
-      gunguList: [
-        { name: "Mikkeli", dongs: ["Keskusta"] },
-        { name: "Savonlinna", dongs: ["Keskusta"] },
-      ],
-    },
-    {
-      name: "Etelä-Karjala",
-      shortName: "Etelä-Karjala",
-      gunguList: [
-        { name: "Lappeenranta", dongs: ["Keskusta"] },
-      ],
-    },
-    {
-      name: "Kanta-Häme",
-      shortName: "Kanta-Häme",
-      gunguList: [
-        { name: "Hämeenlinna", dongs: ["Keskusta"] },
-      ],
-    },
-    {
-      name: "Kainuu",
-      shortName: "Kainuu",
-      gunguList: [
-        { name: "Kajaani", dongs: ["Keskusta"] },
-      ],
-    },
-    {
-      name: "Keski-Pohjanmaa",
-      shortName: "Keski-Pohjanmaa",
-      gunguList: [
-        { name: "Kokkola", dongs: ["Keskusta"] },
-      ],
-    },
-    {
-      name: "Pohjois-Karjala",
-      shortName: "Pohjois-Karjala",
-      gunguList: [
-        { name: "Joensuu", dongs: ["Keskusta"] },
-      ],
-    },
-    {
-      name: "Ahvenanmaa",
-      shortName: "Ahvenanmaa",
-      gunguList: [
-        { name: "Maarianhamina", dongs: ["Keskusta"] },
+        { name: "Oulu", dongs: ["Keskusta", "Linnanmaa (Tech Hub)", "Tuira"] },
       ],
     },
   ],
   CZ: [
     {
-      name: "Praha",
-      shortName: "PHA",
+      name: "Hlavní město Praha (Prague)",
+      shortName: "Praha",
       gunguList: [
-        { name: "Praha 1", dongs: ["Staré Město", "Malá Strana", "Hradčany"] },
-        { name: "Praha 2", dongs: ["Vinohrady", "Nové Město", "Vyšehrad"] },
-        { name: "Praha 3", dongs: ["Žižkov"] },
-        { name: "Praha 4", dongs: ["Nusle", "Braník", "Michle"] },
-        { name: "Praha 5", dongs: ["Smíchov", "Košíře"] },
-        { name: "Praha 6", dongs: ["Dejvice", "Bubeneč"] },
-        { name: "Praha 7", dongs: ["Holešovice", "Letná"] },
-        { name: "Praha 8", dongs: ["Karlín", "Libeň"] },
+        { name: "Praha 1 (Old Town/Lesser Town)", dongs: ["Staré Město", "Malá Strana", "Josefov", "Hradčany"] },
+        { name: "Praha 2 (Vinohrady/Vyšehrad)", dongs: ["Vinohrady", "Nové Město", "Vyšehrad"] },
+        { name: "Praha 5 (Smíchov)", dongs: ["Anděl", "Smíchov", "Košíře"] },
+        { name: "Praha 7 (Holešovice)", dongs: ["Holešovice", "Letná", "Bubeneč"] },
       ],
     },
     {
-      name: "Jihomoravský kraj",
-      shortName: "JHM",
+      name: "Jihomoravský kraj (South Moravia)",
+      shortName: "Brno",
       gunguList: [
-        { name: "Brno", dongs: ["Brno-střed", "Královo Pole", "Žabovřesky", "Sever"] },
-        { name: "Znojmo", dongs: ["Centrum"] },
+        { name: "Brno", dongs: ["Brno-střed (Center)", "Královo Pole", "Žabovřesky", "Černá Pole"] },
       ],
     },
     {
       name: "Moravskoslezský kraj",
-      shortName: "MSK",
+      shortName: "Ostrava",
       gunguList: [
-        { name: "Ostrava", dongs: ["Moravská Ostrava", "Poruba", "Jih"] },
-        { name: "Opava", dongs: ["Centrum"] },
-        { name: "Havířov", dongs: ["Centrum"] },
-      ],
-    },
-    {
-      name: "Středočeský kraj",
-      shortName: "STC",
-      gunguList: [
-        { name: "Kladno", dongs: ["Centrum"] },
-        { name: "Mladá Boleslav", dongs: ["Centrum"] },
-        { name: "Příbram", dongs: ["Centrum"] },
-      ],
-    },
-    {
-      name: "Plzeňský kraj",
-      shortName: "PLK",
-      gunguList: [
-        { name: "Plzeň", dongs: ["Plzeň 1", "Plzeň 2", "Plzeň 3"] },
-      ],
-    },
-    {
-      name: "Ústecký kraj",
-      shortName: "ULK",
-      gunguList: [
-        { name: "Ústí nad Labem", dongs: ["Centrum"] },
-        { name: "Most", dongs: ["Centrum"] },
-        { name: "Teplice", dongs: ["Centrum"] },
-      ],
-    },
-    {
-      name: "Jihočeský kraj",
-      shortName: "JHC",
-      gunguList: [
-        { name: "České Budějovice", dongs: ["Centrum"] },
-        { name: "Tábor", dongs: ["Centrum"] },
-      ],
-    },
-    {
-      name: "Královéhradecký kraj",
-      shortName: "HKK",
-      gunguList: [
-        { name: "Hradec Králové", dongs: ["Centrum"] },
-      ],
-    },
-    {
-      name: "Pardubický kraj",
-      shortName: "PAK",
-      gunguList: [
-        { name: "Pardubice", dongs: ["Centrum"] },
-      ],
-    },
-    {
-      name: "Zlínský kraj",
-      shortName: "ZLK",
-      gunguList: [
-        { name: "Zlín", dongs: ["Centrum"] },
-        { name: "Kroměříž", dongs: ["Centrum"] },
-      ],
-    },
-    {
-      name: "Olomoucký kraj",
-      shortName: "OLK",
-      gunguList: [
-        { name: "Olomouc", dongs: ["Centrum", "Nová Ulice", "Hodolany"] },
-        { name: "Prostějov", dongs: ["Centrum"] },
-      ],
-    },
-    {
-      name: "Kraj Vysočina",
-      shortName: "VYS",
-      gunguList: [
-        { name: "Jihlava", dongs: ["Centrum"] },
-      ],
-    },
-    {
-      name: "Liberecký kraj",
-      shortName: "LBK",
-      gunguList: [
-        { name: "Liberec", dongs: ["Centrum"] },
-        { name: "Jablonec nad Nisou", dongs: ["Centrum"] },
-      ],
-    },
-    {
-      name: "Karlovarský kraj",
-      shortName: "KVK",
-      gunguList: [
-        { name: "Karlovy Vary", dongs: ["Centrum"] },
-        { name: "Cheb", dongs: ["Centrum"] },
+        { name: "Ostrava", dongs: ["Moravská Ostrava", "Poruba", "Vítkovice"] },
       ],
     },
   ],
   HU: [
     {
       name: "Budapest",
-      shortName: "BP",
+      shortName: "Budapest",
       gunguList: [
-        { name: "I. kerület (Várkerület)", dongs: ["Vár", "Tabán"] },
-        { name: "V. kerület (Belváros)", dongs: ["Belváros", "Lipótváros"] },
-        { name: "VI. kerület (Terézváros)", dongs: ["Terézváros"] },
-        { name: "VII. kerület (Erzsébetváros)", dongs: ["Erzsébetváros"] },
-        { name: "VIII. kerület (Józsefváros)", dongs: ["Józsefváros"] },
-        { name: "XI. kerület (Újbuda)", dongs: ["Kelenföld", "Gellérthegy"] },
-        { name: "XIII. kerület", dongs: ["Angyalföld", "Újlipótváros"] },
+        { name: "District V (Belváros/Downtown)", dongs: ["Lipótváros", "Belváros", "Parliament Area"] },
+        { name: "District I (Várkerület/Castle)", dongs: ["Buda Castle District", "Tabán", "Krisztinaváros"] },
+        { name: "District VII (Erzsébetváros/Jewish Qtr)", dongs: ["Belső-Erzsébetváros", "Ruin Bars Area"] },
+        { name: "District XIII (Újlipótváros)", dongs: ["Újlipótváros", "Angyalföld"] },
       ],
     },
     {
-      name: "Pest",
-      shortName: "PE",
+      name: "Pest Megye",
+      shortName: "Pest",
       gunguList: [
-        { name: "Érd", dongs: ["Központ"] },
-        { name: "Gödöllő", dongs: ["Központ"] },
-        { name: "Dunakeszi", dongs: ["Központ"] },
-        { name: "Cegléd", dongs: ["Központ"] },
+        { name: "Szentendre", dongs: ["Old Town", "Danube Promenade"] },
+        { name: "Budaörs", dongs: ["Budaörs Center"] },
       ],
     },
     {
-      name: "Borsod-Abaúj-Zemplén",
-      shortName: "BZ",
+      name: "Hajdú-Bihar (Debrecen)",
+      shortName: "Debrecen",
       gunguList: [
-        { name: "Miskolc", dongs: ["Belváros", "Diósgyőr", "Avas"] },
+        { name: "Debrecen", dongs: ["Belváros (Great Church)", "Nagyerdő (University Area)"] },
       ],
     },
     {
-      name: "Szabolcs-Szatmár-Bereg",
-      shortName: "SZ",
+      name: "Csongrád-Csanád (Szeged)",
+      shortName: "Szeged",
       gunguList: [
-        { name: "Nyíregyháza", dongs: ["Belváros", "Sóstó"] },
-      ],
-    },
-    {
-      name: "Hajdú-Bihar",
-      shortName: "HB",
-      gunguList: [
-        { name: "Debrecen", dongs: ["Belváros", "Nagyerdő", "Tócóskert"] },
-      ],
-    },
-    {
-      name: "Bács-Kiskun",
-      shortName: "BK",
-      gunguList: [
-        { name: "Kecskemét", dongs: ["Belváros"] },
-        { name: "Baja", dongs: ["Központ"] },
-      ],
-    },
-    {
-      name: "Győr-Moson-Sopron",
-      shortName: "GS",
-      gunguList: [
-        { name: "Győr", dongs: ["Belváros", "Nádorváros"] },
-        { name: "Sopron", dongs: ["Belváros"] },
-      ],
-    },
-    {
-      name: "Csongrád-Csanád",
-      shortName: "CS",
-      gunguList: [
-        { name: "Szeged", dongs: ["Belváros", "Újszeged", "Rókus"] },
-      ],
-    },
-    {
-      name: "Fejér",
-      shortName: "FE",
-      gunguList: [
-        { name: "Székesfehérvár", dongs: ["Belváros"] },
-        { name: "Dunaújváros", dongs: ["Központ"] },
-      ],
-    },
-    {
-      name: "Baranya",
-      shortName: "BA",
-      gunguList: [
-        { name: "Pécs", dongs: ["Belváros", "Uránváros", "Kertváros"] },
-      ],
-    },
-    {
-      name: "Veszprém",
-      shortName: "VE",
-      gunguList: [
-        { name: "Veszprém", dongs: ["Belváros"] },
-        { name: "Pápa", dongs: ["Központ"] },
-      ],
-    },
-    {
-      name: "Békés",
-      shortName: "BE",
-      gunguList: [
-        { name: "Békéscsaba", dongs: ["Belváros"] },
-      ],
-    },
-    {
-      name: "Jász-Nagykun-Szolnok",
-      shortName: "JN",
-      gunguList: [
-        { name: "Szolnok", dongs: ["Belváros"] },
-      ],
-    },
-    {
-      name: "Somogy",
-      shortName: "SO",
-      gunguList: [
-        { name: "Kaposvár", dongs: ["Központ"] },
-        { name: "Siófok", dongs: ["Központ"] },
-      ],
-    },
-    {
-      name: "Komárom-Esztergom",
-      shortName: "KE",
-      gunguList: [
-        { name: "Tatabánya", dongs: ["Központ"] },
-        { name: "Esztergom", dongs: ["Központ"] },
-      ],
-    },
-    {
-      name: "Heves",
-      shortName: "HE",
-      gunguList: [
-        { name: "Eger", dongs: ["Belváros"] },
-      ],
-    },
-    {
-      name: "Vas",
-      shortName: "VA",
-      gunguList: [
-        { name: "Szombathely", dongs: ["Belváros"] },
-      ],
-    },
-    {
-      name: "Zala",
-      shortName: "ZA",
-      gunguList: [
-        { name: "Zalaegerszeg", dongs: ["Központ"] },
-        { name: "Nagykanizsa", dongs: ["Központ"] },
-      ],
-    },
-    {
-      name: "Nógrád",
-      shortName: "NO",
-      gunguList: [
-        { name: "Salgótarján", dongs: ["Központ"] },
-      ],
-    },
-    {
-      name: "Tolna",
-      shortName: "TO",
-      gunguList: [
-        { name: "Szekszárd", dongs: ["Központ"] },
+        { name: "Szeged", dongs: ["Dóm tér Area", "Tisza Riverside", "Belváros"] },
       ],
     },
   ],

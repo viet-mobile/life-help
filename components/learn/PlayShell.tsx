@@ -10,6 +10,7 @@ import { siteConfig } from "@/lib/learn/sites";
 import { buildMainPortalUrl } from "@/lib/learn/hosts";
 import { BrandLogo } from "./BrandLogo";
 import { LocaleSwitch } from "./LocaleSwitch";
+import { SubjectSwitch } from "./SubjectSwitch";
 import { ThinkOffer } from "../think/ThinkOffer";
 import { useLearner } from "./LearnerProvider";
 import { hubLabels } from "../think/hubLabels";
@@ -53,6 +54,7 @@ export function PlayShell({ children }: { children: ReactNode }) {
               <BrandLogo site={site} name={t(siteConfig(site).brandKey)} />
             </Link>
             <LocaleSwitch compact />
+            <SubjectSwitch currentSite={site} />
           </div>
           <div className="l-stats" aria-label="status">
             <span className="l-stat" title={t("dash.streak", { n: streak })}>🔥 {streak}</span>

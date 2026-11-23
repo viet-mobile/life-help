@@ -71,24 +71,22 @@ export function getDomainCountryCode(initialCountry?: string | null): CountryCod
   return "KR";
 }
 
-function getClientRegionSnapshot(domainCountry: CountryCode): RegionItem {
-  const fallback = defaultRegionFor(domainCountry);
-  if (cachedRegion && cachedRegion.country === domainCountry) return cachedRegion;
+function getClientRegionSnapshot(domainCountry?: CountryCode): RegionItem {
+  if (cachedRegion) return cachedRegion;
   try {
-    const countrySaved = localStorage.getItem(`${REGION_STORAGE_KEY}_${domainCountry}`);
-    if (countrySaved) {
-      const parsed = JSON.parse(countrySaved);
-      if (parsed.sido && parsed.gungu && parsed.dong) {
+    const saved = localStorage.getItem(REGION_STORAGE_KEY);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (parsed && parsed.sido) {
         cachedRegion = parsed;
         return parsed;
       }
     }
-    const saved = localStorage.getItem(REGION_STORAGE_KEY);
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      if (parsed.sido && parsed.gungu && parsed.dong) {
-        const c = parsed.country || "KR";
-        if (c === domainCountry) {
+    if (domainCountry) {
+      const countrySaved = localStorage.getItem(`${REGION_STORAGE_KEY}_${domainCountry}`);
+      if (countrySaved) {
+        const parsed = JSON.parse(countrySaved);
+        if (parsed && parsed.sido) {
           cachedRegion = parsed;
           return parsed;
         }
@@ -97,6 +95,7 @@ function getClientRegionSnapshot(domainCountry: CountryCode): RegionItem {
   } catch {
     // ignore
   }
+  const fallback = defaultRegionFor(domainCountry || "KR");
   cachedRegion = fallback;
   return fallback;
 }
@@ -125,8 +124,8 @@ export function RegionProvider({
 
   useEffect(() => {
     const handleStorage = () => {
-      const active = getDomainCountryCode(initialCountry);
-      const region = getClientRegionSnapshot(active);
+      cachedRegion = null;
+      const region = getClientRegionSnapshot(domainCountryCode);
       setSelectedRegion(region);
     };
 
@@ -136,7 +135,7 @@ export function RegionProvider({
       window.removeEventListener("storage", handleStorage);
       window.removeEventListener(REGION_CHANGE_EVENT, handleStorage);
     };
-  }, [initialCountry]);
+  }, [domainCountryCode]);
 
   const { locale, isBilingual, script } = useLocale();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -151,6 +150,9 @@ export function RegionProvider({
       localStorage.setItem(REGION_STORAGE_KEY, JSON.stringify(newRegion));
       if (newRegion.country) {
         localStorage.setItem(`${REGION_STORAGE_KEY}_${newRegion.country}`, JSON.stringify(newRegion));
+      }
+      if (typeof document !== "undefined") {
+        document.cookie = `user-region=${encodeURIComponent(JSON.stringify(newRegion))}; path=/; max-age=31536000; SameSite=Lax`;
       }
       window.dispatchEvent(new Event(REGION_CHANGE_EVENT));
     } catch {
@@ -332,11 +334,11 @@ function RegionSelectorModal({
   };
 
   const handleConfirm = () => {
-    const finalDong = customDong.trim() ? customDong.trim() : dong;
+    const finalDong = customDong.trim() ? customDong.trim() : (dong || "");
     onSelect({
       country,
-      sido,
-      gungu,
+      sido: sido || "",
+      gungu: gungu || "",
       dong: finalDong,
     });
   };

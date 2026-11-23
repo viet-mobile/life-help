@@ -703,7 +703,7 @@ export const koreanRegions: SidoData[] = [
 ];
 
 export function getCountryRegions(country: CountryCode = "KR"): SidoData[] {
-  if (MANUAL_REGION_COUNTRIES.has(country)) return [];
+  // manual check removed: fall through to worldRegions
   switch (country) {
     case "VN":
       return vietnamRegions;

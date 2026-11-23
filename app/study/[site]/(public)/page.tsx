@@ -26,6 +26,12 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
   const userId = await getUserId();
   const hasProfile = userId ? !!(await getLearnService().getState({ userId }, site)).profile : false;
   const dailyInsight = getDailyInsight(site, new Date(), locale);
+  const secondaryWorldsTitles = await Promise.all(
+    secondaryLocales.map(async (sec) => {
+      const { t: secT } = await getServerT(sec);
+      return { locale: sec, text: secT("landing.worldsTitle" as never) };
+    })
+  );
   // Navigation for all 5 study sites in one single row: Korean, English, Math, Physics, Chemistry
   const stage = parseLearnHost(rawHost)?.stage;
   const urlLocalePrefix = base.startsWith(`/study/${site}`)
@@ -128,7 +134,14 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
       </section>
 
       <section className="l-stack" aria-labelledby="worlds-h">
-        <h2 id="worlds-h" className="l-h2">{t("landing.worldsTitle")}</h2>
+        <h2 id="worlds-h" className="l-h2">
+          <div>{t("landing.worldsTitle")}</div>
+          {secondaryWorldsTitles.map((st) => (
+            <div key={st.locale} className="text-base sm:text-lg font-normal text-slate-500 mt-1">
+              {st.text}
+            </div>
+          ))}
+        </h2>
         {site !== "korean" ? (
           <div className="l-grid-courses">
             {bundle.catalog.courses.map((c) => {
