@@ -17,8 +17,10 @@ export function localeFromSegment(segment: string | undefined): Locale | null {
 
 /** 
  * Splits locale prefixes from pathname:
- * - "/vi/ko/dashboard" -> { locale: "vi", secondaryLocale: "ko", rest: "/dashboard" }
- * - "/vi/ko" -> { locale: "vi", secondaryLocale: "ko", rest: "/" }
+ * - "/vi/ko+en/dashboard" -> { locale: "vi", secondaryLocale: "ko", secondaryLocales: ["ko", "en"], rest: "/dashboard" }
+ * - "/vi/ko+en" -> { locale: "vi", secondaryLocale: "ko", secondaryLocales: ["ko", "en"], rest: "/" }
+ * - "/vi/ko/dashboard" -> { locale: "vi", secondaryLocale: "ko", secondaryLocales: ["ko"], rest: "/dashboard" }
+ * - "/vi/ko" -> { locale: "vi", secondaryLocale: "ko", secondaryLocales: ["ko"], rest: "/" }
  * - "/en/lesson/x" -> { locale: "en", secondaryLocale: null, rest: "/lesson/x" }
  * - "/en" -> { locale: "en", secondaryLocale: null, rest: "/" }
  * - "/lesson/x" -> { locale: null, secondaryLocale: null, rest: "/lesson/x" }
@@ -26,6 +28,7 @@ export function localeFromSegment(segment: string | undefined): Locale | null {
 export function splitLocalePrefix(pathname: string): {
   locale: Locale | null;
   secondaryLocale?: Locale | null;
+  secondaryLocales?: Locale[];
   rest: string;
 } {
   const segments = pathname.split("/").filter(Boolean);
@@ -38,13 +41,27 @@ export function splitLocalePrefix(pathname: string): {
     return { locale: null, rest: pathname || "/" };
   }
 
-  // Check if second segment is also a valid locale (bilingual URL: /vi/ko)
+  // Check if second segment contains valid secondary locale(s):
+  // single: /vi/ko
+  // multi: /vi/ko+en, /vi/ko,en, /vi/ko+en+ja
   if (segments.length >= 2) {
-    const secondLocale = localeFromSegment(segments[1]);
-    if (secondLocale && secondLocale !== firstLocale) {
+    const candidateParts = segments[1].split(/[,+]/).filter(Boolean);
+    const validSeconds: Locale[] = [];
+    for (const part of candidateParts) {
+      const parsed = localeFromSegment(part);
+      if (parsed && parsed !== firstLocale && !validSeconds.includes(parsed)) {
+        validSeconds.push(parsed);
+      }
+    }
+    if (validSeconds.length > 0 && validSeconds.length === candidateParts.length) {
       const remainingSegments = segments.slice(2);
       const rest = remainingSegments.length > 0 ? "/" + remainingSegments.join("/") : "/";
-      return { locale: firstLocale, secondaryLocale: secondLocale, rest };
+      return {
+        locale: firstLocale,
+        secondaryLocale: validSeconds[0],
+        secondaryLocales: validSeconds,
+        rest,
+      };
     }
   }
 
@@ -57,18 +74,27 @@ export function splitLocalePrefix(pathname: string): {
 export function withLocalePrefix(
   pathname: string,
   locale: Locale,
-  secOrBase?: Locale | string | null,
+  secOrBase?: Locale | Locale[] | string | null,
   maybeBase = ""
 ): string {
-  let secondaryLocale: Locale | null = null;
+  let secondaryLocales: Locale[] = [];
   let base = "";
 
-  if (typeof secOrBase === "string") {
+  if (Array.isArray(secOrBase)) {
+    secondaryLocales = secOrBase;
+    base = maybeBase;
+  } else if (typeof secOrBase === "string") {
     if (secOrBase.startsWith("/")) {
       base = secOrBase;
     } else {
-      secondaryLocale = secOrBase as Locale;
-      base = maybeBase;
+      const parts = secOrBase.split(/[,+]/).filter(Boolean);
+      const parsed = parts.map((p) => localeFromSegment(p)).filter((l): l is Locale => l !== null);
+      if (parsed.length > 0 && parsed.length === parts.length) {
+        secondaryLocales = parsed;
+        base = maybeBase;
+      } else {
+        base = secOrBase;
+      }
     }
   } else if (secOrBase === null) {
     base = maybeBase;
@@ -76,6 +102,7 @@ export function withLocalePrefix(
 
   const inner = base && pathname.startsWith(base) ? pathname.slice(base.length) || "/" : pathname;
   const { rest } = splitLocalePrefix(inner);
-  const prefix = secondaryLocale ? `${base}/${locale}/${secondaryLocale}` : `${base}/${locale}`;
+  const secPart = secondaryLocales.length > 0 ? `/${secondaryLocales.join("+")}` : "";
+  const prefix = `${base}/${locale}${secPart}`;
   return `${prefix}${rest === "/" ? "" : rest}`;
 }

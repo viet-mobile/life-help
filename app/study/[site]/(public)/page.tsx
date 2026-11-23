@@ -25,9 +25,14 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
   const dailyInsight = getDailyInsight(site, new Date(), locale);
   // Navigation for all 5 study sites in one single row: Korean, English, Math, Physics, Chemistry
   const stage = parseLearnHost(h.get("host") ?? "")?.stage;
+  const urlLocalePrefix = base.startsWith(`/study/${site}`)
+    ? base.slice(`/study/${site}`.length)
+    : (base.startsWith("/") ? base : "");
   const subjects = SITES.map((s) => ({
     site: s,
-    href: stage && stage !== "local" ? `https://${learnHost(s, stage)}` : `/study/${s}`,
+    href: stage && stage !== "local"
+      ? `https://${learnHost(s, stage)}${urlLocalePrefix}`
+      : `/study/${s}${urlLocalePrefix}`,
     isCurrent: s === site,
     label: t(`site.${s}.name` as never),
   }));

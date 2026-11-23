@@ -38,17 +38,41 @@ export async function getLocale(): Promise<LearnLocale> {
  * The secondary locale for bilingual display, if specified in the URL (/vi/ko) or cookies.
  */
 export async function getSecondaryLocale(): Promise<LearnLocale | null> {
+  const all = await getSecondaryLocales();
+  return all.length > 0 ? all[0] : null;
+}
+
+/**
+ * The secondary locales for multilingual display, if specified in the URL (/vi/ko+en) or cookies.
+ */
+export async function getSecondaryLocales(): Promise<LearnLocale[]> {
   try {
+    const fromUrlMulti = (await headers()).get("x-learn-secondary-locales");
+    if (fromUrlMulti) {
+      const parts = fromUrlMulti.split(/[,+]/).filter(isLocale);
+      if (parts.length > 0) return parts;
+    }
     const fromUrl = (await headers()).get("x-learn-secondary-locale");
-    if (fromUrl && isLocale(fromUrl)) return fromUrl;
+    if (fromUrl) {
+      const parts = fromUrl.split(/[,+]/).filter(isLocale);
+      if (parts.length > 0) return parts;
+    }
   } catch { /* no request context */ }
   try {
+    const fromCookieMulti = (await cookies()).get("life_help_secondary_locales")?.value;
+    if (fromCookieMulti) {
+      const parts = fromCookieMulti.split(/[,+]/).filter(isLocale);
+      if (parts.length > 0) return parts;
+    }
     const fromCookie = (await cookies()).get("life_help_secondary_locale")?.value;
-    if (fromCookie && isLocale(fromCookie)) return fromCookie;
+    if (fromCookie) {
+      const parts = fromCookie.split(/[,+]/).filter(isLocale);
+      if (parts.length > 0) return parts;
+    }
   } catch {
-    return null;
+    return [];
   }
-  return null;
+  return [];
 }
 
 export async function getServerT(customLocale?: LearnLocale): Promise<{ locale: LearnLocale; t: Translator; messages: Messages }> {

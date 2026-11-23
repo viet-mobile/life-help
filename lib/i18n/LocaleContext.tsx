@@ -73,17 +73,42 @@ const SECONDARY_LOCALES_STORAGE_KEY = "life_help_secondary_locales";
 const SECONDARY_LOCALE_CHANGE_EVENT = "life_help_secondary_locale_change";
 const EMPTY_SECONDARY_LOCALES_STR = "";
 
+let cachedSecondaryLocalesStr: string | null = null;
+let lastKnownSecPathname: string | null = null;
+
 function getClientSecondaryLocalesStringSnapshot(): string {
   if (typeof window === "undefined") return EMPTY_SECONDARY_LOCALES_STR;
 
   const currentPath = window.location.pathname;
+
+  // Invalidate cache if browser navigated to a new path
+  if (lastKnownSecPathname !== currentPath) {
+    lastKnownSecPathname = currentPath;
+    const urlSecLocales = resolveSecondaryLocalesFromPath(currentPath);
+    if (urlSecLocales.length > 0) {
+      cachedSecondaryLocalesStr = urlSecLocales.join(",");
+      return cachedSecondaryLocalesStr;
+    }
+    const urlPrimaryLocale = resolveLocaleFromPath(currentPath);
+    if (urlPrimaryLocale && urlSecLocales.length === 0) {
+      cachedSecondaryLocalesStr = EMPTY_SECONDARY_LOCALES_STR;
+      return EMPTY_SECONDARY_LOCALES_STR;
+    }
+  }
+
+  if (cachedSecondaryLocalesStr !== null) {
+    return cachedSecondaryLocalesStr;
+  }
+
   const urlSecLocales = resolveSecondaryLocalesFromPath(currentPath);
   if (urlSecLocales.length > 0) {
-    return urlSecLocales.join(",");
+    cachedSecondaryLocalesStr = urlSecLocales.join(",");
+    return cachedSecondaryLocalesStr;
   }
 
   const urlPrimaryLocale = resolveLocaleFromPath(currentPath);
   if (urlPrimaryLocale && urlSecLocales.length === 0) {
+    cachedSecondaryLocalesStr = EMPTY_SECONDARY_LOCALES_STR;
     return EMPTY_SECONDARY_LOCALES_STR;
   }
 
@@ -92,22 +117,27 @@ function getClientSecondaryLocalesStringSnapshot(): string {
     if (savedList) {
       const parsed = savedList.split(",").filter((s): s is Locale => isValidLocale(s));
       if (parsed.length > 0) {
-        return parsed.join(",");
+        cachedSecondaryLocalesStr = parsed.join(",");
+        return cachedSecondaryLocalesStr;
       }
     }
     const saved = localStorage.getItem(SECONDARY_LOCALE_STORAGE_KEY);
     if (saved && isValidLocale(saved)) {
+      cachedSecondaryLocalesStr = saved;
       return saved;
     }
     // Backward compatibility: if displayMode is bilingual and no secondary locale is saved, default to ko (or en if main is ko)
     const mode = localStorage.getItem(DISPLAY_MODE_STORAGE_KEY);
     if (mode === "bilingual") {
       const mainLocale = getClientLocaleSnapshot();
-      return mainLocale === "ko" ? "en" : "ko";
+      const def = mainLocale === "ko" ? "en" : "ko";
+      cachedSecondaryLocalesStr = def;
+      return def;
     }
   } catch {
     // ignore
   }
+  cachedSecondaryLocalesStr = EMPTY_SECONDARY_LOCALES_STR;
   return EMPTY_SECONDARY_LOCALES_STR;
 }
 
@@ -133,18 +163,25 @@ function subscribeSecondaryLocale(callback: () => void): () => void {
       e.key === SECONDARY_LOCALES_STORAGE_KEY ||
       e.key === DISPLAY_MODE_STORAGE_KEY
     ) {
+      cachedSecondaryLocalesStr = null;
       callback();
     }
   };
   const handleCustom = () => {
     callback();
   };
+  const handlePopState = () => {
+    cachedSecondaryLocalesStr = null;
+    callback();
+  };
 
   window.addEventListener("storage", handleStorage);
   window.addEventListener(SECONDARY_LOCALE_CHANGE_EVENT, handleCustom);
+  window.addEventListener("popstate", handlePopState);
   return () => {
     window.removeEventListener("storage", handleStorage);
     window.removeEventListener(SECONDARY_LOCALE_CHANGE_EVENT, handleCustom);
+    window.removeEventListener("popstate", handlePopState);
   };
 }
 
@@ -482,7 +519,9 @@ export function LocaleProvider({
 
   // Sync client-side route changes with the locale external store
   useEffect(() => {
+    cachedSecondaryLocalesStr = null;
     window.dispatchEvent(new Event(LOCALE_CHANGE_EVENT));
+    window.dispatchEvent(new Event(SECONDARY_LOCALE_CHANGE_EVENT));
   }, [pathname]);
 
   // Post-hydration storage sync: if URL has no language prefix and localStorage has a saved user preference,
@@ -524,6 +563,7 @@ export function LocaleProvider({
   const setSecondaryLocales = useCallback((locs: Locale[]) => {
     const valid = Array.from(new Set(locs.filter(isValidLocale)));
     const str = valid.join(",");
+    cachedSecondaryLocalesStr = str;
     try {
       if (valid.length > 0) {
         localStorage.setItem(SECONDARY_LOCALES_STORAGE_KEY, str);
@@ -540,6 +580,25 @@ export function LocaleProvider({
         document.cookie = `${SECONDARY_LOCALE_STORAGE_KEY}=; path=/; max-age=0; SameSite=Lax`;
         document.cookie = `${DISPLAY_MODE_STORAGE_KEY}=monolingual; path=/; max-age=31536000; SameSite=Lax`;
       }
+
+      // Update URL if the URL currently starts with a primary locale
+      if (typeof window !== "undefined") {
+        const currentPathname = window.location.pathname;
+        const primary = resolveLocaleFromPath(currentPathname);
+        if (primary) {
+          const currentSecs = resolveSecondaryLocalesFromPath(currentPathname);
+          const segments = currentPathname.split("/").filter(Boolean);
+          const restSegments = currentSecs.length > 0 ? segments.slice(2) : segments.slice(1);
+          const restPath = restSegments.length > 0 ? "/" + restSegments.join("/") : "";
+          const secPart = valid.length > 0 ? `/${valid.join("+")}` : "";
+          const newPath = `/${primary}${secPart}${restPath}` || "/";
+          lastKnownSecPathname = newPath;
+          if (newPath !== currentPathname) {
+            window.history.replaceState(null, "", `${newPath}${window.location.search}${window.location.hash}`);
+          }
+        }
+      }
+
       window.dispatchEvent(new Event(SECONDARY_LOCALE_CHANGE_EVENT));
       window.dispatchEvent(new Event(DISPLAY_MODE_CHANGE_EVENT));
     } catch {

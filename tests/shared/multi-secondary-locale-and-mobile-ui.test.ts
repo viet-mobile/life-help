@@ -21,6 +21,35 @@ describe("Multi-Secondary Language Architecture & Mobile UI Layout", () => {
     expect(resolveSecondaryLocaleFromPath("/")).toBeNull();
   });
 
+  it("splitLocalePrefix and withLocalePrefix accurately parse and construct multi-secondary URLs", async () => {
+    const { splitLocalePrefix, withLocalePrefix } = await import("@/lib/learn/i18n/path");
+
+    // Single secondary
+    const single = splitLocalePrefix("/vi/ko/dashboard");
+    expect(single.locale).toBe("vi");
+    expect(single.secondaryLocale).toBe("ko");
+    expect(single.secondaryLocales).toEqual(["ko"]);
+    expect(single.rest).toBe("/dashboard");
+
+    // Multi-secondary with plus (+) delimiter
+    const multiPlus = splitLocalePrefix("/vi/ko+en/dashboard");
+    expect(multiPlus.locale).toBe("vi");
+    expect(multiPlus.secondaryLocale).toBe("ko");
+    expect(multiPlus.secondaryLocales).toEqual(["ko", "en"]);
+    expect(multiPlus.rest).toBe("/dashboard");
+
+    // Multi-secondary root path
+    const multiRoot = splitLocalePrefix("/vi/ko+en");
+    expect(multiRoot.locale).toBe("vi");
+    expect(multiRoot.secondaryLocales).toEqual(["ko", "en"]);
+    expect(multiRoot.rest).toBe("/");
+
+    // withLocalePrefix constructing multi-secondary paths
+    expect(withLocalePrefix("/vi", "vi", ["ko", "en"])).toBe("/vi/ko+en");
+    expect(withLocalePrefix("/dashboard", "vi", "ko+en")).toBe("/vi/ko+en/dashboard");
+    expect(withLocalePrefix("/study/math/dashboard", "vi", ["ko", "en"], "/study/math")).toBe("/study/math/vi/ko+en/dashboard");
+  });
+
   it("ReferralCard renders compact 10% on mobile and full label on sm+", () => {
     const referralCardPath = path.resolve(__dirname, "../../components/shared/ReferralCard.tsx");
     const content = fs.readFileSync(referralCardPath, "utf-8");
@@ -45,18 +74,34 @@ describe("Multi-Secondary Language Architecture & Mobile UI Layout", () => {
     expect(dailySolutionIndex - taglineIndex).toBeLessThan(1000);
   });
 
-  it("LanguageSwitcher incorporates mobile compact icon mode and multi-select popover", () => {
+  it("LanguageSwitcher incorporates mobile compact icon mode and MultilingualPopover", () => {
     const switcherPath = path.resolve(__dirname, "../../components/shared/LanguageSwitcher.tsx");
     const content = fs.readFileSync(switcherPath, "utf-8");
 
     // Primary switcher mobile icon-only with absolute native overlay
     expect(content).toContain("w-9 sm:w-auto");
     expect(content).toContain("opacity-0 sm:opacity-100 sm:static");
+    expect(content).toContain('data-testid="locale-select"');
+    expect(content).toContain("MultilingualPopover");
 
-    // Secondary switcher supports multi-select popover
-    expect(content).toContain("toggleSecondaryLocale");
-    expect(content).toContain("setSecondaryLocales([])");
-    expect(content).toContain("secondaryLocales.includes");
+    const popoverPath = path.resolve(__dirname, "../../components/shared/MultilingualPopover.tsx");
+    const popoverContent = fs.readFileSync(popoverPath, "utf-8");
+
+    // Mode title must be Multilingual Languages, NOT Bilingual Languages
+    expect(popoverContent).toContain("Multilingual Languages");
+    expect(popoverContent).not.toContain("Bilingual Languages");
+    expect(popoverContent).toContain("toggleSecondaryLocale");
+    expect(popoverContent).toContain("setSecondaryLocales([])");
+    expect(popoverContent).toContain("secondaryLocales.includes");
+  });
+
+  it("LocaleSwitch on study screens incorporates MultilingualPopover for subject multi-secondary pairing", () => {
+    const localeSwitchPath = path.resolve(__dirname, "../../components/learn/LocaleSwitch.tsx");
+    const content = fs.readFileSync(localeSwitchPath, "utf-8");
+
+    expect(content).toContain("MultilingualPopover");
+    expect(content).toContain('data-testid="locale-select"');
+    expect(content).toContain("splitLocalePrefix");
   });
 
   it("DailyInsightCard supports rendering multiple secondary translations", () => {
