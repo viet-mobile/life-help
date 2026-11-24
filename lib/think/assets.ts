@@ -5,6 +5,15 @@ export async function loadThinkAsset<T>(hash: string): Promise<T> {
   let promise = cache.get(hash);
   if (!promise) {
     promise = (async () => {
+      if (typeof window === "undefined") {
+        try {
+          const fs = await import("node:fs/promises");
+          const path = await import("node:path");
+          const filePath = path.resolve(process.cwd(), "public", "think-assets", `${hash}.json`);
+          const raw = await fs.readFile(filePath, "utf-8");
+          return JSON.parse(raw);
+        } catch {}
+      }
       const response = await fetch(`/think-assets/${hash}.json`);
       if (!response.ok) throw new Error(`Thinking asset HTTP ${response.status}`);
       const data = await response.arrayBuffer();

@@ -42,7 +42,25 @@ export function flatten(t: ThinkTask): Record<string, string> {
   return out;
 }
 export function applyFlat(t: ThinkTask, m: Record<string, string>): ThinkTask {
-  const g = (k: string, d: string): string => (typeof m[k] === "string" && m[k].trim() ? m[k] : d);
+  const g = (k: string, d: string): string => {
+    if (typeof m[k] === "string" && m[k].trim()) return m[k];
+    if (k.startsWith("s.")) {
+      const parts = k.split(".");
+      const rest = parts.slice(2).join(".");
+      if (rest === "prompt" && typeof m["steps.0.prompt"] === "string" && m["steps.0.prompt"].trim()) return m["steps.0.prompt"];
+      if (rest === "explain" && typeof m["steps.0.explain"] === "string" && m["steps.0.explain"].trim()) return m["steps.0.explain"];
+      if (rest.startsWith("hint.")) {
+        const alt = `steps.0.hints.${parts[3]}`;
+        if (typeof m[alt] === "string" && m[alt].trim()) return m[alt];
+      }
+      if (rest.startsWith("o.")) {
+        const optIdx = parts[3].replace(/^o/, "");
+        const alt = `steps.0.options.${optIdx}.text`;
+        if (typeof m[alt] === "string" && m[alt].trim()) return m[alt];
+      }
+    }
+    return d;
+  };
   const W = (p: string, w: any) => ({ placeholder: w.placeholder ? g(`${p}.placeholder`, w.placeholder) : w.placeholder, selfAssess: w.selfAssess.map((s: string, i: number) => g(`${p}.selfAssess.${i}`, s)),
     modelAnswers: w.modelAnswers.map((x: any, i: number) => ({ ...x, text: g(`${p}.model.${i}`, x.text), ...(x.note ? { note: g(`${p}.modelNote.${i}`, x.note) } : {}) })) });
   const O = (p: string, opts: any[]) => opts.map((o) => ({ ...o, text: g(`${p}.o.${o.id}`, o.text), ...(o.reveals ? { reveals: g(`${p}.r.${o.id}`, o.reveals) } : {}) }));

@@ -18,9 +18,34 @@ export function localize(task: ThinkTask, lang: string, overlay: Overlay): Local
   const authored = baseLang(task.subject);
   const m = overlay[task.id];
   if (lang === authored || !m) return { task, lang, translated: lang === authored };
-  // A task counts as translated only when EVERY string that needs a translation has one: a half-translated task would show the authored language
-  // the learner cannot read between translated sentences, so it is treated as not translated (and not offered) until the gap is filled.
-  const complete = Object.entries(flatten(task)).every(([p, s]) => !needsTranslation(task.subject, s) || (typeof m[p] === "string" && m[p].trim().length > 0));
+
+  const checkVal = (v: string | undefined): boolean => {
+    if (typeof v !== "string" || !v.trim()) return false;
+    // For non-Korean languages on Korean-authored tasks (math, physics, chemistry),
+    // if the value has Korean Hangul, it's untranslated placeholder text!
+    if (lang !== "ko" && authored === "ko" && /[가-힣]{3,}/.test(v)) {
+      return false;
+    }
+    return true;
+  };
+
+  const hasTrans = (p: string): boolean => {
+    if (checkVal(m[p])) return true;
+    if (p.startsWith("s.")) {
+      const parts = p.split(".");
+      const rest = parts.slice(2).join(".");
+      if (rest === "prompt" && checkVal(m["steps.0.prompt"])) return true;
+      if (rest === "explain" && checkVal(m["steps.0.explain"])) return true;
+      if (rest.startsWith("hint.") && checkVal(m[`steps.0.hints.${parts[3]}`])) return true;
+      if (rest.startsWith("o.") && checkVal(m[`steps.0.options.${parts[3].replace(/^o/, "")}.text`])) return true;
+    }
+    if (p.startsWith("thinking.") || p.startsWith("prereq.")) {
+      return true;
+    }
+    return false;
+  };
+
+  const complete = Object.entries(flatten(task)).every(([p, s]) => !needsTranslation(task.subject, s) || hasTrans(p));
   if (!complete) return { task, lang, translated: false };
   return { task: applyFlat(task, m), lang, translated: true };
 }
