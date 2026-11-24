@@ -9,6 +9,7 @@ import { useOptionalSite } from "./LearnerProvider";
 import type { Locale } from "@/messages/registry";
 import type { Site } from "@/lib/learn/types";
 import { HangeulCalligraphyIcon } from "./HangeulCalligraphyIcon";
+import { RichText } from "./RichText";
 import { getOfficialWebsiteBadge } from "@/lib/learn/dailyInsights/officialWebsiteI18n";
 
 interface DailyInsightCardProps {
@@ -134,7 +135,16 @@ export function DailyInsightCard({
     ? getDailyInsight(domain, randomSeed, activeLocale)
     : initialInsight;
 
-  const activeOverlay = tipOverlays[activeLocale]?.[baseInsight.id] || null;
+  const getBaseId = (id?: string): string => {
+    if (!id) return "";
+    const m = id.match(/^([a-z]+)-(\d+)$/);
+    if (!m) return id;
+    const num = parseInt(m[2], 10);
+    const baseNum = ((num - 1) % 36) + 1;
+    return `${m[1]}-${String(baseNum).padStart(3, "0")}`;
+  };
+  const baseKey = baseInsight.id ? getBaseId(baseInsight.id) : "";
+  const activeOverlay = (baseInsight.id ? tipOverlays[activeLocale]?.[baseInsight.id] : null) || (baseKey ? tipOverlays[activeLocale]?.[baseKey] : null) || null;
   const insight = activeOverlay
     ? {
         ...baseInsight,
@@ -191,7 +201,8 @@ export function DailyInsightCard({
     if (!mounted || effectiveSecondaryLocales.length === 0) return [];
     return effectiveSecondaryLocales.map((loc: Locale) => {
       const rawSec = getDailyInsight(domain, baseInsight.id, loc);
-      const secOv = tipOverlays[loc]?.[rawSec.id] || null;
+      const secKey = rawSec.id ? getBaseId(rawSec.id) : "";
+      const secOv = (rawSec.id ? tipOverlays[loc]?.[rawSec.id] : null) || (secKey ? tipOverlays[loc]?.[secKey] : null) || null;
       const mergedSec = secOv
         ? {
             ...rawSec,
@@ -350,7 +361,7 @@ export function DailyInsightCard({
             )}
           </div>
           <div suppressHydrationWarning className="text-xs sm:text-sm font-extrabold text-slate-900">
-            {insight.principle}
+            <RichText text={insight.principle} />
           </div>
           {isBilingual && secondaryInsights.map(({ locale: secLoc, insight: secInsight }) => (
             secInsight?.principle && (secInsight.principle !== insight.principle || secLoc !== activeLocale) ? (
@@ -360,13 +371,13 @@ export function DailyInsightCard({
                     {secLoc}
                   </span>
                 )}
-                <span>{secInsight.principle}</span>
+                <span><RichText text={secInsight.principle} /></span>
               </p>
             ) : null
           ))}
-          <p suppressHydrationWarning className="text-xs text-slate-600 font-medium">
-            {insight.example}
-          </p>
+          <div suppressHydrationWarning className="text-xs text-slate-600 font-medium">
+            <RichText text={insight.example} />
+          </div>
           {isBilingual && secondaryInsights.map(({ locale: secLoc, insight: secInsight }) => (
             secInsight?.example && (secInsight.example !== insight.example || secLoc !== activeLocale) ? (
               <p key={`${secLoc}-example`} suppressHydrationWarning className="text-xs font-normal text-slate-500 flex items-baseline gap-1.5">
@@ -375,7 +386,7 @@ export function DailyInsightCard({
                     {secLoc}
                   </span>
                 )}
-                <span>{secInsight.example}</span>
+                <span><RichText text={secInsight.example} /></span>
               </p>
             ) : null
           ))}

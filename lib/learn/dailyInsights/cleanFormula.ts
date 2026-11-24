@@ -133,9 +133,14 @@ export function cleanLatexFormula(raw: string): string {
 }
 
 /**
- * Replaces any $...$ LaTeX snippet in text with clean Unicode representation.
+ * Replaces any $...$ LaTeX snippet in text with clean Unicode representation,
+ * and sanitizes any remaining raw LaTeX tokens in plain text.
  */
 export function cleanFormulaText(text: string): string {
   if (!text || typeof text !== "string") return text;
-  return text.replace(/\$([^$]+)\$/g, (_, raw) => cleanLatexFormula(raw));
+  let s = text.replace(/\$([^$]+)\$/g, (_, raw) => cleanLatexFormula(raw));
+  if (s.includes("\\") || /_[0-9]|[A-Za-z]\^[0-9\+\-]/.test(s)) {
+    s = cleanLatexFormula(s);
+  }
+  return s;
 }

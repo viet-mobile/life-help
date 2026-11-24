@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { headers } from "next/headers";
 import "./globals.css";
+import "katex/dist/katex.min.css";
 import { LocaleProvider } from "@/lib/i18n/LocaleContext";
 import { RegionProvider } from "@/lib/region/RegionContext";
 import { CountryProvider } from "@/lib/country/CountryContext";

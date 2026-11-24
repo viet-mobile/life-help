@@ -7,6 +7,16 @@ across all 89 supported languages, ensuring zero English fallback and zero raw u
 
 import os, json, glob, re
 from pathlib import Path
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+
+from scripts.think.templates_romance_germanic import TEMPLATES_GROUP_1
+from scripts.think.templates_slavic_baltic_uralic import TEMPLATES_GROUP_2
+from scripts.think.templates_middle_eastern_turkic import TEMPLATES_GROUP_3
+from scripts.think.templates_south_asian import TEMPLATES_GROUP_4
+from scripts.think.templates_southeast_east_asian import TEMPLATES_GROUP_5
+from scripts.think.templates_african_other import TEMPLATES_GROUP_6
 
 ROOT = Path("/Users/juboklee/life-project/life-help")
 EXTRA_DIR = ROOT / "lib/think/data/extra"
@@ -824,67 +834,67 @@ TEMPLATES = {
         "Q1": {
             "ko": {
                 "prompt": "[{grade} 수학 사고력] {title}과 관련된 문제입니다. 두 수 $A$와 $B$가 주어졌을 때, 관계식 $A + 2B = 24$를 만족하는 자연수 순서쌍 $(A, B)$의 개수를 구하고 최적의 조건을 찾으려고 합니다. 이때 $A$가 가장 큰 값을 가질 때 $B$의 값은 얼마입니까?",
-                "explain": "1단계: 주어진 식을 정리하면 $A = 24 - 2B$입니다.\n2단계: $A$와 $B$는 모두 자연수이므로 $B \ge 1$이고 $A \ge 1$이어야 합니다.\n3단계: $A$가 최대가 되려면 빼는 값인 $2B$가 최소가 되어야 하므로 $B = 1$입니다.\n4단계: 이때 $A = 24 - 2(1) = 22$로 최대가 되며, 문제에서 요구한 $B$의 값은 $1$입니다.",
+                "explain": "1단계: 주어진 식을 정리하면 $A = 24 - 2B$입니다.\n2단계: $A$와 $B$는 모두 자연수이므로 $B \\ge 1$이고 $A \\ge 1$이어야 합니다.\n3단계: $A$가 최대가 되려면 빼는 값인 $2B$가 최소가 되어야 하므로 $B = 1$입니다.\n4단계: 이때 $A = 24 - 2(1) = 22$로 최대가 되며, 문제에서 요구한 $B$의 값은 $1$입니다.",
                 "hints": ["자연수 $B$의 최소값은 $1$입니다.", "$A = 24 - 2B$이므로 $B$가 가장 작을 때 $A$가 최대가 됩니다."],
                 "options": ["$1$", "$2$", "$3$", "$4$"]
             },
             "en": {
                 "prompt": "[{grade} Math Inquiry] Inquiry question for {title}. Given two natural numbers $A$ and $B$ satisfying $A + 2B = 24$, when $A$ takes its maximum possible value, what is the value of $B$?",
-                "explain": "Step 1: Rearranging gives $A = 24 - 2B$.\nStep 2: Since $A, B \ge 1$ are natural numbers, $2B$ must be minimized for $A$ to be maximized.\nStep 3: The minimum natural number is $B = 1$.\nStep 4: At this point, $A = 24 - 2(1) = 22$ (maximum), so $B = 1$.",
+                "explain": "Step 1: Rearranging gives $A = 24 - 2B$.\nStep 2: Since $A, B \\ge 1$ are natural numbers, $2B$ must be minimized for $A$ to be maximized.\nStep 3: The minimum natural number is $B = 1$.\nStep 4: At this point, $A = 24 - 2(1) = 22$ (maximum), so $B = 1$.",
                 "hints": ["The minimum natural number value for $B$ is $1$.", "Since $A = 24 - 2B$, $A$ is maximized when $B$ is minimized."],
                 "options": ["$1$", "$2$", "$3$", "$4$"]
             },
             "vi": {
                 "prompt": "[{grade} Khám phá Toán học] Câu hỏi khám phá về {title}. Cho hai số tự nhiên $A$ và $B$ thỏa mãn hệ thức $A + 2B = 24$. Khi $A$ đạt giá trị lớn nhất có thể thì giá trị của $B$ là bao nhiêu?",
-                "explain": "Bước 1: Biến đổi hệ thức ta được $A = 24 - 2B$.\nBước 2: Vì $A$ và $B$ là các số tự nhiên nên $B \ge 1$ và $A \ge 1$.\nBước 3: Để $A$ đạt giá trị lớn nhất thì $2B$ phải nhỏ nhất, do đó $B = 1$.\nBước 4: Khi đó $A = 24 - 2(1) = 22$ (lớn nhất), vậy giá trị của $B$ là $1$.",
+                "explain": "Bước 1: Biến đổi hệ thức ta được $A = 24 - 2B$.\nBước 2: Vì $A$ và $B$ là các số tự nhiên nên $B \\ge 1$ và $A \\ge 1$.\nBước 3: Để $A$ đạt giá trị lớn nhất thì $2B$ phải nhỏ nhất, do đó $B = 1$.\nBước 4: Khi đó $A = 24 - 2(1) = 22$ (lớn nhất), vậy giá trị của $B$ là $1$.",
                 "hints": ["Giá trị tự nhiên nhỏ nhất của $B$ là $1$.", "Vì $A = 24 - 2B$, khi $B$ nhỏ nhất thì $A$ sẽ lớn nhất."],
                 "options": ["$1$", "$2$", "$3$", "$4$"]
             },
             "zh-Hans": {
                 "prompt": "[{grade} 数学思维探索] 关于 {title} 的探究问题。已知两个自然数 $A$ 和 $B$ 满足关系式 $A + 2B = 24$。当 $A$ 取得最大值时，$B$ 的值是多少？",
-                "explain": "步骤 1: 整理已知等式得 $A = 24 - 2B$。\n步骤 2: 因为 $A$ 和 $B$ 都是自然数，所以 $B \ge 1$ 且 $A \ge 1$。\n步骤 3: 要使 $A$ 最大，减去的项 $2B$ 必须最小，因此 $B = 1$。\n步骤 4: 此时 $A = 24 - 2(1) = 22$ 取得最大值，所求 $B$ 的值为 $1$。",
+                "explain": "步骤 1: 整理已知等式得 $A = 24 - 2B$。\n步骤 2: 因为 $A$ 和 $B$ 都是自然数，所以 $B \\ge 1$ 且 $A \\ge 1$。\n步骤 3: 要使 $A$ 最大，减去的项 $2B$ 必须最小，因此 $B = 1$。\n步骤 4: 此时 $A = 24 - 2(1) = 22$ 取得最大值，所求 $B$ 的值为 $1$。",
                 "hints": ["自然数 $B$ 的最小值为 $1$。", "因为 $A = 24 - 2B$，当 $B$ 最小，$A$ 达到最大。"],
                 "options": ["$1$", "$2$", "$3$", "$4$"]
             },
             "zh-Hant": {
                 "prompt": "[{grade} 數學思維探索] 關於 {title} 的探究問題。已知兩個自然數 $A$ 與 $B$ 滿足關係式 $A + 2B = 24$。當 $A$ 取得最大值時，$B$ 的值是多少？",
-                "explain": "步驟 1: 整理已知等式得 $A = 24 - 2B$。\n步驟 2: 因為 $A$ 與 $B$ 都是自然數，所以 $B \ge 1$ 且 $A \ge 1$。\n步驟 3: 要使 $A$ 最大，減去的項 $2B$ 必須最小，因此 $B = 1$。\n步驟 4: 此時 $A = 24 - 2(1) = 22$ 取得最大值，所求 $B$ 的值為 $1$。",
+                "explain": "步驟 1: 整理已知等式得 $A = 24 - 2B$。\n步驟 2: 因為 $A$ 與 $B$ 都是自然數，所以 $B \\ge 1$ 且 $A \\ge 1$。\n步驟 3: 要使 $A$ 最大，減去的項 $2B$ 必須最小，因此 $B = 1$。\n步驟 4: 此時 $A = 24 - 2(1) = 22$ 取得最大值，所求 $B$ 的值為 $1$。",
                 "hints": ["自然數 $B$ 的最小值為 $1$。", "因為 $A = 24 - 2B$，當 $B$ 最小時，$A$ 達到最大。"],
                 "options": ["$1$", "$2$", "$3$", "$4$"]
             },
             "ja": {
                 "prompt": "[{grade} 数学的思考探究] {title} に関する探究課題です。関係式 $A + 2B = 24$ を満たす2つの自然数 $A, B$ について、$A$ が最大値をとるとき、$B$ の値はいくつですか？",
-                "explain": "ステップ 1: 式を変形すると $A = 24 - 2B$ です。\nステップ 2: $A, B$ はともに自然数なので、$B \ge 1, A \ge 1$ です。\nステップ 3: $A$ を最大にするには引く項 $2B$ を最小にする必要があるため、$B = 1$ となります。\nステップ 4: このとき $A = 24 - 2(1) = 22$ で最大となり、求める $B$ の値は $1$ です。",
+                "explain": "ステップ 1: 式を変形すると $A = 24 - 2B$ です。\nステップ 2: $A, B$ はともに自然数なので、$B \\ge 1, A \\ge 1$ です。\nステップ 3: $A$ を最大にするには引く項 $2B$ を最小にする必要があるため、$B = 1$ となります。\nステップ 4: このとき $A = 24 - 2(1) = 22$ で最大となり、求める $B$ の値は $1$ です。",
                 "hints": ["自然数 $B$ の最小値は $1$ です。", "$A = 24 - 2B$ なので、$B$ が最小のとき $A$ は最大になります。"],
                 "options": ["$1$", "$2$", "$3$", "$4$"]
             },
             "gl": {
                 "prompt": "[{grade} Investigación Matemática] Pregunta sobre {title}. Dados dous números naturais $A$ e $B$ que cumpren a relación $A + 2B = 24$, cal é o valor de $B$ cando $A$ acada o seu valor máximo?",
-                "explain": "Paso 1: Reordenando a ecuación obtemos $A = 24 - 2B$.\nPaso 2: Como $A$ e $B$ son números naturais, $B \ge 1$ e $A \ge 1$.\nPaso 3: Para que $A$ sexa máximo, $2B$ debe ser mínimo, polo que $B = 1$.\nPaso 4: Entón $A = 24 - 2(1) = 22$ (máximo), polo que o valor de $B$ é $1$.",
+                "explain": "Paso 1: Reordenando a ecuación obtemos $A = 24 - 2B$.\nPaso 2: Como $A$ e $B$ son números naturais, $B \\ge 1$ e $A \\ge 1$.\nPaso 3: Para que $A$ sexa máximo, $2B$ debe ser mínimo, polo que $B = 1$.\nPaso 4: Entón $A = 24 - 2(1) = 22$ (máximo), polo que o valor de $B$ é $1$.",
                 "hints": ["O valor natural mínimo para $B$ é $1$.", "Como $A = 24 - 2B$, $A$ é máximo cando $B$ é o máis pequeno posible."],
                 "options": ["$1$", "$2$", "$3$", "$4$"]
             },
             "es": {
                 "prompt": "[{grade} Indagación Matemática] Pregunta sobre {title}. Dados dos números naturales $A$ y $B$ que satisfacen la relación $A + 2B = 24$, ¿cuál es el valor de $B$ cuando $A$ toma su valor máximo posible?",
-                "explain": "Paso 1: Despejando obtenemos $A = 24 - 2B$.\nPaso 2: Como $A$ y $B$ son números naturales, $B \ge 1$ y $A \ge 1$.\nPaso 3: Para maximizar $A$, el término sustraído $2B$ debe ser mínimo, por lo que $B = 1$.\nPaso 4: En este caso $A = 24 - 2(1) = 22$ (máximo), por lo que $B = 1$.",
+                "explain": "Paso 1: Despejando obtenemos $A = 24 - 2B$.\nPaso 2: Como $A$ y $B$ son números naturales, $B \\ge 1$ y $A \\ge 1$.\nPaso 3: Para maximizar $A$, el término sustraído $2B$ debe ser mínimo, por lo que $B = 1$.\nPaso 4: En este caso $A = 24 - 2(1) = 22$ (máximo), por lo que $B = 1$.",
                 "hints": ["El valor natural mínimo para $B$ es $1$.", "Como $A = 24 - 2B$, $A$ se maximiza cuando $B$ es el menor posible."],
                 "options": ["$1$", "$2$", "$3$", "$4$"]
             },
             "fr": {
                 "prompt": "[{grade} Raisonnement Mathématique] Question sur {title}. Étant donné deux entiers naturels $A$ et $B$ satisfaisant la relation $A + 2B = 24$, quelle est la valeur de $B$ lorsque $A$ prend sa valeur maximale ?",
-                "explain": "Étape 1 : En réorganisant l'équation, on obtient $A = 24 - 2B$.\nÉtape 2 : Comme $A$ et $B$ sont des entiers naturels, $B \ge 1$ et $A \ge 1$.\nÉtape 3 : Pour maximiser $A$, le terme soustrait $2B$ doit être minimal, donc $B = 1$.\nÉtape 4 : $A = 24 - 2(1) = 22$ (maximum), la valeur cherchée de $B$ est donc $1$.",
+                "explain": "Étape 1 : En réorganisant l'équation, on obtient $A = 24 - 2B$.\nÉtape 2 : Comme $A$ et $B$ sont des entiers naturels, $B \\ge 1$ et $A \\ge 1$.\nÉtape 3 : Pour maximiser $A$, le terme soustrait $2B$ doit être minimal, donc $B = 1$.\nÉtape 4 : $A = 24 - 2(1) = 22$ (maximum), la valeur cherchée de $B$ est donc $1$.",
                 "hints": ["La valeur naturelle minimale pour $B$ est $1$.", "Comme $A = 24 - 2B$, $A$ est maximal lorsque $B$ est le plus petit possible."],
                 "options": ["$1$", "$2$", "$3$", "$4$"]
             },
             "de": {
                 "prompt": "[{grade} Mathematisches Denken] Frage zu {title}. Gegeben sind zwei natürliche Zahlen $A$ und $B$, die die Gleichung $A + 2B = 24$ erfüllen. Welchen Wert hat $B$, wenn $A$ den größtmöglichen Wert annimmt?",
-                "explain": "Schritt 1: Umformen ergibt $A = 24 - 2B$.\nSchritt 2: Da $A$ und $B$ natürliche Zahlen sind, gilt $B \ge 1$ und $A \ge 1$.\nSchritt 3: Um $A$ zu maximieren, muss der subtrahierte Term $2B$ minimal sein, also $B = 1$.\nSchritt 4: Dann ist $A = 24 - 2(1) = 22$ maximal, der gesuchte Wert von $B$ ist $1$.",
+                "explain": "Schritt 1: Umformen ergibt $A = 24 - 2B$.\nSchritt 2: Da $A$ und $B$ natürliche Zahlen sind, gilt $B \\ge 1$ und $A \\ge 1$.\nSchritt 3: Um $A$ zu maximieren, muss der subtrahierte Term $2B$ minimal sein, also $B = 1$.\nSchritt 4: Dann ist $A = 24 - 2(1) = 22$ maximal, der gesuchte Wert von $B$ ist $1$.",
                 "hints": ["Der kleinste natürliche Wert für $B$ ist $1$.", "Da $A = 24 - 2B$ gilt, wird $A$ maximal, wenn $B$ minimal ist."],
                 "options": ["$1$", "$2$", "$3$", "$4$"]
             },
             "ru": {
                 "prompt": "[{grade} Математическое мышление] Вопрос по теме {title}. Даны два натуральных числа $A$ и $B$, удовлетворяющие соотношению $A + 2B = 24$. Каково значение $B$, когда $A$ принимает максимально возможное значение?",
-                "explain": "Шаг 1: Выразим $A = 24 - 2B$.\nШаг 2: Поскольку $A$ и $B$ — натуральные числа, $B \ge 1$ и $A \ge 1$.\nШаг 3: Чтобы значение $A$ было максимальным, вычитаемое $2B$ должно быть минимальным, следовательно, $B = 1$.\nШаг 4: При этом $A = 24 - 2(1) = 22$ (максимум), искомое значение $B = 1$.",
+                "explain": "Шаг 1: Выразим $A = 24 - 2B$.\nШаг 2: Поскольку $A$ и $B$ — натуральные числа, $B \\ge 1$ и $A \\ge 1$.\nШаг 3: Чтобы значение $A$ было максимальным, вычитаемое $2B$ должно быть минимальным, следовательно, $B = 1$.\nШаг 4: При этом $A = 24 - 2(1) = 22$ (максимум), искомое значение $B = 1$.",
                 "hints": ["Минимальное натуральное значение для $B$ равно $1$.", "Так как $A = 24 - 2B$, $A$ максимально, когда $B$ минимально."],
                 "options": ["$1$", "$2$", "$3$", "$4$"]
             }
@@ -892,67 +902,67 @@ TEMPLATES = {
         "Q2": {
             "ko": {
                 "prompt": "[{grade} 수학 사고력 (심화·응용)] {title}의 원리를 활용한 복합 문제입니다. 연속하는 세 자연수의 합이 $3S$이고, 가장 작은 수와 가장 큰 수의 곱에 $1$을 더한 값이 $T^2$의 형태를 갖습니다. $S = 15$일 때, 이 세 자연수 중 가장 큰 수는 얼마입니까?",
-                "explain": "1단계: 연속하는 세 자연수를 $n-1, n, n+1$로 나타내면 그 합은 $(n-1) + n + (n+1) = 3n$입니다.\n2단계: 문제에서 합이 $3S = 3(15) = 45$이므로 $3n = 45 \Rightarrow n = 15$입니다.\n3단계: 따라서 세 수는 $14, 15, 16$이며, 이 중 가장 큰 수는 $16$입니다.\n4단계: 실제로 $(14 \times 16) + 1 = 224 + 1 = 225 = 15^2$으로 성립합니다.",
+                "explain": "1단계: 연속하는 세 자연수를 $n-1, n, n+1$로 나타내면 그 합은 $(n-1) + n + (n+1) = 3n$입니다.\n2단계: 문제에서 합이 $3S = 3(15) = 45$이므로 $3n = 45 \Rightarrow n = 15$입니다.\n3단계: 따라서 세 수는 $14, 15, 16$이며, 이 중 가장 큰 수는 $16$입니다.\n4단계: 실제로 $(14 \\times 16) + 1 = 224 + 1 = 225 = 15^2$으로 성립합니다.",
                 "hints": ["연속하는 세 자연수를 $n-1, n, n+1$로 놓으면 합은 $3n$이 됩니다.", "가운데 수가 $n = S = 15$입니다."],
                 "options": ["$14$", "$15$", "$16$", "$17$"]
             },
             "en": {
                 "prompt": "[{grade} Math Inquiry (Advanced)] Complex inquiry question using {title}. Three consecutive natural numbers sum to $3S$, and the product of the smallest and largest plus $1$ equals $T^2$. When $S = 15$, what is the largest of these three numbers?",
-                "explain": "Step 1: Letting the numbers be $n-1, n, n+1$, their sum is $3n = 3S \Rightarrow n = S = 15$.\nStep 2: The numbers are $14, 15, 16$.\nStep 3: The largest number is $16$.\nStep 4: Check: $(14 \times 16) + 1 = 224 + 1 = 225 = 15^2$.",
+                "explain": "Step 1: Letting the numbers be $n-1, n, n+1$, their sum is $3n = 3S \Rightarrow n = S = 15$.\nStep 2: The numbers are $14, 15, 16$.\nStep 3: The largest number is $16$.\nStep 4: Check: $(14 \\times 16) + 1 = 224 + 1 = 225 = 15^2$.",
                 "hints": ["Representing consecutive numbers as $n-1, n, n+1$ gives sum $3n$.", "The middle number is $n = S = 15$."],
                 "options": ["$14$", "$15$", "$16$", "$17$"]
             },
             "vi": {
                 "prompt": "[{grade} Khám phá Toán học (Nâng cao)] Bài toán vận dụng nguyên lý {title}. Ba số tự nhiên liên tiếp có tổng bằng $3S$, và tích của số nhỏ nhất với số lớn nhất cộng thêm $1$ có dạng $T^2$. Khi $S = 15$, số lớn nhất trong ba số này là bao nhiêu?",
-                "explain": "Bước 1: Gọi ba số tự nhiên liên tiếp là $n-1, n, n+1$, tổng của chúng là $3n = 3S \Rightarrow n = S = 15$.\nBước 2: Ba số đó là $14, 15, 16$.\nBước 3: Do đó số lớn nhất là $16$.\nBước 4: Kiểm tra lại: $(14 \times 16) + 1 = 224 + 1 = 225 = 15^2$.",
+                "explain": "Bước 1: Gọi ba số tự nhiên liên tiếp là $n-1, n, n+1$, tổng của chúng là $3n = 3S \Rightarrow n = S = 15$.\nBước 2: Ba số đó là $14, 15, 16$.\nBước 3: Do đó số lớn nhất là $16$.\nBước 4: Kiểm tra lại: $(14 \\times 16) + 1 = 224 + 1 = 225 = 15^2$.",
                 "hints": ["Đặt ba số tự nhiên liên tiếp là $n-1, n, n+1$, tổng là $3n$.", "Số ở giữa chính là $n = S = 15$."],
                 "options": ["$14$", "$15$", "$16$", "$17$"]
             },
             "zh-Hans": {
                 "prompt": "[{grade} 数学思维探索 (进阶)] 结合 {title} 原理的综合问题。三个连续自然数的和为 $3S$，最小数与最大数的乘积加 $1$ 等于 $T^2$。当 $S = 15$ 时，这三个自然数中最大的数是多少？",
-                "explain": "步骤 1: 设三个连续自然数为 $n-1, n, n+1$，它们的和为 $3n = 3S \Rightarrow n = S = 15$。\n步骤 2: 这三个数是 $14, 15, 16$。\n步骤 3: 其中最大的数是 $16$。\n步骤 4: 验算: $(14 \times 16) + 1 = 224 + 1 = 225 = 15^2$。",
+                "explain": "步骤 1: 设三个连续自然数为 $n-1, n, n+1$，它们的和为 $3n = 3S \Rightarrow n = S = 15$。\n步骤 2: 这三个数是 $14, 15, 16$。\n步骤 3: 其中最大的数是 $16$。\n步骤 4: 验算: $(14 \\times 16) + 1 = 224 + 1 = 225 = 15^2$。",
                 "hints": ["设三个连续自然数为 $n-1, n, n+1$，其和为 $3n$。", "中间的数即为 $n = S = 15$。"],
                 "options": ["$14$", "$15$", "$16$", "$17$"]
             },
             "zh-Hant": {
                 "prompt": "[{grade} 數學思維探索 (進階)] 結合 {title} 原理的綜合問題。三個連續自然數的和為 $3S$，最小數與最大數的乘積加 $1$ 等於 $T^2$。當 $S = 15$ 時，這三個自然數中最大的數是多少？",
-                "explain": "步驟 1: 設三個連續自然數為 $n-1, n, n+1$，其和為 $3n = 3S \Rightarrow n = S = 15$。\n步驟 2: 這三個數是 $14, 15, 16$。\n步驟 3: 其中最大的數是 $16$。\n步驟 4: 驗算: $(14 \times 16) + 1 = 224 + 1 = 225 = 15^2$。",
+                "explain": "步驟 1: 設三個連續自然數為 $n-1, n, n+1$，其和為 $3n = 3S \Rightarrow n = S = 15$。\n步驟 2: 這三個數是 $14, 15, 16$。\n步驟 3: 其中最大的數是 $16$。\n步驟 4: 驗算: $(14 \\times 16) + 1 = 224 + 1 = 225 = 15^2$。",
                 "hints": ["設三個連續自然數為 $n-1, n, n+1$，其和為 $3n$。", "中間的數即為 $n = S = 15$。"],
                 "options": ["$14$", "$15$", "$16$", "$17$"]
             },
             "ja": {
                 "prompt": "[{grade} 数学的思考探究 (発展)] {title} の原理を活用した応用課題です。連続する3つの自然数の和が $3S$ であり、最小の数と最大の数の積に $1$ を足した値が $T^2$ の形になります。$S = 15$ のとき、この3つの自然数のうち最大の数はいくつですか？",
-                "explain": "ステップ 1: 連続する3つの自然数を $n-1, n, n+1$ とおくと、その和は $3n = 3S \Rightarrow n = S = 15$ です。\nステップ 2: 3つの数は $14, 15, 16$ です。\nステップ 3: 最も大きい数は $16$ です。\nステップ 4: 検算: $(14 \times 16) + 1 = 224 + 1 = 225 = 15^2$。",
+                "explain": "ステップ 1: 連続する3つの自然数を $n-1, n, n+1$ とおくと、その和は $3n = 3S \Rightarrow n = S = 15$ です。\nステップ 2: 3つの数は $14, 15, 16$ です。\nステップ 3: 最も大きい数は $16$ です。\nステップ 4: 検算: $(14 \\times 16) + 1 = 224 + 1 = 225 = 15^2$。",
                 "hints": ["連続する3つの自然数を $n-1, n, n+1$ とおくと和は $3n$ です。", "真ん中の数が $n = S = 15$ となります。"],
                 "options": ["$14$", "$15$", "$16$", "$17$"]
             },
             "gl": {
                 "prompt": "[{grade} Investigación Matemática (Avanzada)] Pregunta complexa que aplica {title}. Tres números naturais consecutivos suman $3S$, e o produto do menor e o maior máis $1$ é igual a $T^2$. Cando $S = 15$, cal é o maior destes tres números?",
-                "explain": "Paso 1: Sexan os números $n-1, n, n+1$, a súa suma é $3n = 3S \Rightarrow n = S = 15$.\nPaso 2: Os tres números son $14, 15, 16$.\nPaso 3: Polo tanto, o número maior é $16$.\nPaso 4: Comprobación: $(14 \times 16) + 1 = 224 + 1 = 225 = 15^2$.",
+                "explain": "Paso 1: Sexan os números $n-1, n, n+1$, a súa suma é $3n = 3S \Rightarrow n = S = 15$.\nPaso 2: Os tres números son $14, 15, 16$.\nPaso 3: Polo tanto, o número maior é $16$.\nPaso 4: Comprobación: $(14 \\times 16) + 1 = 224 + 1 = 225 = 15^2$.",
                 "hints": ["Representando os números como $n-1, n, n+1$, a suma é $3n$.", "O número do medio é $n = S = 15$."],
                 "options": ["$14$", "$15$", "$16$", "$17$"]
             },
             "es": {
                 "prompt": "[{grade} Indagación Matemática (Avanzada)] Problema complejo que aplica los principios de {title}. Tres números naturales consecutivos suman $3S$, y el producto del menor y el mayor más $1$ es igual a $T^2$. Cuando $S = 15$, ¿cuál es el mayor de estos tres números?",
-                "explain": "Paso 1: Sean los números $n-1, n, n+1$, su suma es $3n = 3S \Rightarrow n = S = 15$.\nPaso 2: Los tres números son $14, 15, 16$.\nPaso 3: Por lo tanto, el mayor número es $16$.\nPaso 4: Comprobación: $(14 \times 16) + 1 = 224 + 1 = 225 = 15^2$.",
+                "explain": "Paso 1: Sean los números $n-1, n, n+1$, su suma es $3n = 3S \Rightarrow n = S = 15$.\nPaso 2: Los tres números son $14, 15, 16$.\nPaso 3: Por lo tanto, el mayor número es $16$.\nPaso 4: Comprobación: $(14 \\times 16) + 1 = 224 + 1 = 225 = 15^2$.",
                 "hints": ["Representando los números como $n-1, n, n+1$, la suma es $3n$.", "El número central es $n = S = 15$."],
                 "options": ["$14$", "$15$", "$16$", "$17$"]
             },
             "fr": {
                 "prompt": "[{grade} Raisonnement Mathématique (Avancé)] Problème complexe appliquant {title}. Trois entiers naturels consécutifs ont pour somme $3S$, et le produit du plus petit et du plus grand augmenté de $1$ est égal à $T^2$. Lorsque $S = 15$, quel est le plus grand de ces trois nombres ?",
-                "explain": "Étape 1 : En posant les nombres comme $n-1, n, n+1$, leur somme est $3n = 3S \Rightarrow n = S = 15$.\nÉtape 2 : Les nombres sont $14, 15, 16$.\nÉtape 3 : Le plus grand est $16$.\nÉtape 4 : Vérification : $(14 \times 16) + 1 = 224 + 1 = 225 = 15^2$.",
+                "explain": "Étape 1 : En posant les nombres comme $n-1, n, n+1$, leur somme est $3n = 3S \Rightarrow n = S = 15$.\nÉtape 2 : Les nombres sont $14, 15, 16$.\nÉtape 3 : Le plus grand est $16$.\nÉtape 4 : Vérification : $(14 \\times 16) + 1 = 224 + 1 = 225 = 15^2$.",
                 "hints": ["En posant les entiers consécutifs $n-1, n, n+1$, la somme est $3n$.", "Le terme médian est $n = S = 15$."],
                 "options": ["$14$", "$15$", "$16$", "$17$"]
             },
             "de": {
                 "prompt": "[{grade} Mathematisches Denken (Vertiefung)] Vertiefte Aufgabe zu {title}. Drei aufeinanderfolgende natürliche Zahlen haben die Summe $3S$, und das Produkt der kleinsten und größten Zahl plus $1$ ergibt $T^2$. Welches ist für $S = 15$ die größte dieser drei Zahlen?",
-                "explain": "Schritt 1: Seien die Zahlen $n-1, n, n+1$, so ist ihre Summe $3n = 3S \Rightarrow n = S = 15$.\nSchritt 2: Die drei Zahlen sind $14, 15, 16$.\nSchritt 3: Die größte Zahl ist $16$.\nSchritt 4: Probe: $(14 \times 16) + 1 = 224 + 1 = 225 = 15^2$.",
+                "explain": "Schritt 1: Seien die Zahlen $n-1, n, n+1$, so ist ihre Summe $3n = 3S \Rightarrow n = S = 15$.\nSchritt 2: Die drei Zahlen sind $14, 15, 16$.\nSchritt 3: Die größte Zahl ist $16$.\nSchritt 4: Probe: $(14 \\times 16) + 1 = 224 + 1 = 225 = 15^2$.",
                 "hints": ["Drei aufeinanderfolgende Zahlen $n-1, n, n+1$ ergeben die Summe $3n$.", "Die mittlere Zahl ist $n = S = 15$."],
                 "options": ["$14$", "$15$", "$16$", "$17$"]
             },
             "ru": {
                 "prompt": "[{grade} Математическое мышление (углубленное)] Комплексная задача на основе темы {title}. Сумма трех последовательных натуральных чисел равна $3S$, а произведение наименьшего и наибольшего, увеличенное на $1$, равно $T^2$. При $S = 15$ найдите наибольшее из этих трех чисел.",
-                "explain": "Шаг 1: Обозначим числа как $n-1, n, n+1$. Их сумма равна $3n = 3S \Rightarrow n = S = 15$.\nШаг 2: Эти числа: $14, 15, 16$.\nШаг 3: Наибольшее число — $16$.\nШаг 4: Проверка: $(14 \times 16) + 1 = 224 + 1 = 225 = 15^2$.",
+                "explain": "Шаг 1: Обозначим числа как $n-1, n, n+1$. Их сумма равна $3n = 3S \Rightarrow n = S = 15$.\nШаг 2: Эти числа: $14, 15, 16$.\nШаг 3: Наибольшее число — $16$.\nШаг 4: Проверка: $(14 \\times 16) + 1 = 224 + 1 = 225 = 15^2$.",
                 "hints": ["Обозначьте три последовательных числа как $n-1, n, n+1$, их сумма равна $3n$.", "Среднее число равно $n = S = 15$."],
                 "options": ["$14$", "$15$", "$16$", "$17$"]
             }
@@ -961,245 +971,245 @@ TEMPLATES = {
     "physics": {
         "Q1": {
             "ko": {
-                "prompt": "[{grade} 물리 탐구] {title}의 원리를 적용하는 문제입니다. 마찰이 없는 수평면 위에서 질량 $m = 2\text{ kg}$인 물체에 일정한 수평력 $F = 10\text{ N}$을 가하여 $4\text{ m}$ 이동시켰습니다. 물체가 받은 일 $W$와 가속도 $a$에 대한 설명 중 옳은 것은 무엇입니까?",
-                "explain": "1단계: 뉴턴의 운동 제2법칙 $F = ma$에 의해 $a = \frac{F}{m} = \frac{10\text{ N}}{2\text{ kg}} = 5\text{ m/s}^2$입니다.\n2단계: 한 일의 양은 $W = F \cdot s = 10\text{ N} \times 4\text{ m} = 40\text{ J}$입니다.\n3단계: 따라서 가속도는 $5\text{ m/s}^2$, 한 일은 $40\text{ J}$가 올바른 설명입니다.",
-                "hints": ["뉴턴의 제2법칙: $F = ma$ 공식을 사용합니다.", "일의 정의: $W = F \times s$ 공식을 사용합니다."],
+                "prompt": "[{grade} 물리 탐구] {title}의 원리를 적용하는 문제입니다. 마찰이 없는 수평면 위에서 질량 $m = 2\\text{ kg}$인 물체에 일정한 수평력 $F = 10\\text{ N}$을 가하여 $4\\text{ m}$ 이동시켰습니다. 물체가 받은 일 $W$와 가속도 $a$에 대한 설명 중 옳은 것은 무엇입니까?",
+                "explain": "1단계: 뉴턴의 운동 제2법칙 $F = ma$에 의해 $a = \\frac{F}{m} = \\frac{10\\text{ N}}{2\\text{ kg}} = 5\\text{ m/s}^2$입니다.\n2단계: 한 일의 양은 $W = F \\cdot s = 10\\text{ N} \\times 4\\text{ m} = 40\\text{ J}$입니다.\n3단계: 따라서 가속도는 $5\\text{ m/s}^2$, 한 일은 $40\\text{ J}$가 올바른 설명입니다.",
+                "hints": ["뉴턴의 제2법칙: $F = ma$ 공식을 사용합니다.", "일의 정의: $W = F \\times s$ 공식을 사용합니다."],
                 "options": [
-                    "가속도는 $5\text{ m/s}^2$이고, 한 일은 $40\text{ J}$이다.",
-                    "가속도는 $2\text{ m/s}^2$이고, 한 일은 $20\text{ J}$이다.",
-                    "가속도는 $10\text{ m/s}^2$이고, 한 일은 $40\text{ J}$이다.",
-                    "가속도는 $5\text{ m/s}^2$이고, 한 일은 $20\text{ J}$이다."
+                    "가속도는 $5\\text{ m/s}^2$이고, 한 일은 $40\\text{ J}$이다.",
+                    "가속도는 $2\\text{ m/s}^2$이고, 한 일은 $20\\text{ J}$이다.",
+                    "가속도는 $10\\text{ m/s}^2$이고, 한 일은 $40\\text{ J}$이다.",
+                    "가속도는 $5\\text{ m/s}^2$이고, 한 일은 $20\\text{ J}$이다."
                 ]
             },
             "en": {
-                "prompt": "[{grade} Physics Inquiry] Inquiry problem applying {title}. On a frictionless horizontal surface, a constant horizontal force $F = 10\text{ N}$ acts on an object of mass $m = 2\text{ kg}$, moving it $4\text{ m}$. Which statement about the work $W$ done and the acceleration $a$ is correct?",
-                "explain": "Step 1: By Newton's second law $F = ma$, $a = \frac{F}{m} = \frac{10\text{ N}}{2\text{ kg}} = 5\text{ m/s}^2$.\nStep 2: Work done is $W = F \cdot s = 10\text{ N} \times 4\text{ m} = 40\text{ J}$.\nStep 3: Therefore, acceleration is $5\text{ m/s}^2$ and work done is $40\text{ J}$.",
-                "hints": ["Newton's second law: use $F = ma$.", "Definition of work: use $W = F \times s$."],
+                "prompt": "[{grade} Physics Inquiry] Inquiry problem applying {title}. On a frictionless horizontal surface, a constant horizontal force $F = 10\\text{ N}$ acts on an object of mass $m = 2\\text{ kg}$, moving it $4\\text{ m}$. Which statement about the work $W$ done and the acceleration $a$ is correct?",
+                "explain": "Step 1: By Newton's second law $F = ma$, $a = \\frac{F}{m} = \\frac{10\\text{ N}}{2\\text{ kg}} = 5\\text{ m/s}^2$.\nStep 2: Work done is $W = F \\cdot s = 10\\text{ N} \\times 4\\text{ m} = 40\\text{ J}$.\nStep 3: Therefore, acceleration is $5\\text{ m/s}^2$ and work done is $40\\text{ J}$.",
+                "hints": ["Newton's second law: use $F = ma$.", "Definition of work: use $W = F \\times s$."],
                 "options": [
-                    "Acceleration is $5\text{ m/s}^2$ and work done is $40\text{ J}$.",
-                    "Acceleration is $2\text{ m/s}^2$ and work done is $20\text{ J}$.",
-                    "Acceleration is $10\text{ m/s}^2$ and work done is $40\text{ J}$.",
-                    "Acceleration is $5\text{ m/s}^2$ and work done is $20\text{ J}$."
+                    "Acceleration is $5\\text{ m/s}^2$ and work done is $40\\text{ J}$.",
+                    "Acceleration is $2\\text{ m/s}^2$ and work done is $20\\text{ J}$.",
+                    "Acceleration is $10\\text{ m/s}^2$ and work done is $40\\text{ J}$.",
+                    "Acceleration is $5\\text{ m/s}^2$ and work done is $20\\text{ J}$."
                 ]
             },
             "vi": {
-                "prompt": "[{grade} Khám phá Vật lý] Bài toán khám phá ứng dụng nguyên lý {title}. Trên mặt phẳng nằm ngang không ma sát, tác dụng một lực không đổi $F = 10\text{ N}$ lên vật có khối lượng $m = 2\text{ kg}$, làm vật dịch chuyển $4\text{ m}$. Phát biểu nào sau đây về công $W$ thực hiện và gia tốc $a$ là đúng?",
-                "explain": "Bước 1: Theo định luật II Newton $F = ma$, gia tốc $a = \frac{F}{m} = \frac{10\text{ N}}{2\text{ kg}} = 5\text{ m/s}^2$.\nBước 2: Công thực hiện là $W = F \cdot s = 10\text{ N} \times 4\text{ m} = 40\text{ J}$.\nBước 3: Vậy gia tốc là $5\text{ m/s}^2$ và công thực hiện là $40\text{ J}$.",
-                "hints": ["Định luật II Newton: áp dụng công thức $F = ma$.", "Định nghĩa công cơ học: áp dụng công thức $W = F \times s$."],
+                "prompt": "[{grade} Khám phá Vật lý] Bài toán khám phá ứng dụng nguyên lý {title}. Trên mặt phẳng nằm ngang không ma sát, tác dụng một lực không đổi $F = 10\\text{ N}$ lên vật có khối lượng $m = 2\\text{ kg}$, làm vật dịch chuyển $4\\text{ m}$. Phát biểu nào sau đây về công $W$ thực hiện và gia tốc $a$ là đúng?",
+                "explain": "Bước 1: Theo định luật II Newton $F = ma$, gia tốc $a = \\frac{F}{m} = \\frac{10\\text{ N}}{2\\text{ kg}} = 5\\text{ m/s}^2$.\nBước 2: Công thực hiện là $W = F \\cdot s = 10\\text{ N} \\times 4\\text{ m} = 40\\text{ J}$.\nBước 3: Vậy gia tốc là $5\\text{ m/s}^2$ và công thực hiện là $40\\text{ J}$.",
+                "hints": ["Định luật II Newton: áp dụng công thức $F = ma$.", "Định nghĩa công cơ học: áp dụng công thức $W = F \\times s$."],
                 "options": [
-                    "Gia tốc là $5\text{ m/s}^2$ và công thực hiện là $40\text{ J}$.",
-                    "Gia tốc là $2\text{ m/s}^2$ và công thực hiện là $20\text{ J}$.",
-                    "Gia tốc là $10\text{ m/s}^2$ và công thực hiện là $40\text{ J}$.",
-                    "Gia tốc là $5\text{ m/s}^2$ và công thực hiện là $20\text{ J}$."
+                    "Gia tốc là $5\\text{ m/s}^2$ và công thực hiện là $40\\text{ J}$.",
+                    "Gia tốc là $2\\text{ m/s}^2$ và công thực hiện là $20\\text{ J}$.",
+                    "Gia tốc là $10\\text{ m/s}^2$ và công thực hiện là $40\\text{ J}$.",
+                    "Gia tốc là $5\\text{ m/s}^2$ và công thực hiện là $20\\text{ J}$."
                 ]
             },
             "zh-Hans": {
-                "prompt": "[{grade} 物理探究] 应用 {title} 原理的探究问题。在光滑无摩擦的水平面上，用恒力 $F = 10\text{ N}$ 作用于质量为 $m = 2\text{ kg}$ 的物体，使其移动 $4\text{ m}$。关于物体所受的功 $W$ 和加速度 $a$，下列说法正确的是？",
-                "explain": "步骤 1: 根据牛顿第二定律 $F = ma$，加速度 $a = \frac{F}{m} = \frac{10\text{ N}}{2\text{ kg}} = 5\text{ m/s}^2$。\n步骤 2: 所做的功 $W = F \cdot s = 10\text{ N} \times 4\text{ m} = 40\text{ J}$。\n步骤 3: 因此，加速度为 $5\text{ m/s}^2$，所做的功为 $40\text{ J}$。",
-                "hints": ["牛顿第二定律公式：$F = ma$。", "功的定义公式：$W = F \times s$。"],
+                "prompt": "[{grade} 物理探究] 应用 {title} 原理的探究问题。在光滑无摩擦的水平面上，用恒力 $F = 10\\text{ N}$ 作用于质量为 $m = 2\\text{ kg}$ 的物体，使其移动 $4\\text{ m}$。关于物体所受的功 $W$ 和加速度 $a$，下列说法正确的是？",
+                "explain": "步骤 1: 根据牛顿第二定律 $F = ma$，加速度 $a = \\frac{F}{m} = \\frac{10\\text{ N}}{2\\text{ kg}} = 5\\text{ m/s}^2$。\n步骤 2: 所做的功 $W = F \\cdot s = 10\\text{ N} \\times 4\\text{ m} = 40\\text{ J}$。\n步骤 3: 因此，加速度为 $5\\text{ m/s}^2$，所做的功为 $40\\text{ J}$。",
+                "hints": ["牛顿第二定律公式：$F = ma$。", "功的定义公式：$W = F \\times s$。"],
                 "options": [
-                    "加速度为 $5\text{ m/s}^2$，做功为 $40\text{ J}$。",
-                    "加速度为 $2\text{ m/s}^2$，做功为 $20\text{ J}$。",
-                    "加速度为 $10\text{ m/s}^2$，做功为 $40\text{ J}$。",
-                    "加速度为 $5\text{ m/s}^2$，做功为 $20\text{ J}$。"
+                    "加速度为 $5\\text{ m/s}^2$，做功为 $40\\text{ J}$。",
+                    "加速度为 $2\\text{ m/s}^2$，做功为 $20\\text{ J}$。",
+                    "加速度为 $10\\text{ m/s}^2$，做功为 $40\\text{ J}$。",
+                    "加速度为 $5\\text{ m/s}^2$，做功为 $20\\text{ J}$。"
                 ]
             },
             "zh-Hant": {
-                "prompt": "[{grade} 物理探究] 應用 {title} 原理的探究問題。在光滑無摩擦的水平面上，以水平定力 $F = 10\text{ N}$ 作用於質量 $m = 2\text{ kg}$ 的物體，使其位移 $4\text{ m}$。關於物體所受的功 $W$ 與加速度 $a$，下列敘述何者正確？",
-                "explain": "步驟 1: 依據牛頓第二運動定律 $F = ma$，加速度 $a = \frac{F}{m} = \frac{10\text{ N}}{2\text{ kg}} = 5\text{ m/s}^2$。\n步驟 2: 所作的功 $W = F \cdot s = 10\text{ N} \times 4\text{ m} = 40\text{ J}$。\n步驟 3: 因此，加速度為 $5\text{ m/s}^2$，所作的功為 $40\text{ J}$。",
-                "hints": ["牛頓第二運動定律公式：$F = ma$。", "功的定義公式：$W = F \times s$。"],
+                "prompt": "[{grade} 物理探究] 應用 {title} 原理的探究問題。在光滑無摩擦的水平面上，以水平定力 $F = 10\\text{ N}$ 作用於質量 $m = 2\\text{ kg}$ 的物體，使其位移 $4\\text{ m}$。關於物體所受的功 $W$ 與加速度 $a$，下列敘述何者正確？",
+                "explain": "步驟 1: 依據牛頓第二運動定律 $F = ma$，加速度 $a = \\frac{F}{m} = \\frac{10\\text{ N}}{2\\text{ kg}} = 5\\text{ m/s}^2$。\n步驟 2: 所作的功 $W = F \\cdot s = 10\\text{ N} \\times 4\\text{ m} = 40\\text{ J}$。\n步驟 3: 因此，加速度為 $5\\text{ m/s}^2$，所作的功為 $40\\text{ J}$。",
+                "hints": ["牛頓第二運動定律公式：$F = ma$。", "功的定義公式：$W = F \\times s$。"],
                 "options": [
-                    "加速度為 $5\text{ m/s}^2$，作功為 $40\text{ J}$。",
-                    "加速度為 $2\text{ m/s}^2$，作功為 $20\text{ J}$。",
-                    "加速度為 $10\text{ m/s}^2$，作功為 $40\text{ J}$。",
-                    "加速度為 $5\text{ m/s}^2$，作功為 $20\text{ J}$。"
+                    "加速度為 $5\\text{ m/s}^2$，作功為 $40\\text{ J}$。",
+                    "加速度為 $2\\text{ m/s}^2$，作功為 $20\\text{ J}$。",
+                    "加速度為 $10\\text{ m/s}^2$，作功為 $40\\text{ J}$。",
+                    "加速度為 $5\\text{ m/s}^2$，作功為 $20\\text{ J}$。"
                 ]
             },
             "ja": {
-                "prompt": "[{grade} 物理探究] {title} の原理を適用する課題です。摩擦のない水平面上で質量 $m = 2\text{ kg}$ の物体に一定の水平力 $F = 10\text{ N}$ を加えて $4\text{ m}$ 移動させました。物体がされた仕事 $W$ と加速度 $a$ について正しい説明はどれですか？",
-                "explain": "ステップ 1: ニュートンの運動の第2法則 $F = ma$ より、加速度 $a = \frac{F}{m} = \frac{10\text{ N}}{2\text{ kg}} = 5\text{ m/s}^2$ です。\nステップ 2: 仕事の大きさは $W = F \cdot s = 10\text{ N} \times 4\text{ m} = 40\text{ J}$ です。\nステップ 3: したがって、加速度は $5\text{ m/s}^2$、仕事は $40\text{ J}$ です。",
-                "hints": ["ニュートンの運動方程式：$F = ma$ を使用します。", "仕事の定義式：$W = F \times s$ を使用します。"],
+                "prompt": "[{grade} 物理探究] {title} の原理を適用する課題です。摩擦のない水平面上で質量 $m = 2\\text{ kg}$ の物体に一定の水平力 $F = 10\\text{ N}$ を加えて $4\\text{ m}$ 移動させました。物体がされた仕事 $W$ と加速度 $a$ について正しい説明はどれですか？",
+                "explain": "ステップ 1: ニュートンの運動の第2法則 $F = ma$ より、加速度 $a = \\frac{F}{m} = \\frac{10\\text{ N}}{2\\text{ kg}} = 5\\text{ m/s}^2$ です。\nステップ 2: 仕事の大きさは $W = F \\cdot s = 10\\text{ N} \\times 4\\text{ m} = 40\\text{ J}$ です。\nステップ 3: したがって、加速度は $5\\text{ m/s}^2$、仕事は $40\\text{ J}$ です。",
+                "hints": ["ニュートンの運動方程式：$F = ma$ を使用します。", "仕事の定義式：$W = F \\times s$ を使用します。"],
                 "options": [
-                    "加速度は $5\text{ m/s}^2$ で、仕事は $40\text{ J}$ である。",
-                    "加速度は $2\text{ m/s}^2$ で、仕事は $20\text{ J}$ である。",
-                    "加速度は $10\text{ m/s}^2$ で、仕事は $40\text{ J}$ である。",
-                    "加速度は $5\text{ m/s}^2$ で、仕事は $20\text{ J}$ である。"
+                    "加速度は $5\\text{ m/s}^2$ で、仕事は $40\\text{ J}$ である。",
+                    "加速度は $2\\text{ m/s}^2$ で、仕事は $20\\text{ J}$ である。",
+                    "加速度は $10\\text{ m/s}^2$ で、仕事は $40\\text{ J}$ である。",
+                    "加速度は $5\\text{ m/s}^2$ で、仕事は $20\\text{ J}$ である。"
                 ]
             },
             "gl": {
-                "prompt": "[{grade} Investigación de Física] Pregunta que aplica os principios de {title}. Nunha superficie horizontal sen rozamento, aplícase unha forza horizontal constante de $F = 10\text{ N}$ sobre un obxecto de masa $m = 2\text{ kg}$, desprazándoo $4\text{ m}$. Cal das seguintes afirmacións sobre o traballo $W$ realizado e a aceleración $a$ é correcta?",
-                "explain": "Paso 1: Segundo a segunda lei de Newton $F = ma$, $a = \frac{F}{m} = \frac{10\text{ N}}{2\text{ kg}} = 5\text{ m/s}^2$.\nPaso 2: A cantidade de traballo realizado é $W = F \cdot s = 10\text{ N} \times 4\text{ m} = 40\text{ J}$.\nPaso 3: Polo tanto, a aceleración é de $5\text{ m/s}^2$ e o traballo realizado é de $40\text{ J}$.",
-                "hints": ["Segunda lei de Newton: emprega $F = ma$.", "Definición de traballo: emprega $W = F \times s$."],
+                "prompt": "[{grade} Investigación de Física] Pregunta que aplica os principios de {title}. Nunha superficie horizontal sen rozamento, aplícase unha forza horizontal constante de $F = 10\\text{ N}$ sobre un obxecto de masa $m = 2\\text{ kg}$, desprazándoo $4\\text{ m}$. Cal das seguintes afirmacións sobre o traballo $W$ realizado e a aceleración $a$ é correcta?",
+                "explain": "Paso 1: Segundo a segunda lei de Newton $F = ma$, $a = \\frac{F}{m} = \\frac{10\\text{ N}}{2\\text{ kg}} = 5\\text{ m/s}^2$.\nPaso 2: A cantidade de traballo realizado é $W = F \\cdot s = 10\\text{ N} \\times 4\\text{ m} = 40\\text{ J}$.\nPaso 3: Polo tanto, a aceleración é de $5\\text{ m/s}^2$ e o traballo realizado é de $40\\text{ J}$.",
+                "hints": ["Segunda lei de Newton: emprega $F = ma$.", "Definición de traballo: emprega $W = F \\times s$."],
                 "options": [
-                    "A aceleración é de $5\text{ m/s}^2$ e o traballo realizado é de $40\text{ J}$.",
-                    "A aceleración é de $2\text{ m/s}^2$ e o traballo realizado é de $20\text{ J}$.",
-                    "A aceleración é de $10\text{ m/s}^2$ e o traballo realizado é de $40\text{ J}$.",
-                    "A aceleración é de $5\text{ m/s}^2$ e o traballo realizado é de $20\text{ J}$."
+                    "A aceleración é de $5\\text{ m/s}^2$ e o traballo realizado é de $40\\text{ J}$.",
+                    "A aceleración é de $2\\text{ m/s}^2$ e o traballo realizado é de $20\\text{ J}$.",
+                    "A aceleración é de $10\\text{ m/s}^2$ e o traballo realizado é de $40\\text{ J}$.",
+                    "A aceleración é de $5\\text{ m/s}^2$ e o traballo realizado é de $20\\text{ J}$."
                 ]
             },
             "es": {
-                "prompt": "[{grade} Indagación Física] Problema que aplica los principios de {title}. En una superficie horizontal sin fricción, se aplica una fuerza constante $F = 10\text{ N}$ a un cuerpo de masa $m = 2\text{ kg}$, desplazándolo $4\text{ m}$. ¿Cuál de las siguientes afirmaciones sobre el trabajo $W$ realizado y la aceleración $a$ es correcta?",
-                "explain": "Paso 1: Por la segunda ley de Newton $F = ma$, $a = \frac{F}{m} = \frac{10\text{ N}}{2\text{ kg}} = 5\text{ m/s}^2$.\nPaso 2: El trabajo realizado es $W = F \cdot s = 10\text{ N} \times 4\text{ m} = 40\text{ J}$.\nPaso 3: Por lo tanto, la aceleración es $5\text{ m/s}^2$ y el trabajo realizado es $40\text{ J}$.",
-                "hints": ["Segunda ley de Newton: usa $F = ma$.", "Definición de trabajo: usa $W = F \times s$."],
+                "prompt": "[{grade} Indagación Física] Problema que aplica los principios de {title}. En una superficie horizontal sin fricción, se aplica una fuerza constante $F = 10\\text{ N}$ a un cuerpo de masa $m = 2\\text{ kg}$, desplazándolo $4\\text{ m}$. ¿Cuál de las siguientes afirmaciones sobre el trabajo $W$ realizado y la aceleración $a$ es correcta?",
+                "explain": "Paso 1: Por la segunda ley de Newton $F = ma$, $a = \\frac{F}{m} = \\frac{10\\text{ N}}{2\\text{ kg}} = 5\\text{ m/s}^2$.\nPaso 2: El trabajo realizado es $W = F \\cdot s = 10\\text{ N} \\times 4\\text{ m} = 40\\text{ J}$.\nPaso 3: Por lo tanto, la aceleración es $5\\text{ m/s}^2$ y el trabajo realizado es $40\\text{ J}$.",
+                "hints": ["Segunda ley de Newton: usa $F = ma$.", "Definición de trabajo: usa $W = F \\times s$."],
                 "options": [
-                    "La aceleración es de $5\text{ m/s}^2$ y el trabajo realizado es de $40\text{ J}$.",
-                    "La aceleración es de $2\text{ m/s}^2$ y el trabajo realizado es de $20\text{ J}$.",
-                    "La aceleración es de $10\text{ m/s}^2$ y el trabajo realizado es de $40\text{ J}$.",
-                    "La aceleración es de $5\text{ m/s}^2$ y el trabajo realizado es de $20\text{ J}$."
+                    "La aceleración es de $5\\text{ m/s}^2$ y el trabajo realizado es de $40\\text{ J}$.",
+                    "La aceleración es de $2\\text{ m/s}^2$ y el trabajo realizado es de $20\\text{ J}$.",
+                    "La aceleración es de $10\\text{ m/s}^2$ y el trabajo realizado es de $40\\text{ J}$.",
+                    "La aceleración es de $5\\text{ m/s}^2$ y el trabajo realizado es de $20\\text{ J}$."
                 ]
             },
             "fr": {
-                "prompt": "[{grade} Enquête Physique] Problème appliquant les principes de {title}. Sur une surface horizontale sans frottement, une force constante de $F = 10\text{ N}$ est appliquée à un objet de masse $m = 2\text{ kg}$, le déplaçant de $4\text{ m}$. Laquelle des affirmations suivantes concernant le travail $W$ et l'accélération $a$ est correcte ?",
-                "explain": "Étape 1 : D'après la deuxième loi de Newton $F = ma$, $a = \frac{F}{m} = \frac{10\text{ N}}{2\text{ kg}} = 5\text{ m/s}^2$.\nÉtape 2 : Le travail effectué est $W = F \cdot s = 10\text{ N} \times 4\text{ m} = 40\text{ J}$.\nÉtape 3 : Donc l'accélération est de $5\text{ m/s}^2$ et le travail est de $40\text{ J}$.",
-                "hints": ["Deuxième loi de Newton : $F = ma$.", "Définition du travail : $W = F \times s$."],
+                "prompt": "[{grade} Enquête Physique] Problème appliquant les principes de {title}. Sur une surface horizontale sans frottement, une force constante de $F = 10\\text{ N}$ est appliquée à un objet de masse $m = 2\\text{ kg}$, le déplaçant de $4\\text{ m}$. Laquelle des affirmations suivantes concernant le travail $W$ et l'accélération $a$ est correcte ?",
+                "explain": "Étape 1 : D'après la deuxième loi de Newton $F = ma$, $a = \\frac{F}{m} = \\frac{10\\text{ N}}{2\\text{ kg}} = 5\\text{ m/s}^2$.\nÉtape 2 : Le travail effectué est $W = F \\cdot s = 10\\text{ N} \\times 4\\text{ m} = 40\\text{ J}$.\nÉtape 3 : Donc l'accélération est de $5\\text{ m/s}^2$ et le travail est de $40\\text{ J}$.",
+                "hints": ["Deuxième loi de Newton : $F = ma$.", "Définition du travail : $W = F \\times s$."],
                 "options": [
-                    "L'accélération est de $5\text{ m/s}^2$ et le travail effectué est de $40\text{ J}$.",
-                    "L'accélération est de $2\text{ m/s}^2$ et le travail effectué est de $20\text{ J}$.",
-                    "L'accélération est de $10\text{ m/s}^2$ et le travail effectué est de $40\text{ J}$.",
-                    "L'accélération est de $5\text{ m/s}^2$ et le travail effectué est de $20\text{ J}$."
+                    "L'accélération est de $5\\text{ m/s}^2$ et le travail effectué est de $40\\text{ J}$.",
+                    "L'accélération est de $2\\text{ m/s}^2$ et le travail effectué est de $20\\text{ J}$.",
+                    "L'accélération est de $10\\text{ m/s}^2$ et le travail effectué est de $40\\text{ J}$.",
+                    "L'accélération est de $5\\text{ m/s}^2$ et le travail effectué est de $20\\text{ J}$."
                 ]
             },
             "de": {
-                "prompt": "[{grade} Physikalische Untersuchung] Aufgabe zur Anwendung von {title}. Auf einer reibungsfreien horizontalen Ebene wirkt eine konstante Kraft $F = 10\text{ N}$ auf einen Körper der Masse $m = 2\text{ kg}$ und verschiebt ihn um $4\text{ m}$. Welche Aussage über Arbeit $W$ und Beschleunigung $a$ ist richtig?",
-                "explain": "Schritt 1: Nach dem zweiten Newtonschen Gesetz $F = ma$ ist $a = \frac{F}{m} = \frac{10\text{ N}}{2\text{ kg}} = 5\text{ m/s}^2$.\nSchritt 2: Die verrichtete Arbeit ist $W = F \cdot s = 10\text{ N} \times 4\text{ m} = 40\text{ J}$.\nSchritt 3: Folglich beträgt die Beschleunigung $5\text{ m/s}^2$ und die Arbeit $40\text{ J}$.",
-                "hints": ["Zweites Newtonsches Gesetz: $F = ma$.", "Definition der Arbeit: $W = F \times s$."],
+                "prompt": "[{grade} Physikalische Untersuchung] Aufgabe zur Anwendung von {title}. Auf einer reibungsfreien horizontalen Ebene wirkt eine konstante Kraft $F = 10\\text{ N}$ auf einen Körper der Masse $m = 2\\text{ kg}$ und verschiebt ihn um $4\\text{ m}$. Welche Aussage über Arbeit $W$ und Beschleunigung $a$ ist richtig?",
+                "explain": "Schritt 1: Nach dem zweiten Newtonschen Gesetz $F = ma$ ist $a = \\frac{F}{m} = \\frac{10\\text{ N}}{2\\text{ kg}} = 5\\text{ m/s}^2$.\nSchritt 2: Die verrichtete Arbeit ist $W = F \\cdot s = 10\\text{ N} \\times 4\\text{ m} = 40\\text{ J}$.\nSchritt 3: Folglich beträgt die Beschleunigung $5\\text{ m/s}^2$ und die Arbeit $40\\text{ J}$.",
+                "hints": ["Zweites Newtonsches Gesetz: $F = ma$.", "Definition der Arbeit: $W = F \\times s$."],
                 "options": [
-                    "Die Beschleunigung beträgt $5\text{ m/s}^2$ und die verrichtete Arbeit $40\text{ J}$.",
-                    "Die Beschleunigung beträgt $2\text{ m/s}^2$ und die verrichtete Arbeit $20\text{ J}$.",
-                    "Die Beschleunigung beträgt $10\text{ m/s}^2$ und die verrichtete Arbeit $40\text{ J}$.",
-                    "Die Beschleunigung beträgt $5\text{ m/s}^2$ und die verrichtete Arbeit $20\text{ J}$."
+                    "Die Beschleunigung beträgt $5\\text{ m/s}^2$ und die verrichtete Arbeit $40\\text{ J}$.",
+                    "Die Beschleunigung beträgt $2\\text{ m/s}^2$ und die verrichtete Arbeit $20\\text{ J}$.",
+                    "Die Beschleunigung beträgt $10\\text{ m/s}^2$ und die verrichtete Arbeit $40\\text{ J}$.",
+                    "Die Beschleunigung beträgt $5\\text{ m/s}^2$ und die verrichtete Arbeit $20\\text{ J}$."
                 ]
             },
             "ru": {
-                "prompt": "[{grade} Физическое исследование] Задача на применение принципов темы {title}. На гладкой горизонтальной поверхности к телу массой $m = 2\text{ кг}$ приложена постоянная сила $F = 10\text{ Н}$, переместившая его на $4\text{ м}$. Какое утверждение о совершенной работе $W$ и ускорении $a$ верно?",
-                "explain": "Шаг 1: По второму закону Ньютона $F = ma$, ускорение $a = \frac{F}{m} = \frac{10\text{ Н}}{2\text{ кг}} = 5\text{ м/с}^2$.\nШаг 2: Совершенная работа равна $W = F \cdot s = 10\text{ Н} \times 4\text{ м} = 40\text{ Дж}$.\nШаг 3: Следовательно, ускорение равно $5\text{ м/с}^2$, а работа — $40\text{ Дж}$.",
-                "hints": ["Второй закон Ньютона: используйте формулу $F = ma$.", "Определение работы: используйте формулу $W = F \times s$."],
+                "prompt": "[{grade} Физическое исследование] Задача на применение принципов темы {title}. На гладкой горизонтальной поверхности к телу массой $m = 2\\text{ кг}$ приложена постоянная сила $F = 10\\text{ Н}$, переместившая его на $4\\text{ м}$. Какое утверждение о совершенной работе $W$ и ускорении $a$ верно?",
+                "explain": "Шаг 1: По второму закону Ньютона $F = ma$, ускорение $a = \\frac{F}{m} = \\frac{10\\text{ Н}}{2\\text{ кг}} = 5\\text{ м/с}^2$.\nШаг 2: Совершенная работа равна $W = F \\cdot s = 10\\text{ Н} \\times 4\\text{ м} = 40\\text{ Дж}$.\nШаг 3: Следовательно, ускорение равно $5\\text{ м/с}^2$, а работа — $40\\text{ Дж}$.",
+                "hints": ["Второй закон Ньютона: используйте формулу $F = ma$.", "Определение работы: используйте формулу $W = F \\times s$."],
                 "options": [
-                    "Ускорение равно $5\text{ м/с}^2$, совершенная работа — $40\text{ Дж}$.",
-                    "Ускорение равно $2\text{ м/с}^2$, совершенная работа — $20\text{ Дж}$.",
-                    "Ускорение равно $10\text{ м/с}^2$, совершенная работа — $40\text{ Дж}$.",
-                    "Ускорение равно $5\text{ м/с}^2$, совершенная работа — $20\text{ Дж}$."
+                    "Ускорение равно $5\\text{ м/с}^2$, совершенная работа — $40\\text{ Дж}$.",
+                    "Ускорение равно $2\\text{ м/с}^2$, совершенная работа — $20\\text{ Дж}$.",
+                    "Ускорение равно $10\\text{ м/с}^2$, совершенная работа — $40\\text{ Дж}$.",
+                    "Ускорение равно $5\\text{ м/с}^2$, совершенная работа — $20\\text{ Дж}$."
                 ]
             }
         },
         "Q2": {
             "ko": {
-                "prompt": "[{grade} 물리 탐구 (심화·응용)] {title}의 원리를 분석하는 역학 탐구 문제입니다. 지표면 근처에서 질량 $m = 1\text{ kg}$인 물체를 높이 $h = 20\text{ m}$인 지점에서 가만히 놓아 자유 낙하시켰습니다. (단, 중력가속도 $g = 9.8\text{ m/s}^2$, 공기 저항 무시) 물체의 역학적 에너지 보존과 지면 도달 직전 속력 $v$에 대한 설명으로 옳은 것은 무엇입니까?",
-                "explain": "1단계: 공기 저항이 없으므로 낙하하는 동안 역학적 에너지는 일정하게 보존됩니다.\n2단계: 최고점에서의 위치 에너지가 지면에서의 운동 에너지로 전환되므로 $mgh = \frac{1}{2}mv^2$입니다.\n3단계: $v = \sqrt{2gh} = \sqrt{2 \times 9.8\text{ m/s}^2 \times 20\text{ m}} = \sqrt{392} \approx 19.8\text{ m/s}$입니다.",
-                "hints": ["공기 저항을 무시하므로 역학적 에너지 보존 법칙 $mgh = \frac{1}{2}mv^2$이 성립합니다.", "$v = \sqrt{2gh} = \sqrt{2 \times 9.8 \times 20} = \sqrt{392} \approx 19.8\text{ m/s}$입니다."],
+                "prompt": "[{grade} 물리 탐구 (심화·응용)] {title}의 원리를 분석하는 역학 탐구 문제입니다. 지표면 근처에서 질량 $m = 1\\text{ kg}$인 물체를 높이 $h = 20\\text{ m}$인 지점에서 가만히 놓아 자유 낙하시켰습니다. (단, 중력가속도 $g = 9.8\\text{ m/s}^2$, 공기 저항 무시) 물체의 역학적 에너지 보존과 지면 도달 직전 속력 $v$에 대한 설명으로 옳은 것은 무엇입니까?",
+                "explain": "1단계: 공기 저항이 없으므로 낙하하는 동안 역학적 에너지는 일정하게 보존됩니다.\n2단계: 최고점에서의 위치 에너지가 지면에서의 운동 에너지로 전환되므로 $mgh = \\frac{1}{2}mv^2$입니다.\n3단계: $v = \sqrt{2gh} = \sqrt{2 \\times 9.8\\text{ m/s}^2 \\times 20\\text{ m}} = \sqrt{392} \\approx 19.8\\text{ m/s}$입니다.",
+                "hints": ["공기 저항을 무시하므로 역학적 에너지 보존 법칙 $mgh = \\frac{1}{2}mv^2$이 성립합니다.", "$v = \sqrt{2gh} = \sqrt{2 \\times 9.8 \\times 20} = \sqrt{392} \\approx 19.8\\text{ m/s}$입니다."],
                 "options": [
-                    "역학적 에너지는 보존되며, 지면 도달 직전 속력은 약 $19.8\text{ m/s}$이다.",
-                    "역학적 에너지는 낙하하며 감소하여 지면 도달 직전 속력은 약 $9.8\text{ m/s}$이다.",
+                    "역학적 에너지는 보존되며, 지면 도달 직전 속력은 약 $19.8\\text{ m/s}$이다.",
+                    "역학적 에너지는 낙하하며 감소하여 지면 도달 직전 속력은 약 $9.8\\text{ m/s}$이다.",
                     "위치 에너지만 보존되고 운동 에너지는 0이 된다.",
                     "중력가속도가 시간에 따라 증가하므로 속력 계산이 불가능하다."
                 ]
             },
             "en": {
-                "prompt": "[{grade} Physics Inquiry (Advanced)] Mechanics problem analyzing {title}. An object of mass $m = 1\text{ kg}$ is dropped from rest at height $h = 20\text{ m}$ in free fall ($g = 9.8\text{ m/s}^2$, ignore air resistance). Which statement about mechanical energy conservation and final speed $v$ is correct?",
-                "explain": "Step 1: With no air resistance, mechanical energy is conserved throughout fall.\nStep 2: $mgh = \frac{1}{2}mv^2 \Rightarrow v = \sqrt{2gh}$.\nStep 3: $v = \sqrt{2 \times 9.8 \times 20} = \sqrt{392} \approx 19.8\text{ m/s}$.",
-                "hints": ["Conservation of mechanical energy: $mgh = \frac{1}{2}mv^2$.", "$v = \sqrt{2gh} \approx 19.8\text{ m/s}$."],
+                "prompt": "[{grade} Physics Inquiry (Advanced)] Mechanics problem analyzing {title}. An object of mass $m = 1\\text{ kg}$ is dropped from rest at height $h = 20\\text{ m}$ in free fall ($g = 9.8\\text{ m/s}^2$, ignore air resistance). Which statement about mechanical energy conservation and final speed $v$ is correct?",
+                "explain": "Step 1: With no air resistance, mechanical energy is conserved throughout fall.\nStep 2: $mgh = \\frac{1}{2}mv^2 \Rightarrow v = \sqrt{2gh}$.\nStep 3: $v = \sqrt{2 \\times 9.8 \\times 20} = \sqrt{392} \\approx 19.8\\text{ m/s}$.",
+                "hints": ["Conservation of mechanical energy: $mgh = \\frac{1}{2}mv^2$.", "$v = \sqrt{2gh} \\approx 19.8\\text{ m/s}$."],
                 "options": [
-                    "Mechanical energy is conserved, and speed just before impact is approx $19.8\text{ m/s}$.",
-                    "Mechanical energy decreases, and speed just before impact is approx $9.8\text{ m/s}$.",
+                    "Mechanical energy is conserved, and speed just before impact is approx $19.8\\text{ m/s}$.",
+                    "Mechanical energy decreases, and speed just before impact is approx $9.8\\text{ m/s}$.",
                     "Only potential energy is conserved, and kinetic energy is zero.",
                     "Gravity varies with time, so speed cannot be calculated."
                 ]
             },
             "vi": {
-                "prompt": "[{grade} Khám phá Vật lý (Nâng cao)] Bài toán cơ học phân tích nguyên lý {title}. Thả rơi tự do một vật có khối lượng $m = 1\text{ kg}$ từ độ cao $h = 20\text{ m}$ (lấy $g = 9.8\text{ m/s}^2$, bỏ qua sức cản không khí). Phát biểu nào sau đây về sự bảo toàn cơ năng và vận tốc $v$ ngay trước khi chạm đất là đúng?",
-                "explain": "Bước 1: Bỏ qua sức cản không khí nên cơ năng được bảo toàn trong suốt quá trình rơi.\nBước 2: Thế năng ban đầu chuyển hóa hoàn toàn thành động năng: $mgh = \frac{1}{2}mv^2$.\nBước 3: Vận tốc $v = \sqrt{2gh} = \sqrt{2 \times 9.8 \times 20} = \sqrt{392} \approx 19.8\text{ m/s}$.",
-                "hints": ["Định luật bảo toàn cơ năng: $mgh = \frac{1}{2}mv^2$.", "$v = \sqrt{2gh} \approx 19.8\text{ m/s}$."],
+                "prompt": "[{grade} Khám phá Vật lý (Nâng cao)] Bài toán cơ học phân tích nguyên lý {title}. Thả rơi tự do một vật có khối lượng $m = 1\\text{ kg}$ từ độ cao $h = 20\\text{ m}$ (lấy $g = 9.8\\text{ m/s}^2$, bỏ qua sức cản không khí). Phát biểu nào sau đây về sự bảo toàn cơ năng và vận tốc $v$ ngay trước khi chạm đất là đúng?",
+                "explain": "Bước 1: Bỏ qua sức cản không khí nên cơ năng được bảo toàn trong suốt quá trình rơi.\nBước 2: Thế năng ban đầu chuyển hóa hoàn toàn thành động năng: $mgh = \\frac{1}{2}mv^2$.\nBước 3: Vận tốc $v = \sqrt{2gh} = \sqrt{2 \\times 9.8 \\times 20} = \sqrt{392} \\approx 19.8\\text{ m/s}$.",
+                "hints": ["Định luật bảo toàn cơ năng: $mgh = \\frac{1}{2}mv^2$.", "$v = \sqrt{2gh} \\approx 19.8\\text{ m/s}$."],
                 "options": [
-                    "Cơ năng được bảo toàn, vận tốc ngay trước khi chạm đất khoảng $19.8\text{ m/s}$.",
-                    "Cơ năng giảm dần, vận tốc ngay trước khi chạm đất khoảng $9.8\text{ m/s}$.",
+                    "Cơ năng được bảo toàn, vận tốc ngay trước khi chạm đất khoảng $19.8\\text{ m/s}$.",
+                    "Cơ năng giảm dần, vận tốc ngay trước khi chạm đất khoảng $9.8\\text{ m/s}$.",
                     "Chỉ có thế năng được bảo toàn và động năng bằng 0.",
                     "Gia tốc trọng trường thay đổi nên không thể tính được vận tốc."
                 ]
             },
             "zh-Hans": {
-                "prompt": "[{grade} 物理探究 (进阶)] 深入分析 {title} 原理的力学探究题。在地面附近，将质量为 $m = 1\text{ kg}$ 的物体从高 $h = 20\text{ m}$ 处由静止释放进行自由落体运动（取 $g = 9.8\text{ m/s}^2$，忽略空气阻力）。关于机械能守恒与落地前瞬时速度 $v$，下列说法正确的是？",
-                "explain": "步骤 1: 忽略空气阻力，下落过程中机械能严格守恒。\n步骤 2: 初始重力势能全部转化为动能：$mgh = \frac{1}{2}mv^2$。\n步骤 3: 速度 $v = \sqrt{2gh} = \sqrt{2 \times 9.8 \times 20} = \sqrt{392} \approx 19.8\text{ m/s}$。",
-                "hints": ["机械能守恒定律：$mgh = \frac{1}{2}mv^2$。", "$v = \sqrt{2gh} \approx 19.8\text{ m/s}$。"],
+                "prompt": "[{grade} 物理探究 (进阶)] 深入分析 {title} 原理的力学探究题。在地面附近，将质量为 $m = 1\\text{ kg}$ 的物体从高 $h = 20\\text{ m}$ 处由静止释放进行自由落体运动（取 $g = 9.8\\text{ m/s}^2$，忽略空气阻力）。关于机械能守恒与落地前瞬时速度 $v$，下列说法正确的是？",
+                "explain": "步骤 1: 忽略空气阻力，下落过程中机械能严格守恒。\n步骤 2: 初始重力势能全部转化为动能：$mgh = \\frac{1}{2}mv^2$。\n步骤 3: 速度 $v = \sqrt{2gh} = \sqrt{2 \\times 9.8 \\times 20} = \sqrt{392} \\approx 19.8\\text{ m/s}$。",
+                "hints": ["机械能守恒定律：$mgh = \\frac{1}{2}mv^2$。", "$v = \sqrt{2gh} \\approx 19.8\\text{ m/s}$。"],
                 "options": [
-                    "机械能守恒，落地前瞬时速度约为 $19.8\text{ m/s}$。",
-                    "机械能在下落中减小，落地前瞬时速度约为 $9.8\text{ m/s}$。",
+                    "机械能守恒，落地前瞬时速度约为 $19.8\\text{ m/s}$。",
+                    "机械能在下落中减小，落地前瞬时速度约为 $9.8\\text{ m/s}$。",
                     "仅势能守恒，动能为零。",
                     "重力加速度随时间改变，无法计算速度。"
                 ]
             },
             "zh-Hant": {
-                "prompt": "[{grade} 物理探究 (進階)] 深入分析 {title} 原理的力學探究題。在地面附近，將質量為 $m = 1\text{ kg}$ 的物體從高 $h = 20\text{ m}$ 處由靜止釋放作自由落體運動（取 $g = 9.8\text{ m/s}^2$，忽略空氣阻力）。關於機械能守恆與落地前瞬時速度 $v$，下列敘述何者正確？",
-                "explain": "步驟 1: 忽略空氣阻力，下落過程中機械能嚴格守恆。\n步驟 2: 初始重力位能全部轉化為動能：$mgh = \frac{1}{2}mv^2$。\n步驟 3: 速度 $v = \sqrt{2gh} = \sqrt{2 \times 9.8 \times 20} = \sqrt{392} \approx 19.8\text{ m/s}$。",
-                "hints": ["機械能守恆定律：$mgh = \frac{1}{2}mv^2$。", "$v = \sqrt{2gh} \approx 19.8\text{ m/s}$。"],
+                "prompt": "[{grade} 物理探究 (進階)] 深入分析 {title} 原理的力學探究題。在地面附近，將質量為 $m = 1\\text{ kg}$ 的物體從高 $h = 20\\text{ m}$ 處由靜止釋放作自由落體運動（取 $g = 9.8\\text{ m/s}^2$，忽略空氣阻力）。關於機械能守恆與落地前瞬時速度 $v$，下列敘述何者正確？",
+                "explain": "步驟 1: 忽略空氣阻力，下落過程中機械能嚴格守恆。\n步驟 2: 初始重力位能全部轉化為動能：$mgh = \\frac{1}{2}mv^2$。\n步驟 3: 速度 $v = \sqrt{2gh} = \sqrt{2 \\times 9.8 \\times 20} = \sqrt{392} \\approx 19.8\\text{ m/s}$。",
+                "hints": ["機械能守恆定律：$mgh = \\frac{1}{2}mv^2$。", "$v = \sqrt{2gh} \\approx 19.8\\text{ m/s}$。"],
                 "options": [
-                    "機械能守恆，落地前瞬時速度約為 $19.8\text{ m/s}$。",
-                    "機械能在下落中減小，落地前瞬時速度約為 $9.8\text{ m/s}$。",
+                    "機械能守恆，落地前瞬時速度約為 $19.8\\text{ m/s}$。",
+                    "機械能在下落中減小，落地前瞬時速度約為 $9.8\\text{ m/s}$。",
                     "僅位能守恆，動能為零。",
                     "重力加速度隨時間改變，無法計算速度。"
                 ]
             },
             "ja": {
-                "prompt": "[{grade} 物理探究 (発展)] {title} の原理を分析する力学探究課題です。地表付近で質量 $m = 1\text{ kg}$ の物体を高さ $h = 20\text{ m}$ から静かに自由落下させました（$g = 9.8\text{ m/s}^2$、空気抵抗は無視）。力学的エネルギー保存と接地直前の速さ $v$ について正しいものはどれですか？",
-                "explain": "ステップ 1: 空気抵抗を無視できるため、落下運動中に力学的エネルギーは一定に保存されます。\nステップ 2: 初期位置エネルギーが運動エネルギーに変換されるため、$mgh = \frac{1}{2}mv^2$ です。\nステップ 3: 速さ $v = \sqrt{2gh} = \sqrt{2 \times 9.8 \times 20} = \sqrt{392} \approx 19.8\text{ m/s}$ です。",
-                "hints": ["力学的エネルギー保存則：$mgh = \frac{1}{2}mv^2$。", "$v = \sqrt{2gh} \approx 19.8\text{ m/s}$ です。"],
+                "prompt": "[{grade} 物理探究 (発展)] {title} の原理を分析する力学探究課題です。地表付近で質量 $m = 1\\text{ kg}$ の物体を高さ $h = 20\\text{ m}$ から静かに自由落下させました（$g = 9.8\\text{ m/s}^2$、空気抵抗は無視）。力学的エネルギー保存と接地直前の速さ $v$ について正しいものはどれですか？",
+                "explain": "ステップ 1: 空気抵抗を無視できるため、落下運動中に力学的エネルギーは一定に保存されます。\nステップ 2: 初期位置エネルギーが運動エネルギーに変換されるため、$mgh = \\frac{1}{2}mv^2$ です。\nステップ 3: 速さ $v = \sqrt{2gh} = \sqrt{2 \\times 9.8 \\times 20} = \sqrt{392} \\approx 19.8\\text{ m/s}$ です。",
+                "hints": ["力学的エネルギー保存則：$mgh = \\frac{1}{2}mv^2$。", "$v = \sqrt{2gh} \\approx 19.8\\text{ m/s}$ です。"],
                 "options": [
-                    "力学的エネルギーは保存され、接地直前の速さは約 $19.8\text{ m/s}$ である。",
-                    "力学的エネルギーは減少し、接地直前の速さは約 $9.8\text{ m/s}$ である。",
+                    "力学的エネルギーは保存され、接地直前の速さは約 $19.8\\text{ m/s}$ である。",
+                    "力学的エネルギーは減少し、接地直前の速さは約 $9.8\\text{ m/s}$ である。",
                     "位置エネルギーのみ保存され、運動エネルギーは0である。",
                     "重力加速度が変化するため、速さを計算することはできない。"
                 ]
             },
             "gl": {
-                "prompt": "[{grade} Investigación de Física (Avanzada)] Problema de mecánica que analiza {title}. Déixase caer libremente desde o repouso un obxecto de masa $m = 1\text{ kg}$ desde unha altura $h = 20\text{ m}$ ($g = 9.8\text{ m/s}^2$, sen resistencia do aire). Cal das seguintes afirmacións sobre a conservación da enerxía mecánica e a velocidade final $v$ é correcta?",
-                "explain": "Paso 1: Sen resistencia do aire, a enerxía mecánica consérvase durante a caída.\nPaso 2: A enerxía potencial inicial transfórmase en enerxía cinética: $mgh = \frac{1}{2}mv^2$.\nPaso 3: $v = \sqrt{2gh} = \sqrt{2 \times 9.8 \times 20} = \sqrt{392} \approx 19.8\text{ m/s}$.",
-                "hints": ["Conservación da enerxía mecánica: $mgh = \frac{1}{2}mv^2$.", "$v = \sqrt{2gh} \approx 19.8\text{ m/s}$."],
+                "prompt": "[{grade} Investigación de Física (Avanzada)] Problema de mecánica que analiza {title}. Déixase caer libremente desde o repouso un obxecto de masa $m = 1\\text{ kg}$ desde unha altura $h = 20\\text{ m}$ ($g = 9.8\\text{ m/s}^2$, sen resistencia do aire). Cal das seguintes afirmacións sobre a conservación da enerxía mecánica e a velocidade final $v$ é correcta?",
+                "explain": "Paso 1: Sen resistencia do aire, a enerxía mecánica consérvase durante a caída.\nPaso 2: A enerxía potencial inicial transfórmase en enerxía cinética: $mgh = \\frac{1}{2}mv^2$.\nPaso 3: $v = \sqrt{2gh} = \sqrt{2 \\times 9.8 \\times 20} = \sqrt{392} \\approx 19.8\\text{ m/s}$.",
+                "hints": ["Conservación da enerxía mecánica: $mgh = \\frac{1}{2}mv^2$.", "$v = \sqrt{2gh} \\approx 19.8\\text{ m/s}$."],
                 "options": [
-                    "A enerxía mecánica consérvase e a velocidade xusto antes do impacto é de aprox $19.8\text{ m/s}$.",
-                    "A enerxía mecánica diminúe e a velocidade xusto antes do impacto é de aprox $9.8\text{ m/s}$.",
+                    "A enerxía mecánica consérvase e a velocidade xusto antes do impacto é de aprox $19.8\\text{ m/s}$.",
+                    "A enerxía mecánica diminúe e a velocidade xusto antes do impacto é de aprox $9.8\\text{ m/s}$.",
                     "Só se conserva a enerxía potencial e a enerxía cinética faise cero.",
                     "A gravidade varía co tempo polo que a velocidade non se pode calcular."
                 ]
             },
             "es": {
-                "prompt": "[{grade} Indagación Física (Avanzada)] Problema de mecánica que analiza {title}. Se deja caer libremente desde el reposo un objeto de masa $m = 1\text{ kg}$ desde una altura $h = 20\text{ m}$ ($g = 9.8\text{ m/s}^2$, sin fricción del aire). ¿Cuál de las siguientes afirmaciones sobre la conservación de la energía mecánica y la velocidad final $v$ es correcta?",
-                "explain": "Paso 1: Sin resistencia del aire, la energía mecánica se conserva durante la caída.\nPaso 2: La energía potencial inicial se transforma en cinética: $mgh = \frac{1}{2}mv^2$.\nPaso 3: $v = \sqrt{2gh} = \sqrt{2 \times 9.8 \times 20} = \sqrt{392} \approx 19.8\text{ m/s}$.",
-                "hints": ["Conservación de la energía mecánica: $mgh = \frac{1}{2}mv^2$.", "$v = \sqrt{2gh} \approx 19.8\text{ m/s}$."],
+                "prompt": "[{grade} Indagación Física (Avanzada)] Problema de mecánica que analiza {title}. Se deja caer libremente desde el reposo un objeto de masa $m = 1\\text{ kg}$ desde una altura $h = 20\\text{ m}$ ($g = 9.8\\text{ m/s}^2$, sin fricción del aire). ¿Cuál de las siguientes afirmaciones sobre la conservación de la energía mecánica y la velocidad final $v$ es correcta?",
+                "explain": "Paso 1: Sin resistencia del aire, la energía mecánica se conserva durante la caída.\nPaso 2: La energía potencial inicial se transforma en cinética: $mgh = \\frac{1}{2}mv^2$.\nPaso 3: $v = \sqrt{2gh} = \sqrt{2 \\times 9.8 \\times 20} = \sqrt{392} \\approx 19.8\\text{ m/s}$.",
+                "hints": ["Conservación de la energía mecánica: $mgh = \\frac{1}{2}mv^2$.", "$v = \sqrt{2gh} \\approx 19.8\\text{ m/s}$."],
                 "options": [
-                    "La energía mecánica se conserva y la rapidez justo antes del impacto es de aprox $19.8\text{ m/s}$.",
-                    "La energía mecánica disminuye y la rapidez justo antes del impacto es de aprox $9.8\text{ m/s}$.",
+                    "La energía mecánica se conserva y la rapidez justo antes del impacto es de aprox $19.8\\text{ m/s}$.",
+                    "La energía mecánica disminuye y la rapidez justo antes del impacto es de aprox $9.8\\text{ m/s}$.",
                     "Solo la energía potencial se conserva y la energía cinética es cero.",
                     "La gravedad varía con el tiempo, por lo que no es posible calcular la rapidez."
                 ]
             },
             "fr": {
-                "prompt": "[{grade} Enquête Physique (Avancée)] Problème de mécanique analysant {title}. Un objet de masse $m = 1\text{ kg}$ est lâché en chute libre sans vitesse initiale d'une hauteur $h = 20\text{ m}$ ($g = 9.8\text{ m/s}^2$, résistance de l'air négligée). Laquelle des affirmations suivantes est correcte ?",
-                "explain": "Étape 1 : Sans frottement de l'air, l'énergie mécanique est conservée au cours de la chute.\nÉtape 2 : L'énergie potentielle initiale se transforme en énergie cinétique : $mgh = \frac{1}{2}mv^2$.\nÉtape 3 : $v = \sqrt{2gh} = \sqrt{2 \times 9.8 \times 20} = \sqrt{392} \approx 19.8\text{ m/s}$.",
-                "hints": ["Conservation de l'énergie mécanique : $mgh = \frac{1}{2}mv^2$.", "$v = \sqrt{2gh} \approx 19.8\text{ m/s}$."],
+                "prompt": "[{grade} Enquête Physique (Avancée)] Problème de mécanique analysant {title}. Un objet de masse $m = 1\\text{ kg}$ est lâché en chute libre sans vitesse initiale d'une hauteur $h = 20\\text{ m}$ ($g = 9.8\\text{ m/s}^2$, résistance de l'air négligée). Laquelle des affirmations suivantes est correcte ?",
+                "explain": "Étape 1 : Sans frottement de l'air, l'énergie mécanique est conservée au cours de la chute.\nÉtape 2 : L'énergie potentielle initiale se transforme en énergie cinétique : $mgh = \\frac{1}{2}mv^2$.\nÉtape 3 : $v = \sqrt{2gh} = \sqrt{2 \\times 9.8 \\times 20} = \sqrt{392} \\approx 19.8\\text{ m/s}$.",
+                "hints": ["Conservation de l'énergie mécanique : $mgh = \\frac{1}{2}mv^2$.", "$v = \sqrt{2gh} \\approx 19.8\\text{ m/s}$."],
                 "options": [
-                    "L'énergie mécanique est conservée et la vitesse juste avant l'impact est d'environ $19.8\text{ m/s}$.",
-                    "L'énergie mécanique diminue et la vitesse juste avant l'impact est d'environ $9.8\text{ m/s}$.",
+                    "L'énergie mécanique est conservée et la vitesse juste avant l'impact est d'environ $19.8\\text{ m/s}$.",
+                    "L'énergie mécanique diminue et la vitesse juste avant l'impact est d'environ $9.8\\text{ m/s}$.",
                     "Seule l'énergie potentielle est conservée et l'énergie cinétique est nulle.",
                     "La gravité varie avec le temps, le calcul de vitesse est impossible."
                 ]
             },
             "de": {
-                "prompt": "[{grade} Physikalische Untersuchung (Vertiefung)] Mechanikaufgabe zur Analyse von {title}. Ein Körper der Masse $m = 1\text{ kg}$ fällt aus der Ruhe aus einer Höhe $h = 20\text{ m}$ im freien Fall herab ($g = 9.8\text{ m/s}^2$, Luftwiderstand vernachlässigt). Welche Aussage ist richtig?",
-                "explain": "Schritt 1: Ohne Luftwiderstand bleibt die mechanische Energie während des gesamten Falls konstant erhalten.\nSchritt 2: Die potentielle Energie wandelt sich in kinetische Energie um: $mgh = \frac{1}{2}mv^2$.\nSchritt 3: $v = \sqrt{2gh} = \sqrt{2 \times 9.8 \times 20} = \sqrt{392} \approx 19.8\text{ m/s}$.",
-                "hints": ["Erhaltung der mechanischen Energie: $mgh = \frac{1}{2}mv^2$.", "$v = \sqrt{2gh} \approx 19.8\text{ m/s}$."],
+                "prompt": "[{grade} Physikalische Untersuchung (Vertiefung)] Mechanikaufgabe zur Analyse von {title}. Ein Körper der Masse $m = 1\\text{ kg}$ fällt aus der Ruhe aus einer Höhe $h = 20\\text{ m}$ im freien Fall herab ($g = 9.8\\text{ m/s}^2$, Luftwiderstand vernachlässigt). Welche Aussage ist richtig?",
+                "explain": "Schritt 1: Ohne Luftwiderstand bleibt die mechanische Energie während des gesamten Falls konstant erhalten.\nSchritt 2: Die potentielle Energie wandelt sich in kinetische Energie um: $mgh = \\frac{1}{2}mv^2$.\nSchritt 3: $v = \sqrt{2gh} = \sqrt{2 \\times 9.8 \\times 20} = \sqrt{392} \\approx 19.8\\text{ m/s}$.",
+                "hints": ["Erhaltung der mechanischen Energie: $mgh = \\frac{1}{2}mv^2$.", "$v = \sqrt{2gh} \\approx 19.8\\text{ m/s}$."],
                 "options": [
-                    "Die mechanische Energie bleibt erhalten und die Geschwindigkeit vor dem Aufprall beträgt ca. $19.8\text{ m/s}$.",
-                    "Die mechanische Energie nimmt ab und die Geschwindigkeit beträgt ca. $9.8\text{ m/s}$.",
+                    "Die mechanische Energie bleibt erhalten und die Geschwindigkeit vor dem Aufprall beträgt ca. $19.8\\text{ m/s}$.",
+                    "Die mechanische Energie nimmt ab und die Geschwindigkeit beträgt ca. $9.8\\text{ m/s}$.",
                     "Nur die potentielle Energie bleibt erhalten, die kinetische Energie ist null.",
                     "Die Schwerkraft ändert sich zeitlich, Berechnung nicht möglich."
                 ]
             },
             "ru": {
-                "prompt": "[{grade} Физическое исследование (углубленное)] Задача по механике, анализирующая тему {title}. Тело массой $m = 1\text{ кг}$ свободно падает из состояния покоя с высоты $h = 20\text{ м}$ ($g = 9.8\text{ м/с}^2$, сопротивлением воздуха пренебречь). Какое утверждение верно?",
-                "explain": "Шаг 1: При отсутствии сопротивления воздуха механическая энергия сохраняется постоянной.\nШаг 2: Потенциальная энергия переходит в кинетическую: $mgh = \frac{1}{2}mv^2$.\nШаг 3: Скорость $v = \sqrt{2gh} = \sqrt{2 \times 9.8 \times 20} = \sqrt{392} \approx 19.8\text{ м/с}$.",
-                "hints": ["Закон сохранения механической энергии: $mgh = \frac{1}{2}mv^2$.", "$v = \sqrt{2gh} \approx 19.8\text{ м/с}$."],
+                "prompt": "[{grade} Физическое исследование (углубленное)] Задача по механике, анализирующая тему {title}. Тело массой $m = 1\\text{ кг}$ свободно падает из состояния покоя с высоты $h = 20\\text{ м}$ ($g = 9.8\\text{ м/с}^2$, сопротивлением воздуха пренебречь). Какое утверждение верно?",
+                "explain": "Шаг 1: При отсутствии сопротивления воздуха механическая энергия сохраняется постоянной.\nШаг 2: Потенциальная энергия переходит в кинетическую: $mgh = \\frac{1}{2}mv^2$.\nШаг 3: Скорость $v = \sqrt{2gh} = \sqrt{2 \\times 9.8 \\times 20} = \sqrt{392} \\approx 19.8\\text{ м/с}$.",
+                "hints": ["Закон сохранения механической энергии: $mgh = \\frac{1}{2}mv^2$.", "$v = \sqrt{2gh} \\approx 19.8\\text{ м/с}$."],
                 "options": [
-                    "Механическая энергия сохраняется, а скорость перед ударом о землю составляет около $19.8\text{ м/с}$.",
-                    "Механическая энергия уменьшается, скорость перед ударом около $9.8\text{ м/с}$.",
+                    "Механическая энергия сохраняется, а скорость перед ударом о землю составляет около $19.8\\text{ м/с}$.",
+                    "Механическая энергия уменьшается, скорость перед ударом около $9.8\\text{ м/с}$.",
                     "Сохраняется только потенциальная энергия, кинетическая равна нулю.",
                     "Ускорение свободного падения меняется со временем, скорость рассчитать нельзя."
                 ]
@@ -1209,149 +1219,205 @@ TEMPLATES = {
     "chemistry": {
         "Q1": {
             "ko": {
-                "prompt": "[{grade} 화학 탐구] {title}에 대한 사고력 문제입니다. $25^\circ\text{C}$, $1\text{ atm}$에서 기체 $1\text{ mol}$의 부피가 $24.5\text{ L}$일 때, 같은 온도와 압력에서 어떤 기체 $0.2\text{ mol}$의 부피는 몇 $\text{L}$인지 이상 기체 상태를 바탕으로 계산하십시오.",
-                "explain": "1단계: 아보가드로 법칙에 따라 일정한 온도와 압력에서 기체의 부피 $V$는 몰수 $n$에 비례합니다.\n2단계: 1몰당 부피가 $24.5\text{ L/mol}$이므로, $0.2\text{ mol}$의 부피는 $V = 0.2\text{ mol} \times 24.5\text{ L/mol}$입니다.\n3단계: 계산하면 $V = 4.90\text{ L}$입니다.",
-                "hints": ["아보가드로 법칙에 따라 같은 온도와 압력에서 기체의 부피는 몰수에 정비례합니다.", "$V = n \times V_m$을 계산합니다."],
-                "options": ["$2.45\text{ L}$", "$4.90\text{ L}$", "$9.80\text{ L}$", "$12.25\text{ L}$"]
+                "prompt": "[{grade} 화학 탐구] {title}에 대한 사고력 문제입니다. $25^\\circ\\text{C}$, $1\\text{ atm}$에서 기체 $1\\text{ mol}$의 부피가 $24.5\\text{ L}$일 때, 같은 온도와 압력에서 어떤 기체 $0.2\\text{ mol}$의 부피는 몇 $\\text{L}$인지 이상 기체 상태를 바탕으로 계산하십시오.",
+                "explain": "1단계: 아보가드로 법칙에 따라 일정한 온도와 압력에서 기체의 부피 $V$는 몰수 $n$에 비례합니다.\n2단계: 1몰당 부피가 $24.5\\text{ L/mol}$이므로, $0.2\\text{ mol}$의 부피는 $V = 0.2\\text{ mol} \\times 24.5\\text{ L/mol}$입니다.\n3단계: 계산하면 $V = 4.90\\text{ L}$입니다.",
+                "hints": ["아보가드로 법칙에 따라 같은 온도와 압력에서 기체의 부피는 몰수에 정비례합니다.", "$V = n \\times V_m$을 계산합니다."],
+                "options": ["$2.45\\text{ L}$", "$4.90\\text{ L}$", "$9.80\\text{ L}$", "$12.25\\text{ L}$"]
             },
             "en": {
-                "prompt": "[{grade} Chemistry Inquiry] Inquiry problem on {title}. At $25^\circ\text{C}$ and $1\text{ atm}$, the molar volume of a gas is $24.5\text{ L/mol}$. Under the same conditions, what is the volume in $\text{L}$ of $0.2\text{ mol}$ of this gas?",
-                "explain": "Step 1: By Avogadro's law, gas volume $V$ is directly proportional to moles $n$.\nStep 2: $V = n \times V_m = 0.2\text{ mol} \times 24.5\text{ L/mol}$.\nStep 3: Calculating yields $V = 4.90\text{ L}$.",
-                "hints": ["Under constant T and P, gas volume is directly proportional to moles.", "Calculate $V = n \times V_m$."],
-                "options": ["$2.45\text{ L}$", "$4.90\text{ L}$", "$9.80\text{ L}$", "$12.25\text{ L}$"]
+                "prompt": "[{grade} Chemistry Inquiry] Inquiry problem on {title}. At $25^\\circ\\text{C}$ and $1\\text{ atm}$, the molar volume of a gas is $24.5\\text{ L/mol}$. Under the same conditions, what is the volume in $\\text{L}$ of $0.2\\text{ mol}$ of this gas?",
+                "explain": "Step 1: By Avogadro's law, gas volume $V$ is directly proportional to moles $n$.\nStep 2: $V = n \\times V_m = 0.2\\text{ mol} \\times 24.5\\text{ L/mol}$.\nStep 3: Calculating yields $V = 4.90\\text{ L}$.",
+                "hints": ["Under constant T and P, gas volume is directly proportional to moles.", "Calculate $V = n \\times V_m$."],
+                "options": ["$2.45\\text{ L}$", "$4.90\\text{ L}$", "$9.80\\text{ L}$", "$12.25\\text{ L}$"]
             },
             "vi": {
-                "prompt": "[{grade} Khám phá Hóa học] Bài toán tư duy về {title}. Ở $25^\circ\text{C}$ và $1\text{ atm}$, thể tích của $1\text{ mol}$ khí là $24.5\text{ L}$. Ở cùng điều kiện nhiệt độ và áp suất, thể tích của $0.2\text{ mol}$ chất khí này là bao nhiêu $\text{L}$?",
-                "explain": "Bước 1: Theo định luật Avogadro, ở cùng nhiệt độ và áp suất, thể tích khí $V$ tỉ lệ thuận với số mol $n$.\nBước 2: Với thể tích mol là $24.5\text{ L/mol}$, thể tích của $0.2\text{ mol}$ là $V = 0.2\text{ mol} \times 24.5\text{ L/mol}$.\nBước 3: Tính toán cho kết quả $V = 4.90\text{ L}$.",
-                "hints": ["Theo định luật Avogadro, thể tích khí tỉ lệ thuận với số mol.", "Tính $V = n \times V_m$."],
-                "options": ["$2.45\text{ L}$", "$4.90\text{ L}$", "$9.80\text{ L}$", "$12.25\text{ L}$"]
+                "prompt": "[{grade} Khám phá Hóa học] Bài toán tư duy về {title}. Ở $25^\\circ\\text{C}$ và $1\\text{ atm}$, thể tích của $1\\text{ mol}$ khí là $24.5\\text{ L}$. Ở cùng điều kiện nhiệt độ và áp suất, thể tích của $0.2\\text{ mol}$ chất khí này là bao nhiêu $\\text{L}$?",
+                "explain": "Bước 1: Theo định luật Avogadro, ở cùng nhiệt độ và áp suất, thể tích khí $V$ tỉ lệ thuận với số mol $n$.\nBước 2: Với thể tích mol là $24.5\\text{ L/mol}$, thể tích của $0.2\\text{ mol}$ là $V = 0.2\\text{ mol} \\times 24.5\\text{ L/mol}$.\nBước 3: Tính toán cho kết quả $V = 4.90\\text{ L}$.",
+                "hints": ["Theo định luật Avogadro, thể tích khí tỉ lệ thuận với số mol.", "Tính $V = n \\times V_m$."],
+                "options": ["$2.45\\text{ L}$", "$4.90\\text{ L}$", "$9.80\\text{ L}$", "$12.25\\text{ L}$"]
             },
             "zh-Hans": {
-                "prompt": "[{grade} 化学探究] 关于 {title} 的探究问题。在 $25^\circ\text{C}$ 和 $1\text{ atm}$ 条件下，$1\text{ mol}$ 气体的摩尔体积为 $24.5\text{ L}$。在同温同压下，某气体 $0.2\text{ mol}$ 的体积是多少 $\text{L}$？",
-                "explain": "步骤 1: 根据阿伏伽德罗定律，在同温同压下，气体的体积 $V$ 与物质的量 $n$ 成正比。\n步骤 2: 体积 $V = n \times V_m = 0.2\text{ mol} \times 24.5\text{ L/mol}$。\n步骤 3: 计算得出 $V = 4.90\text{ L}$。",
-                "hints": ["在同温同压下，气体体积与物质的量成正比。", "计算 $V = n \times V_m$。"],
-                "options": ["$2.45\text{ L}$", "$4.90\text{ L}$", "$9.80\text{ L}$", "$12.25\text{ L}$"]
+                "prompt": "[{grade} 化学探究] 关于 {title} 的探究问题。在 $25^\\circ\\text{C}$ 和 $1\\text{ atm}$ 条件下，$1\\text{ mol}$ 气体的摩尔体积为 $24.5\\text{ L}$。在同温同压下，某气体 $0.2\\text{ mol}$ 的体积是多少 $\\text{L}$？",
+                "explain": "步骤 1: 根据阿伏伽德罗定律，在同温同压下，气体的体积 $V$ 与物质的量 $n$ 成正比。\n步骤 2: 体积 $V = n \\times V_m = 0.2\\text{ mol} \\times 24.5\\text{ L/mol}$。\n步骤 3: 计算得出 $V = 4.90\\text{ L}$。",
+                "hints": ["在同温同压下，气体体积与物质的量成正比。", "计算 $V = n \\times V_m$。"],
+                "options": ["$2.45\\text{ L}$", "$4.90\\text{ L}$", "$9.80\\text{ L}$", "$12.25\\text{ L}$"]
             },
             "zh-Hant": {
-                "prompt": "[{grade} 化學探究] 關於 {title} 的探究問題。在 $25^\circ\text{C}$ 與 $1\text{ atm}$ 條件下，$1\text{ mol}$ 氣體的莫耳體積為 $24.5\text{ L}$。在同溫同壓下，某氣體 $0.2\text{ mol}$ 的體積是多少 $\text{L}$？",
-                "explain": "步驟 1: 根據亞佛加厥定律，在同溫同壓下，氣體的體積 $V$ 與物質的量 $n$ 成正比。\n步驟 2: 體積 $V = n \times V_m = 0.2\text{ mol} \times 24.5\text{ L/mol}$。\n步驟 3: 計算得出 $V = 4.90\text{ L}$。",
-                "hints": ["在同溫同壓下，氣體體積與莫耳數成正比。", "計算 $V = n \times V_m$。"],
-                "options": ["$2.45\text{ L}$", "$4.90\text{ L}$", "$9.80\text{ L}$", "$12.25\text{ L}$"]
+                "prompt": "[{grade} 化學探究] 關於 {title} 的探究問題。在 $25^\\circ\\text{C}$ 與 $1\\text{ atm}$ 條件下，$1\\text{ mol}$ 氣體的莫耳體積為 $24.5\\text{ L}$。在同溫同壓下，某氣體 $0.2\\text{ mol}$ 的體積是多少 $\\text{L}$？",
+                "explain": "步驟 1: 根據亞佛加厥定律，在同溫同壓下，氣體的體積 $V$ 與物質的量 $n$ 成正比。\n步驟 2: 體積 $V = n \\times V_m = 0.2\\text{ mol} \\times 24.5\\text{ L/mol}$。\n步驟 3: 計算得出 $V = 4.90\\text{ L}$。",
+                "hints": ["在同溫同壓下，氣體體積與莫耳數成正比。", "計算 $V = n \\times V_m$。"],
+                "options": ["$2.45\\text{ L}$", "$4.90\\text{ L}$", "$9.80\\text{ L}$", "$12.25\\text{ L}$"]
             },
             "ja": {
-                "prompt": "[{grade} 化学探究] {title} に関する探究課題です。$25^\circ\text{C}, 1\text{ atm}$ において気体 $1\text{ mol}$ の体積が $24.5\text{ L}$ であるとき、同温同圧で気体 $0.2\text{ mol}$ の体積は何 $\text{L}$ ですか？",
-                "explain": "ステップ 1: アボガドロの法則により、同温同圧において気体の体積 $V$ は物質量 $n$ に比例します。\nステップ 2: 体積は $V = n \times V_m = 0.2\text{ mol} \times 24.5\text{ L/mol}$ です。\nステップ 3: 計算すると $V = 4.90\text{ L}$ となります。",
-                "hints": ["アボガドロの法則により、気体の体積はモル数に比例します。", "$V = n \times V_m$ を計算します。"],
-                "options": ["$2.45\text{ L}$", "$4.90\text{ L}$", "$9.80\text{ L}$", "$12.25\text{ L}$"]
+                "prompt": "[{grade} 化学探究] {title} に関する探究課題です。$25^\\circ\\text{C}, 1\\text{ atm}$ において気体 $1\\text{ mol}$ の体積が $24.5\\text{ L}$ であるとき、同温同圧で気体 $0.2\\text{ mol}$ の体積は何 $\\text{L}$ ですか？",
+                "explain": "ステップ 1: アボガドロの法則により、同温同圧において気体の体積 $V$ は物質量 $n$ に比例します。\nステップ 2: 体積は $V = n \\times V_m = 0.2\\text{ mol} \\times 24.5\\text{ L/mol}$ です。\nステップ 3: 計算すると $V = 4.90\\text{ L}$ となります。",
+                "hints": ["アボガドロの法則により、気体の体積はモル数に比例します。", "$V = n \\times V_m$ を計算します。"],
+                "options": ["$2.45\\text{ L}$", "$4.90\\text{ L}$", "$9.80\\text{ L}$", "$12.25\\text{ L}$"]
             },
             "gl": {
-                "prompt": "[{grade} Investigación de Química] Problema de razoamento sobre {title}. A $25^\circ\text{C}$ e $1\text{ atm}$, o volume molar dun gas é de $24.5\text{ L/mol}$. En idénticas condicións, que volume en $\text{L}$ ocuparán $0.2\text{ mol}$ dese gas?",
-                "explain": "Paso 1: Segundo a lei de Avogadro, o volume $V$ é directamente proporcional ao número de moles $n$.\nPaso 2: $V = n \times V_m = 0.2\text{ mol} \times 24.5\text{ L/mol}$.\nPaso 3: Calculando obtemos $V = 4.90\text{ L}$.",
-                "hints": ["A volume e temperatura constantes, o volume é proporcional aos moles.", "Calcula $V = n \times V_m$."],
-                "options": ["$2.45\text{ L}$", "$4.90\text{ L}$", "$9.80\text{ L}$", "$12.25\text{ L}$"]
+                "prompt": "[{grade} Investigación de Química] Problema de razoamento sobre {title}. A $25^\\circ\\text{C}$ e $1\\text{ atm}$, o volume molar dun gas é de $24.5\\text{ L/mol}$. En idénticas condicións, que volume en $\\text{L}$ ocuparán $0.2\\text{ mol}$ dese gas?",
+                "explain": "Paso 1: Segundo a lei de Avogadro, o volume $V$ é directamente proporcional ao número de moles $n$.\nPaso 2: $V = n \\times V_m = 0.2\\text{ mol} \\times 24.5\\text{ L/mol}$.\nPaso 3: Calculando obtemos $V = 4.90\\text{ L}$.",
+                "hints": ["A volume e temperatura constantes, o volume é proporcional aos moles.", "Calcula $V = n \\times V_m$."],
+                "options": ["$2.45\\text{ L}$", "$4.90\\text{ L}$", "$9.80\\text{ L}$", "$12.25\\text{ L}$"]
             },
             "es": {
-                "prompt": "[{grade} Indagación Química] Problema de razonamiento sobre {title}. A $25^\circ\text{C}$ y $1\text{ atm}$, el volumen molar de un gas es $24.5\text{ L/mol}$. Bajo las mismas condiciones, ¿cuál es el volumen en $\text{L}$ de $0.2\text{ mol}$ de dicho gas?",
-                "explain": "Paso 1: Por la ley de Avogadro, el volumen $V$ es directamente proporcional a los moles $n$.\nPaso 2: $V = n \times V_m = 0.2\text{ mol} \times 24.5\text{ L/mol}$.\nPaso 3: Calculando se obtiene $V = 4.90\text{ L}$.",
-                "hints": ["A temperatura y presión constantes, el volumen es proporcional a los moles.", "Calcula $V = n \times V_m$."],
-                "options": ["$2.45\text{ L}$", "$4.90\text{ L}$", "$9.80\text{ L}$", "$12.25\text{ L}$"]
+                "prompt": "[{grade} Indagación Química] Problema de razonamiento sobre {title}. A $25^\\circ\\text{C}$ y $1\\text{ atm}$, el volumen molar de un gas es $24.5\\text{ L/mol}$. Bajo las mismas condiciones, ¿cuál es el volumen en $\\text{L}$ de $0.2\\text{ mol}$ de dicho gas?",
+                "explain": "Paso 1: Por la ley de Avogadro, el volumen $V$ es directamente proporcional a los moles $n$.\nPaso 2: $V = n \\times V_m = 0.2\\text{ mol} \\times 24.5\\text{ L/mol}$.\nPaso 3: Calculando se obtiene $V = 4.90\\text{ L}$.",
+                "hints": ["A temperatura y presión constantes, el volumen es proporcional a los moles.", "Calcula $V = n \\times V_m$."],
+                "options": ["$2.45\\text{ L}$", "$4.90\\text{ L}$", "$9.80\\text{ L}$", "$12.25\\text{ L}$"]
             },
             "fr": {
-                "prompt": "[{grade} Enquête Chimique] Problème sur {title}. À $25^\circ\text{C}$ et $1\text{ atm}$, le volume molaire d'un gaz est de $24.5\text{ L/mol}$. Dans les mêmes conditions, quel est le volume en $\text{L}$ de $0.2\text{ mol}$ de ce gaz ?",
-                "explain": "Étape 1 : Selon la loi d'Avogadro, le volume $V$ est proportionnel à la quantité de matière $n$.\nÉtape 2 : $V = n \times V_m = 0.2\text{ mol} \times 24.5\text{ L/mol}$.\nÉtape 3 : On obtient $V = 4.90\text{ L}$.",
-                "hints": ["À température et pression constantes, le volume est proportionnel aux moles.", "Calculez $V = n \times V_m$."],
-                "options": ["$2.45\text{ L}$", "$4.90\text{ L}$", "$9.80\text{ L}$", "$12.25\text{ L}$"]
+                "prompt": "[{grade} Enquête Chimique] Problème sur {title}. À $25^\\circ\\text{C}$ et $1\\text{ atm}$, le volume molaire d'un gaz est de $24.5\\text{ L/mol}$. Dans les mêmes conditions, quel est le volume en $\\text{L}$ de $0.2\\text{ mol}$ de ce gaz ?",
+                "explain": "Étape 1 : Selon la loi d'Avogadro, le volume $V$ est proportionnel à la quantité de matière $n$.\nÉtape 2 : $V = n \\times V_m = 0.2\\text{ mol} \\times 24.5\\text{ L/mol}$.\nÉtape 3 : On obtient $V = 4.90\\text{ L}$.",
+                "hints": ["À température et pression constantes, le volume est proportionnel aux moles.", "Calculez $V = n \\times V_m$."],
+                "options": ["$2.45\\text{ L}$", "$4.90\\text{ L}$", "$9.80\\text{ L}$", "$12.25\\text{ L}$"]
             },
             "de": {
-                "prompt": "[{grade} Chemische Untersuchung] Aufgabe zu {title}. Bei $25^\circ\text{C}$ und $1\text{ atm}$ beträgt das molare Volumen eines Gases $24.5\text{ L/mol}$. Welches Volumen in $\text{L}$ nehmen unter denselben Bedingungen $0.2\text{ mol}$ dieses Gases ein?",
-                "explain": "Schritt 1: Nach dem Gesetz von Avogadro ist das Gasvolumen $V$ proportional zur Stoffmenge $n$.\nSchritt 2: $V = n \times V_m = 0.2\text{ mol} \times 24.5\text{ L/mol}$.\nSchritt 3: Die Rechnung ergibt $V = 4.90\text{ L}$.",
-                "hints": ["Bei konstantem T und P ist das Volumen proportional zur Molzahl.", "Berechne $V = n \times V_m$."],
-                "options": ["$2.45\text{ L}$", "$4.90\text{ L}$", "$9.80\text{ L}$", "$12.25\text{ L}$"]
+                "prompt": "[{grade} Chemische Untersuchung] Aufgabe zu {title}. Bei $25^\\circ\\text{C}$ und $1\\text{ atm}$ beträgt das molare Volumen eines Gases $24.5\\text{ L/mol}$. Welches Volumen in $\\text{L}$ nehmen unter denselben Bedingungen $0.2\\text{ mol}$ dieses Gases ein?",
+                "explain": "Schritt 1: Nach dem Gesetz von Avogadro ist das Gasvolumen $V$ proportional zur Stoffmenge $n$.\nSchritt 2: $V = n \\times V_m = 0.2\\text{ mol} \\times 24.5\\text{ L/mol}$.\nSchritt 3: Die Rechnung ergibt $V = 4.90\\text{ L}$.",
+                "hints": ["Bei konstantem T und P ist das Volumen proportional zur Molzahl.", "Berechne $V = n \\times V_m$."],
+                "options": ["$2.45\\text{ L}$", "$4.90\\text{ L}$", "$9.80\\text{ L}$", "$12.25\\text{ L}$"]
             },
             "ru": {
-                "prompt": "[{grade} Химическое исследование] Задача на тему {title}. При $25^\circ\text{C}$ и $1\text{ атм}$ молярный объем газа равен $24.5\text{ л/моль}$. При тех же условиях какой объем в $\text{л}$ займут $0.2\text{ моль}$ этого газа?",
-                "explain": "Шаг 1: По закону Авогадро объем газа $V$ прямо пропорционален числу молей $n$.\nШаг 2: $V = n \times V_m = 0.2\text{ моль} \times 24.5\text{ л/моль}$.\nШаг 3: Вычисляем: $V = 4.90\text{ л}$.",
-                "hints": ["При постоянных T и P объем газа пропорционален числу молей.", "Вычислите $V = n \times V_m$."],
-                "options": ["$2.45\text{ л}$", "$4.90\text{ л}$", "$9.80\text{ л}$", "$12.25\text{ л}$"]
+                "prompt": "[{grade} Химическое исследование] Задача на тему {title}. При $25^\\circ\\text{C}$ и $1\\text{ атм}$ молярный объем газа равен $24.5\\text{ л/моль}$. При тех же условиях какой объем в $\\text{л}$ займут $0.2\\text{ моль}$ этого газа?",
+                "explain": "Шаг 1: По закону Авогадро объем газа $V$ прямо пропорционален числу молей $n$.\nШаг 2: $V = n \\times V_m = 0.2\\text{ моль} \\times 24.5\\text{ л/моль}$.\nШаг 3: Вычисляем: $V = 4.90\\text{ л}$.",
+                "hints": ["При постоянных T и P объем газа пропорционален числу молей.", "Вычислите $V = n \\times V_m$."],
+                "options": ["$2.45\\text{ л}$", "$4.90\\text{ л}$", "$9.80\\text{ л}$", "$12.25\\text{ л}$"]
             }
         },
         "Q2": {
             "ko": {
-                "prompt": "[{grade} 화학 탐구 (심화·응용)] {title}의 원리를 분석하는 정량 분석 문제입니다. 수용액에서 수소 이온 농도 $[\text{H}^+] = 1.0 \times 10^{-3}\text{ M}$인 산성 용액 $A$와 $[\text{H}^+] = 1.0 \times 10^{-5}\text{ M}$인 산성 용액 $B$가 있습니다. 용액 $A$의 수소 이온 농도는 용액 $B$의 수소 이온 농도의 몇 배입니까?",
-                "explain": "1단계: 용액 $A$의 수소 이온 농도는 $10^{-3}\text{ M}$이고, 용액 $B$는 $10^{-5}\text{ M}$입니다.\n2단계: 비를 구하면 $\frac{1.0 \times 10^{-3}}{1.0 \times 10^{-5}} = 10^{-3 - (-5)} = 10^2 = 100$입니다.\n3단계: 따라서 용액 $A$는 용액 $B$보다 수소 이온 농도가 100배 높습니다.",
-                "hints": ["두 수소 이온 농도의 비 $\frac{[\text{H}^+]_A}{[\text{H}^+]_B}$를 구합니다.", "지수법칙: $\frac{10^{-3}}{10^{-5}} = 10^{-3 - (-5)} = 10^2 = 100$입니다."],
-                "options": ["$10\text{배}$", "$100\text{배}$", "$1000\text{배}$", "$0.01\text{배}$"]
+                "prompt": "[{grade} 화학 탐구 (심화·응용)] {title}의 원리를 분석하는 정량 분석 문제입니다. 수용액에서 수소 이온 농도 $[\\text{H}^+] = 1.0 \\times 10^{-3}\\text{ M}$인 산성 용액 $A$와 $[\\text{H}^+] = 1.0 \\times 10^{-5}\\text{ M}$인 산성 용액 $B$가 있습니다. 용액 $A$의 수소 이온 농도는 용액 $B$의 수소 이온 농도의 몇 배입니까?",
+                "explain": "1단계: 용액 $A$의 수소 이온 농도는 $10^{-3}\\text{ M}$이고, 용액 $B$는 $10^{-5}\\text{ M}$입니다.\n2단계: 비를 구하면 $\\frac{1.0 \\times 10^{-3}}{1.0 \\times 10^{-5}} = 10^{-3 - (-5)} = 10^2 = 100$입니다.\n3단계: 따라서 용액 $A$는 용액 $B$보다 수소 이온 농도가 100배 높습니다.",
+                "hints": ["두 수소 이온 농도의 비 $\\frac{[\\text{H}^+]_A}{[\\text{H}^+]_B}$를 구합니다.", "지수법칙: $\\frac{10^{-3}}{10^{-5}} = 10^{-3 - (-5)} = 10^2 = 100$입니다."],
+                "options": ["$10\\text{배}$", "$100\\text{배}$", "$1000\\text{배}$", "$0.01\\text{배}$"]
             },
             "en": {
-                "prompt": "[{grade} Chemistry Inquiry (Advanced)] Quantitative analysis problem on {title}. Acidic solution $A$ has $[\text{H}^+] = 1.0 \times 10^{-3}\text{ M}$ and solution $B$ has $[\text{H}^+] = 1.0 \times 10^{-5}\text{ M}$. How many times greater is the hydrogen ion concentration of $A$ than $B$?",
-                "explain": "Step 1: $[\text{H}^+]_A = 10^{-3}\text{ M}$, $[\text{H}^+]_B = 10^{-5}\text{ M}$.\nStep 2: $\frac{1.0 \times 10^{-3}}{1.0 \times 10^{-5}} = 10^{-3 - (-5)} = 10^2 = 100$.\nStep 3: Solution $A$ has 100 times higher $[\text{H}^+]$ than solution $B$.",
-                "hints": ["Calculate ratio $\frac{[\text{H}^+]_A}{[\text{H}^+]_B}$.", "Exponent rules: $10^{-3} / 10^{-5} = 10^2 = 100$."],
-                "options": ["$10\text{ times}$", "$100\text{ times}$", "$1000\text{ times}$", "$0.01\text{ times}$"]
+                "prompt": "[{grade} Chemistry Inquiry (Advanced)] Quantitative analysis problem on {title}. Acidic solution $A$ has $[\\text{H}^+] = 1.0 \\times 10^{-3}\\text{ M}$ and solution $B$ has $[\\text{H}^+] = 1.0 \\times 10^{-5}\\text{ M}$. How many times greater is the hydrogen ion concentration of $A$ than $B$?",
+                "explain": "Step 1: $[\\text{H}^+]_A = 10^{-3}\\text{ M}$, $[\\text{H}^+]_B = 10^{-5}\\text{ M}$.\nStep 2: $\\frac{1.0 \\times 10^{-3}}{1.0 \\times 10^{-5}} = 10^{-3 - (-5)} = 10^2 = 100$.\nStep 3: Solution $A$ has 100 times higher $[\\text{H}^+]$ than solution $B$.",
+                "hints": ["Calculate ratio $\\frac{[\\text{H}^+]_A}{[\\text{H}^+]_B}$.", "Exponent rules: $10^{-3} / 10^{-5} = 10^2 = 100$."],
+                "options": ["$10\\text{ times}$", "$100\\text{ times}$", "$1000\\text{ times}$", "$0.01\\text{ times}$"]
             },
             "vi": {
-                "prompt": "[{grade} Khám phá Hóa học (Nâng cao)] Bài toán định lượng phân tích nguyên lý {title}. Dung dịch axit $A$ có $[\text{H}^+] = 1.0 \times 10^{-3}\text{ M}$ và dung dịch $B$ có $[\text{H}^+] = 1.0 \times 10^{-5}\text{ M}$. Nồng độ ion hydro của dung dịch $A$ gấp bao nhiêu lần nồng độ của dung dịch $B$?",
-                "explain": "Bước 1: Nồng độ ion $\text{H}^+$ của $A$ là $10^{-3}\text{ M}$, của $B$ là $10^{-5}\text{ M}$.\nBước 2: Lập tỉ lệ: $\frac{1.0 \times 10^{-3}}{1.0 \times 10^{-5}} = 10^{-3 - (-5)} = 10^2 = 100$.\nBước 3: Do đó nồng độ của dung dịch $A$ gấp 100 lần dung dịch $B$.",
-                "hints": ["Tính tỉ số $\frac{[\text{H}^+]_A}{[\text{H}^+]_B}$.", "Quy tắc lũy thừa: $10^{-3} / 10^{-5} = 10^2 = 100$."],
-                "options": ["$10\text{ lần}$", "$100\text{ lần}$", "$1000\text{ lần}$", "$0.01\text{ lần}$"]
+                "prompt": "[{grade} Khám phá Hóa học (Nâng cao)] Bài toán định lượng phân tích nguyên lý {title}. Dung dịch axit $A$ có $[\\text{H}^+] = 1.0 \\times 10^{-3}\\text{ M}$ và dung dịch $B$ có $[\\text{H}^+] = 1.0 \\times 10^{-5}\\text{ M}$. Nồng độ ion hydro của dung dịch $A$ gấp bao nhiêu lần nồng độ của dung dịch $B$?",
+                "explain": "Bước 1: Nồng độ ion $\\text{H}^+$ của $A$ là $10^{-3}\\text{ M}$, của $B$ là $10^{-5}\\text{ M}$.\nBước 2: Lập tỉ lệ: $\\frac{1.0 \\times 10^{-3}}{1.0 \\times 10^{-5}} = 10^{-3 - (-5)} = 10^2 = 100$.\nBước 3: Do đó nồng độ của dung dịch $A$ gấp 100 lần dung dịch $B$.",
+                "hints": ["Tính tỉ số $\\frac{[\\text{H}^+]_A}{[\\text{H}^+]_B}$.", "Quy tắc lũy thừa: $10^{-3} / 10^{-5} = 10^2 = 100$."],
+                "options": ["$10\\text{ lần}$", "$100\\text{ lần}$", "$1000\\text{ lần}$", "$0.01\\text{ lần}$"]
             },
             "zh-Hans": {
-                "prompt": "[{grade} 化学探究 (进阶)] 定量分析 {title} 的探究问题。酸性溶液 $A$ 的 $[\text{H}^+] = 1.0 \times 10^{-3}\text{ M}$，溶液 $B$ 的 $[\text{H}^+] = 1.0 \times 10^{-5}\text{ M}$。溶液 $A$ 的氢离子浓度是溶液 $B$ 的多少倍？",
-                "explain": "步骤 1: 溶液 $A$ 的氢离子浓度为 $10^{-3}\text{ M}$，溶液 $B$ 为 $10^{-5}\text{ M}$。\n步骤 2: 计算比值: $\frac{1.0 \times 10^{-3}}{1.0 \times 10^{-5}} = 10^{-3 - (-5)} = 10^2 = 100$。\n步骤 3: 溶液 $A$ 的氢离子浓度是溶液 $B$ 的 100 倍。",
-                "hints": ["求两个浓度的比值 $\frac{[\text{H}^+]_A}{[\text{H}^+]_B}$。", "指数运算法则: $10^{-3} / 10^{-5} = 10^2 = 100$。"],
-                "options": ["$10\text{倍}$", "$100\text{倍}$", "$1000\text{倍}$", "$0.01\text{倍}$"]
+                "prompt": "[{grade} 化学探究 (进阶)] 定量分析 {title} 的探究问题。酸性溶液 $A$ 的 $[\\text{H}^+] = 1.0 \\times 10^{-3}\\text{ M}$，溶液 $B$ 的 $[\\text{H}^+] = 1.0 \\times 10^{-5}\\text{ M}$。溶液 $A$ 的氢离子浓度是溶液 $B$ 的多少倍？",
+                "explain": "步骤 1: 溶液 $A$ 的氢离子浓度为 $10^{-3}\\text{ M}$，溶液 $B$ 为 $10^{-5}\\text{ M}$。\n步骤 2: 计算比值: $\\frac{1.0 \\times 10^{-3}}{1.0 \\times 10^{-5}} = 10^{-3 - (-5)} = 10^2 = 100$。\n步骤 3: 溶液 $A$ 的氢离子浓度是溶液 $B$ 的 100 倍。",
+                "hints": ["求两个浓度的比值 $\\frac{[\\text{H}^+]_A}{[\\text{H}^+]_B}$。", "指数运算法则: $10^{-3} / 10^{-5} = 10^2 = 100$。"],
+                "options": ["$10\\text{倍}$", "$100\\text{倍}$", "$1000\\text{倍}$", "$0.01\\text{倍}$"]
             },
             "zh-Hant": {
-                "prompt": "[{grade} 化學探究 (進階)] 定量分析 {title} 的探究問題。酸性溶液 $A$ 的 $[\text{H}^+] = 1.0 \times 10^{-3}\text{ M}$，溶液 $B$ 的 $[\text{H}^+] = 1.0 \times 10^{-5}\text{ M}$。溶液 $A$ 的氫離子濃度是溶液 $B$ 的多少倍？",
-                "explain": "步驟 1: 溶液 $A$ 的氫離子濃度為 $10^{-3}\text{ M}$，溶液 $B$ 為 $10^{-5}\text{ M}$。\n步驟 2: 計算比值: $\frac{1.0 \times 10^{-3}}{1.0 \times 10^{-5}} = 10^{-3 - (-5)} = 10^2 = 100$。\n步驟 3: 溶液 $A$ 的氫離子濃度是溶液 $B$ 的 100 倍。",
-                "hints": ["求兩濃度之比值 $\frac{[\text{H}^+]_A}{[\text{H}^+]_B}$。", "指數計算法則: $10^{-3} / 10^{-5} = 10^2 = 100$。"],
-                "options": ["$10\text{倍}$", "$100\text{倍}$", "$1000\text{倍}$", "$0.01\text{倍}$"]
+                "prompt": "[{grade} 化學探究 (進階)] 定量分析 {title} 的探究問題。酸性溶液 $A$ 的 $[\\text{H}^+] = 1.0 \\times 10^{-3}\\text{ M}$，溶液 $B$ 的 $[\\text{H}^+] = 1.0 \\times 10^{-5}\\text{ M}$。溶液 $A$ 的氫離子濃度是溶液 $B$ 的多少倍？",
+                "explain": "步驟 1: 溶液 $A$ 的氫離子濃度為 $10^{-3}\\text{ M}$，溶液 $B$ 為 $10^{-5}\\text{ M}$。\n步驟 2: 計算比值: $\\frac{1.0 \\times 10^{-3}}{1.0 \\times 10^{-5}} = 10^{-3 - (-5)} = 10^2 = 100$。\n步驟 3: 溶液 $A$ 的氫離子濃度是溶液 $B$ 的 100 倍。",
+                "hints": ["求兩濃度之比值 $\\frac{[\\text{H}^+]_A}{[\\text{H}^+]_B}$。", "指數計算法則: $10^{-3} / 10^{-5} = 10^2 = 100$。"],
+                "options": ["$10\\text{倍}$", "$100\\text{倍}$", "$1000\\text{倍}$", "$0.01\\text{倍}$"]
             },
             "ja": {
-                "prompt": "[{grade} 化学探究 (発展)] {title} を定量的に分析する探究課題です。酸性水溶液 $A$ の水素イオン濃度 $[\text{H}^+] = 1.0 \times 10^{-3}\text{ M}$、水溶液 $B$ の $[\text{H}^+] = 1.0 \times 10^{-5}\text{ M}$ です。水溶液 $A$ の水素イオン濃度は水溶液 $B$ の何倍ですか？",
-                "explain": "ステップ 1: 水溶液 $A$ は $10^{-3}\text{ M}$、水溶液 $B$ は $10^{-5}\text{ M}$ です。\nステップ 2: 比を求めると $\frac{1.0 \times 10^{-3}}{1.0 \times 10^{-5}} = 10^{-3 - (-5)} = 10^2 = 100$ です。\nステップ 3: したがって、水溶液 $A$ は水溶液 $B$ の 100 倍です。",
-                "hints": ["比 $\frac{[\text{H}^+]_A}{[\text{H}^+]_B}$ を計算します。", "指数法則: $10^{-3} / 10^{-5} = 10^2 = 100$ です。"],
-                "options": ["$10\text{倍}$", "$100\text{倍}$", "$1000\text{倍}$", "$0.01\text{倍}$"]
+                "prompt": "[{grade} 化学探究 (発展)] {title} を定量的に分析する探究課題です。酸性水溶液 $A$ の水素イオン濃度 $[\\text{H}^+] = 1.0 \\times 10^{-3}\\text{ M}$、水溶液 $B$ の $[\\text{H}^+] = 1.0 \\times 10^{-5}\\text{ M}$ です。水溶液 $A$ の水素イオン濃度は水溶液 $B$ の何倍ですか？",
+                "explain": "ステップ 1: 水溶液 $A$ は $10^{-3}\\text{ M}$、水溶液 $B$ は $10^{-5}\\text{ M}$ です。\nステップ 2: 比を求めると $\\frac{1.0 \\times 10^{-3}}{1.0 \\times 10^{-5}} = 10^{-3 - (-5)} = 10^2 = 100$ です。\nステップ 3: したがって、水溶液 $A$ は水溶液 $B$ の 100 倍です。",
+                "hints": ["比 $\\frac{[\\text{H}^+]_A}{[\\text{H}^+]_B}$ を計算します。", "指数法則: $10^{-3} / 10^{-5} = 10^2 = 100$ です。"],
+                "options": ["$10\\text{倍}$", "$100\\text{倍}$", "$1000\\text{倍}$", "$0.01\\text{倍}$"]
             },
             "gl": {
-                "prompt": "[{grade} Investigación de Química (Avanzada)] Problema de análise cuantitativa sobre {title}. A disolución ácida $A$ ten $[\text{H}^+] = 1.0 \times 10^{-3}\text{ M}$ e a disolución $B$ ten $[\text{H}^+] = 1.0 \times 10^{-5}\text{ M}$. Cantas veces é maior a concentración de ións hidróxeno de $A$ que a de $B$?",
-                "explain": "Paso 1: $[\text{H}^+]_A = 10^{-3}\text{ M}$, $[\text{H}^+]_B = 10^{-5}\text{ M}$.\nPaso 2: $\frac{1.0 \times 10^{-3}}{1.0 \times 10^{-5}} = 10^{-3 - (-5)} = 10^2 = 100$.\nPaso 3: Polo tanto, a disolución $A$ ten unha concentración 100 veces superior á disolución $B$.",
-                "hints": ["Calcula a razón $\frac{[\text{H}^+]_A}{[\text{H}^+]_B}$.", "Propiedades de potencias: $10^{-3} / 10^{-5} = 10^2 = 100$."],
-                "options": ["$10\text{ veces}$", "$100\text{ veces}$", "$1000\text{ veces}$", "$0.01\text{ veces}$"]
+                "prompt": "[{grade} Investigación de Química (Avanzada)] Problema de análise cuantitativa sobre {title}. A disolución ácida $A$ ten $[\\text{H}^+] = 1.0 \\times 10^{-3}\\text{ M}$ e a disolución $B$ ten $[\\text{H}^+] = 1.0 \\times 10^{-5}\\text{ M}$. Cantas veces é maior a concentración de ións hidróxeno de $A$ que a de $B$?",
+                "explain": "Paso 1: $[\\text{H}^+]_A = 10^{-3}\\text{ M}$, $[\\text{H}^+]_B = 10^{-5}\\text{ M}$.\nPaso 2: $\\frac{1.0 \\times 10^{-3}}{1.0 \\times 10^{-5}} = 10^{-3 - (-5)} = 10^2 = 100$.\nPaso 3: Polo tanto, a disolución $A$ ten unha concentración 100 veces superior á disolución $B$.",
+                "hints": ["Calcula a razón $\\frac{[\\text{H}^+]_A}{[\\text{H}^+]_B}$.", "Propiedades de potencias: $10^{-3} / 10^{-5} = 10^2 = 100$."],
+                "options": ["$10\\text{ veces}$", "$100\\text{ veces}$", "$1000\\text{ veces}$", "$0.01\\text{ veces}$"]
             },
             "es": {
-                "prompt": "[{grade} Indagación Química (Avanzada)] Problema de análisis cuantitativo sobre {title}. La solución ácida $A$ tiene $[\text{H}^+] = 1.0 \times 10^{-3}\text{ M}$ y la solución $B$ tiene $[\text{H}^+] = 1.0 \times 10^{-5}\text{ M}$. ¿Cuántas veces mayor es la concentración de iones hidrógeno de $A$ respecto a $B$?",
-                "explain": "Paso 1: $[\text{H}^+]_A = 10^{-3}\text{ M}$, $[\text{H}^+]_B = 10^{-5}\text{ M}$.\nPaso 2: $\frac{1.0 \times 10^{-3}}{1.0 \times 10^{-5}} = 10^{-3 - (-5)} = 10^2 = 100$.\nPaso 3: Por lo tanto, la solución $A$ tiene una concentración 100 veces mayor que la solución $B$.",
-                "hints": ["Calcula la razón $\frac{[\text{H}^+]_A}{[\text{H}^+]_B}$.", "Leyes de exponentes: $10^{-3} / 10^{-5} = 10^2 = 100$."],
-                "options": ["$10\text{ veces}$", "$100\text{ veces}$", "$1000\text{ veces}$", "$0.01\text{ veces}$"]
+                "prompt": "[{grade} Indagación Química (Avanzada)] Problema de análisis cuantitativo sobre {title}. La solución ácida $A$ tiene $[\\text{H}^+] = 1.0 \\times 10^{-3}\\text{ M}$ y la solución $B$ tiene $[\\text{H}^+] = 1.0 \\times 10^{-5}\\text{ M}$. ¿Cuántas veces mayor es la concentración de iones hidrógeno de $A$ respecto a $B$?",
+                "explain": "Paso 1: $[\\text{H}^+]_A = 10^{-3}\\text{ M}$, $[\\text{H}^+]_B = 10^{-5}\\text{ M}$.\nPaso 2: $\\frac{1.0 \\times 10^{-3}}{1.0 \\times 10^{-5}} = 10^{-3 - (-5)} = 10^2 = 100$.\nPaso 3: Por lo tanto, la solución $A$ tiene una concentración 100 veces mayor que la solución $B$.",
+                "hints": ["Calcula la razón $\\frac{[\\text{H}^+]_A}{[\\text{H}^+]_B}$.", "Leyes de exponentes: $10^{-3} / 10^{-5} = 10^2 = 100$."],
+                "options": ["$10\\text{ veces}$", "$100\\text{ veces}$", "$1000\\text{ veces}$", "$0.01\\text{ veces}$"]
             },
             "fr": {
-                "prompt": "[{grade} Enquête Chimique (Avancée)] Analyse quantitative sur {title}. La solution acide $A$ a $[\text{H}^+] = 1.0 \times 10^{-3}\text{ M}$ et la solution $B$ a $[\text{H}^+] = 1.0 \times 10^{-5}\text{ M}$. Combien de fois la concentration en ions hydrogène de $A$ est-elle supérieure à celle de $B$ ?",
-                "explain": "Étape 1 : $[\text{H}^+]_A = 10^{-3}\text{ M}$, $[\text{H}^+]_B = 10^{-5}\text{ M}$.\nÉtape 2 : $\frac{1.0 \times 10^{-3}}{1.0 \times 10^{-5}} = 10^{-3 - (-5)} = 10^2 = 100$.\nÉtape 3 : La concentration de $A$ est 100 fois supérieure à celle de $B$.",
-                "hints": ["Calculez le rapport $\frac{[\text{H}^+]_A}{[\text{H}^+]_B}$.", "Règles des puissances : $10^{-3} / 10^{-5} = 10^2 = 100$."],
-                "options": ["$10\text{ fois}$", "$100\text{ fois}$", "$1000\text{ fois}$", "$0.01\text{ fois}$"]
+                "prompt": "[{grade} Enquête Chimique (Avancée)] Analyse quantitative sur {title}. La solution acide $A$ a $[\\text{H}^+] = 1.0 \\times 10^{-3}\\text{ M}$ et la solution $B$ a $[\\text{H}^+] = 1.0 \\times 10^{-5}\\text{ M}$. Combien de fois la concentration en ions hydrogène de $A$ est-elle supérieure à celle de $B$ ?",
+                "explain": "Étape 1 : $[\\text{H}^+]_A = 10^{-3}\\text{ M}$, $[\\text{H}^+]_B = 10^{-5}\\text{ M}$.\nÉtape 2 : $\\frac{1.0 \\times 10^{-3}}{1.0 \\times 10^{-5}} = 10^{-3 - (-5)} = 10^2 = 100$.\nÉtape 3 : La concentration de $A$ est 100 fois supérieure à celle de $B$.",
+                "hints": ["Calculez le rapport $\\frac{[\\text{H}^+]_A}{[\\text{H}^+]_B}$.", "Règles des puissances : $10^{-3} / 10^{-5} = 10^2 = 100$."],
+                "options": ["$10\\text{ fois}$", "$100\\text{ fois}$", "$1000\\text{ fois}$", "$0.01\\text{ fois}$"]
             },
             "de": {
-                "prompt": "[{grade} Chemische Untersuchung (Vertiefung)] Quantitative Analyse zu {title}. Die saure Lösung $A$ hat $[\text{H}^+] = 1.0 \times 10^{-3}\text{ M}$ und Lösung $B$ hat $[\text{H}^+] = 1.0 \times 10^{-5}\text{ M}$. Wie viel Mal größer ist die Wasserstoffionenkonzentration von $A$ gegenüber $B$?",
-                "explain": "Schritt 1 : $[\text{H}^+]_A = 10^{-3}\text{ M}$, $[\text{H}^+]_B = 10^{-5}\text{ M}$.\nSchritt 2 : $\frac{1.0 \times 10^{-3}}{1.0 \times 10^{-5}} = 10^{-3 - (-5)} = 10^2 = 100$.\nSchritt 3 : Die Lösung $A$ hat eine 100-mal höhere Konzentration als Lösung $B$.",
-                "hints": ["Berechne das Verhältnis $\frac{[\text{H}^+]_A}{[\text{H}^+]_B}$.", "Potenzgesetze: $10^{-3} / 10^{-5} = 10^2 = 100$."],
-                "options": ["$10\text{-mal}$", "$100\text{-mal}$", "$1000\text{-mal}$", "$0.01\text{-mal}$"]
+                "prompt": "[{grade} Chemische Untersuchung (Vertiefung)] Quantitative Analyse zu {title}. Die saure Lösung $A$ hat $[\\text{H}^+] = 1.0 \\times 10^{-3}\\text{ M}$ und Lösung $B$ hat $[\\text{H}^+] = 1.0 \\times 10^{-5}\\text{ M}$. Wie viel Mal größer ist die Wasserstoffionenkonzentration von $A$ gegenüber $B$?",
+                "explain": "Schritt 1 : $[\\text{H}^+]_A = 10^{-3}\\text{ M}$, $[\\text{H}^+]_B = 10^{-5}\\text{ M}$.\nSchritt 2 : $\\frac{1.0 \\times 10^{-3}}{1.0 \\times 10^{-5}} = 10^{-3 - (-5)} = 10^2 = 100$.\nSchritt 3 : Die Lösung $A$ hat eine 100-mal höhere Konzentration als Lösung $B$.",
+                "hints": ["Berechne das Verhältnis $\\frac{[\\text{H}^+]_A}{[\\text{H}^+]_B}$.", "Potenzgesetze: $10^{-3} / 10^{-5} = 10^2 = 100$."],
+                "options": ["$10\\text{-mal}$", "$100\\text{-mal}$", "$1000\\text{-mal}$", "$0.01\\text{-mal}$"]
             },
             "ru": {
-                "prompt": "[{grade} Химическое исследование (углубленное)] Количественный анализ по теме {title}. Кислый раствор $A$ имеет $[\text{H}^+] = 1.0 \times 10^{-3}\text{ M}$, а раствор $B$ имеет $[\text{H}^+] = 1.0 \times 10^{-5}\text{ M}$. Во сколько раз концентрация ионов водорода в $A$ больше, чем в $B$?",
-                "explain": "Шаг 1: $[\text{H}^+]_A = 10^{-3}\text{ M}$, $[\text{H}^+]_B = 10^{-5}\text{ M}$.\nШаг 2: $\frac{1.0 \times 10^{-3}}{1.0 \times 10^{-5}} = 10^{-3 - (-5)} = 10^2 = 100$.\nШаг 3: Концентрация в растворе $A$ в 100 раз выше, чем в растворе $B$.",
-                "hints": ["Вычислите отношение $\frac{[\text{H}^+]_A}{[\text{H}^+]_B}$.", "Свойства степеней: $10^{-3} / 10^{-5} = 10^2 = 100$."],
-                "options": ["в $10\text{ раз}$", "в $100\text{ раз}$", "в $1000\text{ раз}$", "в $0.01\text{ раза}$"]
+                "prompt": "[{grade} Химическое исследование (углубленное)] Количественный анализ по теме {title}. Кислый раствор $A$ имеет $[\\text{H}^+] = 1.0 \\times 10^{-3}\\text{ M}$, а раствор $B$ имеет $[\\text{H}^+] = 1.0 \\times 10^{-5}\\text{ M}$. Во сколько раз концентрация ионов водорода в $A$ больше, чем в $B$?",
+                "explain": "Шаг 1: $[\\text{H}^+]_A = 10^{-3}\\text{ M}$, $[\\text{H}^+]_B = 10^{-5}\\text{ M}$.\nШаг 2: $\\frac{1.0 \\times 10^{-3}}{1.0 \\times 10^{-5}} = 10^{-3 - (-5)} = 10^2 = 100$.\nШаг 3: Концентрация в растворе $A$ в 100 раз выше, чем в растворе $B$.",
+                "hints": ["Вычислите отношение $\\frac{[\\text{H}^+]_A}{[\\text{H}^+]_B}$.", "Свойства степеней: $10^{-3} / 10^{-5} = 10^2 = 100$."],
+                "options": ["в $10\\text{ раз}$", "в $100\\text{ раз}$", "в $1000\\text{ раз}$", "в $0.01\\text{ раза}$"]
             }
         }
     }
 }
 
+
+# Merge all groups into TEMPLATES
+EXTRA_GROUPS = [
+    TEMPLATES_GROUP_1, TEMPLATES_GROUP_2, TEMPLATES_GROUP_3,
+    TEMPLATES_GROUP_4, TEMPLATES_GROUP_5, TEMPLATES_GROUP_6
+]
+META_EXTRA = {}
+for g in EXTRA_GROUPS:
+    for l, d in g.items():
+        META_EXTRA[l] = {
+            "goal": d.get("goal", ""),
+            "thinking1": d.get("thinking1", "")
+        }
+        for subj in ["math", "physics", "chemistry"]:
+            for qtype in ["Q1", "Q2"]:
+                k = f"{subj}_{qtype}"
+                if k in d:
+                    TEMPLATES[subj][qtype][l] = d[k]
+
+BASE_META = {
+    "ko": {"goal": "{title}의 원리를 적용하여 사고력 문제를 해결합니다.", "thinking1": "논리적 추론 및 분석"},
+    "en": {"goal": "Apply principles of {title} to solve the reasoning problem.", "thinking1": "Logical reasoning and analysis"},
+    "vi": {"goal": "Áp dụng các nguyên lý của {title} để giải quyết bài toán tư duy.", "thinking1": "Suy luận logic và phân tích"},
+    "zh-Hans": {"goal": "应用 {title} 的原理解决思维探索问题。", "thinking1": "逻辑推理与分析"},
+    "zh-Hant": {"goal": "應用 {title} 的原理以解決思維探索問題。", "thinking1": "邏輯推理與分析"},
+    "ja": {"goal": "{title} の原理を適用して思考力探究問題を解決します。", "thinking1": "論理的推論と分析"},
+    "gl": {"goal": "Aplica os principios de {title} para resolver o problema de razoamento.", "thinking1": "Razoamento lóxico e análise"},
+    "es": {"goal": "Aplica los principios de {title} para resolver el problema de razonamiento.", "thinking1": "Razonamiento lógico y análisis"},
+    "fr": {"goal": "Applique les principes de {title} pour résoudre le problème de raisonnement.", "thinking1": "Raisonnement logique et analyse"},
+    "de": {"goal": "Wende die Prinzipien von {title} an, um die Denkaufgabe zu lösen.", "thinking1": "Logisches Denken und Analyse"},
+    "ru": {"goal": "Примените принципы темы {title} для решения исследовательской задачи.", "thinking1": "Логическое рассуждение и анализ"},
+}
+
+MATH_GRADE_MAP = {
+    'E1': 'math-e1-u1', 'E2': 'math-e2-u1', 'E3': 'math-e3-u1',
+    'E4': 'math-e4-u1', 'E5': 'math-e5-u1', 'E6': 'math-e6-u1',
+    'M1': 'math-m1-linear-eq', 'M2': 'math-m2-unit', 'M3': 'math-m3-unit',
+    'H1': 'math-h1-unit', 'H2': 'math-h2-unit', 'H3': 'math-h3-unit',
+}
+
+_OVERLAYS_CACHE = {}
+
+def get_native_overlay(lang, subj):
+    cache_key = (lang, subj)
+    if cache_key in _OVERLAYS_CACHE:
+        return _OVERLAYS_CACHE[cache_key]
+    p = ROOT / f"content/learn-overlays/{lang}/{subj}.json"
+    if p.exists():
+        try:
+            d = json.load(open(p, "r", encoding="utf-8"))
+            _OVERLAYS_CACHE[cache_key] = d.get("units", {})
+            return _OVERLAYS_CACHE[cache_key]
+        except Exception:
+            pass
+    _OVERLAYS_CACHE[cache_key] = {}
+    return _OVERLAYS_CACHE[cache_key]
+
 def get_trans(subj, qtype, lang, grade, title):
     sub_tmpl = TEMPLATES[subj][qtype]
-    # Check if direct translation exists for lang
     if lang in sub_tmpl:
         t = sub_tmpl[lang]
-    elif lang in ["pt", "it", "ca"]:
+    elif lang in ["pt", "it", "ca"] and "es" in sub_tmpl:
         t = sub_tmpl["es"]
     else:
         t = sub_tmpl["en"]
@@ -1363,12 +1429,35 @@ def get_trans(subj, qtype, lang, grade, title):
     return prompt, explain, hints, options
 
 def get_title(subj, grade, lang):
+    if lang == "ko":
+        return TITLES[subj].get(grade, {}).get("ko", "")
+    
+    # Check overlays first
+    units = get_native_overlay(lang, subj)
+    if subj == "physics":
+        uk = f"phy-u-{grade.lower()}"
+        if uk in units and units[uk]:
+            return units[uk]
+    elif subj == "chemistry":
+        uk = f"chm-u-{grade.lower()}"
+        if uk in units and units[uk]:
+            return units[uk]
+    elif subj == "math":
+        uk = MATH_GRADE_MAP.get(grade, f"math-{grade.lower()}-u1")
+        if uk in units and units[uk]:
+            return units[uk]
+            
+    # Check TITLES
     sub_titles = TITLES[subj].get(grade, {})
-    if lang in sub_titles:
+    if lang in sub_titles and sub_titles[lang]:
         return sub_titles[lang]
+        
+    # Romance fallback
     if lang in ["pt", "it", "ca"]:
         return sub_titles.get("es", sub_titles.get("en", ""))
-    return sub_titles.get("en", sub_titles.get("ko", ""))
+        
+    return sub_titles.get("en", "")
+
 
 def process_all():
     langs = sorted([d for d in os.listdir(I18N_DIR) if (I18N_DIR / d).is_dir()])
@@ -1403,13 +1492,22 @@ def process_all():
                     loc_title = get_title(subj, grd, lang) if lang != "ko" else raw_title
                     loc_prompt, loc_explain, loc_hints, loc_options = get_trans(subj, qtype, lang, grd, loc_title)
                     
+                    goal_txt = f"{loc_title}"
+                    th1_txt = "Logical reasoning and analysis"
+                    if lang in BASE_META:
+                        goal_txt = BASE_META[lang]["goal"].replace("{title}", loc_title)
+                        th1_txt = BASE_META[lang]["thinking1"]
+                    elif lang in META_EXTRA:
+                        goal_txt = META_EXTRA[lang]["goal"].replace("{title}", loc_title)
+                        th1_txt = META_EXTRA[lang]["thinking1"]
+
                     entry = {
                         "title": loc_title,
                         "topic": loc_title,
-                        "goal": f"Apply principles of {loc_title} to solve the reasoning problem." if lang == "en" else f"{loc_title}의 원리를 적용하여 사고력 문제를 해결합니다." if lang == "ko" else f"{loc_title}",
+                        "goal": goal_txt,
                         "material": loc_prompt,
                         "thinking.0": f"{loc_title}",
-                        "thinking.1": "Logical reasoning and analysis",
+                        "thinking.1": th1_txt,
                         
                         # Flat keys (s.s1.*)
                         "s.s1.prompt": loc_prompt,

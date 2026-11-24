@@ -3,6 +3,7 @@
 import React, { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import { BrandLogo } from "@/components/shared/BrandLogo";
+import { RichText } from "@/components/learn/RichText";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
 import { HangeulCalligraphyIcon } from "@/components/shared/HangeulCalligraphyIcon";
 import { useLocale } from "@/lib/i18n/LocaleContext";
@@ -122,7 +123,8 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
     const list = [];
     for (let i = 0; i < 366; i++) {
       let insight = getDailyInsight(selectedDomain, i, locale);
-      const ov = tipOverlays[locale]?.[insight.id];
+      const baseId = insight.id.replace(/-(\d+)$/, (_, n) => '-' + String(((parseInt(n, 10) - 1) % 36) + 1).padStart(3, '0'));
+      const ov = tipOverlays[locale]?.[insight.id] || tipOverlays[locale]?.[baseId];
       if (ov) {
         insight = {
           ...insight,
@@ -135,7 +137,8 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
       }
       const secList = effectiveSecondaryLocales.map((secLoc) => {
         let secInsight = getDailyInsight(selectedDomain, i, secLoc);
-        const secOv = tipOverlays[secLoc]?.[secInsight.id];
+        const secBaseId = secInsight.id.replace(/-(\d+)$/, (_, n) => '-' + String(((parseInt(n, 10) - 1) % 36) + 1).padStart(3, '0'));
+        const secOv = tipOverlays[secLoc]?.[secInsight.id] || tipOverlays[secLoc]?.[secBaseId];
         if (secOv) {
           secInsight = {
             ...secInsight,
@@ -404,7 +407,7 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
                       📌 {catalogI18n.corePrinciple}
                     </div>
                     <div className="text-xs font-bold text-slate-900 leading-snug">
-                      {insight.principle}
+                      <RichText text={insight.principle} />
                     </div>
                     {isBilingual && secondaryInsights.map(({ locale: secLoc, insight: secInsight }) => (
                       secInsight?.principle && secInsight.principle !== insight.principle ? (
@@ -414,14 +417,14 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
                               {secLoc}
                             </span>
                           )}
-                          <span>{secInsight.principle}</span>
+                          <span><RichText text={secInsight.principle} /></span>
                         </p>
                       ) : null
                     ))}
                     {insight.example && (
-                      <p className="text-[11px] text-slate-500 font-normal">
-                        {insight.example}
-                      </p>
+                      <div className="text-[11px] text-slate-500 font-normal">
+                        <RichText text={insight.example} />
+                      </div>
                     )}
                     {isBilingual && secondaryInsights.map(({ locale: secLoc, insight: secInsight }) => (
                       secInsight?.example && (secInsight.example !== insight.example || secLoc !== locale) ? (
@@ -431,7 +434,7 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
                               {secLoc}
                             </span>
                           )}
-                          <span>{secInsight.example}</span>
+                          <span><RichText text={secInsight.example} /></span>
                         </p>
                       ) : null
                     ))}

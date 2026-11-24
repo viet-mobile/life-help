@@ -6,6 +6,7 @@ import type { ThinkLang } from "@/lib/think/lang";
 import type { BuildStep, ChooseStep, PickLineStep, RevealStep, Step, ThinkTask, WriteStep } from "@/lib/think/types";
 import { formatLevelLabel, formatMinutes } from "@/lib/think/grades";
 import { fmt, labels, type Labels } from "./labels";
+import { RichText } from "@/components/learn/RichText";
 
 export interface Flag { task: string; step: string; note: string; at: string }
 /**
@@ -62,7 +63,7 @@ function Hints({ hints, L, id }: { hints: string[]; L: Labels; id: string }) {
   const [n, setN] = useState(0);
   return (
     <div className="grid gap-1" data-testid={`hints-${id}`}>
-      {hints.slice(0, n).map((h, i) => <p key={i} className="droplet-card bg-amber-50 p-2 text-sm whitespace-pre-line">💡 {h}</p>)}
+      {hints.slice(0, n).map((h, i) => <p key={i} className="droplet-card bg-amber-50 p-2 text-sm whitespace-pre-line">💡 <RichText text={h} /></p>)}
       <button type="button" disabled={n >= hints.length} onClick={() => setN(n + 1)} className="droplet-btn w-fit border px-3 py-1 text-sm font-bold disabled:opacity-50" data-testid={`hint-${id}`}>{n >= hints.length && n > 0 ? L.hintNone : `${L.hint} (${n}/${hints.length})`}</button>
     </div>
   );
@@ -84,7 +85,7 @@ function StepView(p: SV) {
   const canSkip = step.scaffold && !p.resolved && !skipped && p.current;
   return (
     <section className="droplet-card grid gap-3 border bg-white p-4" aria-label={`${p.index + 1}/${p.total}`} data-testid={`step-${step.id}`} data-resolved={p.resolved ?? ""}>
-      <h2 className="text-base font-black whitespace-pre-line">{p.index + 1}/{p.total} · {step.prompt}</h2>
+      <h2 className="text-base font-black whitespace-pre-line">{p.index + 1}/{p.total} · <RichText text={step.prompt} /></h2>
       {skipped ? <p className="text-sm text-slate-500">— {L.skip}</p> : (
         <>
           {step.kind === "choose" && <ChooseView {...p} step={step} />}
@@ -106,7 +107,7 @@ function StepView(p: SV) {
 function Feedback({ kind, msg, L }: { kind: "match" | "acceptable" | "not-match"; msg: string; L: Labels }) {
   const cls = kind === "match" ? "bg-emerald-50 border-emerald-300" : kind === "acceptable" ? "bg-sky-50 border-sky-300" : "bg-rose-50 border-rose-300";
   const head = kind === "match" ? `✅ ${L.matchT}` : kind === "acceptable" ? `🟦 ${L.acceptT}` : `↻ ${L.notT}`;
-  return <div role="status" aria-live="polite" className={`droplet-card border p-3 text-sm ${cls}`} data-testid="feedback" data-kind={kind}><b>{head}</b>{msg ? <p className="mt-1 whitespace-pre-wrap">{msg}</p> : null}</div>;
+  return <div role="status" aria-live="polite" className={`droplet-card border p-3 text-sm ${cls}`} data-testid="feedback" data-kind={kind}><b>{head}</b>{msg ? <p className="mt-1 whitespace-pre-wrap"><RichText text={msg} /></p> : null}</div>;
 }
 
 function ChooseView({ step, L, reviewer, onResult, onFlag }: SV & { step: ChooseStep }) {
@@ -120,7 +121,7 @@ function ChooseView({ step, L, reviewer, onResult, onFlag }: SV & { step: Choose
         {step.options.map((o) => (
           <button key={o.id} type="button" role={step.multi ? "checkbox" : "radio"} aria-checked={sel.includes(o.id)} onClick={() => toggle(o.id)} data-testid={`opt-${o.id}`}
             className={`droplet-btn border p-3 text-left text-sm whitespace-pre-line ${sel.includes(o.id) ? "border-slate-900 bg-slate-100" : ""}`}>
-            <b className="mr-2" aria-hidden="true">{o.id.toUpperCase()}.</b>{o.text}{reviewer && step.correct.includes(o.id) ? " ✔" : ""}
+            <b className="mr-2" aria-hidden="true">{o.id.toUpperCase()}.</b><RichText text={o.text} />{reviewer && step.correct.includes(o.id) ? " ✔" : ""}
           </button>
         ))}
       </div>
@@ -240,7 +241,7 @@ function RevealView({ step, L, onResult, onFlag }: SV & { step: RevealStep }) {
           <p className="text-sm font-bold">{st.ask}</p>
           <div role="radiogroup" className="grid gap-1">
             {st.options.map((o) => (
-              <button key={o.id} role="radio" aria-checked={picks[i] === o.id} disabled={committed[i]} onClick={() => setPicks((p) => p.map((x, j) => (j === i ? o.id : x)))} data-testid={`s${i}-${o.id}`} className={`droplet-btn border p-2 text-left text-sm ${picks[i] === o.id ? "border-slate-900 bg-slate-100" : ""}`}><b className="mr-2" aria-hidden="true">{o.id.toUpperCase()}.</b>{o.text}</button>
+              <button key={o.id} role="radio" aria-checked={picks[i] === o.id} disabled={committed[i]} onClick={() => setPicks((p) => p.map((x, j) => (j === i ? o.id : x)))} data-testid={`s${i}-${o.id}`} className={`droplet-btn border p-2 text-left text-sm ${picks[i] === o.id ? "border-slate-900 bg-slate-100" : ""}`}><b className="mr-2" aria-hidden="true">{o.id.toUpperCase()}.</b><RichText text={o.text} /></button>
             ))}
           </div>
           {!committed[i] ? (

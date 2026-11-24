@@ -1,0 +1,732 @@
+# -*- coding: utf-8 -*-
+"""
+Generates scripts/think/templates_african_other.py
+Langs: sw, am, so, om, ha, yo, ig, zu, xh, sn, sg, mg, pcm, el, ka, eu, sq
+"""
+import json
+from pathlib import Path
+
+ROOT = Path('/Users/juboklee/life-project/life-help')
+
+G6 = {}
+
+# 1. sw (Swahili)
+G6["sw"] = {
+    "math_Q1": {
+        "prompt": "[{grade} Uchunguzi wa Hisabati] Swali la uchunguzi kuhusu {title}. Nambari asilia mbili $A$ na $B$ zinatimiza mlinganyo $A + 2B = 24$. Wakati $A$ anapochukua thamani kubwa iwezekanavyo, thamani ya $B$ ni nini?",
+        "explain": "Hatua 1: Kupanga upya mlinganyo kunatoa $A = 24 - 2B$.\nHatua 2: Kwa kuwa $A, B \\ge 1$ ni nambari asilia, $2B$ lazima iwe ndogo iwezekanavyo ili $A$ iwe kubwa.\nHatua 3: Nambari asilia ndogo zaidi ni $B = 1$.\nHatua 4: Katika hatua hii, $A = 24 - 2(1) = 22$ (kiwango cha juu), kwa hiyo $B = 1$.",
+        "hints": ["Thamani ndogo zaidi ya nambari asilia kwa $B$ ni $1$.", "Kwa kuwa $A = 24 - 2B$, $A$ inakuwa kubwa wakati $B$ inapokuwa ndogo zaidi."],
+        "options": ["$1$", "$2$", "$3$", "$4$"]
+    },
+    "math_Q2": {
+        "prompt": "[{grade} Uchunguzi wa Hisabati (Kina)] Tatizo gumu la uchunguzi kwa kutumia {title}. Jumla ya nambari asilia tatu mfululizo ni $3S$, na zao la ndogo zaidi na kubwa zaidi likijumlishwa na $1$ ni sawa na $T^2$. Wakati $S = 15$, nambari kubwa zaidi kati ya hizi tatu ni ipi?",
+        "explain": "Hatua 1: Kuchukua nambari kama $n-1, n, n+1$, jumla ni $3n = 3S \\Rightarrow n = S = 15$.\nHatua 2: Nambari tatu hizo ni $14, 15, 16$.\nHatua 3: Nambari kubwa zaidi ni $16$.\nHatua 4: Uthibitisho: $(14 \\times 16) + 1 = 224 + 1 = 225 = 15^2$.",
+        "hints": ["Kuchukua nambari mfululizo kama $n-1, n, n+1$ kunatoa jumla ya $3n$.", "Nambari ya kati ni $n = S = 15$."],
+        "options": ["$14$", "$15$", "$16$", "$17$"]
+    },
+    "physics_Q1": {
+        "prompt": "[{grade} Uchunguzi wa Fizikia] Tatizo linalotumia kanuni za {title}. Juu ya uso usio na msuguano, kani ya mlalo thabiti $F = 10\\text{ N}$ inasukuma kitu chenye tungamo $m = 2\\text{ kg}$ kwa umbali wa $4\\text{ m}$. Ni kauli gani inayoelezea kwa usahihi kazi $W$ iliyofanywa na mchapuko $a$?",
+        "explain": "Hatua 1: Kutoka sheria ya pili ya Newton $F = ma$, mchapuko $a = \\frac{F}{m} = \\frac{10\\text{ N}}{2\\text{ kg}} = 5\\text{ m/s}^2$.\nHatua 2: Kazi iliyofanywa ni $W = F \\cdot s = 10\\text{ N} \\times 4\\text{ m} = 40\\text{ J}$.\nHatua 3: Kwa hiyo mchapuko ni $5\\text{ m/s}^2$ na kazi ni $40\\text{ J}$.",
+        "hints": ["Sheria ya pili ya Newton: tumia fomula $F = ma$.", "Ufafanuzi wa kazi: tumia fomula $W = F \\times s$."],
+        "options": ["Mchapuko ni $5\\text{ m/s}^2$ na kazi ni $40\\text{ J}$.", "Mchapuko ni $2\\text{ m/s}^2$ na kazi ni $20\\text{ J}$.", "Mchapuko ni $10\\text{ m/s}^2$ na kazi ni $40\\text{ J}$.", "Mchapuko ni $5\\text{ m/s}^2$ na kazi ni $20\\text{ J}$."]
+    },
+    "physics_Q2": {
+        "prompt": "[{grade} Uchunguzi wa Fizikia (Kina)] Uchambuzi wa mwendo wa kuanguka bila kizuizi kuhusiana na {title}. Kitu kinaangushwa kutoka hali ya utulivu kwenye ombwe chini ya uvutano $g = 9.8\\text{ m/s}^2$. Je, kasi $v$ na umbali $h$ uliopita baada ya $t = 3\\text{ s}$ ni nini?",
+        "explain": "Hatua 1: Kasi $v = gt = 9.8 \\times 3 = 29.4\\text{ m/s}$.\nHatua 2: Umbali $h = \\frac{1}{2}gt^2 = 0.5 \\times 9.8 \\times 9 = 44.1\\text{ m}$.\nHatua 3: Kwa hiyo $v = 29.4\\text{ m/s}$ na $h = 44.1\\text{ m}$.",
+        "hints": ["Kasi ya kuanguka bure: $v = gt$.", "Umbali wa kuanguka bure: $h = \\frac{1}{2}gt^2$."],
+        "options": ["$v = 29.4\\text{ m/s},\\ h = 44.1\\text{ m}$", "$v = 19.6\\text{ m/s},\\ h = 19.6\\text{ m}$", "$v = 29.4\\text{ m/s},\\ h = 88.2\\text{ m}$", "$v = 9.8\\text{ m/s},\\ h = 44.1\\text{ m}$"]
+    },
+    "chemistry_Q1": {
+        "prompt": "[{grade} Uchunguzi wa Kemia] Swali la ujazo wa gesi kuhusu {title}. Katika $25^\\circ\\text{C}$ na $1\\text{ atm}$, ujazo wa mola wa gesi ni $24.5\\text{ L/mol}$. Chini ya hali hizo hizo, ujazo katika $\\text{L}$ wa $0.2\\text{ mol}$ ya gesi hii ni nini?",
+        "explain": "Hatua 1: Kulingana na sheria ya Avogadro, ujazo $V = n \\times V_m$.\nHatua 2: $V = 0.2\\text{ mol} \\times 24.5\\text{ L/mol}$.\nHatua 3: Hesabu inatoa $V = 4.90\\text{ L}$.",
+        "hints": ["Ujazo unalingana moja kwa moja na idadi ya moli.", "Hesabu $V = n \\times V_m$."],
+        "options": ["$2.45\\text{ L}$", "$4.90\\text{ L}$", "$9.80\\text{ L}$", "$12.25\\text{ L}$"]
+    },
+    "chemistry_Q2": {
+        "prompt": "[{grade} Uchunguzi wa Kemia (Kina)] Tatizo la uchambuzi wa kiasi kuhusu {title}. Mmumunyo wa asidi $A$ una $[\\text{H}^+] = 1.0 \\times 10^{-3}\\text{ M}$ na mmumunyo $B$ una $[\\text{H}^+] = 1.0 \\times 10^{-5}\\text{ M}$. Mkusanyiko wa ioni ya hidrojeni katika $A$ ni mkubwa mara ngapi kuliko $B$?",
+        "explain": "Hatua 1: $[\\text{H}^+]_A = 10^{-3}\\text{ M}$, $[\\text{H}^+]_B = 10^{-5}\\text{ M}$.\nHatua 2: Uwiano $\\frac{1.0 \\times 10^{-3}}{1.0 \\times 10^{-5}} = 10^2 = 100$.\nHatua 3: Mkusanyiko wa $A$ ni mkubwa mara 100 kuliko $B$.",
+        "hints": ["Hesabu uwiano $\\frac{[\\text{H}^+]_A}{[\\text{H}^+]_B}$.", "$10^{-3} / 10^{-5} = 10^2 = 100$."],
+        "options": ["mara $10$", "mara $100$", "mara $1000$", "mara $0.01$"]
+    },
+    "thinking1": "Kufikiri kimantiki na uchambuzi",
+    "goal": "Tumia kanuni za {title} kutatua tatizo la uchunguzi."
+}
+
+# 2. am (Amharic)
+G6["am"] = {
+    "math_Q1": {
+        "prompt": "[{grade} የሂሳብ ምርምር] ስለ {title} የምርምር ጥያቄ። $A + 2B = 24$ የሚያሟሉ ሁለት ተፈጥሯዊ ቁጥሮች $A$ እና $B$ ተሰጥተዋል። $A$ ከፍተኛውን እሴት ሲወስድ የ $B$ እሴት ስንት ይሆናል?",
+        "explain": "ደረጃ 1: እኩልታውን ሲያስተካክሉ $A = 24 - 2B$ ይሆናል።\nደረጃ 2: $A, B \\ge 1$ ተፈጥሯዊ ቁጥሮች ስለሆኑ $A$ ትልቅ እንዲሆን $2B$ አነስተኛ መሆን አለበት።\nደረጃ 3: ትንሹ ተፈጥሯዊ ቁጥር $B = 1$ ነው።\nደረጃ 4: በዚህ ጊዜ $A = 24 - 2(1) = 22$ (ከፍተኛ)፣ ስለዚህ $B = 1$ ነው።",
+        "hints": ["ለ $B$ አነስተኛው የተፈጥሮ ቁጥር እሴት $1$ ነው።", "$A = 24 - 2B$ ስለሆነ $B$ አነስተኛ ሲሆን $A$ ከፍተኛ ይሆናል።"],
+        "options": ["$1$", "$2$", "$3$", "$4$"]
+    },
+    "math_Q2": {
+        "prompt": "[{grade} የሂሳብ ምርምር (ከፍተኛ)] {title} ን በመጠቀም ውስብስብ የምርምር ችግር። የሶስት ተከታታይ ተፈጥሯዊ ቁጥሮች ድምር $3S$ ሲሆን፣ የትንሹ እና የትልቁ ብዜት ሲደመር $1$ ከ $T^2$ ጋር እኩል ነው። $S = 15$ ሲሆን ከእነዚህ ሦስቱ ትልቁ ቁጥር ስንት ነው?",
+        "explain": "ደረጃ 1: ቁጥሮቹን $n-1, n, n+1$ ብንል ድምሩ $3n = 3S \\Rightarrow n = S = 15$ ይሆናል።\nደረጃ 2: ሦስቱ ቁጥሮች $14, 15, 16$ ናቸው።\nደረጃ 3: ትልቁ ቁጥር $16$ ነው።\nደረጃ 4: ማረጋገጫ: $(14 \\times 16) + 1 = 224 + 1 = 225 = 15^2$።",
+        "hints": ["ተከታታይ ቁጥሮችን $n-1, n, n+1$ ማለት ድምሩን $3n$ ያደርገዋል።", "መካከለኛው ቁጥር $n = S = 15$ ነው።"],
+        "options": ["$14$", "$15$", "$16$", "$17$"]
+    },
+    "physics_Q1": {
+        "prompt": "[{grade} የፊዚክስ ምርምር] የ {title} መርሆዎችን የሚተገብር ችግር። ግጭት በሌለው ወለል ላይ የጅምላ $m = 2\\text{ kg}$ እቃ ላይ ቋሚ አግድም ኃይል $F = 10\\text{ N}$ በ $4\\text{ m}$ ርቀት ላይ ይሰራል የተከናወነውን ስራ $W$ እና ማጣደፍ $a$ በትክክል የሚገልጸው የትኛው ነው?",
+        "explain": "ደረጃ 1: ከኒውተን ሁለተኛ ህግ $F = ma$፣ ማጣደፍ $a = \\frac{F}{m} = \\frac{10\\text{ N}}{2\\text{ kg}} = 5\\text{ m/s}^2$።\nደረጃ 2: የተሰራው ስራ $W = F \\cdot s = 10\\text{ N} \\times 4\\text{ m} = 40\\text{ J}$ ነው።\nደረጃ 3: ስለዚህ ማጣደፉ $5\\text{ m/s}^2$ እና ስራው $40\\text{ J}$ ነው።",
+        "hints": ["የኒውተን ሁለተኛ ህግ: $F = ma$ ይጠቀሙ።", "የስራ ትርጉም: $W = F \\times s$ ይጠቀሙ።"],
+        "options": ["ማጣደፍ $5\\text{ m/s}^2$ እና ስራ $40\\text{ J}$ ነው።", "ማጣደፍ $2\\text{ m/s}^2$ እና ስራ $20\\text{ J}$ ነው።", "ማጣደፍ $10\\text{ m/s}^2$ እና ስራ $40\\text{ J}$ ነው።", "ማጣደፍ $5\\text{ m/s}^2$ እና ስራ $20\\text{ J}$ ነው።"]
+    },
+    "physics_Q2": {
+        "prompt": "[{grade} የፊዚክስ ምርምር (ከፍተኛ)] ከ {title} ጋር የተያያዘ የነጻ ውድቀት እንቅስቃሴ ትንተና። በባዶ ቦታ ውስጥ በስበት $g = 9.8\\text{ m/s}^2$ ስር እቃ ከእረፍት ይወድቃል። ከ $t = 3\\text{ s}$ በኋላ ፍጥነቱ $v$ እና የወደቀበት ርቀት $h$ ስንት ነው?",
+        "explain": "ደረጃ 1: ፍጥነት $v = gt = 9.8 \\times 3 = 29.4\\text{ m/s}$።\nደረጃ 2: ርቀት $h = \\frac{1}{2}gt^2 = 0.5 \\times 9.8 \\times 9 = 44.1\\text{ m}$።\nደረጃ 3: ስለዚህ $v = 29.4\\text{ m/s}$ እና $h = 44.1\\text{ m}$ ነው።",
+        "hints": ["የነጻ ውድቀት ፍጥነት: $v = gt$።", "የነጻ ውድቀት ርቀት: $h = \\frac{1}{2}gt^2$።"],
+        "options": ["$v = 29.4\\text{ m/s},\\ h = 44.1\\text{ m}$", "$v = 19.6\\text{ m/s},\\ h = 19.6\\text{ m}$", "$v = 29.4\\text{ m/s},\\ h = 88.2\\text{ m}$", "$v = 9.8\\text{ m/s},\\ h = 44.1\\text{ m}$"]
+    },
+    "chemistry_Q1": {
+        "prompt": "[{grade} የኬሚስትሪ ምርምር] ከ {title} ጋር የተያያዘ የጋዝ መጠን ጥያቄ። በ $25^\\circ\\text{C}$ እና $1\\text{ atm}$ ላይ የጋዝ ሞላር መጠን $24.5\\text{ L/mol}$ ነው። በተመሳሳይ ሁኔታ የዚህ ጋዝ $0.2\\text{ mol}$ መጠን ስንት $\\text{L}$ ይሆናል?",
+        "explain": "ደረጃ 1: በአቮጋድሮ ህግ መሰረት መጠን $V = n \\times V_m$።\nደረጃ 2: $V = 0.2\\text{ mol} \\times 24.5\\text{ L/mol}$።\nደረጃ 3: ስሌቱ $V = 4.90\\text{ L}$ ይሰጣል።",
+        "hints": ["መጠን ከሞል ብዛት ጋር ቀጥተኛ ተመጣጣኝ ነው።", "$V = n \\times V_m$ ን ያሰሉ።"],
+        "options": ["$2.45\\text{ L}$", "$4.90\\text{ L}$", "$9.80\\text{ L}$", "$12.25\\text{ L}$"]
+    },
+    "chemistry_Q2": {
+        "prompt": "[{grade} የኬሚስትሪ ምርምር (ከፍተኛ)] ከ {title} ጋር የተያያዘ የቁጥር ትንተና ችግር። አሲዳማ መፍትሄ $A$ የ $[\\text{H}^+] = 1.0 \\times 10^{-3}\\text{ M}$ እና መፍትሄ $B$ የ $[\\text{H}^+] = 1.0 \\times 10^{-5}\\text{ M}$ አለው። በ $A$ ውስጥ ያለው የሃይድሮጂን አዮን ክምችት ከ $B$ በስንት እጥፍ ይበልጣል?",
+        "explain": "ደረጃ 1: $[\\text{H}^+]_A = 10^{-3}\\text{ M}$፣ $[\\text{H}^+]_B = 10^{-5}\\text{ M}$።\nደረጃ 2: ጥምርታ $\\frac{1.0 \\times 10^{-3}}{1.0 \\times 10^{-5}} = 10^2 = 100$።\nደረጃ 3: የመፍትሄ $A$ ክምችት ከ $B$ በ 100 እጥፍ ይበልጣል።",
+        "hints": ["ጥምርታ $\\frac{[\\text{H}^+]_A}{[\\text{H}^+]_B}$ ን ያሰሉ።", "$10^{-3} / 10^{-5} = 10^2 = 100$።"],
+        "options": ["$10\\text{ እጥፍ}$", "$100\\text{ እጥፍ}$", "$1000\\text{ እጥፍ}$", "$0.01\\text{ እጥፍ}$"]
+    },
+    "thinking1": "አመክንዮአዊ አስተሳሰብ እና ትንተና",
+    "goal": "የምርምር ችግሩን ለመፍታት የ {title} መርሆዎችን ይተግብሩ።"
+}
+
+# 3. so (Somali)
+G6["so"] = {
+    "math_Q1": {
+        "prompt": "[{grade} Baaritaanka Xisaabta] Su'aasha baaritaanka ee ku saabsan {title}. Laba lambar oo dabiici ah $A$ iyo $B$ waxay buuxinayaan $A + 2B = 24$. Marka $A$ qaato qiimaha ugu sarreeya ee suurtogalka ah, waa imisa qiimaha $B$?",
+        "explain": "Tallaabada 1: Dib u habaynta isla'egtu waxay bixinaysaa $A = 24 - 2B$.\nTallaabada 2: Maadaama $A, B \\ge 1$ ay yihiin lambarro dabiici ah, $2B$ waa inuu noqdaa kan ugu yar si $A$ u weynaado.\nTallaabada 3: Lambarka dabiiciga ah ee ugu yar waa $B = 1$.\nTallaabada 4: Meeshan, $A = 24 - 2(1) = 22$ (ugu sarreeya), markaa $B = 1$.",
+        "hints": ["Qiimaha ugu yar ee lambarka dabiiciga ah ee $B$ waa $1$.", "Maadaama $A = 24 - 2B$, $A$ wuxuu noqonayaa mid weyn marka $B$ uu yar yahay."],
+        "options": ["$1$", "$2$", "$3$", "$4$"]
+    },
+    "math_Q2": {
+        "prompt": "[{grade} Baaritaanka Xisaabta (Sare)] Dhibaatada baaritaanka adag iyadoo la adeegsanayo {title}. Wadarta saddex lambar oo dabiici ah oo isxiga waa $3S$, taranka kan ugu yar iyo kan ugu weyn oo lagu daray $1$ wuxuu le'eg yahay $T^2$. Marka $S = 15$, keebaa ugu weyn saddexdan?",
+        "explain": "Tallaabada 1: Isagoo lambarrada loo qaadanayo $n-1, n, n+1$, wadartu waa $3n = 3S \\Rightarrow n = S = 15$.\nTallaabada 2: Saddexda lambar waa $14, 15, 16$.\nTallaabada 3: Lambarka ugu weyn waa $16$.\nTallaabada 4: Xaqiijin: $(14 \\times 16) + 1 = 224 + 1 = 225 = 15^2$.",
+        "hints": ["Qaadashada lambarro isxiga sida $n-1, n, n+1$ waxay bixinaysaa wadarta $3n$.", "Lambarka dhexe waa $n = S = 15$."],
+        "options": ["$14$", "$15$", "$16$", "$17$"]
+    },
+    "physics_Q1": {
+        "prompt": "[{grade} Baaritaanka Fiisigiska] Dhibaato adeegsanaysa mabaadi'da {title}. Meel siman oo aan lahayn xoog is-xoqid ah, xoog siman oo go'an $F = 10\\text{ N}$ wuxuu ku shaqaynayaa shay cufkiisu yahay $m = 2\\text{ kg}$ masaafo dhan $4\\text{ m}$. Bayaankee ayaa si sax ah u qeexaya shaqada $W$ iyo dardargelinta $a$?",
+        "explain": "Tallaabada 1: Sharciga labaad ee Newton $F = ma$, dardargelinta $a = \\frac{F}{m} = \\frac{10\\text{ N}}{2\\text{ kg}} = 5\\text{ m/s}^2$.\nTallaabada 2: Shaqada la qabtay waa $W = F \\cdot s = 10\\text{ N} \\times 4\\text{ m} = 40\\text{ J}$.\nTallaabada 3: Sidaas darteed dardargelintu waa $5\\text{ m/s}^2$ shaqaduna waa $40\\text{ J}$.",
+        "hints": ["Sharciga labaad ee Newton: isticmaal caanobiyaha $F = ma$.", "Qeexidda shaqada: isticmaal caanobiyaha $W = F \\times s$."],
+        "options": ["Dardargelintu waa $5\\text{ m/s}^2$ shaqaduna waa $40\\text{ J}$.", "Dardargelintu waa $2\\text{ m/s}^2$ shaqaduna waa $20\\text{ J}$.", "Dardargelintu waa $10\\text{ m/s}^2$ shaqaduna waa $40\\text{ J}$.", "Dardargelintu waa $5\\text{ m/s}^2$ shaqaduna waa $20\\text{ J}$."]
+    },
+    "physics_Q2": {
+        "prompt": "[{grade} Baaritaanka Fiisigiska (Sare)] Falanqaynta dhaqdhaqaaqa dhicidda xorta ah ee la xiriirta {title}. Shay ayaa laga soo tuuray xaalad nasasho meel faaruq ah iyadoo cufisjiidku yahay $g = 9.8\\text{ m/s}^2$. Waa maxay xawaaraha $v$ iyo masaafada dhicidda $h$ kadib $t = 3\\text{ s}$?",
+        "explain": "Tallaabada 1: Xawaaraha $v = gt = 9.8 \\times 3 = 29.4\\text{ m/s}$.\nTallaabada 2: Masaafada $h = \\frac{1}{2}gt^2 = 0.5 \\times 9.8 \\times 9 = 44.1\\text{ m}$.\nTallaabada 3: Markaa $v = 29.4\\text{ m/s}$ iyo $h = 44.1\\text{ m}$.",
+        "hints": ["Xawaaraha dhicidda xorta ah: $v = gt$.", "Masaafada dhicidda xorta ah: $h = \\frac{1}{2}gt^2$."],
+        "options": ["$v = 29.4\\text{ m/s},\\ h = 44.1\\text{ m}$", "$v = 19.6\\text{ m/s},\\ h = 19.6\\text{ m}$", "$v = 29.4\\text{ m/s},\\ h = 88.2\\text{ m}$", "$v = 9.8\\text{ m/s},\\ h = 44.1\\text{ m}$"]
+    },
+    "chemistry_Q1": {
+        "prompt": "[{grade} Baaritaanka Kiimikada] Su'aasha mugga gaaska ee ku saabsan {title}. Markay tahay $25^\\circ\\text{C}$ iyo $1\\text{ atm}$, mugga molar ee gaasku waa $24.5\\text{ L/mol}$. Isla xaaladahaas, waa maxay mugga $\\text{L}$ ee $0.2\\text{ mol}$ ee gaaskan?",
+        "explain": "Tallaabada 1: Marka loo eego sharciga Avogadro, mugga $V = n \\times V_m$.\nTallaabada 2: $V = 0.2\\text{ mol} \\times 24.5\\text{ L/mol}$.\nTallaabada 3: Xisaabintu waxay bixinaysaa $V = 4.90\\text{ L}$.",
+        "hints": ["Muggu wuxuu si toos ah ugu dhigmaa tirada moolasha.", "Xisaabi $V = n \\times V_m$."],
+        "options": ["$2.45\\text{ L}$", "$4.90\\text{ L}$", "$9.80\\text{ L}$", "$12.25\\text{ L}$"]
+    },
+    "chemistry_Q2": {
+        "prompt": "[{grade} Baaritaanka Kiimikada (Sare)] Dhibaatada falanqaynta qiyaasta ee ku saabsan {title}. Xalka aashitada $A$ wuxuu leeyahay $[\\text{H}^+] = 1.0 \\times 10^{-3}\\text{ M}$ xalka $B$-na wuxuu leeyahay $[\\text{H}^+] = 1.0 \\times 10^{-5}\\text{ M}$. Immisa jeer ayaa fiirsashada ion hydrogen ee $A$ ka weyn tahay $B$?",
+        "explain": "Tallaabada 1: $[\\text{H}^+]_A = 10^{-3}\\text{ M}$, $[\\text{H}^+]_B = 10^{-5}\\text{ M}$.\nTallaabada 2: Saamiga $\\frac{1.0 \\times 10^{-3}}{1.0 \\times 10^{-5}} = 10^2 = 100$.\nTallaabada 3: Fiirsashada $A$ waa 100 jeer ka weyn tan $B$.",
+        "hints": ["Xisaabi saamiga $\\frac{[\\text{H}^+]_A}{[\\text{H}^+]_B}$.", "$10^{-3} / 10^{-5} = 10^2 = 100$."],
+        "options": ["$10\\text{ jeer}$", "$100\\text{ jeer}$", "$1000\\text{ jeer}$", "$0.01\\text{ jeer}$"]
+    },
+    "thinking1": "Sababaynta caqliga iyo falanqaynta",
+    "goal": "Codso mabaadi'da {title} si aad u xalliso dhibaatada baaritaanka."
+}
+
+# 4. om (Oromo)
+G6["om"] = {
+    "math_Q1": {
+        "prompt": "[{grade} Qorannoo Herregaa] Gaaffii qorannoo waa'ee {title}. Lakkoofsonni uumamaa lama $A$ fi $B$ walqixxoo $A + 2B = 24$ guutu. Yeroo $A$ gatii guddaa ta'uu danda'u fudhatu, gatiin $B$ meeqa?",
+        "explain": "Tarkaanfii 1: Walqixxoo bifa biraatiin yoo barreessinu $A = 24 - 2B$ ta'a.\nTarkaanfii 2: $A, B \\ge 1$ lakkoofsota uumamaa waan ta'aniif, $A$ guddaa ta'uuf $2B$ xiqqaa ta'uu qaba.\nTarkaanfii 3: Lakkoofsi uumamaa xiqqaan $B = 1$ dha.\nTarkaanfii 4: Bakka kanatti $A = 24 - 2(1) = 22$ (ol'aanaa), kanaafuu $B = 1$ dha.",
+        "hints": ["Gatiin lakkoofsa uumamaa xiqqaan $B$ tiif $1$ dha.", "$A = 24 - 2B$ waan ta'eef, yeroo $B$ xiqqaa ta'u $A$ guddaa ta'a."],
+        "options": ["$1$", "$2$", "$3$", "$4$"]
+    },
+    "math_Q2": {
+        "prompt": "[{grade} Qorannoo Herregaa (Olaanaa)] Rakkoo qorannoo xaxamaa {title} fayyadamuun. Ida'amni lakkoofsota uumamaa walitti aanan sadii $3S$ dha, baay'ataan isa xiqqaa fi isa guddaa $1$ yoo itti ida'amu $T^2$ waliin walqixa. $S = 15$ yoo ta'e, sadan keessaa isa guddaan kami?",
+        "explain": "Tarkaanfii 1: Lakkoofsota akka $n-1, n, n+1$ yoo fudhanne ida'amni $3n = 3S \\Rightarrow n = S = 15$ ta'a.\nTarkaanfii 2: Lakkoofsonni sadan $14, 15, 16$ dha.\nTarkaanfii 3: Lakkoofsi guddaan $16$ dha.\nTarkaanfii 4: Mirkaneessa: $(14 \\times 16) + 1 = 224 + 1 = 225 = 15^2$.",
+        "hints": ["Lakkoofsota walitti aanan akka $n-1, n, n+1$ fudhachuun ida'ama $3n$ kenna.", "Lakkoofsi gidduu $n = S = 15$ dha."],
+        "options": ["$14$", "$15$", "$16$", "$17$"]
+    },
+    "physics_Q1": {
+        "prompt": "[{grade} Qorannoo Fiiziksii] Rakkoo qajeeltoowwan {title} hojiirra oolchu. Dirra dhiibbaa hin qabne irratti, humni dalgee dhaabbataan $F = 10\\text{ N}$ qaama hanga $m = 2\\text{ kg}$ qabu fageenya $4\\text{ m}$ irratti dhiiba. Hojiin $W$ hojjetamee fi saffisiisni $a$ isa kamtu sirriitti ibsama?",
+        "explain": "Tarkaanfii 1: Seera Niwutan lammaffaa $F = ma$ irraa saffisiisni $a = \\frac{F}{m} = \\frac{10\\text{ N}}{2\\text{ kg}} = 5\\text{ m/s}^2$.\nTarkaanfii 2: Hojiin hojjetame $W = F \\cdot s = 10\\text{ N} \\times 4\\text{ m} = 40\\text{ J}$.\nTarkaanfii 3: Kanaaf saffisiisni $5\\text{ m/s}^2$ fi hojiin $40\\text{ J}$ dha.",
+        "hints": ["Seera Niwutan lammaffaa: foormulaa $F = ma$ fayyadamaa.", "Hiika hojii: foormulaa $W = F \\times s$ fayyadamaa."],
+        "options": ["Saffisiisni $5\\text{ m/s}^2$ fi hojiin $40\\text{ J}$ dha.", "Saffisiisni $2\\text{ m/s}^2$ fi hojiin $20\\text{ J}$ dha.", "Saffisiisni $10\\text{ m/s}^2$ fi hojiin $40\\text{ J}$ dha.", "Saffisiisni $5\\text{ m/s}^2$ fi hojiin $20\\text{ J}$ dha."]
+    },
+    "physics_Q2": {
+        "prompt": "[{grade} Qorannoo Fiiziksii (Olaanaa)] Qaaccessa sochii kuffii bilisaa {title} waliin walqabatu. Qaamni tokko hawaa duwwaa keessatti harkisa lafaa $g = 9.8\\text{ m/s}^2$ jala boqonnaa irraa gadi bu'a. Saffisni $v$ fi fageenyi $h$ kufu erga $t = 3\\text{ s}$ ta'ee meeqa?",
+        "explain": "Tarkaanfii 1: Saffisni $v = gt = 9.8 \\times 3 = 29.4\\text{ m/s}$.\nTarkaanfii 2: Fageenyi $h = \\frac{1}{2}gt^2 = 0.5 \\times 9.8 \\times 9 = 44.1\\text{ m}$.\nTarkaanfii 3: Kanaaf $v = 29.4\\text{ m/s}$ fi $h = 44.1\\text{ m}$ dha.",
+        "hints": ["Saffisa kuffii bilisaa: $v = gt$.", "Fageenya kuffii bilisaa: $h = \\frac{1}{2}gt^2$."],
+        "options": ["$v = 29.4\\text{ m/s},\\ h = 44.1\\text{ m}$", "$v = 19.6\\text{ m/s},\\ h = 19.6\\text{ m}$", "$v = 29.4\\text{ m/s},\\ h = 88.2\\text{ m}$", "$v = 9.8\\text{ m/s},\\ h = 44.1\\text{ m}$"]
+    },
+    "chemistry_Q1": {
+        "prompt": "[{grade} Qorannoo Keemistirii] Gaaffii qabiyyee gaazii {title} waliin walqabatu. $25^\\circ\\text{C}$ fi $1\\text{ atm}$ irratti qabiyyeen moolarii gaazii $24.5\\text{ L/mol}$ dha. Haala kanaan gaazii kana $0.2\\text{ mol}$ qabiyyeen isaa $\\text{L}$ meeqa ta'a?",
+        "explain": "Tarkaanfii 1: Akka seera Avoogaadrootti qabiyyeen $V = n \\times V_m$.\nTarkaanfii 2: $V = 0.2\\text{ mol} \\times 24.5\\text{ L/mol}$.\nTarkaanfii 3: Shallaggiin $V = 4.90\\text{ L}$ kenna.",
+        "hints": ["Qabiyyeen baay'ina moolii waliin kallattiin wal-madaala.", "$V = n \\times V_m$ shallagaa."],
+        "options": ["$2.45\\text{ L}$", "$4.90\\text{ L}$", "$9.80\\text{ L}$", "$12.25\\text{ L}$"]
+    },
+    "chemistry_Q2": {
+        "prompt": "[{grade} Qorannoo Keemistirii (Olaanaa)] Rakkoo qaaccessa baay'inaa {title} waliin walqabatu. Faldhaan asiidii $A$ $[\\text{H}^+] = 1.0 \\times 10^{-3}\\text{ M}$ qaba fi faldhaan $B$ $[\\text{H}^+] = 1.0 \\times 10^{-5}\\text{ M}$ qaba. Qabiyyeen ayoonii haayidiroojiinii $A$ keessaa isa $B$ caalaa dachaa meeqaan guddata?",
+        "explain": "Tarkaanfii 1: $[\\text{H}^+]_A = 10^{-3}\\text{ M}$, $[\\text{H}^+]_B = 10^{-5}\\text{ M}$.\nTarkaanfii 2: Reeshoon $\\frac{1.0 \\times 10^{-3}}{1.0 \\times 10^{-5}} = 10^2 = 100$.\nTarkaanfii 3: Faldhaan $A$ isa $B$ caalaa dachaa 100 guddaadha.",
+        "hints": ["Reeshoo $\\frac{[\\text{H}^+]_A}{[\\text{H}^+]_B}$ shallagaa.", "$10^{-3} / 10^{-5} = 10^2 = 100$."],
+        "options": ["dachaa $10$", "dachaa $100$", "dachaa $1000$", "dachaa $0.01$"]
+    },
+    "thinking1": "Yaada loojikii fi qaaccessa",
+    "goal": "Rakkoo qorannoo furuuf qajeeltoowwan {title} hojiirra oolchaa."
+}
+
+# 5. ha (Hausa)
+G6["ha"] = {
+    "math_Q1": {
+        "prompt": "[{grade} Binciken Lissafi] Tambayar bincike game da {title}. Lambobin halitta guda biyu $A$ da $B$ suna cika $A + 2B = 24$. Lokacin da $A$ ya dauki mafi girman daraja, menene darajar $B$?",
+        "explain": "Mataki 1: Sake tsara lissafin yana bada $A = 24 - 2B$.\nMataki 2: Tun da $A, B \\ge 1$ lambobin halitta ne, $2B$ dole ne ya zama mafi kankanta don $A$ ya zama mafi girma.\nMataki 3: Mafi kankantar lambar halitta ita ce $B = 1$.\nMataki 4: A wannan matsayi, $A = 24 - 2(1) = 22$ (mafi girma), don haka $B = 1$.",
+        "hints": ["Mafi kankantar darajar lambar halitta ga $B$ ita ce $1$.", "Tun da $A = 24 - 2B$, $A$ yana zama mafi girma idan $B$ ya zama mafi kankanta."],
+        "options": ["$1$", "$2$", "$3$", "$4$"]
+    },
+    "math_Q2": {
+        "prompt": "[{grade} Binciken Lissafi (Babba)] Matsalar bincike mai zurfi ta amfani da {title}. Jimillar lambobin halitta guda uku masu jere ita ce $3S$, kuma ribar mafi kankanta da mafi girma idan aka hada da $1$ daidai take da $T^2$. Idan $S = 15$, wacce ce mafi girma cikin ukun?",
+        "explain": "Mataki 1: Idan aka dauki lambobin a matsayin $n-1, n, n+1$, jimillar ita ce $3n = 3S \\Rightarrow n = S = 15$.\nMataki 2: Lambobin guda uku su ne $14, 15, 16$.\nMataki 3: Mafi girman lambar ita ce $16$.\nMataki 4: Tabbatarwa: $(14 \\times 16) + 1 = 224 + 1 = 225 = 15^2$.",
+        "hints": ["Daukar lambobin a matsayin $n-1, n, n+1$ yana bada jimillar $3n$.", "Lambar tsakiya ita ce $n = S = 15$."],
+        "options": ["$14$", "$15$", "$16$", "$17$"]
+    },
+    "physics_Q1": {
+        "prompt": "[{grade} Binciken Fiziks] Matsalar amfani da ka'idojin {title}. A kan shimfida marar gogayya, karfi $F = 10\\text{ N}$ yana aiki a kan wani abu mai nauyi $m = 2\\text{ kg}$ a tazarar $4\\text{ m}$. Wace sanarwa ce ta bayyana aikin $W$ da gaggawa $a$ daidai?",
+        "explain": "Mataki 1: Daga dokar Newton ta biyu $F = ma$, gaggawa $a = \\frac{F}{m} = \\frac{10\\text{ N}}{2\\text{ kg}} = 5\\text{ m/s}^2$.\nMataki 2: Aikin da aka yi shi ne $W = F \\cdot s = 10\\text{ N} \\times 4\\text{ m} = 40\\text{ J}$.\nMataki 3: Don haka gaggawa ita ce $5\\text{ m/s}^2$ kuma aiki $40\\text{ J}$.",
+        "hints": ["Dokar Newton ta biyu: yi amfani da $F = ma$.", "Ma'anar aiki: yi amfani da $W = F \\times s$."],
+        "options": ["Gaggawa ita ce $5\\text{ m/s}^2$ kuma aiki $40\\text{ J}$.", "Gaggawa ita ce $2\\text{ m/s}^2$ kuma aiki $20\\text{ J}$.", "Gaggawa ita ce $10\\text{ m/s}^2$ kuma aiki $40\\text{ J}$.", "Gaggawa ita ce $5\\text{ m/s}^2$ kuma aiki $20\\text{ J}$."]
+    },
+    "physics_Q2": {
+        "prompt": "[{grade} Binciken Fiziks (Babba)] Binciken motsin faduwa kyauta dangane da {title}. An saki wani abu daga tsayawa a cikin fanko a karkashin maganadisu $g = 9.8\\text{ m/s}^2$. Menene gudun $v$ da tazarar faduwa $h$ bayan $t = 3\\text{ s}$?",
+        "explain": "Mataki 1: Gudu $v = gt = 9.8 \\times 3 = 29.4\\text{ m/s}$.\nMataki 2: Tazarar $h = \\frac{1}{2}gt^2 = 0.5 \\times 9.8 \\times 9 = 44.1\\text{ m}$.\nMataki 3: Don haka $v = 29.4\\text{ m/s}$ kuma $h = 44.1\\text{ m}$.",
+        "hints": ["Gudun faduwa kyauta: $v = gt$.", "Tazarar faduwa kyauta: $h = \\frac{1}{2}gt^2$."],
+        "options": ["$v = 29.4\\text{ m/s},\\ h = 44.1\\text{ m}$", "$v = 19.6\\text{ m/s},\\ h = 19.6\\text{ m}$", "$v = 29.4\\text{ m/s},\\ h = 88.2\\text{ m}$", "$v = 9.8\\text{ m/s},\\ h = 44.1\\text{ m}$"]
+    },
+    "chemistry_Q1": {
+        "prompt": "[{grade} Binciken Kemistri] Tambayar yawan iskar gas game da {title}. A $25^\\circ\\text{C}$ da $1\\text{ atm}$, yawan molar na iskar gas shine $24.5\\text{ L/mol}$. A karkashin irin wannan yanayi, menene yawan $\\text{L}$ na $0.2\\text{ mol}$ na wannan iskar gas?",
+        "explain": "Mataki 1: Dangane da dokar Avogadro, yawa $V = n \\times V_m$.\nMataki 2: $V = 0.2\\text{ mol} \\times 24.5\\text{ L/mol}$.\nMataki 3: Lissafin yana bada $V = 4.90\\text{ L}$.",
+        "hints": ["Yawa yana da alaka kai tsaye da adadin mol.", "Lissafa $V = n \\times V_m$."],
+        "options": ["$2.45\\text{ L}$", "$4.90\\text{ L}$", "$9.80\\text{ L}$", "$12.25\\text{ L}$"]
+    },
+    "chemistry_Q2": {
+        "prompt": "[{grade} Binciken Kemistri (Babba)] Matsalar bincike mai yawa game da {title}. Ruwan acid $A$ yana da $[\\text{H}^+] = 1.0 \\times 10^{-3}\\text{ M}$ kuma ruwa $B$ yana da $[\\text{H}^+] = 1.0 \\times 10^{-5}\\text{ M}$. Sau nawa karfin ion hydrogen na $A$ ya fi na $B$ girma?",
+        "explain": "Mataki 1: $[\\text{H}^+]_A = 10^{-3}\\text{ M}$, $[\\text{H}^+]_B = 10^{-5}\\text{ M}$.\nMataki 2: Rabo $\\frac{1.0 \\times 10^{-3}}{1.0 \\times 10^{-5}} = 10^2 = 100$.\nMataki 3: Karfin $A$ ya ninka na $B$ sau 100.",
+        "hints": ["Lissafa rabo $\\frac{[\\text{H}^+]_A}{[\\text{H}^+]_B}$.", "$10^{-3} / 10^{-5} = 10^2 = 100$."],
+        "options": ["sau $10$", "sau $100$", "sau $1000$", "sau $0.01$"]
+    },
+    "thinking1": "Tunanin ma'ana da bincike",
+    "goal": "Aiwatar da ka'idojin {title} don warware matsalar bincike."
+}
+
+# 6. yo (Yoruba)
+G6["yo"] = {
+    "math_Q1": {
+        "prompt": "[{grade} Ìwádìí Ìṣirò] Ìbéèrè ìwádìí nípa {title}. Àwọn nọ́mbà àdánidá méjì $A$ àti $B$ tẹ́lọ́rùn $A + 2B = 24$. Nígbà tí $A$ bá gba iye tí ó ga jùlọ, kí ni iye $B$?",
+        "explain": "Ìgbésẹ̀ 1: Títò àgbékalẹ̀ lẹ́ẹ̀kan síi yóò fún wa ní $A = 24 - 2B$.\nÌgbésẹ̀ 2: Níwọ̀n bí $A, B \\ge 1$ ti jẹ́ nọ́mbà àdánidá, $2B$ gbọ́dọ̀ kéré jùlọ kí $A$ le ga jùlọ.\nÌgbésẹ̀ 3: Nọ́mbà àdánidá tí ó kéré jùlọ ni $B = 1$.\nÌgbésẹ̀ 4: Ní àkókò yìí, $A = 24 - 2(1) = 22$ (tí ó ga jù), nítorí náà $B = 1$.",
+        "hints": ["Iye nọ́mbà àdánidá tí ó kéré jùlọ fún $B$ ni $1$.", "Níwọ̀n bí $A = 24 - 2B$, $A$ máa ń pọ̀ jùlọ nígbà tí $B$ bá kéré jùlọ."],
+        "options": ["$1$", "$2$", "$3$", "$4$"]
+    },
+    "math_Q2": {
+        "prompt": "[{grade} Ìwádìí Ìṣirò (Gíga)] Ìṣòro ìwádìí tó jinlẹ̀ nípa lílo {title}. Àpapọ̀ àwọn nọ́mbà àdánidá mẹ́ta tẹ̀léra jẹ́ $3S$, àti àbájáde nọ́mbà tí ó kéré jùlọ àti èyí tí ó tóbi jùlọ pẹ̀lú $1$ dọ́gba pẹ̀lú $T^2$. Nígbà tí $S = 15$, èwo ni nọ́mbà tí ó tóbi jùlọ nínú àwọn mẹ́tẹ̀ẹ̀ta?",
+        "explain": "Ìgbésẹ̀ 1: Gbígba àwọn nọ́mbà bíi $n-1, n, n+1$, àpapọ̀ jẹ́ $3n = 3S \\Rightarrow n = S = 15$.\nÌgbésẹ̀ 2: Àwọn nọ́mbà mẹ́tẹ̀ẹ̀ta náà ni $14, 15, 16$.\nÌgbésẹ̀ 3: Nọ́mbà tí ó tóbi jùlọ ni $16$.\nÌgbésẹ̀ 4: Ìmúdájú: $(14 \\times 16) + 1 = 224 + 1 = 225 = 15^2$.",
+        "hints": ["Gbígba àwọn nọ́mbà tẹ̀léra bíi $n-1, n, n+1$ ń fúnni ní àpapọ̀ $3n$.", "Nọ́mbà àárín ni $n = S = 15$."],
+        "options": ["$14$", "$15$", "$16$", "$17$"]
+    },
+    "physics_Q1": {
+        "prompt": "[{grade} Ìwádìí Físíìsì] Ìṣòro tí ń lo àwọn ìlànà {title}. Lórí ilẹ̀ tí kò ní ìfagbára, agbára petele $F = 10\\text{ N}$ ń ṣiṣẹ́ lórí nǹkan tí ìwọ̀n rẹ̀ jẹ́ $m = 2\\text{ kg}$ fún ìjìnnà $4\\text{ m}$. Gbawé wo ló ṣe àpèjúwe iṣẹ́ $W$ àti ìyára $a$ ní pípé?",
+        "explain": "Ìgbésẹ̀ 1: Látinú òfin Newton kejì $F = ma$, ìyára $a = \\frac{F}{m} = \\frac{10\\text{ N}}{2\\text{ kg}} = 5\\text{ m/s}^2$.\nÌgbésẹ̀ 2: Iṣẹ́ tí a ṣe ni $W = F \\cdot s = 10\\text{ N} \\times 4\\text{ m} = 40\\text{ J}$.\nÌgbésẹ̀ 3: Nítorí náà, ìyára ni $5\\text{ m/s}^2$ àti iṣẹ́ ni $40\\text{ J}$.",
+        "hints": ["Òfin Newton kejì: lo àgbékalẹ̀ $F = ma$.", "Ìtumọ̀ iṣẹ́: lo àgbékalẹ̀ $W = F \\times s$."],
+        "options": ["Ìyára jẹ́ $5\\text{ m/s}^2$ àti iṣẹ́ jẹ́ $40\\text{ J}$.", "Ìyára jẹ́ $2\\text{ m/s}^2$ àti iṣẹ́ jẹ́ $20\\text{ J}$.", "Ìyára jẹ́ $10\\text{ m/s}^2$ àti iṣẹ́ jẹ́ $40\\text{ J}$.", "Ìyára jẹ́ $5\\text{ m/s}^2$ àti iṣẹ́ jẹ́ $20\\text{ J}$."]
+    },
+    "physics_Q2": {
+        "prompt": "[{grade} Ìwádìí Físíìsì (Gíga)] Ìtúpalẹ̀ ìṣísẹ̀ ìṣubú ọ̀fẹ́ tí ó jẹmọ́ {title}. Nǹkan kan bọ́ láti ibi ìsinmi nínú àlàfo lábẹ́ òòfà $g = 9.8\\text{ m/s}^2$. Kí ni iyára $v$ àti ìjìnnà $h$ lẹ́yìn $t = 3\\text{ s}$?",
+        "explain": "Ìgbésẹ̀ 1: Iyára $v = gt = 9.8 \\times 3 = 29.4\\text{ m/s}$.\nÌgbésẹ̀ 2: Ìjìnnà $h = \\frac{1}{2}gt^2 = 0.5 \\times 9.8 \\times 9 = 44.1\\text{ m}$.\nÌgbésẹ̀ 3: Nítorí náà $v = 29.4\\text{ m/s}$ àti $h = 44.1\\text{ m}$.",
+        "hints": ["Iyára ìṣubú ọ̀fẹ́: $v = gt$.", "Ìjìnnà ìṣubú ọ̀fẹ́: $h = \\frac{1}{2}gt^2$."],
+        "options": ["$v = 29.4\\text{ m/s},\\ h = 44.1\\text{ m}$", "$v = 19.6\\text{ m/s},\\ h = 19.6\\text{ m}$", "$v = 29.4\\text{ m/s},\\ h = 88.2\\text{ m}$", "$v = 9.8\\text{ m/s},\\ h = 44.1\\text{ m}$"]
+    },
+    "chemistry_Q1": {
+        "prompt": "[{grade} Ìwádìí Kẹ́mísítrì] Ìbéèrè ìwọ̀n gáàsì nípa {title}. Ní $25^\\circ\\text{C}$ àti $1\\text{ atm}$, ìwọ̀n molar ti gáàsì jẹ́ $24.5\\text{ L/mol}$. Lábẹ́ àwọn ipò kan náà, kí ni ìwọ̀n ní $\\text{L}$ ti $0.2\\text{ mol}$ ti gáàsì yìí?",
+        "explain": "Ìgbésẹ̀ 1: Gẹ́gẹ́ bí òfin Avogadro, ìwọ̀n $V = n \\times V_m$.\nÌgbésẹ̀ 2: $V = 0.2\\text{ mol} \\times 24.5\\text{ L/mol}$.\nÌgbésẹ̀ 3: Ìṣirò fúnni ní $V = 4.90\\text{ L}$.",
+        "hints": ["Ìwọ̀n ní ìbáṣepọ̀ tààrà pẹ̀lú iye moles.", "Ṣe ìṣirò $V = n \\times V_m$."],
+        "options": ["$2.45\\text{ L}$", "$4.90\\text{ L}$", "$9.80\\text{ L}$", "$12.25\\text{ L}$"]
+    },
+    "chemistry_Q2": {
+        "prompt": "[{grade} Ìwádìí Kẹ́mísítrì (Gíga)] Ìṣòro ìtúpalẹ̀ nípa iye tí ó jẹmọ́ {title}. Omi acid $A$ ní $[\\text{H}^+] = 1.0 \\times 10^{-3}\\text{ M}$ àti omi $B$ ní $[\\text{H}^+] = 1.0 \\times 10^{-5}\\text{ M}$. Ìgbà mélòó ni agbára hydrogen ion nínú $A$ fi pọ̀ ju $B$ lọ?",
+        "explain": "Ìgbésẹ̀ 1: $[\\text{H}^+]_A = 10^{-3}\\text{ M}$, $[\\text{H}^+]_B = 10^{-5}\\text{ M}$.\nÌgbésẹ̀ 2: Ìpín $\\frac{1.0 \\times 10^{-3}}{1.0 \\times 10^{-5}} = 10^2 = 100$.\nÌgbésẹ̀ 3: Agbára $A$ fi ìgbà 100 pọ̀ ju ti $B$ lọ.",
+        "hints": ["Ṣe ìṣirò ìpín $\\frac{[\\text{H}^+]_A}{[\\text{H}^+]_B}$.", "$10^{-3} / 10^{-5} = 10^2 = 100$."],
+        "options": ["ìgbà $10$", "ìgbà $100$", "ìgbà $1000$", "ìgbà $0.01$"]
+    },
+    "thinking1": "Ìrònú ọgbọ́n àti ìtúpalẹ̀",
+    "goal": "Lo àwọn ìlànà {title} láti yanjú ìṣòro ìwádìí."
+}
+
+# 7. ig (Igbo)
+G6["ig"] = {
+    "math_Q1": {
+        "prompt": "[{grade} Nnyocha Mgbakọ na Mwepụ] Ajụjụ nnyocha gbasara {title}. Ọnụọgụ eke abụọ $A$ na $B$ na-emezu $A + 2B = 24$. Mgbe $A$ nwetara uru kachasị elu, gịnị bụ uru $B$?",
+        "explain": "Nzọụkwụ 1: Hazigharịa usoro na-enye $A = 24 - 2B$.\nNzọụkwụ 2: Ebe $A, B \\ge 1$ bụ ọnụọgụ eke, $2B$ ga-abụ nke kacha nta ka $A$ wee buru ibu.\nNzọụkwụ 3: Ọnụọgụ eke kacha nta bụ $B = 1$.\nNzọụkwụ 4: N'oge a, $A = 24 - 2(1) = 22$ (kacha elu), ya mere $B = 1$.",
+        "hints": ["Uru ọnụọgụ eke kacha nta maka $B$ bụ $1$.", "Ebe ọ bụ na $A = 24 - 2B$, $A$ na-ebuwanye ibu mgbe $B$ dị ntakịrị."],
+        "options": ["$1$", "$2$", "$3$", "$4$"]
+    },
+    "math_Q2": {
+        "prompt": "[{grade} Nnyocha Mgbakọ na Mwepụ (Dị Elu)] Nsogbu nnyocha dị mgbagwoju anya site na iji {title}. Mkpokọta ọnụọgụ eke atọ na-esochi bụ $3S$, ngwaahịa nke kacha nta na nke kacha ukwuu gbakwunyere $1$ hà ka $T^2$. Mgbe $S = 15$, olee nke kacha ukwuu n'ime ha atọ?",
+        "explain": "Nzọụkwụ 1: Ịtụle ọnụọgụ dị ka $n-1, n, n+1$, mkpokọta bụ $3n = 3S \\Rightarrow n = S = 15$.\nNzọụkwụ 2: Ọnụọgụ atọ ahụ bụ $14, 15, 16$.\nNzọụkwụ 3: Nke kacha ukwuu bụ $16$.\nNzọụkwụ 4: Nkwenye: $(14 \\times 16) + 1 = 224 + 1 = 225 = 15^2$.",
+        "hints": ["Ịtụle ọnụọgụ na-esochi dị ka $n-1, n, n+1$ na-enye mkpokọta $3n$.", "Nke etiti bụ $n = S = 15$."],
+        "options": ["$14$", "$15$", "$16$", "$17$"]
+    },
+    "physics_Q1": {
+        "prompt": "[{grade} Nnyocha Fiziks] Nsogbu na-etinye ụkpụrụ nke {title}. N'elu ala dị larịị na-enweghị esemokwu, ike kwụ ọtọ $F = 10\\text{ N}$ na-arụ ọrụ n'ihe dị arọ $m = 2\\text{ kg}$ n'ebe dị anya nke $4\\text{ m}$. Nkwupụta dị aṅaa na-akọwa ọrụ $W$ na ngwangwa $a$ n'ụzọ ziri ezi?",
+        "explain": "Nzọụkwụ 1: Site n'iwu nke abụọ nke Newton $F = ma$, ngwangwa $a = \\frac{F}{m} = \\frac{10\\text{ N}}{2\\text{ kg}} = 5\\text{ m/s}^2$.\nNzọụkwụ 2: Ọrụ a rụrụ bụ $W = F \\cdot s = 10\\text{ N} \\times 4\\text{ m} = 40\\text{ J}$.\nNzọụkwụ 3: Ya mere ngwangwa bụ $5\\text{ m/s}^2$ na ọrụ bụ $40\\text{ J}$.",
+        "hints": ["Iwu nke abụọ nke Newton: jiri usoro $F = ma$.", "Nkọwa ọrụ: jiri usoro $W = F \\times s$."],
+        "options": ["Ngwangwa bụ $5\\text{ m/s}^2$ na ọrụ bụ $40\\text{ J}$.", "Ngwangwa bụ $2\\text{ m/s}^2$ na ọrụ bụ $20\\text{ J}$.", "Ngwangwa bụ $10\\text{ m/s}^2$ na ọrụ bụ $40\\text{ J}$.", "Ngwangwa bụ $5\\text{ m/s}^2$ na ọrụ bụ $20\\text{ J}$."]
+    },
+    "physics_Q2": {
+        "prompt": "[{grade} Nnyocha Fiziks (Dị Elu)] Nyocha mmegharị ọdịda n'efu metụtara {title}. A tụpụrụ otu ihe site na izu ike na mbara na-enweghị ikuku n'okpuru ike ndọda $g = 9.8\\text{ m/s}^2$. Gịnị bụ ọsọ $v$ na anya $h$ mgbe $t = 3\\text{ s}$ gachara?",
+        "explain": "Nzọụkwụ 1: Ọsọ $v = gt = 9.8 \\times 3 = 29.4\\text{ m/s}$.\nNzọụkwụ 2: Anya $h = \\frac{1}{2}gt^2 = 0.5 \\times 9.8 \\times 9 = 44.1\\text{ m}$.\nNzọụkwụ 3: Ya mere $v = 29.4\\text{ m/s}$ na $h = 44.1\\text{ m}$.",
+        "hints": ["Ọsọ ọdịda n'efu: $v = gt$.", "Anya ọdịda n'efu: $h = \\frac{1}{2}gt^2$."],
+        "options": ["$v = 29.4\\text{ m/s},\\ h = 44.1\\text{ m}$", "$v = 19.6\\text{ m/s},\\ h = 19.6\\text{ m}$", "$v = 29.4\\text{ m/s},\\ h = 88.2\\text{ m}$", "$v = 9.8\\text{ m/s},\\ h = 44.1\\text{ m}$"]
+    },
+    "chemistry_Q1": {
+        "prompt": "[{grade} Nnyocha Kemistri] Ajụjụ olu gas gbasara {title}. Na $25^\\circ\\text{C}$ na $1\\text{ atm}$, olu molar nke gas bụ $24.5\\text{ L/mol}$. N'otu ọnọdụ ahụ, gịnị bụ olu na $\\text{L}$ nke $0.2\\text{ mol}$ nke gas a?",
+        "explain": "Nzọụkwụ 1: Dị ka iwu Avogadro si dị, olu $V = n \\times V_m$.\nNzọụkwụ 2: $V = 0.2\\text{ mol} \\times 24.5\\text{ L/mol}$.\nNzọụkwụ 3: Ngụkọta na-enye $V = 4.90\\text{ L}$.",
+        "hints": ["Olu na-adabere kpọmkwem na ọnụọgụ nke moles.", "Gbakọọ $V = n \\times V_m$."],
+        "options": ["$2.45\\text{ L}$", "$4.90\\text{ L}$", "$9.80\\text{ L}$", "$12.25\\text{ L}$"]
+    },
+    "chemistry_Q2": {
+        "prompt": "[{grade} Nnyocha Kemistri (Dị Elu)] Nsogbu nyocha ọnụọgụ gbasara {title}. Ngwọta acid $A$ nwere $[\\text{H}^+] = 1.0 \\times 10^{-3}\\text{ M}$ na ngwọta $B$ nwere $[\\text{H}^+] = 1.0 \\times 10^{-5}\\text{ M}$. Ugboro ole ka ntinye uche hydrogen ion na $A$ karịrị $B$?",
+        "explain": "Nzọụkwụ 1: $[\\text{H}^+]_A = 10^{-3}\\text{ M}$, $[\\text{H}^+]_B = 10^{-5}\\text{ M}$.\nNzọụkwụ 2: Nhata $\\frac{1.0 \\times 10^{-3}}{1.0 \\times 10^{-5}} = 10^2 = 100$.\nNzọụkwụ 3: Ntinye uche $A$ karịrị $B$ okpukpu 100.",
+        "hints": ["Gbakọọ nhata $\\frac{[\\text{H}^+]_A}{[\\text{H}^+]_B}$.", "$10^{-3} / 10^{-5} = 10^2 = 100$."],
+        "options": ["okpukpu $10$", "okpukpu $100$", "okpukpu $1000$", "okpukpu $0.01$"]
+    },
+    "thinking1": "Echiche ezi uche na nyocha",
+    "goal": "Tinye ụkpụrụ nke {title} iji dozie nsogbu nnyocha."
+}
+
+# 8. zu (Zulu)
+G6["zu"] = {
+    "math_Q1": {
+        "prompt": "[{grade} Uphenyo Lwezibalo] Umbuzo wophenyo mayelana ne-{title}. Izinombolo zemvelo ezimbili u-$A$ no-$B$ zanelisa $A + 2B = 24$. Lapho u-$A$ ethatha inani eliphakeme kakhulu, liyini inani lika-$B$?",
+        "explain": "Isinyathelo 1: Ukuhlela kabusha isibalo kunikeza u-$A = 24 - 2B$.\nIsinyathelo 2: Njengoba u-$A, B \\ge 1$ kuyizinombolo zemvelo, u-$2B$ kufanele abe mncane kakhulu ukuze u-$A$ abe mkhulu.\nIsinyathelo 3: Inombolo yemvelo encane kakhulu ngu-$B = 1$.\nIsinyathelo 4: Kuleli qophelo, $A = 24 - 2(1) = 22$ (ubukhulu), ngakho-ke $B = 1$.",
+        "hints": ["Inani elincane lenombolo yemvelo lika-$B$ ngu-$1$.", "Njengoba $A = 24 - 2B$, u-$A$ uba mkhulu lapho u-$B$ emncane kakhulu."],
+        "options": ["$1$", "$2$", "$3$", "$4$"]
+    },
+    "math_Q2": {
+        "prompt": "[{grade} Uphenyo Lwezibalo (Okuthuthukile)] Inkinga yophenyo eyinkimbinkimbi usebenzisa i-{title}. Isamba sezinombolo zemvelo ezintathu ezilandelanayo singu-$3S$, kanti umkhiqizo wenkulu nencane kuhlanganiswe no-$1$ ulingana no-$T^2$. Lapho u-$S = 15$, iyiphi inombolo enkulu kunazo zonke?",
+        "explain": "Isinyathelo 1: Ukuthatha izinombolo njengo-$n-1, n, n+1$, isamba siba ngu-$3n = 3S \\Rightarrow n = S = 15$.\nIsinyathelo 2: Izinombolo ezintathu ngu-$14, 15, 16$.\nIsinyathelo 3: Inombolo enkulu kunazo zonke ngu-$16$.\nIsinyathelo 4: Ukuqinisekisa: $(14 \\times 16) + 1 = 224 + 1 = 225 = 15^2$.",
+        "hints": ["Ukuthatha izinombolo ezilandelanayo njengo-$n-1, n, n+1$ kunikeza isamba esingu-$3n$.", "Inombolo ephakathi nendawo ngu-$n = S = 15$."],
+        "options": ["$14$", "$15$", "$16$", "$17$"]
+    },
+    "physics_Q1": {
+        "prompt": "[{grade} Uphenyo Lwefiziksi] Inkinga esebenzisa izimiso ze-{title}. Endaweni ebushelelezi engenakungqubuzana, amandla amileyo $F = 10\\text{ N}$ asebenza entweni enesisindo $m = 2\\text{ kg}$ ebangeni elingama-$4\\text{ m}$. Yisiphi isitatimende esichaza kahle umsebenzi $W$ nokusheshisa $a$?",
+        "explain": "Isinyathelo 1: Kusuka emthethweni wesibili ka-Newton $F = ma$, ukusheshisa $a = \\frac{F}{m} = \\frac{10\\text{ N}}{2\\text{ kg}} = 5\\text{ m/s}^2$.\nIsinyathelo 2: Umsebenzi owenziwe ngu-$W = F \\cdot s = 10\\text{ N} \\times 4\\text{ m} = 40\\text{ J}$.\nIsinyathelo 3: Ngakho-ke ukusheshisa kungu-$5\\text{ m/s}^2$ kanti umsebenzi ngu-$40\\text{ J}$.",
+        "hints": ["Umthetho wesibili ka-Newton: sebenzisa ifomula $F = ma$.", "Incazelo yomsebenzi: sebenzisa ifomula $W = F \\times s$."],
+        "options": ["Ukusheshisa kungu-$5\\text{ m/s}^2$ kanti umsebenzi ngu-$40\\text{ J}$.", "Ukusheshisa kungu-$2\\text{ m/s}^2$ kanti umsebenzi ngu-$20\\text{ J}$.", "Ukusheshisa kungu-$10\\text{ m/s}^2$ kanti umsebenzi ngu-$40\\text{ J}$.", "Ukusheshisa kungu-$5\\text{ m/s}^2$ kanti umsebenzi ngu-$20\\text{ J}$."]
+    },
+    "physics_Q2": {
+        "prompt": "[{grade} Uphenyo Lwefiziksi (Okuthuthukile)] Ukuhlaziywa kokunyakaza kokuwa kwamahhala okuphathelene ne-{title}. Into iwuswa isuka ekuphumuleni endaweni engenalutho ngaphansi kwamandla adonsela phansi $g = 9.8\\text{ m/s}^2$. Ijubane $v$ nebanga $h$ eliwile emva kwesikhathi $t = 3\\text{ s}$ liyini?",
+        "explain": "Isinyathelo 1: Ijubane $v = gt = 9.8 \\times 3 = 29.4\\text{ m/s}$.\nIsinyathelo 2: Ibanga $h = \\frac{1}{2}gt^2 = 0.5 \\times 9.8 \\times 9 = 44.1\\text{ m}$.\nIsinyathelo 3: Ngakho-ke $v = 29.4\\text{ m/s}$ kanti $h = 44.1\\text{ m}$.",
+        "hints": ["Ijubane lokuwa kwamahhala: $v = gt$.", "Ibanga lokuwa kwamahhala: $h = \\frac{1}{2}gt^2$."],
+        "options": ["$v = 29.4\\text{ m/s},\\ h = 44.1\\text{ m}$", "$v = 19.6\\text{ m/s},\\ h = 19.6\\text{ m}$", "$v = 29.4\\text{ m/s},\\ h = 88.2\\text{ m}$", "$v = 9.8\\text{ m/s},\\ h = 44.1\\text{ m}$"]
+    },
+    "chemistry_Q1": {
+        "prompt": "[{grade} Uphenyo Lwekhemistri] Umbuzo wevolumu yegesi mayelana ne-{title}. Ku-$25^\\circ\\text{C}$ kanye no-$1\\text{ atm}$, ivolumu yemolar yegesi ingu-$24.5\\text{ L/mol}$. Ngaphansi kwezimo ezifanayo, yini ivolumu ku-$\\text{L}$ ye-$0.2\\text{ mol}$ yale gesi?",
+        "explain": "Isinyathelo 1: Ngokomthetho ka-Avogadro, ivolumu $V = n \\times V_m$.\nIsinyathelo 2: $V = 0.2\\text{ mol} \\times 24.5\\text{ L/mol}$.\nIsinyathelo 3: Ukubala kunikeza u-$V = 4.90\\text{ L}$.",
+        "hints": ["Ivolumu ihlobene ngokuqondile nenani lama-moles.", "Bala u-$V = n \\times V_m$."],
+        "options": ["$2.45\\text{ L}$", "$4.90\\text{ L}$", "$9.80\\text{ L}$", "$12.25\\text{ L}$"]
+    },
+    "chemistry_Q2": {
+        "prompt": "[{grade} Uphenyo Lwekhemistri (Okuthuthukile)] Inkinga yokuhlaziya ubungako mayelana ne-{title}. Isixazululo se-asidi $A$ sinokusansimbi $[\\text{H}^+] = 1.0 \\times 10^{-3}\\text{ M}$ kanti isixazululo $B$ sino-$[\\text{H}^+] = 1.0 \\times 10^{-5}\\text{ M}$. Kaphindwe kangaki ukugcwala kwe-ion ye-hydrogen ku-$A$ kukhulu kune-B?",
+        "explain": "Isinyathelo 1: $[\\text{H}^+]_A = 10^{-3}\\text{ M}$, $[\\text{H}^+]_B = 10^{-5}\\text{ M}$.\nIsinyathelo 2: Isilinganiso $\\frac{1.0 \\times 10^{-3}}{1.0 \\times 10^{-5}} = 10^2 = 100$.\nIsinyathelo 3: Ukugcwala kuka-$A$ kukhulu ngokuphindwe ka-100 kune-B.",
+        "hints": ["Bala isilinganiso $\\frac{[\\text{H}^+]_A}{[\\text{H}^+]_B}$.", "$10^{-3} / 10^{-5} = 10^2 = 100$."],
+        "options": ["kaphindwe ka-$10$", "kaphindwe ka-$100$", "kaphindwe ka-$1000$", "kaphindwe ka-$0.01$"]
+    },
+    "thinking1": "Ukucabanga okunengqondo nokuhlaziya",
+    "goal": "Sebenzisa izimiso ze-{title} ukuxazulula inkinga yophenyo."
+}
+
+# 9. xh (Xhosa)
+G6["xh"] = {
+    "math_Q1": {
+        "prompt": "[{grade} Uphando Lwezibalo] Umbuzo wophando malunga ne-{title}. Amanani emvelo amabini u-$A$ no-$B$ anelisa $A + 2B = 24$. Xa u-$A$ ethatha elona nani likhulu linokwenzeka, liyintoni ixabiso lika-$B$?",
+        "explain": "Inyathelo 1: Ukulungelelanisa isibalo kunika u-$A = 24 - 2B$.\nInyathelo 2: Njengoko u-$A, B \\ge 1$ ingamanani emvelo, u-$2B$ kufuneka abe mncinci kangangoko ukuze u-$A$ abe mkhulu.\nInyathelo 3: Elona nani lemvelo lincinci ngu-$B = 1$.\nInyathelo 4: Kweli nqanaba, $A = 24 - 2(1) = 22$ (ubukhulu), ngoko ke $B = 1$.",
+        "hints": ["Elona nani lincinci lemvelo lika-$B$ ngu-$1$.", "Kuba $A = 24 - 2B$, u-$A$ uba mkhulu xa u-$B$ emncinci."],
+        "options": ["$1$", "$2$", "$3$", "$4$"]
+    },
+    "math_Q2": {
+        "prompt": "[{grade} Uphando Lwezibalo (Phambili)] Ingxaki yophando entsonkothileyo usebenzisa i-{title}. Isiphumo sokudityaniswa kwamanani emvelo amathathu alandelelanayo ngu-$3S$, kwaye isiphumo sokuphinda-phinda elona lincinci nelona likhulu xa udibanise no-$1$ silingana no-$T^2$. Xa u-$S = 15$, leliphi elona nani likhulu kula mathathu?",
+        "explain": "Inyathelo 1: Ukuthatha amanani njengo-$n-1, n, n+1$, isiphumo siba ngu-$3n = 3S \\Rightarrow n = S = 15$.\nInyathelo 2: Amanani amathathu ngu-$14, 15, 16$.\nInyathelo 3: Elona nani likhulu ngu-$16$.\nInyathelo 4: Ukuqinisekisa: $(14 \\times 16) + 1 = 224 + 1 = 225 = 15^2$.",
+        "hints": ["Ukuthatha amanani alandelelanayo njengo-$n-1, n, n+1$ kunika isiphumo esingu-$3n$.", "Inani eliphakathi ngu-$n = S = 15$."],
+        "options": ["$14$", "$15$", "$16$", "$17$"]
+    },
+    "physics_Q1": {
+        "prompt": "[{grade} Uphando Lwefiziksi] Ingxaki esebenzisa imigaqo ye-{title}. Kwindawo ethe tyaba engenalo ukungqubana, amandla athe rhoqo $F = 10\\text{ N}$ asebenza kwinto enobunzima $m = 2\\text{ kg}$ kumgama ongama-$4\\text{ m}$. Yeyiphi ingxelo echaza ngokuchanekileyo umsebenzi $W$ nokukhawulezisa $a$?",
+        "explain": "Inyathelo 1: Ngomthetho wesibini ka-Newton $F = ma$, ukukhawulezisa $a = \\frac{F}{m} = \\frac{10\\text{ N}}{2\\text{ kg}} = 5\\text{ m/s}^2$.\nInyathelo 2: Umsebenzi owenziweyo ngu-$W = F \\cdot s = 10\\text{ N} \\times 4\\text{ m} = 40\\text{ J}$.\nInyathelo 3: Ngoko ke ukukhawulezisa ngu-$5\\text{ m/s}^2$ kwaye umsebenzi ngu-$40\\text{ J}$.",
+        "hints": ["Umthetho wesibini ka-Newton: sebenzisa ifomula $F = ma$.", "Inkcazo yomsebenzi: sebenzisa ifomula $W = F \\times s$."],
+        "options": ["Ukukhawulezisa ngu-$5\\text{ m/s}^2$ kwaye umsebenzi ngu-$40\\text{ J}$.", "Ukukhawulezisa ngu-$2\\text{ m/s}^2$ kwaye umsebenzi ngu-$20\\text{ J}$.", "Ukukhawulezisa ngu-$10\\text{ m/s}^2$ kwaye umsebenzi ngu-$40\\text{ J}$.", "Ukukhawulezisa ngu-$5\\text{ m/s}^2$ kwaye umsebenzi ngu-$20\\text{ J}$."]
+    },
+    "physics_Q2": {
+        "prompt": "[{grade} Uphando Lwefiziksi (Phambili)] Uhlalutyo lwentshukumo yokuwa simahla enxulumene ne-{title}. Into iwisiwe kwindawo engenanto phantsi komxhuzulane $g = 9.8\\text{ m/s}^2$. Yintoni isantya $v$ nomgama $h$ owileyo emva ko-$t = 3\\text{ s}$?",
+        "explain": "Inyathelo 1: Isantya $v = gt = 9.8 \\times 3 = 29.4\\text{ m/s}$.\nInyathelo 2: Umgama $h = \\frac{1}{2}gt^2 = 0.5 \\times 9.8 \\times 9 = 44.1\\text{ m}$.\nInyathelo 3: Ngoko ke $v = 29.4\\text{ m/s}$ kwaye $h = 44.1\\text{ m}$.",
+        "hints": ["Isantya sokuwa simahla: $v = gt$.", "Umgama wokuwa simahla: $h = \\frac{1}{2}gt^2$."],
+        "options": ["$v = 29.4\\text{ m/s},\\ h = 44.1\\text{ m}$", "$v = 19.6\\text{ m/s},\\ h = 19.6\\text{ m}$", "$v = 29.4\\text{ m/s},\\ h = 88.2\\text{ m}$", "$v = 9.8\\text{ m/s},\\ h = 44.1\\text{ m}$"]
+    },
+    "chemistry_Q1": {
+        "prompt": "[{grade} Uphando Lwekhemistri] Umbuzo womthamo werhasi malunga ne-{title}. Ku-$25^\\circ\\text{C}$ kunye no-$1\\text{ atm}$, umthamo werhasi yemolar ngu-$24.5\\text{ L/mol}$. Phantsi kweemeko ezifanayo, yintoni umthamo ku-$\\text{L}$ we-$0.2\\text{ mol}$ yale rhasi?",
+        "explain": "Inyathelo 1: Ngokomthetho ka-Avogadro, umthamo $V = n \\times V_m$.\nInyathelo 2: $V = 0.2\\text{ mol} \\times 24.5\\text{ L/mol}$.\nInyathelo 3: Ukubala kunika u-$V = 4.90\\text{ L}$.",
+        "hints": ["Umthamo uhambelana ngqo nenani leemoles.", "Bala u-$V = n \\times V_m$."],
+        "options": ["$2.45\\text{ L}$", "$4.90\\text{ L}$", "$9.80\\text{ L}$", "$12.25\\text{ L}$"]
+    },
+    "chemistry_Q2": {
+        "prompt": "[{grade} Uphando Lwekhemistri (Phambili)] Ingxaki yohlalutyo lobungakanani malunga ne-{title}. Isisombululo se-asidi $A$ sinokusansimbi $[\\text{H}^+] = 1.0 \\times 10^{-3}\\text{ M}$ kwaye isisombululo $B$ sino-$[\\text{H}^+] = 1.0 \\times 10^{-5}\\text{ M}$. Kaphindwe kangaphi ukuxinana kwe-ion ye-hydrogen ku-$A$ kukhulu kune-B?",
+        "explain": "Inyathelo 1: $[\\text{H}^+]_A = 10^{-3}\\text{ M}$, $[\\text{H}^+]_B = 10^{-5}\\text{ M}$.\nInyathelo 2: Umlinganiselo $\\frac{1.0 \\times 10^{-3}}{1.0 \\times 10^{-5}} = 10^2 = 100$.\nInyathelo 3: Ukuxinana kuka-$A$ kukhulu ngokuphindwe ka-100 kune-B.",
+        "hints": ["Bala umlinganiselo $\\frac{[\\text{H}^+]_A}{[\\text{H}^+]_B}$.", "$10^{-3} / 10^{-5} = 10^2 = 100$."],
+        "options": ["kaphindwe ka-$10$", "kaphindwe ka-$100$", "kaphindwe ka-$1000$", "kaphindwe ka-$0.01$"]
+    },
+    "thinking1": "Ukucinga okunengqiqo nohlalutyo",
+    "goal": "Sebenzisa imigaqo ye-{title} ukusombulula ingxaki yophando."
+}
+
+# 10. sn (Shona)
+G6["sn"] = {
+    "math_Q1": {
+        "prompt": "[{grade} Ongororo yeMasvomhu] Mubvunzo weongororo nezve {title}. Nhamba mbiri dzechisikigo $A$ na $B$ dzinozadzikisa $A + 2B = 24$. Kana $A$ achitora kukosha kukuru kunobvira, kukosha kwa $B$ chii?",
+        "explain": "Danho 1: Kurongazve equation kunopa $A = 24 - 2B$.\nDanho 2: Sezvo $A, B \\ge 1$ dziri nhamba dzechisikigo, $2B$ inofanira kuva diki kuitira kuti $A$ ave mukuru.\nDanho 3: Nhamba diki yechisikigo ndi $B = 1$.\nDanho 4: Panguva ino, $A = 24 - 2(1) = 22$ (pamusoro), saka $B = 1$.",
+        "hints": ["Kukosha kwenhamba diki yechisikigo kwa $B$ ndi $1$.", "Sezvo $A = 24 - 2B$, $A$ anokura kana $B$ ari mudiki."],
+        "options": ["$1$", "$2$", "$3$", "$4$"]
+    },
+    "math_Q2": {
+        "prompt": "[{grade} Ongororo yeMasvomhu (Pamberi)] Dambudziko rakaoma reongororo uchishandisa {title}. Kuwanda kwenhamba nhatu dzechisikigo dzinotevedzana ndi $3S$, uye zvinobuda pakuwanzanisa diki nehombe zvowedzerwa $1$ zvakaenzana ne $T^2$. Kana $S = 15$, ndeipi nhamba hombe pane idzi nhatu?",
+        "explain": "Danho 1: Kutora nhamba se $n-1, n, n+1$, zvinopa $3n = 3S \\Rightarrow n = S = 15$.\nDanho 2: Nhamba nhatu idzi ndi $14, 15, 16$.\nDanho 3: Nhamba huru ndi $16$.\nDanho 4: Kuongorora: $(14 \\times 16) + 1 = 224 + 1 = 225 = 15^2$.",
+        "hints": ["Kutora nhamba dzinotevedzana se $n-1, n, n+1$ kunopa $3n$.", "Nhamba yepakati ndi $n = S = 15$."],
+        "options": ["$14$", "$15$", "$16$", "$17$"]
+    },
+    "physics_Q1": {
+        "prompt": "[{grade} Ongororo yeFizikisi] Dambudziko rinoshandisa misimboti ye {title}. Panzvimbo yakati sandara isina kukwazisana, simba rehorizontal $F = 10\\text{ N}$ rinoshanda pachinhu chine huremu $m = 2\\text{ kg}$ panhambwe ye $4\\text{ m}$. Ndeipi chirevo chinotsanangura basa $W$ nekukasira $a$ zvakanaka?",
+        "explain": "Danho 1: Kubva pamutemo wechipiri waNewton $F = ma$, kukasira $a = \\frac{F}{m} = \\frac{10\\text{ N}}{2\\text{ kg}} = 5\\text{ m/s}^2$.\nDanho 2: Basa rakaitwa ndi $W = F \\cdot s = 10\\text{ N} \\times 4\\text{ m} = 40\\text{ J}$.\nDanho 3: Saka kukasira ndi $5\\text{ m/s}^2$ uye basa ndi $40\\text{ J}$.",
+        "hints": ["Mutemo wechipiri waNewton: shandisa formula $F = ma$.", "Tsanangudzo yebasa: shandisa formula $W = F \\times s$."],
+        "options": ["Kukasira ndi $5\\text{ m/s}^2$ uye basa ndi $40\\text{ J}$.", "Kukasira ndi $2\\text{ m/s}^2$ uye basa ndi $20\\text{ J}$.", "Kukasira ndi $10\\text{ m/s}^2$ uye basa ndi $40\\text{ J}$.", "Kukasira ndi $5\\text{ m/s}^2$ uye basa ndi $20\\text{ J}$."]
+    },
+    "physics_Q2": {
+        "prompt": "[{grade} Ongororo yeFizikisi (Pamberi)] Ongororo yekufamba kwekudonha pachena kune chekuita ne {title}. Chinhu chinodonhedzwa kubva pakuzorora pasina mweya pasi pegiravhiti $g = 9.8\\text{ m/s}^2$. Chii chinonzi velocity $v$ nenhambwe $h$ yakadonha mushure me $t = 3\\text{ s}$?",
+        "explain": "Danho 1: Velocity $v = gt = 9.8 \\times 3 = 29.4\\text{ m/s}$.\nDanho 2: Nhambwe $h = \\frac{1}{2}gt^2 = 0.5 \\times 9.8 \\times 9 = 44.1\\text{ m}$.\nDanho 3: Saka $v = 29.4\\text{ m/s}$ uye $h = 44.1\\text{ m}$.",
+        "hints": ["Velocity yekudonha: $v = gt$.", "Nhambwe yekudonha: $h = \\frac{1}{2}gt^2$."],
+        "options": ["$v = 29.4\\text{ m/s},\\ h = 44.1\\text{ m}$", "$v = 19.6\\text{ m/s},\\ h = 19.6\\text{ m}$", "$v = 29.4\\text{ m/s},\\ h = 88.2\\text{ m}$", "$v = 9.8\\text{ m/s},\\ h = 44.1\\text{ m}$"]
+    },
+    "chemistry_Q1": {
+        "prompt": "[{grade} Ongororo yeKemesitiri] Mubvunzo wevhoriyamu yegasi nezve {title}. Pa $25^\\circ\\text{C}$ uye $1\\text{ atm}$, vhoriyamu yemolar yegasi ndi $24.5\\text{ L/mol}$. Pasi pemamiriro akafanana, vhoriyamu mune $\\text{L}$ ye $0.2\\text{ mol}$ yegasi iyi chii?",
+        "explain": "Danho 1: Zvinoenderana nemutemo waAvogadro, vhoriyamu $V = n \\times V_m$.\nDanho 2: $V = 0.2\\text{ mol} \\times 24.5\\text{ L/mol}$.\nDanho 3: Masvomhu anopa $V = 4.90\\text{ L}$.",
+        "hints": ["Vhoriyamu inoenderana zvakananga nenhamba yemamoles.", "Verenga $V = n \\times V_m$."],
+        "options": ["$2.45\\text{ L}$", "$4.90\\text{ L}$", "$9.80\\text{ L}$", "$12.25\\text{ L}$"]
+    },
+    "chemistry_Q2": {
+        "prompt": "[{grade} Ongororo yeKemesitiri (Pamberi)] Dambudziko rekuongorora huwandu nezve {title}. Acidic solution $A$ ine $[\\text{H}^+] = 1.0 \\times 10^{-3}\\text{ M}$ uye solution $B$ ine $[\\text{H}^+] = 1.0 \\times 10^{-5}\\text{ M}$. Kangani kuwanda kwehydrogen ion mu $A$ kwakakura kudarika $B$?",
+        "explain": "Danho 1: $[\\text{H}^+]_A = 10^{-3}\\text{ M}$, $[\\text{H}^+]_B = 10^{-5}\\text{ M}$.\nDanho 2: Ratio $\\frac{1.0 \\times 10^{-3}}{1.0 \\times 10^{-5}} = 10^2 = 100$.\nDanho 3: Huwandu hwa $A$ hwakakura zvakapetwa ka100 kudarika $B$.",
+        "hints": ["Verenga ratio $\\frac{[\\text{H}^+]_A}{[\\text{H}^+]_B}$.", "$10^{-3} / 10^{-5} = 10^2 = 100$."],
+        "options": ["zvakapetwa ka$10$", "zvakapetwa ka$100$", "zvakapetwa ka$1000$", "zvakapetwa ka$0.01$"]
+    },
+    "thinking1": "Kufunga zvine musoro nekuongorora",
+    "goal": "Shandisa misimboti ye {title} kugadzirisa dambudziko reongororo."
+}
+
+# 11. sg (Sango)
+G6["sg"] = {
+    "math_Q1": {
+        "prompt": "[{grade} Gingo ti Diko-koli] Hundango gingo na ndo ti {title}. A-nambara ti kekereke use $A$ na $B$ asara $A + 2B = 24$. Tongana $A$ awara kota ngere ti lo, ngere ti $B$ ayeke nye?",
+        "explain": "Tamba 1: Salango equation ni afa $A = 24 - 2B$.\nTamba 2: Teti $A, B \\ge 1$ ayeke a-nambara ti kekereke, $2B$ adoit ti duti kete si $A$ aga kota.\nTamba 3: Kete nambara ti kekereke ayeke $B = 1$.\nTamba 4: Na ndo so, $A = 24 - 2(1) = 22$ (kota mingi), ni la $B = 1$.",
+        "hints": ["Kete ngere ti nambara ti kekereke teti $B$ ayeke $1$.", "Teti $A = 24 - 2B$, $A$ aga kota tongana $B$ ayeke kete."],
+        "options": ["$1$", "$2$", "$3$", "$4$"]
+    },
+    "math_Q2": {
+        "prompt": "[{grade} Gingo ti Diko-koli (Ti kota)] Kpale ti gingo nda ni so akpengba na lekengo {title}. Bongbi ti a-nambara ti kekereke ota so alondo ambaï ayeke $3S$, na koli ti kete ni na kota ni zia da $1$ ayeke $T^2$. Tongana $S = 15$, kota nambara ni ayeke so wa?",
+        "explain": "Tamba 1: Mungo a-nambara tongana $n-1, n, n+1$, bongbi ni ayeke $3n = 3S \\Rightarrow n = S = 15$.\nTamba 2: A-nambara ota ni ayeke $14, 15, 16$.\nTamba 3: Kota nambara ni ayeke $16$.\nTamba 4: Bango ni: $(14 \\times 16) + 1 = 224 + 1 = 225 = 15^2$.",
+        "hints": ["Mungo a-nambara so alondo ambaï $n-1, n, n+1$ afa bongbi ti $3n$.", "Nambara ti popo ni ayeke $n = S = 15$."],
+        "options": ["$14$", "$15$", "$16$", "$17$"]
+    },
+    "physics_Q1": {
+        "prompt": "[{grade} Gingo ti Fiziki] Kpale so asara kusala na a-ndia ti {title}. Na ndo ti sese so akpe nzoni, ngangu $F = 10\\text{ N}$ asara kusala na ndo ti ye $m = 2\\text{ kg}$ na yongoro ti $4\\text{ m}$. Tene wa afa kusala $W$ na gbe ti loro $a$ nzoni?",
+        "explain": "Tamba 1: Na ndia use ti Newton $F = ma$, loro $a = \\frac{F}{m} = \\frac{10\\text{ N}}{2\\text{ kg}} = 5\\text{ m/s}^2$.\nTamba 2: Kusala so asara ayeke $W = F \\cdot s = 10\\text{ N} \\times 4\\text{ m} = 40\\text{ J}$.\nTamba 3: Tongaso loro ayeke $5\\text{ m/s}^2$ na kusala ayeke $40\\text{ J}$.",
+        "hints": ["Ndia use ti Newton: sara kusala na $F = ma$.", "Nda ti kusala: sara kusala na $W = F \\times s$."],
+        "options": ["Loro ayeke $5\\text{ m/s}^2$ na kusala ayeke $40\\text{ J}$.", "Loro ayeke $2\\text{ m/s}^2$ na kusala ayeke $20\\text{ J}$.", "Loro ayeke $10\\text{ m/s}^2$ na kusala ayeke $40\\text{ J}$.", "Loro ayeke $5\\text{ m/s}^2$ na kusala ayeke $20\\text{ J}$."]
+    },
+    "physics_Q2": {
+        "prompt": "[{grade} Gingo ti Fiziki (Ti kota)] Fango yâ ti tongo ti ye senge senge na ndo ti {title}. Mbeni ye atï londo na dutingo kpô na ya ti pupu na gbe ti ngangu ti sese $g = 9.8\\text{ m/s}^2$. Loro $v$ na yongoro $h$ ayeke nye na peko ti $t = 3\\text{ s}$?",
+        "explain": "Tamba 1: Loro $v = gt = 9.8 \\times 3 = 29.4\\text{ m/s}$.\nTamba 2: Yongoro $h = \\frac{1}{2}gt^2 = 0.5 \\times 9.8 \\times 9 = 44.1\\text{ m}$.\nTamba 3: Tongaso $v = 29.4\\text{ m/s}$ na $h = 44.1\\text{ m}$.",
+        "hints": ["Loro ti tongo ti ye: $v = gt$.", "Yongoro ti tongo ti ye: $h = \\frac{1}{2}gt^2$."],
+        "options": ["$v = 29.4\\text{ m/s},\\ h = 44.1\\text{ m}$", "$v = 19.6\\text{ m/s},\\ h = 19.6\\text{ m}$", "$v = 29.4\\text{ m/s},\\ h = 88.2\\text{ m}$", "$v = 9.8\\text{ m/s},\\ h = 44.1\\text{ m}$"]
+    },
+    "chemistry_Q1": {
+        "prompt": "[{grade} Gingo ti Simi] Hundango ngere ti gaza na ndo ti {title}. Na $25^\\circ\\text{C}$ na $1\\text{ atm}$, volume ti mol ti gaza ayeke $24.5\\text{ L/mol}$. Na gbe ti a-ye so, volume na $\\text{L}$ ti $0.2\\text{ mol}$ ti gaza so ayeke nye?",
+        "explain": "Tamba 1: Na ndia ti Avogadro, volume $V = n \\times V_m$.\nTamba 2: $V = 0.2\\text{ mol} \\times 24.5\\text{ L/mol}$.\nTamba 3: Dikongo ni afa $V = 4.90\\text{ L}$.",
+        "hints": ["Volume ague legeoko na wungo ti mol.", "Diko $V = n \\times V_m$."],
+        "options": ["$2.45\\text{ L}$", "$4.90\\text{ L}$", "$9.80\\text{ L}$", "$12.25\\text{ L}$"]
+    },
+    "chemistry_Q2": {
+        "prompt": "[{grade} Gingo ti Simi (Ti kota)] Kpale ti diko wungo ti ye na ndo ti {title}. Ngangu ngu ti acide $A$ ayeke na $[\\text{H}^+] = 1.0 \\times 10^{-3}\\text{ M}$ na $B$ ayeke na $[\\text{H}^+] = 1.0 \\times 10^{-5}\\text{ M}$. Fango ngangu ti hydrogène na $A$ ahon ti $B$ fani oke?",
+        "explain": "Tamba 1: $[\\text{H}^+]_A = 10^{-3}\\text{ M}$, $[\\text{H}^+]_B = 10^{-5}\\text{ M}$.\nTamba 2: Fango ni $\\frac{1.0 \\times 10^{-3}}{1.0 \\times 10^{-5}} = 10^2 = 100$.\nTamba 3: Ngangu ti $A$ ahon ti $B$ fani 100.",
+        "hints": ["Diko fango ni $\\frac{[\\text{H}^+]_A}{[\\text{H}^+]_B}$.", "$10^{-3} / 10^{-5} = 10^2 = 100$."],
+        "options": ["fani $10$", "fani $100$", "fani $1000$", "fani $0.01$"]
+    },
+    "thinking1": "Bibe ti ndara na gingo nda ti ye",
+    "goal": "Sara kusala na a-ndia ti {title} ti leke kpale ni."
+}
+
+# 12. mg (Malagasy)
+G6["mg"] = {
+    "math_Q1": {
+        "prompt": "[{grade} Fikarohana Matematika] Fanontaniana fikarohana momba ny {title}. Isa voajanahary roa $A$ sy $B$ no manome $A + 2B = 24$. Rehefa mahatratra ny sanda ambony indrindra i $A$, ohatrinona ny sandan'i $B$?",
+        "explain": "Dingana 1: Ny fanovana ny fitoviana dia manome $A = 24 - 2B$.\nDingana 2: Satria $A, B \\ge 1$ dia isa voajanahary, $2B$ dia tokony ho kely indrindra mba ho lehibe indrindra i $A$.\nDingana 3: Ny isa voajanahary kely indrindra dia $B = 1$.\nDingana 4: Amin'io fotoana io, $A = 24 - 2(1) = 22$ (ambony indrindra), noho izany $B = 1$.",
+        "hints": ["Ny sanda kely indrindra ho an'ny $B$ dia $1$.", "Satria $A = 24 - 2B$, lasa lehibe indrindra i $A$ rehefa kely indrindra i $B$."],
+        "options": ["$1$", "$2$", "$3$", "$4$"]
+    },
+    "math_Q2": {
+        "prompt": "[{grade} Fikarohana Matematika (Avo Lenta)] Olana fikarohana saro-takarina amin'ny fampiasana ny {title}. Ny fitambaran'ny isa voajanahary telo mifanesy dia $3S$, ary ny vokatry ny kely indrindra sy lehibe indrindra miampy $1$ dia mitovy amin'ny $T^2$. Rehefa $S = 15$, iza no isa lehibe indrindra amin'ireo telo ireo?",
+        "explain": "Dingana 1: Raha raisina ho $n-1, n, n+1$ ireo isa, ny fitambarany dia $3n = 3S \\Rightarrow n = S = 15$.\nDingana 2: Ireo isa telo ireo dia $14, 15, 16$.\nDingana 3: Ny isa lehibe indrindra dia $16$.\nDingana 4: Fanamarinana: $(14 \\times 16) + 1 = 224 + 1 = 225 = 15^2$.",
+        "hints": ["Ny fakana isa mifanesy ho $n-1, n, n+1$ dia manome fitambarana $3n$.", "Ny isa eo afovoany dia $n = S = 15$."],
+        "options": ["$14$", "$15$", "$16$", "$17$"]
+    },
+    "physics_Q1": {
+        "prompt": "[{grade} Fikarohana Fizika] Olana mampihatra ny fitsipiky ny {title}. Eo amin'ny velarana marindrano tsy misy fikasohana, hery $F = 10\\text{ N}$ no miasa amin'ny zavatra manana lanja $m = 2\\text{ kg}$ amin'ny halavirana $4\\text{ m}$. Inona no fanambarana manazava marina ny asa $W$ sy ny fanafainganana $a$?",
+        "explain": "Dingana 1: Avy amin'ny lalàna faharoa an'i Newton $F = ma$, ny fanafainganana $a = \\frac{F}{m} = \\frac{10\\text{ N}}{2\\text{ kg}} = 5\\text{ m/s}^2$.\nDingana 2: Ny asa vita dia $W = F \\cdot s = 10\\text{ N} \\times 4\\text{ m} = 40\\text{ J}$.\nDingana 3: Noho izany, ny fanafainganana dia $5\\text{ m/s}^2$ ary ny asa dia $40\\text{ J}$.",
+        "hints": ["Lalàna faharoa an'i Newton: ampiasao ny raikipohy $F = ma$.", "Famaritana ny asa: ampiasao ny raikipohy $W = F \\times s$."],
+        "options": ["Fanafainganana $5\\text{ m/s}^2$ ary asa $40\\text{ J}$.", "Fanafainganana $2\\text{ m/s}^2$ ary asa $20\\text{ J}$.", "Fanafainganana $10\\text{ m/s}^2$ ary asa $40\\text{ J}$.", "Fanafainganana $5\\text{ m/s}^2$ ary asa $20\\text{ J}$."]
+    },
+    "physics_Q2": {
+        "prompt": "[{grade} Fikarohana Fizika (Avo Lenta)] Fanadihadiana momba ny fihetsika fianjerana maimaim-poana mifandray amin'ny {title}. Ny zavatra iray dia nilatsaka avy amin'ny fahanginana tao amin'ny banga teo ambanin'ny sinton'ny tany $g = 9.8\\text{ m/s}^2$. Inona ny hafainganam-pandeha $v$ sy ny halavirana $h$ rehefa afaka $t = 3\\text{ s}$?",
+        "explain": "Dingana 1: Hafainganam-pandeha $v = gt = 9.8 \\times 3 = 29.4\\text{ m/s}$.\nDingana 2: Halavirana $h = \\frac{1}{2}gt^2 = 0.5 \\times 9.8 \\times 9 = 44.1\\text{ m}$.\nDingana 3: Noho izany $v = 29.4\\text{ m/s}$ ary $h = 44.1\\text{ m}$.",
+        "hints": ["Hafainganam-pandeha fianjerana: $v = gt$.", "Halavirana fianjerana: $h = \\frac{1}{2}gt^2$."],
+        "options": ["$v = 29.4\\text{ m/s},\\ h = 44.1\\text{ m}$", "$v = 19.6\\text{ m/s},\\ h = 19.6\\text{ m}$", "$v = 29.4\\text{ m/s},\\ h = 88.2\\text{ m}$", "$v = 9.8\\text{ m/s},\\ h = 44.1\\text{ m}$"]
+    },
+    "chemistry_Q1": {
+        "prompt": "[{grade} Fikarohana Simia] Fanontaniana momba ny habetsaky ny gaza mifandray amin'ny {title}. Amin'ny $25^\\circ\\text{C}$ sy $1\\text{ atm}$, ny haben'ny molar gaza dia $24.5\\text{ L/mol}$. Amin'ny toe-javatra mitovy, ohatrinona ny habeny amin'ny $\\text{L}$ amin'ny $0.2\\text{ mol}$ amin'ity gaza ity?",
+        "explain": "Dingana 1: Araka ny lalànan'i Avogadro, ny habe $V = n \\times V_m$.\nDingana 2: $V = 0.2\\text{ mol} \\times 24.5\\text{ L/mol}$.\nDingana 3: Ny kajy dia manome $V = 4.90\\text{ L}$.",
+        "hints": ["Ny habe dia mifandanja mivantana amin'ny isan'ny moles.", "Kajio ny $V = n \\times V_m$."],
+        "options": ["$2.45\\text{ L}$", "$4.90\\text{ L}$", "$9.80\\text{ L}$", "$12.25\\text{ L}$"]
+    },
+    "chemistry_Q2": {
+        "prompt": "[{grade} Fikarohana Simia (Avo Lenta)] Olana fanadihadiana habetsaka mifandray amin'ny {title}. Ny vahaolana asidra $A$ dia manana $[\\text{H}^+] = 1.0 \\times 10^{-3}\\text{ M}$ ary ny vahaolana $B$ dia manana $[\\text{H}^+] = 1.0 \\times 10^{-5}\\text{ M}$. Im-piry lehibe kokoa noho ny an'i $B$ ny fitanan'ny ion hydrogène ao amin'i $A$?",
+        "explain": "Dingana 1: $[\\text{H}^+]_A = 10^{-3}\\text{ M}$, $[\\text{H}^+]_B = 10^{-5}\\text{ M}$.\nDingana 2: Ny tahan'ny $\\frac{1.0 \\times 10^{-3}}{1.0 \\times 10^{-5}} = 10^2 = 100$.\nDingana 3: Ny fitanana ao amin'i $A$ dia avo 100 heny noho ny ao amin'i $B$.",
+        "hints": ["Kajio ny tahan'ny $\\frac{[\\text{H}^+]_A}{[\\text{H}^+]_B}$.", "$10^{-3} / 10^{-5} = 10^2 = 100$."],
+        "options": ["in-$10$", "in-$100$", "in-$1000$", "in-$0.01$"]
+    },
+    "thinking1": "Fisainana lojika sy fanadihadiana",
+    "goal": "Ampiharo ny fitsipiky ny {title} hamahana ny olana fikarohana."
+}
+
+# 13. pcm (Nigerian Pidgin)
+G6["pcm"] = {
+    "math_Q1": {
+        "prompt": "[{grade} Math Inquiry] Inquiry question about {title}. Two natural numbers $A$ and $B$ satisfy $A + 2B = 24$. When $A$ take the maximum possible value, wetin be the value of $B$?",
+        "explain": "Step 1: Rearrange the equation give $A = 24 - 2B$.\nStep 2: Since $A, B \\ge 1$ na natural numbers, $2B$ must small well well so that $A$ go big.\nStep 3: The smallest natural number na $B = 1$.\nStep 4: For this point, $A = 24 - 2(1) = 22$ (maximum), so $B = 1$.",
+        "hints": ["The smallest natural number for $B$ na $1$.", "Since $A = 24 - 2B$, $A$ go big pass when $B$ small pass."],
+        "options": ["$1$", "$2$", "$3$", "$4$"]
+    },
+    "math_Q2": {
+        "prompt": "[{grade} Math Inquiry (Advanced)] Complex inquiry problem using {title}. The sum of three natural numbers wey follow each other na $3S$, and if you multiply the smallest and biggest plus $1$, e equal to $T^2$. When $S = 15$, which one big pass among the three numbers?",
+        "explain": "Step 1: Take the numbers as $n-1, n, n+1$, the sum na $3n = 3S \\Rightarrow n = S = 15$.\nStep 2: The three numbers na $14, 15, 16$.\nStep 3: The biggest number na $16$.\nStep 4: Check am: $(14 \\times 16) + 1 = 224 + 1 = 225 = 15^2$.",
+        "hints": ["Take numbers wey follow each other as $n-1, n, n+1$ to get sum $3n$.", "The middle number na $n = S = 15$."],
+        "options": ["$14$", "$15$", "$16$", "$17$"]
+    },
+    "physics_Q1": {
+        "prompt": "[{grade} Physics Inquiry] Problem wey dey apply the principles of {title}. On flat ground wey no get friction, force $F = 10\\text{ N}$ push object of mass $m = 2\\text{ kg}$ reach distance $4\\text{ m}$. Which statement describe the work $W$ and acceleration $a$ correctly?",
+        "explain": "Step 1: From Newton second law $F = ma$, acceleration $a = \\frac{F}{m} = \\frac{10\\text{ N}}{2\\text{ kg}} = 5\\text{ m/s}^2$.\nStep 2: Work wey dem do na $W = F \\cdot s = 10\\text{ N} \\times 4\\text{ m} = 40\\text{ J}$.\nStep 3: So acceleration na $5\\text{ m/s}^2$ and work na $40\\text{ J}$.",
+        "hints": ["Newton second law: use formula $F = ma$.", "Definition of work: use formula $W = F \\times s$."],
+        "options": ["Acceleration na $5\\text{ m/s}^2$ and work na $40\\text{ J}$.", "Acceleration na $2\\text{ m/s}^2$ and work na $20\\text{ J}$.", "Acceleration na $10\\text{ m/s}^2$ and work na $40\\text{ J}$.", "Acceleration na $5\\text{ m/s}^2$ and work na $20\\text{ J}$."]
+    },
+    "physics_Q2": {
+        "prompt": "[{grade} Physics Inquiry (Advanced)] Free fall analysis related to {title}. Object fall from rest for vacuum under gravity $g = 9.8\\text{ m/s}^2$. Wetin be the velocity $v$ and distance $h$ after $t = 3\\text{ s}$?",
+        "explain": "Step 1: Velocity $v = gt = 9.8 \\times 3 = 29.4\\text{ m/s}$.\nStep 2: Distance $h = \\frac{1}{2}gt^2 = 0.5 \\times 9.8 \\times 9 = 44.1\\text{ m}$.\nStep 3: So $v = 29.4\\text{ m/s}$ and $h = 44.1\\text{ m}$.",
+        "hints": ["Free fall velocity: $v = gt$.", "Free fall distance: $h = \\frac{1}{2}gt^2$."],
+        "options": ["$v = 29.4\\text{ m/s},\\ h = 44.1\\text{ m}$", "$v = 19.6\\text{ m/s},\\ h = 19.6\\text{ m}$", "$v = 29.4\\text{ m/s},\\ h = 88.2\\text{ m}$", "$v = 9.8\\text{ m/s},\\ h = 44.1\\text{ m}$"]
+    },
+    "chemistry_Q1": {
+        "prompt": "[{grade} Chemistry Inquiry] Gas volume question about {title}. At $25^\\circ\\text{C}$ and $1\\text{ atm}$, the molar volume of gas na $24.5\\text{ L/mol}$. Under the same condition, wetin be the volume in $\\text{L}$ of $0.2\\text{ mol}$ of this gas?",
+        "explain": "Step 1: According to Avogadro law, volume $V = n \\times V_m$.\nStep 2: $V = 0.2\\text{ mol} \\times 24.5\\text{ L/mol}$.\nStep 3: Calculation give $V = 4.90\\text{ L}$.",
+        "hints": ["Volume dey proportional to number of moles.", "Calculate $V = n \\times V_m$."],
+        "options": ["$2.45\\text{ L}$", "$4.90\\text{ L}$", "$9.80\\text{ L}$", "$12.25\\text{ L}$"]
+    },
+    "chemistry_Q2": {
+        "prompt": "[{grade} Chemistry Inquiry (Advanced)] Quantitative analysis problem about {title}. Acid solution $A$ get $[\\text{H}^+] = 1.0 \\times 10^{-3}\\text{ M}$ and solution $B$ get $[\\text{H}^+] = 1.0 \\times 10^{-5}\\text{ M}$. How many times hydrogen ion concentration of $A$ big pass $B$?",
+        "explain": "Step 1: $[\\text{H}^+]_A = 10^{-3}\\text{ M}$, $[\\text{H}^+]_B = 10^{-5}\\text{ M}$.\nStep 2: Ratio $\\frac{1.0 \\times 10^{-3}}{1.0 \\times 10^{-5}} = 10^2 = 100$.\nStep 3: The concentration of $A$ big pass $B$ by 100 times.",
+        "hints": ["Calculate the ratio $\\frac{[\\text{H}^+]_A}{[\\text{H}^+]_B}$.", "$10^{-3} / 10^{-5} = 10^2 = 100$."],
+        "options": ["$10\\text{ times}$", "$100\\text{ times}$", "$1000\\text{ times}$", "$0.01\\text{ times}$"]
+    },
+    "thinking1": "Logical reasoning and analysis",
+    "goal": "Apply the principles of {title} to solve the reasoning problem."
+}
+
+# 14. el (Greek)
+G6["el"] = {
+    "math_Q1": {
+        "prompt": "[{grade} Μαθηματική Διερεύνηση] Ερώτημα διερεύνησης για {title}. Δύο φυσικοί αριθμοί $A$ και $B$ ικανοποιούν την εξίσωση $A + 2B = 24$. Όταν ο $A$ παίρνει τη μέγιστη δυνατή τιμή του, ποια είναι η τιμή του $B$;",
+        "explain": "Βήμα 1: Αναδιατάσσοντας την εξίσωση έχουμε $A = 24 - 2B$.\nΒήμα 2: Επειδή $A, B \\ge 1$ είναι φυσικοί αριθμοί, το $2B$ πρέπει να ελαχιστοποιηθεί για να μεγιστοποιηθεί ο $A$.\nΒήμα 3: Ο ελάχιστος φυσικός αριθμός είναι $B = 1$.\nΒήμα 4: Σε αυτό το σημείο, $A = 24 - 2(1) = 22$ (μέγιστο), άρα $B = 1$.",
+        "hints": ["Η ελάχιστη τιμή φυσικού αριθμού για το $B$ είναι $1$.", "Επειδή $A = 24 - 2B$, ο $A$ μεγιστοποιείται όταν ο $B$ είναι ελάχιστος."],
+        "options": ["$1$", "$2$", "$3$", "$4$"]
+    },
+    "math_Q2": {
+        "prompt": "[{grade} Μαθηματική Διερεύνηση (Προχωρημένο)] Σύνθετο πρόβλημα διερεύνησης με χρήση του {title}. Το άθροισμα τριών διαδοχικών φυσικών αριθμών είναι $3S$, και το γινόμενο του μικρότερου και του μεγαλύτερου συν $1$ ισούται με $T^2$. Όταν $S = 15$, ποιος είναι ο μεγαλύτερος από αυτούς τους τρεις αριθμούς;",
+        "explain": "Βήμα 1: Θεωρώντας τους αριθμούς ως $n-1, n, n+1$, το άθροισμα είναι $3n = 3S \\Rightarrow n = S = 15$.\nΒήμα 2: Οι τρεις αριθμοί είναι $14, 15, 16$.\nΒήμα 3: Ο μεγαλύτερος αριθμός είναι ο $16$.\nΒήμα 4: Επαλήθευση: $(14 \\times 16) + 1 = 224 + 1 = 225 = 15^2$.",
+        "hints": ["Η αναπαράσταση διαδοχικών αριθμών ως $n-1, n, n+1$ δίνει άθροισμα $3n$.", "Ο μεσαίος αριθμός είναι $n = S = 15$."],
+        "options": ["$14$", "$15$", "$16$", "$17$"]
+    },
+    "physics_Q1": {
+        "prompt": "[{grade} Φυσική Διερεύνηση] Πρόβλημα εφαρμογής αρχών του {title}. Σε οριζόντια επιφάνεια χωρίς τριβή, σταθερή οριζόντια δύναμη $F = 10\\text{ N}$ ασκείται σε σώμα μάζας $m = 2\\text{ kg}$ για απόσταση $4\\text{ m}$. Ποια δήλωση περιγράφει σωστά το παραγόμενο έργο $W$ και την επιτάχυνση $a$;",
+        "explain": "Βήμα 1: Από τον δεύτερο νόμο του Νεύτωνα $F = ma$, η επιτάχυνση είναι $a = \\frac{F}{m} = \\frac{10\\text{ N}}{2\\text{ kg}} = 5\\text{ m/s}^2$.\nΒήμα 2: Το παραγόμενο έργο είναι $W = F \\cdot s = 10\\text{ N} \\times 4\\text{ m} = 40\\text{ J}$.\nΒήμα 3: Επομένως, η επιτάχυνση είναι $5\\text{ m/s}^2$ και το έργο $40\\text{ J}$.",
+        "hints": ["Δεύτερος νόμος Νεύτωνα: χρησιμοποιήστε τον τύπο $F = ma$.", "Ορισμός έργου: χρησιμοποιήστε τον τύπο $W = F \\times s$."],
+        "options": ["Επιτάχυνση $5\\text{ m/s}^2$ και έργο $40\\text{ J}$.", "Επιτάχυνση $2\\text{ m/s}^2$ και έργο $20\\text{ J}$.", "Επιτάχυνση $10\\text{ m/s}^2$ και έργο $40\\text{ J}$.", "Επιτάχυνση $5\\text{ m/s}^2$ και έργο $20\\text{ J}$."]
+    },
+    "physics_Q2": {
+        "prompt": "[{grade} Φυσική Διερεύνηση (Προχωρημένο)] Ανάλυση κίνησης ελεύθερης πτώσης σχετικά με {title}. Ένα αντικείμενο αφήνεται από κατάσταση ηρεμίας στο κενό υπό την επίδραση της βαρύτητας $g = 9.8\\text{ m/s}^2$. Ποια είναι η ταχύτητα $v$ και η απόσταση $h$ μετά από $t = 3\\text{ s}$;",
+        "explain": "Βήμα 1: Ταχύτητα $v = gt = 9.8 \\times 3 = 29.4\\text{ m/s}$.\nΒήμα 2: Απόσταση $h = \\frac{1}{2}gt^2 = 0.5 \\times 9.8 \\times 9 = 44.1\\text{ m}$.\nΒήμα 3: Άρα $v = 29.4\\text{ m/s}$ και $h = 44.1\\text{ m}$.",
+        "hints": ["Ταχύτητα ελεύθερης πτώσης: $v = gt$.", "Απόσταση ελεύθερης πτώσης: $h = \\frac{1}{2}gt^2$."],
+        "options": ["$v = 29.4\\text{ m/s},\\ h = 44.1\\text{ m}$", "$v = 19.6\\text{ m/s},\\ h = 19.6\\text{ m}$", "$v = 29.4\\text{ m/s},\\ h = 88.2\\text{ m}$", "$v = 9.8\\text{ m/s},\\ h = 44.1\\text{ m}$"]
+    },
+    "chemistry_Q1": {
+        "prompt": "[{grade} Χημική Διερεύνηση] Ερώτημα όγκου αερίου σχετικά με {title}. Στους $25^\\circ\\text{C}$ και $1\\text{ atm}$, ο γραμμομοριακός όγκος αερίου είναι $24.5\\text{ L/mol}$. Υπό τις ίδιες συνθήκες, ποιος είναι ο όγκος σε $\\text{L}$ για $0.2\\text{ mol}$ αυτού του αερίου;",
+        "explain": "Βήμα 1: Σύμφωνα με τον νόμο του Avogadro, ο όγκος είναι $V = n \\times V_m$.\nΒήμα 2: $V = 0.2\\text{ mol} \\times 24.5\\text{ L/mol}$.\nΒήμα 3: Ο υπολογισμός δίνει $V = 4.90\\text{ L}$.",
+        "hints": ["Ο όγκος είναι ανάλογος του αριθμού των mol.", "Υπολογίστε $V = n \\times V_m$."],
+        "options": ["$2.45\\text{ L}$", "$4.90\\text{ L}$", "$9.80\\text{ L}$", "$12.25\\text{ L}$"]
+    },
+    "chemistry_Q2": {
+        "prompt": "[{grade} Χημική Διερεύνηση (Προχωρημένο)] Πρόβλημα ποσοτικής ανάλυσης σχετικά με {title}. Όξινο διάλυμα $A$ έχει $[\\text{H}^+] = 1.0 \\times 10^{-3}\\text{ M}$ και διάλυμα $B$ έχει $[\\text{H}^+] = 1.0 \\times 10^{-5}\\text{ M}$. Πόσες φορές μεγαλύτερη είναι η συγκέντρωση ιόντων υδρογόνου στο $A$ από το $B$;",
+        "explain": "Βήμα 1: $[\\text{H}^+]_A = 10^{-3}\\text{ M}$, $[\\text{H}^+]_B = 10^{-5}\\text{ M}$.\nΒήμα 2: Λόγος $\\frac{1.0 \\times 10^{-3}}{1.0 \\times 10^{-5}} = 10^2 = 100$.\nΒήμα 3: Η συγκέντρωση του $A$ είναι 100 φορές μεγαλύτερη από του $B$.",
+        "hints": ["Υπολογίστε τον λόγο $\\frac{[\\text{H}^+]_A}{[\\text{H}^+]_B}$.", "$10^{-3} / 10^{-5} = 10^2 = 100$."],
+        "options": ["$10\\text{ φορές}$", "$100\\text{ φορές}$", "$1000\\text{ φορές}$", "$0.01\\text{ φορές}$"]
+    },
+    "thinking1": "Λογική σκέψη και ανάλυση",
+    "goal": "Εφαρμόστε τις αρχές του {title} για να επιλύσετε το πρόβλημα διερεύνησης."
+}
+
+# 15. ka (Georgian)
+G6["ka"] = {
+    "math_Q1": {
+        "prompt": "[{grade} მათემატიკური კვლევა] კვლევითი კითხვა თემაზე {title}. ორი ნატურალური რიცხვი $A$ და $B$ აკმაყოფილებს $A + 2B = 24$ განტოლებას. როდესაც $A$ იღებს მაქსიმალურ შესაძლო მნიშვნელობას, რა არის $B$-ს მნიშვნელობა?",
+        "explain": "ნაბიჯი 1: განტოლების გარდაქმნით მივიღებთ $A = 24 - 2B$.\nნაბიჯი 2: რადგან $A, B \\ge 1$ ნატურალური რიცხვებია, $A$-ს მაქსიმიზაციისთვის $2B$ მინიმალური უნდა იყოს.\nნაბიჯი 3: უმცირესი ნატურალური რიცხვია $B = 1$.\nნაბიჯი 4: ამ დროს $A = 24 - 2(1) = 22$ (მაქსიმუმი), ამიტომ $B = 1$.",
+        "hints": ["$B$-ს უმცირესი ნატურალური მნიშვნელობაა $1$.", "რადგან $A = 24 - 2B$, $A$ მაქსიმალურია, როცა $B$ მინიმალურია."],
+        "options": ["$1$", "$2$", "$3$", "$4$"]
+    },
+    "math_Q2": {
+        "prompt": "[{grade} მათემატიკური კვლევა (გაღრმავებული)] რთული კვლევითი ამოცანა {title}-ის გამოყენებით. სამი თანმიმდევრული ნატურალური რიცხვის ჯამია $3S$, ხოლო უმცირესისა და უდიდესის ნამრავლს დამატებული $1$ უდრის $T^2$-ს. როდესაც $S = 15$, რა არის უდიდესი რიცხვი ამ სამიდან?",
+        "explain": "ნაბიჯი 1: რიცხვების აღნიშვნით $n-1, n, n+1$, ჯამია $3n = 3S \\Rightarrow n = S = 15$.\nნაბიჯი 2: ეს სამი რიცხვია $14, 15, 16$.\nნაბიჯი 3: უდიდესი რიცხვია $16$.\nნაბიჯი 4: შემოწმება: $(14 \\times 16) + 1 = 224 + 1 = 225 = 15^2$.",
+        "hints": ["თანმიმდევრული რიცხვების $n-1, n, n+1$ სახით აღნიშვნა იძლევა ჯამს $3n$.", "შუა რიცხვია $n = S = 15$."],
+        "options": ["$14$", "$15$", "$16$", "$17$"]
+    },
+    "physics_Q1": {
+        "prompt": "[{grade} ფიზიკური კვლევა] ამოცანა, რომელიც იყენებს {title}-ის პრინციპებს. უხახუნო ჰორიზონტალურ ზედაპირზე მუდმივი ჰორიზონტალური ძალა $F = 10\\text{ N}$ მოქმედებს $m = 2\\text{ kg}$ მასის სხეულზე $4\\text{ m}$ მანძილზე. რომელი დებულება აღწერს სწორად შესრულებულ მუშაობას $W$ და აჩქარებას $a$?",
+        "explain": "ნაბიჯი 1: ნიუტონის მეორე კანონიდან $F = ma$, აჩქარება $a = \\frac{F}{m} = \\frac{10\\text{ N}}{2\\text{ kg}} = 5\\text{ m/s}^2$.\nნაბიჯი 2: შესრულებული მუშაობაა $W = F \\cdot s = 10\\text{ N} \\times 4\\text{ m} = 40\\text{ J}$.\nნაბიჯი 3: მაშასადამე, აჩქარებაა $5\\text{ m/s}^2$ და მუშაობაა $40\\text{ J}$.",
+        "hints": ["ნიუტონის მეორე კანონი: გამოიყენეთ ფორმულა $F = ma$.", "მუშაობის განსაზღვრება: გამოიყენეთ ფორმულა $W = F \\times s$."],
+        "options": ["აჩქარებაა $5\\text{ m/s}^2$ და მუშაობაა $40\\text{ J}$.", "აჩქარებაა $2\\text{ m/s}^2$ და მუშაობაა $20\\text{ J}$.", "აჩქარებაა $10\\text{ m/s}^2$ და მუშაობაა $40\\text{ J}$.", "აჩქარებაა $5\\text{ m/s}^2$ და მუშაობაა $20\\text{ J}$."]
+    },
+    "physics_Q2": {
+        "prompt": "[{grade} ფიზიკური კვლევა (გაღრმავებული)] თავისუფალი ვარდნის მოძრაობის ანალიზი თემაზე {title}. სხეული უძრაობის მდგომარეობიდან ვარდება ვაკუუმში გრავიტაციის $g = 9.8\\text{ m/s}^2$ პირობებში. რა არის მისი სიჩქარე $v$ და გავლილი მანძილი $h$ დროის $t = 3\\text{ s}$ გასვლის შემდეგ?",
+        "explain": "ნაბიჯი 1: სიჩქარე $v = gt = 9.8 \\times 3 = 29.4\\text{ m/s}$.\nნაბიჯი 2: მანძილი $h = \\frac{1}{2}gt^2 = 0.5 \\times 9.8 \\times 9 = 44.1\\text{ m}$.\nნაბიჯი 3: მაშასადამე, $v = 29.4\\text{ m/s}$ და $h = 44.1\\text{ m}$.",
+        "hints": ["თავისუფალი ვარდნის სიჩქარე: $v = gt$.", "თავისუფალი ვარდნის მანძილი: $h = \\frac{1}{2}gt^2$."],
+        "options": ["$v = 29.4\\text{ m/s},\\ h = 44.1\\text{ m}$", "$v = 19.6\\text{ m/s},\\ h = 19.6\\text{ m}$", "$v = 29.4\\text{ m/s},\\ h = 88.2\\text{ m}$", "$v = 9.8\\text{ m/s},\\ h = 44.1\\text{ m}$"]
+    },
+    "chemistry_Q1": {
+        "prompt": "[{grade} ქიმიური კვლევა] აირის მოცულობის საკითხი თემაზე {title}. $25^\\circ\\text{C}$-სა და $1\\text{ atm}$-ზე აირის მოლური მოცულობაა $24.5\\text{ L/mol}$. იმავე პირობებში, რა მოცულობა ექნება $\\text{L}$-ში ამ აირის $0.2\\text{ mol}$-ს?",
+        "explain": "ნაბიჯი 1: ავოგადროს კანონის თანახმად, მოცულობა $V = n \\times V_m$.\nნაბიჯი 2: $V = 0.2\\text{ mol} \\times 24.5\\text{ L/mol}$.\nნაბიჯი 3: გამოთვლა იძლევა $V = 4.90\\text{ L}$.",
+        "hints": ["მოცულობა მოლების რაოდენობის პირდაპირპროპორციულია.", "გამოთვალეთ $V = n \\times V_m$."],
+        "options": ["$2.45\\text{ L}$", "$4.90\\text{ L}$", "$9.80\\text{ L}$", "$12.25\\text{ L}$"]
+    },
+    "chemistry_Q2": {
+        "prompt": "[{grade} ქიმიური კვლევა (გაღრმავებული)] რაოდენობრივი ანალიზის ამოცანა თემაზე {title}. მჟავა ხსნარს $A$ აქვს $[\\text{H}^+] = 1.0 \\times 10^{-3}\\text{ M}$ და ხსნარს $B$ აქვს $[\\text{H}^+] = 1.0 \\times 10^{-5}\\text{ M}$. რამდენჯერ მეტია წყალბად-იონთა კონცენტრაცია $A$ ხსნარში, ვიდრე $B$-ში?",
+        "explain": "ნაბიჯი 1: $[\\text{H}^+]_A = 10^{-3}\\text{ M}$, $[\\text{H}^+]_B = 10^{-5}\\text{ M}$.\nნაბიჯი 2: თანაფარდობა $\\frac{1.0 \\times 10^{-3}}{1.0 \\times 10^{-5}} = 10^2 = 100$.\nნაბიჯი 3: $A$ ხსნარის კონცენტრაცია 100-ჯერ მეტია $B$-ზე.",
+        "hints": ["გამოთვალეთ თანაფარდობა $\\frac{[\\text{H}^+]_A}{[\\text{H}^+]_B}$.", "$10^{-3} / 10^{-5} = 10^2 = 100$."],
+        "options": ["$10$-ჯერ", "$100$-ჯერ", "$1000$-ჯერ", "$0.01$-ჯერ"]
+    },
+    "thinking1": "ლოგიკური მსჯელობა და ანალიზი",
+    "goal": "გამოიყენეთ {title}-ის პრინციპები კვლევითი ამოცანის ამოსახსნელად."
+}
+
+# 16. eu (Basque)
+G6["eu"] = {
+    "math_Q1": {
+        "prompt": "[{grade} Ikerketa Matematikoa] {title} gaiari buruzko ikerketa-galdera. $A$ eta $B$ bi zenbaki arruntek $A + 2B = 24$ ekuazioa betetzen dute. $A$-k ahalik eta baliorik handiena hartzen duenean, zein da $B$-ren balioa?",
+        "explain": "1. urratsa: Ekuazioa berrantolatuz, $A = 24 - 2B$ lortzen da.\n2. urratsa: $A, B \\ge 1$ zenbaki arruntak direnez, $2B$ ahalik eta txikiena izan behar da $A$ handiena izateko.\n3. urratsa: Zenbaki arrunt txikiena $B = 1$ da.\n4. urratsa: Puntu honetan, $A = 24 - 2(1) = 22$ (gehienezkoa), beraz $B = 1$.",
+        "hints": ["$B$-ren zenbaki arrunt txikiena $1$ da.", "$A = 24 - 2B$ denez, $A$ maximoa da $B$ minimoa denean."],
+        "options": ["$1$", "$2$", "$3$", "$4$"]
+    },
+    "math_Q2": {
+        "prompt": "[{grade} Ikerketa Matematikoa (Aurreratua)] Ikerketa-arazo konplexua {title} erabiliz. Hiru zenbaki arrunt jarrairen batura $3S$ da, eta txikienaren eta handienaren biderketari $1$ gehituta $T^2$-ren berdina da. $S = 15$ denean, zein da hiru hauetatik handiena?",
+        "explain": "1. urratsa: Zenbakiak $n-1, n, n+1$ bezala hartuta, batura $3n = 3S \\Rightarrow n = S = 15$ da.\n2. urratsa: Hiru zenbakiak $14, 15, 16$ dira.\n3. urratsa: Zenbaki handiena $16$ da.\n4. urratsa: Egiaztapena: $(14 \\times 16) + 1 = 224 + 1 = 225 = 15^2$.",
+        "hints": ["Jarraian dauden zenbakiak $n-1, n, n+1$ gisa hartzeak $3n$ batura ematen du.", "Erdiko zenbakia $n = S = 15$ da."],
+        "options": ["$14$", "$15$", "$16$", "$17$"]
+    },
+    "physics_Q1": {
+        "prompt": "[{grade} Fisikako Ikerketa] {title}-ren printzipioak aplikatzen dituen arazoa. FriSubjectrik gabeko gainazal horizontal batean, $F = 10\\text{ N}$-eko indar horizontal konstante batek $m = 2\\text{ kg}$-ko masa duen gorputz bati eragiten dio $4\\text{ m}$-tan zehar. Zein adierazpenek deskribatzen ditu behar bezala egindako lana $W$ eta azelerazioa $a$?",
+        "explain": "1. urratsa: Newtonen bigarren legetik $F = ma$, azelerazioa $a = \\frac{F}{m} = \\frac{10\\text{ N}}{2\\text{ kg}} = 5\\text{ m/s}^2$ da.\n2. urratsa: Egindako lana $W = F \\cdot s = 10\\text{ N} \\times 4\\text{ m} = 40\\text{ J}$ da.\n3. urratsa: Beraz, azelerazioa $5\\text{ m/s}^2$ da eta lana $40\\text{ J}$.",
+        "hints": ["Newtonen bigarren legea: erabili $F = ma$ formula.", "Lanaren definizioa: erabili $W = F \\times s$ formula."],
+        "options": ["Azelerazioa $5\\text{ m/s}^2$ eta lana $40\\text{ J}$ da.", "Azelerazioa $2\\text{ m/s}^2$ eta lana $20\\text{ J}$ da.", "Azelerazioa $10\\text{ m/s}^2$ eta lana $40\\text{ J}$ da.", "Azelerazioa $5\\text{ m/s}^2$ eta lana $20\\text{ J}$ da."]
+    },
+    "physics_Q2": {
+        "prompt": "[{grade} Fisikako Ikerketa (Aurreratua)] Eroriko askearen mugimenduaren analisia {title} gaiari dagokionez. Gorputz bat huts-hutsik askatzen da grabitatearen pean $g = 9.8\\text{ m/s}^2$. Zein dira abiadura $v$ eta eroritako distantzia $h$ denbora $t = 3\\text{ s}$ igaro ondoren?",
+        "explain": "1. urratsa: Abiadura $v = gt = 9.8 \\times 3 = 29.4\\text{ m/s}$.\n2. urratsa: Distantzia $h = \\frac{1}{2}gt^2 = 0.5 \\times 9.8 \\times 9 = 44.1\\text{ m}$.\n3. urratsa: Beraz $v = 29.4\\text{ m/s}$ eta $h = 44.1\\text{ m}$.",
+        "hints": ["Eroriko askearen abiadura: $v = gt$.", "Eroriko askearen distantzia: $h = \\frac{1}{2}gt^2$."],
+        "options": ["$v = 29.4\\text{ m/s},\\ h = 44.1\\text{ m}$", "$v = 19.6\\text{ m/s},\\ h = 19.6\\text{ m}$", "$v = 29.4\\text{ m/s},\\ h = 88.2\\text{ m}$", "$v = 9.8\\text{ m/s},\\ h = 44.1\\text{ m}$"]
+    },
+    "chemistry_Q1": {
+        "prompt": "[{grade} Kimikako Ikerketa] Gasaren bolumenari buruzko galdera {title} gaiari dagokionez. $25^\\circ\\text{C}$-tan eta $1\\text{ atm}$-tan, gas baten bolumen molarra $24.5\\text{ L/mol}$ da. Baldintza berberetan, zein da gas honen $0.2\\text{ mol}$-ren bolumena $\\text{L}$-tan?",
+        "explain": "1. urratsa: Avogadroredan legearen arabera, bolumena $V = n \\times V_m$.\n2. urratsa: $V = 0.2\\text{ mol} \\times 24.5\\text{ L/mol}$.\n3. urratsa: Kalkuluak $V = 4.90\\text{ L}$ ematen du.",
+        "hints": ["Bolumena mol kopuruarekiko zuzenki proportzionala da.", "Kalkulatu $V = n \\times V_m$."],
+        "options": ["$2.45\\text{ L}$", "$4.90\\text{ L}$", "$9.80\\text{ L}$", "$12.25\\text{ L}$"]
+    },
+    "chemistry_Q2": {
+        "prompt": "[{grade} Kimikako Ikerketa (Aurreratua)] Analisi kuantitatiboaren arazoa {title} gaiari dagokionez. $A$ disoluzio azidoak $[\\text{H}^+] = 1.0 \\times 10^{-3}\\text{ M}$ du eta $B$ disoluzioak $[\\text{H}^+] = 1.0 \\times 10^{-5}\\text{ M}$. Zenbat aldiz handiagoa da hidrogeno ioien kontzentrazioa $A$-n $B$-n baino?",
+        "explain": "1. urratsa: $[\\text{H}^+]_A = 10^{-3}\\text{ M}$, $[\\text{H}^+]_B = 10^{-5}\\text{ M}$.\n2. urratsa: Erlazioa $\\frac{1.0 \\times 10^{-3}}{1.0 \\times 10^{-5}} = 10^2 = 100$.\n3. urratsa: $A$-ren kontzentrazioa $B$-rena baino 100 aldiz handiagoa da.",
+        "hints": ["Kalkulatu $\\frac{[\\text{H}^+]_A}{[\\text{H}^+]_B}$ erlazioa.", "$10^{-3} / 10^{-5} = 10^2 = 100$."],
+        "options": ["$10\\text{ aldiz}$", "$100\\text{ aldiz}$", "$1000\\text{ aldiz}$", "$0.01\\text{ aldiz}$"]
+    },
+    "thinking1": "Arrazoibide logikoa eta analisia",
+    "goal": "{title}-ren printzipioak aplikatu ikerketa-arazoa konpontzeko."
+}
+
+# 17. sq (Albanian)
+G6["sq"] = {
+    "math_Q1": {
+        "prompt": "[{grade} Hetim Matematik] Pyetje hetimore rreth {title}. Dy numra natyrorë $A$ dhe $B$ plotësojnë $A + 2B = 24$. Kur $A$ merr vlerën maksimale të mundshme, cila është vlera e $B$?",
+        "explain": "Hapi 1: Riorganizimi i ekuacionit jep $A = 24 - 2B$.\nHapi 2: Meqenëse $A, B \\ge 1$ janë numra natyrorë, $2B$ duhet të minimizohet që $A$ të maksimizohet.\nHapi 3: Numri natyror më i vogël është $B = 1$.\nHapi 4: Në këtë pikë, $A = 24 - 2(1) = 22$ (maksimumi), prandaj $B = 1$.",
+        "hints": ["Vlera minimale e numrit natyror për $B$ është $1$.", "Meqenëse $A = 24 - 2B$, $A$ maksimizohet kur $B$ minimizohet."],
+        "options": ["$1$", "$2$", "$3$", "$4$"]
+    },
+    "math_Q2": {
+        "prompt": "[{grade} Hetim Matematik (I avancuar)] Problem kompleks hetimor duke përdorur {title}. Shuma e tre numrave natyrorë të njëpasnjëshëm është $3S$, dhe prodhimi i më të voglit dhe më të madhit plus $1$ është i barabartë me $T^2$. Kur $S = 15$, cili është numri më i madh nga këta të tre?",
+        "explain": "Hapi 1: Duke marrë numrat si $n-1, n, n+1$, shuma është $3n = 3S \\Rightarrow n = S = 15$.\nHapi 2: Tre numrat janë $14, 15, 16$.\nHapi 3: Numri më i madh është $16$.\nHapi 4: Verifikimi: $(14 \\times 16) + 1 = 224 + 1 = 225 = 15^2$.",
+        "hints": ["Marrja e numrave të njëpasnjëshëm si $n-1, n, n+1$ jep shumën $3n$.", "Numri i mesit është $n = S = 15$."],
+        "options": ["$14$", "$15$", "$16$", "$17$"]
+    },
+    "physics_Q1": {
+        "prompt": "[{grade} Hetim Fizik] Problem që zbaton parimet e {title}. Në një sipërfaqe horizontale pa fërkim, forca horizontale konstante $F = 10\\text{ N}$ vepron mbi trupin me masë $m = 2\\text{ kg}$ për një distancë $4\\text{ m}$. Cila thënie përshkruan saktë punën $W$ të kryer dhe nxitimin $a$?",
+        "explain": "Hapi 1: Nga ligji i dytë i Njutonit $F = ma$, nxitimi $a = \\frac{F}{m} = \\frac{10\\text{ N}}{2\\text{ kg}} = 5\\text{ m/s}^2$.\nHapi 2: Puna e kryer është $W = F \\cdot s = 10\\text{ N} \\times 4\\text{ m} = 40\\text{ J}$.\nHapi 3: Prandaj nxitimi është $5\\text{ m/s}^2$ dhe puna $40\\text{ J}$.",
+        "hints": ["Ligji i dytë i Njutonit: përdorni formulën $F = ma$.", "Përkufizimi i punës: përdorni formulën $W = F \\times s$."],
+        "options": ["Nxitimi është $5\\text{ m/s}^2$ dhe puna $40\\text{ J}$.", "Nxitimi është $2\\text{ m/s}^2$ dhe puna $20\\text{ J}$.", "Nxitimi është $10\\text{ m/s}^2$ dhe puna $40\\text{ J}$.", "Nxitimi është $5\\text{ m/s}^2$ dhe puna $20\\text{ J}$."]
+    },
+    "physics_Q2": {
+        "prompt": "[{grade} Hetim Fizik (I avancuar)] Analiza e lëvizjes së rënies së lirë lidhur me {title}. Një trup lëshohet nga qetësia në vakum nën gravitetin $g = 9.8\\text{ m/s}^2$. Sa janë shpejtësia $v$ dhe distanca $h$ pas $t = 3\\text{ s}$?",
+        "explain": "Hapi 1: Shpejtësia $v = gt = 9.8 \\times 3 = 29.4\\text{ m/s}$.\nHapi 2: Distanca $h = \\frac{1}{2}gt^2 = 0.5 \\times 9.8 \\times 9 = 44.1\\text{ m}$.\nHapi 3: Pra $v = 29.4\\text{ m/s}$ dhe $h = 44.1\\text{ m}$.",
+        "hints": ["Shpejtësia e rënies së lirë: $v = gt$.", "Distanca e rënies së lirë: $h = \\frac{1}{2}gt^2$."],
+        "options": ["$v = 29.4\\text{ m/s},\\ h = 44.1\\text{ m}$", "$v = 19.6\\text{ m/s},\\ h = 19.6\\text{ m}$", "$v = 29.4\\text{ m/s},\\ h = 88.2\\text{ m}$", "$v = 9.8\\text{ m/s},\\ h = 44.1\\text{ m}$"]
+    },
+    "chemistry_Q1": {
+        "prompt": "[{grade} Hetim Kimik] Pyetje e vëllimit të gazit lidhur me {title}. Në $25^\\circ\\text{C}$ dhe $1\\text{ atm}$, vëllimi molar i gazit është $24.5\\text{ L/mol}$. Nën të njëjtat kushte, sa është vëllimi në $\\text{L}$ i $0.2\\text{ mol}$ të këtij gazi?",
+        "explain": "Hapi 1: Sipas ligjit të Avogadros, vëllimi $V = n \\times V_m$.\nHapi 2: $V = 0.2\\text{ mol} \\times 24.5\\text{ L/mol}$.\nHapi 3: Llogaritja jep $V = 4.90\\text{ L}$.",
+        "hints": ["Vëllimi është në përpjesëtim të drejtë me numrin e moleve.", "Llogaritni $V = n \\times V_m$."],
+        "options": ["$2.45\\text{ L}$", "$4.90\\text{ L}$", "$9.80\\text{ L}$", "$12.25\\text{ L}$"]
+    },
+    "chemistry_Q2": {
+        "prompt": "[{grade} Hetim Kimik (I avancuar)] Problem i analizës sasiore lidhur me {title}. Tretësira acide $A$ ka $[\\text{H}^+] = 1.0 \\times 10^{-3}\\text{ M}$ dhe tretësira $B$ ka $[\\text{H}^+] = 1.0 \\times 10^{-5}\\text{ M}$. Sa herë më e madhe është përqendrimi i joneve të hidrogjenit në $A$ se në $B$?",
+        "explain": "Hapi 1: $[\\text{H}^+]_A = 10^{-3}\\text{ M}$, $[\\text{H}^+]_B = 10^{-5}\\text{ M}$.\nHapi 2: Raporti $\\frac{1.0 \\times 10^{-3}}{1.0 \\times 10^{-5}} = 10^2 = 100$.\nHapi 3: Përqendrimi i $A$ është 100 herë më i madh se i $B$.",
+        "hints": ["Llogaritni raportin $\\frac{[\\text{H}^+]_A}{[\\text{H}^+]_B}$.", "$10^{-3} / 10^{-5} = 10^2 = 100$."],
+        "options": ["$10\\text{ herë}$", "$100\\text{ herë}$", "$1000\\text{ herë}$", "$0.01\\text{ herë}$"]
+    },
+    "thinking1": "Arsyetimi logjik dhe analiza",
+    "goal": "Zbatoni parimet e {title} për të zgjidhur problemin hetimor."
+}
+
+out_p = ROOT / 'scripts/think/templates_african_other.py'
+with open(out_p, 'w', encoding='utf-8') as f:
+    f.write('# -*- coding: utf-8 -*-\n"""\nTemplates for African and Other languages:\nsw, am, so, om, ha, yo, ig, zu, xh, sn, sg, mg, pcm, el, ka, eu, sq\n"""\n\n')
+    f.write('TEMPLATES_GROUP_6 = ' + repr(G6) + '\n')
+
+print(f"Generated {out_p} with {len(G6)} languages.")

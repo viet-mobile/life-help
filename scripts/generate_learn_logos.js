@@ -20,6 +20,10 @@ const SITES = { math: "MATH", english: "ENGLISH", korean: "KOREAN", physics: "PH
 const BAND = { left: 36, top: 25, width: 439, height: 105 };
 const NAVY = "#0b1e4c";
 
+const FONT_PATH = "/System/Library/Fonts/Supplemental/Impact.ttf";
+const FONT_B64 = fs.existsSync(FONT_PATH) ? fs.readFileSync(FONT_PATH).toString("base64") : "";
+const FONT_STYLE = FONT_B64 ? `<style>@font-face { font-family: "Impact"; src: url("data:font/truetype;charset=utf-8;base64,${FONT_B64}"); }</style>` : "";
+
 function createIco(entries) {
   const header = Buffer.alloc(6);
   header.writeUInt16LE(0, 0); header.writeUInt16LE(1, 2); header.writeUInt16LE(entries.length, 4);
@@ -37,7 +41,7 @@ async function build(site, label) {
   const clear = await sharp({ create: { width: 452, height: 120, channels: 4, background: "#ffffff" } }).png().toBuffer();
   const blank = await sharp(CANVAS).composite([{ input: clear, left: 30, top: 18 }]).png().toBuffer();
   // 2. Set the name, trim to the glyph boundaries and stretch to the width of "LIFE HELP".
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="3000" height="400"><text x="50" y="260" fill="${NAVY}" font-family="Impact, 'Arial Black', sans-serif" font-size="200" font-weight="900">${label}</text></svg>`;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="3000" height="400">${FONT_STYLE}<text x="50" y="260" fill="${NAVY}" font-family="Impact, 'Arial Black', sans-serif" font-size="200" font-weight="900">${label}</text></svg>`;
   const trimmed = await sharp(Buffer.from(svg)).trim().toBuffer();
   const text = await sharp(trimmed).resize(BAND.width, BAND.height, { fit: "fill" }).toBuffer();
   const logo = await sharp(blank).composite([{ input: text, left: BAND.left, top: BAND.top }]).png().toBuffer();
