@@ -101,12 +101,33 @@ const GRADE_PATTERNS: Record<string, string> = {
 };
 
 export function gradeLabel(code: string, lang: string): string {
-  const num = GRADE_NUM[code] ?? (/^\d+$/.test(code) ? Number(code) : null);
+  if (!code) return "";
+  let num: number | null = GRADE_NUM[code] ?? null;
+  if (num === null) {
+    if (/^\d+$/.test(code)) {
+      num = Number(code);
+    } else {
+      const m = code.match(/^(?:grade|grd|g|class|classe|grado|grao|klasse|groep|год|класс|년|학년)[\s-]*(\d+)$/i) || code.match(/^(\d+)$/);
+      if (m) num = Number(m[1]);
+    }
+  }
   if (num !== null && num >= 1 && num <= 12) {
     const pat = GRADE_PATTERNS[lang] ?? GRADE_PATTERNS[lang.split("-")[0]] ?? "Grade {n}";
     return pat.replace("{n}", String(num));
   }
+  if (/^(?:grade|grd|g)?[\s-]*1\s*[-~]\s*12$/i.test(code)) {
+    const pat = GRADE_PATTERNS[lang] ?? GRADE_PATTERNS[lang.split("-")[0]] ?? "Grade {n}";
+    return `${pat.replace("{n}", "1")}~${pat.replace("{n}", "12")}`;
+  }
   return code;
+}
+
+export function translateGradeText(text: string, lang: string): string {
+  if (!text) return "";
+  const pat = GRADE_PATTERNS[lang] ?? GRADE_PATTERNS[lang.split("-")[0]] ?? "Grade {n}";
+  return text
+    .replace(/\bGrade\s*1\s*[-~]\s*12\b/gi, `${pat.replace("{n}", "1")}~${pat.replace("{n}", "12")}`)
+    .replace(/\bGrade\s+(\d+)\b/gi, (_, n) => pat.replace("{n}", n));
 }
 
 export const LEVEL_LABEL_MAP: Record<string, Record<string, string>> = {

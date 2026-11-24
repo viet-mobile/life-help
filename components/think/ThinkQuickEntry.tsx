@@ -92,9 +92,9 @@ export function ThinkQuickEntry() {
                 {isBilingual && secondaryTranslators && secondaryTranslators.length > 0 && ` (${secondaryTranslators.map((s) => hubLabels(s.t).allFields).join(" / ")})`}
               </option>
               {fields.map((f) => {
-                const pri = fieldInfo(site, f, lang).full;
+                const pri = fieldInfo(site, f, taskLang).full;
                 const sec = isBilingual && secondaryTranslators && secondaryTranslators.length > 0
-                  ? " / " + secondaryTranslators.map((s) => fieldInfo(site, f, thinkLangFor(s.locale, site)).full).join(" / ")
+                  ? " / " + secondaryTranslators.map((s) => fieldInfo(site, f, taskLangFor(s.locale)).full).join(" / ")
                   : "";
                 return <option key={f} value={f}>{pri}{sec}</option>;
               })}

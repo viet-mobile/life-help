@@ -214,9 +214,22 @@ export function ThinkHub() {
       </p>
       <div className="l-card l-stack">
         <label className="l-stack" style={{ gap: 4 }}>
-          <span className="l-muted">{H.grade}</span>
+          <span className="l-muted">
+            {H.grade}
+            {isMulti && secondaryTranslators && secondaryTranslators.length > 0 && ` (${secondaryTranslators.map((s) => hubLabels(s.t).grade).join(" / ")})`}
+          </span>
           <select className="l-input" data-testid="think-grade" value={grade} onChange={(e) => { setGrade(e.target.value); setField("all"); }}>
-            {grades.map((g) => <option key={g} value={g}>{g.startsWith("EL-") ? `${H.electives}: ${gradeName(g)}` : isLevelCode(g) ? levelName(Number(g.slice(1)), lang) : gradeLabel(g, taskLang)}</option>)}
+            {grades.map((g) => {
+              const pri = g.startsWith("EL-") ? `${H.electives}: ${gradeName(g)}` : isLevelCode(g) ? levelName(Number(g.slice(1)), lang) : gradeLabel(g, taskLang);
+              const sec = isMulti && secondaryTranslators && secondaryTranslators.length > 0
+                ? " / " + secondaryTranslators.map((s) => {
+                    const secLang = thinkLangFor(s.locale, site);
+                    const secTaskLang = taskLangFor(s.locale);
+                    return g.startsWith("EL-") ? `${hubLabels(s.t).electives}: ${ELECTIVE_NAMES[g as keyof typeof ELECTIVE_NAMES]?.[secLang] ?? gradeName(g)}` : isLevelCode(g) ? levelName(Number(g.slice(1)), secLang) : gradeLabel(g, secTaskLang);
+                  }).join(" / ")
+                : "";
+              return <option key={g} value={g}>{pri}{sec}</option>;
+            })}
           </select>
         </label>
         {semesterOn && (
@@ -231,10 +244,25 @@ export function ThinkHub() {
         )}
         {fields.length > 1 && (
           <label className="l-stack" style={{ gap: 4 }}>
-            <span className="l-muted">{H.field}</span>
+            <span className="l-muted">
+              {H.field}
+              {isMulti && secondaryTranslators && secondaryTranslators.length > 0 && ` (${secondaryTranslators.map((s) => hubLabels(s.t).field).join(" / ")})`}
+            </span>
             <select className="l-input" data-testid="think-field" value={fieldNow} onChange={(e) => setField(e.target.value)}>
-              <option value="all">{H.allFields}</option>
-              {fields.map((f) => <option key={f} value={f}>{fieldText(f, true)}</option>)}
+              <option value="all">
+                {H.allFields}
+                {isMulti && secondaryTranslators && secondaryTranslators.length > 0 && ` (${secondaryTranslators.map((s) => hubLabels(s.t).allFields).join(" / ")})`}
+              </option>
+              {fields.map((f) => {
+                const pri = fieldText(f, true);
+                const sec = isMulti && secondaryTranslators && secondaryTranslators.length > 0
+                  ? " / " + secondaryTranslators.map((s) => {
+                      const secTaskLang = taskLangFor(s.locale);
+                      return f && fieldList(site).length ? fieldInfo(site, f, secTaskLang).full : f;
+                    }).join(" / ")
+                  : "";
+                return <option key={f} value={f}>{pri}{sec}</option>;
+              })}
             </select>
           </label>
         )}
