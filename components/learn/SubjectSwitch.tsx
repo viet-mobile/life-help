@@ -4,15 +4,23 @@ import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { useLearner } from "./LearnerProvider";
 import { type Site } from "@/lib/learn/types";
+import { buildLearnUrl } from "@/lib/learn/hosts";
 
 interface SubjectSwitchProps {
   currentSite: Site;
 }
 
 export function SubjectSwitch({ currentSite }: SubjectSwitchProps) {
-  const { t } = useLearner();
+  const { t, locale } = useLearner();
   const [isOpen, setIsOpen] = useState(false);
+  const [host, setHost] = useState("");
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setHost(window.location.host);
+    }
+  }, []);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -43,7 +51,7 @@ export function SubjectSwitch({ currentSite }: SubjectSwitchProps) {
           return (
             <Link
               key={sub.site}
-              href={`/study/${sub.site}/dashboard`}
+              href={host ? buildLearnUrl(sub.site, host, locale) : `/study/${sub.site}/dashboard`}
               className={`droplet-pill px-2.5 py-1 text-xs font-extrabold rounded-full transition shadow-2xs cursor-pointer whitespace-nowrap ${
                 isCurrent
                   ? "bg-blue-600 text-white shadow-xs pointer-events-none"
@@ -75,7 +83,7 @@ export function SubjectSwitch({ currentSite }: SubjectSwitchProps) {
               return (
                 <Link
                   key={sub.site}
-                  href={`/study/${sub.site}/dashboard`}
+                  href={host ? buildLearnUrl(sub.site, host, locale) : `/study/${sub.site}/dashboard`}
                   onClick={() => setIsOpen(false)}
                   className={`flex items-center justify-between px-3 py-2 text-xs font-bold transition ${
                     isCurrent

@@ -58,7 +58,8 @@ export function buildLearnUrl(site: Site, rawHost: string, locale?: string): str
   const sub = site === "chemistry" ? "chem" : site;
   const path = locale ? `/${locale}` : "";
   if (stage === "local") {
-    return `http://${sub}.localhost:3000${path}`;
+    const port = rawHost.includes(":") ? `:${rawHost.split(":")[1]}` : ":3000";
+    return `http://${sub}.localhost${port}${path}`;
   }
   return `https://${sub}.life.help${path}`;
 }

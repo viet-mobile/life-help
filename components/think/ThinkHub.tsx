@@ -99,7 +99,7 @@ export function ThinkHub() {
   // Math: four curriculum areas; English / Korean: six fields (lib/think/areas.ts). A task that fits none is listed under "all" only. Other sites: topic / skill.
   const fieldOf = (t: (typeof tasks)[number]): string | null => (fieldList(site).length ? fieldKeyOf(site, t.id) : (t.topic ?? domainOf(t)));
   const fields = useMemo(() => (fieldList(site).length ? fieldList(site).filter((a) => localized.some((x) => fieldKeyOf(site, x.task.id) === a)) : [...new Set(localized.map((x) => x.task.topic ?? domainOf(x.task)))]), [localized, site]);
-  const fieldText = (k: string | null, full: boolean) => (k && fieldList(site).length ? fieldInfo(site, k, lang)[full ? "full" : "short"] : k ?? "");
+  const fieldText = (k: string | null, full: boolean) => (k && fieldList(site).length ? fieldInfo(site, k, taskLang)[full ? "full" : "short"] : k ?? "");
   const semesterOn = hasThinkSemesters(site) && !grade.startsWith("EL-");
   const bySemester = localized.filter((x) => !semesterOn || inSemester(x.task.id, semester));
   const fieldNow = fields.includes(field) ? field : "all"; // a ?field= that this grade has no tasks for falls back to all
@@ -133,7 +133,7 @@ export function ThinkHub() {
   // final bosses of the chosen grade / semester(s) / level, only those fully available in this language
   const bossSlots = (grade.startsWith("EL-") ? [] : site === "korean" ? [bossKey(site, grade, 1)] : semester === "all" ? [bossKey(site, grade, 1), bossKey(site, grade, 2)] : [bossKey(site, grade, Number(semester) as 1 | 2)])
     .map((key) => ({ key, task: localized.find((x) => x.task.id === finalBossFor(key))?.task })).filter((b) => b.task);
-  const slotName = (key: string) => (site === "korean" ? levelName(Number(key.split("L")[1]), lang) : `${gradeLabel(key.split("|")[1], lang)} ${t(`semester.${key.split("|")[2]}` as never)}`);
+  const slotName = (key: string) => (site === "korean" ? levelName(Number(key.split("L")[1]), lang) : `${gradeLabel(key.split("|")[1], taskLang)} ${t(`semester.${key.split("|")[2]}` as never)}`);
   const current = open ? localized.find((x) => x.task.id === open) : undefined;
   const grades = site === "korean" ? KOREAN_LEVELS.map(levelCode) : [...siteConfig(site).levels, ...(site === "math" ? Object.keys(ELECTIVE_NAMES) : [])];
   const gradeName = (g: string) => (g.startsWith("EL-") ? ELECTIVE_NAMES[g][lang] : g);
@@ -216,7 +216,7 @@ export function ThinkHub() {
         <label className="l-stack" style={{ gap: 4 }}>
           <span className="l-muted">{H.grade}</span>
           <select className="l-input" data-testid="think-grade" value={grade} onChange={(e) => { setGrade(e.target.value); setField("all"); }}>
-            {grades.map((g) => <option key={g} value={g}>{g.startsWith("EL-") ? `${H.electives}: ${gradeName(g)}` : isLevelCode(g) ? levelName(Number(g.slice(1)), lang) : gradeLabel(g, lang)}</option>)}
+            {grades.map((g) => <option key={g} value={g}>{g.startsWith("EL-") ? `${H.electives}: ${gradeName(g)}` : isLevelCode(g) ? levelName(Number(g.slice(1)), lang) : gradeLabel(g, taskLang)}</option>)}
           </select>
         </label>
         {semesterOn && (
@@ -269,7 +269,8 @@ export function ThinkHub() {
                     {isMulti && secondaryTranslators && secondaryTranslators.length > 0 && secondaryTranslators.map(({ locale: secLoc, t: secT }) => {
                       const secLang = thinkLangFor(secLoc, site);
                       const secBT = BOSS_TEXT[secLang] ?? BOSS_TEXT.en;
-                      const secSlot = site === "korean" ? levelName(Number(key.split("L")[1]), secLang) : `${gradeLabel(key.split("|")[1], secLang)} ${secT(`semester.${key.split("|")[2]}` as never)}`;
+                      const secTaskLang = taskLangFor(secLoc);
+                      const secSlot = site === "korean" ? levelName(Number(key.split("L")[1]), secLang) : `${gradeLabel(key.split("|")[1], secTaskLang)} ${secT(`semester.${key.split("|")[2]}` as never)}`;
                       return (
                         <div key={secLoc} style={{ fontSize: "0.9em", opacity: 0.85 }}>
                           {beaten ? `✅ ${secBT.defeated} · ` : prog.open ? "⚔️ " : "🔒 "}{secSlot}
@@ -290,7 +291,8 @@ export function ThinkHub() {
                     {isMulti && secondaryTranslators && secondaryTranslators.length > 0 && secondaryTranslators.map(({ locale: secLoc, t: secT }) => {
                       const secLang = thinkLangFor(secLoc, site);
                       const secBT = BOSS_TEXT[secLang] ?? BOSS_TEXT.en;
-                      const secSlot = site === "korean" ? levelName(Number(key.split("L")[1]), secLang) : `${gradeLabel(key.split("|")[1], secLang)} ${secT(`semester.${key.split("|")[2]}` as never)}`;
+                      const secTaskLang = taskLangFor(secLoc);
+                      const secSlot = site === "korean" ? levelName(Number(key.split("L")[1]), secLang) : `${gradeLabel(key.split("|")[1], secTaskLang)} ${secT(`semester.${key.split("|")[2]}` as never)}`;
                       return (
                         <div key={secLoc} style={{ fontSize: "0.85em", opacity: 0.85 }}>
                           {beaten ? secBT.title(secSlot) : prog.open ? secBT.open : secBT.locked(prog.done, prog.total)}
@@ -318,15 +320,15 @@ export function ThinkHub() {
                 <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                   <div className="l-muted" style={{ fontSize: 13 }}>
                     <div>
-                      {done[task.id] ? "✅ " : ""}{fieldText(fieldOf(task), false) ? `${fieldText(fieldOf(task), false)} · ` : ""}{formatMinutes(task.minutes, lang, true)}
+                      {done[task.id] ? "✅ " : ""}{fieldText(fieldOf(task), false) ? `${fieldText(fieldOf(task), false)} · ` : ""}{formatMinutes(task.minutes, taskLang, true)}
                     </div>
                     {isMulti && secondaryTranslators && secondaryTranslators.length > 0 && secondaryTranslators.map(({ locale: secLoc }) => {
-                      const secLang = thinkLangFor(secLoc, site);
+                      const secTaskLang = taskLangFor(secLoc);
                       const fKey = fieldOf(task);
-                      const secField = fKey ? fieldInfo(site, fKey, secLang).short : "";
+                      const secField = fKey ? fieldInfo(site, fKey, secTaskLang).short : "";
                       return (
                         <div key={secLoc} style={{ fontSize: "0.85em", opacity: 0.85 }}>
-                          {done[task.id] ? "✅ " : ""}{secField ? `${secField} · ` : ""}{formatMinutes(task.minutes, secLang, true)}
+                          {done[task.id] ? "✅ " : ""}{secField ? `${secField} · ` : ""}{formatMinutes(task.minutes, secTaskLang, true)}
                         </div>
                       );
                     })}

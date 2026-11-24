@@ -13,6 +13,7 @@ const LOCALES = new Set<string>(locales);
 
 function productionHost(host: string): boolean {
   if (host === "life.help" || host === "www.life.help") return true;
+  if (/^(?:math|korean|english|physics|chem|chemistry|study\.korean)\.life\.help$/.test(host)) return true;
   const country = host.match(/^(?:(?:tech|chat|sys)\.)?([a-z]+)\.life\.help$/)?.[1];
   return !!country && Object.hasOwn(COUNTRY_TO_LANGUAGE_MAP, country);
 }
@@ -23,12 +24,11 @@ export function studyUrl(subject: StudySubject, hostname: string, port = "", loc
   if (/^(?:\d{1,3}\.){3}\d{1,3}$/.test(host)) {
     return `http://${hostname}${port ? `:${port}` : ""}/study/${subject}${path}`;
   }
+  const sub = subject === "chemistry" ? "chem" : subject;
   if (host === "localhost" || host.endsWith(".localhost") || host === "127.0.0.1") {
-    const sub = host.startsWith("chem.") ? "chem" : subject;
     return `http://${sub}.localhost${port ? `:${port}` : ""}${path}`;
   }
   if (productionHost(host) || host.endsWith(".workers.dev")) {
-    const sub = host.startsWith("chem.") ? "chem" : subject;
     return `https://${sub}.life.help${path}`;
   }
   return `https://${subject === "korean" ? "study-korean" : subject}-staging.life.help${path}`;

@@ -680,6 +680,20 @@ export async function proxy(request: NextRequest) {
     }
 
     const pathSite = path.startsWith("/study/") ? path.split("/")[2] : null;
+    if (learnHostSite && pathSite && LEARN_SITES.has(pathSite) && pathSite !== learnHostSite) {
+      const targetSub = pathSite === "chemistry" ? "chem" : pathSite;
+      const isLocal = host.includes("localhost") || host.includes("127.0.0.1");
+      const isStaging = host.includes("-staging");
+      let targetOrigin = `https://${targetSub}.life.help`;
+      if (isLocal) {
+        const port = host.split(":")[1] ? `:${host.split(":")[1]}` : "";
+        targetOrigin = `http://${targetSub}.localhost${port}`;
+      } else if (isStaging) {
+        targetOrigin = `https://${pathSite === "korean" ? "study-korean" : targetSub}-staging.life.help`;
+      }
+      const restAfterSite = "/" + path.split("/").slice(3).join("/");
+      return NextResponse.redirect(new URL((restAfterSite === "/" ? "" : restAfterSite) + request.nextUrl.search, targetOrigin), 307);
+    }
     const learnSite = learnHostSite ?? (pathSite && LEARN_SITES.has(pathSite) ? pathSite : null);
 
     if (learnSite) {

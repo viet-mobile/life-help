@@ -1459,6 +1459,28 @@ def get_title(subj, grade, lang):
     return sub_titles.get("en", "")
 
 
+Q_KEYS = ["q1", "q2", "q3", "q4", "c", "q5"]
+
+def make_clean_title(prompt, default_title=""):
+    p = prompt.strip()
+    m = re.match(r"^\[(.*?)\]\s*(.*)", p)
+    if m:
+        tag, rest = m.group(1), m.group(2)
+        if len(tag) >= 3 and not re.match(r"^(G\d+|초등|중|고\d+|Grade)", tag):
+            return tag
+    parts = re.split(r"[,?.:;!\n|।،؛]", p)
+    for part in parts:
+        part = part.strip()
+        if 8 <= len(part) <= 45:
+            return part
+    words = p.split()
+    cand = ""
+    for w in words:
+        if len(cand) + len(w) + 1 > 42:
+            break
+        cand = (cand + " " + w).strip()
+    return cand if len(cand) >= 6 else (default_title or p[:35])
+
 def process_all():
     langs = sorted([d for d in os.listdir(I18N_DIR) if (I18N_DIR / d).is_dir()])
     print(f"Processing curriculum translations for {len(langs)} languages...")
@@ -1479,18 +1501,63 @@ def process_all():
                     except Exception:
                         overlay = {}
                 
+                # Check for authentic learn-overlay questions
+                overlay_questions = {}
+                if subj in ("physics", "chemistry"):
+                    ov_path = ROOT / f"content/learn-overlays/{lang}/{subj}.json"
+                    if ov_path.exists():
+                        try:
+                            d_ov = json.load(open(ov_path, "r", encoding="utf-8"))
+                            overlay_questions = d_ov.get("questions", {})
+                        except Exception:
+                            pass
+
                 for t in tasks:
                     tid = t["id"]
                     grd = t.get("grade", "E1")
                     raw_title = t.get("title", "")
                     
-                    # Determine Q1 or Q2
-                    p_raw = t["steps"][0]["prompt"]
-                    is_q2 = "20261121" in tid or "심화" in p_raw or "Advanced" in p_raw or "Avanzada" in p_raw or "연속하는" in p_raw or "자유 낙하" in p_raw or "수소 이온" in p_raw
-                    qtype = "Q2" if is_q2 else "Q1"
+                    # determine slot_idx
+                    if "20261118" in tid:
+                        slot_idx = 0
+                    elif "20261119" in tid:
+                        slot_idx = 1
+                    elif "20261121" in tid and tid.endswith("-1"):
+                        slot_idx = 2
+                    elif "20261121" in tid and tid.endswith("-2"):
+                        slot_idx = 3
+                    elif "20261122" in tid and tid.endswith("-1"):
+                        slot_idx = 4
+                    else:
+                        slot_idx = 5
                     
-                    loc_title = get_title(subj, grd, lang) if lang != "ko" else raw_title
-                    loc_prompt, loc_explain, loc_hints, loc_options = get_trans(subj, qtype, lang, grd, loc_title)
+                    qk = Q_KEYS[slot_idx]
+                    qid = f"{subj}-{grd.lower()}-{qk}"
+                    
+                    if qid in overlay_questions:
+                        q_item = overlay_questions[qid]
+                        loc_prompt = q_item["prompt"]
+                        loc_explain = q_item.get("explanation", "")
+                        loc_hints = q_item.get("hints", [])
+                        if not loc_hints:
+                            loc_hints = [loc_explain, loc_explain]
+                        elif len(loc_hints) == 1:
+                            loc_hints = [loc_hints[0], loc_hints[0]]
+                        opts_map = q_item.get("options", {})
+                        loc_options = [
+                            opts_map.get("a", ""),
+                            opts_map.get("b", ""),
+                            opts_map.get("c", ""),
+                            opts_map.get("d", "")
+                        ]
+                        loc_title = make_clean_title(loc_prompt, default_title=raw_title)
+                    else:
+                        # Fallback to template logic
+                        p_raw = t["steps"][0]["prompt"]
+                        is_q2 = "20261121" in tid or "심화" in p_raw or "Advanced" in p_raw or "Avanzada" in p_raw or "연속하는" in p_raw or "자유 낙하" in p_raw or "수소 이온" in p_raw
+                        qtype = "Q2" if is_q2 else "Q1"
+                        loc_title = get_title(subj, grd, lang) if lang != "ko" else raw_title
+                        loc_prompt, loc_explain, loc_hints, loc_options = get_trans(subj, qtype, lang, grd, loc_title)
                     
                     goal_txt = f"{loc_title}"
                     th1_txt = "Logical reasoning and analysis"

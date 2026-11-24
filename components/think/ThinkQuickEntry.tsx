@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useLearner } from "../learn/LearnerProvider";
 import { siteConfig } from "@/lib/learn/sites";
-import { thinkLangFor } from "@/lib/think/lang";
+import { taskLangFor, thinkLangFor } from "@/lib/think/lang";
 import { fieldInfo, fieldList } from "@/lib/think/areas";
 import { hasThinkSemesters } from "@/lib/think/semesters";
 import { gradeLabel } from "@/lib/think/grades";
@@ -15,6 +15,7 @@ import { ELECTIVE_NAMES, hubLabels } from "./hubLabels";
 export function ThinkQuickEntry() {
   const { site, state, locale, href, t, isBilingual, secondaryTranslators } = useLearner();
   const lang = thinkLangFor(locale, site);
+  const taskLang = taskLangFor(locale);
   const H = hubLabels(t);
   const ownGrade = (state.profile?.grade ?? siteConfig(site).levels[0]) as string;
   const own = site === "korean" ? levelCode(priorLevelFor(ownGrade)) : ownGrade;
@@ -45,11 +46,12 @@ export function ThinkQuickEntry() {
           </span>
           <select className="l-input" data-testid="think-quick-grade" value={grade} onChange={(e) => setGrade(e.target.value)}>
             {grades.map((g) => {
-              const pri = g.startsWith("EL-") ? `${H.electives}: ${ELECTIVE_NAMES[g][lang]}` : isLevelCode(g) ? levelName(Number(g.slice(1)), lang) : gradeLabel(g, lang);
+              const pri = g.startsWith("EL-") ? `${H.electives}: ${ELECTIVE_NAMES[g][lang]}` : isLevelCode(g) ? levelName(Number(g.slice(1)), lang) : gradeLabel(g, taskLang);
               const sec = isBilingual && secondaryTranslators && secondaryTranslators.length > 0
                 ? " / " + secondaryTranslators.map((s) => {
                     const secLang = thinkLangFor(s.locale, site);
-                    return g.startsWith("EL-") ? `${hubLabels(s.t).electives}: ${ELECTIVE_NAMES[g][secLang]}` : isLevelCode(g) ? levelName(Number(g.slice(1)), secLang) : gradeLabel(g, secLang);
+                    const secTaskLang = taskLangFor(s.locale);
+                    return g.startsWith("EL-") ? `${hubLabels(s.t).electives}: ${ELECTIVE_NAMES[g][secLang]}` : isLevelCode(g) ? levelName(Number(g.slice(1)), secLang) : gradeLabel(g, secTaskLang);
                   }).join(" / ")
                 : "";
               return <option key={g} value={g}>{pri}{sec}</option>;
