@@ -171,9 +171,6 @@ export function resolveStudyTopicI18n(
   const isHant = locale === "zh-Hant" || locale === "zt" || locale === "zh-HK" || locale === "zh-TW";
   const normLocale = locale === "zs" || locale === "zh" || locale === "zh-CN" ? "zh-Hans" : (isHant ? "zh-Hant" : locale);
 
-  // Physics and Chemistry have 366 unique individual daily topics (p-001..p-366, c-001..c-366).
-  // They MUST strictly match exact topic IDs and NEVER modulo-map to an unrelated topic!
-  // Math and English canonical datasets are cycles of 36 topics, so baseIndex is used as fallback only for m- and e-.
   const exactEntry = STUDY_TOPIC_DATA[exactKey];
   let entry: StudyTopicEntry | undefined = exactEntry;
 
@@ -187,23 +184,20 @@ export function resolveStudyTopicI18n(
 
   const lang = entry.title?.[normLocale] ? normLocale : (isHant && entry.title?.["zh-Hans"] ? "zh-Hans" : (entry.title?.en ? "en" : "ko"));
 
-  const HANGUL_REGEX = /[\uac00-\ud7a3]/;
-
   const pickField = (
     fieldMap: Record<string, string> | undefined,
     itemDefault: string | undefined
   ): string => {
+    const koVal = fieldMap?.ko || itemDefault || "";
     const targetVal = fieldMap?.[lang];
-    if (targetVal && (!HANGUL_REGEX.test(targetVal) || lang === "ko")) {
+    if (targetVal && (lang === "ko" || targetVal !== koVal)) {
       return targetVal;
     }
     const enVal = fieldMap?.en;
-    if (enVal && !HANGUL_REGEX.test(enVal)) {
+    if (enVal && enVal !== koVal) {
       return enVal;
     }
-    if (targetVal) return targetVal.replace(HANGUL_REGEX, "").trim();
-    if (enVal) return enVal.replace(HANGUL_REGEX, "").trim();
-    return itemDefault || "";
+    return targetVal || enVal || itemDefault || "";
   };
 
   const title = pickField(entry.title, item.title);
@@ -211,8 +205,6 @@ export function resolveStudyTopicI18n(
   const principle = pickField(entry.principle, item.principle);
   const example = pickField(entry.example, item.example);
   const actionItem = pickField(entry.actionItem, item.actionItem);
-
-  // Season suffix completely removed per user instruction
 
   const catMap = CATEGORY_TRANSLATIONS[item.category];
   const categoryLabel = catMap ? catMap[lang] || catMap.en : undefined;

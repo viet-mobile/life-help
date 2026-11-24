@@ -21,4 +21,11 @@ describe("Daily Insight Bilingual Example & Hangeul Icon Tests", () => {
     expect(element).toBeDefined();
     expect(element.type).toBe(HangeulCalligraphyIcon);
   });
+
+  it("resolves authentic Khmer for k-003 without falling back to English", () => {
+    const kmInsight = getDailyInsight("korean", "k-003", "km");
+    expect(kmInsight.id).toBe("k-003");
+    expect(kmInsight.title).toContain("ការបញ្ចប់ប្រយោគ");
+    expect(kmInsight.title).toContain("~같아요");
+  });
 });

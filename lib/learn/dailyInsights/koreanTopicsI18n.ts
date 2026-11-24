@@ -83,40 +83,32 @@ export function resolveKoreanTopicI18n(
   const entry = KOREAN_TOPIC_DATA[baseKey];
   if (!entry) return null;
 
-  const season = Math.floor((num - 1) / 36) + 1;
-
   // Target language resolution with full 89-language support
   const isHant = locale === "zh-Hant" || locale === "zt" || locale === "zh-HK" || locale === "zh-TW";
   const normLocale = locale === "zs" || locale === "zh" || locale === "zh-CN" ? "zh-Hans" : (isHant ? "zh-Hant" : locale);
   const lang = entry.title?.[normLocale] ? normLocale : (isHant && entry.title?.["zh-Hans"] ? "zh-Hans" : (entry.title?.en ? "en" : "ko"));
 
-  const HANGUL_REGEX = /[\uac00-\ud7a3]/;
-
   const pickField = (
     fieldMap: Record<string, string> | undefined,
-    itemDefault: string | undefined,
-    allowHangul = false
+    itemDefault: string | undefined
   ): string => {
+    const koVal = fieldMap?.ko || itemDefault || "";
     const targetVal = fieldMap?.[lang];
-    if (targetVal && (allowHangul || !HANGUL_REGEX.test(targetVal) || lang === "ko")) {
+    if (targetVal && (lang === "ko" || targetVal !== koVal)) {
       return targetVal;
     }
     const enVal = fieldMap?.en;
-    if (enVal && (allowHangul || !HANGUL_REGEX.test(enVal))) {
+    if (enVal && enVal !== koVal) {
       return enVal;
     }
-    if (targetVal) return allowHangul ? targetVal : targetVal.replace(HANGUL_REGEX, "").trim();
-    if (enVal) return allowHangul ? enVal : enVal.replace(HANGUL_REGEX, "").trim();
-    return itemDefault || "";
+    return targetVal || enVal || itemDefault || "";
   };
 
-  const title = pickField(entry.title, item.title, false);
-  const summary = pickField(entry.summary, item.summary, false);
-  const principle = pickField(entry.principle, item.principle, true);
-  const example = pickField(entry.example, item.example, true);
-  const actionItem = pickField(entry.actionItem, item.actionItem, false);
-
-  // Season suffix completely removed per user instruction
+  const title = pickField(entry.title, item.title);
+  const summary = pickField(entry.summary, item.summary);
+  const principle = pickField(entry.principle, item.principle);
+  const example = pickField(entry.example, item.example);
+  const actionItem = pickField(entry.actionItem, item.actionItem);
 
   // Localized category label
   const catMap = CATEGORY_TRANSLATIONS[item.category];

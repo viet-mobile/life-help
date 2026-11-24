@@ -103,7 +103,6 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
   }, [isBilingual, secondaryLocales, secondaryLocale, locale, isKo]);
 
   useEffect(() => {
-    if (selectedDomain !== "physics" && selectedDomain !== "chemistry") return;
     const neededLocales = [locale, ...effectiveSecondaryLocales].filter(Boolean);
     neededLocales.forEach((loc) => {
       if (tipOverlays[loc]) return;
@@ -123,33 +122,29 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
     const list = [];
     for (let i = 0; i < 366; i++) {
       let insight = getDailyInsight(selectedDomain, i, locale);
-      if (selectedDomain === "physics" || selectedDomain === "chemistry") {
-        const ov = tipOverlays[locale]?.[insight.id];
-        if (ov) {
-          insight = {
-            ...insight,
-            title: ov.title || insight.title,
-            summary: ov.summary || insight.summary,
-            principle: ov.principle || insight.principle,
-            example: ov.example || insight.example,
-            actionItem: ov.actionItem || insight.actionItem,
-          };
-        }
+      const ov = tipOverlays[locale]?.[insight.id];
+      if (ov) {
+        insight = {
+          ...insight,
+          title: ov.title || insight.title,
+          summary: ov.summary || insight.summary,
+          principle: ov.principle || insight.principle,
+          example: ov.example || insight.example,
+          actionItem: ov.actionItem || insight.actionItem,
+        };
       }
       const secList = effectiveSecondaryLocales.map((secLoc) => {
         let secInsight = getDailyInsight(selectedDomain, i, secLoc);
-        if (selectedDomain === "physics" || selectedDomain === "chemistry") {
-          const secOv = tipOverlays[secLoc]?.[secInsight.id];
-          if (secOv) {
-            secInsight = {
-              ...secInsight,
-              title: secOv.title || secInsight.title,
-              summary: secOv.summary || secInsight.summary,
-              principle: secOv.principle || secInsight.principle,
-              example: secOv.example || secInsight.example,
-              actionItem: secOv.actionItem || secInsight.actionItem,
-            };
-          }
+        const secOv = tipOverlays[secLoc]?.[secInsight.id];
+        if (secOv) {
+          secInsight = {
+            ...secInsight,
+            title: secOv.title || secInsight.title,
+            summary: secOv.summary || secInsight.summary,
+            principle: secOv.principle || secInsight.principle,
+            example: secOv.example || secInsight.example,
+            actionItem: secOv.actionItem || secInsight.actionItem,
+          };
         }
         return { locale: secLoc, insight: secInsight };
       });

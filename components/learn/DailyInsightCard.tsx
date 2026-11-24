@@ -134,7 +134,7 @@ export function DailyInsightCard({
     ? getDailyInsight(domain, randomSeed, activeLocale)
     : initialInsight;
 
-  const activeOverlay = (domain === "physics" || domain === "chemistry") ? tipOverlays[activeLocale]?.[baseInsight.id] : null;
+  const activeOverlay = tipOverlays[activeLocale]?.[baseInsight.id] || null;
   const insight = activeOverlay
     ? {
         ...baseInsight,
@@ -191,7 +191,7 @@ export function DailyInsightCard({
     if (!mounted || effectiveSecondaryLocales.length === 0) return [];
     return effectiveSecondaryLocales.map((loc: Locale) => {
       const rawSec = getDailyInsight(domain, baseInsight.id, loc);
-      const secOv = (domain === "physics" || domain === "chemistry") ? tipOverlays[loc]?.[rawSec.id] : null;
+      const secOv = tipOverlays[loc]?.[rawSec.id] || null;
       const mergedSec = secOv
         ? {
             ...rawSec,
