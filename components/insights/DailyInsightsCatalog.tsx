@@ -118,10 +118,11 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
     });
   }, [selectedDomain, locale, effectiveSecondaryLocales]);
 
-  // Load all 366 insights for the selected domain
+  // Load all insights for the selected domain (366 for subjects, 569 for life including 190 countries)
   const domainItems: { index: number; insight: DailyInsight; secondaryInsights: { locale: Locale; insight: DailyInsight }[] }[] = useMemo(() => {
     const list = [];
-    for (let i = 0; i < 366; i++) {
+    const totalCount = selectedDomain === "life" ? 569 : 366;
+    for (let i = 0; i < totalCount; i++) {
       let insight = getDailyInsight(selectedDomain, i, locale);
       const baseId = insight.id.replace(/-(\d+)$/, (_, n) => '-' + String(((parseInt(n, 10) - 1) % 36) + 1).padStart(3, '0'));
       const ov = tipOverlays[locale]?.[insight.id] || tipOverlays[locale]?.[baseId];
@@ -174,13 +175,18 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
       if (!searchQuery.trim()) return true;
       const q = searchQuery.toLowerCase().trim();
       const dayNum = String(index + 1);
+      const anyInsight = insight as unknown as Record<string, unknown>;
+      const inCountry = typeof anyInsight.country === "string" && anyInsight.country.toLowerCase().includes(q);
+      const inIso = typeof anyInsight.iso2 === "string" && anyInsight.iso2.toLowerCase().includes(q);
       return (
         dayNum.includes(q) ||
         insight.title.toLowerCase().includes(q) ||
         insight.summary.toLowerCase().includes(q) ||
         insight.principle.toLowerCase().includes(q) ||
         insight.actionItem.toLowerCase().includes(q) ||
-        (insight.categoryLabel && insight.categoryLabel.toLowerCase().includes(q))
+        (insight.categoryLabel && insight.categoryLabel.toLowerCase().includes(q)) ||
+        inCountry ||
+        inIso
       );
     });
   }, [domainItems, selectedCategory, searchQuery]);

@@ -4,20 +4,22 @@
     "subject": "english",
     "grade": "E1",
     "topic": "기초 음운 인식",
-    "status": "reviewed-ai",
+    "status": "draft",
     "level": 1,
     "levelLabel": "초등",
     "title": "Phonics and Everyday Objects Matching",
     "uiLang": "ko",
     "format": "choose-needed-info",
     "generative": false,
-    "goal": "Phonics and Everyday Objects Matching의 원리를 적용하여 주어진 조건을 분석하고 올바른 결론을 도출한다.",
+    "goal": "Phonics and Everyday Objects Matching의 원리를 분석하여 주어진 조건에 따라 올바른 결론을 도출한다.",
     "thinking": [
-      "기초 음운 인식 원리 적용",
-      "주어진 조건 분석 및 논리적 추론"
+      "기초 음운 인식 분석",
+      "조건 해석 및 논리적 추론"
     ],
-    "differsFromPlain": "단순 계산이나 암기 위주 문항과 달리, 조건 간의 인과관계와 과학적/수학적 법칙을 추론하여 해결한다.",
-    "prerequisites": [],
+    "differsFromPlain": "단순 지식 암기가 아닌, 조건 간의 인과관계와 기본 원리를 논리적으로 추론하여 해결합니다.",
+    "prerequisites": [
+      "E1 선수 학습 English 개념"
+    ],
     "minutes": 8,
     "curriculum": null,
     "material": "[G01 English Critical Thinking] Choose the most appropriate sentence that logically completes the context regarding: 'Phonics and Everyday Objects Matching'.\n\"Although renewable energy sources have become significantly more cost-effective over the past decade, ______.\"",
@@ -33,15 +35,18 @@
           },
           {
             "id": "o1",
-            "text": "fossil fuels have been completely eradicated from the global energy supply"
+            "text": "fossil fuels have been completely eradicated from the global energy supply",
+            "reveals": "fossil fuels have been completely eradicated from the global energy supply 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           },
           {
             "id": "o2",
-            "text": "consumer demand for electricity has dropped to near zero globally"
+            "text": "consumer demand for electricity has dropped to near zero globally",
+            "reveals": "consumer demand for electricity has dropped to near zero globally 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           },
           {
             "id": "o3",
-            "text": "traditional power plants are becoming much cheaper to operate than solar farms"
+            "text": "traditional power plants are becoming much cheaper to operate than solar farms",
+            "reveals": "traditional power plants are becoming much cheaper to operate than solar farms 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           }
         ],
         "correct": [
@@ -52,21 +57,69 @@
           "Look for the contrasting connector 'Although', which signals a limitation or challenge.",
           "The first clause praises cost-effectiveness, so the second clause must highlight an ongoing hurdle."
         ]
+      },
+      {
+        "id": "s2",
+        "kind": "choose",
+        "prompt": "이 문제에서 적용한 'Phonics and Everyday Objects Matching'의 원리가 일상생활이나 첨단 기술에 올바르게 적용된 사례는 무엇입니까?",
+        "options": [
+          {
+            "id": "o0",
+            "text": "조건을 반대로 해석하여 비효율이나 오류가 발생하는 상황",
+            "reveals": "상황의 인과관계나 적용된 기본 법칙을 혼동함"
+          },
+          {
+            "id": "o1",
+            "text": "해당 원리를 활용하여 효율성이나 신뢰성을 극대화한 시스템"
+          },
+          {
+            "id": "o2",
+            "text": "관련 없는 다른 현상을 동일한 메커니즘으로 오인한 사례",
+            "reveals": "상황의 인과관계나 적용된 기본 법칙을 혼동함"
+          }
+        ],
+        "correct": [
+          "o1"
+        ],
+        "explain": "'Phonics and Everyday Objects Matching'의 원리는 실생활 기술 및 자연 현상의 기본 메커니즘으로 작동합니다.",
+        "hints": [
+          "앞선 단계에서 도출한 핵심 원리의 인과관계를 다시 점검합니다.",
+          "직접적으로 관여하는 타당한 상황을 선택합니다."
+        ]
       }
     ],
-    "rubric": [],
-    "alternatives": [],
-    "hardCases": [],
+    "rubric": [
+      {
+        "criterion": "핵심 원리 적용",
+        "full": "원리를 올바로 분석하여 정답 도출",
+        "partial": "기본 개념은 이해했으나 조건 혼동",
+        "none": "원리와 무관한 오답"
+      },
+      {
+        "criterion": "논리적 인과 추론",
+        "full": "각 선택지의 의미를 명확히 구분함",
+        "partial": "일부 선택지 혼동",
+        "none": "추론 근거 없음"
+      }
+    ],
+    "alternatives": [
+      "다양한 일상적 문제 상황에 동일한 원리를 적용해 볼 수 있습니다."
+    ],
+    "hardCases": [
+      "극단적인 조건이나 예외 상황에서의 원리 적용 주의"
+    ],
     "cautions": {
-      "language": "",
-      "culture": "",
-      "accessibility": ""
+      "language": "전문 용어의 정확한 이해",
+      "culture": "보편적 표준 체계 사용",
+      "accessibility": "명확한 텍스트 기반 수식 설명"
     },
     "autoVsHuman": {
       "auto": [
-        "정답 선택 일치"
+        "객관식 정답 일치"
       ],
-      "human": []
+      "human": [
+        "추론 과정의 논리성 평가"
+      ]
     }
   },
   {
@@ -74,20 +127,22 @@
     "subject": "english",
     "grade": "E1",
     "topic": "기초 음운 인식",
-    "status": "reviewed-ai",
+    "status": "draft",
     "level": 1,
     "levelLabel": "초등",
     "title": "Phonics and Everyday Objects Matching",
     "uiLang": "ko",
     "format": "choose-needed-info",
     "generative": false,
-    "goal": "Phonics and Everyday Objects Matching의 원리를 적용하여 주어진 조건을 분석하고 올바른 결론을 도출한다.",
+    "goal": "Phonics and Everyday Objects Matching의 원리를 분석하여 주어진 조건에 따라 올바른 결론을 도출한다.",
     "thinking": [
-      "기초 음운 인식 원리 적용",
-      "주어진 조건 분석 및 논리적 추론"
+      "기초 음운 인식 분석",
+      "조건 해석 및 논리적 추론"
     ],
-    "differsFromPlain": "단순 계산이나 암기 위주 문항과 달리, 조건 간의 인과관계와 과학적/수학적 법칙을 추론하여 해결한다.",
-    "prerequisites": [],
+    "differsFromPlain": "단순 지식 암기가 아닌, 조건 간의 인과관계와 기본 원리를 논리적으로 추론하여 해결합니다.",
+    "prerequisites": [
+      "E1 선수 학습 English 개념"
+    ],
     "minutes": 8,
     "curriculum": null,
     "material": "[G01 English Critical Thinking] Choose the most appropriate sentence that logically completes the context regarding: 'Phonics and Everyday Objects Matching'.\n\"Although renewable energy sources have become significantly more cost-effective over the past decade, ______.\"",
@@ -99,44 +154,95 @@
         "options": [
           {
             "id": "o0",
-            "text": "energy storage infrastructure still requires substantial technological breakthroughs"
+            "text": "fossil fuels have been completely eradicated from the global energy supply",
+            "reveals": "fossil fuels have been completely eradicated from the global energy supply 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           },
           {
             "id": "o1",
-            "text": "fossil fuels have been completely eradicated from the global energy supply"
+            "text": "energy storage infrastructure still requires substantial technological breakthroughs"
           },
           {
             "id": "o2",
-            "text": "consumer demand for electricity has dropped to near zero globally"
+            "text": "consumer demand for electricity has dropped to near zero globally",
+            "reveals": "consumer demand for electricity has dropped to near zero globally 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           },
           {
             "id": "o3",
-            "text": "traditional power plants are becoming much cheaper to operate than solar farms"
+            "text": "traditional power plants are becoming much cheaper to operate than solar farms",
+            "reveals": "traditional power plants are becoming much cheaper to operate than solar farms 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           }
         ],
         "correct": [
-          "o0"
+          "o1"
         ],
         "explain": "1단계: 'Although'(비록 ~일지라도)는 양보의 접속사로 앞 절의 긍정적 측면과 대조되는 현실적 과제나 한계가 뒤따라야 합니다.\n2단계: 비용 효율성이 높아졌다는 내용과 대조를 이루며 여전히 해결 과제로 남은 '저장 인프라의 기술적 도약 필요성'을 언급한 선택지가 논리적으로 가장 적절합니다.",
         "hints": [
           "Look for the contrasting connector 'Although', which signals a limitation or challenge.",
           "The first clause praises cost-effectiveness, so the second clause must highlight an ongoing hurdle."
         ]
+      },
+      {
+        "id": "s2",
+        "kind": "choose",
+        "prompt": "이 문제에서 적용한 'Phonics and Everyday Objects Matching'의 원리가 일상생활이나 첨단 기술에 올바르게 적용된 사례는 무엇입니까?",
+        "options": [
+          {
+            "id": "o0",
+            "text": "관련 없는 다른 현상을 동일한 메커니즘으로 오인한 사례",
+            "reveals": "상황의 인과관계나 적용된 기본 법칙을 혼동함"
+          },
+          {
+            "id": "o1",
+            "text": "조건을 반대로 해석하여 비효율이나 오류가 발생하는 상황",
+            "reveals": "상황의 인과관계나 적용된 기본 법칙을 혼동함"
+          },
+          {
+            "id": "o2",
+            "text": "해당 원리를 활용하여 효율성이나 신뢰성을 극대화한 시스템"
+          }
+        ],
+        "correct": [
+          "o2"
+        ],
+        "explain": "'Phonics and Everyday Objects Matching'의 원리는 실생활 기술 및 자연 현상의 기본 메커니즘으로 작동합니다.",
+        "hints": [
+          "앞선 단계에서 도출한 핵심 원리의 인과관계를 다시 점검합니다.",
+          "직접적으로 관여하는 타당한 상황을 선택합니다."
+        ]
       }
     ],
-    "rubric": [],
-    "alternatives": [],
-    "hardCases": [],
+    "rubric": [
+      {
+        "criterion": "핵심 원리 적용",
+        "full": "원리를 올바로 분석하여 정답 도출",
+        "partial": "기본 개념은 이해했으나 조건 혼동",
+        "none": "원리와 무관한 오답"
+      },
+      {
+        "criterion": "논리적 인과 추론",
+        "full": "각 선택지의 의미를 명확히 구분함",
+        "partial": "일부 선택지 혼동",
+        "none": "추론 근거 없음"
+      }
+    ],
+    "alternatives": [
+      "다양한 일상적 문제 상황에 동일한 원리를 적용해 볼 수 있습니다."
+    ],
+    "hardCases": [
+      "극단적인 조건이나 예외 상황에서의 원리 적용 주의"
+    ],
     "cautions": {
-      "language": "",
-      "culture": "",
-      "accessibility": ""
+      "language": "전문 용어의 정확한 이해",
+      "culture": "보편적 표준 체계 사용",
+      "accessibility": "명확한 텍스트 기반 수식 설명"
     },
     "autoVsHuman": {
       "auto": [
-        "정답 선택 일치"
+        "객관식 정답 일치"
       ],
-      "human": []
+      "human": [
+        "추론 과정의 논리성 평가"
+      ]
     }
   },
   {
@@ -144,20 +250,22 @@
     "subject": "english",
     "grade": "E1",
     "topic": "기초 음운 인식",
-    "status": "reviewed-ai",
+    "status": "draft",
     "level": 1,
     "levelLabel": "초등",
     "title": "Phonics and Everyday Objects Matching",
     "uiLang": "ko",
     "format": "choose-needed-info",
     "generative": false,
-    "goal": "Phonics and Everyday Objects Matching의 원리를 적용하여 주어진 조건을 분석하고 올바른 결론을 도출한다.",
+    "goal": "Phonics and Everyday Objects Matching의 원리를 분석하여 주어진 조건에 따라 올바른 결론을 도출한다.",
     "thinking": [
-      "기초 음운 인식 원리 적용",
-      "주어진 조건 분석 및 논리적 추론"
+      "기초 음운 인식 분석",
+      "조건 해석 및 논리적 추론"
     ],
-    "differsFromPlain": "단순 계산이나 암기 위주 문항과 달리, 조건 간의 인과관계와 과학적/수학적 법칙을 추론하여 해결한다.",
-    "prerequisites": [],
+    "differsFromPlain": "단순 지식 암기가 아닌, 조건 간의 인과관계와 기본 원리를 논리적으로 추론하여 해결합니다.",
+    "prerequisites": [
+      "E1 선수 학습 English 개념"
+    ],
     "minutes": 8,
     "curriculum": null,
     "material": "[G01 English Critical Thinking (Applied Reading)] Read the passage and identify the primary underlying conclusion regarding: 'Phonics and Everyday Objects Matching'.\n\"Urban planners increasingly advocate for 15-minute cities, where essential services are accessible within a short walk or bicycle ride. Proponents argue this design drastically cuts transportation emissions and fosters resilient local social cohesion. However, implementing this model in historically car-dependent suburban sprawls requires comprehensive zoning overhauls and massive capital investments in public transit corridors.\"\nWhat is the main implication of this analysis?",
@@ -169,44 +277,95 @@
         "options": [
           {
             "id": "o0",
-            "text": "Transforming car-reliant suburbs into 15-minute cities requires systemic regulatory reforms and major capital commitments."
+            "text": "Suburban residents inherently oppose having grocery stores and clinics near their homes.",
+            "reveals": "Suburban residents inherently oppose having grocery stores and clinics near their homes. 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           },
           {
             "id": "o1",
-            "text": "The 15-minute city model has proven entirely ineffective in reducing vehicular carbon emissions."
+            "text": "The 15-minute city model has proven entirely ineffective in reducing vehicular carbon emissions.",
+            "reveals": "The 15-minute city model has proven entirely ineffective in reducing vehicular carbon emissions. 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           },
           {
             "id": "o2",
-            "text": "Suburban residents inherently oppose having grocery stores and clinics near their homes."
+            "text": "Transforming car-reliant suburbs into 15-minute cities requires systemic regulatory reforms and major capital commitments."
           },
           {
             "id": "o3",
-            "text": "Public transit infrastructure is unnecessary when developing pedestrian-friendly neighborhoods."
+            "text": "Public transit infrastructure is unnecessary when developing pedestrian-friendly neighborhoods.",
+            "reveals": "Public transit infrastructure is unnecessary when developing pedestrian-friendly neighborhoods. 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           }
         ],
         "correct": [
-          "o0"
+          "o2"
         ],
         "explain": "1단계: 지문 전반부는 15분 도시의 환경적 장점을 설명하고, 후반부('However')는 이를 교외에 적용하기 위해 필요한 제도적 개혁과 자본 투자를 강조하고 있습니다.\n2단계: 따라서 교외 지역을 15분 도시로 전환하려면 체계적인 규제 개혁과 대규모 자본 투자가 필수적이라는 선택지가 가장 타당합니다.",
         "hints": [
           "Notice the contrast introduced by 'However', pointing to the substantial prerequisites for suburbs.",
           "Look for the answer that synthesizes both the urban goal and the suburban infrastructure requirement."
         ]
+      },
+      {
+        "id": "s2",
+        "kind": "choose",
+        "prompt": "이 문제에서 적용한 'Phonics and Everyday Objects Matching'의 원리가 일상생활이나 첨단 기술에 올바르게 적용된 사례는 무엇입니까?",
+        "options": [
+          {
+            "id": "o0",
+            "text": "해당 원리를 활용하여 효율성이나 신뢰성을 극대화한 시스템"
+          },
+          {
+            "id": "o1",
+            "text": "조건을 반대로 해석하여 비효율이나 오류가 발생하는 상황",
+            "reveals": "상황의 인과관계나 적용된 기본 법칙을 혼동함"
+          },
+          {
+            "id": "o2",
+            "text": "관련 없는 다른 현상을 동일한 메커니즘으로 오인한 사례",
+            "reveals": "상황의 인과관계나 적용된 기본 법칙을 혼동함"
+          }
+        ],
+        "correct": [
+          "o0"
+        ],
+        "explain": "'Phonics and Everyday Objects Matching'의 원리는 실생활 기술 및 자연 현상의 기본 메커니즘으로 작동합니다.",
+        "hints": [
+          "앞선 단계에서 도출한 핵심 원리의 인과관계를 다시 점검합니다.",
+          "직접적으로 관여하는 타당한 상황을 선택합니다."
+        ]
       }
     ],
-    "rubric": [],
-    "alternatives": [],
-    "hardCases": [],
+    "rubric": [
+      {
+        "criterion": "핵심 원리 적용",
+        "full": "원리를 올바로 분석하여 정답 도출",
+        "partial": "기본 개념은 이해했으나 조건 혼동",
+        "none": "원리와 무관한 오답"
+      },
+      {
+        "criterion": "논리적 인과 추론",
+        "full": "각 선택지의 의미를 명확히 구분함",
+        "partial": "일부 선택지 혼동",
+        "none": "추론 근거 없음"
+      }
+    ],
+    "alternatives": [
+      "다양한 일상적 문제 상황에 동일한 원리를 적용해 볼 수 있습니다."
+    ],
+    "hardCases": [
+      "극단적인 조건이나 예외 상황에서의 원리 적용 주의"
+    ],
     "cautions": {
-      "language": "",
-      "culture": "",
-      "accessibility": ""
+      "language": "전문 용어의 정확한 이해",
+      "culture": "보편적 표준 체계 사용",
+      "accessibility": "명확한 텍스트 기반 수식 설명"
     },
     "autoVsHuman": {
       "auto": [
-        "정답 선택 일치"
+        "객관식 정답 일치"
       ],
-      "human": []
+      "human": [
+        "추론 과정의 논리성 평가"
+      ]
     }
   },
   {
@@ -214,20 +373,22 @@
     "subject": "english",
     "grade": "E1",
     "topic": "기초 음운 인식",
-    "status": "reviewed-ai",
+    "status": "draft",
     "level": 1,
     "levelLabel": "초등",
     "title": "Phonics and Everyday Objects Matching",
     "uiLang": "ko",
     "format": "choose-needed-info",
     "generative": false,
-    "goal": "Phonics and Everyday Objects Matching의 원리를 적용하여 주어진 조건을 분석하고 올바른 결론을 도출한다.",
+    "goal": "Phonics and Everyday Objects Matching의 원리를 분석하여 주어진 조건에 따라 올바른 결론을 도출한다.",
     "thinking": [
-      "기초 음운 인식 원리 적용",
-      "주어진 조건 분석 및 논리적 추론"
+      "기초 음운 인식 분석",
+      "조건 해석 및 논리적 추론"
     ],
-    "differsFromPlain": "단순 계산이나 암기 위주 문항과 달리, 조건 간의 인과관계와 과학적/수학적 법칙을 추론하여 해결한다.",
-    "prerequisites": [],
+    "differsFromPlain": "단순 지식 암기가 아닌, 조건 간의 인과관계와 기본 원리를 논리적으로 추론하여 해결합니다.",
+    "prerequisites": [
+      "E1 선수 학습 English 개념"
+    ],
     "minutes": 8,
     "curriculum": null,
     "material": "[G01 English Critical Thinking] Choose the most appropriate sentence that logically completes the context regarding: 'Phonics and Everyday Objects Matching'.\n\"Although renewable energy sources have become significantly more cost-effective over the past decade, ______.\"",
@@ -239,44 +400,95 @@
         "options": [
           {
             "id": "o0",
-            "text": "energy storage infrastructure still requires substantial technological breakthroughs"
+            "text": "traditional power plants are becoming much cheaper to operate than solar farms",
+            "reveals": "traditional power plants are becoming much cheaper to operate than solar farms 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           },
           {
             "id": "o1",
-            "text": "fossil fuels have been completely eradicated from the global energy supply"
+            "text": "fossil fuels have been completely eradicated from the global energy supply",
+            "reveals": "fossil fuels have been completely eradicated from the global energy supply 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           },
           {
             "id": "o2",
-            "text": "consumer demand for electricity has dropped to near zero globally"
+            "text": "consumer demand for electricity has dropped to near zero globally",
+            "reveals": "consumer demand for electricity has dropped to near zero globally 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           },
           {
             "id": "o3",
-            "text": "traditional power plants are becoming much cheaper to operate than solar farms"
+            "text": "energy storage infrastructure still requires substantial technological breakthroughs"
           }
         ],
         "correct": [
-          "o0"
+          "o3"
         ],
         "explain": "1단계: 'Although'(비록 ~일지라도)는 양보의 접속사로 앞 절의 긍정적 측면과 대조되는 현실적 과제나 한계가 뒤따라야 합니다.\n2단계: 비용 효율성이 높아졌다는 내용과 대조를 이루며 여전히 해결 과제로 남은 '저장 인프라의 기술적 도약 필요성'을 언급한 선택지가 논리적으로 가장 적절합니다.",
         "hints": [
           "Look for the contrasting connector 'Although', which signals a limitation or challenge.",
           "The first clause praises cost-effectiveness, so the second clause must highlight an ongoing hurdle."
         ]
+      },
+      {
+        "id": "s2",
+        "kind": "choose",
+        "prompt": "이 문제에서 적용한 'Phonics and Everyday Objects Matching'의 원리가 일상생활이나 첨단 기술에 올바르게 적용된 사례는 무엇입니까?",
+        "options": [
+          {
+            "id": "o0",
+            "text": "조건을 반대로 해석하여 비효율이나 오류가 발생하는 상황",
+            "reveals": "상황의 인과관계나 적용된 기본 법칙을 혼동함"
+          },
+          {
+            "id": "o1",
+            "text": "해당 원리를 활용하여 효율성이나 신뢰성을 극대화한 시스템"
+          },
+          {
+            "id": "o2",
+            "text": "관련 없는 다른 현상을 동일한 메커니즘으로 오인한 사례",
+            "reveals": "상황의 인과관계나 적용된 기본 법칙을 혼동함"
+          }
+        ],
+        "correct": [
+          "o1"
+        ],
+        "explain": "'Phonics and Everyday Objects Matching'의 원리는 실생활 기술 및 자연 현상의 기본 메커니즘으로 작동합니다.",
+        "hints": [
+          "앞선 단계에서 도출한 핵심 원리의 인과관계를 다시 점검합니다.",
+          "직접적으로 관여하는 타당한 상황을 선택합니다."
+        ]
       }
     ],
-    "rubric": [],
-    "alternatives": [],
-    "hardCases": [],
+    "rubric": [
+      {
+        "criterion": "핵심 원리 적용",
+        "full": "원리를 올바로 분석하여 정답 도출",
+        "partial": "기본 개념은 이해했으나 조건 혼동",
+        "none": "원리와 무관한 오답"
+      },
+      {
+        "criterion": "논리적 인과 추론",
+        "full": "각 선택지의 의미를 명확히 구분함",
+        "partial": "일부 선택지 혼동",
+        "none": "추론 근거 없음"
+      }
+    ],
+    "alternatives": [
+      "다양한 일상적 문제 상황에 동일한 원리를 적용해 볼 수 있습니다."
+    ],
+    "hardCases": [
+      "극단적인 조건이나 예외 상황에서의 원리 적용 주의"
+    ],
     "cautions": {
-      "language": "",
-      "culture": "",
-      "accessibility": ""
+      "language": "전문 용어의 정확한 이해",
+      "culture": "보편적 표준 체계 사용",
+      "accessibility": "명확한 텍스트 기반 수식 설명"
     },
     "autoVsHuman": {
       "auto": [
-        "정답 선택 일치"
+        "객관식 정답 일치"
       ],
-      "human": []
+      "human": [
+        "추론 과정의 논리성 평가"
+      ]
     }
   },
   {
@@ -284,20 +496,22 @@
     "subject": "english",
     "grade": "E1",
     "topic": "기초 음운 인식",
-    "status": "reviewed-ai",
+    "status": "draft",
     "level": 1,
     "levelLabel": "초등",
     "title": "Phonics and Everyday Objects Matching",
     "uiLang": "ko",
     "format": "choose-needed-info",
     "generative": false,
-    "goal": "Phonics and Everyday Objects Matching의 원리를 적용하여 주어진 조건을 분석하고 올바른 결론을 도출한다.",
+    "goal": "Phonics and Everyday Objects Matching의 원리를 분석하여 주어진 조건에 따라 올바른 결론을 도출한다.",
     "thinking": [
-      "기초 음운 인식 원리 적용",
-      "주어진 조건 분석 및 논리적 추론"
+      "기초 음운 인식 분석",
+      "조건 해석 및 논리적 추론"
     ],
-    "differsFromPlain": "단순 계산이나 암기 위주 문항과 달리, 조건 간의 인과관계와 과학적/수학적 법칙을 추론하여 해결한다.",
-    "prerequisites": [],
+    "differsFromPlain": "단순 지식 암기가 아닌, 조건 간의 인과관계와 기본 원리를 논리적으로 추론하여 해결합니다.",
+    "prerequisites": [
+      "E1 선수 학습 English 개념"
+    ],
     "minutes": 8,
     "curriculum": null,
     "material": "[G01 English Critical Thinking (Applied Reading)] Read the passage and identify the primary underlying conclusion regarding: 'Phonics and Everyday Objects Matching'.\n\"Urban planners increasingly advocate for 15-minute cities, where essential services are accessible within a short walk or bicycle ride. Proponents argue this design drastically cuts transportation emissions and fosters resilient local social cohesion. However, implementing this model in historically car-dependent suburban sprawls requires comprehensive zoning overhauls and massive capital investments in public transit corridors.\"\nWhat is the main implication of this analysis?",
@@ -313,15 +527,18 @@
           },
           {
             "id": "o1",
-            "text": "The 15-minute city model has proven entirely ineffective in reducing vehicular carbon emissions."
+            "text": "The 15-minute city model has proven entirely ineffective in reducing vehicular carbon emissions.",
+            "reveals": "The 15-minute city model has proven entirely ineffective in reducing vehicular carbon emissions. 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           },
           {
             "id": "o2",
-            "text": "Suburban residents inherently oppose having grocery stores and clinics near their homes."
+            "text": "Suburban residents inherently oppose having grocery stores and clinics near their homes.",
+            "reveals": "Suburban residents inherently oppose having grocery stores and clinics near their homes. 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           },
           {
             "id": "o3",
-            "text": "Public transit infrastructure is unnecessary when developing pedestrian-friendly neighborhoods."
+            "text": "Public transit infrastructure is unnecessary when developing pedestrian-friendly neighborhoods.",
+            "reveals": "Public transit infrastructure is unnecessary when developing pedestrian-friendly neighborhoods. 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           }
         ],
         "correct": [
@@ -332,21 +549,69 @@
           "Notice the contrast introduced by 'However', pointing to the substantial prerequisites for suburbs.",
           "Look for the answer that synthesizes both the urban goal and the suburban infrastructure requirement."
         ]
+      },
+      {
+        "id": "s2",
+        "kind": "choose",
+        "prompt": "이 문제에서 적용한 'Phonics and Everyday Objects Matching'의 원리가 일상생활이나 첨단 기술에 올바르게 적용된 사례는 무엇입니까?",
+        "options": [
+          {
+            "id": "o0",
+            "text": "관련 없는 다른 현상을 동일한 메커니즘으로 오인한 사례",
+            "reveals": "상황의 인과관계나 적용된 기본 법칙을 혼동함"
+          },
+          {
+            "id": "o1",
+            "text": "조건을 반대로 해석하여 비효율이나 오류가 발생하는 상황",
+            "reveals": "상황의 인과관계나 적용된 기본 법칙을 혼동함"
+          },
+          {
+            "id": "o2",
+            "text": "해당 원리를 활용하여 효율성이나 신뢰성을 극대화한 시스템"
+          }
+        ],
+        "correct": [
+          "o2"
+        ],
+        "explain": "'Phonics and Everyday Objects Matching'의 원리는 실생활 기술 및 자연 현상의 기본 메커니즘으로 작동합니다.",
+        "hints": [
+          "앞선 단계에서 도출한 핵심 원리의 인과관계를 다시 점검합니다.",
+          "직접적으로 관여하는 타당한 상황을 선택합니다."
+        ]
       }
     ],
-    "rubric": [],
-    "alternatives": [],
-    "hardCases": [],
+    "rubric": [
+      {
+        "criterion": "핵심 원리 적용",
+        "full": "원리를 올바로 분석하여 정답 도출",
+        "partial": "기본 개념은 이해했으나 조건 혼동",
+        "none": "원리와 무관한 오답"
+      },
+      {
+        "criterion": "논리적 인과 추론",
+        "full": "각 선택지의 의미를 명확히 구분함",
+        "partial": "일부 선택지 혼동",
+        "none": "추론 근거 없음"
+      }
+    ],
+    "alternatives": [
+      "다양한 일상적 문제 상황에 동일한 원리를 적용해 볼 수 있습니다."
+    ],
+    "hardCases": [
+      "극단적인 조건이나 예외 상황에서의 원리 적용 주의"
+    ],
     "cautions": {
-      "language": "",
-      "culture": "",
-      "accessibility": ""
+      "language": "전문 용어의 정확한 이해",
+      "culture": "보편적 표준 체계 사용",
+      "accessibility": "명확한 텍스트 기반 수식 설명"
     },
     "autoVsHuman": {
       "auto": [
-        "정답 선택 일치"
+        "객관식 정답 일치"
       ],
-      "human": []
+      "human": [
+        "추론 과정의 논리성 평가"
+      ]
     }
   },
   {
@@ -354,20 +619,22 @@
     "subject": "english",
     "grade": "E1",
     "topic": "기초 음운 인식",
-    "status": "reviewed-ai",
+    "status": "draft",
     "level": 1,
     "levelLabel": "초등",
     "title": "Phonics and Everyday Objects Matching",
     "uiLang": "ko",
     "format": "choose-needed-info",
     "generative": false,
-    "goal": "Phonics and Everyday Objects Matching의 원리를 적용하여 주어진 조건을 분석하고 올바른 결론을 도출한다.",
+    "goal": "Phonics and Everyday Objects Matching의 원리를 분석하여 주어진 조건에 따라 올바른 결론을 도출한다.",
     "thinking": [
-      "기초 음운 인식 원리 적용",
-      "주어진 조건 분석 및 논리적 추론"
+      "기초 음운 인식 분석",
+      "조건 해석 및 논리적 추론"
     ],
-    "differsFromPlain": "단순 계산이나 암기 위주 문항과 달리, 조건 간의 인과관계와 과학적/수학적 법칙을 추론하여 해결한다.",
-    "prerequisites": [],
+    "differsFromPlain": "단순 지식 암기가 아닌, 조건 간의 인과관계와 기본 원리를 논리적으로 추론하여 해결합니다.",
+    "prerequisites": [
+      "E1 선수 학습 English 개념"
+    ],
     "minutes": 8,
     "curriculum": null,
     "material": "[G01 English Critical Thinking] Choose the most appropriate sentence that logically completes the context regarding: 'Phonics and Everyday Objects Matching'.\n\"Although renewable energy sources have become significantly more cost-effective over the past decade, ______.\"",
@@ -379,44 +646,95 @@
         "options": [
           {
             "id": "o0",
-            "text": "energy storage infrastructure still requires substantial technological breakthroughs"
+            "text": "fossil fuels have been completely eradicated from the global energy supply",
+            "reveals": "fossil fuels have been completely eradicated from the global energy supply 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           },
           {
             "id": "o1",
-            "text": "fossil fuels have been completely eradicated from the global energy supply"
+            "text": "energy storage infrastructure still requires substantial technological breakthroughs"
           },
           {
             "id": "o2",
-            "text": "consumer demand for electricity has dropped to near zero globally"
+            "text": "consumer demand for electricity has dropped to near zero globally",
+            "reveals": "consumer demand for electricity has dropped to near zero globally 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           },
           {
             "id": "o3",
-            "text": "traditional power plants are becoming much cheaper to operate than solar farms"
+            "text": "traditional power plants are becoming much cheaper to operate than solar farms",
+            "reveals": "traditional power plants are becoming much cheaper to operate than solar farms 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           }
         ],
         "correct": [
-          "o0"
+          "o1"
         ],
         "explain": "1단계: 'Although'(비록 ~일지라도)는 양보의 접속사로 앞 절의 긍정적 측면과 대조되는 현실적 과제나 한계가 뒤따라야 합니다.\n2단계: 비용 효율성이 높아졌다는 내용과 대조를 이루며 여전히 해결 과제로 남은 '저장 인프라의 기술적 도약 필요성'을 언급한 선택지가 논리적으로 가장 적절합니다.",
         "hints": [
           "Look for the contrasting connector 'Although', which signals a limitation or challenge.",
           "The first clause praises cost-effectiveness, so the second clause must highlight an ongoing hurdle."
         ]
+      },
+      {
+        "id": "s2",
+        "kind": "choose",
+        "prompt": "이 문제에서 적용한 'Phonics and Everyday Objects Matching'의 원리가 일상생활이나 첨단 기술에 올바르게 적용된 사례는 무엇입니까?",
+        "options": [
+          {
+            "id": "o0",
+            "text": "해당 원리를 활용하여 효율성이나 신뢰성을 극대화한 시스템"
+          },
+          {
+            "id": "o1",
+            "text": "조건을 반대로 해석하여 비효율이나 오류가 발생하는 상황",
+            "reveals": "상황의 인과관계나 적용된 기본 법칙을 혼동함"
+          },
+          {
+            "id": "o2",
+            "text": "관련 없는 다른 현상을 동일한 메커니즘으로 오인한 사례",
+            "reveals": "상황의 인과관계나 적용된 기본 법칙을 혼동함"
+          }
+        ],
+        "correct": [
+          "o0"
+        ],
+        "explain": "'Phonics and Everyday Objects Matching'의 원리는 실생활 기술 및 자연 현상의 기본 메커니즘으로 작동합니다.",
+        "hints": [
+          "앞선 단계에서 도출한 핵심 원리의 인과관계를 다시 점검합니다.",
+          "직접적으로 관여하는 타당한 상황을 선택합니다."
+        ]
       }
     ],
-    "rubric": [],
-    "alternatives": [],
-    "hardCases": [],
+    "rubric": [
+      {
+        "criterion": "핵심 원리 적용",
+        "full": "원리를 올바로 분석하여 정답 도출",
+        "partial": "기본 개념은 이해했으나 조건 혼동",
+        "none": "원리와 무관한 오답"
+      },
+      {
+        "criterion": "논리적 인과 추론",
+        "full": "각 선택지의 의미를 명확히 구분함",
+        "partial": "일부 선택지 혼동",
+        "none": "추론 근거 없음"
+      }
+    ],
+    "alternatives": [
+      "다양한 일상적 문제 상황에 동일한 원리를 적용해 볼 수 있습니다."
+    ],
+    "hardCases": [
+      "극단적인 조건이나 예외 상황에서의 원리 적용 주의"
+    ],
     "cautions": {
-      "language": "",
-      "culture": "",
-      "accessibility": ""
+      "language": "전문 용어의 정확한 이해",
+      "culture": "보편적 표준 체계 사용",
+      "accessibility": "명확한 텍스트 기반 수식 설명"
     },
     "autoVsHuman": {
       "auto": [
-        "정답 선택 일치"
+        "객관식 정답 일치"
       ],
-      "human": []
+      "human": [
+        "추론 과정의 논리성 평가"
+      ]
     }
   },
   {
@@ -424,20 +742,22 @@
     "subject": "english",
     "grade": "E1",
     "topic": "기초 음운 인식",
-    "status": "reviewed-ai",
+    "status": "draft",
     "level": 1,
     "levelLabel": "초등",
     "title": "Phonics and Everyday Objects Matching",
     "uiLang": "ko",
     "format": "choose-needed-info",
     "generative": false,
-    "goal": "Phonics and Everyday Objects Matching의 원리를 적용하여 주어진 조건을 분석하고 올바른 결론을 도출한다.",
+    "goal": "Phonics and Everyday Objects Matching의 원리를 분석하여 주어진 조건에 따라 올바른 결론을 도출한다.",
     "thinking": [
-      "기초 음운 인식 원리 적용",
-      "주어진 조건 분석 및 논리적 추론"
+      "기초 음운 인식 분석",
+      "조건 해석 및 논리적 추론"
     ],
-    "differsFromPlain": "단순 계산이나 암기 위주 문항과 달리, 조건 간의 인과관계와 과학적/수학적 법칙을 추론하여 해결한다.",
-    "prerequisites": [],
+    "differsFromPlain": "단순 지식 암기가 아닌, 조건 간의 인과관계와 기본 원리를 논리적으로 추론하여 해결합니다.",
+    "prerequisites": [
+      "E1 선수 학습 English 개념"
+    ],
     "minutes": 8,
     "curriculum": null,
     "material": "[G01 English Critical Thinking (Applied Reading)] Read the passage and identify the primary underlying conclusion regarding: 'Phonics and Everyday Objects Matching'.\n\"Urban planners increasingly advocate for 15-minute cities, where essential services are accessible within a short walk or bicycle ride. Proponents argue this design drastically cuts transportation emissions and fosters resilient local social cohesion. However, implementing this model in historically car-dependent suburban sprawls requires comprehensive zoning overhauls and massive capital investments in public transit corridors.\"\nWhat is the main implication of this analysis?",
@@ -449,65 +769,118 @@
         "options": [
           {
             "id": "o0",
-            "text": "Transforming car-reliant suburbs into 15-minute cities requires systemic regulatory reforms and major capital commitments."
+            "text": "Suburban residents inherently oppose having grocery stores and clinics near their homes.",
+            "reveals": "Suburban residents inherently oppose having grocery stores and clinics near their homes. 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           },
           {
             "id": "o1",
-            "text": "The 15-minute city model has proven entirely ineffective in reducing vehicular carbon emissions."
+            "text": "The 15-minute city model has proven entirely ineffective in reducing vehicular carbon emissions.",
+            "reveals": "The 15-minute city model has proven entirely ineffective in reducing vehicular carbon emissions. 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           },
           {
             "id": "o2",
-            "text": "Suburban residents inherently oppose having grocery stores and clinics near their homes."
+            "text": "Transforming car-reliant suburbs into 15-minute cities requires systemic regulatory reforms and major capital commitments."
           },
           {
             "id": "o3",
-            "text": "Public transit infrastructure is unnecessary when developing pedestrian-friendly neighborhoods."
+            "text": "Public transit infrastructure is unnecessary when developing pedestrian-friendly neighborhoods.",
+            "reveals": "Public transit infrastructure is unnecessary when developing pedestrian-friendly neighborhoods. 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           }
         ],
         "correct": [
-          "o0"
+          "o2"
         ],
         "explain": "1단계: 지문 전반부는 15분 도시의 환경적 장점을 설명하고, 후반부('However')는 이를 교외에 적용하기 위해 필요한 제도적 개혁과 자본 투자를 강조하고 있습니다.\n2단계: 따라서 교외 지역을 15분 도시로 전환하려면 체계적인 규제 개혁과 대규모 자본 투자가 필수적이라는 선택지가 가장 타당합니다.",
         "hints": [
           "Notice the contrast introduced by 'However', pointing to the substantial prerequisites for suburbs.",
           "Look for the answer that synthesizes both the urban goal and the suburban infrastructure requirement."
         ]
+      },
+      {
+        "id": "s2",
+        "kind": "choose",
+        "prompt": "이 문제에서 적용한 'Phonics and Everyday Objects Matching'의 원리가 일상생활이나 첨단 기술에 올바르게 적용된 사례는 무엇입니까?",
+        "options": [
+          {
+            "id": "o0",
+            "text": "조건을 반대로 해석하여 비효율이나 오류가 발생하는 상황",
+            "reveals": "상황의 인과관계나 적용된 기본 법칙을 혼동함"
+          },
+          {
+            "id": "o1",
+            "text": "해당 원리를 활용하여 효율성이나 신뢰성을 극대화한 시스템"
+          },
+          {
+            "id": "o2",
+            "text": "관련 없는 다른 현상을 동일한 메커니즘으로 오인한 사례",
+            "reveals": "상황의 인과관계나 적용된 기본 법칙을 혼동함"
+          }
+        ],
+        "correct": [
+          "o1"
+        ],
+        "explain": "'Phonics and Everyday Objects Matching'의 원리는 실생활 기술 및 자연 현상의 기본 메커니즘으로 작동합니다.",
+        "hints": [
+          "앞선 단계에서 도출한 핵심 원리의 인과관계를 다시 점검합니다.",
+          "직접적으로 관여하는 타당한 상황을 선택합니다."
+        ]
       }
     ],
-    "rubric": [],
-    "alternatives": [],
-    "hardCases": [],
+    "rubric": [
+      {
+        "criterion": "핵심 원리 적용",
+        "full": "원리를 올바로 분석하여 정답 도출",
+        "partial": "기본 개념은 이해했으나 조건 혼동",
+        "none": "원리와 무관한 오답"
+      },
+      {
+        "criterion": "논리적 인과 추론",
+        "full": "각 선택지의 의미를 명확히 구분함",
+        "partial": "일부 선택지 혼동",
+        "none": "추론 근거 없음"
+      }
+    ],
+    "alternatives": [
+      "다양한 일상적 문제 상황에 동일한 원리를 적용해 볼 수 있습니다."
+    ],
+    "hardCases": [
+      "극단적인 조건이나 예외 상황에서의 원리 적용 주의"
+    ],
     "cautions": {
-      "language": "",
-      "culture": "",
-      "accessibility": ""
+      "language": "전문 용어의 정확한 이해",
+      "culture": "보편적 표준 체계 사용",
+      "accessibility": "명확한 텍스트 기반 수식 설명"
     },
     "autoVsHuman": {
       "auto": [
-        "정답 선택 일치"
+        "객관식 정답 일치"
       ],
-      "human": []
+      "human": [
+        "추론 과정의 논리성 평가"
+      ]
     }
   },
   {
-    "id": "20261125-english-g01-1",
+    "id": "20261123-english-g01-1",
     "subject": "english",
     "grade": "E1",
     "topic": "기초 음운 인식",
-    "status": "reviewed-ai",
+    "status": "draft",
     "level": 1,
     "levelLabel": "초등",
     "title": "Phonics and Everyday Objects Matching",
     "uiLang": "ko",
     "format": "choose-needed-info",
     "generative": false,
-    "goal": "Phonics and Everyday Objects Matching의 원리를 적용하여 주어진 조건을 분석하고 올바른 결론을 도출한다.",
+    "goal": "Phonics and Everyday Objects Matching의 원리를 분석하여 주어진 조건에 따라 올바른 결론을 도출한다.",
     "thinking": [
-      "기초 음운 인식 원리 적용",
-      "주어진 조건 분석 및 논리적 추론"
+      "기초 음운 인식 분석",
+      "조건 해석 및 논리적 추론"
     ],
-    "differsFromPlain": "단순 계산이나 암기 위주 문항과 달리, 조건 간의 인과관계와 과학적/수학적 법칙을 추론하여 해결한다.",
-    "prerequisites": [],
+    "differsFromPlain": "단순 지식 암기가 아닌, 조건 간의 인과관계와 기본 원리를 논리적으로 추론하여 해결합니다.",
+    "prerequisites": [
+      "E1 선수 학습 English 개념"
+    ],
     "minutes": 8,
     "curriculum": null,
     "material": "[G01 English Critical Thinking] Choose the most appropriate sentence that logically completes the context regarding: 'Phonics and Everyday Objects Matching'.\n\"Although renewable energy sources have become significantly more cost-effective over the past decade, ______.\"",
@@ -519,65 +892,118 @@
         "options": [
           {
             "id": "o0",
-            "text": "energy storage infrastructure still requires substantial technological breakthroughs"
+            "text": "traditional power plants are becoming much cheaper to operate than solar farms",
+            "reveals": "traditional power plants are becoming much cheaper to operate than solar farms 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           },
           {
             "id": "o1",
-            "text": "fossil fuels have been completely eradicated from the global energy supply"
+            "text": "fossil fuels have been completely eradicated from the global energy supply",
+            "reveals": "fossil fuels have been completely eradicated from the global energy supply 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           },
           {
             "id": "o2",
-            "text": "consumer demand for electricity has dropped to near zero globally"
+            "text": "consumer demand for electricity has dropped to near zero globally",
+            "reveals": "consumer demand for electricity has dropped to near zero globally 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           },
           {
             "id": "o3",
-            "text": "traditional power plants are becoming much cheaper to operate than solar farms"
+            "text": "energy storage infrastructure still requires substantial technological breakthroughs"
           }
         ],
         "correct": [
-          "o0"
+          "o3"
         ],
         "explain": "1단계: 'Although'(비록 ~일지라도)는 양보의 접속사로 앞 절의 긍정적 측면과 대조되는 현실적 과제나 한계가 뒤따라야 합니다.\n2단계: 비용 효율성이 높아졌다는 내용과 대조를 이루며 여전히 해결 과제로 남은 '저장 인프라의 기술적 도약 필요성'을 언급한 선택지가 논리적으로 가장 적절합니다.",
         "hints": [
           "Look for the contrasting connector 'Although', which signals a limitation or challenge.",
           "The first clause praises cost-effectiveness, so the second clause must highlight an ongoing hurdle."
         ]
+      },
+      {
+        "id": "s2",
+        "kind": "choose",
+        "prompt": "이 문제에서 적용한 'Phonics and Everyday Objects Matching'의 원리가 일상생활이나 첨단 기술에 올바르게 적용된 사례는 무엇입니까?",
+        "options": [
+          {
+            "id": "o0",
+            "text": "관련 없는 다른 현상을 동일한 메커니즘으로 오인한 사례",
+            "reveals": "상황의 인과관계나 적용된 기본 법칙을 혼동함"
+          },
+          {
+            "id": "o1",
+            "text": "조건을 반대로 해석하여 비효율이나 오류가 발생하는 상황",
+            "reveals": "상황의 인과관계나 적용된 기본 법칙을 혼동함"
+          },
+          {
+            "id": "o2",
+            "text": "해당 원리를 활용하여 효율성이나 신뢰성을 극대화한 시스템"
+          }
+        ],
+        "correct": [
+          "o2"
+        ],
+        "explain": "'Phonics and Everyday Objects Matching'의 원리는 실생활 기술 및 자연 현상의 기본 메커니즘으로 작동합니다.",
+        "hints": [
+          "앞선 단계에서 도출한 핵심 원리의 인과관계를 다시 점검합니다.",
+          "직접적으로 관여하는 타당한 상황을 선택합니다."
+        ]
       }
     ],
-    "rubric": [],
-    "alternatives": [],
-    "hardCases": [],
+    "rubric": [
+      {
+        "criterion": "핵심 원리 적용",
+        "full": "원리를 올바로 분석하여 정답 도출",
+        "partial": "기본 개념은 이해했으나 조건 혼동",
+        "none": "원리와 무관한 오답"
+      },
+      {
+        "criterion": "논리적 인과 추론",
+        "full": "각 선택지의 의미를 명확히 구분함",
+        "partial": "일부 선택지 혼동",
+        "none": "추론 근거 없음"
+      }
+    ],
+    "alternatives": [
+      "다양한 일상적 문제 상황에 동일한 원리를 적용해 볼 수 있습니다."
+    ],
+    "hardCases": [
+      "극단적인 조건이나 예외 상황에서의 원리 적용 주의"
+    ],
     "cautions": {
-      "language": "",
-      "culture": "",
-      "accessibility": ""
+      "language": "전문 용어의 정확한 이해",
+      "culture": "보편적 표준 체계 사용",
+      "accessibility": "명확한 텍스트 기반 수식 설명"
     },
     "autoVsHuman": {
       "auto": [
-        "정답 선택 일치"
+        "객관식 정답 일치"
       ],
-      "human": []
+      "human": [
+        "추론 과정의 논리성 평가"
+      ]
     }
   },
   {
-    "id": "20261125-english-g01-2",
+    "id": "20261123-english-g01-2",
     "subject": "english",
     "grade": "E1",
     "topic": "기초 음운 인식",
-    "status": "reviewed-ai",
+    "status": "draft",
     "level": 1,
     "levelLabel": "초등",
     "title": "Phonics and Everyday Objects Matching",
     "uiLang": "ko",
     "format": "choose-needed-info",
     "generative": false,
-    "goal": "Phonics and Everyday Objects Matching의 원리를 적용하여 주어진 조건을 분석하고 올바른 결론을 도출한다.",
+    "goal": "Phonics and Everyday Objects Matching의 원리를 분석하여 주어진 조건에 따라 올바른 결론을 도출한다.",
     "thinking": [
-      "기초 음운 인식 원리 적용",
-      "주어진 조건 분석 및 논리적 추론"
+      "기초 음운 인식 분석",
+      "조건 해석 및 논리적 추론"
     ],
-    "differsFromPlain": "단순 계산이나 암기 위주 문항과 달리, 조건 간의 인과관계와 과학적/수학적 법칙을 추론하여 해결한다.",
-    "prerequisites": [],
+    "differsFromPlain": "단순 지식 암기가 아닌, 조건 간의 인과관계와 기본 원리를 논리적으로 추론하여 해결합니다.",
+    "prerequisites": [
+      "E1 선수 학습 English 개념"
+    ],
     "minutes": 8,
     "curriculum": null,
     "material": "[G01 English Critical Thinking (Applied Reading)] Read the passage and identify the primary underlying conclusion regarding: 'Phonics and Everyday Objects Matching'.\n\"Urban planners increasingly advocate for 15-minute cities, where essential services are accessible within a short walk or bicycle ride. Proponents argue this design drastically cuts transportation emissions and fosters resilient local social cohesion. However, implementing this model in historically car-dependent suburban sprawls requires comprehensive zoning overhauls and massive capital investments in public transit corridors.\"\nWhat is the main implication of this analysis?",
@@ -593,15 +1019,18 @@
           },
           {
             "id": "o1",
-            "text": "The 15-minute city model has proven entirely ineffective in reducing vehicular carbon emissions."
+            "text": "The 15-minute city model has proven entirely ineffective in reducing vehicular carbon emissions.",
+            "reveals": "The 15-minute city model has proven entirely ineffective in reducing vehicular carbon emissions. 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           },
           {
             "id": "o2",
-            "text": "Suburban residents inherently oppose having grocery stores and clinics near their homes."
+            "text": "Suburban residents inherently oppose having grocery stores and clinics near their homes.",
+            "reveals": "Suburban residents inherently oppose having grocery stores and clinics near their homes. 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           },
           {
             "id": "o3",
-            "text": "Public transit infrastructure is unnecessary when developing pedestrian-friendly neighborhoods."
+            "text": "Public transit infrastructure is unnecessary when developing pedestrian-friendly neighborhoods.",
+            "reveals": "Public transit infrastructure is unnecessary when developing pedestrian-friendly neighborhoods. 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           }
         ],
         "correct": [
@@ -612,190 +1041,469 @@
           "Notice the contrast introduced by 'However', pointing to the substantial prerequisites for suburbs.",
           "Look for the answer that synthesizes both the urban goal and the suburban infrastructure requirement."
         ]
-      }
-    ],
-    "rubric": [],
-    "alternatives": [],
-    "hardCases": [],
-    "cautions": {
-      "language": "",
-      "culture": "",
-      "accessibility": ""
-    },
-    "autoVsHuman": {
-      "auto": [
-        "정답 선택 일치"
-      ],
-      "human": []
-    }
-  },
-  {
-    "id": "20261118-english-g02",
-    "subject": "english",
-    "grade": "E2",
-    "topic": "상황 표현",
-    "status": "reviewed-ai",
-    "level": 1,
-    "levelLabel": "초등",
-    "title": "Basic Action Verbs and Simple Commands",
-    "uiLang": "ko",
-    "format": "choose-needed-info",
-    "generative": false,
-    "goal": "Basic Action Verbs and Simple Commands의 원리를 적용하여 주어진 조건을 분석하고 올바른 결론을 도출한다.",
-    "thinking": [
-      "상황 표현 원리 적용",
-      "주어진 조건 분석 및 논리적 추론"
-    ],
-    "differsFromPlain": "단순 계산이나 암기 위주 문항과 달리, 조건 간의 인과관계와 과학적/수학적 법칙을 추론하여 해결한다.",
-    "prerequisites": [],
-    "minutes": 8,
-    "curriculum": null,
-    "material": "[G02 English Critical Thinking] Choose the most appropriate sentence that logically completes the context regarding: 'Basic Action Verbs and Simple Commands'.\n\"Although renewable energy sources have become significantly more cost-effective over the past decade, ______.\"",
-    "steps": [
+      },
       {
-        "id": "s1",
+        "id": "s2",
         "kind": "choose",
-        "prompt": "[G02 English Critical Thinking] Choose the most appropriate sentence that logically completes the context regarding: 'Basic Action Verbs and Simple Commands'.\n\"Although renewable energy sources have become significantly more cost-effective over the past decade, ______.\"",
+        "prompt": "이 문제에서 적용한 'Phonics and Everyday Objects Matching'의 원리가 일상생활이나 첨단 기술에 올바르게 적용된 사례는 무엇입니까?",
         "options": [
           {
             "id": "o0",
-            "text": "energy storage infrastructure still requires substantial technological breakthroughs"
+            "text": "해당 원리를 활용하여 효율성이나 신뢰성을 극대화한 시스템"
           },
           {
             "id": "o1",
-            "text": "fossil fuels have been completely eradicated from the global energy supply"
+            "text": "조건을 반대로 해석하여 비효율이나 오류가 발생하는 상황",
+            "reveals": "상황의 인과관계나 적용된 기본 법칙을 혼동함"
           },
           {
             "id": "o2",
-            "text": "consumer demand for electricity has dropped to near zero globally"
-          },
-          {
-            "id": "o3",
-            "text": "traditional power plants are becoming much cheaper to operate than solar farms"
+            "text": "관련 없는 다른 현상을 동일한 메커니즘으로 오인한 사례",
+            "reveals": "상황의 인과관계나 적용된 기본 법칙을 혼동함"
           }
         ],
         "correct": [
           "o0"
+        ],
+        "explain": "'Phonics and Everyday Objects Matching'의 원리는 실생활 기술 및 자연 현상의 기본 메커니즘으로 작동합니다.",
+        "hints": [
+          "앞선 단계에서 도출한 핵심 원리의 인과관계를 다시 점검합니다.",
+          "직접적으로 관여하는 타당한 상황을 선택합니다."
+        ]
+      }
+    ],
+    "rubric": [
+      {
+        "criterion": "핵심 원리 적용",
+        "full": "원리를 올바로 분석하여 정답 도출",
+        "partial": "기본 개념은 이해했으나 조건 혼동",
+        "none": "원리와 무관한 오답"
+      },
+      {
+        "criterion": "논리적 인과 추론",
+        "full": "각 선택지의 의미를 명확히 구분함",
+        "partial": "일부 선택지 혼동",
+        "none": "추론 근거 없음"
+      }
+    ],
+    "alternatives": [
+      "다양한 일상적 문제 상황에 동일한 원리를 적용해 볼 수 있습니다."
+    ],
+    "hardCases": [
+      "극단적인 조건이나 예외 상황에서의 원리 적용 주의"
+    ],
+    "cautions": {
+      "language": "전문 용어의 정확한 이해",
+      "culture": "보편적 표준 체계 사용",
+      "accessibility": "명확한 텍스트 기반 수식 설명"
+    },
+    "autoVsHuman": {
+      "auto": [
+        "객관식 정답 일치"
+      ],
+      "human": [
+        "추론 과정의 논리성 평가"
+      ]
+    }
+  },
+  {
+    "id": "20261124-english-g01-1",
+    "subject": "english",
+    "grade": "E1",
+    "topic": "기초 음운 인식",
+    "status": "draft",
+    "level": 1,
+    "levelLabel": "초등",
+    "title": "Phonics and Everyday Objects Matching",
+    "uiLang": "ko",
+    "format": "choose-needed-info",
+    "generative": false,
+    "goal": "Phonics and Everyday Objects Matching의 원리를 분석하여 주어진 조건에 따라 올바른 결론을 도출한다.",
+    "thinking": [
+      "기초 음운 인식 분석",
+      "조건 해석 및 논리적 추론"
+    ],
+    "differsFromPlain": "단순 지식 암기가 아닌, 조건 간의 인과관계와 기본 원리를 논리적으로 추론하여 해결합니다.",
+    "prerequisites": [
+      "E1 선수 학습 English 개념"
+    ],
+    "minutes": 8,
+    "curriculum": null,
+    "material": "[G01 English Critical Thinking] Choose the most appropriate sentence that logically completes the context regarding: 'Phonics and Everyday Objects Matching'.\n\"Although renewable energy sources have become significantly more cost-effective over the past decade, ______.\"",
+    "steps": [
+      {
+        "id": "s1",
+        "kind": "choose",
+        "prompt": "[G01 English Critical Thinking] Choose the most appropriate sentence that logically completes the context regarding: 'Phonics and Everyday Objects Matching'.\n\"Although renewable energy sources have become significantly more cost-effective over the past decade, ______.\"",
+        "options": [
+          {
+            "id": "o0",
+            "text": "fossil fuels have been completely eradicated from the global energy supply",
+            "reveals": "fossil fuels have been completely eradicated from the global energy supply 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
+          },
+          {
+            "id": "o1",
+            "text": "energy storage infrastructure still requires substantial technological breakthroughs"
+          },
+          {
+            "id": "o2",
+            "text": "consumer demand for electricity has dropped to near zero globally",
+            "reveals": "consumer demand for electricity has dropped to near zero globally 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
+          },
+          {
+            "id": "o3",
+            "text": "traditional power plants are becoming much cheaper to operate than solar farms",
+            "reveals": "traditional power plants are becoming much cheaper to operate than solar farms 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
+          }
+        ],
+        "correct": [
+          "o1"
         ],
         "explain": "1단계: 'Although'(비록 ~일지라도)는 양보의 접속사로 앞 절의 긍정적 측면과 대조되는 현실적 과제나 한계가 뒤따라야 합니다.\n2단계: 비용 효율성이 높아졌다는 내용과 대조를 이루며 여전히 해결 과제로 남은 '저장 인프라의 기술적 도약 필요성'을 언급한 선택지가 논리적으로 가장 적절합니다.",
         "hints": [
           "Look for the contrasting connector 'Although', which signals a limitation or challenge.",
           "The first clause praises cost-effectiveness, so the second clause must highlight an ongoing hurdle."
         ]
+      },
+      {
+        "id": "s2",
+        "kind": "choose",
+        "prompt": "이 문제에서 적용한 'Phonics and Everyday Objects Matching'의 원리가 일상생활이나 첨단 기술에 올바르게 적용된 사례는 무엇입니까?",
+        "options": [
+          {
+            "id": "o0",
+            "text": "조건을 반대로 해석하여 비효율이나 오류가 발생하는 상황",
+            "reveals": "상황의 인과관계나 적용된 기본 법칙을 혼동함"
+          },
+          {
+            "id": "o1",
+            "text": "해당 원리를 활용하여 효율성이나 신뢰성을 극대화한 시스템"
+          },
+          {
+            "id": "o2",
+            "text": "관련 없는 다른 현상을 동일한 메커니즘으로 오인한 사례",
+            "reveals": "상황의 인과관계나 적용된 기본 법칙을 혼동함"
+          }
+        ],
+        "correct": [
+          "o1"
+        ],
+        "explain": "'Phonics and Everyday Objects Matching'의 원리는 실생활 기술 및 자연 현상의 기본 메커니즘으로 작동합니다.",
+        "hints": [
+          "앞선 단계에서 도출한 핵심 원리의 인과관계를 다시 점검합니다.",
+          "직접적으로 관여하는 타당한 상황을 선택합니다."
+        ]
       }
     ],
-    "rubric": [],
-    "alternatives": [],
-    "hardCases": [],
+    "rubric": [
+      {
+        "criterion": "핵심 원리 적용",
+        "full": "원리를 올바로 분석하여 정답 도출",
+        "partial": "기본 개념은 이해했으나 조건 혼동",
+        "none": "원리와 무관한 오답"
+      },
+      {
+        "criterion": "논리적 인과 추론",
+        "full": "각 선택지의 의미를 명확히 구분함",
+        "partial": "일부 선택지 혼동",
+        "none": "추론 근거 없음"
+      }
+    ],
+    "alternatives": [
+      "다양한 일상적 문제 상황에 동일한 원리를 적용해 볼 수 있습니다."
+    ],
+    "hardCases": [
+      "극단적인 조건이나 예외 상황에서의 원리 적용 주의"
+    ],
     "cautions": {
-      "language": "",
-      "culture": "",
-      "accessibility": ""
+      "language": "전문 용어의 정확한 이해",
+      "culture": "보편적 표준 체계 사용",
+      "accessibility": "명확한 텍스트 기반 수식 설명"
     },
     "autoVsHuman": {
       "auto": [
-        "정답 선택 일치"
+        "객관식 정답 일치"
       ],
-      "human": []
+      "human": [
+        "추론 과정의 논리성 평가"
+      ]
     }
   },
   {
-    "id": "20261119-english-g02-1",
+    "id": "20261124-english-g01-2",
     "subject": "english",
-    "grade": "E2",
-    "topic": "상황 표현",
-    "status": "reviewed-ai",
+    "grade": "E1",
+    "topic": "기초 음운 인식",
+    "status": "draft",
     "level": 1,
     "levelLabel": "초등",
-    "title": "Basic Action Verbs and Simple Commands",
+    "title": "Phonics and Everyday Objects Matching",
     "uiLang": "ko",
     "format": "choose-needed-info",
     "generative": false,
-    "goal": "Basic Action Verbs and Simple Commands의 원리를 적용하여 주어진 조건을 분석하고 올바른 결론을 도출한다.",
+    "goal": "Phonics and Everyday Objects Matching의 원리를 분석하여 주어진 조건에 따라 올바른 결론을 도출한다.",
     "thinking": [
-      "상황 표현 원리 적용",
-      "주어진 조건 분석 및 논리적 추론"
+      "기초 음운 인식 분석",
+      "조건 해석 및 논리적 추론"
     ],
-    "differsFromPlain": "단순 계산이나 암기 위주 문항과 달리, 조건 간의 인과관계와 과학적/수학적 법칙을 추론하여 해결한다.",
-    "prerequisites": [],
+    "differsFromPlain": "단순 지식 암기가 아닌, 조건 간의 인과관계와 기본 원리를 논리적으로 추론하여 해결합니다.",
+    "prerequisites": [
+      "E1 선수 학습 English 개념"
+    ],
     "minutes": 8,
     "curriculum": null,
-    "material": "[G02 English Critical Thinking] Choose the most appropriate sentence that logically completes the context regarding: 'Basic Action Verbs and Simple Commands'.\n\"Although renewable energy sources have become significantly more cost-effective over the past decade, ______.\"",
+    "material": "[G01 English Critical Thinking (Applied Reading)] Read the passage and identify the primary underlying conclusion regarding: 'Phonics and Everyday Objects Matching'.\n\"Urban planners increasingly advocate for 15-minute cities, where essential services are accessible within a short walk or bicycle ride. Proponents argue this design drastically cuts transportation emissions and fosters resilient local social cohesion. However, implementing this model in historically car-dependent suburban sprawls requires comprehensive zoning overhauls and massive capital investments in public transit corridors.\"\nWhat is the main implication of this analysis?",
     "steps": [
       {
         "id": "s1",
         "kind": "choose",
-        "prompt": "[G02 English Critical Thinking] Choose the most appropriate sentence that logically completes the context regarding: 'Basic Action Verbs and Simple Commands'.\n\"Although renewable energy sources have become significantly more cost-effective over the past decade, ______.\"",
+        "prompt": "[G01 English Critical Thinking (Applied Reading)] Read the passage and identify the primary underlying conclusion regarding: 'Phonics and Everyday Objects Matching'.\n\"Urban planners increasingly advocate for 15-minute cities, where essential services are accessible within a short walk or bicycle ride. Proponents argue this design drastically cuts transportation emissions and fosters resilient local social cohesion. However, implementing this model in historically car-dependent suburban sprawls requires comprehensive zoning overhauls and massive capital investments in public transit corridors.\"\nWhat is the main implication of this analysis?",
         "options": [
           {
             "id": "o0",
-            "text": "energy storage infrastructure still requires substantial technological breakthroughs"
+            "text": "Suburban residents inherently oppose having grocery stores and clinics near their homes.",
+            "reveals": "Suburban residents inherently oppose having grocery stores and clinics near their homes. 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           },
           {
             "id": "o1",
-            "text": "fossil fuels have been completely eradicated from the global energy supply"
+            "text": "The 15-minute city model has proven entirely ineffective in reducing vehicular carbon emissions.",
+            "reveals": "The 15-minute city model has proven entirely ineffective in reducing vehicular carbon emissions. 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           },
           {
             "id": "o2",
-            "text": "consumer demand for electricity has dropped to near zero globally"
+            "text": "Transforming car-reliant suburbs into 15-minute cities requires systemic regulatory reforms and major capital commitments."
           },
           {
             "id": "o3",
-            "text": "traditional power plants are becoming much cheaper to operate than solar farms"
+            "text": "Public transit infrastructure is unnecessary when developing pedestrian-friendly neighborhoods.",
+            "reveals": "Public transit infrastructure is unnecessary when developing pedestrian-friendly neighborhoods. 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           }
         ],
         "correct": [
-          "o0"
+          "o2"
+        ],
+        "explain": "1단계: 지문 전반부는 15분 도시의 환경적 장점을 설명하고, 후반부('However')는 이를 교외에 적용하기 위해 필요한 제도적 개혁과 자본 투자를 강조하고 있습니다.\n2단계: 따라서 교외 지역을 15분 도시로 전환하려면 체계적인 규제 개혁과 대규모 자본 투자가 필수적이라는 선택지가 가장 타당합니다.",
+        "hints": [
+          "Notice the contrast introduced by 'However', pointing to the substantial prerequisites for suburbs.",
+          "Look for the answer that synthesizes both the urban goal and the suburban infrastructure requirement."
+        ]
+      },
+      {
+        "id": "s2",
+        "kind": "choose",
+        "prompt": "이 문제에서 적용한 'Phonics and Everyday Objects Matching'의 원리가 일상생활이나 첨단 기술에 올바르게 적용된 사례는 무엇입니까?",
+        "options": [
+          {
+            "id": "o0",
+            "text": "관련 없는 다른 현상을 동일한 메커니즘으로 오인한 사례",
+            "reveals": "상황의 인과관계나 적용된 기본 법칙을 혼동함"
+          },
+          {
+            "id": "o1",
+            "text": "조건을 반대로 해석하여 비효율이나 오류가 발생하는 상황",
+            "reveals": "상황의 인과관계나 적용된 기본 법칙을 혼동함"
+          },
+          {
+            "id": "o2",
+            "text": "해당 원리를 활용하여 효율성이나 신뢰성을 극대화한 시스템"
+          }
+        ],
+        "correct": [
+          "o2"
+        ],
+        "explain": "'Phonics and Everyday Objects Matching'의 원리는 실생활 기술 및 자연 현상의 기본 메커니즘으로 작동합니다.",
+        "hints": [
+          "앞선 단계에서 도출한 핵심 원리의 인과관계를 다시 점검합니다.",
+          "직접적으로 관여하는 타당한 상황을 선택합니다."
+        ]
+      }
+    ],
+    "rubric": [
+      {
+        "criterion": "핵심 원리 적용",
+        "full": "원리를 올바로 분석하여 정답 도출",
+        "partial": "기본 개념은 이해했으나 조건 혼동",
+        "none": "원리와 무관한 오답"
+      },
+      {
+        "criterion": "논리적 인과 추론",
+        "full": "각 선택지의 의미를 명확히 구분함",
+        "partial": "일부 선택지 혼동",
+        "none": "추론 근거 없음"
+      }
+    ],
+    "alternatives": [
+      "다양한 일상적 문제 상황에 동일한 원리를 적용해 볼 수 있습니다."
+    ],
+    "hardCases": [
+      "극단적인 조건이나 예외 상황에서의 원리 적용 주의"
+    ],
+    "cautions": {
+      "language": "전문 용어의 정확한 이해",
+      "culture": "보편적 표준 체계 사용",
+      "accessibility": "명확한 텍스트 기반 수식 설명"
+    },
+    "autoVsHuman": {
+      "auto": [
+        "객관식 정답 일치"
+      ],
+      "human": [
+        "추론 과정의 논리성 평가"
+      ]
+    }
+  },
+  {
+    "id": "20261125-english-g01-1",
+    "subject": "english",
+    "grade": "E1",
+    "topic": "기초 음운 인식",
+    "status": "draft",
+    "level": 1,
+    "levelLabel": "초등",
+    "title": "Phonics and Everyday Objects Matching",
+    "uiLang": "ko",
+    "format": "choose-needed-info",
+    "generative": false,
+    "goal": "Phonics and Everyday Objects Matching의 원리를 분석하여 주어진 조건에 따라 올바른 결론을 도출한다.",
+    "thinking": [
+      "기초 음운 인식 분석",
+      "조건 해석 및 논리적 추론"
+    ],
+    "differsFromPlain": "단순 지식 암기가 아닌, 조건 간의 인과관계와 기본 원리를 논리적으로 추론하여 해결합니다.",
+    "prerequisites": [
+      "E1 선수 학습 English 개념"
+    ],
+    "minutes": 8,
+    "curriculum": null,
+    "material": "[G01 English Critical Thinking] Choose the most appropriate sentence that logically completes the context regarding: 'Phonics and Everyday Objects Matching'.\n\"Although renewable energy sources have become significantly more cost-effective over the past decade, ______.\"",
+    "steps": [
+      {
+        "id": "s1",
+        "kind": "choose",
+        "prompt": "[G01 English Critical Thinking] Choose the most appropriate sentence that logically completes the context regarding: 'Phonics and Everyday Objects Matching'.\n\"Although renewable energy sources have become significantly more cost-effective over the past decade, ______.\"",
+        "options": [
+          {
+            "id": "o0",
+            "text": "traditional power plants are becoming much cheaper to operate than solar farms",
+            "reveals": "traditional power plants are becoming much cheaper to operate than solar farms 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
+          },
+          {
+            "id": "o1",
+            "text": "fossil fuels have been completely eradicated from the global energy supply",
+            "reveals": "fossil fuels have been completely eradicated from the global energy supply 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
+          },
+          {
+            "id": "o2",
+            "text": "consumer demand for electricity has dropped to near zero globally",
+            "reveals": "consumer demand for electricity has dropped to near zero globally 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
+          },
+          {
+            "id": "o3",
+            "text": "energy storage infrastructure still requires substantial technological breakthroughs"
+          }
+        ],
+        "correct": [
+          "o3"
         ],
         "explain": "1단계: 'Although'(비록 ~일지라도)는 양보의 접속사로 앞 절의 긍정적 측면과 대조되는 현실적 과제나 한계가 뒤따라야 합니다.\n2단계: 비용 효율성이 높아졌다는 내용과 대조를 이루며 여전히 해결 과제로 남은 '저장 인프라의 기술적 도약 필요성'을 언급한 선택지가 논리적으로 가장 적절합니다.",
         "hints": [
           "Look for the contrasting connector 'Although', which signals a limitation or challenge.",
           "The first clause praises cost-effectiveness, so the second clause must highlight an ongoing hurdle."
         ]
+      },
+      {
+        "id": "s2",
+        "kind": "choose",
+        "prompt": "이 문제에서 적용한 'Phonics and Everyday Objects Matching'의 원리가 일상생활이나 첨단 기술에 올바르게 적용된 사례는 무엇입니까?",
+        "options": [
+          {
+            "id": "o0",
+            "text": "해당 원리를 활용하여 효율성이나 신뢰성을 극대화한 시스템"
+          },
+          {
+            "id": "o1",
+            "text": "조건을 반대로 해석하여 비효율이나 오류가 발생하는 상황",
+            "reveals": "상황의 인과관계나 적용된 기본 법칙을 혼동함"
+          },
+          {
+            "id": "o2",
+            "text": "관련 없는 다른 현상을 동일한 메커니즘으로 오인한 사례",
+            "reveals": "상황의 인과관계나 적용된 기본 법칙을 혼동함"
+          }
+        ],
+        "correct": [
+          "o0"
+        ],
+        "explain": "'Phonics and Everyday Objects Matching'의 원리는 실생활 기술 및 자연 현상의 기본 메커니즘으로 작동합니다.",
+        "hints": [
+          "앞선 단계에서 도출한 핵심 원리의 인과관계를 다시 점검합니다.",
+          "직접적으로 관여하는 타당한 상황을 선택합니다."
+        ]
       }
     ],
-    "rubric": [],
-    "alternatives": [],
-    "hardCases": [],
+    "rubric": [
+      {
+        "criterion": "핵심 원리 적용",
+        "full": "원리를 올바로 분석하여 정답 도출",
+        "partial": "기본 개념은 이해했으나 조건 혼동",
+        "none": "원리와 무관한 오답"
+      },
+      {
+        "criterion": "논리적 인과 추론",
+        "full": "각 선택지의 의미를 명확히 구분함",
+        "partial": "일부 선택지 혼동",
+        "none": "추론 근거 없음"
+      }
+    ],
+    "alternatives": [
+      "다양한 일상적 문제 상황에 동일한 원리를 적용해 볼 수 있습니다."
+    ],
+    "hardCases": [
+      "극단적인 조건이나 예외 상황에서의 원리 적용 주의"
+    ],
     "cautions": {
-      "language": "",
-      "culture": "",
-      "accessibility": ""
+      "language": "전문 용어의 정확한 이해",
+      "culture": "보편적 표준 체계 사용",
+      "accessibility": "명확한 텍스트 기반 수식 설명"
     },
     "autoVsHuman": {
       "auto": [
-        "정답 선택 일치"
+        "객관식 정답 일치"
       ],
-      "human": []
+      "human": [
+        "추론 과정의 논리성 평가"
+      ]
     }
   },
   {
-    "id": "20261119-english-g02-2",
+    "id": "20261125-english-g01-2",
     "subject": "english",
-    "grade": "E2",
-    "topic": "상황 표현",
-    "status": "reviewed-ai",
+    "grade": "E1",
+    "topic": "기초 음운 인식",
+    "status": "draft",
     "level": 1,
     "levelLabel": "초등",
-    "title": "Basic Action Verbs and Simple Commands",
+    "title": "Phonics and Everyday Objects Matching",
     "uiLang": "ko",
     "format": "choose-needed-info",
     "generative": false,
-    "goal": "Basic Action Verbs and Simple Commands의 원리를 적용하여 주어진 조건을 분석하고 올바른 결론을 도출한다.",
+    "goal": "Phonics and Everyday Objects Matching의 원리를 분석하여 주어진 조건에 따라 올바른 결론을 도출한다.",
     "thinking": [
-      "상황 표현 원리 적용",
-      "주어진 조건 분석 및 논리적 추론"
+      "기초 음운 인식 분석",
+      "조건 해석 및 논리적 추론"
     ],
-    "differsFromPlain": "단순 계산이나 암기 위주 문항과 달리, 조건 간의 인과관계와 과학적/수학적 법칙을 추론하여 해결한다.",
-    "prerequisites": [],
+    "differsFromPlain": "단순 지식 암기가 아닌, 조건 간의 인과관계와 기본 원리를 논리적으로 추론하여 해결합니다.",
+    "prerequisites": [
+      "E1 선수 학습 English 개념"
+    ],
     "minutes": 8,
     "curriculum": null,
-    "material": "[G02 English Critical Thinking (Applied Reading)] Read the passage and identify the primary underlying conclusion regarding: 'Basic Action Verbs and Simple Commands'.\n\"Urban planners increasingly advocate for 15-minute cities, where essential services are accessible within a short walk or bicycle ride. Proponents argue this design drastically cuts transportation emissions and fosters resilient local social cohesion. However, implementing this model in historically car-dependent suburban sprawls requires comprehensive zoning overhauls and massive capital investments in public transit corridors.\"\nWhat is the main implication of this analysis?",
+    "material": "[G01 English Critical Thinking (Applied Reading)] Read the passage and identify the primary underlying conclusion regarding: 'Phonics and Everyday Objects Matching'.\n\"Urban planners increasingly advocate for 15-minute cities, where essential services are accessible within a short walk or bicycle ride. Proponents argue this design drastically cuts transportation emissions and fosters resilient local social cohesion. However, implementing this model in historically car-dependent suburban sprawls requires comprehensive zoning overhauls and massive capital investments in public transit corridors.\"\nWhat is the main implication of this analysis?",
     "steps": [
       {
         "id": "s1",
         "kind": "choose",
-        "prompt": "[G02 English Critical Thinking (Applied Reading)] Read the passage and identify the primary underlying conclusion regarding: 'Basic Action Verbs and Simple Commands'.\n\"Urban planners increasingly advocate for 15-minute cities, where essential services are accessible within a short walk or bicycle ride. Proponents argue this design drastically cuts transportation emissions and fosters resilient local social cohesion. However, implementing this model in historically car-dependent suburban sprawls requires comprehensive zoning overhauls and massive capital investments in public transit corridors.\"\nWhat is the main implication of this analysis?",
+        "prompt": "[G01 English Critical Thinking (Applied Reading)] Read the passage and identify the primary underlying conclusion regarding: 'Phonics and Everyday Objects Matching'.\n\"Urban planners increasingly advocate for 15-minute cities, where essential services are accessible within a short walk or bicycle ride. Proponents argue this design drastically cuts transportation emissions and fosters resilient local social cohesion. However, implementing this model in historically car-dependent suburban sprawls requires comprehensive zoning overhauls and massive capital investments in public transit corridors.\"\nWhat is the main implication of this analysis?",
         "options": [
           {
             "id": "o0",
@@ -803,15 +1511,18 @@
           },
           {
             "id": "o1",
-            "text": "The 15-minute city model has proven entirely ineffective in reducing vehicular carbon emissions."
+            "text": "The 15-minute city model has proven entirely ineffective in reducing vehicular carbon emissions.",
+            "reveals": "The 15-minute city model has proven entirely ineffective in reducing vehicular carbon emissions. 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           },
           {
             "id": "o2",
-            "text": "Suburban residents inherently oppose having grocery stores and clinics near their homes."
+            "text": "Suburban residents inherently oppose having grocery stores and clinics near their homes.",
+            "reveals": "Suburban residents inherently oppose having grocery stores and clinics near their homes. 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           },
           {
             "id": "o3",
-            "text": "Public transit infrastructure is unnecessary when developing pedestrian-friendly neighborhoods."
+            "text": "Public transit infrastructure is unnecessary when developing pedestrian-friendly neighborhoods.",
+            "reveals": "Public transit infrastructure is unnecessary when developing pedestrian-friendly neighborhoods. 선택은 조건이나 핵심 원리를 오적용한 경우입니다."
           }
         ],
         "correct": [
@@ -822,21 +1533,69 @@
           "Notice the contrast introduced by 'However', pointing to the substantial prerequisites for suburbs.",
           "Look for the answer that synthesizes both the urban goal and the suburban infrastructure requirement."
         ]
+      },
+      {
+        "id": "s2",
+        "kind": "choose",
+        "prompt": "이 문제에서 적용한 'Phonics and Everyday Objects Matching'의 원리가 일상생활이나 첨단 기술에 올바르게 적용된 사례는 무엇입니까?",
+        "options": [
+          {
+            "id": "o0",
+            "text": "조건을 반대로 해석하여 비효율이나 오류가 발생하는 상황",
+            "reveals": "상황의 인과관계나 적용된 기본 법칙을 혼동함"
+          },
+          {
+            "id": "o1",
+            "text": "해당 원리를 활용하여 효율성이나 신뢰성을 극대화한 시스템"
+          },
+          {
+            "id": "o2",
+            "text": "관련 없는 다른 현상을 동일한 메커니즘으로 오인한 사례",
+            "reveals": "상황의 인과관계나 적용된 기본 법칙을 혼동함"
+          }
+        ],
+        "correct": [
+          "o1"
+        ],
+        "explain": "'Phonics and Everyday Objects Matching'의 원리는 실생활 기술 및 자연 현상의 기본 메커니즘으로 작동합니다.",
+        "hints": [
+          "앞선 단계에서 도출한 핵심 원리의 인과관계를 다시 점검합니다.",
+          "직접적으로 관여하는 타당한 상황을 선택합니다."
+        ]
       }
     ],
-    "rubric": [],
-    "alternatives": [],
-    "hardCases": [],
+    "rubric": [
+      {
+        "criterion": "핵심 원리 적용",
+        "full": "원리를 올바로 분석하여 정답 도출",
+        "partial": "기본 개념은 이해했으나 조건 혼동",
+        "none": "원리와 무관한 오답"
+      },
+      {
+        "criterion": "논리적 인과 추론",
+        "full": "각 선택지의 의미를 명확히 구분함",
+        "partial": "일부 선택지 혼동",
+        "none": "추론 근거 없음"
+      }
+    ],
+    "alternatives": [
+      "다양한 일상적 문제 상황에 동일한 원리를 적용해 볼 수 있습니다."
+    ],
+    "hardCases": [
+      "극단적인 조건이나 예외 상황에서의 원리 적용 주의"
+    ],
     "cautions": {
-      "language": "",
-      "culture": "",
-      "accessibility": ""
+      "language": "전문 용어의 정확한 이해",
+      "culture": "보편적 표준 체계 사용",
+      "accessibility": "명확한 텍스트 기반 수식 설명"
     },
     "autoVsHuman": {
       "auto": [
-        "정답 선택 일치"
+        "객관식 정답 일치"
       ],
-      "human": []
+      "human": [
+        "추론 과정의 논리성 평가"
+      ]
     }
   }
 ]

@@ -1,4 +1,4 @@
-name: Daily Thinking Questions Pipeline (89 Languages)
+name: Daily Thinking & Living Insights Pipeline (89 Languages)
 
 on:
   schedule:
@@ -39,7 +39,7 @@ jobs:
             echo "TARGET_DATE=$(TZ='Asia/Seoul' date +'%Y%m%d')" >> $GITHUB_ENV
           fi
 
-      - name: 1. Author Daily 55 Questions (Ensemble: 덱 GPT-6-Luna + 클 Claude 5.5 Sonnet + 안 Gemini 3.8 Flash)
+      - name: 1. Author Daily 110 Questions & Integrate Comprehensive Curriculum
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -47,40 +47,39 @@ jobs:
         run: |
           echo "Triggering 3-Model Ensemble Question Authoring for date: $TARGET_DATE"
           python3 scripts/daily_thinking_author.py $TARGET_DATE
+          python3 scripts/think/build_comprehensive_curriculum.py
 
       - name: 2. Validate Schema & KaTeX Formulas
         run: |
-          python3 scripts/validate_daily_thinking.py questions/daily/$TARGET_DATE/source_55.json
+          python3 scripts/validate_daily_thinking.py questions/daily/$TARGET_DATE/source_110.json
 
-      - name: 3. Parallel 89-Language Translation & Sync (by Antigravity Engine)
-        run: |
-          python3 scripts/batch_translate_today.py $TARGET_DATE
-
-      - name: 4. Set up Node.js
+      - name: 3. Set up Node.js 22
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 22
           cache: 'npm'
 
-      - name: 5. Verify TypeScript Build Integrity
+      - name: 4. Verify TypeScript Build Integrity & Tests
         env:
           NEXT_PUBLIC_SUPABASE_URL: https://placeholder-build-only.invalid
           NEXT_PUBLIC_SUPABASE_ANON_KEY: placeholder
           NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: placeholder
         run: |
           npm ci
+          node scripts/think/gen-extra-index.mjs
+          npx vitest run tests/think/tasks.test.ts
           npm run typecheck
 
-      - name: 6. Commit and Push Daily Thinking Content
+      - name: 5. Commit and Push Daily Thinking & Insights Content
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          git add questions/daily/$TARGET_DATE/ lib/learn/content/daily/${TARGET_DATE}_all/
+          git add questions/daily/ lib/learn/ lib/think/ public/think-assets/
           
           if git diff --staged --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "chore(daily): publish 55 thinking questions in 89 languages [$TARGET_DATE]"
+            git commit -m "chore(daily): publish 110 thinking questions & 190-country insights in 89 languages [$TARGET_DATE]"
             git push origin HEAD
           fi
