@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-type Segment = { kind: "text" | "math" | "bold"; value: string };
+type Segment = { kind: "text" | "math" | "bold" | "sub" | "sup"; value: string };
 
 /** Split "text $x^2$ **bold**" into segments. `$...$` is inline KaTeX, `**...**` is emphasis. */
 export function parseRich(input: string): Segment[] {
@@ -13,7 +13,9 @@ export function parseRich(input: string): Segment[] {
   while ((m = re.exec(input))) {
     if (m.index > last) out.push({ kind: "text", value: input.slice(last, m.index) });
     if (m[1] !== undefined) out.push({ kind: "math", value: m[1] });
-    else out.push({ kind: "bold", value: m[2] });
+    else if (m[2] !== undefined) out.push({ kind: "bold", value: m[2] });
+    else if (m[3] !== undefined) out.push({ kind: "sub", value: m[3] });
+    else if (m[4] !== undefined) out.push({ kind: "sup", value: m[4] });
     last = m.index + m[0].length;
   }
   if (last < input.length) out.push({ kind: "text", value: input.slice(last) });
@@ -42,6 +44,8 @@ export function RichText({ text, display = false, className, dir }: { text: stri
       {segments.map((s, i) => {
         if (s.kind === "bold") return <strong key={i}>{s.value}</strong>;
         if (s.kind === "text") return <span key={i}>{s.value}</span>;
+        if (s.kind === "sub") return <sub key={i} className="text-[0.8em] align-sub leading-none">{s.value}</sub>;
+        if (s.kind === "sup") return <sup key={i} className="text-[0.8em] align-super leading-none">{s.value}</sup>;
         // formulas always read left to right, also inside a right-to-left (ar, fa, he, ur) page
         if (!katex) return <span key={i} className="l-math-fallback" dir="ltr">{s.value}</span>;
         const html = katex.renderToString(s.value, { throwOnError: false, displayMode: display, output: "htmlAndMathml", trust: false });

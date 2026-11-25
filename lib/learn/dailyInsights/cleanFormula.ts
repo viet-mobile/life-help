@@ -8,8 +8,8 @@ const SUB_MAP: Record<string, string> = {
   "0": "₀", "1": "₁", "2": "₂", "3": "₃", "4": "₄",
   "5": "₅", "6": "₆", "7": "₇", "8": "₈", "9": "₉",
   "+": "₊", "-": "₋", "=": "₌", "(": "₍", ")": "₎",
-  "a": "ₐ", "e": "ₑ", "h": "ₕ", "k": "ₖ", "l": "ₗ", "m": "ₘ", "n": "ₙ",
-  "o": "ₒ", "p": "ₚ", "r": "ᵣ", "s": "ₛ", "t": "ₜ", "u": "ᵤ", "x": "ₓ"
+  "a": "ₐ", "e": "ₑ", "h": "ₕ", "i": "ᵢ", "j": "ⱼ", "k": "ₖ", "l": "ₗ", "m": "ₘ", "n": "ₙ",
+  "o": "ₒ", "p": "ₚ", "r": "ᵣ", "s": "ₛ", "t": "ₜ", "u": "ᵤ", "v": "ᵥ", "x": "ₓ"
 };
 
 const SUP_MAP: Record<string, string> = {
@@ -120,6 +120,13 @@ export function cleanLatexFormula(raw: string): string {
   s = s.replace(/\^\+/g, "⁺");
   s = s.replace(/\^\-/g, "⁻");
 
+  // Circuit and physics subscripts
+  s = s.replace(/I_(?:\Delta|Δ)/g, "I<sub>Δ</sub>");
+  s = s.replace(/I_(?:\{in\}|in|\text\{in\}|\mathrm\{in\})/g, "Iᵢₙ");
+  s = s.replace(/I_(?:\{out\}|out|\text\{out\}|\mathrm\{out\})/g, "Iₒᵤₜ");
+
+
+
   // Cleanup
   s = s.replace(/\\(?:left|right|quad|qquad)/g, "");
   s = s.replace(/\\,/g, " ");
@@ -139,8 +146,25 @@ export function cleanLatexFormula(raw: string): string {
 export function cleanFormulaText(text: string): string {
   if (!text || typeof text !== "string") return text;
   let s = text.replace(/\$([^$]+)\$/g, (_, raw) => cleanLatexFormula(raw));
-  if (s.includes("\\") || /_[0-9]|[A-Za-z]\^[0-9\+\-]/.test(s)) {
+  if (s.includes("\\") || /_[0-9A-Za-zΔ]/.test(s)) {
     s = cleanLatexFormula(s);
   }
+  // Formula subscript format: no underscore, format characters as subscript
+  s = s.replace(/I_Δ\s*=\s*\|I_in\s*-\s*I_out\|/g, "I<sub>Δ</sub> = |Iᵢₙ - Iₒᵤₜ|")
+       .replace(/I_Δ\s*=\s*\|I_in\s*-\s*Iₒᵤₜ\|/g, "I<sub>Δ</sub> = |Iᵢₙ - Iₒᵤₜ|")
+       .replace(/I_Δ\s*=\s*\|I_in-Iₒᵤₜ\|/g, "I<sub>Δ</sub> = |Iᵢₙ - Iₒᵤₜ|")
+       .replace(/I_Δ/g, "I<sub>Δ</sub>")
+       .replace(/I_in\b/g, "Iᵢₙ")
+       .replace(/I_out\b/g, "Iₒᵤₜ")
+       .replace(/E_a\b/g, "Eₐ")
+       .replace(/K_a\b/g, "Kₐ")
+       .replace(/pK_a\b/g, "pKₐ")
+       .replace(/k_H\b/g, "kₕ")
+       .replace(/E_in\b/g, "Eᵢₙ")
+       .replace(/E_out\b/g, "Eₒᵤₜ")
+       .replace(/T_in\b/g, "Tᵢₙ")
+       .replace(/T_out\b/g, "Tₒᵤₜ");
+  // Join number and unit spacing (e.g. 30 mA -> 30mA, 3 mA -> 3mA, 220 V -> 220V, etc.)
+  s = s.replace(/(\b\d+(?:\.\d+)?)\s+(mA|µA|μA|A|mV|V|kV|mW|W|kW|MW|Wh|kWh|MWh|J|kJ|MJ|cal|kcal|Hz|kHz|MHz|GHz|Pa|hPa|kPa|MPa|bar|mbar|psi|atm|mmHg|m\/s|km\/h|cm\/s|mm\/s|mm|cm|m|km|µm|μm|nm|mg|g|kg|mL|L|dL|cc|m²|cm²|mm²|km²|m³|cm³|mm³|ppm|ppb|dB|N|kN|Ω|kΩ|MΩ|°C|°F|K|초|분|시간)(?![a-zA-Z])/g, "$1$2");
   return s;
 }

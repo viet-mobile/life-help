@@ -270,7 +270,8 @@ export function DailyInsightCard({
   const handleShare = () => {
     if (typeof window !== "undefined") {
       const shareUrl = domain === "life" ? "https://life.help" : `https://${domain}.life.help`;
-      const shareText = `[${displayDomainLabel}] ${insight.title}\n\n${insight.summary}\n${uiPrincipleTitle}: ${insight.principle}\n${uiActionTitle}: ${insight.actionItem}\n\n👉 ${shareUrl}`;
+      const cleanShare = (s: string) => (s || "").replace(/<\/?(?:sub|sup)>/g, "");
+      const shareText = `[${displayDomainLabel}] ${cleanShare(insight.title)}\n\n${cleanShare(insight.summary)}\n${uiPrincipleTitle}: ${cleanShare(insight.principle)}\n${uiActionTitle}: ${cleanShare(insight.actionItem)}\n\n👉 ${shareUrl}`;
       navigator.clipboard.writeText(shareText).then(() => {
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
