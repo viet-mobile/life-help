@@ -16,9 +16,32 @@ import re
 from pathlib import Path
 
 ROOT = Path("/Users/juboklee/life-project/life-help")
+sys.path.insert(0, str(ROOT))
 EXTRA_DIR = ROOT / "lib/think/data/extra"
 I18N_DIR = ROOT / "lib/think/i18n"
 OVERLAYS_DIR = ROOT / "content/learn-overlays"
+
+from scripts.think.rebuild_curriculum_batches import PHYSICS_TITLES, CHEMISTRY_TITLES
+
+GOAL_BY_LANG = {
+    "ko": "원리를 올바로 분석하고 주어진 조건에 따라 올바른 결론을 도출한다.",
+    "en": "Analyze the underlying scientific principles and deduce the correct conclusion.",
+    "ne": "वैज्ञानिक सिद्धान्त विश्लेषण गरी दिइएका सर्तअनुसार सही निष्कर्ष निकाल्नुहोस्।",
+    "hi": "वैज्ञानिक सिद्धांतों का विश्लेषण करें और दी गई शर्तों के अनुसार सही निष्कर्ष निकालें।",
+    "vi": "Phân tích các nguyên lý khoa học và rút ra kết luận chính xác.",
+    "zh-Hans": "深入分析科学原理，根据给定条件得出正确结论。",
+    "zh-Hant": "深入分析科學原理，根據給定條件得出正確結論。",
+    "ja": "科学的原理を正しく分析し、与えられた条件から正確な結論を導き出します。",
+    "es": "Analice los principios científicos y deduzca la conclusión correcta.",
+    "fr": "Analysez les principes scientifiques et déduisez la conclusion correcte.",
+    "de": "Analysieren Sie die wissenschaftlichen Prinzipien und ziehen Sie die richtige Schlussfolgerung.",
+    "ru": "Проанализируйте научные принципы и сделайте правильный вывод.",
+    "pt": "Analise os princípios científicos e deduza a conclusão correta.",
+    "th": "วิเคราะห์หลักการทางวิทยาศาสตร์และสรุปผลที่ถูกต้องตามเงื่อนไขที่กำหนด",
+    "id": "Menganalisis prinsip-prinsip ilmiah dan menarik kesimpulan yang tepat.",
+    "km": "វិភាគគោលការណ៍វិទ្យាសាស្ត្រ និងទាញការសន្និដ្ឋានត្រឹមត្រូវ។",
+    "my": "သိပ္ပံဆိုင်ရာ အခြေခံသဘောတရားများကို ပိုင်းခြားစိတ်ဖြာပြီး မှန်ကန်သော ကောက်ချက်ဆွဲပါ။",
+}
 
 GRADES_ORDER = ["E1", "E2", "E3", "E4", "E5", "E6", "M1", "M2", "M3", "H1", "H2", "H3"]
 
@@ -75,22 +98,18 @@ def build_science_batches():
                 sk_name = skills.get(q.get("skillId"), "")
                 prompt_text = clean(q.get("prompt", ""))
                 
-                # Derive distinct title
-                if "[" in prompt_text and "]" in prompt_text:
-                    tag = prompt_text.split("]")[0].replace("[", "").strip()
-                    main_p = prompt_text.split("]")[1].strip()
-                    first_clause = main_p.split("?")[0].split(".")[0].strip()
-                    words = first_clause.split()
-                    title = f"[{tag}] " + (" ".join(words[:4]) if len(words) >= 4 else first_clause)
+                # Derive distinct complete title
+                title_dict = PHYSICS_TITLES if subj == "physics" else CHEMISTRY_TITLES
+                if qid in title_dict:
+                    title = title_dict[qid][0]
+                elif sk_name:
+                    clean_sk = sk_name.split("(")[0].strip()
+                    title = f"{clean_sk} 심화 탐구"
                 else:
                     first_clause = prompt_text.split("?")[0].split(".")[0].strip()
-                    words = first_clause.split()
-                    title = " ".join(words[:5]) if len(words) >= 5 else first_clause
-                
-                if not title:
-                    title = f"{sk_name} 탐구"
+                    title = first_clause + ("?" if "?" in prompt_text else "")
 
-                topic = sk_name if sk_name else title
+                topic = sk_name.split("(")[0].strip() if sk_name else title
                 
                 # Format options
                 raw_opts = q.get("options", [])
@@ -200,10 +219,12 @@ def build_science_batches():
             # Load translation cache for this language
             ov_file = OVERLAYS_DIR / lang / f"{subj}.json"
             trans_qs = {}
+            trans_skills = {}
             if ov_file.exists():
                 try:
                     d = json.load(open(ov_file, "r", encoding="utf-8"))
                     trans_qs = d.get("questions", {})
+                    trans_skills = d.get("skills", {})
                 except Exception:
                     pass
 
@@ -212,6 +233,9 @@ def build_science_batches():
                 for t in tasks:
                     tid = t["id"]
                     t_item = trans_qs.get(tid)
+                    orig_q_list = [x for x in raw_qs if x["id"] == tid]
+                    orig_q = orig_q_list[0] if orig_q_list else {}
+                    title_dict = PHYSICS_TITLES if subj == "physics" else CHEMISTRY_TITLES
                     
                     if t_item and lang != "ko":
                         loc_prompt1 = clean(t_item.get("prompt", t["material"]))
@@ -235,15 +259,19 @@ def build_science_batches():
                         for o_idx, opt in enumerate(t["steps"][0]["options"]):
                             oid = opt["id"]
                             # corresponding letter: raw question options had letter
-                            orig_q = [x for x in raw_qs if x["id"] == tid][0]
-                            orig_letter = orig_q["options"][o_idx]["id"]
+                            orig_letter = orig_q["options"][o_idx]["id"] if orig_q and "options" in orig_q else "a"
                             trans_text = clean(raw_opts_dict.get(orig_letter, opt["text"]))
                             loc_options1.append((oid, trans_text))
                             
-                        # Step 2
-                        loc_title = loc_prompt1.split("?")[0].split(".")[0].strip()
-                        words = loc_title.split()
-                        short_title = " ".join(words[:4]) if len(words) >= 4 else loc_title
+                        # Complete localized title
+                        sk_id = orig_q.get("skillId", "")
+                        sk_trans = clean(trans_skills.get(sk_id, "")).split("(")[0].strip()
+                        if lang == "en" and tid in title_dict:
+                            short_title = title_dict[tid][1]
+                        elif sk_trans:
+                            short_title = sk_trans
+                        else:
+                            short_title = loc_prompt1.split("?")[0].strip() + ("?" if "?" in loc_prompt1 else "")
                         
                         loc_prompt2 = f"Which scenario demonstrates the correct real-world application of this principle?"
                         loc_explain2 = f"The fundamental principles of this inquiry are widely implemented in modern technology."
@@ -267,7 +295,7 @@ def build_science_batches():
                     entry = {
                         "title": short_title,
                         "topic": short_title,
-                        "goal": f"Apply principles to solve the inquiry problem.",
+                        "goal": GOAL_BY_LANG.get(lang, GOAL_BY_LANG["en"]),
                         "material": loc_prompt1,
                         "thinking.0": short_title,
                         "thinking.1": "Scientific reasoning and principle deduction",

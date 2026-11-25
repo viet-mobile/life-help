@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useLearner } from "./LearnerProvider";
 import { type Site } from "@/lib/learn/types";
 import { buildLearnUrl } from "@/lib/learn/hosts";
+import { HangeulCalligraphyIcon } from "@/components/shared/HangeulCalligraphyIcon";
 
 interface SubjectSwitchProps {
   currentSite: Site;
@@ -32,8 +33,8 @@ export function SubjectSwitch({ currentSite }: SubjectSwitchProps) {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const subjects: { site: Site; label: string; icon: string }[] = [
-    { site: "korean", label: t("site.korean.name" as never) || "한국어", icon: "🇰🇷" },
+  const subjects: { site: Site; label: string; icon: React.ReactNode }[] = [
+    { site: "korean", label: t("site.korean.name" as never) || "한국어", icon: <HangeulCalligraphyIcon className="w-3.5 h-3.5 inline-block" /> },
     { site: "english", label: t("site.english.name" as never) || "영어", icon: "🔤" },
     { site: "math", label: t("site.math.name" as never) || "수학", icon: "➗" },
     { site: "physics", label: t("site.physics.name" as never) || "물리", icon: "🔬" },

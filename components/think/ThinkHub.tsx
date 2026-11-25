@@ -72,7 +72,12 @@ export function ThinkHub() {
     const level = site === "korean" ? levelFromCode(grade) : null; // Korean: tasks are grouped by language level (1-6급), whatever step they were written for
     const metas = FILE_META.filter((m) => m.subject === site && (level ? true : m.grades.includes(grade) || (!isElective && m.grades.length === 0)));
     void Promise.all(metas.map((m) => TASK_LOADERS[m.key]())).then(async (lists) => {
-      const all = lists.flat().filter((t) => (level ? koreanLevelOf(t.id) === level : t.grade ? t.grade === grade : !isElective && t.level === bandOf(grade)));
+      const seen = new Set<string>();
+      const all = lists.flat().filter((t) => {
+        if (!t || seen.has(t.id)) return false;
+        seen.add(t.id);
+        return level ? koreanLevelOf(t.id) === level : t.grade ? t.grade === grade : !isElective && t.level === bandOf(grade);
+      });
       const o = await loadOverlays(taskLang, metas.map((m) => m.key));
       const ok = site === "korean" && lang !== "ko" ? await loadOverlay("ko", metas.map((m) => m.key)) : {};
       const rawSecLangs = (secondaryLocales ?? []).map((loc) => taskLangFor(loc));

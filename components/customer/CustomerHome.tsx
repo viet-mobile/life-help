@@ -13,6 +13,7 @@ import { StudyChooser } from "@/components/customer/StudyChooser";
 import { getDailyInsight, DomainType } from "@/lib/learn/dailyInsights";
 import { DailyInsightCard } from "@/components/learn/DailyInsightCard";
 import { HangeulCalligraphyIcon } from "@/components/shared/HangeulCalligraphyIcon";
+import { useCountry } from "@/lib/country/CountryContext";
 
 export interface ServiceItem {
   id: string;
@@ -316,6 +317,7 @@ function CardShell({ svc, onStudy, className, children }: { svc: ServiceItem; on
 export function CustomerHome() {
   const { locale, setLocale, t, tKo, tSecondary, tBilingual, isBilingual, secondaryLocale, secondaryLocales, formatBilingual } = useLocale();
   const { formattedRegion, shortRegionText, openModal } = useRegion();
+  const { country } = useCountry();
   const headingWeight = locale === "vi" ? "font-bold" : "font-extrabold";
 
   // Mobile smart tabs: default "all" so that all 10 services are visible on the first screen
@@ -556,7 +558,7 @@ export function CustomerHome() {
 
           <DailyInsightCard
             domain={insightDomain}
-            insight={getDailyInsight(insightDomain, new Date(), locale)}
+            insight={getDailyInsight(insightDomain, new Date(), locale, country)}
             locale={locale}
             secondaryLocales={secondaryLocales}
           />
