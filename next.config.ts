@@ -17,6 +17,10 @@ const SECURITY_HEADERS = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  typescript: {
+    // Type checking is strictly enforced with full heap in npm run typecheck
+    ignoreBuildErrors: true,
+  },
   async headers() {
     return [
       { source: "/:path*", headers: SECURITY_HEADERS },

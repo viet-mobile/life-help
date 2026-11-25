@@ -7,14 +7,14 @@
     "learn:assets": "node scripts/learn/build-content-assets.mjs",
     "check:worker-size": "node scripts/check-worker-size.mjs",
     "prebuild": "node scripts/learn/build-content-assets.mjs",
-    "build": "opennextjs-cloudflare build",
+    "build": "NODE_OPTIONS=\"--max-old-space-size=8192\" opennextjs-cloudflare build",
     "prebuild:next": "node scripts/learn/build-content-assets.mjs",
     "predev": "node scripts/learn/build-content-assets.mjs",
     "build:next": "next build",
     "start": "next start",
     "lint": "next lint",
     "preview": "node scripts/learn/build-content-assets.mjs && opennextjs-cloudflare build && wrangler dev",
-    "deploy": "node scripts/release/preflight.mjs --accept-unknown-live --skip-tests && opennextjs-cloudflare deploy",
+    "deploy": "NODE_OPTIONS=\"--max-old-space-size=8192\" node scripts/release/preflight.mjs --accept-unknown-live --skip-tests && NODE_OPTIONS=\"--max-old-space-size=8192\" opennextjs-cloudflare deploy",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "typecheck": "NODE_OPTIONS=\"--max-old-space-size=8192\" next typegen && NODE_OPTIONS=\"--max-old-space-size=8192\" tsc --noEmit",
@@ -54,8 +54,5 @@
     "typescript": "^5",
     "vitest": "^5.0.5",
     "wrangler": "^4.168.0"
-  },
-  "overrides": {
-    "fast-glob": "npm:tinyglobby@0.2.17"
   }
 }
