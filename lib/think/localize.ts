@@ -65,12 +65,8 @@ export async function loadOverlays(lang: string, keys?: string[]): Promise<{ pri
  */
 export function localizeFor(task: ThinkTask, lang: string, overlays: { primary: Overlay; fallback: Overlay }): Localized {
   const first = localize(task, lang, overlays.primary);
-  if (first.translated || lang === "ko") return first;
-  if ((THINK_LANGS as readonly string[]).includes(lang)) return first;
-  // For languages outside THINK_LANGS, if not translated into that language, return translated: false
-  // so ThinkHub properly treats untranslated tasks as hidden instead of falsely presenting them in English.
-  const fallback = localize(task, "en", overlays.fallback);
-  return { ...fallback, translated: false };
+  if (first.translated || (THINK_LANGS as readonly string[]).includes(lang)) return first;
+  return localize(task, "en", overlays.fallback);
 }
 
 /**
