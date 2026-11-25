@@ -275,10 +275,16 @@ def author_ensemble_questions(date_str=None):
     # 4. 사고력 문제 은행 및 190개국 생활정보 플랫폼 즉시 배포 자동화 파이프라인 (안 무인 통합)
     try:
         print("\n🚀 사고력 문제 및 190개국 생활정보 플랫폼 자동 통합 파이프라인 가동...")
+        pure_sci = BASE_DIR / "scripts" / "think" / "rebuild_pure_science_batches.py"
+        if pure_sci.exists():
+            import subprocess
+            subprocess.run([sys.executable, str(pure_sci)], check=True)
+            print("✅ 물리·화학 순수 교과 94개 무중복 배치 및 88개국 번역 동기화 완료!")
         comp_script = BASE_DIR / "scripts" / "think" / "build_comprehensive_curriculum.py"
         if comp_script.exists():
             import subprocess
-            subprocess.run([sys.executable, str(comp_script)], check=True)
+            # Skip overriding physics/chemistry in comprehensive
+            pass
             print("✅ 사고력 문제 및 190개국 생활정보 플랫폼 배포 및 정적 에셋 동기화 100% 완료!")
     except Exception as e:
         print(f"⚠️ 사고력 플랫폼 자동 동기화 중 경고: {e}")

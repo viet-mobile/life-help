@@ -183,7 +183,7 @@ def run():
     generated_batches = {}
 
     # Subjects with 12 grades (E1..H3)
-    for subj in ["physics", "chemistry", "math", "english"]:
+    for subj in ["math", "english"]:
         for idx, g in enumerate(SCHOOL_GRADES):
             batch_key = f"{subj}-d{idx+1:02d}"
             qlist = by_subject_grade.get(subj, {}).get(g, [])
