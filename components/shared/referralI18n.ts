@@ -36,8 +36,8 @@ export interface ReferralI18nStrings {
 const DICTIONARIES: Record<string, ReferralI18nStrings> = {
   ko: {
     badgeLabel: "현재 수수료 {fee}",
-    title: "LIFE.HELP 친구 초대 수수료 인하 프로그램",
-    modalTitle: "친구 초대 수수료 단계적 인하",
+    title: "LIFE.HELP 친구 초대 생활서비스 수수료 인하 프로그램",
+    modalTitle: "친구 초대 생활서비스 수수료 단계적 인하",
     subtitle: "1명 초대 시 9.99%부터 시작하여 1명당 0.01%씩 영구 인하 (999명 초대 시 최저 0.01% 도달)",
     currentFeeLabel: "현재 적용 수수료율",
     myFeeBadge: "내 수수료율: {fee}",
@@ -64,7 +64,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
   },
   en: {
     badgeLabel: "Current Fee {fee}",
-    title: "LIFE.HELP Invite Friends & Fee Reduction Program",
+    title: "LIFE.HELP Invite Friends & Living Services Fee Reduction Program",
     modalTitle: "Step-by-Step Fee Reduction via Referrals",
     subtitle: "Starts at 9.99% with 1 invite, permanently reduced by 0.01%p per referral (reaches lowest 0.01% with 999 invites)",
     currentFeeLabel: "Current Applied Fee Rate",
@@ -92,7 +92,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
   },
   vi: {
     badgeLabel: "Phí hiện tại {fee}",
-    title: "Chương trình Giảm phí khi Mời bạn bè LIFE.HELP",
+    title: "Chương trình Giảm phí Dịch vụ Đời sống khi Mời bạn bè LIFE.HELP",
     modalTitle: "Giảm phí theo từng bước khi mời bạn bè",
     subtitle: "Bắt đầu từ 9.99% khi mời 1 người, giảm vĩnh viễn 0.01%p cho mỗi người (đạt mức thấp nhất 0.01% với 999 người)",
     currentFeeLabel: "Mức phí áp dụng hiện tại",
@@ -2472,7 +2472,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
   },
   es: {
     badgeLabel: "Tarifa actual {fee}",
-    title: "Programa de Reducción de Tarifas por Invitación LIFE.HELP",
+    title: "Programa de Reducción de Tarifas de Servicios de Vida por Invitación LIFE.HELP",
     modalTitle: "Reducción Escalonada de Tarifas por Invitación",
     subtitle: "Comienza en 9.99% con 1 invitado, reducido en 0.01%p por persona (mínimo 0.01% con 999 personas)",
     currentFeeLabel: "Tasa de tarifa aplicada actual",
@@ -2500,7 +2500,7 @@ const DICTIONARIES: Record<string, ReferralI18nStrings> = {
   },
   ru: {
     badgeLabel: "Текущая комиссия {fee}",
-    title: "Программа снижения комиссии за приглашение друзей LIFE.HELP",
+    title: "Программа снижения комиссии на жизненные услуги за приглашение друзей LIFE.HELP",
     modalTitle: "Поэтапное снижение комиссии за рекомендации",
     subtitle: "Начинается с 9.99% при 1 приглашении, снижается на 0.01%p за каждого (минимум 0.01% при 999 друзьях)",
     currentFeeLabel: "Текущая ставка комиссии",

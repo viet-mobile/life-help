@@ -97,6 +97,7 @@ export default function PaymentPage() {
           </Link>
 
           <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
+            <ReferralCard compact />
             <Link
               href="/chat"
               className="rounded-xl border border-slate-200 bg-white px-3.5 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-slate-900 shadow-2xs transition active:scale-[0.98] hidden sm:inline-block cursor-pointer"

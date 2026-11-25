@@ -12,7 +12,6 @@ import PrivacyNotice from "@/components/customer/PrivacyNotice";
 import { StudyChooser } from "@/components/customer/StudyChooser";
 import { getDailyInsight, DomainType } from "@/lib/learn/dailyInsights";
 import { DailyInsightCard } from "@/components/learn/DailyInsightCard";
-import { ReferralCard } from "@/components/shared/ReferralCard";
 import { HangeulCalligraphyIcon } from "@/components/shared/HangeulCalligraphyIcon";
 
 export interface ServiceItem {
@@ -393,7 +392,6 @@ export function CustomerHome() {
               <span>{locale === "ko" ? "빠른 신청" : t("request.title")}</span>
             </Link>
 
-            <ReferralCard compact />
 
             <LanguageSwitcher locale={locale} onChange={setLocale} />
           </div>
@@ -649,10 +647,6 @@ export function CustomerHome() {
         </div>
       </section>
 
-      {/* ④-B. Viral Referral Program Card */}
-      <section className="mx-auto max-w-6xl px-3 pt-3 pb-1 sm:px-4">
-        <ReferralCard />
-      </section>
 
       {/* ⑤ Helper Master Registration Banner (Dark Contrast, Sleek Droplet Banner) */}
       <section className="mx-auto max-w-6xl px-3 pt-5 pb-3 sm:px-4 sm:pt-7 sm:pb-5">
