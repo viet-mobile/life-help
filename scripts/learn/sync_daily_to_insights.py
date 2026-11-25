@@ -140,5 +140,9 @@ def run():
         f.write(code)
     print("Updated DailyInsightsCatalog.tsx with dynamic counts!")
 
+    print("\n=== Step 4: Synchronizing all 89-language tip overlays for Day 367+ content ===")
+    from sync_daily_translations_to_tips import sync_translations
+    sync_translations()
+
 if __name__ == "__main__":
     run()

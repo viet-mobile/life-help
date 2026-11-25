@@ -150,6 +150,8 @@ export function DailyInsightCard({
 
   const getBaseId = (id?: string): string => {
     if (!id) return "";
+    const dm = id.match(/^\d{8}-([a-z]+)-(g\d+|l\d+|all)-(\d+)$/);
+    if (dm) return `${dm[1]}-${dm[2]}-${dm[3]}`;
     const m = id.match(/^([a-z]+)-(\d+)$/);
     if (!m) return id;
     const num = parseInt(m[2], 10);

@@ -160,11 +160,19 @@ export function resolveStudyTopicI18n(
   if (!locale || locale === "ko") return null;
 
   // Extract prefix (m, e, p, c) and number
-  const parts = item.id.split("-");
-  if (parts.length !== 2) return null;
-  const prefix = parts[0];
-  const num = parseInt(parts[1], 10);
-  if (isNaN(num)) return null;
+  let prefix = "";
+  let num = 0;
+  const dm = item.id.match(/^\d{8}-([a-z]+)-g(\d+)-(\d+)$/);
+  if (dm) {
+    prefix = dm[1].charAt(0);
+    num = parseInt(dm[2], 10);
+  } else {
+    const parts = item.id.split("-");
+    if (parts.length !== 2) return null;
+    prefix = parts[0];
+    num = parseInt(parts[1], 10);
+    if (isNaN(num)) return null;
+  }
 
   const exactKey = item.id;
   // Normalize language key with full 89-language support
@@ -174,7 +182,7 @@ export function resolveStudyTopicI18n(
   const exactEntry = STUDY_TOPIC_DATA[exactKey];
   let entry: StudyTopicEntry | undefined = exactEntry;
 
-  if (!entry && (prefix === "m" || prefix === "e")) {
+  if (!entry) {
     const baseIndex = ((num - 1) % 36) + 1;
     const baseKey = `${prefix}-${String(baseIndex).padStart(3, "0")}`;
     entry = STUDY_TOPIC_DATA[baseKey];

@@ -125,7 +125,11 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
     const totalCount = INSIGHT_MAP[selectedDomain]?.length || 366;
     for (let i = 0; i < totalCount; i++) {
       let insight = getDailyInsight(selectedDomain, i, locale);
-      const baseId = insight.id.replace(/-(\d+)$/, (_, n) => '-' + String(((parseInt(n, 10) - 1) % 36) + 1).padStart(3, '0'));
+      let baseId = insight.id.replace(/-(\d+)$/, (_, n) => '-' + String(((parseInt(n, 10) - 1) % 36) + 1).padStart(3, '0'));
+      const dailyMatch = insight.id.match(/^\d{8}-([a-z]+)-(g\d+|l\d+|all)-(\d+)$/);
+      if (dailyMatch) {
+        baseId = `${dailyMatch[1]}-${dailyMatch[2]}-${dailyMatch[3]}`;
+      }
       const ov = tipOverlays[locale]?.[insight.id] || tipOverlays[locale]?.[baseId];
       if (ov) {
         insight = {
@@ -139,7 +143,11 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
       }
       const secList = effectiveSecondaryLocales.map((secLoc) => {
         let secInsight = getDailyInsight(selectedDomain, i, secLoc);
-        const secBaseId = secInsight.id.replace(/-(\d+)$/, (_, n) => '-' + String(((parseInt(n, 10) - 1) % 36) + 1).padStart(3, '0'));
+        let secBaseId = secInsight.id.replace(/-(\d+)$/, (_, n) => '-' + String(((parseInt(n, 10) - 1) % 36) + 1).padStart(3, '0'));
+        const secDailyMatch = secInsight.id.match(/^\d{8}-([a-z]+)-(g\d+|l\d+|all)-(\d+)$/);
+        if (secDailyMatch) {
+          secBaseId = `${secDailyMatch[1]}-${secDailyMatch[2]}-${secDailyMatch[3]}`;
+        }
         const secOv = tipOverlays[secLoc]?.[secInsight.id] || tipOverlays[secLoc]?.[secBaseId];
         if (secOv) {
           secInsight = {

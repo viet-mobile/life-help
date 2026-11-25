@@ -75,7 +75,8 @@ export function resolveKoreanTopicI18n(
   if (!locale || locale === "ko") return null;
 
   // Extract base key (k-001 ~ k-036) and season
-  const num = parseInt(item.id.replace("k-", ""), 10);
+  const dm = item.id.match(/^\d{8}-korean-l(\d+)-(\d+)$/);
+  const num = dm ? parseInt(dm[1], 10) : parseInt(item.id.replace("k-", ""), 10);
   if (isNaN(num)) return null;
 
   const baseIndex = ((num - 1) % 36) + 1;

@@ -160,6 +160,42 @@ export function getDailyInsight(
         item.principle = "国の公式移民局ポータルを通じて最新の滞在許可規則および必要書類をご確認ください。";
         item.example = portal ? `公式ポータル: ${portal}` : item.example;
         item.actionItem = `入国後速やかに ${cName} 管轄自治体に居住地を届け出、公式証明書を取得してください。`;
+      } else if (locale === "es") {
+        item.title = `[${iso}] ${cName} Guía de registro de residencia y trámites administrativos esenciales`;
+        item.summary = `Guía sobre registro de residencia, seguro médico público, obtención de número de identificación fiscal y portal oficial de inmigración tras ingresar a ${cName}.`;
+        item.principle = "Verifique las normativas de residencia más recientes y los documentos obligatorios a través del portal oficial de inmigración nacional.";
+        item.example = portal ? `Portal oficial: ${portal}` : item.example;
+        item.actionItem = `Regístrese inmediatamente en la oficina municipal correspondiente en ${cName} tras su llegada y obtenga su certificado oficial.`;
+      } else if (locale === "fr") {
+        item.title = `[${iso}] ${cName} Guide d'enregistrement de séjour et démarches administratives essentielles`;
+        item.summary = `Informations sur l'enregistrement de résidence, la sécurité sociale, le numéro fiscal et le portail officiel de l'immigration après votre arrivée en ${cName}.`;
+        item.principle = "Vérifiez les réglementations de séjour et les documents requis via le portail officiel de l'immigration nationale.";
+        item.example = portal ? `Portail officiel : ${portal}` : item.example;
+        item.actionItem = `Déclarez sans délai votre domicile auprès de l'autorité compétente en ${cName} à votre arrivée et obtenez votre attestation officielle.`;
+      } else if (locale === "de") {
+        item.title = `[${iso}] ${cName} Wohnsitzanmeldung und wichtiger Leitfaden für Behördengänge`;
+        item.summary = `Informationen zu Wohnsitzanmeldung, Krankenversicherung, Steuernummer und amtlichem Einwanderungsportal nach der Ankunft in ${cName}.`;
+        item.principle = "Prüfen Sie aktuelle Aufenthaltsbestimmungen und erforderliche Unterlagen über das offizielle Einwanderungsportal.";
+        item.example = portal ? `Offizielles Portal: ${portal}` : item.example;
+        item.actionItem = `Melden Sie Ihren Wohnsitz nach der Einreise umgehend bei der zuständigen Behörde in ${cName} an und beantragen Sie die amtliche Bestätigung.`;
+      } else if (locale === "ru") {
+        item.title = `[${iso}] ${cName} Регистрация проживания и справочник по административным процедурам`;
+        item.summary = `Справочник по регистрации по месту жительства, медицинскому страхованию, получению ИНН и официальному миграционному порталу после въезда в ${cName}.`;
+        item.principle = "Уточняйте актуальные правила пребывания и список необходимых документов на официальном портале миграционной службы.";
+        item.example = portal ? `Официальный портал: ${portal}` : item.example;
+        item.actionItem = `Сразу после въезда зарегистрируйтесь по месту жительства в уполномоченном органе ${cName} и получите официальное свидетельство.`;
+      } else if (locale === "ar") {
+        item.title = `[${iso}] دليل تسجيل الإقامة والمعاملات الإدارية الأساسية في ${cName}`;
+        item.summary = `إرشادات حول تسجيل الإقامة، والتأمين الصحي العام، والرقم الضريبي، والبوابة الرسمية للهجرة عند الوصول إلى ${cName}.`;
+        item.principle = "تحقق من أحدث لوائح الإقامة والمستندات المطلوبة عبر البوابة الرسمية للهجرة في الدولة.";
+        item.example = portal ? `البوابة الرسمية: ${portal}` : item.example;
+        item.actionItem = `سارع بتسجيل محل إقامتك لدى الجهة المختصة في ${cName} فور دخولك واحصل على الشهادة الرسمية.`;
+      } else if (locale === "hi") {
+        item.title = `[${iso}] ${cName} विदेशी नागरिक निवास पंजीकरण और आवश्यक प्रशासनिक मार्गदर्शिका`;
+        item.summary = `${cName} में आगमन के बाद निवास पंजीकरण, सार्वजनिक स्वास्थ्य बीमा, टैक्स नंबर और आधिकारिक आव्रजन पोर्टल से संबंधित आवश्यक जानकारी।`;
+        item.principle = "राष्ट्रीय आधिकारिक आव्रजन पोर्टल के माध्यम से नवीनतम निवास नियमों और आवश्यक दस्तावेजों की पुष्टि करें।";
+        item.example = portal ? `आधिकारिक पोर्टल: ${portal}` : item.example;
+        item.actionItem = `प्रवेश के तुरंत बाद ${cName} में संबंधित स्थानीय कार्यालय में अपना निवास पंजीकृत करें और आधिकारिक प्रमाण पत्र प्राप्त करें।`;
       } else {
         item.title = `[${iso}] ${cName} Foreign Resident Registration & Essential Living Guide`;
         item.summary = `Essential guidance on residence registration, public healthcare, tax ID issuance, and official immigration procedures upon arriving in ${cName}.`;
