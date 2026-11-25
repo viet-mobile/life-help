@@ -7,7 +7,7 @@ type Segment = { kind: "text" | "math" | "bold" | "sub" | "sup"; value: string }
 /** Split "text $x^2$ **bold**" into segments. `$...$` is inline KaTeX, `**...**` is emphasis. */
 export function parseRich(input: string): Segment[] {
   const out: Segment[] = [];
-  const re = /\$([^$]+)\$|\*\*([^*]+)\*\*/g;
+  const re = /\$([^$]+)\$|\*\*([^*]+)\*\*|<sub>([^<]+)<\/sub>|<sup>([^<]+)<\/sup>/g;
   let last = 0;
   let m: RegExpExecArray | null;
   while ((m = re.exec(input))) {

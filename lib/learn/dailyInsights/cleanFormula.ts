@@ -53,6 +53,7 @@ export function cleanLatexFormula(raw: string): string {
 
   // Greek letters
   s = s.replace(/\\Delta/g, "Δ");
+  s = s.replace(/Δ\s+([A-Za-z])/g, "Δ$1");
   s = s.replace(/\\delta/g, "δ");
   s = s.replace(/\\lambda/g, "λ");
   s = s.replace(/\\mu/g, "µ");
@@ -149,6 +150,7 @@ export function cleanFormulaText(text: string): string {
   if (s.includes("\\") || /_[0-9A-Za-zΔ]/.test(s)) {
     s = cleanLatexFormula(s);
   }
+  s = s.replace(/Δ\s+([A-Za-z])/g, "Δ$1");
   // Formula subscript format: no underscore, format characters as subscript
   s = s.replace(/I_Δ\s*=\s*\|I_in\s*-\s*I_out\|/g, "I<sub>Δ</sub> = |Iᵢₙ - Iₒᵤₜ|")
        .replace(/I_Δ\s*=\s*\|I_in\s*-\s*Iₒᵤₜ\|/g, "I<sub>Δ</sub> = |Iᵢₙ - Iₒᵤₜ|")
