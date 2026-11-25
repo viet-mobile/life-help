@@ -1,13 +1,40 @@
 import { applyFlat, flatten, needsTranslation } from "./flat";
-import { OVERLAY_LOADERS, type Overlay } from "./data/assets-index";
+import type { Overlay } from "./data/assets-index";
 import { THINK_LANGS, baseLang } from "./lang";
 import type { ThinkTask } from "./types";
+import { loadThinkAsset } from "./assets";
+
+const langCache = new Map<string, Promise<Record<string, string>>>();
+
+async function getLangHashes(lang: string): Promise<Record<string, string>> {
+  let p = langCache.get(lang);
+  if (!p) {
+    p = (async () => {
+      try {
+        if (typeof window === "undefined") {
+          try {
+            const fs = await import("node:fs/promises");
+            const path = await import("node:path");
+            const pth = path.resolve(process.cwd(), "public", "think-assets", "overlays", `${lang}.json`);
+            const raw = await fs.readFile(pth, "utf-8");
+            return JSON.parse(raw);
+          } catch {}
+        }
+        const res = await fetch(`/think-assets/overlays/${lang}.json`);
+        if (res.ok) return await res.json();
+      } catch {}
+      return {};
+    })();
+    langCache.set(lang, p);
+  }
+  return p;
+}
 
 /** All translated strings available for `lang` (merged over the files that exist). Empty for the authored languages. */
 export async function loadOverlay(lang: string, keys?: string[]): Promise<Overlay> {
-  const per = OVERLAY_LOADERS[lang] ?? {};
-  const wanted = keys ? keys.filter((k) => per[k]) : Object.keys(per);
-  const parts = await Promise.all(wanted.map((k) => per[k]().catch(() => ({}) as Overlay)));
+  const hashes = await getLangHashes(lang);
+  const wanted = keys ? keys.filter((k) => hashes[k]) : Object.keys(hashes);
+  const parts = await Promise.all(wanted.map((k) => loadThinkAsset<Overlay>(hashes[k]).catch(() => ({} as Overlay))));
   return Object.assign({}, ...parts) as Overlay;
 }
 

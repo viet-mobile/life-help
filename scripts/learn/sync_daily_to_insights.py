@@ -96,16 +96,11 @@ def run():
             insight_obj = {
                 "id": qid,
                 "category": "problem",
-                "dayOfYear": day_num,
-                "month": month,
-                "day": day,
                 "title": title,
                 "summary": prompt,
                 "principle": expl if expl else f"{title}의 핵심 원리 적용",
                 "example": f"주요 힌트: {hint_str}",
                 "actionItem": f"탐구 문제를 풀고 {title}의 원리를 일상과 연계해 보세요.",
-                "lastVerified": "2026-11-25",
-                "isLatest": True
             }
             
             current_list.append(insight_obj)
@@ -113,7 +108,7 @@ def run():
             added_count += 1
             
         with open(data_file, "w", encoding="utf-8") as f:
-            json.dump(current_list, f, ensure_ascii=False, indent=2)
+            json.dump(current_list, f, ensure_ascii=False, separators=(',', ':'))
             
         print(f"Updated {subj}.json: {len(existing_data)} -> {len(current_list)} items (+{added_count})")
 
