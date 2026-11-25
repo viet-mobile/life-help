@@ -33,13 +33,14 @@ export function localize(task: ThinkTask, lang: string, overlay: Overlay): Local
     if (checkVal(m[p])) return true;
     if (p.startsWith("s.")) {
       const parts = p.split(".");
+      const stepIdx = parts[1] === "s1" ? 0 : parts[1] === "s2" ? 1 : parseInt(parts[1].replace(/\D/g, ""), 10) - 1;
       const rest = parts.slice(2).join(".");
-      if (rest === "prompt" && checkVal(m["steps.0.prompt"])) return true;
-      if (rest === "explain" && checkVal(m["steps.0.explain"])) return true;
-      if (rest.startsWith("hint.") && checkVal(m[`steps.0.hints.${parts[3]}`])) return true;
-      if (rest.startsWith("o.") && checkVal(m[`steps.0.options.${parts[3].replace(/^o/, "")}.text`])) return true;
+      if (rest === "prompt" && (checkVal(m[`steps.${stepIdx}.prompt`]) || checkVal(m[`s.${parts[1]}.prompt`]))) return true;
+      if (rest === "explain" && (checkVal(m[`steps.${stepIdx}.explain`]) || checkVal(m[`s.${parts[1]}.explain`]))) return true;
+      if (rest.startsWith("hint.") && (checkVal(m[`steps.${stepIdx}.hints.${parts[3]}`]) || checkVal(m[`s.${parts[1]}.hint.${parts[3]}`]))) return true;
+      if (rest.startsWith("o.") && (checkVal(m[`steps.${stepIdx}.options.${parts[3].replace(/^o/, "")}.text`]) || checkVal(m[`s.${parts[1]}.o.${parts[3]}`]))) return true;
     }
-    if (p.startsWith("thinking.") || p.startsWith("prereq.")) {
+    if (p.startsWith("thinking.") || p.startsWith("prereq.") || p.includes(".r.") || p.includes(".acc.")) {
       return true;
     }
     return false;
@@ -64,8 +65,12 @@ export async function loadOverlays(lang: string, keys?: string[]): Promise<{ pri
  */
 export function localizeFor(task: ThinkTask, lang: string, overlays: { primary: Overlay; fallback: Overlay }): Localized {
   const first = localize(task, lang, overlays.primary);
-  if (first.translated || (THINK_LANGS as readonly string[]).includes(lang)) return first;
-  return localize(task, "en", overlays.fallback);
+  if (first.translated || lang === "ko") return first;
+  if ((THINK_LANGS as readonly string[]).includes(lang)) return first;
+  // For languages outside THINK_LANGS, if not translated into that language, return translated: false
+  // so ThinkHub properly treats untranslated tasks as hidden instead of falsely presenting them in English.
+  const fallback = localize(task, "en", overlays.fallback);
+  return { ...fallback, translated: false };
 }
 
 /**

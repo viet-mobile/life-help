@@ -1481,6 +1481,121 @@ def make_clean_title(prompt, default_title=""):
         cand = (cand + " " + w).strip()
     return cand if len(cand) >= 6 else (default_title or p[:35])
 
+
+def get_s2_trans(lang, title):
+    if lang == "ko":
+        return {
+            "prompt": f"이 문제에서 적용한 '{title}'의 원리가 일상생활이나 첨단 기술에 올바르게 적용된 사례는 무엇입니까?",
+            "explain": f"'{title}'의 원리는 다양한 실생활 기술 및 자연 현상의 기본 메커니즘으로 작동합니다.",
+            "hints": [
+                "앞선 단계에서 도출한 핵심 원리의 인과관계를 다시 점검합니다.",
+                "동일한 물리/화학 법칙이 직접적으로 관여하는 상황을 선택합니다."
+            ],
+            "options": [
+                "해당 물리/화학적 법칙을 활용하여 효율이나 안전성을 극대화한 시스템",
+                "원리의 조건과 반대로 작동하여 비효율을 초래하는 사례",
+                "관련 없는 다른 현상을 동일한 원리로 오인한 사례"
+            ]
+        }
+    elif lang == "ne":
+        return {
+            "prompt": f"दैनिक जीवन वा उन्नत प्रविधिमा '{title}' को सिद्धान्त सही रूपमा लागू भएको उदाहरण तलका मध्ये कुन हो?",
+            "explain": f"'{title}' को सिद्धान्त विभिन्न व्यावहारिक प्रविधि र प्राकृतिक घटनाहरूमा आधारभूत संयन्त्रको रूपमा काम गर्दछ।",
+            "hints": [
+                "अघिल्लो चरणमा पहिचान गरिएको मुख्य सिद्धान्तको कारण र प्रभाव सम्बन्ध समीक्षा गर्नुहोस्।",
+                "एउटै वैज्ञानिक नियम प्रत्यक्ष रूपमा लागू हुने अवस्था छान्नुहोस्।"
+            ],
+            "options": [
+                "यस वैज्ञानिक सिद्धान्तको उपयोग गरेर दक्षता वा सुरक्षा अधिकतम बनाउने प्रणाली",
+                "सिद्धान्तका सर्तहरूको विपरीत सञ्चालन भएर असक्षमता निम्त्याउने अवस्था",
+                "सम्बन्धित नभएको अर्को घटनालाई उही सिद्धान्त भनी गलत रूपमा बुझिएको अवस्था"
+            ]
+        }
+    elif lang in ["es", "gl"]:
+        return {
+            "prompt": f"Cal das seguintes opcións é un exemplo onde o principio de '{title}' se aplica correctamente na vida cotiá ou na tecnoloxía avanzada?" if lang == "gl" else f"¿Cuál de las siguientes opciones es un ejemplo donde el principio de '{title}' se aplica correctamente en la vida cotidiana o la tecnología avanzada?",
+            "explain": f"O principio de '{title}' funciona como mecanismo fundamental en diversas tecnoloxías prácticas e fenómenos naturais." if lang == "gl" else f"El principio de '{title}' funciona como mecanismo fundamental en diversas tecnologías prácticas y fenómenos naturales.",
+            "hints": [
+                "Revisa a relación de causa e efecto do principio fundamental deducido no paso anterior." if lang == "gl" else "Revisa la relación de causa y efecto del principio fundamental deducido en el paso anterior.",
+                "Selecciona a situación onde a mesma lei científica se aplica directamente." if lang == "gl" else "Selecciona la situación donde la misma ley científica se aplica directamente."
+            ],
+            "options": [
+                "Un sistema que maximiza a eficiencia ou a seguridade utilizando esta lei científica" if lang == "gl" else "Un sistema que maximiza la eficiencia o la seguridad utilizando esta ley científica",
+                "Un caso que causa ineficiencia ao operar en contra das condicións do principio" if lang == "gl" else "Un caso que causa ineficiencia al operar en contra de las condiciones del principio",
+                "Un caso no que se confunde un fenómeno non relacionado co mesmo principio" if lang == "gl" else "Un caso en el que se confunde un fenómeno no relacionado con el mismo principio"
+            ]
+        }
+    elif lang == "zh-Hans":
+        return {
+            "prompt": f"下列哪项是将本题所应用的“{title}”原理正确应用于日常生活或尖端技术的案例？",
+            "explain": f"“{title}”的原理在各种日常实用技术和自然现象中发挥着基础机制作用。",
+            "hints": [
+                "重新审视前一步骤中导出的核心原理的因果关系。",
+                "选择该物理或化学定律直接参与适用的情境。"
+            ],
+            "options": [
+                "利用该科学定律最大化效率或安全性的系统",
+                "因与原理条件相反运行而导致效率低下的案例",
+                "将不相关的其他现象误认为同一原理的案例"
+            ]
+        }
+    elif lang == "zh-Hant":
+        return {
+            "prompt": f"下列哪項是將本題所應用的「{title}」原理正確應用於日常生活或尖端技術的案例？",
+            "explain": f"「{title}」的原理在各種日常實用技術和自然現象中發揮著基礎機制作用。",
+            "hints": [
+                "重新審視前一步驟中導出的核心原理的因果關係。",
+                "選擇該物理或化學定律直接參與適用的情境。"
+            ],
+            "options": [
+                "利用該科學定律最大化效率或安全性的系統",
+                "因與原理條件相反運行而導致效率低下的案例",
+                "將不相關的其他現象誤認為同一原理的案例"
+            ]
+        }
+    elif lang == "ja":
+        return {
+            "prompt": f"この問題で適用した「{title}」の原理が日常生活や先端技術に正しく適用された事例はどれですか？",
+            "explain": f"「{title}」の原理は、さまざまな実生活の技術や自然現象の基本メカニズムとして機能します。",
+            "hints": [
+                "前の段階で導き出した核心原理の因果関係を再度確認します。",
+                "同一の物理・化学法則が直接関与する状況を選択します。"
+            ],
+            "options": [
+                "該当する科学的法則を活用して効率や安全性を最大化したシステム",
+                "原理の条件と反対に作動して非効率を招く事例",
+                "無関係な他の現象を同一の原理と誤認した事例"
+            ]
+        }
+    elif lang == "vi":
+        return {
+            "prompt": f"Trường hợp nào sau đây áp dụng đúng nguyên lý '{title}' trong đời sống hàng ngày hoặc công nghệ tiên tiến?",
+            "explain": f"Nguyên lý '{title}' hoạt động như một cơ chế nền tảng trong nhiều công nghệ thực tiễn và hiện tượng tự nhiên.",
+            "hints": [
+                "Kiểm tra lại mối quan hệ nhân quả của nguyên lý cốt lõi đã rút ra ở bước trước.",
+                "Chọn tình huống mà định luật khoa học tương ứng trực tiếp chi phối."
+            ],
+            "options": [
+                "Hệ thống tối đa hóa hiệu quả hoặc an toàn bằng cách vận dụng định luật khoa học này",
+                "Trường hợp hoạt động trái với điều kiện nguyên lý gây ra kém hiệu quả",
+                "Trường hợp nhầm lẫn hiện tượng không liên quan thành cùng một nguyên lý"
+            ]
+        }
+    else:
+        return {
+            "prompt": f"Which of the following correctly applies the principle of '{title}' in everyday life or advanced technology?",
+            "explain": f"The principle of '{title}' serves as a fundamental mechanism in various practical technologies and natural phenomena.",
+            "hints": [
+                "Review the causal relationship of the core principle identified in the previous step.",
+                "Select a scenario where the same scientific law directly applies."
+            ],
+            "options": [
+                "A system that maximizes efficiency or safety by utilizing this scientific principle",
+                "A case that causes inefficiency by operating contrary to the conditions of the principle",
+                "A case where an unrelated phenomenon is mistaken for the same principle"
+            ]
+        }
+
 def process_all():
     langs = sorted([d for d in os.listdir(I18N_DIR) if (I18N_DIR / d).is_dir()])
     print(f"Processing curriculum translations for {len(langs)} languages...")
@@ -1596,6 +1711,22 @@ def process_all():
                         "steps.0.options.2.text": loc_options[2],
                         "steps.0.options.3.text": loc_options[3],
                     }
+                    if len(t.get("steps", [])) > 1:
+                        s2_data = get_s2_trans(lang, loc_title)
+                        entry["s.s2.prompt"] = s2_data["prompt"]
+                        entry["s.s2.explain"] = s2_data["explain"]
+                        entry["s.s2.hint.0"] = s2_data["hints"][0]
+                        entry["s.s2.hint.1"] = s2_data["hints"][1]
+                        entry["s.s2.o.o0"] = s2_data["options"][0]
+                        entry["s.s2.o.o1"] = s2_data["options"][1]
+                        entry["s.s2.o.o2"] = s2_data["options"][2]
+                        entry["steps.1.prompt"] = s2_data["prompt"]
+                        entry["steps.1.explain"] = s2_data["explain"]
+                        entry["steps.1.hints.0"] = s2_data["hints"][0]
+                        entry["steps.1.hints.1"] = s2_data["hints"][1]
+                        entry["steps.1.options.0.text"] = s2_data["options"][0]
+                        entry["steps.1.options.1.text"] = s2_data["options"][1]
+                        entry["steps.1.options.2.text"] = s2_data["options"][2]
                     overlay[tid] = entry
                 
                 with open(out_p, "w", encoding="utf-8") as out_f:

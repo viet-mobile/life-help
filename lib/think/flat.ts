@@ -46,16 +46,25 @@ export function applyFlat(t: ThinkTask, m: Record<string, string>): ThinkTask {
     if (typeof m[k] === "string" && m[k].trim()) return m[k];
     if (k.startsWith("s.")) {
       const parts = k.split(".");
+      const stepIdx = parts[1] === "s1" ? 0 : parts[1] === "s2" ? 1 : parseInt(parts[1].replace(/\D/g, ""), 10) - 1;
       const rest = parts.slice(2).join(".");
-      if (rest === "prompt" && typeof m["steps.0.prompt"] === "string" && m["steps.0.prompt"].trim()) return m["steps.0.prompt"];
-      if (rest === "explain" && typeof m["steps.0.explain"] === "string" && m["steps.0.explain"].trim()) return m["steps.0.explain"];
+      if (rest === "prompt") {
+        const alt = `steps.${stepIdx}.prompt`;
+        if (typeof m[alt] === "string" && m[alt].trim()) return m[alt];
+        if (typeof m["steps.0.prompt"] === "string" && m["steps.0.prompt"].trim()) return m["steps.0.prompt"];
+      }
+      if (rest === "explain") {
+        const alt = `steps.${stepIdx}.explain`;
+        if (typeof m[alt] === "string" && m[alt].trim()) return m[alt];
+        if (typeof m["steps.0.explain"] === "string" && m["steps.0.explain"].trim()) return m["steps.0.explain"];
+      }
       if (rest.startsWith("hint.")) {
-        const alt = `steps.0.hints.${parts[3]}`;
+        const alt = `steps.${stepIdx}.hints.${parts[3]}`;
         if (typeof m[alt] === "string" && m[alt].trim()) return m[alt];
       }
       if (rest.startsWith("o.")) {
         const optIdx = parts[3].replace(/^o/, "");
-        const alt = `steps.0.options.${optIdx}.text`;
+        const alt = `steps.${stepIdx}.options.${optIdx}.text`;
         if (typeof m[alt] === "string" && m[alt].trim()) return m[alt];
       }
     }
