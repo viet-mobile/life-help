@@ -78,6 +78,17 @@ function getClientSecondaryLocales(pathOverride?: string): { isBilingual: boolea
   if (fromPath.length > 0) {
     return { isBilingual: true, secondaryLocale: fromPath[0], secondaryLocales: fromPath };
   }
+  try {
+    const lsMulti = localStorage.getItem("life_help_secondary_locales");
+    if (lsMulti) {
+      const parts = lsMulti.split(/[,+]/).filter(Boolean);
+      if (parts.length > 0) return { isBilingual: true, secondaryLocale: parts[0], secondaryLocales: parts };
+    }
+    const lsSingle = localStorage.getItem("life_help_secondary_locale");
+    if (lsSingle) return { isBilingual: true, secondaryLocale: lsSingle, secondaryLocales: [lsSingle] };
+    const lsMode = localStorage.getItem("life_help_display_mode");
+    if (lsMode === "single" || lsMode === "monolingual") return { isBilingual: false, secondaryLocale: null, secondaryLocales: [] };
+  } catch {}
   const mode = document.cookie.match(/life_help_display_mode=([^;]+)/)?.[1];
   const sec = document.cookie.match(/life_help_secondary_locale=([^;]+)/)?.[1] ?? null;
   const multiStr = document.cookie.match(/life_help_secondary_locales=([^;]+)/)?.[1];
@@ -115,10 +126,12 @@ export function DailyInsightCard({
     window.addEventListener("life_help_secondary_locale_change", handleSync);
     window.addEventListener("life_help_display_mode_change", handleSync);
     window.addEventListener("storage", handleSync);
+    window.addEventListener("popstate", handleSync);
     return () => {
       window.removeEventListener("life_help_secondary_locale_change", handleSync);
       window.removeEventListener("life_help_display_mode_change", handleSync);
       window.removeEventListener("storage", handleSync);
+      window.removeEventListener("popstate", handleSync);
     };
   }, [domain]);
 

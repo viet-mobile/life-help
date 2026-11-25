@@ -73,6 +73,16 @@ const SECONDARY_LOCALES_STORAGE_KEY = "life_help_secondary_locales";
 const SECONDARY_LOCALE_CHANGE_EVENT = "life_help_secondary_locale_change";
 const EMPTY_SECONDARY_LOCALES_STR = "";
 
+function getCookieDomainAttr(): string {
+  if (typeof window === "undefined") return "";
+  const host = window.location.hostname.toLowerCase();
+  if (host.endsWith("life.help")) {
+    return "; domain=.life.help";
+  }
+  return "";
+}
+
+
 let cachedSecondaryLocalesStr: string | null = null;
 let lastKnownSecPathname: string | null = null;
 
@@ -81,54 +91,59 @@ function getClientSecondaryLocalesStringSnapshot(): string {
 
   const currentPath = window.location.pathname;
 
-  // Invalidate cache if browser navigated to a new path
-  if (lastKnownSecPathname !== currentPath) {
+  // 1. Explicit secondary locales in the URL take top priority
+  const urlSecLocales = resolveSecondaryLocalesFromPath(currentPath);
+  if (urlSecLocales.length > 0) {
+    const joined = urlSecLocales.join(",");
+    cachedSecondaryLocalesStr = joined;
     lastKnownSecPathname = currentPath;
-    const urlSecLocales = resolveSecondaryLocalesFromPath(currentPath);
-    if (urlSecLocales.length > 0) {
-      cachedSecondaryLocalesStr = urlSecLocales.join(",");
-      return cachedSecondaryLocalesStr;
-    }
-    const urlPrimaryLocale = resolveLocaleFromPath(currentPath);
-    if (urlPrimaryLocale && urlSecLocales.length === 0) {
+    return joined;
+  }
+
+  // 2. Return cached in-memory snapshot if pathname has not changed
+  if (cachedSecondaryLocalesStr !== null && lastKnownSecPathname === currentPath) {
+    return cachedSecondaryLocalesStr;
+  }
+  lastKnownSecPathname = currentPath;
+
+  // 3. Persistent preference across page navigation: check localStorage and cookies
+  try {
+    const mode = localStorage.getItem(DISPLAY_MODE_STORAGE_KEY) || document.cookie.match(/life_help_display_mode=([^;]+)/)?.[1];
+    if (mode === "monolingual" || mode === "single") {
       cachedSecondaryLocalesStr = EMPTY_SECONDARY_LOCALES_STR;
       return EMPTY_SECONDARY_LOCALES_STR;
     }
-  }
 
-  if (cachedSecondaryLocalesStr !== null) {
-    return cachedSecondaryLocalesStr;
-  }
-
-  const urlSecLocales = resolveSecondaryLocalesFromPath(currentPath);
-  if (urlSecLocales.length > 0) {
-    cachedSecondaryLocalesStr = urlSecLocales.join(",");
-    return cachedSecondaryLocalesStr;
-  }
-
-  const urlPrimaryLocale = resolveLocaleFromPath(currentPath);
-  if (urlPrimaryLocale && urlSecLocales.length === 0) {
-    cachedSecondaryLocalesStr = EMPTY_SECONDARY_LOCALES_STR;
-    return EMPTY_SECONDARY_LOCALES_STR;
-  }
-
-  try {
     const savedList = localStorage.getItem(SECONDARY_LOCALES_STORAGE_KEY);
     if (savedList) {
-      const parsed = savedList.split(",").filter((s): s is Locale => isValidLocale(s));
+      const parsed = savedList.split(/[,+]/).filter((s): s is Locale => isValidLocale(s));
       if (parsed.length > 0) {
         cachedSecondaryLocalesStr = parsed.join(",");
         return cachedSecondaryLocalesStr;
       }
     }
-    const saved = localStorage.getItem(SECONDARY_LOCALE_STORAGE_KEY);
-    if (saved && isValidLocale(saved)) {
-      cachedSecondaryLocalesStr = saved;
-      return saved;
+    const savedSingle = localStorage.getItem(SECONDARY_LOCALE_STORAGE_KEY);
+    if (savedSingle && isValidLocale(savedSingle)) {
+      cachedSecondaryLocalesStr = savedSingle;
+      return savedSingle;
     }
-    // Backward compatibility: if displayMode is bilingual and no secondary locale is saved, default to ko (or en if main is ko)
-    const mode = localStorage.getItem(DISPLAY_MODE_STORAGE_KEY);
-    if (mode === "bilingual") {
+
+    // Check cookies (shared across subdomains e.g. physics.life.help -> chemistry.life.help)
+    const cookieMulti = document.cookie.match(/life_help_secondary_locales=([^;]+)/)?.[1];
+    if (cookieMulti) {
+      const parsed = cookieMulti.split(/[,+]/).filter((s): s is Locale => isValidLocale(s));
+      if (parsed.length > 0) {
+        cachedSecondaryLocalesStr = parsed.join(",");
+        return cachedSecondaryLocalesStr;
+      }
+    }
+    const cookieSingle = document.cookie.match(/life_help_secondary_locale=([^;]+)/)?.[1];
+    if (cookieSingle && isValidLocale(cookieSingle)) {
+      cachedSecondaryLocalesStr = cookieSingle;
+      return cookieSingle;
+    }
+
+    if (mode === "bilingual" || mode === "multilingual") {
       const mainLocale = getClientLocaleSnapshot();
       const def = mainLocale === "ko" ? "en" : "ko";
       cachedSecondaryLocalesStr = def;
@@ -137,6 +152,7 @@ function getClientSecondaryLocalesStringSnapshot(): string {
   } catch {
     // ignore
   }
+
   cachedSecondaryLocalesStr = EMPTY_SECONDARY_LOCALES_STR;
   return EMPTY_SECONDARY_LOCALES_STR;
 }
@@ -372,23 +388,22 @@ function getClientDisplayModeSnapshot(): DisplayMode {
       cachedDisplayMode = "bilingual";
       return "bilingual";
     }
-    const urlPrimaryLocale = resolveLocaleFromPath(currentPath);
-    if (urlPrimaryLocale && !urlSecLocale) {
-      cachedDisplayMode = "monolingual";
-      return "monolingual";
-    }
   }
   if (cachedDisplayMode) return cachedDisplayMode;
   try {
-    const sec = localStorage.getItem(SECONDARY_LOCALE_STORAGE_KEY);
-    if (!sec || sec === "none") {
+    const saved = localStorage.getItem(DISPLAY_MODE_STORAGE_KEY) || document.cookie.match(/life_help_display_mode=([^;]+)/)?.[1];
+    if (saved === "bilingual" || saved === "multilingual") {
+      cachedDisplayMode = "bilingual";
+      return "bilingual";
+    }
+    if (saved === "monolingual" || saved === "single") {
       cachedDisplayMode = "monolingual";
       return "monolingual";
     }
-    const saved = localStorage.getItem(DISPLAY_MODE_STORAGE_KEY);
-    if (saved === "monolingual" || saved === "bilingual") {
-      cachedDisplayMode = saved;
-      return saved;
+    const secList = localStorage.getItem(SECONDARY_LOCALES_STORAGE_KEY) || document.cookie.match(/life_help_secondary_locales=([^;]+)/)?.[1];
+    if (secList && secList.trim().length > 0) {
+      cachedDisplayMode = "bilingual";
+      return "bilingual";
     }
   } catch {
     // ignore
@@ -553,7 +568,10 @@ export function LocaleProvider({
     cachedLocale = newLocale;
     try {
       localStorage.setItem(STORAGE_KEY, newLocale);
-      document.cookie = `${STORAGE_KEY}=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
+      const domainAttr = getCookieDomainAttr();
+      const secure = typeof window !== "undefined" && window.location.protocol === "https:" ? "; Secure" : "";
+      document.cookie = `${STORAGE_KEY}=${newLocale}; path=/; max-age=31536000; SameSite=Lax${domainAttr}${secure}`;
+      document.cookie = `learn_lang=${newLocale}; path=/; max-age=31536000; SameSite=Lax${domainAttr}${secure}`;
       window.dispatchEvent(new Event(LOCALE_CHANGE_EVENT));
     } catch {
       // ignore
@@ -569,16 +587,20 @@ export function LocaleProvider({
         localStorage.setItem(SECONDARY_LOCALES_STORAGE_KEY, str);
         localStorage.setItem(SECONDARY_LOCALE_STORAGE_KEY, valid[0]);
         localStorage.setItem(DISPLAY_MODE_STORAGE_KEY, "bilingual");
-        document.cookie = `${SECONDARY_LOCALES_STORAGE_KEY}=${str}; path=/; max-age=31536000; SameSite=Lax`;
-        document.cookie = `${SECONDARY_LOCALE_STORAGE_KEY}=${valid[0]}; path=/; max-age=31536000; SameSite=Lax`;
-        document.cookie = `${DISPLAY_MODE_STORAGE_KEY}=bilingual; path=/; max-age=31536000; SameSite=Lax`;
+        const domainAttr = getCookieDomainAttr();
+        const secure = typeof window !== "undefined" && window.location.protocol === "https:" ? "; Secure" : "";
+        document.cookie = `${SECONDARY_LOCALES_STORAGE_KEY}=${str}; path=/; max-age=31536000; SameSite=Lax${domainAttr}${secure}`;
+        document.cookie = `${SECONDARY_LOCALE_STORAGE_KEY}=${valid[0]}; path=/; max-age=31536000; SameSite=Lax${domainAttr}${secure}`;
+        document.cookie = `${DISPLAY_MODE_STORAGE_KEY}=bilingual; path=/; max-age=31536000; SameSite=Lax${domainAttr}${secure}`;
       } else {
         localStorage.removeItem(SECONDARY_LOCALES_STORAGE_KEY);
         localStorage.removeItem(SECONDARY_LOCALE_STORAGE_KEY);
         localStorage.setItem(DISPLAY_MODE_STORAGE_KEY, "monolingual");
-        document.cookie = `${SECONDARY_LOCALES_STORAGE_KEY}=; path=/; max-age=0; SameSite=Lax`;
-        document.cookie = `${SECONDARY_LOCALE_STORAGE_KEY}=; path=/; max-age=0; SameSite=Lax`;
-        document.cookie = `${DISPLAY_MODE_STORAGE_KEY}=monolingual; path=/; max-age=31536000; SameSite=Lax`;
+        const domainAttr = getCookieDomainAttr();
+        const secure = typeof window !== "undefined" && window.location.protocol === "https:" ? "; Secure" : "";
+        document.cookie = `${SECONDARY_LOCALES_STORAGE_KEY}=; path=/; max-age=0; SameSite=Lax${domainAttr}${secure}`;
+        document.cookie = `${SECONDARY_LOCALE_STORAGE_KEY}=; path=/; max-age=0; SameSite=Lax${domainAttr}${secure}`;
+        document.cookie = `${DISPLAY_MODE_STORAGE_KEY}=monolingual; path=/; max-age=31536000; SameSite=Lax${domainAttr}${secure}`;
       }
 
       // Update URL if the URL currently starts with a primary locale

@@ -718,9 +718,11 @@ export async function proxy(request: NextRequest) {
       // Resolve effective secondary locales from URL or persistent cookies
       const cookieSecLocales = request.cookies.get("life_help_secondary_locales")?.value;
       const cookieSecLocale = request.cookies.get("life_help_secondary_locale")?.value;
-      const validCookieSecLocales = cookieSecLocales
+      const cookieDisplayMode = request.cookies.get("life_help_display_mode")?.value;
+      const isMonolingual = cookieDisplayMode === "monolingual" || cookieDisplayMode === "single";
+      const validCookieSecLocales = !isMonolingual && cookieSecLocales
         ? cookieSecLocales.split(/[,+]/).filter((l) => LANGUAGES.has(l.toLowerCase()))
-        : (cookieSecLocale && LANGUAGES.has(cookieSecLocale.toLowerCase()) ? [cookieSecLocale] : []);
+        : (!isMonolingual && cookieSecLocale && LANGUAGES.has(cookieSecLocale.toLowerCase()) ? [cookieSecLocale] : []);
 
       const effectiveSecLocales = (urlSecondaryLocales && urlSecondaryLocales.length > 0)
         ? urlSecondaryLocales
@@ -762,18 +764,16 @@ export async function proxy(request: NextRequest) {
       sessionResponse.cookies.getAll().forEach((c) => out.cookies.set(c));
 
       // Persist browser language and multi-secondary preferences
+      const cookieDomain = host.toLowerCase().endsWith("life.help") ? ".life.help" : undefined;
+      const cookieDomainOpt = cookieDomain ? { domain: cookieDomain } : {};
       if (effectiveLocale) {
-        out.cookies.set(LOCALE_COOKIE, effectiveLocale, { path: "/", maxAge: LOCALE_COOKIE_MAX_AGE, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });
-        out.cookies.set("life_help_locale", effectiveLocale, { path: "/", maxAge: LOCALE_COOKIE_MAX_AGE, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });
+        out.cookies.set(LOCALE_COOKIE, effectiveLocale, { path: "/", maxAge: LOCALE_COOKIE_MAX_AGE, sameSite: "lax", ...cookieDomainOpt, secure: request.nextUrl.protocol === "https:" });
+        out.cookies.set("life_help_locale", effectiveLocale, { path: "/", maxAge: LOCALE_COOKIE_MAX_AGE, sameSite: "lax", ...cookieDomainOpt, secure: request.nextUrl.protocol === "https:" });
         if (effectiveSecLocales.length > 0) {
           const secListStr = effectiveSecLocales.join(",");
-          out.cookies.set("life_help_secondary_locale", effectiveSecLocales[0], { path: "/", maxAge: LOCALE_COOKIE_MAX_AGE, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });
-          out.cookies.set("life_help_secondary_locales", secListStr, { path: "/", maxAge: LOCALE_COOKIE_MAX_AGE, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });
-          out.cookies.set("life_help_display_mode", "bilingual", { path: "/", maxAge: LOCALE_COOKIE_MAX_AGE, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });
-        } else if (urlLocale && !urlSecondaryLocale) {
-          out.cookies.delete("life_help_secondary_locale");
-          out.cookies.delete("life_help_secondary_locales");
-          out.cookies.set("life_help_display_mode", "monolingual", { path: "/", maxAge: LOCALE_COOKIE_MAX_AGE, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });
+          out.cookies.set("life_help_secondary_locale", effectiveSecLocales[0], { path: "/", maxAge: LOCALE_COOKIE_MAX_AGE, sameSite: "lax", ...cookieDomainOpt, secure: request.nextUrl.protocol === "https:" });
+          out.cookies.set("life_help_secondary_locales", secListStr, { path: "/", maxAge: LOCALE_COOKIE_MAX_AGE, sameSite: "lax", ...cookieDomainOpt, secure: request.nextUrl.protocol === "https:" });
+          out.cookies.set("life_help_display_mode", "bilingual", { path: "/", maxAge: LOCALE_COOKIE_MAX_AGE, sameSite: "lax", ...cookieDomainOpt, secure: request.nextUrl.protocol === "https:" });
         }
       }
       out.headers.set("X-Robots-Tag", "noindex, nofollow"); // first release: learning sites are not indexed
@@ -884,9 +884,22 @@ export async function proxy(request: NextRequest) {
     requestHeaders.delete("x-life-language");
   }
 
-  if (secondaryLanguage) {
-    requestHeaders.set("x-life-secondary-language", secondaryLanguage);
-    const allSecsStr = secondaryLanguages.length > 0 ? secondaryLanguages.join(",") : secondaryLanguage.replace(/\+/g, ",");
+  const cookieDisplayMode = request.cookies.get("life_help_display_mode")?.value;
+  const isMonolingual = cookieDisplayMode === "monolingual" || cookieDisplayMode === "single";
+  const cookieSecLocales = request.cookies.get("life_help_secondary_locales")?.value;
+  const cookieSecLocale = request.cookies.get("life_help_secondary_locale")?.value;
+  const validCookieSecLocales = !isMonolingual && cookieSecLocales
+    ? cookieSecLocales.split(/[,+]/).filter((l) => LANGUAGES.has(l.toLowerCase()))
+    : (!isMonolingual && cookieSecLocale && LANGUAGES.has(cookieSecLocale.toLowerCase()) ? [cookieSecLocale] : []);
+
+  const effectiveSecLocales = (secondaryLanguages && secondaryLanguages.length > 0)
+    ? secondaryLanguages
+    : (secondaryLanguage ? [secondaryLanguage] : validCookieSecLocales).filter((l) => l !== effectiveLanguage).slice(0, 4);
+  const effectiveSecondaryLanguage = effectiveSecLocales.length > 0 ? effectiveSecLocales.join("+") : null;
+
+  if (effectiveSecondaryLanguage) {
+    requestHeaders.set("x-life-secondary-language", effectiveSecondaryLanguage);
+    const allSecsStr = effectiveSecLocales.join(",");
     requestHeaders.set("x-life-secondary-languages", allSecsStr);
   } else {
     requestHeaders.delete("x-life-secondary-language");
@@ -900,18 +913,16 @@ export async function proxy(request: NextRequest) {
 
   // Helper to persist language and bilingual mode cookies
   const applyLocaleCookies = (res: NextResponse) => {
+    const cookieDomain = host.toLowerCase().endsWith("life.help") ? ".life.help" : undefined;
+    const cookieDomainOpt = cookieDomain ? { domain: cookieDomain } : {};
     if (language) {
-      res.cookies.set("life_help_locale", language, { path: "/", maxAge: 31536000, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });
-      if (secondaryLanguage) {
-        const firstSec = secondaryLanguages[0] || secondaryLanguage.split(/[,+]/)[0];
-        const allSecsStr = secondaryLanguages.length > 0 ? secondaryLanguages.join(",") : secondaryLanguage.replace(/\+/g, ",");
-        res.cookies.set("life_help_secondary_locale", firstSec, { path: "/", maxAge: 31536000, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });
-        res.cookies.set("life_help_secondary_locales", allSecsStr, { path: "/", maxAge: 31536000, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });
-        res.cookies.set("life_help_display_mode", "bilingual", { path: "/", maxAge: 31536000, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });
-      } else {
-        res.cookies.delete("life_help_secondary_locale");
-        res.cookies.delete("life_help_secondary_locales");
-        res.cookies.set("life_help_display_mode", "monolingual", { path: "/", maxAge: 31536000, sameSite: "lax", secure: request.nextUrl.protocol === "https:" });
+      res.cookies.set("life_help_locale", language, { path: "/", maxAge: 31536000, sameSite: "lax", ...cookieDomainOpt, secure: request.nextUrl.protocol === "https:" });
+      if (effectiveSecondaryLanguage && effectiveSecLocales.length > 0) {
+        const firstSec = effectiveSecLocales[0];
+        const allSecsStr = effectiveSecLocales.join(",");
+        res.cookies.set("life_help_secondary_locale", firstSec, { path: "/", maxAge: 31536000, sameSite: "lax", ...cookieDomainOpt, secure: request.nextUrl.protocol === "https:" });
+        res.cookies.set("life_help_secondary_locales", allSecsStr, { path: "/", maxAge: 31536000, sameSite: "lax", ...cookieDomainOpt, secure: request.nextUrl.protocol === "https:" });
+        res.cookies.set("life_help_display_mode", "bilingual", { path: "/", maxAge: 31536000, sameSite: "lax", ...cookieDomainOpt, secure: request.nextUrl.protocol === "https:" });
       }
     }
   };

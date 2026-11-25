@@ -56,21 +56,31 @@ export function LearnMultilingualPopover({
 
   const applyLocales = (nextList: Locale[]) => {
     setActiveSecLocales(nextList);
+    const domainAttr = typeof window !== "undefined" && window.location.hostname.toLowerCase().endsWith("life.help") ? "; domain=.life.help" : "";
     const secure = typeof window !== "undefined" && window.location.protocol === "https:" ? "; Secure" : "";
     const maxAge = 31536000;
-    if (nextList.length === 0) {
-      document.cookie = `life_help_display_mode=single; Path=/; Max-Age=${maxAge}; SameSite=Lax${secure}`;
-      document.cookie = `life_help_secondary_locale=; Path=/; Max-Age=0; SameSite=Lax${secure}`;
-      document.cookie = `life_help_secondary_locales=; Path=/; Max-Age=0; SameSite=Lax${secure}`;
-    } else {
-      document.cookie = `life_help_display_mode=bilingual; Path=/; Max-Age=${maxAge}; SameSite=Lax${secure}`;
-      document.cookie = `life_help_secondary_locale=${nextList[0]}; Path=/; Max-Age=${maxAge}; SameSite=Lax${secure}`;
-      document.cookie = `life_help_secondary_locales=${nextList.join("+")}; Path=/; Max-Age=${maxAge}; SameSite=Lax${secure}`;
-    }
+    try {
+      if (nextList.length === 0) {
+        localStorage.removeItem("life_help_secondary_locales");
+        localStorage.removeItem("life_help_secondary_locale");
+        localStorage.setItem("life_help_display_mode", "single");
+        document.cookie = `life_help_display_mode=single; Path=/; Max-Age=${maxAge}; SameSite=Lax${domainAttr}${secure}`;
+        document.cookie = `life_help_secondary_locale=; Path=/; Max-Age=0; SameSite=Lax${domainAttr}${secure}`;
+        document.cookie = `life_help_secondary_locales=; Path=/; Max-Age=0; SameSite=Lax${domainAttr}${secure}`;
+      } else {
+        localStorage.setItem("life_help_secondary_locales", nextList.join(","));
+        localStorage.setItem("life_help_secondary_locale", nextList[0]);
+        localStorage.setItem("life_help_display_mode", "bilingual");
+        document.cookie = `life_help_display_mode=bilingual; Path=/; Max-Age=${maxAge}; SameSite=Lax${domainAttr}${secure}`;
+        document.cookie = `life_help_secondary_locale=${nextList[0]}; Path=/; Max-Age=${maxAge}; SameSite=Lax${domainAttr}${secure}`;
+        document.cookie = `life_help_secondary_locales=${nextList.join("+")}; Path=/; Max-Age=${maxAge}; SameSite=Lax${domainAttr}${secure}`;
+      }
+    } catch {}
 
     if (typeof window !== "undefined") {
       window.dispatchEvent(new Event("life_help_secondary_locale_change"));
       window.dispatchEvent(new Event("life_help_display_mode_change"));
+      window.dispatchEvent(new Event("storage"));
       const pathname = window.location.pathname;
       const { locale: currentUrlLocale, rest } = splitLocalePrefix(pathname);
       const effectivePrimary = currentUrlLocale || currentLocale;
