@@ -275,6 +275,13 @@ def author_ensemble_questions(date_str=None):
     # 4. 사고력 문제 은행 및 190개국 생활정보 플랫폼 즉시 배포 자동화 파이프라인 (안 무인 통합)
     try:
         print("\n🚀 사고력 문제 및 190개국 생활정보 플랫폼 자동 통합 파이프라인 가동...")
+                # 4-1. 일일 생활정보/학습인사이트(dailyInsights) 누적 동기화 파이프라인
+        sync_script = BASE_DIR / "scripts" / "learn" / "sync_daily_to_insights.py"
+        if sync_script.exists():
+            import subprocess
+            subprocess.run([sys.executable, str(sync_script)], check=True)
+            print("✅ 일일 출제 문항 및 190개국 생활정보 dailyInsights 100% 누적 통합 완료!")
+
         pure_sci = BASE_DIR / "scripts" / "think" / "rebuild_pure_science_batches.py"
         if pure_sci.exists():
             import subprocess

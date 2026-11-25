@@ -9,6 +9,7 @@ import { HangeulCalligraphyIcon } from "@/components/shared/HangeulCalligraphyIc
 import { useLocale } from "@/lib/i18n/LocaleContext";
 import { DomainType, DailyInsight } from "@/lib/learn/dailyInsights/types";
 import { getDailyInsight } from "@/lib/learn/dailyInsights/engine";
+import { INSIGHT_MAP } from "@/lib/learn/dailyInsights/data";
 import { resolveActionLink } from "@/lib/learn/dailyInsights/actionLinkMap";
 import { getOfficialWebsiteBadge } from "@/lib/learn/dailyInsights/officialWebsiteI18n";
 import { getInsightLocaleData } from "@/lib/learn/dailyInsights/localesData";
@@ -121,7 +122,7 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
   // Load all insights for the selected domain (366 for subjects, 569 for life including 190 countries)
   const domainItems: { index: number; insight: DailyInsight; secondaryInsights: { locale: Locale; insight: DailyInsight }[] }[] = useMemo(() => {
     const list = [];
-    const totalCount = selectedDomain === "life" ? 569 : 366;
+    const totalCount = INSIGHT_MAP[selectedDomain]?.length || 366;
     for (let i = 0; i < totalCount; i++) {
       let insight = getDailyInsight(selectedDomain, i, locale);
       const baseId = insight.id.replace(/-(\d+)$/, (_, n) => '-' + String(((parseInt(n, 10) - 1) % 36) + 1).padStart(3, '0'));
@@ -273,7 +274,7 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
                   <span>{d.icon}</span>
                   <span>{label}</span>
                   <span className={`text-[10px] px-1.5 py-0.2 droplet-pill font-bold ${isSelected ? "bg-white/20 text-white" : "bg-slate-100 text-slate-500"}`}>
-                    366
+                    {INSIGHT_MAP[d.id]?.length || 366}
                   </span>
                 </button>
               );
