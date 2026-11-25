@@ -382,18 +382,6 @@ def run():
     with open(life_json_path, "w", encoding="utf-8") as f:
         json.dump(life_data, f, ensure_ascii=False, indent=2)
 
-    life_topics = json.load(open(LIFE_TOPICS_89, "r", encoding="utf-8"))
-    for cid, cinfo in country_insights_map.items():
-        title_dict = {l: cinfo["title"] for l in all_langs}
-        summary_dict = {l: cinfo["summary"] for l in all_langs}
-        life_topics[cid] = {
-            "id": cid,
-            "title": title_dict,
-            "summary": summary_dict
-        }
-    with open(LIFE_TOPICS_89, "w", encoding="utf-8") as f:
-        json.dump(life_topics, f, ensure_ascii=False, indent=2)
-
     print("=== Step 5: Success! Rebuilding gen-extra-index.mjs ===")
     os.system("node scripts/think/gen-extra-index.mjs")
     print("ALL DONE!")
