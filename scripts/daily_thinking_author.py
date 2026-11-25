@@ -29,6 +29,8 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 QUESTIONS_DIR = BASE_DIR / "questions" / "daily"
+sys.path.insert(0, str(BASE_DIR))
+from scripts.think.grade_curriculum_bank import PHYSICS_BANK, CHEMISTRY_BANK, MATH_BANK
 
 # Model specifications
 OPENAI_MODEL = "gpt-6-luna"           # 덱 (Codex / OpenAI)
@@ -109,55 +111,15 @@ def generate_fallback_question(date_str, subject, grade, title, concept, q_num=1
     """Deterministic high-quality fallback generator guaranteeing 100% uptime (2 questions per topic = 110 pipeline)."""
     q_id = f"{date_str}-{subject}-{grade.lower()}-{q_num}"
     
-    if subject == "math":
-        if q_num == 1:
-            q = f"[{grade} 수학 사고력] {title}과 관련된 문제입니다. 두 수 $A$와 $B$가 주어졌을 때, 관계식 $A + 2B = 24$를 만족하는 자연수 순서쌍 $(A, B)$의 개수를 구하고 최적의 조건을 찾으려고 합니다. 이때 $A$가 가장 큰 값을 가질 때 $B$의 값은 얼마입니까?"
-            opts = ["$1$", "$2$", "$3$", "$4$"]
-            ans = 0
-            hints = ["자연수 $B$의 최소값은 $1$입니다.", "$A = 24 - 2B$이므로 $B$가 가장 작을 때 $A$가 최대가 됩니다."]
-            expl = "1단계: 주어진 식을 정리하면 $A = 24 - 2B$입니다.\n2단계: $A$와 $B$는 모두 자연수이므로 $B \\ge 1$이고 $A \\ge 1$이어야 합니다.\n3단계: $A$가 최대가 되려면 빼는 값인 $2B$가 최소가 되어야 하므로 $B = 1$입니다.\n4단계: 이때 $A = 24 - 2(1) = 22$로 최대가 되며, 문제에서 요구한 $B$의 값은 $1$입니다."
-        else:
-            q = f"[{grade} 수학 사고력 (심화·응용)] {title}의 원리를 활용한 복합 문제입니다. 연속하는 세 자연수의 합이 $3S$이고, 가장 작은 수와 가장 큰 수의 곱에 $1$을 더한 값이 $T^2$의 형태를 갖습니다. $S = 15$일 때, 이 세 자연수 중 가장 큰 수는 얼마입니까?"
-            opts = ["$14$", "$15$", "$16$", "$17$"]
-            ans = 2
-            hints = ["연속하는 세 자연수를 $n-1, n, n+1$로 놓으면 합은 $3n$이 됩니다.", "가운데 수가 $n = S = 15$입니다."]
-            expl = "1단계: 연속하는 세 자연수를 $n-1, n, n+1$로 나타내면 그 합은 $(n-1) + n + (n+1) = 3n$입니다.\n2단계: 문제에서 합이 $3S = 3(15) = 45$이므로 $3n = 45 \\Rightarrow n = 15$입니다.\n3단계: 따라서 세 수는 $14, 15, 16$이며, 이 중 가장 큰 수는 $16$입니다.\n4단계: 실제로 $(14 \\times 16) + 1 = 224 + 1 = 225 = 15^2$으로 성립합니다."
-    elif subject == "physics":
-        if q_num == 1:
-            q = f"[{grade} 물리 탐구] {title}의 원리를 적용하는 문제입니다. 마찰이 없는 수평면 위에서 질량 $m = 2\\text{{ kg}}$인 물체에 일정한 수평력 $F = 10\\text{{ N}}$을 가하여 $4\\text{{ m}}$ 이동시켰습니다. 물체가 받은 일 $W$와 가속도 $a$에 대한 설명 중 옳은 것은 무엇입니까?"
-            opts = [
-                "가속도는 $5\\text{ m/s}^2$이고, 한 일은 $40\\text{ J}$이다.",
-                "가속도는 $2\\text{ m/s}^2$이고, 한 일은 $20\\text{ J}$이다.",
-                "가속도는 $10\\text{ m/s}^2$이고, 한 일은 $40\\text{ J}$이다.",
-                "가속도는 $5\\text{ m/s}^2$이고, 한 일은 $20\\text{ J}$이다."
-            ]
-            ans = 0
-            hints = ["뉴턴의 제2법칙: $F = ma$ 공식을 사용합니다.", "일의 정의: $W = F \\times s$ 공식을 사용합니다."]
-            expl = "1단계: 뉴턴의 운동 제2법칙 $F = ma$에 의해 $a = \\frac{F}{m} = \\frac{10\\text{ N}}{2\\text{ kg}} = 5\\text{ m/s}^2$입니다.\n2단계: 한 일의 양은 $W = F \\cdot s = 10\\text{ N} \\times 4\\text{ m} = 40\\text{ J}$입니다.\n3단계: 따라서 가속도는 $5\\text{ m/s}^2$, 한 일은 $40\\text{ J}$가 올바른 설명입니다."
-        else:
-            q = f"[{grade} 물리 탐구 (심화·응용)] {title}의 원리를 분석하는 역학 탐구 문제입니다. 지표면 근처에서 질량 $m = 1\\text{{ kg}}$인 물체를 높이 $h = 20\\text{{ m}}$인 지점에서 가만히 놓아 자유 낙하시켰습니다. (단, 중력가속도 $g = 9.8\\text{{ m/s}}^2$, 공기 저항 무시) 물체의 역학적 에너지 보존과 지면 도달 직전 속력 $v$에 대한 설명으로 옳은 것은 무엇입니까?"
-            opts = [
-                "역학적 에너지는 보존되며, 지면 도달 직전 속력은 약 $19.8\\text{ m/s}$이다.",
-                "역학적 에너지는 낙하하며 감소하여 지면 도달 직전 속력은 약 $9.8\\text{ m/s}$이다.",
-                "위치 에너지만 보존되고 운동 에너지는 0이 된다.",
-                "중력가속도가 시간에 따라 증가하므로 속력 계산이 불가능하다."
-            ]
-            ans = 0
-            hints = ["공기 저항을 무시하므로 역학적 에너지 보존 법칙 $mgh = \\frac{1}{2}mv^2$이 성립합니다.", "$v = \\sqrt{2gh} = \\sqrt{2 \\times 9.8 \\times 20} = \\sqrt{392} \\approx 19.8\\text{ m/s}$입니다."]
-            expl = "1단계: 공기 저항이 없으므로 낙하하는 동안 역학적 에너지는 일정하게 보존됩니다.\n2단계: 최고점에서의 위치 에너지가 지면에서의 운동 에너지로 전환되므로 $mgh = \\frac{1}{2}mv^2$입니다.\n3단계: $v = \\sqrt{2gh} = \\sqrt{2 \\times 9.8\\text{ m/s}^2 \\times 20\\text{ m}} = \\sqrt{392} \\approx 19.8\\text{ m/s}$입니다."
-    elif subject == "chemistry":
-        if q_num == 1:
-            q = f"[{grade} 화학 탐구] {title}에 대한 사고력 문제입니다. $25^\\circ\\text{{C}}$, $1\\text{{ atm}}$에서 기체 $1\\text{{ mol}}$의 부피가 $24.5\\text{{ L}}$일 때, 같은 온도와 압력에서 어떤 기체 $0.2\\text{{ mol}}$의 부피는 몇 $\\text{{L}}$인지 이상 기체 상태를 바탕으로 계산하십시오."
-            opts = ["$2.45\\text{ L}$", "$4.90\\text{ L}$", "$9.80\\text{ L}$", "$12.25\\text{ L}$"]
-            ans = 1
-            hints = ["아보가드로 법칙에 따라 같은 온도와 압력에서 기체의 부피는 몰수에 정비례합니다.", "$V = n \\times V_m$을 계산합니다."]
-            expl = "1단계: 아보가드로 법칙에 따라 일정한 온도와 압력에서 기체의 부피 $V$는 몰수 $n$에 비례합니다.\n2단계: 1몰당 부피가 $24.5\\text{ L/mol}$이므로, $0.2\\text{ mol}$의 부피는 $V = 0.2\\text{ mol} \\times 24.5\\text{ L/mol}$입니다.\n3단계: 계산하면 $V = 4.90\\text{ L}$입니다."
-        else:
-            q = f"[{grade} 화학 탐구 (심화·응용)] {title}의 원리를 분석하는 정량 분석 문제입니다. 수용액에서 수소 이온 농도 $[\\text{{H}}^+] = 1.0 \\times 10^{{-3}}\\text{{ M}}$인 산성 용액 $A$와 $[\\text{{H}}^+] = 1.0 \\times 10^{{-5}}\\text{{ M}}$인 산성 용액 $B$가 있습니다. 용액 $A$의 수소 이온 농도는 용액 $B$의 수소 이온 농도의 몇 배입니까?"
-            opts = ["$10\\text{배}$", "$100\\text{배}$", "$1000\\text{배}$", "$0.01\\text{배}$"]
-            ans = 1
-            hints = ["두 수소 이온 농도의 비 $\\frac{[\\text{H}^+]_A}{[\\text{H}^+]_B}$를 구합니다.", "지수법칙: $\\frac{10^{-3}}{10^{-5}} = 10^{-3 - (-5)} = 10^2 = 100$입니다."]
-            expl = "1단계: 용액 $A$의 수소 이온 농도는 $10^{-3}\\text{ M}$이고, 용액 $B$는 $10^{-5}\\text{ M}$입니다.\n2단계: 비를 구하면 $\\frac{1.0 \\times 10^{-3}}{1.0 \\times 10^{-5}} = 10^{-3 - (-5)} = 10^2 = 100$입니다.\n3단계: 따라서 용액 $A$는 용액 $B$보다 수소 이온 농도가 100배 높습니다."
+    if subject == "physics" and grade in PHYSICS_BANK:
+        item = PHYSICS_BANK[grade].get(q_num, PHYSICS_BANK[grade][1])
+        q, opts, ans, hints, expl = item
+    elif subject == "chemistry" and grade in CHEMISTRY_BANK:
+        item = CHEMISTRY_BANK[grade].get(q_num, CHEMISTRY_BANK[grade][1])
+        q, opts, ans, hints, expl = item
+    elif subject == "math" and grade in MATH_BANK:
+        item = MATH_BANK[grade].get(q_num, MATH_BANK[grade][1])
+        q, opts, ans, hints, expl = item
     elif subject == "english":
         if q_num == 1:
             q = f"[{grade} English Critical Thinking] Choose the most appropriate sentence that logically completes the context regarding: '{title}'.\n\"Although renewable energy sources have become significantly more cost-effective over the past decade, ______.\""

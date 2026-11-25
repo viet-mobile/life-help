@@ -707,7 +707,8 @@ export async function proxy(request: NextRequest) {
         : splitLocalePrefix(sitePath);
       const innerPath = urlLocale ? rest : sitePath;
       const siteRoot = learnHostSite ? "" : `/study/${learnSite}`;
-      const internal = passthrough ? path : `/study/${learnSite}${innerPath === "/" ? "" : innerPath}`;
+      const isInsights = innerPath === "/insights" || innerPath.startsWith("/insights/");
+      const internal = passthrough ? path : (isInsights ? innerPath : `/study/${learnSite}${innerPath === "/" ? "" : innerPath}`);
 
       // Resolve effective locale from URL or persistent cookies
       const cookieLocale = request.cookies.get(LOCALE_COOKIE)?.value || request.cookies.get("life_help_locale")?.value;
