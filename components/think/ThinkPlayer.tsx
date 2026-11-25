@@ -6,6 +6,7 @@ import type { ThinkLang } from "@/lib/think/lang";
 import type { BuildStep, ChooseStep, PickLineStep, RevealStep, Step, ThinkTask, WriteStep } from "@/lib/think/types";
 import { formatLevelLabel, formatMinutes } from "@/lib/think/grades";
 import { fmt, labels, type Labels } from "./labels";
+import { getThinkInfoLabel, getThinkUncertaintyLabel } from "./thinkUiLabels";
 import { RichText } from "@/components/learn/RichText";
 
 export interface Flag { task: string; step: string; note: string; at: string }
@@ -13,7 +14,7 @@ export interface Flag { task: string; step: string; note: string; at: string }
  * One task, played step by step. `lang` is the language of the (already localized) task content and of the chrome; `checksOff` hides the
  * surface checks of written answers (math answers are written in the learner's language, the checks only know the authored language).
  */
-export function TaskPlayer({ task, lang, checksOff = false, reviewer, onBack, onNext, onFlag, onComplete }: { task: ThinkTask; lang?: ThinkLang; checksOff?: boolean; reviewer: boolean; onBack: () => void; onNext?: () => void; onFlag: (f: Omit<Flag, "at">) => void; onComplete?: () => void }) {
+export function TaskPlayer({ task, lang, learnerLocale, secondaryLocales = [], checksOff = false, reviewer, onBack, onNext, onFlag, onComplete }: { task: ThinkTask; lang?: ThinkLang; learnerLocale?: string; secondaryLocales?: string[]; checksOff?: boolean; reviewer: boolean; onBack: () => void; onNext?: () => void; onFlag: (f: Omit<Flag, "at">) => void; onComplete?: () => void }) {
   const L = labels(lang ?? task.uiLang);
   const shownLang = lang ?? task.uiLang;
   const [started, setStarted] = useState(false);
@@ -31,7 +32,14 @@ export function TaskPlayer({ task, lang, checksOff = false, reviewer, onBack, on
       {reviewer && task.status === "draft" && <p className="mt-1 droplet-card bg-amber-50 p-2 text-xs font-bold text-amber-800" data-testid="draft-note">🟡 {L.draft}</p>}
       <p className="mt-2 text-sm" data-testid="prereq"><b>{L.prereq}:</b> {task.prerequisites.join("; ")}</p>
       <details className="mt-3 droplet-card border bg-slate-50 p-4 text-sm" data-testid="task-info" open={reviewer}>
-        <summary className="cursor-pointer font-black">{L.info}</summary>
+        <summary className="cursor-pointer font-black">
+          <div>▶ {getThinkInfoLabel(learnerLocale ?? shownLang)}</div>
+          {secondaryLocales && secondaryLocales.length > 0 && secondaryLocales.map((secLoc) => (
+            <div key={secLoc} className="text-xs font-normal text-slate-500 mt-0.5">
+              {getThinkInfoLabel(secLoc)}
+            </div>
+          ))}
+        </summary>
         <div className="mt-2 grid gap-2">
           <p><b>{L.goal}:</b> {task.goal}</p>
           <p><b>{L.thinking}:</b> {task.thinking.join(" · ")}</p>
@@ -39,7 +47,14 @@ export function TaskPlayer({ task, lang, checksOff = false, reviewer, onBack, on
           {reviewer && <p><b>{L.curriculum}:</b> {task.curriculum ? `${task.curriculum.standard} — ${task.curriculum.note}` : L.none2}</p>}
         </div>
       </details>
-      <p className="mt-2 text-xs text-slate-500">{L.uncertainty}</p>
+      <div className="mt-2 text-xs text-slate-500 space-y-0.5">
+        <p>{getThinkUncertaintyLabel(learnerLocale ?? shownLang)}</p>
+        {secondaryLocales && secondaryLocales.length > 0 && secondaryLocales.map((secLoc) => (
+          <p key={secLoc} className="opacity-85">
+            {getThinkUncertaintyLabel(secLoc)}
+          </p>
+        ))}
+      </div>
       <section className="mt-4 droplet-card border-2 border-slate-900 p-4" aria-label="material"><p className="whitespace-pre-wrap text-base leading-relaxed" data-testid="material">{task.material}</p></section>
       {!started ? (
         <button className="mt-4 droplet-btn bg-slate-900 px-5 py-3 font-black text-white" onClick={() => setStarted(true)} data-testid="start">{L.start}</button>

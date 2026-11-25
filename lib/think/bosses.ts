@@ -49,3 +49,23 @@ export const BOSS_TEXT: Record<ThinkLang, BossText> = {
   ja: { mid: "中ボス", final: "ラスボス", locked: (d, t) => `レッスンを${d}/${t}個終えると挑戦できます`, open: "ラスボスが待っています！", defeated: "撃破", trophies: "マイトロフィー", title: (n) => `${n}ラスボス撃破`, reward: "ラスボスを倒しました！トロフィーを獲得。" },
   vi: { mid: "Trùm giữa", final: "Trùm cuối", locked: (d, t) => `Hoàn thành bài học ${d}/${t} để thách đấu`, open: "Trùm cuối đang chờ bạn!", defeated: "Đã hạ gục", trophies: "Cúp của tôi", title: (n) => `Hạ gục trùm cuối ${n}`, reward: "Bạn đã hạ trùm cuối! Nhận được cúp." },
 };
+
+export const FINAL_BOSS_NAMES: Record<string, string> = {
+  ko: "최종 보스", en: "Final boss", "zh-Hans": "最终首领", "zh-Hant": "最終首領", ja: "ラスボス", vi: "Trùm cuối",
+  es: "Jefe final", fr: "Boss final", de: "Endgegner", ru: "Финальный босс", pt: "Chefe final", it: "Boss finale",
+  ne: "अन्तिम बोस", hi: "अंतिम बॉस", id: "Bos terakhir", th: "บอสตัวสุดท้าย", my: "နောက်ဆုံး ဘော့စ်", km: "មេបិសាចចុងក្រោយ",
+  mn: "Эцсийн босс", uz: "So‘nggi boss", kk: "Соңғы босс", bn: "চূড়ান্ত বস", ta: "இறுதி பாஸ்", te: "తుది బాస్",
+  mr: "अंतिम बॉस", ur: "فائنل باس", ar: "الزعيم النهائي", arz: "الوحش النهائي", fa: "غول مرحله آخر", tr: "Son boss",
+  pl: "Finałowy boss", nl: "Eindbaas", uk: "Фінальний бос", sv: "Slutboss", da: "Slutboss", no: "Sluttboss",
+  fi: "Loppuvastus", el: "Τελικός αρχηγός", he: "הבוס האחרון", hu: "Főellenség", cs: "Závěrečný boss", ro: "Bossul final",
+  sk: "Záverečný boss", bg: "Последен бос", hr: "Konačni boss", sr: "Последњи бос", sl: "Končni šef", et: "Lõpuboss",
+  lv: "Pēdējais boss", lt: "Paskutinis bosas", sw: "Bosi wa mwisho", am: "የመጨረሻው አለቃ", tl: "Huling boss", ms: "Bos terakhir",
+  yue: "最終首領", ca: "Cap final", gl: "Xefe final", eu: "Azken buruzagia", is: "Lokaboss", mk: "Последен бос",
+  sq: "Bosi përfundimtar", az: "Sonuncu boss", ka: "ფინალური ბოსი", tg: "Сардори ниҳоӣ", pa: "ਆਖਰੀ ਬੌਸ", gu: "અંતિમ બોસ",
+  kn: "ಅಂತಿಮ ಬಾಸ್", ml: "അവസാന ബോസ്", si: "අවසාන බොස්", as: "চূড়ান্ত বছ", ha: "Babbar shugaba ta ƙarshe", yo: "Oga ikẹhin",
+  ig: "Oga ikpeazụ", zu: "Umphathi wokugcina", xh: "Umphathi wokugqibela", sn: "Mukuru wekupedzisira", so: "Hogaamiyaha ugu dambeeya",
+  om: "Gooftaa dhumaa", ku: "Serokê dawî", ps: "وروستی باس", sd: "آخري باس", jv: "Bos pungkasan", su: "Bos pamungkas",
+  ceb: "Katapusang boss", mg: "Seho farany", tet: "Xefe ikus", af: "Eindbaas", pcm: "Final boss", sg: "Kota ti nda ni"
+};
+
+export const getFinalBossName = (lang: string): string => FINAL_BOSS_NAMES[lang] ?? FINAL_BOSS_NAMES.en;

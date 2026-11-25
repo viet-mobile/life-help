@@ -7,7 +7,7 @@ import { domainOf } from "@/lib/think/domains";
 import { fieldInfo, fieldKeyOf, fieldList } from "@/lib/think/areas";
 import { hasThinkSemesters, inSemester, thinkSemesterOf } from "@/lib/think/semesters";
 import { gradeLabel, formatMinutes } from "@/lib/think/grades";
-import { BOSS_TEXT, addTrophy, bossKey, bossKeyOf, bossProgress, finalBossFor, isFinalBoss, readTrophies, type Trophy } from "@/lib/think/bosses";
+import { BOSS_TEXT, FINAL_BOSS_NAMES, getFinalBossName, addTrophy, bossKey, bossKeyOf, bossProgress, finalBossFor, isFinalBoss, readTrophies, type Trophy } from "@/lib/think/bosses";
 import { KOREAN_LEVELS, isKoreanFirst, isLevelCode, koreanLevelOf, levelCode, levelFromCode, levelName, priorLevelFor } from "@/lib/think/korean-levels";
 import { LANG_NAMES, TASK_LANG_NAMES, taskLangFor, thinkLangFor, type TaskLang, type ThinkLang } from "@/lib/think/lang";
 import { checksOffFor, loadOverlay, loadOverlays, localize, localizeFor, mergeBilingual } from "@/lib/think/localize";
@@ -192,7 +192,7 @@ export function ThinkHub() {
             </label>
           </div>
         )}
-        <TaskPlayer key={`${current.task.id}:${current.lang}`} task={finalTask} lang={lang} checksOff={checksOffFor(playTask, current.lang)} reviewer={false}
+        <TaskPlayer key={`${current.task.id}:${current.lang}`} task={finalTask} lang={lang} learnerLocale={locale} secondaryLocales={secondaryLocales} checksOff={checksOffFor(playTask, current.lang)} reviewer={false}
           onBack={() => router.push(href("/think"))} onNext={nextId ? () => router.push(href(`/think?task=${encodeURIComponent(nextId)}`)) : undefined} onFlag={() => undefined}
           onComplete={() => { const d = { ...readDone(site), [current.task.id]: new Date().toISOString() }; writeDone(site, d); setDone(d); try { window.localStorage.setItem(flowKey(site), JSON.stringify(taskCompleted(readLedger(site), current.task.id))); } catch { /* storage unavailable */ } if (isFinalBoss(current.task.id)) { addTrophy(site, current.task.id); setTrophies(readTrophies(site)); setWon(true); } }} />
       </div>
@@ -276,13 +276,11 @@ export function ThinkHub() {
       {(bossSlots.length > 0 || Object.keys(trophies).length > 0) && (
         <section className="l-card l-stack" data-testid="think-boss" aria-labelledby="boss-h" style={{ borderColor: "var(--l-accent)" }}>
           <h2 id="boss-h" className="l-h2">
-            <div>👑 {BT.final}</div>
+            <div>👑 {getFinalBossName(locale)}</div>
             {isMulti && secondaryTranslators && secondaryTranslators.length > 0 && secondaryTranslators.map(({ locale: secLoc }) => {
-              const secLang = thinkLangFor(secLoc, site);
-              const secBT = BOSS_TEXT[secLang] ?? BOSS_TEXT.en;
               return (
                 <div key={secLoc} style={{ fontSize: "0.8em", fontWeight: 400, opacity: 0.85, marginTop: "0.15rem" }}>
-                  👑 {secBT.final}
+                  👑 {getFinalBossName(secLoc)}
                 </div>
               );
             })}
