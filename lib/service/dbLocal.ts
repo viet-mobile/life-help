@@ -25,7 +25,7 @@ export async function createLocalDb(root = process.cwd()): Promise<LocalDb> {
   // The specifier is only known at run time (a function argument), so no bundler can follow it; `new Function` additionally hides the
   // import from the Turbopack / esbuild constant folding. Under vitest the plain import keeps module resolution working.
   const load = (process.env.VITEST
-    ? (specifier: string) => import(/* @vite-ignore */ specifier)
+    ? (specifier: string) => import(/* webpackIgnore: true, @vite-ignore */ specifier)
     : new Function("specifier", "return import(specifier)")) as (specifier: string) => Promise<typeof import("@electric-sql/pglite")>;
   const { PGlite } = await load(["@electric-sql", "pglite"].join("/"));
   const db = new PGlite();
