@@ -228,21 +228,57 @@ def author_ensemble_questions(date_str=None):
     
     questions = []
     
-    # 1. 덱 (OpenAI GPT-6-Luna): 수학 24 (12×2), 물리 24 (12×2), 화학 24 (12×2)
+    # Day of year calculation for deterministic rotation
+    day_of_year = datetime.strptime(date_str, "%Y%m%d").timetuple().tm_yday
+    
+    # 1. 덱 (OpenAI GPT-6-Luna): 수학 12 (12×1), 물리 12 (12×1), 화학 12 (12×1) = 36문항
     for subject in ["math", "physics", "chemistry"]:
         for grade, title, concept in CURRICULUM_TOPICS[subject]:
-            for q_num in [1, 2]:
-                q = generate_fallback_question(date_str, subject, grade, title, concept, q_num=q_num)
-                q["author_model"] = f"덱 ({OPENAI_MODEL})"
-                questions.append(q)
+            q = generate_fallback_question(date_str, subject, grade, title, concept, q_num=1)
+            q["author_model"] = f"덱 ({OPENAI_MODEL})"
+            questions.append(q)
             
-    # 2. 클 (Claude 5.5 Sonnet): 영어 24 (12×2), 한국어 12 (6×2), 생활 2 (1×2)
+    # 2. 클 (Claude 5.5 Sonnet): 영어 12 (12×1), 한국어 6 (6×1), 생활 1 (1×1) = 19문항
     for subject in ["english", "korean", "life"]:
         for grade, title, concept in CURRICULUM_TOPICS[subject]:
-            for q_num in [1, 2]:
-                q = generate_fallback_question(date_str, subject, grade, title, concept, q_num=q_num)
-                q["author_model"] = f"클 ({CLAUDE_MODEL})"
-                questions.append(q)
+            q = generate_fallback_question(date_str, subject, grade, title, concept, q_num=1)
+            q["author_model"] = f"클 ({CLAUDE_MODEL})"
+            questions.append(q)
+
+    # 3. 190개국 일일 거주·생활 행정 가이드 (매일 1국가 로테이션, 89개 언어 서비스)
+    life_data_path = BASE_DIR / "lib" / "learn" / "dailyInsights" / "data" / "life.json"
+    if life_data_path.exists():
+        try:
+            with open(life_data_path, "r", encoding="utf-8") as lf:
+                country_items = [x for x in json.load(lf) if str(x.get("id", "")).startswith("country-")]
+            if country_items:
+                featured = country_items[day_of_year % len(country_items)]
+                c_name = featured.get("country", "").capitalize()
+                c_q = {
+                    "id": f"{date_str}-{featured['id']}",
+                    "subject": "life",
+                    "grade": "COUNTRY",
+                    "title": featured.get("title", f"{c_name} 생활 가이드"),
+                    "concept": "190개국 일일 거주·생활 행정 가이드",
+                    "question": f"[{c_name} 외국인 생활 행정 가이드] {featured.get('summary', '')}",
+                    "options": [
+                        f"{featured.get('actionItem', '')}",
+                        "외국인 거주 등록은 출국 시에만 일괄 신고하면 된다.",
+                        "공식 공공 포털 대신 사설 브로커 사이트를 통해서만 비자를 연장해야 한다.",
+                        "현지 공공 의료보험은 영주권자만 가입 가능하므로 가입을 보류한다."
+                    ],
+                    "answer": 0,
+                    "hints": [
+                        "입국 직후 관할 지자체 거주지 등록이 최우선 행정 절차입니다.",
+                        "국가 공식 이민국 포털을 통해 최신 규정을 확인하십시오."
+                    ],
+                    "explanation": f"1단계: {featured.get('principle', '')}\n2단계: {featured.get('actionItem', '')}",
+                    "author_model": f"클 ({CLAUDE_MODEL}) & 안 ({GEMINI_MODEL})",
+                    "country_ref": featured["id"]
+                }
+                questions.append(c_q)
+        except Exception as ce:
+            print(f"⚠️ 190개국 생활정보 로테이션 로드 중 예외: {ce}")
             
     # 3. 안 (Antigravity / Gemini Engine) 종합 및 KaTeX 전수 무결성 검증
     for q in questions:

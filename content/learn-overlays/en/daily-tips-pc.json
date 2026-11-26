@@ -11849,5 +11849,390 @@
     "principle": "Still air conducts only about 0.026W/m · K, 1/40 of glass (1.0). In Q = UAΔT the coefficient U falls.",
     "example": "A 2m² single pane with a 20°C indoor-outdoor gap and U ≈ 5.8 loses 232W. Bubble wrap lowering U to about 3.5 gives 140W, saving roughly 90W.",
     "actionItem": "Today spray water on a window and press bubble wrap, flat side to the glass."
+  },
+  "20261126-math-g01-1": {
+    "title": "Showing 52 in different ways with bundles and single ones",
+    "summary": "Harin solved a marble story like this. There are 3 bundles of 10 marbles and 12 single marbles. You want to find out how many there are in all.",
+    "principle": "The 4th line is wrong. In the 3rd line, a new bundle was made from 12 single ones, but in the 4th line this bundle was not counted and the bundles were left at 3. The bundles are 3 and 1 together, which is 4, and there are 2 single ones, so it is 42. If you add 30 and 12 right away, it is also 42. Lines 1 to 3 are right.",
+    "example": "Check one by one how each line follows from the line right before it.",
+    "actionItem": "Use the fact that trading 1 bundle of 10 for 10 single ones keeps the total the same, show the same number with different bundles and single ones, and find and fix a wrong solution."
+  },
+  "20261126-math-g02-1": {
+    "title": "Find Suji's secret number",
+    "summary": "Suji picked a three-digit number and gave clues.\nClue 1) The digit in the tens place is 2 more than the digit in the ones place.\nClue 2) The digit in the ones place is not 0.\nClue 3) The digit in the hundreds place is greater than the digit in the tens place.",
+    "principle": "420 has 0 in the ones place, so it goes against clue 2, and 353 has 3 in the hundreds place, which is less than 5 in the tens place, so it goes against clue 3. 642 and 975 meet all three clues.",
+    "example": "Pick one number and test it against clues 1, 2, and 3 in order.",
+    "actionItem": "Use place value to find a three-digit number that meets several clues at once, and choose clues by comparing how many numbers each clue leaves."
+  },
+  "20261126-math-g03-1": {
+    "title": "Different Ways to Share 72 Candies Equally Among Plates",
+    "summary": "You want to put 72 candies on plates, sharing them equally with none left over. The number of candies on each plate changes depending on how many plates you use.",
+    "principle": "You can share the candies equally with none left over only when the number of plates times the number of candies on one plate is 72. 4×18, 6×12, and 9×8 are 72, and no number multiplied by 5 or 7 makes 72.",
+    "example": "For each number of plates, divide 72 by that number and check whether there is a remainder.",
+    "actionItem": "Find several ways to share that meet the conditions (the range for the number of plates and the number of candies on each plate) at the same time, and explain how the number of plates and the number of candies on one plate pair up."
+  },
+  "20261126-math-g04-1": {
+    "title": "The Key Number Puzzle",
+    "summary": "The key number of the treasure chest is an 8-digit number. There are only three clues. Clue 1: The digit in the ten-millions place is 5. Clue 2: The digit in the hundred-thousands place is 0. Clue 3: The digit in the ten-thousands place is greater than the digit in the ten-millions place.",
+    "principle": "The digit in the ten-millions place is 5, so the digits greater than that are 6, 7, 8, 9. You can only find this by reading the two clues together.",
+    "example": "Clue 3 compares 'the digit in the ten-thousands place' with 'the digit in the ten-millions place.' The digit in the ten-millions place is given in Clue 1.",
+    "actionItem": "Make large numbers that meet several clues at the same time, and judge whether the clues decide the number as just one."
+  },
+  "20261126-math-g05-1": {
+    "title": "Finding Two Numbers with a Given Greatest Common Factor and Least Common Multiple",
+    "summary": "Seoa drew two number cards. Both numbers are natural numbers that are 40 or less. Seoa only said this: \"The greatest common factor of the two numbers is 6, and the least common multiple is 36.\" What are the two numbers? (Say the smaller number first.)",
+    "principle": "6 is a common factor of the two numbers, so both numbers divide evenly by 6. That is, both numbers are multiples of 6. The extra condition, that the greatest common factor must not be greater than 6 while they are multiples of 6, can be tested in the next step.",
+    "example": "Turn 'the two numbers have 6 as a factor' into a statement about dividing the two numbers by 6.",
+    "actionItem": "Find on your own two numbers that meet the greatest common factor and least common multiple conditions at the same time, and discover the relationship between the conditions."
+  },
+  "20261126-math-g06-1": {
+    "title": "Checking Minseo's fraction division",
+    "summary": "Minseo calculated 3/4 ÷ 2/3 (three fourths divided by two thirds), but the teacher said, “Your answer is different.” Below is Minseo's solution. Read fractions in words, like “three fourths.”",
+    "principle": "Line 3 is the first wrong place. Only the divisor 2/3 should be flipped; the dividend 3/4 should stay as it is. The calculation in line 4 just followed line 3.",
+    "example": "Follow how each line came from the line right before it.",
+    "actionItem": "Find the wrong line in a fraction division solution, check by turning it into multiplication that the answer is wrong, and correct it."
+  },
+  "20261126-math-g07-1": {
+    "title": "Finding a number with 12 divisors",
+    "summary": "A number N was prime factorized, and its only prime factors were 2 and 3. So N is the product of '2 multiplied a times' and '3 multiplied b times' (a and b are natural numbers that are at least 1).\nFor example, 12 = 2²×3 (2 multiplied twice, 3 multiplied once). If we write the divisors of 12 (1, 2, 3, 4, 6, 12) as 'how many times 2 is multiplied, how many times 3 is multiplied,' we get the following.\nDivisor 1: 2 zero times, 3 zero times / Divisor 2: 1 time, 0 times / Divisor 4: 2 times, 0 times / Divisor 3: 0 times, 1 time / Divisor 6: 1 time, 1 time / Divisor 12: 2 times, 1 time",
+    "principle": "Each divisor in the table is made by choosing how many times 2 is multiplied (3 choices: 0, 1, 2) and how many times 3 is multiplied (2 choices: 0, 1). The two choices do not affect each other, so there are 3×2=6 divisors.",
+    "example": "In the table, write each divisor as a pair of the two counts, and see whether any pairs repeat.",
+    "actionItem": "Discover how divisors are built from the prime-factorized form, then find several numbers that fit the condition and check them."
+  },
+  "20261126-math-g08-1": {
+    "title": "Making fractions that are finite decimals even though the denominator has a 3",
+    "summary": "Jiho said, 'A fraction whose denominator has a 3 in it always turns out to be an infinite decimal.' How to read fractions: '9 over 12' means 9/12 (numerator 9, denominator 12). All the fractions below are written without being reduced.",
+    "principle": "9/12 = 3/4 = 0.75 and 15/30 = 1/2 = 0.5 had a 3 in the denominator, but when reduced the 3 disappears, so they are finite decimals. 12/18 = 2/3 = 0.666…, 5/12 = 0.41666…, and 8/15 = 0.5333… still have a 3 in the denominator after being reduced, so they are infinite decimals.",
+    "example": "To find a counterexample, you need a fraction that is 'a finite decimal even though the denominator has a 3.' What happens if you write each fraction as a decimal by dividing?",
+    "actionItem": "Show with a counterexample that the claim 'if the denominator has a 3, it is always an infinite decimal' does not hold, and explain why such counterexamples occur."
+  },
+  "20261126-math-g09-1": {
+    "title": "Testing the claim 'multiplying irrational numbers gives an irrational number'",
+    "summary": "In class, a student claimed, \"If you multiply an irrational number by an irrational number, it's always irrational!\" For example, √2 is irrational, √3 is also irrational, and their product √6 is also irrational. (√ is read 'root.')",
+    "principle": "For example, √2 × √8 = √16 = 4 and √3 × √12 = √36 = 6. Both numbers are irrational but the product is a natural number, so the claim that the product of irrational numbers is always irrational is wrong. (Multiplying the same number, such as √2 × √2 = 2 with a = b = 2, is also a counterexample.)",
+    "example": "First decide what kind of numbers a and b must be for √a and √b to both be irrational.",
+    "actionItem": "Test the claim 'multiplying irrational numbers always gives an irrational number' with a counterexample, say how an example that supports it differs in role from a counterexample, and fix the claim."
+  },
+  "20261126-math-g10-1": {
+    "title": "Where did the remainder solution go wrong?",
+    "summary": "This is Minjae's solution for finding the constant a so that the remainder is 6 when the polynomial f(x)=x³+ax²+x+2 is divided by x+1. (x³ means x cubed, and ax² means a times x squared.)",
+    "principle": "Line 2 is wrong. x+1 can be written as x−(−1), so the remainder is f(−1), not f(1). Lines 3 and 4 just follow line 2, so the calculations inside them are correct, but their results are wrong.",
+    "example": "Rewrite x+1 so that the divisor has the form x−(some number).",
+    "actionItem": "Find the wrong line in a solution that finds a remainder, fix it, and check the wrong answer against the original condition to confirm the error."
+  },
+  "20261126-math-g11-1": {
+    "title": "Find the line where the logarithmic equation solution has a problem",
+    "summary": "Minho solved the equation log₂(x−1) + log₂(x−3) = 3 and answered, ‘The solutions are x=5 and x=−1, two of them.’ Read aloud, it is ‘log base 2 of (x minus 1) plus log base 2 of (x minus 3) equals 3’.",
+    "principle": "The first place where it goes off is line 2. When the sum of the two logarithms is combined into one logarithm, the argument conditions x−1>0 and x−3>0 disappear from the expression, and those conditions were not written down separately. So in line 5 both roots were accepted, and line 6 is that conclusion. The argument must be positive, so x>3 is required. If x=−1, then x−1=−2 and x−3=−4, the arguments are negative, so the equation is not defined. If x=5, log₂4 + log₂2 = 2+1 = 3, so it holds. So the solution is the single value x=5.",
+    "example": "Each time the expression changes, read while checking that it means the same as the previous line.",
+    "actionItem": "Find and fix the problem caused by not checking the argument condition in a solution to a logarithmic equation."
+  },
+  "20261126-math-g12-1": {
+    "title": "The definite integral is 0, but is the area 0 too?",
+    "summary": "A student found the area of the region enclosed by the curve y = x² − 4x + 3, the x-axis, and the two lines x = 0 and x = 3 as below. (In words instead of a picture: this curve meets the x-axis at x = 1 and x = 3; when x is between 0 and 1 it is above the x-axis, and when x is between 1 and 3 it is below the x-axis.)",
+    "principle": "The calculations (lines 3 and 4) are right. The problem is the setup in line 2. A definite integral is a value that counts the part above the x-axis as + and the part below as −, so the 4/3 of [0,1] and the −4/3 of [1,3] cancel and make 0. Area does not look at the sign, so the conclusion in line 5 is also an error that comes from that setup.",
+    "example": "Read each line and check ‘does it come directly from the previous line?’",
+    "actionItem": "Know that the value of a definite integral and the area of a figure can differ, find the line where the problem in a solution starts, and choose the method that fixes the error."
+  },
+  "20261126-physics-g01-1": {
+    "title": "Interaction of Magnetic N and S Poles",
+    "summary": "Which of the following correctly describes what happens when the N pole and the S pole of magnets are brought close together face to face?",
+    "principle": "Between different poles (N pole and S pole) of magnets, an attractive force (attraction) acts, and between the same poles, a repulsive force (repulsion) acts.",
+    "example": "Think about what happens when different poles of magnets meet.",
+    "actionItem": "Analyze the underlying scientific principles and deduce the correct conclusion."
+  },
+  "20261126-physics-g02-1": {
+    "title": "Tuning Fork and Water Surface Vibrations",
+    "summary": "Which of the following correctly describes what happens when you strike a tuning fork with a rubber mallet and then lightly touch it to the surface of water in a tank?",
+    "principle": "A sounding tuning fork is vibrating, so the moment it touches the water, it splashes the water in all directions and creates waves.",
+    "example": "A sounding tuning fork is vibrating rapidly.",
+    "actionItem": "Analyze the underlying scientific principles and deduce the correct conclusion."
+  },
+  "20261126-physics-g03-1": {
+    "title": "Rectilinear Light Propagation and Three-Aperture Cards",
+    "summary": "You place three paper boards with holes side by side in front of a flashlight's beam. How should the holes be arranged so that you can see the light from the other side?",
+    "principle": "Light has the property of traveling straight (straight-line travel of light), so light can pass through all the holes only when the three holes lie on a straight line.",
+    "example": "Light cannot go around a curved path.",
+    "actionItem": "Analyze the underlying scientific principles and deduce the correct conclusion."
+  },
+  "20261126-physics-g04-1": {
+    "title": "Balance of Equal-Arm Scales and Center of Mass",
+    "summary": "A 20 g weight is hung 4 units to the left of the fulcrum of a balance scale. What weight must be hung 2 units from the fulcrum on the right to balance it?",
+    "principle": "By the principle of equilibrium, the moment on the left ($4\\text{ units} \\times 20\\text{ g} = 80$) and the moment on the right ($2\\text{ units} \\times ? = 80$) must be equal, so a $40\\text{ g}$ weight must be hung.",
+    "example": "Calculate (left distance × weight) = (right distance × weight).",
+    "actionItem": "Analyze the underlying scientific principles and deduce the correct conclusion."
+  },
+  "20261126-physics-g05-1": {
+    "title": "Speed Equation and Motion Rates",
+    "summary": "Which of the following is a correct scientific statement about comparing how fast objects move (speed)?",
+    "principle": "When traveling the same distance, the shorter the time taken, the faster; when traveling for the same amount of time, the longer the distance traveled, the faster the speed.",
+    "example": "In a running race, the first-place runner takes the shortest time to reach the finish line.",
+    "actionItem": "Analyze the underlying scientific principles and deduce the correct conclusion."
+  },
+  "20261126-physics-g06-1": {
+    "title": "Bulb Brightness in Series vs Parallel Circuits",
+    "summary": "You want to light a bulb by connecting 1 battery, 2 bulbs, and a switch with wires. Which is the correct condition for a 'closed circuit' in which the bulbs light up?",
+    "principle": "For current to flow, a closed circuit must be formed that starts from one terminal of the battery, passes through the electrical components, and is connected without a break to the opposite terminal.",
+    "example": "Current can flow only when the wire is connected without a break.",
+    "actionItem": "Analyze the underlying scientific principles and deduce the correct conclusion."
+  },
+  "20261126-physics-g07-1": {
+    "title": "Mass and Weight on Earth vs Moon",
+    "summary": "An astronaut whose mass is 60 kg on Earth lands on the surface of the Moon. Which statement about 'mass' and 'weight' on the Moon's surface is correct? (Assume the Moon's gravity is 1/6 of Earth's.)",
+    "principle": "Mass is the intrinsic amount of matter that makes up an object, so it is constant (60 kg) regardless of location, but weight is the magnitude of gravity, so on the Moon it decreases to 1/6 of that on Earth, about 98 N.",
+    "example": "Mass is an intrinsic quantity of an object, so it does not change even if the place changes.",
+    "actionItem": "Analyze the underlying scientific principles and deduce the correct conclusion."
+  },
+  "20261126-physics-g08-1": {
+    "title": "Ohm's Law (V = IR) and Electric Current",
+    "summary": "When a voltage of 30 V is applied across a nichrome wire with a resistance of 10 Ω, what is the current flowing through the wire?",
+    "principle": "By Ohm's law, the current is $I = \\frac{V}{R} = \\frac{30\\text{ V}}{10\\,\\Omega} = 3\\text{ A}$.",
+    "example": "Ohm's law: I = V / R",
+    "actionItem": "Analyze the underlying scientific principles and deduce the correct conclusion."
+  },
+  "20261126-physics-g09-1": {
+    "title": "Definition of Scientific Work and Zero-Work Conditions",
+    "summary": "In physics, which situation is one in which the amount of 'scientific work' done is zero?",
+    "principle": "When you walk horizontally carrying a box, the force you exert (the upward force supporting gravity) and the direction of motion (horizontal) form a right angle of $90^\\circ$, so no component of the force acts along the direction of motion and the work done is $0$.",
+    "example": "Scientific work is W = F × s × cos(θ).",
+    "actionItem": "Analyze the underlying scientific principles and deduce the correct conclusion."
+  },
+  "20261126-physics-g10-1": {
+    "title": "Simultaneous Fall of Projectiles and Free-Falling Bodies",
+    "summary": "Near the Earth's surface, of two steel balls A and B at the same height, A is released from rest to fall freely, and B is launched forcefully in the horizontal direction. Which statement about their motion is correct? (Ignore air resistance.)",
+    "principle": "Horizontal uniform motion and vertical free-fall motion are independent of each other. Both balls fall vertically with the same gravitational acceleration $g$, so they reach the ground at the same time.",
+    "example": "Think about the independence of motion.",
+    "actionItem": "Analyze the underlying scientific principles and deduce the correct conclusion."
+  },
+  "20261126-physics-g11-1": {
+    "title": "Action-Reaction vs Equilibrium of Forces",
+    "summary": "What is the most accurate essential physical difference between an 'action-reaction pair' and 'balanced forces'?",
+    "principle": "Action and reaction act on two different interacting objects, so the two forces cannot be combined. Balanced forces both act on a single object, so they can be combined, and the net force is 0.",
+    "example": "Action-reaction: the force A exerts on B and the force B exerts on A",
+    "actionItem": "Analyze the underlying scientific principles and deduce the correct conclusion."
+  },
+  "20261126-physics-g12-1": {
+    "title": "Photoelectric Effect and Light Quanta",
+    "summary": "Which result of Einstein's photoelectric effect experiments cannot possibly be explained by the 'wave theory of light' and is fully explained only by the 'photon (particle) theory of light'?",
+    "principle": "Wave theory predicts that energy accumulates over time, but in the photoelectric effect a single photon above the threshold frequency collides with an electron immediately and transfers its energy, so the electron is emitted instantly with no time delay.",
+    "example": "According to wave theory, even weak light shone for a long time should accumulate energy and eventually eject electrons, but in reality they are emitted immediately.",
+    "actionItem": "Analyze the underlying scientific principles and deduce the correct conclusion."
+  },
+  "20261126-chemistry-g01-1": {
+    "title": "Objects and Constituent Materials",
+    "summary": "Which of the following correctly pairs an 'object,' which has a specific shape and a particular use, with the 'material' it is made from?",
+    "principle": "An item with a shape and a use is called an 'object,' and the base substance used to make the object is called a 'material.'",
+    "example": "An 'object' is the name of a finished item we use, and a 'material' is the name of what it is made of.",
+    "actionItem": "Analyze the underlying scientific principles and deduce the correct conclusion."
+  },
+  "20261126-chemistry-g02-1": {
+    "title": "Sugar Dissolution in Warm Water",
+    "summary": "A spoonful of sugar is added to a beaker of warm water and stirred with a glass rod. Which statement correctly describes what happens?",
+    "principle": "When sugar dissolves in water, the sugar molecules spread evenly among the water molecules and become invisible, forming clear sugar water.",
+    "example": "Observe the phenomenon of dissolving.",
+    "actionItem": "Analyze the underlying scientific principles and deduce the correct conclusion."
+  },
+  "20261126-chemistry-g03-1": {
+    "title": "Shape Plasticity and Constant Volume of Liquids",
+    "summary": "Which state of matter freely changes shape depending on its container, but keeps its volume unchanged and constant?",
+    "principle": "In a liquid, the bonds between molecules are more flexible than in a solid, so its shape changes easily with the container, but the attraction between molecules is maintained, so its volume is constant.",
+    "example": "Think about pouring water or milk into another cup.",
+    "actionItem": "Analyze the underlying scientific principles and deduce the correct conclusion."
+  },
+  "20261126-chemistry-g04-1": {
+    "title": "Condensation of Water Vapor on Cold Cans",
+    "summary": "A cold drink can just taken out of the refrigerator was left on the table for a while, and droplets of water formed on the surface of the can. Where did these droplets come from?",
+    "principle": "This is 'condensation (liquefaction),' in which water vapor in the air, in a gaseous state, meets the cold surface of the can, loses heat, and changes into liquid water droplets.",
+    "example": "Invisible water vapor is always floating in the air.",
+    "actionItem": "Analyze the underlying scientific principles and deduce the correct conclusion."
+  },
+  "20261126-chemistry-g05-1": {
+    "title": "Scientific Distinction: Solution, Solvent, Solute",
+    "summary": "200 g of water has 50 g of sugar added and completely dissolved. In this sugar water, which option correctly pairs the 'solvent,' 'solute,' and 'solution'?",
+    "principle": "Water, the substance that dissolves things, is the 'solvent,' sugar, which dissolves, is the 'solute,' and the clear mixture in which the two are evenly mixed is called the 'solution.'",
+    "example": "The liquid that dissolves = solvent, the substance that dissolves = solute, the finished mixture = solution.",
+    "actionItem": "Analyze the underlying scientific principles and deduce the correct conclusion."
+  },
+  "20261126-chemistry-g06-1": {
+    "title": "Color Shifts in Red Cabbage Natural Indicator",
+    "summary": "Several solutions were dropped onto red cabbage indicator: solution A turned red, and solution B turned blue and then yellow. Which is correct about the properties of the two solutions?",
+    "principle": "Red cabbage indicator changes to reddish colors in acidic solutions, and to blue, green, and yellow colors in basic solutions.",
+    "example": "Red cabbage juice, a natural indicator, contains anthocyanin pigments.",
+    "actionItem": "Analyze the underlying scientific principles and deduce the correct conclusion."
+  },
+  "20261126-chemistry-g07-1": {
+    "title": "Gas Molecular Collisions and Pressure Formation",
+    "summary": "What is the fundamental cause of the 'gas pressure' felt on the walls of a sealed container holding a gas?",
+    "principle": "Gas pressure arises from the force per unit area exerted when gas particles, moving constantly and randomly, collide with the inner wall of the container.",
+    "example": "Gas molecules fly around at very high speeds.",
+    "actionItem": "Analyze the underlying scientific principles and deduce the correct conclusion."
+  },
+  "20261126-chemistry-g08-1": {
+    "title": "Atomic Nucleus Positive Charge and Electrical Neutrality",
+    "summary": "What is the fundamental reason an atom, made of a nucleus and electrons, is electrically neutral?",
+    "principle": "An atom is electrically neutral because the total positive (+) charge of the protons in the central nucleus is exactly equal in magnitude to the total negative (-) charge of the electrons in orbit.",
+    "example": "The nucleus is positively (+) charged because of its protons.",
+    "actionItem": "Analyze the underlying scientific principles and deduce the correct conclusion."
+  },
+  "20261126-chemistry-g09-1": {
+    "title": "Atom Conservation and Mass Conservation in Chemical Reactions",
+    "summary": "What is the fundamental reason the 'law of conservation of mass' holds when a chemical change occurs?",
+    "principle": "In a chemical reaction, the way atoms are bonded changes and new substances form, but the kinds and numbers of atoms are neither created nor destroyed and are conserved as they were, so the total mass does not change.",
+    "example": "Recall Lavoisier's law of conservation of mass.",
+    "actionItem": "Analyze the underlying scientific principles and deduce the correct conclusion."
+  },
+  "20261126-chemistry-g10-1": {
+    "title": "Electrical Conductivity: Sodium Chloride vs Sucrose",
+    "summary": "Which is the most accurate result of an experiment comparing the electrical conductivity of substance A (sodium chloride) and substance B (sugar)?",
+    "principle": "Sodium chloride, an ionic-bonded substance, dissolves in water and dissociates into cations and anions, so its aqueous solution conducts electricity. Sugar, a covalent-bonded substance, dissolves as molecules and has no charge carriers, so it does not conduct electricity.",
+    "example": "An ionic-bonded substance (NaCl) ionizes into freely moving ions when dissolved in water.",
+    "actionItem": "Analyze the underlying scientific principles and deduce the correct conclusion."
+  },
+  "20261126-chemistry-g11-1": {
+    "title": "Standard Molar Volume (22.4 L) and Mole Calculations",
+    "summary": "At 0℃ and 1 atm, how many moles of methane molecules, and how many total moles of hydrogen (H) atoms, are in 11.2 L of methane gas (CH₄, molecular mass 16)?",
+    "principle": "The number of moles of methane is $n = \\frac{11.2\\text{ L}}{22.4\\text{ L/mol}} = 0.5\\text{ mol}$. Each $1$ methane molecule contains $4$ hydrogen atoms, so the total moles of hydrogen atoms is $0.5 \\times 4 = 2.0\\text{ mol}$.",
+    "example": "At 0℃ and 1 atm, 1 mol of gas = 22.4 L.",
+    "actionItem": "Analyze the underlying scientific principles and deduce the correct conclusion."
+  },
+  "20261126-chemistry-g12-1": {
+    "title": "Positive Catalysts and Activation Energy Reduction",
+    "summary": "Which statement about the changes that occur when a 'positive catalyst' is added to a chemical reaction is correct?",
+    "principle": "A positive catalyst provides a new reaction pathway with a lower activation energy and increases the rate constants of the forward and reverse reactions by the same factor. It never changes the reaction enthalpy ($\\Delta H$) or the equilibrium constant ($K$).",
+    "example": "A catalyst can never change the energy difference (ΔH) between the starting substances and the final products.",
+    "actionItem": "Analyze the underlying scientific principles and deduce the correct conclusion."
+  },
+  "20261126-english-g01-1": {
+    "title": "Find the actions that don't match the pool notice",
+    "summary": "The notice at the pool entrance (written in words only, no picture):\n\nPool Rules\n1. No running.\n2. Swim caps on, please.\n3. Under 8? Come with a grown-up.\n\n(grown-up = an adult)\n\nFour people are going to the pool.\nMina is 7. She comes with her mom, and she has a cap.\nJun is 10. He comes alone, and he has no cap.\nTom is 6. He comes with his brother. His brother is 9. Tom has a cap.\nSue is 11. She walks to the pool alone, and she has a cap.",
+    "principle": "Jun has no cap, so he breaks rule 2. Tom is under 8, but the brother who came with him is 9, so he is not a 'grown-up', and Tom breaks rule 3. Mina came with her mom, and Sue is 11, so it is fine for her to walk and come alone.",
+    "example": "Make a table with each person's age, who they came with, and cap, one by one.",
+    "actionItem": "Match the three rules on the notice to each person's situation, choose the cases that break the rules, and say the reason in English."
+  },
+  "20261126-english-g02-1": {
+    "title": "Match the park sign and Tom's plan",
+    "summary": "The sign at the park entrance (written in words only, no picture):\n\nSun Park\nOpen: 7 a.m. - 6 p.m.\nNo bikes.\nDogs OK.\n\nYour friend Tom said, \"I will go to Sun Park with my dog and my bike at 7 p.m.!\"",
+    "principle": "Dogs are OK (Dogs OK) and the park name (Sun Park) is the same as on the sign, so these two parts match. On the other hand, the sign says no bikes and the gate closes at 6 p.m., but Tom said he would bring a bike and go at 7 p.m., so those two parts do not match.",
+    "example": "Split Tom's plan into four pieces, 'dog', 'bike', 'time', and 'place', and match each one with the lines of the sign.",
+    "actionItem": "Compare the lines of the sign with Tom's plan one by one, find the parts that don't match, and tell him in English."
+  },
+  "20261126-english-g03-1": {
+    "title": "Match Ben's reply to the birthday invitation",
+    "summary": "Birthday invitation (written in text only, without pictures):\n\nYou are invited to Yuna's birthday party!\nDate: Saturday, June 7. Time: 2 p.m. to 4 p.m.\nPlace: Yuna's house.\nPlease bring a small gift. No pets, please.\n\nYour friend Ben sent a reply. \"I can come to the party on Sunday with my puppy and my sister.\"",
+    "principle": "The party is on Saturday and pets are not allowed, but Ben said he is coming on Sunday with his puppy. The invitation says nothing about his sister, so it cannot be called a mismatch; it is something to ask Yuna. Saying he will attend is fine.",
+    "example": "Split Ben's reply into pieces: 'who with', 'what', and 'when'. Then match each piece to a line of the invitation.",
+    "actionItem": "Check Ben's reply against each line of the invitation, and tell him in English which parts do not match, giving your evidence."
+  },
+  "20261126-english-g04-1": {
+    "title": "Mom's note and Jisu's playtime",
+    "summary": "A note Mom left on the table (written as text only, with no picture):\n\nMina,\nToday's plan:\n3:30 p.m. Come home.\n4:00 p.m. Piano class (30 minutes).\n5:00 p.m. Take out the trash.\n6:30 p.m. Dinner with Mom and Dad.\n\nThen her friend Jisu sent a text. \"Let's play at the park from 4:15 to 5:15 today!\"",
+    "principle": "Piano class is 4:00-4:30, so 4:15-4:30 overlaps, and taking out the trash at 5:00 falls within 4:15-5:15. Coming home at 3:30 and dinner at 6:30 are outside the park time.",
+    "example": "Put each line next to the park time '4:15-5:15' one by one, and see whether it ends before or starts after.",
+    "actionItem": "Compare the several plans on Mom's note with the time a friend suggested, find where they do not fit, and say no in English while suggesting a different time."
+  },
+  "20261126-english-g05-1": {
+    "title": "'Most popular' - does the text back it up?",
+    "summary": "Mina's class has a reading corner with a bookshelf.\n\nOur class has a reading corner. There are 20 books on the shelf. Twelve of them are about animals. Four are about space, and four are story books. The teacher did not buy any new books this year.\n\nMina says, \"Animal books are the most popular in our class.\"",
+    "principle": "The text only tells the number of books on the shelf (12 animal books, etc.). It does not say which books students read or borrow a lot, so we cannot check the claim 'most popular'.",
+    "example": "Think about what 'popular' means in Mina's words, and look for a sentence in the text that tells you that.",
+    "actionItem": "Think about whether the number information in the text supports a claim (popular), and make an English question that could check the claim."
+  },
+  "20261126-english-g06-1": {
+    "title": "Sorting out the reasons for keeping a class pet",
+    "summary": "Class 6-3 is talking about \"Should we keep a class pet?\" Here is Jin's text.\n\nI think we should get a class pet. A pet can teach us to take care of animals. I like cats very much, and I want to see one every day. Class 6-1 had a fish last year, and students fed it by turns. Also, many students are afraid of dogs.",
+    "principle": "a is a reason that names a benefit of keeping an animal, and c is evidence because it is an example another class really tried. b is only Jin's personal taste, not a reason the class needs, d actually speaks against some animals, and e is not a reason but the claim itself.",
+    "example": "For each sentence, ask yourself whether it helps the claim that the whole class should keep a pet.",
+    "actionItem": "In Jin's opinion text, tell apart the opinion itself, the reasons, the examples that serve as evidence, and the off-topic remarks, then judge in English which reason is the strongest."
+  },
+  "20261126-english-g07-1": {
+    "title": "Will Ben come to the party? Examining the hidden meaning of his answers",
+    "summary": "A dialogue between Jisu and Ben (written as text only, without pictures):\n\nJisu: Do you want to come to my birthday party on Saturday?\nBen: Saturday? Hmm. I have a soccer game in the morning.\nJisu: The party is at 4 p.m.\nBen: Oh, that might work. I'll probably be tired, though.\nJisu: So... are you coming?\nBen: Let me check with my mom first.",
+    "principle": "The soccer game is in the morning and the party is at 4 p.m., so the times do not overlap. Ben only said he might be tired, and at the end he said he would check with his mom first. So there is something settled (the time) and something left (his mom's permission), and it is not yet decided.",
+    "example": "Split Ben's words into four pieces: 'soccer game,' 'party time,' 'tired,' and 'mom.'",
+    "actionItem": "Split Ben's answers in the dialogue line by line, separate what has been settled from what remains, and make a judgment without asserting 'he will come' or 'he won't come.'"
+  },
+  "20261126-english-g08-1": {
+    "title": "Fix the line with the wrong number in a beach cleanup blog post",
+    "summary": "A student in one class wrote this post on the school blog. (It is text only. Each line has a number.)",
+    "principle": "Line 3 says they collected 30 bags in the first hour, and line 4 says the total was 18 bags. The total cannot be less than what was collected in the first hour. This post alone cannot tell you whether line 3 or line 4 is wrong, so you may pick either one.",
+    "example": "Collect only the lines with numbers and compare them with each other.",
+    "actionItem": "Find the two number sentences in the blog post that don't match each other, and rewrite them to fit the confirmed information."
+  },
+  "20261126-english-g09-1": {
+    "title": "Fix a reason sentence that goes off topic in an opinion piece",
+    "summary": "In English class, a student wrote an opinion piece about 'Should school start later?' Each sentence is on its own line.",
+    "principle": "Line 4 is about lunch getting cold, so it does not connect to the school start time. Lines 2 and 3 support the claim with 'tired -> hard to focus'. Line 1 is the claim, and line 5 is the conclusion.",
+    "example": "For each line, write one word for how it relates to the claim 'School should start later' (claim/reason/conclusion/other).",
+    "actionItem": "Check whether each sentence in an opinion piece supports the claim, find the sentence that doesn't fit, and rewrite it as a reason sentence that fits the claim."
+  },
+  "20261126-english-g10-1": {
+    "title": "Can one case justify saying 'always'?",
+    "summary": "This is part of a text printed in the school newspaper (line numbers start at 1).\n1) Our school should ban phones from the building.\n2) Last month, Mina got a new phone, and her math score dropped from 90 to 75.\n3) So phones clearly make all students' grades worse.\n4) Also, phones are noisy in the hallway, and some students look up answers during tests.\n5) Therefore, the school should ban them for everyone.",
+    "principle": "Line 3 is the problem. Saying that grades will \"certainly\" get worse for \"all students\" based only on one student's score drop (line 2) is a conclusion bigger than the evidence. A drop in score can also have other causes, such as test difficulty or condition. Line 4 gives a different kind of reason from grades (noise, cheating), so it has to be considered separately from this problem. The \"banned for everyone\" in line 5 also rests on this conclusion, but the place where the problem first arises is line 3.",
+    "example": "For each line, tell apart 'what it reported' from 'what it concluded'.",
+    "actionItem": "In an argumentative text, find the line where the evidence does not support the claim enough, rewrite it as a more careful sentence, and decide what more evidence is needed."
+  },
+  "20261126-english-g11-1": {
+    "title": "Checking whether a headline matches the evidence in the article",
+    "summary": "This is a local newspaper article (written as text only, without pictures).\n\nHeadline: Library Use Doubles in Greenfield\n\nLast year, the Greenfield Library recorded 4,000 visits in March. This March, it recorded 8,000 visits. The library director said the increase came from Book Month, a one-month event with free coffee for visitors. After the event ended, April had 4,500 visits.",
+    "principle": "It doubled only in March (4,000 → 8,000), that month was the event period, and after the event April fell to 4,500. So \"kept doubling\" or \"coffee was the cause\" goes beyond what the article supports.",
+    "example": "For each sentence, find the number or statement in the article that supports it, and draw a line to it.",
+    "actionItem": "Compare the numbers in the article with what the official said, decide whether the headline's claim stays within the evidence, and rewrite the headline so it stays within the evidence."
+  },
+  "20261126-english-g12-1": {
+    "title": "Does an editorial's evidence reach all the way to its conclusion?",
+    "summary": "This is part of an editorial in a local newspaper. Each line has a number.",
+    "principle": "Line 3 is the result of asking only 10 customers at one cafe, and line 4 broadens this to \"most residents.\" Line 5 is a demand built on that broadened conclusion. The problem is that we cannot tell whether the people surveyed represent the whole city, so whether you chose line 3 (the range of the evidence), line 4 (the broadened conclusion), or line 5 (the demand resting on that conclusion), you saw this chain of connections.",
+    "example": "For each line, mark what the writer \"checked directly\" and what the writer \"simply claims.\"",
+    "actionItem": "In a short English editorial, find where the link between the evidence and the conclusion breaks, and rewrite the sentence to fit the range the evidence supports."
+  },
+  "20261126-korean-l1-1": {
+    "title": "한글 자모음 결합과 일상 인사 표현 (TOPIK 1급)",
+    "summary": "[L1 한국어 사고력] 다음 글의 빈칸에 들어갈 가장 알맞은 표현을 고르십시오.\n\"새로운 환경에 적응할 때는 처음부터 무리하게 서두르기보다, ______ 주변 사람들과 신뢰를 쌓아가는 것이 중요하다.\"",
+    "principle": "1단계: 문맥상 '서두르다'의 반대 개념으로서 침착하고 질서 있게 진행함을 뜻하는 말이 들어가야 합니다.\n2단계: '차근차근'은 순서를 밟아 차분하게 해 나가는 모양을 뜻하므로 문맥에 가장 잘 부합합니다.",
+    "example": "주요 힌트: '무리하게 서두르기보다'와 대비되는 차분하고 순서에 맞는 태도를 나타내는 부사를 찾으십시오.",
+    "actionItem": "탐구 문제를 풀고 한글 자모음 결합과 일상 인사 표현 (TOPIK 1급)의 원리를 일상과 연계해 보세요."
+  },
+  "20261126-korean-l2-1": {
+    "title": "greetings",
+    "summary": "[L2 한국어 사고력] 다음 글의 빈칸에 들어갈 가장 알맞은 표현을 고르십시오.\n\"새로운 환경에 적응할 때는 처음부터 무리하게 서두르기보다, ______ 주변 사람들과 신뢰를 쌓아가는 것이 중요하다.\"",
+    "principle": "1단계: 문맥상 '서두르다'의 반대 개념으로서 침착하고 질서 있게 진행함을 뜻하는 말이 들어가야 합니다.\n2단계: '차근차근'은 순서를 밟아 차분하게 해 나가는 모양을 뜻하므로 문맥에 가장 잘 부합합니다.",
+    "example": "주요 힌트: '무리하게 서두르기보다'와 대비되는 차분하고 순서에 맞는 태도를 나타내는 부사를 찾으십시오.",
+    "actionItem": "탐구 문제를 풀고 시장과 대중교통 이용 대화 및 조사의 올바른 사용 (TOPIK 2급)의 원리를 일상과 연계해 보세요."
+  },
+  "20261126-korean-l3-1": {
+    "title": "공공기관 이용과 부탁·거절의 정중한 표현 (TOPIK 3급)",
+    "summary": "[L3 한국어 사고력] 다음 글의 빈칸에 들어갈 가장 알맞은 표현을 고르십시오.\n\"새로운 환경에 적응할 때는 처음부터 무리하게 서두르기보다, ______ 주변 사람들과 신뢰를 쌓아가는 것이 중요하다.\"",
+    "principle": "1단계: 문맥상 '서두르다'의 반대 개념으로서 침착하고 질서 있게 진행함을 뜻하는 말이 들어가야 합니다.\n2단계: '차근차근'은 순서를 밟아 차분하게 해 나가는 모양을 뜻하므로 문맥에 가장 잘 부합합니다.",
+    "example": "주요 힌트: '무리하게 서두르기보다'와 대비되는 차분하고 순서에 맞는 태도를 나타내는 부사를 찾으십시오.",
+    "actionItem": "탐구 문제를 풀고 공공기관 이용과 부탁·거절의 정중한 표현 (TOPIK 3급)의 원리를 일상과 연계해 보세요."
+  },
+  "20261126-korean-l4-1": {
+    "title": "time",
+    "summary": "[L4 한국어 사고력] 다음 글의 빈칸에 들어갈 가장 알맞은 표현을 고르십시오.\n\"새로운 환경에 적응할 때는 처음부터 무리하게 서두르기보다, ______ 주변 사람들과 신뢰를 쌓아가는 것이 중요하다.\"",
+    "principle": "1단계: 문맥상 '서두르다'의 반대 개념으로서 침착하고 질서 있게 진행함을 뜻하는 말이 들어가야 합니다.\n2단계: '차근차근'은 순서를 밟아 차분하게 해 나가는 모양을 뜻하므로 문맥에 가장 잘 부합합니다.",
+    "example": "주요 힌트: '무리하게 서두르기보다'와 대비되는 차분하고 순서에 맞는 태도를 나타내는 부사를 찾으십시오.",
+    "actionItem": "탐구 문제를 풀고 뉴스 요약 및 관용구·속담의 맥락적 활용 (TOPIK 4급)의 원리를 일상과 연계해 보세요."
+  },
+  "20261126-korean-l5-1": {
+    "title": "시사 논평과 논설문의 핵심 논점 파악 (TOPIK 5급)",
+    "summary": "[L5 한국어 사고력] 다음 글의 빈칸에 들어갈 가장 알맞은 표현을 고르십시오.\n\"새로운 환경에 적응할 때는 처음부터 무리하게 서두르기보다, ______ 주변 사람들과 신뢰를 쌓아가는 것이 중요하다.\"",
+    "principle": "1단계: 문맥상 '서두르다'의 반대 개념으로서 침착하고 질서 있게 진행함을 뜻하는 말이 들어가야 합니다.\n2단계: '차근차근'은 순서를 밟아 차분하게 해 나가는 모양을 뜻하므로 문맥에 가장 잘 부합합니다.",
+    "example": "주요 힌트: '무리하게 서두르기보다'와 대비되는 차분하고 순서에 맞는 태도를 나타내는 부사를 찾으십시오.",
+    "actionItem": "탐구 문제를 풀고 시사 논평과 논설문의 핵심 논점 파악 (TOPIK 5급)의 원리를 일상과 연계해 보세요."
+  },
+  "20261126-korean-l6-1": {
+    "title": "Invitations",
+    "summary": "[L6 한국어 사고력] 다음 글의 빈칸에 들어갈 가장 알맞은 표현을 고르십시오.\n\"새로운 환경에 적응할 때는 처음부터 무리하게 서두르기보다, ______ 주변 사람들과 신뢰를 쌓아가는 것이 중요하다.\"",
+    "principle": "1단계: 문맥상 '서두르다'의 반대 개념으로서 침착하고 질서 있게 진행함을 뜻하는 말이 들어가야 합니다.\n2단계: '차근차근'은 순서를 밟아 차분하게 해 나가는 모양을 뜻하므로 문맥에 가장 잘 부합합니다.",
+    "example": "주요 힌트: '무리하게 서두르기보다'와 대비되는 차분하고 순서에 맞는 태도를 나타내는 부사를 찾으십시오.",
+    "actionItem": "탐구 문제를 풀고 학술 토론 및 한국어 고유 어휘와 한자어의 정밀 구사 (TOPIK 6급)의 원리를 일상과 연계해 보세요."
+  },
+  "20261126-life-all-1": {
+    "title": "Leave the Microwave Center Empty",
+    "summary": "Arranging food in a ring on the plate makes a microwave heat more evenly.",
+    "principle": "Microwaves at 2.45GHz form standing waves with wavelength λ = c/f ≈ 12.2cm, creating hot and cold spots.",
+    "example": "The plate center often gets less energy and stays cold. A ring layout plus one stir midway can cut temperature differences by 20°C or more.",
+    "actionItem": "Today arrange food in a ring with the middle empty and stir halfway through."
   }
 }
