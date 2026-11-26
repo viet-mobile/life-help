@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useLearner } from "./LearnerProvider";
 import { NEEDS_AUDIO, REVIEW_MODES, type ReviewMode } from "@/lib/learn/reviewModes";
+import { KoreanStandardsEntry } from "./KoreanStandardsEntry";
 
 /**
  * Review modes hub: the same shared questions, asked in four ways. Each card starts a normal practice session limited to that mode
@@ -26,6 +27,11 @@ export function ModesPage() {
             <Link className="l-btn" href={href(`/practice?kind=practice&mode=${m}`)}>{t("modes.start")}</Link>
           </li>
         ))}
+        {site === "korean" && (
+          <li>
+            <KoreanStandardsEntry />
+          </li>
+        )}
         {!onlyChoice && <li className="l-card l-stack">
           <h2 className="l-h2">{t("modes.cards")}</h2>
           <p>{t("modes.cards.desc")}</p>

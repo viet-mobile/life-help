@@ -21,6 +21,7 @@ import { readLedger } from "../think/ThinkOffer";
 import { QuestList } from "./QuestList";
 import { SkillBars } from "./SkillBars";
 import { MathMotionEntry } from "./MathMotion";
+import { KoreanStandardsEntry } from "./KoreanStandardsEntry";
 
 export function Dashboard() {
   const { state, index, t, href, mode, accountsEnabled, site, locale, secondaryIndex, secondaryIndices, secondaryTranslators, secondaryLocales, tSecondary, isBilingual } = useLearner();
@@ -146,6 +147,7 @@ export function Dashboard() {
 
       <ThinkQuickEntry />
       {site === "math" && <MathMotionEntry />}
+{site === "korean" && <KoreanStandardsEntry />}
 
       {!state.diagnosticDone && (
         <Link className="l-card" href={href("/diagnostic")} style={{ textDecoration: "none", color: "inherit", display: "block", borderColor: "var(--l-accent)" }}>

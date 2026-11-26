@@ -1,0 +1,456 @@
+import os
+
+view_code = '''"use client";
+
+import React, { useState, useMemo } from "react";
+import type { StandardArticle, AnchorLanguage } from "@/lib/standards/types";
+import { ANCHOR_LANGUAGES } from "@/lib/standards/types";
+import standardsData from "@/lib/standards/data/korean_norms_anchor.json";
+
+const articles = standardsData as unknown as StandardArticle[];
+
+export function KoreanStandardsView() {
+  const [primaryLang, setPrimaryLang] = useState<AnchorLanguage>("ko");
+  const [secondaryLang, setSecondaryLang] = useState<AnchorLanguage>("en");
+  const [isBilingual, setIsBilingual] = useState<boolean>(true);
+  const [selectedPart, setSelectedPart] = useState<number | "all">("all");
+  const [selectedChapter, setSelectedChapter] = useState<string>("all");
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [expandedArticles, setExpandedArticles] = useState<Record<string, boolean>>({});
+  const [allExpanded, setAllExpanded] = useState<boolean>(false);
+  const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  // Available chapters for current part
+  const availableChapters = useMemo(() => {
+    const chapters = new Set<string>();
+    for (const art of articles) {
+      if (selectedPart === "all" || art.partNum === selectedPart) {
+        const chap = art.i18n.ko?.chapter;
+        if (chap) chapters.add(chap);
+      }
+    }
+    return Array.from(chapters);
+  }, [selectedPart]);
+
+  // Filtered articles
+  const filteredArticles = useMemo(() => {
+    const query = searchQuery.trim().toLowerCase();
+    return articles.filter((art) => {
+      // Part filter
+      if (selectedPart !== "all" && art.partNum !== selectedPart) {
+        return false;
+      }
+      // Chapter filter
+      if (selectedChapter !== "all" && art.i18n.ko?.chapter !== selectedChapter) {
+        return false;
+      }
+      // Search query filter
+      if (!query) return true;
+
+      // Match articleNum
+      if (query === String(art.articleNum) || query === `제${art.articleNum}항`) return true;
+
+      // Match in primary or secondary translations
+      const prim = art.i18n[primaryLang] || art.i18n.ko;
+      const sec = art.i18n[secondaryLang] || art.i18n.ko;
+
+      const primMatch = (
+        (prim?.rule && prim.rule.toLowerCase().includes(query)) ||
+        (prim?.explanation && prim.explanation.toLowerCase().includes(query)) ||
+        (prim?.chapter && prim.chapter.toLowerCase().includes(query)) ||
+        (prim?.title && prim.title.toLowerCase().includes(query))
+      );
+      if (primMatch) return true;
+
+      if (isBilingual && sec) {
+        const secMatch = (
+          (sec.rule && sec.rule.toLowerCase().includes(query)) ||
+          (sec.explanation && sec.explanation.toLowerCase().includes(query)) ||
+          (sec.chapter && sec.chapter.toLowerCase().includes(query)) ||
+          (sec.title && sec.title.toLowerCase().includes(query))
+        );
+        if (secMatch) return true;
+      }
+
+      // Match details
+      if (art.details && art.details.some((d) => d.toLowerCase().includes(query))) {
+        return true;
+      }
+
+      return false;
+    });
+  }, [primaryLang, secondaryLang, isBilingual, selectedPart, selectedChapter, searchQuery]);
+
+  const toggleExpand = (id: string) => {
+    setExpandedArticles((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
+
+  const toggleAll = () => {
+    const nextState = !allExpanded;
+    setAllExpanded(nextState);
+    const updated: Record<string, boolean> = {};
+    for (const art of filteredArticles) {
+      updated[art.id] = nextState;
+    }
+    setExpandedArticles(updated);
+  };
+
+  const copyArticleLink = (id: string) => {
+    if (typeof window !== "undefined") {
+      const url = `${window.location.origin}${window.location.pathname}#${id}`;
+      navigator.clipboard.writeText(url).then(() => {
+        setCopiedId(id);
+        setTimeout(() => setCopiedId(null), 2000);
+      });
+    }
+  };
+
+  return (
+    <div className="max-w-5xl mx-auto px-4 py-8 space-y-8">
+      {/* Top Banner */}
+      <div className="bg-gradient-to-br from-indigo-900 via-indigo-800 to-slate-900 text-white rounded-2xl p-6 sm:p-8 shadow-xl border border-indigo-700/40 relative overflow-hidden">
+        <div className="absolute -right-10 -bottom-10 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="relative z-10 space-y-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/30 text-indigo-200 text-xs font-semibold backdrop-blur-sm border border-indigo-400/30">
+            <span>🏛️</span>
+            <span>국립국어원 공식 표준어 규정 (56개 전 조항)</span>
+          </div>
+          <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
+            한국어 표준어 규정 전체
+          </h1>
+          <p className="text-sm sm:text-base text-indigo-100/90 leading-relaxed max-w-3xl">
+            제1부 <span className="font-semibold text-white">표준어 사정 원칙</span>(26개 항) 및 제2부 <span className="font-semibold text-white">표준 발음법</span>(30개 항)을 현대적인 맞춤형 UI로 학습하세요. 6대 앵커 언어 번역 및 1:1 대조 병기 모드를 지원합니다.
+          </p>
+        </div>
+      </div>
+
+      {/* Controls & Language Bar */}
+      <div className="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+        {/* Row 1: Language selection */}
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-4">
+          <div className="flex flex-wrap items-center gap-3">
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                기본 언어:
+              </span>
+              <select
+                value={primaryLang}
+                onChange={(e) => {
+                  const newPrimary = e.target.value as AnchorLanguage;
+                  setPrimaryLang(newPrimary);
+                  if (newPrimary === secondaryLang) {
+                    setSecondaryLang(newPrimary === "ko" ? "en" : "ko");
+                  }
+                }}
+                className="px-3 py-1.5 bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg text-sm font-semibold text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              >
+                {ANCHOR_LANGUAGES.map((lang) => (
+                  <option key={lang.code} value={lang.code}>
+                    {lang.flag} {lang.native} ({lang.label})
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Bilingual Toggle */}
+            <div className="flex items-center gap-2 pl-2 border-l border-slate-200 dark:border-slate-700">
+              <label className="inline-flex items-center gap-2 cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  checked={isBilingual}
+                  onChange={(e) => setIsBilingual(e.target.checked)}
+                  className="sr-only peer"
+                />
+                <div className="w-9 h-5 bg-slate-300 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-slate-600 peer-checked:bg-indigo-600 relative"></div>
+                <span className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                  🌐 다중 언어 병기
+                </span>
+              </label>
+
+              {isBilingual && (
+                <div className="flex items-center gap-1.5 ml-2">
+                  <span className="text-xs text-slate-500 dark:text-slate-400">비교:</span>
+                  <select
+                    value={secondaryLang}
+                    onChange={(e) => setSecondaryLang(e.target.value as AnchorLanguage)}
+                    className="px-2.5 py-1 bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-semibold text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  >
+                    {ANCHOR_LANGUAGES.filter((l) => l.code !== primaryLang).map((lang) => (
+                      <option key={lang.code} value={lang.code}>
+                        {lang.flag} {lang.native}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Quick Collapse / Expand All */}
+          <div>
+            <button
+              type="button"
+              onClick={toggleAll}
+              className="px-3 py-1.5 text-xs font-medium text-slate-600 dark:text-slate-300 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-lg transition"
+            >
+              {allExpanded ? "🔼 세부 예시 모두 접기" : "🔽 세부 예시 모두 펼치기"}
+            </button>
+          </div>
+        </div>
+
+        {/* Row 2: Part Filter Tabs & Chapter Filter & Search */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+          {/* Part Tabs */}
+          <div className="md:col-span-5 flex rounded-lg p-1 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+            <button
+              type="button"
+              onClick={() => { setSelectedPart("all"); setSelectedChapter("all"); }}
+              className={`flex-1 py-1.5 text-xs font-bold rounded-md transition ${selectedPart === "all" ? "bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"}`}
+            >
+              전체 (56)
+            </button>
+            <button
+              type="button"
+              onClick={() => { setSelectedPart(1); setSelectedChapter("all"); }}
+              className={`flex-1 py-1.5 text-xs font-bold rounded-md transition ${selectedPart === 1 ? "bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"}`}
+            >
+              제1부 사정원칙 (26)
+            </button>
+            <button
+              type="button"
+              onClick={() => { setSelectedPart(2); setSelectedChapter("all"); }}
+              className={`flex-1 py-1.5 text-xs font-bold rounded-md transition ${selectedPart === 2 ? "bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"}`}
+            >
+              제2부 표준발음 (30)
+            </button>
+          </div>
+
+          {/* Chapter Selector */}
+          <div className="md:col-span-3">
+            <select
+              value={selectedChapter}
+              onChange={(e) => setSelectedChapter(e.target.value)}
+              className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            >
+              <option value="all">모든 장(Chapter) 보기</option>
+              {availableChapters.map((ch) => (
+                <option key={ch} value={ch}>
+                  {ch}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Search Input */}
+          <div className="md:col-span-4 relative">
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="조항 번호, 규정문, 키워드 검색..."
+              className="w-full pl-9 pr-8 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-medium text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+            <span className="absolute left-3 top-2.5 text-slate-400 text-xs pointer-events-none">
+              🔍
+            </span>
+            {searchQuery && (
+              <button
+                type="button"
+                onClick={() => setSearchQuery("")}
+                className="absolute right-2.5 top-2.5 text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
+              >
+                ✕
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Status text */}
+        <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 pt-1">
+          <span>
+            총 <strong className="text-indigo-600 dark:text-indigo-400 font-bold">{filteredArticles.length}</strong>개 조항이 표시되고 있습니다.
+          </span>
+          {searchQuery && (
+            <span className="text-amber-600 dark:text-amber-400 font-medium">
+              &lsquo;{searchQuery}&rsquo; 검색 결과
+            </span>
+          )}
+        </div>
+      </div>
+
+      {/* Articles List */}
+      <div className="space-y-6">
+        {filteredArticles.length === 0 ? (
+          <div className="text-center py-16 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8">
+            <p className="text-3xl mb-2">🔍</p>
+            <h3 className="text-base font-bold text-slate-800 dark:text-slate-200">일치하는 조항이 없습니다</h3>
+            <p className="text-xs text-slate-500 mt-1">검색어나 필터 조건을 변경해 보세요.</p>
+            <button
+              type="button"
+              onClick={() => { setSearchQuery(""); setSelectedPart("all"); setSelectedChapter("all"); }}
+              className="mt-4 px-4 py-2 bg-indigo-50 text-indigo-600 text-xs font-semibold rounded-lg hover:bg-indigo-100 transition"
+            >
+              모든 필터 초기화
+            </button>
+          </div>
+        ) : (
+          filteredArticles.map((art) => {
+            const pTrans = art.i18n[primaryLang] || art.i18n.ko;
+            const sTrans = isBilingual ? (art.i18n[secondaryLang] || art.i18n.ko) : null;
+            const isExpanded = !!expandedArticles[art.id];
+            const hasDetails = art.details && art.details.length > 0;
+            const isPart1 = art.partNum === 1;
+
+            return (
+              <article
+                key={art.id}
+                id={art.id}
+                className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/90 dark:border-slate-800 shadow-xs hover:shadow-md transition-shadow duration-200 overflow-hidden"
+              >
+                {/* Article Header Card */}
+                <div className="p-5 sm:p-6 space-y-4">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <div className="flex flex-wrap items-center gap-2">
+                      {/* Part Badge */}
+                      <span className={`px-2.5 py-0.5 rounded-full text-xs font-black ${
+                        isPart1
+                          ? "bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800"
+                          : "bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800"
+                      }`}>
+                        {pTrans?.part || (isPart1 ? "제1부 사정 원칙" : "제2부 표준 발음법")}
+                      </span>
+
+                      {/* Chapter / Section Badge */}
+                      {pTrans?.chapter && (
+                        <span className="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-slate-700">
+                          {pTrans.chapter}
+                        </span>
+                      )}
+                      {pTrans?.section && (
+                        <span className="px-2 py-0.5 rounded-md bg-slate-50 dark:bg-slate-800/60 text-slate-600 dark:text-slate-400 text-xs font-normal border border-slate-200 dark:border-slate-700">
+                          {pTrans.section}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Article ID & Share Button */}
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-mono font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/50 px-2 py-0.5 rounded">
+                        {pTrans?.title || `제${art.articleNum}항`}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => copyArticleLink(art.id)}
+                        title="조항 링크 복사"
+                        className="text-xs text-slate-400 hover:text-indigo-600 p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+                      >
+                        {copiedId === art.id ? "✅ 복사됨" : "🔗"}
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Rule Section (Highlight Box) */}
+                  <div className="rounded-xl bg-slate-50 dark:bg-slate-800/70 p-4 border border-slate-200/80 dark:border-slate-700/80 space-y-3">
+                    <div className="flex items-start gap-2.5">
+                      <span className="text-indigo-600 dark:text-indigo-400 text-base font-black shrink-0 mt-0.5">
+                        §
+                      </span>
+                      <div className="flex-1 space-y-2">
+                        {/* Primary Rule */}
+                        <div className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-50 leading-snug tracking-tight">
+                          {pTrans?.rule || ""}
+                        </div>
+                        {/* Secondary Rule (Bilingual) */}
+                        {sTrans && sTrans.rule && (
+                          <div className="text-sm sm:text-base font-medium text-slate-600 dark:text-slate-300 pt-2 border-t border-slate-200 dark:border-slate-700 leading-snug">
+                            <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-indigo-500 mr-2 bg-indigo-50 dark:bg-indigo-950 px-1.5 py-0.2 rounded">
+                              {secondaryLang}
+                            </span>
+                            {sTrans.rule}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Explanation Section */}
+                  {(pTrans?.explanation || (sTrans && sTrans.explanation)) && (
+                    <div className="space-y-2 pt-1">
+                      <div className="text-xs font-bold text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+                        <span>💡</span>
+                        <span>핵심 해설 및 규정 배경</span>
+                      </div>
+                      <div className="space-y-2">
+                        {pTrans?.explanation && (
+                          <p className="text-sm text-slate-700 dark:text-slate-200 leading-relaxed bg-amber-50/50 dark:bg-amber-950/20 p-3.5 rounded-xl border border-amber-200/50 dark:border-amber-900/30">
+                            {pTrans.explanation}
+                          </p>
+                        )}
+                        {sTrans && sTrans.explanation && (
+                          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed bg-slate-50 dark:bg-slate-800/40 p-3 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
+                            <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-indigo-500 mr-1.5">
+                              [{secondaryLang}]
+                            </span>
+                            {sTrans.explanation}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Details Toggle Button */}
+                  {hasDetails && (
+                    <div className="pt-2">
+                      <button
+                        type="button"
+                        onClick={() => toggleExpand(art.id)}
+                        className="inline-flex items-center gap-2 text-xs font-semibold text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-950/60 dark:hover:bg-indigo-900/60 px-3.5 py-1.5 rounded-lg transition"
+                      >
+                        <span>{isExpanded ? "▲ 세부 예시 및 규정 접기" : "▼ 국립국어원 세부 예시 및 조항 전문 보기"}</span>
+                        <span className="text-[11px] opacity-75 font-normal">
+                          ({art.details.length}개 항목)
+                        </span>
+                      </button>
+                    </div>
+                  )}
+                </div>
+
+                {/* Details Accordion Content */}
+                {hasDetails && isExpanded && (
+                  <div className="border-t border-slate-100 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/50 p-5 sm:p-6 space-y-4">
+                    <div className="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+                      <span>📋</span>
+                      <span>원문 세부 항목 및 단어별 예시 목록</span>
+                    </div>
+                    <div className="space-y-3">
+                      {art.details.map((detail, idx) => (
+                        <div
+                          key={idx}
+                          className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed font-mono whitespace-pre-wrap bg-white dark:bg-slate-800/90 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-2xs"
+                        >
+                          {detail}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </article>
+            );
+          })
+        )}
+      </div>
+
+      {/* Footer Info */}
+      <footer className="text-center py-6 text-xs text-slate-400 dark:text-slate-500 space-y-1">
+        <p>출처: 대한민국 문화체육관광부 고시 · 국립국어원 한국어 표준어 규정</p>
+        <p>LIFE.HELP 한국어 캠퍼스 · 다국어 병기 표준어 학습 포털</p>
+      </footer>
+    </div>
+  );
+}
+'''
+
+with open('components/standards/KoreanStandardsView.tsx', 'w', encoding='utf-8') as f:
+    f.write(view_code)
+
+print('generate_view.py completed')
