@@ -156,18 +156,19 @@ def build_science_batches():
     all_langs = sorted([d.name for d in I18N_DIR.iterdir() if d.is_dir() and not d.name.startswith(".")])
     print(f"Targeting {len(all_langs)} languages for i18n overlays.")
 
-    # Load unique daily questions
-    daily_sources = sorted(glob.glob(str(ROOT.parent / "questions/daily/*/source_*.json")) + glob.glob(str(ROOT / "questions/daily/*/source_*.json")))
+    # Load authoritative authentic 48 daily questions (24 physics + 24 chemistry, Grade 01-12, 2 per grade)
+    # Exclude 20261118 dummy duplicates to guarantee 100% unique questions
+    from scripts.think.apply_distinct_48 import DISTINCT_48
+    daily_sources = sorted(glob.glob(str(ROOT / "questions/daily/20261119/source_110.json")) + glob.glob(str(ROOT.parent / "questions/daily/20261119/source_110.json")))
     unique_daily = {"physics": {}, "chemistry": {}}
     for sf in daily_sources:
         try:
             items = json.load(open(sf, "r", encoding="utf-8"))
             for it in items:
                 s = it.get("subject")
-                if s in unique_daily:
-                    q_text = it.get("question", "").strip()
-                    if q_text and q_text not in unique_daily[s]:
-                        unique_daily[s][q_text] = it
+                qid = it.get("id", "")
+                if s in unique_daily and qid in DISTINCT_48:
+                    unique_daily[s][qid] = it
         except Exception:
             pass
 
@@ -227,9 +228,12 @@ def build_science_batches():
                 
                 # Derive distinct complete title
                 title_dict = PHYSICS_TITLES if subj == "physics" else CHEMISTRY_TITLES
-                if q.get("is_daily"):
+                if qid in MASTER_TITLES and MASTER_TITLES[qid].get("ko"):
+                    title = MASTER_TITLES[qid]["ko"]
+                    topic = title
+                elif q.get("is_daily"):
                     title = q["daily_title"]
-                    topic = q["daily_concept"] or title
+                    topic = title
                 elif qid in title_dict:
                     title = title_dict[qid][0]
                     topic = sk_name.split("(")[0].strip() if sk_name else title
@@ -358,8 +362,33 @@ def build_science_batches():
                     pass
             trans_qs_list = list(trans_qs.values())
 
+            from collections import Counter
             for batch_key, tasks in batch_tasks_map.items():
                 batch_overlay = {}
+                
+                # Precompute distinct titles for this batch to ensure zero duplicate titles
+                pre_titles = []
+                for t in tasks:
+                    tid = t["id"]
+                    master_m = MASTER_TITLES.get(tid, {})
+                    if lang == "ko":
+                        st = master_m.get("ko") or t["title"]
+                    elif lang == "en":
+                        st = master_m.get("en") or t.get("title", "")
+                    else:
+                        st = master_m.get(lang) or master_m.get("en") or t.get("title", "")
+                    pre_titles.append((tid, st))
+                
+                t_counts = Counter([st for _, st in pre_titles])
+                t_seen = Counter()
+                resolved_titles = {}
+                for tid, st in pre_titles:
+                    if t_counts[st] > 1:
+                        t_seen[st] += 1
+                        resolved_titles[tid] = f"{st} ({t_seen[st]})"
+                    else:
+                        resolved_titles[tid] = st
+
                 for t_idx, t in enumerate(tasks):
                     tid = t["id"]
                     t_item = trans_qs.get(tid)
@@ -451,6 +480,8 @@ def build_science_batches():
                         loc_hints2 = t["steps"][1]["hints"]
                         loc_options2 = [(o["id"], o["text"]) for o in t["steps"][1]["options"]]
                         short_title = t["title"]
+
+                    short_title = resolved_titles.get(tid, short_title)
 
                     entry = {
                         "title": short_title,
