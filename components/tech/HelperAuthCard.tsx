@@ -1,14 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useHelper } from "@/lib/helper/HelperContext";
 import { useLocale } from "@/lib/i18n/LocaleContext";
 import { services } from "@/lib/services";
 import { koreanRegions } from "@/lib/region/regions";
+import { getLocalizedSidoList, getLocalizedGunguList } from "@/lib/region/regionLocalization";
 import { CANONICAL_SERVICE_SLUGS } from "@/lib/service/catalog";
 
 interface HelperAuthCardProps {
   defaultTab?: "register" | "login";
+  initialServices?: string[];
   onSuccess?: () => void;
 }
 
@@ -24,14 +26,14 @@ const ERROR_KEY: Record<string, string> = {
  * (shown ONCE here; only its hash is stored). Nothing is emailed or generated in the browser, and a helper can take requests only
  * after staff approve them.
  */
-export function HelperAuthCard({ defaultTab = "register", onSuccess }: HelperAuthCardProps) {
-  const { locale, t } = useLocale();
+export function HelperAuthCard({ defaultTab = "register", initialServices, onSuccess }: HelperAuthCardProps) {
+  const { locale, isBilingual, t } = useLocale();
   const { register, verifyAccessKey, refresh } = useHelper();
 
   const [tab, setTab] = useState<"register" | "login">(defaultTab);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [picked, setPicked] = useState<string[]>([]);
+  const [picked, setPicked] = useState<string[]>(initialServices && initialServices.length > 0 ? initialServices : []);
   const [sido, setSido] = useState(koreanRegions[0]?.name ?? "");
   const [gungu, setGungu] = useState("");
   const [code, setCode] = useState("");
@@ -41,7 +43,8 @@ export function HelperAuthCard({ defaultTab = "register", onSuccess }: HelperAut
   const [busy, setBusy] = useState(false);
 
   const canonical = services.filter((s) => CANONICAL_SERVICE_SLUGS.includes(s.slug));
-  const gunguList = koreanRegions.find((s) => s.name === sido)?.gunguList ?? [];
+  const localizedSidos = useMemo(() => getLocalizedSidoList(locale, isBilingual), [locale, isBilingual]);
+  const localizedGungus = useMemo(() => getLocalizedGunguList(sido, locale, isBilingual), [sido, locale, isBilingual]);
   const fail = (errorCode: string) => setError(t(ERROR_KEY[errorCode] ?? "svc.auth.errGeneric"));
 
   const submitRegister = async (e: React.FormEvent) => {
@@ -143,11 +146,11 @@ export function HelperAuthCard({ defaultTab = "register", onSuccess }: HelperAut
             <p className="text-xs font-bold text-slate-300">{t("svc.auth.region")}</p>
             <div className="mt-1.5 grid gap-2 sm:grid-cols-2">
               <select data-testid="helper-sido" aria-label={t("svc.auth.region")} value={sido} onChange={(e) => { setSido(e.target.value); setGungu(""); }} className="droplet-input border border-slate-700 bg-slate-800 p-3 text-sm text-white">
-                {koreanRegions.map((s) => <option key={s.name} value={s.name}>{s.name}</option>)}
+                {localizedSidos.map((s) => <option key={s.key} value={s.ko}>{s.display}</option>)}
               </select>
               <select data-testid="helper-gungu" aria-label={t("svc.auth.region")} value={gungu} onChange={(e) => setGungu(e.target.value)} className="droplet-input border border-slate-700 bg-slate-800 p-3 text-sm text-white">
                 <option value="">{t("svc.auth.wholeProvince")}</option>
-                {gunguList.map((g) => <option key={g.name} value={g.name}>{g.name}</option>)}
+                {localizedGungus.map((g) => <option key={g.key} value={g.ko}>{g.display}</option>)}
               </select>
             </div>
           </div>

@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { BrandLogo } from "@/components/shared/BrandLogo";
 import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
 import { useLocale } from "@/lib/i18n/LocaleContext";
@@ -11,6 +12,8 @@ import { dictionaries } from "@/messages";
 import { SUPPORT_CATEGORIES } from "@/lib/support/supportStore";
 import { getProblemOptionsForService, fetchProblemOptions } from "@/lib/request/problemChecklists";
 import { getServiceBadge } from "@/lib/services";
+import { HelperAuthCard } from "@/components/tech/HelperAuthCard";
+import { normalizeServiceSlug } from "@/lib/service/catalog";
 
 // 10 Services Exact Color Codes Order:
 // 자주(1) - 분홍(2) - 주황(3) - 노랑(4) - 연두(5) - 민트(6) - 하늘(7) - 파랑(8) - 네이비(9) - 보라(10)
@@ -189,6 +192,7 @@ export function SupportServiceView({
   slug: string;
   initialTab?: "seeker" | "provider";
 }) {
+  const router = useRouter();
   const { locale, isBilingual, t, formatBilingual } = useLocale();
   const { selectedRegion, formattedRegion, shortRegionText, openModal } = useRegion();
   const country = selectedRegion?.country || "KR";
@@ -513,17 +517,23 @@ export function SupportServiceView({
           )
         ) : (
           /* ========================================================================= */
-          /* HELPER WORKFLOW (헬퍼 가입 신청: 성함·연락처 수집 제로 + 다중 지역 선택) */
+          /* HELPER WORKFLOW (헬퍼 가입 신청 화면 즉시 호출) */
           /* ========================================================================= */
-          <div className="rounded-3xl border border-amber-300 bg-amber-50 p-6 sm:p-8 shadow-md" role="status">
-            <h3 className="text-xl sm:text-2xl font-black text-amber-950">{t("support.providerNoticeTitle")}</h3>
-            <p className="mt-2 text-sm text-amber-900 leading-relaxed">{t("support.providerNoticeDesc")}</p>
-            <Link
-              href="/tech/register"
-              className="mt-6 inline-block rounded-xl bg-amber-500 px-5 py-3 text-sm font-black text-slate-950 hover:bg-amber-400 transition"
-            >
-              {t("support.providerNoticeCta")}
-            </Link>
+          <div className="mx-auto max-w-2xl space-y-4">
+            <HelperAuthCard
+              defaultTab="register"
+              initialServices={normalizeServiceSlug(slug) ? [normalizeServiceSlug(slug)!] : []}
+              onSuccess={() => router.push("/tech/workspace")}
+            />
+            <div className="text-center pt-2">
+              <Link
+                href="/tech/register"
+                className="text-xs font-bold text-slate-400 hover:text-slate-600 transition inline-flex items-center gap-1"
+              >
+                <span>{formatBilingual("Go to full Helper Registration page", "헬퍼 등록 전용 화면 바로가기")}</span>
+                <span>→</span>
+              </Link>
+            </div>
           </div>
         )}
       </section>
