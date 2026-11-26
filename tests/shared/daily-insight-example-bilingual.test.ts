@@ -8,12 +8,12 @@ describe("Daily Insight Bilingual Example & Hangeul Icon Tests", () => {
     const zhHantInsight = getDailyInsight("chemistry", "c-006", "zh-Hant");
     expect(zhHantInsight.id).toBe("c-006");
     expect(zhHantInsight.title).toContain("洗衣");
-    expect(zhHantInsight.example).toContain("10 L");
+    expect(zhHantInsight.example).toMatch(/10\s*L/);
 
     const koInsight = getDailyInsight("chemistry", "c-006", "ko");
     expect(koInsight.id).toBe("c-006");
     expect(koInsight.title).toContain("30℃ 찬물 세탁");
-    expect(koInsight.example).toContain("627 kJ");
+    expect(koInsight.example).toMatch(/627\s*kJ/);
   });
 
   it("renders HangeulCalligraphyIcon with valid base64 image", () => {

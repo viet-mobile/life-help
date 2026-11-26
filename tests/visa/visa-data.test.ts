@@ -10,9 +10,9 @@ const all = JSON.parse(fs.readFileSync(path.join(__dirname, "../../lib/visa/data
 const links = (d: DestinationVisaInfo): VisaLink[] => [...d.officialPortals, ...Object.values(d.purposes).flatMap((p) => p?.links ?? [])];
 
 describe("visa data (official-source information only)", () => {
-  it("has exactly the 100 service countries, once each", () => {
+  it("has exactly the 190 service countries, once each", () => {
     expect(all.map((d) => d.slug).sort()).toEqual(VISA_DESTINATIONS.map((d) => d.slug).sort());
-    expect(new Set(all.map((d) => d.iso2)).size).toBe(100);
+    expect(new Set(all.map((d) => d.iso2)).size).toBe(190);
   });
   it("every link is https, titled, dated, and carries a language list; purposes are the seven known keys", () => {
     for (const d of all) {

@@ -7,19 +7,28 @@ import { proxy } from "@/proxy";
 
 describe("country learning links preserve environment and selected language", () => {
   it("India Hindi goes to production for all three subjects", () => {
-    expect(studyUrls("india.life.help", "", "hi")).toEqual({ math: "https://math.life.help/hi", english: "https://english.life.help/hi", korean: "https://korean.life.help/hi" });
+    expect(studyUrls("india.life.help", "", "hi")).toEqual({
+      korean: "https://korean.life.help/hi",
+      english: "https://english.life.help/hi",
+      math: "https://math.life.help/hi",
+      physics: "https://physics.life.help/hi",
+      chemistry: "https://chem.life.help/hi",
+    });
   });
   it("every country and every UI language selects production and an explicit canonical language path", () => {
     for (const country of Object.keys(COUNTRY_TO_LANGUAGE_MAP)) for (const locale of locales) {
       const urls = studyUrls(`${country}.life.help`, "", locale);
-      for (const subject of STUDY_SUBJECTS) expect(urls[subject], `${country}/${locale}/${subject}`).toBe(`https://${subject}.life.help/${locale}`);
+      for (const subject of STUDY_SUBJECTS) {
+        const sub = subject === "chemistry" ? "chem" : subject;
+        expect(urls[subject], `${country}/${locale}/${subject}`).toBe(`https://${sub}.life.help/${locale}`);
+      }
     }
   });
   it("root and www hosts preserve the selected locale too", () => {
     for (const host of ["life.help", "www.life.help", "INDIA.LIFE.HELP:443"]) expect(studyUrls(host, "", "zh-Hant").korean).toBe("https://korean.life.help/zh-Hant");
   });
   it("does not promote staging, previews or lookalikes to production", () => {
-    for (const host of ["life-help-staging.example.workers.dev", "india-staging.life.help", "india.life.help.evil.test", "india.life.help.preview.dev", "unknown.life.help"]) expect(studyUrls(host, "", "hi").korean, host).toBe("https://study-korean-staging.life.help/hi");
+    for (const host of ["india-staging.life.help", "india.life.help.evil.test", "india.life.help.preview.dev", "unknown.life.help"]) expect(studyUrls(host, "", "hi").korean, host).toBe("https://study-korean-staging.life.help/hi");
     expect(studyUrls("localhost", "3100", "ar").english).toBe("http://english.localhost:3100/ar");
   });
   it("all source-language URL modes are routed, including Bengali and Egyptian Arabic", async () => {

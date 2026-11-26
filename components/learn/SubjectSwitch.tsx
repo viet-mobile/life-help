@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useLearner } from "./LearnerProvider";
 import { type Site } from "@/lib/learn/types";
 import { buildLearnUrl } from "@/lib/learn/hosts";
-import { HangeulCalligraphyIcon } from "@/components/shared/HangeulCalligraphyIcon";
+import { HangeulCalligraphyIcon } from "./HangeulCalligraphyIcon";
 
 interface SubjectSwitchProps {
   currentSite: Site;

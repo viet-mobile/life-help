@@ -23,6 +23,32 @@ OVERLAYS_DIR = ROOT / "content/learn-overlays"
 
 from scripts.think.rebuild_curriculum_batches import PHYSICS_TITLES, CHEMISTRY_TITLES
 
+
+REVEAL_S1_BY_LANG = {
+    "ko": "선택은 조건이나 핵심 원리를 오적용한 경우입니다.",
+    "en": "This choice reflects a misapplication of the core scientific principle.",
+    "zh-Hans": "该选项误用了核心科学原理或前提条件。",
+    "zh-Hant": "該選項誤用了核心科學原理或前提條件。",
+    "ja": "この選択は、主要な科学的原理または条件の誤用に当たります。",
+    "vi": "Lựa chọn này áp dụng sai nguyên lý khoa học hoặc điều kiện cốt lõi.",
+}
+REVEAL_S2_BY_LANG = {
+    "ko": "상황의 인과관계나 적용된 기본 법칙을 혼동함",
+    "en": "Confuses the causal relationship or the underlying scientific law in this context.",
+    "zh-Hans": "混淆了特定情境下的因果关系或基础物理化学法则。",
+    "zh-Hant": "混淆了特定情境下的因果關係或基礎物理化學法則。",
+    "ja": "この状況における因果関係や基本法則を混同しています。",
+    "vi": "Nhầm lẫn mối quan hệ nhân quả hoặc quy luật khoa học cơ bản.",
+}
+PREREQ_BY_LANG = {
+    "ko": "선수 학습 개념",
+    "en": "prerequisite concept",
+    "zh-Hans": "前置学习概念",
+    "zh-Hant": "前置學習概念",
+    "ja": "前提となる学習概念",
+    "vi": "Khái niệm kiến thức tiên quyết",
+}
+
 GOAL_BY_LANG = {
     "ko": "원리를 올바로 분석하고 주어진 조건에 따라 올바른 결론을 도출한다.",
     "en": "Analyze the underlying scientific principles and deduce the correct conclusion.",
@@ -299,30 +325,39 @@ def build_science_batches():
                         "material": loc_prompt1,
                         "thinking.0": short_title,
                         "thinking.1": "Scientific reasoning and principle deduction",
+                        "prereq.0": f"{g} prerequisite {subj.capitalize()} concepts",
                         "s.s1.prompt": loc_prompt1,
                         "s.s1.explain": loc_explain1,
                         "s.s2.prompt": loc_prompt2,
                         "s.s2.explain": loc_explain2,
-                        "steps.0.prompt": loc_prompt1,
-                        "steps.0.explain": loc_explain1,
-                        "steps.1.prompt": loc_prompt2,
-                        "steps.1.explain": loc_explain2,
                     }
                     for h_i, h_val in enumerate(loc_hints1[:2]):
                         entry[f"s.s1.hint.{h_i}"] = h_val
-                        entry[f"steps.0.hints.{h_i}"] = h_val
 
                     for h_i, h_val in enumerate(loc_hints2[:2]):
                         entry[f"s.s2.hint.{h_i}"] = h_val
-                        entry[f"steps.1.hints.{h_i}"] = h_val
 
                     for o_idx, (o_id, o_text) in enumerate(loc_options1):
                         entry[f"s.s1.o.{o_id}"] = o_text
-                        entry[f"steps.0.options.{o_idx}.text"] = o_text
 
                     for o_idx, (o_id, o_text) in enumerate(loc_options2):
                         entry[f"s.s2.o.{o_id}"] = o_text
-                        entry[f"steps.1.options.{o_idx}.text"] = o_text
+
+                    # Add prereq translation
+                    prereq_suffix = PREREQ_BY_LANG.get(lang, PREREQ_BY_LANG["en"])
+                    entry["prereq.0"] = f"{g} {subj.capitalize()} {prereq_suffix}"
+
+                    # Add reveals for non-key options
+                    s1_correct_id = t["steps"][0]["correct"][0]
+                    for o_id, o_text in loc_options1:
+                        if o_id != s1_correct_id:
+                            rev_tpl = REVEAL_S1_BY_LANG.get(lang, REVEAL_S1_BY_LANG["en"])
+                            entry[f"s.s1.r.{o_id}"] = f"'{o_text}' {rev_tpl}"
+
+                    s2_correct_id = t["steps"][1]["correct"][0]
+                    for o_id, o_text in loc_options2:
+                        if o_id != s2_correct_id:
+                            entry[f"s.s2.r.{o_id}"] = REVEAL_S2_BY_LANG.get(lang, REVEAL_S2_BY_LANG["en"])
 
                     batch_overlay[tid] = entry
 

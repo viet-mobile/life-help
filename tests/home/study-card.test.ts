@@ -44,21 +44,21 @@ describe("study destinations follow the environment and never fall into producti
       english: "https://english.life.help",
       math: "https://math.life.help",
       physics: "https://physics.life.help",
-      chemistry: "https://chemistry.life.help",
+      chemistry: "https://chem.life.help",
     });
     expect(studyUrls("korea.life.help")).toEqual({
       korean: "https://korean.life.help",
       english: "https://english.life.help",
       math: "https://math.life.help",
       physics: "https://physics.life.help",
-      chemistry: "https://chemistry.life.help",
+      chemistry: "https://chem.life.help",
     });
     expect(studyUrls("localhost", "3100")).toEqual({
       korean: "http://korean.localhost:3100",
       english: "http://english.localhost:3100",
       math: "http://math.localhost:3100",
       physics: "http://physics.localhost:3100",
-      chemistry: "http://chemistry.localhost:3100",
+      chemistry: "http://chem.localhost:3100",
     });
     expect(studyUrl("math", "app.localhost", "3000")).toBe("http://math.localhost:3000");
     expect(studyUrls("life-help-staging.example.workers.dev")).toEqual({
@@ -66,7 +66,7 @@ describe("study destinations follow the environment and never fall into producti
       english: "https://english.life.help",
       math: "https://math.life.help",
       physics: "https://physics.life.help",
-      chemistry: "https://chemistry.life.help",
+      chemistry: "https://chem.life.help",
     });
     expect(studyUrl("english", "evil.example.com")).toBe("https://english-staging.life.help");
     expect([...STUDY_SUBJECTS].sort()).toEqual(["chemistry", "english", "korean", "math", "physics"]);

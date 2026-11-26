@@ -135,7 +135,7 @@ export const COUNTRY_SLUG_TO_CODE: Record<string, CountryCode> = {
   papuanewguinea: "PG",
 };
 
-export const MANUAL_REGION_COUNTRIES = new Set(["RO", "FI", "CZ", "HU", "ZM", "UG", "CG", "GH", "MZ"]);
+export const MANUAL_REGION_COUNTRIES = new Set<string>();
 
 export const DEFAULT_COUNTRY_REGIONS: Record<string, RegionItem> = {
   RO: { country: "RO", sido: "", gungu: "", dong: "" },

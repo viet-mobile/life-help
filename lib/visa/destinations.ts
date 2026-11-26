@@ -1,4 +1,4 @@
-// The 100 countries LIFE.HELP serves: host slug, ISO 3166-1 alpha-2 code, English name. Localized names come from Intl.DisplayNames at render time.
+// The 190 countries LIFE.HELP serves: host slug, ISO 3166-1 alpha-2 code, English name. Localized names come from Intl.DisplayNames at render time.
 export interface VisaDestination { slug: string; iso2: string; nameEn: string }
 export const VISA_DESTINATIONS: readonly VisaDestination[] = [
   ["greece","GR","Greece"],["ghana","GH","Ghana"],["nigeria","NG","Nigeria"],["southafrica","ZA","South Africa"],["netherland","NL","Netherlands"],
@@ -18,8 +18,25 @@ export const VISA_DESTINATIONS: readonly VisaDestination[] = [
   ["ecuador","EC","Ecuador"],["guatemala","GT","Guatemala"],["georgia","GE","Georgia"],["angola","AO","Angola"],["cameroon","CM","Cameroon"],
   ["cotedivoire","CI","Ivory Coast"],["drcongo","CD","DR Congo"],["zimbabwe","ZW","Zimbabwe"],["rwanda","RW","Rwanda"],["senegal","SN","Senegal"],
   ["malawi","MW","Malawi"],["mali","ML","Mali"],["burkinafaso","BF","Burkina Faso"],["niger","NE","Niger"],["guinea","GN","Guinea"],
-  ["madagascar","MG","Madagascar"],["chad","TD","Chad"],
-  ["tanzania","TZ","Tanzania"],["algeria","DZ","Algeria"],["morocco","MA","Morocco"],["benin","BJ","Benin"],["tunisia","TN","Tunisia"],
-  ["bolivia","BO","Bolivia"],["belgium","BE","Belgium"],["jordan","JO","Jordan"],["dominica","DO","Dominican Republic"],["honduras","HN","Honduras"],
-  ["azerbaijan","AZ","Azerbaijan"],["tajikistan","TJ","Tajikistan"],["papuanewguinea","PG","Papua New Guinea"],
+  ["madagascar","MG","Madagascar"],["chad","TD","Chad"],["tanzania","TZ","Tanzania"],["algeria","DZ","Algeria"],["morocco","MA","Morocco"],
+  ["benin","BJ","Benin"],["tunisia","TN","Tunisia"],["bolivia","BO","Bolivia"],["belgium","BE","Belgium"],["jordan","JO","Jordan"],
+  ["dominica","DO","Dominican Republic"],["honduras","HN","Honduras"],["azerbaijan","AZ","Azerbaijan"],["tajikistan","TJ","Tajikistan"],["papuanewguinea","PG","Papua New Guinea"],
+  ["afghanistan","AF","Afghanistan"],["albania","AL","Albania"],["armenia","AM","Armenia"],["austria","AT","Austria"],["bosnia","BA","Bosnia & Herzegovina"],
+  ["barbados","BB","Barbados"],["bulgaria","BG","Bulgaria"],["bahrain","BH","Bahrain"],["burundi","BI","Burundi"],["brunei","BN","Brunei"],
+  ["bahamas","BS","Bahamas"],["bhutan","BT","Bhutan"],["botswana","BW","Botswana"],["belarus","BY","Belarus"],["belize","BZ","Belize"],
+  ["costarica","CR","Costa Rica"],["cuba","CU","Cuba"],["capeverde","CV","Cape Verde"],["cyprus","CY","Cyprus"],["djibouti","DJ","Djibouti"],
+  ["dominicacommonwealth","DM","Dominica"],["estonia","EE","Estonia"],["eritrea","ER","Eritrea"],["fiji","FJ","Fiji"],["micronesia","FM","Micronesia"],
+  ["gabon","GA","Gabon"],["grenada","GD","Grenada"],["gambia","GM","Gambia"],["equatorialguinea","GQ","Equatorial Guinea"],["guineabissau","GW","Guinea-Bissau"],
+  ["guyana","GY","Guyana"],["croatia","HR","Croatia"],["haiti","HT","Haiti"],["ireland","IE","Ireland"],["iceland","IS","Iceland"],
+  ["jamaica","JM","Jamaica"],["kyrgyzstan","KG","Kyrgyzstan"],["kiribati","KI","Kiribati"],["comoros","KM","Comoros"],["saintkitts","KN","St. Kitts & Nevis"],
+  ["kuwait","KW","Kuwait"],["laos","LA","Laos"],["lebanon","LB","Lebanon"],["saintlucia","LC","St. Lucia"],["liechtenstein","LI","Liechtenstein"],
+  ["liberia","LR","Liberia"],["lesotho","LS","Lesotho"],["lithuania","LT","Lithuania"],["luxembourg","LU","Luxembourg"],["latvia","LV","Latvia"],
+  ["libya","LY","Libya"],["monaco","MC","Monaco"],["moldova","MD","Moldova"],["montenegro","ME","Montenegro"],["marshallislands","MH","Marshall Islands"],
+  ["northmacedonia","MK","North Macedonia"],["mauritania","MR","Mauritania"],["malta","MT","Malta"],["mauritius","MU","Mauritius"],["maldives","MV","Maldives"],
+  ["namibia","NA","Namibia"],["nicaragua","NI","Nicaragua"],["nauru","NR","Nauru"],["oman","OM","Oman"],["panama","PA","Panama"],
+  ["palau","PW","Palau"],["paraguay","PY","Paraguay"],["qatar","QA","Qatar"],["solomonislands","SB","Solomon Islands"],["seychelles","SC","Seychelles"],
+  ["sudan","SD","Sudan"],["slovakia","SK","Slovakia"],["sierraleone","SL","Sierra Leone"],["sanmarino","SM","San Marino"],["somalia","SO","Somalia"],
+  ["suriname","SR","Suriname"],["southsudan","SS","South Sudan"],["saotome","ST","São Tomé & Príncipe"],["syria","SY","Syria"],["eswatini","SZ","Eswatini"],
+  ["togo","TG","Togo"],["tonga","TO","Tonga"],["trinidad","TT","Trinidad & Tobago"],["tuvalu","TV","Tuvalu"],["uruguay","UY","Uruguay"],
+  ["vatican","VA","Vatican City"],["saintvincent","VC","St. Vincent & Grenadines"],["samoa","WS","Samoa"],["vanuatu","VU","Vanuatu"],["kosovo","XK","Kosovo"],
 ].map(([slug, iso2, nameEn]) => ({ slug, iso2, nameEn }));

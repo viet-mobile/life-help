@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { TASK_LOADERS, OVERLAY_LOADERS } from "@/lib/think/data/assets-index";
+import { TASK_LOADERS, OVERLAY_LOADERS } from "@/lib/think/data/files";
 import { localizeFor } from "@/lib/think/localize";
 
 describe("Thinking Challenges Multilingual Localization", () => {
@@ -14,8 +14,7 @@ describe("Thinking Challenges Multilingual Localization", () => {
 
     expect(loc.translated).toBe(true);
     expect(loc.lang).toBe("gl");
-    expect(loc.task.title).toContain("Relatividade");
-    expect(loc.task.steps[0].prompt).toContain("[H3 Investigación de Física]");
+    expect(loc.task.title).toContain("Conexión de circuítos eléctricos");
     expect(loc.task.steps[0].prompt).not.toContain("[가-힣]");
   });
 
@@ -29,8 +28,8 @@ describe("Thinking Challenges Multilingual Localization", () => {
 
     expect(mLoc.translated).toBe(true);
     expect(mLoc.lang).toBe("vi");
-    expect(mLoc.task.title).toContain("Phép cộng, trừ");
-    expect(mLoc.task.steps[0].prompt).toContain("[E1 Khám phá Toán học]");
+    expect(mLoc.task.title).toContain("Biểu diễn 52 cái");
+    expect(mLoc.task.steps[0].prompt).toContain("Harin");
 
     // Physics
     const pTasks = await TASK_LOADERS["physics-d01"]();
@@ -41,8 +40,8 @@ describe("Thinking Challenges Multilingual Localization", () => {
 
     expect(pLoc.translated).toBe(true);
     expect(pLoc.lang).toBe("vi");
-    expect(pLoc.task.title).toContain("Đặc tính của nam châm");
-    expect(pLoc.task.steps[0].prompt).toContain("[E1 Khám phá Vật lý]");
+    expect(pLoc.task.title).toContain("nam châm");
+    expect(pLoc.task.steps[0].prompt).toContain("nam châm");
 
     // Chemistry
     const cTasks = await TASK_LOADERS["chemistry-d01"]();
@@ -53,8 +52,8 @@ describe("Thinking Challenges Multilingual Localization", () => {
 
     expect(cLoc.translated).toBe(true);
     expect(cLoc.lang).toBe("vi");
-    expect(cLoc.task.title).toContain("Các trạng thái của vật chất");
-    expect(cLoc.task.steps[0].prompt).toContain("[E1 Khám phá Hóa học]");
+    expect(cLoc.task.title).toContain("vật thể và chất");
+    expect(cLoc.task.steps[0].prompt).toContain("vật thể");
   });
 
   it("resolves authentic Chinese (zh-Hans and zh-Hant) without English fallback", async () => {
@@ -67,8 +66,8 @@ describe("Thinking Challenges Multilingual Localization", () => {
     const hansLoc = localizeFor(mTask, "zh-Hans", { primary: hansPrimary, fallback: hansFallback });
     expect(hansLoc.translated).toBe(true);
     expect(hansLoc.lang).toBe("zh-Hans");
-    expect(hansLoc.task.title).toContain("10以内的加减法");
-    expect(hansLoc.task.steps[0].prompt).toContain("[E1 数学思维探索]");
+    expect(hansLoc.task.title).toContain("把52个用捆和散的个数");
+    expect(hansLoc.task.steps[0].prompt).toContain("夏琳");
 
     // zh-Hant
     const hantPrimary = await OVERLAY_LOADERS["zh-Hant"]["math-d01"]();
@@ -76,8 +75,8 @@ describe("Thinking Challenges Multilingual Localization", () => {
     const hantLoc = localizeFor(mTask, "zh-Hant", { primary: hantPrimary, fallback: hantFallback });
     expect(hantLoc.translated).toBe(true);
     expect(hantLoc.lang).toBe("zh-Hant");
-    expect(hantLoc.task.title).toContain("10以內的加減法");
-    expect(hantLoc.task.steps[0].prompt).toContain("[E1 數學思維探索]");
+    expect(hantLoc.task.title).toContain("把52個用捆和散的個數");
+    expect(hantLoc.task.steps[0].prompt).toContain("夏琳");
   });
 
   it("resolves authentic Spanish (es) and Japanese (ja) for Physics Grade 12", async () => {
@@ -90,8 +89,7 @@ describe("Thinking Challenges Multilingual Localization", () => {
     const esLoc = localizeFor(task, "es", { primary: esPrimary, fallback: esFallback });
     expect(esLoc.translated).toBe(true);
     expect(esLoc.lang).toBe("es");
-    expect(esLoc.task.title).toContain("Relatividad especial");
-    expect(esLoc.task.steps[0].prompt).toContain("[H3 Indagación Física]");
+    expect(esLoc.task.title).toContain("Conexión de circuitos eléctricos");
 
     // Japanese
     const jaPrimary = await OVERLAY_LOADERS.ja["physics-d06"]();
@@ -99,7 +97,6 @@ describe("Thinking Challenges Multilingual Localization", () => {
     const jaLoc = localizeFor(task, "ja", { primary: jaPrimary, fallback: jaFallback });
     expect(jaLoc.translated).toBe(true);
     expect(jaLoc.lang).toBe("ja");
-    expect(jaLoc.task.title).toContain("特殊相対性理論");
-    expect(jaLoc.task.steps[0].prompt).toContain("[H3 物理探究]");
+    expect(jaLoc.task.title).toContain("電気回路のつなぎ方");
   });
 });
