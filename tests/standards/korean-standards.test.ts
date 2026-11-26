@@ -1,6 +1,8 @@
 import { describe, it, expect } from "vitest";
 import normsAnchor from "@/lib/standards/data/korean_norms_anchor.json";
 import { ANCHOR_LANGUAGES, type StandardArticle } from "@/lib/standards/types";
+import fs from "fs";
+import path from "path";
 
 describe("Korean Standards (표준어 규정) Data Integrity", () => {
   const articles = normsAnchor as unknown as StandardArticle[];
@@ -64,5 +66,30 @@ describe("Korean Standards (표준어 규정) Data Integrity", () => {
 
     expect(totalTables).toBeGreaterThanOrEqual(30);
     expect(totalLists).toBeGreaterThanOrEqual(20);
+  });
+
+  it("should have Article 13 correctly aligned with Chinese character '구(句)' and not '웃/윗'", () => {
+    const art13 = articles.find((a) => a.id === "p1-a13");
+    expect(art13).toBeDefined();
+    expect(art13?.i18n.ko.rule).toContain("구(句)");
+    expect(art13?.i18n.vi.rule).toContain("Cú");
+    expect(art13?.i18n.vi.explanation).toContain("Cú");
+    expect(art13?.i18n.vi.explanation).not.toContain("웃-");
+  });
+
+  it("should have cleaned trailing '연' and '북' from all Korean explanations", () => {
+    for (const art of articles) {
+      const exp = art.i18n.ko.explanation || "";
+      expect(exp.endsWith(" 연"), `${art.id} ends with ' 연'`).toBe(false);
+      expect(exp.endsWith(" 북"), `${art.id} ends with ' 북'`).toBe(false);
+      expect(exp.endsWith("연 북"), `${art.id} ends with '연 북'`).toBe(false);
+    }
+  });
+
+  it("should have word meanings and note translations files available in public directory", () => {
+    const meaningsPath = path.resolve(__dirname, "../../public/standards/word_meanings.json");
+    expect(fs.existsSync(meaningsPath)).toBe(true);
+    const meanings = JSON.parse(fs.readFileSync(meaningsPath, "utf-8"));
+    expect(Object.keys(meanings).length).toBeGreaterThan(500);
   });
 });

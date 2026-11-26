@@ -335,6 +335,13 @@ def author_ensemble_questions(date_str=None):
             # Skip overriding physics/chemistry in comprehensive
             pass
             print("✅ 사고력 문제 및 190개국 생활정보 플랫폼 배포 및 정적 에셋 동기화 100% 완료!")
+
+        # 4-3. 한국어 표준어 규정 88개국어 21일 자동 번역 파이프라인 (매일 4개 언어 자동 번역)
+        standards_batch = BASE_DIR / "scripts" / "standards" / "batch_translate_standards_daily.py"
+        if standards_batch.exists():
+            import subprocess
+            subprocess.run([sys.executable, str(standards_batch)], check=False)
+            print("✅ 한국어 표준어 규정 88개국어 일일 4개 언어 연속 번역 파이프라인 가동 완료!")
     except Exception as e:
         print(f"⚠️ 사고력 플랫폼 자동 동기화 중 경고: {e}")
 
