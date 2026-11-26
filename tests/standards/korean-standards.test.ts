@@ -42,4 +42,27 @@ describe("Korean Standards (표준어 규정) Data Integrity", () => {
     const codes = ANCHOR_LANGUAGES.map((l) => l.code);
     expect(codes).toEqual(["ko", "en", "vi", "zh-Hant", "zh-Hans", "ja"]);
   });
+
+  it("should have structured examples with tables and lists", () => {
+    let totalTables = 0;
+    let totalLists = 0;
+
+    for (const art of articles) {
+      if (art.structuredExamples) {
+        for (const blk of art.structuredExamples) {
+          if (blk.type === "table") {
+            totalTables++;
+            expect(blk.headers.length).toBeGreaterThan(0);
+            expect(blk.rows.length).toBeGreaterThan(0);
+          } else if (blk.type === "list") {
+            totalLists++;
+            expect(blk.items.length).toBeGreaterThan(0);
+          }
+        }
+      }
+    }
+
+    expect(totalTables).toBeGreaterThanOrEqual(30);
+    expect(totalLists).toBeGreaterThanOrEqual(20);
+  });
 });

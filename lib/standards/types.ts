@@ -9,6 +9,26 @@ export interface StandardArticleTranslation {
   explanation: string;
 }
 
+export type ExampleTableBlock = {
+  type: 'table';
+  caption?: string;
+  headers: string[];
+  rows: string[][];
+};
+
+export type ExampleListBlock = {
+  type: 'list';
+  title?: string;
+  items: string[];
+};
+
+export type ExampleTextBlock = {
+  type: 'text';
+  content: string;
+};
+
+export type ExampleBlock = ExampleTableBlock | ExampleListBlock | ExampleTextBlock;
+
 export interface StandardArticle {
   id: string;
   path: string;
@@ -16,6 +36,7 @@ export interface StandardArticle {
   articleNum: number;
   articleTitle: string;
   details: string[];
+  structuredExamples?: ExampleBlock[];
   i18n: Record<AnchorLanguage, StandardArticleTranslation>;
 }
 

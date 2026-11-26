@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import type { StandardArticle, AnchorLanguage } from "@/lib/standards/types";
+import type { StandardArticle, AnchorLanguage, ExampleBlock, ExampleTableBlock, ExampleListBlock, ExampleTextBlock } from "@/lib/standards/types";
 import { ANCHOR_LANGUAGES } from "@/lib/standards/types";
 import { useLearner } from "@/components/learn/LearnerProvider";
 import standardsData from "@/lib/standards/data/korean_norms_anchor.json";
@@ -20,6 +20,147 @@ function toAnchorLang(loc: string | null | undefined, fallback: AnchorLanguage =
   return fallback;
 }
 
+/** Render formatted table block */
+function RenderExampleTable({ table }: { table: ExampleTableBlock }) {
+  const isStandardComparison = table.headers.some((h) => h === "ㄱ") && table.headers.some((h) => h === "ㄴ");
+
+  return (
+    <div className="space-y-2">
+      {table.caption && (
+        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-indigo-50 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300 text-xs font-bold border border-indigo-200 dark:border-indigo-800">
+          <span>📊</span>
+          <span>{table.caption}</span>
+        </div>
+      )}
+      <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700 shadow-2xs bg-white dark:bg-slate-900">
+        <table className="w-full text-left text-xs sm:text-sm border-collapse">
+          <thead>
+            <tr className="bg-slate-100/90 dark:bg-slate-800/90 border-b border-slate-200 dark:border-slate-700">
+              {table.headers.map((h, idx) => {
+                let headerContent: React.ReactNode = h;
+                if (isStandardComparison) {
+                  if (h === "ㄱ") {
+                    headerContent = (
+                      <span className="inline-flex items-center gap-1 text-emerald-700 dark:text-emerald-400 font-bold">
+                        <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span>
+                        ㄱ (표준어)
+                      </span>
+                    );
+                  } else if (h === "ㄴ") {
+                    headerContent = (
+                      <span className="inline-flex items-center gap-1 text-rose-600 dark:text-rose-400 font-semibold">
+                        <span className="w-2 h-2 rounded-full bg-rose-400 inline-block"></span>
+                        ㄴ (비표준어 / 버림)
+                      </span>
+                    );
+                  } else if (h === "비고") {
+                    headerContent = <span className="text-slate-600 dark:text-slate-300 font-medium">비고 (용례 및 참고)</span>;
+                  }
+                }
+                return (
+                  <th key={idx} scope="col" className="px-3.5 py-2.5 font-bold text-slate-700 dark:text-slate-200">
+                    {headerContent}
+                  </th>
+                );
+              })}
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+            {table.rows.map((row, rIdx) => (
+              <tr key={rIdx} className="hover:bg-slate-50/70 dark:hover:bg-slate-800/50 transition">
+                {row.map((cell, cIdx) => {
+                  const headerName = table.headers[cIdx] || "";
+                  const isStandardCol = isStandardComparison && headerName === "ㄱ";
+                  const isNonStandardCol = isStandardComparison && headerName === "ㄴ";
+
+                  return (
+                    <td
+                      key={cIdx}
+                      className={`px-3.5 py-2.5 align-top ${
+                        isStandardCol
+                          ? "font-bold text-slate-900 dark:text-slate-50"
+                          : isNonStandardCol
+                          ? "text-slate-500 dark:text-slate-400"
+                          : "text-slate-600 dark:text-slate-300 text-xs whitespace-pre-line"
+                      }`}
+                    >
+                      {isNonStandardCol && cell ? (
+                        <span className="inline-block px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 line-through">
+                          {cell}
+                        </span>
+                      ) : (
+                        cell || <span className="text-slate-300 dark:text-slate-600">-</span>
+                      )}
+                    </td>
+                  );
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+/** Render formatted list of word examples */
+function RenderExampleList({ list }: { list: ExampleListBlock }) {
+  return (
+    <div className="space-y-2">
+      {list.title && (
+        <div className="text-xs font-bold text-slate-600 dark:text-slate-400">
+          {list.title}
+        </div>
+      )}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
+        {list.items.map((item, idx) => {
+          // Check if item has pronunciation bracket like 닦다[닥따]
+          const match = item.match(/^([^\[\]]+)(\[[^\[\]]+\])(.*)$/);
+          if (match) {
+            const [, word, pron, rest] = match;
+            return (
+              <div
+                key={idx}
+                className="flex items-center justify-between gap-1.5 px-3 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-2xs text-xs"
+              >
+                <span className="font-bold text-slate-900 dark:text-slate-100">{word.trim()}</span>
+                <span className="px-1.5 py-0.5 rounded-md bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 font-mono font-bold text-[11px] border border-indigo-200/60 dark:border-indigo-800/60">
+                  {pron}
+                </span>
+                {rest && <span className="text-[10px] text-slate-400">{rest}</span>}
+              </div>
+            );
+          }
+          return (
+            <div
+              key={idx}
+              className="px-3 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-2xs text-xs font-medium text-slate-800 dark:text-slate-200"
+            >
+              {item}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+/** Render text callout */
+function RenderExampleText({ text }: { text: ExampleTextBlock }) {
+  const isRuleAddition = text.content.startsWith("다만") || text.content.startsWith("[붙임");
+  return (
+    <div
+      className={`p-3.5 rounded-xl text-xs sm:text-sm leading-relaxed border ${
+        isRuleAddition
+          ? "border-l-4 border-l-amber-500 border-amber-200/70 dark:border-amber-900/40 bg-amber-50/40 dark:bg-amber-950/20 text-slate-800 dark:text-slate-200"
+          : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/60 text-slate-700 dark:text-slate-300"
+      }`}
+    >
+      {text.content}
+    </div>
+  );
+}
+
 export function KoreanStandardsView() {
   const { locale, secondaryLocale, secondaryLocales, isBilingual } = useLearner();
 
@@ -29,17 +170,14 @@ export function KoreanStandardsView() {
   }, [locale]);
 
   const secondaryLang: AnchorLanguage = useMemo(() => {
-    // If primary is not Korean, default secondary comparison is Korean (ko)
     if (primaryLang !== "ko") {
       const topSec = secondaryLocale || secondaryLocales?.[0];
       return topSec ? toAnchorLang(topSec, "ko") : "ko";
     }
-    // If primary is Korean, secondary defaults to top secondary or English
     const topSec = secondaryLocale || secondaryLocales?.[0];
     return topSec ? toAnchorLang(topSec, "en") : "en";
   }, [primaryLang, secondaryLocale, secondaryLocales]);
 
-  // Show bilingual if LearnerProvider has isBilingual on OR if primary is a foreign language comparing with Korean
   const showBilingual = isBilingual || (primaryLang !== "ko");
 
   const [selectedPart, setSelectedPart] = useState<number | "all">("all");
@@ -68,21 +206,16 @@ export function KoreanStandardsView() {
   const filteredArticles = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
     return articles.filter((art) => {
-      // Part filter
       if (selectedPart !== "all" && art.partNum !== selectedPart) {
         return false;
       }
-      // Chapter filter
       if (selectedChapter !== "all" && art.i18n.ko?.chapter !== selectedChapter) {
         return false;
       }
-      // Search query filter
       if (!query) return true;
 
-      // Match articleNum
       if (query === String(art.articleNum) || query === `제${art.articleNum}항`) return true;
 
-      // Match in primary or secondary translations
       const prim = art.i18n[primaryLang] || art.i18n.ko;
       const sec = art.i18n[secondaryLang] || art.i18n.ko;
 
@@ -104,7 +237,6 @@ export function KoreanStandardsView() {
         if (secMatch) return true;
       }
 
-      // Match details
       if (art.details && art.details.some((d) => d.toLowerCase().includes(query))) {
         return true;
       }
@@ -156,7 +288,7 @@ export function KoreanStandardsView() {
         </div>
       </div>
 
-      {/* Filter & Search Bar (Duplicated language controls eliminated; header language applied) */}
+      {/* Filter & Search Bar */}
       <div className="bg-white dark:bg-slate-900 rounded-2xl p-4 sm:p-5 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
         {/* Row 1: Active Language Indicator & Quick Actions */}
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-800 pb-3">
@@ -289,7 +421,8 @@ export function KoreanStandardsView() {
             const pTrans = art.i18n[primaryLang] || art.i18n.ko;
             const sTrans = showBilingual ? (art.i18n[secondaryLang] || art.i18n.ko) : null;
             const isExpanded = !!expandedArticles[art.id];
-            const hasDetails = art.details && art.details.length > 0;
+            const hasStructured = art.structuredExamples && art.structuredExamples.length > 0;
+            const hasDetails = (art.details && art.details.length > 0) || hasStructured;
             const isPart1 = art.partNum === 1;
 
             return (
@@ -397,32 +530,53 @@ export function KoreanStandardsView() {
                         onClick={() => toggleExpand(art.id)}
                         className="inline-flex items-center gap-2 text-xs font-semibold text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-950/60 dark:hover:bg-indigo-900/60 px-3.5 py-1.5 rounded-lg transition"
                       >
-                        <span>{isExpanded ? "▲ 세부 예시 및 규정 접기" : "▼ 국립국어원 세부 예시 및 조항 전문 보기"}</span>
-                        <span className="text-[11px] opacity-75 font-normal">
-                          ({art.details.length}개 항목)
-                        </span>
+                        <span>{isExpanded ? "▲ 세부 예시 및 규정 접기" : "▼ 세부 예시 표 및 단어 목록 보기"}</span>
+                        {hasStructured && (
+                          <span className="text-[11px] opacity-75 font-normal">
+                            ({art.structuredExamples?.length}개 항목)
+                          </span>
+                        )}
                       </button>
                     </div>
                   )}
                 </div>
 
-                {/* Details Accordion Content */}
+                {/* Details Accordion Content (Structured Tables, Lists, & Text) */}
                 {hasDetails && isExpanded && (
                   <div className="border-t border-slate-100 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/50 p-5 sm:p-6 space-y-4">
                     <div className="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
                       <span>📋</span>
                       <span>원문 세부 항목 및 단어별 예시 목록</span>
                     </div>
-                    <div className="space-y-3">
-                      {art.details.map((detail, idx) => (
-                        <div
-                          key={idx}
-                          className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed font-mono whitespace-pre-wrap bg-white dark:bg-slate-800/90 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-2xs"
-                        >
-                          {detail}
-                        </div>
-                      ))}
-                    </div>
+
+                    {hasStructured ? (
+                      <div className="space-y-4">
+                        {art.structuredExamples?.map((block, idx) => {
+                          if (block.type === "table") {
+                            return <RenderExampleTable key={idx} table={block} />;
+                          }
+                          if (block.type === "list") {
+                            return <RenderExampleList key={idx} list={block} />;
+                          }
+                          if (block.type === "text") {
+                            return <RenderExampleText key={idx} text={block} />;
+                          }
+                          return null;
+                        })}
+                      </div>
+                    ) : (
+                      /* Fallback for raw text details */
+                      <div className="space-y-3">
+                        {art.details.map((detail, idx) => (
+                          <div
+                            key={idx}
+                            className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed font-mono whitespace-pre-wrap bg-white dark:bg-slate-800/90 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-2xs"
+                          >
+                            {detail}
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 )}
               </article>
