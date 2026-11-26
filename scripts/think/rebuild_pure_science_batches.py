@@ -24,6 +24,13 @@ OVERLAYS_DIR = ROOT / "content/learn-overlays"
 
 from scripts.think.rebuild_curriculum_batches import PHYSICS_TITLES, CHEMISTRY_TITLES
 
+MASTER_TITLES_PATH = ROOT / "lib/think/data/science_titles_master.json"
+MASTER_TITLES = {}
+if MASTER_TITLES_PATH.exists():
+    with open(MASTER_TITLES_PATH, "r", encoding="utf-8") as f:
+        MASTER_TITLES = json.load(f)
+
+
 
 REVEAL_S1_BY_LANG = {
     "ko": "선택은 조건이나 핵심 원리를 오적용한 경우입니다.",
@@ -54,7 +61,7 @@ PREREQ_BY_LANG = {
 GOAL_TEMPLATE = {
     "ko": "{title}의 원리를 분석하여 주어진 조건에 따라 올바른 결론을 도출한다.",
     "en": "Analyze the principles of {title} and deduce the correct conclusion under given conditions.",
-    "ne": "{title}को सिद्धान्त विश्लेषण गरी दिइएका सर्तअनुसार सही निष्कर्ष निकाल्नुहोस्।",
+    "ne": "{title} को सिद्धान्त विश्लेषण गरी दिइएका सर्तअनुसार सही निष्कर्ष निकाल्नुहोस्।",
     "hi": "{title} के सिद्धांतों का विश्लेषण करें और दी गई शर्तों के अनुसार सही निष्कर्ष निकालें।",
     "vi": "Phân tích các nguyên lý về {title} và rút ra kết luận chính xác theo điều kiện đã cho.",
     "zh-Hans": "深入分析{title}的原理，根据给定条件得出正确结论。",
@@ -384,31 +391,21 @@ def build_science_batches():
                                 trans_text = clean(raw_opts_dict.get(orig_letter, opt["text"]))
                                 loc_options1.append((oid, trans_text))
                                 
-                            sk_id = orig_q.get("skillId", "")
-                            if lang == "en" and tid in title_dict:
-                                short_title = title_dict[tid][1]
-                            else:
-                                # Extract specific concept from paired quotes: '...', "...", 「...」, 『...』
-                                found_quote = None
-                                for pat in [r"'([^']+)'", r'"([^"]+)"', r'「([^」]+)」', r'『([^』]+)』']:
-                                    m_q = re.search(pat, loc_prompt1)
-                                    if m_q and 2 <= len(m_q.group(1).strip()) <= 45:
-                                        found_quote = m_q.group(1).strip()
-                                        break
-                                if found_quote:
-                                    short_title = found_quote
-                                elif tid in title_dict:
+                            # Use authentic localized master title for all 89 languages
+                            master_m = MASTER_TITLES.get(tid, {})
+                            short_title = master_m.get(lang)
+                            if not short_title:
+                                if lang == "en" and tid in title_dict:
                                     short_title = title_dict[tid][1]
+                                elif lang == "ko":
+                                    short_title = master_m.get("ko", t["title"])
                                 else:
-                                    fc = loc_prompt1.split('?')[0].split('.')[0].strip()
-                                    if 4 <= len(fc) <= 35:
-                                        short_title = fc
-                                    else:
-                                        short_title = CURRICULUM_TITLES_BY_GRADE.get(subj, {}).get(g_code, f"{subj.capitalize()} Grade {g_code}")
+                                    short_title = master_m.get("en", CURRICULUM_TITLES_BY_GRADE.get(subj, {}).get(g_code, f"{subj.capitalize()} Grade {g_code}"))
                         else:
-                            # Authentic fallback for daily authored question
+                            # Authentic localized master title for daily question
                             fallback_q = trans_qs_list[t_idx % len(trans_qs_list)] if trans_qs_list else None
-                            short_title = CURRICULUM_TITLES_BY_GRADE.get(subj, {}).get(g_code, f"{subj.capitalize()} Grade {g_code}")
+                            master_m = MASTER_TITLES.get(tid, {})
+                            short_title = master_m.get(lang) or master_m.get("en") or CURRICULUM_TITLES_BY_GRADE.get(subj, {}).get(g_code, f"{subj.capitalize()} Grade {g_code}")
                             
                             if fallback_q:
                                 loc_prompt1 = clean(fallback_q.get("prompt", "")) or f"Analyze the principles of {short_title} and select the correct outcome."

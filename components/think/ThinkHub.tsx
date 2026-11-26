@@ -162,7 +162,7 @@ export function ThinkHub() {
     const raw = tasks.find((t) => t.id === tTask.id) ?? tTask;
     return secOverlays
       .map((so) => ({ lang: so.lang, loc: localizeFor(raw, so.lang, { primary: so.primary, fallback: so.fallback }) }))
-      .filter((x) => x.loc.translated && x.loc.task.title !== tTask.title);
+      .filter((x) => x.loc.translated && x.lang !== taskLang && (x.loc.task.title !== tTask.title || x.lang === "en" || x.lang === "ko"));
   };
   const order = shown.map((x) => x.task.id);
   const nextId = current ? (order.slice(order.indexOf(current.task.id) + 1).find((id) => !done[id]) ?? order.find((id) => id !== current.task.id && !done[id]) ?? null) : null;
