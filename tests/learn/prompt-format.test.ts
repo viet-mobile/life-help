@@ -37,7 +37,7 @@ describe("reading prompt: the question label starts on its own line, in every la
           if (!t) continue;
           checked++;
           const out = formatPrompt(t);
-          expect(out, `${loc} ${q.id}: ${t.slice(0, 120)}`).toMatch(/["”»」』]\n\n\S/);
+          expect(out, `${loc} ${q.id}: ${t.slice(0, 120)}`).toMatch(/["”»」』“]\n\n\S/);
           expect(out.replace(/\s+/g, " "), `${loc} ${q.id} text is unchanged apart from the break`).toBe(t.replace(/\s+/g, " "));
         }
       }

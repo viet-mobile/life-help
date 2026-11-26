@@ -4,7 +4,7 @@
  * line before the label, in every language, by structure (the closing quote of the passage + a short word + a colon), not by a word list.
  * Display only: the stored prompt, the answer key and the listening segmenter (lib/learn/listen/segments.ts) keep reading the original.
  */
-const LABEL_BREAK = /(["”»」』])\s+([^"“”«»「」『』\n:：៖]{1,24}[:：៖])(\s+|(?<=[：៖]))(?=\S)/g;
+const LABEL_BREAK = /(["”»」』“](?:\s*\([^)\n]+\))?)\s+([^"“”«»「」『』\n:：៖]{1,24}[:：៖])(\s+|(?<=[：៖:]))(?=\S)/g;
 
 export function formatPrompt(prompt: string): string {
   if (prompt.includes("\n")) return prompt;
