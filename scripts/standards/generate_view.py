@@ -22,6 +22,15 @@ function toAnchorLang(loc: string | null | undefined, fallback: AnchorLanguage =
   return fallback;
 }
 
+const EXPLANATION_LABELS: Record<AnchorLanguage, string> = {
+  ko: "규정 설명 및 상세 해설",
+  en: "Rule Commentary & Explanations",
+  vi: "Chú giải quy chuẩn & Giải thích chi tiết",
+  "zh-Hant": "規範釋義與詳細解說",
+  "zh-Hans": "规范释义与详细解说",
+  ja: "規定解説および詳細説明",
+};
+
 /** Render formatted table block */
 function RenderExampleTable({ table }: { table: ExampleTableBlock }) {
   const isStandardComparison = table.headers.some((h) => h === "ㄱ") && table.headers.some((h) => h === "ㄴ");
@@ -116,7 +125,6 @@ function RenderExampleList({ list }: { list: ExampleListBlock }) {
       )}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
         {list.items.map((item, idx) => {
-          // Check if item has pronunciation bracket like 닦다[닥따]
           const match = item.match(/^([^\[\]]+)(\[[^\[\]]+\])(.*)$/);
           if (match) {
             const [, word, pron, rest] = match;
@@ -191,6 +199,8 @@ export function KoreanStandardsView() {
 
   const primaryLangMeta = ANCHOR_LANGUAGES.find((l) => l.code === primaryLang) || ANCHOR_LANGUAGES[0];
   const secondaryLangMeta = ANCHOR_LANGUAGES.find((l) => l.code === secondaryLang) || ANCHOR_LANGUAGES[1];
+
+  const explanationLabel = EXPLANATION_LABELS[primaryLang] || EXPLANATION_LABELS.ko;
 
   // Available chapters for current part
   const availableChapters = useMemo(() => {
@@ -285,7 +295,7 @@ export function KoreanStandardsView() {
             한국어 표준어 규정 전체
           </h1>
           <p className="text-sm sm:text-base text-indigo-100/90 leading-relaxed max-w-3xl">
-            제1부 <span className="font-semibold text-white">표준어 사정 원칙</span>(26개 항) 및 제2부 <span className="font-semibold text-white">표준 발음법</span>(30개 항)을 현대적인 맞춤형 UI로 학습하세요. 상단 헤더에서 선택한 언어와 병기 설정이 자동 연동됩니다.
+            제1부 <span className="font-semibold text-white">표준어 사정 원칙</span>(26개 항) 및 제2부 <span className="font-semibold text-white">표준 발음법</span>(30개 항)을 현대적인 맞춤형 UI로 학습하세요. 규정문과 상세 해설 전체가 상단 선택 언어로 번역 및 병기됩니다.
           </p>
         </div>
       </div>
@@ -499,26 +509,35 @@ export function KoreanStandardsView() {
                     </div>
                   </div>
 
-                  {/* Explanation Section */}
+                  {/* Explanation Section (Fully Multilingual) */}
                   {(pTrans?.explanation || (sTrans && sTrans.explanation)) && (
-                    <div className="space-y-2 pt-1">
+                    <div className="space-y-3 pt-1">
                       <div className="text-xs font-bold text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
                         <span>💡</span>
-                        <span>핵심 해설 및 규정 배경</span>
+                        <span>{explanationLabel}</span>
                       </div>
-                      <div className="space-y-2">
+                      <div className="space-y-3">
                         {pTrans?.explanation && (
-                          <p className="text-sm text-slate-700 dark:text-slate-200 leading-relaxed bg-amber-50/50 dark:bg-amber-950/20 p-3.5 rounded-xl border border-amber-200/50 dark:border-amber-900/30">
-                            {pTrans.explanation}
-                          </p>
+                          <div className="bg-amber-50/50 dark:bg-amber-950/20 p-4 rounded-xl border border-amber-200/60 dark:border-amber-900/40 space-y-1.5">
+                            <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 dark:bg-amber-900/60 text-amber-800 dark:text-amber-200">
+                              <span>{primaryLangMeta.flag}</span>
+                              <span>{primaryLangMeta.native}</span>
+                            </div>
+                            <p className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed whitespace-pre-line">
+                              {pTrans.explanation}
+                            </p>
+                          </div>
                         )}
                         {sTrans && sTrans.explanation && (
-                          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed bg-slate-50 dark:bg-slate-800/40 p-3 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
-                            <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-indigo-500 mr-1.5">
-                              [{secondaryLangMeta.native}]
-                            </span>
-                            {sTrans.explanation}
-                          </p>
+                          <div className="bg-slate-50 dark:bg-slate-800/40 p-3.5 rounded-xl border border-slate-200/70 dark:border-slate-700/70 space-y-1.5">
+                            <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-slate-200/80 dark:bg-slate-700 text-slate-700 dark:text-slate-300">
+                              <span>{secondaryLangMeta.flag}</span>
+                              <span>{secondaryLangMeta.native} (대조)</span>
+                            </div>
+                            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed whitespace-pre-line">
+                              {sTrans.explanation}
+                            </p>
+                          </div>
                         )}
                       </div>
                     </div>
@@ -600,4 +619,4 @@ export function KoreanStandardsView() {
 with open('components/standards/KoreanStandardsView.tsx', 'w', encoding='utf-8') as f:
     f.write(view_code)
 
-print('generate_view.py completed with structured table renderers')
+print('KoreanStandardsView.tsx successfully generated with fully multilingual explanations')
