@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import type { StandardArticle, AnchorLanguage, ExampleBlock, ExampleTableBlock, ExampleListBlock, ExampleTextBlock } from "@/lib/standards/types";
 import { ANCHOR_LANGUAGES } from "@/lib/standards/types";
 import { useLearner } from "@/components/learn/LearnerProvider";
-import standardsData from "@/lib/standards/data/korean_norms_anchor.json";
 
-const articles = standardsData as unknown as StandardArticle[];
+// In-memory module cache to prevent re-fetching across tab navigations
+let cachedArticles: StandardArticle[] | null = null;
 
 function toAnchorLang(loc: string | null | undefined, fallback: AnchorLanguage = "ko"): AnchorLanguage {
   if (!loc) return fallback;
@@ -172,6 +172,40 @@ function RenderExampleText({ text }: { text: ExampleTextBlock }) {
 export function KoreanStandardsView() {
   const { locale, secondaryLocale, secondaryLocales, isBilingual } = useLearner();
 
+  // Load articles via static asset fetch to keep Worker code size under Cloudflare 63.9MB limit
+  const [articles, setArticles] = useState<StandardArticle[]>(() => cachedArticles || []);
+  const [loading, setLoading] = useState<boolean>(!cachedArticles);
+
+  useEffect(() => {
+    if (cachedArticles && cachedArticles.length > 0) {
+      setArticles(cachedArticles);
+      setLoading(false);
+      return;
+    }
+
+    let active = true;
+    fetch("/standards/korean_norms_anchor.json")
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
+      .then((data: StandardArticle[]) => {
+        if (active) {
+          cachedArticles = data;
+          setArticles(data);
+          setLoading(false);
+        }
+      })
+      .catch((err) => {
+        console.error("Failed to load standards data:", err);
+        if (active) setLoading(false);
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
   // Resolve languages dynamically from top header LearnerProvider
   const primaryLang: AnchorLanguage = useMemo(() => {
     return toAnchorLang(locale, "ko");
@@ -210,7 +244,7 @@ export function KoreanStandardsView() {
       }
     }
     return Array.from(chapters);
-  }, [selectedPart]);
+  }, [selectedPart, articles]);
 
   // Filtered articles
   const filteredArticles = useMemo(() => {
@@ -253,7 +287,7 @@ export function KoreanStandardsView() {
 
       return false;
     });
-  }, [primaryLang, secondaryLang, showBilingual, selectedPart, selectedChapter, searchQuery]);
+  }, [primaryLang, secondaryLang, showBilingual, selectedPart, selectedChapter, searchQuery, articles]);
 
   const toggleExpand = (id: string) => {
     setExpandedArticles((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -411,198 +445,212 @@ export function KoreanStandardsView() {
         </div>
       </div>
 
+      {/* Loading Skeleton */}
+      {loading && (
+        <div className="space-y-4 py-8">
+          {[1, 2, 3].map((n) => (
+            <div key={n} className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 animate-pulse space-y-4">
+              <div className="h-5 w-32 bg-slate-200 dark:bg-slate-800 rounded"></div>
+              <div className="h-6 w-3/4 bg-slate-200 dark:bg-slate-800 rounded"></div>
+              <div className="h-16 w-full bg-slate-100 dark:bg-slate-800/60 rounded"></div>
+            </div>
+          ))}
+        </div>
+      )}
+
       {/* Articles List */}
-      <div className="space-y-6">
-        {filteredArticles.length === 0 ? (
-          <div className="text-center py-16 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8">
-            <p className="text-3xl mb-2">🔍</p>
-            <h3 className="text-base font-bold text-slate-800 dark:text-slate-200">일치하는 조항이 없습니다</h3>
-            <p className="text-xs text-slate-500 mt-1">검색어나 필터 조건을 변경해 보세요.</p>
-            <button
-              type="button"
-              onClick={() => { setSearchQuery(""); setSelectedPart("all"); setSelectedChapter("all"); }}
-              className="mt-4 px-4 py-2 bg-indigo-50 text-indigo-600 text-xs font-semibold rounded-lg hover:bg-indigo-100 transition"
-            >
-              모든 필터 초기화
-            </button>
-          </div>
-        ) : (
-          filteredArticles.map((art) => {
-            const pTrans = art.i18n[primaryLang] || art.i18n.ko;
-            const sTrans = showBilingual ? (art.i18n[secondaryLang] || art.i18n.ko) : null;
-            const isExpanded = !!expandedArticles[art.id];
-            const hasStructured = art.structuredExamples && art.structuredExamples.length > 0;
-            const hasDetails = (art.details && art.details.length > 0) || hasStructured;
-            const isPart1 = art.partNum === 1;
-
-            return (
-              <article
-                key={art.id}
-                id={art.id}
-                className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/90 dark:border-slate-800 shadow-xs hover:shadow-md transition-shadow duration-200 overflow-hidden"
+      {!loading && (
+        <div className="space-y-6">
+          {filteredArticles.length === 0 ? (
+            <div className="text-center py-16 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8">
+              <p className="text-3xl mb-2">🔍</p>
+              <h3 className="text-base font-bold text-slate-800 dark:text-slate-200">일치하는 조항이 없습니다</h3>
+              <p className="text-xs text-slate-500 mt-1">검색어나 필터 조건을 변경해 보세요.</p>
+              <button
+                type="button"
+                onClick={() => { setSearchQuery(""); setSelectedPart("all"); setSelectedChapter("all"); }}
+                className="mt-4 px-4 py-2 bg-indigo-50 text-indigo-600 text-xs font-semibold rounded-lg hover:bg-indigo-100 transition"
               >
-                {/* Article Header Card */}
-                <div className="p-5 sm:p-6 space-y-4">
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <div className="flex flex-wrap items-center gap-2">
-                      {/* Part Badge */}
-                      <span className={`px-2.5 py-0.5 rounded-full text-xs font-black ${
-                        isPart1
-                          ? "bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800"
-                          : "bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800"
-                      }`}>
-                        {pTrans?.part || (isPart1 ? "제1부 사정 원칙" : "제2부 표준 발음법")}
-                      </span>
+                모든 필터 초기화
+              </button>
+            </div>
+          ) : (
+            filteredArticles.map((art) => {
+              const pTrans = art.i18n[primaryLang] || art.i18n.ko;
+              const sTrans = showBilingual ? (art.i18n[secondaryLang] || art.i18n.ko) : null;
+              const isExpanded = !!expandedArticles[art.id];
+              const hasStructured = art.structuredExamples && art.structuredExamples.length > 0;
+              const hasDetails = (art.details && art.details.length > 0) || hasStructured;
+              const isPart1 = art.partNum === 1;
 
-                      {/* Chapter / Section Badge */}
-                      {pTrans?.chapter && (
-                        <span className="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-slate-700">
-                          {pTrans.chapter}
+              return (
+                <article
+                  key={art.id}
+                  id={art.id}
+                  className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/90 dark:border-slate-800 shadow-xs hover:shadow-md transition-shadow duration-200 overflow-hidden"
+                >
+                  {/* Article Header Card */}
+                  <div className="p-5 sm:p-6 space-y-4">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <div className="flex flex-wrap items-center gap-2">
+                        {/* Part Badge */}
+                        <span className={`px-2.5 py-0.5 rounded-full text-xs font-black ${
+                          isPart1
+                            ? "bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800"
+                            : "bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800"
+                        }`}>
+                          {pTrans?.part || (isPart1 ? "제1부 사정 원칙" : "제2부 표준 발음법")}
                         </span>
-                      )}
-                      {pTrans?.section && (
-                        <span className="px-2 py-0.5 rounded-md bg-slate-50 dark:bg-slate-800/60 text-slate-600 dark:text-slate-400 text-xs font-normal border border-slate-200 dark:border-slate-700">
-                          {pTrans.section}
-                        </span>
-                      )}
-                    </div>
 
-                    {/* Article ID & Share Button */}
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs font-mono font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/50 px-2 py-0.5 rounded">
-                        {pTrans?.title || `제${art.articleNum}항`}
-                      </span>
-                      <button
-                        type="button"
-                        onClick={() => copyArticleLink(art.id)}
-                        title="조항 링크 복사"
-                        className="text-xs text-slate-400 hover:text-indigo-600 p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800 transition"
-                      >
-                        {copiedId === art.id ? "✅ 복사됨" : "🔗"}
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Rule Section (Highlight Box) */}
-                  <div className="rounded-xl bg-slate-50 dark:bg-slate-800/70 p-4 border border-slate-200/80 dark:border-slate-700/80 space-y-3">
-                    <div className="flex items-start gap-2.5">
-                      <span className="text-indigo-600 dark:text-indigo-400 text-base font-black shrink-0 mt-0.5">
-                        §
-                      </span>
-                      <div className="flex-1 space-y-2">
-                        {/* Primary Rule */}
-                        <div className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-50 leading-snug tracking-tight">
-                          {pTrans?.rule || ""}
-                        </div>
-                        {/* Secondary Rule (Bilingual) */}
-                        {sTrans && sTrans.rule && (
-                          <div className="text-sm sm:text-base font-medium text-slate-600 dark:text-slate-300 pt-2 border-t border-slate-200 dark:border-slate-700 leading-snug">
-                            <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-indigo-500 mr-2 bg-indigo-50 dark:bg-indigo-950 px-1.5 py-0.2 rounded">
-                              {secondaryLangMeta.native}
-                            </span>
-                            {sTrans.rule}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Explanation Section (Fully Multilingual) */}
-                  {(pTrans?.explanation || (sTrans && sTrans.explanation)) && (
-                    <div className="space-y-3 pt-1">
-                      <div className="text-xs font-bold text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
-                        <span>💡</span>
-                        <span>{explanationLabel}</span>
-                      </div>
-                      <div className="space-y-3">
-                        {pTrans?.explanation && (
-                          <div className="bg-amber-50/50 dark:bg-amber-950/20 p-4 rounded-xl border border-amber-200/60 dark:border-amber-900/40 space-y-1.5">
-                            <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 dark:bg-amber-900/60 text-amber-800 dark:text-amber-200">
-                              <span>{primaryLangMeta.flag}</span>
-                              <span>{primaryLangMeta.native}</span>
-                            </div>
-                            <p className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed whitespace-pre-line">
-                              {pTrans.explanation}
-                            </p>
-                          </div>
-                        )}
-                        {sTrans && sTrans.explanation && (
-                          <div className="bg-slate-50 dark:bg-slate-800/40 p-3.5 rounded-xl border border-slate-200/70 dark:border-slate-700/70 space-y-1.5">
-                            <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-slate-200/80 dark:bg-slate-700 text-slate-700 dark:text-slate-300">
-                              <span>{secondaryLangMeta.flag}</span>
-                              <span>{secondaryLangMeta.native} (대조)</span>
-                            </div>
-                            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed whitespace-pre-line">
-                              {sTrans.explanation}
-                            </p>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Details Toggle Button */}
-                  {hasDetails && (
-                    <div className="pt-2">
-                      <button
-                        type="button"
-                        onClick={() => toggleExpand(art.id)}
-                        className="inline-flex items-center gap-2 text-xs font-semibold text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-950/60 dark:hover:bg-indigo-900/60 px-3.5 py-1.5 rounded-lg transition"
-                      >
-                        <span>{isExpanded ? "▲ 세부 예시 및 규정 접기" : "▼ 세부 예시 표 및 단어 목록 보기"}</span>
-                        {hasStructured && (
-                          <span className="text-[11px] opacity-75 font-normal">
-                            ({art.structuredExamples?.length}개 항목)
+                        {/* Chapter / Section Badge */}
+                        {pTrans?.chapter && (
+                          <span className="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-slate-700">
+                            {pTrans.chapter}
                           </span>
                         )}
-                      </button>
-                    </div>
-                  )}
-                </div>
-
-                {/* Details Accordion Content (Structured Tables, Lists, & Text) */}
-                {hasDetails && isExpanded && (
-                  <div className="border-t border-slate-100 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/50 p-5 sm:p-6 space-y-4">
-                    <div className="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-                      <span>📋</span>
-                      <span>원문 세부 항목 및 단어별 예시 목록</span>
-                    </div>
-
-                    {hasStructured ? (
-                      <div className="space-y-4">
-                        {art.structuredExamples?.map((block, idx) => {
-                          if (block.type === "table") {
-                            return <RenderExampleTable key={idx} table={block} />;
-                          }
-                          if (block.type === "list") {
-                            return <RenderExampleList key={idx} list={block} />;
-                          }
-                          if (block.type === "text") {
-                            return <RenderExampleText key={idx} text={block} />;
-                          }
-                          return null;
-                        })}
+                        {pTrans?.section && (
+                          <span className="px-2 py-0.5 rounded-md bg-slate-50 dark:bg-slate-800/60 text-slate-600 dark:text-slate-400 text-xs font-normal border border-slate-200 dark:border-slate-700">
+                            {pTrans.section}
+                          </span>
+                        )}
                       </div>
-                    ) : (
-                      /* Fallback for raw text details */
-                      <div className="space-y-3">
-                        {art.details.map((detail, idx) => (
-                          <div
-                            key={idx}
-                            className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed font-mono whitespace-pre-wrap bg-white dark:bg-slate-800/90 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-2xs"
-                          >
-                            {detail}
+
+                      {/* Article ID & Share Button */}
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-mono font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/50 px-2 py-0.5 rounded">
+                          {pTrans?.title || `제${art.articleNum}항`}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => copyArticleLink(art.id)}
+                          title="조항 링크 복사"
+                          className="text-xs text-slate-400 hover:text-indigo-600 p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+                        >
+                          {copiedId === art.id ? "✅ 복사됨" : "🔗"}
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Rule Section (Highlight Box) */}
+                    <div className="rounded-xl bg-slate-50 dark:bg-slate-800/70 p-4 border border-slate-200/80 dark:border-slate-700/80 space-y-3">
+                      <div className="flex items-start gap-2.5">
+                        <span className="text-indigo-600 dark:text-indigo-400 text-base font-black shrink-0 mt-0.5">
+                          §
+                        </span>
+                        <div className="flex-1 space-y-2">
+                          {/* Primary Rule */}
+                          <div className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-50 leading-snug tracking-tight">
+                            {pTrans?.rule || ""}
                           </div>
-                        ))}
+                          {/* Secondary Rule (Bilingual) */}
+                          {sTrans && sTrans.rule && (
+                            <div className="text-sm sm:text-base font-medium text-slate-600 dark:text-slate-300 pt-2 border-t border-slate-200 dark:border-slate-700 leading-snug">
+                              <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-indigo-500 mr-2 bg-indigo-50 dark:bg-indigo-950 px-1.5 py-0.2 rounded">
+                                {secondaryLangMeta.native}
+                              </span>
+                              {sTrans.rule}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Explanation Section (Fully Multilingual) */}
+                    {(pTrans?.explanation || (sTrans && sTrans.explanation)) && (
+                      <div className="space-y-3 pt-1">
+                        <div className="text-xs font-bold text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+                          <span>💡</span>
+                          <span>{explanationLabel}</span>
+                        </div>
+                        <div className="space-y-3">
+                          {pTrans?.explanation && (
+                            <div className="bg-amber-50/50 dark:bg-amber-950/20 p-4 rounded-xl border border-amber-200/60 dark:border-amber-900/40 space-y-1.5">
+                              <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 dark:bg-amber-900/60 text-amber-800 dark:text-amber-200">
+                                <span>{primaryLangMeta.flag}</span>
+                                <span>{primaryLangMeta.native}</span>
+                              </div>
+                              <p className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed whitespace-pre-line">
+                                {pTrans.explanation}
+                              </p>
+                            </div>
+                          )}
+                          {sTrans && sTrans.explanation && (
+                            <div className="bg-slate-50 dark:bg-slate-800/40 p-3.5 rounded-xl border border-slate-200/70 dark:border-slate-700/70 space-y-1.5">
+                              <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-slate-200/80 dark:bg-slate-700 text-slate-700 dark:text-slate-300">
+                                <span>{secondaryLangMeta.flag}</span>
+                                <span>{secondaryLangMeta.native} (대조)</span>
+                              </div>
+                              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed whitespace-pre-line">
+                                {sTrans.explanation}
+                              </p>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Details Toggle Button */}
+                    {hasDetails && (
+                      <div className="pt-2">
+                        <button
+                          type="button"
+                          onClick={() => toggleExpand(art.id)}
+                          className="inline-flex items-center gap-2 text-xs font-semibold text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-950/60 dark:hover:bg-indigo-900/60 px-3.5 py-1.5 rounded-lg transition"
+                        >
+                          <span>{isExpanded ? "▲ 세부 예시 및 규정 접기" : "▼ 세부 예시 표 및 단어 목록 보기"}</span>
+                          {hasStructured && (
+                            <span className="text-[11px] opacity-75 font-normal">
+                              ({art.structuredExamples?.length}개 항목)
+                            </span>
+                          )}
+                        </button>
                       </div>
                     )}
                   </div>
-                )}
-              </article>
-            );
-          })
-        )}
-      </div>
+
+                  {/* Details Accordion Content (Structured Tables, Lists, & Text) */}
+                  {hasDetails && isExpanded && (
+                    <div className="border-t border-slate-100 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/50 p-5 sm:p-6 space-y-4">
+                      <div className="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+                        <span>📋</span>
+                        <span>원문 세부 항목 및 단어별 예시 목록</span>
+                      </div>
+
+                      {hasStructured ? (
+                        <div className="space-y-4">
+                          {art.structuredExamples?.map((block, idx) => {
+                            if (block.type === "table") {
+                              return <RenderExampleTable key={idx} table={block} />;
+                            }
+                            if (block.type === "list") {
+                              return <RenderExampleList key={idx} list={block} />;
+                            }
+                            if (block.type === "text") {
+                              return <RenderExampleText key={idx} text={block} />;
+                            }
+                            return null;
+                          })}
+                        </div>
+                      ) : (
+                        <div className="space-y-3">
+                          {art.details.map((detail, idx) => (
+                            <div
+                              key={idx}
+                              className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed font-mono whitespace-pre-wrap bg-white dark:bg-slate-800/90 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-2xs"
+                            >
+                              {detail}
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </article>
+              );
+            })
+          )}
+        </div>
+      )}
 
       {/* Footer Info */}
       <footer className="text-center py-6 text-xs text-slate-400 dark:text-slate-500 space-y-1">
