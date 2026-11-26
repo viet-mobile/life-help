@@ -170,9 +170,7 @@ export function QuestionCard({
                 q.secondaries.map((sec) => (
                   sec.prompt && sec.prompt !== q.prompt ? (
                     <div key={sec.locale} style={{ borderTop: "1px dashed var(--l-border, #ccc)", paddingTop: "0.5rem", marginTop: "0.5rem", opacity: 0.88, fontSize: "0.95em" }}>
-                      {q.secondaries!.length > 1 && (
-                        <span className="opacity-70 text-[10px] uppercase font-bold mr-1.5">[{sec.locale}]</span>
-                      )}
+                      
                       <RichText text={formatPrompt(sec.prompt)} />
                     </div>
                   ) : null

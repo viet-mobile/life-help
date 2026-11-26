@@ -50,6 +50,33 @@ PREREQ_BY_LANG = {
     "vi": "Khái niệm kiến thức tiên quyết",
 }
 
+
+GOAL_TEMPLATE = {
+    "ko": "{title}의 원리를 분석하여 주어진 조건에 따라 올바른 결론을 도출한다.",
+    "en": "Analyze the principles of {title} and deduce the correct conclusion under given conditions.",
+    "ne": "{title}को सिद्धान्त विश्लेषण गरी दिइएका सर्तअनुसार सही निष्कर्ष निकाल्नुहोस्।",
+    "hi": "{title} के सिद्धांतों का विश्लेषण करें और दी गई शर्तों के अनुसार सही निष्कर्ष निकालें।",
+    "vi": "Phân tích các nguyên lý về {title} và rút ra kết luận chính xác theo điều kiện đã cho.",
+    "zh-Hans": "深入分析{title}的原理，根据给定条件得出正确结论。",
+    "zh-Hant": "深入分析{title}的原理，根據給定條件得出正確結論。",
+    "ja": "{title}の原理を分析し、与えられた条件に従って正確な結論を導き出します。",
+    "es": "Analice los principios de {title} y deduzca la conclusión correcta según las condiciones dadas.",
+    "fr": "Analysez les principes de {title} et déduisez la conclusion correcte selon les conditions données.",
+    "de": "Analysieren Sie die Prinzipien von {title} und ziehen Sie die richtige Schlussfolgerung unter den gegebenen Bedingungen.",
+    "ru": "Проанализируйте принципы {title} и сделайте правильный вывод в соответствии с заданными условиями.",
+    "pt": "Analise os princípios de {title} e deduza a conclusão correta sob as condições dadas.",
+    "th": "วิเคราะห์หลักการของ {title} และสรุปผลที่ถูกต้องตามเงื่อนไขที่กำหนด",
+    "id": "Menganalisis prinsip-prinsip {title} dan menarik kesimpulan yang tepat berdasarkan kondisi yang diberikan.",
+    "km": "វិភាគគោលការណ៍នៃ {title} និងទាញការសន្និដ្ឋានត្រឹមត្រូវតាមលក្ខខណ្ឌដែលបានកំណត់។",
+    "my": "{title} ၏ အခြေခံသဘောတရားများကို ပိုင်းခြားစိတ်ဖြာပြီး သတ်မှတ်ထားသော အခြေအနေများအရ မှန်ကန်သော ကောက်ချက်ဆွဲပါ။",
+}
+
+def build_goal(lang, title):
+    tmpl = GOAL_TEMPLATE.get(lang)
+    if tmpl:
+        return tmpl.format(title=title)
+    return f"Analyze the principles of {title} and deduce the correct conclusion under given conditions."
+
 GOAL_BY_LANG = {
     "ko": "원리를 올바로 분석하고 주어진 조건에 따라 올바른 결론을 도출한다.",
     "en": "Analyze the underlying scientific principles and deduce the correct conclusion.",
@@ -358,13 +385,26 @@ def build_science_batches():
                                 loc_options1.append((oid, trans_text))
                                 
                             sk_id = orig_q.get("skillId", "")
-                            sk_trans = clean(trans_skills.get(sk_id, "")).split("(")[0].strip()
                             if lang == "en" and tid in title_dict:
                                 short_title = title_dict[tid][1]
-                            elif sk_trans:
-                                short_title = sk_trans
                             else:
-                                short_title = loc_prompt1.split("?")[0].strip() + ("?" if "?" in loc_prompt1 else "")
+                                # Extract specific concept from paired quotes: '...', "...", 「...」, 『...』
+                                found_quote = None
+                                for pat in [r"'([^']+)'", r'"([^"]+)"', r'「([^」]+)」', r'『([^』]+)』']:
+                                    m_q = re.search(pat, loc_prompt1)
+                                    if m_q and 2 <= len(m_q.group(1).strip()) <= 45:
+                                        found_quote = m_q.group(1).strip()
+                                        break
+                                if found_quote:
+                                    short_title = found_quote
+                                elif tid in title_dict:
+                                    short_title = title_dict[tid][1]
+                                else:
+                                    fc = loc_prompt1.split('?')[0].split('.')[0].strip()
+                                    if 4 <= len(fc) <= 35:
+                                        short_title = fc
+                                    else:
+                                        short_title = CURRICULUM_TITLES_BY_GRADE.get(subj, {}).get(g_code, f"{subj.capitalize()} Grade {g_code}")
                         else:
                             # Authentic fallback for daily authored question
                             fallback_q = trans_qs_list[t_idx % len(trans_qs_list)] if trans_qs_list else None
@@ -418,7 +458,7 @@ def build_science_batches():
                     entry = {
                         "title": short_title,
                         "topic": short_title,
-                        "goal": GOAL_BY_LANG.get(lang, GOAL_BY_LANG["en"]),
+                        "goal": build_goal(lang, short_title),
                         "material": loc_prompt1,
                         "thinking.0": short_title,
                         "thinking.1": "Scientific reasoning and principle deduction",
@@ -463,7 +503,7 @@ def build_science_batches():
                     json.dump(batch_overlay, f, ensure_ascii=False, indent=2)
 
     print("=== 2. Rebuilding Static Thinking Assets & Indexes ===")
-    os.system("node scripts/think/gen-extra-index.mjs")
+    os.system(f"cd {ROOT} && node scripts/think/gen-extra-index.mjs")
     print("SUCCESS: Pure science curriculum batches rebuilt with 130 unique tasks per subject across all 88 languages!")
 
 if __name__ == "__main__":

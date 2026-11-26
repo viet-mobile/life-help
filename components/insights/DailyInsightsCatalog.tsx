@@ -389,11 +389,7 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
                   {isBilingual && secondaryInsights.map(({ locale: secLoc, insight: secInsight }) => (
                     secInsight?.title && secInsight.title !== insight.title ? (
                       <p key={secLoc} className="mt-1 text-xs font-bold text-slate-500 flex items-baseline gap-1.5">
-                        {effectiveSecondaryLocales.length > 1 && (
-                          <span className="inline-block text-[9px] font-black uppercase px-1 py-0.2 rounded bg-slate-100 text-slate-600 border border-slate-200 shrink-0">
-                            {secLoc}
-                          </span>
-                        )}
+                        
                         <span>{secInsight.title}</span>
                       </p>
                     ) : null
@@ -406,11 +402,7 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
                   {isBilingual && secondaryInsights.map(({ locale: secLoc, insight: secInsight }) => (
                     secInsight?.summary && secInsight.summary !== insight.summary ? (
                       <p key={secLoc} className="mt-1 text-xs text-slate-500 font-medium leading-relaxed flex items-baseline gap-1.5">
-                        {effectiveSecondaryLocales.length > 1 && (
-                          <span className="inline-block text-[9px] font-black uppercase px-1 py-0.2 rounded bg-slate-100 text-slate-600 border border-slate-200 shrink-0">
-                            {secLoc}
-                          </span>
-                        )}
+                        
                         <span>{secInsight.summary}</span>
                       </p>
                     ) : null
@@ -427,11 +419,7 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
                     {isBilingual && secondaryInsights.map(({ locale: secLoc, insight: secInsight }) => (
                       secInsight?.principle && secInsight.principle !== insight.principle ? (
                         <p key={secLoc} className="text-[11px] font-medium text-slate-500 flex items-baseline gap-1.5">
-                          {effectiveSecondaryLocales.length > 1 && (
-                            <span className="inline-block text-[9px] font-black uppercase px-1 py-0.2 rounded bg-slate-200 text-slate-700 border border-slate-300 shrink-0">
-                              {secLoc}
-                            </span>
-                          )}
+                          
                           <span><RichText text={secInsight.principle} /></span>
                         </p>
                       ) : null
@@ -444,11 +432,7 @@ export function DailyInsightsCatalog({ initialDomain = "korean" }: DailyInsights
                     {isBilingual && secondaryInsights.map(({ locale: secLoc, insight: secInsight }) => (
                       secInsight?.example && (secInsight.example !== insight.example || secLoc !== locale) ? (
                         <p key={secLoc} className="text-[11px] text-slate-500 font-normal flex items-baseline gap-1.5">
-                          {effectiveSecondaryLocales.length > 1 && (
-                            <span className="inline-block text-[9px] font-black uppercase px-1 py-0.2 rounded bg-slate-200 text-slate-700 border border-slate-300 shrink-0">
-                              {secLoc}
-                            </span>
-                          )}
+                          
                           <span><RichText text={secInsight.example} /></span>
                         </p>
                       ) : null

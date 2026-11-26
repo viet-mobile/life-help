@@ -100,7 +100,7 @@ function ChoiceRenderer({ q, value, onChange, disabled }: RendererProps) {
               {o.secTexts && o.secTexts.length > 0 ? (
                 o.secTexts.map((st) => (
                   <div key={st.locale} style={{ fontSize: "0.85em", opacity: 0.85, marginTop: "0.15rem" }}>
-                    {o.secTexts!.length > 1 && <span className="opacity-70 text-[10px] uppercase font-bold mr-1">[{st.locale}]</span>}
+                    
                     <RichText text={st.text} dir="auto" />
                   </div>
                 ))
@@ -159,7 +159,7 @@ function MultiRenderer({ q, value, onChange, disabled }: RendererProps) {
               {o.secTexts && o.secTexts.length > 0 ? (
                 o.secTexts.map((st) => (
                   <div key={st.locale} style={{ fontSize: "0.85em", opacity: 0.85, marginTop: "0.15rem" }}>
-                    {o.secTexts!.length > 1 && <span className="opacity-70 text-[10px] uppercase font-bold mr-1">[{st.locale}]</span>}
+                    
                     <RichText text={st.text} dir="auto" />
                   </div>
                 ))

@@ -95,7 +95,7 @@ export function CoursePath({ course }: { course: Course }) {
               <span>{t(`semester.${n}` as never)}</span>
               {secCourses.map(({ locale: secLoc, t: secT }) => (
                 <span key={secLoc} style={{ display: "block", fontSize: "0.8em", opacity: 0.85 }}>
-                  {secCourses.length > 1 && secLoc && <span className="opacity-70 text-[10px] uppercase mr-1">[{secLoc}]</span>}
+                  
                   {secT(`semester.${n}` as never)}
                 </span>
               ))}
@@ -114,7 +114,7 @@ export function CoursePath({ course }: { course: Course }) {
                 if (!su) return null;
                 return (
                   <div key={secLoc || sc.id} style={{ fontSize: "0.8em", fontWeight: 400, opacity: 0.85, marginTop: "0.15rem" }}>
-                    {secCourses.length > 1 && secLoc && <span className="opacity-70 text-[10px] uppercase mr-1">[{secLoc}]</span>}
+                    
                     {secT("learn.unit")} · {su.title}
                   </div>
                 );
@@ -138,7 +138,7 @@ export function CoursePath({ course }: { course: Course }) {
                         if (!sl) return null;
                         return (
                           <span key={secLoc || sc.id} style={{ display: "block", fontSize: "0.88em", fontWeight: 400, opacity: 0.85 }}>
-                            {secCourses.length > 1 && secLoc && <span className="opacity-70 text-[10px] uppercase mr-1">[{secLoc}]</span>}
+                            
                             {sl.title}
                           </span>
                         );
@@ -154,7 +154,7 @@ export function CoursePath({ course }: { course: Course }) {
                             <span>{node?.placedOut && !node.stars ? t("learn.lesson.placed") : `${"★".repeat(node?.stars ?? 0)}${"☆".repeat(3 - (node?.stars ?? 0))} ${t("learn.lesson.done")}`}</span>
                             {secCourses.map(({ locale: secLoc, t: secT }) => (
                               <span key={secLoc} style={{ opacity: 0.85, marginLeft: "0.3rem" }}>
-                                {secCourses.length > 1 && secLoc && <span className="opacity-70 text-[10px] uppercase mr-0.5">[{secLoc}]</span>}
+                                
                                 ({secT(node?.placedOut && !node.stars ? "learn.lesson.placed" : "learn.lesson.done")})
                               </span>
                             ))}
@@ -164,7 +164,7 @@ export function CoursePath({ course }: { course: Course }) {
                             <span>{t("learn.lesson.current")}</span>
                             {secCourses.map(({ locale: secLoc, t: secT }) => (
                               <span key={secLoc} style={{ opacity: 0.85, marginLeft: "0.3rem" }}>
-                                {secCourses.length > 1 && secLoc && <span className="opacity-70 text-[10px] uppercase mr-0.5">[{secLoc}]</span>}
+                                
                                 ({secT("learn.lesson.current")})
                               </span>
                             ))}
@@ -174,7 +174,7 @@ export function CoursePath({ course }: { course: Course }) {
                             <span>{t("learn.lesson.locked")}</span>
                             {secCourses.map(({ locale: secLoc, t: secT }) => (
                               <span key={secLoc} style={{ opacity: 0.85, marginLeft: "0.3rem" }}>
-                                {secCourses.length > 1 && secLoc && <span className="opacity-70 text-[10px] uppercase mr-0.5">[{secLoc}]</span>}
+                                
                                 ({secT("learn.lesson.locked")})
                               </span>
                             ))}
@@ -187,7 +187,7 @@ export function CoursePath({ course }: { course: Course }) {
                         <span>{t("premium.locked")}</span>
                         {secCourses.map(({ locale: secLoc, t: secT }) => (
                           <span key={secLoc} style={{ display: "block", fontSize: "0.75em", opacity: 0.85 }}>
-                            {secCourses.length > 1 && secLoc && <span className="opacity-70 text-[10px] uppercase mr-0.5">[{secLoc}]</span>}
+                            
                             {secT("premium.locked")}
                           </span>
                         ))}
@@ -197,7 +197,7 @@ export function CoursePath({ course }: { course: Course }) {
                         <span>{status === "done" ? t("learn.lesson.replay") : t("learn.lesson.start")}</span>
                         {secCourses.map(({ locale: secLoc, t: secT }) => (
                           <span key={secLoc} style={{ display: "block", fontSize: "0.75em", opacity: 0.85 }}>
-                            {secCourses.length > 1 && secLoc && <span className="opacity-70 text-[10px] uppercase mr-0.5">[{secLoc}]</span>}
+                            
                             {status === "done" ? secT("learn.lesson.replay") : secT("learn.lesson.start")}
                           </span>
                         ))}

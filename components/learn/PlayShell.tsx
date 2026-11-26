@@ -77,7 +77,7 @@ export function PlayShell({ children }: { children: ReactNode }) {
                       const secText = tab.key === "think" ? hubLabels(st.t).title : st.t(tab.key);
                       return (
                         <span key={st.locale} style={{ fontSize: "0.75em", opacity: 0.85, lineHeight: 1, marginTop: "1px" }}>
-                          {secondaryTranslators.length > 1 && <span className="opacity-70 text-[9px] uppercase mr-0.5">[{st.locale}]</span>}
+                          
                           {secText}
                         </span>
                       );
