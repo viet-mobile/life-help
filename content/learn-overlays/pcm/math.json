@@ -13331,7 +13331,7 @@
         "explanation": "From $\\binom{{n}}{{r}}p^{{r}}(1-p)^{{nr}}=\\binom{{n}}{{r1}}p^{{r1}}(1-p)^{{nr1}}$, we get $\\binom{{n}}{{r}}(1-p)=\\binom{{n}}{{r1}}p$, dat is, $\\frac{p}{1-p}=\\frac{{r1}}{{nr}}$. So $p={fe}$. "
       },
       "pst_binomSumId": {
-        "prompt": "Find dis value: $$\\sum_{k=0}^{{n}}\\binom{{n}}{k}\\,{at}^{k}$$ (Write numbers only)",
+        "prompt": "Find dis value: $$\\sum<sub>k=0</sub>^{{n}}\\binom{{n}}{k}\\,{at}^{k}$$ (Write numbers only)",
         "hints": [
           "For binomial theorem, $(1+x)^{N}=\\sum_{k=0}^{N}\\binom{N}{k}x^{k}$. Substitute di correct value for $x$.",
           "Choose $x$ so $(1+x)^{N}$ become equal to di sum."
@@ -13643,7 +13643,7 @@
         "explanation": "The standard error is $\\frac{{sd}}{\\sqrt{{cnt}}}={se}$, and the margin of error is ${t0}\\times{se}={moe}$, so the lower bound is ${xbar}-{moe}={ans}.$"
       },
       "stat_zStat": {
-        "prompt": "A product is known to have a mean lifetime of ${mu0} hours. A random sample of {cnt} products made using a new process had a mean lifetime of $\\bar{x}={xbar}$ hours. Assuming lifetimes are normally distributed and the population standard deviation remains $\\sigma={sig}$ hours, what is the test statistic $Z=\\dfrac{\\bar{x}-{mu0}}{\\sigma/\\sqrt{n}}$ for the null hypothesis $H_0: m={mu0}$? (Enter numbers only)$",
+        "prompt": "A product is known to have a mean lifetime of ${mu0} hours. A random sample of {cnt} products made using a new process had a mean lifetime of $\\bar{x}={xbar}$ hours. Assuming lifetimes are normally distributed and the population standard deviation remains $\\sigma={sig}$ hours, what is the test statistic $Z=\\dfrac{\\bar{x}-{mu0}}{\\sigma/\\sqrt{n}}$ for the null hypothesis $H<sub>0</sub>: m={mu0}$? (Enter numbers only)$",
         "hints": [
           "First calculate $\\dfrac{\\sigma}{\\sqrt{n}}$.",
           "Divide the difference between the sample mean and ${mu0}$ by that value. The result may be negative."

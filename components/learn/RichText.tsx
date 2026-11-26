@@ -7,7 +7,7 @@ type Segment = { kind: "text" | "math" | "bold" | "sub" | "sup"; value: string }
 /** Split "text $x^2$ **bold**" into segments. `$...$` is inline KaTeX, `**...**` is emphasis. */
 export function parseRich(input: string): Segment[] {
   const out: Segment[] = [];
-  const re = /\$([^$]+)\$|\*\*([^*]+)\*\*|<sub>([^<]+)<\/sub>|<sup>([^<]+)<\/sup>/g;
+  const re = /\$([^$]+)\$|\*\*([^*]+)\*\*|<sub>([^<]+)<\/sub>|<sup>([^<]+)<\/sup>|(?:([A-Za-zΔ]{1,4})_\{([^}]+)\}|([A-Za-zΔ]{1,4})_([0-9A-Za-z]{1,3}))/g;
   let last = 0;
   let m: RegExpExecArray | null;
   while ((m = re.exec(input))) {
@@ -16,6 +16,13 @@ export function parseRich(input: string): Segment[] {
     else if (m[2] !== undefined) out.push({ kind: "bold", value: m[2] });
     else if (m[3] !== undefined) out.push({ kind: "sub", value: m[3] });
     else if (m[4] !== undefined) out.push({ kind: "sup", value: m[4] });
+    else if (m[5] !== undefined && m[6] !== undefined) {
+      out.push({ kind: "text", value: m[5] });
+      out.push({ kind: "sub", value: m[6] });
+    } else if (m[7] !== undefined && m[8] !== undefined) {
+      out.push({ kind: "text", value: m[7] });
+      out.push({ kind: "sub", value: m[8] });
+    }
     last = m.index + m[0].length;
   }
   if (last < input.length) out.push({ kind: "text", value: input.slice(last) });
