@@ -3,20 +3,54 @@
 import React, { useState, useMemo } from "react";
 import type { StandardArticle, AnchorLanguage } from "@/lib/standards/types";
 import { ANCHOR_LANGUAGES } from "@/lib/standards/types";
+import { useLearner } from "@/components/learn/LearnerProvider";
 import standardsData from "@/lib/standards/data/korean_norms_anchor.json";
 
 const articles = standardsData as unknown as StandardArticle[];
 
+function toAnchorLang(loc: string | null | undefined, fallback: AnchorLanguage = "ko"): AnchorLanguage {
+  if (!loc) return fallback;
+  const l = loc.toLowerCase();
+  if (l === "ko") return "ko";
+  if (l === "en") return "en";
+  if (l === "vi") return "vi";
+  if (l === "zh-hant" || l === "zh-tw" || l === "zt") return "zh-Hant";
+  if (l === "zh-hans" || l === "zh-cn" || l === "zh" || l === "zs") return "zh-Hans";
+  if (l === "ja") return "ja";
+  return fallback;
+}
+
 export function KoreanStandardsView() {
-  const [primaryLang, setPrimaryLang] = useState<AnchorLanguage>("ko");
-  const [secondaryLang, setSecondaryLang] = useState<AnchorLanguage>("en");
-  const [isBilingual, setIsBilingual] = useState<boolean>(true);
+  const { locale, secondaryLocale, secondaryLocales, isBilingual } = useLearner();
+
+  // Resolve languages dynamically from top header LearnerProvider
+  const primaryLang: AnchorLanguage = useMemo(() => {
+    return toAnchorLang(locale, "ko");
+  }, [locale]);
+
+  const secondaryLang: AnchorLanguage = useMemo(() => {
+    // If primary is not Korean, default secondary comparison is Korean (ko)
+    if (primaryLang !== "ko") {
+      const topSec = secondaryLocale || secondaryLocales?.[0];
+      return topSec ? toAnchorLang(topSec, "ko") : "ko";
+    }
+    // If primary is Korean, secondary defaults to top secondary or English
+    const topSec = secondaryLocale || secondaryLocales?.[0];
+    return topSec ? toAnchorLang(topSec, "en") : "en";
+  }, [primaryLang, secondaryLocale, secondaryLocales]);
+
+  // Show bilingual if LearnerProvider has isBilingual on OR if primary is a foreign language comparing with Korean
+  const showBilingual = isBilingual || (primaryLang !== "ko");
+
   const [selectedPart, setSelectedPart] = useState<number | "all">("all");
   const [selectedChapter, setSelectedChapter] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [expandedArticles, setExpandedArticles] = useState<Record<string, boolean>>({});
   const [allExpanded, setAllExpanded] = useState<boolean>(false);
   const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  const primaryLangMeta = ANCHOR_LANGUAGES.find((l) => l.code === primaryLang) || ANCHOR_LANGUAGES[0];
+  const secondaryLangMeta = ANCHOR_LANGUAGES.find((l) => l.code === secondaryLang) || ANCHOR_LANGUAGES[1];
 
   // Available chapters for current part
   const availableChapters = useMemo(() => {
@@ -60,7 +94,7 @@ export function KoreanStandardsView() {
       );
       if (primMatch) return true;
 
-      if (isBilingual && sec) {
+      if (showBilingual && sec) {
         const secMatch = (
           (sec.rule && sec.rule.toLowerCase().includes(query)) ||
           (sec.explanation && sec.explanation.toLowerCase().includes(query)) ||
@@ -77,7 +111,7 @@ export function KoreanStandardsView() {
 
       return false;
     });
-  }, [primaryLang, secondaryLang, isBilingual, selectedPart, selectedChapter, searchQuery]);
+  }, [primaryLang, secondaryLang, showBilingual, selectedPart, selectedChapter, searchQuery]);
 
   const toggleExpand = (id: string) => {
     setExpandedArticles((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -104,7 +138,7 @@ export function KoreanStandardsView() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-8 space-y-8">
+    <div className="max-w-5xl mx-auto px-4 py-8 space-y-6">
       {/* Top Banner */}
       <div className="bg-gradient-to-br from-indigo-900 via-indigo-800 to-slate-900 text-white rounded-2xl p-6 sm:p-8 shadow-xl border border-indigo-700/40 relative overflow-hidden">
         <div className="absolute -right-10 -bottom-10 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -117,74 +151,33 @@ export function KoreanStandardsView() {
             한국어 표준어 규정 전체
           </h1>
           <p className="text-sm sm:text-base text-indigo-100/90 leading-relaxed max-w-3xl">
-            제1부 <span className="font-semibold text-white">표준어 사정 원칙</span>(26개 항) 및 제2부 <span className="font-semibold text-white">표준 발음법</span>(30개 항)을 현대적인 맞춤형 UI로 학습하세요. 6대 앵커 언어 번역 및 1:1 대조 병기 모드를 지원합니다.
+            제1부 <span className="font-semibold text-white">표준어 사정 원칙</span>(26개 항) 및 제2부 <span className="font-semibold text-white">표준 발음법</span>(30개 항)을 현대적인 맞춤형 UI로 학습하세요. 상단 헤더에서 선택한 언어와 병기 설정이 자동 연동됩니다.
           </p>
         </div>
       </div>
 
-      {/* Controls & Language Bar */}
-      <div className="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
-        {/* Row 1: Language selection */}
-        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-4">
-          <div className="flex flex-wrap items-center gap-3">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
-                기본 언어:
-              </span>
-              <select
-                value={primaryLang}
-                onChange={(e) => {
-                  const newPrimary = e.target.value as AnchorLanguage;
-                  setPrimaryLang(newPrimary);
-                  if (newPrimary === secondaryLang) {
-                    setSecondaryLang(newPrimary === "ko" ? "en" : "ko");
-                  }
-                }}
-                className="px-3 py-1.5 bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg text-sm font-semibold text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              >
-                {ANCHOR_LANGUAGES.map((lang) => (
-                  <option key={lang.code} value={lang.code}>
-                    {lang.flag} {lang.native} ({lang.label})
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* Bilingual Toggle */}
-            <div className="flex items-center gap-2 pl-2 border-l border-slate-200 dark:border-slate-700">
-              <label className="inline-flex items-center gap-2 cursor-pointer select-none">
-                <input
-                  type="checkbox"
-                  checked={isBilingual}
-                  onChange={(e) => setIsBilingual(e.target.checked)}
-                  className="sr-only peer"
-                />
-                <div className="w-9 h-5 bg-slate-300 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-slate-600 peer-checked:bg-indigo-600 relative"></div>
-                <span className="text-xs font-bold text-slate-700 dark:text-slate-300">
-                  🌐 다중 언어 병기
+      {/* Filter & Search Bar (Duplicated language controls eliminated; header language applied) */}
+      <div className="bg-white dark:bg-slate-900 rounded-2xl p-4 sm:p-5 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+        {/* Row 1: Active Language Indicator & Quick Actions */}
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-800 pb-3">
+          <div className="flex items-center gap-2 text-xs font-medium text-slate-600 dark:text-slate-300">
+            <span className="text-slate-400">적용 언어:</span>
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-bold border border-slate-200 dark:border-slate-700">
+              {primaryLangMeta.flag} {primaryLangMeta.native}
+            </span>
+            {showBilingual && (
+              <>
+                <span className="text-slate-400">⇄</span>
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 font-bold border border-indigo-200 dark:border-indigo-800">
+                  {secondaryLangMeta.flag} {secondaryLangMeta.native} (병기)
                 </span>
-              </label>
-
-              {isBilingual && (
-                <div className="flex items-center gap-1.5 ml-2">
-                  <span className="text-xs text-slate-500 dark:text-slate-400">비교:</span>
-                  <select
-                    value={secondaryLang}
-                    onChange={(e) => setSecondaryLang(e.target.value as AnchorLanguage)}
-                    className="px-2.5 py-1 bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-semibold text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                  >
-                    {ANCHOR_LANGUAGES.filter((l) => l.code !== primaryLang).map((lang) => (
-                      <option key={lang.code} value={lang.code}>
-                        {lang.flag} {lang.native}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              )}
-            </div>
+              </>
+            )}
+            <span className="text-[11px] text-slate-400 hidden sm:inline ml-1">
+              (상단 메뉴에서 언어 및 병기를 변경할 수 있습니다)
+            </span>
           </div>
 
-          {/* Quick Collapse / Expand All */}
           <div>
             <button
               type="button"
@@ -294,7 +287,7 @@ export function KoreanStandardsView() {
         ) : (
           filteredArticles.map((art) => {
             const pTrans = art.i18n[primaryLang] || art.i18n.ko;
-            const sTrans = isBilingual ? (art.i18n[secondaryLang] || art.i18n.ko) : null;
+            const sTrans = showBilingual ? (art.i18n[secondaryLang] || art.i18n.ko) : null;
             const isExpanded = !!expandedArticles[art.id];
             const hasDetails = art.details && art.details.length > 0;
             const isPart1 = art.partNum === 1;
@@ -362,7 +355,7 @@ export function KoreanStandardsView() {
                         {sTrans && sTrans.rule && (
                           <div className="text-sm sm:text-base font-medium text-slate-600 dark:text-slate-300 pt-2 border-t border-slate-200 dark:border-slate-700 leading-snug">
                             <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-indigo-500 mr-2 bg-indigo-50 dark:bg-indigo-950 px-1.5 py-0.2 rounded">
-                              {secondaryLang}
+                              {secondaryLangMeta.native}
                             </span>
                             {sTrans.rule}
                           </div>
@@ -387,7 +380,7 @@ export function KoreanStandardsView() {
                         {sTrans && sTrans.explanation && (
                           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed bg-slate-50 dark:bg-slate-800/40 p-3 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
                             <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-indigo-500 mr-1.5">
-                              [{secondaryLang}]
+                              [{secondaryLangMeta.native}]
                             </span>
                             {sTrans.explanation}
                           </p>

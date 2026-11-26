@@ -1,6 +1,7 @@
 "use client";
 
 import { BandOverview } from "./BandOverview";
+import { KoreanStandardsEntry } from "./KoreanStandardsEntry";
 import { CoursePath } from "./CoursePath";
 import { LevelUnavailable } from "./LevelUnavailable";
 import { SituationalDialoguesHub } from "./SituationalDialoguesHub";
@@ -24,6 +25,7 @@ export function LearnWorld() {
           );
         })}
       </div>
+      {site === "korean" && <KoreanStandardsEntry />}
       {site === "korean" && <BandOverview />}
       {(site === "korean" || site === "english") && <SituationalDialoguesHub />}
       {index.bundle.catalog.courses.length === 0 && <LevelUnavailable />}
