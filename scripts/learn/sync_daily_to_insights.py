@@ -102,6 +102,12 @@ def run():
                 "example": f"주요 힌트: {hint_str}",
                 "actionItem": f"탐구 문제를 풀고 {title}의 원리를 일상과 연계해 보세요.",
             }
+            if "country_ref" in q:
+                insight_obj["country_ref"] = q["country_ref"]
+            if "iso2" in q:
+                insight_obj["iso2"] = q["iso2"]
+            if "country" in q:
+                insight_obj["country"] = q["country"]
             
             current_list.append(insight_obj)
             existing_ids.add(qid)

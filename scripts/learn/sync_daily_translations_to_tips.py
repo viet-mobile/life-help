@@ -133,6 +133,10 @@ def sync_translations():
         with open(DATA_DIR / f"{subj}.json", "r", encoding="utf-8") as f:
             domains_data[subj] = json.load(f)[366:]
 
+    with open(DATA_DIR / "life.json", "r", encoding="utf-8") as f:
+        full_life_data = json.load(f)
+    country_map = {x["id"]: x for x in full_life_data if str(x.get("id", "")).startswith("country-")}
+
     all_lang_files = sorted(PUBLIC_TIPS.glob("*.json"))
     print(f"Syncing overlays for {len(all_lang_files)} languages across 851 items past day 366...")
 
@@ -196,11 +200,16 @@ def sync_translations():
                     overlays[qid] = ov_item
                     overlays[f"{s_name}-{grade_str}-{q_num}"] = ov_item
 
-        # 2. Life items (country-* and 202611*-life-all-*)
+        # 2. Life items (country-*, 202611*-life-all-*, and {date_str}-country-*)
         for it in domains_data["life"]:
             qid = it["id"]
             if qid.startswith("country-"):
                 ov_item = get_country_overlay(it, lang)
+                overlays[qid] = ov_item
+            elif "-country-" in qid or "country_ref" in it:
+                c_id = it.get("country_ref") or ("country-" + qid.split("-country-")[-1])
+                base_c = country_map.get(c_id, it)
+                ov_item = get_country_overlay(base_c, lang)
                 overlays[qid] = ov_item
             elif "life-all" in qid:
                 if qid.endswith("-1") or qid == "20261118-life-all":

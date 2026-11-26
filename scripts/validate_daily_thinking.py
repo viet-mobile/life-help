@@ -29,8 +29,8 @@ def validate_file(file_path):
         return False
         
     total = len(data)
-    if total not in (55, 110):
-        print(f"❌ Error: Expected 55 or 110 questions, but found {total}.")
+    if total not in (55, 74, 110):
+        print(f"❌ Error: Expected 55, 74 or 110 questions, but found {total}.")
         return False
         
     subject_counts = {}

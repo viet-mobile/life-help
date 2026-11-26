@@ -47,7 +47,7 @@ describe("40 more task languages (the other service languages)", () => {
     expect(localize(task, "vi", { t1: { title: "x" } }).translated).toBe(false);
   });
   it("every overlay folder of an extra language (once translations exist) only addresses real tasks and paths, with no empty values", async () => {
-    const { FILE_META, TASK_LOADERS } = await import("../../lib/think/data/files");
+    const { FILE_META, TASK_LOADERS } = await import("../../lib/think/data/assets-index");
     const flats = new Map<string, Record<string, string>>();
     for (const m of FILE_META) for (const t of await TASK_LOADERS[m.key]()) flats.set(t.id, flatten(t));
     for (const l of EXTRA_TASK_LANGS) {

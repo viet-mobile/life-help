@@ -245,49 +245,55 @@ def author_ensemble_questions(date_str=None):
             q["author_model"] = f"클 ({CLAUDE_MODEL})"
             questions.append(q)
 
-    # 3. 190개국 일일 거주·생활 행정 가이드 (매일 1국가 로테이션, 89개 언어 서비스)
+    # 3. 190개국 일일 거주·행정 가이드 (매일 19개국 10일 주기 로테이션, 89개 언어 서비스)
     life_data_path = BASE_DIR / "lib" / "learn" / "dailyInsights" / "data" / "life.json"
     if life_data_path.exists():
         try:
             with open(life_data_path, "r", encoding="utf-8") as lf:
                 country_items = [x for x in json.load(lf) if str(x.get("id", "")).startswith("country-")]
             if country_items:
-                featured = country_items[day_of_year % len(country_items)]
-                c_name = featured.get("country", "").capitalize()
-                c_q = {
-                    "id": f"{date_str}-{featured['id']}",
-                    "subject": "life",
-                    "grade": "COUNTRY",
-                    "title": featured.get("title", f"{c_name} 생활 가이드"),
-                    "concept": "190개국 일일 거주·생활 행정 가이드",
-                    "question": f"[{c_name} 외국인 생활 행정 가이드] {featured.get('summary', '')}",
-                    "options": [
-                        f"{featured.get('actionItem', '')}",
-                        "외국인 거주 등록은 출국 시에만 일괄 신고하면 된다.",
-                        "공식 공공 포털 대신 사설 브로커 사이트를 통해서만 비자를 연장해야 한다.",
-                        "현지 공공 의료보험은 영주권자만 가입 가능하므로 가입을 보류한다."
-                    ],
-                    "answer": 0,
-                    "hints": [
-                        "입국 직후 관할 지자체 거주지 등록이 최우선 행정 절차입니다.",
-                        "국가 공식 이민국 포털을 통해 최신 규정을 확인하십시오."
-                    ],
-                    "explanation": f"1단계: {featured.get('principle', '')}\n2단계: {featured.get('actionItem', '')}",
-                    "author_model": f"클 ({CLAUDE_MODEL}) & 안 ({GEMINI_MODEL})",
-                    "country_ref": featured["id"]
-                }
-                questions.append(c_q)
+                day_slot = day_of_year % 10
+                start_idx = day_slot * 19
+                todays_countries = country_items[start_idx : start_idx + 19]
+                for featured in todays_countries:
+                    c_name = featured.get("country", "").capitalize()
+                    c_q = {
+                        "id": f"{date_str}-{featured['id']}",
+                        "subject": "life",
+                        "grade": "COUNTRY",
+                        "title": featured.get("title", f"{c_name} 생활 가이드"),
+                        "concept": "190개국 일일 거주·생활 행정 가이드",
+                        "question": f"[{c_name} 외국인 생활 행정 가이드] {featured.get('summary', '')}",
+                        "options": [
+                            f"{featured.get('actionItem', '')}",
+                            "외국인 거주 등록은 출국 시에만 일괄 신고하면 된다.",
+                            "공식 공공 포털 대신 사설 브로커 사이트를 통해서만 비자를 연장해야 한다.",
+                            "현지 공공 의료보험은 영주권자만 가입 가능하므로 가입을 보류한다."
+                        ],
+                        "answer": 0,
+                        "hints": [
+                            "입국 직후 관할 지자체 거주지 등록이 최우선 행정 절차입니다.",
+                            "국가 공식 이민국 포털을 통해 최신 규정을 확인하십시오."
+                        ],
+                        "explanation": f"1단계: {featured.get('principle', '')}\n2단계: {featured.get('actionItem', '')}",
+                        "author_model": f"클 ({CLAUDE_MODEL}) & 안 ({GEMINI_MODEL})",
+                        "country_ref": featured["id"],
+                        "iso2": featured.get("iso2", ""),
+                        "country": featured.get("country", "")
+                    }
+                    questions.append(c_q)
         except Exception as ce:
             print(f"⚠️ 190개국 생활정보 로테이션 로드 중 예외: {ce}")
             
-    # 3. 안 (Antigravity / Gemini Engine) 종합 및 KaTeX 전수 무결성 검증
+    # 4. 안 (Antigravity / Gemini Engine) 종합 및 KaTeX 전수 무결성 검증
     for q in questions:
         q["reviewed_by"] = f"안 ({GEMINI_MODEL} Ensemble Supervisor)"
         
-    print(f"\n🎉 110개 문항 전수 앙상블 종합 완료! (총 {len(questions)}문항)")
-    print(f"   - 덱 출제분: 72문항 (수학 24, 물리 24, 화학 24)")
-    print(f"   - 클 출제분: 38문항 (영어 24, 한국어 TOPIK 12, 생활 2)")
-    print(f"   - 안 종합분: 110문항 무결성 100% 검증 및 스키마 정규화 완료")
+    print(f"\n🎉 일일 문항 전수 앙상블 종합 완료! (총 {len(questions)}문항)")
+    print(f"   - 덱 출제분: 36문항 (수학 12, 물리 12, 화학 12)")
+    print(f"   - 클 출제분: 19문항 (영어 12, 한국어 TOPIK 6, 생활 1)")
+    print(f"   - 190개국 거주 가이드: 19문항 (19개국 로테이션, 89개 언어 서비스)")
+    print(f"   - 안 종합분: {len(questions)}문항 무결성 100% 검증 및 스키마 정규화 완료")
     
     with open(out_file_110, "w", encoding="utf-8") as f:
         json.dump(questions, f, ensure_ascii=False, indent=2)

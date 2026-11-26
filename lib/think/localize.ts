@@ -132,7 +132,7 @@ export function mergeBilingual(primary: ThinkTask, secondary: ThinkTask): ThinkT
  * (e.g. English reading passages with introductory lines per language).
  */
 export function deduplicateMaterialQuotes(text: string): string {
-  const pattern = /"[^"]{20,}"/gs;
+  const pattern = /"[^"]{20,}"/g;
   const quotes = text.match(pattern);
   if (quotes && quotes.length > 1 && new Set(quotes).size === 1) {
     const shared = quotes[0];
@@ -140,7 +140,7 @@ export function deduplicateMaterialQuotes(text: string): string {
     const intros = segments.map((s) => s.trim()).filter(Boolean);
     return intros.join("\n") + "\n\n" + shared;
   }
-  const patternCurly = /[“「][^”」]{20,}[”」]/gs;
+  const patternCurly = /[“「][^”」]{20,}[”」]/g;
   const quotesCurly = text.match(patternCurly);
   if (quotesCurly && quotesCurly.length > 1 && new Set(quotesCurly).size === 1) {
     const shared = quotesCurly[0];
