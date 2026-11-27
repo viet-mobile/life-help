@@ -390,7 +390,7 @@ function RenderExampleTable({
                 return (
                   <tr key={rIdx} className="hover:bg-slate-50/70 dark:hover:bg-slate-800/50 transition">
                     {/* Standard Word */}
-                    <td className="px-3.5 py-2.5 align-top font-bold text-slate-900 dark:text-slate-50">
+                    <td className="px-3.5 py-2.5 align-top font-bold text-slate-900 dark:text-slate-50 text-base sm:text-lg">
                       {stdWord}
                     </td>
 
@@ -506,7 +506,7 @@ function RenderExampleTable({
 function RenderExampleList({ list }: { list: ExampleListBlock }) {
   return (
     <div className="space-y-2.5">
-      {list.title && (
+      {list.title && !/^\s*\(\d+\)\s*$/.test(list.title) && (
         <div className="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300">
           {list.title}
         </div>
@@ -519,20 +519,20 @@ function RenderExampleList({ list }: { list: ExampleListBlock }) {
             return (
               <div
                 key={idx}
-                className="flex items-center justify-between gap-2 px-3.5 py-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-2xs transition hover:border-indigo-200 dark:hover:border-indigo-800"
+                className="flex items-center justify-between gap-2 px-4 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-2xs transition hover:border-indigo-200 dark:hover:border-indigo-800"
               >
-                <span className="text-sm sm:text-base font-bold text-slate-900 dark:text-slate-50 tracking-tight">{word.trim()}</span>
-                <span className="px-2 py-0.5 rounded-md bg-indigo-50 dark:bg-indigo-950/70 text-indigo-700 dark:text-indigo-300 font-mono font-bold text-xs sm:text-sm border border-indigo-200/80 dark:border-indigo-800/80 shadow-2xs">
+                <span className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-50 tracking-tight">{word.trim()}</span>
+                <span className="px-2.5 py-1 rounded-md bg-indigo-50 dark:bg-indigo-950/70 text-indigo-700 dark:text-indigo-300 font-mono font-bold text-sm sm:text-base border border-indigo-200/80 dark:border-indigo-800/80 shadow-2xs">
                   {pron}
                 </span>
-                {rest && <span className="text-[11px] text-slate-400">{rest}</span>}
+                {rest && <span className="text-xs text-slate-400">{rest}</span>}
               </div>
             );
           }
           return (
             <div
               key={idx}
-              className="px-3.5 py-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-2xs text-sm sm:text-base font-bold text-slate-800 dark:text-slate-100"
+              className="px-4 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-2xs text-base sm:text-lg font-bold text-slate-800 dark:text-slate-100"
             >
               {item}
             </div>
@@ -1026,7 +1026,10 @@ export function KoreanStandardsView() {
               const pTrans = art.i18n[primaryLang] || art.i18n.ko;
               const sTrans = showBilingual ? (art.i18n[secondaryLang] || art.i18n.ko) : null;
               const isExpanded = !!expandedArticles[art.id];
-              const hasStructured = art.structuredExamples && art.structuredExamples.length > 0;
+              const validStructured = (art.structuredExamples || []).filter(
+                (b) => !(b.type === "text" && /^\s*\(\d+\)\s*$/.test(b.content || ""))
+              );
+              const hasStructured = validStructured.length > 0;
               const hasDetails = (art.details && art.details.length > 0) || hasStructured;
               const isPart1 = art.partNum === 1;
 
@@ -1182,7 +1185,7 @@ export function KoreanStandardsView() {
                           <span>{isExpanded ? uiP.collapseDetails : uiP.expandDetails}</span>
                           {hasStructured && (
                             <span className="text-[11px] opacity-75 font-normal">
-                              {uiP.itemsCount.replace("{count}", (art.structuredExamples?.length || 0).toString())}
+                              {uiP.itemsCount.replace("{count}", validStructured.length.toString())}
                             </span>
                           )}
                         </button>
@@ -1199,7 +1202,7 @@ export function KoreanStandardsView() {
 
                       {hasStructured ? (
                         <div className="space-y-4">
-                          {art.structuredExamples?.map((block, idx) => {
+                          {validStructured.map((block, idx) => {
                             if (block.type === "table") {
                               return (
                                 <RenderExampleTable
