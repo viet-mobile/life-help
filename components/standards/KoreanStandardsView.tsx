@@ -1224,7 +1224,7 @@ export function KoreanStandardsView() {
   }
 
   return (
-    <div className="max-w-[1040px] mx-auto px-3 sm:px-4 py-6 sm:py-8 pb-36 sm:pb-40 space-y-6 sm:space-y-8 font-sans antialiased text-slate-800 dark:text-slate-100">
+    <div className="max-w-[1040px] mx-auto px-3 sm:px-4 pt-1 sm:pt-2 pb-36 sm:pb-40 space-y-4 sm:space-y-6 font-sans antialiased text-slate-800 dark:text-slate-100">
       {/* Header Banner - LIFE.HELP Droplet Banner Design Code */}
       <div className="droplet-banner border border-slate-200/90 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 p-6 sm:p-8 space-y-4 shadow-sm">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">

@@ -14,7 +14,7 @@
     "start": "next start",
     "lint": "next lint",
     "preview": "node scripts/learn/build-content-assets.mjs && opennextjs-cloudflare build && wrangler dev",
-    "deploy": "NODE_OPTIONS=\"--max-old-space-size=8192\" node scripts/release/preflight.mjs --accept-unknown-live --skip-tests && NODE_OPTIONS=\"--max-old-space-size=8192\" opennextjs-cloudflare deploy",
+    "deploy": "NODE_OPTIONS=\"--max-old-space-size=8192\" node scripts/release/preflight.mjs --accept-unknown-live --skip-tests && npm run build && NODE_OPTIONS=\"--max-old-space-size=8192\" opennextjs-cloudflare deploy",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "typecheck": "NODE_OPTIONS=\"--max-old-space-size=8192\" next typegen && NODE_OPTIONS=\"--max-old-space-size=8192\" tsc --noEmit",
