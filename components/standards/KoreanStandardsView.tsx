@@ -576,6 +576,101 @@ function RenderExampleText({
   );
 }
 
+/** Render commentary paragraph with markdown table support */
+function RenderFormattedCommentary({
+  text,
+  isSecondary = false
+}: {
+  text: string;
+  isSecondary?: boolean;
+}) {
+  if (!text) return null;
+
+  // Check if text contains a markdown table
+  if (text.includes("|") && text.includes(String.fromCharCode(10) + "|")) {
+    const lines = text.split(String.fromCharCode(10));
+    const preTableLines: string[] = [];
+    const tableLines: string[] = [];
+    let inTable = false;
+
+    for (const line of lines) {
+      const trimmed = line.trim();
+      if (trimmed.startsWith("|") && trimmed.endsWith("|")) {
+        inTable = true;
+        tableLines.push(trimmed);
+      } else if (!inTable) {
+        preTableLines.push(line);
+      }
+    }
+
+    if (tableLines.length >= 2) {
+      const headerLine = tableLines[0];
+      const headers = headerLine.split("|").slice(1, -1).map(h => h.trim());
+      // Skip delimiter row (tableLines[1])
+      const rowLines = tableLines.slice(2);
+      const rows = rowLines.map(r => r.split("|").slice(1, -1).map(c => c.trim()));
+      const introText = preTableLines.join(" ").trim();
+
+      return (
+        <div className="space-y-3">
+          {introText && (
+            <p className={isSecondary
+              ? "text-sm sm:text-base font-normal text-slate-600 dark:text-slate-300 leading-relaxed"
+              : "text-base sm:text-lg font-normal text-slate-800 dark:text-slate-100 leading-relaxed"
+            }>
+              {introText}
+            </p>
+          )}
+
+          <div className="overflow-x-auto rounded-xl border border-amber-300/70 dark:border-amber-800/60 bg-white/95 dark:bg-slate-900/90 shadow-xs my-2">
+            <table className="min-w-full text-xs sm:text-sm divide-y divide-amber-200 dark:divide-amber-800/60">
+              <thead className="bg-amber-100/70 dark:bg-amber-950/70 text-slate-800 dark:text-slate-100 font-bold">
+                <tr>
+                  {headers.map((h, i) => (
+                    <th key={i} className="px-3 py-2.5 text-center first:text-left whitespace-nowrap border-r border-amber-200/50 dark:border-amber-800/40 last:border-r-0">
+                      {h}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-amber-100 dark:divide-amber-900/40">
+                {rows.map((row, rIdx) => (
+                  <tr key={rIdx} className="hover:bg-amber-50/50 dark:hover:bg-amber-950/30 transition-colors">
+                    {row.map((cell, cIdx) => (
+                      <td
+                        key={cIdx}
+                        className={`px-3 py-2 text-center first:text-left border-r border-amber-100 dark:border-amber-900/30 last:border-r-0 ${
+                          cIdx === 0
+                            ? "font-semibold text-slate-700 dark:text-slate-300 bg-amber-50/30 dark:bg-amber-950/20"
+                            : cell === "-"
+                            ? "text-slate-300 dark:text-slate-600"
+                            : "font-mono font-bold text-indigo-600 dark:text-indigo-400 text-sm sm:text-base"
+                        }`}
+                      >
+                        {cell.replace(/\*\*/g, "")}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  // Standard paragraph rendering
+  return (
+    <p className={isSecondary
+      ? "text-sm sm:text-base font-normal text-slate-600 dark:text-slate-300 leading-relaxed"
+      : "text-base sm:text-lg font-normal text-slate-800 dark:text-slate-100 leading-relaxed"
+    }>
+      {text}
+    </p>
+  );
+}
+
 export function KoreanStandardsView() {
   const { locale, secondaryLocale, secondaryLocales, isBilingual } = useLearner();
 
@@ -1041,25 +1136,21 @@ export function KoreanStandardsView() {
                                     className="bg-amber-50/40 dark:bg-amber-950/20 p-5 rounded-2xl border border-amber-200/60 dark:border-amber-900/40 space-y-2.5 shadow-2xs"
                                   >
                                     {/* Primary Translation Paragraph */}
-                                    <p className="text-base sm:text-lg font-normal text-slate-800 dark:text-slate-100 leading-relaxed">
-                                      {primaryPara}
-                                    </p>
+                                    <RenderFormattedCommentary text={primaryPara} />
 
                                     {/* Bilingual Secondary Paragraph / Original Korean Grounding */}
                                     {showKoRef && pObj.ko && pObj.ko !== primaryPara && (
                                       <div className="pt-2 border-t border-amber-200/40 dark:border-amber-900/30">
-                                        <p className="text-sm sm:text-base font-normal text-slate-600 dark:text-slate-300 leading-relaxed bg-white/70 dark:bg-slate-800/60 p-3 rounded-xl border border-amber-100 dark:border-slate-700/60">
-                                          {pObj.ko}
-                                        </p>
+                                        <div className="bg-white/70 dark:bg-slate-800/60 p-3.5 rounded-xl border border-amber-100 dark:border-slate-700/60">
+                                          <RenderFormattedCommentary text={pObj.ko} isSecondary />
+                                        </div>
                                       </div>
                                     )}
 
                                     {/* Other Secondary Language if chosen */}
                                     {!showKoRef && showBilingual && secondaryPara && secondaryPara !== primaryPara && (
                                       <div className="pt-2 border-t border-amber-200/40 dark:border-amber-900/30">
-                                        <p className="text-sm sm:text-base font-normal text-slate-600 dark:text-slate-300 leading-relaxed">
-                                          {secondaryPara}
-                                        </p>
+                                        <RenderFormattedCommentary text={secondaryPara} isSecondary />
                                       </div>
                                     )}
                                   </div>
