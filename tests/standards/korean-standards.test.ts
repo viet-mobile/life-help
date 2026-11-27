@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import normsAnchor from "@/lib/standards/data/korean_norms_anchor.json";
 import { ANCHOR_LANGUAGES, type StandardArticle } from "@/lib/standards/types";
+import { formatPhoneticLengthMark } from "@/components/standards/KoreanStandardsView";
 import fs from "fs";
 import path from "path";
 
@@ -91,5 +92,27 @@ describe("Korean Standards (표준어 규정) Data Integrity", () => {
     expect(fs.existsSync(meaningsPath)).toBe(true);
     const meanings = JSON.parse(fs.readFileSync(meaningsPath, "utf-8"));
     expect(Object.keys(meanings).length).toBeGreaterThan(500);
+  });
+
+  it("should correctly format Korean vowel length mark with half-width Unicode U+02D0 (ː)", () => {
+    // Slashes pronunciation format
+    expect(formatPhoneticLengthMark("/이:를/")).toBe("/이ː를/");
+    expect(formatPhoneticLengthMark("/이:번/")).toBe("/이ː번/");
+    expect(formatPhoneticLengthMark("/이ː를/")).toBe("/이ː를/");
+
+    // Bracket pronunciation format
+    expect(formatPhoneticLengthMark("[눈:보라]")).toBe("[눈ː보라]");
+    expect(formatPhoneticLengthMark("[말:씨]")).toBe("[말ː씨]");
+    expect(formatPhoneticLengthMark("[내:까/낻:까]")).toBe("[내ː까/낻ː까]");
+
+    // Verify Unicode U+02D0 char code
+    const formatted = formatPhoneticLengthMark("/이:를/");
+    expect(formatted.charCodeAt(2)).toBe(0x02D0);
+
+    // Verify datasets contain U+02D0 for vowel length in Part 2 Article 6
+    const art6 = articles.find((a) => a.id === "p2-a6");
+    expect(art6).toBeDefined();
+    expect(art6?.details?.[0]).toContain("눈ː보라");
+    expect(art6?.details?.[0]).toContain("말ː씨");
   });
 });

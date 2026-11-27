@@ -28,6 +28,30 @@ function getExplanationTitle(lang: string | null | undefined): string {
   return EXPLANATION_TITLE_MAP[lang] || `💡 ${EXPLANATION_TITLE_MAP.ko}`;
 }
 
+/**
+ * Format Korean vowel length marks to Unicode U+02D0 (ː) in half-width style without extra whitespace
+ * e.g. /이:를/ -> /이ː를/, /이:번/ -> /이ː번/, [눈:보라] -> [눈ː보라], 말씨[말:씨] -> 말씨[말ː씨]
+ */
+export function formatPhoneticLengthMark(text: string): string {
+  if (!text) return text;
+  // 1. Inside phonetic brackets [...]
+  let res = text.replace(/\[[^\]]+\]/g, (match) => {
+    return match.replace(/\s*[:：ː]\s*/g, "\u02D0");
+  });
+  // 2. Inside phonetic slashes /.../ containing Hangul
+  res = res.replace(/\/([^\/\n]+)\//g, (match, inner) => {
+    if (/[가-힣]/.test(inner)) {
+      return `/${inner.replace(/\s*[:：ː]\s*/g, "\u02D0")}/`;
+    }
+    return match;
+  });
+  // 3. Direct Hangul + colon (no space after) + Hangul (e.g. 이:를 -> 이ː를, 이:번 -> 이ː번)
+  res = res.replace(/([가-힣])[:：ː]([가-힣])/g, "$1\u02D0$2");
+  // 4. Ensure no unwanted spaces around ː
+  res = res.replace(/\s*ː\s*/g, "\u02D0");
+  return res;
+}
+
 
 function formatExampleCaption(
   caption: string,
@@ -530,7 +554,7 @@ function RenderExampleTable({
                   <tr key={rIdx} className="hover:bg-slate-50/70 dark:hover:bg-slate-800/50 transition">
                     {/* Standard Word */}
                     <td className="px-3.5 py-2.5 align-top font-bold text-slate-900 dark:text-slate-50 text-base sm:text-lg">
-                      {stdWord}
+                      {formatPhoneticLengthMark(stdWord)}
                     </td>
 
                     {/* Meaning Column: Primary on Top */}
@@ -720,7 +744,7 @@ function RenderExampleList({
       })()}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2.5">
         {list.items.map((rawItem, idx) => {
-          const item = rawItem.replace(/ː\s*/g, ":").replace(/：\s*/g, ":");
+          const item = formatPhoneticLengthMark(rawItem);
           const match = item.match(/^([^\[\]]+)(\[[^\[\]]+\])(.*)$/);
           if (match) {
             const [, word, pron, rest] = match;
@@ -734,8 +758,8 @@ function RenderExampleList({
               >
                 <div className="flex items-center justify-between gap-2">
                   <span className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-50 tracking-tight">{trimmedWord}</span>
-                  <span className="px-2.5 py-1 rounded-md bg-indigo-50 dark:bg-indigo-950/70 text-indigo-700 dark:text-indigo-300 font-mono font-bold text-sm sm:text-base border border-indigo-200/80 dark:border-indigo-800/80 shadow-2xs">
-                    {pron}
+                  <span className="px-2.5 py-1 rounded-md bg-indigo-50 dark:bg-indigo-950/70 text-indigo-700 dark:text-indigo-300 font-bold text-sm sm:text-base border border-indigo-200/80 dark:border-indigo-800/80 shadow-2xs tracking-tight">
+                    {formatPhoneticLengthMark(pron)}
                   </span>
                 </div>
                 {fMeaning && (
@@ -804,7 +828,7 @@ function RenderExampleText({
   return (
     <div className="p-3.5 rounded-xl bg-indigo-50/50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900/50 space-y-1.5 leading-relaxed">
       <div className="text-xs sm:text-sm font-medium text-indigo-950 dark:text-indigo-200">
-        {text.content}
+        {formatPhoneticLengthMark(text.content)}
       </div>
       {fNoteTrans && fNoteTrans !== text.content && (
         <div className="text-xs text-indigo-700 dark:text-indigo-300 font-normal pt-1 border-t border-indigo-100/70 dark:border-indigo-900/50">
@@ -829,10 +853,8 @@ function RenderFormattedCommentary({
 }) {
   if (!text) return null;
 
-  // Clean fullwidth/triangular colons to halfwidth colon and remove unintended spacing
-  const cleanText = text
-    .replace(/ː\s*/g, ":")
-    .replace(/：\s*/g, ":");
+  // Format vowel length marks to Unicode U+02D0 (ː) tightly without extra spacing
+  const cleanText = formatPhoneticLengthMark(text);
 
   // Check if text contains a markdown table
   if (cleanText.includes("|") && cleanText.includes(String.fromCharCode(10) + "|")) {
@@ -892,10 +914,10 @@ function RenderFormattedCommentary({
                             ? "font-semibold text-slate-700 dark:text-slate-300 bg-amber-50/30 dark:bg-amber-950/20"
                             : cell === "-"
                             ? "text-slate-300 dark:text-slate-600"
-                            : "font-mono font-bold text-indigo-600 dark:text-indigo-400 text-sm sm:text-base"
+                            : "font-bold text-indigo-600 dark:text-indigo-400 text-sm sm:text-base tracking-tight"
                         }`}
                       >
-                        {cell.replace(/\*\*/g, "")}
+                        {formatPhoneticLengthMark(cell.replace(/\*\*/g, ""))}
                       </td>
                     ))}
                   </tr>
@@ -1471,21 +1493,21 @@ export function KoreanStandardsView() {
                             <>
                               {/* Layer 1: Main (Primary) Language ON TOP */}
                               <div className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-50 leading-snug tracking-tight">
-                                {firstTrans?.rule || koTrans?.rule || ""}
+                                {formatPhoneticLengthMark(firstTrans?.rule || koTrans?.rule || "")}
                               </div>
                               {/* Layer 2: Korean ALWAYS directly underneath */}
                               {koTrans?.rule && (
                                 <div className="pt-2">
                                   <div className="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 bg-indigo-50/50 dark:bg-indigo-950/40 p-3 rounded-lg border border-indigo-100 dark:border-indigo-900/40 leading-relaxed">
                                     <span className="font-bold text-indigo-700 dark:text-indigo-300 mr-1.5">🇰🇷 한국어 원문:</span>
-                                    {koTrans.rule}
+                                    {formatPhoneticLengthMark(koTrans.rule)}
                                   </div>
                                 </div>
                               )}
                               {/* Layer 3: Secondary Language (if selected and not Korean) */}
                               {secondTransLang && secondTransLang !== "ko" && secondTrans?.rule && secondTrans.rule !== firstTrans?.rule && (
                                 <div className="text-sm sm:text-base font-semibold text-indigo-700 dark:text-indigo-300 pt-1.5 border-t border-slate-100 dark:border-slate-800 leading-snug">
-                                  {secondTrans.rule}
+                                  {formatPhoneticLengthMark(secondTrans.rule)}
                                 </div>
                               )}
                             </>
@@ -1493,12 +1515,12 @@ export function KoreanStandardsView() {
                             <>
                               {/* Korean Rule ON TOP */}
                               <div className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-50 leading-snug tracking-tight">
-                                {koTrans?.rule || ""}
+                                {formatPhoneticLengthMark(koTrans?.rule || "")}
                               </div>
                               {/* Secondary Rule UNDERNEATH */}
                               {isDualMode && firstTrans?.rule && firstTrans.rule !== koTrans?.rule && (
                                 <div className="text-sm sm:text-base font-semibold text-indigo-700 dark:text-indigo-300 pt-2 border-t border-slate-100 dark:border-slate-800 leading-snug">
-                                  {firstTrans.rule}
+                                  {formatPhoneticLengthMark(firstTrans.rule)}
                                 </div>
                               )}
                             </>
@@ -1670,9 +1692,9 @@ export function KoreanStandardsView() {
                           {art.details?.map((detail, idx) => (
                             <div
                               key={idx}
-                              className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed font-mono whitespace-pre-wrap bg-white dark:bg-slate-800/90 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-2xs"
+                              className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed whitespace-pre-wrap bg-white dark:bg-slate-800/90 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-2xs"
                             >
-                              {detail}
+                              {formatPhoneticLengthMark(detail)}
                             </div>
                           ))}
                         </div>
