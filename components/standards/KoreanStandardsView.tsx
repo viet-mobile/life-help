@@ -572,7 +572,7 @@ function RenderExampleTable({
                             <div className="text-[11px] text-slate-600 dark:text-slate-400 font-medium">{sMeaning}</div>
                           )}
                           {pMeaning && pMeaning !== fMeaning && (
-                            <div className="text-[10px] text-slate-400 dark:text-slate-500 font-normal">🇰🇷 {pMeaning}</div>
+                            <div className="text-[10px] text-slate-400 dark:text-slate-500 font-normal">{pMeaning}</div>
                           )}
                         </div>
                       ) : (
@@ -616,7 +616,7 @@ function RenderExampleTable({
                             )}
                             {note && note !== fNoteTrans && (
                               <div className="text-[10px] text-slate-500 dark:text-slate-400 bg-slate-100/70 dark:bg-slate-800/60 px-2 py-0.5 rounded">
-                                🇰🇷 {note}
+                                {note}
                               </div>
                             )}
                           </div>
@@ -1244,7 +1244,7 @@ export function KoreanStandardsView() {
                     </span>
                   )}
                   <span className="block mt-1 text-sm sm:text-base font-semibold text-slate-500 dark:text-slate-400">
-                    🇰🇷 {uiBase.title}
+                    {uiBase.title}
                   </span>
                 </>
               ) : (
@@ -1270,7 +1270,7 @@ export function KoreanStandardsView() {
                     </span>
                   )}
                   <span className="block mt-0.5 text-slate-500 dark:text-slate-400 text-xs">
-                    🇰🇷 {uiBase.subtitle}
+                    {uiBase.subtitle}
                   </span>
                 </>
               ) : (
@@ -1430,7 +1430,7 @@ export function KoreanStandardsView() {
                             <span className="opacity-80 font-medium text-[11px]">· {secondTrans.part}</span>
                           )}
                           {primaryLang !== "ko" && secondTransLang !== "ko" && koTrans?.part && (
-                            <span className="opacity-60 font-normal text-[10px]">· 🇰🇷 {koTrans.part}</span>
+                            <span className="opacity-60 font-normal text-[10px]">· {koTrans.part}</span>
                           )}
                         </div>
 
@@ -1442,7 +1442,7 @@ export function KoreanStandardsView() {
                               <span className="opacity-80 font-medium text-[11px] text-slate-500">· {secondTrans.chapter}</span>
                             )}
                             {primaryLang !== "ko" && secondTransLang !== "ko" && koTrans?.chapter && (
-                              <span className="opacity-60 font-normal text-[10px] text-slate-400">· 🇰🇷 {koTrans.chapter}</span>
+                              <span className="opacity-60 font-normal text-[10px] text-slate-400">· {koTrans.chapter}</span>
                             )}
                           </div>
                         )}
@@ -1455,7 +1455,7 @@ export function KoreanStandardsView() {
                               <span className="opacity-80 font-medium text-[11px] text-slate-400">· {secondTrans.section}</span>
                             )}
                             {primaryLang !== "ko" && secondTransLang !== "ko" && koTrans?.section && (
-                              <span className="opacity-60 font-normal text-[10px] text-slate-400">· 🇰🇷 {koTrans.section}</span>
+                              <span className="opacity-60 font-normal text-[10px] text-slate-400">· {koTrans.section}</span>
                             )}
                           </div>
                         )}
@@ -1476,7 +1476,7 @@ export function KoreanStandardsView() {
                         )}
                         {primaryLang !== "ko" && secondTransLang !== "ko" && koTrans?.title && (
                           <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800 px-1.5 py-0.5 rounded border border-slate-200 dark:border-slate-700">
-                            🇰🇷 {koTrans.title}
+                            {koTrans.title}
                           </span>
                         )}
                       </div>
@@ -1499,7 +1499,7 @@ export function KoreanStandardsView() {
                               {koTrans?.rule && (
                                 <div className="pt-2">
                                   <div className="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 bg-indigo-50/50 dark:bg-indigo-950/40 p-3 rounded-lg border border-indigo-100 dark:border-indigo-900/40 leading-relaxed">
-                                    <span className="font-bold text-indigo-700 dark:text-indigo-300 mr-1.5">🇰🇷 한국어 원문:</span>
+                                    <span className="font-bold text-indigo-700 dark:text-indigo-300 mr-1.5">한국어 원문:</span>
                                     {formatPhoneticLengthMark(koTrans.rule)}
                                   </div>
                                 </div>
@@ -1574,7 +1574,7 @@ export function KoreanStandardsView() {
                                         {/* Korean Reference Paragraph ALWAYS NEXT */}
                                         {koPara && (
                                           <div className="pt-2 border-t border-amber-200/40 dark:border-amber-900/30 text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                                            <span className="font-bold text-slate-700 dark:text-slate-300 mr-1">🇰🇷 한국어 원문:</span>
+                                            <span className="font-bold text-slate-700 dark:text-slate-300 mr-1">한국어 원문:</span>
                                             <RenderFormattedCommentary text={koPara} isSecondary />
                                           </div>
                                         )}
