@@ -19,6 +19,7 @@ const CATEGORY_TRANSLATIONS: Record<string, Record<string, string>> = {
     "zh-Hans": "财富积累",
     "zh-Hant": "財富積累",
     ja: "資産形成",
+    uz: "Boylikni oshirish",
   },
   saving: {
     en: "Smart Saving",
@@ -26,6 +27,7 @@ const CATEGORY_TRANSLATIONS: Record<string, Record<string, string>> = {
     "zh-Hans": "精明节支",
     "zh-Hant": "精明節約",
     ja: "節約・節税",
+    uz: "Xarajatni tejash",
   },
   career: {
     en: "Career & Jobs",
@@ -33,6 +35,7 @@ const CATEGORY_TRANSLATIONS: Record<string, Record<string, string>> = {
     "zh-Hans": "职场求职",
     "zh-Hant": "職場求職",
     ja: "就職・キャリア",
+    uz: "Kasb va ish",
   },
   health: {
     en: "Health & Care",
@@ -40,6 +43,7 @@ const CATEGORY_TRANSLATIONS: Record<string, Record<string, string>> = {
     "zh-Hans": "健康医疗",
     "zh-Hant": "健康醫療",
     ja: "健康・医療",
+    uz: "Salomatlik",
   },
   travel: {
     en: "Transit & Travel",
@@ -47,6 +51,7 @@ const CATEGORY_TRANSLATIONS: Record<string, Record<string, string>> = {
     "zh-Hans": "交通出行",
     "zh-Hant": "交通出行",
     ja: "交通・暮らし",
+    uz: "Sayohat maslahatlari",
   },
   problem: {
     en: "Everyday Solutions",
@@ -54,6 +59,7 @@ const CATEGORY_TRANSLATIONS: Record<string, Record<string, string>> = {
     "zh-Hans": "生活维权",
     "zh-Hant": "生活維權",
     ja: "生活トラブル",
+    uz: "Kundalik muammolarni hal qilish",
   },
 };
 

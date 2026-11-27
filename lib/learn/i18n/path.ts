@@ -42,23 +42,29 @@ export function splitLocalePrefix(pathname: string): {
   }
 
   // Check if second segment contains valid secondary locale(s):
-  // single: /vi/ko
+  // single: /vi/ko, duplicate /vi/vi
   // multi: /vi/ko+en, /vi/ko,en, /vi/ko+en+ja
   if (segments.length >= 2) {
     const candidateParts = segments[1].split(/[,+]/).filter(Boolean);
     const validSeconds: Locale[] = [];
+    let hasDuplicateFirst = false;
     for (const part of candidateParts) {
       const parsed = localeFromSegment(part);
-      if (parsed && parsed !== firstLocale && !validSeconds.includes(parsed)) {
-        validSeconds.push(parsed);
+      if (parsed) {
+        if (parsed === firstLocale) {
+          hasDuplicateFirst = true;
+        } else if (!validSeconds.includes(parsed)) {
+          validSeconds.push(parsed);
+        }
       }
     }
-    if (validSeconds.length > 0 && validSeconds.length === candidateParts.length) {
+    const allValid = candidateParts.length > 0 && candidateParts.every((p) => localeFromSegment(p) !== null);
+    if (allValid && (validSeconds.length > 0 || hasDuplicateFirst)) {
       const remainingSegments = segments.slice(2);
       const rest = remainingSegments.length > 0 ? "/" + remainingSegments.join("/") : "/";
       return {
         locale: firstLocale,
-        secondaryLocale: validSeconds[0],
+        secondaryLocale: validSeconds[0] ?? null,
         secondaryLocales: validSeconds,
         rest,
       };

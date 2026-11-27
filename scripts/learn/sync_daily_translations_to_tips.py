@@ -126,6 +126,9 @@ def get_country_overlay(cItem, lang):
 def sync_translations():
     with open(STUDY_TOPICS_PATH, "r", encoding="utf-8") as f:
         study_topics = json.load(f)
+    KOREAN_TOPICS_PATH = ROOT / "lib" / "learn" / "dailyInsights" / "koreanTopics89.json"
+    with open(KOREAN_TOPICS_PATH, "r", encoding="utf-8") as f:
+        korean_topics = json.load(f)
 
     # Load domain items past 366
     domains_data = {}
@@ -229,6 +232,26 @@ def sync_translations():
                     }
                     overlays[qid] = ov_item
                     overlays["life-all-1" if (qid.endswith("-1") or qid == "20261118-life-all") else "life-all-2"] = ov_item
+
+        # 3. Base Korean (k-001 ~ k-036) and Study (m-*, e-*) topics
+        for kid, kv in korean_topics.items():
+            if lang in kv.get("title", {}):
+                overlays[kid] = {
+                    "title": kv["title"][lang],
+                    "summary": kv.get("summary", {}).get(lang, ""),
+                    "principle": kv.get("principle", {}).get(lang, ""),
+                    "example": kv.get("example", {}).get(lang, ""),
+                    "actionItem": kv.get("actionItem", {}).get(lang, "")
+                }
+        for sid, sv in study_topics.items():
+            if lang in sv.get("title", {}):
+                overlays[sid] = {
+                    "title": sv["title"][lang],
+                    "summary": sv.get("summary", {}).get(lang, ""),
+                    "principle": sv.get("principle", {}).get(lang, ""),
+                    "example": sv.get("example", {}).get(lang, ""),
+                    "actionItem": sv.get("actionItem", {}).get(lang, "")
+                }
 
         # Write to public/daily-tips/{lang}.json
         with open(lpath, "w", encoding="utf-8") as f:

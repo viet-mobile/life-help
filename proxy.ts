@@ -397,22 +397,28 @@ function getLanguagesFromPath(pathname: string): {
     return { language: null, secondaryLanguage: null, secondaryLanguages: [], subpath: pathname || "/" };
   }
 
-  // Check if second segment contains valid secondary language(s) (e.g. /vi/ko or /vi/ko+en or /vi/ko,en)
+  // Check if second segment contains valid secondary language(s) (e.g. /vi/ko or /vi/ko+en or /vi/ko,en or duplicate /vi/vi)
   if (segments.length >= 2) {
     const rawSecond = segments[1];
     const candidateParts = rawSecond.split(/[,+]/).filter(Boolean);
     const validSeconds: string[] = [];
+    let hasDuplicateFirst = false;
     for (const part of candidateParts) {
       const parsed = parseLang(part);
-      if (parsed && parsed !== first && !validSeconds.includes(parsed)) {
-        validSeconds.push(parsed);
+      if (parsed) {
+        if (parsed === first) {
+          hasDuplicateFirst = true;
+        } else if (!validSeconds.includes(parsed)) {
+          validSeconds.push(parsed);
+        }
       }
     }
-    if (validSeconds.length > 0 && validSeconds.length === candidateParts.length) {
+    const allValid = candidateParts.length > 0 && candidateParts.every((p) => parseLang(p) !== null);
+    if (allValid && (validSeconds.length > 0 || hasDuplicateFirst)) {
       const rest = segments.slice(2);
       return {
         language: first,
-        secondaryLanguage: validSeconds.join("+"),
+        secondaryLanguage: validSeconds.length > 0 ? validSeconds.join("+") : null,
         secondaryLanguages: validSeconds,
         subpath: rest.length > 0 ? "/" + rest.join("/") : "/",
       };

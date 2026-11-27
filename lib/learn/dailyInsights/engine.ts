@@ -196,6 +196,12 @@ export function getDailyInsight(
         item.principle = "राष्ट्रीय आधिकारिक आव्रजन पोर्टल के माध्यम से नवीनतम निवास नियमों और आवश्यक दस्तावेजों की पुष्टि करें।";
         item.example = portal ? `आधिकारिक पोर्टल: ${portal}` : item.example;
         item.actionItem = `प्रवेश के तुरंत बाद ${cName} में संबंधित स्थानीय कार्यालय में अपना निवास पंजीकृत करें और आधिकारिक प्रमाण पत्र प्राप्त करें।`;
+      } else if (locale === "uz") {
+        item.title = `[${iso}] ${cName} Chet elliklar yashash joyini ro'yxatga olish va muhim ma'muriy qo'llanma`;
+        item.summary = `${cName}ga kirgandan so'ng yashash joyini ro'yxatga olish, umumiy tibbiy sug'urta, soliq raqamini olish va rasmiy immigratsiya portali bo'yicha yo'riqnoma.`;
+        item.principle = "Mamlakatning rasmiy immigratsiya portali orqali eng so'nggi yashash ruxsatnomasi qoidalari va majburiy hujjatlarni tekshiring.";
+        item.example = portal ? `Rasmiy portal: ${portal}` : item.example;
+        item.actionItem = `Kirishingiz bilanoq ${cName}dagi tegishli mahalliy idorada yashash joyingizni ro'yxatdan o'tkazing va rasmiy guvohnomani oling.`;
       } else {
         item.title = `[${iso}] ${cName} Foreign Resident Registration & Essential Living Guide`;
         item.summary = `Essential guidance on residence registration, public healthcare, tax ID issuance, and official immigration procedures upon arriving in ${cName}.`;

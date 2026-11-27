@@ -28,6 +28,7 @@ const CATEGORY_TRANSLATIONS: Record<string, Record<string, string>> = {
     fr: "Création de richesse",
     de: "Vermögensaufbau",
     ru: "Создание богатства",
+    uz: "Boylikni oshirish",
   },
   saving: {
     ko: "비용 절약",
@@ -44,6 +45,7 @@ const CATEGORY_TRANSLATIONS: Record<string, Record<string, string>> = {
     fr: "Épargne intelligente",
     de: "Smartes Sparen",
     ru: "Разумная экономия",
+    uz: "Xarajatni tejash",
   },
   career: {
     ko: "경력 및 구직",
@@ -60,6 +62,7 @@ const CATEGORY_TRANSLATIONS: Record<string, Record<string, string>> = {
     fr: "Carrière et emploi",
     de: "Karriere & Beruf",
     ru: "Карьера и работа",
+    uz: "Kasb va ish",
   },
   health: {
     ko: "건강 및 웰니스",
@@ -76,6 +79,7 @@ const CATEGORY_TRANSLATIONS: Record<string, Record<string, string>> = {
     fr: "Santé et bien-être",
     de: "Gesundheit & Wellness",
     ru: "Здоровье и благополучие",
+    uz: "Salomatlik",
   },
   travel: {
     ko: "여행 및 이동",
@@ -92,6 +96,7 @@ const CATEGORY_TRANSLATIONS: Record<string, Record<string, string>> = {
     fr: "Transport et voyage",
     de: "Reisen & Mobilität",
     ru: "Транспорт и путешествия",
+    uz: "Sayohat maslahatlari",
   },
   problem: {
     ko: "생활 문제 해결",
@@ -108,6 +113,7 @@ const CATEGORY_TRANSLATIONS: Record<string, Record<string, string>> = {
     fr: "Solutions du quotidien",
     de: "Alltagslösungen",
     ru: "Решение бытовых проблем",
+    uz: "Kundalik muammolarni hal qilish",
   },
   shopping: {
     ko: "쇼핑·소비",
@@ -124,6 +130,7 @@ const CATEGORY_TRANSLATIONS: Record<string, Record<string, string>> = {
     fr: "Achats malins",
     de: "Smartes Einkaufen",
     ru: "Умные покупки",
+    uz: "Smart xarid",
   },
   energy: {
     ko: "에너지 절약",
@@ -140,6 +147,7 @@ const CATEGORY_TRANSLATIONS: Record<string, Record<string, string>> = {
     fr: "Économie d'énergie",
     de: "Energiesparen",
     ru: "Энергосбережение",
+    uz: "Energiyani tejash",
   },
 };
 

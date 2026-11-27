@@ -39,7 +39,32 @@ export function LocaleSwitch({ compact = false }: { compact?: boolean }) {
     if (typeof window !== "undefined") {
       const pathname = window.location.pathname;
       const { secondaryLocales, rest } = splitLocalePrefix(pathname);
-      const secPart = secondaryLocales && secondaryLocales.length > 0 ? `/${secondaryLocales.join("+")}` : "";
+
+      let nextSecs: Locale[] = [];
+      if (secondaryLocales && secondaryLocales.length > 0) {
+        // If next primary was among the secondary locales, flip: replace next with previous locale (e.g. ko <-> vi flip)
+        nextSecs = secondaryLocales.map((sec) => (sec === next ? (locale as Locale) : sec));
+        nextSecs = nextSecs.filter((sec) => sec !== next);
+      } else if (locale === "ko" && next !== "ko") {
+        // If transitioning from Korean to a foreign language, default secondary to Korean to preserve Korean context
+        nextSecs = ["ko"];
+      }
+
+      // If we have secondary locales, persist to cookies and localStorage
+      if (nextSecs.length > 0) {
+        try {
+          localStorage.setItem("life_help_display_mode", "bilingual");
+          localStorage.setItem("life_help_secondary_locale", nextSecs[0]);
+          localStorage.setItem("life_help_secondary_locales", nextSecs.join(","));
+        } catch {}
+        document.cookie = `life_help_display_mode=bilingual; Path=/; Max-Age=${LOCALE_COOKIE_MAX_AGE}; SameSite=Lax${secure}`;
+        document.cookie = `life_help_secondary_locale=${nextSecs[0]}; Path=/; Max-Age=${LOCALE_COOKIE_MAX_AGE}; SameSite=Lax${secure}`;
+        document.cookie = `life_help_secondary_locales=${nextSecs.join(",")}; Path=/; Max-Age=${LOCALE_COOKIE_MAX_AGE}; SameSite=Lax${secure}`;
+        window.dispatchEvent(new Event("life_help_secondary_locale_change"));
+        window.dispatchEvent(new Event("life_help_display_mode_change"));
+      }
+
+      const secPart = nextSecs.length > 0 ? `/${nextSecs.join("+")}` : "";
       const targetPath = `/${next}${secPart}${rest === "/" ? "" : rest}`;
       window.location.assign(`${targetPath}${window.location.search}${window.location.hash}`);
       return;
