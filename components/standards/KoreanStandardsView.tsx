@@ -29,6 +29,36 @@ import React, { useState, useMemo, useEffect } from "react";
 import type { StandardArticle, AnchorLanguage, ExampleBlock, ExampleTableBlock, ExampleListBlock, ExampleTextBlock } from "@/lib/standards/types";
 import { ANCHOR_LANGUAGES } from "@/lib/standards/types";
 import { useLearner } from "@/components/learn/LearnerProvider";
+import { splitLocalePrefix } from "@/lib/learn/i18n/path";
+
+function getClientSecondaryLocales(pathOverride?: string): { isBilingual: boolean; secondaryLocale: string | null; secondaryLocales: string[] } {
+  if (typeof window === "undefined") return { isBilingual: false, secondaryLocale: null, secondaryLocales: [] };
+  const path = pathOverride || window.location.pathname;
+  const fromPath = splitLocalePrefix(path).secondaryLocales || [];
+  if (fromPath.length > 0) {
+    return { isBilingual: true, secondaryLocale: fromPath[0], secondaryLocales: fromPath };
+  }
+  try {
+    const lsMulti = localStorage.getItem("life_help_secondary_locales");
+    if (lsMulti) {
+      const parts = lsMulti.split(/[,+]/).filter(Boolean);
+      if (parts.length > 0) return { isBilingual: true, secondaryLocale: parts[0], secondaryLocales: parts };
+    }
+    const lsSingle = localStorage.getItem("life_help_secondary_locale");
+    if (lsSingle) return { isBilingual: true, secondaryLocale: lsSingle, secondaryLocales: [lsSingle] };
+    const lsMode = localStorage.getItem("life_help_display_mode");
+    if (lsMode === "single" || lsMode === "monolingual") return { isBilingual: false, secondaryLocale: null, secondaryLocales: [] };
+  } catch {}
+  const mode = document.cookie.match(/life_help_display_mode=([^;]+)/)?.[1];
+  const sec = document.cookie.match(/life_help_secondary_locale=([^;]+)/)?.[1] ?? null;
+  const multiStr = document.cookie.match(/life_help_secondary_locales=([^;]+)/)?.[1];
+  const multi = multiStr ? multiStr.split(/[,+]/).filter(Boolean) : (sec ? [sec] : []);
+  return {
+    isBilingual: mode === "bilingual" || mode === "multilingual" || multi.length > 0 || !!sec,
+    secondaryLocale: sec || (multi[0] ?? null),
+    secondaryLocales: multi,
+  };
+}
 
 // In-memory module cache to prevent re-fetching across tab navigations
 let cachedArticles: StandardArticle[] | null = null;
@@ -285,24 +315,22 @@ const CHAPTER_TRANSLATIONS: Record<AnchorLanguage, Record<string, string>> = {
 /** Render beautiful formatted table of standard vs non-standard examples with Meanings */
 function RenderExampleTable({
   table,
-  primaryLang,
-  secondaryLang,
-  showBilingual,
+  targetLang,
+  isDualMode,
   wordMeanings,
   noteTranslations
 }: {
   table: ExampleTableBlock;
-  primaryLang: AnchorLanguage;
-  secondaryLang: AnchorLanguage;
-  showBilingual: boolean;
+  targetLang: AnchorLanguage | null;
+  isDualMode: boolean;
   wordMeanings: Record<string, Record<string, string>>;
   noteTranslations: Record<string, Record<string, string>>;
 }) {
   const isComparison = table.headers.includes("ㄱ") && table.headers.includes("ㄴ");
   const isMultiStandard = table.headers.includes("복수 표준어");
 
-  const uiP = UI_TEXTS[primaryLang] || UI_TEXTS.ko;
-  const uiS = showBilingual ? (UI_TEXTS[secondaryLang] || UI_TEXTS.ko) : null;
+  const uiBase = UI_TEXTS.ko;
+  const uiTarget = targetLang ? (UI_TEXTS[targetLang] || null) : null;
 
   return (
     <div className="space-y-2">
@@ -318,48 +346,48 @@ function RenderExampleTable({
               {isComparison ? (
                 <>
                   <th scope="col" className="px-3.5 py-2.5 font-bold">
-                    <span>{uiP.colStandard}</span>
-                    {uiS && uiS.colStandard !== uiP.colStandard && (
-                      <span className="block text-[11px] font-normal text-slate-400">{uiS.colStandard}</span>
+                    <span>{uiBase.colStandard}</span>
+                    {isDualMode && uiTarget && uiTarget.colStandard !== uiBase.colStandard && (
+                      <span className="block text-[11px] font-normal text-slate-400">{uiTarget.colStandard}</span>
                     )}
                   </th>
                   <th scope="col" className="px-3.5 py-2.5 font-bold text-indigo-600 dark:text-indigo-400">
-                    <span>{uiP.colMeaning}</span>
-                    {uiS && uiS.colMeaning !== uiP.colMeaning && (
-                      <span className="block text-[11px] font-normal text-slate-400">{uiS.colMeaning}</span>
+                    <span>{uiBase.colMeaning}</span>
+                    {isDualMode && uiTarget && uiTarget.colMeaning !== uiBase.colMeaning && (
+                      <span className="block text-[11px] font-normal text-slate-400">{uiTarget.colMeaning}</span>
                     )}
                   </th>
                   <th scope="col" className="px-3.5 py-2.5 font-bold text-slate-500">
-                    <span>{uiP.colNonStandard}</span>
-                    {uiS && uiS.colNonStandard !== uiP.colNonStandard && (
-                      <span className="block text-[11px] font-normal text-slate-400">{uiS.colNonStandard}</span>
+                    <span>{uiBase.colNonStandard}</span>
+                    {isDualMode && uiTarget && uiTarget.colNonStandard !== uiBase.colNonStandard && (
+                      <span className="block text-[11px] font-normal text-slate-400">{uiTarget.colNonStandard}</span>
                     )}
                   </th>
                   <th scope="col" className="px-3.5 py-2.5 font-bold text-slate-600 dark:text-slate-300">
-                    <span>{uiP.colNote}</span>
-                    {uiS && uiS.colNote !== uiP.colNote && (
-                      <span className="block text-[11px] font-normal text-slate-400">{uiS.colNote}</span>
+                    <span>{uiBase.colNote}</span>
+                    {isDualMode && uiTarget && uiTarget.colNote !== uiBase.colNote && (
+                      <span className="block text-[11px] font-normal text-slate-400">{uiTarget.colNote}</span>
                     )}
                   </th>
                 </>
               ) : isMultiStandard ? (
                 <>
                   <th scope="col" className="px-3.5 py-2.5 font-bold text-indigo-700 dark:text-indigo-300">
-                    <span>{uiP.colMultiStandard}</span>
-                    {uiS && uiS.colMultiStandard !== uiP.colMultiStandard && (
-                      <span className="block text-[11px] font-normal text-slate-400">{uiS.colMultiStandard}</span>
+                    <span>{uiBase.colMultiStandard}</span>
+                    {isDualMode && uiTarget && uiTarget.colMultiStandard !== uiBase.colMultiStandard && (
+                      <span className="block text-[11px] font-normal text-slate-400">{uiTarget.colMultiStandard}</span>
                     )}
                   </th>
                   <th scope="col" className="px-3.5 py-2.5 font-bold text-indigo-600 dark:text-indigo-400">
-                    <span>{uiP.colMeaning}</span>
-                    {uiS && uiS.colMeaning !== uiP.colMeaning && (
-                      <span className="block text-[11px] font-normal text-slate-400">{uiS.colMeaning}</span>
+                    <span>{uiBase.colMeaning}</span>
+                    {isDualMode && uiTarget && uiTarget.colMeaning !== uiBase.colMeaning && (
+                      <span className="block text-[11px] font-normal text-slate-400">{uiTarget.colMeaning}</span>
                     )}
                   </th>
                   <th scope="col" className="px-3.5 py-2.5 font-bold text-slate-600 dark:text-slate-300">
-                    <span>{uiP.colNote}</span>
-                    {uiS && uiS.colNote !== uiP.colNote && (
-                      <span className="block text-[11px] font-normal text-slate-400">{uiS.colNote}</span>
+                    <span>{uiBase.colNote}</span>
+                    {isDualMode && uiTarget && uiTarget.colNote !== uiBase.colNote && (
+                      <span className="block text-[11px] font-normal text-slate-400">{uiTarget.colNote}</span>
                     )}
                   </th>
                 </>
@@ -381,11 +409,11 @@ function RenderExampleTable({
 
                 const cleanWord = stdWord.replace(/-/g, "").trim();
                 const meaningObj = (table as any).meanings?.[stdWord] || wordMeanings[stdWord] || wordMeanings[cleanWord] || null;
-                const pMeaning = meaningObj?.[primaryLang] || meaningObj?.ko || "";
-                const sMeaning = showBilingual && meaningObj ? (meaningObj[secondaryLang] || "") : "";
+                const pMeaning = meaningObj?.ko || "";
+                const sMeaning = isDualMode && targetLang && meaningObj ? (meaningObj[targetLang] || "") : "";
 
                 const noteObj = (table as any).notesI18n?.[note] || noteTranslations[note] || null;
-                const pNoteTrans = noteObj?.[primaryLang] || "";
+                const sNoteTrans = isDualMode && targetLang && noteObj ? (noteObj[targetLang] || "") : "";
 
                 return (
                   <tr key={rIdx} className="hover:bg-slate-50/70 dark:hover:bg-slate-800/50 transition">
@@ -424,9 +452,9 @@ function RenderExampleTable({
                       {note ? (
                         <div className="space-y-1">
                           <div className="text-slate-700 dark:text-slate-200">{note}</div>
-                          {pNoteTrans && pNoteTrans !== note && (
+                          {sNoteTrans && sNoteTrans !== note && (
                             <div className="text-[11px] text-indigo-600 dark:text-indigo-400 bg-indigo-50/60 dark:bg-indigo-950/40 px-2 py-1 rounded">
-                              {pNoteTrans}
+                              {sNoteTrans}
                             </div>
                           )}
                         </div>
@@ -443,11 +471,11 @@ function RenderExampleTable({
                 const note = row[1]?.trim() || "";
                 const firstWord = multiWord.split("/")[0].replace(/-/g, "").trim();
                 const meaningObj = (table as any).meanings?.[multiWord] || wordMeanings[multiWord] || wordMeanings[firstWord] || null;
-                const pMeaning = meaningObj?.[primaryLang] || meaningObj?.ko || "";
-                const sMeaning = showBilingual && meaningObj ? (meaningObj[secondaryLang] || "") : "";
+                const pMeaning = meaningObj?.ko || "";
+                const sMeaning = isDualMode && targetLang && meaningObj ? (meaningObj[targetLang] || "") : "";
 
                 const noteObj = (table as any).notesI18n?.[note] || noteTranslations[note] || null;
-                const pNoteTrans = noteObj?.[primaryLang] || "";
+                const sNoteTrans = isDualMode && targetLang && noteObj ? (noteObj[targetLang] || "") : "";
 
                 return (
                   <tr key={rIdx} className="hover:bg-slate-50/70 dark:hover:bg-slate-800/50 transition">
@@ -470,9 +498,9 @@ function RenderExampleTable({
                       {note ? (
                         <div className="space-y-1">
                           <div className="text-slate-700 dark:text-slate-200">{note}</div>
-                          {pNoteTrans && pNoteTrans !== note && (
+                          {sNoteTrans && sNoteTrans !== note && (
                             <div className="text-[11px] text-indigo-600 dark:text-indigo-400 bg-indigo-50/60 dark:bg-indigo-950/40 px-2 py-1 rounded">
-                              {pNoteTrans}
+                              {sNoteTrans}
                             </div>
                           )}
                         </div>
@@ -502,7 +530,6 @@ function RenderExampleTable({
   );
 }
 
-/** Render formatted list of word examples */
 function RenderExampleList({ list }: { list: ExampleListBlock }) {
   return (
     <div className="space-y-2.5">
@@ -546,13 +573,13 @@ function RenderExampleList({ list }: { list: ExampleListBlock }) {
 /** Render formatted explanatory callout with bilingual translation support */
 function RenderExampleText({
   text,
-  showBilingual,
-  secondaryLang,
+  targetLang,
+  isDualMode,
   noteTranslations
 }: {
   text: ExampleTextBlock;
-  showBilingual?: boolean;
-  secondaryLang?: AnchorLanguage;
+  targetLang: AnchorLanguage | null;
+  isDualMode: boolean;
   noteTranslations?: Record<string, Record<string, string>>;
 }) {
   const trimmed = text.content?.trim() || "";
@@ -560,7 +587,7 @@ function RenderExampleText({
     return null;
   }
 
-  const sNoteTrans = (showBilingual && secondaryLang && noteTranslations) ? noteTranslations[trimmed]?.[secondaryLang] : null;
+  const sNoteTrans = (isDualMode && targetLang && noteTranslations) ? noteTranslations[trimmed]?.[targetLang] : null;
 
   return (
     <div className="p-3.5 rounded-xl bg-indigo-50/50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900/50 space-y-1.5 leading-relaxed">
@@ -576,7 +603,6 @@ function RenderExampleText({
   );
 }
 
-/** Render commentary paragraph with markdown table support */
 function RenderFormattedCommentary({
   text,
   isSecondary = false
@@ -742,22 +768,68 @@ export function KoreanStandardsView() {
     };
   }, []);
 
-  // Resolve languages dynamically from top header LearnerProvider
+  // Client-side synchronized secondary locales to handle dynamic changes from header popover
+  const [clientSec, setClientSec] = useState(() => getClientSecondaryLocales());
+
+  useEffect(() => {
+    setClientSec(getClientSecondaryLocales());
+    const handleSync = () => {
+      setClientSec(getClientSecondaryLocales());
+    };
+    window.addEventListener("life_help_secondary_locale_change", handleSync);
+    window.addEventListener("life_help_display_mode_change", handleSync);
+    window.addEventListener("storage", handleSync);
+    window.addEventListener("popstate", handleSync);
+    return () => {
+      window.removeEventListener("life_help_secondary_locale_change", handleSync);
+      window.removeEventListener("life_help_display_mode_change", handleSync);
+      window.removeEventListener("storage", handleSync);
+      window.removeEventListener("popstate", handleSync);
+    };
+  }, []);
+
+  // Primary language (current interface locale)
   const primaryLang: AnchorLanguage = useMemo(() => {
     return toAnchorLang(locale, "ko");
   }, [locale]);
 
+  // Secondary language (from client storage/event or server props)
   const secondaryLang: AnchorLanguage = useMemo(() => {
+    if (clientSec.secondaryLocales && clientSec.secondaryLocales.length > 0) {
+      const parsed = toAnchorLang(clientSec.secondaryLocales[0], "ko");
+      if (parsed !== primaryLang) return parsed;
+    }
+    if (clientSec.secondaryLocale) {
+      const parsed = toAnchorLang(clientSec.secondaryLocale, "ko");
+      if (parsed !== primaryLang) return parsed;
+    }
     const raw = (secondaryLocales && secondaryLocales.length > 0) ? secondaryLocales[0] : secondaryLocale;
     return toAnchorLang(raw, "ko");
-  }, [secondaryLocales, secondaryLocale]);
+  }, [clientSec, secondaryLocales, secondaryLocale, primaryLang]);
 
+  // Bilingual mode enabled check
   const showBilingual: boolean = useMemo(() => {
-    return !!isBilingual && secondaryLang !== primaryLang;
-  }, [isBilingual, secondaryLang, primaryLang]);
+    if (secondaryLang === primaryLang) return false;
+    if (clientSec.isBilingual || (clientSec.secondaryLocale && clientSec.secondaryLocale !== primaryLang) || (clientSec.secondaryLocales && clientSec.secondaryLocales.length > 0)) {
+      return true;
+    }
+    return !!isBilingual || ((secondaryLocales && secondaryLocales.length > 0) || !!secondaryLocale);
+  }, [clientSec, isBilingual, secondaryLang, primaryLang, secondaryLocales, secondaryLocale]);
 
-  const uiP = UI_TEXTS[primaryLang] || UI_TEXTS.ko;
-  const uiS = showBilingual ? (UI_TEXTS[secondaryLang] || UI_TEXTS.ko) : null;
+  // Target translation language:
+  // If primary is not Korean (e.g. Vietnamese learner mode), target translation is that foreign language.
+  // If primary is Korean and bilingual is enabled, target translation is the chosen secondary language.
+  const targetLang = useMemo<AnchorLanguage | null>(() => {
+    if (primaryLang !== "ko") return primaryLang;
+    if (showBilingual && secondaryLang !== "ko") return secondaryLang;
+    return null;
+  }, [primaryLang, showBilingual, secondaryLang]);
+
+  const isDualMode = Boolean(targetLang && targetLang !== "ko");
+
+  // Always keep Korean base text prominent, with target language translation underneath
+  const uiBase = UI_TEXTS.ko;
+  const uiTarget = targetLang ? (UI_TEXTS[targetLang] || null) : null;
 
   // Search & Filter State
   const [selectedPart, setSelectedPart] = useState<"all" | 1 | 2>("all");
@@ -781,7 +853,7 @@ export function KoreanStandardsView() {
   // Filtered articles
   const filteredArticles = useMemo(() => {
     return articles.filter((art) => {
-      if (selectedPart !== "all" && art.partNum !== selectedPart) {
+      if (selectedPart !== "all" && art.partNum === selectedPart) {
         return false;
       }
       if (selectedChapter !== "all" && art.i18n.ko.chapter !== selectedChapter) {
@@ -795,99 +867,87 @@ export function KoreanStandardsView() {
       const numMatch = art.articleNum.toString() === q || `제${art.articleNum}항`.includes(q);
       if (numMatch) return true;
 
-      const pTrans = art.i18n[primaryLang] || art.i18n.ko;
-      const sTrans = showBilingual ? (art.i18n[secondaryLang] || art.i18n.ko) : null;
       const koTrans = art.i18n.ko;
+      const targetTrans = targetLang ? art.i18n[targetLang] : null;
 
-      if (
-        pTrans?.rule?.toLowerCase().includes(q) ||
-        pTrans?.explanation?.toLowerCase().includes(q) ||
-        pTrans?.title?.toLowerCase().includes(q)
-      ) {
-        return true;
-      }
+      const ruleMatch = (koTrans?.rule && koTrans.rule.toLowerCase().includes(q)) ||
+        (targetTrans?.rule && targetTrans.rule.toLowerCase().includes(q));
+      if (ruleMatch) return true;
 
-      if (
-        sTrans?.rule?.toLowerCase().includes(q) ||
-        sTrans?.explanation?.toLowerCase().includes(q) ||
-        sTrans?.title?.toLowerCase().includes(q)
-      ) {
-        return true;
-      }
+      const titleMatch = (koTrans?.title && koTrans.title.toLowerCase().includes(q)) ||
+        (targetTrans?.title && targetTrans.title.toLowerCase().includes(q));
+      if (titleMatch) return true;
 
-      if (
-        koTrans?.rule?.toLowerCase().includes(q) ||
-        koTrans?.explanation?.toLowerCase().includes(q)
-      ) {
-        return true;
-      }
-
-      if (art.details && art.details.some((d) => d.toLowerCase().includes(q))) {
-        return true;
-      }
+      const expMatch = (koTrans?.explanation && koTrans.explanation.toLowerCase().includes(q)) ||
+        (targetTrans?.explanation && targetTrans.explanation.toLowerCase().includes(q));
+      if (expMatch) return true;
 
       return false;
     });
-  }, [primaryLang, secondaryLang, showBilingual, selectedPart, selectedChapter, searchQuery, articles]);
+  }, [selectedPart, selectedChapter, searchQuery, articles, targetLang]);
 
   const toggleExpand = (id: string) => {
-    setExpandedArticles((prev) => ({ ...prev, [id]: !prev[id] }));
+    setExpandedArticles((prev) => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
   };
 
   const toggleAll = () => {
     const nextState = !allExpanded;
     setAllExpanded(nextState);
-    const newExpanded: Record<string, boolean> = {};
-    for (const art of filteredArticles) {
-      newExpanded[art.id] = nextState;
+    const updated: Record<string, boolean> = {};
+    for (const art of articles) {
+      updated[art.id] = nextState;
     }
-    setExpandedArticles(newExpanded);
+    setExpandedArticles(updated);
   };
 
+  if (loading) {
+    return (
+      <div className="max-w-6xl mx-auto px-4 py-12 flex flex-col items-center justify-center space-y-4">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
+        <p className="text-sm text-slate-500 font-medium">표준어 규정 데이터 및 다국어 병기 사전을 불러오는 중입니다...</p>
+      </div>
+    );
+  }
+
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-      {/* Hero Banner with Full Dual Display */}
-      <div className="relative overflow-hidden rounded-3xl bg-linear-to-br from-indigo-900 via-indigo-800 to-slate-900 p-6 sm:p-10 shadow-xl border border-indigo-700/30 text-white">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-10 space-y-6 sm:space-y-8 font-sans antialiased text-slate-800 dark:text-slate-100">
+      {/* Header Banner with Bilingual Grounding */}
+      <div className="relative overflow-hidden rounded-3xl bg-linear-to-br from-indigo-900 via-indigo-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-indigo-700/40">
         <div className="relative z-10 space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-indigo-200 text-xs font-semibold">
-            <span>{uiP.badge}</span>
-            {uiS && uiS.badge !== uiP.badge && (
-              <span className="text-[11px] opacity-75">· {uiS.badge}</span>
+            <span>{uiBase.badge}</span>
+            {isDualMode && uiTarget && uiTarget.badge !== uiBase.badge && (
+              <span className="text-[11px] opacity-75">· {uiTarget.badge}</span>
             )}
           </div>
           <div>
             <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
-              {uiP.title}
+              {uiBase.title}
             </h1>
-            {showBilingual && uiS && uiS.title !== uiP.title ? (
+            {isDualMode && uiTarget && uiTarget.title !== uiBase.title && (
               <div className="text-base sm:text-xl font-bold text-indigo-200/95 mt-1">
-                {uiS.title}
+                {uiTarget.title}
               </div>
-            ) : primaryLang !== "ko" ? (
-              <div className="text-sm sm:text-lg font-bold text-indigo-200/90 mt-1">
-                한국어 표준어 규정 전체
-              </div>
-            ) : null}
+            )}
           </div>
           <div className="space-y-1.5 max-w-3xl">
             <p className="text-sm sm:text-base text-indigo-100/95 leading-relaxed">
-              {uiP.subtitle}
+              {uiBase.subtitle}
             </p>
-            {showBilingual && uiS && uiS.subtitle !== uiP.subtitle ? (
+            {isDualMode && uiTarget && uiTarget.subtitle !== uiBase.subtitle && (
               <p className="text-xs sm:text-sm text-indigo-200/90 leading-relaxed font-normal">
-                {uiS.subtitle}
+                {uiTarget.subtitle}
               </p>
-            ) : primaryLang !== "ko" ? (
-              <p className="text-xs sm:text-sm text-indigo-200/80 leading-relaxed font-light">
-                {UI_TEXTS.ko.subtitle}
-              </p>
-            ) : null}
+            )}
           </div>
         </div>
       </div>
 
-      {/* Filter & Search Bar (Redundant indicator completely deleted) */}
-      <div className="bg-white dark:bg-slate-900 rounded-2xl p-4 sm:p-5 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+      {/* Filter & Search Bar */}
+      <div className="bg-white dark:bg-slate-900 rounded-2xl p-4 sm:p-5 border border-slate-200 dark:border-slate-800 shadow-xs space-y-3">
         {/* Quick Action Button */}
         <div className="flex justify-end border-b border-slate-100 dark:border-slate-800 pb-3">
           <button
@@ -895,7 +955,7 @@ export function KoreanStandardsView() {
             onClick={toggleAll}
             className="px-3.5 py-1.5 text-xs font-semibold text-slate-700 dark:text-slate-200 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-lg transition"
           >
-            {allExpanded ? uiP.collapseAll : uiP.expandAll}
+            {allExpanded ? uiBase.collapseAll : uiBase.expandAll}
           </button>
         </div>
 
@@ -908,9 +968,9 @@ export function KoreanStandardsView() {
               onClick={() => { setSelectedPart("all"); setSelectedChapter("all"); }}
               className={`flex-1 py-1.5 px-1 text-center rounded-md transition ${selectedPart === "all" ? "bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"}`}
             >
-              <div className="text-xs font-bold">{uiP.allArticles}</div>
-              {showBilingual && uiS && uiS.allArticles !== uiP.allArticles && (
-                <div className="text-[10px] font-normal opacity-80 leading-tight">{uiS.allArticles}</div>
+              <div className="text-xs font-bold">{uiBase.allArticles}</div>
+              {isDualMode && uiTarget && uiTarget.allArticles !== uiBase.allArticles && (
+                <div className="text-[10px] font-normal opacity-80 leading-tight">{uiTarget.allArticles}</div>
               )}
             </button>
             <button
@@ -918,9 +978,9 @@ export function KoreanStandardsView() {
               onClick={() => { setSelectedPart(1); setSelectedChapter("all"); }}
               className={`flex-1 py-1.5 px-1 text-center rounded-md transition ${selectedPart === 1 ? "bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"}`}
             >
-              <div className="text-xs font-bold">{uiP.part1Tab}</div>
-              {showBilingual && uiS && uiS.part1Tab !== uiP.part1Tab && (
-                <div className="text-[10px] font-normal opacity-80 leading-tight">{uiS.part1Tab}</div>
+              <div className="text-xs font-bold">{uiBase.part1Tab}</div>
+              {isDualMode && uiTarget && uiTarget.part1Tab !== uiBase.part1Tab && (
+                <div className="text-[10px] font-normal opacity-80 leading-tight">{uiTarget.part1Tab}</div>
               )}
             </button>
             <button
@@ -928,27 +988,27 @@ export function KoreanStandardsView() {
               onClick={() => { setSelectedPart(2); setSelectedChapter("all"); }}
               className={`flex-1 py-1.5 px-1 text-center rounded-md transition ${selectedPart === 2 ? "bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"}`}
             >
-              <div className="text-xs font-bold">{uiP.part2Tab}</div>
-              {showBilingual && uiS && uiS.part2Tab !== uiP.part2Tab && (
-                <div className="text-[10px] font-normal opacity-80 leading-tight">{uiS.part2Tab}</div>
+              <div className="text-xs font-bold">{uiBase.part2Tab}</div>
+              {isDualMode && uiTarget && uiTarget.part2Tab !== uiBase.part2Tab && (
+                <div className="text-[10px] font-normal opacity-80 leading-tight">{uiTarget.part2Tab}</div>
               )}
             </button>
           </div>
 
-          {/* Chapter Selector with Fully Translated & Bilingual Chapter Names */}
+          {/* Chapter Selector Dropdown */}
           <div className="md:col-span-3">
             <select
               value={selectedChapter}
               onChange={(e) => setSelectedChapter(e.target.value)}
-              className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full text-xs font-medium bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-2.5 py-2 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500"
             >
-              <option value="all">{uiP.allChapters}</option>
+              <option value="all">
+                {uiBase.allChapters}
+                {isDualMode && uiTarget && uiTarget.allChapters !== uiBase.allChapters ? ` (${uiTarget.allChapters})` : ""}
+              </option>
               {availableChapters.map((ch) => {
-                const trP = CHAPTER_TRANSLATIONS[primaryLang]?.[ch] || ch;
-                const trS = showBilingual ? (CHAPTER_TRANSLATIONS[secondaryLang]?.[ch] || ch) : null;
-                const label = trS && trS !== trP
-                  ? `${trP} · ${trS}`
-                  : (primaryLang !== "ko" ? `${trP} · ${ch}` : ch);
+                const trTarget = targetLang ? (CHAPTER_TRANSLATIONS[targetLang]?.[ch] || ch) : null;
+                const label = isDualMode && trTarget && trTarget !== ch ? `${ch} (${trTarget})` : ch;
                 return (
                   <option key={ch} value={ch}>
                     {label}
@@ -959,72 +1019,50 @@ export function KoreanStandardsView() {
           </div>
 
           {/* Search Input */}
-          <div className="md:col-span-4 relative">
+          <div className="md:col-span-4">
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder={uiP.searchPlaceholder}
-              className="w-full pl-3 pr-8 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg text-xs text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              placeholder={uiBase.searchPlaceholder}
+              className="w-full text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-indigo-500"
             />
-            {searchQuery && (
-              <button
-                type="button"
-                onClick={() => setSearchQuery("")}
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xs"
-              >
-                ✕
-              </button>
-            )}
           </div>
         </div>
 
-        {/* Counter Info with Dual Display */}
-        <div className="text-[11px] text-slate-500 dark:text-slate-400 pt-1 flex items-center justify-between">
-          <span>
-            {uiP.showingCount.replace("{count}", filteredArticles.length.toString())}
-            {primaryLang !== "ko" && (
-              <span className="opacity-75 ml-1.5 font-light">
-                (총 {filteredArticles.length}개 조항)
-              </span>
-            )}
-          </span>
+        {/* Status Count Indicator */}
+        <div className="text-[11px] font-medium text-slate-500 dark:text-slate-400 pt-1">
+          <span>{uiBase.showingCount.replace("{count}", filteredArticles.length.toString())}</span>
+          {isDualMode && uiTarget && uiTarget.showingCount !== uiBase.showingCount && (
+            <span className="opacity-75 ml-2 font-normal">· {uiTarget.showingCount.replace("{count}", filteredArticles.length.toString())}</span>
+          )}
         </div>
       </div>
 
-      {/* Loading Skeleton */}
-      {loading && (
-        <div className="space-y-4 py-8">
-          {[1, 2, 3].map((n) => (
-            <div key={n} className="animate-pulse bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 space-y-4">
-              <div className="h-4 bg-slate-200 dark:bg-slate-800 rounded w-1/4"></div>
-              <div className="h-6 bg-slate-200 dark:bg-slate-800 rounded w-3/4"></div>
-              <div className="h-16 bg-slate-100 dark:bg-slate-800/60 rounded"></div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* Articles List */}
-      {!loading && (
+      {/* Main Articles List */}
+      <main className="space-y-6 sm:space-y-8">
         <div className="space-y-6">
           {filteredArticles.length === 0 ? (
-            <div className="text-center py-16 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8">
-              <p className="text-3xl mb-2">🔍</p>
-              <h3 className="text-base font-bold text-slate-800 dark:text-slate-200">{uiP.noMatchTitle}</h3>
-              <p className="text-xs text-slate-500 mt-1">{uiP.noMatchDesc}</p>
+            <div className="text-center py-12 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8 space-y-3">
+              <div className="text-3xl">🔍</div>
+              <h3 className="text-base font-bold text-slate-800 dark:text-slate-200">
+                {uiBase.noMatchTitle}
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400">
+                {uiBase.noMatchDesc}
+              </p>
               <button
                 type="button"
-                onClick={() => { setSearchQuery(""); setSelectedPart("all"); setSelectedChapter("all"); }}
-                className="mt-4 px-4 py-2 bg-indigo-50 text-indigo-600 text-xs font-semibold rounded-lg hover:bg-indigo-100 transition"
+                onClick={() => { setSelectedPart("all"); setSelectedChapter("all"); setSearchQuery(""); }}
+                className="mt-2 px-4 py-1.5 text-xs font-semibold text-indigo-600 bg-indigo-50 dark:bg-indigo-950/50 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 rounded-lg transition"
               >
-                {uiP.resetFilter}
+                {uiBase.resetFilter}
               </button>
             </div>
           ) : (
             filteredArticles.map((art) => {
-              const pTrans = art.i18n[primaryLang] || art.i18n.ko;
-              const sTrans = showBilingual ? (art.i18n[secondaryLang] || art.i18n.ko) : null;
+              const koTrans = art.i18n.ko;
+              const targetTrans = targetLang ? (art.i18n[targetLang] || null) : null;
               const isExpanded = !!expandedArticles[art.id];
               const validStructured = (art.structuredExamples || []).filter(
                 (b) => !(b.type === "text" && /^\s*\(\d+\)\s*$/.test(b.content || ""))
@@ -1049,28 +1087,28 @@ export function KoreanStandardsView() {
                             ? "bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800"
                             : "bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800"
                         }`}>
-                          <span>{pTrans?.part || (isPart1 ? "제1부 사정 원칙" : "제2부 표준 발음법")}</span>
-                          {showBilingual && sTrans?.part && sTrans.part !== pTrans?.part && (
-                            <span className="opacity-75 font-normal text-[11px]">· {sTrans.part}</span>
+                          <span>{koTrans?.part || (isPart1 ? "제1부 사정 원칙" : "제2부 표준 발음법")}</span>
+                          {isDualMode && targetTrans?.part && targetTrans.part !== koTrans?.part && (
+                            <span className="opacity-75 font-normal text-[11px]">· {targetTrans.part}</span>
                           )}
                         </div>
 
                         {/* Chapter Badge with Bilingual Support */}
-                        {pTrans?.chapter && (
+                        {koTrans?.chapter && (
                           <div className="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-slate-700 flex items-center gap-1.5">
-                            <span>{pTrans.chapter}</span>
-                            {showBilingual && sTrans?.chapter && sTrans.chapter !== pTrans.chapter && (
-                              <span className="opacity-75 font-normal text-[11px] text-slate-500">· {sTrans.chapter}</span>
+                            <span>{koTrans.chapter}</span>
+                            {isDualMode && targetTrans?.chapter && targetTrans.chapter !== koTrans.chapter && (
+                              <span className="opacity-75 font-normal text-[11px] text-slate-500">· {targetTrans.chapter}</span>
                             )}
                           </div>
                         )}
 
                         {/* Section Badge with Bilingual Support */}
-                        {pTrans?.section && (
+                        {koTrans?.section && (
                           <div className="px-2 py-0.5 rounded-md bg-slate-50 dark:bg-slate-800/60 text-slate-600 dark:text-slate-400 text-xs font-normal border border-slate-200 dark:border-slate-700 flex items-center gap-1.5">
-                            <span>{pTrans.section}</span>
-                            {showBilingual && sTrans?.section && sTrans.section !== pTrans.section && (
-                              <span className="opacity-75 font-normal text-[11px] text-slate-400">· {sTrans.section}</span>
+                            <span>{koTrans.section}</span>
+                            {isDualMode && targetTrans?.section && targetTrans.section !== koTrans.section && (
+                              <span className="opacity-75 font-normal text-[11px] text-slate-400">· {targetTrans.section}</span>
                             )}
                           </div>
                         )}
@@ -1079,49 +1117,49 @@ export function KoreanStandardsView() {
                       {/* Article ID with Bilingual Support */}
                       <div className="flex items-center gap-1.5">
                         <span className="text-xs font-mono font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/50 px-2 py-0.5 rounded">
-                          {pTrans?.title || `제${art.articleNum}항`}
+                          {koTrans?.title || `제${art.articleNum}항`}
                         </span>
-                        {showBilingual && sTrans?.title && sTrans.title !== pTrans?.title && (
+                        {isDualMode && targetTrans?.title && targetTrans.title !== koTrans?.title && (
                           <span className="text-[11px] font-mono text-indigo-500/80 dark:text-indigo-300/80 bg-indigo-50/50 dark:bg-indigo-950/30 px-1.5 py-0.5 rounded border border-indigo-100 dark:border-indigo-900/50">
-                            {sTrans.title}
+                            {targetTrans.title}
                           </span>
                         )}
                       </div>
                     </div>
 
-                    {/* Rule Text (No ugly tag badges) */}
+                    {/* Rule Text: Always Korean Original on top, Bilingual Translation underneath */}
                     <div className="pt-1">
                       <div className="flex items-start gap-3">
                         <span className="text-lg font-bold text-indigo-600 dark:text-indigo-400 select-none">
                           §
                         </span>
                         <div className="flex-1 space-y-2">
-                          {/* Primary Rule */}
+                          {/* Primary Korean Rule (Always Korean on top!) */}
                           <div className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-50 leading-snug tracking-tight">
-                            {pTrans?.rule || ""}
+                            {koTrans?.rule || ""}
                           </div>
-                          {/* Secondary Rule (Bilingual) */}
-                          {sTrans && sTrans.rule && sTrans.rule !== pTrans.rule && (
+                          {/* Secondary Rule (Bilingual Translation underneath!) */}
+                          {isDualMode && targetTrans?.rule && targetTrans.rule !== koTrans?.rule && (
                             <div className="text-sm sm:text-base font-medium text-slate-600 dark:text-slate-300 pt-2 border-t border-slate-100 dark:border-slate-800 leading-snug">
-                              {sTrans.rule}
+                              {targetTrans.rule}
                             </div>
                           )}
                         </div>
                       </div>
                     </div>
 
-                    {/* Explanation Section (Faithful Paragraph-by-Paragraph Alignment & Dual Bilingual Mode) */}
-                    {(pTrans?.explanation || (sTrans && sTrans.explanation)) && (() => {
+                    {/* Explanation Section: Faithful Paragraph-by-Paragraph Alignment & Dual Bilingual Mode */}
+                    {(koTrans?.explanation || (targetTrans && targetTrans.explanation)) && (() => {
                       const parasList = commentaryParagraphs[art.id] || [];
                       const hasStructuredParas = parasList.length > 0;
 
                       return (
                         <div className="space-y-3 pt-1">
                           <div className="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center justify-between">
-                            <span>{uiP.explanationTitle}</span>
-                            {showBilingual && (
+                            <span>{uiBase.explanationTitle}</span>
+                            {isDualMode && (
                               <span className="text-[11px] font-normal text-slate-400">
-                                {primaryLang !== "ko" ? "문단별 번역 및 한국어 병기 모드" : "문단별 표준 해설"}
+                                문단별 한국어 원문 및 번역 병기 모드
                               </span>
                             )}
                           </div>
@@ -1129,31 +1167,21 @@ export function KoreanStandardsView() {
                           <div className="space-y-3.5">
                             {hasStructuredParas ? (
                               parasList.map((pObj, pIdx) => {
-                                const primaryPara = pObj[primaryLang] || pObj.ko;
-                                const secondaryPara = showBilingual ? (pObj[secondaryLang] || pObj.ko) : null;
-                                const showKoRef = primaryLang !== "ko" && showBilingual;
+                                const koPara = pObj.ko;
+                                const transPara = targetLang ? (pObj[targetLang] || "") : "";
 
                                 return (
                                   <div
                                     key={pIdx}
                                     className="bg-amber-50/40 dark:bg-amber-950/20 p-5 rounded-2xl border border-amber-200/60 dark:border-amber-900/40 space-y-2.5 shadow-2xs"
                                   >
-                                    {/* Primary Translation Paragraph */}
-                                    <RenderFormattedCommentary text={primaryPara} />
+                                    {/* Primary Korean Commentary Paragraph */}
+                                    <RenderFormattedCommentary text={koPara} />
 
-                                    {/* Bilingual Secondary Paragraph / Original Korean Grounding */}
-                                    {showKoRef && pObj.ko && pObj.ko !== primaryPara && (
+                                    {/* Bilingual Translation Paragraph directly underneath */}
+                                    {isDualMode && transPara && transPara !== koPara && (
                                       <div className="pt-2 border-t border-amber-200/40 dark:border-amber-900/30">
-                                        <div className="bg-white/70 dark:bg-slate-800/60 p-3.5 rounded-xl border border-amber-100 dark:border-slate-700/60">
-                                          <RenderFormattedCommentary text={pObj.ko} isSecondary />
-                                        </div>
-                                      </div>
-                                    )}
-
-                                    {/* Other Secondary Language if chosen */}
-                                    {!showKoRef && showBilingual && secondaryPara && secondaryPara !== primaryPara && (
-                                      <div className="pt-2 border-t border-amber-200/40 dark:border-amber-900/30">
-                                        <RenderFormattedCommentary text={secondaryPara} isSecondary />
+                                        <RenderFormattedCommentary text={transPara} isSecondary />
                                       </div>
                                     )}
                                   </div>
@@ -1161,13 +1189,30 @@ export function KoreanStandardsView() {
                               })
                             ) : (
                               // Fallback using splitCommentaryParagraphs
-                              <div className="bg-amber-50/50 dark:bg-amber-950/20 p-5 rounded-2xl border border-amber-200/60 dark:border-amber-900/40 space-y-3">
-                                {splitCommentaryParagraphs(pTrans?.explanation || "").map((para, pIdx) => (
-                                  <p key={pIdx} className="text-base sm:text-lg font-normal text-slate-800 dark:text-slate-200 leading-relaxed">
-                                    {para}
-                                  </p>
-                                ))}
-                              </div>
+                              (() => {
+                                const koParas = splitCommentaryParagraphs(koTrans?.explanation || "");
+                                const transParas = isDualMode && targetTrans?.explanation ? splitCommentaryParagraphs(targetTrans.explanation) : [];
+                                return (
+                                  <div className="space-y-3.5">
+                                    {koParas.map((para, pIdx) => {
+                                      const sPara = transParas[pIdx] || (pIdx === koParas.length - 1 ? transParas.slice(pIdx).join("\n\n") : "");
+                                      return (
+                                        <div
+                                          key={pIdx}
+                                          className="bg-amber-50/40 dark:bg-amber-950/20 p-5 rounded-2xl border border-amber-200/60 dark:border-amber-900/40 space-y-2.5 shadow-2xs"
+                                        >
+                                          <RenderFormattedCommentary text={para} />
+                                          {isDualMode && sPara && sPara !== para && (
+                                            <div className="pt-2 border-t border-amber-200/40 dark:border-amber-900/30">
+                                              <RenderFormattedCommentary text={sPara} isSecondary />
+                                            </div>
+                                          )}
+                                        </div>
+                                      );
+                                    })}
+                                  </div>
+                                );
+                              })()
                             )}
                           </div>
                         </div>
@@ -1182,10 +1227,10 @@ export function KoreanStandardsView() {
                           onClick={() => toggleExpand(art.id)}
                           className="inline-flex items-center gap-2 text-xs font-semibold text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-950/60 dark:hover:bg-indigo-900/60 px-3.5 py-1.5 rounded-lg transition"
                         >
-                          <span>{isExpanded ? uiP.collapseDetails : uiP.expandDetails}</span>
+                          <span>{isExpanded ? uiBase.collapseDetails : uiBase.expandDetails}</span>
                           {hasStructured && (
                             <span className="text-[11px] opacity-75 font-normal">
-                              {uiP.itemsCount.replace("{count}", validStructured.length.toString())}
+                              {uiBase.itemsCount.replace("{count}", validStructured.length.toString())}
                             </span>
                           )}
                         </button>
@@ -1196,8 +1241,9 @@ export function KoreanStandardsView() {
                   {/* Details Accordion Content (Structured Tables with Meanings, Lists, & Text) */}
                   {hasDetails && isExpanded && (
                     <div className="border-t border-slate-100 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/50 p-5 sm:p-6 space-y-4">
-                      <div className="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-                        <span>{uiP.examplesTitle}</span>
+                      <div className="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+                        <span>📋</span>
+                        <span>{uiBase.examplesTitle}</span>
                       </div>
 
                       {hasStructured ? (
@@ -1208,9 +1254,8 @@ export function KoreanStandardsView() {
                                 <RenderExampleTable
                                   key={idx}
                                   table={block}
-                                  primaryLang={primaryLang}
-                                  secondaryLang={secondaryLang}
-                                  showBilingual={showBilingual}
+                                  targetLang={targetLang}
+                                  isDualMode={isDualMode}
                                   wordMeanings={wordMeanings}
                                   noteTranslations={noteTranslations}
                                 />
@@ -1224,8 +1269,8 @@ export function KoreanStandardsView() {
                                 <RenderExampleText
                                   key={idx}
                                   text={block}
-                                  showBilingual={showBilingual}
-                                  secondaryLang={secondaryLang}
+                                  targetLang={targetLang}
+                                  isDualMode={isDualMode}
                                   noteTranslations={noteTranslations}
                                 />
                               );
@@ -1235,7 +1280,7 @@ export function KoreanStandardsView() {
                         </div>
                       ) : (
                         <div className="space-y-3">
-                          {art.details.map((detail, idx) => (
+                          {art.details?.map((detail, idx) => (
                             <div
                               key={idx}
                               className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed font-mono whitespace-pre-wrap bg-white dark:bg-slate-800/90 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-2xs"
@@ -1252,8 +1297,7 @@ export function KoreanStandardsView() {
             })
           )}
         </div>
-      )}
-
+      </main>
       {/* Footer Info */}
       <footer className="text-center py-6 text-xs text-slate-400 dark:text-slate-500 space-y-1">
         <p>대한민국 국립국어원 표준어 규정 (문체부 고시 제2017-13호 등 공인 규범 완비)</p>
