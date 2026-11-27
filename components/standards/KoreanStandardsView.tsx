@@ -941,6 +941,15 @@ function RenderFormattedCommentary({
   );
 }
 
+const cleanTabTitle = (label: string, count: number) => {
+  const clean = label.replace(/\s*\(\d+\)/g, "").trim();
+  return `${clean} (${count})`;
+};
+
+const stripTabCount = (label: string) => {
+  return label.replace(/\s*\(\d+\)/g, "").trim();
+};
+
 export function KoreanStandardsView() {
   const { locale, secondaryLocale, secondaryLocales, isBilingual } = useLearner();
 
@@ -1302,7 +1311,7 @@ export function KoreanStandardsView() {
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
               }`}
             >
-              <span>{primaryLang === "ko" ? uiBase.allArticles : (uiPrimary.allArticles || uiBase.allArticles)} (56)</span>
+              <span>{cleanTabTitle(primaryLang === "ko" ? uiBase.allArticles : (uiPrimary.allArticles || uiBase.allArticles), 56)}</span>
             </button>
             <button
               type="button"
@@ -1313,7 +1322,7 @@ export function KoreanStandardsView() {
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
               }`}
             >
-              <span>{primaryLang === "ko" ? uiBase.part1Tab : (uiPrimary.part1Tab || uiBase.part1Tab)} (26)</span>
+              <span>{cleanTabTitle(primaryLang === "ko" ? uiBase.part1Tab : (uiPrimary.part1Tab || uiBase.part1Tab), 26)}</span>
             </button>
             <button
               type="button"
@@ -1324,7 +1333,7 @@ export function KoreanStandardsView() {
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
               }`}
             >
-              <span>{primaryLang === "ko" ? uiBase.part2Tab : (uiPrimary.part2Tab || uiBase.part2Tab)} (30)</span>
+              <span>{cleanTabTitle(primaryLang === "ko" ? uiBase.part2Tab : (uiPrimary.part2Tab || uiBase.part2Tab), 30)}</span>
             </button>
           </div>
 
@@ -1425,7 +1434,7 @@ export function KoreanStandardsView() {
                             ? "bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800"
                             : "bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800"
                         }`}>
-                          <span>{primaryLang !== "ko" ? (firstTrans?.part || (isPart1 ? uiPrimary.part1Tab : uiPrimary.part2Tab)) : (koTrans?.part || (isPart1 ? "제1부 사정 원칙" : "제2부 표준 발음법"))}</span>
+                          <span>{primaryLang !== "ko" ? (firstTrans?.part || stripTabCount(isPart1 ? (uiPrimary.part1Tab || uiBase.part1Tab) : (uiPrimary.part2Tab || uiBase.part2Tab))) : (koTrans?.part || (isPart1 ? "제1부 사정 원칙" : "제2부 표준 발음법"))}</span>
                           {secondTransLang && secondTrans?.part && (
                             <span className="opacity-80 font-medium text-[11px]">· {secondTrans.part}</span>
                           )}

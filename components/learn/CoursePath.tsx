@@ -11,6 +11,7 @@ import { courseTopic } from "@/lib/learn/korean-bands";
 import { BandChip } from "./BandChip";
 import { OfficialGradeChip } from "./OfficialGradeChip";
 import { useLearner } from "./LearnerProvider";
+import { getKoreanCourseTheme } from "@/lib/learn/korean-themes";
 
 const SEMESTER_KEY = "learn:semester";
 
@@ -51,16 +52,42 @@ export function CoursePath({ course }: { course: Course }) {
   const nodes = new Map(buildPath(state, index).map((n) => [n.lessonId, n]));
   // when Premium is switched off (every item Free) the Free / Premium chips would only be noise
   const showTier = plan.courses.some((c) => c.premiumUnits > 0);
+  const theme = site === "korean" ? getKoreanCourseTheme(currentCourse.id) : undefined;
   return (
     <section className="l-stack" aria-labelledby={`c-${currentCourse.id}`}>
-      <div className="l-card l-card-accent">
-        <div style={{ fontSize: "2.4rem" }} aria-hidden="true">{currentCourse.world.emoji}</div>
-        <h2 id={`c-${currentCourse.id}`} className="l-h1">
+      <div
+        className="l-card l-card-accent"
+        style={theme ? {
+          background: theme.bg,
+          color: theme.titleColor,
+          borderColor: theme.borderColor,
+          boxShadow: "0 12px 32px -6px rgba(0, 0, 0, 0.16)",
+        } : undefined}
+      >
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 6 }}>
+          <div style={{ fontSize: "2.4rem" }} aria-hidden="true">{currentCourse.world.emoji}</div>
+          {theme && (
+            <span
+              style={{
+                fontSize: "0.78rem",
+                fontWeight: 700,
+                padding: "4px 10px",
+                borderRadius: "9999px",
+                background: theme.badgeBg,
+                color: theme.badgeText,
+                backdropFilter: "blur(6px)",
+              }}
+            >
+              {theme.koreanTag}
+            </span>
+          )}
+        </div>
+        <h2 id={`c-${currentCourse.id}`} className="l-h1" style={theme ? { color: theme.titleColor } : undefined}>
           <div>{currentCourse.world.name}</div>
           {secCourses.map(({ locale: secLoc, course: sc }) => (
-            <div key={secLoc || sc.id} style={{ fontSize: "0.75em", fontWeight: 400, opacity: 0.85, marginTop: "0.2rem" }}>
+            <div key={secLoc || sc.id} style={{ fontSize: "0.75em", fontWeight: 400, opacity: 0.9, marginTop: "0.2rem", color: theme ? theme.subColor : undefined }}>
               {secCourses.length > 1 && secLoc && (
-                <span className="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded mr-1.5" style={{ background: "rgba(255,255,255,0.15)" }}>
+                <span className="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded mr-1.5" style={{ background: "rgba(255,255,255,0.2)", color: "#ffffff" }}>
                   {secLoc}
                 </span>
               )}
@@ -68,12 +95,12 @@ export function CoursePath({ course }: { course: Course }) {
             </div>
           ))}
         </h2>
-        <p>
-          <span>{currentCourse.world.tagline} · {currentCourse.title}</span>
+        <p style={theme ? { color: theme.taglineColor } : undefined}>
+          <span style={{ color: theme ? theme.titleColor : undefined }}>{currentCourse.world.tagline} · {currentCourse.title}</span>
           {secCourses.map(({ locale: secLoc, course: sc }) => (
-            <span key={secLoc || sc.id} style={{ display: "block", fontSize: "0.9em", opacity: 0.85, marginTop: "0.15rem" }}>
+            <span key={secLoc || sc.id} style={{ display: "block", fontSize: "0.9em", opacity: 0.9, marginTop: "0.15rem", color: theme ? theme.subColor : undefined }}>
               {secCourses.length > 1 && secLoc && (
-                <span className="text-[10px] uppercase font-bold px-1 py-0.5 rounded mr-1.5" style={{ background: "rgba(255,255,255,0.15)" }}>
+                <span className="text-[10px] uppercase font-bold px-1 py-0.5 rounded mr-1.5" style={{ background: "rgba(255,255,255,0.2)", color: "#ffffff" }}>
                   {secLoc}
                 </span>
               )}
@@ -82,7 +109,7 @@ export function CoursePath({ course }: { course: Course }) {
           ))}
         </p>
         {site === "korean" && (
-          <p className="l-muted" data-testid="course-official">
+          <p style={{ marginTop: 8, color: theme ? theme.subColor : undefined }} data-testid="course-official">
             <OfficialGradeChip level={course.grade} t={t} />
             {previousLevel(course.grade) && <span> · {t("korean.official.prev", { level: courseTopic(t(`grade.${previousLevel(course.grade)}` as never)) })}</span>}
           </p>

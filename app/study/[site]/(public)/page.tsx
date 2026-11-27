@@ -12,6 +12,7 @@ import { SITES, isSite, schoolLevel } from "@/lib/learn/types";
 import { hubLabels } from "@/components/think/hubLabels";
 import { getDailyInsight, DomainType } from "@/lib/learn/dailyInsights";
 import { DailyInsightCard } from "@/components/learn/DailyInsightCard";
+import { getKoreanCourseTheme } from "@/lib/learn/korean-themes";
 
 export default async function Landing({ params }: { params: Promise<{ site: string }> }) {
   const { site } = await params;
@@ -184,6 +185,7 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
                 <div className="l-grid-courses">
                   {courses.map((c) => {
                     const isSpecial = c.id.includes("situational");
+                    const theme = site === "korean" ? getKoreanCourseTheme(c.id) : undefined;
                     return (
                       <Link
                         key={c.id}
@@ -191,22 +193,45 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
                         className={`l-card ${isSpecial ? "l-card-accent" : ""}`}
                         style={{
                           textDecoration: "none",
-                          color: "inherit",
+                          color: theme ? "#ffffff" : "inherit",
                           display: "flex",
                           flexDirection: "column",
                           justifyContent: "space-between",
                           cursor: "pointer",
                           transition: "transform 0.15s ease, box-shadow 0.15s ease",
+                          background: theme ? theme.bg : undefined,
+                          borderColor: theme ? theme.borderColor : undefined,
+                          boxShadow: theme ? "0 4px 16px -2px rgba(0, 0, 0, 0.12)" : undefined,
                         }}
                         data-testid={`world-card-${c.id}`}
                       >
                         <div>
-                          <div style={{ marginBottom: 8 }}>
+                          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
                             <span style={{ fontSize: "2.4rem" }} aria-hidden="true">{c.world.emoji}</span>
+                            {theme && (
+                              <span
+                                style={{
+                                  fontSize: "0.72rem",
+                                  fontWeight: 700,
+                                  padding: "3px 8px",
+                                  borderRadius: "9999px",
+                                  background: theme.badgeBg,
+                                  color: theme.badgeText,
+                                  backdropFilter: "blur(4px)",
+                                  letterSpacing: "0.02em",
+                                }}
+                              >
+                                {theme.koreanTag}
+                              </span>
+                            )}
                           </div>
-                          <h3 className="l-h2" style={{ margin: "4px 0 6px 0" }}>{c.world.name}</h3>
-                          <p className="l-muted" style={{ fontWeight: 600, fontSize: "1rem" }}>{c.title}</p>
-                          {c.world.tagline && <p style={{ fontSize: "0.88rem", opacity: 0.85, marginTop: 6, lineHeight: 1.45 }}>{c.world.tagline}</p>}
+                          <h3 className="l-h2" style={{ margin: "4px 0 6px 0", color: theme ? theme.titleColor : undefined }}>{c.world.name}</h3>
+                          <p style={{ fontWeight: 600, fontSize: "1rem", color: theme ? theme.subColor : undefined, margin: 0 }}>{c.title}</p>
+                          {c.world.tagline && (
+                            <p style={{ fontSize: "0.88rem", opacity: 0.95, marginTop: 6, lineHeight: 1.45, color: theme ? theme.taglineColor : undefined }}>
+                              {c.world.tagline}
+                            </p>
+                          )}
                         </div>
                       </Link>
                     );
@@ -217,23 +242,38 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
                       className="l-card l-card-accent"
                       style={{
                         textDecoration: "none",
-                        color: "inherit",
+                        color: "#ffffff",
                         display: "flex",
                         flexDirection: "column",
                         justifyContent: "space-between",
                         cursor: "pointer",
                         transition: "transform 0.15s ease, box-shadow 0.15s ease",
                         background: "linear-gradient(135deg, #4f46e5 0%, #312e81 100%)",
+                        boxShadow: "0 4px 16px -2px rgba(0, 0, 0, 0.16)",
                       }}
                       data-testid="world-card-standards"
                     >
                       <div>
-                        <div style={{ marginBottom: 8 }}>
+                        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
                           <span style={{ fontSize: "2.4rem" }} aria-hidden="true">📜</span>
+                          <span
+                            style={{
+                              fontSize: "0.72rem",
+                              fontWeight: 700,
+                              padding: "3px 8px",
+                              borderRadius: "9999px",
+                              background: "rgba(255, 255, 255, 0.2)",
+                              color: "#ffffff",
+                              backdropFilter: "blur(4px)",
+                              letterSpacing: "0.02em",
+                            }}
+                          >
+                            어문 규범 · 56개 전 조항
+                          </span>
                         </div>
                         <h3 className="l-h2" style={{ margin: "4px 0 6px 0", color: "#ffffff" }}>한국어 표준어 규정 전체</h3>
-                        <p className="l-muted" style={{ fontWeight: 600, fontSize: "1rem", color: "#e0e7ff" }}>국립국어원 공식 어문 규범</p>
-                        <p style={{ fontSize: "0.88rem", opacity: 0.9, marginTop: 6, lineHeight: 1.45, color: "#c7d2fe" }}>
+                        <p style={{ fontWeight: 600, fontSize: "1rem", color: "#e0e7ff", margin: 0 }}>국립국어원 공식 어문 규범</p>
+                        <p style={{ fontSize: "0.88rem", opacity: 0.95, marginTop: 6, lineHeight: 1.45, color: "#c7d2fe" }}>
                           제1부 표준어 사정 원칙(26항) 및 제2부 표준 발음법(30항) 전 56개 조항 다국어 병기 학습
                         </p>
                       </div>
