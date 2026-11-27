@@ -211,6 +211,34 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
                       </Link>
                     );
                   })}
+                  {site === "korean" && (
+                    <Link
+                      href={`${base}/standards`}
+                      className="l-card l-card-accent"
+                      style={{
+                        textDecoration: "none",
+                        color: "inherit",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "space-between",
+                        cursor: "pointer",
+                        transition: "transform 0.15s ease, box-shadow 0.15s ease",
+                        background: "linear-gradient(135deg, #4f46e5 0%, #312e81 100%)",
+                      }}
+                      data-testid="world-card-standards"
+                    >
+                      <div>
+                        <div style={{ marginBottom: 8 }}>
+                          <span style={{ fontSize: "2.4rem" }} aria-hidden="true">📜</span>
+                        </div>
+                        <h3 className="l-h2" style={{ margin: "4px 0 6px 0", color: "#ffffff" }}>한국어 표준어 규정 전체</h3>
+                        <p className="l-muted" style={{ fontWeight: 600, fontSize: "1rem", color: "#e0e7ff" }}>국립국어원 공식 어문 규범</p>
+                        <p style={{ fontSize: "0.88rem", opacity: 0.9, marginTop: 6, lineHeight: 1.45, color: "#c7d2fe" }}>
+                          제1부 표준어 사정 원칙(26항) 및 제2부 표준 발음법(30항) 전 56개 조항 다국어 병기 학습
+                        </p>
+                      </div>
+                    </Link>
+                  )}
                 </div>
               </div>
             );

@@ -1,5 +1,34 @@
 "use client";
 
+const EXPLANATION_TITLE_MAP: Record<string, string> = {
+  ko: "💡 핵심 해설 및 규정 배경",
+  en: "💡 Core Commentary & Linguistic Context",
+  vi: "💡 Chú giải quy chuẩn & Bối cảnh quy định",
+  ja: "💡 重要解説および規定背景",
+  "zh-Hans": "💡 核心解说与规定背景",
+  "zh-Hant": "💡 核心解說與規定背景",
+  es: "💡 Comentario principal y contexto normativo",
+  fr: "💡 Commentaire essentiel et contexte réglementaire",
+  de: "💡 Kernkommentar und regulatorischer Hintergrund",
+  ru: "💡 Основной комментарий и контекст правил",
+  uz: "💡 Asosiy sharh va qoidalar foni",
+  mn: "💡 Гол тайлбар ба дүрмийн үндэс",
+  th: "💡 คำอธิบายหลักและบริบทของกฎระเบียบ",
+  id: "💡 Komentar inti & latar belakang aturan",
+  ne: "💡 मुख्य व्याख्या र नियम पृष्ठभूमि",
+  hi: "💡 मुख्य टिप्पणी और नियम पृष्ठभूमि",
+  tl: "💡 Pangunahing komentaryo at konteksto ng regulasyon",
+  my: "💡 အဓိကရှင်းလင်းချက်နှင့် စည်းမျဉ်းနောက်ခံ",
+  km: "💡 ការអត្ថាធិប្បាយសំខាន់ និងបរិបទបទប្បញ្ញត្តិ",
+  ar: "💡 الشرح الأساسي وخلفية القواعد"
+};
+
+function getExplanationTitle(lang: string | null | undefined): string {
+  if (!lang) return EXPLANATION_TITLE_MAP.ko;
+  return EXPLANATION_TITLE_MAP[lang] || `💡 ${EXPLANATION_TITLE_MAP.ko}`;
+}
+
+
 function formatExampleCaption(
   caption: string,
   firstTransLang: AnchorLanguage | null = null,
@@ -1104,6 +1133,14 @@ export function KoreanStandardsView() {
   const [selectedPart, setSelectedPart] = useState<"all" | 1 | 2>("all");
   const [selectedChapter, setSelectedChapter] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [expandedArticles, setExpandedArticles] = useState<Record<string, boolean>>({});
+
+  const toggleArticle = (id: string) => {
+    setExpandedArticles((prev) => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
+  };
 
   // Available chapters for filter dropdown
   const availableChapters = useMemo(() => {
@@ -1157,7 +1194,7 @@ export function KoreanStandardsView() {
 
   if (loading) {
     return (
-      <div className="max-w-6xl mx-auto px-4 py-12 flex flex-col items-center justify-center space-y-4">
+      <div className="max-w-[1040px] mx-auto px-3 sm:px-4 py-12 flex flex-col items-center justify-center space-y-4">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
         <p className="text-sm text-slate-500 font-medium">표준어 규정 데이터 및 다국어 병기 사전을 불러오는 중입니다...</p>
       </div>
@@ -1165,7 +1202,7 @@ export function KoreanStandardsView() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-10 pb-36 sm:pb-40 space-y-6 sm:space-y-8 font-sans antialiased text-slate-800 dark:text-slate-100">
+    <div className="max-w-[1040px] mx-auto px-3 sm:px-4 py-6 sm:py-8 pb-36 sm:pb-40 space-y-6 sm:space-y-8 font-sans antialiased text-slate-800 dark:text-slate-100">
       {/* Header Banner - LIFE.HELP Droplet Banner Design Code */}
       <div className="droplet-banner border border-slate-200/90 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 p-6 sm:p-8 space-y-4 shadow-sm">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -1342,14 +1379,22 @@ export function KoreanStandardsView() {
               const hasDetails = (art.details && art.details.length > 0) || hasStructured;
               const isPart1 = art.partNum === 1;
 
+              const isArticleExpanded = !!expandedArticles[art.id];
               return (
                 <article
                   key={art.id}
                   id={art.id}
                   className="droplet-card bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-2xs hover:shadow-md transition-shadow duration-200 overflow-hidden"
                 >
-                  {/* Article Header Card */}
-                  <div className="p-5 sm:p-6 space-y-4">
+                  {/* Article Clickable Header Area */}
+                  <div
+                    onClick={() => toggleArticle(art.id)}
+                    className="p-5 sm:p-6 space-y-4 cursor-pointer hover:bg-slate-50/50 dark:hover:bg-slate-800/40 transition select-none"
+                    role="button"
+                    tabIndex={0}
+                    aria-expanded={isArticleExpanded}
+                    onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleArticle(art.id); } }}
+                  >
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <div className="flex flex-wrap items-center gap-2">
                         {/* Part Badge with Primary on Top */}
@@ -1394,8 +1439,11 @@ export function KoreanStandardsView() {
                         )}
                       </div>
 
-                      {/* Article ID */}
-                      <div className="flex items-center gap-1.5 flex-wrap">
+                      {/* Article ID & Accordion Indicator */}
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className={`text-xs px-2 py-0.5 rounded-full font-bold transition ${isArticleExpanded ? "bg-indigo-600 text-white" : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300"}`}>
+                          {isArticleExpanded ? "▲ 접기" : "▼ 펼치기"}
+                        </span>
                         <span className="text-xs font-mono font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/50 px-2 py-0.5 rounded">
                           {primaryLang !== "ko" ? (firstTrans?.title || `Article ${art.articleNum}`) : (koTrans?.title || `제${art.articleNum}항`)}
                         </span>
@@ -1421,23 +1469,23 @@ export function KoreanStandardsView() {
                         <div className="flex-1 space-y-2">
                           {primaryLang !== "ko" ? (
                             <>
-                              {/* Layer 1: Primary Rule Text ON TOP */}
+                              {/* Layer 1: Main (Primary) Language ON TOP */}
                               <div className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-50 leading-snug tracking-tight">
                                 {firstTrans?.rule || koTrans?.rule || ""}
                               </div>
-                              {/* Layer 2: Secondary Language Rule Text UNDERNEATH */}
-                              {secondTransLang && secondTrans?.rule && secondTrans.rule !== firstTrans?.rule && (
-                                <div className="text-sm sm:text-base font-semibold text-indigo-700 dark:text-indigo-300 pt-1.5 border-t border-slate-100 dark:border-slate-800 leading-snug">
-                                  {secondTrans.rule}
-                                </div>
-                              )}
-                              {/* Layer 3: Korean Base Norm Text */}
-                              {secondTransLang !== "ko" && koTrans?.rule && (
+                              {/* Layer 2: Korean ALWAYS directly underneath */}
+                              {koTrans?.rule && (
                                 <div className="pt-2">
-                                  <div className="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-800/70 p-3 rounded-lg border border-slate-200 dark:border-slate-700 leading-relaxed">
-                                    <span className="font-bold text-slate-700 dark:text-slate-300 mr-1.5">🇰🇷 한국어 원문:</span>
+                                  <div className="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 bg-indigo-50/50 dark:bg-indigo-950/40 p-3 rounded-lg border border-indigo-100 dark:border-indigo-900/40 leading-relaxed">
+                                    <span className="font-bold text-indigo-700 dark:text-indigo-300 mr-1.5">🇰🇷 한국어 원문:</span>
                                     {koTrans.rule}
                                   </div>
+                                </div>
+                              )}
+                              {/* Layer 3: Secondary Language (if selected and not Korean) */}
+                              {secondTransLang && secondTransLang !== "ko" && secondTrans?.rule && secondTrans.rule !== firstTrans?.rule && (
+                                <div className="text-sm sm:text-base font-semibold text-indigo-700 dark:text-indigo-300 pt-1.5 border-t border-slate-100 dark:border-slate-800 leading-snug">
+                                  {secondTrans.rule}
                                 </div>
                               )}
                             </>
@@ -1458,24 +1506,28 @@ export function KoreanStandardsView() {
                         </div>
                       </div>
                     </div>
+                  </div>
 
-                    {/* Explanation Section: Faithful Paragraph-by-Paragraph Alignment & Dual Bilingual Mode */}
+                  {/* Accordion Expanded Content: Core Explanation + Examples (Always fully opened together) */}
+                  {isArticleExpanded && (
+                    <div className="border-t border-slate-100 dark:border-slate-800 p-5 sm:p-6 space-y-6 bg-slate-50/40 dark:bg-slate-900/40">
+                    {/* Explanation Section */}
                     {(koTrans?.explanation || (targetTrans && targetTrans.explanation)) && (() => {
                       const parasList = commentaryParagraphs[art.id] || [];
                       const hasStructuredParas = parasList.length > 0;
 
                       return (
                         <div className="space-y-3 pt-1">
-                          <div className="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5 flex-wrap">
-                            <span>{primaryLang === "ko" ? uiBase.explanationTitle : (uiPrimary.explanationTitle || uiBase.explanationTitle)}</span>
-                            {isDualMode && uiTarget && uiTarget.explanationTitle !== (primaryLang === "ko" ? uiBase.explanationTitle : (uiPrimary.explanationTitle || uiBase.explanationTitle)) && (
-                              <span className="text-xs font-normal text-slate-400 dark:text-slate-500">
-                                · {uiTarget.explanationTitle}
+                          <div className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2 flex-wrap">
+                            <span>{getExplanationTitle(primaryLang)}</span>
+                            {primaryLang !== "ko" && (
+                              <span className="text-xs font-normal text-slate-500 dark:text-slate-400">
+                                · {EXPLANATION_TITLE_MAP.ko}
                               </span>
                             )}
-                            {primaryLang !== "ko" && uiBase.explanationTitle && (
-                              <span className="text-xs font-normal text-slate-400 dark:text-slate-500">
-                                · {uiBase.explanationTitle}
+                            {secondTransLang && secondTransLang !== "ko" && secondTransLang !== primaryLang && (
+                              <span className="text-xs font-normal text-indigo-600 dark:text-indigo-400">
+                                · {getExplanationTitle(secondTransLang)}
                               </span>
                             )}
                           </div>
@@ -1494,21 +1546,21 @@ export function KoreanStandardsView() {
                                   >
                                     {primaryLang !== "ko" ? (
                                       <>
-                                        {/* Primary Language Paragraph ON TOP */}
+                                        {/* Main Language Paragraph ON TOP */}
                                         <RenderFormattedCommentary text={fPara || koPara} />
 
-                                        {/* Secondary Language Paragraph UNDERNEATH */}
-                                        {secondTransLang && sPara && sPara !== fPara && (
-                                          <div className="pt-2 border-t border-amber-200/40 dark:border-amber-900/30">
-                                            <RenderFormattedCommentary text={sPara} isSecondary />
+                                        {/* Korean Reference Paragraph ALWAYS NEXT */}
+                                        {koPara && (
+                                          <div className="pt-2 border-t border-amber-200/40 dark:border-amber-900/30 text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                                            <span className="font-bold text-slate-700 dark:text-slate-300 mr-1">🇰🇷 한국어 원문:</span>
+                                            <RenderFormattedCommentary text={koPara} isSecondary />
                                           </div>
                                         )}
 
-                                        {/* Korean Reference Paragraph */}
-                                        {secondTransLang !== "ko" && koPara && koPara !== fPara && (
-                                          <div className="pt-1.5 border-t border-amber-200/30 dark:border-amber-900/20 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                                            <span className="font-bold text-slate-600 dark:text-slate-300 mr-1">🇰🇷 원문:</span>
-                                            <RenderFormattedCommentary text={koPara} isSecondary />
+                                        {/* Secondary Language Paragraph UNDERNEATH */}
+                                        {secondTransLang && secondTransLang !== "ko" && sPara && sPara !== fPara && (
+                                          <div className="pt-2 border-t border-amber-200/30 dark:border-amber-900/20">
+                                            <RenderFormattedCommentary text={sPara} isSecondary />
                                           </div>
                                         )}
                                       </>
@@ -1567,22 +1619,9 @@ export function KoreanStandardsView() {
                       );
                     })()}
 
-                  </div>
-
-                  {/* Details Section: Always expanded with Structured Tables, Meanings, Lists, & Text */}
+                  {/* Details Section: Structured Tables, Meanings, Lists, & Text rendered cleanly */}
                   {hasDetails && (
-                    <div className="border-t border-slate-100 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/50 p-5 sm:p-6 space-y-4">
-                      <div className="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5 flex-wrap">
-                        <span>📋</span>
-                        <span>{primaryLang === "ko" ? uiBase.examplesTitle : (uiPrimary.examplesTitle || uiBase.examplesTitle)}</span>
-                        {isDualMode && uiTarget && uiTarget.examplesTitle !== (primaryLang === "ko" ? uiBase.examplesTitle : (uiPrimary.examplesTitle || uiBase.examplesTitle)) && (
-                          <span className="text-xs font-normal text-slate-400 dark:text-slate-500">· {uiTarget.examplesTitle}</span>
-                        )}
-                        {primaryLang !== "ko" && uiBase.examplesTitle && (
-                          <span className="text-xs font-normal text-slate-400 dark:text-slate-500">· {uiBase.examplesTitle}</span>
-                        )}
-                      </div>
-
+                    <div className="pt-2 space-y-4">
                       {hasStructured ? (
                         <div className="space-y-4">
                           {validStructured.map((block, idx) => {
@@ -1638,6 +1677,8 @@ export function KoreanStandardsView() {
                           ))}
                         </div>
                       )}
+                    </div>
+                  )}
                     </div>
                   )}
                 </article>

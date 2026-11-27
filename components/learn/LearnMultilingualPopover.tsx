@@ -145,11 +145,10 @@ export function LearnMultilingualPopover({
       <button
         type="button"
         onClick={() => setSecOpen((v) => !v)}
-        className={`droplet-pill relative inline-flex items-center justify-center border border-slate-200 bg-white/95 ${
-          compact ? "h-[34px] min-h-[34px] px-2 sm:px-2.5 text-xs font-bold" : "min-h-11 px-2 sm:px-2.5"
-        } shadow-sm transition hover:border-blue-400 focus-within:border-blue-600 focus-within:ring-2 focus-within:ring-blue-100 w-9 sm:w-auto max-w-[38px] sm:max-w-[155px] min-w-0 shrink-0 cursor-pointer ${
-          secondaryCount > 0 ? "border-blue-300 bg-blue-50/50" : ""
-        }`}
+        className={`relative inline-flex items-center justify-center ${
+          compact ? "h-[34px] !h-[34px] min-h-[34px] px-2.5" : "min-h-11 px-2.5"
+        } rounded-full transition w-9 sm:w-auto max-w-[38px] sm:max-w-[180px] min-w-0 shrink-0 cursor-pointer border-[1.5px] border-[#dfe3f2] bg-white`}
+        style={{ height: "34px", minHeight: "34px", boxSizing: "border-box" }}
         aria-label="Multilingual display mode selection"
         aria-expanded={secOpen}
         title={isKo ? "다중 병기 언어 선택 (복수 선택 가능)" : "Select multilingual languages (multi-select)"}
@@ -164,7 +163,7 @@ export function LearnMultilingualPopover({
           </span>
         )}
 
-        <span className="hidden sm:inline-block font-bold text-[11px] sm:text-xs text-slate-800 ml-1 truncate">
+        <span className="hidden sm:inline-block font-bold text-[0.8rem] text-[var(--l-accent-dark,#3730a3)] ml-1 truncate" style={{ fontSize: "0.8rem", fontWeight: 700, color: "var(--l-accent-dark, #3730a3)" }}>
           {secondaryCount === 0
             ? catalogI18n.single
             : (secondaryCount === 1

@@ -53,7 +53,7 @@ export function SubjectSwitch({ currentSite }: SubjectSwitchProps) {
             <Link
               key={sub.site}
               href={host ? buildLearnUrl(sub.site, host, locale) : `/study/${sub.site}/dashboard`}
-              className={`droplet-pill px-3 h-[34px] inline-flex items-center justify-center text-xs font-bold rounded-full transition shadow-2xs cursor-pointer whitespace-nowrap ${
+              className={`droplet-btn px-3 h-[34px] inline-flex items-center justify-center text-xs font-bold transition shadow-2xs cursor-pointer whitespace-nowrap ${
                 isCurrent
                   ? "bg-blue-600 text-white shadow-xs pointer-events-none"
                   : "bg-white/90 hover:bg-white text-slate-700 hover:text-blue-700 border border-slate-200"
