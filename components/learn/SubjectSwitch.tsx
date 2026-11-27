@@ -65,43 +65,56 @@ export function SubjectSwitch({ currentSite }: SubjectSwitchProps) {
         })}
       </div>
 
-      {/* Mobile & Compact Screens: Compact dropdown pill */}
-      <div className="md:hidden relative">
-        <button
-          type="button"
-          onClick={() => setIsOpen((prev) => !prev)}
-          className="droplet-pill inline-flex items-center justify-center gap-1 px-2.5 h-[34px] text-xs font-bold bg-blue-50 text-blue-800 hover:bg-blue-100 border border-blue-200 rounded-full transition shadow-2xs cursor-pointer shrink-0"
-          title={currentSubject.label}
+      {/* Mobile & Compact Screens: Compact dropdown select matching LocaleSwitch design */}
+      <div className="md:hidden inline-flex items-center max-w-full">
+        <label
+          className="l-locale inline-flex items-center shrink-0 max-w-full"
+          style={{
+            height: "34px",
+            padding: "0 8px 0 10px",
+            border: "1.5px solid var(--l-line, #dfe3f2)",
+            borderRadius: "9999px",
+            background: "#fff",
+            boxSizing: "border-box",
+          }}
         >
-          <span>{currentSubject.label}</span>
-          <span className="text-[10px] text-blue-600">▾</span>
-        </button>
-
-        {isOpen && (
-          <div className="absolute left-0 mt-1.5 w-40 rounded-xl border border-slate-200 bg-white py-1 shadow-xl z-50">
-            {subjects.map((sub) => {
-              const isCurrent = sub.site === currentSite;
-              return (
-                <Link
-                  key={sub.site}
-                  href={host ? buildLearnUrl(sub.site, host, locale) : `/study/${sub.site}/dashboard`}
-                  onClick={() => setIsOpen(false)}
-                  className={`flex items-center justify-between px-3 py-2 text-xs font-bold transition ${
-                    isCurrent
-                      ? "bg-blue-50 text-blue-700 font-extrabold"
-                      : "text-slate-700 hover:bg-slate-100"
-                  }`}
-                >
-                  <span className="flex items-center gap-2">
-                    <span>{sub.icon}</span>
-                    <span>{sub.label}</span>
-                  </span>
-                  {isCurrent && <span className="text-blue-600">✓</span>}
-                </Link>
-              );
-            })}
-          </div>
-        )}
+          <span className="text-xs mr-1 shrink-0" aria-hidden="true">📚</span>
+          <select
+            className="l-locale-select"
+            value={currentSite}
+            onChange={(e) => {
+              const targetSite = e.target.value as Site;
+              if (targetSite && targetSite !== currentSite) {
+                const targetUrl = host ? buildLearnUrl(targetSite, host, locale) : `/study/${targetSite}/dashboard`;
+                if (targetUrl.startsWith("http")) {
+                  window.location.href = targetUrl;
+                } else {
+                  window.location.assign(targetUrl);
+                }
+              }
+            }}
+            aria-label="Select Subject"
+            style={{
+              height: "34px",
+              minHeight: "34px",
+              lineHeight: "34px",
+              fontSize: "0.8rem",
+              fontWeight: 700,
+              border: 0,
+              background: "transparent",
+              color: "var(--l-accent-dark, #1e3a8a)",
+              cursor: "pointer",
+              maxWidth: "min(35vw, 130px)",
+              outline: "none",
+            }}
+          >
+            {subjects.map((sub) => (
+              <option key={sub.site} value={sub.site}>
+                {sub.label}
+              </option>
+            ))}
+          </select>
+        </label>
       </div>
     </div>
   );

@@ -13,6 +13,7 @@ import { hubLabels } from "@/components/think/hubLabels";
 import { getDailyInsight, DomainType } from "@/lib/learn/dailyInsights";
 import { DailyInsightCard } from "@/components/learn/DailyInsightCard";
 import { getKoreanCourseTheme } from "@/lib/learn/korean-themes";
+import { ResponsiveSubjectNav } from "@/components/learn/ResponsiveSubjectNav";
 
 export default async function Landing({ params }: { params: Promise<{ site: string }> }) {
   const { site } = await params;
@@ -50,58 +51,27 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
   return (
     <div className="l-wrap l-wrap-wide l-stack">
       <a className="l-skip" href="#main">{t("nav.skip")}</a>
-      <header className="l-landing-head" style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "10px 16px" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "12px", flexShrink: 0 }}>
+      <header className="l-landing-head flex flex-wrap items-center justify-between gap-2.5 max-w-full overflow-hidden">
+        <div className="flex items-center gap-2 shrink-0 max-w-full flex-wrap">
           <a
             href={mainHomeUrl}
-            className="droplet-pill inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-white rounded-full font-black text-xs transition shadow-sm cursor-pointer"
+            className="droplet-pill inline-flex items-center justify-center gap-1.5 px-3 h-[34px] bg-white hover:bg-slate-50 text-slate-800 rounded-full font-bold text-xs transition border border-slate-200 shadow-2xs shrink-0 cursor-pointer"
             title={locale === "ko" ? "LIFE.HELP 메인 홈으로 이동" : "Return to LIFE.HELP Main Portal"}
           >
             <span className="text-sm">🏠</span>
             <span>LIFE.HELP</span>
           </a>
-          <span className="l-brand"><BrandLogo site={site} name={t(siteConfig(site).brandKey)} size={56} /></span>
-          <LocaleSwitch />
+          <span className="l-brand inline-flex items-center h-[34px] shrink-0">
+            <BrandLogo site={site} name={t(siteConfig(site).brandKey)} size={34} />
+          </span>
+          <LocaleSwitch compact />
         </div>
-        <nav
-          aria-label="Subjects Navigation"
-          style={{
-            display: "inline-flex",
-            flexWrap: "nowrap",
-            alignItems: "center",
-            gap: "6px",
-            whiteSpace: "nowrap",
-            overflowX: "auto",
-            scrollbarWidth: "none",
-            WebkitOverflowScrolling: "touch",
-            padding: "2px 0",
-          }}
-        >
-          {subjects.map((sub) => (
-            <Link
-              key={sub.site}
-              href={sub.href}
-              className={`l-link ${sub.isCurrent ? "l-link-active" : ""}`}
-              style={{
-                fontSize: "0.92rem",
-                padding: "6px 12px",
-                borderRadius: "9999px",
-                textDecoration: "none",
-                fontWeight: sub.isCurrent ? 800 : 600,
-                color: sub.isCurrent ? "#ffffff" : "inherit",
-                backgroundColor: sub.isCurrent ? "var(--l-brand, #2563eb)" : "rgba(241, 245, 249, 0.9)",
-                border: sub.isCurrent ? "1px solid var(--l-brand, #2563eb)" : "1px solid rgba(203, 213, 225, 0.7)",
-                boxShadow: sub.isCurrent ? "0 2px 6px rgba(37, 99, 235, 0.25)" : "none",
-                whiteSpace: "nowrap",
-                flexShrink: 0,
-                transition: "all 0.15s ease",
-              }}
-              data-testid={`subject-nav-${sub.site}`}
-            >
-              {sub.label}
-            </Link>
-          ))}
-        </nav>
+        <ResponsiveSubjectNav
+          currentSite={site}
+          subjects={subjects}
+          standardsHref={site === "korean" ? `${base}/standards` : undefined}
+          standardsLabel={t("korean.standards.shortTitle" as never) || "표준어 규정"}
+        />
       </header>
 
       <main id="main" className="l-stack">

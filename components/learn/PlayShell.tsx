@@ -50,8 +50,8 @@ export function PlayShell({ children }: { children: ReactNode }) {
               <span>🏠</span>
               <span className="hidden sm:inline">LIFE.HELP</span>
             </a>
-            <Link className="l-brand shrink-0" href={href("/dashboard")}>
-              <BrandLogo site={site} name={t(siteConfig(site).brandKey)} />
+            <Link className="l-brand shrink-0 inline-flex items-center" href={href("/dashboard")}>
+              <BrandLogo site={site} name={t(siteConfig(site).brandKey)} size={34} />
             </Link>
             <LocaleSwitch compact />
             <SubjectSwitch currentSite={site} />
