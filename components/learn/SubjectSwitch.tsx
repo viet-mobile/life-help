@@ -41,8 +41,6 @@ export function SubjectSwitch({ currentSite }: SubjectSwitchProps) {
     { site: "chemistry", label: t("site.chemistry.name" as never) || "화학", icon: "🧪" },
   ];
 
-  const currentSubject = subjects.find((s) => s.site === currentSite) || subjects[0];
-
   return (
     <div ref={containerRef} className="relative inline-flex items-center">
       {/* Desktop & Wide Screens: Clean horizontal pills directly next to the 2 language selectors */}
@@ -65,16 +63,13 @@ export function SubjectSwitch({ currentSite }: SubjectSwitchProps) {
         })}
       </div>
 
-      {/* Mobile & Compact Screens: Compact dropdown select matching LocaleSwitch design */}
+      {/* Mobile & Compact Screens: 박스 디자인 코드(droplet-pill) 일률 적용 */}
       <div className="md:hidden inline-flex items-center max-w-full">
         <label
-          className="l-locale inline-flex items-center shrink-0 max-w-full"
+          className="droplet-pill inline-flex items-center shrink-0 max-w-full border border-slate-200 bg-white shadow-2xs hover:border-blue-400 transition"
           style={{
             height: "34px",
             padding: "0 8px 0 10px",
-            border: "1.5px solid var(--l-line, #dfe3f2)",
-            borderRadius: "9999px",
-            background: "#fff",
             boxSizing: "border-box",
           }}
         >

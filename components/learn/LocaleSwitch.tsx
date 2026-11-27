@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useTransition, useMemo } from "react";
 import { LOCALES, LOCALE_COOKIE, LOCALE_COOKIE_MAX_AGE, isLocale, nativeName, type LearnLocale } from "@/lib/learn/i18n";
-import { localeFromSegment, splitLocalePrefix } from "@/lib/learn/i18n/path";
+import { splitLocalePrefix } from "@/lib/learn/i18n/path";
 import { getLanguageNameInLocale, formatLanguageName, type Locale } from "@/messages/registry";
 import { useSite } from "./LearnerProvider";
 import { LearnMultilingualPopover } from "./LearnMultilingualPopover";
@@ -13,7 +13,7 @@ import { LearnMultilingualPopover } from "./LearnMultilingualPopover";
  * Pairs with MultilingualPopover to provide comprehensive multi-secondary language support across all study pages.
  */
 export function LocaleSwitch({ compact = false }: { compact?: boolean }) {
-  const { locale, t, base } = useSite();
+  const { locale, t } = useSite();
   const router = useRouter();
   const [pending, start] = useTransition();
 
@@ -74,8 +74,12 @@ export function LocaleSwitch({ compact = false }: { compact?: boolean }) {
 
   return (
     <div dir="ltr" className="inline-flex items-center gap-1.5 shrink-0 max-w-full">
-      <label className="l-locale shrink-0" data-compact={compact || undefined} aria-busy={pending}>
-        <span aria-hidden="true">🌐</span>
+      <label
+        className="l-locale droplet-pill inline-flex items-center shrink-0 border border-slate-200 bg-white shadow-2xs hover:border-blue-400 transition cursor-pointer"
+        data-compact={compact || undefined}
+        aria-busy={pending}
+      >
+        <span aria-hidden="true" className="text-xs mr-1 shrink-0">🌐</span>
         <select
           className="l-locale-select"
           data-testid="locale-select"

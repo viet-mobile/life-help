@@ -21,10 +21,7 @@ interface ResponsiveSubjectNavProps {
 }
 
 export function ResponsiveSubjectNav({
-  currentSite,
   subjects,
-  standardsHref,
-  standardsLabel = "표준어 규정",
 }: ResponsiveSubjectNavProps) {
   const router = useRouter();
 
@@ -43,13 +40,13 @@ export function ResponsiveSubjectNav({
 
   return (
     <nav aria-label="Subject Navigation" className="inline-flex items-center min-w-0 max-w-full">
-      {/* Desktop / Wide view (>= 960px): Individual pill buttons, height 34px, text-xs font-bold */}
+      {/* Desktop / Wide view (>= 960px): 박스 디자인 코드(droplet-btn) 적용된 과목 버튼 목록 */}
       <div className="hidden min-[960px]:inline-flex items-center gap-1.5 shrink-0">
         {subjects.map((sub) => (
           <Link
             key={sub.site}
             href={sub.href}
-            className={`droplet-btn px-3 h-[34px] inline-flex items-center justify-center text-xs font-bold rounded-full transition shadow-2xs whitespace-nowrap cursor-pointer ${
+            className={`droplet-btn px-3 h-[34px] inline-flex items-center justify-center text-xs font-bold transition shadow-2xs whitespace-nowrap cursor-pointer ${
               sub.isCurrent
                 ? "bg-blue-600 text-white border border-blue-600 pointer-events-none shadow-xs"
                 : "bg-white hover:bg-slate-50 text-slate-700 hover:text-blue-700 border border-slate-200"
@@ -59,30 +56,15 @@ export function ResponsiveSubjectNav({
             {sub.label}
           </Link>
         ))}
-
-        {standardsHref && (
-          <Link
-            href={standardsHref}
-            className="droplet-btn px-3 h-[34px] inline-flex items-center justify-center gap-1 text-xs font-bold rounded-full transition shadow-2xs whitespace-nowrap cursor-pointer bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200"
-            title="국립국어원 한국어 표준어 규정"
-            data-testid="subject-nav-standards"
-          >
-            <span>📜</span>
-            <span>{standardsLabel}</span>
-          </Link>
-        )}
       </div>
 
-      {/* Mobile & Narrow view (< 960px): Dropdown select matching LocaleSwitch design */}
+      {/* Mobile & Narrow view (< 960px): 박스 디자인 코드(droplet-pill) 일률 적용 드롭다운 */}
       <div className="min-[960px]:hidden inline-flex items-center max-w-full">
         <label
-          className="l-locale inline-flex items-center shrink-0 max-w-full"
+          className="droplet-pill inline-flex items-center shrink-0 max-w-full border border-slate-200 bg-white shadow-2xs hover:border-blue-400 transition"
           style={{
             height: "34px",
             padding: "0 8px 0 10px",
-            border: "1.5px solid var(--l-line, #dfe3f2)",
-            borderRadius: "9999px",
-            background: "#fff",
             boxSizing: "border-box",
           }}
         >
@@ -111,11 +93,6 @@ export function ResponsiveSubjectNav({
                 {sub.label}
               </option>
             ))}
-            {standardsHref && (
-              <option value={standardsHref}>
-                📜 {standardsLabel}
-              </option>
-            )}
           </select>
         </label>
       </div>

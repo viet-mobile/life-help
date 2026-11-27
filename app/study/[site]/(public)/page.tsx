@@ -14,6 +14,8 @@ import { getDailyInsight, DomainType } from "@/lib/learn/dailyInsights";
 import { DailyInsightCard } from "@/components/learn/DailyInsightCard";
 import { getKoreanCourseTheme } from "@/lib/learn/korean-themes";
 import { ResponsiveSubjectNav } from "@/components/learn/ResponsiveSubjectNav";
+import { KoreanTraditionalPattern } from "@/components/learn/KoreanTraditionalPattern";
+import { HangeulCalligraphyIcon } from "@/components/learn/HangeulCalligraphyIcon";
 
 export default async function Landing({ params }: { params: Promise<{ site: string }> }) {
   const { site } = await params;
@@ -55,7 +57,7 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
         <div className="flex items-center gap-2 shrink-0 max-w-full flex-wrap">
           <a
             href={mainHomeUrl}
-            className="droplet-pill inline-flex items-center justify-center gap-1.5 px-3 h-[34px] bg-white hover:bg-slate-50 text-slate-800 rounded-full font-bold text-xs transition border border-slate-200 shadow-2xs shrink-0 cursor-pointer"
+            className="droplet-pill inline-flex items-center justify-center gap-1.5 px-3 h-[34px] bg-white hover:bg-slate-50 text-slate-800 font-bold text-xs transition border border-slate-200 shadow-2xs shrink-0 cursor-pointer"
             title={locale === "ko" ? "LIFE.HELP 메인 홈으로 이동" : "Return to LIFE.HELP Main Portal"}
           >
             <span className="text-sm">🏠</span>
@@ -69,8 +71,6 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
         <ResponsiveSubjectNav
           currentSite={site}
           subjects={subjects}
-          standardsHref={site === "korean" ? `${base}/standards` : undefined}
-          standardsLabel={t("korean.standards.shortTitle" as never) || "표준어 규정"}
         />
       </header>
 
@@ -172,19 +172,28 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
                           background: theme ? theme.bg : undefined,
                           borderColor: theme ? theme.borderColor : undefined,
                           boxShadow: theme ? "0 4px 16px -2px rgba(0, 0, 0, 0.12)" : undefined,
+                          position: "relative",
+                          overflow: "hidden",
                         }}
                         data-testid={`world-card-${c.id}`}
                       >
-                        <div>
+                        {theme?.patternType && <KoreanTraditionalPattern type={theme.patternType} />}
+                        <div style={{ position: "relative", zIndex: 1 }}>
                           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
-                            <span style={{ fontSize: "2.4rem" }} aria-hidden="true">{c.world.emoji}</span>
+                            {site === "korean" && c.id === "korean-k1" ? (
+                              <span className="inline-flex items-center justify-center w-11 h-11 rounded-[12px_3px_12px_3px] bg-white/20 border border-white/30 backdrop-blur-xs shadow-xs" title="훈민정음 한글">
+                                <HangeulCalligraphyIcon size={30} className="w-7 h-7 object-contain drop-shadow" />
+                              </span>
+                            ) : (
+                              <span style={{ fontSize: "2.4rem" }} aria-hidden="true">{c.world.emoji}</span>
+                            )}
                             {theme && (
                               <span
                                 style={{
                                   fontSize: "0.72rem",
                                   fontWeight: 700,
                                   padding: "3px 8px",
-                                  borderRadius: "9999px",
+                                  borderRadius: "10px 3px 10px 3px",
                                   background: theme.badgeBg,
                                   color: theme.badgeText,
                                   backdropFilter: "blur(4px)",
@@ -220,10 +229,13 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
                         transition: "transform 0.15s ease, box-shadow 0.15s ease",
                         background: "linear-gradient(135deg, #4f46e5 0%, #312e81 100%)",
                         boxShadow: "0 4px 16px -2px rgba(0, 0, 0, 0.16)",
+                        position: "relative",
+                        overflow: "hidden",
                       }}
                       data-testid="world-card-standards"
                     >
-                      <div>
+                      <KoreanTraditionalPattern type="hunminjeongeum" />
+                      <div style={{ position: "relative", zIndex: 1 }}>
                         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
                           <span style={{ fontSize: "2.4rem" }} aria-hidden="true">📜</span>
                           <span
@@ -231,7 +243,7 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
                               fontSize: "0.72rem",
                               fontWeight: 700,
                               padding: "3px 8px",
-                              borderRadius: "9999px",
+                              borderRadius: "10px 3px 10px 3px",
                               background: "rgba(255, 255, 255, 0.2)",
                               color: "#ffffff",
                               backdropFilter: "blur(4px)",

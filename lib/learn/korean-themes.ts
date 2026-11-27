@@ -1,3 +1,5 @@
+import type { KoreanPatternType } from "@/components/learn/KoreanTraditionalPattern";
+
 export interface KoreanCourseTheme {
   id: string;
   koreanGrade: string;
@@ -9,6 +11,7 @@ export interface KoreanCourseTheme {
   titleColor: string;
   subColor: string;
   taglineColor: string;
+  patternType: KoreanPatternType;
 }
 
 export const KOREAN_COURSE_THEMES: Record<string, KoreanCourseTheme> = {
@@ -23,6 +26,7 @@ export const KOREAN_COURSE_THEMES: Record<string, KoreanCourseTheme> = {
     titleColor: "#ffffff",
     subColor: "#a7f3d0",
     taglineColor: "#ecfdf5",
+    patternType: "giwa",
   },
   "korean-k2": {
     id: "korean-k2",
@@ -35,6 +39,7 @@ export const KOREAN_COURSE_THEMES: Record<string, KoreanCourseTheme> = {
     titleColor: "#ffffff",
     subColor: "#fed7aa",
     taglineColor: "#fff7ed",
+    patternType: "dancheong",
   },
   "korean-k3": {
     id: "korean-k3",
@@ -47,6 +52,7 @@ export const KOREAN_COURSE_THEMES: Record<string, KoreanCourseTheme> = {
     titleColor: "#ffffff",
     subColor: "#fde68a",
     taglineColor: "#fefce8",
+    patternType: "jogakbo",
   },
   "korean-k4": {
     id: "korean-k4",
@@ -59,6 +65,7 @@ export const KOREAN_COURSE_THEMES: Record<string, KoreanCourseTheme> = {
     titleColor: "#ffffff",
     subColor: "#bbf7d0",
     taglineColor: "#f0fdf4",
+    patternType: "bitsal",
   },
   "korean-k5": {
     id: "korean-k5",
@@ -71,6 +78,7 @@ export const KOREAN_COURSE_THEMES: Record<string, KoreanCourseTheme> = {
     titleColor: "#ffffff",
     subColor: "#e9d5ff",
     taglineColor: "#faf5ff",
+    patternType: "unmun",
   },
   "korean-k6": {
     id: "korean-k6",
@@ -83,6 +91,7 @@ export const KOREAN_COURSE_THEMES: Record<string, KoreanCourseTheme> = {
     titleColor: "#ffffff",
     subColor: "#bfdbfe",
     taglineColor: "#eff6ff",
+    patternType: "changsal",
   },
   "korean-k7": {
     id: "korean-k7",
@@ -95,6 +104,7 @@ export const KOREAN_COURSE_THEMES: Record<string, KoreanCourseTheme> = {
     titleColor: "#ffffff",
     subColor: "#99f6e4",
     taglineColor: "#f0fdfa",
+    patternType: "yeohwa",
   },
   "korean-k8": {
     id: "korean-k8",
@@ -107,6 +117,7 @@ export const KOREAN_COURSE_THEMES: Record<string, KoreanCourseTheme> = {
     titleColor: "#ffffff",
     subColor: "#a5f3fc",
     taglineColor: "#ecfeff",
+    patternType: "cheonghaepa",
   },
   "korean-k9": {
     id: "korean-k9",
@@ -119,6 +130,7 @@ export const KOREAN_COURSE_THEMES: Record<string, KoreanCourseTheme> = {
     titleColor: "#ffffff",
     subColor: "#cbd5e1",
     taglineColor: "#f8fafc",
+    patternType: "neunghwapan",
   },
   "korean-k10": {
     id: "korean-k10",
@@ -131,6 +143,7 @@ export const KOREAN_COURSE_THEMES: Record<string, KoreanCourseTheme> = {
     titleColor: "#ffffff",
     subColor: "#bbf7d0",
     taglineColor: "#f0fdf4",
+    patternType: "dangcho",
   },
   "course-situational-korean": {
     id: "course-situational-korean",
@@ -143,6 +156,7 @@ export const KOREAN_COURSE_THEMES: Record<string, KoreanCourseTheme> = {
     titleColor: "#ffffff",
     subColor: "#c7d2fe",
     taglineColor: "#f8fafc",
+    patternType: "hanbok-silk",
   },
   "standards": {
     id: "standards",
@@ -155,6 +169,7 @@ export const KOREAN_COURSE_THEMES: Record<string, KoreanCourseTheme> = {
     titleColor: "#ffffff",
     subColor: "#c7d2fe",
     taglineColor: "#f8fafc",
+    patternType: "hunminjeongeum",
   },
 };
 

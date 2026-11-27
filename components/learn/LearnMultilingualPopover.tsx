@@ -145,9 +145,9 @@ export function LearnMultilingualPopover({
       <button
         type="button"
         onClick={() => setSecOpen((v) => !v)}
-        className={`relative inline-flex items-center justify-center ${
+        className={`droplet-pill relative inline-flex items-center justify-center ${
           compact ? "h-[34px] !h-[34px] min-h-[34px] px-2.5" : "min-h-11 px-2.5"
-        } rounded-full transition w-9 sm:w-auto max-w-[38px] sm:max-w-[180px] min-w-0 shrink-0 cursor-pointer border-[1.5px] border-[#dfe3f2] bg-white`}
+        } transition w-9 sm:w-auto max-w-[38px] sm:max-w-[180px] min-w-0 shrink-0 cursor-pointer border border-slate-200 bg-white shadow-2xs hover:border-blue-400`}
         style={{ height: "34px", minHeight: "34px", boxSizing: "border-box" }}
         aria-label="Multilingual display mode selection"
         aria-expanded={secOpen}
