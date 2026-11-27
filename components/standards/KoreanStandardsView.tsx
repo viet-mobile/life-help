@@ -329,7 +329,8 @@ function RenderExampleTable({
   secondTransLang,
   isDualMode,
   wordMeanings,
-  noteTranslations
+  noteTranslations,
+  primaryLang = "ko"
 }: {
   table: ExampleTableBlock;
   firstTransLang: AnchorLanguage | null;
@@ -337,6 +338,7 @@ function RenderExampleTable({
   isDualMode: boolean;
   wordMeanings: Record<string, Record<string, string>>;
   noteTranslations: Record<string, Record<string, string>>;
+  primaryLang?: AnchorLanguage;
 }) {
   const isComparison = table.headers.includes("ㄱ") && table.headers.includes("ㄴ");
   const isMultiStandard = table.headers.includes("복수 표준어");
@@ -458,11 +460,31 @@ function RenderExampleTable({
                       {stdWord}
                     </td>
 
-                    {/* Meaning Column */}
+                    {/* Meaning Column: Primary on Top */}
                     <td className="px-3.5 py-2.5 align-top text-xs text-slate-700 dark:text-slate-300">
-                      {pMeaning ? (
+                      {primaryLang !== "ko" ? (
                         <div className="space-y-0.5">
-                          <div className="font-medium text-slate-800 dark:text-slate-200">{pMeaning}</div>
+                          {fMeaning ? (
+                            <div className="font-bold text-indigo-700 dark:text-indigo-300">{fMeaning}</div>
+                          ) : pMeaning ? (
+                            <div className="font-medium text-slate-800 dark:text-slate-200">{pMeaning}</div>
+                          ) : (
+                            <span className="text-slate-400">-</span>
+                          )}
+                          {sMeaning && sMeaning !== fMeaning && (
+                            <div className="text-[11px] text-slate-600 dark:text-slate-400 font-medium">{sMeaning}</div>
+                          )}
+                          {pMeaning && pMeaning !== fMeaning && (
+                            <div className="text-[10px] text-slate-400 dark:text-slate-500 font-normal">🇰🇷 {pMeaning}</div>
+                          )}
+                        </div>
+                      ) : (
+                        <div className="space-y-0.5">
+                          {pMeaning ? (
+                            <div className="font-bold text-slate-800 dark:text-slate-200">{pMeaning}</div>
+                          ) : (
+                            <span className="text-slate-400">-</span>
+                          )}
                           {fMeaning && fMeaning !== pMeaning && (
                             <div className="text-[11px] text-indigo-600 dark:text-indigo-400 font-medium">{fMeaning}</div>
                           )}
@@ -470,8 +492,6 @@ function RenderExampleTable({
                             <div className="text-[10px] text-slate-500 dark:text-slate-400">{sMeaning}</div>
                           )}
                         </div>
-                      ) : (
-                        <span className="text-slate-400">-</span>
                       )}
                     </td>
 
@@ -486,24 +506,44 @@ function RenderExampleTable({
                       )}
                     </td>
 
-                    {/* Note Column with Dual Translation */}
+                    {/* Note Column: Primary on Top */}
                     <td className="px-3.5 py-2.5 align-top text-xs text-slate-600 dark:text-slate-300 whitespace-pre-line">
-                      {note ? (
-                        <div className="space-y-1">
-                          <div className="text-slate-700 dark:text-slate-200">{note}</div>
-                          {fNoteTrans && fNoteTrans !== note && (
-                            <div className="text-[11px] text-indigo-600 dark:text-indigo-400 bg-indigo-50/60 dark:bg-indigo-950/40 px-2 py-1 rounded">
-                              {fNoteTrans}
-                            </div>
-                          )}
-                          {sNoteTrans && sNoteTrans !== note && sNoteTrans !== fNoteTrans && (
-                            <div className="text-[10px] text-slate-600 dark:text-slate-400 bg-slate-100/70 dark:bg-slate-800/60 px-2 py-0.5 rounded">
-                              {sNoteTrans}
-                            </div>
-                          )}
-                        </div>
+                      {primaryLang !== "ko" ? (
+                        (fNoteTrans || note) ? (
+                          <div className="space-y-1">
+                            <div className="font-medium text-slate-800 dark:text-slate-200">{fNoteTrans || note}</div>
+                            {sNoteTrans && sNoteTrans !== fNoteTrans && (
+                              <div className="text-[11px] text-indigo-600 dark:text-indigo-400 bg-indigo-50/60 dark:bg-indigo-950/40 px-2 py-0.5 rounded">
+                                {sNoteTrans}
+                              </div>
+                            )}
+                            {note && note !== fNoteTrans && (
+                              <div className="text-[10px] text-slate-500 dark:text-slate-400 bg-slate-100/70 dark:bg-slate-800/60 px-2 py-0.5 rounded">
+                                🇰🇷 {note}
+                              </div>
+                            )}
+                          </div>
+                        ) : (
+                          <span className="text-slate-400">-</span>
+                        )
                       ) : (
-                        <span className="text-slate-400">-</span>
+                        note ? (
+                          <div className="space-y-1">
+                            <div className="text-slate-700 dark:text-slate-200">{note}</div>
+                            {fNoteTrans && fNoteTrans !== note && (
+                              <div className="text-[11px] text-indigo-600 dark:text-indigo-400 bg-indigo-50/60 dark:bg-indigo-950/40 px-2 py-1 rounded">
+                                {fNoteTrans}
+                              </div>
+                            )}
+                            {sNoteTrans && sNoteTrans !== note && sNoteTrans !== fNoteTrans && (
+                              <div className="text-[10px] text-slate-600 dark:text-slate-400 bg-slate-100/70 dark:bg-slate-800/60 px-2 py-0.5 rounded">
+                                {sNoteTrans}
+                              </div>
+                            )}
+                          </div>
+                        ) : (
+                          <span className="text-slate-400">-</span>
+                        )
                       )}
                     </td>
                   </tr>
@@ -608,7 +648,7 @@ function RenderExampleList({
             return (
               <div
                 key={idx}
-                className="flex flex-col justify-between gap-1.5 px-4 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-2xs transition hover:border-indigo-200 dark:hover:border-indigo-800"
+                className="droplet-card flex flex-col justify-between gap-1.5 px-4 py-3 bg-white dark:bg-slate-800 border border-slate-200/90 dark:border-slate-700 shadow-2xs transition hover:border-indigo-200 dark:hover:border-indigo-800"
               >
                 <div className="flex items-center justify-between gap-2">
                   <span className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-50 tracking-tight">{trimmedWord}</span>
@@ -636,7 +676,7 @@ function RenderExampleList({
           return (
             <div
               key={idx}
-              className="px-4 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5"
+              className="droplet-card px-4 py-3 bg-white dark:bg-slate-800 border border-slate-200/90 dark:border-slate-700 shadow-2xs space-y-1.5"
             >
               <div className="text-base sm:text-lg font-bold text-slate-800 dark:text-slate-100">{trimmedItem}</div>
               {fMeaning && (
@@ -1090,276 +1130,124 @@ export function KoreanStandardsView() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-10 pb-36 sm:pb-40 space-y-6 sm:space-y-8 font-sans antialiased text-slate-800 dark:text-slate-100">
-      {/* Header Banner with Bilingual Grounding */}
-      <div className="relative overflow-hidden rounded-3xl bg-linear-to-br from-indigo-900 via-indigo-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-indigo-700/40">
-        <div className="relative z-10 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-indigo-200 text-xs font-semibold flex-wrap">
-            {primaryLang !== "ko" ? (
-              <>
-                <span>{uiPrimary.badge}</span>
-                <span className="text-[11px] opacity-75">· {uiBase.badge}</span>
-                {isTriMode && uiSecond && uiSecond.badge !== uiPrimary.badge && (
-                  <span className="text-[11px] opacity-60">· {uiSecond.badge}</span>
-                )}
-              </>
-            ) : (
-              <>
-                <span>{uiBase.badge}</span>
-                {isDualMode && uiFirst && uiFirst.badge !== uiBase.badge && (
-                  <span className="text-[11px] opacity-75">· {uiFirst.badge}</span>
-                )}
-                {isTriMode && uiSecond && uiSecond.badge !== uiBase.badge && uiSecond.badge !== uiFirst?.badge && (
-                  <span className="text-[11px] opacity-60">· {uiSecond.badge}</span>
-                )}
-              </>
-            )}
-          </div>
-          <div>
-            {primaryLang !== "ko" ? (
-              <>
-                <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
-                  {uiPrimary.title}
-                </h1>
-                <div className="text-base sm:text-xl font-bold text-indigo-200/95 mt-1">
-                  {uiBase.title}
-                  {isTriMode && uiSecond && uiSecond.title !== uiPrimary.title && (
-                    <span className="font-normal opacity-80 text-sm sm:text-base ml-2">· {uiSecond.title}</span>
+      {/* Header Banner - LIFE.HELP Droplet Banner Design Code */}
+      <div className="droplet-banner border border-slate-200/90 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 p-6 sm:p-8 space-y-4 shadow-sm">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="space-y-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/70 text-indigo-700 dark:text-indigo-300 text-xs font-bold border border-indigo-200 dark:border-indigo-800 shadow-2xs">
+              <span>📜</span>
+              <span>{primaryLang === "ko" ? "대한민국 국립국어원 공식 어문 규정" : (uiPrimary.badge || "National Institute of Korean Language Official Norms")}</span>
+            </div>
+            {/* Title: Primary on Top, Bilingual Underneath, Korean Reference */}
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-slate-50 tracking-tight leading-snug">
+              {primaryLang !== "ko" && uiPrimary.title ? (
+                <>
+                  <span>{uiPrimary.title}</span>
+                  {secondTransLang && uiSecond && uiSecond.title !== uiPrimary.title && (
+                    <span className="block mt-1 text-lg sm:text-xl lg:text-2xl font-bold text-indigo-700 dark:text-indigo-400">
+                      {uiSecond.title}
+                    </span>
                   )}
-                </div>
-              </>
-            ) : (
-              <>
-                <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
-                  {uiBase.title}
-                </h1>
-                {isDualMode && uiFirst && uiFirst.title !== uiBase.title && (
-                  <div className="text-base sm:text-xl font-bold text-indigo-200/95 mt-1">
-                    {uiFirst.title}
-                  </div>
-                )}
-              </>
-            )}
-          </div>
-          <div className="space-y-1.5 max-w-3xl">
-            {primaryLang !== "ko" ? (
-              <>
-                <p className="text-sm sm:text-base text-indigo-100/95 leading-relaxed">
-                  {uiPrimary.subtitle}
-                </p>
-                <p className="text-xs sm:text-sm text-indigo-200/80 leading-relaxed font-normal">
-                  {uiBase.subtitle}
-                </p>
-                {isTriMode && uiSecond && uiSecond.subtitle !== uiPrimary.subtitle && (
-                  <p className="text-xs sm:text-sm text-indigo-200/70 leading-relaxed font-normal">
-                    {uiSecond.subtitle}
-                  </p>
-                )}
-              </>
-            ) : (
-              <>
-                <p className="text-sm sm:text-base text-indigo-100/95 leading-relaxed">
-                  {uiBase.subtitle}
-                </p>
-                {isDualMode && uiFirst && uiFirst.subtitle !== uiBase.subtitle && (
-                  <p className="text-xs sm:text-sm text-indigo-200/90 leading-relaxed font-normal">
-                    {uiFirst.subtitle}
-                  </p>
-                )}
-              </>
-            )}
+                  <span className="block mt-1 text-sm sm:text-base font-semibold text-slate-500 dark:text-slate-400">
+                    🇰🇷 {uiBase.title}
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span>{uiBase.title}</span>
+                  {isDualMode && uiTarget && uiTarget.title !== uiBase.title && (
+                    <span className="block mt-1 text-lg sm:text-xl lg:text-2xl font-bold text-indigo-700 dark:text-indigo-400">
+                      {uiTarget.title}
+                    </span>
+                  )}
+                </>
+              )}
+            </h1>
+
+            {/* Subtitle: Primary on Top, Bilingual Underneath, Korean Reference */}
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-3xl leading-relaxed">
+              {primaryLang !== "ko" && uiPrimary.subtitle ? (
+                <>
+                  <span>{uiPrimary.subtitle}</span>
+                  {secondTransLang && uiSecond && uiSecond.subtitle !== uiPrimary.subtitle && (
+                    <span className="block mt-0.5 text-indigo-600 dark:text-indigo-400 text-xs font-medium">
+                      {uiSecond.subtitle}
+                    </span>
+                  )}
+                  <span className="block mt-0.5 text-slate-500 dark:text-slate-400 text-xs">
+                    🇰🇷 {uiBase.subtitle}
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span>{uiBase.subtitle}</span>
+                  {isDualMode && uiTarget && uiTarget.subtitle !== uiBase.subtitle && (
+                    <span className="block mt-0.5 text-indigo-600 dark:text-indigo-400 font-medium">
+                      {uiTarget.subtitle}
+                    </span>
+                  )}
+                </>
+              )}
+            </p>
           </div>
         </div>
       </div>
 
-      {/* Filter & Search Bar */}
-      <div className="bg-white dark:bg-slate-900 rounded-2xl p-4 sm:p-5 border border-slate-200 dark:border-slate-800 shadow-xs space-y-3">
-        {/* Quick Action Button & Bilingual Selector Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-800 pb-3">
-          {/* Quick Bilingual Language Switcher */}
-          {(() => {
-            const activeSwitcherLang = primaryLang === "ko" ? (firstTransLang || "off") : (secondTransLang || "off");
-            const handleSelectLang = (lang: AnchorLanguage | "off") => {
-              if (typeof window !== "undefined") {
-                const currentPath = window.location.pathname;
-                const { rest } = splitLocalePrefix(currentPath);
-                const sub = rest || "/standards";
-                let targetUrl = "";
-                if (primaryLang === "ko") {
-                  if (lang === "off" || lang === "ko") {
-                    targetUrl = sub;
-                  } else {
-                    targetUrl = `/${lang}${sub}`;
-                  }
-                } else {
-                  if (lang === "off" || lang === primaryLang) {
-                    targetUrl = `/${primaryLang}${sub}`;
-                  } else {
-                    targetUrl = `/${primaryLang}/${lang}${sub}`;
-                  }
-                }
-                setSecondaryLanguage(lang);
-                if (window.location.pathname !== targetUrl) {
-                  window.history.pushState(null, "", targetUrl);
-                }
-              } else {
-                setSecondaryLanguage(lang);
-              }
-            };
-
-            return (
-              <div className="flex items-center gap-1.5 flex-wrap">
-                <span className="text-xs font-bold text-slate-700 dark:text-slate-300 mr-1">
-                  병기(번역) 언어 선택:
-                </span>
-                <button
-                  type="button"
-                  onClick={() => handleSelectLang("off")}
-                  className={`px-2.5 py-1 text-xs rounded-md transition font-medium ${
-                    activeSwitcherLang === "off"
-                      ? "bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 shadow-2xs font-semibold"
-                      : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200"
-                  }`}
-                >
-                  {primaryLang === "ko" ? "한국어 전용" : "병기 없음"}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleSelectLang("vi")}
-                  className={`px-2.5 py-1 text-xs rounded-md transition font-medium ${
-                    activeSwitcherLang === "vi"
-                      ? "bg-indigo-600 text-white shadow-2xs font-semibold"
-                      : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200"
-                  }`}
-                >
-                  Tiếng Việt (베트남어)
-                </button>
-                {primaryLang !== "en" && (
-                  <button
-                    type="button"
-                    onClick={() => handleSelectLang("en")}
-                    className={`px-2.5 py-1 text-xs rounded-md transition font-medium ${
-                      activeSwitcherLang === "en"
-                        ? "bg-indigo-600 text-white shadow-2xs font-semibold"
-                        : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200"
-                    }`}
-                  >
-                    English (영어)
-                  </button>
-                )}
-                {primaryLang !== "ko" && (
-                  <button
-                    type="button"
-                    onClick={() => handleSelectLang("ko")}
-                    className={`px-2.5 py-1 text-xs rounded-md transition font-medium ${
-                      activeSwitcherLang === "ko"
-                        ? "bg-indigo-600 text-white shadow-2xs font-semibold"
-                        : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200"
-                    }`}
-                  >
-                    한국어 (Korean)
-                  </button>
-                )}
-                <button
-                  type="button"
-                  onClick={() => handleSelectLang("ja")}
-                  className={`px-2.5 py-1 text-xs rounded-md transition font-medium ${
-                    activeSwitcherLang === "ja"
-                      ? "bg-indigo-600 text-white shadow-2xs font-semibold"
-                      : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200"
-                  }`}
-                >
-                  日本語 (일본어)
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleSelectLang("zh-Hans")}
-                  className={`px-2.5 py-1 text-xs rounded-md transition font-medium ${
-                    activeSwitcherLang === "zh-Hans"
-                      ? "bg-indigo-600 text-white shadow-2xs font-semibold"
-                      : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200"
-                  }`}
-                >
-                  中文简体
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleSelectLang("zh-Hant")}
-                  className={`px-2.5 py-1 text-xs rounded-md transition font-medium ${
-                    activeSwitcherLang === "zh-Hant"
-                      ? "bg-indigo-600 text-white shadow-2xs font-semibold"
-                      : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200"
-                  }`}
-                >
-                  中文繁體
-                </button>
-              </div>
-            );
-          })()}
-
-          <button
-            type="button"
-            onClick={toggleAll}
-            className="px-3.5 py-1.5 text-xs font-semibold text-slate-700 dark:text-slate-200 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-lg transition"
-          >
-            <span>{allExpanded ? uiBase.collapseAll : uiBase.expandAll}</span>
-            {isDualMode && uiTarget && (
-              <span className="block text-[10px] font-normal opacity-80 leading-tight">
-                {allExpanded ? uiTarget.collapseAll : uiTarget.expandAll}
-              </span>
-            )}
-          </button>
-        </div>
-
-        {/* Part Filter Tabs, Chapter Filter & Search Input */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
-          {/* Part Tabs */}
-          <div className="md:col-span-5 flex rounded-lg p-1 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+      {/* Filter and Controls Bar - LIFE.HELP Droplet Card & Uniform Height / Font */}
+      <div className="droplet-card p-3 sm:p-4 bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-2xs">
+        <div className="flex flex-col md:flex-row items-stretch md:items-center gap-2.5">
+          {/* Part Filter Tabs: Uniform h-10, text-xs, font-bold */}
+          <div className="h-10 droplet-card flex items-center p-1 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shrink-0">
             <button
               type="button"
               onClick={() => { setSelectedPart("all"); setSelectedChapter("all"); }}
-              className={`flex-1 py-1.5 px-1 text-center rounded-md transition ${selectedPart === "all" ? "bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"}`}
+              className={`h-full px-3 inline-flex items-center justify-center text-xs font-bold droplet-btn transition whitespace-nowrap ${
+                selectedPart === "all"
+                  ? "bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-xs"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
+              }`}
             >
-              <div className="text-xs font-bold">{uiBase.allArticles}</div>
-              {isDualMode && uiTarget && uiTarget.allArticles !== uiBase.allArticles && (
-                <div className="text-[10px] font-normal opacity-80 leading-tight">{uiTarget.allArticles}</div>
-              )}
+              <span>{primaryLang === "ko" ? uiBase.allArticles : (uiPrimary.allArticles || uiBase.allArticles)} (56)</span>
             </button>
             <button
               type="button"
               onClick={() => { setSelectedPart(1); setSelectedChapter("all"); }}
-              className={`flex-1 py-1.5 px-1 text-center rounded-md transition ${selectedPart === 1 ? "bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"}`}
+              className={`h-full px-3 inline-flex items-center justify-center text-xs font-bold droplet-btn transition whitespace-nowrap ${
+                selectedPart === 1
+                  ? "bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-xs"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
+              }`}
             >
-              <div className="text-xs font-bold">{uiBase.part1Tab}</div>
-              {isDualMode && uiTarget && uiTarget.part1Tab !== uiBase.part1Tab && (
-                <div className="text-[10px] font-normal opacity-80 leading-tight">{uiTarget.part1Tab}</div>
-              )}
+              <span>{primaryLang === "ko" ? uiBase.part1Tab : (uiPrimary.part1Tab || uiBase.part1Tab)} (26)</span>
             </button>
             <button
               type="button"
               onClick={() => { setSelectedPart(2); setSelectedChapter("all"); }}
-              className={`flex-1 py-1.5 px-1 text-center rounded-md transition ${selectedPart === 2 ? "bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"}`}
+              className={`h-full px-3 inline-flex items-center justify-center text-xs font-bold droplet-btn transition whitespace-nowrap ${
+                selectedPart === 2
+                  ? "bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-xs"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
+              }`}
             >
-              <div className="text-xs font-bold">{uiBase.part2Tab}</div>
-              {isDualMode && uiTarget && uiTarget.part2Tab !== uiBase.part2Tab && (
-                <div className="text-[10px] font-normal opacity-80 leading-tight">{uiTarget.part2Tab}</div>
-              )}
+              <span>{primaryLang === "ko" ? uiBase.part2Tab : (uiPrimary.part2Tab || uiBase.part2Tab)} (30)</span>
             </button>
           </div>
 
-          {/* Chapter Selector Dropdown */}
-          <div className="md:col-span-3">
+          {/* Chapter Selector Dropdown: Uniform h-10, text-xs, font-bold */}
+          <div className="flex-1 min-w-[180px]">
             <select
               value={selectedChapter}
               onChange={(e) => setSelectedChapter(e.target.value)}
-              className="w-full text-xs font-medium bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-2.5 py-2 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              className="h-10 w-full droplet-card text-xs font-bold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-3 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500 cursor-pointer"
             >
               <option value="all">
-                {uiBase.allChapters}
-                {isDualMode && uiTarget && uiTarget.allChapters !== uiBase.allChapters ? ` (${uiTarget.allChapters})` : ""}
+                {primaryLang === "ko" ? uiBase.allChapters : (uiPrimary.allChapters || uiBase.allChapters)}
+                {isDualMode && uiTarget && uiTarget.allChapters !== (uiPrimary.allChapters || uiBase.allChapters) ? ` (${uiTarget.allChapters})` : ""}
               </option>
               {availableChapters.map((ch) => {
+                const trPrimary = primaryLang !== "ko" ? (CHAPTER_TRANSLATIONS[primaryLang]?.[ch] || ch) : ch;
                 const trTarget = targetLang ? (CHAPTER_TRANSLATIONS[targetLang]?.[ch] || ch) : null;
-                const label = isDualMode && trTarget && trTarget !== ch ? `${ch} (${trTarget})` : ch;
+                const label = isDualMode && trTarget && trTarget !== trPrimary ? `${trPrimary} (${trTarget})` : trPrimary;
                 return (
                   <option key={ch} value={ch}>
                     {label}
@@ -1369,26 +1257,28 @@ export function KoreanStandardsView() {
             </select>
           </div>
 
-          {/* Search Input */}
-          <div className="md:col-span-4">
+          {/* Search Input: Uniform h-10, text-xs, font-bold */}
+          <div className="flex-1 min-w-[200px]">
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder={isDualMode && uiTarget && uiTarget.searchPlaceholder !== uiBase.searchPlaceholder ? `${uiBase.searchPlaceholder} (${uiTarget.searchPlaceholder})` : uiBase.searchPlaceholder}
-              className="w-full text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              placeholder={primaryLang === "ko" ? (isDualMode && uiTarget && uiTarget.searchPlaceholder !== uiBase.searchPlaceholder ? `${uiBase.searchPlaceholder} (${uiTarget.searchPlaceholder})` : uiBase.searchPlaceholder) : (uiPrimary.searchPlaceholder || uiBase.searchPlaceholder)}
+              className="h-10 w-full droplet-card text-xs font-bold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-3 text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-indigo-500"
             />
           </div>
-        </div>
 
-        {/* Status Count Indicator */}
-        <div className="text-[11px] font-medium text-slate-500 dark:text-slate-400 pt-1">
-          <span>{uiBase.showingCount.replace("{count}", filteredArticles.length.toString())}</span>
-          {isDualMode && uiTarget && uiTarget.showingCount !== uiBase.showingCount && (
-            <span className="opacity-75 ml-2 font-normal">· {uiTarget.showingCount.replace("{count}", filteredArticles.length.toString())}</span>
-          )}
+          {/* Toggle All Button: Uniform h-10, text-xs, font-bold */}
+          <button
+            type="button"
+            onClick={toggleAll}
+            className="h-10 droplet-btn px-3.5 inline-flex items-center justify-center text-xs font-bold text-slate-700 dark:text-slate-200 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition shrink-0 cursor-pointer whitespace-nowrap"
+          >
+            <span>{allExpanded ? (primaryLang === "ko" ? uiBase.collapseAll : uiPrimary.collapseAll) : (primaryLang === "ko" ? uiBase.expandAll : uiPrimary.expandAll)}</span>
+          </button>
         </div>
       </div>
+
 
       {/* Main Articles List */}
       <main className="space-y-6 sm:space-y-8">
@@ -1428,94 +1318,114 @@ export function KoreanStandardsView() {
                 <article
                   key={art.id}
                   id={art.id}
-                  className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/90 dark:border-slate-800 shadow-xs hover:shadow-md transition-shadow duration-200 overflow-hidden"
+                  className="droplet-card bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-2xs hover:shadow-md transition-shadow duration-200 overflow-hidden"
                 >
                   {/* Article Header Card */}
                   <div className="p-5 sm:p-6 space-y-4">
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <div className="flex flex-wrap items-center gap-2">
-                        {/* Part Badge with Bilingual Support */}
-                        <div className={`px-2.5 py-0.5 rounded-full text-xs font-black flex items-center gap-1.5 flex-wrap ${
+                        {/* Part Badge with Primary on Top */}
+                        <div className={`px-2.5 py-0.5 rounded-full text-xs font-bold flex items-center gap-1.5 flex-wrap ${
                           isPart1
                             ? "bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800"
                             : "bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800"
                         }`}>
-                          <span>{koTrans?.part || (isPart1 ? "제1부 사정 원칙" : "제2부 표준 발음법")}</span>
-                          {isDualMode && firstTrans?.part && firstTrans.part !== koTrans?.part && (
-                            <span className="opacity-75 font-normal text-[11px]">· {firstTrans.part}</span>
+                          <span>{primaryLang !== "ko" ? (firstTrans?.part || (isPart1 ? uiPrimary.part1Tab : uiPrimary.part2Tab)) : (koTrans?.part || (isPart1 ? "제1부 사정 원칙" : "제2부 표준 발음법"))}</span>
+                          {secondTransLang && secondTrans?.part && (
+                            <span className="opacity-80 font-medium text-[11px]">· {secondTrans.part}</span>
                           )}
-                          {isTriMode && secondTrans?.part && secondTrans.part !== koTrans?.part && secondTrans.part !== firstTrans?.part && (
-                            <span className="opacity-60 font-normal text-[11px]">· {secondTrans.part}</span>
+                          {primaryLang !== "ko" && secondTransLang !== "ko" && koTrans?.part && (
+                            <span className="opacity-60 font-normal text-[10px]">· 🇰🇷 {koTrans.part}</span>
                           )}
                         </div>
 
-                        {/* Chapter Badge with Bilingual Support */}
-                        {koTrans?.chapter && (
-                          <div className="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-slate-700 flex items-center gap-1.5 flex-wrap">
-                            <span>{koTrans.chapter}</span>
-                            {isDualMode && firstTrans?.chapter && firstTrans.chapter !== koTrans.chapter && (
-                              <span className="opacity-75 font-normal text-[11px] text-slate-500">· {firstTrans.chapter}</span>
+                        {/* Chapter Badge */}
+                        {(primaryLang !== "ko" ? (firstTrans?.chapter || koTrans?.chapter) : koTrans?.chapter) && (
+                          <div className="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-bold border border-slate-200 dark:border-slate-700 flex items-center gap-1.5 flex-wrap">
+                            <span>{primaryLang !== "ko" ? (firstTrans?.chapter || koTrans?.chapter) : koTrans?.chapter}</span>
+                            {secondTransLang && secondTrans?.chapter && (
+                              <span className="opacity-80 font-medium text-[11px] text-slate-500">· {secondTrans.chapter}</span>
                             )}
-                            {isTriMode && secondTrans?.chapter && secondTrans.chapter !== koTrans.chapter && secondTrans.chapter !== firstTrans?.chapter && (
-                              <span className="opacity-60 font-normal text-[11px] text-slate-400">· {secondTrans.chapter}</span>
+                            {primaryLang !== "ko" && secondTransLang !== "ko" && koTrans?.chapter && (
+                              <span className="opacity-60 font-normal text-[10px] text-slate-400">· 🇰🇷 {koTrans.chapter}</span>
                             )}
                           </div>
                         )}
 
-                        {/* Section Badge with Bilingual Support */}
-                        {koTrans?.section && (
-                          <div className="px-2 py-0.5 rounded-md bg-slate-50 dark:bg-slate-800/60 text-slate-600 dark:text-slate-400 text-xs font-normal border border-slate-200 dark:border-slate-700 flex items-center gap-1.5 flex-wrap">
-                            <span>{koTrans.section}</span>
-                            {isDualMode && firstTrans?.section && firstTrans.section !== koTrans.section && (
-                              <span className="opacity-75 font-normal text-[11px] text-slate-400">· {firstTrans.section}</span>
+                        {/* Section Badge */}
+                        {(primaryLang !== "ko" ? (firstTrans?.section || koTrans?.section) : koTrans?.section) && (
+                          <div className="px-2 py-0.5 rounded-md bg-slate-50 dark:bg-slate-800/60 text-slate-600 dark:text-slate-400 text-xs font-medium border border-slate-200 dark:border-slate-700 flex items-center gap-1.5 flex-wrap">
+                            <span>{primaryLang !== "ko" ? (firstTrans?.section || koTrans?.section) : koTrans?.section}</span>
+                            {secondTransLang && secondTrans?.section && (
+                              <span className="opacity-80 font-medium text-[11px] text-slate-400">· {secondTrans.section}</span>
                             )}
-                            {isTriMode && secondTrans?.section && secondTrans.section !== koTrans.section && secondTrans.section !== firstTrans?.section && (
-                              <span className="opacity-60 font-normal text-[11px] text-slate-400">· {secondTrans.section}</span>
+                            {primaryLang !== "ko" && secondTransLang !== "ko" && koTrans?.section && (
+                              <span className="opacity-60 font-normal text-[10px] text-slate-400">· 🇰🇷 {koTrans.section}</span>
                             )}
                           </div>
                         )}
                       </div>
 
-                      {/* Article ID with Bilingual Support */}
+                      {/* Article ID */}
                       <div className="flex items-center gap-1.5 flex-wrap">
                         <span className="text-xs font-mono font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/50 px-2 py-0.5 rounded">
-                          {koTrans?.title || `제${art.articleNum}항`}
+                          {primaryLang !== "ko" ? (firstTrans?.title || `Article ${art.articleNum}`) : (koTrans?.title || `제${art.articleNum}항`)}
                         </span>
-                        {isDualMode && firstTrans?.title && firstTrans.title !== koTrans?.title && (
-                          <span className="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 bg-indigo-50/50 dark:bg-indigo-950/30 px-1.5 py-0.5 rounded border border-indigo-100 dark:border-indigo-900/50">
-                            {firstTrans.title}
+                        {secondTransLang && secondTrans?.title && (
+                          <span className="text-[11px] font-mono font-semibold text-indigo-600 dark:text-indigo-400 bg-indigo-50/50 dark:bg-indigo-950/30 px-1.5 py-0.5 rounded border border-indigo-100 dark:border-indigo-900/50">
+                            {secondTrans.title}
                           </span>
                         )}
-                        {isTriMode && secondTrans?.title && secondTrans.title !== koTrans?.title && secondTrans.title !== firstTrans?.title && (
+                        {primaryLang !== "ko" && secondTransLang !== "ko" && koTrans?.title && (
                           <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800 px-1.5 py-0.5 rounded border border-slate-200 dark:border-slate-700">
-                            {secondTrans.title}
+                            🇰🇷 {koTrans.title}
                           </span>
                         )}
                       </div>
                     </div>
 
-                    {/* Rule Text: Always Korean Original on top, Bilingual Translation underneath */}
+                    {/* Rule Text: Primary Language on Top, Bilingual Underneath */}
                     <div className="pt-1">
                       <div className="flex items-start gap-3">
                         <span className="text-lg font-bold text-indigo-600 dark:text-indigo-400 select-none">
                           §
                         </span>
                         <div className="flex-1 space-y-2">
-                          {/* Primary Korean Rule (Always Korean on top!) */}
-                          <div className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-50 leading-snug tracking-tight">
-                            {koTrans?.rule || ""}
-                          </div>
-                          {/* First Translation underneath Korean */}
-                          {isDualMode && firstTrans?.rule && firstTrans.rule !== koTrans?.rule && (
-                            <div className="text-sm sm:text-base font-medium text-indigo-700 dark:text-indigo-300 pt-2 border-t border-slate-100 dark:border-slate-800 leading-snug">
-                              {firstTrans.rule}
-                            </div>
-                          )}
-                          {/* Second Translation underneath First Translation */}
-                          {isTriMode && secondTrans?.rule && secondTrans.rule !== koTrans?.rule && secondTrans.rule !== firstTrans?.rule && (
-                            <div className="text-xs sm:text-sm font-normal text-slate-600 dark:text-slate-400 pt-1.5 border-t border-slate-100/70 dark:border-slate-800/70 leading-snug">
-                              {secondTrans.rule}
-                            </div>
+                          {primaryLang !== "ko" ? (
+                            <>
+                              {/* Layer 1: Primary Rule Text ON TOP */}
+                              <div className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-50 leading-snug tracking-tight">
+                                {firstTrans?.rule || koTrans?.rule || ""}
+                              </div>
+                              {/* Layer 2: Secondary Language Rule Text UNDERNEATH */}
+                              {secondTransLang && secondTrans?.rule && secondTrans.rule !== firstTrans?.rule && (
+                                <div className="text-sm sm:text-base font-semibold text-indigo-700 dark:text-indigo-300 pt-1.5 border-t border-slate-100 dark:border-slate-800 leading-snug">
+                                  {secondTrans.rule}
+                                </div>
+                              )}
+                              {/* Layer 3: Korean Base Norm Text */}
+                              {secondTransLang !== "ko" && koTrans?.rule && (
+                                <div className="pt-2">
+                                  <div className="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-800/70 p-3 rounded-lg border border-slate-200 dark:border-slate-700 leading-relaxed">
+                                    <span className="font-bold text-slate-700 dark:text-slate-300 mr-1.5">🇰🇷 한국어 원문:</span>
+                                    {koTrans.rule}
+                                  </div>
+                                </div>
+                              )}
+                            </>
+                          ) : (
+                            <>
+                              {/* Korean Rule ON TOP */}
+                              <div className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-50 leading-snug tracking-tight">
+                                {koTrans?.rule || ""}
+                              </div>
+                              {/* Secondary Rule UNDERNEATH */}
+                              {isDualMode && firstTrans?.rule && firstTrans.rule !== koTrans?.rule && (
+                                <div className="text-sm sm:text-base font-semibold text-indigo-700 dark:text-indigo-300 pt-2 border-t border-slate-100 dark:border-slate-800 leading-snug">
+                                  {firstTrans.rule}
+                                </div>
+                              )}
+                            </>
                           )}
                         </div>
                       </div>
@@ -1547,23 +1457,40 @@ export function KoreanStandardsView() {
                                 return (
                                   <div
                                     key={pIdx}
-                                    className="bg-amber-50/40 dark:bg-amber-950/20 p-5 rounded-2xl border border-amber-200/60 dark:border-amber-900/40 space-y-2.5 shadow-2xs"
+                                    className="droplet-card bg-amber-50/40 dark:bg-amber-950/20 p-4 sm:p-5 border border-amber-200/60 dark:border-amber-900/40 space-y-2.5 shadow-2xs"
                                   >
-                                    {/* Primary Korean Commentary Paragraph */}
-                                    <RenderFormattedCommentary text={koPara} />
+                                    {primaryLang !== "ko" ? (
+                                      <>
+                                        {/* Primary Language Paragraph ON TOP */}
+                                        <RenderFormattedCommentary text={fPara || koPara} />
 
-                                    {/* First Translation Paragraph directly underneath */}
-                                    {isDualMode && fPara && fPara !== koPara && (
-                                      <div className="pt-2 border-t border-amber-200/40 dark:border-amber-900/30">
-                                        <RenderFormattedCommentary text={fPara} isSecondary />
-                                      </div>
-                                    )}
+                                        {/* Secondary Language Paragraph UNDERNEATH */}
+                                        {secondTransLang && sPara && sPara !== fPara && (
+                                          <div className="pt-2 border-t border-amber-200/40 dark:border-amber-900/30">
+                                            <RenderFormattedCommentary text={sPara} isSecondary />
+                                          </div>
+                                        )}
 
-                                    {/* Second Translation Paragraph underneath First Translation */}
-                                    {isTriMode && sPara && sPara !== koPara && sPara !== fPara && (
-                                      <div className="pt-1.5 border-t border-amber-200/30 dark:border-amber-900/20 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
-                                        <RenderFormattedCommentary text={sPara} isSecondary />
-                                      </div>
+                                        {/* Korean Reference Paragraph */}
+                                        {secondTransLang !== "ko" && koPara && koPara !== fPara && (
+                                          <div className="pt-1.5 border-t border-amber-200/30 dark:border-amber-900/20 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                                            <span className="font-bold text-slate-600 dark:text-slate-300 mr-1">🇰🇷 원문:</span>
+                                            <RenderFormattedCommentary text={koPara} isSecondary />
+                                          </div>
+                                        )}
+                                      </>
+                                    ) : (
+                                      <>
+                                        {/* Korean Commentary Paragraph ON TOP */}
+                                        <RenderFormattedCommentary text={koPara} />
+
+                                        {/* Secondary Language Paragraph UNDERNEATH */}
+                                        {isDualMode && fPara && fPara !== koPara && (
+                                          <div className="pt-2 border-t border-amber-200/40 dark:border-amber-900/30">
+                                            <RenderFormattedCommentary text={fPara} isSecondary />
+                                          </div>
+                                        )}
+                                      </>
                                     )}
                                   </div>
                                 );

@@ -53,7 +53,7 @@ export function SubjectSwitch({ currentSite }: SubjectSwitchProps) {
             <Link
               key={sub.site}
               href={host ? buildLearnUrl(sub.site, host, locale) : `/study/${sub.site}/dashboard`}
-              className={`droplet-pill px-2.5 py-1 text-xs font-extrabold rounded-full transition shadow-2xs cursor-pointer whitespace-nowrap ${
+              className={`droplet-pill px-3 h-[34px] inline-flex items-center justify-center text-xs font-bold rounded-full transition shadow-2xs cursor-pointer whitespace-nowrap ${
                 isCurrent
                   ? "bg-blue-600 text-white shadow-xs pointer-events-none"
                   : "bg-white/90 hover:bg-white text-slate-700 hover:text-blue-700 border border-slate-200"
@@ -70,7 +70,7 @@ export function SubjectSwitch({ currentSite }: SubjectSwitchProps) {
         <button
           type="button"
           onClick={() => setIsOpen((prev) => !prev)}
-          className="droplet-pill inline-flex items-center gap-1 px-2 py-0.5 text-xs font-extrabold bg-blue-50 text-blue-800 hover:bg-blue-100 border border-blue-200 rounded-full transition shadow-2xs cursor-pointer shrink-0"
+          className="droplet-pill inline-flex items-center justify-center gap-1 px-2.5 h-[34px] text-xs font-bold bg-blue-50 text-blue-800 hover:bg-blue-100 border border-blue-200 rounded-full transition shadow-2xs cursor-pointer shrink-0"
           title={currentSubject.label}
         >
           <span>{currentSubject.label}</span>

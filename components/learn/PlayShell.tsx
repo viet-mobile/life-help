@@ -44,7 +44,7 @@ export function PlayShell({ children }: { children: ReactNode }) {
           <div className="flex items-center gap-2.5 min-w-0 shrink-0">
             <a
               href={mainHomeUrl}
-              className="droplet-pill inline-flex items-center gap-1 px-2.5 py-1 bg-white/90 hover:bg-white text-slate-900 rounded-full font-black text-xs transition border border-slate-200 shadow-2xs shrink-0"
+              className="droplet-pill inline-flex items-center justify-center gap-1 px-3 h-[34px] bg-white hover:bg-slate-50 text-slate-900 rounded-full font-bold text-xs transition border border-slate-200 shadow-2xs shrink-0"
               title={locale === "ko" ? "LIFE.HELP 메인 홈으로 이동" : "Return to LIFE.HELP Main Portal"}
             >
               <span>🏠</span>
@@ -58,7 +58,7 @@ export function PlayShell({ children }: { children: ReactNode }) {
             {site === "korean" && (
               <Link
                 href={href("/standards")}
-                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-950/70 dark:hover:bg-indigo-900/70 text-indigo-700 dark:text-indigo-300 text-xs font-bold border border-indigo-200 dark:border-indigo-800 shadow-2xs transition shrink-0"
+                className="droplet-pill inline-flex items-center justify-center gap-1 px-3 h-[34px] rounded-full bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-950/70 dark:hover:bg-indigo-900/70 text-indigo-700 dark:text-indigo-300 text-xs font-bold border border-indigo-200 dark:border-indigo-800 shadow-2xs transition shrink-0"
                 title="국립국어원 한국어 표준어 규정 (56개 항)"
               >
                 <span>📜</span>
