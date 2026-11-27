@@ -146,8 +146,8 @@ a.l-card { display: block; }
 .study-root[data-site="korean"] .l-stats { flex: 0 0 auto; }
 /* the language picker takes the free space only on narrow screens (so the chips fit); from 561px it keeps the same natural width as Math / English */
 @media (max-width: 560px) {
-  .study-root[data-site="korean"] .l-topbar-inner > .l-locale { flex: 1 1 0; min-width: 0; }
-  .study-root[data-site="korean"] .l-topbar-inner > .l-locale .l-locale-select { min-width: 0; width: 100%; max-width: 100%; }
+  .study-root[data-site="korean"] .l-topbar-inner > .l-locale { flex: 0 1 auto; min-width: 0; }
+  .study-root[data-site="korean"] .l-topbar-inner > .l-locale .l-locale-select { min-width: 0; max-width: clamp(68px, 22vw, 115px); }
 }
 @media (max-width: 420px) { .study-root[data-site="korean"] .l-topbar-inner { gap: 6px; padding: 8px 10px; } .study-root[data-site="korean"] .l-stats { gap: 4px; } .study-root[data-site="korean"] .l-stat { padding: 4px 8px; font-size: 0.8rem; gap: 2px; } }
 .l-stat { display: inline-flex; align-items: center; justify-content: center; gap: 4px; font-weight: 700; height: 34px !important; padding: 0 10px; border-radius: 12px 3px 12px 3px !important; background: #fff; border: 1.5px solid var(--l-line); font-size: 0.8rem; box-sizing: border-box; }
@@ -197,10 +197,51 @@ a.l-card { display: block; }
   .study-root *, .study-root *::before, .study-root *::after { animation: none !important; transition: none !important; }
 }
 
-/* ---- language switch (한국어 | Tiếng Việt) and the 12-grade picker ---- */
-.l-landing-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 12px; }
-.l-locale { display: inline-flex; align-items: center; height: 34px !important; padding: 0 4px 0 10px; border: 1.5px solid var(--l-line); border-radius: 14px 4px 14px 4px !important; background: #fff; max-width: 100%; box-sizing: border-box; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
-.l-locale-select { height: 34px !important; min-height: 34px !important; line-height: 34px; max-width: min(60vw, 260px); padding: 0 4px; border: 0; border-radius: 8px; background: transparent; color: var(--l-accent-dark); font: inherit; font-size: 0.8rem !important; font-weight: 700 !important; cursor: pointer; text-overflow: ellipsis; }
+/* ---- language switch (한국어 | Tiếng Việt) and header layout ---- */
+.l-landing-head {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 6px 8px;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.l-landing-head::-webkit-scrollbar { display: none; }
+.l-locale {
+  display: inline-flex;
+  align-items: center;
+  height: 34px !important;
+  padding: 0 4px 0 8px;
+  border: 1.5px solid var(--l-line);
+  border-radius: 14px 4px 14px 4px !important;
+  background: #fff;
+  max-width: min(45vw, 170px);
+  box-sizing: border-box;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  flex-shrink: 0;
+}
+.l-locale-select {
+  height: 34px !important;
+  min-height: 34px !important;
+  line-height: 34px;
+  width: auto;
+  max-width: clamp(68px, 20vw, 125px);
+  padding: 0 2px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--l-accent-dark);
+  font: inherit;
+  font-size: 0.8rem !important;
+  font-weight: 700 !important;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
 .l-locale-select:focus-visible { outline: 3px solid var(--l-accent); outline-offset: 2px; }
 .l-locale[data-compact] .l-locale-select { height: 34px !important; min-height: 34px !important; font-size: 0.8rem !important; font-weight: 700 !important; }
 .l-locale[aria-busy="true"] { opacity: 0.7; }

@@ -59,12 +59,12 @@ export function ResponsiveSubjectNav({
       </div>
 
       {/* Mobile & Narrow view (< 960px): 박스 디자인 코드(droplet-pill) 일률 적용 드롭다운 */}
-      <div className="min-[960px]:hidden inline-flex items-center max-w-full">
+      <div className="min-[960px]:hidden inline-flex items-center shrink-0 max-w-full">
         <label
-          className="droplet-pill inline-flex items-center shrink-0 max-w-full border border-slate-200 bg-white shadow-2xs hover:border-blue-400 transition"
+          className="droplet-pill inline-flex items-center shrink-0 border border-slate-200 bg-white shadow-2xs hover:border-blue-400 transition"
           style={{
             height: "34px",
-            padding: "0 8px 0 10px",
+            padding: "0 6px 0 8px",
             boxSizing: "border-box",
           }}
         >
@@ -84,7 +84,7 @@ export function ResponsiveSubjectNav({
               background: "transparent",
               color: "var(--l-accent-dark, #1e3a8a)",
               cursor: "pointer",
-              maxWidth: "min(40vw, 160px)",
+              maxWidth: "min(32vw, 110px)",
               outline: "none",
             }}
           >

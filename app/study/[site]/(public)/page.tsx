@@ -53,21 +53,19 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
   return (
     <div className="l-wrap l-wrap-wide l-stack">
       <a className="l-skip" href="#main">{t("nav.skip")}</a>
-      <header className="l-landing-head flex flex-wrap items-center justify-between gap-2.5 max-w-full overflow-hidden">
-        <div className="flex items-center gap-2 shrink-0 max-w-full flex-wrap">
-          <a
-            href={mainHomeUrl}
-            className="droplet-pill inline-flex items-center justify-center gap-1.5 px-3 h-[34px] bg-white hover:bg-slate-50 text-slate-800 font-bold text-xs transition border border-slate-200 shadow-2xs shrink-0 cursor-pointer"
-            title={locale === "ko" ? "LIFE.HELP 메인 홈으로 이동" : "Return to LIFE.HELP Main Portal"}
-          >
-            <span className="text-sm">🏠</span>
-            <span>LIFE.HELP</span>
-          </a>
-          <span className="l-brand inline-flex items-center h-[34px] shrink-0">
-            <BrandLogo site={site} name={t(siteConfig(site).brandKey)} size={34} />
-          </span>
-          <LocaleSwitch compact />
-        </div>
+      <header className="l-landing-head flex items-center gap-1.5 sm:gap-2 max-w-full flex-nowrap overflow-x-auto py-1">
+        <a
+          href={mainHomeUrl}
+          className="droplet-pill inline-flex items-center justify-center gap-1 px-2.5 sm:px-3 h-[34px] bg-white hover:bg-slate-50 text-slate-800 font-bold text-xs transition border border-slate-200 shadow-2xs shrink-0 cursor-pointer"
+          title={locale === "ko" ? "LIFE.HELP 메인 홈으로 이동" : "Return to LIFE.HELP Main Portal"}
+        >
+          <span className="text-sm">🏠</span>
+          <span className="hidden sm:inline">LIFE.HELP</span>
+        </a>
+        <span className="l-brand inline-flex items-center h-[34px] shrink-0">
+          <BrandLogo site={site} name={t(siteConfig(site).brandKey)} size={34} />
+        </span>
+        <LocaleSwitch compact />
         <ResponsiveSubjectNav
           currentSite={site}
           subjects={subjects}
