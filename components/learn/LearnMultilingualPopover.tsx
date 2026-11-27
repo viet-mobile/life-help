@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo, useState, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { type Locale, languages, formatLanguageName, getSortedLanguages } from "@/messages/registry";
 import { splitLocalePrefix } from "@/lib/learn/i18n/path";
 import { useSite } from "./LearnerProvider";
@@ -46,7 +47,15 @@ export function LearnMultilingualPopover({
   const { secondaryLocale, secondaryLocales = [] } = useSite();
   const [secOpen, setSecOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const secDropdownRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
+  const [coords, setCoords] = useState<{ top: number; left: number; width: number } | null>(null);
+
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const popoverRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const [activeSecLocales, setActiveSecLocales] = useState<Locale[]>(() => {
     return getInitialActiveLocales(currentLocale, secondaryLocales as Locale[], secondaryLocale as Locale);
@@ -93,17 +102,56 @@ export function LearnMultilingualPopover({
     }
   };
 
-  // Close secondary popover on outside click
+  const updateCoords = () => {
+    if (!buttonRef.current) return;
+    const rect = buttonRef.current.getBoundingClientRect();
+    const screenW = window.innerWidth;
+    const popoverW = Math.min(320, screenW - 24);
+    let left = rect.left;
+    if (left + popoverW > screenW - 12) {
+      left = screenW - popoverW - 12;
+    }
+    if (left < 12) {
+      left = 12;
+    }
+    setCoords({
+      top: rect.bottom + 6,
+      left,
+      width: popoverW,
+    });
+  };
+
+  const handleToggle = () => {
+    if (!secOpen) {
+      updateCoords();
+      setSecOpen(true);
+    } else {
+      applyLocales(activeSecLocalesRef.current);
+      setSecOpen(false);
+    }
+  };
+
+  // Close secondary popover on outside click/touch
   useEffect(() => {
     if (!secOpen) return;
-    const handleClickOutside = (e: MouseEvent) => {
-      if (secDropdownRef.current && !secDropdownRef.current.contains(e.target as Node)) {
+    const handleOutside = (e: MouseEvent | TouchEvent) => {
+      const target = e.target as Node;
+      if (
+        popoverRef.current && !popoverRef.current.contains(target) &&
+        buttonRef.current && !buttonRef.current.contains(target)
+      ) {
         applyLocales(activeSecLocalesRef.current);
         setSecOpen(false);
       }
     };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("mousedown", handleOutside);
+    document.addEventListener("touchstart", handleOutside);
+    window.addEventListener("resize", updateCoords);
+    return () => {
+      document.removeEventListener("mousedown", handleOutside);
+      document.removeEventListener("touchstart", handleOutside);
+      window.removeEventListener("resize", updateCoords);
+    };
   }, [secOpen]);
 
   const sortedLanguages = useMemo(() => {
@@ -140,44 +188,62 @@ export function LearnMultilingualPopover({
   const isKo = currentLocale === "ko";
   const catalogI18n = getCatalogI18n(currentLocale);
 
+  const labelText = useMemo(() => {
+    if (secondaryCount === 0) return catalogI18n.single;
+    if (secondaryCount === 1) {
+      const found = languages.find((l) => l.code === activeSecLocales[0]);
+      const name = found ? formatLanguageName(found, currentLocale, false).split("\n")[0] : "";
+      return `+ ${name}`;
+    }
+    return `+ ${secondaryCount} ${isKo ? "개 언어" : "langs"}`;
+  }, [secondaryCount, activeSecLocales, currentLocale, isKo, catalogI18n]);
+
   return (
-    <div className="relative inline-block shrink-0" ref={secDropdownRef}>
+    <div className="relative inline-block shrink-0">
       <button
+        ref={buttonRef}
         type="button"
-        onClick={() => setSecOpen((v) => !v)}
-        className={`droplet-pill relative inline-flex items-center justify-center ${
-          compact ? "h-[34px] !h-[34px] min-h-[34px] px-2.5" : "min-h-11 px-2.5"
-        } transition w-9 sm:w-auto max-w-[38px] sm:max-w-[180px] min-w-0 shrink-0 cursor-pointer border border-slate-200 bg-white shadow-2xs hover:border-blue-400`}
-        style={{ height: "34px", minHeight: "34px", boxSizing: "border-box" }}
+        onClick={handleToggle}
+        className="droplet-pill inline-flex items-center justify-between gap-1 h-[34px] min-h-[34px] px-2 sm:px-2.5 transition shrink-0 cursor-pointer border border-slate-200 bg-white shadow-2xs hover:border-blue-400 min-w-[72px] max-w-[115px] sm:max-w-[145px]"
+        style={{ height: "34px", boxSizing: "border-box" }}
         aria-label="Multilingual display mode selection"
         aria-expanded={secOpen}
         title={isKo ? "다중 병기 언어 선택 (복수 선택 가능)" : "Select multilingual languages (multi-select)"}
       >
-        <span className="text-xs sm:text-sm select-none shrink-0" aria-hidden="true">
-          {secondaryCount > 0 ? "🈁" : "📄"}
-        </span>
-
-        {secondaryCount > 0 && (
-          <span className="sm:hidden absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-blue-600 text-[9px] font-black text-white shadow-2xs">
-            {secondaryCount}
+        <div className="flex items-center gap-1 min-w-0 overflow-hidden">
+          <span className="text-xs shrink-0 select-none" aria-hidden="true">
+            {secondaryCount > 0 ? "🈁" : "📄"}
           </span>
-        )}
+          <span className="font-bold text-[0.8rem] text-slate-800 truncate select-none leading-none">
+            {labelText}
+          </span>
+        </div>
 
-        <span className="hidden sm:inline-block font-bold text-[0.8rem] text-[var(--l-accent-dark,#3730a3)] ml-1 truncate" style={{ fontSize: "0.8rem", fontWeight: 700, color: "var(--l-accent-dark, #3730a3)" }}>
-          {secondaryCount === 0
-            ? catalogI18n.single
-            : (secondaryCount === 1
-                ? `+ ${formatLanguageName(languages.find((l) => l.code === activeSecLocales[0]) || languages[0], currentLocale, false).split("\n")[0]}`
-                : `+ ${secondaryCount} ${isKo ? "개 언어" : "langs"}`)
-          }
-        </span>
-        <span className="hidden sm:inline-block text-slate-400 text-[9px] ml-1 shrink-0">▾</span>
+        {/* 메인 언어 선택 및 과목 선택과 완벽히 동일한 상하 방향 화살표(↕) 표시 */}
+        <svg
+          className="w-3 h-3 text-slate-500 shrink-0 ml-0.5 select-none"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+        </svg>
       </button>
 
-      {secOpen && (
+      {/* Portal 렌더링: 조상 엘리먼트의 overflow / backdrop-filter 클리핑을 원천 차단하여 100% 확실하게 열림 */}
+      {secOpen && mounted && coords && createPortal(
         <div
+          ref={popoverRef}
           dir="ltr"
-          className="fixed inset-x-3 top-14 sm:absolute sm:inset-x-auto sm:right-0 sm:top-full sm:mt-1 z-50 w-auto sm:w-80 droplet-card border border-slate-200/90 bg-white/95 p-3.5 shadow-2xl ring-1 ring-black/5 animate-in fade-in zoom-in-95 duration-150"
+          style={{
+            position: "fixed",
+            top: `${coords.top}px`,
+            left: `${coords.left}px`,
+            width: `${coords.width}px`,
+            zIndex: 99999,
+          }}
+          className="droplet-card border border-slate-200/90 bg-white/98 p-3.5 shadow-2xl ring-1 ring-black/10 animate-in fade-in zoom-in-95 duration-150 backdrop-blur-xl"
         >
           <div className="flex items-center justify-between border-b border-slate-100 pb-2 mb-2">
             <div>
@@ -196,8 +262,11 @@ export function LearnMultilingualPopover({
             </div>
             <button
               type="button"
-              onClick={() => setSecOpen(false)}
-              className="droplet-pill p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-600 cursor-pointer flex items-center justify-center"
+              onClick={() => {
+                applyLocales(activeSecLocalesRef.current);
+                setSecOpen(false);
+              }}
+              className="droplet-pill p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-600 cursor-pointer flex items-center justify-center text-xs font-bold"
               aria-label="Close"
             >
               ✕
@@ -277,7 +346,8 @@ export function LearnMultilingualPopover({
               {isKo ? "선택 완료" : "Done"}
             </button>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );
