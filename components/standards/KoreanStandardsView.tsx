@@ -1,5 +1,40 @@
 "use client";
 
+function formatExampleCaption(
+  caption: string,
+  firstTransLang: AnchorLanguage | null = null,
+  secondTransLang: AnchorLanguage | null = null,
+  isDualMode: boolean = false,
+  primaryLang: AnchorLanguage = "ko"
+): { primary: string; secondary?: string; base?: string } {
+  const match = caption.match(/^예시(?:\s*(\d+))?$/);
+  if (!match) return { primary: caption };
+  const num = match[1] ? ` ${match[1]}` : "";
+  const baseBadge = `예시${num}`;
+  const uiP = UI_TEXTS[primaryLang] || UI_TEXTS.ko;
+  const pBadge = `${uiP.exampleBadge || "예시"}${num}`;
+
+  let sBadge: string | undefined = undefined;
+  if (isDualMode && firstTransLang && firstTransLang !== primaryLang) {
+    const uiT = UI_TEXTS[firstTransLang];
+    if (uiT?.exampleBadge) {
+      sBadge = `${uiT.exampleBadge}${num}`;
+    }
+  } else if (secondTransLang && secondTransLang !== primaryLang) {
+    const uiT = UI_TEXTS[secondTransLang];
+    if (uiT?.exampleBadge) {
+      sBadge = `${uiT.exampleBadge}${num}`;
+    }
+  }
+
+  return {
+    primary: primaryLang === "ko" ? baseBadge : pBadge,
+    secondary: sBadge,
+    base: primaryLang !== "ko" ? baseBadge : undefined
+  };
+}
+
+
 /** Split commentary into reader-friendly semantic paragraphs based on strict orthographic & punctuation rules */
 function splitCommentaryParagraphs(text: string): string[] {
   if (!text) return [];
@@ -349,11 +384,20 @@ function RenderExampleTable({
 
   return (
     <div className="space-y-2">
-      {table.caption && (
-        <div className="text-xs font-semibold text-slate-700 dark:text-slate-300">
-          {table.caption}
-        </div>
-      )}
+      {table.caption && (() => {
+        const cInfo = formatExampleCaption(table.caption, firstTransLang, secondTransLang, isDualMode, primaryLang);
+        return (
+          <div className="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5 flex-wrap">
+            <span>{cInfo.primary}</span>
+            {cInfo.secondary && cInfo.secondary !== cInfo.primary && (
+              <span className="text-xs font-normal text-slate-400 dark:text-slate-500">· {cInfo.secondary}</span>
+            )}
+            {cInfo.base && cInfo.base !== cInfo.primary && (
+              <span className="text-xs font-normal text-slate-400 dark:text-slate-500">· {cInfo.base}</span>
+            )}
+          </div>
+        );
+      })()}
       <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700 shadow-2xs">
         <table className="w-full text-left text-xs sm:text-sm">
           <thead className="bg-slate-100/90 dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 border-b border-slate-200 dark:border-slate-700">
@@ -631,11 +675,20 @@ function RenderExampleList({
 }) {
   return (
     <div className="space-y-2.5">
-      {list.title && !/^\s*\(\d+\)\s*$/.test(list.title) && (
-        <div className="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300">
-          {list.title}
-        </div>
-      )}
+      {list.title && !/^\s*\(\d+\)\s*$/.test(list.title) && (() => {
+        const cInfo = formatExampleCaption(list.title, firstTransLang, secondTransLang, isDualMode, firstTransLang || "ko");
+        return (
+          <div className="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5 flex-wrap">
+            <span>{cInfo.primary}</span>
+            {cInfo.secondary && cInfo.secondary !== cInfo.primary && (
+              <span className="text-xs font-normal text-slate-400 dark:text-slate-500">· {cInfo.secondary}</span>
+            )}
+            {cInfo.base && cInfo.base !== cInfo.primary && (
+              <span className="text-xs font-normal text-slate-400 dark:text-slate-500">· {cInfo.base}</span>
+            )}
+          </div>
+        );
+      })()}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2.5">
         {list.items.map((rawItem, idx) => {
           const item = rawItem.replace(/ː\s*/g, ":").replace(/：\s*/g, ":");
@@ -1051,8 +1104,6 @@ export function KoreanStandardsView() {
   const [selectedPart, setSelectedPart] = useState<"all" | 1 | 2>("all");
   const [selectedChapter, setSelectedChapter] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
-  const [expandedArticles, setExpandedArticles] = useState<Record<string, boolean>>({});
-  const [allExpanded, setAllExpanded] = useState(false);
 
   // Available chapters for filter dropdown
   const availableChapters = useMemo(() => {
@@ -1102,22 +1153,7 @@ export function KoreanStandardsView() {
     });
   }, [selectedPart, selectedChapter, searchQuery, articles, targetLang]);
 
-  const toggleExpand = (id: string) => {
-    setExpandedArticles((prev) => ({
-      ...prev,
-      [id]: !prev[id]
-    }));
-  };
 
-  const toggleAll = () => {
-    const nextState = !allExpanded;
-    setAllExpanded(nextState);
-    const updated: Record<string, boolean> = {};
-    for (const art of articles) {
-      updated[art.id] = nextState;
-    }
-    setExpandedArticles(updated);
-  };
 
   if (loading) {
     return (
@@ -1268,14 +1304,7 @@ export function KoreanStandardsView() {
             />
           </div>
 
-          {/* Toggle All Button: Uniform h-10, text-xs, font-bold */}
-          <button
-            type="button"
-            onClick={toggleAll}
-            className="h-10 droplet-btn px-3.5 inline-flex items-center justify-center text-xs font-bold text-slate-700 dark:text-slate-200 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition shrink-0 cursor-pointer whitespace-nowrap"
-          >
-            <span>{allExpanded ? (primaryLang === "ko" ? uiBase.collapseAll : uiPrimary.collapseAll) : (primaryLang === "ko" ? uiBase.expandAll : uiPrimary.expandAll)}</span>
-          </button>
+
         </div>
       </div>
 
@@ -1306,7 +1335,6 @@ export function KoreanStandardsView() {
               const firstTrans = firstTransLang ? (art.i18n[firstTransLang] || null) : null;
               const secondTrans = secondTransLang ? (art.i18n[secondTransLang] || null) : null;
               const targetTrans = firstTrans;
-              const isExpanded = !!expandedArticles[art.id];
               const validStructured = (art.structuredExamples || []).filter(
                 (b) => !(b.type === "text" && /^\s*\(\d+\)\s*$/.test(b.content || ""))
               );
@@ -1438,11 +1466,16 @@ export function KoreanStandardsView() {
 
                       return (
                         <div className="space-y-3 pt-1">
-                          <div className="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center justify-between">
-                            <span>{uiBase.explanationTitle}</span>
-                            {isDualMode && (
-                              <span className="text-[11px] font-normal text-slate-400">
-                                문단별 한국어 원문 및 번역 병기 모드
+                          <div className="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5 flex-wrap">
+                            <span>{primaryLang === "ko" ? uiBase.explanationTitle : (uiPrimary.explanationTitle || uiBase.explanationTitle)}</span>
+                            {isDualMode && uiTarget && uiTarget.explanationTitle !== (primaryLang === "ko" ? uiBase.explanationTitle : (uiPrimary.explanationTitle || uiBase.explanationTitle)) && (
+                              <span className="text-xs font-normal text-slate-400 dark:text-slate-500">
+                                · {uiTarget.explanationTitle}
+                              </span>
+                            )}
+                            {primaryLang !== "ko" && uiBase.explanationTitle && (
+                              <span className="text-xs font-normal text-slate-400 dark:text-slate-500">
+                                · {uiBase.explanationTitle}
                               </span>
                             )}
                           </div>
@@ -1534,45 +1567,19 @@ export function KoreanStandardsView() {
                       );
                     })()}
 
-                    {/* Details Toggle Button */}
-                    {hasDetails && (
-                      <div className="pt-2">
-                        <button
-                          type="button"
-                          onClick={() => toggleExpand(art.id)}
-                          className="inline-flex items-center gap-2 text-xs font-semibold text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-950/60 dark:hover:bg-indigo-900/60 px-3.5 py-1.5 rounded-lg transition"
-                        >
-                          <div>
-                            <span>{isExpanded ? uiBase.collapseDetails : uiBase.expandDetails}</span>
-                            {isDualMode && uiTarget && (
-                              <span className="block text-[10px] font-normal opacity-80 leading-tight">
-                                {isExpanded ? uiTarget.collapseDetails : uiTarget.expandDetails}
-                              </span>
-                            )}
-                          </div>
-                          {hasStructured && (
-                            <span className="text-[11px] opacity-75 font-normal">
-                              {uiBase.itemsCount.replace("{count}", validStructured.length.toString())}
-                              {isDualMode && uiTarget && (
-                                <span className="ml-1 opacity-75">
-                                  · {uiTarget.itemsCount.replace("{count}", validStructured.length.toString())}
-                                </span>
-                              )}
-                            </span>
-                          )}
-                        </button>
-                      </div>
-                    )}
                   </div>
 
-                  {/* Details Accordion Content (Structured Tables with Meanings, Lists, & Text) */}
-                  {hasDetails && isExpanded && (
+                  {/* Details Section: Always expanded with Structured Tables, Meanings, Lists, & Text */}
+                  {hasDetails && (
                     <div className="border-t border-slate-100 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/50 p-5 sm:p-6 space-y-4">
-                      <div className="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+                      <div className="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5 flex-wrap">
                         <span>📋</span>
-                        <span>{uiBase.examplesTitle}</span>
-                        {isDualMode && uiTarget && uiTarget.examplesTitle !== uiBase.examplesTitle && (
-                          <span className="text-[11px] font-normal text-slate-400">· {uiTarget.examplesTitle}</span>
+                        <span>{primaryLang === "ko" ? uiBase.examplesTitle : (uiPrimary.examplesTitle || uiBase.examplesTitle)}</span>
+                        {isDualMode && uiTarget && uiTarget.examplesTitle !== (primaryLang === "ko" ? uiBase.examplesTitle : (uiPrimary.examplesTitle || uiBase.examplesTitle)) && (
+                          <span className="text-xs font-normal text-slate-400 dark:text-slate-500">· {uiTarget.examplesTitle}</span>
+                        )}
+                        {primaryLang !== "ko" && uiBase.examplesTitle && (
+                          <span className="text-xs font-normal text-slate-400 dark:text-slate-500">· {uiBase.examplesTitle}</span>
                         )}
                       </div>
 
