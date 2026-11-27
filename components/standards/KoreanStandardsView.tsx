@@ -31,30 +31,40 @@ import { ANCHOR_LANGUAGES } from "@/lib/standards/types";
 import { useLearner } from "@/components/learn/LearnerProvider";
 import { splitLocalePrefix } from "@/lib/learn/i18n/path";
 
-function getClientSecondaryLocales(pathOverride?: string): { isBilingual: boolean; secondaryLocale: string | null; secondaryLocales: string[] } {
-  if (typeof window === "undefined") return { isBilingual: false, secondaryLocale: null, secondaryLocales: [] };
+interface ClientSecState {
+  isBilingual: boolean;
+  displayMode?: string;
+  secondaryLocale: string | null;
+  secondaryLocales: string[];
+}
+
+function getClientSecondaryLocales(pathOverride?: string): ClientSecState {
+  if (typeof window === "undefined") return { isBilingual: false, displayMode: "monolingual", secondaryLocale: null, secondaryLocales: [] };
   const path = pathOverride || window.location.pathname;
   const fromPath = splitLocalePrefix(path).secondaryLocales || [];
   if (fromPath.length > 0) {
-    return { isBilingual: true, secondaryLocale: fromPath[0], secondaryLocales: fromPath };
+    return { isBilingual: true, displayMode: "bilingual", secondaryLocale: fromPath[0], secondaryLocales: fromPath };
   }
+  let lsMode: string | null = null;
   try {
+    lsMode = localStorage.getItem("life_help_display_mode");
     const lsMulti = localStorage.getItem("life_help_secondary_locales");
     if (lsMulti) {
       const parts = lsMulti.split(/[,+]/).filter(Boolean);
-      if (parts.length > 0) return { isBilingual: true, secondaryLocale: parts[0], secondaryLocales: parts };
+      if (parts.length > 0) return { isBilingual: true, displayMode: "bilingual", secondaryLocale: parts[0], secondaryLocales: parts };
     }
     const lsSingle = localStorage.getItem("life_help_secondary_locale");
-    if (lsSingle) return { isBilingual: true, secondaryLocale: lsSingle, secondaryLocales: [lsSingle] };
-    const lsMode = localStorage.getItem("life_help_display_mode");
-    if (lsMode === "single" || lsMode === "monolingual") return { isBilingual: false, secondaryLocale: null, secondaryLocales: [] };
+    if (lsSingle) return { isBilingual: true, displayMode: "bilingual", secondaryLocale: lsSingle, secondaryLocales: [lsSingle] };
+    if (lsMode === "single" || lsMode === "monolingual") return { isBilingual: false, displayMode: "monolingual", secondaryLocale: null, secondaryLocales: [] };
   } catch {}
   const mode = document.cookie.match(/life_help_display_mode=([^;]+)/)?.[1];
   const sec = document.cookie.match(/life_help_secondary_locale=([^;]+)/)?.[1] ?? null;
   const multiStr = document.cookie.match(/life_help_secondary_locales=([^;]+)/)?.[1];
   const multi = multiStr ? multiStr.split(/[,+]/).filter(Boolean) : (sec ? [sec] : []);
+  const isBi = mode === "bilingual" || mode === "multilingual" || multi.length > 0 || !!sec;
   return {
-    isBilingual: mode === "bilingual" || mode === "multilingual" || multi.length > 0 || !!sec,
+    isBilingual: isBi,
+    displayMode: isBi ? "bilingual" : "monolingual",
     secondaryLocale: sec || (multi[0] ?? null),
     secondaryLocales: multi,
   };
@@ -530,7 +540,17 @@ function RenderExampleTable({
   );
 }
 
-function RenderExampleList({ list }: { list: ExampleListBlock }) {
+function RenderExampleList({
+  list,
+  targetLang,
+  isDualMode,
+  wordMeanings
+}: {
+  list: ExampleListBlock;
+  targetLang?: AnchorLanguage | null;
+  isDualMode?: boolean;
+  wordMeanings?: Record<string, Record<string, string>>;
+}) {
   return (
     <div className="space-y-2.5">
       {list.title && !/^\s*\(\d+\)\s*$/.test(list.title) && (
@@ -539,29 +559,46 @@ function RenderExampleList({ list }: { list: ExampleListBlock }) {
         </div>
       )}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2.5">
-        {list.items.map((item, idx) => {
+        {list.items.map((rawItem, idx) => {
+          const item = rawItem.replace(/ː\s*/g, ":").replace(/：\s*/g, ":");
           const match = item.match(/^([^\[\]]+)(\[[^\[\]]+\])(.*)$/);
           if (match) {
             const [, word, pron, rest] = match;
+            const trimmedWord = word.trim();
+            const meaning = (isDualMode && targetLang && wordMeanings) ? wordMeanings[trimmedWord]?.[targetLang] : null;
             return (
               <div
                 key={idx}
-                className="flex items-center justify-between gap-2 px-4 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-2xs transition hover:border-indigo-200 dark:hover:border-indigo-800"
+                className="flex flex-col justify-between gap-1.5 px-4 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-2xs transition hover:border-indigo-200 dark:hover:border-indigo-800"
               >
-                <span className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-50 tracking-tight">{word.trim()}</span>
-                <span className="px-2.5 py-1 rounded-md bg-indigo-50 dark:bg-indigo-950/70 text-indigo-700 dark:text-indigo-300 font-mono font-bold text-sm sm:text-base border border-indigo-200/80 dark:border-indigo-800/80 shadow-2xs">
-                  {pron}
-                </span>
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-50 tracking-tight">{trimmedWord}</span>
+                  <span className="px-2.5 py-1 rounded-md bg-indigo-50 dark:bg-indigo-950/70 text-indigo-700 dark:text-indigo-300 font-mono font-bold text-sm sm:text-base border border-indigo-200/80 dark:border-indigo-800/80 shadow-2xs">
+                    {pron}
+                  </span>
+                </div>
+                {meaning && (
+                  <div className="text-xs text-indigo-600 dark:text-indigo-400 font-normal pt-1 border-t border-slate-100 dark:border-slate-700/60 leading-snug">
+                    {meaning}
+                  </div>
+                )}
                 {rest && <span className="text-xs text-slate-400">{rest}</span>}
               </div>
             );
           }
+          const trimmedItem = item.trim();
+          const meaning = (isDualMode && targetLang && wordMeanings) ? wordMeanings[trimmedItem]?.[targetLang] : null;
           return (
             <div
               key={idx}
-              className="px-4 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-2xs text-base sm:text-lg font-bold text-slate-800 dark:text-slate-100"
+              className="px-4 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5"
             >
-              {item}
+              <div className="text-base sm:text-lg font-bold text-slate-800 dark:text-slate-100">{trimmedItem}</div>
+              {meaning && (
+                <div className="text-xs text-indigo-600 dark:text-indigo-400 font-normal pt-1 border-t border-slate-100 dark:border-slate-700/60 leading-snug">
+                  {meaning}
+                </div>
+              )}
             </div>
           );
         })}
@@ -612,9 +649,14 @@ function RenderFormattedCommentary({
 }) {
   if (!text) return null;
 
+  // Clean fullwidth/triangular colons to halfwidth colon and remove unintended spacing
+  const cleanText = text
+    .replace(/ː\s*/g, ":")
+    .replace(/：\s*/g, ":");
+
   // Check if text contains a markdown table
-  if (text.includes("|") && text.includes(String.fromCharCode(10) + "|")) {
-    const lines = text.split(String.fromCharCode(10));
+  if (cleanText.includes("|") && cleanText.includes(String.fromCharCode(10) + "|")) {
+    const lines = cleanText.split(String.fromCharCode(10));
     const preTableLines: string[] = [];
     const tableLines: string[] = [];
     let inTable = false;
@@ -692,7 +734,7 @@ function RenderFormattedCommentary({
       ? "text-sm sm:text-base font-normal text-slate-600 dark:text-slate-300 leading-relaxed"
       : "text-base sm:text-lg font-normal text-slate-800 dark:text-slate-100 leading-relaxed"
     }>
-      {text}
+      {cleanText}
     </p>
   );
 }
@@ -795,26 +837,52 @@ export function KoreanStandardsView() {
 
   // Secondary language (from client storage/event or server props)
   const secondaryLang: AnchorLanguage = useMemo(() => {
+    const isAnchorCode = (c: string): c is AnchorLanguage => ANCHOR_LANGUAGES.some(a => a.code === c);
+
     if (clientSec.secondaryLocales && clientSec.secondaryLocales.length > 0) {
-      const parsed = toAnchorLang(clientSec.secondaryLocales[0], "ko");
-      if (parsed !== primaryLang) return parsed;
+      for (const loc of clientSec.secondaryLocales) {
+        const parsed = toAnchorLang(loc, "ko");
+        if (parsed !== primaryLang && isAnchorCode(parsed)) {
+          return parsed;
+        }
+      }
     }
     if (clientSec.secondaryLocale) {
       const parsed = toAnchorLang(clientSec.secondaryLocale, "ko");
-      if (parsed !== primaryLang) return parsed;
+      if (parsed !== primaryLang && isAnchorCode(parsed)) {
+        return parsed;
+      }
     }
-    const raw = (secondaryLocales && secondaryLocales.length > 0) ? secondaryLocales[0] : secondaryLocale;
-    return toAnchorLang(raw, "ko");
+    if (secondaryLocales && secondaryLocales.length > 0) {
+      for (const loc of secondaryLocales) {
+        const parsed = toAnchorLang(loc, "ko");
+        if (parsed !== primaryLang && isAnchorCode(parsed)) {
+          return parsed;
+        }
+      }
+    }
+    if (secondaryLocale) {
+      const parsed = toAnchorLang(secondaryLocale, "ko");
+      if (parsed !== primaryLang && isAnchorCode(parsed)) {
+        return parsed;
+      }
+    }
+    return primaryLang === "ko" ? "vi" : "ko";
   }, [clientSec, secondaryLocales, secondaryLocale, primaryLang]);
 
   // Bilingual mode enabled check
   const showBilingual: boolean = useMemo(() => {
-    if (secondaryLang === primaryLang) return false;
-    if (clientSec.isBilingual || (clientSec.secondaryLocale && clientSec.secondaryLocale !== primaryLang) || (clientSec.secondaryLocales && clientSec.secondaryLocales.length > 0)) {
+    if (clientSec.isBilingual || clientSec.displayMode === "bilingual" || isBilingual) {
       return true;
     }
-    return !!isBilingual || ((secondaryLocales && secondaryLocales.length > 0) || !!secondaryLocale);
-  }, [clientSec, isBilingual, secondaryLang, primaryLang, secondaryLocales, secondaryLocale]);
+    if (clientSec.secondaryLocales && clientSec.secondaryLocales.length > 0) {
+      return true;
+    }
+    if (clientSec.secondaryLocale && clientSec.secondaryLocale !== primaryLang) {
+      return true;
+    }
+    return Boolean((secondaryLocales && secondaryLocales.length > 0) || (secondaryLocale && secondaryLocale !== primaryLang));
+  }, [clientSec, isBilingual, primaryLang, secondaryLocales, secondaryLocale]);
 
   // Target translation language:
   // If primary is not Korean (e.g. Vietnamese learner mode), target translation is that foreign language.
@@ -826,6 +894,41 @@ export function KoreanStandardsView() {
   }, [primaryLang, showBilingual, secondaryLang]);
 
   const isDualMode = Boolean(targetLang && targetLang !== "ko");
+
+  // In-page secondary language switcher helper
+  const setSecondaryLanguage = (lang: AnchorLanguage | "off") => {
+    if (lang === "off") {
+      try {
+        localStorage.setItem("life_help_display_mode", "monolingual");
+        localStorage.removeItem("life_help_secondary_locale");
+        localStorage.setItem("life_help_secondary_locales", JSON.stringify([]));
+      } catch {}
+      window.dispatchEvent(new Event("life_help_display_mode_change"));
+      window.dispatchEvent(new Event("life_help_secondary_locale_change"));
+      setClientSec(prev => ({
+        ...prev,
+        isBilingual: false,
+        displayMode: "monolingual",
+        secondaryLocale: null,
+        secondaryLocales: []
+      }));
+    } else {
+      try {
+        localStorage.setItem("life_help_display_mode", "bilingual");
+        localStorage.setItem("life_help_secondary_locale", lang);
+        localStorage.setItem("life_help_secondary_locales", JSON.stringify([lang]));
+      } catch {}
+      window.dispatchEvent(new Event("life_help_display_mode_change"));
+      window.dispatchEvent(new Event("life_help_secondary_locale_change"));
+      setClientSec(prev => ({
+        ...prev,
+        isBilingual: true,
+        displayMode: "bilingual",
+        secondaryLocale: lang,
+        secondaryLocales: [lang]
+      }));
+    }
+  };
 
   // Always keep Korean base text prominent, with target language translation underneath
   const uiBase = UI_TEXTS.ko;
@@ -853,7 +956,7 @@ export function KoreanStandardsView() {
   // Filtered articles
   const filteredArticles = useMemo(() => {
     return articles.filter((art) => {
-      if (selectedPart !== "all" && art.partNum === selectedPart) {
+      if (selectedPart !== "all" && art.partNum !== selectedPart) {
         return false;
       }
       if (selectedChapter !== "all" && art.i18n.ko.chapter !== selectedChapter) {
@@ -948,8 +1051,81 @@ export function KoreanStandardsView() {
 
       {/* Filter & Search Bar */}
       <div className="bg-white dark:bg-slate-900 rounded-2xl p-4 sm:p-5 border border-slate-200 dark:border-slate-800 shadow-xs space-y-3">
-        {/* Quick Action Button */}
-        <div className="flex justify-end border-b border-slate-100 dark:border-slate-800 pb-3">
+        {/* Quick Action Button & Bilingual Selector Bar */}
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-800 pb-3">
+          {/* Quick Bilingual Language Switcher */}
+          <div className="flex items-center gap-1.5 flex-wrap">
+            <span className="text-xs font-bold text-slate-700 dark:text-slate-300 mr-1">
+              병기(번역) 언어 선택:
+            </span>
+            <button
+              type="button"
+              onClick={() => setSecondaryLanguage("off")}
+              className={`px-2.5 py-1 text-xs rounded-md transition font-medium ${
+                !isDualMode
+                  ? "bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 shadow-2xs font-semibold"
+                  : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200"
+              }`}
+            >
+              한국어 전용
+            </button>
+            <button
+              type="button"
+              onClick={() => setSecondaryLanguage("vi")}
+              className={`px-2.5 py-1 text-xs rounded-md transition font-medium ${
+                isDualMode && targetLang === "vi"
+                  ? "bg-indigo-600 text-white shadow-2xs font-semibold"
+                  : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200"
+              }`}
+            >
+              Tiếng Việt (베트남어)
+            </button>
+            <button
+              type="button"
+              onClick={() => setSecondaryLanguage("en")}
+              className={`px-2.5 py-1 text-xs rounded-md transition font-medium ${
+                isDualMode && targetLang === "en"
+                  ? "bg-indigo-600 text-white shadow-2xs font-semibold"
+                  : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200"
+              }`}
+            >
+              English (영어)
+            </button>
+            <button
+              type="button"
+              onClick={() => setSecondaryLanguage("ja")}
+              className={`px-2.5 py-1 text-xs rounded-md transition font-medium ${
+                isDualMode && targetLang === "ja"
+                  ? "bg-indigo-600 text-white shadow-2xs font-semibold"
+                  : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200"
+              }`}
+            >
+              日本語 (일본어)
+            </button>
+            <button
+              type="button"
+              onClick={() => setSecondaryLanguage("zh-Hans")}
+              className={`px-2.5 py-1 text-xs rounded-md transition font-medium ${
+                isDualMode && targetLang === "zh-Hans"
+                  ? "bg-indigo-600 text-white shadow-2xs font-semibold"
+                  : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200"
+              }`}
+            >
+              中文简体
+            </button>
+            <button
+              type="button"
+              onClick={() => setSecondaryLanguage("zh-Hant")}
+              className={`px-2.5 py-1 text-xs rounded-md transition font-medium ${
+                isDualMode && targetLang === "zh-Hant"
+                  ? "bg-indigo-600 text-white shadow-2xs font-semibold"
+                  : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200"
+              }`}
+            >
+              中文繁體
+            </button>
+          </div>
+
           <button
             type="button"
             onClick={toggleAll}
@@ -1282,7 +1458,15 @@ export function KoreanStandardsView() {
                               );
                             }
                             if (block.type === "list") {
-                              return <RenderExampleList key={idx} list={block} />;
+                              return (
+                                <RenderExampleList
+                                  key={idx}
+                                  list={block}
+                                  targetLang={targetLang}
+                                  isDualMode={isDualMode}
+                                  wordMeanings={wordMeanings}
+                                />
+                              );
                             }
                             if (block.type === "text") {
                               return (

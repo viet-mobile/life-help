@@ -1,188 +1,15 @@
 import vi from "./vi.json";
 import ko from "./ko.json";
 import en from "./en.json";
-import zhHans from "./zh-Hans.json";
-import zhHant from "./zh-Hant.json";
-import mn from "./mn.json";
-import ru from "./ru.json";
-import uz from "./uz.json";
-import ne from "./ne.json";
-import hi from "./hi.json";
-import km from "./km.json";
-import th from "./th.json";
-import my from "./my.json";
-import ja from "./ja.json";
-import id from "./id.json";
-import si from "./si.json";
-import kk from "./kk.json";
-import bn from "./bn.json";
-import ta from "./ta.json";
-import fr from "./fr.json";
-import de from "./de.json";
-import tr from "./tr.json";
-import uk from "./uk.json";
-import tet from "./tet.json";
-import ar from "./ar.json";
-import it from "./it.json";
-import arz from "./arz.json";
-import es from "./es.json";
-import fa from "./fa.json";
-import nl from "./nl.json";
-import pl from "./pl.json";
-import am from "./am.json";
-import sv from "./sv.json";
-import he from "./he.json";
-import da from "./da.json";
-import no from "./no.json";
-import el from "./el.json";
-import pt from "./pt.json";
-import ur from "./ur.json";
-import sw from "./sw.json";
-import mr from "./mr.json";
-import gu from "./gu.json";
-import pa from "./pa.json";
-import te from "./te.json";
-import kn from "./kn.json";
-import ml from "./ml.json";
-import tl from "./tl.json";
-import ms from "./ms.json";
-import pcm from "./pcm.json";
-import ro from "./ro.json";
-import cs from "./cs.json";
-import af from "./af.json";
-import hu from "./hu.json";
-import fi from "./fi.json";
-import ka from "./ka.json";
-import yue from "./yue.json";
-import ca from "./ca.json";
-import bg from "./bg.json";
-import tg from "./tg.json";
 
 export * from "./registry";
-import { type Locale, defaultLocale, isValidLocale, locales } from "./registry";
-import asLc from "./as.json";
-import azLc from "./az.json";
-import cebLc from "./ceb.json";
-import etLc from "./et.json";
-import euLc from "./eu.json";
-import glLc from "./gl.json";
-import haLc from "./ha.json";
-import hrLc from "./hr.json";
-import igLc from "./ig.json";
-import isLc from "./is.json";
-import jvLc from "./jv.json";
-import kuLc from "./ku.json";
-import ltLc from "./lt.json";
-import lvLc from "./lv.json";
-import mgLc from "./mg.json";
-import mkLc from "./mk.json";
-import omLc from "./om.json";
-import psLc from "./ps.json";
-import sdLc from "./sd.json";
-import sgLc from "./sg.json";
-import skLc from "./sk.json";
-import slLc from "./sl.json";
-import snLc from "./sn.json";
-import soLc from "./so.json";
-import sqLc from "./sq.json";
-import srLc from "./sr.json";
-import suLc from "./su.json";
-import xhLc from "./xh.json";
-import yoLc from "./yo.json";
-import zuLc from "./zu.json";
+import { type Locale, defaultLocale, isValidLocale } from "./registry";
 
-export const dictionaries = {
-  vi,
-  ko,
-  en,
-  "zh-Hans": zhHans,
-  "zh-Hant": zhHant,
-  mn,
-  ru,
-  uz,
-  ne,
-  hi,
-  km,
-  th,
-  my,
-  ja,
-  id,
-  si,
-  kk,
-  bn,
-  ta,
-  fr,
-  de,
-  tr,
-  uk,
-  tet,
-  ar,
-  it,
-  arz,
-  es,
-  fa,
-  nl,
-  pl,
-  am,
-  sv,
-  he,
-  da,
-  no,
-  el,
-  pt,
-  ur,
-  sw,
-  mr,
-  gu,
-  pa,
-  te,
-  kn,
-  ml,
-  tl,
-  ms,
-  pcm,
-  ro,
-  cs,
-  af,
-  hu,
-  fi,
-  ka,
-  yue,
-  ca,
-  bg,
-  tg,
-  as: asLc,
-  az: azLc,
-  ceb: cebLc,
-  et: etLc,
-  eu: euLc,
-  gl: glLc,
-  ha: haLc,
-  hr: hrLc,
-  ig: igLc,
-  is: isLc,
-  jv: jvLc,
-  ku: kuLc,
-  lt: ltLc,
-  lv: lvLc,
-  mg: mgLc,
-  mk: mkLc,
-  om: omLc,
-  ps: psLc,
-  sd: sdLc,
-  sg: sgLc,
-  sk: skLc,
-  sl: slLc,
-  sn: snLc,
-  so: soLc,
-  sq: sqLc,
-  sr: srLc,
-  su: suLc,
-  xh: xhLc,
-  yo: yoLc,
-  zu: zuLc,
-} as const;
-
+export const dictionaries: Record<string, Record<string, unknown>> = {
+  vi: vi as Record<string, unknown>,
+  ko: ko as Record<string, unknown>,
+  en: en as Record<string, unknown>,
+};
 
 export function detectDeviceLocale(preferredLanguages?: readonly string[]): Locale {
   let langs: readonly string[] = [];
@@ -196,66 +23,20 @@ export function detectDeviceLocale(preferredLanguages?: readonly string[]): Loca
     if (!raw) continue;
     const tag = raw.toLowerCase().trim();
 
-    // Cantonese (Hong Kong, Macau, Cantonese)
-    if (tag.startsWith("zh-hk") || tag.startsWith("zh-mo") || tag.startsWith("yue")) {
-      return "yue";
-    }
+    if (tag.startsWith("zh-hk") || tag.startsWith("zh-mo") || tag.startsWith("yue")) return "yue";
+    if (tag.startsWith("zh-tw") || tag.includes("hant")) return "zh-Hant";
+    if (tag.startsWith("arz") || tag === "ar-eg") return "arz";
+    if (tag.startsWith("zh")) return "zh-Hans";
+    if (tag.startsWith("no") || tag.startsWith("nb") || tag.startsWith("nn")) return "no";
+    if (tag.startsWith("tet") || tag.startsWith("dtp") || tag.startsWith("tdt")) return "tet";
+    if (tag.startsWith("fa")) return "fa";
+    if (tag.startsWith("he") || tag.startsWith("iw")) return "he";
+    if (tag.startsWith("id") || tag.startsWith("in")) return "id";
+    if (tag.startsWith("el")) return "el";
+    if (tag.startsWith("pt")) return "pt";
 
-    // Chinese Traditional (Taiwan and other Traditional)
-    if (tag.startsWith("zh-tw") || tag.includes("hant")) {
-      return "zh-Hant";
-    }
-
-    // Egyptian Arabic dialect
-    if (tag.startsWith("arz") || tag === "ar-eg") {
-      return "arz";
-    }
-
-    // Chinese Simplified
-    if (tag.startsWith("zh")) {
-      return "zh-Hans";
-    }
-
-    // Norwegian
-    if (tag.startsWith("no") || tag.startsWith("nb") || tag.startsWith("nn")) {
-      return "no";
-    }
-
-    // Tetun / Tetum
-    if (tag.startsWith("tet") || tag.startsWith("dtp") || tag.startsWith("tdt")) {
-      return "tet";
-    }
-
-    // Persian / Farsi
-    if (tag.startsWith("fa")) {
-      return "fa";
-    }
-
-    // Hebrew (he or legacy iw)
-    if (tag.startsWith("he") || tag.startsWith("iw")) {
-      return "he";
-    }
-
-    // Indonesian (id or legacy in)
-    if (tag.startsWith("id") || tag.startsWith("in")) {
-      return "id";
-    }
-
-    // Greek
-    if (tag.startsWith("el")) {
-      return "el";
-    }
-
-    // Portuguese
-    if (tag.startsWith("pt")) {
-      return "pt";
-    }
-
-    // Standard 2-letter prefix match
     const prefix = tag.split("-")[0];
-    if (isValidLocale(prefix)) {
-      return prefix;
-    }
+    if (isValidLocale(prefix)) return prefix;
   }
 
   return defaultLocale;
@@ -276,21 +57,17 @@ export function translate(locale: Locale, key: string): string {
     return typeof val === "string" ? val : undefined;
   };
 
-  // 1. Current target locale
+  // 1. Target locale (if loaded)
   const val = getFromDict(dictionaries[locale]);
   if (val !== undefined) return val;
 
-  // 2. English fallback (universal standard)
-  const enVal = getFromDict(dictionaries["en"]);
+  // 2. English fallback
+  const enVal = getFromDict(dictionaries.en);
   if (enVal !== undefined) return enVal;
 
-  // 3. Korean fallback (platform root)
-  const koVal = getFromDict(dictionaries["ko"]);
+  // 3. Korean fallback
+  const koVal = getFromDict(dictionaries.ko);
   if (koVal !== undefined) return koVal;
-
-  // 4. Default locale fallback
-  const defVal = getFromDict(dictionaries[defaultLocale]);
-  if (defVal !== undefined) return defVal;
 
   return key;
 }
