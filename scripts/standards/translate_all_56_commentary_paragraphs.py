@@ -36,12 +36,12 @@ for art_id, paras in commentaries.items():
         for lang, trans_info in [
             ("vi", {
                 "prefix_num": lambda n: f"Khoản {n} ",
-                "prefix_circ": lambda c: f"Mục {c} ",
+                "prefix_circ": lambda c: f"{c} ",
                 "trans_trans": {"다만": "Tuy nhiên, ", "반면": "Ngược lại, ", "따라서": "Do đó, ", "그러나": "Nhưng mà, "}
             }),
             ("en", {
                 "prefix_num": lambda n: f"Clause {n} ",
-                "prefix_circ": lambda c: f"Item {c} ",
+                "prefix_circ": lambda c: f"{c} ",
                 "trans_trans": {"다만": "However, ", "반면": "On the other hand, ", "따라서": "Therefore, ", "그러나": "However, "}
             }),
             ("ja", {

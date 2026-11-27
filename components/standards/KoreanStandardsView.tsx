@@ -543,16 +543,35 @@ function RenderExampleList({ list }: { list: ExampleListBlock }) {
   );
 }
 
-/** Render formatted explanatory callout */
-function RenderExampleText({ text }: { text: ExampleTextBlock }) {
+/** Render formatted explanatory callout with bilingual translation support */
+function RenderExampleText({
+  text,
+  showBilingual,
+  secondaryLang,
+  noteTranslations
+}: {
+  text: ExampleTextBlock;
+  showBilingual?: boolean;
+  secondaryLang?: AnchorLanguage;
+  noteTranslations?: Record<string, Record<string, string>>;
+}) {
   const trimmed = text.content?.trim() || "";
-  // Delete redundant standalone index markers like '(1)', '(2)', '(3)'
   if (/^\(\d+\)$/.test(trimmed)) {
     return null;
   }
+
+  const sNoteTrans = (showBilingual && secondaryLang && noteTranslations) ? noteTranslations[trimmed]?.[secondaryLang] : null;
+
   return (
-    <div className="p-3.5 rounded-xl bg-indigo-50/50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900/50 text-xs sm:text-sm text-indigo-950 dark:text-indigo-200 leading-relaxed">
-      {text.content}
+    <div className="p-3.5 rounded-xl bg-indigo-50/50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900/50 space-y-1.5 leading-relaxed">
+      <div className="text-xs sm:text-sm font-medium text-indigo-950 dark:text-indigo-200">
+        {text.content}
+      </div>
+      {sNoteTrans && sNoteTrans !== text.content && (
+        <div className="text-xs text-indigo-700 dark:text-indigo-300 font-normal pt-1 border-t border-indigo-100/70 dark:border-indigo-900/50">
+          {sNoteTrans}
+        </div>
+      )}
     </div>
   );
 }
@@ -745,21 +764,29 @@ export function KoreanStandardsView() {
             <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
               {uiP.title}
             </h1>
-            {primaryLang !== "ko" && (
+            {showBilingual && uiS && uiS.title !== uiP.title ? (
+              <div className="text-base sm:text-xl font-bold text-indigo-200/95 mt-1">
+                {uiS.title}
+              </div>
+            ) : primaryLang !== "ko" ? (
               <div className="text-sm sm:text-lg font-bold text-indigo-200/90 mt-1">
                 한국어 표준어 규정 전체
               </div>
-            )}
+            ) : null}
           </div>
-          <div className="space-y-1 max-w-3xl">
+          <div className="space-y-1.5 max-w-3xl">
             <p className="text-sm sm:text-base text-indigo-100/95 leading-relaxed">
               {uiP.subtitle}
             </p>
-            {primaryLang !== "ko" && (
+            {showBilingual && uiS && uiS.subtitle !== uiP.subtitle ? (
+              <p className="text-xs sm:text-sm text-indigo-200/90 leading-relaxed font-normal">
+                {uiS.subtitle}
+              </p>
+            ) : primaryLang !== "ko" ? (
               <p className="text-xs sm:text-sm text-indigo-200/80 leading-relaxed font-light">
                 {UI_TEXTS.ko.subtitle}
               </p>
-            )}
+            ) : null}
           </div>
         </div>
       </div>
@@ -784,23 +811,32 @@ export function KoreanStandardsView() {
             <button
               type="button"
               onClick={() => { setSelectedPart("all"); setSelectedChapter("all"); }}
-              className={`flex-1 py-1.5 text-xs font-bold rounded-md transition ${selectedPart === "all" ? "bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"}`}
+              className={`flex-1 py-1.5 px-1 text-center rounded-md transition ${selectedPart === "all" ? "bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"}`}
             >
-              {uiP.allArticles}
+              <div className="text-xs font-bold">{uiP.allArticles}</div>
+              {showBilingual && uiS && uiS.allArticles !== uiP.allArticles && (
+                <div className="text-[10px] font-normal opacity-80 leading-tight">{uiS.allArticles}</div>
+              )}
             </button>
             <button
               type="button"
               onClick={() => { setSelectedPart(1); setSelectedChapter("all"); }}
-              className={`flex-1 py-1.5 text-xs font-bold rounded-md transition ${selectedPart === 1 ? "bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"}`}
+              className={`flex-1 py-1.5 px-1 text-center rounded-md transition ${selectedPart === 1 ? "bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"}`}
             >
-              {uiP.part1Tab}
+              <div className="text-xs font-bold">{uiP.part1Tab}</div>
+              {showBilingual && uiS && uiS.part1Tab !== uiP.part1Tab && (
+                <div className="text-[10px] font-normal opacity-80 leading-tight">{uiS.part1Tab}</div>
+              )}
             </button>
             <button
               type="button"
               onClick={() => { setSelectedPart(2); setSelectedChapter("all"); }}
-              className={`flex-1 py-1.5 text-xs font-bold rounded-md transition ${selectedPart === 2 ? "bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"}`}
+              className={`flex-1 py-1.5 px-1 text-center rounded-md transition ${selectedPart === 2 ? "bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"}`}
             >
-              {uiP.part2Tab}
+              <div className="text-xs font-bold">{uiP.part2Tab}</div>
+              {showBilingual && uiS && uiS.part2Tab !== uiP.part2Tab && (
+                <div className="text-[10px] font-normal opacity-80 leading-tight">{uiS.part2Tab}</div>
+              )}
             </button>
           </div>
 
@@ -909,33 +945,49 @@ export function KoreanStandardsView() {
                   <div className="p-5 sm:p-6 space-y-4">
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <div className="flex flex-wrap items-center gap-2">
-                        {/* Part Badge */}
-                        <span className={`px-2.5 py-0.5 rounded-full text-xs font-black ${
+                        {/* Part Badge with Bilingual Support */}
+                        <div className={`px-2.5 py-0.5 rounded-full text-xs font-black flex items-center gap-1.5 ${
                           isPart1
                             ? "bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800"
                             : "bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800"
                         }`}>
-                          {pTrans?.part || (isPart1 ? "제1부 사정 원칙" : "제2부 표준 발음법")}
-                        </span>
+                          <span>{pTrans?.part || (isPart1 ? "제1부 사정 원칙" : "제2부 표준 발음법")}</span>
+                          {showBilingual && sTrans?.part && sTrans.part !== pTrans?.part && (
+                            <span className="opacity-75 font-normal text-[11px]">· {sTrans.part}</span>
+                          )}
+                        </div>
 
-                        {/* Chapter / Section Badge */}
+                        {/* Chapter Badge with Bilingual Support */}
                         {pTrans?.chapter && (
-                          <span className="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-slate-700">
-                            {pTrans.chapter}
-                          </span>
+                          <div className="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-slate-700 flex items-center gap-1.5">
+                            <span>{pTrans.chapter}</span>
+                            {showBilingual && sTrans?.chapter && sTrans.chapter !== pTrans.chapter && (
+                              <span className="opacity-75 font-normal text-[11px] text-slate-500">· {sTrans.chapter}</span>
+                            )}
+                          </div>
                         )}
+
+                        {/* Section Badge with Bilingual Support */}
                         {pTrans?.section && (
-                          <span className="px-2 py-0.5 rounded-md bg-slate-50 dark:bg-slate-800/60 text-slate-600 dark:text-slate-400 text-xs font-normal border border-slate-200 dark:border-slate-700">
-                            {pTrans.section}
-                          </span>
+                          <div className="px-2 py-0.5 rounded-md bg-slate-50 dark:bg-slate-800/60 text-slate-600 dark:text-slate-400 text-xs font-normal border border-slate-200 dark:border-slate-700 flex items-center gap-1.5">
+                            <span>{pTrans.section}</span>
+                            {showBilingual && sTrans?.section && sTrans.section !== pTrans.section && (
+                              <span className="opacity-75 font-normal text-[11px] text-slate-400">· {sTrans.section}</span>
+                            )}
+                          </div>
                         )}
                       </div>
 
-                      {/* Article ID */}
-                      <div className="flex items-center gap-2">
+                      {/* Article ID with Bilingual Support */}
+                      <div className="flex items-center gap-1.5">
                         <span className="text-xs font-mono font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/50 px-2 py-0.5 rounded">
                           {pTrans?.title || `제${art.articleNum}항`}
                         </span>
+                        {showBilingual && sTrans?.title && sTrans.title !== pTrans?.title && (
+                          <span className="text-[11px] font-mono text-indigo-500/80 dark:text-indigo-300/80 bg-indigo-50/50 dark:bg-indigo-950/30 px-1.5 py-0.5 rounded border border-indigo-100 dark:border-indigo-900/50">
+                            {sTrans.title}
+                          </span>
+                        )}
                       </div>
                     </div>
 
@@ -1074,7 +1126,15 @@ export function KoreanStandardsView() {
                               return <RenderExampleList key={idx} list={block} />;
                             }
                             if (block.type === "text") {
-                              return <RenderExampleText key={idx} text={block} />;
+                              return (
+                                <RenderExampleText
+                                  key={idx}
+                                  text={block}
+                                  showBilingual={showBilingual}
+                                  secondaryLang={secondaryLang}
+                                  noteTranslations={noteTranslations}
+                                />
+                              );
                             }
                             return null;
                           })}
