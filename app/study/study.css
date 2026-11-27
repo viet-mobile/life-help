@@ -241,6 +241,9 @@ a.l-card { display: block; }
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 .l-locale-select:focus-visible { outline: 3px solid var(--l-accent); outline-offset: 2px; }
 .l-locale[data-compact] .l-locale-select { height: 34px !important; min-height: 34px !important; font-size: 0.8rem !important; font-weight: 700 !important; }
@@ -272,4 +275,76 @@ a.l-card { display: block; }
   .l-topbar-inner { padding: 8px 8px; gap: 6px; }
   .l-stats { gap: 4px; flex-shrink: 0; }
   .l-stat { padding: 4px 6px; font-size: 0.8rem; gap: 2px; }
+}
+
+/* ==========================================================================
+   Full Dark Mode Support for LIFE.HELP Study Campus & Menus
+   ========================================================================== */
+@media (prefers-color-scheme: dark) {
+  .study-root {
+    --l-bg: #0b0f19;
+    --l-card: #131b2e;
+    --l-ink: #f1f5f9;
+    --l-muted: #94a3b8;
+    --l-line: #1e293b;
+    --l-accent: #6366f1;
+    --l-accent-dark: #818cf8;
+    --l-accent-soft: #1e1b4b;
+    --l-good: #10b981;
+    --l-good-soft: #064e3b;
+    --l-bad: #f43f5e;
+    --l-bad-soft: #4c0519;
+    --l-gold: #f59e0b;
+    --l-gold-soft: #451a03;
+  }
+  .study-root[data-site="english"] {
+    --l-accent: #10b981;
+    --l-accent-dark: #34d399;
+    --l-accent-soft: #064e3b;
+  }
+  .l-card {
+    background: var(--l-card);
+    border-color: var(--l-line);
+    box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.4), inset 0 1px 1px 0 rgba(255, 255, 255, 0.05);
+  }
+  .l-card:hover {
+    box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.6), inset 0 1px 1px 0 rgba(255, 255, 255, 0.08);
+  }
+  .l-topbar {
+    background: rgba(11, 15, 25, 0.92);
+    border-bottom: 2px solid var(--l-line);
+  }
+  .l-locale {
+    background: #1e293b;
+    border-color: #334155;
+    color: #f1f5f9;
+  }
+  .l-locale-select {
+    color: #f1f5f9;
+  }
+  .l-stat {
+    background: #1e293b;
+    border-color: #334155;
+    color: #f1f5f9;
+  }
+  .l-tabs {
+    background: #0d1322;
+    border-top: 2px solid var(--l-line);
+  }
+  .l-tab {
+    color: var(--l-muted);
+  }
+  .l-tab[aria-current="page"] {
+    color: #818cf8;
+  }
+  .l-tab[aria-current="page"] .l-tab-ico {
+    background: rgba(99, 102, 241, 0.2);
+  }
+  .l-target {
+    background: #192238;
+  }
+  .l-skip:focus {
+    background: #1e293b;
+    color: #f1f5f9;
+  }
 }

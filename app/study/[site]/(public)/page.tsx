@@ -56,7 +56,7 @@ export default async function Landing({ params }: { params: Promise<{ site: stri
       <header className="l-landing-head flex items-center gap-1.5 sm:gap-2 max-w-full flex-nowrap overflow-x-auto py-1">
         <a
           href={mainHomeUrl}
-          className="droplet-pill inline-flex items-center justify-center gap-1 px-2.5 sm:px-3 h-[34px] bg-white hover:bg-slate-50 text-slate-800 font-bold text-xs transition border border-slate-200 shadow-2xs shrink-0 cursor-pointer"
+          className="droplet-pill inline-flex items-center justify-center gap-1 px-2.5 sm:px-3 h-[34px] bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-bold text-xs transition border border-slate-200 dark:border-slate-700 shadow-2xs shrink-0 cursor-pointer"
           title={locale === "ko" ? "LIFE.HELP 메인 홈으로 이동" : "Return to LIFE.HELP Main Portal"}
         >
           <span className="text-sm">🏠</span>

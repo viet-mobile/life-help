@@ -6,6 +6,7 @@ import { useLearner } from "./LearnerProvider";
 import { type Site } from "@/lib/learn/types";
 import { buildLearnUrl } from "@/lib/learn/hosts";
 import { HangeulCalligraphyIcon } from "./HangeulCalligraphyIcon";
+import { MenuChevronUpDown } from "./MenuChevronUpDown";
 
 interface SubjectSwitchProps {
   currentSite: Site;
@@ -54,7 +55,7 @@ export function SubjectSwitch({ currentSite }: SubjectSwitchProps) {
               className={`droplet-btn px-3 h-[34px] inline-flex items-center justify-center text-xs font-bold transition shadow-2xs cursor-pointer whitespace-nowrap ${
                 isCurrent
                   ? "bg-blue-600 text-white shadow-xs pointer-events-none"
-                  : "bg-white/90 hover:bg-white text-slate-700 hover:text-blue-700 border border-slate-200"
+                  : "bg-white/90 dark:bg-slate-800 hover:bg-white dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 hover:text-blue-700 dark:hover:text-blue-400 border border-slate-200 dark:border-slate-700"
               }`}
             >
               {sub.label}
@@ -66,49 +67,46 @@ export function SubjectSwitch({ currentSite }: SubjectSwitchProps) {
       {/* Mobile & Compact Screens: 박스 디자인 코드(droplet-pill) 일률 적용 */}
       <div className="md:hidden inline-flex items-center shrink-0 max-w-full">
         <label
-          className="droplet-pill inline-flex items-center shrink-0 border border-slate-200 bg-white shadow-2xs hover:border-blue-400 transition"
+          className="droplet-pill inline-flex items-center justify-between shrink-0 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-2xs hover:border-blue-400 dark:hover:border-blue-500 transition px-2 sm:px-2.5 h-[34px] min-w-[72px] max-w-[125px] sm:max-w-[155px] cursor-pointer"
           style={{
             height: "34px",
-            padding: "0 6px 0 8px",
             boxSizing: "border-box",
           }}
         >
-          <span className="text-xs mr-1 shrink-0" aria-hidden="true">📚</span>
-          <select
-            className="l-locale-select"
-            value={currentSite}
-            onChange={(e) => {
-              const targetSite = e.target.value as Site;
-              if (targetSite && targetSite !== currentSite) {
-                const targetUrl = host ? buildLearnUrl(targetSite, host, locale) : `/study/${targetSite}/dashboard`;
-                if (targetUrl.startsWith("http")) {
-                  window.location.href = targetUrl;
-                } else {
-                  window.location.assign(targetUrl);
+          <div className="flex items-center gap-1 min-w-0 overflow-hidden flex-1">
+            <span className="text-xs shrink-0 select-none" aria-hidden="true">📚</span>
+            <select
+              className="l-locale-select bg-transparent text-slate-800 dark:text-slate-100 font-bold text-[0.8rem] cursor-pointer outline-none appearance-none [appearance:none] [-webkit-appearance:none] truncate w-full"
+              value={currentSite}
+              onChange={(e) => {
+                const targetSite = e.target.value as Site;
+                if (targetSite && targetSite !== currentSite) {
+                  const targetUrl = host ? buildLearnUrl(targetSite, host, locale) : `/study/${targetSite}/dashboard`;
+                  if (targetUrl.startsWith("http")) {
+                    window.location.href = targetUrl;
+                  } else {
+                    window.location.assign(targetUrl);
+                  }
                 }
-              }
-            }}
-            aria-label="Select Subject"
-            style={{
-              height: "34px",
-              minHeight: "34px",
-              lineHeight: "34px",
-              fontSize: "0.8rem",
-              fontWeight: 700,
-              border: 0,
-              background: "transparent",
-              color: "var(--l-accent-dark, #1e3a8a)",
-              cursor: "pointer",
-              maxWidth: "min(32vw, 110px)",
-              outline: "none",
-            }}
-          >
-            {subjects.map((sub) => (
-              <option key={sub.site} value={sub.site}>
-                {sub.label}
-              </option>
-            ))}
-          </select>
+              }}
+              aria-label="Select Subject"
+              style={{
+                border: 0,
+                paddingRight: 0,
+                paddingLeft: 0,
+                background: "transparent",
+              }}
+            >
+              {subjects.map((sub) => (
+                <option key={sub.site} value={sub.site} className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+                  {sub.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* 메인 언어 및 병기 언어 메뉴와 100% 동일한 규격의 상하 화살표(ChevronUpDown) */}
+          <MenuChevronUpDown className="ml-1" />
         </label>
       </div>
     </div>

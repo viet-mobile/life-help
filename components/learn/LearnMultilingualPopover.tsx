@@ -6,6 +6,7 @@ import { type Locale, languages, formatLanguageName, getSortedLanguages } from "
 import { splitLocalePrefix } from "@/lib/learn/i18n/path";
 import { useSite } from "./LearnerProvider";
 import { getCatalogI18n } from "@/lib/learn/dailyInsights/catalogI18n";
+import { MenuChevronUpDown } from "./MenuChevronUpDown";
 
 interface LearnMultilingualPopoverProps {
   currentLocale: Locale;
@@ -204,7 +205,7 @@ export function LearnMultilingualPopover({
         ref={buttonRef}
         type="button"
         onClick={handleToggle}
-        className="droplet-pill inline-flex items-center justify-between gap-1 h-[34px] min-h-[34px] px-2 sm:px-2.5 transition shrink-0 cursor-pointer border border-slate-200 bg-white shadow-2xs hover:border-blue-400 min-w-[72px] max-w-[115px] sm:max-w-[145px]"
+        className="droplet-pill inline-flex items-center justify-between gap-1 h-[34px] min-h-[34px] px-2 sm:px-2.5 transition shrink-0 cursor-pointer border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-2xs hover:border-blue-400 dark:hover:border-blue-500 min-w-[72px] max-w-[125px] sm:max-w-[155px]"
         style={{ height: "34px", boxSizing: "border-box" }}
         aria-label="Multilingual display mode selection"
         aria-expanded={secOpen}
@@ -214,21 +215,13 @@ export function LearnMultilingualPopover({
           <span className="text-xs shrink-0 select-none" aria-hidden="true">
             {secondaryCount > 0 ? "🈁" : "📄"}
           </span>
-          <span className="font-bold text-[0.8rem] text-slate-800 truncate select-none leading-none">
+          <span className="font-bold text-[0.8rem] text-slate-800 dark:text-slate-100 truncate select-none leading-none">
             {labelText}
           </span>
         </div>
 
-        {/* 메인 언어 선택 및 과목 선택과 완벽히 동일한 상하 방향 화살표(↕) 표시 */}
-        <svg
-          className="w-3 h-3 text-slate-500 shrink-0 ml-0.5 select-none"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          aria-hidden="true"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
-        </svg>
+        {/* 메인 언어 선택 및 과목 선택과 100% 동일한 규격의 상하 방향 화살표 */}
+        <MenuChevronUpDown className="ml-1" />
       </button>
 
       {/* Portal 렌더링: 조상 엘리먼트의 overflow / backdrop-filter 클리핑을 원천 차단하여 100% 확실하게 열림 */}
@@ -243,11 +236,11 @@ export function LearnMultilingualPopover({
             width: `${coords.width}px`,
             zIndex: 99999,
           }}
-          className="droplet-card border border-slate-200/90 bg-white/98 p-3.5 shadow-2xl ring-1 ring-black/10 animate-in fade-in zoom-in-95 duration-150 backdrop-blur-xl"
+          className="droplet-card border border-slate-200/90 dark:border-slate-700/90 bg-white/98 dark:bg-slate-900/98 p-3.5 shadow-2xl ring-1 ring-black/10 dark:ring-white/10 animate-in fade-in zoom-in-95 duration-150 backdrop-blur-xl text-slate-900 dark:text-slate-100"
         >
-          <div className="flex items-center justify-between border-b border-slate-100 pb-2 mb-2">
+          <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2 mb-2">
             <div>
-              <h4 className="text-xs font-black text-slate-900 flex items-center gap-1.5">
+              <h4 className="text-xs font-black text-slate-900 dark:text-slate-100 flex items-center gap-1.5">
                 <span>🈁</span>
                 <span>{catalogI18n.multilingualTitle || "Multilingual Languages"}</span>
                 {secondaryCount > 0 && (
@@ -256,7 +249,7 @@ export function LearnMultilingualPopover({
                   </span>
                 )}
               </h4>
-              <p className="text-[10px] font-medium text-slate-500 mt-0.5">
+              <p className="text-[10px] font-medium text-slate-500 dark:text-slate-400 mt-0.5">
                 {catalogI18n.multilingualDesc}
               </p>
             </div>
@@ -266,7 +259,7 @@ export function LearnMultilingualPopover({
                 applyLocales(activeSecLocalesRef.current);
                 setSecOpen(false);
               }}
-              className="droplet-pill p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-600 cursor-pointer flex items-center justify-center text-xs font-bold"
+              className="droplet-pill p-1 text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-600 dark:hover:text-slate-300 cursor-pointer flex items-center justify-center text-xs font-bold"
               aria-label="Close"
             >
               ✕
@@ -282,7 +275,7 @@ export function LearnMultilingualPopover({
             className={`w-full flex items-center justify-between droplet-btn px-3 py-2 text-xs font-bold transition mb-2 cursor-pointer ${
               secondaryCount === 0
                 ? "bg-blue-600 text-white"
-                : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+                : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700"
             }`}
           >
             <span>{catalogI18n.singleClear}</span>
@@ -295,7 +288,7 @@ export function LearnMultilingualPopover({
               placeholder={catalogI18n.searchMultilingual}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="droplet-input w-full border border-slate-200 bg-slate-50 px-3 py-2 text-xs text-slate-800 placeholder-slate-400 focus:border-blue-500 focus:bg-white focus:outline-hidden"
+              className="droplet-input w-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-2 text-xs text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:border-blue-500 focus:bg-white dark:focus:bg-slate-900 focus:outline-hidden"
             />
           </div>
 
@@ -309,8 +302,8 @@ export function LearnMultilingualPopover({
                   onClick={() => toggleLocale(lang.code)}
                   className={`w-full flex items-center justify-between droplet-btn px-3 py-2 text-left text-xs transition cursor-pointer ${
                     isSelected
-                      ? "bg-blue-50 text-blue-900 font-bold border border-blue-200"
-                      : "hover:bg-slate-50 text-slate-700"
+                      ? "bg-blue-50 dark:bg-blue-950/60 text-blue-900 dark:text-blue-200 font-bold border border-blue-200 dark:border-blue-800"
+                      : "hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200"
                   }`}
                 >
                   <div className="flex flex-col min-w-0 pr-2">
@@ -320,7 +313,7 @@ export function LearnMultilingualPopover({
                     className={`h-4 w-4 rounded-full flex items-center justify-center shrink-0 border text-[10px] ${
                       isSelected
                         ? "bg-blue-600 border-blue-600 text-white font-black"
-                        : "border-slate-300 text-transparent"
+                        : "border-slate-300 dark:border-slate-600 text-transparent"
                     }`}
                   >
                     ✓
@@ -331,8 +324,8 @@ export function LearnMultilingualPopover({
           </div>
 
           {/* Footer with Done button */}
-          <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between">
-            <span className="text-[11px] font-bold text-slate-500">
+          <div className="mt-2.5 pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+            <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400">
               {isKo ? `${secondaryCount}개 병기 언어 선택됨` : `${secondaryCount} selected`}
             </span>
             <button

@@ -44,7 +44,7 @@ export function PlayShell({ children }: { children: ReactNode }) {
           <div className="flex items-center gap-2.5 min-w-0 shrink-0">
             <a
               href={mainHomeUrl}
-              className="droplet-pill inline-flex items-center justify-center gap-1 px-2.5 sm:px-3 h-[34px] bg-white hover:bg-slate-50 text-slate-900 font-bold text-xs transition border border-slate-200 shadow-2xs shrink-0 cursor-pointer"
+              className="droplet-pill inline-flex items-center justify-center gap-1 px-2.5 sm:px-3 h-[34px] bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-900 dark:text-slate-100 font-bold text-xs transition border border-slate-200 dark:border-slate-700 shadow-2xs shrink-0 cursor-pointer"
               title={locale === "ko" ? "LIFE.HELP 메인 홈으로 이동" : "Return to LIFE.HELP Main Portal"}
             >
               <span>🏠</span>
