@@ -4,6 +4,7 @@ import { translate, type Locale, isValidLocale } from "@/messages";
 import { getLocale as getLearnLocale } from "@/lib/learn/i18n/server";
 import { resolveCountryFromHeaders, resolveLanguageFromHeaders } from "@/lib/i18n/siteMetadata";
 import { brandName, ogLocaleFor } from "@/lib/i18n/seo";
+import { PAGE_TITLES } from "./pageTitles";
 
 /**
  * Server-side dictionary access for pages that have no client locale context yet (metadata, 404): the language of the request
@@ -16,7 +17,14 @@ export async function getServerText(): Promise<{ lang: Locale; t: (key: string) 
   const lang: Locale = isValidLocale(raw) ? raw : "ko";
   return {
     lang,
-    t: (key: string) => translate(lang, key),
+    t: (key: string) => {
+      // 1. Check lightweight metadata dictionary for all 89 languages first
+      const pageDict = PAGE_TITLES[lang];
+      if (pageDict && pageDict[key]) {
+        return pageDict[key];
+      }
+      return translate(lang, key);
+    },
     country: learn ? null : resolveCountryFromHeaders(h),
     learnBase: learn ? (h.get("x-learn-base") ?? "") : null,
   };
