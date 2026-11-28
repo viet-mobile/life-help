@@ -167,13 +167,9 @@ let cachedParagraphs: Record<string, Array<Record<string, string>>> | null = nul
 function toAnchorLang(loc: string | null | undefined, fallback: AnchorLanguage = "ko"): AnchorLanguage {
   if (!loc) return fallback;
   const lower = loc.toLowerCase().trim();
-  if (lower === "ko" || lower === "korean") return "ko";
-  if (lower === "en" || lower === "english") return "en";
-  if (lower === "vi" || lower === "vietnamese") return "vi";
-  if (lower === "zh-hant" || lower === "zh-tw" || lower === "zt") return "zh-Hant";
-  if (lower === "zh-hans" || lower === "zh-cn" || lower === "zh" || lower === "zs") return "zh-Hans";
-  if (lower === "ja" || lower === "japanese") return "ja";
-  return fallback;
+  if (lower === "zh-tw" || lower === "zt") return "zh-Hant";
+  if (lower === "zh-cn" || lower === "zh" || lower === "zs") return "zh-Hans";
+  return lower;
 }
 
 const UI_TEXTS: Record<AnchorLanguage, Record<string, string>> = {
@@ -338,6 +334,114 @@ const UI_TEXTS: Record<AnchorLanguage, Record<string, string>> = {
     noMatchTitle: "未找到相符條款",
     noMatchDesc: "請嘗試變更搜尋字詞或篩選條件。",
     resetFilter: "重設所有篩選"
+  },
+  mn: {
+    badge: "🏛️ БНСУ-ын Үндэсний солонгос хэлний хүрээлэнгийн албан ёсны стандарт дүрэм (Бүх 56 зүйл)",
+    title: "Солонгос хэлний стандарт дүрмийн бүрэн эх",
+    subtitle: "1-р хэсэг Стандарт үгийн шалгуур зарчим (26 зүйл) болон 2-р хэсэг Стандарт дуудлагын дүрэм (30 зүйл)-ийг орчин үеийн тааламжтай интерфэйсээр суралцаарай. Дүрэм болон нарийвчилсан тайлбарууд бүрэн сонгосон хэлээр орчуулагдан зэрэгцүүлэн харагдана.",
+    expandAll: "🔽 Бүх жишээг дэлгэх",
+    collapseAll: "🔼 Бүх жишээг хураах",
+    allArticles: "Бүх зүйл анги (56)",
+    part1Tab: "1-р хэсэг: Үгийн зарчим (26)",
+    part2Tab: "2-р хэсэг: Стандарт дуудлага (30)",
+    allChapters: "Бүх бүлгийг харах",
+    searchPlaceholder: "🔍 Зүйлийн дугаар, дүрэм, түлхүүр үгээр хайх...",
+    showingCount: "Нийт {count} зүйл заалт харагдаж байна.",
+    expandDetails: "▼ Дэлгэрэнгүй жишээ хүснэгт ба үгийн жагсаалт харах",
+    collapseDetails: "▲ Дэлгэрэнгүй жишээг хураах",
+    itemsCount: "({count} зүйл)",
+    examplesTitle: "📋 Эх бичвэрийн нарийвчилсан хэсэг ба жишээ үгийн жагсаалт",
+    exampleBadge: "Жишээ",
+    colStandard: "ㄱ (Стандарт үг)",
+    colMeaning: "Утга",
+    colNonStandard: "ㄴ (Стандарт бус / Орхигдсон)",
+    colNote: "Тэмдэглэл (Хэрэглээ ба лавлагаа)",
+    colMultiStandard: "Хос стандарт үг",
+    explanationTitle: "💡 Гол тайлбар ба дүрмийн үндэслэл",
+    noMatchTitle: "Тохирох зүйл олдсонгүй",
+    noMatchDesc: "Хайлтын үг эсвэл шүүлтүүрийн нөхцөлөө өөрчилнө үү.",
+    resetFilter: "Бүх шүүлтийг арилгах"
+  },
+  ru: {
+    badge: "🏛️ Официальные нормы стандартного корейского языка Национального института корейского языка (Все 56 статей)",
+    title: "Полный свод норм стандартного корейского языка",
+    subtitle: "Изучайте Часть 1 Принципы отбора стандартных слов (26 статей) и Часть 2 Правила стандартного произношения (30 статей) в удобном современном интерфейсе. Тексты правил и подробные комментарии переводятся и отображаются параллельно на выбранном языке.",
+    expandAll: "🔽 Развернуть все примеры",
+    collapseAll: "🔼 Свернуть все примеры",
+    allArticles: "Все статьи (56)",
+    part1Tab: "Часть 1: Отбор слов (26)",
+    part2Tab: "Часть 2: Произношение (30)",
+    allChapters: "Все главы",
+    searchPlaceholder: "🔍 Поиск по номеру статьи, правилу, ключевым словам...",
+    showingCount: "Всего отображается {count} статей.",
+    expandDetails: "▼ Показать таблицу подробных примеров и слов",
+    collapseDetails: "▲ Свернуть подробные примеры и правила",
+    itemsCount: "({count} элементов)",
+    examplesTitle: "📋 Подробные пункты оригинала и список примеров слов",
+    exampleBadge: "Пример",
+    colStandard: "А (Стандартное слово)",
+    colMeaning: "Значение",
+    colNonStandard: "Б (Нестандартное / Исключено)",
+    colNote: "Примечание (Употребление и справка)",
+    colMultiStandard: "Вариантные стандарты",
+    explanationTitle: "💡 Ключевые разъяснения и языковой контекст",
+    noMatchTitle: "Совпадений не найдено",
+    noMatchDesc: "Попробуйте изменить поисковый запрос или параметры фильтра.",
+    resetFilter: "Сбросить все фильтры"
+  },
+  uz: {
+    badge: "🏛️ Koreys tili milliy institutining rasmiy standart til qoidalari (Barcha 56 modda)",
+    title: "Standart Koreys Tili Qoidalarining To'liq Matni",
+    subtitle: "1-qism Standart so'zlarni belgilash tamoyillari (26 modda) va 2-qism Standart talaffuz qoidalari (30 modda)ni zamonaviy qulay interfeysda o'rganing. Qoidalar matni va batafsil sharhlar siz tanlagan tilda tarjima qilinib, parallel ko'rsatiladi.",
+    expandAll: "🔽 Barcha misollarni ochish",
+    collapseAll: "🔼 Barcha misollarni yopish",
+    allArticles: "Barchasi (56)",
+    part1Tab: "1-qism: So'z tamoyillari (26)",
+    part2Tab: "2-qism: Standart talaffuz (30)",
+    allChapters: "Barcha boblarni ko'rish",
+    searchPlaceholder: "🔍 Modda raqami, qoida matni, kalit so'z qidirish...",
+    showingCount: "Jami {count} ta modda ko'rsatilmoqda.",
+    expandDetails: "▼ Batafsil misollar jadvali va so'zlar ro'yxatini ko'rish",
+    collapseDetails: "▲ Batafsil misollar va qoidalarni yopish",
+    itemsCount: "({count} ta band)",
+    examplesTitle: "📋 Asl nusxa bandlari va so'zlar bo'yicha misollar ro'yxati",
+    exampleBadge: "Misol",
+    colStandard: "A (Standart so'z)",
+    colMeaning: "Ma'nosi",
+    colNonStandard: "B (Nostandart / Chiqarib tashlangan)",
+    colNote: "Izoh (Qo'llanishi va ma'lumot)",
+    colMultiStandard: "Qo'shaloq standart so'zlar",
+    explanationTitle: "💡 Asosiy sharh va qoida asosi",
+    noMatchTitle: "Mos modda topilmadi",
+    noMatchDesc: "Qidiruv so'zi yoki filtr shartlarini o'zgartirib ko'ring.",
+    resetFilter: "Filtrlarni tozalash"
+  },
+  ne: {
+    badge: "🏛️ राष्ट्रिय कोरियाली भाषा संस्थान आधिकारिक मानक नियमहरू (सबै ५६ धारा)",
+    title: "कोरियाली मानक भाषा नियमहरूको पूर्ण पाठ",
+    subtitle: "भाग १ मानक शब्द निर्धारण सिद्धान्तहरू (२६ धारा) र भाग २ मानक उच्चारण नियमहरू (३० धारा) आधुनिक इन्टरफेसमा सिक्नुहोस्। नियमको मूल पाठ र विस्तृत व्याख्या तपाईंले रोज्नुभएको भाषामा समानान्तर रूपमा अनुवाद गरी देखाइन्छ।",
+    expandAll: "🔽 सबै उदाहरणहरू विस्तार गर्नुहोस्",
+    collapseAll: "🔼 सबै उदाहरणहरू संकुचित गर्नुहोस्",
+    allArticles: "सबै (५६)",
+    part1Tab: "भाग १: शब्द सिद्धान्त (२६)",
+    part2Tab: "भाग २: मानक उच्चारण (३०)",
+    allChapters: "सबै अध्यायहरू हेर्नुहोस्",
+    searchPlaceholder: "🔍 धारा नम्बर, नियम पाठ, कुञ्जी शब्द खोज्नुहोस्...",
+    showingCount: "जम्मा {count} धाराहरू देखाइएको छ।",
+    expandDetails: "▼ विस्तृत उदाहरण तालिका र शब्द सूची हेर्नुहोस्",
+    collapseDetails: "▲ विस्तृत उदाहरणहरू संकुचित गर्नुहोस्",
+    itemsCount: "({count} वटा वस्तुहरू)",
+    examplesTitle: "📋 मूल विस्तृत बुँदाहरू र उदाहरण शब्दहरूको सूची",
+    exampleBadge: "उदाहरण",
+    colStandard: "क (मानक शब्द)",
+    colMeaning: "अर्थ",
+    colNonStandard: "ख (गैर-मानक / हटाइएको)",
+    colNote: "टिप्पणी (प्रयोग र सन्दर्भ)",
+    colMultiStandard: "बहु मानक शब्दहरू",
+    explanationTitle: "💡 मुख्य व्याख्या र नियमको पृष्ठभूमि",
+    noMatchTitle: "कुनै मिल्दो धारा भेटिएन",
+    noMatchDesc: "खोज शब्द वा फिल्टर विकल्पहरू परिवर्तन गर्नुहोस्।",
+    resetFilter: "सबै फिल्टर रिसेट गर्नुहोस्"
   }
 };
 
@@ -407,6 +511,50 @@ const CHAPTER_TRANSLATIONS: Record<AnchorLanguage, Record<string, string>> = {
     "제5장 음의 동화": "第5章 語音同化",
     "제6장 경음화": "第6章 緊音化",
     "제7장 음의 첨가": "第7章 增音現象"
+  },
+  mn: {
+    "제1장 총칙": "1-р бүлэг: Ерөнхий дүрэм",
+    "제2장 발음 변화에 따른 표준어 규정": "2-р бүлэг: Дуудлагын өөрчлөлтөөс хамаарах дүрэм",
+    "제3장 어휘 선택의 변화에 따른 표준어 규정": "3-р бүлэг: Үгийн сонголтын өөрчлөлтөөс хамаарах дүрэм",
+    "제2장 자음과 모음": "2-р бүлэг: Гийгүүлэгч ба эгшиг",
+    "제3장 음의 길이": "3-р бүлэг: Эгшгийн урт",
+    "제4장 받침의 발음": "4-р бүлэг: Батчим дуудлага",
+    "제5장 음의 동화": "5-р бүлэг: Авиан ижилсэл",
+    "제6장 경음화": "6-р бүлэг: Чанга авиажих үзэгдэл",
+    "제7장 음의 첨가": "7-р бүлэг: Авиа нэмэгдэх үзэгдэл"
+  },
+  ru: {
+    "제1장 총칙": "Глава 1: Общие положения",
+    "제2장 발음 변화에 따른 표준어 규정": "Глава 2: Нормы стандартных слов при фонетических изменениях",
+    "제3장 어휘 선택의 변화에 따른 표준어 규정": "Глава 3: Нормы стандартных слов при изменении словарного состава",
+    "제2장 자음과 모음": "Глава 2: Согласные и гласные",
+    "제3장 음의 길이": "Глава 3: Длина гласных",
+    "제4장 받침의 발음": "Глава 4: Произношение конечных согласных (патчим)",
+    "제5장 음의 동화": "Глава 5: Фонетическая ассимиляция",
+    "제6장 경음화": "Глава 6: Напряжение согласных (глоттализация)",
+    "제7장 음의 첨가": "Глава 7: Вставка звуков"
+  },
+  uz: {
+    "제1장 총칙": "1-bob: Umumiy qoidalar",
+    "제2장 발음 변화에 따른 표준어 규정": "2-bob: Talaffuz o'zgarishiga ko'ra standart so'z qoidalari",
+    "제3장 어휘 선택의 변화에 따른 표준어 규정": "3-bob: Lug'at boyligi tanloviga ko'ra standart so'z qoidalari",
+    "제2장 자음과 모음": "2-bob: Undosh va unlilar",
+    "제3장 음의 길이": "3-bob: Tovush uzunligi",
+    "제4장 받침의 발음": "4-bob: Bo'g'in oxiridagi undoshlar (batchim) talaffuzi",
+    "제5장 음의 동화": "5-bob: Tovushlarning o'xshashishi (assimilyatsiya)",
+    "제6장 경음화": "6-bob: Kuchli undoshga aylanish",
+    "제7장 음의 첨가": "7-bob: Tovush qo'shilishi"
+  },
+  ne: {
+    "제1장 총칙": "अध्याय १: सामान्य नियमहरू",
+    "제2장 발음 변화에 따른 표준어 규정": "अध्याय २: उच्चारण परिवर्तन अनुसार मानक शब्द नियमहरू",
+    "제3장 어휘 선택의 변화에 따른 표준어 규정": "अध्याय ३: शब्दावली चयनको परिवर्तन अनुसार मानक नियमहरू",
+    "제2장 자음과 모음": "अध्याय २: व्यञ्जन र स्वरवर्ण",
+    "제3장 음의 길이": "अध्याय ३: ध्वनिको लम्बाइ",
+    "제4장 받침의 발음": "अध्याय ४: अन्तिम व्यञ्जन (पात्छिम) को उच्चारण",
+    "제5장 음의 동화": "अध्याय ५: ध्वनि समीकरण",
+    "제6장 경음화": "अध्याय ६: कडा उच्चारण (तनावयुक्त ध्वनि)",
+    "제7장 음의 첨가": "अध्याय ७: ध्वनि थप"
   }
 };
 
@@ -1046,73 +1194,69 @@ export function KoreanStandardsView() {
     return toAnchorLang(locale, "ko");
   }, [locale]);
 
-  // Secondary language (from client storage/event or server props)
-  const secondaryLang: AnchorLanguage = useMemo(() => {
+  // Active secondary languages selected by user (supports multiple selected languages e.g. + 4개 언어)
+  const activeSecondaryLocales: AnchorLanguage[] = useMemo(() => {
     const isAnchorCode = (c: string): c is AnchorLanguage => ANCHOR_LANGUAGES.some(a => a.code === c);
-
+    const rawList: string[] = [];
     if (clientSec.secondaryLocales && clientSec.secondaryLocales.length > 0) {
-      for (const loc of clientSec.secondaryLocales) {
-        const parsed = toAnchorLang(loc, "ko");
-        if (parsed !== primaryLang && isAnchorCode(parsed)) {
-          return parsed;
-        }
+      rawList.push(...clientSec.secondaryLocales);
+    } else if (clientSec.secondaryLocale) {
+      rawList.push(clientSec.secondaryLocale);
+    } else if (secondaryLocales && secondaryLocales.length > 0) {
+      rawList.push(...secondaryLocales);
+    } else if (secondaryLocale) {
+      rawList.push(secondaryLocale);
+    }
+
+    const unique: AnchorLanguage[] = [];
+    for (const loc of rawList) {
+      const parsed = toAnchorLang(loc, "");
+      if (parsed && parsed !== primaryLang && isAnchorCode(parsed) && !unique.includes(parsed)) {
+        unique.push(parsed);
       }
     }
-    if (clientSec.secondaryLocale) {
-      const parsed = toAnchorLang(clientSec.secondaryLocale, "ko");
-      if (parsed !== primaryLang && isAnchorCode(parsed)) {
-        return parsed;
-      }
-    }
-    if (secondaryLocales && secondaryLocales.length > 0) {
-      for (const loc of secondaryLocales) {
-        const parsed = toAnchorLang(loc, "ko");
-        if (parsed !== primaryLang && isAnchorCode(parsed)) {
-          return parsed;
-        }
-      }
-    }
-    if (secondaryLocale) {
-      const parsed = toAnchorLang(secondaryLocale, "ko");
-      if (parsed !== primaryLang && isAnchorCode(parsed)) {
-        return parsed;
-      }
-    }
-    return primaryLang === "ko" ? "vi" : "ko";
+    return unique;
   }, [clientSec, secondaryLocales, secondaryLocale, primaryLang]);
+
+  // Secondary language (primary secondary language for single fallback)
+  const secondaryLang: AnchorLanguage = useMemo(() => {
+    if (activeSecondaryLocales.length > 0) {
+      return activeSecondaryLocales[0];
+    }
+    return primaryLang === "ko" ? "" : "ko";
+  }, [activeSecondaryLocales, primaryLang]);
 
   // Bilingual mode enabled check
   const showBilingual: boolean = useMemo(() => {
+    if (activeSecondaryLocales.length > 0) return true;
     if (clientSec.isBilingual || clientSec.displayMode === "bilingual" || isBilingual) {
       return true;
     }
-    if (clientSec.secondaryLocales && clientSec.secondaryLocales.length > 0) {
-      return true;
-    }
-    if (clientSec.secondaryLocale && clientSec.secondaryLocale !== primaryLang) {
-      return true;
-    }
-    return Boolean((secondaryLocales && secondaryLocales.length > 0) || (secondaryLocale && secondaryLocale !== primaryLang));
-  }, [clientSec, isBilingual, primaryLang, secondaryLocales, secondaryLocale]);
+    return false;
+  }, [activeSecondaryLocales, clientSec, isBilingual]);
 
   // Primary translation language:
   // If primary is not Korean (e.g. Vietnamese learner mode), first translation is that foreign language.
   // If primary is Korean and bilingual is enabled, first translation is the chosen secondary language.
   const firstTransLang = useMemo<AnchorLanguage | null>(() => {
     if (primaryLang !== "ko") return primaryLang;
-    if (showBilingual && secondaryLang !== "ko") return secondaryLang;
+    if (showBilingual && activeSecondaryLocales.length > 0) return activeSecondaryLocales[0];
     return null;
-  }, [primaryLang, showBilingual, secondaryLang]);
+  }, [primaryLang, showBilingual, activeSecondaryLocales]);
 
   // Secondary translation language:
   // When primary locale is a foreign language (e.g. 'en') and a secondary foreign language is selected (e.g. 'vi'),
   // render secondary foreign translation underneath the primary translation.
   const secondTransLang = useMemo<AnchorLanguage | null>(() => {
-    if (primaryLang !== "ko" && showBilingual && secondaryLang !== "ko" && secondaryLang !== primaryLang) {
-      return secondaryLang;
+    if (primaryLang !== "ko" && showBilingual && activeSecondaryLocales.length > 0) {
+      const found = activeSecondaryLocales.find(l => l !== primaryLang && l !== "ko");
+      return found || null;
+    }
+    if (primaryLang === "ko" && showBilingual && activeSecondaryLocales.length > 1) {
+      return activeSecondaryLocales[1];
     }
     return null;
-  }, [primaryLang, showBilingual, secondaryLang]);
+  }, [primaryLang, showBilingual, activeSecondaryLocales]);
 
   const targetLang = firstTransLang;
   const isDualMode = Boolean(firstTransLang && firstTransLang !== "ko");
@@ -1247,11 +1391,15 @@ export function KoreanStandardsView() {
               {primaryLang !== "ko" && uiPrimary.title ? (
                 <>
                   <span>{uiPrimary.title}</span>
-                  {secondTransLang && uiSecond && uiSecond.title !== uiPrimary.title && (
-                    <span className="block mt-1 text-lg sm:text-xl lg:text-2xl font-bold text-indigo-700 dark:text-indigo-400">
-                      {uiSecond.title}
-                    </span>
-                  )}
+                  {showBilingual && activeSecondaryLocales.filter(l => l !== primaryLang).map((secL) => {
+                    const t = UI_TEXTS[secL];
+                    if (!t?.title || t.title === uiPrimary.title) return null;
+                    return (
+                      <span key={secL} className="block mt-1 text-lg sm:text-xl lg:text-2xl font-bold text-indigo-700 dark:text-indigo-400">
+                        {t.title}
+                      </span>
+                    );
+                  })}
                   <span className="block mt-1 text-sm sm:text-base font-semibold text-slate-500 dark:text-slate-400">
                     {uiBase.title}
                   </span>
@@ -1259,40 +1407,52 @@ export function KoreanStandardsView() {
               ) : (
                 <>
                   <span>{uiBase.title}</span>
-                  {isDualMode && uiTarget && uiTarget.title !== uiBase.title && (
-                    <span className="block mt-1 text-lg sm:text-xl lg:text-2xl font-bold text-indigo-700 dark:text-indigo-400">
-                      {uiTarget.title}
-                    </span>
-                  )}
+                  {showBilingual && activeSecondaryLocales.map((secL) => {
+                    const t = UI_TEXTS[secL];
+                    if (!t?.title || t.title === uiBase.title) return null;
+                    return (
+                      <span key={secL} className="block mt-1 text-lg sm:text-xl lg:text-2xl font-bold text-indigo-700 dark:text-indigo-400">
+                        {t.title}
+                      </span>
+                    );
+                  })}
                 </>
               )}
             </h1>
 
             {/* Subtitle: Primary on Top, Bilingual Underneath, Korean Reference */}
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-3xl leading-relaxed">
+            <div className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-3xl leading-relaxed space-y-1">
               {primaryLang !== "ko" && uiPrimary.subtitle ? (
                 <>
-                  <span>{uiPrimary.subtitle}</span>
-                  {secondTransLang && uiSecond && uiSecond.subtitle !== uiPrimary.subtitle && (
-                    <span className="block mt-0.5 text-indigo-600 dark:text-indigo-400 text-xs font-medium">
-                      {uiSecond.subtitle}
-                    </span>
-                  )}
-                  <span className="block mt-0.5 text-slate-500 dark:text-slate-400 text-xs">
+                  <p>{uiPrimary.subtitle}</p>
+                  {showBilingual && activeSecondaryLocales.filter(l => l !== primaryLang).map((secL) => {
+                    const t = UI_TEXTS[secL];
+                    if (!t?.subtitle || t.subtitle === uiPrimary.subtitle) return null;
+                    return (
+                      <p key={secL} className="text-indigo-600 dark:text-indigo-400 font-medium">
+                        {t.subtitle}
+                      </p>
+                    );
+                  })}
+                  <p className="text-slate-500 dark:text-slate-400 text-xs">
                     {uiBase.subtitle}
-                  </span>
+                  </p>
                 </>
               ) : (
                 <>
-                  <span>{uiBase.subtitle}</span>
-                  {isDualMode && uiTarget && uiTarget.subtitle !== uiBase.subtitle && (
-                    <span className="block mt-0.5 text-indigo-600 dark:text-indigo-400 font-medium">
-                      {uiTarget.subtitle}
-                    </span>
-                  )}
+                  <p>{uiBase.subtitle}</p>
+                  {showBilingual && activeSecondaryLocales.map((secL) => {
+                    const t = UI_TEXTS[secL];
+                    if (!t?.subtitle || t.subtitle === uiBase.subtitle) return null;
+                    return (
+                      <p key={secL} className="text-indigo-600 dark:text-indigo-400 font-medium">
+                        {t.subtitle}
+                      </p>
+                    );
+                  })}
                 </>
               )}
-            </p>
+            </div>
           </div>
         </div>
       </div>
@@ -1527,11 +1687,21 @@ export function KoreanStandardsView() {
                                 {formatPhoneticLengthMark(koTrans?.rule || "")}
                               </div>
                               {/* Secondary Rule UNDERNEATH */}
-                              {isDualMode && firstTrans?.rule && firstTrans.rule !== koTrans?.rule && (
-                                <div className="text-sm sm:text-base font-semibold text-indigo-700 dark:text-indigo-300 pt-2 border-t border-slate-100 dark:border-slate-800 leading-snug">
-                                  {formatPhoneticLengthMark(firstTrans.rule)}
-                                </div>
-                              )}
+                              {showBilingual && activeSecondaryLocales.map((secCode) => {
+                                const trans = art.i18n[secCode];
+                                if (!trans?.rule || trans.rule === koTrans?.rule) return null;
+                                const langMeta = ANCHOR_LANGUAGES.find(a => a.code === secCode);
+                                return (
+                                  <div key={secCode} className="text-sm sm:text-base font-semibold text-indigo-700 dark:text-indigo-300 pt-2 border-t border-slate-100 dark:border-slate-800 leading-snug flex items-start gap-2">
+                                    {activeSecondaryLocales.length > 1 && (
+                                      <span className="shrink-0 text-[11px] px-1.5 py-0.5 rounded bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 font-mono font-medium border border-indigo-200/50">
+                                        {langMeta?.native || secCode}
+                                      </span>
+                                    )}
+                                    <span className="flex-1">{formatPhoneticLengthMark(trans.rule)}</span>
+                                  </div>
+                                );
+                              })}
                             </>
                           )}
                         </div>
@@ -1600,12 +1770,22 @@ export function KoreanStandardsView() {
                                         {/* Korean Commentary Paragraph ON TOP */}
                                         <RenderFormattedCommentary text={koPara} />
 
-                                        {/* Secondary Language Paragraph UNDERNEATH */}
-                                        {isDualMode && fPara && fPara !== koPara && (
-                                          <div className="pt-2 border-t border-amber-200/40 dark:border-amber-900/30">
-                                            <RenderFormattedCommentary text={fPara} isSecondary />
-                                          </div>
-                                        )}
+                                        {/* Secondary Language Paragraphs UNDERNEATH */}
+                                        {showBilingual && activeSecondaryLocales.map((secCode) => {
+                                          const secPara = pObj[secCode] || (pIdx === 0 ? art.i18n[secCode]?.explanation : "");
+                                          if (!secPara || secPara === koPara) return null;
+                                          const langMeta = ANCHOR_LANGUAGES.find(a => a.code === secCode);
+                                          return (
+                                            <div key={secCode} className="pt-2 border-t border-amber-200/40 dark:border-amber-900/30">
+                                              {activeSecondaryLocales.length > 1 && (
+                                                <div className="text-[11px] font-bold text-amber-800 dark:text-amber-400 mb-1">
+                                                  [{langMeta?.native || secCode}]
+                                                </div>
+                                              )}
+                                              <RenderFormattedCommentary text={secPara} isSecondary />
+                                            </div>
+                                          );
+                                        })}
                                       </>
                                     )}
                                   </div>
