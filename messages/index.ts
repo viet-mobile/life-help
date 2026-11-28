@@ -11,6 +11,12 @@ export const dictionaries: Record<string, Record<string, unknown>> = {
   en: en as Record<string, unknown>,
 };
 
+export function registerDictionary(locale: string, dict: Record<string, unknown>): void {
+  if (locale && dict && typeof dict === "object") {
+    dictionaries[locale] = dict;
+  }
+}
+
 export function detectDeviceLocale(preferredLanguages?: readonly string[]): Locale {
   let langs: readonly string[] = [];
   if (preferredLanguages && preferredLanguages.length > 0) {

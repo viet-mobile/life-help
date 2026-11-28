@@ -17,6 +17,8 @@ import {
   locales,
   type LanguageMeta,
   translate,
+  registerDictionary,
+  dictionaries,
 } from "@/messages";
 import { COUNTRY_TO_LANGUAGE_MAP } from "@/lib/i18n/siteMetadata";
 import {
@@ -500,6 +502,75 @@ export function LocaleProvider({
 
   const secondaryLocale = secondaryLocales.length > 0 ? secondaryLocales[0] : null;
 
+  const [dictVersion, setDictVersion] = React.useState(0);
+
+  // Dynamically load translation dictionary from static assets for non-anchor languages
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const needed: Locale[] = [];
+    if (locale && !dictionaries[locale] && !needed.includes(locale)) {
+      needed.push(locale);
+    }
+    for (const sec of secondaryLocales) {
+      if (sec && !dictionaries[sec] && !needed.includes(sec)) {
+        needed.push(sec);
+      }
+    }
+
+    if (needed.length === 0) return;
+
+    let active = true;
+    const pending: Locale[] = [];
+
+    // Check sessionStorage first for instantaneous zero-latency dictionary hydration
+    for (const loc of needed) {
+      try {
+        const cached = sessionStorage.getItem(`life_help_dict_${loc}`);
+        if (cached) {
+          const parsed = JSON.parse(cached);
+          registerDictionary(loc, parsed);
+        } else {
+          pending.push(loc);
+        }
+      } catch {
+        pending.push(loc);
+      }
+    }
+
+    if (pending.length === 0) {
+      setDictVersion((v) => v + 1);
+      return;
+    }
+
+    Promise.all(
+      pending.map(async (loc) => {
+        try {
+          const res = await fetch(`/messages/${loc}.json`);
+          if (res.ok) {
+            const data = await res.json();
+            registerDictionary(loc, data);
+            try {
+              sessionStorage.setItem(`life_help_dict_${loc}`, JSON.stringify(data));
+            } catch {}
+            return true;
+          }
+        } catch (e) {
+          console.warn(`[LocaleContext] Failed to load /messages/${loc}.json`, e);
+        }
+        return false;
+      })
+    ).then((results) => {
+      if (active && results.some(Boolean)) {
+        setDictVersion((v) => v + 1);
+      }
+    });
+
+    return () => {
+      active = false;
+    };
+  }, [locale, secondaryLocales]);
+
   const [script, setScriptState] = React.useState<ScriptType>(() => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem(`life_help_script_${locale}`) as ScriptType;
@@ -677,17 +748,17 @@ export function LocaleProvider({
       const raw = translate(locale, key);
       return convertScript(raw, locale, script);
     },
-    [locale, script],
+    [locale, script, dictVersion],
   );
-  const tKo = useCallback((key: string) => translate("ko", key), []);
+  const tKo = useCallback((key: string) => translate("ko", key), [dictVersion]);
   const tSecondary = useCallback((key: string) => {
     if (!secondaryLocale) return "";
     return translate(secondaryLocale, key);
-  }, [secondaryLocale]);
+  }, [secondaryLocale, dictVersion]);
 
   const tSecondaryList = useCallback((key: string) => {
     return secondaryLocales.map((loc) => translate(loc, key));
-  }, [secondaryLocales]);
+  }, [secondaryLocales, dictVersion]);
 
   const tBilingual = useCallback(
     (key: string, separator?: string) => {
@@ -699,7 +770,7 @@ export function LocaleProvider({
       const actualSeparator = getBilingualSeparator(current, sec, separator);
       return `${current}${actualSeparator}${sec}`;
     },
-    [locale, secondaryLocale, displayMode, script],
+    [locale, secondaryLocale, displayMode, script, dictVersion],
   );
 
   const formatBilingual = useCallback(
@@ -710,7 +781,7 @@ export function LocaleProvider({
       const actualSeparator = getBilingualSeparator(convertedTarget, secondaryText, separator);
       return `${convertedTarget}${actualSeparator}${secondaryText}`;
     },
-    [locale, secondaryLocale, displayMode, script],
+    [locale, secondaryLocale, displayMode, script, dictVersion],
   );
 
   return (
